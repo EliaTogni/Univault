@@ -1,4 +1,4 @@
-L'area di ricerca della Computational Intelligence comprende i concetti, i paradigmi, algoritmi e l'implementazione al fine di sviluppare sistemi che mostrino un comportamento intelligente in ambienti complessi. 
+L'area di ricerca della **Computational Intelligence** comprende i concetti, i paradigmi, algoritmi e l'implementazione al fine di sviluppare sistemi che mostrino un comportamento intelligente in ambienti complessi. 
 Generalmente, sono adottati metodi sotto - simbolici e analoghi alla natura, i quali tollerano conoscenza incompleta, imprecisa o incerta.
 Di conseguenza, gli approcci risultanti permettono di avere soluzioni robuste e efficienti in termini di risorse.
 La strategia generale adottata nell'area della Computational Intelligence è di applicare tecniche e metodi di approssimazione che possano trovare soluzioni grossolane, incomplete o parzialmente valide. Come ricompensa per aver rinunciato alla garanzia di correttezza e completezza, le soluzioni sono trovate in una finestra di tempo tollerabile e e mantenento un budget ragionevole.

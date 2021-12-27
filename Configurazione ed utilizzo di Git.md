@@ -68,7 +68,7 @@ Changes not staged for commit:
     modified:   CONTRIBUTING.md
 ```
 
-"Changed but not staged for commit" significa che un file precedentemente tracciato è stato modificato nella directory di lavoro ma non è in staging. Per mandarlo in staging, si esegue nuovamente il comando <code> git add [nomefile] </code>.
+_Changed but not staged for commit_ significa che un file precedentemente tracciato è stato modificato nella directory di lavoro ma non è in staging. Per mandarlo in staging, si esegue nuovamente il comando <code> git add [nomefile] </code>.
 ```console
 On branch master
 Changes to be committed:

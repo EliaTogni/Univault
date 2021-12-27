@@ -1,6 +1,6 @@
-Le Artificial Neural Network sono sistemi di information processing , i quali principi di struttura e operazioni sono ispirati dal sistema nervoso e dal cervello di animali e umani.
+Le **Artificial Neural Network** sono sistemi di information processing , i quali principi di struttura e operazioni sono ispirati dal sistema nervoso e dal cervello di animali e umani.
 Essi consistono di un largo numero di unità relativamente semplici, i [[Neuroni]], i quali lavorano in parallelo. Questi neuroni comunicano mandando informazioni tra di loro sotto forma di segnali di attivazione, lungo connessioni orientate.
-Un sinonimo comunemente usato per le reti neurali è il termine "modello connessionista". Perciò, l'espressione "processing distribuito in parallelo" può spesso essere trovato in relazione alle reti neurali artificiali.
+Un sinonimo comunemente usato per le reti neurali è il termine **modello connessionista**. Perciò, l'espressione "processing distribuito in parallelo" può spesso essere trovato in relazione alle reti neurali artificiali.
 
 Le reti neurali artificiali sono studiate per vari motivi:
 - in ( Neuro ) Biologia e ( Neuro ) Fisiologia, ma anche in Psicologia, l'interesse principale è la similarità con il sistema nervoso biologico.
@@ -19,3 +19,5 @@ Piuttosto, le misurazioni necessitano di essere strutturate ed elencate prima di
 
 Come già menzionato, le Artificial Neural Network sono ispirate dalla struttura e dai principi secondo cui operano il sistema nervoso ed, in particolare, il cervello di animali ed umani. Il sistema nervoso degli animali consiste del cervello, dei differenti sistemi sensoriali, i quali collezionano informazioni dalle differenti parti del corpo, ed il sistema motorio, il quale controlla i movimenti.
 La parte principale del processing di informazioni avviene nel cervello e nel sistema nervoso centrale. I neuroni sono la componente fondamentale del sistema nervoso e processano informazioni principalmente interagendo tra di loro. 
+
+La descrizione delle reti neurali biologiche finora rende naturale modellare i neuroni come [[Threshold Logic Unit]]: se un neurone riceve uno stimolo eccitatorio abbastanza forte, il quale non viene compensato da un altrettanto forte input inibitorio, diventa attivo e manda un segnale agli altri neuroni. 
