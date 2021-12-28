@@ -1,4 +1,7 @@
-Un neurone è una cellula che colleziona e trasmette attività elettrica. I neuroni esistono in differenti forme e grandezze. E' possibile risalire ad un neurone "prototipo" dal quale ricondursi a tutti i tipi di neuroni.
+Un **neurone** è una cellula che colleziona e trasmette attività elettrica. I neuroni esistono in differenti forme e grandezze. E' possibile risalire ad un neurone "prototipo" dal quale ricondursi a tutti i tipi di neuroni.
+
+![[Biological neurons.png]]
+
 Il **corpo cellulare** di un neurone, il quale contiene il **nucleo**, è anche chiamato **soma**. Ha un diametro di 5 - 100 microm. Dal corpo cellulare si estendono svariati rami di scarsa lunghezza e fortemente ramificati, chiamati **dendriti**. Inoltre, il corpo ha una lunga estensione chiamata **assone**, il quale può essere lungo da pochi millimetri fino ad un metro. 
 L'assone e i dendriti diferiscono nella struttura e nelle proprietà della membrana **cellulare**. In particolare, l'assone è spesso coperto dalla **guaina mielinica**.
 Gli assoni sono il percorso fissato lungo il quale i neuroni comunicano tra di loro.

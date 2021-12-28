@@ -21,3 +21,11 @@ Come già menzionato, le Artificial Neural Network sono ispirate dalla struttura
 La parte principale del processing di informazioni avviene nel cervello e nel sistema nervoso centrale. I neuroni sono la componente fondamentale del sistema nervoso e processano informazioni principalmente interagendo tra di loro. 
 
 La descrizione delle reti neurali biologiche finora rende naturale modellare i neuroni come [[Threshold Logic Unit]]: se un neurone riceve uno stimolo eccitatorio abbastanza forte, il quale non viene compensato da un altrettanto forte input inibitorio, diventa attivo e manda un segnale agli altri neuroni. 
+
+Sfortunatamente, singole TLU sono fortemente limitate nella possibilità espressiva e potenza di calcolo.
+E' possibile intuire, dall'intepretazione geometrica, che le TLU possono rappresentare funzioni che sono **linearmente separabili**, cioè funzioni per le quali i punti con output 1 possono essere separati dai punti con output 0 tramite una funzione lineare ( che sia una retta, un piano o un iperpiano ).
+Considerando l'esempio di una semplice funzione, la coimplicazione ( cioè $x_{1} \leftrightarrow x_{2}$)
+
+![[The biimplication problem.png]]
+
+Le Threshold Logic Unit sono fortemente limitate solo considerando le singole TLU. Il potere espressivo aumenta considerevolmente se consideriamo un [[Network di Threshold Logic Unit]].

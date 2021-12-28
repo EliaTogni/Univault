@@ -1,4 +1,4 @@
-related to: [[Computational Intelligence]].
+Related to: [[Computational Intelligence]].
 
 I setting di problemi complessi in campi largamente differenti, quali tecnici, commerciali e finanziari, evocano una sempre maggiore necessità di applicazioni computer che mostrino un "comportamento intelligente".
 Da un più alto livello di astrazione, i requisiti generali per lo sviluppo di un sistema intelligente sono il simulare il pensiero ed il comportamento intelligente.
