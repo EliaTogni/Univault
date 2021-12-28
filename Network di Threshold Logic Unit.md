@@ -1,4 +1,4 @@
-Un **Network di Threshold Logic Unit** è la combinazione d numerose TLU in seriale ed in parallelo.
+Un **Network di Threshold Logic Unit** è la combinazione d numerose [[Threshold Logic Unit]] in seriale ed in parallelo.
 
 Si consideri il problema di rappresentazione della coimplicazione tramite TLU.
 Possiamo esprimere $x_{1} \leftrightarrow x_{2}$ tramite l'equivalenza logica

@@ -2,8 +2,14 @@ Le **Threshold Logic Unit** sono conodciute anche come **neuroni McCulloch - Pit
 
 Una Threshold Logic Unit è una semplice unità di processing per numeri reali con $n$ input $x_{1}$, ..., $x_{n}$ ed un output $y$. L'unità, nella sua interezza, possiede una soglia $\theta$. Ad ogni input $x_{i}$ è assegnato un peso $w_{i}$. 
 Una threshold logic unit calcola la funzione:
-$$ y = \Bigg \lbrace{ 1 se \sum_{i=1}^{n} w_{i}x_{i} \geq \theta
-0  altrimenti } $$
+
+$$
+\begin{numcases}{y =}
+  1, & se $\sum_{i=1}^{n} x_{i}w_{i} \geq \theta$ \\
+  0, & otherwise
+\end{numcases}
+$$
+
 Gli input sono spesso combinati in un vettore di input **x** = ( $x_{1}$, ..., $x_{n}$ ) e i pesi in un vettore di pesi **w** = ( $w_{1}$, ..., $w_{n}$ ).
 La condizione testata dalla TLU può, quindi, essere scritta come **wx** $\geq \theta$.  
 
