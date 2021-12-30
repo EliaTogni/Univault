@@ -40,11 +40,11 @@ L'obiettivo del training è determinare i valori adatti affinchè il valore dell
 
 Per illustrare questo processo si utilizzerà una TLU con un singolo input. I parametri di questa unità saranno tali da permettere la computazione dell'operazione di negazione. 
 
-![[placeholder1]]
+![[TLU for the negation.png]]
 
 Se l'input è 0, l'output calcolato varrà 1 e viceversa.
 
-![[placeholder2]]
+![[Error of computing the negation.png]]
 
 Il diagramma di sinistra mostra l'errore per l'input $x$ = 0, per il quale si desidera un output di 1. Poichè la TLU calcola il valore 1 se **xw** $\geq \theta$, l'errore vale 0 per le soglie negative e 1 per le soglie positive.
 Il diagramma centrale mostra l'errore per l'input $x$ = 1, per il quale si desidera un output di 0. Qui sia i pesi che la soglia influenzano il risultato. Se i pesi hanno un valore inferiore alla soglia, si avrà **xw** $< \theta$ e, perciò. l'output e, di conseguenza, l'errore sarà 0.
@@ -54,14 +54,14 @@ Dal diagramma di destra, mentre un umano potrebbe leggere facilmente i valori di
 Si rende quindi necessario rimodellare la funzione di errore, in modo tale da poter osservare direttamente dalla forma di quest'ultima in quale direzione occorre modificare i pesi e la soglia in modo da ridurre l'errore. 
 Quando la TLU produce l'output sbagliato, si considera di quanto è stata ecceduta la soglia ( per un output desiderato di 0 ) o quanto manca al suo raggiungimento ( per un output desiderato di 1 ). Per migliorare la scelta dei pesi e della soglia, ci si muove semplicemente nella direzione in cui la funzione di errore ha la maggiore pendenza in discesa.
 
-![[placeholder 3]]
+![[Error of computing the negation 2.png]]
 
-![[placeholder 4]]
+![[Directions of changes.png]]
 
 Le regole di adattamento dei cambi di direzione possono essere applicate in due modi differenti. 
 Si considerino gli input $x$ = 0 e $x$ = 1 alternati. Prima si adattano i pesi e la soglia in accordo con il diagramma di sinistra, poi in accordo con il diagramma centrale e si ripete fino all'azzerarsi dell'errore. Questo modo di allenare una rete neurale è chiamato **online learning** o **online training**.
 
-![[placeholder 5]]
+![[Training processes.png]]
 
 La seconda opzione consiste in non applicare i cambiamenti immediatamente dopo ogni esempio di training , ma aggregarli in gruppi. Solo al termine di una **training epoch**, i cambiamenti aggregati vengono applicati.
 Alla fine di queste epoch, l'errore riduce. Questo modo di allenare è chiamato **batch learning** o **batch training**.
@@ -76,15 +76,28 @@ $$ \theta^{(new)} = \theta^{(old)} + \Delta \theta  \quad\text{ con }\quad \Delt
 dove $\eta$ è un parametro chiamato **learning rate** o **tasso di apprendimento**. Esso determina la forza dei cambiamenti a soglia e pesi. Questo metodo è chiamato  **Delta Rule** o **procedura di Widrow - Hoff**.
 In questa definizione, si deve istinguere tra l'adattamento della soglia e dei pesi, perchè le direzioni di questi cambiamenti sono opposti l'uno con l'altro.
 
-Ora verrano mostrari alcuni esempi di training
+Ora verrano mostrari alcuni esempi di training, partendo dai valori $\theta = 3/2$, $w = 2$ e learning rate = 1.
 
-![[placeholder6]]
+![[Online training ex.png]]
 
-![[placeholder7]]
+![[Batch training ex.png]]
 
 Si può inferire che questa procedura non termina se la funzione che necessita di essere allenata non gode della [[Separabilità Lineare]].
 Sapendo a priori che non esiste una TLU singola in grado di calcolare la coimplicazione, l'errore non può svanire e quindi l'algoritmo non termina.
 Per quanto riguarda le funzioni linearmente separabili, tuttavia, cioè per funzioni che possono essere attualmente calcolate da un Threhold Logic Unit, è garantito che la procedura trovi la soluzione per il [[Teorema della Convergenza per la Delta Rule]].
 
-Tutti gli esempi considerati finora si riferiscono a funzioni logiche nelle quali lo stato $false$ era codificato come 0 e lo stato $true$ era codificato come 1. Comunque, questa codifica ha lo svantaggio che, nel caso di input $false$, il peso corrispondente non può essere modificato, perchè la formula per la modifica del peso contiene l'input come fattore. Per evitare questo problema, si utilizza il modello [[ADALINE]].
+Tutti gli esempi considerati finora si riferiscono a funzioni logiche nelle quali lo stato $false$ era codificato come 0 e lo stato $true$ era codificato come 1. Comunque, questa codifica ha lo svantaggio che, nel caso di input $false$, il peso corrispondente non può essere modificato, perchè la formula per la modifica del peso contiene l'input come fattore. Per evitare questo problema, si utilizza il [[Modello ADALINE]].
 Nonostante la procedura di Widrow - Hoff è ugualmente applicabile per la codifica $false$ = 0, questa situazione è spesso chiamata **procedura di correzione dell'errore**, per evitare confusione. 
+
+Si introduce un modello generale di reti neurali artificiali che cattura tutte le casistiche particolari.
+Il metodo con il quale sono state rappresentate le reti suggerisce di descrivere le reti neurali tramite un [[Grafo]].
+Per descrivere reti neurali, si necessita esclusivamente di grafi orientati, poichè le connessioni tra i neuroni sono sempre orientate.
+
+Una **rete neurale artificiale** è un grafo orientato $G = ( U, C )$ i cui vertici $u \in U$ sono chiamati **neuroni** o **unità** e i cui archi $c \in C$ sono chiamati **connessioni**. L'insieme $U$ dei vertci è diviso nell'insieme $U_{in}$ di **neuroni input**, l'insieme $U_{out}$ di **neuroni output** e l'insieme $U_{hidden}$ di **neuroni nascosti**.
+
+$$U = U_{in} \cup U_{out} \cup U_{hidden}, \\
+U_{in} \neq \emptyset, \quad U_{out} \neq \emptyset, \quad U_{hidden} \cap ( U_{in} \cup U_{out} ) = \emptyset$$
+
+
+
+
