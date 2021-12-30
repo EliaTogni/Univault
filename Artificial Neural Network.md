@@ -37,3 +37,54 @@ Il lento adattarsi dei pesi e della soglia è anche detto **training** della Thr
 
 In base ai valori scelti di pesi e soglia, il valore di output della TLU può essere più o meno corretto. Possiamo quindi definire una **funzione di errore** $e(w_{1}, ..., w_{n}, \theta)$, la quale misura quando la funzione calcolata coincide con quella desiderata.
 L'obiettivo del training è determinare i valori adatti affinchè il valore della error function si azzeri. Ad ogni iterazione si cerca quindi di diminuire il valore di questa funzione.
+
+Per illustrare questo processo si utilizzerà una TLU con un singolo input. I parametri di questa unità saranno tali da permettere la computazione dell'operazione di negazione. 
+
+![[placeholder1]]
+
+Se l'input è 0, l'output calcolato varrà 1 e viceversa.
+
+![[placeholder2]]
+
+Il diagramma di sinistra mostra l'errore per l'input $x$ = 0, per il quale si desidera un output di 1. Poichè la TLU calcola il valore 1 se **xw** $\geq \theta$, l'errore vale 0 per le soglie negative e 1 per le soglie positive.
+Il diagramma centrale mostra l'errore per l'input $x$ = 1, per il quale si desidera un output di 0. Qui sia i pesi che la soglia influenzano il risultato. Se i pesi hanno un valore inferiore alla soglia, si avrà **xw** $< \theta$ e, perciò. l'output e, di conseguenza, l'errore sarà 0.
+Il diagramma di destra invece mostra la somma di questi errori. E' possibile effettuare questa somma in quanto l'errore assume sempre un valore positivo. In caso di errore sia positivo che negativo, si sarebbe corso il rischio di cancellazione errone dell'errore.
+Dal diagramma di destra, mentre un umano potrebbe leggere facilmente i valori di soglia e pesi tali per cui l'errore si annulla, una macchina non potrebbe farlo con altrettanta facilità, poichè non in grado di mimare l'ispezione visiva.
+
+Si rende quindi necessario rimodellare la funzione di errore, in modo tale da poter osservare direttamente dalla forma di quest'ultima in quale direzione occorre modificare i pesi e la soglia in modo da ridurre l'errore. 
+Quando la TLU produce l'output sbagliato, si considera di quanto è stata ecceduta la soglia ( per un output desiderato di 0 ) o quanto manca al suo raggiungimento ( per un output desiderato di 1 ). Per migliorare la scelta dei pesi e della soglia, ci si muove semplicemente nella direzione in cui la funzione di errore ha la maggiore pendenza in discesa.
+
+![[placeholder 3]]
+
+![[placeholder 4]]
+
+Le regole di adattamento dei cambi di direzione possono essere applicate in due modi differenti. 
+Si considerino gli input $x$ = 0 e $x$ = 1 alternati. Prima si adattano i pesi e la soglia in accordo con il diagramma di sinistra, poi in accordo con il diagramma centrale e si ripete fino all'azzerarsi dell'errore. Questo modo di allenare una rete neurale è chiamato **online learning** o **online training**.
+
+![[placeholder 5]]
+
+La seconda opzione consiste in non applicare i cambiamenti immediatamente dopo ogni esempio di training , ma aggregarli in gruppi. Solo al termine di una **training epoch**, i cambiamenti aggregati vengono applicati.
+Alla fine di queste epoch, l'errore riduce. Questo modo di allenare è chiamato **batch learning** o **batch training**.
+
+E' possibile definire il seguente metodo generale per il trainig di Threshold Logic Unit.
+Sia **x** = $( x_{1}, ..., x_{n} )$ un vettore di input di una Threshold Logic Unit, $o$ l'output desiderato per questo vettore di input e $y$ l'output attuale della TLU.
+se $y \neq o$, allora, al fine di ridurre l'errore, la soglia $\theta$ e il vettore di pesi **w** = $( w_{1}, ..., w_{n} )$ sono modificati come segue:
+
+$$ \theta^{(new)} = \theta^{(old)} + \Delta \theta  \quad\text{ con }\quad \Delta \theta = -\eta (o - y),\\
+\forall i \in {1, ..., n} \text{ : } w_{i}^{new} =w_{i}^{old} + \Delta w_{i} \quad\text{ con }\quad \Delta w_{i} = -\eta (o - y)x_{i}  $$
+
+dove $\eta$ è un parametro chiamato **learning rate** o **tasso di apprendimento**. Esso determina la forza dei cambiamenti a soglia e pesi. Questo metodo è chiamato  **Delta Rule** o **procedura di Widrow - Hoff**.
+In questa definizione, si deve istinguere tra l'adattamento della soglia e dei pesi, perchè le direzioni di questi cambiamenti sono opposti l'uno con l'altro.
+
+Ora verrano mostrari alcuni esempi di training
+
+![[placeholder6]]
+
+![[placeholder7]]
+
+Si può inferire che questa procedura non termina se la funzione che necessita di essere allenata non gode della [[Separabilità Lineare]].
+Sapendo a priori che non esiste una TLU singola in grado di calcolare la coimplicazione, l'errore non può svanire e quindi l'algoritmo non termina.
+Per quanto riguarda le funzioni linearmente separabili, tuttavia, cioè per funzioni che possono essere attualmente calcolate da un Threhold Logic Unit, è garantito che la procedura trovi la soluzione per il [[Teorema della Convergenza per la Delta Rule]].
+
+Tutti gli esempi considerati finora si riferiscono a funzioni logiche nelle quali lo stato $false$ era codificato come 0 e lo stato $true$ era codificato come 1. Comunque, questa codifica ha lo svantaggio che, nel caso di input $false$, il peso corrispondente non può essere modificato, perchè la formula per la modifica del peso contiene l'input come fattore. Per evitare questo problema, si utilizza il modello [[ADALINE]].
+Nonostante la procedura di Widrow - Hoff è ugualmente applicabile per la codifica $false$ = 0, questa situazione è spesso chiamata **procedura di correzione dell'errore**, per evitare confusione. 
