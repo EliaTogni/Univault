@@ -1,4 +1,4 @@
-Le **Artificial Neural Network** sono sistemi di information processing , i quali principi di struttura e operazioni sono ispirati dal sistema nervoso e dal cervello di animali e umani.
+Le **Artificial Neural Network** sono sistemi di information processing , i cui principi di struttura e azione sono ispirati dal sistema nervoso e dal cervello di animali e umani.
 Essi consistono di un largo numero di unità relativamente semplici, i [[Neuroni]], i quali lavorano in parallelo. Questi neuroni comunicano mandando informazioni tra di loro sotto forma di segnali di attivazione, lungo connessioni orientate.
 Un sinonimo comunemente usato per le reti neurali è il termine **modello connessionista**. Perciò, l'espressione "processing distribuito in parallelo" può spesso essere trovato in relazione alle reti neurali artificiali.
 
@@ -89,6 +89,8 @@ Per quanto riguarda le funzioni linearmente separabili, tuttavia, cioè per funz
 Tutti gli esempi considerati finora si riferiscono a funzioni logiche nelle quali lo stato $false$ era codificato come 0 e lo stato $true$ era codificato come 1. Comunque, questa codifica ha lo svantaggio che, nel caso di input $false$, il peso corrispondente non può essere modificato, perchè la formula per la modifica del peso contiene l'input come fattore. Per evitare questo problema, si utilizza il [[Modello ADALINE]].
 Nonostante la procedura di Widrow - Hoff è ugualmente applicabile per la codifica $false$ = 0, questa situazione è spesso chiamata **procedura di correzione dell'errore**, per evitare confusione. 
 
+### Modello generale di reti neurali ###
+
 Si introduce un modello generale di reti neurali artificiali che cattura tutte le casistiche particolari.
 Il metodo con il quale sono state rappresentate le reti suggerisce di descrivere le reti neurali tramite un [[Grafo]].
 Per descrivere reti neurali, si necessita esclusivamente di grafi orientati, poichè le connessioni tra i neuroni sono sempre orientate.
@@ -97,6 +99,42 @@ Una **rete neurale artificiale** è un grafo orientato $G = ( U, C )$ i cui vert
 
 $$U = U_{in} \cup U_{out} \cup U_{hidden}, \\
 U_{in} \neq \emptyset, \quad U_{out} \neq \emptyset, \quad U_{hidden} \cap ( U_{in} \cup U_{out} ) = \emptyset$$
+
+Ad ogni connessione $( v, u ) \in C$ è assegnato un peso $w_{uw}$ e ad ogni neurone $u \in U$ sono assegnati tre quantità: 
+- il **network input** $net_{u}$;
+- l'**attivazione** $act_{u}$;
+- l'**output** $out_{u}$.
+
+Inoltre, ad ogni neurone $u \in U_{in}$ è assegnata una quarta quantità, l'**external input** $ext_{U}$.
+Ogni neurone  $u \in U$ possiede tre funzioni:
+- la **network input function**;
+- la **activation function**;
+- la **output function**;
+
+con le quali vengono calcolate le quantità precedentemente citate.
+
+I neuroni sono divisi in **neuroni input**, **neuroni output** e **neuroni nascosti** ( o **hidden neurons**), al fine di distinguere quale neuroni ricevono input dall'ambiente ( neuroni input) e quali emettono output verso l'ambiente ( neuroni output). I neuroni rimanenti non hanno contatto con l'ambiente esterno e, perciò, vengono chiamati nascosti.
+Un neurone può essere sia input che output.
+
+In accordo con la **network structure**, si possono distinguere due tipi fondamentali di reti neurali:
+- se il grafo che descrive la network structure della rete neurale è aciclico, la rete viene chiamata **feed forward network**;
+- se il grafo contiene loops o cicli diretti, la rete viene chiamata **recurrent network**.
+Se il grafo è aciclico, esiste una sola direzione, chiamata **forward**, dai neuroni input verso i neuroni output. Tuttavia, se esistono loops o cicli orientati, gli output possono tornare verso i neuroni input. 
+
+### Operazioni delle reti neurali ###
+
+Per descrivere le operazioni di una rete neurale, è necessario specificare come un singolo neurone calcola i propri output a partire dagli input e come è organizzata la computazione da parte dei differenti neuroni., in particolare come gli input esterni vengono processati ed in quale ordine i neuroni vengono aggiornati.
+
+Ogni singolo neurone può essere considerato come un semplice processore.
+
+![[placeholder1]]
+
+La network input function $f_{net}^{(u)}$ calcola il network input $net_{u}$ dagli input $in_{uv_{1}}, ..., in_{uv_{n}}$, i quali corrispondono agli output $out_{v_{1}}, ..., out_{v_{n}}$ del neurone predecessore del neurone $u$, e dai pesi delle connessioni $w_{uv_{1}}, ..., w_{uv_{n}}$.
+
+
+
+
+
 
 
 
