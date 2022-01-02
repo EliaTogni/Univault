@@ -155,4 +155,23 @@ Per le recurrent network, l'output finale dipende dall'ordine nel quale i neuron
 ### Training di neural network ###
 
 Una delle proprietà più allettanti delle reti neurali è la possibilità di allenrale per certe task con l'aiuto di sample di dati.
-Nonostante la Delta Rule sia solamente applicabile per singole Threshold Logic Unit e 
+Nonostante la Delta Rule sia solamente applicabile per singole Threshold Logic Unit e non può essere trasferita direttamente a reti di TLU, illustra già il principio base sul quale consiste il training di reti neurali. L'allenamento consiste nell'adattare i pwesi delle connessioni e, possibilmente, altri parametri, ad esempio la soglia, in modo che un certo criterio sia ottimizzato.
+In base al tipo di training data e al criterio da ottimizzare, è possibile distinguere tra due **learning task** fondamentali:
+- [[Learning Task Fissata]];
+- [[Learning Task Libera]].
+
+Data una Learning Task Fissato, l'obiettivo è allenare una rete neurale in modo che produca, per tutti i training pattern $l \in L_{fixed}$, gli output contenuti nel vettore di output $\textbf{o}^{(l)}$ se gli input esterni del corrispondente vettore di input $\textbf{i}^{(l)}$ sono dati in pasto al network.
+Nella pratica, questo ottimo può essere ottenuto raramente e, perciò, spesso si rende necessario accontentarsi di una soluzione parziale o approssimata.
+Al fine di determinare con quale bontà una rete neurale risolve una learning task fissata, viene utilizzata una funzione di errore, la quale misura quanto l'output ottenuto coincide con l'output desiderato nel training pattern.
+Questa funzione di errore è comunemente definita come la somma delle deviazioni dell'output desiderato e ottenuto al quadrato, per tutti i traning pattern e tutti i neuroni di output.
+L'errore di una rete neurale in riferimento a una learning task fissata $L_{fixed}$ è definito come:
+
+$$e = \sum_{l \in L_{fixed}} e^{(l)} = \sum_{v \in U_{out}} e_{v} = \sum_{l \in L_{fixed}} \sum_{v \in U_{out}} e_{v}^{(l)}$$
+dove
+
+$$
+e_{v}^{(l)} = \big( o_{v}^{(l)} - out_{v}^{(l)} \big)^2
+$$
+
+è l'errore individuale per un training pattern $l$ e per un neurone output $v$.
+
