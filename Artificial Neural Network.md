@@ -117,8 +117,9 @@ I neuroni sono divisi in **neuroni input**, **neuroni output** e **neuroni nasco
 Un neurone può essere sia input che output.
 
 In accordo con la **network structure**, si possono distinguere due tipi fondamentali di reti neurali:
-- se il grafo che descrive la network structure della rete neurale è aciclico, la rete viene chiamata **feed forward network**;
-- se il grafo contiene loops o cicli diretti, la rete viene chiamata **recurrent network**.
+- [[Feed Forward Network]];
+- [[Recurrent Network]].
+
 Se il grafo è aciclico, esiste una sola direzione, chiamata **forward**, dai neuroni input verso i neuroni output. Tuttavia, se esistono loops o cicli orientati, gli output possono tornare verso i neuroni input. 
 
 ### Operazioni delle reti neurali ###
@@ -127,15 +128,31 @@ Per descrivere le operazioni di una rete neurale, è necessario specificare come
 
 Ogni singolo neurone può essere considerato come un semplice processore.
 
-![[placeholder1]]
+![[Structure of a generalized neuron.png]]
 
 La network input function $f_{net}^{(u)}$ calcola il network input $net_{u}$ dagli input $in_{uv_{1}}, ..., in_{uv_{n}}$, i quali corrispondono agli output $out_{v_{1}}, ..., out_{v_{n}}$ del neurone predecessore del neurone $u$, e dai pesi delle connessioni $w_{uv_{1}}, ..., w_{uv_{n}}$.
+Questa computazione può essere influenzata da dei parametri addizionali, $\sigma_{1}, ..., \sigma_{n}$. A partire dal network input, da un certo numero di parametri $\theta_{1}, ..., \theta_{k}$ e, potenziamente, dal feedback della corrente attivazione del neurone $u$, la funzione di attivazione $f_{act}^{(u)}$ calcola la nuova attivazione $act_{u}$ del neurone $u$. Infine, la funzione di output $f_{out}^{(u)}$ calcola l'output del neurone $u$ a partire dalla sua attivazione. L'input esterno $ext_{u}$ definisce l'iniziare attivazione del neurone $u$, se si tratta di un neurone input.
 
+il numero di argomenti addizionali della network input function $k_{1}(u)$ e il numero di argomenti dell'activation function $k_{2}(u)$ dipendono dal tipo di queste funzioni e dalla struttura del neurone.
+Tipicamente, la network input function ha solo $2|pred(u)|$ argomenti ( cioè gli output dei neuroni predecessori e i corrispondenti pesi delle connessioni), poichè non viene aggiunto nessun parametro.
+La funzione di attivazione, solitamente, necessita di due argomenti: il network input e un parametro, il quale può essere, per esempio, un valore soglia.
+La funzione output, dall'altro lato, prende solamente l'attivazione come suo argomento e, di solito, ha lo scopo di scalare l'output in un rage di output desiderato, comunemente tramite linear mapping.
 
+E' possibile dividere le computazioni di una rete neurale i due fasi:
+- la **input phase** ( o **fase di input**), nella quale gli input esterni sono dati in pasto alla rete;
+- la **work phase** ( o **fase di lavoro**), nella quale l'output della rete neurale viene calcolato.
 
+La fase di input ha lo scopo di inizializzare la rete. In questa fase, le ativazioni dei neuroni input sono impostate al valore degli input esterni corrispondenti. Le attivazioni dei neuroni rimanenti sono inizializzate arbitrariamente, tipicamente settandole a 0. inoltre, la funzione di output è applicata alle attivazioni inizializzate, così che tutti i neuroni producano un output iniziale. 
+Nella work phase, gli input esterni vengono scollegati e le attivazioni e gli output dei neuroni vengono ricalcolati ( potenzialmente molteplici volte). Per ottenere ciò, la network input function, la activation function e la output function sono applicate come descritto sopra. Se un neurone non riceve alcun network input, perchè non ha alcun predecessore, si definisce che mantiene semplicemente la sua attivazione ( e perciò anche il suo output). 
+Questo è importante solo per i neuroni input in un feed forward network. 
 
+Le ricomputazioni terminano nel caso in cui o il network raggiunge uno stato sabile ( cioè ulteriori ricomputazioni non modificano ulteriormene l'output dei neuroni ) o se è stato eseguito un numero predefinito di ricomputazioni.
+L'ordine temporale delle ricomputazioni, generalmente, non è fissato.
+Per esempio, tutti i neuroni di un network possono ricomputare il proprio output allo stesso tempo ( **update sincrono** ). E' possibile, inoltre, definire un ordine di neuroni nel quale loro computano il loro nuovo output uno dopo l'altro ( **update asincrono** ). In questo caso i nuovi output degli altri neuroni possono essere già stati utilizzati come input di computazioni successive. 
+Per quanto riguarda le reti feed forward, le computazioni solitamente seguono l'[[Ordinamento Topologico]].
+Per le recurrent network, l'output finale dipende dall'ordine nel quale i neuroni ricomputano l'output e da quante ricomputazioni sono state eseguite. 
 
+### Training di neural network ###
 
-
-
-
+Una delle proprietà più allettanti delle reti neurali è la possibilità di allenrale per certe task con l'aiuto di sample di dati.
+Nonostante la Delta Rule sia solamente applicabile per singole Threshold Logic Unit e 
