@@ -1,23 +1,23 @@
 Le **Artificial Neural Network** sono sistemi di information processing , i cui principi di struttura e azione sono ispirati dal sistema nervoso e dal cervello di animali e umani.
 Essi consistono di un largo numero di unità relativamente semplici, i [[Neuroni]], i quali lavorano in parallelo. Questi neuroni comunicano mandando informazioni tra di loro sotto forma di segnali di attivazione, lungo connessioni orientate.
-Un sinonimo comunemente usato per le reti neurali è il termine **modello connessionista**. Perciò, l'espressione "processing distribuito in parallelo" può spesso essere trovato in relazione alle reti neurali artificiali.
+Un sinonimo comunemente usato per le reti neurali è il termine **modello connessionista**. Perciò, l'espressione "processing distribuito in parallelo" può spesso essere trovata in relazione alle reti neurali artificiali.
 
 Le reti neurali artificiali sono studiate per vari motivi:
 - in ( Neuro ) Biologia e ( Neuro ) Fisiologia, ma anche in Psicologia, l'interesse principale è la similarità con il sistema nervoso biologico;
 - In Computer Science ed Ingegneria, l'interesse è sulla mimica di certe capacità cognitive umane ( in particolar modo l'abilità dell'apprendimento ) usando elementi funzionali del sistema nervoso e del cervello; 
 - In Fisica, certi modelli matematici analoghi alle reti neurali artificiali sono utilizzati per descrivere certi fenomeni.
 
-La ragione per la quale le reti neurali vengono studiate in Computer Science si basa sull'ipotesi che le macchine possano comportarsi in maniera intelligente. Questa ipotesi sostiene che il requisito fondamentale per ottenere un comportamento intelligente è l'abilità di manipolare simboli e strutture di simboli rappresentate da strutture fisiche. Qui simbolo significa un token che si riferisce ad un oggetto o ad una situazione. 
+La ragione per la quale le reti neurali vengono studiate in Computer Science si basa sull'ipotesi che le macchine possano comportarsi in maniera intelligente. Questa ipotesi sostiene che il requisito fondamentale per ottenere un comportamento intelligente è l'abilità di manipolare simboli e strutture di simboli rappresentate da strutture fisiche, dove con simbolo si intende un token il quale si riferisce ad un oggetto o ad una situazione. 
 
 **Physical Symbol System Hypotesis**: Un simbolo fisico ha i mezzi necessari e sufficienti per azioni intelligenti.
 
-La classica [[Intelligenza Artificiale]] si concentra su forme simboliche per rappresentare la conoscenza e, in particolare, su logica dei predicati e delle proposizioni. Al contrario, le Artificial Neural Network non sono sistemi di simboli fisici ma, piuttosto, segnali più elementari, i quali, presi singolarmente, raramente hanno un significato chiaro. Di conseguenza, le reti neurali sono spesso chiamate **sotto - simboliche**.
+La classica [[Intelligenza Artificiale]] si concentra su forme simboliche per rappresentare la conoscenza e, in particolare, su logica dei predicati e delle proposizioni. Al contrario, le Artificial Neural Network non sono sistemi di simboli fisici ma, piuttosto, segnali più elementari, i quali, presi singolarmente, raramente hanno un significato chiaro. Di conseguenza, le reti neurali sono spesso definite come **sotto - simboliche**.
 
 Non ci sono dubbi sui risultati ottenuti dalla classica Intelligenza Artificiale. Ciò nonostante, quando diventa necessario mimare la percezione ( sentire, udire, ecc. ), i computer performano scarsamente in confronto agli umani, almeno nei casi in cui si fa affidamento sulla rappresentazione simbolica: in questo caso i computer sono troppo lenti, poco flessibili e troppo poco tolleranti a rumore ed errori. Il problema è che, al fine di riconoscere pattern, la rappresentazione simbolica non è adatta. 
 Piuttosto, le misurazioni necessitano di essere strutturate ed elencate prima di poter applicare in maniera efficace metodi simbolici. 
 
-Come già menzionato, le Artificial Neural Network sono ispirate dalla struttura e dai principi secondo cui operano il sistema nervoso ed, in particolare, il cervello di animali ed umani. Il sistema nervoso degli animali consiste del cervello, dei differenti sistemi sensoriali, i quali collezionano informazioni dalle differenti parti del corpo, ed il sistema motorio, il quale controlla i movimenti.
-La parte principale del processing di informazioni avviene nel cervello e nel sistema nervoso centrale. I neuroni sono la componente fondamentale del sistema nervoso e processano informazioni principalmente interagendo tra di loro. 
+Come già menzionato, le Artificial Neural Network sono ispirate alla struttura e ai principi secondo cui operano il sistema nervoso ed, in particolare, il cervello di animali ed umani. Il sistema nervoso degli animali consiste del cervello, dei differenti sistemi sensoriali, i quali collezionano informazioni dalle differenti parti del corpo, ed il sistema motorio, il quale controlla i movimenti.
+La parte principale del processing di informazioni avviene nel cervello e nel sistema nervoso centrale. I [[Neuroni]] sono la componente fondamentale del sistema nervoso e processano informazioni principalmente interagendo tra di loro. 
 
 La descrizione delle reti neurali biologiche finora rende naturale modellare i neuroni come [[Threshold Logic Unit]]: se un neurone riceve uno stimolo eccitatorio abbastanza forte, il quale non viene compensato da un altrettanto forte input inibitorio, diventa attivo e manda un segnale agli altri neuroni. 
 
@@ -63,18 +63,19 @@ Si considerino gli input $x$ = 0 e $x$ = 1 alternati. Prima si adattano i pesi e
 
 ![[Training processes.png]]
 
-La seconda opzione consiste in non applicare i cambiamenti immediatamente dopo ogni esempio di training , ma aggregarli in gruppi. Solo al termine di una **training epoch**, i cambiamenti aggregati vengono applicati.
+La seconda opzione consiste in non applicare i cambiamenti immediatamente dopo ogni esempio di training, ma aggregarli in gruppi. Solo al termine di una **training epoch**, i cambiamenti aggregati vengono applicati.
 Alla fine di queste epoch, l'errore riduce. Questo modo di allenare è chiamato **batch learning** o **batch training**.
 
 E' possibile definire il seguente metodo generale per il trainig di Threshold Logic Unit.
 Sia **x** = $( x_{1}, ..., x_{n} )$ un vettore di input di una Threshold Logic Unit, $o$ l'output desiderato per questo vettore di input e $y$ l'output attuale della TLU.
 se $y \neq o$, allora, al fine di ridurre l'errore, la soglia $\theta$ e il vettore di pesi **w** = $( w_{1}, ..., w_{n} )$ sono modificati come segue:
 
-$$ \theta^{(new)} = \theta^{(old)} + \Delta \theta  \quad\text{ con }\quad \Delta \theta = -\eta (o - y),\\
+$$ \theta^{(new)} = \theta^{(old)} + \Delta \theta  \quad\text{ con }\quad \Delta \theta = -\eta (o - y),$$
+$$
 \forall i \in {1, ..., n} \text{ : } w_{i}^{new} =w_{i}^{old} + \Delta w_{i} \quad\text{ con }\quad \Delta w_{i} = -\eta (o - y)x_{i}  $$
 
 dove $\eta$ è un parametro chiamato **learning rate** o **tasso di apprendimento**. Esso determina la forza dei cambiamenti a soglia e pesi. Questo metodo è chiamato  **Delta Rule** o **procedura di Widrow - Hoff**.
-In questa definizione, si deve istinguere tra l'adattamento della soglia e dei pesi, perchè le direzioni di questi cambiamenti sono opposti l'uno con l'altro.
+In questa definizione, si deve distinguere tra l'adattamento della soglia e dei pesi, perchè le direzioni di questi cambiamenti sono opposti l'uno con l'altro.
 
 Ora verrano mostrari alcuni esempi di training, partendo dai valori $\theta = 3/2$, $w = 2$ e learning rate = 1.
 
@@ -95,12 +96,13 @@ Si introduce un modello generale di reti neurali artificiali che cattura tutte l
 Il metodo con il quale sono state rappresentate le reti suggerisce di descrivere le reti neurali tramite un [[Grafo]].
 Per descrivere reti neurali, si necessita esclusivamente di grafi orientati, poichè le connessioni tra i neuroni sono sempre orientate.
 
-Una **rete neurale artificiale** è un grafo orientato $G = ( U, C )$ i cui vertici $u \in U$ sono chiamati **neuroni** o **unità** e i cui archi $c \in C$ sono chiamati **connessioni**. L'insieme $U$ dei vertci è diviso nell'insieme $U_{in}$ di **neuroni input**, l'insieme $U_{out}$ di **neuroni output** e l'insieme $U_{hidden}$ di **neuroni nascosti**.
+Una **rete neurale artificiale** è un grafo orientato $G = ( U, C )$ i cui vertici $u \in U$ sono chiamati **neuroni** o **unità** e i cui archi $c \in C$ sono chiamati **connessioni**. L'insieme $U$ dei vertici è diviso nell'insieme $U_{in}$ di **neuroni input**, l'insieme $U_{out}$ di **neuroni output** e l'insieme $U_{hidden}$ di **neuroni nascosti**.
 
-$$U = U_{in} \cup U_{out} \cup U_{hidden}, \\
+$$U = U_{in} \cup U_{out} \cup U_{hidden}, $$
+$$
 U_{in} \neq \emptyset, \quad U_{out} \neq \emptyset, \quad U_{hidden} \cap ( U_{in} \cup U_{out} ) = \emptyset$$
 
-Ad ogni connessione $( v, u ) \in C$ è assegnato un peso $w_{uw}$ e ad ogni neurone $u \in U$ sono assegnati tre quantità: 
+Ad ogni connessione $( v, u ) \in C$ è assegnato un peso $w_{uv}$ e ad ogni neurone $u \in U$ sono assegnati tre quantità: 
 - il **network input** $net_{u}$;
 - l'**attivazione** $act_{u}$;
 - l'**output** $out_{u}$.
@@ -113,7 +115,7 @@ Ogni neurone  $u \in U$ possiede tre funzioni:
 
 con le quali vengono calcolate le quantità precedentemente citate.
 
-I neuroni sono divisi in **neuroni input**, **neuroni output** e **neuroni nascosti** ( o **hidden neurons**), al fine di distinguere quale neuroni ricevono input dall'ambiente ( neuroni input) e quali emettono output verso l'ambiente ( neuroni output). I neuroni rimanenti non hanno contatto con l'ambiente esterno e, perciò, vengono chiamati nascosti.
+I neuroni sono divisi in **neuroni input**, **neuroni output** e **neuroni nascosti** ( o **hidden neurons** ), al fine di distinguere quale neuroni ricevono input dall'ambiente ( neuroni input ) e quali emettono output verso l'ambiente ( neuroni output ). I neuroni rimanenti non hanno contatto con l'ambiente esterno e, perciò, vengono chiamati nascosti.
 Un neurone può essere sia input che output.
 
 In accordo con la **network structure**, si possono distinguere due tipi fondamentali di reti neurali:
@@ -124,25 +126,25 @@ Se il grafo è aciclico, esiste una sola direzione, chiamata **forward**, dai ne
 
 ### Operazioni delle reti neurali ###
 
-Per descrivere le operazioni di una rete neurale, è necessario specificare come un singolo neurone calcola i propri output a partire dagli input e come è organizzata la computazione da parte dei differenti neuroni., in particolare come gli input esterni vengono processati ed in quale ordine i neuroni vengono aggiornati.
+Per descrivere le operazioni di una rete neurale, è necessario specificare come un singolo neurone calcola i propri output a partire dagli input e come è organizzata la computazione da parte dei differenti neuroni, in particolare come gli input esterni vengono processati ed in quale ordine i neuroni vengono aggiornati.
 
 Ogni singolo neurone può essere considerato come un semplice processore.
 
 ![[Structure of a generalized neuron.png]]
 
 La network input function $f_{net}^{(u)}$ calcola il network input $net_{u}$ dagli input $in_{uv_{1}}, ..., in_{uv_{n}}$, i quali corrispondono agli output $out_{v_{1}}, ..., out_{v_{n}}$ del neurone predecessore del neurone $u$, e dai pesi delle connessioni $w_{uv_{1}}, ..., w_{uv_{n}}$.
-Questa computazione può essere influenzata da dei parametri addizionali, $\sigma_{1}, ..., \sigma_{n}$. A partire dal network input, da un certo numero di parametri $\theta_{1}, ..., \theta_{k}$ e, potenziamente, dal feedback della corrente attivazione del neurone $u$, la funzione di attivazione $f_{act}^{(u)}$ calcola la nuova attivazione $act_{u}$ del neurone $u$. Infine, la funzione di output $f_{out}^{(u)}$ calcola l'output del neurone $u$ a partire dalla sua attivazione. L'input esterno $ext_{u}$ definisce l'iniziare attivazione del neurone $u$, se si tratta di un neurone input.
+Questa computazione può essere influenzata da dei parametri addizionali, $\sigma_{1}, ..., \sigma_{n}$. A partire dal network input, da un certo numero di parametri $\theta_{1}, ..., \theta_{k}$ e, potenziamente, dal feedback della corrente attivazione del neurone $u$, la funzione di attivazione $f_{act}^{(u)}$ calcola la nuova attivazione $act_{u}$ del neurone $u$. Infine, la funzione di output $f_{out}^{(u)}$ calcola l'output del neurone $u$ a partire dalla sua attivazione. L'input esterno $ext_{u}$ definisce l'iniziale attivazione del neurone $u$, se si tratta di un neurone input.
 
 il numero di argomenti addizionali della network input function $k_{1}(u)$ e il numero di argomenti dell'activation function $k_{2}(u)$ dipendono dal tipo di queste funzioni e dalla struttura del neurone.
 Tipicamente, la network input function ha solo $2|pred(u)|$ argomenti ( cioè gli output dei neuroni predecessori e i corrispondenti pesi delle connessioni), poichè non viene aggiunto nessun parametro.
 La funzione di attivazione, solitamente, necessita di due argomenti: il network input e un parametro, il quale può essere, per esempio, un valore soglia.
-La funzione output, dall'altro lato, prende solamente l'attivazione come suo argomento e, di solito, ha lo scopo di scalare l'output in un rage di output desiderato, comunemente tramite linear mapping.
+La funzione output, dall'altro lato, prende solamente l'attivazione come suo argomento e, di solito, ha lo scopo di scalare l'output in un range di output desiderati, comunemente tramite linear mapping.
 
 E' possibile dividere le computazioni di una rete neurale i due fasi:
-- la **input phase** ( o **fase di input**), nella quale gli input esterni sono dati in pasto alla rete;
-- la **work phase** ( o **fase di lavoro**), nella quale l'output della rete neurale viene calcolato.
+- la **input phase** ( o **fase di input** ), nella quale gli input esterni sono dati in pasto alla rete;
+- la **work phase** ( o **fase di lavoro** ), nella quale l'output della rete neurale viene calcolato.
 
-La fase di input ha lo scopo di inizializzare la rete. In questa fase, le ativazioni dei neuroni input sono impostate al valore degli input esterni corrispondenti. Le attivazioni dei neuroni rimanenti sono inizializzate arbitrariamente, tipicamente settandole a 0. inoltre, la funzione di output è applicata alle attivazioni inizializzate, così che tutti i neuroni producano un output iniziale. 
+La fase di input ha lo scopo di inizializzare la rete. In questa fase, le attivazioni dei neuroni input sono impostate al valore degli input esterni corrispondenti. Le attivazioni dei neuroni rimanenti sono inizializzate arbitrariamente, tipicamente settandole a 0. Inoltre, la funzione di output è applicata alle attivazioni inizializzate, così che tutti i neuroni producano un output iniziale. 
 Nella work phase, gli input esterni vengono scollegati e le attivazioni e gli output dei neuroni vengono ricalcolati ( potenzialmente molteplici volte). Per ottenere ciò, la network input function, la activation function e la output function sono applicate come descritto sopra. Se un neurone non riceve alcun network input, perchè non ha alcun predecessore, si definisce che mantiene semplicemente la sua attivazione ( e perciò anche il suo output). 
 Questo è importante solo per i neuroni input in un feed forward network. 
 
@@ -160,10 +162,12 @@ In base al tipo di training data e al criterio da ottimizzare, è possibile dist
 - [[Learning Task Fissata]];
 - [[Learning Task Libera]].
 
-Data una Learning Task Fissato, l'obiettivo è allenare una rete neurale in modo che produca, per tutti i training pattern $l \in L_{fixed}$, gli output contenuti nel vettore di output $\textbf{o}^{(l)}$ se gli input esterni del corrispondente vettore di input $\textbf{i}^{(l)}$ sono dati in pasto al network.
+### Learning Task Fissata ###
+
+Data una Learning Task Fissata, l'obiettivo è allenare una rete neurale in modo che produca, per tutti i training pattern $l \in L_{fixed}$, gli output contenuti nel vettore di output $\textbf{o}^{(l)}$ se gli input esterni del corrispondente vettore di input $\textbf{i}^{(l)}$ sono dati in pasto al network.
 Nella pratica, questo ottimo può essere ottenuto raramente e, perciò, spesso si rende necessario accontentarsi di una soluzione parziale o approssimata.
 Al fine di determinare con quale bontà una rete neurale risolve una learning task fissata, viene utilizzata una funzione di errore, la quale misura quanto l'output ottenuto coincide con l'output desiderato nel training pattern.
-Questa funzione di errore è comunemente definita come la somma delle deviazioni dell'output desiderato e ottenuto al quadrato, per tutti i traning pattern e tutti i neuroni di output.
+Questa funzione di errore è comunemente definita come la somma delle deviazioni dell'output desiderato e dell'output  ottenuto al quadrato, per tutti i traning pattern e tutti i neuroni di output.
 L'errore di una rete neurale in riferimento a una learning task fissata $L_{fixed}$ è definito come:
 
 $$e = \sum_{l \in L_{fixed}} e^{(l)} = \sum_{v \in U_{out}} e_{v} = \sum_{l \in L_{fixed}} \sum_{v \in U_{out}} e_{v}^{(l)}$$
@@ -174,4 +178,36 @@ e_{v}^{(l)} = \big( o_{v}^{(l)} - out_{v}^{(l)} \big)^2
 $$
 
 è l'errore individuale per un training pattern $l$ e per un neurone output $v$.
+Il quadrato della deviazione dell'output desiderato e dell'output ottenuto è stato scelto per varie ragioni. In primo piano, è chiaro che non è possiile semplicemente sommare le deviazioni direttamente, poichè le deviazioni positive e negative potrebbero cancellarsi a vicenda, producendo quindi un'impressione sbagliata dell'attuale bontà del network.
+Tuttavia, il quadrato della deviazione dell'output desiderato e dell'output ottenuto ha almeno due vantaggi rispetto al valore assoluto:
+- il quadrato è continuamente differenziabile ovunque, mentre la derivata del valore assoluto non esiste / è discontinua in 0. E' desiderabile che la funzione di errore sia continuamente differenziabile, perchè questo semplifica la derivazione delle regole di update per i pesi.
+- Grandi deviazioni dall'output desiderato sono pesate in maniera più severa, così che ci sia una tendenza la quale permetta di evitare durante il training grandi deviazioni individuali dal valore desiderate.
 
+### Learning Task Libera ###
+
+Mentre il training pattern di una learning task fissata contiene un output desiderato, la quale permette di computare un errore, le learning task libere necessitano di un criterio differente per intuire quanto bene una rete neurale risolve la task. 
+L'obiettivo del training può essere, per esempio, raggruppare i vettori di input in [[Cluster]] di vettori simili così che per tutti i vettori in un cluster venga prodotto lo stesso output.
+
+Data una learning task libera, l'aspetto più importante al fine di allenare una rete neurale è come viene misurata la similarità tra i traning pattern. Questa similarità può essere definita, per esempio, con l'aiuto di una funzione di distanza. 
+
+E' consigliabile normalizzare l'input di una rete neruale, al fine di evitare certi problemi numerici, i quali possono essere risultati di uno scaling non uguale delle differenti variabili di input. Più comunemente, ogni variabile viene scalata in mdoo tale da avere la media aritmetica pari a 0 e la varianza pari a 1. Per ottenere questo, si computa a partire dal vettore di input dei trainign pattern $l$ della learning task $L$ per ogni neurone input $u_{k}$
+
+$$
+\mu_{k} = \frac{1}{|L|} \sum_{l \in L} ext_{u_{k}}^{(l)} \quad \text{ and }\quad \sigma_{k} = \sqrt{\frac{1}{|L|} \sum_{l \in L} (ext_{u_{k}}^{(l)}-\mu_k)^2} \quad ,
+$$
+
+cioè la media aritmetica e la deviazione standard degli input esterni.
+Così, gli input esterni sono strasformati in questo modo:
+
+$$
+ext_{u_{k}}^{(l)(new)} = \frac{ext_{u_{k}}^{(l)(old)} -\mu_{k}}{\sigma_{k}}
+$$
+
+Questa normalizzazione può essere portata a termine come pre-procssing step o dalla funzione di output dei neuroni input.
+
+Si è assunto finora che gli input e gli outpu di una rete neurale fossero numeri reali. Tuttavia, in pratica ci si trova spesso di fronte ad attributi nominali, come ad esempio colori, ...
+Per poterli processare, è necessario trasformarli in numeri e, nonostante possa apparire semplice il semplicemente numerare i valori degli attributi, questa conversione può portare ad effetti indesiderati, se i numeri non riflettono il naturale ordine dei valori.
+
+Una migliore opzione è l'**1-in-$n$ encoding**, nel quale ogni attributo nominate è assegnato a tanti neuroni quanto il suo valore: ogni neurone corrisponde ad un valore dell'attributo. Con ll'input di un training pattern, il neurone che corrisponde al valore ottenuto dell'attributo nominale viene impostato a 1, mentre tuti gli altri neuroni che appartengono allo stesso attributo sono settati a 0.
+
+La forma più conosciuta e largamente usata delle reti neurali è il [[Multi - Layer Perceptron]].
