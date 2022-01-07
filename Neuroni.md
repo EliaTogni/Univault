@@ -2,7 +2,7 @@ Un **neurone** è una cellula che colleziona e trasmette attività elettrica. I 
 
 ![[Biological neurons.png]]
 
-Il **corpo cellulare** di un neurone, il quale contiene il **nucleo**, è anche chiamato **soma**. Ha un diametro di 5 - 100 microm. Dal corpo cellulare si estendono svariati rami di scarsa lunghezza e fortemente ramificati, chiamati **dendriti**. Inoltre, il corpo ha una lunga estensione chiamata **assone**, il quale può essere lungo da pochi millimetri fino ad un metro. 
+Il **corpo cellulare** di un neurone, il quale contiene il **nucleo**, è anche chiamato **soma**. Ha un diametro di 5-100 microm. Dal corpo cellulare si estendono svariati rami di scarsa lunghezza e fortemente ramificati, chiamati **dendriti**. Inoltre, il corpo ha una lunga estensione chiamata **assone**, il quale può essere lungo da pochi millimetri fino ad un metro. 
 L'assone e i dendriti diferiscono nella struttura e nelle proprietà della membrana **cellulare**. In particolare, l'assone è spesso coperto dalla **guaina mielinica**.
 Gli assoni sono il percorso fissato lungo il quale i neuroni comunicano tra di loro.
 L'assone di un neurone conduce ai denditi degli altri neuroni. Alla terminazione, l'assone è fortemente ramificato e possiede dei **bottoni sinaptici**. Ogni bottone terminale quasi tocca i dendriti o il corpo cellulare di un altro neurone . Questo spazio, in cui un assone ed i dendriti quasi si toccano a vicenda, è chiamato **sinapsi**.

@@ -1,36 +1,36 @@
-Le **Artificial Neural Network** sono sistemi di information processing , i cui principi di struttura e azione sono ispirati dal sistema nervoso e dal cervello di animali e umani.
-Essi consistono di un largo numero di unità relativamente semplici, i [[Neuroni]], i quali lavorano in parallelo. Questi neuroni comunicano mandando informazioni tra di loro sotto forma di segnali di attivazione, lungo connessioni orientate.
+Le **Artificial Neural Network** sono sistemi di information processing, i cui principi di struttura e azione sono ispirati dal sistema nervoso e dal cervello di animali e umani.
+Esse consistono di un largo numero di unità relativamente semplici, i [[Neuroni]], i quali lavorano in parallelo. Questi neuroni comunicano mandando informazioni tra di loro sotto forma di segnali di attivazione, lungo connessioni orientate.
 Un sinonimo comunemente usato per le reti neurali è il termine **modello connessionista**. Perciò, l'espressione "processing distribuito in parallelo" può spesso essere trovata in relazione alle reti neurali artificiali.
 
 Le reti neurali artificiali sono studiate per vari motivi:
-- in ( Neuro ) Biologia e ( Neuro ) Fisiologia, ma anche in Psicologia, l'interesse principale è la similarità con il sistema nervoso biologico;
-- In Computer Science ed Ingegneria, l'interesse è sulla mimica di certe capacità cognitive umane ( in particolar modo l'abilità dell'apprendimento ) usando elementi funzionali del sistema nervoso e del cervello; 
+- in (Neuro) Biologia e (Neuro) Fisiologia, ma anche in Psicologia, l'interesse principale è la similarità con il sistema nervoso biologico;
+- In Computer Science ed Ingegneria, l'interesse è sulla mimica di certe capacità cognitive umane (in particolar modo l'abilità dell'apprendimento) usando elementi funzionali del sistema nervoso e del cervello; 
 - In Fisica, certi modelli matematici analoghi alle reti neurali artificiali sono utilizzati per descrivere certi fenomeni.
 
-La ragione per la quale le reti neurali vengono studiate in Computer Science si basa sull'ipotesi che le macchine possano comportarsi in maniera intelligente. Questa ipotesi sostiene che il requisito fondamentale per ottenere un comportamento intelligente è l'abilità di manipolare simboli e strutture di simboli rappresentate da strutture fisiche, dove con simbolo si intende un token il quale si riferisce ad un oggetto o ad una situazione. 
+La ragione per la quale le reti neurali vengono studiate in [[Computer Science]] si basa sull'ipotesi che le macchine possano comportarsi in maniera intelligente. Questa ipotesi sostiene che il requisito fondamentale per ottenere un comportamento intelligente è l'abilità di manipolare simboli e strutture di simboli rappresentate da strutture fisiche, dove con simbolo si intende un token il quale si riferisce ad un oggetto o ad una situazione. 
 
 **Physical Symbol System Hypotesis**: Un simbolo fisico ha i mezzi necessari e sufficienti per azioni intelligenti.
 
-La classica [[Intelligenza Artificiale]] si concentra su forme simboliche per rappresentare la conoscenza e, in particolare, su logica dei predicati e delle proposizioni. Al contrario, le Artificial Neural Network non sono sistemi di simboli fisici ma, piuttosto, segnali più elementari, i quali, presi singolarmente, raramente hanno un significato chiaro. Di conseguenza, le reti neurali sono spesso definite come **sotto - simboliche**.
+La classica [[Intelligenza Artificiale]] si concentra su forme simboliche per rappresentare la conoscenza e, in particolare, su logica dei predicati e delle proposizioni. Al contrario, le Artificial Neural Network non sono sistemi di simboli fisici ma, piuttosto, segnali più elementari, i quali, presi singolarmente, raramente hanno un significato chiaro. Di conseguenza, le reti neurali sono spesso definite come **sotto-simboliche**.
 
-Non ci sono dubbi sui risultati ottenuti dalla classica Intelligenza Artificiale. Ciò nonostante, quando diventa necessario mimare la percezione ( sentire, udire, ecc. ), i computer performano scarsamente in confronto agli umani, almeno nei casi in cui si fa affidamento sulla rappresentazione simbolica: in questo caso i computer sono troppo lenti, poco flessibili e troppo poco tolleranti a rumore ed errori. Il problema è che, al fine di riconoscere pattern, la rappresentazione simbolica non è adatta. 
+Non ci sono dubbi sui risultati ottenuti dalla classica Intelligenza Artificiale. Ciò nonostante, quando diventa necessario mimare la percezione (sentire, udire, ecc.), i computer performano scarsamente in confronto agli umani, almeno nei casi in cui si fa affidamento sulla rappresentazione simbolica: in questo caso i computer sono troppo lenti, poco flessibili e troppo poco tolleranti a rumore ed errori. Il problema è che, al fine di riconoscere pattern, la rappresentazione simbolica non è adatta. 
 Piuttosto, le misurazioni necessitano di essere strutturate ed elencate prima di poter applicare in maniera efficace metodi simbolici. 
 
 Come già menzionato, le Artificial Neural Network sono ispirate alla struttura e ai principi secondo cui operano il sistema nervoso ed, in particolare, il cervello di animali ed umani. Il sistema nervoso degli animali consiste del cervello, dei differenti sistemi sensoriali, i quali collezionano informazioni dalle differenti parti del corpo, ed il sistema motorio, il quale controlla i movimenti.
-La parte principale del processing di informazioni avviene nel cervello e nel sistema nervoso centrale. I [[Neuroni]] sono la componente fondamentale del sistema nervoso e processano informazioni principalmente interagendo tra di loro. 
+La parte principale del processing di informazioni avviene nel cervello e nel sistema nervoso centrale. I neuroni sono la componente fondamentale del sistema nervoso e processano informazioni principalmente interagendo tra di loro. 
 
 La descrizione delle reti neurali biologiche finora rende naturale modellare i neuroni come [[Threshold Logic Unit]]: se un neurone riceve uno stimolo eccitatorio abbastanza forte, il quale non viene compensato da un altrettanto forte input inibitorio, diventa attivo e manda un segnale agli altri neuroni. 
 
 Sfortunatamente, singole TLU sono fortemente limitate nella possibilità espressiva e potenza di calcolo.
-E' possibile intuire, dall'intepretazione geometrica, che le TLU possono rappresentare funzioni che sono **linearmente separabili**, cioè funzioni per le quali i punti con output 1 possono essere separati dai punti con output 0 tramite una funzione lineare ( che sia una retta, un piano o un iperpiano ). Le TLU possono, quindi, rappresentare  funzioni che godono della [[Separabilità Lineare]].
-Considerando l'esempio di una semplice funzione, la coimplicazione ( cioè $x_{1} \leftrightarrow x_{2}$)
+E' possibile intuire, dall'intepretazione geometrica, che le TLU possono rappresentare funzioni che sono **linearmente separabili**, cioè funzioni per le quali i punti con output 1 possono essere separati dai punti con output 0 tramite una funzione lineare (che sia una retta, un piano o un iperpiano). Le TLU possono, quindi, rappresentare  funzioni che godono della [[Separabilità Lineare]].
+Considerando l'esempio di una semplice funzione, la coimplicazione (cioè $x_{1} \leftrightarrow x_{2}$)
 
 ![[The biimplication problem.png]]
 
 Le Threshold Logic Unit sono fortemente limitate solo considerando le singole TLU. Il potere espressivo aumenta considerevolmente se consideriamo un [[Network di Threshold Logic Unit]].
 
 Interpretando le computazioni di una TLU geometricamente, si ha un metodo semplice per trovare, data una funzione linearmente separabile, una TLU che possa risolverla.
-Ciò nonostante, questo metodo diventa non ammissibile se la funzione da risolvere ha più di tre argomenti. Inoltre, è impossibile automatizzare questo metodo, perchè si trova una linea di separazione accettabile esclusivamente tramite "ispezione visiva" dei set di punti da separare. Ispezione visiva che, come già ribadito, non si è in grado di mimare tramite computer.
+Ciò nonostante, questo metodo diventa non ammissibile se la funzione da risolvere ha più di tre argomenti. Inoltre, è impossibile automatizzare questo metodo, perchè si è in grado di trovare una linea di separazione accettabile esclusivamente tramite "ispezione visiva" dei set di punti da separare. Ispezione visiva che, come già ribadito, non si è in grado di mimare tramite computer.
 Si necessita quindi di un approccio differente.
 Il principio di questo nuovo approccio si basa sullo stabilire dei valori per i pesi e per la soglia scelti in maniera randomica e sul variare questi valori in maniera iterativa fino a quando si è ottenuta la funzione desiderata.
 Il lento adattarsi dei pesi e della soglia è anche detto **training** della Threshold Logic Unit.
@@ -52,7 +52,7 @@ Il diagramma di destra invece mostra la somma di questi errori. E' possibile eff
 Dal diagramma di destra, mentre un umano potrebbe leggere facilmente i valori di soglia e pesi tali per cui l'errore si annulla, una macchina non potrebbe farlo con altrettanta facilità, poichè non in grado di mimare l'ispezione visiva.
 
 Si rende quindi necessario rimodellare la funzione di errore, in modo tale da poter osservare direttamente dalla forma di quest'ultima in quale direzione occorre modificare i pesi e la soglia in modo da ridurre l'errore. 
-Quando la TLU produce l'output sbagliato, si considera di quanto è stata ecceduta la soglia ( per un output desiderato di 0 ) o quanto manca al suo raggiungimento ( per un output desiderato di 1 ). Per migliorare la scelta dei pesi e della soglia, ci si muove semplicemente nella direzione in cui la funzione di errore ha la maggiore pendenza in discesa.
+Quando la TLU produce l'output sbagliato, si considera di quanto è stata ecceduta la soglia (per un output desiderato di 0) o quanto manca al suo raggiungimento (per un output desiderato di 1). Per migliorare la scelta dei pesi e della soglia, ci si muove semplicemente nella direzione in cui la funzione di errore ha la maggiore pendenza in discesa.
 
 ![[Error of computing the negation 2.png]]
 
@@ -63,7 +63,7 @@ Si considerino gli input $x$ = 0 e $x$ = 1 alternati. Prima si adattano i pesi e
 
 ![[Training processes.png]]
 
-La seconda opzione consiste in non applicare i cambiamenti immediatamente dopo ogni esempio di training, ma aggregarli in gruppi. Solo al termine di una **training epoch**, i cambiamenti aggregati vengono applicati.
+La seconda opzione consiste nel non applicare i cambiamenti immediatamente dopo ogni esempio di training, ma aggregarli in gruppi. Solo al termine di una **training epoch**, i cambiamenti aggregati vengono applicati.
 Alla fine di queste epoch, l'errore riduce. Questo modo di allenare è chiamato **batch learning** o **batch training**.
 
 E' possibile definire il seguente metodo generale per il trainig di Threshold Logic Unit.
@@ -74,7 +74,7 @@ $$ \theta^{(new)} = \theta^{(old)} + \Delta \theta  \quad\text{ con }\quad \Delt
 $$
 \forall i \in {1, ..., n} \text{ : } w_{i}^{new} =w_{i}^{old} + \Delta w_{i} \quad\text{ con }\quad \Delta w_{i} = -\eta (o - y)x_{i}  $$
 
-dove $\eta$ è un parametro chiamato **learning rate** o **tasso di apprendimento**. Esso determina la forza dei cambiamenti a soglia e pesi. Questo metodo è chiamato  **Delta Rule** o **procedura di Widrow - Hoff**.
+dove $\eta$ è un parametro chiamato **learning rate** o **tasso di apprendimento**. Esso determina la forza dei cambiamenti a soglia e pesi. Questo metodo è chiamato  **Delta Rule** o **procedura di Widrow-Hoff**.
 In questa definizione, si deve distinguere tra l'adattamento della soglia e dei pesi, perchè le direzioni di questi cambiamenti sono opposti l'uno con l'altro.
 
 Ora verrano mostrari alcuni esempi di training, partendo dai valori $\theta = 3/2$, $w = 2$ e learning rate = 1.
@@ -83,12 +83,12 @@ Ora verrano mostrari alcuni esempi di training, partendo dai valori $\theta = 3/
 
 ![[Batch training ex.png]]
 
-Si può inferire che questa procedura non termina se la funzione che necessita di essere allenata non gode della [[Separabilità Lineare]].
+Si può inferire che questa procedura non termina se la funzione che necessita di essere allenata non gode della separabilità lineare.
 Sapendo a priori che non esiste una TLU singola in grado di calcolare la coimplicazione, l'errore non può svanire e quindi l'algoritmo non termina.
-Per quanto riguarda le funzioni linearmente separabili, tuttavia, cioè per funzioni che possono essere attualmente calcolate da un Threhold Logic Unit, è garantito che la procedura trovi la soluzione per il [[Teorema della Convergenza per la Delta Rule]].
+Per quanto riguarda le funzioni linearmente separabili tuttavia, cioè per funzioni che possono essere attualmente calcolate da un Threhold Logic Unit, è garantito che la procedura trovi la soluzione per il [[Teorema della Convergenza per la Delta Rule]].
 
 Tutti gli esempi considerati finora si riferiscono a funzioni logiche nelle quali lo stato $false$ era codificato come 0 e lo stato $true$ era codificato come 1. Comunque, questa codifica ha lo svantaggio che, nel caso di input $false$, il peso corrispondente non può essere modificato, perchè la formula per la modifica del peso contiene l'input come fattore. Per evitare questo problema, si utilizza il [[Modello ADALINE]].
-Nonostante la procedura di Widrow - Hoff è ugualmente applicabile per la codifica $false$ = 0, questa situazione è spesso chiamata **procedura di correzione dell'errore**, per evitare confusione. 
+Nonostante la procedura di Widrow-Hoff è ugualmente applicabile per la codifica $false$ = 0, questa situazione è spesso chiamata **procedura di correzione dell'errore**, per evitare confusione. 
 
 ### Modello generale di reti neurali ###
 
@@ -96,13 +96,13 @@ Si introduce un modello generale di reti neurali artificiali che cattura tutte l
 Il metodo con il quale sono state rappresentate le reti suggerisce di descrivere le reti neurali tramite un [[Grafo]].
 Per descrivere reti neurali, si necessita esclusivamente di grafi orientati, poichè le connessioni tra i neuroni sono sempre orientate.
 
-Una **rete neurale artificiale** è un grafo orientato $G = ( U, C )$ i cui vertici $u \in U$ sono chiamati **neuroni** o **unità** e i cui archi $c \in C$ sono chiamati **connessioni**. L'insieme $U$ dei vertici è diviso nell'insieme $U_{in}$ di **neuroni input**, l'insieme $U_{out}$ di **neuroni output** e l'insieme $U_{hidden}$ di **neuroni nascosti**.
+Una **rete neurale artificiale** è un grafo orientato $G = (U, C)$ i cui vertici $u \in U$ sono chiamati **neuroni** o **unità** e i cui archi $c \in C$ sono chiamati **connessioni**. L'insieme $U$ dei vertici è diviso nell'insieme $U_{in}$ di **neuroni input**, l'insieme $U_{out}$ di **neuroni output** e l'insieme $U_{hidden}$ di **neuroni nascosti**.
 
 $$U = U_{in} \cup U_{out} \cup U_{hidden}, $$
 $$
-U_{in} \neq \emptyset, \quad U_{out} \neq \emptyset, \quad U_{hidden} \cap ( U_{in} \cup U_{out} ) = \emptyset$$
+U_{in} \neq \emptyset, \quad U_{out} \neq \emptyset, \quad U_{hidden} \cap (U_{in} \cup U_{out}) = \emptyset$$
 
-Ad ogni connessione $( v, u ) \in C$ è assegnato un peso $w_{uv}$ e ad ogni neurone $u \in U$ sono assegnati tre quantità: 
+Ad ogni connessione $(v, u) \in C$ è assegnato un peso $w_{uv}$ e ad ogni neurone $u \in U$ sono assegnati tre quantità: 
 - il **network input** $net_{u}$;
 - l'**attivazione** $act_{u}$;
 - l'**output** $out_{u}$.
@@ -115,7 +115,7 @@ Ogni neurone  $u \in U$ possiede tre funzioni:
 
 con le quali vengono calcolate le quantità precedentemente citate.
 
-I neuroni sono divisi in **neuroni input**, **neuroni output** e **neuroni nascosti** ( o **hidden neurons** ), al fine di distinguere quale neuroni ricevono input dall'ambiente ( neuroni input ) e quali emettono output verso l'ambiente ( neuroni output ). I neuroni rimanenti non hanno contatto con l'ambiente esterno e, perciò, vengono chiamati nascosti.
+I neuroni sono divisi in **neuroni input**, **neuroni output** e **neuroni nascosti** (o **hidden neurons**), al fine di distinguere quale neuroni ricevono input dall'ambiente (neuroni input) e quali emettono output verso l'ambiente (neuroni output). I neuroni rimanenti non hanno contatto con l'ambiente esterno e, perciò, vengono chiamati nascosti.
 Un neurone può essere sia input che output.
 
 In accordo con la **network structure**, si possono distinguere due tipi fondamentali di reti neurali:
@@ -141,16 +141,16 @@ La funzione di attivazione, solitamente, necessita di due argomenti: il network 
 La funzione output, dall'altro lato, prende solamente l'attivazione come suo argomento e, di solito, ha lo scopo di scalare l'output in un range di output desiderati, comunemente tramite linear mapping.
 
 E' possibile dividere le computazioni di una rete neurale i due fasi:
-- la **input phase** ( o **fase di input** ), nella quale gli input esterni sono dati in pasto alla rete;
-- la **work phase** ( o **fase di lavoro** ), nella quale l'output della rete neurale viene calcolato.
+- la **input phase** (o **fase di input**), nella quale gli input esterni sono dati in pasto alla rete;
+- la **work phase** (o **fase di lavoro**), nella quale l'output della rete neurale viene calcolato.
 
 La fase di input ha lo scopo di inizializzare la rete. In questa fase, le attivazioni dei neuroni input sono impostate al valore degli input esterni corrispondenti. Le attivazioni dei neuroni rimanenti sono inizializzate arbitrariamente, tipicamente settandole a 0. Inoltre, la funzione di output è applicata alle attivazioni inizializzate, così che tutti i neuroni producano un output iniziale. 
-Nella work phase, gli input esterni vengono scollegati e le attivazioni e gli output dei neuroni vengono ricalcolati ( potenzialmente molteplici volte). Per ottenere ciò, la network input function, la activation function e la output function sono applicate come descritto sopra. Se un neurone non riceve alcun network input, perchè non ha alcun predecessore, si definisce che mantiene semplicemente la sua attivazione ( e perciò anche il suo output). 
+Nella work phase, gli input esterni vengono scollegati e le attivazioni e gli output dei neuroni vengono ricalcolati (potenzialmente molteplici volte). Per ottenere ciò, la network input function, la activation function e la output function sono applicate come descritto sopra. Se un neurone non riceve alcun network input, perchè non ha alcun predecessore, si definisce che mantiene semplicemente la sua attivazione (e perciò anche il suo output). 
 Questo è importante solo per i neuroni input in un feed forward network. 
 
-Le ricomputazioni terminano nel caso in cui o il network raggiunge uno stato sabile ( cioè ulteriori ricomputazioni non modificano ulteriormene l'output dei neuroni ) o se è stato eseguito un numero predefinito di ricomputazioni.
+Le ricomputazioni terminano nel caso in cui o il network raggiunge uno stato sabile (cioè ulteriori ricomputazioni non modificano ulteriormene l'output dei neuroni) o se è stato eseguito un numero predefinito di ricomputazioni.
 L'ordine temporale delle ricomputazioni, generalmente, non è fissato.
-Per esempio, tutti i neuroni di un network possono ricomputare il proprio output allo stesso tempo ( **update sincrono** ). E' possibile, inoltre, definire un ordine di neuroni nel quale loro computano il loro nuovo output uno dopo l'altro ( **update asincrono** ). In questo caso i nuovi output degli altri neuroni possono essere già stati utilizzati come input di computazioni successive. 
+Per esempio, tutti i neuroni di un network possono ricomputare il proprio output allo stesso tempo (**update sincrono**). E' possibile, inoltre, definire un ordine di neuroni nel quale loro computano il loro nuovo output uno dopo l'altro (**update asincrono**). In questo caso i nuovi output degli altri neuroni possono essere già stati utilizzati come input di computazioni successive. 
 Per quanto riguarda le reti feed forward, le computazioni solitamente seguono l'[[Ordinamento Topologico]].
 Per le recurrent network, l'output finale dipende dall'ordine nel quale i neuroni ricomputano l'output e da quante ricomputazioni sono state eseguite. 
 
@@ -196,7 +196,7 @@ $$
 \mu_{k} = \frac{1}{|L|} \sum_{l \in L} ext_{u_{k}}^{(l)} \quad \text{ and }\quad \sigma_{k} = \sqrt{\frac{1}{|L|} \sum_{l \in L} (ext_{u_{k}}^{(l)}-\mu_k)^2} \quad ,
 $$
 
-cioè la media aritmetica e la deviazione standard degli input esterni.
+cioè la [[Media Aritmetica]] e la [[Deviazione Standard]] degli input esterni.
 Così, gli input esterni sono strasformati in questo modo:
 
 $$
@@ -210,4 +210,4 @@ Per poterli processare, è necessario trasformarli in numeri e, nonostante possa
 
 Una migliore opzione è l'**1-in-$n$ encoding**, nel quale ogni attributo nominate è assegnato a tanti neuroni quanto il suo valore: ogni neurone corrisponde ad un valore dell'attributo. Con ll'input di un training pattern, il neurone che corrisponde al valore ottenuto dell'attributo nominale viene impostato a 1, mentre tuti gli altri neuroni che appartengono allo stesso attributo sono settati a 0.
 
-La forma più conosciuta e largamente usata delle reti neurali è il [[Multi - Layer Perceptron]].
+La forma più conosciuta e largamente usata delle reti neurali è il [[Multi-Layer Perceptron]].

@@ -10,7 +10,7 @@ $$
 \end{numcases}
 $$
 
-Gli input sono spesso combinati in un vettore di input **x** = ( $x_{1}$, ..., $x_{n}$ ) e i pesi in un vettore di pesi **w** = ( $w_{1}$, ..., $w_{n}$ ).
+Gli input sono spesso combinati in un vettore di input **x** = ($x_{1}$, ..., $x_{n}$) e i pesi in un vettore di pesi **w** = ($w_{1}$, ..., $w_{n}$).
 La condizione testata dalla TLU può, quindi, essere scritta come **wx** $\geq \theta$.  
 
 La TLU viene rappresentata come un cerchio. nel quale viene memorizzato il valore della soglia. Ogni input è rappresentato da una freccia entrante nel cerchio ed è etichettato dal proprio peso. L'output della TLU è rappresentato, invece, come una freccia uscente dal cerchio.
