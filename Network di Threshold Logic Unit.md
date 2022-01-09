@@ -1,10 +1,10 @@
-Un **Network di Threshold Logic Unit** è la combinazione d numerose [[Threshold Logic Unit]] in seriale ed in parallelo.
+Un **Network di Threshold Logic Unit** è la combinazione di numerose [[Threshold Logic Unit]] in seriale ed in parallelo.
 
 Si consideri il problema di rappresentazione della coimplicazione tramite TLU.
-Possiamo esprimere $x_{1} \leftrightarrow x_{2}$ tramite l'equivalenza logica
+E' possibile esprimere $x_{1} \leftrightarrow x_{2}$ tramite l'equivalenza logica
 $$x_{1} \leftrightarrow x_{2} \equiv (x_{1} \rightarrow x_{2})  \wedge ( x_{1} \leftarrow x_{2}) $$ 
 
-la quale divide la coimplicazione in tre funzioni. Sappiamo che la congiunizone di due variabili Booleane è linearmente separabile. Come conseguenza, dobbiamo semplicemente connettere le corrispondenti TLU. In questo modo, si ottiene un network con due strati corrispondenti alla struttura innestata dell'espressione logica.
+la quale divide la coimplicazione in tre funzioni. E' risaputo, inoltre, che la congiunzione di due variabili Booleane è linearmente separabile. Come conseguenza, si deve semplicemente connettere le corrispondenti TLU. In questo modo, si ottiene un network con due strati corrispondenti alla struttura innestata dell'espressione logica.
 
 ![[Network of TLU.png]]
 

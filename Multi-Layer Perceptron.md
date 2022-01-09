@@ -1,11 +1,11 @@
-Un **R - Layer Perceptron** è una rete neurale alla quale è associato un grafo $G = (U, C)$, il quale soddisfa le seguenti restrizioni.
+Un **R-Layer Perceptron** è una rete neurale alla quale è associato un grafo $G = (U, C)$, il quale soddisfa le seguenti restrizioni.
 1) $U_{in} \cap U_{out} = \emptyset ,$
 2) $U_{hidden} = U_{hidden}^{1} \cup ... \cup U_{hidden}^{(r-2)}, \forall 1\leq i < r - 2 : U_{hidden}^{(i)} \cap U_{hidden}^{(j)} = \emptyset$
 3) $C \subseteq (U_{in} \times U_{hidden}^{(1)}) \cup \bigcup_{i = 1}^{r-3} U_{hidden}^{(i)} \times U_{hidden}^{(i+1)} ) \cup (U_{hidden}^{(r-2)} \times U_{out})$ oppure, se non ci sono neuroni nascosti $(r = 2, U_{hidden} = \emptyset), C \subseteq U_{in} \times U_{out}$.
 
 ![[General structure of an r-layered perceptron.png]]
 
-La network input function di ogni neurone nascosto ed output è la somma pesata (pesata dai pesi delle connessioni) degli input, cioè:
+La network input function di ogni neurone nascosto ed output è la somma pesata (dai pesi delle connessioni) degli input, cioè:
 
 $$
 \forall u \in U_{hidden} \cup U_{out} : f_{net}^{(u)}(\textbf{w}_{u}, \textbf{in}_{u}) = \textbf{w}_{u}\textbf{in}_{u} = \sum_{v \in pred(u)} w_{uv}out_{v}
@@ -20,7 +20,30 @@ La funzione di attivazione di ogni neurone di output è anche o una funzione sig
 Intuitivamente, le restrizioni sul grafo significano che un multi-layer perceptron consiste di un input layer e di un output layer e di nessuno, uno o diversi hidden layer tra di essi.
 Le connessioni esistono solamente tra neuroni di layer consecutivi. In accordo con questa definizione, un multi-layer perceptron ha sempre almeno due layer, cioè l'input e l'output layer.
 
-... funzioni ...
+Esistono diversi tipi di funzioni sigmoide, le quali rappresentano il comportamento generale del perceptron. La funzione più semplice è una **step function**:
+
+$$
+\begin{numcases}{f_{act}(net, \theta) =}
+  1, & se net $\geq \theta$ \\
+  0, & altrimenti
+\end{numcases}
+$$
+
+![[Step Function.png]]
+
+Se si vuole avere un comportamento più levigato, si può utilizzare una **semi-linear function**:
+
+$$
+\begin{numcases}{f_{act}(net, \theta) =}
+  1, & se net $ > \theta + \frac{1}{2} $ \\
+  0, & se net $ < \theta - \frac{1}{2}  $ \\
+  (net - \theta) + \frac{1}{2}, & altrimenti
+\end{numcases}
+$$
+
+![[Semi-Linear Function.png]]
+
+La step function vale 0 fino a quando l'eccitazione della rete neurale supera il valore soglia $\theta$. Da quel punto, l'output della funzione esegue un salto fino al valore 1.
 
 Le computazioni eseguite da un multi-layer perceptron possono essere scritte usando una notazione vettoriale e matriciale. Per questo motivo si usa una matrice per le connessioni tra un layer e il successivo.
 Siano $U_{1} = \{ v_{1}, ..., v_{m} \}$ e $U_{2} = \{ u_{1}, ..., u_{n} \}$ i neuroni di due layer di un multi - layer perceptron, dove $U_{2}$ segue $U_{1}$. Si costruisca una matrice $n \times m$
@@ -53,11 +76,14 @@ Poihcè la funzione di attivazione del neurone di output è la funzione identit�
 Dovrebbe risultare ovvio che l'accuratezza dell'approssimazione può essere incrementata arbitrariamente riducendo la grandezza degli scalini.
 
 Una qualsiasi funzione integrabile secondo Riemann può essere approssimato con accuratezza arbitraria da un multi-layer perceptron. Questa preposizione richiede soltanto che la funzione da rappresentare sia integrabile secondo Riemann. Non richiede, infatti, che sia continua.
-In questa preposizione, inoltre, l'errore di approssimazione è misurato dall'area tra la funzione da approssimare e tra l'output del perceptron.  Questa area può essere ridotta in maniera arbitraria, nuovamente tramite l'incremento del numero di neuroni.
+In questa preposizione, inoltre, l'errore di approssimazione è misurato dall'area tra la funzione da approssimare e tra l'output del perceptron. Questa area può essere ridotta in maniera arbitraria, nuovamente tramite l'incremento del numero di neuroni.
 Tuttavia, questo non garantisce che, per un multi-layer perceptron, il quale ottiene un certa accuratezza, la differenza tra il suo output e la funzione da approssimare sia minore di un certo errore ovunque. La funzione, per esempio, potrebbe possedere uno spike molto sottile, il quale non è catturato da nessuno scalino.
 
 ![[Limits of the preposition.png]]
 
 In un caso del genere, l'area tra la funzione da rappresentare e l'output del perceptron è piccola (poichè lo spike è sottile e quindi contiene solamente un'area piccola), ma nel punto dello spike, la deviazione dell'output dal vero valore della funzione non può essere cosiderabile.
 
-Naturalmente, l'idea di approssimare una funzione data tramite una funzione a scalini può essere trasferita ed applicata a funzioni con multipli argomenti.
+Naturalmente, l'idea di approssimare una funzione data tramite una funzione a scalini può essere trasferita ed applicata a funzioni con multipli argomenti:
+lo spazio di input viene diviso in rettangoli, box o iperbox, ad ognuno dei quali viene assegnato un valore di funzione.
+
+Nonostante i multi-layer perceptron hanno un enorme potere espressivo, essi hanno poca utilità nella pratica. Al fine di ottenere sufficiente accuratezza, è necessario scegliere funzioni a scalini con scalini di larghezza sufficentemente piccola. Questo, perciò, forza a costruire un perceptron con un numero di neuroni potenzialmente altissimo.
