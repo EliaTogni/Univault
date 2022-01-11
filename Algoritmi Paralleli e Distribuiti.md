@@ -6,6 +6,19 @@ Con più processori, sono possibili due situazioni differenti:
 - Un solo [[Clock]] condiviso tra tutti i processori del sistema;
 - Un clock per ciascun processore.
 
+In entrambi i casi, sia per gli algoritmi paralleli sia per gli algoritmi distribuiti, la risorsa **Tempo** è cruciale.
+Il tempo è misurato come il numero di operazioni elementari richieste per risolvere il problema. Nel caso sequenziale, veniva definito formalmente come:
+
+$$T(x) = \text{ numero di operazioni elementari su $x$, se $x$ è l'istanza }$$
+
+$$t(n) = MAX\Bigg\{T(x) \quad|\quad x \in \sum^{n}\Bigg\}$$
+
+dove $t(n)$ è una funzione in $n$, con $n$ lunghezza dell'input.
+Spesso non si è interessati ad una valutazione precisa di $t(n)$, ma al suo tasso di crescita.
+A questo scopo, si utilizzano le [[Funzioni Asintotiche]].
+
+
+
 Si richiami, ora, un classico modello di calcolo sequenziale, cioè la **macchina RAM**: essa consiste di un processore P, collegato ad una memoria M attraverso un'unità di accesso.
 
 ![[placeholderRAM]]
