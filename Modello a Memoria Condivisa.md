@@ -1,6 +1,7 @@
-![[placeholderMcond]]
-
 Nel **Modello a Memoria Condivisa**, tutti i processori possono accedere, attraverso un'unità di accesso, alle stesse locazioni di memoria nella stessa unità di tempo.
+
+![[Memoria Condivisa.png]]
+
 Il meccanismo di comunicazione tra due processori $P_{k}$ e $P_{j}$ è molto semplice:
 1) $P_{k}$ scrive il messaggio in un'area di memoria;
 2) $P_{j}$ legge il messaggio dalla stessa area.

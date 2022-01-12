@@ -27,7 +27,7 @@ La funzione tempo deve indicare se gli algoritmi paralleli e distribuiti utilizz
 
 Si richiami, ora, un classico modello di calcolo sequenziale, cioè la **macchina RAM**: essa consiste di un processore P, collegato ad una memoria M attraverso un'unità di accesso.
 
-![[placeholderRAM]]
+![[RAMMachine.png]]
 
 Nei modelli di calcolo parallelo, data la presenza di più processori, un elemento critico è la modalità di comunicazione tra processori. I due casi limite sono rappresentati dal [[Modello a Memoria Condivisa]] e dal [[Modello a Memoria Distribuita]].
 
@@ -35,26 +35,50 @@ Il più semplice modello di calcolo parallelo è quello a memoria condivisa, det
 
 Il calcolo procede per **passi**. Ad ogni passo, ogni processore può fare un'operazione sui dati che possiede, oppure può leggere o scrivere nella memoria condivisa. In particolare, è possibile selezionare un insieme di processori che eseguono tutti la stessa istruzione (su dati generalmente diversi) mentre gli altri processori restano inattivi. I processori attivi sono sincronizzati, cioè eseguono la stessa instruzione simultaneamente e l'istruzione successiva può essere eseguita solo quando tutti hanno terminato l'esecuzione.
 
-Questo modello di macchine è detto di tipo **SIMD** (**SIngle Intruction Multiple Data**).
+Questo modello di macchine è detto di tipo **SIMD** (**SIngle Intruction Multiple Data**), il quale si contrappone all'architettura **MIMD** (**Multiple Instruction Multiple Data**).
 
 Per semplicità, in seguito si farà riferimento al modello EREW, il più realistico.
+Un vantaggio sostanziale di questa scelta è che un algoritmo funzionante su un modello EREW è funzionante anche sui modelli successivi.
 
 La tipica istruzione di un algoritmo parallelo è strutturata nel seguente modo:
 
 $$\text{for all } i(a \leq i \leq b) \text{ do in parallel Operazione}$$
 
-la cui semantica è quella di eseguire $Operazione$ su tutti i processori $i$ con $a \leq i \leq b$, mentre gli altri restano inattivi.
+la cui semantica è quella di eseguire $Operazione$ su tutti i processori $i$ con $a \leq i \leq b$, mentre gli altri restano inattivi (eseguono l'operazione nulla).
 
-Dato un algoritmo parallelo $A$, diremo $T_{A}(n,p)$ il tempo di esecuzione di $A$ su dati di dimensione $n$, quando $A$ utilizza $p$ processori; il caso sequenziale si ha, ovviamente, quando $p = 1$.
+La notazione utilizzata per descrivere le risorse di calcolo per quanto riguarda un algoritmo sequenziale è, banalmente, $t(n)$ per la misura del tempo di esecuzione rispetto ad un input di dimensione $n$ e $s(n)$ per la misura dello spazio, sempre in funzione di $n$.
+Per quanto riguarda un algoritmo parallelo, si avrà $p(n)$ e $T(n,p(n))$.
+Dato un input di dimensione $n$, si definisce $p(n)$ il numero dei processori richiesti sull'input, nel caso peggiore.
+Dato un algoritmo parallelo $A$, diremo $T_{A}(n,p(n))$ il tempo di esecuzione di $A$ su dati di dimensione $n$, quando $A$ utilizza $p$ processori; il caso sequenziale si ha, ovviamente, quando $p = 1$.
+Il tempo del generico $i$-esimo passo su un input di dimensione $n$ è dato da: 
+
+$$t_{i}(n) = MAX\Bigg\{t_{i}^{(j)}(n) \quad | \quad 1 \leq j \leq p(n)\Bigg\}$$
+
+Pertanto:
+
+$$T(n, p(n)) = \sum_{i=1}^{k(n)} t_{i}(n)$$
+
+dove:
+- $T$ dipende da $k(n)$;
+- $T$ dipende dalla dimensione dell'input e dal criterio di costo scelto;
+- $T$ dipende da $p(n)$.
+
 Obiettivo di un algoritmo parallelo è quello di diminuire i tempi di calcolo aumentando il numero di processori: si spera di ottenere un **trade-off** tra il tempo di esecuzione ed il costo (numero di processori) che va stimato per valutare l'efficacia di un algoritmo parallelo.
+
+Un primo confronto tra i tempi può essere fatto confrontando l'andamento delle funzioni di calcolo del tempo:
+Sono possibili due casi, uno non accettabile ed uno accettabile.
+Il caso non accettabile è il caso in cui $T(n, p(n)) = \Theta(T(n,1))$, ovvero dove non si ottiene un miglioramento nonostante l'aggiunta di processori. Questo caso comporta solo un sovrapprezzo in termini di componentistica e, quindi, è evidentemente sfavorevole.
+Il caso accettabile è il caso in cui $T(n, p(n)) = o(T(n,1))$, ovvero il caso in cui il tempo di esecuzione dell'algoritmo parallelo è inferiore a quello sequenziale.
 
 Due misure naturali dell'efficacia sono lo **Speed-Up** $S_{A}(p)$ e l'**Efficienza** $E_{A}(n,p)$.
 
-$$S_{A} = \frac{T_{A}(n,1)}{T_{A}(n,p)}$$
+$$S_{A} = \frac{T_{A}(n,1)}{T_{A}(n,p(n))}$$
 
-$$E_{A} = \frac{S_{A}(p)}{p}$$
+$$E_{A} = \frac{S_{A}(p(n))}{p(n)}$$
 
 Maggiore il numero di processori, maggiore è il valore dello Speed-Up.
+L'ideale sarebbe avere questo valore tendente ad $\infty$. Questo indica esattamente che $T(n, p(n)) = o(T(n,1))$. 
+Non avendo, però, il numero di processori $p(n)$ al di fuori della funzione di tempo, non si è in grado di stabilire se si è utilizzato un numero realistico e, soprattutto, vantaggioso.
 Con efficienza, invece, si intende quanto lavoro viene svolto da un singolo processore. 
 
 Poichè $E_{A}(n,p) = \frac{T_{A}(n,1)}{p \cdot T_{A}(n,p)}$, l'efficienza risulta essere il rapporto tra il tempo dell'algoritmo sequenzialeed il tempo totale consumato dai processori, come se fossero usati sequenzialmente.

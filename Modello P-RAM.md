@@ -10,9 +10,20 @@ Si possono specificare vari modelli P-RAM:
 2) **CREW** (**Concurrent Read Exclusive Write**): l'accesso contemporaneo è permesso in lettura;
 3) **CRCW** (**Concurrent Read Concurrent Write**): L'accesso contemporaneo è concesso sia in lettura sia in scrittura.
 
+Per la scrittura simultanea si può scegliere tra diverse politiche:
+- **Common**: i processori possono scrivere solo lo stesso dato, pena l'arresto del sistema;
+- **Random**: si sceglie un $p_{i}$ a caso;
+- **MAX/min**: vince il $p_{i}$ con il dato MAX/min;
+- **Priority**: vince il $p_{i}$ con priorità maggiore.
+
 I tipi delle istruzioni possibili per il processore $p_{i}$ sono:
 - operazioni aritmetico/logiche;
 - istruzioni da/per la memoria centrale:
 	- STORE $R[k]$ $M[n]$;
 	- LOAD $R[k]$ $M[n]$.
+
+Si opera solamente sui dati nelle memorie private e non su quelli nella memoria centrale.
+
+Un programma nella PRAM può risiedere sia nella memoria centrale che in quella privata dei processori. Esiste però un unico programma per tutti i processori ed essi caricano le istruzioni una dopo l'altra.
+Ad ogni ciclo di clock (condiviso), i processori caricano una istruzione del programma ed ogni $p_{i}$ esegue quasi la stessa istruzione.
 
