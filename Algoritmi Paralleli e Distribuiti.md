@@ -17,7 +17,13 @@ dove $t(n)$ è una funzione in $n$, con $n$ lunghezza dell'input.
 Spesso non si è interessati ad una valutazione precisa di $t(n)$, ma al suo tasso di crescita.
 A questo scopo, si utilizzano le [[Funzioni Asintotiche]].
 
+La valutazione del tempo dipende dal modello di calcolo e, inoltre, va scelto il criterio di valutazione ( **uniforme** o **logaritmico**).
 
+Nel modello di calcolo, le operazioni elementari che contiamo sono le primitive messe a disposizione.
+
+Bisogna prestare attenzione alla dimensione dei dati in gioco. Se si utilizza il **criterio di costo uniforme**, le operazioni elementari richiedono una sola **unità di tempo**. Se si utilizza il **criterio di costo logaritmico**, ogni operazione elementare ha un costo che dipende dal numero di bit degli operandi.
+
+La funzione tempo deve indicare se gli algoritmi paralleli e distribuiti utilizzati si possono considerare efficienti. Si considera quindi il concetto di [[Efficienza]].
 
 Si richiami, ora, un classico modello di calcolo sequenziale, cioè la **macchina RAM**: essa consiste di un processore P, collegato ad una memoria M attraverso un'unità di accesso.
 

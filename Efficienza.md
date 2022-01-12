@@ -1,0 +1,2 @@
+Un problema, nel caso sequenziale, è risolto efficientemente nel in tempo sse è risolto da una [[Deterministic Touring Machine]] in tempo polinomiale.
+Il motivo per qui l'**Efficienza** è equiparata alla possibilità di risolvere un problema in tempo polinomiale, è dovuto allo studio della [[Complessità Computazionale]]
