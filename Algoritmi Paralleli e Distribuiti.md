@@ -116,4 +116,25 @@ $$ 1 = E(n,1) = E(n, \frac{p}{p}) \geq E(n,\frac{p}{k}) \geq E(n, p)$$
 
 Attenzione però a mantenere $T(n, \frac{p}{k}) = o(T(n,1))$, (altrimenti non ha senso parlare di algoritmo parallelo (perchè $E(n,1) = 1$ ma $T(n,p=1) = T(n,1)$, cioè sequenziale)
 
+### Sommatoria ###
+Si vuole trovare un algoritmo parallelo per risolvere il problema **Sommatoria**, un problema guida.
+Ci si approccia con la tecnica della scomposizione del problema in sottoproblemi, per poi effettuare la fusione dei risultati.
+Lo schema risolutivo di un problema guida potrà essere applicato per trovare la soluzione di altri problemi di operazioni associative.
+Inoltre, un problema guida è un problema talmente diffuso che si trova spesso come modulo, cioè come sottoproblema, di altri problemi.
+
+**Definizione del problema**
+
+**Input**: $M[1], M[2], ..., M[n]$ 
+**Output**: $M[n] = \sum_{i=1}^{n} M[i]$
+
+L'algoritmo sequenziale risolve il problema in questo modo:
+<code>
+	for i = 1 to n-1 do
+		M[n] = M[n] + M[i]
+</code>
+
+Il tempo impiegato è $T(n,1) = n-1$ ed è il miglior tempo possibile per un algoritmo sequenziale.
+
+
+
 
