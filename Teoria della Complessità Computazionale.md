@@ -24,3 +24,25 @@ Si possono così definire le seguenti classi di complessità:
 - $NL = NSPACE(log(n))$
 - $P = \cup_{k>0}TIME(n^{k})$
 - $NP = \cup_{k>0}NTIME(n^{k})$
+.
+.
+.
+.
+.
+
+
+E' possibile caratterizzare anche la classe dei problemi che ammettono algoritmi paralleli efficienti.
+- La classe $NC$ è l'insieme dei problemi risolti da algoritmi paralleli veloci con
+	- tempo polilogaritmico;
+	- hardware polinomiale.
+
+Alcuni esempio di problemi in NC sono la somma di due numeri binari o il problema dell'ordinamento.
+
+In realtà è ragionevole al fine dei casi di studio solo una sottoclasse di NC. Come per P, infatti, se il grado del polinomio è troppo alto (così come le costanti nascoste), il tempo è sì polinomiale ma poco pratico.
+
+### $NC \in FP$ ###
+Per ottenere un algoritmo sequenziale partendo da quello parallelo, basta simulare, utilizzando un singolo processore, in sequenza il lavoro dei processori coinvolti. Si ottiene un algoritmo sequenziale polinomiale in tempo.
+
+### $NC = FP?$ ###
+
+La questione $NC = FP$ ripropone il problema di capire se ogni algoritmo sequenziale efficiente è parallelizzabile. Si crede di no, ma il problema è ancora aperto.

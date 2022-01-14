@@ -85,6 +85,31 @@ Poichè $E_{A}(n,p) = \frac{T_{A}(n,1)}{p \cdot T_{A}(n,p)}$, l'efficienza risul
 
 Per il parametro $E$ vale che $0 \leq E(n, p(n)) \leq 1$. Quando $E \rightarrow 0$, si stanno utilizzando troppi processori che, probabilmente, vengono inutilizzati per la maggioranza del tempo.
 
+Si dimostra ora che $E \leq 1$.
+Si esegue una trasformazione per passare da un algoritmo parallelo ad uno sequenziale (non è detto che sia il migliore). Si vuole valutare il tempo dell'algoritmo sequenziale così ottenuto. Si indica con $t_{i}(n)$ il tempo dell'istruzione più lunga al passo parallelo $i$, con $1 \leq i \leq k$.
+Si definisce $\tilde T(n,1)$ il tempo dell'algoritmo sequenziale così ottenuto. Chiaramente, il tempo di questo algoritmo sequenziale è maggiore uguale del tempo del miglior algoritmo sequenziale per un determinato problema.
+
+$$T(n,1) \leq \tilde T(n,1) \leq p(n) \cdot t_{1}(n) + ... + p(n) \cdot t_{k(n)}(n)$$
+
+L'upper bound è la sommatoria dell'istruzione più lunga in un generico passo parallelo per il numero di processori nell'algoritmo parallelo (ovvero quante istruzioni vanno sequenzializzate).
+
+$$p(n) \cdot t_{1}(n) + ... + p(n) \cdot t_{k(n)}(n) = p(n) \sum_{i=1}^{k(n)} t_{i}(n) = p(n)T(n, p(n))$$
+
+Questo non è altro che il tempo parallelo. Di conseguenza, il miglior tempo sequenziale $T(n,1)$ è limitato superiormente da $p(n)T(n, p(n))$.
+Da questa uguaglianza si ricava facilmente che
+
+$$\frac{T(n,1)}{p(n)} \leq T(n, p(n))$$
+
+Si ottiene quindi che il tempo parallelo ha un lower bound dato dal rapporto tra il tempo sequenziale del miglior algoritmo ed il numero di processori.
+Questo implica che il meglio che si può fare con un algoritmo parallelo è distribuire equamente tra i processori il lavoro del sequenziale.
+ 
+Da questa disuguaglianza, si divinono entrambi i membri per il tempo parallelo ed si ottiene quindi
+
+$$\frac{T(n,1)}{p(n)T(n, p(n)))} \leq 1$$
+
+Sapendo che $\frac{T(n,1)}{p(n)T(n, p(n)))} = E(n, p(n))$, allora si ha dimostrato che $E(n, p(n)) \leq 1$. Il miglior risultato in termini di efficienza è quindi $E \rightarrow k \leq 1$, dove $k$ è una costante.
+
+
 ### Teorema di Wyllie [1979, PhD Thesis] ###
 Se $E \rightarrow 0$, allora per migliorare l'algoritmo, si provi a ridurre $p(n)$ senza degradare il tempo.
 
@@ -128,12 +153,74 @@ Inoltre, un problema guida è un problema talmente diffuso che si trova spesso c
 **Output**: $M[n] = \sum_{i=1}^{n} M[i]$
 
 L'algoritmo sequenziale risolve il problema in questo modo:
+
 <code>
 	for i = 1 to n-1 do
+</code>
+
+<code>
 		M[n] = M[n] + M[i]
 </code>
 
 Il tempo impiegato è $T(n,1) = n-1$ ed è il miglior tempo possibile per un algoritmo sequenziale.
+
+Si può pensare di parallelilizzare utilizzando $n$ processori, ognuno dei quali fa una somma. Ma quale somma? Se ci si basa sull'algoritmo sequenziale, il primo processore eseguirà la somma $M[1] + M[2]$, il secondo eseguirà poi la somma del risultato con $M[3]$ e così via, formando un albero di somme di altezza $n-1$. L'efficienza di questo algoritmo vale
+
+$$E = \frac{n-1}{(n-1)(n-1)} = \frac{1}{n-1} \rightarrow 0$$
+
+Il tempo ottenuto è uguale al tempo dell'algoritmo sequenziale e quindi, abbiamo solo introdotto uno spreco hardware ingiustificato.
+
+E' possibile tentare un approccio diverso basandosi sulla proprietà associativa della somma. Infatti, vale
+
+$$((a + b) + c) + d = (a + b) + (c + d)$$
+
+Si utilizzano quindi $\frac{n}{2}$ processori $k$ ed ogni processore effettua la somma $M[2k] = M[2k] + M[2k-1]$ con $k$ che varia ad ogni iterazione. I processori, per comunicare, sovrascrivono le celle dalle quali leggono l'input, in un fashion EREW. Si genera così un albero di somme di altezza $log_{2}(n)$ nel caso in cui $n$ sia potenza di $2$.
+
+<code>
+for j = 1 to log(n)
+</code>
+
+<code>
+	for k = 1 to \frac{n}{2^{j}} parallel do 
+</code>
+
+<code>
+		M[2^{j}k] =  M[2^{j}k] + M[2^{j}k - 2^{j-1}]
+</code>
+
+<code>
+	return M[n]
+</code>
+
+E' necessario assicurarsi che questo algoritmo sia EREW, cioè che non ci siano conflitti di lettura e scrittura.
+Siano $a$ e $b$ due processori, con $a \neq b$.
+$a$ opera sulle celle $2^{j}a, 2^{j}a - 2^{j-1}$.
+$b$ opera sulle celle $2^{j}b, 2^{j}b - 2^{j-1}$. 	
+Si deve quindi dimostrare che le quattro celle utilizzate siano tutte diverse.
+$2^{j}a \neq 2^{j}b$ per $a \neq b$.
+$2^{j}a \neq 2^{j}b -2{j-1} \rightarrow^\text{per assurdo}$: $2a = 2b -1 \rightarrow a = \frac{2b - 1}{2} \notin \mathbb{N}$.
+.
+.
+.
+Si ha quindi un algoritmo EREW.
+
+Si dimostra ora, per [[Induzione]], che l'algoritmo sottostante è corretto.
+
+$$M[2^{j}k] = M[2^{j}k] + ... + M[2^{k}(k-1) +1]$$
+
+per $j = log_{2}(n)$, ovviamente $k=1$ (un solo processore) e
+
+$$M[n] = M[n] + ... + M[1]$$
+
+Ora si dimostra il caso base ($j=1$ e $1 \leq k \leq \frac{n}{2}$):
+
+$$M[2k] = M[2k] + M[2k -1]$$
+
+Si supponga vera la proprietà che si vuole dimostrare.
+
+
+
+
 
 
 
