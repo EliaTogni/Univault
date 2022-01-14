@@ -174,7 +174,7 @@ E' possibile tentare un approccio diverso basandosi sulla proprietà associativa
 
 $$((a + b) + c) + d = (a + b) + (c + d)$$
 
-Si utilizzano quindi $\frac{n}{2}$ processori $k$ ed ogni processore effettua la somma $M[2k] = M[2k] + M[2k-1]$ con $k$ che varia ad ogni iterazione. I processori, per comunicare, sovrascrivono le celle dalle quali leggono l'input, in un fashion EREW. Si genera così un albero di somme di altezza $log_{2}(n)$ nel caso in cui $n$ sia potenza di $2$.
+Si utilizzano quindi $\frac{n}{2}$ processori $k$ ed ogni processore effettua la somma $M[2k] = M[2k] + M[2k-1]$ con $k$ che varia ad ogni iterazione. I processori, per comunicare, sovrascrivono le celle dalle quali leggono l'input, in un fashion EREW. Si genera così un albero di somme di altezza $\log_{2}(n)$ nel caso in cui $n$ sia potenza di $2$.
 
 <code>
 for j = 1 to log(n)
@@ -208,20 +208,64 @@ Si dimostra ora, per [[Induzione]], che l'algoritmo sottostante è corretto.
 
 $$M[2^{j}k] = M[2^{j}k] + ... + M[2^{k}(k-1) +1]$$
 
-per $j = log_{2}(n)$, ovviamente $k=1$ (un solo processore) e
+per $j = \\log_{2}(n)$, ovviamente $k=1$ (un solo processore) e
 
 $$M[n] = M[n] + ... + M[1]$$
 
-Ora si dimostra il caso base ($j=1$ e $1 \leq k \leq \frac{n}{2}$):
+Si dimostra partendo dal caso base ($j=1$ e $1 \leq k \leq \frac{n}{2}$):
 
 $$M[2k] = M[2k] + M[2k -1]$$
 
-Si supponga vera la proprietà che si vuole dimostrare.
+Si supponga vera la proprietà che si vuole dimostrare per un generico valore $j-1$. E' necessario ora dimostrarla per il valore successivo $j$.
+.
+.
+.
 
 
+Si valuta ora l'algoritmo.
+L'algoritmo usa $\frac{n}{2}$ processori, che si dimezzano a partire dal secondo passo.
+Il tempo dell'algorito parallelo, sapendo che l'altezza dell'albero è $\log_{2}(n)$, è sicuramente logaritmico. Dal punto di vista delle singole microistruzioni, il processore esegue due LOAD, una ADD ed una STORE. Il processore utilizza quindi $4$ istruzioni. Il tempo totale è $4\log_{2}(n)$.
 
+Serve un piccolo accorgimento nel caso in cui $n$ non sia potenza di $2$.
+Nel caso in cui $n$ non lo fosse, l'albero non sarebbe più bilanciato.
+Si mettono quindi tanti $0$ in coda all'input fino a raggiungere la lunghezza della successiva potenza di $2$. Si è scelto il valore $0$ in quanto elemento neutro della somma.
+La potenza di $2$ successiva si troverà tra $n$ e $2n$.
+Pertanto, si avra:
 
+$$p(n) = \frac{2n}{n} = n$$
+$$T(n, n) = 4\log_{2}(2n) = 5 \log_{2}(n)$$
 
+Di conseguenza
 
+$$p(n) = O(n) \quad \text{ e } \quad T(n,n) = O(\log(n))$$
+$$E(n,n) = \frac{n-1}{n \cdot 5\log_{2}(n)} \sim \frac{1}{\log_{2}(n)} \rightarrow 0$$
 
+Poichè l'efficienza tende a $0$ e i processori vengono usati al completo solo nel primo passo parallelo, si può applicare la teoria di Wyllie:
+$$p(n) = o(n) \text{ per avere } E \rightarrow k \neq 0$$
 
+Invece di considerare $\frac{n}{2}$ processori, si considerino soltanto $p$ processori ( con $p$ incognita). Questi processori devono prendersi in carico la somma non più di 2 numeri ma di una quantità maggiore, $\delta = \frac{n}{p}$.
+Al $1°$ passo parallelo, per $1 \leq k \leq p$, vale:
+
+$$M[k\delta] = M[k\delta] + ... + M[(k-1)\delta + 1]$$
+
+Nei passi paralleli successivi, si usa l'algoritmo parallelo per SOMMATORIA sulle celle $M[\delta], M[2\delta], ..., M[p\delta]$, il quale memorizza il dato finale in $M[p\delta] = M[n] = \sum_{i}M[i]$.
+L'algoritmo è quindi corretto.
+
+Si valuta ora l'algoritmo.
+$$p(n) = p$$
+$$T(n, p) = T(\text{primo passo}) + T(\text{passi successivi}) = \frac{n}{p} + 5\log(p)$$
+$$E(n, p(n)) = \frac{n-1}{p(\frac{n}{p} + 5 \log(p)} = \frac{n-1}{n + 5p\log(p)} \rightarrow 0$$
+$$E \sim \frac{n}{2n} \rightarrow \frac{1}{2}$$
+
+Tutto questo vale solo nel caso in cui si riesca a far valere $p\log(p) = \frac{n}{5}$ cioè $p = \frac{n}{5\log(n)}$.
+
+Ricapitolando
+$$p(n) = \frac{n}{5\log(n)}$$
+$$T(n, p(n)) = 5\log(n) + 5\log(n) - ... \leq 10\log(n)$$
+
+E' stato utilizzato un numero di processori sottolineare e si è mantenuto il tempo logaritmico.
+E' possibile ottenere un tempo migliore rispetto al tempo logaritmico ottenuto per il problema SOMMATORIA?
+E' possibile dimostrare l'esistenza di un lower bound tramite un [[Albero]]. Le foglie di questo albero sono i numeri da sommare ed i livelli dell'albero sono i passi paralleli. il livello con più nodi restituisce anche il numero di processori e l'altezza dell'albero restituisce il tempo dell'algoritmo.
+Il numero di foglie di un albero vincola la minima altezza dell'albero. Dato un albero con $n$ foglie e di altezza $h$.
+
+$$h \geq \log_{2}(n)$$
