@@ -141,7 +141,7 @@ $$ 1 = E(n,1) = E(n, \frac{p}{p}) \geq E(n,\frac{p}{k}) \geq E(n, p)$$
 
 Attenzione però a mantenere $T(n, \frac{p}{k}) = o(T(n,1))$, (altrimenti non ha senso parlare di algoritmo parallelo (perchè $E(n,1) = 1$ ma $T(n,p=1) = T(n,1)$, cioè sequenziale)
 
-### Sommatoria ###
+### SOMMATORIA ###
 Si vuole trovare un algoritmo parallelo per risolvere il problema **Sommatoria**, un problema guida.
 Ci si approccia con la tecnica della scomposizione del problema in sottoproblemi, per poi effettuare la fusione dei risultati.
 Lo schema risolutivo di un problema guida potrà essere applicato per trovare la soluzione di altri problemi di operazioni associative.
@@ -149,7 +149,8 @@ Inoltre, un problema guida è un problema talmente diffuso che si trova spesso c
 
 **Definizione del problema**
 
-**Input**: $M[1], M[2], ..., M[n]$ 
+**Input**: $M[1], M[2], ..., M[n]$
+
 **Output**: $M[n] = \sum_{i=1}^{n} M[i]$
 
 L'algoritmo sequenziale risolve il problema in questo modo:
@@ -269,3 +270,58 @@ E' possibile dimostrare l'esistenza di un lower bound tramite un [[Albero]]. Le 
 Il numero di foglie di un albero vincola la minima altezza dell'albero. Dato un albero con $n$ foglie e di altezza $h$.
 
 $$h \geq \log_{2}(n)$$
+
+### SOMMATORIA come schema per altri problemi ###
+
+Si osservi il problema OP ITERATA, del quale SOMMATORIA è un caso particolare.
+
+**Definizione del problema**
+
+**Input**: $M[1], M[2], ..., M[n]$
+
+**Output**: $Op_{i}M[i] \rightarrow M[n]$
+
+Dove OP è un'operazione associativa. Nel caso in cui OP sia la somma, ci si ritrova nel problema SOMMATORIA.
+Si ottiene una soluzione efficiente parallela
+
+$$P=O)\frac{n}{\log(n)}$$
+$$T=O(\log(n))$$
+
+In realtà, con P-RAM più potenti, è possibile ottenere un tempo costante.
+Si supponga di avere una CRCW P-RAM.
+
+### $\wedge$ ITERATO ###
+
+**Definizione del problema**
+
+**Input**: $M[1], M[2], ..., M[n]$ 
+**Output**: $M[n] = \bigwedge_{i} M[i]$
+
+E' possibile scrivere un algoritmo che risolve questo problema in tempo costante grazie alla P-RAM più potente. Il vantaggio maggiore in questo caso è quello di poter fare scritture concorrenti, dovuto al fatto che con l'operazione $\wedge$ tra più operandi, basta una sola variabile con valore $0$ per rendere nullo anche il risultato.
+
+<code>
+for 1<=k<=n parallel do
+</code>
+
+<code>
+	if M[k] = p then
+</code>
+
+<code>
+		M[n] = 0
+</code>
+
+Si ha una scrittura concorrente del valore $0$ nella cella $M[n]$. E' necessario adottare una politica per gestire le scritture concorrenti.
+
+Si valuta ora l'algoritmo.
+$$p(n) = n$$
+$$T(n,n) = 3$$
+$$E(n, n) = \frac{n-1}{3n} \rightarrow \frac{1}{3}$$
+
+Non solo questo algoritmo fa da guida per le soluzioni ai problemi OP ITERATO ma anche per altri problemi, quali:
+- PRODOTTO INTERNO DI VETTORI;
+- PRODOTTO MATRICE VETTORE;
+- PRODOTTO MATRICE MATRICE;
+- POTENZA DI UNA MATRICE.
+
+

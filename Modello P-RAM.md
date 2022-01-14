@@ -24,6 +24,6 @@ I tipi delle istruzioni possibili per il processore $p_{i}$ sono:
 
 Si opera solamente sui dati nelle memorie private e non su quelli nella memoria centrale.
 
-Un programma nella PRAM può risiedere sia nella memoria centrale che in quella privata dei processori. Esiste però un unico programma per tutti i processori ed essi caricano le istruzioni una dopo l'altra.
+Un programma nella P-RAM può risiedere sia nella memoria centrale che in quella privata dei processori. Esiste però un unico programma per tutti i processori ed essi caricano le istruzioni una dopo l'altra.
 Ad ogni ciclo di clock (condiviso), i processori caricano una istruzione del programma ed ogni $p_{i}$ esegue quasi la stessa istruzione.
 
