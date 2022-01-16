@@ -1,13 +1,13 @@
-In determinate situazioni, la velocità di esecuzione di un compito è l'elemento critico. In questi casi, può essere utile far eseguire il compito a più processori, sperando che l'aumento di risorse sia compensato da una diminuzione del tempo di calcolo.
+In determinate situazioni, la velocità di esecuzione di un compito è l'elemento critico. In questi casi, può essere utile far eseguire questo compito a più processori, sperando che l'aumento di risorse sia compensato da una diminuzione del tempo di calcolo.
 [[Algoritmi]] sottintende, oltre alla stessa definizione, che l'esecutore è unico.
 Nel caso di **Algoritmi Paralleli e Distribuiti**, è chiave la presenza di un pool di esecutori e non si può parlare più di sequenza di istruzioni generiche ma di insiemi di istruzioni raggruppate in **passi paralleli**. In ogni passo parallelo si avrà un set di istruzioni, in cui ci sarà **al più** un'istruzione per esecutore.
 I modelli di calcolo in cui siano presenti più processori che lavorano contemporaneamente sono detti **paralleli**, così come il modello dotato di un solo processore è detto **sequenziale**.
-Con più processori, sono possibili due situazioni differenti:
-- Un solo [[Clock]] condiviso tra tutti i processori del sistema;
+Con più processori, sono possibili due differenti implementazioni:
+- Un solo [[Clock]], condiviso tra tutti i processori del sistema;
 - Un clock per ciascun processore.
 
 In entrambi i casi, sia per gli algoritmi paralleli sia per gli algoritmi distribuiti, la risorsa **Tempo** è cruciale.
-Il tempo è misurato come il numero di operazioni elementari richieste per risolvere il problema. Nel caso sequenziale, veniva definito formalmente come:
+Il tempo è misurato come il numero di operazioni elementari richieste per risolvere il problema. Nel caso sequenziale, viene definito formalmente come:
 
 $$T(x) = \text{ numero di operazioni elementari su $x$, se $x$ è l'istanza }$$
 
@@ -17,9 +17,9 @@ dove $t(n)$ è una funzione in $n$, con $n$ lunghezza dell'input.
 Spesso non si è interessati ad una valutazione precisa di $t(n)$, ma al suo tasso di crescita.
 A questo scopo, si utilizzano le [[Funzioni Asintotiche]].
 
-La valutazione del tempo dipende dal modello di calcolo e, inoltre, va scelto il criterio di valutazione ( **uniforme** o **logaritmico**).
+La valutazione del tempo dipende dal modello di calcolo e, inoltre, dal criterio di valutazione scelto( **uniforme** o **logaritmico**).
 
-Nel modello di calcolo, le operazioni elementari che contiamo sono le primitive messe a disposizione.
+Nel modello di calcolo, le operazioni elementari che contiamo sono solamente le operazioni primitive messe a disposizione.
 
 Bisogna prestare attenzione alla dimensione dei dati in gioco. Se si utilizza il **criterio di costo uniforme**, le operazioni elementari richiedono una sola **unità di tempo**. Se si utilizza il **criterio di costo logaritmico**, ogni operazione elementare ha un costo che dipende dal numero di bit degli operandi.
 
@@ -33,7 +33,7 @@ Nei modelli di calcolo parallelo, data la presenza di più processori, un elemen
 
 Il più semplice modello di calcolo parallelo è quello a memoria condivisa, detto [[Modello P-RAM]].
 
-Il calcolo procede per **passi**. Ad ogni passo, ogni processore può fare un'operazione sui dati che possiede, oppure può leggere o scrivere nella memoria condivisa. In particolare, è possibile selezionare un insieme di processori che eseguono tutti la stessa istruzione (su dati generalmente diversi) mentre gli altri processori restano inattivi. I processori attivi sono sincronizzati, cioè eseguono la stessa instruzione simultaneamente e l'istruzione successiva può essere eseguita solo quando tutti hanno terminato l'esecuzione.
+Il calcolo procede per **passi**. Ad ogni passo, ogni processore può fare un'operazione sui dati che possiede, oppure può leggere o scrivere nella memoria condivisa. In particolare, è possibile selezionare un insieme di processori che eseguano tutti la stessa istruzione (su dati generalmente diversi) mentre gli altri processori restano inattivi. I processori attivi sono sincronizzati, cioè eseguono la stessa instruzione simultaneamente e l'istruzione successiva può essere eseguita solo quando tutti hanno terminato l'esecuzione della precedente.
 
 Questo modello di macchine è detto di tipo **SIMD** (**SIngle Intruction Multiple Data**), il quale si contrappone all'architettura **MIMD** (**Multiple Instruction Multiple Data**).
 
@@ -59,11 +59,11 @@ Pertanto:
 $$T(n, p(n)) = \sum_{i=1}^{k(n)} t_{i}(n)$$
 
 dove:
-- $T$ dipende da $k(n)$;
+- $T$ dipende da $k(n)$, con $k(n)$ numero di passi paralleli da eseguire;
 - $T$ dipende dalla dimensione dell'input e dal criterio di costo scelto;
 - $T$ dipende da $p(n)$.
 
-Obiettivo di un algoritmo parallelo è quello di diminuire i tempi di calcolo aumentando il numero di processori: si spera di ottenere un **trade-off** tra il tempo di esecuzione ed il costo (numero di processori) che va stimato per valutare l'efficacia di un algoritmo parallelo.
+Obiettivo di un algoritmo parallelo è quello di diminuire i tempi di calcolo aumentando il numero di processori: si spera di ottenere un **trade-off** tra il tempo di esecuzione ed il costo (numero di processori), il quale va stimato per valutare l'efficacia di un algoritmo parallelo.
 
 Un primo confronto tra i tempi può essere fatto confrontando l'andamento delle funzioni di calcolo del tempo:
 Sono possibili due casi, uno non accettabile ed uno accettabile.
@@ -325,3 +325,123 @@ Non solo questo algoritmo fa da guida per le soluzioni ai problemi OP ITERATO ma
 - POTENZA DI UNA MATRICE.
 
 
+### PRODOTTO INTERNO DI VETTORI ###
+
+**Definizione del problema**
+
+**Input**: $x, y \in \mathbb{N}^{n}$
+
+**Output**: $<x, y> = \sum_{i=1}^{n} x_{i} y_{i}$
+
+La soluzione sequenziale effettua prima $n$ moltiplicazioni e poi effettua $n-1$ somme. Il tempo sequenziale è, di conseguenza $2n-1$.
+
+La soluzione EREW prevede di fare i prodotti componente per componente dei vettori ed applicare poi l'algoritmo SOMMATORIA. Poichè, in questo algoritmo, si utilizzavano $p$ processori, ogni processore dovà svolgere $\delta = \frac{n}{p}$ moltiplicazioni (sapendo che $p = \frac{n}{\log(n)}, allora \delta = \log(n))$. Nel primo passo, quindi, vengono svolti $\delta$ prodotti in sequenza per ciascun processore e, nel secondo passo, ogni processore effettuerà la somma sequenziale di questi prodotti. Nel terzo passo, vengono svolte le $p$ somme finali.
+
+...spazio per l'efficienza...
+
+### PRODOTTO MATRICE VETTORE ###
+
+**Definizione del problema**
+
+**Input**: $A \in \mathbb{N}^{n \times n}, x \in \mathbb{N}^{n}$
+
+**Output**: $Ax$
+
+La soluzione sequenziale necessita di fare il prodotto riga per colonna, che richiede il tempo di un prodotto tra vettori per il numero di vettori da moltiplicare. Il tempo sequenziale è quindi $n(2n-1) = 2n^{2} -n$.
+
+In parallelo si può pensare di fare tutti i prodotti riga $\times$ colonna, cioè utilizzare il modulo PRODOTTO INTERNO DI VETTORI  $n$ volte. Se si procede in questo modo, non si ha più, però, un algoritmo EREW perchè il vettore $x$ viene acceduto simultaneamente da più moduli. Si tratta quindi di un algoritmo CREW.
+
+Si valutano ora le prestazioni.
+$$p(n) = n \cdot \frac{n}{\log(n)}$$
+$$T(n, p(n)) = \log(n)$$
+$$E(n, p(n)) \sim \frac{n^{2}}{\frac{n^{2}}{\log(n)} \cdot \log(n)} \rightarrow c \neq 0$$
+
+### PRODOTTO MATRICE MATRICE ###
+
+**Definizione del problema**
+
+**Input**: $A, B \in \mathbb{N}^{n \times n}$
+
+**Output**: $A \cdot B$
+
+Il calcolo di una nuova matrice quadrata richiede il calcolo di $n^{2}$ componenti. Il tempo sequenziale è pari a $n^{2,80}$, risultato ottenuto dall'[[Algoritmo di Strassen]].
+
+L'idea su cui si basa l'algoritmo parallelo è usare $n^{2}$ prodotti interni in parallelo. Ogni riga di $A$ ed ogni colonna di $B$ vengono accedute simultaneamente, necessitando così di un algoritmo CREW.
+
+Si valutano ora le prestazioni.
+$$p(n) \sim n^{2} \cdot \frac{n}{\log(n)}$$
+$$T(n, p(n)) \sim \log(n)$$
+$$E(n, p(n)) \sim \frac{n^{2,8}}{\frac{n^{3}}{\log(n)} \cdot \log(n)} = \frac{n^{2,8}}{n^{3}} \rightarrow 0$$
+
+### POTENZA DI  UNA MATRICE ###
+
+**Definizione del problema**
+
+**Input**: $A \in \mathbb{N}^{n \times n}$
+
+**Output**: $A^{n}, n = 2^{k}$
+
+L'algoritmo sequenziale, nel caso di $n$ potenza di $2$, può essere svolto con uno stratagemma.
+
+<code>
+for i=1 to log(n) do
+	A = A * A
+</code>
+
+Questo pseudocodice calcola le potenze di $A$ che hanno come indice una potenza di $2$ fino ad arrivare al numero $n$. Utilizza inoltre il modulo PRODOTTO MATRICE MATRICE introdotto precedentemente.
+Poichè il modulo utilizzato necessitava di un'architettura CREW, anche questo problema necessita di tale architettura.
+Il tempo sequenziale sarà quindi $n^{2,8} \cdot \log(n)$.
+
+Si valutano ora le prestazioni.
+$$p(n) \sim n^{2} \cdot \frac{n}{\log(n)}$$
+$$T(n, p(n)) = \log(n) \cdot \log(n) = \log^{2}(n)$$
+$$E \sim \frac{n^{2,8}\log(n)}{\frac{n^{3}}{\log(n)}\cdot \log_{2}(n)} = \frac{n^{2,8}}{n^{3}} \rightarrow 0$$
+
+### SOMME PREFISSE ###
+
+**Definizione del problema**
+
+**Input**: $M[1], M[2], ..., M[n]$
+
+**Output**: $\sum_{i=1}^{k}M[i] \rightarrow M[k] \quad 1 \leq k \leq n$
+
+Si assume, per semplicità, che $n$ sia potenza di $2$.
+
+Ci sono diverse applicazioni che utilizzano SOMME PREFISSE, tra cui:
+- problemi legati ad analizzatori lessicali nei compilatori;
+- problemi di ricerca di parole nei testi.
+
+L'algoritmo sequenziale è strutturato nel seguente modo:
+
+<code>
+for k = 2 to n do
+</code>
+
+<code>
+M[k] = M[k] + M[k-1]
+</code>
+
+e termina in un tempo $n-1$.
+
+Si può ottenere un risultato migliore? E' evidente che il problema SOMME PREFISSE richieda la risoluzione del problema SOMMATORIA nell'ultima cella e che se si deve eseguire $n$ somme in sequenza, non si possono svolgere meno di $n-1$ passi. Di conseguenza, dal punto di vista sequenziale, questo è il miglior algoritmo possibile.
+
+Una proposta parallela è quella di risolvere con SOMMATORIA tutti i moduli prefissi. Si applicano $n-1$ moduli sommatoria, tutti in parallelo.
+
+![[immagineslide7]]
+
+Questo non è un algoritmo EREW ma CREW, in quanto ogni applicazione di SOMMATORIA richiederà le celle precedenti in lettura in contemporanea. 
+
+Si valutano ora le prestazioni:
+$$p(n) \leq (n-1) \cdot \frac{n}{\log(n)} \sim \frac{n^{2}}{\log(n)}$$
+In realtà $\frac{n}{\log(n)}$ è il costo dell'ultimo modulo che prende in input tutte le celle per effettuare SOMMATORIA. Si può calcolare che, in media, ogni modulo $i$ utilizzi circa
+
+$$\sum_{i=2}^{n}\frac{i}{\log(i)} \geq \frac{1}{\log(n)}\sum_{i=2}{n}i \sim \frac{n^{2}}{\log(n)}$$
+
+$$T(n, p(n)) \sim \log(n)$$
+$$E \sim \frac{n-1}{\frac{n^{2}}{\log(n)} \cdot \log(n)} \rightarrow 0$$
+
+Di conseguenza è una scelta poco efficiente.
+
+### Tecnica di Kogge-Stone [1973] ###
+
+Kogge-Stone introduce il **Pointer Doubling**.
