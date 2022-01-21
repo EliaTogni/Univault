@@ -444,4 +444,69 @@ Di conseguenza è una scelta poco efficiente.
 
 ### Tecnica di Kogge-Stone [1973] ###
 
-Kogge-Stone introduce il **Pointer Doubling**.
+Kogge-Stone introduce il **Pointer Doubling** per risolvere SOMME PREFISSE.
+Si tratta di puntatori, di link tra coppie di numeri, indicati tramite frecce.
+Ogni processore si occupa di un puntatore e ne fa la somma in questo modo:
+Dati $M[i] = m$ e $M[S[k]] = k$, sia $S[k]$ la cella di memoria contenente la distanza del successivo da $M[i]$. Questa distanza può essere interpretata come un link, un collegamento tra le due celle. Il processore assegnato a questo link esegue, al passo $0$, la somma $m + k$ e memorizza il risultato in $M[S[k]]$. Al passo $0$, quindi, l'algoritmo prende un elemento ed il suo successore e ne calcola la somma (tranne per l'ultimo elemento, in quanto privo di successore).
+Al passo $1$, l'algoritmo prende un elemento ed il suo successore non più a distanza $S[k] = 0$ bensì a distanza $S[k] = k + 1$, e ne effettua la somma (anche in questo caso non viene eseguita per l'ultimo ed il penultimo elemento, in quanto privi di successore).
+Questo algoritmo aumenta la distanza ad ogni passo successivo, fino al terminare dell'algoritmo.
+
+![[immagine]]
+
+- Quanti numeri privi di successori genera il $j$-esimo passo? $2^{j}$.
+- Quanti passi dura l'algoritmo? L'algoritmo dura fino a quando esistono successori. L'algoritmo termina quindi in $\log_{2}(n)$ passi.
+- Quali processori vengono attivati al $j$-esimo passo? I processori attivati sono $1 \leq k \leq n-2^{j-1}$
+- Sia S[k] la posizione del successivo di M[k]. Come viene inizializzato S? Viene inizializzato come S[k] = k+1 e S[n] = 0
+- Dato $p[k]$, quale istruzione su $M$ deve eseguire? $M[k]+M[S[k]] \rightarrow M[S[k]]$
+- Come deve essere svolto l'aggiornamento di S? $S[k]=(S[k] == 0? 0 : S[S[k]])$
+
+<code>
+	for j = 1 to log(n) do
+</code>
+
+<code>
+	for 1 <= k <=  n - 2^(j-1) par do
+</code>
+
+<code>
+	M[S[k] = M[k] + M[S[k]]
+</code>
+
+<code>
+	S[k] = (S[k] == 0? 0 : S[S[k]])
+</code>
+
+I processori non competono per accedere alla stessa cella. Si sta risolvendo il problema con un architettura EREW.
+
+![[immagine2]]
+
+.
+.
+.
+
+La correttezza dell'algoritmo si dimostra mostrando che, per $1 \leq k \leq n$ si ha in M[k] la somma degli elementi precedenti
+
+$$M[k] = \sum_{i=1}^{k} M[i]$$
+
+Al $j$-esimo passo si avrà
+
+$$M[t] = \Bigg\{ M[t] + ... + M[1] \quad t \leq 2^{j}
+				 M[t] + ... +M[t-2^{j}+1] \quad t > 2^{j}
+$$
+
+**Dimostrazione per induzione**
+
+Se l'algoritmo al $j$-esimo passo è corretto, si ha per $j= \log(n)$
+
+$$M[t] = \Bigg\{ M[t] + ... + M[1] \quad \text{ per } t \leq 2^j = 2^{\log(n)} = n
+
+... \quad \text{ per } t < 2^j = n
+$$
+
+**Caso base**:
+
+$$j=1 \quad \text{ per } t \leq 2 \quad \quad \text{ se } t = 1 \quad \quad M[1] = M[1]$$
+$$\quad\quad\quad \qquad \qquad \qquad \qquad \qquad \text{se } t = 2 \quad \quad M[2] = M[1] + M[2]$$
+
+
+
