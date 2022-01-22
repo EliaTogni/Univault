@@ -1,7 +1,7 @@
 In determinate situazioni, la velocità di esecuzione di un compito è l'elemento critico. In questi casi, può essere utile far eseguire questo compito a più processori, sperando che l'aumento di risorse sia compensato da una diminuzione del tempo di calcolo.
-[[Algoritmi]] sottintende, oltre alla stessa definizione, che l'esecutore è unico.
+Il termine [[Algoritmi]] sottintende, oltre alla stessa definizione, che l'esecutore è unico.
 Nel caso di **Algoritmi Paralleli e Distribuiti**, è chiave la presenza di un pool di esecutori e non si può parlare più di sequenza di istruzioni generiche ma di insiemi di istruzioni raggruppate in **passi paralleli**. In ogni passo parallelo si avrà un set di istruzioni, in cui ci sarà **al più** un'istruzione per esecutore.
-I modelli di calcolo in cui siano presenti più processori che lavorano contemporaneamente sono detti **paralleli**, così come il modello dotato di un solo processore è detto **sequenziale**.
+I modelli di calcolo in cui sono presenti più processori che lavorano contemporaneamente sono detti **paralleli**, così come il modello di calcolo dotato di un solo processore è detto **sequenziale**.
 Con più processori, sono possibili due differenti implementazioni:
 - Un solo [[Clock]], condiviso tra tutti i processori del sistema;
 - Un clock per ciascun processore.
@@ -9,7 +9,7 @@ Con più processori, sono possibili due differenti implementazioni:
 In entrambi i casi, sia per gli algoritmi paralleli sia per gli algoritmi distribuiti, la risorsa **Tempo** è cruciale.
 Il tempo è misurato come il numero di operazioni elementari richieste per risolvere il problema. Nel caso sequenziale, viene definito formalmente come:
 
-$$T(x) = \text{ numero di operazioni elementari su $x$, se $x$ è l'istanza }$$
+$$T(x) = \text{ numero di operazioni elementari su $x$, con $x$ istanza }$$
 
 $$t(n) = MAX\Bigg\{T(x) \quad|\quad x \in \sum^{n}\Bigg\}$$
 
@@ -17,7 +17,7 @@ dove $t(n)$ è una funzione in $n$, con $n$ lunghezza dell'input.
 Spesso non si è interessati ad una valutazione precisa di $t(n)$, ma al suo tasso di crescita.
 A questo scopo, si utilizzano le [[Funzioni Asintotiche]].
 
-La valutazione del tempo dipende dal modello di calcolo e, inoltre, dal criterio di valutazione scelto( **uniforme** o **logaritmico**).
+La valutazione del tempo dipende dal modello di calcolo e, inoltre, dal criterio di valutazione scelto (**uniforme** o **logaritmico**).
 
 Nel modello di calcolo, le operazioni elementari che contiamo sono solamente le operazioni primitive messe a disposizione.
 
@@ -83,11 +83,11 @@ Con efficienza, invece, si intende quanto lavoro viene svolto da un singolo proc
 
 Poichè $E_{A}(n,p) = \frac{T_{A}(n,1)}{p \cdot T_{A}(n,p)}$, l'efficienza risulta essere il rapporto tra il tempo dell'algoritmo sequenziale ed il tempo totale consumato dai processori, come se fossero usati sequenzialmente. In particolar modo, è bene scegliere $T_{A}(n,1)$ come il tempo del miglior algoritmo sequenziale.
 
-Per il parametro $E$ vale che $0 \leq E(n, p(n)) \leq 1$. Quando $E \rightarrow 0$, si stanno utilizzando troppi processori che, probabilmente, vengono inutilizzati per la maggioranza del tempo.
+Per il parametro $E$ vale che $0 \leq E(n, p(n)) \leq 1$. Quando $E \rightarrow 0$, si stanno utilizzando troppi processori che, probabilmente, rimangono inutilizzati per la maggioranza del tempo.
 
 Si dimostra ora che $E \leq 1$.
 Si esegue una trasformazione per passare da un algoritmo parallelo ad uno sequenziale (non è detto che sia il migliore). Si vuole valutare il tempo dell'algoritmo sequenziale così ottenuto. Si indica con $t_{i}(n)$ il tempo dell'istruzione più lunga al passo parallelo $i$, con $1 \leq i \leq k$.
-Si definisce $\tilde T(n,1)$ il tempo dell'algoritmo sequenziale così ottenuto. Chiaramente, il tempo di questo algoritmo sequenziale è maggiore uguale del tempo del miglior algoritmo sequenziale per un determinato problema.
+Si definisce $\tilde T(n,1)$ il tempo dell'algoritmo sequenziale così ottenuto. Chiaramente, il tempo di questo algoritmo sequenziale è $\geq$ del tempo del miglior algoritmo sequenziale per un determinato problema.
 
 $$T(n,1) \leq \tilde T(n,1) \leq p(n) \cdot t_{1}(n) + ... + p(n) \cdot t_{k(n)}(n)$$
 
@@ -111,7 +111,7 @@ Sapendo che $\frac{T(n,1)}{p(n)T(n, p(n)))} = E(n, p(n))$, allora si ha dimostra
 
 
 ### Teorema di Wyllie [1979, PhD Thesis] ###
-Se $E \rightarrow 0$, allora per migliorare l'algoritmo, si provi a ridurre $p(n)$ senza degradare il tempo.
+Se $E \rightarrow 0$, allora per migliorare l'algoritmo si provi a ridurre $p(n)$ senza degradare il tempo.
 
 Dato un algoritmo $A$, il quale lavora con $p$ processori con una data efficienza $E$, è in generale possibile estendere l'algoritmo a lavorare con un numero inferiore di processori senza che l'efficienza diminuisca significativamente.
 

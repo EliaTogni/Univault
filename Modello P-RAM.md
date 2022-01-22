@@ -1,6 +1,6 @@
-Il **Modello P-RAM** consiste di _p-processori_ con una memoria globale, condivisa da tutti. Ogni singolo processore $p_i$ è una RAM sequenziale, costituita da un'[[ALU]] e i suoi registri personali, che costituiscono la memoria privata del processore, indicati con $R[n]$.
+Il **Modello P-RAM** consiste di _p-processori_ con una memoria globale, condivisa da tutti. Ogni singolo processore $p_i$ è una RAM sequenziale, costituita da un'[[ALU]] e dai suoi registri personali, che costituiscono la memoria privata del processore, indicati con $R[n]$.
 
-![[placeholderPRAM]]
+![[ModelloPRAM.png]]
 
 La memoria globale è usata dai processori per scambiarsi dati in tempo $O(1)$:
 perchè il processore $k$ e il processore $j$ si scambino un valore, basta che il procesore $k$ scriva tale valore in una variabile condivisa e che il processore $j$ vi acceda in lettura.
