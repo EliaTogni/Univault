@@ -35,7 +35,7 @@ Il più semplice modello di calcolo parallelo è quello a memoria condivisa, det
 
 Il calcolo procede per **passi**. Ad ogni passo, ogni processore può fare un'operazione sui dati che possiede, oppure può leggere o scrivere nella memoria condivisa. In particolare, è possibile selezionare un insieme di processori che eseguano tutti la stessa istruzione (su dati generalmente diversi) mentre gli altri processori restano inattivi. I processori attivi sono sincronizzati, cioè eseguono la stessa instruzione simultaneamente e l'istruzione successiva può essere eseguita solo quando tutti hanno terminato l'esecuzione della precedente.
 
-Questo modello di macchine è detto di tipo **SIMD** (**SIngle Intruction Multiple Data**), il quale si contrappone all'architettura **MIMD** (**Multiple Instruction Multiple Data**).
+Questo modello di macchine è detto di tipo **SIMD** (**SIngle Instruction Multiple Data**), il quale si contrappone all'architettura **MIMD** (**Multiple Instruction Multiple Data**).
 
 Per semplicità, in seguito si farà riferimento al modello EREW, il più realistico.
 Un vantaggio sostanziale di questa scelta è che un algoritmo funzionante su un modello EREW è funzionante anche sui modelli successivi.
@@ -81,7 +81,7 @@ L'ideale sarebbe avere questo valore tendente ad $\infty$. Questo indica esattam
 Non avendo, però, il numero di processori $p(n)$ al di fuori della funzione di tempo, non si è in grado di stabilire se si è utilizzato un numero realistico e, soprattutto, vantaggioso.
 Con efficienza, invece, si intende quanto lavoro viene svolto da un singolo processore. 
 
-Poichè $E_{A}(n,p) = \frac{T_{A}(n,1)}{p \cdot T_{A}(n,p)}$, l'efficienza risulta essere il rapporto tra il tempo dell'algoritmo sequenziale ed il tempo totale consumato dai processori, come se fossero usati sequenzialmente. In particolar modo, è bene scegliere $T_{A}(n,1)$ come il tempo del miglior algoritmo sequenziale.
+Poichè $E_{A}(n,p(n)) = \frac{T_{A}(n,1)}{p(n) \cdot T_{A}(n,p(n))}$, l'efficienza risulta essere il rapporto tra il tempo dell'algoritmo sequenziale ed il tempo totale consumato dai processori, come se fossero usati sequenzialmente. In particolar modo, è bene scegliere $T_{A}(n,1)$ come il tempo del miglior algoritmo sequenziale.
 
 Per il parametro $E$ vale che $0 \leq E(n, p(n)) \leq 1$. Quando $E \rightarrow 0$, si stanno utilizzando troppi processori che, probabilmente, rimangono inutilizzati per la maggioranza del tempo.
 
