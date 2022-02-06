@@ -27,6 +27,9 @@ Questo comando crea una sottodirectory chiamata <code> .git </code>, la quale co
 	git branch -M main
 </code>
 
+<code>
+	git branch -M main
+</code>
 
 ### Clonazione di una repository esistente ###
 
