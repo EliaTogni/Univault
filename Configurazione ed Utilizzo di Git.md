@@ -16,15 +16,18 @@ Questo comando crea una sottodirectory chiamata <code> .git </code>, la quale co
 
 ### Creazione di un nuovo controllo versione di un file esistente ###
 
-<code> git add nomefile.ext
-			   git add LICENSE
-			   </code> 
+<code> 
+	git add nomefile.ext
+</code> 
+
+<code> 
+	git add LICENSE
+</code> 
 
 ### Collegamento di una repository Git ad una repository Github ###
 
 <code>
 	git remote add origin LINK
-	git branch -M main
 </code>
 
 <code>
