@@ -322,7 +322,9 @@ Si supponga di avere una CRCW P-RAM.
 **Input**: $M[1], M[2], ..., M[n]$ <br />
 **Output**: $M[n] = \bigwedge_{i} M[i]$
 
-E' possibile scrivere un algoritmo che risolve questo problema in tempo costante grazie alla P-RAM più potente. Il vantaggio maggiore in questo caso è quello di poter fare scritture concorrenti, dovuto al fatto che con l'operazione $\wedge$ tra più operandi, basta una sola variabile con valore $0$ per rendere nullo anche il risultato.
+E' possibile scrivere un algoritmo che risolve questo problema in tempo costante grazie alla P-RAM più potente.<br />
+Il vantaggio maggiore in questo caso è quello di poter fare scritture concorrenti, dovuto al fatto che con l'operazione $\wedge$ tra più operandi, basta una sola variabile con valore $0$ per rendere nullo anche il risultato.<br />
+Da questa intuizione, si può progettare il seguente algoritmo:
 
 <code>
 for 1<=k<=n parallel do
@@ -336,13 +338,14 @@ for 1<=k<=n parallel do
 		M[n] = 0
 </code>
 
-Si ha una scrittura concorrente del valore $0$ nella cella $M[n]$. E' necessario adottare una politica per gestire le scritture concorrenti.
+Si ha una scrittura concorrente del valore $0$ nella cella $M[n]$. E' necessario quindi adottare una politica per gestire queste scritture concorrenti.
 
 Si valuta ora l'algoritmo.
 $$p(n) = n$$
 $$T(n,n) = 3$$
 $$E(n, n) = \frac{n-1}{3n} \rightarrow \frac{1}{3}$$
 
+Una soluzione simile si può applicare al problema $\vee$ ITERATO. <br />
 Non solo questo algoritmo fa da guida per le soluzioni ai problemi OP ITERATO ma anche per altri problemi, quali:
 - PRODOTTO INTERNO DI VETTORI;
 - PRODOTTO MATRICE VETTORE;
@@ -354,30 +357,45 @@ Non solo questo algoritmo fa da guida per le soluzioni ai problemi OP ITERATO ma
 
 **Definizione del problema**
 
-**Input**: $x, y \in \mathbb{N}^{n}$
-
+**Input**: $x, y \in \mathbb{N}^{n}$<br />
 **Output**: $<x, y> = \sum_{i=1}^{n} x_{i} y_{i}$
 
 La soluzione sequenziale effettua prima $n$ moltiplicazioni e poi effettua $n-1$ somme. Il tempo sequenziale è, di conseguenza $2n-1$.
 
-La soluzione EREW prevede di fare i prodotti componente per componente dei vettori ed applicare poi l'algoritmo SOMMATORIA. Poichè, in questo algoritmo, si utilizzavano $p$ processori, ogni processore dovà svolgere $\delta = \frac{n}{p}$ moltiplicazioni (sapendo che $p = \frac{n}{\log(n)}, allora \delta = \log(n))$. Nel primo passo, quindi, vengono svolti $\delta$ prodotti in sequenza per ciascun processore e, nel secondo passo, ogni processore effettuerà la somma sequenziale di questi prodotti. Nel terzo passo, vengono svolte le $p$ somme finali.
+La soluzione EREW prevede di svolgere i prodotti componente per componente dei vettori ed applicare poi l'algoritmo SOMMATORIA. Poichè, in questo algoritmo, venivano utilizzati $p$ processori, ogni processore dovrà svolgere $\Delta = \frac{n}{p}$ moltiplicazioni (sapendo che $p = \frac{n}{\log(n)}, allora \Delta = \log(n))$. Nel primo passo, quindi, vengono svolti $\Delta$ prodotti in sequenza per ciascuno dei $p$ processori e, nel secondo passo, ogni processore effettuerà la somma sequenziale di questi prodotti. Nel terzo passo, vengono svolte le $p$ somme finali in parallelo.<br />
+I primi due passi compongono la prima fase mentre il terzo passo compone la seconda fase.<br />
 
-...spazio per l'efficienza...
+Si valutano ora le prestazioni dell'algoritmo.<br />
+
+Seconda fase:
+$$p(n) = c_{1}\frac{n}{log(n)}$$
+$$T_{II}(n, p(n)) = c_{2}\log(n)$$
+
+Prima fase:
+$$p = \frac{n}{\log(n)} \rightarrow \Delta = \frac{n}{p} = \log(n)$$
+$$T_{I}(n, p(n)) = c_{3}\log(n)$$
+
+Riassumendo:
+$$<x, y> \text{ costa:}\qquad p \sim \frac{n}{\log(n)} \qquad T = T_{I} + T_{II} \sim \log(n)$$
+$$E \sim \frac{2n -1}{\frac{n}{\log(n)}\cdot \log(n)} \rightarrow c \neq 0$$
+
+Questo problema, a sua volta, è modulo di altri problemi, come, banalmente, il problema PRODOTTO MATRICE VETTORE.
 
 ### PRODOTTO MATRICE VETTORE ###
 
 **Definizione del problema**
 
-**Input**: $A \in \mathbb{N}^{n \times n}, x \in \mathbb{N}^{n}$
-
+**Input**: $A \in \mathbb{N}^{n \times n}, x \in \mathbb{N}^{n}$<br />
 **Output**: $Ax$
 
 La soluzione sequenziale necessita di fare il prodotto riga per colonna, che richiede il tempo di un prodotto tra vettori per il numero di vettori da moltiplicare. Il tempo sequenziale è quindi $n(2n-1) = 2n^{2} -n$.
 
-In parallelo si può pensare di fare tutti i prodotti riga $\times$ colonna, cioè utilizzare il modulo PRODOTTO INTERNO DI VETTORI  $n$ volte. Se si procede in questo modo, non si ha più, però, un algoritmo EREW perchè il vettore $x$ viene acceduto simultaneamente da più moduli. Si tratta quindi di un algoritmo CREW.
+In parallelo si può pensare di fare tutti i prodotti riga $\times$ colonna, cioè utilizzare il modulo PRODOTTO INTERNO DI VETTORI  $n$ volte. Se si procede in questo modo, non si ha più, però, un algoritmo EREW perchè il vettore $x$ viene acceduto simultaneamente da più moduli. Si tratta quindi di un algoritmo CREW.<br />
+Si può, però, evitare questo accesso simultaneo al vettore $x$ sfruttando la soluzione al problema REPLICA, la quale chiede, dato un valore $\alpha$ in una cella, di replicare $\alpha \text{ } n$ volte.
 
-Si valutano ora le prestazioni.
+Si valutano ora le prestazioni dell'algoritmo.<br />
 $$p(n) = n \cdot \frac{n}{\log(n)}$$
+ovvero il costo di un prodotto vettore vettore per ognuno degli $n$ prodotti interni.<br />
 $$T(n, p(n)) = \log(n)$$
 $$E(n, p(n)) \sim \frac{n^{2}}{\frac{n^{2}}{\log(n)} \cdot \log(n)} \rightarrow c \neq 0$$
 
@@ -385,15 +403,17 @@ $$E(n, p(n)) \sim \frac{n^{2}}{\frac{n^{2}}{\log(n)} \cdot \log(n)} \rightarrow 
 
 **Definizione del problema**
 
-**Input**: $A, B \in \mathbb{N}^{n \times n}$
-
+**Input**: $A, B \in \mathbb{N}^{n \times n}$<br />
 **Output**: $A \cdot B$
 
-Il calcolo di una nuova matrice quadrata richiede il calcolo di $n^{2}$ componenti. Il tempo sequenziale è pari a $n^{2,80}$, risultato ottenuto dall'[[Algoritmo di Strassen]].
+Il problema consta, banalmente, del prodotto tra due matrici preesistenti e, quindi, calcolare una nuova matrice.<br />
+Il calcolo di una nuova matrice quadrata richiede il calcolo di $n^{2}$ componenti.<br />
+Il tempo sequenziale è pari a $n^{2,80}$, risultato ottenuto dall'[[Algoritmo di Strassen]], il miglior algoritmo sequenziale per il prodotto tra due matrici.
 
-L'idea su cui si basa l'algoritmo parallelo è usare $n^{2}$ prodotti interni in parallelo. Ogni riga di $A$ ed ogni colonna di $B$ vengono accedute simultaneamente, necessitando così di un algoritmo CREW.
+L'idea su cui si basa l'algoritmo parallelo è usare $n^{2}$ prodotti interni in parallelo. Ogni riga di $A$ ed ogni colonna di $B$ vengono accedute simultaneamente, necessitando così di un algoritmo CREW.<br />
+Si necessita quindi di un'architettura che permetta la concurrent read.<br />
 
-Si valutano ora le prestazioni.
+Si valutano ora le prestazioni dell'algoritmo.<br />
 $$p(n) \sim n^{2} \cdot \frac{n}{\log(n)}$$
 $$T(n, p(n)) \sim \log(n)$$
 $$E(n, p(n)) \sim \frac{n^{2,8}}{\frac{n^{3}}{\log(n)} \cdot \log(n)} = \frac{n^{2,8}}{n^{3}} \rightarrow 0$$
@@ -402,23 +422,26 @@ $$E(n, p(n)) \sim \frac{n^{2,8}}{\frac{n^{3}}{\log(n)} \cdot \log(n)} = \frac{n^
 
 **Definizione del problema**
 
-**Input**: $A \in \mathbb{N}^{n \times n}$
-
+**Input**: $A \in \mathbb{N}^{n \times n}$<br />
 **Output**: $A^{n}, n = 2^{k}$
 
-L'algoritmo sequenziale, nel caso di $n$ potenza di $2$, può essere svolto con uno stratagemma.
+L'algoritmo sequenziale, nel caso di $n$ potenza di $2$, può essere svolto con uno stratagemma. Si calcolano solamente non le potenze fino ad $n$ ma tutte quelle che sono potenze di $2$.
 
 <code>
 for i=1 to log(n) do
+</code>
+
+<code>
 	A = A * A
 </code>
 
-Questo pseudocodice calcola le potenze di $A$ che hanno come indice una potenza di $2$ fino ad arrivare al numero $n$. Utilizza inoltre il modulo PRODOTTO MATRICE MATRICE introdotto precedentemente.
+Questo pseudocodice calcola le potenze di $A$ che hanno come indice una potenza di $2$ fino ad arrivare al numero $n$. <br />
+Per creare l'algoritmo parallelo, viene sfruttata l'idea di questo algoritmo sequenziale e si esegue esattamente questo algoritmo ma, al posto di fare il prodotto sequenziale matrice per matrice, si sostituisce alla moltiplicazione sequenziale quella parallela, che è il prodotto $A \cdot B$ ottenuto tramite problema PRODOTTO MATRICE MATRICE.<br />
 Poichè il modulo utilizzato necessitava di un'architettura CREW, anche questo problema necessita di tale architettura.
-Il tempo sequenziale sarà quindi $n^{2,8} \cdot \log(n)$.
+Il tempo sequenziale sarà quindi $n^{2,8} \cdot \log(n)$.<br />
 
-Si valutano ora le prestazioni.
-$$p(n) \sim n^{2} \cdot \frac{n}{\log(n)}$$
+Si valutano ora le prestazioni dell'algoritmo.<br />
+$$p(n) \sim n^{2} \cdot \frac{n}{\log(n)} = \frac{n^{3}}{\log(n)}$$
 $$T(n, p(n)) = \log(n) \cdot \log(n) = \log^{2}(n)$$
 $$E \sim \frac{n^{2,8}\log(n)}{\frac{n^{3}}{\log(n)}\cdot \log_{2}(n)} = \frac{n^{2,8}}{n^{3}} \rightarrow 0$$
 
@@ -426,9 +449,8 @@ $$E \sim \frac{n^{2,8}\log(n)}{\frac{n^{3}}{\log(n)}\cdot \log_{2}(n)} = \frac{n
 
 **Definizione del problema**
 
-**Input**: $M[1], M[2], ..., M[n]$
-
-**Output**: $\sum_{i=1}^{k}M[i] \rightarrow M[k] \quad 1 \leq k \leq n$
+**Input**: $M[1], M[2], ..., M[n]$<br />
+**Output**: $\sum_{i=1}^{k}M[i] \rightarrow M[k] \text{, } \quad 1 \leq k \leq n$
 
 Si assume, per semplicità, che $n$ sia potenza di $2$.
 
@@ -450,22 +472,22 @@ e termina in un tempo $n-1$.
 
 Si può ottenere un risultato migliore? E' evidente che il problema SOMME PREFISSE richieda la risoluzione del problema SOMMATORIA nell'ultima cella e che se si deve eseguire $n$ somme in sequenza, non si possono svolgere meno di $n-1$ passi. Di conseguenza, dal punto di vista sequenziale, questo è il miglior algoritmo possibile.
 
-Una proposta parallela è quella di risolvere con SOMMATORIA tutti i moduli prefissi. Si applicano $n-1$ moduli sommatoria, tutti in parallelo.
+Una proposta parallela è quella di risolvere con SOMMATORIA tutti i moduli prefissi. Si applicano $n-1$ moduli SOMMATORIA, tutti in parallelo.
 
-![[immagineslide7]]
+![[SommePrefisseParallelo.png]]
 
-Questo non è un algoritmo EREW ma CREW, in quanto ogni applicazione di SOMMATORIA richiederà le celle precedenti in lettura in contemporanea. 
+Questo non è, ovviamente, un algoritmo EREW bensì CREW, in quanto ogni applicazione di SOMMATORIA richiederà le celle precedenti in lettura contemporanea. 
 
-Si valutano ora le prestazioni:
+Si valutano ora le prestazioni dell'algoritmo.<br />
 $$p(n) \leq (n-1) \cdot \frac{n}{\log(n)} \sim \frac{n^{2}}{\log(n)}$$
-In realtà $\frac{n}{\log(n)}$ è il costo dell'ultimo modulo che prende in input tutte le celle per effettuare SOMMATORIA. Si può calcolare che, in media, ogni modulo $i$ utilizzi circa
+In realtà $\frac{n}{\log(n)}$ è il costo dell'ultimo modulo che prende in input tutte le celle per effettuare SOMMATORIA. Si può calcolare che, in media, ogni modulo $i$ utilizzi un numero di processori di circa
 
-$$\sum_{i=2}^{n}\frac{i}{\log(i)} \geq \frac{1}{\log(n)}\sum_{i=2}{n}i \sim \frac{n^{2}}{\log(n)}$$
+$$\sum_{i=2}^{n}\frac{i}{\log(i)} \geq \frac{1}{\log(n)}\sum_{i=2}^{n}i \sim \frac{n^{2}}{\log(n)}$$
 
 $$T(n, p(n)) \sim \log(n)$$
 $$E \sim \frac{n-1}{\frac{n^{2}}{\log(n)} \cdot \log(n)} \rightarrow 0$$
 
-Di conseguenza è una scelta poco efficiente.
+Di conseguenza, la proposta analizzata risulta essere una scelta poco efficiente.
 
 ### Tecnica di Kogge-Stone [1973] ###
 
