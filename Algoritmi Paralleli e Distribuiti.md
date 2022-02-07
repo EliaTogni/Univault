@@ -1,13 +1,13 @@
-In determinate situazioni, la velocità di esecuzione di un compito è l'elemento critico. In questi casi, può essere utile far eseguire questo compito a più processori, sperando che l'aumento di risorse sia compensato da una diminuzione del tempo di calcolo.
-Il termine [[Algoritmi]] sottintende, oltre alla stessa definizione, che l'esecutore è unico.
-Nel caso di **Algoritmi Paralleli e Distribuiti**, è chiave la presenza di un pool di esecutori e non si può parlare più di sequenza di istruzioni generiche ma di insiemi di istruzioni raggruppate in **passi paralleli**. In ogni passo parallelo si avrà un set di istruzioni, in cui ci sarà **al più** un'istruzione per esecutore.
-I modelli di calcolo in cui sono presenti più processori che lavorano contemporaneamente sono detti **paralleli**, così come il modello di calcolo dotato di un solo processore è detto **sequenziale**.
+In determinate situazioni, la velocità di esecuzione di un compito è l'elemento critico. In questi casi, può essere utile far eseguire questo compito a più processori, sperando che l'aumento di risorse sia compensato da una diminuzione del tempo di calcolo.<br />
+Il termine [[Algoritmi]] sottintende, oltre alla stessa definizione, che l'esecutore è unico.<br />
+Nel caso di **Algoritmi Paralleli e Distribuiti**, è chiave la presenza di un pool di esecutori e non si può parlare più di sequenza di istruzioni generiche ma di insiemi di istruzioni raggruppate in **passi paralleli**. In ogni passo parallelo si avrà un set di istruzioni, in cui ci sarà **al più** un'istruzione per esecutore.<br />
+I modelli di calcolo in cui sono presenti più processori che lavorano contemporaneamente sono detti **paralleli**, così come il modello di calcolo dotato di un solo processore è detto **sequenziale**.<br />
 Con più processori, sono possibili due differenti implementazioni:
 - Un solo [[Clock]], condiviso tra tutti i processori del sistema;
 - Un clock per ciascun processore.
 
-In entrambi i casi, sia per gli algoritmi paralleli sia per gli algoritmi distribuiti, la risorsa **Tempo** è cruciale.
-Il tempo è misurato come il numero di operazioni elementari richieste per risolvere il problema. Nel caso sequenziale, viene definito formalmente come:
+In entrambi i casi, sia per gli algoritmi paralleli sia per gli algoritmi distribuiti, la risorsa **Tempo** è cruciale. Il tempo è misurato come il numero di operazioni elementari richieste per risolvere il problema.<br />
+Nel caso sequenziale, viene definito formalmente come:
 
 $$T(x) = \text{ numero di operazioni elementari su $x$, con $x$ istanza }$$
 
@@ -175,18 +175,18 @@ E' possibile tentare un approccio diverso basandosi sulla proprietà associativa
 
 $$((a + b) + c) + d = (a + b) + (c + d)$$
 
-Si utilizzano quindi $\frac{n}{2}$ processori $k$ ed ogni processore effettua la somma $M[2k] = M[2k] + M[2k-1]$ con $k$ che varia ad ogni iterazione. I processori, per comunicare, sovrascrivono le celle dalle quali leggono l'input, in un fashion EREW. Si genera così un albero di somme di altezza $\log_{2}(n)$ nel caso in cui $n$ sia potenza di $2$.
+Si utilizzano quindi $\frac{n}{2}$ processori $k$ ed ogni processore $j$ effettua la somma $M[2^{j}k] = M[2^{j}k] + M[2^{j}k-1]$ con $k$ indice dei processori e $j$ che varia ad ogni iterazione. I processori, per comunicare, sovrascrivono le celle dalle quali leggono l'input, in un fashion EREW. Si genera così un albero di somme di altezza $\log_{2}(n)$ nel caso in cui $n$ sia potenza di $2$.
 
 <code>
 for j = 1 to log(n)
 </code>
 
 <code>
-	for k = 1 to \frac{n}{2^{j}} parallel do 
+	for k = 1 to n/2^(j) parallel do 
 </code>
 
 <code>
-		M[2^{j}k] =  M[2^{j}k] + M[2^{j}k - 2^{j-1}]
+		M[2^(j)k] =  M[2^(j)k] + M[2^(j)k - 2^(j-1)]
 </code>
 
 <code>
@@ -194,38 +194,43 @@ for j = 1 to log(n)
 </code>
 
 E' necessario assicurarsi che questo algoritmo sia EREW, cioè che non ci siano conflitti di lettura e scrittura.
-Siano $a$ e $b$ due processori, con $a \neq b$.
-$a$ opera sulle celle $2^{j}a, 2^{j}a - 2^{j-1}$.
-$b$ opera sulle celle $2^{j}b, 2^{j}b - 2^{j-1}$. 	
-Si deve quindi dimostrare che le quattro celle utilizzate siano tutte diverse.
-$2^{j}a \neq 2^{j}b$ per $a \neq b$.
-$2^{j}a \neq 2^{j}b -2{j-1} \rightarrow^\text{per assurdo}$: $2a = 2b -1 \rightarrow a = \frac{2b - 1}{2} \notin \mathbb{N}$.
-.
-.
-.
+Siano $a$ e $b$ due numeri naturali, indici di due differenti processori, con $a \neq b$.<br />
+Il processore $a$ opera sulle celle $2^{j}a, 2^{j}a - 2^{j-1}$. <br />
+Il processore $b$ opera sulle celle $2^{j}b, 2^{j}b - 2^{j-1}$. <br />
+Si deve quindi dimostrare che le quattro celle utilizzate siano tutte diverse.<br />
+$2^{j}a \neq 2^{j}b$ per $a \neq b$.<br />
+$2^{j}a \neq 2^{j}b -2{j-1} \rightarrow^\text{per assurdo}$: $2a = 2b -1 \rightarrow a = \frac{2b - 1}{2} \notin \mathbb{N}$.<br />
+Allo stesso modo si dimostra per le restanti combinazioni.<br />
 Si ha quindi un algoritmo EREW.
 
 Si dimostra ora, per [[Induzione]], che l'algoritmo sottostante è corretto.
 
-$$M[2^{j}k] = M[2^{j}k] + ... + M[2^{k}(k-1) +1]$$
+$$M[2^{j}k] = M[2^{j}k] + ... + M[2^{j}(k-1) +1]$$
 
-per $j = \\log_{2}(n)$, ovviamente $k=1$ (un solo processore) e
+Questa proprietà sostiene che, nelle celle multiple di $2^{j}$, sono presenti $2^{j}$ valori sommati, cioè i valori di tutte le $2^{j}$ celle precedenti.<br />
+Per $j = \\log_{2}(n)$, ovviamente $k=1$ (un solo processore) e
 
 $$M[n] = M[n] + ... + M[1]$$
 
-Si dimostra partendo dal caso base ($j=1$ e $1 \leq k \leq \frac{n}{2}$):
+Cioè, dopo $\log(n)$ passi, in $M[n]$ si avrà la somma di tutti i valori in input.<br />
+Si dimostra partendo dal caso base ($j=1$ e $1 \leq k \leq \frac{n}{2}$). L'istruzione dell'algoritmo è:
 
 $$M[2k] = M[2k] + M[2k -1]$$
 
-Si supponga vera la proprietà che si vuole dimostrare per un generico valore $j-1$. E' necessario ora dimostrarla per il valore successivo $j$.
-.
-.
-.
+Questa non è altro che la proprietà da dimostrare, considerata al passo $j=1$.<br />
+Si supponga vera la proprietà che si vuole dimostrare per un generico valore $j-1$. E' necessario ora dimostrarla per il valore successivo $j$.<br />
+Si prenda ciò che viene fatto dall'algoritmo al passo $j$ e si dimostri che quello che fa, in realtà, non è altro che una istruzione che mette nella cella di memoria M[2^{j}k] i precedenti $2^{j}$ valori sommati.
 
+$$M[2^{j}k] = M[2^{j}k] + M[2^{j}k - 2^{j-1}]$$
+
+L'algoritmo prende due valori a distanza $2^{j-1}$, ne fa la somma e lo memorizza in $M[2^{j}k]$.<br />
+E' possibile sfruttare ora il fatto che al passo $j-1$ valga la proprietà considerata:
+
+$$M[2^{j}k] = M[2^{j-1}2k] = $$
 
 Si valuta ora l'algoritmo.
 L'algoritmo usa $\frac{n}{2}$ processori, che si dimezzano a partire dal secondo passo.
-Il tempo dell'algorito parallelo, sapendo che l'altezza dell'albero è $\log_{2}(n)$, è sicuramente logaritmico. Dal punto di vista delle singole microistruzioni, il processore esegue due LOAD, una ADD ed una STORE. Il processore utilizza quindi $4$ istruzioni. Il tempo totale è $4\log_{2}(n)$.
+Il tempo dell'algoritmo parallelo, sapendo che l'altezza dell'albero è $\log_{2}(n)$, è sicuramente logaritmico. Dal punto di vista delle singole microistruzioni, il processore esegue due LOAD, una ADD ed una STORE. Il processore utilizza quindi $4$ istruzioni. Il tempo totale è $4\log_{2}(n)$.
 
 Serve un piccolo accorgimento nel caso in cui $n$ non sia potenza di $2$.
 Nel caso in cui $n$ non lo fosse, l'albero non sarebbe più bilanciato.
@@ -233,8 +238,8 @@ Si mettono quindi tanti $0$ in coda all'input fino a raggiungere la lunghezza de
 La potenza di $2$ successiva si troverà tra $n$ e $2n$.
 Pertanto, si avra:
 
-$$p(n) = \frac{2n}{n} = n$$
-$$T(n, n) = 4\log_{2}(2n) = 5 \log_{2}(n)$$
+$$p(n) = \frac{2n}{2} = n$$
+$$T(n, n) = 4\log_{2}(2n) \leq 5 \log_{2}(n)$$
 
 Di conseguenza
 
