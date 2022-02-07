@@ -249,20 +249,21 @@ Pertanto, si avra:
 $$p(n) = \frac{2n}{2} = n$$
 $$T(n, n) = 4\log_{2}(2n) \leq 5 \log_{2}(n)$$
 
-Di conseguenza
+Di conseguenza:
 
 $$p(n) = O(n) \quad \text{ e } \quad T(n,n) = O(\log(n))$$
 $$E(n,n) = \frac{n-1}{n \cdot 5\log_{2}(n)} \sim \frac{1}{\log_{2}(n)} \rightarrow 0$$
 
-Poichè l'efficienza tende a $0$ e i processori vengono usati al completo solo nel primo passo parallelo, si può applicare la teoria di Wyllie:
+Poichè l'efficienza tende a $0$ e i processori vengono usati al completo solo nel primo passo parallelo, è giusto pensare che i processori siano sprecati. Si può applicare la teoria di Wyllie:
 $$p(n) = o(n) \text{ per avere } E \rightarrow k \neq 0$$
 
-Invece di considerare $\frac{n}{2}$ processori, si considerino soltanto $p$ processori ( con $p$ incognita). Questi processori devono prendersi in carico la somma non più di 2 numeri ma di una quantità maggiore, $\delta = \frac{n}{p}$.
-Al $1°$ passo parallelo, per $1 \leq k \leq p$, vale:
+Invece di considerare $\frac{n}{2}$ processori, si considerino soltanto $p$ processori ( con $p$ incognita). Questi processori devono prendersi in carico la somma non più di 2 numeri ma di una quantità maggiore, $\Delta = \frac{n}{p}$.<br />
+Ogni processore dovrà eseguire le somme in sequenza e salvare il risultato nella cella con indice più alto.<br />
+Al $1°$ passo parallelo, per $1 \leq k \leq p$, con $k$ indice del processore, vale:
 
-$$M[k\delta] = M[k\delta] + ... + M[(k-1)\delta + 1]$$
+$$M[k\Delta] = M[k\Delta] + ... + M[(k-1)\Delta + 1]$$
 
-Nei passi paralleli successivi, si usa l'algoritmo parallelo per SOMMATORIA sulle celle $M[\delta], M[2\delta], ..., M[p\delta]$, il quale memorizza il dato finale in $M[p\delta] = M[n] = \sum_{i}M[i]$.
+Nei passi paralleli successivi, si usa l'algoritmo parallelo per SOMMATORIA sulle celle $M[\Delta], M[2\Delta], ..., M[p\Delta]$, il quale memorizza il dato finale in $M[p\Delta] = M[n] = \sum_{i}M[i]$.
 L'algoritmo è quindi corretto.
 
 Si valuta ora l'algoritmo.
