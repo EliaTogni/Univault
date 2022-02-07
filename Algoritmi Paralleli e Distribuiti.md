@@ -149,8 +149,7 @@ Inoltre, un problema guida è un problema talmente diffuso che si trova spesso c
 
 **Definizione del problema**
 
-**Input**: $M[1], M[2], ..., M[n]$
-
+**Input**: $M[1], M[2], ..., M[n]$<br />
 **Output**: $M[n] = \sum_{i=1}^{n} M[i]$
 
 L'algoritmo sequenziale risolve il problema in questo modo:
@@ -266,22 +265,34 @@ $$M[k\Delta] = M[k\Delta] + ... + M[(k-1)\Delta + 1]$$
 Nei passi paralleli successivi, si usa l'algoritmo parallelo per SOMMATORIA sulle celle $M[\Delta], M[2\Delta], ..., M[p\Delta]$, il quale memorizza il dato finale in $M[p\Delta] = M[n] = \sum_{i}M[i]$.
 L'algoritmo è quindi corretto.
 
-Si valuta ora l'algoritmo.
+Si valutano ora i processori ed il tempo parallelo del nuovo algoritmo.
 $$p(n) = p$$
-$$T(n, p) = T(\text{primo passo}) + T(\text{passi successivi}) = \frac{n}{p} + 5\log(p)$$
-$$E(n, p(n)) = \frac{n-1}{p(\frac{n}{p} + 5 \log(p)} = \frac{n-1}{n + 5p\log(p)} \rightarrow 0$$
+dove $p$ è un incognita.
+$$T(n, p) = T(\text{primo passo parallelo}) + T(\text{passi successivi}) = \frac{n}{p} + 5\log(p)$$
+dove il primo passo consiste nelle somme in sequenza effettuate parallelamente da ciascuno dei $\Delta$ processori, mentre i passi successivi corrispondono all'algoritmo sommatoria, calcolato sul numero di valori che vengono sommati, cioè $p$ invece del classico $n$.
+$$E(n, p(n)) = \frac{n-1}{p(\frac{n}{p} + 5 \log(p)} = \frac{n-1}{n + 5p\log(p)} \rightarrow k \neq 0$$
+Sapendo che $p$ è rimasto un valore incognito, è possibile considerare $5p\log(p) \sim n$, in modo tale da  avere una funzione lineare al denominatore, che vada ad abbattere completamente la crescita del denominatore.
 $$E \sim \frac{n}{2n} \rightarrow \frac{1}{2}$$
 
 Tutto questo vale solo nel caso in cui si riesca a far valere $p\log(p) = \frac{n}{5}$ cioè $p = \frac{n}{5\log(n)}$.
+Infatti:
+$$\frac{n}{5\log(n)}\Bigg(\log(\frac{n}{(\log(n)5)}\Bigg) = \frac{n}{5\log(n)}(\log(n) - \log(5) - \log(\log(n)) = \frac{n}{5}\Bigg(1-\frac{\log(5)}{\log(n)} - \frac{\log(\log(n))}{\log(n)}\Bigg) \sim \frac{n}{5}$$
+Per $n \rightarrow \infty$, sia $\frac{\log(5)}{\log(n)}$ che $\frac{\log(\log(n))}{\log(n)} \rightarrow 0$.
 
-Ricapitolando
+Ricapitolando:
 $$p(n) = \frac{n}{5\log(n)}$$
 $$T(n, p(n)) = 5\log(n) + 5\log(n) - ... \leq 10\log(n)$$
 
-E' stato utilizzato un numero di processori sottolineare e si è mantenuto il tempo logaritmico.
-E' possibile ottenere un tempo migliore rispetto al tempo logaritmico ottenuto per il problema SOMMATORIA?
-E' possibile dimostrare l'esistenza di un lower bound tramite un [[Albero]]. Le foglie di questo albero sono i numeri da sommare ed i livelli dell'albero sono i passi paralleli. il livello con più nodi restituisce anche il numero di processori e l'altezza dell'albero restituisce il tempo dell'algoritmo.
-Il numero di foglie di un albero vincola la minima altezza dell'albero. Dato un albero con $n$ foglie e di altezza $h$.
+Il tempo parallelo è passato da $\frac{n}{p} + 5\log(p)$ a questo valore sostituendo il nuovo $p(n)$ al posto di $p$.<br />
+E' stato utilizzato un numero di processori sublineare e si è mantenuto il tempo logaritmico.
+
+E' possibile ottenere un tempo migliore rispetto al tempo logaritmico ottenuto per il problema SOMMATORIA?<br />
+E' possibile dimostrare l'esistenza di un lower bound tramite l'utilizzo di un [[Albero]], in particolare un albero binario.<br />
+Le foglie di questo albero sono i numeri da sommare ed i livelli dell'albero sono i passi paralleli.<br />
+Il livello con più nodi corrisponde anche al numero di processori e l'altezza dell'albero corrisponde al tempo dell'algoritmo.
+Il numero di foglie di un albero vincola la minima altezza dell'albero. Dato un albero con $n$ foglie e di altezza $h$
+
+$$n\leq 2^h$$
 
 $$h \geq \log_{2}(n)$$
 
@@ -291,24 +302,24 @@ Si osservi il problema OP ITERATA, del quale SOMMATORIA è un caso particolare.
 
 **Definizione del problema**
 
-**Input**: $M[1], M[2], ..., M[n]$
+**Input**: $M[1], M[2], ..., M[n]$<br />
+**Output**: $OP_{i} \text{ } M[i] \rightarrow M[n]$
 
-**Output**: $Op_{i}M[i] \rightarrow M[n]$
-
-Dove OP è un'operazione associativa. Nel caso in cui OP sia la somma, ci si ritrova nel problema SOMMATORIA.
+OP è un'operazione associativa. Nel caso in cui OP sia la somma, ci si ritrova nel problema SOMMATORIA.<br />
+Esempi di operaizoni sono $+, *, \wedge, \vee, \oplus, \min, \max$...<br />
 Si ottiene una soluzione efficiente parallela
 
-$$P=O)\frac{n}{\log(n)}$$
-$$T=O(\log(n))$$
+$$p(n)=O\Bigg(\frac{n}{\log(n)}\Bigg)$$
+$$T(n, p(n))=O(\log(n))$$
 
-In realtà, con P-RAM più potenti, è possibile ottenere un tempo costante.
+Mentre, con una soluzione EREW, questo è il miglior risultato ottenibile, in realtà, con P-RAM più potenti, si è in grado di ottenere un tempo costante.<br />
 Si supponga di avere una CRCW P-RAM.
 
 ### $\wedge$ ITERATO ###
 
 **Definizione del problema**
 
-**Input**: $M[1], M[2], ..., M[n]$ 
+**Input**: $M[1], M[2], ..., M[n]$ <br />
 **Output**: $M[n] = \bigwedge_{i} M[i]$
 
 E' possibile scrivere un algoritmo che risolve questo problema in tempo costante grazie alla P-RAM più potente. Il vantaggio maggiore in questo caso è quello di poter fare scritture concorrenti, dovuto al fatto che con l'operazione $\wedge$ tra più operandi, basta una sola variabile con valore $0$ per rendere nullo anche il risultato.
