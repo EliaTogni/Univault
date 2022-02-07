@@ -224,17 +224,25 @@ Si prenda ciò che viene fatto dall'algoritmo al passo $j$ e si dimostri che que
 $$M[2^{j}k] = M[2^{j}k] + M[2^{j}k - 2^{j-1}]$$
 
 L'algoritmo prende due valori a distanza $2^{j-1}$, ne fa la somma e lo memorizza in $M[2^{j}k]$.<br />
-E' possibile sfruttare ora il fatto che al passo $j-1$ valga la proprietà considerata:
+E' possibile sfruttare ora il fatto che al passo $j-1$ valga la proprietà considerata. Si consideri il primo termine del secondo membro del $j$-esimo passo:
 
-$$M[2^{j}k] = M[2^{j-1}2k] = $$
+$$M[2^{j}k] = M[2^{j-1}2k] = M[2^{j-1}2k] + ... + M[2^{j-1}(2k-1)+1]$$
 
-Si valuta ora l'algoritmo.
-L'algoritmo usa $\frac{n}{2}$ processori, che si dimezzano a partire dal secondo passo.
-Il tempo dell'algoritmo parallelo, sapendo che l'altezza dell'albero è $\log_{2}(n)$, è sicuramente logaritmico. Dal punto di vista delle singole microistruzioni, il processore esegue due LOAD, una ADD ed una STORE. Il processore utilizza quindi $4$ istruzioni. Il tempo totale è $4\log_{2}(n)$.
+E' possibile fare un discorso analogo per il secondo termine del secondo membro del $j$-esimo passo. Infatti, raccogliendo $2^{j-1}$, si può applicare la proprietà al passo $j$-esimo: 
 
+$$M[2^jk-2^{j-1}] = M[2^{j-1}(2k-1)] = M[2^{j-1}(2k-1)] + ... + M[2^{j-1}(2k-2)+1]$$
+
+Si hanno due somme di $2^{j-1}$ valori. Se si effettua la somma complessiva di queste due celle, si sommano $2*2^{j-1} = 2^j$ valori.<br />
+Se fossero tutti valori precedenti, si avrebbe dimostrato la proprietà. Questi valori sono tutti in sequenza. La prima cella contiene i valori successivi dei valori della seconda cella.<br />
+Il primo termine sarà quindi $M[2^{j-1}2k] = M[2^{j}k]$ e l'ultimo termine sarà quindi $M[2^{j-1}(2k-2)+1] = M[2^{j}k - 2^{j-1}]$.<br />
+La proprietà è, così, dimostrata.<br />
+
+Si valuta ora l'algoritmo.<br />
+L'algoritmo usa $\frac{n}{2}$ processori, che si dimezzano ad ogni passo, a partire dal secondo passo. Questo potrebbe suggerire l'utilizzo di un numero eccessivo di processori.<br />
+Il tempo dell'algoritmo parallelo, sapendo che l'altezza dell'albero è $\log_{2}(n)$, è sicuramente logaritmico. Dal punto di vista delle singole microistruzioni, il processore esegue due LOAD, una ADD ed una STORE. Il processore utilizza quindi $4$ istruzioni. Il tempo totale è $4\log_{2}(n)$.<br />
 Serve un piccolo accorgimento nel caso in cui $n$ non sia potenza di $2$.
-Nel caso in cui $n$ non lo fosse, l'albero non sarebbe più bilanciato.
-Si mettono quindi tanti $0$ in coda all'input fino a raggiungere la lunghezza della successiva potenza di $2$. Si è scelto il valore $0$ in quanto elemento neutro della somma.
+Nel caso in cui $n$ non lo fosse, l'albero non sarebbe più bilanciato.<br />
+Si mettono, quindi, tanti $0$ in coda all'input fino a raggiungere la lunghezza della successiva potenza di $2$. Si è scelto il valore $0$ in quanto elemento neutro della somma.
 La potenza di $2$ successiva si troverà tra $n$ e $2n$.
 Pertanto, si avra:
 
