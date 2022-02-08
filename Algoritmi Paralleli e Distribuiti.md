@@ -14,15 +14,13 @@ $$T(x) = \text{ numero di operazioni elementari su $x$, con $x$ istanza }$$
 $$t(n) = MAX\Bigg\{T(x) \quad|\quad x \in \sum^{n}\Bigg\}$$
 
 dove $t(n)$ è una funzione in $n$, con $n$ lunghezza dell'input.
-Spesso non si è interessati ad una valutazione precisa di $t(n)$, ma al suo tasso di crescita.
+Spesso non si è interessati ad una valutazione precisa di $t(n)$, ma al suo tasso di crescita.<br />
 A questo scopo, si utilizzano le [[Funzioni Asintotiche]].
 
-La valutazione del tempo dipende dal modello di calcolo e, inoltre, dal criterio di valutazione scelto (**uniforme** o **logaritmico**).
-
-Nel modello di calcolo, le operazioni elementari che contiamo sono solamente le operazioni primitive messe a disposizione.
-
-Bisogna prestare attenzione alla dimensione dei dati in gioco. Se si utilizza il **criterio di costo uniforme**, le operazioni elementari richiedono una sola **unità di tempo**. Se si utilizza il **criterio di costo logaritmico**, ogni operazione elementare ha un costo che dipende dal numero di bit degli operandi.
-
+La valutazione del tempo dipende dal modello di calcolo e, inoltre, dal criterio di valutazione scelto (**uniforme** o **logaritmico**).<br />
+Nel modello di calcolo, le operazioni elementari che contiamo sono solamente le operazioni primitive messe a disposizione.<br />
+Bisogna prestare attenzione alla dimensione dei dati in gioco.<br />
+Se si utilizza il **criterio di costo uniforme**, le operazioni elementari richiedono una sola **unità di tempo**. Se si utilizza il **criterio di costo logaritmico**, ogni operazione elementare ha un costo che dipende dal numero di bit degli operandi.<br />
 La funzione tempo deve indicare se gli algoritmi paralleli e distribuiti utilizzati si possono considerare efficienti. Si considera quindi il concetto di [[Efficienza]].
 
 Si richiami, ora, un classico modello di calcolo sequenziale, cioè la **macchina RAM**: essa consiste di un processore P, collegato ad una memoria M attraverso un'unità di accesso.
@@ -33,10 +31,8 @@ Nei modelli di calcolo parallelo, data la presenza di più processori, un elemen
 
 Il più semplice modello di calcolo parallelo è quello a memoria condivisa, detto [[Modello P-RAM]].
 
-Il calcolo procede per **passi**. Ad ogni passo, ogni processore può fare un'operazione sui dati che possiede, oppure può leggere o scrivere nella memoria condivisa. In particolare, è possibile selezionare un insieme di processori che eseguano tutti la stessa istruzione (su dati generalmente diversi) mentre gli altri processori restano inattivi. I processori attivi sono sincronizzati, cioè eseguono la stessa instruzione simultaneamente e l'istruzione successiva può essere eseguita solo quando tutti hanno terminato l'esecuzione della precedente.
-
-Questo modello di macchine è detto di tipo **SIMD** (**SIngle Instruction Multiple Data**), il quale si contrappone all'architettura **MIMD** (**Multiple Instruction Multiple Data**).
-
+Il calcolo procede per **passi**. Ad ogni passo, ogni processore può fare un'operazione sui dati che possiede, oppure può leggere o scrivere nella memoria condivisa. In particolare, è possibile selezionare un insieme di processori che eseguano tutti la stessa istruzione (su dati generalmente diversi) mentre gli altri processori restano inattivi. I processori attivi sono sincronizzati, cioè eseguono la stessa instruzione simultaneamente e l'istruzione successiva può essere eseguita solo quando tutti hanno terminato l'esecuzione della precedente.<br />
+Questo modello di macchine è detto di tipo **SIMD** (**SIngle Instruction Multiple Data**), il quale si contrappone all'architettura **MIMD** (**Multiple Instruction Multiple Data**).<br />
 Per semplicità, in seguito si farà riferimento al modello EREW, il più realistico.
 Un vantaggio sostanziale di questa scelta è che un algoritmo funzionante su un modello EREW è funzionante anche sui modelli successivi.
 
@@ -46,9 +42,9 @@ $$\text{for all } i(a \leq i \leq b) \text{ do in parallel Operazione}$$
 
 la cui semantica è quella di eseguire $Operazione$ su tutti i processori $i$ con $a \leq i \leq b$, mentre gli altri restano inattivi (eseguono l'operazione nulla).
 
-La notazione utilizzata per descrivere le risorse di calcolo per quanto riguarda un algoritmo sequenziale è, banalmente, $t(n)$ per la misura del tempo di esecuzione rispetto ad un input di dimensione $n$ e $s(n)$ per la misura dello spazio, sempre in funzione di $n$.
+La notazione utilizzata per descrivere le risorse di calcolo per quanto riguarda un algoritmo sequenziale è, banalmente, $t(n)$ per la misura del tempo di esecuzione rispetto ad un input di dimensione $n$ e $s(n)$ per la misura dello spazio, sempre in funzione di $n$.<br />
 Per quanto riguarda un algoritmo parallelo, si avrà $p(n)$ e $T(n,p(n))$.
-Dato un input di dimensione $n$, si definisce $p(n)$ il numero dei processori richiesti sull'input, nel caso peggiore.
+Dato un input di dimensione $n$, si definisce $p(n)$ il numero dei processori richiesti sull'input, nel caso peggiore.<br />
 Dato un algoritmo parallelo $A$, diremo $T_{A}(n,p(n))$ il tempo di esecuzione di $A$ su dati di dimensione $n$, quando $A$ utilizza $p$ processori; il caso sequenziale si ha, ovviamente, quando $p = 1$.
 Il tempo del generico $i$-esimo passo su un input di dimensione $n$ è dato da: 
 
@@ -65,9 +61,9 @@ dove:
 
 Obiettivo di un algoritmo parallelo è quello di diminuire i tempi di calcolo aumentando il numero di processori: si spera di ottenere un **trade-off** tra il tempo di esecuzione ed il costo (numero di processori), il quale va stimato per valutare l'efficacia di un algoritmo parallelo.
 
-Un primo confronto tra i tempi può essere fatto confrontando l'andamento delle funzioni di calcolo del tempo:
-Sono possibili due casi, uno non accettabile ed uno accettabile.
-Il caso non accettabile è il caso in cui $T(n, p(n)) = \Theta(T(n,1))$, ovvero dove non si ottiene un miglioramento nonostante l'aggiunta di processori. Questo caso comporta solo un sovrapprezzo in termini di componentistica e, quindi, è evidentemente sfavorevole.
+Un primo confronto tra i tempi può essere fatto confrontando l'andamento delle funzioni di calcolo del tempo:<br />
+Sono possibili due casi, uno non accettabile ed uno accettabile.<br />
+Il caso non accettabile è il caso in cui $T(n, p(n)) = \Theta(T(n,1))$, ovvero dove non si ottiene un miglioramento nonostante l'aggiunta di processori. Questo caso comporta solo un sovrapprezzo in termini di componentistica e, quindi, è evidentemente sfavorevole.<br 7>
 Il caso accettabile è il caso in cui $T(n, p(n)) = o(T(n,1))$, ovvero il caso in cui il tempo di esecuzione dell'algoritmo parallelo è inferiore a quello sequenziale.
 
 Due misure naturali dell'efficacia sono lo **Speed-Up** $S_{A}(p)$ e l'**Efficienza** $E_{A}(n,p)$.
@@ -77,16 +73,15 @@ $$S_{A} = \frac{T_{A}(n,1)}{T_{A}(n,p(n))}$$
 $$E_{A} = \frac{S_{A}(p(n))}{p(n)}$$
 
 Maggiore il numero di processori, maggiore è il valore dello Speed-Up.
-L'ideale sarebbe avere questo valore tendente ad $\infty$. Questo indica esattamente che $T(n, p(n)) = o(T(n,1))$. 
-Non avendo, però, il numero di processori $p(n)$ al di fuori della funzione di tempo, non si è in grado di stabilire se si è utilizzato un numero realistico e, soprattutto, vantaggioso.
-Con efficienza, invece, si intende quanto lavoro viene svolto da un singolo processore. 
-
+L'ideale sarebbe avere questo valore tendente ad $\infty$. Questo indica esattamente che $T(n, p(n)) = o(T(n,1))$. <br />
+Non avendo, però, il numero di processori $p(n)$ al di fuori della funzione di tempo, non si è in grado di stabilire se si è utilizzato un numero realistico e, soprattutto, vantaggioso.<br />
+Con efficienza, invece, si intende quanto lavoro viene svolto da un singolo processore. <br />
 Poichè $E_{A}(n,p(n)) = \frac{T_{A}(n,1)}{p(n) \cdot T_{A}(n,p(n))}$, l'efficienza risulta essere il rapporto tra il tempo dell'algoritmo sequenziale ed il tempo totale consumato dai processori, come se fossero usati sequenzialmente. In particolar modo, è bene scegliere $T_{A}(n,1)$ come il tempo del miglior algoritmo sequenziale.
 
 Per il parametro $E$ vale che $0 \leq E(n, p(n)) \leq 1$. Quando $E \rightarrow 0$, si stanno utilizzando troppi processori che, probabilmente, rimangono inutilizzati per la maggioranza del tempo.
 
-Si dimostra ora che $E \leq 1$.
-Si esegue una trasformazione per passare da un algoritmo parallelo ad uno sequenziale (non è detto che sia il migliore). Si vuole valutare il tempo dell'algoritmo sequenziale così ottenuto. Si indica con $t_{i}(n)$ il tempo dell'istruzione più lunga al passo parallelo $i$, con $1 \leq i \leq k$.
+Si dimostra ora che $E \leq 1$.<br />
+Si esegue una trasformazione per passare da un algoritmo parallelo ad uno sequenziale (non è detto che sia il migliore). Si vuole valutare il tempo dell'algoritmo sequenziale così ottenuto. Si indica con $t_{i}(n)$ il tempo dell'istruzione più lunga al passo parallelo $i$, con $1 \leq i \leq k$.<br />
 Si definisce $\tilde T(n,1)$ il tempo dell'algoritmo sequenziale così ottenuto. Chiaramente, il tempo di questo algoritmo sequenziale è $\geq$ del tempo del miglior algoritmo sequenziale per un determinato problema.
 
 $$T(n,1) \leq \tilde T(n,1) \leq p(n) \cdot t_{1}(n) + ... + p(n) \cdot t_{k(n)}(n)$$
@@ -100,34 +95,31 @@ Da questa uguaglianza si ricava facilmente che
 
 $$\frac{T(n,1)}{p(n)} \leq T(n, p(n))$$
 
-Si ottiene quindi che il tempo parallelo ha un lower bound dato dal rapporto tra il tempo sequenziale del miglior algoritmo ed il numero di processori.
-Questo implica che il meglio che si può fare con un algoritmo parallelo è distribuire equamente tra i processori il lavoro del sequenziale.
- 
-Da questa disuguaglianza, si divinono entrambi i membri per il tempo parallelo ed si ottiene quindi
+Si ottiene quindi che il tempo parallelo ha un lower bound dato dal rapporto tra il tempo sequenziale del miglior algoritmo ed il numero di processori.<br />
+Questo implica che il meglio che si può fare con un algoritmo parallelo è distribuire equamente tra i processori il lavoro del sequenziale.<br />
+Da questa disuguaglianza, si dividono entrambi i membri per il tempo parallelo ed si ottiene quindi
 
 $$\frac{T(n,1)}{p(n)T(n, p(n)))} \leq 1$$
 
 Sapendo che $\frac{T(n,1)}{p(n)T(n, p(n)))} = E(n, p(n))$, allora si ha dimostrato che $E(n, p(n)) \leq 1$. Il miglior risultato in termini di efficienza è quindi $E \rightarrow k \leq 1$, dove $k$ è una costante.
 
-
 ### Teorema di Wyllie [1979, PhD Thesis] ###
-Se $E \rightarrow 0$, allora per migliorare l'algoritmo si provi a ridurre $p(n)$ senza degradare il tempo.
-
+Se $E \rightarrow 0$, allora per migliorare l'algoritmo si provi a ridurre $p(n)$ senza degradare il tempo.<br />
 Dato un algoritmo $A$, il quale lavora con $p$ processori con una data efficienza $E$, è in generale possibile estendere l'algoritmo a lavorare con un numero inferiore di processori senza che l'efficienza diminuisca significativamente.
 
 Se $k>1$, allora $E_{A}\Bigg( n, \frac{p}{k} \Bigg) \geq E_{A}(n, p)$.
 
-Dato un algoritmo $A$ che lavora con $p$ processori, basta infatti costruire un algoritmo modificato che utilizza $p/k$ processori. Ad ogni nuovo processore si fa corrispondere un blocco di $k$ vecchi processori: ogni nuovo processore usa al più $k$ passi per emulare il singolo passo parallelo dei $k$ processori corrispondenti.
+Dato un algoritmo $A$ che lavora con $p$ processori, basta infatti costruire un algoritmo modificato che utilizza $p/k$ processori. Ad ogni nuovo processore si fa corrispondere un blocco di $k$ vecchi processori: ogni nuovo processore usa al più $k$ passi per emulare il singolo passo parallelo dei $k$ processori corrispondenti.<br />
 Il tempo di ogni singolo passo è quindi dettato dall'istruzione più lunga moltiplicata per il numero di istruzioni in un passo, $k \cdot t_{i}(n)$.
 Il tempo parallelo richiesto è limitato superiormente dalla somma dell'$i$-esimo passo parallelo
 
 $$T(n, \frac{p}{k}) \leq \sum_{i=1}^{k(n)} k \cdot t_{i}(n)$$
 
-Quindi
+Quindi:
 
 $$\sum_{i=1}^{k(n)} k \cdot t_{i}(n) = k \cdot \sum_{i=1}^{k(n)} t_{i}(n) = k \cdot T(n, p(n))$$
 
-Si ha quindi
+Si ha quindi:
 
 $$T(n, \frac{p}{k}) \leq k \cdot T(n, p)$$
 
@@ -135,17 +127,17 @@ Partendo da questa disuguaglianza, si ottiene che $E$ cresce col diminuire dei p
 
 $$E(n, \frac{p}{k}) = \frac{T(n,1)}{\frac{p}{k}T(n, \frac{p}{k})} \geq \frac{T(n,1)}{\frac{p}{k} \cdot k T(n,p)} = \frac{T(n,1)}{p \cdot T(n,p)} = E(n,p)$$
 
-Nel caso in cui $k \rightarrow p$, accade che
+Nel caso in cui $k \rightarrow p$, accade che:
 
 $$ 1 = E(n,1) = E(n, \frac{p}{p}) \geq E(n,\frac{p}{k}) \geq E(n, p)$$
 
-Attenzione però a mantenere $T(n, \frac{p}{k}) = o(T(n,1))$, (altrimenti non ha senso parlare di algoritmo parallelo (perchè $E(n,1) = 1$ ma $T(n,p=1) = T(n,1)$, cioè sequenziale)
+Attenzione però a mantenere $T(n, \frac{p}{k}) = o(T(n,1))$, altrimenti non ha senso parlare di algoritmo parallelo perchè $E(n,1) = 1$ ma $T(n,p=1) = T(n,1)$, cioè sequenziale.
 
 ### SOMMATORIA ###
-Si vuole trovare un algoritmo parallelo per risolvere il problema **Sommatoria**, un problema guida.
-Ci si approccia con la tecnica della scomposizione del problema in sottoproblemi, per poi effettuare la fusione dei risultati.
-Lo schema risolutivo di un problema guida potrà essere applicato per trovare la soluzione di altri problemi riguardanti operazioni associative.
-Inoltre, un problema guida è un problema talmente diffuso che si trova spesso come modulo, cioè come sottoproblema, di altri problemi.
+Si vuole trovare un algoritmo parallelo per risolvere il problema **Sommatoria**, un problema guida.<br />
+Ci si approccia con la tecnica della scomposizione del problema in sottoproblemi, per poi effettuare la fusione dei risultati.<br />
+Lo schema risolutivo di un problema guida potrà essere applicato per trovare la soluzione di altri problemi riguardanti operazioni associative.<br />
+Inoltre, un problema guida è un problema talmente diffuso che si trova spesso come modulo, cioè come sottoproblema, di altri problemi.<br />
 
 **Definizione del problema**
 
@@ -162,14 +154,12 @@ L'algoritmo sequenziale risolve il problema in questo modo:
 		M[n] = M[n] + M[i]
 </code>
 
-Il tempo impiegato è $T(n,1) = n-1$ ed è il miglior tempo possibile per un algoritmo sequenziale.
-
-Si può pensare di parallelizzare utilizzando $n$ processori, ognuno dei quali fa una somma. Ma quale somma? Se ci si basa sull'algoritmo sequenziale, il primo processore eseguirà la somma $M[1] + M[2]$, il secondo eseguirà poi la somma del risultato con $M[3]$ e così via, formando un albero di somme di altezza $n-1$. L'efficienza di questo algoritmo vale
+Il tempo impiegato è $T(n,1) = n-1$ ed è il miglior tempo possibile per un algoritmo sequenziale.<br />
+Si può pensare di parallelizzare utilizzando $n$ processori, ognuno dei quali fa una somma. Ma quale somma? Se ci si basa sull'algoritmo sequenziale, il primo processore eseguirà la somma $M[1] + M[2]$, il secondo eseguirà poi la somma del risultato con $M[3]$ e così via, formando un albero di somme di altezza $n-1$. L'efficienza di questo algoritmo vale:
 
 $$E = \frac{n-1}{(n-1)(n-1)} = \frac{1}{n-1} \rightarrow 0$$
 
-Il tempo ottenuto è uguale al tempo dell'algoritmo sequenziale e quindi, abbiamo solo introdotto uno spreco hardware ingiustificato.
-
+Il tempo ottenuto è uguale al tempo dell'algoritmo sequenziale e quindi, abbiamo solo introdotto uno spreco hardware ingiustificato.<br />
 E' possibile tentare un approccio diverso basandosi sulla proprietà associativa della somma. Infatti, vale
 
 $$((a + b) + c) + d = (a + b) + (c + d)$$
@@ -192,7 +182,7 @@ for j = 1 to log(n)
 	return M[n]
 </code>
 
-E' necessario assicurarsi che questo algoritmo sia EREW, cioè che non ci siano conflitti di lettura e scrittura.
+E' necessario assicurarsi che questo algoritmo sia EREW, cioè che non ci siano conflitti di lettura e scrittura.<br />
 Siano $a$ e $b$ due numeri naturali, indici di due differenti processori, con $a \neq b$.<br />
 Il processore $a$ opera sulle celle $2^{j}a, 2^{j}a - 2^{j-1}$. <br />
 Il processore $b$ opera sulle celle $2^{j}b, 2^{j}b - 2^{j-1}$. <br />
@@ -241,7 +231,7 @@ L'algoritmo usa $\frac{n}{2}$ processori, che si dimezzano ad ogni passo, a part
 Il tempo dell'algoritmo parallelo, sapendo che l'altezza dell'albero è $\log_{2}(n)$, è sicuramente logaritmico. Dal punto di vista delle singole microistruzioni, il processore esegue due LOAD, una ADD ed una STORE. Il processore utilizza quindi $4$ istruzioni. Il tempo totale è $4\log_{2}(n)$.<br />
 Serve un piccolo accorgimento nel caso in cui $n$ non sia potenza di $2$.
 Nel caso in cui $n$ non lo fosse, l'albero non sarebbe più bilanciato.<br />
-Si mettono, quindi, tanti $0$ in coda all'input fino a raggiungere la lunghezza della successiva potenza di $2$. Si è scelto il valore $0$ in quanto elemento neutro della somma.
+Si mettono, quindi, tanti $0$ in coda all'input fino a raggiungere la lunghezza della successiva potenza di $2$. Si è scelto il valore $0$ in quanto elemento neutro della somma.<br />
 La potenza di $2$ successiva si troverà tra $n$ e $2n$.
 Pertanto, si avra:
 
@@ -290,7 +280,7 @@ E' possibile ottenere un tempo migliore rispetto al tempo logaritmico ottenuto p
 E' possibile dimostrare l'esistenza di un lower bound tramite l'utilizzo di un [[Albero]], in particolare un albero binario.<br />
 Le foglie di questo albero sono i numeri da sommare ed i livelli dell'albero sono i passi paralleli.<br />
 Il livello con più nodi corrisponde anche al numero di processori e l'altezza dell'albero corrisponde al tempo dell'algoritmo.
-Il numero di foglie di un albero vincola la minima altezza dell'albero. Dato un albero con $n$ foglie e di altezza $h$
+Il numero di foglie di un albero vincola la minima altezza dell'albero. Dato un albero con $n$ foglie e di altezza $h$:
 
 $$n\leq 2^h$$
 
@@ -307,13 +297,12 @@ Si osservi il problema OP ITERATA, del quale SOMMATORIA è un caso particolare.
 
 OP è un'operazione associativa. Nel caso in cui OP sia la somma, ci si ritrova nel problema SOMMATORIA.<br />
 Esempi di operaizoni sono $+, *, \wedge, \vee, \oplus, \min, \max$...<br />
-Si ottiene una soluzione efficiente parallela
+Si ottiene una soluzione efficiente parallela:
 
 $$p(n)=O\Bigg(\frac{n}{\log(n)}\Bigg)$$
 $$T(n, p(n))=O(\log(n))$$
 
 Mentre, con una soluzione EREW, questo è il miglior risultato ottenibile, in realtà, con P-RAM più potenti, si è in grado di ottenere un tempo costante.<br />
-Si supponga di avere una CRCW P-RAM.
 
 ### $\wedge$ ITERATO ###
 
@@ -322,6 +311,7 @@ Si supponga di avere una CRCW P-RAM.
 **Input**: $M[1], M[2], ..., M[n]$ <br />
 **Output**: $M[n] = \bigwedge_{i} M[i]$
 
+Si supponga di avere una CRCW P-RAM.<br />
 E' possibile scrivere un algoritmo che risolve questo problema in tempo costante grazie alla P-RAM più potente.<br />
 Il vantaggio maggiore in questo caso è quello di poter fare scritture concorrenti, dovuto al fatto che con l'operazione $\wedge$ tra più operandi, basta una sola variabile con valore $0$ per rendere nullo anche il risultato.<br />
 Da questa intuizione, si può progettare il seguente algoritmo:
@@ -360,9 +350,9 @@ Non solo questo algoritmo fa da guida per le soluzioni ai problemi OP ITERATO ma
 **Input**: $x, y \in \mathbb{N}^{n}$<br />
 **Output**: $<x, y> = \sum_{i=1}^{n} x_{i} y_{i}$
 
-La soluzione sequenziale effettua prima $n$ moltiplicazioni e poi effettua $n-1$ somme. Il tempo sequenziale è, di conseguenza $2n-1$.
-
-La soluzione EREW prevede di svolgere i prodotti componente per componente dei vettori ed applicare poi l'algoritmo SOMMATORIA. Poichè, in questo algoritmo, venivano utilizzati $p$ processori, ogni processore dovrà svolgere $\Delta = \frac{n}{p}$ moltiplicazioni (sapendo che $p = \frac{n}{\log(n)}, allora \Delta = \log(n))$. Nel primo passo, quindi, vengono svolti $\Delta$ prodotti in sequenza per ciascuno dei $p$ processori e, nel secondo passo, ogni processore effettuerà la somma sequenziale di questi prodotti. Nel terzo passo, vengono svolte le $p$ somme finali in parallelo.<br />
+La soluzione sequenziale effettua prima $n$ moltiplicazioni e poi effettua $n-1$ somme. Il tempo sequenziale è, di conseguenza $2n-1$.<br />
+La soluzione EREW prevede, invece, di svolgere i prodotti componente per componente dei vettori ed applicare poi l'algoritmo SOMMATORIA. Poichè, in questo algoritmo, venivano utilizzati $p$ processori, ogni processore dovrà svolgere $\Delta = \frac{n}{p}$ moltiplicazioni (sapendo che $p = \frac{n}{\log(n)}, allora \Delta = \log(n))$. <br />
+Nel primo passo, quindi, vengono svolti $\Delta$ prodotti in sequenza per ciascuno dei $p$ processori e, nel secondo passo, ogni processore effettuerà la somma sequenziale di questi prodotti. Nel terzo passo, vengono svolte le $p$ somme finali in parallelo.<br />
 I primi due passi compongono la prima fase mentre il terzo passo compone la seconda fase.<br />
 
 Si valutano ora le prestazioni dell'algoritmo.<br />
@@ -388,8 +378,7 @@ Questo problema, a sua volta, è modulo di altri problemi, come, banalmente, il 
 **Input**: $A \in \mathbb{N}^{n \times n}, x \in \mathbb{N}^{n}$<br />
 **Output**: $Ax$
 
-La soluzione sequenziale necessita di fare il prodotto riga per colonna, che richiede il tempo di un prodotto tra vettori per il numero di vettori da moltiplicare. Il tempo sequenziale è quindi $n(2n-1) = 2n^{2} -n$.
-
+La soluzione sequenziale necessita di fare il prodotto riga per colonna, che richiede il tempo di un prodotto tra vettori per il numero di vettori da moltiplicare. Il tempo sequenziale è quindi $n(2n-1) = 2n^{2} -n$.<br />
 In parallelo si può pensare di fare tutti i prodotti riga $\times$ colonna, cioè utilizzare il modulo PRODOTTO INTERNO DI VETTORI  $n$ volte. Se si procede in questo modo, non si ha più, però, un algoritmo EREW perchè il vettore $x$ viene acceduto simultaneamente da più moduli. Si tratta quindi di un algoritmo CREW.<br />
 Si può, però, evitare questo accesso simultaneo al vettore $x$ sfruttando la soluzione al problema REPLICA, la quale chiede, dato un valore $\alpha$ in una cella, di replicare $\alpha \text{ } n$ volte.
 
@@ -408,8 +397,7 @@ $$E(n, p(n)) \sim \frac{n^{2}}{\frac{n^{2}}{\log(n)} \cdot \log(n)} \rightarrow 
 
 Il problema consta, banalmente, del prodotto tra due matrici preesistenti e, quindi, calcolare una nuova matrice.<br />
 Il calcolo di una nuova matrice quadrata richiede il calcolo di $n^{2}$ componenti.<br />
-Il tempo sequenziale è pari a $n^{2,80}$, risultato ottenuto dall'[[Algoritmo di Strassen]], il miglior algoritmo sequenziale per il prodotto tra due matrici.
-
+Il tempo sequenziale è pari a $n^{2,80}$, risultato ottenuto dall'[[Algoritmo di Strassen]], il miglior algoritmo sequenziale per il prodotto tra due matrici.<br />
 L'idea su cui si basa l'algoritmo parallelo è usare $n^{2}$ prodotti interni in parallelo. Ogni riga di $A$ ed ogni colonna di $B$ vengono accedute simultaneamente, necessitando così di un algoritmo CREW.<br />
 Si necessita quindi di un'architettura che permetta la concurrent read.<br />
 
@@ -491,11 +479,11 @@ Di conseguenza, la proposta analizzata risulta essere una scelta poco efficiente
 
 ### Tecnica di Kogge-Stone [1973] ###
 
-Kogge-Stone introduce il **Pointer Doubling** per risolvere SOMME PREFISSE.
+Kogge-Stone introduce il **Pointer Doubling** per risolvere SOMME PREFISSE.<br />
 Si tratta di puntatori, di link tra coppie di numeri, indicati tramite frecce.
 Ogni processore si occupa di un puntatore e ne fa la somma in questo modo:
-Dati $M[i] = m$ e $M[S[k]] = k$, sia $S[k]$ la cella di memoria contenente la distanza del successivo da $M[i]$. Questa distanza può essere interpretata come un link, un collegamento tra le due celle. Il processore assegnato a questo link esegue, al passo $0$, la somma $m + k$ e memorizza il risultato in $M[S[k]]$. Al passo $0$, quindi, l'algoritmo prende un elemento ed il suo successore e ne calcola la somma (tranne per l'ultimo elemento, in quanto privo di successore).
-Al passo $1$, l'algoritmo prende un elemento ed il suo successore non più a distanza $S[k] = 0$ bensì a distanza $S[k] = k + 1$, e ne effettua la somma (anche in questo caso non viene eseguita per l'ultimo ed il penultimo elemento, in quanto privi di successore).
+Dati $M[i] = m$ e $M[S[k]] = k$, sia $S[k]$ la cella di memoria contenente la distanza del successivo da $M[i]$. Questa distanza può essere interpretata come un link, un collegamento tra le due celle. Il processore assegnato a questo link esegue, al passo $0$, la somma $m + k$ e memorizza il risultato in $M[S[k]]$. Al passo $0$, quindi, l'algoritmo prende un elemento ed il suo successore e ne calcola la somma (tranne per l'ultimo elemento, in quanto privo di successore).<br />
+Al passo $1$, l'algoritmo prende un elemento ed il suo successore non più a distanza $S[k] = 0$ bensì a distanza $S[k] = k + 1$, e ne effettua la somma (anche in questo caso non viene eseguita per l'ultimo ed il penultimo elemento, in quanto privi di successore).<br />
 Questo algoritmo aumenta la distanza ad ogni passo successivo, fino al terminare dell'algoritmo.
 
 ![[immagine]]
