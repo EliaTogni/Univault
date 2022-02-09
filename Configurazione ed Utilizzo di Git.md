@@ -106,7 +106,7 @@ Changes to be committed:
 
 ### Commit di modifiche ###
 
-Ora che la staging area è pronta, è possibile committare le modifiche con il comando <code> git commit </code>.
+Ora che la staging area è pronta, è possibile committare le modifiche con il comando <code> git commit </code>.<br />
 Questo comando apre l'editor configurato, il quale mostra questo testo:
 
 ```
@@ -123,7 +123,7 @@ Questo comando apre l'editor configurato, il quale mostra questo testo:
 ".git/COMMIT_EDITMSG" 9L, 283C
 ```
 
-E' possibile rimuovere questi commenti e inserire il proprio messaggio di commit.
+E' possibile rimuovere questi commenti e inserire il proprio messaggio di commit.<br />
 In alternativa si può inserire il messaggio di commit nel comando:
 <code> git commit -m "Story 182: Fix benchmarks for speed </code>
 

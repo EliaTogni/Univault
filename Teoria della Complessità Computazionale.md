@@ -9,6 +9,7 @@ Per quel che riguarda la misurazione della risorsa _spazio_, data una macchina d
 Affinchè queste affermazioni siano valide, $f(n)$ dev'essere una _funzione di complessità propria_, cioè deve essere:
 - monotona crescente;
 - calcolabile in tempo e spazio limitati dal valore della funzione stessa.
+
 Poichè questo tipo di misurazione è molto dettagliato, si introducono approssimazioni che permettano di operare su algoritmi più astratti. In particolare si ricorre alle [[Funzioni Asintotiche]].
 
 ### Classi di complessità ###
