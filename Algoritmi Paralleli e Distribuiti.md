@@ -480,52 +480,74 @@ Di conseguenza, la proposta analizzata risulta essere una scelta poco efficiente
 ### Tecnica di Kogge-Stone [1973] ###
 
 Kogge-Stone introduce il **Pointer Doubling** per risolvere SOMME PREFISSE.<br />
-Si tratta di puntatori, di link tra coppie di numeri, indicati tramite frecce.
-Ogni processore si occupa di un puntatore e ne fa la somma in questo modo:
-Dati $M[i] = m$ e $M[S[k]] = k$, sia $S[k]$ la cella di memoria contenente la distanza del successivo da $M[i]$. Questa distanza può essere interpretata come un link, un collegamento tra le due celle. Il processore assegnato a questo link esegue, al passo $0$, la somma $m + k$ e memorizza il risultato in $M[S[k]]$. Al passo $0$, quindi, l'algoritmo prende un elemento ed il suo successore e ne calcola la somma (tranne per l'ultimo elemento, in quanto privo di successore).<br />
-Al passo $1$, l'algoritmo prende un elemento ed il suo successore non più a distanza $S[k] = 0$ bensì a distanza $S[k] = k + 1$, e ne effettua la somma (anche in questo caso non viene eseguita per l'ultimo ed il penultimo elemento, in quanto privi di successore).<br />
-Questo algoritmo aumenta la distanza ad ogni passo successivo, fino al terminare dell'algoritmo.
+Si tratta di puntatori, di link tra coppie di numeri, indicati tramite frecce.<br />
+Ogni processore si occupa di un puntatore e ne fa la somma in questo modo:<br />
+Dati $M[i] = m$ e $M[S[k]] = k$, sia $S[k]$ la cella di memoria contenente la distanza del successivo da $M[i]$. <br />Questa distanza può essere interpretata come un link, un collegamento tra le due celle.<br /> 
 
-![[immagine]]
+![[KoggeStone0.png]]
 
+Il processore assegnato a questo link esegue, al passo $j=0$, la somma $m + k$ e memorizza il risultato in $M[S[k]]$, cioè $M[i+1]$. Al passo $j=0$, quindi, l'algoritmo prende un elemento ed il suo successore e ne calcola la somma (tranne per l'ultimo elemento, in quanto privo di successore).<br />
+Al passo $j=1$, l'algoritmo prende un elemento ed il suo successore non più a distanza $S[k] = 1$ bensì a distanza $S[k] = 2$, e ne effettua la somma (anche in questo caso non viene eseguita per l'ultimo ed il penultimo elemento, in quanto privi di successore).<br />
+
+![[KoggeStone1.png]]
+
+Questo algoritmo raddoppia la distanza ad ogni passo successivo, fino al terminare dell'algoritmo. Da questo il nome **pointer doubling**.
+
+![[KoggeStone2.png]]
+
+Lo step successivo sarà, quindi, questo:
+
+![[KoggeStone3.png]]
+
+L'algoritmo termina quando nessun elemento ha più un successore. A questo punto, in ogni cella di memoria ho le somme prefisse desiderate.
+
+Si valutano ora le prestazioni dell'algoritmo.<br />
 - Quanti numeri privi di successori genera il $j$-esimo passo? $2^{j}$.
-- Quanti passi dura l'algoritmo? L'algoritmo dura fino a quando esistono successori. L'algoritmo termina quindi in $\log_{2}(n)$ passi.
-- Quali processori vengono attivati al $j$-esimo passo? I processori attivati sono $1 \leq k \leq n-2^{j-1}$
-- Sia S[k] la posizione del successivo di M[k]. Come viene inizializzato S? Viene inizializzato come S[k] = k+1 e S[n] = 0
-- Dato $p[k]$, quale istruzione su $M$ deve eseguire? $M[k]+M[S[k]] \rightarrow M[S[k]]$
-- Come deve essere svolto l'aggiornamento di S? $S[k]=(S[k] == 0? 0 : S[S[k]])$
+- Quanti passi dura l'algoritmo? L'algoritmo dura fino a quando esistono successori. Se si pongono i numeri privi di successori desiderati come $n$, cioè tutti i numeri dell'algoritmo di Kogge-Stone, è possibile porre $2^j = \log(n) \rightarrow j = \log_{2}(n)$.<br /> L'algoritmo termina, quindi, in $\log_{2}(n)$ passi.
+- Quali processori vengono attivati al $j$-esimo passo? I processori attivati sono $1 \leq k \leq n-2^{j-1}$.
+- Sia $S[k]$ la posizione del successivo di $M[k]$ anch'essa presente in memoria centrale. Come viene inizializzato S? Viene inizializzato come $S[k] = k+1$ per $1 \leq k \leq n-1$ e $S[n] = 0$.
+- Dato $p[k]$, quale istruzione deve eseguire su $M$? $M[k]+M[S[k]] \rightarrow M[S[k]]$
+- Come deve essere svolto l'aggiornamento di $S$, successivo alle somme parziali? $S[k]=(S[k] == 0? 0 : S[S[k]])$.
 
+Il codice dell'algoritmo parallelo, con $M$ e $S$ già inizializzati, sarà quindi il seguente:<br />
 <code>
 	for j = 1 to log(n) do
-</code>
-
+</code><br />
 <code>
 	for 1 <= k <=  n - 2^(j-1) par do
-</code>
-
+</code><br />
 <code>
 	M[S[k] = M[k] + M[S[k]]
-</code>
-
+</code><br />
 <code>
 	S[k] = (S[k] == 0? 0 : S[S[k]])
 </code>
 
 I processori non competono per accedere alla stessa cella. Si sta risolvendo il problema con un architettura EREW.
+E' ovviamente molto plausibile avere un link entrante in una cella di memoria ed un link uscente dalla medesima cella ma le operazioni di lettura (e scrittura) vengono svolte in momenti diversi.
 
-![[immagine2]]
+![[ConcurrencyKoggeStone1.png]]
 
-.
-.
-.
+Per visualizzare meglio questa operazione, si immaginino i due processori $P_{k}$ e $P_{k}'$ al tempo $t$.
+$P_{k}$ esegue una LOAD su $M[k]$ al tempo $t1$ mentre $P_{k}'$ esegue una LOAD su $M[k']$ allo stesso tempo $t1$. Poichè $k \neq k'$, i due valori sono diversi.<br />
+Al tempo $t2$, il primo processore esegue una LOAD su $S[k]$ mentre il secondo processore esegue una LOAD su $S[k']$. Anche in questo caso $k \neq k'$.<br />
+Al tempo $t3$, $P_{k}$ carica $M[S[k]]$ con una LOAD, mentre $P_{k'}$ carica con una LOAD$M[S[k']]$. Anche in questo caso i valori sono diversi.<br />
+Si temeva che $M[S[k]]$ ed $M[k']$ venissero acceduti simultaneamente ma non è così.
 
-La correttezza dell'algoritmo si dimostra mostrando che, per $1 \leq k \leq n$ si ha in M[k] la somma degli elementi precedenti
+![[ConcurrencyKoggeStone2.png]]
 
-$$M[k] = \sum_{i=1}^{k} M[i]$$
+Questa dimostrazione ribadisce la struttura EREW dell'algoritmo.<br />
+Se $i\neq j \rightarrow S[i] \neq S[j]$, quindi i due valori hanno successori diversi (eccetto il caso $S[i] = S[j] = 0$).
 
-Al $j$-esimo passo si avrà
+E' anche necessario dimostrare che l'algoritmo sia corretto.<br />
+La correttezza dell'algoritmo si dimostra facendo vedere che, per $1 \leq k \leq n$ si ha in M[k] la somma degli elementi precedenti:
 
-$$M[t] = \Bigg\{ M[t] + ... + M[1] \quad t \leq 2^{j}
+$$M[k] = \sum_{i=1}^{k} M[i] \text{, } \quad 1 \leq k \leq n$$
+
+In particolare, la correttezza si dimostra dimostrando anche una determinata proprietà.<br />
+Al $j$-esimo passo si avrà:
+
+$$M[t] = \Bigg\{ M[t] + ... + M[1] \quad t \leq 2^{j} \text
 				 M[t] + ... +M[t-2^{j}+1] \quad t > 2^{j}
 $$
 
