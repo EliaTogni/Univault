@@ -296,7 +296,7 @@ Si osservi il problema OP ITERATA, del quale SOMMATORIA è un caso particolare.
 **Output**: $OP_{i} \text{ } M[i] \rightarrow M[n]$
 
 OP è un'operazione associativa. Nel caso in cui OP sia la somma, ci si ritrova nel problema SOMMATORIA.<br />
-Esempi di operaizoni sono $+, *, \wedge, \vee, \oplus, \min, \max$...<br />
+Esempi di operazioni sono $+, *, \wedge, \vee, \oplus, \min, \max$...<br />
 Si ottiene una soluzione efficiente parallela:
 
 $$p(n)=O\Bigg(\frac{n}{\log(n)}\Bigg)$$
@@ -544,26 +544,140 @@ La correttezza dell'algoritmo si dimostra facendo vedere che, per $1 \leq k \leq
 
 $$M[k] = \sum_{i=1}^{k} M[i] \text{, } \quad 1 \leq k \leq n$$
 
-In particolare, la correttezza si dimostra dimostrando anche una determinata proprietà.<br />
+In particolare, la correttezza si dimostra verificando una determinata proprietà.<br />
 Al $j$-esimo passo si avrà:
 
-$$M[t] = \Bigg\{ M[t] + ... + M[1] \quad t \leq 2^{j} \text
-				 M[t] + ... +M[t-2^{j}+1] \quad t > 2^{j}
+$$
+\begin{numcases}{M[t] =}
+  M[t] + ... + M[1], & se  $t \leq 2^j$ \\
+  M[t] + ... + M[t-2^j +1], & se $t > 2^j$
+\end{numcases}
+$$
+
+La correttezza deriva dal fatto che, se la proprietà è vera, si ha per $j = \log(n)$:
+
+$$
+\begin{numcases}{M[t] =}
+  M[t] + ... + M[1], & per $t \leq 2^j = 2^{\log(n)} = n$ \\
+  \_, & per $t > 2^j = n$
+\end{numcases}
 $$
 
 **Dimostrazione per induzione**
 
-Se l'algoritmo al $j$-esimo passo è corretto, si ha per $j= \log(n)$
+Questa proprietà si dimostra per induzione su $j$:
 
-$$M[t] = \Bigg\{ M[t] + ... + M[1] \quad \text{ per } t \leq 2^j = 2^{\log(n)} = n
+**Caso base ($j=1$)**:
 
-... \quad \text{ per } t < 2^j = n
+$$\text{per }t\leq 2$$
+$$\text{se } t = 1 \quad \quad M[1] = M[1]$$
+$$\text{se } t = 2 \quad \quad M[2] = M[1] + M[2]$$<br />
+
+$$\text{per }t > 2$$
+$$M[k+1] = M[k] + M[k+1]$$
+$$ = $$
+$$M[t] = M[t-1] + M[t]$$
+
+
+**Passo induttivo**
+
+Si suppone la proprietà vera per $j-1$ e si dimostra per $j$. Prima di iniziare il $j$-esimo passo, quanto vale $S$?<br >/
+E' utile notare che, al $j$-esimo passo, i link legano celle di memoria a distanza $2^{j-1}$.<br />
+Quindi:
+
+$$
+\begin{numcases}{S[k] =}
+  k+2^{j-1}, & per $k \leq n-2^{j-1}$ \\
+  0, & per $k > n - 2^{j-1}$
+\end{numcases}
 $$
 
-**Caso base**:
+.<br />
+.<br />
+.<br />
 
-$$j=1 \quad \text{ per } t \leq 2 \quad \quad \text{ se } t = 1 \quad \quad M[1] = M[1]$$
-$$\quad\quad\quad \qquad \qquad \qquad \qquad \qquad \text{se } t = 2 \quad \quad M[2] = M[1] + M[2]$$
+Si valutano ora le prestazioni dell'algoritmo.
+$$p(n) = n-1$$
+Al primo passo, nell'esempio con $8$ elementi, venivano utilizzati $7$ processori. Nei passi successivi, il numero di processori diminuiva.
+Si inferisce che il numero di processori utilizzati è, a causa del primo passo, pari a $n-1$.
+$$T(n, p(n)) \sim 9\log(n)$$
+L'algoritmo utilizza un loop di $\log(n)$ passi ed un loop interno che fa eseguire ai processori in parallelo due istruzioni:
+- $M[S[k] = M[k] + M[S[k]]$
+- $S[k] = (S[k] == 0? 0: S[S[k]])$
 
+Si osservino le microistruzioni che vengono eseguite in ognuna di queste istruzioni.
+Nel caso della prima istruzione, si hanno:
 
+$$
+\begin{numcases}{5 \text { }}
+ 	LOAD \quad M[k], & \\
+ 	LOAD \quad S[k], & \\
+	LOAD \quad M[S[k]], & \\
+	ADD, & \\
+	STORE \quad M[S[k]] 
+\end{numcases}
+$$
 
+Nel caso della seconda istruzione, invece, si hanno:
+
+$$
+\begin{numcases}{4 \text { }}
+ 	LOAD \quad S[k], & \\
+ 	JZERO, & \\
+	LOAD \quad S[S[k]], & \\
+	STORE \quad S[k] 
+\end{numcases}
+$$
+
+In totale si hanno $9$ microistruzioni eseguite per un numero di passi logaritmico. Quindi $T(n, n-1) \sim 9\log(n)$.<br /> 
+
+$$E(n, p(n)) = \frac{n-1}{(n-1)9\log(N)} = \frac{1}{9\log(n)} \rightarrow 0$$
+
+Poichè l'efficienza tende a zero, forse si sta utilizzando un numero troppo elevato di processori. Quindi è possibile sfruttare il teorema di Wyllie come già fatto per il problema SOMMATORIA.
+Togliere il logaritmo a denominatore permetterebbe di avere un valore costante di efficienza.
+Si raggruppino quindi i processori a gruppi di dimensione $\log(n)$.
+
+$$p(n) = o\Bigg(\frac{n}{\log(n)}\Bigg)$$
+$$T(n, p(n)) = O(\log(n))$$
+$$E \rightarrow c \neq 0$$
+
+Come per il problema SOMMATORIA, anche l'algoritmo dato per SOMME PREFISSE può essere usato come modulo risolutivo per altri problemi.
+
+### OP-PREFISSA ###
+
+**Definizione del problema**
+
+**Input**: $M[1], M[2], ..., M[n]$<br />
+**Output**: $M[k] = OP_{i=1}^{k} M[i] \text{, } 1 \leq k \leq n$
+
+OP deve essere associativa, come ad esempio $+, *, \wedge, \vee, \oplus, \min, \max$...<br />
+
+### VALUTAZIONE DI POLINOMI ###
+
+**Definizione del problema**
+
+**Input**: $p(x) = a_{0} + a_{1}x + a_{2}x^{2} + ... + a_{n}x^{n}\text{, } \alpha$<br />
+**Output**: $p(\alpha)$
+
+**Dati in memoria M**:
+- $\alpha$;
+- $a_{0}$, $a_{1}$, ..., $a_{n} \rightarrow A[0]$, $A[1]$, ..., $A[n]$.
+
+L'algoritmo sequenziale tradizionale impiega un numero di operazioni pari a:
+
+$$
+\begin{numcases}{N =}
+ 	prodotti: & $\sum_{i=0}^{n}i \sim n^2$\\
+ 	somme: & n \\ 
+\end{numcases}
+$$
+$$N \sim n^2$$
+
+### Miglioramento di Ruffini-Horner ###
+
+Il numero di istruzioni impiegato può essere migliorato tramite l'idea di Ruffini-Horner. 
+Si osservi un esempio di applicazione su un polinomio di quarto grado:
+
+$$p(x) = a_{0} + a_{1}x + a_{2}x^{2} + a_{3}x^{3} + a_{4}x^{4}$$
+
+E' possibile eseguire un raccoglimento parziale dell'incognita $x$ a partire dal secondo termine.
