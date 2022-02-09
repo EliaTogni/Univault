@@ -598,14 +598,14 @@ $$
 
 Si valutano ora le prestazioni dell'algoritmo.
 $$p(n) = n-1$$
-Al primo passo, nell'esempio con $8$ elementi, venivano utilizzati $7$ processori. Nei passi successivi, il numero di processori diminuiva.
+Al primo passo, nell'esempio con $8$ elementi, venivano utilizzati $7$ processori. Nei passi successivi, il numero di processori diminuiva.<br />
 Si inferisce che il numero di processori utilizzati è, a causa del primo passo, pari a $n-1$.
 $$T(n, p(n)) \sim 9\log(n)$$
 L'algoritmo utilizza un loop di $\log(n)$ passi ed un loop interno che fa eseguire ai processori in parallelo due istruzioni:
 - $M[S[k] = M[k] + M[S[k]]$
 - $S[k] = (S[k] == 0? 0: S[S[k]])$
 
-Si osservino le microistruzioni che vengono eseguite in ognuna di queste istruzioni.
+Si osservino le microistruzioni che vengono eseguite in ognuna di queste istruzioni.<br />
 Nel caso della prima istruzione, si hanno:
 
 $$
@@ -633,8 +633,8 @@ In totale si hanno $9$ microistruzioni eseguite per un numero di passi logaritmi
 
 $$E(n, p(n)) = \frac{n-1}{(n-1)9\log(N)} = \frac{1}{9\log(n)} \rightarrow 0$$
 
-Poichè l'efficienza tende a zero, forse si sta utilizzando un numero troppo elevato di processori. Quindi è possibile sfruttare il teorema di Wyllie come già fatto per il problema SOMMATORIA.
-Togliere il logaritmo a denominatore permetterebbe di avere un valore costante di efficienza.
+Poichè l'efficienza tende a zero, forse si sta utilizzando un numero troppo elevato di processori. Quindi è possibile sfruttare il teorema di Wyllie come già fatto per il problema SOMMATORIA.<br />
+Togliere il logaritmo a denominatore permetterebbe di avere un valore costante di efficienza.<br />
 Si raggruppino quindi i processori a gruppi di dimensione $\log(n)$.
 
 $$p(n) = o\Bigg(\frac{n}{\log(n)}\Bigg)$$
@@ -675,9 +675,61 @@ $$N \sim n^2$$
 
 ### Miglioramento di Ruffini-Horner ###
 
-Il numero di istruzioni impiegato può essere migliorato tramite l'idea di Ruffini-Horner. 
+Il numero di istruzioni impiegato può essere migliorato tramite l'idea di Ruffini-Horner.<br />
 Si osservi un esempio di applicazione su un polinomio di quarto grado:
 
 $$p(x) = a_{0} + a_{1}x + a_{2}x^{2} + a_{3}x^{3} + a_{4}x^{4}$$
 
-E' possibile eseguire un raccoglimento parziale dell'incognita $x$ a partire dal secondo termine.
+E' possibile eseguire una serie di raccoglimenti parziali dell'incognita $x$ in maniera iterata, a partire dal secondo termine.
+
+$$= a_{0} + x(a_{1} + a_{2}x + a_{3}x^2 + a_{4}x^{3})$$
+$$= a_{0} + x(a_{1} + x(a_{2} + a_{3}x + a_{4}x^2))$$
+$$a_{0} + x(a_{1} + x(a_{2} + x(a_{3} + a_{4}x)))$$
+
+Generalizzando:
+
+$$p(x) = a_{0} + x(a_{1} + ... a_{n-2} +x(a_{n-1} + a_{n}x)...)$$
+
+Questa nuova forma del polinomio suggerisce l'applicazione di un nuovo algoritmo, basato sulla sostituzione iterata di $\alpha$ nella parentesi tonda più interna.
+
+![[RuffiniHorner.png]]
+
+$$p = a_{j} + p \cdot \alpha$$
+
+Il codice per l'algoritmo sequenziale di Ruffini-Horner è:
+
+<code>
+	Input(alpha)
+</code><br />
+<code>
+	p = a_{n}
+</code><br />
+<code>
+	for i = 1 to n
+</code><br />
+<code>
+	p = a_{n-i} + p*alpha
+</code><br />
+<code>
+	Output(p)
+</code><br />
+
+Le prestazioni in termini di istruzioni dell'algoritmo sequenziale di Ruffini-Horner sono:
+$$T(n, 1) = 2n$$
+cioè due operazioni all'interno di ogni iterazione del loop.
+
+Si dovrà trovare un possibile algoritmo parallelo che, confrontato con questo algoritmo lineare, risulti efficiente.<br />
+- Si costruisca il vettore delle potenze di $\alpha$, $Q$;
+   $$Q[k] = \alpha^{k}\text{, } \quad 0 \leq k \leq n$$
+  - Si esegua il prodotto interno $< A, Q >$;
+     $$< A, Q > = \sum_{k = 0}^{n} A[k] \cdot Q[k]$$
+- Si restituisca $< A, Q >$.
+
+Per costruire il vettore delle potenze è necessario:
+- mettere $\alpha$ in tutti gli elementi di $Q$ da $1$ a $n$. Non considero la cella $Q[0]$, la quale deve contenere $1$.
+   $$Q[1] = \alpha\text{, } Q[2] = \alpha\text{, ..., }Q[n] = \alpha$$
+   Porre ogni elemento di $Q = \alpha$ significa risolvere il problema chiamato REPLICA. Si supponga di essere in grado di risolvere questo problema;
+- applicare il PRODOTTO PREFISSO su $Q$:
+   $$Q[1] = \alpha\text{, }Q[2] = \alpha^{2}\text{, ..., }Q[n] = \alpha^{n}$$
+   
+Come risolvere REPLICA in parallelo?
