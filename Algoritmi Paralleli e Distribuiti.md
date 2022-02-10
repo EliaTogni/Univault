@@ -582,7 +582,7 @@ $$M[t] = M[t-1] + M[t]$$
 
 Questo è esattamente ciò che viene descritto dalla proprietà.
 
-**Passo induttivo**
+**Passo induttivo**:
 
 Si suppone la proprietà vera per $j-1$ e si dimostra per $j$. Prima di iniziare il $j$-esimo passo, quanto vale $S$?<br >/
 E' utile notare che, al $j$-esimo passo, i link legano celle di memoria a distanza $2^{j-1}$.<br />
@@ -762,7 +762,7 @@ Per costruire il vettore delle potenze è necessario:
    Per abbassare il numero di processori di REPLICA si applica il teorema di Wyllie, raggruppando i processori in $\log(n)$ elementi. Si sostituisce ogni gruppo di processori con un singolo processore, il quale si occuperà di $\log(n)$ replicazioni di $\alpha$ nel vettore $Q$.<br />
    Il $k$-esimo processore carica $\alpha$ nelle celle di posizione $(k-1)\log(n) +1, ..., k\log(n)$.<br />Si riesce ad incrementare l'efficienza effettuando un trade-off con il tempo di esecuzione, il quale passa da costante a logaritmico.<br />
  
-- **Secondo modo:**<br />
+- **Secondo modo**:<br />
    <code>
 	for k =1 to n/log(n) par do
 	</code><br />
@@ -778,4 +778,151 @@ Per costruire il vettore delle potenze è necessario:
 	$$E = \frac{n}{\frac{n}{\log(n)}c \cdot \log(n)} = \frac{1}{c} \neq 0$$
 	
 	Continua ad essere però un algoritmo CREW.
+	Non è stato quindi eliminato l'accesso simultaneo ad $\alpha$.
 	
+- **Terzo modo**:<br />
+   Si costruisca il vettore $\alpha, 0, 0, ..., 0$ e si esegua su di esso l'algoritmo SOMME PREFISSE.<br />
+   <code>
+	Input(alpha)
+	</code><br />
+	<code>
+	Q[1] = alpha
+	</code><br />
+	<code>
+	for k = 2 to n par do
+	</code><br />
+	<code>
+	Q[k] = 0
+	</code><br />
+	
+	La differenza tra gli algoritmi è che il valore $0$ è una costante che non necessita di essere letta. Mentre tutti i processori devono accedere alla memoria condivisa per leggere $\alpha$, il valore $0$ invece è una costante interna all'istruzione.<br />
+   E' possibile ridurre il numero di processori con il teorema di Wyllie, passando da $n$ a $\frac{n}{\log(n)}$.
+   
+   Si valutano ora le prestazioni dell'algoritmo nei due step del codice, la costruzione del vettore e l'applicazione di SOMME PREFISSE.<br />
+   1) 
+   $$p = \frac{n}{\log(n)}$$
+   $$t = \log(n)$$
+   2) 
+   $$p = \frac{n}{\log(n)}$$
+   $$t = \log(n)$$
+   
+   Totale:<br />
+   $$p = \frac{n}{log(n)}$$
+   $$t = \log(n)$$
+   $$E = c \neq 0$$
+   
+   Finamente si è ottenuto un algoritmo EREW.
+   
+![[ValutazionePolinomio.png]]
+In questo schema viene visualizzato complessivamente l'algoritmo EREW per la valutazione di un polinomio.<br />
+Analizziamo ora le prestazioni dell'algoritmo.<br />
+   $$p = \frac{n}{\log(n)}$$
+   $$T(n, p(n)) = \log(n)$$
+   $$E = frac{T(n,1)}{p(n)T(n,p(n))} = frac{2n}{\frac{n}{\log(n)}\log(n)} \rightarrow c \neq 0$$
+   
+### RICERCA DI UN ELEMENTO ###
+
+**Definizione del problema**
+
+**Input**: $M[1], M[2], ..., M[n], \alpha$<br />
+**Output**: $M[n] = 1 \text{ se } \exists k \text{ tale che } M[k] = \alpha\text{, altrimenti } = 0$
+
+L'algoritmo sequenziale classico richiede $t(n, 1) = n$, in quanto è necessario osservare tutto il vettore.<br />
+Chiaramente, se l'input fosse ordinato, il tempo di ricerca dicotomica sarebbe $t(n, 1) = \log(n)$, con costo dell'ordinamento di $O(n\log(n))$.<br />
+
+Negli anni '90 è stato presentato un algoritmo quantistico, il quale mostra come, anche su un input non ordinato, la ricerca possa avvenire in tempo $t = \sqrt{n}$. Viene sfruttata una proprietà intrinseca al modello di calcolo. In particolare, la tipica interferenza quantistica nei modelli quantistici.<br />
+
+**Primo modo:**<br />
+Si presenta ora un primo algoritmo parallelo per la ricerca di un elemento in un vettore.<br />
+Si propone un algoritmo su una struttura CRCW.<br />
+<code>
+	F = 0
+</code><br />
+<code>
+	for k = 1 to n par do
+</code><br />
+<code>
+	if (M[k] == alpha)
+</code><br />
+<code>
+F = 1;
+</code><br />
+<code>
+	M[n] = F;
+</code>
+
+Si utilizza un flag $F$ contenuto nella memoria condivisa. Per quale motivo si usa il flag e non la cella $M[n]$? Perchè non è possibile inizializzare a 0 $M[n]$.
+
+Si valutano ora le prestazioni di questo algoritmo.<br />
+$$p = n$$
+$$t(n, n) = c$$
+
+Il fatto di dover inserire potenzialmente il valore $1$ nella variabile $F$ fa presuppore un possibile problema di concurrency. Di conseguenza necessitiamo sicuramente un architettura in grado di scrivere in maniera concorrenziale. Allo stesso modo, più processori accedono alla locazione di memoria condivisa nel quale è contenuto il valore $\alpha$, sottolineando così la necessità di un'architettura CRCW.<br />
+
+**Secondo modo**:<br />
+Il secondo tentativo mira ad ottenere un algoritmo CREW.<br />
+<code>
+	for k = 1 to n par do
+</code><br />
+<code>
+	M[k] = (M[k]==alpha? 1 : 0)
+</code><br />
+
+Eliminare la scrittura concorrente significa voler eliminare il flag utilizzato nella versione precedente. Al posto di memorizzare il risultato in una cella sola, si memorizzano nelle celle $M[k]$.<br />
+Si trasforma il vettore di numeri in input in un vettore booleano contenente $1$ e $0$.<br />
+Dopodiché si vuole spostare il risultato nella cella di indice maggiore. Si esegue quindi un algoritmo MAX-ITERATO che sposta il valore $1$, nel caso esista, nella cella $M[n]$.<br />
+
+Si valutano ora le prestazioni dell'algoritmo.<br />
+ 1)<br />
+$$p = n$$
+$$t = costante$$
+$$\downarrow$$
+$$Wyllie$$
+$$p = \frac{n}{\log(n)}$$
+$$t = \log(n)$$
+2)<br />
+$$p = \frac{n}{\log(n)}$$
+$$t = \log(n)$$
+Totale:<br />
+$$p = O(\frac{n}{\log(n)}$$
+$$t = O(\log(n)$$
+$$E \sim c \neq 0$$
+
+**Terzo modo**:<br />
+Per eliminare la concurrent read si può sostituire ad $\alpha$ un vettore inizializzato con il valore di $\alpha$ tante volte quanti i processori utilizzati.<br />
+Replica di $\alpha \rightarrow A[1], A[2], ..., A[3]$.<br />
+<code>
+	for k = 1 to n par do
+</code><br />
+<code>
+	M[k] = (M[k]==A[k]? 1 : 0)
+</code><br />
+Si esegue infine MAX-ITERATO($M[1], ..., M[n]$).<br />
+
+Si valutano ora le prestazioni dell'algoritmo.<br />
+- Confronto + MAX-ITERATO:<br />
+ $$p = \frac{n}{\log(n)}$$
+ $t = \log(n)$
+- Replica:<br />
+   $$p = \frac{n}{\log(n)}$$
+   $$t = \log(n)$$
+   
+   - Totale:<br />
+  $$p = \frac{n}{\log(n)}$$
+  $$t = \log(n)$$
+  $$E = c \neq 0$$
+  
+  Esistono diverse varianti di questo codice, per risolvere problemi legati:
+  - al numero di occorrenze di $\alpha$ in $M$ (si risolve trasformando MAX-ITERATO in SOMMATORIA);
+  - alla posizione massima di $\alpha$ in $M$ (Si risolve memorizzando $M[k]=k$ se in $M[k]$ è presente $\alpha$);
+  - alla posizione minima di $\alpha$ in $M$( si risolve memorizzando $M[k]=k$ se in $M[k]$ è presente $\alpha$ e trasformando MAX-ITERATO in OP-ITERATA).
+
+OP-ITERATA viene eseguita tra due celle di $M$ che contengono i valori $x$ e $y$. Se entrambi questi valori sono diversi da $0$, viene scelto il minimo tra di essi. Se uno dei due è uguale a $0$, viene scelto il massimo.<br/>
+Questo permette di portare il minimo valore della cella che contiene $\alpha$ nella cella $M[n]$.
+
+### ORDINAMENTO o RANKING ###
+
+**Definizione del problema**
+
+**Input**: $M[1], M[2], ..., M[n]$<br />
+**Output**: $$
