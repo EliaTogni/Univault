@@ -925,4 +925,14 @@ Questo permette di portare il minimo valore della cella che contiene $\alpha$ ne
 **Definizione del problema**
 
 **Input**: $M[1], M[2], ..., M[n]$<br />
-**Output**: $$
+**Output**: permutazione $p:\{1,...,n\} \rightarrow \{1,...,n\} \text{ tale che } M[p(1)] \leq M[p(2)] \leq ... \leq M[p(n)]$, dove $p(i)$ rappresenta l'indice dell'elemento del vettore $M$ che va in posizione $i$.<br />
+
+In genere gli algoritmi di ordinamento sono basati sui confronti che coinvolgono due valori della sequenza.<br />
+Se si considerano gli algoritmi di ordinamento che usano i confronti, algoritmi sequenziali che ordinano $n$ valori hanno un tempo sequenziale pari ad $n\log(n)$, che è sia un upper bound che un lower bound.<br />
+Upper bound perchè esistono algoritmi sequenziali come il [[MergeSort]], che utilizza $n\log(n)$ passi per ordinare la sequenza di $n$ valori.<br />
+Lower bound perchè so può dimostrare che un algoritmo sequenziale necessita di minimo $n\log(n)$ passi per ordinare una sequenza di valori.<br />
+La dimostrazione di questo lower bound si basa sull'utilizzo di un [[Albero di Decisione]].<br />  
+
+Un primo approccio parallelo si basa su un algoritmo di conteggio di certi confronti. Un algoritmo sequenziale di conteggio richiede un tempo $t = \Theta(n^2)$.<br />
+Si prende spunto dall'algoritmo sequenziale [[CountingSort]]. <br />
+
