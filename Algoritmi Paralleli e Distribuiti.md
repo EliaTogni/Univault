@@ -554,7 +554,7 @@ $$
 \end{numcases}
 $$
 
-La correttezza deriva dal fatto che, se la proprietà è vera, si ha per $j = \log(n)$:
+La correttezza deriva dal fatto che, se la proprietà è vera, si ha per $j = \log(n)$ (cioè l'ultimo passo):
 
 $$
 \begin{numcases}{M[t] =}
@@ -562,6 +562,8 @@ $$
   \_, & per $t > 2^j = n$
 \end{numcases}
 $$
+
+E questo conferma la risoluzione del problema.
 
 **Dimostrazione per induzione**
 
@@ -578,6 +580,7 @@ $$M[k+1] = M[k] + M[k+1]$$
 $$ = $$
 $$M[t] = M[t-1] + M[t]$$
 
+Questo è esattamente ciò che viene descritto dalla proprietà.
 
 **Passo induttivo**
 
@@ -592,10 +595,26 @@ $$
 \end{numcases}
 $$
 
-.<br />
-.<br />
-.<br />
-
+$\forall t \leq 2^{j-1}$, la proprietà è vera per ipotesi. Tutte le celle con indice $\leq 2{j-1}$ sono già risolte.<br />
+Per sostenere che la proprietà sia vera al passo $j$-esimo, è necessario considerare le casistiche come separate.<br />
+- Si considerino le celle con indice:
+$$2^{j-1} < t \leq 2{j} \rightarrow t = 2^{j-1} +a$$
+E' possibile scrivere il numero $t$ in questo modo in quanto è sicuramente maggiore di $2^{j-1}$.
+E' noto che questo numero, al $j$-esimo passo, è:
+$$M[a + 2^{j-1}] = M[a] + M[a + 2^{j-1}]$$
+Ma $a \leq 2^{j-1}$ per come è stato scelto. Infatti $a + 2^{j-1} \leq 2^j$.<br />
+Allora, per ipotesi di induzione, in $M[a]$ ci sono tutti i valori precedenti sommati, da $M[1]$ a $M[a]$.
+Nella cella $M[a + 2^{j-1}]$, invece, sono contenuti tutti i $2^{j-1}$ elementi precedenti sommati.<br />
+Quindi la somma di queste due celle restituisce la somma degli elementi da $1$ ad $a + 2^{j-1}$, il che conferma la correttezza della proprietà fino a $2^{j}$.<br />
+- Si considerino le celle con indice:
+   $$t > 2{j} \rightarrow t = a + 2{j}$$
+   E' possibile scrivere $2^{j} = 2^{j-1} + 2^{j-1}$.<br />
+   Sapendo che, al $j$-esimo passo, il successore si trova a distanza $2^{j-1}$, l'elemento che viene sommato con $M[a + 2^{j}]$ è il seguente, per definizione di $S[k]$:
+   $$M[a + 2^j] = M[a + 2^{j-1}] + M[a + 2^j]$$
+   Per induzione, quando $t>2^{j-1}$ vale la proprietà iniziale, cioè $M[a + 2^{j-1}]$ contiene la somma di tutti i numeri contenuti nelle celle precedenti. Quindi la cella contiene da $M[a + 1]$ ad $M[a + 2^{j-1}]$.<br />
+   La stessa cosa vale per $M[a + 2^{j}]$. Di conseguenza, nella cella sono presenti tutti i $2^{j-1}$ numeri precedenti.<br />
+   Sommando insieme il contenuto di queste due celle, otteniamo cheper gli elementi di posizione $> 2^{j}$ vale la proprietà iniziale.<br />
+   
 Si valutano ora le prestazioni dell'algoritmo.
 $$p(n) = n-1$$
 Al primo passo, nell'esempio con $8$ elementi, venivano utilizzati $7$ processori. Nei passi successivi, il numero di processori diminuiva.<br />
@@ -731,5 +750,32 @@ Per costruire il vettore delle potenze è necessario:
    Porre ogni elemento di $Q = \alpha$ significa risolvere il problema chiamato REPLICA. Si supponga di essere in grado di risolvere questo problema;
 - applicare il PRODOTTO PREFISSO su $Q$:
    $$Q[1] = \alpha\text{, }Q[2] = \alpha^{2}\text{, ..., }Q[n] = \alpha^{n}$$
+ 
+**Come risolvere REPLICA in parallelo?**<br />
+- **Primo modo:**<br /> <code> for k=1 to n par do </code><br /><code>Q[jk] = alpha;</code><br />Essendo $\alpha$ una cella di $M$, risulta essere un accesso simultaneo in lettura. Di conseguenza, è necessaria un'architettura CREW.<br />Si valutano ora le prestazioni dell'algoritmo.<br />
+   $$p = n$$
+   $$t(n, p(n)) = 2$$
+   $$E \sim \frac{n}{2n} \rightarrow c \neq 0$$
+   L'unica osservazione possibile è che, siccome si sta valutando il problema REPLICA per costruire il vettore delle potenze $\alpha$, insieme al problema REPLICA si affronta un modulo PRODOTTO PREFISSO, che si può risolvere con $\frac{n}{\log(n)}$ processori. Nonostante, quindi, qui l'efficienza ottenuta sia costante, si può capire che stanno venendo utilizzati troppi processori.<br />
+   In più non è un algoritmo EREW.
    
-Come risolvere REPLICA in parallelo?
+   Per abbassare il numero di processori di REPLICA si applica il teorema di Wyllie, raggruppando i processori in $\log(n)$ elementi. Si sostituisce ogni gruppo di processori con un singolo processore, il quale si occuperà di $\log(n)$ replicazioni di $\alpha$ nel vettore $Q$.<br />
+   Il $k$-esimo processore carica $\alpha$ nelle celle di posizione $(k-1)\log(n) +1, ..., k\log(n)$.<br />Si riesce ad incrementare l'efficienza effettuando un trade-off con il tempo di esecuzione, il quale passa da costante a logaritmico.<br />
+ 
+- **Secondo modo:**<br />
+   <code>
+	for k =1 to n/log(n) par do
+	</code><br />
+	<code>
+	for i = 1 to log(n) do
+	</code><br />
+	<code>
+	Q[(k+1)log(n) + i] = alpha
+	</code><br />
+	Si valutano ora le prestazioni dell'algoritmo.<br />
+	$$p = \frac{n}{\log(n)}$$
+	$$t = c\log(n)$$
+	$$E = \frac{n}{\frac{n}{\log(n)}c \cdot \log(n)} = \frac{1}{c} \neq 0$$
+	
+	Continua ad essere però un algoritmo CREW.
+	
