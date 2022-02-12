@@ -933,6 +933,6 @@ Upper bound perchè esistono algoritmi sequenziali come il [[MergeSort]], che ut
 Lower bound perchè so può dimostrare che un algoritmo sequenziale necessita di minimo $n\log(n)$ passi per ordinare una sequenza di valori.<br />
 La dimostrazione di questo lower bound si basa sull'utilizzo di un [[Albero di Decisione]].<br />  
 
-Un primo approccio parallelo si basa su un algoritmo di conteggio di certi confronti. Un algoritmo sequenziale di conteggio richiede un tempo $t = \Theta(n^2)$.<br />
+Un primo approccio parallelo si basa su un algoritmo il quale utilizza il conteggio di certi confronti. Un algoritmo sequenziale di conteggio, per terminare,  richiede un tempo $t = \Theta(n^2)$.<br />
 Si prende spunto dall'algoritmo sequenziale [[CountingSort]]. <br />
 
