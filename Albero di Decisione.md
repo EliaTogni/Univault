@@ -1,14 +1,14 @@
-Un **albero di decisione** viene visto come la dinamica di un algoritmo di ordinamento che si basa sui confronti. Infatti, un algoritmo di ordinamento basato sui confronti, durante l'esecuzione, produce un albero di decisione o, meglio, un cammino all'interno di un albero di decisione.
+Un **albero di decisione**, relativamente ad algoritmi di ordinamento, viene visto come la dinamica dell' algoritmo di ordinamento che si basa sui confronti. Infatti, un algoritmo di ordinamento basato sui confronti, durante l'esecuzione, produce un albero di decisione o, meglio, un cammino all'interno di un albero di decisione.
 
 ![[AlberoDecisioneAlgo.png]]
 
-Ogni nodo di decisione corrisponde ad un confronto ed ogni arco corrisponde ad un possibile risultato del confronto.<br />
-Le foglie dell'albero di decisione rappresentano le **permutazioni dell'input**. Ogni foglia individua un unico cammino a partire dalla radice e, quindi, i confronti che permettono di ordinare l'input.<br />
+Ogni nodo dell'albero di decisione corrisponde ad un confronto mentre ogni arco corrisponde ad uno dei possibili risultati del confronto.<br />
+Le foglie dell'albero di decisione rappresentano, quindi, le **permutazioni dell'input**. Ogni foglia individua un unico cammino a partire dalla radice e, quindi, i confronti che permettono di ordinare l'input.<br />
 L'altezza di questo albero rappresenta il tempo dell'algoritmo di ordinamento. In un generico albero, l'altezza rappresenta il cammino più lungo all'interno dell'albero binario. Il cammino più lungo è dato anche dal massimo numero di confronti che è necessario effettuare.<br />
 
-Le possibili permutazioni dell'input su $n$ elementi sono $n!$ permutazioni. Le foglie devono prevedere tutte le possibili permutazioni dell'input.<br />
+Le possibili permutazioni dell'input su $n$ elementi sono $n!$ permutazioni. Le foglie devono allora prevedere tutte le possibili permutazioni dell'input.<br />
 Data $t$, altezza dell'albero di decisione, il massimo numero di foglie è pari a $2^t$ e deve essere completamente blanciato.<br />
-Da questo si ricava che $t geq \log(n!)$.<br />
+Da questo si ricava che $t \geq \log(n!)$.<br />
 
 $$\log(n!) \geq \log \Bigg(\prod_{i = \frac{n}{2}+1}^{n} i \Bigg)\geq \log(\frac{n}{2})^{frac{n}{2}} = \frac{n}{2}\log(\frac{n}{2}) \sim n\log(n)$$
 
