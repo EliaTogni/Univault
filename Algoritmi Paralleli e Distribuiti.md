@@ -38,7 +38,7 @@ Un vantaggio sostanziale di questa scelta è che un algoritmo funzionante su un 
 
 La tipica istruzione di un algoritmo parallelo è strutturata nel seguente modo:
 
-$$\text{for all } i(a \leq i \leq b) \text{ do in parallel Operazione}$$
+$$\text{for all } i\text{, } (a \leq i \leq b) \text{ do in parallel Operazione}$$
 
 la cui semantica è quella di eseguire $Operazione$ su tutti i processori $i$ con $a \leq i \leq b$, mentre gli altri restano inattivi (eseguono l'operazione nulla).
 

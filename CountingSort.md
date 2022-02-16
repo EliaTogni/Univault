@@ -6,33 +6,20 @@ Si userà il vettore $V[1], V[2],..., V[n]$,  dove $V[i]$ contiene $k$, per memo
 Questa definizione di $v$ restituisce la permutazione inversa di $p$, ovvero $p^{-1}$, cioè risolve il problema dell'ordinamento (?).<br />
 
 Si veda ora il codice dell'algoritmo:
-<code>
+```
 for i = 1 to n
-</code><br />
-<code>
-V[i] = 0
-</code><br />
-<code>
+	V[i] = 0
+
 for i = 1 to n
-</code><br />
-<code>
-for j = 1 to n
-</code><br />
-<code>
-if(M[j]<=M[i]) then V[i]++
-</code><br />
-<code>
+	for j = 1 to n
+		if(M[j]<=M[i]) then V[i]++
+		
 for i = 1 to n
-</code><br />
-<code>
-F[V[i]] = M[i]
-</code><br />
-<code>
+	F[V[i]] = M[i]
+
 for i = 1 to n
-</code><br />
-<code>
-M[i] = F[i]
-</code><br />
+	M[i] = F[i]
+```
 	
 Si valutano ora le prestazioni dell'algoritmo.<br />
 La seconda fase è quella più pesante in termini di tempo.

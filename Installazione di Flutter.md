@@ -1,7 +1,7 @@
 Related to: [[Flutter]]
 
 ### Installazione:
-<code> 
+```console
 sudo snap install flutter --classic
-</code>
+```
 
