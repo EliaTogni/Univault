@@ -321,7 +321,7 @@ for 1<=k<=n parallel do
 </code>
 
 <code>
-	if M[k] = p then
+	if M[k] = 0 then
 </code>
 
 <code>
