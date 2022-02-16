@@ -209,7 +209,7 @@ E' possibile fare un discorso analogo per il secondo termine del secondo membro 
 
 $$M[2^jk-2^{j-1}] = M[2^{j-1}(2k-1)] = M[2^{j-1}(2k-1)] + ... + M[2^{j-1}(2k-2)+1]$$
 
-Si hanno due somme di $2^{j-1}$ valori. Se si effettua la somma complessiva di queste due celle, si sommano $2*2^{j-1} = 2^j$ valori.<br />
+Si hanno due somme di $2^{j-1}$ valori. Se si effettua la somma complessiva di queste due celle, si sommano $2 \cdot2^{j-1} = 2^j$ valori.<br />
 Se fossero tutti valori consecutivi e precedenti a $2^jk$, la proprietà sarebbe dimostrata. Questi valori sono, di fatto, tutti in sequenza perchè la prima cella contiene i valori successivi ai valori della seconda cella.<br />
 Il primo termine sarà quindi $M[2^{j-1}2k] = M[2^{j}k]$ e l'ultimo termine sarà quindi $M[2^{j-1}(2k-2)+1] = M[2^{j}k - 2^{j-1}]$.<br />
 La proprietà è, così, dimostrata.<br />
@@ -235,12 +235,12 @@ Poichè l'efficienza tende a $0$ e i processori vengono usati al completo solo n
 $$p(n) = o(n) \text{ per avere } E \rightarrow k \neq 0$$
 
 Invece di considerare $\frac{n}{2}$ processori, si considerino soltanto $p$ processori (con $p$ incognita). Questi processori devono prendersi in carico non più la somma di $2$ numeri ma di una quantità maggiore, $\Delta = \frac{n}{p}$.<br />
-Ogni processore dovrà eseguire le somme in sequenza e salvare il risultato nella cella con indice più alto.<br />
+Ogni processore dovrà eseguire le somme in sequenza e salvare il risultato nella cella con indice più alto, ovvero $M[k\Delta]$.<br />
 Al primo passo parallelo, per $1 \leq k \leq p$, con $k$ indice del processore, vale:
 
 $$M[k\Delta] = M[k\Delta] + ... + M[(k-1)\Delta + 1]$$
 
-Nei passi paralleli successivi, si usa l'algoritmo parallelo per SOMMATORIA sulle celle $M[\Delta], M[2\Delta], ..., M[p\Delta]$, il quale memorizza il dato finale in $M[p\Delta] = M[n] = \sum_{i}M[i]$.
+Nei passi paralleli successivi, si usa l'algoritmo parallelo per SOMMATORIA sulle celle $M[\Delta], M[2\Delta], ..., M[p\Delta]$, il quale memorizza il dato finale in $M[p\Delta] = M[p\frac{n}{p}] =M[n] = \sum_{i}M[i]$.
 L'algoritmo è quindi corretto.
 
 Si valutano ora i processori ed il tempo parallelo del nuovo algoritmo.
@@ -333,19 +333,19 @@ Non solo questo algoritmo fa da guida per le soluzioni ai problemi OP ITERATO ma
 **Output**: $<x, y> = \sum_{i=1}^{n} x_{i} y_{i}$
 
 La soluzione sequenziale effettua prima $n$ moltiplicazioni e poi effettua $n-1$ somme. Il tempo sequenziale è, di conseguenza $2n-1$.<br />
-La soluzione EREW prevede, invece, di svolgere i prodotti componente per componente dei vettori ed applicare poi l'algoritmo SOMMATORIA. Poichè, in questo algoritmo, venivano utilizzati $p$ processori, ogni processore dovrà svolgere $\Delta = \frac{n}{p}$ moltiplicazioni (sapendo che $p = \frac{n}{\log(n)}, allora \Delta = \log(n))$. <br />
+La soluzione EREW prevede, invece, di svolgere i prodotti componente per componente dei vettori ed applicare poi l'algoritmo SOMMATORIA. Poichè, in questo algoritmo, vengono utilizzati $p$ processori, ogni processore dovrà svolgere $\Delta = \frac{n}{p}$ moltiplicazioni (sapendo che $p = \frac{n}{\log(n)}$, allora $\Delta = \log(n))$. <br />
 Nel primo passo, quindi, vengono svolti $\Delta$ prodotti in sequenza per ciascuno dei $p$ processori e, nel secondo passo, ogni processore effettuerà la somma sequenziale di questi prodotti. Nel terzo passo, vengono svolte le $p$ somme finali in parallelo.<br />
 I primi due passi compongono la prima fase mentre il terzo passo compone la seconda fase.<br />
 
 Si valutano ora le prestazioni dell'algoritmo.<br />
 
-Seconda fase:
-$$p(n) = c_{1}\frac{n}{log(n)}$$
-$$T_{II}(n, p(n)) = c_{2}\log(n)$$
-
 Prima fase:
 $$p = \frac{n}{\log(n)} \rightarrow \Delta = \frac{n}{p} = \log(n)$$
-$$T_{I}(n, p(n)) = c_{3}\log(n)$$
+$$T_{I}(n, p(n)) = c_{1}\log(n)$$
+
+Seconda fase (somma dei $p$ numeri in parallelo):
+$$p(n) = c_{2}\frac{n}{log(n)}$$
+$$T_{II}(n, p(n)) = c_{3}\log(n)$$
 
 Riassumendo:
 $$<x, y> \text{ costa:}\qquad p \sim \frac{n}{\log(n)} \qquad T = T_{I} + T_{II} \sim \log(n)$$
@@ -377,10 +377,10 @@ $$E(n, p(n)) \sim \frac{n^{2}}{\frac{n^{2}}{\log(n)} \cdot \log(n)} \rightarrow 
 **Input**: $A, B \in \mathbb{N}^{n \times n}$<br />
 **Output**: $A \cdot B$
 
-Il problema consta, banalmente, del prodotto tra due matrici preesistenti e, quindi, calcolare una nuova matrice.<br />
+Il problema consta, banalmente, del prodotto tra due matrici preesistenti e richiede, quindi, di calcolare una nuova matrice.<br />
 Il calcolo di una nuova matrice quadrata richiede il calcolo di $n^{2}$ componenti.<br />
 Il tempo sequenziale è pari a $n^{2,80}$, risultato ottenuto dall'[[Algoritmo di Strassen]], il miglior algoritmo sequenziale per il prodotto tra due matrici.<br />
-L'idea su cui si basa l'algoritmo parallelo è usare $n^{2}$ prodotti interni in parallelo. Ogni riga di $A$ ed ogni colonna di $B$ vengono accedute simultaneamente, necessitando così di un algoritmo CREW.<br />
+L'idea su cui si basa l'algoritmo parallelo è usare $n^{2}$ PRODOTTO INTERNO DI VETTORI in parallelo. Ogni riga di $A$ ed ogni colonna di $B$ vengono accedute simultaneamente, necessitando così di un algoritmo CREW.<br />
 Si necessita quindi di un'architettura che permetta la concurrent read.<br />
 
 Si valutano ora le prestazioni dell'algoritmo.<br />
@@ -403,7 +403,7 @@ for i=1 to log(n) do
 ```
 
 Questo pseudocodice calcola le potenze di $A$ che hanno come indice una potenza di $2$ fino ad arrivare al numero $n$. <br />
-Per creare l'algoritmo parallelo, viene sfruttata l'idea di questo algoritmo sequenziale e si esegue esattamente questo algoritmo ma, al posto di fare il prodotto sequenziale matrice per matrice, si sostituisce alla moltiplicazione sequenziale quella parallela, che è il prodotto $A \cdot B$ ottenuto tramite problema PRODOTTO MATRICE MATRICE.<br />
+Per creare l'algoritmo parallelo, viene sfruttata l'idea di questo algoritmo sequenziale e si esegue esattamente questo codice ma, al posto di fare il prodotto sequenziale matrice per matrice, si sostituisce alla moltiplicazione sequenziale quella parallela, che è il prodotto $A \cdot B$ ottenuto tramite la risoluzione del problema PRODOTTO MATRICE MATRICE.<br />
 Poichè il modulo utilizzato necessitava di un'architettura CREW, anche questo problema necessita di tale architettura.
 Il tempo sequenziale sarà quindi $n^{2,8} \cdot \log(n)$.<br />
 
@@ -880,3 +880,42 @@ La dimostrazione di questo lower bound si basa sull'utilizzo di un [[Albero di D
 Un primo approccio parallelo si basa su un algoritmo il quale utilizza il conteggio di certi confronti. Un algoritmo sequenziale di conteggio, per terminare,  richiede un tempo $t = \Theta(n^2)$.<br />
 Si prende spunto dall'algoritmo sequenziale [[CountingSort]]. <br />
 
+Nella versione parallela, si può lavorare cercando di utilizzare un numero di processori pari ad $n^2$ invece di procedere in un fashion sequenziale per svolgere i confronti.<br />
+$\forall i,j$, si ha un processore $P_{ij}$ che effettua il confronto $M[j] \leq M[i]$. La risposta viene inserita in una matrice booleana $V[i,j] = \bigg(M[j] \leq M[i]?\quad1\quad:\quad0\bigg)$<br />
+
+L'$i$-esima riga individua gli elementi di $M \leq M[i]$. Grazie a questo si è in grado di scoprire quale posizione occupa la cella $M[i]$.<br />
+
+Se $\forall i$ si esegue SOMMATORIA parallela dell'$i$-esima riga, si ottiene, nell'ultima colonna della matrice $V[j,n]$, le posizioni che gli elementi devono assumere. Il contenuto dell'elemento $V[i, n]$ coincide con il contenuto dell'elemento $V[i]$ della versione sequenziale di questo stesso algoritmo.<br />
+Questo algoritmo è CREW.<br />
+
+Il codice dell'algoritmo parallelo sarà quindi:<br />
+```
+for 1 <= i, j <= n par do
+	V[i,j] = (M[j<=M[i]]?1:0)
+	
+for i = 1 to n par do
+	SOMMATORIA(V[i,1], V[i,2], ..., V[i,n])
+	
+for i = 1 to n par do
+	M[V[i,n]] = M[i]
+```
+
+La lettura ovviamente non è esclusiva.<br />
+E' possibile rendere EREW l'algoritmo tramite il modulo REPLICA.
+
+Si valutano ora le prestazioni dell'algoritmo.<br />
+Ogni blocco di codice identifica una fase differente:
+1) $p(n) = n^2$, dovuto al ciclo _for_ innestato.<br />$T(n,n^2) = 4$,  dovuto a due LOAD, una JZERO ed una STORE dell'elemento in $V[i,j]$.<br />Tramite il teorema di Wyllie, si può passare ad un numero di processori $p(n) = \frac{n^2}{\log(n)}$ e ad un tempo $T = \log(n)$.
+2) $n$ moduli SOMMATORIA, per ciascuno  dei quali si ha $p(n) = \frac{n}{\log(n)}$ e $T(n, p(n)) = \log(n)$.<br />$p(n) = \frac{n^2}{\log(n)}$.<br />$T(n,p(n)) \sim \log(n)$.
+3) $p(n) = n$<br />$T(n, p(n)) = 3$, dovuti a due LOAD ed una STORE.
+
+Il totale ottenuto è:<br />
+$$p(n) \sim \frac{n^2}{\log(n)}$$
+$$T(n,p(n)) \sim \log(n)$$
+$$E(n, p(n)) \sim \frac{n \cdot \log(n)}{\frac{n^2}{\log(n)}\cdot \log(n)} = \frac{\log(n)}{n} \rightarrow 0$$
+
+Il tentativo di parallelizzale l'algoritmo CountingSort non ha dato i risultati sperati poichè l'efficienza così ottenuta non è ragionevole.<br />
+Il motivo di questo è che le soluzioni che si cerca di parallelizzare sono state pensate per essere sequenziali e non parallele.<br />
+Un'algoritmo invece pensato per essere parallelo è il [[BitSort]].
+
+Esistono algoritmo di ordinamento efficienti, cioè la cui efficienza tende ad una costante $c \neq 0$, come l'[[Algoritmo di Cole]], ideato nel 1988.<br />

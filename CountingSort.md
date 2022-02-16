@@ -22,7 +22,6 @@ for i = 1 to n
 ```
 	
 Si valutano ora le prestazioni dell'algoritmo.<br />
-La seconda fase è quella più pesante in termini di tempo.
+La seconda fase è quella più pesante in termini di tempo in quanto consiste di due cicli _for_ innestati.
+$$\text{Confronti } = n^2$$
 $$t = n^2$$
-
-Nella versione parallela, si può lavorare cercando di utilizzare un numero di processori 
