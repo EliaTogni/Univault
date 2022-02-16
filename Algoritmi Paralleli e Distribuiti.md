@@ -146,13 +146,10 @@ Inoltre, un problema guida è un problema talmente diffuso che si trova spesso c
 
 L'algoritmo sequenziale risolve il problema in questo modo:
 
-<code>
-	for i = 1 to n-1 do
-</code>
-
-<code>
-		M[n] = M[n] + M[i]
-</code>
+```
+for i = 1 to n-1 do
+	M[n] = M[n] + M[i]
+```
 
 Il tempo impiegato è $T(n,1) = n-1$ ed è il miglior tempo possibile per un algoritmo sequenziale.<br />
 Si può pensare di parallelizzare utilizzando $n$ processori, ognuno dei quali fa una somma. Ma quale somma? Se ci si basa sull'algoritmo sequenziale, il primo processore eseguirà la somma $M[1] + M[2]$, il secondo eseguirà poi la somma del risultato con $M[3]$ e così via, formando un albero di somme di altezza $n-1$. L'efficienza di questo algoritmo vale:
@@ -166,21 +163,12 @@ $$((a + b) + c) + d = (a + b) + (c + d)$$
 
 Si utilizzano quindi $\frac{n}{2}$ processori ed ogni processore effettua la somma $M[2^{j}k] = M[2^{j}k] + M[2^{j}k-2^{j-1}]$, con $j$ che varia ad ogni iterazione e $k$ indice dei processori. I processori, per comunicare, sovrascrivono le celle dalle quali leggono l'input, in un fashion EREW. Si genera così un albero di somme di altezza $\log_{2}(n)$ nel caso in cui $n$ sia potenza di $2$.
 
-<code>
+```
 for j = 1 to log(n)
-</code>
-
-<code>
 	for k = 1 to n/2^(j) parallel do 
-</code>
-
-<code>
 		M[2^(j)k] =  M[2^(j)k] + M[2^(j)k - 2^(j-1)]
-</code>
-
-<code>
-	return M[n]
-</code>
+return M[n]
+```
 
 E' necessario assicurarsi che questo algoritmo sia EREW, cioè che non ci siano conflitti di lettura e scrittura.<br />
 Siano $a$ e $b$ due numeri naturali, indici di due differenti processori, con $a \neq b$.<br />
@@ -316,17 +304,11 @@ E' possibile scrivere un algoritmo che risolve questo problema in tempo costante
 Il vantaggio maggiore in questo caso è quello di poter fare scritture concorrenti, dovuto al fatto che con l'operazione $\wedge$ tra più operandi, basta una sola variabile con valore $0$ per rendere nullo anche il risultato.<br />
 Da questa intuizione, si può progettare il seguente algoritmo:
 
-<code>
+```
 for 1<=k<=n parallel do
-</code>
-
-<code>
 	if M[k] = 0 then
-</code>
-
-<code>
 		M[n] = 0
-</code>
+```
 
 Si ha una scrittura concorrente del valore $0$ nella cella $M[n]$. E' necessario quindi adottare una politica per gestire queste scritture concorrenti.
 
@@ -415,13 +397,10 @@ $$E(n, p(n)) \sim \frac{n^{2,8}}{\frac{n^{3}}{\log(n)} \cdot \log(n)} = \frac{n^
 
 L'algoritmo sequenziale, nel caso di $n$ potenza di $2$, può essere svolto con uno stratagemma. Si calcolano solamente non le potenze fino ad $n$ ma tutte quelle che sono potenze di $2$.
 
-<code>
+```
 for i=1 to log(n) do
-</code>
-
-<code>
 	A = A * A
-</code>
+```
 
 Questo pseudocodice calcola le potenze di $A$ che hanno come indice una potenza di $2$ fino ad arrivare al numero $n$. <br />
 Per creare l'algoritmo parallelo, viene sfruttata l'idea di questo algoritmo sequenziale e si esegue esattamente questo algoritmo ma, al posto di fare il prodotto sequenziale matrice per matrice, si sostituisce alla moltiplicazione sequenziale quella parallela, che è il prodotto $A \cdot B$ ottenuto tramite problema PRODOTTO MATRICE MATRICE.<br />
@@ -448,13 +427,10 @@ Ci sono diverse applicazioni che utilizzano SOMME PREFISSE, tra cui:
 
 L'algoritmo sequenziale è strutturato nel seguente modo:
 
-<code>
+```
 for k = 2 to n do
-</code>
-
-<code>
-M[k] = M[k] + M[k-1]
-</code>
+	M[k] = M[k] + M[k-1]
+```
 
 e termina in un tempo $n-1$.
 
@@ -510,18 +486,13 @@ Si valutano ora le prestazioni dell'algoritmo.<br />
 - Come deve essere svolto l'aggiornamento di $S$, successivo alle somme parziali? $S[k]=(S[k] == 0? 0 : S[S[k]])$.
 
 Il codice dell'algoritmo parallelo, con $M$ e $S$ già inizializzati, sarà quindi il seguente:<br />
-<code>
-	for j = 1 to log(n) do
-</code><br />
-<code>
+
+```
+for j = 1 to log(n) do
 	for 1 <= k <=  n - 2^(j-1) par do
-</code><br />
-<code>
-	M[S[k] = M[k] + M[S[k]]
-</code><br />
-<code>
-	S[k] = (S[k] == 0? 0 : S[S[k]])
-</code>
+		M[S[k] = M[k] + M[S[k]]
+		S[k] = (S[k] == 0? 0 : S[S[k]])
+```
 
 I processori non competono per accedere alla stessa cella. Si sta risolvendo il problema con un architettura EREW.
 E' ovviamente molto plausibile avere un link entrante in una cella di memoria ed un link uscente dalla medesima cella ma le operazioni di lettura (e scrittura) vengono svolte in momenti diversi.
@@ -717,21 +688,13 @@ $$p = a_{j} + p \cdot \alpha$$
 
 Il codice per l'algoritmo sequenziale di Ruffini-Horner è:
 
-<code>
-	Input(alpha)
-</code><br />
-<code>
-	p = a_{n}
-</code><br />
-<code>
-	for i = 1 to n
-</code><br />
-<code>
+```
+Input(alpha)
+p = a_{n}
+for i = 1 to n
 	p = a_{n-i} + p*alpha
-</code><br />
-<code>
-	Output(p)
-</code><br />
+Output(p)
+```
 
 Le prestazioni in termini di istruzioni dell'algoritmo sequenziale di Ruffini-Horner sono:
 $$T(n, 1) = 2n$$
@@ -763,15 +726,12 @@ Per costruire il vettore delle potenze è necessario:
    Il $k$-esimo processore carica $\alpha$ nelle celle di posizione $(k-1)\log(n) +1, ..., k\log(n)$.<br />Si riesce ad incrementare l'efficienza effettuando un trade-off con il tempo di esecuzione, il quale passa da costante a logaritmico.<br />
  
 - **Secondo modo**:<br />
-   <code>
+	```
 	for k =1 to n/log(n) par do
-	</code><br />
-	<code>
-	for i = 1 to log(n) do
-	</code><br />
-	<code>
-	Q[(k+1)log(n) + i] = alpha
-	</code><br />
+		for i = 1 to log(n) do
+			Q[(k+1)log(n) + i] = alpha
+	```
+	
 	Si valutano ora le prestazioni dell'algoritmo.<br />
 	$$p = \frac{n}{\log(n)}$$
 	$$t = c\log(n)$$
@@ -782,18 +742,14 @@ Per costruire il vettore delle potenze è necessario:
 	
 - **Terzo modo**:<br />
    Si costruisca il vettore $\alpha, 0, 0, ..., 0$ e si esegua su di esso l'algoritmo SOMME PREFISSE.<br />
-   <code>
+   
+   ```
 	Input(alpha)
-	</code><br />
-	<code>
+
 	Q[1] = alpha
-	</code><br />
-	<code>
 	for k = 2 to n par do
-	</code><br />
-	<code>
-	Q[k] = 0
-	</code><br />
+		Q[k] = 0
+	```
 	
 	La differenza tra gli algoritmi è che il valore $0$ è una costante che non necessita di essere letta. Mentre tutti i processori devono accedere alla memoria condivisa per leggere $\alpha$, il valore $0$ invece è una costante interna all'istruzione.<br />
    E' possibile ridurre il numero di processori con il teorema di Wyllie, passando da $n$ a $\frac{n}{\log(n)}$.
@@ -835,21 +791,13 @@ Negli anni '90 è stato presentato un algoritmo quantistico, il quale mostra com
 **Primo modo:**<br />
 Si presenta ora un primo algoritmo parallelo per la ricerca di un elemento in un vettore.<br />
 Si propone un algoritmo su una struttura CRCW.<br />
-<code>
-	F = 0
-</code><br />
-<code>
-	for k = 1 to n par do
-</code><br />
-<code>
+```
+F = 0
+for k = 1 to n par do
 	if (M[k] == alpha)
-</code><br />
-<code>
-F = 1;
-</code><br />
-<code>
-	M[n] = F;
-</code>
+		F = 1;
+M[n] = F;
+```
 
 Si utilizza un flag $F$ contenuto nella memoria condivisa. Per quale motivo si usa il flag e non la cella $M[n]$? Perchè non è possibile inizializzare a 0 $M[n]$.
 
@@ -861,12 +809,10 @@ Il fatto di dover inserire potenzialmente il valore $1$ nella variabile $F$ fa p
 
 **Secondo modo**:<br />
 Il secondo tentativo mira ad ottenere un algoritmo CREW.<br />
-<code>
-	for k = 1 to n par do
-</code><br />
-<code>
+```
+for k = 1 to n par do
 	M[k] = (M[k]==alpha? 1 : 0)
-</code><br />
+```
 
 Eliminare la scrittura concorrente significa voler eliminare il flag utilizzato nella versione precedente. Al posto di memorizzare il risultato in una cella sola, si memorizzano nelle celle $M[k]$.<br />
 Si trasforma il vettore di numeri in input in un vettore booleano contenente $1$ e $0$.<br />
@@ -891,12 +837,10 @@ $$E \sim c \neq 0$$
 **Terzo modo**:<br />
 Per eliminare la concurrent read si può sostituire ad $\alpha$ un vettore inizializzato con il valore di $\alpha$ tante volte quanti i processori utilizzati.<br />
 Replica di $\alpha \rightarrow A[1], A[2], ..., A[3]$.<br />
-<code>
-	for k = 1 to n par do
-</code><br />
-<code>
+```
+for k = 1 to n par do
 	M[k] = (M[k]==A[k]? 1 : 0)
-</code><br />
+```
 Si esegue infine MAX-ITERATO($M[1], ..., M[n]$).<br />
 
 Si valutano ora le prestazioni dell'algoritmo.<br />
