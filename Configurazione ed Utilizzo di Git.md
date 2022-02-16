@@ -1,46 +1,49 @@
 Related to: [[Git]]
 
 ### Inizializzazione di una repository in una directory esistente ###
-
-<code> git init </code>
+```git
+git init
+```
 
 Questo comando crea una sottodirectory chiamata <code> .git </code>, la quale contiene tutti files necessari.
 
 ### Configurazione di parametri ###
+```git
+git config user.name = Elia Togni  
 
-<code> git config user.name </code> = Elia Togni  
+git config user.email = elia97.togni@gmail.com
 
-<code> git config user.email </code> = elia97.togni@gmail.com
-
-<code> git config --global core.editor </code> emacs/vim
+git config --global core.editor emacs/vim
+```
 
 ### Creazione di un nuovo controllo versione di un file esistente ###
 
-<code> 
+```git
 	git add nomefile.ext
-</code> 
+```
 
-<code> 
+```git
 	git add LICENSE
-</code> 
+``` 
 
 ### Collegamento di una repository Git ad una repository Github ###
 
-<code>
+```git
 	git remote add origin LINK
-</code>
 
-<code>
 	git branch -M main
-</code>
+```
 
 ### Clonazione di una repository esistente ###
 
-<code> git clone [url] </code>
+```git
+git clone [url]
+```
 
 ### Check dello status dei file ###
-
-<code> git status </code>
+```git
+git status
+```
 
 ```console
 On branch master
@@ -63,9 +66,15 @@ In questo esempio il file README non è tracciato, cioè Git viede un file che n
 
 ### Tracciare nuovi file ###
 
-<code> git add README </code>
+```git
+git add README
+```
 
-Eseguendo nuovamente il comando <code> git status </code>, si può notare come il file README ora viene tracciato:
+Eseguendo nuovamente il comando
+```git
+git status
+```
+si può notare come il file README ora viene tracciato:
 
 ```console
 On branch master
@@ -106,10 +115,14 @@ Changes to be committed:
 
 ### Commit di modifiche ###
 
-Ora che la staging area è pronta, è possibile committare le modifiche con il comando <code> git commit </code>.<br />
+Ora che la staging area è pronta, è possibile committare le modifiche con il comando:
+```git
+git commit
+```
+
 Questo comando apre l'editor configurato, il quale mostra questo testo:
 
-```
+```nano
 # Please enter the commit message for your changes. Lines starting
 # with '#' will be ignored, and an empty message aborts the commit.
 # On branch master
@@ -125,11 +138,14 @@ Questo comando apre l'editor configurato, il quale mostra questo testo:
 
 E' possibile rimuovere questi commenti e inserire il proprio messaggio di commit.<br />
 In alternativa si può inserire il messaggio di commit nel comando:
-<code> git commit -m "Story 182: Fix benchmarks for speed </code>
+```git
+git commit -m "stringa di esempio"
+```
 
 ### Skippare la staging area ###
-
-<code> git commit -a -m "messaggio" </code>
+```git
+git commit -a -m "messaggio"
+```
 
  In questo modo, Git manda in stage automaticamente ogni file che è stato già tracciato prima del commit.
  
@@ -137,20 +153,26 @@ In alternativa si può inserire il messaggio di commit nel comando:
  
  Per rimuovere un file da Git, è necessario rimuoverlo dai file tracciati e poi eseguire un commit. 
  
- <code> git rm </come>
+ ```git
+ git rm
+ ```
  
  Questo comando inoltre rimuove il file dalla directory di lavoro.
  
  Per rimuovere un file dalla staging area ma mantenerlo nel [[Working Tree]], si utilizza il comando:
  
- <code> git rm --cached [nomefile] </code>
+ ```git
+ git rm --cached [nomefile]
+ ```
  
  ### Muovere file ###
  
  Git non traccia il movimento dei file. Se un file viene rinominato, nessun metadato viene salvato per indicare che il file è stato nominato. Per rinominare un file si usa il comando:
  
- <code> git mv [nomefile_da] [nomefile_a] </code>
- 
+```git
+git mv [nomefile_da] [nomefile_a]
+```
+
  Osservando lo status, si vede che
  
  ```console
@@ -162,5 +184,6 @@ Changes to be committed:
 ```
 
 ### Annullamento del commit ###
-
-<code> git commit --amend </code>
+```git
+git commit --amend
+```
