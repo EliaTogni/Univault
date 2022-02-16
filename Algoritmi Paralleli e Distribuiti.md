@@ -107,7 +107,7 @@ Sapendo che $\frac{T(n,1)}{p(n)T(n, p(n)))} = E(n, p(n))$, allora si ha dimostra
 Se $E \rightarrow 0$, allora per migliorare l'algoritmo si provi a ridurre $p(n)$ senza degradare il tempo.<br />
 Dato un algoritmo $A$, il quale lavora con $p$ processori con una data efficienza $E$, è in generale possibile estendere l'algoritmo a lavorare con un numero inferiore di processori senza che l'efficienza diminuisca significativamente.
 
-Se $k>1$, allora $E_{A}\Bigg( n, \frac{p}{k} \Bigg) \geq E_{A}(n, p)$.
+$$\text{Se } k>1, \text{ allora } E_{A}\bigg( n, \frac{p}{k} \bigg) \geq E_{A}(n, p)$$
 
 Dato un algoritmo $A$ che lavora con $p$ processori, basta infatti costruire un algoritmo modificato che utilizza $p/k$ processori. Ad ogni nuovo processore si fa corrispondere un blocco di $k$ vecchi processori: ogni nuovo processore usa al più $k$ passi per emulare il singolo passo parallelo dei $k$ processori corrispondenti.<br />
 Il tempo di ogni singolo passo è quindi dettato dall'istruzione più lunga moltiplicata per il numero di istruzioni in un passo, $k \cdot t_{i}(n)$.
@@ -164,7 +164,7 @@ E' possibile tentare un approccio diverso basandosi sulla proprietà associativa
 
 $$((a + b) + c) + d = (a + b) + (c + d)$$
 
-Si utilizzano quindi $\frac{n}{2}$ processori $k$ ed ogni processore $j$ effettua la somma $M[2^{j}k] = M[2^{j}k] + M[2^{j}k-1]$ con $k$ indice dei processori e $j$ che varia ad ogni iterazione. I processori, per comunicare, sovrascrivono le celle dalle quali leggono l'input, in un fashion EREW. Si genera così un albero di somme di altezza $\log_{2}(n)$ nel caso in cui $n$ sia potenza di $2$.
+Si utilizzano quindi $\frac{n}{2}$ processori ed ogni processore effettua la somma $M[2^{j}k] = M[2^{j}k] + M[2^{j}k-2^{j-1}]$, con $j$ che varia ad ogni iterazione e $k$ indice dei processori. I processori, per comunicare, sovrascrivono le celle dalle quali leggono l'input, in un fashion EREW. Si genera così un albero di somme di altezza $\log_{2}(n)$ nel caso in cui $n$ sia potenza di $2$.
 
 <code>
 for j = 1 to log(n)
@@ -188,11 +188,11 @@ Il processore $a$ opera sulle celle $2^{j}a, 2^{j}a - 2^{j-1}$. <br />
 Il processore $b$ opera sulle celle $2^{j}b, 2^{j}b - 2^{j-1}$. <br />
 Si deve quindi dimostrare che le quattro celle utilizzate siano tutte diverse.<br />
 $2^{j}a \neq 2^{j}b$ per $a \neq b$.<br />
-$2^{j}a \neq 2^{j}b -2{j-1} \rightarrow^\text{per assurdo}$: $2a = 2b -1 \rightarrow a = \frac{2b - 1}{2} \notin \mathbb{N}$.<br />
+$2^{j}a \neq 2^{j}b -2^{j-1} \rightarrow^\text{per assurdo}$: $2a = 2b -1 \rightarrow a = \frac{2b - 1}{2} \notin \mathbb{N}$.<br />
 Allo stesso modo si dimostra per le restanti combinazioni.<br />
 Si ha quindi un algoritmo EREW.
 
-Si dimostra ora, per [[Induzione]], che l'algoritmo sottostante è corretto.
+Si dimostra ora, per [[Induzione]], che l'algoritmo sottostante è corretto. La correttezza è data dalla seguente proprietà:
 
 $$M[2^{j}k] = M[2^{j}k] + ... + M[2^{j}(k-1) +1]$$
 
@@ -202,13 +202,13 @@ Per $j = \\log_{2}(n)$, ovviamente $k=1$ (un solo processore) e
 $$M[n] = M[n] + ... + M[1]$$
 
 Cioè, dopo $\log(n)$ passi, in $M[n]$ si avrà la somma di tutti i valori in input.<br />
-Si dimostra partendo dal caso base ($j=1$ e $1 \leq k \leq \frac{n}{2}$). L'istruzione dell'algoritmo è:
+Si dimostra verificando che l'algoritmo soddisfa per ogni input questa proprietà, partendo dal caso base ($j=1$ e $1 \leq k \leq \frac{n}{2}$). L'istruzione dell'algoritmo è:
 
 $$M[2k] = M[2k] + M[2k -1]$$
 
 Questa non è altro che la proprietà da dimostrare, considerata al passo $j=1$.<br />
 Si supponga vera la proprietà che si vuole dimostrare per un generico valore $j-1$. E' necessario ora dimostrarla per il valore successivo $j$.<br />
-Si prenda ciò che viene fatto dall'algoritmo al passo $j$ e si dimostri che quello che fa, in realtà, non è altro che una istruzione che mette nella cella di memoria M[2^{j}k] i precedenti $2^{j}$ valori sommati.
+Si prenda ciò che viene fatto dall'algoritmo al passo $j$ e si dimostri che quello che fa, in realtà, non è altro che una istruzione che mette nella cella di memoria $M[2^{j}k]$ i precedenti $2^{j}$ valori sommati.
 
 $$M[2^{j}k] = M[2^{j}k] + M[2^{j}k - 2^{j-1}]$$
 
@@ -222,11 +222,11 @@ E' possibile fare un discorso analogo per il secondo termine del secondo membro 
 $$M[2^jk-2^{j-1}] = M[2^{j-1}(2k-1)] = M[2^{j-1}(2k-1)] + ... + M[2^{j-1}(2k-2)+1]$$
 
 Si hanno due somme di $2^{j-1}$ valori. Se si effettua la somma complessiva di queste due celle, si sommano $2*2^{j-1} = 2^j$ valori.<br />
-Se fossero tutti valori precedenti, si avrebbe dimostrato la proprietà. Questi valori sono tutti in sequenza. La prima cella contiene i valori successivi dei valori della seconda cella.<br />
+Se fossero tutti valori consecutivi e precedenti a $2^jk$, la proprietà sarebbe dimostrata. Questi valori sono, di fatto, tutti in sequenza perchè la prima cella contiene i valori successivi ai valori della seconda cella.<br />
 Il primo termine sarà quindi $M[2^{j-1}2k] = M[2^{j}k]$ e l'ultimo termine sarà quindi $M[2^{j-1}(2k-2)+1] = M[2^{j}k - 2^{j-1}]$.<br />
 La proprietà è, così, dimostrata.<br />
 
-Si valuta ora l'algoritmo.<br />
+Si valutano ora le prestazioni dell'algoritmo.<br />
 L'algoritmo usa $\frac{n}{2}$ processori, che si dimezzano ad ogni passo, a partire dal secondo passo. Questo potrebbe suggerire l'utilizzo di un numero eccessivo di processori.<br />
 Il tempo dell'algoritmo parallelo, sapendo che l'altezza dell'albero è $\log_{2}(n)$, è sicuramente logaritmico. Dal punto di vista delle singole microistruzioni, il processore esegue due LOAD, una ADD ed una STORE. Il processore utilizza quindi $4$ istruzioni. Il tempo totale è $4\log_{2}(n)$.<br />
 Serve un piccolo accorgimento nel caso in cui $n$ non sia potenza di $2$.
@@ -243,12 +243,12 @@ Di conseguenza:
 $$p(n) = O(n) \quad \text{ e } \quad T(n,n) = O(\log(n))$$
 $$E(n,n) = \frac{n-1}{n \cdot 5\log_{2}(n)} \sim \frac{1}{\log_{2}(n)} \rightarrow 0$$
 
-Poichè l'efficienza tende a $0$ e i processori vengono usati al completo solo nel primo passo parallelo, è giusto pensare che i processori siano sprecati. Si può applicare la teoria di Wyllie:
+Poichè l'efficienza tende a $0$ e i processori vengono usati al completo solo nel primo passo parallelo, è giusto pensare che i processori siano sprecati. Si può applicare il teorema di Wyllie:
 $$p(n) = o(n) \text{ per avere } E \rightarrow k \neq 0$$
 
-Invece di considerare $\frac{n}{2}$ processori, si considerino soltanto $p$ processori ( con $p$ incognita). Questi processori devono prendersi in carico la somma non più di 2 numeri ma di una quantità maggiore, $\Delta = \frac{n}{p}$.<br />
+Invece di considerare $\frac{n}{2}$ processori, si considerino soltanto $p$ processori (con $p$ incognita). Questi processori devono prendersi in carico non più la somma di $2$ numeri ma di una quantità maggiore, $\Delta = \frac{n}{p}$.<br />
 Ogni processore dovrà eseguire le somme in sequenza e salvare il risultato nella cella con indice più alto.<br />
-Al $1°$ passo parallelo, per $1 \leq k \leq p$, con $k$ indice del processore, vale:
+Al primo passo parallelo, per $1 \leq k \leq p$, con $k$ indice del processore, vale:
 
 $$M[k\Delta] = M[k\Delta] + ... + M[(k-1)\Delta + 1]$$
 
@@ -266,7 +266,7 @@ $$E \sim \frac{n}{2n} \rightarrow \frac{1}{2}$$
 
 Tutto questo vale solo nel caso in cui si riesca a far valere $p\log(p) = \frac{n}{5}$ cioè $p = \frac{n}{5\log(n)}$.
 Infatti:
-$$\frac{n}{5\log(n)}\Bigg(\log(\frac{n}{(\log(n)5)}\Bigg) = \frac{n}{5\log(n)}(\log(n) - \log(5) - \log(\log(n)) = \frac{n}{5}\Bigg(1-\frac{\log(5)}{\log(n)} - \frac{\log(\log(n))}{\log(n)}\Bigg) \sim \frac{n}{5}$$
+$$\frac{n}{5\log(n)}\Bigg(\log\bigg(\frac{n}{(\log(n)5)}\bigg)\Bigg) = \frac{n}{5\log(n)}(\log(n) - \log(5) - \log(\log(n)) = \frac{n}{5}\Bigg(1-\frac{\log(5)}{\log(n)} - \frac{\log(\log(n))}{\log(n)}\Bigg) \sim \frac{n}{5}$$
 Per $n \rightarrow \infty$, sia $\frac{\log(5)}{\log(n)}$ che $\frac{\log(\log(n))}{\log(n)} \rightarrow 0$.
 
 Ricapitolando:
@@ -293,7 +293,7 @@ Si osservi il problema OP ITERATA, del quale SOMMATORIA è un caso particolare.
 **Definizione del problema**
 
 **Input**: $M[1], M[2], ..., M[n]$<br />
-**Output**: $OP_{i} \text{ } M[i] \rightarrow M[n]$
+**Output**: $M[n] = OP_{i} \text{ } M[i]$
 
 OP è un'operazione associativa. Nel caso in cui OP sia la somma, ci si ritrova nel problema SOMMATORIA.<br />
 Esempi di operazioni sono $+, *, \wedge, \vee, \oplus, \min, \max$...<br />
