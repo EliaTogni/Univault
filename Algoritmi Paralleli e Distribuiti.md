@@ -919,3 +919,38 @@ Il motivo di questo è che le soluzioni che si cerca di parallelizzare sono stat
 Un'algoritmo invece pensato per essere parallelo è il [[BitSort]].
 
 Esistono algoritmo di ordinamento efficienti, cioè la cui efficienza tende ad una costante $c \neq 0$, come l'[[Algoritmo di Cole]], ideato nel 1988.<br />
+
+Si usa ora l'algoritmo sequenziale [[MergeSort]] per prendere ispirazione. <br />
+L'idea iniziale è di utilizzare un algoritmo parallelo per eseguire la routine _Merge_. Sarebbero necessari $\log(n)$ passi paralleli.
+
+![[SchemaMergeSort.png]]
+
+Purtroppo _Merge_ non è parallelizzabile, si ottiene ancora $T(n) \sim n\log(n)$.<br />
+
+Quando il _Merge_ risulta essere facile? Quando gli elementi $A_{s}$ e $A_{d}$ che vengono passati alla routine sono ordinati e tutti gli elementi di $A_{s}$ sono minori di tutti gli elementi di $A_{d}$. Basta quindi concatenarli.
+
+![[SimpleMerge.png]]
+
+Da questa osservazione, emerge l'idea per parallelizzare l'algoritmo di ordinamento.<br />
+L'idea è di usare sequenze di numeri particolari, le **Unimodali** e **Bitoniche**, insieme alle routine **Rev**, che effettua il reverse di un array,  e **minMax**, che permette di costruire gli array $A_{min}$ e $A_{Max}$.<br />
+
+La funzione **Rev** esegue queste operazioni in parallelo.
+
+![[Rev.png]]
+
+Di conseguenza non ci sono problemi di sovrascrittura dei dati.<br />
+
+La funzione **minMax** esegue, invece, considera l'array come due metà (da $1$ a $\frac{n}{2}$ e da $\frac{n}{2} + 1$, fino ad $n$).<br />
+Confronta poi gli elementi a coppie, prendendo un elemento della prima metà ed uno della seconda metà. In particolare, gli elementi devono essere a distanza $\frac{n}{2}$.
+
+![[minMAX.png]]
+
+L'elemento minimo viene inserito in $A[k]$ mentre quello massimo viene inserito in $A[k] + \frac{n}{2}$.<br />
+Alla fine dell'esecuzione, gli elementi della prima metà contengono i minimi  del confronto a coppie, mentre gli elementi della seconda metà contengono i massimi, sempre del confronto a coppie.<br />
+La funzione _minMax_ ritorna quindi $A_{min}$ concatenato ad $A_{Max}$
+
+A partire da queste sequenze e da queste routine, nasce l'algoritmo [[BitSort]].<br />
+
+
+
+
