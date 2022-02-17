@@ -890,7 +890,7 @@ Questo permette di portare il minimo valore della cella che contiene $\alpha$ ne
 In genere gli algoritmi di ordinamento sono basati sui confronti che coinvolgono due valori della sequenza.<br />
 Se si considerano gli algoritmi di ordinamento che usano i confronti, algoritmi sequenziali che ordinano $n$ valori hanno un tempo sequenziale pari ad $n\log(n)$, che è sia un upper bound che un lower bound.<br />
 Upper bound perchè esistono algoritmi sequenziali come il [[MergeSort]], che utilizza $n\log(n)$ passi per ordinare la sequenza di $n$ valori.<br />
-Lower bound perchè so può dimostrare che un algoritmo sequenziale necessita di minimo $n\log(n)$ passi per ordinare una sequenza di valori.<br />
+Lower bound perchè si può dimostrare che un algoritmo sequenziale necessita di minimo $n\log(n)$ passi per ordinare una sequenza di valori.<br />
 La dimostrazione di questo lower bound si basa sull'utilizzo di un [[Albero di Decisione]].<br />  
 
 Un primo approccio parallelo si basa su un algoritmo il quale utilizza il conteggio di certi confronti. Un algoritmo sequenziale di conteggio, per terminare,  richiede un tempo $t = \Theta(n^2)$.<br />
@@ -933,7 +933,7 @@ $$p(n) \sim \frac{n^2}{\log(n)}$$
 $$T(n,p(n)) \sim \log(n)$$
 $$E(n, p(n)) \sim \frac{n \cdot \log(n)}{\frac{n^2}{\log(n)}\cdot \log(n)} = \frac{\log(n)}{n} \rightarrow 0$$
 
-Il tentativo di parallelizzale l'algoritmo CountingSort non ha dato i risultati sperati poichè l'efficienza così ottenuta non è ragionevole.<br />
+Il tentativo di parallelizzale l'algoritmo _CountingSort_ non ha dato i risultati sperati poichè l'efficienza così ottenuta non è ragionevole.<br />
 Il motivo di questo è che le soluzioni che si cerca di parallelizzare sono state pensate per essere sequenziali e non parallele.<br />
 Un'algoritmo invece pensato per essere parallelo è il [[BitSort]].
 
@@ -951,15 +951,15 @@ Quando il _Merge_ risulta essere facile? Quando gli elementi $A_{s}$ e $A_{d}$ c
 ![[SimpleMerge.png]]
 
 Da questa osservazione, emerge l'idea per parallelizzare l'algoritmo di ordinamento.<br />
-- L'idea è di usare sequenze di numeri particolari, la [[Sequenza Unimodale e Bitonica]], insieme alle routine **Rev**, che effettua il reverse di un array,  e **minMax**, che permette di costruire gli array $A_{min}$ e $A_{Max}$.<br />
+- L'idea è di usare sequenze di numeri particolari, la [[Sequenza Unimodale e Bitonica]], insieme alle routine _Rev_, che effettua il reverse di un array,  e _minMax_, che permette di costruire gli array $A_{min}$ e $A_{Max}$.<br />
 
-La funzione **Rev** esegue queste operazioni in parallelo.
+La funzione _Rev_ esegue queste operazioni in parallelo.
 
 ![[Rev.png]]
 
 Di conseguenza non ci sono problemi di sovrascrittura dei dati.<br />
 
-La funzione **minMax** esegue, invece, considera l'array come due metà (da $1$ a $\frac{n}{2}$ e da $\frac{n}{2} + 1$, fino ad $n$).<br />
+La funzione _minMax_ esegue, invece, considera l'array come due metà (da $1$ a $\frac{n}{2}$ e da $\frac{n}{2} + 1$, fino ad $n$).<br />
 Confronta poi gli elementi a coppie, prendendo un elemento della prima metà ed uno della seconda metà. In particolare, gli elementi devono essere a distanza $\frac{n}{2}$.
 
 ![[minMAX.png]]
@@ -973,13 +973,13 @@ Si mostrano ora gli algoritmi paralleli per queste operazioni.
 ```
 Procedura Rev(A){
 	for 1 <= k <= n/2 parallel do{
-	swap(A[k], A[n-k+1])
+	Swap(A[k], A[n-k+1])
 	}
 }
 ```
 
-Ogni processore si occupa di una coppia $(A[k], A[n-k+1])$ da swappare. Gli elementi considerati dallo _swap_ sono quelli equidistanti dal centro dell'array.<br />
-Le microistruzioni per uno _swap_ sono quindi $4$, due LOAD e due STORE.<br />
+Ogni processore si occupa di una coppia $(A[k], A[n-k+1])$ da swappare. Gli elementi considerati dallo _Swap_ sono quelli equidistanti dal centro dell'array.<br />
+Le microistruzioni per uno _Swap_ sono quindi $4$, due LOAD e due STORE.<br />
 $$p(n) = \frac{n}{2}$$
 $$T(n, p(n)) = costante$$
 
@@ -988,13 +988,13 @@ $$T(n, p(n)) = costante$$
 Procedura minMax(A){
 	for 1 <= k <= n/2 parallel do{
 		if(A[k]>A[k+n/2]){
-			swap(A[k], A[k+n/2])
+			Swap(A[k], A[k+n/2])
 		}
 	}
 }
 ```
 
-Ricordando che lo _swap_ ha costo $4$ e in questa procedura è necessario, inoltre, un confronto, si ha( una microistruzione in più.<br />
+Ricordando che lo _Swap_ ha costo $4$ e in questa procedura è necessario, inoltre, un confronto, si ha( una microistruzione in più.<br />
 $$p(n) = \frac{n}{2}$$
 $$T(n, p(n)) = 5$$
 
@@ -1013,9 +1013,9 @@ Procedura BitMerge(A[1], ..., A[n]){
 }
 ```
 
-Quindi BitMerge ordina le sequenze bitoniche.
+Quindi _BitMerge_ ordina le sequenze bitoniche.
 
-Si dimostra ora, per [[Induzione]], la correttezza di BitMerge.<br />
+Si dimostra ora, per [[Induzione]], la correttezza di _BitMerge_.<br />
 
 Al caso base, per $n=2$, una sequenza di lunghezza $2$ è banalmente ordinata da _minMax_.
 
@@ -1027,10 +1027,6 @@ Al passo induttivo, si suppone l'algoritmo corretto per $n = 2^{k}$ e si dimostr
 ### Implementazione Parallela di BitMerge ###
 
 ![[BitMergeParallelo.png]]
-
-
-
-
 
 A partire da queste sequenze, da queste routine e da questi algoritmi, nasce l'algoritmo [[BitSort]].<br />
 
