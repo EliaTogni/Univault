@@ -935,7 +935,7 @@ $$E(n, p(n)) \sim \frac{n \cdot \log(n)}{\frac{n^2}{\log(n)}\cdot \log(n)} = \fr
 
 Il tentativo di parallelizzale l'algoritmo _CountingSort_ non ha dato i risultati sperati poichè l'efficienza così ottenuta non è ragionevole.<br />
 Il motivo di questo è che le soluzioni che si cerca di parallelizzare sono state pensate per essere sequenziali e non parallele.<br />
-Un'algoritmo invece pensato per essere parallelo è il [[BitSort]].
+Un algoritmo invece pensato per essere parallelo è il [[BitSort]].
 
 Esistono algoritmo di ordinamento efficienti, cioè la cui efficienza tende ad una costante $c \neq 0$, come l'[[Algoritmo di Cole]], ideato nel 1988.<br />
 
@@ -1027,6 +1027,32 @@ Al passo induttivo, si suppone l'algoritmo corretto per $n = 2^{k}$ e si dimostr
 ### Implementazione Parallela di BitMerge ###
 
 ![[BitMergeParallelo.png]]
+
+Prima si effettua la fase delle chiamate ricorsive e poi la fase, tipicamente, della fusione ma, in questo caso, della semplice concatenazione.<br />
+Si indica con _MM_ il modulo _minMax_. A partire dall'array $A$, si applica _minMax_, si divide l'array in due parti della stessa cardinalità e si richiama _minMax_ su entrambe le metà.<br />
+Terminate le chiamate ricorsive al raggiungimento della chiamata a procedura su array di due elementi, si applica la semplice concatenazione degli array di due elementi.<br />
+Si restituisce, infine, l'array così ordinato.<br />
+
+Si valutano ora le prestazioni dell'algoritmo.<br />
+E' innanzitutto un algoritmo EREW, perchè ogni chiamata a _minMax_ è su elementi differenti.<br />
+In termini di processori, al primo passo si esegue _minMax_ su un'istanza di lunghezza $n$, la quale richiede $\frac{n}{2}$ processori. Il secondo passo ne richiede due volte la metà, e via dicendo.
+Di conseguenza:
+$$p(n) = \frac{n}{2}$$
+L'algoritmo termina quando $\frac{n}{2^{i-1}} = 2$. Di conseguenza, termina quando $i = \log(n)$.<br />
+Poichè _minMax_ costa $5$ operazioni:
+$$T(n) = 5\log(n)$$
+Si può inoltre esprimere il tempo tramite un'equazione di ricorrenza.
+
+$$
+\begin{numcases}{T(n) =}
+  5, & se $ n = 2$ \\
+  T(\frac{n}{2}) + 5, & altrimenti
+\end{numcases}
+$$
+
+In termini di efficienza:
+
+$$E(n, p(n)) = \frac{n\log(n)}{\frac{n}{2}5\log(n)} \rightarrow c \neq 0$$
 
 A partire da queste sequenze, da queste routine e da questi algoritmi, nasce l'algoritmo [[BitSort]].<br />
 
