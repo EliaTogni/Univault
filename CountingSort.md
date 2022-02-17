@@ -7,18 +7,25 @@ Questa definizione di $v$ restituisce la permutazione inversa di $p$, ovvero $p^
 
 Si veda ora il codice dell'algoritmo:
 ```
-for i = 1 to n
+for i = 1 to n{
 	V[i] = 0
+}
 
-for i = 1 to n
-	for j = 1 to n
-		if(M[j]<=M[i]) then V[i]++
+for i = 1 to n{
+	for j = 1 to n{
+		if(M[j]<=M[i]){
+			V[i]++
+		}
+	}
+}
 		
-for i = 1 to n
+for i = 1 to n{
 	F[V[i]] = M[i]
+}
 
-for i = 1 to n
+for i = 1 to n{
 	M[i] = F[i]
+}
 ```
 	
 Si valutano ora le prestazioni dell'algoritmo.<br />

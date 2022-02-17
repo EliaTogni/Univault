@@ -147,8 +147,9 @@ Inoltre, un problema guida è un problema talmente diffuso che si trova spesso c
 L'algoritmo sequenziale risolve il problema in questo modo:
 
 ```
-for i = 1 to n-1 do
+for i = 1 to n-1 do{
 	M[n] = M[n] + M[i]
+}
 ```
 
 Il tempo impiegato è $T(n,1) = n-1$ ed è il miglior tempo possibile per un algoritmo sequenziale.<br />
@@ -164,9 +165,11 @@ $$((a + b) + c) + d = (a + b) + (c + d)$$
 Si utilizzano quindi $\frac{n}{2}$ processori ed ogni processore effettua la somma $M[2^{j}k] = M[2^{j}k] + M[2^{j}k-2^{j-1}]$, con $j$ che varia ad ogni iterazione e $k$ indice dei processori. I processori, per comunicare, sovrascrivono le celle dalle quali leggono l'input, in un fashion EREW. Si genera così un albero di somme di altezza $\log_{2}(n)$ nel caso in cui $n$ sia potenza di $2$.
 
 ```
-for j = 1 to log(n)
-	for k = 1 to n/2^(j) parallel do 
+for j = 1 to log(n) do{
+	for k = 1 to n/2^(j) parallel do{
 		M[2^(j)k] =  M[2^(j)k] + M[2^(j)k - 2^(j-1)]
+	}
+}
 return M[n]
 ```
 
@@ -305,9 +308,11 @@ Il vantaggio maggiore in questo caso è quello di poter fare scritture concorren
 Da questa intuizione, si può progettare il seguente algoritmo:
 
 ```
-for 1<=k<=n parallel do
-	if M[k] = 0 then
+for 1<=k<=n parallel do{
+	if M[k] = 0{
 		M[n] = 0
+	}
+}
 ```
 
 Si ha una scrittura concorrente del valore $0$ nella cella $M[n]$. E' necessario quindi adottare una politica per gestire queste scritture concorrenti.
@@ -398,8 +403,9 @@ $$E(n, p(n)) \sim \frac{n^{2,8}}{\frac{n^{3}}{\log(n)} \cdot \log(n)} = \frac{n^
 L'algoritmo sequenziale, nel caso di $n$ potenza di $2$, può essere svolto con uno stratagemma. Si calcolano solamente non le potenze fino ad $n$ ma tutte quelle che sono potenze di $2$.
 
 ```
-for i=1 to log(n) do
+for i=1 to log(n) do{
 	A = A * A
+}
 ```
 
 Questo pseudocodice calcola le potenze di $A$ che hanno come indice una potenza di $2$ fino ad arrivare al numero $n$. <br />
@@ -428,8 +434,9 @@ Ci sono diverse applicazioni che utilizzano SOMME PREFISSE, tra cui:
 L'algoritmo sequenziale è strutturato nel seguente modo:
 
 ```
-for k = 2 to n do
+for k = 2 to n do{
 	M[k] = M[k] + M[k-1]
+}
 ```
 
 e termina in un tempo $n-1$.
@@ -488,10 +495,12 @@ Si valutano ora le prestazioni dell'algoritmo.<br />
 Il codice dell'algoritmo parallelo, con $M$ e $S$ già inizializzati, sarà quindi il seguente:<br />
 
 ```
-for j = 1 to log(n) do
-	for 1 <= k <=  n - 2^(j-1) parallel do
+for j = 1 to log(n) do{
+	for 1 <= k <=  n - 2^(j-1) parallel do{
 		M[S[k] = M[k] + M[S[k]]
 		S[k] = (S[k] == 0? 0 : S[S[k]])
+	}
+}
 ```
 
 I processori non competono per accedere alla stessa cella. Si sta risolvendo il problema con un architettura EREW.
@@ -691,8 +700,9 @@ Il codice per l'algoritmo sequenziale di Ruffini-Horner è:
 ```
 Input(alpha)
 p = a_{n}
-for i = 1 to n
+for i = 1 to n do{
 	p = a_{n-i} + p*alpha
+}
 Output(p)
 ```
 
@@ -727,9 +737,11 @@ Per costruire il vettore delle potenze è necessario:
  
 - **Secondo modo**:<br />
 	```
-	for k =1 to n/log(n) parallel do
-		for i = 1 to log(n) do
+	for k =1 to n/log(n) parallel do{
+		for i = 1 to log(n) do{
 			Q[(k+1)log(n) + i] = alpha
+		}
+	}
 	```
 	
 	Si valutano ora le prestazioni dell'algoritmo.<br />
@@ -745,10 +757,10 @@ Per costruire il vettore delle potenze è necessario:
    
    ```
 	Input(alpha)
-
 	Q[1] = alpha
-	for k = 2 to n parallel do
+	for k = 2 to n parallel do{
 		Q[k] = 0
+	}
 	```
 	
 	La differenza tra gli algoritmi è che il valore $0$ è una costante che non necessita di essere letta. Mentre tutti i processori devono accedere alla memoria condivisa per leggere $\alpha$, il valore $0$ invece è una costante interna all'istruzione.<br />
@@ -793,9 +805,11 @@ Si presenta ora un primo algoritmo parallelo per la ricerca di un elemento in un
 Si propone un algoritmo su una struttura CRCW.<br />
 ```
 F = 0
-for k = 1 to n parallel do
-	if (M[k] == alpha)
+for k = 1 to n parallel do{
+	if (M[k] == alpha){
 		F = 1;
+	}
+}
 M[n] = F;
 ```
 
@@ -810,8 +824,9 @@ Il fatto di dover inserire potenzialmente il valore $1$ nella variabile $F$ fa p
 **Secondo modo**:<br />
 Il secondo tentativo mira ad ottenere un algoritmo CREW.<br />
 ```
-for k = 1 to n parallel do
+for k = 1 to n parallel do{
 	M[k] = (M[k]==alpha? 1 : 0)
+}
 ```
 
 Eliminare la scrittura concorrente significa voler eliminare il flag utilizzato nella versione precedente. Al posto di memorizzare il risultato in una cella sola, si memorizzano nelle celle $M[k]$.<br />
@@ -838,8 +853,9 @@ $$E \sim c \neq 0$$
 Per eliminare la concurrent read si può sostituire ad $\alpha$ un vettore inizializzato con il valore di $\alpha$ tante volte quanti i processori utilizzati.<br />
 Replica di $\alpha \rightarrow A[1], A[2], ..., A[3]$.<br />
 ```
-for k = 1 to n parallel do
+for k = 1 to n parallel do{
 	M[k] = (M[k]==A[k]? 1 : 0)
+}
 ```
 Si esegue infine MAX-ITERATO($M[1], ..., M[n]$).<br />
 
@@ -890,14 +906,17 @@ Questo algoritmo è CREW.<br />
 
 Il codice dell'algoritmo parallelo sarà quindi:<br />
 ```
-for 1 <= i, j <= n parallel do
+for 1 <= i, j <= n parallel do{
 	V[i,j] = (M[j<=M[i]]?1:0)
+}
 	
-for i = 1 to n parallel do
+for i = 1 to n parallel do{
 	SOMMATORIA(V[i,1], V[i,2], ..., V[i,n])
+}
 	
-for i = 1 to n parallel do
+for i = 1 to n parallel do{
 	M[V[i,n]] = M[i]
+}
 ```
 
 La lettura ovviamente non è esclusiva.<br />
@@ -932,7 +951,7 @@ Quando il _Merge_ risulta essere facile? Quando gli elementi $A_{s}$ e $A_{d}$ c
 ![[SimpleMerge.png]]
 
 Da questa osservazione, emerge l'idea per parallelizzare l'algoritmo di ordinamento.<br />
-- L'idea è di usare sequenze di numeri particolari, la [[Sequenza Unimodale]] e la [[Sequenza Bitonica]], insieme alle routine **Rev**, che effettua il reverse di un array,  e **minMax**, che permette di costruire gli array $A_{min}$ e $A_{Max}$.<br />
+- L'idea è di usare sequenze di numeri particolari, la [[Sequenza Unimodale e Bitonica]], insieme alle routine **Rev**, che effettua il reverse di un array,  e **minMax**, che permette di costruire gli array $A_{min}$ e $A_{Max}$.<br />
 
 La funzione **Rev** esegue queste operazioni in parallelo.
 
@@ -952,9 +971,11 @@ La funzione _minMax_ ritorna quindi $A_{min}$ concatenato ad $A_{Max}$.
 Si mostrano ora gli algoritmi paralleli per queste operazioni.
 
 ```
-Procedura Rev(A)
-	for 1 <= k <= n/2 parallel do
+Procedura Rev(A){
+	for 1 <= k <= n/2 parallel do{
 	swap(A[k], A[n-k+1])
+	}
+}
 ```
 
 Ogni processore si occupa di una coppia $(A[k], A[n-k+1])$ da swappare. Gli elementi considerati dallo _swap_ sono quelli equidistanti dal centro dell'array.<br />
@@ -964,15 +985,51 @@ $$T(n, p(n)) = costante$$
 
 
 ```
-Procedura minMax(A)
-	for 1 <= k <= n/2 parallel do
-		if(A[k]>A[k+n/2])
+Procedura minMax(A){
+	for 1 <= k <= n/2 parallel do{
+		if(A[k]>A[k+n/2]){
 			swap(A[k], A[k+n/2])
+		}
+	}
+}
 ```
 
 Ricordando che lo _swap_ ha costo $4$ e in questa procedura è necessario, inoltre, un confronto, si ha( una microistruzione in più.<br />
 $$p(n) = \frac{n}{2}$$
 $$T(n, p(n)) = 5$$
+
+### BitMerge Sequenziale ###
+
+Dato un array bitonico:
+
+```
+Procedura BitMerge(A[1], ..., A[n]){
+	minMax(A)
+	if(|A|>2){
+		BitMerge(A_{min})
+		BitMerge(A_{Max})
+	}
+	return(A)
+}
+```
+
+Quindi BitMerge ordina le sequenze bitoniche.
+
+Si dimostra ora, per [[Induzione]], la correttezza di BitMerge.<br />
+
+Al caso base, per $n=2$, una sequenza di lunghezza $2$ è banalmente ordinata da _minMax_.
+
+Al passo induttivo, si suppone l'algoritmo corretto per $n = 2^{k}$ e si dimostra che è valido per $n = 2^{k+1}$.<br />
+- _minMax_ restituisce $A_{min}$ e $A_{Max}$, ciascuno di lunghezza $2^{k}$;
+-  I due sottoarray vengono passati come argomento a _BitMerge_ e vengono restituiti ordinati per ipotesi induttiva;
+-  <code>return(A)</code> restituisce $A$ ordinato.
+
+### Implementazione Parallela di BitMerge ###
+
+![[BitMergeParallelo.png]]
+
+
+
 
 
 A partire da queste sequenze, da queste routine e da questi algoritmi, nasce l'algoritmo [[BitSort]].<br />

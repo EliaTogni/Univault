@@ -1,18 +1,21 @@
 L'algoritmo **MergeSort** è un algoritmo di ordinamento sequenziale basato sulla tecnica [[Divide et Impera]].
 
 ```
-Procedura MergeSort(A[1], A[2], ..., A[n])
-	if(|A|>1)
+Procedura MergeSort(A[1], A[2], ..., A[n]){
+	if(|A|>1){
 		A_{s} <- MergeSort(A[1], ..., A[n/2]])
 		A_{d} <- MergeSort(A[n/2 +1], ..., A[n])
 		A <- Merge(A_{s}, A_{d})
+	}
 	return(A)
+}
 ```
 
 dove <code>|A|</code> indica la cardinalità dell'array A.
 
 ```
-Routine Merge()
+Routine Merge(){
+}
 ```
 
 La routine _Merge_, nel caso peggiore, ha un costo pari ad $n$. Il caso peggiore si ha quando il primo elemento di uno dei due sottoarray è minore del primo elemento del secondo sottoarray, il primo elemento del secondo sottoarray è minore del secondo elemento del primo sottoarray e così via.<br />
