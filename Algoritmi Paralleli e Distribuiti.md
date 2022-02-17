@@ -489,7 +489,7 @@ Il codice dell'algoritmo parallelo, con $M$ e $S$ già inizializzati, sarà quin
 
 ```
 for j = 1 to log(n) do
-	for 1 <= k <=  n - 2^(j-1) par do
+	for 1 <= k <=  n - 2^(j-1) parallel do
 		M[S[k] = M[k] + M[S[k]]
 		S[k] = (S[k] == 0? 0 : S[S[k]])
 ```
@@ -727,7 +727,7 @@ Per costruire il vettore delle potenze è necessario:
  
 - **Secondo modo**:<br />
 	```
-	for k =1 to n/log(n) par do
+	for k =1 to n/log(n) parallel do
 		for i = 1 to log(n) do
 			Q[(k+1)log(n) + i] = alpha
 	```
@@ -747,7 +747,7 @@ Per costruire il vettore delle potenze è necessario:
 	Input(alpha)
 
 	Q[1] = alpha
-	for k = 2 to n par do
+	for k = 2 to n parallel do
 		Q[k] = 0
 	```
 	
@@ -793,7 +793,7 @@ Si presenta ora un primo algoritmo parallelo per la ricerca di un elemento in un
 Si propone un algoritmo su una struttura CRCW.<br />
 ```
 F = 0
-for k = 1 to n par do
+for k = 1 to n parallel do
 	if (M[k] == alpha)
 		F = 1;
 M[n] = F;
@@ -810,7 +810,7 @@ Il fatto di dover inserire potenzialmente il valore $1$ nella variabile $F$ fa p
 **Secondo modo**:<br />
 Il secondo tentativo mira ad ottenere un algoritmo CREW.<br />
 ```
-for k = 1 to n par do
+for k = 1 to n parallel do
 	M[k] = (M[k]==alpha? 1 : 0)
 ```
 
@@ -838,7 +838,7 @@ $$E \sim c \neq 0$$
 Per eliminare la concurrent read si può sostituire ad $\alpha$ un vettore inizializzato con il valore di $\alpha$ tante volte quanti i processori utilizzati.<br />
 Replica di $\alpha \rightarrow A[1], A[2], ..., A[3]$.<br />
 ```
-for k = 1 to n par do
+for k = 1 to n parallel do
 	M[k] = (M[k]==A[k]? 1 : 0)
 ```
 Si esegue infine MAX-ITERATO($M[1], ..., M[n]$).<br />
@@ -890,13 +890,13 @@ Questo algoritmo è CREW.<br />
 
 Il codice dell'algoritmo parallelo sarà quindi:<br />
 ```
-for 1 <= i, j <= n par do
+for 1 <= i, j <= n parallel do
 	V[i,j] = (M[j<=M[i]]?1:0)
 	
-for i = 1 to n par do
+for i = 1 to n parallel do
 	SOMMATORIA(V[i,1], V[i,2], ..., V[i,n])
 	
-for i = 1 to n par do
+for i = 1 to n parallel do
 	M[V[i,n]] = M[i]
 ```
 
@@ -932,7 +932,7 @@ Quando il _Merge_ risulta essere facile? Quando gli elementi $A_{s}$ e $A_{d}$ c
 ![[SimpleMerge.png]]
 
 Da questa osservazione, emerge l'idea per parallelizzare l'algoritmo di ordinamento.<br />
-L'idea è di usare sequenze di numeri particolari, le **Unimodali** e **Bitoniche**, insieme alle routine **Rev**, che effettua il reverse di un array,  e **minMax**, che permette di costruire gli array $A_{min}$ e $A_{Max}$.<br />
+- L'idea è di usare sequenze di numeri particolari, la [[Sequenza Unimodale]] e la [[Sequenza Bitonica]], insieme alle routine **Rev**, che effettua il reverse di un array,  e **minMax**, che permette di costruire gli array $A_{min}$ e $A_{Max}$.<br />
 
 La funzione **Rev** esegue queste operazioni in parallelo.
 
@@ -946,10 +946,36 @@ Confronta poi gli elementi a coppie, prendendo un elemento della prima metà ed 
 ![[minMAX.png]]
 
 L'elemento minimo viene inserito in $A[k]$ mentre quello massimo viene inserito in $A[k] + \frac{n}{2}$.<br />
-Alla fine dell'esecuzione, gli elementi della prima metà contengono i minimi  del confronto a coppie, mentre gli elementi della seconda metà contengono i massimi, sempre del confronto a coppie.<br />
-La funzione _minMax_ ritorna quindi $A_{min}$ concatenato ad $A_{Max}$
+Alla fine dell'esecuzione, gli elementi della prima metà contengono i minimi del confronto a coppie, mentre gli elementi della seconda metà contengono i massimi, sempre del confronto a coppie.<br />
+La funzione _minMax_ ritorna quindi $A_{min}$ concatenato ad $A_{Max}$.
 
-A partire da queste sequenze e da queste routine, nasce l'algoritmo [[BitSort]].<br />
+Si mostrano ora gli algoritmi paralleli per queste operazioni.
+
+```
+Procedura Rev(A)
+	for 1 <= k <= n/2 parallel do
+	swap(A[k], A[n-k+1])
+```
+
+Ogni processore si occupa di una coppia $(A[k], A[n-k+1])$ da swappare. Gli elementi considerati dallo _swap_ sono quelli equidistanti dal centro dell'array.<br />
+Le microistruzioni per uno _swap_ sono quindi $4$, due LOAD e due STORE.<br />
+$$p(n) = \frac{n}{2}$$
+$$T(n, p(n)) = costante$$
+
+
+```
+Procedura minMax(A)
+	for 1 <= k <= n/2 parallel do
+		if(A[k]>A[k+n/2])
+			swap(A[k], A[k+n/2])
+```
+
+Ricordando che lo _swap_ ha costo $4$ e in questa procedura è necessario, inoltre, un confronto, si ha( una microistruzione in più.<br />
+$$p(n) = \frac{n}{2}$$
+$$T(n, p(n)) = 5$$
+
+
+A partire da queste sequenze, da queste routine e da questi algoritmi, nasce l'algoritmo [[BitSort]].<br />
 
 
 
