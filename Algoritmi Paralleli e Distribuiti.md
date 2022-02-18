@@ -1083,4 +1083,4 @@ $$T_{bm}(n) = O(n\log(n))$$
   
 -----------------------------------------------------
   
- Per gestire strutture dati dinamiche come un [[Albero]], si utilizza la [[Tecnica del Ciclo Euleriano]].
+Per gestire strutture dati dinamiche come un [[Albero]], si utilizza la [[Tecnica del Ciclo Euleriano]].
