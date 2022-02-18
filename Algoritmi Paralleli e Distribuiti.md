@@ -183,6 +183,8 @@ $2^{j}a \neq 2^{j}b -2^{j-1} \rightarrow^\text{per assurdo}$: $2a = 2b -1 \right
 Allo stesso modo si dimostra per le restanti combinazioni.<br />
 Si ha quindi un algoritmo EREW.
 
+#### Correttezza dell'Algoritmo ####
+
 Si dimostra ora, per [[Induzione]], che l'algoritmo sottostante è corretto. La correttezza è data dalla seguente proprietà:
 
 $$M[2^{j}k] = M[2^{j}k] + ... + M[2^{j}(k-1) +1]$$
@@ -518,6 +520,8 @@ Si temeva che $M[S[k]]$ ed $M[k']$ venissero acceduti simultaneamente ma non è 
 
 Questa dimostrazione ribadisce la struttura EREW dell'algoritmo.<br />
 Se $i\neq j \rightarrow S[i] \neq S[j]$, quindi i due valori hanno successori diversi (eccetto il caso $S[i] = S[j] = 0$).
+
+#### Correttezza dell'Algoritmo ####
 
 E' anche necessario dimostrare che l'algoritmo sia corretto.<br />
 La correttezza dell'algoritmo si dimostra facendo vedere che, per $1 \leq k \leq n$ si ha in M[k] la somma degli elementi precedenti:
