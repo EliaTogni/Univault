@@ -1,6 +1,11 @@
 In determinate situazioni, la velocità di esecuzione di un compito è l'elemento critico. In questi casi, può essere utile far eseguire questo compito a più processori, sperando che l'aumento di risorse sia compensato da una diminuzione del tempo di calcolo.<br />
 Il termine [[Algoritmi]] sottintende, oltre alla stessa definizione, che l'esecutore è unico.<br />
 Nel caso di **Algoritmi Paralleli e Distribuiti**, è chiave la presenza di un pool di esecutori e non si può parlare più di sequenza di istruzioni generiche ma di insiemi di istruzioni raggruppate in **passi paralleli**. In ogni passo parallelo si avrà un set di istruzioni, in cui ci sarà **al più** un'istruzione per esecutore.<br />
+
+--------------------------------------------------------------
+
+## Algoritmi Paralleli ##
+
 I modelli di calcolo in cui sono presenti più processori che lavorano contemporaneamente sono detti **paralleli**, così come il modello di calcolo dotato di un solo processore è detto **sequenziale**.<br />
 Con più processori, sono possibili due differenti implementazioni:
 - Un solo [[Clock]], condiviso tra tutti i processori del sistema;
@@ -23,6 +28,8 @@ Bisogna prestare attenzione alla dimensione dei dati in gioco.<br />
 Se si utilizza il **criterio di costo uniforme**, le operazioni elementari richiedono una sola **unità di tempo**. Se si utilizza il **criterio di costo logaritmico**, ogni operazione elementare ha un costo che dipende dal numero di bit degli operandi.<br />
 La funzione tempo deve indicare se gli algoritmi paralleli e distribuiti utilizzati si possono considerare efficienti. Si considera quindi il concetto di [[Efficienza]].
 
+--------------------------------------------------------------
+
 Si richiami, ora, un classico modello di calcolo sequenziale, cioè la **macchina RAM**: essa consiste di un processore P, collegato ad una memoria M attraverso un'unità di accesso.
 
 ![[RAMMachine.png]]
@@ -35,6 +42,8 @@ Il calcolo procede per **passi**. Ad ogni passo, ogni processore può fare un'op
 Questo modello di macchine è detto di tipo **SIMD** (**SIngle Instruction Multiple Data**), il quale si contrappone all'architettura **MIMD** (**Multiple Instruction Multiple Data**).<br />
 Per semplicità, in seguito si farà riferimento al modello EREW, il più realistico.
 Un vantaggio sostanziale di questa scelta è che un algoritmo funzionante su un modello EREW è funzionante anche sui modelli successivi.
+
+--------------------------------------------------------------
 
 La tipica istruzione di un algoritmo parallelo è strutturata nel seguente modo:
 
@@ -65,6 +74,8 @@ Un primo confronto tra i tempi può essere fatto confrontando l'andamento delle 
 Sono possibili due casi, uno non accettabile ed uno accettabile.<br />
 Il caso non accettabile è il caso in cui $T(n, p(n)) = \Theta(T(n,1))$, ovvero dove non si ottiene un miglioramento nonostante l'aggiunta di processori. Questo caso comporta solo un sovrapprezzo in termini di componentistica e, quindi, è evidentemente sfavorevole.<br />
 Il caso accettabile è il caso in cui $T(n, p(n)) = o(T(n,1))$, ovvero il caso in cui il tempo di esecuzione dell'algoritmo parallelo è inferiore a quello sequenziale.
+
+--------------------------------------------------------------
 
 Due misure naturali dell'efficacia sono lo **Speed-Up** $S_{A}(p)$ e l'**Efficienza** $E_{A}(n,p)$.
 
@@ -103,35 +114,11 @@ $$\frac{T(n,1)}{p(n)T(n, p(n)))} \leq 1$$
 
 Sapendo che $\frac{T(n,1)}{p(n)T(n, p(n)))} = E(n, p(n))$, allora si ha dimostrato che $E(n, p(n)) \leq 1$. Il miglior risultato in termini di efficienza è quindi $E \rightarrow k \leq 1$, dove $k$ è una costante.
 
-### Teorema di Wyllie [1979, PhD Thesis] ###
-Se $E \rightarrow 0$, allora per migliorare l'algoritmo si provi a ridurre $p(n)$ senza degradare il tempo.<br />
-Dato un algoritmo $A$, il quale lavora con $p$ processori con una data efficienza $E$, è in generale possibile estendere l'algoritmo a lavorare con un numero inferiore di processori senza che l'efficienza diminuisca significativamente.
+--------------------------------------------------------------
 
-$$\text{Se } k>1, \text{ allora } E_{A}\bigg( n, \frac{p}{k} \bigg) \geq E_{A}(n, p)$$
+Nel caso in cui l'efficienza $E$ di un algoritmo tenda a $0$, è possibile provare ad applicare il [[Teorema di Wyllie]].<br />
 
-Dato un algoritmo $A$ che lavora con $p$ processori, basta infatti costruire un algoritmo modificato che utilizza $p/k$ processori. Ad ogni nuovo processore si fa corrispondere un blocco di $k$ vecchi processori: ogni nuovo processore usa al più $k$ passi per emulare il singolo passo parallelo dei $k$ processori corrispondenti.<br />
-Il tempo di ogni singolo passo è quindi dettato dall'istruzione più lunga moltiplicata per il numero di istruzioni in un passo, $k \cdot t_{i}(n)$.
-Il tempo parallelo richiesto è limitato superiormente dalla somma dell'$i$-esimo passo parallelo
-
-$$T(n, \frac{p}{k}) \leq \sum_{i=1}^{k(n)} k \cdot t_{i}(n)$$
-
-Quindi:
-
-$$\sum_{i=1}^{k(n)} k \cdot t_{i}(n) = k \cdot \sum_{i=1}^{k(n)} t_{i}(n) = k \cdot T(n, p(n))$$
-
-Si ha quindi:
-
-$$T(n, \frac{p}{k}) \leq k \cdot T(n, p)$$
-
-Partendo da questa disuguaglianza, si ottiene che $E$ cresce col diminuire dei processori. Infatti:
-
-$$E(n, \frac{p}{k}) = \frac{T(n,1)}{\frac{p}{k}T(n, \frac{p}{k})} \geq \frac{T(n,1)}{\frac{p}{k} \cdot k T(n,p)} = \frac{T(n,1)}{p \cdot T(n,p)} = E(n,p)$$
-
-Nel caso in cui $k \rightarrow p$, accade che:
-
-$$ 1 = E(n,1) = E(n, \frac{p}{p}) \geq E(n,\frac{p}{k}) \geq E(n, p)$$
-
-Attenzione però a mantenere $T(n, \frac{p}{k}) = o(T(n,1))$, altrimenti non ha senso parlare di algoritmo parallelo perchè $E(n,1) = 1$ ma $T(n,p=1) = T(n,1)$, cioè sequenziale.
+--------------------------------------------------------------
 
 ### SOMMATORIA ###
 Si vuole trovare un algoritmo parallelo per risolvere il problema **Sommatoria**, un problema guida.<br />
@@ -279,6 +266,8 @@ $$n\leq 2^h$$
 
 $$h \geq \log_{2}(n)$$
 
+--------------------------------------------------------------
+
 ### SOMMATORIA come schema per altri problemi ###
 
 Si osservi il problema OP ITERATA, del quale SOMMATORIA è un caso particolare.
@@ -296,6 +285,8 @@ $$p(n)=O\Bigg(\frac{n}{\log(n)}\Bigg)$$
 $$T(n, p(n))=O(\log(n))$$
 
 Mentre, con una soluzione EREW, questo è il miglior risultato ottenibile, in realtà, con P-RAM più potenti, si è in grado di ottenere un tempo costante.<br />
+
+--------------------------------------------------------------
 
 ### $\wedge$ ITERATO ###
 
@@ -331,6 +322,7 @@ Non solo questo algoritmo fa da guida per le soluzioni ai problemi OP ITERATO ma
 - PRODOTTO MATRICE MATRICE;
 - POTENZA DI UNA MATRICE.
 
+--------------------------------------------------------------
 
 ### PRODOTTO INTERNO DI VETTORI ###
 
@@ -360,6 +352,8 @@ $$E \sim \frac{2n -1}{\frac{n}{\log(n)}\cdot \log(n)} \rightarrow c \neq 0$$
 
 Questo problema, a sua volta, è modulo di altri problemi, come, banalmente, il problema PRODOTTO MATRICE VETTORE.
 
+--------------------------------------------------------------
+
 ### PRODOTTO MATRICE VETTORE ###
 
 **Definizione del problema**
@@ -376,6 +370,8 @@ $$p(n) = n \cdot \frac{n}{\log(n)}$$
 ovvero il costo di un prodotto vettore vettore per ognuno degli $n$ prodotti interni.<br />
 $$T(n, p(n)) = \log(n)$$
 $$E(n, p(n)) \sim \frac{n^{2}}{\frac{n^{2}}{\log(n)} \cdot \log(n)} \rightarrow c \neq 0$$
+
+--------------------------------------------------------------
 
 ### PRODOTTO MATRICE MATRICE ###
 
@@ -394,6 +390,8 @@ Si valutano ora le prestazioni dell'algoritmo.<br />
 $$p(n) \sim n^{2} \cdot \frac{n}{\log(n)}$$
 $$T(n, p(n)) \sim \log(n)$$
 $$E(n, p(n)) \sim \frac{n^{2,8}}{\frac{n^{3}}{\log(n)} \cdot \log(n)} = \frac{n^{2,8}}{n^{3}} \rightarrow 0$$
+
+--------------------------------------------------------------
 
 ### POTENZA DI  UNA MATRICE ###
 
@@ -419,6 +417,8 @@ Si valutano ora le prestazioni dell'algoritmo.<br />
 $$p(n) \sim n^{2} \cdot \frac{n}{\log(n)} = \frac{n^{3}}{\log(n)}$$
 $$T(n, p(n)) = \log(n) \cdot \log(n) = \log^{2}(n)$$
 $$E \sim \frac{n^{2,8}\log(n)}{\frac{n^{3}}{\log(n)}\cdot \log_{2}(n)} = \frac{n^{2,8}}{n^{3}} \rightarrow 0$$
+
+--------------------------------------------------------------
 
 ### SOMME PREFISSE ###
 
@@ -461,6 +461,8 @@ $$T(n, p(n)) \sim \log(n)$$
 $$E \sim \frac{n-1}{\frac{n^{2}}{\log(n)} \cdot \log(n)} \rightarrow 0$$
 
 Di conseguenza, la proposta analizzata risulta essere una scelta poco efficiente.
+
+--------------------------------------------------------------
 
 ### Tecnica di Kogge-Stone [1973] ###
 
@@ -599,6 +601,8 @@ Quindi la somma di queste due celle restituisce la somma degli elementi da $1$ a
    La stessa cosa vale per $M[a + 2^{j}]$. Di conseguenza, nella cella sono presenti tutti i $2^{j-1}$ numeri precedenti.<br />
    Sommando insieme il contenuto di queste due celle, otteniamo cheper gli elementi di posizione $> 2^{j}$ vale la proprietà iniziale.<br />
    
+--------------------------------------------------------------
+ 
 Si valutano ora le prestazioni dell'algoritmo.
 $$p(n) = n-1$$
 Al primo passo, nell'esempio con $8$ elementi, venivano utilizzati $7$ processori. Nei passi successivi, il numero di processori diminuiva.<br />
@@ -646,6 +650,8 @@ $$E \rightarrow c \neq 0$$
 
 Come per il problema SOMMATORIA, anche l'algoritmo dato per SOMME PREFISSE può essere usato come modulo risolutivo per altri problemi.
 
+--------------------------------------------------------------
+
 ### OP-PREFISSA ###
 
 **Definizione del problema**
@@ -654,6 +660,8 @@ Come per il problema SOMMATORIA, anche l'algoritmo dato per SOMME PREFISSE può 
 **Output**: $M[k] = OP_{i=1}^{k} M[i] \text{, } 1 \leq k \leq n$
 
 OP deve essere associativa, come ad esempio $+, *, \wedge, \vee, \oplus, \min, \max$...<br />
+
+--------------------------------------------------------------
 
 ### VALUTAZIONE DI POLINOMI ###
 
@@ -676,7 +684,9 @@ $$
 $$
 $$N \sim n^2$$
 
-### Miglioramento di Ruffini-Horner ###
+--------------------------------------------------------------
+
+#### Miglioramento di Ruffini-Horner ####
 
 Il numero di istruzioni impiegato può essere migliorato tramite l'idea di Ruffini-Horner.<br />
 Si osservi un esempio di applicazione su un polinomio di quarto grado:
@@ -713,6 +723,8 @@ Output(p)
 Le prestazioni in termini di istruzioni dell'algoritmo sequenziale di Ruffini-Horner sono:
 $$T(n, 1) = 2n$$
 cioè due operazioni all'interno di ogni iterazione del loop.
+
+#### Implementazione Parallela di Ruffini-Horner ####
 
 Si dovrà trovare un possibile algoritmo parallelo che, confrontato con questo algoritmo lineare, risulti efficiente.<br />
 - Si costruisca il vettore delle potenze di $\alpha$, $Q$;
@@ -792,6 +804,8 @@ Analizziamo ora le prestazioni dell'algoritmo.<br />
    $$T(n, p(n)) = \log(n)$$
    $$E = frac{T(n,1)}{p(n)T(n,p(n))} = frac{2n}{\frac{n}{\log(n)}\log(n)} \rightarrow c \neq 0$$
    
+--------------------------------------------------------------
+
 ### RICERCA DI UN ELEMENTO ###
 
 **Definizione del problema**
@@ -883,6 +897,8 @@ Si valutano ora le prestazioni dell'algoritmo.<br />
 
 OP-ITERATA viene eseguita tra due celle di $M$ che contengono i valori $x$ e $y$. Se entrambi questi valori sono diversi da $0$, viene scelto il minimo tra di essi. Se uno dei due è uguale a $0$, viene scelto il massimo.<br/>
 Questo permette di portare il minimo valore della cella che contiene $\alpha$ nella cella $M[n]$.
+
+--------------------------------------------------------------
 
 ### ORDINAMENTO o RANKING ###
 
@@ -1002,6 +1018,8 @@ Ricordando che lo _Swap_ ha costo $4$ e in questa procedura è necessario, inolt
 $$p(n) = \frac{n}{2}$$
 $$T(n, p(n)) = 5$$
 
+--------------------------------------------------------------
+
 ### _BitMerge_ Sequenziale ###
 
 Dato un array bitonico:
@@ -1027,6 +1045,8 @@ Al passo induttivo, si suppone l'algoritmo corretto per $n = 2^{k}$ e si dimostr
 - _minMax_ restituisce $A_{min}$ e $A_{Max}$, ciascuno di lunghezza $2^{k}$;
 -  I due sottoarray vengono passati come argomento a _BitMerge_ e vengono restituiti ordinati per ipotesi induttiva;
 -  <code>return(A)</code> restituisce $A$ ordinato.
+
+--------------------------------------------------------------
 
 ### Implementazione Parallela di _BitMerge_ ###
 
@@ -1058,7 +1078,7 @@ In termini di efficienza:
 
 $$E(n, p(n)) = \frac{n\log(n)}{\frac{n}{2}5\log(n)} \rightarrow c \neq 0$$
 
----------------------------------------
+--------------------------------------------------------------
 
 A partire da queste sequenze, da queste routine e da questi algoritmi, nasce l'algoritmo [[BitSort]].<br />
 
@@ -1081,6 +1101,26 @@ $$T_{bm}(n) = O(n\log(n))$$
  $$
   $$T_{bs}(n) = O(n\log^{2}(n)$$
   
------------------------------------------------------
+--------------------------------------------------------------
   
 Per gestire strutture dati dinamiche come un [[Albero]], si utilizza la [[Tecnica del Ciclo Euleriano]].
+
+--------------------------------------------------------------
+
+### Osservazioni Finali su PRAM ###
+
+1) Da un punto di vista teorico, si è in grado di distribuire i compiti tra i processori, i quali sono considerati alla pari, in modo tale che il tempo parallelo sia strettamente legato alla computazione (poichè la comunicazione avviene in tempo costante);
+2) L'interesse pratico è dovuto alla realizzazione fisica dei dispositivi multi-core;
+
+--------------------------------------------------------------
+
+### Architettura Parallela a Memoria Distribuita ###
+
+La rappresentazione grafica di queste architetture è data da un [[Grafo]] G in cui i nodi sono i processori e gli archi definiscono la struttura della rete di connessione.<br />
+L'elemento che viene a mancare è ovviamente la memoria condivisa, tipica delle PRAM.<br />
+Si torna quindi a parlare di [[Modello a Memoria Distribuita]].<br />
+
+
+
+## Algoritmi Distribuiti ##
+

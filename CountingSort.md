@@ -32,3 +32,5 @@ Si valutano ora le prestazioni dell'algoritmo.<br />
 La seconda fase è quella più pesante in termini di tempo in quanto consiste di due cicli _for_ innestati.
 $$\text{Confronti } = n^2$$
 $$t = n^2$$
+
+--------------------------------------------------------------
