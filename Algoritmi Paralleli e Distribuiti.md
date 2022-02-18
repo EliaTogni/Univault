@@ -1002,7 +1002,7 @@ Ricordando che lo _Swap_ ha costo $4$ e in questa procedura è necessario, inolt
 $$p(n) = \frac{n}{2}$$
 $$T(n, p(n)) = 5$$
 
-### BitMerge Sequenziale ###
+### _BitMerge_ Sequenziale ###
 
 Dato un array bitonico:
 
@@ -1028,7 +1028,7 @@ Al passo induttivo, si suppone l'algoritmo corretto per $n = 2^{k}$ e si dimostr
 -  I due sottoarray vengono passati come argomento a _BitMerge_ e vengono restituiti ordinati per ipotesi induttiva;
 -  <code>return(A)</code> restituisce $A$ ordinato.
 
-### Implementazione Parallela di BitMerge ###
+### Implementazione Parallela di _BitMerge_ ###
 
 ![[BitMergeParallelo.png]]
 
@@ -1058,8 +1058,29 @@ In termini di efficienza:
 
 $$E(n, p(n)) = \frac{n\log(n)}{\frac{n}{2}5\log(n)} \rightarrow c \neq 0$$
 
+---------------------------------------
+
 A partire da queste sequenze, da queste routine e da questi algoritmi, nasce l'algoritmo [[BitSort]].<br />
 
+Da un buon algoritmo sequenziale non è detto che derivi un buon algoritmo parallelo, dove con buono si intende efficiente(_MergeSort_).<br />
+Allo stesso modo, non è valido il viceversa (_BitSort_).<br />
 
-
-
+### Valutazione Sequenziale di _BitSort_ ###
+- _BitMerge_:
+  $$\begin{numcases}{T_{bm}(n) =}
+  O(1), & se $ n = 2$ \\
+  2T_{bm}(\frac{n}{2}) + O(n), &se $n > 2$
+\end{numcases}
+$$
+$$T_{bm}(n) = O(n\log(n))$$
+- _BitSort_:
+  $$\begin{numcases}{T_{bs}(n) =}
+  O(1), & se $ n = 2$ \\
+  2T_{bs}(\frac{n}{2}) + O(n\log(n)), & se $n > 2$
+\end{numcases}
+ $$
+  $$T_{bs}(n) = O(n\log^{2}(n)$$
+  
+-----------------------------------------------------
+  
+ Per gestire strutture dati dinamiche come un [[Albero]], si utilizza la [[Tecnica del Ciclo Euleriano]].

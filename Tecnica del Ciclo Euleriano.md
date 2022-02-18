@@ -1,0 +1,1 @@
+Per comprendere la Tecnica del Ciclo Euleriano, è necessario avere in mente la definizione di **Ciclo Euleriano** riferita ad un [[Grafo]].<br />
