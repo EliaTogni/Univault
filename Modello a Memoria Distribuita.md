@@ -105,3 +105,15 @@ Ecco una versione dell'algoritmo [[BubbleSort]] riproposta utilizzando le Sortin
 
 ![[BubbleSortSN.png]]
 
+Tramite Sorting Network è possibile avere un'idea su come parallelizzare certi algoritmi.<br />
+
+
+immagine sorting network 4 elementi.
+
+ I confrontatori, i quali agiscono su fili diversi nello stesso momento, rappresentano un passo parallelo, dove lo stesso momento è rappresentato dal'indice dello step.<br />
+ Chiaramente, nel caso di confronti differenti che prendono in considerazione uno stesso filo, esiste una sequenzialità necessaria la quale deve essere rispettata.<br />
+ Il numero di step dà un'idea di quanto sia costoso l'algoritmo in termini di tempo mentre il numero di fili rispecchia il numero di processori necessari.<br />
+ 
+
+
+
