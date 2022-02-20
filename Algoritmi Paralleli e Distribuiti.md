@@ -16,6 +16,7 @@ Nel caso sequenziale, viene definito formalmente come:
 
 $$T(x) = \text{ numero di operazioni elementari su $x$, con $x$ istanza }$$
 
+
 $$t(n) = MAX\Bigg\{T(x) \quad|\quad x \in \sum^{n}\Bigg\}$$
 
 dove $t(n)$ è una funzione in $n$, con $n$ lunghezza dell'input.

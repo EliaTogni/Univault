@@ -114,6 +114,15 @@ immagine sorting network 4 elementi.
  Chiaramente, nel caso di confronti differenti che prendono in considerazione uno stesso filo, esiste una sequenzialità necessaria la quale deve essere rispettata.<br />
  Il numero di step dà un'idea di quanto sia costoso l'algoritmo in termini di tempo mentre il numero di fili rispecchia il numero di processori necessari.<br />
  
+ Formalmente, si definisce una rete di confrontatori nel seguente modo:
+ $$R(x_{1}, x_{2}, ..., x_{n}) = (y_{1}, y_{2}, ..., y_{n})$$
+
+dove il primo membro fa riferimento all'input della rete di confrontatori ed il secondo membro fa riferimento all'output.<br />
+Si definisce $R$ una _Sorting Network_ se e solo se
+$$\forall(x_{1}, ..., x_{n}) \in \mathbb{N},\quad R(x_{1}, ..., x_{n}) = (y_{1}, ..., y_{n}),\quad \text{con } y_{1} <y_{2}<...<y_{n}$$
+
+Queste sono dette anche **Reti di Ordinamento**.<br />
+In particolare, data una _Sorting Network_, i confronti non dipendono dall'input.
 
 
 
