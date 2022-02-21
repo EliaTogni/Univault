@@ -1,5 +1,5 @@
 ### Teorema di Wyllie [1979, PhD Thesis] ###
-Se l'efficienza di un algoritmo parallelo $E \rightarrow 0$, allora per migliorare l'algoritmo si provi a ridurre $p(n)$ senza degradare il tempo.<br />
+Se l'efficienza di un[[Algoritmo]] parallelo $E \rightarrow 0$, allora per migliorare l'algoritmo si provi a ridurre $p(n)$ senza degradare il tempo.<br />
 Dato un algoritmo $A$, il quale lavora con $p$ processori con una data efficienza $E$, è in generale possibile estendere l'algoritmo a lavorare con un numero inferiore di processori senza che l'efficienza diminuisca significativamente.
 
 $$\text{Se } k>1, \text{ allora } E_{A}\bigg( n, \frac{p}{k} \bigg) \geq E_{A}(n, p)$$

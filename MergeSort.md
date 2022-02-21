@@ -1,4 +1,4 @@
-L'algoritmo **MergeSort** è un algoritmo di ordinamento sequenziale basato sulla tecnica [[Divide et Impera]].
+L'algoritmo **MergeSort** è un [[Algoritmo]] di ordinamento sequenziale basato sulla tecnica [[Divide et Impera]].
 
 ```
 Procedura MergeSort(A[1], A[2], ..., A[n]){

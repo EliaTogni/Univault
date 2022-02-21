@@ -1,6 +1,6 @@
 In Informatica, la **Teoria della Complessità Computazionale** è una branca della **Teoria della Computabilità** che studia le risorse minime necessarie (principalmente tempo di calcolo e memoria) per la risoluzione di un problema.
 
-Per misurare l'efficienza di un algoritmo in maniera univoca, bisogna definire una metrica indipendente dalle tecnologie utilizzate. Per questo motivo si usa fare riferimento ad un modello di calcolo generico: la [[Macchina di Turing]].
+Per misurare l'efficienza di un [[Algoritmo]] in maniera univoca, bisogna definire una metrica indipendente dalle tecnologie utilizzate. Per questo motivo si usa fare riferimento ad un modello di calcolo generico: la [[Macchina di Turing]].
 
 Per quel che riguarda la misurazione della risorsa _tempo_, data una macchina di Turing $M$, si dice che $M$ opera in tempo $f(n)$ se $f(n)$ è il massimo numero di passi necessari alla macchina per produrre il risultato su un input $x$ di lunghezza $n$.
 

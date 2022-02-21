@@ -1,4 +1,4 @@
-Il **BitSort** è un algoritmo di ordinamento, inventato da Batcher nel 1968, che deve il proprio nome al termine **Bitonic**, derivato dalla [[Sequenza Unimodale e Bitonica]].<br />
+Il **BitSort** è un [[Algoritmo]] di ordinamento, inventato da Batcher nel 1968, che deve il proprio nome al termine **Bitonic**, derivato dalla [[Sequenza Unimodale e Bitonica]].<br />
 Prende spunto dall'algoritmo sequenziale [[MergeSort]] ma utilizza come funzione di fusione il _BitMerge_, il quale lavora su sequenze bitoniche.<br />
 
 ```

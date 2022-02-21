@@ -1,5 +1,5 @@
 In determinate situazioni, la velocità di esecuzione di un compito è l'elemento critico. In questi casi, può essere utile far eseguire questo compito a più processori, sperando che l'aumento di risorse sia compensato da una diminuzione del tempo di calcolo.<br />
-Il termine [[Algoritmi]] sottintende, oltre alla stessa definizione, che l'esecutore è unico.<br />
+Il termine [[Algoritmo]] sottintende, oltre alla stessa definizione, che l'esecutore è unico.<br />
 Nel caso di **Algoritmi Paralleli e Distribuiti**, è chiave la presenza di un pool di esecutori e non si può parlare più di sequenza di istruzioni generiche ma di insiemi di istruzioni raggruppate in **passi paralleli**. In ogni passo parallelo si avrà un set di istruzioni, in cui ci sarà **al più** un'istruzione per esecutore.<br />
 
 --------------------------------------------------------------
