@@ -143,3 +143,4 @@ $$p(n) = \frac{n}{\log(n)}$$
 $$T(n, p(n) = \log(n) \text{ in entrambe le fasi}$$
 $$E = \frac{n}{\frac{n}{\log(n)}\log(n)} \rightarrow c \neq 0$$
 
+--------------------------------------------------------------

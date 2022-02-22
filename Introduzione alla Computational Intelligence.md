@@ -7,3 +7,5 @@ Nei primi tentativi di sviluppo di sistemi intelligenti, spesso i ricercatori si
 La tecnica tipica di progettare un'intelligenza artificiale era tramite la descrizione di una base simbolica dei meccanismi rilevanti. Questo, ovviamente, include la prospettiva [[Top - Down]] del [[Problem solving]].
 Nonostante questi approcci tradizionali hanno riscosso molto successo in alcuni casi, hanno purtroppo molte limitazioni, specialmente dovute alla [[Scalabilità]].<br />
 Di conseguenza, metodi efficienti per rappresentare e processare la conoscenza sono ancora un campo di ricerca. Per certi tipi di problemi, tecniche che si ispirano a processi naturali o biologici hanno avuto ampio successo. Tra questi metodi, troviamo le [[Artificial Neural Network]], [[Evolutionary Algorithm]], [[Bayes Network]] e [[Fuzzy System]].
+
+--------------------------------------------------------------

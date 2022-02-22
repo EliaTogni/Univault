@@ -5,3 +5,4 @@ Related to: [[Flutter]]
 sudo snap install flutter --classic
 ```
 
+---------------------------------------------------------------

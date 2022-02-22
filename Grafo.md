@@ -20,6 +20,8 @@ Si definisce **grafo Euleriano** un grafo che contiene un ciclo Euleriano.<br />
 
 Questo esempio è un ciclo Euleriano? No, perchè non ho attraversato tutti gli archi per compiere il ciclo.<br />
 
+--------------------------------------------------------------
+
 ###  Ricerca di Grafo Euleriano ###
 
 **Definizione del problema **
@@ -30,12 +32,14 @@ Questo esempio è un ciclo Euleriano? No, perchè non ho attraversato tutti gli 
 Esiste una proprietà matematica che dà una risposta a questo problema.<br />
 $\forall v \in V$ si definisce $\rho^{-}(v) = \Bigg|\Big\{(w, v) \in E\Big\}\Bigg|$ il grado di entrata di $v$ e si definisce $\rho^{+}(v) = \Bigg|\Big\{(v, w) \in E\Big\}\Bigg|$ il grado di uscita di $v$.<br />
 
+--------------------------------------------------------------
+
 ### Teorema di Eulero [1736] ###
 
 Un grafo $D$ è Euleriano se e solo se $\forall v \in V \text{: } \rho^{-}(v) = \rho^{+}(v)$.<br />
 
 
-----------------------------------------
+--------------------------------------------------------------
 
 Dato un grafo $D$, un ciclo è **Hamiltoniano** se e solo se è un ciclo dove ogni vertice in V compare una ed una sola volta.<br />
 
@@ -44,3 +48,4 @@ Un grafo è **Hamiltoniano** se e solo se contiene un ciclo Hamiltoniano.<br />
 La ricerca di un grafo Euleriano è un problema la cui complessità computazionale è pari a $O(n^{3})$, e quindi è efficiente.<br />
 Al contrario, la ricerca di un grado Hamiltoniano è un problema _NP_-completo.<br />
 
+--------------------------------------------------------------

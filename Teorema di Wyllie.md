@@ -27,3 +27,5 @@ Nel caso in cui $k \rightarrow p$, accade che:
 $$ 1 = E(n,1) = E(n, \frac{p}{p}) \geq E(n,\frac{p}{k}) \geq E(n, p)$$
 
 Attenzione però a mantenere $T(n, \frac{p}{k}) = o(T(n,1))$, altrimenti non ha senso parlare di algoritmo parallelo perchè $E(n,1) = 1$ ma $T(n,p=1) = T(n,1)$, cioè sequenziale.
+
+--------------------------------------------------------------

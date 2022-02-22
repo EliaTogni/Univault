@@ -204,3 +204,5 @@ Per poterli processare, è necessario trasformarli in numeri e, nonostante possa
 Una migliore opzione è l'**1-in-$n$ encoding**, nel quale ogni attributo nominate è assegnato a tanti neuroni quanto il suo valore: ogni neurone corrisponde ad un valore dell'attributo. Con ll'input di un training pattern, il neurone che corrisponde al valore ottenuto dell'attributo nominale viene impostato a 1, mentre tuti gli altri neuroni che appartengono allo stesso attributo sono settati a 0.
 
 La forma più conosciuta e largamente usata delle reti neurali è il [[Multi-Layer Perceptron]].
+
+--------------------------------------------------------------

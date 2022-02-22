@@ -171,6 +171,8 @@ $2^{j}a \neq 2^{j}b -2^{j-1} \rightarrow^\text{per assurdo}$: $2a = 2b -1 \right
 Allo stesso modo si dimostra per le restanti combinazioni.<br />
 Si ha quindi un algoritmo EREW.
 
+--------------------------------------------------------------
+
 #### Correttezza dell'Algoritmo ####
 
 Si dimostra ora, per [[Induzione]], che l'algoritmo sottostante è corretto. La correttezza è data dalla seguente proprietà:
@@ -524,6 +526,8 @@ Si temeva che $M[S[k]]$ ed $M[k']$ venissero acceduti simultaneamente ma non è 
 Questa dimostrazione ribadisce la struttura EREW dell'algoritmo.<br />
 Se $i\neq j \rightarrow S[i] \neq S[j]$, quindi i due valori hanno successori diversi (eccetto il caso $S[i] = S[j] = 0$).
 
+--------------------------------------------------------------
+
 #### Correttezza dell'Algoritmo ####
 
 E' anche necessario dimostrare che l'algoritmo sia corretto.<br />
@@ -724,6 +728,8 @@ Output(p)
 Le prestazioni in termini di istruzioni dell'algoritmo sequenziale di Ruffini-Horner sono:
 $$T(n, 1) = 2n$$
 cioè due operazioni all'interno di ogni iterazione del loop.
+
+--------------------------------------------------------------
 
 #### Implementazione Parallela di Ruffini-Horner ####
 
@@ -1086,6 +1092,8 @@ A partire da queste sequenze, da queste routine e da questi algoritmi, nasce l'a
 Da un buon algoritmo sequenziale non è detto che derivi un buon algoritmo parallelo, dove con buono si intende efficiente(_MergeSort_).<br />
 Allo stesso modo, non è valido il viceversa (_BitSort_).<br />
 
+--------------------------------------------------------------
+
 ### Valutazione Sequenziale di _BitSort_ ###
 - _BitMerge_:
   $$\begin{numcases}{T_{bm}(n) =}
@@ -1121,7 +1129,7 @@ La rappresentazione grafica di queste architetture è data da un [[Grafo]] G in 
 L'elemento che viene a mancare è ovviamente la memoria condivisa, tipica delle PRAM.<br />
 Si torna quindi a parlare di [[Modello a Memoria Distribuita]].<br />
 
-
+--------------------------------------------------------------
 
 ## Algoritmi Distribuiti ##
 

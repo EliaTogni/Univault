@@ -16,6 +16,8 @@ E' un algoritmo di ordinamento che funziona su una qualsiasi sequenza, non neces
 Se sia $A_{min}$ che $A_{Max}$ sono ordinati in maniera crescente, il prodotto tra $A_{min}$ e _Rev_($A_{Max}$) trasforma i due vettori in input in una sequenza unimodale con un picco pari ad un massimo.<br />
 Poichè una sequenza_ unimodale è anche bitonica, è possibile effettuare la chiamata a _BitMerge_, cioè l'algoritmo di ordinamento per le sequenze bitoniche.<br />
 
+--------------------------------------------------------------
+
 #### Correttezza dell'Algoritmo ####
 
 Per dimostrare la correttezza del _BitSort_, si utilizza l'[[Induzione]].<br />
@@ -32,6 +34,8 @@ Nel passo induttivo, si suppone che l'algoritmo sia corretto per $n = 2^{k}$ e s
 - _BitMerge_($A_{min}$, _Rev_$A_{Max}$) ordina $A$.
 
 Di conseguenza è dimostrato.<br />
+
+--------------------------------------------------------------
 
 #### Implementazione Parallela di BitSort####
 
@@ -63,3 +67,5 @@ dove il valore $5$ indica il costo della routine _minMax_, il valore $4$ indica 
 Sviluppando i conti si ottiene un $O(\log(n))$.<br />
 In termini di efficienza, si ha:
 $$E = \frac{n\log(n)}{\frac{n}{2}5\log^{2}(n)} \rightarrow \frac{\alpha}{\log(n)} \rightarrow 0$$
+
+--------------------------------------------------------------

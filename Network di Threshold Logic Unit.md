@@ -13,3 +13,5 @@ Intuitivamente, le due TLU sulla sinistra calcolano le nuove coordinate Booleane
 ![[Geometric interpretation of network of TLU.png]]
 
 Può essere dimostrato che tutte le funzioni Booleane con un numero arbitrario di input possono essere calcolate tramite Network di Threhold Logic Unit, semplicemente sfruttando le equivalenze logiche e dividendo queste funzioni in modo tale che le occorrenti sotto-funzioni siano linearmente separabili.
+
+--------------------------------------------------------------

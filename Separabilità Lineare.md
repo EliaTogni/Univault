@@ -4,3 +4,5 @@ Un insieme di punti in uno spazio Euclideo è detto **convesso** se è non vuoto
 
 Il **guscio convesso** di un insieme di punti $X$ in uno spazio Euclideo è il più piccolo insieme convesso di punti il quale contiene $X$. Alternativamente, il guscio convesso di un isnieme di punti $X$ è l'intersezione di tutti i gusci convessi che contengono $X$.<br />
 Due insiemi di punti in uno spazio Euclideo sono detti linearmente separabili se e solo se i loro gusci convessi sono disgiunti (cioè non hanno punti in comune).
+
+--------------------------------------------------------------

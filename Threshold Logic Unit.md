@@ -31,4 +31,4 @@ Ovviamente la computazione di una TLU con più di due input può essere interpre
 
 ![[3D geometry of a TLU.png]]
  
-
+--------------------------------------------------------------

@@ -1,4 +1,4 @@
-Un **albero di decisione** è una struttura dati derivata da un [[Albero]]. Relativamente ad algoritmi di ordinamento, viene visto come la dinamica dell' algoritmo di ordinamento che si basa sui confronti. Infatti, un algoritmo di ordinamento basato sui confronti, durante l'esecuzione, produce un albero di decisione o, meglio, un cammino all'interno di un albero di decisione.
+Un **albero di decisione** è una [[Struttura Dati]] derivata da un [[Albero]]. Relativamente ad algoritmi di ordinamento, viene visto come la dinamica dell' algoritmo di ordinamento che si basa sui confronti. Infatti, un algoritmo di ordinamento basato sui confronti, durante l'esecuzione, produce un albero di decisione o, meglio, un cammino all'interno di un albero di decisione.
 
 ![[AlberoDecisioneAlgo.png]]
 
@@ -14,3 +14,4 @@ $$\log(n!) \geq \log \Bigg(\prod_{i = \frac{n}{2}+1}^{n} i \Bigg)\geq \log(\frac
 
 Di conseguenza si ha un lower bound dell'altezza dell'albero pari a $n\log(n)$. Ma, come già ribadito, l'altezza dell'albero trova una diretta corrispondenza nel tempo di esecuzione dell'algoritmo. Quindi, il tempo minimo di esecuzione di un algoritmo di ordinamento basato sui confronti su un input di dimensione $n$ è almeno di $n\log(n)$ unità di tempo.
 
+--------------------------------------------------------------

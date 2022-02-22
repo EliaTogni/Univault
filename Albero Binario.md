@@ -1,4 +1,4 @@
-un **Albero Binario** è una struttura dati derivata da un [[Albero]], la cui peculiarità è la possibilità di avere un massimo di $2$ nodi figli.<br />
+un **Albero Binario** è una [[Struttura Dati]] derivata da un [[Albero]], la cui peculiarità è la possibilità di avere un massimo di $2$ nodi figli.<br />
 
 --------------------------------------------------------------
 

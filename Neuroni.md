@@ -15,3 +15,5 @@ I cambiamenti di potenziale elettrico sono accumulati nel corpo cellulare di un 
 Questo impulso nervoso causa il rilascio di neurotrasmettitori da parte dei bottoni terminali alla fine dell'assone, inducendo quindi un cambiamneto nel potenziale elettrico del neurone ricettore.
 
 Nel sistema nervoso umano, l'informazione è codificata da quantità in continuo cambiamento, principalmente due: il potenziale elettrico della membrana dei neuroni ed il numero di impulsi nervosi che un neurone trasmette per secondo. Questo numero di impulsi è anche chiamato **firing rate** del neurone. Più alto il firing rate, più alta l'influenza che il neurone ha sui neuroni a lui connessi.
+
+--------------------------------------------------------------

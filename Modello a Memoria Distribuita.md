@@ -124,5 +124,4 @@ $$\forall(x_{1}, ..., x_{n}) \in \mathbb{N},\quad R(x_{1}, ..., x_{n}) = (y_{1},
 Queste sono dette anche **Reti di Ordinamento**.<br />
 In particolare, data una _Sorting Network_, i confronti non dipendono dall'input.
 
-
-
+--------------------------------------------------------------

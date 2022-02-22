@@ -13,6 +13,8 @@ Se una sequenza è unimodale, essa è, ovviamente, anche bitonica, grazie alla p
 Inoltre, gli elementi di fine array devono essere maggiori degli elementi di inizio array per la forma $I$, viceversa nella forma $II$.<br />
 Siano $A$,$B$ due sequenze ordinate crescenti (o decrescenti), la sequenza $A \cdot Rev(B)$ è unimodale.<br />
 
+--------------------------------------------------------------
+
 ### Proposizione su sequenze BITONICHE ###
 
 Sia $A$ bitonica. Se si esegue _minMax_($A$), si ottiene che:
@@ -33,4 +35,5 @@ Tali proprietà suggeriscono un approccio [[Divide et Impera]] per le BITONICHE.
 1) _minMax_ suddivide il problema su $n$ elementi in istanze più piccole, $A_{min}$ e $A_{Max}$, grazie alla prima proposizione vista in precedenza;
 2) Ordinando $A_{min}$ e $A_{Max}$, la funzione _merge_ avviene per concatenazione (grazie alla seconda proposizione dimostrata).
 
+--------------------------------------------------------------
 

@@ -7,3 +7,5 @@ $$\forall (x, 0) \in L_{0}: \textbf{wx} < \theta \quad\text{ and}\quad \\
 \forall (x, 1) \in L_{1}: \textbf{wx} \geq \theta$$
 
 allora la procedura di Widrow-Hoff termina.
+
+--------------------------------------------------------------

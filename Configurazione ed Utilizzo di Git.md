@@ -7,6 +7,8 @@ git init
 
 Questo comando crea una sottodirectory chiamata <code> .git </code>, la quale contiene tutti files necessari.
 
+--------------------------------------------------------------
+
 ### Configurazione di parametri ###
 ```git
 git config user.name = Elia Togni  
@@ -15,6 +17,8 @@ git config user.email = elia97.togni@gmail.com
 
 git config --global core.editor emacs/vim
 ```
+
+--------------------------------------------------------------
 
 ### Creazione di un nuovo controllo versione di un file esistente ###
 
@@ -26,6 +30,8 @@ git config --global core.editor emacs/vim
 	git add LICENSE
 ``` 
 
+--------------------------------------------------------------
+
 ### Collegamento di una repository Git ad una repository Github ###
 
 ```git
@@ -34,11 +40,15 @@ git config --global core.editor emacs/vim
 	git branch -M main
 ```
 
+--------------------------------------------------------------
+
 ### Clonazione di una repository esistente ###
 
 ```git
 git clone [url]
 ```
+
+--------------------------------------------------------------
 
 ### Check dello status dei file ###
 ```git
@@ -64,6 +74,8 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 In questo esempio il file README non è tracciato, cioè Git viede un file che non era presente nel precedente snapshot.
 
+--------------------------------------------------------------
+
 ### Tracciare nuovi file ###
 
 ```git
@@ -83,6 +95,8 @@ Changes to be committed:
 
     new file:   README
 ```
+
+--------------------------------------------------------------
 
 ### Staging di file modificati ###
 
@@ -116,6 +130,8 @@ Changes to be committed:
     modified:   CONTRIBUTING.md
 ```
 
+--------------------------------------------------------------
+
 ### Commit di modifiche ###
 
 Ora che la staging area è pronta, è possibile committare le modifiche con il comando:
@@ -145,6 +161,8 @@ In alternativa si può inserire il messaggio di commit nel comando:
 git commit -m "stringa di esempio"
 ```
 
+--------------------------------------------------------------
+
 ### Skippare la staging area ###
 ```git
 git commit -a -m "messaggio"
@@ -152,6 +170,8 @@ git commit -a -m "messaggio"
 
  In questo modo, Git manda in stage automaticamente ogni file che è stato già tracciato prima del commit.
  
+--------------------------------------------------------------
+
  ### Rimuovere file ###
  
  Per rimuovere un file da Git, è necessario rimuoverlo dai file tracciati e poi eseguire un commit. 
@@ -167,6 +187,8 @@ git commit -a -m "messaggio"
  ```git
  git rm --cached [nomefile]
  ```
+ 
+--------------------------------------------------------------
  
  ### Muovere file ###
  
@@ -186,7 +208,11 @@ Changes to be committed:
     renamed:    README.md -> README
 ```
 
+--------------------------------------------------------------
+
 ### Annullamento del commit ###
 ```git
 git commit --amend
 ```
+
+--------------------------------------------------------------

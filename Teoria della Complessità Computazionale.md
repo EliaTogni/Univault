@@ -12,6 +12,8 @@ Affinchè queste affermazioni siano valide, $f(n)$ dev'essere una _funzione di c
 
 Poichè questo tipo di misurazione è molto dettagliato, si introducono approssimazioni che permettano di operare su algoritmi più astratti. In particolare si ricorre alle [[Funzioni Asintotiche]].
 
+--------------------------------------------------------------
+
 ### Classi di complessità ###
 
 Partendo dalla misurazione delle risorse computazionali, si possono definire le classi di complessità:
@@ -41,9 +43,15 @@ Alcuni esempio di problemi in NC sono la somma di due numeri binari o il problem
 
 In realtà è ragionevole al fine dei casi di studio solo una sottoclasse di NC. Come per P, infatti, se il grado del polinomio è troppo alto (così come le costanti nascoste), il tempo è sì polinomiale ma poco pratico.
 
+--------------------------------------------------------------
+
 #### $NC \in FP$ ####
 Per ottenere un algoritmo sequenziale partendo da quello parallelo, basta simulare, utilizzando un singolo processore, in sequenza il lavoro dei processori coinvolti. Si ottiene un algoritmo sequenziale polinomiale in tempo.
+
+--------------------------------------------------------------
 
 #### $NC = FP?$ ####
 
 La questione $NC = FP$ ripropone il problema di capire se ogni algoritmo sequenziale efficiente è parallelizzabile. Si crede di no, ma il problema è ancora aperto.
+
+--------------------------------------------------------------

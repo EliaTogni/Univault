@@ -58,6 +58,8 @@ $$
 
 dove $\textbf{net}_{U_{2}} = (net_{U_{1}}, ..., net_{U_{n}})^{\top}$ e $\textbf{in}_{U_{1}} =  (out_{v_{1}}, ..., out_{v_{m}})^{\top}$.
 
+--------------------------------------------------------------
+
 ### Approssimazione di funzioni ###
 
 Ogni [[Funzione Integrabile Secondo Riemann]] può essere approssimata da un perceptron a quattro strati con accuratezza arbitraria, a patto che il neurone output abbia implementata la funzione identità come funzione di attivazione, invece di una funzione a scalini.
@@ -87,3 +89,5 @@ Naturalmente, l'idea di approssimare una funzione data tramite una funzione a sc
 lo spazio di input viene diviso in rettangoli, box o iperbox, ad ognuno dei quali viene assegnato un valore di funzione.
 
 Nonostante i multi-layer perceptron hanno un enorme potere espressivo, essi hanno poca utilità nella pratica. Al fine di ottenere sufficiente accuratezza, è necessario scegliere funzioni a scalini con scalini di larghezza sufficentemente piccola. Questo, perciò, forza a costruire un perceptron con un numero di neuroni potenzialmente altissimo.
+
+--------------------------------------------------------------
