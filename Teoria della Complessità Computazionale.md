@@ -16,6 +16,18 @@ Poichè questo tipo di misurazione è molto dettagliato, si introducono approssi
 
 ### Classi di complessità ###
 
+Una **Classe di complessità** è un insieme di problemi che possono essere risolti usando le stesse risorse di calcolo.<br />
+
+Un problema $P$ è una relazione $P \subseteq I \times S$, dove $I$ è l'insieme delle _istanze di ingresso_ e $S$ è quello delle _soluzioni_.<br />
+
+Un **Problema di decisione** definisce quei problemi i quali richiedono una risposta binaria, e quindi $S = \{0,1\}$. In particolare, essi richiedono di verificare se l'istanza $x$ soddisfa una certa proprietà.<br />
+
+Un **Problema di ricerca** definisce quei problemi i quali, data una certa istanza $x$, richiedono di restituire una soluzione $s$ tale che $(x, s) \in P$.<br />
+
+Un **Problema di ottimizzazione** definisce quei problemi per i quali, data un'istanza $x$, si vuole trovare la migliore soluzione $s^{*}$ tra tutte le possibili soluzioni $s$ per cui $(x, s) \in P$. La bontà di una soluzione viene valutata secondo un criterio specificato nel problema stesso.<br />
+
+Dati un problema di decisione $P$ ed un algoritmo $A$, si dice che $A$ risolve il problema $P$ se $A$ restituisce $1$ su un'istanza $x$ se e solo se $(x, 1) \in P$. Si Dice che $A$ risolve $P$ in tempo $t(n)$ e spazio $s(n)$ se il tempo di esecuzione e l'occupazione di memoria di $A$ sono rispettivamente $t(n)$ e $s(n)$
+.
 Partendo dalla misurazione delle risorse computazionali, si possono definire le classi di complessità:
 - La classe $TIME(f(n))$ è l'insieme dei problemi che ammettono una macchina di Turing che li risolve e che opera in tempo $O(f(n))$.
 - La classe $NTIME(f(n))$ è l'insieme dei problemi che ammettono una [[Macchina di Turing Non Deterministica]] che li risolve e che opera in tempo $O(f(n))$.
@@ -25,7 +37,7 @@ Partendo dalla misurazione delle risorse computazionali, si possono definire le 
 Si possono così definire le seguenti classi di complessità:
 - $L = SPACE(log(n))$
 - $NL = NSPACE(log(n))$
-- $P = \cup_{k>0}TIME(n^{k})$
+- $P = \cup_{k=0}^{\infty}TIME(n^{k})$
 - $NP = \cup_{k>0}NTIME(n^{k})$
 .
 .
