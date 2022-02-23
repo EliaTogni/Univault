@@ -35,16 +35,19 @@ Partendo dalla misurazione delle risorse computazionali, si possono definire le 
 - La classe $NSPACE(f(n))$ è l'insieme dei problemi che ammettono una macchina di Turing non deterministica che li risolve e che opera in spazio $O(f(n))$.
 
 Si possono così definire le seguenti classi di complessità:
-- $L = SPACE(log(n))$
-- $NL = NSPACE(log(n))$
-- $P = \cup_{k=0}^{\infty}TIME(n^{k})$
-- $NP = \cup_{k>0}NTIME(n^{k})$
-.
-.
-.
-.
-.
+- $P$: la classe $P$ è la classe dei problemi risolvibiki in tempo polinomiale nella dimensione $n$ dell'istanza di ingresso:
+  $$P = \bigcup_{c = 0}^{\infty} Time(n^{c})$$
+- $PSpace$: la classe $PSpace$ è la classe dei problemi risolvibili in spazio polinomiale nella dimensione $n$ dell'istanza di ingresso:
+  $$PSpace = \bigcup_{c = 0}^{\infty}Space(n^{c})$$
+- $ExpTime$: la classe $ExpTime$ è la classe dei problemi risolvibili in tempo esponenziale nella dimensione $n$ dell'istanza di ingresso:
+  $$ExpTime = \bigcup_{c = 0}^{\infty}Time(2^{n^{c}})$$
 
+Poichè un algoritmo che richiede tempo polinomiale può evere accesso al più ad un numero polinomiale di diverse locazioni di memoria, è chiaro che $p \subseteq PSpace$.<br />
+Inoltre, risulta $PSpace \subseteq ExpTime$: infatti, se si assume per semplicità che le locazioni di memoria siano binarie, $n^{c}$ diverse locazioni di memoria possono trovarsi al più in $2^{n^{c}}$ stati diversi.<br />
+
+Non è noto se le inclusioni siano proprie, ovvero se $P \subset PSpace$ e/o $PSpace \subset ExpTime$. L'unico risultato di separazione dimostrato finora mostra che $P \subset ExpTime$, e quindi esiste un problema che può essere risolto in tempo esponenziale, ma per cui tempo polinomiale non è sufficiente.<br />
+
+--------------------------------------------------------------
 
 E' possibile caratterizzare anche la classe dei problemi che ammettono algoritmi paralleli efficienti.
 - La classe $NC$ è l'insieme dei problemi risolti da algoritmi paralleli veloci con
