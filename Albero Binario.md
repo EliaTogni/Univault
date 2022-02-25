@@ -9,3 +9,14 @@ Infine, le informazioni scritte su ognuna di queste righe sono il figlio sinistr
 Quando un nodo non ha un determinato figlio, quindi è un nodo foglia, o, nel caso del nodo radice, non ha un nodo padre, questa situazione si codifica tramite il numero $0$.<br />
 
 --------------------------------------------------------------
+
+### Albero Binario di Ricerca ###
+Un **Albero Binario di Ricerca** è un albero binario che soddisfa le seguenti proprietà:
+- ogni nodo $v$ contiene un elemento $elem(v)$ cui è associata una chiave $chiave(v)$ presa da un dominio totalmente ordinato;
+- le chiavi nel sottoalbero sinistro di $v$ sono $\leq chiave(v)$;
+- le chiavi nel sottoalbero destro di $v$ sono $\geq chiave(v)$.
+
+Le chiavi possono essere valori di qualunque tipo, purchè su di esse sia definita una relazione di ordine totale. Se l'albero binario viene visitato in ordine simmetrico, si ottengono le chiavi in ordine non decrescente.<br />
+Un albero binario di ricerca di altezza $h$ è in grado di supportare operazioni _search_, _insert_ e _delete_ in tempo $O(h)$.<br />
+
+--------------------------------------------------------------

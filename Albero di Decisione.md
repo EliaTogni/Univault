@@ -1,8 +1,9 @@
-Un **Albero di Decisione** è una [[Struttura Dati]] derivata da un [[Albero]]. Relativamente ad algoritmi di ordinamento, viene visto come la dinamica dell' algoritmo di ordinamento che si basa sui confronti. Infatti, un algoritmo di ordinamento basato sui confronti, durante l'esecuzione, produce un albero di decisione o, meglio, un cammino all'interno di un albero di decisione.
+Un **Albero di Decisione** è una [[Struttura Dati]] derivata da un [[Albero]]. Relativamente ad algoritmi di ordinamento, viene visto come la dinamica dell'[[Algoritmo]] di ordinamento che si basa sui confronti. Infatti, un algoritmo di ordinamento basato sui confronti, durante l'esecuzione, produce un albero di decisione o, meglio, un cammino all'interno di un albero di decisione.<br />
+Dati un algoritmo generico$A$, il quale ordina ricorrendo a confronti, ed un valore $n$, il quale rappresenta il numero di elementi da ordinare, si definisce un _Albero di Decisione_ un albero che illustra le diverse sequenze di confronti che $A$ potrebbe fare su istanze di dimensione $n$. 
 
 ![[AlberoDecisioneAlgo.png]]
 
-Ogni nodo dell'albero di decisione corrisponde ad un confronto mentre ogni arco corrisponde ad uno dei possibili risultati del confronto.<br />
+Ogni nodo dell'albero di decisione rappresenta le posizioni negli elementi coinvolti nel confronto mentre ogni arco corrisponde ad uno dei possibili risultati del confronto.<br />
 Le foglie dell'albero di decisione rappresentano, quindi, le **permutazioni dell'input**. Ogni foglia individua un unico cammino a partire dalla radice e, quindi, i confronti che permettono di ordinare l'input.<br />
 L'altezza di questo albero rappresenta il tempo dell'algoritmo di ordinamento. In un generico albero, l'altezza rappresenta il cammino più lungo all'interno dell'albero binario. Il cammino più lungo è dato anche dal massimo numero di confronti che è necessario effettuare.<br />
 
