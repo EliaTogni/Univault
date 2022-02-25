@@ -1,4 +1,4 @@
-Un **albero di decisione** è una [[Struttura Dati]] derivata da un [[Albero]]. Relativamente ad algoritmi di ordinamento, viene visto come la dinamica dell' algoritmo di ordinamento che si basa sui confronti. Infatti, un algoritmo di ordinamento basato sui confronti, durante l'esecuzione, produce un albero di decisione o, meglio, un cammino all'interno di un albero di decisione.
+Un **Albero di Decisione** è una [[Struttura Dati]] derivata da un [[Albero]]. Relativamente ad algoritmi di ordinamento, viene visto come la dinamica dell' algoritmo di ordinamento che si basa sui confronti. Infatti, un algoritmo di ordinamento basato sui confronti, durante l'esecuzione, produce un albero di decisione o, meglio, un cammino all'interno di un albero di decisione.
 
 ![[AlberoDecisioneAlgo.png]]
 
