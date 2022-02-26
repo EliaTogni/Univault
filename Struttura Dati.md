@@ -14,7 +14,6 @@ Le strutture dati più note sono:
 - [[Albero AVL]];
 - [[Albero 2-3]];
 - [[B-Albero]];
-- [[Grafo]];
-- [[Tavola Hash]];
+- [[Grafo]].
 
 --------------------------------------------------------------
