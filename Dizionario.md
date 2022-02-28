@@ -3,7 +3,7 @@ Operazioni tipiche su un dizionario sono _inserimento_, _cancellazione_ e _ricer
 
 --------------------------------------------------------------
 
-Si supponga di voler realizzare un'implementazione efficiente della [[Struttura Dati]] [[Dizionario]], sapendo che le chiavi associate agli $n$ elementi che si vogliono memorizzare sono interi appartenenti all'intervallo $[0, m-1]$, con $n \leq m$.<br />
+Si supponga di voler realizzare un'implementazione efficiente della [[Struttura Dati]] Dizionario, sapendo che le chiavi associate agli $n$ elementi che si vogliono memorizzare sono interi appartenenti all'intervallo $[0, m-1]$, con $n \leq m$.<br />
 Si assuma che agli elementi nel dizionario siano associate chiavi distinte. Una tecnica semplicissima consiste nel mantenere un array $v$ di dimensione $m$ tale che se è presente un elemento $elem$ con chiave $k$ nel dizionario, allora $v[k] = elem$.<br />
 
 --------------------------------------------------------------
