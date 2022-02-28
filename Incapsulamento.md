@@ -1,0 +1,1 @@
+L'**Incapsulamento** consiste nella separazione della cosiddetta _interfaccia_ di una classe dalla corrispondente implementazione, in modo che i client di un oggetto di quella classe possano utilizzare la prima, ma non la seconda.<br />
