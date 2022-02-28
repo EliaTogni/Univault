@@ -35,3 +35,17 @@ Per risolvere la problematica delle _collisioni_, cioè quando due diversi input
 	- **Cancellazione di Chiavi**: si supponga di voler cancellare una chiave da una tavola hash con indirizzamento aperto. Intuitivamente, si potrebbe pensare di marcare come _empty_ la cella dell'array contenente la chiave. Così facendo, purtroppo la ricerca potrebbe interrompersi prima di trovare l'elemento cercato per via di un buco creato da una cancellazione.<br />Una soluzione possibile è quella di marcare le celle che hanno subito cancellazioni con un valore speciale. L'inserimento considererà, quindi, una cella cancellata come se fosse vuota, fermandosi su di essa, mentre una ricerca la oltrepasserà.
 
 --------------------------------------------------------------
+
+### Analisi del Costo di Scansione ###
+
+Sebbene, usando l'indirizzamento aperto, la scansione per la ricerca di un elemento o di una cella vuota possa richiedere tempo $O(n)$ nel caso peggiore, nel caso medio la situazione migliora:
+
+![[CostoDiScansione.png]]
+
+dove $\alpha = \frac{n}{m}$ è il fattore di carico della tavola.
+
+--------------------------------------------------------------
+
+Quando la tabella si sta riempiendo, l'hashing risulta essere meno efficinente. Si ricorre quindi al **Re-hashing**. Esso consiste nel trasferire tutti i dati di una tabella in una più grande, prendendo gli elementi, calcolando il nuovo indice e spostandoli nella nuova tabella. Questa risulta essere un'operazione molto costosa, che viene effettuata quando il fattore di carico $\alpha$ supera un certo indice deciso a priori.<br />
+
+--------------------------------------------------------------
