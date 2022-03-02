@@ -115,3 +115,31 @@ $$
 
 Nel caso di grafi orientati, la matrice di adiacenza è simmetrica. Un punto di forza della rappresentazione con matrici di adiacenza è la possibilità di verificare la presenza di un arco $(x, y)$ in un tempo costante, controllando semplicemente il valore memorizzato in $M[x, y]$. D'altro canto, però, trovre i vicini di un vertice $v$ diventa un'operazione costosa: è necessario, infatti, esaminare tutte le posizioni $M[v, *]$ della matrice. Questa operazione richiede quindi tempo $O(n)$.<br />
 Per memorizzare informazioni ausiliarie, come ad esempio il costo o la lunghezza di un arco, si possono sempre utilizzare altre matrici oltre alla matrice di adiacenza ma questa rappresentazione è particolamente utile in calcoli algebrici. La matrice di adiacenza codifica tutti i cammini di lunghezza $1$ nel grafo (ovvero gli archi). Eseguendo il prodotto $M^{2} = M \times M$, si otterà invece informazione sui cammini di lunghezza $2$. $M^{2}[u, v]$ avrà valore diverso da zero se e soltato se esisterà almeno un vertice $y$ tale che $M[u, y] = M[y, v] = 1$, ovvero se e solo se esiste almeno un cammino tra i vertici $u$ e $v$ contenente due archi.<br />La quantità di spazio richiesta è $O(n^{2})$.
+
+--------------------------------------------------------------
+
+#### Rappresentazione di grafi con matrici di incidenza ####
+
+E' una matrice di dimensione $n \times m$: le righe della matrice sono indicizzate dai vertici, mentre le colonne sono indicizzate dagli archi. Similmente al caso della matrice di adiacenza, la matrice di incidenza avrò un valore uguale ad $1$ quando arco e vertice corrispondenti sono incidenti. Di conseguenza ogni colonna ha esattamente due $1$. Nel caso di un grafo orientato, è possibile usare una matrice simile, in cui ogni colonna ha esattamente valore $+1$ e valore $-1$ per distinguere tra il vertice sorgente ed il vertice destinazione dell'arco.<br />
+la quantità di spazio richiesta è $O(nm)$.<br />
+
+--------------------------------------------------------------
+
+### Albero Ricoprente ###
+
+Dato un grafo $G = (V, E)$ non orientato e connesso, un albero ricoprente di $G$ è un sottografo $T \subseteq G$ tale che:
+- $T$ è un albero;
+- $T$ contiene tutti i vertici di $G$.
+
+Si supponga che ogni arco $e$ di $G$ abbia associato un peso $\omega(e)$. In modo più formale sia definita una funzione costo: $\omega: E \rightarrow R$. in tal caso, possiamo definire il costo di un albero ricoprente $T$ di $G$ come la somma dei costi dei suoi archi:
+
+$$\omega\Big(T\Big) = \sum_{e \in T}\omega(e)$$
+
+--------------------------------------------------------------
+
+### Minimo Albero Ricoprente ###
+
+Dato un grafo $G = (V, E)$ non orientato, connesso e pesato sugli archi, un _minimo albero ricoprente_ di $G$ è un albero ricoprente di $G$ di costo minimo.<br />
+
+--------------------------------------------------------------
+
