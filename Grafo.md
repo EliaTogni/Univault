@@ -33,7 +33,14 @@ Una _catena_ in un grafo $G$ da un vertice $x$ ad un vertice $y$ è data da una 
 
 Un grafo non orientato $G = (V, E)$ si dice _connesso_ se esiste un cammino tra ogni coppia di vertici in $G$. Si dice, invece, _fortemente connesso_, se esiste un cammino (orientato) tra ogni coppia di vertici in $G$. Si dirà, inoltre, che un vertice $x$ è fortemente connesso ad un vertice $y$ se esiste un cammino (orientato) da $x$ a $y$ e da $y$ a $x$.<br />
 
--------------------------------------------------------------
+--------------------------------------------------------------
+
+### Sottografo ###
+
+Un grafo $G' = (V', E')$ è detto _sottografo_ di un grafo $G = (V, E)$ se $V' \subseteq V$ ed $E' \subseteq E \cap (V' \times V')$.<br />
+Si dice che un sottografo è _indotto_ se $E' = E \cap (V' \times V')$, ovvero se vengono considerati tutti gli archi che collegano i nodi scelti.<br />
+
+--------------------------------------------------------------
 
 ### Ciclo e Grafo Euleriano ###
 Si definisce **ciclo Euleriano** un ciclo in cui ogni arco in $E$ compare una ed una sola volta.<br />
@@ -75,3 +82,36 @@ La ricerca di un grafo Euleriano è un problema la cui complessità computaziona
 Al contrario, la ricerca di un grado Hamiltoniano è un problema _NP_-completo.<br />
 
 --------------------------------------------------------------
+
+
+### Strutture Dati per rappresentare grafi ###
+
+#### Rappresentazione di grafi con lista di archi ####
+
+Consiste nel rappresentare il grafo tramite una struttura per ogni vertice ed un'altra struttura, contenente puntatori ai due vertici estremi dell'arco, per ogni arco.<br />Una tale rappresentazione avrò una lista o un array di strutture.<br />
+Lo spazio totale usato da questa rappresentazione è $O(m + n)$, poichè è necessaria una quantità costante di spazio (una stuttura) per ogni vertice e per ogni arco.<br />
+
+--------------------------------------------------------------
+
+#### Rappresentazione di grafi con liste di adiacenza ####
+
+In tale rappresentazione, ogni vertice $v$ ha una lista contenente i suoi vertici adiacenti, ovvero tutti i vertici $u$ per cui essite un arco $(v, u)$.<br />
+Nel caso di gradi non orientati, la lunghezza totale delle liste di adiacenza è esattamente $2m$, poichè ogni arco $(x, y)$ è rappresentato due volte.<br />
+Lo spazio richiesto dalla rappresentazione con liste di adiacenza è $O(m+n)$.<br />
+
+-------------------------------------------------------------
+
+#### Rappresentazione di grafi con matrici di adiacenza ####
+
+SI assuma che i vertici del grafo da rappresentare corrispondano ai numeri interi da $1$ a $n$.<br />
+Sia $M$ una matrice di dimensione $n \times n$, le cui righe e colonne sono indicizzate dai vertici del grafo. La matrice di adiacenza $M$ è definita nel modo seguente:
+
+$$
+\begin{numcases}{M[u, v] =}
+  1, & se $(u, v)\text{ è un arco di }G$ \\
+  0, & altrimenti
+\end{numcases}
+$$
+
+Nel caso di grafi orientati, la matrice di adiacenza è simmetrica. Un punto di forza della rappresentazione con matrici di adiacenza è la possibilità di verificare la presenza di un arco $(x, y)$ in un tempo costante, controllando semplicemente il valore memorizzato in $M[x, y]$. D'altro canto, però, trovre i vicini di un vertice $v$ diventa un'operazione costosa: è necessario, infatti, esaminare tutte le posizioni $M[v, *]$ della matrice. Questa operazione richiede quindi tempo $O(n)$.<br />
+Per memorizzare informazioni ausiliarie, come ad esempio il costo o la lunghezza di un arco, si possono sempre utilizzare altre matrici oltre alla matrice di adiacenza ma questa rappresentazione è particolamente utile in calcoli algebrici. La matrice di adiacenza codifica tutti i cammini di lunghezza $1$ nel grafo (ovvero gli archi). Eseguendo il prodotto $M^{2} = M \times M$, si otterà invece informazione sui cammini di lunghezza $2$. $M^{2}[u, v]$ avrà valore diverso da zero se e soltato se esisterà almeno un vertice $y$ tale che $M[u, y] = M[y, v] = 1$, ovvero se e solo se esiste almeno un cammino tra i vertici $u$ e $v$ contenente due archi.<br />La quantità di spazio richiesta è $O(n^{2})$.
