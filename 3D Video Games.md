@@ -1,4 +1,3 @@
-
 ### Esempi di 2d Tech ###
 to blit: copiare uno sprite dalla sprite memory alla memoria video
 Ovviamente non si fa pixel a pixel ma con un supporto hw.
@@ -48,3 +47,5 @@ Game tools helps the digital artist doing assets
 procedurality comporta un trade off - memory vs computng power
 
 a baked asset is an asset born procedural but the artist decided that he wanted to have control.
+
+--------------------------------------------------------------
