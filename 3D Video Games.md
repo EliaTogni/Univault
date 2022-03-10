@@ -49,3 +49,12 @@ procedurality comporta un trade off - memory vs computng power
 a baked asset is an asset born procedural but the artist decided that he wanted to have control.
 
 --------------------------------------------------------------
+
+### Background Matematico ###
+
+E' necessario comprendere ogni operazione che verrà introdotta in seguito da tre punti di vista diversi:
+
+- **intuitivamente**, cioè essere in grado di visualizzare l'operazione spazialmente;
+- **operazionalmente**, cioè essere in grado di calcolarne il risultato;
+- **sintatticamente**, cioè essere in grado di trascriverla, di codificarla ( su carta o tramite codice);
+
