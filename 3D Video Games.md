@@ -56,5 +56,8 @@ E' necessario comprendere ogni operazione che verrà introdotta in seguito da tr
 
 - **intuitivamente**, cioè essere in grado di visualizzare l'operazione spazialmente;
 - **operazionalmente**, cioè essere in grado di calcolarne il risultato;
-- **sintatticamente**, cioè essere in grado di trascriverla, di codificarla ( su carta o tramite codice);
+- **sintatticamente**, cioè essere in grado di trascriverla, di codificarla ( su carta o tramite codice).
 
+E' ovviamente necessario sapere come manipolare le equazioni che definiscono il sistema.<br />
+
+I concetti fondamentali utili per costruire e modellare il sistema sono i concetti di [[Punto]], [[Vettore]] e [[Versore]].<br />
