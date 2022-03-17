@@ -26,6 +26,8 @@ E' possibile effettuare una comparazione tra questi paradigmi in termini di dive
 
 --------------------------------------------------------------
 
+Dal punto di vista del modellatore, se si considera la funzione $y = f(x)$, $x$ rappresenta i dati in input mentre $y$ è un'astrazione del processo modellato da $f()$.<br />
+
 ### Farmacista ###
 
 ![[PharmacistSimulation.png]]
