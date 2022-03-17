@@ -10,7 +10,7 @@
           "type": "markdown",
           "state": {
             "file": "Simulation.md",
-            "mode": "preview"
+            "mode": "source"
           }
         }
       }
@@ -89,6 +89,7 @@
   "active": "8df90cd4a246a4d7",
   "lastOpenFiles": [
     "Simulation.md",
+    "3D Video Games.md",
     "System Dynamics Simulation.md",
     "Agent-Based Simulation.md",
     "Discrete Events Simulation.md",
@@ -96,7 +97,6 @@
     "Git.md",
     "The Game of Life.md",
     "Analisi Predittiva.md",
-    "Analisi Descrittiva.md",
-    "Analisi Prescrittiva.md"
+    "Analisi Descrittiva.md"
   ]
 }

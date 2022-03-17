@@ -32,6 +32,68 @@ Dal punto di vista del modellatore, se si considera la funzione $y = f(x)$, $x$ 
 
 ![[PharmacistSimulation.png]]
 
+```python
+
+import random
+
+class Event():
+	
+	type = "a"
+	time = 0
+	
+
+def get_next_delay(Lambda):
+	
+	return random.expovariate(Lambda)
+
+
+def get_service_time(exp_time, std_dev_time):
+	
+	return random.normalvariate(exp_time, std_dev_time)
+				
+
+def pharmacy(sim_time, daily_working_time, exp_prescriptions_day, exp_prescr_time, stdev_prescr_time):
+	
+	#interesting events:
+	#(a) arrival of prescriptions
+	#(s) starting of prescription filling
+	#(f) finishing of prescription filling
+
+	busy = False
+	events = []
+	in_queue = 0
+	
+	current = Event()
+	current.type = "a"
+	current.time = get_next_delay(exp_prescription_day/daily_working_time)
+
+	while current.time < sim_time:
+		
+		if current.type == "a":
+			
+			e = Event()
+			e.type = "a"
+			e.time = get_next_delay(exp_prescription_day/daily_working_time)
+			events.append(e)
+			
+			if not busy:
+				
+				s_time = get_service_time(exp_prescr_time, stdev_prescr_time)
+				
+				e = Event()
+				e.type = "f"
+				e.time = current.time + s_time
+			
+				events.append(e)
+				
+			else:
+				
+				in_queue = in_queue + 1
+				
+				
+				
+```
+
 --------------------------------------------------------------
 
 ### Ripasso di [[Probabilità]] ###
