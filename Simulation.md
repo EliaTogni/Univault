@@ -12,13 +12,13 @@ Queste simulazioni rappresentano solo una porzione del mondo reale. Esistono, in
 --------------------------------------------------------------
 
 Una semplice simulazione è [[The Game of Life]].<br /> 
-
+ 
 --------------------------------------------------------------
 
 Esistono tre macro paradigmi per la costruzione ed implementazione di modelli descrittivi:
-- **Discrete Events**;
-- **Agent-Based**;
-- **System Dynamics**.
+- [[Discrete Events Simulation]];
+- [[Agent-Based Simulation]];
+- [[System Dynamics Simulation]].
 
 E' possibile effettuare una comparazione tra questi paradigmi in termini di diverse feature:
 
