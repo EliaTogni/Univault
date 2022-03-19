@@ -64,32 +64,56 @@ def pharmacy(sim_time, daily_working_time, exp_prescriptions_day, exp_prescr_tim
 	in_queue = 0
 	
 	current = Event()
-	current.type = "a"
+	current.type = "A"
 	current.time = get_next_delay(exp_prescription_day/daily_working_time)
 
 	while current.time < sim_time:
 		
-		if current.type == "a":
+		if current.type == "A":
 			
 			e = Event()
-			e.type = "a"
-			e.time = get_next_delay(exp_prescription_day/daily_working_time)
-			events.append(e)
+			e.type = "A"
+			e.time = current.time + get_next_delay(exp_prescription_day/daily_working_time
+												   
+			if e.time <= daily_working_time:
+				events.append(e)
 			
-			if not busy:
-				
-				s_time = get_service_time(exp_prescr_time, stdev_prescr_time)
+			if not busy
 				
 				e = Event()
-				e.type = "f"
-				e.time = current.time + s_time
+				e.type = "S"
+				e.time = current.time
 			
 				events.append(e)
 				
 			else:
 				
 				in_queue = in_queue + 1
-				
+												   
+		elif current.type == "S":
+							
+			busy = True 
+												  
+			s_time = get_service_time(exp_prescr_time, stdev_prescr_time)
+			
+												  
+			e = Event()
+			e.type = "F"
+			e.time = current.time + s_time
+						
+			events.append(e)
+												  
+		elif current.type == "F":
+									
+			busy = False
+												   
+			if in_queue > 0
+												  
+			e = Event()
+			e.type = "S"
+			e.time = current.time
+												   
+			events.append(e)
 				
 				
 ```
