@@ -35,6 +35,7 @@ Dal punto di vista del modellatore, se si considera la funzione $y = f(x)$, $x$ 
 ```python
 
 import random
+import numpy
 
 class Event():
 	
@@ -68,6 +69,8 @@ def pharmacy(sim_time, daily_working_time, exp_prescriptions_day, exp_prescr_tim
 	current.time = get_next_delay(exp_prescription_day/daily_working_time)
 
 	while current.time < sim_time:
+		
+		print("Handling Event at time", current.time, "of type", current.type)
 		
 		if current.type == "A":
 			
@@ -109,18 +112,28 @@ def pharmacy(sim_time, daily_working_time, exp_prescriptions_day, exp_prescr_tim
 												   
 			if in_queue > 0
 												  
-			e = Event()
-			e.type = "S"
-			e.time = current.time
+				e = Event()
+				e.type = "S"
+				e.time = current.time
 												   
-			events.append(e)
+				events.append(e)
+												   
+		#pick next event
+												   
+		k = numpy.argmin([events[i].time for i in range(len(events))])
+		current = events[k]
+		events = events[0:k] + events[k+1:]
+		
+												   
+	
+	return max(current.time, daily_working_time)
 				
 				
 ```
 
 --------------------------------------------------------------
 
-### Ripasso di [[Probabilità]] ###
+### Ripasso di [[Statistica e Probabilità]] ###
 
 I concetti di base necessari per comprendere gli argomenti introdotti in futuro sono:
 - lo [[Spazio degli Eventi]];
