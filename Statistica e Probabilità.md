@@ -104,6 +104,27 @@ $$E(X) = \sum_{i}x_{i}p(x_{i}) = \sum_{i}x_{i}P(X = x_{i})$$
 
 #### Varianza ####
 
+Si consideri la variabile aleatoria $X$ ed il suo valore atteso $E(X) = \mu$. Se si considera $\vert X - \mu \vert$, si sta operando con una nuova variabile aleatoria della quale è possibile calcolare il valore atteso
+
+$$E(\vert X - \mu \vert)$$
+
+Per togliere il valore assoluto ed operare esclusivamente con valori positivi, si eleva al quadrato, ottenendo:
+
+$$E((X - \mu)^2)$$
+
+Questo nuovo valore prende il nome di _varianza_ e viene indicata con $\sigma^2_X$
+
+$$Var(X) = E(X^2 -2\mu X + \mu^2) = E(X^2) -2\mu E(X) + \mu^2 = E(X^2) -2\mu^2 + \mu^2 = E(X^2) -\mu^2 = E(X^2) - E(X)^2$$
+
+La varianza ha la stessa unità di misura della variabile aleatoria elevata al quadrato.
+
+--------------------------------------------------------------
+#### Deviazione Standard ####
+
+Se fosse necessaria una statistica che mantenga l'unità di misura della variabile aleatoria, si utilizza la _deviazione standard_, calcolata come:
+
+$$\sigma_{x} = \sqrt{Var(X)}$$
+
 --------------------------------------------------------------
 
 #### Covarianza ####
@@ -140,6 +161,6 @@ Presa una variabile aleatoria $X$ di valore atteso $E(X) = \mu$ e $Var(X) = \del
 
 $$P(\vert X - \mu \vert \geq r) \leq \frac{\delta^2}{r^2}$$
 
-L’importanza di queste due disequazioni risiede nel fatto che ci consentono di avere stime dellaprobabilità a partire dal valore atteso o dall’unione del valore atteso con la varianza.<br />
+L’importanza di queste due disequazioni risiede nel fatto che ci consentono di avere stime della probabilità a partire dal valore atteso o dall’unione del valore atteso con la varianza.<br />
 
 --------------------------------------------------------------
