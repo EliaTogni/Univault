@@ -94,7 +94,7 @@ $$F_X(x) = P(X \leq x) = \sum_{aa \leq X}P(X = a) = \sum_{a \leq X}p_X(a)$$
 
 --------------------------------------------------------------
 
-#### Valore Atteso ####
+#### Valore Atteso di una Variabile Aleatoria Discreta ####
 
 Data la variabile aleatoria discreta $X$ su $\{x_1, x_2, ..., x_n\}$ e $p_X$ come funzione di massa di probabilità, si definisce _valore atteso_ la quantità
 
@@ -102,7 +102,7 @@ $$E(X) = \sum_{i}x_{i}p(x_{i}) = \sum_{i}x_{i}P(X = x_{i})$$
 
 --------------------------------------------------------------
 
-#### Varianza ####
+#### Varianza  di una Variabile Aleatoria Discreta ####
 
 Si consideri la variabile aleatoria $X$ ed il suo valore atteso $E(X) = \mu$. Se si considera $\vert X - \mu \vert$, si sta operando con una nuova variabile aleatoria della quale è possibile calcolare il valore atteso
 
@@ -137,13 +137,28 @@ $$\sigma_{x} = \sqrt{Var(X)}$$
 
 #### Variabile Aleatoria Continua ####
 
+Una variabile aleatoria X è detta _continua_ se
+1) $$f_{x} : R \rightarrow R+$$
+$\forall B \subseteq R$
+2) $$P(X \in B) = \int_{B} f_{X}(x)dx$$
+
 --------------------------------------------------------------
 
-#### Valore Atteso ####
+#### Densità di Probabilità ####
+
+
 
 --------------------------------------------------------------
 
-#### Varianza ####
+#### Valore Atteso di una Variabile Aleatoria Continua ####
+
+$$E(X) = \int_{-\infty}^{+\infty}f_{X}(x)dx$$
+
+--------------------------------------------------------------
+
+#### Varianza di una Variabile Aleatoria Continua ####
+
+$$Var(X) = E((X -\mu_{X})^2)$$
 
 --------------------------------------------------------------
 
