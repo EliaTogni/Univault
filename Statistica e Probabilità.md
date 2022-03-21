@@ -159,13 +159,23 @@ $$\sigma_{x} = \sqrt{Var(X)}$$
 
 --------------------------------------------------------------
 
+#### Variabile Aleatoria Multivariata ####
+
+Si ragioni in termini di coppie di variabili aleatorie $X$, $Y$.<br />
+- _Funzione di ripartizione congiunta_: $F_{XY}(x, y) = P(X \leq x \wedge Y \leq y)$
+-  _Funzione di massa di probabilità_: $P_{XY}(x, y) = P(X = x \wedge Y = y)$
+
 #### Covarianza ####
 
 Date due variabili aleatorie $X$, $Y$ e ponendo $\mu_{x} = E(X)$ e $\mu_{y} = E(Y)$, si definisce _covarianza_ la quantità
 
 $$Cov(X, Y) = E((X -\mu_{x})(Y - \mu_{y}))$$
 
+$$Cov(X, Y) = E(XY -\mu_{x}Y -\mu_{y}X + \mu_{x}\mu_{y}) = E(XY) -E(X)E(Y)$$
+
 Nel caso in cui le variabili aleatorie $X$, $Y$ fossero indipendenti, avremmo che il valore atteso del loro prodotto è il prodotto dei valori attesi $E(XY) = E(X)E(Y)$. Ma allora, la covarianza di due variabili aleatorie indipendenti è 0.<br />
+
+$$Cov(X, Y) = E(XY) -E(X)E(Y) = E(X)E(Y) - E(X)E(Y) = 0$$
 
 --------------------------------------------------------------
 
