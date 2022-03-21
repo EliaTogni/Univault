@@ -45,13 +45,45 @@ L’insieme universo $\Omega$ viene spesso chiamato anche “spazio campionario�
 
 --------------------------------------------------------------
 
-.<br />
-.<br />
-.<br />
+#### Algebra degli Eventi ###
+
+Si definisce _Algebra degli Eventi_ l'insieme
+
+$$A = \{E_{i} \subseteq \Omega \}$$
+
+Per essere tale, è necessario che vengano soddisfatte le seguenti proprietà:
+1) $\Omega \in A$
+2) $\forall E$ se $E \in A$ allora $\overline{E} \in A$
+3) $\forall E$, $F$ se $E \in A \wedge F \in A$ allora $E \cup F \in A$
+4) L'algebra è chiusa rispetto all'unione infinita. Per questo motivo, $A$ è più di un'algebra e viene detta $\sigma$-algebra.
+
+--------------------------------------------------------------
+
+#### Funzione di Probabilità ####
+
+$$P :A \rightarrow [0, 1]$$
+
+**Dominio**: generica algebra $A$.<br />
+**Codominio**: tutti i valori dell'intervallo chiuso $[0, 1]$.<br />
+
+--------------------------------------------------------------
 
 #### Probabilità Condizionata ####
 
 $$P(E\vert F) = \frac{P(E\cap F)}{P(F)}$$
+
+--------------------------------------------------------------
+
+#### Eventi Indipendenti ####
+
+Nel caso in cui $P(E \vert F)$ e $P(E)$ siano uguali, si dice che $E$ ed $F$ sono indipendenti.<br />
+Quindi, se
+
+$$P(E \vert F) = \frac{P(E \cap F)}{P(F)}$$
+
+è possibile formalizzare l'indipendenza di eventi dicendo che
+
+$$P(E \cap F) = P(E)P(F)$$
 
 --------------------------------------------------------------
 
@@ -129,6 +161,12 @@ $$\sigma_{x} = \sqrt{Var(X)}$$
 
 #### Covarianza ####
 
+Date due variabili aleatorie $X$, $Y$ e ponendo $\mu_{x} = E(X)$ e $\mu_{y} = E(Y)$, si definisce _covarianza_ la quantità
+
+$$Cov(X, Y) = E((X -\mu_{x})(Y - \mu_{y}))$$
+
+Nel caso in cui le variabili aleatorie $X$, $Y$ fossero indipendenti, avremmo che il valore atteso del loro prodotto è il prodotto dei valori attesi $E(XY) = E(X)E(Y)$. Ma allora, la covarianza di due variabili aleatorie indipendenti è 0.<br />
+
 --------------------------------------------------------------
 
 #### Correlazione ####
@@ -146,7 +184,7 @@ $\forall B \subseteq R$
 
 #### Densità di Probabilità ####
 
-
+$$F_{X}(a) = P(X \leq a) = \int_{-\infty}^{a}f_{X}(x)dx$$
 
 --------------------------------------------------------------
 
@@ -172,9 +210,9 @@ $$P(X \geq a) \leq \frac{E(x)}{a}$$
 
 #### Disuguaglianza di Chebyshev ####
 
-Presa una variabile aleatoria $X$ di valore atteso $E(X) = \mu$ e $Var(X) = \delta^2$, allora $\forall r > 0$:
+Presa una variabile aleatoria $X$ di valore atteso $E(X) = \mu$ e $Var(X) = \sigma^2$, allora $\forall r > 0$:
 
-$$P(\vert X - \mu \vert \geq r) \leq \frac{\delta^2}{r^2}$$
+$$P(\vert X - \mu \vert \geq r) \leq \frac{\sigma^2}{r^2}$$
 
 L’importanza di queste due disequazioni risiede nel fatto che ci consentono di avere stime della probabilità a partire dal valore atteso o dall’unione del valore atteso con la varianza.<br />
 
