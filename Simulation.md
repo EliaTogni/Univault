@@ -38,96 +38,116 @@ import random
 import numpy
 
 class Event():
-	
-	type = "a"
-	time = 0
-	
+    
+    type = 'a'
+    time = 0
+
+def get_next_event(events):
+
+    k = 0
+    mintime = events[0].time
+    for i in range(len(events)):
+        if events[i].time < mintime or (events[i].time == mintime and events[i].type == 'S'):
+            k = i
+            mintime = events[i].time
+
+    current = events[k]
+    events = events[:k] + events[k+1:]
+
+    return current, events
 
 def get_next_delay(Lambda):
-	
-	return random.expovariate(Lambda)
-
+    
+    return random.expovariate(Lambda)
 
 def get_service_time(exp_time, std_dev_time):
-	
-	return random.normalvariate(exp_time, std_dev_time)
-				
+    
+    return random.normalvariate(exp_time, std_dev_time)
+    
+def pharmacy(daily_working_time, exp_prescriptions_day, exp_prescr_time, stdev_prescr_time):
+    
+    # interesting events:
+    # (A) arrival of prescription
+    # (S) starting of prescription filling
+    # (F) finishing of prescription filling
+    
+    busy = False
+    in_queue = 0
+    
+    lost_prescriptions = 0
+    
+    events = []
+    
+    e = Event()
+    e.type = 'A'
+    e.time = get_next_delay(exp_prescriptions_day / daily_working_time)
+    
+    events.append(e)
+    
+    while len(events) > 0:
+        
+        # pick next event (one of minimum time in events):
+        current, events = get_next_event(events) 
+        
+        print("Handling Event at time", current.time, " of type ", current.type)
+        print("System status: pharmacist busy: ", busy, " queue: ", in_queue)
+        
+        if current.type == 'A':
+            
+            e = Event()
+            e.type = 'A'
+            e.time = current.time + get_next_delay(exp_prescriptions_day / daily_working_time)
 
-def pharmacy(sim_time, daily_working_time, exp_prescriptions_day, exp_prescr_time, stdev_prescr_time):
-	
-	#interesting events:
-	#(a) arrival of prescriptions
-	#(s) starting of prescription filling
-	#(f) finishing of prescription filling
+            if in_queue < 5:
 
-	busy = False
-	events = []
-	in_queue = 0
-	
-	current = Event()
-	current.type = "A"
-	current.time = get_next_delay(exp_prescription_day/daily_working_time)
+                
+                if e.time <= daily_working_time:
+                    
+                    events.append(e)
+            
+                if not busy:
+                    
+                    e = Event()
+                    e.type = 'S'
+                    e.time = current.time
+                    
+                    events.append(e)
+                    
+                else:
+                    
+                    in_queue = in_queue + 1
+                
+            else:
+                
+                lost_prescriptions = lost_prescriptions + 1
+                
+        elif current.type == 'S':
+            
+                busy = True
+                
+                s_time = get_service_time(exp_prescr_time, stdev_prescr_time)
+                    
+                e = Event()
+                e.type = 'F'
+                e.time = current.time + s_time
+                
+                events.append(e)
+                
+        elif current.type == 'F':
+            
+                busy = False
+            
+                if in_queue > 0:
+                    
+                    e = Event()
+                    e.type = 'S'
+                    e.time = current.time
 
-	while current.time < sim_time:
-		
-		print("Handling Event at time", current.time, "of type", current.type)
-		
-		if current.type == "A":
-			
-			e = Event()
-			e.type = "A"
-			e.time = current.time + get_next_delay(exp_prescription_day/daily_working_time
-												   
-			if e.time <= daily_working_time:
-				events.append(e)
-			
-			if not busy
-				
-				e = Event()
-				e.type = "S"
-				e.time = current.time
-			
-				events.append(e)
-				
-			else:
-				
-				in_queue = in_queue + 1
-												   
-		elif current.type == "S":
-							
-			busy = True 
-												  
-			s_time = get_service_time(exp_prescr_time, stdev_prescr_time)
-			
-												  
-			e = Event()
-			e.type = "F"
-			e.time = current.time + s_time
-						
-			events.append(e)
-												  
-		elif current.type == "F":
-									
-			busy = False
-												   
-			if in_queue > 0
-												  
-				e = Event()
-				e.type = "S"
-				e.time = current.time
-												   
-				events.append(e)
-												   
-		#pick next event
-												   
-		k = numpy.argmin([events[i].time for i in range(len(events))])
-		current = events[k]
-		events = events[0:k] + events[k+1:]
-		
-												   
-	
-	return max(current.time, daily_working_time)
-				
+                    events.append(e)
+                    
+                    in_queue = in_queue - 1
+                    
+    return current.time >= 510 #max(current.time, daily_working_time)				
 				
 ```
 
@@ -152,3 +172,4 @@ L'algoritmo suggerisce di:
 - memorizzare le cifre centrali come "numero randomico";
 - usare questo numero randomico come seed per le iterazioni seguenti.
 
+Questo algoritmo ha una debolezza. Se viene scelto il numero $0$ come seed, anche tutti i seed successivi generati a partire da quello scelto saranno $0$.<br />
