@@ -229,3 +229,11 @@ $$P(\vert X - \mu \vert \geq r) \leq \frac{\sigma^2}{r^2}$$
 L’importanza di queste due disequazioni risiede nel fatto che ci consentono di avere stime della probabilità a partire dal valore atteso o dall’unione del valore atteso con la varianza.<br />
 
 --------------------------------------------------------------
+
+#### Legge Debole dei Grandi Numeri ####
+
+
+
+--------------------------------------------------------------
+
+#### Legge Forte dei Grandi Numeri ####

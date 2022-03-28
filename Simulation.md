@@ -135,6 +135,20 @@ def pharmacy(sim_time, daily_working_time, exp_prescriptions_day, exp_prescr_tim
 
 ### Ripasso di [[Statistica e Probabilità]] ###
 
-I concetti di base necessari per comprendere gli argomenti introdotti in futuro sono:
-- lo [[Spazio degli Eventi]];
-- un [[Evento]] e tutte le sue proprietà;
+###  Generazione di Numeri Randomici ###
+
+La definizione di random descrive l'avvenimento di un evento dovuto al caso piuttosto che ad un motivo programmato.<br />
+Secondo Von Neumann, è impossibile produrre una cifra randomica usando metodi aritmetici.<br />
+Infatti, la produzione di numeri attraverso computer appare randomica ma, in realtà, non lo è. Il calcolatore agisce in maniera puramente deterministica, nonostante l'apparenza possa far pensare ad un comportamente random.<br />
+
+Si distingue, quindi, in due categorie:
+- **Randomicità genuina**, cioè quella che è possibile osservare nel mondo;
+- **Randomicità artificiale**, o **pseudorandomicità**, cioè quella che è possibile simulare tramite computer.
+
+La prima idea di algoritmi generatori di numeri pseudorandomici è il **Von Neumann's Middle Square Generator**.<br />
+L'algoritmo suggerisce di:
+- prendere un numero (**seed**);
+- calcolarne il quadrato;
+- memorizzare le cifre centrali come "numero randomico";
+- usare questo numero randomico come seed per le iterazioni seguenti.
+

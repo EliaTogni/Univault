@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Statistica e Probabilità.md",
+            "file": "Simulation.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Statistica e Probabilità.md",
+                "file": "Simulation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,9 +88,9 @@
   },
   "active": "8df90cd4a246a4d7",
   "lastOpenFiles": [
+    "Simulation.md",
     "Statistica e Probabilità.md",
     "Algoritmi Paralleli e Distribuiti.md",
-    "Simulation.md",
     "Probabilità.md",
     "3D Video Games.md",
     "System Dynamics Simulation.md",
