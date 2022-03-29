@@ -33,7 +33,6 @@ Dal punto di vista del modellatore, se si considera la funzione $y = f(x)$, $x$ 
 ![[PharmacistSimulation.png]]
 
 ```python
-
 import random
 import numpy
 
@@ -165,6 +164,8 @@ Si distingue, quindi, in due categorie:
 - **Randomicità genuina**, cioè quella che è possibile osservare nel mondo;
 - **Randomicità artificiale**, o **pseudorandomicità**, cioè quella che è possibile simulare tramite computer.
 
+------------------------------------------------------------
+
 La prima idea di algoritmi generatori di numeri pseudorandomici è il **Von Neumann's Middle Square Generator**.<br />
 L'algoritmo suggerisce di:
 - prendere un numero (**seed**);
@@ -173,3 +174,48 @@ L'algoritmo suggerisce di:
 - usare questo numero randomico come seed per le iterazioni seguenti.
 
 Questo algoritmo ha una debolezza. Se viene scelto il numero $0$ come seed, anche tutti i seed successivi generati a partire da quello scelto saranno $0$.<br />
+
+``` python
+def middle_square_generator(seed = 1461, n = 1):
+	
+	if (n == 1):
+		
+		return seed
+	
+	curr_val = seed
+	v = list(range(n))
+	for i in range(n):
+		v[i] = curr_val
+		curr_val = int(((curr_val ** 2) % (10 **6) ))/100
+
+	return(v)
+
+```
+
+
+
+------------------------------------------------------------
+
+La seconda idea di algoritmi generatori è il  **Congruential Generator**.<br />
+L'algoritmo suggerisce di:
+- scegliere tre parametri, $a$, $c$ e $m$, e un seed $s$.<br />
+- calcolare $x_{0} = s; \qquad x_{i+1} = (a \cdot x_{i} + c) \text{ mod } m$
+
+Anche questo algoritmo ha una debolezza. Infatti, la sequenza prodotta tende a diventare ciclica dopo un numero fissato di iterazioni.<br />
+Il parametro chiave di questi generatori è $m$, il quale definisce il periodo dell'iterazione.
+
+Avere un periodo abbastanza lungo è sufficiente?<br />
+
+
+------------------------------------------------------------
+
+### Ripley Test ###
+
+```python
+def ripley_test(v):
+	w = v[1:len(v)]
+	w.append(v[0])
+	plt.scatter(v, w)
+				
+```
+
