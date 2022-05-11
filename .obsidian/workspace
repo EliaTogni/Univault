@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Simulation.md",
+            "file": "Sicurezza delle Reti.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Simulation.md",
+                "file": "Sicurezza delle Reti.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,6 +88,7 @@
   },
   "active": "8df90cd4a246a4d7",
   "lastOpenFiles": [
+    "Sicurezza delle Reti.md",
     "Simulation.md",
     "Statistica e Probabilità.md",
     "Algoritmi Paralleli e Distribuiti.md",
@@ -96,7 +97,6 @@
     "System Dynamics Simulation.md",
     "Agent-Based Simulation.md",
     "Discrete Events Simulation.md",
-    "Configurazione ed Utilizzo di Git.md",
-    "Git.md"
+    "Configurazione ed Utilizzo di Git.md"
   ]
 }
