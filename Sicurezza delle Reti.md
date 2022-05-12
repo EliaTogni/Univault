@@ -169,3 +169,22 @@ Può essere:
 ------------------------------------------------------------
 
 ### TCP SYN Flood ###
+Ogni web server, quando inizia una connessione, memorizza il fatto di aver ricevuto un pacchetto di SYN da un client in una struttura dati detta **Trasmission Control Block** (**TCB**). Questa struttura diventa una entry nella backlog queue la quale contiene le connessioni iniziate ma non ancora completate. Il server, a questo punto, invia un pacchetto di SYN-ACK al client sorgente e rimane in attessa della sua risposta con ACK per terminare il three-way handshake.<br />
+Un attaccante può generare un elevato numero di richieste di aperture di connessione (inviando SYN con IP spoofati), causando un rapido riempimento della struttura dati del server. Se l'attaccante riesce a causare il riempimento della backlog queue, allora può causare un DoS sul server.<br />
+Questo attacco è letale perchè il server non sa distinguere tra i pacchetti reali e pacchetti spoofati.
+
+Tra le contromisure contro questo tipo di attacco si menzionano:
+1) Incrementare la dimensione della backlog queue;
+2) ridurre il tempo di attesa dell'ACK da parte del client in modo da rimuovere più velocemente dalla backlog queue alcune entry;
+3) Selezionare casualmente una connessione half-open dalla backlog queue e rimuoverla (solo quando la queue sta per saturarsi);
+4) SYN Cookies;
+5) Prolexic proxy.
+
+La soluzione più intelligenete che è stata ideata è il postporre lo stato, cioè creare la entry nella backlog queue solo dopo aver fatto un controllo sulla validità della connessione. Ciò avviene mediante la generazione di un cookie da spedire al client, che permette al server di rimanere stateless finchè il primo non spedisce almeno due messaggi (il SYN e l'ACK).<br />
+Quando il client invia l'ACK, fornisce anche il cookie che viene confrontato dal server con quello che era stato inviato. Se il controllo va a buon fine, allora significa che la richiesta di connessione era legittima e quindi viene creata la entry nella backlog queue. L'attaccante non conosce il cookie perchp il server lo invia solamente all'IP spoofato e, pertanto, non riuscità a calcolarei parametri corretti da inserire nell'ACK di risposta.
+
+Un'altra contromisura per filtrare le connessioni leggittime da quelle fasulle è quella di utilizzare un proxy tra i client ed il web server. Esso ha il compito di inoltrare al server solo le connessioni legittime mentre tutte le altre vengono scartate. Il proxy dovrà essere robusto.
+
+L'attacco SYN flood non da via di scampo se viene utilizzata una **botnet**. Di fatto, si tratta di migliaia o milioni di client legittimi (controllati da remoto da un attaccante a loro insaputa) che completano contemporaneamente il three-way handshake con il server. Essendo tutte connessioni che si completano con successo ma in contemporanea, il server fa fatica a gestirle e subisce il DoS.
+
+------------------------------------------------------------
