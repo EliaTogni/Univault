@@ -5,7 +5,6 @@ Nel caso di **Algoritmi Paralleli e Distribuiti**, è chiave la presenza di un p
 --------------------------------------------------------------
 
 ## Algoritmi Paralleli ##
-
 I modelli di calcolo in cui sono presenti più processori che lavorano contemporaneamente sono detti **paralleli**, così come il modello di calcolo dotato di un solo processore è detto **sequenziale**.<br />
 Con più processori, sono possibili due differenti implementazioni:
 - Un solo [[Clock]], condiviso tra tutti i processori del sistema;
@@ -174,7 +173,6 @@ Si ha quindi un algoritmo EREW.
 --------------------------------------------------------------
 
 #### Correttezza dell'Algoritmo ####
-
 Si dimostra ora, per [[Induzione]], che l'algoritmo sottostante è corretto. La correttezza è data dalla seguente proprietà:
 
 $$M[2^{j}k] = M[2^{j}k] + ... + M[2^{j}(k-1) +1]$$
@@ -272,7 +270,6 @@ $$h \geq \log_{2}(n)$$
 --------------------------------------------------------------
 
 ### SOMMATORIA come schema per altri problemi ###
-
 Si osservi il problema OP ITERATA, del quale SOMMATORIA è un caso particolare.
 
 **Definizione del problema**
@@ -292,7 +289,6 @@ Mentre, con una soluzione EREW, questo è il miglior risultato ottenibile, in re
 --------------------------------------------------------------
 
 ### $\wedge$ ITERATO ###
-
 **Definizione del problema**
 
 **Input**: $M[1], M[2], ..., M[n]$ <br />
@@ -328,7 +324,6 @@ Non solo questo algoritmo fa da guida per le soluzioni ai problemi OP ITERATO ma
 --------------------------------------------------------------
 
 ### PRODOTTO INTERNO DI VETTORI ###
-
 **Definizione del problema**
 
 **Input**: $x, y \in \mathbb{N}^{n}$<br />
@@ -358,7 +353,6 @@ Questo problema, a sua volta, è modulo di altri problemi, come, banalmente, il 
 --------------------------------------------------------------
 
 ### PRODOTTO MATRICE VETTORE ###
-
 **Definizione del problema**
 
 **Input**: $A \in \mathbb{N}^{n \times n}, x \in \mathbb{N}^{n}$<br />
@@ -377,7 +371,6 @@ $$E(n, p(n)) \sim \frac{n^{2}}{\frac{n^{2}}{\log(n)} \cdot \log(n)} \rightarrow 
 --------------------------------------------------------------
 
 ### PRODOTTO MATRICE MATRICE ###
-
 **Definizione del problema**
 
 **Input**: $A, B \in \mathbb{N}^{n \times n}$<br />
@@ -397,7 +390,6 @@ $$E(n, p(n)) \sim \frac{n^{2,8}}{\frac{n^{3}}{\log(n)} \cdot \log(n)} = \frac{n^
 --------------------------------------------------------------
 
 ### POTENZA DI  UNA MATRICE ###
-
 **Definizione del problema**
 
 **Input**: $A \in \mathbb{N}^{n \times n}$<br />
@@ -424,7 +416,6 @@ $$E \sim \frac{n^{2,8}\log(n)}{\frac{n^{3}}{\log(n)}\cdot \log_{2}(n)} = \frac{n
 --------------------------------------------------------------
 
 ### SOMME PREFISSE ###
-
 **Definizione del problema**
 
 **Input**: $M[1], M[2], ..., M[n]$<br />
@@ -468,7 +459,6 @@ Di conseguenza, la proposta analizzata risulta essere una scelta poco efficiente
 --------------------------------------------------------------
 
 ### Tecnica di Kogge-Stone [1973] ###
-
 Kogge-Stone introduce il **Pointer Doubling** per risolvere SOMME PREFISSE.<br />
 Si tratta di puntatori, di link tra coppie di numeri, indicati tramite frecce.<br />
 Ogni processore si occupa di un puntatore e ne fa la somma in questo modo:<br />
@@ -529,7 +519,6 @@ Se $i\neq j \rightarrow S[i] \neq S[j]$, quindi i due valori hanno successori di
 --------------------------------------------------------------
 
 #### Correttezza dell'Algoritmo ####
-
 E' anche necessario dimostrare che l'algoritmo sia corretto.<br />
 La correttezza dell'algoritmo si dimostra facendo vedere che, per $1 \leq k \leq n$ si ha in M[k] la somma degli elementi precedenti:
 
@@ -658,7 +647,6 @@ Come per il problema SOMMATORIA, anche l'algoritmo dato per SOMME PREFISSE può 
 --------------------------------------------------------------
 
 ### OP-PREFISSA ###
-
 **Definizione del problema**
 
 **Input**: $M[1], M[2], ..., M[n]$<br />
@@ -669,7 +657,6 @@ OP deve essere associativa, come ad esempio $+, *, \wedge, \vee, \oplus, \min, \
 --------------------------------------------------------------
 
 ### VALUTAZIONE DI POLINOMI ###
-
 **Definizione del problema**
 
 **Input**: $p(x) = a_{0} + a_{1}x + a_{2}x^{2} + ... + a_{n}x^{n}\text{, } \alpha$<br />
@@ -692,7 +679,6 @@ $$N \sim n^2$$
 --------------------------------------------------------------
 
 #### Miglioramento di Ruffini-Horner ####
-
 Il numero di istruzioni impiegato può essere migliorato tramite l'idea di Ruffini-Horner.<br />
 Si osservi un esempio di applicazione su un polinomio di quarto grado:
 
@@ -732,7 +718,6 @@ cioè due operazioni all'interno di ogni iterazione del loop.
 --------------------------------------------------------------
 
 #### Implementazione Parallela di Ruffini-Horner ####
-
 Si dovrà trovare un possibile algoritmo parallelo che, confrontato con questo algoritmo lineare, risulti efficiente.<br />
 - Si costruisca il vettore delle potenze di $\alpha$, $Q$;
    $$Q[k] = \alpha^{k}\text{, } \quad 0 \leq k \leq n$$
@@ -814,7 +799,6 @@ Analizziamo ora le prestazioni dell'algoritmo.<br />
 --------------------------------------------------------------
 
 ### RICERCA DI UN ELEMENTO ###
-
 **Definizione del problema**
 
 **Input**: $M[1], M[2], ..., M[n], \alpha$<br />
@@ -908,7 +892,6 @@ Questo permette di portare il minimo valore della cella che contiene $\alpha$ ne
 --------------------------------------------------------------
 
 ### ORDINAMENTO o RANKING ###
-
 **Definizione del problema**
 
 **Input**: $M[1], M[2], ..., M[n]$<br />
@@ -1028,7 +1011,6 @@ $$T(n, p(n)) = 5$$
 --------------------------------------------------------------
 
 ### _BitMerge_ Sequenziale ###
-
 Dato un array bitonico:
 
 ```
@@ -1056,7 +1038,6 @@ Al passo induttivo, si suppone l'algoritmo corretto per $n = 2^{k}$ e si dimostr
 --------------------------------------------------------------
 
 ### Implementazione Parallela di _BitMerge_ ###
-
 ![[BitMergeParallelo.png]]
 
 Prima si effettua la fase delle chiamate ricorsive e poi la fase, tipicamente, della fusione ma, in questo caso, della semplice concatenazione.<br />
@@ -1124,7 +1105,6 @@ Per gestire strutture dati dinamiche come un [[Albero]], si utilizza la [[Tecnic
 --------------------------------------------------------------
 
 ### Architettura Parallela a Memoria Distribuita ###
-
 La rappresentazione grafica di queste architetture è data da un [[Grafo]] G in cui i nodi sono i processori e gli archi definiscono la struttura della rete di connessione.<br />
 L'elemento che viene a mancare è ovviamente la memoria condivisa, tipica delle PRAM.<br />
 Si torna quindi a parlare di [[Modello a Memoria Distribuita]].<br />

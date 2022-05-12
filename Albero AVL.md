@@ -6,13 +6,11 @@ Un albero AVL con $n$ nodi ha altezza $O(\log(n))$.<br />
 ---------------------------------------------------------------
 
 #### Bilanciamento in Altezza ####
-
 Un albero è bilanciato in altezza se le altezze dei sottoalberi sinistro e destro di ogni nodo differiscono al più di un'unità.<br />
 
 ----------------------------------------------------------------
 
 #### Fattore di Bilanciamento ####
-
 Il fattore di bilanciamento $\beta(v)$ di un nodo $v$ è la differenza tra l'altezza del sottoalbero sinistro e quella del sottoalbero destro di $v$.<br />
 $$\beta(v) = altezza(sin(v)) - altezza(des(v))$$
 

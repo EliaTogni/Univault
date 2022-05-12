@@ -5,7 +5,6 @@ Ovviamente non si fa pixel a pixel ma con un supporto hw.
 TileMap e TileSet. Background diviso in due parti. per ogni tile memorizzo l'indice della mattonella che andrebbe visualizzata in quel punto.
 
 ### 3D  ###
-
 1) Intro
 2) Math for 3D VG
 3) Scene Graph, the hierarchical structure that defne  ascene in a 3d g
@@ -41,7 +40,6 @@ Technical staff do the game tools and game engine.
 Game tools helps the digital artist doing assets
 
 #### The 3d part of game assets ####
-
 3d models, materials (il materiale di un oggetto e come riflette la luce), animations, approssimazioni geometriche, particle effect and environments.
 
 procedurality comporta un trade off - memory vs computng power
@@ -51,7 +49,6 @@ a baked asset is an asset born procedural but the artist decided that he wanted 
 --------------------------------------------------------------
 
 ### Background Matematico ###
-
 E' necessario comprendere ogni operazione che verrà introdotta in seguito da tre punti di vista diversi:
 
 - **intuitivamente**, cioè essere in grado di visualizzare l'operazione spazialmente;
