@@ -10,7 +10,7 @@
           "type": "markdown",
           "state": {
             "file": "Sicurezza delle Reti.md",
-            "mode": "source"
+            "mode": "preview"
           }
         }
       }
@@ -89,6 +89,7 @@
   "active": "8df90cd4a246a4d7",
   "lastOpenFiles": [
     "Sicurezza delle Reti.md",
+    "Dynamic Host Configuration Protocol.md",
     "3D Video Games.md",
     "Agent-Based Simulation.md",
     "Albero.md",
@@ -96,7 +97,6 @@
     "Albero AVL.md",
     "Albero Binario.md",
     "Albero di Decisione.md",
-    "Algoritmi Paralleli e Distribuiti.md",
-    "Simulation.md"
+    "Algoritmi Paralleli e Distribuiti.md"
   ]
 }

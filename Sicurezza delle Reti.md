@@ -11,6 +11,8 @@ Un **Modello** definisce formalmente l'implementazione specifica della politica 
 Un **Meccanismo** implementa la politica a basso livello. Le politiche, infatti, utilizzano meccanismi (come la [[Crittografia]]) per raggiungere il goal.<br />
 Questi meccanismi devono fare in modo che il sistema resti in uno stato sicuro e non passi in uno stato non sicuro. <br />
 
+Lo svantaggio causato dall'adozione di un meccanismo di sicurezza risiede nel fatto che questa adozione non dovrebbe rendere l'accesso alle risorse più difficile di qunato lo sia senza il meccanismo di sicurezza stesso (**Psychological Acceptability**).
+
 Le politiche di sicurezza sono alla base del concetto di **Controllo degli accessi**, il quale può essere diviso in tre macrocategorie:
 1) **DAC** (**Discretionary Access Control**): ciascun utente può determinare i permessi per ogni altro utente e definire le **Access Control Lists** (**ACL**);
 2) **MAC** (**Mandatory Access Control**): un amministratore centrale determina i permessi di accesso dei vari oggetti;
@@ -27,7 +29,7 @@ Spesso in questa tipologia di politica si utilizzano metodi mandatori di tipo mu
 ------------------------------------------------------------
 
 #### Bell - La Padula ####
-**Bell - La Padula** è un modello di politica confidenziale il quale classifica i diversi livellid i sicurezza con i seguenti tag:
+**Bell - La Padula** è un modello di politica confidenziale il quale classifica i diversi livelli di sicurezza con i seguenti tag:
 1) **Top Secret**;
 2) **Secret**;
 3) **Confidential**;
@@ -35,8 +37,8 @@ Spesso in questa tipologia di politica si utilizzano metodi mandatori di tipo mu
 
 I soggetti e gli oggetti vengono ciascuno assegnati ad un livello di sicurezza. Le azioni permesse dipendono dal livello di sicurezza di entrambi soggetti ed oggetti in questione.<br />
 In generale, in questo modello si devono rispettare due proprietà:
-1) **Simple Security Property** (**No Read Up**): un soggetto $S$ ha accesso in lettura ad un oggetto $O$ se e solo se $\lambda (S) \geq \lambda (O)$;
-2) **\* Security Property** (**No Write Down**): un soggetto $S$ ha accesso in scrittura ad un oggetto $O$ se e solo se $\lambda(O) \geq \lambda(S)$.
+1) **Simple Security Property** (**No Read Up**): un soggetto $S$ ha accesso in lettura ad un oggetto $O$ se e solo se $\lambda (S) \geq \lambda (O)$ e se $S$ ha il permesso di leggere $O$;
+2) **\* Security Property** (**No Write Down**): un soggetto $S$ ha accesso in scrittura ad un oggetto $O$ se e solo se $\lambda(O) \geq \lambda(S)$ e se $S$ ha il permesso di scrivere $O$.
 
 Combinando questi due principi si previene un possibile flusso di informazioni dall'alto verso il basso dei livelli di sicurezza.
 
@@ -54,15 +56,15 @@ Con **integrità** si intende il prevenire modifiche non autorizzate alle inform
 Alla base di questa tipologia di politiche ci sono 3 principi:
 1) **Separazione dei doveri**: se nell'esecuzione di un processo ci sono due fasi, queste devono essere svolte da due soggetti diversi;
 2) **Separazione delle funzioni**: lo sviluppo ed il testing devono essere due operazioni separate, in modo che la seconda non sia influenzata dalla prima;
-3) **Auditing**: il sistema deve mantenere un **audit log** che memorizzi le responsabilità ( ogni programma eseguito e il soggetto che ha dato l'autorizzazione) ed il sistema deve eventualmente permettere di fare recovery.
+3) **Auditing**: il sistema deve mantenere un **audit log** che memorizzi le responsabilità ( ogni programma eseguito e il soggetto che ha dato l'autorizzazione) ed il sistema deve eventualmente permettere di fare recovery, di tornare ad il precedente stato consistente (**rollback**).
 
 ------------------------------------------------------------
 
 #### Biba ####
 **Biba** è uno dei modelli principali che segue questa tipologia di politiche di sicurezza. Si tratta di una tipologia duale rispetto a quella basata sulla confidenzialità. Infatti, la confidenzialità è un vincolo sulla lettura mentre l'integrità è un vincolo sulla scrittura.<br />
 Di conseguenza, le regole alla base di Biba sono il duale di quelle alla base del modello di Bell - La Padula:
-1) **Simple Integrity Property** (**No Read Down**): un soggetto $S$ ha accesso in lettura ad un oggetto $O$ se e solo se $\lambda(O) \geq \lambda(S)$;
-2) **\* Integrity Property** (**No Write Up**): Un soggetto $S$ ha accesso in scrittura ad un oggetto $O$ se e solo se $\lambda(S) \geq \lambda(O)$.
+1) **Simple Integrity Property** (**No Read Down**): un soggetto $S$ ha accesso in lettura ad un oggetto $O$ se e solo se $\lambda(O) \geq \lambda(S)$ e se $S$ ha il permesso di leggere $O$;
+2) **\* Integrity Property** (**No Write Up**): Un soggetto $S$ ha accesso in scrittura ad un oggetto $O$ se e solo se $\lambda(S) \geq \lambda(O)$ e se $S$ ha il permesso di scrivere $O$.
 
 ------------------------------------------------------------
 
@@ -114,6 +116,8 @@ Tutto questo avviene perchè:
 1) Le richieste non sono tracciate;
 2) Gli annunci ARP che viaggiano sulla rete non sono autenticati;
 3) Le macchine si fidano l'un l'altra perchè il protocollo non ha alcuna garanzia di sicurezza. Una macchina attaccante può quindi ingannare tutte le altre.
+
+Questa procedura può avere luogo anche nel caso in cui nessun utente abbia inviato una ARP Request. L'host malevolo può inviare una ARP Reply per fare Cache Poisoning in qualsiasi momento.
 
 Il meccanismo di **ARP Poisoning** viene messo in atto per effettuare un [[Man in the Middle]] a livello datalink.
 
@@ -188,3 +192,24 @@ Un'altra contromisura per filtrare le connessioni leggittime da quelle fasulle �
 L'attacco SYN flood non da via di scampo se viene utilizzata una **botnet**. Di fatto, si tratta di migliaia o milioni di client legittimi (controllati da remoto da un attaccante a loro insaputa) che completano contemporaneamente il three-way handshake con il server. Essendo tutte connessioni che si completano con successo ma in contemporanea, il server fa fatica a gestirle e subisce il DoS.
 
 ------------------------------------------------------------
+
+### Attacchi a DHCP ###
+[[Dynamic Host Configuration Protocol]] è il protocollo che consente di assegnare a nuovi host un indirizzo IP scelto da un pool di indirizzi liberi e disponibili.<br />
+Questo protocollo è privo di misure di protezione e di conseguenza è soggetto ai seguenti attacchi:
+1) **DHCP Starvation**: l'attaccante invia tanti DHCP discover con MAC differenti. Questo causa un DoS al server, il quale non riesce a soddisfare tutte le richieste perchè esaurisce il pool di indirizzi. Eventuali host legittimi che vogliono ottenere un indirizzo IP ora sono impossibilitati;
+2) **Rogue DHCP**: l'attaccante può fingere di essere un server DHCP e rispondere alle DHCP discover dei client. Siccome nelle risposte del server, di solito, i nuovi host vengono istruit anche su quale sia il gateway della rete e altre informazioni utili, l'attaccante può comunicare un falso IP per il gateway (indicando sè stesso) e quindi risolvere gli URL come preferisce, compiere attacchi di phishing, sniffare il traffico facendo Man in the Middle o altro ancora.
+
+Una contromisura attuabile per difendersi dagli attacchi al DHCP è il **DHCP snooping**. Si costruisce un **DHCP snooping binding database** (una tabella all'interno di uno switch) che contenga vari parametri:
+1) **Client MAC Address;
+2) **IP Address**;
+3) **Lease time**;
+4) **Binding type**;
+5) **VLAN number**;
+6) **Port ID**.
+
+La porta fisica dello switch viene chiusa ogniqualvolta arrivi un messaggio DHCP proveniente da host che non sono legittimati. Quindi, se un rogue server tenta di mandare un pacchetto DHCP, in risposta la porta viene chiusa.
+
+Una sicurezza ancora maggiore si ottiene abilitando l'**option 82**, nota anche come **DHCP Relay Agent Information**, che prevede il coinvolgimento attivo dello switch nella comunicazione tra client e server.<br />
+Questa procedura è utile se client e server non fanno parte della stessa sottorete. Quando il client invia una richiesta al server DHCP, lo switch aggiunge informazioni ulteriori all'header della richiesta. Grazie a queste informazioni, il server può risalire allo switch e quindi alla posizione del client.<br />
+Il server DCHP legge i dettagli aggiuntivi e assegna gli indirizzi IP in base alle informazioni sull posizione. Il server invia il pacchetto di risposta al client tramite lo switch. Se, nel momento in cui il paccheto raggiunge lo switch, le informazioni contenute sono rimaste invariate, lo switch riconosce che la comunicazione avviene effettivamente attraverso di esso. A questo punto, il dispositivo cancella i dati dell'option 82 dall'header e inoltra la risposta. Inoltre, l'aver ricordato la posizione del client (a quale porta fisica dello switch è collegato) rende impossibile effettuare il DHCP starvation. <br />
+Questo perchè lo switch si accorgerebbe che stanno arrivando molteplici richieste di assegnazioni di IP tutte dalla stessa porta (con MAC differenti).
