@@ -122,7 +122,7 @@ Eventuali contromisure possono essere l'utilizzo di [[IPSEC]] e l'utilizzo di ta
 ------------------------------------------------------------
 
 ### MAC Address Flooding ###
-Ogni [[Switch]] possiede una tabella dei MAC Address il cui scopo è quello di capire a quale posta sia collegato ciascun host.<br />
+Ogni [[Switch]] possiede una tabella dei MAC Address il cui scopo è quello di capire a quale porta sia collegato ciascun host.<br />
 Per ogni frame ricevuto:
 1) se lo switch ha all'interno della sua tabella il MAC Address al quale destinarlo, non scrive nulla nella tabella;
 2) Se il MAC Address del destinatario non è presente all'interno della sua tabella, lo switch copia il valore presente nell'header del pacchetto e crea una entry nella tabella;
