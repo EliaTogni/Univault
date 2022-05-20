@@ -193,7 +193,7 @@ L'attacco SYN flood non da via di scampo se viene utilizzata una **botnet**. Di 
 [[Dynamic Host Configuration Protocol]] è il protocollo che consente di assegnare a nuovi host un indirizzo IP scelto da un pool di indirizzi liberi e disponibili.<br />
 Questo protocollo è privo di misure di protezione e di conseguenza è soggetto ai seguenti attacchi:
 1) **DHCP Starvation**: l'attaccante invia tante DHCP discover con MAC differenti. Questo causa un DoS al server, il quale non riesce a soddisfare tutte le richieste perchè esaurisce il pool di indirizzi. Eventuali host legittimi che vogliono ottenere un indirizzo IP ora sono impossibilitati;
-2) **Rogue DHCP**: l'attaccante può fingere di essere un server DHCP e rispondere alle DHCP discover dei client. Siccome nelle risposte del server, di solito, i nuovi host vengono istruit anche su quale sia il gateway della rete e altre informazioni utili, l'attaccante può comunicare un falso IP per il gateway (indicando sè stesso) e quindi risolvere gli URL come preferisce, compiere attacchi di phishing, sniffare il traffico facendo Man in the Middle o altro ancora.
+2) **Rogue DHCP**: il server DHCP, dopo aver ricevuto una DHCP Request, indicherà al mittente non solo l'IP Address disponibile, ma anche il **default gateway** ed il **default DNS**. L'attaccante può fingere di essere un server DHCP e rispondere alle DHCP discover dei client. Siccome nelle risposte del server, di solito, i nuovi host vengono istruiti anche su quale sia il gateway della rete e altre informazioni utili, l'attaccante può comunicare un falso IP per il gateway (indicando sè stesso) e quindi risolvere gli URL come preferisce, compiere attacchi di phishing, sniffare il traffico facendo Man in the Middle o altro ancora.
 
 Una contromisura attuabile per difendersi dagli attacchi al DHCP è il **DHCP snooping**. Si costruisce un **DHCP snooping binding database** (una tabella all'interno di uno switch) che contenga vari parametri:
 1) **Client MAC Address;
@@ -209,3 +209,36 @@ Una sicurezza ancora maggiore si ottiene abilitando l'**option 82**, nota anche 
 Questa procedura è utile se client e server non fanno parte della stessa sottorete. Quando il client invia una richiesta al server DHCP, lo switch aggiunge informazioni ulteriori all'header della richiesta. Grazie a queste informazioni, il server può risalire allo switch e quindi alla posizione del client.<br />
 Il server DCHP legge i dettagli aggiuntivi e assegna gli indirizzi IP in base alle informazioni sull posizione. Il server invia il pacchetto di risposta al client tramite lo switch. Se, nel momento in cui il paccheto raggiunge lo switch, le informazioni contenute sono rimaste invariate, lo switch riconosce che la comunicazione avviene effettivamente attraverso di esso. A questo punto, il dispositivo cancella i dati dell'option 82 dall'header e inoltra la risposta. Inoltre, l'aver ricordato la posizione del client (a quale porta fisica dello switch è collegato) rende impossibile effettuare il DHCP starvation. <br />
 Questo perchè lo switch si accorgerebbe che stanno arrivando molteplici richieste di assegnazioni di IP tutte dalla stessa porta (con MAC differenti).
+
+------------------------------------------------------------
+
+### Attacchi a BGP ###
+[[Border Gateway Protocol]] è il protocollo che permette la comunicazione tra **Autonomous Systems**. Si parla di **iBGP** (**Internal**) quando ci si riferisce al BGP utilizzato all'interno di un Autonomous System. Si parla, invece, di **eBGP** (**external**) quando ci si riferisce al BGP utilizzato nella comunicazione tra AS diversi.
+
+Questo protocollo può essere attaccato su molti fronti:
+1) **Disponibilità**;
+2) **Confidenzialità**;
+3) **Integrità**.
+
+I principali obiettivi di attacco per un host malevolo BGP sono:
+1) **Blackholing**: consiste nel creare dei black holes nei quali i pacchetti spariscono. Nello specifico, vengono istruiti i vari AS che un certo $\text{AS}_{x}$ (vittima) è in grado di gestire un determinato prefisso meglio di chiunque altro (quando, in realtà, $\text{AS}_{x}$ non è in grado di farlo). In questo modo, i pacchetti sotto quel prefisso verranno girati ad $\text{AS}_{x}$ e lui non farà altro che dropparli in quanto non sono di sua effettiva competenza.
+2) **Redirection**: il traffico viene rediretto e viene fatto passare per un router malevolo in grado di sniffare i vari pacchetti, oppure per far crollare una sottorete a causa del traffico ingente di pacchetti.
+3) **Subversion**: redirezione dei pacchetti per farli passare attraverso un dispositivo controllato dall'attaccante in modo tale che l'attaccante sia in grado di leggere e/o modificare i dati per poi essere propagato al legittimo destinario.
+4) **Instability**: attacco in grado di distruggere rotte ed interrompere la connettività, oppure in grado di aumentare drasticamente i tempi di convergenza (ovvero i tempi per stabilizzare le rotte). Avviene inviando in rapida successione annunci che cambiano di continuo la rete. I pacchetti vengono sballottati per la rete.
+
+Gli attacchi possibili sono:
+1) **Prefix Hijacking**: un attaccante B anuncia di ocnoscere tratte più veloci per raggiungere un particolare AS (chiamato V). Tutti gli AS che sono connessi direttamente a V non saranno affetti da tale annuncio. Il resto degli AS e di internet invece saranno affetti. Ciò significa che da quel momento tutti gli AS che dovranno comunicare con V passeranno da B il quale successivamente rimanderà il traffico a V. In questo modo, B è in grado di sniffare tutti i messaggi diretti a V (**subversion**);
+2) **De-Aggregation**: un attaccante B annuncia di conoscere un sotto-insieme di indirizzi IP con un livello più specifico. Se il router V conosce gli indirizzi x/22 e B sostiene di conoscere gli indirizzi x/24, il traffico verrà dirottato su B. Infatti, secondo il protocollo BGP, si preferisce l'Access Point che abbia una maggiore specificità di indirizzi, cioè B, in quanto in possesso di una subnet mask più precisa. In questi modo, il traffico diretto a V verrà gitato a B, il quale sarà in grado di sniffarne il contenuto (**subversion**);
+3) **AS Path Shortening**: viene annunciato un nuovo path che taglia fuori la vittima (**instability**);
+4) **Annunci Contraddittori**: un attaccante B annuncia una rotta sbagliata per fare congestione su un particolare AS, in modo tale che questo venga sovraccaricato (**instability/redirection**);
+5) **Link Flapping**: vengono mandati tanti update sugli AS path. In questo modo, coloro che ricevono questa serie di aggiornamenti si convincono che il percorso è flapping. Pertanto si attiva il **router dampening**, il quale consiste nel riattivare un particolare path con tempi sempre più lunghi per fare in modo che il router sovraccaricato si riesca a scaricare senza dover gestire altri pacchetti;
+
+Le principali contromisure adottate da BGP sono:
+1) **Time To Leave (TTL)**: poichè i BGP router sono ad una distanza di un singolo HOP l'uno dall'altro, si accettano solo pacchetti con uno specifico TTL. Il TTL viene decrementato ad ogni singolo HOP. Tutti i messaggi BGP vengono inviati con un TTL pare a 255. Con questo sistema di sicurezza, si accettano solo i messaggi con un TTL pari a 254;
+2) **MD5**: crittografare i messaggi;
+3) [[IPSEC]];
+4) **Route Filtering**: vengono filtrati i messaggi di update in ingresso ed in uscita in modo tale che ci si assicuri che le rotte seguano specifiche regole;
+5) **Resource Public Key Infrastructure (RPKI)**: questo sistema roevede l'esistenza di una repository contenente delle key. Gli AS ottengono un certificato **Route Origin Authorizations** (**Roa**), fornito da un'entitò particolare. Quando un BGP vuole annunciare il suo ingresso ed il set 
+
+
+------------------------------------------------------------
