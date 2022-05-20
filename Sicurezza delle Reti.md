@@ -126,17 +126,17 @@ Ogni [[Switch]] possiede una tabella dei MAC Address il cui scopo è quello di c
 Per ogni frame ricevuto:
 1) se lo switch ha all'interno della sua tabella il MAC Address al quale destinarlo, non scrive nulla nella tabella;
 2) Se il MAC Address del destinatario non è presente all'interno della sua tabella, lo switch copia il valore presente nell'header del pacchetto e crea una entry nella tabella;
-Un attaccante, mediante l'invio di un elevato numero di frames con MAC Address fake sempre diversi, può causare un overflow della tabella dello switch, poichè vengono registrate tante false associazioni $<\text{MAC Address - porta fisica}>$.<br /> Il risultato è che lo switch non riesce più a gestire il traffico nella maniera opportuna; esso comincia a funzionare come un hub, cioè non fa più l'instradamento dei pacchetti ma spedisce ciascuno di essi in broadcast attraverso ognuna delle sue porte. Un pacchetto che dovrebbe essere indirizzato ad un certo host viene invece destinato anche ad altri host, che non dovrebbero riceverlo. Così facendo, un attaccante può fare sniffing di tutti i pacchetti che transitano nella rete.<br />
+Un attaccante, mediante l'invio di un elevato numero di frames con MAC Address fake sempre diversi, può causare un overflow della tabella dello switch, poichè vengono registrate tante false associazioni $<\text{MAC Address - porta fisica}>$.<br /> Il risultato è che lo switch non riesce più a gestire il traffico nella maniera opportuna; esso comincia a funzionare come un [[Hub]], cioè non fa più l'instradamento dei pacchetti ma spedisce ciascuno di essi in broadcast attraverso ognuna delle sue porte. Un pacchetto che dovrebbe essere indirizzato ad un certo host viene invece destinato anche ad altri host, che non dovrebbero riceverlo. Così facendo, un attaccante può fare sniffing di tutti i pacchetti che transitano nella rete.<br />
 Questa tecnica viene utilizzata per sniffare il traffico in reti in cui la presenza dello switch non consente a chiunque di accedere ai pacchetti a sè non destinati.
 
-Una possibile contromisura consiste nel non generare dinamicamente la tabella contenente le coppie $(\text{MAC Address - porta fisica})$ ma avere l'accortezza e la pazienza di gestirla in maniera statica. E' inoltre possibile costruire dei filtri per scartare MAC falsi.
+Una possibile contromisura consiste nel non generare dinamicamente la tabella contenente le coppie $<\text{MAC Address - porta fisica}>$ ma avere l'accortezza e la pazienza di gestirla in maniera statica. E' inoltre possibile costruire dei filtri per scartare MAC falsi.
 
 ------------------------------------------------------------
 
 ### Problemi intrinsechi in TCP/IP ###
 Non esiste alcun meccanismo di autenticazione fra le parti, quindi non si può avere la certezza di parlare con l'host che effettivamente si desidera.
 
-i controlli di integrità sono banali. L'unico controllo di integrità che [TCP/IP] offre è un checksum dei pacchetti. Ad un attaccante basta sniffare il pacchetto dalla rete e manipolarlo in modo tale che il checksum risulti comunque veritiero.
+i controlli di integrità sono banali. L'unico controllo di integrità che [[TCP-IP]] offre è un checksum dei pacchetti. Ad un attaccante basta sniffare il pacchetto dalla rete e manipolarlo in modo tale che il checksum risulti comunque veritiero.
 
 ------------------------------------------------------------
 
@@ -161,6 +161,7 @@ Per sferrare un attacco di tipo Non-blind Spoofing, invece, è necessario utiliz
 ------------------------------------------------------------
 
 ### TCP Session Hijacking ###
+Il **TCP Hijacking** consiste nell'instaurare una nuova connessione tra due entità che comunicano tramite protocollo TCP.
 Con IP Spoofing e corretti SEQ-NUM e ACK-NUM, un attaccante può effettuare l'hijacking di una sessione TCP.<br />
 Può essere:
 1) **Passivo**: l'attaccante si limita ad ascoltare la conversazione tra client e server;

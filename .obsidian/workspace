@@ -10,7 +10,7 @@
           "type": "markdown",
           "state": {
             "file": "Sicurezza delle Reti.md",
-            "mode": "source"
+            "mode": "preview"
           }
         }
       }
@@ -89,14 +89,14 @@
   "active": "8df90cd4a246a4d7",
   "lastOpenFiles": [
     "Sicurezza delle Reti.md",
+    "TCP-IP.md",
+    "TCP/IP.md",
+    "Hub.md",
     "Switch.md",
     "IPSEC.md",
     "Man in the Middle.md",
     "MAC Address.md",
     "Address Resolution Protocol.md",
-    "Crittografia.md",
-    "Dynamic Host Configuration Protocol.md",
-    "3D Video Games.md",
-    "Agent-Based Simulation.md"
+    "Crittografia.md"
   ]
 }
