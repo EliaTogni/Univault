@@ -89,6 +89,7 @@
   "active": "8df90cd4a246a4d7",
   "lastOpenFiles": [
     "Sicurezza delle Reti.md",
+    "Border Gateway Protocol.md",
     "TCP-IP.md",
     "TCP/IP.md",
     "Hub.md",
@@ -96,7 +97,6 @@
     "IPSEC.md",
     "Man in the Middle.md",
     "MAC Address.md",
-    "Address Resolution Protocol.md",
-    "Crittografia.md"
+    "Address Resolution Protocol.md"
   ]
 }

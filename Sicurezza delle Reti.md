@@ -197,7 +197,7 @@ Questo protocollo è privo di misure di protezione e di conseguenza è soggetto 
 2) **Rogue DHCP**: il server DHCP, dopo aver ricevuto una DHCP Request, indicherà al mittente non solo l'IP Address disponibile, ma anche il **default gateway** ed il **default DNS**. L'attaccante può fingere di essere un server DHCP e rispondere alle DHCP discover dei client. Siccome nelle risposte del server, di solito, i nuovi host vengono istruiti anche su quale sia il gateway della rete e altre informazioni utili, l'attaccante può comunicare un falso IP per il gateway (indicando sè stesso) e quindi risolvere gli URL come preferisce, compiere attacchi di phishing, sniffare il traffico facendo Man in the Middle o altro ancora.
 
 Una contromisura attuabile per difendersi dagli attacchi al DHCP è il **DHCP snooping**. Si costruisce un **DHCP snooping binding database** (una tabella all'interno di uno switch) che contenga vari parametri:
-1) **Client MAC Address;
+1) **Client MAC Address**;
 2) **IP Address**;
 3) **Lease time**;
 4) **Binding type**;
