@@ -151,7 +151,7 @@ Esistono due forme di IP spoofing:
 2) **Blind Spoofing**:  l'attaccante non è all'interno della sottorete della vittima.
 
 Per sferrare un attacco di tipo Blind IP spoofing, l'attaccante deve fare quattro cose:
-1) Prima di cominciare l'attacco, l'attaccante interroga il server per ottenere qualche indicazione in più sulla generazione dell'**Initial Sequence Number** (**ISN**). Questo viene fatto per far sì che la previsione dell'ISN abbia più probabilità di successo (**ISN Prediction**). L'attaccante manda alcuni pacchetti **SYN** non spoofati per analizzare le risposte del serer e capire quindi il tipo di regola che quest'ultimo adotta per generare gli ISN;
+1) Prima di cominciare l'attacco, l'attaccante interroga il server per ottenere qualche indicazione in più sulla generazione dell'**Initial Sequence Number** (**ISN**). Questo viene fatto per far sì che la previsione dell'ISN abbia più probabilità di successo (**ISN Prediction**). L'attaccante manda alcuni pacchetti **SYN** non spoofati per analizzare le risposte del server e capire quindi il tipo di regola che quest'ultimo adotta per generare gli ISN;
 2) L'attaccante apre una connessione con il server utilizzando l'IP spoofato di un host vittima. L'attaccante non riceverà la risposta;
 3) L'host vittima, ricevendo una risposta dal server che non ha mai interrogato, invia subito un pacchetto di **FIN** o **RST** per terminare la connessione. In questa eventualità, l'attacco si può ritenere fallito. L'attaccante deve, pertanto, impegnare l'host vittima, tipicamente effettuando un **attacco DoS** per fare in modo che non possa chiudere la connessione con il server.
 4) L'attaccante invia al server un pacchetto valido, utilizzando sempre l'IP spoofato della vittima. Tale pacchetto, per essere valido, dovrà contenere il giusto ACK-NUM ed il giusto SEQ-NUM.
@@ -243,3 +243,23 @@ Le principali contromisure adottate da BGP sono:
 
 
 ------------------------------------------------------------
+
+### Attacco a DNS ###
+
+Il protocollo [[Domain Name System]], o **DNS**, è un protocollo utile per risolvere **indirizzi logici** (www.indirizzologico.com) in **indirizzi fisici** (1.1.1.1). Si tratta di un servizio gerarchico:
+1) **Root Name Servers**: per domini al top level;
+2) **Top Level Domain Servers**: responsabili dei domini di primo livello, come **.it**, **.com**, **.org**;
+3) **Authoritative Name Servers**: per i sottodomini, come **.unimi.it**.
+
+
+Per la risoluzione dei nomi ci si affida ad un **resolver** (implementato nel sistema operativo). Ogni resolver conosce il nome del DNS server locale. Il resolver manda, quindi, una richiesta al DNS server locale; la risposta o è definitiva o viene inoltrata ad un altro server si tratta di una reference (riferimento al server successivo al quale la richiesta deve essere inoltrata). Ogni risoluzione DNS viene temporaneamente salvata in una memoria cache per fare in modo che un'eventuale risoluzione per lo stesso indirizzo sia molto più rapida.
+
+Le principali vulnerabilità del protocollo DNS sono le seguenti:
+1) **DNS Cache Poisoning**: ne esistono due versioni, una di origine anonima ed una denominata **Kaminsky Attack**. L'obiettivo di entrambe è quello di falsificare i valori contenuti all'interno della cache del resolver DNS della vittima. L'attaccante invia una richiesta al nameserver vittima per un particolare indirizzo. Di conseguenza, si attiva la serie di richieste per ottenere il corrispettivo indirizzo fisico. L'attacco consiste nel riuscire a rispondere al nameserver, prima che la reale risposta dell'authoritative server arrivi, con un indirizzo di un sito web gestito dall'attaccante (in modo tale da reindirizzare la vittima su siti malevoli). L'unica difficoltà di questo attacco consiste nel fatto che le richieste del nameserver sono definite da un **QID** (**Query ID**) che l'attaccante deve indovinare per forgiare una risposta che sembri autentica. Nel secondo caso, invece, l'attaccante cerca di sostituirsi totalmente all'authoritative server. L'attaccante vuole redirigere tutte le richieste fatte sull'authoritative server vittima su di sè. Anche in questa versione è sempre presente l'incognita del QID per la buona riuscita dell'attacco.<br />Una possibile difesa risiede nell'aumentare il range casuale del QID per renderlo più difficile da indovinare.<br />Attuando con successo il Kaminsky Attack, si prende controllo di tutto il dominio perchè si riesce a convincere il server vittima di star comunicando con il vero server autoritativo. Con l'attacco generico, invece, si prende il controllo non di tutto il dominio ma solo di un sito. Questo avviene perchè la risposta dell'attaccante arriva dopo quella del Top Level Domain Server ma prima di quella del server autoritativo;
+2) **DNS Rebinding**: l'attaccante registra un dominio (come, ad esempio, www.sample.com) e ne delefa la risoluzione ad un server DNS sotto il suo controllo. Il server viene configurato per rispondere con un TTL molto basso, per prevenire che la risposta venga inserita nella cache dell'host vittima. Quando la vittima contatta accidentalmente l'indirizzo logico, il server risponde con l'indirizzo fisico che fa scaricare sul client della vittima il codice Javascript malevolo. Questo codice, una volta eseguito, effettua in automatico un'altra richiesta al dominio logico (il client non conosce la risoluzione per via del TTL basso della precedente richiesta). Il server DNS dell'attaccante, questa volta, risolve www.sample.com con un indirizzo che appartiene alla rete privata della vittima. Così facendo, la vittima, in maniera inconsapevole (per via della **same-origin policy**), consente all'applet installato con la prima richiesta dall'attaccante di accedere ai servizi nella rete locale;
+3) **Triggering a Race**: ogni link, ogni immagine ed ogni advertisement può provocare un **DNS lookup**. Non solo il codice Javascript.
+
+I meccanismi di difesa contro il Cache Poisoning sono i seguenti:
+1) Aumentare la taglia delle Query ID;
+2) Aggiungere una porta casuale da indovinare oltre al Query ID. Le combinazioni ora diventano $2^{16} \cdot 2^{11} = 2^{27} = 134$ milioni;
+3) Richiedere ogni query due volte. In questo modo, l'attaccante deve indovinare il Query ID due volte (32 bits).

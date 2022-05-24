@@ -10,7 +10,7 @@
           "type": "markdown",
           "state": {
             "file": "Sicurezza delle Reti.md",
-            "mode": "preview"
+            "mode": "source"
           }
         }
       }
@@ -89,9 +89,9 @@
   "active": "8df90cd4a246a4d7",
   "lastOpenFiles": [
     "Sicurezza delle Reti.md",
+    "TCP/IP.md",
     "Border Gateway Protocol.md",
     "TCP-IP.md",
-    "TCP/IP.md",
     "Hub.md",
     "Switch.md",
     "IPSEC.md",
