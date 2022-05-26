@@ -100,7 +100,7 @@ La politica è definita nel seguente modo:
 
 Le condizioni di lettura e scrittura sono, invece, le seguenti:
 1) La lettura è consentita se l'oggetto appartiene ad un $CD$ a cui $S$ ha accesso, oppure se appartiene ad un diverso $COI$;
-2) Un soggetto $S$ può scrivere un oggetto $O$ se e solo se nessun oggetto che può essere letto da $S$ si trova in un differente dataset rispetto al dataset di $O$ oppure se contiene informazioni **non sanificate**. Con **Sanificazione** si intende il camuffare le informazioni di una azienda, in particolare per prevenire la scoperta dell'identità di tale azienda.
+2) Un soggetto $S$ può scrivere un oggetto $O$ se e solo se nessun oggetto che può essere letto da $S$ si trova in un differente dataset rispetto al dataset di $O$ oppure se l'utente $S$ non è in grado di leggere un oggetto $O$ contenente informazioni **non sanificate**. Con **Sanificazione** si intende il camuffare le informazioni di una azienda, in particolare per prevenire la scoperta dell'identità di tale azienda.
 
 ------------------------------------------------------------
 
@@ -178,11 +178,11 @@ Tra le contromisure contro questo tipo di attacco si menzionano:
 1) Incrementare la dimensione della backlog queue;
 2) ridurre il tempo di attesa dell'ACK da parte del client in modo da rimuovere più velocemente dalla backlog queue alcune entry;
 3) Selezionare casualmente una connessione half-open dalla backlog queue e rimuoverla (solo quando la queue sta per saturarsi);
-4) SYN Cookies;
-5) Prolexic proxy.
+4) **SYN Cookies**;
+5) **Prolexic proxy**.
 
-La soluzione più intelligenete che è stata ideata è il postporre lo stato, cioè creare la entry nella backlog queue solo dopo aver fatto un controllo sulla validità della connessione. Ciò avviene mediante la generazione di un cookie da spedire al client, che permette al server di rimanere stateless finchè il primo non spedisce almeno due messaggi (il SYN e l'ACK).<br />
-Quando il client invia l'ACK, fornisce anche il cookie che viene confrontato dal server con quello che era stato inviato. Se il controllo va a buon fine, allora significa che la richiesta di connessione era legittima e quindi viene creata la entry nella backlog queue. L'attaccante non conosce il cookie perchp il server lo invia solamente all'IP spoofato e, pertanto, non riuscità a calcolarei parametri corretti da inserire nell'ACK di risposta.
+La soluzione più intelligente che è stata ideata è il postporre lo stato, cioè creare la entry nella backlog queue solo dopo aver fatto un controllo sulla validità della connessione. Ciò avviene mediante la generazione di un cookie da spedire al client, che permette al server di rimanere stateless finchè il primo non spedisce almeno due messaggi (il SYN e l'ACK).<br />
+Quando il client invia l'ACK, fornisce anche il cookie che viene confrontato dal server con quello che era stato inviato. Se il controllo va a buon fine, allora significa che la richiesta di connessione era legittima e quindi viene creata la entry nella backlog queue. L'attaccante non conosce il cookie perchè il server lo invia solamente all'IP spoofato e, pertanto, non riuscirà a calcolare i parametri corretti da inserire nell'ACK di risposta.
 
 Un'altra contromisura per filtrare le connessioni leggittime da quelle fasulle è quella di utilizzare un proxy tra i client ed il web server. Esso ha il compito di inoltrare al server solo le connessioni legittime mentre tutte le altre vengono scartate. Il proxy dovrà essere robusto.
 
@@ -263,3 +263,18 @@ I meccanismi di difesa contro il Cache Poisoning sono i seguenti:
 1) Aumentare la taglia delle Query ID;
 2) Aggiungere una porta casuale da indovinare oltre al Query ID. Le combinazioni ora diventano $2^{16} \cdot 2^{11} = 2^{27} = 134$ milioni;
 3) Richiedere ogni query due volte. In questo modo, l'attaccante deve indovinare il Query ID due volte (32 bits).
+
+I meccanismi di difesa contro il DNS Rebinding sono i seguenti:
+1) **DNS Pinning**: quando si risolve un host, vale solo il primo IP che viene restituito. Per proteggersi, un meccanismo è usare un **database di pinning**, cioè utilizzare un database nel quale vengono fissati gli IP in modo tale da evitare queste re-interrogazioni e non dare la possibilità all'attaccante di redirigere gli attacchi e associare dei nuovi IP allo stesso dominio;
+2) **Difese server**: meccanismi di autenticazione per gli utenti con qualcosa di diverso da IP. Controllare l'intestazione host per i domini non riconosciuti;
+3) **Difese firewall**: non si possono risolvere nomi esterni con IP interni.
+
+DNS è anche soggetto ad innumerevoli attacchi di tipo **DoS** (**Denial of Service**):
+1) **Exploit to fail**: l'attaccante inonda di messaggi malformati il nameserver in modo tale che questo crashi;
+2) **Exploit to own**: sfrutta vulnerabilità come **Buffer Overflow** per ottenere i privilegi amministrativi;
+3) **Reflection and Amplification**: attacco mirato a un host target in cui l'attaccante, tramite IP spoofato, fa sì che tutte le richieste fatte ad un determinato DNS recursor siano indirizzate alla vittima. L'amplification avviene qualora, ad un messaggio breve inviato dall'attaccante, corrisponda un messaggio più corposo in risposta dal server;
+4) **NXDomain Exhaustion**: l'aggressore inonda il resolver con tante query DNS per nomi di dominio inesistenti. Il resolver tenta di risolvere ed aggiunge alla cache tante entry NXDomain (**Non Existent Domain**). La cache della vittima si satura e diventa problematica la risoluzione di nomi legittimi.
+
+Un meccanismo di difesa generale di DNS è dato da **DNSSEC**. Rappresenta un protocollo per garantire che i messaggi che vengono scambiati durante la risoluzione di un indirizzo logico siano autentici e non corrotti. Questo protocollo funziona con la crittografia asimmetrica, dove ogni livello gerarchico del DNS utilizza chiavi pubbliche e private per firmare le richieste DNS. Si crea, dunque, una catena di fiducia a partire dalla chiave pubblica "fidata" di un server, il quale conosce l'host che fa le richieste DNS.
+
+------------------------------------------------------------
