@@ -278,3 +278,48 @@ DNS è anche soggetto ad innumerevoli attacchi di tipo **DoS** (**Denial of Serv
 Un meccanismo di difesa generale di DNS è dato da **DNSSEC**. Rappresenta un protocollo per garantire che i messaggi che vengono scambiati durante la risoluzione di un indirizzo logico siano autentici e non corrotti. Questo protocollo funziona con la crittografia asimmetrica, dove ogni livello gerarchico del DNS utilizza chiavi pubbliche e private per firmare le richieste DNS. Si crea, dunque, una catena di fiducia a partire dalla chiave pubblica "fidata" di un server, il quale conosce l'host che fa le richieste DNS.
 
 ------------------------------------------------------------
+
+## Set UID ##
+**Real User ID** (**RUID**) rappresenta l'ID dell'utente che ha eseguito il processo.<br />
+**Effective User ID** (**EUID**) rappresenta i permessi dell'owner del file solo nel caso in cui il bit **Set UID** sia settato, altrimenti l'EUID rappresenta i permessi dell'utente che lo ha eseguito (quindi RUID == EUID).
+
+In CHMOD, è possibile specificare i permessi con 4 bit.<br />
+Il primo bit può assumere i valori $4/2/1$, i quali corrispondono a settare i bit Set UID sull'owner, sul gruppo e lo sticky bit.<br />
+Il secondo bit rappresenta i permessi per l'owner.<br />
+Il terzo bit rappresenta i permessi per i gruppi.<br />
+Il quarto bit rappresenta i permessi per gli altri.<br />
+
+------------------------------------------------------------
+
+## Scanning ##
+Lo **Scanning** rappresenta una tecnica nata per aiutare i sistemisti di rete a capire se nel sistema sono presenti superfici di attacco disponibili.
+Con lo scanning, viene valutato se esistono porte aperte che gli attaccanti possano usare per attaccare il sistema.<br /
+Allo stesso modo, gli attaccanti usanto questa stessa tecnica per trovare, appunto, superfici di attacco.<br />
+Esistono diverse modalità di scanning:
+1) **Verticale**: si scannerizzano $n$ porte su un singolo host;
+2) **Orizzontale**: si scannerizza una singola porta su $n$ host;
+3) **Ibrido**: un mix dei due approcci.
+
+Lo scanning può essere:
+1) **Attivo**: si scansiona immettendo del traffico nella rete e creando pacchetti che interrogano le macchine ed i dispositivi di rete;
+2) **Passivo**: Si osserva il traffico per capire se i servizi sono attivi o spenti sulle diverse porte.
+
+Il target può essere:
+1) **Singolo**: una macchina;
+2) **Multiplo**: più macchine.
+
+La scansione di una porta può dare i seguenti esiti:
+1) **Aperta**: il target ha risposto indicando che il servizio è in ascolto su quella porta;
+2) **Chiusa**: il target ha risposto indicando che le connessioni alla porta saranno rifiutate;
+3) **Bloccata/Filtrata**: il target non ha risposto, petanto le connessioni alla porta saranno rifiutate (è dovuto probabilmente alla presenza di un firewalll che blocca alcuni pacchetti).
+
+Ecco alcune scansioni esistenti:
+1) **ARP/ICMP scan**: permette di scoprire gli host attivi nella sottorete, inviando pacchetti di ping;
+2) **TCP scan** (**intrusivo**): si invia un pacchetto di SYN e si effettua un three way handshake. Se la porta oviettivo della scansione risulterà aperta, l'attaccante riceverà in risposta un pacchetto TCP con i flag SYN e ACK attivi. A questo pacchetto, l'attaccante risponderà con un pacchetto ACK. Altrimenti, nel caso di porta chiusa, riceverà un pacchetto TCP con flag RST attivo, il quale terminerà la connessione;
+3) **SYN scan** (**stealth**): si invia un pacchetto di SYN. Se l'host risponde con SYN/ACK, la porta è aperta (e non si completa il three way handshake). Se la vittima risponde con RST,  la porta è chiusa. Viene considerata una tecnica di scansione stealth perchè, tipicamente, nei log vengono memorizzate le connessioni complete e non le half open;
+4) **ACK scan** (**stealth**): per effettuare la scansione si invia un pacchetto TCP con il bit ACK attivo. Se il firewall blocca il pacchetto, la sorgente allo scadere di un timeout riesce a dedurre che la porta è filtrata. Se il firewall lascia passare il pacchetto, esso raggiunge il target, il quale, non avendo una sessione TCP attiva, risponderà con un pacchetto con il bit RST attivo. In questo caso, si deduce che la porta non è filtrata (non si sa se sia chiusa o aperta);
+5) **IDLE scan** (**stealth**): si utilizza uno zombie e si effettua l'analisi sul suo campo identification (un contatore il quale si incrementa ogni volta che un host invia un pacchetto);
+6) **Windows scan** (**stealth**): consiste nel mandare un ACK alla vittima ed analizzare il campo Window ricevuto con la risposta RST, il quale, se maggiore di zero, significa che la porta è open mentre, se uguale a zero, significa che la porta è chiusa. Non tutti i sistemi seguono questa logica;
+7) **FIN/NULL/Xmas scan** (**stealth**): si invia un pacchetto con le relative flag a 1 (con Xmas si mandano FIN, URG e PSH). Se il destinatario risponde con RST la porta è chiusa, altrimenti è open o filtered;
+8) **UDP scan** (**miscellaneous**): si invia un pacchetto UDP. Se si riceve una risposta UDP, allora la porta è aperta. Se invece si riceve un pacchetto ICMP unreachable, allora la porta è chiusa. Se, infine, si ricevono altri errori oppure nessuna risposta ICMP, allora la porta è filtered;
+9) **FTP bounce scan**: (**stealth**): si tratta di una scansione simile alla IDLE perchè usa come zombie un server FTP. Se la connessione viene stabilita, allora la porta è aperta. Se la connessione non viene stabilita, allora la porta è chiusa;
