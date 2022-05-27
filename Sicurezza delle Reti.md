@@ -71,9 +71,14 @@ Di conseguenza, le regole alla base di Biba sono il duale di quelle alla base de
 #### Clark-Wilson ####
 **Clark-Wilson** è uno dei modelli principali che segue questa tipologia di politiche di sicurezza in cui il sistema evolve tramite transazioni ben formate che cambiano il sistema da uno stato sicuro ad un altro stato sicuro.
 
-Si tratta di un modello che è basato su due principi:
-1) Prima e dopo ogni azione, le condizioni di consistenza devono essere mantenute. Una transazione **Well-formed** è una serie di operazioni grazie alle quali il sistema passa da uno stato consistente ad un altro consistente.
-2) E' necessario avere la separazione dei doveri. Viene infatti richiesto che il certificatore e gli implementatori siano persone diverse. Nel caso della transazione, al fine di corrompere i dati, devono essere due persone diverse a commettere errori simili o a collaborare.
+Si tratta di un modello nel quale l'integrità di un dato è definita da un insieme di vincoli:
+1) I dati che rispettano questi vincoli sono in uno stato coerente;
+2) L'integrità del sistema viene preservata durante la transazione. Prima e dopo ogni azione, le condizioni di consistenza devono essere mantenute. Una transazione **Well-formed** è una serie di operazioni grazie alle quali il sistema passa da uno stato consistente ad un altro consistente;
+3) Una transazione ben formata sposta il sistema da uno stato coerente ad un altro stato, sempre coerente.
+
+
+5) 
+6) E' necessario avere la separazione dei doveri. Viene infatti richiesto che il certificatore e gli implementatori siano persone diverse. Nel caso della transazione, al fine di corrompere i dati, devono essere due persone diverse a commettere errori simili o a collaborare.
 
 Nel modello vengono definite entità e regole:
 1) **Constrained Data Items** (**CDI**): sono tutti gli oggetti interni al sistema sui quali è posto il vincolo di integrità;
@@ -204,11 +209,13 @@ Una contromisura attuabile per difendersi dagli attacchi al DHCP è il **DHCP sn
 5) **VLAN number**;
 6) **Port ID**.
 
-La porta fisica dello switch viene chiusa ogniqualvolta arrivi un messaggio DHCP proveniente da host che non sono legittimati. Quindi, se un rogue server tenta di mandare un pacchetto DHCP, in risposta la porta viene chiusa.
+Lo switch, il quale mette in comunicazione i vari dispositivi della rete, prevede che vi siano specifiche porte autorizzate che consentano la ricezione della DHCP offer. <br />
+Tutte le DHCP offer che arrivano su porte non autorizzate vengono quindi scartate. Infatti, la porta fisica dello switch viene chiusa ogniqualvolta arrivi un messaggio DHCP proveniente da host che non sono legittimati.<br />
+Quindi, se un rogue server tenta di mandare un pacchetto DHCP, in risposta la porta viene chiusa ed il client che si è finto un server DHCP non riesce a mettere in atto l'attacco.
 
 Una sicurezza ancora maggiore si ottiene abilitando l'**option 82**, nota anche come **DHCP Relay Agent Information**, che prevede il coinvolgimento attivo dello switch nella comunicazione tra client e server.<br />
 Questa procedura è utile se client e server non fanno parte della stessa sottorete. Quando il client invia una richiesta al server DHCP, lo switch aggiunge informazioni ulteriori all'header della richiesta. Grazie a queste informazioni, il server può risalire allo switch e quindi alla posizione del client.<br />
-Il server DCHP legge i dettagli aggiuntivi e assegna gli indirizzi IP in base alle informazioni sull posizione. Il server invia il pacchetto di risposta al client tramite lo switch. Se, nel momento in cui il paccheto raggiunge lo switch, le informazioni contenute sono rimaste invariate, lo switch riconosce che la comunicazione avviene effettivamente attraverso di esso. A questo punto, il dispositivo cancella i dati dell'option 82 dall'header e inoltra la risposta. Inoltre, l'aver ricordato la posizione del client (a quale porta fisica dello switch è collegato) rende impossibile effettuare il DHCP starvation. <br />
+Il server DCHP legge i dettagli aggiuntivi e assegna gli indirizzi IP in base alle informazioni sulla posizione. Il server invia il pacchetto di risposta al client tramite lo switch. Se, nel momento in cui il pacchetto raggiunge lo switch, le informazioni contenute sono rimaste invariate, lo switch riconosce che la comunicazione avviene effettivamente attraverso di esso. A questo punto, il dispositivo cancella i dati dell'option 82 dall'header e inoltra la risposta. Inoltre, l'aver ricordato la posizione del client (a quale porta fisica dello switch è collegato) rende impossibile effettuare la DHCP starvation. <br />
 Questo perchè lo switch si accorgerebbe che stanno arrivando molteplici richieste di assegnazioni di IP tutte dalla stessa porta (con MAC differenti).
 
 ------------------------------------------------------------
@@ -228,7 +235,7 @@ I principali obiettivi di attacco per un host malevolo BGP sono:
 4) **Instability**: attacco in grado di distruggere rotte ed interrompere la connettività, oppure in grado di aumentare drasticamente i tempi di convergenza (ovvero i tempi per stabilizzare le rotte). Avviene inviando in rapida successione annunci che cambiano di continuo la rete. I pacchetti vengono sballottati per la rete.
 
 Gli attacchi possibili sono:
-1) **Prefix Hijacking**: un attaccante B anuncia di ocnoscere tratte più veloci per raggiungere un particolare AS (chiamato V). Tutti gli AS che sono connessi direttamente a V non saranno affetti da tale annuncio. Il resto degli AS e di internet invece saranno affetti. Ciò significa che da quel momento tutti gli AS che dovranno comunicare con V passeranno da B il quale successivamente rimanderà il traffico a V. In questo modo, B è in grado di sniffare tutti i messaggi diretti a V (**subversion**);
+1) **Prefix Hijacking**: un attaccante B anuncia di conoscere tratte più veloci per raggiungere un particolare AS (chiamato V). Tutti gli AS che sono connessi direttamente a V non saranno affetti da tale annuncio. Il resto degli AS e di internet invece saranno affetti. Ciò significa che da quel momento tutti gli AS che dovranno comunicare con V passeranno da B il quale successivamente rimanderà il traffico a V. In questo modo, B è in grado di sniffare tutti i messaggi diretti a V (**subversion**);
 2) **De-Aggregation**: un attaccante B annuncia di conoscere un sotto-insieme di indirizzi IP con un livello più specifico. Se il router V conosce gli indirizzi x/22 e B sostiene di conoscere gli indirizzi x/24, il traffico verrà dirottato su B. Infatti, secondo il protocollo BGP, si preferisce l'Access Point che abbia una maggiore specificità di indirizzi, cioè B, in quanto in possesso di una subnet mask più precisa. In questi modo, il traffico diretto a V verrà gitato a B, il quale sarà in grado di sniffarne il contenuto (**subversion**);
 3) **AS Path Shortening**: viene annunciato un nuovo path che taglia fuori la vittima (**instability**);
 4) **Annunci Contraddittori**: un attaccante B annuncia una rotta sbagliata per fare congestione su un particolare AS, in modo tale che questo venga sovraccaricato (**instability/redirection**);
@@ -239,7 +246,7 @@ Le principali contromisure adottate da BGP sono:
 2) **MD5**: crittografare i messaggi;
 3) [[IPSEC]];
 4) **Route Filtering**: vengono filtrati i messaggi di update in ingresso ed in uscita in modo tale che ci si assicuri che le rotte seguano specifiche regole;
-5) **Resource Public Key Infrastructure (RPKI)**: questo sistema roevede l'esistenza di una repository contenente delle key. Gli AS ottengono un certificato **Route Origin Authorizations** (**Roa**), fornito da un'entitò particolare. Quando un BGP vuole annunciare il suo ingresso ed il set 
+5) **Resource Public Key Infrastructure (RPKI)**: questo sistema prevede l'esistenza di una repository contenente delle key. Gli AS ottengono un certificato **Route Origin Authorizations** (**Roa**), fornito da un'entità particolare. Nello specifico, quando un AS certificato vuole inviare un update, lo farà aggiungendo il proprio certificato, permettendo cos→ agli altri AS che riceveranno il pacchetto di confermare la sua identità.
 
 
 ------------------------------------------------------------
@@ -323,3 +330,27 @@ Ecco alcune scansioni esistenti:
 7) **FIN/NULL/Xmas scan** (**stealth**): si invia un pacchetto con le relative flag a 1 (con Xmas si mandano FIN, URG e PSH). Se il destinatario risponde con RST la porta è chiusa, altrimenti è open o filtered;
 8) **UDP scan** (**miscellaneous**): si invia un pacchetto UDP. Se si riceve una risposta UDP, allora la porta è aperta. Se invece si riceve un pacchetto ICMP unreachable, allora la porta è chiusa. Se, infine, si ricevono altri errori oppure nessuna risposta ICMP, allora la porta è filtered;
 9) **FTP bounce scan**: (**stealth**): si tratta di una scansione simile alla IDLE perchè usa come zombie un server FTP. Se la connessione viene stabilita, allora la porta è aperta. Se la connessione non viene stabilita, allora la porta è chiusa;
+
+La tecnica **IDLE scan** prevede di avere una macchina zombie in stato di idle (non deve ricevere/inviare traffico di rete per non incrementare il campo identification) e considerare il suo campo identification per capire lo stato di una porta. In generale, il sistema operativo genera il valore per questo campo in maniera sequenziale per ogni pacchetto trasmesso, per cui esso cambia solo quando un host trasmette pacchetti (mentre rimane inalterato se non ne trasmette).
+
+Lo scan avviene secondo la seguente procedura:
+1) l'attaccante interroga lo zombie per conoscere l'attuale valore del campo identification;
+2) l'attaccante manda un messaggio di SYN alla vittima con IP spoofato dello zombie;
+3) se la vittima risponderà allo zombie con un SYN/ACK, allora lo zombie risponderà con un pacchetto RST (in quanto non si aspetta nessuna connessione da parte della vittima), incrementando così il campo identification (perchè il campo identification incrementa ogni volta che lo zombie trasmette un pacchetto);
+4) l'attaccante invia nuovamente un messaggio allo zombie e scopre di quanto si è incrementato il campo identification;
+
+In questo modo, l'attaccante è in grado di capire se la vittima è attiva o meno. Se il campo identification è incrementato solo di 1, vuol dire che la porta è closed oppure è filtered. Se il campo identification, invece, è incrementato di 2, la porta è open.
+
+Per la tecnica **FTP bounce scan**, invece, si usa un meccanismo simile a quello della IDLE scan. Il server FTP si usa come uno zombie per avere indizi sulla macchina vittima. In FTP esiste il comando PORT che consente all'attaccante di iniziare una connessione dati per trasferire, per esempio, file o la lista delle directory alla vittima (passando dal server). Tramite questo comando, l'attaccante specifica l'IP della vittima e la porta da attaccare. Si tratta di un comando usato in modalità "attiva". Il server FTP proverà quindi ad aprire con la vittima una connessione TCP sulla porta specificata dall'attaccante.<br />
+Se la porta è chiusa, la vittima rifiuterà il three-way handshake.<br />
+Se la porta è aperta, la vittima accetterà il three-way handshake con il server FTP e accetterà il trasferimento. Il server FTP avvisa l'attaccante dell'esito di queste operazioni.<br />
+Si tratta di una tecnica stealth perchè l'attaccante si nasconde dietro il server FTP.<br />
+L'attaccante lascia però tracce sul server FTP.
+
+Le contromisure per questo tipo di scansione sono:
+1) impedire che l'indirizzo IP specificato dal comando PORT sia diverso da quello dell'FTP Client;
+2) Evitare che la porta abbia un PORT ID minore di 1023 e che, quindi, si stia tentando un attacco verso servizi standard.
+
+------------------------------------------------------------
+
+## IPSEC ##
