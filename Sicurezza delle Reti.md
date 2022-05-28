@@ -354,3 +354,110 @@ Le contromisure per questo tipo di scansione sono:
 ------------------------------------------------------------
 
 ## IPSEC ##
+**IPSEC** è un protocollo di livello network che mira a rendere sicuro l'utilizzo di IP. Essendo un protocollo del terzo livello, permette di proteggere i dati di tutti i livelli superiori.<br />
+Esso è costituito da un insieme di protocolli, che sono:
+1) **AH( Authentication Header)**: per autenticare e rendere sicuri i dati;
+2) **ESP (Encapsulating Security Payload)** per cifrare, autenticare e rendere sicuri i dati;
+3) **IKE (Internet Key Exchange)**: utilizzato per negoziare i parametri di sicurezza e stabilire chiavi di autenticazione.
+
+AH ed ESP sono interscambiabili, ma ultimamente ESP sta diventando lo standard grazie alle funzionalità a breve illustrate. IPSEC è in grado di garantire confidenzialità. integrità ed autenticazione sul traffico. Infatti, i dati vengono firmati dal sender e tale firma viene verificata dal ricevente.<br />
+IPSEC funziona secondo due modalità:
+1) **Tunnel Mode**: il contenuto di un pacchetto IP viene cifrato ed incapsulato in un altro pacchetto IP. Questa tecnica risulta utile quando il pacchetto deve transitare attraverso nodi che, per qualche ragione, non conoscono IPSEC;
+2) **Transport Mode**: viene aggiunto un header al pacchetto P orginale (non viene creato un nuovo pacchetto, ma viene aggiunta un'estensione) ed il tutto viene cifrato.
+
+**Authentication Header** fa in modo di garantire l' autenticazione dei pacchetti e la loro integrità.<br />
+Non è in grado, però, di fornire confidenzialità.<br />
+Sia in modalità tunnel che transport viene aggiunto al pacchetto l'header AH, il quale contiene, tra le varie informazioni, anche l'hash del pacchetto (per garantirne l'integrità). La differenza tra le due modalità è che, in tunnel mode, viene aggiunto anche l'header del nuovo pacchetto.
+
+**Encapsulating Security Payload** invece, oltre alle funzionalità di AH, garantisce anche la confidenzialità dei dati, utilizzando la cifratura simmetrica.<br />
+Sia in trasport mode che in tunnel mode, viene aggiunto al pacchetto l'header ESP ma, nella modalità tunnel, il pacchetto viene anche incapsulato in un nuovo pacchetto IP (e, quindi, viene aggiunto un nuovo header IP). In modalità tunnel, viene cifrato anche l'header IP originale.
+
+Le due parti in procinto di comunicare devono scambiarsi le credenziali prima di iniziare. Per farlo, fanno uso delle **SA (Security Associations)**, le quali sono una collezione di parametri richiesti per stabilire una sessione sicura. Queste collezioni sono unidirezionali (è necessario generarne, quindi, due) e sono costituite da tre parametri:
+1) **SPI (Security Parameter Index)**: definisce i parametri della connessione;
+2) **IP Destination Address**;
+3) **Security Protocol Identifier**: AH o ESP.
+
+Le security associations sono salvate all'interno del **SAD** (**Security Association Database**) e sono indirizzabili mediante l'SPI.
+
+Per generare le SA, si ricorre al protocollo **IKE** (basato su ISAKMP). Questa procedura si sviluppa in due fasi:
+1) nella prima fase, i due host si scambiano le informazioni necessarie a derivare le chiavi richieste per stabilire una ISAKMP SA, la quale verrà utilizzata nella fase 2;
+2) nella seconda fase, vengono inviate le chiavi vere e proprie per far sì che vengano utilizzate nel trasferimento dati.
+
+La prima fase può essere realizzata con due approcci:
+1) **Main Mode**: è un approccio più lento ma più flessibile. Il sender invia una o più proposte all'altro peer. Il responder seleziona una proposta;
+2) **Aggressive Mode**: è più veloce ed utilizza meno pacchetti.
+
+La main mode protegge, però, l'identità dei peers mentre l'aggressive mode no.
+
+## SSL/TTS ##
+Il protocollo **TTS** (**SSL** è la versione più antica) è un protocollo che consente di rendere sicuro il traffico a livello di trasporto.<br />
+Il protocollo prevede due fasi, una fase di sessione ed una fase di connessione. La prima consiste nell'instaurare un canale sicuro tra i due host mentre la seconda è la fase di comunicazione vera e propria.<br />
+La sessione può essere riutilizzata per altre connesssioni. Questo è vantaggioso in quanto permette di evitare di dover rimettere d'accordo le parti sugli algoritmi da utilizzare.<br />
+Il protocollo è costituito da 4 sottoprotocolli:
+1) **Protocollo di handshake**: ;
+2) **Protocollo di alert**: ;
+3) **Protocollo change cypher**: ;
+4) **Protocollo record cypher**: .
+
+------------------------------------------------------------
+
+## VPN ##
+Una **Virtual Private Network** (**VPN**) è una rete virtuale privata nella quale è possibile costruire una LAN privata, facendo sì che i dispositivi ad essa connessi siano sparsi per il globo.<br />
+Questa tecnologia porta diversi vantaggi, tra cui:
+1) non vi è necessità di usare cavi/linee dedicate per connettere una sottorete;
+2) flessibilità nell'allargamento della rete;
+3) la navigazione è anonima e sicura.
+
+Purtroppo l'utilizzo di una VPN comporta degli svantaggi, dei quali i principali sono dati dal fatto che:
+1) è necessario conoscere a fondo i problemi di sicurezza e, quindi, conoscere le relative precauzioni da prendere;
+2) le VPN devono supportare i protocolli diversi dall'IP e dalla tecnologia di rete interna esistente;
+3) le prestazioni di una VPN dipendono in gran parte da fattori esterni.
+
+Quando si parla di VPN, vi sono tre diverse categorie:
+1) **Trusted VPN**: sono VPN in cui nessun terzo può entrare nella rete privata e viene garantita l'integrità del circuito della rete privata dla provider della VPN. Il provider fornisce un insieme di nodi "fidati";
+2) **Secure VPN**: sono VPN nel quale il traffico è cifrato ed agisce come un tunnel, dove non è possibile spiare cosa contengono i pacchetti della rete virtuale;
+3) **Hybrid VPN**: rappresenta l'unione delle due reti viste sopra.
+
+Nelle VPN possono presentarsi 3 diverse topologie di rete:
+1) **Intranet**: definisce una rete in cui ha accesso solo l'azienda (e le relative filiali);
+2) **Extranet**: definisce una rete in cui hanno accesso l'azienda ed i suoi partner (ma solo a determinate risorse);
+3) **Remote Access**: permette l'accesso da remoto alla rete aziendale a prescinfere dal luogo fisico in cui un utente si trova.
+
+------------------------------------------------------------
+
+## Challenge-Response ##
+I protocolli **Challenge-Response** sono protocolli in cui non è previsto l'invio di chiavi per autenticarsi in un sistema. Sono protocolli studiati per l'autenticazione e, nello specifico, si basano su segreti che solo le due parti in causa conoscono.<br />
+Quando un client desidera autenticarsi con un server, quest'ultimo gli propone una challenge la quale, se il client risponde correttamente, gli permetterà di autenticarsi.
+
+Il principale vantaggio dato da questo protocollo è proprio la semplicità di utilizzo in quanto non è necessarrio scambiarsi credenziali che rappresentano informazioni molto sensibili che, comunque, devono essere mantenute segrete da utenti malintenzionati.
+
+Lo svantaggio, invece, è dato dal fatto che si tratta di un protocollo vulnerabile al MITM. Nello specifico, definito $T$ l'attaccante, $A$ il client e $B$ il server, se $T$ volesse autenticarsi impersonificando $B$, potrà farlo fino a quando $A$ rimarrà online, secondo i seguenti passaggi:
+1) quando il client $A$ prova ad autenticarsi con il server $B$, l'attaccante $T$ posto nel mezzo riceve il tentativo di connessione del client. L'attaccante lo inoltra quindi al server spoofando l'IP del client;
+2) $B$ risponde proponendo la challenge che, di nuovo (a causa del MITM), passa per l'attaccante. L'attaccante, fingendosi il server, comunica la challenge al client;
+3) il client risolve la challenge e la invia (sempre a causa del MITM) all'attaccante. L'attaccante la invia al server ed, in questo modo, è in grado di autenticarsi.
+
+Se l'utente ha necessità di collegarsi con più server che sfruttano il meccanismo di challenge-response, diventa però oneroso ricordare tutte le password/chiavi. Ci si affida, quindi, ad un **Trusted Third Party**. Viene utilizzato un servizio di autenticazione fidato sulla rete, il quale funge da controllore che conosce tutte le password ma è un **single point of failure**.
+
+------------------------------------------------------------
+
+## Firewall ##
+Il **Firewall** rappresenta la misura di sicurezza minima in un sistema connesso ad internet. Esso si interpone tra la rete interna ed internet, filtrando le richieste in ingresso ed in uscita per cercare di proteggere la rete da utenti malintenzionati.<br />
+Il firewall deve essere l'unico punto di contatto tra il mondo esterno e la rete da proteggere.<br />
+Esistono diversi tipi di firewall: innanzitutto, è necessario precisare che essitono firewall hardware ma anche software. Su ogni host è presente un firewall software. A seconda del livello dello **stack ISO/OSI** a cui sono implementati, è possibile distinguere:
+1) **Static Packet Filter**: livello di rete ISO/OSI 3 o 4;
+2) **Stateful Filtering**: livello di rete ISO/OSI 3 o 4;
+3) **Application Gateway**: livello di rete ISO/OSI 7;
+4) **Circuit-Level Gateway**: livello di rete ISO/OSI 5.
+
+Uno **Static Packet Filter** (o **stateless**) analizza ogni pacchetto che lo attraversa, senza tenere conto dei pacchetti che lo hanno preceduto. In tale analisi, vengono considerate solo alcune informazioni contenute nell'header del pacchetto, in particolare quelle appartenenti ai primi tre livell idel modello OSI, più alcune informazioni del quarto livello. Le informazioni in questione sono:
+1) l'indirizzo IP della sorgente;
+2) l'IP destinazione;
+3) la porta sorgente;
+4) la porta destinazione;
+5) il protocollo di trasporto;
+
+Su questi parametri, vengono costruite le regole che formalizzano la policy del firewall e che stabiliscono quali pacchetti lasciar passare e quali bloccare.<br />
+I firewall appartenenti a questa tipologia sono semplici e leggeri ma non garantiscono un'elevata sicurezza.
+
+
+
