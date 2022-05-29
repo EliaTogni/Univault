@@ -470,4 +470,11 @@ Un **Circuit Level**, invece, sfrutta sempre i proxy server ma non è applicatio
 ------------------------------------------------------------
 
 ## IDS e IPS ##
-Un **Intrusion Detection System** (o **IDS**) è un componente del sistema in grado di rilevare e far scattare l'allarme quando avviene un'intrusione o un abuso delle politiche di rete da parte di utenti esterni.
+Un **Intrusion Detection System** (o **IDS**) è un componente del sistema in grado di rilevare e far scattare l'allarme quando avviene un'intrusione o un abuso delle politiche di rete da parte di utenti esterni.<br />
+Un IDS non attua alcuna misura per bloccare o rispondere ad eventuali minacce, bensì si cura solamente di avvertire il sistema della presenza di un attacco in corso e di tenerne traccia mediante un log. Sarà compito dell'amministratore di sistema analizzare i log e mettere in atto misure di sicurezza e recovery.<br />
+Gli IDS possono essere:
+1) **passivi**: si limitano ad analizzare pattern di attacchi e a verificarne la presenza;
+2) **attivi**: sono in continua evoluzione in quanto sfruttano tecniche di Deep Learning per apprendere dalle situazioni e migliorare il servizio offerto.
+
+Gli IDS possono essere posizionati sugli host (**HIDS**) oppure in punti strategici della rete (**NIDS**). Un IDS è costituito da vari sensori che comunicano in continuazione con un **director**. Il direcotr si occupa di analizzare i dati dei sensori ed eventualmente lanciare un allarme.<br />
+Gli **Intrusion Prevention Systems** (o **IPS**) sono degli IDS che non si limitano a sollevare l'allarme. Sono, infatti, in grado di prendere alcune contromisure (sempre ad attacco in corso, a differenza di ciò che dice il nome non sono in grado di prevenire attacchi), tra cui modificare le regole del firewall per cercare, quantomeno, di bloccare l'attacco. Si tratta di un meccanismo che permette di limitare i danni.
