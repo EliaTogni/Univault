@@ -459,5 +459,15 @@ Uno **Static Packet Filter** (o **stateless**) analizza ogni pacchetto che lo at
 Su questi parametri, vengono costruite le regole che formalizzano la policy del firewall e che stabiliscono quali pacchetti lasciar passare e quali bloccare.<br />
 I firewall appartenenti a questa tipologia sono semplici e leggeri ma non garantiscono un'elevata sicurezza.
 
+Uno **Stateful Filtering** utilizza la stateful inspection, ossia quel processo per cui ogni singola connessione autorizzata viene registrata dal firewall in un'apposita tabella (la cosiddetta connection o stable state). In pratica, ogni volta che un pacchetto arriva al firewall, esso viene verificato per comprendeere se esso fa parte di una connessione precedentemente stabilita: in caso affermatvio, esso viene lasciato passare senza ulteriori controlli, altrimenti subisce la sorte di un normale pacchetto in ingresso.
 
+Un **Application Gateway** è un firewall che offre un servizio stateful e usa a supporto dei proxy. Come ricorda il nome, questo gateway è in grado di analizzare il contenuto dei pacchetti al livello applicativo. Ciò implica che se il firewall non conosce il protocollo utilizzato al livello 7, inizia allora a comportarsi come un normale firewall (tuttavia esistano numerose estensioni per allargare il pool di protocolli che il firewall conosce).<br />
+Il problema legato a questo firewall è che, spesso, i contenuti sono cifrati. Per ovviare a questo problema, si utilizzano dei proxy. Il proxy viene utilizzato per decifrare i pacchetti ed analizzarne il contenuto per individuare complesse tipologie di attacco (è utilizzato per cercare dei pattern riconducibili ad attacchi conosciuti). Nello specifico, il firewall gira il pacchetto al proxy, il quale procede con l'analisi. Se il pacchetto ispezionato non presenta nessun contenuto sospetto, allora il proxy lo ammette nella rete.<br />
+Ovviamente l'utilizzo del proxy rallenta notevolmente la gestione dei pacchetti.
 
+Un **Circuit Level**, invece, sfrutta sempre i proxy server ma non è application-aware. Si limita, quindi, ad avere funzioni stateful.
+
+------------------------------------------------------------
+
+## IDS e IPS ##
+Un **Intrusion Detection System** (o **IDS**) è un componente del sistema in grado di rilevare e far scattare l'allarme quando avviene un'intrusione o un abuso delle politiche di rete da parte di utenti esterni.
