@@ -223,30 +223,39 @@ Questo perchè lo switch si accorgerebbe che stanno arrivando molteplici richies
 ### Attacchi a BGP ###
 [[Border Gateway Protocol]] è il protocollo che permette la comunicazione tra **Autonomous Systems**. Si parla di **iBGP** (**Internal**) quando ci si riferisce al BGP utilizzato all'interno di un Autonomous System. Si parla, invece, di **eBGP** (**external**) quando ci si riferisce al BGP utilizzato nella comunicazione tra AS diversi.
 
+Il protocollo funziona secondo le seguenti regole:
+1) il nodo $A$ invia un update ai nodi vicini, comunicando il suo essere in grado di indirizzare il prefisso $X$;
+2) Il nodo $B$ riceve il messaggio di $A$ e, da quel momento, comunica che è in grado anch'esso di indirizzare $X$ , passando però per $A$. Si crea quindi un **AS path (A B X)**;
+3) Ovviamente, anche gli altri AS comunicheranno i propri path indirizzabili. Se un AS riceve un path già indirizzabile, non lo inoltra.
+
 Questo protocollo può essere attaccato su molti fronti:
-1) **Disponibilità**;
-2) **Confidenzialità**;
+1) **Disponibilità** (DoS);
+2) **Confidenzialità** (messaggi in chiaro);
 3) **Integrità**.
+
+L'integrità è, in realtà, un tipo di debolezza difficile da attaccare grazie al fatto che i vari AS sono collegati tramite singoli HOP e, quindi, è difficile applicare un attacco MITM modificando il messaggio che i due AS si scambiano.
 
 I principali obiettivi di attacco per un host malevolo BGP sono:
 1) **Blackholing**: consiste nel creare dei black holes nei quali i pacchetti spariscono. Nello specifico, vengono istruiti i vari AS che un certo $\text{AS}_{x}$ (vittima) è in grado di gestire un determinato prefisso meglio di chiunque altro (quando, in realtà, $\text{AS}_{x}$ non è in grado di farlo). In questo modo, i pacchetti sotto quel prefisso verranno girati ad $\text{AS}_{x}$ e lui non farà altro che dropparli in quanto non sono di sua effettiva competenza.
 2) **Redirection**: il traffico viene rediretto e viene fatto passare per un router malevolo in grado di sniffare i vari pacchetti, oppure per far crollare una sottorete a causa del traffico ingente di pacchetti.
 3) **Subversion**: redirezione dei pacchetti per farli passare attraverso un dispositivo controllato dall'attaccante in modo tale che l'attaccante sia in grado di leggere e/o modificare i dati per poi essere propagato al legittimo destinario.
-4) **Instability**: attacco in grado di distruggere rotte ed interrompere la connettività, oppure in grado di aumentare drasticamente i tempi di convergenza (ovvero i tempi per stabilizzare le rotte). Avviene inviando in rapida successione annunci che cambiano di continuo la rete. I pacchetti vengono sballottati per la rete.
+4) **Instability**: distruzione delle rotte ed interruzione della connettività, oppure aumento drastico dei tempi di convergenza (ovvero i tempi per stabilizzare le rotte). Questo obiettivo si ottiene inviando in rapida successione annunci che cambiano di continuo la topologia della rete. I pacchetti vengono, quindi, sballottati per la rete.
 
 Gli attacchi possibili sono:
-1) **Prefix Hijacking**: un attaccante B anuncia di conoscere tratte più veloci per raggiungere un particolare AS (chiamato V). Tutti gli AS che sono connessi direttamente a V non saranno affetti da tale annuncio. Il resto degli AS e di internet invece saranno affetti. Ciò significa che da quel momento tutti gli AS che dovranno comunicare con V passeranno da B il quale successivamente rimanderà il traffico a V. In questo modo, B è in grado di sniffare tutti i messaggi diretti a V (**subversion**);
-2) **De-Aggregation**: un attaccante B annuncia di conoscere un sotto-insieme di indirizzi IP con un livello più specifico. Se il router V conosce gli indirizzi x/22 e B sostiene di conoscere gli indirizzi x/24, il traffico verrà dirottato su B. Infatti, secondo il protocollo BGP, si preferisce l'Access Point che abbia una maggiore specificità di indirizzi, cioè B, in quanto in possesso di una subnet mask più precisa. In questi modo, il traffico diretto a V verrà gitato a B, il quale sarà in grado di sniffarne il contenuto (**subversion**);
+1) **Prefix Hijacking**: un attaccante $B$ anuncia di conoscere tratte più veloci per raggiungere un particolare AS (chiamato $V$). Tutti gli AS che sono connessi direttamente a $V$ non saranno affetti da tale annuncio. Il resto degli AS e di internet invece saranno affetti. Ciò significa che, da quel momento, tutti gli AS che dovranno comunicare con $V$ passeranno da $B$ il quale successivamente rimanderà il traffico a $V$. In questo modo $B$ è in grado di sniffare tutti i messaggi diretti a V (**subversion**);
+2) **De-Aggregation**: un attaccante $B$ annuncia di conoscere un sotto-insieme di indirizzi IP con un livello più specifico. Se il router $V$ conosce gli indirizzi $x/22$ e $B$ sostiene di conoscere gli indirizzi $x/24$, il traffico verrà dirottato su $B$. Infatti, secondo il protocollo BGP, si preferisce l'Access Point che fornisca una maggiore specificità di indirizzi, cioè $B$, in quanto in possesso di una subnet mask più precisa. In questo modo, il traffico diretto a $V$ verrà instradato verso $B$, il quale sarà in grado di sniffarne il contenuto (**subversion**);
 3) **AS Path Shortening**: viene annunciato un nuovo path che taglia fuori la vittima (**instability**);
-4) **Annunci Contraddittori**: un attaccante B annuncia una rotta sbagliata per fare congestione su un particolare AS, in modo tale che questo venga sovraccaricato (**instability/redirection**);
-5) **Link Flapping**: vengono mandati tanti update sugli AS path. In questo modo, coloro che ricevono questa serie di aggiornamenti si convincono che il percorso è flapping. Pertanto si attiva il **router dampening**, il quale consiste nel riattivare un particolare path con tempi sempre più lunghi per fare in modo che il router sovraccaricato si riesca a scaricare senza dover gestire altri pacchetti;
+4) **Annunci Contraddittori**: un attaccante $B$ annuncia una rotta sbagliata per fare congestione su un particolare AS, in modo tale che questo venga sovraccaricato (**instability/redirection**);
+5) **Link Flapping**: vengono mandati tanti update sugli AS path. In questo modo, coloro che ricevono questa serie di aggiornamenti si convincono che il percorso è **flapping**. Pertanto si attiva il **router dampening**, il quale consiste nel riattivare un particolare path con tempi sempre più lunghi per fare in modo che il router sovraccaricato si riesca a scaricare senza dover gestire altri pacchetti;
 
 Le principali contromisure adottate da BGP sono:
-1) **Time To Leave (TTL)**: poichè i BGP router sono ad una distanza di un singolo HOP l'uno dall'altro, si accettano solo pacchetti con uno specifico TTL. Il TTL viene decrementato ad ogni singolo HOP. Tutti i messaggi BGP vengono inviati con un TTL pare a 255. Con questo sistema di sicurezza, si accettano solo i messaggi con un TTL pari a 254;
+1) **Time To Leave (TTL)**: poichè i BGP router sono ad una distanza di un singolo HOP l'uno dall'altro, si accettano solo pacchetti con uno specifico TTL. Il TTL viene decrementato ad ogni singolo HOP. Tutti i messaggi BGP vengono inviati con un TTL pari a 255. Con questo sistema di sicurezza, si accettano solo i messaggi con un TTL pari a 254;
 2) **MD5**: crittografare i messaggi;
 3) [[IPSEC]];
 4) **Route Filtering**: vengono filtrati i messaggi di update in ingresso ed in uscita in modo tale che ci si assicuri che le rotte seguano specifiche regole;
-5) **Resource Public Key Infrastructure (RPKI)**: questo sistema prevede l'esistenza di una repository contenente delle key. Gli AS ottengono un certificato **Route Origin Authorizations** (**Roa**), fornito da un'entità particolare. Nello specifico, quando un AS certificato vuole inviare un update, lo farà aggiungendo il proprio certificato, permettendo cos→ agli altri AS che riceveranno il pacchetto di confermare la sua identità.
+5) **Resource Public Key Infrastructure (RPKI)**: questo sistema prevede l'esistenza di una repository contenente delle key. Gli AS ottengono un certificato **Route Origin Authorizations** (**Roa**), fornito da un'entità particolare. Nello specifico, quando un AS certificato vuole inviare un update, lo farà aggiungendo il proprio certificato, permettendo così agli altri AS che riceveranno il pacchetto di confermare la sua identità.<br />Una Public Key Infrastructure viene utilizzata anche dalle versioni sicure del protocollo BGP (**S-BGP** e **SO-BGP**).
+
+
 
 
 ------------------------------------------------------------
