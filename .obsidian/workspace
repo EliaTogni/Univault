@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Sicurezza delle Reti.md",
-            "mode": "source"
+            "file": "Algoritmi Paralleli e Distribuiti.md",
+            "mode": "preview"
           }
         }
       }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Sicurezza delle Reti.md",
+                "file": "Algoritmi Paralleli e Distribuiti.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,6 +88,8 @@
   },
   "active": "8df90cd4a246a4d7",
   "lastOpenFiles": [
+    "Algoritmi Paralleli e Distribuiti.md",
+    "Teorema della Convergenza per la Delta Rule.md",
     "Sicurezza delle Reti.md",
     "TCP/IP.md",
     "Border Gateway Protocol.md",
@@ -95,8 +97,6 @@
     "Hub.md",
     "Switch.md",
     "IPSEC.md",
-    "Man in the Middle.md",
-    "MAC Address.md",
-    "Address Resolution Protocol.md"
+    "Man in the Middle.md"
   ]
 }
