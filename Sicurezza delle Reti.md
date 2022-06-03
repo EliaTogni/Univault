@@ -224,8 +224,8 @@ Questo perchè lo switch si accorgerebbe che stanno arrivando molteplici richies
 [[Border Gateway Protocol]] è il protocollo che permette la comunicazione tra **Autonomous Systems**. Si parla di **iBGP** (**Internal**) quando ci si riferisce al BGP utilizzato all'interno di un Autonomous System. Si parla, invece, di **eBGP** (**external**) quando ci si riferisce al BGP utilizzato nella comunicazione tra AS diversi.
 
 Il protocollo funziona secondo le seguenti regole:
-1) il nodo $A$ invia un update ai nodi vicini, comunicando il suo essere in grado di indirizzare il prefisso $X$;
-2) Il nodo $B$ riceve il messaggio di $A$ e, da quel momento, comunica che è in grado anch'esso di indirizzare $X$ , passando però per $A$. Si crea quindi un **AS path (A B X)**;
+1) il nodo $A$ invia un update ai nodi adiacenti, comunicando il suo essere in grado di indirizzare il prefisso $X$;
+2) Il nodo $B$ riceve il messaggio di $A$ e, da quel momento, comunica che è in grado anch'esso di indirizzare $X$, passando però per $A$. Si crea quindi un **AS path (B A X)**;
 3) Ovviamente, anche gli altri AS comunicheranno i propri path indirizzabili. Se un AS riceve un path già indirizzabile, non lo inoltra.
 
 Questo protocollo può essere attaccato su molti fronti:
@@ -233,7 +233,7 @@ Questo protocollo può essere attaccato su molti fronti:
 2) **Confidenzialità** (messaggi in chiaro);
 3) **Integrità**.
 
-L'integrità è, in realtà, un tipo di debolezza difficile da attaccare grazie al fatto che i vari AS sono collegati tramite singoli HOP e, quindi, è difficile applicare un attacco MITM modificando il messaggio che i due AS si scambiano.
+L'integrità è, in realtà, un fronte difficile da attaccare in quanto i vari AS sono collegati tramite singoli HOP e, quindi, è difficile applicare un attacco MITM modificando il messaggio che i due AS si scambiano.
 
 I principali obiettivi di attacco per un host malevolo BGP sono:
 1) **Blackholing**: consiste nel creare dei black holes nei quali i pacchetti spariscono. Nello specifico, vengono istruiti i vari AS che un certo $\text{AS}_{x}$ (vittima) è in grado di gestire un determinato prefisso meglio di chiunque altro (quando, in realtà, $\text{AS}_{x}$ non è in grado di farlo). In questo modo, i pacchetti sotto quel prefisso verranno girati ad $\text{AS}_{x}$ e lui non farà altro che dropparli in quanto non sono di sua effettiva competenza.
@@ -242,7 +242,7 @@ I principali obiettivi di attacco per un host malevolo BGP sono:
 4) **Instability**: distruzione delle rotte ed interruzione della connettività, oppure aumento drastico dei tempi di convergenza (ovvero i tempi per stabilizzare le rotte). Questo obiettivo si ottiene inviando in rapida successione annunci che cambiano di continuo la topologia della rete. I pacchetti vengono, quindi, sballottati per la rete.
 
 Gli attacchi possibili sono:
-1) **Prefix Hijacking**: un attaccante $B$ anuncia di conoscere tratte più veloci per raggiungere un particolare AS (chiamato $V$). Tutti gli AS che sono connessi direttamente a $V$ non saranno affetti da tale annuncio. Il resto degli AS e di internet invece saranno affetti. Ciò significa che, da quel momento, tutti gli AS che dovranno comunicare con $V$ passeranno da $B$ il quale successivamente rimanderà il traffico a $V$. In questo modo $B$ è in grado di sniffare tutti i messaggi diretti a V (**subversion**);
+1) **Prefix Hijacking**: un attaccante $B$ annuncia di conoscere tratte più veloci per raggiungere un particolare AS (chiamato $V$). Tutti gli AS che sono connessi direttamente a $V$ non saranno affetti da tale annuncio. Il resto degli AS e di internet, invece, saranno affetti. Ciò significa che, da quel momento, tutti gli AS che dovranno comunicare con $V$ passeranno da $B$, il quale, successivamente, rimanderà il traffico a $V$. In questo modo $B$ è in grado di sniffare tutti i messaggi diretti a V (**subversion**);
 2) **De-Aggregation**: un attaccante $B$ annuncia di conoscere un sotto-insieme di indirizzi IP con un livello più specifico. Se il router $V$ conosce gli indirizzi $x/22$ e $B$ sostiene di conoscere gli indirizzi $x/24$, il traffico verrà dirottato su $B$. Infatti, secondo il protocollo BGP, si preferisce l'Access Point che fornisca una maggiore specificità di indirizzi, cioè $B$, in quanto in possesso di una subnet mask più precisa. In questo modo, il traffico diretto a $V$ verrà instradato verso $B$, il quale sarà in grado di sniffarne il contenuto (**subversion**);
 3) **AS Path Shortening**: viene annunciato un nuovo path che taglia fuori la vittima (**instability**);
 4) **Annunci Contraddittori**: un attaccante $B$ annuncia una rotta sbagliata per fare congestione su un particolare AS, in modo tale che questo venga sovraccaricato (**instability/redirection**);
@@ -268,7 +268,7 @@ Il protocollo [[Domain Name System]], o **DNS**, è un protocollo utile per riso
 3) **Authoritative Name Servers**: per i sottodomini, come **.unimi.it**.
 
 
-Per la risoluzione dei nomi ci si affida ad un **resolver** (implementato nel sistema operativo). Ogni resolver conosce il nome del DNS server locale. Il resolver manda, quindi, una richiesta al DNS server locale; la risposta o è definitiva o viene inoltrata ad un altro server si tratta di una reference (riferimento al server successivo al quale la richiesta deve essere inoltrata). Ogni risoluzione DNS viene temporaneamente salvata in una memoria cache per fare in modo che un'eventuale risoluzione per lo stesso indirizzo sia molto più rapida.
+Per la risoluzione dei nomi ci si affida ad un **resolver** (implementato nel sistema operativo). Ogni resolver conosce il nome del DNS server locale. Il resolver manda, quindi, una richiesta al DNS server locale; la risposta o è definitiva o viene inoltrata ad un altro server. Si tratta di una reference (riferimento al server successivo al quale la richiesta deve essere inoltrata). Ogni risoluzione DNS viene temporaneamente salvata in una memoria cache per fare in modo che un'eventuale risoluzione per lo stesso indirizzo sia molto più rapida.
 
 Le principali vulnerabilità del protocollo DNS sono le seguenti:
 1) **DNS Cache Poisoning**: ne esistono due versioni, una di origine anonima ed una denominata **Kaminsky Attack**. L'obiettivo di entrambe è quello di falsificare i valori contenuti all'interno della cache del resolver DNS della vittima. L'attaccante invia una richiesta al nameserver vittima per un particolare indirizzo. Di conseguenza, si attiva la serie di richieste per ottenere il corrispettivo indirizzo fisico. L'attacco consiste nel riuscire a rispondere al nameserver, prima che la reale risposta dell'authoritative server arrivi, con un indirizzo di un sito web gestito dall'attaccante (in modo tale da reindirizzare la vittima su siti malevoli). L'unica difficoltà di questo attacco consiste nel fatto che le richieste del nameserver sono definite da un **QID** (**Query ID**) che l'attaccante deve indovinare per forgiare una risposta che sembri autentica. Nel secondo caso, invece, l'attaccante cerca di sostituirsi totalmente all'authoritative server. L'attaccante vuole redirigere tutte le richieste fatte sull'authoritative server vittima su di sè. Anche in questa versione è sempre presente l'incognita del QID per la buona riuscita dell'attacco.<br />Una possibile difesa risiede nell'aumentare il range casuale del QID per renderlo più difficile da indovinare.<br />Attuando con successo il Kaminsky Attack, si prende controllo di tutto il dominio perchè si riesce a convincere il server vittima di star comunicando con il vero server autoritativo. Con l'attacco generico, invece, si prende il controllo non di tutto il dominio ma solo di un sito. Questo avviene perchè la risposta dell'attaccante arriva dopo quella del Top Level Domain Server ma prima di quella del server autoritativo;
@@ -398,6 +398,8 @@ La prima fase può essere realizzata con due approcci:
 
 La main mode protegge, però, l'identità dei peers mentre l'aggressive mode no.
 
+------------------------------------------------------------
+
 ## SSL/TTS ##
 Il protocollo **TTS** (**SSL** è la versione più antica) è un protocollo che consente di rendere sicuro il traffico a livello di trasporto.<br />
 Il protocollo prevede due fasi, una fase di sessione ed una fase di connessione. La prima consiste nell'instaurare un canale sicuro tra i due host mentre la seconda è la fase di comunicazione vera e propria.<br />
@@ -487,3 +489,5 @@ Gli IDS possono essere:
 
 Gli IDS possono essere posizionati sugli host (**HIDS**) oppure in punti strategici della rete (**NIDS**). Un IDS è costituito da vari sensori che comunicano in continuazione con un **director**. Il direcotr si occupa di analizzare i dati dei sensori ed eventualmente lanciare un allarme.<br />
 Gli **Intrusion Prevention Systems** (o **IPS**) sono degli IDS che non si limitano a sollevare l'allarme. Sono, infatti, in grado di prendere alcune contromisure (sempre ad attacco in corso, a differenza di ciò che dice il nome non sono in grado di prevenire attacchi), tra cui modificare le regole del firewall per cercare, quantomeno, di bloccare l'attacco. Si tratta di un meccanismo che permette di limitare i danni.
+
+------------------------------------------------------------
