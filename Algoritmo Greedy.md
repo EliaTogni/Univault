@@ -13,4 +13,4 @@ Per risolvere il problema di ottimizzazione, si dovrà trovare un insieme di can
 
 L'approccio generalmente seguito dalla tecnica greedy nel risolvere problemi di ottimizzazione è il seguente: inizialmente, l'insieme dei candidati selezionati $S$ è vuoto. Al generico passo $i$, si cerca di aggiungere a questo insieme il miglior candidato $x$ tra quelli non ancora considerati (viene segnalato dalla funzione _seleziona_). Se questa aggiunta rende l'insieme $S \cup \{x\}$ non ammissibile, allora si scarta $x$ e non lo si considera più in futuro. Altrimenti, si inserisce permanentemente $x$ nell'insieme dei candidati selezionati. Ogni volta che si inserisce un nuovo candidato in questo insieme, si verifica se si è raggiunta la soluzione ottima.<br />
 
---------------------------------------------------------------
+------------------------------------------------------------

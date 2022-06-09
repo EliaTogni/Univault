@@ -2,7 +2,7 @@ In determinate situazioni, la velocità di esecuzione di un compito è l'element
 Il termine [[Algoritmo]] sottintende, oltre alla stessa definizione, che l'esecutore è unico.<br />
 Nel caso di **Algoritmi Paralleli e Distribuiti**, è chiave la presenza di un pool di esecutori e non si può parlare più di sequenza di istruzioni generiche ma di insiemi di istruzioni raggruppate in **passi paralleli**. In ogni passo parallelo si avrà un set di istruzioni, in cui ci sarà **al più** un'istruzione per esecutore.<br />
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 ## Algoritmi Paralleli ##
 I modelli di calcolo in cui sono presenti più processori che lavorano contemporaneamente sono detti **paralleli**, così come il modello di calcolo dotato di un solo processore è detto **sequenziale**.<br />
@@ -28,7 +28,7 @@ Bisogna prestare attenzione alla dimensione dei dati in gioco.<br />
 Se si utilizza il **criterio di costo uniforme**, le operazioni elementari richiedono una sola **unità di tempo**. Se si utilizza il **criterio di costo logaritmico**, ogni operazione elementare ha un costo che dipende dal numero di bit degli operandi.<br />
 La funzione tempo deve indicare se gli algoritmi paralleli e distribuiti utilizzati si possono considerare efficienti. Si considera quindi il concetto di [[Efficienza]].
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 Si richiami, ora, un classico modello di calcolo sequenziale, cioè la **macchina RAM**: essa consiste di un processore P, collegato ad una memoria M attraverso un'unità di accesso.
 
@@ -43,7 +43,7 @@ Questo modello di macchine è detto di tipo **SIMD** (**SIngle Instruction Multi
 Per semplicità, in seguito si farà riferimento al modello EREW, il più realistico.
 Un vantaggio sostanziale di questa scelta è che un algoritmo funzionante su un modello EREW è funzionante anche sui modelli successivi.
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 La tipica istruzione di un algoritmo parallelo è strutturata nel seguente modo:
 
@@ -75,7 +75,7 @@ Sono possibili due casi, uno non accettabile ed uno accettabile.<br />
 Il caso non accettabile è il caso in cui $T(n, p(n)) = \Theta(T(n,1))$, ovvero dove non si ottiene un miglioramento nonostante l'aggiunta di processori. Questo caso comporta solo un sovrapprezzo in termini di componentistica e, quindi, è evidentemente sfavorevole.<br />
 Il caso accettabile è il caso in cui $T(n, p(n)) = o(T(n,1))$, ovvero il caso in cui il tempo di esecuzione dell'algoritmo parallelo è inferiore a quello sequenziale.
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 Due misure naturali dell'efficacia sono lo **Speed-Up** $S_{A}(p)$ e l'**Efficienza** $E_{A}(n,p)$.
 
@@ -114,11 +114,11 @@ $$\frac{T(n,1)}{p(n)T(n, p(n)))} \leq 1$$
 
 Sapendo che $\frac{T(n,1)}{p(n)T(n, p(n)))} = E(n, p(n))$, allora si ha dimostrato che $E(n, p(n)) \leq 1$. Il miglior risultato in termini di efficienza è quindi $E \rightarrow k \leq 1$, dove $k$ è una costante.
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 Nel caso in cui l'efficienza $E$ di un algoritmo tenda a $0$, è possibile provare ad applicare il [[Teorema di Wyllie]].<br />
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 ### SOMMATORIA ###
 Si vuole trovare un algoritmo parallelo per risolvere il problema **Sommatoria**, un problema guida.<br />
@@ -170,7 +170,7 @@ $2^{j}a \neq 2^{j}b -2^{j-1} \rightarrow^\text{per assurdo}$: $2a = 2b -1 \right
 Allo stesso modo si dimostra per le restanti combinazioni.<br />
 Si ha quindi un algoritmo EREW.
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 #### Correttezza dell'Algoritmo ####
 Si dimostra ora, per [[Induzione]], che l'algoritmo sottostante è corretto. La correttezza è data dalla seguente proprietà:
@@ -267,7 +267,7 @@ $$n\leq 2^h$$
 
 $$h \geq \log_{2}(n)$$
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 ### SOMMATORIA come schema per altri problemi ###
 Si osservi il problema OP ITERATA, del quale SOMMATORIA è un caso particolare.
@@ -286,7 +286,7 @@ $$T(n, p(n))=O(\log(n))$$
 
 Mentre, con una soluzione EREW, questo è il miglior risultato ottenibile, in realtà, con P-RAM più potenti, si è in grado di ottenere un tempo costante.<br />
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 ### $\wedge$ ITERATO ###
 **Definizione del problema**
@@ -321,7 +321,7 @@ Non solo questo algoritmo fa da guida per le soluzioni ai problemi OP ITERATO ma
 - PRODOTTO MATRICE MATRICE;
 - POTENZA DI UNA MATRICE.
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 ### PRODOTTO INTERNO DI VETTORI ###
 **Definizione del problema**
@@ -350,7 +350,7 @@ $$E \sim \frac{2n -1}{\frac{n}{\log(n)}\cdot \log(n)} \rightarrow c \neq 0$$
 
 Questo problema, a sua volta, è modulo di altri problemi, come, banalmente, il problema PRODOTTO MATRICE VETTORE.
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 ### PRODOTTO MATRICE VETTORE ###
 **Definizione del problema**
@@ -368,7 +368,7 @@ ovvero il costo di un prodotto vettore vettore per ognuno degli $n$ prodotti int
 $$T(n, p(n)) = \log(n)$$
 $$E(n, p(n)) \sim \frac{n^{2}}{\frac{n^{2}}{\log(n)} \cdot \log(n)} \rightarrow c \neq 0$$
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 ### PRODOTTO MATRICE MATRICE ###
 **Definizione del problema**
@@ -387,7 +387,7 @@ $$p(n) \sim n^{2} \cdot \frac{n}{\log(n)}$$
 $$T(n, p(n)) \sim \log(n)$$
 $$E(n, p(n)) \sim \frac{n^{2,8}}{\frac{n^{3}}{\log(n)} \cdot \log(n)} = \frac{n^{2,8}}{n^{3}} \rightarrow 0$$
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 ### POTENZA DI  UNA MATRICE ###
 **Definizione del problema**
@@ -413,7 +413,7 @@ $$p(n) \sim n^{2} \cdot \frac{n}{\log(n)} = \frac{n^{3}}{\log(n)}$$
 $$T(n, p(n)) = \log(n) \cdot \log(n) = \log^{2}(n)$$
 $$E \sim \frac{n^{2,8}\log(n)}{\frac{n^{3}}{\log(n)}\cdot \log_{2}(n)} = \frac{n^{2,8}}{n^{3}} \rightarrow 0$$
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 ### SOMME PREFISSE ###
 **Definizione del problema**
@@ -456,7 +456,7 @@ $$E \sim \frac{n-1}{\frac{n^{2}}{\log(n)} \cdot \log(n)} \rightarrow 0$$
 
 Di conseguenza, la proposta analizzata risulta essere una scelta poco efficiente.
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 ### Tecnica di Kogge-Stone [1973] ###
 Kogge-Stone introduce il **Pointer Doubling** per risolvere SOMME PREFISSE.<br />
@@ -516,7 +516,7 @@ Si temeva che $M[S[k]]$ ed $M[k']$ venissero acceduti simultaneamente ma non è 
 Questa dimostrazione ribadisce la struttura EREW dell'algoritmo.<br />
 Se $i\neq j \rightarrow S[i] \neq S[j]$, quindi i due valori hanno successori diversi (eccetto il caso $S[i] = S[j] = 0$).
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 #### Correttezza dell'Algoritmo ####
 E' anche necessario dimostrare che l'algoritmo sia corretto.<br />
@@ -595,7 +595,7 @@ Quindi la somma di queste due celle restituisce la somma degli elementi da $1$ a
    La stessa cosa vale per $M[a + 2^{j}]$. Di conseguenza, nella cella sono presenti tutti i $2^{j-1}$ numeri precedenti.<br />
    Sommando insieme il contenuto di queste due celle, otteniamo cheper gli elementi di posizione $> 2^{j}$ vale la proprietà iniziale.<br />
    
---------------------------------------------------------------
+------------------------------------------------------------
  
 Si valutano ora le prestazioni dell'algoritmo.
 $$p(n) = n-1$$
@@ -644,7 +644,7 @@ $$E \rightarrow c \neq 0$$
 
 Come per il problema SOMMATORIA, anche l'algoritmo dato per SOMME PREFISSE può essere usato come modulo risolutivo per altri problemi.
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 ### OP-PREFISSA ###
 **Definizione del problema**
@@ -654,7 +654,7 @@ Come per il problema SOMMATORIA, anche l'algoritmo dato per SOMME PREFISSE può 
 
 OP deve essere associativa, come ad esempio $+, *, \wedge, \vee, \oplus, \min, \max$...<br />
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 ### VALUTAZIONE DI POLINOMI ###
 **Definizione del problema**
@@ -676,7 +676,7 @@ $$
 $$
 $$N \sim n^2$$
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 #### Miglioramento di Ruffini-Horner ####
 Il numero di istruzioni impiegato può essere migliorato tramite l'idea di Ruffini-Horner.<br />
@@ -715,7 +715,7 @@ Le prestazioni in termini di istruzioni dell'algoritmo sequenziale di Ruffini-Ho
 $$T(n, 1) = 2n$$
 cioè due operazioni all'interno di ogni iterazione del loop.
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 #### Implementazione Parallela di Ruffini-Horner ####
 Si dovrà trovare un possibile algoritmo parallelo che, confrontato con questo algoritmo lineare, risulti efficiente.<br />
@@ -796,7 +796,7 @@ Analizziamo ora le prestazioni dell'algoritmo.<br />
    $$T(n, p(n)) = \log(n)$$
    $$E = frac{T(n,1)}{p(n)T(n,p(n))} = frac{2n}{\frac{n}{\log(n)}\log(n)} \rightarrow c \neq 0$$
    
---------------------------------------------------------------
+------------------------------------------------------------
 
 ### RICERCA DI UN ELEMENTO ###
 **Definizione del problema**
@@ -889,7 +889,7 @@ Si valutano ora le prestazioni dell'algoritmo.<br />
 OP-ITERATA viene eseguita tra due celle di $M$ che contengono i valori $x$ e $y$. Se entrambi questi valori sono diversi da $0$, viene scelto il minimo tra di essi. Se uno dei due è uguale a $0$, viene scelto il massimo.<br/>
 Questo permette di portare il minimo valore della cella che contiene $\alpha$ nella cella $M[n]$.
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 ### ORDINAMENTO o RANKING ###
 **Definizione del problema**
@@ -1008,7 +1008,7 @@ Ricordando che lo _Swap_ ha costo $4$ e in questa procedura è necessario, inolt
 $$p(n) = \frac{n}{2}$$
 $$T(n, p(n)) = 5$$
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 ### _BitMerge_ Sequenziale ###
 Dato un array bitonico:
@@ -1035,7 +1035,7 @@ Al passo induttivo, si suppone l'algoritmo corretto per $n = 2^{k}$ e si dimostr
 -  I due sottoarray vengono passati come argomento a _BitMerge_ e vengono restituiti ordinati per ipotesi induttiva;
 -  <code>return(A)</code> restituisce $A$ ordinato.
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 ### Implementazione Parallela di _BitMerge_ ###
 ![[BitMergeParallelo.png]]
@@ -1066,14 +1066,14 @@ In termini di efficienza:
 
 $$E(n, p(n)) = \frac{n\log(n)}{\frac{n}{2}5\log(n)} \rightarrow c \neq 0$$
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 A partire da queste sequenze, da queste routine e da questi algoritmi, nasce l'algoritmo [[BitSort]].<br />
 
 Da un buon algoritmo sequenziale non è detto che derivi un buon algoritmo parallelo, dove con buono si intende efficiente(_MergeSort_).<br />
 Allo stesso modo, non è valido il viceversa (_BitSort_).<br />
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 ### Valutazione Sequenziale di _BitSort_ ###
 - _BitMerge_:
@@ -1091,25 +1091,25 @@ $$T_{bm}(n) = O(n\log(n))$$
  $$
   $$T_{bs}(n) = O(n\log^{2}(n)$$
   
---------------------------------------------------------------
+------------------------------------------------------------
   
 Per gestire strutture dati dinamiche come un [[Albero]], si utilizza la [[Tecnica del Ciclo Euleriano]].
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 ### Osservazioni Finali su PRAM ###
 
 1) Da un punto di vista teorico, si è in grado di distribuire i compiti tra i processori, i quali sono considerati alla pari, in modo tale che il tempo parallelo sia strettamente legato alla computazione (poichè la comunicazione avviene in tempo costante);
 2) L'interesse pratico è dovuto alla realizzazione fisica dei dispositivi multi-core;
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 ### Architettura Parallela a Memoria Distribuita ###
 La rappresentazione grafica di queste architetture è data da un [[Grafo]] G in cui i nodi sono i processori e gli archi definiscono la struttura della rete di connessione.<br />
 L'elemento che viene a mancare è ovviamente la memoria condivisa, tipica delle PRAM.<br />
 Si torna quindi a parlare di [[Modello a Memoria Distribuita]].<br />
 
---------------------------------------------------------------
+------------------------------------------------------------
 
 ## Algoritmi Distribuiti ##
 

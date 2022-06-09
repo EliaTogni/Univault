@@ -4,4 +4,4 @@ Le chiabi e gli elementi del dizionario sono assegnati alle foglie dell'albero i
 $S[v]$ è la massima chiabe nel sottoalbero radicato nel figlio sinistro di $v$, e $M[v]$ è la massima chiave nel sottoalbero radicato nel figlio centrale di $v$.<br />
 Un albero 2-3 con $n$ nodi supporta operazioni _search_, _insert_ e _delete_ in tempo $O(\log(n))$ nel caso peggiore.<br />
 
---------------------------------------------------------------
+------------------------------------------------------------

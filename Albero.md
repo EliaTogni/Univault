@@ -5,4 +5,4 @@ Un nodo senza figli viene chiamato nodo _foglia_, mentre nodi che non sono nè f
 I principali vincoli strutturali riguardano il grado dei nodi e la profondità. In particolare, un albero $d$-ario è un albero in cui tutti i nodi tranne le foglie hanno grado $d$.<br />
 infine, un albero $d$-ario in cui tutte le foglie sono sullo stesso livello è _completo_.<br />
 
---------------------------------------------------------------
+------------------------------------------------------------
