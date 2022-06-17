@@ -330,16 +330,31 @@ Il quarto bit rappresenta i permessi per gli utenti world.<br />
 
 ## Scanning ##
 Lo **Scanning** rappresenta una tecnica nata per aiutare i sistemisti di rete a capire se nel sistema sono presenti superfici di attacco disponibili.
-Con lo scanning, viene valutato se esistono porte aperte che gli attaccanti possano usare per attaccare il sistema.<br /
-Allo stesso modo, gli attaccanti usanto questa stessa tecnica per trovare, appunto, superfici di attacco.<br />
-Esistono diverse modalità di scanning:
-1) **Verticale**: si scannerizzano $n$ porte su un singolo host;
-2) **Orizzontale**: si scannerizza una singola porta su $n$ host;
-3) **Ibrido**: un mix dei due approcci.
+Gli obiettivi dello scanning sono:
+1) riconoscere i servizi UDP e TCP disponibili;
+2) riconoscere i servizi in esecuzione su ogni porta;
+3) riconoscere quali utenti hanno accesso ai servizi;
+4) riconoscere i sistemi di filtraggio usati tra l'attaccante e la vittima;
+5) determinare il sistema operativo esaminando le risposte IP.
+sc
+Allo stesso modo, gli attaccanti usano questa stessa tecnica per trovare, appunto, superfici di attacco.<br />
+Esistono diverse modalità di scanning.<br />
+Si considerino ora le tipologie di scanning applicabili nel caso di **Single** source scanning (operata da una source a molti target):
+1) **Verticale**: consiste di un port scan di alcune o tutte le porte su un singolo computer;
+2) **Orizzontale**:scansiona una singola porta fra molti indirizzi IP;
+3) **Strobe**: scansiona molte porte fra molti IP Address;
+4) **Block**: scansiona tutte le porte su molti IP Address.
 
+Si consideri ora il caso del **Distributed** scanning:
+- molteplici sistemi agiscono in un unione strategica per scansionare una rete od un host;
+- riduce la traccia lasciata da uno scanning di un singolo sistema e diminuisce la possibilità di essere scoperti.
 Lo scanning può essere:
-1) **Attivo**: si scansiona immettendo del traffico nella rete e creando pacchetti che interrogano le macchine ed i dispositivi di rete;
-2) **Passivo**: Si osserva il traffico per capire se i servizi sono attivi o spenti sulle diverse porte.
+1) **Attivo**: si scansiona immettendo del traffico nella rete e creando pacchetti sonda che interrogano le macchine ed i dispositivi di rete;
+2) **Passivo**: Si osserva il traffico generato tra client e server per capire se i servizi sono attivi o spenti sulle diverse porte.
+
+Ognuno di questi approcci di scanning ha, ovviamente, dei pro e contro.<br />
+Lo scanning attivo fornisce un rapporto completo delle porte aperte e non rileva porte filtrate o protette da port knoking, oltre ad essere molto veloce ma, di contro, è molto intrusivo e può essere rilevato da aIDS oltre a non essere in grado di identificare host temporaneamente non attivi.<br />
+Lo scanning passivo invece è uno scanning non intrusivo, in quanto non viene rilevato da IDS. E' inoltre in grado di rilevare attività proveniente da host temporanei e non consuma risorse. DI contro, però, è in grado di rilevare solo host attivi.
 
 Il target può essere:
 1) **Singolo**: una macchina;
@@ -348,15 +363,15 @@ Il target può essere:
 La scansione di una porta può dare i seguenti esiti:
 1) **Aperta**: il target ha risposto indicando che il servizio è in ascolto su quella porta;
 2) **Chiusa**: il target ha risposto indicando che le connessioni alla porta saranno rifiutate;
-3) **Bloccata/Filtrata**: il target non ha risposto, petanto le connessioni alla porta saranno rifiutate (è dovuto probabilmente alla presenza di un firewalll che blocca alcuni pacchetti).
+3) **Bloccata/Filtrata**: il target non ha risposto, pertanto le connessioni alla porta saranno rifiutate (è dovuto probabilmente alla presenza di un firewalll che blocca alcuni pacchetti).
 
 Ecco alcune scansioni esistenti:
 1) **ARP/ICMP scan**: permette di scoprire gli host attivi nella sottorete, inviando pacchetti di ping;
-2) **TCP scan** (**intrusivo**): si invia un pacchetto di SYN e si effettua un three way handshake. Se la porta oviettivo della scansione risulterà aperta, l'attaccante riceverà in risposta un pacchetto TCP con i flag SYN e ACK attivi. A questo pacchetto, l'attaccante risponderà con un pacchetto ACK. Altrimenti, nel caso di porta chiusa, riceverà un pacchetto TCP con flag RST attivo, il quale terminerà la connessione;
+2) **TCP scan** (**intrusivo**): si invia un pacchetto di SYN e si effettua un three way handshake. Se la porta obiettivo della scansione risulterà aperta, l'attaccante riceverà in risposta un pacchetto TCP con i flag SYN e ACK attivi. A questo pacchetto, l'attaccante risponderà con un pacchetto ACK. Altrimenti, nel caso di porta chiusa, riceverà un pacchetto TCP con flag RST attivo, il quale terminerà la connessione;
 3) **SYN scan** (**stealth**): si invia un pacchetto di SYN. Se l'host risponde con SYN/ACK, la porta è aperta (e non si completa il three way handshake). Se la vittima risponde con RST,  la porta è chiusa. Viene considerata una tecnica di scansione stealth perchè, tipicamente, nei log vengono memorizzate le connessioni complete e non le half open;
 4) **ACK scan** (**stealth**): per effettuare la scansione si invia un pacchetto TCP con il bit ACK attivo. Se il firewall blocca il pacchetto, la sorgente allo scadere di un timeout riesce a dedurre che la porta è filtrata. Se il firewall lascia passare il pacchetto, esso raggiunge il target, il quale, non avendo una sessione TCP attiva, risponderà con un pacchetto con il bit RST attivo. In questo caso, si deduce che la porta non è filtrata (non si sa se sia chiusa o aperta);
 5) **IDLE scan** (**stealth**): si utilizza uno zombie e si effettua l'analisi sul suo campo identification (un contatore il quale si incrementa ogni volta che un host invia un pacchetto);
-6) **Windows scan** (**stealth**): consiste nel mandare un ACK alla vittima ed analizzare il campo Window ricevuto con la risposta RST, il quale, se maggiore di zero, significa che la porta è open mentre, se uguale a zero, significa che la porta è chiusa. Non tutti i sistemi seguono questa logica;
+6) **Windows scan** (**stealth**): consiste nel mandare un ACK alla vittima ed analizzare il campo Window ricevuto con la risposta RST, il quale, se maggiore di zero, significa che la porta è open mentre, se uguale a zero, significa che la porta è chiusa. Non tutti i sistemi seguono, però, questa logica;
 7) **FIN/NULL/Xmas scan** (**stealth**): si invia un pacchetto con le relative flag a 1 (con Xmas si mandano FIN, URG e PSH). Se il destinatario risponde con RST la porta è chiusa, altrimenti è open o filtered;
 8) **UDP scan** (**miscellaneous**): si invia un pacchetto UDP. Se si riceve una risposta UDP, allora la porta è aperta. Se invece si riceve un pacchetto ICMP unreachable, allora la porta è chiusa. Se, infine, si ricevono altri errori oppure nessuna risposta ICMP, allora la porta è filtered;
 9) **FTP bounce scan**: (**stealth**): si tratta di una scansione simile alla IDLE perchè usa come zombie un server FTP. Se la connessione viene stabilita, allora la porta è aperta. Se la connessione non viene stabilita, allora la porta è chiusa;
