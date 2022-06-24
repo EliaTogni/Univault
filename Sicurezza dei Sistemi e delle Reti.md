@@ -1,11 +1,65 @@
 ## Sicurezza ##
-Con **Sicurezza** si intende il raggiungere un obiettivo in presenza di un avversario.<br />
-Un sistema sicuro è un sistema il quale assolve uno specifico compito, nonostante l'avversario voglia impedirlo o stia operando in qualsiasi modo.
+Con **Sicurezza** si intende il raggiungere un obiettivo in presenza di un avversario, il prevenire un comportamento non desiderato.<br />
+Un sistema sicuro è un sistema il quale assolve uno specifico compito, nonostante l'avversario voglia impedirlo o stia operando in qualsiasi modo.<br />
+
+------------------------------------------------------------
 
 ## Cybersecurity ##
 Con **Cybersecurity** si definisce la protezione delle informazioni archiviate, trasmesse ed elaborate in un sistema di rete di computer, altri dispositivi digitali e dispositivi di rete e linee di trasmissione, compresa internet.
-- la protezione comprende riservatezza, integrità, disponibilità, autenticità e responsabilità;
+- la protezione comprende riservatezza, confidenzialità, integrità, disponibilità, autenticità e responsabilità;
 - i metodi di protezione includono politiche e procedure organizzative, nonchè mezzi tecnici come crittografia e protocolli di comunicazione sicuri.
+
+------------------------------------------------------------
+
+## Malware ##
+### Trojan Horse ###
+Programma con un primo effetto evidente (e aspettato) ed un secondo effetto nascotso, il quale viola la politica di sicurezza.
+
+Alcuni esempi sono:
+1) **The AIDS Trojan**, il quale risiedeva su floppy disks contenenti importanti informazioni sulla malattia dell'AIDS. Questo trojan crittografava il disco rigido dell'utente e offriva la possibilità di acquistare la password per decifrare i dati;
+2) **Mocmex**, trojan il quale risiedeva in diverse cornici per foto digitali cinesi. Ogniqualvolta un frame infetto veniva collegato ad una macchina Windows, il malware veniva copiato dal frame al computer ed iniziava a racogliere e trasmettere le password.
+
+-----------------------------------------------------------
+
+### Virus ###
+Un **Virus** informatico è un codice informatico che può replicarsi, modificando altri file o programmi per inserire codice in grado di essere replicato ulteriormente.<br />
+La proprietà di autoreplicazione è ciò che distingue i virus informatici da altri tipi di malware. Un'altra proprietà di un virus risiede nel fatto che la replica del virus stesso richieda un certo tipo di assistenza da parte dell'utente, come ad esempio facendo clic su un allegato e-mail o condividendo un'unità USB.<br />
+Il virus altera, quindi, il codice normale con una sua versione infetta.<br />
+I vettori di infezione per i virus sono tipicamente [[Boot Sector]] (come USB drive), file eseguibili, macro file e multipartiti.
+
+E' possibile classificare i virus in base alla strategia attuata per non rivelarsi:
+
+#### Encrypted Virus ####
+Una parte del virus crea una chiave di crittografia casuale e crittografa il resto del virus. La chiave viene, quindi, memorizzata con il virus. Quando viene richiamato un programma infetto, il virus utilizza la chiave casuale memorizzata per decrittografare il virus. Quando il virus si replica, viene selezionata una chiave casuale diversa, impendendo così di avere un modello di bit costante da osservare.
+
+------------------------------------------------------------
+
+#### Stealth Virus ####
+Virus progettato per nascondersi dal rilevamento da parte del software antivirus.
+Può utilizzare tecniche di mutazione del codice, compressione o rootkit.
+
+------------------------------------------------------------
+
+#### Polymorphic Virus ####
+Virus che, durante la replica, crea copie funzionalmente equivalenti ma che hanno modelli di bit nettamente diversi.
+
+------------------------------------------------------------
+
+#### Metamorphic Virus ####
+Virus il quale si riscrive completamente ad ogni iterazione, utilizzando più tecniche di trasformazione ed aumentando così la difficoltà di rilevamento.
+
+------------------------------------------------------------
+
+### Trapdoor ###
+Si tratta di un secret entry point in un sistema, il quale utilizza uno specifico user identifier o password che supera le normali procedure di sicurezza.
+
+------------------------------------------------------------
+
+### Logic Bomb ###
+
+### Zero Day Exploit ###
+
+### Worm ###
 
 ## Politiche di sicurezza e modelli ##
 Una **Politica di sicurezza** è un insieme di regole e linee guida le quali descrivono gli obiettivi di sicurezza di un sistema. Include:
@@ -84,10 +138,7 @@ Si tratta di un modello nel quale l'integrità di un dato è definita da un insi
 1) I dati che rispettano questi vincoli sono in uno stato coerente;
 2) L'integrità del sistema viene preservata durante la transazione. Prima e dopo ogni azione, le condizioni di consistenza devono essere mantenute. Una transazione **Well-formed** è una serie di operazioni grazie alle quali il sistema passa da uno stato consistente ad un altro consistente;
 3) Una transazione ben formata sposta il sistema da uno stato coerente ad un altro stato, sempre coerente.
-
-
-5) 
-6) E' necessario avere la separazione dei doveri. Viene infatti richiesto che il certificatore e gli implementatori siano persone diverse. Nel caso della transazione, al fine di corrompere i dati, devono essere due persone diverse a commettere errori simili o a collaborare.
+4) E' necessario avere la separazione dei doveri. Viene infatti richiesto che il certificatore e gli implementatori siano persone diverse. Nel caso della transazione, al fine di corrompere i dati, devono essere due persone diverse a commettere errori simili o a collaborare.
 
 Nel modello vengono definite entità e regole:
 1) **Constrained Data Items** (**CDI**): sono tutti gli oggetti interni al sistema sui quali è posto il vincolo di integrità;
@@ -121,6 +172,7 @@ Le condizioni di lettura e scrittura sono, invece, le seguenti:
 ## Attacchi ##
 ### ARP Spoofing / Cache Poisoning ###
 [[Address Resolution Protocol]], come tutti i protocolli di rete, non ha implementato alcuna misura di sicurezza. Non ci sono controlli che vietino ad un host malizioso di rispondere ad una **ARP Request** nonostante non sia in possesso dell'**Indirizzo IP** richiesto (**ARP Spoofing**).<br />
+Con **Masquerading**, o **Spoofing**, si definisce la rappresentazione di un'entità da parte di un'altra.<br />
 L'host mittente della ARP Request, ricevendo la comunicazione fake, aggiorna la sua **ARP Cache** e memorizza così l'associazione $<\text{Ip destinatario - MAC Address attaccante}>$, cioè l'associazione utente-indirizzo sbagliata (**Cache Poisoning**). Ciò provoca l'immediata deviazione dei pacchetti diretti all'IP originale richiesto al [[MAC Address]] dell'host malizioso.<br />
 Tutto questo avviene perchè:
 1) Le richieste non sono tracciate;
