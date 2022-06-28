@@ -12,6 +12,11 @@ Con **Cybersecurity** si definisce la protezione delle informazioni archiviate, 
 ------------------------------------------------------------
 
 ## Malware ##
+
+Con **Malware** si definisce un programma che viene inserito in un sistema, solitamente di nascosto, con l'intento di compromettere la riservatezza, l'integrità o la disponibilità di dati, delle applicazioni o del sistema della vittima, oppure con l'intento di infastidire o disturbare la vittima.
+
+------------------------------------------------------------
+
 ### Trojan Horse ###
 Programma con un primo effetto evidente (e aspettato) ed un secondo effetto nascotso, il quale viola la politica di sicurezza.
 
@@ -19,7 +24,7 @@ Alcuni esempi sono:
 1) **The AIDS Trojan**, il quale risiedeva su floppy disks contenenti importanti informazioni sulla malattia dell'AIDS. Questo trojan crittografava il disco rigido dell'utente e offriva la possibilità di acquistare la password per decifrare i dati;
 2) **Mocmex**, trojan il quale risiedeva in diverse cornici per foto digitali cinesi. Ogniqualvolta un frame infetto veniva collegato ad una macchina Windows, il malware veniva copiato dal frame al computer ed iniziava a racogliere e trasmettere le password.
 
------------------------------------------------------------
+------------------------------------------------------------
 
 ### Virus ###
 Un **Virus** informatico è un codice informatico che può replicarsi, modificando altri file o programmi per inserire codice in grado di essere replicato ulteriormente.<br />
@@ -56,10 +61,67 @@ Si tratta di un secret entry point in un sistema, il quale utilizza uno specific
 ------------------------------------------------------------
 
 ### Logic Bomb ###
+Minaccia la quale si attiva quando specifiche condizioni vengono soddisfatte, come ad esempio la presenza o assenza di un file, e, quando scatta, danneggia il sistema modificando o cancellando file o dischi.
+
+------------------------------------------------------------
 
 ### Zero Day Exploit ###
+Si tratta di una sequenza di eventi che portano ad un exploit:
+- un attaccante scopre una vulnerabilità prima non conosciuta;
+- il manufacturer diventa conscio della vulnerabilità;
+- un developer sviluppa il codice per dimostrare la vulnerabilità in un ambiente controllato.
+
+Un attacco prima della disponibilità della contromisura è chiamato **Zero Day Exploit**
 
 ### Worm ###
+Malware che viene eseguito in maniera indipendente in quanto non richiede un programma host. Un worm propaga una versione completamente funzionante su una nuova macchina, portando con sè un payload che esegue dei task nascosti, come backdoors, spam relays o DDoS agents.
+
+Le fasi di azione di un worm sono:
+- probing;
+- exploitation;
+- replication;
+- payload.
+
+Un esempio di worm attacks famosi è il **Morris Worm**, che sfrutta vulnerabilità come il buffer overflow e che nel 1988 ha infettato il 10% dei computer connessi ad internet.
+Il worm in questione è composto da due parti:
+- un programma per diffondersi, il quale cerca altre macchine vittima e cerca di infiltrarsi su queste macchine;
+- un programma vettore, il quale viene compilato ed eseguito sulle macchine infette 
+
+------------------------------------------------------------
+
+### Zombie e Botnet ###
+Malware che prende il possesso segretamente di un altro computer in rete, sfruttando i difetti del software.
+Assembla poi i computer compromessi in una rete di zombie o botnet, cioè una raccolta di macchien compromesse che eseguono programmi, generalmente denominati worm, trojan horses o backdoors, sotto un infrastruttura di comando e controllo comune.
+
+Questa rete viene usata per lanciare indirettamente attacchi; ad esempio, DDos, phishing o spamming.
+
+------------------------------------------------------------
+
+### Rootkit ###
+un **Rootkit** è un set di programmi installati su un sistema al fine di mantenere nascosto l'accesso. Questo tipo di malware altera le funzionalità standard dell'host in maniera malevola e stealth. In questo modo, l'attaccante ha il completo controllo del sistema.
+
+------------------------------------------------------------
+
+### Spyware ###
+Malware che colleziona piccoli pezzi di informazioni riguardanti l'utente alla volta, ovviamente senza i permessi necessari.<br />
+Esempi di spyware sono i keyloggers.
+
+------------------------------------------------------------
+
+### Scareware ###
+Software con payloads malevoli, utilizzati da ingegneri sociali per causare shock, ansia o convincere la vittima dell'esistenza di una minaccia.
+
+------------------------------------------------------------
+
+### Ransomware ###
+Malvare che tiene in ostaggio un computer o i dati al suo interno, richiedendo un riscatto per riottenerne possesso.
+Questo malware:
+- disabilita i servizi essenzialid i un sistema o locka il display all'avvio del sistema;
+- crypta alcuni tra i file personali dell'utente.
+
+La vittima deve:
+- inserire un codice ottenibile solo al pagamento del riscatto;
+- comprando un tool di decrittazione o di rimozione.
 
 ## Politiche di sicurezza e modelli ##
 Una **Politica di sicurezza** è un insieme di regole e linee guida le quali descrivono gli obiettivi di sicurezza di un sistema. Include:
@@ -79,7 +141,12 @@ Lo svantaggio causato dall'adozione di un meccanismo di sicurezza risiede nel fa
 Le politiche di sicurezza sono alla base del concetto di **Controllo degli accessi**, il quale può essere diviso in tre macrocategorie:
 1) **DAC** (**Discretionary Access Control**): ciascun utente può determinare i permessi per ogni altro utente e definire le **Access Control Lists** (**ACL**);
 2) **MAC** (**Mandatory Access Control**): un amministratore centrale determina i permessi di accesso dei vari oggetti;
-3) **ORCON** (**Originator Controlled Access Control**): il proprietario di un oggetto determina i permessi di accesso dell'oggetto in questione;
+3) **RBAC** (**Role-Based Access Control**): esistono quattro tipi di entità in un sistema di questo tipo:
+- **utente**: una persona che ha accesso a questo sistema informatico. Ogni individuo ha un ID utente associato;
+- **ruolo**: una funzione lavorativa con nome all'interno dell'organizzazione che controlla il sistema;
+- **autorizzazione**: approvazione di una particolare modalità di accesso a uno o più oggetti;
+- **sessione**: mappatura tra utente e sottoinsieme attivato dell'insieme di ruoli a cui è assegnato l'utente.
+4) **ABAC**(): modello che può definire autorizzazioni che esprimono condizioni sulle proprietà sia della risorsa che del soggetto.
 
 Esistono diversi tipi di politiche di sicurezza:
 
