@@ -213,6 +213,8 @@ Nel modello vengono definite entità e regole:
 3) **Integrity Verification Procedures** (**IVP**): sono procedure che permettono la verifica dell'integrità. Il loro obiettivo è di confermare che tutti i CDI siano conformi alle specifiche di integrità ogni volta che una IPV viene eseguita.
 4) **Transformation Procedures** (**TP**): sono tutte quelle procedure che permettono di modificare i CDI oppure di prendere in input i dati di un utente e creare da quelli un nuovo CDI. Queste trasformazioni corrispondono proprio a transazioni well-formed.
 
+Mentre nel modello Biba non essitono nozioni di regole di certificazione, nel modello Clark-Wilson sono presenti dei requisiti espliciti che le azioni svolte devono soddisfare.<br />Inoltre, mentre Biba si basa sull'integrità multilivello, Clark-Wilson si concentra sulla separazione dei compiti e delle transazioni.
+
 ------------------------------------------------------------
 
 ### Politiche di sicurezza multilaterali ###
@@ -246,7 +248,8 @@ Tutto questo avviene perchè:
 2) Gli annunci ARP che viaggiano sulla rete non sono autenticati;
 3) Le macchine si fidano l'un l'altra perchè il protocollo non ha alcuna garanzia di sicurezza. Una macchina attaccante può quindi ingannare tutte le altre.
 
-Questa procedura può avere luogo anche nel caso in cui nessun utente abbia inviato una ARP Request. L'host malevolo può inviare una ARP Reply per fare Cache Poisoning in qualsiasi momento.
+Questa procedura può avere luogo anche nel caso in cui nessun utente abbia inviato una ARP Request. <br />
+Infatti una ARP cache si aggionra ogni volta che riceve una ARP Reply, anche se non ha inviato alcuna richiesta. L'host malevolo può quindi inviare una ARP Reply per fare Cache Poisoning in qualsiasi momento.
 
 Il meccanismo di **ARP Poisoning** viene messo in atto per effettuare un [[Man in the Middle]] a livello datalink.
 
@@ -259,7 +262,7 @@ Ogni [[Switch]] possiede una tabella dei MAC Address il cui scopo è quello di c
 Per ogni frame ricevuto:
 1) se lo switch ha all'interno della sua tabella il MAC Address al quale destinarlo, non scrive nulla nella tabella;
 2) Se il MAC Address del destinatario non è presente all'interno della sua tabella, lo switch copia il valore presente nell'header del pacchetto e crea una entry nella tabella;
-Un attaccante, mediante l'invio di un elevato numero di frames con MAC Address fake sempre diversi, può causare un overflow della tabella dello switch, poichè vengono registrate tante false associazioni $<\text{MAC Address - porta fisica}>$.<br /> Il risultato è che lo switch non riesce più a gestire il traffico nella maniera opportuna; esso comincia a funzionare come un [[Hub]], cioè non fa più l'instradamento dei pacchetti ma spedisce ciascuno di essi in broadcast attraverso ognuna delle sue porte. Un pacchetto che dovrebbe essere indirizzato ad un certo host viene invece destinato anche ad altri host, che non dovrebbero riceverlo. Così facendo, un attaccante può fare sniffing di tutti i pacchetti che transitano nella rete.<br />
+Un attaccante, mediante l'invio di un elevato numero di frames con MAC Address fake sempre diversi, può causare un overflow della tabella dello switch, poichè vengono registrate tante false associazioni $<\text{MAC Address - porta fisica}>$ e poichè le tabelle degli indirizzi MAC hanno dimensioni limitate.<br /> Il risultato è che lo switch non riesce più a gestire il traffico nella maniera opportuna; esso comincia a funzionare come un [[Hub]], cioè non fa più l'instradamento dei pacchetti ma spedisce ciascuno di essi in broadcast attraverso ognuna delle sue porte. Un pacchetto che dovrebbe essere indirizzato ad un certo host viene invece destinato anche ad altri host, che non dovrebbero riceverlo. Così facendo, un attaccante può fare sniffing di tutti i pacchetti che transitano nella rete.<br />
 Questa tecnica viene utilizzata per sniffare il traffico in reti in cui la presenza dello switch non consente a chiunque di accedere ai pacchetti a sè non destinati.
 
 Una possibile contromisura consiste nel non generare dinamicamente la tabella contenente le coppie $<\text{MAC Address - porta fisica}>$ ma avere l'accortezza e la pazienza di gestirla in maniera statica. E' inoltre possibile costruire dei filtri per scartare MAC falsi.
@@ -271,9 +274,12 @@ Non esiste alcun meccanismo di autenticazione fra le parti, quindi non si può a
 
 i controlli di integrità sono banali. L'unico controllo di integrità che [[TCP-IP]] offre è un checksum dei pacchetti. Ad un attaccante basta sniffare il pacchetto dalla rete e manipolarlo in modo tale che il checksum risulti comunque veritiero.
 
+Infine, il protocollo difende la disponibilità della rete dalla congestione, ma non la possibilità di connettersi ad un determinato nodo.
+
 ------------------------------------------------------------
 
 ### IP Spoofing ###
+**IP Spoofing** è un tentativo da parte di un intruso di inviare pacchetti da un indirizzo IP facendoli sembrare provenire da un IP differente.<br />
 Un attaccante può inviare ad un server un pacchetto con **IP spoofato**, cioè in cui il campo mittente dell'header IP viene cambiato. Il destinatario non ha modo di capire se il pacchetto arriva effettivamente dall'host riportato nel campo mittente dell'header IP oppure no.<br />
 L'attaccante si trova, invece, di fronte a due problemi:
 1) **Risposta del server**: il server invierà una risposta inserendo nel campo destinazione l'IP spoofato. L'attaccante, quindi, non riceverà mai una risposta;
@@ -291,10 +297,13 @@ Per sferrare un attacco di tipo Blind IP spoofing, l'attaccante deve fare quattr
 
 Per sferrare un attacco di tipo Non-blind Spoofing, invece, è necessario utilizzare uno **sniffer**. Si tratta di un tool che mostra tutti i pacchetti della sottorete in cui è collegato (se non c'è uno switch; in tal caso occorre effettuare MAC flooding sullo switch prima di poter sniffare qualsiasi pacchetto nella rete). Lo sniffer può quindi intercettare anche una eventuale risposta che il server sta inviando al legittimo client (che l'attaccante ha DoSsato) e leggere i corretti ACK-NUM e SEQ-NUM.
 
+Se un utente malintenzionato può indovinare il numero di sequenza corrente per una connessione esistente, può inviare il pacchetto di ripristino per chiuderla.
+ 
+
 ------------------------------------------------------------
 
 ### TCP Session Hijacking ###
-Il **TCP Hijacking** consiste nell'instaurare una nuova connessione tra due entità che comunicano tramite protocollo TCP.
+Il **TCP Hijacking** consiste nell'aquisire una comunicazione TCP/IP attiva.
 Con IP Spoofing e corretti SEQ-NUM e ACK-NUM, un attaccante può effettuare l'hijacking di una sessione TCP.<br />
 Può essere:
 1) **Passivo**: l'attaccante si limita ad ascoltare la conversazione tra client e server;
@@ -324,8 +333,17 @@ L'attacco SYN flood non da via di scampo se viene utilizzata una **botnet**. Di 
 
 ------------------------------------------------------------
 
+### DoS Attack ###
+Attacco il cui goal è l'esclusione di un nodo o di un servizio. Utilizza tipicamente degli amplification attack, nei quali la quantità di dati generati dall'attaccante è inferiore a quella che colpisce la vittima.<br />
+In un **Reflection Attack**, un attaccante, invece di colpire direttamente la vittima, dirige il suo traffico verso un host intermedio (**Reflector**) il quale poi dirige il traffico verso la vittima.
+
+------------------------------------------------------------
+
 ### Attacchi a DHCP ###
-[[Dynamic Host Configuration Protocol]] è il protocollo che consente di assegnare a nuovi host un indirizzo IP scelto da un pool di indirizzi liberi e disponibili.<br />
+[[Dynamic Host Configuration Protocol]] è il protocollo che consente di assegnare a nuovi host un indirizzo IP scelto da un pool di indirizzi liberi e disponibili. Il protocollo, oltre a restituire l'IP Address, può assegnare:
+- l'indirizzo del router più vicino per il client (**Gateway**);
+- nome ed indirizzo del DNS server;
+- **Network Mask**.<br />
 Questo protocollo è privo di misure di protezione e di conseguenza è soggetto ai seguenti attacchi:
 1) **DHCP Starvation**: l'attaccante invia tante DHCP discover con MAC differenti. Questo causa un DoS al server, il quale non riesce a soddisfare tutte le richieste perchè esaurisce il pool di indirizzi. Eventuali host legittimi che vogliono ottenere un indirizzo IP ora sono impossibilitati;
 2) **Rogue DHCP**: il server DHCP, dopo aver ricevuto una DHCP Request, indicherà al mittente non solo l'IP Address disponibile, ma anche il **default gateway** ed il **default DNS**. L'attaccante può fingere di essere un server DHCP e rispondere alle DHCP discover dei client. Siccome nelle risposte del server, di solito, i nuovi host vengono istruiti anche su quale sia il gateway della rete e altre informazioni utili, l'attaccante può comunicare un falso IP per il gateway (indicando sè stesso) e quindi risolvere gli URL come preferisce, compiere attacchi di phishing, sniffare il traffico facendo Man in the Middle o altro ancora.
@@ -350,7 +368,7 @@ Questo perchè lo switch si accorgerebbe che stanno arrivando molteplici richies
 ------------------------------------------------------------
 
 ### Attacchi a BGP ###
-[[Border Gateway Protocol]] è il protocollo che permette la comunicazione tra **Autonomous Systems**. Si parla di **iBGP** (**Internal**) quando ci si riferisce al BGP utilizzato all'interno di un Autonomous System. Si parla, invece, di **eBGP** (**external**) quando ci si riferisce al BGP utilizzato nella comunicazione tra AS diversi.
+[[Border Gateway Protocol]] è il protocollo che permette la comunicazione tra **Autonomous Systems**. Si tratta di un protocollo incrementale di tipo **Path Vector**, cioè manda un annuncio quando una nuova rotta esiste ed un altro quando una rotta viene ritirata. Si parla di **iBGP** (**Internal**) quando ci si riferisce al BGP utilizzato all'interno di un Autonomous System. Si parla, invece, di **eBGP** (**external**) quando ci si riferisce al BGP utilizzato nella comunicazione tra AS diversi.
 
 Il protocollo funziona secondo le seguenti regole:
 1) il nodo $A$ invia un update ai nodi adiacenti, comunicando il suo essere in grado di indirizzare il prefisso $X$;
@@ -360,10 +378,12 @@ Il protocollo funziona secondo le seguenti regole:
 Questo protocollo può essere attaccato su molti fronti:
 1) **Disponibilità** (DoS);
 2) **Confidenzialità** (messaggi in chiaro);
-3) **Integrità**.
+3) **Integrità**;
+4) **Autenticazione**.
 
 L'integrità è, in realtà, un fronte difficile da attaccare in quanto i vari AS sono collegati tramite singoli HOP e, quindi, è difficile applicare un attacco MITM modificando il messaggio che i due AS si scambiano.
 
+I messaggi di BGP Update non contengono nessun meccanismo di autenticazione o integrità. Un attaccante può, quindi, falsificare le rotte annunciate.<br />
 I principali obiettivi di attacco per un host malevolo BGP sono:
 1) **Blackholing**: consiste nel creare dei black holes nei quali i pacchetti spariscono. Nello specifico, vengono istruiti i vari AS che un certo $\text{AS}_{x}$ (vittima) è in grado di gestire un determinato prefisso meglio di chiunque altro (quando, in realtà, $\text{AS}_{x}$ non è in grado di farlo). In questo modo, i pacchetti sotto quel prefisso verranno girati ad $\text{AS}_{x}$ e lui non farà altro che dropparli in quanto non sono di sua effettiva competenza.
 2) **Redirection**: il traffico viene rediretto e viene fatto passare per un router malevolo in grado di sniffare i vari pacchetti, oppure per far crollare una sottorete a causa del traffico ingente di pacchetti.
@@ -382,19 +402,20 @@ Le principali contromisure adottate da BGP sono:
 2) **MD5**: crittografare i messaggi;
 3) [[IPSEC]];
 4) **Route Filtering**: vengono create dell **Access Control Lists** per filtrare i messaggi di update in ingresso ed in uscita in modo tale che ci si assicuri che le rotte seguano specifiche regole;
-5) **Resource Public Key Infrastructure (RPKI)**: questo sistema prevede l'esistenza di una repository contenente delle key. Gli AS ottengono un certificato **Route Origin Authorizations** (**Roa**), fornito dall'autorità regionale **Regional Internet Registries**.<br />Ogni ROA continene un **AS Number**, il **range di validità per le date** ed i **prefissi IP**.<br />Nello specifico, quando un AS certificato vuole inviare un update, lo farà aggiungendo il proprio certificato, permettendo così agli altri AS che riceveranno il pacchetto di confermare la sua identità.<br />Una Public Key Infrastructure viene utilizzata anche dalle versioni sicure del protocollo BGP (**S-BGP** e **SO-BGP**).
+5) **Resource Public Key Infrastructure (RPKI)**: questo sistema prevede l'esistenza di una repository contenente delle key. Gli AS ottengono un certificato **Route Origin Authorizations** (**Roa**), fornito dall'autorità regionale **Regional Internet Registries**.<br />Ogni ROA continene un **AS Number**, il **range di validità per le date** ed i **prefissi IP**.<br />Nello specifico, quando un AS certificato vuole inviare un update, lo farà aggiungendo il proprio certificato, permettendo così agli altri AS che riceveranno il pacchetto di confermare la sua identità. Gli annunci senza un ROA valido vengono ignorati dalle reti.<br />Una Public Key Infrastructure viene utilizzata anche dalle versioni sicure del protocollo BGP (**S-BGP** e **SO-BGP**).<br />**S-BGP** è un estensione di BGP utilizzata per proteggere il protocollo da pacchetti Update erronei o maliziosi. Ogni S-BGP Router genera un **Address Attestation** per verificare di essere autorizzato ad annunciare quel blocco di IP. <br />Ogni S-BGP router lungo il path, poi, deve validare l'integrità di un Update prima di firmarlo e di riannunciarlo.<br />**SO-BGP** è, invece, una versione di BGP con maggiore flessibilità.
 
 ------------------------------------------------------------
 
 ### Attacco a DNS ###
 
-Il protocollo [[Domain Name System]], o **DNS**, è un protocollo utile per risolvere **indirizzi logici** (www.indirizzologico.com) in **indirizzi fisici**, ovvero gli indirizzi I (1.1.1.1). Si tratta di un servizio gerarchico:
+Il protocollo [[Domain Name System]], o **DNS**, è un protocollo utile per risolvere **indirizzi logici** (www.indirizzologico.com) in **indirizzi fisici**, ovvero gli indirizzi I (1.1.1.1).<br />Si tratta di un servizio gerarchico:
 1) **Root Name Servers**: responsabili dei domini al top level;
 2) **Top Level Domain Servers**: responsabili dei domini di primo livello, come **.it**, **.com**, **.org**;
 3) **Authoritative Name Servers**: responsabili dei sottodomini, come **.unimi.it**;
-4) **Recursive Nameservers**: software server i quali si comportano da authoritative server per la zona oppure contattano i server DNS quando non conoscono la corretta risoluzione di un indirizzo logico.
 
 Con il termine **Zona** o **Dominio**, si definisce una collezione di coppie $< \text{hostname-IP Address}>$ gestite insieme.
+
+Con il termine **Nameserver** si fa riferimento ad un software server che risponde a Query DNS. Spesso il Nameserver conosce la risposta direttamente, cioè è authoritative per la zona mentre, altre volte, ridirige la domanda (**Recursive Nameserver**). 
 
 Per la risoluzione dei nomi ci si affida ad un **resolver** (una libreria compilata in un programma che richiede il servizio DNS). Ogni resolver sa come interrogare il Nameserver. Il resolver manda, quindi, una richiesta al Nameserver; la risposta o è definitiva, nel caso in cui quel nameserver sia authoritative per la zona, o rappresenta la prima entità che gestirà le varie richieste da fare ai server esterni. Esso effettuerà una prima richiesta ad uno dei Root Name Server (di cui ne esistono 13, ciascuno dei quali gestisce una differente regione geografica). Questi server forniscono al Nameserver l'IP del server autoritativo responsabile. A questo punto, il Nameserver ridirige a sua volta la richiesta al server autoritativo responsabile di quel dominio. Il server autoritativo è il server che restituisce l'indirizzo IP vero e proprio del server desiderato.<br />Ogni risoluzione DNS, anche in caso di risoluzione errata, viene temporaneamente salvata in una memoria cache per fare in modo che un'eventuale risoluzione per lo stesso indirizzo sia molto più rapida. I dati in cache scadono in base ad un campo Time To Leave.
 
@@ -403,12 +424,13 @@ Di conseguenza, è facile intuire come questo generi un grave problema di sicure
 Ogni Nameserver può, inoltre, annunciare di possedere una determinata zona, anche se non la possiede realmente e, per aumentare l'efficienza del sistema, generalmente vengono utilizzate risposte contenute nella cache dei resolver.<br />
 
 Le principali vulnerabilità del protocollo DNS sono le seguenti:
-1) **DNS Cache Poisoning**: ne esistono due versioni, una di origine anonima ed una denominata **Kaminsky Attack**. L'obiettivo di entrambe è quello di falsificare i valori contenuti all'interno della cache del Nameserver ricorsivo. Così facendo, tutti gli utenti collegati a questo server riceveranno falsi IP per un certo indirizzo logico.<br />Il DNS accetta solamente risposte a query in attesa, mentre le risposte non desiderate vengono ignorate.<br />
-L'attaccante invia una **DNS Query** al Nameserver vittima per un particolare indirizzo. Di conseguenza, si attiva la serie di richieste per ottenere il corrispettivo indirizzo fisico.<br />Nel primo caso, l'attacco consiste nel riuscire a rispondere al Nameserver con un indirizzo fisico corrispondente ad un sito web gestito dall'attaccante (in modo tale da reindirizzare la vittima su siti malevoli) prima che la reale risposta dell'Authoritative Server arrivi. L'unica difficoltà di questo attacco consiste nel fatto che le richieste del Nameserver sono identificate da un **QID** (**Query ID**) che l'attaccante deve indovinare per forgiare una risposta che sembri autentica. Il punto cruciale di questo attacco risiede nel non avere in cache la risoluzione dell'indirizzo logico al quale ci si vuole sostituire. Nel caso la risoluzione sia presente in cache, è necessario aspettare lo scadere del TTL. Oltre a ciò, è necessario indovinare il corretto QID ed essere in grado di rispondere più velocemente del authoritative server.<br />Nel secondo caso, invece, l'attaccante cerca di sostituirsi totalmente all'Authoritative Server. L'attaccante vuole redirigere tutte le richieste fatte all'Authoritative Server vittima su di sè. Anche in questa versione è sempre presente l'incognita del QID da superare per la buona riuscita dell'attacco.<br />
+1) **DNS Cache Poisoning**: ne esistono due versioni, una di origine anonima ed una denominata **Kaminsky Attack**. L'obiettivo di entrambe è quello di falsificare i valori contenuti all'interno della cache del Nameserver ricorsivo. Così facendo, tutti gli utenti collegati a questo server riceveranno falsi IP per un certo indirizzo logico.<br />Il DNS accetta solamente risposte a query in attesa, mentre le risposte non desiderate vengono ignorate.<br />Il DNS accetta solo risposte a query in attesa e sulla stessa porta UDP. Infatti le risposte non desiderate vengono ignorate.<br />
+L'attaccante invia una **DNS Query** al Nameserver vittima per un particolare indirizzo. Di conseguenza, si attiva la serie di richieste per ottenere il corrispettivo indirizzo fisico.<br />Nel primo caso, l'attacco consiste nel riuscire a rispondere al Nameserver con un indirizzo fisico corrispondente ad un sito web gestito dall'attaccante (in modo tale da reindirizzare la vittima su siti malevoli) prima che la reale risposta dell'Authoritative Server arrivi. L'unica difficoltà di questo attacco consiste nel fatto che le richieste del Nameserver sono identificate da un **QID** (**Query ID**) che l'attaccante deve indovinare per forgiare una risposta che sembri autentica. Il punto cruciale di questo attacco risiede nel non avere in cache la risoluzione dell'indirizzo logico al quale ci si vuole sostituire. Nel caso la risoluzione sia presente in cache, è necessario aspettare lo scadere del TTL. Oltre a ciò, è necessario indovinare il corretto QID ed essere in grado di rispondere più velocemente dell' Authoritative Server.<br />Nel secondo caso, invece, l'attaccante cerca di sostituirsi totalmente all'Authoritative Server. L'attaccante vuole redirigere tutte le richieste fatte all'Authoritative Server vittima su di sè. Anche in questa versione è sempre presente l'incognita del QID da superare per la buona riuscita dell'attacco.<br />
 L'attaccante richiede un indirizzo casuale all'interno del dominio target e cerca poi di sostituirsi ad un Authoritative Nameserver inviando al Nameserver un flusso di pacchetti spacciandosi per il Root Name Server o per il Top Level Domain Server. In questo flusso di pacchetti, l'attaccante delega un altro Nameserver la risoluzione dell'indirizzo logico, ridirezionando il Nameserver verso l'IP dell'attaccante. Il Nameserver vittima si convince in questo modo che il Nameserver dell'attaccante sia authoritative per l'intero dominio di secondo livello. In questo modo l'attaccante è riuscito a sostituirsi ad un Authoritative Server. Controllando il dominio, l'attaccante controlla tutta la risoluzione del nameserver. Infatti, puòmridirigere i visitatori del web, dirigere email ai propri server con falsi **MX Records** o settare un TTL molto alto per rimanere in controllo.<br />
 Questo attacco è possibile perchè chiunque può configurare un proprio nameserver che sia authoritative per un qualsiasi dominio, benchè di base sia inutile in quanto non viene puntato dal protocollo DNS.<br />Una possibile difesa risiede nell'aumentare il range casuale del QID per renderlo più difficile da indovinare.<br />Attuando con successo il Kaminsky Attack, si prende controllo di tutto il dominio perchè si riesce a convincere il server vittima di star comunicando con il vero server autoritativo. Con l'attacco generico, invece, si prende il controllo non di tutto il dominio ma solo di un sito. Questo avviene perchè la risposta dell'attaccante arriva dopo quella del Top Level Domain Server ma prima di quella del server autoritativo;
 2) **DNS Rebinding**: l'attaccante registra un dominio (come, ad esempio, www.sample.com) e ne delega la risoluzione ad un server DNS sotto il suo controllo. Il server viene configurato per rispondere con un TTL molto basso o nullo, per prevenire che la risposta venga inserita nella cache dell'host vittima. Quando la vittima contatta accidentalmente l'indirizzo logico, il server risponde con l'indirizzo fisico che fa scaricare sul client della vittima del codice Javascript malevolo. Questo codice, una volta eseguito, effettua in automatico un'altra richiesta al dominio logico (il client non conosce la risoluzione per via del TTL basso della precedente richiesta). Il server DNS dell'attaccante, questa volta, risolve www.sample.com con un indirizzo che appartiene alla rete privata della vittima. Così facendo, la vittima, in maniera inconsapevole (per via della [[Same-Origin Policy]], la quale impedisce a del codice [[Javascript]] di leggere e/o modificare contenuto al di fuori della pagina web stessa o del server da cui è stato scaricato), consente all'applet installato con la prima richiesta dall'attaccante di accedere ai servizi nella rete locale;
-3) **Triggering a Race**: ogni link, ogni immagine ed ogni advertisement può provocare un **DNS lookup**. Non solo il codice Javascript.
+
+E' importante tenere a mente il che : ogni link, ogni immagine ed ogni advertisement può provocare un **DNS lookup**, non solo il codice Javascript (**Triggering a Race**).
 
 I meccanismi di difesa contro il Cache Poisoning sono i seguenti:
 1) Aumentare la taglia delle Query ID;
@@ -428,13 +450,31 @@ DNS è anche soggetto ad innumerevoli attacchi di tipo **DoS** (**Denial of Serv
 
 Un meccanismo di difesa generale di DNS è dato da **DNSSEC**.<br />Rappresenta un protocollo per garantire che i messaggi che vengono scambiati durante la risoluzione di un indirizzo logico siano autentici e non corrotti. Questo protocollo funziona con la crittografia asimmetrica, dove ogni livello gerarchico del DNS utilizza chiavi pubbliche e private per firmare le richieste DNS. Si crea, dunque, una catena di fiducia a partire dalla chiave pubblica "fidata" di un server, il quale conosce l'host che fa le richieste DNS.
 
+Le vulnerabilità di DNS sono causate dal fatto che sia gli utenti che gli host si fidano del mapping host-address restituito dal DNS.
+
 ------------------------------------------------------------
 
+### Buffer Overflow ###
+**Buffer Overflow** è una delle maggiori vulnerabilità di sicurezza., causato spesso dalla capacità dell'attaccante remoto di eseguire del codice arbitrario. Questo tipo di attacchi è causato in genere da programmi che non controllano input non validi. tipicamente più lunghi di quanto previsto.
+
+#### Stack Canaries ####
+Uno stack canary è un numero casuale posto sullo stack tra i dati dell'utente e l'indirizzo del mittente.<br />
+L'overflow della variabile locale e la modifica dell'indirizzo di ritorno cambierà anche lo stack canary.<br />
+Prima di tornare, il programma controlla il valore canarino e, se è stato modificato, capirà di essere stato vittima di un attacco buffer overflow.
+
 ## Set UID ##
-Permette ad un utente di eseguire un programma con i privilegi del proprietario di quel programma oppure con privilegi temporaneamente superiori a quelli normalmente a lui concessi.<br />
-Ogni processo possiede due User ID:
-- **Real User ID** (**RUID**): rappresenta l'ID del reale proprietario del processo;
-- **Effective User ID** (**EUID**):rappresenta l'ID dell'utente che ha eseguito il processo (l'Access Control è basato sull'EUID).
+Tutte le risorse Linux (socket, dispositivi, file) sono gestite come file. Tutti i file e le directory hanno un unico proprietario utente ed un unico gruppo proprietario.<br />
+Il modello di autorizzazione di UNIX è una semplice implementazione di una strategia di controllo degli accessi generica, nota come **Access Control List** (**ACL**).<br />
+Ogni oggetto ha un ACL che identigica le operazioni che i soggetti possono eseguire. Ogni accesso ad un oggetto viene verificato rispetto all'ACL dell'oggetto.<br />
+I file UNIX sono amministrati utilizzando gli [[Inode]], strutture di controllo con informazioni chiave sui file.<br />
+I processi sono isolati l'uno dall'altro durante l'esecuzione: infatti non possono accedere alla memoria reciproca. Inoltre, vengono eseguiti come un utente specifico e con le autorizzazioni dell'UID dell'utente. I processi possono quindi acceder a tutti i file a cui l'UID ha accesso.<br />
+I processi avviati da **root** possono, però, ridurre i propri privilegi, modificandoli in un UID meno privilegiato.<br />
+Ogni processo possiede tre User ID:
+- **Effective User ID** (**EUID**): determina le autorizzazioni per il processo;
+- **Real User ID** (**RUID**): determina l'utente che ha avviato il processo;
+- **Saved User ID** (**SUID**): EUID prima della modifica.
+
+Con **Set User ID** o (**SetUID**), il sistema utilizza temporaneamente i privilegi del proprietario (o del gruppo nel caso di **Set Group ID**) del file oltre ai privilegi dell'utente reale. Questo consente ai programmi privilegiati di accedere a file/risorse generalmente non accessibili.
 Quando un normale programma viene eseguito, RUID$=$EUID, entrambi sono uguali all'ID dell'utente che ha eseguito il programma.
 Quando viene eseguito il **Set-UID**, RUID$\neq$EUID. Il RUID rimarrà uguale all'user ID, mentre EUID è uguale all'ID del proprietario del programma.
 - Se il programma è possieduto da root, allora il programma esegue con i permessi di root.
@@ -447,8 +487,8 @@ Il quarto bit rappresenta i permessi per gli utenti world.<br />
 
 ------------------------------------------------------------
 
-## Scanning ##
-Lo **Scanning** rappresenta una tecnica nata per aiutare i sistemisti di rete a capire se nel sistema sono presenti superfici di attacco disponibili.
+## Network Scanning ##
+Il **Network Scanning** rappresenta una tecnica nata per aiutare i sistemisti di rete a capire se nel sistema sono presenti superfici di attacco disponibili.
 Gli obiettivi dello scanning sono:
 1) riconoscere i servizi UDP e TCP disponibili;
 2) riconoscere i servizi in esecuzione su ogni porta;
@@ -485,15 +525,16 @@ La scansione di una porta può dare i seguenti esiti:
 3) **Bloccata/Filtrata**: il target non ha risposto, pertanto le connessioni alla porta saranno rifiutate (è dovuto probabilmente alla presenza di un firewalll che blocca alcuni pacchetti).
 
 Ecco alcune scansioni esistenti:
-1) **ARP/ICMP scan**: permette di scoprire gli host attivi nella sottorete, inviando pacchetti di ping;
-2) **TCP scan** (**intrusivo**): si invia un pacchetto di SYN e si effettua un three way handshake. Se la porta obiettivo della scansione risulterà aperta, l'attaccante riceverà in risposta un pacchetto TCP con i flag SYN e ACK attivi. A questo pacchetto, l'attaccante risponderà con un pacchetto ACK. Altrimenti, nel caso di porta chiusa, riceverà un pacchetto TCP con flag RST attivo, il quale terminerà la connessione;
-3) **SYN scan** (**stealth**): si invia un pacchetto di SYN. Se l'host risponde con SYN/ACK, la porta è aperta (e non si completa il three way handshake). Se la vittima risponde con RST,  la porta è chiusa. Viene considerata una tecnica di scansione stealth perchè, tipicamente, nei log vengono memorizzate le connessioni complete e non le half open;
-4) **ACK scan** (**stealth**): per effettuare la scansione si invia un pacchetto TCP con il bit ACK attivo. Se il firewall blocca il pacchetto, la sorgente allo scadere di un timeout riesce a dedurre che la porta è filtrata. Se il firewall lascia passare il pacchetto, esso raggiunge il target, il quale, non avendo una sessione TCP attiva, risponderà con un pacchetto con il bit RST attivo. In questo caso, si deduce che la porta non è filtrata (non si sa se sia chiusa o aperta);
-5) **IDLE scan** (**stealth**): si utilizza uno zombie e si effettua l'analisi sul suo campo identification (un contatore il quale si incrementa ogni volta che un host invia un pacchetto);
-6) **Windows scan** (**stealth**): consiste nel mandare un ACK alla vittima ed analizzare il campo Window ricevuto con la risposta RST, il quale, se maggiore di zero, significa che la porta è open mentre, se uguale a zero, significa che la porta è chiusa. Non tutti i sistemi seguono, però, questa logica;
-7) **FIN/NULL/Xmas scan** (**stealth**): si invia un pacchetto con le relative flag a 1 (con Xmas si mandano FIN, URG e PSH). Se il destinatario risponde con RST la porta è chiusa, altrimenti è open o filtered;
-8) **UDP scan** (**miscellaneous**): si invia un pacchetto UDP. Se si riceve una risposta UDP, allora la porta è aperta. Se invece si riceve un pacchetto ICMP unreachable, allora la porta è chiusa. Se, infine, si ricevono altri errori oppure nessuna risposta ICMP, allora la porta è filtered;
-9) **FTP bounce scan**: (**stealth**): si tratta di una scansione simile alla IDLE perchè usa come zombie un server FTP. Se la connessione viene stabilita, allora la porta è aperta. Se la connessione non viene stabilita, allora la porta è chiusa;
+1) **ARP scan**: permette di scoprire gli host attivi nella sottorete inviando una serie di ARP Broadcast ma funziona solo nella sottorete locale;
+2) **ICMP Scan**: permette di scoprire gli host attivi nella sottorete inviando dei pacchetti ICMP di tipo **Echo Request** (PING);
+3) **TCP scan** (**intrusivo**): si invia un pacchetto di SYN e si effettua un three way handshake. Se la porta obiettivo della scansione risulterà aperta, l'attaccante riceverà in risposta un pacchetto TCP con i flag SYN e ACK attivi. A questo pacchetto, l'attaccante risponderà con un pacchetto ACK. Altrimenti, nel caso di porta chiusa, riceverà un pacchetto TCP con flag RST attivo, il quale terminerà la connessione;
+4) **TCP SYN PING** (**stealth**): si invia un pacchetto di SYN. Se l'host risponde con SYN/ACK, la porta è aperta (e non si completa il three way handshake). Se la vittima risponde con RST,  la porta è chiusa. Viene considerata una tecnica di scansione stealth perchè, tipicamente, nei log vengono memorizzate le connessioni complete e non le half open;
+5) **TCP ACK PING** (**stealth**): per effettuare la scansione si invia un pacchetto TCP con il bit ACK attivo. Se il firewall blocca il pacchetto, la sorgente allo scadere di un timeout riesce a dedurre che la porta è filtrata. Se il firewall lascia passare il pacchetto, esso raggiunge il target, il quale, non avendo una sessione TCP attiva, risponderà con un pacchetto con il bit RST attivo. In questo caso, si deduce che la porta non è filtrata (non si sa se sia chiusa o aperta);
+6) **IDLE scan** (**stealth**): si utilizza uno zombie e si effettua l'analisi sul suo campo identification (un contatore il quale si incrementa ogni volta che un host invia un pacchetto);
+7) **Windows scan** (**stealth**): consiste nel mandare un ACK alla vittima ed analizzare il campo Window ricevuto con la risposta RST, il quale, se maggiore di zero, significa che la porta è open mentre, se uguale a zero, significa che la porta è chiusa. Non tutti i sistemi seguono, però, questa logica;
+8) **FIN/NULL/Xmas scan** (**stealth**): si invia un pacchetto con le relative flag a 1 (con Xmas si mandano FIN, URG e PSH). Se il destinatario risponde con RST la porta è chiusa, altrimenti è open o filtered;
+9) **UDP scan** (**miscellaneous**): si invia un pacchetto UDP. Se si riceve una risposta UDP, allora la porta è aperta. Se invece si riceve un pacchetto ICMP unreachable, allora la porta è chiusa. Se, infine, si ricevono altri errori oppure nessuna risposta ICMP, allora la porta è filtered;
+10) **FTP bounce scan**: (**stealth**): si tratta di una scansione simile alla IDLE perchè usa come zombie un server FTP. Se la connessione viene stabilita, allora la porta è aperta. Se la connessione non viene stabilita, allora la porta è chiusa;
 
 La tecnica **IDLE scan** prevede di avere una macchina zombie in stato di idle (non deve ricevere/inviare traffico di rete per non incrementare il campo identification) e considerare il suo campo identification per capire lo stato di una porta. In generale, il sistema operativo genera il valore per questo campo in maniera sequenziale per ogni pacchetto trasmesso, per cui esso cambia solo quando un host trasmette pacchetti (mentre rimane inalterato se non ne trasmette).
 
@@ -560,10 +601,10 @@ Il protocollo **TTS** (**SSL** è la versione più antica) è un protocollo che 
 Il protocollo prevede due fasi, una fase di sessione ed una fase di connessione. La prima consiste nell'instaurare un canale sicuro tra i due host mentre la seconda è la fase di comunicazione vera e propria.<br />
 La sessione può essere riutilizzata per altre connesssioni. Questo è vantaggioso in quanto permette di evitare di dover rimettere d'accordo le parti sugli algoritmi da utilizzare.<br />
 Il protocollo è costituito da 4 sottoprotocolli:
-1) **Protocollo di handshake**: ;
-2) **Protocollo di alert**: ;
-3) **Protocollo change cypher**: ;
-4) **Protocollo record cypher**: .
+1) **Protocollo di handshake**: consente l'eventuale autenticazione tra le parti;
+2) **Protocollo di alert**: notifica situazioni anomale ;
+3) **Protocollo change cypher**: impone l'esecuzione di un nuovo handshake per rinegoziare i parametri di sicurezza;
+4) **Protocollo record cypher**: si occupa della comprssione, del MAC e della cifratura.
 
 ------------------------------------------------------------
 
@@ -608,7 +649,7 @@ Se l'utente ha necessità di collegarsi con più server che sfruttano il meccani
 
 ## Firewall ##
 Il **Firewall** rappresenta la misura di sicurezza minima in un sistema connesso ad internet. Esso si interpone tra la rete interna ed internet, filtrando le richieste in ingresso ed in uscita per cercare di proteggere la rete da utenti malintenzionati.<br />
-Il firewall deve essere l'unico punto di contatto tra il mondo esterno e la rete da proteggere.<br />
+Il firewall deve essere l'unico punto di contatto tra il mondo esterno e la rete da proteggere. Infatti, il suo scopo principale è quello di controllare l'accesso da e per una rete protetta. Controllo che viene effettuato obbligando le connessioni a passare attraverseo il firewall stesso, dove vengono esaminate e valutate.<br />
 Esistono diversi tipi di firewall: innanzitutto, è necessario precisare che essitono firewall hardware ma anche software. Su ogni host è presente un firewall software. A seconda del livello dello **stack ISO/OSI** a cui sono implementati, è possibile distinguere:
 1) **Static Packet Filter**: livello di rete ISO/OSI 3 o 4;
 2) **Stateful Filtering**: livello di rete ISO/OSI 3 o 4;
@@ -647,12 +688,21 @@ Gli **Intrusion Prevention Systems** (o **IPS**) sono degli IDS che non si limit
 
 ------------------------------------------------------------
 
-## Domande d'esame ##
-1) Discutere obiettivi e natura degli approcci al port scanning;
-2) Quali sono i risultati possibili per la scansione di una porta?
-3) Descrivere in dettaglio due approcci allo scan;
-4) Descrivere il funzionamento dello IDLE scan;
-5) Descrivere l'attacco noto come TCP SYN Flood;
-6) Descrivere le problematiche di sicurezza relative al protocollo BGP;
-7) Descrivere una procedura di autenticazione su rete usando Challenge-Response;
-8) 
+## Reti Wireless ##
+Le **Reti Wireless** funzionano in due modalità di base:
+- **Infrastructure Mode**, dove ogni client wireless si connette direttamente ad un dispositivo centrale chiamato **Access Point**, senza nessuna connessione diretta tra client wireless. Questo AP funge da hub wireless che esegue le connessioni e le gestisce tra i client;
+- **Ad-hoc mode**, dove non sono presenti Access Point e gli host wireless comunicano tra loro stessi.
+
+La fonte di rischio più significativa è il mezzo di comunicazione sottostante.
+
+### Wired Equivalent Protocol (WEP)###
+Il protocollo **WEP** era la protezione primaria per il protocollo 802.11 ed era progettato per rendere il wireless sicuro come una rete cablata. E' stato abbandonato a causa della crittografia debole (chiavi non più lunghe di 40 bit), chiavi di crittografia statiche e mancanza di metodo di distribuzione delle chiavi.
+
+### Wi-Fi Protected Access (WPA) ###
+Protocollo che migliora WEP in diversi modi:
+- chiave segreta più grande (128 bit) e dati di inizializzazione (48 bit);
+- supporta vari tipi di autenticazione, oltre ad un segreto condiviso, come username/password;
+- cambia dinamicamente le chiavi mentre la sessione continua;
+- metodo crittografico per verificare l'integrità;
+- contatore di frame per prevenire attacchi di reply.
+
