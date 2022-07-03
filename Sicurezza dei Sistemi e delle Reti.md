@@ -1,6 +1,6 @@
 ## Sicurezza ##
 Con **Sicurezza** si intende il raggiungere un obiettivo in presenza di un avversario, il prevenire un comportamento non desiderato.<br />
-Un sistema sicuro è un sistema il quale assolve uno specifico compito, nonostante l'avversario voglia impedirlo o stia operando in qualsiasi modo.<br />
+Un sistema sicuro è un sistema il quale assolve uno specifico compito, nonostante l'avversario voglia impedirlo.<br />
 
 ------------------------------------------------------------
 
@@ -18,7 +18,7 @@ Con **Malware** si definisce un programma che viene inserito in un sistema, soli
 ------------------------------------------------------------
 
 ### Trojan Horse ###
-Programma con un primo effetto evidente (e aspettato) ed un secondo effetto nascotso, il quale viola la politica di sicurezza.
+Programma con un primo effetto evidente (e aspettato) ed un secondo effetto nascosto, il quale viola la politica di sicurezza.
 
 Alcuni esempi sono:
 1) **The AIDS Trojan**, il quale risiedeva su floppy disks contenenti importanti informazioni sulla malattia dell'AIDS. Questo trojan crittografava il disco rigido dell'utente e offriva la possibilità di acquistare la password per decifrare i dati;
@@ -29,13 +29,13 @@ Alcuni esempi sono:
 ### Virus ###
 Un **Virus** informatico è un codice informatico che può replicarsi, modificando altri file o programmi per inserire codice in grado di essere replicato ulteriormente.<br />
 La proprietà di autoreplicazione è ciò che distingue i virus informatici da altri tipi di malware. Un'altra proprietà di un virus risiede nel fatto che la replica del virus stesso richieda un certo tipo di assistenza da parte dell'utente, come ad esempio facendo clic su un allegato e-mail o condividendo un'unità USB.<br />
-Il virus altera, quindi, il codice normale con una sua versione infetta.<br />
+Il virus altera, quindi, il codice normale sostituendolo con una sua versione infetta.<br />
 I vettori di infezione per i virus sono tipicamente [[Boot Sector]] (come USB drive), file eseguibili, macro file e multipartiti.
 
 E' possibile classificare i virus in base alla strategia attuata per non rivelarsi:
 
 #### Encrypted Virus ####
-Una parte del virus crea una chiave di crittografia casuale e crittografa il resto del virus. La chiave viene, quindi, memorizzata con il virus. Quando viene richiamato un programma infetto, il virus utilizza la chiave casuale memorizzata per decrittografare il virus. Quando il virus si replica, viene selezionata una chiave casuale diversa, impendendo così di avere un modello di bit costante da osservare.
+Una parte del virus crea una chiave di crittografia casuale e crittografa il resto del virus. La chiave viene, quindi, memorizzata con il virus. Quando viene richiamato un programma infetto, il virus utilizza la chiave casuale memorizzata per decrittografare la parte di sè cifrata. Quando il virus si replica, viene selezionata una chiave casuale diversa, impendendo così di avere un modello di bit costante da osservare.
 
 ------------------------------------------------------------
 
@@ -694,6 +694,11 @@ Le **Reti Wireless** funzionano in due modalità di base:
 - **Ad-hoc mode**, dove non sono presenti Access Point e gli host wireless comunicano tra loro stessi.
 
 La fonte di rischio più significativa è il mezzo di comunicazione sottostante.
+I fattori chiave che contribuiscono ai rischi sono:
+- il canale, in quanto la comunicazione broadcast è più suscettibile alle intercettazoni ed alle interferenze;
+- la mobilità: comporta rischi aggiuntivi;
+- le risorse: il sistema operativo utilizzato è avanzato ma le risorse sono limitate;
+- l'accessibilità: alcuni dispositivi possono essere lasciati incustoditi.
 
 ### Wired Equivalent Protocol (WEP)###
 Il protocollo **WEP** era la protezione primaria per il protocollo 802.11 ed era progettato per rendere il wireless sicuro come una rete cablata. E' stato abbandonato a causa della crittografia debole (chiavi non più lunghe di 40 bit), chiavi di crittografia statiche e mancanza di metodo di distribuzione delle chiavi.

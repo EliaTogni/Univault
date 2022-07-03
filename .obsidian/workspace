@@ -10,7 +10,7 @@
           "type": "markdown",
           "state": {
             "file": "Sicurezza dei Sistemi e delle Reti.md",
-            "mode": "source"
+            "mode": "preview"
           }
         }
       }
@@ -89,8 +89,8 @@
   "active": "8df90cd4a246a4d7",
   "lastOpenFiles": [
     "Sicurezza dei Sistemi e delle Reti.md",
-    "Artificial Neural Network.md",
     "Boot Sector.md",
+    "Artificial Neural Network.md",
     "Spoofing.md",
     "Javascript.md",
     "Same-Origin Policy.md",
