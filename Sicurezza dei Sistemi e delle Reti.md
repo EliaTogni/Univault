@@ -103,7 +103,7 @@ un **Rootkit** è un set di programmi installati su un sistema al fine di manten
 ------------------------------------------------------------
 
 ### Spyware ###
-Malware che colleziona piccoli pezzi di informazioni riguardanti l'utente alla volta, ovviamente senza i permessi necessari.<br />
+Malware che colleziona volta per volta piccoli pezzi di informazioni riguardanti l'utente, ovviamente senza i permessi necessari.<br />
 Esempi di spyware sono i keyloggers.
 
 ------------------------------------------------------------
@@ -114,14 +114,14 @@ Software con payloads malevoli, utilizzati da ingegneri sociali per causare shoc
 ------------------------------------------------------------
 
 ### Ransomware ###
-Malvare che tiene in ostaggio un computer o i dati al suo interno, richiedendo un riscatto per riottenerne possesso.
+Malware che tiene in ostaggio un computer o i dati al suo interno, richiedendo un riscatto per riottenerne possesso.
 Questo malware:
-- disabilita i servizi essenzialid i un sistema o locka il display all'avvio del sistema;
+- disabilita i servizi essenziali di un sistema o locka il display all'avvio del sistema;
 - crypta alcuni tra i file personali dell'utente.
 
 La vittima deve:
 - inserire un codice ottenibile solo al pagamento del riscatto;
-- comprando un tool di decrittazione o di rimozione.
+- comprare un tool di decrittazione o di rimozione.
 
 ## Politiche di sicurezza e modelli ##
 Una **Politica di sicurezza** è un insieme di regole e linee guida le quali descrivono gli obiettivi di sicurezza di un sistema. Include:
@@ -153,7 +153,7 @@ Esistono diversi tipi di politiche di sicurezza:
 ------------------------------------------------------------
 
 ### Politiche di sicurezza basate sulla confidenzialità ###
-Con **confidenzialità** si intende il prevenire la divulgazione non autorizzata ad informazioni.<br />
+Con **confidenzialità** si intende il prevenire la divulgazione non autorizzata di informazioni.<br />
 Spesso in questa tipologia di politica si utilizzano metodi mandatori di tipo multilivello.
 
 ------------------------------------------------------------
@@ -368,7 +368,7 @@ Questo perchè lo switch si accorgerebbe che stanno arrivando molteplici richies
 ------------------------------------------------------------
 
 ### Attacchi a BGP ###
-[[Border Gateway Protocol]] è il protocollo che permette la comunicazione tra **Autonomous Systems**. Si tratta di un protocollo incrementale di tipo **Path Vector**, cioè manda un annuncio quando una nuova rotta esiste ed un altro quando una rotta viene ritirata. Si parla di **iBGP** (**Internal**) quando ci si riferisce al BGP utilizzato all'interno di un Autonomous System. Si parla, invece, di **eBGP** (**external**) quando ci si riferisce al BGP utilizzato nella comunicazione tra AS diversi.
+[[Border Gateway Protocol]] è il protocollo che permette la comunicazione tra **Autonomous Systems**. Si tratta di un protocollo incrementale di tipo **Path Vector**, cioè manda un annuncio quando viene annunciata una nuova rotta ed un altro quando una rotta viene ritirata. Si parla di **iBGP** (**Internal**) quando ci si riferisce al BGP utilizzato all'interno di un Autonomous System. Si parla, invece, di **eBGP** (**external**) quando ci si riferisce al BGP utilizzato nella comunicazione tra AS diversi.
 
 Il protocollo funziona secondo le seguenti regole:
 1) il nodo $A$ invia un update ai nodi adiacenti, comunicando il suo essere in grado di indirizzare il prefisso $X$;
@@ -401,7 +401,7 @@ Le principali contromisure adottate da BGP sono:
 1) **Time To Leave (TTL)**: poichè i BGP router sono ad una distanza di un singolo HOP l'uno dall'altro, si accettano solo pacchetti con uno specifico TTL. Il TTL viene decrementato ad ogni singolo HOP. Tutti i messaggi BGP vengono inviati con un TTL pari a 255. Con questo sistema di sicurezza, si accettano solo i messaggi con un TTL pari a 254;
 2) **MD5**: crittografare i messaggi;
 3) [[IPSEC]];
-4) **Route Filtering**: vengono create dell **Access Control Lists** per filtrare i messaggi di update in ingresso ed in uscita in modo tale che ci si assicuri che le rotte seguano specifiche regole;
+4) **Route Filtering**: vengono create delle **Access Control Lists** per filtrare i messaggi di update in ingresso ed in uscita in modo tale che ci si assicuri che le rotte seguano specifiche regole;
 5) **Resource Public Key Infrastructure (RPKI)**: questo sistema prevede l'esistenza di una repository contenente delle key. Gli AS ottengono un certificato **Route Origin Authorizations** (**Roa**), fornito dall'autorità regionale **Regional Internet Registries**.<br />Ogni ROA continene un **AS Number**, il **range di validità per le date** ed i **prefissi IP**.<br />Nello specifico, quando un AS certificato vuole inviare un update, lo farà aggiungendo il proprio certificato, permettendo così agli altri AS che riceveranno il pacchetto di confermare la sua identità. Gli annunci senza un ROA valido vengono ignorati dalle reti.<br />Una Public Key Infrastructure viene utilizzata anche dalle versioni sicure del protocollo BGP (**S-BGP** e **SO-BGP**).<br />**S-BGP** è un estensione di BGP utilizzata per proteggere il protocollo da pacchetti Update erronei o maliziosi. Ogni S-BGP Router genera un **Address Attestation** per verificare di essere autorizzato ad annunciare quel blocco di IP. <br />Ogni S-BGP router lungo il path, poi, deve validare l'integrità di un Update prima di firmarlo e di riannunciarlo.<br />**SO-BGP** è, invece, una versione di BGP con maggiore flessibilità.
 
 ------------------------------------------------------------
@@ -424,13 +424,13 @@ Di conseguenza, è facile intuire come questo generi un grave problema di sicure
 Ogni Nameserver può, inoltre, annunciare di possedere una determinata zona, anche se non la possiede realmente e, per aumentare l'efficienza del sistema, generalmente vengono utilizzate risposte contenute nella cache dei resolver.<br />
 
 Le principali vulnerabilità del protocollo DNS sono le seguenti:
-1) **DNS Cache Poisoning**: ne esistono due versioni, una di origine anonima ed una denominata **Kaminsky Attack**. L'obiettivo di entrambe è quello di falsificare i valori contenuti all'interno della cache del Nameserver ricorsivo. Così facendo, tutti gli utenti collegati a questo server riceveranno falsi IP per un certo indirizzo logico.<br />Il DNS accetta solamente risposte a query in attesa, mentre le risposte non desiderate vengono ignorate.<br />Il DNS accetta solo risposte a query in attesa e sulla stessa porta UDP. Infatti le risposte non desiderate vengono ignorate.<br />
+1) **DNS Cache Poisoning**: ne esistono due versioni, una di origine anonima ed una denominata **Kaminsky Attack**. L'obiettivo di entrambe è quello di falsificare i valori contenuti all'interno della cache del Nameserver ricorsivo. Così facendo, tutti gli utenti collegati a questo server riceveranno falsi IP per un certo indirizzo logico.<br />Il DNS accetta solo risposte a query in attesa e sulla stessa porta UDP. Infatti le risposte non desiderate vengono ignorate.<br />
 L'attaccante invia una **DNS Query** al Nameserver vittima per un particolare indirizzo. Di conseguenza, si attiva la serie di richieste per ottenere il corrispettivo indirizzo fisico.<br />Nel primo caso, l'attacco consiste nel riuscire a rispondere al Nameserver con un indirizzo fisico corrispondente ad un sito web gestito dall'attaccante (in modo tale da reindirizzare la vittima su siti malevoli) prima che la reale risposta dell'Authoritative Server arrivi. L'unica difficoltà di questo attacco consiste nel fatto che le richieste del Nameserver sono identificate da un **QID** (**Query ID**) che l'attaccante deve indovinare per forgiare una risposta che sembri autentica. Il punto cruciale di questo attacco risiede nel non avere in cache la risoluzione dell'indirizzo logico al quale ci si vuole sostituire. Nel caso la risoluzione sia presente in cache, è necessario aspettare lo scadere del TTL. Oltre a ciò, è necessario indovinare il corretto QID ed essere in grado di rispondere più velocemente dell' Authoritative Server.<br />Nel secondo caso, invece, l'attaccante cerca di sostituirsi totalmente all'Authoritative Server. L'attaccante vuole redirigere tutte le richieste fatte all'Authoritative Server vittima su di sè. Anche in questa versione è sempre presente l'incognita del QID da superare per la buona riuscita dell'attacco.<br />
 L'attaccante richiede un indirizzo casuale all'interno del dominio target e cerca poi di sostituirsi ad un Authoritative Nameserver inviando al Nameserver un flusso di pacchetti spacciandosi per il Root Name Server o per il Top Level Domain Server. In questo flusso di pacchetti, l'attaccante delega un altro Nameserver la risoluzione dell'indirizzo logico, ridirezionando il Nameserver verso l'IP dell'attaccante. Il Nameserver vittima si convince in questo modo che il Nameserver dell'attaccante sia authoritative per l'intero dominio di secondo livello. In questo modo l'attaccante è riuscito a sostituirsi ad un Authoritative Server. Controllando il dominio, l'attaccante controlla tutta la risoluzione del nameserver. Infatti, puòmridirigere i visitatori del web, dirigere email ai propri server con falsi **MX Records** o settare un TTL molto alto per rimanere in controllo.<br />
 Questo attacco è possibile perchè chiunque può configurare un proprio nameserver che sia authoritative per un qualsiasi dominio, benchè di base sia inutile in quanto non viene puntato dal protocollo DNS.<br />Una possibile difesa risiede nell'aumentare il range casuale del QID per renderlo più difficile da indovinare.<br />Attuando con successo il Kaminsky Attack, si prende controllo di tutto il dominio perchè si riesce a convincere il server vittima di star comunicando con il vero server autoritativo. Con l'attacco generico, invece, si prende il controllo non di tutto il dominio ma solo di un sito. Questo avviene perchè la risposta dell'attaccante arriva dopo quella del Top Level Domain Server ma prima di quella del server autoritativo;
 2) **DNS Rebinding**: l'attaccante registra un dominio (come, ad esempio, www.sample.com) e ne delega la risoluzione ad un server DNS sotto il suo controllo. Il server viene configurato per rispondere con un TTL molto basso o nullo, per prevenire che la risposta venga inserita nella cache dell'host vittima. Quando la vittima contatta accidentalmente l'indirizzo logico, il server risponde con l'indirizzo fisico che fa scaricare sul client della vittima del codice Javascript malevolo. Questo codice, una volta eseguito, effettua in automatico un'altra richiesta al dominio logico (il client non conosce la risoluzione per via del TTL basso della precedente richiesta). Il server DNS dell'attaccante, questa volta, risolve www.sample.com con un indirizzo che appartiene alla rete privata della vittima. Così facendo, la vittima, in maniera inconsapevole (per via della [[Same-Origin Policy]], la quale impedisce a del codice [[Javascript]] di leggere e/o modificare contenuto al di fuori della pagina web stessa o del server da cui è stato scaricato), consente all'applet installato con la prima richiesta dall'attaccante di accedere ai servizi nella rete locale;
 
-E' importante tenere a mente il che : ogni link, ogni immagine ed ogni advertisement può provocare un **DNS lookup**, non solo il codice Javascript (**Triggering a Race**).
+E' importante tenere a mente il fatto che ogni link, ogni immagine ed ogni advertisement può provocare un **DNS lookup**, non solo il codice Javascript (**Triggering a Race**).
 
 I meccanismi di difesa contro il Cache Poisoning sono i seguenti:
 1) Aumentare la taglia delle Query ID;
@@ -455,7 +455,7 @@ Le vulnerabilità di DNS sono causate dal fatto che sia gli utenti che gli host 
 ------------------------------------------------------------
 
 ### Buffer Overflow ###
-**Buffer Overflow** è una delle maggiori vulnerabilità di sicurezza., causato spesso dalla capacità dell'attaccante remoto di eseguire del codice arbitrario. Questo tipo di attacchi è causato in genere da programmi che non controllano input non validi. tipicamente più lunghi di quanto previsto.
+**Buffer Overflow** è una delle maggiori vulnerabilità di sicurezza, causato spesso dalla capacità dell'attaccante remoto di eseguire del codice arbitrario. Questo tipo di attacchi è causato in genere da programmi che non controllano input non validi. tipicamente più lunghi di quanto previsto.
 
 #### Stack Canaries ####
 Uno stack canary è un numero casuale posto sullo stack tra i dati dell'utente e l'indirizzo del mittente.<br />
@@ -465,7 +465,7 @@ Prima di tornare, il programma controlla il valore canarino e, se è stato modif
 ## Set UID ##
 Tutte le risorse Linux (socket, dispositivi, file) sono gestite come file. Tutti i file e le directory hanno un unico proprietario utente ed un unico gruppo proprietario.<br />
 Il modello di autorizzazione di UNIX è una semplice implementazione di una strategia di controllo degli accessi generica, nota come **Access Control List** (**ACL**).<br />
-Ogni oggetto ha un ACL che identigica le operazioni che i soggetti possono eseguire. Ogni accesso ad un oggetto viene verificato rispetto all'ACL dell'oggetto.<br />
+Ogni oggetto ha un ACL che identifica le operazioni che i soggetti possono eseguire. Ogni accesso ad un oggetto viene verificato rispetto all'ACL dell'oggetto.<br />
 I file UNIX sono amministrati utilizzando gli [[Inode]], strutture di controllo con informazioni chiave sui file.<br />
 I processi sono isolati l'uno dall'altro durante l'esecuzione: infatti non possono accedere alla memoria reciproca. Inoltre, vengono eseguiti come un utente specifico e con le autorizzazioni dell'UID dell'utente. I processi possono quindi acceder a tutti i file a cui l'UID ha accesso.<br />
 I processi avviati da **root** possono, però, ridurre i propri privilegi, modificandoli in un UID meno privilegiato.<br />
@@ -495,7 +495,7 @@ Gli obiettivi dello scanning sono:
 3) riconoscere quali utenti hanno accesso ai servizi;
 4) riconoscere i sistemi di filtraggio usati tra l'attaccante e la vittima;
 5) determinare il sistema operativo esaminando le risposte IP.
-sc
+
 Allo stesso modo, gli attaccanti usano questa stessa tecnica per trovare, appunto, superfici di attacco.<br />
 Esistono diverse modalità di scanning.<br />
 Si considerino ora le tipologie di scanning applicabili nel caso di **Single** source scanning (operata da una source a molti target):
@@ -507,12 +507,13 @@ Si considerino ora le tipologie di scanning applicabili nel caso di **Single** s
 Si consideri ora il caso del **Distributed** scanning:
 - molteplici sistemi agiscono in un unione strategica per scansionare una rete od un host;
 - riduce la traccia lasciata da uno scanning di un singolo sistema e diminuisce la possibilità di essere scoperti.
+
 Lo scanning può essere:
 1) **Attivo**: si scansiona immettendo del traffico nella rete e creando pacchetti sonda che interrogano le macchine ed i dispositivi di rete;
 2) **Passivo**: Si osserva il traffico generato tra client e server per capire se i servizi sono attivi o spenti sulle diverse porte.
 
 Ognuno di questi approcci di scanning ha, ovviamente, dei pro e contro.<br />
-Lo scanning attivo fornisce un rapporto completo delle porte aperte e non rileva porte filtrate o protette da port knoking, oltre ad essere molto veloce ma, di contro, è molto intrusivo e può essere rilevato da aIDS oltre a non essere in grado di identificare host temporaneamente non attivi.<br />
+Lo scanning attivo fornisce un rapporto completo delle porte aperte e non rileva porte filtrate o protette da port knocking, oltre ad essere molto veloce. Di contro, è molto intrusivo e può essere rilevato da IDS, oltre a non essere in grado di identificare host temporaneamente non attivi.<br />
 Lo scanning passivo invece è uno scanning non intrusivo, in quanto non viene rilevato da IDS. E' inoltre in grado di rilevare attività proveniente da host temporanei e non consuma risorse. DI contro, però, è in grado di rilevare solo host attivi.
 
 Il target può essere:
