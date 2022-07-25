@@ -29,8 +29,29 @@ Alcuni esempi sono:
 ### Virus ###
 Un **Virus** informatico è un codice informatico che può replicarsi, modificando altri file o programmi per inserire codice in grado di essere replicato ulteriormente.<br />
 La proprietà di autoreplicazione è ciò che distingue i virus informatici da altri tipi di malware. Un'altra proprietà di un virus risiede nel fatto che la replica del virus stesso richieda un certo tipo di assistenza da parte dell'utente, come ad esempio facendo clic su un allegato e-mail o condividendo un'unità USB.<br />
-Il virus altera, quindi, il codice normale sostituendolo con una sua versione infetta.<br />
+Il virus altera, quindi, il codice normale sostituendolo con una sua versione infetta senza però compiere azioni evidenti, cerca di rimanere nell'ombra.<br />
+Generalmente, i virus sono composti da tre parti:
+1) **meccanismo di infezione**;
+2) **trigger**;
+3) **payload**.
+
+Inoltre, i virus attraversano quattro fasi distinte:
+1) **dormiente**;
+2) **propagazione**;
+3) **triggering**;
+4) **execution**.
+
 I vettori di infezione per i virus sono tipicamente [[Boot Sector]] (come USB drive), file eseguibili, macro file e multipartiti.
+
+#### Macro Virus ####
+Virus che si attacca a documenti e utilizza le capacità di programmazione macro dell'applicazione del documento per eseguire codice e propagarsi.
+
+------------------------------------------------------------
+
+#### Compression Virus ####
+Virus che comprime il file eseguibile, in modo tale che sia la versione infetta che quella non infetta abbiano la stessa lunghezza.
+
+------------------------------------------------------------
 
 E' possibile classificare i virus in base alla strategia attuata per non rivelarsi:
 
@@ -85,7 +106,7 @@ Le fasi di azione di un worm sono:
 Un esempio di worm attacks famosi è il **Morris Worm**, che sfrutta vulnerabilità come il buffer overflow e che nel 1988 ha infettato il 10% dei computer connessi ad internet.
 Il worm in questione è composto da due parti:
 - un programma per diffondersi, il quale cerca altre macchine vittima e cerca di infiltrarsi su queste macchine;
-- un programma vettore, il quale viene compilato ed eseguito sulle macchine infette 
+- un programma vettore, il quale viene compilato ed eseguito sulle macchine infette e che trasferisce il main per continuare l'infezione.
 
 ------------------------------------------------------------
 
@@ -138,15 +159,20 @@ Questi meccanismi devono fare in modo che il sistema resti in uno stato sicuro e
 
 Lo svantaggio causato dall'adozione di un meccanismo di sicurezza risiede nel fatto che questa adozione non dovrebbe rendere l'accesso alle risorse più difficile di quanto lo sia senza il meccanismo di sicurezza stesso (**Psychological Acceptability**).
 
-Le politiche di sicurezza sono alla base del concetto di **Controllo degli accessi**, il quale può essere diviso in tre macrocategorie:
-1) **DAC** (**Discretionary Access Control**): ciascun utente può determinare i permessi per ogni altro utente e definire le **Access Control Lists** (**ACL**);
-2) **MAC** (**Mandatory Access Control**): un amministratore centrale determina i permessi di accesso dei vari oggetti;
-3) **RBAC** (**Role-Based Access Control**): esistono quattro tipi di entità in un sistema di questo tipo:
+Le politiche di sicurezza sono alla base del concetto di **Controllo degli accessi**, il quale si struttura su tre elementi:
+1) i **soggetti**, entità che possono accedere agli oggetti. Un soggetto può essere di classe **owner**, **group** o **world**;
+2) gli **oggetti**, risorse delle quali si controlla l'accesso;
+3) i **permessi di accesso**, ovvero i modi nei quali un soggetto può accedere ad un oggetto.
+
+Le politiche di controllo degli accessi possono essere categorizzate in quattro macrocategorie:
+4) **DAC** (**Discretionary Access Control**): ciascun utente può determinare i permessi per ogni altro utente e definire le **Access Control Lists** (**ACL**);
+5) **MAC** (**Mandatory Access Control**): un amministratore centrale determina i permessi di accesso dei vari oggetti;
+6) **RBAC** (**Role-Based Access Control**): esistono quattro tipi di entità in un sistema di questo tipo:
 - **utente**: una persona che ha accesso a questo sistema informatico. Ogni individuo ha un ID utente associato;
 - **ruolo**: una funzione lavorativa con nome all'interno dell'organizzazione che controlla il sistema;
 - **autorizzazione**: approvazione di una particolare modalità di accesso a uno o più oggetti;
 - **sessione**: mappatura tra utente e sottoinsieme attivato dell'insieme di ruoli a cui è assegnato l'utente.
-4) **ABAC**(): modello che può definire autorizzazioni che esprimono condizioni sulle proprietà sia della risorsa che del soggetto.
+7) **ABAC**(): modello che può definire autorizzazioni che esprimono condizioni sulle proprietà sia della risorsa che del soggetto.
 
 Esistono diversi tipi di politiche di sicurezza:
 
@@ -239,6 +265,12 @@ Le condizioni di lettura e scrittura sono, invece, le seguenti:
 ------------------------------------------------------------
 
 ## Attacchi ##
+
+### MAC Address Spoofing ###
+Le schede di rete vengono identificate da un numero seriale, il quale viene utilizzato come indirizzo al'interno della LAN.<br />
+Questo indirizzo è composto da 48 bit, dei quali i primi 24 identificano il produttore.<br  />
+L'indirizzo MAC può essere riconfigurato dal software del driver dell'interfaccia di rete. Infatti, avendo i privilegi adeguati, è possibile cambiare il numero MAC usato nella produzione del frame. Basta conoscere il MAC di una macchina assente per poterla impersonare.
+
 ### ARP Spoofing / Cache Poisoning ###
 [[Address Resolution Protocol]], come tutti i protocolli di rete, non ha implementato alcuna misura di sicurezza. Non ci sono controlli che vietino ad un host malizioso di rispondere ad una **ARP Request** nonostante non sia in possesso dell'**Indirizzo IP** richiesto (**ARP Spoofing**).<br />
 Con **Masquerading**, o **Spoofing**, si definisce la rappresentazione di un'entità da parte di un'altra.<br />
@@ -325,7 +357,8 @@ Tra le contromisure contro questo tipo di attacco si menzionano:
 
 La causa del Dos risiede nell'allocazione asimmetrica di risorse. Il server apre un nuovo stato ad ogni richiesta di connessione.<br />
 La soluzione più intelligente che è stata ideata è il postporre lo stato, cioè creare la entry nella backlog queue solo dopo aver fatto un controllo sulla validità della connessione. Ciò avviene mediante la generazione di un cookie da spedire al client, che permette al server di rimanere stateless finchè il primo non spedisce almeno due messaggi (il SYN e l'ACK).<br />
-Quando il client invia l'ACK, fornisce anche il cookie che viene confrontato dal server con quello che era stato inviato. Se il controllo va a buon fine, allora significa che la richiesta di connessione era legittima e quindi viene creata la entry nella backlog queue. L'attaccante non conosce il cookie perchè il server lo invia solamente all'IP spoofato e, pertanto, non riuscirà a calcolare i parametri corretti da inserire nell'ACK di risposta.
+Lo stato è memorizzato in un cookie (**IP addresses** e **ports of the connection**) e mandato all’initiator.<br />
+Quando il client invia l'ACK, fornisce anche il cookie che viene confrontato dal server con quello che era stato inviato. Se il controllo va a buon fine, allora significa che la richiesta di connessione era legittima e quindi viene creata la entry nella backlog queue. L'attaccante non conosce ovviamente il cookie perchè il server lo invia solamente all'IP spoofato e, pertanto, non riuscirà a calcolare i parametri corretti da inserire nell'ACK di risposta.
 
 Un'altra contromisura per filtrare le connessioni leggittime da quelle fasulle è quella di utilizzare un proxy tra i client ed il web server. Esso ha il compito di inoltrare al server solo le connessioni legittime mentre tutte le altre vengono scartate. Il proxy dovrà essere robusto.
 
@@ -532,7 +565,7 @@ Ecco alcune scansioni esistenti:
 4) **TCP SYN PING** (**stealth**): si invia un pacchetto di SYN. Se l'host risponde con SYN/ACK, la porta è aperta (e non si completa il three way handshake). Se la vittima risponde con RST,  la porta è chiusa. Viene considerata una tecnica di scansione stealth perchè, tipicamente, nei log vengono memorizzate le connessioni complete e non le half open;
 5) **TCP ACK PING** (**stealth**): per effettuare la scansione si invia un pacchetto TCP con il bit ACK attivo. Se il firewall blocca il pacchetto, la sorgente allo scadere di un timeout riesce a dedurre che la porta è filtrata. Se il firewall lascia passare il pacchetto, esso raggiunge il target, il quale, non avendo una sessione TCP attiva, risponderà con un pacchetto con il bit RST attivo. In questo caso, si deduce che la porta non è filtrata (non si sa se sia chiusa o aperta);
 6) **IDLE scan** (**stealth**): si utilizza uno zombie e si effettua l'analisi sul suo campo identification (un contatore il quale si incrementa ogni volta che un host invia un pacchetto);
-7) **Windows scan** (**stealth**): consiste nel mandare un ACK alla vittima ed analizzare il campo Window ricevuto con la risposta RST, il quale, se maggiore di zero, significa che la porta è open mentre, se uguale a zero, significa che la porta è chiusa. Non tutti i sistemi seguono, però, questa logica;
+7) **Windows scan** (**stealth**): consiste nel mandare un ACK alla vittima ed analizzare il campo Window del pacchetto RST, il quale, se maggiore di zero, significa che la porta è open mentre, se uguale a zero, significa che la porta è chiusa. Non tutti i sistemi seguono, però, questa logica: infatti, i sistemi che non seguono questa logica restituiscono closed. Nel caso di mancata ricezione della risposta o di **ICMP Unreachable Error**, si deduce che la porta sia filtered;
 8) **FIN/NULL/Xmas scan** (**stealth**): si invia un pacchetto con le relative flag a 1 (con Xmas si mandano FIN, URG e PSH). Se il destinatario risponde con RST la porta è chiusa, altrimenti è open o filtered;
 9) **UDP scan** (**miscellaneous**): si invia un pacchetto UDP. Se si riceve una risposta UDP, allora la porta è aperta. Se invece si riceve un pacchetto ICMP unreachable, allora la porta è chiusa. Se, infine, si ricevono altri errori oppure nessuna risposta ICMP, allora la porta è filtered;
 10) **FTP bounce scan**: (**stealth**): si tratta di una scansione simile alla IDLE perchè usa come zombie un server FTP. Se la connessione viene stabilita, allora la porta è aperta. Se la connessione non viene stabilita, allora la porta è chiusa;
