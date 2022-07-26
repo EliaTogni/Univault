@@ -580,9 +580,9 @@ Lo scan avviene secondo la seguente procedura:
 
 In questo modo, l'attaccante è in grado di capire se la vittima è attiva o meno. Se il campo identification è incrementato solo di 1, vuol dire che la porta è open, altrimenti è closed.
 
-Per la tecnica **FTP bounce scan**, invece, si usa un meccanismo simile a quello della IDLE scan. Il server FTP si usa come uno zombie per avere indizi sulla macchina vittima. In FTP esiste il comando PORT che consente all'attaccante di iniziare una connessione dati per trasferire, per esempio, file o la lista delle directory alla vittima (passando dal server). Tramite questo comando, l'attaccante specifica l'IP della vittima e la porta da attaccare. Si tratta di un comando usato in modalità "attiva". Il server FTP proverà quindi ad aprire con la vittima una connessione TCP sulla porta specificata dall'attaccante.<br />
+Per la tecnica **FTP bounce scan**, invece, si usa un meccanismo simile a quello della IDLE scan. Il server FTP viene utilizzato come uno zombie per avere indizi sulla macchina vittima. In FTP esiste il comando **PORT**, il quale consente all'attaccante di iniziare una connessione dati per trasferire, per esempio, file o la lista delle directory alla vittima (passando dal server). Inoltre, questo comando permette di specificare su quale IP e porta ricevere la risposta da parte del server. Tramite questo comando, l'attaccante specifica l'IP della vittima e la porta da attaccare. Si tratta di un comando usato in modalità "attiva". Il server FTP proverà quindi ad aprire con la vittima una connessione TCP sulla porta specificata dall'attaccante.<br />
 Se la porta è chiusa, la vittima rifiuterà il three-way handshake.<br />
-Se la porta è aperta, la vittima accetterà il three-way handshake con il server FTP e accetterà il trasferimento. Il server FTP avvisa l'attaccante dell'esito di queste operazioni.<br />
+Se la porta è aperta, la vittima accetterà il three-way handshake con il server FTP e accetterà il trasferimento. Il server FTP avviserà, quindi, l'attaccante dell'esito di queste operazioni.<br />
 Si tratta di una tecnica stealth perchè l'attaccante si nasconde dietro il server FTP.<br />
 L'attaccante lascia però tracce sul server FTP.
 
@@ -683,8 +683,11 @@ Se l'utente ha necessità di collegarsi con più server che sfruttano il meccani
 
 ## Firewall ##
 Il **Firewall** rappresenta la misura di sicurezza minima in un sistema connesso ad internet. Esso si interpone tra la rete interna ed internet, filtrando le richieste in ingresso ed in uscita per cercare di proteggere la rete da utenti malintenzionati.<br />
-Il firewall deve essere l'unico punto di contatto tra il mondo esterno e la rete da proteggere. Infatti, il suo scopo principale è quello di controllare l'accesso da e per una rete protetta. Controllo che viene effettuato obbligando le connessioni a passare attraverseo il firewall stesso, dove vengono esaminate e valutate.<br />
-Esistono diversi tipi di firewall: innanzitutto, è necessario precisare che essitono firewall hardware ma anche software. Su ogni host è presente un firewall software. A seconda del livello dello **stack ISO/OSI** a cui sono implementati, è possibile distinguere:
+Il firewall deve essere l'unico punto di contatto tra il mondo esterno e la rete da proteggere. Infatti, il suo scopo principale è quello di controllare l'accesso da e per una rete protetta. Questo controllo viene effettuato obbligando le connessioni a passare attraverso il firewall stesso, dove vengono esaminate e valutate.<br />
+Solo il traffico autorizzato può attraversare il firewall ed il firewall stesso deve essere un sistema altamente sicuro.<br />
+Spesso, alcuni pc forniscono servizi pubblici i quali devono essere raggiungibili dall'esterno, una rete pubblica, visibile da tutto il mondo.
+Questa rete pubblica in gergo tecnico viene anche chiamata **De-Militarized Zone** o **DMZ**, un tratto di rete in cui il firewall permette l'accesso a tutti.<br />
+Esistono diversi tipi di firewall. Innanzitutto, è necessario precisare che esistono firewall hardware ma anche software. Su ogni host è presente un firewall software. A seconda del livello dello **stack ISO/OSI** a cui sono implementati, è possibile distinguere:
 1) **Static Packet Filter**: livello di rete ISO/OSI 3 o 4;
 2) **Stateful Filtering**: livello di rete ISO/OSI 3 o 4;
 3) **Application Gateway**: livello di rete ISO/OSI 7;
@@ -700,7 +703,7 @@ Uno **Static Packet Filter** (o **stateless**) analizza ogni pacchetto che lo at
 Su questi parametri, vengono costruite le regole che formalizzano la policy del firewall e che stabiliscono quali pacchetti lasciar passare e quali bloccare.<br />
 I firewall appartenenti a questa tipologia sono semplici e leggeri ma non garantiscono un'elevata sicurezza.
 
-Uno **Stateful Filtering** utilizza la stateful inspection, ossia quel processo per cui ogni singola connessione autorizzata viene registrata dal firewall in un'apposita tabella (la cosiddetta connection o stable state). In pratica, ogni volta che un pacchetto arriva al firewall, esso viene verificato per comprendeere se esso fa parte di una connessione precedentemente stabilita: in caso affermatvio, esso viene lasciato passare senza ulteriori controlli, altrimenti subisce la sorte di un normale pacchetto in ingresso.
+Uno **Stateful Filtering** utilizza la stateful inspection, ossia quel processo per cui ogni singola connessione autorizzata viene registrata dal firewall in un'apposita tabella (la cosiddetta **connection** o **stable state**). In pratica, ogni volta che un pacchetto arriva al firewall, esso viene verificato per comprendere se esso fa parte di una connessione precedentemente stabilita: in caso affermativo, esso viene lasciato passare senza ulteriori controlli, altrimenti subisce la sorte di un normale pacchetto in ingresso.
 
 Un **Application Gateway** è un firewall che offre un servizio stateful e usa a supporto dei proxy. Come ricorda il nome, questo gateway è in grado di analizzare il contenuto dei pacchetti al livello applicativo. Ciò implica che se il firewall non conosce il protocollo utilizzato al livello 7, inizia allora a comportarsi come un normale firewall (tuttavia esistano numerose estensioni per allargare il pool di protocolli che il firewall conosce).<br />
 Il problema legato a questo firewall è che, spesso, i contenuti sono cifrati. Per ovviare a questo problema, si utilizzano dei proxy. Il proxy viene utilizzato per decifrare i pacchetti ed analizzarne il contenuto per individuare complesse tipologie di attacco (è utilizzato per cercare dei pattern riconducibili ad attacchi conosciuti). Nello specifico, il firewall gira il pacchetto al proxy, il quale procede con l'analisi. Se il pacchetto ispezionato non presenta nessun contenuto sospetto, allora il proxy lo ammette nella rete.<br />
