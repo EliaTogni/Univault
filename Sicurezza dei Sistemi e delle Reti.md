@@ -389,7 +389,7 @@ Una contromisura attuabile per difendersi dagli attacchi al DHCP è il **DHCP sn
 5) **VLAN number**;
 6) **Port ID**.
 
-Lo switch, il quale mette in comunicazione i vari dispositivi della rete, prevede che vi siano specifiche porte autorizzate che consentano la ricezione della DHCP offer. <br />
+Lo switch, il quale mette in comunicazione i vari dispositivi della rete, prevede che vi siano specifiche porte autorizzate (**trusted**) in grado di originare tutti i tipi di messaggi DHCP. <br />
 Tutte le DHCP offer che arrivano su porte non autorizzate vengono quindi scartate. Infatti, la porta fisica dello switch viene chiusa ogniqualvolta arrivi un messaggio DHCP proveniente da host che non sono legittimati.<br />
 Quindi, se un rogue server tenta di mandare un pacchetto DHCP, in risposta la porta viene chiusa ed il client che si è finto un server DHCP non riesce a mettere in atto l'attacco.
 
@@ -410,8 +410,8 @@ Il protocollo funziona secondo le seguenti regole:
 
 Questo protocollo può essere attaccato su molti fronti:
 1) **Disponibilità** (DoS);
-2) **Confidenzialità** (messaggi in chiaro);
-3) **Integrità**;
+2) **Confidenzialità** ( **Eavesdropping**, messaggi in chiaro);
+3) **Integrità** (**Tampering**);
 4) **Autenticazione**.
 
 L'integrità è, in realtà, un fronte difficile da attaccare in quanto i vari AS sono collegati tramite singoli HOP e, quindi, è difficile applicare un attacco MITM modificando il messaggio che i due AS si scambiano.
@@ -428,14 +428,14 @@ Gli attacchi possibili sono:
 2) **De-Aggregation**: un attaccante $B$ annuncia di conoscere un sotto-insieme di indirizzi IP con un livello più specifico. Se il router $V$ conosce gli indirizzi $x/22$ e $B$ sostiene di conoscere gli indirizzi $x/24$, il traffico verrà dirottato su $B$. Infatti, secondo il protocollo BGP, si preferisce l'Access Point che fornisca una maggiore specificità di indirizzi, cioè $B$, in quanto in possesso di una subnet mask più precisa. In questo modo, il traffico diretto a $V$ verrà instradato verso $B$, il quale sarà in grado di sniffarne il contenuto (**subversion**);
 3) **AS Path Shortening**: viene annunciato un nuovo path che taglia fuori la vittima (**instability**);
 4) **Annunci Contraddittori**: si tratta di annunci differenti di routing spediti dallo stesso AS a differenti BGP. Lo scopo dell'attacco è creare congestione o ridirigere il traffico attraverso un path subottimale;
-5) **Link Flapping**: con Link Flapping si definisce la disattivazione e la riattivazione di un link, una pratica comune. Se questo flapping avviene frequentemente, si crea instabilità nella rete, poihcè gli instradamenti sono dinamici, in continua varazione. In questo attacco, vengono mandati tanti update sugli AS path. In questo modo, coloro che ricevono questa serie di aggiornamenti si convincono che il percorso è **flapping**. Pertanto si attiva il **router dampening**, il quale consiste nel riattivare un particolare path con tempi sempre più lunghi per fare in modo che il router sovraccaricato si riesca a scaricare senza dover gestire altri pacchetti;
+5) **Link Flapping**: con Link Flapping si definisce la disattivazione e la riattivazione di un link, una pratica comune. Se questo flapping avviene frequentemente, si crea instabilità nella rete, poihcè gli instradamenti sono dinamici, in continua varazione. In questo attacco, vengono mandati tanti update sugli AS path. In questo modo, coloro che ricevono questa serie di aggiornamenti si convincono che il percorso è **flapping**. Pertanto si attiva il **router dampening**, la riattivazione di un particolare path con tempi sempre più lunghi per fare in modo che il router sovraccaricato si riesca a scaricare senza dover gestire altri pacchetti;
 
 Le principali contromisure adottate da BGP sono:
 1) **Time To Leave (TTL)**: poichè i BGP router sono ad una distanza di un singolo HOP l'uno dall'altro, si accettano solo pacchetti con uno specifico TTL. Il TTL viene decrementato ad ogni singolo HOP. Tutti i messaggi BGP vengono inviati con un TTL pari a 255. Con questo sistema di sicurezza, si accettano solo i messaggi con un TTL pari a 254;
 2) **MD5**: crittografare i messaggi;
 3) [[IPSEC]];
 4) **Route Filtering**: vengono create delle **Access Control Lists** per filtrare i messaggi di update in ingresso ed in uscita in modo tale che ci si assicuri che le rotte seguano specifiche regole;
-5) **Resource Public Key Infrastructure (RPKI)**: questo sistema prevede l'esistenza di una repository contenente delle key. Gli AS ottengono un certificato **Route Origin Authorizations** (**Roa**), fornito dall'autorità regionale **Regional Internet Registries**.<br />Ogni ROA continene un **AS Number**, il **range di validità per le date** ed i **prefissi IP**.<br />Nello specifico, quando un AS certificato vuole inviare un update, lo farà aggiungendo il proprio certificato, permettendo così agli altri AS che riceveranno il pacchetto di confermare la sua identità. Gli annunci senza un ROA valido vengono ignorati dalle reti.<br />Una Public Key Infrastructure viene utilizzata anche dalle versioni sicure del protocollo BGP (**S-BGP** e **SO-BGP**).<br />**S-BGP** è un estensione di BGP utilizzata per proteggere il protocollo da pacchetti Update erronei o maliziosi. Ogni S-BGP Router genera un **Address Attestation** per verificare di essere autorizzato ad annunciare quel blocco di IP. <br />Ogni S-BGP router lungo il path, poi, deve validare l'integrità di un Update prima di firmarlo e di riannunciarlo.<br />**SO-BGP** è, invece, una versione di BGP con maggiore flessibilità.
+5) **Resource Public Key Infrastructure (RPKI)**: questo sistema prevede l'esistenza di una repository contenente delle key. Gli AS ottengono un certificato **Route Origin Authorizations** (**Roa**), fornito dall'autorità regionale **Regional Internet Registries**.<br />Ogni ROA continene un **AS Number**, il **range di validità per le date** ed i **prefissi IP**.<br />Nello specifico, quando un AS certificato vuole inviare un update, lo farà aggiungendo il proprio certificato, permettendo così agli altri AS che riceveranno il pacchetto di confermare la sua identità. Gli annunci senza un ROA valido vengono ignorati dalle reti.<br />Una Public Key Infrastructure viene utilizzata anche dalle versioni sicure del protocollo BGP (**S-BGP** e **SO-BGP**).<br />**S-BGP** è un estensione di BGP utilizzata per proteggere il protocollo da pacchetti Update erronei o maliziosi. Ogni S-BGP Router genera un **Address Attestation** per verificare di essere autorizzato ad annunciare quel blocco di IP.<br />Ogni S-BGP router lungo il path, poi, dovrà validare l'integrità di un Update prima di firmarlo e di riannunciarlo.<br />**SO-BGP** è, invece, una versione di BGP con maggiore flessibilità.
 
 ------------------------------------------------------------
 
