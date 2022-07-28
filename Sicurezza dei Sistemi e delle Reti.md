@@ -593,7 +593,13 @@ Le contromisure per questo tipo di scansione sono:
 ------------------------------------------------------------
 
 ## IPSEC ##
-**IPSEC** è un protocollo di livello network che mira a rendere sicuro l'utilizzo di IP. Essendo un protocollo del terzo livello, permette di proteggere i dati di tutti i livelli superiori.<br />
+**IPSEC** è un protocollo di livello network che mira a rendere sicuro l'utilizzo di IP.<br />
+Essendo un protocollo del terzo livello, permette di proteggere i dati di tutti i livelli superiori.<br />
+IPSEC vuole garantire:
+- **Data Origin Autentication** / **Connectionless Data Integrity**, cioè impedisce di inviare un IP datagram con un IP Address spoofato senza che il destinatario se ne accorga. I dati vengono firmati dal sender e verificati dal receiver.;
+- **Replay Protection**, cioè impedisce di mandare nuovamente un pacchetto IP senza che il ricevente se ne accorga;
+- **Confindentiality**, cioè impedisce di esaminare il contenuto di un IP Datagram.
+
 Esso è costituito da un insieme di protocolli, che sono:
 1) **AH( Authentication Header)**: per autenticare e rendere sicuri i dati;
 2) **ESP (Encapsulating Security Payload)** per cifrare, autenticare e rendere sicuri i dati;
@@ -602,7 +608,7 @@ Esso è costituito da un insieme di protocolli, che sono:
 AH ed ESP sono interscambiabili, ma ultimamente ESP sta diventando lo standard grazie alle funzionalità a breve illustrate. IPSEC è in grado di garantire confidenzialità. integrità ed autenticazione sul traffico. Infatti, i dati vengono firmati dal sender e tale firma viene verificata dal ricevente.<br />
 IPSEC funziona secondo due modalità:
 1) **Tunnel Mode**: il contenuto di un pacchetto IP viene cifrato ed incapsulato in un altro pacchetto IP. Questa tecnica risulta utile quando il pacchetto deve transitare attraverso nodi che, per qualche ragione, non conoscono IPSEC;
-2) **Transport Mode**: viene aggiunto un header al pacchetto P orginale (non viene creato un nuovo pacchetto, ma viene aggiunta un'estensione) ed il tutto viene cifrato.
+2) **Transport Mode**: viene aggiunto un header al pacchetto IP orginale (non viene creato un nuovo pacchetto, ma viene aggiunta un'estensione) ed il tutto viene cifrato.
 
 **Authentication Header** fa in modo di garantire l' autenticazione dei pacchetti e la loro integrità.<br />
 Non è in grado, però, di fornire confidenzialità.<br />
@@ -630,8 +636,8 @@ La main mode protegge, però, l'identità dei peers mentre l'aggressive mode no.
 
 ------------------------------------------------------------
 
-## SSL/TTS ##
-Il protocollo **TTS** (**SSL** è la versione più antica) è un protocollo che consente di rendere sicuro il traffico a livello di trasporto.<br />
+## SSL/TLS ##
+Il protocollo **Transport Layer Security**, o **TLS** (**Secure Socket Layer**, o **SSL**, è la versione più antica) è un protocollo che consente di rendere sicuro il traffico a livello di trasporto.<br />
 Il protocollo prevede due fasi, una fase di sessione ed una fase di connessione. La prima consiste nell'instaurare un canale sicuro tra i due host mentre la seconda è la fase di comunicazione vera e propria.<br />
 La sessione può essere riutilizzata per altre connesssioni. Questo è vantaggioso in quanto permette di evitare di dover rimettere d'accordo le parti sugli algoritmi da utilizzare.<br />
 Il protocollo è costituito da 4 sottoprotocolli:
@@ -641,6 +647,26 @@ Il protocollo è costituito da 4 sottoprotocolli:
 4) **Protocollo record cypher**: si occupa della comprssione, del MAC e della cifratura.
 
 ------------------------------------------------------------
+
+## Anonymity ##
+Internet è concepito come una rete pubblica. Infatti, i punti di accesso WI-Fi e i router di rete vedono tutto il traffico che li attraversa.<br />
+Inoltre, le informazioni di instradamento sono pubbliche, in quanto le intestazioni dei pacchetti IP identificano l'origine e la destinazione.<br />
+L'utilizzo della crittografia permette di nascondere il payload dei messaggi ma non le informazioni di routing.
+
+Con **Anonimato** si definisce la situazione nella quale un utente non è identificabile all'interno di un insieme di soggetti.
+
+Con **Unlinkability** si definisce la situazione nella quale è impossibile ricollegare identità ed azione, come, ad esempio, un mittente ed un'e-mail.
+
+Con **Unobservability** si intende la situazione nella quale un attaccante non è in grado di capire se un soggetto sta utilizzando un determinato sistema o un determinato protocollo.
+
+---------------------------------------------------------------
+
+### Attacchi all'anonimato ###
+L'anonimato può essere attaccato tramite:
+	- **Analisi passiva del traffico**, ovvero dedurre quali soggetti stanno comunicando dal traffico di rete;
+	- **Analisi attiva del traffico**,
+
+---------------------------------------------------------------
 
 ## VPN ##
 Una **Virtual Private Network** (**VPN**) è una rete virtuale privata nella quale è possibile costruire una LAN privata, facendo sì che i dispositivi ad essa connessi siano sparsi per il globo.<br />
