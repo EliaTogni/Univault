@@ -16,7 +16,7 @@ Per la scrittura simultanea si può scegliere tra diverse politiche:
 - **MAX/min**: vince il $p_{i}$ con il dato MAX/min;
 - **Priority**: vince il $p_{i}$ con priorità maggiore.
 
-I tipi delle istruzioni possibili per il processore $p_{i}$ sono:
+I tipi di istruzioni possibili per il processore $p_{i}$ sono:
 - operazioni aritmetico/logiche;
 - istruzioni da/per la memoria centrale:
 	- STORE $R[k]$ $M[n]$;

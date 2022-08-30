@@ -488,10 +488,12 @@ Le vulnerabilità di DNS sono causate dal fatto che sia gli utenti che gli host 
 ------------------------------------------------------------
 
 ### Buffer Overflow ###
-**Buffer Overflow** è una delle maggiori vulnerabilità di sicurezza, causato spesso dalla capacità dell'attaccante remoto di eseguire del codice arbitrario. Questo tipo di attacchi è causato in genere da programmi che non controllano input non validi. tipicamente più lunghi di quanto previsto.
+**Buffer Overflow** è una delle maggiori vulnerabilità di sicurezza, causato spesso dalla capacità dell'attaccante remoto di eseguire del codice arbitrario. Questo tipo di attacchi è causato in genere da programmi che non controllano input non validi, tipicamente più lunghi di quanto previsto.<br />
+Nell'implementazione della memoria di un calcolatore, uno **Stack Frame** contiene i parametri della funzione, le sue variabili locali, i dati necessari per ripristinare il precedente stack frame, incluso l'indirizzo dell'istruzione successiva alla chiamata a funzione.
+Se un programma non controlla il limite degli array, allora è possibile che il programma riceva input particolare per sovrascrivere questo indirizzo di ritorno, impedendo così il ritorno al programma chiamante e permettendo all'attaccante di inserire istruzioni malevole.
 
 #### Stack Canaries ####
-Uno stack canary è un numero casuale posto sullo stack tra i dati dell'utente e l'indirizzo del mittente.<br />
+Uno stack canary è un numero casuale posto sullo stack tra i dati dell'utente e l'indirizzo di ritorno.<br />
 L'overflow della variabile locale e la modifica dell'indirizzo di ritorno cambierà anche lo stack canary.<br />
 Prima di tornare, il programma controlla il valore canarino e, se è stato modificato, capirà di essere stato vittima di un attacco buffer overflow.
 
@@ -664,7 +666,8 @@ Con **Unobservability** si intende la situazione nella quale un attaccante non �
 ### Attacchi all'anonimato ###
 L'anonimato può essere attaccato tramite:
 	- **Analisi passiva del traffico**, ovvero dedurre quali soggetti stanno comunicando dal traffico di rete;
-	- **Analisi attiva del traffico**,
+	- **Analisi attiva del traffico**, ovvero iniettare pacchetti o inserire una firma temporale sul flusso dei pacchetti;
+	- **Compromissione dei nodi di rete**. L'utente malintenzionato potrebbe compromettere alcuni router e, ovviamente, non sarebbe immediatamente chiaro quali nodi siano compromessi. Inoltre, l'attaccante potrebbe registrare passivamente il traffico;
 
 ---------------------------------------------------------------
 
@@ -758,10 +761,10 @@ Le **Reti Wireless** funzionano in due modalità di base:
 
 La fonte di rischio più significativa è il mezzo di comunicazione sottostante.
 I fattori chiave che contribuiscono ai rischi sono:
-- il canale, in quanto la comunicazione broadcast è più suscettibile alle intercettazoni ed alle interferenze;
-- la mobilità: comporta rischi aggiuntivi;
-- le risorse: il sistema operativo utilizzato è avanzato ma le risorse sono limitate;
-- l'accessibilità: alcuni dispositivi possono essere lasciati incustoditi.
+- il **canale**, in quanto la comunicazione broadcast è più suscettibile alle intercettazoni ed alle interferenze;
+- la **mobilità**: comporta rischi aggiuntivi;
+- le **risorse**: il sistema operativo utilizzato è avanzato ma le risorse sono limitate;
+- l'**accessibilità**: alcuni dispositivi possono essere lasciati incustoditi.
 
 ### Wired Equivalent Protocol (WEP)###
 Il protocollo **WEP** era la protezione primaria per il protocollo 802.11 ed era progettato per rendere il wireless sicuro come una rete cablata. E' stato abbandonato a causa della crittografia debole (chiavi non più lunghe di 40 bit), chiavi di crittografia statiche e mancanza di metodo di distribuzione delle chiavi.
@@ -773,4 +776,3 @@ Protocollo che migliora WEP in diversi modi:
 - cambia dinamicamente le chiavi mentre la sessione continua;
 - metodo crittografico per verificare l'integrità;
 - contatore di frame per prevenire attacchi di reply.
-

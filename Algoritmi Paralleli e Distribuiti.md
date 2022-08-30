@@ -1,6 +1,6 @@
 In determinate situazioni, la velocità di esecuzione di un compito è l'elemento critico. In questi casi, può essere utile far eseguire questo compito a più processori, sperando che l'aumento di risorse sia compensato da una diminuzione del tempo di calcolo.<br />
 Il termine [[Algoritmo]] sottintende, oltre alla stessa definizione, che l'esecutore è unico.<br />
-Nel caso di **Algoritmi Paralleli e Distribuiti**, è chiave la presenza di un pool di esecutori e non si può parlare più di sequenza di istruzioni generiche ma di insiemi di istruzioni raggruppate in **passi paralleli**. In ogni passo parallelo si avrà un set di istruzioni, in cui ci sarà **al più** un'istruzione per esecutore.<br />
+Nel caso di **Algoritmi Paralleli e Distribuiti**, è chiave la presenza di un pool di esecutori e non si può parlare più di sequenza di istruzioni generiche ma di istruzioni raggruppate in insiemi chiamati **passi paralleli**. In ogni passo parallelo si avrà un set di istruzioni, in cui ci sarà **al più** un'istruzione per esecutore.<br />
 
 ------------------------------------------------------------
 
@@ -89,7 +89,7 @@ Non avendo, però, il numero di processori $p(n)$ al di fuori della funzione di 
 Con efficienza, invece, si intende quanto lavoro viene svolto da un singolo processore. <br />
 Poichè $E_{A}(n,p(n)) = \frac{T_{A}(n,1)}{p(n) \cdot T_{A}(n,p(n))}$, l'efficienza risulta essere il rapporto tra il tempo dell'algoritmo sequenziale ed il tempo totale consumato dai processori, come se fossero usati sequenzialmente. In particolar modo, è bene scegliere $T_{A}(n,1)$ come il tempo del miglior algoritmo sequenziale.
 
-Per il parametro $E$ vale che $0 \leq E(n, p(n)) \leq 1$. Quando $E \rightarrow 0$, si stanno utilizzando troppi processori che, probabilmente, rimangono inutilizzati per la maggioranza del tempo.
+Per il parametro $E$ vale che $0 \leq E(n, p(n)) \leq 1$. Quando $E \rightarrow 0$, si stanno utilizzando troppi processori i quali, probabilmente, rimangono inutilizzati per la maggior partr del tempo.
 
 Si dimostra ora che $E \leq 1$.<br />
 Si esegue una trasformazione per passare da un algoritmo parallelo ad uno sequenziale (non è detto che sia il migliore). Si vuole valutare il tempo dell'algoritmo sequenziale così ottenuto. Si indica con $t_{i}(n)$ il tempo dell'istruzione più lunga al passo parallelo $i$, con $1 \leq i \leq k$.<br />
@@ -112,7 +112,7 @@ Da questa disuguaglianza, si dividono entrambi i membri per il tempo parallelo e
 
 $$\frac{T(n,1)}{p(n)T(n, p(n)))} \leq 1$$
 
-Sapendo che $\frac{T(n,1)}{p(n)T(n, p(n)))} = E(n, p(n))$, allora si ha dimostrato che $E(n, p(n)) \leq 1$. Il miglior risultato in termini di efficienza è quindi $E \rightarrow k \leq 1$, dove $k$ è una costante.
+Sapendo che $\frac{T(n,1)}{p(n)T(n, p(n)))} = E(n, p(n))$, allora si ha dimostrato che $E(n, p(n)) \leq 1$. Il miglior risultato in termini di efficienza è quindi $E \rightarrow c \leq 1$, dove $c$ è una costante.
 
 ------------------------------------------------------------
 
@@ -140,11 +140,11 @@ for i = 1 to n-1 do{
 ```
 
 Il tempo impiegato è $T(n,1) = n-1$ ed è il miglior tempo possibile per un algoritmo sequenziale.<br />
-Si può pensare di parallelizzare utilizzando $n$ processori, ognuno dei quali fa una somma. Ma quale somma? Se ci si basa sull'algoritmo sequenziale, il primo processore eseguirà la somma $M[1] + M[2]$, il secondo eseguirà poi la somma del risultato con $M[3]$ e così via, formando un albero di somme di altezza $n-1$. L'efficienza di questo algoritmo vale:
+Si può pensare di parallelizzare utilizzando $n$ processori, ognuno dei quali fa una somma. Ma quale somma? Se ci si basa sull'algoritmo sequenziale, il primo processore eseguirà la somma $M[1] + M[n]$, il secondo eseguirà poi la somma del risultato con $M[2]$ e così via, formando un albero di somme di altezza $n-1$. L'efficienza di questo algoritmo vale:
 
 $$E = \frac{n-1}{(n-1)(n-1)} = \frac{1}{n-1} \rightarrow 0$$
 
-Il tempo ottenuto è uguale al tempo dell'algoritmo sequenziale e quindi, abbiamo solo introdotto uno spreco hardware ingiustificato.<br />
+Il tempo ottenuto è uguale al tempo dell'algoritmo sequenziale. Quindi si è solo introdotto uno spreco hardware ingiustificato.<br />
 E' possibile tentare un approccio diverso basandosi sulla proprietà associativa della somma. Infatti, vale
 
 $$((a + b) + c) + d = (a + b) + (c + d)$$
@@ -225,7 +225,7 @@ $$p(n) = O(n) \quad \text{ e } \quad T(n,n) = O(\log(n))$$
 $$E(n,n) = \frac{n-1}{n \cdot 5\log_{2}(n)} \sim \frac{1}{\log_{2}(n)} \rightarrow 0$$
 
 Poichè l'efficienza tende a $0$ e i processori vengono usati al completo solo nel primo passo parallelo, è giusto pensare che i processori siano sprecati. Si può applicare il teorema di Wyllie:
-$$p(n) = o(n) \text{ per avere } E \rightarrow k \neq 0$$
+$$p(n) = o(n) \text{ per avere } E \rightarrow c \neq 0$$
 
 Invece di considerare $\frac{n}{2}$ processori, si considerino soltanto $p$ processori (con $p$ incognita). Questi processori devono prendersi in carico non più la somma di $2$ numeri ma di una quantità maggiore, $\Delta = \frac{n}{p}$.<br />
 Ogni processore dovrà eseguire le somme in sequenza e salvare il risultato nella cella con indice più alto, ovvero $M[k\Delta]$.<br />
@@ -241,8 +241,8 @@ $$p(n) = p$$
 dove $p$ è un incognita.
 $$T(n, p) = T(\text{primo passo parallelo}) + T(\text{passi successivi}) = \frac{n}{p} + 5\log(p)$$
 dove il primo passo consiste nelle somme in sequenza effettuate parallelamente da ciascuno dei $\Delta$ processori, mentre i passi successivi corrispondono all'algoritmo sommatoria, calcolato sul numero di valori che vengono sommati, cioè $p$ invece del classico $n$.
-$$E(n, p(n)) = \frac{n-1}{p(\frac{n}{p} + 5 \log(p)} = \frac{n-1}{n + 5p\log(p)} \rightarrow k \neq 0$$
-Sapendo che $p$ è rimasto un valore incognito, è possibile considerare $5p\log(p) \sim n$, in modo tale da  avere una funzione lineare al denominatore, che vada ad abbattere completamente la crescita del denominatore.
+$$E(n, p(n)) = \frac{n-1}{p(\frac{n}{p} + 5 \log(p)} = \frac{n-1}{n + 5p\log(p)} \rightarrow c \neq 0$$
+Sapendo che $p$ è rimasto un valore incognito, è possibile considerare $5p\log(p) \sim n$, in modo tale da  avere una funzione lineare al denominatore, che vada ad abbattere completamente la crescita del numeratore.
 $$E \sim \frac{n}{2n} \rightarrow \frac{1}{2}$$
 
 Tutto questo vale solo nel caso in cui si riesca a far valere $p\log(p) = \frac{n}{5}$ cioè $p = \frac{n}{5\log(n)}$.
@@ -305,6 +305,8 @@ for 1<=k<=n parallel do{
 		M[n] = 0
 	}
 }
+
+Return M[n]
 ```
 
 Si ha una scrittura concorrente del valore $0$ nella cella $M[n]$. E' necessario quindi adottare una politica per gestire queste scritture concorrenti.
@@ -411,7 +413,7 @@ Il tempo sequenziale sarà quindi $n^{2,8} \cdot \log(n)$.<br />
 Si valutano ora le prestazioni dell'algoritmo.<br />
 $$p(n) \sim n^{2} \cdot \frac{n}{\log(n)} = \frac{n^{3}}{\log(n)}$$
 $$T(n, p(n)) = \log(n) \cdot \log(n) = \log^{2}(n)$$
-$$E \sim \frac{n^{2,8}\log(n)}{\frac{n^{3}}{\log(n)}\cdot \log_{2}(n)} = \frac{n^{2,8}}{n^{3}} \rightarrow 0$$
+$$E \sim \frac{n^{2,8}\log(n)}{\frac{n^{3}}{\log(n)}\cdot \log^{2}(n)} = \frac{n^{2,8}}{n^{3}} \rightarrow 0$$
 
 ------------------------------------------------------------
 
@@ -462,12 +464,13 @@ Di conseguenza, la proposta analizzata risulta essere una scelta poco efficiente
 Kogge-Stone introduce il **Pointer Doubling** per risolvere SOMME PREFISSE.<br />
 Si tratta di puntatori, di link tra coppie di numeri, indicati tramite frecce.<br />
 Ogni processore si occupa di un puntatore e ne fa la somma in questo modo:<br />
-Dati $M[i] = m$ e $M[S[k]] = k$, sia $S[k]$ la cella di memoria contenente la distanza del successivo da $M[i]$. <br />Questa distanza può essere interpretata come un link, un collegamento tra le due celle.<br /> 
+Dati $M[k] = m$ e $M[S[k]] = q$, sia $S[k]$ la cella di memoria contenente la distanza del successivo da $M[k]$. <br />Questa distanza può essere interpretata come un link, un collegamento tra le due celle.<br /> 
 
 ![[KoggeStone0.png]]
 
-Il processore assegnato a questo link esegue, al passo $j=0$, la somma $m + k$ e memorizza il risultato in $M[S[k]]$, cioè $M[i+1]$. Al passo $j=0$, quindi, l'algoritmo prende un elemento ed il suo successore e ne calcola la somma (tranne per l'ultimo elemento, in quanto privo di successore).<br />
-Al passo $j=1$, l'algoritmo prende un elemento ed il suo successore non più a distanza $S[k] = 1$ bensì a distanza $S[k] = 2$, e ne effettua la somma (anche in questo caso non viene eseguita per l'ultimo ed il penultimo elemento, in quanto privi di successore).<br />
+Il processore assegnato a questo link esegue, al passo $j=1$, la somma $m + k$ e memorizza il risultato in $M[S[k]]$, cioè $M[k+1]$. Al passo $j=0$, quindi, l'algoritmo prende un elemento ed il suo successore e ne calcola la somma (tranne per l'ultimo elemento, in quanto privo di successore).<br />
+L'algoritmo aggiorna poi il contenuto di $M[S[k]]$.<br />
+Al passo $j=2$, l'algoritmo prende un elemento ed il suo successore non più a distanza $S[k] = 1$ bensì a distanza $S[k] = 2$, e ne effettua la somma (anche in questo caso non viene eseguita per l'ultimo ed il penultimo elemento, in quanto privi di successore).<br />
 
 ![[KoggeStone1.png]]
 
@@ -483,7 +486,7 @@ L'algoritmo termina quando nessun elemento ha più un successore. A questo punto
 
 Si valutano ora le prestazioni dell'algoritmo.<br />
 - Quanti numeri privi di successori genera il $j$-esimo passo? $2^{j}$.
-- Quanti passi dura l'algoritmo? L'algoritmo dura fino a quando esistono successori. Se si pongono i numeri privi di successori desiderati come $n$, cioè tutti i numeri dell'algoritmo di Kogge-Stone, è possibile porre $2^j = \log(n) \rightarrow j = \log_{2}(n)$.<br /> L'algoritmo termina, quindi, in $\log_{2}(n)$ passi.
+- Quanti passi dura l'algoritmo? L'algoritmo dura fino a quando esistono successori. Se si pongono i numeri privi di successori desiderati come $n$, cioè tutti i numeri dell'algoritmo di Kogge-Stone, è possibile porre $2^j = n \rightarrow j = \log_{2}(n)$.<br /> L'algoritmo termina, quindi, in $\log_{2}(n)$ passi.
 - Quali processori vengono attivati al $j$-esimo passo? I processori attivati sono $1 \leq k \leq n-2^{j-1}$.
 - Sia $S[k]$ la posizione del successivo di $M[k]$ anch'essa presente in memoria centrale. Come viene inizializzato S? Viene inizializzato come $S[k] = k+1$ per $1 \leq k \leq n-1$ e $S[n] = 0$.
 - Dato $p[k]$, quale istruzione deve eseguire su $M$? $M[k]+M[S[k]] \rightarrow M[S[k]]$
@@ -494,7 +497,7 @@ Il codice dell'algoritmo parallelo, con $M$ e $S$ già inizializzati, sarà quin
 ```
 for j = 1 to log(n) do{
 	for 1 <= k <=  n - 2^(j-1) parallel do{
-		M[S[k] = M[k] + M[S[k]]
+		M[S[k]] = M[k] + M[S[k]]
 		S[k] = (S[k] == 0? 0 : S[S[k]])
 	}
 }
@@ -520,7 +523,7 @@ Se $i\neq j \rightarrow S[i] \neq S[j]$, quindi i due valori hanno successori di
 
 #### Correttezza dell'Algoritmo ####
 E' anche necessario dimostrare che l'algoritmo sia corretto.<br />
-La correttezza dell'algoritmo si dimostra facendo vedere che, per $1 \leq k \leq n$ si ha in M[k] la somma degli elementi precedenti:
+La correttezza dell'algoritmo si dimostra facendo vedere che, per $1 \leq k \leq n$ si ha in $M[k]$ la somma degli elementi precedenti:
 
 $$M[k] = \sum_{i=1}^{k} M[i] \text{, } \quad 1 \leq k \leq n$$
 
@@ -556,6 +559,8 @@ $$\text{se } t = 1 \quad \quad M[1] = M[1]$$
 $$\text{se } t = 2 \quad \quad M[2] = M[1] + M[2]$$<br />
 
 $$\text{per }t > 2$$
+$$M[S[k]] = M[k] + M[S[k]$$
+$$=$$
 $$M[k+1] = M[k] + M[k+1]$$
 $$ = $$
 $$M[t] = M[t-1] + M[t]$$
@@ -564,7 +569,7 @@ Questo è esattamente ciò che viene descritto dalla proprietà.
 
 **Passo induttivo**:
 
-Si suppone la proprietà vera per $j-1$ e si dimostra per $j$. Prima di iniziare il $j$-esimo passo, quanto vale $S$?<br >/
+Si suppone la proprietà vera per $j-1$ e si dimostra per $j$. Prima di iniziare il $j$-esimo passo, quanto vale $S$?<br />
 E' utile notare che, al $j$-esimo passo, i link legano celle di memoria a distanza $2^{j-1}$.<br />
 Quindi:
 
@@ -575,13 +580,14 @@ $$
 \end{numcases}
 $$
 
-$\forall t \leq 2^{j-1}$, la proprietà è vera per ipotesi. Tutte le celle con indice $\leq 2{j-1}$ sono già risolte.<br />
+$\forall t \leq 2^{j-1}$, la proprietà è vera per ipotesi. Tutte le celle con indice $\leq 2^{j-1}$ sono già risolte.<br />
 Per sostenere che la proprietà sia vera al passo $j$-esimo, è necessario considerare le casistiche come separate.<br />
 - Si considerino le celle con indice:
-$$2^{j-1} < t \leq 2{j} \rightarrow t = 2^{j-1} +a$$
+$$2^{j-1} < t \leq 2^{j} \rightarrow t = 2^{j-1} +a$$
 E' possibile scrivere il numero $t$ in questo modo in quanto è sicuramente maggiore di $2^{j-1}$.
 E' noto che questo numero, al $j$-esimo passo, è:
 $$M[a + 2^{j-1}] = M[a] + M[a + 2^{j-1}]$$
+Infatti, al passo $j$, al contenuto della cella $M[a]$ si somma il contenuto della cella distante $2^{j-1}$.<br />
 Ma $a \leq 2^{j-1}$ per come è stato scelto. Infatti $a + 2^{j-1} \leq 2^j$.<br />
 Allora, per ipotesi di induzione, in $M[a]$ ci sono tutti i valori precedenti sommati, da $M[1]$ a $M[a]$.
 Nella cella $M[a + 2^{j-1}]$, invece, sono contenuti tutti i $2^{j-1}$ elementi precedenti sommati.<br />
@@ -599,7 +605,7 @@ Quindi la somma di queste due celle restituisce la somma degli elementi da $1$ a
  
 Si valutano ora le prestazioni dell'algoritmo.
 $$p(n) = n-1$$
-Al primo passo, nell'esempio con $8$ elementi, venivano utilizzati $7$ processori. Nei passi successivi, il numero di processori diminuiva.<br />
+Al primo passo, nell'esempio con $8$ elementi, vengono utilizzati $7$ processori. Nei passi successivi, il numero di processori diminuisce.<br />
 Si inferisce che il numero di processori utilizzati è, a causa del primo passo, pari a $n-1$.
 $$T(n, p(n)) \sim 9\log(n)$$
 L'algoritmo utilizza un loop di $\log(n)$ passi ed un loop interno che fa eseguire ai processori in parallelo due istruzioni:
@@ -733,17 +739,23 @@ Per costruire il vettore delle potenze è necessario:
    $$Q[1] = \alpha\text{, }Q[2] = \alpha^{2}\text{, ..., }Q[n] = \alpha^{n}$$
  
 **Come risolvere REPLICA in parallelo?**<br />
-- **Primo modo:**<br /> <code> for k=1 to n par do </code><br /><code>Q[jk] = alpha;</code><br />Essendo $\alpha$ una cella di $M$, risulta essere un accesso simultaneo in lettura. Di conseguenza, è necessaria un'architettura CREW.<br />Si valutano ora le prestazioni dell'algoritmo.<br />
-   $$p = n$$
-   $$t(n, p(n)) = 2$$
-   $$E \sim \frac{n}{2n} \rightarrow c \neq 0$$
+- **Primo modo:**<br />```
+
+for k=1 to n parallel do {
+	Q[k] = alpha;
+}```
+
+Essendo $\alpha$ una cella di $M$, risulta essere un accesso simultaneo in lettura. Di conseguenza, è necessaria un'architettura CREW.<br />Si valutano ora le prestazioni dell'algoritmo.<br />
+   $$p(n) = n$$
+   $$T(n, p(n)) = 2$$
+   $$E(n, p(n)) \sim \frac{n}{2n} \rightarrow c \neq 0$$
    L'unica osservazione possibile è che, siccome si sta valutando il problema REPLICA per costruire il vettore delle potenze $\alpha$, insieme al problema REPLICA si affronta un modulo PRODOTTO PREFISSO, che si può risolvere con $\frac{n}{\log(n)}$ processori. Nonostante, quindi, qui l'efficienza ottenuta sia costante, si può capire che stanno venendo utilizzati troppi processori.<br />
    In più non è un algoritmo EREW.
    
+- **Secondo modo**:<br />
    Per abbassare il numero di processori di REPLICA si applica il teorema di Wyllie, raggruppando i processori in $\log(n)$ elementi. Si sostituisce ogni gruppo di processori con un singolo processore, il quale si occuperà di $\log(n)$ replicazioni di $\alpha$ nel vettore $Q$.<br />
    Il $k$-esimo processore carica $\alpha$ nelle celle di posizione $(k-1)\log(n) +1, ..., k\log(n)$.<br />Si riesce ad incrementare l'efficienza effettuando un trade-off con il tempo di esecuzione, il quale passa da costante a logaritmico.<br />
  
-- **Secondo modo**:<br />
 	```
 	for k =1 to n/log(n) parallel do{
 		for i = 1 to log(n) do{
@@ -753,9 +765,9 @@ Per costruire il vettore delle potenze è necessario:
 	```
 	
 	Si valutano ora le prestazioni dell'algoritmo.<br />
-	$$p = \frac{n}{\log(n)}$$
-	$$t = c\log(n)$$
-	$$E = \frac{n}{\frac{n}{\log(n)}c \cdot \log(n)} = \frac{1}{c} \neq 0$$
+	$$p(n) = \frac{n}{\log(n)}$$
+	$$T(n, p(n)) = c\log(n)$$
+	$$E(n, p(n)) = \frac{n}{\frac{n}{\log(n)}c \cdot \log(n)} = \frac{1}{c} \neq 0$$
 	
 	Continua ad essere però un algoritmo CREW.
 	Non è stato quindi eliminato l'accesso simultaneo ad $\alpha$.
@@ -776,25 +788,25 @@ Per costruire il vettore delle potenze è necessario:
    
    Si valutano ora le prestazioni dell'algoritmo nei due step del codice, la costruzione del vettore e l'applicazione di SOMME PREFISSE.<br />
    1) 
-   $$p = \frac{n}{\log(n)}$$
-   $$t = \log(n)$$
+   $$p(n) = \frac{n}{\log(n)}$$
+   $$T(n, p(n)) = \log(n)$$
    2) 
-   $$p = \frac{n}{\log(n)}$$
-   $$t = \log(n)$$
+   $$p(n) = \frac{n}{\log(n)}$$
+   $$T(n, p(n)) = \log(n)$$
    
    Totale:<br />
-   $$p = \frac{n}{log(n)}$$
-   $$t = \log(n)$$
-   $$E = c \neq 0$$
+   $$p(n) = \frac{n}{log(n)}$$
+   $$T(n, p(n)) = \log(n)$$
+   $$E(n, p(n)) = c \neq 0$$
    
    Finamente si è ottenuto un algoritmo EREW.
    
 ![[ValutazionePolinomio.png]]
 In questo schema viene visualizzato complessivamente l'algoritmo EREW per la valutazione di un polinomio.<br />
 Analizziamo ora le prestazioni dell'algoritmo.<br />
-   $$p = \frac{n}{\log(n)}$$
+   $$p(n) = \frac{n}{\log(n)}$$
    $$T(n, p(n)) = \log(n)$$
-   $$E = frac{T(n,1)}{p(n)T(n,p(n))} = frac{2n}{\frac{n}{\log(n)}\log(n)} \rightarrow c \neq 0$$
+   $$E(n, p(n)) = \frac{T(n,1)}{p(n)T(n,p(n))} = \frac{2n}{\frac{n}{\log(n)}\log(n)} \rightarrow c \neq 0$$
    
 ------------------------------------------------------------
 

@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Sicurezza dei Sistemi e delle Reti.md",
+            "file": "Algoritmi Paralleli e Distribuiti.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Sicurezza dei Sistemi e delle Reti.md",
+                "file": "Algoritmi Paralleli e Distribuiti.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,15 +89,15 @@
   },
   "active": "8df90cd4a246a4d7",
   "lastOpenFiles": [
-    "Inode.md",
-    "Sicurezza dei Sistemi e delle Reti.md",
-    "Boot Sector.md",
-    "Artificial Neural Network.md",
-    "Spoofing.md",
-    "Javascript.md",
-    "Same-Origin Policy.md",
-    "Albero.md",
-    "Agent-Based Simulation.md",
-    "Address Resolution Protocol.md"
+    "Modello a Memoria Distribuita.md",
+    "Algoritmi Paralleli e Distribuiti.md",
+    "Modello a Memoria Condivisa.md",
+    "Modello P-RAM.md",
+    "Algoritmo.md",
+    "Efficienza.md",
+    "Teoria della Complessità Computazionale.md",
+    "Clock.md",
+    "Sequenza Unimodale e Bitonica.md",
+    "Teorema di Wyllie.md"
   ]
 }
