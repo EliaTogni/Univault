@@ -3,6 +3,7 @@ Prende spunto dall'algoritmo sequenziale [[MergeSort]] ma utilizza come funzione
 
 ```
 Procedura BitSort(A[1], ..., A[n]){
+	minMax(A)
 	if(|A|>2){
 		BitSort(A_{min})
 		BitSort(A_{Max})
@@ -21,13 +22,13 @@ Poichè una sequenza_ unimodale è anche bitonica, è possibile effettuare la ch
 #### Correttezza dell'Algoritmo ####
 
 Per dimostrare la correttezza del _BitSort_, si utilizza l'[[Induzione]].<br />
-Nel caso base, cioè per $n = 2 $:
+Nel caso base, cioè per $n = 2$:
 - il minimo viene inserito nella cella in prima posizione ed il massimo nella seconda cella, tramite procedura _minMax_;
 - l'algoritmo non entra nell'_if_;
 - l'algoritmo restituisce il vettore ordinato.
 
 Il caso base è quindi dimostrato.<br />
-Nel passo induttivo, si suppone che l'algoritmo sia corretto per $n = 2^{k}$ e si dimostra che sia corretto per $n = 2{k+1}$:
+Nel passo induttivo, si suppone che l'algoritmo sia corretto per $n = 2^{k}$ e si dimostra che sia corretto per $n = 2^{k+1}$:
 - la cardinalità di $A = 2^{k+1}$;
 - _minMax_ divide $A$ in due sottoarray, ciascuno di dimensione $2^{k}$;
 - _BitSort_($A_{min}$) e _BitSort_($A_{Max}$) ordinano i due sottoarray, per ipotesi induttiva;
@@ -63,7 +64,7 @@ $$
 \end{numcases}
 $$
 
-dove il valore $5$ indica il costo della routine _minMax_, il valore $4$ indica il costo della routine _Rev_ e il valore $5\og(n)$ indica il costo di _BitMerge_.<br />
+dove il valore $5$ indica il costo della routine _minMax_, il valore $4$ indica il costo della routine _Rev_ e il valore $5\log(n)$ indica il costo di _BitMerge_.<br />
 Sviluppando i conti si ottiene un $O(\log(n))$.<br />
 In termini di efficienza, si ha:
 $$E = \frac{n\log(n)}{\frac{n}{2}5\log^{2}(n)} \rightarrow \frac{\alpha}{\log(n)} \rightarrow 0$$

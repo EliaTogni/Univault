@@ -18,7 +18,7 @@ $$T(x) = \text{ numero di operazioni elementari su $x$, con $x$ istanza }$$
 
 $$t(n) = MAX\Bigg\{T(x) \quad|\quad x \in \sum^{n}\Bigg\}$$
 
-dove $t(n)$ è una funzione in $n$, con $n$ lunghezza dell'input.
+dove $t(n)$ è una funzione in $n$, con $n$ lunghezza dell'input e dove $\sum^{n}$ indica il dominio della funzione.
 Spesso non si è interessati ad una valutazione precisa di $t(n)$, ma al suo tasso di crescita.<br />
 A questo scopo, si utilizzano le [[Funzioni Asintotiche]].
 
@@ -38,7 +38,7 @@ Nei modelli di calcolo parallelo, data la presenza di più processori, un elemen
 
 Il più semplice modello di calcolo parallelo è quello a memoria condivisa, detto [[Modello P-RAM]].
 
-Il calcolo procede per **passi**. Ad ogni passo, ogni processore può fare un'operazione sui dati che possiede, oppure può leggere o scrivere nella memoria condivisa. In particolare, è possibile selezionare un insieme di processori che eseguano tutti la stessa istruzione (su dati generalmente diversi) mentre gli altri processori restano inattivi. I processori attivi sono sincronizzati, cioè eseguono la stessa instruzione simultaneamente e l'istruzione successiva può essere eseguita solo quando tutti hanno terminato l'esecuzione della precedente.<br />
+Il calcolo procede per **passi**. Ad ogni passo, ogni processore può fare un'operazione sui dati che possiede, oppure può leggere o scrivere nella memoria condivisa. In particolare, è possibile selezionare un insieme di processori che eseguano tutti la stessa istruzione (su dati generalmente diversi) mentre gli altri processori restano inattivi. I processori attivi sono sincronizzati, cioè eseguono la stessa istruzione simultaneamente e l'istruzione successiva può essere eseguita solo quando tutti hanno terminato l'esecuzione della precedente.<br />
 Questo modello di macchine è detto di tipo **SIMD** (**SIngle Instruction Multiple Data**), il quale si contrappone all'architettura **MIMD** (**Multiple Instruction Multiple Data**).<br />
 Per semplicità, in seguito si farà riferimento al modello EREW, il più realistico.
 Un vantaggio sostanziale di questa scelta è che un algoritmo funzionante su un modello EREW è funzionante anche sui modelli successivi.
@@ -89,7 +89,7 @@ Non avendo, però, il numero di processori $p(n)$ al di fuori della funzione di 
 Con efficienza, invece, si intende quanto lavoro viene svolto da un singolo processore. <br />
 Poichè $E_{A}(n,p(n)) = \frac{T_{A}(n,1)}{p(n) \cdot T_{A}(n,p(n))}$, l'efficienza risulta essere il rapporto tra il tempo dell'algoritmo sequenziale ed il tempo totale consumato dai processori, come se fossero usati sequenzialmente. In particolar modo, è bene scegliere $T_{A}(n,1)$ come il tempo del miglior algoritmo sequenziale.
 
-Per il parametro $E$ vale che $0 \leq E(n, p(n)) \leq 1$. Quando $E \rightarrow 0$, si stanno utilizzando troppi processori i quali, probabilmente, rimangono inutilizzati per la maggior partr del tempo.
+Per il parametro $E$ vale che $0 \leq E(n, p(n)) \leq 1$. Quando $E \rightarrow 0$, si stanno utilizzando troppi processori i quali, probabilmente, rimangono inutilizzati per la maggior parte del tempo.
 
 Si dimostra ora che $E \leq 1$.<br />
 Si esegue una trasformazione per passare da un algoritmo parallelo ad uno sequenziale (non è detto che sia il migliore). Si vuole valutare il tempo dell'algoritmo sequenziale così ottenuto. Si indica con $t_{i}(n)$ il tempo dell'istruzione più lunga al passo parallelo $i$, con $1 \leq i \leq k$.<br />
@@ -153,7 +153,7 @@ Si utilizzano quindi $\frac{n}{2}$ processori ed ogni processore effettua la som
 
 ```
 for j = 1 to log(n) do{
-	for k = 1 to n/2^(j) parallel do{
+	for k = 1 to n/(2^(j)) parallel do{
 		M[2^(j)k] =  M[2^(j)k] + M[2^(j)k - 2^(j-1)]
 	}
 }
@@ -468,7 +468,7 @@ Dati $M[k] = m$ e $M[S[k]] = q$, sia $S[k]$ la cella di memoria contenente la di
 
 ![[KoggeStone0.png]]
 
-Il processore assegnato a questo link esegue, al passo $j=1$, la somma $m + k$ e memorizza il risultato in $M[S[k]]$, cioè $M[k+1]$. Al passo $j=0$, quindi, l'algoritmo prende un elemento ed il suo successore e ne calcola la somma (tranne per l'ultimo elemento, in quanto privo di successore).<br />
+Il processore assegnato a questo link esegue, al passo $j=1$, la somma $m + q$ e memorizza il risultato in $M[S[k]]$, cioè $M[k+1]$. Al passo $j=0$, quindi, l'algoritmo prende un elemento ed il suo successore e ne calcola la somma (tranne per l'ultimo elemento, in quanto privo di successore).<br />
 L'algoritmo aggiorna poi il contenuto di $M[S[k]]$.<br />
 Al passo $j=2$, l'algoritmo prende un elemento ed il suo successore non più a distanza $S[k] = 1$ bensì a distanza $S[k] = 2$, e ne effettua la somma (anche in questo caso non viene eseguita per l'ultimo ed il penultimo elemento, in quanto privi di successore).<br />
 
@@ -739,12 +739,14 @@ Per costruire il vettore delle potenze è necessario:
    $$Q[1] = \alpha\text{, }Q[2] = \alpha^{2}\text{, ..., }Q[n] = \alpha^{n}$$
  
 **Come risolvere REPLICA in parallelo?**<br />
-- **Primo modo:**<br />```
-
-for k=1 to n parallel do {
-	Q[k] = alpha;
-}```
-
+- **Primo modo:**<br />
+  Si utilizzano $n$ processori in parallelo per memorizzare $\alpha$ in ciascuna delle $n$ celle di memoria:
+	```
+	for k=1 to n parallel do {
+		Q[k] = alpha;
+	}
+	```
+<br />
 Essendo $\alpha$ una cella di $M$, risulta essere un accesso simultaneo in lettura. Di conseguenza, è necessaria un'architettura CREW.<br />Si valutano ora le prestazioni dell'algoritmo.<br />
    $$p(n) = n$$
    $$T(n, p(n)) = 2$$
@@ -816,10 +818,10 @@ Analizziamo ora le prestazioni dell'algoritmo.<br />
 **Input**: $M[1], M[2], ..., M[n], \alpha$<br />
 **Output**: $M[n] = 1 \text{ se } \exists k \text{ tale che } M[k] = \alpha\text{, altrimenti } = 0$
 
-L'algoritmo sequenziale classico richiede $t(n, 1) = n$, in quanto è necessario osservare tutto il vettore.<br />
-Chiaramente, se l'input fosse ordinato, il tempo di ricerca dicotomica sarebbe $t(n, 1) = \log(n)$, con costo dell'ordinamento di $O(n\log(n))$.<br />
+L'algoritmo sequenziale classico richiede $T(n, 1) = n$, in quanto è necessario osservare tutto il vettore.<br />
+Chiaramente, se l'input fosse ordinato, il tempo di ricerca dicotomica sarebbe $T(n, 1) = \log(n)$, con costo dell'ordinamento di $O(n\log(n))$.<br />
 
-Negli anni '90 è stato presentato un algoritmo quantistico, il quale mostra come, anche su un input non ordinato, la ricerca possa avvenire in tempo $t = \sqrt{n}$. Viene sfruttata una proprietà intrinseca al modello di calcolo. In particolare, la tipica interferenza quantistica nei modelli quantistici.<br />
+Negli anni '90 è stato presentato un algoritmo quantistico, il quale mostra come, anche su un input non ordinato, la ricerca possa avvenire in tempo $T = \sqrt{n}$. Viene sfruttata una proprietà intrinseca al modello di calcolo. In particolare, la tipica interferenza quantistica nei modelli quantistici.<br />
 
 **Primo modo:**<br />
 Si presenta ora un primo algoritmo parallelo per la ricerca di un elemento in un vettore.<br />
@@ -837,8 +839,8 @@ M[n] = F;
 Si utilizza un flag $F$ contenuto nella memoria condivisa. Per quale motivo si usa il flag e non la cella $M[n]$? Perchè non è possibile inizializzare a 0 $M[n]$.
 
 Si valutano ora le prestazioni di questo algoritmo.<br />
-$$p = n$$
-$$t(n, n) = c$$
+$$p(n) = n$$
+$$t(n, p(n)) = c$$
 
 Il fatto di dover inserire potenzialmente il valore $1$ nella variabile $F$ fa presuppore un possibile problema di concurrency. Di conseguenza necessitiamo sicuramente un architettura in grado di scrivere in maniera concorrenziale. Allo stesso modo, più processori accedono alla locazione di memoria condivisa nel quale è contenuto il valore $\alpha$, sottolineando così la necessità di un'architettura CRCW.<br />
 
@@ -856,19 +858,19 @@ Dopodiché si vuole spostare il risultato nella cella di indice maggiore. Si ese
 
 Si valutano ora le prestazioni dell'algoritmo.<br />
  1)<br />
-$$p = n$$
-$$t = costante$$
+$$p(n) = n$$
+$$T(n, p(n)) = costante$$
 $$\downarrow$$
 $$Wyllie$$
-$$p = \frac{n}{\log(n)}$$
-$$t = \log(n)$$
+$$p(n) = \frac{n}{\log(n)}$$
+$$T(n, p(n)) = \log(n)$$
 2)<br />
-$$p = \frac{n}{\log(n)}$$
-$$t = \log(n)$$
+$$p(n) = \frac{n}{\log(n)}$$
+$$T(n, p(n)) = \log(n)$$
 Totale:<br />
-$$p = O(\frac{n}{\log(n)}$$
-$$t = O(\log(n)$$
-$$E \sim c \neq 0$$
+$$p(n) = O(\frac{n}{\log(n)}$$
+$$T(n, p(n)) = O(\log(n)$$
+$$E(n, p(n)) \sim c \neq 0$$
 
 **Terzo modo**:<br />
 Per eliminare la concurrent read si può sostituire ad $\alpha$ un vettore inizializzato con il valore di $\alpha$ tante volte quanti i processori utilizzati.<br />
@@ -883,15 +885,15 @@ Si esegue infine MAX-ITERATO($M[1], ..., M[n]$).<br />
 Si valutano ora le prestazioni dell'algoritmo.<br />
 - Confronto + MAX-ITERATO:<br />
  $$p = \frac{n}{\log(n)}$$
- $t = \log(n)$
+ $$T(n, p(n)) = \log(n)$$
 - Replica:<br />
-   $$p = \frac{n}{\log(n)}$$
-   $$t = \log(n)$$
+   $$p(n) = \frac{n}{\log(n)}$$
+   $$T(n, p(n)) = \log(n)$$
    
    - Totale:<br />
-  $$p = \frac{n}{\log(n)}$$
-  $$t = \log(n)$$
-  $$E = c \neq 0$$
+  $$p(n) = \frac{n}{\log(n)}$$
+  $$T(n, p(n)) = \log(n)$$
+  $$E(n, p(n)) = c \neq 0$$
   
   Esistono diverse varianti di questo codice, per risolvere problemi legati:
   - al numero di occorrenze di $\alpha$ in $M$ (si risolve trasformando MAX-ITERATO in SOMMATORIA);
@@ -929,7 +931,7 @@ Questo algoritmo è CREW.<br />
 Il codice dell'algoritmo parallelo sarà quindi:<br />
 ```
 for 1 <= i, j <= n parallel do{
-	V[i,j] = (M[j<=M[i]]?1:0)
+	V[i,j] = (M[j]<=M[i]]?1:0)
 }
 	
 for i = 1 to n parallel do{

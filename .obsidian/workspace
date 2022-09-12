@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Algoritmi Paralleli e Distribuiti.md",
+            "file": "BitSort.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Algoritmi Paralleli e Distribuiti.md",
+                "file": "BitSort.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,15 +89,15 @@
   },
   "active": "8df90cd4a246a4d7",
   "lastOpenFiles": [
-    "Modello a Memoria Distribuita.md",
     "Algoritmi Paralleli e Distribuiti.md",
+    "BitSort.md",
+    "Teorema di Wyllie.md",
+    "Sequenza Unimodale e Bitonica.md",
+    "MergeSort.md",
+    "Modello a Memoria Distribuita.md",
     "Modello a Memoria Condivisa.md",
     "Modello P-RAM.md",
     "Algoritmo.md",
-    "Efficienza.md",
-    "Teoria della Complessità Computazionale.md",
-    "Clock.md",
-    "Sequenza Unimodale e Bitonica.md",
-    "Teorema di Wyllie.md"
+    "Efficienza.md"
   ]
 }
