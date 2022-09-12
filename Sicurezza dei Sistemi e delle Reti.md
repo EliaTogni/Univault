@@ -29,7 +29,7 @@ Alcuni esempi sono:
 ### Virus ###
 Un **Virus** informatico è un codice informatico che può replicarsi, modificando altri file o programmi per inserire codice in grado di essere replicato ulteriormente.<br />
 La proprietà di autoreplicazione è ciò che distingue i virus informatici da altri tipi di malware. Un'altra proprietà di un virus risiede nel fatto che la replica del virus stesso richieda un certo tipo di assistenza da parte dell'utente, come ad esempio facendo clic su un allegato e-mail o condividendo un'unità USB.<br />
-Il virus altera, quindi, il codice normale sostituendolo con una sua versione infetta senza però compiere azioni evidenti, cerca di rimanere nell'ombra.<br />
+Il virus altera, quindi, il codice normale sostituendolo con una sua versione infetta senza però compiere azioni evidenti, cercando di rimanere nell'ombra.<br />
 Generalmente, i virus sono composti da tre parti:
 1) **meccanismo di infezione**;
 2) **trigger**;
@@ -112,14 +112,14 @@ Il worm in questione è composto da due parti:
 
 ### Zombie e Botnet ###
 Malware che prende il possesso segretamente di un altro computer in rete, sfruttando i difetti del software.
-Assembla poi i computer compromessi in una rete di zombie o botnet, cioè una raccolta di macchien compromesse che eseguono programmi, generalmente denominati worm, trojan horses o backdoors, sotto un infrastruttura di comando e controllo comune.
+Assembla poi i computer compromessi in una rete di zombie o botnet, cioè una raccolta di macchine compromesse che eseguono programmi, generalmente denominati worm, trojan horses o backdoors, sotto un infrastruttura di comando e controllo comune.
 
 Questa rete viene usata per lanciare indirettamente attacchi; ad esempio, DDos, phishing o spamming.
 
 ------------------------------------------------------------
 
 ### Rootkit ###
-un **Rootkit** è un set di programmi installati su un sistema al fine di mantenere nascosto l'accesso. Questo tipo di malware altera le funzionalità standard dell'host in maniera malevola e stealth. In questo modo, l'attaccante ha il completo controllo del sistema.
+Un **Rootkit** è un set di programmi installati su un sistema al fine di mantenere nascosto l'accesso. Questo tipo di malware altera le funzionalità standard dell'host in maniera malevola e stealth. In questo modo, l'attaccante ha il completo controllo del sistema.
 
 ------------------------------------------------------------
 
@@ -165,14 +165,14 @@ Le politiche di sicurezza sono alla base del concetto di **Controllo degli acces
 3) i **permessi di accesso**, ovvero i modi nei quali un soggetto può accedere ad un oggetto.
 
 Le politiche di controllo degli accessi possono essere categorizzate in quattro macrocategorie:
-4) **DAC** (**Discretionary Access Control**): ciascun utente può determinare i permessi per ogni altro utente e definire le **Access Control Lists** (**ACL**);
-5) **MAC** (**Mandatory Access Control**): un amministratore centrale determina i permessi di accesso dei vari oggetti;
-6) **RBAC** (**Role-Based Access Control**): esistono quattro tipi di entità in un sistema di questo tipo:
+1) **DAC** (**Discretionary Access Control**): ciascun utente può determinare i permessi per ogni altro utente e definire le **Access Control Lists** (**ACL**);
+2) **MAC** (**Mandatory Access Control**): un amministratore centrale determina i permessi di accesso dei vari oggetti;
+3) **RBAC** (**Role-Based Access Control**): esistono quattro tipi di entità in un sistema di questo tipo:
 - **utente**: una persona che ha accesso a questo sistema informatico. Ogni individuo ha un ID utente associato;
 - **ruolo**: una funzione lavorativa con nome all'interno dell'organizzazione che controlla il sistema;
 - **autorizzazione**: approvazione di una particolare modalità di accesso a uno o più oggetti;
 - **sessione**: mappatura tra utente e sottoinsieme attivato dell'insieme di ruoli a cui è assegnato l'utente.
-7) **ABAC**(): modello che può definire autorizzazioni che esprimono condizioni sulle proprietà sia della risorsa che del soggetto.
+4) **ABAC**(): modello che può definire autorizzazioni che esprimono condizioni sulle proprietà sia della risorsa che del soggetto.
 
 Esistono diversi tipi di politiche di sicurezza:
 
@@ -239,7 +239,7 @@ Nel modello vengono definite entità e regole:
 3) **Integrity Verification Procedures** (**IVP**): sono procedure che permettono la verifica dell'integrità. Il loro obiettivo è di confermare che tutti i CDI siano conformi alle specifiche di integrità ogni volta che una IPV viene eseguita.
 4) **Transformation Procedures** (**TP**): sono tutte quelle procedure che permettono di modificare i CDI oppure di prendere in input i dati di un utente e creare da quelli un nuovo CDI. Queste trasformazioni corrispondono proprio a transazioni well-formed.
 
-Mentre nel modello Biba non essitono nozioni di regole di certificazione, nel modello Clark-Wilson sono presenti dei requisiti espliciti che le azioni svolte devono soddisfare.<br />Inoltre, mentre Biba si basa sull'integrità multilivello, Clark-Wilson si concentra sulla separazione dei compiti e delle transazioni.
+Mentre nel modello Biba non esistono nozioni di regole di certificazione, nel modello Clark-Wilson sono presenti dei requisiti espliciti che le azioni svolte devono soddisfare.<br />Inoltre, mentre Biba si basa sull'integrità multilivello, Clark-Wilson si concentra sulla separazione dei compiti e delle transazioni.
 
 ------------------------------------------------------------
 
@@ -259,7 +259,7 @@ La politica è definita nel seguente modo:
 3) **Conflict of Interests Class**: Identificate con $COI$. Una $COI$ contiene i $CD$ delle varie entità che fanno parte di quella particolare classe di $COI$.
 
 Le condizioni di lettura e scrittura sono, invece, le seguenti:
-1) La lettura è consentita se l'oggetto appartiene ad un $CD$ a cui $S$ ha accesso, oppure se appartiene ad un diverso $COI$;
+1) La lettura dell'oggetto $O$ da parte del soggetto $S$ è consentita se l'oggetto $O$ appartiene ad un $CD$ a cui $S$ ha accesso, oppure se appartiene ad un diverso $COI$;
 2) Un soggetto $S$ può scrivere un oggetto $O$ se e solo se nessun oggetto che può essere letto da $S$ si trova in un differente dataset rispetto al dataset di $O$ oppure se l'utente $S$ non è in grado di leggere un oggetto $O$ contenente informazioni **non sanificate**. Con **Sanificazione** si intende il camuffare le informazioni di una azienda, in particolare per prevenire la scoperta dell'identità di tale azienda.
 
 ------------------------------------------------------------
@@ -322,7 +322,7 @@ Esistono due forme di IP spoofing:
 2) **Blind Spoofing**:  l'attaccante non è all'interno della sottorete della vittima.
 
 Per sferrare un attacco di tipo Blind IP spoofing, l'attaccante deve fare quattro cose:
-1) Prima di cominciare l'attacco, l'attaccante interroga il server per ottenere qualche indicazione in più sulla generazione dell'**Initial Sequence Number** (**ISN**). Questo viene fatto per far sì che la previsione dell'ISN abbia più probabilità di successo (**ISN Prediction**). L'attaccante manda alcuni pacchetti **SYN** non spoofati per analizzare le risposte del server e capire quindi il tipo di regola che quest'ultimo adotta per generare gli ISN;
+1) Prima di cominciare l'attacco, l'attaccante interroga il server per ottenere qualche indicazione in più sulla generazione dell'**Initial Sequence Number** (**ISN**). Questo viene fatto per far sì che la predizione dell'ISN abbia più probabilità di successo (**ISN Prediction**). L'attaccante manda alcuni pacchetti **SYN** non spoofati per analizzare le risposte del server e capire quindi il tipo di regola che quest'ultimo adotta per generare gli ISN;
 2) L'attaccante apre una connessione con il server utilizzando l'IP spoofato di un host vittima. L'attaccante non riceverà la risposta;
 3) L'host vittima, ricevendo una risposta dal server che non ha mai interrogato, invia subito un pacchetto di **FIN** o **RST** per terminare la connessione. In questa eventualità, l'attacco si può ritenere fallito. L'attaccante deve, pertanto, impegnare l'host vittima, tipicamente effettuando un **attacco DoS** per fare in modo che non possa chiudere la connessione con il server.
 4) L'attaccante invia al server un pacchetto valido, utilizzando sempre l'IP spoofato della vittima. Tale pacchetto, per essere valido, dovrà contenere il giusto ACK-NUM ed il giusto SEQ-NUM.
@@ -377,6 +377,7 @@ In un **Reflection Attack**, un attaccante, invece di colpire direttamente la vi
 - l'indirizzo del router più vicino per il client (**Gateway**);
 - nome ed indirizzo del DNS server;
 - **Network Mask**.<br />
+
 Questo protocollo è privo di misure di protezione e di conseguenza è soggetto ai seguenti attacchi:
 1) **DHCP Starvation**: l'attaccante invia tante DHCP discover con MAC differenti. Questo causa un DoS al server, il quale non riesce a soddisfare tutte le richieste perchè esaurisce il pool di indirizzi. Eventuali host legittimi che vogliono ottenere un indirizzo IP ora sono impossibilitati;
 2) **Rogue DHCP**: il server DHCP, dopo aver ricevuto una DHCP Request, indicherà al mittente non solo l'IP Address disponibile, ma anche il **default gateway** ed il **default DNS**. L'attaccante può fingere di essere un server DHCP e rispondere alle DHCP discover dei client. Siccome nelle risposte del server, di solito, i nuovi host vengono istruiti anche su quale sia il gateway della rete e altre informazioni utili, l'attaccante può comunicare un falso IP per il gateway (indicando sè stesso) e quindi risolvere gli URL come preferisce, compiere attacchi di phishing, sniffare il traffico facendo Man in the Middle o altro ancora.
@@ -428,7 +429,7 @@ Gli attacchi possibili sono:
 2) **De-Aggregation**: un attaccante $B$ annuncia di conoscere un sotto-insieme di indirizzi IP con un livello più specifico. Se il router $V$ conosce gli indirizzi $x/22$ e $B$ sostiene di conoscere gli indirizzi $x/24$, il traffico verrà dirottato su $B$. Infatti, secondo il protocollo BGP, si preferisce l'Access Point che fornisca una maggiore specificità di indirizzi, cioè $B$, in quanto in possesso di una subnet mask più precisa. In questo modo, il traffico diretto a $V$ verrà instradato verso $B$, il quale sarà in grado di sniffarne il contenuto (**subversion**);
 3) **AS Path Shortening**: viene annunciato un nuovo path che taglia fuori la vittima (**instability**);
 4) **Annunci Contraddittori**: si tratta di annunci differenti di routing spediti dallo stesso AS a differenti BGP. Lo scopo dell'attacco è creare congestione o ridirigere il traffico attraverso un path subottimale;
-5) **Link Flapping**: con Link Flapping si definisce la disattivazione e la riattivazione di un link, una pratica comune. Se questo flapping avviene frequentemente, si crea instabilità nella rete, poihcè gli instradamenti sono dinamici, in continua varazione. In questo attacco, vengono mandati tanti update sugli AS path. In questo modo, coloro che ricevono questa serie di aggiornamenti si convincono che il percorso è **flapping**. Pertanto si attiva il **router dampening**, la riattivazione di un particolare path con tempi sempre più lunghi per fare in modo che il router sovraccaricato si riesca a scaricare senza dover gestire altri pacchetti;
+5) **Link Flapping**: con Link Flapping si definisce la disattivazione e la riattivazione di un link, una pratica comune. Se questo flapping avviene frequentemente, si crea instabilità nella rete, poichè gli instradamenti sono dinamici, in continua varazione. In questo attacco, vengono mandati tanti update sugli AS path. In questo modo, coloro che ricevono questa serie di aggiornamenti si convincono che il percorso è **flapping**. Pertanto si attiva il **router dampening**, la riattivazione di un particolare path con tempi sempre più lunghi per fare in modo che il router sovraccaricato si riesca a scaricare senza dover gestire altri pacchetti;
 
 Le principali contromisure adottate da BGP sono:
 1) **Time To Leave (TTL)**: poichè i BGP router sono ad una distanza di un singolo HOP l'uno dall'altro, si accettano solo pacchetti con uno specifico TTL. Il TTL viene decrementato ad ogni singolo HOP. Tutti i messaggi BGP vengono inviati con un TTL pari a 255. Con questo sistema di sicurezza, si accettano solo i messaggi con un TTL pari a 254;
