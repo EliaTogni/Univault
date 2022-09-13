@@ -89,6 +89,6 @@ Questa simulazione sta raggiungendo uno stato stabile oppure continua a modifica
 Poichè la configurazione iniziale non viene fornita, si cerca di costruirla approssimandola, cioè basandosi sulla probabilità di avere un individuo in una cella.<br />
 Il sistema contiene quindi degli elementi stocastici. Elementi che tendono ad essere rappresentativi solo se osservati multiple volte. Come essere sicuri che queste osservazioni ripetute di elementi stocastici siano sensate nell'insieme?<br />
 
-imm
+![[Game of Life Plot.png]]
 
 Le visualizzazioni stimolano ipotesi e congetture ma si tratta di osservazioni puramente qualitative, mentre l'obiettivo primario è il fare osservazioni quantitative.
