@@ -31,6 +31,7 @@ Esistono tre macro paradigmi per la costruzione ed implementazione di modelli de
 - [[Agent-Based Simulation]];
 - [[System Dynamics Simulation]].
 
+Questi tre paradigmi fanno affidamento su modelli che comprendono componenti stocastiche.<br />
 E' possibile effettuare una comparazione tra questi paradigmi in termini di diverse feature:
 
 ![[ComparisonSimulation.png]]
