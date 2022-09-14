@@ -27,7 +27,7 @@ Una semplice simulazione è [[The Game of Life]].<br />
 --------------------------------------------------------------
 
 Esistono tre macro paradigmi per la costruzione ed implementazione di modelli descrittivi:
-- [[Discrete Events Simulation]];
+- Discrete Events Simulation;
 - [[Agent-Based Simulation]];
 - [[System Dynamics Simulation]].
 
@@ -38,11 +38,31 @@ E' possibile effettuare una comparazione tra questi paradigmi in termini di dive
 
 --------------------------------------------------------------
 
-Dal punto di vista del modellatore, se si considera la funzione $y = f(x)$, $x$ rappresenta i dati in input mentre $y$ è un'astrazione del processo modellato da $f()$.<br />
+### Discrete Event Simulation ###
+Nelle simulazioni di tipo **Discrete Events**, il sistema procede per step durante il tempo di esecuzione e gli eventi accadono solamente durante questi precisi momenti.<br />
 
-### Farmacista ###
+Si consideri la seguente funzione:
+$$y = f(x)$$
+Dal punto di vista del modellatore, $x$ rappresenta i dati in input mentre $y$ è un'astrazione del processo modellato da $f()$.<br />
+Se $f()$ è solamente un'approssimazione del sistema reale, quando si applicherà $f()$ al parametro $x$, si otterrà una determinata osservazione, un determinato valore. Riapplicando la funzione, è plausibile ottenere un risultato differente. Per questo motivo, in un mondo deterministico, si definiscono $x$ **Variabile Indipendente** e $y$ **Variabile Dipendente**.
+Il risultato che si ottiene in $y$ è stocastico, quindi $y$ è una **Variabile Aleatoria** ed il risultato complessivo della modellazione descrittiva di un sistema è una variabile aleatoria più complessa.<br />
 
+
+### Pharmacist (Ex. from Sheldon M. Ross "Simulation")###
 ![[PharmacistSimulation.png]]
+
+Il modello descrittivo che andrà costruito renderà più chiara la distribuzione della variabile aleatoria. 
+E' possibile costruire un modello deterministico di questo sistema? La risposta è sì, anche se il considerare ogni singola variabile (ogni individuo esistente, la condizione di salute di ogni individuo, ...) è di gran lunga più complesso di quanto sia possibile fare. Per questo motivano, si approssimano delle componenti del sistema.<br />
+Ci sono due punti cardine nei quali si approssimerà:
+- i **connettori**, i collegamenti tra il sistema ed il mondo esterno;
+- i **dettagli** del sistema stesso, i quali non sono cruciali per lo studio.
+
+Come si approssimano questi due punti? Con l'utilizzo di ulteriori, sebbene più semplici, variabili aleatorie.<br />
+
+![[Pharmacy Scheme.png]]
+
+Un'assunzione comune è che gli individui del mondo esterno agiscano in maniera indipendente e, perciò, osservare che ad un determinato tempo $t$ è arrivata una prescrizione non fornisce nessuna informazione sull'arrivo della prossima prescrizione. Questa assunzione è sufficiente per modellare il processo dell'arrivo delle prescrizioni tramite una **variabile aleatoria esponenziale**.<br />
+Per quanto riguarda il processo di preparazione delle medicine, il problema fornisce una media ed una deviazione standard senza fornire la forma della distribuzione. Le informazioni riguardanti il processo sono minime e la forma della perturbazione non ha una particolare struttura, quindi è possibile utilizzare una **variabile aleatoria normale**.<br />
 
 ```python
 import random
@@ -67,14 +87,20 @@ def get_next_event(events):
 
     return current, events
 
+#fornisce il tempo atteso tra una prescrizione e la successiva
+#il connettore viene approssimato dalla variabile aleatoria esponenziale
+#lambda è il valore atteso per la variabile aleatoria
 def get_next_delay(Lambda):
     
     return random.expovariate(Lambda)
 
+#tempo necessario a completare la prescrizione
+#necessita della media e della deviazione standard per calcolare la gaussiana
 def get_service_time(exp_time, std_dev_time):
     
     return random.normalvariate(exp_time, std_dev_time)
-    
+
+#variabile aleatoria comprensiva di tutte le altre
 def pharmacy(daily_working_time, exp_prescriptions_day, exp_prescr_time, stdev_prescr_time):
     
     # interesting events:
@@ -158,8 +184,9 @@ def pharmacy(daily_working_time, exp_prescriptions_day, exp_prescr_time, stdev_p
                     
                     in_queue = in_queue - 1
                     
-    return current.time >= 510 #max(current.time, daily_working_time)				
-				
+    return current.time >= 510 #max(current.time, daily_working_time)
+    
+pharmacy(480, 32, 10, 4)
 ```
 
 --------------------------------------------------------------
