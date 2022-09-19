@@ -1,6 +1,6 @@
 ### Teoria degli Insiemi ###
 
-Si definisce $\Omega$ l'_insieme Universo_, ossia l'insieme che contiene tutti gli elementi possibili.<br />
+Si definisce $\Omega$ l'**Insieme Universo**, anche chiamato **Spazio Campionario**, ossia l'insieme che contiene tutti gli elementi possibili.<br />
 Si dirà che $w \in \Omega$ quando l'elemento $w$ appartiene all'insieme $\Omega$. <br />
 Si definisce $E \subseteq \Omega$ quando $E$ è un sottoinsieme dell'insieme $\Omega$.<br />
 Si definisce insieme $\emptyset$ l'_insieme vuoto_ e con $\{\}$ l'insieme privo di elementi.<br />
@@ -66,11 +66,17 @@ $$P :A \rightarrow [0, 1]$$
 **Dominio**: generica algebra $A$.<br />
 **Codominio**: tutti i valori dell'intervallo chiuso $[0, 1]$.<br />
 
+Per ogni evento $A$, la **Probabilità** di $A$, o **$P(A)$**, è un valore numerico tale che:
+- $0 \leq P(A) \leq 1$;
+- $P(\Omega) = 1$;
+- per una sequenza di eventi mutualmente esclusivi $A_{1}, A_{2}, ..., A_{n}$ $$P(\bigcup_{i=1}^{n} A_{i}) = \sum_{i = 1}^{n} P(A_{i}) $$
+
 --------------------------------------------------------------
 
 #### Probabilità Condizionata ####
-
+Con **Probabilità Condizionata** si definisce la probabilità che l'evento $E$ accada sapendo che l'evento $F$ è accaduto.
 $$P(E\vert F) = \frac{P(E\cap F)}{P(F)}$$
+Da questa definizione, è possibile definire la probabilità dell'evento $A$ come $$P(A) = P(A \vert B)P(B) + P(A \vert \overline{B})P(\overline{B})$$
 
 --------------------------------------------------------------
 
@@ -110,8 +116,8 @@ Le variabili aleatorie _discrete_ assumono un insieme numerabile di specificazio
 Si definisce _funzione di massa di probabilità_ la funzione:
 
 $$p_X : R \rightarrow [0, 1]$$
-$$\foreach x \in R \qquad p_X(x) = P(X = x)$$
-
+$$\forall x \in R \qquad p_X(x) = P(X = x)$$
+$$\sum_{i \in I} p(x_{i}) = 1$$
 --------------------------------------------------------------
 
 #### Funzione di Ripartizione o di Distribuzione Cumulativa ####
@@ -122,7 +128,7 @@ $$F_X(x) = P(X \leq x)$$
 
 E' possibile definire la funzione di ripartizione in funzione di quella di massa di probabilità e viceversa:
 
-$$F_X(x) = P(X \leq x) = \sum_{aa \leq X}P(X = a) = \sum_{a \leq X}p_X(a)$$
+$$F_X(x) = P(X \leq x) = \sum_{a \leq X}P(X = a) = \sum_{a \leq X}p_X(a)$$
 
 --------------------------------------------------------------
 
