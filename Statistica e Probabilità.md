@@ -188,6 +188,7 @@ $$Cov(X, Y) = E(XY) -E(X)E(Y) = E(X)E(Y) - E(X)E(Y) = 0$$
 
 #### Indice di Correlazione Lineare####
 $$\rho_{X, Y} = \frac{Cov(X, Y)}{\sigma_{X}\sigma_{Y}}$$
+L'indice di correlazione varia tra i valori $-1$ e $1$, dove il coefficiente $1$ indica la perfetta correlazione lineare e il segno $+$ o $-$ indica la pendenza della retta di correlazione.
 
 --------------------------------------------------------------
 
@@ -217,6 +218,16 @@ $$Var(X) = E((X -\mu_{X})^2)$$
 Supponendo $X \geq 0$, allora $\forall a > 0$ si ha:
 
 $$P(X \geq a) \leq \frac{E(x)}{a}$$
+Scegliendo valori di $a$ sempre maggiori, la probabilità che $X$ sia maggiore di $a$ diminuisce.<br />
+
+Dimostrazione:<br />
+si definisce una nuova variabile aleatoria $$Y = \left\{ \begin{array}{rcl}  
+a & \mbox{if}  
+& X\geq a \\ 0 & \mbox{if} & X<a
+\end{array}\right.$$
+Si osserva che per $X \geq Y$, $E[X] \geq E[Y]$.<br />
+Inoltre, si osserva che $$E[Y] = a \cdot P[X\geq a] + 0 \cdot P[X < a]$$
+Quindi $$E[X] \geq aP[X\geq a] \quad = \quad P(X \geq a) \leq \frac{E(x)}{a}$$
 
 --------------------------------------------------------------
 
