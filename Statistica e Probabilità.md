@@ -80,6 +80,7 @@ $$P(E \vert F) = \frac{P(E \cap F)}{P(F)}$$
 è possibile formalizzare l'indipendenza di eventi dicendo che
 
 $$P(E \cap F) = P(E)P(F)$$
+Quindi, nel caso in cui $E$ ed $F$ siano due eventi indipendenti, $$P(E \vert F) = \frac{P(E)P(F)}{P(F)} = P(E)$$
 
 --------------------------------------------------------------
 
@@ -124,10 +125,19 @@ $$F_X(x) = P(X \leq x) = \sum_{a \leq X}P(X = a) = \sum_{a \leq X}p_X(a)$$
 Data la variabile aleatoria discreta $X$ su $\{x_1, x_2, ..., x_n\}$ e $p_X$ come funzione di massa di probabilità, si definisce _valore atteso_ la quantità
 
 $$E(X) = \sum_{i}x_{i}p(x_{i}) = \sum_{i}x_{i}P(X = x_{i})$$
+Il valore atteso gode di diverse proprietà, tra cui la **linearità**, infatti $E[aX + b] = aE[X] +b$ e $E[\sum_{i = 1}^{k}X_{i}] = \sum_{i = 1}^{k}E[X_{i}]$.<br />
+La dimostrazione della prima proprietà si deriva dalla definizione di valore atteso $$E[aX + b] = \sum_{i = 1}^{n}(ax_{i}+b)p(x_{i}) = \sum_{i = 1}^{n}ax_{i}p(x_{i}) + \sum_{i=1}^{n}bp(x_{i}) =
+$$$$ = aE[X] + b\cdot 1 = aE[X] + b$$
+La dimostrazione della seconda proprietà si deriva anch'essa dalla definizione di valore atteso:
+$$E[X_{1} + X_{2}] = \sum_{i =1}^{n}\sum_{j = 1}^{m}(x_{1}^{i} + x_{2}^{j})p_{1}^{i}p_{2}^{j} =$$
+$$= \sum_{i}\sum_{j} x_{1}^{i}p_{1}^{i}p_{2}^{j} + \sum_{i}\sum_{j} x_{2}^{j}p_{1}^{i}p_{2}^{j} = $$
+$$= \sum_{i}x_{1}^{i}p_{1}^{i}\sum_{j}p_{2}^{j} + \sum_{j}x_{2}^{j}p_{2}^{j}\sum_{i}p_{1}^{i} = = \sum_{i}x_{1}^{i}p_{1}^{i}\cdot 1 + \sum_{j}x_{2}^{j}p_{2}^{j}\cdot 1 =$$
+$$= E[X_{1}] + E[X_{2}]$$
+La dimostrazione vale anche per $k>2$.
 
---------------------------------------------------------------
+---------------------------------------------------------------
 
-#### Varianza  di una Variabile Aleatoria Discreta ####
+#### Varianza di una Variabile Aleatoria Discreta ####
 Si consideri la variabile aleatoria $X$ ed il suo valore atteso $E(X) = \mu$. Se si considera $\vert X - \mu \vert$, si sta operando con una nuova variabile aleatoria della quale è possibile calcolare il valore atteso
 
 $$E(\vert X - \mu \vert)$$
@@ -140,7 +150,11 @@ Questo nuovo valore prende il nome di _varianza_ e viene indicata con $\sigma^2_
 
 $$Var(X) = E(X^2 -2\mu X + \mu^2) = E(X^2) -2\mu E(X) + \mu^2 = E(X^2) -2\mu^2 + \mu^2 = E(X^2) -\mu^2 = E(X^2) - E(X)^2$$
 
+La varianza fornisce una misura della variabilità dei valori assunti dalla variabile stessa; nello specifico, la misura di quanto essi si discostino quadraticamente rispettivamente dalla media aritmetica o dal valore atteso $E[X]$.<br />
 La varianza ha la stessa unità di misura della variabile aleatoria elevata al quadrato.
+
+La varianza **non** è un operatore lineare. Infatti:
+$$Var[aX + b] = a^{2}Var[X]$$
 
 --------------------------------------------------------------
 #### Deviazione Standard ####
@@ -153,7 +167,7 @@ $$\sigma_{x} = \sqrt{Var(X)}$$
 #### Variabile Aleatoria Multivariata ####
 Si ragioni in termini di coppie di variabili aleatorie $X$, $Y$.<br />
 - _Funzione di ripartizione congiunta_: $F_{XY}(x, y) = P(X \leq x \wedge Y \leq y)$
--  _Funzione di massa di probabilità_: $P_{XY}(x, y) = P(X = x \wedge Y = y)$
+-  _Funzione di massa di probabilità congiunta_: $P_{XY}(x, y) = P(X = x \wedge Y = y)$
 
 Le variabili $X$ e $Y$ sono indipendenti se, per ogni coppia di insiemi $C \subseteq \mathbb{R}$, $D \subseteq \mathbb{R}$, vale la seguente proprietà:
 $$P[X \in C, Y \in D] = P[X \in C] \cdot P[Y \in D]$$
@@ -165,7 +179,8 @@ $$Cov(X, Y) = E((X -\mu_{x})(Y - \mu_{y}))$$
 
 $$Cov(X, Y) = E(XY -\mu_{x}Y -\mu_{y}X + \mu_{x}\mu_{y}) = E(XY) -E(X)E(Y)$$
 
-Nel caso in cui le variabili aleatorie $X$, $Y$ fossero indipendenti, avremmo che il valore atteso del loro prodotto è il prodotto dei valori attesi $E(XY) = E(X)E(Y)$. Ma allora, la covarianza di due variabili aleatorie indipendenti è 0.<br />
+La covarianza di due variabili aleatorie è un valore numerico che fornisce una misura di quanto le due varino assieme, ovvero della loro dipendenza.<br />
+Nel caso in cui le variabili aleatorie $X$, $Y$ fossero indipendenti, avremmo infatti che il valore atteso del loro prodotto è il prodotto dei valori attesi $E(XY) = E(X)E(Y)$. Quindi, la covarianza di due variabili aleatorie indipendenti è 0.<br />
 
 $$Cov(X, Y) = E(XY) -E(X)E(Y) = E(X)E(Y) - E(X)E(Y) = 0$$
 
@@ -179,8 +194,7 @@ $$\rho_{X, Y} = \frac{Cov(X, Y)}{\sigma_{X}\sigma_{Y}}$$
 #### Variabile Aleatoria Continua ####
 Una variabile aleatoria X è detta _continua_ se
 1) $$f_{x} : R \rightarrow R+$$
-$\forall B \subseteq R$
-2) $$P(X \in B) = \int_{B} f_{X}(x)dx$$
+2) $$\forall B \subseteq R \qquad P(X \in B) = \int_{B} f_{X}(x)dx$$
 --------------------------------------------------------------
 
 #### Densità di Probabilità ####
@@ -190,7 +204,7 @@ o, in maniera equivalente $$\frac{dF(x)}{dx} = f(x)$$
 --------------------------------------------------------------
 
 #### Valore Atteso di una Variabile Aleatoria Continua ####
-$$E(X) = \int_{-\infty}^{+\infty}f_{X}(x)dx$$
+$$E(X) = \int_{-\infty}^{+\infty}x \cdot f_{X}(x)dx$$
 
 --------------------------------------------------------------
 
