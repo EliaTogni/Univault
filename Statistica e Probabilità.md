@@ -249,10 +249,28 @@ $$P\Bigg[\frac{(X-\mu)^2}{\sigma} \geq k\sigma\Bigg] \leq \frac{1}{k^2}$$
 --------------------------------------------------------------
 
 #### Legge Debole dei Grandi Numeri ####
-Definita una sequenza di variabili aleatorie indipendenti ed identicamente distribuite $X_{1}, X_{2}, ..., X_{n}$ aventi valore atteso $\mu$. Allora, per qualsiasi $\epsilon > 0$
+Definita una sequenza di variabili aleatorie indipendenti ed identicamente distribuite $X_{1}, X_{2}, ..., X_{n}$ aventi valore atteso $\mu$ e varianza $\sigma$. Allora, $\forall\epsilon > 0$
 $$P\Bigg[\Bigg\vert \frac{\sum_{i = 1}^{n}X_{i}}{n} -\mu \Bigg\vert > \epsilon\Bigg] \rightarrow 0 \text{ 
  per } n \rightarrow \infty $$
-
+Dimostrazione:
+Si definisce una variabile aleatoria di supporto $$Y = \frac{\sum_{i=1}^{n}X_{i}}{n}$$
+$$E[Y] = E\Bigg[\frac{\sum_{i=1}^{n}X_{i}}{n}\Bigg] = \frac{1}{n} \cdot \sum_{i=1}^{n}E[X_{i}] =\frac{1}{n}\cdot n\mu = \mu$$
+Si osservi ora la varianza
+$$Var[Y] = Var\Bigg[\frac{\sum_{i=1}^{n}X_{i}}{n}\Bigg] = \frac{1}{n^2}Var\Big[\sum_{i=1}^{n}X_{i}\Big] = \frac{1}{n^2}\sum_{i=1}^{n}Var[X_{i}] =$$
+$$= \frac{n \cdot \sigma_{X}^2}{n^2} = \frac{\sigma_X^{2}}{n}$$
+$$\sigma_{Y}^{2} = \frac{\sigma_X^{2}}{n}$$
+Si osservi ora la probabilità
+$$P[\vert Y -\mu \vert \geq k\sigma_{Y}]$$
+Si è nello stesso setting della disuguaglianza di Chebyshev. Allora
+$$P[\vert Y -\mu \vert \geq k\sigma_{Y}] \leq \frac{1}{k^2} = P\Bigg[\vert Y -\mu \vert \geq k \sqrt{\frac{\sigma_{X}^2}{n}}\Bigg] \leq \frac{1}{k^2}$$
+Si scelga allora una costante $\epsilon$ 
+$$\epsilon = k \sqrt{\frac{\sigma_{X}^2}{n}} \quad \text{ e } \quad k = \frac{\epsilon}{\sqrt{\frac{\sigma_{X}^2}{n}}}$$
+Quindi
+$$\frac{1}{k^2} = \frac{\sigma_{X}^2}{n} \cdot \frac{1}{\epsilon^2}$$
+In conclusione
+$$P\Bigg[\bigg\vert \frac{\sum_{i=1}^{n}X_i}{n} -\mu \Bigg \vert\ \geq \epsilon \Bigg] \leq \frac{\sigma_{X}^2}{n\epsilon^2}$$
+Per $n \rightarrow \infty$, il secondo membro della disequazione tende a $0$. Così volevasi dimostrare.<br />
+In contesti pratici, $n$ non sarà mai infinito. Fissando $n$ ed $\epsilon$, si è in grado di ottenere un upper bound per la probabilità di avere un errore consistente. 
 
 --------------------------------------------------------------
 

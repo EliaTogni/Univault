@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Statistica e Probabilità.md",
+            "file": "Simulation.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Statistica e Probabilità.md",
+                "file": "Simulation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,6 +89,7 @@
   },
   "active": "8012e8cef8114dc7",
   "lastOpenFiles": [
+    "Statistica e Probabilità.md",
     "Simulation.md",
     "Discrete Events Simulation.md",
     "The Game of Life.md",
@@ -97,7 +98,6 @@
     "Agent-Based Simulation.md",
     "Sicurezza dei Sistemi e delle Reti.md",
     "Address Resolution Protocol.md",
-    "3D Video Games.md",
-    "Analisi Prescrittiva.md"
+    "3D Video Games.md"
   ]
 }

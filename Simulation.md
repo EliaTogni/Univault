@@ -193,6 +193,8 @@ pharmacy(480, 32, 10, 4)
 
 ### Ripasso di [[Statistica e Probabilità]] ###
 
+---------------------------------------------------------------
+
 ###  Generazione di Numeri Randomici ###
 
 La definizione di random descrive l'avvenimento di un evento dovuto al caso piuttosto che ad un motivo programmato.<br />
