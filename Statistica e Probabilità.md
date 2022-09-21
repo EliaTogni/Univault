@@ -221,7 +221,7 @@ $$P(X \geq a) \leq \frac{E(x)}{a}$$
 Scegliendo valori di $a$ sempre maggiori, la probabilità che $X$ sia maggiore di $a$ diminuisce.<br />
 
 Dimostrazione:<br />
-si definisce una nuova variabile aleatoria $$Y = \left\{ \begin{array}{rcl}  
+si definisce una nuova variabile aleatoria di supporto $$Y = \left\{ \begin{array}{rcl}  
 a & \mbox{if}  
 & X\geq a \\ 0 & \mbox{if} & X<a
 \end{array}\right.$$
@@ -232,18 +232,32 @@ Quindi $$E[X] \geq aP[X\geq a] \quad = \quad P(X \geq a) \leq \frac{E(x)}{a}$$
 --------------------------------------------------------------
 
 #### Disuguaglianza di Chebyshev ####
-Presa una variabile aleatoria $X$ di valore atteso $E(X) = \mu$ e $Var(X) = \sigma^2$, allora $\forall r > 0$:
+Presa una variabile aleatoria $X$ di valore atteso $E(X) = \mu$ e $Var(X) = \sigma^2$, allora $\forall k > 0$:
 
-$$P(\vert X - \mu \vert \geq r) \leq \frac{\sigma^2}{r^2}$$
+$$P(\vert X - \mu \vert \geq k) \leq \frac{\sigma^2}{k^2}$$
 
 L’importanza di queste due disequazioni risiede nel fatto che ci consentono di avere stime della probabilità a partire dal valore atteso o dall’unione del valore atteso con la varianza.<br />
 
+Dimostrazione:<br />
+Si definisce una variabile aleatoria di supporto $$Y = \frac{(X -\mu)^2}{\sigma^2}$$
+Si osserva che $E[Y] = \frac{E[(X-\mu)^2]}{\sigma^2}$ in quanto il valore atteso è un operatore lineare.<br />
+Ma $E[(X-\mu)^2]$ è la definizione di varianza $Var[Y]$. Di conseguenza,$E[Y] = 1$.<br />
+Si consideri ora $P[Y \geq k^2]$. E' possibile applicare la disuguaglianza di Markov. $$P[Y \geq k^2] \leq \frac{E[Y]}{k^2} = \frac{1}{k^2}$$
+$$P\Bigg[\frac{(X-\mu)^2}{\sigma^2} \geq k^2\Bigg] \leq \frac{1}{k^2}$$
+
+$$P\Bigg[\frac{(X-\mu)^2}{\sigma} \geq k\sigma\Bigg] \leq \frac{1}{k^2}$$
 --------------------------------------------------------------
 
 #### Legge Debole dei Grandi Numeri ####
-
+Definita una sequenza di variabili aleatorie indipendenti ed identicamente distribuite $X_{1}, X_{2}, ..., X_{n}$ aventi valore atteso $\mu$. Allora, per qualsiasi $\epsilon > 0$
+$$P\Bigg[\Bigg\vert \frac{\sum_{i = 1}^{n}X_{i}}{n} -\mu \Bigg\vert > \epsilon\Bigg] \rightarrow 0 \text{ 
+ per } n \rightarrow \infty $$
 
 
 --------------------------------------------------------------
 
 #### Legge Forte dei Grandi Numeri ####
+Definita una sequenza di variabili aleatorie indipendenti ed identicamente distribuite $X_{1}, X_{2}, ..., X_{n}$ aventi valore atteso $\mu$. Allora
+$$\lim_{n\to\infty} \frac{\sum_{i=1}^{n}X_{i}}{n} = \mu \quad \text{ con probabilità } 1$$
+
+---------------------------------------------------------------
