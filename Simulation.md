@@ -197,24 +197,21 @@ pharmacy(480, 32, 10, 4)
 
 ###  Generazione di Numeri Randomici ###
 
-La definizione di random descrive l'avvenimento di un evento dovuto al caso piuttosto che ad un motivo programmato.<br />
-Secondo Von Neumann, è impossibile produrre una cifra randomica usando metodi aritmetici.<br />
-Infatti, la produzione di numeri attraverso calcolatore appare randomica ma, in realtà, non lo è. Il calcolatore agisce in maniera puramente deterministica, nonostante l'apparenza possa far pensare ad un comportamente casuale.<br />
+La definizione di **Random** descrive l'avvenimento di un evento dovuto al caso piuttosto che ad una causa deterministica.<br />
+E' noto che i calcolatori sono puramente deterministici. Infatti, secondo Von Neumann, è impossibile produrre una cifra casuale usando metodi aritmetici.<br />
+Infatti, la produzione di numeri attraverso calcolatore appare randomica ma, in realtà, non lo è. Il calcolatore agisce in maniera puramente deterministica, nonostante l'apparenza mascheri questo modo di agire, facendo pensare ad un comportamente casuale della macchina.<br />
 
 Si distingue, quindi, in due categorie:
 - **Randomicità genuina**, cioè quella che è possibile osservare nel mondo;
 - **Randomicità artificiale**, o **pseudorandomicità**, cioè quella che è possibile simulare tramite computer.
 
-------------------------------------------------------------
-
 La prima idea di algoritmi generatori di numeri pseudorandomici è il **Von Neumann's Middle Square Generator**.<br />
 L'algoritmo suggerisce di:
-- prendere un numero (**seed**);
+- selezionare un numero (**seed**);
 - calcolarne il quadrato;
-- memorizzare le cifre centrali come "numero randomico";
+- memorizzare le cifre centrali come numero randomico;
 - usare questo numero randomico come seed per le iterazioni seguenti.
 
-Questo algoritmo ha una debolezza. Se viene scelto il numero $0$ come seed, anche tutti i seed successivi generati a partire da quello scelto saranno $0$.<br />
 
 ``` python
 def middle_square_generator(seed = 1461, n = 1):
@@ -233,9 +230,8 @@ def middle_square_generator(seed = 1461, n = 1):
 
 ```
 
-
-
-------------------------------------------------------------
+Questo algoritmo ha una debolezza (oltre al fatto che la scelta del seed è deterministica ed il procedimento è puramente deterministico): se viene scelto il numero $0$ come seed, anche tutti i seed successivi generati a partire da quello scelto saranno $0$.<br />
+Inoltre, può accadere che i numeri generati dall'algoritmo inizino a ripetersi ciclicamente.<br />
 
 La seconda idea di algoritmi generatori è il  **Congruential Generator**.<br />
 L'algoritmo suggerisce di:
