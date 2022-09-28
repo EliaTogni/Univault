@@ -78,3 +78,21 @@ Le due discipline collimano nell'**Automated Deduction**, ovvero richiedere al c
 	6) Herbrand's Theory
 	7) Lifted Resolution, unification
 	8) Refutational Completness of Lifted Resolution
+3) Final remarks
+	1) Semidecidability of FO logic (Church's Theorem)
+	2) Peano's Arithmetich
+	3) Godel first incompleteness theoreme
+
+
+Homework: if it rains, I take my umbrella
+it is the same thing as
+it says the same as
+
+1) if it does not rain, I do not take umbrella
+2) if I do not take my umbrella, then it does not rain
+3) if i take the umbrella, then it rains
+4) either it does not rain or i take the umbrella (or inclusive)
+5) it rains only if I take umbrella
+6) it rains if I take the umbrella
+7) it rains if and only if I take the umbrella
+8) none of the above
