@@ -124,7 +124,7 @@ $$F_X(x) = P(X \leq x) = \sum_{a \leq X}P(X = a) = \sum_{a \leq X}p_X(a)$$
 
 Data la variabile aleatoria discreta $X$ su $\{x_1, x_2, ..., x_n\}$ e $p_X$ come funzione di massa di probabilità, si definisce _valore atteso_ la quantità
 
-$$E(X) = \sum_{i}x_{i}p(x_{i}) = \sum_{i}x_{i}P(X = x_{i})$$
+$$E[X] = \sum_{i}x_{i}p(x_{i}) = \sum_{i}x_{i}P(X = x_{i})$$
 Il valore atteso gode di diverse proprietà, tra cui la **linearità**, infatti $E[aX + b] = aE[X] +b$ e $E[\sum_{i = 1}^{k}X_{i}] = \sum_{i = 1}^{k}E[X_{i}]$.<br />
 La dimostrazione della prima proprietà si deriva dalla definizione di valore atteso $$E[aX + b] = \sum_{i = 1}^{n}(ax_{i}+b)p(x_{i}) = \sum_{i = 1}^{n}ax_{i}p(x_{i}) + \sum_{i=1}^{n}bp(x_{i}) =
 $$$$ = aE[X] + b\cdot 1 = aE[X] + b$$
@@ -138,17 +138,17 @@ La dimostrazione vale anche per $k>2$.
 ---------------------------------------------------------------
 
 #### Varianza di una Variabile Aleatoria Discreta ####
-Si consideri la variabile aleatoria $X$ ed il suo valore atteso $E(X) = \mu$. Se si considera $\vert X - \mu \vert$, si sta operando con una nuova variabile aleatoria della quale è possibile calcolare il valore atteso
+Si consideri la variabile aleatoria $X$ ed il suo valore atteso $E[X] = \mu$. Se si considera $\vert X - \mu \vert$, si sta operando con una nuova variabile aleatoria della quale è possibile calcolare il valore atteso
 
-$$E(\vert X - \mu \vert)$$
+$$E[\vert X - \mu \vert]$$
 
 Per togliere il valore assoluto ed operare esclusivamente con valori positivi, si eleva al quadrato, ottenendo:
 
-$$E((X - \mu)^2)$$
+$$E[(X - \mu)^2]$$
 
 Questo nuovo valore prende il nome di _varianza_ e viene indicata con $\sigma^2_X$
 
-$$Var(X) = E(X^2 -2\mu X + \mu^2) = E(X^2) -2\mu E(X) + \mu^2 = E(X^2) -2\mu^2 + \mu^2 = E(X^2) -\mu^2 = E(X^2) - E(X)^2$$
+$$Var[X] = E[X^2 -2\mu X + \mu^2] = E[X^2] -2\mu E[X] + \mu^2 = E[X^2] -2\mu^2 + \mu^2 = E[X^2] -\mu^2 = E[X^2] - E[X]^2$$
 
 La varianza fornisce una misura della variabilità dei valori assunti dalla variabile stessa; nello specifico, la misura di quanto essi si discostino quadraticamente rispettivamente dalla media aritmetica o dal valore atteso $E[X]$.<br />
 La varianza ha la stessa unità di misura della variabile aleatoria elevata al quadrato.
@@ -160,7 +160,7 @@ $$Var[aX + b] = a^{2}Var[X]$$
 #### Deviazione Standard ####
 Se fosse necessaria una statistica che mantenga l'unità di misura della variabile aleatoria, si utilizza la _deviazione standard_, calcolata come:
 
-$$\sigma_{x} = \sqrt{Var(X)}$$
+$$\sigma_{x} = \sqrt{Var[X]}$$
 
 --------------------------------------------------------------
 
@@ -170,19 +170,18 @@ Si ragioni in termini di coppie di variabili aleatorie $X$, $Y$.<br />
 -  _Funzione di massa di probabilità congiunta_: $P_{XY}(x, y) = P(X = x \wedge Y = y)$
 
 Le variabili $X$ e $Y$ sono indipendenti se, per ogni coppia di insiemi $C \subseteq \mathbb{R}$, $D \subseteq \mathbb{R}$, vale la seguente proprietà:
-$$P[X \in C, Y \in D] = P[X \in C] \cdot P[Y \in D]$$
+$$P(X \in C, Y \in D) = P(X \in C) \cdot P(Y \in D)$$
 
 #### Covarianza ####
-Date due variabili aleatorie $X$, $Y$ e ponendo $\mu_{x} = E(X)$ e $\mu_{y} = E(Y)$, si definisce _covarianza_ la quantità
+Date due variabili aleatorie $X$, $Y$ e ponendo $\mu_{x} = E[X]$ e $\mu_{y} = E[Y]$, si definisce _covarianza_ la quantità
 
-$$Cov(X, Y) = E((X -\mu_{x})(Y - \mu_{y}))$$
-
-$$Cov(X, Y) = E(XY -\mu_{x}Y -\mu_{y}X + \mu_{x}\mu_{y}) = E(XY) -E(X)E(Y)$$
+$$Cov(X, Y) = E[(X -\mu_{x})(Y - \mu_{y})]$$
+$$Cov(X, Y) = E[XY -\mu_{x}Y -\mu_{y}X + \mu_{x}\mu_{y}] = E[XY] -E[X]E[Y]$$
 
 La covarianza di due variabili aleatorie è un valore numerico che fornisce una misura di quanto le due varino assieme, ovvero della loro dipendenza.<br />
-Nel caso in cui le variabili aleatorie $X$, $Y$ fossero indipendenti, avremmo infatti che il valore atteso del loro prodotto è il prodotto dei valori attesi $E(XY) = E(X)E(Y)$. Quindi, la covarianza di due variabili aleatorie indipendenti è 0.<br />
+Nel caso in cui le variabili aleatorie $X$, $Y$ fossero indipendenti, avremmo infatti che il valore atteso del loro prodotto è il prodotto dei valori attesi $E[XY] = E[X]E[Y]$. Quindi, la covarianza di due variabili aleatorie indipendenti è 0.<br />
 
-$$Cov(X, Y) = E(XY) -E(X)E(Y) = E(X)E(Y) - E(X)E(Y) = 0$$
+$$Cov(X, Y) = E[XY] -E[X]E[Y] = E[X]E[Y] - E[X]E[Y] = 0$$
 
 --------------------------------------------------------------
 
@@ -205,19 +204,19 @@ o, in maniera equivalente $$\frac{dF(x)}{dx} = f(x)$$
 --------------------------------------------------------------
 
 #### Valore Atteso di una Variabile Aleatoria Continua ####
-$$E(X) = \int_{-\infty}^{+\infty}x \cdot f_{X}(x)dx$$
+$$E[X] = \int_{-\infty}^{+\infty}x \cdot f_{X}(x)dx$$
 
 --------------------------------------------------------------
 
 #### Varianza di una Variabile Aleatoria Continua ####
-$$Var(X) = E((X -\mu_{X})^2)$$
+$$Var(X) = E[(X -\mu_{X})^2]$$
 
 --------------------------------------------------------------
 
 #### Disuguaglianza di Markov ####
 Supponendo $X \geq 0$, allora $\forall a > 0$ si ha:
 
-$$P(X \geq a) \leq \frac{E(x)}{a}$$
+$$P(X \geq a) \leq \frac{E[X]}{a}$$
 Scegliendo valori di $a$ sempre maggiori, la probabilità che $X$ sia maggiore di $a$ diminuisce.<br />
 
 Dimostrazione:<br />
@@ -226,13 +225,13 @@ a & \mbox{if}
 & X\geq a \\ 0 & \mbox{if} & X<a
 \end{array}\right.$$
 Si osserva che per $X \geq Y$, $E[X] \geq E[Y]$.<br />
-Inoltre, si osserva che $$E[Y] = a \cdot P[X\geq a] + 0 \cdot P[X < a]$$
-Quindi $$E[X] \geq aP[X\geq a] \quad = \quad P(X \geq a) \leq \frac{E(x)}{a}$$
+Inoltre, si osserva che $$E[Y] = a \cdot P(X\geq a) + 0 \cdot P(X < a)$$
+Quindi $$E[X] \geq aP(X\geq a) \quad = \quad P(X \geq a) \leq \frac{E[X]}{a}$$
 
 --------------------------------------------------------------
 
 #### Disuguaglianza di Chebyshev ####
-Presa una variabile aleatoria $X$ di valore atteso $E(X) = \mu$ e $Var(X) = \sigma^2$, allora $\forall k > 0$:
+Presa una variabile aleatoria $X$ di valore atteso $E[X] = \mu$ e $Var[X] = \sigma^2$, allora $\forall k > 0$:
 
 $$P(\vert X - \mu \vert \geq k) \leq \frac{\sigma^2}{k^2}$$
 
@@ -242,15 +241,15 @@ Dimostrazione:<br />
 Si definisce una variabile aleatoria di supporto $$Y = \frac{(X -\mu)^2}{\sigma^2}$$
 Si osserva che $E[Y] = \frac{E[(X-\mu)^2]}{\sigma^2}$ in quanto il valore atteso è un operatore lineare.<br />
 Ma $E[(X-\mu)^2]$ è la definizione di varianza $Var[Y]$. Di conseguenza,$E[Y] = 1$.<br />
-Si consideri ora $P[Y \geq k^2]$. E' possibile applicare la disuguaglianza di Markov. $$P[Y \geq k^2] \leq \frac{E[Y]}{k^2} = \frac{1}{k^2}$$
-$$P\Bigg[\frac{(X-\mu)^2}{\sigma^2} \geq k^2\Bigg] \leq \frac{1}{k^2}$$
+Si consideri ora $P[Y \geq k^2]$. E' possibile applicare la disuguaglianza di Markov. $$P(Y \geq k^2) \leq \frac{E[Y]}{k^2} = \frac{1}{k^2}$$
+$$P\Bigg(\frac{(X-\mu)^2}{\sigma^2} \geq k^2\Bigg) \leq \frac{1}{k^2}$$
 
-$$P\Bigg[\frac{(X-\mu)^2}{\sigma} \geq k\sigma\Bigg] \leq \frac{1}{k^2}$$
+$$P\Bigg(\frac{(X-\mu)^2}{\sigma} \geq k\sigma\Bigg) \leq \frac{1}{k^2}$$
 --------------------------------------------------------------
 
 #### Legge Debole dei Grandi Numeri ####
 Definita una sequenza di variabili aleatorie indipendenti ed identicamente distribuite $X_{1}, X_{2}, ..., X_{n}$ aventi valore atteso $\mu$ e varianza $\sigma$. Allora, $\forall\epsilon > 0$
-$$P\Bigg[\Bigg\vert \frac{\sum_{i = 1}^{n}X_{i}}{n} -\mu \Bigg\vert > \epsilon\Bigg] \rightarrow 0 \text{ 
+$$P\Bigg(\Bigg\vert \frac{\sum_{i = 1}^{n}X_{i}}{n} -\mu \Bigg\vert > \epsilon\Bigg) \rightarrow 0 \text{ 
  per } n \rightarrow \infty $$
 Dimostrazione:
 Si definisce una variabile aleatoria di supporto $$Y = \frac{\sum_{i=1}^{n}X_{i}}{n}$$
@@ -260,15 +259,15 @@ $$Var[Y] = Var\Bigg[\frac{\sum_{i=1}^{n}X_{i}}{n}\Bigg] = \frac{1}{n^2}Var\Big[\
 $$= \frac{n \cdot \sigma_{X}^2}{n^2} = \frac{\sigma_X^{2}}{n}$$
 $$\sigma_{Y}^{2} = \frac{\sigma_X^{2}}{n}$$
 Si osservi ora la probabilità
-$$P[\vert Y -\mu \vert \geq k\sigma_{Y}]$$
+$$P(\vert Y -\mu \vert \geq k\sigma_{Y})$$
 Si è nello stesso setting della disuguaglianza di Chebyshev. Allora
-$$P[\vert Y -\mu \vert \geq k\sigma_{Y}] \leq \frac{1}{k^2} = P\Bigg[\vert Y -\mu \vert \geq k \sqrt{\frac{\sigma_{X}^2}{n}}\Bigg] \leq \frac{1}{k^2}$$
+$$P(\vert Y -\mu \vert \geq k\sigma_{Y}) \leq \frac{1}{k^2} = P\Bigg(\vert Y -\mu \vert \geq k \sqrt{\frac{\sigma_{X}^2}{n}}\Bigg) \leq \frac{1}{k^2}$$
 Si scelga allora una costante $\epsilon$ 
 $$\epsilon = k \sqrt{\frac{\sigma_{X}^2}{n}} \quad \text{ e } \quad k = \frac{\epsilon}{\sqrt{\frac{\sigma_{X}^2}{n}}}$$
 Quindi
 $$\frac{1}{k^2} = \frac{\sigma_{X}^2}{n} \cdot \frac{1}{\epsilon^2}$$
 In conclusione
-$$P\Bigg[\bigg\vert \frac{\sum_{i=1}^{n}X_i}{n} -\mu \Bigg \vert\ \geq \epsilon \Bigg] \leq \frac{\sigma_{X}^2}{n\epsilon^2}$$
+$$P\Bigg(\bigg\vert \frac{\sum_{i=1}^{n}X_i}{n} -\mu \Bigg \vert\ \geq \epsilon \Bigg) \leq \frac{\sigma_{X}^2}{n\epsilon^2}$$
 Per $n \rightarrow \infty$, il secondo membro della disequazione tende a $0$. Così volevasi dimostrare.<br />
 In contesti pratici, $n$ non sarà mai infinito. Fissando $n$ ed $\epsilon$, si è in grado di ottenere un upper bound per la probabilità di avere un errore consistente. 
 

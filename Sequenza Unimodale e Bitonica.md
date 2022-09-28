@@ -3,7 +3,7 @@ $$\exists\text{ } k \text{ tale che } A[1]>A[2]>...>A[k]< A[k+1]<...<A[n]$$
 oppure
 $$A[1]<A[2]<...<A[k]>A[k+1]>...>A[n]$$
 
-Una sequenza è, invece detta **BITONICA** quando può essere trasformata in una [[Sequenza Unimodale]] mediante una permutazione ciclica di se stessa.<br />
+Una sequenza è, invece detta **BITONICA** quando può essere trasformata in una sequenza unimodale mediante una permutazione ciclica di se stessa.<br />
 A è bitonica se e solo se $\exists$ una permutazione ciclica di $A$ tale per cui mi dà una sequenza unimodale:<br />
 $j \text{ tale che } A[j], .., A[n], A[1], ..., A[j-1] \text{ sia unimodale}$
 

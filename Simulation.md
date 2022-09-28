@@ -230,29 +230,59 @@ def middle_square_generator(seed = 1461, n = 1):
 
 ```
 
-Questo algoritmo ha una debolezza (oltre al fatto che la scelta del seed è deterministica ed il procedimento è puramente deterministico): se viene scelto il numero $0$ come seed, anche tutti i seed successivi generati a partire da quello scelto saranno $0$.<br />
+Questo algoritmo ha una debolezza (oltre al fatto che la scelta del seed è deterministica ed il comportamento del calcolatore è il risultato dell'esecuzione di un programma e, a maggior ragione, è deterministico): se viene scelto il numero $0$ come seed, anche tutti i seed successivi generati a partire da quello scelto saranno $0$.<br />
+
 Inoltre, può accadere che i numeri generati dall'algoritmo inizino a ripetersi ciclicamente.<br />
 
-La seconda idea di algoritmi generatori è il  **Congruential Generator**.<br />
+La seconda idea di algoritmi generatori è il **Congruential Generator**.<br />
 L'algoritmo suggerisce di:
 - scegliere tre parametri, $a$, $c$ e $m$, e un seed $s$.<br />
 - calcolare $x_{0} = s; \qquad x_{i+1} = (a \cdot x_{i} + c) \text{ mod } m$
 
-Anche questo algoritmo ha una debolezza. Infatti, la sequenza prodotta tende a diventare ciclica dopo un numero fissato di iterazioni.<br />
-Il parametro chiave di questi generatori è $m$, il quale definisce il periodo dell'iterazione.
+Anche questo algoritmo ha una debolezza. Infatti, la sequenza prodotta tende a diventare ciclica dopo un numero fissato di iterazioni (oppure con una pessima scelta di parametri come, ad esempio, $a = 1$, $c = 0$ e $m$ libero.<br />
+E' possibile, però, fissare dei parametri in modo tale da avere un **periodo completo**, dove con periodo si intende l'avere un massimo numero di step nella sequenza dopo le quali la sequenza inizia a ripetersi.<br />
+Il periodo del generatore è il parametro chiave, $m$.<br />
+Sono stati formulati diversi criteri per la scelta dei parametri:
+- **Knuth, 1981**: un generatore congruente misto ha periodo completo per tutti i valori scelti come seed se e solo se:
+	- $m$ e $c$ sono primi tra di loro;
+	- $a-1$ è divisibile per tutti i fattori primi di $m$;
+	- $a-1$ è divisibile per $4$ se $m$ è divisibile per $4$.
+- **Ripley, 1987**: un generatore congruente ha periodo $m-1$
+	- solo se $m$ è primo;
+	- quando $m-1$ è primo, il periodo è un divisore di $m-1$ ed è precisamente $m-1$ quando $a$ è una radice primitiva di $m$ ($a \neq 0$ e $a^{(m-1)p}$ non congruente ad $1$ modulo $m$ per ogni fattore primo $p$ di $m-1$ ) .
+- **Park and Miller, 1988**: quando $m$ è il **numero primo di Mersenne**, $2^{31}-1$, uno delle sue radici primitive è $a = 7^{5}$, perciò la relazione ricorrente $x_{i+1} = 7^{5}x_{i} \text{ mod } 2^{31}-1$ avrà periodo completo.
 
-Avere un periodo abbastanza lungo è sufficiente?<br />
+L'obiettivo successivo è produrre numeri randomici composti sempre dallo stesso numero di bit. Si può utilizzare il criterio di Park and Miller per ottenere il risultato desiderato.
 
-
-------------------------------------------------------------
-
-### Ripley Test ###
+Avere un periodo ampio non è abbastanza per ottenere un generatore pseudo randomico. Infatti, se, ad esempio, il generatore ha un periodo completo ma aumenta il valore di un'unità ad ogni iterazione, sarà tutt'altro che randomico.<br />
+La **predicibilità** è, quindi, un ulteriore fattore che determina la bontà del generatore. Meno un generatore è predicibile da parte dell'utente, meglio è.<br />
+E' possibile progettare un test che permetta di valutare la predicibilità di un generatore? 
+- **Ripley Test**: questo test considera il vettore di valori generati e il vettore ottenuto shiftando il precedente di una posizione. Per valutare la bontà, si può considerare la correlazione tra gli elementi dei due vettori nella stessa posizione ma questa analisi non è in grado di cogliere eventuali legami tra i due vettori. Si può quindi procedere a verificare la correlazione tra il vettore iniziale con tutti i possibili vettori ottenuti dagli shift del vettore iniziale.
 
 ```python
 def ripley_test(v):
 	w = v[1:len(v)]
 	w.append(v[0])
-	plt.scatter(v, w)
-				
+	plt.scatter(v, w)	
 ```
+
+---------------------------------------------------------------
+
+Si osservi ora la forma di una funzione di densità di probabilità e di una funzione di ripartizione (o di distribuzione cumulativa) per una variabile aleatoria uniformemente distribuita.
+
+immagine 1h26'32''
+
+Dai valori ottenuti, si vuole fare reverse engineering e costruire la funzione di ripartizione associata alla variabile aleatoria. Questa viene definita **Funzione di Ripartizione Empirica**.
+
+```python
+def empirical_cdf():
+	return lambda x: sum( map( lambda y: y <= x, v)) / len(v)
+```
+
+Il **Test della Funzione di Ripartizione Empirica** è un ulteriore test, oltre al Ripley Test, per la valutazione della randomicità.<br />
+Si osservino i numeri all'interno di una sequenza generata da un algoritmo ma si pretenda che essi provengano dall'osservazione di una variabile aleatoria la quale segue una distribuzione di probabilità discreta.<br />
+Di conseguenza, questa variabile possiederà una funzione di massa di probabilità ed una funzione di densità di probabilità associata.
+Si costruisca la funzione che assomigli questa funzione di ripartizione cumulativa senza conoscere $X$ ma avendo soltanto alcuni valori della sequenza, ovvero la funzione di ripartizione empirica.<br />
+
+
 
