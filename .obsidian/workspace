@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Simulation.md",
+            "file": "Logica Matematica.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Simulation.md",
+                "file": "Logica Matematica.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,15 +89,15 @@
   },
   "active": "8012e8cef8114dc7",
   "lastOpenFiles": [
-    "Statistica e Probabilità.md",
     "Simulation.md",
+    "Logica Matematica.md",
+    "Algoritmi Paralleli e Distribuiti.md",
+    "Statistica e Probabilità.md",
     "Working Tree.md",
     "Vettore.md",
     "Versore.md",
     "Version Control System.md",
     "Threshold Logic Unit.md",
-    "The Game of Life.md",
-    "Teoria della Complessità Computazionale.md",
-    "Teorema di Wyllie.md"
+    "The Game of Life.md"
   ]
 }

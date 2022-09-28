@@ -258,6 +258,8 @@ Avere un periodo ampio non è abbastanza per ottenere un generatore pseudo rando
 La **predicibilità** è, quindi, un ulteriore fattore che determina la bontà del generatore. Meno un generatore è predicibile da parte dell'utente, meglio è.<br />
 E' possibile progettare un test che permetta di valutare la predicibilità di un generatore? 
 - **Ripley Test**: questo test considera il vettore di valori generati e il vettore ottenuto shiftando il precedente di una posizione. Per valutare la bontà, si può considerare la correlazione tra gli elementi dei due vettori nella stessa posizione ma questa analisi non è in grado di cogliere eventuali legami tra i due vettori. Si può quindi procedere a verificare la correlazione tra il vettore iniziale con tutti i possibili vettori ottenuti dagli shift del vettore iniziale.
+  Tests of “randomness” and methods of edge-correction for spatial point patterns are surveyed. The asymptotic distribution theory and power of tests based on the nearest-neighbour distances and estimates of the variance function are investigated.
+
 
 ```python
 def ripley_test(v):
@@ -282,7 +284,7 @@ def empirical_cdf():
 Il **Test della Funzione di Ripartizione Empirica** è un ulteriore test, oltre al Ripley Test, per la valutazione della randomicità.<br />
 Si osservino i numeri all'interno di una sequenza generata da un algoritmo ma si pretenda che essi provengano dall'osservazione di una variabile aleatoria la quale segue una distribuzione di probabilità discreta.<br />
 Di conseguenza, questa variabile possiederà una funzione di massa di probabilità ed una funzione di densità di probabilità associata.
-Si costruisca la funzione che assomigli questa funzione di ripartizione cumulativa senza conoscere $X$ ma avendo soltanto alcuni valori della sequenza, ovvero la funzione di ripartizione empirica.<br />
+Si costruisce, quindi, la funzione che assomigli questa funzione di ripartizione cumulativa senza conoscere $X$ ma avendo soltanto alcuni valori della sequenza, ovvero la funzione di ripartizione empirica.<br />
+La funzione banalmente conta quanti valori della sequenza $v$ sono minori o uguali di $x$. 
 
-
-
+time 43m
