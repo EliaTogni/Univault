@@ -1,2 +1,3 @@
-il **Boot Sector**, o **Settore di Avvio**, è la parte di un disco utilizzata per avviare il sistema o montare un disco.<br />
+# Boot Sector #
+Il **Boot Sector**, o **Settore di Avvio**, è la parte di un disco utilizzata per avviare il sistema o montare un disco.<br />
 Il codice in quel settore viene eseguito quando il sistema "vede" il disco per la prima volta.

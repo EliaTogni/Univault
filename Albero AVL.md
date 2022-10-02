@@ -1,3 +1,4 @@
+# Albero AVL #
 Un **Albero AVL** o **Albero Binario di Ricerca Bilanciato** è una [[Struttura Dati]] basata su un [[Albero]] la quale garantisce un tempo di ricerca logaritmico.<br />
 Pur partendo da un albero bilanciato, a fronte di inserimenti e cancellazioni, il bilanciamento dell'albero potrebbe perdersi e, con l'aumentare del numero di operazioni effettuate, le prestazioni degraderebbero.<br />
 E' quindi opportuno mantenere il bilanciamento anche quando si inseriscono o si cancellano elementi.<br />

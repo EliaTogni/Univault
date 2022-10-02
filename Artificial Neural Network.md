@@ -1,3 +1,4 @@
+# Artificial Neural Network #
 Le **Artificial Neural Network** sono sistemi di information processing, i cui principi di struttura e azione sono ispirati dal sistema nervoso e dal cervello di animali e umani.<br />
 Esse consistono di un largo numero di unità relativamente semplici, i [[Neuroni]], i quali lavorano in parallelo. Questi neuroni comunicano mandando informazioni tra di loro sotto forma di segnali di attivazione, lungo connessioni orientate.<br />
 Un sinonimo comunemente usato per le reti neurali è il termine **modello connessionista**. Perciò, l'espressione "processing distribuito in parallelo" può spesso essere trovata in relazione alle reti neurali artificiali.<br />
@@ -85,8 +86,9 @@ Per quanto riguarda le funzioni linearmente separabili tuttavia, cioè per funzi
 Tutti gli esempi considerati finora si riferiscono a funzioni logiche nelle quali lo stato $false$ era codificato come 0 e lo stato $true$ era codificato come 1. Comunque, questa codifica ha lo svantaggio che, nel caso di input $false$, il peso corrispondente non può essere modificato, perchè la formula per la modifica del peso contiene l'input come fattore. Per evitare questo problema, si utilizza il [[Modello ADALINE]].<br />
 Nonostante la procedura di Widrow-Hoff è ugualmente applicabile per la codifica $false$ = 0, questa situazione è spesso chiamata **procedura di correzione dell'errore**, per evitare confusione. 
 
-### Modello generale di reti neurali ###
+---------------------------------------------------------------
 
+### Modello generale di reti neurali ###
 Si introduce un modello generale di reti neurali artificiali che cattura tutte le casistiche particolari.<br />
 Il metodo con il quale sono state rappresentate le reti suggerisce di descrivere le reti neurali tramite un [[Grafo]].<br />
 Per descrivere reti neurali, si necessita esclusivamente di grafi orientati, poichè le connessioni tra i neuroni sono sempre orientate.
@@ -119,8 +121,9 @@ In accordo con la **network structure**, si possono distinguere due tipi fondame
 
 Se il grafo è aciclico, esiste una sola direzione, chiamata **forward**, dai neuroni input verso i neuroni output. Tuttavia, se esistono loops o cicli orientati, gli output possono tornare verso i neuroni input. 
 
-### Operazioni delle reti neurali ###
+---------------------------------------------------------------
 
+### Operazioni delle reti neurali ###
 Per descrivere le operazioni di una rete neurale, è necessario specificare come un singolo neurone calcola i propri output a partire dagli input e come è organizzata la computazione da parte dei differenti neuroni, in particolare come gli input esterni vengono processati ed in quale ordine i neuroni vengono aggiornati.<br />
 Ogni singolo neurone può essere considerato come un semplice processore.
 
@@ -148,16 +151,17 @@ Per esempio, tutti i neuroni di un network possono ricomputare il proprio output
 Per quanto riguarda le reti feed forward, le computazioni solitamente seguono l'[[Ordinamento Topologico]].<br />
 Per le recurrent network, l'output finale dipende dall'ordine nel quale i neuroni ricomputano l'output e da quante ricomputazioni sono state eseguite. 
 
-### Training di neural network ###
+---------------------------------------------------------------
 
+### Training di neural network ###
 Una delle proprietà più allettanti delle reti neurali è la possibilità di allenrale per certe task con l'aiuto di sample di dati.<br />
 Nonostante la Delta Rule sia solamente applicabile per singole Threshold Logic Unit e non può essere trasferita direttamente a reti di TLU, illustra già il principio base sul quale consiste il training di reti neurali. L'allenamento consiste nell'adattare i pwesi delle connessioni e, possibilmente, altri parametri, ad esempio la soglia, in modo che un certo criterio sia ottimizzato.
 In base al tipo di training data e al criterio da ottimizzare, è possibile distinguere tra due **learning task** fondamentali:
 - [[Learning Task Fissata]];
 - [[Learning Task Libera]].
 
-### Learning Task Fissata ###
 
+### Learning Task Fissata ###
 Data una Learning Task Fissata, l'obiettivo è allenare una rete neurale in modo che produca, per tutti i training pattern $l \in L_{fixed}$, gli output contenuti nel vettore di output $\textbf{o}^{(l)}$ se gli input esterni del corrispondente vettore di input $\textbf{i}^{(l)}$ sono dati in pasto al network.<br />
 Nella pratica, questo ottimo può essere ottenuto raramente e, perciò, spesso si rende necessario accontentarsi di una soluzione parziale o approssimata.<br />
 Al fine di determinare con quale bontà una rete neurale risolve una learning task fissata, viene utilizzata una funzione di errore, la quale misura quanto l'output ottenuto coincide con l'output desiderato nel training pattern.

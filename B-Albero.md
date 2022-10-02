@@ -1,3 +1,4 @@
+# B-Albero #
 Il **B-Albero** è una [[Struttura Dati]] basata su un [[Albero]] nata per minimizzare il numero di letture e scritture su memoria esterna dato l'elevato tempo richiesto per l'accesso.<br />
 
 Sia $t$ un intero fissato $\geq 2$, detto _grado minimo_ e tipicamente scelto in modo proporzionale alla dimensione $B$ di un blocco.<br />

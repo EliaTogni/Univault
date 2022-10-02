@@ -1,3 +1,4 @@
+# Funzione Hash #
 Una **Funzione Hash** è una funzione $h:U \rightarrow {0, ..., m-1}$, la quale trasforma chiavi in indici di una tavola.<br />
 Si indicherà con il nome $tavola hash$ una tavola indicizzata tramite funzioni hash.<br />
 
@@ -10,7 +11,6 @@ Se, nel [[Dizionario]], vengono a trovarsi simultaneamente chiavi con lo stesso 
 --------------------------------------------------------------
 
 ### Uniformità Semplice ###
-
 Sia:
 $$Q(i) = \sum_{k:h(k) = 1} P(k)$$
 
@@ -25,7 +25,6 @@ Un metodo semplice per definire una funzione di hash è il **Metodo della Divisi
 --------------------------------------------------------------
 
 ### Risoluzione delle Collisioni ###
-
 Per risolvere la problematica delle _collisioni_, cioè quando due diversi input producono lo stesso output tramite una funzione hash, esistono diverse tecniche:
 - **Liste di collisione**: questo metodo consiste nell'associare ad ogni cella della tavola hash una lista di chiavi, detta _lista di collisione_ piuttosto che una singola chiave. In questo modo, se due chiavi collidono sulla stessa, verranno entrambe a trovarsi nella lista di collisione di quella cella.<br />Per verificare se una chiave $k$ è presente nel [[Dizionario]], si dovrà quindi cercarla nella lista di collisione della cella con indice $h(k)$.<br />Se si usa una funzione hash che gode dell'uniformità semplice, il tempo necessario per rispondere mediante ricerca sequenziale ad una operazione di ricerca sarà, in media, $T_{avg}(n, m) = O(1 + \frac{n}{m})$.<br />Usando le liste di collisione è possibile avere fattori di carico $\alpha > 1$ ed una stessa chiave può occorrere più volte nel dizionario.<br />
 - **Indirizzamento Aperto**: la tecnica dell'_indirizzamento aperto_ mantiene tutte le chiavi nelle celle della tavola, per cui si ha $n \leq m$ ed $\alpha \leq 1$.<br />Si supponga di voler inserire una chiave $k$ e che la sua posizione originale $h(k)$ sia già occupata. L'indirizzamento aperto consiste nell'occupare un'altra cella vuota, anche se essa potrebbe spettare di diritto ad un altra chiave. Esistono diverse tecniche di indirizzamento aperto:
@@ -37,7 +36,6 @@ Per risolvere la problematica delle _collisioni_, cioè quando due diversi input
 --------------------------------------------------------------
 
 ### Analisi del Costo di Scansione ###
-
 Sebbene, usando l'indirizzamento aperto, la scansione per la ricerca di un elemento o di una cella vuota possa richiedere tempo $O(n)$ nel caso peggiore, nel caso medio la situazione migliora:
 
 ![[CostoDiScansione.png]]

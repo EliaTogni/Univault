@@ -1,9 +1,22 @@
-## Logica Matematica ##
+# Logica Matematica ##
+**Username**: elia.togni
+**Password**: 435345
+**Registrazioni**: https://aguzzoli.di.unimi.it/mlrec/
+**Esame**: orale (inizia con esercizi scritti facili (45 min) e successivamente domande (1h)) oppure tesi/ricerca su un topic.
 
-**Username**:
-Password**:
-Registrazioni: /mlrec
-Esame: orale (inizia con esercizi scritti facili (45 min) e successivamente domande (1h)) oppure tesi/ricerca su un topic.
+---------------------------------------------------------------
+## Prerequisiti ##
+### Linguaggi Proposizionali ###
+Con il termine **enunciato** si intende una qualsiasi proposizione per la quale sia sensato chiedersi se sia vera o falsa.<br />
+Si definisce poi un **enunciato semplice** o **enunciato atomico** se un enunciato non contiene nessun'altro enunciato come sua parte propria. Si definisce invece un **enunciato composto** se un enunciato contiene altri enunciati, cioè se è possibile scomporlo in enunciati più semplici.<br />
+
+Le parole _e_, _o_, _se...allora_, _non_, _ma_ sono chiamate **connettivi**. I connettivi permettono di ottenere enunciati da altri enunciati, cioè permettono di ottenere enunciati composti mediante enunciati più semplici.<br />
+Si consideri l'enunciato _Piove e c'è vento_. Assegnando all'enunciato atomico _piove_ la lettera $p$, all'enunciato atomico _C'è vento_ la lettera $q$ e indicando con il carattere $\wedge$ il connettivo _e_, è possibile associare all'enunciato _Piove e c'è vento_ un'espressione formale del tipo $p \wedge q$. L'espressione $p \wedge q$ è un esempio di **formula**.<br />
+Le formule costituiscono la rappresentazione in un linguaggio artificiale del contenuto concettuale degli enunciati del linguaggio naturale.
+
+Un **Linguaggio Proposizionale** _L_ è semplicemente un insieme i cui elementi si dicono **Lettere Proposizionali** e vengono indicati con i caratteri $p$, $q$, $r$, ...<br />
+Utilizzando gli elementi di _L_, le parentesi (, ) ed i caratteri relativi ai connettivi proposizionali $\wedge$, $\vee$, $\rightarrow$, $\neg$, si è in grado di scrivere tutte le possibili stringhe di simboli.<br />
+
 
 ---------------------------------------------------------------
 Every man is mortal.<br />
@@ -24,20 +37,15 @@ Di nuovo, la linea di ragionamento è corretta anche senza avere consapevolezza 
 La conclusione è corretta se accettiamo le premesse, indipendentemente dal significato.<br />
 Ora è necessario formalizzare questa struttura:
 
-$$\forall x \quad f(x) \rightarrow Q(x)$$
-$$f(s)$$
----------------------------------------------------------------
-
-$$Q(s)$$
+$$\cases{\forall x \quad f(x) \rightarrow Q(x) \cr \cr f(s) \cr 
+ \cr \hdashline \cr Q(s) }$$
 
 Every flower is perfumed.<br />
 The rose is perfumed.<br />
 Therefore, the rose is a flower.<br />
 
 Ogni proposizione è corretta (nel nostro mondo) ma la linea di pensiero è errata.
-$$\forall x \quad f(x) \rightarrow Q(x)$$
-$$Q(s)$$
-$$f(s)$$
+$$\cases{\forall x \quad f(x) \rightarrow Q(x) \cr \cr Q(s) \cr \cr \hdashline \cr f(s)}$$
 La conclusione ed una delle premesse sono state scambiate.
 
 ---------------------------------------------------------------
@@ -83,10 +91,11 @@ Le due discipline collimano nell'**Automated Deduction**, ovvero richiedere al c
 	2) Peano's Arithmetich
 	3) Godel first incompleteness theoreme
 
+---------------------------------------------------------------
 
-Homework: if it rains, I take my umbrella
-it is the same thing as
-it says the same as
+If it rains, I take my umbrella
+	it is the same thing as
+	it says the same as
 
 1) if it does not rain, I do not take umbrella
 2) if I do not take my umbrella, then it does not rain
@@ -96,3 +105,13 @@ it says the same as
 6) it rains if I take the umbrella
 7) it rains if and only if I take the umbrella
 8) none of the above
+
+if A, then B
+
+1) if NOT A, then NOT B
+2) if NOT B, then NOT A
+3) if B, then A
+4) NOT A or B
+5) A only if B
+6) A if B
+7) A if and only if B

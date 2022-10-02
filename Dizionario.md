@@ -1,3 +1,4 @@
+# Dizionario #
 Un **Dizionario** è una collezione di elementi a cui sono associate chiavi prese da un dominio totalmente ordinato.<br />
 Operazioni tipiche su un dizionario sono _inserimento_, _cancellazione_ e _ricerca_.<br />
 
@@ -9,7 +10,6 @@ Si assuma che agli elementi nel dizionario siano associate chiavi distinte. Una 
 --------------------------------------------------------------
 
 #### Fattore di carico ####
-
 Il **Fattore di carico** è il rapporto $a = \frac{n}{m}$ tra il numero $n$ di elementi memorizzati nella tavola e la sua dimensione $m$.<br />
 
 --------------------------------------------------------------

@@ -1,3 +1,4 @@
+# Albero di Decisione #
 Un **Albero di Decisione** è una [[Struttura Dati]] derivata da un [[Albero]]. Relativamente ad algoritmi di ordinamento, viene visto come la dinamica dell'[[Algoritmo]] di ordinamento che si basa sui confronti. Infatti, un algoritmo di ordinamento basato sui confronti, durante l'esecuzione, produce un albero di decisione o, meglio, un cammino all'interno di un albero di decisione.<br />
 Dati un algoritmo generico$A$, il quale ordina ricorrendo a confronti, ed un valore $n$, il quale rappresenta il numero di elementi da ordinare, si definisce un _Albero di Decisione_ un albero che illustra le diverse sequenze di confronti che $A$ potrebbe fare su istanze di dimensione $n$. 
 

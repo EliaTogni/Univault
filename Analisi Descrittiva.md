@@ -1,3 +1,4 @@
+# Analisi Descrittiva #
 L'**Analisi Descrittiva** sintetizza o descrive i dati grezzi e crea un risultato interpretabile dagli esseri umani.<br />
 Creare un **Modello Descrittivo** significa scegliere un sistema nel mondo reale da analizzare, per poi produrre una rappresentazione formale di esso.
 Nello specifico vengono analizzati gli eventi passati, dove per eventi passati ci si riferisce a qualsiasi punto del tempo in cui si è verificato un evento.<br />

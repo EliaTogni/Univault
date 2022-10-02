@@ -1,3 +1,4 @@
+# Counting Sort #
 **CountingSort** è un [[Algoritmo]] sequenziale di ordinamento su un input di $n$ valori. In questo algoritmo si assume che $n$ sia una potenza di $2$ per semplicità di calcolo e si assume che tutti gli elementi siano diversi tra loro.<br />
 
 L'algoritmo conteggia i confronti che coinvolgono le celle dell'array $M$ e, in particolare, riesce ad stabilire che la posizione finale del contenuto della cella generica $M[i]$ è la generica posizione $k$ $\leftrightarrow$ gli elementi $\leq M[i] \text{ in } M$ sono in numero pari a $k$. <br />

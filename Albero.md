@@ -1,3 +1,4 @@
+# Albero #
 Un **Albero** (radicato) è una coppia $T = (N, A)$ costituita da un insieme $N$ di _nodi_ e da un insieme $A \subseteq N \times N$ di coppie di nodi, dette _archi_.<br />
 In un albero, ogni nodo $v$ (tranne il nodo _radice_) ha un solo nodo _genitore_ (o _padre_) $u$ tale che $(u, v) \in A$.<br />
 Un nodo $u$ può avere zero o più figli $v$ tali che $(u, v) \in A$, ed il  loro numero viene chiamato _grado_ del nodo.<br />

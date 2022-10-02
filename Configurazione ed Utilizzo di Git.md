@@ -1,3 +1,4 @@
+# Configurazione ed Utilizzo di Git #
 Related to: [[Git]]
 
 ### Inizializzazione di una repository in una directory esistente ###
@@ -21,7 +22,6 @@ git config --global core.editor emacs/vim
 --------------------------------------------------------------
 
 ### Creazione di un nuovo controllo versione di un file esistente ###
-
 ```git
 	git add nomefile.ext
 ```
@@ -33,7 +33,6 @@ git config --global core.editor emacs/vim
 --------------------------------------------------------------
 
 ### Collegamento di una repository Git ad una repository Github ###
-
 ```git
 	git remote add origin LINK
 
@@ -43,7 +42,6 @@ git config --global core.editor emacs/vim
 --------------------------------------------------------------
 
 ### Clonazione di una repository esistente ###
-
 ```git
 git clone [url]
 ```
@@ -77,7 +75,6 @@ In questo esempio il file README non è tracciato, cioè Git viede un file che n
 --------------------------------------------------------------
 
 ### Tracciare nuovi file ###
-
 ```git
 git add README
 ```
@@ -99,7 +96,6 @@ Changes to be committed:
 --------------------------------------------------------------
 
 ### Staging di file modificati ###
-
 Supponiamo di modificare un file già tracciato. Osservando lo status, si avrà:
 
 ```console
@@ -133,7 +129,6 @@ Changes to be committed:
 --------------------------------------------------------------
 
 ### Commit di modifiche ###
-
 Ora che la staging area è pronta, è possibile committare le modifiche con il comando:
 ```git
 git commit

@@ -1,3 +1,4 @@
+# Computational Intelligence #
 L'area di ricerca della **Computational Intelligence** comprende i concetti, i paradigmi, algoritmi e l'implementazione al fine di sviluppare sistemi che mostrino un comportamento intelligente in ambienti complessi.<br />
 Generalmente, sono adottati metodi sotto-simbolici e analoghi alla natura, i quali tollerano conoscenza incompleta, imprecisa o incerta.<br />
 Di conseguenza, gli approcci risultanti permettono di avere soluzioni robuste e efficienti in termini di risorse.<br />
