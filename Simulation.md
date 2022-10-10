@@ -239,6 +239,18 @@ L'algoritmo suggerisce di:
 - scegliere tre parametri, $a$, $c$ e $m$, e un seed $s$.<br />
 - calcolare $x_{0} = s; \qquad x_{i+1} = (a \cdot x_{i} + c) \text{ mod } m$
 
+```python
+def congruential_generator(seed)
+
+	if (n==1): return seed
+
+	curr_val = seed
+	v = list(range(n))
+	for i in range(n):
+		v[i] = curr_val
+		curr_val = (a * curr_val + )
+```
+
 Anche questo algoritmo ha una debolezza. Infatti, la sequenza prodotta tende a diventare ciclica dopo un numero fissato di iterazioni (oppure con una pessima scelta di parametri come, ad esempio, $a = 1$, $c = 0$ e $m$ libero.<br />
 E' possibile, però, fissare dei parametri in modo tale da avere un **periodo completo**, dove con periodo si intende l'avere un massimo numero di step nella sequenza dopo le quali la sequenza inizia a ripetersi.<br />
 Il periodo del generatore è il parametro chiave, $m$.<br />
@@ -259,6 +271,8 @@ La **predicibilità** è, quindi, un ulteriore fattore che determina la bontà d
 E' possibile progettare un test che permetta di valutare la predicibilità di un generatore? 
 - **Ripley Test**: questo test considera il vettore di valori generati e il vettore ottenuto shiftando il precedente di una posizione. Per valutare la bontà, si può considerare la correlazione tra gli elementi dei due vettori nella stessa posizione ma questa analisi non è in grado di cogliere eventuali legami tra i due vettori. Si può quindi procedere a verificare la correlazione tra il vettore iniziale con tutti i possibili vettori ottenuti dagli shift del vettore iniziale.
   Tests of “randomness” and methods of edge-correction for spatial point patterns are surveyed. The asymptotic distribution theory and power of tests based on the nearest-neighbour distances and estimates of the variance function are investigated.
+- **Funzione di distribuzione cumulativa empirica** (su sample $r$): <br />$ECDF(x) = \text{ }$ numero di elementi di $r$ aventi valore $\leq x$.$
+  Il **Teorema di Glivenko-Cantelli** sostiene che se $\hat{F}$ è stata calcolata usando un sample di dimensione $n$ estratto da una distribuzione la cui funzione di ripartizione è $F$, $\hat{F}$ converge in probabilità a $F$ con l'aumentare di $n$.
 
 
 ```python
@@ -277,14 +291,65 @@ immagine 1h26'32''
 Dai valori ottenuti, si vuole fare reverse engineering e costruire la funzione di ripartizione associata alla variabile aleatoria. Questa viene definita **Funzione di Ripartizione Empirica**.
 
 ```python
-def empirical_cdf():
-	return lambda x: sum( map( lambda y: y <= x, v)) / len(v)
+def build_ecdf(v):
+	return lambda x: sum( map( lambda el_v: el_v <= x, v)) / len(v)
 ```
 
 Il **Test della Funzione di Ripartizione Empirica** è un ulteriore test, oltre al Ripley Test, per la valutazione della randomicità.<br />
 Si osservino i numeri all'interno di una sequenza generata da un algoritmo ma si pretenda che essi provengano dall'osservazione di una variabile aleatoria la quale segue una distribuzione di probabilità discreta.<br />
 Di conseguenza, questa variabile possiederà una funzione di massa di probabilità ed una funzione di densità di probabilità associata.
-Si costruisce, quindi, la funzione che assomigli questa funzione di ripartizione cumulativa senza conoscere $X$ ma avendo soltanto alcuni valori della sequenza, ovvero la funzione di ripartizione empirica.<br />
-La funzione banalmente conta quanti valori della sequenza $v$ sono minori o uguali di $x$. 
+Si costruisca, quindi, la funzione che assomigli questa funzione di ripartizione cumulativa senza conoscere $X$ ma avendo soltanto alcuni valori della sequenza, ovvero la funzione di ripartizione empirica.<br />
+La funzione, banalmente, conta quanti valori della sequenza $v$ sono minori o uguali di $x$.
+```python
+def empirical_cdf(v, x):
+	count = 0
+	for i in range(len(v)):
+		if v[i] <= x:
+			count = count + 1
+	return (count / len(v))
+```
 
-time 43m
+---------------------------------------------------------------
+
+#### Shift Register Generator ####
+Un'alternativa per la generazione di numeri randomici è lo **Shift Register Generator**.<br />
+Le proprietà attese di un generatore random sono:
+- l'insieme dei valori pseudorandomici generati non può essere distinto da un semple analogo estratto da una distribuzione uniforme discreta nell'intervallo $\{0, ..., m-1\}$;
+- il periodo del generatore deve essere più ampio possibile;
+- l'implementazione del generatore deve essere efficiente (ad esempio, la scelta di $m = 2^{31} -1$ permette di codificarlo su $32$ bit).
+
+---------------------------------------------------------------
+
+## Metodo Montecarlo ##
+
+Si vuole computare (numericamente) il valore di $\pi$.<br />
+Si consideri un cerchio. La sua area è definita dalla formula $A = \pi \cdot r^{2}$. Quindi, è possibile calcolare $\pi = \frac{A}{r^{2}}$.<br />
+Si applica ora il **Metodo Montecarlo**. L'idea è di procedere numericamente ma con un approccio geometrico.
+
+immagine cerchio 1.27.30
+
+Si fissi il raggio del cerchio $r = 1$. Ora è solo necessario stimare l'area del quarto di cerchio per poter calcolare $\pi$.<br /> L'approccio Montecarlo consiste nel riempire il quadrato di punti. Alcuni di essi cadranno all'interno dell'area del cerchio, altri al di fuori (ma sempre all'interno dell'area del quadrato).<br />
+Si chiami l'area del quarto di cerchio $B$. E' possibile stimare $B$ dal numero di punti caduti all'interno di $B$ diviso il numero di punti totali generati $B = \frac{\text{numero di punti interni a } B}{\text{numero di punti totali}}$.<br />
+
+Il codice si basa sul generare coppie di valori, ciascuno dei quali estratto da una distribuzione uniforme.<br />
+Per scoprire se i punti così ottenuti ricadono all'interno dell'area del quarto di cerchio, basta porre la distanza euclidea del punto dall'origine del quadrante minore di $1$.
+
+```python
+def montecarlo_pi(iteration_number):
+
+	s = congruential_generator(iteration_number)
+	x = [s[i] / (2 ** 31 - 1) for i in range(iteration_number)]
+
+	t = congruential_generator(seed = 1432, iteration_number)
+	y = [t[i] / (2 ** 31 - 1) for i in range(iteration_number)]
+
+	#sqrt(x[i]^2 + y[i]^2) <= 1
+	#x[i]^2 + y[i]^2 <= 1
+
+	count = 0
+	for i in range(iteration_number)
+		if x[i] ** 2 + y[i] ** 2 <= 1.0:
+			count = count + 1
+
+	return (4 * count / iteration_number)
+```

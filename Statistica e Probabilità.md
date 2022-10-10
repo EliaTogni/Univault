@@ -278,3 +278,12 @@ Definita una sequenza di variabili aleatorie indipendenti ed identicamente distr
 $$\lim_{n\to\infty} \frac{\sum_{i=1}^{n}X_{i}}{n} = \mu \quad \text{ con probabilità } 1$$
 
 ---------------------------------------------------------------
+
+## Variabili Aleatorie ##
+### Variabile Aleatoria Bernoulliana ###
+Si tratta di una variabile aleatoria discreta che considera come valori possibili i valori nell'insieme ${0, 1}$.
+$$X = \left\{ \begin{array}{rcl}  
+1 & \mbox{con probabilità } & p\\ 0 & \mbox{con probabilità} & (1-p)
+\end{array}\right.$$
+Inoltre: $$E[X] = 1 \cdot p + 0\cdot (1-p) = p$$
+$$Var[X] = E[X^{2}] -(E[X])^{2} =(1^{2}\cdot p -0^{2}\cdot (1-p)) - p^{2} = p-p^{2} = p(1-p)$$
