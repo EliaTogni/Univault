@@ -66,13 +66,13 @@ Si analizzi ora il significato dei connettivi:
 ---------------------------------------------------------------
 
 ## Lezione 1 ##
-Every man is mortal.<br />
-Socrates is a man.<br />
-Therefore, Socrates is mortal.<br />
+Un primo modo per addentrarsi nelle tematiche della logica consiste nel porsi il problema della correttezza delle inferenze, ossia degli _schemi di ragionamento_.<br />
+Ad esempio, l'inferenza:
+$$\cases{\text{Ogni uomo è mortale.} \cr \cr \text{Socrate è un uomo.} \cr \cr \hline  \cr \text{perciò, Socrate è mortale.}}$$
+è corretta. Per dimostrarlo, si associ all'enunciato _Ogni uomo è mortale_, la lettera proposizionale $P$ e all'enunciato _Socrate è un uomo_ la lettera proposizionale $Q$:
+$$\cases{\forall x \quad P(x) \rightarrow Q(x) \cr \cr P(s) \cr \cr \hline  \cr Q(s)}$$
 
-All cats have 7 legs.<br />
-Bob is a cat.<br />
-Therefore, Bob has 7 legs.<br />
+$$\cases{\text{Tutti i gatti hanno 7 zampe.} \cr \cr \text{Bob è un gatto.} \cr \cr \hline  \cr \text{Bob ha sette zampe}.}$$
 
 Queste due sequenze di proposizioni seguono la stessa forma di ragionamento (e di formulazione) nonostante la premessa maggiore del secondo sillogismo sia falsa nel nostro mondo.<br />
 
