@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Simulation.md",
+            "file": "Logica Matematica.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Simulation.md",
+                "file": "Logica Matematica.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,15 +89,15 @@
   },
   "active": "8012e8cef8114dc7",
   "lastOpenFiles": [
+    "Sicurezza dei Sistemi e delle Reti.md",
     "Logica Matematica.md",
-    "L-.md",
     "Simulation.md",
+    "L-.md",
     "Statistica e Probabilità.md",
     "Algoritmi Paralleli e Distribuiti.md",
     "MAC Address.md",
     "Little Boy.md",
     "Learning Task Libera.md",
-    "Learning Task Fissata.md",
-    "Jupyter Notebook.md"
+    "Learning Task Fissata.md"
   ]
 }

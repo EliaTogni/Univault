@@ -240,15 +240,18 @@ L'algoritmo suggerisce di:
 - calcolare $x_{0} = s; \qquad x_{i+1} = (a \cdot x_{i} + c) \text{ mod } m$
 
 ```python
-def congruential_generator(seed)
+def congruential_generator(seed = 1, a= 7 ** 5, c=0, m=(2 ** 31 - 1), n=1):
 
-	if (n==1): return seed
+  if (n == 1): return(seed);
+  
+  curr_val = seed
+  v = list(range(n))
+  for i in range(n):
+    v[i] = curr_val;
+    curr_val = (a * curr_val + c) % m
+    
+  return(v)
 
-	curr_val = seed
-	v = list(range(n))
-	for i in range(n):
-		v[i] = curr_val
-		curr_val = (a * curr_val + )
 ```
 
 Anche questo algoritmo ha una debolezza. Infatti, la sequenza prodotta tende a diventare ciclica dopo un numero fissato di iterazioni (oppure con una pessima scelta di parametri come, ad esempio, $a = 1$, $c = 0$ e $m$ libero.<br />
@@ -270,8 +273,7 @@ Avere un periodo ampio non è abbastanza per ottenere un generatore pseudo rando
 La **predicibilità** è, quindi, un ulteriore fattore che determina la bontà del generatore. Meno un generatore è predicibile da parte dell'utente, meglio è.<br />
 E' possibile progettare un test che permetta di valutare la predicibilità di un generatore? 
 - **Ripley Test**: questo test considera il vettore di valori generati e il vettore ottenuto shiftando il precedente di una posizione. Per valutare la bontà, si può considerare la correlazione tra gli elementi dei due vettori nella stessa posizione ma questa analisi non è in grado di cogliere eventuali legami tra i due vettori. Si può quindi procedere a verificare la correlazione tra il vettore iniziale con tutti i possibili vettori ottenuti dagli shift del vettore iniziale.
-  Tests of “randomness” and methods of edge-correction for spatial point patterns are surveyed. The asymptotic distribution theory and power of tests based on the nearest-neighbour distances and estimates of the variance function are investigated.
-- **Funzione di distribuzione cumulativa empirica** (su sample $r$): <br />$ECDF(x) = \text{ }$ numero di elementi di $r$ aventi valore $\leq x$.$
+- **Funzione di distribuzione cumulativa empirica** (su sample $r$):<br />$ECDF(x) = \text{ }$ numero di elementi di $r$ aventi valore $\leq x$.
   Il **Teorema di Glivenko-Cantelli** sostiene che se $\hat{F}$ è stata calcolata usando un sample di dimensione $n$ estratto da una distribuzione la cui funzione di ripartizione è $F$, $\hat{F}$ converge in probabilità a $F$ con l'aumentare di $n$.
 
 

@@ -12,6 +12,7 @@ Con il termine **enunciato** si intende una qualsiasi proposizione per la quale 
 - Se piove, starò a casa;
 - $2+2 = 4$;
 - $2+2 = 5$.
+
 Si definisce poi un **enunciato semplice** o **enunciato atomico** se un enunciato non contiene nessun'altro enunciato come sua parte propria. Si definisce invece un **enunciato composto** se un enunciato contiene altri enunciati, cioè se è possibile scomporlo in enunciati più semplici.<br />
 
 Le parole _e_, _o_, _se...allora_, _non_, _ma_ sono chiamate **connettivi**. I connettivi permettono di ottenere enunciati da altri enunciati, cioè permettono di ottenere enunciati composti mediante enunciati più semplici.<br />
@@ -63,6 +64,8 @@ Si analizzi ora il significato dei connettivi:
 | F | F | T |
 
 ---------------------------------------------------------------
+
+## Lezione 1 ##
 Every man is mortal.<br />
 Socrates is a man.<br />
 Therefore, Socrates is mortal.<br />
@@ -82,14 +85,14 @@ La conclusione è corretta se accettiamo le premesse, indipendentemente dal sign
 Ora è necessario formalizzare questa struttura:
 
 $$\cases{\forall x \quad f(x) \rightarrow Q(x) \cr \cr f(s) \cr 
- \cr \hdashline \cr Q(s) }$$
+ \cr \hline \cr Q(s) }$$
 
 Every flower is perfumed.<br />
 The rose is perfumed.<br />
 Therefore, the rose is a flower.<br />
 
 Ogni proposizione è corretta (nel nostro mondo) ma la linea di pensiero è errata.
-$$\cases{\forall x \quad f(x) \rightarrow Q(x) \cr \cr Q(s) \cr \cr \hdashline \cr f(s)}$$
+$$\cases{\forall x \quad f(x) \rightarrow Q(x) \cr \cr Q(s) \cr \cr \hline  \cr f(s)}$$
 La conclusione ed una delle premesse sono state scambiate.
 
 ---------------------------------------------------------------
@@ -246,3 +249,10 @@ Esiste anche una definizione induttiva di $F_{L}$: $F_{L}$ è un insieme tale pe
 1) $L \subseteq F_{L}$;
 2) uguale a sopra;
 3) Nient'altro appartiene a $F_{L}$.
+
+---------------------------------------------------------------
+
+## Lezione 3 ##
+#### Dimostrazione del Structural Induction Principle ####
+Si definisca $I = \{F \in F_{L} : \rho \text{ è corretta per }F\}$.
+E' sufficiente mostrare
