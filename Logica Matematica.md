@@ -66,19 +66,17 @@ Si analizzi ora il significato dei connettivi:
 ---------------------------------------------------------------
 
 ## Lezione 1 ##
-Un primo modo per addentrarsi nelle tematiche della logica consiste nel porsi il problema della correttezza delle inferenze, ossia degli _schemi di ragionamento_.<br />
+Un primo modo per addentrarsi nelle tematiche della **Logica** consiste nel porsi il problema della correttezza delle inferenze, ossia degli **schemi di ragionamento**.<br />
 Ad esempio, l'inferenza:
-$$\cases{\text{Ogni uomo è mortale.} \cr \cr \text{Socrate è un uomo.} \cr \cr \hline  \cr \text{perciò, Socrate è mortale.}}$$
-è corretta. Per dimostrarlo, si associ all'enunciato _Ogni uomo è mortale_, la lettera proposizionale $P$ e all'enunciato _Socrate è un uomo_ la lettera proposizionale $Q$:
-$$\cases{\forall x \quad P(x) \rightarrow Q(x) \cr \cr P(s) \cr \cr \hline  \cr Q(s)}$$
-
+$$\cases{\text{Ogni uomo è mortale.} \cr \cr \text{Socrate è un uomo.} \cr \cr \hline  \cr \text{Perciò, Socrate è mortale.}}$$
+è corretta.
+Un altro esempio:
 $$\cases{\text{Tutti i gatti hanno 7 zampe.} \cr \cr \text{Bob è un gatto.} \cr \cr \hline  \cr \text{Bob ha sette zampe}.}$$
 
 Queste due sequenze di proposizioni seguono la stessa forma di ragionamento (e di formulazione) nonostante la premessa maggiore del secondo sillogismo sia falsa nel nostro mondo.<br />
 
-Every tove is durfish.<br />
-Sbroppo is a tove.<br />
-Therefore, Sbroppo is a durfish.<br />
+$$\cases{\text{Every tove is durfish.} \cr \cr \text{Sbroppo is a tove.} \cr \cr \hline \cr \text{Therefore, Sbroppo is a durfish.}}$$
+
 
 Di nuovo, la linea di ragionamento è corretta anche senza avere consapevolezza del significato delle parole utilizzate.<br />
 La conclusione è corretta se accettiamo le premesse, indipendentemente dal significato.<br />
@@ -86,20 +84,18 @@ Ora è necessario formalizzare questa struttura:
 
 $$\cases{\forall x \quad f(x) \rightarrow Q(x) \cr \cr f(s) \cr 
  \cr \hline \cr Q(s) }$$
-
-Every flower is perfumed.<br />
-The rose is perfumed.<br />
-Therefore, the rose is a flower.<br />
+Si consideri ora il seguente esempio:
+$$\cases{\text{Ogni fiore è profumato.} \cr \cr \text{La rosa è profumata.} \cr \cr \hline  \cr \text{Perciò, la rosa è un fiore.}}$$
 
 Ogni proposizione è corretta (nel nostro mondo) ma la linea di pensiero è errata.
 $$\cases{\forall x \quad f(x) \rightarrow Q(x) \cr \cr Q(s) \cr \cr \hline  \cr f(s)}$$
-La conclusione ed una delle premesse sono state scambiate.
+La conclusione ed una delle premesse sono state, infatti, scambiate.
 
 ---------------------------------------------------------------
 ### Motivazioni ###
 La disciplina è chiamata **Mathematical Logic** per due motivi che vanno in direzioni differenti:
-- la necessità di astrarre per riuscire a comprendere linee di pensiero. Con astrarre si intende il tralasciare tutte le informazioni irrilevanti da un punto di vista logico. Si deve considerare solo la **forma** dell'argomentazione, non il contenuto;<br />
-- perchè viene utilizzata per studiare e descrivere strutture definite matematicamente;
+- il primo motivo riguarda la necessità di astrarre per riuscire a comprendere linee di pensiero. Con astrarre si intende il tralasciare tutte le informazioni irrilevanti da un punto di vista logico. Si deve considerare solo la **forma** dell'argomentazione, non il contenuto;<br />
+- il secondo motivo riguarda l'utilizzo, infatti la logica matematica viene utilizzata per studiare e descrivere strutture definite matematicamente;
 
 In comune con l'esperienza di un Computer Scientist vi è l'utilizzo di un linguaggio formale, composto da due rami:
 - **Sintassi** utilizzata come tool per lo studio del ramo più rilevante;
@@ -112,46 +108,18 @@ Computer Science pone il focus su come la procedura debba essere implementata, s
 
 Le due discipline collimano nell'**Automated Deduction**, ovvero richiedere al calcolatore di svolgere le deduzioni.<br />
 
-1) Propositional Logic
-	1) Alphabet, connectives and formulae (Syntax);
-	2) Evaluations, Truth tables and design principles (truth-functionality and bivalence);
-	3) Tautology, contradiction, satisfiying formula;
-	4) Logical consequences;
-	5) Normal forms;
-	6) Complexity, soundness, completeness;
-	7) Compactness
-	8) Formal tecniques for implementing deduction (Natural deduction, sequent calculi, tableaus and axiomatic systems).
-	9) Refutational methods based on the principle of Resolution;
-	10) Davis Patman Procedures and DPLL;
-2)  Predicate logic (or First Order Logic)
-	1) Syntax (quantifiers, variables, predicates, symbols)
-	2) Semantics (Tarsky's L-Structures and models)
-	3) Logical consequences 
-	4) Soundness and Completness for first order calculus
-	5) Deduction techniques
-		1) Normal forms, ...
-	6) Herbrand's Theory
-	7) Lifted Resolution, unification
-	8) Refutational Completness of Lifted Resolution
-3) Final remarks
-	1) Semidecidability of FO logic (Church's Theorem)
-	2) Peano's Arithmetich
-	3) Godel first incompleteness theoreme
-
 ---------------------------------------------------------------
 
-If it rains, I take my umbrella
-	it is the same thing as
-	it says the same as
+_Se piove, prendo l'ombrello_ è equivalente a dire:
 
-1) if it does not rain, I do not take umbrella
-2) if I do not take my umbrella, then it does not rain $\checkmark$
-3) if i take the umbrella, then it rains
-4) either it does not rain or i take the umbrella (or inclusive) $\checkmark$
-5) it rains only if I take umbrella $\checkmark$
-6) it rains if I take the umbrella
-7) it rains if and only if I take the umbrella
-8) none of the above
+1) _Se non piove, non prendo l'ombrello_.
+2) _Se non prendo l'ombrello, allora non piove_. $\checkmark$
+3) _Se prendo l'ombrello, allora piove_.
+4) _Non piove oppure prendo l'ombrello_. $\checkmark$
+5) _Piove solo se prendo l'ombrello_ $\checkmark$
+6) _Piove se prendo l'ombrello_.
+7) _Piove se e solo se prendo l'ombrello_.
+8) Nessuna delle precedenti
 
 ---------------------------------------------------------------
 
@@ -159,7 +127,7 @@ If it rains, I take my umbrella
 Due proposizioni "dicono la stessa cosa" se sono vere nelle stesse circostanze o negli stessi **mondi** possibili o se hanno la stessa **valutazione di verità**.<br />
 
 If $P$, then $Q$.
-(immagine universo + insiemi)
+![[Implicazione.png]]
 $P \rightarrow Q$
 
 Esistono quattro classificazioni di mondi possibili in questo caso, corrispondenti alla tavola di verità dell'implicazione logica.
@@ -169,13 +137,16 @@ $P \rightarrow Q$ is true if every time that $p$ is true, then $q$ is true too.
 -------------------
 Si consideri $P \vee Q$ e un universo di infiniti possibili mondi:
 Di nuovo, si avranno quattro possibili classificazioni di mondi.
-- immagine mondi
+![[Unione.png]]
+
+Si consideri $P \wedge Q$:
+![[Intersezione.png]]
 
 Si consideri $P \oplus Q$:
-- immagine mondi
+![[XOR.png]]
 
 Ora si consideri $\neg P \vee Q$:
-- immagini mondi
+![[Implicazione2.png]]
 Questa proposizione e quella iniziale sono equivalenti in ogni mondo possibile.
 
 ---------------------------------------------------------------
@@ -195,8 +166,8 @@ In termini di significato, siamo interessanti a distinguere tra **Denotazione** 
 
 La denotazione è semplice da gestire perchè gode della proprietà di **Invarianza in seguito a sostituzioni**.<br />
 Si considerino due connotazioni differenti: 
-- 2 = (1+1)
-- 4 = 2^2 = (1+1)^2 = (1+1)^(1+1)
+- $2 = (1+1)$
+- $4 = 2^2 = (1+1)^2 = (1+1)^(1+1)$
 Ciascuna di queste connotazioni ha la stessa denotazione.
 
 Denotazione di enunciati:
@@ -254,5 +225,9 @@ Esiste anche una definizione induttiva di $F_{L}$: $F_{L}$ è un insieme tale pe
 
 ## Lezione 3 ##
 #### Dimostrazione del Structural Induction Principle ####
-Si definisca $I = \{F \in F_{L} : \rho \text{ è corretta per }F\}$.
-E' sufficiente mostrare
+Si definisca $I = \{F \in F_{L} : \rho \text{ è corretta per }F\}$.<br />
+E' sufficiente mostrare che $I \in F_{L}$.<br />
+Come si dimostra che due insiemi siano lo stesso insieme? E' necessaria un'inclusione bidirezionale:
+$$\cases{I \subseteq F_{L} \cr \cr F_{L} \subseteq I}$$
+La prima inclusione è vera per definizione di $I$.<br />
+Per dimostrare la seconda inclusione, si ricorda che $\rho$ gode della premessa e degli step. Quindi, per la premessa, $I$ soddisfa la condizione $L \subseteq$ F_{L}. 
