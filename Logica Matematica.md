@@ -94,17 +94,18 @@ La conclusione ed una delle premesse sono state, infatti, scambiate.
 ---------------------------------------------------------------
 ### Motivazioni ###
 La disciplina è chiamata **Mathematical Logic** per due motivi che vanno in direzioni differenti:
-- il primo motivo riguarda la necessità di astrarre per riuscire a comprendere linee di pensiero. Con astrarre si intende il tralasciare tutte le informazioni irrilevanti da un punto di vista logico. Si deve considerare solo la **forma** dell'argomentazione, non il contenuto;<br />
-- il secondo motivo riguarda l'utilizzo, infatti la logica matematica viene utilizzata per studiare e descrivere strutture definite matematicamente;
+- il primo motivo riguarda la necessità di astrarre per riuscire a comprendere le linee di pensiero. Con astrarre si intende il tralasciare tutte le informazioni irrilevanti da un punto di vista logico. Si deve considerare solo la **forma** dell'argomentazione, non il contenuto;<br />
+- il secondo motivo riguarda l'utilizzo, infatti la logica matematica viene utilizzata per studiare e descrivere strutture definite matematicamente.
 
-In comune con l'esperienza di un Computer Scientist vi è l'utilizzo di un linguaggio formale, composto da due rami:
-- **Sintassi** utilizzata come tool per lo studio del ramo più rilevante;
-- **Semantica**, il significato matematico connesso alla sintassi (ovvero insiemi, funzioni, relazioni e algebra);
- 
+In comune con l'esperienza di un Computer Scientist vi è l'utilizzo di un **Linguaggio Formale**, composto da due rami:
+- **Sintassi**, ovvero i termini da un punto di vista grammaticale;
+- **Semantica**, il significato connesso alla sintassi. Per essere formale, la semantica deve utilizzare termini matematici, ovvero insiemi, funzioni, relazioni e algebra;
+
+---------------------------------------------------------------
+
 _Computer Science is just logic implemented in electronics_.<br />
 
-La logica utilizza un approccio dichiarativo, mentre CS ha un approccio procedurale o imperativo (benchè questo non sia completamente vero).<br />
-Computer Science pone il focus su come la procedura debba essere implementata, sullo specificare l'algoritmo, mentre l'approccio dichiarativo pone il focus su cosa possa essere concluso, cioè su cosa possa  derivato dalle premesse iniziali.<br />
+La logica utilizza un approccio dichiarativo, mentre CS ha un approccio procedurale o imperativo (benchè questo non sia completamente vero). Con dichiarativo si intende porre il focus su cosa possa essere dedotto partendo da delle premesse date mentre con procedurale si intende porre il focus su come implementare una computazione.<br />
 
 Le due discipline collimano nell'**Automated Deduction**, ovvero richiedere al calcolatore di svolgere le deduzioni.<br />
 
