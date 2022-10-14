@@ -207,17 +207,26 @@ Fissato un linguaggio $L$, l'insieme di formule proposizionali su $L$, ($F_{L})$
 	- per ogni $p \in L$, $p \in F_{L}$;
 	- se $A$, $B \in F_{L}$, allora $(A \vee B)$, $(A \wedge B)$, $(A \rightarrow B)$, $(\neg A) \in F_{L}$.
 
-Si necessita di essere in grado di riconoscere quando un enunciato sia una formula e quando non lo sia.
+Una definizione equivalente è:<br />
+- $F_{Ł}$ è l'intersezione tra tutti gli insiemi $X$ tali che:
+	- $L \subseteq X$;
+	- se $A$, $B \in X$, allora $(A \vee B)$, $(A \wedge B)$, $(A \rightarrow B)$, $(\neg A) \in X$.
 
-Sia $w \in (L, \vee , \wedge , \rightarrow , \neg , \} , \bigcup L)\text{*}$ 
-un insieme di tutte le stringhe finite dell'alfabeto.<br />
+Un'ulteriore definizione equicalente è la definizione induttiva di $F_{L}$:
+- $F_{L} è l'insieme costruito in modo tale che soddisfi le seguenti proprietà:
+	- $L \in F_{Ł};
+	- se $A$, $B \in F_{L}$, allora $(A \vee B)$, $(A \wedge B)$, $(A \rightarrow B)$, $(\neg A) \in F_{L}$.
+	- Nient'altro appartiene a $F_{Ł}$.
+
+Si necessita di essere in grado di riconoscere quando un enunciato sia una formula e quando non lo sia.<br />
+Sia $w \in (L, \vee , \wedge , \rightarrow , \neg , \{, \} , \bigcup L)\text{*}$  un insieme di tutte le stringhe finite dell'alfabeto.<br />
 Si fornisce ora un primo esempio di **certificato**.<br />
-Una **$L$-Struttura** che mostri come $w \in F_{L}$ è una sequenza finita di stringhe $w_{1}, ..., w_{n}\quad \vert \quad (w_{i} \in F_{L})$ tale che:
-1) $w_{i} \in F_{L}$;
+Una **$L$-Struttura** che mostri come $w \in F_{L}$ è una sequenza finita di stringhe $w_{1}, ..., w_{u}\quad \vert \quad (w_{i} \in F_{L})$ tale che:
+1) $\forall i w_{i} \in F_{L}$;
 2) $w_{u} = w$;
-3)$\forall i, i = 1, ..., u$ o $w_{i} \in L$ oppure $\exists j \leq i \text{ tale che } \neg W_{i}$  oppure $\exists j, k \leq i \text{ tale che } w_{i} = (w_{j} \wedge w_{K})$ oppure $w_{i}=(w_{j} \vee w_{k})$ oppure $w_{i} = (w_{j} \rightarrow w_{k})$. 
+3)$\forall i, i = 1, ..., u$, $w_{i} \in L$ oppure $\exists j \leq i \text{ tale che } \neg W_{i}$  oppure $\exists j, k \leq i \text{ tale che } w_{i} = (w_{j} \wedge w_{K})$ oppure $w_{i}=(w_{j} \vee w_{k})$ oppure $w_{i} = (w_{j} \rightarrow w_{k})$. 
 
-Si fornisce ora una $L$-struttura la quale dimostri che $((p \wedge q) \rightarrow r) \in F_{L}
+Si fornisce ora una $L$-struttura la quale dimostri che $((p \wedge q) \rightarrow r) \in F_{L}$
 $$p, q, r, (p \wedge q), ((p \wedge q) \rightarrow r)$$
 ![[L-Struttura.png]]
 
