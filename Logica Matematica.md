@@ -113,27 +113,29 @@ Le due discipline collimano nell'**Automated Deduction**, ovvero richiedere al c
 
 _Se piove, prendo l'ombrello_ è equivalente a dire:
 
-1) _Se non piove, non prendo l'ombrello_.
+1) _Se non piove, non prendo l'ombrello_. $\times$
 2) _Se non prendo l'ombrello, allora non piove_. $\checkmark$
-3) _Se prendo l'ombrello, allora piove_.
+3) _Se prendo l'ombrello, allora piove_. $\times$
 4) _Non piove oppure prendo l'ombrello_. $\checkmark$
 5) _Piove solo se prendo l'ombrello_ $\checkmark$
-6) _Piove se prendo l'ombrello_.
-7) _Piove se e solo se prendo l'ombrello_.
-8) Nessuna delle precedenti
+6) _Piove se prendo l'ombrello_. $\times$
+7) _Piove se e solo se prendo l'ombrello_. $\times$
+8) Nessuna delle precedenti $\times$
 
 ---------------------------------------------------------------
 
 ## Lezione 2 ##
-Due proposizioni "dicono la stessa cosa" se sono vere nelle stesse circostanze o negli stessi **mondi** possibili o se hanno la stessa **valutazione di verità**.<br />
+Due enunciati "dicono la stessa cosa" se sono vere nelle stesse esatte circostanze (oppure negli stessi **mondi** possibili oppure se hanno la stessa **valutazione di verità**).<br />
+
+_Se piove allora prendo l'ombrello_ dopo aver astratto diventa _se $A$ allora $B$_.
 
 If $P$, then $Q$.
 ![[Implicazione.png]]
 $P \rightarrow Q$
 
-Esistono quattro classificazioni di mondi possibili in questo caso, corrispondenti alla tavola di verità dell'implicazione logica.
+Esistono quattro classificazioni di mondi possibili in questo caso, corrispondenti alla tavola di verità dell'implicazione logica. All'interno di ogni insieme sono compresi tutti i mondi nei quali è vero l'enunciato indicato dal nome dell'insieme.
 
-$P \rightarrow Q$ is true if every time that $p$ is true, then $q$ is true too.
+$P \rightarrow Q$ è vero se ogniqualvolta $p$ è vero, anche $q$ è vero.
 
 -------------------
 Si consideri $P \vee Q$ e un universo di infiniti possibili mondi:
@@ -152,24 +154,34 @@ Questa proposizione e quella iniziale sono equivalenti in ogni mondo possibile.
 
 ---------------------------------------------------------------
 
-It rains **only if** I take the umbrella. ($P\rightarrow Q$)
-It rains **if** I take the umbrella: $(P, \text{ if } Q) = (\text{ If } Q, P) =  (Q \rightarrow P)$
+Si valuti ora come intrerpretare **Solo se** all'interno di un enunciato.
+
+_Piove **solo se** prendo l'ombrello_. ($P\rightarrow Q$)
+_Piove se prendo l'ombrello_: $(P, \text{ if } Q) = (\text{ If } Q, P) =  (Q \rightarrow P)$
 
 Se $P \rightarrow Q = True$ , $P$ è condizione sufficiente affinchè $Q$ sia vera.<br />
 Se $P \rightarrow Q = True$ , Q è condizione necessaria affinchè $P$ sia vera.<br /> 
 
 ---------------------------------------------------------------
 ## Logica Proposizionale ##
-Un'**enunciato** nel linguaggio naturale è una sequenza di parole tale che abbia senso chiedersi in una qualsiasi circostanza data (o in qualsiasi mondo possibile) se sia vera o falsa.<br />
-In termini di significato, siamo interessanti a distinguere tra **Denotazione** e **Connotazione**.
-- **Denotazione di _E_**: _E_ è un nome (un puntatore), il quale si riferisce ad un oggetto unicamente determinato all'interno del discorso;
+Un **enunciato** nel linguaggio naturale è una sequenza di parole tale che abbia senso chiedersi in una qualsiasi circostanza  data (o in qualsiasi mondo possibile) se sia vera o falsa.<br />
+In termini di significato, siamo interessanti a distinguere tra **Denotazione** e **Connotazione**.<br />Definita un'espressione E:
+- **Denotazione di _E_**: _E_ è un nome (o un puntatore) il quale si riferisce ad un oggetto unicamente determinato all'interno del discorso.
 - **Connotazione di _E_**: si riferisce al totale contenuto informativo di _E_.
 
-La denotazione è semplice da gestire perchè gode della proprietà di **Invarianza in seguito a sostituzioni**.<br />
+Si considerino le seguenti espressioni:
+-  $4$;
+- $2^{2}$;
+- $pred(5)$;
+- $3+1$.
+
+Ciascuna di queste espressioni denota il numero naturale $4$ e sono tutte espressioni che descrivono modi **distinti** per ottenere il numero $4$.<br />
+La connotazione è complessa da gestire in termini di strumenti formali.
+La denotazione, invece, è semplice da gestire perchè gode della proprietà di **Invarianza in seguito a sostituzioni** (**Invariance under Substitutions Property**).<br />
 Si considerino due connotazioni differenti: 
 - $2 = (1+1)$
 - $4 = 2^2 = (1+1)^2 = (1+1)^(1+1)$
-Ciascuna di queste connotazioni ha la stessa denotazione.
+Ciascuna di queste connotazioni ha la stessa denotazione e, quindi, possono essere interscambiati all'interno di uno stesso enunciato.
 
 Denotazione di enunciati:
 $4 = pred(5) \quad \checkmark$
@@ -178,7 +190,8 @@ $4 = 3+1 \quad \times$
 $4 = 4 \quad\checkmark$
 $4 = 6 \quad \times$ 
 
-La denotazione di una proposizione in una data circostanza è il suo valore di verità, $True$ o $False$.
+Ciascuna di queste espressioni è anche un enunciato, in quanto possiedono un valore di verità.
+La denotazione di un enunciato in una data circostanza è il suo valore di verità, $True$ o $False$.
 
 La **Logica Proposizionale** riguarda gli enunciati e la loro denotazione in qualsiasi circostanza possibile.<br />
 
@@ -190,7 +203,7 @@ in ogni mondo possibile, ciascuna lettera proposizionale è vera oppure falsa ($
 
 ...
 
-Si necessita di essere in grado di riconoscere quando un'enunciato sia una formula e quando non lo sia.
+Si necessita di essere in grado di riconoscere quando un enunciato sia una formula e quando non lo sia.
 
 Sia $w \in (L, \vee , \wedge , \rightarrow , \neg , \} , \bigcup L)\text{*}$ 
 un insieme di tutte le stringhe finite dell'alfabeto.<br />
