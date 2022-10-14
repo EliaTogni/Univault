@@ -195,13 +195,17 @@ La denotazione di un enunciato in una data circostanza è il suo valore di verit
 
 La **Logica Proposizionale** riguarda gli enunciati e la loro denotazione in qualsiasi circostanza possibile.<br />
 
-Formalizzazione:<br />
-**Enunciato Atomico**$\rightarrow$ **Formula Atomica**<br />
+**Formalizzazione**:<br />
+**Enunciato Atomico** $\rightarrow$ **Formula Atomica**<br />
 Si fissi un insieme di simboli $L$ di cardinalità infinita (numerabile).<br />
-$L$ è un **Linguaggio Proposizionale**, i cui elementi sono le lettere proposizionali e le variabili proposizionali.<br />
+$L$ è un **Linguaggio Proposizionale**, i cui elementi sono le lettere proposizionali o variabili proposizionali (_p_, _q_, _r_, ...).<br />
 in ogni mondo possibile, ciascuna lettera proposizionale è vera oppure falsa ($\oplus$).
 
-...
+**Enunciato Complesso**:<br />
+Fissato un linguaggio $L$, l'insieme di formule proposizionali su $L$, ($F_{L})$, è definito come segue:
+- $F_{L}$ è il più piccolo insieme tale che:
+	- per ogni $p \in L$, $p \in F_{L}$;
+	- se $A$, $B \in F_{L}$, allora $(A \vee B)$, $(A \wedge B)$, $(A \rightarrow B)$, $(\neg A) \in F_{L}$.
 
 Si necessita di essere in grado di riconoscere quando un enunciato sia una formula e quando non lo sia.
 
