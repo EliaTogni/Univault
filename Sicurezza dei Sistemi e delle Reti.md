@@ -804,8 +804,12 @@ I fattori chiave che contribuiscono ai rischi sono:
 - le **risorse**: il sistema operativo utilizzato è avanzato ma le risorse sono limitate;
 - l'**accessibilità**: alcuni dispositivi possono essere lasciati incustoditi.
 
+----------------------------------------------------------------
+
 ### Wired Equivalent Protocol (WEP)###
 Il protocollo **WEP** era la protezione primaria per il protocollo 802.11 ed era progettato per rendere il wireless sicuro come una rete cablata. E' stato abbandonato a causa della crittografia debole (chiavi non più lunghe di 40 bit), chiavi di crittografia statiche e mancanza di metodo di distribuzione delle chiavi.
+
+----------------------------------------------------------------
 
 ### Wi-Fi Protected Access (WPA) ###
 Protocollo che migliora WEP in diversi modi:
@@ -814,3 +818,5 @@ Protocollo che migliora WEP in diversi modi:
 - cambia dinamicamente le chiavi mentre la sessione continua;
 - metodo crittografico per verificare l'integrità;
 - contatore di frame per prevenire attacchi di reply.
+
+----------------------------------------------------------------
