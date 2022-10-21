@@ -48,6 +48,8 @@ Inoltre, i virus attraversano quattro fasi distinte:
 
 I vettori di infezione per i virus sono tipicamente [[Boot Sector]] (come USB drive), file eseguibili, macro file e multipartiti.
 
+----------------------------------------------------------------
+
 #### Macro Virus ####
 Virus che si attacca a documenti e utilizza le capacità di programmazione macro dell'applicazione del documento per eseguire codice e propagarsi.
 
@@ -113,6 +115,9 @@ Il worm in questione è composto da due parti:
 - un programma per diffondersi, il quale cerca altre macchine vittima e cerca di infiltrarsi su queste macchine;
 - un programma vettore, il quale viene compilato ed eseguito sulle macchine infette e che trasferisce il main per continuare l'infezione.
 
+Al giorno d'oggi, i worm sono multipiattaforma e multi-exploit ed utilizzano la diffusione ultraveloce.
+Un worm attuale può essere polimorfico, cioè ogni copia del worm ha un nuovo codice generato al volo usando istruzioni e tecniche di crittografia funzionalmente equivalenti, oppure metamorfico, cioè oltre a cambiare aspetto, ha un repertorio di modelli comportamentali che si scatenano in diverse fasi di propagazione.
+
 ------------------------------------------------------------
 
 ### Zombie e Botnet ###
@@ -148,6 +153,8 @@ Questo malware:
 La vittima deve:
 - inserire un codice ottenibile solo al pagamento del riscatto;
 - comprare un tool di decrittazione o di rimozione.
+
+----------------------------------------------------------------
 
 ## Politiche di sicurezza e modelli ##
 Una **Politica di sicurezza** è un insieme di regole e linee guida le quali descrivono gli obiettivi di sicurezza di un sistema. Include:
@@ -526,15 +533,22 @@ Ogni oggetto ha un ACL che identifica le operazioni che i soggetti possono esegu
 ![[UnixACL.png]]
 
 I file UNIX sono amministrati utilizzando gli [[Inode]], strutture di controllo con informazioni chiave sui file.<br />
-I processi sono isolati l'uno dall'altro durante l'esecuzione: infatti non possono accedere alla memoria reciproca. Inoltre, vengono eseguiti come un utente specifico e con le autorizzazioni dell'UID dell'utente. I processi possono quindi accedere a tutti i file a cui l'UID ha accesso.<br />
+I processi sono isolati l'uno dall'altro durante l'esecuzione: infatti non possono accedere alla memoria reciproca. Inoltre, vengono eseguiti come un utente specifico e con le autorizzazioni dell'UID dell'utente. I processi possono quindi accedere a tutti i file a cui l'UID ha accesso. ALl'esecuzione di un comando, esso viene eseguito con i privilegi dell'utente perchè la shell viene eseguita come account utente ed avvia una fork per avviare il comando.<br />
 I processi avviati da **root** possono, però, ridurre i propri privilegi, modificandoli in un UID meno privilegiato.<br />
 Ogni processo possiede tre User ID:
 - **Effective User ID** (**EUID**): determina le autorizzazioni per il processo;
 - **Real User ID** (**RUID**): determina l'utente che ha avviato il processo;
 - **Saved User ID** (**SUID**): EUID prima della modifica.
 
-Con **Set User ID** o (**SetUID**), il sistema utilizza temporaneamente i privilegi del proprietario (o del gruppo nel caso di **Set Group ID**) del file oltre ai privilegi dell'utente reale. Questo consente ai programmi privilegiati di accedere a file/risorse generalmente non accessibili.
-Quando un normale programma viene eseguito, RUID$=$EUID, entrambi sono uguali all'ID dell'utente che ha eseguito il programma.
+Con **Set User ID** (**SetUID**), il sistema utilizza temporaneamente i privilegi del proprietario (o del gruppo nel caso di **Set Group ID**) del file oltre ai privilegi dell'utente reale. Questo consente ai programmi privilegiati di accedere a file/risorse generalmente non accessibili.
+```shell
+setuid(x)
+```
+Effective User ID (EUID) $\rightarrow$ x<br />
+Real User ID (RUID) $\rightarrow$ x<br />
+Saved User ID (SUID) $\rightarrow$ x
+
+Quando un normale programma viene eseguito, RUID=EUID, entrambi sono uguali all'ID dell'utente che ha eseguito il programma.
 Quando viene eseguito il **Set-UID**, RUID$\neq$EUID. Il RUID rimarrà uguale all'user ID, mentre EUID è uguale all'ID del proprietario del programma.
 - Se il programma è possieduto da root, allora il programma esegue con i permessi di root.
 
