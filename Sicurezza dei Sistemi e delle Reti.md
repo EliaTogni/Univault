@@ -9,10 +9,15 @@ Con **Cybersecurity** si definisce la protezione delle informazioni archiviate, 
 - la protezione comprende riservatezza, confidenzialità, integrità, disponibilità, autenticità e responsabilità;
 - i metodi di protezione includono politiche e procedure organizzative, nonchè mezzi tecnici come crittografia e protocolli di comunicazione sicuri.
 
+Confidenzialità denota il prevenire di rendere disponibili informazioni ad individui non autorizzati.<br />
+Integrità denota la possibilità di modificare i dati ed i programmi solo in una maniera specifica ed autorizzata.<br />
+Disponibilità denota l'accesso tempestivo ed affidabile ed utilizzo delle informazioni da parte degli utenti autorizzati.<br />
+Autenticità denota la proprietà di un soggetto di essere verificato e fidato, ovverlo la fiducia nella validità di una trasmissione di un messaggio.<br />
+Responsabilità (o **accountability**) denota la possibilità di individuare il responsabile di un'azione e tracciare la responsabilità.<br />
+
 ------------------------------------------------------------
 
 ## Malware ##
-
 Con **Malware** si definisce un programma che viene inserito in un sistema, solitamente di nascosto, con l'intento di compromettere la riservatezza, l'integrità o la disponibilità di dati, delle applicazioni o del sistema della vittima, oppure con l'intento di infastidire o disturbare la vittima.
 
 ------------------------------------------------------------
@@ -165,16 +170,14 @@ Le politiche di sicurezza sono alla base del concetto di **Controllo degli acces
 3) i **permessi di accesso**, ovvero i modi nei quali un soggetto può accedere ad un oggetto.
 
 Le politiche di controllo degli accessi possono essere categorizzate in quattro macrocategorie:
-1) **DAC** (**Discretionary Access Control**): ciascun utente può determinare i permessi per ogni altro utente e definire le **Access Control Lists** (**ACL**);
-2) **MAC** (**Mandatory Access Control**): un amministratore centrale determina i permessi di accesso dei vari oggetti;
+1) **DAC** (**Discretionary Access Control**): controlla l'accesso sulla base dell'identità del soggetto richiedente e delle regole di accesso. Discrezionale perchè un'entità potrebbe avere i privilegi di accesso che le permettono di determinare i permessi per ogni altro utente e definire le **Access Control Lists** (**ACL**);
+2) **MAC** (**Mandatory Access Control**): controlla l'accesso in base al confronto tra etichette di sicurezza ed autorizzazione. Un amministratore centrale determina i permessi di accesso dei vari oggetti;
 3) **RBAC** (**Role-Based Access Control**): esistono quattro tipi di entità in un sistema di questo tipo:
 - **utente**: una persona che ha accesso a questo sistema informatico. Ogni individuo ha un ID utente associato;
 - **ruolo**: una funzione lavorativa con nome all'interno dell'organizzazione che controlla il sistema;
 - **autorizzazione**: approvazione di una particolare modalità di accesso a uno o più oggetti;
 - **sessione**: mappatura tra utente e sottoinsieme attivato dell'insieme di ruoli a cui è assegnato l'utente.
-4) **ABAC**(): modello che può definire autorizzazioni che esprimono condizioni sulle proprietà sia della risorsa che del soggetto.
-
-Esistono diversi tipi di politiche di sicurezza:
+4) **ABAC**(**Attribute-Based Access Control**): modello che può definire autorizzazioni che esprimono condizioni sulle proprietà sia della risorsa che del soggetto.
 
 ------------------------------------------------------------
 
@@ -265,6 +268,24 @@ Le condizioni di lettura e scrittura sono, invece, le seguenti:
 ------------------------------------------------------------
 
 ## Attacchi ##
+E' bene specificare che non è necessario che si verifichi una violazione perchè possa esserci una minaccia. Le azioni che potrebbero causare la violazione devono essere protette o preparate.<br />
+Queste azioni sono chiamate **Attacchi**.<br />
+Innanzitutto, è necessario distinguere tra attacchi attivi e passivi:
+- un **attacco attivo** modifica il flusso delle informazioni, crea un falso flusso oppure impedisce l'utilizzo del sistema;
+- un **attacco passivo** non altera le informazioni in transito. Lo scopo dell'attacco è ottenere informazioni sui messaggi trasmessi.
+
+Esempi di minacce sono lo **Spoofing**, il **Ripudio dell'origine** o il **Diniego di ricezione**.<br />
+Con **Masquerading**, o **Spoofing**, si definisce la rappresentazione di un'entità da parte di un'altra.<br />
+Con **Ripudio dell'origine** si definisce una falsa negazione che un'entità abbia inviato o creato qualcosa.<br />
+Con **Diniego di ricezione** si definisce un falso diniego che un'entità abbia ricevuto alcune informazioni.<br />
+
+Una **Superficie di attacco** è costituita dalle vulnerabilità raggiungibili e sfruttabili in un sistema.<br />
+
+L'implementazione della difesa da attacchi prevede quattro linee di azione complementari:
+- **Prevenzione**;
+- **Rilevamento** (o **Detection**);
+- **Risposta**;
+- **Ripristino** (o **Recovery**).
 
 ### MAC Address Spoofing ###
 Le schede di rete vengono identificate da un numero seriale, il quale viene utilizzato come indirizzo al'interno della LAN.<br />
@@ -273,7 +294,6 @@ L'indirizzo MAC può essere riconfigurato dal software del driver dell'interfacc
 
 ### ARP Spoofing / Cache Poisoning ###
 [[Address Resolution Protocol]], come tutti i protocolli di rete, non ha implementato alcuna misura di sicurezza. Non ci sono controlli che vietino ad un host malizioso di rispondere ad una **ARP Request** nonostante non sia in possesso dell'**Indirizzo IP** richiesto (**ARP Spoofing**).<br />
-Con **Masquerading**, o **Spoofing**, si definisce la rappresentazione di un'entità da parte di un'altra.<br />
 L'host mittente della ARP Request, ricevendo la comunicazione fake, aggiorna la sua **ARP Cache** e memorizza così l'associazione $<\text{Ip destinatario - MAC Address attaccante}>$, cioè l'associazione utente-indirizzo sbagliata (**Cache Poisoning**). Ciò provoca l'immediata deviazione dei pacchetti diretti all'IP originale richiesto al [[MAC Address]] dell'host malizioso.<br />
 Tutto questo avviene perchè:
 1) Le richieste non sono tracciate;
@@ -502,8 +522,11 @@ Prima di tornare, il programma controlla il valore canarino e, se è stato modif
 Tutte le risorse Linux (socket, dispositivi, file) sono gestite come file. Tutti i file e le directory hanno un unico proprietario utente ed un unico gruppo proprietario.<br />
 Il modello di autorizzazione di UNIX è una semplice implementazione di una strategia di controllo degli accessi generica, nota come **Access Control List** (**ACL**).<br />
 Ogni oggetto ha un ACL che identifica le operazioni che i soggetti possono eseguire. Ogni accesso ad un oggetto viene verificato rispetto all'ACL dell'oggetto.<br />
+
+![[UnixACL.png]]
+
 I file UNIX sono amministrati utilizzando gli [[Inode]], strutture di controllo con informazioni chiave sui file.<br />
-I processi sono isolati l'uno dall'altro durante l'esecuzione: infatti non possono accedere alla memoria reciproca. Inoltre, vengono eseguiti come un utente specifico e con le autorizzazioni dell'UID dell'utente. I processi possono quindi acceder a tutti i file a cui l'UID ha accesso.<br />
+I processi sono isolati l'uno dall'altro durante l'esecuzione: infatti non possono accedere alla memoria reciproca. Inoltre, vengono eseguiti come un utente specifico e con le autorizzazioni dell'UID dell'utente. I processi possono quindi accedere a tutti i file a cui l'UID ha accesso.<br />
 I processi avviati da **root** possono, però, ridurre i propri privilegi, modificandoli in un UID meno privilegiato.<br />
 Ogni processo possiede tre User ID:
 - **Effective User ID** (**EUID**): determina le autorizzazioni per il processo;

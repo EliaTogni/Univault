@@ -253,8 +253,21 @@ Esiste anche una definizione induttiva di $F_{L}$: $F_{L}$ è un insieme tale pe
 ## Lezione 3 ##
 #### Dimostrazione del Structural Induction Principle ####
 Si definisca $I = \{F \in F_{L} : \rho \text{ è corretta per }F\}$.<br />
-E' sufficiente mostrare che $I \in F_{L}$.<br />
+E' sufficiente mostrare che $I = F_{L}$.<br />
 Come si dimostra che due insiemi siano lo stesso insieme? E' necessaria un'inclusione bidirezionale:
 $$\cases{I \subseteq F_{L} \cr \cr F_{L} \subseteq I}$$
 La prima inclusione è vera per definizione di $I$.<br />
-Per dimostrare la seconda inclusione, si ricorda che $\rho$ gode della premessa e degli step. Quindi, per la premessa, $I$ soddisfa la condizione $L \subseteq$ F_{L}. 
+Per dimostrare la seconda inclusione, si ricorda che $\rho$ gode della premessa e degli step. Quindi, per la premessa, $I$ soddisfa la condizione $L \subseteq F_{L}$.<br />
+
+per mostrare che $w \in F_{L}$ si necessita di mostrare una L-struttura.
+
+------------------------------------------
+
+#### Proprietà dell'unica leggibilità delle formule ####
+Se $w \in F_{L}$, allora esattamente uno dei seguenti casi è corretto:
+- $w \in L$;
+- $\exists v \in F_{L} \quad \vert \quad w = \neg v$
+- $\exists v_{1}, v_{2} \in F_{Ł} \quad \vert \quad w = (v_{1} \wedge v_{2})$
+- $\exists v_{1}, v_{2} \in F_{Ł} \quad \vert \quad w = (v_{1} \vee v_{2})$
+- $\exists v_{1}, v_{2} \in F_{Ł} \quad \vert \quad w = (v_{1} \rightarrow v_{2})$
+
