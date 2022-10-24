@@ -133,13 +133,15 @@ La denotazione di un enunciato in una data circostanza è il suo valore di verit
 
 La **Logica Proposizionale** riguarda gli enunciati e la loro denotazione in qualsiasi circostanza possibile.<br />
 
-**Formalizzazione**:<br />
-**Enunciato Atomico** $\rightarrow$ **Formula Atomica**<br />
+Un **Enunciato Atomico** rappresenta un fatto denotato da un valore di verità, detto **valore semantico**. **Formula Atomica**<br />
 Si fissi un insieme di simboli $L$ di cardinalità infinita (numerabile).<br />
-$L$ è un **Linguaggio Proposizionale**, i cui elementi sono le lettere proposizionali o variabili proposizionali (_p_, _q_, _r_, ...).<br />
+$L$ è un **Linguaggio Proposizionale**, i cui elementi sono le lettere proposizionali o variabili proposizionali (_p_, _q_, _r_, ...).$$p, q, r, p_{1} \in L$$
 in ogni mondo possibile, ciascuna lettera proposizionale è vera oppure falsa ($\oplus$).
 
-**Enunciato Complesso**:<br />
+Un **Enunciato Composto** è una rappresentazione di un fatto composto da enunciati semplici tramite i seguenti connettivi: $$\vee, \wedge, \neg, \rightarrow.$$
+Il valore denotazionale di ogni enunciato composto dipnde dai valori denotazionali degli enunciati atomici e dal valore semantico dei connettivi che lo compongono.
+
+## Sintassi della Logica Proposizionale ##
 Fissato un linguaggio $L$, l'insieme di formule proposizionali su $L$, ($F_{L})$, è definito come segue:
 - $F_{L}$ è il più piccolo insieme tale che:
 	- per ogni $p \in L$, $p \in F_{L}$;
@@ -208,4 +210,11 @@ Se $w \in F_{L}$, allora esattamente uno dei seguenti casi è corretto:
 - $\exists v_{1}, v_{2} \in F_{Ł} \quad \vert \quad w = (v_{1} \wedge v_{2})$
 - $\exists v_{1}, v_{2} \in F_{Ł} \quad \vert \quad w = (v_{1} \vee v_{2})$
 - $\exists v_{1}, v_{2} \in F_{Ł} \quad \vert \quad w = (v_{1} \rightarrow v_{2})$
+
+dove i $v_{i}$ sono determinati univocamente.<br />
+Questa proprietà garantisce l'esistenza di una sorta di operazione inversa della costruzione di certificati: mentre quest'ultimo costruisce una formula, questa proprietà garantisce il fatto che sia possibile smontarla in un unico modo.<br />
+Questa proprietà non è condivisa tra tutti i linguaggi formali: per esempio, nelle grammatiche, una stringa $w = ciao$ può essere composta da $v_{1} = \epsilon$ e $v_{2} = ciao$, eccetera.<br />
+Spesso, il concetto di leggibilità può essere espresso anche tramite il concetto di **albero di parsing** di una formula, che è unico e mostra come essa sia costruita.
+
+
 
