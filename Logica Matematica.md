@@ -216,5 +216,11 @@ Questa proprietà garantisce l'esistenza di una sorta di operazione inversa dell
 Questa proprietà non è condivisa tra tutti i linguaggi formali: per esempio, nelle grammatiche, una stringa $w = ciao$ può essere composta da $v_{1} = \epsilon$ e $v_{2} = ciao$, eccetera.<br />
 Spesso, il concetto di leggibilità può essere espresso anche tramite il concetto di **albero di parsing** di una formula, che è unico e mostra come essa sia costruita.
 
+------------------------------------------------------------
+## Osservazioni e convenzioni riguardo alla sintassi ##
+Esistono utleriori connettivi (o connettivi derivati) oltre a quelli utilizzati fino ad ora, ossia $\vee$, $\wedge$, $\neg$ e $\rightarrow$: uno di questi è $\bot$, che è un connettivo di arità zero che denota il falso: un altro è $\top$, che è un connettivo zerario che denota il sempre vero e chiaramente $\bot = \neg \top$.<br />
+Altro connettivo è $\Longleftrightarrow$, definito come $(A \rightarrow B) \wedge (B \rightarrow A)$.<br />
+Una seconda osservazione riguarda l'uso delle parentesi: per come sono state definite le formule, l'oggetto $p \wedge q \notin F_{L}$ in quanto mancano le parentesi. In formule complesse, le parentesi possono aggiungere complicatezza e portare l'errore. Tuttavia, è bene tenere a mente che esistono delle parentesi necessarie, come ad esempio $(p \wedge q) \vee r$.
+
 
 
