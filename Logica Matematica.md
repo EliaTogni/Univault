@@ -5,91 +5,31 @@
 **Esame**: orale (inizia con esercizi scritti facili (45 min) e successivamente domande (1h)) oppure tesi/ricerca su un topic.
 
 ---------------------------------------------------------------
-## Prerequisiti ##
-### Linguaggi Proposizionali ###
-Con il termine **enunciato** si intende una qualsiasi proposizione per la quale sia sensato chiedersi se sia vera o falsa:
-- Piove;
-- Se piove, starò a casa;
-- $2+2 = 4$;
-- $2+2 = 5$.
-
-Si definisce poi un **enunciato semplice** o **enunciato atomico** se un enunciato non contiene nessun'altro enunciato come sua parte propria. Si definisce invece un **enunciato composto** se un enunciato contiene altri enunciati, cioè se è possibile scomporlo in enunciati più semplici.<br />
-
-Le parole _e_, _o_, _se...allora_, _non_, _ma_ sono chiamate **connettivi**. I connettivi permettono di ottenere enunciati da altri enunciati, cioè permettono di ottenere enunciati composti mediante enunciati più semplici.<br />
-Si consideri l'enunciato _Piove e c'è vento_. Assegnando all'enunciato atomico _piove_ la lettera $p$, all'enunciato atomico _C'è vento_ la lettera $q$ e indicando con il carattere $\wedge$ il connettivo _e_, è possibile associare all'enunciato _Piove e c'è vento_ un'espressione formale del tipo $p \wedge q$. L'espressione $p \wedge q$ è un esempio di **formula**.<br />
-Le formule costituiscono la rappresentazione in un linguaggio artificiale del contenuto concettuale degli enunciati del linguaggio naturale.
-
-Un **Linguaggio Proposizionale** $L$ è semplicemente un insieme i cui elementi si dicono **Lettere Proposizionali** o **Variabili Proposizionali** e vengono indicati con i caratteri $p$, $q$, $r$, ...<br />
-Utilizzando gli elementi di $L$, le parentesi $($, $)$ ed i caratteri relativi ai connettivi proposizionali $\wedge$, $\vee$, $\rightarrow$, $\neg$, si è in grado di scrivere tutte le possibili stringhe di simboli.<br />
-
-Sono **$L$ Formule** o, più brevemente, **formule** solo quelle stringhe di simboli che sono ottenute applicando un numero finito di volte le seguenti regole di formazione:
-- ogni $p \in L$ è una formula (detta **Formula Atomica**);
-- se $A_{1}$ e $A_{2}$ sono formule, tali sono $(A_{1} \wedge A_{2})$, $(A_{1} \vee A_{2})$, $(A_{1} \rightarrow A_{2}$), $(\neg A_{1})$.
-
-In termini del tutto equivalenti, si può enunciare che una stringa di simboli è una $L$-formula qualora compaia all'ultimo posto di una **$L$-costruzione**, dove una $L$-costruzione è una lista di stringhe di simboli ciascun elemento della quale o è una stringa fatta di un solo carattere o è ottenuto da elementi della lista che lo precedono secondo quanto descritto dalla seconda proprietà enunciata precedentemente.<br />
-Ad esempio, la $L$-costruzione $$p,\quad q, \quad (p \vee q), \quad (\neg(p \vee q))$$
-testimonia che $(\neg(p \vee q))$ è una formula.<br />
-Le formule vengono indicate con le lettere $A$, $B$, ... dette **Metavariabili**.<br />
-L'insieme di tutte le formule viene indicato con $F_{L}$.
-
-### Funzioni di Verità ###
-Una formula denota un'asserzione che, in una data situazione specifica, risulta essere vera o falsa (ma non comportamente vera e falsa). Una volta noto il valore di verità dei suoi costituenti, si può determinare meccanicamente in modo agevole il valore di tutta una formula, analizzando i connettivi in un'ottica **vero-funzionale**, ossia come funzioni ch ehanno sia in ingresso che in uscita dei valori di verità.<br />
-La **Semantica** proposta è **bivalente**, cioè i valori di verità sono due, vero e falso.<br />
-Si analizzi ora il significato dei connettivi:
-- il connettivo _e_ si chiama **congiunzione**, indicato con il simbolo $\wedge$.<br /> La formula $p \wedge q$ è vera se e solo se sia $p$ che $q$ siano vere.<br />In generale, indicati con $A$ e $B$ due enunciati qualsiasi , la formula $A \wedge B$ è vera se e solo se sia $A$ che $B$ sono vere. <br />Si può riassumere quanto detto mediante la **tavola di verità per il connettivo $\wedge$**:<br />
-| $p$ | $q$ | $p \wedge q$ |
-| - | - | - |
-| T | T | T |
-| F | T | F |
-| T | F | F |
-| F | F | F |
-- Il connettivo _o_ si chiama **disgiunzione** e si indica con il simbolo $\vee$.<br />Nel linguaggio naturale esistono almeno due usi diversi della disgiunzione, l'uso **inclusivo** (corrispondente al latino _vel_) e l'uso **esclusivo** (corrispondente al latino _aut_). I due usi differiscono per la valutazione del caso in cui entrambi i disgiunti siano veri: nell'uso inclusivo la disgiunzione corrispondente viene considerata vera, nell'uso esclusivo viene considerata falsa. Nella logica classica, con disgiunzione si intende l'uso inclusivo.<br /><Indicati con $p$ e $q$ due enunciati qualsiasi, la formula $p \vee q$ è vera se e solo se o $p$ o $q$ è vera.<br />Si può riassumere quanto detto mediante la **tavola di verità per il connettivo** $\vee$:
-| $p$ | $q$ | $p \vee q$ |
-| - | - | - |
-| T | T | T |
-| F | T | T |
-| T | F | T |
-| F | F | F |
-- Il connettivo _non_ si chiama **negazione** e si indica con il simbolo $\neg$.<br />Indicato con $p$ un enunciato qualsiasi, la formula $\neg p$ è vera se e solo se $p$ € falsa.<br />Si può riassumere quanto detto mediante la **tavola di verità per $\neg$**:
-| $p$ | $\neg p$ |
-| - | - |
-| T | F |
-| F | T |
-- Il connettivo _se...allora_ si chiama **implicazione** e si indica con $\rightarrow$.<br />Indicati con $p$ e $q$ due enunciati qualsiasi, la formula $p \rightarrow q$ è falsa solamente quando $p$ è vera e $q$ è falsa.<br />Nella formula $p \rightarrow q$, la sottoformula $p$ viene chiamata **antecedente** o **premessa** dell'implicazione, mentre la sottoformula $q$ viene chiamata **conseguente** o **conclusione** dell'implicazione.<br />Si può riassumere quanto detto mediante la **tavola di verità per $\rightarrow$**:
-| $p$ | $q$ | $p \rightarrow q$ |
-| - | - | - |
-| T | T | T |
-| F | T | T |
-| T | F | F |
-| F | F | T |
-
----------------------------------------------------------------
-
-## Lezione 1 ##
-Un primo modo per addentrarsi nelle tematiche della **Logica** consiste nel porsi il problema della correttezza delle inferenze, ossia degli **schemi di ragionamento**.<br />
+La **Logica** studia come si ragiona in maniera corretta e, per studiare come si ragiona, si può utilizzare come prima schematizzazione il partire da delle assunzioni vere e da quelle discendere a delle conclusioni.
+Un primo modo per addentrarsi nelle tematiche della logica consiste nel porsi il problema della correttezza delle inferenze, ossia degli **schemi di ragionamento**.<br />
 Ad esempio, l'inferenza:
 $$\cases{\text{Ogni uomo è mortale.} \cr \cr \text{Socrate è un uomo.} \cr \cr \hline  \cr \text{Perciò, Socrate è mortale.}}$$
-è corretta.
+è corretta. Questo è, in linguaggio naturale, un esempio di come, a partire da due informazioni date per vere, si traggano delle conseguenze. Quanto fatto prima è un **sillogismo**.
 Un altro esempio:
-$$\cases{\text{Tutti i gatti hanno 7 zampe.} \cr \cr \text{Bob è un gatto.} \cr \cr \hline  \cr \text{Bob ha sette zampe}.}$$
+$$\cases{\text{Ogni gatto ha 7 zampe.} \cr \cr \text{Bob è un gatto.} \cr \cr \hline  \cr \text{Bob ha sette zampe}.}$$
 
-Queste due sequenze di proposizioni seguono la stessa forma di ragionamento (e di formulazione) nonostante la premessa maggiore del secondo sillogismo sia falsa nel nostro mondo.<br />
+Anche questa è una deduzione esatta, nonostante per l'esperienza comune la prima assunzione è fasa: tuttavia, la Logica si occupa di ogni universo (o circostanza) e pertanto il ragionamento è valido.<br />
 
 $$\cases{\text{Every tove is durfish.} \cr \cr \text{Sbroppo is a tove.} \cr \cr \hline \cr \text{Therefore, Sbroppo is a durfish.}}$$
 
 
 Di nuovo, la linea di ragionamento è corretta anche senza avere consapevolezza del significato delle parole utilizzate.<br />
 La conclusione è corretta se accettiamo le premesse, indipendentemente dal significato.<br />
-Ora è necessario formalizzare questa struttura:
+Ora è necessario formalizzare questa struttura, soprattutto per eliminare le parti irrilevanti del discorso:
 
-$$\cases{\forall x \quad f(x) \rightarrow Q(x) \cr \cr f(s) \cr 
+$$\cases{\forall x \quad P(x) \rightarrow Q(x) \cr \cr P(s) \cr 
  \cr \hline \cr Q(s) }$$
 Si consideri ora il seguente esempio:
 $$\cases{\text{Ogni fiore è profumato.} \cr \cr \text{La rosa è profumata.} \cr \cr \hline  \cr \text{Perciò, la rosa è un fiore.}}$$
 
 Ogni proposizione è corretta (nel nostro mondo) ma la linea di pensiero è errata.
 $$\cases{\forall x \quad f(x) \rightarrow Q(x) \cr \cr Q(s) \cr \cr \hline  \cr f(s)}$$
-La conclusione ed una delle premesse sono state, infatti, scambiate.
+In questo caso, si sta cercando di verificare la premessa data la conclusione, al contrario del sillogismo introdotto precedentemente. La conclusione ed una delle premesse sono state, infatti, scambiate.
 
 ---------------------------------------------------------------
 ### Motivazioni ###
