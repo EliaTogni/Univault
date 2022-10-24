@@ -6,7 +6,7 @@
 
 ---------------------------------------------------------------
 La **Logica** studia come si ragiona in maniera corretta e, per studiare come si ragiona, si può utilizzare come prima schematizzazione il partire da delle assunzioni vere e da quelle discendere a delle conclusioni.
-Un primo modo per addentrarsi nelle tematiche della logica consiste nel porsi il problema della correttezza delle inferenze, ossia degli **schemi di ragionamento**.<br />
+Un primo modo per addentrarsi nelle tematiche della Logica consiste nel porsi il problema della correttezza delle inferenze, ossia degli **schemi di ragionamento**.<br />
 Ad esempio, l'inferenza:
 $$\cases{\text{Ogni uomo è mortale.} \cr \cr \text{Socrate è un uomo.} \cr \cr \hline  \cr \text{Perciò, Socrate è mortale.}}$$
 è corretta. Questo è, in linguaggio naturale, un esempio di come, a partire da due informazioni date per vere, si traggano delle conseguenze. Quanto fatto prima è un **sillogismo**.
@@ -34,8 +34,8 @@ In questo caso, si sta cercando di verificare la premessa data la conclusione, a
 ---------------------------------------------------------------
 ### Motivazioni ###
 La disciplina è chiamata **Mathematical Logic** per due motivi che vanno in direzioni differenti:
-- il primo motivo riguarda la necessità di astrarre per riuscire a comprendere le linee di pensiero. Con astrarre si intende il tralasciare tutte le informazioni irrilevanti da un punto di vista logico. Si deve considerare solo la **forma** dell'argomentazione, non il contenuto;<br />
-- il secondo motivo riguarda l'utilizzo, infatti la logica matematica viene utilizzata per studiare e descrivere strutture definite matematicamente.
+- il primo motivo riguarda la necessità di astrarre per riuscire a comprendere le linee di pensiero. Con astrarre si intende il tralasciare tutte le informazioni irrilevanti da un punto di vista logico. La trasformazione delle assunzioni e delle conclusioni da una forma in linguaggio naturale alla forma astratta permette di arrivare a delle **forme**. I concetti che verranno formalizzati avranno una sintassi dettata da un **linguaggio formale** ed un significato semantico **algebrico-insiemistico**, ottenendo un **formalismo**, un modo preciso, rigoroso e privo di ambiguità per esprimere ciò che si desidera;<br />
+- il secondo motivo riguarda l'utilizzo, infatti la Logica matematica viene utilizzata per studiare e descrivere strutture definite matematicamente.
 
 In comune con l'esperienza di un Computer Scientist vi è l'utilizzo di un **Linguaggio Formale**, composto da due rami:
 - **Sintassi**, ovvero i termini da un punto di vista grammaticale;
@@ -45,9 +45,9 @@ In comune con l'esperienza di un Computer Scientist vi è l'utilizzo di un **Lin
 
 _Computer Science is just logic implemented in electronics_.<br />
 
-La logica utilizza un approccio dichiarativo, mentre CS ha un approccio procedurale o imperativo (benchè questo non sia completamente vero). Con dichiarativo si intende porre il focus su cosa possa essere dedotto partendo da delle premesse date mentre con procedurale si intende porre il focus su come implementare una computazione.<br />
+La Logica utilizza un approccio dichiarativo, mentre CS ha un approccio procedurale o imperativo (benchè questo non sia completamente vero). Con dichiarativo si intende porre il focus su cosa possa essere dedotto partendo da delle premesse date mentre con procedurale si intende porre il focus su come implementare una computazione.<br />
 
-Le due discipline collimano nell'**Automated Deduction**, ovvero richiedere al calcolatore di svolgere le deduzioni.<br />
+Queste due discipline collimano nell'**Automated Deduction**, ovvero richiedere al calcolatore di svolgere le deduzioni.<br />
 
 ---------------------------------------------------------------
 
@@ -62,9 +62,6 @@ _Se piove, prendo l'ombrello_ è equivalente a dire:
 7) _Piove se e solo se prendo l'ombrello_. $\times$
 8) Nessuna delle precedenti $\times$
 
----------------------------------------------------------------
-
-## Lezione 2 ##
 Due enunciati "dicono la stessa cosa" se sono vere nelle stesse esatte circostanze (oppure negli stessi **mondi** possibili oppure se hanno la stessa **valutazione di verità**).<br />
 
 _Se piove allora prendo l'ombrello_ dopo aver astratto diventa _se $A$ allora $B$_.
@@ -104,7 +101,8 @@ Se $P \rightarrow Q = True$ , Q è condizione necessaria affinchè $P$ sia vera.
 
 ---------------------------------------------------------------
 ## Logica Proposizionale ##
-Un **enunciato** nel linguaggio naturale è una sequenza di parole tale che abbia senso chiedersi in una qualsiasi circostanza  data (o in qualsiasi mondo possibile) se sia vera o falsa.<br />
+Un **enunciato** nel linguaggio naturale è una sequenza di parole tale che abbia senso chiedersi se sia vera o falsa in una qualsiasi circostanza data (o in qualsiasi mondo possibile).<br />
+_Piove_ è un enunciato, così come _Prendo l'ombrello_ e _Se piove prendo l'ombrello_. La differenza che intercorre tra essi è che i primi due enunciati sono **enunciati atomici** mentre l'ultimo è un **enunciato composto**.<br />
 In termini di significato, siamo interessanti a distinguere tra **Denotazione** e **Connotazione**.<br />Definita un'espressione E:
 - **Denotazione di _E_**: _E_ è un nome (o un puntatore) il quale si riferisce ad un oggetto unicamente determinato all'interno del discorso.
 - **Connotazione di _E_**: si riferisce al totale contenuto informativo di _E_.
