@@ -322,7 +322,7 @@ Le proprietà attese di un generatore random sono:
 
 ---------------------------------------------------------------
 
-## Metodo Montecarlo ##
+## Metodo Monte Carlo ##
 
 Si vuole computare (numericamente) il valore di $\pi$.<br />
 Si consideri un cerchio. La sua area è definita dalla formula $A = \pi \cdot r^{2}$. Quindi, è possibile calcolare $\pi = \frac{A}{r^{2}}$.<br />
@@ -355,3 +355,13 @@ def montecarlo_pi(iteration_number):
 
 	return (4 * count / iteration_number)
 ```
+
+E' possibile stimare $\pi$ attraverso la calcolazione $$\pi = 4 \cdot P[C \vert S]$$
+Dove $C$ è l'evento corrispondente alla caduta di un punto all'interno del cerchio e $S$ è l' evento corrispondente alla caduta di un punto all'interno del quadrato.<br />
+Alcuni parametri che è utile stabilire sono:
+- l'accuratezza, intesa come numero $d$ di cifre da stimare;
+- il grado di fiducia $\delta$, inteso come la probabilità di raggiungere l'accuratezza.
+- il numero di punti $n$.
+
+Il trovarsi all'interno di un cerchio può essere modellato con una variabile aleatoria Bernoulliana $$X = \cases{1 \qquad p \cr \cr 0 \qquad (1-p) }$$
+Il valore atteso di questa variabile aleatoria sarà $E[X] = 1 \cdot p + 0 \cdot (1-p) = p$, mentre la sua varianza sarà $V[X] = E[X^{2}] - E[X]^{2}$ = .

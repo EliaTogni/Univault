@@ -822,3 +822,4 @@ Protocollo che migliora WEP in diversi modi:
 - contatore di frame per prevenire attacchi di reply.
 
 ----------------------------------------------------------------
+
