@@ -1,6 +1,7 @@
 ## Sicurezza ##
 Con **Sicurezza** si intende il raggiungere un obiettivo in presenza di un avversario, il prevenire un comportamento non desiderato.<br />
 Un sistema sicuro è un sistema il quale assolve uno specifico compito, nonostante l'avversario voglia impedirlo.<br />
+La sicurezza è lo stato in cui il rischio è inferiore al massimo rischio accettabile.
 
 ------------------------------------------------------------
 
@@ -157,13 +158,14 @@ La vittima deve:
 ----------------------------------------------------------------
 
 ## Politiche di sicurezza e modelli ##
-Una **Politica di sicurezza** è un insieme di regole e linee guida le quali descrivono gli obiettivi di sicurezza di un sistema. Include:
+Una **Politica di sicurezza** è un insieme di regole e linee guida le quali descrivono gli obiettivi di sicurezza di un sistema. Consiste, di fatto, in un insieme di assiomi che gli estensori della politica ritenfono possano essere applicati. Include:
 1) soggetti che interagiscono con il sistema;
 2) oggetti e risorse di cui si vuole proteggere l'accesso;
 3) le azioni che i soggetti possono o non possono compiere sugli oggetti e sulle risorse;
 4) i permessi;
 5) le protezioni, cioè ulteriori regole che aiutano a raggiungere il goal (la sicurezza).
 
+In primo luogo la politica suddivide l'insieme degli stati del sistema in sicuro e non sicuro. In secondo luogo, i meccanismi di sicurezza impediscono al sistema di entrare in uno stato non sicuro.<br />
 Un **Modello** definisce formalmente l'implementazione specifica della politica di sicurezza presa in considerazione.
 
 Un **Meccanismo** implementa la politica a basso livello. Le politiche, infatti, utilizzano meccanismi (come la [[Crittografia]]) per raggiungere il goal.<br />
@@ -533,7 +535,7 @@ Ogni oggetto ha un ACL che identifica le operazioni che i soggetti possono esegu
 ![[UnixACL.png]]
 
 I file UNIX sono amministrati utilizzando gli [[Inode]], strutture di controllo con informazioni chiave sui file.<br />
-I processi sono isolati l'uno dall'altro durante l'esecuzione: infatti non possono accedere alla memoria reciproca. Inoltre, vengono eseguiti come un utente specifico e con le autorizzazioni dell'UID dell'utente. I processi possono quindi accedere a tutti i file a cui l'UID ha accesso. ALl'esecuzione di un comando, esso viene eseguito con i privilegi dell'utente perchè la shell viene eseguita come account utente ed avvia una fork per avviare il comando.<br />
+I processi sono isolati l'uno dall'altro durante l'esecuzione: infatti non possono accedere alla memoria reciproca. Inoltre, vengono eseguiti come un utente specifico e con le autorizzazioni dell'UID dell'utente. I processi possono quindi accedere a tutti i file a cui l'UID ha accesso. All'esecuzione di un comando, esso viene eseguito con i privilegi dell'utente perchè la shell viene eseguita come account utente ed avvia una fork per avviare il comando.<br />
 I processi avviati da **root** possono, però, ridurre i propri privilegi, modificandoli in un UID meno privilegiato.<br />
 Ogni processo possiede tre User ID:
 - **Effective User ID** (**EUID**): determina le autorizzazioni per il processo;
