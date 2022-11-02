@@ -538,20 +538,14 @@ I file UNIX sono amministrati utilizzando gli [[Inode]], strutture di controllo 
 I processi sono isolati l'uno dall'altro durante l'esecuzione: infatti non possono accedere alla memoria reciproca. Inoltre, vengono eseguiti come un utente specifico e con le autorizzazioni dell'UID dell'utente. I processi possono quindi accedere a tutti i file a cui l'UID ha accesso. All'esecuzione di un comando, esso viene eseguito con i privilegi dell'utente perchè la shell viene eseguita come account utente ed avvia una fork per avviare il comando.<br />
 I processi avviati da **root** possono, però, ridurre i propri privilegi, modificandoli in un UID meno privilegiato.<br />
 Ogni processo possiede tre User ID:
-- **Effective User ID** (**EUID**): determina le autorizzazioni per il processo;
+- **Effective User ID** (**EUID**): determina le autorizzazioni per il processo, date dai permessi dell'utente che l'ha eseguito se il bit SetUID non è settato (EUID = RUID). Altrimenti, se il bit SetUID è settato, determina le autorizzazioni per il processo date dall'owner del file;
 - **Real User ID** (**RUID**): determina l'utente che ha avviato il processo;
 - **Saved User ID** (**SUID**): EUID prima della modifica.
 
 Con **Set User ID** (**SetUID**), il sistema utilizza temporaneamente i privilegi del proprietario (o del gruppo nel caso di **Set Group ID**) del file oltre ai privilegi dell'utente reale. Questo consente ai programmi privilegiati di accedere a file/risorse generalmente non accessibili.
-```shell
-setuid(x)
-```
-Effective User ID (EUID) $\rightarrow$ x<br />
-Real User ID (RUID) $\rightarrow$ x<br />
-Saved User ID (SUID) $\rightarrow$ x
 
 Quando un normale programma viene eseguito, RUID=EUID, entrambi sono uguali all'ID dell'utente che ha eseguito il programma.
-Quando viene eseguito il **Set-UID**, RUID$\neq$EUID. Il RUID rimarrà uguale all'user ID, mentre EUID è uguale all'ID del proprietario del programma.
+Quando viene eseguito il **SetUID**, RUID$\neq$EUID. Il RUID rimarrà uguale all'user ID, mentre EUID è uguale all'ID del proprietario del programma.
 - Se il programma è possieduto da root, allora il programma esegue con i permessi di root.
 
 Con il comando **CHMOD**, è possibile specificare i permessi con 4 bit.<br />
