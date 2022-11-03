@@ -330,9 +330,9 @@ Si applica ora il **Metodo Montecarlo**. L'idea è di procedere numericamente ma
 
 immagine cerchio 1.27.30
 
-Si fissi il raggio del cerchio $r = 1$. Ora è solo necessario stimare l'area del quarto di cerchio per poter calcolare $\pi$.<br /> L'approccio Montecarlo consiste nel riempire il quadrato di punti. Alcuni di essi cadranno all'interno dell'area del cerchio, altri al di fuori (ma sempre all'interno dell'area del quadrato).<br />
-Si chiami l'area del quarto di cerchio $B$. E' possibile stimare $B$ dal numero di punti caduti all'interno di $B$ diviso il numero di punti totali generati $B = \frac{\text{numero di punti interni a } B}{\text{numero di punti totali}}$.<br />
-
+Si fissi il raggio del cerchio $r = 1$. Ora è solo necessario stimare l'area del quarto di cerchio per poter calcolare $\pi$.<br />
+L'approccio Montecarlo consiste nel riempire il quadrato di punti. Alcuni di essi cadranno all'interno dell'area del cerchio, altri al di fuori (ma sempre all'interno dell'area del quadrato).<br />
+Si chiami l'area del quarto di cerchio $B$. E' possibile stimare $B$ dal numero di punti caduti all'interno di $B$ diviso il numero di punti totali generati: $$B = \frac{\text{numero di punti interni a } B}{\text{numero di punti totali}}$$
 Il codice si basa sul generare coppie di valori, ciascuno dei quali estratto da una distribuzione uniforme.<br />
 Per scoprire se i punti così ottenuti ricadono all'interno dell'area del quarto di cerchio, basta porre la distanza euclidea del punto dall'origine del quadrante minore di $1$.
 
@@ -356,12 +356,12 @@ def montecarlo_pi(iteration_number):
 	return (4 * count / iteration_number)
 ```
 
-E' possibile stimare $\pi$ attraverso la calcolazione $$\pi = 4 \cdot P[C \vert S]$$
+E' possibile stimare $\pi$ attraverso il calcolo $$\pi = 4 \cdot P[C \vert S]$$
 Dove $C$ è l'evento corrispondente alla caduta di un punto all'interno del cerchio e $S$ è l' evento corrispondente alla caduta di un punto all'interno del quadrato.<br />
 Alcuni parametri che è utile stabilire sono:
 - l'accuratezza, intesa come numero $d$ di cifre da stimare;
 - il grado di fiducia $\delta$, inteso come la probabilità di raggiungere l'accuratezza.
 - il numero di punti $n$.
 
-Il trovarsi all'interno di un cerchio può essere modellato con una variabile aleatoria Bernoulliana $$X = \cases{1 \qquad p \cr \cr 0 \qquad (1-p) }$$
+Il trovarsi all'interno di un cerchio può essere modellato con una variabile aleatoria Bernoulliana:$$X = \cases{1 \qquad p \cr \cr 0 \qquad (1-p) }$$
 Il valore atteso di questa variabile aleatoria sarà $E[X] = 1 \cdot p + 0 \cdot (1-p) = p$, mentre la sua varianza sarà $V[X] = E[X^{2}] - E[X]^{2}$ = .
