@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "1481cf8a8c53f6fa",
+        "id": "5ef743d78dee27d4",
         "type": "tabs",
         "children": [
           {
-            "id": "1ec3e39191ca5d9b",
+            "id": "5a66dd52dfcb081f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Simulation.md",
+                "file": "Git.md",
                 "mode": "source",
                 "source": false
               }
@@ -61,7 +61,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 151.5107650756836
+    "width": 227.50260543823242
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -77,7 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Simulation.md",
+                "file": "Git.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -95,17 +95,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "1ec3e39191ca5d9b",
+  "active": "5a66dd52dfcb081f",
   "lastOpenFiles": [
-    "Sicurezza dei Sistemi e delle Reti.md",
-    "B-Albero.md",
-    "Simulation.md",
-    "Logica Matematica.md",
-    "MergeSort.md",
-    "Algoritmo di Strassen.md",
-    "Ant Colony Optimization.md",
-    "L-.md",
-    "Statistica e Probabilità.md",
-    "Algoritmi Paralleli e Distribuiti.md"
+    "Working Tree.md",
+    "Version Control System.md",
+    "Git.md",
+    "Threshold Logic Unit.md",
+    "Introduzione alla Computational Intelligence.md",
+    "Computational Intelligence.md",
+    "Intelligenza Artificiale.md",
+    "Algoritmo.md",
+    "ALU.md",
+    "Address Resolution Protocol.md"
   ]
 }
