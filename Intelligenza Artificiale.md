@@ -1,16 +1,14 @@
 ## Introduzione ##
 
-Dato un qualunque sistema, se disponiamo di un insieme di leggi o regole
-che lo descrivono completamente (nel caso di un sistema fisico avremmo
-delle equazioni differenziali) potremmo, in teoria, calcolarne in ogni
+Dato un qualunque sistema, se si dispone di un insieme di leggi o regole
+che lo descrivono completamente (nel caso di un sistema fisico si avranno, ad esempio, delle equazioni differenziali) è possibile, in teoria, calcolarne in ogni
 momento lo stato e, quindi, prevederne l'evoluzione nel tempo. Tuttavia,
-nella vita di ogni giorno capita spesso di non avere a disposizione una
-conoscenza perfetta di un certo sistema. Tale informazione:
+è circostanza comune il non avere a disposizione una conoscenza completa di un certo sistema. Tale informazione:
 1. può mancare;
-2. possiamo averne una conoscenza approssimata.
-
-L'intelligenza artificiale nasce con lo scopo di estrarre conoscenza
-direttamente dai dati in nostro possesso attraverso strumenti
+2. può esserne disponibile solamente una conoscenza approssimata.
+ 
+L'**Intelligenza Artificiale** nasce con lo scopo di estrarre conoscenza
+direttamente dai dati a disposizione attraverso strumenti
 automatici. Questo modello si differenzia rispetto alla descrizione *a
 priori* del sistema, in quanto lo simula per comprenderne *a posteriori*
 il suo comportamento. Per far questo, è stato utile studiare come gli
@@ -18,58 +16,30 @@ esseri viventi interagiscano con l'ambiente circostante e come vi si
 adattino. Vari modelli di intelligenza artificiale sono stati proposti
 lungo la storia della disciplina. Una categorizzazione preliminare che
 si fa in letteratura è quella tra modelli:
-
--   *simbolici*, in cui i dati vengono sottoposti a codifica e solo dopo
-    manipolati. Storicamente questo è stato il primo approccio adottato
-    (vedi sistemi esperti degli anni '70).
-
--   *pre-simbolici*, in cui i dati vengono manipolati direttamente,
-    senza la mediazione di una codifica. Fanno parte di questa famiglia:
-    le reti neurali, i sistemi fuzzy e gli algoritmi evolutivi.
-
-Il focus di questo corso è posto sui secondi.
+- **simbolici**, in cui i dati vengono sottoposti a codifica e solo dopo  manipolati. Storicamente questo è stato il primo approccio adottato.
+- **pre-simbolici**, in cui i dati vengono manipolati direttamente, senza la mediazione di una codifica. Fanno parte di questa famiglia: le reti neurali, i sistemi fuzzy e gli algoritmi evolutivi.
 
 ## Reti neurali ##
 
 ### Background biologico ###
 
-Il nostro cervello ci permette di analizzare in maniera molto
-sofisticata l'ambiente in cui ci troviamo per agire nel miglior modo
-possibile (esempio: se riconosciamo un leone nella savana, scappiamo
-nell'altra direzione). Queste analisi sono basate sul funzionamento del
-cervello: come estrae informazioni, come queste interagiscono con
-l'informazioni contenute in memoria, etc. Lo studio di questi processi è
-un campo di ricerca molto attivo e multidisciplinare dove convergono gli
-interessi della biologia, della medicina e della psicologia. Tali studi
-ci offrono dei modelli che simulano l'attività celebrale. Proprio questi
-modelli, vengono poi utilizzati dall'informatica per offrire strumenti
+Il cervello umano permette di analizzare in maniera sofisticata l'ambiente in cui si trova per agire nel miglior modo ritenuto possibile. Queste analisi sono basate sul funzionamento del cervello stesso: come estrae informazioni, come queste interagiscono con le informazioni contenute in memoria, etc.<br />
+Lo studio di questi processi è un campo di ricerca molto attivo e multidisciplinare nel quale convergono gli interessi della biologia, della medicina e della psicologia. Tali studi offrono dei modelli che simulano l'attività celebrale. Proprio questi
+modelli vengono poi utilizzati dall'informatica per offrire strumenti
 di predizione, ottimizzazione e problem-solving in vari campi
-applicativi (guida automatizzata, smart cities, etc.). Il successo di
-questi modelli è condizionato dal fatto che il nostro cervello è un
-potente computer capace di computare in parallelo grandi porzioni di
-dati. Ma come funziona esattamente?
+applicativi (guida automatizzata, smart cities, etc.).<br />
+Il successo di questi modelli è condizionato dal fatto che il cervello è considerabile alla pari di un potente computer capace di computare in parallelo grandi porzioni di dati.
+![Neurone](img/neurone.jpeg)
 
-![Neurone](img/neurone.jpeg){#fig:1}
-
-Il cervello è composto da miliardi di cellule dette *neuroni* (Figura
-[1](#fig:1){reference-type="ref" reference="fig:1"}). Il neurone a sua
+Il cervello è composto da miliardi semplici unità, cellule chiamate **neuroni**. Un neurone è una cellula la quale raccoglie e trasmette attività elettrica. Questi neuroni comunicano tra di loro inviando informazioni sotto forma di segnali di attivazione l'un l'altro, lungo connessioni orientate. Il neurone a sua
 volta è costituito da:
 
--   i *dendriti*, i quali sono filamenti raggiunti dalle terminazioni di
-    altri neuroni e che gli permettono di raccogliere informazioni
-    grazie a processi biochimici originati dai così detti
-    *neurotrasmettitori*.
-
--   l'*assone*: un lungo filamento che parte dal corpo centrale della
-    cellula e trasmette segnali elettrici che, a loro volta, vanno ad
-    attivare altri neuroni attraverso il rilascio di neurotrasmettitori.
-
-Quando e come il neurone trasmetta il segnale di attivazione dipende dal
-particolare modello fisiologico che si voglia adottare. Solitamente si
-considera un *threshold*, superato il quale, l'assone viene
-depolarizzato e la differenza di potenziale provoca il passaggio di una
-corrente. Un diverso modello prende in considerazione non tanto la
-potenza dello stimolo quanto il loro numero. Questa struttura a network
+-   il **corpo cellulare**, il quale contiene il nucleo. Viene anche chiamato **Soma**. 
+-   i **dendriti**, i quali sono filamenti ramificati che si estendono dal corpo cellulare. 
+-   l'**assone**: un lungo filamento che parte dal corpo centrale della cellula.
+L'assone e i dendriti dfferiscono per la struttura e per le proprietà della **membrana cellulare**. In particolare, l'assone è spesso coperto da una **guaina mielinica**.<br />
+Quando e come il neurone trasmetta il segnale di attivazione dipende dal particolare modello fisiologico che si voglia adottare.<br />
+Solitamente si considera un *threshold*, superato il quale, l'assone viene depolarizzato e la differenza di potenziale provoca il passaggio di una corrente. Un diverso modello prende in considerazione non tanto la potenza dello stimolo quanto il loro numero. Questa struttura a network
 offre ottime prestazioni. Per un confronto con una CPU classica
 alleghiamo la seguente tabella:
 
