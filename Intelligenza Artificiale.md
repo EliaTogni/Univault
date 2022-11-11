@@ -131,77 +131,39 @@ $$\forall i \in \{1, \dots, n\}:w_i^{(new)} = w_i^{(old)} + \Delta w_i \text{ co
 
 dove $\eta$ è il *learning rate*. Più questo valore è alto, più i cambiamenti su pesi threshold sono drastici.
 
-Abbiamo visto prima, tuttavia, che non tutte le funzioni possono essere
-computate. Per le funzioni linearmente separabili esiste un teorema che
-ci garantisce che applicando la *delta rule* l'algoritmo converga ad una
-soluzione.
-
+Si è osservato, tuttavia, che non tutte le funzioni possono essere computate.<br />
+Per le funzioni linearmente separabili, esiste un teorema che garantisce che applicando la *delta rule* l'algoritmo converga ad una soluzione.<br />
 Sia $L = \{(\mathbf{v}_1,o_1), \dots (\mathbf{v}_n,o_n)\}$ una sequenza di pattern di allenamento per la TLU, dove $\mathbf{v}_i$ identifica l'$i$-esimo vettore di input e $o_i$ identifica l'$i$-esimo output atteso. Siano inoltre $L_0 = \{(\mathbf{v},o) \in L | o = 0\}$ e $L_1 = \{(\mathbf{v},o) \in L | o = 1\}$ rispettivamente gli insiemi delle coppie di pattern che hanno come output atteso $0$ e quelle che hanno come pattern atteso $1$. Se $L_0$ e $L_1$ sono linearmente separabili, allora esiste un $\mathbf{w}$ vettore di pesi e un $\theta$ threshold tale che:
 $$\forall (\mathbf{v},0) \in L_0: \mathbf{w}\mathbf{v}< \theta$$
 $$\forall (\mathbf{v},1) \in L_1: \mathbf{w}\mathbf{v}\geq \theta$$
 
-Negli esempi precedenti abbiamo codificato il valore booleano *falso*
-come 0 e *vero* come 1. Questa scelta ha lo svantaggio che, nel caso di
+Negli esempi precedenti, si è codificato il valore booleano *falso*
+come $0$ e *vero* come $1$. Questa scelta ha lo svantaggio che, nel caso del valore
 *falso*, i pesi corrispondenti non possano essere modificati perchè la
-formula contiene l'input come fattore. Per evitare il problema si
-ricorre in letteratura ad una diversa codifica chiamata *ADALINE*
-(ADAptive LINear Element), dove *falso* viene ad assumere il valore $-1$
-e il *vero* $1$.
+formula contiene l'input come fattore.<br />
+Per evitare il problema si ricorre in letteratura ad una diversa codifica chiamata **ADALINE** (**ADAptive LINear Element**), dove *falso* viene ad assumere il valore $-1$
+e il *vero* $1$.<br />
+Si osservi che questa procedura di allenamento vale solo per le singole
+TLU nonostante si sia osservato che le TLU possono computare solo funzioni
+linearmente separabili. Sebbene questo inconveniente si possa evitare prendendo in esame *network* di TLU, questa procedura non si estende naturalmente a quel caso.
 
-Notiamo che questa procedura di allenamento vale solo per le singole
-TLU, ma abbiamo prima visto che le TLU possono computare solo funzioni
-linearmente separabili. Sebbene questo inconveniente si possa evitare
-prendendo in esame *network* di TLU, questa procedura non si estende
-naturalmente a quel caso.
+### Artificial neural network ###
+Un'**artificial neural network** (in breve **ANN**) può essere rappresentata come un grafo diretto $G = (U,C)$ dove i nodi sono delle semplici TLU e gli archi sono le connessioni tra le varie unità. L'insieme dei nodi $U$ può essere partizionato in tre sottoinsiemi:
+- $U_{(in)}$: è l'insieme dei nodi di input, i quali ricevono in modo diretto l'informazione dall'ambiente;
+- $U_{(out)}$: è l'insieme dei nodi di output, i quali sono i soli nodi a comunicare con l'esterno;
+- $U_{(hidden)}$: è l'insieme dei nodi interni, i quali propagano la computazione.
 
-Artificial neural network
--------------------------
+![images/ANN.png]
 
-Un artificial neural network (in quello che segue ANN) può essere
-rappresentata come un grafo diretto $G = (U,C)$ dove i nodi sono TLU e
-gli archi sono le connessioni tra le varie unità. L'insieme dei nodi $U$
-può essere partizionato in tre sottoinsiemi:
-
--   $U_{(in)}$: è l'insieme dei nodi di input, i quali ricevono in modo
-    diretto l'informazione dall'ambiente.
-
--   $U_{(out)}$: è l'insieme dei nodi di output, i quali sono i soli
-    nodi a comunicare con l'esterno.
-
--   $U_{(hidden)}$: è l'insieme dei nodi interni, i quali propagano la
-    computazione.
-
-![rappresentazione di un singolo neurone](img/ANN.png){#fig:7}
-
-Ogni connessione $(u,v) \in C$ possiede un peso $w_{uv}$ che definisce
-l'importanza del dato originato da $v$ per il neurone $u$. Ad ogni
-neurone $u \in U$ vengono, invece, assegnate quattro variabili: il
-*network input* $net_u$, la *activation* $act_u$, l'*output* $out_u$ e
-l'*external input* $ext_u$ (vedi Figura [7](#fig:7){reference-type="ref"
-reference="fig:7"}). Le prime tre variabili vengono calcolate in ogni
+Ogni connessione $(u,v) \in C$ possiede un peso $w_{uv}$ che definisce l'importanza del dato originato da $v$ per il neurone $u$. Ad ogni neurone $u \in U$ vengono, invece, assegnate quattro variabili: il **network input** $net_u$, la **activation** $act_u$, l'**output** $out_u$ e l'**external input** $ext_u$. Le prime tre variabili vengono calcolate in ogni
 momento dell'evoluzione dell'ANN grazie a tre funzioni associate:
+1. La network input function $f^u_{net}$: calcola la somma pesata dell'input;
+2.  La *activation function* $f^u_{act}$: ne esistono vari modelli (gaussiana, sigmoide, etc.) a seconda dell'applicazione;
+3. La *output function* $f^u_{out}$: definisce l'output a seconda che il neurone venga attivato o meno.
 
-1.  La *network input function* $f^u_{net}$: calcola la somma pesata
-    dell'input.
-
-2.  La *activation function* $f^u_{act}$: ne esistono vari modelli
-    (gaussiana, sigmoide, etc.) a seconda dell'applicazione.
-
-3.  La *output function* $f^u_{out}$: definisce l'output a seconda che
-    il neurone venga o meno attivato.
-
-Se il grafo che rappresenta l'ANN è aciclico si parla di *feed forward
-network* e la computazione procede in modo unidirezionale da $U_{(in)}$
-a $U_{(out)}$ seguendo l'ordine topologico[^2] del network. Nel caso,
-invece, il grafo contenga un ciclo, allora si parla di *recurrent
-network*. I processi all'interno di un ANN si dividono in due fasi:
-
-1.  La *input phase*: dove gli input esterni vengono acquisiti dai
-    neuroni di input.
-
-2.  La *work phase*: dove i neuroni di input vengono spenti e un nuovo
-    output viene computato da ogni neurone. La *work phase* continua
-    finchè gli output sono stabili o si raggiunge un timeout.
+Se il grafo che rappresenta l'ANN è aciclico si parla di *feed forward network* e la computazione procede in modo unidirezionale da $U_{(in)}$ a $U_{(out)}$ seguendo l'ordine topologico[^2] del network. Nel caso, invece, il grafo contenga un ciclo, allora si parla di *recurrent network*. I processi all'interno di un ANN si dividono in due fasi:
+1.  La *input phase*: dove gli input esterni vengono acquisiti dai neuroni di input;
+2.  La *work phase*: dove i neuroni di input vengono spenti e un nuovo output viene computato da ogni neurone. La *work phase* continua finchè gli output sono stabili o si raggiunge un timeout.
 
 ![computazione di una recurrent neural network che non giunge ad uno
 stato stabile](img/rnn1.png){#fig:8}
