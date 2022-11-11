@@ -1,5 +1,4 @@
 ## Introduzione ##
-
 Dato un qualunque sistema, se si dispone di un insieme di leggi o regole che lo descrivono completamente (nel caso di un sistema fisico si avranno, ad esempio, delle equazioni differenziali) è possibile, in teoria, calcolarne in ogni momento lo stato e, quindi, prevederne l'evoluzione nel tempo. Tuttavia, è circostanza comune il non avere a disposizione una conoscenza completa di un certo sistema. Tale informazione:
 1. può mancare;
 2. può esserne disponibile solamente una conoscenza approssimata.
@@ -7,52 +6,45 @@ Dato un qualunque sistema, se si dispone di un insieme di leggi o regole che lo 
 L'**Intelligenza Artificiale** nasce con lo scopo di estrarre conoscenza direttamente dai dati a disposizione attraverso strumenti automatici. Questo modello si differenzia rispetto alla descrizione a
 priori del sistema, in quanto lo simula per comprenderne a posteriori il suo comportamento. Per far questo, è stato utile studiare come gli
 esseri viventi interagiscano con l'ambiente circostante e come vi si adattino. Vari modelli di intelligenza artificiale sono stati proposti lungo la storia della disciplina. Una categorizzazione preliminare che si fa in letteratura è quella tra modelli:
-- **simbolici**, in cui i dati vengono sottoposti a codifica e solo dopo manipolati. Storicamente questo è stato il primo approccio adottato.
+- **simbolici**, in cui i dati vengono sottoposti a codifica e solo dopo manipolati. Storicamente questo è stato il primo approccio adottato;
 - **pre-simbolici**, in cui i dati vengono manipolati direttamente, senza la mediazione di una codifica. Fanno parte di questa famiglia: le reti neurali, i sistemi fuzzy e gli algoritmi evolutivi.
 
 ## Reti neurali ##
 
 ### Background biologico ###
-
 Il cervello umano permette di analizzare in maniera sofisticata l'ambiente in cui si trova per agire nella maniera ritenuta migliore possibile. Queste analisi sono basate sul funzionamento del cervello stesso su come esso estrae informazioni e su come queste interagiscano con le informazioni contenute in memoria, etc.<br />
 Lo studio di questi processi è un campo di ricerca molto attivo e multidisciplinare nel quale convergono gli interessi della biologia, della medicina e della psicologia. Tali studi offrono dei modelli che simulano l'attività celebrale. Proprio questi modelli vengono poi utilizzati dall'informatica per offrire strumenti
 di predizione, ottimizzazione e problem-solving in vari campi applicativi (guida automatizzata, smart cities, etc.).<br />
 Il successo di questi modelli è condizionato dal fatto che il cervello è considerabile alla pari di un potente computer capace di computare in parallelo grandi porzioni di dati.
 
-![Neurone](img/neurone.jpeg)
+![images/neurone.jpeg]
 
 Il cervello è composto da miliardi semplici unità, cellule chiamate **neuroni**. Un neurone è una cellula la quale raccoglie e trasmette attività elettrica. Questi neuroni comunicano tra di loro inviando informazioni sotto forma di segnali di attivazione l'un l'altro, lungo connessioni orientate. Il neurone a sua volta è costituito da:
--   il **corpo cellulare**, il quale contiene il nucleo. Viene anche chiamato **Soma**. 
--   i **dendriti**, i quali sono filamenti ramificati che si estendono dal corpo cellulare. 
+-   il **corpo cellulare**, il quale contiene il nucleo. Viene anche chiamato **Soma**; 
+-   i **dendriti**, i quali sono filamenti ramificati che si estendono dal corpo cellulare; 
 -   l'**assone**: un lungo filamento che parte dal corpo centrale della cellula.
+
 L'assone e i dendriti differiscono per la struttura e per le proprietà della **membrana cellulare**. In particolare, l'assone è spesso coperto da una **guaina mielinica**.<br />
 Gli assoni sono i percorsi orientati lungo i quali i neuroni comunicano tra di loro. L'assone di un neurone conduce ai dendriti di altri neuroni. Alla sua terminazione, l'assone è fortemente ramificato e possiede alla fine di queste ramificazioni dei **bottoni sinaptici** o **bottoni terminali**.<br />
 Ciascun bottone terminale entra quasi a contatto con un dendrite o con il corpo cellulare di un altro neurone. Questo gap che viene a formarsi è chiamato **sinapsi**.<br />
 La più comune forma di comunicazione tra neuroni avviene quando un bottone terminale dell'assone rilascia determinate sostanze chimiche, i **neurotrasmettitori**, i quali agiscono sulla membrana del dendrito ricettore e cambiano la sua polarizzazione. A seconda del tipo di neurotrasmettitore rilasciato, la differenza di potenziale potrebbe essre ridotta oppure aumentata dal lato del dendrite. Le sinapsi che riducono la differenza di potenziale vengono chiamate **eccitatorie** mentre quelle che la incrementano sono chiamate **inibitorie**.<br />
 Il cambiamento del potenziale elettrico causato da una singola sinapsi è poco significativo ma questo effetto può accumularsi (considerando gli stimoli eccitatori come positivi e quelli inibitori come negativi). Se l'input netto eccitatorio è sufficientemente grande, la diffentenza di potenziale nel corspo della cellula può essere ridotto in maniera significativa. Se questa riduzione ha magnitudine sufficiente, la base dell'assone viene depolarizzata.<br />
-Come conseguenza, l'interno della cellula diviene temporaneamente più positivo dell'esterno. L'improvviso cambio di potenxiale, chiamato **potenziale d'azione**, si propaga lungo l'assone. Quando questo impulso nervoso raggiunge la fine dell'assone, causa il rilascio dei neurotrasmettitori dai bottoni terminali, inducendo quindi un cambiamento del potenziale elettrico nel neurone ricettore.
+Come conseguenza, l'interno della cellula diviene temporaneamente più positivo dell'esterno. L'improvviso cambio di potenxiale, chiamato **potenziale d'azione**, si propaga lungo l'assone. Quando questo impulso nervoso raggiunge la fine dell'assone, causa il rilascio dei neurotrasmettitori dai bottoni terminali, inducendo quindi un cambiamento del potenziale elettrico nel neurone ricettore.<br />
+Nel sistema nervoso umano, l'informazione è codificata da quantità in continuo cambiamento, il potenziale elettrico della membrana di un neurone e il numero di impulsi nervosi che un neurone trasmette per secondo (o **firing rate**).
 
-Quando e come il neurone trasmetta il segnale di attivazione dipende dal particolare modello fisiologico che si voglia adottare.<br />
 Per un confronto con una CPU classica alleghiamo la seguente tabella:
 
-![image](img/cpuvshuman.png)
+![images/cpuvshuman.png]
 
 I vantaggi delle reti neurali sono:
-
-1.  Alta velocità di calcolo, grazie al parallelismo.
-
-2.  Tolleranza ai guasti: la rete rimane funzionale anche quando molti
-    neuroni smettono di funzionare.
-
-3.  La performance degrada in modo lineare con il numero di neuroni
-    danneggiati.
-
+1.  Alta velocità di calcolo, grazie al parallelismo;
+2.  Tolleranza ai guasti: la rete rimane funzionale anche quando molti neuroni smettono di funzionare;
+3.  La performance degrada in modo lineare con il numero di neuroni danneggiati;
 4.  Ottimo per l'apprendimento induttivo.
 
-Threshold logic unit
---------------------
-
-Per implementare una rete neurale artificiale occorre trovare un analogo del neurone naturale. Tale compito è svolto dalle **threshold logic unit**, nel seguito **TLU**. Una TLU è costituita da $n$ variabili di input $x_1 \dots x_n$ e un output $y$. Ad ogni unità viene assegnato un **threshold** $\theta$ e ad ogni variabile di input un peso $w_i$ dove $i \in \{1, \dots ,n\}$ che rappresenta la rilevanza ai fine della computazione di quel particolare input.<br />
+### Threshold logic unit ###
+Per implementare una rete neurale artificiale occorre trovare un analogo del neurone naturale. Tale compito è svolto dalle **threshold logic unit** o **neuroni di McCulloch e Pitts**, nel seguito **TLU**.<br />
+Una TLU è una semplice processing unit costituita da $n$ variabili di input $x_1 \dots x_n$ e un output $y$. Ad ogni unità viene assegnato un **threshold** $\theta$ e ad ogni variabile di input un peso $w_i$ dove $i \in \{1, \dots ,n\}$ che rappresenta la rilevanza ai fine della computazione di quel particolare input.<br />
 L'output della TLU viene calcolato secondo la seguente formula:
 
 $$y =  \begin{cases}
@@ -60,10 +52,7 @@ $$y =  \begin{cases}
     0 & \text{altrimenti} 
    \end{cases}$$
 
-Attraverso questo semplice meccanismo possiamo simulare alcune funzioni
-booleane. Se volessimo computare l'AND logico tra due input $x_1$ e
-$x_2$ basta assegnare valori ai pesi e al threshold in modo che
-soddisfino il seguente sistema di disequazioni:
+Attraverso questo semplice meccanismo è possibile simulare alcune funzioni booleane. Se si necessitasse di computare l'AND logico tra due input $x_1$ e $x_2$, risulterebbe sufficiente assegnare valori ai pesi e alla threshold in modo tale che essi soddisfino il seguente sistema di disequazioni:
 
 $$\begin{cases}
     w_1 + w_2 \geq \theta \\
@@ -71,86 +60,50 @@ $$\begin{cases}
     w_2 < \theta
    \end{cases}$$
 
-Risulta evidente che l'unica circostanza in cui l'output della TLU verrà
-posto ad 1 sarà quando entrambi gli input si trovano a 1. Inoltre, si
-noti che esistono varie scelte possibili di pesi e threshold che
-verificano le diseguaglianze.
+Risulta evidente che l'unica circostanza in cui l'output della TLU verrà posto ad $1$ sarà quando entrambi gli input varranno $1$. Inoltre, si noti che esistono varie scelte possibili di pesi e threshold tali che verifichino le diseguaglianze.
 
-Interpretazione geometrica
---------------------------
-
-La condizione che calcola l'output della TLU somiglia molto da vicino
-all'equazione di un iperpiano (ovvero, un piano in $n$ dimensioni):
+### Interpretazione geometrica ###
+La condizione che calcola l'output della TLU ricorda l'equazione di un iperpiano (ovvero un piano in $n$ dimensioni):
 
 $$\sum w_ix_i + \theta = 0$$
 
-Se pensiamo al caso precedente dell'AND logico e consideriamo i valori
-di input come coordinate in uno spazio bidimensionale, possiamo vedere
-che la retta definita da $x_1w_1 + x_2w_2 + \theta = 0$ corrisponde al
-confine che separa quelle combinazioni di valori che restituiscono come
-output 1 e quelle che, invece, restituiscono 0 (vedi Figura 2).\
-Da quanto detto, tuttavia, si può dedurre che una singola TLU potrà
-computare solo funzioni *linearmente separabili*, ovvero funzioni in cui
-le coordinate associate agli input che restituiscono 1 possono essere
-separate da quelle che restituiscono 0 da una funzione lineare (punto,
-retta, piano o iperpiano a seconda della dimensione).
+Ricordando il caso precedente dell'AND logico e considerando i valori di input come coordinate in uno spazio bidimensionale, è possibile osservare che la retta definita da $x_1w_1 + x_2w_2 + \theta = 0$ corrisponde al confine che separa quelle combinazioni di valori i quali restituiscono come output $1$ da quelle che, invece, restituiscono $0$.<br />
+Naturalmente, le computazioni delle TLU con più di due input possono essere interpretate geometricamente anch'esse.<br />
+Da quanto detto, tuttavia, si può dedurre che una singola TLU potrà computare solo funzioni *linearmente separabili*, ovvero funzioni in cui le coordinate associate agli input che restituiscono $1$ possono essere separate da quelle che restituiscono $0$ da una funzione lineare (punto, retta, piano o iperpiano a seconda della dimensione).<br />
+Sfortunatamente, non tutte le funzioni sono linearmente separabili.
 
-![Rappresentazione geometrica della TLU per
-$x_1 \land x_2$](img/geometria.png){#fig:2}
+![[images/geometria.png]]
 
-Un insieme di punti $X$ in uno spazio euclideo si dice *convesso* se e
-solo se non è vuoto, è connesso e ogni coppia di punti può essere
-congiunta da un segmento.
+Un insieme di punti $X$ in uno spazio euclideo si dice **convesso** se e solo se non è vuoto, è connesso e ogni coppia di punti può essere congiunta da un segmento.
 
-Un *guscio convesso* di un insieme di punti $X$ in uno spazio euclideo è
-il più piccolo insieme convesso che contiene $X$.
+Un **guscio convesso** di un insieme di punti $X$ in uno spazio euclideo è il più piccolo insieme convesso che contiene $X$.
 
-Due insiemi di punti $X$ e $Y$ si dicono linearmente separabili se e
-solo se i loro gusci convessi sono tra loro disgiunti.
+Due insiemi di punti $X$ e $Y$ si dicono **linearmente separabili** se e solo se i loro gusci convessi sono tra loro disgiunti.
 
-Questo significa che già all'interno delle funzioni booleane ne esistono
-alcune che non possono essere simulate da una TLU. Come, per esempio, la
-doppia implicazione. Sebbene solo due funzioni booleane a due argomenti
-non siano linearmente indipendenti, al crescere degli argomenti il
-numero di funzioni che sono linearmente indipendenti diminuisce
-rapidamente. Per un numeri di argomenti arbitrariamente grande, una
-singola TLU non può calcolare \"quasi\" nessuna funzione.
+Questo significa che, già all'interno delle funzioni booleane, ne esistono alcune che non possono essere simulate da una TLU. Un esempio di ciò è la
+doppia implicazione.<br /> 
+Sebbene solo due funzioni booleane a due argomenti
+non siano linearmente indipendenti, al crescere degli argomenti il numero di funzioni che sono linearmente indipendenti diminuisce rapidamente. Per un numeri di argomenti arbitrariamente grande, una singola TLU non può calcolare praticamente nessuna funzione.
 
-![La doppia implicazione non è linearmente
-separabile](img/doppiaimplicazione.png){#fig:3}
+![images/doppiaimplicazione.png]
 
-Il problema può essere ovviato attraverso la costruzione di network di
-TLU più complessi. Come esempio consideriamo il network che simula la
-doppia implicazione (vedi figura [4](#fig:4){reference-type="ref"
-reference="fig:4"}).
+Il problema può essere ovviato attraverso la costruzione di network di TLU più complessi. Come esempio, si consideri il network che simula la
+doppia implicazione.
 
-![network di TLU che simula la doppia
-implicazione](img/netTLU.png){#fig:4}
+![images/netTLU.png]
 
-Training delle TLU
-------------------
+Può essere dimostrato che tutte le funzioni Booleane con un numero arbitrario di input possano essere computate da reti di TLU semplicemente sfruttando delle equivalenze logiche al fine di dividere queste funzioni in un modo tale che tutte le sottofunzioni occorrenti siano linearmente separabili.
 
-L'interpretazione geometrica ci da una intuizione su come costruire una
-TLU avente 2 o 3 input, ma non è un metodo scalabile, nè automatizzato.
-Come far evolvere una TLU affinchè converga in modo autonomo ad una
-soluzione? Un algoritmo che ci permette di automatizzare il processo è
-il seguente:
+### Training delle TLU ###
+L'interpretazione geometrica fornisce un'intuizione su come costruire una TLU avente 2 o 3 input, ma non è  un metodo scalabile nè automatizzato. E' necessario evolvere una TLU affinchè converga in modo autonomo ad una soluzione.<br />
+Un algoritmo che permette di automatizzare il processo è il seguente: 
+ 1. Inizializzare i pesi e il threshold con valori randomici;
+2. Determinare l'errore nell'output per un insieme di controlli.L'errore viene calcolato come una funzione dei pesi e del threshold $e(w_1,\dots,w_n,\theta)$.
+3. Aggiornare i pesi e il threshold per correggere l'errore;
+4. Iterare finchè l'errore si annulla;
 
-1.  Inizializzare i pesi e il threshold con valori randomici.
-
-2.  Determinare l'errore nell'output per un insieme di controlli.
-    L'errore viene calcolato come una funzione dei pesi e del threshold
-    $e(w_1,\dots,w_n,\theta)$.
-
-3.  Aggiornare i pesi e il threshold per correggere l'errore.
-
-4.  Iterare finchè l'errore si annulla.
-
-Mostriamo il comportamento dell'algoritmo nel caso più semplice, in cui
-abbiamo un threshold ed un unico input (quindi, un unico peso
-associato). Poniamo che si voglia allenare il nostro neurone a calcolare
-la negazione booleana. Sia $x$ l'input, $w$ il peso associato e $\theta$
-il threshold, allora l'output $y$ sarà definito come:
+Si osservi il comportamento dell'algoritmo nel caso più semplice, in cui si hanno un threshold ed un unico input (quindi, un unico peso associato). Si presupponga che si voglia allenare la TLU a calcolare la negazione booleana.<br />
+Sia $x$ l'input, $w$ il peso associato e $\theta$ il threshold. Allora l'output $y$ sarà definito come:
 
 $$y = \begin{cases}
     1 & \text{se } 0w = 0 \geq \theta \\
