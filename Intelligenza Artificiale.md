@@ -110,65 +110,33 @@ $$y = \begin{cases}
     0 & \text{se } 1w = w \geq \theta
    \end{cases}$$
 
-Calcoliamo la funzione errore al variare di $w$ e $\theta$. Nel caso che
-$x = 0$ l'errore sarà 0 per un $\theta$ negativo e 1 per un $\theta$
-negativo. Il peso non avrà alcuna influenza perchè viene annullato nella
-moltiplicazione con l'input. Quando, invece, $x = 1$, avremo che la
-funzione dipenderà da entrambi i parametri (vedi Figura
-[5](#fig:5){reference-type="ref" reference="fig:5"}).
+Si calcoli la funzione errore al variare di $w$ e $\theta$. Nel caso in cui $x = 0$ l'errore sarà $0$ per un $\theta$ negativo e $1$ per un $\theta$ negativo. Il peso non avrà, infatti, alcuna influenza perchè viene annullato nella moltiplicazione con l'input.<br />
+Quando, invece, $x = 1$, si avrà che la funzione dipenderà da entrambi i parametri.
 
-![funzione di errore per la negazione booleana](img/error1.png){#fig:5}
+![images/error1.png]
 
-La funzione di errore così calcolata non può essere usata direttamente
-nella nostra computazione perchè è composta da plateau e, quindi, non è
-ovunque derivabile. La soluzione è quella di calcolare la funzione di
-errore in modo tale che ci offra una misura di \"quanto sbagliata\" sia
-la relazione tra pesi e threshold. Otterremo così una funzione di errore
-che, seppur ancora non differenziabile, (vedi Figura
-[6](#fig:6){reference-type="ref" reference="fig:6"}) lo sia localmente
-nei punti in cui l'errore si discosta da $0$. Ciò che faremo per
-correggere l'errore, dunque, sarà discendere verso l'area dove la
-funzione di errore si annulla. Questo è possibile esattamente perché
-abbiamo costruito una funzione derivabile nei punti in cui ci interessa,
-e cioè possiamo sempre calcolare la direzione migliore da prendere
-perchè si \"scenda\". Ci sono due modi di immaginare il processo di
-allenamento del neurone:
+La funzione di errore così calcolata non può essere usata direttamente nella computazione perchè è composta da plateau e, quindi, non è ovunque derivabile. La soluzione è quella di calcolare la funzione di errore in modo tale che offra una misura di quanto sbagliata sia la relazione tra pesi e threshold. Si otterrà così una funzione di errore
+che, seppur ancora non differenziabile, lo sia localmente nei punti in cui l'errore si discosta da $0$. Ciò che verrà eseguito per correggere l'errore, dunque, sarà discendere verso l'area dove la funzione di errore si annulla. Questo è possibile esattamente perché è stato scelto di utilizzare una funzione derivabile nei punti di interesse,
+e, cioè, è sempre possibile calcolare la direzione migliore da segiore affinchè ci si muova nella direzione del plateu più basso, ovvero verso l'errore nullo. Le regole di adattamento possono essere applicate in due modi:
+-  **online learning**, ovvero l'opzione di adattare i pesi e threshold ad ogni singolo step di training; 
+- **batch learning**, ovvero l'opzione nel quale i cambiamenti vengono aggregati in **learning/training epoch** o **epoche**. Al termine di queste epoche, i cambiamenti aggregati vengono applicati.
 
--   *Online learning*: dove correggiamo l'errore individualmente per
-    ogni scelta dell'input.
+![images/error2.png]
 
--   *Batch learning*: dove prendiamo in considerazione l'errore cumulato
-    su una sequenza di input prima di applicare le correzioni.
+Si definisce di seguito la **delta rule** o **procedura di Widrow-Hoff** per allenare le TLU:
 
-![funzione di errore differenziabile](img/error2.png){#fig:6}
+Sia $\mathbf{v}$ = ($x_1, \dots, x_n$) il vettore di input di una TLU, $o$ l'output aspettato e $y$ il valore attuale. Se $o = y$, il training termina. Al contrario, per ridurre l'errore, verranno computati nuovi valori pervil threshold e i pesi nel seguente modo:
+$$\theta^{(new)} = \theta^{(old)} + \Delta\theta \text{ con } \Delta\theta = -\eta(o - y)$$
+$$\forall i \in \{1, \dots, n\}:w_i^{(new)} = w_i^{(old)} + \Delta w_i \text{ con } \Delta w_i = \eta(o - y)x_i$$
 
-Definiamo di seguito la *delta rule* o *procedura di Widrow-Hoff* per
-allenare le TLU:
-
-Sia $\mathbf{v}$ = ($x_1, \dots, x_n$) il vettore di input di una TLU,
-*o* l'output aspettato e *y* il valore attuale. Se *o* = *y*, abbiamo
-finito. Al contrario, per ridurre l'errore computeremo nuovi valori per
-il threshold e i pesi nel seguente modo:
-$$\theta^{(new)} = \theta^{(old)} + \Delta\theta \text{ con } \Delta\theta = -\eta(\emph{o} - \emph{y})$$
-$$\forall i \in \{1, \dots, n\}:w_i^{(new)} = w_i^{(old)} + \Delta w_i \text{ con } \Delta w_i = \eta(\emph{o} - \emph{y})x_i$$
-dove $\eta$ è il *learning rate*. Più è alto, più i cambiamenti sui pesi
-e sui threshold sono drastici.
+dove $\eta$ è il *learning rate*. Più questo valore è alto, più i cambiamenti su pesi threshold sono drastici.
 
 Abbiamo visto prima, tuttavia, che non tutte le funzioni possono essere
 computate. Per le funzioni linearmente separabili esiste un teorema che
 ci garantisce che applicando la *delta rule* l'algoritmo converga ad una
 soluzione.
 
-Sia
-$L = \{(\mathbf{v}_1,\emph{o}_1), \dots, (\mathbf{v}_n,\emph{o}_n)\}$
-una sequenza di pattern di allenamento per la TLU, dove $\mathbf{v}_i$
-sono i vettori di input e $\emph{o}_i$ l'output atteso. Siano inoltre
-$L_0 = \{(\mathbf{v},\emph{o}) \in L | \emph{o} = 0\}$ e
-$L_1 = \{(\mathbf{v},\emph{o}) \in L | \emph{o} = 1\}$ rispettivamente
-gli insiemi delle coppie di pattern che hanno come output atteso 0 e
-quelle che hanno come pattern atteso 1. Se $L_0$ e $L_1$ sono
-linearmente separabili, allora esiste un $\mathbf{w}$ vettore di pesi e
-un $\theta$ threshold t.c.:
+Sia $L = \{(\mathbf{v}_1,o_1), \dots (\mathbf{v}_n,o_n)\}$ una sequenza di pattern di allenamento per la TLU, dove $\mathbf{v}_i$ identifica l'$i$-esimo vettore di input e $o_i$ identifica l'$i$-esimo output atteso. Siano inoltre $L_0 = \{(\mathbf{v},o) \in L | o = 0\}$ e $L_1 = \{(\mathbf{v},o) \in L | o = 1\}$ rispettivamente gli insiemi delle coppie di pattern che hanno come output atteso $0$ e quelle che hanno come pattern atteso $1$. Se $L_0$ e $L_1$ sono linearmente separabili, allora esiste un $\mathbf{w}$ vettore di pesi e un $\theta$ threshold tale che:
 $$\forall (\mathbf{v},0) \in L_0: \mathbf{w}\mathbf{v}< \theta$$
 $$\forall (\mathbf{v},1) \in L_1: \mathbf{w}\mathbf{v}\geq \theta$$
 
