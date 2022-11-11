@@ -1,50 +1,49 @@
 ## Introduzione ##
-Dato un qualunque sistema, se si dispone di un insieme di leggi o regole che lo descrivono completamente (nel caso di un sistema fisico si avranno, ad esempio, delle equazioni differenziali) è possibile, in teoria, calcolarne in ogni momento lo stato e, quindi, prevederne l'evoluzione nel tempo. Tuttavia, è circostanza comune il non avere a disposizione una conoscenza completa di un certo sistema. Tale informazione:
+Dato un qualunque sistema, se si dispone di un insieme di leggi o regole che lo descrivono completamente (nel caso di un sistema fisico si avranno, ad esempio, delle equazioni differenziali) è possibile, in teoria, calcolarne in ogni momento lo stato e, quindi, prevederne l'evoluzione nel tempo. Tuttavia, è circostanza comune il non avere a disposizione una conoscenza completa di un certo sistema.<br />
+Tale informazione:
 1. può mancare;
-2. può esserne disponibile solamente una conoscenza approssimata.
+2. può esserne disponibile solamente in maniera parziale, cioè si possiede una conoscenza approssimata di essa.
  
-L'**Intelligenza Artificiale** nasce con lo scopo di estrarre conoscenza direttamente dai dati a disposizione attraverso strumenti automatici. Questo modello si differenzia rispetto alla descrizione a
-priori del sistema, in quanto lo simula per comprenderne a posteriori il suo comportamento. Per far questo, è stato utile studiare come gli
-esseri viventi interagiscano con l'ambiente circostante e come vi si adattino. Vari modelli di intelligenza artificiale sono stati proposti lungo la storia della disciplina. Una categorizzazione preliminare che si fa in letteratura è quella tra modelli:
-- **simbolici**, in cui i dati vengono sottoposti a codifica e solo dopo manipolati. Storicamente questo è stato il primo approccio adottato;
-- **pre-simbolici**, in cui i dati vengono manipolati direttamente, senza la mediazione di una codifica. Fanno parte di questa famiglia: le reti neurali, i sistemi fuzzy e gli algoritmi evolutivi.
+L'**Intelligenza Artificiale** nasce con lo scopo di estrarre conoscenza direttamente dai dati a disposizione attraverso strumenti automatici.<br />
+Questo modello si differenzia rispetto alla descrizione a priori del sistema, in quanto lo simula per comprenderne a posteriori il suo comportamento. Per far questo, è stato utile studiare come gli esseri viventi interagiscano con l'ambiente circostante e come vi si adattino.<br />
+Vari modelli di intelligenza artificiale sono stati proposti lungo la storia della disciplina.<br />
+Una categorizzazione preliminare che si fa in letteratura è quella tra due tipi di modelli:
+- **modelli simbolici**, in cui i dati vengono sottoposti a codifica e solo dopo manipolati. Storicamente questo è stato il primo approccio adottato;
+- **modelli pre-simbolici**, in cui i dati vengono manipolati direttamente, senza la mediazione di una codifica. Fanno parte di questa famiglia: le reti neurali, i sistemi fuzzy e gli algoritmi evolutivi.
 
 ## Reti neurali ##
 
 ### Background biologico ###
-Il cervello umano permette di analizzare in maniera sofisticata l'ambiente in cui si trova per agire nella maniera ritenuta migliore possibile. Queste analisi sono basate sul funzionamento del cervello stesso su come esso estrae informazioni e su come queste interagiscano con le informazioni contenute in memoria, etc.<br />
+Il cervello umano permette di analizzare in maniera sofisticata l'ambiente in cui si trova per agire nella maniera ritenuta migliore possibile. Queste analisi sono basate sul funzionamento del cervello stesso, su come esso estrae informazioni e su come queste interagiscano con le informazioni contenute in memoria, etc.<br />
 Lo studio di questi processi è un campo di ricerca molto attivo e multidisciplinare nel quale convergono gli interessi della biologia, della medicina e della psicologia. Tali studi offrono dei modelli che simulano l'attività celebrale. Proprio questi modelli vengono poi utilizzati dall'informatica per offrire strumenti
 di predizione, ottimizzazione e problem-solving in vari campi applicativi (guida automatizzata, smart cities, etc.).<br />
 Il successo di questi modelli è condizionato dal fatto che il cervello è considerabile alla pari di un potente computer capace di computare in parallelo grandi porzioni di dati.
 
 ![images/neurone.jpeg]
 
-Il cervello è composto da miliardi semplici unità, cellule chiamate **neuroni**. Un neurone è una cellula la quale raccoglie e trasmette attività elettrica. Questi neuroni comunicano tra di loro inviando informazioni sotto forma di segnali di attivazione l'un l'altro, lungo connessioni orientate. Il neurone a sua volta è costituito da:
+Il cervello è composto da miliardi semplici unità, cellule chiamate **neuroni**. Un neurone è una cellula la quale raccoglie e trasmette attività elettrica. Questi neuroni comunicano tra di loro inviando informazioni sotto forma di segnali di attivazione l'un l'altro, lungo connessioni orientate.<br />
+Il neurone a sua volta è costituito da:
 -   il **corpo cellulare**, il quale contiene il nucleo. Viene anche chiamato **Soma**; 
 -   i **dendriti**, i quali sono filamenti ramificati che si estendono dal corpo cellulare; 
 -   l'**assone**: un lungo filamento che parte dal corpo centrale della cellula.
 
 L'assone e i dendriti differiscono per la struttura e per le proprietà della **membrana cellulare**. In particolare, l'assone è spesso coperto da una **guaina mielinica**.<br />
-Gli assoni sono i percorsi orientati lungo i quali i neuroni comunicano tra di loro. L'assone di un neurone conduce ai dendriti di altri neuroni. Alla sua terminazione, l'assone è fortemente ramificato e possiede alla fine di queste ramificazioni dei **bottoni sinaptici** o **bottoni terminali**.<br />
+Gli assoni sono i percorsi orientati lungo i quali i neuroni comunicano tra di loro e ciascuno di questi assoni conduce ai dendriti di altri neuroni. Alla sua terminazione, l'assone è fortemente ramificato e possiede alla fine di queste ramificazioni dei **bottoni sinaptici** o **bottoni terminali**.<br />
 Ciascun bottone terminale entra quasi a contatto con un dendrite o con il corpo cellulare di un altro neurone. Questo gap che viene a formarsi è chiamato **sinapsi**.<br />
-La più comune forma di comunicazione tra neuroni avviene quando un bottone terminale dell'assone rilascia determinate sostanze chimiche, i **neurotrasmettitori**, i quali agiscono sulla membrana del dendrito ricettore e cambiano la sua polarizzazione. A seconda del tipo di neurotrasmettitore rilasciato, la differenza di potenziale potrebbe essre ridotta oppure aumentata dal lato del dendrite. Le sinapsi che riducono la differenza di potenziale vengono chiamate **eccitatorie** mentre quelle che la incrementano sono chiamate **inibitorie**.<br />
-Il cambiamento del potenziale elettrico causato da una singola sinapsi è poco significativo ma questo effetto può accumularsi (considerando gli stimoli eccitatori come positivi e quelli inibitori come negativi). Se l'input netto eccitatorio è sufficientemente grande, la diffentenza di potenziale nel corspo della cellula può essere ridotto in maniera significativa. Se questa riduzione ha magnitudine sufficiente, la base dell'assone viene depolarizzata.<br />
-Come conseguenza, l'interno della cellula diviene temporaneamente più positivo dell'esterno. L'improvviso cambio di potenxiale, chiamato **potenziale d'azione**, si propaga lungo l'assone. Quando questo impulso nervoso raggiunge la fine dell'assone, causa il rilascio dei neurotrasmettitori dai bottoni terminali, inducendo quindi un cambiamento del potenziale elettrico nel neurone ricettore.<br />
-Nel sistema nervoso umano, l'informazione è codificata da quantità in continuo cambiamento, il potenziale elettrico della membrana di un neurone e il numero di impulsi nervosi che un neurone trasmette per secondo (o **firing rate**).
-
-Per un confronto con una CPU classica alleghiamo la seguente tabella:
-
-![images/cpuvshuman.png]
+La più comune forma di comunicazione tra neuroni avviene quando un bottone terminale dell'assone rilascia determinate sostanze chimiche, i **neurotrasmettitori**, i quali agiscono sulla membrana del dendrito ricettore e cambiano la sua polarizzazione. A seconda del tipo di neurotrasmettitore rilasciato, la differenza di potenziale potrebbe essere ridotta oppure aumentata dal lato del dendrite. Le sinapsi che riducono la differenza di potenziale vengono chiamate **eccitatorie** mentre quelle che la incrementano sono chiamate **inibitorie**.<br />
+Il cambiamento del potenziale elettrico causato da una singola sinapsi è poco significativo ma questo effetto può accumularsi (considerando gli stimoli eccitatori come positivi e quelli inibitori come negativi). Se l'input netto eccitatorio è sufficientemente grande, la diffentenza di potenziale nel corpo della cellula può essere ridotto in maniera significativa e, se questa riduzione ha magnitudine sufficiente, la base dell'assone viene depolarizzata.<br />
+Come conseguenza, l'interno della cellula diviene temporaneamente più positivo dell'esterno. L'improvviso cambio di potenziale, denominato **potenziale d'azione**, si propaga lungo l'assone. Quando questo impulso nervoso raggiunge la fine dell'assone, causa il rilascio dei neurotrasmettitori dai bottoni terminali, inducendo, quindi, un cambiamento del potenziale elettrico nel neurone ricettore.<br />
+Nel sistema nervoso umano, l'informazione è codificata da quantità in continuo cambiamento, cioè il potenziale elettrico della membrana di un neurone e il numero di impulsi nervosi che un neurone trasmette per secondo (o **firing rate**).
 
 I vantaggi delle reti neurali sono:
-1.  Alta velocità di calcolo, grazie al parallelismo;
-2.  Tolleranza ai guasti: la rete rimane funzionale anche quando molti neuroni smettono di funzionare;
-3.  La performance degrada in modo lineare con il numero di neuroni danneggiati;
-4.  Ottimo per l'apprendimento induttivo.
+1.  alta velocità di calcolo, grazie al parallelismo;
+2.  tolleranza ai guasti: la rete rimane funzionale anche quando molti neuroni smettono di funzionare;
+3.  la performance degrada in modo lineare con il numero di neuroni danneggiati;
+4.  ottimo per l'apprendimento induttivo.
 
 ### Threshold logic unit ###
-Per implementare una rete neurale artificiale occorre trovare un analogo del neurone naturale. Tale compito è svolto dalle **threshold logic unit** o **neuroni di McCulloch e Pitts**, nel seguito **TLU**.<br />
-Una TLU è una semplice processing unit costituita da $n$ variabili di input $x_1 \dots x_n$ e un output $y$. Ad ogni unità viene assegnato un **threshold** $\theta$ e ad ogni variabile di input un peso $w_i$ dove $i \in \{1, \dots ,n\}$ che rappresenta la rilevanza ai fine della computazione di quel particolare input.<br />
+Per implementare una rete neurale artificiale occorre trovare un analogo del neurone naturale. La struttura che emula tale compito viene denominata **threshold logic unit** o **neurone di McCulloch e Pitts**, nel seguito **TLU**.<br />
+Una TLU è una semplice processing unit costituita da $n$ variabili di input $x_1 \dots x_n$ e un output $y$. Ad ogni unità viene assegnato un **threshold** $\theta$ e ad ogni variabile di input un vettore di pesi $w_i$ dove $i \in \{1, \dots ,n\}$, il quale rappresenta la rilevanza di quel determinato input al fine della computazione.<br />
 L'output della TLU viene calcolato secondo la seguente formula:
 
 $$y =  \begin{cases}
@@ -52,15 +51,15 @@ $$y =  \begin{cases}
     0 & \text{altrimenti} 
    \end{cases}$$
 
-Attraverso questo semplice meccanismo è possibile simulare alcune funzioni booleane. Se si necessitasse di computare l'AND logico tra due input $x_1$ e $x_2$, risulterebbe sufficiente assegnare valori ai pesi e alla threshold in modo tale che essi soddisfino il seguente sistema di disequazioni:
+Attraverso questo semplice meccanismo è possibile simulare alcune funzioni booleane. Infatti, se si necessitasse di computare l'AND logico tra due input $x_1$ e $x_2$, risulterebbe sufficiente assegnare valori ai pesi e alla threshold in modo tale che essi soddisfino il seguente sistema di disequazioni:
 
 $$\begin{cases}
-    w_1 + w_2 \geq \theta \\
-    w_1 < \theta\\
-    w_2 < \theta
+    w_1 \cdot x_1 + w_2 \cdot x_2 \geq \theta \\
+    w_1 \cdot x_1 < \theta\\
+    w_2 \cdot x_2 < \theta
    \end{cases}$$
 
-Risulta evidente che l'unica circostanza in cui l'output della TLU verrà posto ad $1$ sarà quando entrambi gli input varranno $1$. Inoltre, si noti che esistono varie scelte possibili di pesi e threshold tali che verifichino le diseguaglianze.
+Risulta evidente che l'unica circostanza in cui l'output della TLU verrà posto ad $1$ sarà quando entrambi gli input varranno $1$. Inoltre, si noti che esistono varie scelte possibili di pesi e threshold tali per cui le disuaglianze siano verificate.
 
 ### Interpretazione geometrica ###
 La condizione che calcola l'output della TLU ricorda l'equazione di un iperpiano (ovvero un piano in $n$ dimensioni):
@@ -74,21 +73,19 @@ Sfortunatamente, non tutte le funzioni sono linearmente separabili.
 
 ![[images/geometria.png]]
 
-Un insieme di punti $X$ in uno spazio euclideo si dice **convesso** se e solo se non è vuoto, è connesso e ogni coppia di punti può essere congiunta da un segmento.
+Un insieme di punti $X$ in uno spazio euclideo si dice **convesso** se e solo se non è vuoto, è connesso ed ogni coppia di punti può essere congiunta da un segmento.
 
 Un **guscio convesso** di un insieme di punti $X$ in uno spazio euclideo è il più piccolo insieme convesso che contiene $X$.
 
 Due insiemi di punti $X$ e $Y$ si dicono **linearmente separabili** se e solo se i loro gusci convessi sono tra loro disgiunti.
 
-Questo significa che, già all'interno delle funzioni booleane, ne esistono alcune che non possono essere simulate da una TLU. Un esempio di ciò è la
-doppia implicazione.<br /> 
-Sebbene solo due funzioni booleane a due argomenti
-non siano linearmente indipendenti, al crescere degli argomenti il numero di funzioni che sono linearmente indipendenti diminuisce rapidamente. Per un numeri di argomenti arbitrariamente grande, una singola TLU non può calcolare praticamente nessuna funzione.
+Questo significa che, già all'interno delle funzioni booleane, ne esistono alcune che non possono essere simulate da una TLU. Un esempio di ciò è la doppia implicazione.<br /> 
+Sebbene solo due funzioni booleane a due argomenti non siano linearmente indipendenti, al crescere degli argomenti il numero di funzioni linearmente indipendenti diminuisce rapidamente. Per un numeri di argomenti arbitrariamente grande, una singola TLU non può calcolare praticamente nessuna funzione.
 
 ![images/doppiaimplicazione.png]
 
-Il problema può essere ovviato attraverso la costruzione di network di TLU più complessi. Come esempio, si consideri il network che simula la
-doppia implicazione.
+Il problema può essere ovviato attraverso la costruzione di network di TLU più complessi.<br />
+Come esempio, si consideri il network che simula la doppia implicazione.
 
 ![images/netTLU.png]
 
@@ -115,9 +112,8 @@ Quando, invece, $x = 1$, si avrà che la funzione dipenderà da entrambi i param
 
 ![images/error1.png]
 
-La funzione di errore così calcolata non può essere usata direttamente nella computazione perchè è composta da plateau e, quindi, non è ovunque derivabile. La soluzione è quella di calcolare la funzione di errore in modo tale che offra una misura di quanto sbagliata sia la relazione tra pesi e threshold. Si otterrà così una funzione di errore
-che, seppur ancora non differenziabile, lo sia localmente nei punti in cui l'errore si discosta da $0$. Ciò che verrà eseguito per correggere l'errore, dunque, sarà discendere verso l'area dove la funzione di errore si annulla. Questo è possibile esattamente perché è stato scelto di utilizzare una funzione derivabile nei punti di interesse,
-e, cioè, è sempre possibile calcolare la direzione migliore da segiore affinchè ci si muova nella direzione del plateu più basso, ovvero verso l'errore nullo. Le regole di adattamento possono essere applicate in due modi:
+La funzione di errore così calcolata non può essere usata direttamente nella computazione perchè è composta da plateau e, quindi, non è ovunque derivabile. La soluzione è quella di calcolare la funzione di errore in modo tale che offra una misura di quanto sbagliata sia la relazione tra pesi e threshold. Si otterrà così una funzione di errore che, seppur ancora non differenziabile, lo sia localmente nei punti in cui l'errore si discosta da $0$. Ciò che l'algoritmo farà per correggere l'errore, dunque, sarà discendere verso l'area dove la funzione di errore si annulla. Questo è possibile esattamente perché è stato scelto di utilizzare una funzione derivabile nei punti di interesse, e, cioè, è sempre possibile calcolare la direzione migliore da seguire affinchè ci si muova nella direzione del plateu più basso, ovvero verso l'errore nullo.<br />
+Le regole di adattamento possono essere applicate in due modi:
 -  **online learning**, ovvero l'opzione di adattare i pesi e threshold ad ogni singolo step di training; 
 - **batch learning**, ovvero l'opzione nel quale i cambiamenti vengono aggregati in **learning/training epoch** o **epoche**. Al termine di queste epoche, i cambiamenti aggregati vengono applicati.
 
@@ -125,103 +121,59 @@ e, cioè, è sempre possibile calcolare la direzione migliore da segiore affinch
 
 Si definisce di seguito la **delta rule** o **procedura di Widrow-Hoff** per allenare le TLU:
 
-Sia $\mathbf{v}$ = ($x_1, \dots, x_n$) il vettore di input di una TLU, $o$ l'output aspettato e $y$ il valore attuale. Se $o = y$, il training termina. Al contrario, per ridurre l'errore, verranno computati nuovi valori pervil threshold e i pesi nel seguente modo:
+Sia $\mathbf{v}$ = ($x_1, \dots, x_n$) il vettore di input di una TLU, $o$ l'output aspettato e $y$ il valore attuale. Se $o = y$, il training termina. Al contrario, per ridurre l'errore, verranno computati nuovi valori per il threshold e i pesi nel seguente modo:
 $$\theta^{(new)} = \theta^{(old)} + \Delta\theta \text{ con } \Delta\theta = -\eta(o - y)$$
 $$\forall i \in \{1, \dots, n\}:w_i^{(new)} = w_i^{(old)} + \Delta w_i \text{ con } \Delta w_i = \eta(o - y)x_i$$
 
-dove $\eta$ è il *learning rate*. Più questo valore è alto, più i cambiamenti su pesi threshold sono drastici.
+dove $\eta$ è il *learning rate*. Più questo valore è alto, più i cambiamenti su pesi e sul threshold sono drastici.
 
 Si è osservato, tuttavia, che non tutte le funzioni possono essere computate.<br />
 Per le funzioni linearmente separabili, esiste un teorema che garantisce che applicando la *delta rule* l'algoritmo converga ad una soluzione.<br />
-Sia $L = \{(\mathbf{v}_1,o_1), \dots (\mathbf{v}_n,o_n)\}$ una sequenza di pattern di allenamento per la TLU, dove $\mathbf{v}_i$ identifica l'$i$-esimo vettore di input e $o_i$ identifica l'$i$-esimo output atteso. Siano inoltre $L_0 = \{(\mathbf{v},o) \in L | o = 0\}$ e $L_1 = \{(\mathbf{v},o) \in L | o = 1\}$ rispettivamente gli insiemi delle coppie di pattern che hanno come output atteso $0$ e quelle che hanno come pattern atteso $1$. Se $L_0$ e $L_1$ sono linearmente separabili, allora esiste un $\mathbf{w}$ vettore di pesi e un $\theta$ threshold tale che:
+Sia $L = \{(\mathbf{v}_1,o_1), \dots (\mathbf{v}_n,o_n)\}$ una sequenza di pattern di allenamento per la TLU, dove $\mathbf{v}_i$ identifica l'$i$-esimo vettore di input e $o_i$ identifica l'$i$-esimo output atteso. Siano inoltre $L_0 = \{(\mathbf{v},o) \in L | o = 0\}$ e $L_1 = \{(\mathbf{v},o) \in L | o = 1\}$ rispettivamente gli insiemi delle coppie di pattern che hanno come output atteso $0$ e quelle che hanno come pattern atteso $1$.<br />
+Se $L_0$ e $L_1$ sono linearmente separabili, allora esiste un $\mathbf{w}$ vettore di pesi e un $\theta$ threshold tale che:
 $$\forall (\mathbf{v},0) \in L_0: \mathbf{w}\mathbf{v}< \theta$$
 $$\forall (\mathbf{v},1) \in L_1: \mathbf{w}\mathbf{v}\geq \theta$$
 
-Negli esempi precedenti, si è codificato il valore booleano *falso*
-come $0$ e *vero* come $1$. Questa scelta ha lo svantaggio che, nel caso del valore
-*falso*, i pesi corrispondenti non possano essere modificati perchè la
-formula contiene l'input come fattore.<br />
+Negli esempi precedenti, si è codificato il valore booleano *falso* come $0$ e *vero* come $1$. Questa scelta ha lo svantaggio che, nel caso del valore *falso*, i pesi corrispondenti non possano essere modificati perchè la formula contiene l'input come fattore.<br />
 Per evitare il problema si ricorre in letteratura ad una diversa codifica chiamata **ADALINE** (**ADAptive LINear Element**), dove *falso* viene ad assumere il valore $-1$
 e il *vero* $1$.<br />
-Si osservi che questa procedura di allenamento vale solo per le singole
-TLU nonostante si sia osservato che le TLU possono computare solo funzioni
-linearmente separabili. Sebbene questo inconveniente si possa evitare prendendo in esame *network* di TLU, questa procedura non si estende naturalmente a quel caso.
+Si osservi che questa procedura di allenamento vale solo per le singole TLU nonostante si sia osservato che le TLU possono computare solo funzioni linearmente separabili. Sebbene questo inconveniente si possa evitare prendendo in esame *network* di TLU, questa procedura non si estende naturalmente a quel caso.
 
 ### Artificial neural network ###
-Un'**artificial neural network** (in breve **ANN**) può essere rappresentata come un grafo diretto $G = (U,C)$ dove i nodi sono delle semplici TLU e gli archi sono le connessioni tra le varie unità. L'insieme dei nodi $U$ può essere partizionato in tre sottoinsiemi:
+Un'**artificial neural network** (in breve **ANN**) può essere rappresentata come un grafo diretto $G = (U,C)$ dove i nodi sono delle semplici TLU e gli archi sono le connessioni tra le varie unità.<br />
+L'insieme dei nodi $U$ può essere partizionato in tre sottoinsiemi:
 - $U_{(in)}$: è l'insieme dei nodi di input, i quali ricevono in modo diretto l'informazione dall'ambiente;
 - $U_{(out)}$: è l'insieme dei nodi di output, i quali sono i soli nodi a comunicare con l'esterno;
 - $U_{(hidden)}$: è l'insieme dei nodi interni, i quali propagano la computazione.
 
 ![images/ANN.png]
 
-Ogni connessione $(u,v) \in C$ possiede un peso $w_{uv}$ che definisce l'importanza del dato originato da $v$ per il neurone $u$. Ad ogni neurone $u \in U$ vengono, invece, assegnate quattro variabili: il **network input** $net_u$, la **activation** $act_u$, l'**output** $out_u$ e l'**external input** $ext_u$. Le prime tre variabili vengono calcolate in ogni
-momento dell'evoluzione dell'ANN grazie a tre funzioni associate:
+Ogni connessione $(u,v) \in C$ possiede un peso $w_{uv}$ che definisce l'importanza del dato originato da $v$ per il neurone $u$. Ad ogni neurone $u \in U$ vengono, invece, assegnate quattro variabili: il **network input** $net_u$, la **activation** $act_u$, l'**output** $out_u$ e l'**external input** $ext_u$.<br />
+Le prime tre variabili vengono calcolate in ogni momento dell'evoluzione dell'ANN grazie a tre funzioni associate:
 1. La network input function $f^u_{net}$: calcola la somma pesata dell'input;
 2.  La *activation function* $f^u_{act}$: ne esistono vari modelli (gaussiana, sigmoide, etc.) a seconda dell'applicazione;
 3. La *output function* $f^u_{out}$: definisce l'output a seconda che il neurone venga attivato o meno.
 
-Se il grafo che rappresenta l'ANN è aciclico si parla di *feed forward network* e la computazione procede in modo unidirezionale da $U_{(in)}$ a $U_{(out)}$ seguendo l'ordine topologico[^2] del network. Nel caso, invece, il grafo contenga un ciclo, allora si parla di *recurrent network*. I processi all'interno di un ANN si dividono in due fasi:
+Se il grafo che rappresenta l'ANN è aciclico si parla di *feed forward network* e la computazione procede in modo unidirezionale da $U_{(in)}$ a $U_{(out)}$ seguendo l'ordine topologico[^2] del network. Nel caso, invece, il grafo contenga un ciclo, allora si parla di *recurrent network*.<br />
+I processi all'interno di un ANN si dividono in due fasi:
 1.  La *input phase*: dove gli input esterni vengono acquisiti dai neuroni di input;
 2.  La *work phase*: dove i neuroni di input vengono spenti e un nuovo output viene computato da ogni neurone. La *work phase* continua finchè gli output sono stabili o si raggiunge un timeout.
 
-![computazione di una recurrent neural network che non giunge ad uno
-stato stabile](img/rnn1.png){#fig:8}
+![images/rnn1.png]
 
-Nel caso delle recurrent neural network, potrebbe accadere che non si
-giunga mai ad uno stato stabile a seconda di quale ordine di update dei
-neuroni si scelga di seguire. In Figura [8](#fig:8){reference-type="ref"
-reference="fig:8"} abbiamo un esempio di una computazione con risultato
-oscillante in un recurrent neural network. L'ordine seguito per l'update
-è: $u_3,u_1,u_2,u_3,u_1,u_2\dots$. Se si fosse seguito un diverso ordine
-la computazione avrebbe raggiunto uno stato stabile.
+Nel caso delle recurrent neural network, potrebbe accadere che non si giunga mai ad uno stato stabile a seconda di quale ordine di update dei neuroni si scelga di seguire. Si osservi un esempio di una computazione con risultato oscillante in un recurrent neural network. L'ordine seguito per l'update è: $u_3,u_1,u_2,u_3,u_1,u_2\dots$. Se si fosse seguito un ordine diverso, la computazione avrebbe raggiunto uno stato stabile.
 
-Training delle ANN
-------------------
+### Training delle ANN ###
+Abbiamo visto in precedenza che è possibile allenare in modo automatico una singola TLU grazie alla delta rule. Come abbiamo già avuto modo di osservare questo procedimento non può essere generalizzato alle ANN. Tuttavia, i principi a cui ci ispiriamo sono i medesimi: calcolare correzioni ai pesi ed ai threshold dei singoli neuroni e aggiornarli di conseguenza. A seconda del tipo dei dati che utilizziamo per allenare le nostre ANN e dei criteri di ottimizzazione distiguiamo due tipi di apprendimento:
+1. **fixed learning task** o apprendimento con supervisione;
+2. **free learning task** o apprendimento senza supervisione.
 
-Abbiamo visto in precedenza che è possibile allenare in modo automatico
-una singola TLU grazie alla delta rule. Come abbiamo già avuto modo di
-osservare questo procedimento non può essere generalizzato alle ANN.
-Tuttavia, i principi a cui ci ispiriamo sono i medesimi: calcolare
-correzioni ai pesi ed ai threshold dei singoli neuroni e aggiornarli di
-conseguenza. A seconda del tipo dei dati che utilizziamo per allenare le
-nostre ANN e dei criteri di ottimizzazione distiguiamo due tipi di
-apprendimento:
-
-1.  *fixed learning task* o apprendimento con supervisione
-
-2.  *free learning task* o apprendimento senza supervisione
-
-Nel caso di una fixed learning task avremo un insieme
-$L=\{(\mathbf{i}_1,\mathbf{o}_1),\dots,(\mathbf{i}_n,\mathbf{o}_n)\}$ di
-coppie che assegnano ad ogni input un output desiderato. Una volta
-completato il processo di apprendimento, la ANN dovrebbe essere in grado
-di restituire l'output adeguato rispetto all'input che le viene
-presentato. In pratica, questo accade raramente e bisogna accontentarsi
-di un risultato approssimativo. Per giudicare in che misura una ANN si
-avvicina alla soluzione della fixed learning task si adotta una funzione
-di errore. Solitamente tale funziona viene calcolata come il quadrato
+Nel caso di una fixed learning task avremo un insieme $L=\{(\mathbf{i}_1,\mathbf{o}_1),\dots,(\mathbf{i}_n,\mathbf{o}_n)\}$ di
+coppie che assegnano ad ogni input un output desiderato. Una volta completato il processo di apprendimento, la ANN dovrebbe essere in grado di restituire l'output adeguato rispetto all'input che le viene presentato. In pratica, questo accade raramente e bisogna accontentarsi di un risultato approssimativo. Per giudicare in che misura una ANN si avvicina alla soluzione della fixed learning task si adotta una funzione di errore. Solitamente tale funziona viene calcolata come il quadrato
 della differenza tra l'output desiderato e quello attuale:
 $$e = \sum_{l \in L} \sum_{v \in U_{(out)}} e^l_v$$ dove
-$$e^l_v = (o^l_v - out_v)^2$$ è l'errore individuale per una particolare
-coppia $l$ e un neurone di output $v$. Il quadrato delle differenze
-viene scelto per vari motivi. Per prima cosa, errori positivi e negativi
-altrimenti si cancellerebbero a vicenda e non sarebbero presi in
-considerazione. In secondo luogo, questa funzione è ovunque derivabile,
-semplificando così il processo di aggiornamento dei pesi e dei
-threshold. Nel free learning task avremo, invece, solo una sequenza di
-input $L = \{\mathbf{i}_1, \dots, \mathbf{i}_n\}$. Questo comporta che,
-a differenza del fixed learning task, non avremo modo di calcolare una
-funzione di errore rispetto ad un output atteso. In linea di principio,
-infatti, l'obiettivo di un free learning task sarà quello di produrre un
-output \"simile\" per input \"simili\". Un caso particolare potrebbe
-essere quello del *clustering* dei vettori di input. Qualsiasi processo
-di apprendimento si scelga esistono alcune buone pratiche che è utile
-seguire. Una è quella di normalizzare il vettore di input. Comunemente
-lo si scala in modo tale che abbia media uguale a 0 e la varianza ad 1.
-Per fare questo uno deve calcolare per ogni neurone $u_k \in U_{(in)}$
-la media aritmetica $\mu_k$ e la deviazione standard $\sigma_k$ degli
-input esterni:
+$$e^l_v = (o^l_v - out_v)^2$$è l'errore individuale per una particolare coppia $l$ e un neurone di output $v$. Il quadrato delle differenze viene scelto per vari motivi. Per prima cosa, errori positivi e negativi altrimenti si cancellerebbero a vicenda e non sarebbero presi in
+considerazione. In secondo luogo, questa funzione è ovunque derivabile, semplificando così il processo di aggiornamento dei pesi e dei threshold. Nel free learning task avremo, invece, solo una sequenza di input $L = \{\mathbf{i}_1, \dots, \mathbf{i}_n\}$. Questo comporta che, a differenza del fixed learning task, non avremo modo di calcolare una funzione di errore rispetto ad un output atteso. In linea di principio, infatti, l'obiettivo di un free learning task sarà quello di produrre un output simile per input simili. Un caso particolare potrebbe essere quello del *clustering* dei vettori di input. Qualsiasi processo di apprendimento si scelga esistono alcune buone pratiche che è utile seguire. Una è quella di normalizzare il vettore di input. Comunemente lo si scala in modo tale che abbia media uguale a $0$ e la varianza ad $1$. Per fare questo uno deve calcolare per ogni neurone $u_k \in U_{(in)}$ la media aritmetica $\mu_k$ e la deviazione standard $\sigma_k$ degli input esterni:
 
 $$\mu_k = \frac{1}{|L|}\sum_{l \in L} ext^l_{u_k} \quad \quad \sigma_k = \sqrt{\frac{1}{|L|}\sum_{l \in L} (ext^l_{u_k} - \mu_k)^2}$$
 
@@ -229,48 +181,27 @@ Quindi gli input esterni vengono ricalcolati secondo questa formula:
 
 $$ext^{new}_{u_k} = \frac{ext^{old}_{u_k} - \mu_k}{\sigma_k}$$
 
-Multi-layer perceptrons
------------------------
+### Multi-layer perceptrons ###
 
-![multi-layer perceptrons](img/MLP.png){#fig:9}
+![images/MLP.png]
 
-Una delle prime ANN sviluppate furono i *multi-layer perceptrons* (nel
-seguito MLP). Le MLP sono particolari feed-forward network in cui le
-unità base (i percettroni) sono organizzati in *layer* e ogni layer ha
-connessioni solo con il layer successivo (vedi Figura
-[9](#fig:9){reference-type="ref" reference="fig:9"}). Questo permette di
-minimizzare il fenomeno delle continue ricomputazioni che avverrebbero
-durante la propagazione del segnale nei normali feed-forward network. La
-network input function di ogni neurone
-$u \in U_{(hidden) \cup U_{(out)}}$ viene calcolata come la somma pesata
-degli input, come:
+Una delle prime ANN sviluppate furono i *multi-layer perceptrons* (nel seguito MLP). Le MLP sono particolari feed-forward network in cui le unità base (i percettroni) sono organizzati in *layer* e ogni layer ha connessioni solo con il layer successivo. Questo permette di minimizzare il fenomeno delle continue ricomputazioni che avverrebbero durante la propagazione del segnale nei normali feed-forward network.<br />
+La network input function di ogni neurone $u \in U_{(hidden) \cup U_{(out)}}$ viene calcolata come la somma pesata degli input, come:
 $$f^u_{net}(\mathbf{w}_u,\mathbf{i}_u) = \sum_{v \in pred(u)} w_{uv}out_v$$
-L'activation function, invece, è una così detta *funzione sigmoide*,
-ossia una funzione monotona non descrescente tale che:
+L'activation function, invece, è una così detta *funzione sigmoide*, ossia una funzione monotona non descrescente tale che:
 $$f: \mathbb{R} \to [0,1] \quad \text{ con } \lim_{x\to-\infty}f(x) = 0 \quad \text{ e } \lim_{x\to\infty}f(x) = 1$$
 
-![step function](img/step.png){width="0.9\\linewidth" height="3cm"}
+![images/step.png]
 
-![semi-linear function](img/semilinear.png){width="0.9\\linewidth"
-height="3cm"}
+![images/semilinear.png]
 
-![sine up to saturation](img/sineup.png){width="0.9\\linewidth"
-height="3cm"}
+![images/sineup.png]
 
-![logistic function](img/logistic.png){width="0.9\\linewidth"
-height="3cm"}
+![images/logistic.png]
 
-La funzione di output può essere sia una sigmoide oppure una semplice
-funzione lineare.\
-La struttura a layer di un MLP suggerisce che si possa descrivere il
-network con l'aiuto di una matrice dei pesi. In questo modo la
-computazione del MLP può essere rappresentata attraverso la
-moltiplicazione tra matrici e vettori. Tuttavia, noi non abbiamo
-utilizzato in classe una matrice per l'intero network, ma una per ogni
-singolo layer. Siano $U_1 = \{ v_1, \dots, v_n \}$ e
-$U_2 = \{ u_1, \dots, u_m \}$ due layer consecutivi di neuroni. I pesi
-delle loro connessioni sono codificati in una matrice $W$ di dimensioni
-$n \times m$:
+La funzione di output può essere sia una sigmoide oppure una semplice funzione lineare. La struttura a layer di un MLP suggerisce che si possa descrivere il
+network con l'aiuto di una matrice dei pesi. In questo modo la computazione del MLP può essere rappresentata attraverso la moltiplicazione tra matrici e vettori. Tuttavia, noi non abbiamo utilizzato in classe una matrice per l'intero network, ma una per ogni singolo layer.<br />
+Siano $U_1 = \{ v_1, \dots, v_n \}$ e $U_2 = \{ u_1, \dots, u_m \}$ due layer consecutivi di neuroni. I pesi delle loro connessioni sono codificati in una matrice $W$ di dimensioni $n \times m$:
 
 $$W = \begin{pmatrix}
   w_{u_1v_1} & w_{u_1v_2} & \cdots & w_{u_1v_n} \\
@@ -279,14 +210,11 @@ $$W = \begin{pmatrix}
   w_{u_mv_1} & w_{u_mv_2} & \cdots & w_{u_mv_n} 
  \end{pmatrix}$$
 
-Se due neuroni $u_i$ e $v_j$ non sono connessi, è sufficiente porre
-$w_{u_iv_j} = 0$. Il vantaggio di questa matrice sta nel fatto che è
-possibile scrivere il network input di un layer come:
+Se due neuroni $u_i$ e $v_j$ non sono connessi, è sufficiente porre $w_{u_iv_j} = 0$. Il vantaggio di questa matrice sta nel fatto che è possibile scrivere il network input di un layer come:
 
 $$\mathbf{net}_{U_2} = W \mathbf{in}_{U_2} = W \mathbf{out}_{U_1}$$
 
-dove $\mathbf{net}_{U_2} = (net_{u_1}, \dots, net_{u_m})^\top$ e
-$\mathbf{in}_{U_2} = \mathbf{out}_{U_1} = (out_{v_1}, \dots, out_{v_n})^\top$.\
+dove $\mathbf{net}_{U_2} = (net_{u_1}, \dots, net_{u_m})^\top$ e $\mathbf{in}_{U_2} = \mathbf{out}_{U_1} = (out_{v_1}, \dots, out_{v_n})^\top$.<br />
 Fino ad adesso abbiamo visto che le ANN possono rappresentare funzioni
 booleane, ma quando si parla di funzioni a valori continui?
 
