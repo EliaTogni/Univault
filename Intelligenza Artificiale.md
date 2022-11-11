@@ -7,31 +7,33 @@ Dato un qualunque sistema, se si dispone di un insieme di leggi o regole che lo 
 L'**Intelligenza Artificiale** nasce con lo scopo di estrarre conoscenza direttamente dai dati a disposizione attraverso strumenti automatici. Questo modello si differenzia rispetto alla descrizione a
 priori del sistema, in quanto lo simula per comprenderne a posteriori il suo comportamento. Per far questo, è stato utile studiare come gli
 esseri viventi interagiscano con l'ambiente circostante e come vi si adattino. Vari modelli di intelligenza artificiale sono stati proposti lungo la storia della disciplina. Una categorizzazione preliminare che si fa in letteratura è quella tra modelli:
-- **simbolici**, in cui i dati vengono sottoposti a codifica e solo dopo  manipolati. Storicamente questo è stato il primo approccio adottato.
+- **simbolici**, in cui i dati vengono sottoposti a codifica e solo dopo manipolati. Storicamente questo è stato il primo approccio adottato.
 - **pre-simbolici**, in cui i dati vengono manipolati direttamente, senza la mediazione di una codifica. Fanno parte di questa famiglia: le reti neurali, i sistemi fuzzy e gli algoritmi evolutivi.
 
 ## Reti neurali ##
 
 ### Background biologico ###
 
-Il cervello umano permette di analizzare in maniera sofisticata l'ambiente in cui si trova per agire nel miglior modo ritenuto possibile. Queste analisi sono basate sul funzionamento del cervello stesso: come estrae informazioni, come queste interagiscono con le informazioni contenute in memoria, etc.<br />
+Il cervello umano permette di analizzare in maniera sofisticata l'ambiente in cui si trova per agire nella maniera ritenuta migliore possibile. Queste analisi sono basate sul funzionamento del cervello stesso su come esso estrae informazioni e su come queste interagiscano con le informazioni contenute in memoria, etc.<br />
 Lo studio di questi processi è un campo di ricerca molto attivo e multidisciplinare nel quale convergono gli interessi della biologia, della medicina e della psicologia. Tali studi offrono dei modelli che simulano l'attività celebrale. Proprio questi modelli vengono poi utilizzati dall'informatica per offrire strumenti
 di predizione, ottimizzazione e problem-solving in vari campi applicativi (guida automatizzata, smart cities, etc.).<br />
 Il successo di questi modelli è condizionato dal fatto che il cervello è considerabile alla pari di un potente computer capace di computare in parallelo grandi porzioni di dati.
+
 ![Neurone](img/neurone.jpeg)
 
 Il cervello è composto da miliardi semplici unità, cellule chiamate **neuroni**. Un neurone è una cellula la quale raccoglie e trasmette attività elettrica. Questi neuroni comunicano tra di loro inviando informazioni sotto forma di segnali di attivazione l'un l'altro, lungo connessioni orientate. Il neurone a sua volta è costituito da:
 -   il **corpo cellulare**, il quale contiene il nucleo. Viene anche chiamato **Soma**. 
 -   i **dendriti**, i quali sono filamenti ramificati che si estendono dal corpo cellulare. 
 -   l'**assone**: un lungo filamento che parte dal corpo centrale della cellula.
-
 L'assone e i dendriti differiscono per la struttura e per le proprietà della **membrana cellulare**. In particolare, l'assone è spesso coperto da una **guaina mielinica**.<br />
 Gli assoni sono i percorsi orientati lungo i quali i neuroni comunicano tra di loro. L'assone di un neurone conduce ai dendriti di altri neuroni. Alla sua terminazione, l'assone è fortemente ramificato e possiede alla fine di queste ramificazioni dei **bottoni sinaptici** o **bottoni terminali**.<br />
-Ciascun bottone terminale entra quasi a contatto con un dendrite o con il corpo cellulare di un altro neurone. Questo gap che iene a formarsi è chiamato **sinapsi**.<br />
+Ciascun bottone terminale entra quasi a contatto con un dendrite o con il corpo cellulare di un altro neurone. Questo gap che viene a formarsi è chiamato **sinapsi**.<br />
+La più comune forma di comunicazione tra neuroni avviene quando un bottone terminale dell'assone rilascia determinate sostanze chimiche, i **neurotrasmettitori**, i quali agiscono sulla membrana del dendrito ricettore e cambiano la sua polarizzazione. A seconda del tipo di neurotrasmettitore rilasciato, la differenza di potenziale potrebbe essre ridotta oppure aumentata dal lato del dendrite. Le sinapsi che riducono la differenza di potenziale vengono chiamate **eccitatorie** mentre quelle che la incrementano sono chiamate **inibitorie**.<br />
+Il cambiamento del potenziale elettrico causato da una singola sinapsi è poco significativo ma questo effetto può accumularsi (considerando gli stimoli eccitatori come positivi e quelli inibitori come negativi). Se l'input netto eccitatorio è sufficientemente grande, la diffentenza di potenziale nel corspo della cellula può essere ridotto in maniera significativa. Se questa riduzione ha magnitudine sufficiente, la base dell'assone viene depolarizzata.<br />
+Come conseguenza, l'interno della cellula diviene temporaneamente più positivo dell'esterno. L'improvviso cambio di potenxiale, chiamato **potenziale d'azione**, si propaga lungo l'assone. Quando questo impulso nervoso raggiunge la fine dell'assone, causa il rilascio dei neurotrasmettitori dai bottoni terminali, inducendo quindi un cambiamento del potenziale elettrico nel neurone ricettore.
+
 Quando e come il neurone trasmetta il segnale di attivazione dipende dal particolare modello fisiologico che si voglia adottare.<br />
-Solitamente si considera una **threshold**, superato il quale, l'assone viene depolarizzato e la differenza di potenziale provoca il passaggio di una corrente. Un diverso modello prende in considerazione non tanto la potenza dello stimolo quanto il loro numero. Questa struttura a network
-offre ottime prestazioni. Per un confronto con una CPU classica
-alleghiamo la seguente tabella:
+Per un confronto con una CPU classica alleghiamo la seguente tabella:
 
 ![image](img/cpuvshuman.png)
 
@@ -50,14 +52,8 @@ I vantaggi delle reti neurali sono:
 Threshold logic unit
 --------------------
 
-Per implementare una rete neurale artificiale occorre trovare un analogo
-del neurone naturale. Tale compito è svolto dalle *threshold logic
-unit*, nel seguito TLU. Una TLU è costituita da $n$ variabili di input
-$x_1 \dots x_n$ e un output $y$. Ad ogni unità viene assegnato un
-*threshold* $\theta$ e ad ogni variabile di input un peso $w_i$ dove
-$i \in \{1, \dots ,n\}$ che rappresenta la rilevanza ai fine della
-computazione di quel particolare input. L'output della TLU viene
-calcolato secondo la seguente formula:
+Per implementare una rete neurale artificiale occorre trovare un analogo del neurone naturale. Tale compito è svolto dalle **threshold logic unit**, nel seguito **TLU**. Una TLU è costituita da $n$ variabili di input $x_1 \dots x_n$ e un output $y$. Ad ogni unità viene assegnato un **threshold** $\theta$ e ad ogni variabile di input un peso $w_i$ dove $i \in \{1, \dots ,n\}$ che rappresenta la rilevanza ai fine della computazione di quel particolare input.<br />
+L'output della TLU viene calcolato secondo la seguente formula:
 
 $$y =  \begin{cases}
     1 & \text{se } \sum w_ix_i \geq \theta \\
