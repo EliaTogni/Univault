@@ -51,7 +51,7 @@ $$y =  \begin{cases}
     0 & \text{altrimenti} 
    \end{cases}$$
 
-Attraverso questo semplice meccanismo è possibile simulare alcune funzioni booleane. Infatti, se si necessitasse di computare l'AND logico tra due input $x_1$ e $x_2$, risulterebbe sufficiente assegnare valori ai pesi e alla threshold in modo tale che essi soddisfino il seguente sistema di disequazioni:
+Attraverso questo semplice meccanismo è possibile simulare alcune funzioni booleane. Infatti, se fosse necessario eseguire la computazione dell'AND logico tra due input $x_1$ e $x_2$, risulterebbe sufficiente assegnare valori ai pesi e alla threshold in modo tale che essi soddisfino il seguente sistema di disequazioni:
 
 $$\begin{cases}
     w_1 \cdot x_1 + w_2 \cdot x_2 \geq \theta \\
@@ -122,6 +122,7 @@ Le regole di adattamento possono essere applicate in due modi:
 Si definisce di seguito la **delta rule** o **procedura di Widrow-Hoff** per allenare le TLU:
 
 Sia $\mathbf{v}$ = ($x_1, \dots, x_n$) il vettore di input di una TLU, $o$ l'output aspettato e $y$ il valore attuale. Se $o = y$, il training termina. Al contrario, per ridurre l'errore, verranno computati nuovi valori per il threshold e i pesi nel seguente modo:
+
 $$\theta^{(new)} = \theta^{(old)} + \Delta\theta \text{ con } \Delta\theta = -\eta(o - y)$$
 $$\forall i \in \{1, \dots, n\}:w_i^{(new)} = w_i^{(old)} + \Delta w_i \text{ con } \Delta w_i = \eta(o - y)x_i$$
 
@@ -131,6 +132,7 @@ Si è osservato, tuttavia, che non tutte le funzioni possono essere computate.<b
 Per le funzioni linearmente separabili, esiste un teorema che garantisce che applicando la *delta rule* l'algoritmo converga ad una soluzione.<br />
 Sia $L = \{(\mathbf{v}_1,o_1), \dots (\mathbf{v}_n,o_n)\}$ una sequenza di pattern di allenamento per la TLU, dove $\mathbf{v}_i$ identifica l'$i$-esimo vettore di input e $o_i$ identifica l'$i$-esimo output atteso. Siano inoltre $L_0 = \{(\mathbf{v},o) \in L | o = 0\}$ e $L_1 = \{(\mathbf{v},o) \in L | o = 1\}$ rispettivamente gli insiemi delle coppie di pattern che hanno come output atteso $0$ e quelle che hanno come pattern atteso $1$.<br />
 Se $L_0$ e $L_1$ sono linearmente separabili, allora esiste un $\mathbf{w}$ vettore di pesi e un $\theta$ threshold tale che:
+
 $$\forall (\mathbf{v},0) \in L_0: \mathbf{w}\mathbf{v}< \theta$$
 $$\forall (\mathbf{v},1) \in L_1: \mathbf{w}\mathbf{v}\geq \theta$$
 
@@ -150,30 +152,41 @@ L'insieme dei nodi $U$ può essere partizionato in tre sottoinsiemi:
 
 Ogni connessione $(u,v) \in C$ possiede un peso $w_{uv}$ che definisce l'importanza del dato originato da $v$ per il neurone $u$. Ad ogni neurone $u \in U$ vengono, invece, assegnate quattro variabili: il **network input** $net_u$, la **activation** $act_u$, l'**output** $out_u$ e l'**external input** $ext_u$.<br />
 Le prime tre variabili vengono calcolate in ogni momento dell'evoluzione dell'ANN grazie a tre funzioni associate:
-1. La network input function $f^u_{net}$: calcola la somma pesata dell'input;
-2.  La *activation function* $f^u_{act}$: ne esistono vari modelli (gaussiana, sigmoide, etc.) a seconda dell'applicazione;
-3. La *output function* $f^u_{out}$: definisce l'output a seconda che il neurone venga attivato o meno.
+1. La network input function $f^u_{net}$, la quale calcola la somma pesata dell'input;
+2.  La *activation function* $f^u_{act}$, della quale ne esistono vari modelli (gaussiana, sigmoide, etc.) a seconda dell'applicazione;
+3. La *output function* $f^u_{out}$, la quale definisce l'output a seconda che il neurone venga attivato o meno.
 
-Se il grafo che rappresenta l'ANN è aciclico si parla di *feed forward network* e la computazione procede in modo unidirezionale da $U_{(in)}$ a $U_{(out)}$ seguendo l'ordine topologico[^2] del network. Nel caso, invece, il grafo contenga un ciclo, allora si parla di *recurrent network*.<br />
+Se il grafo che rappresenta l'ANN è aciclico si parla di **feed forward network** e la computazione procede in modo unidirezionale da $U_{(in)}$ a $U_{(out)}$ seguendo l'ordine topologico del network. Nel caso in cui, invece, il grafo contenga un ciclo, allora si parla di **recurrent network**.<br />
 I processi all'interno di un ANN si dividono in due fasi:
-1.  La *input phase*: dove gli input esterni vengono acquisiti dai neuroni di input;
-2.  La *work phase*: dove i neuroni di input vengono spenti e un nuovo output viene computato da ogni neurone. La *work phase* continua finchè gli output sono stabili o si raggiunge un timeout.
+1.  La **input phase**, dove gli input esterni vengono acquisiti dai neuroni di input;
+2.  La **work phase**, dove i neuroni di input vengono spenti e un nuovo output viene computato da ogni neurone. La work phase continua finchè gli output raggiungono la stabilità o si raggiunge un timeout.
 
 ![images/rnn1.png]
 
 Nel caso delle recurrent neural network, potrebbe accadere che non si giunga mai ad uno stato stabile a seconda di quale ordine di update dei neuroni si scelga di seguire. Si osservi un esempio di una computazione con risultato oscillante in un recurrent neural network. L'ordine seguito per l'update è: $u_3,u_1,u_2,u_3,u_1,u_2\dots$. Se si fosse seguito un ordine diverso, la computazione avrebbe raggiunto uno stato stabile.
 
 ### Training delle ANN ###
-Abbiamo visto in precedenza che è possibile allenare in modo automatico una singola TLU grazie alla delta rule. Come abbiamo già avuto modo di osservare questo procedimento non può essere generalizzato alle ANN. Tuttavia, i principi a cui ci ispiriamo sono i medesimi: calcolare correzioni ai pesi ed ai threshold dei singoli neuroni e aggiornarli di conseguenza. A seconda del tipo dei dati che utilizziamo per allenare le nostre ANN e dei criteri di ottimizzazione distiguiamo due tipi di apprendimento:
+Si è osservato in precedenza che è possibile allenare in modo automatico una singola TLU grazie alla delta rule. Questo procedimento non può essere generalizzato alle ANN tuttavia, per quanto riguarda il training, ci si basa sui medesimi principi: calcolare correzioni ai pesi ed ai threshold dei singoli neuroni e aggiornarli di conseguenza.<br />
+A seconda del tipo dei dati utilizzati per allenare le ANN e a seconda dei criteri di ottimizzazione, è possibile distinguere due tipi di apprendimento:
 1. **fixed learning task** o apprendimento con supervisione;
 2. **free learning task** o apprendimento senza supervisione.
 
-Nel caso di una fixed learning task avremo un insieme $L=\{(\mathbf{i}_1,\mathbf{o}_1),\dots,(\mathbf{i}_n,\mathbf{o}_n)\}$ di
-coppie che assegnano ad ogni input un output desiderato. Una volta completato il processo di apprendimento, la ANN dovrebbe essere in grado di restituire l'output adeguato rispetto all'input che le viene presentato. In pratica, questo accade raramente e bisogna accontentarsi di un risultato approssimativo. Per giudicare in che misura una ANN si avvicina alla soluzione della fixed learning task si adotta una funzione di errore. Solitamente tale funziona viene calcolata come il quadrato
-della differenza tra l'output desiderato e quello attuale:
-$$e = \sum_{l \in L} \sum_{v \in U_{(out)}} e^l_v$$ dove
-$$e^l_v = (o^l_v - out_v)^2$$è l'errore individuale per una particolare coppia $l$ e un neurone di output $v$. Il quadrato delle differenze viene scelto per vari motivi. Per prima cosa, errori positivi e negativi altrimenti si cancellerebbero a vicenda e non sarebbero presi in
-considerazione. In secondo luogo, questa funzione è ovunque derivabile, semplificando così il processo di aggiornamento dei pesi e dei threshold. Nel free learning task avremo, invece, solo una sequenza di input $L = \{\mathbf{i}_1, \dots, \mathbf{i}_n\}$. Questo comporta che, a differenza del fixed learning task, non avremo modo di calcolare una funzione di errore rispetto ad un output atteso. In linea di principio, infatti, l'obiettivo di un free learning task sarà quello di produrre un output simile per input simili. Un caso particolare potrebbe essere quello del *clustering* dei vettori di input. Qualsiasi processo di apprendimento si scelga esistono alcune buone pratiche che è utile seguire. Una è quella di normalizzare il vettore di input. Comunemente lo si scala in modo tale che abbia media uguale a $0$ e la varianza ad $1$. Per fare questo uno deve calcolare per ogni neurone $u_k \in U_{(in)}$ la media aritmetica $\mu_k$ e la deviazione standard $\sigma_k$ degli input esterni:
+Nel caso di una fixed learning task si avrà un insieme $L=\{(\mathbf{i}_1,\mathbf{o}_1),\dots,(\mathbf{i}_n,\mathbf{o}_n)\}$ di
+coppie le quali assegnano ad ogni input un output desiderato. Una volta completato il processo di apprendimento, la ANN dovrebbe essere in grado di restituire l'output adeguato rispetto all'input che le viene presentato. In pratica, questo accade raramente e bisogna accontentarsi di un risultato approssimativo.<br />
+Per giudicare in che misura una ANN si avvicina alla soluzione della fixed learning task si adotta una funzione di errore, solitamente calcolata come il quadrato della differenza tra l'output desiderato e quello attuale:
+
+$$e = \sum_{l \in L} \sum_{v \in U_{(out)}} e^l_v$$
+
+dove
+
+$$e^l_v = (o^l_v - out_v)^2$$
+
+è l'errore individuale per una particolare coppia $l$ e per un neurone di output $v$.<br />
+Il quadrato delle differenze viene scelto per vari motivi. Per prima cosa, errori positivi e negativi altrimenti si cancellerebbero a vicenda e non sarebbero presi in
+considerazione. In secondo luogo, questa funzione è ovunque derivabile, semplificando così il processo di aggiornamento dei pesi e dei threshold.<br />
+Nel free learning task si avrà, invece, solo una sequenza di input $L = \{\mathbf{i}_1, \dots, \mathbf{i}_n\}$. Questo comporta che, a differenza del fixed learning task, non si avrà modo di calcolare una funzione di errore rispetto ad un output atteso.<br />
+In linea di principio l'obiettivo di un free learning task sarà quello di produrre un output simile per input simili. Un caso particolare potrebbe essere quello del *clustering* dei vettori di input.<br />
+Qualsiasi processo di apprendimento si scelga esistono alcune buone pratiche che è utile seguire. Una di esse è quella di standardizzare il vettore di input. Comunemente lo si scala in modo tale che abbia media uguale a $0$ e la varianza ad $1$. Per fare ciò, è necessario calcolare per ogni neurone $u_k \in U_{(in)}$ la media aritmetica $\mu_k$ e la deviazione standard $\sigma_k$ degli input esterni:
 
 $$\mu_k = \frac{1}{|L|}\sum_{l \in L} ext^l_{u_k} \quad \quad \sigma_k = \sqrt{\frac{1}{|L|}\sum_{l \in L} (ext^l_{u_k} - \mu_k)^2}$$
 
@@ -185,10 +198,10 @@ $$ext^{new}_{u_k} = \frac{ext^{old}_{u_k} - \mu_k}{\sigma_k}$$
 
 ![images/MLP.png]
 
-Una delle prime ANN sviluppate furono i *multi-layer perceptrons* (nel seguito MLP). Le MLP sono particolari feed-forward network in cui le unità base (i percettroni) sono organizzati in *layer* e ogni layer ha connessioni solo con il layer successivo. Questo permette di minimizzare il fenomeno delle continue ricomputazioni che avverrebbero durante la propagazione del segnale nei normali feed-forward network.<br />
+Una delle prime ANN sviluppate furono i **multi-layer perceptrons** (abbreviate in seguito **MLP**). Le MLP sono particolari feed-forward network in cui le unità base (i **Percettroni**) sono organizzati in *layer* ed ogni layer presenta connessioni solo con il layer successivo. Questo permette di minimizzare il fenomeno delle continue ricomputazioni che avverrebbero durante la propagazione del segnale nei normali feed-forward network.<br />
 La network input function di ogni neurone $u \in U_{(hidden) \cup U_{(out)}}$ viene calcolata come la somma pesata degli input, come:
 $$f^u_{net}(\mathbf{w}_u,\mathbf{i}_u) = \sum_{v \in pred(u)} w_{uv}out_v$$
-L'activation function, invece, è una così detta *funzione sigmoide*, ossia una funzione monotona non descrescente tale che:
+L'activation function, invece, è una cosìddetta **funzione sigmoide**, ossia una funzione monotona non descrescente tale che:
 $$f: \mathbb{R} \to [0,1] \quad \text{ con } \lim_{x\to-\infty}f(x) = 0 \quad \text{ e } \lim_{x\to\infty}f(x) = 1$$
 
 ![images/step.png]
@@ -199,8 +212,7 @@ $$f: \mathbb{R} \to [0,1] \quad \text{ con } \lim_{x\to-\infty}f(x) = 0 \quad \t
 
 ![images/logistic.png]
 
-La funzione di output può essere sia una sigmoide oppure una semplice funzione lineare. La struttura a layer di un MLP suggerisce che si possa descrivere il
-network con l'aiuto di una matrice dei pesi. In questo modo la computazione del MLP può essere rappresentata attraverso la moltiplicazione tra matrici e vettori. Tuttavia, noi non abbiamo utilizzato in classe una matrice per l'intero network, ma una per ogni singolo layer.<br />
+La funzione di output può essere sia una sigmoide oppure una semplice funzione lineare. La struttura a layer di un MLP suggerisce che si possa descrivere il network con l'aiuto di una matrice dei pesi. In questo modo, la computazione del MLP può essere rappresentata attraverso la moltiplicazione tra matrici e vettori. Tuttavia, non si è utilizzata una matrice per l'intero network, ma una per ogni singolo layer.<br />
 Siano $U_1 = \{ v_1, \dots, v_n \}$ e $U_2 = \{ u_1, \dots, u_m \}$ due layer consecutivi di neuroni. I pesi delle loro connessioni sono codificati in una matrice $W$ di dimensioni $n \times m$:
 
 $$W = \begin{pmatrix}
