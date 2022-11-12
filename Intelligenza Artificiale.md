@@ -17,8 +17,7 @@ Una categorizzazione preliminare che si fa in letteratura è quella tra due tipi
 
 ### Background biologico ###
 Il cervello umano permette di analizzare in maniera sofisticata l'ambiente in cui si trova per agire nella maniera ritenuta migliore possibile. Queste analisi sono basate sul funzionamento del cervello stesso, su come esso estrae informazioni e su come queste interagiscano con le informazioni contenute in memoria, etc.<br />
-Lo studio di questi processi è un campo di ricerca molto attivo e multidisciplinare nel quale convergono gli interessi della biologia, della medicina e della psicologia. Tali studi offrono dei modelli che simulano l'attività celebrale. Proprio questi modelli vengono poi utilizzati dall'informatica per offrire strumenti
-di predizione, ottimizzazione e problem-solving in vari campi applicativi (guida automatizzata, smart cities, etc.).<br />
+Lo studio di questi processi è un campo di ricerca molto attivo e multidisciplinare nel quale convergono gli interessi della biologia, della medicina e della psicologia. Tali studi offrono dei modelli che simulano l'attività celebrale. Proprio questi modelli vengono poi utilizzati dall'informatica per offrire strumenti di predizione, ottimizzazione e problem-solving in vari campi applicativi (guida automatizzata, smart cities, etc.).<br />
 Il successo di questi modelli è condizionato dal fatto che il cervello è considerabile alla pari di un potente computer capace di computare in parallelo grandi porzioni di dati.
 
 ![images/neurone.jpeg]
@@ -197,7 +196,7 @@ $$e^l_v = (o^l_v - out_v)^2$$
 Il quadrato delle differenze viene scelto per vari motivi. Per prima cosa, errori positivi e negativi altrimenti si cancellerebbero a vicenda e non sarebbero presi in
 considerazione. In secondo luogo, questa funzione è ovunque derivabile, semplificando così il processo di aggiornamento dei pesi e dei threshold.<br />
 Nel free learning task si avrà, invece, solo una sequenza di input $L = \{\mathbf{i}_1, \dots, \mathbf{i}_n\}$. Questo comporta che, a differenza del fixed learning task, non si avrà modo di calcolare una funzione di errore rispetto ad un output atteso.<br />
-In linea di principio l'obiettivo di un free learning task sarà quello di produrre un output simile per input simili. Un caso particolare potrebbe essere quello del *clustering* dei vettori di input.<br />
+In linea di principio l'obiettivo di un free learning task sarà quello di produrre un output simile per input simili. Un caso particolare potrebbe essere quello del **clustering** dei vettori di input.<br />
 Qualsiasi processo di apprendimento si scelga esistono alcune buone pratiche che è utile seguire. Una di esse è quella di standardizzare il vettore di input. Comunemente lo si scala in modo tale che abbia media uguale a $0$ e la varianza ad $1$. Per fare ciò, è necessario calcolare per ogni neurone $u_k \in U_{(in)}$ la media aritmetica $\mu_k$ e la deviazione standard $\sigma_k$ degli input esterni:
 
 $$\mu_k = \frac{1}{|L|}\sum_{l \in L} ext^l_{u_k} \quad \quad \sigma_k = \sqrt{\frac{1}{|L|}\sum_{l \in L} (ext^l_{u_k} - \mu_k)^2}$$
@@ -240,8 +239,7 @@ Se due neuroni $u_i$ e $v_j$ non sono connessi, è sufficiente porre $w_{u_iv_j}
 $$\mathbf{net}_{U_2} = W \mathbf{in}_{U_2} = W \mathbf{out}_{U_1}$$
 
 dove $\mathbf{net}_{U_2} = (net_{u_1}, \dots, net_{u_m})^\top$ e $\mathbf{in}_{U_2} = \mathbf{out}_{U_1} = (out_{v_1}, \dots, out_{v_n})^\top$.<br />
-Fino ad adesso si è osservato che le ANN possono rappresentare funzioni
-booleane. Invece, per quanto riguarda le funzioni a valori continui, ogni funzione Riemann-integrabile è approssimata con precisione arbitraria da un MLP avente quattro layer.
+Fino ad adesso si è osservato che le ANN possono rappresentare funzioni booleane. Invece, per quanto riguarda le funzioni a valori continui, ogni funzione Riemann-integrabile è approssimata con precisione arbitraria da un MLP avente quattro layer.
 
 ![images/approx.png]
 
@@ -249,103 +247,70 @@ booleane. Invece, per quanto riguarda le funzioni a valori continui, ogni funzio
 
 Ogni funzione, infatti, può essere approssimata da una step function. Ad ogni pivot $x_i$ verrà associato nel MLP un neurone nel primo hidden layer. Nel secondo hidden layer si utilizzerà un neurone per ogni scalino, il quale riceverà input dai due neuroni del primo livello che sono assegnati ai valori $x_i$ e $x_{i+1}$, i quali definiscono i bordi dello scalino stesso. A questo punto, si sceglieranno pesi e threshold in modo tale da attivare il neurone se e solo se l'input è maggiore di $x_i$ e
 minore di $x_{i+1}$.<br />
-La funzione di attivazione del neurone di output utilizzata in questo caso è la funzione di identità, in modo tale da restituire come output solamente il .<br />
-Dovrebbe essere chiaro che l'approssimazione può crescere a piacere semplicemente aggiungendo neuroni e diminuendo la lunghezza dei gradini. Possiamo, inoltre, risparmiarci un layer se non utilizziamo nel calcolo l'altezza assoluta ma quella relativa come peso della connessione al neurone di output. Bisogna notare, comunque, che questo risultato non ha natura costruttiva, ossia non ci dice come deve essere fatto un MLP che approssimi con una data accuratezza una certa funzione. Tutto ciò che afferma il Teorema 3 è che limitare il numero di layer non pregiudica la proprietà del MLP di essere un *approssimatore universale*.
+La funzione di attivazione del neurone di output utilizzata in questo caso è la funzione di identità, in modo tale da restituire come output solamente il valore dell'approssimazione proveniente dai neuroni dell'ultimo hidden layer.<br />
+Dovrebbe essere chiaro che l'approssimazione può crescere a piacere semplicemente aggiungendo neuroni e diminuendo la lunghezza dei gradini.<br />
+E' possibile, inoltre, risparmiare un layer utilizzando come peso della connessione al neurone di output nel calcolo non l'altezza assoluta ma quella relativa. E' utile notare, comunque, che questo risultato non ha natura costruttiva, ossia non istruisce su come deve essere composto un MLP che approssimi con una data accuratezza una certa funzione. Tutto ciò che afferma il teorema è che limitare il numero di layer non pregiudica la proprietà del MLP di essere un **approssimatore universale**.
 
 ----------------------------------------------------------------
 
 ### Regressione ###
-Abbiamo visto che per allenare un ANN occorre minimizzare la funzione di errore, la quale si calcola solitamente come il quadrato della differenza tra output aspettato e attuale. Questo avvicina il problema dell'apprendimento nelle reti neurali a quello più generale della *regressione*. La regressione è una tecnica molto usata in analisi e in statistica per estrapolare la retta (o, più in generale, il polinomio) che meglio approssima la relazione esistente in un insieme di
-dati/osservazioni. Detto in modo più formale, se $G = \{(\mathbf{w}_0,y_0), \dots, (\mathbf{w}_n,y_n)\}$ è il nostro dataset e immaginiamo esista una relazione funzionale tra il vettore di input $\mathbf{w}_i$ e l'ascissa $y$, allora la regressione ci aiuterà a trovare i parametri di quella funzione. A seconda del diverso genere di funzione avremo diverse forme di regressione.
+Si è osservato come per allenare un ANN occorre minimizzare la funzione di errore, la quale si calcola solitamente come il quadrato della differenza tra output aspettato e attuale. Questo avvicina il problema dell'apprendimento nelle reti neurali a quello più generale della [[Regressione]]. La regressione è una tecnica molto usata in analisi e in statistica per estrapolare la retta (o, più in generale, il polinomio) che meglio approssima la relazione esistente in un insieme di dati/osservazioni. Descritto in maniera formale, se $G = \{(\mathbf{w}_0,y_0), \dots, (\mathbf{w}_n,y_n)\}$ è il dataset e si immagina l'esistenza di una relazione funzionale tra il vettore di input $\mathbf{w}_i$ e l'ascissa $y$, allora la regressione permetterà di trovare i parametri di quella funzione. A seconda del diverso genere di funzione si avranno diverse forme di regressione.
 
 #### Regressione lineare ####
-
-Se ci aspettiamo che le nostre due quantità $x$ e $y$ esibiscano una
-dipendenza lineare, allora dovremo identificare i parametri $a$ e $b$
-che individuano la retta $y = g(x) = a + bx$. In generale, tuttavia, non
-sarà possibile trovare una singola retta che passi per tutti i punti del
-nostro dataset. Quello che faremo sarà trovare la retta che devi dai
-punti il meno possibile e che, quindi, minimizzi l'errore calcolato come
-segue:
+Se ci si aspetta che le due quantità $x$ e $y$ esibiscano una dipendenza lineare, allora sarà necessario identificare i parametri $a$ e $b$ che individuino la retta $y = g(x) = a + bx$. In generale, tuttavia, non sarà possibile trovare una singola retta che passi per tutti i punti del nostro dataset. Quello che faremo sarà trovare la retta che devi dai punti il meno possibile e che, quindi, minimizzi l'errore calcolato come segue:
 
 $$F(a,b) = \sum(g(x_i) - y_i)^2 = \sum(a + bx_i - y_i)^2$$
 
-Il teorema di Fermat ci dice che una condizione necessaria perchè un
-minimo della funzione $F(a,b)$ esista è che la derivata parziale in
-entrambi i parametri si annulli:
+Il teorema di Fermat afferma che una condizione necessaria perchè un minimo della funzione $F(a,b)$ esista è che la derivata parziale si annulli in entrambi i parametri:
 
 $$\frac{\partial F}{\partial a} = \sum 2(a + bx_i - y_i) = 0$$
 
 $$\frac{\partial F}{\partial b} = \sum 2(a + bx_i - y_i)x_i = 0$$
 
-Questo sistema può essere risolto con alcune semplici tecniche di
-algebra lineare (vedi pag. 174 del libro). La soluzione così trovata
-sarà unica a meno che ogni valore $x_i$ sia identico.
+Questo sistema può essere risolto con alcune semplici tecniche di algebra lineare. La soluzione così trovata sarà unica a meno che ogni valore $x_i$ sia identico.
+
+----------------------------------------------------------------
 
 ### Regressione polinomiale e multilineare
-
-Il metodo precedente può essere esteso in modo ovvio a polinomi di
-ordine arbitrario. In questo caso, si prende come ipotesi che la
-funzione indotta dal dataset approssimi un polinomio di ordine $n$:
+Il metodo precedente può essere esteso in modo ovvio a polinomi di ordine arbitrario. In questo caso, si prende come ipotesi che la funzione indotta dal dataset approssimi un polinomio di ordine $n$:
 
 $$y = p(x) = a_o + a_1x + \dots + a_nx^n$$
 
-E si cercherà di minimizzare la funzione $F$ tale che:
+Si cercherà, quindi, di minimizzare la funzione $F$ tale che:
 
 $$F(a_1,\dots,a_n) = \sum(p(x_i) - y_i)^2 = \sum(a_o + a_1x + \dots + a_nx^n -y_i)^2$$
 
-Come nel caso della regressione lineare, la funzione potrà essere
-minimizzata solo se le derivate parziali rispetto ai parametri $a_i$ si
-annullano:
+Come nel caso della regressione lineare, la funzione potrà essere minimizzata solo se all'annullarsi delle derivate parziali rispetto ai parametri $a_i$:
 
 $$\frac{\partial F}{\partial a_1} = 0 \quad \dots \quad \frac{\partial F}{\partial a_n} = 0$$
 
-Inoltre, non siamo limitati a calcolare funzioni ad un solo argomento.
-Con alcune minori modifiche questo metodo è capace di approssimare
-funzioni in un numero arbitrario di argomenti. In quel caso, la
-chiameremo *regressione multilineare*.
+Inoltre, non ci sono limitazioni che impongono di calcolare funzioni ad un solo argomento. Con alcune minori modifiche questo metodo è capace di approssimare funzioni in un numero arbitrario di argomenti. Per questo motivo si definisce **regressione multilineare**.
+
+----------------------------------------------------------------
 
 ### Regressione logistica
-
-Nel situazione in cui il nostro dataset non sia approssimato con
-sufficiente accuratezza da una funzione polinomiale, potremmo dover
-utilizzare funzioni di generi diversi. Data, per esempio, una funzione
-della forma:
+Nel situazione in cui il dataset non sia approssimato con sufficiente accuratezza da una funzione polinomiale, è possibile dover ricorrere a funzioni di generi diversi. Data, per esempio, una funzione della forma:
 
 $$y = ax^b$$
 
-possiamo trasformarla in una equazione lineare applicando l'operazione
+è possibile trasformarla in un'equazione lineare applicando l'operazione
 di logaritmo:
 
 $$ln(y) = ln(a) + b \cdot ln(x)$$
 
-Nel caso delle ANN ci interessiamo in particolare alla funzione
-logistica (vedi Figura [\[fig:10\]](#fig:10){reference-type="ref"
-reference="fig:10"}(d)):
+Nel caso delle ANN, si pone in particolare il focus sulla funzione logistica:
 
 $$y = \frac{Y}{1 + e^{a+bx}}$$
 
-Siccome molte ANN utilizzano come funzione di attivazione del neurone
-proprio la funzione logistica, se trovassimo un modo di applicarci il
-metodo della regressione potremmo determinare i parametri di qualsiasi
-network a due layer con un unico input. Il valore $a$ nella funzione
-corrisponderebbe al threshold del neurone di output e la $b$ al peso
-dell'input. Possiamo \"linearizzare\" la funzione logistica applicandoci
-le seguenti trasformazioni (comunemente chiamata *logit
-transformation*):
+Siccome molte ANN utilizzano come funzione di attivazione del neurone proprio la funzione logistica, se si riuscisse a trovare un modo di applicare su di essa il metodo della regressione, si potrebbero determinare i parametri di qualsiasi network a due layer con un unico input. Il valore $a$ nella funzione corrisponderebbe al threshold del neurone di output e la $b$ al peso dell'input. E' possibile linearizzare la funzione logistica applicando le seguenti trasformazioni (comunemente chiamata **logit transformation**):
 
 $$y = \frac{Y}{1 + e^{a+bx}} \leftrightarrow \frac{1}{y} = \frac{1 + e^{a+bx}}{Y} \leftrightarrow \frac{Y - y}{y} = e^{a+bx} \leftrightarrow ln(\frac{Y - y}{y}) = a+bx$$
 
-Se estendiamo il nostro approccio fino a comprendere funzioni con più
-argomenti, in analogia a quanto accade nella regressione multilineare,
-possiamo utilizzarlo per computare i pesi di network a due layer con
-arbitrari neuroni di input. Tuttavia, siccome il metodo della somma
-degli errori funziona solo quando parliamo di neuroni di output, questo
-approccio non può essere esteso a network con più di due layer.
+Se si estende l'approccio fino a comprendere funzioni con più argomenti, in analogia a quanto accade nella regressione multilineare, si può utilizzarlo per computare i pesi di network a due layer con arbitrari neuroni di input. Tuttavia, siccome il metodo della somma degli errori ha senso di essere utilizzato solo in contesto di neuroni di output, questo approccio non può essere esteso a network con più di due layer.
 
-Backpropagation
----------------
+----------------------------------------------------------------
 
+### Backpropagation ###
 Come abbiamo appena visto la regressione logistica funziona solo per MLP
 con due layer di neuroni. Un approccio più generale è quello del
 *gradient descent*. Il metodo consiste nell'utilizzare la funzione di
