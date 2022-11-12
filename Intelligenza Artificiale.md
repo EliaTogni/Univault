@@ -11,6 +11,8 @@ Una categorizzazione preliminare che si fa in letteratura è quella tra due tipi
 - **modelli simbolici**, in cui i dati vengono sottoposti a codifica e solo dopo manipolati. Storicamente questo è stato il primo approccio adottato;
 - **modelli pre-simbolici**, in cui i dati vengono manipolati direttamente, senza la mediazione di una codifica. Fanno parte di questa famiglia: le reti neurali, i sistemi fuzzy e gli algoritmi evolutivi.
 
+----------------------------------------------------------------
+
 ## Reti neurali ##
 
 ### Background biologico ###
@@ -41,6 +43,8 @@ I vantaggi delle reti neurali sono:
 3.  la performance degrada in modo lineare con il numero di neuroni danneggiati;
 4.  ottimo per l'apprendimento induttivo.
 
+----------------------------------------------------------------
+
 ### Threshold logic unit ###
 Per implementare una rete neurale artificiale occorre trovare un analogo del neurone naturale. La struttura che emula tale compito viene denominata **threshold logic unit** o **neurone di McCulloch e Pitts**, nel seguito **TLU**.<br />
 Una TLU è una semplice processing unit costituita da $n$ variabili di input $x_1 \dots x_n$ e un output $y$. Ad ogni unità viene assegnato un **threshold** $\theta$ e ad ogni variabile di input un vettore di pesi $w_i$ dove $i \in \{1, \dots ,n\}$, il quale rappresenta la rilevanza di quel determinato input al fine della computazione.<br />
@@ -60,6 +64,8 @@ $$\begin{cases}
    \end{cases}$$
 
 Risulta evidente che l'unica circostanza in cui l'output della TLU verrà posto ad $1$ sarà quando entrambi gli input varranno $1$. Inoltre, si noti che esistono varie scelte possibili di pesi e threshold tali per cui le disuaglianze siano verificate.
+
+----------------------------------------------------------------
 
 ### Interpretazione geometrica ###
 La condizione che calcola l'output della TLU ricorda l'equazione di un iperpiano (ovvero un piano in $n$ dimensioni):
@@ -90,6 +96,8 @@ Come esempio, si consideri il network che simula la doppia implicazione.
 ![images/netTLU.png]
 
 Può essere dimostrato che tutte le funzioni Booleane con un numero arbitrario di input possano essere computate da reti di TLU semplicemente sfruttando delle equivalenze logiche al fine di dividere queste funzioni in un modo tale che tutte le sottofunzioni occorrenti siano linearmente separabili.
+
+----------------------------------------------------------------
 
 ### Training delle TLU ###
 L'interpretazione geometrica fornisce un'intuizione su come costruire una TLU avente 2 o 3 input, ma non è  un metodo scalabile nè automatizzato. E' necessario evolvere una TLU affinchè converga in modo autonomo ad una soluzione.<br />
@@ -141,6 +149,8 @@ Per evitare il problema si ricorre in letteratura ad una diversa codifica chiama
 e il *vero* $1$.<br />
 Si osservi che questa procedura di allenamento vale solo per le singole TLU nonostante si sia osservato che le TLU possono computare solo funzioni linearmente separabili. Sebbene questo inconveniente si possa evitare prendendo in esame *network* di TLU, questa procedura non si estende naturalmente a quel caso.
 
+----------------------------------------------------------------
+
 ### Artificial neural network ###
 Un'**artificial neural network** (in breve **ANN**) può essere rappresentata come un grafo diretto $G = (U,C)$ dove i nodi sono delle semplici TLU e gli archi sono le connessioni tra le varie unità.<br />
 L'insieme dei nodi $U$ può essere partizionato in tre sottoinsiemi:
@@ -164,6 +174,8 @@ I processi all'interno di un ANN si dividono in due fasi:
 ![images/rnn1.png]
 
 Nel caso delle recurrent neural network, potrebbe accadere che non si giunga mai ad uno stato stabile a seconda di quale ordine di update dei neuroni si scelga di seguire. Si osservi un esempio di una computazione con risultato oscillante in un recurrent neural network. L'ordine seguito per l'update è: $u_3,u_1,u_2,u_3,u_1,u_2\dots$. Se si fosse seguito un ordine diverso, la computazione avrebbe raggiunto uno stato stabile.
+
+----------------------------------------------------------------
 
 ### Training delle ANN ###
 Si è osservato in precedenza che è possibile allenare in modo automatico una singola TLU grazie alla delta rule. Questo procedimento non può essere generalizzato alle ANN tuttavia, per quanto riguarda il training, ci si basa sui medesimi principi: calcolare correzioni ai pesi ed ai threshold dei singoli neuroni e aggiornarli di conseguenza.<br />
@@ -194,8 +206,9 @@ Quindi gli input esterni vengono ricalcolati secondo questa formula:
 
 $$ext^{new}_{u_k} = \frac{ext^{old}_{u_k} - \mu_k}{\sigma_k}$$
 
-### Multi-layer perceptrons ###
+----------------------------------------------------------------
 
+### Multi-layer perceptrons ###
 ![images/MLP.png]
 
 Una delle prime ANN sviluppate furono i **multi-layer perceptrons** (abbreviate in seguito **MLP**). Le MLP sono particolari feed-forward network in cui le unità base (i **Percettroni**) sono organizzati in *layer* ed ogni layer presenta connessioni solo con il layer successivo. Questo permette di minimizzare il fenomeno delle continue ricomputazioni che avverrebbero durante la propagazione del segnale nei normali feed-forward network.<br />
@@ -222,64 +235,30 @@ $$W = \begin{pmatrix}
   w_{u_mv_1} & w_{u_mv_2} & \cdots & w_{u_mv_n} 
  \end{pmatrix}$$
 
-Se due neuroni $u_i$ e $v_j$ non sono connessi, è sufficiente porre $w_{u_iv_j} = 0$. Il vantaggio di questa matrice sta nel fatto che è possibile scrivere il network input di un layer come:
+Se due neuroni $u_i$ e $v_j$ non sono connessi, è sufficiente porre $w_{u_iv_j} = 0$. Il vantaggio di questa matrice sta nel fatto che rende possibile scrivere il network input di un layer come:
 
 $$\mathbf{net}_{U_2} = W \mathbf{in}_{U_2} = W \mathbf{out}_{U_1}$$
 
 dove $\mathbf{net}_{U_2} = (net_{u_1}, \dots, net_{u_m})^\top$ e $\mathbf{in}_{U_2} = \mathbf{out}_{U_1} = (out_{v_1}, \dots, out_{v_n})^\top$.<br />
-Fino ad adesso abbiamo visto che le ANN possono rappresentare funzioni
-booleane, ma quando si parla di funzioni a valori continui?
+Fino ad adesso si è osservato che le ANN possono rappresentare funzioni
+booleane. Invece, per quanto riguarda le funzioni a valori continui, ogni funzione Riemann-integrabile è approssimata con precisione arbitraria da un MLP avente quattro layer.
 
-Ogni funzione Riemann-integrabile è approssimata con precisione
-arbitraria da un MLP avente quattro layer.
+![images/approx.png]
 
-![Approssimazione di una funzione continua con una step
-function](img/approx.png){#fig:11}
+![images/riemann.png]
 
-![MLP che calcola la step function in Figura
-[10](#fig:11){reference-type="ref"
-reference="fig:11"}](img/riemann.png){#fig:12}
+Ogni funzione, infatti, può essere approssimata da una step function. Ad ogni pivot $x_i$ verrà associato nel MLP un neurone nel primo hidden layer. Nel secondo hidden layer si utilizzerà un neurone per ogni scalino, il quale riceverà input dai due neuroni del primo livello che sono assegnati ai valori $x_i$ e $x_{i+1}$, i quali definiscono i bordi dello scalino stesso. A questo punto, si sceglieranno pesi e threshold in modo tale da attivare il neurone se e solo se l'input è maggiore di $x_i$ e
+minore di $x_{i+1}$.<br />
+La funzione di attivazione del neurone di output utilizzata in questo caso è la funzione di identità, in modo tale da restituire come output solamente il .<br />
+Dovrebbe essere chiaro che l'approssimazione può crescere a piacere semplicemente aggiungendo neuroni e diminuendo la lunghezza dei gradini. Possiamo, inoltre, risparmiarci un layer se non utilizziamo nel calcolo l'altezza assoluta ma quella relativa come peso della connessione al neurone di output. Bisogna notare, comunque, che questo risultato non ha natura costruttiva, ossia non ci dice come deve essere fatto un MLP che approssimi con una data accuratezza una certa funzione. Tutto ciò che afferma il Teorema 3 è che limitare il numero di layer non pregiudica la proprietà del MLP di essere un *approssimatore universale*.
 
-Ogni funzione, infatti, può essere approssimata da una step function
-(come in Figura [10](#fig:11){reference-type="ref" reference="fig:11"}).
-Ad ogni pivot $x_i$ associamo nel nostro MLP un neurone nel primo hidden
-layer (vedi Figura [11](#fig:12){reference-type="ref"
-reference="fig:12"}). Nel secondo hidden layer creiamo un neurone per
-ogni scalino, il quale riceverà input dai due neuroni del primo livello
-che sono assegnati ai valori $x_i$ e $x_{i+1}$ che definiscono i bordi
-dello scalino. A questo punto, scegliamo pesi e threshold in modo tale
-che il neurone venga attivato se e solo se l'input è maggiore di $x_i$ e
-minore di $x_{i+1}$. Siccome la funzione di attivazione del neurone di
-output è la funzione di identità, il valore così calcolato viene emesso
-così come è ricevuto. Dovrebbe essere chiaro che l'approssimazione può
-crescere a piacere semplicemente aggiungendo neuroni e diminuendo la
-lunghezza dei gradini. Possiamo, inoltre, risparmiarci un layer se non
-utilizziamo nel calcolo l'altezza assoluta ma quella relativa come peso
-della connessione al neurone di output. Bisogna notare, comunque, che
-questo risultato non ha natura costruttiva, ossia non ci dice come deve
-essere fatto un MLP che approssimi con una data accuratezza una certa
-funzione. Tutto ciò che afferma il Teorema 3 è che limitare il numero di
-layer non pregiudica la proprietà del MLP di essere un *approssimatore
-universale*.
+----------------------------------------------------------------
 
-Regressione
------------
+### Regressione ###
+Abbiamo visto che per allenare un ANN occorre minimizzare la funzione di errore, la quale si calcola solitamente come il quadrato della differenza tra output aspettato e attuale. Questo avvicina il problema dell'apprendimento nelle reti neurali a quello più generale della *regressione*. La regressione è una tecnica molto usata in analisi e in statistica per estrapolare la retta (o, più in generale, il polinomio) che meglio approssima la relazione esistente in un insieme di
+dati/osservazioni. Detto in modo più formale, se $G = \{(\mathbf{w}_0,y_0), \dots, (\mathbf{w}_n,y_n)\}$ è il nostro dataset e immaginiamo esista una relazione funzionale tra il vettore di input $\mathbf{w}_i$ e l'ascissa $y$, allora la regressione ci aiuterà a trovare i parametri di quella funzione. A seconda del diverso genere di funzione avremo diverse forme di regressione.
 
-Abbiamo visto che per allenare un ANN occorre minimizzare la funzione di
-errore, la quale si calcola solitamente come il quadrato della
-differenza tra output aspettato e attuale. Questo avvicina il problema
-dell'apprendimento nelle reti neurali a quello più generale della
-*regressione*. La regressione è una tecnica molto usata in analisi e in
-statistica per estrapolare la retta (o, più in generale, il polinomio)
-che meglio approssima la relazione esistente in un insieme di
-dati/osservazioni. Detto in modo più formale, se
-$G = \{(\mathbf{w}_0,y_0), \dots, (\mathbf{w}_n,y_n)\}$ è il nostro
-dataset e immaginiamo esista una relazione funzionale tra il vettore di
-input $\mathbf{w}_i$ e l'ascissa $y$, allora la regressione ci aiuterà a
-trovare i parametri di quella funzione. A seconda del diverso genere di
-funzione avremo diverse forme di regressione.
-
-### Regressione lineare
+#### Regressione lineare ####
 
 Se ci aspettiamo che le nostre due quantità $x$ e $y$ esibiscano una
 dipendenza lineare, allora dovremo identificare i parametri $a$ e $b$
