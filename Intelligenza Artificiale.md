@@ -20,7 +20,7 @@ Il cervello umano permette di analizzare in maniera sofisticata l'ambiente in cu
 Lo studio di questi processi è un campo di ricerca molto attivo e multidisciplinare nel quale convergono gli interessi della biologia, della medicina e della psicologia. Tali studi offrono dei modelli che simulano l'attività celebrale. Proprio questi modelli vengono poi utilizzati dall'informatica per offrire strumenti di predizione, ottimizzazione e problem-solving in vari campi applicativi (guida automatizzata, smart cities, etc.).<br />
 Il successo di questi modelli è condizionato dal fatto che il cervello è considerabile alla pari di un potente computer capace di computare in parallelo grandi porzioni di dati.
 
-![images/neurone.jpeg]
+![[images/neurone.jpeg]]
 
 Il cervello è composto da miliardi semplici unità, cellule chiamate **neuroni**. Un neurone è una cellula la quale raccoglie e trasmette attività elettrica. Questi neuroni comunicano tra di loro inviando informazioni sotto forma di segnali di attivazione l'un l'altro, lungo connessioni orientate.<br />
 Il neurone a sua volta è costituito da:
@@ -87,12 +87,12 @@ Due insiemi di punti $X$ e $Y$ si dicono **linearmente separabili** se e solo se
 Questo significa che, già all'interno delle funzioni booleane, ne esistono alcune che non possono essere simulate da una TLU. Un esempio di ciò è la doppia implicazione.<br /> 
 Sebbene solo due funzioni booleane a due argomenti non siano linearmente indipendenti, al crescere degli argomenti il numero di funzioni linearmente indipendenti diminuisce rapidamente. Per un numeri di argomenti arbitrariamente grande, una singola TLU non può calcolare praticamente nessuna funzione.
 
-![images/doppiaimplicazione.png]
+![[images/doppiaimplicazione.png]]
 
 Il problema può essere ovviato attraverso la costruzione di network di TLU più complessi.<br />
 Come esempio, si consideri il network che simula la doppia implicazione.
 
-![images/netTLU.png]
+![[images/netTLU.png]]
 
 Può essere dimostrato che tutte le funzioni Booleane con un numero arbitrario di input possano essere computate da reti di TLU semplicemente sfruttando delle equivalenze logiche al fine di dividere queste funzioni in un modo tale che tutte le sottofunzioni occorrenti siano linearmente separabili.
 
@@ -117,14 +117,14 @@ $$y = \begin{cases}
 Si calcoli la funzione errore al variare di $w$ e $\theta$. Nel caso in cui $x = 0$ l'errore sarà $0$ per un $\theta$ negativo e $1$ per un $\theta$ negativo. Il peso non avrà, infatti, alcuna influenza perchè viene annullato nella moltiplicazione con l'input.<br />
 Quando, invece, $x = 1$, si avrà che la funzione dipenderà da entrambi i parametri.
 
-![images/error1.png]
+![[images/error1.png]]
 
 La funzione di errore così calcolata non può essere usata direttamente nella computazione perchè è composta da plateau e, quindi, non è ovunque derivabile. La soluzione è quella di calcolare la funzione di errore in modo tale che offra una misura di quanto sbagliata sia la relazione tra pesi e threshold. Si otterrà così una funzione di errore che, seppur ancora non differenziabile, lo sia localmente nei punti in cui l'errore si discosta da $0$. Ciò che l'algoritmo farà per correggere l'errore, dunque, sarà discendere verso l'area dove la funzione di errore si annulla. Questo è possibile esattamente perché è stato scelto di utilizzare una funzione derivabile nei punti di interesse, e, cioè, è sempre possibile calcolare la direzione migliore da seguire affinchè ci si muova nella direzione del plateu più basso, ovvero verso l'errore nullo.<br />
 Le regole di adattamento possono essere applicate in due modi:
 -  **online learning**, ovvero l'opzione di adattare i pesi e threshold ad ogni singolo step di training; 
 - **batch learning**, ovvero l'opzione nel quale i cambiamenti vengono aggregati in **learning/training epoch** o **epoche**. Al termine di queste epoche, i cambiamenti aggregati vengono applicati.
 
-![images/error2.png]
+![[images/error2.png]]
 
 Si definisce di seguito la **delta rule** o **procedura di Widrow-Hoff** per allenare le TLU:
 
@@ -157,7 +157,7 @@ L'insieme dei nodi $U$ può essere partizionato in tre sottoinsiemi:
 - $U_{(out)}$: è l'insieme dei nodi di output, i quali sono i soli nodi a comunicare con l'esterno;
 - $U_{(hidden)}$: è l'insieme dei nodi interni, i quali propagano la computazione.
 
-![images/ANN.png]
+![[images/ANN.png]]
 
 Ogni connessione $(u,v) \in C$ possiede un peso $w_{uv}$ che definisce l'importanza del dato originato da $v$ per il neurone $u$. Ad ogni neurone $u \in U$ vengono, invece, assegnate quattro variabili: il **network input** $net_u$, la **activation** $act_u$, l'**output** $out_u$ e l'**external input** $ext_u$.<br />
 Le prime tre variabili vengono calcolate in ogni momento dell'evoluzione dell'ANN grazie a tre funzioni associate:
@@ -170,7 +170,7 @@ I processi all'interno di un ANN si dividono in due fasi:
 1.  La **input phase**, dove gli input esterni vengono acquisiti dai neuroni di input;
 2.  La **work phase**, dove i neuroni di input vengono spenti e un nuovo output viene computato da ogni neurone. La work phase continua finchè gli output raggiungono la stabilità o si raggiunge un timeout.
 
-![images/rnn1.png]
+![[images/rnn1.png]]
 
 Nel caso delle recurrent neural network, potrebbe accadere che non si giunga mai ad uno stato stabile a seconda di quale ordine di update dei neuroni si scelga di seguire. Si osservi un esempio di una computazione con risultato oscillante in un recurrent neural network. L'ordine seguito per l'update è: $u_3,u_1,u_2,u_3,u_1,u_2\dots$. Se si fosse seguito un ordine diverso, la computazione avrebbe raggiunto uno stato stabile.
 
@@ -208,7 +208,7 @@ $$ext^{new}_{u_k} = \frac{ext^{old}_{u_k} - \mu_k}{\sigma_k}$$
 ----------------------------------------------------------------
 
 ### Multi-layer perceptrons ###
-![images/MLP.png]
+![[images/MLP.png]]
 
 Una delle prime ANN sviluppate furono i **multi-layer perceptrons** (abbreviate in seguito **MLP**). Le MLP sono particolari feed-forward network in cui le unità base (i **Percettroni**) sono organizzati in *layer* ed ogni layer presenta connessioni solo con il layer successivo. Questo permette di minimizzare il fenomeno delle continue ricomputazioni che avverrebbero durante la propagazione del segnale nei normali feed-forward network.<br />
 La network input function di ogni neurone $u \in U_{(hidden) \cup U_{(out)}}$ viene calcolata come la somma pesata degli input, come:
@@ -216,13 +216,13 @@ $$f^u_{net}(\mathbf{w}_u,\mathbf{i}_u) = \sum_{v \in pred(u)} w_{uv}out_v$$
 L'activation function, invece, è una cosìddetta **funzione sigmoide**, ossia una funzione monotona non descrescente tale che:
 $$f: \mathbb{R} \to [0,1] \quad \text{ con } \lim_{x\to-\infty}f(x) = 0 \quad \text{ e } \lim_{x\to\infty}f(x) = 1$$
 
-![images/step.png]
+![[images/step.png]]
 
-![images/semilinear.png]
+![[images/semilinear.png]]
 
-![images/sineup.png]
+![[images/sineup.png]]
 
-![images/logistic.png]
+![[images/logistic.png]]
 
 La funzione di output può essere sia una sigmoide oppure una semplice funzione lineare. La struttura a layer di un MLP suggerisce che si possa descrivere il network con l'aiuto di una matrice dei pesi. In questo modo, la computazione del MLP può essere rappresentata attraverso la moltiplicazione tra matrici e vettori. Tuttavia, non si è utilizzata una matrice per l'intero network, ma una per ogni singolo layer.<br />
 Siano $U_1 = \{ v_1, \dots, v_n \}$ e $U_2 = \{ u_1, \dots, u_m \}$ due layer consecutivi di neuroni. I pesi delle loro connessioni sono codificati in una matrice $W$ di dimensioni $n \times m$:
@@ -241,9 +241,9 @@ $$\mathbf{net}_{U_2} = W \mathbf{in}_{U_2} = W \mathbf{out}_{U_1}$$
 dove $\mathbf{net}_{U_2} = (net_{u_1}, \dots, net_{u_m})^\top$ e $\mathbf{in}_{U_2} = \mathbf{out}_{U_1} = (out_{v_1}, \dots, out_{v_n})^\top$.<br />
 Fino ad adesso si è osservato che le ANN possono rappresentare funzioni booleane. Invece, per quanto riguarda le funzioni a valori continui, ogni funzione Riemann-integrabile è approssimata con precisione arbitraria da un MLP avente quattro layer.
 
-![images/approx.png]
+![[images/approx.png]]
 
-![images/riemann.png]
+![[images/riemann.png]]
 
 Ogni funzione, infatti, può essere approssimata da una step function. Ad ogni pivot $x_i$ verrà associato nel MLP un neurone nel primo hidden layer. Nel secondo hidden layer si utilizzerà un neurone per ogni scalino, il quale riceverà input dai due neuroni del primo livello che sono assegnati ai valori $x_i$ e $x_{i+1}$, i quali definiscono i bordi dello scalino stesso. A questo punto, si sceglieranno pesi e threshold in modo tale da attivare il neurone se e solo se l'input è maggiore di $x_i$ e
 minore di $x_{i+1}$.<br />
@@ -254,7 +254,7 @@ E' possibile, inoltre, risparmiare un layer utilizzando come peso della connessi
 ----------------------------------------------------------------
 
 ### Regressione ###
-Si è osservato come per allenare un ANN occorre minimizzare la funzione di errore, la quale si calcola solitamente come il quadrato della differenza tra output aspettato e attuale. Questo avvicina il problema dell'apprendimento nelle reti neurali a quello più generale della [[Regressione]]. La regressione è una tecnica molto usata in analisi e in statistica per estrapolare la retta (o, più in generale, il polinomio) che meglio approssima la relazione esistente in un insieme di dati/osservazioni. Descritto in maniera formale, se $G = \{(\mathbf{w}_0,y_0), \dots, (\mathbf{w}_n,y_n)\}$ è il dataset e si immagina l'esistenza di una relazione funzionale tra il vettore di input $\mathbf{w}_i$ e l'ascissa $y$, allora la regressione permetterà di trovare i parametri di quella funzione. A seconda del diverso genere di funzione si avranno diverse forme di regressione.
+Si è osservato come per allenare un ANN occorre minimizzare la funzione di errore, la quale si calcola solitamente come il quadrato della differenza tra output aspettato e attuale. Questo avvicina il problema dell'apprendimento nelle reti neurali a quello più generale della **regressione**. La regressione è una tecnica molto usata in analisi e in statistica per estrapolare la retta (o, più in generale, il polinomio) che meglio approssima la relazione esistente in un insieme di dati/osservazioni. Descritto in maniera formale, se $G = \{(\mathbf{w}_0,y_0), \dots, (\mathbf{w}_n,y_n)\}$ è il dataset e si immagina l'esistenza di una relazione funzionale tra il vettore di input $\mathbf{w}_i$ e l'ascissa $y$, allora la regressione permetterà di trovare i parametri di quella funzione. A seconda del diverso genere di funzione si avranno diverse forme di regressione.
 
 #### Regressione lineare ####
 Se ci si aspetta che le due quantità $x$ e $y$ esibiscano una dipendenza lineare, allora sarà necessario identificare i parametri $a$ e $b$ che individuino la retta $y = g(x) = a + bx$. In generale, tuttavia, non sarà possibile trovare una singola retta che passi per tutti i punti del nostro dataset. Quello che faremo sarà trovare la retta che devi dai punti il meno possibile e che, quindi, minimizzi l'errore calcolato come segue:
