@@ -161,9 +161,9 @@ L'insieme dei nodi $U$ può essere partizionato in tre sottoinsiemi:
 
 Ogni connessione $(u,v) \in C$ possiede un peso $w_{uv}$ che definisce l'importanza del dato originato da $v$ per il neurone $u$. Ad ogni neurone $u \in U$ vengono, invece, assegnate quattro variabili: il **network input** $net_u$, la **activation** $act_u$, l'**output** $out_u$ e l'**external input** $ext_u$.<br />
 Le prime tre variabili vengono calcolate in ogni momento dell'evoluzione dell'ANN grazie a tre funzioni associate:
-1. La network input function $f^u_{net}$, la quale calcola la somma pesata dell'input;
-2.  La *activation function* $f^u_{act}$, della quale ne esistono vari modelli (gaussiana, sigmoide, etc.) a seconda dell'applicazione;
-3. La *output function* $f^u_{out}$, la quale definisce l'output a seconda che il neurone venga attivato o meno.
+1. La **network input function** $f^u_{net}$, la quale calcola la somma pesata dell'input;
+2.  La **activation function** $f^u_{act}$, della quale ne esistono vari modelli (gaussiana, sigmoide, etc.) a seconda dell'applicazione;
+3. La **output function** $f^u_{out}$, la quale definisce l'output a seconda che il neurone venga attivato o meno.
 
 Se il grafo che rappresenta l'ANN è aciclico si parla di **feed forward network** e la computazione procede in modo unidirezionale da $U_{(in)}$ a $U_{(out)}$ seguendo l'ordine topologico del network. Nel caso in cui, invece, il grafo contenga un ciclo, allora si parla di **recurrent network**.<br />
 I processi all'interno di un ANN si dividono in due fasi:
@@ -257,7 +257,8 @@ E' possibile, inoltre, risparmiare un layer utilizzando come peso della connessi
 Si è osservato come per allenare un ANN occorre minimizzare la funzione di errore, la quale si calcola solitamente come il quadrato della differenza tra output aspettato e attuale. Questo avvicina il problema dell'apprendimento nelle reti neurali a quello più generale della **regressione**. La regressione è una tecnica molto usata in analisi e in statistica per estrapolare la retta (o, più in generale, il polinomio) che meglio approssima la relazione esistente in un insieme di dati/osservazioni. Descritto in maniera formale, se $G = \{(\mathbf{w}_0,y_0), \dots, (\mathbf{w}_n,y_n)\}$ è il dataset e si immagina l'esistenza di una relazione funzionale tra il vettore di input $\mathbf{w}_i$ e l'ascissa $y$, allora la regressione permetterà di trovare i parametri di quella funzione. A seconda del diverso genere di funzione si avranno diverse forme di regressione.
 
 #### Regressione lineare ####
-Se ci si aspetta che le due quantità $x$ e $y$ esibiscano una dipendenza lineare, allora sarà necessario identificare i parametri $a$ e $b$ che individuino la retta $y = g(x) = a + bx$. In generale, tuttavia, non sarà possibile trovare una singola retta che passi per tutti i punti del nostro dataset. Quello che faremo sarà trovare la retta che devi dai punti il meno possibile e che, quindi, minimizzi l'errore calcolato come segue:
+Se ci si aspetta che le due quantità $x$ e $y$ esibiscano una dipendenza lineare, allora sarà necessario identificare i parametri $a$ e $b$ che individuino la retta $y = g(x) = a + bx$.<br />
+In generale, tuttavia, non sarà possibile trovare una singola retta che passi per tutti i punti del dataset. Sarà necessario trovare la retta che devi dai punti il meno possibile e che, quindi, minimizzi l'errore calcolato come segue:
 
 $$F(a,b) = \sum(g(x_i) - y_i)^2 = \sum(a + bx_i - y_i)^2$$
 
@@ -289,7 +290,8 @@ Inoltre, non ci sono limitazioni che impongono di calcolare funzioni ad un solo 
 ----------------------------------------------------------------
 
 ### Regressione logistica
-Nel situazione in cui il dataset non sia approssimato con sufficiente accuratezza da una funzione polinomiale, è possibile dover ricorrere a funzioni di generi diversi. Data, per esempio, una funzione della forma:
+Nel situazione in cui il dataset non sia approssimato con sufficiente accuratezza da una funzione polinomiale, è possibile dover ricorrere a funzioni di generi diversi.<br />
+Data, per esempio, una funzione della forma:
 
 $$y = ax^b$$
 
@@ -298,7 +300,7 @@ di logaritmo:
 
 $$ln(y) = ln(a) + b \cdot ln(x)$$
 
-Nel caso delle ANN, si pone in particolare il focus sulla funzione logistica:
+Nel caso delle ANN, si pone, in particolare, il focus sulla funzione logistica:
 
 $$y = \frac{Y}{1 + e^{a+bx}}$$
 
@@ -306,122 +308,49 @@ Siccome molte ANN utilizzano come funzione di attivazione del neurone proprio la
 
 $$y = \frac{Y}{1 + e^{a+bx}} \leftrightarrow \frac{1}{y} = \frac{1 + e^{a+bx}}{Y} \leftrightarrow \frac{Y - y}{y} = e^{a+bx} \leftrightarrow ln(\frac{Y - y}{y}) = a+bx$$
 
-Se si estende l'approccio fino a comprendere funzioni con più argomenti, in analogia a quanto accade nella regressione multilineare, si può utilizzarlo per computare i pesi di network a due layer con arbitrari neuroni di input. Tuttavia, siccome il metodo della somma degli errori ha senso di essere utilizzato solo in contesto di neuroni di output, questo approccio non può essere esteso a network con più di due layer.
+Se si estende l'approccio fino a comprendere funzioni con più argomenti, analogamente a quanto accade nella regressione multilineare, si può utilizzarlo per computare i pesi di network a due layer con arbitrari neuroni di input. Tuttavia, siccome il metodo della somma degli errori ha senso di essere utilizzato solo in contesto di neuroni di output, questo approccio non può essere esteso a network con più di due layer.
 
 ----------------------------------------------------------------
 
 ### Backpropagation ###
-Come abbiamo appena visto la regressione logistica funziona solo per MLP
-con due layer di neuroni. Un approccio più generale è quello del
-*gradient descent*. Il metodo consiste nell'utilizzare la funzione di
-errore per calcolare la direzione in cui cambiare i pesi e il threshold
-per minimizzare l'errore. Condizione necessaria per il suo utilizzo è
-che la funzione sia differenziabile. Tuttavia, un MLP ha una funzione
-logistica come funzione di attivazione e, quindi, la funzione di errore
-sarà differenziabile (posto che la funzione di output sia la funzione
-identità). Intuitivamente, il *gradiente* descrive la pendenza di una
-funzione. Questo è calcolato assegnando ad ogni punto del dominio della
-funzione un vettore, i cui componenti sono le derivate parziali rispetto
-ai agli argomenti(un esempio in Figura
-[12](#fig:13){reference-type="ref" reference="fig:13"}). L'operazione di
-calcolare il gradiente (di un punto o di una funzione) è comunemente
-denotata con l'operatore differenziale $\nabla$ (pronuncia: nabla).
+Come osservato in precedenza, la regressione logistica funziona solo per MLP con due layer di neuroni. Un approccio più generale si basa sull'utilizzo del **gradient descent**. Questo metodo consiste nell'utilizzare la funzione di errore per calcolare la direzione in cui cambiare i pesi e il threshold al fine di minimizzare l'errore. Condizione necessaria per il suo utilizzo è che la funzione sia differenziabile. Tuttavia, poichè un MLP ha una funzione logistica come funzione di attivazione, la funzione di errore sarà differenziabile (posto che la funzione di output sia la funzione identità). Intuitivamente, il **gradiente** descrive la pendenza di una funzione. Questo è calcolato assegnando un vettore ad ogni punto del dominio della funzione, i cui componenti sono le derivate parziali rispetto ai agli argomenti.
+L'operazione del calcolo del gradiente di un punto o di una funzione viene comunemente denotata con l'operatore differenziale $\nabla$.
 
-![Il gradiente di una funzione a due
-argomenti.](img/gradient.png){#fig:13}
+![[images/gradient.png]]
 
-Nel caso delle MLP, calcolare il gradiente della funzione di errore si
-traduce nel calcolare la derivata parziale della funzione di errore
-rispetto ai pesi e i threshold presi come parametri. Sia
-$\mathbf{w}_u = (-\theta,w_{u_1},\dots,w_{u_k})$ il vettore dei pesi di
-un singolo layer esteso così da includere anche il threshold, calcoliamo
-il gradiente come segue:
+Nel caso dei MLP, calcolare il gradiente della funzione di errore si traduce nel calcolare la derivata parziale della funzione di errore rispetto ai pesi e i threshold presi come parametri.<br />
+Sia $\mathbf{w}_u = (-\theta,w_{u_1},\dots,w_{u_k})$ il vettore dei pesi di un singolo layer esteso così da includere anche il threshold. Si calcoli il gradiente come segue:
 $$\nabla_{\mathbf{w}_u} e = \frac{\partial e}{\partial \mathbf{w}_u} = (-\frac{\partial e}{\partial \theta}, \frac{\partial e}{\partial w_{u_1}},\dots,\frac{\partial e}{\partial w_{u_k}})$$
-Siccome l'errore totale $e$ è dato dalla somma degli errori individuali
-rispetto a tutti i neuroni e tutti i training pattern $l$, otteniamo
-che:
+Siccome l'errore totale $e$ è dato dalla somma degli errori individuali rispetto a tutti i neuroni e tutti i training pattern $l$, il risultato ottenuto sarà:
 $$\nabla_{\mathbf{w}_u} e = \frac{\partial e}{\partial \mathbf{w}_u} = \frac{\partial}{\partial \mathbf{w}_u} \sum_{l \in L} e^l = \sum_{l \in L} \frac{\partial e^l}{\partial \mathbf{w}_u}$$
 
-*Se abbiamo come $f_{(act)}$ la funzione logistica avremo che i
-cambiamenti operati sul vettore $\mathbf{w}_u$ saranno proporzionali
-alla derviata della funzione $f_{(act)}$. Più vicini allo 0 della
-funzione sono i valori, più ripido sarà il pendio della funzione e, per
-tanto, più rapido sarà l'apprendimento.*
+Nel caso in cui si abbia la funzione logistica come $f_{(act)}$, i cambiamenti operati sul vettore $\mathbf{w}_u$ saranno proporzionali alla derviata della funzione $f_{(act)}$. Più i valori sono vicini allo $0$ della funzione, più ripido sarà il pendio della funzione e, per tanto, più rapido sarà l'apprendimento.
 
-Come facciamo dopo aver trovato l'errore a calcolare la correzione
-necessaria per ogni peso e threshold di ogni singolo neurone? Il
-processo che ci permette di fare questo viene chiamato *error
-backpropagation* ed è schematizzato in Figura
-[13](#fig:14){reference-type="ref" reference="fig:14"}. Si assume che la
-funzione di attivazione sia la funzione logistica per ogni neurone
-$u \in U_{(hidden)} \cup U_{(out)}$ tranne che per quelli di input.
+Il processo che permette di calcolare la correzione necessaria per ogni peso e threshold di ogni singolo neurone dopo aver trovato l'errore viene chiamato **error backpropagation**.<br />
+Si assuma che la funzione di attivazione sia la funzione logistica per ogni neurone $u \in U_{(hidden)} \cup U_{(out)}$ tranne che per quelli di input.
 
-![Propagazione dell'errore in un MLP.](img/backpropagation.png){#fig:14}
+![[images/backpropagation.png]]
 
-Inizialmente, (1) applichiamo l'input ai neuroni di input che lo
-restituiscono senza modifiche in output al primo dei layer hidden. (2)
-Calcoliamo per ogni neurone dei seguenti layer la somma pesata degli
-input e al risultato applichiamo la funzione logistica generando così
-l'output che verrà propagato in tutto il network fino ai neuroni
-terminali. A questo punto, (3) calcoliamo la differenza tra l'output
-atteso e quello attuale e, dato che la funzione di attivazione è
-invertibile, risaliamo dal vettore di errore a quale fosse l'input che
-ha condizionato quel particolare errore (la variabile $\delta_u$,
-nell'immagine). Avendo, ora, (4) trasformato l'errore della variabile di
-output $out_u$ in quello della variabile di input $net_u$ possiamo
-distribuire l'errore (e la correzione necessaria) in modo proporzionale
-al ruolo del singolo neurone nel calcolo del seguente output. Propago a
-ritroso l'errore fino ai neuroni di input. Bisogna osservare comunque
-che data la forma della funzione logistica l'errore non può sparire
-completamente, in quanto il gradiente approssimerà il vettore nullo più
-si avvicinerà allo zero.
+Inizialmente, (1) l'input viene passato ai neuroni di input che lo restituiscono senza modifiche in output al primo degli hidden layer. (2) Ogni neurone dei seguenti layer calcola la somma pesata degli input ed applica al risultato la funzione logistica, generando così l'output che verrà propagato in tutto il network, fino ai neuroni terminali. A questo punto (3) viene calcolata la differenza tra l'output atteso e quello attuale e, dato che la funzione di attivazione è invertibile, è possibile risalire dal vettore di errore a quale fosse l'input che ha condizionato quel particolare errore (la variabile $\delta_u$, nell'immagine). Avendo (4) trasformato l'errore della variabile di output $out_u$ in quello della variabile di input $net_u$, diventa possibile distribuire l'errore (e la correzione necessaria) in modo proporzionale al ruolo del singolo neurone nel calcolo dell' output. L'errore viene propagato a ritroso fino ai neuroni di input. E' utile osservare che, data la forma della funzione logistica, l'errore non può azzerarsi completamente, in quanto il gradiente approssimerà il vettore nullo più si avvicinerà allo zero.
 
-*Se si inizializza il learning rate $\eta$ ad un valore troppo alto, al
-posto di discendere la curva si corre il rischio di saltare da un
-\"picco\" della funzione all'altro senza convergere mai al minimo.
-Inoltre, non è affatto detto che il minimo raggiunto in questo modo sia
-il minimo globale della funzione. La causa sarà piuttosto da ascrivere
-alla scelta dei valori iniziali. Una soluzione al problema può essere
-quella di ripetere l'apprendimento, inizializzando il sistema con una
-diversa configurazione di pesi e threshold, e scegliere alla fine quale
-configurazione risulta in un miglior minimo.*
+Se si inizializza il learning rate $\eta$ ad un valore troppo alto, al posto di discendere la curva, si corre il rischio di saltare da un picco della funzione all'altro senza convergere mai al minimo. Inoltre, non è affatto detto che il minimo raggiunto in questo modo sia il minimo globale della funzione. La causa sarà piuttosto da ascrivere alla scelta dei valori iniziali. Una soluzione al problema può essere quella di ripetere l'apprendimento, inizializzando il sistema con una diversa configurazione di pesi e threshold, e scegliere alla fine quale configurazione risulta in un miglior minimo.
 
-### Variazioni sul gradient descent
+----------------------------------------------------------------
 
-Esistono varie sofisticazioni della tecnica del gradient descent che
-permettono un più veloce apprendimento e, nello stesso momento, un
-miglior controllo sulla lunghezza dei singoli step di apprendimento.
+### Variazioni sul gradient descent ###
+Esistono varie sofisticazioni della tecnica del gradient descent le quali permettono un più veloce apprendimento e, nello stesso momento, un miglior controllo sulla lunghezza dei singoli step di apprendimento.<br />
 Alcuni esempi sono:
+- **Manhattan training**, il quale utlizza al posto del valore del gradiente solo il suo segno per calcolare la direzione. Questo permette di semplificare notevolmente la computazione;
+- **Flat spot elimination**, il quale cerca di limitare l'abbattimento della lunghezza degli step di apprendimento quando ci si avvicina ad un plateau della funzione incrementando artificialmente la derivata della funzione in quel punto;
+- **Momentum term**, il quale ad ogni successivo step aggiungo al gradiente una frazione del precedente cambiamento di pesi così da avere una memoria di quanto velocemente stava cambiando nel passato;
+- **Self-adaptive error backpropagation**, il quale permette ad ogni parametro di avere un diverso learning rate in modo da avere un più fine controllo rispetto alle caratteristiche del singolo parametro;
+- **Resilient error backpropagation**, il quale combina il Manhattan training con l'approccio self-adaptive;
+- **Quick propagation**, il quale, al posto di utilizzare il gradiente, approssima la funzione con una parabola e salta direttamente all'apice della parabola;
+- **Weight decay**, il quale riduce i pesi per evitare di rimanere intrappolato in una regione già saturata.
 
--   *Manhattan training*: utlizza al posto del valore del gradiente solo
-    il suo segno per calcolare la direzione. Questo permette di
-    semplificare notevolmente la computazione.
+----------------------------------------------------------------
 
--   *Flat spot elimination*: cerca di limitare l'abbattimento della
-    lunghezza degli step di apprendimento quando ci si avvicina ad un
-    plateau della funzione \"sollevando\" artificialmente la derivata
-    della funzione in quel punto.
-
--   *Momentum term*: ad ogni successivo step aggiungo al gradiente una
-    frazione del precedente cambiamento di pesi così da avere una
-    memoria di quanto velocemente stava cambiando nel passato.
-
--   *Self-adaptive error backpropagation*: permetto ad ogni parametro di
-    avere un diverso learning rate in modo da avere un più fine
-    controllo rispetto alle caratteristiche del singolo parametro.
-
--   *Resilient error backpropagation*: combina il Manhattan training con
-    l'approccio self-adaptive.
-
--   *Quick propagation*: al posto di utilizzare il gradiente approssimo
-    la funzione con una parabola e salto direttamente all'apice della
-    parabola.
-
--   *Weight decay*: riduce i pesi per evitare di rimanere intrappolato
-    in una regione già saturata.
-
-### Overfitting e underfitting
-
+### Overfitting e underfitting ###
 Quanti neuroni ho bisogno per avere un buon network? Come regola di
 massima si dovrebbe scegliere il numero di neuroni negli hidden layer
 seconda la seguente formula:
@@ -448,8 +377,9 @@ differenziale dell'errore tra un epoca ed un altra si abbassi sotto una
 certa soglia, oppure se l'apprendimento si protrae per un periodo troppo
 lungo.
 
-### Sensitivity analysis
+----------------------------------------------------------------
 
+### Sensitivity analysis ###
 Uno svantaggio delle ANN è che la conoscenza risultante dal processo di
 apprendimento è codificata in matrici a valori reali e, quindi, di
 difficile comprensione per l'utente. Abbiamo mostrato una
@@ -471,9 +401,9 @@ assegnato al neurone $u$ per la computazione del MLP. Grazie a questa
 considerazione potremmo decidere di semplificare il network eliminando i
 nodi con i valori di $s(u)$ più bassi.
 
-Deep learning
--------------
+----------------------------------------------------------------
 
+## Deep Learning ##
 Il Teorema 3 ha mostrato come un MLP con un solo hidden layer può
 approssimare ogni funzione continua su $\mathbb{R}^n$ con una precisione
 arbitraria. Questo risultato, tuttavia, non ha natura costruttiva e può
