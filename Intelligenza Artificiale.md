@@ -351,159 +351,50 @@ Alcuni esempi sono:
 ----------------------------------------------------------------
 
 ### Overfitting e underfitting ###
-Quanti neuroni ho bisogno per avere un buon network? Come regola di
-massima si dovrebbe scegliere il numero di neuroni negli hidden layer
-seconda la seguente formula:
+Per avere un buon network, come regola di massima si dovrebbe scegliere il numero di neuroni negli hidden layer secondo la seguente formula:
 $$\# \text{hidden neurons} = (\# \text{input neurons} + \# \text{output neurons})/2$$
 Non esiste una spiegazione teoretica soddisfacente del perchè questo sia
-un buon numero, ma è stato dimostrato empiricamente. Se, infatti, il
-numero dei neuroni negli hidden layer è troppo basso rischiamo
-l'*underfitting*, ossia che il nostro MLP non riesca ad approssimare in
-modo soddisfacibile la complessità della funzione che vogliamo
-catturare. Al contrario se ne ho troppi rischio di incorrere
-nell'*overfitting*, ossia che il nostro MLP si adatti agli esempi che
-gli abbiamo fornito durante il periodo di apprendimento, ma anche alle
-loro specificità accidentali (errori e deviazioni). Per evitare questi
-fenomeni è buona pratica dividere il nostro data set in modo da avere
-due sottoinsiemi di dati: alcuni dati per l'apprendimento ed altri per
-la validazione del processo di apprendimento. I primi verranno usati per
-allenare il nostro network e i secondi per giudicare se effettivamente
-il network approssimi la funzione desiderata. É possibile iterare a
-piacere questo procedimento suddividendo i dati non in due sottoinsiemi,
-ma in un numero arbitrario, così da ottenre una conferma incrociata dei
-progressi nell'apprendimento del nostro network. Un diverso metodo per
-evitare l'overfitting è quello di terminare l'apprendimento quando il
-differenziale dell'errore tra un epoca ed un altra si abbassi sotto una
-certa soglia, oppure se l'apprendimento si protrae per un periodo troppo
-lungo.
+un numero ragionevole, ma è stato dimostrato empiricamente. Se, infatti, il
+numero dei neuroni negli hidden layer è troppo basso si corre il rischio di avere una situazione di **underfitting**, ossia che il MLP non riesca ad approssimare in modo soddisfacente la complessità della funzione che si vuole catturare.<br />
+Al contrario se se ne hanno troppi, si rischia di incorrere nell'*overfitting*, ossia che il MLP si adatti agli esempi che gli sono stati forniti durante il periodo di apprendimento, ma anche alle loro specificità accidentali (errori e deviazioni).<br />
+Per evitare questi fenomeni, è buona pratica dividere il dataset in modo da avere due sottoinsiemi di dati: alcuni dati per l'apprendimento ed altri per la validazione del processo di apprendimento.<br />
+I primi verranno usati per allenare il network e i secondi per giudicare se effettivamente il network approssimi la funzione desiderata. É possibile iterare a piacere questo procedimento, suddividendo i dati non in solo due sottoinsiemi, ma in un numero arbitrario, così da ottenere una conferma incrociata dei progressi nell'apprendimento del network.<br />
+Un diverso metodo per evitare l'overfitting è quello di terminare l'apprendimento quando il differenziale dell'errore tra un epoca ed un altra si abbassa sotto una certa soglia, oppure se l'apprendimento si protrae per un periodo troppo lungo.
 
 ----------------------------------------------------------------
 
 ### Sensitivity analysis ###
-Uno svantaggio delle ANN è che la conoscenza risultante dal processo di
-apprendimento è codificata in matrici a valori reali e, quindi, di
-difficile comprensione per l'utente. Abbiamo mostrato una
-interpretazione geometrica dei processi interni alle ANN, ma tale
-interpretazione, sebbene sia generalizzabile ad ANN arbitrariamente
-complesse, offre poco aiuto all'intuizione quando lo spazio degli input
-supera le tre dimensioni. Una soluzione a questo problema è quella di
-operare una *sensitivity analysis*, la quale determinerà l'influenza dei
-vari input sull'output del network. Per eseguirla occorrerà calcolare la
-somma delle derivate parziali degli output rispetto agli input esterni
-per ogni neurone di output e ogni training pattern. Questa somma viene,
-infine, divisa per il numero di training pattern, per rendere la misura
-indipendente dalla grandezza del dataset.
+Uno svantaggio delle ANN è che la conoscenza risultante dal processo di apprendimento è codificata in matrici a valori reali e, quindi, di difficile comprensione per l'utente.<br />
+E' stata mostrata un'interpretazione geometrica dei processi interni alle ANN ma tale interpretazione, sebbene sia generalizzabile ad ANN arbitrariamente complesse, offre poco aiuto all'intuizione quando lo spazio degli input supera le tre dimensioni. Una soluzione a questo problema è quella di operare una **sensitivity analysis**, la quale determinerà l'influenza dei vari input sull'output del network. Per eseguirla, occorrerà calcolare la somma delle derivate parziali degli output rispetto agli input esterni per ogni neurone di output e per ogni training pattern. Questa somma viene, infine, divisa per il numero di training pattern, per rendere la misura indipendente dalla grandezza del dataset.
 
 $$\forall u \in U_{(in)}: \quad s(u) = \frac{1}{|L|} \sum_{l \in L} \sum_{\nu \in U_{(out)}} \frac{\partial out_\nu^l}{\partial ext_u^l}$$
 
-Il valore $s(u)$ risultante indica quanto importante fosse l'input
-assegnato al neurone $u$ per la computazione del MLP. Grazie a questa
-considerazione potremmo decidere di semplificare il network eliminando i
-nodi con i valori di $s(u)$ più bassi.
+Il valore $s(u)$ risultante indica quanto importante fosse l'input assegnato al neurone $u$ per la computazione del MLP. Grazie a questa considerazione sarà possibile decidere se semplificare il network, eliminando, cioè, i nodi con i valori di $s(u)$ più bassi.
 
 ----------------------------------------------------------------
 
 ## Deep Learning ##
-Il Teorema 3 ha mostrato come un MLP con un solo hidden layer può
-approssimare ogni funzione continua su $\mathbb{R}^n$ con una precisione
-arbitraria. Questo risultato, tuttavia, non ha natura costruttiva e può
-non essere semplice conoscere a priori il numero esatto di neuroni
-necessari per approssimare una data funzione. Inoltre, a seconda della
-funzione, questo numero potrebbe assumere dimensioni considerevoli! Un
-esempio è quello della funzione che calcola la parità su una parola di
-$n$-bit. L'output sarà 1 se e solo se nel vettore di input che
-rappresenta la parola saranno ad 1 un numero pari di bit. Nel caso
-scegliessimo di utilizzare un MLP con un solo hidden layer questo avrà
-al suo interno $2^{n-1}$ neuroni, in quanto la forma normale disgiuntiva
-della funzione di parità su $n$-bit è una disgiunzione di $2^{n-1}$
-congiunzioni. Se permettiamo, invece, di avere più di un layer, il
-numero di neuroni crescerà in modo lineare alla dimensione dell'input.
-Questa constatazione ha portato allo sviluppo del così detto *deep
-learning*, dove la \"profondità\" è quella del più lungo cammino che
-separa i neuroni di input da quelli di output. Il razionale è quello di
-permettere una maggiore profondità del network in cambio di un
-miglioramento delle risorse utilizzate nel calcolo e nella costruzione.
-Il deep learning oltre ad offrire vantaggi porta con se alcune
-problematiche:
-
--   *Overfitting*: l'incremento nel numero di neuroni dovuto alla
-    presenza dei molti layer può avere l'effetto di moltiplicare i
-    parametri in modo sproporzionato.
-
--   *Vanishing gradient*: durante la propagazione dell'errore il
-    grandiente si riduce dopo ogni layer fino a scomparire.
+E' stato mostrato come un MLP con un solo hidden layer può approssimare ogni funzione continua su $\mathbb{R}^n$ con una precisione arbitraria. Questo risultato, tuttavia, non ha natura costruttiva e può non essere semplice conoscere a priori il numero esatto di neuroni necessari per approssimare una data funzione. Inoltre, a seconda della funzione, questo numero potrebbe assumere dimensioni considerevoli! Un esempio è quello della funzione che calcola la parità su una parola di $n$-bit. L'output sarà 1 se e solo se nel vettore di input che rappresenta la parola saranno ad 1 un numero pari di bit. Nel caso scegliessimo di utilizzare un MLP con un solo hidden layer questo avrà al suo interno $2^{n-1}$ neuroni, in quanto la forma normale disgiuntiva della funzione di parità su $n$-bit è una disgiunzione di $2^{n-1}$ congiunzioni. Se permettiamo, invece, di avere più di un layer, il numero di neuroni crescerà in modo lineare alla dimensione dell'input. Questa constatazione ha portato allo sviluppo del così detto *deep learning*, dove la \"profondità\" è quella del più lungo cammino che separa i neuroni di input da quelli di output. Il razionale è quello di permettere una maggiore profondità del network in cambio di un miglioramento delle risorse utilizzate nel calcolo e nella costruzione. Il deep learning oltre ad offrire vantaggi porta con se alcune problematiche:
+- **Overfitting**: l'incremento nel numero di neuroni dovuto alla presenza dei molti layer può avere l'effetto di moltiplicare i parametri in modo sproporzionato;
+- **Vanishing gradient**: durante la propagazione dell'errore il grandiente si riduce dopo ogni layer fino a scomparire;
 
 Alcune soluzioni al problema dell'overfitting sono:
+- **Weigth decay**, ossia mettere un tetto massimo ai valori che possono assumere i pesi per prevenire un adattamento troppo pedissequo al dataset;
+- **Sparsity constraint**: si introducono dei limiti al numero di neuroni negli hidden layer, oppure si limita il numero di quelli attivi;
+- **Dropout training**: alcuni neuroni degli hidden layer vengono omessi durante l'evoluzione del network.
 
--   *Weigth decay*, ossia mettere un tetto massimo ai valori che possono
-    assumere i pesi per prevenire un adattamento troppo pedissequo al
-    dataset.
+![[images/relu.png]]
 
--   *Sparsity constraint*: si introducono dei limiti al numero di
-    neuroni negli hidden layer, oppure si limita il numero di quelli
-    attivi.
+Il problema del vanishing gradient è dato dal fatto che la funzione di attivazione è una funzione logistica la cui derivata raggiunge al massimo il valore di $\frac{1}{4}$. Di conseguenza, ogni propagazione dell'errore ad un layer precedente vi aggiunge un valore, spesso molto minore di 1, riducendo così il gradiente. Una soluzione è quella di modificare leggermente la funzione di attivazione in modo che sia sempre crescente. Alcuni candidati proposti in letteratura sono la *ramp
+function* e la *softplus function*. Un approccio completamente diverso è quello di costruire il network \"layer a layer\". Una tecnica molto usata è quella di pensare al network come una pila di *autoencoder*. Un autoencoder è un MLP che mappa il suo input in una sua approssimazione, utilizzando un hidden layer di dimensioni
+minori. Il layer nascosto funge da encoder per la codifica dell'input in una sua rappresentazione interna che è a sua volta decodificata dal layer di output. L'autoencoder, avendo un solo layer, non soffre delle stesse limitazioni e può essere allenato attraverso la normale backpropagation. Un problema con questo approccio è che se ci sono tanti neuroni negli hidden layer quanti quelli di input si rischia di propagare con minori aggiustamenti il segnale senza che l'autoencoder
+estragga alcuna informazione utile dal dato. Esistono tre principali soluzioni:
+- **Sparse autoencoder**: prevede di utilizzare un numero molto minore di neuroni nel hidden layer, rispetto a quelli di input. L'autoencoder sarà così costretto ad estrarre dall'input qualche feature interessante al posto di propagare semplicemente il dato;
+- **Sparse activation scheme**: in modo simile a quanto si faceva per evitare l'overfitting, si decide di \"spegnere\" alcuni neuroni durante la computazione;
+- **Denoising autoencoder**: si aggiunge randomicamente rumore all'input.
 
--   *Dropout training*: alcuni neuroni degli hidden layer vengono omessi
-    durante l'evoluzione del network.
-
-![Funzioni di attivazione sempre crescenti.](img/relu.png){#fig:15}
-
-Il problema del vanishing gradient è dato dal fatto che la funzione di
-attivazione è una funzione logistica la cui derivata raggiunge al
-massimo il valore di $\frac{1}{4}$. Di conseguenza, ogni propagazione
-dell'errore ad un layer precedente vi aggiunge un valore, spesso molto
-minore di 1, riducendo così il gradiente. Una soluzione è quella di
-modificare leggermente la funzione di attivazione in modo che sia sempre
-crescente. Alcuni candidati proposti in letteratura sono la *ramp
-function* e la *softplus function* (vedi Figura
-[14](#fig:15){reference-type="ref" reference="fig:15"}). Un approccio
-completamente diverso è quello di costruire il network \"layer a
-layer\". Una tecnica molto usata è quella di pensare al network come una
-pila di *autoencoder*. Un autoencoder è un MLP che mappa il suo input in
-una sua approssimazione, utilizzando un hidden layer di dimensioni
-minori. Il layer nascosto funge da encoder per la codifica dell'input in
-una sua rappresentazione interna che è a sua volta decodificata dal
-layer di output. L'autoencoder, avendo un solo layer, non soffre delle
-stesse limitazioni e può essere allenato attraverso la normale
-backpropagation. Un problema con questo approccio è che se ci sono tanti
-neuroni negli hidden layer quanti quelli di input si rischia di
-propagare con minori aggiustamenti il segnale senza che l'autoencoder
-estragga alcuna informazione utile dal dato. Esistono tre principali
-soluzioni:
-
--   *Sparse autoencoder*: prevede di utilizzare un numero molto minore
-    di neuroni nel hidden layer, rispetto a quelli di input.
-    L'autoencoder sarà così costretto ad estrarre dall'input qualche
-    feature interessante al posto di propagare semplicemente il dato.
-
--   *Sparse activation scheme*: in modo simile a quanto si faceva per
-    evitare l'overfitting, si decide di \"spegnere\" alcuni neuroni
-    durante la computazione.
-
--   *Denoising autoencoder*: si aggiunge randomicamente rumore
-    all'input.
-
-Per ottenere un MLP con molteplici layer si combinano diversi
-autoencoder. Inizialmente si allena un singolo autoencoder. A quel
-punto, si rimuove il decoder e viene conservato solo il layer interno.
-Si utilizzano i dati preprocessati da questo primo autoencoder per
-allenarne un secondo, e così via fino a che si raggiunga un numero
-soddisfacente di layer. MLP costruiti in questo modo sono risultati
-molto efficaci nel riconoscere con successo numeri scritti a mano. Se si
-volessero utilizzare dei network simili per una più ampia classe di
-applicazioni, dove, per esempio, le feature riconosciute dai layer
-interni non sono localizzate in una porzione specifica dell'immagine,
-bisognerebbe rivolgersi ai *convolutional neural network* (più avanti,
-CNN). Questa architettura è ispirata al funzionamento della retina
-umana, in cui i neuroni adibiti alla percezione hanno un campo
-ricettivo, ossia una limitata regione in cui rispondono agli stimoli.
-Questo viene simulato nelle CNN connettendo i neuroni del primo hidden
-layer solo ad alcuni neuroni di input. I pesi vengono condivisi così che
-i vari network parziali possano essere valutati da differenti
-prospettive dell'immagine. Durante la computazione si procederà poi a
-muovere il \"campo ricettivo\" sulla totalità dell'immagine. Come
-risultato si ottiene una convoluzione della matrice dei pesi con
-l'immagine in input.
+Per ottenere un MLP con molteplici layer si combinano diversi autoencoder. Inizialmente si allena un singolo autoencoder. A quel punto, si rimuove il decoder e viene conservato solo il layer interno. Si utilizzano i dati preprocessati da questo primo autoencoder per allenarne un secondo, e così via fino a che si raggiunga un numero soddisfacente di layer. MLP costruiti in questo modo sono risultati molto efficaci nel riconoscere con successo numeri scritti a mano. Se si volessero utilizzare dei network simili per una più ampia classe di applicazioni, dove, per esempio, le feature riconosciute dai layer interni non sono localizzate in una porzione specifica dell'immagine, bisognerebbe rivolgersi ai *convolutional neural network* (più avanti, CNN). Questa architettura è ispirata al funzionamento della retina umana, in cui i neuroni adibiti alla percezione hanno un campo ricettivo, ossia una limitata regione in cui rispondono agli stimoli. Questo viene simulato nelle CNN connettendo i neuroni del primo hidden layer solo ad alcuni neuroni di input. I pesi vengono condivisi così che i vari network parziali possano essere valutati da differenti prospettive dell'immagine. Durante la computazione si procederà poi a muovere il \"campo ricettivo\" sulla totalità dell'immagine. Come
+risultato si ottiene una convoluzione della matrice dei pesi con l'immagine in input.
 
 Radial basis function network
 -----------------------------
