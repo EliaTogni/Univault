@@ -540,82 +540,24 @@ iterativamente migliori approssimazioni.
 
 ----------------------------------------------------------------
 
-Self-organizing maps
---------------------
-
-Le *self-organizing maps* (o *Kohonen feature maps*) sono dei
-feed-forward network a due layer che possono essere visti come
-generalizzazione dei LVQN le cui connessioni tra neuroni hidden e
-neuroni di output sono, però, limitate a quelle tra neuroni \"vicini\".
-Come nel caso dei LVQN, la $f_{(net)}$ dei neuroni di output è una
-funzione di distanza tra il vettore di input e quello dei pesi, e la
-$f_{(act)}$ è una funzione radiale. Una differenza rispetto ai LVQN è
-che la $f_{(out)}$ è la funzione identità, anche se l'output può essere
-reso discreto in accordo al principio del *winner-takes-all*, ossia
-*localmente* il neurone con la massima attivazione forza a 0 l'output
-dei neuroni circostanti. Rimane la questione di come formalizzare in
-modo preciso la nozione di \"vicinanza\" tra neuroni. Un modo per farlo
-è quello di costruire una struttura interna ai neuroni di output
-assegnando ad ogni coppia un reale che rappresenti la relazione di
-\"vicinato\"[^6]:
+### Self-organizing maps ###
+Le *self-organizing maps* (o *Kohonen feature maps*) sono dei feed-forward network a due layer che possono essere visti come generalizzazione dei LVQN le cui connessioni tra neuroni hidden e neuroni di output sono, però, limitate a quelle tra neuroni \"vicini\". Come nel caso dei LVQN, la $f_{(net)}$ dei neuroni di output è una funzione di distanza tra il vettore di input e quello dei pesi, e la $f_{(act)}$ è una funzione radiale. Una differenza rispetto ai LVQN è che la $f_{(out)}$ è la funzione identità, anche se l'output può essere reso discreto in accordo al principio del *winner-takes-all*, ossia *localmente* il neurone con la massima attivazione forza a 0 l'output dei neuroni circostanti. Rimane la questione di come formalizzare in modo preciso la nozione di \"vicinanza\" tra neuroni. Un modo per farlo è quello di costruire una struttura interna ai neuroni di output assegnando ad ogni coppia un reale che rappresenti la relazione di \"vicinato\"[^6]:
 
 $$d_{neuroni} : U_{out} \times U_{out} \to \mathbb{R}^+$$
 
-![Due esempi di griglie che rappresentano una relazione di vicinato tra
-neuroni di output: le linee scure rappresentano i neuroni più vicini,
-mentre quelle più chiare rappresentano le regioni in cui viene diviso lo
-spazio.](img/grid.png){#fig:21}
+![[images/grid.png]]
 
-Questa relazione può essere rappresentata graficamente da una griglia
-bidimensionale come in Figura [20](#fig:21){reference-type="ref"
-reference="fig:21"}. La funzione di questa rappresentazione è quella di
-darci un'idea anche approssimata della distanza che intercorre tra i
-vari vettori nello spazio di input. La self-organizing map, per tanto,
-costituisce una funzione che preserva la topologia, ossia una funzione
-che preserva la posizione relativa tra i punti del dominio. Un esempio
-famoso di funzione che preserva la topologia sono le così dette
-*proiezioni di Robinson* della superificie di una sfera rispetto al
-piano che vengono usate per costruire le mappe del globo. Attraverso
-l'uso di queste funzioni la posizione relativa tra i vari punti viene
-conservata anche se la proporzione della distanza di due punti tra
-l'originale e la proiezione è più grande quanto più ci si allontana
-dall'equatore. Il vantaggio nell'usare queste funzioni è che ci
-permettono di mappare spazi multidimensionali in spazi con dimensioni
-minori. Come nel caso dei LVQN, il processo di apprendimento si basa sul
-*competitive training*: ogni pattern in input viene processato ed
-assegnato al neurone con l'attivazione più alta. Tuttavia, a differenza
-di quanto accade nell'apprendimento dei LVQN non solo il neurone
-vincitore viene aggiornato, ma tutti i suoi vicini (sebbene in misura
-minore). In questo modo si ottiene che i vettori di riferimento di
-neuroni vicini non si muovano arbitrarimente lontani l'uno dall'altro,
-mantenendo così la topologia dello spazio di input. Per trovare la
-corretta funzione che preservi tale topologia si utilizza la seguente
-regola di apprendimento che costituisce una generalizzazione della
-attraction rule presentata nel caso dei LVQN:
+Questa relazione può essere rappresentata graficamente da una griglia bidimensionale come in Figura [20](#fig:21){reference-type="ref" reference="fig:21"}. La funzione di questa rappresentazione è quella di darci un'idea anche approssimata della distanza che intercorre tra i vari vettori nello spazio di input. La self-organizing map, per tanto, costituisce una funzione che preserva la topologia, ossia una funzione che preserva la posizione relativa tra i punti del dominio. Un esempio famoso di funzione che preserva la topologia sono le così dette *proiezioni di Robinson* della superificie di una sfera rispetto al piano che vengono usate per costruire le mappe del globo. Attraverso l'uso di queste funzioni la posizione relativa tra i vari punti viene conservata anche se la proporzione della distanza di due punti tra l'originale e la proiezione è più grande quanto più ci si allontana dall'equatore. Il vantaggio nell'usare queste funzioni è che ci permettono di mappare spazi multidimensionali in spazi con dimensioni minori. Come nel caso dei LVQN, il processo di apprendimento si basa sul *competitive training*: ogni pattern in input viene processato ed assegnato al neurone con l'attivazione più alta. Tuttavia, a differenza di quanto accade nell'apprendimento dei LVQN non solo il neurone vincitore viene aggiornato, ma tutti i suoi vicini (sebbene in misura minore). In questo modo si ottiene che i vettori di riferimento di neuroni vicini non si muovano arbitrarimente lontani l'uno dall'altro, mantenendo così la topologia dello spazio di input. Per trovare la corretta funzione che preservi tale topologia si utilizza la seguente regola di apprendimento che costituisce una generalizzazione della attraction rule presentata nel caso dei LVQN:
 
 $$\mathbf{r}^{new} = \mathbf{r}^{old} + \eta(t)f_{nb}(d_{neuroni}(u,u_*),\rho(t))(\mathbf{x} - \mathbf{r}^{old})$$
 
-dove $u_*$ è il neurone vincitore e $f_{nb}$ è una funzione radiale. Il
-learning rate $\eta$ è parametrizzato rispetto al tempo perchè varierà
-con il numero delle iterazioni. Inoltre, lo stesso raggio della funzione
-di vicinato in modo che si riduca progressivamente l'influenza del
-\"centro\" che è stato scelto e permetterci così una più fine
-approssimazione della topologia.
+dove $u_*$ è il neurone vincitore e $f_{nb}$ è una funzione radiale. Il learning rate $\eta$ è parametrizzato rispetto al tempo perchè varierà con il numero delle iterazioni. Inoltre, lo stesso raggio della funzione di vicinato in modo che si riduca progressivamente l'influenza del \"centro\" che è stato scelto e permetterci così una più fine approssimazione della topologia.
 
-Hopfield network
-----------------
+----------------------------------------------------------------
 
-Nei precedenti capitoletti ci siamo interessati esclusivamente di
-feed-forward network, ovvero network rappresentati da un grafo aciclico.
-Esistono, tuttavia, in letteratura alcuni esempi di *recurrent network*,
-ovvero network il cui grafo contiene dei cicli diretti. Una dei più
-semplici modelli di recurrent network è quello degli *Hopfield network*
-(in quello che segue HN). Una prima differenza degli HN rispetto agli
-altri ANN è che tutti i neuroni sono sia neuroni di input che di output.
-Non esistono, inoltre, neuroni nascosti. Ogni neurone è connesso ad ogni
-altro neurone (sono esclusi cappi) e i pesi delle connessioni sono
-simmetrici. La funzione di input di ogni neurone è la somma pesata degli
-output degli altri neuroni:
+### Hopfield network ###
+Nei precedenti capitoletti ci siamo interessati esclusivamente di feed-forward network, ovvero network rappresentati da un grafo aciclico. Esistono, tuttavia, in letteratura alcuni esempi di *recurrent network*, ovvero network il cui grafo contiene dei cicli diretti. Una dei più semplici modelli di recurrent network è quello degli *Hopfield network* (in quello che segue HN). Una prima differenza degli HN rispetto agli  altri ANN è che tutti i neuroni sono sia neuroni di input che di output.
+Non esistono, inoltre, neuroni nascosti. Ogni neurone è connesso ad ogni altro neurone (sono esclusi cappi) e i pesi delle connessioni sono simmetrici. La funzione di input di ogni neurone è la somma pesata degli output degli altri neuroni:
 
 $$f_{(net)}^u(\mathbf{w},\mathbf{i}) = \sum_{v \in U - \{u\}} w_{uv} out_v$$
 
@@ -626,8 +568,7 @@ $$f_{(act)}^u(net_u,\theta_u) = \begin{cases}
                 -1 \quad \text{se} \quad net_u < \theta_u
                               \end{cases}$$
 
-Mentre la funzione di output è la funzione identità. Possiamo, quindi,
-rappresentare un HN attraverso la sua matrice dei pesi:
+Mentre la funzione di output è la funzione identità. Possiamo, quindi, rappresentare un HN attraverso la sua matrice dei pesi:
 
 $$\mathbf{W} = \begin{bmatrix} 
             0 & w_{u_1 u_2} & \dots & w_{u_1 u_n} \\
@@ -636,54 +577,24 @@ $$\mathbf{W} = \begin{bmatrix}
             w_{u_n u_1} & w{u_n u_2} & \dots & 0
             \end{bmatrix}$$
 
-Il comportamento degli HN può cambiare a seconda che i neuroni vengano
-aggiornati in modo sequenziale o parallelo. Se decidiamo di aggiornarli
-in parallelo può capitare che non si raggiunga mai uno stato stabile, ma
-il valore continui ad oscillare. Il teorema di convergenza ci assicura,
-invece, che nel caso li si aggiorni in modo sequenziale, si riesce
-sempre a raggiungere uno stato stabile.
+Il comportamento degli HN può cambiare a seconda che i neuroni vengano aggiornati in modo sequenziale o parallelo. Se decidiamo di aggiornarli in parallelo può capitare che non si raggiunga mai uno stato stabile, ma il valore continui ad oscillare. Il teorema di convergenza ci assicura, invece, che nel caso li si aggiorni in modo sequenziale, si riesce sempre a raggiungere uno stato stabile.
 
-*Se i neuroni di un HN sono aggiornati in modo asincrono allora uno
-stato stabile viene raggiunto al massimo in $n\cdot 2^n$ passi, dove $n$
-è il numero dei neuroni.*
+Se i neuroni di un HN sono aggiornati in modo asincrono allora uno stato stabile viene raggiunto al massimo in $n\cdot 2^n$ passi, dove $n$ è il numero dei neuroni.
 
 La prova del teorema si basa sul calcolo dell'energia del sistema:
 
 $$E = -\frac{1}{2} \sum_{u,v \in U, u \neq v} w_{uv}act_u act_v + \sum_{u \in U} \theta_u act_u$$
 
-Si può osservare, infatti, che il sistema può solo evolversi da uno
-stato con energia maggiore ad uno con energia minore. Uno stato stabile
-sarà un minimo locale della funzione energia. Possiamo sfruttare questo
-teorema per utilizzare gli HN come memorie associative, collegando un
-dato allo stato stabile raggiunto dopo averlo fatto processare del
-network. Allo stesso modo, possiamo utilizzare gli HN per calcolare
-problemi di ottimizzazione. Sarà sufficiente in questo caso trasformare
-la funzione da minimizzare in una funzione energia di un HN ed osservare
-gli stati stabili (aka i minimi della funzione energia) raggiunti. Per
-evitare di rimanere intrappolati in minimi locali è opportuno
-rinizializzare varie volte il network in modo randomico e ripetere gli
-aggiornamenti fino alla convergenza.
+Si può osservare, infatti, che il sistema può solo evolversi da uno stato con energia maggiore ad uno con energia minore. Uno stato stabile sarà un minimo locale della funzione energia. Possiamo sfruttare questo teorema per utilizzare gli HN come memorie associative, collegando un dato allo stato stabile raggiunto dopo averlo fatto processare del network. Allo stesso modo, possiamo utilizzare gli HN per calcolare problemi di ottimizzazione. Sarà sufficiente in questo caso trasformare la funzione da minimizzare in una funzione energia di un HN ed osservare gli stati stabili (aka i minimi della funzione energia) raggiunti. Per evitare di rimanere intrappolati in minimi locali è opportuno rinizializzare varie volte il network in modo randomico e ripetere gli aggiornamenti fino alla convergenza.
 
-Boltzmann machines
-------------------
+----------------------------------------------------------------
 
-Le macchine di Boltzmann (in quello che segue BM) possono considerarsi
-in tutto simili a degli HN, salvo che possono contenere neuroni nascosti
-e differiscono nella procedura di aggiornamento. Come nel caso degli HN,
-per risolvere problemi di ottimizzazione ci si basa sul fatto che è
-possibile definire una funzione energia associata ad ogni stato. Grazie
-a questa funzione energia si definisce una distribuzione di probabilità
-(di Boltzmann) rispetto agli stati del network:
+### Boltzmann machines ###
+Le macchine di Boltzmann (in quello che segue BM) possono considerarsi in tutto simili a degli HN, salvo che possono contenere neuroni nascosti e differiscono nella procedura di aggiornamento. Come nel caso degli HN, per risolvere problemi di ottimizzazione ci si basa sul fatto che è possibile definire una funzione energia associata ad ogni stato. Grazie a questa funzione energia si definisce una distribuzione di probabilità (di Boltzmann) rispetto agli stati del network:
 
 $$P(\mathbf{s}) = \frac{1}{2} e^{-\frac{E(\mathbf{s})}{kT}}$$
 
-dove $\mathbf{s}$ rappresenta l'insieme degli stati, $c$ è una costante
-di normalizzazione, $E$ è la funzione energia, $T$ è la temperatura del
-sistema e $k$ la costante di Boltzmann ($k \simeq 1,38 \cdot 10^{-23}$).
-Gli stati del sistema corrispondono ai valori che possono assumere le
-attivazioni dei singoli neuroni. La probabilità di attivazione di un
-neurone è la funzione logistica del differenziale di energia tra il caso
-che vede il neurone attivo e quello che lo vede inattivo.
+dove $\mathbf{s}$ rappresenta l'insieme degli stati, $c$ è una costante di normalizzazione, $E$ è la funzione energia, $T$ è la temperatura del sistema e $k$ la costante di Boltzmann ($k \simeq 1,38 \cdot 10^{-23}$). Gli stati del sistema corrispondono ai valori che possono assumere le attivazioni dei singoli neuroni. La probabilità di attivazione di un neurone è la funzione logistica del differenziale di energia tra il caso che vede il neurone attivo e quello che lo vede inattivo.
 
 $$P(act_u = 1) = \frac{1}{1 + e^{-\frac{\Delta E_u}{kT}}}$$
 
@@ -691,52 +602,21 @@ dove
 
 $$\Delta E_u = E_{act_u = 1} - E_{act_u = 0} = \sum_{v \in U - \{u\}} w_{uv} act_v - \theta_u$$
 
-La procedura di aggiornamento chiamata *Markov-chain Monte Carlo*
-prevede di scegliere randomicamente un neurone e calcolare il suo
-differenziale energetico e, con questo, la probabilità di attivazione.
-Questa stessa procedura viene ripetuta varie volta fino alla convergenza
-del sistema. La convergenza verso uno stato stabile è garantita dal
-fatto che la temperatura del sistema non cresce nel tempo, ma
-diminuisce. Ad un certo punto si raggiungerà uno stato stabile, anche
-detto *equilibrio termico* del sistema, che rappresenterà un minimo
-(possibilmente locale) della funzione. Bisogna notare che una BM potrà
-calcolare in modo efficace una distribuzione di probabilità se gli
-esempi forniti sono compatibili con una distribuzione di Boltzmann. Per
-mitigare questa restrizione si dividono i neuroni di una BM tra neuroni
-*visibili*, che ricevono i segnali di input, e *nascosti*, la cui
-attivazione non dipende direttamente dal dataset permettendo un
-adattamento più flessibile ai pattern di allenamento.
+La procedura di aggiornamento chiamata *Markov-chain Monte Carlo* prevede di scegliere randomicamente un neurone e calcolare il suo differenziale energetico e, con questo, la probabilità di attivazione. Questa stessa procedura viene ripetuta varie volta fino alla convergenza del sistema. La convergenza verso uno stato stabile è garantita dal fatto che la temperatura del sistema non cresce nel tempo, ma diminuisce. Ad un certo punto si raggiungerà uno stato stabile, anche detto *equilibrio termico* del sistema, che rappresenterà un minimo (possibilmente locale) della funzione. Bisogna notare che una BM potrà calcolare in modo efficace una distribuzione di probabilità se gli esempi forniti sono compatibili con una distribuzione di Boltzmann. Per mitigare questa restrizione si dividono i neuroni di una BM tra neuroni *visibili*, che ricevono i segnali di input, e *nascosti*, la cui attivazione non dipende direttamente dal dataset permettendo un adattamento più flessibile ai pattern di allenamento. 
 
-### Training
-
-L'obbiettivo di apprendimento è quello di adattare i pesi e i threshold
-in modo che la distribuzione implicita nel dataset sia approssimata
-dalla distribuzione rappresentata dai neuroni visibili di una BM. Questo
-possiamo farlo scegliendo una misura che descriva la differenza tra le
-due distribuzioni ed utilizzeremo la tecnica del gradient descent per
-minimizzarla. Una delle misure più famose è quella di Kullback-Leibler
-sulla divergenza dell'informazione:
+----------------------------------------------------------------
+ 
+### Training ###
+L'obbiettivo di apprendimento è quello di adattare i pesi e i threshold in modo che la distribuzione implicita nel dataset sia approssimata dalla distribuzione rappresentata dai neuroni visibili di una BM. Questo possiamo farlo scegliendo una misura che descriva la differenza tra le due distribuzioni ed utilizzeremo la tecnica del gradient descent per minimizzarla. Una delle misure più famose è quella di Kullback-Leibler sulla divergenza dell'informazione:
 
 $$KL(p1,p2) = \sum_{\omega \in \Omega} p1(\omega) ln\frac{p1(\omega)}{p2(\omega)}$$
 
-dove $p1$ si riferisce alla distribuzione del dataset e $p2$ a quella
-della macchina di Boltzmann. Ogni passo di apprendimento viene suddiviso
-in due fasi:
+dove $p1$ si riferisce alla distribuzione del dataset e $p2$ a quella della macchina di Boltzmann. Ogni passo di apprendimento viene suddiviso in due fasi:
+1. **Positive phase**: in cui i neuroni visibili vengono fissati rispetto ad un dato di input scelto randomicamente e i neuroni nascosti vengono aggiornati fino al raggiungimento di un equilibrio termico;
+2. **Negative phase**: tutte le unità vengono aggiornate fino al raggiungimento di uno stato stabile.
 
-1.  *Positive phase*: in cui i neuroni visibili vengono fissati rispetto
-    ad un dato di input scelto randomicamente e i neuroni nascosti
-    vengono aggiornati fino al raggiungimento di un equilibrio termico.
-
-2.  *Negative phase*: tutte le unità vengono aggiornate fino al
-    raggiungimento di uno stato stabile.
-
-Se distinguiamo la probabilità che un neurone $u$ sia attivato nella
-positive phase ($p_u^{+}$) e quella che lo stesso neurone sia attivato
-nella negative phase ($p_u^{+}$) e la probabilità che due neuroni $u$ e
-$v$ siano attivati simultaneamente nella positive phase ($p_{uv}^{+}$) e
-quella che gli stessi due neuroni siano attivati nella negative phase
-($p_{uv}^{-}$), possiamo definire la regola di update dei pesi e del
-threshold come segue:
+Se distinguiamo la probabilità che un neurone $u$ sia attivato nella positive phase ($p_u^{+}$) e quella che lo stesso neurone sia attivato nella negative phase ($p_u^{+}$) e la probabilità che due neuroni $u$ e $v$ siano attivati simultaneamente nella positive phase ($p_{uv}^{+}$) e quella che gli stessi due neuroni siano attivati nella negative phase
+($p_{uv}^{-}$), possiamo definire la regola di update dei pesi e del threshold come segue:
 
 $$\Delta w_{uv} = \frac{1}{\eta} (p_{uv}^{+} - p_{uv}^{-}) 
 \quad
@@ -744,72 +624,34 @@ $$\Delta w_{uv} = \frac{1}{\eta} (p_{uv}^{+} - p_{uv}^{-})
 \quad
 \Delta \theta_u = -\frac{1}{\eta}(p_u^{+} - p_u^{-})$$
 
-Intuitivamente: se lo stesso neurone viene sempre attivato ogniqualvolta
-viene presentato lo stesso input allora il suo threshold dovrà essere
-ridotto. Allo stesso modo, se due neuroni vengono spesso attivati
-assieme allora il peso che corrisponde alla loro connessione verrà
-aumentato ("cells that fire together, wire together").
+Intuitivamente: se lo stesso neurone viene sempre attivato ogniqualvolta viene presentato lo stesso input allora il suo threshold dovrà essere ridotto. Allo stesso modo, se due neuroni vengono spesso attivati assieme allora il peso che corrisponde alla loro connessione verrà aumentato ("cells that fire together, wire together").
 
-### Restricted Boltzmann machines
+----------------------------------------------------------------
 
-Sebbene le BM siano molto potenti, allenarne anche di medie dimensioni è
-molto dispendioso. Per questo sono state introdotte le *restricted
-Boltzmann machines* (in quello che segue RBM). La differenza rispetto
-alle normali BM è che il grafo del network di un RBM è un grafo
-bipartito, ovvero una connessione è possibile solo tra neuroni di gruppi
-differenti. Solitamente uno dei gruppi è formato dai neuroni visibili e
-l'altro da quelli nascosti. Un vantaggio di avere un network in cui non
-vi sono connessioni tra neuroni dello stesso gruppo è che il processo di
-apprendimento può essere compiuto ripetendo questi tre passi:
+### Restricted Boltzmann machines ###
+Sebbene le BM siano molto potenti, allenarne anche di medie dimensioni è molto dispendioso. Per questo sono state introdotte le *restricted Boltzmann machines* (in quello che segue RBM). La differenza rispetto alle normali BM è che il grafo del network di un RBM è un grafo bipartito, ovvero una connessione è possibile solo tra neuroni di gruppi differenti. Solitamente uno dei gruppi è formato dai neuroni visibili e l'altro da quelli nascosti. Un vantaggio di avere un network in cui non vi sono connessioni tra neuroni dello stesso gruppo è che il processo di apprendimento può essere compiuto ripetendo questi tre passi:
+1.  Fase I: le unità di input vengono fissate rispetto ad un pattern scelto casualmente e quelle nascoste vengono aggiornate in parallelo ottenendo quello che si chiama in gergo *positive gradient*;
+2. Fase II: avendo ottenuto un input preprocessato nella prima fase, si invertono le parti e si fissano i neuroni nascosti e si aggiornano quelli visibili, ottenendo così il *negative gradient*.
+3. Fase III: si aggiornano pesi e threshold con la differenza tra positive e negative gradient.
 
-1.  Fase I: le unità di input vengono fissate rispetto ad un pattern
-    scelto casualmente e quelle nascoste vengono aggiornate in parallelo
-    ottenendo quello che si chiama in gergo *positive gradient*.
+In letteratura le RBM sono state utilizzate per costruire con più layer in modo simile a quanto accade con gli autoencoder nei MLP.
 
-2.  Fase II: avendo ottenuto un input preprocessato nella prima fase, si
-    invertono le parti e si fissano i neuroni nascosti e si aggiornano
-    quelli visibili, ottenendo così il *negative gradient*.
+----------------------------------------------------------------
 
-3.  Fase III: si aggiornano pesi e threshold con la differenza tra
-    positive e negative gradient.
-
-In letteratura le RBM sono state utilizzate per costruire con più layer
-in modo simile a quanto accade con gli autoencoder nei MLP.
-
-Recurrent network
------------------
-
-Sia gli HN che le BM sono esempi di *recurrent network*, ovvero network
-il cui grafo ha al suo interno dei cicli. L'output in questi network
-viene generato solo se viene raggiunto uno stato stabile nella
-computazione. L'evoluzione di questi sistemi può essere descritta
-attraverso l'utilizzo di equazioni differenziali. Dato, infatti, un
-insieme alcune equazioni differenziali rappresentate in forma ricorsiva:
+### Recurrent network ###
+Sia gli HN che le BM sono esempi di *recurrent network*, ovvero network il cui grafo ha al suo interno dei cicli. L'output in questi network viene generato solo se viene raggiunto uno stato stabile nella computazione. L'evoluzione di questi sistemi può essere descritta attraverso l'utilizzo di equazioni differenziali. Dato, infatti, un insieme alcune equazioni differenziali rappresentate in forma ricorsiva:
 
 $$x(t_i) = x(t_{i-1}) + \Delta y_1(t_{i-1})$$
 $$y_1(t_i) = y_1(t_{i-1}) + \Delta y_2(t_{i-1})$$ $$\vdots$$
 $$y_{i-1}(t_i) = y_{i-1}(t_{i-1}) + f(t_{i-1}, x(t_{i-1}), \dots, y_{n-1}(t_{i-1}))$$
 
-possiamo sfruttare la derivata della funzione nell'istante di tempo
-precedente per calcolare il valore successivo. Questo permette di
-trasformarle in un recurrent network, creando per ogni variabile un nodo
-nel grafo e associando alle connessioni il valore del differenziale come
-in Figura [21](#fig:22){reference-type="ref" reference="fig:22"}.
+possiamo sfruttare la derivata della funzione nell'istante di tempo precedente per calcolare il valore successivo. Questo permette di trasformarle in un recurrent network, creando per ogni variabile un nodo nel grafo e associando alle connessioni il valore del differenziale.
 
-![Recurrent network.](img/recurrent.png){#fig:22}
+![[images/recurrent.png]]
 
-Possiamo generalizzare questo approccio a funzioni con più di un
-argomento grazie ai *vectorial neural network*. Se, tuttavia, non
-conosciamo in precedenza la struttura della computazione non possiamo
-sfruttare la backpropagation così come l'abbiamo presentata, in quanto
-gli errori si propagano senza soluzione di continuità lungo i cicli del
-network. Un modo per risolvere questo problema è quello di dispiegare
-nel tempo la computazione ogni qualvolta questa attraversi un ciclo e
-aggiungere una copia dei neuroni così attraversati come un layer
-addizionale. A questo punto si potrà applicare la backpropagation come
-in un qualsiasi feed-forward network. Per calcolare gli aggiornamenti ai
-pesi e ai threshold sarà, però, necessario combinare gli aggiustamenti
-calcolati rispetto ai neuroni così aggiunti.
+Possiamo generalizzare questo approccio a funzioni con più di un argomento grazie ai *vectorial neural network*. Se, tuttavia, non conosciamo in precedenza la struttura della computazione non possiamo sfruttare la backpropagation così come l'abbiamo presentata, in quanto gli errori si propagano senza soluzione di continuità lungo i cicli del network. Un modo per risolvere questo problema è quello di dispiegare nel tempo la computazione ogni qualvolta questa attraversi un ciclo e aggiungere una copia dei neuroni così attraversati come un layer addizionale. A questo punto si potrà applicare la backpropagation come in un qualsiasi feed-forward network. Per calcolare gli aggiornamenti ai pesi e ai threshold sarà, però, necessario combinare gli aggiustamenti calcolati rispetto ai neuroni così aggiunti.
+
+----------------------------------------------------------------
 
 Sistemi fuzzy
 =============
