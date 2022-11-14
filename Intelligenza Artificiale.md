@@ -1235,88 +1235,31 @@ Di seguito listiamo alcune proprietà che possono caratterizzare i metodi di sel
 
 ----------------------------------------------------------------
 
-### Operatori genetici
+### Operatori genetici ###
+Gli *operatori genetici* sono applicati ad una frazione di individui scelti (popolazione intermedia). Vengono così generate mutazioni e ricombinazioni delle soluzioni già esistenti. Gli operatori genetici vengono classificati secondo la loro arietà in:
+1. One-parent operators;
+2. Two-parent operators;
+3. Multiple-parent operators.
 
-Gli *operatori genetici* sono applicati ad una frazione di individui
-scelti (popolazione intermedia). Vengono così generate mutazioni e
-ricombinazioni delle soluzioni già esistenti. Gli operatori genetici
-vengono classificati secondo la loro arietà in:
+Nella prima classe possiamo trovare l'operatore di *mutazione*, il quale introduce piccoli cambiamenti randomici nel genoma della soluzione a cui viene applicato. Risulta utile per introdurre biodiversità nel pool delle soluzioni e favorire l'esplorazione dello spazio di ricerca. Esistono vari metodi per operare una mutazione:
+- *Standard mutation*: il valore di uno (o più) gene viene mutato;
+- *Pair swap*: si scambia la posizione di due geni;
+- *Shift*: si shifta a destra o sinistra un gruppo di geni;
+- *Arbitrary permutation*: si permuta arbitrariamente un gruppo di geni;
+- *Inversion*: si inverte l'ordine di apparizione di un gruppo di geni.
 
-1.  One-parent operators
+Invece, l'operatore di gran lunga più importante tra quelli two-parent è quello di *ricombinazione* o *crossover*, il quale ha il compito, date due soluzioni, di creare attraverso una combinazione del loro codice genetico le soluzioni che costituiranno la generazione futura. Vi sono vari modi per operare questa ricombinazione:
+- *One-point crossover*: si determina una posizione casuale nel cromosoma e si scambiano le due sequenze da un lato del taglio;
+- *Two-point crossover*: si determinano due posizioni casuali nel cromosa e si scambia quell'intervallo di geni;
+- *N-point crossover*: un generalizzazione dei precedenti. Si scambiano le aree incluse nei punti selezionati casualmente;
+- *Uniform crossover*: per ogni gene si determina se scambiarlo o meno a seconda di un certo parametro di probabilità;
+- *Shuffle crossover*: si procede inizialmente ad operare una permutazione randomica sui due cromosomi. Dopo si procede come nel one-point crossover e si conclude facendo l'unmixing;
+- *Uniform order-based crossover*: simile allo uniform crossover, per ogni gene si decide se tenerlo o cambiarlo. Gli spazi sono riempiti nell'ordine di apparizione dei geni nell'altro cromosoma;
+- *Edge-recombination crossover*: il cromosoma è rappresentato come un grafo. Ogni gene è un vertice che ha archi verso i suoi vicini. Gli archi dei due grafi vengono mischiati. Si preserva l'informazione relativa alla vicinanza.
 
-2.  Two-parent operators
-
-3.  Multiple-parent operators
-
-Nella prima classe possiamo trovare l'operatore di *mutazione*, il quale
-introduce piccoli cambiamenti randomici nel genoma della soluzione a cui
-viene applicato. Risulta utile per introdurre biodiversità nel pool
-delle soluzioni e favorire l'esplorazione dello spazio di ricerca.
-Esistono vari metodi per operare una mutazione:
-
--   *Standard mutation*: il valore di uno (o più) gene viene mutato.
-
--   *Pair swap*: si scambia la posizione di due geni.
-
--   *Shift*: si shifta a destra o sinistra un gruppo di geni.
-
--   *Arbitrary permutation*: si permuta arbitrariamente un gruppo di
-    geni.
-
--   *Inversion*: si inverte l'ordine di apparizione di un gruppo di
-    geni.
-
-Invece, l'operatore di gran lunga più importante tra quelli two-parent è
-quello di *ricombinazione* o *crossover*, il quale ha il compito, date
-due soluzioni, di creare attraverso una combinazione del loro codice
-genetico le soluzioni che costituiranno la generazione futura. Vi sono
-vari modi per operare questa ricombinazione:
-
--   *One-point crossover*: si determina una posizione casuale nel
-    cromosoma e si scambiano le due sequenze da un lato del taglio.
-
--   *Two-point crossover*: si determinano due posizioni casuali nel
-    cromosa e si scambia quell'intervallo di geni.
-
--   *N-point crossover*: un generalizzazione dei precedenti. Si
-    scambiano le aree incluse nei punti selezionati casualmente.
-
--   *Uniform crossover*: per ogni gene si determina se scambiarlo o meno
-    a seconda di un certo parametro di probabilità.
-
--   *Shuffle crossover*: si procede inizialmente ad operare una
-    permutazione randomica sui due cromosomi. Dopo si procede come nel
-    one-point crossover e si conclude facendo l'unmixing.
-
--   *Uniform order-based crossover*: simile allo uniform crossover, per
-    ogni gene si decide se tenerlo o cambiarlo. Gli spazi sono riempiti
-    nell'ordine di apparizione dei geni nell'altro cromosoma.
-
--   *Edge-recombination crossover*: il cromosoma è rappresentato come un
-    grafo. Ogni gene è un vertice che ha archi verso i suoi vicini. Gli
-    archi dei due grafi vengono mischiati. Si preserva l'informazione
-    relativa alla vicinanza.
-
-Un caso di multiple-parent operator è quello del *diagonal crossover*.
-Simile al n-point crossover, ma vi partecipano più di due genitori. Dati
-$k$ genitori, si scelgono $k-1$ punti per il crossover e si procede
-shiftando diagonalmente le sequenze rispetto ai punti scelti. Aumentando
-il numero di genitori si ottiene un ottimo grado di esplorazione dello
-spazio. Alcune proprietà che possono caratterizzare gli operatori di
-crossover sono:
-
--   *Positional bias*: quando la probabilità che due geni vengano
-    ereditati assieme dallo stesso genitore dipende dalla posizione
-    (relativa) dei due geni nel cromosoma. Deve essere evitato perchè
-    può rendere la disposizione dei geni cruciale per la riuscita
-    dell'algoritmo.
-
--   *Distributional bias*: quando la probabilità che un certo numero di
-    geni siano scambiati tra i genitori non è la stessa per tutti i
-    possibili numeri di geni. Deve essere evitato perchè soluzioni
-    parziali di differenti lunghezze hanno differenti probabilità di
-    progredire alla generazione successiva. In generale, è meno
-    problematico del positional bias.
+Un caso di multiple-parent operator è quello del *diagonal crossover*. Simile al n-point crossover, ma vi partecipano più di due genitori. Dati $k$ genitori, si scelgono $k-1$ punti per il crossover e si procede shiftando diagonalmente le sequenze rispetto ai punti scelti. Aumentando il numero di genitori si ottiene un ottimo grado di esplorazione dello spazio. Alcune proprietà che possono caratterizzare gli operatori di crossover sono:
+- *Positional bias*: quando la probabilità che due geni vengano ereditati assieme dallo stesso genitore dipende dalla posizione (relativa) dei due geni nel cromosoma. Deve essere evitato perchè può rendere la disposizione dei geni cruciale per la riuscita dell'algoritmo;
+- *Distributional bias*: quando la probabilità che un certo numero di geni siano scambiati tra i genitori non è la stessa per tutti i possibili numeri di geni. Deve essere evitato perchè soluzioni parziali di differenti lunghezze hanno differenti probabilità di progredire alla generazione successiva. In generale, è meno problematico del positional bias.
 
 Per migliorare le performance delle mie soluzioni ho due strategie:
 
