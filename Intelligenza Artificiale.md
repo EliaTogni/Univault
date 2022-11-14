@@ -16,13 +16,15 @@ Una categorizzazione preliminare che si fa in letteratura è quella tra due tipi
 ## Reti neurali ##
 
 ### Background biologico ###
+Il sistema nervoso degli animali consiste del cervello, dei differenti sistemi sensoriali, i quali collezionano informazioni dalle differenti parti del corpo, ed il sistema motorio, il quale controlla i movimenti.<br />
+La parte principale del processing di informazioni avviene nel cervello e nel sistema nervoso centrale.<br />
 Il cervello umano permette di analizzare in maniera sofisticata l'ambiente in cui si trova per agire nella maniera ritenuta migliore possibile. Queste analisi sono basate sul funzionamento del cervello stesso, su come esso estrae informazioni e su come queste interagiscano con le informazioni contenute in memoria, etc.<br />
 Lo studio di questi processi è un campo di ricerca molto attivo e multidisciplinare nel quale convergono gli interessi della biologia, della medicina e della psicologia. Tali studi offrono dei modelli che simulano l'attività celebrale. Proprio questi modelli vengono poi utilizzati dall'informatica per offrire strumenti di predizione, ottimizzazione e problem-solving in vari campi applicativi (guida automatizzata, smart cities, etc.).<br />
 Il successo di questi modelli è condizionato dal fatto che il cervello è considerabile alla pari di un potente computer capace di computare in parallelo grandi porzioni di dati.
 
 ![[images/neurone.jpeg]]
 
-Il cervello è composto da miliardi semplici unità, cellule chiamate **neuroni**. Un neurone è una cellula la quale raccoglie e trasmette attività elettrica. Questi neuroni comunicano tra di loro inviando informazioni sotto forma di segnali di attivazione l'un l'altro, lungo connessioni orientate.<br />
+Il cervello è composto da miliardi semplici unità, delle cellule chiamate **neuroni**. Un neurone è una cellula la quale raccoglie e trasmette attività elettrica. Questi neuroni comunicano tra di loro inviando informazioni sotto forma di segnali di attivazione l'un l'altro, lungo connessioni orientate.<br />
 Il neurone a sua volta è costituito da:
 -   il **corpo cellulare**, il quale contiene il nucleo. Viene anche chiamato **Soma**; 
 -   i **dendriti**, i quali sono filamenti ramificati che si estendono dal corpo cellulare; 
@@ -36,16 +38,29 @@ Il cambiamento del potenziale elettrico causato da una singola sinapsi è poco s
 Come conseguenza, l'interno della cellula diviene temporaneamente più positivo dell'esterno. L'improvviso cambio di potenziale, denominato **potenziale d'azione**, si propaga lungo l'assone. Quando questo impulso nervoso raggiunge la fine dell'assone, causa il rilascio dei neurotrasmettitori dai bottoni terminali, inducendo, quindi, un cambiamento del potenziale elettrico nel neurone ricettore.<br />
 Nel sistema nervoso umano, l'informazione è codificata da quantità in continuo cambiamento, cioè il potenziale elettrico della membrana di un neurone e il numero di impulsi nervosi che un neurone trasmette per secondo (o **firing rate**).
 
+Le **Artificial Neural Network** sono sistemi di information processing, i cui principi di struttura e azione sono ispirati dal sistema nervoso e dal cervello di animali e umani.<br />
+Esse consistono di un largo numero di neuroni, i quali lavorano in parallelo. Questi neuroni comunicano mandando informazioni tra di loro sotto forma di segnali di attivazione, lungo connessioni orientate.<br />
+Un sinonimo comunemente usato per le reti neurali è il termine **modello connessionista**. Perciò, l'espressione "processing distribuito in parallelo" può spesso essere trovata in relazione alle reti neurali artificiali.<br />
 I vantaggi delle reti neurali sono:
 1.  alta velocità di calcolo, grazie al parallelismo;
 2.  tolleranza ai guasti: la rete rimane funzionale anche quando molti neuroni smettono di funzionare;
 3.  la performance degrada in modo lineare con il numero di neuroni danneggiati;
 4.  ottimo per l'apprendimento induttivo.
 
+La ragione per la quale le reti neurali vengono studiate in [[Computer Science]] si basa sull'ipotesi che le macchine possano comportarsi in maniera intelligente. Questa ipotesi sostiene che il requisito fondamentale per ottenere un comportamento intelligente è l'abilità di manipolare simboli e strutture di simboli rappresentate da strutture fisiche, dove con simbolo si intende un token il quale si riferisce ad un oggetto o ad una situazione. 
+
+**Physical Symbol System Hypotesis**: Un simbolo fisico ha i mezzi necessari e sufficienti per azioni intelligenti.
+
+La classica [[Intelligenza Artificiale]] si concentra su forme simboliche per rappresentare la conoscenza e, in particolare, su logica dei predicati e delle proposizioni. Al contrario, le Artificial Neural Network non sono sistemi di simboli fisici ma, piuttosto, segnali più elementari, i quali, presi singolarmente, raramente hanno un significato chiaro. Di conseguenza, le reti neurali sono spesso definite come **sotto-simboliche**.
+
+Non ci sono dubbi sui risultati ottenuti dalla classica Intelligenza Artificiale. Ciò nonostante, quando diventa necessario mimare la percezione (sentire, udire, ecc.), i computer performano scarsamente in confronto agli umani, almeno nei casi in cui si fa affidamento sulla rappresentazione simbolica: in questo caso i computer sono troppo lenti, poco flessibili e troppo poco tolleranti a rumore ed errori. Il problema è che, al fine di riconoscere pattern, la rappresentazione simbolica non è adatta. <br />
+Piuttosto, le misurazioni necessitano di essere strutturate ed elencate prima di poter applicare in maniera efficace metodi simbolici. 
+
 ----------------------------------------------------------------
 
 ### Threshold logic unit ###
-Per implementare una rete neurale artificiale occorre trovare un analogo del neurone naturale. La struttura che emula tale compito viene denominata **threshold logic unit** o **neurone di McCulloch e Pitts**, nel seguito **TLU**.<br />
+Come già menzionato, le Artificial Neural Network sono ispirate alla struttura e ai principi secondo cui operano il sistema nervoso ed, in particolare, il cervello di animali ed umani. 
+Per implementare una rete neurale artificiale occorre trovare, quindi, un analogo del neurone. La struttura che emula tale compito viene denominata **threshold logic unit** o **neurone di McCulloch e Pitts**, nel seguito **TLU**.<br />
 Una TLU è una semplice processing unit costituita da $n$ variabili di input $x_1 \dots x_n$ e un output $y$. Ad ogni unità viene assegnato un **threshold** $\theta$ e ad ogni variabile di input un vettore di pesi $w_i$ dove $i \in \{1, \dots ,n\}$, il quale rappresenta la rilevanza di quel determinato input al fine della computazione.<br />
 L'output della TLU viene calcolato secondo la seguente formula:
 
@@ -89,12 +104,15 @@ Sebbene solo due funzioni booleane a due argomenti non siano linearmente indipen
 
 ![[images/doppiaimplicazione.png]]
 
+![[Geometric interpretation of network of TLU.png]]
+
 Il problema può essere ovviato attraverso la costruzione di network di TLU più complessi.<br />
 Come esempio, si consideri il network che simula la doppia implicazione.
 
 ![[images/netTLU.png]]
 
-Può essere dimostrato che tutte le funzioni Booleane con un numero arbitrario di input possano essere computate da reti di TLU semplicemente sfruttando delle equivalenze logiche al fine di dividere queste funzioni in un modo tale che tutte le sottofunzioni occorrenti siano linearmente separabili.
+E' risaputo, infatti, che la congiunzione di due variabili Booleane sia linearmente separabile.<br />
+Può essere dimostrato, inoltre, che tutte le funzioni Booleane con un numero arbitrario di input possano essere computate da reti di TLU semplicemente sfruttando delle equivalenze logiche al fine di dividere queste funzioni in un modo tale che tutte le sottofunzioni occorrenti siano linearmente separabili. 
 
 ----------------------------------------------------------------
 
