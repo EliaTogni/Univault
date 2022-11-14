@@ -25,13 +25,22 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Multi-Layer Perceptron.md",
+                "file": "Artificial Neural Network.md",
                 "mode": "source",
                 "source": false
               }
             }
+          },
+          {
+            "id": "d8002fd05046ef30",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -89,7 +98,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Intelligenza Artificiale.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -107,17 +115,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "167d69a411607202",
+  "active": "d8002fd05046ef30",
   "lastOpenFiles": [
-    "Multi-Layer Perceptron.md",
-    "Artificial Neural Network.md",
+    "Learning Task Libera.md",
     "Intelligenza Artificiale.md",
+    "Learning Task Fissata.md",
+    "Artificial Neural Network.md",
+    "Multi-Layer Perceptron.md",
     "Network di Threshold Logic Unit.md",
     "Neuroni.md",
     "Array.md",
     "Apertura.md",
-    "Ant Colony Optimization.md",
-    "Agent-Based Simulation.md",
-    "Algoritmi Paralleli e Distribuiti.md"
+    "Ant Colony Optimization.md"
   ]
 }

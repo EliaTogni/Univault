@@ -200,8 +200,8 @@ A seconda del tipo dei dati utilizzati per allenare le ANN e a seconda dei crite
 1. **fixed learning task** o apprendimento con supervisione;
 2. **free learning task** o apprendimento senza supervisione.
 
-Nel caso di una fixed learning task si avrà un insieme $L=\{(\mathbf{i}_1,\mathbf{o}_1),\dots,(\mathbf{i}_n,\mathbf{o}_n)\}$ di
-coppie le quali assegnano ad ogni input un output desiderato. Una volta completato il processo di apprendimento, la ANN dovrebbe essere in grado di restituire l'output adeguato rispetto all'input che le viene presentato. In pratica, questo accade raramente e bisogna accontentarsi di un risultato approssimativo.<br />
+La **Learning Task Fissata** $L_{fixed}$ per una rete neurale con $n$ neuroni input, $U_{in} = \{ u_{1}, ..., u_{n} \}$, e $m$ neuroni output, $U_{out} = \{v_{1}, ..., v_{2}\}$, è un insieme di **training pattern** $l = (\textbf{i}^{(l)}, \textbf{o}^{(l)})$, ognuno consistente di un **vettore di input** $\textbf{i}^{(l)} = (ext_{u_{1}}^{(l)}, ..., ext_{u_{n}}^{(l)})$ e un **vettore di output** $\textbf{o}^{(l)} = (o_{v_{1}}^{(l)}, ..., o_{v_{m}}^{(l)})$.<br />
+Nel caso di una fixed learning task si avrà, quindi, un insieme $L=\{(\mathbf{i}_1,\mathbf{o}_1),\dots,(\mathbf{i}_n,\mathbf{o}_n)\}$ di coppie le quali assegnano ad ogni input un output desiderato. Una volta completato il processo di apprendimento, la ANN dovrebbe essere in grado di restituire l'output adeguato rispetto all'input che le viene presentato. In pratica, però, questo accade raramente e bisogna accontentarsi di un risultato approssimativo.<br />
 Per giudicare in che misura una ANN si avvicina alla soluzione della fixed learning task si adotta una funzione di errore, solitamente calcolata come il quadrato della differenza tra l'output desiderato e quello attuale:
 
 $$e = \sum_{l \in L} \sum_{v \in U_{(out)}} e^l_v$$
@@ -213,7 +213,8 @@ $$e^l_v = (o^l_v - out_v)^2$$
 è l'errore individuale per una particolare coppia $l$ e per un neurone di output $v$.<br />
 Il quadrato delle differenze viene scelto per vari motivi. Per prima cosa, errori positivi e negativi altrimenti si cancellerebbero a vicenda e non sarebbero presi in
 considerazione. In secondo luogo, questa funzione è ovunque derivabile, semplificando così il processo di aggiornamento dei pesi e dei threshold.<br />
-Nel free learning task si avrà, invece, solo una sequenza di input $L = \{\mathbf{i}_1, \dots, \mathbf{i}_n\}$. Questo comporta che, a differenza del fixed learning task, non si avrà modo di calcolare una funzione di errore rispetto ad un output atteso.<br />
+Una **Learning Task Libera** $L_{free}$ per una rete neurale con $n$ neuroni input. $U_{in} = \{ u_{1}, ..., u_{n} \}$, è un insieme di **training pattern** $l = (\textbf{i}^{(l)})$, ognuno consistente di un **vettore di input** $\textbf{i}^{(l)} = (ext_{u_{1}}^{(l)}, ..., ext_{u_{n}}^{(l)})$.<br />
+Nel free learning task si avrà, quindi, solo una sequenza di input $L = \{\mathbf{i}_1, \dots, \mathbf{i}_n\}$. Questo comporta che, a differenza del fixed learning task, non si avrà modo di calcolare una funzione di errore rispetto ad un output atteso.<br />
 In linea di principio l'obiettivo di un free learning task sarà quello di produrre un output simile per input simili. Un caso particolare potrebbe essere quello del **clustering** dei vettori di input.<br />
 Qualsiasi processo di apprendimento si scelga esistono alcune buone pratiche che è utile seguire. Una di esse è quella di standardizzare il vettore di input. Comunemente lo si scala in modo tale che abbia media uguale a $0$ e la varianza ad $1$. Per fare ciò, è necessario calcolare per ogni neurone $u_k \in U_{(in)}$ la media aritmetica $\mu_k$ e la deviazione standard $\sigma_k$ degli input esterni:
 
@@ -268,6 +269,19 @@ minore di $x_{i+1}$.<br />
 La funzione di attivazione del neurone di output utilizzata in questo caso è la funzione di identità, in modo tale da restituire come output solamente il valore dell'approssimazione proveniente dai neuroni dell'ultimo hidden layer.<br />
 Dovrebbe essere chiaro che l'approssimazione può crescere a piacere semplicemente aggiungendo neuroni e diminuendo la lunghezza dei gradini.<br />
 E' possibile, inoltre, risparmiare un layer utilizzando come peso della connessione al neurone di output nel calcolo non l'altezza assoluta ma quella relativa. E' utile notare, comunque, che questo risultato non ha natura costruttiva, ossia non istruisce su come deve essere composto un MLP che approssimi con una data accuratezza una certa funzione. Tutto ciò che afferma il teorema è che limitare il numero di layer non pregiudica la proprietà del MLP di essere un **approssimatore universale**.
+
+Una qualsiasi funzione integrabile secondo Riemann può essere approssimato con accuratezza arbitraria da un multi-layer perceptron. Questa preposizione richiede soltanto che la funzione da rappresentare sia integrabile secondo Riemann. Non richiede, infatti, che sia continua.<br />
+In questa preposizione, inoltre, l'errore di approssimazione è misurato dall'area tra la funzione da approssimare e tra l'output del perceptron. Questa area può essere ridotta in maniera arbitraria, nuovamente tramite l'incremento del numero di neuroni.<br />
+Tuttavia, questo non garantisce che, per un multi-layer perceptron, il quale ottiene un certa accuratezza, la differenza tra il suo output e la funzione da approssimare sia minore di un certo errore ovunque. La funzione, per esempio, potrebbe possedere uno spike molto sottile, il quale non è catturato da nessuno scalino.
+
+![[Limits of the preposition.png]]
+
+In un caso del genere, l'area tra la funzione da rappresentare e l'output del perceptron è piccola (poichè lo spike è sottile e quindi contiene solamente un'area piccola), ma nel punto dello spike, la deviazione dell'output dal vero valore della funzione non può essere cosiderabile.
+
+Naturalmente, l'idea di approssimare una funzione data tramite una funzione a scalini può essere trasferita ed applicata a funzioni con multipli argomenti:
+lo spazio di input viene diviso in rettangoli, box o iperbox, ad ognuno dei quali viene assegnato un valore di funzione.
+
+Nonostante i multi-layer perceptron hanno un enorme potere espressivo, essi hanno poca utilità nella pratica. Al fine di ottenere sufficiente accuratezza, è necessario scegliere funzioni a scalini con scalini di larghezza sufficentemente piccola. Questo, perciò, forza a costruire un perceptron con un numero di neuroni potenzialmente altissimo.
 
 ----------------------------------------------------------------
 
