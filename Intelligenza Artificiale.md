@@ -261,7 +261,7 @@ Se due neuroni $u_i$ e $v_j$ non sono connessi, è sufficiente porre $w_{u_iv_j}
 $$\mathbf{net}_{U_2} = W \mathbf{in}_{U_2} = W \mathbf{out}_{U_1}$$
 
 dove $\mathbf{net}_{U_2} = (net_{u_1}, \dots, net_{u_m})^\top$ e $\mathbf{in}_{U_2} = \mathbf{out}_{U_1} = (out_{v_1}, \dots, out_{v_n})^\top$.<br />
-Fino ad adesso si è osservato che le ANN possono rappresentare funzioni booleane. Invece, per quanto riguarda le funzioni a valori continui, ogni funzione Riemann-integrabile è approssimata con precisione arbitraria da un MLP avente quattro layer.
+Fino ad adesso si è osservato che le ANN possono rappresentare funzioni booleane. Invece, per quanto riguarda le funzioni a valori continui, ogni funzione Riemann-integrabile può essere approssimata con precisione arbitraria da un MLP avente quattro layer.
 
 ![[images/approx.png]]
 
@@ -273,7 +273,7 @@ La funzione di attivazione del neurone di output utilizzata in questo caso è la
 Dovrebbe essere chiaro che l'approssimazione può crescere a piacere semplicemente aggiungendo neuroni e diminuendo la lunghezza dei gradini.<br />
 E' possibile, inoltre, risparmiare un layer utilizzando come peso della connessione al neurone di output nel calcolo non l'altezza assoluta ma quella relativa. E' utile notare, comunque, che questo risultato non ha natura costruttiva, ossia non istruisce su come deve essere composto un MLP che approssimi con una data accuratezza una certa funzione. Tutto ciò che afferma il teorema è che limitare il numero di layer non pregiudica la proprietà del MLP di essere un **approssimatore universale**.
 
-Una qualsiasi funzione integrabile secondo Riemann può essere approssimato con accuratezza arbitraria da un multi-layer perceptron. Questa preposizione richiede soltanto che la funzione da rappresentare sia integrabile secondo Riemann. Non richiede, infatti, che sia continua.<br />
+Una qualsiasi funzione integrabile secondo Riemann può essere approssimata con accuratezza arbitraria da un multi-layer perceptron. Questa preposizione richiede soltanto che la funzione da rappresentare sia integrabile secondo Riemann. Non richiede, infatti, che sia continua.<br />
 In questa preposizione, inoltre, l'errore di approssimazione è misurato dall'area tra la funzione da approssimare e tra l'output del perceptron. Questa area può essere ridotta in maniera arbitraria, nuovamente tramite l'incremento del numero di neuroni.<br />
 Tuttavia, questo non garantisce che, per un multi-layer perceptron, il quale ottiene un certa accuratezza, la differenza tra il suo output e la funzione da approssimare sia minore di un certo errore ovunque. La funzione, per esempio, potrebbe possedere uno spike molto sottile, il quale non è catturato da nessuno scalino.
 
@@ -408,7 +408,7 @@ Il valore $s(u)$ risultante indica quanto importante fosse l'input assegnato al 
 
 ----------------------------------------------------------------
 
-## Deep Learning ##
+### Deep Learning ###
 E' stato mostrato come un MLP con un solo hidden layer può approssimare ogni funzione continua su $\mathbb{R}^n$ con una precisione arbitraria. Questo risultato, tuttavia, non ha natura costruttiva e può non essere semplice conoscere a priori il numero esatto di neuroni necessari per approssimare una data funzione con un adeguato grado di precisione. Inoltre, a seconda della funzione, questo numero potrebbe assumere dimensioni considerevoli. Un esempio esplicativo viene fornito considerando la funzione che calcola la parità su una parola di $n$-bit. L'output sarà $1$ se e solo se nel vettore di input che rappresenta la parola saranno ad $1$ un numero pari di bit. Nel caso si scegliesse di utilizzare un MLP con un solo hidden layer, quest'ultimo conterrà al suo interno $2^{n-1}$ neuroni, in quanto la forma normale disgiuntiva della funzione di parità su $n$-bit non è altro che una disgiunzione di $2^{n-1}$ congiunzioni.<br />
 Se si permettesse, invece, di avere più di un layer, il numero di neuroni crescerà in modo lineare alla dimensione dell'input. Questa constatazione ha portato allo sviluppo del così detto *deep learning*, dove con **profondità** della rete si definisce il più lungo cammino che separa i neuroni di input da quelli di output. Il trade-off sperato consiste nel permettere una maggiore profondità del network in cambio di un miglioramento delle risorse utilizzate nel calcolo e nella costruzione.<br />
 Il deep learning oltre ad offrire vantaggi porta con se alcune problematiche:
@@ -436,194 +436,77 @@ Inizialmente si allena un singolo autoencoder. A quel punto si rimuove il decode
 Se si volessero utilizzare network simili per una più ampia classe di applicazioni, dove, per esempio, le feature riconosciute dai layer interni non sono localizzate in una porzione specifica dell'immagine, bisognerebbe rivolgersi ai **convolutional neural network** (più avanti, CNN).<br />
 Questa architettura è ispirata al funzionamento della retina umana, in cui i neuroni adibiti alla percezione hanno un campo ricettivo, ossia una limitata regione in cui rispondono agli stimoli. Questo viene simulato nelle CNN connettendo i neuroni del primo hidden layer solo ad alcuni neuroni di input. I pesi vengono condivisi in modo tale che i vari network parziali possano essere valutati da differenti prospettive dell'immagine. Durante la computazione si procederà poi ad ampliare il **campo ricettivo** sulla totalità dell'immagine. Come risultato si ottiene una convoluzione della matrice dei pesi con l'immagine in input.
 
-Radial basis function network
------------------------------
+----------------------------------------------------------------
 
-I così detti *radial basis function network* (in quello che segue, RBFN)
-sono feed-forward network aventi tre layer di neuroni. Sono strutture
-alternative rispetto ai classici MLP. La differenza principale sta nella
-diversa scelta riguardo la funzione di attivazione. Se nel caso degli
-MLP avevamo una funzione sigmoide, ora avremo una funzione radiale di
-base [^3]. La $f_{net}$ dei neuroni di output è la somma pesata dei loro
-input, come in precedenza. Invece, per i neuroni nel hidden layer avremo
-che $f_{net}$ sarà uguale alla distanza tra il vettore di input e il
-vettore dei pesi. La funzione distanza che sceglieremo sarà una metrica
-in senso geometrico, e, per tanto, deve rispettare i seguenti tre
-assiomi:
+### Radial basis function network ###
+I cosiddetti **radial basis function network** (in seguito RBFN) sono feed-forward network aventi tre layer di neuroni. Sono strutture alternative rispetto ai classici MLP. La differenza principale sta nella diversa scelta riguardo la funzione di attivazione. Se nel caso degli MLP avevamo una funzione sigmoide, ora avremo una funzione radiale di base [^3]. La $f_{net}$ dei neuroni di output è la somma pesata dei loro input, come in precedenza. Invece, per i neuroni nel hidden layer avremo che $f_{net}$ sarà uguale alla distanza tra il vettore di input e il vettore dei pesi. La funzione distanza che sceglieremo sarà una metrica in senso geometrico, e, per tanto, deve rispettare i seguenti tre assiomi:
 $$d(\mathbf{w},\mathbf{v}) = 0 \leftrightarrow \mathbf{w}= \mathbf{v}$$
 $$d(\mathbf{w},\mathbf{v}) = d(\mathbf{v},\mathbf{w})$$
 $$d(\mathbf{w},\mathbf{e}) + d(\mathbf{e},\mathbf{v}) \geq d(\mathbf{w},\mathbf{v})$$
-Una famiglia di funzioni usate spesso nelle applicazioni è quella
-formulata dal matematico prussiano Hermann Minkowski e battezzata in suo
-onore famiglia di Minkowski. Tale famiglia è definita come:
+Una famiglia di funzioni usate spesso nelle applicazioni è quella formulata dal matematico prussiano Hermann Minkowski e battezzata in suo onore famiglia di Minkowski. Tale famiglia è definita come:
 $$d(\mathbf{w},\mathbf{v})_k = (\sum (w_i - v_i)^k)^{\frac{1}{k}}$$
 Alcuni esempi famosi di funzioni appartenenti alla famiglia sono:
 $$k = 1: \text{Manhattan distance}$$ $$k=2:\text{Euclidian distance}$$
 $$k = \infty: \text{Maximum distance, ovvero } d(\mathbf{w},\mathbf{v})_\infty = max |w_i - v_i|$$
 
-![Cerchi rispetto alle diverse definizioni di
-distanza.](img/circle.png){#fig:16}
+![[images/circle.png]]
 
-Un modo utile di visualizzare queste funzioni è quello di vedere che
-forma assume un cerchio a seconda delle varie metriche (vedi Figura
-[15](#fig:16){reference-type="ref" reference="fig:16"}). La ragione è
-che un cerchio è definito come quell'insieme di punti che stanno alla
-stessa distanza da un dato punto. Variando la definizione di distanza,
-varia la forma che assume il cerchio nei diversi spazi. Passando ora a
-considerare $f_{act}$ avremo, nel caso dei neuroni di output, una
-funzione lineare. Invece, per i neuroni del hidden layer avremo una
-funzione monotona decrescente tale che:
+Un modo utile di visualizzare queste funzioni è quello di vedere che forma assume un cerchio a seconda delle varie metriche (vedi Figura [15](#fig:16){reference-type="ref" reference="fig:16"}). La ragione è che un cerchio è definito come quell'insieme di punti che stanno alla stessa distanza da un dato punto. Variando la definizione di distanza, varia la forma che assume il cerchio nei diversi spazi. Passando ora a considerare $f_{act}$ avremo, nel caso dei neuroni di output, una funzione lineare. Invece, per i neuroni del hidden layer avremo una funzione monotona decrescente tale che:
 $$f: \mathbb{R}^{+} \to [0,1] \quad \text{con} \quad f(0) = 1 \quad \text{e} \quad \lim_{x \to \infty} f(x) = 0$$
-Questa funzione calcola l'area in cui il neurone focalizza la propria
-attenzione definita dal raggio di riferimento $\sigma$. I vari parametri
-e la forma della funzione determinano l'ampiezza di questa area. Le
-funzioni più utilizzate per determinare l'area di attivazione sono
-quelle riportate in Figura [16](#fig:17){reference-type="ref"
+Questa funzione calcola l'area in cui il neurone focalizza la propria attenzione definita dal raggio di riferimento $\sigma$. I vari parametri e la forma della funzione determinano l'ampiezza di questa area. Le funzioni più utilizzate per determinare l'area di attivazione sono quelle riportate in Figura [16](#fig:17){reference-type="ref"
 reference="fig:17"}.
 
-![Varie funzioni di attivazione per un RBFN.](img/act_rbf.png){#fig:17}
+![[images/act_rbf.png]]
 
-Come esempio, applichiamo un RBFN per simulare una congiunzione
-booleana. Un network che risolve il problema è quello costituito da un
-singolo neurone hidden, il cui vettore dei pesi (il centro della
-funzione radiale) è esattamente il punto in cui in output vorremo il
-valore *vero*, ovvero (1,1). Il raggio $\sigma$ sarà posto a
-$\frac{1}{2}$ e verrà codificato nel threshold del neurone. La funzione
-di distanza usata è quella euclidea e come $f_{act}$ utilizziamo una
-funzione rettangolare. Il diagramma in Figura
-[17](#fig:18){reference-type="ref" reference="fig:18"} offre una
-rappresentazione grafica di quanto detto.
+Come esempio, applichiamo un RBFN per simulare una congiunzione booleana. Un network che risolve il problema è quello costituito da un singolo neurone hidden, il cui vettore dei pesi (il centro della funzione radiale) è esattamente il punto in cui in output vorremo il valore *vero*, ovvero (1,1). Il raggio $\sigma$ sarà posto a $\frac{1}{2}$ e verrà codificato nel threshold del neurone. La funzione di distanza usata è quella euclidea e come $f_{act}$ utilizziamo una funzione rettangolare. Il diagramma in Figura
+[17](#fig:18){reference-type="ref" reference="fig:18"} offre una rappresentazione grafica di quanto detto.
 
-![RBFN che calcola la congiunzione booleana.](img/and_rbf.png){#fig:18}
+![[images/and_rbf.png]]
 
-In generale, un RBFN ha lo stesso potere espressivo di un MLP e può
-essere visto come un approssimatore universale, ovvero può approssimare
-(con errore arbitrariamente piccolo) una qualsiasi funzioni
-Riemann-integrabile. Il procedimento è lo stesso che nel caso degli
-altri network: la funzione viene approssimata da una funzione a scalini
-che può essere calcolata facilmente da una funzione radiale se la
-definiamo come la somma pesata di funzioni rettangolari.
-L'approssimazione può essere migliorata aumentando il numero dei punti
-in cui si valuta la funzione. Inoltre, se al posto della funzione
-rettangolare, viene utilizzata una funzione Gaussiana possiamo ottenere
-delle transizioni più \"morbide\" evitando bruschi salti.
+In generale, un RBFN ha lo stesso potere espressivo di un MLP e può essere visto come un approssimatore universale, ovvero può approssimare (con errore arbitrariamente piccolo) una qualsiasi funzioni Riemann-integrabile. Il procedimento è lo stesso che nel caso degli altri network: la funzione viene approssimata da una funzione a scalini che può essere calcolata facilmente da una funzione radiale se la definiamo come la somma pesata di funzioni rettangolari. L'approssimazione può essere migliorata aumentando il numero dei punti in cui si valuta la funzione. Inoltre, se al posto della funzione rettangolare, viene utilizzata una funzione Gaussiana possiamo ottenere delle transizioni più \"morbide\" evitando bruschi salti.
 
-Training delle RBFN
--------------------
+----------------------------------------------------------------
 
-Se negli altri ANN la fase di inizializzazione era triviale, in quanto
-bastava scegliere valori in modo casuale, quando si tratta di RBFN lo
-stesso approccio conduce a risultati subottimali. Consideriamo, quindi,
-il caso speciale delle *simple radial basis function network*, dove ogni
-esempio di apprendimento viene associato ad una propria funzione
-radiale. Dato un fixed learning task $L = \{l_1,\dots,l_m\}$, avente $m$
-pattern $l = (\mathbf{i}^l,\mathbf{o}^l)$, definiremo il vettore dei
-pesi associato al neurone $v_k$ come:
+#### Training delle RBFN ####
+Se negli altri ANN la fase di inizializzazione era triviale, in quanto bastava scegliere valori in modo casuale, quando si tratta di RBFN lo stesso approccio conduce a risultati subottimali. Consideriamo, quindi, il caso speciale delle *simple radial basis function network*, dove ogni esempio di apprendimento viene associato ad una propria funzione radiale. Dato un fixed learning task $L = \{l_1,\dots,l_m\}$, avente $m$ pattern $l = (\mathbf{i}^l,\mathbf{o}^l)$, definiremo il vettore dei pesi associato al neurone $v_k$ come:
 
 $$\forall k \in \{1,\dots,m\}: \mathbf{w}_{v_k} = \mathbf{i}_k$$
 
-Assumendo una funzione di attivazione gaussiana, il raggio $\sigma_k$ è
-inizializzato in accordo a questa euristica:
+Assumendo una funzione di attivazione gaussiana, il raggio $\sigma_k$ è inizializzato in accordo a questa euristica:
 
 $$\forall k \in \{1,\dots,m\}: \sigma_k = \frac{d_{max}}{\sqrt{2m}}$$
 
-Dove $d_{max}$ è la massima distanza tra i vettori di input. Questa
-scelta permette di centrare le varie gaussiane in modo che non si
-sovrappongano l'una all'altra, ma si distribuiscano in modo ordinato
-rispetto allo spazio di input. Per quanto riguarda, invece, i pesi dei
-neuroni di output, vengono calcolati secondo la seguente funzione:
-$$\forall u: \sum_{k=1}^m w_{u_k} out_{u_k} - \theta  = o_u$$ Ponendo
-$\theta = 0$, avremo che la precedente equazione è equivalente a:
-$$\mathbf{A}\cdot \mathbf{w}_u = \mathbf{o}_u$$ Dove $\mathbf{A}$ è la
-matrice $m \times m$ che ha come componenti i vari output dei neuroni
-nel hidden layer. Se la matrice $\mathbf{A}$ ha rango completo, possiamo
-invertirla e calcolare il vettore dei pesi come segue:
-$$\mathbf{w}_u = \mathbf{A}^{-1}\cdot \mathbf{o}_u$$ Questo metodo
-garantisce una perfetta approssimazione. Non è necessario, quindi,
-allenare un simple radial basis function network. In generale, se non
-vogliamo avere per ogni training pattern un neurone, dovremo selezionare
-$k$ sottoinsiemi del dataset e trovare, per ogni sottoinsieme, un
-rappresentante che assoceremo ad un neurone nel layer hidden. In
-analogia a quanto accade nel caso \"semplice\" avremo una matrice
-$\mathbf{A}$ di dimensione $m\times (k+1)$ con i valori in output dei
-vari neuroni nel hidden layer. Dato che la matrice non è quadrata, non è
-possibile calcolarne l'inversa come avevamo fatto in precedenza.
-Tuttavia, esiste una alternativa chiamata la *matrice
-pseudo-inversa*[^4] che permette di completare il calcolo con una buona
-approssimazione. Ovviamente, l'accuratezza del network costruito in
-questo modo dipenderà dalla precisione con cui si scelgano i
-rappresentati delle varie sottoclassi del dataset. Esistono vari metodi
-per fare questo:
+Dove $d_{max}$ è la massima distanza tra i vettori di input. Questa scelta permette di centrare le varie gaussiane in modo che non si sovrappongano l'una all'altra, ma si distribuiscano in modo ordinato rispetto allo spazio di input. Per quanto riguarda, invece, i pesi dei neuroni di output, vengono calcolati secondo la seguente funzione:
+$$\forall u: \sum_{k=1}^m w_{u_k} out_{u_k} - \theta  = o_u$$ Ponendo $\theta = 0$, avremo che la precedente equazione è equivalente a:
+$$\mathbf{A}\cdot \mathbf{w}_u = \mathbf{o}_u$$ Dove $\mathbf{A}$ è la matrice $m \times m$ che ha come componenti i vari output dei neuroni nel hidden layer. Se la matrice $\mathbf{A}$ ha rango completo, possiamo invertirla e calcolare il vettore dei pesi come segue:
+$$\mathbf{w}_u = \mathbf{A}^{-1}\cdot \mathbf{o}_u$$Questo metodo garantisce una perfetta approssimazione. Non è necessario, quindi, allenare un simple radial basis function network. In generale, se non
+vogliamo avere per ogni training pattern un neurone, dovremo selezionare $k$ sottoinsiemi del dataset e trovare, per ogni sottoinsieme, un rappresentante che assoceremo ad un neurone nel layer hidden. In analogia a quanto accade nel caso \"semplice\" avremo una matrice $\mathbf{A}$ di dimensione $m\times (k+1)$ con i valori in output dei vari neuroni nel hidden layer. Dato che la matrice non è quadrata, non è possibile calcolarne l'inversa come avevamo fatto in precedenza. Tuttavia, esiste una alternativa chiamata la *matrice pseudo-inversa*[^4] che permette di completare il calcolo con una buona approssimazione. Ovviamente, l'accuratezza del network costruito in questo modo dipenderà dalla precisione con cui si scelgano i rappresentati delle varie sottoclassi del dataset. Esistono vari metodi per fare questo: 
+- Scegliamo tutti i punti del dataset come centri. In questo caso ricadiamo nel caso \"semplice\" e i valori di output possono essere calcolati precisamente. Tuttavia, il calcolo dei pesi può risultare infattibile;
+- Costruiamo un sottoinsieme randomico per rappresentare i centri. Questo metodo ha il pregio di essere facilmente calcolabile. La performance, però, dipenderà dalla fortuna di scegliere dei \"buoni\" centri;
+- Utilizziamo un algoritmo di clustering (c-means clustering,learning vector quantization..).
 
--   Scegliamo tutti i punti del dataset come centri. In questo caso
-    ricadiamo nel caso \"semplice\" e i valori di output possono essere
-    calcolati precisamente. Tuttavia, il calcolo dei pesi può risultare
-    infattibile.
+L'algoritmo c-means sceglie randomicamente $c$ centri di altrettanti cluster. Quindi il dataset viene partizionato in $c$ sottoclassi a seconda della vicinanza ai vari centri. In un passo successivo si calcola il \"centro di gravità\" del cluster così trovato e lo si elegge come nuovo centro. Si ricomputa l'appartenza dei punti del dataset e si
+procede così fino a che i centri smettono di oscillare.
 
--   Costruiamo un sottoinsieme randomico per rappresentare i centri.
-    Questo metodo ha il pregio di essere facilmente calcolabile. La
-    performance, però, dipenderà dalla fortuna di scegliere dei
-    \"buoni\" centri.
+La fase di training avviene come nel caso dei MLP attraverso gradient descent e backpropagation.
 
--   Utilizziamo un algoritmo di clustering (c-means clustering,learning
-    vector quantization..)
+----------------------------------------------------------------
 
-*L'algoritmo c-means sceglie randomicamente $c$ centri di altrettanti
-cluster. Quindi il dataset viene partizionato in $c$ sottoclassi a
-seconda della vicinanza ai vari centri. In un passo successivo si
-calcola il \"centro di gravità\" del cluster così trovato e lo si elegge
-come nuovo centro. Si ricomputa l'appartenza dei punti del dataset e si
-procede così fino a che i centri smettono di oscillare.*
+### Learning vector quantization ###
+Fino ad ora ci siamo concentrati sui fixed learning task per descrivere l'apprendimento delle ANN: il successo dell'apprendimento si misura dall'adeguatezza con cui il network approssima gli output desiderati. Tuttavia, non sappiamo sempre quale output aspettarci per ogni input nel nostro dataset. L'obbiettivo di una rete neurale in questi casi sarà quello di classificare o clusterizzare[^5] i dati in input, senza avere un'indicazione su cosa si stia cercando. La *learning vector quantization* è una tecnica che ci aiuta ad operare il raggruppamento in modo automatico, trovando una adeguata tassellazione dello spazio di input. Come nel caso dell'algoritmo c-means, i vari cluster verranno rappresentati da punti detti \"centri\" scelti tra quelli del dataset.
 
-La fase di training avviene come nel caso dei MLP attraverso gradient
-descent e backpropagation.
+----------------------------------------------------------------
 
-Learning vector quantization
-----------------------------
-
-Fino ad ora ci siamo concentrati sui fixed learning task per descrivere
-l'apprendimento delle ANN: il successo dell'apprendimento si misura
-dall'adeguatezza con cui il network approssima gli output desiderati.
-Tuttavia, non sappiamo sempre quale output aspettarci per ogni input nel
-nostro dataset. L'obbiettivo di una rete neurale in questi casi sarà
-quello di classificare o clusterizzare[^5] i dati in input, senza avere
-un'indicazione su cosa si stia cercando. La *learning vector
-quantization* è una tecnica che ci aiuta ad operare il raggruppamento in
-modo automatico, trovando una adeguata tassellazione dello spazio di
-input. Come nel caso dell'algoritmo c-means, i vari cluster verranno
-rappresentati da punti detti \"centri\" scelti tra quelli del dataset.
-
-### Learning vector quantization network
-
-Per calcolare la learning vector quantization utilizzeremo un network
-feed-forward a due layer che chiameremo *learning vector quantization
-network* (in quel che segue, LVQN). Questo tipo particolare di network
-può essere visto come un RBFN che ha il layer di output al posto del
-hidden layer. Come nel caso dei RBFN avremo, infatti, che la funzione di
-input del layer di output è una funzione della distanza del vettore di
-input e quello dei pesi. Allo stesso modo, la funzione di attivazione
-dei neuroni di output è una funzione radiale. La differenza, nel caso
-dei LVQN, risiede nella $f_{(out)}$ dei neuroni di output, la quale non
-è la semplice identità, ma propaga il messaggio solo se l'attivazione
-del neurone è la massima tra le attivazioni dei neuroni di output. Se
-più di un'unità ha il valore massimo ne viene scelta una a random,
-mentre le altre vengono poste a zero (principio del *winner-takes-all*).
+### Learning vector quantization network ###
+Per calcolare la learning vector quantization utilizzeremo un network feed-forward a due layer che chiameremo *learning vector quantization network* (in quel che segue, LVQN). Questo tipo particolare di network può essere visto come un RBFN che ha il layer di output al posto del hidden layer. Come nel caso dei RBFN avremo, infatti, che la funzione di input del layer di output è una funzione della distanza del vettore di input e quello dei pesi. Allo stesso modo, la funzione di attivazione dei neuroni di output è una funzione radiale. La differenza, nel caso
+dei LVQN, risiede nella $f_{(out)}$ dei neuroni di output, la quale non è la semplice identità, ma propaga il messaggio solo se l'attivazione del neurone è la massima tra le attivazioni dei neuroni di output. Se più di un'unità ha il valore massimo ne viene scelta una a random, mentre le altre vengono poste a zero (principio del *winner-takes-all*).
 
 $$f^u_{out} (act_u) = \begin{cases}
                     1 \quad \text{if } act_u = \max_{v \in U_{out}} act_v\\
                     0 \quad \text{altrimenti}
                     \end{cases}$$
 
-Un'altra differenza rispetto all'algoritmo c-means riguarda il metodo
-attraverso cui i \"centri\" vengono aggiornati. In questo caso, infatti,
-i punti nel dataset vengono processati uno ad uno. La procedura viene
-chiamata *competitive learning*: ogni input viene \"conteso\" dai vari
-neuroni di output, e viene vinto dal neurone con il valore di
-attivazione più alto. Il neurone vincitore viene adattato, in modo che
-il vettore di riferimento venga mosso più vicino al punto, dove, invece,
-il resto dei vettori di riferimento vengono allontanti dal punto (vedi
-Figura [18](#fig:19){reference-type="ref" reference="fig:19"}). Questo
-viene fatto secondo le seguenti regole:
+Un'altra differenza rispetto all'algoritmo c-means riguarda il metodo attraverso cui i \"centri\" vengono aggiornati. In questo caso, infatti, i punti nel dataset vengono processati uno ad uno. La procedura viene chiamata *competitive learning*: ogni input viene \"conteso\" dai vari neuroni di output, e viene vinto dal neurone con il valore di attivazione più alto. Il neurone vincitore viene adattato, in modo che il vettore di riferimento venga mosso più vicino al punto, dove, invece,il resto dei vettori di riferimento vengono allontanti dal punto (vedi Figura [18](#fig:19){reference-type="ref" reference="fig:19"}). Questo viene fatto secondo le seguenti regole:
 
 -   *Attraction rule*:
     $\mathbf{r}^{new} = \mathbf{r}^{old} + \eta(\mathbf{x} - \mathbf{r}^{old})$
@@ -631,74 +514,31 @@ viene fatto secondo le seguenti regole:
 -   *Repulsion rule*:
     $\mathbf{r}^{new} = \mathbf{r}^{old} - \eta(\mathbf{x} - \mathbf{r}^{old})$
 
-![Attraction rule e repulsion rule in azione.](img/adapt.png){#fig:19}
+![[images/adapt.png]]
 
-dove $\mathbf{x}$ è l'input, $\mathbf{r}$ è il vettore di riferimento
-per il neurone vincitore e $\eta$ è il learning rate. Fino ad ora
-abbiamo sottointeso che il learning rate rimanesse fisso per la durata
-dell'apprendimento, tuttavia esistono delle situazioni in cui un
-learning rate costante può portare ad alcuni problemi. Un caso è quello
-rappresentato nel riquadro a sinistra della Figura
-[19](#fig:20){reference-type="ref" reference="fig:20"}, dove il vettore
-di riferimento oscilla ciclicamente verso uno dei quattro punti. Un
-metodo semplice per risolvere il problema è quello di far decrescere il
-learning rate al crescere delle iterazioni (*time dependent leanring
-rate*). In questo modo, il movimento circolare collassa col passare del
-tempo in una spirale, facendo così convergere l'algoritmo. Un altro
-problema con la versione classica di questo algoritmo è che il processo
-di adattamento porti i vettori di riferimento ad allontanarsi sempre di
-più tra loro. Per evitare questo effetto indesiderabile che ostacola la
-convergenza dell'algoritmo si prevede una così detta *window rule* tale
-per cui un vettore di riferimento viene adattato solo se il punto
-$\mathbf{p}$ giace vicino al bordo della classificazione, ossia alla
-(iper-)superficie che separa le regioni contigue delle due classi. La
-nozione vaga di vicinanza viene formalizzata come segue:
+dove $\mathbf{x}$ è l'input, $\mathbf{r}$ è il vettore di riferimento per il neurone vincitore e $\eta$ è il learning rate. Fino ad ora abbiamo sottointeso che il learning rate rimanesse fisso per la durata dell'apprendimento, tuttavia esistono delle situazioni in cui un learning rate costante può portare ad alcuni problemi. Un caso è quello rappresentato nel riquadro a sinistra della Figura [19](#fig:20){reference-type="ref" reference="fig:20"}, dove il vettore di riferimento oscilla ciclicamente verso uno dei quattro punti. Un metodo semplice per risolvere il problema è quello di far decrescere il learning rate al crescere delle iterazioni (*time dependent leanring rate*). In questo modo, il movimento circolare collassa col passare del tempo in una spirale, facendo così convergere l'algoritmo. Un altro problema con la versione classica di questo algoritmo è che il processo di adattamento porti i vettori di riferimento ad allontanarsi sempre di più tra loro. Per evitare questo effetto indesiderabile che ostacola la convergenza dell'algoritmo si prevede una così detta *window rule* tale per cui un vettore di riferimento viene adattato solo se il punto $\mathbf{p}$ giace vicino al bordo della classificazione, ossia alla (iper-)superficie che separa le regioni contigue delle due classi. La nozione vaga di vicinanza viene formalizzata come segue:
 
 $$\min(\frac{d(\mathbf{p},\mathbf{r_j})}{d(\mathbf{p},\mathbf{r_k}},\frac{d(\mathbf{p},\mathbf{r_k})}{d(\mathbf{p},\mathbf{r_j})}) > \theta \quad \text{dove} \quad \theta = \frac{1 - \xi}{1 + \xi}$$
 
-![Learing rate costante (a sinistra) e decrescente (a
-destra).](img/oscill.png){#fig:20}
+![[images/oscill.png]]
 
-dove $\xi$ è un parametro specificato dall'utente e, intuitivamente,
-descrive l'\"ampiezza\" della finestra attorno al bordo delle
-classificazioni. Se assumiamo che i dati siano stati scelti
-randomicamente da un insieme di distribuzioni normali potremmo voler
-usare un assegnamento *soft*, in opposizione ad una divisione *crisp*
-tipica del clustering a là c-means. Rinunciamo, quindi, alla strategia
-del *winner-takes-all* e cerchiamo di descrivere i dati attraverso
-insiemi di gaussiane. In questo modo, tutti i vettori di riferimento che
-appartengono alla stessa classe vengono \"attratti\" verso il centro
-(con varia intensità rispetto alla distanza) e tutti quelli che non vi
-appartengono vengono \"respinti\". La densità di probabilità verrà
+dove $\xi$ è un parametro specificato dall'utente e, intuitivamente, descrive l'\"ampiezza\" della finestra attorno al bordo delle classificazioni. Se assumiamo che i dati siano stati scelti randomicamente da un insieme di distribuzioni normali potremmo voler usare un assegnamento *soft*, in opposizione ad una divisione *crisp* tipica del clustering a là c-means. Rinunciamo, quindi, alla strategia del *winner-takes-all* e cerchiamo di descrivere i dati attraverso insiemi di gaussiane. In questo modo, tutti i vettori di riferimento che appartengono alla stessa classe vengono \"attratti\" verso il centro (con varia intensità rispetto alla distanza) e tutti quelli che non vi appartengono vengono \"respinti\". La densità di probabilità verrà
 rappresentata dalla seguente formula:
 
 $$f_\mathbf{X} (\mathbf{x},C) = \sum^c_{y = 1} p_Y(y,C) \cdot f_{\mathbf{X}|Y}(\mathbf{x}|y,C)$$
 
-dove $C$ è l'insieme dei cluster, $\mathbf{X}$ è un vettore randomico
-che ha come dominio lo spazio dell'input, $Y$ una variabile randomica
-che ha l'indice dei cluster come suo dominio, $p_Y(y,C)$ è la
-probabilità che un punto appartenga al $y$-esimo componente dell'insieme
-e $f_{\mathbf{X}|Y}(\mathbf{x}|y,C)$ è la funzione di probabilità
-condizionata dato il cluster $y$. Per approssimare questa funzione,
-decidendo la posizione e l'ampiezza delle gaussiane, dovremo risolvere
-un problema di ottimizzazione comunemente chiamato *maximum likelihood
-estimation* rispetto ai parametri del cluster. La funzione di likelihood
-è così calcolata:
+dove $C$ è l'insieme dei cluster, $\mathbf{X}$ è un vettore randomico che ha come dominio lo spazio dell'input, $Y$ una variabile randomica che ha l'indice dei cluster come suo dominio, $p_Y(y,C)$ è la probabilità che un punto appartenga al $y$-esimo componente dell'insieme e $f_{\mathbf{X}|Y}(\mathbf{x}|y,C)$ è la funzione di probabilità condizionata dato il cluster $y$. Per approssimare questa funzione, decidendo la posizione e l'ampiezza delle gaussiane, dovremo risolvere un problema di ottimizzazione comunemente chiamato *maximum likelihood estimation* rispetto ai parametri del cluster. La funzione di likelihood è così calcolata:
 
 $$L(\mathbf{X},C) = \prod_{j=1}^n f_\mathbf{X} (\mathbf{x},C) = \prod_{j=1}^n \sum^c_{y = 1} p_Y(y,C) \cdot f_{\mathbf{X}|Y}(\mathbf{x}|y,C)$$
 
-Tuttavia, nella presente forma, la funzione è difficilmente
-ottimizzabile per via della sommatoria. Quindi, prendiamo come parametro
-aggiuntivo un insieme $Y_j$ di variabili:
+Tuttavia, nella presente forma, la funzione è difficilmente ottimizzabile per via della sommatoria. Quindi, prendiamo come parametro aggiuntivo un insieme $Y_j$ di variabili:
 
 $$L(\mathbf{X},y,C) = \prod_{j=1}^n f_{\mathbf{X}_j,Y_j} (\mathbf{x},y_j,C)$$
 
-Il problema si traduce, ora, nel trovare i valori per $Y$. L'approccio
-utilizzato è quello di sceglierne di randomici e considerare la
-distribuzione di probabilità sui possibili valori. $L(\mathbf{X},y,C)$
-diviene una variabile randomica di cui possiamo massimizzare il valore
-aspettato. Per farlo possiamo fissare $C$ in alcuni termini e computare
+Il problema si traduce, ora, nel trovare i valori per $Y$. L'approccio utilizzato è quello di sceglierne di randomici e considerare la distribuzione di probabilità sui possibili valori. $L(\mathbf{X},y,C)$ diviene una variabile randomica di cui possiamo massimizzare il valore aspettato. Per farlo possiamo fissare $C$ in alcuni termini e computare
 iterativamente migliori approssimazioni.
+
+----------------------------------------------------------------
 
 Self-organizing maps
 --------------------
