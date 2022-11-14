@@ -24,10 +24,13 @@ Il successo di questi modelli è condizionato dal fatto che il cervello è consi
 
 ![[images/neurone.jpeg]]
 
-Il cervello è composto da miliardi semplici unità, delle cellule chiamate **neuroni**. Un neurone è una cellula la quale raccoglie e trasmette attività elettrica. Questi neuroni comunicano tra di loro inviando informazioni sotto forma di segnali di attivazione l'un l'altro, lungo connessioni orientate.<br />
+![[Biological neurons.png]]
+
+Il cervello è composto da miliardi semplici unità, delle cellule chiamate **neuroni**. Un neurone è una cellula la quale raccoglie e trasmette attività elettrica. I neuroni esistono in differenti forme e grandezze, ed è possibile risalire ad un neurone "prototipo" dal quale ricondursi a tutti i tipi di neuroni.<br />
+Questi neuroni comunicano tra di loro inviando informazioni sotto forma di segnali di attivazione l'un l'altro, lungo connessioni orientate.<br />
 Il neurone a sua volta è costituito da:
 -   il **corpo cellulare**, il quale contiene il nucleo. Viene anche chiamato **Soma**; 
--   i **dendriti**, i quali sono filamenti ramificati che si estendono dal corpo cellulare; 
+-   i **dendriti**, i quali sono filamenti di scarsa lunghezza e fortemente ramificati, i quali si estendono dal corpo cellulare; 
 -   l'**assone**: un lungo filamento che parte dal corpo centrale della cellula.
 
 L'assone e i dendriti differiscono per la struttura e per le proprietà della **membrana cellulare**. In particolare, l'assone è spesso coperto da una **guaina mielinica**.<br />

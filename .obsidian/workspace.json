@@ -30,17 +30,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "d8002fd05046ef30",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {}
-            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -98,6 +89,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Intelligenza Artificiale.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,17 +107,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "d8002fd05046ef30",
+  "active": "167d69a411607202",
   "lastOpenFiles": [
-    "Learning Task Libera.md",
-    "Intelligenza Artificiale.md",
-    "Learning Task Fissata.md",
     "Artificial Neural Network.md",
+    "Neuroni.md",
+    "Intelligenza Artificiale.md",
+    "Modello ADALINE.md",
+    "Learning Task Libera.md",
+    "Learning Task Fissata.md",
     "Multi-Layer Perceptron.md",
     "Network di Threshold Logic Unit.md",
-    "Neuroni.md",
     "Array.md",
-    "Apertura.md",
-    "Ant Colony Optimization.md"
+    "Apertura.md"
   ]
 }
