@@ -556,8 +556,7 @@ dove $u_*$ è il neurone vincitore e $f_{nb}$ è una funzione radiale. Il learni
 ----------------------------------------------------------------
 
 ### Hopfield network ###
-Nei precedenti capitoletti ci siamo interessati esclusivamente di feed-forward network, ovvero network rappresentati da un grafo aciclico. Esistono, tuttavia, in letteratura alcuni esempi di *recurrent network*, ovvero network il cui grafo contiene dei cicli diretti. Una dei più semplici modelli di recurrent network è quello degli *Hopfield network* (in quello che segue HN). Una prima differenza degli HN rispetto agli  altri ANN è che tutti i neuroni sono sia neuroni di input che di output.
-Non esistono, inoltre, neuroni nascosti. Ogni neurone è connesso ad ogni altro neurone (sono esclusi cappi) e i pesi delle connessioni sono simmetrici. La funzione di input di ogni neurone è la somma pesata degli output degli altri neuroni:
+Nei precedenti capitoletti ci siamo interessati esclusivamente di feed-forward network, ovvero network rappresentati da un grafo aciclico. Esistono, tuttavia, in letteratura alcuni esempi di *recurrent network*, ovvero network il cui grafo contiene dei cicli diretti. Una dei più semplici modelli di recurrent network è quello degli *Hopfield network* (in quello che segue HN). Una prima differenza degli HN rispetto agli  altri ANN è che tutti i neuroni sono sia neuroni di input che di output. Non esistono, inoltre, neuroni nascosti. Ogni neurone è connesso ad ogni altro neurone (sono esclusi cappi) e i pesi delle connessioni sono simmetrici. La funzione di input di ogni neurone è la somma pesata degli output degli altri neuroni:
 
 $$f_{(net)}^u(\mathbf{w},\mathbf{i}) = \sum_{v \in U - \{u\}} w_{uv} out_v$$
 
@@ -653,100 +652,40 @@ Possiamo generalizzare questo approccio a funzioni con più di un argomento graz
 
 ----------------------------------------------------------------
 
-Sistemi fuzzy
-=============
+## Sistemi fuzzy ##
 
-Introduzione alla logica fuzzy
-------------------------------
+### Introduzione alla logica fuzzy ###
 
-### Motivazioni
+#### Motivazioni ####
 
-La logica classica si fonda sul *principio di bivalenza*, ovvero una
-proposizione può assumere solo due valori di verità: il *vero* o il
-*falso*. Questa assunzione può essere adeguata nel caso in cui ci
-interessi modellare concetti chiari e distinti che hanno definizioni
-precise, come nel caso dei concetti matematici. Quando, invece, vogliamo
-formalizzare la conoscenza implicita nel linguaggio naturale possiamo
-imbatterci in alcune proposizioni che sono vere (o false) *in una certa
-misura*, oppure proprietà che hanno estensioni sfumate. La logica fuzzy
-e la teoria insiemistica che da questa discende ci permette di ragionare
-in questi contesti, in modo da sfruttare a nostro vantaggio la vaghezza
-insita nell'uso che facciamo delle parole nel linguaggio naturale.
-Bisogna, tuttavia, stare attenti a non confondere l'imprecisione con
-l'*incertezza*. L'incertezza si riferisce alla possibilità che un evento
-accada o meno. Il valore numerico associato all'accadimento di un evento
-incerto si chiama *probabilità* ed è studiato dalla branca della
-matematica omonima. La differenza tra appartenenza fuzzy e probabilità
-sta nel fatto che la probabilità rimane comunque un fenomeno booleano:
-un evento può accadere o non accadere; dove, invece, l'appartenenza
-fuzzy si riferisce a quanto una proprietà viene soddisfatta da un
-oggetto.
+La logica classica si fonda sul *principio di bivalenza*, ovvero una proposizione può assumere solo due valori di verità: il *vero* o il *falso*. Questa assunzione può essere adeguata nel caso in cui ci interessi modellare concetti chiari e distinti che hanno definizioni precise, come nel caso dei concetti matematici. Quando, invece, vogliamo formalizzare la conoscenza implicita nel linguaggio naturale possiamo imbatterci in alcune proposizioni che sono vere (o false) *in una certa misura*, oppure proprietà che hanno estensioni sfumate. La logica fuzzy e la teoria insiemistica che da questa discende ci permette di ragionare in questi contesti, in modo da sfruttare a nostro vantaggio la vaghezza insita nell'uso che facciamo delle parole nel linguaggio naturale. Bisogna, tuttavia, stare attenti a non confondere l'imprecisione con l'*incertezza*. L'incertezza si riferisce alla possibilità che un evento accada o meno. Il valore numerico associato all'accadimento di un evento incerto si chiama *probabilità* ed è studiato dalla branca della matematica omonima. La differenza tra appartenenza fuzzy e probabilità sta nel fatto che la probabilità rimane comunque un fenomeno booleano: un evento può accadere o non accadere; dove, invece, l'appartenenza fuzzy si riferisce a quanto una proprietà viene soddisfatta da un oggetto.
 
-### Insiemi fuzzy
+----------------------------------------------------------------
 
-Un insieme classico è una collezione di elementi che possono (o meno)
-appartenere all'insieme. Per tanto, un insieme può essere definito a
-partire da una funzione caratteristica che assegna ad ogni elemento nel
-dominio del discorso il valore 1 se questo elemento appartiene
-all'insieme oppure 0 altrimenti. Un *insieme fuzzy* può essere visto
-come una generalizzazione di questo concetto.
+### Insiemi fuzzy ###
+Un insieme classico è una collezione di elementi che possono (o meno) appartenere all'insieme. Per tanto, un insieme può essere definito a partire da una funzione caratteristica che assegna ad ogni elemento nel dominio del discorso il valore 1 se questo elemento appartiene all'insieme oppure 0 altrimenti. Un *insieme fuzzy* può essere visto come una generalizzazione di questo concetto.
 
-Dato un dominio del discorso $X$, un insieme fuzzy $\mu$ è una funzione
-$\mu : X \to [0,1]$ che assegna ad ogni elemento un *grado di
-appartenenza* $\mu(x)$ rispetto all'insieme $\mu$.
+Dato un dominio del discorso $X$, un insieme fuzzy $\mu$ è una funzione $\mu : X \to [0,1]$ che assegna ad ogni elemento un *grado di appartenenza* $\mu(x)$ rispetto all'insieme $\mu$.
 
-Queste funzioni sono scelte a seconda del contesto di utilizzo e i gradi
-di appartenenza sono fissati per convenzione. Possiamo vedere i fuzzy
-set come interfacce tra espressioni lingustiche e loro rappresentazioni
-numeriche. Ad esempio, vogliamo dare un modello formale alla proprietà
-\"essere alto per un bambino di 4 anni\". Per farlo definiremo un
-insieme fuzzy $\mu_{tall}$ attraverso una funzionesigmoide come in
-Figura [22](#fig:23){reference-type="ref" reference="fig:23"}, tale per
-cui risulteranno *sicuramente* nell'estensione della proprietà i bambini
-più alti di 1.5 m centimetri e *sicuramente* fuori dall'estensione
-quelli più bassi di 0.7 m. Tutti gli altri apparterranno all'insieme con
-un certo grado.
+Queste funzioni sono scelte a seconda del contesto di utilizzo e i gradi di appartenenza sono fissati per convenzione. Possiamo vedere i fuzzy set come interfacce tra espressioni lingustiche e loro rappresentazioni numeriche. Ad esempio, vogliamo dare un modello formale alla proprietà \"essere alto per un bambino di 4 anni\". Per farlo definiremo un insieme fuzzy $\mu_{tall}$ attraverso una funzionesigmoide come in Figura [22](#fig:23){reference-type="ref" reference="fig:23"}, tale per cui risulteranno *sicuramente* nell'estensione della proprietà i bambini
+più alti di 1.5 m centimetri e *sicuramente* fuori dall'estensione quelli più bassi di 0.7 m. Tutti gli altri apparterranno all'insieme con un certo grado.
 
-![L'insieme fuzzy $\mu_{tall}$ che descrive il predicato \"essere alto
-per un bambino di 4 anni\".](img/tall.png){#fig:23}
+![[images/tall.png]]
 
-### Interpretazioni della funzione di appartenenza
+----------------------------------------------------------------
 
-Ci sono varie semantiche che è possibile associare alla relazione di
-appartenenza fuzzy a seconda dalla applicazione:
+### Interpretazioni della funzione di appartenenza ###
+Ci sono varie semantiche che è possibile associare alla relazione di appartenenza fuzzy a seconda dalla applicazione:
+1.  somiglianza;
+2.  preferenza;
+3.  possibilità.
 
-1.  somiglianza
+Nel primo caso, $\mu(x)$ può essere visto come il grado di prossimità rispetto ad un elemento prototipale di $\mu$. Questa interpretazione viene utilizzata nei problemi di pattern classification, cluster analysis e regressione. Nel secondo caso, la funzione $\mu$ rappresenta sia l'insieme degli oggetti preferiti, sia il valore associato ad una decisione $X$ e $\mu(u)$ rappresenta sia l'intensità della preferenza associata a $u$, sia la possibilità di scegliere $u$ come valore di $X$. Questa interpretazione viene utilizzata nei problemi di ottimizzazione fuzzy e nella teoria della decisione. L'ultima delle tre è quella che considera $\mu(u)$ come il grado di possibilità che l'elemento $u$ sia il valore del parametro $X$ ed è usata per quantificare lo stato epistemico di un agente. L'obbiettivo è quello di distinguere quello che l'agente considererebbe \"sorprendente\" da quello che, invece, è \"tipico\" o \"aspettato\". Questa interpretazione, come vedremo in seguito, viene utilizzata in data analysis.
 
-2.  preferenza
+----------------------------------------------------------------
 
-3.  possibilità
-
-Nel primo caso, $\mu(x)$ può essere visto come il grado di prossimità
-rispetto ad un elemento prototipale di $\mu$. Questa interpretazione
-viene utilizzata nei problemi di pattern classification, cluster
-analysis e regressione. Nel secondo caso, la funzione $\mu$ rappresenta
-sia l'insieme degli oggetti preferiti, sia il valore associato ad una
-decisione $X$ e $\mu(u)$ rappresenta sia l'intensità della preferenza
-associata a $u$, sia la possibilità di scegliere $u$ come valore di $X$.
-Questa interpretazione viene utilizzata nei problemi di ottimizzazione
-fuzzy e nella teoria della decisione. L'ultima delle tre è quella che
-considera $\mu(u)$ come il grado di possibilità che l'elemento $u$ sia
-il valore del parametro $X$ ed è usata per quantificare lo stato
-epistemico di un agente. L'obbiettivo è quello di distinguere quello che
-l'agente considererebbe \"sorprendente\" da quello che, invece, è
-\"tipico\" o \"aspettato\". Questa interpretazione, come vedremo in
-seguito, viene utilizzata in data analysis.
-
-### Rappresentazione verticale e orizzontale
-
-Come abbiamo già mostrato, gli insiemi fuzzy possono essere
-rappresentati da una funzione che assegna un valore nell'intervallo
-reale unitario ad ogni elemento dell'universo del discorso. Nella
-maggior parte delle applicazioni i valori assunti dalla funzione
-crescono monotonicamente fino a un certo punto e da quello decrescono
-monotonicamente. Questo tipo di insiemi viene detto *convesso*. Le
-funzioni che rappresentano insiemi convessi sono dette *funzioni
-triangolari* ed assumono la forma:
+### Rappresentazione verticale e orizzontale ###
+Come abbiamo già mostrato, gli insiemi fuzzy possono essere rappresentati da una funzione che assegna un valore nell'intervallo reale unitario ad ogni elemento dell'universo del discorso. Nella maggior parte delle applicazioni i valori assunti dalla funzione crescono monotonicamente fino a un certo punto e da quello decrescono monotonicamente. Questo tipo di insiemi viene detto *convesso*. Le funzioni che rappresentano insiemi convessi sono dette *funzioni triangolari* ed assumono la forma:
 
 $$\Lambda_{a,b,c} : \mathbb{R} \to [0,1],\quad x \mapsto 
 \begin{cases}
@@ -755,8 +694,7 @@ $$\Lambda_{a,b,c} : \mathbb{R} \to [0,1],\quad x \mapsto
 0 \quad \text{  altrimenti}
 \end{cases}$$
 
-Le funzioni triangolari possono essere considerate un caso particolare
-delle *funzioni trapezoidali*:
+Le funzioni triangolari possono essere considerate un caso particolare delle *funzioni trapezoidali*:
 
 $$\Pi_{a,b,c,d} : \mathbb{R} \to [0,1],\quad x \mapsto 
 \begin{cases}
@@ -766,124 +704,66 @@ $$\Pi_{a,b,c,d} : \mathbb{R} \to [0,1],\quad x \mapsto
 0 \quad \text{  altrimenti}
 \end{cases}$$
 
-![Alcuni esempi di funzioni triangolari e
-trapezoidali.](img/triang.png){#fig:24}
+![[images/triang.png]]
 
-Alcuni esempi di queste funzioni possono essere trovati in Figura
-[23](#fig:24){reference-type="ref" reference="fig:24"}. Questa
-rappresentazione dei fuzzy set viene anche detto *rappresentazione
-verticale*. Una diversa rappresentazione è invece quella *orizzontale*.
-Per un qualsiasi valore $\alpha \in [0,1]$ consideriamo l'insieme di
-elementi che hanno un grado di appartenenza all'insieme $\mu$ di almeno
-$\alpha$.
+Alcuni esempi di queste funzioni possono essere trovati in Figura [23](#fig:24){reference-type="ref" reference="fig:24"}. Questa rappresentazione dei fuzzy set viene anche detto *rappresentazione verticale*. Una diversa rappresentazione è invece quella *orizzontale*. Per un qualsiasi valore $\alpha \in [0,1]$ consideriamo l'insieme di
+elementi che hanno un grado di appartenenza all'insieme $\mu$ di almeno $\alpha$.
 
-Sia $\mu$ un fuzzy set definito rispetto al dominio del discorso $X$ e
-sia $\alpha \in [0,1]$. L'insieme
-$$[\mu]_\alpha = \{x \in X | \mu(x) \geq \alpha \}$$ è chiamato
-*alpha-cut* dell'insieme $\mu$.
+Sia $\mu$ un fuzzy set definito rispetto al dominio del discorso $X$ e sia $\alpha \in [0,1]$. L'insieme
+$$[\mu]_\alpha = \{x \in X | \mu(x) \geq \alpha \}$$ è chiamato *alpha-cut* dell'insieme $\mu$.
+Nel caso in cui l'insieme $\mu$ sia una funzione trapezoidale, qualsiasi suo alpha-cut sarà un intervallo chiuso. Se, invece, l'insieme non è convesso almeno uno dei suoi alpha-cut consisterà in due intervalli disgiunti. Alcune proprietà degli alpha-cut sono le seguenti:
+1.  $[\mu]_0 = X$;
+2.  $\alpha \leq \beta \implies [\mu]_\alpha \subseteq [\mu]_\beta$;
+3.  $\cap_\alpha: \alpha < \beta, [\mu]_\alpha = [\mu]_\beta$.
 
-Nel caso in cui l'insieme $\mu$ sia una funzione trapezoidale, qualsiasi
-suo alpha-cut sarà un intervallo chiuso. Se, invece, l'insieme non è
-convesso almeno uno dei suoi alpha-cut consisterà in due intervalli
-disgiunti. Alcune proprietà degli alpha-cut sono le seguenti:
-
-1.  $[\mu]_0 = X$
-
-2.  $\alpha \leq \beta \implies [\mu]_\alpha \subseteq [\mu]_\beta$
-
-3.  $\cap_\alpha: \alpha < \beta, [\mu]_\alpha = [\mu]_\beta$
-
-Da queste proprietà discende il fatto che ogni insieme fuzzy possa
-essere descritto specificando una famiglia di alpha-cut, come illustra
-il teorema seguente.
-
-Sia $\mu$ un fuzzy set, allora
+Da queste proprietà discende il fatto che ogni insieme fuzzy possa essere descritto specificando una famiglia di alpha-cut, come illustra il teorema seguente.<br />
+Sia $\mu$ un fuzzy set, allora:
 $$\mu(x) = \sup_{\alpha \in [0,1]} \{x \in [\mu]_\alpha\}$$
 
-![Insieme fuzzy e sua rappresentazione in termini di
-alpha-cut.](img/alpha_cut.png){#fig:25}
+![[images/alpha_cut.png]]
 
-Dal punto di vista geometrico, un fuzzy set può essere visto come un
-inviluppo superiore dei suoi alpha-cut. Questa connessione tra insiemi
-fuzzy e famiglie di alpha-cut è utilizzata nella rappresentazione degli
-insiemi fuzzy nei computer. Solitamente ci si limita a prendere un
-numero di finito di alpha-cut rilevanti ai fini della rappresentazione
-dell'insieme(Figura [24](#fig:25){reference-type="ref"
-reference="fig:25"}). Gli insiemi vengono poi conservati in memoria come
-catene di liste lineari. Ogni lista è l'unione di intervalli
-rappresentati dai loro estremi.
+Dal punto di vista geometrico, un fuzzy set può essere visto come un inviluppo superiore dei suoi alpha-cut. Questa connessione tra insiemi fuzzy e famiglie di alpha-cut è utilizzata nella rappresentazione degli insiemi fuzzy nei computer. Solitamente ci si limita a prendere un numero di finito di alpha-cut rilevanti ai fini della rappresentazione dell'insieme(Figura [24](#fig:25){reference-type="ref" reference="fig:25"}). Gli insiemi vengono poi conservati in memoria come catene di liste lineari. Ogni lista è l'unione di intervalli rappresentati dai loro estremi.
 
-### Alcune utili definizioni
+----------------------------------------------------------------
 
-Avendo introdotto gli alpha-cut come uno strumento per rappresentare i
-fuzzy set, ora li sfrutteremo definendo alcuni concetti molto utili per
-quello che segue.
-
-Il *supporto* $S(\mu)$ di un insieme fuzzy $\mu$ è l'insieme booleano
-che contiene tutti e soli gli elementi del dominio del discorso che
-hanno un grado di appartenenza non nullo rispetto a $\mu$. In simboli:
+### Alcune utili definizioni ###
+Avendo introdotto gli alpha-cut come uno strumento per rappresentare i fuzzy set, ora li sfrutteremo definendo alcuni concetti molto utili per quello che segue.
+Il *supporto* $S(\mu)$ di un insieme fuzzy $\mu$ è l'insieme booleano che contiene tutti e soli gli elementi del dominio del discorso che hanno un grado di appartenenza non nullo rispetto a $\mu$. In simboli:
 $$S(\mu) = [\mu]_{\bar{0}} = \{ x \in X | \mu(x) > 0 \}$$
 
-Il *centro* $C(\mu)$ di un insieme fuzzy $\mu$ è l'insieme booleano che
-contiene tutti e soli gli elementi del dominio del discorso che hanno un
-grado di appartenenza uguale a 1 rispetto a $\mu$. In simboli:
+Il *centro* $C(\mu)$ di un insieme fuzzy $\mu$ è l'insieme booleano che contiene tutti e soli gli elementi del dominio del discorso che hanno un grado di appartenenza uguale a 1 rispetto a $\mu$. In simboli:
 $$C(\mu) = [\mu]_{1} = \{ x \in X | \mu(x) = 1 \}$$
 
-L'*altezza* $h(\mu)$ di un insieme fuzzy $\mu$ è il più alto grado di
-appartenenza ottenibile da un elemento di $\mu$. In simboli:
+L'*altezza* $h(\mu)$ di un insieme fuzzy $\mu$ è il più alto grado di appartenenza ottenibile da un elemento di $\mu$. In simboli:
 $$h(\mu) = \sup_{x \in X} \{\mu(x)\}$$
 
-Un insieme fuzzy $\mu$ è definito *normale* sse $h(\mu) = 1$.
-Altrimenti, è definito *subnormale*.
+Un insieme fuzzy $\mu$ è definito *normale* sse $h(\mu) = 1$. Altrimenti, è definito *subnormale*.
 
-Un insieme fuzzy $\mu$ è definito *convesso* sse i suoi alpha-cut sono
-convessi per ogni scelta di $\alpha \in [0,1)$.
+Un insieme fuzzy $\mu$ è definito *convesso* sse i suoi alpha-cut sono convessi per ogni scelta di $\alpha \in [0,1)$.
 
-Un insieme fuzzy $\mu$ è un *numero fuzzy* sse $\mu$ è normale e
-$[\mu]_\alpha$ è chiusa, limitata e convessa per ogni scelta di
-$\alpha \in [0,1)$.
+Un insieme fuzzy $\mu$ è un *numero fuzzy* sse $\mu$ è normale e $[\mu]_\alpha$ è chiusa, limitata e convessa per ogni scelta di $\alpha \in [0,1)$.
 
-### Logica fuzzy
+----------------------------------------------------------------
 
-Un importante risultato della logica classica dice che esiste un
-isomorfismo tra la logica proposizione su un insieme finito di variabili
-e la teoria degli insiemi finiti. Entrambi questi sistemi, inoltre,
-possono essere dimostrati isomorfi ad un'algebra booleana finita. Questo
-ci permette di definire gli operatori insiemistici utilizzando i
-classici operatori logici di congiunzione, disgiunzione e negazione. Un
-discorso simile vale per la logica fuzzy, ovvero la logica che ha come
-insieme di valori di verità l'intero intervallo reale $[0,1]$. Una volta
-ridefiniti gli operatori logici booleani per adattarsi alla nuova
-semantica potremo usarli per costruirci sopra una teoria degli operatori
-insiemistici \"fuzzy\". Siano $\mu$ e $\mu'$, possiamo definire gli
-operatori della logica fuzzy come segue:
+### Logica fuzzy ###
+Un importante risultato della logica classica dice che esiste un isomorfismo tra la logica proposizione su un insieme finito di variabili e la teoria degli insiemi finiti. Entrambi questi sistemi, inoltre, possono essere dimostrati isomorfi ad un'algebra booleana finita. Questo ci permette di definire gli operatori insiemistici utilizzando i classici operatori logici di congiunzione, disgiunzione e negazione. Un discorso simile vale per la logica fuzzy, ovvero la logica che ha come insieme di valori di verità l'intero intervallo reale $[0,1]$. Una volta ridefiniti gli operatori logici booleani per adattarsi alla nuova semantica potremo usarli per costruirci sopra una teoria degli operatori insiemistici \"fuzzy\". Siano $\mu$ e $\mu'$, possiamo definire gli operatori della logica fuzzy come segue:
+1.  $\neg \mu \doteq 1 - \mu(x)$;
+2.  $\mu \wedge \mu' \doteq \min\{\mu(x),\mu'(x)\}$;
+3.  $\mu \vee \mu' \doteq \max\{\mu(x),\mu'(x)\}$.
 
-1.  $\neg \mu \doteq 1 - \mu(x)$
+![[images/fuzzyop.png]]
 
-2.  $\mu \wedge \mu' \doteq \min\{\mu(x),\mu'(x)\}$
+Gli operatori insiemistici associati sono mostrati in Figura[25](#fig:26){reference-type="ref" reference="fig:26"}.
 
-3.  $\mu \vee \mu' \doteq \max\{\mu(x),\mu'(x)\}$
+----------------------------------------------------------------
 
-![Le varie operazioni insiemistiche caratterizzate secondo le
-definizioni riportate nella sezione 3.1.6.](img/fuzzyop.png){#fig:26}
+### Negazione stretta e forte ###
+In generale, esistono vari modi di definire la negazione in una logica fuzzy. L'unico requisito è che la definizione rispetti tre proprietà che, intuitivamente, ogni negazione deve possedere:
+1.  $\neg(0) = 1$;
+2.  $\neg(1) = 0$;
+3.  $x \leq y \implies \neg x \geq \neg y$.
 
-Gli operatori insiemistici associati sono mostrati in Figura
-[25](#fig:26){reference-type="ref" reference="fig:26"}.
-
-### Negazione stretta e forte
-
-In generale, esistono vari modi di definire la negazione in una logica
-fuzzy. L'unico requisito è che la definizione rispetti tre proprietà
-che, intuitivamente, ogni negazione deve possedere:
-
-1.  $\neg(0) = 1$
-
-2.  $\neg(1) = 0$
-
-3.  $x \leq y \implies \neg x \geq \neg y$
-
-In aggiunta a queste proprietà, una negazione può soddisfarne altre. Per
-esempio, si può chiedere che sia *strettamente decrescente*:
+In aggiunta a queste proprietà, una negazione può soddisfarne altre. Per esempio, si può chiedere che sia *strettamente decrescente*:
 
 $$x < y \implies \neg x > \neg y$$
 
@@ -891,52 +771,32 @@ Oppure che $\neg$ sia *continua*, o *involutiva*:
 
 $$\neg \neg x = x$$
 
-Una negazione si dice *stretta* sse è strettamente decrescente e
-continua.
-
+Una negazione si dice *stretta* sse è strettamente decrescente e continua.
 Una negazione si dice *forte* sse è stretta e involutiva.
 
-### T-norme e t-conorme
+----------------------------------------------------------------
 
-Come la negazione, la congiunzione e la disgiunzione fuzzy possono
-essere definite in diversi modi. Entrambe devono, tuttavia, soddisfare
-alcune proprietà di base che le definiscono rispettivamente come
-*t-norme* e *t-conorme*.
+### T-norme e t-conorme ###
+Come la negazione, la congiunzione e la disgiunzione fuzzy possono essere definite in diversi modi. Entrambe devono, tuttavia, soddisfare alcune proprietà di base che le definiscono rispettivamente come *t-norme* e *t-conorme*.
 
-Una funzione $\top : [0,1]^2 \to [0,1]$ si dice *t-norma* sse soddisfa
-le seguenti proprietà:
+Una funzione $\top : [0,1]^2 \to [0,1]$ si dice *t-norma* sse soddisfa le seguenti proprietà:
+1.  $\top(x,1) = x$;
+2.  $\top(x,y) = \top(y,x)$;
+3.  $\top(x,\top(y,z)) = \top(\top(x,y),z)$;
+4.  $x \leq z \implies \top(x,y) \leq \top(x,z)$.
 
-1.  $\top(x,1) = x$
+Una funzione $\bot: [0,1]^2 \to [0,1]$ si dice *t-conorma* sse soddisfa le seguenti proprietà:
+1.  $\bot(x,0) = x$;
+2.  $\bot(x,y) = \bot(y,x)$;
+3.  $\bot(x,\bot(y,z)) = \bot(\bot(x,y),z)$;
+4.  $x \leq z \implies \bot(x,y) \leq \bot(x,z)$.
 
-2.  $\top(x,y) = \top(y,x)$
-
-3.  $\top(x,\top(y,z)) = \top(\top(x,y),z)$
-
-4.  $x \leq z \implies \top(x,y) \leq \top(x,z)$
-
-Una funzione $\bot: [0,1]^2 \to [0,1]$ si dice *t-conorma* sse soddisfa
-le seguenti proprietà:
-
-1.  $\bot(x,0) = x$
-
-2.  $\bot(x,y) = \bot(y,x)$
-
-3.  $\bot(x,\bot(y,z)) = \bot(\bot(x,y),z)$
-
-4.  $x \leq z \implies \bot(x,y) \leq \bot(x,z)$
-
-Le definizioni di disgiunzione e congiunzione che abbiamo dato nella
-sezione 3.1.6 in termini di $\max$ e $\min$ soddisfano queste proprietà.
-Si può mostrare che l'operazione di minimo sia la più grande t-norma e
-il massimo la più piccola t-conorma. In aggiunta a queste, possono
-essere date altre definizioni di disgiunzione e congiunzione come, per
-esempio, quella in termini di prodotto e somma probabilistica:
+Le definizioni di disgiunzione e congiunzione che abbiamo dato nella sezione 3.1.6 in termini di $\max$ e $\min$ soddisfano queste proprietà. Si può mostrare che l'operazione di minimo sia la più grande t-norma e il massimo la più piccola t-conorma. In aggiunta a queste, possono essere date altre definizioni di disgiunzione e congiunzione come, per esempio, quella in termini di prodotto e somma probabilistica:
 $$\top_{prod}(x,y) = x \cdot y$$
 $$\bot_{sum} (x,y) = x + y - x \cdot y$$
 
 Oppure, seguendo Łukasiewicz: $$\top_{Luk}(x,y) = \max\{0,x + y - 1\}$$
-$$\bot_{Luk}(x,y) = \min\{1,x + y\}$$ O ancora, come prodotto e somma
-drastica: $$\top_{-1}(x,y) = \begin{cases}
+$$\bot_{Luk}(x,y) = \min\{1,x + y\}$$O ancora, come prodotto e somma drastica: $$\top_{-1}(x,y) = \begin{cases}
                 \min(x,y) \quad \text{se } \max(x+y) = 1 \\
                 0 \quad \text{ altrimenti}  
                 \end{cases}$$ $$\bot_{-1}(x,y) = \begin{cases}
@@ -944,75 +804,46 @@ drastica: $$\top_{-1}(x,y) = \begin{cases}
                 0 \quad \text{ altrimenti}  
                 \end{cases}$$
 
-![Alcune definizioni di t-norme.](img/tnorme.png){#fig:27}
+![[images/tnorme.png]]
 
-In Figura [26](#fig:27){reference-type="ref" reference="fig:27"} si
-possono vedere le relazioni che legano tutte le precedenti definizioni
-di t-norma. In Figura [27](#fig:28){reference-type="ref"
-reference="fig:28"}, invece, si possono vedere le varie t-conorme.
+In Figura [26](#fig:27){reference-type="ref" reference="fig:27"} si possono vedere le relazioni che legano tutte le precedenti definizioni di t-norma. In Figura [27](#fig:28){reference-type="ref" reference="fig:28"}, invece, si possono vedere le varie t-conorme.
 
-![Alcune definizioni di t-conorme.](img/tconorme.png){#fig:28}
+![[images/tconorme.png]]
 
-### Implicazione fuzzy
+----------------------------------------------------------------
 
-Come nel caso booleano avremo che un insieme fuzzy è contenuto in un
-altro se tutti gli elementi del primo sono contenuti nel secondo.
-Sfruttando l'isomorfismo tra operatori logici e insiemistici, inoltre
-potremo definire il concetto di sottoinsieme a partire da quello di
-implicazione come segue: $$I(a,b) = \neg a \vee b$$ A seconda della
-semantica che daremo ai nostri operatori logici fuzzy avremo varie
-classi di implicazioni.
+### Implicazione fuzzy ###
+Come nel caso booleano avremo che un insieme fuzzy è contenuto in un altro se tutti gli elementi del primo sono contenuti nel secondo. Sfruttando l'isomorfismo tra operatori logici e insiemistici, inoltre potremo definire il concetto di sottoinsieme a partire da quello di implicazione come segue: $$I(a,b) = \neg a \vee b$$A seconda della semantica che daremo ai nostri operatori logici fuzzy avremo varie classi di implicazioni.
+1.  *S-implication*: $I(a,b) = \bot(\neg a, b)$;
+2.  *R-implication*: $I(a,b) = \sup \{x \in [0,1] | \top(a,x) \leq b\}$;
+3.  *QL-implication*: $I(a,b) = \bot(\neg a, \top(a,b))$.
 
-1.  *S-implication*: $I(a,b) = \bot(\neg a, b)$
+----------------------------------------------------------------
 
-2.  *R-implication*: $I(a,b) = \sup \{x \in [0,1] | \top(a,x) \leq b\}$
+### Teoria della logica fuzzy ###
 
-3.  *QL-implication*: $I(a,b) = \bot(\neg a, \top(a,b))$
-
-Teoria della logica fuzzy
--------------------------
-
-### Principio di estensione
-
-Come estendere una funzione $\phi : X^n \to Y$ in un contesto fuzzy di
-modo che $\hat{\phi}$ abbia come dominio una tupla di fuzzy set e come
-codominio un fuzzy set? Un caso particolare è quello della valutazione
-di proposizioni. Definito un assegnamento fuzzy alle proposizioni
-atomiche, possiamo estenderlo a combinazioni arbitrarie di formule
-legate tra loro da operatori logici (and e or):
+#### Principio di estensione ####
+Come estendere una funzione $\phi : X^n \to Y$ in un contesto fuzzy di modo che $\hat{\phi}$ abbia come dominio una tupla di fuzzy set e come codominio un fuzzy set? Un caso particolare è quello della valutazione di proposizioni. Definito un assegnamento fuzzy alle proposizioni atomiche, possiamo estenderlo a combinazioni arbitrarie di formule legate tra loro da operatori logici (and e or):
 $$truth: \mathbb{P} \to [0,1]$$
 $$truth(a\text{ and }b) =  \min\{truth(a),truth(b)\}$$
-$$truth(a\text{ or }b) =  \max\{truth(a),truth(b)\}$$ Si possono
-considerare anche congiunzioni e disgiunzioni infinite:
+$$truth(a\text{ or }b) =  \max\{truth(a),truth(b)\}$$Si possono considerare anche congiunzioni e disgiunzioni infinite:
 $$truth(\forall i \in I : a_i) =  \inf \{ truth(a_i) | i \in I \}$$
 $$truth(\exists i \in I : a_i) =  \sup \{ truth(a_i) | i \in I \}$$
-Questo ci permemette di riguadagnare la logica booleana anche nel caso
-fuzzy. Un altro esempio di estensione è quella della somma reale tra
-insiemi definita, per insiemi classici, come:
+Questo ci permemette di riguadagnare la logica booleana anche nel caso fuzzy. Un altro esempio di estensione è quella della somma reale tra insiemi definita, per insiemi classici, come:
 $$+ : 2^{\mathbb{R}} \times 2^{\mathbb{R}} \to 2^{\mathbb{R}}$$
 $$(A,B) \to A + B = \{y | \exists a,b (y = a + b) \land (a \in A) \land (b \in B) \}$$
-La sua estensione ai fuzzy set verrà definita per $\mu$ e $\mu'$ fuzzy
-set come: $$(\mu,\mu') \to \mu \oplus \mu'$$
+La sua estensione ai fuzzy set verrà definita per $\mu$ e $\mu'$ fuzzy set come: $$(\mu,\mu') \to \mu \oplus \mu'$$
 $$truth(y \in \mu \oplus \mu') = \sup_{a,b}\{ truth(y = a + b) \land truth(a \in A) \land truth(b \in B)\}$$
-$$= \sup_{a,b:y=a+b} \{ \min(\mu(a),\mu'(b)) \}$$ In generale, una
-funzione $\phi : X^n \to Y$ può essere estesa ad una
-$\hat{\phi} : [2^X]^n \to 2^Y$ su insiemi classici nel seguente modo:
+$$= \sup_{a,b:y=a+b} \{ \min(\mu(a),\mu'(b)) \}$$In generale, una funzione $\phi : X^n \to Y$ può essere estesa ad una $\hat{\phi} : [2^X]^n \to 2^Y$ su insiemi classici nel seguente modo:
 $$\hat{\phi} (A_1, \dots, A_n) = \{ y \in Y | \exists x_1, \dots, x_n \in A_1 \times \dots \times A_n : \phi(x_1,\dots,x_n) = y \}$$
-Basandoci su questa definizione possiamo poi generalizzare al caso dei
-fuzzy set su un dominio di discorso $X$:
+Basandoci su questa definizione possiamo poi generalizzare al caso dei fuzzy set su un dominio di discorso $X$:
 $$\hat{\phi}_{fuzzy} (\mu_1, \dots, \mu_n) = \sup\{ \min \{ \mu_1(x_1), \dots, \mu_n(x_n) \} | (x_1, \dots, x_n) \in X^n \land \phi(x_1, \dots, x_n) = y \}$$
 Assumendo che $\sup \emptyset = 0$.
 
-### Alcuni insiemi fuzzy rilevanti
+----------------------------------------------------------------
 
-Vi sono vari tipi di insiemi fuzzy. Per quanto ci riguarda particolare
-rilevanza assumono quelli definiti sull'insieme $\mathbb{R}$. Un insieme
-fuzzy sui reali ha un significato quantitativo che può essere utilizzato
-per rappresentare variabili fuzzy. Queste ultime giocano un ruolo
-importantissimo in molte applicazioni: fuzzy control, ragionamento
-approssimato, ottimizzazione, etc. Alcune classi di $F(\mathbb{R})$
-(l'insieme degli insiemi fuzzy sui reali) che vengono citate spesso in
-letteratura sono le seguenti:
+#### Alcuni insiemi fuzzy rilevanti ####
+Vi sono vari tipi di insiemi fuzzy. Per quanto ci riguarda particolare rilevanza assumono quelli definiti sull'insieme $\mathbb{R}$. Un insieme fuzzy sui reali ha un significato quantitativo che può essere utilizzato per rappresentare variabili fuzzy. Queste ultime giocano un ruolo importantissimo in molte applicazioni: fuzzy control, ragionamento approssimato, ottimizzazione, etc. Alcune classi di $F(\mathbb{R})$ (l'insieme degli insiemi fuzzy sui reali) che vengono citate spesso in letteratura sono le seguenti:
 
 1.  Normal fuzzy set:\
     $F_N(\mathbb{R}) = \{\mu \in F(\mathbb{R}) | \exists x \in \mathbb{R} : \mu(x) = 1 \}$
@@ -1023,865 +854,386 @@ letteratura sono le seguenti:
 3.  Fuzzy interval:\
     $F_I(\mathbb{R}) = \{\mu \in F_N(\mathbb{R}) | \forall a,b,c \in \mathbb{R} : c \in [a,b] \implies \mu(c) \geq \min\{ \mu(a),\mu(b) \} \}$
 
-![Esempio di variabile linguistica.](img/lingvar.png){#fig:29}
+![[images/lingvar.png]]
 
-Particolare interesse rivestono i fuzzy interval anche detti *fuzzy
-numbers* perchè permettono di definire *variabili fuzzy quantitative*.
-Tali variabili assumono come valore numeri fuzzy. Quando le quantità
-fuzzy rappresentano concetti linguistici (come piccolo, grande, etc.) si
-parla di variabili linguistiche (vedi Figura
-[29](#fig:30){reference-type="ref" reference="fig:30"}). Ogni variabile
-linguistica è definita da un quintupla $(v,T,X,g,m)$, dove $v$ è il nome
-della variabile, $T$ è l'insieme dei termini che coprono $v$, $X$ è il
-dominio del discorso, $g$ è la grammatica per generare i termini ed $m$
-la semantica che assegna ad ogni termine un fuzzy number. Per processare
-questo genere di variabili occorrerà estendere le operazioni
-insiemistiche e aritmetiche originalmente utilizzate per i numeri.
+Particolare interesse rivestono i fuzzy interval anche detti *fuzzy numbers* perchè permettono di definire *variabili fuzzy quantitative*. Tali variabili assumono come valore numeri fuzzy. Quando le quantità fuzzy rappresentano concetti linguistici (come piccolo, grande, etc.) si parla di variabili linguistiche (vedi Figura
+[29](#fig:30){reference-type="ref" reference="fig:30"}). Ogni variabile linguistica è definita da un quintupla $(v,T,X,g,m)$, dove $v$ è il nome della variabile, $T$ è l'insieme dei termini che coprono $v$, $X$ è il dominio del discorso, $g$ è la grammatica per generare i termini ed $m$ la semantica che assegna ad ogni termine un fuzzy number. Per processare questo genere di variabili occorrerà estendere le operazioni insiemistiche e aritmetiche originalmente utilizzate per i numeri.
 
-### Rappresentazione per insiemi
+----------------------------------------------------------------
 
-Abbiamo visto in precedenza come, attraverso il principio di estensione,
-si possa definire le operazioni aritmetiche nel contesto di
-$F(\mathbb{R})$. Tuttavia, calcolare tali funzioni direttamente sugli
-insiemi fuzzy risulta oneroso, specialmente se si adotta la
-rappresentazione verticale rispetto a quela orizzontale. Sarebbe
-desiderabile ridurre l'artimetica fuzzy all'ordinaria aritmetica sugli
-insiemi booleani e, quindi, applicare alcune semplici operazioni su
-intervalli per ottenere il risultato. Questo è possibile farlo
-attraverso la *rappresentazione per insiemi* di un insieme fuzzy.
+#### Rappresentazione per insiemi ####
+Abbiamo visto in precedenza come, attraverso il principio di estensione, si possa definire le operazioni aritmetiche nel contesto di $F(\mathbb{R})$. Tuttavia, calcolare tali funzioni direttamente sugli insiemi fuzzy risulta oneroso, specialmente se si adotta la rappresentazione verticale rispetto a quela orizzontale. Sarebbe desiderabile ridurre l'artimetica fuzzy all'ordinaria aritmetica sugli insiemi booleani e, quindi, applicare alcune semplici operazioni su intervalli per ottenere il risultato. Questo è possibile farlo attraverso la *rappresentazione per insiemi* di un insieme fuzzy.
 
-Una famiglia $(A_\alpha)_{\alpha \in (0,1)}$ è una *rappresentazione per
-insiemi* di $\mu \in F_N(\mathbb{R})$ se
+Una famiglia $(A_\alpha)_{\alpha \in (0,1)}$ è una *rappresentazione per insiemi* di $\mu \in F_N(\mathbb{R})$ se
+1.  $0 < \alpha < \beta < 1 \implies A_\alpha \subseteq A_\beta \subseteq \mathbb{R}$;
+2.  $\mu(t) = \sup \{ \alpha \in [0,1] | t \in A_\alpha \}$.
 
-1.  $0 < \alpha < \beta < 1 \implies A_\alpha \subseteq A_\beta \subseteq \mathbb{R}$
+Il seguente teorema ci assicura che una rappresentazione per insiemi è una fedele immagine dell'insieme fuzzy che raffigura.
 
-2.  $\mu(t) = \sup \{ \alpha \in [0,1] | t \in A_\alpha \}$
-
-Il seguente teorema ci assicura che una rappresentazione per insiemi è
-una fedele immagine dell'insieme fuzzy che raffigura.
-
-Sia $\mu \in F_N(\mathbb{R})$. La famiglia
-$(A_\alpha)_{\alpha \in (0,1)}$ è una rappresentazione per insiemi di
+Sia $\mu \in F_N(\mathbb{R})$. La famiglia $(A_\alpha)_{\alpha \in (0,1)}$ è una rappresentazione per insiemi di
 $\mu$ sse
-$$[\mu]_{\bar{\alpha}} = \{ t \in \mathbb{R} | \mu(t) > \alpha \} \subseteq A_\alpha \subseteq \{ t \in \mathbb{R} | \mu(t) \geq \alpha \} = [\mu]_\alpha$$
-è valida per ogni $\alpha \in (0,1)$.
+$$[\mu]_{\bar{\alpha}} = \{ t \in \mathbb{R} | \mu(t) > \alpha \} \subseteq A_\alpha \subseteq \{ t \in \mathbb{R} | \mu(t) \geq \alpha \} = [\mu]_\alpha$$ è valida per ogni $\alpha \in (0,1)$.
 
-Se $\mu_1, \dots, \mu_n$ sono normal fuzzy set su $\mathbb{R}$ e
-$\phi: \mathbb{R}^n \to \mathbb{R}$ una funzione e $\hat{\phi}$ la sua
-estensione fuzzy. Allora valgono le seguenti:
+Se $\mu_1, \dots, \mu_n$ sono normal fuzzy set su $\mathbb{R}$ e $\phi: \mathbb{R}^n \to \mathbb{R}$ una funzione e $\hat{\phi}$ la sua estensione fuzzy. Allora valgono le seguenti:
 
 $$\forall \alpha \in [0,1) : [\hat{\phi}(\mu_1,\dots,\mu_n)]_{\bar{\alpha}} = \phi([\mu_1]_{\bar{\alpha}}, \dots, [\mu_n]_{\bar{\alpha}})$$
 $$\forall \alpha \in [0,1) : [\hat{\phi}(\mu_1,\dots,\mu_n)]_\alpha \subseteq \phi([\mu_1]_\alpha, \dots, [\mu_n]_\alpha)$$
 
-Sia, quindi, $(A_\alpha)_{\alpha \in (0,1)}$ la rappresentazione per
-insiemi di $\mu_i$ per $1 \geq i \geq n$, allora
-$(\phi((A_1)_\alpha, \dots, (A_n)_\alpha))_{\alpha \in (0,1)}$ è una
-rappresentazione di $\hat{\phi}$.
+Sia, quindi, $(A_\alpha)_{\alpha \in (0,1)}$ la rappresentazione per insiemi di $\mu_i$ per $1 \geq i \geq n$, allora
+$(\phi((A_1)_\alpha, \dots, (A_n)_\alpha))_{\alpha \in (0,1)}$ è una rappresentazione di $\hat{\phi}$.
 
-### Relazioni fuzzy
+----------------------------------------------------------------
 
-Una relazione booleana $R$ tra gli insiemi $X_1, \dots, X_n$ è un
-sottoinsieme del loro prodotto cartesiano. Ogni relazione di questo tipo
-può essere definita, quindi, attraverso la propria funzione
-caratteristica: $$R(x_1,\dots,x_n) = \begin{cases}
+### Relazioni fuzzy ###
+
+Una relazione booleana $R$ tra gli insiemi $X_1, \dots, X_n$ è un sottoinsieme del loro prodotto cartesiano. Ogni relazione di questo tipo può essere definita, quindi, attraverso la propria funzione caratteristica: $$R(x_1,\dots,x_n) = \begin{cases}
                         1 \text{ se e solo se } (x_1, \dots, x_n) \in R \\
                         0 \text{ altrimenti }
                     \end{cases}$$
 
-Come accade nel caso della funzione caratteristica di insiemi, quella
-delle relazioni può essere generalizzata per comprendere valori fuzzy.
-Il grado di appartenenza indica la forza della relazione tra i membri
-della tupla in considerazione. Siano $n \geq 2$ fuzzy set
-$A_1, \dots, A_n$ definiti rispettivamente sul dominio del discorso
-$X_1, \dots, X_n$. Il prodotto cartesiano $A_1 \times \dots \times A_n$
-è una relazione fuzzy nello spazio prodotto
-$X_1 \times \dots \times X_n$ ed è definita dalla seguente funzione di
-partecipazione:
+Come accade nel caso della funzione caratteristica di insiemi, quella delle relazioni può essere generalizzata per comprendere valori fuzzy. Il grado di appartenenza indica la forza della relazione tra i membri della tupla in considerazione. Siano $n \geq 2$ fuzzy set $A_1, \dots, A_n$ definiti rispettivamente sul dominio del discorso $X_1, \dots, X_n$. Il prodotto cartesiano $A_1 \times \dots \times A_n$
+è una relazione fuzzy nello spazio prodotto $X_1 \times \dots \times X_n$ ed è definita dalla seguente funzione di partecipazione:
 $$\mu_{A_1 \times \dots \times A_n}(x_1, \dots, x_n) = \top(\mu_{A_1}(x_1), \dots,\mu_{A_n}(x_n))$$
 Dove $\top$ è una t-norma, solitamente il minimo o il prodotto.
 
-Siano $\mathbf{w}= (x_1, \dots, x_n)$ e $\mathbf{v}= (y_1, \dots, y_m)$
-due tuple. $\mathbf{w}$ è chiamato *sottosequenza* di $\mathbf{v}$ (in
-simboli, $\mathbf{w}\prec \mathbf{v}$) sse
-$\forall j \in \{1,\dots,n\}, \mathbf{w}_j = \mathbf{v}_j$.
+Siano $\mathbf{w}= (x_1, \dots, x_n)$ e $\mathbf{v}= (y_1, \dots, y_m)$ due tuple. $\mathbf{w}$ è chiamato *sottosequenza* di $\mathbf{v}$ (in simboli, $\mathbf{w}\prec \mathbf{v}$) sse $\forall j \in \{1,\dots,n\}, \mathbf{w}_j = \mathbf{v}_j$.
 
-Data un relazione $R(x_1,\dots,x_n)$ e un sottoinsieme dei domini del
-discorso $Y \subseteq \{X_1, \dots, X_n\}$, denotiamo con
-$[R \downarrow Y]$ la *proiezione* di $R$ su $Y$ definita come:
+Data un relazione $R(x_1,\dots,x_n)$ e un sottoinsieme dei domini del discorso $Y \subseteq \{X_1, \dots, X_n\}$, denotiamo con $[R \downarrow Y]$ la *proiezione* di $R$ su $Y$ definita come:
 $$[R \downarrow Y](\mathbf{v}) = \max_{\mathbf{v}\prec \mathbf{w}} R(\mathbf{w})$$
 
-Data una proiezione $[R \downarrow Y]$, una *estensione cilindrica* che
-denotiamo come $[R \uparrow X-Y]$ è la relazione $R$ di partenza salvo
-che ogni valore diverso da quello della proiezione viene sosituito con
-quello stesso valore: $$[R \uparrow X-Y](\mathbf{v}) = R(\mathbf{w})$$
+Data una proiezione $[R \downarrow Y]$, una *estensione cilindrica* che denotiamo come $[R \uparrow X-Y]$ è la relazione $R$ di partenza salvo che ogni valore diverso da quello della proiezione viene sosituito con quello stesso valore: $$[R \uparrow X-Y](\mathbf{v}) = R(\mathbf{w})$$
 
-### Relazioni binarie
+----------------------------------------------------------------
 
-Le relazioni binarie sono esempi particolarmente rilevanti tra tutte le
-relazioni $n$-dimensionali, in quanto generalizzazioni delle funzioni
-matematiche. Contrariamente a ciò che accade nel caso delle funzioni da
-$X$ a $Y$, una relazione $R(X,Y)$ può assegnare ad un elemento di $X$ ad
-un valore in $Y$. Possiamo estendere le consuete operazioni sulle
-funzioni (inversa e composizione) anche alle relazioni fuzzy.
+### Relazioni binarie ###
+Le relazioni binarie sono esempi particolarmente rilevanti tra tutte le relazioni $n$-dimensionali, in quanto generalizzazioni delle funzioni matematiche. Contrariamente a ciò che accade nel caso delle funzioni da $X$ a $Y$, una relazione $R(X,Y)$ può assegnare ad un elemento di $X$ ad un valore in $Y$. Possiamo estendere le consuete operazioni sulle funzioni (inversa e composizione) anche alle relazioni fuzzy.
 
-Data una relazione $R(X,Y)$ il suo *dominio*, denotato $dom R$, è
-definito come: $$dom R(x) = \max_{y \in Y}\{ R(x,y) \}$$
+Data una relazione $R(X,Y)$ il suo *dominio*, denotato $dom R$, è definito come: $$dom R(x) = \max_{y \in Y}\{ R(x,y) \}$$
 
-Data una relazione $R(X,Y)$ il suo *codominio*, denotato $ran R$, è
-definito come: $$ran R(x) = \max_{x \in X}\{ R(x,y) \}$$
+Data una relazione $R(X,Y)$ il suo *codominio*, denotato $ran R$, è definito come: $$ran R(x) = \max_{x \in X}\{ R(x,y) \}$$
+Data una relazione $R(X,Y)$ la sua *altezza*, denotata $h R$, è definito come: $$h R(x) = \max_{x \in X} \max_{y \in Y} \{ R(x,y) \}$$
 
-Data una relazione $R(X,Y)$ la sua *altezza*, denotata $h R$, è definito
-come: $$h R(x) = \max_{x \in X} \max_{y \in Y} \{ R(x,y) \}$$
-
-Data una relazione $R(X,Y)$ la sua *inversa*, denotata $R^{-1}$, è
-definito come quella relazione su $Y \times X$ tale che:
+Data una relazione $R(X,Y)$ la sua *inversa*, denotata $R^{-1}$, è definito come quella relazione su $Y \times X$ tale che:
 $$R^{-1} (y,x) = R(x,y) \quad \forall x \in X, \forall y \in Y$$
 
-Data una relazione $R(X,Y)$ e una relazione $Q(Y,Z)$ la loro *composta*,
-denotata $R \circ Q (X,Z)$, è definito come quella relazione su
-$X \times Z$ tale che:
+Data una relazione $R(X,Y)$ e una relazione $Q(Y,Z)$ la loro *composta*, denotata $R \circ Q (X,Z)$, è definito come quella relazione su $X \times Z$ tale che:
 $$R \circ Q (x,z) = \sup_{y \in Y} \{ \min \{ P(x,y),Q(y,z)\} \quad \forall x \in X, \forall z \in Z \}$$
 
-Data una relazione $R(X,Y)$ e una relazione $Q(Y,Z)$ il loro *join*,
-denotata $R \star Q (X,Y,Z)$, è definito come quella relazione su
-$X \times Y \times Z$ tale che:
+Data una relazione $R(X,Y)$ e una relazione $Q(Y,Z)$ il loro *join*, denotata $R \star Q (X,Y,Z)$, è definito come quella relazione su $X \times Y \times Z$ tale che:
 $$R \star Q (x,y,z) = \min \{ P(x,y),Q(y,z)\} \quad \forall x \in X, \forall y \in Y, \forall z \in Z$$
 
-Data una relazione $R(X,X)$ si definisce una *relazione di equivalenza*
-sse soddisfa le seguenti proprietà:
-
-1.  *riflessività*: $\forall x \in X \quad R(x,x) = 1$
-
-2.  *simmetria*: $\forall x,y \in X \quad R(x,y) = R(y,x)$
-
+Data una relazione $R(X,X)$ si definisce una *relazione di equivalenza* sse soddisfa le seguenti proprietà:
+1.  *riflessività*: $\forall x \in X \quad R(x,x) = 1$;
+2.  *simmetria*: $\forall x,y \in X \quad R(x,y) = R(y,x)$;
 3.  *transitività*:
-    $\forall (x,z) \in X^2 \quad R(x,z) \geq \max_{y \in X} \min \{ R(x,y),R(y,z) \}$
+    $\forall (x,z) \in X^2 \quad R(x,z) \geq \max_{y \in X} \min \{ R(x,y),R(y,z) \}$.
 
-Fuzzy controller
-----------------
+----------------------------------------------------------------
 
-![Architettura di un fuzzy
-controller.](img/fuzzycontroller.png){#fig:30}
+### Fuzzy controller ###
 
-Una applicazione di particolare successo di queste idee sono i così
-detti *fuzzy controller*. Il concetto che sta sotto al fuzzy control è
-quello di definire transizioni non-lineari tra i diversi stati del
-sistema senza specificare un insieme di equazioni differenziali per ogni
-variabile. Questo permette di modellare sistemi complessi le cui
-dinamiche possono sfuggire ad un'analisi matematicamente precisa. Lo
-schema di base di un fuzzy controller viene mostrato in Figura
-[29](#fig:30){reference-type="ref" reference="fig:30"}. La (1)
-*fuzzyfication interface* riceve i valori in input e si occupa di
-convertirli in un dominio adeguato (termini linguistici o fuzzy set). La
-(2) *knowledge base* consiste di (a) dati che contengono informazioni
-riguardo intervalli, trasformazioni di dominio e a quali insiemi fuzzy
-corrisponderanno i termini linguistici, e (b) regole che contengono i
-controlli del tipo *if-then*. La (3) *decision logic* rappresenta
-l'unità processore, la quale si occupa di computare l'output in base
-all'input misurato e la knwoledge base. Infine, la (4) *defuzzification
-interface* si occupa di mappare i valori fuzzy usati nella computazione
-in valori booleani che sono inviati come segnali al controllo del
+![[images/fuzzycontroller.png]]
+
+Una applicazione di particolare successo di queste idee sono i così detti *fuzzy controller*. Il concetto che sta sotto al fuzzy control è quello di definire transizioni non-lineari tra i diversi stati del sistema senza specificare un insieme di equazioni differenziali per ogni variabile. Questo permette di modellare sistemi complessi le cui dinamiche possono sfuggire ad un'analisi matematicamente precisa. Lo schema di base di un fuzzy controller viene mostrato in Figura [29](#fig:30){reference-type="ref" reference="fig:30"}. La (1) *fuzzyfication interface* riceve i valori in input e si occupa di convertirli in un dominio adeguato (termini linguistici o fuzzy set). La (2) *knowledge base* consiste di (a) dati che contengono informazioni riguardo intervalli, trasformazioni di dominio e a quali insiemi fuzzy corrisponderanno i termini linguistici, e (b) regole che contengono i controlli del tipo *if-then*. La (3) *decision logic* rappresenta l'unità processore, la quale si occupa di computare l'output in base all'input misurato e la knwoledge base. Infine, la (4) *defuzzification interface* si occupa di mappare i valori fuzzy usati nella computazione in valori booleani che sono inviati come segnali al controllo del
 sistema.
 
-### Defuzzification
+----------------------------------------------------------------
 
-La mappatura dei segnali fuzzy interni al controller in segnali booleani
-utili a controllare il sistema può essere operata in svariati modi. In
-letteratura i più comuni sono:
+### Defuzzification ###
+La mappatura dei segnali fuzzy interni al controller in segnali booleani utili a controllare il sistema può essere operata in svariati modi. In letteratura i più comuni sono:
+1.  Max Criterion Method (MCM);
+2.  Mean of Maxima (MOM);
+3.  Center of Gravity (COG);
 
-1.  Max Criterion Method (MCM)
-
-2.  Mean of Maxima (MOM)
-
-3.  Center of Gravity (COG)
-
-Il MCM sceglie un valore arbitrario $y \in Y$ per cui si raggiunge il
-massimo valore di appartenenza. Ha l'indubbio vantaggio di essere
-applicabile a qualsiasi fuzzy set e a domini $Y$ arbitrari. Può,
-tuttavia, essere difficile individuare l'elemento per cui la funzione di
-appartenenza viene massimizzata. Inoltre, la scelta di valori casuali
-rende il comportamento del controller non deterministico e questo può
-portare ad azioni discontinue. Il MOM prende $Y$ come intervallo e ne
-calcola l'insieme $Y_{MAX}$ tale che l'output in quei punti è massimo
-(l'insieme deve essere non vuoto e misurabile). Il valore di output sarà
-calcolato come la media su $Y_{MAX}$. Come nel caso precedente questa
-tecnica può portare ad azioni discontinue. Il COG, come il MOM, preso
-$Y$ come un intervallo restituisce in output il centro dell'area.
-Solitamente ha un comportamento regolare, anche se la computazione è
+Il MCM sceglie un valore arbitrario $y \in Y$ per cui si raggiunge il massimo valore di appartenenza. Ha l'indubbio vantaggio di essere applicabile a qualsiasi fuzzy set e a domini $Y$ arbitrari. Può, tuttavia, essere difficile individuare l'elemento per cui la funzione di appartenenza viene massimizzata. Inoltre, la scelta di valori casuali rende il comportamento del controller non deterministico e questo può
+portare ad azioni discontinue. Il MOM prende $Y$ come intervallo e ne calcola l'insieme $Y_{MAX}$ tale che l'output in quei punti è massimo (l'insieme deve essere non vuoto e misurabile). Il valore di output sarà calcolato come la media su $Y_{MAX}$. Come nel caso precedente questa tecnica può portare ad azioni discontinue. Il COG, come il MOM, preso $Y$ come un intervallo restituisce in output il centro dell'area. Solitamente ha un comportamento regolare, anche se la computazione è
 onerosa e può condurre a risultati controintuitivi.
 
-### Mamdani controller
+----------------------------------------------------------------
 
-Il primo modello di fuzzy controller è il così detto *Mamdani
-controller*, sviluppato nel 1975 da Mamdani e Assilian. Questo
-controller è basato su una serie di regole del tipo \"if $X$ is $M_n$,
-then $Y$ is $N_m$\" dove $M_n$ e $N_m$ sono intervalli che rappresentano
-termini linguistici. Sebbene le regole siano della forma *if-then*, non
-devono essere interpretate come implicazioni logiche, quanto definizione
-parziali di una funzione. Collettivamente le regole possono essere
-rappresentate nello spazio come l'unione $S$ dei vari intervalli:
-$$S = \cup M_i \times N_i$$ Le regole possono assumere come valori
-intervalli *crisp* come in Figura
-[\[fig:31\]](#fig:31){reference-type="ref" reference="fig:31"} (a),
-oppure valori fuzzy come in Figura
-[\[fig:31\]](#fig:31){reference-type="ref" reference="fig:31"} (b). In
-ogni caso, dato un input $x_0$ l'ouput verrà calcolato come la composta
-del singoletto di $x_0$ e l'unione degli intervalli $S$ (in simboli,
-$\{x_0\} \circ S$) come in Figura [30](#fig:32){reference-type="ref"
-reference="fig:32"}. Questo output sarà un fuzzy set che rappresenta
-solo una vaga o imprecisa descrizione dell'output desiderato. Per
-determinare il vero valore di output, l'output preliminare dovrà essere
-defuzzificato. Nel caso del Mamdani controller si utilizza il metodo
-COG, che permette di trovare un compromesso rispetto ai singoli output
-delle regole.
+### Mamdani controller ###
+Il primo modello di fuzzy controller è il così detto *Mamdani controller*, sviluppato nel 1975 da Mamdani e Assilian. Questo controller è basato su una serie di regole del tipo \"if $X$ is $M_n$, then $Y$ is $N_m$\" dove $M_n$ e $N_m$ sono intervalli che rappresentano termini linguistici. Sebbene le regole siano della forma *if-then*, non devono essere interpretate come implicazioni logiche, quanto definizione parziali di una funzione. Collettivamente le regole possono essere rappresentate nello spazio come l'unione $S$ dei vari intervalli:
 
-![Regole a valori crisp.](img/rulesfuzzy.png){width="0.9\\linewidth"
-height="4cm"}
+$$S = \cup M_i \times N_i$$
 
-![regole a valori fuzzy.](img/fuzrule.png){width="0.9\\linewidth"
-height="4cm"}
+Le regole possono assumere come valori intervalli *crisp* come in Figura [\[fig:31\]](#fig:31){reference-type="ref" reference="fig:31"} (a), oppure valori fuzzy come in Figura [\[fig:31\]](#fig:31){reference-type="ref" reference="fig:31"} (b). In ogni caso, dato un input $x_0$ l'ouput verrà calcolato come la composta del singoletto di $x_0$ e l'unione degli intervalli $S$ (in simboli, $\{x_0\} \circ S$) come in Figura [30](#fig:32){reference-type="ref" reference="fig:32"}. Questo output sarà un fuzzy set che rappresenta solo una vaga o imprecisa descrizione dell'output desiderato. Per determinare il vero valore di output, l'output preliminare dovrà essere defuzzificato. Nel caso del Mamdani controller si utilizza il metodo COG, che permette di trovare un compromesso rispetto ai singoli output delle regole.
 
-![Proiezione dell'ouput rispetto all'unione degli
-intervalli.](img/outputrules.png){#fig:32}
+![[images/rulesfuzzy.png]]
 
-### Takagi--Sugeno controller
+![[images/fuzrule.png]]
 
-Questo controller può essere visto come una modifica e uno sviluppo del
-precedente. Nello stesso modo del Mamdani controller, i valori di input
-vengono descritti da fuzzy set. Tuttavia, il conseguente di una regola
-non sarà a sua volta un fuzzy set, ma una funzione che ha come argomenti
-le variabili di input (generalmente, una funzione lineare).
+![[images/outputrules.png]]
+
+----------------------------------------------------------------
+
+### Takagi--Sugeno controller ###
+Questo controller può essere visto come una modifica e uno sviluppo del precedente. Nello stesso modo del Mamdani controller, i valori di input vengono descritti da fuzzy set. Tuttavia, il conseguente di una regola non sarà a sua volta un fuzzy set, ma una funzione che ha come argomenti le variabili di input (generalmente, una funzione lineare).
 
 $$R : \text{ if } x_1 \text{ is } \mu_1 \text{ and } \dots \text{ and } x_n \text{ is } \mu_n, \text{ then } y = f(x_1,\dots,x_n)$$
 
-L'idea è che quella funzione è una buona funzione di controllo per la
-regione descritta dall'antecedente. Per mantenere la leggibilità del
-modello così prodotto, occorre evitare sovrapposizioni tra le varie
-regioni descritte nell'antecedente delle regole. Siccome l'ouput viene
-calcolato è già crisp, non occorre defuzzificarlo.
+L'idea è che quella funzione è una buona funzione di controllo per la regione descritta dall'antecedente. Per mantenere la leggibilità del modello così prodotto, occorre evitare sovrapposizioni tra le varie regioni descritte nell'antecedente delle regole. Siccome l'ouput viene calcolato è già crisp, non occorre defuzzificarlo.
 
-### Similarity-based reasoning
+----------------------------------------------------------------
 
-Vi è un'ultima tipologia di controller che utilizza il concetto di
-relazione di somiglianza (l'analogo fuzzy delle relazioni di
-equivalenza).
+### Similarity-based reasoning ###
+Vi è un'ultima tipologia di controller che utilizza il concetto di relazione di somiglianza (l'analogo fuzzy delle relazioni di equivalenza).
+Una funzione $E: X^2 \to [0,1]$ è definita *relazione di somiglianza* rispetto ad una T-norma se e solo se soddisfa le seguenti condizioni:
+1.  $E(x,x) = 1$;
+2.  $E(x,y) = E(y,x)$;
+3.  $\top (E(x,y),E(y,z)) = E(x,z)$.
 
-Una funzione $E: X^2 \to [0,1]$ è definita *relazione di somiglianza*
-rispetto ad una T-norma se e solo se soddisfa le seguenti condizioni:
+Questo genere di relazioni vengono utilizzate per tradurre l'informazione data dagli esperti in modo che le varie tuple coprano tutti i possibili comportamenti del sistema. Dalle classi di somiglianza possiamo poi estrarre regole in tutto uguali a quelle per il Mamdani controller.
 
-1.  $E(x,x) = 1$
+----------------------------------------------------------------
 
-2.  $E(x,y) = E(y,x)$
+### Fuzzy data analysis ###
+Ci sono due sensi in cui si parla di *fuzzy data analysis*. Uno riguarda l'applicazione di tecniche di ragionamento fuzzy rispetto a dati crisp (si parlerà in questo caso di *fuzzy clustering*). Un altro, invece, riguarda l'analisi di dati presentati sotto forma di fuzzy set (si parlerà in questo caso di *random set* e *random fuzzy variables*).
 
-3.  $\top (E(x,y),E(y,z)) = E(x,z)$
+#### Fuzzy clustering ####
 
-Questo genere di relazioni vengono utilizzate per tradurre
-l'informazione data dagli esperti in modo che le varie tuple coprano
-tutti i possibili comportamenti del sistema. Dalle classi di somiglianza
-possiamo poi estrarre regole in tutto uguali a quelle per il Mamdani
-controller.
+![[images/symmetricdata.png]]
 
-Fuzzy data analysis
--------------------
+Il *fuzzy clustering* è una procedura di apprendimento non supervisionato che permette di dividere il dataset in modo che a) oggetti nello stesso cluster siano quanto più possibili simili e b) oggetti in cluster diversi siano quanto più possibile dissimili. La relazione di somiglianza è misurata nei termini di una funzione distanza. Minore è la distanza, maggiore è la probabilità che due elementi appartengano allo stesso cluster. Nel caso dell'algoritmo *hard c-means* si 1) sceglie un numero $c$ di cluster, 2) si distribuiscono in modo randomico i centri e 3) si procede all'assegnamento dei punti più vicini ai centri dei rispettivi cluster, poi 4) si passa ad aggiornare la posizione dei centri tramite il calcolo del centro di gravità. 5) Si ripete il processo fino a che la posizione si stabilizza. La partizione in cluster è ottimale quando la somma delle distanze tra i centri e gli elementi è minima. Un problema di questo approccio è che l'algoritmo può rimanere bloccato in minimi locali. Per ovviare a questo inconveniente solitamente si fanno varie iterazioni e se ne sceglie la migliore. Un diverso problema è quello che discende dal fatto che la partizione è crisp. Qualora, infatti, esista un elemento equidistante da due centri come in Figura [31](#fig:33){reference-type="ref" reference="fig:33"}, l'assegnamento ad uno dei due cluster è puramente arbitrario e non rispecchia l'informazione fornita dai dati. Il *fuzzy clustering* fornisce una soluzione a questo problema. Introducendo un concetto di appartenenza non binario ma continuo in $[0,1]$, offre la possibilità di esprimere l'appartenenza di un punto a più di un cluster. Il risultato sarà una partizione del dataset in fuzzy set. Possiamo rappresentare questa partizione attraverso una matrice che assegna ad ogni componente $u_{ij}$ il grado di appartenenza del punto $x_j$ al fuzzy set $\Gamma_i$, in simboli $u_{ij} = \mu_{\Gamma_i}(x_j)$. Esistono due tipi di fuzzy clustering: quello *probabilistico* e quello *possibilistico*. La differenza si gioca rispetto alle condizioni imposte alla funzione di appartenenza. Nel caso *probabilistico* si avrà che: 
+1.  $\sum_{j=1}^{n} u_{ij} > 0, \quad \forall i \in \{1,\dots,c \}$;
+2.  $\sum_{i=1}^{c} u_{ij} = 1, \quad \forall j \in \{1,\dots,n \}$.
 
-Ci sono due sensi in cui si parla di *fuzzy data analysis*. Uno riguarda
-l'applicazione di tecniche di ragionamento fuzzy rispetto a dati crisp
-(si parlerà in questo caso di *fuzzy clustering*). Un altro, invece,
-riguarda l'analisi di dati presentati sotto forma di fuzzy set (si
-parlerà in questo caso di *random set* e *random fuzzy variables*).
+La prima condizione sta ad indicare che non possono esistere cluster vuoti, la seconda, invece, che l'appartenenza è esaurita dall'insieme dei fuzzy set che costiuiscono la partizione. Nel caso *possibilistico* si mantiene solo la prima assunzione e si lascia cadere la seconda. L'interpretazione possibilistica è da preferire quando si abbia a che fare con dati pieni di rumore o outlier.
 
-### Fuzzy clustering
+----------------------------------------------------------------
 
-![Esempio di un dataset simmetrico.](img/symmetricdata.png){#fig:33}
-
-Il *fuzzy clustering* è una procedura di apprendimento non
-supervisionato che permette di dividere il dataset in modo che a)
-oggetti nello stesso cluster siano quanto più possibili simili e b)
-oggetti in cluster diversi siano quanto più possibile dissimili. La
-relazione di somiglianza è misurata nei termini di una funzione
-distanza. Minore è la distanza, maggiore è la probabilità che due
-elementi appartengano allo stesso cluster. Nel caso dell'algoritmo *hard
-c-means* si 1) sceglie un numero $c$ di cluster, 2) si distribuiscono in
-modo randomico i centri e 3) si procede all'assegnamento dei punti più
-vicini ai centri dei rispettivi cluster, poi 4) si passa ad aggiornare
-la posizione dei centri tramite il calcolo del centro di gravità. 5) Si
-ripete il processo fino a che la posizione si stabilizza. La partizione
-in cluster è ottimale quando la somma delle distanze tra i centri e gli
-elementi è minima. Un problema di questo approccio è che l'algoritmo può
-rimanere bloccato in minimi locali. Per ovviare a questo inconveniente
-solitamente si fanno varie iterazioni e se ne sceglie la migliore. Un
-diverso problema è quello che discende dal fatto che la partizione è
-crisp. Qualora, infatti, esista un elemento equidistante da due centri
-come in Figura [31](#fig:33){reference-type="ref" reference="fig:33"},
-l'assegnamento ad uno dei due cluster è puramente arbitrario e non
-rispecchia l'informazione fornita dai dati. Il *fuzzy clustering*
-fornisce una soluzione a questo problema. Introducendo un concetto di
-appartenenza non binario ma continuo in $[0,1]$, offre la possibilità di
-esprimere l'appartenenza di un punto a più di un cluster. Il risultato
-sarà una partizione del dataset in fuzzy set. Possiamo rappresentare
-questa partizione attraverso una matrice che assegna ad ogni componente
-$u_{ij}$ il grado di appartenenza del punto $x_j$ al fuzzy set
-$\Gamma_i$, in simboli $u_{ij} = \mu_{\Gamma_i}(x_j)$. Esistono due tipi
-di fuzzy clustering: quello *probabilistico* e quello *possibilistico*.
-La differenza si gioca rispetto alle condizioni imposte alla funzione di
-appartenenza. Nel caso *probabilistico* si avrà che:
-
-1.  $\sum_{j=1}^{n} u_{ij} > 0, \quad \forall i \in \{1,\dots,c \}$
-
-2.  $\sum_{i=1}^{c} u_{ij} = 1, \quad \forall j \in \{1,\dots,n \}$
-
-La prima condizione sta ad indicare che non possono esistere cluster
-vuoti, la seconda, invece, che l'appartenenza è esaurita dall'insieme
-dei fuzzy set che costiuiscono la partizione. Nel caso *possibilistico*
-si mantiene solo la prima assunzione e si lascia cadere la seconda.
-L'interpretazione possibilistica è da preferire quando si abbia a che
-fare con dati pieni di rumore o outlier.
-
-### Problemi con il fuzzy clustering
-
-Come facciamo a sapere se la partizione in cluster operata dal nostro
-algoritmo rispecchia l'informazione implicita nei dati? Quale è l'ottimo
-numero di cluster per un dataset? Nel caso in cui abbiamo un numero
-limitato di dimensioni, possiamo rappresentare visivamente il dataset e
-avere un'intuizione di quanti centri avere e in quali posizioni
-collocarli. In generale, tuttavia, non è questo il caso. Per questo
-occorre definire una misura della qualità del clustering operato
-dall'algoritmo. Alcuni criteri da ricercare sono: una chiara separazione
-tra i cluster, minimo volume dei cluster, massimo numero di punti
-concentrati vicino al centro del cluster. In letteratura sono state
-proposte varie misure di questo tipo:
-
+#### Problemi con il fuzzy clustering ####
+Come facciamo a sapere se la partizione in cluster operata dal nostro algoritmo rispecchia l'informazione implicita nei dati? Quale è l'ottimo numero di cluster per un dataset? Nel caso in cui abbiamo un numero limitato di dimensioni, possiamo rappresentare visivamente il dataset e avere un'intuizione di quanti centri avere e in quali posizioni collocarli. In generale, tuttavia, non è questo il caso. Per questo occorre definire una misura della qualità del clustering operato dall'algoritmo. Alcuni criteri da ricercare sono: una chiara separazione tra i cluster, minimo volume dei cluster, massimo numero di punti concentrati vicino al centro del cluster. In letteratura sono state proposte varie misure di questo tipo:
 1.  *Partition coefficient*:
-    $PC = \frac{1}{n}\sum_{i=1}^{c} \sum_{j=1}^{n} u_{ij}^2$
-
+    $PC = \frac{1}{n}\sum_{i=1}^{c} \sum_{j=1}^{n} u_{ij}^2$;
 2.  *Average partition density*:
-    $APD = \frac{1}{c} \sum_{i=1}^c \frac{\sum_{j \in Y_i} u_{ij}}{\sqrt{|\sum_i|}}$
-
+    $APD = \frac{1}{c} \sum_{i=1}^c \frac{\sum_{j \in Y_i} u_{ij}}{\sqrt{|\sum_i|}}$;
 3.  *Partition entropy*:
-    $PE = \sum_{i=1}^{c} \sum_{j=1}^{n} u_{ij} \log u_{ij}$
+    $PE = \sum_{i=1}^{c} \sum_{j=1}^{n} u_{ij} \log u_{ij}$.
 
-### Varianti
+----------------------------------------------------------------
 
-La misura di distanza più intuitiva è quella euclidea, ma questa ha
-l'inconveniente di permettere solo cluster sferici. Alcune varianti sono
-state proposte per rilassarne i vincoli. Nell'algoritmo di
-*Gustafson-Kessel* la distanza euclidea è sostituita con quella di
-*Mahalanobis* definita rispetto ad un cluster $\Gamma_i$ come:
-$$d^2(x_j,C_j) = (x_j - c_i)^T \sum_i^{-1} (x_j - c_i)$$ dove $\sum_i$ è
-la matrice covariante del cluster $i$. Questo algoritmo è preferito nel
-caso il clustering sia utilizzato per la generazione automatica di fuzzy
-rule per i controller. La dimensione dei vari cluster può variare a
-seconda del determinate della matrice (solitamente le dimensioni dei
-vari cluster sono le stesse e il determinante è uguale a 1). In generale
-l'algoritmo di Gustafson-Kessel estrae più informazioni dell'algoritmo
-standard, ma è anche più sensibile ad una corretta inizializzazione. Può
-essere utile per decidersi su una buona inizializzazione, procedere
-preliminarmente con alcune iterazioni dell'algoritmo standard. Data la
-presenza dell'inversione della matrice questo algoritmo è più costoso di
-quello standard e difficile da applicare a grossi dataset. Restringersi
-a cluster che risultano distribuiti lungo una retta parallela rispetto
-agli assi riduce il costo computazionale. Un altro approccio è quello di
-permettere cluster di forma non convessa.
+#### Varianti ####
+La misura di distanza più intuitiva è quella euclidea, ma questa ha l'inconveniente di permettere solo cluster sferici. Alcune varianti sono state proposte per rilassarne i vincoli. Nell'algoritmo di *Gustafson-Kessel* la distanza euclidea è sostituita con quella di *Mahalanobis* definita rispetto ad un cluster $\Gamma_i$ come:
+$$d^2(x_j,C_j) = (x_j - c_i)^T \sum_i^{-1} (x_j - c_i)$$
 
-![Alcuni esempi di shell clustering.](img/shellcluster.png){#fig:34}
+dove $\sum_i$ è la matrice covariante del cluster $i$. Questo algoritmo è preferito nel caso il clustering sia utilizzato per la generazione automatica di fuzzy rule per i controller. La dimensione dei vari cluster può variare a seconda del determinate della matrice (solitamente le dimensioni dei vari cluster sono le stesse e il determinante è uguale a 1). In generale l'algoritmo di Gustafson-Kessel estrae più informazioni dell'algoritmo standard, ma è anche più sensibile ad una corretta inizializzazione. Può essere utile per decidersi su una buona inizializzazione, procedere preliminarmente con alcune iterazioni dell'algoritmo standard. Data la presenza dell'inversione della matrice questo algoritmo è più costoso di quello standard e difficile da applicare a grossi dataset. Restringersi a cluster che risultano distribuiti lungo una retta parallela rispetto agli assi riduce il costo computazionale. Un altro approccio è quello di permettere cluster di forma non convessa. 
+![[images/shellcluster.png]]
 
-Gli algoritmi di *shell clustering* fanno proprio questo e sono
-particolarmente utili per il riconoscimento di immagini e la loro
-analisi. Nella Figura [32](#fig:34){reference-type="ref"
-reference="fig:34"} si elencano alcuni esempi di questo genere di
-algoritmo. Un altro approccio presente in letteratura è quello del
-*kernel-based clustering* che è utile qualora si abbia a che fare con
-dati non-vettoriali come sequenze, alberi o grafi. Questo metodo si basa
-su una mappa $\phi: \chi \to \mathbb{H}$, dove $\mathbb{H}$ è uno spazio
-di Hilbert e $\chi$ è lo spazio degli input. I dati così mappati non
-vengono utilizzati direttamente, ma solo attraverso il loro prodotto
-interno (la cui esistenza ci è garantita in quanto siamo in uno spazio
-di Hilbert). Si definisce per questo una funzione kernel $k$ tale che:
+Gli algoritmi di *shell clustering* fanno proprio questo e sono particolarmente utili per il riconoscimento di immagini e la loro analisi. Nella Figura [32](#fig:34){reference-type="ref" reference="fig:34"} si elencano alcuni esempi di questo genere di algoritmo. Un altro approccio presente in letteratura è quello del *kernel-based clustering* che è utile qualora si abbia a che fare con dati non-vettoriali come sequenze, alberi o grafi. Questo metodo si basa su una mappa $\phi: \chi \to \mathbb{H}$, dove $\mathbb{H}$ è uno spazio di Hilbert e $\chi$ è lo spazio degli input. I dati così mappati non vengono utilizzati direttamente, ma solo attraverso il loro prodotto interno (la cui esistenza ci è garantita in quanto siamo in uno spazio di Hilbert). Si definisce per questo una funzione kernel $k$ tale che:
+
 $$k: \chi \times \chi \to \mathbb{R}, \forall x,x' \in \chi: <\phi(x),\phi(x')> = k(x,x')$$
-A differenza degli altri algoritmi di clustering non estrae dai dati dei
-prototipi per i singoli cluster, ma computa una relazione di somiglianza
-tra i vari input. I centri sono combinazioni lineari dei dati mappati in
-$\mathbb{H}$:
+
+A differenza degli altri algoritmi di clustering non estrae dai dati dei prototipi per i singoli cluster, ma computa una relazione di somiglianza tra i vari input. I centri sono combinazioni lineari dei dati mappati in $\mathbb{H}$:
 
 $$c_i^{\phi} = \sum_{r=1}^n a_{ir} \phi(x_r)$$
 
-Alcuni svantaggi sono costiuiti dalla difficoltà nella scelta di una
-adeguata funzione kernel e dei parametri, e la mancanza di una esplicita
-rappresentazione dei singoli cluster. Un ultimo tipo di algoritmo è
-quello detto di *noise clustering*. Questi algoritmi aggiungono un
-cluster $c$ che rappresenta tutti quei dati corrotti dal rumore o in
-altro modo non associabili a nessun altro cluster (outlier etc.). Il
-centro del cluster $c$ è scelto in modo da avere distanza costante da
-tutti i punti del dataset.
+Alcuni svantaggi sono costiuiti dalla difficoltà nella scelta di una adeguata funzione kernel e dei parametri, e la mancanza di una esplicita rappresentazione dei singoli cluster. Un ultimo tipo di algoritmo è quello detto di *noise clustering*. Questi algoritmi aggiungono un cluster $c$ che rappresenta tutti quei dati corrotti dal rumore o in altro modo non associabili a nessun altro cluster (outlier etc.). Il centro del cluster $c$ è scelto in modo da avere distanza costante da tutti i punti del dataset.
 
-### Random set
+----------------------------------------------------------------
 
-Se fin ad adesso abbiamo applicato tecniche fuzzy a dati crisp, ora
-vogliamo estendere queste tecniche in modo da comprendere descrizioni di
-dati fuzzy. Per fare questo occorre introdurre il concetto di *random
-set*. Nel trattamento statistico standard dei dati la loro analisi è
-basata su variabili random, ovvero una funzione misurabile da uno spazio
-di probabilità ad un insieme $U$ (solitamente l'insieme $\mathbb{R}$).
-Un random set è una generalizzazione di questa idea, nel senso che il
-valore della funzione non sarà più un elemento dell'insieme $U$, bensì
-un suo sottoinsieme. Data una funzione $\Gamma: \Omega \to 2^U$, alcuni
-utili concetti da definire sono quello di *limite superiore di
-probabilità* (in simboli $P^*(A)$) il quale indica la proporzione di
-elementi la cui immagine \"tocca\" un certo sottoinsieme di $U$:
+#### Random set ####
+Se fin ad adesso abbiamo applicato tecniche fuzzy a dati crisp, ora vogliamo estendere queste tecniche in modo da comprendere descrizioni di dati fuzzy. Per fare questo occorre introdurre il concetto di *random set*. Nel trattamento statistico standard dei dati la loro analisi è basata su variabili random, ovvero una funzione misurabile da uno spazio di probabilità ad un insieme $U$ (solitamente l'insieme $\mathbb{R}$). Un random set è una generalizzazione di questa idea, nel senso che il valore della funzione non sarà più un elemento dell'insieme $U$, bensì un suo sottoinsieme. Data una funzione $\Gamma: \Omega \to 2^U$, alcuni utili concetti da definire sono quello di *limite superiore di probabilità* (in simboli $P^*(A)$) il quale indica la proporzione di elementi la cui immagine \"tocca\" un certo sottoinsieme di $U$:
+
 $$P^*(A) = P(\{ \omega \in \Omega | \Gamma (\omega) \cap A \neq \emptyset \})$$
-e quello di *limite inferiore di probabilità* (in simboli $P_*(A)$) che
-indica la proporzione di elementi la cui immagine è interamente
-contenuta in un dato sottoinsieme di $U$:
+
+e quello di *limite inferiore di probabilità* (in simboli $P_*(A)$) che indica la proporzione di elementi la cui immagine è interamente contenuta in un dato sottoinsieme di $U$:
+
 $$P_*(A) = P(\{ \omega \in \Omega | \Gamma (\omega) \subseteq A \text{ e } \Gamma(\omega) \neq \emptyset \})$$
-Attraverso questi strumenti possiamo analizzare dati descritti in modo
-fuzzy. Possiamo associare, infatti, ad ogni elemento della mappa una
-probabilità attesa $E(\Gamma)$ di modo che:
+
+Attraverso questi strumenti possiamo analizzare dati descritti in modo fuzzy. Possiamo associare, infatti, ad ogni elemento della mappa una probabilità attesa $E(\Gamma)$ di modo che:
+
 $$E(\Gamma) = \{ E(X) | X(\omega) \in \Gamma(\omega) \text{ e la } X \text{ è una variabile randomica tale che } E(X), \forall \omega \in \Omega \}$$
-Possiamo generalizzare ancora il nostro approccio permettendo alla
-funzione $\Gamma$ di mappare gli input in un insieme fuzzy.
 
-Fuzzy neural network
---------------------
+Possiamo generalizzare ancora il nostro approccio permettendo alla funzione $\Gamma$ di mappare gli input in un insieme fuzzy.
 
-A differenza delle reti neurali, i fuzzy system hanno a che fare con il
-ragionamento ad alto livello, non si adattano al nuovo ambiente, usano
-informazioni linguistiche relative al dominio e non si basano sui dati.
-I *fuzzy neural network* combinano la computazione parallela e le
-capacità di apprendimento delle reti neurali con la rappresentazione ad
-alto livello dei sistemi fuzzy. Questo permette di avere una
-interpretazione più perspicua dello stato interno della rete neurale
-durante la computazione. Vi sono due modalità in cui i sistemi fuzzy e
-le reti neurali possono collaborare.
+----------------------------------------------------------------
 
--   modello *cooperativo*: i due sistemi lavorano indipendentemente. La
-    rete neurale genera certi parametri (offline) o li ottimizza
-    (online) per il fuzzy controller.
+### Fuzzy neural network ###
 
--   modello *ibrido*: i fuzzy set e le regole fuzzy sono mappate
-    all'interno di una rete neurale. Le due strutture sono integrate e
-    non si richiede l'overhead di comunicazione. Sia l'apprendimento
-    offline che online sono disponibili.
+A differenza delle reti neurali, i fuzzy system hanno a che fare con il ragionamento ad alto livello, non si adattano al nuovo ambiente, usano informazioni linguistiche relative al dominio e non si basano sui dati. I *fuzzy neural network* combinano la computazione parallela e le capacità di apprendimento delle reti neurali con la rappresentazione ad alto livello dei sistemi fuzzy. Questo permette di avere una interpretazione più perspicua dello stato interno della rete neurale durante la computazione.<br />
+Vi sono due modalità in cui i sistemi fuzzy e le reti neurali possono collaborare:
+-   modello *cooperativo*: i due sistemi lavorano indipendentemente. La rete neurale genera certi parametri (offline) o li ottimizza (online) per il fuzzy controller;
+-   modello *ibrido*: i fuzzy set e le regole fuzzy sono mappate all'interno di una rete neurale. Le due strutture sono integrate e non si richiede l'overhead di comunicazione. Sia l'apprendimento offline che online sono disponibili.
 
-Nella modalità ibrida, i fuzzy set che appaiono negli antecedenti delle
-regole fuzzy, possono essere modellati sia come pesi delle connessioni
-tra neuroni, oppure come funzione di attivazione dei neuroni stessi. Nel
-primo caso, i neuroni del primo strato rappresentano la regola. Nel
-secondo, i neuroni del primo strato rappresentano l'insieme di input,
-mentre quelli del secondo la regola.
+Nella modalità ibrida, i fuzzy set che appaiono negli antecedenti delle regole fuzzy, possono essere modellati sia come pesi delle connessioni tra neuroni, oppure come funzione di attivazione dei neuroni stessi. Nel primo caso, i neuroni del primo strato rappresentano la regola. Nel secondo, i neuroni del primo strato rappresentano l'insieme di input, mentre quelli del secondo la regola.
 
-### Algoritmo
+### Algoritmo ###
 
-Un insieme di regole fuzzy può essere tradotto in una rete neurale
-tramite la seguente procedura:
-
-1.  Per ogni variabile di input $x_i$ si crea un neurone nel layer di
-    input.
-
-2.  Per ogni variabile di output $y_i$ si crea un neurone nel layer di
-    output.
-
-3.  Per ogni fuzzy set $\mu_i^j$ si crea un neurone nel primo layer
-    hidden e lo si connette al neurone di input corrispondente a $x_i$.
-
-4.  Per ogni regola fuzzy $R_i$ si crea un neurone nel secondo layer
-    hidden e si specifica una T-norma per calcolare l'antecedente della
-    regola.
-
-5.  Si connette ogni neurone ai neuroni che rappresentano i fuzzy set
-    degli antecedenti della loro regola corrispondente.
+Un insieme di regole fuzzy può essere tradotto in una rete neuraletramite la seguente procedura:
+1. Per ogni variabile di input $x_i$ si crea un neurone nel layer di input;
+2. Per ogni variabile di output $y_i$ si crea un neurone nel layer di output;
+3. Per ogni fuzzy set $\mu_i^j$ si crea un neurone nel primo layer hidden e lo si connette al neurone di input corrispondente a $x_i$;
+4. Per ogni regola fuzzy $R_i$ si crea un neurone nel secondo layer hidden e si specifica una T-norma per calcolare l'antecedente della regola;
+5. Si connette ogni neurone ai neuroni che rappresentano i fuzzy set degli antecedenti della loro regola corrispondente;
 
 A questo punto l'algoritmo diverge a seconda di quale tipo di controller
 si voglia utilizzare:
+- nel caso del Mamdani--Assilian controller, si connette ogni neurone \"regola\" al neurone di output corrispondente al dominio del conseguente nella regola fuzzy. Come peso della connessione si sceglie il fuzzy set del conseguente della regola fuzzy;
+- nel caso del Takagi--Sugeno--Kang controller, per ogni neurone \"regola\" si crea un gemello che computa la funzione di output della corrispondente regola fuzzy e gli si connettono tutti i neuroni di input.
 
--   nel caso del Mamdani--Assilian controller, si connette ogni neurone
-    \"regola\" al neurone di output corrispondente al dominio del
-    conseguente nella regola fuzzy. Come peso della connessione si
-    sceglie il fuzzy set del conseguente della regola fuzzy.
+Il network così costruito può essere allenato grazie alla backpropagation.
 
--   nel caso del Takagi--Sugeno--Kang controller, per ogni neurone
-    \"regola\" si crea un gemello che computa la funzione di output
-    della corrispondente regola fuzzy e gli si connettono tutti i
-    neuroni di input.
+![[images/fuzzyneural.png]]
 
-Il network così costruito può essere allenato grazie alla
-backpropagation.
+----------------------------------------------------------------
 
-![Adaptive Network-based Fuzzy Inference Systems
-(ANFIS)](img/fuzzyneural.png){#fig:35}
+## Algoritmi evolutivi ##
 
-Algoritmi evolutivi
-===================
-
-Introduzione
-------------
-
-Un *problema di ottimizzazione* può essere descritto da una tripla
-$(\Omega,f,\prec)$ dove $\Omega$ è lo spazio di ricerca, $f$ è una
-funzione di valutazione della forma $f:\Omega \to \mathbb{R}$ e $\prec$
-un preordine. L'insieme $H \subseteq \Omega$ tale che:
+### Introduzione ###
+Un *problema di ottimizzazione* può essere descritto da una tripla $(\Omega,f,\prec)$ dove $\Omega$ è lo spazio di ricerca, $f$ è una funzione di valutazione della forma $f:\Omega \to \mathbb{R}$ e $\prec$ un preordine. L'insieme $H \subseteq \Omega$ tale che:
 
 $$H = \{ x \in \Omega | \forall x' \in \Omega: f(x) \succeq f(x') \}$$
 
-è definito l'insieme degli *ottimi globali*. Dato un problema di questo
-genere la sua soluzione sta nel fornire un elemento che appartiene
-all'insieme $H$. In letteratura sono stati proposti vari metodi di
-soluzione per i problemi di ottimizzazione:
+è definito l'insieme degli *ottimi globali*. Dato un problema di questo genere la sua soluzione sta nel fornire un elemento che appartiene all'insieme $H$. In letteratura sono stati proposti vari metodi di soluzione per i problemi di ottimizzazione:
+-   Soluzioni analitiche;
+-   Brute-forcing;
+-   Random search;
+-   Ricerca guidata.
 
--   Soluzioni analitiche
-
--   Brute-forcing
-
--   Random search
-
--   Ricerca guidata
-
-Tutti questi metodi hanno delle criticità o sono applicabili solo ad
-alcuni tipi di funzione. Gli *algoritmi evolutivi* rispondono a questo
-problema adottando una strategia innovativa. Tali algoritmi sono
-direttamente ispirati alla teoria della evoluzione biologica i cui
-principi fondamentali sono:
-
-1.  Tratti vantaggiosi che sono risultato di mutazioni casuali tendono
-    ad essere favoriti dalla selezione naturale
-
-2.  Gli individui che mostrano questi tratti vantaggiosi hanno migliori
-    opportunità di procreare e moltiplicarsi
+Tutti questi metodi hanno delle criticità o sono applicabili solo ad alcuni tipi di funzione. Gli *algoritmi evolutivi* rispondono a questo problema adottando una strategia innovativa. Tali algoritmi sono direttamente ispirati alla teoria della evoluzione biologica i cui principi fondamentali sono:
+1.  Tratti vantaggiosi che sono risultato di mutazioni casuali tendono ad essere favoriti dalla selezione naturale;
+2.  Gli individui che mostrano questi tratti vantaggiosi hanno migliori opportunità di procreare e moltiplicarsi;
 
 Gli elementi di un algoritmo evolutivo sono:
+1.  una *codifica* per i candidati: dipende molto dal problema in e non esistono regole generali;
+2.  un metodo per creare una *popolazione iniziale*: di solito si crea casualmente;
+3.  creare una *funzione di fitness* per valutare i candidati: rappresenta l'ambiente e spesso è la stessa funzione da ottimizzare;
+4.  dei *metodi di selezione* in relazione ai valori di fitness: si scelgono così gli individui che dovranno procreare nella successiva generazione;
+5.  un insieme di *operatori genetici* che modifichino i cromosomi: i due più usati sono quello di a) *mutazione*, che modifica in modo random i cromosomi e quello di b) *crossover* che ricombina i cromosomi dei genitori per creare la prole;
+6.  alcuni parametri come *dimensione della popolazione*, *probabilità di mutazione*, etc;
+7.  una *condizione di terminazione*: numero di generazioni, approssimazione all'ottimo, etc;
 
-1.  una *codifica* per i candidati: dipende molto dal problema in e non
-    esistono regole generali.
+----------------------------------------------------------------
 
-2.  un metodo per creare una *popolazione iniziale*: di solito si crea
-    casualmente.
-
-3.  creare una *funzione di fitness* per valutare i candidati:
-    rappresenta l'ambiente e spesso è la stessa funzione da ottimizzare.
-
-4.  dei *metodi di selezione* in relazione ai valori di fitness: si
-    scelgono così gli individui che dovranno procreare nella successiva
-    generazione.
-
-5.  un insieme di *operatori genetici* che modifichino i cromosomi: i
-    due più usati sono quello di a) *mutazione*, che modifica in modo
-    random i cromosomi e quello di b) *crossover* che ricombina i
-    cromosomi dei genitori per creare la prole.
-
-6.  alcuni parametri come *dimensione della popolazione*, *probabilità
-    di mutazione*, etc.
-
-7.  una *condizione di terminazione*: numero di generazioni,
-    approssimazione all'ottimo, etc.
-
-Definizione formale
--------------------
-
-Per ogni problema di ottimizzazione occorre separare lo spazio dei
-*fenotipi* $\Omega$ (ovvero, come l'individuo appare) da quello dei
-*genotipi* $\Gamma$ (ovvero, come l'individuo è rappresentato dalla
-codifica scelta). La funzione di fitness sarà definita sui fenotipi,
-dove, invece, gli operatori genetici agiranno sui genotipi. Per valutare
-i cambiamenti nel genotipo sarà necessario provvedere una funzione di
+### Definizione formale ###
+Per ogni problema di ottimizzazione occorre separare lo spazio dei *fenotipi* $\Omega$ (ovvero, come l'individuo appare) da quello dei *genotipi* $\Gamma$ (ovvero, come l'individuo è rappresentato dalla codifica scelta). La funzione di fitness sarà definita sui fenotipi, dove, invece, gli operatori genetici agiranno sui genotipi. Per valutare i cambiamenti nel genotipo sarà necessario provvedere una funzione di
 *decodifica* $dec: \Gamma \to \Omega$.
 
-Ogni *individuo* $A$ è rappresentato da un tupla $(A.G, A.S, A.F)$
-contenente il genotipo ($A.G \in \Gamma$), informazioni e parametri
-addizionali $A.S \in Z$ e la valutazione dello stesso rispetto alla
-funzione di fintess $A.F = f(dec(A.G))$.
-
+Ogni *individuo* $A$ è rappresentato da un tupla $(A.G, A.S, A.F)$ contenente il genotipo ($A.G \in \Gamma$), informazioni e parametri addizionali $A.S \in Z$ e la valutazione dello stesso rispetto alla funzione di fintess $A.F = f(dec(A.G))$.
 L'operatore di *mutazione* è definito come una mappa:
-$$Mut^{\xi} : \Gamma \times Z \to \Gamma \times Z$$ dove $\xi$ è un
-numero randomicamente generato.
 
-L'operatore di *ricombinazione* avente $r \geq 2$ genitori e $s \geq 1$
-figli è definito come una mappa:
-$$Rek^\xi : (\Gamma \times Z)^r \to (\Gamma \times Z)^s$$ dove $\xi$ è
-un numero randomicamente generato.
+$$Mut^{\xi} : \Gamma \times Z \to \Gamma \times Z$$
 
-L'operatore di *selezione* ci permette di scegliere grazie ai valori di
-fitness tra una popolazione di $r$ individui un numero $s$ di individui
-che continueranno la specie. Sia $P = \{\ A_1, \dots, A_r \}$ la
-popolazione di individui allora l'operatore di selezione avrà la forma:
+dove $\xi$ è un numero randomicamente generato.
+L'operatore di *ricombinazione* avente $r \geq 2$ genitori e $s \geq 1$ figli è definito come una mappa:
+
+$$Rek^\xi : (\Gamma \times Z)^r \to (\Gamma \times Z)^s$$
+
+dove $\xi$ è un numero randomicamente generato.<br />
+L'operatore di *selezione* ci permette di scegliere grazie ai valori di fitness tra una popolazione di $r$ individui un numero $s$ di individui che continueranno la specie. Sia $P = \{\ A_1, \dots, A_r \}$ la popolazione di individui allora l'operatore di selezione avrà la forma:
+
 $$Sel^\xi : (\Gamma \times Z \times \mathbb{R})^r \to (\Gamma \times Z \times \mathbb{R})^s$$
 $$A_{i \quad 1 \leq i \leq r} \mapsto A_{IS^\xi (c_1,\dots,c_r)_k \quad 1 \leq k \leq s }$$
+
 dove la selezione ha la forma:
+
 $$IS^\xi : \mathbb{R}^r \to \{ 1, \dots, r \}^s$$
 
-![Pseudocodice di un generico algoritmo
-evolutivo](img/evalg.png){#fig:36}
+![[images/evalg.png]]
 
-Siamo, ora, pronti a dare una definizione formale di algoritmo
-evolutivo:
+Siamo, ora, pronti a dare una definizione formale di algoritmo evolutivo:
+Un *algoritmo evolutivo* su un problema di ottimizzazione $P$ è una tupla $(\Gamma, dec, Mut, Rek, IS_{genitori}, IS_{ambiente}, \mu, \lambda)$, dove $\mu$ descrive il numero degli individui della generazione precedente e $\lambda$ descrive il numero di figli per generazione.
 
-Un *algoritmo evolutivo* su un problema di ottimizzazione $P$ è una
-tupla
-$(\Gamma, dec, Mut, Rek, IS_{genitori}, IS_{ambiente}, \mu, \lambda)$.
-Dove $\mu$ descrive il numero degli individui della generazione
-precedente e $\lambda$ descrive il numero di figli per generazione.
 $$Rek : (\Gamma \times Z)^k \to (\Gamma \times Z)^{k'}$$
 $$IS_{genitori} : \mathbb{R}^\mu \to \{ 1, \dots, \mu \}^{\frac{k}{k'}\cdot \lambda} \quad \frac{k}{k'}\cdot \lambda \in \mathbb{N}$$
 $$IS_{ambiente} : \mathbb{R}^{\mu + \lambda} \to \{ 1, \dots, \mu + \lambda \}^\mu$$
 
-Vi è una distinzione che si può tracciare all'interno degli algoritmi
-evolutivi:
+Vi è una distinzione che si può tracciare all'interno degli algoritmi evolutivi:
+- gli *algoritmi genetici*: dove la codifica è una sequenza binaria;
+-  gli *algoritmi evolutivi* propriamente detti: dove la codifica dipende dal problema trattato e così gli operatori genetici;
 
--   gli *algoritmi genetici*: dove la codifica è una sequenza binaria
+----------------------------------------------------------------
 
--   e gli *algoritmi evolutivi* propriamente detti: dove la codifica
-    dipende dal problema trattato e così gli operatori genetici.
+### Meta-euristiche ###
+Una *meta-euristica* è un metodo algoritmico per trovare soluzioni approssimate di un problema di ottimizzazione combinatoria. Si definiscono sequenze astratte di passi che possono essere applicate a qualsiasi problema del genere. Ogni singolo passo deve poi essere declinato a seconda della specificità del problema. Il bisogno per un approccio meta-euristico nasce dal fatto che alcune classi di problemi non hanno una efficiente soluzione algoritmica. L'approssimazione che si otterrà rispetto alla soluzione ottima dipende dalla definizione del problema e dall'implementazione dei singoli passi del meta-algoritmo.
 
-Meta-euristiche
----------------
-
-Una *meta-euristica* è un metodo algoritmico per trovare soluzioni
-approssimate di un problema di ottimizzazione combinatoria. Si
-definiscono sequenze astratte di passi che possono essere applicate a
-qualsiasi problema del genere. Ogni singolo passo deve poi essere
-declinato a seconda della specificità del problema. Il bisogno per un
-approccio meta-euristico nasce dal fatto che alcune classi di problemi
-non hanno una efficiente soluzione algoritmica. L'approssimazione che si
-otterrà rispetto alla soluzione ottima dipende dalla definizione del
-problema e dall'implementazione dei singoli passi del meta-algoritmo.
+----------------------------------------------------------------
 
 ### Local search method
+Una meta-euristica è quella comunemente chiamata *local search method* e costituisce un caso particolare di algoritmo evolutivo. Dato un problema di ottimizzazione $P$ e la funzione da ottimizzare $f$, questo metodo cerca i massimi globali *localmente*, attorno cioè ai punti scelti durante la fase di inizializzazione. L'assunzione che si fa è che il valore della funzione in $x_1$ e $x_2$ differisce meno quanto più i due argomenti sono simili: $f$ non ha salti. La particolarità di questo approccio evolutivo è che la popolazione si limita ad un solo individuo. Questo ha alcune conseguenze, soprattutto rispetto agli operatori genetici: l'operatore di ricombinazione non è più necessario e ci si limita a quello di mutazione. Ad ogni passo si può decidere se continuare a mutare l'individuo o crearne uno diverso (per evitare minimi/massimi locali). L'idea è quella di utilizzare il *gradient ascent/descent* per identificare un punto di massimo/minimo facendo un passo nella direzione del gradiente. L'ampiezza dei passi non deve essere troppo piccola perchè in quel caso l'algoritmo convergerebbe troppo lentamente, nè troppo grande perchè si rischiano oscillazioni. Per prevenire il fatto che si rimanga bloccati in minimi/massimi locali si eseguono varie iterazioni dell'algoritmo a partire da diversi punti. Se $f$ non risultasse differenziabile si cerca di determinare la direzione in cui $f$ cresce valutando punti casuali nell'intorno della posizione attuale (*hill climbing*). Una generalizzazione dei precedenti approcci è ciò che in letteratura viene chiamato *simulated annealing*. L'intuizione che ci sta dietro è che muoversi dal basso verso l'alto dovrebbe essere più probabile che il contrario. Per tanto, soluzioni migliori saranno sempre accettate, ma nel caso di soluzioni peggiori, queste potranno essere comunque accettate a seconda della loro \"qualità\". Si può applicare un valore soglia per decidere quanto una soluzione può essere peggiore rispetto alla precedente, oppure decidere un lower bound senza alcun confronto col valore precedente, etc. 
 
-Una meta-euristica è quella comunemente chiamata *local search method* e
-costituisce un caso particolare di algoritmo evolutivo. Dato un problema
-di ottimizzazione $P$ e la funzione da ottimizzare $f$, questo metodo
-cerca i massimi globali *localmente*, attorno cioè ai punti scelti
-durante la fase di inizializzazione. L'assunzione che si fa è che il
-valore della funzione in $x_1$ e $x_2$ differisce meno quanto più i due
-argomenti sono simili: $f$ non ha salti. La particolarità di questo
-approccio evolutivo è che la popolazione si limita ad un solo individuo.
-Questo ha alcune conseguenze, soprattutto rispetto agli operatori
-genetici: l'operatore di ricombinazione non è più necessario e ci si
-limita a quello di mutazione. Ad ogni passo si può decidere se
-continuare a mutare l'individuo o crearne uno diverso (per evitare
-minimi/massimi locali). L'idea è quella di utilizzare il *gradient
-ascent/descent* per identificare un punto di massimo/minimo facendo un
-passo nella direzione del gradiente. L'ampiezza dei passi non deve
-essere troppo piccola perchè in quel caso l'algoritmo convergerebbe
-troppo lentamente, nè troppo grande perchè si rischiano oscillazioni.
-Per prevenire il fatto che si rimanga bloccati in minimi/massimi locali
-si eseguono varie iterazioni dell'algoritmo a partire da diversi punti.
-Se $f$ non risultasse differenziabile si cerca di determinare la
-direzione in cui $f$ cresce valutando punti casuali nell'intorno della
-posizione attuale (*hill climbing*). Una generalizzazione dei precedenti
-approcci è ciò che in letteratura viene chiamato *simulated annealing*.
-L'intuizione che ci sta dietro è che muoversi dal basso verso l'alto
-dovrebbe essere più probabile che il contrario. Per tanto, soluzioni
-migliori saranno sempre accettate, ma nel caso di soluzioni peggiori,
-queste potranno essere comunque accettate a seconda della loro
-\"qualità\". Si può applicare un valore soglia per decidere quanto una
-soluzione può essere peggiore rispetto alla precedente, oppure decidere
-un lower bound senza alcun confronto col valore precedente, etc.
+----------------------------------------------------------------
 
-### Tabu search
+### Tabu search ###
+L'algoritmo *tabu search* può essere visto come una local search che, nel momento di creare un nuovo individuo, considera la storia delle  passate generazioni. Si appronta una lista (FIFO) di *tabu* che permette di evitare il ricorrere di candidati già testati. Ogni individuo è una soluzione completa. Le mutazioni non sono permesse. Se il nuovo candidato mostra \"proprietà interessanti\" può essere fatta una eccezione al tabu.
 
-L'algoritmo *tabu search* può essere visto come una local search che,
-nel momento di creare un nuovo individuo, considera la storia delle
-passate generazioni. Si appronta una lista (FIFO) di *tabu* che permette
-di evitare il ricorrere di candidati già testati. Ogni individuo è una
-soluzione completa. Le mutazioni non sono permesse. Se il nuovo
-candidato mostra \"proprietà interessanti\" può essere fatta una
-eccezione al tabu.
+----------------------------------------------------------------
 
-### Algoritmi memetici
+### Algoritmi memetici ###
+Un diverso approccio è quello degli *algoritmi memetici*. Questi algoritmi uniscono i pregi dell'approccio *population-based* (lento, ma che offre più informazioni) e quello *local search* (veloce, ma suscettibile ai minimi locali). I \"memes\" sono elementi del comportamento che possono essere acquisiti individualmente. La procedura prevede per ogni individuo creato che lo si cerchi di ottimizzare e solo dopo che si consideri la popolazione nel suo intero. Questo permette spesso di accellerare il processo di ottimizzazione, ma le dinamiche \"evolutive\" sono limitate in modo critico: le mutazioni rischiano di bloccarsi frequentemente in minimi locali, la ricombinazione ha un raggio di azione limitato date le precondizioni che si impongono. 
 
-Un diverso approccio è quello degli *algoritmi memetici*. Questi
-algoritmi uniscono i pregi dell'approccio *population-based* (lento, ma
-che offre più informazioni) e quello *local search* (veloce, ma
-suscettibile ai minimi locali). I \"memes\" sono elementi del
-comportamento che possono essere acquisiti individualmente. La procedura
-prevede per ogni individuo creato che lo si cerchi di ottimizzare e solo
-dopo che si consideri la popolazione nel suo intero. Questo permette
-spesso di accellerare il processo di ottimizzazione, ma le dinamiche
-\"evolutive\" sono limitate in modo critico: le mutazioni rischiano di
-bloccarsi frequentemente in minimi locali, la ricombinazione ha un
-raggio di azione limitato date le precondizioni che si impongono.
+----------------------------------------------------------------
 
-### Evoluzione differenziale
+### Evoluzione differenziale ###
+Un'altra strategia è quella dell'*evoluzione differenziale*. Non abbiamo in questo caso un adattamento dell'ampiezza dei passi, ma si cerca di utilizzare le relazioni tra gli individui nella popolazione come base per calcolarla. Si introduce un particolare operatore genetico: *DE-operator*. Questo operatore può essere visto come una combinazione dell'operatore di ricombinazione e quello di mutazione. Nella selezione, invece, un discendente può rimpiazzare i suoi antenati se e solo se ha un miglior valore di fitness.
 
-Un'altra strategia è quella dell'*evoluzione differenziale*. Non abbiamo
-in questo caso un adattamento dell'ampiezza dei passi, ma si cerca di
-utilizzare le relazioni tra gli individui nella popolazione come base
-per calcolarla. Si introduce un particolare operatore genetico:
-*DE-operator*. Questo operatore può essere visto come una combinazione
-dell'operatore di ricombinazione e quello di mutazione. Nella selezione,
-invece, un discendente può rimpiazzare i suoi antenati se e solo se ha
-un miglior valore di fitness.
+----------------------------------------------------------------
 
-### Scatter search
+### Scatter search ###
+L'idea che sta alla base degli algoritmi *scatter search* è quella diavere una popolazione e di operare una ricerca locale attorno agli individui. Dati i valori registrati da questa ricerca, si forza l'evoluzione a seconda della direzione del massimo registrato. Questo è un metodo puramente deterministico a differenza dei precedenti. La sua bontà dipende dalla copertura che riusciamo ad offrire dello spazio di ricerca.
 
-L'idea che sta alla base degli algoritmi *scatter search* è quella di
-avere una popolazione e di operare una ricerca locale attorno agli
-individui. Dati i valori registrati da questa ricerca, si forza
-l'evoluzione a seconda della direzione del massimo registrato. Questo è
-un metodo puramente deterministico a differenza dei precedenti. La sua
-bontà dipende dalla copertura che riusciamo ad offrire dello spazio di
-ricerca.
+----------------------------------------------------------------
 
-### Algoritmi culturali
-
-Oltre alle informazioni genetiche si possono considerare anche quelle
-\"culturali\" relative alle skill apprese dalle precedenti generazioni.
-Gli *algoritmi culturali* cercano di trarre vantaggio da questa memoria
-generazionale di modo che gli individui vengano influenzati da
-quest'ultima. Esistono due tipi di sapere culturalmente rilevante:
-
--   *Sapere situazionale*: relativo a generazioni tra loro prossime.
-
+### Algoritmi culturali ###
+Oltre alle informazioni genetiche si possono considerare anche quelle \"culturali\" relative alle skill apprese dalle precedenti generazioni. Gli *algoritmi culturali* cercano di trarre vantaggio da questa memoria generazionale di modo che gli individui vengano influenzati da quest'ultima. Esistono due tipi di sapere culturalmente rilevante: 
+-   *Sapere situazionale*: relativo a generazioni tra loro prossime;
 -   *Sapere normativo*: sempre rilevante.
 
-Elementi di algoritmi evolutivi
--------------------------------
+----------------------------------------------------------------
 
-### Codifica
+## Elementi di algoritmi evolutivi ##
 
-Le soluzioni al nostro problema devono essere codificate in modo che si
-possa esplorare lo spazio delle possibili soluzioni attraverso questa
-rappresentazione. Non esiste una ricetta generale: il problema della
-codifica è specifico per ogni problema. Tuttavia, esistono alcuni
-principi di massima da seguire:
+### Codifica ###
+Le soluzioni al nostro problema devono essere codificate in modo che si possa esplorare lo spazio delle possibili soluzioni attraverso questa rappresentazione. Non esiste una ricetta generale: il problema della codifica è specifico per ogni problema. Tuttavia, esistono alcuni principi di massima da seguire:
+1.  Rappresentare fenotipi simili con genotipi simili;
+2.  La funzione di fitness deve restituire valori simili per candidati simili;
+3.  Lo spazio $\Omega$ deve essere chiuso rispetto agli operatori genetici.
 
-1.  Rappresentare fenotipi simili con genotipi simili.
+La 1) assicura che mutazioni di certi geni risultino in genotipi simili e che radicali cambiamenti permettano di evadere da minimi locali. La 2) previene che si scelga una codifica troppo o troppo poco epistatica [^7]. Se troppo, una singola mutazione potrebbe produrre casuali cambiamenti di fitness. Se troppo poco, l'efficienza dell'algoritmo ne risente. Le motivazioni per 3) sono abbastanze ovvie: se lo spazio di ricerca non è chiuso rispetto agli operatori genetici, un cromosoma modificato potrebbe non essere più decodificato e interpretato.
 
-2.  La funzione di fitness deve restituire valori simili per candidati
-    simili.
+### Fitness ###
+Gli individui migliori (quelli che hanno migliori valori di fitness) dovrebbero avere le migliori opportunità di riprodursi. Per fare questo occorre esercitare quella che in gergo viene chiamata *selective pressure* nel processo di creazione delle nuove generazioni. Se la selective pressure è bassa, si parla di *esplorazione dello spazio*: la deviazioni permessa rispetto agli individui è la più ampia possibile (tutto $\Omega$), vi sono buone possibilità di raggiungere il massimo globale. Se la selective pressure è alta, si parla di *sfruttamento degli individui migliori*: si ricerca l'ottimo nelle vicinanze degli individui migliori, l'algoritmo converge velocemente, anche se col rischio di convergere ad un ottimo locale. Per poter scegliere la corretta selective pressure occorre una metrica per calcolarla. Alcune tra quelle utilizzate in letteratura sono: 
+- *selection intensity*: il differenziale tra prima e dopo che la selezione è avvenuta;
+- *time to takeover*: il numero di generazioni prima che la popolazione converga.
 
-3.  Lo spazio $\Omega$ deve essere chiuso rispetto agli operatori
-    genetici.
-
-La 1) assicura che mutazioni di certi geni risultino in genotipi simili
-e che radicali cambiamenti permettano di evadere da minimi locali. La 2)
-previene che si scelga una codifica troppo o troppo poco epistatica
-[^7]. Se troppo, una singola mutazione potrebbe produrre casuali
-cambiamenti di fitness. Se troppo poco, l'efficienza dell'algoritmo ne
-risente. Le motivazioni per 3) sono abbastanze ovvie: se lo spazio di
-ricerca non è chiuso rispetto agli operatori genetici, un cromosoma
-modificato potrebbe non essere più decodificato e interpretato.
-
-### Fitness
-
-Gli individui migliori (quelli che hanno migliori valori di fitness)
-dovrebbero avere le migliori opportunità di riprodursi. Per fare questo
-occorre esercitare quella che in gergo viene chiamata *selective
-pressure* nel processo di creazione delle nuove generazioni. Se la
-selective pressure è bassa, si parla di *esplorazione dello spazio*: la
-deviazioni permessa rispetto agli individui è la più ampia possibile
-(tutto $\Omega$), vi sono buone possibilità di raggiungere il massimo
-globale. Se la selective pressure è alta, si parla di *sfruttamento
-degli individui migliori*: si ricerca l'ottimo nelle vicinanze degli
-individui migliori, l'algoritmo converge velocemente, anche se col
-rischio di convergere ad un ottimo locale. Per poter scegliere la
-corretta selective pressure occorre una metrica per calcolarla. Alcune
-tra quelle utilizzate in letteratura sono:
-
--   *selection intensity*: il differenziale tra prima e dopo che la
-    selezione è avvenuta.
-
--   *time to takeover*: il numero di generazioni prima che la
-    popolazione converga.
-
-Gli stessi metodi di selezioni possono variare al variare della
-pressione evolutiva. Uno dei più usati è quello chiamato *roulette-wheel
-selection*. Si computa il valore di fitness relativo di ogni individuo
-grazie alla seguente formula:
+Gli stessi metodi di selezioni possono variare al variare della pressione evolutiva. Uno dei più usati è quello chiamato *roulette-wheel selection*. Si computa il valore di fitness relativo di ogni individuo grazie alla seguente formula:
 
 $$f_{rel}(A_i) = \frac{A_i.F}{\sum_{j=1}^{|P|} A_j.F}$$
 
-La probabilità per un individuo di essere selezionato per la
-riproduzione sarà proporzionale al suo valore di fitness relativo.
-Alcuni svantaggi sono:
+La probabilità per un individuo di essere selezionato per la riproduzione sarà proporzionale al suo valore di fitness relativo. Alcuni svantaggi sono:
+- la computazione del valore di fitness relativo è costosa e difficilmente parallelizzabile;
+- gli individui con un alto valore di fitness potrebbero dominare la selezione (scomparsa delle biodiversità);
+- molto veloce a trovare ottimi locali, ma pessima esplorazione dello spazio.
 
--   la computazione del valore di fitness relativo è costosa e
-    difficilmente parallelizzabile.
+La stessa funzione di fitness può essere adattata per impedire una convergenza troppo rapida:
+- *linear dynamical scaling*: riduciamo la rilevanza della funzione di fitness sottraendoci il minimo delle passate generazioni;
+-   *$\sigma$-scaling*: calcolata attraverso la formula $f_{\sigma}(A) = A.F - (\mu_f(t) - \beta \cdot \sigma_f(t))$, dove $\beta$ è un parametro positivo;
+- *dipendente dal tempo*: il fattore temporale usato come esponente regola la selective pressure;
+- *Boltzmann-selection*: determina la fitness relativa non direttamente, ma attraverso la funzione $g(x) = exp^{\frac{f(x)}{kT}}$. $T$ è una variabile che dipende dal tempo e $k$ è una costante di normalizzazione.
 
--   gli individui con un alto valore di fitness potrebbero dominare la
-    selezione (scomparsa delle biodiversità).
+----------------------------------------------------------------
 
--   molto veloce a trovare ottimi locali, ma pessima esplorazione dello
-    spazio.
+### Selezione ###
+Vi sono varie strategie disponibili in letteratura per operare la selezione degli individui che costituiranno il pool genetico per la successiva generazione:
+- *Roulette-wheel selection*: vedi sopra;
+- *Rank-based selection*: si ordinano gli individui in ordine di fitness decrescente. A seconda della posizione si assegna ad ogni individuo un *rank* e con esso si definisce la probabilità di essere selezionati. Si procede ad una selezione del tipo roulette-wheel. Questo modello riesce ad ovviare al problema della dominanza e regola la pressione di selezione. Lo svantaggio sta che occorre ordinare gli individui (complessità $O(n \log n)$);
+- *Tournament selection*: si estraggono $k$ individui casualmente dalla popolazione. Tramite scontri individuali si decide il migliore, il quale riceverà la possibilità di riprodursi nella prossima generazione. Si riesce così ad evitare il problema della dominanza e si riesce a regolare la pressione di selezione grazie alla grandezza del torneo;
+- *Elitismo*: i migliori individui della generazione precedente costituiscono la generazione successiva. L'elite così scelta non è immune dai cambiamenti apportati dagli operatori genetici. Il vantaggio è che la convergenza viene ottenuta rapidamente. Lo svantaggio è che c'è il rischio di rimanere bloccati in ottimi locali;
+- *Crowding*: gli individui delle generazioni successive dovrebbero rimpiazzare gli individui più simili a loro. La densità locale in $\Omega$ non può crescere in modo indefinito. Questo permette una migliore esplorazione dello spazio.
 
-La stessa funzione di fitness può essere adattata per impedire una
-convergenza troppo rapida:
+Di seguito listiamo alcune proprietà che possono caratterizzare i metodi di selezioni:
+- *Static*: la probabilità di selezione rimane costante;
+- *Dynamic*: la probabilità di selezione può variare;
+- *Extinguishing*: può darsi il caso che la probabilità di selezione sia 0;
+- *Preservative*: la probabilità di selezione è sempre maggiore di 0;
+- *Pure-bred*: gli individui possono avere discendenti solo in una generazione;
+- *Under-bred*: gli individui possono avere discendenti in più di una generazione;
+- *Right*: tutti gli individui posono riprodursi;
+- *Left*: i migliori individui possono non riprodursi;
+- *Generational*: i genitori non possono mutare fin quando i loro discendenti non vengono creati;
+- *On-the-fly*: i discendenti sostituiscono i genitori;
 
--   *linear dynamical scaling*: riduciamo la rilevanza della funzione di
-    fitness sottraendoci il minimo delle passate generazioni.
-
--   *$\sigma$-scaling*: calcolata attraverso la formula
-    $f_{\sigma}(A) = A.F - (\mu_f(t) - \beta \cdot \sigma_f(t))$, dove
-    $\beta$ è un parametro positivo.
-
--   *dipendente dal tempo*: il fattore temporale usato come esponente
-    regola la selective pressure.
-
--   *Boltzmann-selection*: determina la fitness relativa non
-    direttamente, ma attraverso la funzione
-    $g(x) = exp^{\frac{f(x)}{kT}}$. $T$ è una variabile che dipende dal
-    tempo e $k$ è una costante di normalizzazione.
-
-### Selezione
-
-Vi sono varie strategie disponibili in letteratura per operare la
-selezione degli individui che costituiranno il pool genetico per la
-successiva generazione:
-
--   *Roulette-wheel selection*: vedi sopra.
-
--   *Rank-based selection*: si ordinano gli individui in ordine di
-    fitness decrescente. A seconda della posizione si assegna ad ogni
-    individuo un *rank* e con esso si definisce la probabilità di essere
-    selezionati. Si procede ad una selezione del tipo roulette-wheel.
-    Questo modello riesce ad ovviare al problema della dominanza e
-    regola la pressione di selezione. Lo svantaggio sta che occorre
-    ordinare gli individui (complessità $O(n \log n)$).
-
--   *Tournament selection*: si estraggono $k$ individui casualmente
-    dalla popolazione. Tramite scontri individuali si decide il
-    migliore, il quale riceverà la possibilità di riprodursi nella
-    prossima generazione. Si riesce così ad evitare il problema della
-    dominanza e si riesce a regolare la pressione di selezione grazie
-    all grandezza del torneo.
-
--   *Elitismo*: i migliori individui della generazione precedente
-    costituiscono la generazione successiva. L'elite così scelta non è
-    immune dai cambiamenti apportati dagli operatori genetici. Il
-    vantaggio è che la convergenza viene ottenuta rapidamente. Lo
-    svantaggio è che c'è il rischio di rimanere bloccati in ottimi
-    locali.
-
--   *Crowding*: gli individui delle generazioni successive dovrebbero
-    rimpiazzare gli individui più simili a loro. La densità locale in
-    $\Omega$ non può crescere in modo indefinito. Questo permette una
-    migliore esplorazione dello spazio.
-
-Di seguito listiamo alcune proprietà che possono caratterizzare i metodi
-di selezioni:
-
--   *Static*: la probabilità di selezione rimane costante.
-
--   *Dynamic*: la probabilità di selezione può variare.
-
--   *Extinguishing*: può darsi il caso che la probabilità di selezione
-    sia 0.
-
--   *Preservative*: la probabilità di selezione è sempre maggiore di 0.
-
--   *Pure-bred*: gli individui possono avere discendenti solo in una
-    generazione.
-
--   *Under-bred*: gli individui possono avere discendenti in più di una
-    generazione.
-
--   *Right*: tutti gli individui posono riprodursi.
-
--   *Left*: i migliori individui possono non riprodursi.
-
--   *Generational*: i genitori non possono mutare fin quando i loro
-    discendenti non vengono creati.
-
--   *On-the-fly*: i discendenti sostituiscono i genitori.
+----------------------------------------------------------------
 
 ### Operatori genetici
 
