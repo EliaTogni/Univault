@@ -1,11 +1,10 @@
 ## Introduzione ##
-Dato un qualunque sistema, se si dispone di un insieme di leggi o regole che lo descrivono completamente (nel caso di un sistema fisico si avranno, ad esempio, delle equazioni differenziali) è possibile, in teoria, calcolarne in ogni momento lo stato e, quindi, prevederne l'evoluzione nel tempo. Tuttavia, è circostanza comune il non avere a disposizione una conoscenza completa di un certo sistema.<br />
-Tale informazione:
+Dato un qualunque sistema, se si dispone di un insieme di leggi o regole che lo descrivono completamente (nel caso di un sistema fisico si avranno, ad esempio, delle equazioni differenziali), è possibile, in teoria, calcolarne in ogni momento lo stato e, quindi, prevederne l'evoluzione nel tempo. Tuttavia, è circostanza comune il non avere a disposizione una conoscenza completa di un certo sistema. Tale informazione:
 1. può mancare;
-2. può esserne disponibile solamente in maniera parziale, cioè si possiede una conoscenza approssimata di essa.
+2. può essere disponibile solamente in maniera parziale, cioè si possiede una conoscenza approssimata di essa.
  
-L'**Intelligenza Artificiale** nasce con lo scopo di estrarre conoscenza direttamente dai dati a disposizione attraverso strumenti automatici.<br />
-Questo modello si differenzia rispetto alla descrizione a priori del sistema, in quanto lo simula per comprenderne a posteriori il suo comportamento. Per far questo, è stato utile studiare come gli esseri viventi interagiscano con l'ambiente circostante e come vi si adattino.<br />
+L'**Intelligenza Artificiale** nasce con lo scopo di estrarre questa conoscenza direttamente dai dati a disposizione attraverso strumenti automatici.<br />
+Questa tecnica si differenzia rispetto alla descrizione a priori del sistema, in quanto lo simula per comprenderne a posteriori il suo comportamento. Per fare ciò, è stato utile studiare come gli esseri viventi interagiscano con l'ambiente circostante e come vi si adattino.<br />
 Vari modelli di intelligenza artificiale sono stati proposti lungo la storia della disciplina.<br />
 Una categorizzazione preliminare che si fa in letteratura è quella tra due tipi di modelli:
 - **modelli simbolici**, in cui i dati vengono sottoposti a codifica e solo dopo manipolati. Storicamente questo è stato il primo approccio adottato;
@@ -18,7 +17,7 @@ Una categorizzazione preliminare che si fa in letteratura è quella tra due tipi
 ### Background biologico ###
 Il sistema nervoso degli animali consiste del cervello, dei differenti sistemi sensoriali, i quali collezionano informazioni dalle differenti parti del corpo, ed il sistema motorio, il quale controlla i movimenti.<br />
 La parte principale del processing di informazioni avviene nel cervello e nel sistema nervoso centrale.<br />
-Il cervello umano permette di analizzare in maniera sofisticata l'ambiente in cui si trova per agire nella maniera ritenuta migliore possibile. Queste analisi sono basate sul funzionamento del cervello stesso, su come esso estrae informazioni e su come queste interagiscano con le informazioni contenute in memoria, etc.<br />
+Il cervello umano permette di analizzare in maniera sofisticata l'ambiente in cui si trova per agire nella maniera ritenuta migliore possibile. Tali analisi sono basate sul funzionamento del cervello stesso, su come esso estrae informazioni e su come quest'ultime interagiscano con le informazioni contenute in memoria, etc.<br />
 Lo studio di questi processi è un campo di ricerca molto attivo e multidisciplinare nel quale convergono gli interessi della biologia, della medicina e della psicologia. Tali studi offrono dei modelli che simulano l'attività celebrale. Proprio questi modelli vengono poi utilizzati dall'informatica per offrire strumenti di predizione, ottimizzazione e problem-solving in vari campi applicativi (guida automatizzata, smart cities, etc.).<br />
 Il successo di questi modelli è condizionato dal fatto che il cervello è considerabile alla pari di un potente computer capace di computare in parallelo grandi porzioni di dati.
 
@@ -26,7 +25,7 @@ Il successo di questi modelli è condizionato dal fatto che il cervello è consi
 
 ![[Biological neurons.png]]
 
-Il cervello è composto da miliardi semplici unità, delle cellule chiamate **neuroni**. Un neurone è una cellula la quale raccoglie e trasmette attività elettrica. I neuroni esistono in differenti forme e grandezze, ed è possibile risalire ad un neurone "prototipo" dal quale ricondursi a tutti i tipi di neuroni.<br />
+Il cervello è composto da miliardi semplici unità chiamate **neuroni**. Un neurone è una cellula la quale raccoglie e trasmette attività elettrica. I neuroni esistono in differenti forme e grandezze, ed è possibile risalire ad un neurone "prototipo" dal quale ricondursi a tutti i tipi di neuroni.<br />
 Questi neuroni comunicano tra di loro inviando informazioni sotto forma di segnali di attivazione l'un l'altro, lungo connessioni orientate.<br />
 Il neurone a sua volta è costituito da:
 -   il **corpo cellulare**, il quale contiene il nucleo. Viene anche chiamato **Soma**; 
@@ -36,13 +35,13 @@ Il neurone a sua volta è costituito da:
 L'assone e i dendriti differiscono per la struttura e per le proprietà della **membrana cellulare**. In particolare, l'assone è spesso coperto da una **guaina mielinica**.<br />
 Gli assoni sono i percorsi orientati lungo i quali i neuroni comunicano tra di loro e ciascuno di questi assoni conduce ai dendriti di altri neuroni. Alla sua terminazione, l'assone è fortemente ramificato e possiede alla fine di queste ramificazioni dei **bottoni sinaptici** o **bottoni terminali**.<br />
 Ciascun bottone terminale entra quasi a contatto con un dendrite o con il corpo cellulare di un altro neurone. Questo gap che viene a formarsi è chiamato **sinapsi**.<br />
-La più comune forma di comunicazione tra neuroni avviene quando un bottone terminale dell'assone rilascia determinate sostanze chimiche, i **neurotrasmettitori**, i quali agiscono sulla membrana del dendrito ricettore e cambiano la sua polarizzazione. A seconda del tipo di neurotrasmettitore rilasciato, la differenza di potenziale potrebbe essere ridotta oppure aumentata dal lato del dendrite. Le sinapsi che riducono la differenza di potenziale vengono chiamate **eccitatorie** mentre quelle che la incrementano sono chiamate **inibitorie**.<br />
+La più comune forma di comunicazione tra neuroni avviene quando un bottone terminale dell'assone rilascia determinate sostanze chimiche, i **neurotrasmettitori**, i quali agiscono sulla membrana del dendrite ricettore e cambiano la sua polarizzazione. A seconda del tipo di neurotrasmettitore rilasciato, la differenza di potenziale lato dendrite potrebbe essere ridotta oppure aumentata. Le sinapsi che riducono la differenza di potenziale vengono chiamate **eccitatorie** mentre quelle che la incrementano sono chiamate **inibitorie**.<br />
 Il cambiamento del potenziale elettrico causato da una singola sinapsi è poco significativo ma questo effetto può accumularsi (considerando gli stimoli eccitatori come positivi e quelli inibitori come negativi). Se l'input netto eccitatorio è sufficientemente grande, la diffentenza di potenziale nel corpo della cellula può essere ridotto in maniera significativa e, se questa riduzione ha magnitudine sufficiente, la base dell'assone viene depolarizzata.<br />
 Come conseguenza, l'interno della cellula diviene temporaneamente più positivo dell'esterno. L'improvviso cambio di potenziale, denominato **potenziale d'azione**, si propaga lungo l'assone. Quando questo impulso nervoso raggiunge la fine dell'assone, causa il rilascio dei neurotrasmettitori dai bottoni terminali, inducendo, quindi, un cambiamento del potenziale elettrico nel neurone ricettore.<br />
 Nel sistema nervoso umano, l'informazione è codificata da quantità in continuo cambiamento, cioè il potenziale elettrico della membrana di un neurone e il numero di impulsi nervosi che un neurone trasmette per secondo (o **firing rate**).
 
 Le **Artificial Neural Network** sono sistemi di information processing, i cui principi di struttura e azione sono ispirati dal sistema nervoso e dal cervello di animali e umani.<br />
-Esse consistono di un largo numero di neuroni, i quali lavorano in parallelo. Questi neuroni comunicano mandando informazioni tra di loro sotto forma di segnali di attivazione, lungo connessioni orientate.<br />
+Esse consistono di un largo numero di unità, le quali lavorano in parallelo.<br />
 Un sinonimo comunemente usato per le reti neurali è il termine **modello connessionista**. Perciò, l'espressione "processing distribuito in parallelo" può spesso essere trovata in relazione alle reti neurali artificiali.<br />
 I vantaggi delle reti neurali sono:
 1.  alta velocità di calcolo, grazie al parallelismo;
@@ -63,8 +62,8 @@ Piuttosto, le misurazioni necessitano di essere strutturate ed elencate prima di
 
 ### Threshold logic unit ###
 Come già menzionato, le Artificial Neural Network sono ispirate alla struttura e ai principi secondo cui operano il sistema nervoso ed, in particolare, il cervello di animali ed umani. 
-Per implementare una rete neurale artificiale occorre trovare, quindi, un analogo del neurone. La struttura che emula tale compito viene denominata **threshold logic unit** o **neurone di McCulloch e Pitts**, nel seguito **TLU**.<br />
-Una TLU è una semplice processing unit costituita da $n$ variabili di input $x_1 \dots x_n$ e un output $y$. Ad ogni unità viene assegnato un **threshold** $\theta$ e ad ogni variabile di input un vettore di pesi $w_i$ dove $i \in \{1, \dots ,n\}$, il quale rappresenta la rilevanza di quel determinato input al fine della computazione.<br />
+Per implementare una rete neurale artificiale occorre trovare, quindi, un analogo del neurone. La struttura che emula tale compito viene denominata **threshold logic unit** o **neurone di McCulloch e Pitts**, nel seguito **TLU**. Un altro nome comunemente utilizzato per la TLU è il termine **percettrone**.<br />
+Una TLU è una semplice processing unit costituita da $n$ variabili di input $x_1 \dots x_n$ e un output $y$. Ad ogni unità viene assegnato un **threshold** $\theta$ e ad ogni variabile di input un peso $w_i$ dove $i \in \{1, \dots ,n\}$, il quale rappresenta la rilevanza di quel determinato input al fine della computazione.<br />
 L'output della TLU viene calcolato secondo la seguente formula:
 
 $$y =  \begin{cases}
@@ -87,11 +86,11 @@ Risulta evidente che l'unica circostanza in cui l'output della TLU verrà posto 
 ### Interpretazione geometrica ###
 La condizione che calcola l'output della TLU ricorda l'equazione di un iperpiano (ovvero un piano in $n$ dimensioni):
 
-$$\sum w_ix_i + \theta = 0$$
+$$\sum_{i = 1}^{n} w_ix_i - \theta = 0$$
 
-Ricordando il caso precedente dell'AND logico e considerando i valori di input come coordinate in uno spazio bidimensionale, è possibile osservare che la retta definita da $x_1w_1 + x_2w_2 + \theta = 0$ corrisponde al confine che separa quelle combinazioni di valori i quali restituiscono come output $1$ da quelle che, invece, restituiscono $0$.<br />
+Ricordando il caso precedente dell'AND logico e considerando i valori di input come coordinate in uno spazio bidimensionale, è possibile osservare che la retta definita da $x_1w_1 + x_2w_2 - \theta = 0$ corrisponde al confine che separa quelle combinazioni di valori i quali restituiscono come output $1$ da quelle che, invece, restituiscono $0$.<br />
 Naturalmente, le computazioni delle TLU con più di due input possono essere interpretate geometricamente anch'esse.<br />
-Da quanto detto, tuttavia, si può dedurre che una singola TLU potrà computare solo funzioni *linearmente separabili*, ovvero funzioni in cui le coordinate associate agli input che restituiscono $1$ possono essere separate da quelle che restituiscono $0$ da una funzione lineare (punto, retta, piano o iperpiano a seconda della dimensione).<br />
+Da quanto detto, tuttavia, si può dedurre che una singola TLU potrà computare solo funzioni *linearmente separabili*, ovvero funzioni in cui le coordinate associate agli input che restituiscono $1$ possono essere separate da quelle che restituiscono $0$ per mezzo di una funzione lineare (punto, retta, piano o iperpiano a seconda della dimensione).<br />
 Sfortunatamente, non tutte le funzioni sono linearmente separabili.
 
 ![[images/geometria.png]]
@@ -122,11 +121,11 @@ L'interpretazione geometrica fornisce un'intuizione su come costruire una TLU av
 E' necessario, quindi, evolvere una TLU affinchè converga in modo autonomo ad una soluzione.<br />
 Un algoritmo che permette di automatizzare il processo è il seguente: 
  1. Inizializzare i pesi e il threshold con valori randomici;
-2. Determinare l'errore nell'output per un insieme di controlli.L'errore viene calcolato come una funzione dei pesi e del threshold $e(w_1,\dots,w_n,\theta)$.
+2. Determinare l'errore nell'output per un insieme di controlli. L'errore viene calcolato come una funzione dei pesi e del threshold $e(w_1,\dots,w_n,\theta)$;
 3. Aggiornare i pesi e il threshold per correggere l'errore;
 4. Iterare finchè l'errore si annulla;
 
-Si osservi il comportamento dell'algoritmo nel caso più semplice, in cui si hanno un threshold ed un unico input (quindi, un unico peso associato). Si presupponga che si voglia allenare la TLU a calcolare la negazione booleana.<br />
+Si osservi il comportamento dell'algoritmo nel caso più semplice, ovvero il caso nel quale si hanno un threshold ed un unico input (quindi, un unico peso associato). Si presupponga che si voglia allenare la TLU a calcolare la negazione booleana.<br />
 Sia $x$ l'input, $w$ il peso associato e $\theta$ il threshold. Allora l'output $y$ sarà definito come:
 
 $$y = \begin{cases}
@@ -134,12 +133,12 @@ $$y = \begin{cases}
     0 & \text{se } 1w = w \geq \theta
    \end{cases}$$
 
-Si calcoli la funzione errore al variare di $w$ e $\theta$. Nel caso in cui $x = 0$ l'errore sarà $0$ per un $\theta$ negativo e $1$ per un $\theta$ negativo. Il peso non avrà, infatti, alcuna influenza perchè viene annullato nella moltiplicazione con l'input.<br />
+Si calcoli la funzione errore al variare di $w$ e $\theta$. Nel caso in cui $x = 0$ l'errore sarà $0$ per un $\theta$ negativo e $1$ per un $\theta$ positivo. Il peso non avrà, infatti, alcuna influenza perchè viene annullato nella moltiplicazione con l'input.<br />
 Quando, invece, $x = 1$, si avrà che la funzione dipenderà da entrambi i parametri.
 
 ![[images/error1.png]]
 
-La funzione di errore così calcolata non può essere usata direttamente nella computazione perchè è composta da plateau e, quindi, non è ovunque derivabile. La soluzione è quella di calcolare la funzione di errore in modo tale che offra una misura di quanto sbagliata sia la relazione tra pesi e threshold. Si otterrà così una funzione di errore che, seppur ancora non differenziabile, lo sia localmente nei punti in cui l'errore si discosta da $0$. Ciò che l'algoritmo farà per correggere l'errore, dunque, sarà discendere verso l'area dove la funzione di errore si annulla. Questo è possibile esattamente perché è stato scelto di utilizzare una funzione derivabile nei punti di interesse, e, cioè, è sempre possibile calcolare la direzione migliore da seguire affinchè ci si muova nella direzione del plateu più basso, ovvero verso l'errore nullo.<br />
+La funzione di errore così calcolata non può essere usata direttamente nella computazione perchè è composta da plateau e, quindi, non è ovunque derivabile. La soluzione è quella di calcolare la funzione di errore in modo tale che offra una misura di quanto sbagliata sia la relazione tra pesi e threshold. Si otterrà così una funzione di errore che, seppur ancora non differenziabile, lo sarà localmente nei punti in cui l'errore si discosta da $0$. Ciò che l'algoritmo farà per correggere l'errore, dunque, sarà discendere verso l'area dove la funzione di errore si annulla. Questo è possibile esattamente perché è stato scelto di utilizzare una funzione derivabile nei punti di interesse. E' sempre possibile calcolare la direzione migliore da seguire affinchè ci si muova nella direzione del plateu più basso, ovvero verso l'errore nullo.<br />
 Le regole di adattamento possono essere applicate in due modi:
 -  **online learning**, ovvero l'opzione di adattare i pesi e threshold ad ogni singolo step di training; 
 - **batch learning**, ovvero l'opzione nel quale i cambiamenti vengono aggregati in **learning/training epoch** o **epoche**. Al termine di queste epoche, i cambiamenti aggregati vengono applicati.

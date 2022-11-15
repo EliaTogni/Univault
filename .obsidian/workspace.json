@@ -31,8 +31,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -90,7 +89,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Artificial Neural Network.md",
+                "file": "Intelligenza Artificiale.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,10 +107,10 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "ea72f42114ebc092",
+  "active": "167d69a411607202",
   "lastOpenFiles": [
-    "Intelligenza Artificiale.md",
     "Artificial Neural Network.md",
+    "Intelligenza Artificiale.md",
     "Inferenza di tipo.md",
     "Git.md",
     "Grafo.md",
