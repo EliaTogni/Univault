@@ -1,5 +1,4 @@
-In Informatica, la **Teoria della Complessità Computazionale** è una branca della **Teoria della Computabilità** che studia le risorse minime necessarie (principalmente tempo di calcolo e memoria) per la risoluzione di un problema.
-
+In Informatica, la **Teoria della Complessità Computazionale** è una branca della **Teoria della Computabilità** che studia le risorse minime necessarie (principalmente tempo di calcolo e memoria) per la risoluzione di un problema.<br />
 Per misurare l'efficienza di un [[Algoritmo]] in maniera univoca, bisogna definire una metrica indipendente dalle tecnologie utilizzate. Per questo motivo si usa fare riferimento ad un modello di calcolo generico: la [[Macchina di Turing]].
 
 Per quel che riguarda la misurazione della risorsa _tempo_, data una macchina di Turing $M$, si dice che $M$ opera in tempo $f(n)$ se $f(n)$ è il massimo numero di passi necessari alla macchina per produrre il risultato su un input $x$ di lunghezza $n$.
@@ -15,7 +14,6 @@ Poichè questo tipo di misurazione è molto dettagliato, si introducono approssi
 --------------------------------------------------------------
 
 ### Classi di complessità ###
-
 Una **Classe di complessità** è un insieme di problemi che possono essere risolti usando le stesse risorse di calcolo.<br />
 
 Un problema $P$ è una relazione $P \subseteq I \times S$, dove $I$ è l'insieme delle _istanze di ingresso_ e $S$ è quello delle _soluzioni_.<br />
@@ -47,8 +45,6 @@ Inoltre, risulta $PSpace \subseteq ExpTime$: infatti, se si assume per semplicit
 
 Non è noto se le inclusioni siano proprie, ovvero se $P \subset PSpace$ e/o $PSpace \subset ExpTime$. L'unico risultato di separazione dimostrato finora mostra che $P \subset ExpTime$, e quindi esiste un problema che può essere risolto in tempo esponenziale, ma per cui tempo polinomiale non è sufficiente.<br />
 
---------------------------------------------------------------
-
 E' possibile caratterizzare anche la classe dei problemi che ammettono algoritmi paralleli efficienti.
 - La classe $NC$ è l'insieme dei problemi risolti da algoritmi paralleli veloci con
 	- tempo polilogaritmico;
@@ -66,7 +62,6 @@ Per ottenere un algoritmo sequenziale partendo da quello parallelo, basta simula
 --------------------------------------------------------------
 
 #### $NC = FP?$ ####
-
 La questione $NC = FP$ ripropone il problema di capire se ogni algoritmo sequenziale efficiente è parallelizzabile. Si crede di no, ma il problema è ancora aperto.
 
 --------------------------------------------------------------

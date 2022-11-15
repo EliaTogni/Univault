@@ -18,6 +18,18 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "ea72f42114ebc092",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Artificial Neural Network.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ]
       }
@@ -99,13 +111,13 @@
   "lastOpenFiles": [
     "Artificial Neural Network.md",
     "Intelligenza Artificiale.md",
-    "Neuroni.md",
-    "Modello ADALINE.md",
-    "Learning Task Libera.md",
-    "Learning Task Fissata.md",
-    "Multi-Layer Perceptron.md",
-    "Network di Threshold Logic Unit.md",
-    "Array.md",
-    "Apertura.md"
+    "Grafo.md",
+    "Geometric interpretation of network of TLU.png.md",
+    "ALU.md",
+    "Algoritmo di Strassen.md",
+    "Algoritmo.md",
+    "Algoritmi Paralleli e Distribuiti.md",
+    "Albero di Decisione.md",
+    "Albero Binario.md"
   ]
 }

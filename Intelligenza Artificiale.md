@@ -50,11 +50,11 @@ I vantaggi delle reti neurali sono:
 3.  la performance degrada in modo lineare con il numero di neuroni danneggiati;
 4.  ottimo per l'apprendimento induttivo.
 
-La ragione per la quale le reti neurali vengono studiate in [[Computer Science]] si basa sull'ipotesi che le macchine possano comportarsi in maniera intelligente. Questa ipotesi sostiene che il requisito fondamentale per ottenere un comportamento intelligente è l'abilità di manipolare simboli e strutture di simboli rappresentate da strutture fisiche, dove con simbolo si intende un token il quale si riferisce ad un oggetto o ad una situazione. 
+La ragione per la quale le reti neurali vengono studiate in Computer Science si basa sull'ipotesi che le macchine possano comportarsi in maniera intelligente. Questa ipotesi sostiene che il requisito fondamentale per ottenere un comportamento intelligente è l'abilità di manipolare simboli e strutture di simboli rappresentate da strutture fisiche, dove con simbolo si intende un token il quale si riferisce ad un oggetto o ad una situazione. 
 
 **Physical Symbol System Hypotesis**: Un simbolo fisico ha i mezzi necessari e sufficienti per azioni intelligenti.
 
-La classica [[Intelligenza Artificiale]] si concentra su forme simboliche per rappresentare la conoscenza e, in particolare, su logica dei predicati e delle proposizioni. Al contrario, le Artificial Neural Network non sono sistemi di simboli fisici ma, piuttosto, segnali più elementari, i quali, presi singolarmente, raramente hanno un significato chiaro. Di conseguenza, le reti neurali sono spesso definite come **sotto-simboliche**.
+La classica intelligenza artificiale si concentra su forme simboliche per rappresentare la conoscenza e, in particolare, su logica dei predicati e delle proposizioni. Al contrario, le Artificial Neural Network non sono sistemi di simboli fisici ma, piuttosto, segnali più elementari, i quali, presi singolarmente, raramente hanno un significato chiaro. Di conseguenza, le reti neurali sono spesso definite come **sotto-simboliche**.
 
 Non ci sono dubbi sui risultati ottenuti dalla classica Intelligenza Artificiale. Ciò nonostante, quando diventa necessario mimare la percezione (sentire, udire, ecc.), i computer performano scarsamente in confronto agli umani, almeno nei casi in cui si fa affidamento sulla rappresentazione simbolica: in questo caso i computer sono troppo lenti, poco flessibili e troppo poco tolleranti a rumore ed errori. Il problema è che, al fine di riconoscere pattern, la rappresentazione simbolica non è adatta. <br />
 Piuttosto, le misurazioni necessitano di essere strutturate ed elencate prima di poter applicare in maniera efficace metodi simbolici. 
@@ -107,8 +107,6 @@ Sebbene solo due funzioni booleane a due argomenti non siano linearmente indipen
 
 ![[images/doppiaimplicazione.png]]
 
-![[Geometric interpretation of network of TLU.png]]
-
 Il problema può essere ovviato attraverso la costruzione di network di TLU più complessi.<br />
 Come esempio, si consideri il network che simula la doppia implicazione.
 
@@ -120,7 +118,8 @@ Può essere dimostrato, inoltre, che tutte le funzioni Booleane con un numero ar
 ----------------------------------------------------------------
 
 ### Training delle TLU ###
-L'interpretazione geometrica fornisce un'intuizione su come costruire una TLU avente 2 o 3 input, ma non è  un metodo scalabile nè automatizzato. E' necessario evolvere una TLU affinchè converga in modo autonomo ad una soluzione.<br />
+L'interpretazione geometrica fornisce un'intuizione su come costruire una TLU avente 2 o 3 input, ma non è  un metodo scalabile nè automatizzato. Infatti, è impossibile automatizzare questo metodo, perchè si è in grado di trovare una linea di separazione accettabile esclusivamente tramite "ispezione visiva" dei set di punti da separare.<br />
+E' necessario, quindi, evolvere una TLU affinchè converga in modo autonomo ad una soluzione.<br />
 Un algoritmo che permette di automatizzare il processo è il seguente: 
  1. Inizializzare i pesi e il threshold con valori randomici;
 2. Determinare l'errore nell'output per un insieme di controlli.L'errore viene calcolato come una funzione dei pesi e del threshold $e(w_1,\dots,w_n,\theta)$.
@@ -156,6 +155,12 @@ $$\forall i \in \{1, \dots, n\}:w_i^{(new)} = w_i^{(old)} + \Delta w_i \text{ co
 
 dove $\eta$ è il *learning rate*. Più questo valore è alto, più i cambiamenti su pesi e sul threshold sono drastici.
 
+Ora verrano mostrari alcuni esempi di training, partendo dai valori $\theta = 3/2$, $w = 2$ e learning rate $\eta= 1$.
+
+![[Online training ex.png]]
+
+![[Batch training ex.png]]
+
 Si è osservato, tuttavia, che non tutte le funzioni possono essere computate.<br />
 Per le funzioni linearmente separabili, esiste un teorema che garantisce che applicando la *delta rule* l'algoritmo converga ad una soluzione.<br />
 Sia $L = \{(\mathbf{v}_1,o_1), \dots (\mathbf{v}_n,o_n)\}$ una sequenza di pattern di allenamento per la TLU, dove $\mathbf{v}_i$ identifica l'$i$-esimo vettore di input e $o_i$ identifica l'$i$-esimo output atteso. Siano inoltre $L_0 = \{(\mathbf{v},o) \in L | o = 0\}$ e $L_1 = \{(\mathbf{v},o) \in L | o = 1\}$ rispettivamente gli insiemi delle coppie di pattern che hanno come output atteso $0$ e quelle che hanno come pattern atteso $1$.<br />
@@ -172,7 +177,7 @@ Si osservi che questa procedura di allenamento vale solo per le singole TLU nono
 ----------------------------------------------------------------
 
 ### Artificial neural network ###
-Un'**artificial neural network** (in breve **ANN**) può essere rappresentata come un grafo diretto $G = (U,C)$ dove i nodi sono delle semplici TLU e gli archi sono le connessioni tra le varie unità.<br />
+Un'**artificial neural network** (in breve **ANN**) può essere rappresentata come un [[Grafo]] diretto $G = (U,C)$ dove i nodi sono delle semplici TLU e gli archi sono le connessioni tra le varie unità.<br />
 L'insieme dei nodi $U$ può essere partizionato in tre sottoinsiemi:
 - $U_{(in)}$: è l'insieme dei nodi di input, i quali ricevono in modo diretto l'informazione dall'ambiente;
 - $U_{(out)}$: è l'insieme dei nodi di output, i quali sono i soli nodi a comunicare con l'esterno;
@@ -413,7 +418,7 @@ E' stato mostrato come un MLP con un solo hidden layer può approssimare ogni fu
 Se si permettesse, invece, di avere più di un layer, il numero di neuroni crescerà in modo lineare alla dimensione dell'input. Questa constatazione ha portato allo sviluppo del così detto *deep learning*, dove con **profondità** della rete si definisce il più lungo cammino che separa i neuroni di input da quelli di output. Il trade-off sperato consiste nel permettere una maggiore profondità del network in cambio di un miglioramento delle risorse utilizzate nel calcolo e nella costruzione.<br />
 Il deep learning oltre ad offrire vantaggi porta con se alcune problematiche:
 - **Overfitting**, cioè l'incremento nel numero di neuroni dovuto alla presenza dei molti layer. Esso può avere l'effetto di moltiplicare i parametri in modo sproporzionato;
-- **Vanishing gradient**, infatti durante la propagazione dell'errore il grandiente si riduce dopo ogni layer fino a scomparire;
+- **Vanishing gradient**, infatti durante la propagazione dell'errore il grandiente si riduce dopo ogni layer fino a scomparire.
 
 Alcune soluzioni al problema dell'overfitting sono:
 - **Weigth decay**, ossia mettere un tetto massimo ai valori che possono assumere i pesi al fine di prevenire un adattamento troppo pedissequo al dataset;
@@ -508,11 +513,9 @@ $$f^u_{out} (act_u) = \begin{cases}
 
 Un'altra differenza rispetto all'algoritmo c-means riguarda il metodo attraverso cui i \"centri\" vengono aggiornati. In questo caso, infatti, i punti nel dataset vengono processati uno ad uno. La procedura viene chiamata *competitive learning*: ogni input viene \"conteso\" dai vari neuroni di output, e viene vinto dal neurone con il valore di attivazione più alto. Il neurone vincitore viene adattato, in modo che il vettore di riferimento venga mosso più vicino al punto, dove, invece,il resto dei vettori di riferimento vengono allontanti dal punto (vedi Figura [18](#fig:19){reference-type="ref" reference="fig:19"}). Questo viene fatto secondo le seguenti regole:
 
--   *Attraction rule*:
-    $\mathbf{r}^{new} = \mathbf{r}^{old} + \eta(\mathbf{x} - \mathbf{r}^{old})$
+-   *Attraction rule*: $\mathbf{r}^{new} = \mathbf{r}^{old} + \eta(\mathbf{x} - \mathbf{r}^{old})$;
 
--   *Repulsion rule*:
-    $\mathbf{r}^{new} = \mathbf{r}^{old} - \eta(\mathbf{x} - \mathbf{r}^{old})$
+-   *Repulsion rule*: $\mathbf{r}^{new} = \mathbf{r}^{old} -\eta(\mathbf{x} - \mathbf{r}^{old})$;
 
 ![[images/adapt.png]]
 
@@ -630,7 +633,7 @@ Intuitivamente: se lo stesso neurone viene sempre attivato ogniqualvolta viene p
 ### Restricted Boltzmann machines ###
 Sebbene le BM siano molto potenti, allenarne anche di medie dimensioni è molto dispendioso. Per questo sono state introdotte le *restricted Boltzmann machines* (in quello che segue RBM). La differenza rispetto alle normali BM è che il grafo del network di un RBM è un grafo bipartito, ovvero una connessione è possibile solo tra neuroni di gruppi differenti. Solitamente uno dei gruppi è formato dai neuroni visibili e l'altro da quelli nascosti. Un vantaggio di avere un network in cui non vi sono connessioni tra neuroni dello stesso gruppo è che il processo di apprendimento può essere compiuto ripetendo questi tre passi:
 1.  Fase I: le unità di input vengono fissate rispetto ad un pattern scelto casualmente e quelle nascoste vengono aggiornate in parallelo ottenendo quello che si chiama in gergo *positive gradient*;
-2. Fase II: avendo ottenuto un input preprocessato nella prima fase, si invertono le parti e si fissano i neuroni nascosti e si aggiornano quelli visibili, ottenendo così il *negative gradient*.
+2. Fase II: avendo ottenuto un input preprocessato nella prima fase, si invertono le parti e si fissano i neuroni nascosti e si aggiornano quelli visibili, ottenendo così il *negative gradient*;
 3. Fase III: si aggiornano pesi e threshold con la differenza tra positive e negative gradient.
 
 In letteratura le RBM sono state utilizzate per costruire con più layer in modo simile a quanto accade con gli autoencoder nei MLP.
@@ -657,7 +660,6 @@ Possiamo generalizzare questo approccio a funzioni con più di un argomento graz
 ### Introduzione alla logica fuzzy ###
 
 #### Motivazioni ####
-
 La logica classica si fonda sul *principio di bivalenza*, ovvero una proposizione può assumere solo due valori di verità: il *vero* o il *falso*. Questa assunzione può essere adeguata nel caso in cui ci interessi modellare concetti chiari e distinti che hanno definizioni precise, come nel caso dei concetti matematici. Quando, invece, vogliamo formalizzare la conoscenza implicita nel linguaggio naturale possiamo imbatterci in alcune proposizioni che sono vere (o false) *in una certa misura*, oppure proprietà che hanno estensioni sfumate. La logica fuzzy e la teoria insiemistica che da questa discende ci permette di ragionare in questi contesti, in modo da sfruttare a nostro vantaggio la vaghezza insita nell'uso che facciamo delle parole nel linguaggio naturale. Bisogna, tuttavia, stare attenti a non confondere l'imprecisione con l'*incertezza*. L'incertezza si riferisce alla possibilità che un evento accada o meno. Il valore numerico associato all'accadimento di un evento incerto si chiama *probabilità* ed è studiato dalla branca della matematica omonima. La differenza tra appartenenza fuzzy e probabilità sta nel fatto che la probabilità rimane comunque un fenomeno booleano: un evento può accadere o non accadere; dove, invece, l'appartenenza fuzzy si riferisce a quanto una proprietà viene soddisfatta da un oggetto.
 
 ----------------------------------------------------------------
