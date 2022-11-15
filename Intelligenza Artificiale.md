@@ -183,6 +183,10 @@ L'insieme dei nodi $U$ può essere partizionato in tre sottoinsiemi:
 - $U_{(out)}$: è l'insieme dei nodi di output, i quali sono i soli nodi a comunicare con l'esterno;
 - $U_{(hidden)}$: è l'insieme dei nodi interni, i quali propagano la computazione.
 
+$$U = U_{in} \cup U_{out} \cup U_{hidden}, $$
+$$
+U_{in} \neq \emptyset, \quad U_{out} \neq \emptyset, \quad U_{hidden} \cap (U_{in} \cup U_{out}) = \emptyset$$
+
 ![[images/ANN.png]]
 
 Ogni connessione $(u,v) \in C$ possiede un peso $w_{uv}$ che definisce l'importanza del dato originato da $v$ per il neurone $u$. Ad ogni neurone $u \in U$ vengono, invece, assegnate quattro variabili: il **network input** $net_u$, la **activation** $act_u$, l'**output** $out_u$ e l'**external input** $ext_u$.<br />
@@ -191,14 +195,33 @@ Le prime tre variabili vengono calcolate in ogni momento dell'evoluzione dell'AN
 2.  La **activation function** $f^u_{act}$, della quale ne esistono vari modelli (gaussiana, sigmoide, etc.) a seconda dell'applicazione;
 3. La **output function** $f^u_{out}$, la quale definisce l'output a seconda che il neurone venga attivato o meno.
 
-Se il grafo che rappresenta l'ANN è aciclico si parla di **feed forward network** e la computazione procede in modo unidirezionale da $U_{(in)}$ a $U_{(out)}$ seguendo l'ordine topologico del network. Nel caso in cui, invece, il grafo contenga un ciclo, allora si parla di **recurrent network**.<br />
+La network input function $f_{net}^{(u)}$ calcola il network input $net_{u}$ dagli input $in_{uv_{1}}, ..., in_{uv_{n}}$, i quali corrispondono agli output $out_{v_{1}}, ..., out_{v_{n}}$ del neurone predecessore del neurone $u$, e dai pesi delle connessioni $w_{uv_{1}}, ..., w_{uv_{n}}$.<br /> Questa computazione può essere influenzata da dei parametri addizionali, $\sigma_{1}, ..., \sigma_{n}$.<br />
+A partire dal network input, da un certo numero di parametri $\theta_{1}, ..., \theta_{k}$ e, potenziamente, dal feedback della corrente attivazione del neurone $u$, la funzione di attivazione $f_{act}^{(u)}$ calcola la nuova attivazione $act_{u}$ del neurone $u$. Infine, la funzione di output $f_{out}^{(u)}$ calcola l'output del neurone $u$ a partire dalla sua attivazione. L'input esterno $ext_{u}$ definisce l'iniziale attivazione del neurone $u$ nel caso si tratti di un neurone input.
+
+Il numero di argomenti addizionali della network input function $k_{1}(u)$ e il numero di argomenti dell'activation function $k_{2}(u)$ dipendono dal tipo di queste funzioni e dalla struttura del neurone.<br />
+Tipicamente, la network input function ha solo $2|pred(u)|$ argomenti (cioè gli output dei neuroni predecessori e i corrispondenti pesi delle connessioni), poichè non viene aggiunto nessun parametro.<br />
+La funzione di attivazione, solitamente, necessita di due argomenti: il network input e un parametro, il quale può essere, per esempio, un valore soglia.
+La funzione output, dall'altro lato, prende solamente l'attivazione come suo argomento e, di solito, ha lo scopo di scalare l'output in un range di output desiderati, comunemente tramite linear mapping.
+
+Se il grafo che rappresenta l'ANN è aciclico si parla di **feed forward network** e la computazione procede in modo unidirezionale da $U_{(in)}$ a $U_{(out)}$ seguendo l'ordine topologico del network. Nel caso in cui, invece, il grafo contenga un ciclo, allora si parla di **recurrent network**.
+
 I processi all'interno di un ANN si dividono in due fasi:
 1.  La **input phase**, dove gli input esterni vengono acquisiti dai neuroni di input;
 2.  La **work phase**, dove i neuroni di input vengono spenti e un nuovo output viene computato da ogni neurone. La work phase continua finchè gli output raggiungono la stabilità o si raggiunge un timeout.
 
 ![[images/rnn1.png]]
 
-Nel caso delle recurrent neural network, potrebbe accadere che non si giunga mai ad uno stato stabile a seconda di quale ordine di update dei neuroni si scelga di seguire. Si osservi un esempio di una computazione con risultato oscillante in un recurrent neural network. L'ordine seguito per l'update è: $u_3,u_1,u_2,u_3,u_1,u_2\dots$. Se si fosse seguito un ordine diverso, la computazione avrebbe raggiunto uno stato stabile.
+La fase di input ha lo scopo di inizializzare la rete. In questa fase, le attivazioni dei neuroni input sono impostate al valore degli input esterni corrispondenti. Le attivazioni dei neuroni rimanenti sono inizializzate arbitrariamente, tipicamente a $0$. Inoltre, la funzione di output è applicata alle attivazioni inizializzate, così che tutti i neuroni producano un output iniziale.<br />
+Nella work phase, gli input esterni vengono scollegati, mentre le attivazioni e gli output dei neuroni vengono ricalcolati (potenzialmente molteplici volte). Per ottenere ciò, la network input function, la activation function e la output function sono applicate come descritto precedentemente. Se un neurone non riceve alcun network input, poichè privo di predecessori, mantiene semplicemente la sua attivazione (e, perciò, anche il suo output).<br />
+Questo è importante solo per i neuroni input in un feed forward network.
+
+
+Le ricomputazioni terminano nel caso in cui o il network raggiunge uno stato stabile (cioè uno stato in cui ulteriori ricomputazioni non modifichino ulteriormene l'output dei neuroni) o se è stato eseguito un numero predefinito di ricomputazioni.
+L'ordine temporale delle ricomputazioni, generalmente, non è fissato.<br />
+Per esempio, tutti i neuroni di un network possono ricomputare il proprio output allo stesso tempo (**update sincrono**). E' possibile, inoltre, definire un ordine di neuroni nel quale loro computano il loro nuovo output uno dopo l'altro (**update asincrono**). In questo caso i nuovi output degli altri neuroni possono essere già stati utilizzati come input di computazioni successive.<br />
+Per quanto riguarda le reti feed forward, le computazioni solitamente seguono l'ordinamento topologico.<br />
+Per le recurrent network, l'output finale dipende dall'ordine nel quale i neuroni ricomputano l'output e da quante ricomputazioni sono state eseguite.<br />
+Nel caso delle recurrent neural network, potrebbe, però, accadere che non si giunga mai ad uno stato stabile a seconda di quale ordine di update dei neuroni si scelga di seguire. Si osservi un esempio di una computazione con risultato oscillante in un recurrent neural network. L'ordine seguito per l'update è: $u_3,u_1,u_2,u_3,u_1,u_2\dots$. Se si fosse seguito un ordine diverso, la computazione avrebbe raggiunto uno stato stabile.
 
 ----------------------------------------------------------------
 

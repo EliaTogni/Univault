@@ -31,7 +31,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -89,7 +90,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Intelligenza Artificiale.md",
+                "file": "Artificial Neural Network.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -107,17 +108,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "167d69a411607202",
+  "active": "ea72f42114ebc092",
   "lastOpenFiles": [
-    "Artificial Neural Network.md",
     "Intelligenza Artificiale.md",
+    "Artificial Neural Network.md",
+    "Inferenza di tipo.md",
+    "Git.md",
     "Grafo.md",
-    "Geometric interpretation of network of TLU.png.md",
-    "ALU.md",
-    "Algoritmo di Strassen.md",
-    "Algoritmo.md",
-    "Algoritmi Paralleli e Distribuiti.md",
-    "Albero di Decisione.md",
-    "Albero Binario.md"
+    "ISO.md",
+    "Media Aritmetica.md",
+    "MAC Address.md",
+    "Logica Matematica.md",
+    "Induzione.md"
   ]
 }
