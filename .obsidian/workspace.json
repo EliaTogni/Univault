@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "ddcd703eea43a83d",
+        "id": "516443b058a82031",
         "type": "tabs",
         "children": [
           {
@@ -14,18 +14,6 @@
               "type": "markdown",
               "state": {
                 "file": "Intelligenza Artificiale.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "ea72f42114ebc092",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Artificial Neural Network.md",
                 "mode": "source",
                 "source": false
               }
@@ -110,6 +98,7 @@
   "active": "167d69a411607202",
   "lastOpenFiles": [
     "Artificial Neural Network.md",
+    "Multi-Layer Perceptron.md",
     "Intelligenza Artificiale.md",
     "Inferenza di tipo.md",
     "Git.md",
@@ -117,7 +106,6 @@
     "ISO.md",
     "Media Aritmetica.md",
     "MAC Address.md",
-    "Logica Matematica.md",
-    "Induzione.md"
+    "Logica Matematica.md"
   ]
 }

@@ -214,7 +214,6 @@ La fase di input ha lo scopo di inizializzare la rete. In questa fase, le attiva
 Nella work phase, gli input esterni vengono scollegati, mentre le attivazioni e gli output dei neuroni vengono ricalcolati (potenzialmente molteplici volte). Per ottenere ciò, la network input function, la activation function e la output function sono applicate come descritto precedentemente. Se un neurone non riceve alcun network input, poichè privo di predecessori, mantiene semplicemente la sua attivazione (e, perciò, anche il suo output).<br />
 Questo è importante solo per i neuroni input in un feed forward network.
 
-
 Le ricomputazioni terminano nel caso in cui o il network raggiunge uno stato stabile (cioè uno stato in cui ulteriori ricomputazioni non modifichino ulteriormene l'output dei neuroni) o se è stato eseguito un numero predefinito di ricomputazioni.
 L'ordine temporale delle ricomputazioni, generalmente, non è fissato.<br />
 Per esempio, tutti i neuroni di un network possono ricomputare il proprio output allo stesso tempo (**update sincrono**). E' possibile, inoltre, definire un ordine di neuroni nel quale loro computano il loro nuovo output uno dopo l'altro (**update asincrono**). In questo caso i nuovi output degli altri neuroni possono essere già stati utilizzati come input di computazioni successive.<br />
@@ -231,28 +230,39 @@ A seconda del tipo dei dati utilizzati per allenare le ANN e a seconda dei crite
 2. **free learning task** o apprendimento senza supervisione.
 
 La **Learning Task Fissata** $L_{fixed}$ per una rete neurale con $n$ neuroni input, $U_{in} = \{ u_{1}, ..., u_{n} \}$, e $m$ neuroni output, $U_{out} = \{v_{1}, ..., v_{2}\}$, è un insieme di **training pattern** $l = (\textbf{i}^{(l)}, \textbf{o}^{(l)})$, ognuno consistente di un **vettore di input** $\textbf{i}^{(l)} = (ext_{u_{1}}^{(l)}, ..., ext_{u_{n}}^{(l)})$ e un **vettore di output** $\textbf{o}^{(l)} = (o_{v_{1}}^{(l)}, ..., o_{v_{m}}^{(l)})$.<br />
-Nel caso di una fixed learning task si avrà, quindi, un insieme $L=\{(\mathbf{i}_1,\mathbf{o}_1),\dots,(\mathbf{i}_n,\mathbf{o}_n)\}$ di coppie le quali assegnano ad ogni input un output desiderato. Una volta completato il processo di apprendimento, la ANN dovrebbe essere in grado di restituire l'output adeguato rispetto all'input che le viene presentato. In pratica, però, questo accade raramente e bisogna accontentarsi di un risultato approssimativo.<br />
-Per giudicare in che misura una ANN si avvicina alla soluzione della fixed learning task si adotta una funzione di errore, solitamente calcolata come il quadrato della differenza tra l'output desiderato e quello attuale:
+Nel caso di una fixed learning task si avrà, quindi, un insieme $L=\{(\mathbf{i}_1,\mathbf{o}_1),\dots,(\mathbf{i}_n,\mathbf{o}_n)\}$ di coppie le quali assegnano ad ogni input un output desiderato. Una volta completato il processo di apprendimento, la ANN dovrebbe essere in grado di restituire l'output adeguato rispetto all'input che le viene presentato. Data una Learning Task Fissata, l'obiettivo è allenare una rete neurale in modo che produca, per tutti i training pattern $l \in L_{fixed}$, gli output contenuti nel vettore di output $\textbf{o}^{(l)}$ se gli input esterni del corrispondente vettore di input $\textbf{i}^{(l)}$ sono dati in pasto al network. In pratica, però, questo accade raramente e bisogna accontentarsi di un risultato approssimativo.<br />
+Per giudicare in che misura una ANN si avvicina alla soluzione della fixed learning task si adotta una funzione di errore, la quale misura quanto l'output ottenuto coincide con l'output desiderato nel training pattern.
+Questa funzione di errore è comunemente definita come la somma delle deviazioni dell'output desiderato e dell'output ottenuto al quadrato, per tutti i traning pattern e tutti i neuroni di output.<br />
+L'errore di una rete neurale in riferimento a una learning task fissata $L_{fixed}$ è definito come:
 
-$$e = \sum_{l \in L} \sum_{v \in U_{(out)}} e^l_v$$
+$$e = \sum_{l \in L_{fixed}} e^{(l)} = \sum_{v \in U_{out}} e_{v} = \sum_{l \in L_{fixed}} \sum_{v \in U_{out}} e_{v}^{(l)}$$
 
 dove
 
 $$e^l_v = (o^l_v - out_v)^2$$
 
 è l'errore individuale per una particolare coppia $l$ e per un neurone di output $v$.<br />
-Il quadrato delle differenze viene scelto per vari motivi. Per prima cosa, errori positivi e negativi altrimenti si cancellerebbero a vicenda e non sarebbero presi in
-considerazione. In secondo luogo, questa funzione è ovunque derivabile, semplificando così il processo di aggiornamento dei pesi e dei threshold.<br />
+Il quadrato delle differenze viene scelto per vari motivi. In primo piano, è chiaro che non è possiile semplicemente sommare le deviazioni direttamente, poichè le deviazioni positive e negative potrebbero cancellarsi a vicenda, producendo quindi un'impressione sbagliata dell'attuale bontà del network.<br />
+Tuttavia, il quadrato della deviazione dell'output desiderato e dell'output ottenuto ha almeno due vantaggi rispetto al valore assoluto:
+- il quadrato è continuamente differenziabile ovunque, mentre la derivata del valore assoluto non esiste/è discontinua in 0. E' desiderabile che la funzione di errore sia continuamente differenziabile, perchè questo semplifica la derivazione delle regole di update per i pesi;
+- Grandi deviazioni dall'output desiderato sono pesate in maniera più severa, così che ci sia una tendenza la quale permetta di evitare durante il training grandi deviazioni individuali dal valore desiderate.
+ 
 Una **Learning Task Libera** $L_{free}$ per una rete neurale con $n$ neuroni input. $U_{in} = \{ u_{1}, ..., u_{n} \}$, è un insieme di **training pattern** $l = (\textbf{i}^{(l)})$, ognuno consistente di un **vettore di input** $\textbf{i}^{(l)} = (ext_{u_{1}}^{(l)}, ..., ext_{u_{n}}^{(l)})$.<br />
 Nel free learning task si avrà, quindi, solo una sequenza di input $L = \{\mathbf{i}_1, \dots, \mathbf{i}_n\}$. Questo comporta che, a differenza del fixed learning task, non si avrà modo di calcolare una funzione di errore rispetto ad un output atteso.<br />
-In linea di principio l'obiettivo di un free learning task sarà quello di produrre un output simile per input simili. Un caso particolare potrebbe essere quello del **clustering** dei vettori di input.<br />
-Qualsiasi processo di apprendimento si scelga esistono alcune buone pratiche che è utile seguire. Una di esse è quella di standardizzare il vettore di input. Comunemente lo si scala in modo tale che abbia media uguale a $0$ e la varianza ad $1$. Per fare ciò, è necessario calcolare per ogni neurone $u_k \in U_{(in)}$ la media aritmetica $\mu_k$ e la deviazione standard $\sigma_k$ degli input esterni:
+Data una learning task libera, l'aspetto più importante al fine di allenare una rete neurale è come viene misurata la similarità tra i traning pattern. Questa similarità può essere definita, per esempio, con l'aiuto di una funzione di distanza.<br />
+Un caso particolare potrebbe essere quello del **clustering** dei vettori di input simili, così che per tutti i vettori in un cluster venga prodotto lo stesso output.<br />
+Qualsiasi processo di apprendimento si scelga esistono alcune buone pratiche che è utile seguire. Una di esse è quella di normalizzazione il vettore di input. Comunemente lo si scala in modo tale che abbia media uguale a $0$ e la varianza ad $1$. Per fare ciò, è necessario calcolare a partire dal vettore di input dei training patter, per ogni neurone $u_k \in U_{(in)}$, la media aritmetica $\mu_k$ e la deviazione standard $\sigma_k$ degli input esterni:
 
 $$\mu_k = \frac{1}{|L|}\sum_{l \in L} ext^l_{u_k} \quad \quad \sigma_k = \sqrt{\frac{1}{|L|}\sum_{l \in L} (ext^l_{u_k} - \mu_k)^2}$$
 
 Quindi gli input esterni vengono ricalcolati secondo questa formula:
 
 $$ext^{new}_{u_k} = \frac{ext^{old}_{u_k} - \mu_k}{\sigma_k}$$
+Questa normalizzazione può essere portata a termine come pre-procssing step o dalla funzione di output dei neuroni input.
+
+Si è assunto finora che gli input e gli output di una rete neurale fossero numeri reali. Tuttavia, in pratica ci si trova spesso di fronte ad attributi nominali, come ad esempio colori.<br />
+Per poterli processare, è necessario trasformarli in numeri e, nonostante possa apparire semplice il semplicemente numerare i valori degli attributi, questa conversione può portare ad effetti indesiderati, se i numeri non riflettono il naturale ordine dei valori.<br />
+Una migliore opzione è l'**$1$-in-$n$ encoding**, nel quale ogni attributo nominate è assegnato a tanti neuroni quanto il suo valore: ogni neurone corrisponde ad un valore dell'attributo. Con l'input di un training pattern, il neurone che corrisponde al valore ottenuto dell'attributo nominale viene impostato a $1$, mentre tuti gli altri neuroni che appartengono allo stesso attributo sono settati a $0$.
 
 ----------------------------------------------------------------
 
