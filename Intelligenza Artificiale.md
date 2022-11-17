@@ -45,8 +45,8 @@ Esse consistono di un largo numero di unità, le quali lavorano in parallelo.<br
 Un sinonimo comunemente usato per le reti neurali è il termine **modello connessionista**. Perciò, l'espressione "processing distribuito in parallelo" può spesso essere trovata in relazione alle reti neurali artificiali.<br />
 I vantaggi delle reti neurali sono:
 1.  alta velocità di calcolo, grazie al parallelismo;
-2.  tolleranza ai guasti: la rete rimane funzionale anche quando molti neuroni smettono di funzionare;
-3.  la performance degrada in modo lineare con il numero di neuroni danneggiati;
+2.  tolleranza ai guasti, grazie alla quale la rete rimane funzionale anche quando molti neuroni smettono di funzionare;
+3.  **Graceful Degradation**, cioè la performance degrada in maniera graduale se un numero crescente di neuroni termina di funzionare;
 4.  ottimo per l'apprendimento induttivo.
 
 La ragione per la quale le reti neurali vengono studiate in Computer Science si basa sull'ipotesi che le macchine possano comportarsi in maniera intelligente. Questa ipotesi sostiene che il requisito fondamentale per ottenere un comportamento intelligente è l'abilità di manipolare simboli e strutture di simboli rappresentate da strutture fisiche, dove con simbolo si intende un token il quale si riferisce ad un oggetto o ad una situazione. 
@@ -90,7 +90,7 @@ $$\sum_{i = 1}^{n} w_ix_i - \theta = 0$$
 
 Ricordando il caso precedente dell'AND logico e considerando i valori di input come coordinate in uno spazio bidimensionale, è possibile osservare che la retta definita da $x_1w_1 + x_2w_2 - \theta = 0$ corrisponde al confine che separa quelle combinazioni di valori i quali restituiscono come output $1$ da quelle che, invece, restituiscono $0$.<br />
 Naturalmente, le computazioni delle TLU con più di due input possono essere interpretate geometricamente anch'esse.<br />
-Da quanto detto, tuttavia, si può dedurre che una singola TLU potrà computare solo funzioni *linearmente separabili*, ovvero funzioni in cui le coordinate associate agli input che restituiscono $1$ possono essere separate da quelle che restituiscono $0$ per mezzo di una funzione lineare (punto, retta, piano o iperpiano a seconda della dimensione).<br />
+Da quanto detto, tuttavia, si può dedurre che una singola TLU potrà computare solo funzioni **linearmente separabili**. Due insiemi di punti in uno spazio Euclideo vengono definiti linearmente separabili  se e solo se esiste almeno un punto, una retta, un piano o iperpiano (dipendentemente dalla dimensione dello spazio Euclideo), tale che tutti i punti di un'insieme giacciano da un lato e tutti i punti dell'altro insieme giacciano dall'altro lato di questo punto, retta, piano o iperpiano.<br />
 Sfortunatamente, non tutte le funzioni sono linearmente separabili.
 
 ![[images/geometria.png]]
@@ -179,7 +179,7 @@ Si osservi che questa procedura di allenamento vale solo per le singole TLU nono
 Un'**artificial neural network** (in breve **ANN**) può essere rappresentata come un [[Grafo]] diretto $G = (U,C)$ dove i nodi sono delle semplici TLU e gli archi sono le connessioni tra le varie unità.<br />
 L'insieme dei nodi $U$ può essere partizionato in tre sottoinsiemi:
 - $U_{(in)}$: è l'insieme dei nodi di input, i quali ricevono in modo diretto l'informazione dall'ambiente;
-- $U_{(out)}$: è l'insieme dei nodi di output, i quali sono i soli nodi a comunicare con l'esterno;
+- $U_{(out)}$: è l'insieme dei nodi di output, i quali sono i soli nodi a inviare informazioni all'esterno;
 - $U_{(hidden)}$: è l'insieme dei nodi interni, i quali propagano la computazione.
 
 $$U = U_{in} \cup U_{out} \cup U_{hidden}, $$
@@ -188,7 +188,12 @@ U_{in} \neq \emptyset, \quad U_{out} \neq \emptyset, \quad U_{hidden} \cap (U_{i
 
 ![[images/ANN.png]]
 
-Ogni connessione $(u,v) \in C$ possiede un peso $w_{uv}$ che definisce l'importanza del dato originato da $v$ per il neurone $u$. Ad ogni neurone $u \in U$ vengono, invece, assegnate quattro variabili: il **network input** $net_u$, la **activation** $act_u$, l'**output** $out_u$ e l'**external input** $ext_u$.<br />
+Ogni connessione $(v,u) \in C$ possiede un peso $w_{uv}$ che definisce l'importanza del dato originato da $v$ per il neurone $u$. Ogni neurone $u \in U$ possiede, inoltre, quattro variabili: 
+- il **network input** $net_u$;
+- la **activation** $act_u$; 
+- l'**output** $out_u$; 
+- l'**external input** $ext_u$.
+
 Le prime tre variabili vengono calcolate in ogni momento dell'evoluzione dell'ANN grazie a tre funzioni associate:
 1. La **network input function** $f^u_{net}$, la quale calcola la somma pesata dell'input;
 2.  La **activation function** $f^u_{act}$, della quale ne esistono vari modelli (gaussiana, sigmoide, etc.) a seconda dell'applicazione;
@@ -206,7 +211,7 @@ Se il grafo che rappresenta l'ANN è aciclico si parla di **feed forward network
 
 I processi all'interno di un ANN si dividono in due fasi:
 1.  La **input phase**, dove gli input esterni vengono acquisiti dai neuroni di input;
-2.  La **work phase**, dove i neuroni di input vengono spenti e un nuovo output viene computato da ogni neurone. La work phase continua finchè gli output raggiungono la stabilità o si raggiunge un timeout.
+2.  La **work phase**, dove i gli input esterni vengono spenti e un nuovo output viene computato da ogni neurone. La work phase continua finchè gli output raggiungono la stabilità o si raggiunge un timeout.
 
 ![[images/rnn1.png]]
 
@@ -251,17 +256,17 @@ Una **Learning Task Libera** $L_{free}$ per una rete neurale con $n$ neuroni inp
 Nel free learning task si avrà, quindi, solo una sequenza di input $L = \{\mathbf{i}_1, \dots, \mathbf{i}_n\}$. Questo comporta che, a differenza del fixed learning task, non si avrà modo di calcolare una funzione di errore rispetto ad un output atteso.<br />
 Data una learning task libera, l'aspetto più importante al fine di allenare una rete neurale è come viene misurata la similarità tra i traning pattern. Questa similarità può essere definita, per esempio, con l'aiuto di una funzione di distanza.<br />
 Un caso particolare potrebbe essere quello del **clustering** dei vettori di input simili, così che per tutti i vettori in un cluster venga prodotto lo stesso output.<br />
-Qualsiasi processo di apprendimento si scelga esistono alcune buone pratiche che è utile seguire. Una di esse è quella di normalizzazione il vettore di input. Comunemente lo si scala in modo tale che abbia media uguale a $0$ e la varianza ad $1$. Per fare ciò, è necessario calcolare a partire dal vettore di input dei training patter, per ogni neurone $u_k \in U_{(in)}$, la media aritmetica $\mu_k$ e la deviazione standard $\sigma_k$ degli input esterni:
+Qualsiasi processo di apprendimento si scelga esistono alcune buone pratiche che è utile seguire. Una di esse è quella di normalizzare ( **normalizzazione z-score**) il vettore di input. Comunemente lo si scala in modo tale che abbia media uguale a $0$ e la varianza ad $1$. Per fare ciò, è necessario calcolare a partire dal vettore di input dei training patter, per ogni neurone $u_k \in U_{(in)}$, la media aritmetica $\mu_k$ e la deviazione standard $\sigma_k$ degli input esterni:
 
 $$\mu_k = \frac{1}{|L|}\sum_{l \in L} ext^l_{u_k} \quad \quad \sigma_k = \sqrt{\frac{1}{|L|}\sum_{l \in L} (ext^l_{u_k} - \mu_k)^2}$$
 
 Quindi gli input esterni vengono ricalcolati secondo questa formula:
 
 $$ext^{new}_{u_k} = \frac{ext^{old}_{u_k} - \mu_k}{\sigma_k}$$
-Questa normalizzazione può essere portata a termine come pre-procssing step o dalla funzione di output dei neuroni input.
+Questa normalizzazione può essere portata a termine come pre-processing step o dalla funzione di output dei neuroni input.
 
-Si è assunto finora che gli input e gli output di una rete neurale fossero numeri reali. Tuttavia, in pratica ci si trova spesso di fronte ad attributi nominali, come ad esempio colori.<br />
-Per poterli processare, è necessario trasformarli in numeri e, nonostante possa apparire semplice il semplicemente numerare i valori degli attributi, questa conversione può portare ad effetti indesiderati, se i numeri non riflettono il naturale ordine dei valori.<br />
+Si è assunto finora che gli input e gli output di una rete neurale fossero numeri reali. Tuttavia, in pratica ci si trova spesso di fronte ad attributi nominali, come, ad esempio, colori.<br />
+Per poterli processare, è necessario trasformarli in numeri e, nonostante il numerare i valori degli attributi possa apparire semplice, questa conversione può portare ad effetti indesiderati se i numeri non riflettono il naturale ordine dei valori.<br />
 Una migliore opzione è l'**$1$-in-$n$ encoding**, nel quale ogni attributo nominate è assegnato a tanti neuroni quanto il suo valore: ogni neurone corrisponde ad un valore dell'attributo. Con l'input di un training pattern, il neurone che corrisponde al valore ottenuto dell'attributo nominale viene impostato a $1$, mentre tuti gli altri neuroni che appartengono allo stesso attributo sono settati a $0$.
 
 ----------------------------------------------------------------
@@ -269,10 +274,10 @@ Una migliore opzione è l'**$1$-in-$n$ encoding**, nel quale ogni attributo nomi
 ### Multi-layer perceptrons ###
 ![[images/MLP.png]]
 
-Una delle prime ANN sviluppate furono i **multi-layer perceptrons** (abbreviate in seguito **MLP**). Le MLP sono particolari feed-forward network in cui le unità base (i **Percettroni**) sono organizzati in *layer* ed ogni layer presenta connessioni solo con il layer successivo. Questo permette di minimizzare il fenomeno delle continue ricomputazioni che avverrebbero durante la propagazione del segnale nei normali feed-forward network.<br />
-La network input function di ogni neurone $u \in U_{(hidden) \cup U_{(out)}}$ viene calcolata come la somma pesata degli input, come:
+Una delle prime ANN sviluppate furono i **multi-layer perceptrons** (abbreviate in seguito **MLP**). Le MLP sono particolari feed-forward network in cui le unità base sono organizzate in **layer** ed ogni layer presenta connessioni solo con il layer successivo. Questo permette di minimizzare il fenomeno delle continue ricomputazioni che avverrebbero durante la propagazione del segnale nei normali feed-forward network.<br />
+La network input function di ogni neurone $u \in U_{(hidden) \cup U_{(out)}}$ viene calcolata come la somma pesata degli input, cioè come:
 $$f^u_{net}(\mathbf{w}_u,\mathbf{i}_u) = \sum_{v \in pred(u)} w_{uv}out_v$$
-L'activation function, invece, è una cosìddetta **funzione sigmoide**, ossia una funzione monotona non descrescente tale che:
+L'activation function di ogni neurone hidden, invece, è una cosìddetta **funzione sigmoide**, ossia una funzione monotona non descrescente tale che:
 $$f: \mathbb{R} \to [0,1] \quad \text{ con } \lim_{x\to-\infty}f(x) = 0 \quad \text{ e } \lim_{x\to\infty}f(x) = 1$$
 
 ![[images/step.png]]
@@ -283,7 +288,8 @@ $$f: \mathbb{R} \to [0,1] \quad \text{ con } \lim_{x\to-\infty}f(x) = 0 \quad \t
 
 ![[images/logistic.png]]
 
-La funzione di output può essere sia una sigmoide oppure una semplice funzione lineare. La struttura a layer di un MLP suggerisce che si possa descrivere il network con l'aiuto di una matrice dei pesi. In questo modo, la computazione del MLP può essere rappresentata attraverso la moltiplicazione tra matrici e vettori. Tuttavia, non si è utilizzata una matrice per l'intero network, ma una per ogni singolo layer.<br />
+La funzione di attivazione di ogni neurone di output, invece, può essere sia una sigmoide oppure una semplice funzione lineare.<br />
+La struttura a layer di un MLP suggerisce che si possa descrivere il network con l'aiuto di una matrice dei pesi. In questo modo, la computazione del MLP può essere rappresentata attraverso la moltiplicazione tra matrici e vettori. Tuttavia, non si è utilizzata una matrice per l'intero network, ma una per ogni singolo layer.<br />
 Siano $U_1 = \{ v_1, \dots, v_n \}$ e $U_2 = \{ u_1, \dots, u_m \}$ due layer consecutivi di neuroni. I pesi delle loro connessioni sono codificati in una matrice $W$ di dimensioni $n \times m$:
 
 $$W = \begin{pmatrix}

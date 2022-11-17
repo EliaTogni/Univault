@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "516443b058a82031",
+        "id": "f65f8d295307990d",
         "type": "tabs",
         "children": [
           {
-            "id": "167d69a411607202",
+            "id": "d91df8ee3b5a65ce",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -95,16 +95,16 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "167d69a411607202",
+  "active": "d91df8ee3b5a65ce",
   "lastOpenFiles": [
+    "Algoritmi Paralleli e Distribuiti.md",
+    "Intelligenza Artificiale.md",
     "Struttura Dati.md",
     "Albero 2-3.md",
     "Albero.md",
     "Albero di Decisione.md",
     "Albero Binario.md",
     "Agent-Based Simulation.md",
-    "Algoritmi Paralleli e Distribuiti.md",
-    "Intelligenza Artificiale.md",
     "Artificial Neural Network.md",
     "Multi-Layer Perceptron.md"
   ]
