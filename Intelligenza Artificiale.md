@@ -299,7 +299,8 @@ $$W = \begin{pmatrix}
   w_{u_mv_1} & w_{u_mv_2} & \cdots & w_{u_mv_n} 
  \end{pmatrix}$$
 
-Se due neuroni $u_i$ e $v_j$ non sono connessi, è sufficiente porre $w_{u_iv_j} = 0$. Il vantaggio di questa matrice sta nel fatto che rende possibile scrivere il network input di un layer come:
+Se due neuroni $u_i$ e $v_j$ non sono connessi, è sufficiente porre $w_{u_iv_j} = 0$.<br />
+Il vantaggio di questa matrice sta nel fatto che rende possibile scrivere il network input di un layer come:
 
 $$\mathbf{net}_{U_2} = W \mathbf{in}_{U_2} = W \mathbf{out}_{U_1}$$
 
@@ -316,18 +317,17 @@ La funzione di attivazione del neurone di output utilizzata in questo caso è la
 Dovrebbe essere chiaro che l'approssimazione può crescere a piacere semplicemente aggiungendo neuroni e diminuendo la lunghezza dei gradini.<br />
 E' possibile, inoltre, risparmiare un layer utilizzando come peso della connessione al neurone di output nel calcolo non l'altezza assoluta ma quella relativa. E' utile notare, comunque, che questo risultato non ha natura costruttiva, ossia non istruisce su come deve essere composto un MLP che approssimi con una data accuratezza una certa funzione. Tutto ciò che afferma il teorema è che limitare il numero di layer non pregiudica la proprietà del MLP di essere un **approssimatore universale**.
 
-Una qualsiasi funzione integrabile secondo Riemann può essere approssimata con accuratezza arbitraria da un multi-layer perceptron. Questa preposizione richiede soltanto che la funzione da rappresentare sia integrabile secondo Riemann. Non richiede, infatti, che sia continua.<br />
-In questa preposizione, inoltre, l'errore di approssimazione è misurato dall'area tra la funzione da approssimare e tra l'output del perceptron. Questa area può essere ridotta in maniera arbitraria, nuovamente tramite l'incremento del numero di neuroni.<br />
+Una qualsiasi funzione integrabile secondo Riemann può essere approssimata con accuratezza arbitraria da un perceptron a tre-layer. Questa proposizione richiede soltanto che la funzione da rappresentare sia integrabile secondo Riemann. Non richiede, infatti, che sia continua.<br />
+In questa proposizione, inoltre, l'errore di approssimazione è misurato dall'area tra la funzione da approssimare e tra l'output del perceptron. Questa area può essere ridotta in maniera arbitraria, nuovamente tramite l'incremento del numero di neuroni.<br />
 Tuttavia, questo non garantisce che, per un multi-layer perceptron, il quale ottiene un certa accuratezza, la differenza tra il suo output e la funzione da approssimare sia minore di un certo errore ovunque. La funzione, per esempio, potrebbe possedere uno spike molto sottile, il quale non è catturato da nessuno scalino.
 
 ![[Limits of the preposition.png]]
 
-In un caso del genere, l'area tra la funzione da rappresentare e l'output del perceptron è piccola (poichè lo spike è sottile e quindi contiene solamente un'area piccola), ma nel punto dello spike, la deviazione dell'output dal vero valore della funzione non può essere cosiderabile.
+In un caso del genere, l'area tra la funzione da rappresentare e l'output del perceptron è piccola (poichè lo spike è sottile e quindi contiene solamente un'area piccola), ma, nel punto dello spike, la deviazione dell'output dal vero valore della funzione non può essere cosiderabile.
 
-Naturalmente, l'idea di approssimare una funzione data tramite una funzione a scalini può essere trasferita ed applicata a funzioni con multipli argomenti:
-lo spazio di input viene diviso in rettangoli, box o iperbox, ad ognuno dei quali viene assegnato un valore di funzione.
+Naturalmente, l'idea di approssimare una funzione data tramite una funzione a scalini può essere trasferita ed applicata a funzioni con multipli argomenti: lo spazio di input viene diviso in rettangoli, box o iperbox, ad ognuno dei quali viene assegnato un valore di funzione.
 
-Nonostante i multi-layer perceptron hanno un enorme potere espressivo, essi hanno poca utilità nella pratica. Al fine di ottenere sufficiente accuratezza, è necessario scegliere funzioni a scalini con scalini di larghezza sufficentemente piccola. Questo, perciò, forza a costruire un perceptron con un numero di neuroni potenzialmente altissimo.
+Nonostante i multi-layer perceptron abbiano un enorme potere espressivo, essi hanno poca utilità nella pratica. Al fine di ottenere sufficiente accuratezza, è necessario scegliere funzioni a scalini con scalini di larghezza sufficentemente piccola. Questo, perciò, forza a costruire un perceptron con un numero di neuroni potenzialmente altissimo.
 
 ----------------------------------------------------------------
 
