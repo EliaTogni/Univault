@@ -323,7 +323,7 @@ Ciò nonostante, questo non garantisce che, per un multi-layer perceptron, il qu
 
 ![[Limits of the preposition.png]]
 
-In un caso del genere, l'area tra la funzione da rappresentare e l'output del perceptron è piccola (poichè lo spike è sottile e quindi contiene solamente un'area piccola), ma, nel punto dello spike, la deviazione dell'output dal vero valore della funzione non può essere cosiderabile.
+In un caso del genere, l'area tra la funzione da rappresentare e l'output del perceptron è piccola (poichè lo spike è sottile e quindi contiene solamente un'area piccola), ma, nel punto dello spike, la deviazione dell'output dal vero valore della funzione può, tuttavia, essere cosiderabile.
 
 Naturalmente, l'idea di approssimare una funzione data tramite una funzione a scalini può essere trasferita ed applicata a funzioni con multipli argomenti: lo spazio di input viene diviso in rettangoli, box o iperbox, ad ognuno dei quali viene assegnato un valore di funzione.
 
@@ -332,7 +332,7 @@ Nonostante i multi-layer perceptron abbiano un enorme potere espressivo, essi ha
 ----------------------------------------------------------------
 
 ### Regressione ###
-Si è osservato come per allenare un ANN occorra minimizzare la funzione di errore, la quale si calcola solitamente come il quadrato della differenza tra output aspettato e attuale. Questo avvicina il problema dell'apprendimento nelle reti neurali a quello più generale della **regressione**.<br />
+Si è osservato come per allenare un' ANN occorra minimizzare la funzione di errore, la quale si calcola solitamente come il quadrato della differenza tra output aspettato e attuale. Per minimizzare questa funzione si effettuano adattamenti ai pesi ed ai parametri della funzione di attivazione. Questo approccio conduce al **metodo dei quadrati minimi** , conosciuto anche come **regressione**.<br />
 La regressione è una tecnica molto usata in analisi e in statistica per estrapolare la retta (o, più in generale, il polinomio) che meglio approssima la relazione esistente in un insieme di dati/osservazioni. Descritto in maniera formale, se $G = \{(\mathbf{w}_0,y_0), \dots, (\mathbf{w}_n,y_n)\}$ è il dataset e si immagina l'esistenza di una relazione funzionale tra il vettore di input $\mathbf{w}_i$ e l'ascissa $y$, allora la regressione permetterà di trovare i parametri di quella funzione. A seconda del diverso genere di funzione si avranno diverse forme di regressione.
 
 #### Regressione lineare ####
@@ -379,6 +379,7 @@ $$y = ax^b$$
 
 $$ln(y) = ln(a) + b \cdot ln(x)$$
 
+Questa equazione può essere utilizzata per calcolare una retta di regressione. Sarà necessario calcolare il logaritmo dei punti dati $(x_{i}, y_{i})$ e procedere con i valori trasformati.<br />
 Nel caso delle ANN, si pone, in particolare, il focus sulla funzione logistica:
 
 $$y = \frac{Y}{1 + e^{a+bx}}$$
@@ -451,6 +452,8 @@ numero dei neuroni negli hidden layer è troppo basso si corre il rischio di ave
 Al contrario se se ne hanno troppi, si rischia di incorrere nell'*overfitting*, ossia che il MLP si adatti agli esempi che gli sono stati forniti durante il periodo di apprendimento, ma anche alle loro specificità accidentali (errori e deviazioni).<br />
 Per evitare questi fenomeni, è buona pratica effettuare la **Cross Validation**, cioè dividere il dataset in modo da avere due sottoinsiemi di dati: alcuni dati per l'apprendimento ed altri per la validazione del processo di apprendimento.<br />
 I primi verranno usati per allenare il network e i secondi per giudicare se effettivamente il network approssimi la funzione desiderata. É possibile iterare a piacere questo procedimento, suddividendo i dati non in solo due sottoinsiemi, ma in un numero arbitrario, così da ottenere una conferma incrociata dei progressi nell'apprendimento del network.<br />
+Una variante è la **N-fold cross validation**, nella quale il dataset viene diviso in $n$ parti o **sottoset** (chiamati anche **fold**)circa della stessa dimensione. La frequenza relativa dei valori di output nei fold rappresenta la frequenza relativa di quei valori nel dataset intero (**stratification**).
+Durante l'allenamento, la performance è valutata dopo ogni epoca. L'errore del dattaset di training dovrebbe sempre decrementare, mentre l'errore su sul dataset di validazione dovrebbe peggiorare in caso di overfitting. A questo punto il training termina.<br />
 Un diverso metodo per evitare l'overfitting è quello di terminare l'apprendimento quando il differenziale dell'errore tra un epoca ed un altra si abbassa sotto una certa soglia, oppure se l'apprendimento si protrae per un periodo troppo lungo.
 
 ----------------------------------------------------------------
