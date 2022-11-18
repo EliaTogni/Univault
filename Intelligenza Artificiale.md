@@ -380,7 +380,7 @@ $$y = ax^b$$
 $$ln(y) = ln(a) + b \cdot ln(x)$$
 
 Questa equazione può essere utilizzata per calcolare una retta di regressione. Sarà necessario calcolare il logaritmo dei punti dati $(x_{i}, y_{i})$ e procedere con i valori trasformati.<br />
-Nel caso delle ANN, si pone, in particolare, il focus sulla funzione logistica:
+Nel caso delle ANN, si pone, in particolare, il focus sulla **funzione logistica**:
 
 $$y = \frac{Y}{1 + e^{a+bx}}$$
 
@@ -482,17 +482,18 @@ Alcune soluzioni al problema dell'overfitting sono:
 - **Sparsity constraint**, ossia si introducono dei limiti al numero di neuroni negli hidden layer. Altrimenti, è possibile limitare il numero di quelli attivi;
 - **Dropout training**, ossia alcuni neuroni degli hidden layer vengono omessi durante l'evoluzione del network.
 
-Il problema del vanishing gradient è dato dal fatto che la funzione di attivazione è una funzione logistica la cui derivata raggiunge al massimo il valore di $\frac{1}{4}$. Di conseguenza, ogni propagazione dell'errore ad un layer precedente vi aggiunge un valore, spesso molto minore di $1$, riducendo così il gradiente.<br /> 
+Il problema del vanishing gradient è dato dal fatto che la funzione di attivazione è una funzione logistica la cui derivata raggiunge al massimo il valore di $\frac{1}{4}$. Di conseguenza, ogni propagazione dell'errore ad un layer precedente vi aggiunge un valore moltiplicativo, spesso molto minore di $1$, riducendo così il gradiente, per via della chain rule delle derivate.<br /> 
 Una soluzione possibile sta nel modificare leggermente la funzione di attivazione in modo che sia sempre crescente. Alcuni candidati di funzione di attivazione proposti in letteratura sono la **ramp function** e la **softplus function**.<br />
 
 ![[images/relu.png]]
 
 Un approccio completamente diverso è si basa sul costruire il network **layer a layer**.<br />
-Una tecnica molto usata è quella di pensare al network come una pila di **autoencoder**. Un autoencoder è un MLP che mappa il suo input in una sua approssimazione, utilizzando un hidden layer di dimensioni minori. Il layer nascosto funge da encoder per la codifica dell'input in una sua rappresentazione interna che è a sua volta decodificata dal layer di output. L'autoencoder, avendo un solo layer, non soffre delle stesse limitazioni e può essere allenato attraverso la normale backpropagation. Un problema con questo approccio è che se ci sono tanti neuroni negli hidden layer quanti quelli di input si rischia di propagare con minori aggiustamenti il segnale senza che l'autoencoder estragga alcuna informazione utile dal dato.<br />
+Una tecnica molto usata è quella di pensare al network come una pila di **autoencoder**. Un autoencoder non è altro che un MLP il quale mappa il suo input in una sua approssimazione, utilizzando un hidden layer di dimensioni minori. Il layer nascosto funge da encoder per la codifica dell'input in una sua rappresentazione interna, che è a sua volta decodificata dal layer di output. L'autoencoder, avendo un solo layer, non soffre delle stesse limitazioni e può essere allenato attraverso la normale backpropagation.<br />
+Un problema con questo approccio è che se ci sono tanti neuroni negli hidden layer quanti quelli di input si rischia di propagare con minori aggiustamenti il segnale senza che l'autoencoder estragga alcuna informazione utile dal dato.<br />
 Per questo problema esistono tre principali soluzioni:
 - **Sparse autoencoder**, il quale prevede di utilizzare un numero molto minore di neuroni nel hidden layer, rispetto a quelli di input. L'autoencoder sarà così costretto ad estrarre dall'input qualche feature interessante al posto di propagare semplicemente il dato;
-- **Sparse activation scheme**, nel quale, in modo simile a quanto si faceva per evitare l'overfitting, si decide di disattivare alcuni neuroni durante la computazione;
-- **Denoising autoencoder**, nel quale si aggiunge randomicamente rumore all'input.
+- **Sparse activation scheme**, nel quale, in modo simile a quanto veniva fatto per evitare l'overfitting, si decide di disattivare alcuni neuroni durante la computazione;
+- **Denoising autoencoder**, nel quale si aggiunge rumore (variazioni randomiche) all'input.
 
 Per ottenere un MLP con molteplici layer si combinano diversi autoencoder.<br />
 Inizialmente si allena un singolo autoencoder. A quel punto si rimuove il decoder e viene conservato solo il layer interno. Si utilizzano, quindi, i dati preprocessati da questo primo autoencoder per allenarne un secondo, e così via fino al raggiungimento di un numero soddisfacente di layer. I MLP costruiti in questo modo sono risultati molto efficaci nel riconoscere con successo numeri scritti a mano.<br />
@@ -516,22 +517,21 @@ $$k = \infty: \text{Maximum distance, ovvero } d(\mathbf{w},\mathbf{v})_\infty =
 
 Un modo utile di visualizzare queste funzioni è quello di vedere che forma assume un cerchio a seconda delle varie metriche (vedi Figura [15](#fig:16){reference-type="ref" reference="fig:16"}). La ragione è che un cerchio è definito come quell'insieme di punti che stanno alla stessa distanza da un dato punto. Variando la definizione di distanza, varia la forma che assume il cerchio nei diversi spazi. Passando ora a considerare $f_{act}$ avremo, nel caso dei neuroni di output, una funzione lineare. Invece, per i neuroni del hidden layer avremo una funzione monotona decrescente tale che:
 $$f: \mathbb{R}^{+} \to [0,1] \quad \text{con} \quad f(0) = 1 \quad \text{e} \quad \lim_{x \to \infty} f(x) = 0$$
-Questa funzione calcola l'area in cui il neurone focalizza la propria attenzione definita dal raggio di riferimento $\sigma$. I vari parametri e la forma della funzione determinano l'ampiezza di questa area. Le funzioni più utilizzate per determinare l'area di attivazione sono quelle riportate in Figura [16](#fig:17){reference-type="ref"
-reference="fig:17"}.
+Questa funzione calcola l'area in cui il neurone focalizza la propria attenzione definita dal raggio di riferimento $\sigma$. I vari parametri e la forma della funzione determinano l'ampiezza di questa area. Le funzioni più utilizzate per determinare l'area di attivazione sono quelle riportate nella figura sottostante.
 
 ![[images/act_rbf.png]]
 
-Come esempio, applichiamo un RBFN per simulare una congiunzione booleana. Un network che risolve il problema è quello costituito da un singolo neurone hidden, il cui vettore dei pesi (il centro della funzione radiale) è esattamente il punto in cui in output vorremo il valore *vero*, ovvero (1,1). Il raggio $\sigma$ sarà posto a $\frac{1}{2}$ e verrà codificato nel threshold del neurone. La funzione di distanza usata è quella euclidea e come $f_{act}$ utilizziamo una funzione rettangolare. Il diagramma in Figura
-[17](#fig:18){reference-type="ref" reference="fig:18"} offre una rappresentazione grafica di quanto detto.
+Come esempio, applichiamo un RBFN per simulare una congiunzione booleana. Un network che risolve il problema è quello costituito da un singolo neurone hidden, il cui vettore dei pesi (il centro della funzione radiale) è esattamente il punto in cui in output vorremo il valore *vero*, ovvero (1,1). Il raggio $\sigma$ sarà posto a $\frac{1}{2}$ e verrà codificato nel threshold del neurone. La funzione di distanza usata è quella euclidea e come $f_{act}$ utilizziamo una funzione rettangolare.
 
 ![[images/and_rbf.png]]
 
-In generale, un RBFN ha lo stesso potere espressivo di un MLP e può essere visto come un approssimatore universale, ovvero può approssimare (con errore arbitrariamente piccolo) una qualsiasi funzioni Riemann-integrabile. Il procedimento è lo stesso che nel caso degli altri network: la funzione viene approssimata da una funzione a scalini che può essere calcolata facilmente da una funzione radiale se la definiamo come la somma pesata di funzioni rettangolari. L'approssimazione può essere migliorata aumentando il numero dei punti in cui si valuta la funzione. Inoltre, se al posto della funzione rettangolare, viene utilizzata una funzione Gaussiana possiamo ottenere delle transizioni più \"morbide\" evitando bruschi salti.
+In generale, un RBFN ha lo stesso potere espressivo di un MLP e può essere visto come un approssimatore universale, ovvero può approssimare (con errore arbitrariamente piccolo) una qualsiasi funzioni Riemann-integrabile. Il procedimento è lo stesso che nel caso degli altri network: la funzione viene approssimata da una funzione a scalini che può essere calcolata facilmente da una funzione radiale se la definiamo come la somma pesata di funzioni rettangolari. Ciascuna delle funzioni rettangolari avrà un dominio $\rightarrow [0,1]$ ed il peso applicato corrisponde all'altezza della funzione a livello del primo scalino.<br />
+L'approssimazione può essere migliorata aumentando il numero dei punti in cui si valuta la funzione. Inoltre, se al posto della funzione rettangolare, viene utilizzata una funzione Gaussiana possiamo ottenere delle transizioni più morbide evitando bruschi salti.
 
 ----------------------------------------------------------------
 
 #### Training delle RBFN ####
-Se negli altri ANN la fase di inizializzazione era triviale, in quanto bastava scegliere valori in modo casuale, quando si tratta di RBFN lo stesso approccio conduce a risultati subottimali. Consideriamo, quindi, il caso speciale delle *simple radial basis function network*, dove ogni esempio di apprendimento viene associato ad una propria funzione radiale. Dato un fixed learning task $L = \{l_1,\dots,l_m\}$, avente $m$ pattern $l = (\mathbf{i}^l,\mathbf{o}^l)$, definiremo il vettore dei pesi associato al neurone $v_k$ come:
+Se negli altri ANN la fase di inizializzazione era triviale, in quanto bastava scegliere valori in modo casuale, quando si tratta di RBFN lo stesso approccio conduce a risultati subottimali. Si consideri, quindi, il caso speciale delle **simple radial basis function network**, dove ogni esempio di apprendimento viene associato ad una propria funzione radiale. Dato un fixed learning task $L = \{l_1,\dots,l_m\}$, avente $m$ pattern $l = (\mathbf{i}^l,\mathbf{o}^l)$, si definisce il vettore dei pesi associato al neurone $v_k$ come:
 
 $$\forall k \in \{1,\dots,m\}: \mathbf{w}_{v_k} = \mathbf{i}_k$$
 
@@ -539,17 +539,25 @@ Assumendo una funzione di attivazione gaussiana, il raggio $\sigma_k$ è inizial
 
 $$\forall k \in \{1,\dots,m\}: \sigma_k = \frac{d_{max}}{\sqrt{2m}}$$
 
-Dove $d_{max}$ è la massima distanza tra i vettori di input. Questa scelta permette di centrare le varie gaussiane in modo che non si sovrappongano l'una all'altra, ma si distribuiscano in modo ordinato rispetto allo spazio di input. Per quanto riguarda, invece, i pesi dei neuroni di output, vengono calcolati secondo la seguente funzione:
-$$\forall u: \sum_{k=1}^m w_{u_k} out_{u_k} - \theta  = o_u$$ Ponendo $\theta = 0$, avremo che la precedente equazione è equivalente a:
-$$\mathbf{A}\cdot \mathbf{w}_u = \mathbf{o}_u$$ Dove $\mathbf{A}$ è la matrice $m \times m$ che ha come componenti i vari output dei neuroni nel hidden layer. Se la matrice $\mathbf{A}$ ha rango completo, possiamo invertirla e calcolare il vettore dei pesi come segue:
-$$\mathbf{w}_u = \mathbf{A}^{-1}\cdot \mathbf{o}_u$$Questo metodo garantisce una perfetta approssimazione. Non è necessario, quindi, allenare un simple radial basis function network. In generale, se non
-vogliamo avere per ogni training pattern un neurone, dovremo selezionare $k$ sottoinsiemi del dataset e trovare, per ogni sottoinsieme, un rappresentante che assoceremo ad un neurone nel layer hidden. In analogia a quanto accade nel caso \"semplice\" avremo una matrice $\mathbf{A}$ di dimensione $m\times (k+1)$ con i valori in output dei vari neuroni nel hidden layer. Dato che la matrice non è quadrata, non è possibile calcolarne l'inversa come avevamo fatto in precedenza. Tuttavia, esiste una alternativa chiamata la *matrice pseudo-inversa*[^4] che permette di completare il calcolo con una buona approssimazione. Ovviamente, l'accuratezza del network costruito in questo modo dipenderà dalla precisione con cui si scelgano i rappresentati delle varie sottoclassi del dataset. Esistono vari metodi per fare questo: 
-- Scegliamo tutti i punti del dataset come centri. In questo caso ricadiamo nel caso \"semplice\" e i valori di output possono essere calcolati precisamente. Tuttavia, il calcolo dei pesi può risultare infattibile;
-- Costruiamo un sottoinsieme randomico per rappresentare i centri. Questo metodo ha il pregio di essere facilmente calcolabile. La performance, però, dipenderà dalla fortuna di scegliere dei \"buoni\" centri;
-- Utilizziamo un algoritmo di clustering (c-means clustering,learning vector quantization..).
+dove $d_{max}$ è la massima distanza tra i vettori di input. Questa scelta permette di centrare le varie gaussiane in modo che non si sovrappongano l'una all'altra in maniera eccessiva, ma si distribuiscano in modo relativamente ordinato rispetto allo spazio di input. Per quanto riguarda, invece, i pesi dei neuroni di output, vengono calcolati secondo la seguente funzione:
 
-L'algoritmo c-means sceglie randomicamente $c$ centri di altrettanti cluster. Quindi il dataset viene partizionato in $c$ sottoclassi a seconda della vicinanza ai vari centri. In un passo successivo si calcola il \"centro di gravità\" del cluster così trovato e lo si elegge come nuovo centro. Si ricomputa l'appartenza dei punti del dataset e si
-procede così fino a che i centri smettono di oscillare.
+$$\forall u: \sum_{k=1}^m w_{u_k} out_{u_k} - \theta  = o_u$$
+
+Ponendo $\theta = 0$, si otterrà che la precedente equazione è equivalente a:
+
+$$\mathbf{A}\cdot \mathbf{w}_u = \mathbf{o}_u$$
+
+dove $\mathbf{A}$ è la matrice $m \times m$ che ha come componenti i vari output dei neuroni nel hidden layer. Se la matrice $\mathbf{A}$ ha rango completo, è possibile invertirla e calcolare il vettore dei pesi come segue:
+
+$$\mathbf{w}_u = \mathbf{A}^{-1}\cdot \mathbf{o}_u$$
+
+Questo metodo garantisce una perfetta approssimazione. Non è necessario, quindi, allenare un simple radial basis function network.<br />
+In generale, se non si desidera avere un neurone per ogni training pattern, sarà necessario selezionare $k$ sottoinsiemi del dataset e trovare, per ogni sottoinsieme, un rappresentante che verrà associato ad un neurone nel layer hidden. In analogia a quanto accade nel caso del simple RBFN, si avrà una matrice $\mathbf{A}$ di dimensione $m\times (k+1)$ con i valori in output dei vari neuroni nel hidden layer. Dato che la matrice non è quadrata, non è possibile calcolarne l'inversa come avevamo fatto in precedenza. Tuttavia, esiste una alternativa chiamata la **matrice pseudo-inversa**, la quale permette di completare il calcolo con una buona approssimazione. Ovviamente, l'accuratezza del network costruito in questo modo dipenderà dalla precisione con cui verranno scelti i rappresentati delle varie sottoclassi del dataset. Esistono vari metodi per effettuare questa scelta: 
+- si scelgono tutti i punti del dataset come centri. In questo caso si ricade nel caso semplice e i valori di output possono essere calcolati precisamente. Tuttavia, il calcolo dei pesi può risultare infattibile in termini di complessità;
+- si costruisce un sottoinsieme randomico per rappresentare i centri. Questo metodo ha il pregio di essere facilmente calcolabile. La performance, però, dipenderà dalla fortuna di scegliere dei buoni candidati per essere centri;
+- si utilizza un algoritmo di clustering (c-means clustering,learning vector quantization..).
+
+L'algoritmo **c-means** sceglie randomicamente $c$ centri di altrettanti cluster. Quindi il dataset viene partizionato in $c$ sottoclassi, a seconda della vicinanza ai vari centri. In un passo successivo si calcola il centro di gravità del cluster così trovato e lo si elegge come nuovo centro. Si ricomputa, quindi, l'appartenza dei punti del dataset e si procede così fino a che i centri smettono di oscillare.
 
 La fase di training avviene come nel caso dei MLP attraverso gradient descent e backpropagation.
 
