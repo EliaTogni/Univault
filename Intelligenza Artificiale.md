@@ -508,11 +508,16 @@ Durante la computazione si procederà poi ad ampliare il **campo ricettivo** sul
 
 ### Radial basis function network ###
 I cosiddetti **radial basis function network** (in seguito RBFN) sono feed-forward network aventi tre layer di neuroni nei quali i neuroni di input ed i neuroni hidden sono sempre totalmente connessi.<br />
-Le RBFN sono strutture alternative rispetto ai classici MLP. La differenza principale sta nella diversa scelta riguardo la funzione di input e di attivazione. Se, nel caso dei MLP, veniva impiegata una funzione sigmoide come $f_{act}$, ora si utilizzerà una funzione radiale di base. La $f_{act}$ di ciascun neurone di ouput è una funzione lineare 
+Le RBFN sono strutture alternative rispetto ai classici MLP. La differenza principale sta nella diversa scelta riguardo la funzione di input e di attivazione. Se, nel caso dei MLP, veniva impiegata una funzione sigmoide come $f_{act}$, ora si utilizzerà una funzione radiale di base.
+Questa funzione è una funzione monotona decrescente tale che:
+
+$$f: \mathbb{R}^{+} \to [0,1] \quad \text{con} \quad f(0) = 1 \quad \text{e} \quad \lim_{x \to \infty} f(x) = 0$$
+
+La $f_{act}$ di ciascun neurone di ouput è una funzione lineare 
 
 $$f_{act}^{(u)}(net_{u}, \theta_{u}) = net_{u} - \theta_{u}$$
 
-mentre la $f_{net}$ dei neuroni di output è la somma pesata dei loro input, come in precedenza. Invece, per i neuroni nel hidden layer si avrà che la $f_{net}$ sarà una funzione di distanza calcolata tra il vettore di input e il vettore dei pesi.
+mentre la $f_{net}$ dei neuroni di output è la somma pesata dei loro input, come in precedenza. Invece, per i neuroni nell' hidden layer si avrà che la $f_{net}$ sarà una funzione di distanza calcolata tra il vettore di input e il vettore dei pesi.
 
 $$\forall u \in U_{hidden}: f_{net}^{(u)}(\textbf{w}_{u}, \textbf{in}_{u}) = d(\textbf{w}_{u}, \textbf{in}_{u})$$
 
@@ -533,21 +538,18 @@ $$k = \infty: \text{Maximum distance, ovvero } d(\mathbf{w},\mathbf{v})_\infty =
 
 ![[images/circle.png]]
 
-Un modo utile di visualizzare queste funzioni è quello di vedere che forma assume il luogo dei punti equidistanti dal centro, a seconda delle varie metriche. Variando la definizione di distanza, varia la forma che assume la figura nei diversi spazi.<br />
-Passando ora a considerare $f_{act}$, si avrà, nel caso dei  neuroni del hidden layer, una funzione monotona decrescente tale che:
-
-$$f: \mathbb{R}^{+} \to [0,1] \quad \text{con} \quad f(0) = 1 \quad \text{e} \quad \lim_{x \to \infty} f(x) = 0$$
-
-Questa funzione calcola l'area in cui il neurone focalizza la propria attenzione definita dal raggio di riferimento $\sigma$. I vari parametri e la forma della funzione determinano l'ampiezza di questa area. Le funzioni più utilizzate per determinare l'area di attivazione sono quelle riportate nella figura sottostante.
+Un modo utile di visualizzare queste funzioni è quello di vedere che forma assume il luogo dei punti equidistanti dal centro, a seconda delle varie metriche. Variando la definizione di distanza, ovvero il raggio, varia la forma che assume la figura nei diversi spazi.<br />
+La funzione di attivazione dei neuroni hidden calcola l'area in cui il neurone focalizza la propria attenzione, definita dal raggio di riferimento $\sigma$. I vari parametri e la forma della funzione determinano l'ampiezza di questa area. Il nome attribuitogli, **funzione radiale**, deriva dal fatto che la funzione viene2 definita intorno ad un raggio e da un centro, descritto dal vettore dei pesi. Questa funzione assegna quindi ad ogni raggio un'attivazione. <br />
+Le funzioni più utilizzate per determinare l'area di attivazione sono quelle riportate nella figura sottostante.
 
 ![[images/act_rbf.png]]
 
-Come esempio, applichiamo un RBFN per simulare una congiunzione booleana. Un network che risolve il problema è quello costituito da un singolo neurone hidden, il cui vettore dei pesi (il centro della funzione radiale) è esattamente il punto in cui in output vorremo il valore *vero*, ovvero (1,1). Il raggio $\sigma$ sarà posto a $\frac{1}{2}$ e verrà codificato nel threshold del neurone. La funzione di distanza usata è quella euclidea e come $f_{act}$ utilizziamo una funzione rettangolare.
+Come esempio, viene applicato un RBFN per simulare una congiunzione booleana. Un network che risolve il problema è quello costituito da un singolo neurone hidden, il cui vettore dei pesi (il centro della funzione radiale) è esattamente il punto in cui in output sarebbe desiderabile il valore *vero*, ovvero (1,1). Il raggio $\sigma$ sarà posto a $\frac{1}{2}$ e verrà codificato nel threshold del neurone. La funzione di distanza usata è quella euclidea e come $f_{act}$ si impiega una funzione rettangolare.
 
 ![[images/and_rbf.png]]
 
-In generale, un RBFN ha lo stesso potere espressivo di un MLP e può essere visto come un approssimatore universale, ovvero può approssimare (con errore arbitrariamente piccolo) una qualsiasi funzioni Riemann-integrabile. Il procedimento è lo stesso che nel caso degli altri network: la funzione viene approssimata da una funzione a scalini che può essere calcolata facilmente da una funzione radiale se la definiamo come la somma pesata di funzioni rettangolari. Ciascuna delle funzioni rettangolari avrà un dominio $\rightarrow [0,1]$ ed il peso applicato corrisponde all'altezza della funzione a livello del primo scalino.<br />
-L'approssimazione può essere migliorata aumentando il numero dei punti in cui si valuta la funzione. Inoltre, se al posto della funzione rettangolare, viene utilizzata una funzione Gaussiana possiamo ottenere delle transizioni più morbide evitando bruschi salti.
+In generale, un RBFN ha lo stesso potere espressivo di un MLP e può essere visto come un approssimatore universale, ovvero può approssimare (con errore arbitrariamente piccolo) una qualsiasi funzioni Riemann-integrabile. Il procedimento è lo stesso che nel caso degli altri network: la funzione viene approssimata da una funzione a scalini che può essere calcolata facilmente da una funzione radiale, a condizione di definirla come la somma pesata di funzioni rettangolari. Ciascuna delle funzioni rettangolari avrà un dominio $\rightarrow [0,1]$ ed il peso applicato corrisponderà all'altezza della funzione a livello del primo scalino.<br />
+L'approssimazione può essere migliorata aumentando il numero dei punti in cui si valuta la funzione. Inoltre se, al posto della funzione rettangolare, venisse utilizzata una funzione Gaussiana,  sarebbe possibile ottenere delle transizioni più morbide evitando bruschi salti.
 
 ----------------------------------------------------------------
 
