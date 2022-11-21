@@ -488,23 +488,27 @@ Una soluzione possibile sta nel modificare leggermente la funzione di attivazion
 ![[images/relu.png]]
 
 Un approccio completamente diverso è si basa sul costruire il network **layer a layer**.<br />
-Una tecnica molto usata è quella di pensare al network come una pila di **autoencoder**. Un autoencoder non è altro che un MLP il quale mappa il suo input in una sua approssimazione, utilizzando un hidden layer di dimensioni minori. Il layer nascosto funge da encoder per la codifica dell'input in una sua rappresentazione interna, che è a sua volta decodificata dal layer di output. L'autoencoder, avendo un solo layer, non soffre delle stesse limitazioni e può essere allenato attraverso la normale backpropagation.<br />
+Una tecnica molto usata è quella di pensare al network come una pila di **autoencoder**. Un autoencoder non è altro che un three-layer perceptron il quale mappa il suo input in una sua approssimazione, utilizzando un hidden layer di dimensioni minori. Il layer nascosto funge da encoder per la codifica dell'input in una sua rappresentazione interna, che è a sua volta decodificata dal layer di output. L'autoencoder, avendo un solo layer, non soffre delle stesse limitazioni e può essere allenato attraverso la normale backpropagation.<br />
 Un problema con questo approccio è che se ci sono tanti neuroni negli hidden layer quanti quelli di input si rischia di propagare con minori aggiustamenti il segnale senza che l'autoencoder estragga alcuna informazione utile dal dato.<br />
 Per questo problema esistono tre principali soluzioni:
 - **Sparse autoencoder**, il quale prevede di utilizzare un numero molto minore di neuroni nel hidden layer, rispetto a quelli di input. L'autoencoder sarà così costretto ad estrarre dall'input qualche feature interessante al posto di propagare semplicemente il dato;
 - **Sparse activation scheme**, nel quale, in modo simile a quanto veniva fatto per evitare l'overfitting, si decide di disattivare alcuni neuroni durante la computazione;
-- **Denoising autoencoder**, nel quale si aggiunge rumore (variazioni randomiche) xitall'input.
+- **Denoising autoencoder**, nel quale si aggiunge rumore (variazioni randomiche) all'input.
 
-Per ottenere un MLP con molteplici layer si combinano diversi autoencoder.<br />
-Inizialmente si allena un singolo autoencoder. A quel punto si rimuove il decoder e viene conservato solo il layer interno. Si utilizzano, quindi, i dati preprocessati da questo primo autoencoder per allenarne un secondo, e così via fino al raggiungimento di un numero soddisfacente di layer interni. I MLP costruiti in questo modo sono risultati molto efficaci nel riconoscere con successo numeri scritti a mano.<br />
+Per ottenere un MLP con molteplici layer, si combinano diversi autoencoder.<br />
+Inizialmente si allena un singolo autoencoder. A quel punto si rimuove il layer decoder e si conserva solo il layer interno. Si utilizzano, quindi, i dati preprocessati da questo primo autoencoder nella sua interezza per allenarne un secondo, e così via fino al raggiungimento di un numero soddisfacente di layer interni.<br />
+I MLP costruiti in questo modo sono risultati molto efficaci nel riconoscere con successo numeri scritti a mano.<br />
 Se si volessero utilizzare network simili per una più ampia classe di applicazioni, dove, per esempio, le feature riconosciute dai layer interni non sono localizzate in una porzione specifica dell'immagine, sarebbe necessario rivolgersi alle **convolutional neural network** (in seguito CNN).<br />
 Questa architettura è ispirata al funzionamento della retina umana, in cui i neuroni adibiti alla percezione hanno un campo ricettivo, ossia una limitata regione in cui rispondono agli stimoli. Questo campo ricettivo viene simulato nelle CNN connettendo ogni neurone del primo hidden layer ad un piccolo numero di neuroni di input, i quali fanno riferimento ad una regione contigua dell'immagine di input. I pesi vengono condivisi in modo tale che i vari network parziali possano essere valutati da differenti prospettive dell'immagine. Il campo di imput è shiftato step by step per coprire tutta l'immagine.<br />
-Durante la computazione si procederà poi ad ampliare il **campo ricettivo** sulla totalità dell'immagine. RIVEDERE(Come risultato si ottiene una convoluzione della matrice dei pesi con l'immagine in input.)
+I neuroni nei layer successivi applicano il max pooling su regioni di piccole dimensioni, dove con max pooling si definisce una delle tecniche con la quale si effettua il downsampling della mappa delle feature tramite un riassunto delle feature presenti in una sezione dell'immagine.<br />
+Questo pooling permette di conservare la conoscenza ottenuta riguardo le features senza considerare la posizione nell'immagine in cui è stata acquisita.
+Durante la computazione si procederà poi ad ampliare il **campo ricettivo** sulla totalità dell'immagine.
 
 ----------------------------------------------------------------
 
 ### Radial basis function network ###
-I cosiddetti **radial basis function network** (in seguito RBFN) sono feed-forward network aventi tre layer di neuroni. Sono strutture alternative rispetto ai classici MLP. La differenza principale sta nella diversa scelta riguardo la funzione di attivazione. Se nel caso degli MLP avevamo una funzione sigmoide, ora avremo una funzione radiale di base [^3]. La $f_{net}$ dei neuroni di output è la somma pesata dei loro input, come in precedenza. Invece, per i neuroni nel hidden layer avremo che $f_{net}$ sarà uguale alla distanza tra il vettore di input e il vettore dei pesi. La funzione distanza che sceglieremo sarà una metrica in senso geometrico, e, per tanto, deve rispettare i seguenti tre assiomi:
+I cosiddetti **radial basis function network** (in seguito RBFN) sono feed-forward network aventi tre layer di neuroni nei quali i neuroni di input ed i neuroni hidden sono sempre totalmente connessi.<br />
+Le RBFN sono strutture alternative rispetto ai classici MLP. La differenza principale sta nella diversa scelta riguardo la funzione di input e di attivazione. Se nel caso dei MLP veniva impiegata una funzione sigmoide, ora si utilizzerà una funzione radiale di base. La $f_{net}$ dei neuroni di output è la somma pesata dei loro input, come in precedenza. Invece, per i neuroni nel hidden layer si avrà che la\ $f_{net}$ sarà uguale alla distanza tra il vettore di input e il vettore dei pesi. La funzione distanza che verrà scelta sarà una metrica in senso geometrico, e, per tanto, dovrà rispettare i seguenti tre assiomi:
 $$d(\mathbf{w},\mathbf{v}) = 0 \leftrightarrow \mathbf{w}= \mathbf{v}$$
 $$d(\mathbf{w},\mathbf{v}) = d(\mathbf{v},\mathbf{w})$$
 $$d(\mathbf{w},\mathbf{e}) + d(\mathbf{e},\mathbf{v}) \geq d(\mathbf{w},\mathbf{v})$$
@@ -516,7 +520,8 @@ $$k = \infty: \text{Maximum distance, ovvero } d(\mathbf{w},\mathbf{v})_\infty =
 
 ![[images/circle.png]]
 
-Un modo utile di visualizzare queste funzioni è quello di vedere che forma assume un cerchio a seconda delle varie metriche (vedi Figura [15](#fig:16){reference-type="ref" reference="fig:16"}). La ragione è che un cerchio è definito come quell'insieme di punti che stanno alla stessa distanza da un dato punto. Variando la definizione di distanza, varia la forma che assume il cerchio nei diversi spazi. Passando ora a considerare $f_{act}$ avremo, nel caso dei neuroni di output, una funzione lineare. Invece, per i neuroni del hidden layer avremo una funzione monotona decrescente tale che:
+Un modo utile di visualizzare queste funzioni è quello di vedere che forma assume il luogo dei punti equidistanti dal centro, a seconda delle varie metriche. Variando la definizione di distanza, varia la forma che assume la figura nei diversi spazi.<br />
+Passando ora a considerare $f_{act}$ si avrà nel caso dei neuroni di output, una funzione lineare. Invece, per i neuroni del hidden layer si avrà una funzione monotona decrescente tale che:
 $$f: \mathbb{R}^{+} \to [0,1] \quad \text{con} \quad f(0) = 1 \quad \text{e} \quad \lim_{x \to \infty} f(x) = 0$$
 Questa funzione calcola l'area in cui il neurone focalizza la propria attenzione definita dal raggio di riferimento $\sigma$. I vari parametri e la forma della funzione determinano l'ampiezza di questa area. Le funzioni più utilizzate per determinare l'area di attivazione sono quelle riportate nella figura sottostante.
 
@@ -536,11 +541,13 @@ Se negli altri ANN la fase di inizializzazione era triviale, in quanto bastava s
 
 $$\forall k \in \{1,\dots,m\}: \mathbf{w}_{v_k} = \mathbf{i}_k$$
 
+La rete è composta da $m$ neuroni nell'hidden layer in quanto ciascuno di quei neuroni verrà allenato per riconoscere uno degli $m$ pattern forniti nel training.
 Assumendo una funzione di attivazione gaussiana, il raggio $\sigma_k$ è inizializzato in accordo a questa euristica:
 
 $$\forall k \in \{1,\dots,m\}: \sigma_k = \frac{d_{max}}{\sqrt{2m}}$$
 
-dove $d_{max}$ è la massima distanza tra i vettori di input. Questa scelta permette di centrare le varie gaussiane in modo che non si sovrappongano l'una all'altra in maniera eccessiva, ma si distribuiscano in modo relativamente ordinato rispetto allo spazio di input. Per quanto riguarda, invece, i pesi dei neuroni di output, vengono calcolati secondo la seguente funzione:
+dove $d_{max}$ è la massima distanza tra i vettori di input di due training pattern (calcolata utilizzando la funzione di input scelta per i neuroni hidden).
+Questa scelta permette di centrare le varie gaussiane in modo che non si sovrappongano l'una all'altra in maniera eccessiva, ma si distribuiscano in modo relativamente ordinato rispetto allo spazio di input. Per quanto riguarda, invece, i pesi dei neuroni di output, vengono calcolati secondo la seguente funzione:
 
 $$\forall u: \sum_{k=1}^m w_{u_k} out_{u_k} - \theta  = o_u$$
 
