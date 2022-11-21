@@ -508,12 +508,25 @@ Durante la computazione si procederà poi ad ampliare il **campo ricettivo** sul
 
 ### Radial basis function network ###
 I cosiddetti **radial basis function network** (in seguito RBFN) sono feed-forward network aventi tre layer di neuroni nei quali i neuroni di input ed i neuroni hidden sono sempre totalmente connessi.<br />
-Le RBFN sono strutture alternative rispetto ai classici MLP. La differenza principale sta nella diversa scelta riguardo la funzione di input e di attivazione. Se nel caso dei MLP veniva impiegata una funzione sigmoide, ora si utilizzerà una funzione radiale di base. La $f_{net}$ dei neuroni di output è la somma pesata dei loro input, come in precedenza. Invece, per i neuroni nel hidden layer si avrà che la\ $f_{net}$ sarà uguale alla distanza tra il vettore di input e il vettore dei pesi. La funzione distanza che verrà scelta sarà una metrica in senso geometrico, e, per tanto, dovrà rispettare i seguenti tre assiomi:
+Le RBFN sono strutture alternative rispetto ai classici MLP. La differenza principale sta nella diversa scelta riguardo la funzione di input e di attivazione. Se, nel caso dei MLP, veniva impiegata una funzione sigmoide come $f_{act}$, ora si utilizzerà una funzione radiale di base. La $f_{act}$ di ciascun neurone di ouput è una funzione lineare 
+
+$$f_{act}^{(u)}(net_{u}, \theta_{u}) = net_{u} - \theta_{u}$$
+
+mentre la $f_{net}$ dei neuroni di output è la somma pesata dei loro input, come in precedenza. Invece, per i neuroni nel hidden layer si avrà che la $f_{net}$ sarà una funzione di distanza calcolata tra il vettore di input e il vettore dei pesi.
+
+$$\forall u \in U_{hidden}: f_{net}^{(u)}(\textbf{w}_{u}, \textbf{in}_{u}) = d(\textbf{w}_{u}, \textbf{in}_{u})$$
+
+dove la funzione distanza che verrà scelta sarà una **metrica** in senso geometrico, e, per tanto, dovrà rispettare i seguenti tre assiomi:
+
 $$d(\mathbf{w},\mathbf{v}) = 0 \leftrightarrow \mathbf{w}= \mathbf{v}$$
 $$d(\mathbf{w},\mathbf{v}) = d(\mathbf{v},\mathbf{w})$$
 $$d(\mathbf{w},\mathbf{e}) + d(\mathbf{e},\mathbf{v}) \geq d(\mathbf{w},\mathbf{v})$$
+La funzione di input e la funzione di attivazione descrivono una sorta di **regione di utenza** per il neurone. I pesi delle connessioni dall'input layer al neurone dell'hidden layer definiscono il centro di questa regione poichè la distanza è misurata tra il vettore dei pesi ed il vettore di input. <br />
+La tipologia di funzione di distanza determina la forma di questo bacino di utenza.<br />
 Una famiglia di funzioni usate spesso nelle applicazioni è quella formulata dal matematico prussiano Hermann Minkowski e battezzata in suo onore famiglia di Minkowski. Tale famiglia è definita come:
+
 $$d(\mathbf{w},\mathbf{v})_k = (\sum (w_i - v_i)^k)^{\frac{1}{k}}$$
+
 Alcuni esempi famosi di funzioni appartenenti alla famiglia sono:
 $$k = 1: \text{Manhattan distance}$$ $$k=2:\text{Euclidian distance}$$
 $$k = \infty: \text{Maximum distance, ovvero } d(\mathbf{w},\mathbf{v})_\infty = max |w_i - v_i|$$
@@ -521,8 +534,10 @@ $$k = \infty: \text{Maximum distance, ovvero } d(\mathbf{w},\mathbf{v})_\infty =
 ![[images/circle.png]]
 
 Un modo utile di visualizzare queste funzioni è quello di vedere che forma assume il luogo dei punti equidistanti dal centro, a seconda delle varie metriche. Variando la definizione di distanza, varia la forma che assume la figura nei diversi spazi.<br />
-Passando ora a considerare $f_{act}$ si avrà nel caso dei neuroni di output, una funzione lineare. Invece, per i neuroni del hidden layer si avrà una funzione monotona decrescente tale che:
+Passando ora a considerare $f_{act}$, si avrà, nel caso dei  neuroni del hidden layer, una funzione monotona decrescente tale che:
+
 $$f: \mathbb{R}^{+} \to [0,1] \quad \text{con} \quad f(0) = 1 \quad \text{e} \quad \lim_{x \to \infty} f(x) = 0$$
+
 Questa funzione calcola l'area in cui il neurone focalizza la propria attenzione definita dal raggio di riferimento $\sigma$. I vari parametri e la forma della funzione determinano l'ampiezza di questa area. Le funzioni più utilizzate per determinare l'area di attivazione sono quelle riportate nella figura sottostante.
 
 ![[images/act_rbf.png]]
