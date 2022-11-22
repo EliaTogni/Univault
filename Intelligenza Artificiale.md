@@ -4,42 +4,14 @@ Dato un qualunque sistema, se si dispone di un insieme di leggi o regole che lo 
 2. può essere disponibile solamente in maniera parziale, cioè si possiede una conoscenza approssimata di essa.
  
 L'**Intelligenza Artificiale** nasce con lo scopo di estrarre questa conoscenza direttamente dai dati a disposizione attraverso strumenti automatici.<br />
-Questa tecnica si differenzia rispetto alla descrizione a priori del sistema, in quanto lo simula per comprenderne a posteriori il suo comportamento. Per fare ciò, è stato utile studiare come gli esseri viventi interagiscano con l'ambiente circostante e come vi si adattino.<br />
-Vari modelli di intelligenza artificiale sono stati proposti lungo la storia della disciplina.<br />
-Una categorizzazione preliminare che si fa in letteratura è quella tra due tipi di modelli:
+Questa tecnica si differenzia rispetto alla descrizione a priori del sistema in quanto simula quest'ultimo al fine di comprenderne a posteriori il suo comportamento. Per fare ciò, è stato utile studiare come gli esseri viventi interagiscano con l'ambiente circostante e come vi si adattino.<br />
+Vari modelli di intelligenza artificiale sono stati proposti lungo la storia della disciplina ed una categorizzazione preliminare che si fa in letteratura è quella tra due tipi di modelli:
 - **modelli simbolici**, in cui i dati vengono sottoposti a codifica e solo dopo manipolati. Storicamente questo è stato il primo approccio adottato;
-- **modelli pre-simbolici**, in cui i dati vengono manipolati direttamente, senza la mediazione di una codifica. Fanno parte di questa famiglia: le reti neurali, i sistemi fuzzy e gli algoritmi evolutivi.
+- **modelli pre-simbolici**, in cui i dati vengono manipolati direttamente, senza la mediazione di una codifica. Fanno parte di questa famiglia le reti neurali, i sistemi fuzzy e gli algoritmi evolutivi.
 
 ----------------------------------------------------------------
 
 ## Reti neurali ##
-
-### Background biologico ###
-Il sistema nervoso degli animali consiste del cervello, dei differenti sistemi sensoriali, i quali collezionano informazioni dalle differenti parti del corpo, ed il sistema motorio, il quale controlla i movimenti.<br />
-La parte principale del processing di informazioni avviene nel cervello e nel sistema nervoso centrale.<br />
-Il cervello umano permette di analizzare in maniera sofisticata l'ambiente in cui si trova per agire nella maniera ritenuta migliore possibile. Tali analisi sono basate sul funzionamento del cervello stesso, su come esso estrae informazioni e su come quest'ultime interagiscano con le informazioni contenute in memoria, etc.<br />
-Lo studio di questi processi è un campo di ricerca molto attivo e multidisciplinare nel quale convergono gli interessi della biologia, della medicina e della psicologia. Tali studi offrono dei modelli che simulano l'attività celebrale. Proprio questi modelli vengono poi utilizzati dall'informatica per offrire strumenti di predizione, ottimizzazione e problem-solving in vari campi applicativi (guida automatizzata, smart cities, etc.).<br />
-Il successo di questi modelli è condizionato dal fatto che il cervello è considerabile alla pari di un potente computer capace di computare in parallelo grandi porzioni di dati.
-
-![[images/neurone.jpeg]]
-
-![[Biological neurons.png]]
-
-Il cervello è composto da miliardi semplici unità chiamate **neuroni**. Un neurone è una cellula la quale raccoglie e trasmette attività elettrica. I neuroni esistono in differenti forme e grandezze, ed è possibile risalire ad un neurone "prototipo" dal quale ricondursi a tutti i tipi di neuroni.<br />
-Questi neuroni comunicano tra di loro inviando informazioni sotto forma di segnali di attivazione l'un l'altro, lungo connessioni orientate.<br />
-Il neurone a sua volta è costituito da:
--   il **corpo cellulare**, il quale contiene il nucleo. Viene anche chiamato **Soma**; 
--   i **dendriti**, i quali sono filamenti di scarsa lunghezza e fortemente ramificati, i quali si estendono dal corpo cellulare; 
--   l'**assone**: un lungo filamento che parte dal corpo centrale della cellula.
-
-L'assone e i dendriti differiscono per la struttura e per le proprietà della **membrana cellulare**. In particolare, l'assone è spesso coperto da una **guaina mielinica**.<br />
-Gli assoni sono i percorsi orientati lungo i quali i neuroni comunicano tra di loro e ciascuno di questi assoni conduce ai dendriti di altri neuroni. Alla sua terminazione, l'assone è fortemente ramificato e possiede alla fine di queste ramificazioni dei **bottoni sinaptici** o **bottoni terminali**.<br />
-Ciascun bottone terminale entra quasi a contatto con un dendrite o con il corpo cellulare di un altro neurone. Questo gap che viene a formarsi è chiamato **sinapsi**.<br />
-La più comune forma di comunicazione tra neuroni avviene quando un bottone terminale dell'assone rilascia determinate sostanze chimiche, i **neurotrasmettitori**, i quali agiscono sulla membrana del dendrite ricettore e cambiano la sua polarizzazione. A seconda del tipo di neurotrasmettitore rilasciato, la differenza di potenziale lato dendrite potrebbe essere ridotta oppure aumentata. Le sinapsi che riducono la differenza di potenziale vengono chiamate **eccitatorie** mentre quelle che la incrementano sono chiamate **inibitorie**.<br />
-Il cambiamento del potenziale elettrico causato da una singola sinapsi è poco significativo ma questo effetto può accumularsi (considerando gli stimoli eccitatori come positivi e quelli inibitori come negativi). Se l'input netto eccitatorio è sufficientemente grande, la diffentenza di potenziale nel corpo della cellula può essere ridotto in maniera significativa e, se questa riduzione ha magnitudine sufficiente, la base dell'assone viene depolarizzata.<br />
-Come conseguenza, l'interno della cellula diviene temporaneamente più positivo dell'esterno. L'improvviso cambio di potenziale, denominato **potenziale d'azione**, si propaga lungo l'assone. Quando questo impulso nervoso raggiunge la fine dell'assone, causa il rilascio dei neurotrasmettitori dai bottoni terminali, inducendo, quindi, un cambiamento del potenziale elettrico nel neurone ricettore.<br />
-Nel sistema nervoso umano, l'informazione è codificata da quantità in continuo cambiamento, cioè il potenziale elettrico della membrana di un neurone e il numero di impulsi nervosi che un neurone trasmette per secondo (o **firing rate**).
-
 Le **Artificial Neural Network** sono sistemi di information processing, i cui principi di struttura e azione sono ispirati dal sistema nervoso e dal cervello di animali e umani.<br />
 Esse consistono di un largo numero di unità, le quali lavorano in parallelo.<br />
 Un sinonimo comunemente usato per le reti neurali è il termine **modello connessionista**. Perciò, l'espressione "processing distribuito in parallelo" può spesso essere trovata in relazione alle reti neurali artificiali.<br />
@@ -60,10 +32,38 @@ Piuttosto, le misurazioni necessitano di essere strutturate ed elencate prima di
 
 ----------------------------------------------------------------
 
+### Background biologico ###
+Il sistema nervoso degli animali consiste del cervello, dei differenti sistemi sensoriali, i quali collezionano informazioni dalle differenti parti del corpo, e del sistema motorio, il quale controlla i movimenti.<br />
+La parte principale del processing di informazioni avviene nel cervello e nel sistema nervoso centrale.<br />
+Il cervello umano permette di analizzare in maniera sofisticata l'ambiente in cui si trova per agire nella maniera ritenuta migliore possibile. Tali analisi sono basate sul funzionamento del cervello stesso, su come esso estrae informazioni e su come quest'ultime interagiscano con le informazioni contenute in memoria, etc.<br />
+Lo studio di questi processi è un campo di ricerca molto attivo e multidisciplinare nel quale convergono gli interessi della biologia, della medicina e della psicologia. Tali studi offrono dei modelli che simulano l'attività celebrale. Proprio questi modelli vengono poi utilizzati dall'informatica per offrire strumenti di predizione, ottimizzazione e problem-solving in vari campi applicativi (guida automatizzata, smart cities, etc.).<br />
+Il successo di questi modelli è condizionato dal fatto che il cervello è considerabile alla pari di un potente computer capace di computare in parallelo grandi porzioni di dati.
+
+![[images/neurone.jpeg]]
+
+![[Biological neurons.png]]
+
+Il cervello è composto da miliardi semplici unità, chiamate **neuroni**. Un neurone è una cellula la quale raccoglie e trasmette attività elettrica. I neuroni esistono in differenti forme e grandezze, ed è possibile risalire ad un neurone "prototipo" dal quale ricondursi a tutti i tipi di neuroni.<br />
+Questi neuroni comunicano tra di loro inviando informazioni sotto forma di segnali di attivazione l'un l'altro, lungo connessioni orientate.<br />
+Il neurone a sua volta è costituito da:
+-   il **corpo cellulare**, il quale contiene il nucleo. Viene anche chiamato **soma**; 
+-   i **dendriti**, i quali sono filamenti di scarsa lunghezza e fortemente ramificati, i quali si estendono dal corpo cellulare; 
+-   l'**assone**: un lungo filamento che parte dal corpo centrale della cellula.
+
+L'assone e i dendriti differiscono per la struttura e per le proprietà della **membrana cellulare**. In particolare, l'assone è spesso coperto da una **guaina mielinica**.<br />
+Gli assoni sono i percorsi orientati lungo i quali i neuroni comunicano tra di loro e ciascuno di questi assoni conduce ai dendriti di altri neuroni. Alla sua terminazione, l'assone è fortemente ramificato e possiede alla fine di queste ramificazioni dei **bottoni sinaptici** o **bottoni terminali**.<br />
+Ciascun bottone terminale entra quasi a contatto con un dendrite o con il corpo cellulare di un altro neurone. Questo gap che viene a formarsi è chiamato **sinapsi**.<br />
+La più comune forma di comunicazione tra neuroni avviene quando un bottone terminale dell'assone rilascia determinate sostanze chimiche, i **neurotrasmettitori**, i quali agiscono sulla membrana del dendrite ricettore e cambiano la sua polarizzazione. A seconda del tipo di neurotrasmettitore rilasciato, la differenza di potenziale lato dendrite potrebbe essere ridotta oppure aumentata. Le sinapsi che riducono la differenza di potenziale vengono chiamate **eccitatorie** mentre quelle che la incrementano sono chiamate **inibitorie**.<br />
+Il cambiamento del potenziale elettrico causato da una singola sinapsi è poco significativo ma questo effetto può accumularsi (considerando gli stimoli eccitatori come positivi e quelli inibitori come negativi). Se l'input netto eccitatorio è sufficientemente grande, la differenza di potenziale nel corpo della cellula può essere ridotto in maniera significativa e, se questa riduzione ha magnitudine sufficiente, la base dell'assone viene depolarizzata.<br />
+Come conseguenza, l'interno della cellula diviene temporaneamente più positivo dell'esterno. L'improvviso cambio di potenziale, denominato **potenziale d'azione**, si propaga lungo l'assone. Quando questo impulso nervoso raggiunge la fine dell'assone, causa il rilascio dei neurotrasmettitori dai bottoni terminali, inducendo, quindi, un cambiamento del potenziale elettrico nel neurone ricettore.<br />
+Nel sistema nervoso umano, l'informazione è codificata da quantità in continuo cambiamento, cioè dal potenziale elettrico della membrana di un neurone e dal numero di impulsi nervosi che un neurone trasmette per secondo (o **firing rate**).
+
+----------------------------------------------------------------
+
 ### Threshold logic unit ###
 Come già menzionato, le Artificial Neural Network sono ispirate alla struttura e ai principi secondo cui operano il sistema nervoso ed, in particolare, il cervello di animali ed umani. 
-Per implementare una rete neurale artificiale occorre trovare, quindi, un analogo del neurone. La struttura che emula tale compito viene denominata **threshold logic unit** o **neurone di McCulloch e Pitts**, nel seguito **TLU**. Un altro nome comunemente utilizzato per la TLU è il termine **percettrone**.<br />
-Una TLU è una semplice processing unit costituita da $n$ variabili di input $x_1 \dots x_n$ e un output $y$. Ad ogni unità viene assegnato un **threshold** $\theta$ e ad ogni variabile di input un peso $w_i$ dove $i \in \{1, \dots ,n\}$, il quale rappresenta la rilevanza di quel determinato input al fine della computazione.<br />
+Per implementare una rete neurale artificiale occorre trovare, quindi, un analogo del neurone. La struttura che emula tale compito viene denominata **threshold logic unit** o **neurone di McCulloch e Pitts** (in seguito **TLU**).<br />
+Una TLU è una semplice processing unit costituita da $n$ variabili di input $x_1 \dots x_n$ e un output $y$. Ad ogni unità viene assegnats una **threshold** $\theta$ e ad ogni variabile di input un peso $w_i$ dove $i \in \{1, \dots ,n\}$, il quale rappresenta la rilevanza di quel determinato input al fine della computazione.<br />
 L'output della TLU viene calcolato secondo la seguente formula:
 
 $$y =  \begin{cases}
@@ -120,13 +120,13 @@ Può essere dimostrato, inoltre, che tutte le funzioni Booleane con un numero ar
 L'interpretazione geometrica fornisce un'intuizione su come costruire una TLU avente 2 o 3 input, ma non è  un metodo scalabile nè automatizzato. Infatti, è impossibile automatizzare questo metodo, perchè si è in grado di trovare una linea di separazione accettabile esclusivamente tramite "ispezione visiva" dei set di punti da separare.<br />
 E' necessario, quindi, evolvere una TLU affinchè converga in modo autonomo ad una soluzione.<br />
 Un algoritmo che permette di automatizzare il processo è il seguente: 
- 1. Inizializzare i pesi e il threshold con valori randomici;
-2. Determinare l'errore nell'output per un insieme di controlli. L'errore viene calcolato come una funzione dei pesi e del threshold $e(w_1,\dots,w_n,\theta)$;
-3. Aggiornare i pesi e il threshold per correggere l'errore;
+ 1. Inizializzare i pesi e la threshold con valori randomici;
+2. Determinare l'errore nell'output per un insieme di controlli. L'errore viene calcolato come una funzione dei pesi e della threshold $e(w_1,\dots,w_n,\theta)$;
+3. Aggiornare i pesi e la threshold per correggere l'errore;
 4. Iterare finchè l'errore si annulla;
 
-Si osservi il comportamento dell'algoritmo nel caso più semplice, ovvero il caso nel quale si hanno un threshold ed un unico input (quindi, un unico peso associato). Si presupponga che si voglia allenare la TLU a calcolare la negazione booleana.<br />
-Sia $x$ l'input, $w$ il peso associato e $\theta$ il threshold. Allora l'output $y$ sarà definito come:
+Si osservi il comportamento dell'algoritmo nel caso più semplice, ovvero il caso nel quale si hanno una threshold ed un unico input (quindi, un unico peso associato). Si presupponga che si voglia allenare la TLU a calcolare la negazione booleana.<br />
+Sia $x$ l'input, $w$ il peso associato e $\theta$ la threshold. Allora l'output $y$ sarà definito come:
 
 $$y = \begin{cases}
     1 & \text{se } 0w = 0 \geq \theta \\
@@ -147,12 +147,12 @@ Le regole di adattamento possono essere applicate in due modi:
 
 Si definisce di seguito la **delta rule** o **procedura di Widrow-Hoff** per allenare le TLU:
 
-Sia $\mathbf{v}$ = ($x_1, \dots, x_n$) il vettore di input di una TLU, $o$ l'output aspettato e $y$ il valore attuale. Se $o = y$, il training termina. Al contrario, per ridurre l'errore, verranno computati nuovi valori per il threshold e i pesi nel seguente modo:
+Sia $\mathbf{v}$ = ($x_1, \dots, x_n$) il vettore di input di una TLU, $o$ l'output aspettato e $y$ il valore attuale. Se $o = y$, il training termina. Al contrario, per ridurre l'errore, verranno computati nuovi valori per la threshold e i pesi nel seguente modo:
 
 $$\theta^{(new)} = \theta^{(old)} + \Delta\theta \text{ con } \Delta\theta = -\eta(o - y)$$
 $$\forall i \in \{1, \dots, n\}:w_i^{(new)} = w_i^{(old)} + \Delta w_i \text{ con } \Delta w_i = \eta(o - y)x_i$$
 
-dove $\eta$ è il *learning rate*. Più questo valore è alto, più i cambiamenti su pesi e sul threshold sono drastici.
+dove $\eta$ è il **learning rate**. Più questo valore è alto, più i cambiamenti su pesi e sulla threshold sono drastici.
 
 Ora verrano mostrari alcuni esempi di training, partendo dai valori $\theta = 3/2$, $w = 2$ e learning rate $\eta= 1$.
 
@@ -163,7 +163,7 @@ Ora verrano mostrari alcuni esempi di training, partendo dai valori $\theta = 3/
 Si è osservato, tuttavia, che non tutte le funzioni possono essere computate.<br />
 Per le funzioni linearmente separabili, esiste un teorema che garantisce che applicando la *delta rule* l'algoritmo converga ad una soluzione.<br />
 Sia $L = \{(\mathbf{v}_1,o_1), \dots (\mathbf{v}_n,o_n)\}$ una sequenza di pattern di allenamento per la TLU, dove $\mathbf{v}_i$ identifica l'$i$-esimo vettore di input e $o_i$ identifica l'$i$-esimo output atteso. Siano inoltre $L_0 = \{(\mathbf{v},o) \in L | o = 0\}$ e $L_1 = \{(\mathbf{v},o) \in L | o = 1\}$ rispettivamente gli insiemi delle coppie di pattern che hanno come output atteso $0$ e quelle che hanno come pattern atteso $1$.<br />
-Se $L_0$ e $L_1$ sono linearmente separabili, allora esiste un $\mathbf{w}$ vettore di pesi e un $\theta$ threshold tale che:
+Se $L_0$ e $L_1$ sono linearmente separabili, allora esiste un $\mathbf{w}$ vettore di pesi e una threshold $\theta$ tale che:
 
 $$\forall (\mathbf{v},0) \in L_0: \mathbf{w}\mathbf{v}< \theta$$
 $$\forall (\mathbf{v},1) \in L_1: \mathbf{w}\mathbf{v}\geq \theta$$
@@ -171,12 +171,12 @@ $$\forall (\mathbf{v},1) \in L_1: \mathbf{w}\mathbf{v}\geq \theta$$
 Negli esempi precedenti, si è codificato il valore booleano *falso* come $0$ e *vero* come $1$. Questa scelta ha lo svantaggio che, nel caso del valore *falso*, i pesi corrispondenti non possano essere modificati perchè la formula contiene l'input come fattore.<br />
 Per evitare il problema si ricorre in letteratura ad una diversa codifica chiamata **ADALINE** (**ADAptive LINear Element**), dove *falso* viene ad assumere il valore $-1$
 e il *vero* $1$.<br />
-Si osservi che questa procedura di allenamento vale solo per le singole TLU nonostante si sia osservato che le TLU possono computare solo funzioni linearmente separabili. Sebbene questo inconveniente si possa evitare prendendo in esame *network* di TLU, questa procedura non si estende naturalmente a quel caso.
+Si osservi che questa procedura di allenamento vale solo per le singole TLU nonostante si sia osservato che le TLU possono computare solo funzioni linearmente separabili. Sebbene questo inconveniente si possa evitare prendendo in esame network di TLU, questa procedura non si estende naturalmente a quel caso.
 
 ----------------------------------------------------------------
 
 ### Artificial neural network ###
-Un'**artificial neural network** (in breve **ANN**) può essere rappresentata come un [[Grafo]] diretto $G = (U,C)$ dove i nodi sono delle semplici TLU e gli archi sono le connessioni tra le varie unità.<br />
+Un'**artificial neural network** (in breve **ANN**) può essere rappresentata tramite un [[Grafo]] diretto $G = (U,C)$ dove i nodi sono delle semplici TLU e gli archi sono le connessioni tra le varie unità.<br />
 L'insieme dei nodi $U$ può essere partizionato in tre sottoinsiemi:
 - $U_{(in)}$: è l'insieme dei nodi di input, i quali ricevono in modo diretto l'informazione dall'ambiente;
 - $U_{(out)}$: è l'insieme dei nodi di output, i quali sono i soli nodi a inviare informazioni all'esterno;
@@ -221,7 +221,7 @@ Questo è importante solo per i neuroni input in un feed forward network.
 
 Le ricomputazioni terminano nel caso in cui o il network raggiunge uno stato stabile (cioè uno stato in cui ulteriori ricomputazioni non modifichino ulteriormene l'output dei neuroni) o se è stato eseguito un numero predefinito di ricomputazioni.
 L'ordine temporale delle ricomputazioni, generalmente, non è fissato.<br />
-Per esempio, tutti i neuroni di un network possono ricomputare il proprio output allo stesso tempo (**update sincrono**). E' possibile, inoltre, definire un ordine di neuroni nel quale loro computano il loro nuovo output uno dopo l'altro (**update asincrono**). In questo caso i nuovi output degli altri neuroni possono essere già stati utilizzati come input di computazioni successive.<br />
+Per esempio, tutti i neuroni di un network possono ricomputare il proprio output allo stesso tempo (**update sincrono**). E' possibile, inoltre, definire un ordine di neuroni nel quale viene computato il nuovo output (**update asincrono**). In questo caso i nuovi output degli altri neuroni possono essere già stati utilizzati come input di computazioni successive.<br />
 Per quanto riguarda le reti feed forward, le computazioni solitamente seguono l'ordinamento topologico.<br />
 Per le recurrent network, l'output finale dipende dall'ordine nel quale i neuroni ricomputano l'output e da quante ricomputazioni sono state eseguite.<br />
 Nel caso delle recurrent neural network, potrebbe, però, accadere che non si giunga mai ad uno stato stabile a seconda di quale ordine di update dei neuroni si scelga di seguire. Si osservi un esempio di una computazione con risultato oscillante in un recurrent neural network. L'ordine seguito per l'update è: $u_3,u_1,u_2,u_3,u_1,u_2\dots$. Se si fosse seguito un ordine diverso, la computazione avrebbe raggiunto uno stato stabile.
@@ -229,14 +229,14 @@ Nel caso delle recurrent neural network, potrebbe, però, accadere che non si gi
 ----------------------------------------------------------------
 
 ### Training delle ANN ###
-Si è osservato in precedenza che è possibile allenare in modo automatico una singola TLU grazie alla delta rule. Questo procedimento non può essere generalizzato alle ANN tuttavia, per quanto riguarda il training, ci si basa sui medesimi principi: calcolare correzioni ai pesi ed ai threshold dei singoli neuroni e aggiornarli di conseguenza.<br />
+Si è osservato in precedenza che è possibile allenare in modo automatico una singola TLU grazie alla delta rule. Questo procedimento non può essere generalizzato alle ANN tuttavia, per quanto riguarda il training, ci si basa sui medesimi principi: calcolare correzioni ai pesi ed alle threshold dei singoli neuroni e aggiornarli di conseguenza.<br />
 A seconda del tipo dei dati utilizzati per allenare le ANN e a seconda dei criteri di ottimizzazione, è possibile distinguere due tipi di apprendimento:
 1. **fixed learning task** o apprendimento con supervisione;
 2. **free learning task** o apprendimento senza supervisione.
 
-La **Learning Task Fissata** $L_{fixed}$ per una rete neurale con $n$ neuroni input, $U_{in} = \{ u_{1}, ..., u_{n} \}$, e $m$ neuroni output, $U_{out} = \{v_{1}, ..., v_{2}\}$, è un insieme di **training pattern** $l = (\textbf{i}^{(l)}, \textbf{o}^{(l)})$, ognuno consistente di un **vettore di input** $\textbf{i}^{(l)} = (ext_{u_{1}}^{(l)}, ..., ext_{u_{n}}^{(l)})$ e un **vettore di output** $\textbf{o}^{(l)} = (o_{v_{1}}^{(l)}, ..., o_{v_{m}}^{(l)})$.<br />
+Una **Learning Task Fissata** $L_{fixed}$ per una rete neurale con $n$ neuroni input, $U_{in} = \{ u_{1}, ..., u_{n} \}$, e $m$ neuroni output, $U_{out} = \{v_{1}, ..., v_{2}\}$, è un insieme di **training pattern** $l = (\textbf{i}^{(l)}, \textbf{o}^{(l)})$, ognuno consistente di un **vettore di input** $\textbf{i}^{(l)} = (ext_{u_{1}}^{(l)}, ..., ext_{u_{n}}^{(l)})$ e un **vettore di output** $\textbf{o}^{(l)} = (o_{v_{1}}^{(l)}, ..., o_{v_{m}}^{(l)})$.<br />
 Nel caso di una fixed learning task si avrà, quindi, un insieme $L=\{(\mathbf{i}_1,\mathbf{o}_1),\dots,(\mathbf{i}_n,\mathbf{o}_n)\}$ di coppie le quali assegnano ad ogni input un output desiderato. Una volta completato il processo di apprendimento, la ANN dovrebbe essere in grado di restituire l'output adeguato rispetto all'input che le viene presentato. Data una Learning Task Fissata, l'obiettivo è allenare una rete neurale in modo che produca, per tutti i training pattern $l \in L_{fixed}$, gli output contenuti nel vettore di output $\textbf{o}^{(l)}$ se gli input esterni del corrispondente vettore di input $\textbf{i}^{(l)}$ sono dati in pasto al network. In pratica, però, questo accade raramente e bisogna accontentarsi di un risultato approssimativo.<br />
-Per giudicare in che misura una ANN si avvicina alla soluzione della fixed learning task si adotta una funzione di errore, la quale misura quanto l'output ottenuto coincide con l'output desiderato nel training pattern.
+Per giudicare in che misura una ANN si avvicini alla soluzione della fixed learning task si adotta una funzione di errore, la quale misura quanto l'output ottenuto coincide con l'output desiderato nel training pattern.
 Questa funzione di errore è comunemente definita come la somma delle deviazioni dell'output desiderato e dell'output ottenuto al quadrato, per tutti i traning pattern e tutti i neuroni di output.<br />
 L'errore di una rete neurale in riferimento a una learning task fissata $L_{fixed}$ è definito come:
 
@@ -250,13 +250,13 @@ $$e^l_v = (o^l_v - out_v)^2$$
 Il quadrato delle differenze viene scelto per vari motivi. In primo piano, è chiaro che non è possiile semplicemente sommare le deviazioni direttamente, poichè le deviazioni positive e negative potrebbero cancellarsi a vicenda, producendo quindi un'impressione sbagliata dell'attuale bontà del network.<br />
 Tuttavia, il quadrato della deviazione dell'output desiderato e dell'output ottenuto ha almeno due vantaggi rispetto al valore assoluto:
 - il quadrato è continuamente differenziabile ovunque, mentre la derivata del valore assoluto non esiste/è discontinua in 0. E' desiderabile che la funzione di errore sia continuamente differenziabile, perchè questo semplifica la derivazione delle regole di update per i pesi;
-- Grandi deviazioni dall'output desiderato sono pesate in maniera più severa, così che ci sia una tendenza la quale permetta di evitare durante il training grandi deviazioni individuali dal valore desiderate.
+- Grandi deviazioni dall'output desiderato sono pesate in maniera più severa, così che ci sia una tendenza la quale permetta di evitare durante il training grandi deviazioni individuali dal valore desiderato.
  
-Una **Learning Task Libera** $L_{free}$ per una rete neurale con $n$ neuroni input. $U_{in} = \{ u_{1}, ..., u_{n} \}$, è un insieme di **training pattern** $l = (\textbf{i}^{(l)})$, ognuno consistente di un **vettore di input** $\textbf{i}^{(l)} = (ext_{u_{1}}^{(l)}, ..., ext_{u_{n}}^{(l)})$.<br />
+Una **Learning Task Libera** $L_{free}$ per una rete neurale con $n$ neuroni input $U_{in} = \{ u_{1}, ..., u_{n} \}$, è un insieme di **training pattern** $l = (\textbf{i}^{(l)})$, ognuno consistente di un **vettore di input** $\textbf{i}^{(l)} = (ext_{u_{1}}^{(l)}, ..., ext_{u_{n}}^{(l)})$.<br />
 Nel free learning task si avrà, quindi, solo una sequenza di input $L = \{\mathbf{i}_1, \dots, \mathbf{i}_n\}$. Questo comporta che, a differenza del fixed learning task, non si avrà modo di calcolare una funzione di errore rispetto ad un output atteso.<br />
 Data una learning task libera, l'aspetto più importante al fine di allenare una rete neurale è come viene misurata la similarità tra i traning pattern. Questa similarità può essere definita, per esempio, con l'aiuto di una funzione di distanza.<br />
 Un caso particolare potrebbe essere quello del **clustering** dei vettori di input simili, così che per tutti i vettori in un cluster venga prodotto lo stesso output.<br />
-Qualsiasi processo di apprendimento si scelga esistono alcune buone pratiche che è utile seguire. Una di esse è quella di normalizzare ( **normalizzazione z-score**) il vettore di input. Comunemente lo si scala in modo tale che abbia media uguale a $0$ e la varianza ad $1$. Per fare ciò, è necessario calcolare a partire dal vettore di input dei training patter, per ogni neurone $u_k \in U_{(in)}$, la media aritmetica $\mu_k$ e la deviazione standard $\sigma_k$ degli input esterni:
+Qualsiasi processo di apprendimento si scelga esistono alcune buone pratiche che è utile seguire. Una di queste best practise riguarda il normalizzare il vettore di input (**normalizzazione z-score**). Comunemente, si scala tale vettore in modo che esso abbia media uguale a $0$ e varianza uguale ad $1$. Per fare ciò, è necessario calcolare per ogni neurone $u_k \in U_{(in)}$, a partire dal vettore di input dei training patter, la media aritmetica $\mu_k$ e la deviazione standard $\sigma_k$ degli input esterni:
 
 $$\mu_k = \frac{1}{|L|}\sum_{l \in L} ext^l_{u_k} \quad \quad \sigma_k = \sqrt{\frac{1}{|L|}\sum_{l \in L} (ext^l_{u_k} - \mu_k)^2}$$
 
@@ -267,7 +267,7 @@ Questa normalizzazione può essere portata a termine come pre-processing step o 
 
 Si è assunto finora che gli input e gli output di una rete neurale fossero numeri reali. Tuttavia, in pratica ci si trova spesso di fronte ad attributi nominali, come, ad esempio, colori.<br />
 Per poterli processare, è necessario trasformarli in numeri e, nonostante il numerare i valori degli attributi possa apparire semplice, questa conversione può portare ad effetti indesiderati se i numeri non riflettono il naturale ordine dei valori.<br />
-Una migliore opzione è l'**$1$-in-$n$ encoding**, nel quale ogni attributo nominate è assegnato a tanti neuroni quanto il suo valore: ogni neurone corrisponde ad un valore dell'attributo. Con l'input di un training pattern, il neurone che corrisponde al valore ottenuto dell'attributo nominale viene impostato a $1$, mentre tuti gli altri neuroni che appartengono allo stesso attributo sono settati a $0$.
+Una migliore opzione è l'**$1$-in-$n$ encoding**, nel quale ogni attributo nominale è assegnato a tanti neuroni quanto il suo valore: ogni neurone corrisponde ad un valore dell'attributo. Con l'input di un training pattern, il neurone che corrisponde al valore ottenuto dell'attributo nominale viene impostato a $1$, mentre tuti gli altri neuroni che appartengono allo stesso attributo sono settati a $0$.
 
 ----------------------------------------------------------------
 
@@ -275,7 +275,7 @@ Una migliore opzione è l'**$1$-in-$n$ encoding**, nel quale ogni attributo nomi
 ![[images/MLP.png]]
 
 Una delle prime ANN sviluppate furono i **multi-layer perceptrons** (abbreviate in seguito **MLP**). Le MLP sono particolari feed-forward network in cui le unità base sono organizzate in **layer** ed ogni layer presenta connessioni solo con il layer successivo. Questo permette di minimizzare il fenomeno delle continue ricomputazioni che avverrebbero durante la propagazione del segnale nei normali feed-forward network.<br />
-La network input function di ogni neurone $u \in U_{(hidden) \cup U_{(out)}}$ viene calcolata come la somma pesata degli input, cioè come:
+La network input function di ogni neurone $u \in U_{(hidden)} \cup U_{(out)}$ viene calcolata come la somma pesata degli input, cioè come:
 $$f^u_{net}(\mathbf{w}_u,\mathbf{i}_u) = \sum_{v \in pred(u)} w_{uv}out_v$$
 L'activation function di ogni neurone hidden, invece, è una cosìddetta **funzione sigmoide**, ossia una funzione monotona non descrescente tale che:
 $$f: \mathbb{R} \to [0,1] \quad \text{ con } \lim_{x\to-\infty}f(x) = 0 \quad \text{ e } \lim_{x\to\infty}f(x) = 1$$
@@ -385,7 +385,7 @@ Nel caso delle ANN, si pone, in particolare, il focus sulla **funzione logistica
 $$y = \frac{Y}{1 + e^{a+bx}}$$
 
 dove $Y$, $a$ e $b$ sono delle costanti.<br />
-Siccome molte ANN utilizzano come funzione di attivazione del neurone proprio la funzione logistica, se si riuscisse a trovare un modo di applicare su di essa il metodo della regressione, si potrebbero determinare i parametri di qualsiasi network a due layer con un unico input. Il valore $a$ nella funzione corrisponderebbe al threshold del neurone di output e la $b$ al peso dell'input. E' possibile linearizzare la funzione logistica applicando le seguenti trasformazioni (comunemente chiamata **logit transformation**):
+Siccome molte ANN utilizzano come funzione di attivazione del neurone proprio la funzione logistica, se si riuscisse a trovare un modo di applicare su di essa il metodo della regressione, si potrebbero determinare i parametri di qualsiasi network a due layer con un unico input. Il valore $a$ nella funzione corrisponderebbe alla threshold del neurone di output e la $b$ al peso dell'input. E' possibile linearizzare la funzione logistica applicando le seguenti trasformazioni (comunemente chiamata **logit transformation**):
 
 $$y = \frac{Y}{1 + e^{a+bx}} \leftrightarrow \frac{1}{y} = \frac{1 + e^{a+bx}}{Y} \leftrightarrow \frac{Y - y}{y} = e^{a+bx} \leftrightarrow ln(\frac{Y - y}{y}) = a+bx$$
 
@@ -404,13 +404,13 @@ Tuttavia, siccome il metodo della somma degli errori ha senso di essere utilizza
 ----------------------------------------------------------------
 
 ### Backpropagation ###
-Come osservato in precedenza, la regressione logistica funziona solo per MLP con due layer di neuroni. Un approccio più generale si basa sull'utilizzo del **gradient descent**. Questo metodo consiste nell'utilizzare la funzione di errore per calcolare la direzione in cui cambiare i pesi e il threshold al fine di minimizzare l'errore. Condizione necessaria per il suo utilizzo è che la funzione sia differenziabile. Tuttavia, poichè un MLP ha una funzione logistica come funzione di attivazione, la funzione di errore sarà differenziabile (posto che la funzione di output sia la funzione identità). Intuitivamente, il **gradiente** descrive la pendenza di una funzione. Questo è calcolato assegnando un vettore ad ogni punto del dominio della funzione, i cui componenti sono le derivate parziali rispetto agli argomenti.
+Come osservato in precedenza, la regressione logistica funziona solo per MLP con due layer di neuroni. Un approccio più generale si basa sull'utilizzo del **gradient descent**. Questo metodo consiste nell'utilizzare la funzione di errore per calcolare la direzione in cui cambiare i pesi e la threshold al fine di minimizzare l'errore. Condizione necessaria per il suo utilizzo è che la funzione sia differenziabile. Tuttavia, poichè un MLP ha una funzione logistica come funzione di attivazione, la funzione di errore sarà differenziabile (posto che la funzione di output sia la funzione identità). Intuitivamente, il **gradiente** descrive la pendenza di una funzione. Questo è calcolato assegnando un vettore ad ogni punto del dominio della funzione, i cui componenti sono le derivate parziali rispetto agli argomenti.
 L'operazione del calcolo del gradiente di un punto o di una funzione viene comunemente denotata con l'operatore differenziale $\nabla$.
 
 ![[images/gradient.png]]
 
-Nel caso dei MLP, calcolare il gradiente della funzione di errore si traduce nel calcolare la derivata parziale della funzione di errore rispetto ai pesi e i threshold presi come parametri.<br />
-Sia $\mathbf{w}_u = (-\theta,w_{u_1},\dots,w_{u_k})$ il vettore dei pesi di un singolo layer esteso così da includere anche il threshold. Si calcoli il gradiente come segue:
+Nel caso dei MLP, calcolare il gradiente della funzione di errore si traduce nel calcolare la derivata parziale della funzione di errore rispetto ai pesi e le threshold presi come parametri.<br />
+Sia $\mathbf{w}_u = (-\theta,w_{u_1},\dots,w_{u_k})$ il vettore dei pesi di un singolo layer esteso così da includere anche la threshold. Si calcoli il gradiente come segue:
 $$\nabla_{\mathbf{w}_u} e = \frac{\partial e}{\partial \mathbf{w}_u} = (-\frac{\partial e}{\partial \theta}, \frac{\partial e}{\partial w_{u_1}},\dots,\frac{\partial e}{\partial w_{u_k}})$$
 Siccome l'errore totale $e$ è dato dalla somma degli errori individuali rispetto a tutti i neuroni e tutti i training pattern $l$, il risultato ottenuto sarà:
 $$\nabla_{\mathbf{w}_u} e = \frac{\partial e}{\partial \mathbf{w}_u} = \frac{\partial}{\partial \mathbf{w}_u} \sum_{l \in L} e^l = \sum_{l \in L} \frac{\partial e^l}{\partial \mathbf{w}_u}$$
@@ -544,7 +544,7 @@ Le funzioni più utilizzate per determinare l'area di attivazione sono quelle ri
 
 ![[images/act_rbf.png]]
 
-Come esempio, viene applicato un RBFN per simulare una congiunzione booleana. Un network che risolve il problema è quello costituito da un singolo neurone hidden, il cui vettore dei pesi (il centro della funzione radiale) è esattamente il punto in cui in output sarebbe desiderabile il valore *vero*, ovvero (1,1). Il raggio $\sigma$ sarà posto a $\frac{1}{2}$ e verrà codificato nel threshold del neurone. La funzione di distanza usata è quella euclidea e come $f_{act}$ si impiega una funzione rettangolare.
+Come esempio, viene applicato un RBFN per simulare una congiunzione booleana. Un network che risolve il problema è quello costituito da un singolo neurone hidden, il cui vettore dei pesi (il centro della funzione radiale) è esattamente il punto in cui in output sarebbe desiderabile il valore *vero*, ovvero (1,1). Il raggio $\sigma$ sarà posto a $\frac{1}{2}$ e verrà codificato nella threshold del neurone. La funzione di distanza usata è quella euclidea e come $f_{act}$ si impiega una funzione rettangolare.
 
 ![[images/and_rbf.png]]
 
@@ -700,7 +700,7 @@ La procedura di aggiornamento chiamata *Markov-chain Monte Carlo* prevede di sce
 ----------------------------------------------------------------
  
 ### Training ###
-L'obbiettivo di apprendimento è quello di adattare i pesi e i threshold in modo che la distribuzione implicita nel dataset sia approssimata dalla distribuzione rappresentata dai neuroni visibili di una BM. Questo possiamo farlo scegliendo una misura che descriva la differenza tra le due distribuzioni ed utilizzeremo la tecnica del gradient descent per minimizzarla. Una delle misure più famose è quella di Kullback-Leibler sulla divergenza dell'informazione:
+L'obbiettivo di apprendimento è quello di adattare i pesi e le threshold in modo che la distribuzione implicita nel dataset sia approssimata dalla distribuzione rappresentata dai neuroni visibili di una BM. Questo possiamo farlo scegliendo una misura che descriva la differenza tra le due distribuzioni ed utilizzeremo la tecnica del gradient descent per minimizzarla. Una delle misure più famose è quella di Kullback-Leibler sulla divergenza dell'informazione:
 
 $$KL(p1,p2) = \sum_{\omega \in \Omega} p1(\omega) ln\frac{p1(\omega)}{p2(\omega)}$$
 
@@ -709,7 +709,7 @@ dove $p1$ si riferisce alla distribuzione del dataset e $p2$ a quella della macc
 2. **Negative phase**: tutte le unità vengono aggiornate fino al raggiungimento di uno stato stabile.
 
 Se distinguiamo la probabilità che un neurone $u$ sia attivato nella positive phase ($p_u^{+}$) e quella che lo stesso neurone sia attivato nella negative phase ($p_u^{+}$) e la probabilità che due neuroni $u$ e $v$ siano attivati simultaneamente nella positive phase ($p_{uv}^{+}$) e quella che gli stessi due neuroni siano attivati nella negative phase
-($p_{uv}^{-}$), possiamo definire la regola di update dei pesi e del threshold come segue:
+($p_{uv}^{-}$), possiamo definire la regola di update dei pesi e della threshold come segue:
 
 $$\Delta w_{uv} = \frac{1}{\eta} (p_{uv}^{+} - p_{uv}^{-}) 
 \quad
@@ -717,7 +717,7 @@ $$\Delta w_{uv} = \frac{1}{\eta} (p_{uv}^{+} - p_{uv}^{-})
 \quad
 \Delta \theta_u = -\frac{1}{\eta}(p_u^{+} - p_u^{-})$$
 
-Intuitivamente: se lo stesso neurone viene sempre attivato ogniqualvolta viene presentato lo stesso input allora il suo threshold dovrà essere ridotto. Allo stesso modo, se due neuroni vengono spesso attivati assieme allora il peso che corrisponde alla loro connessione verrà aumentato ("cells that fire together, wire together").
+Intuitivamente: se lo stesso neurone viene sempre attivato ogniqualvolta viene presentato lo stesso input allora la sua threshold dovrà essere ridotta. Allo stesso modo, se due neuroni vengono spesso attivati assieme allora il peso che corrisponde alla loro connessione verrà aumentato ("cells that fire together, wire together").
 
 ----------------------------------------------------------------
 
@@ -742,7 +742,7 @@ possiamo sfruttare la derivata della funzione nell'istante di tempo precedente p
 
 ![[images/recurrent.png]]
 
-Possiamo generalizzare questo approccio a funzioni con più di un argomento grazie ai *vectorial neural network*. Se, tuttavia, non conosciamo in precedenza la struttura della computazione non possiamo sfruttare la backpropagation così come l'abbiamo presentata, in quanto gli errori si propagano senza soluzione di continuità lungo i cicli del network. Un modo per risolvere questo problema è quello di dispiegare nel tempo la computazione ogni qualvolta questa attraversi un ciclo e aggiungere una copia dei neuroni così attraversati come un layer addizionale. A questo punto si potrà applicare la backpropagation come in un qualsiasi feed-forward network. Per calcolare gli aggiornamenti ai pesi e ai threshold sarà, però, necessario combinare gli aggiustamenti calcolati rispetto ai neuroni così aggiunti.
+Possiamo generalizzare questo approccio a funzioni con più di un argomento grazie ai *vectorial neural network*. Se, tuttavia, non conosciamo in precedenza la struttura della computazione non possiamo sfruttare la backpropagation così come l'abbiamo presentata, in quanto gli errori si propagano senza soluzione di continuità lungo i cicli del network. Un modo per risolvere questo problema è quello di dispiegare nel tempo la computazione ogni qualvolta questa attraversi un ciclo e aggiungere una copia dei neuroni così attraversati come un layer addizionale. A questo punto si potrà applicare la backpropagation come in un qualsiasi feed-forward network. Per calcolare gli aggiornamenti ai pesi e alle threshold sarà, però, necessario combinare gli aggiustamenti calcolati rispetto ai neuroni così aggiunti.
 
 ----------------------------------------------------------------
 
