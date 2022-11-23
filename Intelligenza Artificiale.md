@@ -453,7 +453,7 @@ Al contrario se se ne hanno troppi, si rischia di incorrere nell'*overfitting*, 
 Per evitare questi fenomeni, è buona pratica effettuare la **Cross Validation**, cioè dividere il dataset in modo da avere due sottoinsiemi di dati: alcuni dati per l'apprendimento ed altri per la validazione del processo di apprendimento.<br />
 I primi verranno usati per allenare il network e i secondi per giudicare se effettivamente il network approssimi la funzione desiderata. É possibile iterare a piacere questo procedimento, suddividendo i dati non in solo due sottoinsiemi, ma in un numero arbitrario, così da ottenere una conferma incrociata dei progressi nell'apprendimento del network.<br />
 Una variante è la **N-fold cross validation**, nella quale il dataset viene diviso in $n$ parti o **sottoset** (chiamati anche **fold**)circa della stessa dimensione. La frequenza relativa dei valori di output nei fold rappresenta la frequenza relativa di quei valori nel dataset intero (**stratification**).
-Durante l'allenamento, la performance è valutata dopo ogni epoca. L'errore del dattaset di training dovrebbe sempre decrementare, mentre l'errore su sul dataset di validazione dovrebbe peggiorare in caso di overfitting. A questo punto il training termina.<br />
+Durante l'allenamento, la performance è valutata dopo ogni epoca. L'errore del dataset di training dovrebbe sempre decrementare, mentre l'errore sul dataset di validazione dovrebbe peggiorare in caso di overfitting. A questo punto il training termina.<br />
 Un diverso metodo per evitare l'overfitting è quello di terminare l'apprendimento quando il differenziale dell'errore tra un epoca ed un altra si abbassa sotto una certa soglia, oppure se l'apprendimento si protrae per un periodo troppo lungo.
 
 ----------------------------------------------------------------
@@ -489,7 +489,7 @@ Una soluzione possibile sta nel modificare leggermente la funzione di attivazion
 
 Un approccio completamente diverso è si basa sul costruire il network **layer a layer**.<br />
 Una tecnica molto usata è quella di pensare al network come una pila di **autoencoder**. Un autoencoder non è altro che un three-layer perceptron il quale mappa il suo input in una sua approssimazione, utilizzando un hidden layer di dimensioni minori. Il layer nascosto funge da encoder per la codifica dell'input in una sua rappresentazione interna, che è a sua volta decodificata dal layer di output. L'autoencoder, avendo un solo layer, non soffre delle stesse limitazioni e può essere allenato attraverso la normale backpropagation.<br />
-Un problema con questo approccio è che se ci sono tanti neuroni negli hidden layer quanti quelli di input si rischia di propagare con minori aggiustamenti il segnale senza che l'autoencoder estragga alcuna informazione utile dal dato.<br />
+Un problema con questo approccio è che la presenza di tanti neuroni negli hidden layer quanti quelli di input rischia di propagare il segnali con minori aggiustamenti, senza che l'autoencoder estragga alcuna informazione utile dal dato.<br />
 Per questo problema esistono tre principali soluzioni:
 - **Sparse autoencoder**, il quale prevede di utilizzare un numero molto minore di neuroni nel hidden layer, rispetto a quelli di input. L'autoencoder sarà così costretto ad estrarre dall'input qualche feature interessante al posto di propagare semplicemente il dato;
 - **Sparse activation scheme**, nel quale, in modo simile a quanto veniva fatto per evitare l'overfitting, si decide di disattivare alcuni neuroni durante la computazione;
