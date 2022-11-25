@@ -267,7 +267,7 @@ Questa normalizzazione può essere portata a termine come pre-processing step o 
 
 Si è assunto finora che gli input e gli output di una rete neurale fossero numeri reali. Tuttavia, in pratica ci si trova spesso di fronte ad attributi nominali, come, ad esempio, colori.<br />
 Per poterli processare, è necessario trasformarli in numeri e, nonostante il numerare i valori degli attributi possa apparire semplice, questa conversione può portare ad effetti indesiderati se i numeri non riflettono il naturale ordine dei valori.<br />
-Una migliore opzione è l'**$1$-in-$n$ encoding**, nel quale ogni attributo nominale è assegnato a tanti neuroni quanto il suo valore: ogni neurone corrisponde ad un valore dell'attributo. Con l'input di un training pattern, il neurone che corrisponde al valore ottenuto dell'attributo nominale viene impostato a $1$, mentre tuti gli altri neuroni che appartengono allo stesso attributo sono settati a $0$.
+Una migliore opzione è l'**$1$-in-$n$ encoding**, nel quale ogni attributo nominale è assegnato a tanti neuroni quanto il suo valore: ogni neurone corrisponde ad un valore dell'attributo. Con l'input di un training pattern, il neurone che corrisponde al valore dell'attributo nominale ottenuto viene impostato a $1$, mentre tutti gli altri neuroni che appartengono allo stesso attributo ma a valori diversi vengono settati a $0$. In questo modo solamente $1$ neurone su $n$ viene impostato ad $1$, mentre i rimanenti a $0$, spiegando così il nome di questo encoding.
 
 ----------------------------------------------------------------
 
@@ -404,7 +404,8 @@ Tuttavia, siccome il metodo della somma degli errori ha senso di essere utilizza
 ----------------------------------------------------------------
 
 ### Backpropagation ###
-Come osservato in precedenza, la regressione logistica funziona solo per MLP con due layer di neuroni. Un approccio più generale si basa sull'utilizzo del **gradient descent**. Questo metodo consiste nell'utilizzare la funzione di errore per calcolare la direzione in cui cambiare i pesi e la threshold al fine di minimizzare l'errore. Condizione necessaria per il suo utilizzo è che la funzione sia differenziabile. Tuttavia, poichè un MLP ha una funzione logistica come funzione di attivazione, la funzione di errore sarà differenziabile (posto che la funzione di output sia la funzione identità). Intuitivamente, il **gradiente** descrive la pendenza di una funzione. Questo è calcolato assegnando un vettore ad ogni punto del dominio della funzione, i cui componenti sono le derivate parziali rispetto agli argomenti.
+Come osservato in precedenza, la regressione logistica funziona solo per MLP con due layer di neuroni. Un approccio più generale si basa sull'utilizzo del **gradient descent**. Questo metodo consiste nell'utilizzare la funzione di errore per calcolare la direzione in cui cambiare i pesi e la threshold al fine di minimizzare l'errore. Condizione necessaria per il suo utilizzo è che la funzione sia differenziabile. Tuttavia, poichè un MLP ha una funzione logistica come funzione di attivazione, la funzione di errore sarà differenziabile (posto che la funzione di output sia la funzione identità). Questa affermazione è valida poichè se la funzione di attivazione è differenziabile, allora la funzione di errore è differenziabile anch'essa. A questo punto, è possibile determinare la direzione verso la quale pesi e bias devono essere modificati semplicimente calcolando il **gradiente** della funzione d'errore.<br />
+Intuitivamente, il gradiente descrive la pendenza di una funzione. Si definisce grandiente della funzione $f$ nel punto $(x, y)$ il vettore che ha per componenti le derivate parziali nel punto considerato.
 L'operazione del calcolo del gradiente di un punto o di una funzione viene comunemente denotata con l'operatore differenziale $\nabla$.
 
 ![[images/gradient.png]]
@@ -424,7 +425,7 @@ Si assuma che la funzione di attivazione sia la funzione logistica per ogni neur
 
 ![[images/backpropagation.png]]
 
-Inizialmente, (1) l'input viene passato ai neuroni di input che lo restituiscono senza modifiche in output al primo degli hidden layer. (2) Ogni neurone dei seguenti layer calcola la somma pesata degli input ed applica al risultato la funzione logistica, generando così l'output che verrà propagato in tutto il network, fino ai neuroni terminali. A questo punto (3) viene calcolata la differenza tra l'output atteso e quello attuale e, dato che la funzione di attivazione è invertibile, è possibile risalire dal vettore di errore a quale fosse l'input che ha condizionato quel particolare errore (la variabile $\delta_u$, nell'immagine). Avendo (4) trasformato l'errore della variabile di output $out_u$ in quello della variabile di input $net_u$, diventa possibile distribuire l'errore (e la correzione necessaria) in modo proporzionale al ruolo del singolo neurone nel calcolo dell' output. L'errore viene propagato a ritroso fino ai neuroni di input. E' utile osservare che, data la forma della funzione logistica, l'errore non può azzerarsi completamente, in quanto il gradiente approssimerà il vettore nullo più l'errore si avvicinerà allo zero.
+Inizialmente, l'input viene passato ai neuroni di input che lo restituiscono senza modifiche in output al primo degli hidden layer. Ogni neurone dei seguenti layer calcola la somma pesata degli input ed applica al risultato la funzione logistica, generando così l'output che verrà propagato in tutto il network, fino ai neuroni terminali. A questo punto viene calcolata la differenza tra l'output atteso e quello attuale e, dato che la funzione di attivazione è invertibile, è possibile risalire dal vettore di errore a quale fosse l'input che ha condizionato quel particolare errore (la variabile $\delta_u$, nell'immagine). Avendo trasformato l'errore della variabile di output $out_u$ in quello della variabile di input $net_u$, diventa possibile distribuire l'errore (e la correzione necessaria) in modo proporzionale al ruolo del singolo neurone nel calcolo dell' output. L'errore viene propagato a ritroso fino ai neuroni di input. E' utile osservare che, data la forma della funzione logistica, l'errore non può azzerarsi completamente, in quanto il gradiente approssimerà il vettore nullo più l'errore si avvicinerà allo zero.
 
 Se si inizializza il learning rate $\eta$ ad un valore troppo alto, al posto di discendere la curva, si corre il rischio di saltare da un picco della funzione all'altro senza convergere mai al minimo. Inoltre, non è affatto detto che il minimo raggiunto in questo modo sia il minimo globale della funzione. La causa sarà piuttosto da ascrivere alla scelta dei valori iniziali. Una soluzione al problema può essere quella di ripetere l'apprendimento, inizializzando il sistema con una diversa configurazione di pesi e threshold, e scegliere alla fine quale configurazione risulta in un miglior minimo.
 
@@ -433,13 +434,13 @@ Se si inizializza il learning rate $\eta$ ad un valore troppo alto, al posto di 
 ### Variazioni sul gradient descent ###
 Esistono varie sofisticazioni della tecnica del gradient descent le quali permettono un più veloce apprendimento e, nello stesso momento, un miglior controllo sulla lunghezza dei singoli step di apprendimento.<br />
 Alcuni esempi sono:
-- **Manhattan training**, il quale utlizza al posto del valore del gradiente solo il suo segno per calcolare la direzione. Questo permette di semplificare notevolmente la computazione;
-- **Flat spot elimination**, il quale cerca di limitare l'abbattimento della lunghezza degli step di apprendimento quando ci si avvicina ad un plateau della funzione incrementando artificialmente la derivata della funzione in quel punto;
-- **Momentum term**, il quale ad ogni successivo step si aggiunge al gradiente una frazione del precedente cambiamento di pesi, così da avere una memoria di quanto velocemente stava cambiando nel passato;
-- **Self-adaptive error backpropagation**, il quale permette ad ogni parametro di avere un diverso learning rate in modo da avere un controllo più fine rispetto alle caratteristiche del singolo parametro;
-- **Resilient error backpropagation**, il quale combina il Manhattan training con l'approccio self-adaptive;
-- **Quick propagation**, il quale, al posto di utilizzare il gradiente, approssima la funzione con una parabola e salta direttamente all'apice della parabola;
-- **Weight decay**, il quale riduce i pesi per evitare di rimanere intrappolato nella regione saturata.
+- **manhattan training**, il quale utlizza al posto del valore del gradiente solo il suo segno per calcolare la direzione. Questo permette di semplificare notevolmente la computazione;
+- **flat spot elimination**, il quale cerca di limitare l'abbattimento della lunghezza degli step di apprendimento quando ci si avvicina ad un plateau della funzione incrementando artificialmente la derivata della funzione in quel punto;
+- **momentum term**, il quale ad ogni successivo step si aggiunge al gradiente una frazione del precedente cambiamento di pesi, così da avere una memoria di quanto velocemente stava cambiando nel passato;
+- **self-adaptive error backpropagation**, il quale permette ad ogni parametro di avere un diverso learning rate in modo da avere un controllo più fine rispetto alle caratteristiche del singolo parametro;
+- **resilient error backpropagation**, il quale combina il Manhattan training con l'approccio self-adaptive;
+- **quick propagation**, il quale, al posto di utilizzare il gradiente, approssima la funzione con una parabola e salta direttamente all'apice della parabola;
+- **weight decay**, il quale riduce i pesi per evitare di rimanere intrappolato nella regione saturata della funzione di attivazione logistica, nella quale il gradiente tende ad azzerarsi.
 
 ----------------------------------------------------------------
 
@@ -482,8 +483,8 @@ Alcune soluzioni al problema dell'overfitting sono:
 - **Sparsity constraint**, ossia si introducono dei limiti al numero di neuroni negli hidden layer. Altrimenti, è possibile limitare il numero di quelli attivi;
 - **Dropout training**, ossia alcuni neuroni degli hidden layer vengono omessi durante l'evoluzione del network.
 
-Il problema del vanishing gradient è dato dal fatto che la funzione di attivazione è una funzione logistica la cui derivata raggiunge al massimo il valore di $\frac{1}{4}$. Di conseguenza, ogni propagazione dell'errore ad un layer precedente vi aggiunge un valore moltiplicativo, spesso molto minore di $1$, riducendo così il gradiente, per via della chain rule delle derivate.<br /> 
-Una soluzione possibile sta nel modificare leggermente la funzione di attivazione in modo che sia sempre crescente. Alcuni candidati di funzione di attivazione proposti in letteratura sono la **ramp function** e la **softplus function**.<br />
+Il problema del vanishing gradient è dato dal fatto che la funzione di attivazione è una funzione logistica la cui derivata raggiunge al massimo il valore di $\frac{1}{4}$ (il quale è ottenuto per il valore della funzione $0.5$). Di conseguenza, ogni propagazione dell'errore ad un layer precedente vi aggiunge un valore moltiplicativo, spesso molto minore di $1$, riducendo così il gradiente, per via della chain rule delle derivate.<br /> 
+Una soluzione possibile sta nel modificare leggermente la funzione di attivazione in modo che sia sempre crescente. Questa modifica fa sì che la derivata della funzione non abbia più un valore massimo Alcuni candidati di funzione di attivazione proposti in letteratura sono la **ramp function** e la **softplus function**.<br />
 
 ![[images/relu.png]]
 
@@ -499,8 +500,8 @@ Per ottenere un MLP con molteplici layer, si combinano diversi autoencoder.<br /
 Inizialmente si allena un singolo autoencoder. A quel punto si rimuove il layer decoder e si conserva solo il layer interno. Si utilizzano, quindi, i dati preprocessati da questo primo autoencoder nella sua interezza per allenarne un secondo, e così via fino al raggiungimento di un numero soddisfacente di layer interni.<br />
 I MLP costruiti in questo modo sono risultati molto efficaci nel riconoscere con successo numeri scritti a mano.<br />
 Se si volessero utilizzare network simili per una più ampia classe di applicazioni, dove, per esempio, le feature riconosciute dai layer interni non sono localizzate in una porzione specifica dell'immagine, sarebbe necessario rivolgersi alle **convolutional neural network** (in seguito CNN).<br />
-Questa architettura è ispirata al funzionamento della retina umana, in cui i neuroni adibiti alla percezione hanno un campo ricettivo, ossia una limitata regione in cui rispondono agli stimoli. Questo campo ricettivo viene simulato nelle CNN connettendo ogni neurone del primo hidden layer ad un piccolo numero di neuroni di input, i quali fanno riferimento ad una regione contigua dell'immagine di input. I pesi vengono condivisi in modo tale che i vari network parziali possano essere valutati da differenti prospettive dell'immagine. Il campo di imput è shiftato step by step per coprire tutta l'immagine.<br />
-I neuroni nei layer successivi applicano il max pooling su regioni di piccole dimensioni, dove con max pooling si definisce una delle tecniche con la quale si effettua il downsampling della mappa delle feature tramite un riassunto delle feature presenti in una sezione dell'immagine.<br />
+Questa architettura è ispirata al funzionamento della retina umana, in cui i neuroni adibiti alla percezione hanno un campo ricettivo, ossia una limitata regione nella quale essi rispondono agli stimoli. Questo campo ricettivo viene simulato nelle CNN connettendo ogni neurone del primo hidden layer ad un piccolo numero di neuroni di input, i quali fanno riferimento ad una regione contigua dell'immagine di input. I pesi vengono condivisi in modo tale che i vari network parziali possano essere valutati da differenti prospettive dell'immagine. Il campo di imput è shiftato step by step per coprire tutta l'immagine.<br />
+I neuroni nei layer successivi applicano il max pooling su regioni di piccole dimensioni, dove con max pooling si definisce una delle tecniche con la quale si effettua il **downsampling** della mappa delle feature tramite un riassunto delle feature presenti in una sezione dell'immagine.<br />
 Questo pooling permette di conservare la conoscenza ottenuta riguardo le features senza considerare la posizione nell'immagine in cui è stata acquisita.
 Durante la computazione si procederà poi ad ampliare il **campo ricettivo** sulla totalità dell'immagine.
 
@@ -508,29 +509,29 @@ Durante la computazione si procederà poi ad ampliare il **campo ricettivo** sul
 
 ### Radial basis function network ###
 I cosiddetti **radial basis function network** (in seguito RBFN) sono feed-forward network aventi tre layer di neuroni nei quali i neuroni di input ed i neuroni hidden sono sempre totalmente connessi.<br />
-Le RBFN sono strutture alternative rispetto ai classici MLP. La differenza principale sta nella diversa scelta riguardo la funzione di input e di attivazione. Se, nel caso dei MLP, veniva impiegata una funzione sigmoide come $f_{act}$, ora si utilizzerà una funzione radiale di base.
-Questa funzione è una funzione monotona decrescente tale che:
-
-$$f: \mathbb{R}^{+} \to [0,1] \quad \text{con} \quad f(0) = 1 \quad \text{e} \quad \lim_{x \to \infty} f(x) = 0$$
-
-La $f_{act}$ di ciascun neurone di ouput è una funzione lineare 
-
-$$f_{act}^{(u)}(net_{u}, \theta_{u}) = net_{u} - \theta_{u}$$
-
-mentre la $f_{net}$ dei neuroni di output è la somma pesata dei loro input, come in precedenza. Invece, per i neuroni nell' hidden layer si avrà che la $f_{net}$ sarà una funzione di distanza calcolata tra il vettore di input e il vettore dei pesi.
+La $f_{net}$ di ogni neurone hidden è una **funzione di distanza**, calcolata tra il vettore di input ed il vettore dei pesi :
 
 $$\forall u \in U_{hidden}: f_{net}^{(u)}(\textbf{w}_{u}, \textbf{in}_{u}) = d(\textbf{w}_{u}, \textbf{in}_{u})$$
-
 dove la funzione distanza che verrà scelta sarà una **metrica** in senso geometrico, e, per tanto, dovrà rispettare i seguenti tre assiomi:
 
 $$d(\mathbf{w},\mathbf{v}) = 0 \leftrightarrow \mathbf{w}= \mathbf{v}$$
 $$d(\mathbf{w},\mathbf{v}) = d(\mathbf{v},\mathbf{w})$$
 $$d(\mathbf{w},\mathbf{e}) + d(\mathbf{e},\mathbf{v}) \geq d(\mathbf{w},\mathbf{v})$$
-La funzione di input e la funzione di attivazione descrivono una sorta di **regione di utenza** per il neurone. I pesi delle connessioni dall'input layer al neurone dell'hidden layer definiscono il centro di questa regione poichè la distanza è misurata tra il vettore dei pesi ed il vettore di input. <br />
-La tipologia di funzione di distanza determina la forma di questo bacino di utenza.<br />
-Una famiglia di funzioni usate spesso nelle applicazioni è quella formulata dal matematico prussiano Hermann Minkowski e battezzata in suo onore famiglia di Minkowski. Tale famiglia è definita come:
 
-$$d(\mathbf{w},\mathbf{v})_k = (\sum (w_i - v_i)^k)^{\frac{1}{k}}$$
+Se, nel caso dei MLP, veniva impiegata una funzione sigmoide come $f_{act}$, ora si utilizzerà una funzione radiale di base.
+Questa funzione è una funzione monotona decrescente tale che:
+
+$$f: \mathbb{R}^{+} \to [0,1] \quad \text{con} \quad f(0) = 1 \quad \text{e} \quad \lim_{x \to \infty} f(x) = 0$$
+
+La $f_{net}$ dei neuroni di output è la somma pesata dei loro input, come in precedenza, mentre la $f_{act}$ di ciascun neurone di ouput è una funzione lineare 
+
+$$f_{act}^{(u)}(net_{u}, \theta_{u}) = net_{u} - \theta_{u}$$
+
+La funzione di input e la funzione di attivazione dei neuroni hidden descrivono una sorta di **regione di utenza** per il neurone. I pesi delle connessioni dall'input layer al neurone dell'hidden layer definiscono il centro di questa regione poichè la distanza è misurata tra il vettore dei pesi ed il vettore di input. <br />
+La tipologia di funzione di distanza determina la forma di questo bacino di utenza.<br />
+Una famiglia di funzioni di distanza usate spesso nelle applicazioni è quella formulata dal matematico prussiano Hermann Minkowski e battezzata in suo onore famiglia di Minkowski. Tale famiglia è definita come:
+
+$$d_{k}(\mathbf{w},\mathbf{v}) = (\sum (w_i - v_i)^k)^{\frac{1}{k}}$$
 
 Alcuni esempi famosi di funzioni appartenenti alla famiglia sono:
 $$k = 1: \text{Manhattan distance}$$ $$k=2:\text{Euclidian distance}$$
