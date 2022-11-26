@@ -512,14 +512,14 @@ I cosiddetti **radial basis function network** (in seguito RBFN) sono feed-forwa
 La $f_{net}$ di ogni neurone hidden è una **funzione di distanza**, calcolata tra il vettore di input ed il vettore dei pesi :
 
 $$\forall u \in U_{hidden}: f_{net}^{(u)}(\textbf{w}_{u}, \textbf{in}_{u}) = d(\textbf{w}_{u}, \textbf{in}_{u})$$
+
 dove la funzione distanza che verrà scelta sarà una **metrica** in senso geometrico, e, per tanto, dovrà rispettare i seguenti tre assiomi:
 
 $$d(\mathbf{w},\mathbf{v}) = 0 \leftrightarrow \mathbf{w}= \mathbf{v}$$
 $$d(\mathbf{w},\mathbf{v}) = d(\mathbf{v},\mathbf{w})$$
 $$d(\mathbf{w},\mathbf{e}) + d(\mathbf{e},\mathbf{v}) \geq d(\mathbf{w},\mathbf{v})$$
 
-Se, nel caso dei MLP, veniva impiegata una funzione sigmoide come $f_{act}$, ora si utilizzerà una funzione radiale di base.
-Questa funzione è una funzione monotona decrescente tale che:
+Se, nel caso dei MLP, veniva impiegata una funzione sigmoide come $f_{act}$, ora si utilizzerà una funzione radiale di base. Questa funzione è una funzione monotona decrescente tale che:
 
 $$f: \mathbb{R}^{+} \to [0,1] \quad \text{con} \quad f(0) = 1 \quad \text{e} \quad \lim_{x \to \infty} f(x) = 0$$
 
@@ -539,18 +539,22 @@ $$k = \infty: \text{Maximum distance, ovvero } d(\mathbf{w},\mathbf{v})_\infty =
 
 ![[images/circle.png]]
 
-Un modo utile di visualizzare queste funzioni è quello di vedere che forma assume il luogo dei punti equidistanti dal centro, a seconda delle varie metriche. Variando la definizione di distanza, ovvero il raggio, varia la forma che assume la figura nei diversi spazi.<br />
-La funzione di attivazione dei neuroni hidden calcola l'area in cui il neurone focalizza la propria attenzione, definita dal raggio di riferimento $\sigma$. I vari parametri e la forma della funzione determinano l'ampiezza di questa area. Il nome attribuitogli, **funzione radiale**, deriva dal fatto che la funzione viene2 definita intorno ad un raggio e da un centro, descritto dal vettore dei pesi. Questa funzione assegna quindi ad ogni raggio un'attivazione. <br />
+Un modo utile di visualizzare queste funzioni è quello di vedere che forma assume il luogo dei punti equidistanti dal centro, a seconda delle varie metriche. Variando la definizione di distanza, ovvero il **raggio**, varia la forma che assume la figura nei diversi spazi.<br />
+La funzione di attivazione dei neuroni hidden calcola l'area in cui il neurone focalizza la propria attenzione, definita dal raggio di riferimento $\sigma$. I vari parametri e la forma della funzione determinano l'ampiezza di questa area. Il nome attribuitogli, **funzione radiale**, deriva dal fatto che la funzione viene definita intorno ad un raggio e da un centro, descritto dal vettore dei pesi. Questa funzione assegna quindi ad ogni raggio un'attivazione. <br />
 Le funzioni più utilizzate per determinare l'area di attivazione sono quelle riportate nella figura sottostante.
 
 ![[images/act_rbf.png]]
 
-Come esempio, viene applicato un RBFN per simulare una congiunzione booleana. Un network che risolve il problema è quello costituito da un singolo neurone hidden, il cui vettore dei pesi (il centro della funzione radiale) è esattamente il punto in cui in output sarebbe desiderabile il valore *vero*, ovvero (1,1). Il raggio $\sigma$ sarà posto a $\frac{1}{2}$ e verrà codificato nella threshold del neurone. La funzione di distanza usata è quella euclidea e come $f_{act}$ si impiega una funzione rettangolare.
+Non per tutte queste funzioni esiste un raggio oltre al quale il valore dell'attivazione vale $0$. Per esempio, la funzione Gaussiana restituisce un'attivazione positiva indipendentemente dalla distanza del vettore di input dal centro, nonostante la sua attivazione possa essere estremamente poco significiativa, dovuto al decadimento esponenziale della funzione stessa.<br />
+Come esempio, viene applicato un RBFN per simulare una congiunzione booleana. Un network che risolve il problema è quello costituito da un singolo neurone hidden, il cui vettore dei pesi (il centro della funzione radiale) è esattamente il punto in cui in output sarebbe desiderabile il valore *vero*, ovvero (1,1). Il raggio $\sigma$ sarà posto ad un valore minore di $1$, nel caso specifico ad $\frac{1}{2}$, e verrà codificato nella threshold del neurone. La funzione di distanza usata è quella euclidea e come $f_{act}$ si impiega una funzione rettangolare.
 
 ![[images/and_rbf.png]]
 
-In generale, un RBFN ha lo stesso potere espressivo di un MLP e può essere visto come un approssimatore universale, ovvero può approssimare (con errore arbitrariamente piccolo) una qualsiasi funzioni Riemann-integrabile. Il procedimento è lo stesso che nel caso degli altri network: la funzione viene approssimata da una funzione a scalini che può essere calcolata facilmente da una funzione radiale, a condizione di definirla come la somma pesata di funzioni rettangolari. Ciascuna delle funzioni rettangolari avrà un dominio $\rightarrow [0,1]$ ed il peso applicato corrisponderà all'altezza della funzione a livello del primo scalino.<br />
-L'approssimazione può essere migliorata aumentando il numero dei punti in cui si valuta la funzione. Inoltre se, al posto della funzione rettangolare, venisse utilizzata una funzione Gaussiana,  sarebbe possibile ottenere delle transizioni più morbide evitando bruschi salti.
+In generale, un RBFN ha lo stesso potere espressivo di un MLP e può essere visto come un approssimatore universale, ovvero può approssimare (con errore arbitrariamente piccolo) una qualsiasi funzioni Riemann-integrabile.<br />
+Il procedimento è lo stesso che nel caso degli altri network: la funzione viene approssimata da una funzione a scalini, la quale può essere calcolata facilmente da una funzione radiale, a condizione di definirla come la somma pesata di funzioni rettangolari.
+Ciascuna delle funzioni rettangolari avrà un dominio $\rightarrow [0,1]$ ed il peso applicato corrisponderà all'altezza della funzione a livello del primo scalino.<br />
+L'approssimazione può essere migliorata aumentando il numero dei punti in cui si valuta la funzione. Inoltre se, al posto della funzione rettangolare, venisse utilizzata una funzione Gaussiana, sarebbe possibile ottenere delle transizioni più morbide evitando bruschi salti.<br />
+Questo teorema richiede solamente che la funzione da approssimare sia Riemann-integrabile. La funzione non necessita, infatti, di essere continua.
 
 ----------------------------------------------------------------
 
