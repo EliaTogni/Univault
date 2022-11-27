@@ -559,35 +559,41 @@ Questo teorema richiede solamente che la funzione da approssimare sia Riemann-in
 ----------------------------------------------------------------
 
 #### Training delle RBFN ####
-Se negli altri ANN la fase di inizializzazione era triviale, in quanto bastava scegliere valori in modo casuale, quando si tratta di RBFN lo stesso approccio conduce a risultati subottimali. Si consideri, quindi, il caso speciale delle **simple radial basis function network**, dove ogni esempio di apprendimento viene associato ad una propria funzione radiale. Dato un fixed learning task $L = \{l_1,\dots,l_m\}$, avente $m$ pattern $l = (\mathbf{i}^l,\mathbf{o}^l)$, si definisce il vettore dei pesi associato al neurone $v_k$ come:
+Se negli altri ANN la fase di inizializzazione era triviale, in quanto bastava scegliere valori in modo casuale, quando si tratta di RBFN lo stesso approccio conduce a risultati subottimali. La causa è da attribuire alla differenza strutturale tra i layer: infatti, l'hidden layer e l'output layer di una RBFN differiscono in maniera considerevole, poichè possiedono differenti funzioni $f_{net}$ e $f_{act}$, in contrasto con un MLP, nel quale l'hidden layer e l'output layer sono omogenei.<br />
+Si consideri, quindi, il caso speciale delle **simple radial basis function network**, dove ogni esempio di apprendimento viene associato ad una propria funzione radiale. Perciò, l'hidden layer conterrà esattamente tanti neuroni quanti esempi di training.<br />
+Data una fixed learning task $L = \{l_1,\dots,l_m\}$, avente $m$ pattern $l = (\mathbf{i}^l,\mathbf{o}^l)$, si definisce il vettore dei pesi associato al neurone $v_k$ come:
 
 $$\forall k \in \{1,\dots,m\}: \mathbf{w}_{v_k} = \mathbf{i}_k$$
 
 La rete è composta da $m$ neuroni nell'hidden layer in quanto ciascuno di quei neuroni verrà allenato per riconoscere uno degli $m$ pattern forniti nel training.
-Assumendo una funzione di attivazione gaussiana, il raggio $\sigma_k$ è inizializzato in accordo a questa euristica:
+Assumendo una funzione di attivazione Gaussiana, il raggio $\sigma_k$ è inizializzato in accordo a questa euristica:
 
 $$\forall k \in \{1,\dots,m\}: \sigma_k = \frac{d_{max}}{\sqrt{2m}}$$
 
 dove $d_{max}$ è la massima distanza tra i vettori di input di due training pattern (calcolata utilizzando la funzione di input scelta per i neuroni hidden).
-Questa scelta permette di centrare le varie gaussiane in modo che non si sovrappongano l'una all'altra in maniera eccessiva, ma si distribuiscano in modo relativamente ordinato rispetto allo spazio di input. Per quanto riguarda, invece, i pesi dei neuroni di output, vengono calcolati secondo la seguente funzione:
+Questa scelta permette di centrare le varie Gaussiane in modo che non si sovrappongano l'una all'altra in maniera eccessiva, ma si distribuiscano in modo relativamente ordinato rispetto allo spazio di input.
+Per quanto riguarda, invece, i pesi dei neuroni di output, vengono calcolati basandosi sul seguente ragionamento: poichè i parametri dell'hidden layer (i centri ed i raggi) sono noti, è possibile computare l'output dei neuroni hidden per ogni esempio di training. Poichè la $f_{net}$ di un neurone di output è la somma pesata dei propri input e la sua attivazione e funzione di output sono entrambe lineari, ogni esempio di training $l$ restituisce, per ogni neurone di output $u$, un'equazione lineare:
 
-$$\forall u: \sum_{k=1}^m w_{u_k} out_{u_k} - \theta  = o_u$$
+$$\forall u: \sum_{k=1}^m w_{uv_{k}} out_{v_k} - \theta_{u}  = o_u$$
 
-Ponendo $\theta = 0$, si otterrà che la precedente equazione è equivalente a:
+Si ottiene così, per ogni neurone di output, un sistema di equazioni lineari con $m$ equazioni ed $m+1$ incognite ($m$ pesi ed $1$ valore di bias). Il sistema risulta sottodeterminato ma, ponendo $\theta = 0$, sarà possibile eliminare l'eccessivo grado di libertà.<br />
+La precedente equazione è equivalente alla seguente forma matriciale:
 
 $$\mathbf{A}\cdot \mathbf{w}_u = \mathbf{o}_u$$
 
-dove $\mathbf{A}$ è la matrice $m \times m$ che ha come componenti i vari output dei neuroni nel hidden layer. Se la matrice $\mathbf{A}$ ha rango completo, è possibile invertirla e calcolare il vettore dei pesi come segue:
+dove $\mathbf{A}$ è la matrice $m \times m$ che ha come componenti i vari output dei neuroni nel hidden layer per ogni training pattern. Se la matrice $\mathbf{A}$ ha rango completo, è possibile invertirla e calcolare il vettore dei pesi come segue:
 
 $$\mathbf{w}_u = \mathbf{A}^{-1}\cdot \mathbf{o}_u$$
 
+Se la matrice $\mathbf{A}$ non ha rango completo, i pesi devono essere scelti randomicamente fino a quando il rimanente sistema di equazioni non è unicamente risolvibile.<br />
 Questo metodo garantisce una perfetta approssimazione. Non è necessario, quindi, allenare un simple radial basis function network.<br />
-In generale, se non si desidera avere un neurone per ogni training pattern, sarà necessario selezionare $k$ sottoinsiemi del dataset e trovare, per ogni sottoinsieme, un rappresentante che verrà associato ad un neurone nel layer hidden. In analogia a quanto accade nel caso del simple RBFN, si avrà una matrice $\mathbf{A}$ di dimensione $m\times (k+1)$ con i valori in output dei vari neuroni nel hidden layer. Dato che la matrice non è quadrata, non è possibile calcolarne l'inversa come avevamo fatto in precedenza. Tuttavia, esiste una alternativa chiamata la **matrice pseudo-inversa**, la quale permette di completare il calcolo con una buona approssimazione. Ovviamente, l'accuratezza del network costruito in questo modo dipenderà dalla precisione con cui verranno scelti i rappresentati delle varie sottoclassi del dataset. Esistono vari metodi per effettuare questa scelta: 
+Ovviamente, le simple radial basis function network sono semplici da inizializzare poichè gli esempi di training fissano immediatamente i parametri dell'hidden layer. Nella pratica, tuttavia, queste reti sono di scarsa utilità. In primo luogo, il numero di esempi di training è tipicamente troppo grande per creare un neurone per ciascuno di essi. In secondo luogo, è auspicabile che una funzione radiale di base copra più di un esempio di training.<br />
+In generale, se non si desidera avere un neurone per ogni training pattern, sarà necessario selezionare $k$ sottoinsiemi del dataset e trovare, per ogni sottoinsieme, un rappresentante che verrà associato ad un neurone nel layer hidden. In analogia a quanto accade nel caso della simple RBFN, si avrà una matrice $\mathbf{A}$ di dimensione $m\times (k+1)$ con i valori in output dei vari neuroni nel hidden layer per ogni esempio di training. Dato che la matrice non è quadrata, non è possibile calcolarne l'inversa come fatto in precedenza. Tuttavia, esiste una matrice alternativa chiamata la **matrice pseudo-inversa**, la quale permette di completare il calcolo con una buona approssimazione. Ovviamente, l'accuratezza del network costruito in questo modo dipenderà dalla precisione con cui verranno scelti i rappresentati delle varie sottoclassi del dataset. Esistono vari metodi per effettuare questa scelta: 
 - si scelgono tutti i punti del dataset come centri. In questo caso si ricade nel caso semplice e i valori di output possono essere calcolati precisamente. Tuttavia, il calcolo dei pesi può risultare infattibile in termini di complessità;
 - si costruisce un sottoinsieme randomico per rappresentare i centri. Questo metodo ha il pregio di essere facilmente calcolabile. La performance, però, dipenderà dalla fortuna di scegliere dei buoni candidati per essere centri;
 - si utilizza un algoritmo di clustering (c-means clustering,learning vector quantization..).
 
-L'algoritmo **c-means** sceglie randomicamente $c$ centri di altrettanti cluster. Quindi il dataset viene partizionato in $c$ sottoclassi, a seconda della vicinanza ai vari centri. In un passo successivo si calcola il centro di gravità del cluster così trovato e lo si elegge come nuovo centro. Si ricomputa, quindi, l'appartenza dei punti del dataset e si procede così fino a che i centri smettono di oscillare.
+L'algoritmo **c-means** sceglie randomicamente $c$ centri di altrettanti cluster. Quindi, il dataset viene partizionato in $c$ sottoclassi, a seconda della vicinanza ai vari centri. In un passo successivo si calcola il centro di gravità del cluster così trovato e lo si elegge come nuovo centro. Si ricomputa, quindi, l'appartenza dei punti del dataset e si procede così fino a che i centri smettono di oscillare.
 
 La fase di training avviene come nel caso dei MLP attraverso gradient descent e backpropagation.
 
