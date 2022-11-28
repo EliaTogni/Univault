@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "6eceb4ab84cba7de",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "The Age of the Essay.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -77,7 +90,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Intelligenza Artificiale.md",
+                "file": "The Age of the Essay.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -95,7 +108,7 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "d91df8ee3b5a65ce",
+  "active": "6eceb4ab84cba7de",
   "lastOpenFiles": [
     "Intelligenza Artificiale.md",
     "Grafo.md",
