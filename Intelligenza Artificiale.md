@@ -602,13 +602,14 @@ La fase di training avviene come nel caso dei MLP attraverso gradient descent e 
 ### Learning vector quantization ###
 Fino ad ora si è posto il focus sulle fixed learning task al fine di descrivere l'apprendimento delle ANN: il successo dell'apprendimento viene misurato, come già descritto, dall'adeguatezza con cui il network approssima gli output desiderati.<br />
 Tuttavia, non si è sempre in grado di intuire quale output aspettarsi per ogni input nel dataset a disposizione. L'obiettivo di una rete neurale, in questi casi, sarà di classificare, o clusterizzare, i dati in input senza avere un'indicazione su cosa si stia cercando.<br />
-La **learning vector quantization** è una tecnica che aiuta ad operare il raggruppamento in modo automatico, trovando una adeguata tassellazione dello spazio di input. Come nel caso dell'algoritmo c-means, i vari cluster verranno rappresentati da punti detti **centri**, scelti tra quelli interni al dataset.
+La **learning vector quantization** è una tecnica che aiuta ad operare il raggruppamento in modo automatico, trovando una adeguata tassellazione dello spazio di input. Come nel caso dell'algoritmo c-means, i vari cluster verranno rappresentati da punti detti **centri**, scelti tra quelli interni al dataset. Ognuno di questi centri sarà posizionato in modo tale da giacere circa nel mezzo del cloud di dati che costituisce il cluster.<br />
+La differenza con la tecnica c-means riguarda il processing delle informazioni: La learningvector quantization processa i punti uno ad uno ed adatta solo un vettore di riferimento per data point.
 
 ----------------------------------------------------------------
 
 ### Learning vector quantization network ###
-Per calcolare la learning vector quantization si utilizzerà un network feed-forward a due layer, chiamato **learning vector quantization network** (in seguito LVQN).<br />
-Questo tipo particolare di network può essere visto come una RBFN avente il layer di output al posto dell' hidden layer. Come nel caso dei RBFN si avrà, infatti, che la funzione di input del layer di output sia una funzione della distanza del vettore di input dal vettore dei pesi. Allo stesso modo, la funzione di attivazione dei neuroni di output sarà una funzione radiale.<br />
+Per calcolare la learning vector quantization si utilizzerà una network feed-forward a due layer, chiamata **learning vector quantization network** (in seguito LVQN).<br />
+Questo tipo particolare di network può essere visto come una RBFN avente il layer di output al posto dell' hidden layer. Come nel caso delle RBFN si avrà, infatti, che la funzione di input del layer di output sarà una funzione della distanza del vettore di input dal vettore dei pesi. Allo stesso modo, la funzione di attivazione dei neuroni di output sarà una funzione radiale.<br />
 La differenza, nel caso dei LVQN, risiede nella $f_{(out)}$ dei neuroni di output, la quale non è la semplice funzione identità, ma è una funzione la quale propaga il messaggio solo se l'attivazione del neurone è quella di valore massimo tra le attivazioni dei neuroni di output. Se più di un'unità restituisce il valore massimo, ne viene scelta una secondo un fashion random, mentre le altre vengono poste a zero (principio del **winner-takes-all**).
 
 $$f^u_{out} (act_u) = \begin{cases}
@@ -616,35 +617,42 @@ $$f^u_{out} (act_u) = \begin{cases}
                     0 \quad \text{altrimenti}
                     \end{cases}$$
 
-Un'altra differenza rispetto all'algoritmo c-means riguarda il metodo attraverso cui i centri vengono aggiornati. In questo caso, infatti, i punti nel dataset vengono processati uno ad uno. La procedura viene chiamata **competitive learning**: ogni input viene conteso dai vari neuroni di output, e viene assegnato al neurone con il valore di attivazione più alto. Il neurone vincitore viene successivamente adattato, in modo che il vettore di riferimento venga mosso più vicino al punto dove, invece, il resto dei vettori di riferimento vengono allontanti dal punto. Questo viene fatto secondo le seguenti regole:
+Un'altra differenza rispetto all'algoritmo c-means riguarda il metodo attraverso cui i centri vengono aggiornati. In questo caso, infatti, i punti nel dataset vengono processati uno ad uno. La procedura viene chiamata **competitive learning**: ogni input viene conteso dai vari neuroni di output, e viene assegnato al neurone con il valore di attivazione più alto. Il neurone vincitore viene successivamente adattato, in modo che il suo vettore di riferimento venga spostato. Se la classe dei data point e la classe del vettore di riferimento del neurone vincitore coincidono, viene applicata la seguente regola:
 
--   *Attraction rule*: $\mathbf{r}^{new} = \mathbf{r}^{old} + \eta(\mathbf{x} - \mathbf{r}^{old})$;
+- **Attraction rule**: $\mathbf{r}^{new} = \mathbf{r}^{old} + \eta(\mathbf{x} - \mathbf{r}^{old})$;
 
--   *Repulsion rule*: $\mathbf{r}^{new} = \mathbf{r}^{old} -\eta(\mathbf{x} - \mathbf{r}^{old})$;
+dove $\mathbf{x}$ è l'input (il training pattern), $\mathbf{r}$ è il vettore di riferimento per il neurone vincitore e $\eta$ è il learning rate, tale per cui $0 < \eta <1$.<br />
+Con il termine "coincidono", si intende, cioè, il caso in cui il vettore di riferimento si muova verso il training pattern o, in altre parole, se il vettore venga attratto dal training pattern. Tuttavia, se le classi dei data point e il vettore di riferimento differiscono, viene applicata la seguente regola:
+
+- **Repulsion rule**: $\mathbf{r}^{new} = \mathbf{r}^{old} -\eta(\mathbf{x} - \mathbf{r}^{old})$;
+
+In questo modo i vettori di riferimento si muovono verso gruppi di data point etichettati allo stesso modo.
 
 ![[images/adapt.png]]
 
-dove $\mathbf{x}$ è l'input, $\mathbf{r}$ è il vettore di riferimento per il neurone vincitore e $\eta$ è il learning rate. Fino ad ora abbiamo sottointeso che il learning rate rimanesse fisso per la durata dell'apprendimento, tuttavia esistono delle situazioni in cui un learning rate costante può portare ad alcuni problemi. Un caso è quello rappresentato nel riquadro a sinistra della Figura [19](#fig:20){reference-type="ref" reference="fig:20"}, dove il vettore di riferimento oscilla ciclicamente verso uno dei quattro punti. Un metodo semplice per risolvere il problema è quello di far decrescere il learning rate al crescere delle iterazioni (*time dependent leanring rate*). In questo modo, il movimento circolare collassa col passare del tempo in una spirale, facendo così convergere l'algoritmo. Un altro problema con la versione classica di questo algoritmo è che il processo di adattamento porti i vettori di riferimento ad allontanarsi sempre di più tra loro. Per evitare questo effetto indesiderabile che ostacola la convergenza dell'algoritmo si prevede una così detta *window rule* tale per cui un vettore di riferimento viene adattato solo se il punto $\mathbf{p}$ giace vicino al bordo della classificazione, ossia alla (iper-)superficie che separa le regioni contigue delle due classi. La nozione vaga di vicinanza viene formalizzata come segue:
-
-$$\min(\frac{d(\mathbf{p},\mathbf{r_j})}{d(\mathbf{p},\mathbf{r_k}},\frac{d(\mathbf{p},\mathbf{r_k})}{d(\mathbf{p},\mathbf{r_j})}) > \theta \quad \text{dove} \quad \theta = \frac{1 - \xi}{1 + \xi}$$
+Fino ad ora si è sottointeso che il learning rate rimanesse fisso per la durata dell'apprendimento, tuttavia esistono delle situazioni in cui un learning rate costante può portare ad alcuni problemi. Una di esse è rappresentata dal caso nel quale il vettore di riferimento oscilla ciclicamente verso uno dei quattro punti. Un metodo semplice per risolvere il problema è quello di decrementare il learning rate al crescere delle iterazioni (**time-dependent leanring rate**). In questo modo, il movimento circolare collassa col passare del tempo in una spirale, facendo così convergere l'algoritmo.
 
 ![[images/oscill.png]]
 
-dove $\xi$ è un parametro specificato dall'utente e, intuitivamente, descrive l'\"ampiezza\" della finestra attorno al bordo delle classificazioni. Se assumiamo che i dati siano stati scelti randomicamente da un insieme di distribuzioni normali potremmo voler usare un assegnamento *soft*, in opposizione ad una divisione *crisp* tipica del clustering a là c-means. Rinunciamo, quindi, alla strategia del *winner-takes-all* e cerchiamo di descrivere i dati attraverso insiemi di gaussiane. In questo modo, tutti i vettori di riferimento che appartengono alla stessa classe vengono \"attratti\" verso il centro (con varia intensità rispetto alla distanza) e tutti quelli che non vi appartengono vengono \"respinti\". La densità di probabilità verrà
-rappresentata dalla seguente formula:
+Nonostante un time-dependent learning rate garantisca che la procedura converga, è bene tenere a mente che il learning rate non deve decrementare troppo velocemente, poihcp altrimenti la procedura potrebbe terminare in quello che viene chiamato **starvation**, cioè la casistica nella quale i passi di adattamento divengono molto piccoli rapidamente, così che il vettore di riferimento non raggiunga mai la sua destinazione naturale.<br />
+Un altro problema con la versione classica di questo algoritmo è che il processo di adattamento potrebbe portare i vettori di riferimento ad allontanarsi sempre di più tra loro. Per evitare questo effetto indesiderabile il quale ostacola la convergenza dell'algoritmo, si prevede una così detta **window rule** tale per cui un vettore di riferimento viene adattato solo se il punto $\mathbf{p}$ giace vicino al bordo della classificazione, ossia alla (iper-)superficie che separa le regioni contigue delle due classi. La nozione vaga di vicinanza viene formalizzata come segue:
+
+$$\min(\frac{d(\mathbf{p},\mathbf{r_j})}{d(\mathbf{p},\mathbf{r_k}},\frac{d(\mathbf{p},\mathbf{r_k})}{d(\mathbf{p},\mathbf{r_j})}) > \theta \quad \text{dove} \quad \theta = \frac{1 - \xi}{1 + \xi}$$
+
+dove $\xi$ è un parametro specificato dall'utente e, intuitivamente, descrive l'ampiezza della finestra attorno al bordo delle classificazioni. Se si assume che i dati siano stati scelti randomicamente da un insieme di distribuzioni normali, si potrebbe voler usare un assegnamento **soft**, in opposizione ad una divisione **crisp** tipica del clustering a là c-means. Si rinuncia, quindi, alla strategia del **winner-takes-all** e si cerca di descrivere i dati attraverso insiemi di Gaussiane.<br />
+In questo modo, tutti i vettori di riferimento che appartengono alla stessa classe vengono attratti verso il centro (con varia intensità rispetto alla distanza) e tutti quelli che non vi appartengono vengono respinti. La densità di probabilità verrà rappresentata dalla seguente formula:
 
 $$f_\mathbf{X} (\mathbf{x},C) = \sum^c_{y = 1} p_Y(y,C) \cdot f_{\mathbf{X}|Y}(\mathbf{x}|y,C)$$
 
-dove $C$ è l'insieme dei cluster, $\mathbf{X}$ è un vettore randomico che ha come dominio lo spazio dell'input, $Y$ una variabile randomica che ha l'indice dei cluster come suo dominio, $p_Y(y,C)$ è la probabilità che un punto appartenga al $y$-esimo componente dell'insieme e $f_{\mathbf{X}|Y}(\mathbf{x}|y,C)$ è la funzione di probabilità condizionata dato il cluster $y$. Per approssimare questa funzione, decidendo la posizione e l'ampiezza delle gaussiane, dovremo risolvere un problema di ottimizzazione comunemente chiamato *maximum likelihood estimation* rispetto ai parametri del cluster. La funzione di likelihood è così calcolata:
+dove $C$ è l'insieme dei cluster, $\mathbf{X}$ è un vettore randomico che ha come dominio lo spazio dell'input, $Y$ una variabile randomica che ha l'indice dei cluster come suo dominio, $p_Y(y,C)$ è la probabilità che un punto appartenga al $y$-esimo componente dell'insieme e $f_{\mathbf{X}|Y}(\mathbf{x}|y,C)$ è la funzione di probabilità condizionata dato il cluster $y$. Per approssimare questa funzione, decidendo la posizione e l'ampiezza delle gaussiane, sarà necessario risolvere un problema di ottimizzazione comunemente chiamato **maximum likelihood estimation** rispetto ai parametri del cluster. La funzione di likelihood è così calcolata:
 
 $$L(\mathbf{X},C) = \prod_{j=1}^n f_\mathbf{X} (\mathbf{x},C) = \prod_{j=1}^n \sum^c_{y = 1} p_Y(y,C) \cdot f_{\mathbf{X}|Y}(\mathbf{x}|y,C)$$
 
-Tuttavia, nella presente forma, la funzione è difficilmente ottimizzabile per via della sommatoria. Quindi, prendiamo come parametro aggiuntivo un insieme $Y_j$ di variabili:
+Tuttavia, nella presente forma, la funzione è difficilmente ottimizzabile a causa della presenza della sommatoria. Si prende, quindi, come parametro aggiuntivo un insieme $Y_j$ di variabili:
 
 $$L(\mathbf{X},y,C) = \prod_{j=1}^n f_{\mathbf{X}_j,Y_j} (\mathbf{x},y_j,C)$$
 
-Il problema si traduce, ora, nel trovare i valori per $Y$. L'approccio utilizzato è quello di sceglierne di randomici e considerare la distribuzione di probabilità sui possibili valori. $L(\mathbf{X},y,C)$ diviene una variabile randomica di cui possiamo massimizzare il valore aspettato. Per farlo possiamo fissare $C$ in alcuni termini e computare
-iterativamente migliori approssimazioni.
+Il problema si traduce, ora, nel trovare i valori per $Y$. L'approccio utilizzato è quello di sceglierne di randomici e considerare la distribuzione di probabilità sui possibili valori. $L(\mathbf{X},y,C)$ diviene una variabile randomica della quale è possibile massimizzare il valore atteso. Per farlo, è possibile fissare $C$ in alcuni termini e computare iterativamente migliori approssimazioni.
 
 ----------------------------------------------------------------
 
