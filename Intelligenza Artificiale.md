@@ -667,7 +667,7 @@ Questa funzione assegna un numero reale non negativo ad ogni coppia di neuroni d
 
 ![[images/grid.png]]
 
-Analogamente alle RBFN, i pesi delle connessioni dai neuroni di input ai neuroni di output definiscono le coordinate di un **centro**, dal quale viene misurata a distanza di un pattern di input. Questo centro è spesso chiamatp **reference vector** o **vettore di riferimento**.<br />
+Analogamente alle RBFN, i pesi delle connessioni dai neuroni di input ai neuroni di output definiscono le coordinate di un **centro**, dal quale viene misurata a distanza di un pattern di input. Questo centro è spesso chiamato **reference vector** o **vettore di riferimento**.<br />
 Maggiore la vicinanza di un pattern di input ad un vettore di riferimento, maggiore sarà il valore dell'attivazione del neurone corrispondente. Tipicamente, tutti i neuroni di output avranno la stessa $f_{net}$ e la stessa $f_{act}$, con lo stesso **raggio di riferimento** $\sigma$.<br />
 Questa relazione può essere rappresentata graficamente da una griglia bidimensionale, nella quale ogni punto identifica un neurone di output.<br />
 La relazione di vicinanza potrebbe anche essere assente, condizione che viene rappresentata da un'estrema misura della distanza tra i neuroni: ogni neurone misurerà distanza $0$ da sè stesso e distanza infinita da tutti gli altri neuroni.<br />
@@ -676,18 +676,18 @@ Questa tassellazione in regioni può essere rappresentata da un **diagramma di V
 La relazione di vicinanza dei neuroni di output vincola la quantizzazione vettoriale. L'obiettivo di questa quantizzazione viene raggiunto quando i vettori di riferimento vicini tra di loro nello spazio di input apparterranno ai neuroni di output relativamente vicini l'un l'altro. Questa relazione ha, quindi, lo scopo di riflettere la posizione relativa dei corrispettivi vettori di riferimento nello spazio di input.<br />
 La self-organizing map, pertanto, descrive una **topology preserving map**, cioè una mappatura che preserva la posizione relativa tra i punti del dominio. Un esempio famoso di funzione che preserva la topologia sono le così dette **proiezioni di Robinson** della superficie di una sfera rispetto al piano, le quali vengono usate per costruire le mappe del globo. Attraverso l'uso di queste funzioni, le relazioni di posizione tra i vari punti vengono conservate approssimativamente, anche se la proporzione tra le distanze di due punti nella proiezione e tra le distanze di due punti nella sfera è tanto più grande quanto più ci si allontana dall'equatore.<br />
 Il vantaggio nell'usare queste funzioni risiede nel fatto che esse permettono di mappare strutture multidimensionali in spazi con dimensioni minori.<br />
-Come nel caso dei LVQN, il processo di apprendimento delle SOM si basa sul **competitive training**. Uno alla volta, ogni singolo pattern in input viene processato ed assegnato al neurone con l'attivazione più alta. Tuttavia, a differenza di quanto accade nell'apprendimento dei LVQN, non solo il neurone vincitore viene aggiornato, ma tutti i suoi vicini (sebbene in misura minore). In questo modo si ottiene che i vettori di riferimento di neuroni vicini non si spostino arbitrariamente lontano l'uno dall'altro, mantenendo così la topologia dello spazio di input.<br />
+Come nel caso delle LVQN, il processo di apprendimento delle SOM si basa sul **competitive training**. Uno alla volta, ogni singolo pattern in input viene processato ed assegnato al neurone con l'attivazione più alta. Tuttavia, a differenza di quanto accade nell'apprendimento delle LVQN, non solo il neurone vincitore viene aggiornato, ma tutti i suoi vicini (sebbene in misura minore). In questo modo si ottiene che i vettori di riferimento di neuroni vicini non si spostino arbitrariamente lontano l'uno dall'altro, mantenendo così la topologia dello spazio di input.<br />
 Un'ulteriore differenza importante con il learning vector quantization risiede nel fatto che le SOM sono quasi esclusivamente utilizzate per le free learning task.<br />
-Per trovare la corretta funzione che preservi la topologia, si utilizza la seguente regola di apprendimento, la quale costituisce una generalizzazione dell'attraction rule presentata nel caso dei LVQN:
+Per trovare la corretta funzione che preservi la topologia, si utilizza la seguente regola di apprendimento, la quale costituisce una generalizzazione dell'attraction rule presentata nel caso delle LVQN:
 
 $$\mathbf{r}^{new} = \mathbf{r}^{old} + \eta(t) \cdot f_{nb}(d_{neuroni}(u,u_*),\rho(t))\cdot(\mathbf{x} - \mathbf{r}^{old})$$
 
-dove $\mathbf{x}$ è il training pattern considerato, $\mathbf{r}^{old}$ è il vettore di riferimento del neurone $u$, $u_*$ è il neurone vincitore e $f_{nb}$ è una funzione radiale. Il learning rate $\eta$ è parametrizzato rispetto al tempo perchè varierà con il numero delle iterazioni, in modo da evitare update ciclici. Inoltre, è definito un raggio di vicinanza anch'esso dipendente dal tempo, in modo che si riduca progressivamente l'influenza del centro scelto e permettendo così una più fine approssimazione della topologia.
+dove $\mathbf{x}$ è il training pattern considerato, $\mathbf{r}^{old}$ è il vettore di riferimento del generico neurone $u$, $u_*$ è il neurone vincitore e $f_{nb}$ è una funzione radiale. Il learning rate $\eta$ è parametrizzato rispetto al tempo perchè varierà con il numero delle iterazioni, in modo da evitare update ciclici. Inoltre, è definito un raggio di vicinanza, anch'esso dipendente dal tempo, in modo che si riduca progressivamente l'influenza del centro scelto e permettendo così una più fine approssimazione della topologia.
 
 ----------------------------------------------------------------
 
 ### Hopfield network ###
-Nei precedenti capitoletti ci siamo interessati esclusivamente di feed-forward network, ovvero network rappresentati da un grafo aciclico. Esistono, tuttavia, in letteratura alcuni esempi di *recurrent network*, ovvero network il cui grafo contiene dei cicli diretti. Una dei più semplici modelli di recurrent network è quello degli *Hopfield network* (in quello che segue HN). Una prima differenza degli HN rispetto agli  altri ANN è che tutti i neuroni sono sia neuroni di input che di output. Non esistono, inoltre, neuroni nascosti. Ogni neurone è connesso ad ogni altro neurone (sono esclusi cappi) e i pesi delle connessioni sono simmetrici. La funzione di input di ogni neurone è la somma pesata degli output degli altri neuroni:
+Nei precedenti capitoletti ci siamo interessati esclusivamente di feed-forward network, ovvero network rappresentati da un grafo aciclico. Esistono, tuttavia, in letteratura alcuni esempi di **recurrent network**, ovvero network il cui grafo contiene dei cicli diretti. Una dei più semplici modelli di recurrent network è quello delle **Hopfield network** (in seguito HN). Una prima differenza delle HN rispetto agli  altre ANN è che tutti i neuroni sono sia neuroni di input che di output. Non esistono, inoltre, neuroni nascosti. Ogni neurone è connesso ad ogni altro neurone (sono esclusi cappi) e i pesi delle connessioni sono simmetrici. La funzione di input di ogni neurone è la somma pesata degli output degli altri neuroni:
 
 $$f_{(net)}^u(\mathbf{w},\mathbf{i}) = \sum_{v \in U - \{u\}} w_{uv} out_v$$
 
@@ -698,7 +698,7 @@ $$f_{(act)}^u(net_u,\theta_u) = \begin{cases}
                 -1 \quad \text{se} \quad net_u < \theta_u
                               \end{cases}$$
 
-Mentre la funzione di output è la funzione identità. Possiamo, quindi, rappresentare un HN attraverso la sua matrice dei pesi:
+Mentre la funzione di output è la funzione identità. Possiamo, quindi, rappresentare una HN attraverso la sua matrice dei pesi:
 
 $$\mathbf{W} = \begin{bmatrix} 
             0 & w_{u_1 u_2} & \dots & w_{u_1 u_n} \\
@@ -707,20 +707,21 @@ $$\mathbf{W} = \begin{bmatrix}
             w_{u_n u_1} & w{u_n u_2} & \dots & 0
             \end{bmatrix}$$
 
-Il comportamento degli HN può cambiare a seconda che i neuroni vengano aggiornati in modo sequenziale o parallelo. Se decidiamo di aggiornarli in parallelo può capitare che non si raggiunga mai uno stato stabile, ma il valore continui ad oscillare. Il teorema di convergenza ci assicura, invece, che nel caso li si aggiorni in modo sequenziale, si riesce sempre a raggiungere uno stato stabile.
+Il comportamento delle HN può cambiare a seconda che i neuroni vengano aggiornati in modo sequenziale o parallelo. Se si decidesse di aggiornarli in parallelo, potrebbe capitare che non si raggiunga mai uno stato stabile ma che, infatti, il valore continui ad oscillare. Il teorema di convergenza assicura, invece, che nel caso si aggiorni i neuroni in modo sequenziale, si riesca sempre a raggiungere uno stato stabile.
 
-Se i neuroni di un HN sono aggiornati in modo asincrono allora uno stato stabile viene raggiunto al massimo in $n\cdot 2^n$ passi, dove $n$ è il numero dei neuroni.
+Se i neuroni di un HN sono aggiornati in modo asincrono, allora viene raggiunto  uno stato stabile al massimo in $n\cdot 2^n$ passi, dove $n$ è il numero dei neuroni.
 
 La prova del teorema si basa sul calcolo dell'energia del sistema:
 
 $$E = -\frac{1}{2} \sum_{u,v \in U, u \neq v} w_{uv}act_u act_v + \sum_{u \in U} \theta_u act_u$$
 
-Si può osservare, infatti, che il sistema può solo evolversi da uno stato con energia maggiore ad uno con energia minore. Uno stato stabile sarà un minimo locale della funzione energia. Possiamo sfruttare questo teorema per utilizzare gli HN come memorie associative, collegando un dato allo stato stabile raggiunto dopo averlo fatto processare del network. Allo stesso modo, possiamo utilizzare gli HN per calcolare problemi di ottimizzazione. Sarà sufficiente in questo caso trasformare la funzione da minimizzare in una funzione energia di un HN ed osservare gli stati stabili (aka i minimi della funzione energia) raggiunti. Per evitare di rimanere intrappolati in minimi locali è opportuno rinizializzare varie volte il network in modo randomico e ripetere gli aggiornamenti fino alla convergenza.
+Si può osservare, infatti, che il sistema può solo evolversi da uno stato con energia maggiore ad uno con energia minore. Uno stato stabile sarà un minimo locale della funzione energia. E' possibile sfruttare questo teorema per utilizzare le HN come memorie associative, collegando un dato allo stato stabile raggiunto dopo averlo fatto processare del network. Allo stesso modo, è possibile utilizzare le HN per calcolare problemi di ottimizzazione. Sarà sufficiente, in questo caso, trasformare la funzione da minimizzare in una funzione energia di una HN ed osservare gli stati stabili (cioè i minimi della funzione energia) raggiunti.<br />
+Per evitare di rimanere intrappolati in minimi locali è opportuno nizializzare il network in modo randomico varie volte e ripetere gli aggiornamenti fino al raggiungimento della convergenza.
 
 ----------------------------------------------------------------
 
 ### Boltzmann machines ###
-Le macchine di Boltzmann (in quello che segue BM) possono considerarsi in tutto simili a degli HN, salvo che possono contenere neuroni nascosti e differiscono nella procedura di aggiornamento. Come nel caso degli HN, per risolvere problemi di ottimizzazione ci si basa sul fatto che è possibile definire una funzione energia associata ad ogni stato. Grazie a questa funzione energia si definisce una distribuzione di probabilità (di Boltzmann) rispetto agli stati del network:
+Le macchine di Boltzmann (in seguito BM) possono considerarsi in tutto simili a delle HN, salvo che possono contenere neuroni hidden e differiscono nella procedura di aggiornamento. Come nel caso delle HN, per risolvere problemi di ottimizzazione ci si basa sul fatto che è possibile definire una funzione energia associata ad ogni stato. Grazie a questa funzione energia, si definisce una distribuzione di probabilità (di Boltzmann) rispetto agli stati del network:
 
 $$P(\mathbf{s}) = \frac{1}{2} e^{-\frac{E(\mathbf{s})}{kT}}$$
 
@@ -732,7 +733,7 @@ dove
 
 $$\Delta E_u = E_{act_u = 1} - E_{act_u = 0} = \sum_{v \in U - \{u\}} w_{uv} act_v - \theta_u$$
 
-La procedura di aggiornamento chiamata *Markov-chain Monte Carlo* prevede di scegliere randomicamente un neurone e calcolare il suo differenziale energetico e, con questo, la probabilità di attivazione. Questa stessa procedura viene ripetuta varie volta fino alla convergenza del sistema. La convergenza verso uno stato stabile è garantita dal fatto che la temperatura del sistema non cresce nel tempo, ma diminuisce. Ad un certo punto si raggiungerà uno stato stabile, anche detto *equilibrio termico* del sistema, che rappresenterà un minimo (possibilmente locale) della funzione. Bisogna notare che una BM potrà calcolare in modo efficace una distribuzione di probabilità se gli esempi forniti sono compatibili con una distribuzione di Boltzmann. Per mitigare questa restrizione si dividono i neuroni di una BM tra neuroni *visibili*, che ricevono i segnali di input, e *nascosti*, la cui attivazione non dipende direttamente dal dataset permettendo un adattamento più flessibile ai pattern di allenamento. 
+La procedura di aggiornamento chiamata é **Markov-chain Monte Carlo** prevede di scegliere randomicamente un neurone e calcolare il suo differenziale energetico e, con questo, la probabilità di attivazione. Questa stessa procedura viene ripetuta varie volta fino alla convergenza del sistema. La convergenza verso uno stato stabile è garantita dal fatto che la temperatura del sistema non cresce nel tempo, ma diminuisce. Ad un certo punto si raggiungerà uno stato stabile, anche detto *equilibrio termico* del sistema, che rappresenterà un minimo (possibilmente locale) della funzione. Bisogna notare che una BM potrà calcolare in modo efficace una distribuzione di probabilità se gli esempi forniti sono compatibili con una distribuzione di Boltzmann. Per mitigare questa restrizione si dividono i neuroni di una BM tra neuroni *visibili*, che ricevono i segnali di input, e *nascosti*, la cui attivazione non dipende direttamente dal dataset permettendo un adattamento più flessibile ai pattern di allenamento. 
 
 ----------------------------------------------------------------
  
