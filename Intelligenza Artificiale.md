@@ -599,17 +599,32 @@ La fase di training avviene come nel caso dei MLP attraverso gradient descent e 
 
 ----------------------------------------------------------------
 
-### Learning vector quantization ###
-Fino ad ora si è posto il focus sulle fixed learning task al fine di descrivere l'apprendimento delle ANN: il successo dell'apprendimento viene misurato, come già descritto, dall'adeguatezza con cui il network approssima gli output desiderati.<br />
-Tuttavia, non si è sempre in grado di intuire quale output aspettarsi per ogni input nel dataset a disposizione. L'obiettivo di una rete neurale, in questi casi, sarà di classificare, o clusterizzare, i dati in input senza avere un'indicazione su cosa si stia cercando.<br />
-La **learning vector quantization** è una tecnica che aiuta ad operare il raggruppamento in modo automatico, trovando una adeguata tassellazione dello spazio di input. Come nel caso dell'algoritmo c-means, i vari cluster verranno rappresentati da punti detti **centri**, scelti tra quelli interni al dataset. Ognuno di questi centri sarà posizionato in modo tale da giacere circa nel mezzo del cloud di dati che costituisce il cluster.<br />
-La differenza con la tecnica c-means riguarda il processing delle informazioni: La learningvector quantization processa i punti uno ad uno ed adatta solo un vettore di riferimento per data point.
+### Self-organizing maps ###
+Le **self-organizing maps** (o **Kohonen feature maps**) sono delle feed-forward network a due layer le quali possono essere interpretate come RBFN prive di output layer o, piuttosto, l'hidden layer di una RBFN è già l'output lyer di una SOM.<br />
+La $f_{(net)}$ dei neuroni di output è una funzione di distanza tra il vettore di input e quello dei pesi, e la $f_{(act)}$ è una funzione radiale. La $f_{(out)}$ è la funzione identità, anche se l'output può essere reso discreto in accordo al principio del **winner-takes-all**, ossia il neurone con la massima attivazione restituirà come output il valore $1$ mentre tutti gli altri neuroni restituiranno come output il valore $0$.<br />
+Viene inoltre definita una **relazione di vicinanza** tra i neuroni dell'output layer, descritta da una funzione di distanza:
 
-----------------------------------------------------------------
+$$d_{neuroni} : U_{out} \times U_{out} \to \mathbb{R}^+$$
 
-### Learning vector quantization network ###
+Questa funzione assegna un numero reale non negativo ad ogni coppia di neuroni di input. Come conseguenza, una SOM viene considerata come una rete neurale a due layer, priva di neuroni hidden.
+
+![[images/grid.png]]
+
+Analogamente alle RBFN, i pesi delle connessioni dai neuroni di input ai neuroni di output definiscono le coordinate di un **centro**, dal quale viene misurata a distanza di un pattern di input. Questo centro è spesso chiamato **reference vector** o **vettore di riferimento**.<br />
+Maggiore la vicinanza di un pattern di input ad un vettore di riferimento, maggiore sarà il valore dell'attivazione del neurone corrispondente. Tipicamente, tutti i neuroni di output avranno la stessa $f_{net}$ e la stessa $f_{act}$, con lo stesso **raggio di riferimento** $\sigma$.<br />
+Questa relazione può essere rappresentata graficamente da una griglia bidimensionale, nella quale ogni punto identifica un neurone di output.<br />
+La relazione di vicinanza potrebbe anche essere assente, condizione che viene rappresentata da un'estrema misura della distanza tra i neuroni: ogni neurone misurerà distanza $0$ da sè stesso e distanza infinita da tutti gli altri neuroni.<br />
+Se una relazione di vicinanza è assente e l'output è discretizzato (cioè il neurone con l'attivazione più alta restituisce $1$ mentre tutti gli altri neuroni restituiscono $0$), una self-organizing map descrive una **quantizzazione vettoriale** dello spazio di input: lo spazio di input p diviso in tante regioni quanti i neuroni di output. Questo risultato è ottenuto assegnando ad un neurone di output tutti i punti dello spazio di input per i quali il neurone restituisce il valore di attivazione più alto tra tutti i neuroni della rete.<br />
+Questa tassellazione in regioni può essere rappresentata da un **diagramma di Voronoi.** Per un input bidimensionale, i punti indicheranno la posizione dei vettori di riferimento mentre le linee indicheranno le divisioni nelle varie regioni.<br />
+La relazione di vicinanza dei neuroni di output vincola la quantizzazione vettoriale. Infatti, l'obiettivo di questa quantizzazione viene raggiunto quando i vettori di riferimento vicini tra di loro nello spazio di input apparterranno ai neuroni di output relativamente vicini l'un l'altro. Questa relazione ha, quindi, lo scopo di riflettere la posizione relativa dei corrispettivi vettori di riferimento nello spazio di input.<br />
+La self-organizing map, pertanto, descrive una **topology preserving map**, cioè una mappatura che preserva la posizione relativa tra i punti del dominio.<br />
+Un esempio famoso di funzione che preserva la topologia sono le così dette **proiezioni di Robinson** della superficie di una sfera rispetto al piano, le quali vengono usate per costruire le mappe del globo. Attraverso l'uso di queste funzioni, le relazioni di posizione tra i vari punti vengono conservate approssimativamente, anche se la proporzione tra le distanze di due punti nella proiezione e tra le distanze di due punti nella sfera è tanto più grande quanto più ci si allontana dall'equatore.<br />
+Il vantaggio nell'usare queste funzioni risiede nel fatto che esse permettono di mappare strutture multidimensionali in spazi con dimensioni minori.
+
+Al fine di spiegare il training delle self-organizing map, è necessario introdurre prima la **learning vector quantization**, una tecnica che aiuta ad operare il raggruppamento in modo automatico, trovando una adeguata tassellazione dello spazio di input.<br />
+Come nel caso dell'algoritmo c-means, i vari cluster verranno rappresentati da punti detti **centri**, posizionati in modo tale da giacere circa nel mezzo del cloud di dati che costituisce il cluster.<br />
 Per calcolare la learning vector quantization si utilizzerà una network feed-forward a due layer, chiamata **learning vector quantization network** (in seguito LVQN).<br />
-Questo tipo particolare di network può essere visto come una RBFN avente il layer di output al posto dell' hidden layer. Come nel caso delle RBFN si avrà, infatti, che la funzione di input del layer di output sarà una funzione della distanza del vettore di input dal vettore dei pesi. Allo stesso modo, la funzione di attivazione dei neuroni di output sarà una funzione radiale.<br />
+Questo tipo particolare di network può essere visto anch'esso come una RBFN avente il layer di output al posto dell' hidden layer. Come nel caso delle RBFN si avrà, infatti, che la funzione di input del layer di output sarà una funzione della distanza del vettore di input dal vettore dei pesi. Allo stesso modo, la funzione di attivazione dei neuroni di output sarà una funzione radiale.<br />
 La differenza, nel caso dei LVQN, risiede nella $f_{(out)}$ dei neuroni di output, la quale non è la semplice funzione identità, ma è una funzione la quale propaga il messaggio solo se l'attivazione del neurone è quella di valore massimo tra le attivazioni dei neuroni di output. Se più di un'unità restituisce il valore massimo, ne viene scelta una secondo un fashion random, mentre le altre vengono poste a zero (principio del **winner-takes-all**).
 
 $$f^u_{out} (act_u) = \begin{cases}
@@ -617,14 +632,13 @@ $$f^u_{out} (act_u) = \begin{cases}
                     0 \quad \text{altrimenti}
                     \end{cases}$$
 
-Un'altra differenza rispetto all'algoritmo c-means riguarda il metodo attraverso cui i centri vengono aggiornati. In questo caso, infatti, i punti nel dataset vengono processati uno ad uno. La procedura viene chiamata **competitive learning**: ogni input viene conteso dai vari neuroni di output, e viene assegnato al neurone con il valore di attivazione più alto. Il neurone vincitore viene successivamente adattato, in modo che il suo vettore di riferimento venga spostato. Se la classe dei data point e la classe del vettore di riferimento del neurone vincitore coincidono, viene applicata la seguente regola:
+Un'altra differenza rispetto all'algoritmo c-means riguarda il metodo attraverso cui i centri vengono aggiornati. In questo caso, infatti, i punti nel dataset vengono processati uno ad uno. Questa procedura è conosciuta con il nome di **competitive learning**: mentre nel c-means clustering i due step di assegnamento dei punti ai cluster e il ricalcolo dei centri di cluster come centri di gravità erano eseguiti in maniera alternata, in questo caso ogni input viene conteso dai vari neuroni di output e viene assegnato al neurone con il valore di attivazione più alto. Il neurone vincitore viene successivamente adattato, in modo che il suo vettore di riferimento venga spostato. Se la classe dei data point e la classe del vettore di riferimento del neurone vincitore coincidono, viene applicata la seguente regola:
+ $$\text{Attraction Rule: } \quad r^{(new)} = r^{(old)} + \eta(\mathbf{x} - \mathbf{r}^{(old)})$$
 
-- **Attraction rule**: $\mathbf{r}^{new} = \mathbf{r}^{old} + \eta(\mathbf{x} - \mathbf{r}^{old})$;
-
-dove $\mathbf{x}$ è l'input (il training pattern), $\mathbf{r}$ è il vettore di riferimento per il neurone vincitore e $\eta$ è il learning rate, tale per cui $0 < \eta <1$.<br />
+dove $\mathbf{x}$ è il training pattern, $\mathbf{r}$ è il vettore di riferimento del neurone vincitore per $\mathbf{x}$ ed $\eta$ è il learning rate, tale per cui $0 < \eta <1$.<br />
 Con il termine "coincidono", si intende, cioè, il caso in cui il vettore di riferimento si muova verso il training pattern o, in altre parole, se il vettore venga attratto dal training pattern. Tuttavia, se le classi dei data point e il vettore di riferimento differiscono, viene applicata la seguente regola:
 
-- **Repulsion rule**: $\mathbf{r}^{new} = \mathbf{r}^{old} -\eta(\mathbf{x} - \mathbf{r}^{old})$;
+$$\text{Repulsion rule: }\quad \mathbf{r}^{new} = \mathbf{r}^{old} -\eta(\mathbf{x} - \mathbf{r}^{old})$$
 
 In questo modo i vettori di riferimento si muovono verso gruppi di data point etichettati allo stesso modo.
 
@@ -634,7 +648,7 @@ Fino ad ora si è sottointeso che il learning rate rimanesse fisso per la durata
 
 ![[images/oscill.png]]
 
-Nonostante un time-dependent learning rate garantisca che la procedura converga, è bene tenere a mente che il learning rate non deve decrementare troppo velocemente, poihcp altrimenti la procedura potrebbe terminare in quello che viene chiamato **starvation**, cioè la casistica nella quale i passi di adattamento divengono molto piccoli rapidamente, così che il vettore di riferimento non raggiunga mai la sua destinazione naturale.<br />
+Nonostante un time-dependent learning rate garantisca che la procedura converga, è bene tenere a mente che il learning rate non deve decrementare troppo velocemente, poichè altrimenti la procedura potrebbe terminare in quello che viene chiamato **starvation**, cioè la casistica nella quale i passi di adattamento divengono molto piccoli rapidamente, così che il vettore di riferimento non raggiunga mai la sua destinazione naturale.<br />
 Un altro problema con la versione classica di questo algoritmo è che il processo di adattamento potrebbe portare i vettori di riferimento ad allontanarsi sempre di più tra loro. Per evitare questo effetto indesiderabile il quale ostacola la convergenza dell'algoritmo, si prevede una così detta **window rule** tale per cui un vettore di riferimento viene adattato solo se il punto $\mathbf{p}$ giace vicino al bordo della classificazione, ossia alla (iper-)superficie che separa le regioni contigue delle due classi. La nozione vaga di vicinanza viene formalizzata come segue:
 
 $$\min(\frac{d(\mathbf{p},\mathbf{r_j})}{d(\mathbf{p},\mathbf{r_k}},\frac{d(\mathbf{p},\mathbf{r_k})}{d(\mathbf{p},\mathbf{r_j})}) > \theta \quad \text{dove} \quad \theta = \frac{1 - \xi}{1 + \xi}$$
@@ -654,29 +668,8 @@ $$L(\mathbf{X},y,C) = \prod_{j=1}^n f_{\mathbf{X}_j,Y_j} (\mathbf{x},y_j,C)$$
 
 Il problema si traduce, ora, nel trovare i valori per $Y$. L'approccio utilizzato è quello di sceglierne di randomici e considerare la distribuzione di probabilità sui possibili valori. $L(\mathbf{X},y,C)$ diviene una variabile randomica della quale è possibile massimizzare il valore atteso. Per farlo, è possibile fissare $C$ in alcuni termini e computare iterativamente migliori approssimazioni.
 
-----------------------------------------------------------------
-
-### Self-organizing maps ###
-Le **self-organizing maps** (o **Kohonen feature maps**) sono delle feed-forward network a due layer le quali possono essere interpretate come generalizzazione delle LVQN, le cui connessioni tra neuroni hidden e neuroni di output sono, però, limitate a quelle tra neuroni vicini.<br />
-Come nel caso delle LVQN, la $f_{(net)}$ dei neuroni di output è una funzione di distanza tra il vettore di input e quello dei pesi, e la $f_{(act)}$ è una funzione radiale. Una differenza rispetto alle LVQN è che la $f_{(out)}$ è la funzione identità, anche se l'output può essere reso discreto in accordo al principio del **winner-takes-all**, ossia il neurone con la massima attivazione restituisce output $1$ mentre tutti gli altri neuroni restituiscono output $0$.<br />
-Viene inoltre definita una **relazione di vicinanza** tra i neuroni dell'output layer, descritta da una funzione di distanza:
-
-$$d_{neuroni} : U_{out} \times U_{out} \to \mathbb{R}^+$$
-
-Questa funzione assegna un numero reale non negativo ad ogni coppia di neuroni di input. Come conseguenza, una SOM viene considerata come una rete neurale a due layer, priva di neuroni hidden.
-
-![[images/grid.png]]
-
-Analogamente alle RBFN, i pesi delle connessioni dai neuroni di input ai neuroni di output definiscono le coordinate di un **centro**, dal quale viene misurata a distanza di un pattern di input. Questo centro è spesso chiamato **reference vector** o **vettore di riferimento**.<br />
-Maggiore la vicinanza di un pattern di input ad un vettore di riferimento, maggiore sarà il valore dell'attivazione del neurone corrispondente. Tipicamente, tutti i neuroni di output avranno la stessa $f_{net}$ e la stessa $f_{act}$, con lo stesso **raggio di riferimento** $\sigma$.<br />
-Questa relazione può essere rappresentata graficamente da una griglia bidimensionale, nella quale ogni punto identifica un neurone di output.<br />
-La relazione di vicinanza potrebbe anche essere assente, condizione che viene rappresentata da un'estrema misura della distanza tra i neuroni: ogni neurone misurerà distanza $0$ da sè stesso e distanza infinita da tutti gli altri neuroni.<br />
-Se una relazione di vicinanza è assente e l'output è discretizzato, una self-organizing map descrive una **quantizzazione vettoriale** dello spazio di input. Questo risultato è ottenuto assegnando ad un neurone di output tutti i punti dello spazio di input per i quali il neurone restituisce il valore di attivazione più alto tra tutti i neuroni della rete.<br />
-Questa tassellazione in regioni può essere rappresentata da un **diagramma di Voronoi.** Per un input bidimensionale, i punti indicheranno la posizione dei vettori di riferimento mentre le linee indicheranno le divisioni nelle varie regioni.<br />
-La relazione di vicinanza dei neuroni di output vincola la quantizzazione vettoriale. L'obiettivo di questa quantizzazione viene raggiunto quando i vettori di riferimento vicini tra di loro nello spazio di input apparterranno ai neuroni di output relativamente vicini l'un l'altro. Questa relazione ha, quindi, lo scopo di riflettere la posizione relativa dei corrispettivi vettori di riferimento nello spazio di input.<br />
-La self-organizing map, pertanto, descrive una **topology preserving map**, cioè una mappatura che preserva la posizione relativa tra i punti del dominio. Un esempio famoso di funzione che preserva la topologia sono le così dette **proiezioni di Robinson** della superficie di una sfera rispetto al piano, le quali vengono usate per costruire le mappe del globo. Attraverso l'uso di queste funzioni, le relazioni di posizione tra i vari punti vengono conservate approssimativamente, anche se la proporzione tra le distanze di due punti nella proiezione e tra le distanze di due punti nella sfera è tanto più grande quanto più ci si allontana dall'equatore.<br />
-Il vantaggio nell'usare queste funzioni risiede nel fatto che esse permettono di mappare strutture multidimensionali in spazi con dimensioni minori.<br />
-Come nel caso delle LVQN, il processo di apprendimento delle SOM si basa sul **competitive training**. Uno alla volta, ogni singolo pattern in input viene processato ed assegnato al neurone con l'attivazione più alta. Tuttavia, a differenza di quanto accade nell'apprendimento delle LVQN, non solo il neurone vincitore viene aggiornato, ma tutti i suoi vicini (sebbene in misura minore). In questo modo si ottiene che i vettori di riferimento di neuroni vicini non si spostino arbitrariamente lontano l'uno dall'altro, mantenendo così la topologia dello spazio di input.<br />
+Le SOM sono allenate, come per la vector quantization, attraverso il **competitive learning**. I training pattern sono visitati uno dopo l'altro e, per ognuno di essi, viene determinato il neurone il quale restituisce l'attivazione maggiore. Nelle SOM è obbligatorio che tutti i neuroni di output utilizzino la stessa funzione di distanza e la stessa funzione di attivazione.<br />
+Tuttavia, a differenza di quanto accade nell'apprendimento delle LVQN, non solo il neurone vincitore viene aggiornato, ma tutti i suoi vicini (sebbene in misura minore). In questo modo si ottiene che i vettori di riferimento di neuroni vicini non si spostino arbitrariamente lontano l'uno dall'altro, mantenendo così la topologia dello spazio di input.<br />
 Un'ulteriore differenza importante con il learning vector quantization risiede nel fatto che le SOM sono quasi esclusivamente utilizzate per le free learning task.<br />
 Per trovare la corretta funzione che preservi la topologia, si utilizza la seguente regola di apprendimento, la quale costituisce una generalizzazione dell'attraction rule presentata nel caso delle LVQN:
 
