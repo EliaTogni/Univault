@@ -603,9 +603,9 @@ La fase di training avviene come nel caso dei MLP attraverso gradient descent e 
 ----------------------------------------------------------------
 
 ### Self-organizing maps ###
-Le **self-organizing maps** (o **Kohonen feature maps**) sono delle feed-forward network a due layer le quali possono essere interpretate come RBFN prive di output layer o, piuttosto, l'hidden layer di una RBFN è già l'output lyer di una SOM.<br />
-La $f_{(net)}$ dei neuroni di output è una funzione di distanza tra il vettore di input e quello dei pesi, e la $f_{(act)}$ è una funzione radiale. La $f_{(out)}$ è la funzione identità, anche se l'output può essere reso discreto in accordo al principio del **winner-takes-all**, ossia il neurone con la massima attivazione restituirà come output il valore $1$ mentre tutti gli altri neuroni restituiranno come output il valore $0$.<br />
-Viene inoltre definita una **relazione di vicinanza** tra i neuroni dell'output layer, descritta da una funzione di distanza:
+Le **self-organizing maps** (o **Kohonen feature maps**) sono delle feed-forward network a due layer le quali possono essere interpretate come RBFN prive di output layer o, piuttosto, l'hidden layer di una RBFN è già l'output layer di una SOM.<br />
+La $f_{(net)}$ dei neuroni di output è una funzione di distanza tra il vettore di input e quello dei pesi e la $f_{(act)}$ è una funzione radiale. La $f_{(out)}$ è la funzione identità, anche se l'output può essere reso discreto in accordo al principio del **winner-takes-all**, ossia il neurone con la massima attivazione restituirà come output il valore $1$ mentre tutti gli altri neuroni restituiranno come output il valore $0$.<br />
+Viene, inoltre, definita una **relazione di vicinanza** tra i neuroni dell'output layer, descritta da una funzione di distanza:
 
 $$d_{neuroni} : U_{out} \times U_{out} \to \mathbb{R}^+$$
 
@@ -613,11 +613,11 @@ Questa funzione assegna un numero reale non negativo ad ogni coppia di neuroni d
 
 ![[images/grid.png]]
 
-Analogamente alle RBFN, i pesi delle connessioni dai neuroni di input ai neuroni di output definiscono le coordinate di un **centro**, dal quale viene misurata a distanza di un pattern di input. Questo centro è spesso chiamato **reference vector** o **vettore di riferimento**.<br />
+Analogamente alle RBFN, i pesi delle connessioni dai neuroni di input ai neuroni di output definiscono le coordinate di un **centro**, dal quale viene misurata la distanza di un pattern di input. Questo centro è spesso chiamato **reference vector** o **vettore di riferimento**.<br />
 Maggiore la vicinanza di un pattern di input ad un vettore di riferimento, maggiore sarà il valore dell'attivazione del neurone corrispondente. Tipicamente, tutti i neuroni di output avranno la stessa $f_{net}$ e la stessa $f_{act}$, con lo stesso **raggio di riferimento** $\sigma$.<br />
 Questa relazione può essere rappresentata graficamente da una griglia bidimensionale, nella quale ogni punto identifica un neurone di output.<br />
 La relazione di vicinanza potrebbe anche essere assente, condizione che viene rappresentata da un'estrema misura della distanza tra i neuroni: ogni neurone misurerà distanza $0$ da sè stesso e distanza infinita da tutti gli altri neuroni.<br />
-Se una relazione di vicinanza è assente e l'output è discretizzato (cioè il neurone con l'attivazione più alta restituisce $1$ mentre tutti gli altri neuroni restituiscono $0$), una self-organizing map descrive una **quantizzazione vettoriale** dello spazio di input: lo spazio di input p diviso in tante regioni quanti i neuroni di output. Questo risultato è ottenuto assegnando ad un neurone di output tutti i punti dello spazio di input per i quali il neurone restituisce il valore di attivazione più alto tra tutti i neuroni della rete.<br />
+Se una relazione di vicinanza è assente e l'output è discretizzato (cioè il neurone con l'attivazione più alta restituisce $1$ mentre tutti gli altri neuroni restituiscono $0$), una self-organizing map descrive una **quantizzazione vettoriale** dello spazio di input: lo spazio di input è diviso in tante regioni quanti i neuroni di output. Questo risultato è ottenuto assegnando ad un neurone di output tutti i punti dello spazio di input per i quali il neurone restituisce il valore di attivazione più alto tra tutti i neuroni della rete.<br />
 Questa tassellazione in regioni può essere rappresentata da un **diagramma di Voronoi.** Per un input bidimensionale, i punti indicheranno la posizione dei vettori di riferimento mentre le linee indicheranno le divisioni nelle varie regioni.<br />
 La relazione di vicinanza dei neuroni di output vincola la quantizzazione vettoriale. Infatti, l'obiettivo di questa quantizzazione viene raggiunto quando i vettori di riferimento vicini tra di loro nello spazio di input apparterranno ai neuroni di output relativamente vicini l'un l'altro. Questa relazione ha, quindi, lo scopo di riflettere la posizione relativa dei corrispettivi vettori di riferimento nello spazio di input.<br />
 La self-organizing map, pertanto, descrive una **topology preserving map**, cioè una mappatura che preserva la posizione relativa tra i punti del dominio.<br />
@@ -627,7 +627,7 @@ Il vantaggio nell'usare queste funzioni risiede nel fatto che esse permettono di
 Al fine di spiegare il training delle self-organizing map, è necessario introdurre prima la **learning vector quantization**, una tecnica che aiuta ad operare il raggruppamento in modo automatico, trovando una adeguata tassellazione dello spazio di input.<br />
 Come nel caso dell'algoritmo c-means, i vari cluster verranno rappresentati da punti detti **centri**, posizionati in modo tale da giacere circa nel mezzo del cloud di dati che costituisce il cluster.<br />
 Per calcolare la learning vector quantization si utilizzerà una network feed-forward a due layer, chiamata **learning vector quantization network** (in seguito LVQN).<br />
-Questo tipo particolare di network può essere visto anch'esso come una RBFN avente il layer di output al posto dell' hidden layer. Come nel caso delle RBFN si avrà, infatti, che la funzione di input del layer di output sarà una funzione della distanza del vettore di input dal vettore dei pesi. Allo stesso modo, la funzione di attivazione dei neuroni di output sarà una funzione radiale.<br />
+Questo tipo particolare di network può essere visto anch'esso come una RBFN avente il layer di output al posto dell'hidden layer. Come nel caso delle RBFN si avrà, infatti, che la funzione di input del layer di output sarà una funzione della distanza del vettore di input dal vettore dei pesi. Allo stesso modo, la funzione di attivazione dei neuroni di output sarà una funzione radiale.<br />
 La differenza, nel caso dei LVQN, risiede nella $f_{(out)}$ dei neuroni di output, la quale non è la semplice funzione identità, ma è una funzione la quale propaga il messaggio solo se l'attivazione del neurone è quella di valore massimo tra le attivazioni dei neuroni di output. Se più di un'unità restituisce il valore massimo, ne viene scelta una secondo un fashion random, mentre le altre vengono poste a zero (principio del **winner-takes-all**).
 
 $$f^u_{out} (act_u) = \begin{cases}
@@ -647,11 +647,11 @@ In questo modo i vettori di riferimento si muovono verso gruppi di data point et
 
 ![[images/adapt.png]]
 
-Fino ad ora si è sottointeso che il learning rate rimanesse fisso per la durata dell'apprendimento, tuttavia esistono delle situazioni in cui un learning rate costante può portare ad alcuni problemi. Una di esse è rappresentata dal caso nel quale il vettore di riferimento oscilla ciclicamente verso uno dei quattro punti. Un metodo semplice per risolvere il problema è quello di decrementare il learning rate al crescere delle iterazioni (**time-dependent leanring rate**). In questo modo, il movimento circolare collassa col passare del tempo in una spirale, facendo così convergere l'algoritmo.
+Fino ad ora si è sottointeso che il learning rate rimanesse fisso per la durata dell'apprendimento, tuttavia esistono delle situazioni in cui un learning rate costante può portare ad alcuni problemi. Una di esse è rappresentata dal caso nel quale il vettore di riferimento oscilla ciclicamente verso uno dei punti possibili. Un metodo semplice per risolvere il problema è quello di decrementare il learning rate al crescere delle iterazioni (**time-dependent learning rate**). In questo modo, il movimento circolare collassa in una spirale con il passare del tempo, facendo così convergere l'algoritmo.
 
 ![[images/oscill.png]]
 
-Nonostante un time-dependent learning rate garantisca che la procedura converga, è bene tenere a mente che il learning rate non deve decrementare troppo velocemente, poichè altrimenti la procedura potrebbe terminare in quello che viene chiamato **starvation**, cioè la casistica nella quale i passi di adattamento divengono molto piccoli rapidamente, così che il vettore di riferimento non raggiunga mai la sua destinazione naturale.<br />
+Nonostante un time-dependent learning rate garantisca che la procedura converga, è bene tenere a mente che il learning rate non deve decrementare troppo velocemente, poichè altrimenti la procedura potrebbe terminare in ciò che viene definito **starvation**, cioè la casistica nella quale i passi di adattamento divengono molto piccoli rapidamente, così che il vettore di riferimento non raggiunga mai la sua destinazione naturale.<br />
 Un altro problema con la versione classica di questo algoritmo è che il processo di adattamento potrebbe portare i vettori di riferimento ad allontanarsi sempre di più tra loro. Per evitare questo effetto indesiderabile il quale ostacola la convergenza dell'algoritmo, si prevede una così detta **window rule** tale per cui un vettore di riferimento viene adattato solo se il punto $\mathbf{p}$ giace vicino al bordo della classificazione, ossia alla (iper-)superficie che separa le regioni contigue delle due classi. La nozione vaga di vicinanza viene formalizzata come segue:
 
 $$\min(\frac{d(\mathbf{p},\mathbf{r_j})}{d(\mathbf{p},\mathbf{r_k}},\frac{d(\mathbf{p},\mathbf{r_k})}{d(\mathbf{p},\mathbf{r_j})}) > \theta \quad \text{dove} \quad \theta = \frac{1 - \xi}{1 + \xi}$$
@@ -672,18 +672,18 @@ $$L(\mathbf{X},y,C) = \prod_{j=1}^n f_{\mathbf{X}_j,Y_j} (\mathbf{x},y_j,C)$$
 Il problema si traduce, ora, nel trovare i valori per $Y$. L'approccio utilizzato è quello di sceglierne di randomici e considerare la distribuzione di probabilità sui possibili valori. $L(\mathbf{X},y,C)$ diviene una variabile randomica della quale è possibile massimizzare il valore atteso. Per farlo, è possibile fissare $C$ in alcuni termini e computare iterativamente migliori approssimazioni.
 
 Le SOM sono allenate, come per la vector quantization, attraverso il **competitive learning**. I training pattern sono visitati uno dopo l'altro e, per ognuno di essi, viene determinato il neurone il quale restituisce l'attivazione maggiore. Nelle SOM è obbligatorio che tutti i neuroni di output utilizzino la stessa funzione di distanza e la stessa funzione di attivazione.<br />
-Tuttavia, a differenza di quanto accade nell'apprendimento delle LVQN, non solo il neurone vincitore viene aggiornato, ma tutti i suoi vicini (sebbene in misura minore). In questo modo si ottiene che i vettori di riferimento di neuroni vicini non si spostino arbitrariamente lontano l'uno dall'altro, mantenendo così la topologia dello spazio di input.<br />
-Un'ulteriore differenza importante con il learning vector quantization risiede nel fatto che le SOM sono quasi esclusivamente utilizzate per le free learning task.<br />
+Tuttavia, a differenza di quanto accade nell'apprendimento delle LVQN, non solo il neurone vincitore viene aggiornato, ma anche tutti i neuroni vicini ad esso (sebbene in misura minore). In questo modo si ottiene che i vettori di riferimento di neuroni vicini non si spostino arbitrariamente lontano l'uno dall'altro, mantenendo così la topologia dello spazio di input.<br />
+Un'ulteriore ed importante differenza con la learning vector quantization risiede nel fatto che le SOM sono quasi esclusivamente utilizzate per le free learning task.<br />
 Per trovare la corretta funzione che preservi la topologia, si utilizza la seguente regola di apprendimento, la quale costituisce una generalizzazione dell'attraction rule presentata nel caso delle LVQN:
 
 $$\mathbf{r}^{new} = \mathbf{r}^{old} + \eta(t) \cdot f_{nb}(d_{neuroni}(u,u_*),\rho(t))\cdot(\mathbf{x} - \mathbf{r}^{old})$$
 
-dove $\mathbf{x}$ è il training pattern considerato, $\mathbf{r}^{old}$ è il vettore di riferimento del generico neurone $u$, $u_*$ è il neurone vincitore e $f_{nb}$ è una funzione radiale. Il learning rate $\eta$ è parametrizzato rispetto al tempo perchè varierà con il numero delle iterazioni, in modo da evitare update ciclici. Inoltre, è definito un raggio di vicinanza, anch'esso dipendente dal tempo, in modo che si riduca progressivamente l'influenza del centro scelto e permettendo così una più fine approssimazione della topologia.
+dove $\mathbf{x}$ è il training pattern considerato, $\mathbf{r}^{old}$ è il vettore di riferimento del generico neurone $u$, $u_*$ è il neurone vincitore e $f_{nb}$ è una funzione radiale. Il learning rate $\eta$ è parametrizzato rispetto al tempo perchè varierà con il numero delle iterazioni, in modo da evitare update ciclici. Inoltre, è definito un raggio di vicinanza $\rho(t)$, anch'esso dipendente dal tempo, il cui scopo è la riduzione progressiva dell'influenza del centro scelto, permettendo così una più fine approssimazione della topologia.
 
 ----------------------------------------------------------------
 
 ### Hopfield network ###
-Nei precedenti capitoletti ci siamo interessati esclusivamente di feed-forward network, ovvero network rappresentati da un grafo aciclico. Esistono, tuttavia, in letteratura alcuni esempi di **recurrent network**, ovvero network il cui grafo contiene dei cicli diretti. Una dei più semplici modelli di recurrent network è quello delle **Hopfield network** (in seguito HN). Una prima differenza delle HN rispetto agli  altre ANN è che tutti i neuroni sono sia neuroni di input che di output. Non esistono, inoltre, neuroni nascosti. Ogni neurone è connesso ad ogni altro neurone (sono esclusi cappi) e i pesi delle connessioni sono simmetrici. La funzione di input di ogni neurone è la somma pesata degli output degli altri neuroni:
+Nei precedenti capitoletti ci siamo interessati esclusivamente di feed-forward network, ovvero network rappresentati da un grafo aciclico. Esistono, tuttavia, in letteratura alcuni esempi di **recurrent network**, ovvero network il cui grafo contiene dei cicli diretti. Uno dei più semplici modelli di recurrent network è quello delle **Hopfield network** (in seguito HN). Una prima differenza delle HN rispetto agli  altre ANN è che tutti i neuroni sono sia neuroni di input che di output. Non esistono, inoltre, neuroni nascosti. Ogni neurone è connesso ad ogni altro neurone (sono esclusi cappi, cioè neuroni connessi a sè stessi) e i pesi delle connessioni sono simmetrici. La funzione di input di ogni neurone è la somma pesata degli output degli altri neuroni:
 
 $$f_{(net)}^u(\mathbf{w},\mathbf{i}) = \sum_{v \in U - \{u\}} w_{uv} out_v$$
 
@@ -694,7 +694,7 @@ $$f_{(act)}^u(net_u,\theta_u) = \begin{cases}
                 -1 \quad \text{se} \quad net_u < \theta_u
                               \end{cases}$$
 
-Mentre la funzione di output è la funzione identità. Possiamo, quindi, rappresentare una HN attraverso la sua matrice dei pesi:
+Infine, la funzione di output è la funzione identità. Possiamo, quindi, rappresentare una HN attraverso la sua matrice dei pesi:
 
 $$\mathbf{W} = \begin{bmatrix} 
             0 & w_{u_1 u_2} & \dots & w_{u_1 u_n} \\
@@ -703,16 +703,16 @@ $$\mathbf{W} = \begin{bmatrix}
             w_{u_n u_1} & w{u_n u_2} & \dots & 0
             \end{bmatrix}$$
 
-Il comportamento delle HN può cambiare a seconda che i neuroni vengano aggiornati in modo sequenziale o parallelo. Se si decidesse di aggiornarli in parallelo, potrebbe capitare che non si raggiunga mai uno stato stabile ma che, infatti, il valore continui ad oscillare. Il teorema di convergenza assicura, invece, che nel caso si aggiorni i neuroni in modo sequenziale, si riesca sempre a raggiungere uno stato stabile.
+Il comportamento delle HN può cambiare a seconda che i neuroni vengano aggiornati in modo sequenziale o parallelo. Se si decidesse di aggiornarli in parallelo, potrebbe capitare che non si raggiunga mai uno stato stabile ma che, infatti, il valore continui ad oscillare. Il teorema di convergenza assicura, invece, che in una HN, nel caso si aggiornino i neuroni in modo sequenziale, si riesca sempre a raggiungere uno stato stabile.
 
 Se i neuroni di un HN sono aggiornati in modo asincrono, allora viene raggiunto  uno stato stabile al massimo in $n\cdot 2^n$ passi, dove $n$ è il numero dei neuroni.
 
 La prova del teorema si basa sul calcolo dell'energia del sistema:
 
-$$E = -\frac{1}{2} \sum_{u,v \in U, u \neq v} w_{uv}act_u act_v + \sum_{u \in U} \theta_u act_u$$
+$$E = -\frac{1}{2} \cdot \Bigg(\sum_{u,v \in U, u \neq v} w_{uv}act_u act_v \Bigg) + \sum_{u \in U} \theta_u act_u $$
 
-Si può osservare, infatti, che il sistema può solo evolversi da uno stato con energia maggiore ad uno con energia minore. Uno stato stabile sarà un minimo locale della funzione energia. E' possibile sfruttare questo teorema per utilizzare le HN come memorie associative, collegando un dato allo stato stabile raggiunto dopo averlo fatto processare del network. Allo stesso modo, è possibile utilizzare le HN per calcolare problemi di ottimizzazione. Sarà sufficiente, in questo caso, trasformare la funzione da minimizzare in una funzione energia di una HN ed osservare gli stati stabili (cioè i minimi della funzione energia) raggiunti.<br />
-Per evitare di rimanere intrappolati in minimi locali è opportuno nizializzare il network in modo randomico varie volte e ripetere gli aggiornamenti fino al raggiungimento della convergenza.
+Si può osservare, infatti, che il sistema può solo evolversi da uno stato con energia maggiore ad uno con energia minore. Uno stato stabile sarà un minimo locale della funzione energia (perchè non è possibile risalire, no way back). E' possibile sfruttare questo teorema per utilizzare le HN come memorie associative, collegando un dato allo stato stabile raggiunto dopo averlo fatto processare dal network. Allo stesso modo, è possibile utilizzare le HN per calcolare problemi di ottimizzazione. Sarà sufficiente, in questo caso, trasformare la funzione da minimizzare in una funzione energia di una HN ed osservare gli stati stabili (cioè i minimi della funzione energia) raggiunti.<br />
+Per evitare di rimanere intrappolati in minimi locali è opportuno inizializzare il network in modo randomico varie volte e ripetere gli aggiornamenti fino al raggiungimento della convergenza.
 
 ----------------------------------------------------------------
 
