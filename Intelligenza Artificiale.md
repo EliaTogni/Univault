@@ -421,13 +421,13 @@ Nel caso in cui si abbia la funzione logistica come $f_{(act)}$, i cambiamenti o
 ![[DerivataFunzioneLogistica.png]]
 
 Il processo che permette di calcolare la correzione necessaria per ogni peso e threshold di ogni singolo neurone dopo aver trovato l'errore viene chiamato **error backpropagation**.<br />
-Si assuma che la funzione di attivazione sia la funzione logistica per ogni neurone $u \in U_{(hidden)} \cup U_{(out)}$ tranne che per quelli di input.
+Si assuma che la funzione di attivazione sia la funzione logistica per ogni neurone $u \in U_{(hidden)} \cup U_{(out)}$ e non per i neuroni di input.
 
 ![[images/backpropagation.png]]
 
 Inizialmente, l'input viene passato ai neuroni di input che lo restituiscono senza modifiche in output al primo degli hidden layer. Ogni neurone dei seguenti layer calcola la somma pesata degli input ed applica al risultato la funzione logistica, generando così l'output che verrà propagato in tutto il network, fino ai neuroni terminali. A questo punto viene calcolata la differenza tra l'output atteso e quello attuale e, dato che la funzione di attivazione è invertibile, è possibile risalire dal vettore di errore a quale fosse l'input che ha condizionato quel particolare errore (la variabile $\delta_u$, nell'immagine). Avendo trasformato l'errore della variabile di output $out_u$ in quello della variabile di input $net_u$, diventa possibile distribuire l'errore (e la correzione necessaria) in modo proporzionale al ruolo del singolo neurone nel calcolo dell' output. L'errore viene propagato a ritroso fino ai neuroni di input. E' utile osservare che, data la forma della funzione logistica, l'errore non può azzerarsi completamente, in quanto il gradiente approssimerà il vettore nullo più l'errore si avvicinerà allo zero.
 
-Se si inizializza il learning rate $\eta$ ad un valore troppo alto, al posto di discendere la curva, si corre il rischio di saltare da un picco della funzione all'altro senza convergere mai al minimo. Inoltre, non è affatto detto che il minimo raggiunto in questo modo sia il minimo globale della funzione. La causa sarà piuttosto da ascrivere alla scelta dei valori iniziali. Una soluzione al problema può essere quella di ripetere l'apprendimento, inizializzando il sistema con una diversa configurazione di pesi e threshold, e scegliere alla fine quale configurazione risulta in un miglior minimo.
+Se si inizializza il learning rate $\eta$ ad un valore troppo alto, al posto di discendere la curva, si corre il rischio di saltare da un picco della funzione all'altro senza convergere mai al minimo. Inoltre, non è affatto detto che il minimo raggiunto in questo modo sia il minimo globale della funzione. La causa sarà piuttosto da ascrivere alla scelta dei valori iniziali. Una soluzione al problema può essere quella di ripetere l'apprendimento, inizializzando il sistema con una diversa configurazione di pesi e threshold, e scegliere alla fine la configurazione risultante in un miglior minimo.
 
 ----------------------------------------------------------------
 
@@ -472,11 +472,13 @@ Il valore $s(u)$ risultante indica quanto importante fosse l'input assegnato al 
 
 ### Deep Learning ###
 E' stato mostrato come un MLP con un solo hidden layer può approssimare ogni funzione continua su $\mathbb{R}^n$ con una precisione arbitraria. Questo risultato, tuttavia, non ha natura costruttiva e può non essere semplice conoscere a priori il numero esatto di neuroni necessari per approssimare una data funzione con un adeguato grado di precisione. Inoltre, a seconda della funzione, questo numero potrebbe assumere dimensioni considerevoli.<br />
-Un esempio esplicativo viene fornito considerando la funzione che calcola la parità su una parola di $n$-bit. L'output sarà $1$ se e solo se nel vettore di input che rappresenta la parola saranno ad $1$ un numero pari di bit. Nel caso si scegliesse di utilizzare un MLP con un solo hidden layer, quest'ultimo conterrà al suo interno $2^{n-1}$ neuroni, in quanto la forma normale disgiuntiva della funzione di parità su $n$-bit non è altro che una disgiunzione di $2^{n-1}$ congiunzioni.<br />
-Se si permettesse, invece, di avere più di un layer, il numero di neuroni crescerà in modo lineare alla dimensione dell'input. Questa constatazione ha portato allo sviluppo del così detto **deep learning**, dove con **profondità** della rete si definisce il più lungo cammino che separa i neuroni di input da quelli di output. Il trade-off sperato consiste nel permettere una maggiore profondità del network in cambio di un miglioramento delle risorse utilizzate nel calcolo e nella costruzione.<br />
+Un esempio esplicativo viene fornito considerando la funzione che calcola la parità su una parola di $n$-bit. L'output sarà $1$ se e solo se il vettore di input che rappresenta la parola conterrà un numero pari di bit con valore $1$. Nel caso si scegliesse di utilizzare un MLP con un solo hidden layer, quest'ultimo conterrà al suo interno $2^{n-1}$ neuroni, in quanto la forma normale disgiuntiva della funzione di parità su $n$-bit non è altro che una disgiunzione di $2^{n-1}$ congiunzioni.<br />
+Se si permettesse, invece, di avere più di un layer, il numero di neuroni crescerà in modo lineare alla dimensione dell'input.<br />
+I training dataset sono necessariamente limitati nella taglia. infatti, un dataset completo per una funzione Booleana $n$-aria necessita di $2^n$ esempi di training.
+Questa constatazione ha portato allo sviluppo del cosìddetto **deep learning**, dove con **profondità** della rete si definisce il più lungo cammino all'interno del grado che descrive la rete. Il trade-off sperato consiste nel permettere una maggiore profondità del network in cambio di un miglioramento delle risorse utilizzate nel calcolo e nella costruzione.<br />
 Il deep learning oltre ad offrire vantaggi porta con se alcune problematiche:
-- **Overfitting**, cioè l'incremento nel numero di neuroni dovuto alla presenza dei molti layer. Esso può avere l'effetto di moltiplicare i parametri in modo sproporzionato;
-- **Vanishing gradient**, infatti durante la propagazione dell'errore il grandiente si riduce dopo ogni layer fino a scomparire.
+- **Overfitting**, cioè l'incremento nel numero di neuroni e, quindi, dei parametri da adattare dovuti alla presenza dei molti layer;
+- **Vanishing gradient**, infatti, durante la propagazione dell'errore, il gradiente si riduce dopo ogni layer fino a scomparire. Il learning nei primi hidden layer può diventare molto lento.
 
 Alcune soluzioni al problema dell'overfitting sono:
 - **Weigth decay**, ossia mettere un tetto massimo ai valori che possono assumere i pesi al fine di prevenire un adattamento troppo preciso al dataset;
@@ -484,7 +486,7 @@ Alcune soluzioni al problema dell'overfitting sono:
 - **Dropout training**, ossia alcuni neuroni degli hidden layer vengono omessi durante l'evoluzione del network.
 
 Il problema del vanishing gradient è dato dal fatto che la funzione di attivazione è una funzione logistica la cui derivata raggiunge al massimo il valore di $\frac{1}{4}$ (il quale è ottenuto per il valore della funzione $0.5$). Di conseguenza, ogni propagazione dell'errore ad un layer precedente vi aggiunge un valore moltiplicativo, spesso molto minore di $1$, riducendo così il gradiente, per via della chain rule delle derivate.<br /> 
-Una soluzione possibile sta nel modificare leggermente la funzione di attivazione in modo che sia sempre crescente. Questa modifica fa sì che la derivata della funzione non abbia più un valore massimo Alcuni candidati di funzione di attivazione proposti in letteratura sono la **ramp function** e la **softplus function**.<br />
+Una soluzione possibile sta nel modificare leggermente la funzione di attivazione in modo che sia sempre crescente. Questa modifica fa sì che la derivata della funzione non abbia più un valore massimo. Alcuni candidati di funzione di attivazione proposti in letteratura sono la **ramp function** (o **ReLU)** e la **softplus function**.<br />
 
 ![[images/relu.png]]
 
