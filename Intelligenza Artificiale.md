@@ -16,10 +16,10 @@ Le **Artificial Neural Network** sono sistemi di information processing, i cui p
 Esse consistono di un largo numero di unità, le quali lavorano in parallelo.<br />
 Un sinonimo comunemente usato per le reti neurali è il termine **modello connessionista**. Perciò, l'espressione "processing distribuito in parallelo" può spesso essere trovata in relazione alle reti neurali artificiali.<br />
 I vantaggi delle reti neurali sono:
-1.  alta velocità di calcolo, grazie al parallelismo;
-2.  tolleranza ai guasti, grazie alla quale la rete rimane funzionale anche quando molti neuroni smettono di funzionare;
-3.  **Graceful Degradation**, cioè la performance degrada in maniera graduale se un numero crescente di neuroni termina di funzionare;
-4.  ottimo per l'apprendimento induttivo.
+1. alta velocità di calcolo, grazie al parallelismo;
+2. **Fault Tolerance**, grazie alla quale la rete rimane funzionale anche quando molti neuroni smettono di funzionare;
+3. **Graceful Degradation**, cioè la performance degrada in maniera graduale se un numero crescente di neuroni termina di funzionare;
+4. ottimo per l'apprendimento induttivo.
 
 La ragione per la quale le reti neurali vengono studiate in Computer Science si basa sull'ipotesi che le macchine possano comportarsi in maniera intelligente. Questa ipotesi sostiene che il requisito fondamentale per ottenere un comportamento intelligente è l'abilità di manipolare simboli e strutture di simboli rappresentate da strutture fisiche, dove con simbolo si intende un token il quale si riferisce ad un oggetto o ad una situazione. 
 
@@ -95,14 +95,14 @@ Sfortunatamente, non tutte le funzioni sono linearmente separabili.
 
 ![[images/geometria.png]]
 
-Un insieme di punti $X$ in uno spazio euclideo si dice **convesso** se e solo se non è vuoto, è connesso ed ogni coppia di punti può essere congiunta da un segmento.
+Un insieme di punti $X$ in uno spazio euclideo si dice **convesso** se e solo se non è vuoto, è connesso e, per ogni coppia di punti appartenenti all'insieme, ogni punto del segmento che li congiunge appartiene anch'esso all'insieme.
 
 Un **guscio convesso** di un insieme di punti $X$ in uno spazio euclideo è il più piccolo insieme convesso che contiene $X$.
 
 Due insiemi di punti $X$ e $Y$ si dicono **linearmente separabili** se e solo se i loro gusci convessi sono tra loro disgiunti.
 
 Questo significa che, già all'interno delle funzioni booleane, ne esistono alcune che non possono essere simulate da una TLU. Un esempio di ciò è la doppia implicazione.<br /> 
-Sebbene solo due funzioni booleane a due argomenti non siano linearmente indipendenti, al crescere degli argomenti il numero di funzioni linearmente indipendenti diminuisce rapidamente. Per un numeri di argomenti arbitrariamente grande, una singola TLU non può calcolare praticamente nessuna funzione.
+Sebbene solo due funzioni booleane a due argomenti non siano linearmente indipendenti, il numero di funzioni linearmente indipendenti diminuisce rapidamente al crescere degli argomenti ed infatti, per un numero di argomenti arbitrariamente grande, una singola TLU non può calcolare praticamente nessuna funzione.
 
 ![[images/doppiaimplicazione.png]]
 
@@ -120,10 +120,10 @@ Può essere dimostrato, inoltre, che tutte le funzioni Booleane con un numero ar
 L'interpretazione geometrica fornisce un'intuizione su come costruire una TLU avente 2 o 3 input, ma non è  un metodo scalabile nè automatizzato. Infatti, è impossibile automatizzare questo metodo, perchè si è in grado di trovare una linea di separazione accettabile esclusivamente tramite "ispezione visiva" dei set di punti da separare.<br />
 E' necessario, quindi, evolvere una TLU affinchè converga in modo autonomo ad una soluzione.<br />
 Un algoritmo che permette di automatizzare il processo è il seguente: 
- 1. Inizializzare i pesi e la threshold con valori randomici;
-2. Determinare l'errore nell'output per un insieme di controlli. L'errore viene calcolato come una funzione dei pesi e della threshold $e(w_1,\dots,w_n,\theta)$;
-3. Aggiornare i pesi e la threshold per correggere l'errore;
-4. Iterare finchè l'errore si annulla;
+ 1. inizializzare i pesi e la threshold con valori randomici;
+2. determinare l'errore nell'output per un insieme di controlli. L'errore viene calcolato come una funzione dei pesi e della threshold $e(w_1,\dots,w_n,\theta)$;
+3. aggiornare i pesi e la threshold per correggere l'errore;
+4. iterare finchè l'errore si annulla.
 
 Si osservi il comportamento dell'algoritmo nel caso più semplice, ovvero il caso nel quale si hanno una threshold ed un unico input (quindi, un unico peso associato). Si presupponga che si voglia allenare la TLU a calcolare la negazione booleana.<br />
 Sia $x$ l'input, $w$ il peso associato e $\theta$ la threshold. Allora l'output $y$ sarà definito come:
@@ -147,7 +147,7 @@ Le regole di adattamento possono essere applicate in due modi:
 
 Si definisce di seguito la **delta rule** o **procedura di Widrow-Hoff** per allenare le TLU:
 
-Sia $\mathbf{v}$ = ($x_1, \dots, x_n$) il vettore di input di una TLU, $o$ l'output aspettato e $y$ il valore attuale. Se $o = y$, il training termina. Al contrario, per ridurre l'errore, verranno computati nuovi valori per la threshold e i pesi nel seguente modo:
+Sia $\mathbf{v}$ = ($x_1, \dots, x_n$) il vettore di input di una TLU, $o$ l'output atteso e $y$ il valore attuale. Se $o = y$, il training termina. Al contrario, per ridurre l'errore, verranno computati nuovi valori per la threshold e i pesi nel seguente modo:
 
 $$\theta^{(new)} = \theta^{(old)} + \Delta\theta \text{ con } \Delta\theta = -\eta(o - y)$$
 $$\forall i \in \{1, \dots, n\}:w_i^{(new)} = w_i^{(old)} + \Delta w_i \text{ con } \Delta w_i = \eta(o - y)x_i$$
@@ -160,8 +160,8 @@ Ora verrano mostrari alcuni esempi di training, partendo dai valori $\theta = 3/
 
 ![[Batch training ex.png]]
 
-Si è osservato, tuttavia, che non tutte le funzioni possono essere computate.<br />
-Per le funzioni linearmente separabili, esiste un teorema che garantisce che applicando la *delta rule* l'algoritmo converga ad una soluzione.<br />
+E' stato osservato precedentemente, tuttavia, che non tutte le funzioni possono essere computate.<br />
+Per le funzioni linearmente separabili, esiste un teorema che garantisce che, applicando la **delta rule**, l'algoritmo converga ad una soluzione.<br />
 Sia $L = \{(\mathbf{v}_1,o_1), \dots (\mathbf{v}_n,o_n)\}$ una sequenza di pattern di allenamento per la TLU, dove $\mathbf{v}_i$ identifica l'$i$-esimo vettore di input e $o_i$ identifica l'$i$-esimo output atteso. Siano inoltre $L_0 = \{(\mathbf{v},o) \in L | o = 0\}$ e $L_1 = \{(\mathbf{v},o) \in L | o = 1\}$ rispettivamente gli insiemi delle coppie di pattern che hanno come output atteso $0$ e quelle che hanno come pattern atteso $1$.<br />
 Se $L_0$ e $L_1$ sono linearmente separabili, allora esiste un $\mathbf{w}$ vettore di pesi e una threshold $\theta$ tale che:
 
@@ -727,7 +727,7 @@ Le **macchine di Boltzmann** (in seguito BM) possono considerarsi del tutto simi
 
 $$P(\mathbf{s}) = \frac{1}{2} e^{-\frac{E(\mathbf{s})}{kT}}$$
 
-dove $\mathbf{s}$ rappresenta l'insieme degli stati, $c$ è una costante di normalizzazione, $E$ è la funzione energia, $T$ è la temperatura del sistema e $k$ la costante di Boltzmann ($k \simeq 1,38 \cdot 10^{-23}$). Gli stati del sistema corrispondono ai valori che possono assumere le attivazioni dei singoli neuroni. La probabilità di attivazione di un neurone è la funzione logistica del differenziale di energia tra il caso che vede il neurone attivo e quello che lo vede inattivo.
+dove $\mathbf{s}$ rappresenta l'insieme degli stati, $c$ è una costante di normalizzazione, $E$ è la funzione energia, $T$ è la temperatura del sistema e $k$ la costante di Boltzmann ($k \simeq 1,38 \cdot 10^{-23} \frac{J}{K}$). Gli stati del sistema corrispondono ai valori che le attivazioni dei singoli neuroni possono assumere. La probabilità di attivazione di un neurone è data dalla funzione logistica del differenziale di energia tra il caso che considera il neurone attivo ed il caso che lo considera inattivo.
 
 $$P(act_u = 1) = \frac{1}{1 + e^{-\frac{\Delta E_u}{kT}}}$$
 
@@ -735,12 +735,13 @@ dove
 
 $$\Delta E_u = E_{act_u = 1} - E_{act_u = 0} = \sum_{v \in U - \{u\}} w_{uv} act_v - \theta_u$$
 
-La procedura di aggiornamento chiamata é **Markov-chain Monte Carlo** prevede di scegliere randomicamente un neurone e calcolare il suo differenziale energetico e, con questo, la probabilità di attivazione. Questa stessa procedura viene ripetuta varie volta fino alla convergenza del sistema. La convergenza verso uno stato stabile è garantita dal fatto che la temperatura del sistema non cresce nel tempo, ma diminuisce. Ad un certo punto si raggiungerà uno stato stabile, anche detto *equilibrio termico* del sistema, che rappresenterà un minimo (possibilmente locale) della funzione. Bisogna notare che una BM potrà calcolare in modo efficace una distribuzione di probabilità se gli esempi forniti sono compatibili con una distribuzione di Boltzmann. Per mitigare questa restrizione si dividono i neuroni di una BM tra neuroni **visibili**, che ricevono i segnali di input, e **nascosti**, la cui attivazione non dipende direttamente dal dataset permettendo un adattamento più flessibile ai pattern di allenamento. 
+La procedura di aggiornamento è definita**Markov-chain Monte Carlo**, la quale prevede di scegliere randomicamente un neurone e di calcolarne il differenziale energetico e la probabilità di attivazione (utilizzando il differenziale precedentemente calcolato). Questa stessa procedura viene ripetuta fino al raggiungimento della convergenza del sistema. La convergenza verso uno stato stabile è garantita dal fatto che la temperatura del sistema non cresce nel tempo, ma diminuisce. Ad un certo punto, si raggiungerà uno stato stabile, anche detto **equilibrio termico** del sistema, il quale rappresenterà un minimo (possibilmente locale) della funzione. E' fondamentale notare che una BM potrà calcolare in modo efficace una distribuzione di probabilità se gli esempi forniti sono compatibili con una distribuzione di Boltzmann. Per mitigare questa restrizione si dividono i neuroni di una BM tra neuroni **visibili**, ciè neuroni i quali ricevono i segnali di input, e **nascosti**, la cui attivazione non dipende direttamente dal dataset, permettendo così un adattamento più flessibile ai pattern di allenamento. 
 
 ----------------------------------------------------------------
  
-### Training ###
-L'obbiettivo di apprendimento è quello di adattare i pesi e le threshold in modo che la distribuzione implicita nel dataset sia approssimata dalla distribuzione rappresentata dai neuroni visibili di una BM. Questo possiamo farlo scegliendo una misura che descriva la differenza tra le due distribuzioni ed utilizzeremo la tecnica del gradient descent per minimizzarla. Una delle misure più famose è quella di Kullback-Leibler sulla divergenza dell'informazione:
+#### Training ####
+L'obiettivo di apprendimento consiste nell'adattare i pesi e le threshold in modo tale che la distribuzione implicita nel dataset sia approssimata dalla distribuzione rappresentata dai neuroni visibili di una BM. Questo obiettivo è raggiungibile scegliendo una misura che descriva la differenza tra le due distribuzioni ed utilizzeremo la tecnica del gradient descent per minimizzarla.<br />
+Una delle misure più famose è la **misura di Kullback-Leibler** sulla divergenza dell'informazione:
 
 $$KL(p1,p2) = \sum_{\omega \in \Omega} p1(\omega) ln\frac{p1(\omega)}{p2(\omega)}$$
 
