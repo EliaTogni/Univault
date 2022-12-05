@@ -703,15 +703,24 @@ $$\mathbf{W} = \begin{bmatrix}
             w_{u_n u_1} & w{u_n u_2} & \dots & 0
             \end{bmatrix}$$
 
-Il comportamento delle HN può cambiare a seconda che i neuroni vengano aggiornati in modo sequenziale o parallelo. Se si decidesse di aggiornarli in parallelo, potrebbe capitare che non si raggiunga mai uno stato stabile ma che, infatti, il valore continui ad oscillare. Il teorema di convergenza assicura, invece, che in una HN, nel caso si aggiornino i neuroni in modo sequenziale, si riesca sempre a raggiungere uno stato stabile.
+Il comportamento delle HN può cambiare a seconda che i neuroni vengano aggiornati in modo **sincrono** (in parallelo) o **asincrono** (in sequenza). Se si dovesse decidere di aggiornare i neuroni in parallelo, potrebbe capitare che non venga mai raggiunto uno stato stabile ma che, infatti, il valore continui ad oscillare. Il teorema di convergenza assicura, invece, che in una HN, nel caso si aggiornino i neuroni in modo sequenziale, si riesca sempre a raggiungere uno stato stabile.
 
-Se i neuroni di un HN sono aggiornati in modo asincrono, allora viene raggiunto  uno stato stabile al massimo in $n\cdot 2^n$ passi, dove $n$ è il numero dei neuroni.
+**Teorema di convergenza per le Hopfield Network**: se le attivazioni di una HN sono aggiornate in modo asincrono, allora uno stato stabile viene raggiunto in un numero finito di passi. Se i neuroni sono attraversati in un fashion arbitrario ma ciclico, sono necessari al più $n\cdot 2^n$ passi, dove $n$ è il numero dei neuroni della rete.
 
-La prova del teorema si basa sul calcolo dell'energia del sistema:
+Per provare questo teorema, si definisce una funzine la quale mappa ciascuno stato di una Hopfield Network in un numero reale, il quale rimane costante o viene decrementato ad ogni transizione di stato. Questa funzione viene comunemente definita **funzione di energia** di una HN. Il valore nel quale viene mappato uno stato di attivazione di questa funzione è chiamato **energia** dello stato. Poichè una HN possiede solo un numero finito di stati possibili, si raggiungerà una situazione nella quale transazioni successive non permetteranno di decrementare l'energia ulteriormente e, perciò, si sarà raggiunto uno stato stabile.<br />
+La funzione di eenergia di una Hopfield Network con $n$ neuroni $u_1, ..., u_n$ è definita come:
+
+$$E = - \frac{1}{2}\mathbf{act}^{\top}\mathbf{Wact}+\mathbf{\theta}^{\top}\mathbf{act}$$
+
+dove il vettore $\mathbf{act} = (act_{u_{1}}, ..., act_{u_{n}})^{\top}$ descrive lo stato di attivazione della rete, $\mathbf{W}$ è la matrice dei pesi di una HN e $\mathbf{\theta} = (\theta_{u_{1}}, ..., \theta_{u_{n}})^{\top}$ è il vettore contenente la threshold di ogni neurone. Un modo alternativo di definire questa funzione è:
 
 $$E = -\frac{1}{2} \cdot \Bigg(\sum_{u,v \in U, u \neq v} w_{uv}act_u act_v \Bigg) + \sum_{u \in U} \theta_u act_u $$
 
-Si può osservare, infatti, che il sistema può solo evolversi da uno stato con energia maggiore ad uno con energia minore. Uno stato stabile sarà un minimo locale della funzione energia (perchè non è possibile risalire, no way back).<br />
+
+Si può osservare, infatti, che il sistema può solo evolversi da uno stato con energia maggiore ad uno con energia minore. Uno stato stabile sarà un minimo locale della funzione energia (perchè non è possibile risalire, **no way back**).<br />
+Se l'attraversamento di tutti gli $n$ neuroni non ha apportato alcun cambiamento di attivazione, si è raggiunto uno stato stabile.<br/>
+Se l'attraversamento di tutti gli $n$ neuroni ha causato almeno un cambiamento di attivazione, lo stato precedente non può essere più raggiunto.
+
 E' possibile sfruttare questo teorema per utilizzare le HN come memorie associative, cioè memorie indicizzate dal proprio contenuto. Se un pattern viene dato ad una memoria associativa, questa memoria restituirà il pattern memorizzato al quale il pattern dato coincide. Una memoria associativa può anche restituire un pattern memorizzato tale che sia il più simile possibile al pattern presentato. Le HN sono utilizzate come memorie associative sfruttando gli stati stabili. Determinando i pesi e la threshold di una HN in modo tale che i pattern da memorizzare coincidano con gli stati stabili, la normale procedura di update di una Hopfield Network troverà, per ogni input pattern, il pattern memorizzato più simile possibile. In questa maniera, i pattern contenenti rumore possono essere corretti oppure pattern contenenti deviazioni possono comunque essere riconosciuti (**Hebbian Learning Rule**).<br />
 Un esempio di utilizzo è la memorizzazione delle bitmap di numeri.<br />
 Allo stesso modo, è possibile utilizzare le HN per calcolare problemi di ottimizzazione. Aggiornando una HN, viene raggiunto un minimo locale della funzione di energia. Se fosse possibile riscrivere una generica funzione da ottimizzare in modo tale che essa possa essere interpretata come funzione di energia di una Hopfield Netowrk, sarebbe possibile costruire una rete estraendo pesi e threshold dai termini della funzione di energia stessa. Da questo starting point, si inizializza randomicamente la rete (la si pone, cioè, in uno stato di attivazione randomico)e si svolgono gli usuali passi di update. La HN raggiungerà uno stato stabile, il quale corrisponderà ad un inimo della funzione di energia e, perciò, si avrà un ottimo della funzione da ottimizzare. Si noti, comunque, che l'ottimo trovato potrebbe essere un ottimo locale e non globale. Per evitare di rimanere intrappolati in minimi locali è opportuno inizializzare il network in modo randomico varie volte e ripetere gli aggiornamenti fino al raggiungimento della convergenza.<br />
@@ -723,7 +732,7 @@ L'applicazione del simulated annealing alle HN è molto semplice: dopo aver iniz
 ----------------------------------------------------------------
 
 ### Boltzmann machines ###
-Le **macchine di Boltzmann** (in seguito BM) possono considerarsi del tutto simili a delle HN, salvo che esse possono contenere neuroni hidden e differiscono nella procedura di aggiornamento. Analogamente al caso delle HN, per risolvere problemi di ottimizzazione ci si basa sul fatto che è possibile definire una funzione di energia associata ad ogni stato. Grazie a questa funzione, si definisce una distribuzione di probabilità (di Boltzmann) rispetto agli stati del network:
+Le **macchine di Boltzmann** (in seguito BM) possono considerarsi del tutto simili a delle HN, salvo che esse possono contenere neuroni hidden e differiscono nella procedura di aggiornamento. Analogamente al caso delle HN, per risolvere problemi di ottimizzazione ci si basa sul fatto che sia possibile definire una funzione di energia associata ad ogni stato. Grazie a questa funzione, si è in grado di definire una distribuzione di probabilità (di Boltzmann) rispetto agli stati del network:
 
 $$P(\mathbf{s}) = \frac{1}{2} e^{-\frac{E(\mathbf{s})}{kT}}$$
 
