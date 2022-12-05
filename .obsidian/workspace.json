@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "5c0cfff180e43430",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Intelligenza Artificiale.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -95,12 +108,12 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "d91df8ee3b5a65ce",
+  "active": "5c0cfff180e43430",
   "lastOpenFiles": [
+    "Intelligenza Artificiale.md",
     "Albero.md",
     "Albero 2-3.md",
     "Struttura Dati.md",
-    "Intelligenza Artificiale.md",
     "The Age of the Essay.md",
     "Grafo.md",
     "Dizionario.md",
