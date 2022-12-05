@@ -733,30 +733,33 @@ L'applicazione del simulated annealing alle HN è molto semplice: dopo aver iniz
 ----------------------------------------------------------------
 
 ### Boltzmann machines ###
-Le **macchine di Boltzmann** (in seguito BM) possono considerarsi del tutto simili a delle HN, salvo che esse possono contenere neuroni hidden e differiscono nella procedura di aggiornamento. Analogamente al caso delle HN, per risolvere problemi di ottimizzazione ci si basa sul fatto che sia possibile definire una funzione di energia, la quale associa un valore numerico ad ogni stato della rete. Grazie a questa funzione, si è in grado di definire una distribuzione di probabilità rispetto agli stati della rete, basandosi sulla **distribuzione di probabilità di Boltzmann**:
+Le **macchine di Boltzmann** (in seguito BM) possono considerarsi del tutto simili a delle HN, salvo che esse differiscono nella procedura di aggiornamento. Analogamente al caso delle HN, per risolvere problemi di ottimizzazione ci si basa sul fatto che sia possibile definire una funzione di energia, la quale associa un valore numerico ad ogni stato della rete. Grazie a questa funzione, si è in grado di definire una distribuzione di probabilità rispetto agli stati della rete, basandosi sulla **distribuzione di probabilità di Boltzmann**:
 
 $$P(\mathbf{s}) = \frac{1}{c} e^{-\frac{E(\mathbf{s})}{kT}}$$
 
-dove $\mathbf{s}$ rappresenta lo stato discreto del sistema, $c$ è una costante di normalizzazione, $E$ è la funzione che restituisce l'energia dello stato $\mathbf{s}$, $T$ è la temperatura del sistema e $k$ è la costante di Boltzmann ($k \simeq 1,38 \cdot 10^{-23} \frac{J}{K}$). Gli stati del sistema corrispondono ai valori che le attivazioni dei singoli neuroni possono assumere. La probabilità di attivazione di un neurone è data dalla funzione logistica del differenziale di energia tra il caso che considera il neurone attivo ed il caso che lo considera inattivo.
+dove $\mathbf{s}$ rappresenta lo stato discreto del sistema, $c$ è una costante di normalizzazione, $E$ è la funzione che restituisce l'energia dello stato $\mathbf{s}$, $T$ è la temperatura del sistema e $k$ è la costante di Boltzmann ($k \simeq 1,38 \cdot 10^{-23} \frac{J}{K}$). Gli stati del sistema corrispondono ai valori che le attivazioni dei singoli neuroni possono assumere. La probabilità di attivazione di un neurone è data dalla funzione logistica della differenza di energia tra il caso che considera il neurone attivo ed il caso che lo considera inattivo.
 
 $$P(act_u = 1) = \frac{1}{1 + e^{-\frac{\Delta E_u}{kT}}}$$
 
-dove
+dove la differenza di energia è strettamente correlata al network input:
 
 $$\Delta E_u = E_{act_u = 1} - E_{act_u = 0} = \sum_{v \in U - \{u\}} w_{uv} act_v - \theta_u$$
 
-La procedura di aggiornamento è definita **Markov-chain Monte Carlo** e prevede di scegliere randomicamente un neurone e di calcolarne il differenziale energetico e la probabilità che il neurone abbia attivazione $1$. Questa stessa procedura viene ripetuta fino al raggiungimento della convergenza del sistema. La convergenza verso uno stato stabile è garantita dal fatto che la temperatura del sistema diminuisce nel tempo. Ad un certo punto si raggiungerà uno stato stabile, anche detto **equilibrio termico** del sistema, il quale rappresenterà un m inimodella funzione. E' fondamentale notare che una BM potrà calcolare in modo efficace una distribuzione di probabilità se gli esempi forniti sono compatibili con una distribuzione di Boltzmann. Per mitigare questa restrizione, si dividono i neuroni di una BM tra neuroni **visibili**, ciè neuroni i quali ricevono i segnali di input, e **nascosti**, la cui attivazione non dipende direttamente dal dataset, permettendo così un adattamento più flessibile ai pattern di allenamento.<br />
-L'obiettivo di apprendimento consiste nell'adattare i pesi e le threshold in modo tale che la distribuzione implicita nel dataset sia approssimata dalla distribuzione rappresentata dai neuroni visibili di una BM. Questo obiettivo è raggiungibile scegliendo una misura che descriva la differenza tra le due distribuzioni ed utilizzeremo la tecnica del gradient descent per minimizzarla.<br />
-Una delle misure più famose è la **misura di Kullback-Leibler** sulla divergenza dell'informazione:
+La procedura di aggiornamento prevede di scegliere randomicamente un neurone e di calcolarne la differenza di energia $\Delta E_{u}$ e la probabilità che il neurone abbia attivazione $1$. L'attivazione del neurone viene quindi impostata a $1$ con questa probabilità o a $0$ con la probabilità complementare.<br />
+Questa stessa procedura viene ripetuta svariate volte su neuroni scelti casualmente. Viene applicato il simulated annealing riducendo lentamente la temperatura.La convergenza verso uno stato stabile è garantita dal fatto che la temperatura del sistema diminuisce nel tempo. Questo processo di aggiornamento è una procedura **Markov-Chain Monte Carlo**.<br />
+Dopo un numero sufficiente di step, la probabilità che il network si trovi in uno specifico stato di attivazioen dipenderà solamente dall'energia del tale stato. Lo stato finale viene anche definito **equilibrio termico** del sistema, il quale rappresenterà un minimo della funzione.<br />
+E' fondamentale notare che una BM potrà calcolare in modo efficace una distribuzione di probabilità se gli esempi forniti sono compatibili con una distribuzione di Boltzmann. Per mitigare questa restrizione, si dividono i neuroni di una BM tra neuroni **visibili**, cioè neuroni i quali ricevono i segnali di input, e **nascosti**, la cui attivazione non dipende direttamente dal dataset, permettendo così un adattamento più flessibile ai pattern di allenamento.<br />
+L'obiettivo di apprendimento consiste nell'adattare i pesi e le threshold in modo tale che la distribuzione implicita nel dataset sia approssimata dalla distribuzione rappresentata dai neuroni visibili di una BM. Questo obiettivo è raggiungibile scegliendo una misura che descriva la differenza tra le due distribuzioni ed utilizzando la tecnica del gradient descent per minimizzarla.<br />
+Una delle misure più utilizzate è la **misura di Kullback-Leibler sulla divergenza dell'informazione**:
 
 $$KL(p1,p2) = \sum_{\omega \in \Omega} p1(\omega) ln\frac{p1(\omega)}{p2(\omega)}$$
 
-dove $p1$ si riferisce alla distribuzione del dataset e $p2$ a quella della macchina di Boltzmann. Ogni passo di apprendimento viene suddiviso in due fasi:
-1. **Positive phase**: in cui i neuroni visibili vengono fissati rispetto ad un dato di input scelto randomicamente e i neuroni nascosti vengono aggiornati fino al raggiungimento di un equilibrio termico;
-2. **Negative phase**: tutte le unità vengono aggiornate fino al raggiungimento di uno stato stabile.
+dove $p1$ fa riferimento al dataset e $p2$ fa riferimento ai neuroni visibili della macchina di Boltzmann.<br />
+Ogni passo di apprendimento viene suddiviso in due fasi:
+1) **positive phase**: in cui i neuroni visibili vengono fissati ad un dato di input scelto randomicamente e i neuroni nascosti vengono aggiornati fino al raggiungimento dell'equilibrio termico;
+2) **negative phase**: tutte le unità vengono aggiornate fino al raggiungimento dell'equilibrio termico.
 
-Se distinguiamo la probabilità che un neurone $u$ sia attivato nella positive phase ($p_u^{+}$) e quella che lo stesso neurone sia attivato nella negative phase ($p_u^{+}$) e la probabilità che due neuroni $u$ e $v$ siano attivati simultaneamente nella positive phase ($p_{uv}^{+}$) e quella che gli stessi due neuroni siano attivati nella negative phase
-($p_{uv}^{-}$), possiamo definire la regola di update dei pesi e della threshold come segue:
+Definendo la probabilità che un neurone $u$ sia attivato nella positive phase come $p_u^{+}$, la probabilità che lo stesso neurone sia attivato nella negative phase come $p_u^{+}$, la probabilità che due neuroni $u$ e $v$ siano attivati simultaneamente nella positive phase come $p_{uv}^{+}$  e quella che gli stessi due neuroni siano attivati nella negative phase come $p_{uv}^{-}$, è possibile definire la regola di update dei pesi e della threshold come segue:
 
 $$\Delta w_{uv} = \frac{1}{\eta} (p_{uv}^{+} - p_{uv}^{-}) 
 \quad
@@ -764,12 +767,14 @@ $$\Delta w_{uv} = \frac{1}{\eta} (p_{uv}^{+} - p_{uv}^{-})
 \quad
 \Delta \theta_u = -\frac{1}{\eta}(p_u^{+} - p_u^{-})$$
 
-Intuitivamente: se lo stesso neurone viene sempre attivato ogniqualvolta viene presentato lo stesso input allora la sua threshold dovrà essere ridotta. Allo stesso modo, se due neuroni vengono spesso attivati assieme allora il peso che corrisponde alla loro connessione verrà aumentato ("cells that fire together, wire together").
+Se un neurone è attivo più frequentemente quando viene presentato un data sample rispetto a quando alla rete è permesso di computare liberamente, la probabilitò che il neurone sia attivo è troppo bassa: perciò, la soglia dovrebbe essere ridotta.<br />
+Se dei neuroni sono attivi più frequentemente insieme quando viene presentato un data sample rispetto a quando alla rete è permesso di computare liberamente, i pesi sulle connessioni tra di loro dovrebbe venir incrementato, così che sia più probabile che essi siano attivi insieme.
+
 
 ----------------------------------------------------------------
 
 #### Restricted Boltzmann machines ####
-Sebbene le BM siano molto potenti, allenarne anche di medie dimensioni è molto dispendioso. Per questo sono state introdotte le **restricted Boltzmann machines** (in seguito RBM). La differenza rispetto alle normali BM risiede nel fatto che il grafo del network di un RBM è un grafo bipartito, ovvero un grafo nel quale è possibile una connessione solo tra neuroni di gruppi differenti.<br />
+Sebbene le BM siano molto potenti, allenarne anche di medie dimensioni è molto dispendioso. Per questo sono state introdotte le **restricted Boltzmann machines** (in seguito RBM). La differenza rispetto alle normali BM risiede nel fatto che il grafo del network di un RBM, invece di essere un grafo totalmente connesso, è un grafo bipartito, ovvero un grafo nel quale i vertici sono divisi in due gruppi e nel quale sono possibili connessioni solo tra neuroni di gruppi differenti.<br />
 Solitamente uno dei gruppi è formato dai neuroni visibili e l'altro da quelli nascosti. Un vantaggio di avere un network in cui non vi sono connessioni tra neuroni dello stesso gruppo è che il processo di apprendimento può essere compiuto ripetendo questi tre passi:
 1.  fase I: le unità di input vengono fissate rispetto ad un pattern scelto casualmente e quelle nascoste vengono aggiornate in parallelo, ottenendo quello che si chiama in gergo **positive gradient**;
 2. fase II: avendo ottenuto un input preprocessato nella prima fase, si invertono le parti,si fissano i neuroni nascosti e si aggiornano quelli visibili, ottenendo così il **negative gradient**;
