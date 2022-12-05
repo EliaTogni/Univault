@@ -732,11 +732,11 @@ L'applicazione del simulated annealing alle HN è molto semplice: dopo aver iniz
 ----------------------------------------------------------------
 
 ### Boltzmann machines ###
-Le **macchine di Boltzmann** (in seguito BM) possono considerarsi del tutto simili a delle HN, salvo che esse possono contenere neuroni hidden e differiscono nella procedura di aggiornamento. Analogamente al caso delle HN, per risolvere problemi di ottimizzazione ci si basa sul fatto che sia possibile definire una funzione di energia associata ad ogni stato. Grazie a questa funzione, si è in grado di definire una distribuzione di probabilità (di Boltzmann) rispetto agli stati del network:
+Le **macchine di Boltzmann** (in seguito BM) possono considerarsi del tutto simili a delle HN, salvo che esse possono contenere neuroni hidden e differiscono nella procedura di aggiornamento. Analogamente al caso delle HN, per risolvere problemi di ottimizzazione ci si basa sul fatto che sia possibile definire una funzione di energia, la quale associa un valore numerico ad ogni stato della rete. Grazie a questa funzione, si è in grado di definire una distribuzione di probabilità rispetto agli stati della rete, basandosi sulla **distribuzione di probabilità di Boltzmann**:
 
-$$P(\mathbf{s}) = \frac{1}{2} e^{-\frac{E(\mathbf{s})}{kT}}$$
+$$P(\mathbf{s}) = \frac{1}{c} e^{-\frac{E(\mathbf{s})}{kT}}$$
 
-dove $\mathbf{s}$ rappresenta l'insieme degli stati, $c$ è una costante di normalizzazione, $E$ è la funzione energia, $T$ è la temperatura del sistema e $k$ la costante di Boltzmann ($k \simeq 1,38 \cdot 10^{-23} \frac{J}{K}$). Gli stati del sistema corrispondono ai valori che le attivazioni dei singoli neuroni possono assumere. La probabilità di attivazione di un neurone è data dalla funzione logistica del differenziale di energia tra il caso che considera il neurone attivo ed il caso che lo considera inattivo.
+dove $\mathbf{s}$ rappresenta lo stato discreto del sistema, $c$ è una costante di normalizzazione, $E$ è la funzione che restituisce l'energia dello stato $\mathbf{s}$, $T$ è la temperatura del sistema e $k$ è la costante di Boltzmann ($k \simeq 1,38 \cdot 10^{-23} \frac{J}{K}$). Gli stati del sistema corrispondono ai valori che le attivazioni dei singoli neuroni possono assumere. La probabilità di attivazione di un neurone è data dalla funzione logistica del differenziale di energia tra il caso che considera il neurone attivo ed il caso che lo considera inattivo.
 
 $$P(act_u = 1) = \frac{1}{1 + e^{-\frac{\Delta E_u}{kT}}}$$
 
@@ -744,11 +744,7 @@ dove
 
 $$\Delta E_u = E_{act_u = 1} - E_{act_u = 0} = \sum_{v \in U - \{u\}} w_{uv} act_v - \theta_u$$
 
-La procedura di aggiornamento è definita**Markov-chain Monte Carlo**, la quale prevede di scegliere randomicamente un neurone e di calcolarne il differenziale energetico e la probabilità di attivazione (utilizzando il differenziale precedentemente calcolato). Questa stessa procedura viene ripetuta fino al raggiungimento della convergenza del sistema. La convergenza verso uno stato stabile è garantita dal fatto che la temperatura del sistema non cresce nel tempo, ma diminuisce. Ad un certo punto, si raggiungerà uno stato stabile, anche detto **equilibrio termico** del sistema, il quale rappresenterà un minimo (possibilmente locale) della funzione. E' fondamentale notare che una BM potrà calcolare in modo efficace una distribuzione di probabilità se gli esempi forniti sono compatibili con una distribuzione di Boltzmann. Per mitigare questa restrizione si dividono i neuroni di una BM tra neuroni **visibili**, ciè neuroni i quali ricevono i segnali di input, e **nascosti**, la cui attivazione non dipende direttamente dal dataset, permettendo così un adattamento più flessibile ai pattern di allenamento. 
-
-----------------------------------------------------------------
- 
-#### Training ####
+La procedura di aggiornamento è definita **Markov-chain Monte Carlo** e prevede di scegliere randomicamente un neurone e di calcolarne il differenziale energetico e la probabilità che il neurone abbia attivazione $1$. Questa stessa procedura viene ripetuta fino al raggiungimento della convergenza del sistema. La convergenza verso uno stato stabile è garantita dal fatto che la temperatura del sistema diminuisce nel tempo. Ad un certo punto si raggiungerà uno stato stabile, anche detto **equilibrio termico** del sistema, il quale rappresenterà un m inimodella funzione. E' fondamentale notare che una BM potrà calcolare in modo efficace una distribuzione di probabilità se gli esempi forniti sono compatibili con una distribuzione di Boltzmann. Per mitigare questa restrizione, si dividono i neuroni di una BM tra neuroni **visibili**, ciè neuroni i quali ricevono i segnali di input, e **nascosti**, la cui attivazione non dipende direttamente dal dataset, permettendo così un adattamento più flessibile ai pattern di allenamento.<br />
 L'obiettivo di apprendimento consiste nell'adattare i pesi e le threshold in modo tale che la distribuzione implicita nel dataset sia approssimata dalla distribuzione rappresentata dai neuroni visibili di una BM. Questo obiettivo è raggiungibile scegliendo una misura che descriva la differenza tra le due distribuzioni ed utilizzeremo la tecnica del gradient descent per minimizzarla.<br />
 Una delle misure più famose è la **misura di Kullback-Leibler** sulla divergenza dell'informazione:
 
@@ -771,35 +767,36 @@ Intuitivamente: se lo stesso neurone viene sempre attivato ogniqualvolta viene p
 
 ----------------------------------------------------------------
 
-### Restricted Boltzmann machines ###
-Sebbene le BM siano molto potenti, allenarne anche di medie dimensioni è molto dispendioso. Per questo sono state introdotte le *restricted Boltzmann machines* (in quello che segue RBM). La differenza rispetto alle normali BM è che il grafo del network di un RBM è un grafo bipartito, ovvero una connessione è possibile solo tra neuroni di gruppi differenti. Solitamente uno dei gruppi è formato dai neuroni visibili e l'altro da quelli nascosti. Un vantaggio di avere un network in cui non vi sono connessioni tra neuroni dello stesso gruppo è che il processo di apprendimento può essere compiuto ripetendo questi tre passi:
-1.  Fase I: le unità di input vengono fissate rispetto ad un pattern scelto casualmente e quelle nascoste vengono aggiornate in parallelo ottenendo quello che si chiama in gergo *positive gradient*;
-2. Fase II: avendo ottenuto un input preprocessato nella prima fase, si invertono le parti e si fissano i neuroni nascosti e si aggiornano quelli visibili, ottenendo così il *negative gradient*;
-3. Fase III: si aggiornano pesi e threshold con la differenza tra positive e negative gradient.
+#### Restricted Boltzmann machines ####
+Sebbene le BM siano molto potenti, allenarne anche di medie dimensioni è molto dispendioso. Per questo sono state introdotte le **restricted Boltzmann machines** (in seguito RBM). La differenza rispetto alle normali BM risiede nel fatto che il grafo del network di un RBM è un grafo bipartito, ovvero un grafo nel quale è possibile una connessione solo tra neuroni di gruppi differenti.<br />
+Solitamente uno dei gruppi è formato dai neuroni visibili e l'altro da quelli nascosti. Un vantaggio di avere un network in cui non vi sono connessioni tra neuroni dello stesso gruppo è che il processo di apprendimento può essere compiuto ripetendo questi tre passi:
+1.  fase I: le unità di input vengono fissate rispetto ad un pattern scelto casualmente e quelle nascoste vengono aggiornate in parallelo, ottenendo quello che si chiama in gergo **positive gradient**;
+2. fase II: avendo ottenuto un input preprocessato nella prima fase, si invertono le parti,si fissano i neuroni nascosti e si aggiornano quelli visibili, ottenendo così il **negative gradient**;
+3. fase III: si aggiornano pesi e threshold con la differenza tra positive e negative gradient.
 
-In letteratura le RBM sono state utilizzate per costruire con più layer in modo simile a quanto accade con gli autoencoder nei MLP.
+In letteratura, le RBM sono state utilizzate per costruire deep network in modo simile alle pile di autoencoder nei MLP.
 
 ----------------------------------------------------------------
 
 ### Recurrent network ###
-Sia gli HN che le BM sono esempi di *recurrent network*, ovvero network il cui grafo ha al suo interno dei cicli. L'output in questi network viene generato solo se viene raggiunto uno stato stabile nella computazione. L'evoluzione di questi sistemi può essere descritta attraverso l'utilizzo di equazioni differenziali. Dato, infatti, un insieme alcune equazioni differenziali rappresentate in forma ricorsiva:
+Sia gli HN che le BM sono esempi di **recurrent network**, ovvero network il cui grafo contiene, al suo interno, dei cicli. L'output in questi network viene generato solo se viene raggiunto uno stato stabile nella computazione.<br />
+L'evoluzione di questi sistemi può essere descritta attraverso l'utilizzo di equazioni differenziali. Dato, infatti, un insieme di alcune equazioni differenziali rappresentate in forma ricorsiva:
 
 $$x(t_i) = x(t_{i-1}) + \Delta y_1(t_{i-1})$$
 $$y_1(t_i) = y_1(t_{i-1}) + \Delta y_2(t_{i-1})$$ $$\vdots$$
 $$y_{i-1}(t_i) = y_{i-1}(t_{i-1}) + f(t_{i-1}, x(t_{i-1}), \dots, y_{n-1}(t_{i-1}))$$
 
-possiamo sfruttare la derivata della funzione nell'istante di tempo precedente per calcolare il valore successivo. Questo permette di trasformarle in un recurrent network, creando per ogni variabile un nodo nel grafo e associando alle connessioni il valore del differenziale.
+è possibile sfruttare la derivata della funzione nell'istante di tempo precedente per calcolare il valore successivo. Questo permette di trasformarle in un recurrent network, creando, per ogni variabile, un nodo nel grafo e associando alle connessioni il valore del differenziale.
 
 ![[images/recurrent.png]]
 
-Possiamo generalizzare questo approccio a funzioni con più di un argomento grazie ai *vectorial neural network*. Se, tuttavia, non conosciamo in precedenza la struttura della computazione non possiamo sfruttare la backpropagation così come l'abbiamo presentata, in quanto gli errori si propagano senza soluzione di continuità lungo i cicli del network. Un modo per risolvere questo problema è quello di dispiegare nel tempo la computazione ogni qualvolta questa attraversi un ciclo e aggiungere una copia dei neuroni così attraversati come un layer addizionale. A questo punto si potrà applicare la backpropagation come in un qualsiasi feed-forward network. Per calcolare gli aggiornamenti ai pesi e alle threshold sarà, però, necessario combinare gli aggiustamenti calcolati rispetto ai neuroni così aggiunti.
+E' possibile generalizzare questo approccio a funzioni con più di un argomento grazie ai **vectorial neural network**. Se, tuttavia, non si è a conoscenza in precedenza della struttura della computazione, non è possibile sfruttare la backpropagation così come presentata, in quanto gli errori si propagano senza soluzione di continuità lungo i cicli del network. Un modo per risolvere questo problema consiste nel dispiegare nel tempo la computazione ogniqualvolta questa attraversi un ciclo, ed aggiungere poi una copia dei neuroni così attraversati come un layer addizionale. A questo punto si potrà applicare la backpropagation come in un qualsiasi feed-forward network. Per calcolare gli aggiornamenti ai pesi e alle threshold sarà, però, necessario combinare gli aggiustamenti calcolati rispetto ai neuroni così aggiunti.
 
 ----------------------------------------------------------------
 
 ## Sistemi fuzzy ##
 
 ### Introduzione alla logica fuzzy ###
-
 #### Motivazioni ####
 La logica classica si fonda sul *principio di bivalenza*, ovvero una proposizione può assumere solo due valori di verità: il *vero* o il *falso*. Questa assunzione può essere adeguata nel caso in cui ci interessi modellare concetti chiari e distinti che hanno definizioni precise, come nel caso dei concetti matematici. Quando, invece, vogliamo formalizzare la conoscenza implicita nel linguaggio naturale possiamo imbatterci in alcune proposizioni che sono vere (o false) *in una certa misura*, oppure proprietà che hanno estensioni sfumate. La logica fuzzy e la teoria insiemistica che da questa discende ci permette di ragionare in questi contesti, in modo da sfruttare a nostro vantaggio la vaghezza insita nell'uso che facciamo delle parole nel linguaggio naturale. Bisogna, tuttavia, stare attenti a non confondere l'imprecisione con l'*incertezza*. L'incertezza si riferisce alla possibilità che un evento accada o meno. Il valore numerico associato all'accadimento di un evento incerto si chiama *probabilità* ed è studiato dalla branca della matematica omonima. La differenza tra appartenenza fuzzy e probabilità sta nel fatto che la probabilità rimane comunque un fenomeno booleano: un evento può accadere o non accadere; dove, invece, l'appartenenza fuzzy si riferisce a quanto una proprietà viene soddisfatta da un oggetto.
 
