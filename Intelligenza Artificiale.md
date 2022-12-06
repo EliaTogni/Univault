@@ -785,17 +785,18 @@ In letteratura, le RBM sono state utilizzate per costruire deep network in modo 
 
 ### Recurrent network ###
 Sia gli HN che le BM sono esempi di **recurrent network**, ovvero network il cui grafo contiene, al suo interno, dei cicli, sia che coinvolgano singoli neuroni che gruppi di neuroni. L'output in questi network viene generato solo al raggiungimento di uno stato stabile nella computazione.<br />
-L'evoluzione di questi sistemi può essere descritta attraverso l'utilizzo di equazioni differenziali. Dato, infatti, un insieme di alcune equazioni differenziali rappresentate in forma ricorsiva
+La configurazione di un recurrent network può essere ottenuta costruendola manualmente, se la struttura della computazione da ottenere è nota, oppure estendendo l'algoritmo dell'error backpropagation nel tempo in modod da gestire la presenza di cicli.<br />
+Arbitrarie equazioni differenziali possono essere rappresentate tramite recurrent neural network. Dato, infatti, un insieme di alcune equazioni differenziali rappresentate in forma ricorsiva
 
 $$x(t_i) = x(t_{i-1}) + \Delta y_1(t_{i-1})$$
 $$y_1(t_i) = y_1(t_{i-1}) + \Delta y_2(t_{i-1})$$ $$\vdots$$
 $$y_{i-1}(t_i) = y_{i-1}(t_{i-1}) + f(t_{i-1}, x(t_{i-1}), \dots, y_{n-1}(t_{i-1}))$$
 
-è possibile sfruttare la derivata della funzione nell'istante di tempo precedente per calcolarne il valore successivo. Questo permette di trasformarle in un recurrent network, creando, per ogni variabile, un nodo nel grafo ed associando alle connessioni il valore del differenziale.
+è possibile sfruttare la derivata della funzione nell'istante di tempo precedente per calcolarne il valore successivo. Questo permette di trasformarle in un recurrent network, creando, per ogni variabile, un nodo nel grafo, cioè un neurone, ed associando alle connessioni il valore del differenziale.
 
 ![[images/recurrent.png]]
 
-E' possibile generalizzare questo approccio a funzioni con più di un argomento grazie ai **vectorial neural network**.<br />
+Tramite i **vectorial neural network**, cioè recurrent network composti da multipli recurrent sub-network, è possibile computare equazioni differenziali vettoriali.<br />
 I recurrent network vengono allenati allo stesso modo dei multilayer perceptron, cioè tramite error backpropagation. Tuttavia, a causa dei cicli nella struttura della rete, questo metodo non può essere applicato direttamente, in quanto questi cicli propagherebbero il segnale di errore in maniera ciclica. Un modo per risolvere questo problema consiste nel **dispiegare** (**unfolding**) nel tempo la rete tra due pattern di allenamento. A questo punto si potrà applicare la backpropagation come in un qualsiasi feed-forward network. Per calcolare gli aggiornamenti ai pesi e alle threshold sarà, però, necessario combinare gli aggiustamenti calcolati rispetto ai neuroni così aggiunti.
 Questa speciale forma di error backpropagation è chiamata **error backpropagation through time**.
 
