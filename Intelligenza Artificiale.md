@@ -63,7 +63,7 @@ Nel sistema nervoso umano, l'informazione è codificata da quantità in continuo
 ### Threshold logic unit ###
 Come già menzionato, le Artificial Neural Network sono ispirate alla struttura e ai principi secondo cui operano il sistema nervoso ed, in particolare, il cervello di animali ed umani. 
 Per implementare una rete neurale artificiale occorre trovare, quindi, un analogo del neurone. La struttura che emula tale compito viene denominata **threshold logic unit** o **neurone di McCulloch e Pitts** (in seguito **TLU**).<br />
-Una TLU è una semplice processing unit costituita da $n$ variabili di input $x_1 \dots x_n$ e un output $y$. Ad ogni unità viene assegnats una **threshold** $\theta$ e ad ogni variabile di input un peso $w_i$ dove $i \in \{1, \dots ,n\}$, il quale rappresenta la rilevanza di quel determinato input al fine della computazione.<br />
+Una TLU è una semplice processing unit costituita da $n$ variabili di input $x_1 \dots x_n$ e un output $y$. Ad ogni unità viene assegnata una **threshold** $\theta$ e ad ogni variabile di input un peso $w_i$ dove $i \in \{1, \dots ,n\}$, il quale rappresenta la rilevanza di quel determinato input al fine della computazione.<br />
 L'output della TLU viene calcolato secondo la seguente formula:
 
 $$y =  \begin{cases}
@@ -138,7 +138,7 @@ Quando, invece, $x = 1$, si avrà che la funzione dipenderà da entrambi i param
 
 ![[images/error1.png]]
 
-La funzione di errore così calcolata non può essere usata direttamente nella computazione perchè è composta da plateau e, quindi, non è ovunque derivabile. La soluzione è quella di calcolare la funzione di errore in modo tale che offra una misura di quanto sia sbagliata la relazione tra pesi e threshold. Si otterrà così una funzione di errore che, seppur ancora non differenziabile, lo sarà localmente nei punti in cui l'errore si discosta da $0$. Ciò che l'algoritmo farà per correggere l'errore, dunque, sarà discendere verso l'area dove la funzione di errore si annulla. Questo è possibile esattamente perché è stato scelto di utilizzare una funzione derivabile nei punti di interesse. E' sempre possibile calcolare la direzione migliore da seguire affinchè ci si muova nella direzione del plateu più basso, ovvero verso l'errore nullo.<br />
+La funzione di errore così calcolata non può essere usata direttamente nella computazione perchè è composta da plateau e, quindi, non è ovunque derivabile. La soluzione è quella di calcolare la funzione di errore in modo tale che offra una misura di quanto sia sbagliata la relazione tra pesi e threshold. Si otterrà così una funzione di errore che, seppur ancora non differenziabile, lo sarà localmente nei punti in cui l'errore si discosta da $0$. Ciò che l'algoritmo farà per correggere l'errore, dunque, sarà discendere verso l'area dove la funzione di errore si annulla. Questo è possibile esattamente perché è stato scelto di utilizzare una funzione derivabile nei punti di interesse. E' sempre possibile calcolare la direzione migliore da seguire affinchè ci si muova nella direzione del plateau più basso, ovvero verso l'errore nullo.<br />
 Le regole di adattamento possono essere applicate in due modi:
 -  **online learning**, ovvero l'opzione di adattare i pesi e threshold ad ogni singolo step di training; 
 - **batch learning**, ovvero l'opzione nel quale i cambiamenti vengono aggregati in **learning/training epoch** o **epoche**. Al termine di queste epoche, i cambiamenti aggregati vengono applicati.
@@ -176,7 +176,7 @@ Si osservi che questa procedura di allenamento vale solo per le singole TLU nono
 ----------------------------------------------------------------
 
 ### Artificial neural network ###
-Un'**artificial neural network** (in breve **ANN**) può essere rappresentata tramite un [[Grafo]] diretto $G = (U,C)$ dove i nodi sono delle semplici TLU e gli archi sono le connessioni tra le varie unità.<br />
+Un'**artificial neural network** (in breve **ANN**) può essere rappresentata tramite un [[Grafo]] diretto $G = (U,C)$ dove i vertici $u \in U$ sono detti neuroni e gli archi $c \in C$ sono le connessioni tra le varie unità.<br />
 L'insieme dei nodi $U$ può essere partizionato in tre sottoinsiemi:
 - $U_{(in)}$: è l'insieme dei nodi di input, i quali ricevono in modo diretto l'informazione dall'ambiente;
 - $U_{(out)}$: è l'insieme dei nodi di output, i quali sono i soli nodi a inviare informazioni all'esterno;
