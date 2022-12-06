@@ -178,9 +178,9 @@ Si osservi che questa procedura di allenamento vale solo per le singole TLU nono
 ### Artificial neural network ###
 Un'**artificial neural network** (in breve **ANN**) può essere rappresentata tramite un [[Grafo]] diretto $G = (U,C)$ dove i vertici $u \in U$ sono detti neuroni e gli archi $c \in C$ sono le connessioni tra le varie unità.<br />
 L'insieme dei nodi $U$ può essere partizionato in tre sottoinsiemi:
-- $U_{(in)}$: è l'insieme dei nodi di input, i quali ricevono in modo diretto l'informazione dall'ambiente;
-- $U_{(out)}$: è l'insieme dei nodi di output, i quali sono i soli nodi a inviare informazioni all'esterno;
-- $U_{(hidden)}$: è l'insieme dei nodi interni, i quali propagano la computazione.
+- $U_{(in)}$: è l'insieme dei neuroni di input, i quali ricevono in modo diretto l'informazione dall'ambiente;
+- $U_{(out)}$: è l'insieme dei neuroni di output, i quali sono i soli nodi a inviare informazioni all'esterno;
+- $U_{(hidden)}$: è l'insieme dei neuroni interni, i quali propagano la computazione.
 
 $$U = U_{in} \cup U_{out} \cup U_{hidden}, $$
 $$
@@ -195,7 +195,7 @@ Ogni connessione $(v,u) \in C$ possiede un peso $w_{uv}$ che definisce l'importa
 - l'**external input** $ext_u$.
 
 Le prime tre variabili vengono calcolate in ogni momento dell'evoluzione dell'ANN grazie a tre funzioni associate:
-1. La **network input function** $f^u_{net}$, la quale calcola la somma pesata dell'input;
+1. La **network input function** $f^u_{net}$, la quale calcola la somma pesata degli input;
 2.  La **activation function** $f^u_{act}$, della quale ne esistono vari modelli (gaussiana, sigmoide, etc.) a seconda dell'applicazione;
 3. La **output function** $f^u_{out}$, la quale definisce l'output a seconda che il neurone venga attivato o meno.
 
@@ -224,7 +224,7 @@ L'ordine temporale delle ricomputazioni, generalmente, non è fissato.<br />
 Per esempio, tutti i neuroni di un network possono ricomputare il proprio output allo stesso tempo (**update sincrono**). E' possibile, inoltre, definire un ordine di neuroni nel quale viene computato il nuovo output (**update asincrono**). In questo caso i nuovi output degli altri neuroni possono essere già stati utilizzati come input di computazioni successive.<br />
 Per quanto riguarda le reti feed forward, le computazioni solitamente seguono l'ordinamento topologico.<br />
 Per le recurrent network, l'output finale dipende dall'ordine nel quale i neuroni ricomputano l'output e da quante ricomputazioni sono state eseguite.<br />
-Nel caso delle recurrent neural network, potrebbe, però, accadere che non si giunga mai ad uno stato stabile a seconda di quale ordine di update dei neuroni si scelga di seguire. Si osservi un esempio di una computazione con risultato oscillante in un recurrent neural network. L'ordine seguito per l'update è: $u_3,u_1,u_2,u_3,u_1,u_2\dots$. Se si fosse seguito un ordine diverso, la computazione avrebbe raggiunto uno stato stabile.
+Nel caso delle recurrent neural network, potrebbe, però, accadere che non si giunga mai ad uno stato stabile a seconda di quale ordine di update dei neuroni si scelga di seguire. 
 
 ----------------------------------------------------------------
 
@@ -236,7 +236,7 @@ A seconda del tipo dei dati utilizzati per allenare le ANN e a seconda dei crite
 
 Una **Learning Task Fissata** $L_{fixed}$ per una rete neurale con $n$ neuroni input, $U_{in} = \{ u_{1}, ..., u_{n} \}$, e $m$ neuroni output, $U_{out} = \{v_{1}, ..., v_{m}\}$, è un insieme di **training pattern** $l = (\textbf{i}^{(l)}, \textbf{o}^{(l)})$, ognuno consistente di un **vettore di input** $\textbf{i}^{(l)} = (ext_{u_{1}}^{(l)}, ..., ext_{u_{n}}^{(l)})$ e un **vettore di output** $\textbf{o}^{(l)} = (o_{v_{1}}^{(l)}, ..., o_{v_{m}}^{(l)})$.<br />
 Nel caso di una fixed learning task si avrà, quindi, un insieme $L=\{(\mathbf{i}_1,\mathbf{o}_1),\dots,(\mathbf{i}_k,\mathbf{o}_k)\}$ di coppie le quali assegnano ad ogni input un output desiderato. Una volta completato il processo di apprendimento, la ANN dovrebbe essere in grado di restituire l'output adeguato rispetto all'input che le viene presentato. Data una Learning Task Fissata, l'obiettivo è allenare una rete neurale in modo che produca, per tutti i training pattern $l \in L_{fixed}$, gli output contenuti nel vettore di output $\textbf{o}^{(l)}$ se gli input esterni del corrispondente vettore di input $\textbf{i}^{(l)}$ sono dati in pasto al network. In pratica, però, questo accade raramente e bisogna accontentarsi di un risultato approssimativo.<br />
-Per giudicare in che misura una ANN si avvicini alla soluzione della fixed learning task si adotta una funzione di errore, la quale misura quanto l'output ottenuto coincide con l'output desiderato nel training pattern.
+Per giudicare in che misura una ANN si avvicini alla soluzione della fixed learning task si adotta una funzione di errore, la quale misura quanto l'output ottenuto coincida con l'output desiderato nel training pattern.
 Questa funzione di errore è comunemente definita come la somma delle deviazioni dell'output desiderato e dell'output ottenuto al quadrato, per tutti i traning pattern e tutti i neuroni di output.<br />
 L'errore di una rete neurale in riferimento a una learning task fissata $L_{fixed}$ è definito come:
 
@@ -254,9 +254,9 @@ Tuttavia, il quadrato della deviazione dell'output desiderato e dell'output otte
  
 Una **Learning Task Libera** $L_{free}$ per una rete neurale con $n$ neuroni input $U_{in} = \{ u_{1}, ..., u_{n} \}$, è un insieme di **training pattern** $l = (\textbf{i}^{(l)})$, ognuno consistente di un **vettore di input** $\textbf{i}^{(l)} = (ext_{u_{1}}^{(l)}, ..., ext_{u_{n}}^{(l)})$.<br />
 Nel free learning task si avrà, quindi, solo una sequenza di input $L = \{\mathbf{i}_1, \dots, \mathbf{i}_n\}$. Questo comporta che, a differenza del fixed learning task, non si avrà modo di calcolare una funzione di errore rispetto ad un output atteso.<br />
-Data una learning task libera, l'aspetto più importante al fine di allenare una rete neurale è come viene misurata la similarità tra i traning pattern. Questa similarità può essere definita, per esempio, con l'aiuto di una funzione di distanza.<br />
+Data una learning task libera, l'aspetto più importante al fine di allenare una rete neurale è il modo in cui viene misurata la similarità tra i traning pattern. Questa similarità può essere definita, per esempio, con l'aiuto di una funzione di distanza.<br />
 Un caso particolare potrebbe essere quello del **clustering** dei vettori di input simili, così che per tutti i vettori in un cluster venga prodotto lo stesso output.<br />
-Qualsiasi processo di apprendimento si scelga esistono alcune buone pratiche che è utile seguire. Una di queste best practise riguarda il normalizzare il vettore di input (**normalizzazione z-score**). Comunemente, si scala tale vettore in modo che esso abbia media uguale a $0$ e varianza uguale ad $1$. Per fare ciò, è necessario calcolare per ogni neurone $u_k \in U_{(in)}$, a partire dal vettore di input dei training patter, la media aritmetica $\mu_k$ e la deviazione standard $\sigma_k$ degli input esterni:
+Qualsiasi processo di apprendimento si scelga esistono alcune buone pratiche che è utile seguire. Una di queste best practice riguarda il normalizzare il vettore di input (**normalizzazione z-score**). Comunemente, si scala tale vettore in modo che esso abbia media uguale a $0$ e varianza uguale ad $1$. Per fare ciò, è necessario calcolare per ogni neurone $u_k \in U_{(in)}$, a partire dal vettore di input dei training patter, la media aritmetica $\mu_k$ e la deviazione standard $\sigma_k$ degli input esterni:
 
 $$\mu_k = \frac{1}{|L|}\sum_{l \in L} ext^l_{u_k} \quad \quad \sigma_k = \sqrt{\frac{1}{|L|}\sum_{l \in L} (ext^l_{u_k} - \mu_k)^2}$$
 
