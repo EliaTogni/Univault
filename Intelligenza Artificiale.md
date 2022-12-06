@@ -759,7 +759,7 @@ Ogni passo di apprendimento viene suddiviso in due fasi:
 1) **positive phase**: in cui i neuroni visibili vengono fissati ad un dato di input scelto randomicamente e i neuroni nascosti vengono aggiornati fino al raggiungimento dell'equilibrio termico;
 2) **negative phase**: tutte le unità vengono aggiornate fino al raggiungimento dell'equilibrio termico.
 
-Definendo la probabilità che un neurone $u$ sia attivato nella positive phase come $p_u^{+}$, la probabilità che lo stesso neurone sia attivato nella negative phase come $p_u^{+}$, la probabilità che due neuroni $u$ e $v$ siano attivati simultaneamente nella positive phase come $p_{uv}^{+}$  e quella che gli stessi due neuroni siano attivati nella negative phase come $p_{uv}^{-}$, è possibile definire la regola di update dei pesi e della threshold come segue:
+Definendo la probabilità che un neurone $u$ sia attivo nella positive phase come $p_u^{+}$, la probabilità che un neurone $u$ sia attivo nella negative phase come $p_u^{+}$, la probabilità che due neuroni $u$ e $v$ siano attivi simultaneamente nella positive phase come $p_{uv}^{+}$  e quella che gli stessi due neuroni siano attivi nella negative phase come $p_{uv}^{-}$, è possibile definire la regola di update dei pesi e della threshold come segue:
 
 $$\Delta w_{uv} = \frac{1}{\eta} (p_{uv}^{+} - p_{uv}^{-}) 
 \quad
@@ -768,35 +768,36 @@ $$\Delta w_{uv} = \frac{1}{\eta} (p_{uv}^{+} - p_{uv}^{-})
 \Delta \theta_u = -\frac{1}{\eta}(p_u^{+} - p_u^{-})$$
 
 Se un neurone è attivo più frequentemente quando viene presentato un data sample rispetto a quando alla rete è permesso di computare liberamente, la probabilitò che il neurone sia attivo è troppo bassa: perciò, la soglia dovrebbe essere ridotta.<br />
-Se dei neuroni sono attivi più frequentemente insieme quando viene presentato un data sample rispetto a quando alla rete è permesso di computare liberamente, i pesi sulle connessioni tra di loro dovrebbe venir incrementato, così che sia più probabile che essi siano attivi insieme.
-
+Similarmente, se due neuroni sono attivi insieme più frequentemente quando viene presentato un data sample rispetto a quando alla rete è permesso di computare liberamente, i pesi sulle connessioni tra di loro dovrebbe venir incrementato, così che sia più probabile che essi siano attivi insieme.
 
 ----------------------------------------------------------------
 
 #### Restricted Boltzmann machines ####
-Sebbene le BM siano molto potenti, allenarne anche di medie dimensioni è molto dispendioso. Per questo sono state introdotte le **restricted Boltzmann machines** (in seguito RBM). La differenza rispetto alle normali BM risiede nel fatto che il grafo del network di un RBM, invece di essere un grafo totalmente connesso, è un grafo bipartito, ovvero un grafo nel quale i vertici sono divisi in due gruppi e nel quale sono possibili connessioni solo tra neuroni di gruppi differenti.<br />
+Sebbene le BM siano molto potenti, allenarne anche solamente di medie dimensioni può risultare molto dispendioso. Per questo motivo sono state introdotte le **restricted Boltzmann machines** (in seguito RBM). La differenza rispetto alle normali BM risiede nel fatto che il grafo del network di un RBM, invece di essere un grafo totalmente connesso, è un grafo bipartito, ovvero un grafo nel quale i vertici sono divisi in due gruppi e nel quale sono possibili connessioni solo tra neuroni di gruppi differenti.<br />
 Solitamente uno dei gruppi è formato dai neuroni visibili e l'altro da quelli nascosti. Un vantaggio di avere un network in cui non vi sono connessioni tra neuroni dello stesso gruppo è che il processo di apprendimento può essere compiuto ripetendo questi tre passi:
-1.  fase I: le unità di input vengono fissate rispetto ad un pattern scelto casualmente e quelle nascoste vengono aggiornate in parallelo, ottenendo quello che si chiama in gergo **positive gradient**;
-2. fase II: avendo ottenuto un input preprocessato nella prima fase, si invertono le parti,si fissano i neuroni nascosti e si aggiornano quelli visibili, ottenendo così il **negative gradient**;
-3. fase III: si aggiornano pesi e threshold con la differenza tra positive e negative gradient.
+1) fase I: le unità di input vengono fissate rispetto ad un pattern scelto casualmente e quelle nascoste vengono aggiornate in parallelo. Il prodotto viene chiamato **positive gradient**;
+2) fase II: avendo ottenuto un input preprocessato nella prima fase, si invertono le parti, cioè si fissano i neuroni nascosti e si aggiornano quelli visibili, ottenendo così il **negative gradient**;
+3) fase III: si aggiornano pesi e threshold con la differenza tra positive e negative gradient.
 
 In letteratura, le RBM sono state utilizzate per costruire deep network in modo simile alle pile di autoencoder nei MLP.
 
 ----------------------------------------------------------------
 
 ### Recurrent network ###
-Sia gli HN che le BM sono esempi di **recurrent network**, ovvero network il cui grafo contiene, al suo interno, dei cicli. L'output in questi network viene generato solo se viene raggiunto uno stato stabile nella computazione.<br />
-L'evoluzione di questi sistemi può essere descritta attraverso l'utilizzo di equazioni differenziali. Dato, infatti, un insieme di alcune equazioni differenziali rappresentate in forma ricorsiva:
+Sia gli HN che le BM sono esempi di **recurrent network**, ovvero network il cui grafo contiene, al suo interno, dei cicli, sia che coinvolgano singoli neuroni che gruppi di neuroni. L'output in questi network viene generato solo al raggiungimento di uno stato stabile nella computazione.<br />
+L'evoluzione di questi sistemi può essere descritta attraverso l'utilizzo di equazioni differenziali. Dato, infatti, un insieme di alcune equazioni differenziali rappresentate in forma ricorsiva
 
 $$x(t_i) = x(t_{i-1}) + \Delta y_1(t_{i-1})$$
 $$y_1(t_i) = y_1(t_{i-1}) + \Delta y_2(t_{i-1})$$ $$\vdots$$
 $$y_{i-1}(t_i) = y_{i-1}(t_{i-1}) + f(t_{i-1}, x(t_{i-1}), \dots, y_{n-1}(t_{i-1}))$$
 
-è possibile sfruttare la derivata della funzione nell'istante di tempo precedente per calcolare il valore successivo. Questo permette di trasformarle in un recurrent network, creando, per ogni variabile, un nodo nel grafo e associando alle connessioni il valore del differenziale.
+è possibile sfruttare la derivata della funzione nell'istante di tempo precedente per calcolarne il valore successivo. Questo permette di trasformarle in un recurrent network, creando, per ogni variabile, un nodo nel grafo ed associando alle connessioni il valore del differenziale.
 
 ![[images/recurrent.png]]
 
-E' possibile generalizzare questo approccio a funzioni con più di un argomento grazie ai **vectorial neural network**. Se, tuttavia, non si è a conoscenza in precedenza della struttura della computazione, non è possibile sfruttare la backpropagation così come presentata, in quanto gli errori si propagano senza soluzione di continuità lungo i cicli del network. Un modo per risolvere questo problema consiste nel dispiegare nel tempo la computazione ogniqualvolta questa attraversi un ciclo, ed aggiungere poi una copia dei neuroni così attraversati come un layer addizionale. A questo punto si potrà applicare la backpropagation come in un qualsiasi feed-forward network. Per calcolare gli aggiornamenti ai pesi e alle threshold sarà, però, necessario combinare gli aggiustamenti calcolati rispetto ai neuroni così aggiunti.
+E' possibile generalizzare questo approccio a funzioni con più di un argomento grazie ai **vectorial neural network**.<br />
+I recurrent network vengono allenati allo stesso modo dei multilayer perceptron, cioè tramite error backpropagation. Tuttavia, a causa dei cicli nella struttura della rete, questo metodo non può essere applicato direttamente, in quanto questi cicli propagherebbero il segnale di errore in maniera ciclica. Un modo per risolvere questo problema consiste nel **dispiegare** (**unfolding**) nel tempo la rete tra due pattern di allenamento. A questo punto si potrà applicare la backpropagation come in un qualsiasi feed-forward network. Per calcolare gli aggiornamenti ai pesi e alle threshold sarà, però, necessario combinare gli aggiustamenti calcolati rispetto ai neuroni così aggiunti.
+Questa speciale forma di error backpropagation è chiamata **error backpropagation through time**.
 
 ----------------------------------------------------------------
 
