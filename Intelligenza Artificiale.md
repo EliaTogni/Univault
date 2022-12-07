@@ -746,7 +746,7 @@ $$\Delta E_u = E_{act_u = 1} - E_{act_u = 0} = \sum_{v \in U - \{u\}} w_{uv} act
 
 La procedura di aggiornamento prevede di scegliere randomicamente un neurone e di calcolarne la differenza di energia $\Delta E_{u}$ e la probabilità che il neurone abbia attivazione $1$. L'attivazione del neurone viene quindi impostata a $1$ con questa probabilità o a $0$ con la probabilità complementare.<br />
 Questa stessa procedura viene ripetuta svariate volte su neuroni scelti casualmente. Viene applicato il simulated annealing riducendo lentamente la temperatura.La convergenza verso uno stato stabile è garantita dal fatto che la temperatura del sistema diminuisce nel tempo. Questo processo di aggiornamento è una procedura **Markov-Chain Monte Carlo**.<br />
-Dopo un numero sufficiente di step, la probabilità che il network si trovi in uno specifico stato di attivazioen dipenderà solamente dall'energia del tale stato. Lo stato finale viene anche definito **equilibrio termico** del sistema, il quale rappresenterà un minimo della funzione.<br />
+Dopo un numero sufficiente di step, la probabilità che il network si trovi in uno specifico stato di attivazione dipenderà solamente dall'energia del tale stato. Lo stato finale viene anche definito **equilibrio termico** del sistema, il quale rappresenterà un minimo della funzione.<br />
 E' fondamentale notare che una BM potrà calcolare in modo efficace una distribuzione di probabilità se gli esempi forniti sono compatibili con una distribuzione di Boltzmann. Per mitigare questa restrizione, si dividono i neuroni di una BM tra neuroni **visibili**, cioè neuroni i quali ricevono i segnali di input, e **nascosti**, la cui attivazione non dipende direttamente dal dataset, permettendo così un adattamento più flessibile ai pattern di allenamento.<br />
 L'obiettivo di apprendimento consiste nell'adattare i pesi e le threshold in modo tale che la distribuzione implicita nel dataset sia approssimata dalla distribuzione rappresentata dai neuroni visibili di una BM. Questo obiettivo è raggiungibile scegliendo una misura che descriva la differenza tra le due distribuzioni ed utilizzando la tecnica del gradient descent per minimizzarla.<br />
 Una delle misure più utilizzate è la **misura di Kullback-Leibler sulla divergenza dell'informazione**:
@@ -758,7 +758,7 @@ Ogni passo di apprendimento viene suddiviso in due fasi:
 1) **positive phase**: in cui i neuroni visibili vengono fissati ad un dato di input scelto randomicamente e i neuroni nascosti vengono aggiornati fino al raggiungimento dell'equilibrio termico;
 2) **negative phase**: tutte le unità vengono aggiornate fino al raggiungimento dell'equilibrio termico.
 
-Definendo la probabilità che un neurone $u$ sia attivo nella positive phase come $p_u^{+}$, la probabilità che un neurone $u$ sia attivo nella negative phase come $p_u^{+}$, la probabilità che due neuroni $u$ e $v$ siano attivi simultaneamente nella positive phase come $p_{uv}^{+}$  e quella che gli stessi due neuroni siano attivi nella negative phase come $p_{uv}^{-}$, è possibile definire la regola di update dei pesi e della threshold come segue:
+Definendo la probabilità che un neurone $u$ sia attivo nella positive phase come $p_u^{+}$, la probabilità che un neurone $u$ sia attivo nella negative phase come $p_u^{-}$, la probabilità che due neuroni $u$ e $v$ siano attivi simultaneamente nella positive phase come $p_{uv}^{+}$  e quella che gli stessi due neuroni siano attivi nella negative phase come $p_{uv}^{-}$, è possibile definire la regola di update dei pesi e della threshold come segue:
 
 $$\Delta w_{uv} = \frac{1}{\eta} (p_{uv}^{+} - p_{uv}^{-}) 
 \quad
@@ -766,13 +766,13 @@ $$\Delta w_{uv} = \frac{1}{\eta} (p_{uv}^{+} - p_{uv}^{-})
 \quad
 \Delta \theta_u = -\frac{1}{\eta}(p_u^{+} - p_u^{-})$$
 
-Se un neurone è attivo più frequentemente quando viene presentato un data sample rispetto a quando alla rete è permesso di computare liberamente, la probabilitò che il neurone sia attivo è troppo bassa: perciò, la soglia dovrebbe essere ridotta.<br />
-Similarmente, se due neuroni sono attivi insieme più frequentemente quando viene presentato un data sample rispetto a quando alla rete è permesso di computare liberamente, i pesi sulle connessioni tra di loro dovrebbe venir incrementato, così che sia più probabile che essi siano attivi insieme.
+Se un neurone è attivo più frequentemente quando viene presentato un data sample rispetto a quando alla rete è permesso di computare liberamente, la probabilità che il neurone sia attivo è troppo bassa: perciò, la soglia dovrebbe essere ridotta.<br />
+Similarmente, se due neuroni sono attivi insieme più frequentemente quando viene presentato un data sample rispetto a quando alla rete è permesso di computare liberamente, i pesi sulle connessioni tra di loro dovrebbero venir incrementati, così che sia più probabile che essi siano attivi insieme.
 
 ----------------------------------------------------------------
 
 #### Restricted Boltzmann machines ####
-Sebbene le BM siano molto potenti, allenarne anche solamente di medie dimensioni può risultare molto dispendioso. Per questo motivo sono state introdotte le **restricted Boltzmann machines** (in seguito RBM). La differenza rispetto alle normali BM risiede nel fatto che il grafo del network di un RBM, invece di essere un grafo totalmente connesso, è un grafo bipartito, ovvero un grafo nel quale i vertici sono divisi in due gruppi e nel quale sono possibili connessioni solo tra neuroni di gruppi differenti.<br />
+Sebbene le BM siano molto potenti, allenarne anche solamente di medie dimensioni può risultare molto dispendioso. Per questo motivo sono state introdotte le **restricted Boltzmann machines** (in seguito RBM). La differenza rispetto alle normali BM risiede nel fatto che il grafo del network di una RBM, invece di essere un grafo totalmente connesso, è un grafo bipartito, ovvero un grafo nel quale i vertici sono divisi in due gruppi e nel quale sono possibili connessioni solo tra neuroni di gruppi differenti.<br />
 Solitamente uno dei gruppi è formato dai neuroni visibili e l'altro da quelli nascosti. Un vantaggio di avere un network in cui non vi sono connessioni tra neuroni dello stesso gruppo è che il processo di apprendimento può essere compiuto ripetendo questi tre passi:
 1) fase I: le unità di input vengono fissate rispetto ad un pattern scelto casualmente e quelle nascoste vengono aggiornate in parallelo. Il prodotto viene chiamato **positive gradient**;
 2) fase II: avendo ottenuto un input preprocessato nella prima fase, si invertono le parti, cioè si fissano i neuroni nascosti e si aggiornano quelli visibili, ottenendo così il **negative gradient**;
@@ -784,7 +784,7 @@ In letteratura, le RBM sono state utilizzate per costruire deep network in modo 
 
 ### Recurrent network ###
 Sia gli HN che le BM sono esempi di **recurrent network**, ovvero network il cui grafo contiene, al suo interno, dei cicli, sia che coinvolgano singoli neuroni che gruppi di neuroni. L'output in questi network viene generato solo al raggiungimento di uno stato stabile nella computazione.<br />
-La configurazione di un recurrent network può essere ottenuta costruendola manualmente, se la struttura della computazione da ottenere è nota, oppure estendendo l'algoritmo dell'error backpropagation nel tempo in modod da gestire la presenza di cicli.<br />
+La configurazione di un recurrent network può essere ottenuta costruendola manualmente, se la struttura della computazione da ottenere è nota, oppure estendendo l'algoritmo dell'error backpropagation nel tempo in modo da gestire la presenza di cicli.<br />
 Arbitrarie equazioni differenziali possono essere rappresentate tramite recurrent neural network. Dato, infatti, un insieme di alcune equazioni differenziali rappresentate in forma ricorsiva
 
 $$x(t_i) = x(t_{i-1}) + \Delta y_1(t_{i-1})$$
@@ -802,37 +802,35 @@ Questa speciale forma di error backpropagation è chiamata **error backpropagati
 ----------------------------------------------------------------
 
 ## Sistemi fuzzy ##
-
 ### Introduzione alla logica fuzzy ###
 #### Motivazioni ####
-La logica classica si fonda sul *principio di bivalenza*, ovvero una proposizione può assumere solo due valori di verità: il *vero* o il *falso*. Questa assunzione può essere adeguata nel caso in cui ci interessi modellare concetti chiari e distinti che hanno definizioni precise, come nel caso dei concetti matematici. Quando, invece, vogliamo formalizzare la conoscenza implicita nel linguaggio naturale possiamo imbatterci in alcune proposizioni che sono vere (o false) *in una certa misura*, oppure proprietà che hanno estensioni sfumate. La logica fuzzy e la teoria insiemistica che da questa discende ci permette di ragionare in questi contesti, in modo da sfruttare a nostro vantaggio la vaghezza insita nell'uso che facciamo delle parole nel linguaggio naturale. Bisogna, tuttavia, stare attenti a non confondere l'imprecisione con l'*incertezza*. L'incertezza si riferisce alla possibilità che un evento accada o meno. Il valore numerico associato all'accadimento di un evento incerto si chiama *probabilità* ed è studiato dalla branca della matematica omonima. La differenza tra appartenenza fuzzy e probabilità sta nel fatto che la probabilità rimane comunque un fenomeno booleano: un evento può accadere o non accadere; dove, invece, l'appartenenza fuzzy si riferisce a quanto una proprietà viene soddisfatta da un oggetto.
+La logica classica si fonda sul **principio di bivalenza**, ovvero una proposizione può assumere solo due valori di verità: il **vero** o il **falso**. Questa assunzione può essere adeguata nel caso in cui l'interesse sia modellare concetti chiari e distinti che hanno definizioni precise, come nel caso dei concetti matematici. Quando, invece, si vuole formalizzare la conoscenza implicita nel linguaggio naturale é possibile imbattersi in alcune proposizioni che sono vere (o false) **in una certa misura**, oppure proprietà che hanno estensioni sfumate. La logica fuzzy e la teoria insiemistica che da questa discende permette di ragionare in questi contesti, in modo da sfruttare a proprio vantaggio la vaghezza insita nell'uso che viene fatto delle parole nel linguaggio naturale. Bisogna, tuttavia, stare attenti a non confondere l'imprecisione con l'**incertezza**. L'incertezza si riferisce alla possibilità che un evento accada o meno. Il valore numerico associato all'accadimento di un evento incerto si chiama [[Statistica e Probabilità |probabilità]] ed è studiato dalla branca della matematica omonima. La differenza tra appartenenza fuzzy e probabilità sta nel fatto che la probabilità rimane comunque un fenomeno booleano: un evento può accadere o non accadere; dove, invece, l'appartenenza fuzzy si riferisce a quanto una proprietà viene soddisfatta da un oggetto.
 
 ----------------------------------------------------------------
 
 ### Insiemi fuzzy ###
-Un insieme classico è una collezione di elementi che possono (o meno) appartenere all'insieme. Per tanto, un insieme può essere definito a partire da una funzione caratteristica che assegna ad ogni elemento nel dominio del discorso il valore 1 se questo elemento appartiene all'insieme oppure 0 altrimenti. Un *insieme fuzzy* può essere visto come una generalizzazione di questo concetto.
+Un insieme classico è una collezione di elementi che possono (o meno) appartenere all'insieme. Per tanto, un insieme può essere definito a partire da una funzione caratteristica che assegna ad ogni elemento nel dominio del discorso il valore 1 se questo elemento appartiene all'insieme oppure 0 altrimenti. Un **insieme fuzzy** può essere visto come una generalizzazione di questo concetto.
 
-Dato un dominio del discorso $X$, un insieme fuzzy $\mu$ è una funzione $\mu : X \to [0,1]$ che assegna ad ogni elemento un *grado di appartenenza* $\mu(x)$ rispetto all'insieme $\mu$.
+Dato un dominio del discorso $X$, un insieme fuzzy $\mu$ è una funzione $\mu : X \to [0,1]$ che assegna ad ogni elemento un **grado di appartenenza** $\mu(x)$ rispetto all'insieme $\mu$.
 
-Queste funzioni sono scelte a seconda del contesto di utilizzo e i gradi di appartenenza sono fissati per convenzione. Possiamo vedere i fuzzy set come interfacce tra espressioni lingustiche e loro rappresentazioni numeriche. Ad esempio, vogliamo dare un modello formale alla proprietà \"essere alto per un bambino di 4 anni\". Per farlo definiremo un insieme fuzzy $\mu_{tall}$ attraverso una funzionesigmoide come in Figura [22](#fig:23){reference-type="ref" reference="fig:23"}, tale per cui risulteranno *sicuramente* nell'estensione della proprietà i bambini
-più alti di 1.5 m centimetri e *sicuramente* fuori dall'estensione quelli più bassi di 0.7 m. Tutti gli altri apparterranno all'insieme con un certo grado.
+Queste funzioni sono scelte a seconda del contesto di utilizzo e i gradi di appartenenza sono fissati per convenzione. E' possibile vedere i fuzzy set come interfacce tra espressioni lingustiche e loro rappresentazioni numeriche. Ad esempio, si voglia fornire un modello formale alla proprietà "essere alto per un bambino di 4 anni". Per farlo, si definirà un insieme fuzzy $\mu_{tall}$ attraverso una funzione sigmoide, tale per cui risulteranno **sicuramente** nell'estensione della proprietà i bambini più alti di 1.5 m e **sicuramente** fuori dall'estensione quelli più bassi di 0.7 m. Tutti gli altri apparterranno all'insieme con un certo grado.
 
 ![[images/tall.png]]
 
 ----------------------------------------------------------------
 
 ### Interpretazioni della funzione di appartenenza ###
-Ci sono varie semantiche che è possibile associare alla relazione di appartenenza fuzzy a seconda dalla applicazione:
-1.  somiglianza;
-2.  preferenza;
-3.  possibilità.
+Ci sono varie semantiche che è possibile associare alla relazione di appartenenza fuzzy a seconda dell'applicazione:
+1) **somiglianza**;
+2) **preferenza**;
+3) **possibilità**.
 
-Nel primo caso, $\mu(x)$ può essere visto come il grado di prossimità rispetto ad un elemento prototipale di $\mu$. Questa interpretazione viene utilizzata nei problemi di pattern classification, cluster analysis e regressione. Nel secondo caso, la funzione $\mu$ rappresenta sia l'insieme degli oggetti preferiti, sia il valore associato ad una decisione $X$ e $\mu(u)$ rappresenta sia l'intensità della preferenza associata a $u$, sia la possibilità di scegliere $u$ come valore di $X$. Questa interpretazione viene utilizzata nei problemi di ottimizzazione fuzzy e nella teoria della decisione. L'ultima delle tre è quella che considera $\mu(u)$ come il grado di possibilità che l'elemento $u$ sia il valore del parametro $X$ ed è usata per quantificare lo stato epistemico di un agente. L'obbiettivo è quello di distinguere quello che l'agente considererebbe \"sorprendente\" da quello che, invece, è \"tipico\" o \"aspettato\". Questa interpretazione, come vedremo in seguito, viene utilizzata in data analysis.
+Nel primo caso, $\mu(x)$ può essere visto come il grado di prossimità rispetto ad un elemento prototipale di $\mu$. Questa interpretazione viene utilizzata nei problemi di pattern classification, cluster analysis e regressione. Nel secondo caso, la funzione $\mu$ rappresenta sia l'insieme degli oggetti preferiti, sia il valore associato ad una decisione $X$ e $\mu(u)$ rappresenta sia l'intensità della preferenza associata a $u$, sia la possibilità di scegliere $u$ come valore di $X$. Questa interpretazione viene utilizzata nei problemi di ottimizzazione fuzzy e nella teoria decisionale. L'ultima delle tre è quella che considera $\mu(u)$ come il grado di possibilità che l'elemento $u$ sia il valore del parametro $X$ ed è usata per quantificare lo stato epistemico di un agente. L'obiettivo è quello di distinguere quello che l'agente considererebbe "sorprendente" da quello che, invece, è "tipico" o "aspettato". Questa interpretazione viene utilizzata in data analysis.
 
 ----------------------------------------------------------------
 
 ### Rappresentazione verticale e orizzontale ###
-Come abbiamo già mostrato, gli insiemi fuzzy possono essere rappresentati da una funzione che assegna un valore nell'intervallo reale unitario ad ogni elemento dell'universo del discorso. Nella maggior parte delle applicazioni i valori assunti dalla funzione crescono monotonicamente fino a un certo punto e da quello decrescono monotonicamente. Questo tipo di insiemi viene detto *convesso*. Le funzioni che rappresentano insiemi convessi sono dette *funzioni triangolari* ed assumono la forma:
+Come già mostrato, gli insiemi fuzzy possono essere rappresentati da una funzione la quale assegna un valore nell'intervallo reale unitario ad ogni elemento dell'universo del discorso. Nella maggior parte delle applicazioni, i valori assunti dalla funzione crescono monotonicamente fino ad un certo punto e da quel punto decrescono monotonicamente. Questo tipo di insiemi viene detto *convesso*. Le funzioni che rappresentano insiemi convessi sono dette **funzioni triangolari** ed assumono la forma:
 
 $$\Lambda_{a,b,c} : \mathbb{R} \to [0,1],\quad x \mapsto 
 \begin{cases}
@@ -841,7 +839,7 @@ $$\Lambda_{a,b,c} : \mathbb{R} \to [0,1],\quad x \mapsto
 0 \quad \text{  altrimenti}
 \end{cases}$$
 
-Le funzioni triangolari possono essere considerate un caso particolare delle *funzioni trapezoidali*:
+Le funzioni triangolari possono essere considerate un caso particolare delle **funzioni trapezoidali**:
 
 $$\Pi_{a,b,c,d} : \mathbb{R} \to [0,1],\quad x \mapsto 
 \begin{cases}
@@ -853,23 +851,26 @@ $$\Pi_{a,b,c,d} : \mathbb{R} \to [0,1],\quad x \mapsto
 
 ![[images/triang.png]]
 
-Alcuni esempi di queste funzioni possono essere trovati in Figura [23](#fig:24){reference-type="ref" reference="fig:24"}. Questa rappresentazione dei fuzzy set viene anche detto *rappresentazione verticale*. Una diversa rappresentazione è invece quella *orizzontale*. Per un qualsiasi valore $\alpha \in [0,1]$ consideriamo l'insieme di
-elementi che hanno un grado di appartenenza all'insieme $\mu$ di almeno $\alpha$.
+Questa rappresentazione dei fuzzy set viene anche detta **rappresentazione verticale**.<br />
+Una diversa rappresentazione è invece quella **orizzontale**. Per un qualsiasi valore $\alpha \in [0,1]$ si consideri l'insieme di elementi che hanno un grado di appartenenza all'insieme $\mu$ di almeno $\alpha$.
 
 Sia $\mu$ un fuzzy set definito rispetto al dominio del discorso $X$ e sia $\alpha \in [0,1]$. L'insieme
-$$[\mu]_\alpha = \{x \in X | \mu(x) \geq \alpha \}$$ è chiamato *alpha-cut* dell'insieme $\mu$.
-Nel caso in cui l'insieme $\mu$ sia una funzione trapezoidale, qualsiasi suo alpha-cut sarà un intervallo chiuso. Se, invece, l'insieme non è convesso almeno uno dei suoi alpha-cut consisterà in due intervalli disgiunti. Alcune proprietà degli alpha-cut sono le seguenti:
-1.  $[\mu]_0 = X$;
-2.  $\alpha \leq \beta \implies [\mu]_\alpha \subseteq [\mu]_\beta$;
-3.  $\cap_\alpha: \alpha < \beta, [\mu]_\alpha = [\mu]_\beta$.
 
-Da queste proprietà discende il fatto che ogni insieme fuzzy possa essere descritto specificando una famiglia di alpha-cut, come illustra il teorema seguente.<br />
+$$[\mu]_\alpha = \{x \in X | \mu(x) \geq \alpha \}$$
+
+è chiamato **alpha-cut** dell'insieme $\mu$.<br />
+Nel caso in cui l'insieme $\mu$ sia una funzione trapezoidale, qualsiasi suo alpha-cut sarà un intervallo chiuso. Se, invece, l'insieme non è convesso, almeno uno dei suoi alpha-cut consisterà in due intervalli disgiunti. Alcune proprietà degli alpha-cut sono le seguenti:
+1) $[\mu]_0 = X$;
+2) $\alpha \leq \beta \implies [\mu]_\alpha \subseteq [\mu]_\beta$;
+3) $\cap_\alpha: \alpha < \beta, [\mu]_\alpha = [\mu]_\beta$.
+
+Da queste proprietà deriva il fatto che ogni insieme fuzzy possa essere descritto specificando una famiglia di alpha-cut, come illustra il teorema seguente.<br />
 Sia $\mu$ un fuzzy set, allora:
 $$\mu(x) = \sup_{\alpha \in [0,1]} \{x \in [\mu]_\alpha\}$$
 
 ![[images/alpha_cut.png]]
 
-Dal punto di vista geometrico, un fuzzy set può essere visto come un inviluppo superiore dei suoi alpha-cut. Questa connessione tra insiemi fuzzy e famiglie di alpha-cut è utilizzata nella rappresentazione degli insiemi fuzzy nei computer. Solitamente ci si limita a prendere un numero di finito di alpha-cut rilevanti ai fini della rappresentazione dell'insieme(Figura [24](#fig:25){reference-type="ref" reference="fig:25"}). Gli insiemi vengono poi conservati in memoria come catene di liste lineari. Ogni lista è l'unione di intervalli rappresentati dai loro estremi.
+Dal punto di vista geometrico, un fuzzy set può essere visto come un inviluppo superiore dei suoi alpha-cut. Questa connessione tra insiemi fuzzy e famiglie di alpha-cut è utilizzata nella rappresentazione degli insiemi fuzzy nei computer. Solitamente ci si limita a prendere un numero finito di alpha-cut rilevanti ai fini della rappresentazione dell'insieme. Gli insiemi vengono poi conservati in memoria come catene di liste lineari. Ogni lista è l'unione di intervalli rappresentati dai loro estremi.
 
 ----------------------------------------------------------------
 
