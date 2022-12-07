@@ -475,13 +475,13 @@ I training dataset sono necessariamente limitati nella taglia. infatti, un datas
 L'utilizzo di più di un hidden layer permetterebbe, nella maggior parte delle casistiche, di ridurre il numero di neuroni necessari.<br />
 Un esempio esplicativo viene fornito considerando la funzione che calcola la parità su una parola di $n$-bit. L'output sarà $1$ se e solo se il vettore di input che rappresenta la parola conterrà un numero pari di bit con valore $1$. Nel caso si scegliesse di utilizzare un MLP con un solo hidden layer, quest'ultimo conterrà al suo interno $2^{n-1}$ neuroni, in quanto la forma normale disgiuntiva della funzione di parità su $n$-bit non è altro che una disgiunzione di $2^{n-1}$ congiunzioni.<br />
 Se si permettesse, invece, di avere più di un layer, il numero di neuroni crescerebbe in modo lineare rispetto alla dimensione dell'input.<br />
-Questa constatazione ha portato allo sviluppo del cosìddetto **deep learning**, dove con **profondità** della rete si definisce il più lungo cammino all'interno del grado che descrive la rete. Il trade-off sperato consiste nel permettere una maggiore profondità del network in cambio di un miglioramento delle risorse utilizzate nel calcolo e nella costruzione.<br />
-Il deep learning oltre ad offrire vantaggi porta con se alcune problematiche:
+Questa constatazione ha portato allo sviluppo del cosìddetto **deep learning**, dove con **profondità** della rete si definisce il più lungo cammino all'interno del [[Grafo |grafo]] che descrive la rete. Il trade-off sperato consiste nel permettere una maggiore profondità del network in cambio di un miglioramento delle risorse utilizzate nel calcolo e nella costruzione.<br />
+Il deep learning, oltre ad offrire dei vantaggi, porta con se alcune problematiche:
 - **Overfitting**, cioè l'incremento nel numero di neuroni e, quindi, dei parametri da adattare dovuti alla presenza dei molti layer;
 - **Vanishing gradient**, infatti, durante la propagazione dell'errore, il gradiente si riduce dopo ogni layer fino a scomparire. Il learning nei primi hidden layer può diventare molto lento.
 
 Alcune soluzioni al problema dell'overfitting sono:
-- **Weigth decay**, ossia mettere un tetto massimo ai valori che possono assumere i pesi al fine di prevenire un adattamento troppo preciso al dataset;
+- **Weigth decay**, ossia mettere un tetto massimo ai valori che i pesi possono assumere al fine di prevenire un adattamento troppo preciso al dataset;
 - **Sparsity constraint**, ossia si introducono dei limiti al numero di neuroni negli hidden layer. Altrimenti, è possibile limitare il numero di quelli attivi;
 - **Dropout training**, ossia alcuni neuroni degli hidden layer vengono omessi durante l'evoluzione del network.
 
@@ -494,7 +494,7 @@ Un approccio completamente diverso è si basa sul costruire il network **layer a
 Una tecnica molto usata è quella di pensare al network come una pila di **autoencoder**. Un autoencoder non è altro che un three-layer perceptron il quale mappa il suo input in una sua approssimazione, utilizzando un hidden layer di dimensioni minori. Il layer nascosto funge da encoder per la codifica dell'input in una sua rappresentazione interna, che è a sua volta decodificata dal layer di output. L'autoencoder, avendo un solo layer, non soffre delle stesse limitazioni e può essere allenato attraverso la normale backpropagation.<br />
 Un problema con questo approccio è che la presenza di tanti neuroni negli hidden layer quanti quelli di input rischia di propagare il segnali con minori aggiustamenti, senza che l'autoencoder estragga alcuna informazione utile dal dato.<br />
 Per questo problema esistono tre principali soluzioni:
-- **Sparse autoencoder**, il quale prevede di utilizzare un numero molto minore di neuroni nel hidden layer, rispetto a quelli di input. L'autoencoder sarà così costretto ad estrarre dall'input qualche feature interessante al posto di propagare semplicemente il dato;
+- **Sparse autoencoder**, il quale prevede di utilizzare un numero molto minore di neuroni nell'hidden layer, rispetto a quelli di input. L'autoencoder sarà così costretto ad estrarre dall'input qualche feature interessante al posto di propagare semplicemente il dato;
 - **Sparse activation scheme**, nel quale, in modo simile a quanto veniva fatto per evitare l'overfitting, si decide di disattivare alcuni neuroni durante la computazione;
 - **Denoising autoencoder**, nel quale si aggiunge rumore (variazioni randomiche) all'input.
 
