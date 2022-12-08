@@ -862,25 +862,27 @@ $$\Pi_{a,b,c,d} : \mathbb{R} \to [0,1],\quad x \mapsto
 ![[images/triang.png]]
 
 Questa rappresentazione dei fuzzy set viene anche detta **rappresentazione verticale**.<br />
-Una diversa rappresentazione è invece quella **orizzontale**. Per un qualsiasi valore $\alpha \in [0,1]$, si consideri l'insieme di elementi che hanno un grado di appartenenza all'insieme $\mu \geq \alpha$.
+Una diversa rappresentazione è invece quella **orizzontale**. Per un qualsiasi valore $\alpha \in [0,1]$, si consideri l'insieme di elementi aventi un grado di appartenenza all'insieme $\mu \geq \alpha$.
 
 Sia $\mu$ un fuzzy set definito rispetto al dominio del discorso $X$ e sia $\alpha \in [0,1]$. L'insieme
 
 $$[\mu]_\alpha = \{x \in X | \mu(x) \geq \alpha \}$$
 
 è chiamato **alpha-cut** dell'insieme $\mu$.<br />
-Nel caso in cui l'insieme $\mu$ sia una funzione trapezoidale, qualsiasi suo alpha-cut sarà un intervallo chiuso. Se, invece, l'insieme non è convesso, almeno uno dei suoi alpha-cut consisterà in due intervalli disgiunti. Alcune proprietà degli alpha-cut sono le seguenti:
+Nel caso in cui l'insieme $\mu$ sia una funzione convessa, qualsiasi suo alpha-cut sarà un intervallo unico. Se, invece, l'insieme non è convesso, almeno uno dei suoi alpha-cut consisterà in due intervalli disgiunti.<br />
+Alcune proprietà degli alpha-cut sono le seguenti:
 1) $[\mu]_0 = X$;
 2) $\alpha \leq \beta \implies [\mu]_\alpha \subseteq [\mu]_\beta$;
-3) $\cap_\alpha: \alpha < \beta, [\mu]_\alpha = [\mu]_\beta$.
+3) $\cap_{\alpha:\text{ }\alpha < \beta}, [\mu]_\alpha = [\mu]_\beta$.
 
 Da queste proprietà deriva il fatto che ogni insieme fuzzy possa essere descritto specificando una famiglia di alpha-cut, come illustra il teorema seguente.<br />
-Sia $\mu$ un fuzzy set, allora:
-$$\mu(x) = \sup_{\alpha \in [0,1]} \{x \in [\mu]_\alpha\}$$
+Sia $\mu$ un fuzzy set. Allora:
+$$\mu(x) = \sup \{\alpha \in [0,1] \quad \vert \quad  x \in [\mu]_\alpha\}$$
 
 ![[images/alpha_cut.png]]
 
-Dal punto di vista geometrico, un fuzzy set può essere visto come un inviluppo superiore dei suoi alpha-cut. Questa connessione tra insiemi fuzzy e famiglie di alpha-cut è utilizzata nella rappresentazione degli insiemi fuzzy nei computer. Solitamente ci si limita a prendere un numero finito di alpha-cut rilevanti ai fini della rappresentazione dell'insieme. Gli insiemi vengono poi conservati in memoria come catene di liste lineari. Ogni lista è l'unione di intervalli rappresentati dai loro estremi.
+Dal punto di vista geometrico, un fuzzy set può essere visto come un inviluppo superiore dei suoi alpha-cut.<br />
+Questa connessione tra insiemi fuzzy e famiglie di alpha-cut è utilizzata nella rappresentazione degli insiemi fuzzy nei computer. Solitamente ci si limita a considerare un numero finito di alpha-cut rilevanti ai fini della rappresentazione dell'insieme. Gli insiemi vengono poi conservati in memoria come catene di liste lineari. Ogni lista è l'unione di intervalli rappresentati dai loro estremi.
 
 ----------------------------------------------------------------
 
