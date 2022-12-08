@@ -824,17 +824,23 @@ Il grado di appartenenza è un concetto differente da quello della probabilità.
 ----------------------------------------------------------------
 
 ### Interpretazioni della funzione di appartenenza ###
+
+Gli insiemi fuzzy sono rilevanti in tre tipi di task information-driven:
+1) classificazione e analisi dei dati;
+2) problemi di decisione;
+3) ragionamento approssimativo.
+
 Ci sono varie semantiche che è possibile associare alla relazione di appartenenza fuzzy a seconda dell'applicazione:
 1) **somiglianza**;
 2) **preferenza**;
 3) **possibilità**.
 
-L'interpretazione più popolare del grado di appartenenza fuzzy è la somiglianza a dei valori di riferimento. $\mu(x)$ può essere visto come il grado di prossimità rispetto ad un elemento prototipale di $\mu$. Per ottenere un valore numerico indicativo di un'appartenenza graduale in questa interpetazione, l'approccio più naturale consiste nel comparare l'oggetto sotto considerazione con un oggetto che appartiene definitivamente al concetto considerato. Questa interpretazione viene utilizzata nei problemi di pattern classification, cluster analysis e regressione. Il secondo caso, la funzione $\mu$ rappresenta sia l'insieme degli oggetti preferiti, sia il valore associato ad una decisione $X$ e $\mu(u)$ rappresenta sia l'intensità della preferenza associata a $u$, sia la possibilità di scegliere $u$ come valore di $X$. Questa interpretazione viene utilizzata nei problemi di ottimizzazione fuzzy e nella teoria decisionale. L'ultima delle tre è quella che considera $\mu(u)$ come il grado di possibilità che l'elemento $u$ sia il valore del parametro $X$ ed è usata per quantificare lo stato epistemico di un agente. L'obiettivo è quello di distinguere quello che l'agente considererebbe "sorprendente" da quello che, invece, è "tipico" o "aspettato". Questa interpretazione viene utilizzata in data analysis.
+L'interpretazione più popolare del grado di appartenenza fuzzy è la somiglianza a dei valori di riferimento. $\mu(x)$ può essere visto come il grado di prossimità rispetto ad un elemento prototipale di $\mu$. Per ottenere un valore numerico indicativo di un'appartenenza graduale in questa interpetazione, l'approccio più naturale consiste nel comparare l'oggetto sotto considerazione con un oggetto che appartiene definitivamente al concetto considerato. Questa interpretazione viene utilizzata nei problemi di pattern classification, cluster analysis e regressione. Il secondo caso, l'espressione di preferenze, è legato all'interpretazione precedente. In questa casistica, il grado di appartenenza determina quali valori dovrebbero essere preferiti rispetto ad altri. Il grado di appartenenza va interpretato in termini di ordinamento. La funzione $\mu$ rappresenta sia l'insieme degli oggetti preferiti, sia il valore associato ad una decisione $X$ e $\mu(u)$ rappresenta sia l'intensità della preferenza associata a $u$, sia la possibilità di scegliere $u$ come valore di $X$. Questa interpretazione di grado di appartenenza viene utilizzata nei problemi di ottimizzazione fuzzy e nella teoria decisionale ed è spesso correlata all'interpretazione di somiglianza poichè un ordine di preferenza può essere derivato dalla somiglianza di un certo oggetto ad un oggetto ideale o ad un valore ideale. L'ultima delle tre interpretazioni è usata per esprimere possibilità. Questa interpretazione considera $\mu(u)$ come il grado di possibilità che l'elemento $u$ sia il valore del parametro $X$ ed è usata per quantificare lo stato epistemico, cioè di conoscenza, di un agente. L'obiettivo è quello di distinguere quello che l'agente considererebbe "sorprendente" da quello che, invece, è "tipico" o "aspettato". Questa interpretazione viene utilizzata in data analysis.
 
 ----------------------------------------------------------------
 
 ### Rappresentazione verticale e orizzontale ###
-Come già mostrato, gli insiemi fuzzy possono essere rappresentati da una funzione la quale assegna un valore nell'intervallo reale unitario ad ogni elemento dell'universo del discorso. Nella maggior parte delle applicazioni, i valori assunti dalla funzione crescono monotonicamente fino ad un certo punto e da quel punto decrescono monotonicamente. Questo tipo di insiemi viene detto *convesso*. Le funzioni che rappresentano insiemi convessi sono dette **funzioni triangolari** ed assumono la forma:
+Come già mostrato, gli insiemi fuzzy possono essere rappresentati da una funzione la quale assegna un valore nell'intervallo reale unitario ad ogni elemento dell'universo del discorso. Nella maggior parte delle applicazioni, i valori assunti dalla funzione crescono monotonicamente fino ad un certo punto e da quel punto decrescono monotonicamente. Questo tipo di insiemi viene detto **convesso**. Le funzioni che rappresentano insiemi convessi sono dette **funzioni triangolari** ed assumono la forma:
 
 $$\Lambda_{a,b,c} : \mathbb{R} \to [0,1],\quad x \mapsto 
 \begin{cases}
@@ -856,7 +862,7 @@ $$\Pi_{a,b,c,d} : \mathbb{R} \to [0,1],\quad x \mapsto
 ![[images/triang.png]]
 
 Questa rappresentazione dei fuzzy set viene anche detta **rappresentazione verticale**.<br />
-Una diversa rappresentazione è invece quella **orizzontale**. Per un qualsiasi valore $\alpha \in [0,1]$ si consideri l'insieme di elementi che hanno un grado di appartenenza all'insieme $\mu$ di almeno $\alpha$.
+Una diversa rappresentazione è invece quella **orizzontale**. Per un qualsiasi valore $\alpha \in [0,1]$, si consideri l'insieme di elementi che hanno un grado di appartenenza all'insieme $\mu \geq \alpha$.
 
 Sia $\mu$ un fuzzy set definito rispetto al dominio del discorso $X$ e sia $\alpha \in [0,1]$. L'insieme
 
@@ -889,23 +895,21 @@ $$C(\mu) = [\mu]_{1} = \{ x \in X | \mu(x) = 1 \}$$
 L'*altezza* $h(\mu)$ di un insieme fuzzy $\mu$ è il più alto grado di appartenenza ottenibile da un elemento di $\mu$. In simboli:
 $$h(\mu) = \sup_{x \in X} \{\mu(x)\}$$
 
-Un insieme fuzzy $\mu$ è definito *normale* sse $h(\mu) = 1$. Altrimenti, è definito *subnormale*.
+Un insieme fuzzy $\mu$ è definito *normale* se e solo se $h(\mu) = 1$. Altrimenti, è definito *subnormale*.
 
-Un insieme fuzzy $\mu$ è definito *convesso* sse i suoi alpha-cut sono convessi per ogni scelta di $\alpha \in [0,1)$.
+Un insieme fuzzy $\mu$ è definito *convesso* se e solo se i suoi alpha-cut sono convessi per ogni scelta di $\alpha \in [0,1)$.
 
-Un insieme fuzzy $\mu$ è un *numero fuzzy* sse $\mu$ è normale e $[\mu]_\alpha$ è chiusa, limitata e convessa per ogni scelta di $\alpha \in [0,1)$.
+Un insieme fuzzy $\mu$ è un **numero fuzzy** se e solo se $\mu$ è normale e $[\mu]_\alpha$ è chiusa, limitata e convessa per ogni scelta di $\alpha \in [0,1)$.
 
 ----------------------------------------------------------------
 
 ### Logica fuzzy ###
-Un importante risultato della logica classica dice che esiste un isomorfismo tra la logica proposizione su un insieme finito di variabili e la teoria degli insiemi finiti. Entrambi questi sistemi, inoltre, possono essere dimostrati isomorfi ad un'algebra booleana finita. Questo ci permette di definire gli operatori insiemistici utilizzando i classici operatori logici di congiunzione, disgiunzione e negazione. Un discorso simile vale per la logica fuzzy, ovvero la logica che ha come insieme di valori di verità l'intero intervallo reale $[0,1]$. Una volta ridefiniti gli operatori logici booleani per adattarsi alla nuova semantica potremo usarli per costruirci sopra una teoria degli operatori insiemistici \"fuzzy\". Siano $\mu$ e $\mu'$, possiamo definire gli operatori della logica fuzzy come segue:
+Un importante risultato della logica classica dice che esiste un isomorfismo tra la logica proposizionale su un insieme finito di variabili e la teoria degli insiemi finiti. Entrambi questi sistemi, inoltre, possono essere dimostrati isomorfi ad un'algebra booleana finita. Questo ci permette di definire gli operatori insiemistici utilizzando i classici operatori logici di congiunzione, disgiunzione e negazione. Un discorso simile vale per la logica fuzzy, ovvero la logica che ha come insieme di valori di verità l'intero intervallo reale $[0,1]$. Una volta ridefiniti gli operatori logici booleani per adattarsi alla nuova semantica, potremo usarli per costruirci sopra una teoria degli operatori insiemistici "fuzzy". Siano $\mu$ e $\mu'$, possiamo definire gli operatori della logica fuzzy come segue:
 1.  $\neg \mu \doteq 1 - \mu(x)$;
 2.  $\mu \wedge \mu' \doteq \min\{\mu(x),\mu'(x)\}$;
 3.  $\mu \vee \mu' \doteq \max\{\mu(x),\mu'(x)\}$.
 
 ![[images/fuzzyop.png]]
-
-Gli operatori insiemistici associati sono mostrati in Figura[25](#fig:26){reference-type="ref" reference="fig:26"}.
 
 ----------------------------------------------------------------
 
@@ -915,40 +919,46 @@ In generale, esistono vari modi di definire la negazione in una logica fuzzy. L'
 2.  $\neg(1) = 0$;
 3.  $x \leq y \implies \neg x \geq \neg y$.
 
-In aggiunta a queste proprietà, una negazione può soddisfarne altre. Per esempio, si può chiedere che sia *strettamente decrescente*:
+In aggiunta a queste proprietà, una negazione può soddisfarne altre. Per esempio, si può chiedere che sia **strettamente decrescente**:
 
 $$x < y \implies \neg x > \neg y$$
 
-Oppure che $\neg$ sia *continua*, o *involutiva*:
+Oppure che $\neg$ sia **continua** oppure **involutiva**:
 
 $$\neg \neg x = x$$
 
-Una negazione si dice *stretta* sse è strettamente decrescente e continua.
-Una negazione si dice *forte* sse è stretta e involutiva.
+Una negazione si dice **stretta** se e solo se è strettamente decrescente e continua.
+Una negazione si dice **forte** se e solo se è stretta e involutiva.
 
 ----------------------------------------------------------------
 
 ### T-norme e t-conorme ###
-Come la negazione, la congiunzione e la disgiunzione fuzzy possono essere definite in diversi modi. Entrambe devono, tuttavia, soddisfare alcune proprietà di base che le definiscono rispettivamente come *t-norme* e *t-conorme*.
+Come la negazione, l'intersezione ed unione fuzzy possono essere definite in diversi modi. Entrambe devono, tuttavia, soddisfare alcune proprietà di base che le definiscono rispettivamente come **t-norme** e **t-conorme**.
 
-Una funzione $\top : [0,1]^2 \to [0,1]$ si dice *t-norma* sse soddisfa le seguenti proprietà:
+Una funzione $\top : [0,1]^2 \to [0,1]$ si dice **t-norma** se e solo se soddisfa le seguenti proprietà:
 1.  $\top(x,1) = x$;
 2.  $\top(x,y) = \top(y,x)$;
 3.  $\top(x,\top(y,z)) = \top(\top(x,y),z)$;
 4.  $x \leq z \implies \top(x,y) \leq \top(x,z)$.
 
-Una funzione $\bot: [0,1]^2 \to [0,1]$ si dice *t-conorma* sse soddisfa le seguenti proprietà:
+Una funzione $\bot: [0,1]^2 \to [0,1]$ si dice **t-conorma** se e solo se soddisfa le seguenti proprietà:
 1.  $\bot(x,0) = x$;
 2.  $\bot(x,y) = \bot(y,x)$;
 3.  $\bot(x,\bot(y,z)) = \bot(\bot(x,y),z)$;
 4.  $x \leq z \implies \bot(x,y) \leq \bot(x,z)$.
 
-Le definizioni di disgiunzione e congiunzione che abbiamo dato nella sezione 3.1.6 in termini di $\max$ e $\min$ soddisfano queste proprietà. Si può mostrare che l'operazione di minimo sia la più grande t-norma e il massimo la più piccola t-conorma. In aggiunta a queste, possono essere date altre definizioni di disgiunzione e congiunzione come, per esempio, quella in termini di prodotto e somma probabilistica:
+Le definizioni di intersezione e unione date in termini di $\max$ e $\min$ soddisfano queste proprietà. Si può mostrare come l'operazione di minimo sia la più grande t-norma e il massimo la più piccola t-conorma. In aggiunta a queste, possono essere date altre definizioni di intersezione ed unione come, per esempio, quella in termini di prodotto e somma probabilistica:
 $$\top_{prod}(x,y) = x \cdot y$$
 $$\bot_{sum} (x,y) = x + y - x \cdot y$$
 
-Oppure, seguendo Łukasiewicz: $$\top_{Luk}(x,y) = \max\{0,x + y - 1\}$$
-$$\bot_{Luk}(x,y) = \min\{1,x + y\}$$O ancora, come prodotto e somma drastica: $$\top_{-1}(x,y) = \begin{cases}
+Oppure, seguendo Łukasiewicz: 
+
+$$\top_{Luk}(x,y) = \max\{0,x + y - 1\}$$
+$$\bot_{Luk}(x,y) = \min\{1,x + y\}$$
+
+O ancora, come prodotto e somma drastica: 
+
+$$\top_{-1}(x,y) = \begin{cases}
                 \min(x,y) \quad \text{se } \max(x+y) = 1 \\
                 0 \quad \text{ altrimenti}  
                 \end{cases}$$ $$\bot_{-1}(x,y) = \begin{cases}
@@ -965,15 +975,18 @@ In Figura [26](#fig:27){reference-type="ref" reference="fig:27"} si possono vede
 ----------------------------------------------------------------
 
 ### Implicazione fuzzy ###
-Come nel caso booleano avremo che un insieme fuzzy è contenuto in un altro se tutti gli elementi del primo sono contenuti nel secondo. Sfruttando l'isomorfismo tra operatori logici e insiemistici, inoltre potremo definire il concetto di sottoinsieme a partire da quello di implicazione come segue: $$I(a,b) = \neg a \vee b$$A seconda della semantica che daremo ai nostri operatori logici fuzzy avremo varie classi di implicazioni.
-1.  *S-implication*: $I(a,b) = \bot(\neg a, b)$;
-2.  *R-implication*: $I(a,b) = \sup \{x \in [0,1] | \top(a,x) \leq b\}$;
-3.  *QL-implication*: $I(a,b) = \bot(\neg a, \top(a,b))$.
+Come nel caso booleano, avremo che un insieme fuzzy è contenuto in un altro se tutti gli elementi del primo sono contenuti nel secondo. Sfruttando l'isomorfismo tra operatori logici e insiemistici, inoltre potremo definire il concetto di sottoinsieme a partire da quello di **implicazione** come segue: 
+
+$$I(a,b) = \neg a \vee b$$
+
+A seconda della semantica che daremo ai nostri operatori logici fuzzy, avremo varie classi di implicazioni:
+1) **S-implication**: $I(a,b) = \bot(\neg a, b)$;
+2) **R-implication**: $I(a,b) = \sup \{x \in [0,1] | \top(a,x) \leq b\}$;
+3) **QL-implication**: $I(a,b) = \bot(\neg a, \top(a,b))$.
 
 ----------------------------------------------------------------
 
 ### Teoria della logica fuzzy ###
-
 #### Principio di estensione ####
 Come estendere una funzione $\phi : X^n \to Y$ in un contesto fuzzy di modo che $\hat{\phi}$ abbia come dominio una tupla di fuzzy set e come codominio un fuzzy set? Un caso particolare è quello della valutazione di proposizioni. Definito un assegnamento fuzzy alle proposizioni atomiche, possiamo estenderlo a combinazioni arbitrarie di formule legate tra loro da operatori logici (and e or):
 $$truth: \mathbb{P} \to [0,1]$$
