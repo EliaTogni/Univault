@@ -271,10 +271,15 @@ Una migliore opzione è l'**$1$-in-$n$ encoding**, nel quale ogni attributo nomi
 
 ----------------------------------------------------------------
 
-### Multi-layer perceptrons ###
+### Multi-layer perceptron ###
 ![[images/MLP.png]]
 
-Una delle prime ANN sviluppate furono i **multi-layer perceptrons** (abbreviate in seguito **MLP**). Le MLP sono particolari feed-forward network in cui le unità base sono organizzate in **layer** ed ogni layer presenta connessioni solo con il layer successivo. Questo permette di minimizzare il fenomeno delle continue ricomputazioni che avverrebbero durante la propagazione del segnale nei normali feed-forward network.<br />
+Una delle prime ANN sviluppate furono i **multi-layer perceptrons** ( in seguito **MLP**). I MLP sono particolari feed-forward network in cui le unità base sono organizzate in **layer** ed ogni layer presenta connessioni solo con il layer successivo. Questo permette di minimizzare il fenomeno delle continue ricomputazioni che avverrebbero durante la propagazione del segnale nei normali feed-forward network.<br />
+Un $r$-layer perceptron avrà, quindi, un input layer e un output layer totalmente disgiunti e $r-2$ layer nascosti, disgiunti gli uni dagli altri.
+
+$$U_{in} \cap U_{out} = \emptyset $$
+$$U_{hidden} = U_{hidden}^{(1)} \cup \dots \cup U_{hidden}^{(r-2)}, \quad \forall 1\leq i<j\leq r-2: \quad U_{hidden}^{(i)} \cap U_{hidden}^{(j)} = \emptyset$$
+
 La network input function di ogni neurone $u \in U_{(hidden)} \cup U_{(out)}$ viene calcolata come la somma pesata degli input, cioè come:
 $$f^u_{net}(\mathbf{w}_u,\mathbf{i}_u) = \sum_{v \in pred(u)} w_{uv}out_v$$
 L'activation function di ogni neurone hidden, invece, è una cosiddetta **funzione sigmoide**, ossia una funzione monotona non descrescente tale che:
@@ -499,8 +504,9 @@ Per questo problema esistono tre principali soluzioni:
 - **Denoising autoencoder**, nel quale si aggiunge rumore (variazioni randomiche) all'input.
 
 Per ottenere un MLP con molteplici layer, si combinano diversi autoencoder.<br />
-Inizialmente si allena un singolo autoencoder. A quel punto si rimuove il layer decoder e si conserva solo il layer interno. Si utilizzano, quindi, i dati preprocessati da questo primo autoencoder nella sua interezza per allenarne un secondo, e così via fino al raggiungimento di un numero soddisfacente di layer interni.<br />
+Inizialmente si allena un singolo autoencoder a ricostruire tramite la standard backpropagation gli esempi presenti nel dataset. Terminato l'allenamento del primo autoencoder, si costruisce un nuovo dataset con gli output dell'hidden layer. Questo nuovo dataset viene utilizzato per allenare un secondo autoencoder e, di nuovo, viene creato un nuovo dataset al fine di ripetere il training. Questo procedimento viene ripetuto fino al raggiungimento di un numero soddisfacente di layer interni. Terminati gli allenamenti, è possibile costruire il MLP finale semplicemente connettendo un input layer a tutti gli hidden layer allenati in questa maniera<br />
 I MLP costruiti in questo modo sono risultati molto efficaci nel riconoscere con successo numeri scritti a mano.<br />
+
 Se si volessero utilizzare network simili per una più ampia classe di applicazioni, dove, per esempio, le feature riconosciute dai layer interni non sono localizzate in una porzione specifica dell'immagine, sarebbe necessario rivolgersi alle **convolutional neural network** (in seguito CNN).<br />
 Questa architettura è ispirata al funzionamento della retina umana, in cui i neuroni adibiti alla percezione hanno un campo ricettivo, ossia una limitata regione nella quale essi rispondono agli stimoli. Questo campo ricettivo viene simulato nelle CNN connettendo ogni neurone del primo hidden layer ad un piccolo numero di neuroni di input, i quali fanno riferimento ad una regione contigua dell'immagine di input. I pesi vengono condivisi in modo tale che i vari network parziali possano essere valutati da differenti prospettive dell'immagine. Il campo di imput è shiftato step by step per coprire tutta l'immagine.<br />
 I neuroni nei layer successivi applicano il max pooling su regioni di piccole dimensioni, dove con max pooling si definisce una delle tecniche con la quale si effettua il **downsampling** della mappa delle feature tramite un riassunto delle feature presenti in una sezione dell'immagine.<br />
