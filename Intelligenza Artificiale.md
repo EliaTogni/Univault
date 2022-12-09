@@ -547,8 +547,8 @@ $$k = \infty: \text{Maximum distance, ovvero } d(\mathbf{w},\mathbf{v})_\infty =
 
 ![[images/circle.png]]
 
-Un modo utile di visualizzare queste funzioni è quello di vedere che forma assume il luogo dei punti equidistanti dal centro, a seconda delle varie metriche. Variando la definizione di distanza, ovvero il **raggio**, varia la forma che assume la figura nei diversi spazi.<br />
-La funzione di attivazione dei neuroni hidden calcola l'area in cui il neurone focalizza la propria attenzione, definita dal raggio di riferimento $\sigma$. I vari parametri e la forma della funzione determinano l'ampiezza di questa area. Il nome attribuitogli, **funzione radiale**, deriva dal fatto che la funzione viene definita intorno ad un raggio e da un centro, descritto dal vettore dei pesi. Questa funzione assegna quindi ad ogni raggio un'attivazione. <br />
+Un modo utile di visualizzare queste funzioni è quello di vedere che forma assume il luogo dei punti equidistanti dal centro, a seconda delle varie metriche. Variando la definizione di distanza, varia la forma che assume la figura nei diversi spazi.<br />
+La funzione di attivazione dei neuroni hidden calcola l'area in cui il neurone focalizza la propria attenzione, definita dal **raggio di riferimento** $\sigma$. I vari parametri e la forma della funzione determinano l'ampiezza di questa area. Il nome attribuitogli, **funzione radiale**, deriva dal fatto che la funzione viene definita intorno ad un raggio e da un centro, descritto dal vettore dei pesi. Questa funzione assegna quindi ad ogni raggio un'attivazione. <br />
 Le funzioni più utilizzate per determinare l'area di attivazione sono quelle riportate nella figura sottostante.
 
 ![[images/act_rbf.png]]
@@ -846,7 +846,7 @@ L'interpretazione più popolare del grado di appartenenza fuzzy è la somiglianz
 ----------------------------------------------------------------
 
 ### Rappresentazione verticale e orizzontale ###
-Come già mostrato, gli insiemi fuzzy possono essere rappresentati da una funzione la quale assegna un valore nell'intervallo reale unitario ad ogni elemento dell'universo del discorso. Nella maggior parte delle applicazioni, i valori assunti dalla funzione crescono monotonicamente fino ad un certo punto e da quel punto decrescono monotonicamente. Questo tipo di insiemi viene detto **convesso**. Le funzioni che rappresentano insiemi convessi sono dette **funzioni triangolari** ed assumono la forma:
+Come già mostrato, gli insiemi fuzzy possono essere rappresentati da una funzione la quale assegna un valore nell'intervallo reale unitario ad ogni elemento dell'universo del discorso. Nella maggior parte delle applicazioni, i valori assunti dalla funzione crescono monotonicamente fino ad un certo punto e da quel punto decrescono monotonicamente. Questo tipo di insiemi viene definito **convesso**. Le funzioni che rappresentano insiemi convessi sono dette **funzioni triangolari** ed assumono la forma:
 
 $$\Lambda_{a,b,c} : \mathbb{R} \to [0,1],\quad x \mapsto 
 \begin{cases}
@@ -881,7 +881,7 @@ Alcune proprietà degli alpha-cut sono le seguenti:
 2) $\alpha \leq \beta \implies [\mu]_\alpha \subseteq [\mu]_\beta$;
 3) $\cap_{\alpha:\text{ }\alpha < \beta}, [\mu]_\alpha = [\mu]_\beta$.
 
-Da queste proprietà deriva il fatto che ogni insieme fuzzy possa essere descritto specificando una famiglia di alpha-cut, come illustra il teorema seguente.<br />
+Da queste proprietà deriva la proprietà di ciascun insieme fuzzy di poter essere descritto specificando una famiglia di alpha-cut, come illustra il teorema seguente.<br />
 Sia $\mu$ un fuzzy set. Allora:
 $$\mu(x) = \sup \{\alpha \in [0,1] \quad \vert \quad  x \in [\mu]_\alpha\}$$
 
@@ -893,26 +893,29 @@ Questa connessione tra insiemi fuzzy e famiglie di alpha-cut è utilizzata nella
 ----------------------------------------------------------------
 
 ### Alcune utili definizioni ###
-Avendo introdotto gli alpha-cut come uno strumento per rappresentare i fuzzy set, ora li sfrutteremo definendo alcuni concetti molto utili per quello che segue.
-Il *supporto* $S(\mu)$ di un insieme fuzzy $\mu$ è l'insieme booleano che contiene tutti e soli gli elementi del dominio del discorso che hanno un grado di appartenenza non nullo rispetto a $\mu$. In simboli:
+Avendo introdotto gli alpha-cut come uno strumento per rappresentare i fuzzy set, è possibile sfruttarli per definire alcuni concetti.<br />
+Si definisce **supporto** $S(\mu)$ di un insieme fuzzy $\mu$ l'insieme booleano che contiene tutti e soli gli elementi del dominio del discorso aventi un grado di appartenenza non nullo rispetto a $\mu$. In simboli:
+
 $$S(\mu) = [\mu]_{\bar{0}} = \{ x \in X | \mu(x) > 0 \}$$
 
-Il *centro* $C(\mu)$ di un insieme fuzzy $\mu$ è l'insieme booleano che contiene tutti e soli gli elementi del dominio del discorso che hanno un grado di appartenenza uguale a 1 rispetto a $\mu$. In simboli:
+Si definisce **centro** $C(\mu)$ di un insieme fuzzy $\mu$ l'insieme booleano che contiene tutti e soli gli elementi del dominio del discorso aventi un grado di appartenenza uguale a 1 rispetto a $\mu$. In simboli:
+
 $$C(\mu) = [\mu]_{1} = \{ x \in X | \mu(x) = 1 \}$$
 
-L'*altezza* $h(\mu)$ di un insieme fuzzy $\mu$ è il più alto grado di appartenenza ottenibile da un elemento di $\mu$. In simboli:
+Si definisce **altezza** $h(\mu)$ di un insieme fuzzy $\mu$ il più alto grado di appartenenza ottenibile da un elemento di $\mu$. In simboli:
 $$h(\mu) = \sup_{x \in X} \{\mu(x)\}$$
 
-Un insieme fuzzy $\mu$ è definito *normale* se e solo se $h(\mu) = 1$. Altrimenti, è definito *subnormale*.
+Un insieme fuzzy $\mu$ è definito **normale** se e solo se $h(\mu) = 1$. Altrimenti, è definito **subnormale**.
 
-Un insieme fuzzy $\mu$ è definito *convesso* se e solo se i suoi alpha-cut sono convessi per ogni scelta di $\alpha \in [0,1)$.
+Un insieme fuzzy $\mu$ è definito **convesso** se e solo se i suoi alpha-cut sono convessi per ogni scelta di $\alpha \in [0,1)$.
 
 Un insieme fuzzy $\mu$ è un **numero fuzzy** se e solo se $\mu$ è normale e $[\mu]_\alpha$ è chiusa, limitata e convessa per ogni scelta di $\alpha \in [0,1)$.
 
 ----------------------------------------------------------------
 
 ### Logica fuzzy ###
-Un importante risultato della logica classica dice che esiste un isomorfismo tra la logica proposizionale su un insieme finito di variabili e la teoria degli insiemi finiti. Entrambi questi sistemi, inoltre, possono essere dimostrati isomorfi ad un'algebra booleana finita. Questo ci permette di definire gli operatori insiemistici utilizzando i classici operatori logici di congiunzione, disgiunzione e negazione. Un discorso simile vale per la logica fuzzy, ovvero la logica che ha come insieme di valori di verità l'intero intervallo reale $[0,1]$. Una volta ridefiniti gli operatori logici booleani per adattarsi alla nuova semantica, potremo usarli per costruirci sopra una teoria degli operatori insiemistici "fuzzy". Siano $\mu$ e $\mu'$, possiamo definire gli operatori della logica fuzzy come segue:
+Un importante risultato della logica classica sostiene l'esistenza di un isomorfismo tra la logica proposizionale su un insieme finito di variabili e la teoria degli insiemi finiti. Entrambi questi sistemi, inoltre, possono essere dimostrati isomorfi ad un'algebra booleana finita. Questo permette di definire gli operatori insiemistici utilizzando i classici operatori logici di congiunzione, disgiunzione e negazione. Un discorso simile vale per la logica fuzzy, ovvero la logica che ha come insieme di valori di verità l'intero intervallo reale $[0,1]$. Una volta ridefiniti gli operatori logici booleani al fine di adattarli alla nuova semantica, sarà possibile utilizzarli per costruire sopra di essi una teoria degli operatori insiemistici "fuzzy".<br />
+Siano $\mu$ e $\mu'$, possiamo definire gli operatori della logica fuzzy come segue:
 1.  $\neg \mu \doteq 1 - \mu(x)$;
 2.  $\mu \wedge \mu' \doteq \min\{\mu(x),\mu'(x)\}$;
 3.  $\mu \vee \mu' \doteq \max\{\mu(x),\mu'(x)\}$.
@@ -931,25 +934,25 @@ In aggiunta a queste proprietà, una negazione può soddisfarne altre. Per esemp
 
 $$x < y \implies \neg x > \neg y$$
 
-Oppure che $\neg$ sia **continua** oppure **involutiva**:
+Oppure che $\neg$ sia **continua**, oppure, ancora, **involutiva**:
 
 $$\neg \neg x = x$$
 
-Una negazione si dice **stretta** se e solo se è strettamente decrescente e continua.
-Una negazione si dice **forte** se e solo se è stretta e involutiva.
+Una negazione si definisce **stretta** se e solo se è strettamente decrescente e continua.<br />
+Una negazione si definisce **forte** se e solo se è stretta e involutiva.
 
 ----------------------------------------------------------------
 
 ### T-norme e t-conorme ###
-Come la negazione, l'intersezione ed unione fuzzy possono essere definite in diversi modi. Entrambe devono, tuttavia, soddisfare alcune proprietà di base che le definiscono rispettivamente come **t-norme** e **t-conorme**.
+Come la negazione, sia l'intersezione che l'unione fuzzy possono essere definite in diversi modi. Entrambe devono, tuttavia, soddisfare alcune proprietà di base che le definiscono rispettivamente come **t-norme** e **t-conorme**.
 
-Una funzione $\top : [0,1]^2 \to [0,1]$ si dice **t-norma** se e solo se soddisfa le seguenti proprietà:
+Una funzione $\top : [0,1]^2 \to [0,1]$ si definisce **t-norma** se e solo se soddisfa le seguenti proprietà:
 1.  $\top(x,1) = x$;
 2.  $\top(x,y) = \top(y,x)$;
 3.  $\top(x,\top(y,z)) = \top(\top(x,y),z)$;
 4.  $x \leq z \implies \top(x,y) \leq \top(x,z)$.
 
-Una funzione $\bot: [0,1]^2 \to [0,1]$ si dice **t-conorma** se e solo se soddisfa le seguenti proprietà:
+Una funzione $\bot: [0,1]^2 \to [0,1]$ si definisce **t-conorma** se e solo se soddisfa le seguenti proprietà:
 1.  $\bot(x,0) = x$;
 2.  $\bot(x,y) = \bot(y,x)$;
 3.  $\bot(x,\bot(y,z)) = \bot(\bot(x,y),z)$;
@@ -976,18 +979,16 @@ $$\top_{-1}(x,y) = \begin{cases}
 
 ![[images/tnorme.png]]
 
-In Figura [26](#fig:27){reference-type="ref" reference="fig:27"} si possono vedere le relazioni che legano tutte le precedenti definizioni di t-norma. In Figura [27](#fig:28){reference-type="ref" reference="fig:28"}, invece, si possono vedere le varie t-conorme.
-
 ![[images/tconorme.png]]
 
 ----------------------------------------------------------------
 
 ### Implicazione fuzzy ###
-Come nel caso booleano, avremo che un insieme fuzzy è contenuto in un altro se tutti gli elementi del primo sono contenuti nel secondo. Sfruttando l'isomorfismo tra operatori logici e insiemistici, inoltre potremo definire il concetto di sottoinsieme a partire da quello di **implicazione** come segue: 
+Come nel caso booleano, un insieme fuzzy è contenuto in un altro se tutti gli elementi del primo insieme sono contenuti nel secondo. Sfruttando l'isomorfismo tra operatori logici e insiemistici, sarà inoltre possibile definire il concetto di sottoinsieme a partire dal concetto di **implicazione**: 
 
 $$I(a,b) = \neg a \vee b$$
 
-A seconda della semantica che daremo ai nostri operatori logici fuzzy, avremo varie classi di implicazioni:
+A seconda della semantica data agli operatori logici fuzzy, si otterranno varie classi di implicazioni:
 1) **S-implication**: $I(a,b) = \bot(\neg a, b)$;
 2) **R-implication**: $I(a,b) = \sup \{x \in [0,1] | \top(a,x) \leq b\}$;
 3) **QL-implication**: $I(a,b) = \bot(\neg a, \top(a,b))$.
@@ -1029,8 +1030,7 @@ Vi sono vari tipi di insiemi fuzzy. Per quanto ci riguarda particolare rilevanza
 
 ![[images/lingvar.png]]
 
-Particolare interesse rivestono i fuzzy interval anche detti *fuzzy numbers* perchè permettono di definire *variabili fuzzy quantitative*. Tali variabili assumono come valore numeri fuzzy. Quando le quantità fuzzy rappresentano concetti linguistici (come piccolo, grande, etc.) si parla di variabili linguistiche (vedi Figura
-[29](#fig:30){reference-type="ref" reference="fig:30"}). Ogni variabile linguistica è definita da un quintupla $(v,T,X,g,m)$, dove $v$ è il nome della variabile, $T$ è l'insieme dei termini che coprono $v$, $X$ è il dominio del discorso, $g$ è la grammatica per generare i termini ed $m$ la semantica che assegna ad ogni termine un fuzzy number. Per processare questo genere di variabili occorrerà estendere le operazioni insiemistiche e aritmetiche originalmente utilizzate per i numeri.
+Particolare interesse rivestono i **fuzzy interval** anche detti **fuzzy numbers**, perchè permettono di definire **variabili fuzzy quantitative**. Tali variabili assumono come valore numeri fuzzy. Quando le quantità fuzzy rappresentano concetti linguistici (come piccolo, grande, etc.) si parla di variabili linguistiche. Ogni variabile linguistica è definita da un quintupla $(v,T,X,g,m)$, dove $v$ è il nome della variabile, $T$ è l'insieme dei termini che coprono $v$, $X$ è il dominio del discorso, $g$ è la grammatica per generare i termini ed $m$ la semantica che assegna ad ogni termine un fuzzy number. Per processare questo genere di variabili sarà necessario estendere le operazioni insiemistiche e aritmetiche originalmente utilizzate per i numeri.
 
 ----------------------------------------------------------------
 
