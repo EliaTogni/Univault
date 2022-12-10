@@ -521,7 +521,7 @@ La $f_{net}$ di ogni neurone hidden è una **funzione di distanza**, calcolata t
 
 $$\forall u \in U_{hidden}: f_{net}^{(u)}(\textbf{w}_{u}, \textbf{in}_{u}) = d(\textbf{w}_{u}, \textbf{in}_{u})$$
 
-dove la funzione distanza che verrà scelta sarà una **metrica** in senso geometrico, e, per tanto, dovrà rispettare i seguenti tre assiomi:
+dove la funzione distanza scelta sarà una **metrica** in senso geometrico, e, per tanto, dovrà rispettare i seguenti tre assiomi:
 
 $$d(\mathbf{w},\mathbf{v}) = 0 \leftrightarrow \mathbf{w}= \mathbf{v}$$
 $$d(\mathbf{w},\mathbf{v}) = d(\mathbf{v},\mathbf{w})$$
@@ -531,7 +531,7 @@ Se, nel caso dei MLP, veniva impiegata una funzione sigmoide come $f_{act}$, ora
 
 $$f: \mathbb{R}^{+} \to [0,1] \quad \text{con} \quad f(0) = 1 \quad \text{e} \quad \lim_{x \to \infty} f(x) = 0$$
 
-La $f_{net}$ dei neuroni di output è la somma pesata dei loro input, come in precedenza, mentre la $f_{act}$ di ciascun neurone di ouput è una funzione lineare 
+La $f_{net}$ dei neuroni di output è la somma pesata dei loro input, come in precedenza, mentre la $f_{act}$ di ciascun neurone di ouput $u \in U_{out}$ è una funzione lineare 
 
 $$f_{act}^{(u)}(net_{u}, \theta_{u}) = net_{u} - \theta_{u}$$
 
@@ -558,7 +558,7 @@ Come esempio, viene applicato un RBFN per simulare una congiunzione booleana. Un
 
 ![[images/and_rbf.png]]
 
-In generale, un RBFN ha lo stesso potere espressivo di un MLP e può essere visto come un approssimatore universale, ovvero può approssimare (con errore arbitrariamente piccolo) una qualsiasi funzioni Riemann-integrabile.<br />
+In generale, un RBFN ha lo stesso potere espressivo di un MLP e può essere visto come un approssimatore universale, ovvero può approssimare (con errore arbitrariamente piccolo) una qualsiasi funzione Riemann-integrabile.<br />
 Il procedimento è lo stesso che nel caso degli altri network: la funzione viene approssimata da una funzione a scalini, la quale può essere calcolata facilmente da una funzione radiale, a condizione di definirla come la somma pesata di funzioni rettangolari.
 Ciascuna delle funzioni rettangolari avrà un dominio $\rightarrow [0,1]$ ed il peso applicato corrisponderà all'altezza della funzione a livello del primo scalino.<br />
 L'approssimazione può essere migliorata aumentando il numero dei punti in cui si valuta la funzione. Inoltre se, al posto della funzione rettangolare, venisse utilizzata una funzione Gaussiana, sarebbe possibile ottenere delle transizioni più morbide evitando bruschi salti.<br />
@@ -596,7 +596,7 @@ $$\mathbf{w}_u = \mathbf{A}^{-1}\cdot \mathbf{o}_u$$
 Se la matrice $\mathbf{A}$ non ha rango completo, i pesi devono essere scelti randomicamente fino a quando il rimanente sistema di equazioni non è unicamente risolvibile.<br />
 Questo metodo garantisce una perfetta approssimazione. Non è necessario, quindi, allenare un simple radial basis function network.<br />
 Ovviamente, le simple radial basis function network sono semplici da inizializzare poichè gli esempi di training fissano immediatamente i parametri dell'hidden layer. Nella pratica, tuttavia, queste reti sono di scarsa utilità. In primo luogo, il numero di esempi di training è tipicamente troppo grande per creare un neurone per ciascuno di essi. In secondo luogo, è auspicabile che una funzione radiale di base copra più di un esempio di training.<br />
-In generale, se non si desidera avere un neurone per ogni training pattern, sarà necessario selezionare $k$ sottoinsiemi del dataset e trovare, per ogni sottoinsieme, un rappresentante che verrà associato ad un neurone nel layer hidden. In analogia a quanto accade nel caso della simple RBFN, si avrà una matrice $\mathbf{A}$ di dimensione $m\times (k+1)$ contenente i valori in output dei vari neuroni nel hidden layer per ogni esempio di training. Dato che la matrice non è quadrata, non è possibile calcolarne l'inversa come fatto in precedenza. Tuttavia, esiste una matrice alternativa chiamata la **matrice pseudo-inversa**, la quale permette di completare il calcolo con una buona approssimazione. Ovviamente, l'accuratezza del network costruito in questo modo dipenderà dalla precisione con cui verranno scelti i rappresentati delle varie sottoclassi del dataset. Esistono vari metodi per effettuare questa scelta: 
+In generale, se non si desidera avere un neurone per ogni training pattern, sarà necessario selezionare $k$ sottoinsiemi del dataset e trovare, per ogni sottoinsieme, un rappresentante che verrà associato ad un neurone nel layer hidden. In analogia a quanto accade nel caso della simple RBFN, si avrà una matrice $\mathbf{A}$ di dimensione $m\times (k+1)$ contenente i valori in output dei vari neuroni nel hidden layer per ogni esempio di training. Dato che la matrice non è quadrata, non è possibile calcolarne l'inversa come fatto in precedenza. Tuttavia, esiste una matrice alternativa chiamata la **matrice pseudo-inversa**, la quale permette di completare il calcolo con una buona approssimazione. Ovviamente, l'accuratezza del network costruito in questo modo dipenderà dalla precisione con cui verranno scelti i rappresentanti delle varie sottoclassi del dataset. Esistono vari metodi per effettuare questa scelta: 
 - si scelgono tutti i punti del dataset come centri. In questo caso si ricade nel caso semplice e i valori di output possono essere calcolati precisamente. Tuttavia, il calcolo dei pesi può risultare infattibile in termini di complessità;
 - si costruisce un sottoinsieme randomico per rappresentare i centri. Questo metodo ha il pregio di essere facilmente calcolabile. La performance, però, dipenderà dalla fortuna di scegliere dei buoni candidati per essere centri;
 - si utilizza un algoritmo di clustering (c-means clustering,learning vector quantization..).
@@ -614,7 +614,7 @@ Viene, inoltre, definita una **relazione di vicinanza** tra i neuroni dell'outpu
 
 $$d_{neuroni} : U_{out} \times U_{out} \to \mathbb{R}^+$$
 
-Questa funzione assegna un numero reale non negativo ad ogni coppia di neuroni di input. Come conseguenza, una SOM viene considerata come una rete neurale a due layer, priva di neuroni hidden.
+Questa funzione assegna un numero reale non negativo ad ogni coppia di neuroni di output. Come conseguenza, una SOM viene considerata come una rete neurale a due layer, priva di neuroni hidden.
 
 ![[images/grid.png]]
 
@@ -625,7 +625,7 @@ La relazione di vicinanza potrebbe anche essere assente, condizione che viene ra
 Se una relazione di vicinanza è assente e l'output è discretizzato (cioè il neurone con l'attivazione più alta restituisce $1$ mentre tutti gli altri neuroni restituiscono $0$), una self-organizing map descrive una **quantizzazione vettoriale** dello spazio di input: lo spazio di input è diviso in tante regioni quanti i neuroni di output. Questo risultato è ottenuto assegnando ad un neurone di output tutti i punti dello spazio di input per i quali il neurone restituisce il valore di attivazione più alto tra tutti i neuroni della rete.<br />
 Questa tassellazione in regioni può essere rappresentata da un **diagramma di Voronoi.** Per un input bidimensionale, i punti indicheranno la posizione dei vettori di riferimento mentre le linee indicheranno le divisioni nelle varie regioni.<br />
 La relazione di vicinanza dei neuroni di output vincola la quantizzazione vettoriale. Infatti, l'obiettivo di questa quantizzazione viene raggiunto quando i vettori di riferimento vicini tra di loro nello spazio di input apparterranno ai neuroni di output relativamente vicini l'un l'altro. Questa relazione ha, quindi, lo scopo di riflettere la posizione relativa dei corrispettivi vettori di riferimento nello spazio di input.<br />
-La self-organizing map, pertanto, descrive una **topology preserving map**, cioè una mappatura che preserva la posizione relativa tra i punti del dominio.<br />
+La self-organizing map, pertanto, descrive una **topology preserving map**, cioè una mappa che preserva la posizione relativa tra i punti del dominio.<br />
 Un esempio famoso di funzione che preserva la topologia sono le così dette **proiezioni di Robinson** della superficie di una sfera rispetto al piano, le quali vengono usate per costruire le mappe del globo. Attraverso l'uso di queste funzioni, le relazioni di posizione tra i vari punti vengono conservate approssimativamente, anche se la proporzione tra le distanze di due punti nella proiezione e tra le distanze di due punti nella sfera è tanto più grande quanto più ci si allontana dall'equatore.<br />
 Il vantaggio nell'usare queste funzioni risiede nel fatto che esse permettono di mappare strutture multidimensionali in spazi con dimensioni minori.
 
