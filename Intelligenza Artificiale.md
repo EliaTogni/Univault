@@ -879,7 +879,7 @@ $$[\mu]_\alpha = \{x \in X | \mu(x) \geq \alpha \}$$
 Nel caso in cui l'insieme $\mu$ sia una funzione convessa, qualsiasi suo alpha-cut sarà un intervallo unico. Se, invece, l'insieme non è convesso, almeno uno dei suoi alpha-cut consisterà in due intervalli disgiunti.<br />
 Alcune proprietà degli alpha-cut sono le seguenti:
 1) $[\mu]_0 = X$;
-2) $\alpha \leq \beta \implies [\mu]_\alpha \subseteq [\mu]_\beta$;
+2) $\alpha \leq \beta \implies [\mu]_\alpha \supseteq [\mu]_\beta$;
 3) $\cap_{\alpha:\text{ }\alpha < \beta}, [\mu]_\alpha = [\mu]_\beta$.
 
 Da queste proprietà deriva la proprietà di ciascun insieme fuzzy di poter essere descritto specificando una famiglia di alpha-cut, come illustra il teorema seguente.<br />
@@ -899,7 +899,7 @@ Si definisce **supporto** $S(\mu)$ di un insieme fuzzy $\mu$ l'insieme booleano 
 
 $$S(\mu) = [\mu]_{\bar{0}} = \{ x \in X | \mu(x) > 0 \}$$
 
-Si definisce **centro** $C(\mu)$ di un insieme fuzzy $\mu$ l'insieme booleano che contiene tutti e soli gli elementi del dominio del discorso aventi un grado di appartenenza uguale a 1 rispetto a $\mu$. In simboli:
+Si definisce **core** $C(\mu)$ di un insieme fuzzy $\mu$ l'insieme booleano che contiene tutti e soli gli elementi del dominio del discorso aventi un grado di appartenenza uguale a 1 rispetto a $\mu$. In simboli:
 
 $$C(\mu) = [\mu]_{1} = \{ x \in X | \mu(x) = 1 \}$$
 
@@ -908,9 +908,9 @@ $$h(\mu) = \sup_{x \in X} \{\mu(x)\}$$
 
 Un insieme fuzzy $\mu$ è definito **normale** se e solo se $h(\mu) = 1$. Altrimenti, è definito **subnormale**.
 
-Un insieme fuzzy $\mu$ è definito **convesso** se e solo se i suoi alpha-cut sono convessi per ogni scelta di $\alpha \in [0,1)$.
+Un insieme fuzzy $\mu$ è definito **convesso** se e solo se i suoi alpha-cut sono convessi per ogni scelta di $\alpha \in (0,1]$.
 
-Un insieme fuzzy $\mu$ è un **numero fuzzy** se e solo se $\mu$ è normale e $[\mu]_\alpha$ è chiusa, limitata e convessa per ogni scelta di $\alpha \in [0,1)$.
+Un insieme fuzzy $\mu$ è un **numero fuzzy** se e solo se $\mu$ è normale e $[\mu]_\alpha$ è chiuso, limitato e convesso per ogni scelta di $\alpha \in (0,1]$.
 
 ----------------------------------------------------------------
 
