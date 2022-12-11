@@ -211,7 +211,7 @@ Se il grafo che rappresenta l'ANN è aciclico si parla di **feed forward network
 
 I processi all'interno di un ANN si dividono in due fasi:
 1.  La **input phase**, dove gli input esterni vengono acquisiti dai neuroni di input;
-2.  La **work phase**, dove i gli input esterni vengono spenti e un nuovo output viene computato da ogni neurone. La work phase continua finchè gli output raggiungono la stabilità o si raggiunge un timeout.
+2.  La **work phase**, dove gli input esterni vengono spenti e un nuovo output viene computato da ogni neurone. La work phase continua finchè gli output raggiungono la stabilità o si raggiunge un timeout.
 
 ![[images/rnn1.png]]
 
@@ -247,7 +247,7 @@ dove
 $$e^l_v = (o^l_v - out_v)^2$$
 
 è l'errore individuale per una particolare coppia $l$ e per un neurone di output $v$.<br />
-Il quadrato delle differenze viene scelto per vari motivi. In primo piano, è chiaro che non è possiile semplicemente sommare le deviazioni direttamente, poichè le deviazioni positive e negative potrebbero cancellarsi a vicenda, producendo quindi un'impressione sbagliata dell'attuale bontà del network.<br />
+Il quadrato delle differenze viene scelto per vari motivi. In primo piano, è chiaro che non è possibile semplicemente sommare le deviazioni direttamente, poichè le deviazioni positive e negative potrebbero cancellarsi a vicenda, producendo quindi un'impressione sbagliata dell'attuale bontà del network.<br />
 Tuttavia, il quadrato della deviazione dell'output desiderato e dell'output ottenuto ha almeno due vantaggi rispetto al valore assoluto:
 - il quadrato è continuamente differenziabile ovunque, mentre la derivata del valore assoluto non esiste/è discontinua in 0. E' desiderabile che la funzione di errore sia continuamente differenziabile, perchè questo semplifica la derivazione delle regole di update per i pesi;
 - Grandi deviazioni dall'output desiderato sono pesate in maniera più severa, così che ci sia una tendenza la quale permetta di evitare durante il training grandi deviazioni individuali dal valore desiderato.
@@ -323,7 +323,7 @@ Dovrebbe essere chiaro che l'approssimazione può crescere a piacere semplicemen
 E' possibile, inoltre, risparmiare un layer utilizzando come peso della connessione al neurone di output nel calcolo non l'altezza assoluta ma quella relativa. E' utile notare, comunque, che questo risultato non ha natura costruttiva, ossia non istruisce su come deve essere composto un MLP che approssimi con una data accuratezza una certa funzione. Tutto ciò che afferma il teorema è che limitare il numero di layer non pregiudica la proprietà del MLP di essere un **approssimatore universale**.
 
 Una qualsiasi funzione integrabile secondo Riemann può essere approssimata con accuratezza arbitraria da un perceptron a tre-layer. Questa proposizione richiede soltanto che la funzione da rappresentare sia integrabile secondo Riemann. Non richiede, infatti, che sia continua.<br />
-In questa proposizione, inoltre, l'errore di approssimazione è misurato dall'area tra la funzione da approssimare e tra l'output del perceptron. Questa area può essere ridotta in maniera arbitraria, nuovamente tramite l'incremento del numero di neuroni.<br />
+In questa proposizione, inoltre, l'errore di approssimazione è misurato dall'area tra la funzione da approssimare e tra l'output del perceptron. Questa area può essere ridotta in maniera arbitraria, come già ripetuto, tramite l'incremento del numero di neuroni.<br />
 Ciò nonostante, questo non garantisce che, per un multi-layer perceptron, il quale ottiene un certa accuratezza, la differenza tra il suo output e la funzione da approssimare sia minore di un certo errore ovunque. La funzione, per esempio, potrebbe possedere uno spike molto sottile, il quale non è catturato da nessuno scalino.
 
 ![[Limits of the preposition.png]]
@@ -409,7 +409,7 @@ Tuttavia, siccome il metodo della somma degli errori ha senso di essere utilizza
 ----------------------------------------------------------------
 
 ### Backpropagation ###
-Come osservato in precedenza, la regressione logistica funziona solo per MLP con due layer di neuroni. Un approccio più generale si basa sull'utilizzo del **gradient descent**. Questo metodo consiste nell'utilizzare la funzione di errore per calcolare la direzione in cui cambiare i pesi e la threshold al fine di minimizzare l'errore. Condizione necessaria per il suo utilizzo è che la funzione sia differenziabile. Tuttavia, poichè un MLP ha una funzione logistica come funzione di attivazione, la funzione di errore sarà differenziabile (posto che la funzione di output sia la funzione identità). Questa affermazione è valida poichè se la funzione di attivazione è differenziabile, allora la funzione di errore è differenziabile anch'essa. A questo punto, è possibile determinare la direzione verso la quale pesi e bias devono essere modificati semplicimente calcolando il **gradiente** della funzione d'errore.<br />
+Come osservato in precedenza, la regressione logistica funziona solo per MLP con due layer di neuroni. Un approccio più generale si basa sull'utilizzo del **gradient descent**. Questo metodo consiste nell'utilizzare la funzione di errore per calcolare la direzione in cui cambiare i pesi e la threshold al fine di minimizzare l'errore. Condizione necessaria per il suo utilizzo è che la funzione sia differenziabile. Tuttavia, poichè un MLP ha una funzione logistica come funzione di attivazione, la funzione di errore sarà differenziabile (posto che la funzione di output sia la funzione identità). A questo punto, è possibile determinare la direzione verso la quale pesi e bias devono essere modificati semplicimente calcolando il **gradiente** della funzione d'errore.<br />
 Intuitivamente, il gradiente descrive la pendenza di una funzione. Si definisce gradiente della funzione $f$ nel punto $(x, y)$ il vettore che ha per componenti le derivate parziali della funzione nel punto considerato.
 L'operazione del calcolo del gradiente di un punto o di una funzione viene comunemente denotata con l'operatore differenziale $\nabla$.
 
@@ -497,7 +497,7 @@ Una soluzione possibile sta nel modificare leggermente la funzione di attivazion
 
 Un approccio completamente diverso è si basa sul costruire il network **layer a layer**.<br />
 Una tecnica molto usata è quella di pensare al network come una pila di **autoencoder**. Un autoencoder non è altro che un three-layer perceptron il quale mappa il suo input in una sua approssimazione, utilizzando un hidden layer di dimensioni minori. Il layer nascosto funge da encoder per la codifica dell'input in una sua rappresentazione interna, che è a sua volta decodificata dal layer di output. L'autoencoder, avendo un solo layer, non soffre delle stesse limitazioni e può essere allenato attraverso la normale backpropagation.<br />
-Un problema con questo approccio è che la presenza di tanti neuroni negli hidden layer quanti quelli di input rischia di propagare il segnali con minori aggiustamenti, senza che l'autoencoder estragga alcuna informazione utile dal dato.<br />
+Un problema con questo approccio è che la presenza di tanti neuroni negli hidden layer quanti quelli di input rischia di propagare il segnale con correzioni minori, senza che l'autoencoder estragga alcuna informazione utile dal dato.<br />
 Per questo problema esistono tre principali soluzioni:
 - **Sparse autoencoder**, il quale prevede di utilizzare un numero molto minore di neuroni nell'hidden layer, rispetto a quelli di input. L'autoencoder sarà così costretto ad estrarre dall'input qualche feature interessante al posto di propagare semplicemente il dato;
 - **Sparse activation scheme**, nel quale, in modo simile a quanto veniva fatto per evitare l'overfitting, si decide di disattivare alcuni neuroni durante la computazione;
