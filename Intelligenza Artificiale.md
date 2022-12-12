@@ -488,7 +488,7 @@ Il deep learning, oltre ad offrire dei vantaggi, porta con se alcune problematic
 Alcune soluzioni al problema dell'overfitting sono:
 - **Weigth decay**, ossia mettere un tetto massimo ai valori che i pesi possono assumere al fine di prevenire un adattamento troppo preciso al dataset;
 - **Sparsity constraint**, ossia si introducono dei limiti al numero di neuroni negli hidden layer. Altrimenti, è possibile limitare il numero di quelli attivi;
-- **Dropout training**, ossia alcuni neuroni degli hidden layer vengono omessi durante l'evoluzione del network.
+- **Dropout training**, ossia per ogni learning pattern viene selezionato un diverso sottoinsieme di neuroni da ignorare durante l'evoluzione del network.
 
 Il problema del vanishing gradient è dato dal fatto che la funzione di attivazione è una funzione logistica la cui derivata raggiunge al massimo il valore di $\frac{1}{4}$ (il quale è ottenuto per il valore della funzione $0.5$). Di conseguenza, ogni propagazione dell'errore ad un layer precedente vi aggiunge un valore moltiplicativo, spesso molto minore di $1$, riducendo così il gradiente, per via della chain rule delle derivate.<br /> 
 Una soluzione possibile sta nel modificare leggermente la funzione di attivazione in modo che sia sempre crescente. Questa modifica fa sì che la derivata della funzione non abbia più un valore massimo. Alcuni candidati di funzione di attivazione proposti in letteratura sono la **ramp function** (o **ReLU)** e la **softplus function**.<br />
@@ -818,11 +818,12 @@ Bisogna, tuttavia, prestare attenzione a non confondere l'imprecisione con l'**i
 
 ### Insiemi fuzzy ###
 Un insieme classico è una collezione di elementi che possono (o meno) appartenere all'insieme. I set fuzzy, invece, sono in grado di gestire l'appartenenza parziale.<br />
-Per tanto, mentre un insieme classico può essere definito a partire da una funzione caratteristica che assegna ad ogni elemento nel dominio del discorso il valore 1 se questo elemento appartiene all'insieme oppure 0 altrimenti, un **insieme fuzzy** può essere visto come una generalizzazione di questo concetto.
+Per tanto, mentre un insieme classico (o insieme crispy) può essere definito a partire da una funzione caratteristica che assegna ad ogni elemento nel dominio del discorso il valore 1 se questo elemento appartiene all'insieme oppure 0 altrimenti, un **insieme fuzzy** può essere visto come una generalizzazione di questo concetto.
 
 Dato un dominio del discorso $X$, un insieme fuzzy $\mu$ è una funzione $\mu : X \to [0,1]$ la quale assegna ad ogni elemento un **grado di appartenenza** $\mu(x)$ rispetto all'insieme $\mu$.
 
-Queste funzioni sono scelte a seconda del contesto di utilizzo e i gradi di appartenenza sono fissati per convenzione. E' possibile vedere i fuzzy set come interfacce tra espressioni lingustiche e loro rappresentazioni numeriche. Ad esempio, si voglia fornire un modello formale alla proprietà "essere alto per un bambino di 4 anni". Per farlo, si definirà un insieme fuzzy $\mu_{tall}$ attraverso una funzione sigmoide, tale per cui apparterranno **massimamente** all'estensione della proprietà i bambini più alti di 1.5 m e **massimamente** al di fuori dall'estensione quelli più bassi di 0.7 m. Tutti gli altri apparterranno all'insieme con un certo grado.
+Queste funzioni sono scelte a seconda del contesto di utilizzo e i gradi di appartenenza sono fissati per convenzione all'intervallo $[0, 1]$ ma non è obbligatorio. la funzione di appartenenza potrebbe avere un intervallo arbitrario come immagine.<br />
+E' possibile vedere i fuzzy set come interfacce tra espressioni lingustiche e loro rappresentazioni numeriche. Ad esempio, si voglia fornire un modello formale alla proprietà "essere alto per un bambino di 4 anni". Per farlo, si definirà un insieme fuzzy $\mu_{tall}$ attraverso una funzione sigmoide, tale per cui apparterranno **massimamente** all'estensione della proprietà i bambini più alti di 1.5 m e **massimamente** al di fuori dall'estensione quelli più bassi di 0.7 m. Tutti gli altri apparterranno all'insieme con un certo grado.
 
 ![[images/tall.png]]
 
@@ -888,7 +889,7 @@ $$\mu(x) = \sup \{\alpha \in [0,1] \quad \vert \quad  x \in [\mu]_\alpha\}$$
 
 ![[images/alpha_cut.png]]
 
-Dal punto di vista geometrico, un fuzzy set può essere visto come un inviluppo superiore dei suoi alpha-cut.<br />
+Dal punto di vista geometrico, un fuzzy set può essere visto come un inviluppo superiore dei suoi alpha-cut. Ricostruire una funzione di appartenenza dai suoi alpha-cut restituisce una funzione a step.<br />
 Questa connessione tra insiemi fuzzy e famiglie di alpha-cut è utilizzata nella rappresentazione degli insiemi fuzzy nei computer. Solitamente ci si limita a considerare un numero finito di alpha-cut rilevanti ai fini della rappresentazione dell'insieme. Gli insiemi vengono poi conservati in memoria come catene di liste lineari. Ogni lista è l'unione di intervalli rappresentati dai loro estremi.
 
 ----------------------------------------------------------------
@@ -915,7 +916,7 @@ Un insieme fuzzy $\mu$ è un **numero fuzzy** se e solo se $\mu$ è normale e $[
 ----------------------------------------------------------------
 
 ### Logica fuzzy ###
-Un importante risultato della logica classica sostiene l'esistenza di un isomorfismo tra la logica proposizionale su un insieme finito di variabili e la teoria degli insiemi finiti. Entrambi questi sistemi, inoltre, possono essere dimostrati isomorfi ad un'algebra booleana finita. Questo permette di definire gli operatori insiemistici utilizzando i classici operatori logici di congiunzione, disgiunzione e negazione. Un discorso simile vale per la logica fuzzy, ovvero la logica che ha come insieme di valori di verità l'intero intervallo reale $[0,1]$. Una volta ridefiniti gli operatori logici booleani al fine di adattarli alla nuova semantica, sarà possibile utilizzarli per costruire sopra di essi una teoria degli operatori insiemistici "fuzzy".<br />
+Un importante risultato della logica classica sostiene l'esistenza di un isomorfismo tra la logica proposizionale su un insieme finito di variabili e la teoria degli insiemi finiti. Entrambi questi sistemi, inoltre, possono essere dimostrati isomorfi ad un'algebra booleana finita. Questo permette di definire gli operatori insiemistici di unione, intersezione e complementare utilizzando i classici operatori logici di congiunzione, disgiunzione e negazione. Un discorso simile vale per la logica fuzzy, ovvero la logica che ha come insieme di valori di verità l'intero intervallo reale $[0,1]$. Una volta ridefiniti gli operatori logici booleani al fine di adattarli alla nuova semantica, sarà possibile utilizzarli per costruire sopra di essi una teoria degli operatori insiemistici "fuzzy".<br />
 Siano $\mu$ e $\mu'$, possiamo definire gli operatori della logica fuzzy come segue:
 1.  $\neg \mu \doteq 1 - \mu(x)$;
 2.  $\mu \wedge \mu' \doteq \min\{\mu(x),\mu'(x)\}$;
@@ -948,16 +949,16 @@ Una negazione si definisce **forte** se e solo se è stretta e involutiva.
 Come la negazione, sia l'intersezione che l'unione fuzzy possono essere definite in diversi modi. Entrambe devono, tuttavia, soddisfare alcune proprietà di base che le definiscono rispettivamente come **t-norme** e **t-conorme**.
 
 Una funzione $\top : [0,1]^2 \to [0,1]$ si definisce **t-norma** se e solo se soddisfa le seguenti proprietà:
-1.  $\top(x,1) = x$;
-2.  $\top(x,y) = \top(y,x)$;
-3.  $\top(x,\top(y,z)) = \top(\top(x,y),z)$;
-4.  $x \leq z \implies \top(x,y) \leq \top(x,z)$.
+1) $\top(x,1) = x$;
+2) **commutativa**: $\top(x,y) = \top(y,x)$;
+3) **associativa**: $\top(x,\top(y,z)) = \top(\top(x,y),z)$;
+4) **monotonicità** $y \leq z \implies \top(x,y) \leq \top(x,z)$.
 
 Una funzione $\bot: [0,1]^2 \to [0,1]$ si definisce **t-conorma** se e solo se soddisfa le seguenti proprietà:
-1.  $\bot(x,0) = x$;
-2.  $\bot(x,y) = \bot(y,x)$;
-3.  $\bot(x,\bot(y,z)) = \bot(\bot(x,y),z)$;
-4.  $x \leq z \implies \bot(x,y) \leq \bot(x,z)$.
+1) $\bot(x,0) = x$;
+2) **commutativa**: $\bot(x,y) = \bot(y,x)$;
+3) **associativa** $\bot(x,\bot(y,z)) = \bot(\bot(x,y),z)$;
+4) **monotonicità** $y \leq z \implies \bot(x,y) \leq \bot(x,z)$.
 
 Le definizioni di intersezione e unione date in termini di $\max$ e $\min$ soddisfano queste proprietà. Si può mostrare come l'operazione di minimo sia la più grande t-norma e il massimo la più piccola t-conorma. In aggiunta a queste, possono essere date altre definizioni di intersezione ed unione come, per esempio, quella in termini di prodotto e somma probabilistica:
 $$\top_{prod}(x,y) = x \cdot y$$
@@ -998,108 +999,118 @@ A seconda della semantica data agli operatori logici fuzzy, si otterranno varie 
 
 ### Teoria della logica fuzzy ###
 #### Principio di estensione ####
-Come estendere una funzione $\phi : X^n \to Y$ in un contesto fuzzy di modo che $\hat{\phi}$ abbia come dominio una tupla di fuzzy set e come codominio un fuzzy set? Un caso particolare è quello della valutazione di proposizioni. Definito un assegnamento fuzzy alle proposizioni atomiche, possiamo estenderlo a combinazioni arbitrarie di formule legate tra loro da operatori logici (and e or):
+Come estendere una funzione $\phi : X^n \to Y$ in un contesto fuzzy di modo che $\hat{\phi}$ abbia come dominio una tupla di fuzzy set e come codominio un fuzzy set? Un caso particolare è quello della valutazione di proposizioni.<br />
+Definito un assegnamento fuzzy alle proposizioni atomiche, possiamo estenderlo a combinazioni arbitrarie di formule legate tra loro da operatori logici ($\wedge$ e $\vee$):
 $$truth: \mathbb{P} \to [0,1]$$
-$$truth(a\text{ and }b) =  \min\{truth(a),truth(b)\}$$
-$$truth(a\text{ or }b) =  \max\{truth(a),truth(b)\}$$Si possono considerare anche congiunzioni e disgiunzioni infinite:
+$$truth(a \wedge b) =  \min\{truth(a),truth(b)\}$$
+$$truth(a \vee b) =  \max\{truth(a),truth(b)\}$$Si possono considerare anche congiunzioni e disgiunzioni infinite:
 $$truth(\forall i \in I : a_i) =  \inf \{ truth(a_i) | i \in I \}$$
 $$truth(\exists i \in I : a_i) =  \sup \{ truth(a_i) | i \in I \}$$
-Questo ci permemette di riguadagnare la logica booleana anche nel caso fuzzy. Un altro esempio di estensione è quella della somma reale tra insiemi definita, per insiemi classici, come:
+Questo permette di riguadagnare la logica booleana anche nel caso fuzzy. Un altro esempio di estensione riguarda la somma reale tra insiemi, definita, per insiemi classici, come:
 $$+ : 2^{\mathbb{R}} \times 2^{\mathbb{R}} \to 2^{\mathbb{R}}$$
 $$(A,B) \to A + B = \{y | \exists a,b (y = a + b) \land (a \in A) \land (b \in B) \}$$
-La sua estensione ai fuzzy set verrà definita per $\mu$ e $\mu'$ fuzzy set come: $$(\mu,\mu') \to \mu \oplus \mu'$$
+La sua estensione ai fuzzy set verrà definita, per $\mu$ e $\mu'$ fuzzy set, come: $$(\mu,\mu') \to \mu \oplus \mu'$$
 $$truth(y \in \mu \oplus \mu') = \sup_{a,b}\{ truth(y = a + b) \land truth(a \in A) \land truth(b \in B)\}$$
 $$= \sup_{a,b:y=a+b} \{ \min(\mu(a),\mu'(b)) \}$$In generale, una funzione $\phi : X^n \to Y$ può essere estesa ad una $\hat{\phi} : [2^X]^n \to 2^Y$ su insiemi classici nel seguente modo:
 $$\hat{\phi} (A_1, \dots, A_n) = \{ y \in Y | \exists x_1, \dots, x_n \in A_1 \times \dots \times A_n : \phi(x_1,\dots,x_n) = y \}$$
-Basandoci su questa definizione possiamo poi generalizzare al caso dei fuzzy set su un dominio di discorso $X$:
+Basandoci su questa definizione, è possibile poi generalizzare al caso dei fuzzy set su un dominio di discorso $X$:
 $$\hat{\phi}_{fuzzy} (\mu_1, \dots, \mu_n) = \sup\{ \min \{ \mu_1(x_1), \dots, \mu_n(x_n) \} | (x_1, \dots, x_n) \in X^n \land \phi(x_1, \dots, x_n) = y \}$$
 Assumendo che $\sup \emptyset = 0$.
 
 ----------------------------------------------------------------
 
 #### Alcuni insiemi fuzzy rilevanti ####
-Vi sono vari tipi di insiemi fuzzy. Per quanto ci riguarda particolare rilevanza assumono quelli definiti sull'insieme $\mathbb{R}$. Un insieme fuzzy sui reali ha un significato quantitativo che può essere utilizzato per rappresentare variabili fuzzy. Queste ultime giocano un ruolo importantissimo in molte applicazioni: fuzzy control, ragionamento approssimato, ottimizzazione, etc. Alcune classi di $F(\mathbb{R})$ (l'insieme degli insiemi fuzzy sui reali) che vengono citate spesso in letteratura sono le seguenti:
+Vi sono vari tipi di insiemi fuzzy e particolare rilevanza assumono quelli definiti sull'insieme $\mathbb{R}$. Un insieme fuzzy sui valori reali ha un significato quantitativo utilizzabile per rappresentare variabili fuzzy. Queste ultime giocano un ruolo fondamentale in molte applicazioni: fuzzy control, ragionamento approssimato, ottimizzazione, etc. Alcune classi di $F(\mathbb{R})$ (l'insieme degli insiemi fuzzy sui reali) le quali vengono citate spesso in letteratura sono le seguenti:
 
-1.  Normal fuzzy set:\
-    $F_N(\mathbb{R}) = \{\mu \in F(\mathbb{R}) | \exists x \in \mathbb{R} : \mu(x) = 1 \}$
+1) **normal fuzzy set**: $F_N(\mathbb{R}) = \{\mu \in F(\mathbb{R}) | \exists x \in \mathbb{R} : \mu(x) = 1 \}$
 
-2.  Upper Semi-continuous fuzzy set:\
-    $F_C(\mathbb{R}) = \{\mu \in F_N(\mathbb{R}) | \forall \alpha \in (0,1] : [\mu]_\alpha \text{ è compatto }\}$
+2) **upper semi-continuous fuzzy set**: $F_C(\mathbb{R}) = \{\mu \in F_N(\mathbb{R}) | \forall \alpha \in (0,1] : [\mu]_\alpha \text{ è compatto }\}$
 
-3.  Fuzzy interval:\
-    $F_I(\mathbb{R}) = \{\mu \in F_N(\mathbb{R}) | \forall a,b,c \in \mathbb{R} : c \in [a,b] \implies \mu(c) \geq \min\{ \mu(a),\mu(b) \} \}$
+3) **fuzzy interval**: $F_I(\mathbb{R}) = \{\mu \in F_N(\mathbb{R}) | \forall a,b,c \in \mathbb{R} : c \in [a,b] \implies \mu(c) \geq \min\{ \mu(a),\mu(b) \} \}$
 
 ![[images/lingvar.png]]
 
-Particolare interesse rivestono i **fuzzy interval** anche detti **fuzzy numbers**, perchè permettono di definire **variabili fuzzy quantitative**. Tali variabili assumono come valore numeri fuzzy. Quando le quantità fuzzy rappresentano concetti linguistici (come piccolo, grande, etc.) si parla di variabili linguistiche. Ogni variabile linguistica è definita da un quintupla $(v,T,X,g,m)$, dove $v$ è il nome della variabile, $T$ è l'insieme dei termini che coprono $v$, $X$ è il dominio del discorso, $g$ è la grammatica per generare i termini ed $m$ la semantica che assegna ad ogni termine un fuzzy number. Per processare questo genere di variabili sarà necessario estendere le operazioni insiemistiche e aritmetiche originalmente utilizzate per i numeri.
+Particolare interesse rivestono i **fuzzy interval**, anche detti **fuzzy numbers**, perchè essi permettono di definire **variabili fuzzy quantitative**. Tali variabili assumono come valore dei numeri fuzzy.<br />
+Quando le quantità fuzzy rappresentano concetti linguistici (come, ad esempio, piccolo, grande, etc.) si parla di variabili linguistiche. Ogni variabile linguistica è definita da un quintupla $(v,T,X,g,m)$, dove $v$ è il nome della variabile, $T$ è l'insieme dei termini che coprono $v$, $X$ è il dominio del discorso, $g$ è la grammatica per generare i termini ed $m$ la semantica che assegna un fuzzy number ad ogni termine. Per processare questo genere di variabili sarà necessario estendere le operazioni insiemistiche e aritmetiche originalmente utilizzate per i numeri.
 
 ----------------------------------------------------------------
 
 #### Rappresentazione per insiemi ####
-Abbiamo visto in precedenza come, attraverso il principio di estensione, si possa definire le operazioni aritmetiche nel contesto di $F(\mathbb{R})$. Tuttavia, calcolare tali funzioni direttamente sugli insiemi fuzzy risulta oneroso, specialmente se si adotta la rappresentazione verticale rispetto a quela orizzontale. Sarebbe desiderabile ridurre l'artimetica fuzzy all'ordinaria aritmetica sugli insiemi booleani e, quindi, applicare alcune semplici operazioni su intervalli per ottenere il risultato. Questo è possibile farlo attraverso la *rappresentazione per insiemi* di un insieme fuzzy.
+Si è osservato in precedenza come, attraverso il principio di estensione, si possano definire le operazioni aritmetiche nel contesto di $F(\mathbb{R})$. Tuttavia, calcolare tali funzioni direttamente sugli insiemi fuzzy risulta oneroso, specialmente se si adotta la rappresentazione verticale rispetto alla rappresentazione orizzontale. Sarebbe desiderabile ridurre l'artimetica fuzzy all'ordinaria aritmetica sugli insiemi booleani e, quindi, applicare alcune semplici operazioni su intervalli per ottenere il risultato. Questo è possibile attraverso la **rappresentazione per insiemi** di un insieme fuzzy.
 
-Una famiglia $(A_\alpha)_{\alpha \in (0,1)}$ è una *rappresentazione per insiemi* di $\mu \in F_N(\mathbb{R})$ se
+Una famiglia $(A_\alpha)_{\alpha \in (0,1)}$ è una **rappresentazione per insiemi** di $\mu \in F_N(\mathbb{R})$ se
 1.  $0 < \alpha < \beta < 1 \implies A_\alpha \subseteq A_\beta \subseteq \mathbb{R}$;
 2.  $\mu(t) = \sup \{ \alpha \in [0,1] | t \in A_\alpha \}$.
 
-Il seguente teorema ci assicura che una rappresentazione per insiemi è una fedele immagine dell'insieme fuzzy che raffigura.
+Il seguente teorema assicura che una rappresentazione per insiemi sia una fedele immagine dell'insieme fuzzy che essa raffigura.<br />
+Sia $\mu \in F_N(\mathbb{R})$. La famiglia $(A_\alpha)_{\alpha \in (0,1)}$ è una rappresentazione per insiemi di $\mu$ se e solo se
 
-Sia $\mu \in F_N(\mathbb{R})$. La famiglia $(A_\alpha)_{\alpha \in (0,1)}$ è una rappresentazione per insiemi di
-$\mu$ sse
-$$[\mu]_{\bar{\alpha}} = \{ t \in \mathbb{R} | \mu(t) > \alpha \} \subseteq A_\alpha \subseteq \{ t \in \mathbb{R} | \mu(t) \geq \alpha \} = [\mu]_\alpha$$ è valida per ogni $\alpha \in (0,1)$.
-
-Se $\mu_1, \dots, \mu_n$ sono normal fuzzy set su $\mathbb{R}$ e $\phi: \mathbb{R}^n \to \mathbb{R}$ una funzione e $\hat{\phi}$ la sua estensione fuzzy. Allora valgono le seguenti:
+$$[\mu]_{\bar{\alpha}} = \{ t \in \mathbb{R} | \mu(t) > \alpha \} \subseteq A_\alpha \subseteq \{ t \in \mathbb{R} | \mu(t) \geq \alpha \} = [\mu]_\alpha$$ 
+è valida per ogni $\alpha \in (0,1)$.<br />
+Se $\mu_1, \dots, \mu_n$ sono normal fuzzy set su $\mathbb{R}$ e $\phi: \mathbb{R}^n \to \mathbb{R}$ una funzione e $\hat{\phi}$ la sua estensione fuzzy, allora valgono le seguenti:
 
 $$\forall \alpha \in [0,1) : [\hat{\phi}(\mu_1,\dots,\mu_n)]_{\bar{\alpha}} = \phi([\mu_1]_{\bar{\alpha}}, \dots, [\mu_n]_{\bar{\alpha}})$$
 $$\forall \alpha \in [0,1) : [\hat{\phi}(\mu_1,\dots,\mu_n)]_\alpha \subseteq \phi([\mu_1]_\alpha, \dots, [\mu_n]_\alpha)$$
 
-Sia, quindi, $(A_\alpha)_{\alpha \in (0,1)}$ la rappresentazione per insiemi di $\mu_i$ per $1 \geq i \geq n$, allora
-$(\phi((A_1)_\alpha, \dots, (A_n)_\alpha))_{\alpha \in (0,1)}$ è una rappresentazione di $\hat{\phi}$.
+Sia, quindi, $(A_\alpha)_{\alpha \in (0,1)}$ la rappresentazione per insiemi di $\mu_i$ per $1 \geq i \geq n$. Allora $(\phi((A_1)_\alpha, \dots, (A_n)_\alpha))_{\alpha \in (0,1)}$ è una rappresentazione di $\hat{\phi}$.
 
 ----------------------------------------------------------------
 
 ### Relazioni fuzzy ###
-Una relazione booleana $R$ tra gli insiemi $X_1, \dots, X_n$ è un sottoinsieme del loro prodotto cartesiano. Ogni relazione di questo tipo può essere definita, quindi, attraverso la propria funzione caratteristica: $$R(x_1,\dots,x_n) = \begin{cases}
+Una relazione booleana $R$ tra gli insiemi $X_1, \dots, X_n$ è un sottoinsieme del loro prodotto cartesiano. Ogni relazione di questo tipo può essere definita, quindi, attraverso la propria funzione caratteristica: 
+
+$$R(x_1,\dots,x_n) = \begin{cases}
                         1 \text{ se e solo se } (x_1, \dots, x_n) \in R \\
                         0 \text{ altrimenti }
-                    \end{cases}$$
+                    \end{cases}
+$$
 
-Come accade nel caso della funzione caratteristica di insiemi, quella delle relazioni può essere generalizzata per comprendere valori fuzzy. Il grado di appartenenza indica la forza della relazione tra i membri della tupla in considerazione. Siano $n \geq 2$ fuzzy set $A_1, \dots, A_n$ definiti rispettivamente sul dominio del discorso $X_1, \dots, X_n$. Il prodotto cartesiano $A_1 \times \dots \times A_n$
-è una relazione fuzzy nello spazio prodotto $X_1 \times \dots \times X_n$ ed è definita dalla seguente funzione di partecipazione:
+Come accade nel caso della funzione caratteristica di insiemi, la variante delle relazioni può essere generalizzata per comprendere valori fuzzy. Il grado di appartenenza indica la forza della relazione tra i membri della tupla in considerazione.
+
+Siano $n \geq 2$ fuzzy set $A_1, \dots, A_n$ definiti rispettivamente sul dominio del discorso $X_1, \dots, X_n$. Il prodotto cartesiano $A_1 \times \dots \times A_n$ è una relazione fuzzy nello spazio prodotto $X_1 \times \dots \times X_n$ ed è definita dalla seguente funzione di partecipazione:
+
 $$\mu_{A_1 \times \dots \times A_n}(x_1, \dots, x_n) = \top(\mu_{A_1}(x_1), \dots,\mu_{A_n}(x_n))$$
-Dove $\top$ è una t-norma, solitamente il minimo o il prodotto.
 
-Siano $\mathbf{w}= (x_1, \dots, x_n)$ e $\mathbf{v}= (y_1, \dots, y_m)$ due tuple. $\mathbf{w}$ è chiamato *sottosequenza* di $\mathbf{v}$ (in simboli, $\mathbf{w}\prec \mathbf{v}$) sse $\forall j \in \{1,\dots,n\}, \mathbf{w}_j = \mathbf{v}_j$.
+dove $\top$ è una t-norma, solitamente il minimo o il prodotto.
 
-Data un relazione $R(x_1,\dots,x_n)$ e un sottoinsieme dei domini del discorso $Y \subseteq \{X_1, \dots, X_n\}$, denotiamo con $[R \downarrow Y]$ la *proiezione* di $R$ su $Y$ definita come:
+Siano $\mathbf{w}= (x_1, \dots, x_n)$ e $\mathbf{v}= (y_1, \dots, y_m)$ due tuple. $\mathbf{w}$ è chiamato **sottosequenza** di $\mathbf{v}$ (in simboli, $\mathbf{w}\prec \mathbf{v}$) se e solo se $\forall j \in \{1,\dots,n\}, \mathbf{w}_j = \mathbf{v}_j$.
+
+Data un relazione $R(x_1,\dots,x_n)$ e un sottoinsieme dei domini del discorso $Y \subseteq \{X_1, \dots, X_n\}$, si denota con $[R \downarrow Y]$ la **proiezione** di $R$ su $Y$ definita come:
+
 $$[R \downarrow Y](\mathbf{v}) = \max_{\mathbf{v}\prec \mathbf{w}} R(\mathbf{w})$$
 
-Data una proiezione $[R \downarrow Y]$, una *estensione cilindrica* che denotiamo come $[R \uparrow X-Y]$ è la relazione $R$ di partenza salvo che ogni valore diverso da quello della proiezione viene sosituito con quello stesso valore: $$[R \uparrow X-Y](\mathbf{v}) = R(\mathbf{w})$$
+Data una proiezione $[R \downarrow Y]$, un'**estensione cilindrica**, che si denota come $[R \uparrow X-Y]$, è la relazione $R$ di partenza, salvo che ogni valore diverso da quello della proiezione viene sostituito con quello stesso valore: 
+
+$$[R \uparrow X-Y](\mathbf{v}) = R(\mathbf{w})$$
 
 ----------------------------------------------------------------
 
 ### Relazioni binarie ###
-Le relazioni binarie sono esempi particolarmente rilevanti tra tutte le relazioni $n$-dimensionali, in quanto generalizzazioni delle funzioni matematiche. Contrariamente a ciò che accade nel caso delle funzioni da $X$ a $Y$, una relazione $R(X,Y)$ può assegnare ad un elemento di $X$ ad un valore in $Y$. Possiamo estendere le consuete operazioni sulle funzioni (inversa e composizione) anche alle relazioni fuzzy.
+Le relazioni binarie sono esempi particolarmente rilevanti tra tutte le relazioni $n$-dimensionali, in quanto generalizzazioni delle funzioni matematiche.<br />
+Contrariamente a ciò che accade nel caso delle funzioni da $X$ a $Y$, una relazione $R(X,Y)$ può assegnare ad un elemento di $X$ ad un valore in $Y$. E' possibile estendere le consuete operazioni sulle funzioni (inversa e composizione) anche alle relazioni fuzzy.
 
-Data una relazione $R(X,Y)$ il suo *dominio*, denotato $dom R$, è definito come: $$dom R(x) = \max_{y \in Y}\{ R(x,y) \}$$
+Data una relazione $R(X,Y)$ il suo **dominio**, denotato $dom R$, è definito come: $$dom R(x) = \max_{y \in Y}\{ R(x,y) \}$$
 
-Data una relazione $R(X,Y)$ il suo *codominio*, denotato $ran R$, è definito come: $$ran R(x) = \max_{x \in X}\{ R(x,y) \}$$
-Data una relazione $R(X,Y)$ la sua *altezza*, denotata $h R$, è definito come: $$h R(x) = \max_{x \in X} \max_{y \in Y} \{ R(x,y) \}$$
+Data una relazione $R(X,Y)$ il suo **codominio**, denotato $ran R$, è definito come: $$ran R(x) = \max_{x \in X}\{ R(x,y) \}$$
+Data una relazione $R(X,Y)$ la sua **altezza**, denotata $h R$, è definita come: 
+$$h R(x) = \max_{x \in X} \max_{y \in Y} \{ R(x,y) \}$$
 
-Data una relazione $R(X,Y)$ la sua *inversa*, denotata $R^{-1}$, è definito come quella relazione su $Y \times X$ tale che:
+Data una relazione $R(X,Y)$ la sua **inversa**, denotata $R^{-1}$, è definita come la relazione su $Y \times X$ tale che:
+
 $$R^{-1} (y,x) = R(x,y) \quad \forall x \in X, \forall y \in Y$$
 
-Data una relazione $R(X,Y)$ e una relazione $Q(Y,Z)$ la loro *composta*, denotata $R \circ Q (X,Z)$, è definito come quella relazione su $X \times Z$ tale che:
+Data una relazione $R(X,Y)$ e una relazione $Q(Y,Z)$ la loro **composta**, denotata $R \circ Q (X,Z)$, è definita come la relazione su $X \times Z$ tale che:
+
 $$R \circ Q (x,z) = \sup_{y \in Y} \{ \min \{ P(x,y),Q(y,z)\} \quad \forall x \in X, \forall z \in Z \}$$
 
-Data una relazione $R(X,Y)$ e una relazione $Q(Y,Z)$ il loro *join*, denotata $R \star Q (X,Y,Z)$, è definito come quella relazione su $X \times Y \times Z$ tale che:
+Data una relazione $R(X,Y)$ e una relazione $Q(Y,Z)$ il loro **join**, denotato $R \star Q (X,Y,Z)$, è definito come quella relazione su $X \times Y \times Z$ tale che:
+
 $$R \star Q (x,y,z) = \min \{ P(x,y),Q(y,z)\} \quad \forall x \in X, \forall y \in Y, \forall z \in Z$$
 
-Data una relazione $R(X,X)$ si definisce una *relazione di equivalenza* sse soddisfa le seguenti proprietà:
-1.  *riflessività*: $\forall x \in X \quad R(x,x) = 1$;
-2.  *simmetria*: $\forall x,y \in X \quad R(x,y) = R(y,x)$;
-3.  *transitività*:
-    $\forall (x,z) \in X^2 \quad R(x,z) \geq \max_{y \in X} \min \{ R(x,y),R(y,z) \}$.
+Data una relazione $R(X,X)$, si definisce una **relazione di equivalenza** se e solo se la relazione soddisfa le seguenti proprietà:
+1) **riflessività**: $\forall x \in X \quad R(x,x) = 1$;
+2) **simmetria**: $\forall x,y \in X \quad R(x,y) = R(y,x)$;
+3) **transitività**: $\forall (x,z) \in X^2 \quad R(x,z) \geq \max_{y \in X} \min \{ R(x,y),R(y,z) \}$.
 
 ----------------------------------------------------------------
 
@@ -1107,29 +1118,31 @@ Data una relazione $R(X,X)$ si definisce una *relazione di equivalenza* sse sodd
 
 ![[images/fuzzycontroller.png]]
 
-Una applicazione di particolare successo di queste idee sono i così detti *fuzzy controller*. Il concetto che sta sotto al fuzzy control è quello di definire transizioni non-lineari tra i diversi stati del sistema senza specificare un insieme di equazioni differenziali per ogni variabile. Questo permette di modellare sistemi complessi le cui dinamiche possono sfuggire ad un'analisi matematicamente precisa. Lo schema di base di un fuzzy controller viene mostrato in Figura [29](#fig:30){reference-type="ref" reference="fig:30"}. La (1) *fuzzyfication interface* riceve i valori in input e si occupa di convertirli in un dominio adeguato (termini linguistici o fuzzy set). La (2) *knowledge base* consiste di (a) dati che contengono informazioni riguardo intervalli, trasformazioni di dominio e a quali insiemi fuzzy corrisponderanno i termini linguistici, e (b) regole che contengono i controlli del tipo *if-then*. La (3) *decision logic* rappresenta l'unità processore, la quale si occupa di computare l'output in base all'input misurato e la knwoledge base. Infine, la (4) *defuzzification interface* si occupa di mappare i valori fuzzy usati nella computazione in valori booleani che sono inviati come segnali al controllo del
-sistema.
+Un'applicazione di queste idee la quale ha riscosso particolare successo riguarda i cosiddetti **fuzzy controller**. Il concetto su cui si basa il fuzzy control è quello di definire transizioni non-lineari tra i diversi stati del sistema, senza specificare un insieme di equazioni differenziali per ogni variabile. Questo permette di modellare sistemi complessi le cui dinamiche possono sfuggire ad un'analisi matematicamente precisa.<br />
+La **fuzzyfication interface** riceve i valori in input e si occupa di convertirli in un dominio adeguato (termini linguistici o fuzzy set). La **knowledge base** consiste di dati che contengono informazioni riguardo intervalli, trasformazioni di dominio e a quali insiemi fuzzy corrisponderanno i termini linguistici, e regole che contengono i controlli del tipo **if-then**. La **decision logic** rappresenta l'unità processore, la quale si occupa di computare l'output in base all'input misurato e la knowledge base. Infine, la **defuzzification interface** si occupa di mappare i valori fuzzy, usati nella computazione, in valori booleani, i quali sono poi inviati come segnali al controllo del sistema.
 
 ----------------------------------------------------------------
 
 ### Defuzzification ###
-La mappatura dei segnali fuzzy interni al controller in segnali booleani utili a controllare il sistema può essere operata in svariati modi. In letteratura i più comuni sono:
-1.  Max Criterion Method (MCM);
-2.  Mean of Maxima (MOM);
-3.  Center of Gravity (COG);
+La mappatura dei segnali fuzzy interni al controller in segnali booleani utili a controllare il sistema può essere operata in svariati modi. In letteratura, i metodi più comuni sono:
+1) **Max Criterion Method** (MCM);
+2) **Mean of Maxima** (MOM);
+3) **Center of Gravity** (COG).
 
-Il MCM sceglie un valore arbitrario $y \in Y$ per cui si raggiunge il massimo valore di appartenenza. Ha l'indubbio vantaggio di essere applicabile a qualsiasi fuzzy set e a domini $Y$ arbitrari. Può, tuttavia, essere difficile individuare l'elemento per cui la funzione di appartenenza viene massimizzata. Inoltre, la scelta di valori casuali rende il comportamento del controller non deterministico e questo può
-portare ad azioni discontinue. Il MOM prende $Y$ come intervallo e ne calcola l'insieme $Y_{MAX}$ tale che l'output in quei punti è massimo (l'insieme deve essere non vuoto e misurabile). Il valore di output sarà calcolato come la media su $Y_{MAX}$. Come nel caso precedente questa tecnica può portare ad azioni discontinue. Il COG, come il MOM, preso $Y$ come un intervallo restituisce in output il centro dell'area. Solitamente ha un comportamento regolare, anche se la computazione è
-onerosa e può condurre a risultati controintuitivi.
+Il MCM sceglie un valore arbitrario $y \in Y$ per il quale si raggiunge il massimo valore di appartenenza. Ha l'indubbio vantaggio di essere applicabile a qualsiasi fuzzy set e a domini $Y$ arbitrari. Può, tuttavia, essere difficile individuare l'elemento per il quale viene massimizzata la funzione di appartenenza. Inoltre, la scelta di valori casuali rende non deterministico il comportamento del controller e questo può
+portare ad azioni discontinue.<br />
+Il MOM prende $Y$ come intervallo e ne calcola l'insieme $Y_{MAX}$ tale che l'output in quei punti sia massimo (l'insieme deve essere non vuoto e misurabile). Il valore di output sarà calcolato come la media su $Y_{MAX}$. Come nel caso precedente, questa tecnica può portare ad azioni discontinue.<br />
+Il COG, preso $Y$ come un intervallo, restituisce in output il centro dell'area. Solitamente ha un comportamento regolare, anche se la computazione è onerosa e può condurre a risultati controintuitivi.
 
 ----------------------------------------------------------------
 
 ### Mamdani controller ###
-Il primo modello di fuzzy controller è il così detto *Mamdani controller*, sviluppato nel 1975 da Mamdani e Assilian. Questo controller è basato su una serie di regole del tipo \"if $X$ is $M_n$, then $Y$ is $N_m$\" dove $M_n$ e $N_m$ sono intervalli che rappresentano termini linguistici. Sebbene le regole siano della forma *if-then*, non devono essere interpretate come implicazioni logiche, quanto definizione parziali di una funzione. Collettivamente le regole possono essere rappresentate nello spazio come l'unione $S$ dei vari intervalli:
+Il primo modello di fuzzy controller è il cosiddetto **Mamdani controller**, sviluppato nel 1975 da Mamdani e Assilian. Questo controller è basato su una serie di regole del tipo "if $X$ is $M_n$, then $Y$ is $N_m$" dove $M_n$ e $N_m$ sono intervalli che rappresentano termini linguistici. Sebbene le regole siano della forma **if-then**, non devono essere interpretate tanto come implicazioni logiche quanto definizione parziali di una funzione. Collettivamente, le regole possono essere rappresentate nello spazio come l'unione $S$ dei vari intervalli:
 
 $$S = \cup M_i \times N_i$$
 
-Le regole possono assumere come valori intervalli *crisp* come in Figura [\[fig:31\]](#fig:31){reference-type="ref" reference="fig:31"} (a), oppure valori fuzzy come in Figura [\[fig:31\]](#fig:31){reference-type="ref" reference="fig:31"} (b). In ogni caso, dato un input $x_0$ l'ouput verrà calcolato come la composta del singoletto di $x_0$ e l'unione degli intervalli $S$ (in simboli, $\{x_0\} \circ S$) come in Figura [30](#fig:32){reference-type="ref" reference="fig:32"}. Questo output sarà un fuzzy set che rappresenta solo una vaga o imprecisa descrizione dell'output desiderato. Per determinare il vero valore di output, l'output preliminare dovrà essere defuzzificato. Nel caso del Mamdani controller si utilizza il metodo COG, che permette di trovare un compromesso rispetto ai singoli output delle regole.
+Le regole possono assumere come valori intervalli **crisp**, oppure valori fuzzy.<br />
+In ogni caso, dato un input $x_0$ l'ouput verrà calcolato come la composta del singoletto di $x_0$ e l'unione degli intervalli $S$ (in simboli, $\{x_0\} \circ S$). Questo output sarà un fuzzy set il quale rappresenterà solo una vaga o imprecisa descrizione dell'output desiderato. Per determinare il vero valore di output, l'output preliminare dovrà essere defuzzificato. Nel caso del Mamdani controller si utilizza il metodo COG, il quale permette di trovare un compromesso rispetto ai singoli output delle regole.
 
 ![[images/rulesfuzzy.png]]
 
@@ -1139,110 +1152,118 @@ Le regole possono assumere come valori intervalli *crisp* come in Figura [\[fig:
 
 ----------------------------------------------------------------
 
-### Takagi--Sugeno controller ###
-Questo controller può essere visto come una modifica e uno sviluppo del precedente. Nello stesso modo del Mamdani controller, i valori di input vengono descritti da fuzzy set. Tuttavia, il conseguente di una regola non sarà a sua volta un fuzzy set, ma una funzione che ha come argomenti le variabili di input (generalmente, una funzione lineare).
+### Takagi-Sugeno controller ###
+Questo controller può essere visto come una modifica ed uno sviluppo del controller precedente. Nello stesso modo del Mamdani controller, i valori di input vengono descritti da fuzzy set. Tuttavia, il conseguente di una regola non sarà a sua volta un fuzzy set, ma una funzione che ha come argomenti le variabili di input (generalmente, una funzione lineare).
 
 $$R : \text{ if } x_1 \text{ is } \mu_1 \text{ and } \dots \text{ and } x_n \text{ is } \mu_n, \text{ then } y = f(x_1,\dots,x_n)$$
 
-L'idea è che quella funzione è una buona funzione di controllo per la regione descritta dall'antecedente. Per mantenere la leggibilità del modello così prodotto, occorre evitare sovrapposizioni tra le varie regioni descritte nell'antecedente delle regole. Siccome l'ouput viene calcolato è già crisp, non occorre defuzzificarlo.
+L'idea è che quella funzione sia una buona funzione di controllo per la regione descritta dall'antecedente. Per mantenere la leggibilità del modello così prodotto, occorre evitare sovrapposizioni tra le varie regioni descritte nell'antecedente delle regole. Siccome l'ouput viene calcolato, è già crisp e non occorre defuzzificarlo.
 
 ----------------------------------------------------------------
 
 ### Similarity-based reasoning ###
-Vi è un'ultima tipologia di controller che utilizza il concetto di relazione di somiglianza (l'analogo fuzzy delle relazioni di equivalenza).
-Una funzione $E: X^2 \to [0,1]$ è definita *relazione di somiglianza* rispetto ad una T-norma se e solo se soddisfa le seguenti condizioni:
-1.  $E(x,x) = 1$;
-2.  $E(x,y) = E(y,x)$;
-3.  $\top (E(x,y),E(y,z)) = E(x,z)$.
+Vi è un'ultima tipologia di controller che utilizza il concetto di relazione di somiglianza (l'analogo fuzzy delle relazioni di equivalenza).<br />
+Una funzione $E: X^2 \to [0,1]$ è definita **relazione di somiglianza** rispetto ad una T-norma se e solo se soddisfa le seguenti condizioni:
+1) $E(x,x) = 1$;
+2) $E(x,y) = E(y,x)$;
+3) $\top (E(x,y),E(y,z)) = E(x,z)$.
 
-Questo genere di relazioni vengono utilizzate per tradurre l'informazione data dagli esperti in modo che le varie tuple coprano tutti i possibili comportamenti del sistema. Dalle classi di somiglianza possiamo poi estrarre regole in tutto uguali a quelle per il Mamdani controller.
+Questo genere di relazioni vengono utilizzate per tradurre l'informazione data dagli esperti in modo tale che le varie tuple coprano tutti i possibili comportamenti del sistema. Dalle classi di somiglianza, è possibile poi estrarre regole in tutto uguali a quelle valide per il Mamdani controller.
 
 ----------------------------------------------------------------
 
 ### Fuzzy data analysis ###
-Ci sono due sensi in cui si parla di *fuzzy data analysis*. Uno riguarda l'applicazione di tecniche di ragionamento fuzzy rispetto a dati crisp (si parlerà in questo caso di *fuzzy clustering*). Un altro, invece, riguarda l'analisi di dati presentati sotto forma di fuzzy set (si parlerà in questo caso di *random set* e *random fuzzy variables*).
+Ci sono due casistiche in cui si parla di **fuzzy data analysis**. Una di esse riguarda l'applicazione di tecniche di ragionamento fuzzy rispetto a dati crisp (si parlerà in questo caso di **fuzzy clustering**). Un'altra, invece, riguarda l'analisi di dati presentati sotto forma di fuzzy set (si parlerà in questo caso di **random set** e **random fuzzy variables**).
 
 #### Fuzzy clustering ####
 
 ![[images/symmetricdata.png]]
 
-Il *fuzzy clustering* è una procedura di apprendimento non supervisionato che permette di dividere il dataset in modo che a) oggetti nello stesso cluster siano quanto più possibili simili e b) oggetti in cluster diversi siano quanto più possibile dissimili. La relazione di somiglianza è misurata nei termini di una funzione distanza. Minore è la distanza, maggiore è la probabilità che due elementi appartengano allo stesso cluster. Nel caso dell'algoritmo *hard c-means* si 1) sceglie un numero $c$ di cluster, 2) si distribuiscono in modo randomico i centri e 3) si procede all'assegnamento dei punti più vicini ai centri dei rispettivi cluster, poi 4) si passa ad aggiornare la posizione dei centri tramite il calcolo del centro di gravità. 5) Si ripete il processo fino a che la posizione si stabilizza. La partizione in cluster è ottimale quando la somma delle distanze tra i centri e gli elementi è minima. Un problema di questo approccio è che l'algoritmo può rimanere bloccato in minimi locali. Per ovviare a questo inconveniente solitamente si fanno varie iterazioni e se ne sceglie la migliore. Un diverso problema è quello che discende dal fatto che la partizione è crisp. Qualora, infatti, esista un elemento equidistante da due centri come in Figura [31](#fig:33){reference-type="ref" reference="fig:33"}, l'assegnamento ad uno dei due cluster è puramente arbitrario e non rispecchia l'informazione fornita dai dati. Il *fuzzy clustering* fornisce una soluzione a questo problema. Introducendo un concetto di appartenenza non binario ma continuo in $[0,1]$, offre la possibilità di esprimere l'appartenenza di un punto a più di un cluster. Il risultato sarà una partizione del dataset in fuzzy set. Possiamo rappresentare questa partizione attraverso una matrice che assegna ad ogni componente $u_{ij}$ il grado di appartenenza del punto $x_j$ al fuzzy set $\Gamma_i$, in simboli $u_{ij} = \mu_{\Gamma_i}(x_j)$. Esistono due tipi di fuzzy clustering: quello *probabilistico* e quello *possibilistico*. La differenza si gioca rispetto alle condizioni imposte alla funzione di appartenenza. Nel caso *probabilistico* si avrà che: 
-1.  $\sum_{j=1}^{n} u_{ij} > 0, \quad \forall i \in \{1,\dots,c \}$;
-2.  $\sum_{i=1}^{c} u_{ij} = 1, \quad \forall j \in \{1,\dots,n \}$.
+Il **fuzzy clustering** è una procedura di apprendimento non supervisionato che permette di dividere il dataset in modo che 
+1) oggetti nello stesso cluster siano quanto più possibili simili;
+2) oggetti in cluster diversi siano quanto più possibile dissimili. 
 
-La prima condizione sta ad indicare che non possono esistere cluster vuoti, la seconda, invece, che l'appartenenza è esaurita dall'insieme dei fuzzy set che costiuiscono la partizione. Nel caso *possibilistico* si mantiene solo la prima assunzione e si lascia cadere la seconda. L'interpretazione possibilistica è da preferire quando si abbia a che fare con dati pieni di rumore o outlier.
+La relazione di somiglianza è misurata in termini di una funzione di distanza. Minore è la distanza, maggiore è la probabilità che due elementi appartengano allo stesso cluster. Nel caso dell'algoritmo **hard c-means** si sceglie un numero $c$ di cluster, si distribuiscono in modo randomico i centri e si procede all'assegnamento dei punti più vicini ai centri dei rispettivi cluster. Successivamente si aggiorna la posizione dei centri tramite il calcolo del centro di gravità. Si ripete il processo fino a quando la posizione si stabilizza. La partizione in cluster ottenuta è ottimale quando la somma delle distanze tra i centri e gli elementi è minima. <br />
+Un problema di questo approccio è che l'algoritmo può rimanere bloccato in minimi locali. Per ovviare a questo inconveniente, solitamente si fanno varie iterazioni e se ne sceglie la migliore. Un diverso problema è quello che discende dal fatto che la partizione è crisp. Qualora, infatti, esista un elemento equidistante da due centri, l'assegnamento ad uno dei due cluster è puramente arbitrario e non rispecchia l'informazione fornita dai dati. Il **fuzzy clustering** fornisce una soluzione a questo problema. Introducendo un concetto di appartenenza non binario ma continuo in $[0,1]$, il fuzzy clustering offre la possibilità di esprimere l'appartenenza di un punto a più di un cluster. Il risultato sarà una partizione del dataset in fuzzy set. E' possibile rappresentare questa partizione attraverso una matrice che assegna ad ogni componente $u_{ij}$ il grado di appartenenza del punto $x_j$ al fuzzy set $\Gamma_i$, in simboli $u_{ij} = \mu_{\Gamma_i}(x_j)$.<br />
+Esistono due tipi di fuzzy clustering: quello **probabilistico** e quello **possibilistico**. La differenza giace nelle condizioni imposte alla funzione di appartenenza.<br />
+Nel caso *probabilistico* si avrà che: 
+1) $\sum_{j=1}^{n} u_{ij} > 0, \quad \forall i \in \{1,\dots,c \}$;
+2) $\sum_{i=1}^{c} u_{ij} = 1, \quad \forall j \in \{1,\dots,n \}$.
+
+La prima condizione sta ad indicare che non possono esistere cluster vuoti. La seconda, invece, indica che l'appartenenza è esaurita dall'insieme dei fuzzy set che costituiscono la partizione.<br />
+Nel caso **possibilistico** si mantiene solo la prima assunzione e si lascia cadere la seconda. L'interpretazione possibilistica è da preferire quando si ha a che fare con dati pieni di rumore o outlier.
 
 ----------------------------------------------------------------
 
 #### Problemi con il fuzzy clustering ####
-Come facciamo a sapere se la partizione in cluster operata dal nostro algoritmo rispecchia l'informazione implicita nei dati? Quale è l'ottimo numero di cluster per un dataset? Nel caso in cui abbiamo un numero limitato di dimensioni, possiamo rappresentare visivamente il dataset e avere un'intuizione di quanti centri avere e in quali posizioni collocarli. In generale, tuttavia, non è questo il caso. Per questo occorre definire una misura della qualità del clustering operato dall'algoritmo. Alcuni criteri da ricercare sono: una chiara separazione tra i cluster, minimo volume dei cluster, massimo numero di punti concentrati vicino al centro del cluster. In letteratura sono state proposte varie misure di questo tipo:
-1.  *Partition coefficient*:
-    $PC = \frac{1}{n}\sum_{i=1}^{c} \sum_{j=1}^{n} u_{ij}^2$;
-2.  *Average partition density*:
-    $APD = \frac{1}{c} \sum_{i=1}^c \frac{\sum_{j \in Y_i} u_{ij}}{\sqrt{|\sum_i|}}$;
-3.  *Partition entropy*:
-    $PE = \sum_{i=1}^{c} \sum_{j=1}^{n} u_{ij} \log u_{ij}$.
+Come è possibile sapere se la partizione in cluster operata da un algoritmo rispecchia l'informazione implicita nei dati? Qual è l'ottimo numero di cluster per un dataset? Nel caso in cui si abbia un numero limitato di dimensioni, è possibile rappresentare visivamente il dataset ed avere un'intuizione di quanti centri avere, oltre che in quali posizioni collocarli. In generale, tuttavia, non è questo il caso. Per questo occorre definire una misura della qualità del clustering operato tramite l'algoritmo.<br />
+Alcuni criteri da ricercare sono: una chiara separazione tra i cluster, minimo volume dei cluster, massimo numero di punti concentrati vicino al centro del cluster. In letteratura sono state proposte varie misure di questo tipo:
+1) **Partition coefficient**: $PC = \frac{1}{n}\sum_{i=1}^{c} \sum_{j=1}^{n} u_{ij}^2$;
+2) **Average partition density**: $APD = \frac{1}{c} \sum_{i=1}^c \frac{\sum_{j \in Y_i} u_{ij}}{\sqrt{|\sum_i|}}$;
+3) **Partition entropy**: $PE = \sum_{i=1}^{c} \sum_{j=1}^{n} u_{ij} \log u_{ij}$.
 
 ----------------------------------------------------------------
 
 #### Varianti ####
-La misura di distanza più intuitiva è quella euclidea, ma questa ha l'inconveniente di permettere solo cluster sferici. Alcune varianti sono state proposte per rilassarne i vincoli. Nell'algoritmo di *Gustafson-Kessel* la distanza euclidea è sostituita con quella di *Mahalanobis* definita rispetto ad un cluster $\Gamma_i$ come:
+La misura di distanza più intuitiva è quella euclidea, ma questa ha l'inconveniente di permettere solo cluster sferici. Alcune varianti sono state proposte per rilassarne i vincoli. Nell'algoritmo di **Gustafson-Kessel** la distanza euclidea è sostituita con quella di **Mahalanobis** definita rispetto ad un cluster $\Gamma_i$ come:
 $$d^2(x_j,C_j) = (x_j - c_i)^T \sum_i^{-1} (x_j - c_i)$$
 
-dove $\sum_i$ è la matrice covariante del cluster $i$. Questo algoritmo è preferito nel caso il clustering sia utilizzato per la generazione automatica di fuzzy rule per i controller. La dimensione dei vari cluster può variare a seconda del determinate della matrice (solitamente le dimensioni dei vari cluster sono le stesse e il determinante è uguale a 1). In generale l'algoritmo di Gustafson-Kessel estrae più informazioni dell'algoritmo standard, ma è anche più sensibile ad una corretta inizializzazione. Può essere utile per decidersi su una buona inizializzazione, procedere preliminarmente con alcune iterazioni dell'algoritmo standard. Data la presenza dell'inversione della matrice questo algoritmo è più costoso di quello standard e difficile da applicare a grossi dataset. Restringersi a cluster che risultano distribuiti lungo una retta parallela rispetto agli assi riduce il costo computazionale. Un altro approccio è quello di permettere cluster di forma non convessa. 
+dove $\sum_i$ è la matrice covariante del cluster $i$. Questo algoritmo è preferito nel caso in cui il clustering sia utilizzato per la generazione automatica di fuzzy rule per i controller. La dimensione dei vari cluster può variare a seconda del determinate della matrice (solitamente le dimensioni dei vari cluster sono le stesse e il determinante è uguale a 1). In generale, l'algoritmo di Gustafson-Kessel estrae più informazioni dell'algoritmo standard ma è anche più sensibile ad una corretta inizializzazione. Può essere utile, al fine di ottenere una buona inizializzazione, procedere preliminarmente con alcune iterazioni dell'algoritmo standard. Data la presenza dell'inversione della matrice, questo algoritmo è più costoso di quello standard e difficile da applicare a grossi dataset. Restringersi a cluster che risultano distribuiti lungo una retta parallela rispetto agli assi riduce il costo computazionale. Un altro approccio è quello di permettere cluster di forma non convessa. 
+
 ![[images/shellcluster.png]]
 
-Gli algoritmi di *shell clustering* fanno proprio questo e sono particolarmente utili per il riconoscimento di immagini e la loro analisi. Nella Figura [32](#fig:34){reference-type="ref" reference="fig:34"} si elencano alcuni esempi di questo genere di algoritmo. Un altro approccio presente in letteratura è quello del *kernel-based clustering* che è utile qualora si abbia a che fare con dati non-vettoriali come sequenze, alberi o grafi. Questo metodo si basa su una mappa $\phi: \chi \to \mathbb{H}$, dove $\mathbb{H}$ è uno spazio di Hilbert e $\chi$ è lo spazio degli input. I dati così mappati non vengono utilizzati direttamente, ma solo attraverso il loro prodotto interno (la cui esistenza ci è garantita in quanto siamo in uno spazio di Hilbert). Si definisce per questo una funzione kernel $k$ tale che:
+Gli algoritmi di **shell clustering** svolgono esattamente questo e sono particolarmente utili per il riconoscimento di immagini e la loro analisi. Un altro approccio presente in letteratura è quello del **kernel-based clustering**, il quale è utile qualora si abbia a che fare con dati non-vettoriali come sequenze, alberi o grafi. Questo metodo si basa su una mappa $\phi: \chi \to \mathbb{H}$, dove $\mathbb{H}$ è uno spazio di Hilbert e $\chi$ è lo spazio degli input. I dati così mappati non vengono utilizzati direttamente, ma solo attraverso il loro prodotto interno (la cui esistenza ci è garantita in quanto ci si trova in uno spazio di Hilbert). Si definisce per questo una funzione kernel $k$ tale che:
 
 $$k: \chi \times \chi \to \mathbb{R}, \forall x,x' \in \chi: <\phi(x),\phi(x')> = k(x,x')$$
 
-A differenza degli altri algoritmi di clustering non estrae dai dati dei prototipi per i singoli cluster, ma computa una relazione di somiglianza tra i vari input. I centri sono combinazioni lineari dei dati mappati in $\mathbb{H}$:
+A differenza degli altri algoritmi di clustering, questa funzione non estrae dai dati dei prototipi per i singoli cluster, ma computa una relazione di somiglianza tra i vari input. I centri sono combinazioni lineari dei dati mappati in $\mathbb{H}$:
 
 $$c_i^{\phi} = \sum_{r=1}^n a_{ir} \phi(x_r)$$
 
-Alcuni svantaggi sono costiuiti dalla difficoltà nella scelta di una adeguata funzione kernel e dei parametri, e la mancanza di una esplicita rappresentazione dei singoli cluster. Un ultimo tipo di algoritmo è quello detto di *noise clustering*. Questi algoritmi aggiungono un cluster $c$ che rappresenta tutti quei dati corrotti dal rumore o in altro modo non associabili a nessun altro cluster (outlier etc.). Il centro del cluster $c$ è scelto in modo da avere distanza costante da tutti i punti del dataset.
+Alcuni svantaggi sono causati dalla difficoltà nella scelta di un'adeguata funzione kernel e dei parametri oltre che dalla mancanza di un'esplicita rappresentazione dei singoli cluster.<br />
+Un ultimo tipo di algoritmo è quello detto di **noise clustering**. Questi algoritmi aggiungono un cluster $c$, il quale rappresenta tutti quei dati corrotti dal rumore o in altro modo non associabili a nessun altro cluster (outlier etc.). Il centro del cluster $c$ è scelto in modo da avere distanza costante da tutti i punti del dataset.
 
 ----------------------------------------------------------------
 
 #### Random set ####
-Se fin ad adesso abbiamo applicato tecniche fuzzy a dati crisp, ora vogliamo estendere queste tecniche in modo da comprendere descrizioni di dati fuzzy. Per fare questo occorre introdurre il concetto di *random set*. Nel trattamento statistico standard dei dati la loro analisi è basata su variabili random, ovvero una funzione misurabile da uno spazio di probabilità ad un insieme $U$ (solitamente l'insieme $\mathbb{R}$). Un random set è una generalizzazione di questa idea, nel senso che il valore della funzione non sarà più un elemento dell'insieme $U$, bensì un suo sottoinsieme. Data una funzione $\Gamma: \Omega \to 2^U$, alcuni utili concetti da definire sono quello di *limite superiore di probabilità* (in simboli $P^*(A)$) il quale indica la proporzione di elementi la cui immagine \"tocca\" un certo sottoinsieme di $U$:
+Se finora si sono applicate tecniche fuzzy a dati crisp, ora si vogliono estendere queste tecniche in modo da comprendere descrizioni di dati fuzzy. Per fare ciò occorre introdurre il concetto di **random set**. Nel trattamento statistico standard dei dati, la loro analisi è basata su variabili random, ovvero su una funzione misurabile da uno spazio di probabilità ad un insieme $U$ (solitamente l'insieme $\mathbb{R}$). Un random set è una generalizzazione di questa idea, nel senso che il valore della funzione non sarà più un elemento dell'insieme $U$, bensì un suo sottoinsieme.<br />
+Data una funzione $\Gamma: \Omega \to 2^U$, alcuni utili concetti da definire sono quello di **limite superiore di probabilità** (in simboli $P^*(A)$), il quale indica la proporzione di elementi la cui immagine "tocca" un certo sottoinsieme di $U$:
 
 $$P^*(A) = P(\{ \omega \in \Omega | \Gamma (\omega) \cap A \neq \emptyset \})$$
 
-e quello di *limite inferiore di probabilità* (in simboli $P_*(A)$) che indica la proporzione di elementi la cui immagine è interamente contenuta in un dato sottoinsieme di $U$:
+e quello di **limite inferiore di probabilità** (in simboli $P_*(A)$), il quale indica la proporzione di elementi la cui immagine è interamente contenuta in un dato sottoinsieme di $U$:
 
 $$P_*(A) = P(\{ \omega \in \Omega | \Gamma (\omega) \subseteq A \text{ e } \Gamma(\omega) \neq \emptyset \})$$
 
-Attraverso questi strumenti possiamo analizzare dati descritti in modo fuzzy. Possiamo associare, infatti, ad ogni elemento della mappa una probabilità attesa $E(\Gamma)$ di modo che:
+Attraverso questi strumenti, è possibile analizzare dati descritti in modo fuzzy. E', Inoltre, è possibile associare ad ogni elemento della mappa una probabilità attesa $E(\Gamma)$ in modo che:
 
 $$E(\Gamma) = \{ E(X) | X(\omega) \in \Gamma(\omega) \text{ e la } X \text{ è una variabile randomica tale che } E(X), \forall \omega \in \Omega \}$$
 
-Possiamo generalizzare ancora il nostro approccio permettendo alla funzione $\Gamma$ di mappare gli input in un insieme fuzzy.
+Si è in grado di generalizzare ancora l'approccio, permettendo alla funzione $\Gamma$ di mappare gli input in un insieme fuzzy.
 
 ----------------------------------------------------------------
 
 ### Fuzzy neural network ###
-A differenza delle reti neurali, i fuzzy system hanno a che fare con il ragionamento ad alto livello, non si adattano al nuovo ambiente, usano informazioni linguistiche relative al dominio e non si basano sui dati. I *fuzzy neural network* combinano la computazione parallela e le capacità di apprendimento delle reti neurali con la rappresentazione ad alto livello dei sistemi fuzzy. Questo permette di avere una interpretazione più perspicua dello stato interno della rete neurale durante la computazione.<br />
+A differenza delle reti neurali, i fuzzy system hanno a che fare con il ragionamento ad alto livello, non si adattano al nuovo ambiente ma usano informazioni linguistiche relative al dominio e non si basano sui dati. I **fuzzy neural network** combinano la computazione parallela e le capacità di apprendimento delle reti neurali con la rappresentazione ad alto livello dei sistemi fuzzy. Questo permette di avere una interpretazione più perspicua dello stato interno della rete neurale durante la computazione.<br />
 Vi sono due modalità in cui i sistemi fuzzy e le reti neurali possono collaborare:
--   modello *cooperativo*: i due sistemi lavorano indipendentemente. La rete neurale genera certi parametri (offline) o li ottimizza (online) per il fuzzy controller;
--   modello *ibrido*: i fuzzy set e le regole fuzzy sono mappate all'interno di una rete neurale. Le due strutture sono integrate e non si richiede l'overhead di comunicazione. Sia l'apprendimento offline che online sono disponibili.
+-   modello **cooperativo**: i due sistemi lavorano indipendentemente. La rete neurale genera certi parametri (offline) o li ottimizza (online) per il fuzzy controller;
+-   modello **ibrido**: i fuzzy set e le regole fuzzy sono mappate all'interno di una rete neurale. Le due strutture sono integrate e non si richiede l'overhead di comunicazione. Sia l'apprendimento offline che online sono disponibili.
 
-Nella modalità ibrida, i fuzzy set che appaiono negli antecedenti delle regole fuzzy, possono essere modellati sia come pesi delle connessioni tra neuroni, oppure come funzione di attivazione dei neuroni stessi. Nel primo caso, i neuroni del primo strato rappresentano la regola. Nel secondo, i neuroni del primo strato rappresentano l'insieme di input, mentre quelli del secondo la regola.
+Nella modalità ibrida, i fuzzy set che appaiono negli antecedenti delle regole fuzzy possono essere modellati sia come pesi delle connessioni tra neuroni, oppure come funzione di attivazione dei neuroni stessi. Nel primo caso, i neuroni del primo strato rappresentano la regola. Nel secondo, i neuroni del primo strato rappresentano l'insieme di input, mentre quelli del secondo la regola.
 
 ----------------------------------------------------------------
 
 ### Algoritmo ###
-Un insieme di regole fuzzy può essere tradotto in una rete neuraletramite la seguente procedura:
-1. Per ogni variabile di input $x_i$ si crea un neurone nel layer di input;
-2. Per ogni variabile di output $y_i$ si crea un neurone nel layer di output;
-3. Per ogni fuzzy set $\mu_i^j$ si crea un neurone nel primo layer hidden e lo si connette al neurone di input corrispondente a $x_i$;
-4. Per ogni regola fuzzy $R_i$ si crea un neurone nel secondo layer hidden e si specifica una T-norma per calcolare l'antecedente della regola;
-5. Si connette ogni neurone ai neuroni che rappresentano i fuzzy set degli antecedenti della loro regola corrispondente;
+Un insieme di regole fuzzy può essere tradotto in una rete neurale tramite la seguente procedura:
+1) Per ogni variabile di input $x_i$, si crea un neurone nel layer di input;
+2) Per ogni variabile di output $y_i$, si crea un neurone nel layer di output;
+3) Per ogni fuzzy set $\mu_i^j$, si crea un neurone nel primo layer hidden e lo si connette al neurone di input corrispondente a $x_i$;
+4) Per ogni regola fuzzy $R_i$, si crea un neurone nel secondo layer hidden e si specifica una T-norma per calcolare l'antecedente della regola;
+5) Si connette ogni neurone ai neuroni che rappresentano i fuzzy set degli antecedenti della loro regola corrispondente;
 
-A questo punto l'algoritmo diverge a seconda di quale tipo di controller
-si voglia utilizzare:
-- nel caso del Mamdani--Assilian controller, si connette ogni neurone \"regola\" al neurone di output corrispondente al dominio del conseguente nella regola fuzzy. Come peso della connessione si sceglie il fuzzy set del conseguente della regola fuzzy;
-- nel caso del Takagi--Sugeno--Kang controller, per ogni neurone \"regola\" si crea un gemello che computa la funzione di output della corrispondente regola fuzzy e gli si connettono tutti i neuroni di input.
+A questo punto l'algoritmo diverge a seconda di quale tipo di controller si voglia utilizzare:
+- nel caso del Mamdani-Assilian controller, si connette ogni neurone "regola" al neurone di output corrispondente al dominio del conseguente nella regola fuzzy. Come peso della connessione si sceglie il fuzzy set del conseguente della regola fuzzy;
+- nel caso del Takagi-Sugeno-Kang controller, per ogni neurone "regola" si crea un gemello che computa la funzione di output della corrispondente regola fuzzy e gli si connettono tutti i neuroni di input.
 
 Il network così costruito può essere allenato grazie alla backpropagation.
 
