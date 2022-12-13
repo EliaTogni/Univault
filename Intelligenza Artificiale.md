@@ -877,7 +877,7 @@ Sia $\mu$ un fuzzy set definito rispetto al dominio del discorso $X$ e sia $\alp
 $$[\mu]_\alpha = \{x \in X | \mu(x) \geq \alpha \}$$
 
 è chiamato **alpha-cut** dell'insieme $\mu$.<br />
-Nel caso in cui l'insieme $\mu$ sia una funzione convessa, qualsiasi suo alpha-cut sarà un intervallo unico. Se, invece, l'insieme non è convesso, almeno uno dei suoi alpha-cut consisterà in due intervalli disgiunti.<br />
+Nel caso in cui l'insieme $\mu$ sia una funzione convessa, qualsiasi suo alpha-cut sarà un intervallo unico. Se, invece, l'insieme non è convesso, almeno uno dei suoi alpha-cut consisterà in intervalli disgiunti.<br />
 Alcune proprietà degli alpha-cut sono le seguenti:
 1) $[\mu]_0 = X$;
 2) $\alpha \leq \beta \implies [\mu]_\alpha \supseteq [\mu]_\beta$;
@@ -886,6 +886,8 @@ Alcune proprietà degli alpha-cut sono le seguenti:
 Da queste proprietà deriva la proprietà di ciascun insieme fuzzy di poter essere descritto specificando una famiglia di alpha-cut, come illustra il teorema seguente.<br />
 Sia $\mu$ un fuzzy set. Allora:
 $$\mu(x) = \sup \{\alpha \in [0,1] \quad \vert \quad  x \in [\mu]_\alpha\}$$
+
+Per determinare il grado di appartenenza di un elemento, viene considerato l'alpha-cut superiore al quale l'elemento appartiene.
 
 ![[images/alpha_cut.png]]
 
@@ -1274,47 +1276,47 @@ Il network così costruito può essere allenato grazie alla backpropagation.
 ## Algoritmi evolutivi ##
 
 ### Introduzione ###
-Un *problema di ottimizzazione* può essere descritto da una tripla $(\Omega,f,\prec)$ dove $\Omega$ è lo spazio di ricerca, $f$ è una funzione di valutazione della forma $f:\Omega \to \mathbb{R}$ e $\prec$ un preordine. L'insieme $H \subseteq \Omega$ tale che:
+Un **problema di ottimizzazione** può essere descritto da una tripla $(\Omega,f,\prec)$, dove $\Omega$ è lo spazio di ricerca, $f$ è una funzione di valutazione della forma $f:\Omega \to \mathbb{R}$ e $\prec$ un preordine. L'insieme $H \subseteq \Omega$ tale che:
 
 $$H = \{ x \in \Omega | \forall x' \in \Omega: f(x) \succeq f(x') \}$$
 
-è definito l'insieme degli *ottimi globali*. Dato un problema di questo genere la sua soluzione sta nel fornire un elemento che appartiene all'insieme $H$. In letteratura sono stati proposti vari metodi di soluzione per i problemi di ottimizzazione:
+è definito l'insieme degli **ottimi globali**. Dato un problema di questo genere, la sua soluzione sta nel fornire un elemento il quale appartenga all'insieme $H$. In letteratura sono stati proposti vari metodi di soluzione per i problemi di ottimizzazione:
 -   Soluzioni analitiche;
 -   Brute-forcing;
 -   Random search;
 -   Ricerca guidata.
 
-Tutti questi metodi hanno delle criticità o sono applicabili solo ad alcuni tipi di funzione. Gli *algoritmi evolutivi* rispondono a questo problema adottando una strategia innovativa. Tali algoritmi sono direttamente ispirati alla teoria della evoluzione biologica i cui principi fondamentali sono:
-1.  Tratti vantaggiosi che sono risultato di mutazioni casuali tendono ad essere favoriti dalla selezione naturale;
-2.  Gli individui che mostrano questi tratti vantaggiosi hanno migliori opportunità di procreare e moltiplicarsi;
+Tutti questi metodi hanno delle criticità o sono applicabili solo ad alcuni tipi di funzione. Gli **algoritmi evolutivi** rispondono a questo problema adottando una strategia innovativa. Tali algoritmi sono direttamente ispirati alla teoria della evoluzione biologica, i cui principi fondamentali sono:
+1) tratti vantaggiosi che sono risultato di mutazioni casuali tendono ad essere favoriti dalla selezione naturale;
+2) gli individui che mostrano questi tratti vantaggiosi hanno migliori opportunità di procreare e moltiplicarsi.
 
 Gli elementi di un algoritmo evolutivo sono:
-1.  una *codifica* per i candidati: dipende molto dal problema in e non esistono regole generali;
-2.  un metodo per creare una *popolazione iniziale*: di solito si crea casualmente;
-3.  creare una *funzione di fitness* per valutare i candidati: rappresenta l'ambiente e spesso è la stessa funzione da ottimizzare;
-4.  dei *metodi di selezione* in relazione ai valori di fitness: si scelgono così gli individui che dovranno procreare nella successiva generazione;
-5.  un insieme di *operatori genetici* che modifichino i cromosomi: i due più usati sono quello di a) *mutazione*, che modifica in modo random i cromosomi e quello di b) *crossover* che ricombina i cromosomi dei genitori per creare la prole;
-6.  alcuni parametri come *dimensione della popolazione*, *probabilità di mutazione*, etc;
-7.  una *condizione di terminazione*: numero di generazioni, approssimazione all'ottimo, etc;
+1) una **codifica** per i candidati: dipende molto dal problema in e non esistono regole generali;
+2) un metodo per creare una **popolazione iniziale**: di solito si crea casualmente;
+3) creare una **funzione di fitness** per valutare i candidati: rappresenta l'ambiente e spesso è la stessa funzione da ottimizzare;
+4) dei **metodi di selezione** in relazione ai valori di fitness: si scelgono così gli individui che dovranno procreare nella successiva generazione;
+5) un insieme di **operatori genetici** che modifichino i cromosomi: i due più usati sono quello di **mutazione**, il quale modifica in modo random i cromosomi e quello di **crossover**, il quale ricombina i cromosomi dei genitori per creare la prole;
+6) alcuni parametri come **dimensione della popolazione**, **probabilità di mutazione**, etc;
+7) una **condizione di terminazione**: numero di generazioni, approssimazione all'ottimo, etc;
 
 ----------------------------------------------------------------
 
 ### Definizione formale ###
-Per ogni problema di ottimizzazione occorre separare lo spazio dei *fenotipi* $\Omega$ (ovvero, come l'individuo appare) da quello dei *genotipi* $\Gamma$ (ovvero, come l'individuo è rappresentato dalla codifica scelta). La funzione di fitness sarà definita sui fenotipi, dove, invece, gli operatori genetici agiranno sui genotipi. Per valutare i cambiamenti nel genotipo sarà necessario provvedere una funzione di
+Per ogni problema di ottimizzazione occorre separare lo spazio dei **fenotipi** $\Omega$ (ovvero, come l'individuo appare) da quello dei **genotipi** $\Gamma$ (ovvero, come l'individuo è rappresentato dalla codifica scelta). La funzione di fitness sarà definita sui fenotipi, dove, invece, gli operatori genetici agiranno sui genotipi. Per valutare i cambiamenti nel genotipo sarà necessario provvedere una funzione di
 *decodifica* $dec: \Gamma \to \Omega$.
 
-Ogni *individuo* $A$ è rappresentato da un tupla $(A.G, A.S, A.F)$ contenente il genotipo ($A.G \in \Gamma$), informazioni e parametri addizionali $A.S \in Z$ e la valutazione dello stesso rispetto alla funzione di fintess $A.F = f(dec(A.G))$.
-L'operatore di *mutazione* è definito come una mappa:
+Ogni **individuo** $A$ è rappresentato da un tupla $(A.G, A.S, A.F)$ contenente il genotipo ($A.G \in \Gamma$), informazioni e parametri addizionali $A.S \in Z$ e la valutazione dello stesso rispetto alla funzione di fitness $A.F = f(dec(A.G))$.
+L'operatore di **mutazione** è definito come una mappa:
 
 $$Mut^{\xi} : \Gamma \times Z \to \Gamma \times Z$$
 
 dove $\xi$ è un numero randomicamente generato.
-L'operatore di *ricombinazione* avente $r \geq 2$ genitori e $s \geq 1$ figli è definito come una mappa:
+L'operatore di **ricombinazione** avente $r \geq 2$ genitori e $s \geq 1$ figli è definito come una mappa:
 
 $$Rek^\xi : (\Gamma \times Z)^r \to (\Gamma \times Z)^s$$
 
 dove $\xi$ è un numero randomicamente generato.<br />
-L'operatore di *selezione* ci permette di scegliere grazie ai valori di fitness tra una popolazione di $r$ individui un numero $s$ di individui che continueranno la specie. Sia $P = \{\ A_1, \dots, A_r \}$ la popolazione di individui allora l'operatore di selezione avrà la forma:
+L'operatore di **selezione** permette di scegliere grazie ai valori di fitness tra una popolazione di $r$ individui un numero $s$ di individui che continueranno la specie. Sia $P = \{\ A_1, \dots, A_r \}$ la popolazione di individui. Allora l'operatore di selezione avrà la forma:
 
 $$Sel^\xi : (\Gamma \times Z \times \mathbb{R})^r \to (\Gamma \times Z \times \mathbb{R})^s$$
 $$A_{i \quad 1 \leq i \leq r} \mapsto A_{IS^\xi (c_1,\dots,c_r)_k \quad 1 \leq k \leq s }$$
