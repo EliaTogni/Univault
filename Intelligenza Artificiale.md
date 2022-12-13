@@ -919,7 +919,7 @@ Un insieme fuzzy $\mu$ è un **numero fuzzy** se e solo se $\mu$ è normale e $[
 
 ### Logica fuzzy ###
 Un importante risultato della logica classica sostiene l'esistenza di un isomorfismo tra la logica proposizionale su un insieme finito di variabili e la teoria degli insiemi finiti. Entrambi questi sistemi, inoltre, possono essere dimostrati isomorfi ad un'algebra booleana finita. Questo permette di definire gli operatori insiemistici di unione, intersezione e complementare utilizzando i classici operatori logici di congiunzione, disgiunzione e negazione. Un discorso simile vale per la logica fuzzy, ovvero la logica che ha come insieme di valori di verità l'intero intervallo reale $[0,1]$. Una volta ridefiniti gli operatori logici booleani al fine di adattarli alla nuova semantica, sarà possibile utilizzarli per costruire sopra di essi una teoria degli operatori insiemistici "fuzzy".<br />
-Siano $\mu$ e $\mu'$, possiamo definire gli operatori della logica fuzzy come segue:
+Siano $\mu$ e $\mu'$ due insiemi fuzzy. E' possibile, quindi, definire gli operatori della logica fuzzy come segue:
 1.  $\neg \mu \doteq 1 - \mu(x)$;
 2.  $\mu \wedge \mu' \doteq \min\{\mu(x),\mu'(x)\}$;
 3.  $\mu \vee \mu' \doteq \max\{\mu(x),\mu'(x)\}$.
@@ -928,8 +928,8 @@ Siano $\mu$ e $\mu'$, possiamo definire gli operatori della logica fuzzy come se
 
 ----------------------------------------------------------------
 
-### Negazione stretta e forte ###
-In generale, esistono vari modi di definire la negazione in una logica fuzzy. L'unico requisito è che la definizione rispetti tre proprietà che, intuitivamente, ogni negazione deve possedere:
+### Complemento fuzzy / negazione fuzzy ###
+In generale, esistono vari modi di definire il complemento in una logica fuzzy. L'unico requisito è che la definizione rispetti tre proprietà che, intuitivamente, ogni complemento deve possedere:
 1.  $\neg(0) = 1$;
 2.  $\neg(1) = 0$;
 3.  $x \leq y \implies \neg x \geq \neg y$.
@@ -948,7 +948,7 @@ Una negazione si definisce **forte** se e solo se è stretta e involutiva.
 ----------------------------------------------------------------
 
 ### T-norme e t-conorme ###
-Come la negazione, sia l'intersezione che l'unione fuzzy possono essere definite in diversi modi. Entrambe devono, tuttavia, soddisfare alcune proprietà di base che le definiscono rispettivamente come **t-norme** e **t-conorme**.
+Come la negazione, sia l'intersezione che l'unione fuzzy possono essere definite in diversi modi. Al fine di fare ciò, si introducono di seguito i concetti di **t-norma** e **t-conorma**.
 
 Una funzione $\top : [0,1]^2 \to [0,1]$ si definisce **t-norma** se e solo se soddisfa le seguenti proprietà:
 1) $\top(x,1) = x$;
@@ -962,6 +962,8 @@ Una funzione $\bot: [0,1]^2 \to [0,1]$ si definisce **t-conorma** se e solo se s
 3) **associativa** $\bot(x,\bot(y,z)) = \bot(\bot(x,y),z)$;
 4) **monotonicità** $y \leq z \implies \bot(x,y) \leq \bot(x,z)$.
 
+Se nell'insiemistica classica, un elemento $x \in X$ appartiene all'intersezione di due insiemi $M_{1}$ e $M_2$ se e solo se $x \in M_1 \wedge x \in M_2$, nella logica fuzzy il grado appartenenza all'intersezione di due insiemi fuzzy è dato dalla t-norma del grado di appartenenza dell'elemento ai due insiemi fuzzy.<br />
+Analogamente, un elemento $x \in X$ appartiene all'unione di due insiemi $M_{1}$ e $M_2$ se e solo se $x \in M_1 \vee x \in M_2$, nella logica fuzzy il grado appartenenza all'unione di due insiemi fuzzy è dato dalla t-conorma del grado di appartenenza dell'elemento ai due insiemi fuzzy.<br />
 Le definizioni di intersezione e unione date in termini di $\max$ e $\min$ soddisfano queste proprietà. Si può mostrare come l'operazione di minimo sia la più grande t-norma e il massimo la più piccola t-conorma. In aggiunta a queste, possono essere date altre definizioni di intersezione ed unione come, per esempio, quella in termini di prodotto e somma probabilistica:
 $$\top_{prod}(x,y) = x \cdot y$$
 $$\bot_{sum} (x,y) = x + y - x \cdot y$$
