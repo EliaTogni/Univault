@@ -962,8 +962,14 @@ Una funzione $\bot: [0,1]^2 \to [0,1]$ si definisce **t-conorma** se e solo se s
 3) **associativa** $\bot(x,\bot(y,z)) = \bot(\bot(x,y),z)$;
 4) **monotonicità** $y \leq z \implies \bot(x,y) \leq \bot(x,z)$.
 
-Se nell'insiemistica classica, un elemento $x \in X$ appartiene all'intersezione di due insiemi $M_{1}$ e $M_2$ se e solo se $x \in M_1 \wedge x \in M_2$, nella logica fuzzy il grado appartenenza all'intersezione di due insiemi fuzzy è dato dalla t-norma del grado di appartenenza dell'elemento ai due insiemi fuzzy.<br />
-Analogamente, un elemento $x \in X$ appartiene all'unione di due insiemi $M_{1}$ e $M_2$ se e solo se $x \in M_1 \vee x \in M_2$, nella logica fuzzy il grado appartenenza all'unione di due insiemi fuzzy è dato dalla t-conorma del grado di appartenenza dell'elemento ai due insiemi fuzzy.<br />
+Se nell'insiemistica classica, un elemento $x \in X$ appartiene all'intersezione di due insiemi $M_{1}$ e $M_2$ se e solo se $x \in M_1 \wedge x \in M_2$, nella logica fuzzy il grado appartenenza all'intersezione di due insiemi fuzzy $\mu$ e $\mu'$ è dato dalla t-norma del grado di appartenenza dell'elemento ai due insiemi fuzzy
+
+$$( \mu  \cup \mu')(x) = \top(\mu(x), \mu'(x))$$
+
+Analogamente, un elemento $x \in X$ appartiene all'unione di due insiemi $M_{1}$ e $M_2$ se e solo se $x \in M_1 \vee x \in M_2$, nella logica fuzzy il grado appartenenza all'unione di due insiemi fuzzy è dato dalla t-conorma del grado di appartenenza dell'elemento ai due insiemi fuzzy
+
+$$( \mu  \cap \mu')(x) = \bot(\mu(x), \mu'(x))$$
+
 Le definizioni di intersezione e unione date in termini di $\max$ e $\min$ soddisfano queste proprietà. Si può mostrare come l'operazione di minimo sia la più grande t-norma e il massimo la più piccola t-conorma. In aggiunta a queste, possono essere date altre definizioni di intersezione ed unione come, per esempio, quella in termini di prodotto e somma probabilistica:
 $$\top_{prod}(x,y) = x \cdot y$$
 $$\bot_{sum} (x,y) = x + y - x \cdot y$$
@@ -1123,12 +1129,18 @@ Data una relazione $R(X,X)$, si definisce una **relazione di equivalenza** se e 
 
 ![[images/fuzzycontroller.png]]
 
-Un'applicazione di queste idee la quale ha riscosso particolare successo riguarda i cosiddetti **fuzzy controller**. Il concetto su cui si basa il fuzzy control è quello di definire transizioni non-lineari tra i diversi stati del sistema, senza specificare un insieme di equazioni differenziali per ogni variabile. Questo permette di modellare sistemi complessi le cui dinamiche possono sfuggire ad un'analisi matematicamente precisa.<br />
-La **fuzzyfication interface** riceve i valori in input e si occupa di convertirli in un dominio adeguato (termini linguistici o fuzzy set). La **knowledge base** consiste di dati che contengono informazioni riguardo intervalli, trasformazioni di dominio e a quali insiemi fuzzy corrisponderanno i termini linguistici, e regole che contengono i controlli del tipo **if-then**. La **decision logic** rappresenta l'unità processore, la quale si occupa di computare l'output in base all'input misurato e la knowledge base. Infine, la **defuzzification interface** si occupa di mappare i valori fuzzy, output della computazione, in valori booleani, i quali sono poi inviati come segnali al controllo del sistema.
+Un'applicazione dei sistemi fuzzy che ha riscosso particolare successo riguarda i cosiddetti **fuzzy controller**.<br />
+Il concetto su cui si basa il fuzzy control è quello di definire un controller non-lineare basato su tabelle tra i diversi stati del sistema, dove la sua funzione di transizione non-lineare può essere definita senza specificare ogni singola entry della tabella. Questo permette di modellare sistemi complessi le cui dinamiche possono sfuggire ad un'analisi matematicamente precisa.<br />
+La **fuzzification interface** riceve i valori in input e si occupa di convertirli in un dominio adeguato (termini linguistici o fuzzy set). La **knowledge base** consiste di dati che contengono informazioni riguardo intervalli, trasformazioni di dominio e a quali insiemi fuzzy corrisponderanno i termini linguistici, oltre che regole le quali contengono i controlli del tipo **if-then**. La **decision logic** rappresenta l'unità processore, la quale si occupa di computare l'output in base all'input misurato ed alla knowledge base. Infine, la **defuzzification interface** si occupa di mappare i valori fuzzy, output della computazione, in valori booleani, i quali sono poi inviati come segnali al controllo del sistema.
 
 ----------------------------------------------------------------
 
-### Defuzzification ###
+#### Fuzzification ####
+La **fuzzification** è il processo utilizzato da tutti i fuzzy controller al fine di trasformare un input netto in un valore fuzzy. Tipicamente, il componente incaricato di questa task è la **fuzzification interface**, della quale l'architetto del controller definisce, basandosi sulla conoscenza dell'ambiente, le funzioni di appartenenza che verranno utilizzate per valutare gli input.
+
+----------------------------------------------------------------
+
+#### Defuzzification ####
 Il processo di **defuzzificazione** è il processo usato da tutti i fuzzy controller al fine di trasformare l'output fuzzy, prodotto dal decision logic component, in un valore preciso, il quale possa essere usato dal controller per prendere una decisione. In letteratura, i metodi più comuni sono:
 1) **Max Criterion Method** (MCM): questa tecnica si basa sullo scegliere il valore di output $y$ tale per cui $\mu(x_1,...,x_n)$ raggiunga il massimo grado di appartenenza. Il MCM comporta, come vantaggi, la facilità di computazione ed il fatto che sia sempre applicabile. D'altro canto, se valori multipli hanno lo stesso valore di output, sarà comunque necessario sceglierne solo uno (per esempio randomicamente). In questo modo non si ha un comportamento deterministico;
 2) **Mean of Maxima** (MOM): al fine di risolvere il non determinismo della tecnica precedente, è possibile considerare tutti i valori $y_i$ per cui $\mu(x_1, ..., x_n)$ raggiunge il massimo grado di appartenenza e calcolare, poi, la loro media. Il MOM comporta, come vantaggi, la facilità di computazione ed il fatto che abbia comportamento deterministico ma, come svantaggio, non è sempre applicabile (infatti, il set di $y_i$ deve essere necessariamente un intervallo e deve esistere un insieme di valori misurabili);
