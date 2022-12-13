@@ -978,7 +978,8 @@ O ancora, come prodotto e somma drastica:
 $$\top_{-1}(x,y) = \begin{cases}
                 \min(x,y) \quad \text{se } \max(x+y) = 1 \\
                 0 \quad \text{ altrimenti}  
-                \end{cases}$$ $$\bot_{-1}(x,y) = \begin{cases}
+                \end{cases}$$
+ $$\bot_{-1}(x,y) = \begin{cases}
                 \max(x,y) \quad \text{se } \min(x+y) = 0 \\
                 0 \quad \text{ altrimenti}  
                 \end{cases}$$
@@ -1123,20 +1124,15 @@ Data una relazione $R(X,X)$, si definisce una **relazione di equivalenza** se e 
 ![[images/fuzzycontroller.png]]
 
 Un'applicazione di queste idee la quale ha riscosso particolare successo riguarda i cosiddetti **fuzzy controller**. Il concetto su cui si basa il fuzzy control è quello di definire transizioni non-lineari tra i diversi stati del sistema, senza specificare un insieme di equazioni differenziali per ogni variabile. Questo permette di modellare sistemi complessi le cui dinamiche possono sfuggire ad un'analisi matematicamente precisa.<br />
-La **fuzzyfication interface** riceve i valori in input e si occupa di convertirli in un dominio adeguato (termini linguistici o fuzzy set). La **knowledge base** consiste di dati che contengono informazioni riguardo intervalli, trasformazioni di dominio e a quali insiemi fuzzy corrisponderanno i termini linguistici, e regole che contengono i controlli del tipo **if-then**. La **decision logic** rappresenta l'unità processore, la quale si occupa di computare l'output in base all'input misurato e la knowledge base. Infine, la **defuzzification interface** si occupa di mappare i valori fuzzy, usati nella computazione, in valori booleani, i quali sono poi inviati come segnali al controllo del sistema.
+La **fuzzyfication interface** riceve i valori in input e si occupa di convertirli in un dominio adeguato (termini linguistici o fuzzy set). La **knowledge base** consiste di dati che contengono informazioni riguardo intervalli, trasformazioni di dominio e a quali insiemi fuzzy corrisponderanno i termini linguistici, e regole che contengono i controlli del tipo **if-then**. La **decision logic** rappresenta l'unità processore, la quale si occupa di computare l'output in base all'input misurato e la knowledge base. Infine, la **defuzzification interface** si occupa di mappare i valori fuzzy, output della computazione, in valori booleani, i quali sono poi inviati come segnali al controllo del sistema.
 
 ----------------------------------------------------------------
 
 ### Defuzzification ###
-La mappatura dei segnali fuzzy interni al controller in segnali booleani utili a controllare il sistema può essere operata in svariati modi. In letteratura, i metodi più comuni sono:
-1) **Max Criterion Method** (MCM);
-2) **Mean of Maxima** (MOM);
-3) **Center of Gravity** (COG).
-
-Il MCM sceglie un valore arbitrario $y \in Y$ per il quale si raggiunge il massimo valore di appartenenza. Ha l'indubbio vantaggio di essere applicabile a qualsiasi fuzzy set e a domini $Y$ arbitrari. Può, tuttavia, essere difficile individuare l'elemento per il quale viene massimizzata la funzione di appartenenza. Inoltre, la scelta di valori casuali rende non deterministico il comportamento del controller e questo può
-portare ad azioni discontinue.<br />
-Il MOM prende $Y$ come intervallo e ne calcola l'insieme $Y_{MAX}$ tale che l'output in quei punti sia massimo (l'insieme deve essere non vuoto e misurabile). Il valore di output sarà calcolato come la media su $Y_{MAX}$. Come nel caso precedente, questa tecnica può portare ad azioni discontinue.<br />
-Il COG, preso $Y$ come un intervallo, restituisce in output il centro dell'area. Solitamente ha un comportamento regolare, anche se la computazione è onerosa e può condurre a risultati controintuitivi.
+Il processo di **defuzzificazione** è il processo usato da tutti i fuzzy controller al fine di trasformare l'output fuzzy, prodotto dal decision logic component, in un valore preciso, il quale possa essere usato dal controller per prendere una decisione. In letteratura, i metodi più comuni sono:
+1) **Max Criterion Method** (MCM): questa tecnica si basa sullo scegliere il valore di output $y$ tale per cui $\mu(x_1,...,x_n)$ raggiunga il massimo grado di appartenenza. Il MCM comporta, come vantaggi, la facilità di computazione ed il fatto che sia sempre applicabile. D'altro canto, se valori multipli hanno lo stesso valore di output, sarà comunque necessario sceglierne solo uno (per esempio randomicamente). In questo modo non si ha un comportamento deterministico;
+2) **Mean of Maxima** (MOM): al fine di risolvere il non determinismo della tecnica precedente, è possibile considerare tutti i valori $y_i$ per cui $\mu(x_1, ..., x_n)$ raggiunge il massimo grado di appartenenza e calcolare, poi, la loro media. Il MOM comporta, come vantaggi, la facilità di computazione ed il fatto che abbia comportamento deterministico ma, come svantaggio, non è sempre applicabile (infatti, il set di $y_i$ deve essere necessariamente un intervallo e deve esistere un insieme di valori misurabili);
+3) **Center of Gravity** (COG): l'ultima tecnica considera tutti i valori di output, invece di considerare l'insieme massimo $Y$, e calcola la somma dei valori di output, ciascuno di essi moltiplicato per il grado di appartenenza diviso per la totale dei gradi di appartenenza. Il vantaggio di questa tecnica consiste nel considerare tutti i valori così da ottenere un comportamento molto più preciso ma, di contro, ha elevati costi computazionali ed il risultato può non essere intuitivo.
 
 ----------------------------------------------------------------
 
