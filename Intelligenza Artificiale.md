@@ -811,8 +811,8 @@ Questa speciale forma di error backpropagation è chiamata **error backpropagati
 ## Sistemi fuzzy ##
 ### Introduzione alla logica fuzzy ###
 #### Motivazioni ####
-La logica classica si fonda sul **principio di bivalenza**, la quale sostiene che una proposizione possa assumere solo due valori di verità: il valore **vero** o il valore **falso**. Questa assunzione può essere adeguata nel caso in cui l'interesse sia modellare concetti chiari e distinti che hanno definizioni precise, come nel caso dei concetti matematici. Quando, invece, si vuole formalizzare la conoscenza implicita nel linguaggio naturale é possibile imbattersi in alcune proposizioni che sono vere (o false) **in una certa misura**, oppure proprietà che hanno estensioni sfumate. Termini di utilizzo comune come "veloce", "grande", "piccolo" e così dicendo rendono impossibile decidere se un valore dato soddisfi o meno un concetto di tale vaghezza. Uno dei motivi per cui sussiste questa problematica è che questi concetti vaghi sono tipicamente dipendenti dal contesto. La logica fuzzy e la teoria insiemistica che da questa discende permette di ragionare in questi contesti, in modo da sfruttare a proprio vantaggio la vaghezza insita nell'uso che viene fatto delle parole nel linguaggio naturale.<br />
-Bisogna, tuttavia, prestare attenzione a non confondere l'imprecisione con l'**incertezza**. L'incertezza si riferisce alla possibilità che un evento accada o meno. Può anche fare riferimento al valore di verità associato ad una proposizione. Il valore numerico associato all'accadimento di un evento incerto si chiama [[Statistica e Probabilità |probabilità]] ed è studiato dalla branca della matematica omonima. La differenza tra appartenenza fuzzy e probabilità sta nel fatto che la probabilità rimane comunque un fenomeno booleano: un evento può accadere o non accadere; dove, invece, l'appartenenza fuzzy si riferisce a quanto una proprietà venga soddisfatta da un oggetto.
+La logica classica si fonda sul **principio di bivalenza**, il quale sostiene che una proposizione possa assumere solo due valori di verità: il valore **vero** o il valore **falso**. Questa assunzione può essere adeguata nel caso in cui l'interesse sia modellare concetti chiari e distinti che hanno definizioni precise, come nel caso dei concetti matematici. Quando, invece, si vuole formalizzare la conoscenza implicita nel linguaggio naturale é possibile imbattersi in alcune proposizioni che sono vere (o false) **in una certa misura**, oppure proprietà che hanno estensioni sfumate. Termini di utilizzo comune come "veloce", "grande", "piccolo" e così dicendo rendono impossibile decidere se un valore dato soddisfi o meno un concetto di tale vaghezza. Uno dei motivi per cui sussiste questa problematica è che questi concetti vaghi sono tipicamente dipendenti dal contesto. La logica fuzzy e la teoria insiemistica che da questa discende permette di ragionare in questi contesti, in modo da sfruttare a proprio vantaggio la vaghezza insita nell'uso che viene fatto delle parole nel linguaggio naturale.<br />
+Bisogna, tuttavia, prestare attenzione a non confondere l'imprecisione con l'**incertezza**. L'incertezza si riferisce alla possibilità che un evento accada o meno. Può anche fare riferimento al valore di verità associato ad una proposizione. Il valore numerico associato all'accadimento di un evento incerto si chiama [[Statistica e Probabilità |probabilità]] ed è studiato dalla branca della matematica omonima. La differenza tra appartenenza fuzzy e probabilità sta nel fatto che la probabilità rimane comunque un fenomeno booleano: un evento può accadere o non accadere, dove, invece, l'appartenenza fuzzy si riferisce a quanto una proprietà venga soddisfatta da un oggetto.
 
 ----------------------------------------------------------------
 
@@ -820,7 +820,7 @@ Bisogna, tuttavia, prestare attenzione a non confondere l'imprecisione con l'**i
 Un insieme classico è una collezione di elementi che possono (o meno) appartenere all'insieme. I set fuzzy, invece, sono in grado di gestire l'appartenenza parziale.<br />
 Per tanto, mentre un insieme classico (o insieme crispy) può essere definito a partire da una funzione caratteristica che assegna ad ogni elemento nel dominio del discorso il valore 1 se questo elemento appartiene all'insieme oppure 0 altrimenti, un **insieme fuzzy** può essere visto come una generalizzazione di questo concetto.
 
-Dato un dominio del discorso $X$, un insieme fuzzy $\mu$ è una funzione $\mu : X \to [0,1]$ la quale assegna ad ogni elemento un **grado di appartenenza** $\mu(x)$ rispetto all'insieme $\mu$.
+Dato un dominio del discorso $X$, un insieme fuzzy $\mu$ è una funzione $\mu : X \to [0,1]$ la quale assegna ad ogni elemento $x \in X$ un **grado di appartenenza** $\mu(x)$ rispetto all'insieme $\mu$.
 
 Queste funzioni sono scelte a seconda del contesto di utilizzo e i gradi di appartenenza sono fissati per convenzione all'intervallo $[0, 1]$ ma non è obbligatorio. la funzione di appartenenza potrebbe avere un intervallo arbitrario come immagine.<br />
 E' possibile vedere i fuzzy set come interfacce tra espressioni lingustiche e loro rappresentazioni numeriche. Ad esempio, si voglia fornire un modello formale alla proprietà "essere alto per un bambino di 4 anni". Per farlo, si definirà un insieme fuzzy $\mu_{tall}$ attraverso una funzione sigmoide, tale per cui apparterranno **massimamente** all'estensione della proprietà i bambini più alti di 1.5 m e **massimamente** al di fuori dall'estensione quelli più bassi di 0.7 m. Tutti gli altri apparterranno all'insieme con un certo grado.
@@ -918,18 +918,18 @@ Un insieme fuzzy $\mu$ è un **numero fuzzy** se e solo se $\mu$ è normale e $[
 ----------------------------------------------------------------
 
 ### Logica fuzzy ###
-Un importante risultato della logica classica sostiene l'esistenza di un isomorfismo tra la logica proposizionale su un insieme finito di variabili e la teoria degli insiemi finiti. Entrambi questi sistemi, inoltre, possono essere dimostrati isomorfi ad un'algebra booleana finita. Questo permette di definire gli operatori insiemistici di unione, intersezione e complementare utilizzando i classici operatori logici di congiunzione, disgiunzione e negazione. Un discorso simile vale per la logica fuzzy, ovvero la logica che ha come insieme di valori di verità l'intero intervallo reale $[0,1]$. Una volta ridefiniti gli operatori logici booleani al fine di adattarli alla nuova semantica, sarà possibile utilizzarli per costruire sopra di essi una teoria degli operatori insiemistici "fuzzy".<br />
+Un importante risultato della logica classica sostiene l'esistenza di un isomorfismo tra la logica proposizionale su un insieme finito di variabili e la teoria degli insiemi finiti. Entrambi questi sistemi, inoltre, possono essere dimostrati isomorfi ad un'algebra booleana finita. Questo permette di definire gli operatori insiemistici di intersezione, unione e complementare utilizzando rispettivamente i classici operatori logici di congiunzione, disgiunzione e negazione. Un discorso simile vale per la logica fuzzy, ovvero la logica che ha come insieme di valori di verità l'intero intervallo reale $[0,1]$. Una volta ridefiniti gli operatori logici booleani al fine di adattarli alla nuova semantica, sarà possibile utilizzarli per costruire sopra di essi una teoria degli operatori insiemistici "fuzzy".<br />
 Siano $\mu$ e $\mu'$ due insiemi fuzzy. E' possibile, quindi, definire gli operatori della logica fuzzy come segue:
-1.  $\neg \mu \doteq 1 - \mu(x)$;
-2.  $\mu \wedge \mu' \doteq \min\{\mu(x),\mu'(x)\}$;
-3.  $\mu \vee \mu' \doteq \max\{\mu(x),\mu'(x)\}$.
+1.  $\neg \mu(x) \doteq 1 - \mu(x)$;
+2.  $(\mu \wedge \mu')(x) \doteq \min\{\mu(x),\mu'(x)\}$;
+3.  $(\mu \vee \mu')(x) \doteq \max\{\mu(x),\mu'(x)\}$.
 
 ![[images/fuzzyop.png]]
 
 ----------------------------------------------------------------
 
 ### Complemento fuzzy / negazione fuzzy ###
-In generale, esistono vari modi di definire il complemento in una logica fuzzy. L'unico requisito è che la definizione rispetti tre proprietà che, intuitivamente, ogni complemento deve possedere:
+In generale, esistono vari modi di definire il complementare in una logica fuzzy. L'unico requisito è che la definizione rispetti tre proprietà che, intuitivamente, ogni complemento deve possedere:
 1.  $\neg(0) = 1$;
 2.  $\neg(1) = 0$;
 3.  $x \leq y \implies \neg x \geq \neg y$.
@@ -962,13 +962,13 @@ Una funzione $\bot: [0,1]^2 \to [0,1]$ si definisce **t-conorma** se e solo se s
 3) **associativa** $\bot(x,\bot(y,z)) = \bot(\bot(x,y),z)$;
 4) **monotonicità** $y \leq z \implies \bot(x,y) \leq \bot(x,z)$.
 
-Se nell'insiemistica classica, un elemento $x \in X$ appartiene all'intersezione di due insiemi $M_{1}$ e $M_2$ se e solo se $x \in M_1 \wedge x \in M_2$, nella logica fuzzy il grado appartenenza all'intersezione di due insiemi fuzzy $\mu$ e $\mu'$ è dato dalla t-norma del grado di appartenenza dell'elemento ai due insiemi fuzzy
+Se nell'insiemistica classica un elemento $x \in X$ appartiene all'intersezione di due insiemi $M_{1}$ e $M_2$ se e solo se $x \in M_1 \wedge x \in M_2$, nella logica fuzzy il grado appartenenza all'intersezione di due insiemi fuzzy $\mu$ e $\mu'$ è dato dalla t-norma del grado di appartenenza dell'elemento ai due insiemi fuzzy
 
-$$( \mu  \cup \mu')(x) = \top(\mu(x), \mu'(x))$$
+$$( \mu  \cap \mu')(x) = \top(\mu(x), \mu'(x))$$
 
-Analogamente, un elemento $x \in X$ appartiene all'unione di due insiemi $M_{1}$ e $M_2$ se e solo se $x \in M_1 \vee x \in M_2$, nella logica fuzzy il grado appartenenza all'unione di due insiemi fuzzy è dato dalla t-conorma del grado di appartenenza dell'elemento ai due insiemi fuzzy
+Analogamente, se nell'insiemistica classica un elemento $x \in X$ appartiene all'unione di due insiemi $M_{1}$ e $M_2$ se e solo se $x \in M_1 \vee x \in M_2$, nella logica fuzzy il grado appartenenza all'unione di due insiemi fuzzy è dato dalla t-conorma del grado di appartenenza dell'elemento ai due insiemi fuzzy
 
-$$( \mu  \cap \mu')(x) = \bot(\mu(x), \mu'(x))$$
+$$( \mu  \cup \mu')(x) = \bot(\mu(x), \mu'(x))$$
 
 Le definizioni di intersezione e unione date in termini di $\max$ e $\min$ soddisfano queste proprietà. Si può mostrare come l'operazione di minimo sia la più grande t-norma e il massimo la più piccola t-conorma. In aggiunta a queste, possono essere date altre definizioni di intersezione ed unione come, per esempio, quella in termini di prodotto e somma probabilistica:
 $$\top_{prod}(x,y) = x \cdot y$$
@@ -1131,7 +1131,7 @@ Data una relazione $R(X,X)$, si definisce una **relazione di equivalenza** se e 
 
 Un'applicazione dei sistemi fuzzy che ha riscosso particolare successo riguarda i cosiddetti **fuzzy controller**.<br />
 Il concetto su cui si basa il fuzzy control è quello di definire un controller non-lineare basato su tabelle tra i diversi stati del sistema, dove la sua funzione di transizione non-lineare può essere definita senza specificare ogni singola entry della tabella. Questo permette di modellare sistemi complessi le cui dinamiche possono sfuggire ad un'analisi matematicamente precisa.<br />
-La **fuzzification interface** riceve i valori in input e si occupa di convertirli in un dominio adeguato (termini linguistici o fuzzy set). La **knowledge base** consiste di dati che contengono informazioni riguardo intervalli, trasformazioni di dominio e a quali insiemi fuzzy corrisponderanno i termini linguistici, oltre che regole le quali contengono i controlli del tipo **if-then**. La **decision logic** rappresenta l'unità processore, la quale si occupa di computare l'output in base all'input misurato ed alla knowledge base. Infine, la **defuzzification interface** si occupa di mappare i valori fuzzy, output della computazione, in valori booleani, i quali sono poi inviati come segnali al controllo del sistema.
+La **fuzzification interface** riceve i valori in input e si occupa di convertirli in un dominio adeguato (termini linguistici o fuzzy set). La **knowledge base** è composta da data base e rule base. La prima consiste di informazioni riguardanti intervalli, trasformazioni di dominio e a quali insiemi fuzzy corrisponderanno i termini linguistici. La seconda consiste di controlli del tipo **if-then** (i.e. "if temperature is **very high** and pressure is **slightly low**, then heat change should be **slightly negative**"). La **decision logic** rappresenta l'unità processore, la quale si occupa di computare l'output in base all'input misurato ed alla knowledge base. Infine, la **defuzzification interface** si occupa di mappare i valori fuzzy, output della computazione, in valori booleani, i quali sono poi inviati come segnali al controllo del sistema.
 
 ----------------------------------------------------------------
 
@@ -1149,12 +1149,18 @@ Il processo di **defuzzificazione** è il processo usato da tutti i fuzzy contro
 ----------------------------------------------------------------
 
 ### Mamdani controller ###
-Il primo modello di fuzzy controller è il cosiddetto **Mamdani controller**, sviluppato nel 1975 da Mamdani e Assilian. Questo controller è basato su una serie di regole del tipo "if $X$ is $M_n$, then $Y$ is $N_m$" dove $M_n$ e $N_m$ sono intervalli che rappresentano termini linguistici. Sebbene le regole siano della forma **if-then**, non devono essere interpretate tanto come implicazioni logiche quanto definizione parziali di una funzione. Collettivamente, le regole possono essere rappresentate nello spazio come l'unione $S$ dei vari intervalli:
+Il primo modello di fuzzy controller è il cosiddetto **Mamdani controller**, sviluppato nel 1975 da Mamdani e Assilian. Questo controller è basato su un insieme finito $\mathbf{R}$ di regole **if-then** $R \in \mathbf{R}$ della forma
 
-$$S = \cup M_i \times N_i$$
+$$R: \text{ If }x_1 \text{ is } \mu_{R}^{(1)} \text{ and } \dots \text{ and } x_n \text{ is } \mu_{R}^{(n)} \text{, then } y \text{ is } \mu_R$$
+
+$x_1, \dots, x_n$ sono variabili di input del controller e $y$ è il valore di output. Solitamente gli insiemi fuzzy $\mu_{R}^{(i)}$ identificano valori linguistici, cioè concetti vaghi (i.e. altezza media, ecc.) i quali sono rappresentati da insiemi fuzzy.<br />
+Nonostante le regole siano formulate nella forma di if-then statements, non devono essere interpretati come implicazioni logiche quanto come funzioni definite a tratti. 
 
 Le regole possono assumere come valori intervalli **crisp**, oppure valori fuzzy.<br />
-In ogni caso, dato un input $x_0$ l'ouput verrà calcolato come la composta del singoletto di $x_0$ e l'unione degli intervalli $S$ (in simboli, $\{x_0\} \circ S$). Questo output sarà un fuzzy set il quale rappresenterà solo una vaga o imprecisa descrizione dell'output desiderato. Per determinare il vero valore di output, l'output preliminare dovrà essere defuzzificato. Nel caso del Mamdani controller si utilizza il metodo COG, il quale permette di trovare un compromesso rispetto ai singoli output delle regole.
+Questo controller necessita di tre fasi fondamentali:
+1) la fase di fuzzificazione, nella quale l'input crisp esterno viene trasformato in un grado di appartenenza agli insiemi fuzzy dalle differenti regole del controller;
+2) al fine di calcolare la funzione di output, è necessario calcolare per ogni regola il valore minimo tra il grado di appartenenza del vettore di input 
+3) la fase di defuzzificazione, utilizzata per tornare ad un valore crispy dall'insieme fuzzy. Il metodo utilizzato nel c
 
 ![[images/rulesfuzzy.png]]
 
