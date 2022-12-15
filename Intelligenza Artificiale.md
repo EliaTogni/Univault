@@ -1131,7 +1131,7 @@ Data una relazione $R(X,X)$, si definisce una **relazione di equivalenza** se e 
 
 Un'applicazione dei sistemi fuzzy che ha riscosso particolare successo riguarda i cosiddetti **fuzzy controller**.<br />
 Il concetto su cui si basa il fuzzy control è quello di definire un controller non-lineare basato su tabelle tra i diversi stati del sistema, dove la sua funzione di transizione non-lineare può essere definita senza specificare ogni singola entry della tabella. Questo permette di modellare sistemi complessi le cui dinamiche possono sfuggire ad un'analisi matematicamente precisa.<br />
-La **fuzzification interface** riceve i valori in input e si occupa di convertirli in un dominio adeguato (termini linguistici o fuzzy set). La **knowledge base** è composta da data base e rule base. La prima consiste di informazioni riguardanti intervalli, trasformazioni di dominio e a quali insiemi fuzzy corrisponderanno i termini linguistici. La seconda consiste di controlli del tipo **if-then** (i.e. "if temperature is **very high** and pressure is **slightly low**, then heat change should be **slightly negative**"). La **decision logic** rappresenta l'unità processore, la quale si occupa di computare l'output in base all'input misurato ed alla knowledge base. Infine, la **defuzzification interface** si occupa di mappare i valori fuzzy, output della computazione, in valori booleani, i quali sono poi inviati come segnali al controllo del sistema.
+La **fuzzification interface** riceve i valori in input e si occupa di convertirli in un dominio adeguato (termini linguistici o fuzzy set). La **knowledge base** è composta da data base e rule base. La prima consiste di informazioni riguardanti intervalli, trasformazioni di dominio e a quali insiemi fuzzy corrisponderanno i termini linguistici. La seconda consiste di controlli del tipo **if-then** (i.e. "if temperature is **very high** and pressure is **slightly low**, then heat change should be **slightly negative**"). La **decision logic** rappresenta l'unità processore, la quale si occupa di computare l'output in base all'input misurato ed alla knowledge base. Infine, la **defuzzification interface** si occupa di mappare i valori fuzzy, output della computazione, in valori booleani, i quali sono poi inviati come segnali al controller del sistema.
 
 ----------------------------------------------------------------
 
@@ -1144,7 +1144,7 @@ La **fuzzification** è il processo utilizzato da tutti i fuzzy controller al fi
 Il processo di **defuzzificazione** è il processo usato da tutti i fuzzy controller al fine di trasformare l'output fuzzy, prodotto dal decision logic component, in un valore preciso, il quale possa essere usato dal controller per prendere una decisione. In letteratura, i metodi più comuni sono:
 1) **Max Criterion Method** (MCM): questa tecnica si basa sullo scegliere il valore di output $y$ tale per cui $\mu(x_1,...,x_n)$ raggiunga il massimo grado di appartenenza. Il MCM comporta, come vantaggi, la facilità di computazione ed il fatto che sia sempre applicabile. D'altro canto, se valori multipli hanno lo stesso valore di output, sarà comunque necessario sceglierne solo uno (per esempio randomicamente). In questo modo non si ha un comportamento deterministico;
 2) **Mean of Maxima** (MOM): al fine di risolvere il non determinismo della tecnica precedente, è possibile considerare tutti i valori $y_i$ per cui $\mu(x_1, ..., x_n)$ raggiunge il massimo grado di appartenenza e calcolare, poi, la loro media. Il MOM comporta, come vantaggi, la facilità di computazione ed il fatto che abbia comportamento deterministico ma, come svantaggio, non è sempre applicabile (infatti, il set di $y_i$ deve essere necessariamente un intervallo e deve esistere un insieme di valori misurabili);
-3) **Center of Gravity** (COG): l'ultima tecnica considera tutti i valori di output, invece di considerare l'insieme massimo $Y$, e calcola la somma dei valori di output, ciascuno di essi moltiplicato per il grado di appartenenza diviso per la totale dei gradi di appartenenza. Il vantaggio di questa tecnica consiste nel considerare tutti i valori così da ottenere un comportamento molto più preciso ma, di contro, ha elevati costi computazionali ed il risultato può non essere intuitivo.
+3) **Center of Gravity** (COG): l'ultima tecnica considera tutti i valori di output, invece di considerare l'insieme massimo $Y$, e calcola la somma dei valori di output, ciascuno di essi moltiplicato per il grado di appartenenza diviso per il totale dei gradi di appartenenza. Il vantaggio di questa tecnica consiste nel considerare tutti i valori così da ottenere un comportamento molto più preciso ma, di contro, ha elevati costi computazionali ed il risultato può non essere intuitivo.
 
 ----------------------------------------------------------------
 
@@ -1154,13 +1154,13 @@ Il primo modello di fuzzy controller è il cosiddetto **Mamdani controller**, sv
 $$R: \text{ If }x_1 \text{ is } \mu_{R}^{(1)} \text{ and } \dots \text{ and } x_n \text{ is } \mu_{R}^{(n)} \text{, then } y \text{ is } \mu_R$$
 
 $x_1, \dots, x_n$ sono variabili di input del controller e $y$ è il valore di output. Solitamente gli insiemi fuzzy $\mu_{R}^{(i)}$ identificano valori linguistici, cioè concetti vaghi (i.e. altezza media, ecc.) i quali sono rappresentati da insiemi fuzzy.<br />
-Nonostante le regole siano formulate nella forma di if-then statements, non devono essere interpretati come implicazioni logiche quanto come funzioni definite a tratti. 
+Nonostante le regole siano formulate nella forma di if-then statements, non devono essere interpretate come implicazioni logiche quanto come funzioni definite a tratti. 
 
 Le regole possono assumere come valori intervalli **crisp**, oppure valori fuzzy.<br />
 Questo controller necessita di tre fasi fondamentali:
 1) la fase di fuzzificazione, nella quale l'input crisp esterno viene trasformato in un grado di appartenenza agli insiemi fuzzy dalle differenti regole del controller;
-2) al fine di calcolare la funzione di output, è necessario calcolare per ogni regola il valore minimo tra il grado di appartenenza del vettore di input 
-3) la fase di defuzzificazione, utilizzata per tornare ad un valore crispy dall'insieme fuzzy. Il metodo utilizzato nel c
+2) al fine di calcolare la funzione di output, è necessario calcolare per ogni regola il valore minimo tra i gradi di appartenenza del vettore di input delle differenti componenti delle regole e salvare poi il cut off nella rispettiva output rule. Successivamente, per ogni valore del dominio dell'output, si sceglie il massimo tra i cut off ottenuti nello step precedente; 
+3) la fase di defuzzificazione, utilizzata per tornare ad un valore crispy dall'insieme fuzzy. Il metodo utilizzato può essere MCM, MOM o COG.
 
 ![[images/rulesfuzzy.png]]
 
@@ -1170,12 +1170,12 @@ Questo controller necessita di tre fasi fondamentali:
 
 ----------------------------------------------------------------
 
-### Takagi-Sugeno controller ###
-Questo controller può essere visto come una modifica ed uno sviluppo del controller precedente. Nello stesso modo del Mamdani controller, i valori di input vengono descritti da fuzzy set. Tuttavia, il conseguente di una regola non sarà a sua volta un fuzzy set, ma una funzione che ha come argomenti le variabili di input (generalmente, una funzione lineare).
+### Takagi-Sugeno-Kang controller ###
+Questo controller può essere visto come una modifica ed uno sviluppo del controller precedente. Nello stesso modo del Mamdani controller, i valori di input vengono descritti da fuzzy set. Tuttavia, l'output di una regola non sarà a sua volta un fuzzy set, ma sarà dato da una funzione che ha come argomenti le variabili di input (generalmente, una funzione lineare).
 
 $$R : \text{ if } x_1 \text{ is } \mu_1 \text{ and } \dots \text{ and } x_n \text{ is } \mu_n, \text{ then } y = f(x_1,\dots,x_n)$$
 
-L'idea è che quella funzione sia una buona funzione di controllo per la regione descritta dall'antecedente. Per mantenere la leggibilità del modello così prodotto, occorre evitare sovrapposizioni tra le varie regioni descritte nell'antecedente delle regole. Siccome l'ouput viene calcolato, è già crisp e non occorre defuzzificarlo.
+L'output di ogni regola è dato da una funzione che prende gli input come parametri. Questo porta ad una gestione del calcolo dell'output differente, poichè ciascuno degli output sono valori crisp. In questo caso, è possibile defuzzificarli pesando ciascun'output delle regole con il corrispondente grado di appartenenza degli input, sommandoli e dividendo per la somma dei pesi. 
 
 ----------------------------------------------------------------
 
@@ -1184,7 +1184,7 @@ Vi è un'ultima tipologia di controller che utilizza il concetto di relazione di
 Una funzione $E: X^2 \to [0,1]$ è definita **relazione di somiglianza** rispetto ad una T-norma se e solo se soddisfa le seguenti condizioni:
 1) $E(x,x) = 1$;
 2) $E(x,y) = E(y,x)$;
-3) $\top (E(x,y),E(y,z)) = E(x,z)$.
+3) $\top (E(x,y),E(y,z)) \leq E(x,z)$.
 
 Questo genere di relazioni vengono utilizzate per tradurre l'informazione data dagli esperti in modo tale che le varie tuple coprano tutti i possibili comportamenti del sistema. Dalle classi di somiglianza, è possibile poi estrarre regole in tutto uguali a quelle valide per il Mamdani controller.
 
@@ -1198,11 +1198,11 @@ Ci sono due casistiche in cui si parla di **fuzzy data analysis**. Una di esse r
 ![[images/symmetricdata.png]]
 
 Il **fuzzy clustering** è una procedura di apprendimento non supervisionato che permette di dividere il dataset in modo che 
-1) oggetti nello stesso cluster siano quanto più possibili simili;
+1) oggetti nello stesso cluster siano quanto più possibile simili;
 2) oggetti in cluster diversi siano quanto più possibile dissimili. 
 
 La relazione di somiglianza è misurata in termini di una funzione di distanza. Minore è la distanza, maggiore è la probabilità che due elementi appartengano allo stesso cluster. Nel caso dell'algoritmo **hard c-means** si sceglie un numero $c$ di cluster, si distribuiscono in modo randomico i centri e si procede all'assegnamento dei punti più vicini ai centri dei rispettivi cluster. Successivamente si aggiorna la posizione dei centri tramite il calcolo del centro di gravità. Si ripete il processo fino a quando la posizione si stabilizza. La partizione in cluster ottenuta è ottimale quando la somma delle distanze tra i centri e gli elementi è minima. <br />
-Un problema di questo approccio è che l'algoritmo può rimanere bloccato in minimi locali. Per ovviare a questo inconveniente, solitamente si fanno varie iterazioni e se ne sceglie la migliore. Un diverso problema è quello che discende dal fatto che la partizione è crisp. Qualora, infatti, esista un elemento equidistante da due centri, l'assegnamento ad uno dei due cluster è puramente arbitrario e non rispecchia l'informazione fornita dai dati. Il **fuzzy clustering** fornisce una soluzione a questo problema. Introducendo un concetto di appartenenza non binario ma continuo in $[0,1]$, il fuzzy clustering offre la possibilità di esprimere l'appartenenza di un punto a più di un cluster. Il risultato sarà una partizione del dataset in fuzzy set. E' possibile rappresentare questa partizione attraverso una matrice che assegna ad ogni componente $u_{ij}$ il grado di appartenenza del punto $x_j$ al fuzzy set $\Gamma_i$, in simboli $u_{ij} = \mu_{\Gamma_i}(x_j)$.<br />
+Un problema di questo approccio è che l'algoritmo può rimanere bloccato in minimi locali. Per ovviare a questo inconveniente, solitamente si fanno varie iterazioni e se ne sceglie la migliore. Un diverso problema è quello che discende dal fatto che la partizione è crisp. Qualora, infatti, esista un elemento equidistante da due centri, l'assegnamento ad uno dei due cluster è puramente arbitrario e non rispecchia l'informazione fornita dai dati. Il **fuzzy clustering** fornisce una soluzione a questo problema. Introducendo un concetto di appartenenza non binario ma continuo in $[0,1]$, il fuzzy clustering offre la possibilità di esprimere l'appartenenza di un punto a più di un cluster. Il risultato sarà una partizione del dataset in fuzzy set. E' possibile rappresentare questa partizione attraverso una matrice che assegna ad ogni elemento della matrice $u_{ij}$ il grado di appartenenza del punto $x_j$ al fuzzy set $\Gamma_i$, in simboli $u_{ij} = \mu_{\Gamma_i}(x_j)$.<br />
 Esistono due tipi di fuzzy clustering: quello **probabilistico** e quello **possibilistico**. La differenza giace nelle condizioni imposte alla funzione di appartenenza.<br />
 Nel caso *probabilistico* si avrà che: 
 1) $\sum_{j=1}^{n} u_{ij} > 0, \quad \forall i \in \{1,\dots,c \}$;
@@ -1215,7 +1215,7 @@ Nel caso **possibilistico** si mantiene solo la prima assunzione e si lascia cad
 
 #### Problemi con il fuzzy clustering ####
 Come è possibile sapere se la partizione in cluster operata da un algoritmo rispecchia l'informazione implicita nei dati? Qual è l'ottimo numero di cluster per un dataset? Nel caso in cui si abbia un numero limitato di dimensioni, è possibile rappresentare visivamente il dataset ed avere un'intuizione di quanti centri avere, oltre che in quali posizioni collocarli. In generale, tuttavia, non è questo il caso. Per questo occorre definire una misura della qualità del clustering operato tramite l'algoritmo.<br />
-Alcuni criteri da ricercare sono: una chiara separazione tra i cluster, minimo volume dei cluster, massimo numero di punti concentrati vicino al centro del cluster. In letteratura sono state proposte varie misure di questo tipo:
+Alcuni criteri da ricercare sono: una chiara separazione tra i cluster, minimo volume dei cluster e massimo numero di punti concentrati vicino al centro del cluster. In letteratura sono state proposte varie misure di questo tipo:
 1) **Partition coefficient**: $PC = \frac{1}{n}\sum_{i=1}^{c} \sum_{j=1}^{n} u_{ij}^2$;
 2) **Average partition density**: $APD = \frac{1}{c} \sum_{i=1}^c \frac{\sum_{j \in Y_i} u_{ij}}{\sqrt{|\sum_i|}}$;
 3) **Partition entropy**: $PE = \sum_{i=1}^{c} \sum_{j=1}^{n} u_{ij} \log u_{ij}$.
@@ -1226,7 +1226,7 @@ Alcuni criteri da ricercare sono: una chiara separazione tra i cluster, minimo v
 La misura di distanza più intuitiva è quella euclidea, ma questa ha l'inconveniente di permettere solo cluster sferici. Alcune varianti sono state proposte per rilassarne i vincoli. Nell'algoritmo di **Gustafson-Kessel** la distanza euclidea è sostituita con quella di **Mahalanobis** definita rispetto ad un cluster $\Gamma_i$ come:
 $$d^2(x_j,C_j) = (x_j - c_i)^T \sum_i^{-1} (x_j - c_i)$$
 
-dove $\sum_i$ è la matrice covariante del cluster $i$. Questo algoritmo è preferito nel caso in cui il clustering sia utilizzato per la generazione automatica di fuzzy rule per i controller. La dimensione dei vari cluster può variare a seconda del determinate della matrice (solitamente le dimensioni dei vari cluster sono le stesse e il determinante è uguale a 1). In generale, l'algoritmo di Gustafson-Kessel estrae più informazioni dell'algoritmo standard ma è anche più sensibile ad una corretta inizializzazione. Può essere utile, al fine di ottenere una buona inizializzazione, procedere preliminarmente con alcune iterazioni dell'algoritmo standard. Data la presenza dell'inversione della matrice, questo algoritmo è più costoso di quello standard e difficile da applicare a grossi dataset. Restringersi a cluster che risultano distribuiti lungo una retta parallela rispetto agli assi riduce il costo computazionale. Un altro approccio è quello di permettere cluster di forma non convessa. 
+dove $\sum_i$ è la matrice covariante del cluster $i$. Questo algoritmo è preferito nel caso in cui il clustering sia utilizzato per la generazione automatica di fuzzy rule per i controller. La dimensione dei vari cluster può variare a seconda del determinante della matrice (solitamente le dimensioni dei vari cluster sono le stesse e il determinante è uguale a 1). In generale, l'algoritmo di Gustafson-Kessel estrae più informazioni dell'algoritmo standard ma è anche più sensibile ad una corretta inizializzazione. Può essere utile, al fine di ottenere una buona inizializzazione, procedere preliminarmente con alcune iterazioni dell'algoritmo standard. Data la presenza dell'inversione della matrice, questo algoritmo è più costoso di quello standard e difficile da applicare a grossi dataset. Restringersi a cluster che risultano distribuiti lungo una retta parallela rispetto agli assi riduce il costo computazionale. Un altro approccio è quello di permettere cluster di forma non convessa. 
 
 ![[images/shellcluster.png]]
 
@@ -1262,10 +1262,10 @@ Si è in grado di generalizzare ancora l'approccio, permettendo alla funzione $\
 ----------------------------------------------------------------
 
 ### Fuzzy neural network ###
-A differenza delle reti neurali, i fuzzy system hanno a che fare con il ragionamento ad alto livello, non si adattano al nuovo ambiente ma usano informazioni linguistiche relative al dominio e non si basano sui dati. I **fuzzy neural network** combinano la computazione parallela e le capacità di apprendimento delle reti neurali con la rappresentazione ad alto livello dei sistemi fuzzy. Questo permette di avere una interpretazione più perspicua dello stato interno della rete neurale durante la computazione.<br />
+A differenza delle reti neurali, i fuzzy system hanno a che fare con il ragionamento ad alto livello, non si adattano al nuovo ambiente ma usano informazioni linguistiche relative al dominio del discorso e non si basano sui dati. I **fuzzy neural network** combinano la computazione parallela e le capacità di apprendimento delle reti neurali con la rappresentazione ad alto livello dei sistemi fuzzy. Questo permette di avere un'interpretazione più perspicua dello stato interno della rete neurale durante la computazione.<br />
 Vi sono due modalità in cui i sistemi fuzzy e le reti neurali possono collaborare:
--   modello **cooperativo**: i due sistemi lavorano indipendentemente. La rete neurale genera certi parametri (offline) o li ottimizza (online) per il fuzzy controller;
--   modello **ibrido**: i fuzzy set e le regole fuzzy sono mappate all'interno di una rete neurale. Le due strutture sono integrate e non si richiede l'overhead di comunicazione. Sia l'apprendimento offline che online sono disponibili.
+- modello **cooperativo**: i due sistemi lavorano indipendentemente. La rete neurale genera certi parametri o li ottimizza per il fuzzy controller;
+- modello **ibrido**: i fuzzy set e le regole fuzzy sono mappate all'interno di una rete neurale. Le due strutture sono integrate e non si richiede l'overhead di comunicazione.
 
 Nella modalità ibrida, i fuzzy set che appaiono negli antecedenti delle regole fuzzy possono essere modellati sia come pesi delle connessioni tra neuroni, oppure come funzione di attivazione dei neuroni stessi. Nel primo caso, i neuroni del primo strato rappresentano la regola. Nel secondo, i neuroni del primo strato rappresentano l'insieme di input, mentre quelli del secondo la regola.
 
@@ -1280,7 +1280,7 @@ Un insieme di regole fuzzy può essere tradotto in una rete neurale tramite la s
 5) Si connette ogni neurone ai neuroni che rappresentano i fuzzy set degli antecedenti della loro regola corrispondente;
 
 A questo punto l'algoritmo diverge a seconda di quale tipo di controller si voglia utilizzare:
-- nel caso del Mamdani-Assilian controller, si connette ogni neurone "regola" al neurone di output corrispondente al dominio del conseguente nella regola fuzzy. Come peso della connessione si sceglie il fuzzy set del conseguente della regola fuzzy;
+- nel caso del Mamdani controller, si connette ogni neurone "regola" al neurone di output corrispondente al dominio del conseguente nella regola fuzzy. Come peso della connessione si sceglie il fuzzy set del conseguente della regola fuzzy;
 - nel caso del Takagi-Sugeno-Kang controller, per ogni neurone "regola" si crea un gemello che computa la funzione di output della corrispondente regola fuzzy e gli si connettono tutti i neuroni di input.
 
 Il network così costruito può essere allenato grazie alla backpropagation.
