@@ -1302,14 +1302,14 @@ $$H = \{ x \in \Omega | \forall x' \in \Omega: f(x) \succeq f(x') \}$$
 -   Random search;
 -   Ricerca guidata.
 
-Tutti questi metodi hanno delle criticità o sono applicabili solo ad alcuni tipi di funzione. Gli **algoritmi evolutivi** rispondono a questo problema adottando una strategia innovativa. Tali algoritmi sono direttamente ispirati alla teoria della evoluzione biologica, i cui principi fondamentali sono:
-1) tratti vantaggiosi che sono risultato di mutazioni casuali tendono ad essere favoriti dalla selezione naturale;
+Tutti questi metodi hanno delle criticità o sono applicabili solo ad alcuni tipi di funzione. Gli **algoritmi evolutivi** rispondono a questo problema adottando una strategia innovativa. Tali algoritmi sono direttamente ispirati alla teoria dell'evoluzione biologica, i cui principi fondamentali sono:
+1) tratti vantaggiosi, risultati di mutazioni casuali, tendono ad essere favoriti dalla selezione naturale;
 2) gli individui che mostrano questi tratti vantaggiosi hanno migliori opportunità di procreare e moltiplicarsi.
 
 Gli elementi di un algoritmo evolutivo sono:
-1) una **codifica** per i candidati: dipende molto dal problema in e non esistono regole generali;
-2) un metodo per creare una **popolazione iniziale**: di solito si crea casualmente;
-3) creare una **funzione di fitness** per valutare i candidati: rappresenta l'ambiente e spesso è la stessa funzione da ottimizzare;
+1) una **codifica** per i candidati in **cromosomi**, non in termini biologici ma in termini di oggetti computazionali, rappresentati da bit, stringhe, interi, etc...;
+2) un metodo per creare una **popolazione iniziale**, tramite un **algoritmo costruttivo**;
+3) creare una **funzione di fitness** per valutare i candidati, il cui valore risultante rappresenta la qualità dell'individuo;
 4) dei **metodi di selezione** in relazione ai valori di fitness: si scelgono così gli individui che dovranno procreare nella successiva generazione;
 5) un insieme di **operatori genetici** che modifichino i cromosomi: i due più usati sono quello di **mutazione**, il quale modifica in modo random i cromosomi e quello di **crossover**, il quale ricombina i cromosomi dei genitori per creare la prole;
 6) alcuni parametri come **dimensione della popolazione**, **probabilità di mutazione**, etc;
@@ -1344,40 +1344,40 @@ $$IS^\xi : \mathbb{R}^r \to \{ 1, \dots, r \}^s$$
 ![[images/evalg.png]]
 
 Siamo, ora, pronti a dare una definizione formale di algoritmo evolutivo:
-Un *algoritmo evolutivo* su un problema di ottimizzazione $P$ è una tupla $(\Gamma, dec, Mut, Rek, IS_{genitori}, IS_{ambiente}, \mu, \lambda)$, dove $\mu$ descrive il numero degli individui della generazione precedente e $\lambda$ descrive il numero di figli per generazione.
+Un **algoritmo evolutivo** su un problema di ottimizzazione $P$ è una tupla $(\Gamma, dec, Mut, Rek, IS_{genitori}, IS_{ambiente}, \mu, \lambda)$, dove $\mu$ descrive il numero degli individui della generazione precedente e $\lambda$ descrive il numero di figli per generazione.
 
 $$Rek : (\Gamma \times Z)^k \to (\Gamma \times Z)^{k'}$$
 $$IS_{genitori} : \mathbb{R}^\mu \to \{ 1, \dots, \mu \}^{\frac{k}{k'}\cdot \lambda} \quad \frac{k}{k'}\cdot \lambda \in \mathbb{N}$$
 $$IS_{ambiente} : \mathbb{R}^{\mu + \lambda} \to \{ 1, \dots, \mu + \lambda \}^\mu$$
 
 Vi è una distinzione che si può tracciare all'interno degli algoritmi evolutivi:
-- gli *algoritmi genetici*: dove la codifica è una sequenza binaria;
--  gli *algoritmi evolutivi* propriamente detti: dove la codifica dipende dal problema trattato e così gli operatori genetici;
+- gli **algoritmi genetici**: dove la codifica è una sequenza binaria;
+-  gli **algoritmi evolutivi propriamente detti**: dove la codifica dipende dal problema trattato e così gli operatori genetici;
 
 ----------------------------------------------------------------
 
 ### Meta-euristiche ###
-Una *meta-euristica* è un metodo algoritmico per trovare soluzioni approssimate di un problema di ottimizzazione combinatoria. Si definiscono sequenze astratte di passi che possono essere applicate a qualsiasi problema del genere. Ogni singolo passo deve poi essere declinato a seconda della specificità del problema. Il bisogno per un approccio meta-euristico nasce dal fatto che alcune classi di problemi non hanno una efficiente soluzione algoritmica. L'approssimazione che si otterrà rispetto alla soluzione ottima dipende dalla definizione del problema e dall'implementazione dei singoli passi del meta-algoritmo.
+Una **meta-euristica** è un metodo algoritmico per trovare soluzioni approssimate di un problema di ottimizzazione combinatoria. Si definiscono sequenze astratte di passi che possono essere applicate a qualsiasi problema del genere. Ogni singolo passo deve poi essere declinato a seconda della specificità del problema. Il bisogno per un approccio meta-euristico nasce dal fatto che alcune classi di problemi non hanno una efficiente soluzione algoritmica. L'approssimazione che si otterrà rispetto alla soluzione ottima dipende dalla definizione del problema e dall'implementazione dei singoli passi del meta-algoritmo.
 
 ----------------------------------------------------------------
 
 ### Local search method
-Una meta-euristica è quella comunemente chiamata *local search method* e costituisce un caso particolare di algoritmo evolutivo. Dato un problema di ottimizzazione $P$ e la funzione da ottimizzare $f$, questo metodo cerca i massimi globali *localmente*, attorno cioè ai punti scelti durante la fase di inizializzazione. L'assunzione che si fa è che il valore della funzione in $x_1$ e $x_2$ differisce meno quanto più i due argomenti sono simili: $f$ non ha salti. La particolarità di questo approccio evolutivo è che la popolazione si limita ad un solo individuo. Questo ha alcune conseguenze, soprattutto rispetto agli operatori genetici: l'operatore di ricombinazione non è più necessario e ci si limita a quello di mutazione. Ad ogni passo si può decidere se continuare a mutare l'individuo o crearne uno diverso (per evitare minimi/massimi locali). L'idea è quella di utilizzare il *gradient ascent/descent* per identificare un punto di massimo/minimo facendo un passo nella direzione del gradiente. L'ampiezza dei passi non deve essere troppo piccola perchè in quel caso l'algoritmo convergerebbe troppo lentamente, nè troppo grande perchè si rischiano oscillazioni. Per prevenire il fatto che si rimanga bloccati in minimi/massimi locali si eseguono varie iterazioni dell'algoritmo a partire da diversi punti. Se $f$ non risultasse differenziabile si cerca di determinare la direzione in cui $f$ cresce valutando punti casuali nell'intorno della posizione attuale (*hill climbing*). Una generalizzazione dei precedenti approcci è ciò che in letteratura viene chiamato *simulated annealing*. L'intuizione che ci sta dietro è che muoversi dal basso verso l'alto dovrebbe essere più probabile che il contrario. Per tanto, soluzioni migliori saranno sempre accettate, ma nel caso di soluzioni peggiori, queste potranno essere comunque accettate a seconda della loro \"qualità\". Si può applicare un valore soglia per decidere quanto una soluzione può essere peggiore rispetto alla precedente, oppure decidere un lower bound senza alcun confronto col valore precedente, etc. 
+Una meta-euristica è quella comunemente chiamata **local search method** e costituisce un caso particolare di algoritmo evolutivo. Dato un problema di ottimizzazione $P$ e la funzione da ottimizzare $f$, questo metodo cerca i massimi globali **localmente**, attorno cioè ai punti scelti durante la fase di inizializzazione. Viene assunto che il valore della funzione in $x_1$ e $x_2$ differisca meno quanto più i due argomenti sono simili: $f$ non ha salti. La particolarità di questo approccio evolutivo è che la popolazione si limita ad un solo individuo. Questo ha alcune conseguenze, soprattutto rispetto agli operatori genetici: l'operatore di ricombinazione non è più necessario e ci si limita a quello di mutazione. Ad ogni passo si può decidere se continuare a mutare l'individuo o crearne uno diverso (per evitare minimi/massimi locali). L'idea è quella di utilizzare il *gradient ascent/descent* per identificare un punto di massimo/minimo facendo un passo nella direzione del gradiente. L'ampiezza dei passi non deve essere troppo piccola perchè in quel caso l'algoritmo convergerebbe troppo lentamente, nè troppo grande perchè si rischiano oscillazioni. Per prevenire il fatto che si rimanga bloccati in minimi/massimi locali si eseguono varie iterazioni dell'algoritmo a partire da diversi punti. Se $f$ non risultasse differenziabile si cerca di determinare la direzione in cui $f$ cresce valutando punti casuali nell'intorno della posizione attuale (*hill climbing*). Una generalizzazione dei precedenti approcci è ciò che in letteratura viene chiamato *simulated annealing*. L'intuizione che ci sta dietro è che muoversi dal basso verso l'alto dovrebbe essere più probabile che il contrario. Per tanto, soluzioni migliori saranno sempre accettate, ma nel caso di soluzioni peggiori, queste potranno essere comunque accettate a seconda della loro \"qualità\". Si può applicare un valore soglia per decidere quanto una soluzione può essere peggiore rispetto alla precedente, oppure decidere un lower bound senza alcun confronto col valore precedente, etc. 
 
 ----------------------------------------------------------------
 
 ### Tabu search ###
-L'algoritmo *tabu search* può essere visto come una local search che, nel momento di creare un nuovo individuo, considera la storia delle  passate generazioni. Si appronta una lista (FIFO) di *tabu* che permette di evitare il ricorrere di candidati già testati. Ogni individuo è una soluzione completa. Le mutazioni non sono permesse. Se il nuovo candidato mostra \"proprietà interessanti\" può essere fatta una eccezione al tabu.
+L'algoritmo **tabu search** può essere visto come una local search che, nel momento di creare un nuovo individuo, considera la storia delle passate generazioni. Si appronta una lista (FIFO) di **tabu** la quale permette di evitare di ricorrere a candidati già testati. Ogni individuo è una soluzione completa. Le mutazioni non sono permesse. Se il nuovo candidato mostra "proprietà interessanti" può essere fatta una eccezione al tabu.
 
 ----------------------------------------------------------------
 
 ### Algoritmi memetici ###
-Un diverso approccio è quello degli *algoritmi memetici*. Questi algoritmi uniscono i pregi dell'approccio *population-based* (lento, ma che offre più informazioni) e quello *local search* (veloce, ma suscettibile ai minimi locali). I \"memes\" sono elementi del comportamento che possono essere acquisiti individualmente. La procedura prevede per ogni individuo creato che lo si cerchi di ottimizzare e solo dopo che si consideri la popolazione nel suo intero. Questo permette spesso di accellerare il processo di ottimizzazione, ma le dinamiche \"evolutive\" sono limitate in modo critico: le mutazioni rischiano di bloccarsi frequentemente in minimi locali, la ricombinazione ha un raggio di azione limitato date le precondizioni che si impongono. 
+Un diverso approccio è quello degli **algoritmi memetici**. Questi algoritmi uniscono i pregi dell'approccio **population-based** (lento, ma che offre più informazioni) e quello **local search** (veloce, ma suscettibile ai minimi locali). I "memes" sono elementi del comportamento che possono essere acquisiti individualmente. La procedura prevede che, per ogni individuo creato, si cerchi di ottimizzarlo e che solo dopo si consideri la popolazione nella sua interezza. Questo permette spesso di accellerare il processo di ottimizzazione, ma le dinamiche "evolutive" vengono limitate in modo critico: le mutazioni rischiano di bloccarsi frequentemente in minimi locali e la ricombinazione ha un raggio di azione limitato, date le precondizioni imposte. 
 
 ----------------------------------------------------------------
 
 ### Evoluzione differenziale ###
-Un'altra strategia è quella dell'*evoluzione differenziale*. Non abbiamo in questo caso un adattamento dell'ampiezza dei passi, ma si cerca di utilizzare le relazioni tra gli individui nella popolazione come base per calcolarla. Si introduce un particolare operatore genetico: *DE-operator*. Questo operatore può essere visto come una combinazione dell'operatore di ricombinazione e quello di mutazione. Nella selezione, invece, un discendente può rimpiazzare i suoi antenati se e solo se ha un miglior valore di fitness.
+Un'altra strategia è quella dell'**evoluzione differenziale**. Non abbiamo in questo caso un adattamento dell'ampiezza dei passi, ma si cerca di utilizzare le relazioni tra gli individui nella popolazione come base per calcolarla. Si introduce un particolare operatore genetico: *DE-operator*. Questo operatore può essere visto come una combinazione dell'operatore di ricombinazione e quello di mutazione. Nella selezione, invece, un discendente può rimpiazzare i suoi antenati se e solo se ha un miglior valore di fitness.
 
 ----------------------------------------------------------------
 
