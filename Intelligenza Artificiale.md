@@ -1153,13 +1153,13 @@ Il primo modello di fuzzy controller è il cosiddetto **Mamdani controller**, sv
 
 $$R: \text{ If }x_1 \text{ is } \mu_{R}^{(1)} \text{ and } \dots \text{ and } x_n \text{ is } \mu_{R}^{(n)} \text{, then } y \text{ is } \mu_R$$
 
-$x_1, \dots, x_n$ sono variabili di input del controller e $y$ è il valore di output. Solitamente gli insiemi fuzzy $\mu_{R}^{(i)}$ identificano valori linguistici, cioè concetti vaghi (i.e. altezza media, ecc.) i quali sono rappresentati da insiemi fuzzy.<br />
+$x_1, \dots, x_n$ sono variabili di input del controller, $y$ è il valore di output, $\mu_{R}^{(i)}$ identificano valori linguistici, cioè concetti vaghi (i.e. altezza media, ecc.) i quali sono rappresentati da insiemi fuzzy, così come $\mu_{R}$, il quale è l'insieme fuzzy della variabile di output corrispodente ad una delle regole presenti nella rule base.<br />
 Nonostante le regole siano formulate nella forma di if-then statements, non devono essere interpretate come implicazioni logiche quanto come funzioni definite a tratti. 
 
 Le regole possono assumere come valori intervalli **crisp**, oppure valori fuzzy.<br />
 Questo controller necessita di tre fasi fondamentali:
 1) la fase di fuzzificazione, nella quale l'input crisp esterno viene trasformato in un grado di appartenenza agli insiemi fuzzy dalle differenti regole del controller;
-2) al fine di calcolare la funzione di output, è necessario calcolare per ogni regola il valore minimo tra i gradi di appartenenza del vettore di input delle differenti componenti delle regole e salvare poi il cut off nella rispettiva output rule. Successivamente, per ogni valore del dominio dell'output, si sceglie il massimo tra i cut off ottenuti nello step precedente; 
+2) al fine di calcolare la funzione di output, è necessario calcolare per ogni regola il valore minimo tra i gradi di appartenenza del vettore di input alle differenti componenti della regola e salvare poi il cut off nella rispettiva output rule. Successivamente, per ogni valore del dominio dell'output, si sceglie il massimo tra i cut off ottenuti nello step precedente; 
 3) la fase di defuzzificazione, utilizzata per tornare ad un valore crispy dall'insieme fuzzy. Il metodo utilizzato può essere MCM, MOM o COG.
 
 ![[images/rulesfuzzy.png]]
@@ -1175,17 +1175,17 @@ Questo controller può essere visto come una modifica ed uno sviluppo del contro
 
 $$R : \text{ if } x_1 \text{ is } \mu_1 \text{ and } \dots \text{ and } x_n \text{ is } \mu_n, \text{ then } y = f(x_1,\dots,x_n)$$
 
-L'output di ogni regola è dato da una funzione che prende gli input come parametri. Questo porta ad una gestione del calcolo dell'output differente, poichè ciascuno degli output sono valori crisp. In questo caso, è possibile defuzzificarli pesando ciascun'output delle regole con il corrispondente grado di appartenenza degli input, sommandoli e dividendo per la somma dei pesi. 
+L'output di ogni regola è dato da una funzione che prende gli input come parametri. Questo porta ad una gestione del calcolo dell'output differente, poichè ciascuno degli output è un valore crisp. In questo caso, è possibile defuzzificarli pesando ciascun'output delle regole con il corrispondente grado di appartenenza degli input, sommandoli e dividendo per la somma dei pesi. 
 
 ----------------------------------------------------------------
 
 ### Similarity-based reasoning ###
-Vi è un'ultima tipologia di controller che utilizza il concetto di relazione di somiglianza (l'analogo fuzzy delle relazioni di equivalenza).<br />
 Una funzione $E: X^2 \to [0,1]$ è definita **relazione di somiglianza** rispetto ad una T-norma se e solo se soddisfa le seguenti condizioni:
 1) $E(x,x) = 1$;
 2) $E(x,y) = E(y,x)$;
 3) $\top (E(x,y),E(y,z)) \leq E(x,z)$.
 
+L'idea di fondo è l'utilizzo di una sequenza di equivalenze per output noti che sono triggerati da input specifici: sfruttando le relazioni di somiglianza tra input e valori noti, è possibile trovare l'output desiderato più simile all'input dato.<br />  
 Questo genere di relazioni vengono utilizzate per tradurre l'informazione data dagli esperti in modo tale che le varie tuple coprano tutti i possibili comportamenti del sistema. Dalle classi di somiglianza, è possibile poi estrarre regole in tutto uguali a quelle valide per il Mamdani controller.
 
 ----------------------------------------------------------------
@@ -1197,7 +1197,7 @@ Ci sono due casistiche in cui si parla di **fuzzy data analysis**. Una di esse r
 
 ![[images/symmetricdata.png]]
 
-Il **fuzzy clustering** è una procedura di apprendimento non supervisionato che permette di dividere il dataset in modo che 
+Il **fuzzy clustering** è una procedura di apprendimento non supervisionato che permette di dividere il dataset in modo tale che 
 1) oggetti nello stesso cluster siano quanto più possibile simili;
 2) oggetti in cluster diversi siano quanto più possibile dissimili. 
 
@@ -1277,11 +1277,11 @@ Un insieme di regole fuzzy può essere tradotto in una rete neurale tramite la s
 2) Per ogni variabile di output $y_i$, si crea un neurone nel layer di output;
 3) Per ogni fuzzy set $\mu_i^j$, si crea un neurone nel primo layer hidden e lo si connette al neurone di input corrispondente a $x_i$;
 4) Per ogni regola fuzzy $R_i$, si crea un neurone nel secondo layer hidden e si specifica una T-norma per calcolare l'antecedente della regola;
-5) Si connette ogni neurone ai neuroni che rappresentano i fuzzy set degli antecedenti della loro regola corrispondente;
+5) Si connette ogni neurone del secondo layer hidden ai neuroni che rappresentano i fuzzy set degli antecedenti della loro regola corrispondente;
 
 A questo punto l'algoritmo diverge a seconda di quale tipo di controller si voglia utilizzare:
 - nel caso del Mamdani controller, si connette ogni neurone "regola" al neurone di output corrispondente al dominio del conseguente nella regola fuzzy. Come peso della connessione si sceglie il fuzzy set del conseguente della regola fuzzy;
-- nel caso del Takagi-Sugeno-Kang controller, per ogni neurone "regola" si crea un gemello che computa la funzione di output della corrispondente regola fuzzy e gli si connettono tutti i neuroni di input.
+- nel caso del Takagi-Sugeno-Kang controller, per ogni neurone "regola" si crea un neurone gemello, il quale computa la funzione di output. Le regole sono computate come nel caso precedente, e viene utilizzato un neurone finale per calcolare la somma pesata dei gradi di appartenenza degli input di ciascuna regola, moltiplicato per la corrispondente funzione di output e dividendo il tutto per la somma dei gradi di appartenenza.
 
 Il network così costruito può essere allenato grazie alla backpropagation.
 
