@@ -659,7 +659,7 @@ Fino ad ora si è sottointeso che il learning rate rimanesse fisso per la durata
 Nonostante un time-dependent learning rate garantisca che la procedura converga, è bene tenere a mente che il learning rate non deve decrementare troppo velocemente, poichè altrimenti la procedura potrebbe terminare in ciò che viene definito **starvation**, cioè la casistica nella quale i passi di adattamento divengono molto piccoli rapidamente, così che il vettore di riferimento non raggiunga mai la sua destinazione naturale.<br />
 Un altro problema con la versione classica di questo algoritmo è che il processo di adattamento potrebbe portare i vettori di riferimento ad allontanarsi sempre di più tra loro. Per evitare questo effetto indesiderabile il quale ostacola la convergenza dell'algoritmo, si prevede la cosiddetta **window rule**, tale per cui un vettore di riferimento viene adattato solo se il punto $\mathbf{p}$ giace vicino al bordo della classificazione, ossia alla (iper-)superficie che separa le regioni contigue delle due classi. La nozione vaga di vicinanza viene formalizzata come segue:
 
-$$\min(\frac{d(\mathbf{p},\mathbf{r_j})}{d(\mathbf{p},\mathbf{r_k}},\frac{d(\mathbf{p},\mathbf{r_k})}{d(\mathbf{p},\mathbf{r_j})}) > \theta \quad \text{dove} \quad \theta = \frac{1 - \xi}{1 + \xi}$$
+$$\min(\frac{d(\mathbf{p},\mathbf{r_j})}{d(\mathbf{p},\mathbf{r_k})},\frac{d(\mathbf{p},\mathbf{r_k})}{d(\mathbf{p},\mathbf{r_j})}) > \theta \quad \text{dove} \quad \theta = \frac{1 - \xi}{1 + \xi}$$
 
 dove $\xi$ è un parametro specificato dall'utente e, intuitivamente, descrive l'ampiezza della finestra attorno al bordo delle classificazioni. Se si assume che i dati siano stati scelti randomicamente da un insieme di distribuzioni normali, si potrebbe voler usare un assegnamento **soft**, in opposizione ad una divisione **crisp** tipica del clustering a là c-means. Si rinuncia, quindi, alla strategia del **winner-takes-all** e si cerca di descrivere i dati attraverso insiemi di Gaussiane.<br />
 In questo modo, tutti i vettori di riferimento che appartengono alla stessa classe vengono attratti verso il centro (con varia intensità rispetto alla distanza) e tutti quelli che non vi appartengono vengono respinti. La densità di probabilità verrà rappresentata dalla seguente formula:
@@ -1318,7 +1318,7 @@ Gli elementi di un algoritmo evolutivo sono:
 ----------------------------------------------------------------
 
 ### Definizione formale ###
-Per ogni problema di ottimizzazione occorre separare lo spazio dei **fenotipi** $\Omega$ (ovvero, come l'individuo appare) da quello dei **genotipi** $\Gamma$ (ovvero, come l'individuo è rappresentato dalla codifica scelta). La funzione di fitness sarà definita sui fenotipi, dove, invece, gli operatori genetici agiranno sui genotipi. Per valutare i cambiamenti nel genotipo sarà necessario provvedere una funzione di
+Per ogni problema di ottimizzazione occorre separare lo spazio dei **fenotipi** $\Omega$ (ovvero, come l'individuo appare) da quello dei **genotipi** $\Gamma$ (ovvero, come l'individuo è rappresentato dalla codifica scelta). La funzione di fitness sarà definita sui fenotipi, dove, invece, gli operatori genetici agiranno sui genotipi. Per valutare i cambiamenti nel genotipo sarà necessario fornire una funzione di
 *decodifica* $dec: \Gamma \to \Omega$.
 
 Ogni **individuo** $A$ è rappresentato da un tupla $(A.G, A.S, A.F)$ contenente il genotipo ($A.G \in \Gamma$), informazioni e parametri addizionali $A.S \in Z$ e la valutazione dello stesso rispetto alla funzione di fitness $A.F = f(dec(A.G))$.
@@ -1352,7 +1352,7 @@ $$IS_{ambiente} : \mathbb{R}^{\mu + \lambda} \to \{ 1, \dots, \mu + \lambda \}^\
 
 Vi è una distinzione che si può tracciare all'interno degli algoritmi evolutivi:
 - gli **algoritmi genetici**: dove la codifica è una sequenza binaria;
--  gli **algoritmi evolutivi propriamente detti**: dove la codifica dipende dal problema trattato e così gli operatori genetici;
+- gli **algoritmi evolutivi propriamente detti**: dove la codifica dipende dal problema trattato e così gli operatori genetici;
 
 ----------------------------------------------------------------
 
@@ -1362,7 +1362,7 @@ Una **meta-euristica** è un metodo algoritmico per trovare soluzioni approssima
 ----------------------------------------------------------------
 
 ### Local search method
-Una meta-euristica è quella comunemente chiamata **local search method** e costituisce un caso particolare di algoritmo evolutivo. Dato un problema di ottimizzazione $P$ e la funzione da ottimizzare $f$, questo metodo cerca i massimi globali **localmente**, attorno cioè ai punti scelti durante la fase di inizializzazione. Viene assunto che il valore della funzione in $x_1$ e $x_2$ differisca meno quanto più i due argomenti sono simili: $f$ non ha salti. La particolarità di questo approccio evolutivo è che la popolazione si limita ad un solo individuo. Questo ha alcune conseguenze, soprattutto rispetto agli operatori genetici: l'operatore di ricombinazione non è più necessario e ci si limita a quello di mutazione. Ad ogni passo si può decidere se continuare a mutare l'individuo o crearne uno diverso (per evitare minimi/massimi locali). L'idea è quella di utilizzare il *gradient ascent/descent* per identificare un punto di massimo/minimo facendo un passo nella direzione del gradiente. L'ampiezza dei passi non deve essere troppo piccola perchè in quel caso l'algoritmo convergerebbe troppo lentamente, nè troppo grande perchè si rischiano oscillazioni. Per prevenire il fatto che si rimanga bloccati in minimi/massimi locali si eseguono varie iterazioni dell'algoritmo a partire da diversi punti. Se $f$ non risultasse differenziabile si cerca di determinare la direzione in cui $f$ cresce valutando punti casuali nell'intorno della posizione attuale (*hill climbing*). Una generalizzazione dei precedenti approcci è ciò che in letteratura viene chiamato *simulated annealing*. L'intuizione che ci sta dietro è che muoversi dal basso verso l'alto dovrebbe essere più probabile che il contrario. Per tanto, soluzioni migliori saranno sempre accettate, ma nel caso di soluzioni peggiori, queste potranno essere comunque accettate a seconda della loro \"qualità\". Si può applicare un valore soglia per decidere quanto una soluzione può essere peggiore rispetto alla precedente, oppure decidere un lower bound senza alcun confronto col valore precedente, etc. 
+Una meta-euristica è quella comunemente chiamata **local search method** e costituisce un caso particolare di algoritmo evolutivo. Dato un problema di ottimizzazione $P$ e la funzione da ottimizzare $f$, questo metodo cerca i massimi globali **localmente**, attorno cioè ai punti scelti durante la fase di inizializzazione. Viene assunto che il valore della funzione in $x_1$ e $x_2$ differisca meno quanto più i due argomenti siano simili: $f$ non ha salti. La particolarità di questo approccio evolutivo è che la popolazione si limita ad un solo individuo. Questo ha alcune conseguenze, soprattutto rispetto agli operatori genetici: l'operatore di ricombinazione non è più necessario e ci si limita a quello di mutazione. Ad ogni passo si può decidere se continuare a mutare l'individuo o crearne uno diverso (per evitare minimi/massimi locali). L'idea è quella di utilizzare il *gradient ascent/descent* per identificare un punto di massimo/minimo facendo un passo nella direzione del gradiente. L'ampiezza dei passi non deve essere troppo piccola perchè in quel caso l'algoritmo convergerebbe troppo lentamente, nè troppo grande perchè si rischiano oscillazioni. Per prevenire il fatto che si rimanga bloccati in minimi/massimi locali si eseguono varie iterazioni dell'algoritmo a partire da diversi punti. Se $f$ non risultasse differenziabile si cerca di determinare la direzione in cui $f$ cresce valutando punti casuali nell'intorno della posizione attuale (*hill climbing*). Una generalizzazione dei precedenti approcci è ciò che in letteratura viene chiamato *simulated annealing*. L'intuizione che ci sta dietro è che muoversi dal basso verso l'alto dovrebbe essere più probabile che il contrario. Per tanto, soluzioni migliori saranno sempre accettate, ma nel caso di soluzioni peggiori, queste potranno essere comunque accettate a seconda della loro \"qualità\". Si può applicare un valore soglia per decidere quanto una soluzione può essere peggiore rispetto alla precedente, oppure decidere un lower bound senza alcun confronto col valore precedente, etc. 
 
 ----------------------------------------------------------------
 
@@ -1377,19 +1377,19 @@ Un diverso approccio è quello degli **algoritmi memetici**. Questi algoritmi un
 ----------------------------------------------------------------
 
 ### Evoluzione differenziale ###
-Un'altra strategia è quella dell'**evoluzione differenziale**. Non abbiamo in questo caso un adattamento dell'ampiezza dei passi, ma si cerca di utilizzare le relazioni tra gli individui nella popolazione come base per calcolarla. Si introduce un particolare operatore genetico: *DE-operator*. Questo operatore può essere visto come una combinazione dell'operatore di ricombinazione e quello di mutazione. Nella selezione, invece, un discendente può rimpiazzare i suoi antenati se e solo se ha un miglior valore di fitness.
+Un'altra strategia è quella dell'**evoluzione differenziale**. Non abbiamo in questo caso un adattamento dell'ampiezza dei passi, ma si cerca di utilizzare le relazioni tra gli individui nella popolazione come base per calcolarla. Si introduce un particolare operatore genetico: **DE-operator**. Questo operatore può essere visto come una combinazione dell'operatore di ricombinazione e quello di mutazione. Nella selezione, invece, un discendente può rimpiazzare i suoi antenati se e solo se ha un miglior valore di fitness.
 
 ----------------------------------------------------------------
 
 ### Scatter search ###
-L'idea che sta alla base degli algoritmi *scatter search* è quella diavere una popolazione e di operare una ricerca locale attorno agli individui. Dati i valori registrati da questa ricerca, si forza l'evoluzione a seconda della direzione del massimo registrato. Questo è un metodo puramente deterministico a differenza dei precedenti. La sua bontà dipende dalla copertura che riusciamo ad offrire dello spazio di ricerca.
+L'idea che sta alla base degli algoritmi **scatter search** è quella diavere una popolazione e di operare una ricerca locale attorno agli individui. Dati i valori registrati da questa ricerca, si forza l'evoluzione a seconda della direzione del massimo registrato. Questo è un metodo puramente deterministico a differenza dei precedenti. La sua bontà dipende dalla copertura che riusciamo ad offrire dello spazio di ricerca.
 
 ----------------------------------------------------------------
 
 ### Algoritmi culturali ###
-Oltre alle informazioni genetiche si possono considerare anche quelle \"culturali\" relative alle skill apprese dalle precedenti generazioni. Gli *algoritmi culturali* cercano di trarre vantaggio da questa memoria generazionale di modo che gli individui vengano influenzati da quest'ultima. Esistono due tipi di sapere culturalmente rilevante: 
--   *Sapere situazionale*: relativo a generazioni tra loro prossime;
--   *Sapere normativo*: sempre rilevante.
+Oltre alle informazioni genetiche si possono considerare anche quelle "culturali" relative alle skill apprese dalle precedenti generazioni. Gli **algoritmi culturali** cercano di trarre vantaggio da questa memoria generazionale di modo che gli individui vengano influenzati da quest'ultima. Esistono due tipi di sapere culturalmente rilevante: 
+- **Sapere situazionale**: relativo a generazioni tra loro prossime;
+- **Sapere normativo**: sempre rilevante.
 
 ----------------------------------------------------------------
 
@@ -1397,18 +1397,18 @@ Oltre alle informazioni genetiche si possono considerare anche quelle \"cultural
 
 ### Codifica ###
 Le soluzioni al nostro problema devono essere codificate in modo che si possa esplorare lo spazio delle possibili soluzioni attraverso questa rappresentazione. Non esiste una ricetta generale: il problema della codifica è specifico per ogni problema. Tuttavia, esistono alcuni principi di massima da seguire:
-1.  Rappresentare fenotipi simili con genotipi simili;
-2.  La funzione di fitness deve restituire valori simili per candidati simili;
-3.  Lo spazio $\Omega$ deve essere chiuso rispetto agli operatori genetici.
+1) Rappresentare fenotipi simili con genotipi simili;
+2) La funzione di fitness deve restituire valori simili per candidati simili;
+3) Lo spazio $\Omega$ deve essere chiuso rispetto agli operatori genetici.
 
-La 1) assicura che mutazioni di certi geni risultino in genotipi simili e che radicali cambiamenti permettano di evadere da minimi locali. La 2) previene che si scelga una codifica troppo o troppo poco epistatica [^7]. Se troppo, una singola mutazione potrebbe produrre casuali cambiamenti di fitness. Se troppo poco, l'efficienza dell'algoritmo ne risente. Le motivazioni per 3) sono abbastanze ovvie: se lo spazio di ricerca non è chiuso rispetto agli operatori genetici, un cromosoma modificato potrebbe non essere più decodificato e interpretato.
+La 1) assicura che mutazioni di certi geni risultino in genotipi simili e che radicali cambiamenti permettano di evadere da minimi locali. La 2) previene che si scelga una codifica troppo o troppo poco epistatica. Se troppo, una singola mutazione potrebbe produrre casuali cambiamenti di fitness. Se troppo poco, l'efficienza dell'algoritmo ne risente. Le motivazioni per 3) sono abbastanze ovvie: se lo spazio di ricerca non è chiuso rispetto agli operatori genetici, un cromosoma modificato potrebbe non essere più decodificato e interpretato.
 
 ### Fitness ###
-Gli individui migliori (quelli che hanno migliori valori di fitness) dovrebbero avere le migliori opportunità di riprodursi. Per fare questo occorre esercitare quella che in gergo viene chiamata *selective pressure* nel processo di creazione delle nuove generazioni. Se la selective pressure è bassa, si parla di *esplorazione dello spazio*: la deviazioni permessa rispetto agli individui è la più ampia possibile (tutto $\Omega$), vi sono buone possibilità di raggiungere il massimo globale. Se la selective pressure è alta, si parla di *sfruttamento degli individui migliori*: si ricerca l'ottimo nelle vicinanze degli individui migliori, l'algoritmo converge velocemente, anche se col rischio di convergere ad un ottimo locale. Per poter scegliere la corretta selective pressure occorre una metrica per calcolarla. Alcune tra quelle utilizzate in letteratura sono: 
-- *selection intensity*: il differenziale tra prima e dopo che la selezione è avvenuta;
-- *time to takeover*: il numero di generazioni prima che la popolazione converga.
+Gli individui migliori (quelli che hanno migliori valori di fitness) dovrebbero avere le migliori opportunità di riprodursi. Per fare questo occorre esercitare quella che in gergo viene chiamata **selective pressure** nel processo di creazione delle nuove generazioni. Se la selective pressure è bassa, si parla di **esplorazione dello spazio**: la deviazioni permessa rispetto agli individui è la più ampia possibile (tutto $\Omega$), vi sono buone possibilità di raggiungere il massimo globale. Se la selective pressure è alta, si parla di **sfruttamento degli individui migliori**: si ricerca l'ottimo nelle vicinanze degli individui migliori, l'algoritmo converge velocemente, anche se col rischio di convergere ad un ottimo locale. Per poter scegliere la corretta selective pressure occorre una metrica per calcolarla. Alcune tra quelle utilizzate in letteratura sono: 
+- **selection intensity**: il differenziale tra prima e dopo che la selezione è avvenuta;
+- **time to takeover**: il numero di generazioni prima che la popolazione converga.
 
-Gli stessi metodi di selezioni possono variare al variare della pressione evolutiva. Uno dei più usati è quello chiamato *roulette-wheel selection*. Si computa il valore di fitness relativo di ogni individuo grazie alla seguente formula:
+Gli stessi metodi di selezioni possono variare al variare della pressione evolutiva. Uno dei più usati è quello chiamato **roulette-wheel selection**. Si computa il valore di fitness relativo di ogni individuo grazie alla seguente formula:
 
 $$f_{rel}(A_i) = \frac{A_i.F}{\sum_{j=1}^{|P|} A_j.F}$$
 
@@ -1418,64 +1418,64 @@ La probabilità per un individuo di essere selezionato per la riproduzione sarà
 - molto veloce a trovare ottimi locali, ma pessima esplorazione dello spazio.
 
 La stessa funzione di fitness può essere adattata per impedire una convergenza troppo rapida:
-- *linear dynamical scaling*: riduciamo la rilevanza della funzione di fitness sottraendoci il minimo delle passate generazioni;
--   *$\sigma$-scaling*: calcolata attraverso la formula $f_{\sigma}(A) = A.F - (\mu_f(t) - \beta \cdot \sigma_f(t))$, dove $\beta$ è un parametro positivo;
-- *dipendente dal tempo*: il fattore temporale usato come esponente regola la selective pressure;
-- *Boltzmann-selection*: determina la fitness relativa non direttamente, ma attraverso la funzione $g(x) = exp^{\frac{f(x)}{kT}}$. $T$ è una variabile che dipende dal tempo e $k$ è una costante di normalizzazione.
+- **linear dynamical scaling**: riduciamo la rilevanza della funzione di fitness sottraendoci il minimo delle passate generazioni;
+- **$\sigma$-scaling**: calcolata attraverso la formula $f_{\sigma}(A) = A.F - (\mu_f(t) - \beta \cdot \sigma_f(t))$, dove $\beta$ è un parametro positivo;
+- **dipendente dal tempo**: il fattore temporale usato come esponente regola la selective pressure;
+- **Boltzmann-selection**: determina la fitness relativa non direttamente, ma attraverso la funzione $g(x) = exp^{\frac{f(x)}{kT}}$. $T$ è una variabile che dipende dal tempo e $k$ è una costante di normalizzazione.
 
 ----------------------------------------------------------------
 
 ### Selezione ###
 Vi sono varie strategie disponibili in letteratura per operare la selezione degli individui che costituiranno il pool genetico per la successiva generazione:
-- *Roulette-wheel selection*: vedi sopra;
-- *Rank-based selection*: si ordinano gli individui in ordine di fitness decrescente. A seconda della posizione si assegna ad ogni individuo un *rank* e con esso si definisce la probabilità di essere selezionati. Si procede ad una selezione del tipo roulette-wheel. Questo modello riesce ad ovviare al problema della dominanza e regola la pressione di selezione. Lo svantaggio sta che occorre ordinare gli individui (complessità $O(n \log n)$);
-- *Tournament selection*: si estraggono $k$ individui casualmente dalla popolazione. Tramite scontri individuali si decide il migliore, il quale riceverà la possibilità di riprodursi nella prossima generazione. Si riesce così ad evitare il problema della dominanza e si riesce a regolare la pressione di selezione grazie alla grandezza del torneo;
-- *Elitismo*: i migliori individui della generazione precedente costituiscono la generazione successiva. L'elite così scelta non è immune dai cambiamenti apportati dagli operatori genetici. Il vantaggio è che la convergenza viene ottenuta rapidamente. Lo svantaggio è che c'è il rischio di rimanere bloccati in ottimi locali;
-- *Crowding*: gli individui delle generazioni successive dovrebbero rimpiazzare gli individui più simili a loro. La densità locale in $\Omega$ non può crescere in modo indefinito. Questo permette una migliore esplorazione dello spazio.
+- **Roulette-wheel selection**: vedi sopra;
+- **Rank-based selection**: si ordinano gli individui in ordine di fitness decrescente. A seconda della posizione si assegna ad ogni individuo un **rank** e con esso si definisce la probabilità di essere selezionati. Si procede ad una selezione del tipo roulette-wheel. Questo modello riesce ad ovviare al problema della dominanza e a regolare la pressione di selezione. Lo svantaggio sta nel fatto che occorre ordinare gli individui (complessità $O(n \log n)$);
+- **Tournament selection**: si estraggono $k$ individui casualmente dalla popolazione. Tramite scontri individuali si decide il migliore, il quale riceverà la possibilità di riprodursi nella prossima generazione. Si riesce così ad evitare il problema della dominanza e si riesce a regolare la pressione di selezione grazie alla grandezza del torneo;
+- **Elitismo**: i migliori individui della generazione precedente costituiscono la generazione successiva. L'elite così scelta non è immune dai cambiamenti apportati dagli operatori genetici. Il vantaggio è che la convergenza viene ottenuta rapidamente. Lo svantaggio è che c'è il rischio di rimanere bloccati in ottimi locali;
+- **Crowding**: gli individui delle generazioni successive dovrebbero rimpiazzare gli individui più simili a loro. La densità locale in $\Omega$ non può crescere in modo indefinito. Questo permette una migliore esplorazione dello spazio.
 
-Di seguito listiamo alcune proprietà che possono caratterizzare i metodi di selezioni:
-- *Static*: la probabilità di selezione rimane costante;
-- *Dynamic*: la probabilità di selezione può variare;
-- *Extinguishing*: può darsi il caso che la probabilità di selezione sia 0;
-- *Preservative*: la probabilità di selezione è sempre maggiore di 0;
-- *Pure-bred*: gli individui possono avere discendenti solo in una generazione;
-- *Under-bred*: gli individui possono avere discendenti in più di una generazione;
-- *Right*: tutti gli individui posono riprodursi;
-- *Left*: i migliori individui possono non riprodursi;
-- *Generational*: i genitori non possono mutare fin quando i loro discendenti non vengono creati;
-- *On-the-fly*: i discendenti sostituiscono i genitori;
+Di seguito si elencano alcune proprietà che possono caratterizzare i metodi di selezione:
+- **Static**: la probabilità di selezione rimane costante;
+- **Dynamic**: la probabilità di selezione può variare;
+- **Extinguishing**: può darsi il caso che la probabilità di selezione sia 0;
+- **Preservative**: la probabilità di selezione è sempre maggiore di 0;
+- **Pure-bred**: gli individui possono avere discendenti solo in una generazione;
+- **Under-bred**: gli individui possono avere discendenti in più di una generazione;
+- **Right**: tutti gli individui posono riprodursi;
+- **Left**: i migliori individui possono non riprodursi;
+- **Generational**: i genitori non possono mutare fin quando i loro discendenti non vengono creati;
+- **On-the-fly**: i discendenti sostituiscono i genitori;
 
 ----------------------------------------------------------------
 
 ### Operatori genetici ###
-Gli *operatori genetici* sono applicati ad una frazione di individui scelti (popolazione intermedia). Vengono così generate mutazioni e ricombinazioni delle soluzioni già esistenti. Gli operatori genetici vengono classificati secondo la loro arietà in:
-1. One-parent operators;
-2. Two-parent operators;
-3. Multiple-parent operators.
+Gli **operatori genetici** sono applicati ad una frazione di individui scelti (popolazione intermedia). Vengono così generate mutazioni e ricombinazioni delle soluzioni già esistenti. Gli operatori genetici vengono classificati secondo la loro arietà in:
+1) One-parent operators;
+2) Two-parent operators;
+3) Multiple-parent operators.
 
-Nella prima classe possiamo trovare l'operatore di *mutazione*, il quale introduce piccoli cambiamenti randomici nel genoma della soluzione a cui viene applicato. Risulta utile per introdurre biodiversità nel pool delle soluzioni e favorire l'esplorazione dello spazio di ricerca. Esistono vari metodi per operare una mutazione:
-- *Standard mutation*: il valore di uno (o più) gene viene mutato;
-- *Pair swap*: si scambia la posizione di due geni;
-- *Shift*: si shifta a destra o sinistra un gruppo di geni;
-- *Arbitrary permutation*: si permuta arbitrariamente un gruppo di geni;
-- *Inversion*: si inverte l'ordine di apparizione di un gruppo di geni.
+Nella prima classe possiamo trovare l'operatore di **mutazione**, il quale introduce piccoli cambiamenti randomici nel genoma della soluzione a cui viene applicato. Risulta utile per introdurre biodiversità nel pool delle soluzioni e favorire l'esplorazione dello spazio di ricerca. Esistono vari metodi per operare una mutazione:
+- **Standard mutation**: il valore di uno (o più) gene viene mutato;
+- **Pair swap**: si scambia la posizione di due geni;
+- **Shift**: si shifta a destra o sinistra un gruppo di geni;
+- **Arbitrary permutation**: si permuta arbitrariamente un gruppo di geni;
+- **Inversion**: si inverte l'ordine di apparizione di un gruppo di geni.
 
-Invece, l'operatore di gran lunga più importante tra quelli two-parent è quello di *ricombinazione* o *crossover*, il quale ha il compito, date due soluzioni, di creare attraverso una combinazione del loro codice genetico le soluzioni che costituiranno la generazione futura. Vi sono vari modi per operare questa ricombinazione:
-- *One-point crossover*: si determina una posizione casuale nel cromosoma e si scambiano le due sequenze da un lato del taglio;
-- *Two-point crossover*: si determinano due posizioni casuali nel cromosa e si scambia quell'intervallo di geni;
-- *N-point crossover*: un generalizzazione dei precedenti. Si scambiano le aree incluse nei punti selezionati casualmente;
-- *Uniform crossover*: per ogni gene si determina se scambiarlo o meno a seconda di un certo parametro di probabilità;
-- *Shuffle crossover*: si procede inizialmente ad operare una permutazione randomica sui due cromosomi. Dopo si procede come nel one-point crossover e si conclude facendo l'unmixing;
-- *Uniform order-based crossover*: simile allo uniform crossover, per ogni gene si decide se tenerlo o cambiarlo. Gli spazi sono riempiti nell'ordine di apparizione dei geni nell'altro cromosoma;
-- *Edge-recombination crossover*: il cromosoma è rappresentato come un grafo. Ogni gene è un vertice che ha archi verso i suoi vicini. Gli archi dei due grafi vengono mischiati. Si preserva l'informazione relativa alla vicinanza.
+Invece, l'operatore di gran lunga più importante tra quelli two-parent è quello di **ricombinazione** o **crossover**, il quale ha il compito, date due soluzioni, di creare attraverso una combinazione del loro codice genetico le soluzioni che costituiranno la generazione futura. Vi sono vari modi per operare questa ricombinazione:
+- **One-point crossover**: si determina una posizione casuale nel cromosoma e si scambiano le due sequenze da un lato del taglio;
+- **Two-point crossover**: si determinano due posizioni casuali nel cromosoma e si scambia quell'intervallo di geni;
+- **N-point crossover**: un generalizzazione dei precedenti. Si scambiano le aree incluse nei punti selezionati casualmente;
+- **Uniform crossover**: per ogni gene si determina se scambiarlo o meno a seconda di un certo parametro di probabilità;
+- **Shuffle crossover**: si procede inizialmente ad operare una permutazione randomica sui due cromosomi. Dopo si procede come nel one-point crossover e si conclude facendo l'unmixing;
+- **Uniform order-based crossover**: simile allo uniform crossover, per ogni gene si decide se tenerlo o cambiarlo. Gli spazi sono riempiti nell'ordine di apparizione dei geni nell'altro cromosoma;
+- **Edge-recombination crossover**: il cromosoma è rappresentato come un grafo. Ogni gene è un vertice che ha archi verso i suoi vicini. Gli archi dei due grafi vengono mischiati. Si preserva l'informazione relativa alla vicinanza.
 
-Un caso di multiple-parent operator è quello del *diagonal crossover*. Simile al n-point crossover, ma vi partecipano più di due genitori. Dati $k$ genitori, si scelgono $k-1$ punti per il crossover e si procede shiftando diagonalmente le sequenze rispetto ai punti scelti. Aumentando il numero di genitori si ottiene un ottimo grado di esplorazione dello spazio. Alcune proprietà che possono caratterizzare gli operatori di crossover sono:
-- *Positional bias*: quando la probabilità che due geni vengano ereditati assieme dallo stesso genitore dipende dalla posizione (relativa) dei due geni nel cromosoma. Deve essere evitato perchè può rendere la disposizione dei geni cruciale per la riuscita dell'algoritmo;
-- *Distributional bias*: quando la probabilità che un certo numero di geni siano scambiati tra i genitori non è la stessa per tutti i possibili numeri di geni. Deve essere evitato perchè soluzioni parziali di differenti lunghezze hanno differenti probabilità di progredire alla generazione successiva. In generale, è meno problematico del positional bias.
+Un caso di multiple-parent operator è quello del **diagonal crossover**. Simile al n-point crossover, ma vi partecipano più di due genitori. Dati $k$ genitori, si scelgono $k-1$ punti per il crossover e si procede shiftando diagonalmente le sequenze rispetto ai punti scelti. Aumentando il numero di genitori si ottiene un ottimo grado di esplorazione dello spazio. Alcune proprietà che possono caratterizzare gli operatori di crossover sono:
+- **Positional bias**: quando la probabilità che due geni vengano ereditati assieme dallo stesso genitore dipende dalla posizione (relativa) dei due geni nel cromosoma. Deve essere evitato perchè può rendere la disposizione dei geni cruciale per la riuscita dell'algoritmo;
+- **Distributional bias**: quando la probabilità che un certo numero di geni siano scambiati tra i genitori non è la stessa per tutti i possibili numeri di geni. Deve essere evitato perchè soluzioni parziali di differenti lunghezze hanno differenti probabilità di progredire alla generazione successiva. In generale, è meno problematico del positional bias.
 
-Per migliorare le performance delle mie soluzioni ho due strategie:
-- **Interpolating recombination**: opero una fusione dei tratti dei due genitori in modo da creare nuovi discendenti. Si creano nuovi alleli e ne beneficiano particolarmente gli individui con migliore fitness. Per una esplorazione sufficientemente ampia di $\Omega$ nelle prime iterazioni occorre utilizzare una probabilità di mutazione molto alta;
-- **Extrapolating recombination**: inferisco informazioni da una moltitudine di individui e creo nuovi alleli in accordo. L'influenza della diversità è difficilmente quantificabile.
+Per migliorare le performance delle soluzioni si applicano due strategie:
+- **Interpolating recombination**: si opera una fusione dei tratti dei due genitori in modo tale da creare nuovi discendenti. Si creano nuovi alleli e ne beneficiano particolarmente gli individui con migliore fitness. Per un'esplorazione sufficientemente ampia di $\Omega$ nelle prime iterazioni, occorre utilizzare una probabilità di mutazione molto alta;
+- **Extrapolating recombination**: si inferiscono informazioni da una moltitudine di individui e si creanoo nuovi alleli in accordo. L'influenza della diversità è difficilmente quantificabile.
 
 ----------------------------------------------------------------
 
@@ -1500,16 +1500,18 @@ Data questa metrica si può giudicare le performance di un particolare operatore
 ----------------------------------------------------------------
 
 ### Swarm and population based optimization ###
-La *swarm based optimization* e la *population based optimization* sono due meta-euristiche usate in letteratura per sviluppare sistemi intelligenti multi-agente capaci di comportamento cooperativo. Il concetto di *swarm intelligence*, utilizzato per descrivere in natura il comportamento di alcune specie (api, formiche, etc), sta a significare la capacità della popolazione di cooperare per la soluzione di un problema. L'idea è che i singoli individui (unità con skill limitate) scambino tra loro informazioni e si coordinino senza l'aiuto di un controllo centrale. Esistono varie tipologie di euristiche di questo genere:
+La **swarm based optimization** e la **population based optimization** sono due meta-euristiche usate in letteratura per sviluppare sistemi intelligenti multi-agente capaci di comportamento cooperativo. Il concetto di **swarm intelligence**, utilizzato per descrivere in natura il comportamento di alcune specie (api, formiche, etc), sta a significare la capacità della popolazione di cooperare per la soluzione di un problema. L'idea è che i singoli individui (unità con skill limitate) scambino tra loro informazioni e si coordinino senza l'aiuto di un controllo centrale. Esistono varie tipologie di euristiche di questo genere:
 - **Particle swarm optimization**: ispirato al pattern biologico della ricerca del cibo in uccelli e pesci. Gli individui aggregano informazioni, creando un insieme di conoscenze comuni, al fine di presentare una solo soluzione. Ogni individuo è un candidato ad essere la soluzione;
 - **Ant colony optimization**: ispirato al pattern biologico delle formiche che cercano una strada che le conduca al cibo. Gli individui scambiano informazione modificando l'ambiente, in modo che gli altri possano seguire (o meno) le loro tracce. Ogni individuo è un candidato ad essere la soluzione;
 
-Dal lato della *population based optimization* troviamo, invece, il cosiddetto *population-based incremental learning*. Gli individui vengono generati randomicamente in accordo ad una distribuzione di probabilità. In realtà, non abbiamo bisogno di conservare in memoria gli individui in modo esplicito, ma è sufficiente conservare le statistiche della popolazione. Come operatore di ricombinazione viene utilizzato lo uniform crossover. Per la selezione, si scelgono gli individui che migliorino le statistiche della popolazione. La mutazione, invece, si limita ad un semplice *bit-flip*. La sua feature distintiva è che il *learning rate*, ovvero il parametro che regola la possibilità di movimento degli individui nello spazio, cambia nel tempo e si riduce con il numero di iterazioni. Questo permette, inizialmente, grande mobilità, per stabilizzarsi poi quando un ottimo viene trovato. Alcuni problemi con questa strategia sono che 1) l'algoritmo può apprendere anche alcune dipendenze accidentali tra i cromosomi degli individui e 2) considerare i singoli bit in isolamento gli uni dagli altri. Un diverso genere di problema riguarda la rappresentazione statistica della popolazione: 3) la stessa statistica può rappresentare differenti popolazioni.
+Dal lato della **population based optimization** si trova, invece, il cosiddetto **population-based incremental learning**. Gli individui vengono generati randomicamente in accordo ad una distribuzione di probabilità. In realtà, non è necessario conservare in memoria gli individui in modo esplicito, ma è sufficiente conservare le statistiche della popolazione. Come operatore di ricombinazione viene utilizzato lo uniform crossover. Per la selezione, si scelgono gli individui che migliorino le statistiche della popolazione. La mutazione, invece, si limita ad un semplice **bit-flip**. La sua feature distintiva è che il **learning rate**, ovvero il parametro che regola la possibilità di movimento degli individui nello spazio, cambia nel tempo e si riduce con il numero di iterazioni. Questo permette, inizialmente, grande mobilità, per stabilizzarsi poi quando un ottimo viene trovato. Alcuni problemi con questa strategia sono:
+- l'algoritmo può apprendere anche alcune dipendenze accidentali tra i cromosomi degli individui;
+- considerare i singoli bit in isolamento gli uni dagli altri. 
+- Un diverso genere di problema riguarda la rappresentazione statistica della popolazione: la stessa statistica può rappresentare differenti popolazioni.
 
 ----------------------------------------------------------------
 
 ### Fondamenti teorici ###
-
 Per dimostrare la correttezza degli algoritmi evolutivi occorre considerare gli *schemata*, ovvero cromosomi binari solo parzialmente specificati che codificano un particolare comportamento. Da qui, si partirà poi a studiare come il numero dei cromosomi che condividono lo schema si evolve rispetto alle generazioni. L'obbiettivo è quello di fornire una stima stocastica che descriva come un algoritmo evolutivo esplora lo spazio di ricerca.
 
 Uno *schema* $h$ è una stringa di simboli di lunghezza $L$ sull'alfabeto $\{0,1,*\}$. Il carattere $*$ è una wildcard. Un cromosoma $c$ si dice che *condivide* lo schema $h$ (in simboli, $c \triangleleft h$) se e solo se, escluse le posizioni in $h$ aventi il simbolo $*$, $h$ coincide con $c$.
@@ -1542,7 +1544,8 @@ Un importante teorema, il così detto *schema theorem*, ci dice che schemi con a
 
 ![[images/parsetree.png]]
 
-La *programmazion genetica* (in breve, GP) è una famiglia di algoritmi evolutivi che permettono la creazione automatica di programmi che possano risolvere problemi. Per fare questo occorre, innanzitutto, una codifica per rappresentare e manipolare un singolo programma. Solitamente si rappresentano programmi come *alberi sintattici* dove i nodi interni sono le operazioni e le foglie variabili o costanti (vedi Figura [35](#fig:37){reference-type="ref" reference="fig:37"}). L'insieme delle operazioni e dei simboli terminali varia da problema a problema. Se, per esempio, volessimo approssimare una funzione booleana sceglieremmo l'insieme di operazioni $F = \{and, or, not\}$ e come insieme di terminali $T = \{ x_0, \dots, x_n, 1, 0 \}$. GP può risolvere un problema efficacemente ed efficientemente solo se l'insieme di operazioni e di simboli terminali è *completo* e *sufficiente*. Il problema di trovare il più piccolo insieme completo e sufficiente per un dato problema è spesso NP-hard. Può essere utile rappresentare i cromosomi come espressioni del linguaggio $L = F \cup T$ per semplificare la computazione.
+La **programmazion genetica** (in seguito GP) è una famiglia di algoritmi evolutivi i quali permettono la creazione automatica di programmi che possano risolvere problemi. Per fare cioò occorre, innanzitutto, una codifica per rappresentare e manipolare un singolo programma. Solitamente si rappresentano programmi sotto forma di **alberi sintattici**, dove i nodi interni sono le operazioni e le foglie variabili o costanti. L'insieme delle operazioni e dei simboli terminali varia da problema a problema. Se, per esempio, si volesse approssimare una funzione booleana, si sceglierebbe l'insieme di operazioni $F = \{and, or, not\}$ e come insieme di terminali $T = \{ x_0, \dots, x_n, 1, 0 \}$. GP può risolvere un problema efficacemente ed efficientemente solo se l'insieme di operazioni e di simboli terminali è **completo** e **sufficiente**. Il problema di trovare il più piccolo insieme completo e sufficiente per un dato problema è spesso NP-hard.<br />
+Può essere utile, inoltre, rappresentare i cromosomi come espressioni del linguaggio $L = F \cup T$ per semplificare la computazione.
 
 ----------------------------------------------------------------
 
