@@ -1332,7 +1332,7 @@ L'operatore di **ricombinazione** avente $r \geq 2$ genitori e $s \geq 1$ figli 
 $$Rek^\xi : (\Gamma \times Z)^r \to (\Gamma \times Z)^s$$
 
 dove $\xi$ è un numero randomicamente generato.<br />
-L'operatore di **selezione** permette di scegliere grazie ai valori di fitness tra una popolazione di $r$ individui un numero $s$ di individui che continueranno la specie. Sia $P = \{\ A_1, \dots, A_r \}$ la popolazione di individui. Allora l'operatore di selezione avrà la forma:
+L'operatore di **selezione** permette di scegliere grazie ai valori di fitness tra una popolazione di $r$ individui un numero $s$ di individui che continueranno la specie. Sia $P = \{\ A_1, \dots, A_r \}$ la popolazione di individui. Allora, l'operatore di selezione avrà la forma:
 
 $$Sel^\xi : (\Gamma \times Z \times \mathbb{R})^r \to (\Gamma \times Z \times \mathbb{R})^s$$
 $$A_{i \quad 1 \leq i \leq r} \mapsto A_{IS^\xi (c_1,\dots,c_r)_k \quad 1 \leq k \leq s }$$
@@ -1343,8 +1343,7 @@ $$IS^\xi : \mathbb{R}^r \to \{ 1, \dots, r \}^s$$
 
 ![[images/evalg.png]]
 
-Siamo, ora, pronti a dare una definizione formale di algoritmo evolutivo:
-Un **algoritmo evolutivo** su un problema di ottimizzazione $P$ è una tupla $(\Gamma, dec, Mut, Rek, IS_{genitori}, IS_{ambiente}, \mu, \lambda)$, dove $\mu$ descrive il numero degli individui della generazione precedente e $\lambda$ descrive il numero di figli per generazione.
+E' possibile dare ora una definizione formale di algoritmo evolutivo: un **algoritmo evolutivo** su un problema di ottimizzazione $P$ è una tupla $(\Gamma, dec, Mut, Rek, IS_{genitori}, IS_{ambiente}, \mu, \lambda)$, dove $\mu$ descrive il numero degli individui della generazione precedente e $\lambda$ descrive il numero di figli per generazione.
 
 $$Rek : (\Gamma \times Z)^k \to (\Gamma \times Z)^{k'}$$
 $$IS_{genitori} : \mathbb{R}^\mu \to \{ 1, \dots, \mu \}^{\frac{k}{k'}\cdot \lambda} \quad \frac{k}{k'}\cdot \lambda \in \mathbb{N}$$
@@ -1357,17 +1356,17 @@ Vi è una distinzione che si può tracciare all'interno degli algoritmi evolutiv
 ----------------------------------------------------------------
 
 ### Meta-euristiche ###
-Una **meta-euristica** è un metodo algoritmico per trovare soluzioni approssimate di un problema di ottimizzazione combinatoria. Si definiscono sequenze astratte di passi che possono essere applicate a qualsiasi problema del genere. Ogni singolo passo deve poi essere declinato a seconda della specificità del problema. Il bisogno per un approccio meta-euristico nasce dal fatto che alcune classi di problemi non hanno una efficiente soluzione algoritmica. L'approssimazione che si otterrà rispetto alla soluzione ottima dipende dalla definizione del problema e dall'implementazione dei singoli passi del meta-algoritmo.
+Una **meta-euristica** è un metodo algoritmico per trovare soluzioni approssimate di un problema di ottimizzazione combinatoria. Si definiscono sequenze astratte di passi che possono essere applicate a qualsiasi problema del genere. Ogni singolo passo deve poi essere declinato a seconda della specificità del problema. Il bisogno per un approccio meta-euristico nasce dal fatto che alcune classi di problemi non hanno una soluzione algoritmica efficiente. L'approssimazione che si otterrà rispetto alla soluzione ottima dipende dalla definizione del problema e dall'implementazione dei singoli passi del meta-algoritmo.
 
 ----------------------------------------------------------------
 
 ### Local search method
-Una meta-euristica è quella comunemente chiamata **local search method** e costituisce un caso particolare di algoritmo evolutivo. Dato un problema di ottimizzazione $P$ e la funzione da ottimizzare $f$, questo metodo cerca i massimi globali **localmente**, attorno cioè ai punti scelti durante la fase di inizializzazione. Viene assunto che il valore della funzione in $x_1$ e $x_2$ differisca meno quanto più i due argomenti siano simili: $f$ non ha salti. La particolarità di questo approccio evolutivo è che la popolazione si limita ad un solo individuo. Questo ha alcune conseguenze, soprattutto rispetto agli operatori genetici: l'operatore di ricombinazione non è più necessario e ci si limita a quello di mutazione. Ad ogni passo si può decidere se continuare a mutare l'individuo o crearne uno diverso (per evitare minimi/massimi locali). L'idea è quella di utilizzare il *gradient ascent/descent* per identificare un punto di massimo/minimo facendo un passo nella direzione del gradiente. L'ampiezza dei passi non deve essere troppo piccola perchè in quel caso l'algoritmo convergerebbe troppo lentamente, nè troppo grande perchè si rischiano oscillazioni. Per prevenire il fatto che si rimanga bloccati in minimi/massimi locali si eseguono varie iterazioni dell'algoritmo a partire da diversi punti. Se $f$ non risultasse differenziabile si cerca di determinare la direzione in cui $f$ cresce valutando punti casuali nell'intorno della posizione attuale (*hill climbing*). Una generalizzazione dei precedenti approcci è ciò che in letteratura viene chiamato *simulated annealing*. L'intuizione che ci sta dietro è che muoversi dal basso verso l'alto dovrebbe essere più probabile che il contrario. Per tanto, soluzioni migliori saranno sempre accettate, ma nel caso di soluzioni peggiori, queste potranno essere comunque accettate a seconda della loro \"qualità\". Si può applicare un valore soglia per decidere quanto una soluzione può essere peggiore rispetto alla precedente, oppure decidere un lower bound senza alcun confronto col valore precedente, etc. 
+Una meta-euristica è quella comunemente chiamata **local search method** e costituisce un caso particolare di algoritmo evolutivo. Dato un problema di ottimizzazione $P$ e la funzione da ottimizzare $f$, questo metodo cerca i massimi globali **localmente**, attorno cioè ai punti scelti durante la fase di inizializzazione. Viene assunto che il valore della funzione in $x_1$ e $x_2$ differisca meno quanto più i due argomenti siano simili: $f$ non ha salti. La particolarità di questo approccio evolutivo è che la popolazione si limita ad un solo individuo. Questo ha alcune conseguenze, soprattutto rispetto agli operatori genetici: l'operatore di ricombinazione non è più necessario e ci si limita a quello di mutazione. Ad ogni passo si può decidere se continuare a mutare l'individuo o crearne uno diverso (per evitare minimi/massimi locali). L'idea è quella di utilizzare il **gradient ascent/descent** per identificare un punto di massimo/minimo facendo un passo nella direzione del gradiente. L'ampiezza dei passi non deve essere troppo piccola perchè in quel caso l'algoritmo convergerebbe troppo lentamente, nè troppo grande perchè si rischia di saltare da un picco all'altro della funzione obiettivo senza mai convergere. Per prevenire il fatto che si rimanga bloccati in minimi/massimi locali si eseguono varie iterazioni dell'algoritmo a partire da diversi punti. Se $f$ non risultasse differenziabile si cerca di determinare la direzione in cui $f$ cresce valutando punti casuali nell'intorno della posizione attuale (**hill climbing**). Una generalizzazione dei precedenti approcci è ciò che in letteratura viene chiamato **simulated annealing**. L'intuizione che ci sta dietro è che muoversi dal basso verso l'alto dovrebbe essere più probabile che il contrario. Per tanto, soluzioni migliori saranno sempre accettate, ma nel caso di soluzioni peggiori, queste potranno essere comunque accettate a seconda della loro "qualità". Si può applicare un valore soglia per decidere quanto una soluzione può essere peggiore rispetto alla precedente, oppure decidere un lower bound senza alcun confronto col valore precedente, etc. 
 
 ----------------------------------------------------------------
 
 ### Tabu search ###
-L'algoritmo **tabu search** può essere visto come una local search che, nel momento di creare un nuovo individuo, considera la storia delle passate generazioni. Si appronta una lista (FIFO) di **tabu** la quale permette di evitare di ricorrere a candidati già testati. Ogni individuo è una soluzione completa. Le mutazioni non sono permesse. Se il nuovo candidato mostra "proprietà interessanti" può essere fatta una eccezione al tabu.
+L'algoritmo **tabu search** può essere visto come una local search che, nel momento di creare un nuovo individuo, considera la storia delle passate generazioni. Si appronta una lista (FIFO) di **tabu**, la quale permette di evitare di ricorrere a candidati già testati. Ogni individuo è una soluzione completa. Le mutazioni non sono permesse. Se il nuovo candidato mostra "proprietà interessanti" può essere fatta una eccezione al tabu.
 
 ----------------------------------------------------------------
 
@@ -1512,13 +1511,13 @@ Dal lato della **population based optimization** si trova, invece, il cosiddetto
 ----------------------------------------------------------------
 
 ### Fondamenti teorici ###
-Per dimostrare la correttezza degli algoritmi evolutivi occorre considerare gli *schemata*, ovvero cromosomi binari solo parzialmente specificati che codificano un particolare comportamento. Da qui, si partirà poi a studiare come il numero dei cromosomi che condividono lo schema si evolve rispetto alle generazioni. L'obbiettivo è quello di fornire una stima stocastica che descriva come un algoritmo evolutivo esplora lo spazio di ricerca.
+Per dimostrare la correttezza degli algoritmi evolutivi occorre considerare gli **schemata**, ovvero cromosomi binari solo parzialmente specificati che codificano un particolare comportamento. Da qui, si partirà poi a studiare come il numero dei cromosomi che condividono lo schema si evolve rispetto alle generazioni. L'obbiettivo è quello di fornire una stima stocastica che descriva come un algoritmo evolutivo esplora lo spazio di ricerca.
 
-Uno *schema* $h$ è una stringa di simboli di lunghezza $L$ sull'alfabeto $\{0,1,*\}$. Il carattere $*$ è una wildcard. Un cromosoma $c$ si dice che *condivide* lo schema $h$ (in simboli, $c \triangleleft h$) se e solo se, escluse le posizioni in $h$ aventi il simbolo $*$, $h$ coincide con $c$.
+Uno **schema** $h$ è una stringa di simboli di lunghezza $L$ sull'alfabeto $\{0,1,*\}$. Il carattere $*$ è una wildcard. Un cromosoma $c$ si dice che **condivide** lo schema $h$ (in simboli, $c \triangleleft h$) se e solo se, escluse le posizioni in $h$ aventi il simbolo $*$, $h$ coincide con $c$.
 
-Per misurare gli effetti della selezione occorre calcolare la fitness dei cromosomi che condividono un certo schema. Di solito si sceglie come misura la *media del fitness* relativa ai soli cromosomi che condividono lo schema. Gli individui che condivideranno lo schema nella generazione successiva saranno proporzionali a questa media. Per calcolare, invece, l'influenza dell'operatore di mutazione occorre misurare la probabilità che, avvenuta la mutazione, lo schema si preservi. Definiamo, quindi, il concetto di *ordine* di uno schema.
+Per misurare gli effetti della selezione occorre calcolare la fitness dei cromosomi che condividono un certo schema. Di solito si sceglie come misura la **media del fitness** relativa ai soli cromosomi che condividono lo schema. Gli individui che condivideranno lo schema nella generazione successiva saranno proporzionali a questa media. Per calcolare, invece, l'influenza dell'operatore di mutazione occorre misurare la probabilità che, avvenuta la mutazione, lo schema si preservi. Definiamo, quindi, il concetto di **ordine** di uno schema.
 
-L'*ordine* di uno schema $h$ è il numero degli 1 e degli 0 in $h$, ovvero
+L'**ordine** di uno schema $h$ è il numero degli 1 e degli 0 in $h$, ovvero
 
 $$ord(h) = \#1 + \#0$$
 
@@ -1526,17 +1525,17 @@ Possiamo, ora, calcolare la probabilità che un operatore di mutazione preservi 
 
 $$(1 - p_m)^{ord(h)}$$
 
-Per concludere, la probabilità che il crossover (ci limiteremo al caso *one-point*) preservi lo schema verrà misurato a seconda della *lunghezza definitoria* dello schema stesso.
+Per concludere, la probabilità che il crossover (ci limiteremo al caso *one-point*) preservi lo schema verrà misurato a seconda della **lunghezza definitoria** dello schema stesso.
 
-La *lunghezza definitoria* di uno schema $h$ è la differenza tra l'ultima posizione in cui occorre un 1 o uno 0 in $h$ e la prima (in simboli, $dl(h)$).
+La **lunghezza definitoria** di uno schema $h$ è la differenza tra l'ultima posizione in cui occorre un 1 o uno 0 in $h$ e la prima (in simboli, $dl(h)$).
 La probabilità che il punto di \"taglio\" divida il cromosoma in modo tale che lo schema finisca nel mezzo sarà calcolata come:
 
 $$\frac{dl(h)}{L-1}$$
 
-dove $L$ è la lunghezza del cromosoma. Definiamo, ora, alcuni concetti fondamentali per quello che segue. Il *valore atteso dei cromosomi che condividono lo schema* (in simboli, $N(h,t)$) è il numero di cromosomi che condividono lo schema durante la generazione $t$. Il *valore atteso (dei cromosomi che condividono lo schema) dopo gli operatori genetici* sarà calcolato come:
+dove $L$ è la lunghezza del cromosoma. Definiamo, ora, alcuni concetti fondamentali per quello che segue. Il **valore atteso dei cromosomi che condividono lo schema** (in simboli, $N(h,t)$) è il numero di cromosomi che condividono lo schema durante la generazione $t$. Il **valore atteso (dei cromosomi che condividono lo schema) dopo gli operatori genetici** sarà calcolato come:
 $$N(h,t + \Delta t_s + \Delta t_c + \Delta t_m) = N(h,t+1)$$ dove i vari $\Delta$ dipenderanno dalle probabilità dei singoli operatori definite sopra.
 
-Un importante teorema, il così detto *schema theorem*, ci dice che schemi con a) una fitness sopra la media, b) una lunghezza definitoria corta e c) con ordine basso, si riproducono in modo \"quasi\" esponenziale. Tuttavia, un altro importante teorema, il così detto *no free lunch theorem*, ci dice che non esiste un algoritmo evolutivo che possa essere utilizzato efficientemente per ogni problema. La scelta della \"giusta\" codifica e dei \"corretti\" operatori genetici dipenderà dalla nostra conoscenza locale riguardo allo specifico problema.
+Un importante teorema, il così detto **schema theorem**, ci dice che schemi con a) una fitness sopra la media, b) una lunghezza definitoria corta e c) con ordine basso, si riproducono in modo "quasi" esponenziale. Tuttavia, un altro importante teorema, il così detto **no free lunch theorem**, ci dice che non esiste un algoritmo evolutivo che possa essere utilizzato efficientemente per ogni problema. La scelta della "giusta" codifica e dei "corretti" operatori genetici dipenderà dalla nostra conoscenza locale riguardo allo specifico problema.
 
 ---------------------------------------------------------------
 
@@ -1550,7 +1549,7 @@ Può essere utile, inoltre, rappresentare i cromosomi come espressioni del lingu
 ----------------------------------------------------------------
 
 ### Inizializzazione ###
-Come nel caso degli algoritmi evolutivi visti in precedenza, occorre inizializzare una popolazione di individui (espressioni simboliche o alberi sintattici, in questo caso) creati in modo random. Data la complessità che esibiscono queste strutture, nel processo di creazione, bisogna considerare alcuni parametri quali l'*altezza massima* degli alberi e il *numero massimo di nodi*. Esistono vari sottoalgoritmi che si occupano dell'inizializzazione degli alberi sintattici:
+Come nel caso degli algoritmi evolutivi visti in precedenza, occorre inizializzare una popolazione di individui (espressioni simboliche o alberi sintattici, in questo caso) creati in modo random. Data la complessità che esibiscono queste strutture, nel processo di creazione, bisogna considerare alcuni parametri quali l'**altezza massima** degli alberi e il **numero massimo di nodi**. Esistono vari sottoalgoritmi che si occupano dell'inizializzazione degli alberi sintattici:
 1. **Grow**: la probabilità di scegliere un nodo interno o uno terminale è distribuita in modo uniforme a qualsiasi livello di profondità. Questo permette di creare alberi \"sbilanciati\";
 2. **Full**: i nodi terminali possono occorrere solo al livello dell'altezza massima dell'albero. Questo permette di creare alberi \"bilanciati\";
 3. **Ramp-half-and-half**: questo approccio mischia i primi due per avere più varianza nella forma esibita dagli alberi sintattici.
@@ -1559,16 +1558,16 @@ Come nel caso degli algoritmi evolutivi visti in precedenza, occorre inizializza
 
 ### Operatori genetici ###
 La popolazione così inizializzata difficilmente avrà un buon punteggio di fitness. Il processo evolutivo si occuperà di apportare cambiamenti alla popolazione attraverso operatori genetici. I tre più importanti sono:
--   *Crossover*;
--   *Mutation*;
--   *Cloning* (duplicazione di un individuo);
+- **Crossover**;
+- **Mutation**;
+- **Cloning** (duplicazione di un individuo);
 
 Nel caso del crossover, un approccio che si adotta spesso è quello dello scambio di due sottoespressioni: si scelgono due nodi interni e si scambiano tra i due alberi. Nel caso della mutazione, invece, si effettua sempre uno scambio di sottoalberi, ma con uno generato randomicamente.
 
 ----------------------------------------------------------------
 
 ### Introni ###
-Durante il processo evolutivo gli individui tendono a sviluppare larghe porzioni di codice \"inutile\" ai fini della computazione. Un concetto simile ci viene dalla biologia: gli *introni* sono porzioni di DNA che non codificano alcuna informazione a livello del fenotipo (per questo vengono talvolta chiamati *junk-DNA*). Per evitare il verificarsi di questo fenomeno esistono alcune strategie:
+Durante il processo evolutivo gli individui tendono a sviluppare larghe porzioni di codice "inutile" ai fini della computazione. Un concetto simile ci viene dalla biologia: gli **introni** sono porzioni di DNA che non codificano alcuna informazione a livello del fenotipo (per questo vengono talvolta chiamati **junk-DNA**). Per evitare il verificarsi di questo fenomeno esistono alcune strategie:
 - **Breeding recombination**: si generano molti figli usando parametri differenti, e si mantengono solo i migliori;
 - **Intelligent recombination**: si scelgono in modo più selettivo i punti dove operare il crossover;
 - **Continuos slight changes**: possiamo cambiare leggeramente la funzione di valutazione in modo che gli introni non siano più tali.
@@ -1576,13 +1575,12 @@ Durante il processo evolutivo gli individui tendono a sviluppare larghe porzioni
 ----------------------------------------------------------------
 
 ### Strategie evolutive ###
-In una *strategia evolutiva* cerchiamo non solo di ottimizzare i singoli individui, ma prendiamo in analisi l'intero processo evolutivo: riproduzione, mortalità, lunghezza media della vita degli individui, etc. Questi parametri sono suscettibili alle scelte che facciamo in materia di operatori genetici. Quello che facciamo è considerare un problema di ottimizzazione come una funzione $f: \mathbb{R}^n \to \mathbb{R}$ che vogliamo minimizzare. I cromosomi saranno rappresentati da array di reali (a differenza degli algoritmi visti in precedenza che utilizzavano per lo più rappresentazioni ad
-interi). Utilizziamo, poi, unicamente l'operatore di mutazione per muovere il vettore cromosoma all'interno dello spazio di ricerca aggiungendovi un vettore $r$ randomico ottenuto da una distribuzione normale. Il processo di selezione verrà applicato agli individui così mutati. Solo i migliori accederanno direttamente alla generazione successiva (elitismo). Per operare questa scelta vi sono due diversi
+In una **strategia evolutiva** cerchiamo non solo di ottimizzare i singoli individui, ma prendiamo in analisi l'intero processo evolutivo: riproduzione, mortalità, lunghezza media della vita degli individui, etc. Questi parametri sono suscettibili alle scelte che facciamo in materia di operatori genetici. Quello che facciamo è considerare un problema di ottimizzazione come una funzione $f: \mathbb{R}^n \to \mathbb{R}$ che vogliamo minimizzare. I cromosomi saranno rappresentati da array di reali (a differenza degli algoritmi visti in precedenza che utilizzavano per lo più rappresentazioni ad interi). Utilizziamo, poi, unicamente l'operatore di mutazione per muovere il vettore cromosoma all'interno dello spazio di ricerca aggiungendovi un vettore $r$ randomico ottenuto da una distribuzione normale. Il processo di selezione verrà applicato agli individui così mutati. Solo i migliori accederanno direttamente alla generazione successiva (elitismo). Per operare questa scelta vi sono due diversi
 approcci:
 - **Plus-strategy**: la selezione lavora sull'insieme degli individui non mutati e degli individui mutati;
 - **Comma-strategy**: si generano molti individui mutati e si sceglie tra loro chi costituirà la nuova generazione. I cromosomi non mutati vengono persi.
 
-Il vantaggio del primo approccio sta nel fatto che la fitness della popolazione non può che migliorare per la politica elitista che si adotta. Il problema è che si può rimanere bloccati in minimi locali. In questi casi può essere utile adottare la comma-strategy per creare diversità nella popolazione. Può anche essere opportuno adattare la varianza della mutazione durante il processo evolutivo. Se si permette una piccola varianza, allora si avrà un'esplorazione locale (**exploitation**). Se, invece, si permette una ampia varianza, si avrà una ricerca globale (*exploration*). Occorre scegliere un parametro $\sigma$ che ottimizzi la convergenza. Solitamente si utilizza la così detta $\frac{1}{5}$ *success rule*: la varianza è appropriata quando $\frac{1}{5}$ degli individui mutati ha una miglior fitness rispetto a quelli della passata generazione. Si può anche avere un approccio più locale e conservare per ogni vettore cromosoma la sua varianza associata come un'informazione addizionale. I cromosomi con una \"cattiva\" varianza genereranno \"cattivi\" discendenti. I cromosomi (e le loro varianze) che hanno i peggiori valori di fitness non potranno accedere alle seguenti generazioni e si estingueranno.
+Il vantaggio del primo approccio sta nel fatto che la fitness della popolazione non può che migliorare per la politica elitista che si adotta. Il problema è che si può rimanere bloccati in minimi locali. In questi casi può essere utile adottare la comma-strategy per creare diversità nella popolazione. Può anche essere opportuno adattare la varianza della mutazione durante il processo evolutivo. Se si permette una piccola varianza, allora si avrà un'esplorazione locale (**exploitation**). Se, invece, si permette una ampia varianza, si avrà una ricerca globale (**exploration**). Occorre scegliere un parametro $\sigma$ che ottimizzi la convergenza. Solitamente si utilizza la così detta $\frac{1}{5}$ **success rule**: la varianza è appropriata quando $\frac{1}{5}$ degli individui mutati ha una miglior fitness rispetto a quelli della passata generazione. Si può anche avere un approccio più locale e conservare per ogni vettore cromosoma la sua varianza associata come un'informazione addizionale. I cromosomi con una "cattiva" varianza genereranno "cattivi" discendenti. I cromosomi (e le loro varianze) che hanno i peggiori valori di fitness non potranno accedere alle seguenti generazioni e si estingueranno.
 
 ----------------------------------------------------------------
 
@@ -1591,12 +1589,12 @@ Ci possono essere dei casi di problemi di ottimizzazione dove si hanno diversi o
 
 $$f(s) = \sum w_i \cdot f_i(s)$$
 
-Ognuna delle singole funzioni si vedrà assegnato un peso che rispecchierà la sua importanza relativa rispetto agli altri parametri. Il problema è quello di trovare una distribuzione dei pesi che rispetti i criteri di rilevanza. Se, inoltre, gli obiettivi sono tra loro in conflitto sarà ancora più difficile trovare una funzione che li aggreghi in modo opportuno. In generale, il teorema di impossibilità di Arrow previene la possibilità che esista una funzione di aggregazione che massimizzi tutte le singole funzioni. Una soluzione è quella di scegliere una soluzione solo se è un *ottimo paretiano*. Un elemento $s \in \Omega$ si dice *ottimo paretiano* rispetto alle funzioni di valutazione $f_i$ con $i \in \{1, \dots, n\}$, se non c'è un elemento $s' \in \Omega$ tale che:
+Ognuna delle singole funzioni si vedrà assegnato un peso che rispecchierà la sua importanza relativa rispetto agli altri parametri. Il problema è quello di trovare una distribuzione dei pesi che rispetti i criteri di rilevanza. Se, inoltre, gli obiettivi sono tra loro in conflitto sarà ancora più difficile trovare una funzione che li aggreghi in modo opportuno. In generale, il teorema di impossibilità di Arrow previene la possibilità che esista una funzione di aggregazione che massimizzi tutte le singole funzioni. Una soluzione è quella di scegliere una soluzione solo se è un **ottimo paretiano**. Un elemento $s \in \Omega$ si dice **ottimo paretiano** rispetto alle funzioni di valutazione $f_i$ con $i \in \{1, \dots, n\}$, se non c'è un elemento $s' \in \Omega$ tale che:
 
 $$\forall i, 1 \leq i \leq n: \quad f_i(s') \geq f_i(s)$$
 $$\exists i, 1 \leq i \leq n: \quad f_i(s') > f_i(s)$$
 
-Si potrà preferire una soluzione all'altra solo nel caso in cui nessuna funzione di valutazione peggiorerà nel caso si operi questa scelta. L'insieme delle soluzioni pareto-ottimali è detta *frontiera paretiana*. Un vantaggio di questo approccio è che si evita il bisogno di aggregare le singole funzioni di valutazione e la ricerca è da operare solo uno volta. Possiamo utilizzare gli algoritmi evolutivi per trovare quante più soluzioni pareto-ottimali. Un approccio è quella di definire la funzione di fitness come la somma pesata delle singole funzioni di valutazione. Purtroppo questo favorisce soluzione che massimizzino una delle funzioni a discapito delle altre. Si può risolvere il problema individuando queste soluzioni \"marginali\" e scartandole in fase di selezione. Un secondo problema è quello della convergenza in un punto qualsiasi del fronte, si può rimediare applicando tecniche di *power law sharing*, simili a quelle per evitare *crowding*. Tali tecniche, tenendo conto delle zone già coperte del fronte, cercheranno di coprire punti inesplorati del fronte, in modo da garantire una copertura omogenea.
+Si potrà preferire una soluzione all'altra solo nel caso in cui nessuna funzione di valutazione peggiorerà nel caso si operi questa scelta. L'insieme delle soluzioni pareto-ottimali è detta **frontiera paretiana**. Un vantaggio di questo approccio è che si evita il bisogno di aggregare le singole funzioni di valutazione e la ricerca è da operare solo uno volta. Possiamo utilizzare gli algoritmi evolutivi per trovare quante più soluzioni pareto-ottimali. Un approccio è quella di definire la funzione di fitness come la somma pesata delle singole funzioni di valutazione. Purtroppo questo favorisce soluzione che massimizzino una delle funzioni a discapito delle altre. Si può risolvere il problema individuando queste soluzioni "marginali" e scartandole in fase di selezione. Un secondo problema è quello della convergenza in un punto qualsiasi del fronte, si può rimediare applicando tecniche di **power law sharing**, simili a quelle per evitare **crowding**. Tali tecniche, tenendo conto delle zone già coperte del fronte, cercheranno di coprire punti inesplorati del fronte, in modo da garantire una copertura omogenea.
 
 ----------------------------------------------------------------
 
