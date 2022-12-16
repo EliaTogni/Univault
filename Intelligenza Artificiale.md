@@ -1408,14 +1408,14 @@ Oltre alle informazioni genetiche si possono considerare anche quelle "culturali
 ----------------------------------------------------------------
 
 ## Elementi di algoritmi evolutivi ##
-
 ### Codifica ###
-Le soluzioni al nostro problema devono essere codificate in modo che si possa esplorare lo spazio delle possibili soluzioni attraverso questa rappresentazione. Non esiste una ricetta generale: il problema della codifica è specifico per ogni problema. Tuttavia, esistono alcuni principi di massima da seguire:
-1) Rappresentare fenotipi simili con genotipi simili;
-2) La funzione di fitness deve restituire valori simili per candidati simili;
-3) Lo spazio $\Omega$ deve essere chiuso rispetto agli operatori genetici.
+Le soluzioni al problema devono essere codificate in modo tale che si possa esplorare lo spazio delle possibili soluzioni attraverso questa rappresentazione.<br />
+Non esiste una ricetta generale: il problema della codifica è specifico per ogni problema. Tuttavia, esistono alcuni principi di massima da seguire:
+1) Rappresentare fenotipi simili con genotipi simili, principio il quale assicura che mutazioni di certi geni risultino in genotipi simili e che radicali cambiamenti permettano di evadere da minimi locali;
+2) La funzione di fitness deve restituire valori simili per candidati simili, principio il quale previene che si scelga una codifica troppo o troppo poco epistatica. Se troppo, una singola mutazione potrebbe produrre casuali cambiamenti di fitness. Se troppo poco, l'efficienza dell'algoritmo ne risente;
+3) Lo spazio $\Omega$ deve essere chiuso rispetto agli operatori genetici. Infatti, se lo spazio di ricerca non è chiuso rispetto agli operatori genetici, un cromosoma modificato potrebbe non essere più decodificato e interpretato.
 
-La 1) assicura che mutazioni di certi geni risultino in genotipi simili e che radicali cambiamenti permettano di evadere da minimi locali. La 2) previene che si scelga una codifica troppo o troppo poco epistatica. Se troppo, una singola mutazione potrebbe produrre casuali cambiamenti di fitness. Se troppo poco, l'efficienza dell'algoritmo ne risente. Le motivazioni per 3) sono abbastanze ovvie: se lo spazio di ricerca non è chiuso rispetto agli operatori genetici, un cromosoma modificato potrebbe non essere più decodificato e interpretato.
+----------------------------------------------------------------
 
 ### Fitness ###
 Gli individui migliori (quelli che hanno migliori valori di fitness) dovrebbero avere le migliori opportunità di riprodursi. Per fare questo occorre esercitare quella che in gergo viene chiamata **selective pressure** nel processo di creazione delle nuove generazioni. Se la selective pressure è bassa, si parla di **esplorazione dello spazio**: la deviazioni permessa rispetto agli individui è la più ampia possibile (tutto $\Omega$), vi sono buone possibilità di raggiungere il massimo globale. Se la selective pressure è alta, si parla di **sfruttamento degli individui migliori**: si ricerca l'ottimo nelle vicinanze degli individui migliori, l'algoritmo converge velocemente, anche se col rischio di convergere ad un ottimo locale. Per poter scegliere la corretta selective pressure occorre una metrica per calcolarla. Alcune tra quelle utilizzate in letteratura sono: 
