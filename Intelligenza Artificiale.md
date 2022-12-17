@@ -1290,8 +1290,8 @@ Il network così costruito può essere allenato grazie alla backpropagation.
 ----------------------------------------------------------------
 
 ## Algoritmi evolutivi ##
-
 ### Introduzione ###
+Gli **algoritmi evolutivi** comprendono una classe di tecniche di ottimizzazione le quali imitano i principi dell'evoluzione biologica. Il principio cardine degli algoritmi evolutivi è l'applicare principi quali mutazione e selezione a popolazioni di soluzioni candidate al fine di trovare una soluzione sufficientemente valida per un dato problema di ottimizzazione.<br />
 Un **problema di ottimizzazione** può essere descritto da una tripla $(\Omega,f,\prec)$, dove $\Omega$ è lo spazio di ricerca, $f$ è una funzione di valutazione della forma $f:\Omega \to \mathbb{R}$ e $\prec$ un preordine. L'insieme $H \subseteq \Omega$ tale che:
 
 $$H = \{ x \in \Omega | \forall x' \in \Omega: f(x) \succeq f(x') \}$$
@@ -1307,7 +1307,7 @@ Tutti questi metodi hanno delle criticità o sono applicabili solo ad alcuni tip
 2) gli individui che mostrano questi tratti vantaggiosi hanno migliori opportunità di procreare e moltiplicarsi.
 
 Gli elementi di un algoritmo evolutivo sono:
-1) una **codifica** per i candidati in **cromosomi**, non in termini biologici ma in termini di oggetti computazionali, rappresentati da bit, stringhe, interi, etc...;
+1) una **codifica** in **cromosomi** per i candidati, non in termini biologici ma in termini di oggetti computazionali, chiamati **geni**, rappresentati da bit, stringhe, interi, etc...;
 2) un metodo per creare una **popolazione iniziale**, tramite un **algoritmo costruttivo**;
 3) creare una **funzione di fitness** per valutare i candidati, il cui valore risultante rappresenta la qualità dell'individuo;
 4) dei **metodi di selezione** in relazione ai valori di fitness: si scelgono così gli individui che dovranno procreare nella successiva generazione;
@@ -1321,7 +1321,7 @@ Gli elementi di un algoritmo evolutivo sono:
 Per ogni problema di ottimizzazione occorre separare lo spazio dei **fenotipi** $\Omega$ (ovvero, come l'individuo appare) da quello dei **genotipi** $\Gamma$ (ovvero, come l'individuo è rappresentato dalla codifica scelta). La funzione di fitness sarà definita sui fenotipi, dove, invece, gli operatori genetici agiranno sui genotipi. Per valutare i cambiamenti nel genotipo sarà necessario fornire una funzione di
 *decodifica* $dec: \Gamma \to \Omega$.
 
-Ogni **individuo** $A$ è rappresentato da un tupla $(A.G, A.S, A.F)$ contenente il genotipo ($A.G \in \Gamma$), informazioni e parametri addizionali $A.S \in Z$ e la valutazione dello stesso rispetto alla funzione di fitness $A.F = f(dec(A.G))$.
+Ogni **individuo** $A$ è rappresentato da un tupla $(A.G, A.S, A.F)$ contenente il genotipo ($A.G \in \Gamma$), informazioni e parametri addizionali $A.S \in Z$ e la valutazione dello stesso rispetto alla funzione di fitness $A.F = f(dec(A.G))$.<br />
 L'operatore di **mutazione** è definito come una mappa:
 
 $$Mut^{\xi} : \Gamma \times Z \to \Gamma \times Z$$
@@ -1332,7 +1332,7 @@ L'operatore di **ricombinazione** avente $r \geq 2$ genitori e $s \geq 1$ figli 
 $$Rek^\xi : (\Gamma \times Z)^r \to (\Gamma \times Z)^s$$
 
 dove $\xi$ è un numero randomicamente generato.<br />
-L'operatore di **selezione** permette di scegliere grazie ai valori di fitness tra una popolazione di $r$ individui un numero $s$ di individui che continueranno la specie. Sia $P = \{\ A_1, \dots, A_r \}$ la popolazione di individui. Allora, l'operatore di selezione avrà la forma:
+L'operatore di **selezione** permette di scegliere grazie ai valori di fitness tra una popolazione di $r$ individui un numero $s$ di individui i quali continueranno la specie. Sia $P = \{\ A_1, \dots, A_r \}$ la popolazione di individui. Allora, l'operatore di selezione avrà la forma:
 
 $$Sel^\xi : (\Gamma \times Z \times \mathbb{R})^r \to (\Gamma \times Z \times \mathbb{R})^s$$
 $$A_{i \quad 1 \leq i \leq r} \mapsto A_{IS^\xi (c_1,\dots,c_r)_k \quad 1 \leq k \leq s }$$
@@ -1361,7 +1361,9 @@ Una **meta-euristica** è un metodo algoritmico per trovare soluzioni approssima
 ----------------------------------------------------------------
 
 ### Local search method
-Una meta-euristica è quella comunemente chiamata **local search method** e costituisce un caso particolare di algoritmo evolutivo. Dato un problema di ottimizzazione $P$ e la funzione da ottimizzare $f$, questo metodo cerca i massimi globali **localmente**, attorno cioè ai punti scelti durante la fase di inizializzazione. Viene assunto che il valore della funzione in $x_1$ e in $x_2$ differisca meno, quanto più i due argomenti siano simili, cioè $f$ è una funzione continua e priva di salti. La particolarità di questo approccio evolutivo è data dal fatto che la popolazione si limiti ad un solo individuo, cioè l'individuo che l'algoritmo considera come candidato ottimo all'iterazione corrente. Questo ha alcune conseguenze, soprattutto rispetto agli operatori genetici: l'operatore di ricombinazione non è più necessario e ci si limita a quello di mutazione. Ad ogni passo si può decidere se continuare a mutare l'individuo o crearne uno diverso (cioè reinizializzare la funzione per allontanarsi da minimi/massimi locali). L'idea è quella di utilizzare il **gradient ascent/descent** per identificare un punto di massimo/minimo facendo un passo nella direzione del gradiente. L'ampiezza dei passi non deve essere troppo piccola perchè in quel caso l'algoritmo convergerebbe troppo lentamente, nè troppo grande perchè si rischia di saltare da un picco all'altro della funzione obiettivo, senza mai convergere. Per prevenire il fatto che si rimanga bloccati in minimi/massimi locali, si eseguono varie iterazioni dell'algoritmo a partire da diverse inizializzazioni. Se $f$ non dovesse risultare differenziabile, si cercherà di determinare la direzione in cui $f$ cresca, valutando punti casuali nell'intorno della posizione attuale (**hill climbing**). Una generalizzazione dei precedenti approcci è ciò che in letteratura viene chiamato **simulated annealing**. L'idea alla base di questa tecnica si fonda sull'accettare anche soluzioni che non migliorano la funzione obiettivo, al fine di riuscire ad evadere da un ottimo locale. I movimenti fatti considerano l'**energia** del sistema, il quale deve cambiare fino al raggiungimento di un **equilibrio termico**, impedendo, così, di potersi spostare in un altro stato. Lo stato corrente identifica l'energia del sistema. Soluzioni migliori saranno accettate con probabilità pari a $1$, ma nel caso di soluzioni peggiori, queste potranno essere comunque accettate a seconda della loro "qualità". Più bassa la qualità, più bassa sarà la probabilità che la soluzione proposta venga accettata.
+Una meta-euristica è quella comunemente chiamata **local search method** e costituisce un caso particolare di algoritmo evolutivo. Dato un problema di ottimizzazione $P$ e la funzione da ottimizzare $f$, questo metodo cerca i massimi globali **localmente**, attorno cioè ai punti scelti durante la fase di inizializzazione. Viene assunto che il valore della funzione in $x_1$ e in $x_2$ differisca meno, quanto più i due argomenti siano simili, cioè $f$ è una funzione continua e priva di salti. La particolarità di questo approccio evolutivo è data dal fatto che la popolazione si limiti ad un solo individuo, cioè l'individuo che l'algoritmo considera come candidato ottimo all'iterazione corrente. Questo ha alcune conseguenze, soprattutto rispetto agli operatori genetici: l'operatore di ricombinazione non è più necessario e ci si limita a quello di mutazione. Ad ogni passo si può decidere se continuare a mutare l'individuo o crearne uno diverso (cioè reinizializzare la funzione per allontanarsi da minimi/massimi locali). L'idea è quella di utilizzare il **gradient ascent/descent** per identificare un punto di massimo/minimo, facendo un passo nella direzione del gradiente. L'ampiezza dei passi non deve essere troppo piccola perchè in quel caso l'algoritmo convergerebbe troppo lentamente, nè troppo grande perchè si rischia di saltare da un picco all'altro della funzione obiettivo, senza mai convergere. Per prevenire il fatto che si rimanga bloccati in minimi/massimi locali, si eseguono varie iterazioni dell'algoritmo a partire da diverse inizializzazioni. Se $f$ non dovesse risultare differenziabile, si cercherà di determinare la direzione di crescita di $f$, valutando punti casuali nell'intorno della posizione attuale (**hill climbing**).
+
+Una generalizzazione dei precedenti approcci è ciò che in letteratura viene chiamato **simulated annealing**. L'idea alla base di questa tecnica si fonda sull'accettare anche soluzioni che non migliorano la funzione obiettivo, al fine di riuscire ad evadere da un ottimo locale. I movimenti fatti considerano l'**energia** del sistema, il quale deve cambiare fino al raggiungimento di un **equilibrio termico**, impedendo, così, di potersi spostare in un altro stato. Lo stato corrente identifica l'energia del sistema. Soluzioni migliori saranno accettate con probabilità pari a $1$, ma nel caso di soluzioni peggiori, queste potranno essere comunque accettate a seconda della loro "qualità". Più bassa la qualità, più bassa sarà la probabilità che la soluzione proposta venga accettata.
 
 ----------------------------------------------------------------
 
@@ -1376,12 +1378,12 @@ Tecnica molto simile al simulated annealing: soluzioni peggiori sono accettate s
 ----------------------------------------------------------------
 
 ### Record to record travel ###
-Variante della tecnica great deluge, utilizza il rising water level, collegato al valore di fitness del miglior individuo trovato.
+Variante della tecnica great deluge, utilizza il rising water level, ovvero un lower bound collegato al valore di fitness del miglior individuo trovato.
 
 ----------------------------------------------------------------
 
 ### Tabu search ###
-L'algoritmo **tabu search** può essere visto come una local search che, nel momento di creare un nuovo individuo, considera la storia delle passate generazioni. Si appronta una lista (FIFO) di **tabù**, la quale permette di evitare di ricorrere a candidati già testati o memorizzare proprietà particolari di soluzioni già osservate. Questa limitazione ha un tempo di scadenza, altrimenti l'algoritmo si troverebbe incastrato da soluzioni tabù nelle vicinanze. 
+L'algoritmo **tabu search** può essere visto come una local search che, nel momento di creare un nuovo individuo, considera la storia delle passate generazioni. Si appronta una lista (FIFO) di **tabù**, la quale permette di evitare di ricorrere a candidati già testati o di memorizzare proprietà particolari di soluzioni già osservate. Ogni entry nella lista di tabù ha un time to leave, altrimenti l'algoritmo si troverebbe incastrato da soluzioni tabù nelle vicinanze. 
 
 ----------------------------------------------------------------
 
@@ -1391,17 +1393,17 @@ Un diverso approccio è quello degli **algoritmi memetici**. Questi algoritmi un
 ----------------------------------------------------------------
 
 ### Evoluzione differenziale ###
-Un'altra strategia è quella dell'**evoluzione differenziale**. Non si ha, in questo caso, un adattamento dell'ampiezza dei passi, ma si cerca di calcolare quest'ampiezza utilizzando le relazioni tra gli individui nella popolazione come base. Si introduce un particolare operatore genetico: **DE-operator**. Questo operatore può essere visto come una combinazione dell'operatore di ricombinazione e quello di mutazione. Nella selezione, invece, un discendente può rimpiazzare i suoi antenati se e solo se ha un miglior valore di fitness.
+Un'altra strategia è quella dell'**evoluzione differenziale**. Non si ha, in questo caso, un adattamento dell'ampiezza dei passi, ma si cerca di calcolare quest'ampiezza utilizzando come base le relazioni tra gli individui nella popolazione. Si introduce un particolare operatore genetico: **DE-operator**. Questo operatore può essere visto come una combinazione dell'operatore di ricombinazione e quello di mutazione. Nella selezione, invece, un discendente può rimpiazzare i suoi antenati se e solo se ha un miglior valore di fitness.
 
 ----------------------------------------------------------------
 
 ### Scatter search ###
-L'idea alla base degli algoritmi **scatter search** è di avere una popolazione e di operare una ricerca locale attorno agli individui. Dati i valori registrati da questa ricerca, si forza l'evoluzione a seconda della direzione del massimo registrato. Questo è un metodo puramente deterministico, a differenza dei precedenti. La sua bontà dipende dalla copertura dello spazio di ricerca che si è in grado di offrire.
+L'idea alla base degli algoritmi **scatter search** è di avere una popolazione e di operare una ricerca locale attorno agli individui. Dati i valori registrati da questa ricerca, si forza l'evoluzione verso la direzione del massimo registrato. Questo è un metodo puramente deterministico, a differenza dei precedenti. La sua bontà dipende dalla copertura dello spazio di ricerca che si è in grado di offrire.
 
 ----------------------------------------------------------------
 
 ### Algoritmi culturali ###
-Oltre alle informazioni genetiche, si possono considerare anche quelle "culturali", relative alle skill apprese dalle precedenti generazioni. Gli **algoritmi culturali** cercano di trarre vantaggio da questa memoria generazionale di modo che gli individui vengano influenzati da quest'ultima. Esistono due tipi di sapere culturalmente rilevante: 
+Oltre alle informazioni genetiche, si possono considerare anche quelle "culturali", relative alle skill apprese dalle precedenti generazioni. Gli **algoritmi culturali** cercano di trarre vantaggio da questa memoria generazionale, in modo che gli individui vengano influenzati da quest'ultima. Esistono due tipi di sapere culturalmente rilevante: 
 - **Sapere situazionale**: relativo a generazioni tra loro prossime;
 - **Sapere normativo**: sempre rilevante.
 
@@ -1410,16 +1412,16 @@ Oltre alle informazioni genetiche, si possono considerare anche quelle "cultural
 ## Elementi di algoritmi evolutivi ##
 ### Codifica ###
 Le soluzioni al problema devono essere codificate in modo tale che si possa esplorare lo spazio delle possibili soluzioni attraverso questa rappresentazione.<br />
-Non esiste una ricetta generale: il problema della codifica è specifico per ogni problema. Tuttavia, esistono alcuni principi di massima da seguire:
+Non esiste una ricetta generale: la scelta della codifica è specifica per ogni problema. Tuttavia, esistono alcuni principi di massima da seguire:
 1) Rappresentare fenotipi simili con genotipi simili, principio il quale assicura che mutazioni di certi geni risultino in genotipi simili e che radicali cambiamenti permettano di evadere da minimi locali;
-2) La funzione di fitness deve restituire valori simili per candidati simili, principio il quale previene che si scelga una codifica troppo o troppo poco epistatica. Se troppo, una singola mutazione potrebbe produrre casuali cambiamenti di fitness. Se troppo poco, l'efficienza dell'algoritmo ne risente;
-3) Lo spazio $\Omega$ deve essere chiuso rispetto agli operatori genetici. Infatti, se lo spazio di ricerca non è chiuso rispetto agli operatori genetici, un cromosoma modificato potrebbe non essere più decodificato e interpretato.
+2) La funzione di fitness deve restituire valori simili per candidati simili, principio il quale previene che si scelga una codifica troppo o troppo poco **epistatica**, ovvero fortemente dipendente da un singolo gene e non da tutto il cromosoma. Se troppo, una singola mutazione potrebbe produrre casuali cambiamenti di fitness. Se troppo poco, l'efficienza dell'algoritmo ne risente;
+3) Lo spazio $\Omega$ deve essere chiuso rispetto agli operatori genetici. Infatti, se lo spazio di ricerca non dovesse essere chiuso, un cromosoma modificato potrebbe non essere più decodificato e interpretato.
 
 ----------------------------------------------------------------
 
 ### Fitness ###
-Gli individui migliori (quelli che hanno migliori valori di fitness) dovrebbero avere le migliori opportunità di riprodursi. Per fare questo occorre esercitare quella che in gergo viene chiamata **selective pressure** nel processo di creazione delle nuove generazioni. Se la selective pressure è bassa, si parla di **esplorazione dello spazio**: la deviazioni permessa rispetto agli individui è la più ampia possibile (tutto $\Omega$), vi sono buone possibilità di raggiungere il massimo globale. Se la selective pressure è alta, si parla di **sfruttamento degli individui migliori**: si ricerca l'ottimo nelle vicinanze degli individui migliori, l'algoritmo converge velocemente, anche se col rischio di convergere ad un ottimo locale. Per poter scegliere la corretta selective pressure occorre una metrica per calcolarla. Alcune tra quelle utilizzate in letteratura sono: 
-- **selection intensity**: il differenziale tra prima e dopo che la selezione è avvenuta;
+Gli individui migliori (quelli che hanno migliori valori di fitness) dovrebbero avere le migliori opportunità di riprodursi. Per permettere questo, occorre esercitare ciò che in gergo viene chiamata **selective pressure** nel processo di creazione delle nuove generazioni. Se la selective pressure è bassa, si parla di **esplorazione dello spazio**: la deviazione permessa rispetto agli individui è la più ampia possibile (tutto $\Omega$), vi sono buone possibilità di raggiungere il massimo globale. Se la selective pressure è alta, si parla di **sfruttamento degli individui migliori**: si ricerca l'ottimo nelle vicinanze degli individui migliori e l'algoritmo converge velocemente, anche se col rischio di convergere ad un ottimo locale. Per poter scegliere la corretta selective pressure occorre una metrica per calcolarla. Alcune tra quelle utilizzate in letteratura sono: 
+- **selection intensity**: il differenziale tra prima e dopo l'avvenimento della selezione. Definisce la porzione di popolazione che sopravviverà e che verrà usata nella successiva iterazione;
 - **time to takeover**: il numero di generazioni prima che la popolazione converga.
 
 Gli stessi metodi di selezioni possono variare al variare della pressione evolutiva. Uno dei più usati è quello chiamato **roulette-wheel selection**. Si computa il valore di fitness relativo di ogni individuo grazie alla seguente formula:
@@ -1428,7 +1430,7 @@ $$f_{rel}(A_i) = \frac{A_i.F}{\sum_{j=1}^{|P|} A_j.F}$$
 
 La probabilità per un individuo di essere selezionato per la riproduzione sarà proporzionale al suo valore di fitness relativo. Alcuni svantaggi sono:
 - la computazione del valore di fitness relativo è costosa e difficilmente parallelizzabile;
-- gli individui con un alto valore di fitness potrebbero dominare la selezione (scomparsa delle biodiversità);
+- gli individui con un alto valore di fitness potrebbero dominare la selezione (**scomparsa delle biodiversità**);
 - molto veloce a trovare ottimi locali, ma pessima esplorazione dello spazio.
 
 La stessa funzione di fitness può essere adattata per impedire una convergenza troppo rapida:
@@ -1463,9 +1465,9 @@ Di seguito si elencano alcune proprietà che possono caratterizzare i metodi di 
 
 ### Operatori genetici ###
 Gli **operatori genetici** sono applicati ad una frazione di individui scelti (popolazione intermedia). Vengono così generate mutazioni e ricombinazioni delle soluzioni già esistenti. Gli operatori genetici vengono classificati secondo la loro arietà in:
-1) One-parent operators;
-2) Two-parent operators;
-3) Multiple-parent operators.
+1) **One-parent operators**;
+2) **Two-parent operators**;
+3) **Multiple-parent operators**.
 
 Nella prima classe possiamo trovare l'operatore di **mutazione**, il quale introduce piccoli cambiamenti randomici nel genoma della soluzione a cui viene applicato. Risulta utile per introdurre biodiversità nel pool delle soluzioni e favorire l'esplorazione dello spazio di ricerca. Esistono vari metodi per operare una mutazione:
 - **Standard mutation**: il valore di uno (o più) gene viene mutato;
