@@ -1297,10 +1297,10 @@ Un **problema di ottimizzazione** può essere descritto da una tripla $(\Omega,f
 $$H = \{ x \in \Omega | \forall x' \in \Omega: f(x) \succeq f(x') \}$$
 
 è definito l'insieme degli **ottimi globali**. Dato un problema di questo genere, la sua soluzione sta nel fornire un elemento il quale appartenga all'insieme $H$. In letteratura sono stati proposti vari metodi di soluzione per i problemi di ottimizzazione:
--   Soluzioni analitiche;
--   Brute-forcing;
--   Random search;
--   Ricerca guidata.
+- soluzioni analitiche;
+- brute-forcing;
+- random search;
+- ricerca guidata.
 
 Tutti questi metodi hanno delle criticità o sono applicabili solo ad alcuni tipi di funzione. Gli **algoritmi evolutivi** rispondono a questo problema adottando una strategia innovativa. Tali algoritmi sono direttamente ispirati alla teoria dell'evoluzione biologica, i cui principi fondamentali sono:
 1) tratti vantaggiosi, risultati di mutazioni casuali, tendono ad essere favoriti dalla selezione naturale;
@@ -1335,7 +1335,7 @@ dove $\xi$ è un numero randomicamente generato.<br />
 L'operatore di **selezione** permette di scegliere grazie ai valori di fitness tra una popolazione di $r$ individui un numero $s$ di individui i quali continueranno la specie. Sia $P = \{\ A_1, \dots, A_r \}$ la popolazione di individui. Allora, l'operatore di selezione avrà la forma:
 
 $$Sel^\xi : (\Gamma \times Z \times \mathbb{R})^r \to (\Gamma \times Z \times \mathbb{R})^s$$
-$$A_{i \quad 1 \leq i \leq r} \mapsto A_{IS^\xi (c_1,\dots,c_r)_k \quad 1 \leq k \leq s }$$
+$$\big\{A^{(i)}\big\}_{ 1 \leq i \leq r} \quad \mapsto  \quad \Big\{A^{(IS^\xi (c_1,\dots,c_r)_k)} \Big \}_{1 \leq k \leq s} $$
 
 dove la selezione ha la forma:
 
@@ -1399,11 +1399,11 @@ Un'altra strategia è quella dell'**evoluzione differenziale**. Non si ha, in qu
 
 ----------------------------------------------------------------
 
-### Scatter search ###
+### Scattered search ###
 L'idea alla base degli algoritmi **scatter search** sfrutta l'avere una popolazione di individui e di operare una ricerca locale attorno a quest'ultimi.<br />
 Si tratta di un processo iterativo in due fasi:
 1) la generazione di nuovi individui e la selezione dei candidati che garantiscono la maggiore varietà possibile;
-2) la ricombinazione di tutte le coppie possibili degli individui scelti, la selezione dei migliori. Si itera poi fino al raggiungimento di uno stato stabile.
+2) la ricombinazione di tutte le coppie possibili degli individui scelti e la selezione dei migliori. Si itera poi fino al raggiungimento di uno stato stabile.
 
 Dati i valori registrati da questa ricerca, si forza l'evoluzione verso la direzione del massimo registrato. Questo è un metodo puramente deterministico, a differenza dei precedenti. La sua bontà dipende dalla copertura dello spazio di ricerca che si è in grado di offrire.
 
@@ -1428,7 +1428,7 @@ Non esiste una ricetta generale: la scelta della codifica è specifica per ogni 
 
 ### Fitness ###
 Gli individui migliori (quelli che hanno migliori valori di fitness) dovrebbero avere le migliori opportunità di riprodursi. Per permettere questo, occorre esercitare ciò che in gergo viene chiamata **selective pressure** nel processo di creazione delle nuove generazioni. Se la selective pressure è bassa, si parla di **esplorazione dello spazio**: la deviazione permessa rispetto agli individui è la più ampia possibile (tutto $\Omega$), vi sono buone possibilità di raggiungere il massimo globale. Se la selective pressure è alta, si parla di **sfruttamento degli individui migliori**: si ricerca l'ottimo nelle vicinanze degli individui migliori e l'algoritmo converge velocemente, anche se col rischio di convergere ad un ottimo locale. Per poter scegliere la corretta selective pressure occorre una metrica per calcolarla. Alcune tra quelle utilizzate in letteratura sono: 
-- **selection intensity**: il differenziale tra prima e dopo l'avvenimento della selezione. Definisce la porzione di popolazione che sopravviverà e che verrà usata nella successiva iterazione;
+- **selection intensity**: il differenziale tra la qualità media prima e dopo l'avvenimento della selezione. Definisce la porzione di popolazione che sopravviverà e che verrà usata nella successiva iterazione;
 - **time to takeover**: il numero di generazioni prima che la popolazione converga.
 
 Gli stessi metodi di selezioni possono variare al variare della pressione evolutiva. Uno dei più usati è quello chiamato **roulette-wheel selection**. Si computa il valore di fitness relativo di ogni individuo grazie alla seguente formula:
@@ -1437,8 +1437,10 @@ $$f_{rel}(A_i) = \frac{A_i.F}{\sum_{j=1}^{|P|} A_j.F}$$
 
 La probabilità per un individuo di essere selezionato per la riproduzione sarà proporzionale al suo valore di fitness relativo. Alcuni svantaggi sono:
 - la computazione del valore di fitness relativo è costosa e difficilmente parallelizzabile;
-- gli individui con un alto valore di fitness potrebbero dominare la selezione (**scomparsa delle biodiversità**);
-- molto veloce a trovare ottimi locali, ma pessima esplorazione dello spazio.
+- gli individui con un alto valore di fitness potrebbero dominare la selezione (**scomparsa delle biodiversità**). La dominanza potrebbe diventare più forte nelle generazioni successive;
+- molto veloce a trovare ottimi locali, ma pessima esplorazione dello spazio;
+- convergenza prematura;
+- **vanishing selective pressure**.
 
 La stessa funzione di fitness può essere adattata per impedire una convergenza troppo rapida:
 - **linear dynamical scaling**: riduciamo la rilevanza della funzione di fitness sottraendoci il minimo delle passate generazioni;
@@ -1452,9 +1454,10 @@ La stessa funzione di fitness può essere adattata per impedire una convergenza 
 Vi sono varie strategie disponibili in letteratura per operare la selezione degli individui che costituiranno il pool genetico per la successiva generazione:
 - **Roulette-wheel selection**: vedi sopra;
 - **Rank-based selection**: si ordinano gli individui in ordine di fitness decrescente. A seconda della posizione si assegna ad ogni individuo un **rank** e con esso si definisce la probabilità di essere selezionati. Si procede ad una selezione del tipo roulette-wheel. Questo modello riesce ad ovviare al problema della dominanza e a regolare la pressione di selezione. Lo svantaggio sta nel fatto che occorre ordinare gli individui (complessità $O(n \log n)$);
-- **Tournament selection**: si estraggono $k$ individui casualmente dalla popolazione. Tramite scontri individuali si decide il migliore, il quale riceverà la possibilità di riprodursi nella prossima generazione. Si riesce così ad evitare il problema della dominanza e si riesce a regolare la pressione di selezione grazie alla grandezza del torneo;
-- **Elitismo**: i migliori individui della generazione precedente costituiscono la generazione successiva. L'elite così scelta non è immune ai cambiamenti apportati dagli operatori genetici. Il vantaggio è che la convergenza viene ottenuta rapidamente. Lo svantaggio è che c'è il rischio di rimanere bloccati in ottimi locali;
-- **Crowding**: gli individui delle generazioni successive dovrebbero rimpiazzare gli individui più simili a loro. La densità locale in $\Omega$ non può crescere in modo indefinito. Questo permette una migliore esplorazione dello spazio.
+- **Tournament selection**: si estraggono $k$ individui casualmente dalla popolazione. Tramite scontri individuali si decide il migliore, il quale riceverà un discendente nella prossima generazione. Tutti i partecipanti tornano poi nella popolazione (anche il vincitore). Si riesce così ad evitare il problema della dominanza e si riesce a regolare la pressione di selezione grazie alla grandezza del torneo;
+- **Elitismo**: i migliori individui della generazione precedente costituiscono la generazione successiva. L'elite così scelta non è immune ai cambiamenti apportati dagli operatori genetici. Il vantaggio è che la convergenza viene ottenuta rapidamente. Lo svantaggio è che c'è il rischio di rimanere bloccati in ottimi locali.
+
+Si vuole soprattutto prevenire il **Crowding**: gli individui delle generazioni successive dovrebbero rimpiazzare gli individui più simili a loro. La densità locale in $\Omega$ non può crescere in modo indefinito. Questo permette una migliore esplorazione dello spazio.
 
 Di seguito si elencano alcune proprietà che possono caratterizzare i metodi di selezione:
 - **Static**: la probabilità di selezione rimane costante;
@@ -1481,7 +1484,9 @@ Nella prima classe è possibile trovare l'operatore di **mutazione**, il quale i
 - **Pair swap**: si scambia la posizione di due geni;
 - **Shift**: si shifta a destra o sinistra un gruppo di $k$ geni di $n$ posizioni;
 - **Arbitrary permutation**: si permuta arbitrariamente un gruppo di geni;
-- **Inversion**: si inverte l'ordine di apparizione di un gruppo di geni.
+- **Inversion**: si inverte l'ordine di apparizione di un gruppo di geni;
+- **Binary Mutation**: si flippano dei bit;
+- **Gaussian Mutation**: si aggiunge un numero randomico distribuito normalmente ad ogni gene.
 
 Invece, l'operatore di gran lunga più importante tra quelli two-parent è quello di **ricombinazione** o **crossover**, il quale ha il compito, date due soluzioni, di creare attraverso una combinazione del loro codice genetico le soluzioni che costituiranno la generazione futura. Vi sono vari modi per operare questa ricombinazione:
 - **one-point crossover**: si determina una posizione casuale nel cromosoma e si scambiano le due sequenze da un lato del taglio;
@@ -1495,11 +1500,11 @@ Invece, l'operatore di gran lunga più importante tra quelli two-parent è quell
 Un caso di multiple-parent operator è quello del **diagonal crossover**. Simile al n-point crossover, ma vi partecipano più di due genitori. Dati $k$ genitori, si scelgono $k-1$ punti per il crossover e si procede shiftando diagonalmente le sequenze rispetto ai punti scelti. Si generano così $k$ figli. Aumentando il numero di genitori si ottiene un ottimo grado di esplorazione dello spazio.
 
 Alcune proprietà che possono caratterizzare gli operatori di crossover sono:
-- **Positional bias**: quando la probabilità che due geni vengano ereditati assieme dallo stesso genitore dipende dalla posizione (relativa) dei due geni nel cromosoma. Deve essere evitato perchè può rendere la disposizione dei geni cruciale per la riuscita dell'algoritmo;
-- **Distributional bias**: quando la probabilità che un certo numero di geni siano scambiati tra i genitori non è la stessa per tutti i possibili numeri di geni. Deve essere evitato perchè soluzioni parziali di differenti lunghezze hanno differenti probabilità di progredire alla generazione successiva. In generale, è meno problematico del positional bias.
+- **Positional bias**: si ha quando la probabilità che due geni vengano ereditati assieme dallo stesso genitore dipende dalla posizione (relativa) dei due geni nel cromosoma. Deve essere evitato perchè può rendere la disposizione dei differenti geni in un cromosoma cruciale per la riuscita dell'algoritmo;
+- **Distributional bias**: si ha quando la probabilità che un certo numero di geni siano scambiati tra i genitori non è la stessa per tutti i possibili numeri di geni. Deve essere evitato perchè soluzioni parziali di differenti lunghezze hanno differenti probabilità di progredire alla generazione successiva. In generale, è meno problematico del positional bias.
 
 Per migliorare le performance delle soluzioni si applicano due strategie:
-- **Interpolating recombination**: si opera una fusione dei tratti dei due genitori in modo tale da creare nuovi discendenti. Si creano nuovi alleli e ne beneficiano particolarmente gli individui con migliore fitness. Per un'esplorazione sufficientemente ampia di $\Omega$ nelle prime iterazioni, occorre utilizzare una probabilità di mutazione molto alta;
+- **Interpolating recombination**: si opera una fusione dei tratti dei due genitori in modo tale da creare nuovi discendenti. Si creano nuovi alleli (valori dei geni) e ne beneficiano particolarmente gli individui con migliore fitness. Per un'esplorazione sufficientemente ampia di $\Omega$ nelle prime iterazioni, occorre utilizzare una probabilità di mutazione molto alta;
 - **Extrapolating recombination**: si inferiscono informazioni da una moltitudine di individui e si creano nuovi alleli in accordo E' l'unica tecnica di ricombinazione che prende in considerazione il fitness value. L'influenza della diversità è difficilmente quantificabile.
 
 ----------------------------------------------------------------
