@@ -1400,7 +1400,12 @@ Un'altra strategia è quella dell'**evoluzione differenziale**. Non si ha, in qu
 ----------------------------------------------------------------
 
 ### Scatter search ###
-L'idea alla base degli algoritmi **scatter search** è di avere una popolazione e di operare una ricerca locale attorno agli individui. Dati i valori registrati da questa ricerca, si forza l'evoluzione verso la direzione del massimo registrato. Questo è un metodo puramente deterministico, a differenza dei precedenti. La sua bontà dipende dalla copertura dello spazio di ricerca che si è in grado di offrire.
+L'idea alla base degli algoritmi **scatter search** sfrutta l'avere una popolazione di individui e di operare una ricerca locale attorno a quest'ultimi.<br />
+Si tratta di un processo iterativo in due fasi:
+1) la generazione di nuovi individui e la selezione dei candidati che garantiscono la maggiore varietà possibile;
+2) la ricombinazione di tutte le coppie possibili degli individui scelti, la selezione dei migliori. Si itera poi fino al raggiungimento di uno stato stabile.
+
+Dati i valori registrati da questa ricerca, si forza l'evoluzione verso la direzione del massimo registrato. Questo è un metodo puramente deterministico, a differenza dei precedenti. La sua bontà dipende dalla copertura dello spazio di ricerca che si è in grado di offrire.
 
 ----------------------------------------------------------------
 
@@ -1500,15 +1505,15 @@ Per migliorare le performance delle soluzioni si applicano due strategie:
 ----------------------------------------------------------------
 
 ### Strategie di adattamento
-Un ultimo aspetto da considerare è quello delle *strategie di adattamento* che rispondono a domande del tipo: dovremmo permettere che la mutazione introduca pesanti modifiche al fenotipo durante l'ottimizzazione? Per rispondere a questa ed altre domande occorre una metrica per misurare il miglioramento in fitness tra l'individuo e l'individuo mutato.
+Un ultimo aspetto da considerare è quello delle **strategie di adattamento** che rispondono a domande del tipo: dovremmo permettere che la mutazione introduca pesanti modifiche al fenotipo durante l'ottimizzazione? Per rispondere a questa ed altre domande occorre una metrica per misurare il miglioramento in fitness tra l'individuo e l'individuo mutato.
 
-Il *miglioramento di fitness* di un individuo $A$ rispetto ad un individuo $B$ è definito come: 
+Il **miglioramento di fitness** di un individuo $A$ rispetto ad un individuo $B$ è definito come: 
 
 $$imp(A,B) = |A.F - B.F|$$
 
 se $A.F > B.F$, altrimenti $0$.
 
-Il *miglioramento relativo atteso* di un operatore $mult$ rispetto ad un individuo $A$ è definito come: 
+Il **miglioramento relativo atteso** di un operatore $mult$ rispetto ad un individuo $A$ è definito come: 
 
 $$imp_{rel} = E(imp(A,mut(A)))$$
 
@@ -1520,9 +1525,9 @@ Data questa metrica si può giudicare le performance di un particolare operatore
 ----------------------------------------------------------------
 
 ### Swarm and population based optimization ###
-La **swarm based optimization** e la **population based optimization** sono due meta-euristiche usate in letteratura per sviluppare sistemi intelligenti multi-agente capaci di comportamento cooperativo. Il concetto di **swarm intelligence**, utilizzato per descrivere in natura il comportamento di alcune specie (api, formiche, etc), sta a significare la capacità della popolazione di cooperare per la soluzione di un problema. L'idea è che i singoli individui (unità con skill limitate) scambino tra loro informazioni e si coordinino senza l'aiuto di un controllo centrale. Esistono varie tipologie di euristiche di questo genere:
-- **Particle swarm optimization**: ispirato al pattern biologico della ricerca del cibo in uccelli e pesci. Gli individui aggregano informazioni, creando un insieme di conoscenze comuni, al fine di presentare una sola soluzione. Ogni individuo è un candidato ad essere la soluzione;
-- **Ant colony optimization**: ispirato al pattern biologico delle formiche che cercano una strada che le conduca al cibo. Gli individui scambiano informazioni modificando l'ambiente, in modo che gli altri possano seguire (o meno) le loro tracce. Ogni individuo è un candidato ad essere la soluzione;
+La **swarm based optimization** e la **population based optimization** sono due meta-euristiche usate in letteratura al fine di sviluppare sistemi intelligenti multi-agente capaci di comportamento cooperativo. Il concetto di **swarm intelligence**, utilizzato per descrivere in natura il comportamento di alcune specie (api, formiche, etc.), sfrutta la capacità della popolazione di cooperare per il raggiungimento della soluzione di un problema. L'idea di base considera il fatto che i singoli individui (unità con skill limitate) scambino tra loro informazioni e si coordinino senza l'aiuto di un controllo centrale. Esistono varie tipologie di euristiche di questo genere:
+- **Particle swarm optimization**: ispirato al pattern biologico della ricerca del cibo in uccelli e pesci, i quali si allontanano dall'insieme di individui per cercare cibo, e poi tornare per scambiare le informazioni scoperte. Gli individui aggregano informazioni, creando un insieme di conoscenze comuni, al fine di presentare una sola soluzione. Ogni individuo è un candidato ad essere la soluzione. La posizione di ogni individuo è aggiornata combinando la migliore soluzione visitata dall'individuo e la migliore soluzione conosciuta dall'intero swarm;
+- **Ant colony optimization**: ispirato al pattern biologico delle formiche che, cercando una strada che le conduca al cibo. Gli individui scambiano informazioni modificando l'ambiente, in modo che gli altri possano seguire (o meno) le loro tracce. Ogni individuo è un candidato ad essere la soluzione. Questa idea viene applicata utilizzando individui come formiche ed un grafo pesato nel quale è necessario trovare il path di costo minore;
 
 Dal lato della **population based optimization** si trova, invece, il cosiddetto **population-based incremental learning**. Gli individui vengono generati randomicamente in accordo ad una distribuzione di probabilità. In realtà, non è necessario conservare in memoria gli individui in modo esplicito, ma è sufficiente conservare le statistiche della popolazione. Come operatore di ricombinazione viene utilizzato lo uniform crossover. Per la selezione, si scelgono gli individui che migliorino le statistiche della popolazione. La mutazione, invece, si limita ad un semplice **bit-flip**. La sua feature distintiva è che il **learning rate**, ovvero il parametro che regola la possibilità di movimento degli individui nello spazio, cambia nel tempo e si riduce con il numero di iterazioni. Questo permette, inizialmente, grande mobilità, per stabilizzarsi poi quando un ottimo viene trovato. Alcuni problemi con questa strategia sono:
 - l'algoritmo può apprendere anche alcune dipendenze accidentali tra i cromosomi degli individui;
@@ -1536,27 +1541,27 @@ Per dimostrare la correttezza degli algoritmi evolutivi occorre considerare gli 
 
 Uno **schema** $h$ è una stringa di simboli di lunghezza $L$ sull'alfabeto $\{0,1,*\}$. Il carattere $*$ è una wildcard. Un cromosoma $c$ si dice che **condivide** lo schema $h$ (in simboli, $c \triangleleft h$) se e solo se, escluse le posizioni in $h$ aventi il simbolo $*$, $h$ coincide con $c$.
 
-Per misurare gli effetti della selezione occorre calcolare la fitness dei cromosomi che condividono un certo schema. Di solito si sceglie come misura la **media del fitness** relativa ai soli cromosomi che condividono lo schema. Gli individui che condivideranno lo schema nella generazione successiva saranno proporzionali a questa media. Per calcolare, invece, l'influenza dell'operatore di mutazione occorre misurare la probabilità che, avvenuta la mutazione, lo schema si preservi. Definiamo, quindi, il concetto di **ordine** di uno schema.
+Per misurare gli effetti della selezione occorre calcolare la fitness dei cromosomi che condividono un certo schema. Di solito si sceglie come misura la **media del fitness** relativa ai soli cromosomi che condividono lo schema. Gli individui che condivideranno lo schema nella generazione successiva saranno proporzionali a questa media. Per calcolare, invece, l'influenza dell'operatore di mutazione occorre misurare la probabilità che, avvenuta la mutazione, lo schema si preservi. Si definisce, quindi, il concetto di **ordine** di uno schema.
 
 L'**ordine** di uno schema $h$ è il numero degli 1 e degli 0 in $h$, ovvero
 
 $$ord(h) = \#1 + \#0$$
 
-Possiamo, ora, calcolare la probabilità che un operatore di mutazione preservi lo schema $h$ grazie alla formula:
+E' possibile, ora, calcolare la probabilità che un operatore di mutazione preservi lo schema $h$ grazie alla formula:
 
 $$(1 - p_m)^{ord(h)}$$
 
-Per concludere, la probabilità che il crossover (ci limiteremo al caso *one-point*) preservi lo schema verrà misurato a seconda della **lunghezza definitoria** dello schema stesso.
+Per concludere, la probabilità che il crossover (ci si limiterà al caso **one-point**) preservi lo schema verrà misurato a seconda della **lunghezza definitoria** dello schema stesso.
 
 La **lunghezza definitoria** di uno schema $h$ è la differenza tra l'ultima posizione in cui occorre un 1 o uno 0 in $h$ e la prima (in simboli, $dl(h)$).
 La probabilità che il punto di \"taglio\" divida il cromosoma in modo tale che lo schema finisca nel mezzo sarà calcolata come:
 
 $$\frac{dl(h)}{L-1}$$
 
-dove $L$ è la lunghezza del cromosoma. Definiamo, ora, alcuni concetti fondamentali per quello che segue. Il **valore atteso dei cromosomi che condividono lo schema** (in simboli, $N(h,t)$) è il numero di cromosomi che condividono lo schema durante la generazione $t$. Il **valore atteso (dei cromosomi che condividono lo schema) dopo gli operatori genetici** sarà calcolato come:
+dove $L$ è la lunghezza del cromosoma.Si definiscono, ora, alcuni concetti fondamentali per quello che segue. Il **valore atteso dei cromosomi che condividono lo schema** (in simboli, $N(h,t)$) è il numero di cromosomi che condividono lo schema durante la generazione $t$. Il **valore atteso (dei cromosomi che condividono lo schema) dopo gli operatori genetici** sarà calcolato come:
 $$N(h,t + \Delta t_s + \Delta t_c + \Delta t_m) = N(h,t+1)$$ dove i vari $\Delta$ dipenderanno dalle probabilità dei singoli operatori definite sopra.
 
-Un importante teorema, il così detto **schema theorem**, ci dice che schemi con a) una fitness sopra la media, b) una lunghezza definitoria corta e c) con ordine basso, si riproducono in modo "quasi" esponenziale. Tuttavia, un altro importante teorema, il così detto **no free lunch theorem**, ci dice che non esiste un algoritmo evolutivo che possa essere utilizzato efficientemente per ogni problema. La scelta della "giusta" codifica e dei "corretti" operatori genetici dipenderà dalla nostra conoscenza locale riguardo allo specifico problema.
+Un importante teorema, il così detto **schema theorem**, sostiene che schemi con un fitness sopra la media, una lunghezza definitoria corta e con ordine basso si riproducono in modo "quasi" esponenziale. Tuttavia, un altro importante teorema, il cosiddetto **no free lunch theorem**, sostiene che non esista un algoritmo evolutivo che possa essere utilizzato efficientemente per ogni problema. La scelta della "giusta" codifica e dei "corretti" operatori genetici dipenderà dalla conoscenza locale riguardo allo specifico problema.
 
 ---------------------------------------------------------------
 
@@ -1564,20 +1569,22 @@ Un importante teorema, il così detto **schema theorem**, ci dice che schemi con
 
 ![[images/parsetree.png]]
 
-La **programmazion genetica** (in seguito GP) è una famiglia di algoritmi evolutivi i quali permettono la creazione automatica di programmi che possano risolvere problemi. Per fare ciò occorre, innanzitutto, una codifica per rappresentare e manipolare un singolo programma. Solitamente si rappresentano programmi sotto forma di **alberi sintattici**, dove i nodi interni sono le operazioni e le foglie variabili o costanti. L'insieme delle operazioni e dei simboli terminali varia da problema a problema. Se, per esempio, si volesse approssimare una funzione booleana, si sceglierebbe l'insieme di operazioni $F = \{and, or, not\}$ e come insieme di terminali $T = \{ x_0, \dots, x_n, 1, 0 \}$. GP può risolvere un problema efficacemente ed efficientemente solo se l'insieme di operazioni e di simboli terminali è **completo** e **sufficiente**. Il problema di trovare il più piccolo insieme completo e sufficiente per un dato problema è spesso NP-hard.<br />
+La **programmazion genetica** (in seguito GP) è una famiglia di algoritmi evolutivi i quali permettono la creazione automatica di programmi che possano risolvere problemi, mimando il processo mentale di un programmatore mentre costruisce un algoritmo. Per fare ciò occorre, innanzitutto, una codifica per rappresentare e manipolare un singolo programma:
+- **F**: l'insieme dei simboli di funzione e degli operatori;
+- **T**: l'insieme dei simboli terminali, come costanti e variabili.
+
+Solitamente si rappresentano programmi sotto forma di **alberi sintattici**, dove i nodi interni sono le operazioni e le foglie variabili o costanti. L'insieme delle operazioni e dei simboli terminali varia da problema a problema. Se, per esempio, si volesse approssimare una funzione booleana, si sceglierebbe l'insieme di operazioni $F = \{and, or, not\}$ e come insieme di terminali $T = \{ x_0, \dots, x_n, 1, 0 \}$. GP può risolvere un problema efficacemente ed efficientemente solo se l'insieme di operazioni e di simboli terminali è **completo** e **sufficiente**. Il problema di trovare il più piccolo insieme completo e sufficiente per un dato problema è, però, spesso un problema di [[Teoria della Complessità Computazionale |complessità NP-hard]].<br />
 Può essere utile, inoltre, rappresentare i cromosomi come espressioni del linguaggio $L = F \cup T$ per semplificare la computazione.
 
 ----------------------------------------------------------------
 
-### Inizializzazione ###
+#### Algoritmo ####
 Come nel caso degli algoritmi evolutivi visti in precedenza, occorre inizializzare una popolazione di individui (espressioni simboliche o alberi sintattici, in questo caso) creati in modo random. Data la complessità che esibiscono queste strutture, nel processo di creazione, bisogna considerare alcuni parametri quali l'**altezza massima** degli alberi e il **numero massimo di nodi**. Esistono vari sottoalgoritmi che si occupano dell'inizializzazione degli alberi sintattici:
-1. **Grow**: la probabilità di scegliere un nodo interno o uno terminale è distribuita in modo uniforme a qualsiasi livello di profondità. Questo permette di creare alberi \"sbilanciati\";
-2. **Full**: i nodi terminali possono occorrere solo al livello dell'altezza massima dell'albero. Questo permette di creare alberi \"bilanciati\";
-3. **Ramp-half-and-half**: questo approccio mischia i primi due per avere più varianza nella forma esibita dagli alberi sintattici.
+1) **Grow**: la probabilità di scegliere un nodo interno o uno terminale è distribuita in modo uniforme a qualsiasi livello di profondità. Questo permette di creare alberi \"sbilanciati\";
+2) **Full**: i nodi terminali possono occorrere solo al livello dell'altezza massima dell'albero. Questo permette di creare alberi \"bilanciati\";
+3) **Ramp-half-and-half**: questo approccio mischia i primi due per avere più varianza nella forma esibita dagli alberi sintattici.
 
-----------------------------------------------------------------
-
-### Operatori genetici ###
+Nello step successivo, le espressioni sono valutate basandosi sul tipo di problema da risolvere. Fatto ciò, si applica la selezione usando un algoritmo evolutivo.
 La popolazione così inizializzata difficilmente avrà un buon punteggio di fitness. Il processo evolutivo si occuperà di apportare cambiamenti alla popolazione attraverso operatori genetici. I tre più importanti sono:
 - **Crossover**;
 - **Mutation**;
@@ -1587,7 +1594,7 @@ Nel caso del crossover, un approccio che si adotta spesso è quello dello scambi
 
 ----------------------------------------------------------------
 
-### Introni ###
+#### Introni ####
 Durante il processo evolutivo, gli individui tendono a sviluppare larghe porzioni di codice "inutile" ai fini della computazione. Un concetto simile ci viene dalla biologia: gli **introni** sono porzioni di DNA che non codificano alcuna informazione a livello del fenotipo (per questo vengono talvolta chiamati **junk-DNA**). Per evitare il verificarsi di questo fenomeno esistono alcune strategie:
 - **Breeding recombination**: si generano molti figli usando parametri differenti, e si mantengono solo i migliori;
 - **Intelligent recombination**: si scelgono in modo più selettivo i punti dove operare il crossover;
@@ -1596,38 +1603,40 @@ Durante il processo evolutivo, gli individui tendono a sviluppare larghe porzion
 ----------------------------------------------------------------
 
 ### Strategie evolutive ###
-In una **strategia evolutiva** si cerca non solo di ottimizzare i singoli individui, ma anche di prendere in analisi l'intero processo evolutivo: riproduzione, mortalità, lunghezza media della vita degli individui, etc. Questi parametri sono suscettibili alle scelte fatte in materia di operatori genetici. Quello che viene fatto è considerare un problema di ottimizzazione come una funzione da minimizzare $f: \mathbb{R}^n \to \mathbb{R}$. I cromosomi saranno rappresentati da array di numeri reali (a differenza degli algoritmi visti in precedenza che utilizzavano per lo più rappresentazioni ad interi). Si utilizzerà, poi, unicamente l'operatore di mutazione per muovere il vettore cromosoma all'interno dello spazio di ricerca, aggiungendovi un vettore $r$ randomico ottenuto da una distribuzione normale. Il processo di selezione verrà applicato agli individui così mutati. Solo i migliori accederanno direttamente alla generazione successiva (elitismo). Per operare questa scelta vi sono due diversi approcci:
+In una **strategia evolutiva** si cerca non solo di ottimizzare i singoli individui, ma anche di prendere in analisi l'intero processo evolutivo: riproduzione, mortalità, lunghezza media della vita degli individui, etc. Questi parametri sono suscettibili alle scelte fatte in materia di operatori genetici. Quello che viene fatto è considerare un problema di ottimizzazione come una funzione da minimizzare $f: \mathbb{R}^n \to \mathbb{R}$. I cromosomi saranno rappresentati da array di numeri reali (a differenza degli algoritmi visti in precedenza, i quali utilizzavano per lo più rappresentazioni ad interi). Si utilizzerà, poi, unicamente l'operatore di mutazione per muovere il vettore cromosoma all'interno dello spazio di ricerca, aggiungendovi un vettore $r$ randomico ottenuto da una distribuzione normale. Il processo di selezione verrà applicato agli individui così mutati e solo i migliori accederanno direttamente alla generazione successiva (elitismo). Per operare questa scelta vi sono due diversi approcci:
 - **Plus-strategy**: la selezione lavora sull'insieme degli individui non mutati e degli individui mutati;
 - **Comma-strategy**: si generano molti individui mutati e si sceglie tra loro chi costituirà la nuova generazione. I cromosomi non mutati vengono persi.
 
-Il vantaggio del primo approccio sta nel fatto che la fitness della popolazione non può che migliorare per la politica elitista che si adotta. Il problema è che si può rimanere bloccati in minimi locali. In questi casi può essere utile adottare la comma-strategy per creare diversità nella popolazione. Può anche essere opportuno adattare la varianza della mutazione durante il processo evolutivo. Se si permette una piccola varianza, allora si avrà un'esplorazione locale (**exploitation**). Se, invece, si permette una ampia varianza, si avrà una ricerca globale (**exploration**). Occorre scegliere un parametro $\sigma$ che ottimizzi la convergenza. Solitamente si utilizza la cosiddetta $\frac{1}{5}$ **success rule**: la varianza è appropriata quando $\frac{1}{5}$ degli individui mutati ha una miglior fitness rispetto a quelli della passata generazione. Si può anche avere un approccio più locale e conservare per ogni vettore cromosoma la varianza associata ad esso come un'informazione addizionale. I cromosomi con una "cattiva" varianza genereranno "cattivi" discendenti. I cromosomi (e le loro varianze) che hanno i peggiori valori di fitness non potranno accedere alle seguenti generazioni e si estingueranno.
+Il vantaggio del primo approccio è dovuto al fatto che la fitness della popolazione non possa che migliorare per la politica elitista adottata. Purtroppo si corre il rischio di rimanere bloccati in minimi locali. In questi casi, può essere utile adottare la comma-strategy per creare diversità nella popolazione. Può anche essere opportuno adattare la varianza della mutazione durante il processo evolutivo. Se si permette una piccola varianza del rumore, allora si avrà un'esplorazione locale (**exploitation**). Se, invece, si dovesse permettere una ampia varianza, si avrà una ricerca globale nello spazio di ricerca (**exploration**). Occorre scegliere un parametro $\sigma$ che ottimizzi la convergenza. Solitamente si utilizza la cosiddetta $\frac{1}{5}$ **success rule**: la varianza è appropriata quando $\frac{1}{5}$ degli individui mutati ha una miglior fitness rispetto a quelli della passata generazione. Si può anche avere un approccio più locale e conservare per ogni vettore cromosoma la varianza associata ad esso come un'informazione addizionale. I cromosomi con una "cattiva" varianza genereranno "cattivi" discendenti. I cromosomi (e le loro varianze) che hanno i peggiori valori di fitness non potranno accedere alle seguenti generazioni e si estingueranno.
 
 ----------------------------------------------------------------
 
 ### Multi-criteria optimization ###
-Ci possono essere dei casi di problemi di ottimizzazione dove si hanno diversi obiettivi e vincoli, possibilmente in conflitto, ognuno rappresentato da una propria funzione di fintess $f_i : \Omega \to \mathbb{R}$. L'approccio più diretto è quello di combinare le varie funzioni in un'unica funzione di fitness aggregata:
+Esistono delle casistiche di problemi di ottimizzazione nelle quali si hanno diversi obiettivi e vincoli, possibilmente in conflitto, ognuno rappresentato da una propria funzione di fitness $f_i : \Omega \to \mathbb{R}$. L'approccio più diretto per ricondursi ad una soluzione risolvibile con tecniche note è quello di combinare le varie funzioni in un'unica funzione di fitness aggregata:
 
 $$f(s) = \sum w_i \cdot f_i(s)$$
 
-Ognuna delle singole funzioni si vedrà assegnato un peso che rispecchierà la sua importanza relativa rispetto agli altri parametri. Il problema è quello di trovare una distribuzione dei pesi che rispetti i criteri di rilevanza. Se, inoltre, gli obiettivi sono tra loro in conflitto sarà ancora più difficile trovare una funzione che li aggreghi in modo opportuno. In generale, il **teorema di impossibilità di Arrow** previene la possibilità che esista una funzione di aggregazione che massimizzi tutte le singole funzioni. Una soluzione è quella di scegliere una soluzione solo se è un **ottimo paretiano**. Un elemento $s \in \Omega$ si dice **ottimo paretiano** rispetto alle funzioni di valutazione $f_i$ con $i \in \{1, \dots, n\}$, se non c'è un elemento $s' \in \Omega$ tale che:
+Ognuna delle singole funzioni si vedrà assegnato un peso il quale rispecchierà l'importanza relativa della funzione stessa rispetto agli altri parametri. Il problema fondamentale risiede nella scelta di una distribuzione dei pesi che rispetti i criteri di rilevanza. Se, inoltre, gli obiettivi sono tra loro in conflitto sarà ancora più difficile trovare una funzione che sia in grado di aggregarli in modo opportuno. In generale, il **teorema di impossibilità di Arrow** previene la possibilità che esista una funzione di aggregazione la quale massimizzi tutte le singole funzioni. Una soluzione è quella di scegliere una soluzione solo se è un **ottimo paretiano**. Un elemento $s \in \Omega$ si dice **ottimo paretiano** rispetto alle funzioni di valutazione $f_i$ con $i \in \{1, \dots, n\}$, se non esiste una soluzione $s' \in \Omega$ tale che:
 
 $$\forall i, 1 \leq i \leq n: \quad f_i(s') \geq f_i(s)$$
 $$\exists i, 1 \leq i \leq n: \quad f_i(s') > f_i(s)$$
 
-Si potrà preferire una soluzione all'altra solo nel caso in cui nessuna funzione di valutazione peggiorerà nel caso si operi questa scelta. L'insieme delle soluzioni pareto-ottimali è detta **frontiera paretiana**. Un vantaggio di questo approccio è che si evita il bisogno di aggregare le singole funzioni di valutazione e la ricerca è da operare solo una volta. E' possibile utilizzare gli algoritmi evolutivi per trovare quante più soluzioni pareto-ottimali. Un approccio è quella di definire la funzione di fitness come la somma pesata delle singole funzioni di valutazione. Purtroppo questo favorisce soluzioni che massimizzino una delle funzioni a discapito delle altre. Si può risolvere il problema individuando queste soluzioni "marginali" e scartandole in fase di selezione. Un secondo problema è quello della convergenza in un punto qualsiasi del fronte e si può rimediare applicando tecniche di **power law sharing**, simili a quelle per evitare **crowding**. Tali tecniche, tenendo conto delle zone già coperte del fronte, cercheranno di coprire punti inesplorati del fronte, in modo da garantire una copertura omogenea.
+E' possibile descrivere un ottimo paretiano come una soluzione per la quale non è possibile migliorare uno dei suoi criteri senza peggiorare gli altri. L'insieme delle soluzioni pareto-ottimali è detta **regione paretiana**. Un vantaggio di questo approccio è che si evita il bisogno di aggregare le singole funzioni di valutazione e, inoltre, la ricerca è da operare solo una volta.<br />
+E' possibile utilizzare gli algoritmi evolutivi per trovare quante più soluzioni pareto-ottimali. Un approccio consiste nel definire la funzione di fitness come la somma pesata delle singole funzioni di valutazione. Purtroppo questo favorisce soluzioni che massimizzino una delle funzioni a discapito delle altre. Si può risolvere il problema individuando queste soluzioni "marginali" e scartandole in fase di selezione.<br />
+Un secondo problema è quello della convergenza in un punto qualsiasi del fronte e si può rimediare applicando tecniche di **power law sharing**, simili a quelle per evitare **crowding**. Tali tecniche, tenendo conto delle zone già coperte del fronte, cercheranno di coprire punti inesplorati del fronte, in modo da garantire una copertura omogenea.
 
 ----------------------------------------------------------------
 
 ### Algoritmi evolutivi paralleli ###
-Rispetto alle altre metaeuristiche si è osservato che gli algoritmi evolutivi spesso portano a risultati ottimi, ma con il prezzo di un tempo di esecuzione molto lento. È possibile parallelizzare alcune fasi del processo in modo da velocizzarlo o migliorarne il risultato. Osservando le varie fasi, è possibile notare che alcune sono parallelizzabili:
-- la generazione iniziale, stando attendi ad eventuali duplicati, che comunque non costituiscono grossi problemi;
-- il calcolo del fitness degli individi, con l'accortezza di raccogliere i dati in un unico processore per calcolare il fitness relativo;
-- la selezione se costituita da eventi indipendenti, come ad esempio tournament selection. Diventa già più complesso gestire, ad esempio, l'etilismo;
-- l'applicazione degli operatori genetici;
+Rispetto alle altre metaeuristiche si è osservato che gli algoritmi evolutivi spesso portano a risultati ottimi, ma con il prezzo di un tempo di esecuzione molto lento. È possibile parallelizzare alcune fasi del processo in modo da velocizzarlo o migliorarne il risultato. Osservando le varie fasi, è possibile infatti notare che alcune di esse sono parallelizzabili:
+- la generazione iniziale, prestando attenzione ad eventuali duplicati, i quali potrebbero causare una popolazione sbilanciata;
+- il calcolo del fitness degli individui, con l'accortezza di raccogliere i dati in un unico processore per calcolare il fitness relativo;
+- la selezione, se costituita da eventi indipendenti, come ad esempio tournament selection. Altre tecniche richiedono invece un'unità centrale che combini i risultati;
+- l'applicazione degli operatori genetici, i quali manipolano solo una parte ristretta della popolazione;
 - il controllo di raggiungimento del criterio di terminazione.
 
 Due architetture utilizzate in letteratura sono, rispettivamente:
-- **island model**: È possibile sfruttare la parallelizzazione considerando un modello ad isola. Ogni isola avrà una popolazione, ed eseguirà il processo evolutivo. Si può introdurre la migrazione degli individui da un isola all'altra in maniera random o definita da connessioni tra le isole;
-- **cellular evolution**: I processori sono organizzati in una griglia. Ogni processore è responsabile di un cromosoma. Per la selezione, ogni processore calcola il massimo dei vicini. Gli operatori genetici sono applicabili solo tra vicini e la mutazione è gestita da ogni singolo processore.
+- **island model**: È possibile sfruttare la parallelizzazione considerando un modello ad isola. Ogni isola avrà una popolazione ed eseguirà il processo evolutivo. Si può introdurre la migrazione degli individui da un isola all'altra in maniera random o definita da connessioni tra le isole. La migrazione può essere **randomica** (si scelgono coppie casuali di isole che scambieranno individui) o **grafata** (si dispongono le isole come un grado e le isole possono scambiare individui solo lungo gli archi del grafo);
+- **cellular evolution**: I processori sono organizzati in una griglia. Ogni processore è responsabile di un cromosoma. Per la selezione, ogni processore sceglie il miglior cromosoma dei quattro processori adiacenti ad esso. Gli operatori genetici vengono applicabili solo il cromosoma scelto ed il proprio. Il miglior figlio risultante dal crossover sostituisce il cromosoma del processore.
 
 ----------------------------------------------------------------
