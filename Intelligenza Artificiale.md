@@ -71,7 +71,7 @@ $$y =  \begin{cases}
     0 & \text{altrimenti} 
    \end{cases}$$
 
-Attraverso questo semplice meccanismo è possibile simulare alcune funzioni booleane. Infatti, se fosse necessario eseguire la computazione dell'AND logico tra due input $x_1$ e $x_2$, risulterebbe sufficiente assegnare valori ai pesi e alla threshold in modo tale che essi soddisfino il seguente sistema di disequazioni:
+Attraverso questo semplice meccanismo è possibile simulare alcune funzioni Booleane. Infatti, se fosse necessario eseguire la computazione dell'AND logico tra due input $x_1$ e $x_2$, risulterebbe sufficiente assegnare valori ai pesi e alla threshold in modo tale che essi soddisfino il seguente sistema di disequazioni:
 
 $$\begin{cases}
     w_1 \cdot x_1 + w_2 \cdot x_2 \geq \theta \\
@@ -101,8 +101,8 @@ Un **guscio convesso** di un insieme di punti $X$ in uno spazio euclideo è il p
 
 Due insiemi di punti $X$ e $Y$ si dicono **linearmente separabili** se e solo se i loro gusci convessi sono tra loro disgiunti.
 
-Questo significa che, già all'interno delle funzioni booleane, ne esistono alcune che non possono essere simulate da una TLU. Un esempio di ciò è la doppia implicazione.<br /> 
-Sebbene solo due funzioni booleane a due argomenti non siano linearmente indipendenti, il numero di funzioni linearmente indipendenti diminuisce rapidamente al crescere degli argomenti ed infatti, per un numero di argomenti arbitrariamente grande, una singola TLU non può calcolare praticamente nessuna funzione.
+Questo significa che, già all'interno delle funzioni Booleane, ne esistono alcune che non possono essere simulate da una TLU. Un esempio di ciò è la doppia implicazione.<br /> 
+Sebbene solo due funzioni Booleane a due argomenti non siano linearmente indipendenti, il numero di funzioni linearmente indipendenti diminuisce rapidamente al crescere degli argomenti ed infatti, per un numero di argomenti arbitrariamente grande, una singola TLU non può calcolare praticamente nessuna funzione.
 
 ![[images/doppiaimplicazione.png]]
 
@@ -125,7 +125,7 @@ Un algoritmo che permette di automatizzare il processo è il seguente:
 3. aggiornare i pesi e la threshold per correggere l'errore;
 4. iterare finchè l'errore si annulla.
 
-Si osservi il comportamento dell'algoritmo nel caso più semplice, ovvero il caso nel quale si hanno una threshold ed un unico input (quindi, un unico peso associato). Si presupponga che si voglia allenare la TLU a calcolare la negazione booleana.<br />
+Si osservi il comportamento dell'algoritmo nel caso più semplice, ovvero il caso nel quale si hanno una threshold ed un unico input (quindi, un unico peso associato). Si presupponga che si voglia allenare la TLU a calcolare la negazione Booleana.<br />
 Sia $x$ l'input, $w$ il peso associato e $\theta$ la threshold. Allora l'output $y$ sarà definito come:
 
 $$y = \begin{cases}
@@ -168,7 +168,7 @@ Se $L_0$ e $L_1$ sono linearmente separabili, allora esiste un $\mathbf{w}$ vett
 $$\forall (\mathbf{v},0) \in L_0: \mathbf{w}\mathbf{v}< \theta$$
 $$\forall (\mathbf{v},1) \in L_1: \mathbf{w}\mathbf{v}\geq \theta$$
 
-Negli esempi precedenti, si è codificato il valore booleano *falso* come $0$ e *vero* come $1$. Questa scelta ha lo svantaggio che, nel caso del valore *falso*, i pesi corrispondenti non possano essere modificati perchè la formula contiene l'input come fattore.<br />
+Negli esempi precedenti, si è codificato il valore Booleano *falso* come $0$ e *vero* come $1$. Questa scelta ha lo svantaggio che, nel caso del valore *falso*, i pesi corrispondenti non possano essere modificati perchè la formula contiene l'input come fattore.<br />
 Per evitare il problema si ricorre in letteratura ad una diversa codifica chiamata **ADALINE** (**ADAptive LINear Element**), dove *falso* viene ad assumere il valore $-1$
 e il *vero* $1$.<br />
 Si osservi che questa procedura di allenamento vale solo per le singole TLU nonostante si sia osservato che le TLU possono computare solo funzioni linearmente separabili. Sebbene questo inconveniente si possa evitare prendendo in esame network di TLU, questa procedura non si estende naturalmente a quel caso.
@@ -274,7 +274,7 @@ Una migliore opzione è l'**$1$-in-$n$ encoding**, nel quale ogni attributo nomi
 ### Multi-layer perceptron ###
 ![[images/MLP.png]]
 
-Una delle prime ANN sviluppate furono i **multi-layer perceptrons** ( in seguito **MLP**). I MLP sono particolari feed-forward network in cui le unità base sono organizzate in **layer** ed ogni layer presenta connessioni solo con il layer successivo. Questo permette di minimizzare il fenomeno delle continue ricomputazioni che avverrebbero durante la propagazione del segnale nei normali feed-forward network.<br />
+Una delle prime ANN sviluppate furono i **multi-layer perceptron** ( in seguito **MLP**). I MLP sono particolari feed-forward network in cui le unità base sono organizzate in **layer** ed ogni layer presenta connessioni solo con il layer successivo. Questo permette di minimizzare il fenomeno delle continue ricomputazioni che avverrebbero durante la propagazione del segnale nei normali feed-forward network.<br />
 Un $r$-layer perceptron avrà, quindi, un input layer e un output layer totalmente disgiunti e $r-2$ layer nascosti, disgiunti gli uni dagli altri.
 
 $$U_{in} \cap U_{out} = \emptyset $$
@@ -310,13 +310,13 @@ Il vantaggio di questa matrice sta nel fatto che rende possibile scrivere il net
 $$\mathbf{net}_{U_2} = W \mathbf{in}_{U_2} = W \mathbf{out}_{U_1}$$
 
 dove $\mathbf{net}_{U_2} = (net_{u_1}, \dots, net_{u_m})^\top$ e $\mathbf{in}_{U_2} = \mathbf{out}_{U_1} = (out_{v_1}, \dots, out_{v_n})^\top$.<br />
-Fino ad adesso si è osservato che le ANN possono rappresentare funzioni booleane. Invece, per quanto riguarda le funzioni a valori continui, ogni funzione Riemann-integrabile può essere approssimata con precisione arbitraria da un MLP avente quattro layer.
+Fino ad adesso si è osservato che le ANN possono rappresentare funzioni Booleane. Invece, per quanto riguarda le funzioni a valori continui, ogni funzione Riemann-integrabile può essere approssimata con precisione arbitraria da un MLP avente quattro layer.
 
 ![[images/approx.png]]
 
 ![[images/riemann.png]]
 
-Ogni funzione, infatti, può essere approssimata da una step function. Ad ogni pivot $x_i$ verrà associato nel MLP un neurone nel primo hidden layer. Nel secondo hidden layer si utilizzerà un neurone per ogni scalino, il quale riceverà input dai due neuroni del primo livello che sono assegnati ai valori $x_i$ e $x_{i+1}$, i quali definiscono i bordi dello scalino stesso. A questo punto, si sceglieranno pesi e threshold in modo tale da attivare il neurone se e solo se l'input è maggiore di $x_i$ e
+Ogni funzione, infatti, può essere approssimata da una step function. Ad ogni pivot $x_i$ verrà associato nel MLP un neurone nel primo hidden layer. Nel secondo hidden layer si utilizzerà un neurone per ogni scalino, il quale riceverà input dai due neuroni del primo livello assegnati ai valori $x_i$ e $x_{i+1}$, i quali definiscono i bordi dello scalino stesso. A questo punto, si sceglieranno pesi e threshold in modo tale da attivare il neurone se e solo se l'input è maggiore di $x_i$ e
 minore di $x_{i+1}$.<br />
 La funzione di attivazione del neurone di output utilizzata in questo caso è la funzione di identità, in modo tale da restituire come output solamente il valore dell'approssimazione proveniente dai neuroni dell'ultimo hidden layer.<br />
 Dovrebbe essere chiaro che l'approssimazione può crescere a piacere semplicemente aggiungendo neuroni e diminuendo la lunghezza dei gradini.<br />
@@ -458,7 +458,7 @@ numero dei neuroni negli hidden layer è troppo basso si corre il rischio di ave
 Al contrario se se ne hanno troppi, si rischia di incorrere nell'*overfitting*, ossia che il MLP si adatti agli esempi che gli sono stati forniti durante il periodo di apprendimento, ma anche alle loro specificità accidentali (errori e deviazioni).<br />
 Per evitare questi fenomeni, è buona pratica effettuare la **Cross Validation**, cioè dividere il dataset in modo da avere due sottoinsiemi di dati: alcuni dati per l'apprendimento ed altri per la validazione del processo di apprendimento.<br />
 I primi verranno usati per allenare il network e i secondi per giudicare se effettivamente il network approssimi la funzione desiderata. É possibile iterare a piacere questo procedimento, suddividendo i dati non in solo due sottoinsiemi, ma in un numero arbitrario, così da ottenere una conferma incrociata dei progressi nell'apprendimento del network.<br />
-Una variante è la **N-fold cross validation**, nella quale il dataset viene diviso in $n$ parti o **sottoset** (chiamati anche **fold**) circa della stessa dimensione. La frequenza relativa dei valori di output nei fold rappresenta in maniera approssimativa la frequenza relativa di quei valori nell'intero dataset (**stratification**). Da questi $n$ subset vengono formati $n$ insiemi di training e validation, composti ognuno da un differente subset, il quale verrà utilizzato per la validation, e da $n-1$ subset, i quali verranno utilizzati per il training.<br /> 
+Una variante è la **N-fold cross validation**, nella quale il dataset viene diviso in $n$ parti o **sottoset** (chiamati anche **fold**) circa della stessa dimensione. La frequenza relativa dei valori di output nei fold rappresenta in maniera approssimativa la frequenza relativa di quei valori nell'intero dataset (**stratification**). Da questi $n$ subset vengono formati $n$ insiemi di training e validation, composti ognuno da un subset ogni volta differente, il quale verrà utilizzato per la validation, e dai rimanenti $n-1$ subset, i quali verranno utilizzati per il training.<br /> 
 Durante l'allenamento, la performance è valutata dopo ogni epoca. L'errore sul dataset di training dovrebbe sempre decrementare, mentre l'errore sul dataset di validazione dovrebbe peggiorare in caso di overfitting. A questo punto il training termina.
 
 ----------------------------------------------------------------
@@ -475,7 +475,7 @@ Il valore $s(u)$ risultante indica quanto importante fosse l'input assegnato al 
 ----------------------------------------------------------------
 
 ### Deep Learning ###
-E' stato mostrato come un MLP con un solo hidden layer può approssimare ogni funzione continua su $\mathbb{R}^n$ con una precisione arbitraria. Questo risultato, tuttavia, non ha natura costruttiva e può non essere semplice conoscere a priori il numero esatto di neuroni necessari per approssimare una data funzione con un adeguato grado di precisione. Inoltre, a seconda della funzione, questo numero potrebbe assumere dimensioni considerevoli.<br />
+E' stato mostrato come un MLP con un solo hidden layer possa approssimare ogni funzione continua su $\mathbb{R}^n$ con una precisione arbitraria. Questo risultato, tuttavia, non ha natura costruttiva e può non essere semplice conoscere a priori il numero esatto di neuroni necessari per approssimare una data funzione con un adeguato grado di precisione. Inoltre, a seconda della funzione, questo numero potrebbe assumere dimensioni considerevoli.<br />
 I training dataset sono necessariamente limitati nella taglia. infatti, un dataset completo per una funzione Booleana $n$-aria necessita di $2^n$ esempi di training.
 L'utilizzo di più di un hidden layer permetterebbe, nella maggior parte delle casistiche, di ridurre il numero di neuroni necessari.<br />
 Un esempio esplicativo viene fornito considerando la funzione che calcola la parità su una parola di $n$-bit. L'output sarà $1$ se e solo se il vettore di input che rappresenta la parola conterrà un numero pari di bit con valore $1$. Nel caso si scegliesse di utilizzare un MLP con un solo hidden layer, quest'ultimo conterrà al suo interno $2^{n-1}$ neuroni, in quanto la forma normale disgiuntiva della funzione di parità su $n$-bit non è altro che una disgiunzione di $2^{n-1}$ congiunzioni.<br />
@@ -554,7 +554,7 @@ Le funzioni più utilizzate per determinare l'area di attivazione sono quelle ri
 ![[images/act_rbf.png]]
 
 Non per tutte queste funzioni esiste un raggio oltre al quale il valore dell'attivazione vale $0$. Per esempio, la funzione Gaussiana restituisce un'attivazione positiva indipendentemente dalla distanza del vettore di input dal centro, nonostante la sua attivazione possa essere estremamente poco significiativa, dovuto al decadimento esponenziale della funzione stessa.<br />
-Come esempio, viene applicato un RBFN per simulare una congiunzione booleana. Un network che risolve il problema è quello costituito da un singolo neurone hidden, il cui vettore dei pesi (il centro della funzione radiale) è esattamente il punto in cui in output sarebbe desiderabile il valore *vero*, ovvero (1,1). Il raggio $\sigma$ sarà posto ad un valore minore di $1$, nel caso specifico ad $\frac{1}{2}$, e verrà codificato nella threshold del neurone. La funzione di distanza usata è quella euclidea e come $f_{act}$ si impiega una funzione rettangolare.
+Come esempio, viene applicato un RBFN per simulare una congiunzione Booleana. Un network che risolve il problema è quello costituito da un singolo neurone hidden, il cui vettore dei pesi (il centro della funzione radiale) è esattamente il punto in cui in output sarebbe desiderabile il valore *vero*, ovvero (1,1). Il raggio $\sigma$ sarà posto ad un valore minore di $1$, nel caso specifico ad $\frac{1}{2}$, e verrà codificato nella threshold del neurone. La funzione di distanza usata è quella euclidea e come $f_{act}$ si impiega una funzione rettangolare.
 
 ![[images/and_rbf.png]]
 
@@ -812,7 +812,7 @@ Questa speciale forma di error backpropagation è chiamata **error backpropagati
 ### Introduzione alla logica fuzzy ###
 #### Motivazioni ####
 La logica classica si fonda sul **principio di bivalenza**, il quale sostiene che una proposizione possa assumere solo due valori di verità: il valore **vero** o il valore **falso**. Questa assunzione può essere adeguata nel caso in cui l'interesse sia modellare concetti chiari e distinti che hanno definizioni precise, come nel caso dei concetti matematici. Quando, invece, si vuole formalizzare la conoscenza implicita nel linguaggio naturale é possibile imbattersi in alcune proposizioni che sono vere (o false) **in una certa misura**, oppure proprietà che hanno estensioni sfumate. Termini di utilizzo comune come "veloce", "grande", "piccolo" e così dicendo rendono impossibile decidere se un valore dato soddisfi o meno un concetto di tale vaghezza. Uno dei motivi per cui sussiste questa problematica è che questi concetti vaghi sono tipicamente dipendenti dal contesto. La logica fuzzy e la teoria insiemistica che da questa discende permette di ragionare in questi contesti, in modo da sfruttare a proprio vantaggio la vaghezza insita nell'uso che viene fatto delle parole nel linguaggio naturale.<br />
-Bisogna, tuttavia, prestare attenzione a non confondere l'imprecisione con l'**incertezza**. L'incertezza si riferisce alla possibilità che un evento accada o meno. Può anche fare riferimento al valore di verità associato ad una proposizione. Il valore numerico associato all'accadimento di un evento incerto si chiama [[Statistica e Probabilità |probabilità]] ed è studiato dalla branca della matematica omonima. La differenza tra appartenenza fuzzy e probabilità sta nel fatto che la probabilità rimane comunque un fenomeno booleano: un evento può accadere o non accadere, dove, invece, l'appartenenza fuzzy si riferisce a quanto una proprietà venga soddisfatta da un oggetto.
+Bisogna, tuttavia, prestare attenzione a non confondere l'imprecisione con l'**incertezza**. L'incertezza si riferisce alla possibilità che un evento accada o meno. Può anche fare riferimento al valore di verità associato ad una proposizione. Il valore numerico associato all'accadimento di un evento incerto si chiama [[Statistica e Probabilità |probabilità]] ed è studiato dalla branca della matematica omonima. La differenza tra appartenenza fuzzy e probabilità sta nel fatto che la probabilità rimane comunque un fenomeno Booleano: un evento può accadere o non accadere, dove, invece, l'appartenenza fuzzy si riferisce a quanto una proprietà venga soddisfatta da un oggetto.
 
 ----------------------------------------------------------------
 
@@ -899,11 +899,11 @@ Questa connessione tra insiemi fuzzy e famiglie di alpha-cut è utilizzata nella
 
 ### Alcune utili definizioni ###
 Avendo introdotto gli alpha-cut come uno strumento per rappresentare i fuzzy set, è possibile sfruttarli per definire alcuni concetti.<br />
-Si definisce **supporto** $S(\mu)$ di un insieme fuzzy $\mu$ l'insieme booleano che contiene tutti e soli gli elementi del dominio del discorso aventi un grado di appartenenza non nullo rispetto a $\mu$. In simboli:
+Si definisce **supporto** $S(\mu)$ di un insieme fuzzy $\mu$ l'insieme Booleano che contiene tutti e soli gli elementi del dominio del discorso aventi un grado di appartenenza non nullo rispetto a $\mu$. In simboli:
 
 $$S(\mu) = [\mu]_{\bar{0}} = \{ x \in X | \mu(x) > 0 \}$$
 
-Si definisce **core** $C(\mu)$ di un insieme fuzzy $\mu$ l'insieme booleano che contiene tutti e soli gli elementi del dominio del discorso aventi un grado di appartenenza uguale a 1 rispetto a $\mu$. In simboli:
+Si definisce **core** $C(\mu)$ di un insieme fuzzy $\mu$ l'insieme Booleano che contiene tutti e soli gli elementi del dominio del discorso aventi un grado di appartenenza uguale a 1 rispetto a $\mu$. In simboli:
 
 $$C(\mu) = [\mu]_{1} = \{ x \in X | \mu(x) = 1 \}$$
 
@@ -919,7 +919,7 @@ Un insieme fuzzy $\mu$ è un **numero fuzzy** se e solo se $\mu$ è normale e $[
 ----------------------------------------------------------------
 
 ### Logica fuzzy ###
-Un importante risultato della logica classica sostiene l'esistenza di un isomorfismo tra la logica proposizionale su un insieme finito di variabili e la teoria degli insiemi finiti. Entrambi questi sistemi, inoltre, possono essere dimostrati isomorfi ad un'algebra booleana finita. Questo permette di definire gli operatori insiemistici di intersezione, unione e complementare utilizzando rispettivamente i classici operatori logici di congiunzione, disgiunzione e negazione. Un discorso simile vale per la logica fuzzy, ovvero la logica che ha come insieme di valori di verità l'intero intervallo reale $[0,1]$. Una volta ridefiniti gli operatori logici booleani al fine di adattarli alla nuova semantica, sarà possibile utilizzarli per costruire sopra di essi una teoria degli operatori insiemistici "fuzzy".<br />
+Un importante risultato della logica classica sostiene l'esistenza di un isomorfismo tra la logica proposizionale su un insieme finito di variabili e la teoria degli insiemi finiti. Entrambi questi sistemi, inoltre, possono essere dimostrati isomorfi ad un'algebra Booleana finita. Questo permette di definire gli operatori insiemistici di intersezione, unione e complementare utilizzando rispettivamente i classici operatori logici di congiunzione, disgiunzione e negazione. Un discorso simile vale per la logica fuzzy, ovvero la logica che ha come insieme di valori di verità l'intero intervallo reale $[0,1]$. Una volta ridefiniti gli operatori logici Booleani al fine di adattarli alla nuova semantica, sarà possibile utilizzarli per costruire sopra di essi una teoria degli operatori insiemistici "fuzzy".<br />
 Siano $\mu$ e $\mu'$ due insiemi fuzzy. E' possibile, quindi, definire gli operatori della logica fuzzy come segue:
 1.  $\neg \mu(x) \doteq 1 - \mu(x)$;
 2.  $(\mu \wedge \mu')(x) \doteq \min\{\mu(x),\mu'(x)\}$;
@@ -998,7 +998,7 @@ $$\top_{-1}(x,y) = \begin{cases}
 ----------------------------------------------------------------
 
 ### Implicazione fuzzy ###
-Come nel caso booleano, un insieme fuzzy è contenuto in un altro se tutti gli elementi del primo insieme sono contenuti nel secondo. Sfruttando l'isomorfismo tra operatori logici e insiemistici, sarà inoltre possibile definire il concetto di sottoinsieme a partire dal concetto di **implicazione**: 
+Come nel caso Booleano, un insieme fuzzy è contenuto in un altro se tutti gli elementi del primo insieme sono contenuti nel secondo. Sfruttando l'isomorfismo tra operatori logici e insiemistici, sarà inoltre possibile definire il concetto di sottoinsieme a partire dal concetto di **implicazione**: 
 
 $$I(a,b) = \neg a \vee b$$
 
@@ -1018,7 +1018,7 @@ $$truth(a \wedge b) =  \min\{truth(a),truth(b)\}$$
 $$truth(a \vee b) =  \max\{truth(a),truth(b)\}$$Si possono considerare anche congiunzioni e disgiunzioni infinite:
 $$truth(\forall i \in I : a_i) =  \inf \{ truth(a_i) | i \in I \}$$
 $$truth(\exists i \in I : a_i) =  \sup \{ truth(a_i) | i \in I \}$$
-Questo permette di riguadagnare la logica booleana anche nel caso fuzzy. Un altro esempio di estensione riguarda la somma reale tra insiemi, definita, per insiemi classici, come:
+Questo permette di riguadagnare la logica Booleana anche nel caso fuzzy. Un altro esempio di estensione riguarda la somma reale tra insiemi, definita, per insiemi classici, come:
 $$+ : 2^{\mathbb{R}} \times 2^{\mathbb{R}} \to 2^{\mathbb{R}}$$
 $$(A,B) \to A + B = \{y | \exists a,b (y = a + b) \land (a \in A) \land (b \in B) \}$$
 La sua estensione ai fuzzy set verrà definita, per $\mu$ e $\mu'$ fuzzy set, come: $$(\mu,\mu') \to \mu \oplus \mu'$$
@@ -1048,7 +1048,7 @@ Quando le quantità fuzzy rappresentano concetti linguistici (come, ad esempio, 
 ----------------------------------------------------------------
 
 #### Rappresentazione per insiemi ####
-Si è osservato in precedenza come, attraverso il principio di estensione, si possano definire le operazioni aritmetiche nel contesto di $F(\mathbb{R})$. Tuttavia, calcolare tali funzioni direttamente sugli insiemi fuzzy risulta oneroso, specialmente se si adotta la rappresentazione verticale rispetto alla rappresentazione orizzontale. Sarebbe desiderabile ridurre l'artimetica fuzzy all'ordinaria aritmetica sugli insiemi booleani e, quindi, applicare alcune semplici operazioni su intervalli per ottenere il risultato. Questo è possibile attraverso la **rappresentazione per insiemi** di un insieme fuzzy.
+Si è osservato in precedenza come, attraverso il principio di estensione, si possano definire le operazioni aritmetiche nel contesto di $F(\mathbb{R})$. Tuttavia, calcolare tali funzioni direttamente sugli insiemi fuzzy risulta oneroso, specialmente se si adotta la rappresentazione verticale rispetto alla rappresentazione orizzontale. Sarebbe desiderabile ridurre l'artimetica fuzzy all'ordinaria aritmetica sugli insiemi Booleani e, quindi, applicare alcune semplici operazioni su intervalli per ottenere il risultato. Questo è possibile attraverso la **rappresentazione per insiemi** di un insieme fuzzy.
 
 Una famiglia $(A_\alpha)_{\alpha \in (0,1)}$ è una **rappresentazione per insiemi** di $\mu \in F_N(\mathbb{R})$ se
 1.  $0 < \alpha < \beta < 1 \implies A_\alpha \subseteq A_\beta \subseteq \mathbb{R}$;
@@ -1069,7 +1069,7 @@ Sia, quindi, $(A_\alpha)_{\alpha \in (0,1)}$ la rappresentazione per insiemi di 
 ----------------------------------------------------------------
 
 ### Relazioni fuzzy ###
-Una relazione booleana $R$ tra gli insiemi $X_1, \dots, X_n$ è un sottoinsieme del loro prodotto cartesiano. Ogni relazione di questo tipo può essere definita, quindi, attraverso la propria funzione caratteristica: 
+Una relazione Booleana $R$ tra gli insiemi $X_1, \dots, X_n$ è un sottoinsieme del loro prodotto cartesiano. Ogni relazione di questo tipo può essere definita, quindi, attraverso la propria funzione caratteristica: 
 
 $$R(x_1,\dots,x_n) = \begin{cases}
                         1 \text{ se e solo se } (x_1, \dots, x_n) \in R \\
@@ -1132,7 +1132,7 @@ Data una relazione $R(X,X)$, si definisce una **relazione di equivalenza** se e 
 
 Un'applicazione dei sistemi fuzzy che ha riscosso particolare successo riguarda i cosiddetti **fuzzy controller**.<br />
 Il concetto su cui si basa il fuzzy control è quello di definire un controller non-lineare basato su tabelle tra i diversi stati del sistema, dove la sua funzione di transizione non-lineare può essere definita senza specificare ogni singola entry della tabella. Questo permette di modellare sistemi complessi le cui dinamiche possono sfuggire ad un'analisi matematicamente precisa.<br />
-La **fuzzification interface** riceve i valori in input e si occupa di convertirli in un dominio adeguato (termini linguistici o fuzzy set). La **knowledge base** è composta da data base e rule base. La prima consiste di informazioni riguardanti intervalli, trasformazioni di dominio e a quali insiemi fuzzy corrisponderanno i termini linguistici. La seconda consiste di controlli del tipo **if-then** (i.e. "if temperature is **very high** and pressure is **slightly low**, then heat change should be **slightly negative**"). La **decision logic** rappresenta l'unità processore, la quale si occupa di computare l'output in base all'input misurato ed alla knowledge base. Infine, la **defuzzification interface** si occupa di mappare i valori fuzzy, output della computazione, in valori booleani, i quali sono poi inviati come segnali al controller del sistema.
+La **fuzzification interface** riceve i valori in input e si occupa di convertirli in un dominio adeguato (termini linguistici o fuzzy set). La **knowledge base** è composta da data base e rule base. La prima consiste di informazioni riguardanti intervalli, trasformazioni di dominio e a quali insiemi fuzzy corrisponderanno i termini linguistici. La seconda consiste di controlli del tipo **if-then** (i.e. "if temperature is **very high** and pressure is **slightly low**, then heat change should be **slightly negative**"). La **decision logic** rappresenta l'unità processore, la quale si occupa di computare l'output in base all'input misurato ed alla knowledge base. Infine, la **defuzzification interface** si occupa di mappare i valori fuzzy, output della computazione, in valori Booleani, i quali sono poi inviati come segnali al controller del sistema.
 
 ----------------------------------------------------------------
 
@@ -1437,7 +1437,7 @@ Gli stessi metodi di selezioni possono variare al variare della pressione evolut
 $$f_{rel}(A_i) = \frac{A_i.F}{\sum_{j=1}^{|P|} A_j.F}$$
 
 La probabilità per un individuo di essere selezionato per la riproduzione sarà proporzionale al suo valore di fitness relativo. Alcuni svantaggi sono:
-- la computazione del valore di fitness relativo è costosa e difficilmente parallelizzabile;
+- la computazione del valore di fitness relativo è costosa;
 - gli individui con un alto valore di fitness potrebbero dominare la selezione (**scomparsa delle biodiversità**). La dominanza potrebbe diventare più forte nelle generazioni successive;
 - molto veloce a trovare ottimi locali, ma pessima esplorazione dello spazio;
 - convergenza prematura;
@@ -1575,19 +1575,19 @@ Un importante teorema, il così detto **schema theorem**, sostiene che schemi co
 
 ![[images/parsetree.png]]
 
-La **programmazion genetica** (in seguito GP) è una famiglia di algoritmi evolutivi i quali permettono la creazione automatica di programmi che possano risolvere problemi, mimando il processo mentale di un programmatore mentre costruisce un algoritmo. Per fare ciò occorre, innanzitutto, una codifica per rappresentare e manipolare un singolo programma:
+La **programmazione genetica** (in seguito GP) è una famiglia di algoritmi evolutivi i quali permettono la creazione automatica di programmi che possano risolvere problemi, mimando il processo mentale di un programmatore mentre costruisce un algoritmo. Per fare ciò occorre, innanzitutto, una codifica per rappresentare e manipolare un singolo programma:
 - **F**: l'insieme dei simboli di funzione e degli operatori;
 - **T**: l'insieme dei simboli terminali, come costanti e variabili.
 
-Solitamente si rappresentano programmi sotto forma di **[[Albero|alberi sintattici]]**, dove i nodi interni sono le operazioni e le foglie variabili o costanti. L'insieme delle operazioni e dei simboli terminali varia da problema a problema. Se, per esempio, si volesse approssimare una funzione booleana, si sceglierebbe l'insieme di operazioni $F = \{and, or, not\}$ e come insieme di terminali $T = \{ x_0, \dots, x_n, 1, 0 \}$. GP può risolvere un problema efficacemente ed efficientemente solo se l'insieme di operazioni e di simboli terminali è **completo** e **sufficiente**. Il problema di trovare il più piccolo insieme completo e sufficiente per un dato problema è, però, spesso un problema di [[Teoria della Complessità Computazionale |complessità NP-hard]].<br />
+Solitamente si rappresentano programmi sotto forma di **[[Albero|alberi sintattici]]**, dove i nodi interni sono le operazioni e le foglie variabili o costanti. L'insieme delle operazioni e dei simboli terminali varia da problema a problema. Se, per esempio, si volesse approssimare una funzione Booleana, si sceglierebbe l'insieme di operazioni $F = \{and, or, not\}$ e come insieme di terminali $T = \{ x_0, \dots, x_n, 1, 0 \}$. GP può risolvere un problema efficacemente ed efficientemente solo se l'insieme di operazioni e di simboli terminali è **completo** e **sufficiente**. Il problema di trovare il più piccolo insieme completo e sufficiente per un dato problema è, però, spesso un problema di [[Teoria della Complessità Computazionale |complessità NP-hard]].<br />
 Può essere utile, inoltre, rappresentare i cromosomi come espressioni del linguaggio $L = F \cup T$ per semplificare la computazione.
 
 ----------------------------------------------------------------
 
 #### Algoritmo ####
 Come nel caso degli algoritmi evolutivi visti in precedenza, occorre inizializzare una popolazione di individui (espressioni simboliche o alberi sintattici, in questo caso) creati in modo random. Data la complessità che esibiscono queste strutture, nel processo di creazione, bisogna considerare alcuni parametri quali l'**altezza massima** degli alberi e il **numero massimo di nodi**. Esistono vari sottoalgoritmi che si occupano dell'inizializzazione degli alberi sintattici:
-1) **Grow**: la probabilità di scegliere un nodo interno o uno terminale è distribuita in modo uniforme a qualsiasi livello di profondità. Questo permette di creare alberi \"sbilanciati\";
-2) **Full**: i nodi terminali possono occorrere solo al livello dell'altezza massima dell'albero. Questo permette di creare alberi \"bilanciati\";
+1) **Grow**: la probabilità di occorrenza di un nodo interno o uno terminale è distribuita in modo uniforme a qualsiasi livello di profondità. Questo permette di creare alberi "sbilanciati";
+2) **Full**: i nodi terminali possono occorrere solo al livello dell'altezza massima dell'albero. Questo permette di creare alberi "bilanciati";
 3) **Ramp-half-and-half**: questo approccio mischia i primi due per avere più varianza nella forma esibita dagli alberi sintattici.
 
 Nello step successivo, le espressioni sono valutate basandosi sul tipo di problema da risolvere. Fatto ciò, si applica la selezione usando un algoritmo evolutivo.
