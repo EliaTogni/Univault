@@ -567,8 +567,8 @@ Prima di tornare, il programma controlla il valore canarino e, se è stato modif
 
 ## Set UID ##
 Tutte le risorse Linux (socket, dispositivi, file) sono gestite come file. Tutti i file e le directory hanno un unico proprietario utente ed un unico gruppo proprietario.<br />
-Il modello di autorizzazione di UNIX è una semplice implementazione di una strategia di controllo degli accessi generica, nota come **Access Control List** (**ACL**).<br />
-Ogni oggetto ha un ACL che identifica le operazioni che i soggetti possono eseguire. Ogni accesso ad un oggetto viene verificato rispetto all'ACL dell'oggetto.<br />
+Il modello di autorizzazione di UNIX è una semplice implementazione di una strategia di controllo degli accessi, nota come **Access Control List** (**ACL**).<br />
+Ogni oggetto ha un'ACL, la quale identifica le operazioni che i soggetti possono eseguire. Ogni accesso ad un oggetto viene verificato rispetto all'ACL dell'oggetto.<br />
 
 ![[UnixACL.png]]
 
