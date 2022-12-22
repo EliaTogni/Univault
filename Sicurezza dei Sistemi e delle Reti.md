@@ -1,6 +1,6 @@
 ## Sicurezza ##
 Con **Sicurezza** si intende il raggiungere un obiettivo in presenza di un avversario, il prevenire un comportamento non desiderato.<br />
-Un sistema sicuro è un sistema il quale assolve uno specifico compito, nonostante l'avversario voglia impedirlo.<br />
+Un sistema sicuro è un sistema il quale assolve uno specifico compito, nonostante l'avversario voglia impedirlo o stia operando in qualsiasi modo per impedirlo.<br />
 La sicurezza è lo stato in cui il rischio è inferiore al massimo rischio accettabile.
 
 ------------------------------------------------------------
@@ -10,13 +10,46 @@ Con **Cybersecurity** si definisce la protezione delle informazioni archiviate, 
 - la protezione comprende riservatezza, confidenzialità, integrità, disponibilità, autenticità e responsabilità;
 - i metodi di protezione includono politiche e procedure organizzative, nonchè mezzi tecnici come crittografia e protocolli di comunicazione sicuri.
 
-Confidenzialità denota il prevenire di rendere disponibili informazioni ad individui non autorizzati.<br />
-Integrità denota la possibilità di modificare i dati ed i programmi solo in una maniera specifica ed autorizzata.<br />
-Disponibilità denota l'accesso tempestivo ed affidabile ed utilizzo delle informazioni da parte degli utenti autorizzati.<br />
-Autenticità denota la proprietà di un soggetto di essere verificato e fidato, ovverlo la fiducia nella validità di una trasmissione di un messaggio.<br />
-Responsabilità (o **accountability**) denota la possibilità di individuare il responsabile di un'azione e tracciare la responsabilità.<br />
+**Confidenzialità** denota il prevenire di rendere disponibili informazioni ad individui non autorizzati.<br />
+**Integrità** denota la possibilità di modificare i dati ed i programmi solo in una maniera specifica ed autorizzata.<br />
+**Disponibilità** denota l'accesso tempestivo ed affidabile ed utilizzo delle informazioni da parte degli utenti autorizzati.<br />
+**Autenticità** denota la proprietà di un soggetto di essere verificato e fidato, ovverlo la fiducia nella validità di una trasmissione di un messaggio.<br />
+**Responsabilità** (o **accountability**) denota la possibilità di individuare il responsabile di un'azione e tracciare la responsabilità.<br />
 
-------------------------------------------------------------
+Fondamentale la distinzione tra **attacchi passivi** ed **attacchi attivi**. Un attacco passivo non altera le informazioni in transito ma ha lo scopo di ottenere informazioni sui messaggi trasmessi (accesso al contenuto del messaggio, analisi del traffico di rete...). Un attacco attivo, al contrario, modifica il flusso delle informazioni, crea un falso flusso ed impedisce l'utilizzo del sistema.
+
+----------------------------------------------------------------
+
+## Principi fondamentali della sicurezza informatica ##
+### Principio di Fail-Safe Defaults ###
+A meno che un soggetto non abbia accesso esplicito ad un oggetto, dovrebbe essergli negato l'accesso a quell'oggetto. Inoltre, se il soggetto non è in grado di completare la sua azione/attività, dovrebbe annullare le modifiche apportate nello stato sicuro del sistema prima che termini.
+
+-------------------------------------------------------------
+
+### Princio dell'Economy of Mechanism ###
+I meccanismi di sicurezza dovrebbero essere i più semplici possibili.
+
+----------------------------------------------------------------
+
+### Princio del Complete Mediation ###
+Tutti gli accessi agli oggetti devono essere controllati per assicurarsi che siano consentiti.
+
+----------------------------------------------------------------
+
+### Princio dell'Open Design ###
+La sicurezza di un meccanismo non dovrebbe dipendere dalla segretezza della sua progettazione o attuazione.
+
+----------------------------------------------------------------
+
+### Princio della Separation of Privilege ###
+Un sistema non dovrebbe concedere l'autorizzazione in base ad una singola condizione.
+
+----------------------------------------------------------------
+
+### Princio del Leas privileges ###
+Ad un soggetto dobrebbero essere concessi solo i privilegi di cui ha bisogno al fine di completare il suo compito.
+
+----------------------------------------------------------------
 
 ## Malware ##
 Con **Malware** si definisce un programma che viene inserito in un sistema, solitamente di nascosto, con l'intento di compromettere la riservatezza, l'integrità o la disponibilità di dati, delle applicazioni o del sistema della vittima, oppure con l'intento di infastidire o disturbare la vittima.
