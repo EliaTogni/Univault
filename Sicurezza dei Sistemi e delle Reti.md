@@ -26,27 +26,27 @@ A meno che un soggetto non abbia accesso esplicito ad un oggetto, dovrebbe esser
 
 -------------------------------------------------------------
 
-### Princio dell'Economy of Mechanism ###
+### Principio dell'Economy of Mechanism ###
 I meccanismi di sicurezza dovrebbero essere i più semplici possibili.
 
 ----------------------------------------------------------------
 
-### Princio del Complete Mediation ###
+### Principio del Complete Mediation ###
 Tutti gli accessi agli oggetti devono essere controllati per assicurarsi che siano consentiti.
 
 ----------------------------------------------------------------
 
-### Princio dell'Open Design ###
+### Principio dell'Open Design ###
 La sicurezza di un meccanismo non dovrebbe dipendere dalla segretezza della sua progettazione o attuazione.
 
 ----------------------------------------------------------------
 
-### Princio della Separation of Privilege ###
+### Principio della Separation of Privilege ###
 Un sistema non dovrebbe concedere l'autorizzazione in base ad una singola condizione.
 
 ----------------------------------------------------------------
 
-### Princio del Leas privileges ###
+### Principio del Least privileges ###
 Ad un soggetto dobrebbero essere concessi solo i privilegi di cui ha bisogno al fine di completare il suo compito.
 
 ----------------------------------------------------------------
@@ -135,6 +135,8 @@ Si tratta di una sequenza di eventi che portano ad un exploit:
 
 Un attacco prima della disponibilità della contromisura è chiamato **Zero Day Exploit**
 
+----------------------------------------------------------------
+
 ### Worm ###
 Malware che viene eseguito in maniera indipendente in quanto non richiede un programma host. Un worm propaga una versione completamente funzionante su una nuova macchina, portando con sè un payload che esegue dei task nascosti, come backdoors, spam relays o DDoS agents.
 
@@ -192,11 +194,11 @@ La vittima deve:
 
 ## Politiche di sicurezza e modelli ##
 Una **Politica di sicurezza** è un insieme di regole e linee guida le quali descrivono gli obiettivi di sicurezza di un sistema. Consiste, di fatto, in un insieme di assiomi che gli estensori della politica ritenfono possano essere applicati. Include:
-1) soggetti che interagiscono con il sistema;
-2) oggetti e risorse di cui si vuole proteggere l'accesso;
-3) le azioni che i soggetti possono o non possono compiere sugli oggetti e sulle risorse;
-4) i permessi;
-5) le protezioni, cioè ulteriori regole che aiutano a raggiungere il goal (la sicurezza).
+1) i **soggetti** che interagiscono con il sistema;
+2) gli **oggetti e risorse** di cui si vuole proteggere l'accesso;
+3) le **azioni** che i soggetti possono o non possono compiere sugli oggetti e sulle risorse;
+4) i **permessi**;
+5) le **protezioni**, cioè ulteriori regole che aiutano a raggiungere il goal (la sicurezza).
 
 In primo luogo la politica suddivide l'insieme degli stati del sistema in sicuro e non sicuro. In secondo luogo, i meccanismi di sicurezza impediscono al sistema di entrare in uno stato non sicuro.<br />
 Un **Modello** definisce formalmente l'implementazione specifica della politica di sicurezza presa in considerazione.
@@ -212,13 +214,13 @@ Le politiche di sicurezza sono alla base del concetto di **Controllo degli acces
 3) i **permessi di accesso**, ovvero i modi nei quali un soggetto può accedere ad un oggetto.
 
 Le politiche di controllo degli accessi possono essere categorizzate in quattro macrocategorie:
-1) **DAC** (**Discretionary Access Control**): controlla l'accesso sulla base dell'identità del soggetto richiedente e delle regole di accesso. Discrezionale perchè un'entità potrebbe avere i privilegi di accesso che le permettono di determinare i permessi per ogni altro utente e definire le **Access Control Lists** (**ACL**);
+1) **DAC** (**Discretionary Access Control**): controlla l'accesso sulla base dell'identità del soggetto richiedente e delle regole di accesso. Discrezionale perchè un'entità potrebbe avere i privilegi di accesso che le permettono, a sua discrezione, di concedere ad un'altra entità l'accesso ad una determinata risorsa;
 2) **MAC** (**Mandatory Access Control**): controlla l'accesso in base al confronto tra etichette di sicurezza ed autorizzazione. Un amministratore centrale determina i permessi di accesso dei vari oggetti;
 3) **RBAC** (**Role-Based Access Control**): esistono quattro tipi di entità in un sistema di questo tipo:
-- **utente**: una persona che ha accesso a questo sistema informatico. Ogni individuo ha un ID utente associato;
-- **ruolo**: una funzione lavorativa con nome all'interno dell'organizzazione che controlla il sistema;
-- **autorizzazione**: approvazione di una particolare modalità di accesso a uno o più oggetti;
-- **sessione**: mappatura tra utente e sottoinsieme attivato dell'insieme di ruoli a cui è assegnato l'utente.
+	- **utente**: una persona che ha accesso a questo sistema informatico. Ogni individuo ha un ID utente associato;
+	- **ruolo**: una funzione lavorativa con nome all'interno dell'organizzazione che controlla il sistema;
+	- **autorizzazione**: approvazione di una particolare modalità di accesso a uno o più oggetti;
+	- **sessione**: mappatura tra utente e sottoinsieme attivato dell'insieme di ruoli a cui è assegnato l'utente.
 4) **ABAC**(**Attribute-Based Access Control**): modello che può definire autorizzazioni che esprimono condizioni sulle proprietà sia della risorsa che del soggetto.
 
 ------------------------------------------------------------
@@ -321,7 +323,10 @@ Con **Masquerading**, o **Spoofing**, si definisce la rappresentazione di un'ent
 Con **Ripudio dell'origine** si definisce una falsa negazione che un'entità abbia inviato o creato qualcosa.<br />
 Con **Diniego di ricezione** si definisce un falso diniego che un'entità abbia ricevuto alcune informazioni.<br />
 
-Una **Superficie di attacco** è costituita dalle vulnerabilità raggiungibili e sfruttabili in un sistema.<br />
+Una **Superficie di attacco** è costituita dalle vulnerabilità raggiungibili e sfruttabili in un sistema. Le categorie di superficie di attacco esistenti sono:
+1) **superficie di attacco di rete**;
+2) **superficie di attacco software**;
+3) **superficie di attacco umano**.
 
 L'implementazione della difesa da attacchi prevede quattro linee di azione complementari:
 - **Prevenzione**;
