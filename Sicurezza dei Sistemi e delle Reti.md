@@ -620,8 +620,7 @@ Ogni processo possiede tre User ID:
 Con **Set User ID** (**SetUID**), il sistema utilizza temporaneamente i privilegi del proprietario (o del gruppo nel caso di **Set Group ID**) del file oltre ai privilegi dell'utente reale. Questo consente ai programmi privilegiati di accedere a file/risorse generalmente non accessibili.
 
 Quando un normale programma viene eseguito, RUID=EUID, entrambi sono uguali all'ID dell'utente che ha eseguito il programma.
-Quando viene eseguito il **SetUID**, RUID$\neq$EUID. Il RUID rimarrà uguale all'user ID, mentre EUID è uguale all'ID del proprietario del programma.
-- Se il programma è possieduto da root, allora il programma esegue con i permessi di root.
+Quando viene eseguito il **SetUID**, RUID$\neq$EUID. Il RUID rimarrà uguale all'user ID, mentre EUID è uguale all'ID del proprietario del programma. Se, per esempio, il programma è possieduto da root, allora il programma viene eseguito con i permessi di root.
 
 Con il comando **CHMOD**, è possibile specificare i permessi con 4 bit.<br />
 Il primo bit può assumere i valori $4/2/1$, i quali corrispondono a settare i bit Set UID sull'owner, sul gruppo e lo sticky bit.<br />
@@ -643,35 +642,35 @@ Gli obiettivi dello scanning sono:
 Allo stesso modo, gli attaccanti usano questa stessa tecnica per trovare, appunto, superfici di attacco.<br />
 Esistono diverse modalità di scanning.<br />
 Si considerino ora le tipologie di scanning applicabili nel caso di **Single** source scanning (operata da una source a molti target):
-1) **Verticale**: consiste di un port scan di alcune o tutte le porte su un singolo computer;
-2) **Orizzontale**:scansiona una singola porta fra molti indirizzi IP;
-3) **Strobe**: scansiona molte porte fra molti IP Address;
-4) **Block**: scansiona tutte le porte su molti IP Address.
+1) **verticale**: consiste di un port scan di alcune o tutte le porte su un singolo computer;
+2) **orizzontale**:scansiona una singola porta fra molti indirizzi IP;
+3) **strobe**: scansiona molte porte fra molti IP Address;
+4) **block**: scansiona tutte le porte su molti IP Address.
 
-Si consideri ora il caso del **Distributed** scanning:
+Si consideri ora il caso del **distributed** scanning:
 - molteplici sistemi agiscono in un unione strategica per scansionare una rete od un host;
 - riduce la traccia lasciata da uno scanning di un singolo sistema e diminuisce la possibilità di essere scoperti.
 
 Lo scanning può essere:
-1) **Attivo**: si scansiona immettendo del traffico nella rete e creando pacchetti sonda che interrogano le macchine ed i dispositivi di rete;
-2) **Passivo**: Si osserva il traffico generato tra client e server per capire se i servizi sono attivi o spenti sulle diverse porte.
+1) **attivo**: si scansiona immettendo del traffico nella rete e creando pacchetti sonda che interrogano le macchine ed i dispositivi di rete;
+2) **passivo**: Si osserva il traffico generato tra client e server per capire se i servizi sono attivi o spenti sulle diverse porte.
 
 Ognuno di questi approcci di scanning ha, ovviamente, dei pro e contro.<br />
 Lo scanning attivo fornisce un rapporto completo delle porte aperte e non rileva porte filtrate o protette da port knocking, oltre ad essere molto veloce. Di contro, è molto intrusivo e può essere rilevato da IDS, oltre a non essere in grado di identificare host temporaneamente non attivi.<br />
 Lo scanning passivo invece è uno scanning non intrusivo, in quanto non viene rilevato da IDS. E' inoltre in grado di rilevare attività proveniente da host temporanei e non consuma risorse. DI contro, però, è in grado di rilevare solo host attivi.
 
 Il target può essere:
-1) **Singolo**: una macchina;
-2) **Multiplo**: più macchine.
+1) **singolo**: una macchina;
+2) **multiplo**: più macchine.
 
 La scansione di una porta può dare i seguenti esiti:
-1) **Aperta**: il target ha risposto indicando che il servizio è in ascolto su quella porta;
-2) **Chiusa**: il target ha risposto indicando che le connessioni alla porta saranno rifiutate;
-3) **Bloccata/Filtrata**: il target non ha risposto, pertanto le connessioni alla porta saranno rifiutate (è dovuto probabilmente alla presenza di un firewalll che blocca alcuni pacchetti).
+1) **aperta**: il target ha risposto indicando che il servizio è in ascolto su quella porta;
+2) **chiusa**: il target ha risposto indicando che le connessioni alla porta saranno rifiutate;
+3) **bloccata/filtrata**: il target non ha risposto, pertanto le connessioni alla porta saranno rifiutate (è dovuto probabilmente alla presenza di un firewalll che blocca alcuni pacchetti).
 
 Ecco alcune scansioni esistenti:
 1) **ARP scan**: permette di scoprire gli host attivi nella sottorete inviando una serie di ARP Broadcast ma funziona solo nella sottorete locale;
-2) **ICMP Scan**: permette di scoprire gli host attivi nella sottorete inviando dei pacchetti ICMP di tipo **Echo Request** (PING);
+2) **ICMP scan**: permette di scoprire gli host attivi nella sottorete inviando dei pacchetti ICMP di tipo **Echo Request** (PING);
 3) **TCP scan** (**intrusivo**): si invia un pacchetto di SYN e si effettua un three way handshake. Se la porta obiettivo della scansione risulterà aperta, l'attaccante riceverà in risposta un pacchetto TCP con i flag SYN e ACK attivi. A questo pacchetto, l'attaccante risponderà con un pacchetto ACK. Altrimenti, nel caso di porta chiusa, riceverà un pacchetto TCP con flag RST attivo, il quale terminerà la connessione;
 4) **TCP SYN PING** (**stealth**): si invia un pacchetto di SYN. Se l'host risponde con SYN/ACK, la porta è aperta (e non si completa il three way handshake). Se la vittima risponde con RST,  la porta è chiusa. Viene considerata una tecnica di scansione stealth perchè, tipicamente, nei log vengono memorizzate le connessioni complete e non le half open;
 5) **TCP ACK PING** (**stealth**): per effettuare la scansione si invia un pacchetto TCP con il bit ACK attivo. Se il firewall blocca il pacchetto, la sorgente allo scadere di un timeout riesce a dedurre che la porta è filtrata. Se il firewall lascia passare il pacchetto, esso raggiunge il target, il quale, non avendo una sessione TCP attiva, risponderà con un pacchetto con il bit RST attivo. In questo caso, si deduce che la porta non è filtrata (non si sa se sia chiusa o aperta);
@@ -707,9 +706,9 @@ Le contromisure per questo tipo di scansione sono:
 **IPSEC** è un protocollo di livello network che mira a rendere sicuro l'utilizzo di IP.<br />
 Essendo un protocollo del terzo livello, permette di proteggere i dati di tutti i livelli superiori.<br />
 IPSEC vuole garantire:
-- **Data Origin Autentication** / **Connectionless Data Integrity**, cioè impedisce di inviare un IP datagram con un IP Address spoofato senza che il destinatario se ne accorga. I dati vengono firmati dal sender e verificati dal receiver.;
-- **Replay Protection**, cioè impedisce di mandare nuovamente un pacchetto IP senza che il ricevente se ne accorga;
-- **Confindentiality**, cioè impedisce di esaminare il contenuto di un IP Datagram.
+- **data origin autentication** / **connectionless data integrity**, cioè impedisce di inviare un IP datagram con un IP Address spoofato senza che il destinatario se ne accorga. I dati vengono firmati dal sender e verificati dal receiver.;
+- **replay protection**, cioè impedisce di mandare nuovamente un pacchetto IP senza che il ricevente se ne accorga;
+- **confindentiality**, cioè impedisce di esaminare il contenuto di un IP Datagram.
 
 Esso è costituito da un insieme di protocolli, che sono:
 1) **AH( Authentication Header)**: per autenticare e rendere sicuri i dati;
@@ -718,8 +717,8 @@ Esso è costituito da un insieme di protocolli, che sono:
 
 AH ed ESP sono interscambiabili, ma ultimamente ESP sta diventando lo standard grazie alle funzionalità a breve illustrate. IPSEC è in grado di garantire confidenzialità. integrità ed autenticazione sul traffico. Infatti, i dati vengono firmati dal sender e tale firma viene verificata dal ricevente.<br />
 IPSEC funziona secondo due modalità:
-1) **Tunnel Mode**: il contenuto di un pacchetto IP viene cifrato ed incapsulato in un altro pacchetto IP. Questa tecnica risulta utile quando il pacchetto deve transitare attraverso nodi che, per qualche ragione, non conoscono IPSEC;
-2) **Transport Mode**: viene aggiunto un header al pacchetto IP orginale (non viene creato un nuovo pacchetto, ma viene aggiunta un'estensione) ed il tutto viene cifrato.
+1) **tunnel mode**: il contenuto di un pacchetto IP viene cifrato ed incapsulato in un altro pacchetto IP. Questa tecnica risulta utile quando il pacchetto deve transitare attraverso nodi che, per qualche ragione, non conoscono IPSEC;
+2) **transport mode**: viene aggiunto un header al pacchetto IP orginale (non viene creato un nuovo pacchetto, ma viene aggiunta un'estensione) ed il tutto viene cifrato.
 
 **Authentication Header** fa in modo di garantire l' autenticazione dei pacchetti e la loro integrità.<br />
 Non è in grado, però, di fornire confidenzialità.<br />
@@ -740,8 +739,8 @@ Per generare le SA, si ricorre al protocollo **IKE** (basato su ISAKMP). Questa 
 2) nella seconda fase, vengono inviate le chiavi vere e proprie per far sì che vengano utilizzate nel trasferimento dati.
 
 La prima fase può essere realizzata con due approcci:
-1) **Main Mode**: è un approccio più lento ma più flessibile. Il sender invia una o più proposte all'altro peer. Il responder seleziona una proposta;
-2) **Aggressive Mode**: è più veloce ed utilizza meno pacchetti.
+1) **main mode**: è un approccio più lento ma più flessibile. Il sender invia una o più proposte all'altro peer. Il responder seleziona una proposta;
+2) **aggressive mode**: è più veloce ed utilizza meno pacchetti.
 
 La main mode protegge, però, l'identità dei peers mentre l'aggressive mode no.
 
@@ -752,10 +751,10 @@ Il protocollo **Transport Layer Security**, o **TLS** (**Secure Socket Layer**, 
 Il protocollo prevede due fasi, una fase di sessione ed una fase di connessione. La prima consiste nell'instaurare un canale sicuro tra i due host mentre la seconda è la fase di comunicazione vera e propria.<br />
 La sessione può essere riutilizzata per altre connesssioni. Questo è vantaggioso in quanto permette di evitare di dover rimettere d'accordo le parti sugli algoritmi da utilizzare.<br />
 Il protocollo è costituito da 4 sottoprotocolli:
-1) **Protocollo di handshake**: consente l'eventuale autenticazione tra le parti;
-2) **Protocollo di alert**: notifica situazioni anomale ;
-3) **Protocollo change cypher**: impone l'esecuzione di un nuovo handshake per rinegoziare i parametri di sicurezza;
-4) **Protocollo record cypher**: si occupa della comprssione, del MAC e della cifratura.
+1) **protocollo di handshake**: consente l'eventuale autenticazione tra le parti;
+2) **protocollo di alert**: notifica situazioni anomale ;
+3) **protocollo change cypher**: impone l'esecuzione di un nuovo handshake per rinegoziare i parametri di sicurezza;
+4) **protocollo record cypher**: si occupa della comprssione, del MAC e della cifratura.
 
 ----------------------------------------------------------------
 
@@ -764,19 +763,19 @@ Internet è concepito come una rete pubblica. Infatti, i punti di accesso WI-Fi 
 Inoltre, le informazioni di instradamento sono pubbliche, in quanto le intestazioni dei pacchetti IP identificano l'origine e la destinazione.<br />
 L'utilizzo della crittografia permette di nascondere il payload dei messaggi ma non le informazioni di routing.
 
-Con **Anonimato** si definisce la situazione nella quale un utente non è identificabile all'interno di un insieme di soggetti.
+Con **anonimato** si definisce la situazione nella quale un utente non è identificabile all'interno di un insieme di soggetti.
 
-Con **Unlinkability** si definisce la situazione nella quale è impossibile ricollegare identità ed azione, come, ad esempio, un mittente ed un'e-mail.
+Con **unlinkability** si definisce la situazione nella quale è impossibile ricollegare identità ed azione, come, ad esempio, un mittente ed un'e-mail.
 
-Con **Unobservability** si intende la situazione nella quale un attaccante non è in grado di capire se un soggetto sta utilizzando un determinato sistema o un determinato protocollo.
+Con **unobservability** si intende la situazione nella quale un attaccante non è in grado di capire se un soggetto sta utilizzando un determinato sistema o un determinato protocollo.
 
 ----------------------------------------------------------------
 
 ### Attacchi all'anonimato ###
 L'anonimato può essere attaccato tramite:
-- **Analisi passiva del traffico**, ovvero dedurre quali soggetti stanno comunicando dal traffico di rete;
-- **Analisi attiva del traffico**, ovvero iniettare pacchetti o inserire una firma temporale sul flusso dei pacchetti;
-- **Compromissione dei nodi di rete**. L'utente malintenzionato potrebbe compromettere alcuni router e, ovviamente, non sarebbe immediatamente chiaro quali nodi siano compromessi. Inoltre, l'attaccante potrebbe registrare passivamente il traffico.
+- **analisi passiva del traffico**, ovvero dedurre quali soggetti stanno comunicando dal traffico di rete;
+- **analisi attiva del traffico**, ovvero iniettare pacchetti o inserire una firma temporale sul flusso dei pacchetti;
+- **compromissione dei nodi di rete**. L'utente malintenzionato potrebbe compromettere alcuni router e, ovviamente, non sarebbe immediatamente chiaro quali nodi siano compromessi. Inoltre, l'attaccante potrebbe registrare passivamente il traffico.
 
 ----------------------------------------------------------------
 
@@ -793,9 +792,9 @@ Purtroppo l'utilizzo di una VPN comporta degli svantaggi, dei quali i principali
 3) le prestazioni di una VPN dipendono in gran parte da fattori esterni.
 
 Quando si parla di VPN, vi sono tre diverse categorie:
-1) **Trusted VPN**: sono VPN in cui nessun terzo può entrare nella rete privata e viene garantita l'integrità del circuito della rete privata dla provider della VPN. Il provider fornisce un insieme di nodi "fidati";
-2) **Secure VPN**: sono VPN nel quale il traffico è cifrato ed agisce come un tunnel, dove non è possibile spiare cosa contengono i pacchetti della rete virtuale;
-3) **Hybrid VPN**: rappresenta l'unione delle due reti viste sopra.
+1) **trusted VPN**: sono VPN in cui nessun terzo può entrare nella rete privata e viene garantita l'integrità del circuito della rete privata dla provider della VPN. Il provider fornisce un insieme di nodi "fidati";
+2) **secure VPN**: sono VPN nel quale il traffico è cifrato ed agisce come un tunnel, dove non è possibile spiare cosa contengono i pacchetti della rete virtuale;
+3) **hybrid VPN**: rappresenta l'unione delle due reti viste sopra.
 
 Nelle VPN possono presentarsi 3 diverse topologie di rete:
 1) **Intranet**: definisce una rete in cui ha accesso solo l'azienda (e le relative filiali);
