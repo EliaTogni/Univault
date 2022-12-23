@@ -1,12 +1,12 @@
 ## Sicurezza ##
-Con **Sicurezza** si intende il raggiungere un obiettivo in presenza di un avversario, il prevenire un comportamento non desiderato.<br />
+Con **sicurezza** si intende il raggiungere un obiettivo in presenza di un avversario, il prevenire un comportamento non desiderato.<br />
 Un sistema sicuro è un sistema il quale assolve uno specifico compito, nonostante l'avversario voglia impedirlo o stia operando in qualsiasi modo per impedirlo.<br />
 La sicurezza è lo stato in cui il rischio è inferiore al massimo rischio accettabile.
 
 ------------------------------------------------------------
 
 ## Cybersecurity ##
-Con **Cybersecurity** si definisce la protezione delle informazioni archiviate, trasmesse ed elaborate in un sistema di rete di computer, altri dispositivi digitali e dispositivi di rete e linee di trasmissione, compresa internet.
+Con **cybersecurity** si definisce la protezione delle informazioni archiviate, trasmesse ed elaborate in un sistema di rete di computer, altri dispositivi digitali e dispositivi di rete e linee di trasmissione, compresa internet.
 - la protezione comprende riservatezza, confidenzialità, integrità, disponibilità, autenticità e responsabilità;
 - i metodi di protezione includono politiche e procedure organizzative, nonchè mezzi tecnici come crittografia e protocolli di comunicazione sicuri.
 
@@ -52,12 +52,12 @@ Ad un soggetto dobrebbero essere concessi solo i privilegi di cui ha bisogno al 
 ----------------------------------------------------------------
 
 ## Malware ##
-Con **Malware** si definisce un programma che viene inserito in un sistema, solitamente di nascosto, con l'intento di compromettere la riservatezza, l'integrità o la disponibilità di dati, delle applicazioni o del sistema della vittima, oppure con l'intento di infastidire o disturbare la vittima.
+Con **malware** si definisce un programma che viene inserito in un sistema, solitamente di nascosto, con l'intento di compromettere la riservatezza, l'integrità o la disponibilità di dati, delle applicazioni o del sistema della vittima, oppure con l'intento di infastidire o disturbare la vittima.
 
 ------------------------------------------------------------
 
 ### Trojan Horse ###
-Programma con un primo effetto evidente (e aspettato) ed un secondo effetto nascosto, il quale viola la politica di sicurezza.
+Programma con un primo effetto evidente (e aspettato) ed un secondo effetto nascosto, il quale viola la politica di sicurezza. L'utente deve essere indotto all'esecuzione di un Trojan horse.
 
 Alcuni esempi sono:
 1) **The AIDS Trojan**, il quale risiedeva su floppy disks contenenti importanti informazioni sulla malattia dell'AIDS. Questo trojan crittografava il disco rigido dell'utente e offriva la possibilità di acquistare la password per decifrare i dati;
@@ -66,8 +66,9 @@ Alcuni esempi sono:
 ------------------------------------------------------------
 
 ### Virus ###
-Un **Virus** informatico è un codice informatico che può replicarsi, modificando altri file o programmi per inserire codice in grado di essere replicato ulteriormente.<br />
+Un **virus** informatico è un codice informatico che può replicarsi, modificando altri file o programmi per inserire codice in grado di essere replicato ulteriormente.<br />
 La proprietà di autoreplicazione è ciò che distingue i virus informatici da altri tipi di malware. Un'altra proprietà di un virus risiede nel fatto che la replica del virus stesso richieda un certo tipo di assistenza da parte dell'utente, come ad esempio facendo clic su un allegato e-mail o condividendo un'unità USB.<br />
+Quando il programma viene richiamato, il controllo viene immediatamente trasferito al blocco di azioni principale contenente il codice del virus.<br 7>
 Il virus altera, quindi, il codice normale sostituendolo con una sua versione infetta senza però compiere azioni evidenti, cercando di rimanere nell'ombra.<br />
 Generalmente, i virus sono composti da tre parti:
 1) **meccanismo di infezione**;
@@ -80,7 +81,7 @@ Inoltre, i virus attraversano quattro fasi distinte:
 3) **triggering**;
 4) **execution**.
 
-I vettori di infezione per i virus sono tipicamente [[Boot Sector]] (come USB drive), file eseguibili, macro file e multipartiti.
+I vettori di infezione per i virus sono tipicamente boot sector (come USB drive), file eseguibili, macro file e multipartiti.
 
 ----------------------------------------------------------------
 
@@ -128,10 +129,13 @@ Minaccia la quale si attiva quando specifiche condizioni vengono soddisfatte, co
 ------------------------------------------------------------
 
 ### Zero Day Exploit ###
-Si tratta di una sequenza di eventi che portano ad un exploit:
+Si osservi la sequenza di eventi che portano ad un exploit:
 - un attaccante scopre una vulnerabilità prima non conosciuta;
 - il manufacturer diventa conscio della vulnerabilità;
-- un developer sviluppa il codice per dimostrare la vulnerabilità in un ambiente controllato.
+- un developer sviluppa il codice per dimostrare la vulnerabilità in un ambiente controllato;
+- il manufacturer sviluppa e distribuisce una patch contro la vulnerabilità;
+- un utente implementa il codice;
+- un utent estende la proof of concept fino ad un attacco attuale.
 
 Un attacco prima della disponibilità della contromisura è chiamato **Zero Day Exploit**
 
@@ -154,7 +158,7 @@ Il worm in questione è composto da due parti:
 Al giorno d'oggi, i worm sono multipiattaforma e multi-exploit ed utilizzano la diffusione ultraveloce.
 Un worm attuale può essere polimorfico, cioè ogni copia del worm ha un nuovo codice generato al volo usando istruzioni e tecniche di crittografia funzionalmente equivalenti, oppure metamorfico, cioè oltre a cambiare aspetto, ha un repertorio di modelli comportamentali che si scatenano in diverse fasi di propagazione.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ### Zombie e Botnet ###
 Malware che prende il possesso segretamente di un altro computer in rete, sfruttando i difetti del software.
@@ -162,23 +166,24 @@ Assembla poi i computer compromessi in una rete di zombie o botnet, cioè una ra
 
 Questa rete viene usata per lanciare indirettamente attacchi; ad esempio, DDos, phishing o spamming.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ### Rootkit ###
 Un **Rootkit** è un set di programmi installati su un sistema al fine di mantenere nascosto l'accesso. Questo tipo di malware altera le funzionalità standard dell'host in maniera malevola e stealth. In questo modo, l'attaccante ha il completo controllo del sistema.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ### Spyware ###
 Malware che colleziona volta per volta piccoli pezzi di informazioni riguardanti l'utente, ovviamente senza i permessi necessari.<br />
 Esempi di spyware sono i keyloggers.
 
-------------------------------------------------------------
+-----------------------------------------------------------------
+
 
 ### Scareware ###
 Software con payloads malevoli, utilizzati da ingegneri sociali per causare shock, ansia o convincere la vittima dell'esistenza di una minaccia.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ### Ransomware ###
 Malware che tiene in ostaggio un computer o i dati al suo interno, richiedendo un riscatto per riottenerne possesso.
@@ -223,13 +228,13 @@ Le politiche di controllo degli accessi possono essere categorizzate in quattro 
 	- **sessione**: mappatura tra utente e sottoinsieme attivato dell'insieme di ruoli a cui è assegnato l'utente.
 4) **ABAC**(**Attribute-Based Access Control**): modello che può definire autorizzazioni che esprimono condizioni sulle proprietà sia della risorsa che del soggetto.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ### Politiche di sicurezza basate sulla confidenzialità ###
 Con **confidenzialità** si intende il prevenire la divulgazione non autorizzata di informazioni.<br />
 Spesso in questa tipologia di politica si utilizzano metodi mandatori di tipo multilivello.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 #### Bell-La Padula ####
 **Bell-La Padula** è un modello di politica confidenziale il quale classifica i diversi livelli di sicurezza con i seguenti tag:
@@ -252,7 +257,7 @@ Un livello di sicurezza $(L, C)$ domina un livello di sicurezza $(L', C')$ se e 
 1) $\lambda(L) \geq \lambda(L')$;
 2) $C' \subseteq C$.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ### Politiche di sicurezza basate sull'integrità ###
 Con **integrità** si intende il prevenire modifiche non autorizzate alle informazioni.<br />
@@ -261,7 +266,7 @@ Alla base di questa tipologia di politiche ci sono 3 principi:
 2) **Separazione delle funzioni**: lo sviluppo ed il testing devono essere due operazioni separate, in modo che la seconda non sia influenzata dalla prima;
 3) **Auditing**: il sistema deve mantenere un **audit log** che memorizzi le responsabilità (ogni programma eseguito e il soggetto che ha dato l'autorizzazione) ed il sistema deve eventualmente permettere di fare recovery, di tornare ad il precedente stato consistente (**rollback**).
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 #### Biba ####
 **Biba** è uno dei modelli principali che segue questa tipologia di politiche di sicurezza. Si tratta di una tipologia duale rispetto alla politica basata sulla confidenzialità. Infatti, la confidenzialità è un vincolo sugli accessi in lettura mentre l'integrità è un vincolo sugli accessi in scrittura.<br />
@@ -269,7 +274,7 @@ Di conseguenza, le regole alla base di Biba sono il duale di quelle alla base de
 1) **Simple Integrity Property** (**No Read Down**): un soggetto $S$ ha accesso in lettura ad un oggetto $O$ se e solo se $\lambda(O) \geq \lambda(S)$ e se $S$ ha il permesso di leggere $O$;
 2) **\* Integrity Property** (**No Write Up**): Un soggetto $S$ ha accesso in scrittura ad un oggetto $O$ se e solo se $\lambda(S) \geq \lambda(O)$ e se $S$ ha il permesso di scrivere $O$.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 #### Clark-Wilson ####
 **Clark-Wilson** è uno dei modelli principali che segue questa tipologia di politiche di sicurezza in cui il sistema evolve tramite transazioni ben formate che cambiano il sistema da uno stato sicuro ad un altro stato sicuro.
@@ -288,12 +293,12 @@ Nel modello vengono definite entità e regole:
 
 Mentre nel modello Biba non esistono nozioni di regole di certificazione, nel modello Clark-Wilson sono presenti dei requisiti espliciti che le azioni svolte devono soddisfare.<br />Inoltre, mentre Biba si basa sull'integrità multilivello, Clark-Wilson si concentra sulla separazione dei compiti e delle transazioni.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ### Politiche di sicurezza multilaterali ###
 Questo tipo di politiche mira a bloccare il flusso di informazioni tra entità che operano allo stesso livello.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 #### Modello Chinese Wall ####
 Il modello **Chinese Wall** è un modello che segue le politiche di sicurezza multilaterali. Esso si basa sulla separazione dinamica dei doveri per proteggere la segretezza dei dati.<br />
@@ -309,7 +314,7 @@ Le condizioni di lettura e scrittura sono, invece, le seguenti:
 1) La lettura dell'oggetto $O$ da parte del soggetto $S$ è consentita se l'oggetto $O$ appartiene ad un $CD$ a cui $S$ ha accesso, oppure se appartiene ad un diverso $COI$;
 2) Un soggetto $S$ può scrivere un oggetto $O$ se e solo se nessun oggetto che può essere letto da $S$ si trova in un differente dataset rispetto al dataset di $O$ oppure se l'utente $S$ non è in grado di leggere un oggetto $O$ contenente informazioni **non sanificate**. Con **Sanificazione** si intende il camuffare le informazioni di una azienda, in particolare per prevenire la scoperta dell'identità di tale azienda.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ## Attacchi ##
 E' bene specificare che non è necessario che si verifichi una violazione perchè possa esserci una minaccia. Le azioni che potrebbero causare la violazione devono essere protette o preparate.<br />
@@ -339,6 +344,8 @@ Le schede di rete vengono identificate da un numero seriale, il quale viene util
 Questo indirizzo è composto da 48 bit, dei quali i primi 24 identificano il produttore.<br  />
 L'indirizzo MAC può essere riconfigurato dal software del driver dell'interfaccia di rete. Infatti, avendo i privilegi adeguati, è possibile cambiare il numero MAC usato nella produzione del frame. Basta conoscere il MAC di una macchina assente per poterla impersonare.
 
+----------------------------------------------------------------
+
 ### ARP Spoofing / Cache Poisoning ###
 [[Address Resolution Protocol]], come tutti i protocolli di rete, non ha implementato alcuna misura di sicurezza. Non ci sono controlli che vietino ad un host malizioso di rispondere ad una **ARP Request** nonostante non sia in possesso dell'**Indirizzo IP** richiesto (**ARP Spoofing**).<br />
 L'host mittente della ARP Request, ricevendo la comunicazione fake, aggiorna la sua **ARP Cache** e memorizza così l'associazione $<\text{Ip destinatario - MAC Address attaccante}>$, cioè l'associazione utente-indirizzo sbagliata (**Cache Poisoning**). Ciò provoca l'immediata deviazione dei pacchetti diretti all'IP originale richiesto al [[MAC Address]] dell'host malizioso.<br />
@@ -354,7 +361,7 @@ Il meccanismo di **ARP Poisoning** viene messo in atto per effettuare un [[Man i
 
 Eventuali contromisure possono essere l'utilizzo di [[IPSEC]] e l'utilizzo di tabelle statiche gestite da un admin di sistema.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ### MAC Address Flooding ###
 Ogni [[Switch]] possiede una tabella dei MAC Address il cui scopo è quello di capire a quale porta sia collegato ciascun host.<br />
@@ -366,7 +373,7 @@ Questa tecnica viene utilizzata per sniffare il traffico in reti in cui la prese
 
 Una possibile contromisura consiste nel non generare dinamicamente la tabella contenente le coppie $<\text{MAC Address - porta fisica}>$ ma avere l'accortezza e la pazienza di gestirla in maniera statica. E' inoltre possibile costruire dei filtri per scartare MAC falsi.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ### Problemi intrinsechi in TCP/IP ###
 Non esiste alcun meccanismo di autenticazione fra le parti, quindi non si può avere la certezza di parlare con l'host che effettivamente si desidera.
@@ -375,7 +382,7 @@ i controlli di integrità sono banali. L'unico controllo di integrità che [[TCP
 
 Infine, il protocollo difende la disponibilità della rete dalla congestione, ma non la possibilità di connettersi ad un determinato nodo.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ### IP Spoofing ###
 **IP Spoofing** è un tentativo da parte di un intruso di inviare pacchetti da un indirizzo IP facendoli sembrare provenire da un IP differente.<br />
@@ -398,8 +405,7 @@ Per sferrare un attacco di tipo Non-blind Spoofing, invece, è necessario utiliz
 
 Se un utente malintenzionato può indovinare il numero di sequenza corrente per una connessione esistente, può inviare il pacchetto di ripristino per chiuderla.
  
-
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ### TCP Session Hijacking ###
 Il **TCP Hijacking** consiste nell'aquisire una comunicazione TCP/IP attiva.
@@ -408,7 +414,7 @@ Può essere:
 1) **Passivo**: l'attaccante si limita ad ascoltare la conversazione tra client e server;
 2) **Attivo**: l'attaccante silenzia il client e impartisce comandi al server impersonando il client oppure chiude una connessione esistente.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ### TCP SYN Flood ###
 Ogni web server, quando inizia una connessione, memorizza il fatto di aver ricevuto un pacchetto di SYN da un client in una struttura dati detta **Trasmission Control Block** (**TCB**). Questa struttura diventa una entry nella backlog queue la quale contiene le connessioni iniziate ma non ancora completate. Il server, a questo punto, invia un pacchetto di SYN-ACK al client sorgente e rimane in attessa della sua risposta con ACK per terminare il **three-way handshake**.<br />
@@ -431,13 +437,13 @@ Un'altra contromisura per filtrare le connessioni leggittime da quelle fasulle �
 
 L'attacco SYN flood non da via di scampo se viene utilizzata una **botnet**. Di fatto, si tratta di migliaia o milioni di client legittimi (controllati da remoto da un attaccante a loro insaputa) che completano contemporaneamente il three-way handshake con il server. Essendo tutte connessioni che si completano con successo ma in contemporanea, il server fa fatica a gestirle e subisce il DoS.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ### DoS Attack ###
 Attacco il cui goal è l'esclusione di un nodo o di un servizio. Utilizza tipicamente degli amplification attack, nei quali la quantità di dati generati dall'attaccante è inferiore a quella che colpisce la vittima.<br />
 In un **Reflection Attack**, un attaccante, invece di colpire direttamente la vittima, dirige il suo traffico verso un host intermedio (**Reflector**) il quale poi dirige il traffico verso la vittima.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ### Attacchi a DHCP ###
 [[Dynamic Host Configuration Protocol]] è il protocollo che consente di assegnare a nuovi host un indirizzo IP scelto da un pool di indirizzi liberi e disponibili. Il protocollo, oltre a restituire l'IP Address, può assegnare:
@@ -466,7 +472,7 @@ Questa procedura è utile se client e server non fanno parte della stessa sottor
 Il server DCHP legge i dettagli aggiuntivi e assegna gli indirizzi IP in base alle informazioni sulla posizione. Il server invia il pacchetto di risposta al client tramite lo switch. Se, nel momento in cui il pacchetto raggiunge lo switch, le informazioni contenute sono rimaste invariate, lo switch riconosce che la comunicazione avviene effettivamente attraverso di esso. A questo punto, il dispositivo cancella i dati dell'option 82 dall'header e inoltra la risposta. Inoltre, l'aver ricordato la posizione del client (a quale porta fisica dello switch è collegato) rende impossibile effettuare la DHCP starvation. <br />
 Questo perchè lo switch si accorgerebbe che stanno arrivando molteplici richieste di assegnazioni di IP tutte dalla stessa porta (con MAC differenti).
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ### Attacchi a BGP ###
 [[Border Gateway Protocol]] è il protocollo che permette la comunicazione tra **Autonomous Systems**. Si tratta di un protocollo incrementale di tipo **Path Vector**, cioè manda un annuncio quando viene annunciata una nuova rotta ed un altro quando una rotta viene ritirata. Si parla di **iBGP** (**Internal**) quando ci si riferisce al BGP utilizzato all'interno di un Autonomous System. Si parla, invece, di **eBGP** (**external**) quando ci si riferisce al BGP utilizzato nella comunicazione tra AS diversi.
@@ -505,10 +511,9 @@ Le principali contromisure adottate da BGP sono:
 4) **Route Filtering**: vengono create delle **Access Control Lists** per filtrare i messaggi di update in ingresso ed in uscita in modo tale che ci si assicuri che le rotte seguano specifiche regole;
 5) **Resource Public Key Infrastructure (RPKI)**: questo sistema prevede l'esistenza di una repository contenente delle key. Gli AS ottengono un certificato **Route Origin Authorizations** (**Roa**), fornito dall'autorità regionale **Regional Internet Registries**.<br />Ogni ROA continene un **AS Number**, il **range di validità per le date** ed i **prefissi IP**.<br />Nello specifico, quando un AS certificato vuole inviare un update, lo farà aggiungendo il proprio certificato, permettendo così agli altri AS che riceveranno il pacchetto di confermare la sua identità. Gli annunci senza un ROA valido vengono ignorati dalle reti.<br />Una Public Key Infrastructure viene utilizzata anche dalle versioni sicure del protocollo BGP (**S-BGP** e **SO-BGP**).<br />**S-BGP** è un estensione di BGP utilizzata per proteggere il protocollo da pacchetti Update erronei o maliziosi. Ogni S-BGP Router genera un **Address Attestation** per verificare di essere autorizzato ad annunciare quel blocco di IP.<br />Ogni S-BGP router lungo il path, poi, dovrà validare l'integrità di un Update prima di firmarlo e di riannunciarlo.<br />**SO-BGP** è, invece, una versione di BGP con maggiore flessibilità.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ### Attacco a DNS ###
-
 Il protocollo [[Domain Name System]], o **DNS**, è un protocollo utile per risolvere **indirizzi logici** (www.indirizzologico.com) in **indirizzi fisici**, ovvero gli indirizzi I (1.1.1.1).<br />Si tratta di un servizio gerarchico:
 1) **Root Name Servers**: responsabili dei domini al top level;
 2) **Top Level Domain Servers**: responsabili dei domini di primo livello, come **.it**, **.com**, **.org**;
@@ -553,17 +558,21 @@ Un meccanismo di difesa generale di DNS è dato da **DNSSEC**.<br />Rappresenta 
 
 Le vulnerabilità di DNS sono causate dal fatto che sia gli utenti che gli host si fidano del mapping host-address restituito dal DNS.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ### Buffer Overflow ###
 **Buffer Overflow** è una delle maggiori vulnerabilità di sicurezza, causato spesso dalla capacità dell'attaccante remoto di eseguire del codice arbitrario. Questo tipo di attacchi è causato in genere da programmi che non controllano input non validi, tipicamente più lunghi di quanto previsto.<br />
 Nell'implementazione della memoria di un calcolatore, uno **Stack Frame** contiene i parametri della funzione, le sue variabili locali, i dati necessari per ripristinare il precedente stack frame, incluso l'indirizzo dell'istruzione successiva alla chiamata a funzione.
 Se un programma non controlla il limite degli array, allora è possibile che il programma riceva input particolare per sovrascrivere questo indirizzo di ritorno, impedendo così il ritorno al programma chiamante e permettendo all'attaccante di inserire istruzioni malevole.
 
+----------------------------------------------------------------
+
 #### Stack Canaries ####
 Uno stack canary è un numero casuale posto sullo stack tra i dati dell'utente e l'indirizzo di ritorno.<br />
 L'overflow della variabile locale e la modifica dell'indirizzo di ritorno cambierà anche lo stack canary.<br />
 Prima di tornare, il programma controlla il valore canarino e, se è stato modificato, capirà di essere stato vittima di un attacco buffer overflow.
+
+----------------------------------------------------------------
 
 ## Set UID ##
 Tutte le risorse Linux (socket, dispositivi, file) sono gestite come file. Tutti i file e le directory hanno un unico proprietario utente ed un unico gruppo proprietario.<br />
@@ -592,7 +601,7 @@ Il secondo bit rappresenta i permessi per l'owner.<br />
 Il terzo bit rappresenta i permessi per i gruppi.<br />
 Il quarto bit rappresenta i permessi per gli utenti world.<br />
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ## Network Scanning ##
 Il **Network Scanning** rappresenta una tecnica nata per aiutare i sistemisti di rete a capire se nel sistema sono presenti superfici di attacco disponibili.
@@ -664,7 +673,7 @@ Le contromisure per questo tipo di scansione sono:
 1) impedire che l'indirizzo IP specificato dal comando PORT sia diverso da quello dell'FTP Client;
 2) Evitare che la porta abbia un PORT ID minore di 1023 e che, quindi, si stia tentando un attacco verso servizi standard.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ## IPSEC ##
 **IPSEC** è un protocollo di livello network che mira a rendere sicuro l'utilizzo di IP.<br />
@@ -708,7 +717,7 @@ La prima fase può essere realizzata con due approcci:
 
 La main mode protegge, però, l'identità dei peers mentre l'aggressive mode no.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ## SSL/TLS ##
 Il protocollo **Transport Layer Security**, o **TLS** (**Secure Socket Layer**, o **SSL**, è la versione più antica) è un protocollo che consente di rendere sicuro il traffico a livello di trasporto.<br />
@@ -720,7 +729,7 @@ Il protocollo è costituito da 4 sottoprotocolli:
 3) **Protocollo change cypher**: impone l'esecuzione di un nuovo handshake per rinegoziare i parametri di sicurezza;
 4) **Protocollo record cypher**: si occupa della comprssione, del MAC e della cifratura.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ## Anonymity ##
 Internet è concepito come una rete pubblica. Infatti, i punti di accesso WI-Fi e i router di rete vedono tutto il traffico che li attraversa.<br />
@@ -733,15 +742,15 @@ Con **Unlinkability** si definisce la situazione nella quale è impossibile rico
 
 Con **Unobservability** si intende la situazione nella quale un attaccante non è in grado di capire se un soggetto sta utilizzando un determinato sistema o un determinato protocollo.
 
----------------------------------------------------------------
+----------------------------------------------------------------
 
 ### Attacchi all'anonimato ###
 L'anonimato può essere attaccato tramite:
-	- **Analisi passiva del traffico**, ovvero dedurre quali soggetti stanno comunicando dal traffico di rete;
-	- **Analisi attiva del traffico**, ovvero iniettare pacchetti o inserire una firma temporale sul flusso dei pacchetti;
-	- **Compromissione dei nodi di rete**. L'utente malintenzionato potrebbe compromettere alcuni router e, ovviamente, non sarebbe immediatamente chiaro quali nodi siano compromessi. Inoltre, l'attaccante potrebbe registrare passivamente il traffico;
+- **Analisi passiva del traffico**, ovvero dedurre quali soggetti stanno comunicando dal traffico di rete;
+- **Analisi attiva del traffico**, ovvero iniettare pacchetti o inserire una firma temporale sul flusso dei pacchetti;
+- **Compromissione dei nodi di rete**. L'utente malintenzionato potrebbe compromettere alcuni router e, ovviamente, non sarebbe immediatamente chiaro quali nodi siano compromessi. Inoltre, l'attaccante potrebbe registrare passivamente il traffico.
 
----------------------------------------------------------------
+----------------------------------------------------------------
 
 ## VPN ##
 Una **Virtual Private Network** (**VPN**) è una rete virtuale privata nella quale è possibile costruire una LAN privata, facendo sì che i dispositivi ad essa connessi siano sparsi per il globo.<br />
@@ -765,7 +774,7 @@ Nelle VPN possono presentarsi 3 diverse topologie di rete:
 2) **Extranet**: definisce una rete in cui hanno accesso l'azienda ed i suoi partner (ma solo a determinate risorse);
 3) **Remote Access**: permette l'accesso da remoto alla rete aziendale a prescinfere dal luogo fisico in cui un utente si trova.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ## Challenge-Response ##
 I protocolli **Challenge-Response** sono protocolli in cui non è previsto l'invio di chiavi per autenticarsi in un sistema. Sono protocolli studiati per l'autenticazione e, nello specifico, si basano su segreti che solo le due parti in causa conoscono.<br />
@@ -780,7 +789,7 @@ Lo svantaggio, invece, è dato dal fatto che si tratta di un protocollo vulnerab
 
 Se l'utente ha necessità di collegarsi con più server che sfruttano il meccanismo di challenge-response, diventa però oneroso ricordare tutte le password/chiavi. Ci si affida, quindi, ad un **Trusted Third Party**. Viene utilizzato un servizio di autenticazione fidato sulla rete, il quale funge da controllore che conosce tutte le password ma è un **single point of failure**.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ## Firewall ##
 Il **Firewall** rappresenta la misura di sicurezza minima in un sistema connesso ad internet. Esso si interpone tra la rete interna ed internet, filtrando le richieste in ingresso ed in uscita per cercare di proteggere la rete da utenti malintenzionati.<br />
@@ -812,7 +821,7 @@ Ovviamente l'utilizzo del proxy rallenta notevolmente la gestione dei pacchetti.
 
 Un **Circuit Level**, invece, sfrutta sempre i proxy server ma non è application-aware. Si limita, quindi, ad avere funzioni stateful.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ## IDS e IPS ##
 Un **Intrusion Detection System** (o **IDS**) è un componente del sistema in grado di rilevare e far scattare l'allarme quando avviene un'intrusione o un abuso delle politiche di rete da parte di utenti esterni.<br />
@@ -824,7 +833,7 @@ Gli IDS possono essere:
 Gli IDS possono essere posizionati sugli host (**HIDS**) oppure in punti strategici della rete (**NIDS**). Un IDS è costituito da vari sensori che comunicano in continuazione con un **director**. Il direcotr si occupa di analizzare i dati dei sensori ed eventualmente lanciare un allarme.<br />
 Gli **Intrusion Prevention Systems** (o **IPS**) sono degli IDS che non si limitano a sollevare l'allarme. Sono, infatti, in grado di prendere alcune contromisure (sempre ad attacco in corso, a differenza di ciò che dice il nome non sono in grado di prevenire attacchi), tra cui modificare le regole del firewall per cercare, quantomeno, di bloccare l'attacco. Si tratta di un meccanismo che permette di limitare i danni.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ## Reti Wireless ##
 Le **Reti Wireless** funzionano in due modalità di base:
