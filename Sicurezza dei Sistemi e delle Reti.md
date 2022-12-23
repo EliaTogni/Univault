@@ -3,7 +3,7 @@ Con **sicurezza** si intende il raggiungere un obiettivo in presenza di un avver
 Un sistema sicuro è un sistema il quale assolve uno specifico compito, nonostante l'avversario voglia impedirlo o stia operando in qualsiasi modo per impedirlo.<br />
 La sicurezza è lo stato in cui il rischio è inferiore al massimo rischio accettabile.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ## Cybersecurity ##
 Con **cybersecurity** si definisce la protezione delle informazioni archiviate, trasmesse ed elaborate in un sistema di rete di computer, altri dispositivi digitali e dispositivi di rete e linee di trasmissione, compresa internet.
@@ -24,7 +24,7 @@ Fondamentale la distinzione tra **attacchi passivi** ed **attacchi attivi**. Un 
 ### Principio di Fail-Safe Defaults ###
 A meno che un soggetto non abbia accesso esplicito ad un oggetto, dovrebbe essergli negato l'accesso a quell'oggetto. Inoltre, se il soggetto non è in grado di completare la sua azione/attività, dovrebbe annullare le modifiche apportate nello stato sicuro del sistema prima che termini.
 
--------------------------------------------------------------
+----------------------------------------------------------------
 
 ### Principio dell'Economy of Mechanism ###
 I meccanismi di sicurezza dovrebbero essere i più semplici possibili.
@@ -54,7 +54,7 @@ Ad un soggetto dobrebbero essere concessi solo i privilegi di cui ha bisogno al 
 ## Malware ##
 Con **malware** si definisce un programma che viene inserito in un sistema, solitamente di nascosto, con l'intento di compromettere la riservatezza, l'integrità o la disponibilità di dati, delle applicazioni o del sistema della vittima, oppure con l'intento di infastidire o disturbare la vittima.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ### Trojan Horse ###
 Programma con un primo effetto evidente (e aspettato) ed un secondo effetto nascosto, il quale viola la politica di sicurezza. L'utente deve essere indotto all'esecuzione di un Trojan horse.
@@ -63,7 +63,7 @@ Alcuni esempi sono:
 1) **The AIDS Trojan**, il quale risiedeva su floppy disks contenenti importanti informazioni sulla malattia dell'AIDS. Questo trojan crittografava il disco rigido dell'utente e offriva la possibilità di acquistare la password per decifrare i dati;
 2) **Mocmex**, trojan il quale risiedeva in diverse cornici per foto digitali cinesi. Ogniqualvolta un frame infetto veniva collegato ad una macchina Windows, il malware veniva copiato dal frame al computer ed iniziava a racogliere e trasmettere le password.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ### Virus ###
 Un **virus** informatico è un codice informatico che può replicarsi, modificando altri file o programmi per inserire codice in grado di essere replicato ulteriormente.<br />
@@ -88,45 +88,45 @@ I vettori di infezione per i virus sono tipicamente boot sector (come USB drive)
 #### Macro Virus ####
 Virus che si attacca a documenti e utilizza le capacità di programmazione macro dell'applicazione del documento per eseguire codice e propagarsi.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 #### Compression Virus ####
 Virus che comprime il file eseguibile, in modo tale che sia la versione infetta che quella non infetta abbiano la stessa lunghezza.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 E' possibile classificare i virus in base alla strategia attuata per non rivelarsi:
 
 #### Encrypted Virus ####
 Una parte del virus crea una chiave di crittografia casuale e crittografa il resto del virus. La chiave viene, quindi, memorizzata con il virus. Quando viene richiamato un programma infetto, il virus utilizza la chiave casuale memorizzata per decrittografare la parte di sè cifrata. Quando il virus si replica, viene selezionata una chiave casuale diversa, impendendo così di avere un modello di bit costante da osservare.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 #### Stealth Virus ####
 Virus progettato per nascondersi dal rilevamento da parte del software antivirus.
 Può utilizzare tecniche di mutazione del codice, compressione o rootkit.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 #### Polymorphic Virus ####
 Virus che, durante la replica, crea copie funzionalmente equivalenti ma che hanno modelli di bit nettamente diversi.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 #### Metamorphic Virus ####
 Virus il quale si riscrive completamente ad ogni iterazione, utilizzando più tecniche di trasformazione ed aumentando così la difficoltà di rilevamento.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ### Trapdoor ###
 Si tratta di un secret entry point in un sistema, il quale utilizza uno specifico user identifier o password che supera le normali procedure di sicurezza.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ### Logic Bomb ###
 Minaccia la quale si attiva quando specifiche condizioni vengono soddisfatte, come ad esempio la presenza o assenza di un file, e, quando scatta, danneggia il sistema modificando o cancellando file o dischi.
 
-------------------------------------------------------------
+----------------------------------------------------------------
 
 ### Zero Day Exploit ###
 Si osservi la sequenza di eventi che portano ad un exploit:
@@ -160,8 +160,18 @@ Un worm attuale può essere polimorfico, cioè ogni copia del worm ha un nuovo c
 
 ----------------------------------------------------------------
 
+### Drive-by-Downloads ###
+Malware che sfruttano dei bug nelle applicazioni utente per installare ulteriori malware. Questo malware attende che utenti ignari visitino la pagina Web dannosa per diffondersi sui loro sistemi.  
+
+----------------------------------------------------------------
+
+### Clickjacking ###
+L'attaccante raccoglie i click di un utente infetto e lo costringe a fare una varietà di azioni, come indirizzarlo a siti Web che potrebbero contenere codice dannoso. Questa tecnica utilizza più livelli trasparenti o opachi per indurre un utente a fare click su un pulsante o link ad un'altra pagina.
+
+----------------------------------------------------------------
+
 ### Zombie e Botnet ###
-Malware che prende il possesso segretamente di un altro computer in rete, sfruttando i difetti del software.
+Malware che prende il possesso segretamente di un altro computer in rete, sfruttando i difetti del software.<br />
 Assembla poi i computer compromessi in una rete di zombie o botnet, cioè una raccolta di macchine compromesse che eseguono programmi, generalmente denominati worm, trojan horses o backdoors, sotto un infrastruttura di comando e controllo comune.
 
 Questa rete viene usata per lanciare indirettamente attacchi; ad esempio, DDos, phishing o spamming.
@@ -169,12 +179,20 @@ Questa rete viene usata per lanciare indirettamente attacchi; ad esempio, DDos, 
 ----------------------------------------------------------------
 
 ### Rootkit ###
-Un **Rootkit** è un set di programmi installati su un sistema al fine di mantenere nascosto l'accesso. Questo tipo di malware altera le funzionalità standard dell'host in maniera malevola e stealth. In questo modo, l'attaccante ha il completo controllo del sistema.
+Un **rootkit** è un set di programmi installati su un sistema al fine di mantenere nascosto l'accesso con privilegi di amministratore, nascondendo le prove della sua presenza. Questo tipo di malware altera le funzionalità standard dell'host in maniera dannosa e furtiva. In questo modo, l'attaccante ha il completo controllo del sistema.
+
+I rootkit possono essere classificati in:
+- **persistent**: si attiva ogni volta che il sistema si avvia;
+- **memory based**: non ha codice persistente;
+- **user mode**: intercetta le chiamate alle API;
+- **kernel mode**: può intercettare le chiamate alle API native in modalità kernel;
+- **virtual machine based**: installa un monitor leggero della macchina virtuale, il sistema operativo in una macchina virtuale. Il rootkit può, quindi, intercettare e modificare in modo trasparente stati ed eventi che si verificano nel sistema virtualizzato;
+- **external mode**: il malware si trova al di fuori della normale modalità operativa del sistema di destinazione, nel BIOS o nella modalità di gestione del sistema, da dove può accedere direttamente all'hardware.
 
 ----------------------------------------------------------------
 
 ### Spyware ###
-Malware che colleziona volta per volta piccoli pezzi di informazioni riguardanti l'utente, ovviamente senza i permessi necessari.<br />
+Malware che colleziona volta per volta piccoli pezzi di informazioni riguardanti l'utente, ovviamente senza i permessi necessari. Può anche reindirizzare la navigazione e visualizzare gli annunci.<br />
 Esempi di spyware sono i keyloggers.
 
 -----------------------------------------------------------------
@@ -194,6 +212,16 @@ Questo malware:
 La vittima deve:
 - inserire un codice ottenibile solo al pagamento del riscatto;
 - comprare un tool di decrittazione o di rimozione.
+
+----------------------------------------------------------------
+
+### Contromisure per i malware ###
+Le contromisuro che dovrebbero essere adottate al fine di mitigare le minacce sono:
+- **rilevamento**: l'accertarsi dell'esistenza della minaccia e rilevare il malware;
+- **identificazione**: individuare lo specifico malware responsabile dell'infezione del sistema;
+- **rimozione**: rimuovere tutte le tracce del malware da tutti i sistemi infetti, in modo che non possa diffondersi ulteriormente.
+
+Un metodo per rilevare ed analizzare i malware prevede l'esecuzione di codici potenzialmente dannosi in una **sandbox** emulata o su macchina virtuale. Questo metodo permette di eseguire il codice in un ambiente controllato, dove il suo comportamento può essere attentamente monitorato senza rischiare di compromettere la sicurezza di un sistema reale. Questi ambienti spaziano da emulatori sandbox, i quali simulano la memoria e la CPU di un sistema target, a macchine virtuali complete.
 
 ----------------------------------------------------------------
 
