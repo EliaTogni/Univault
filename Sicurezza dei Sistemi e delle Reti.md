@@ -1,7 +1,10 @@
 ## Sicurezza ##
 Con **sicurezza** si intende il raggiungere un obiettivo in presenza di un avversario, il prevenire un comportamento non desiderato.<br />
 Un sistema sicuro è un sistema il quale assolve uno specifico compito, nonostante l'avversario voglia impedirlo o stia operando in qualsiasi modo per impedirlo.<br />
-La sicurezza è lo stato in cui il rischio è inferiore al massimo rischio accettabile.
+La sicurezza è lo stato in cui il rischio è inferiore al massimo rischio accettabile, dove il termine rischio esprime la possibilità che un attacco causi un danno ad un'organizzazione. Il rischio viene valutato usando la quantità di danno e la probabilità che esso avvenga.<br />
+Una **vulnerabilità** è un punto debole che può essere sfruttato per causare danni al sistema. Degli esempi di vulnerabilità comprendono programmi con privilegi non necessari, programmi con difetti noti, configurazioni firewall deboli, etc.<br />
+Una **minaccia** invece è un'azione di un avversario che tenta di sfruttare le vulnerabilità per danneggiare un sistema IT.
+
 
 ----------------------------------------------------------------
 
