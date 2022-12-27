@@ -229,14 +229,14 @@ Un metodo per rilevare ed analizzare i malware prevede l'esecuzione di codici po
 ----------------------------------------------------------------
 
 ## Politiche di sicurezza e modelli ##
-Una **Politica di sicurezza** è un insieme di regole e linee guida le quali descrivono gli obiettivi di sicurezza di un sistema. Consiste, di fatto, in un insieme di assiomi che gli estensori della politica ritenfono possano essere applicati. Include:
+Una **Politica di sicurezza** è un insieme di regole e linee guida definite in linguaggio naturale o attraverso un formalismo matematico le quali descrivono gli obiettivi di sicurezza di un sistema. Consiste, di fatto, in un insieme di assiomi che gli estensori della politica ritenfono possano essere applicati. Include:
 1) i **soggetti** che interagiscono con il sistema;
 2) gli **oggetti e risorse** di cui si vuole proteggere l'accesso;
 3) le **azioni** che i soggetti possono o non possono compiere sugli oggetti e sulle risorse;
 4) i **permessi**;
 5) le **protezioni**, cioè ulteriori regole che aiutano a raggiungere il goal (la sicurezza).
 
-In primo luogo la politica suddivide l'insieme degli stati del sistema in sicuro e non sicuro. In secondo luogo, i meccanismi di sicurezza impediscono al sistema di entrare in uno stato non sicuro.<br />
+In primo luogo la politica partiziona l'insieme degli stati del sistema in **autorizzato** (sicuro) e **non autorizzato** (non sicuro). In secondo luogo, i meccanismi di sicurezza impediscono al sistema di entrare in uno stato non sicuro.<br />
 Un **Modello** definisce formalmente l'implementazione specifica della politica di sicurezza presa in considerazione.
 
 Un **Meccanismo** implementa la politica a basso livello. Le politiche, infatti, utilizzano meccanismi (come la [[Crittografia]]) per raggiungere il goal.<br />
@@ -265,8 +265,6 @@ Le politiche di controllo degli accessi possono essere categorizzate in quattro 
 Con **confidenzialità** si intende il prevenire la divulgazione non autorizzata di informazioni.<br />
 Spesso in questa tipologia di politica si utilizzano metodi mandatori di tipo multilivello.
 
-----------------------------------------------------------------
-
 #### Bell-La Padula ####
 **Bell-La Padula** è un modello di politica confidenziale il quale classifica i diversi livelli di sicurezza con i seguenti tag:
 1) **Top Secret**;
@@ -280,6 +278,8 @@ In generale, in questo modello si devono rispettare due proprietà:
 2) **\* Security Property** (**No Write Down**): un soggetto $S$ ha accesso in scrittura ad un oggetto $O$ se e solo se $\lambda(O) \geq \lambda(S)$ e se $S$ ha il permesso di scrivere $O$.
 
 Combinando questi due principi si previene un possibile flusso di informazioni dall'alto verso il basso dei livelli di sicurezza.
+
+Il **principio della forte tranquillità** afferma che i livelli di sicurezza non cambiano durante la vita del sistema, mentre il **principio della debole tranquillità** afferma che i livelli di sicurezza non cambiano in modo tale da violare le regole di una determinata politica di sicurezza.
 
 Il modello Bell-La Padula può essere esteso includendo delle categorie nei livelli di sicurezza che inducono un reticolo. <br />
 Un livello di sicurezza viene ora rappresentato come $<\text{Livello di sicurezza}, \{\text{Insieme di categorie}\}>$.
@@ -297,8 +297,6 @@ Alla base di questa tipologia di politiche ci sono 3 principi:
 2) **Separazione delle funzioni**: lo sviluppo ed il testing devono essere due operazioni separate, in modo che la seconda non sia influenzata dalla prima;
 3) **Auditing**: il sistema deve mantenere un **audit log** che memorizzi le responsabilità (ogni programma eseguito e il soggetto che ha dato l'autorizzazione) ed il sistema deve eventualmente permettere di fare recovery, di tornare ad il precedente stato consistente (**rollback**).
 
-----------------------------------------------------------------
-
 #### Biba ####
 **Biba** è uno dei modelli principali che segue questa tipologia di politiche di sicurezza. Si tratta di una tipologia duale rispetto alla politica basata sulla confidenzialità. Infatti, la confidenzialità è un vincolo sugli accessi in lettura mentre l'integrità è un vincolo sugli accessi in scrittura.<br />
 Di conseguenza, le regole alla base di Biba sono il duale di quelle alla base del modello di Bell-La Padula:
@@ -314,15 +312,24 @@ Si tratta di un modello nel quale l'integrità di un dato è definita da un insi
 1) I dati che rispettano questi vincoli sono in uno stato coerente;
 2) L'integrità del sistema viene preservata durante la transazione. Prima e dopo ogni azione, le condizioni di consistenza devono essere mantenute. Una transazione **Well-formed** è una serie di operazioni grazie alle quali il sistema passa da uno stato consistente ad un altro consistente;
 3) Una transazione ben formata sposta il sistema da uno stato coerente ad un altro stato, sempre coerente.
-4) E' necessario avere la separazione dei doveri. Viene infatti richiesto che il certificatore e gli implementatori siano persone diverse. Nel caso della transazione, al fine di corrompere i dati, devono essere due persone diverse a commettere errori simili o a collaborare.
 
-Nel modello vengono definite entità e regole:
+Nel modello vengono definite entità e regole. Le entità sono:
 1) **Constrained Data Items** (**CDI**): sono tutti gli oggetti interni al sistema sui quali è posto il vincolo di integrità;
 2) **Uncostrained Data Items** (**UDI**): sono tutti gli oggetti interni al sistema non sottoposti al vincolo di integrità;
 3) **Integrity Verification Procedures** (**IVP**): sono procedure che permettono la verifica dell'integrità. Il loro obiettivo è di confermare che tutti i CDI siano conformi alle specifiche di integrità ogni volta che una IPV viene eseguita.
 4) **Transformation Procedures** (**TP**): sono tutte quelle procedure che permettono di modificare i CDI oppure di prendere in input i dati di un utente e creare da quelli un nuovo CDI. Queste trasformazioni corrispondono proprio a transazioni well-formed.
 
+Le regole, invece, sono:
+1) **vincoli di integrità**: esprimono relazioni tra oggetti, le quali devono essere soddisfatte affinchè lo stato del sistema sia valido;
+2) **metodi di certificazione**: hanno lo scopo di verificare che le transazioni soddisfino determinati vincoli di integrità. Una volta certificato il programma per una transazione, non è necessario verificare i vincoli di integrità ad ogni esecuzione della transazione;
+3) **separazione delle regole di servizio**: hanno lo scopo di impedire ad un utente, il quale esegue una transazione, di certificarla lui stesso.
+
 Mentre nel modello Biba non esistono nozioni di regole di certificazione, nel modello Clark-Wilson sono presenti dei requisiti espliciti che le azioni svolte devono soddisfare.<br />Inoltre, mentre Biba si basa sull'integrità multilivello, Clark-Wilson si concentra sulla separazione dei compiti e delle transazioni.
+
+----------------------------------------------------------------
+
+### Basic Security Theorem ###
+Il **basic security theorem** definisce come sistema sicuro il sistema in cui sia la simple property sia la $*$ property valgano.
 
 ----------------------------------------------------------------
 
