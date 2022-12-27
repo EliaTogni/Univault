@@ -336,8 +336,6 @@ Il **basic security theorem** definisce come sistema sicuro il sistema in cui si
 ### Politiche di sicurezza multilaterali ###
 Questo tipo di politiche mira a bloccare il flusso di informazioni tra entità che operano allo stesso livello.
 
-----------------------------------------------------------------
-
 #### Modello Chinese Wall ####
 Il modello **Chinese Wall** è un modello che segue le politiche di sicurezza multilaterali. Esso si basa sulla separazione dinamica dei doveri per proteggere la segretezza dei dati.<br />
 L'obiettivo di Chinese Wall è quello di prevenire flussi di informazioni che possano causare conflitti di interesse. Il modello, quindi, organizza le entità in classi di **Conflitti di interessi**.<br />
@@ -388,25 +386,27 @@ L'indirizzo MAC può essere riconfigurato dal software del driver dell'interfacc
 [[Address Resolution Protocol]], come tutti i protocolli di rete, non ha implementato alcuna misura di sicurezza. Non ci sono controlli che vietino ad un host malizioso di rispondere ad una **ARP Request** nonostante non sia in possesso dell'**Indirizzo IP** richiesto (**ARP Spoofing**).<br />
 L'host mittente della ARP Request, ricevendo la comunicazione fake, aggiorna la sua **ARP Cache** e memorizza così l'associazione $<\text{Ip destinatario - MAC Address attaccante}>$, cioè l'associazione utente-indirizzo sbagliata (**Cache Poisoning**). Ciò provoca l'immediata deviazione dei pacchetti diretti all'IP originale richiesto al [[MAC Address]] dell'host malizioso.<br />
 Tutto questo avviene perchè:
-1) Le richieste non sono tracciate;
-2) Gli annunci ARP che viaggiano sulla rete non sono autenticati;
-3) Le macchine si fidano l'un l'altra perchè il protocollo non ha alcuna garanzia di sicurezza. Una macchina attaccante può quindi ingannare tutte le altre.
+1) le richieste non sono tracciate;
+2) gli annunci ARP che viaggiano sulla rete non sono autenticati;
+3) le macchine si fidano l'un l'altra perchè il protocollo non ha alcuna garanzia di sicurezza. Una macchina attaccante può quindi ingannare tutte le altre.
 
 Questa procedura può avere luogo anche nel caso in cui nessun utente abbia inviato una ARP Request. <br />
 Infatti una ARP cache si aggionra ogni volta che riceve una ARP Reply, anche se non ha inviato alcuna richiesta. L'host malevolo può quindi inviare una ARP Reply per fare Cache Poisoning in qualsiasi momento.
 
 Il meccanismo di **ARP Poisoning** viene messo in atto per effettuare un [[Man in the Middle]] a livello datalink.
 
-Eventuali contromisure possono essere l'utilizzo di [[IPSEC]] e l'utilizzo di tabelle statiche gestite da un admin di sistema.
+Eventuali contromisure possono essere l'utilizzo di IPSEC e l'utilizzo di tabelle statiche gestite da un admin di sistema.
 
 ----------------------------------------------------------------
 
 ### MAC Address Flooding ###
-Ogni [[Switch]] possiede una tabella dei MAC Address il cui scopo è quello di capire a quale porta sia collegato ciascun host.<br />
+Ogni switch possiede una tabella dei MAC Address il cui scopo è quello di capire a quale porta sia collegato ciascun host.<br />
 Per ogni frame ricevuto:
 1) se lo switch ha all'interno della sua tabella il MAC Address al quale destinarlo, non scrive nulla nella tabella;
-2) Se il MAC Address del destinatario non è presente all'interno della sua tabella, lo switch copia il valore presente nell'header del pacchetto e crea una entry nella tabella;
-Un attaccante, mediante l'invio di un elevato numero di frames con MAC Address fake sempre diversi, può causare un overflow della tabella dello switch, poichè vengono registrate tante false associazioni $<\text{MAC Address - porta fisica}>$ e poichè le tabelle degli indirizzi MAC hanno dimensioni limitate.<br /> Il risultato è che lo switch non riesce più a gestire il traffico nella maniera opportuna; esso comincia a funzionare come un [[Hub]], cioè non fa più l'instradamento dei pacchetti ma spedisce ciascuno di essi in broadcast attraverso ognuna delle sue porte. Un pacchetto che dovrebbe essere indirizzato ad un certo host viene invece destinato anche ad altri host, che non dovrebbero riceverlo. Così facendo, un attaccante può fare sniffing di tutti i pacchetti che transitano nella rete.<br />
+2) Se il MAC Address del destinatario non è presente all'interno della sua tabella, lo switch funge da hub ed inoltra il frame su ogni altra porta dello switch mentre copia il valore presente nell'header del pacchetto e crea una entry nella tabella;
+
+Un attaccante, mediante l'invio di un elevato numero di frames con MAC Address fake sempre diversi, può causare un overflow della tabella dello switch, poichè vengono registrate tante false associazioni $<\text{MAC Address - porta fisica}>$ e poichè le tabelle degli indirizzi MAC hanno dimensioni limitate.<br />
+Il risultato è che lo switch non riesce più a gestire il traffico nella maniera opportuna; esso comincia a funzionare come un hub, cioè non fa più l'instradamento dei pacchetti ma spedisce ciascuno di essi in broadcast attraverso ognuna delle sue porte. Un pacchetto che dovrebbe essere indirizzato ad un certo host viene invece destinato anche ad altri host, che non dovrebbero riceverlo. Così facendo, un attaccante può fare sniffing di tutti i pacchetti che transitano nella rete.<br />
 Questa tecnica viene utilizzata per sniffare il traffico in reti in cui la presenza dello switch non consente a chiunque di accedere ai pacchetti a sè non destinati.
 
 Una possibile contromisura consiste nel non generare dinamicamente la tabella contenente le coppie $<\text{MAC Address - porta fisica}>$ ma avere l'accortezza e la pazienza di gestirla in maniera statica. E' inoltre possibile costruire dei filtri per scartare MAC falsi.
@@ -426,12 +426,12 @@ Infine, il protocollo difende la disponibilità della rete dalla congestione, ma
 **IP Spoofing** è un tentativo da parte di un intruso di inviare pacchetti da un indirizzo IP facendoli sembrare provenire da un IP differente.<br />
 Un attaccante può inviare ad un server un pacchetto con **IP spoofato**, cioè in cui il campo mittente dell'header IP viene cambiato. Il destinatario non ha modo di capire se il pacchetto arriva effettivamente dall'host riportato nel campo mittente dell'header IP oppure no.<br />
 L'attaccante si trova, invece, di fronte a due problemi:
-1) **Risposta del server**: il server invierà una risposta inserendo nel campo destinazione l'IP spoofato. L'attaccante, quindi, non riceverà mai una risposta;
-2) **Forgiare un pacchetto valido**: spoofare un indirizzo IP permette di effettuare alcuni attacchi, ma non consente sicuramente di inserirsi in una connessione TCP. Per fare ciò è anche necessario che il pacchetto spoofato presenti **SEQ-NUM** e **ACK-NUM** corretti.
+1) **risposta del server**: il server invierà una risposta inserendo nel campo destinazione l'IP spoofato. L'attaccante, quindi, non riceverà mai una risposta;
+2) **forgiare un pacchetto valido**: spoofare un indirizzo IP permette di effettuare alcuni attacchi, ma non consente sicuramente di inserirsi in una connessione TCP. Per fare ciò è anche necessario che il pacchetto spoofato presenti **SEQ-NUM** e **ACK-NUM** corretti, poichè ogni connessione TCP ha uno stato associato, il quale comprende il numero di sequenza ed il numero di porta.
 
 Esistono due forme di IP spoofing:
-1) **Non-blind Spoofing**: l'attaccante è all'interno della stessa sottorete della vittima. Si tratta della forma più semplice perchè l'attaccante può sniffare il traffico con la propria scheda di rete in modalità promiscua;
-2) **Blind Spoofing**:  l'attaccante non è all'interno della sottorete della vittima.
+1) **non-blind Spoofing**: l'attaccante è all'interno della stessa sottorete della vittima. Si tratta della forma più semplice perchè l'attaccante può sniffare il traffico con la propria scheda di rete in modalità promiscua;
+2) **blind Spoofing**:  l'attaccante non è all'interno della sottorete della vittima.
 
 Per sferrare un attacco di tipo Blind IP spoofing, l'attaccante deve fare quattro cose:
 1) Prima di cominciare l'attacco, l'attaccante interroga il server per ottenere qualche indicazione in più sulla generazione dell'**Initial Sequence Number** (**ISN**). Questo viene fatto per far sì che la predizione dell'ISN abbia più probabilità di successo (**ISN Prediction**). L'attaccante manda alcuni pacchetti **SYN** non spoofati per analizzare le risposte del server e capire quindi il tipo di regola che quest'ultimo adotta per generare gli ISN;
@@ -439,7 +439,7 @@ Per sferrare un attacco di tipo Blind IP spoofing, l'attaccante deve fare quattr
 3) L'host vittima, ricevendo una risposta dal server che non ha mai interrogato, invia subito un pacchetto di **FIN** o **RST** per terminare la connessione. In questa eventualità, l'attacco si può ritenere fallito. L'attaccante deve, pertanto, impegnare l'host vittima, tipicamente effettuando un **attacco DoS** per fare in modo che non possa chiudere la connessione con il server.
 4) L'attaccante invia al server un pacchetto valido, utilizzando sempre l'IP spoofato della vittima. Tale pacchetto, per essere valido, dovrà contenere il giusto ACK-NUM ed il giusto SEQ-NUM.
 
-Per sferrare un attacco di tipo Non-blind Spoofing, invece, è necessario utilizzare uno **sniffer**. Si tratta di un tool che mostra tutti i pacchetti della sottorete in cui è collegato (se non c'è uno switch; in tal caso occorre effettuare MAC flooding sullo switch prima di poter sniffare qualsiasi pacchetto nella rete). Lo sniffer può quindi intercettare anche una eventuale risposta che il server sta inviando al legittimo client (che l'attaccante ha DoSsato) e leggere i corretti ACK-NUM e SEQ-NUM.
+Per sferrare un attacco di tipo non-blind Spoofing, invece, è necessario utilizzare uno **sniffer**. Si tratta di un tool che mostra tutti i pacchetti della sottorete in cui è collegato (se non c'è uno switch; in tal caso occorre effettuare MAC flooding sullo switch prima di poter sniffare qualsiasi pacchetto nella rete). Lo sniffer può quindi intercettare anche una eventuale risposta che il server sta inviando al legittimo client (che l'attaccante ha DoSsato) e leggere i corretti ACK-NUM e SEQ-NUM.
 
 Se un utente malintenzionato può indovinare il numero di sequenza corrente per una connessione esistente, può inviare il pacchetto di ripristino per chiuderla.
  
