@@ -665,7 +665,7 @@ Si consideri ora il caso del **distributed** scanning:
 
 Lo scanning può essere:
 1) **attivo**: si scansiona immettendo del traffico nella rete e creando pacchetti sonda che interrogano le macchine ed i dispositivi di rete;
-2) **passivo**: Si osserva il traffico generato tra client e server per capire se i servizi sono attivi o spenti sulle diverse porte.
+2) **passivo**: si osserva il traffico generato tra client e server per capire se i servizi sulle diverse porte sono attivi o spenti.
 
 Ognuno di questi approcci di scanning ha, ovviamente, dei pro e contro.<br />
 Lo scanning attivo fornisce un rapporto completo delle porte aperte e non rileva porte filtrate o protette da port knocking, oltre ad essere molto veloce. Di contro, è molto intrusivo e può essere rilevato da IDS, oltre a non essere in grado di identificare host temporaneamente non attivi.<br />
@@ -681,18 +681,18 @@ La scansione di una porta può dare i seguenti esiti:
 3) **bloccata/filtrata**: il target non ha risposto, pertanto le connessioni alla porta saranno rifiutate (è dovuto probabilmente alla presenza di un firewalll che blocca alcuni pacchetti).
 
 Ecco alcune scansioni esistenti:
-1) **ARP scan**: permette di scoprire gli host attivi nella sottorete inviando una serie di ARP Broadcast ma funziona solo nella sottorete locale;
+1) **ARP scan**: permette di scoprire gli host attivi nella sottorete inviando una serie di ARP Broadcast. Questa tecnica funziona solo sulla sottorete locale;
 2) **ICMP scan**: permette di scoprire gli host attivi nella sottorete inviando dei pacchetti ICMP di tipo **Echo Request** (PING);
 3) **TCP scan** (**intrusivo**): si invia un pacchetto di SYN e si effettua un three way handshake. Se la porta obiettivo della scansione risulterà aperta, l'attaccante riceverà in risposta un pacchetto TCP con i flag SYN e ACK attivi. A questo pacchetto, l'attaccante risponderà con un pacchetto ACK. Altrimenti, nel caso di porta chiusa, riceverà un pacchetto TCP con flag RST attivo, il quale terminerà la connessione;
-4) **TCP SYN PING** (**stealth**): si invia un pacchetto di SYN. Se l'host risponde con SYN/ACK, la porta è aperta (e non si completa il three way handshake). Se la vittima risponde con RST,  la porta è chiusa. Viene considerata una tecnica di scansione stealth perchè, tipicamente, nei log vengono memorizzate le connessioni complete e non le half open;
+4) **TCP SYN PING** (**stealth**): si invia un pacchetto di SYN. Se l'host risponde con SYN/ACK, la porta è aperta (e non si completa il three way handshake). Se la vittima risponde con RST, la porta è chiusa. Viene considerata una tecnica di scansione stealth perchè, tipicamente, nei log vengono memorizzate le connessioni complete e non le half open;
 5) **TCP ACK PING** (**stealth**): per effettuare la scansione si invia un pacchetto TCP con il bit ACK attivo. Se il firewall blocca il pacchetto, la sorgente allo scadere di un timeout riesce a dedurre che la porta è filtrata. Se il firewall lascia passare il pacchetto, esso raggiunge il target, il quale, non avendo una sessione TCP attiva, risponderà con un pacchetto con il bit RST attivo. In questo caso, si deduce che la porta non è filtrata (non si sa se sia chiusa o aperta);
-6) **IDLE scan** (**stealth**): si utilizza uno zombie e si effettua l'analisi sul suo campo identification (un contatore il quale si incrementa ogni volta che un host invia un pacchetto);
+6) **IDLE scan** (**stealth**): ;
 7) **Windows scan** (**stealth**): consiste nel mandare un ACK alla vittima ed analizzare il campo Window del pacchetto RST, il quale, se maggiore di zero, significa che la porta è open mentre, se uguale a zero, significa che la porta è chiusa. Non tutti i sistemi seguono, però, questa logica: infatti, i sistemi che non seguono questa logica restituiscono closed. Nel caso di mancata ricezione della risposta o di **ICMP Unreachable Error**, si deduce che la porta sia filtered;
 8) **FIN/NULL/Xmas scan** (**stealth**): si invia un pacchetto con le relative flag a 1 (con Xmas si mandano FIN, URG e PSH mentre con NULL si inviano pacchetti isolati con tutte le flag a 0). Se il destinatario risponde con RST la porta è chiusa, altrimenti è open o filtered;
 9) **UDP scan** (**miscellaneous**): si invia un pacchetto UDP. Se si riceve una risposta UDP, allora la porta è aperta. Se invece si riceve un pacchetto ICMP unreachable, allora la porta è chiusa. Se, infine, si ricevono altri errori oppure nessuna risposta ICMP, allora la porta è filtered;
 10) **FTP bounce scan**: (**stealth**): si tratta di una scansione simile alla IDLE perchè usa come zombie un server FTP. Se la connessione viene stabilita, allora la porta è aperta. Se la connessione non viene stabilita, allora la porta è chiusa;
 
-La tecnica **IDLE scan** prevede di non inviare direttamente pacchetti alla vittima ma prevede di avere come intermediario un host o una macchina zombie in stato di idle (non deve ricevere/inviare traffico di rete per non incrementare il campo identification) e considerare il suo campo identification dell'header IP per capire lo stato di una porta. In generale, il sistema operativo genera il valore per questo campo in maniera sequenziale, avente lo stesso valore per ogni frammento appartenente allo stesso pacchetto trasmesso, per cui esso rimane inalterato se l'host non trasmette pacchetti.
+La tecnica **IDLE scan** prevede di non inviare direttamente pacchetti alla vittima ma di avere come intermediario un host o una macchina zombie in stato di idle (non deve ricevere/inviare traffico di rete al fine di non incrementare il campo identification) e considerare il suo campo identification dell'header IP per capire lo stato di una porta. In generale, il sistema operativo genera il valore per questo campo in maniera sequenziale, avente lo stesso valore per ogni frammento appartenente allo stesso pacchetto trasmesso, per cui esso rimane inalterato se l'host non trasmette pacchetti.
 
 Lo scan avviene secondo la seguente procedura:
 1) l'attaccante interroga lo zombie con un pacchetto SYN/ACK per conoscere l'attuale valore del campo identification. Lo zombie, non aspettando il pacchetto, invia un segnale di RST, rivelando il suo IP ID.;
