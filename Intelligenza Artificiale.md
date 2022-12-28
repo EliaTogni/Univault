@@ -39,7 +39,7 @@ Il cervello umano permette di analizzare in maniera sofisticata l'ambiente in cu
 Lo studio di questi processi è un campo di ricerca molto attivo e multidisciplinare nel quale convergono gli interessi della biologia, della medicina e della psicologia. Tali studi offrono dei modelli che simulano l'attività celebrale. Proprio questi modelli vengono poi utilizzati dall'informatica per offrire strumenti di predizione, ottimizzazione e problem-solving in vari campi applicativi (guida automatizzata, smart cities, etc.).<br />
 Il successo di questi modelli è condizionato dal fatto che il cervello è considerabile alla pari di un potente computer capace di computare in parallelo grandi porzioni di dati.
 
-![[images/neurone.jpeg]]
+![[neurone.jpeg]]
 
 ![[Biological neurons.png]]
 
@@ -93,7 +93,7 @@ Naturalmente, le computazioni delle TLU con più di due input possono essere int
 Da quanto detto, tuttavia, si può dedurre che una singola TLU potrà computare solo funzioni **linearmente separabili**. Due insiemi di punti in uno spazio Euclideo vengono definiti linearmente separabili  se e solo se esiste almeno un punto, una retta, un piano o iperpiano (dipendentemente dalla dimensione dello spazio Euclideo), tale che tutti i punti di un insieme giacciano da un lato e tutti i punti dell'altro insieme giacciano dall'altro lato di questo punto, retta, piano o iperpiano.<br />
 Sfortunatamente, non tutte le funzioni sono linearmente separabili.
 
-![[images/geometria.png]]
+![[geometria.png]]
 
 Un insieme di punti $X$ in uno spazio euclideo si dice **convesso** se e solo se non è vuoto, è connesso e, per ogni coppia di punti appartenenti all'insieme, ogni punto del segmento che li congiunge appartiene anch'esso all'insieme.
 
@@ -104,12 +104,12 @@ Due insiemi di punti $X$ e $Y$ si dicono **linearmente separabili** se e solo se
 Questo significa che, già all'interno delle funzioni Booleane, ne esistono alcune che non possono essere simulate da una TLU. Un esempio di ciò è la doppia implicazione.<br /> 
 Sebbene solo due funzioni Booleane a due argomenti non siano linearmente indipendenti, il numero di funzioni linearmente indipendenti diminuisce rapidamente al crescere degli argomenti ed infatti, per un numero di argomenti arbitrariamente grande, una singola TLU non può calcolare praticamente nessuna funzione.
 
-![[images/doppiaimplicazione.png]]
+![[doppiaimplicazione.png]]
 
 Il problema può essere ovviato attraverso la costruzione di network di TLU più complessi.<br />
 Come esempio, si consideri il network che simula la doppia implicazione.
 
-![[images/netTLU.png]]
+![[netTLU.png]]
 
 E' risaputo, infatti, che la congiunzione di due variabili Booleane sia linearmente separabile.<br />
 Può essere dimostrato, inoltre, che tutte le funzioni Booleane con un numero arbitrario di input possano essere computate da reti di TLU semplicemente sfruttando delle equivalenze logiche al fine di dividere queste funzioni in un modo tale che tutte le sottofunzioni occorrenti siano linearmente separabili. 
@@ -136,14 +136,14 @@ $$y = \begin{cases}
 Si calcoli la funzione errore al variare di $w$ e $\theta$. Nel caso in cui $x = 0$ l'errore sarà $0$ per un $\theta$ negativo e $1$ per un $\theta$ positivo. Il peso non avrà, infatti, alcuna influenza perchè viene annullato nella moltiplicazione con l'input.<br />
 Quando, invece, $x = 1$, si avrà che la funzione dipenderà da entrambi i parametri.
 
-![[images/error1.png]]
+![[error1.png]]
 
 La funzione di errore così calcolata non può essere usata direttamente nella computazione perchè è composta da plateau e, quindi, non è ovunque derivabile. La soluzione è quella di calcolare la funzione di errore in modo tale che offra una misura di quanto sia sbagliata la relazione tra pesi e threshold. Si otterrà così una funzione di errore che, seppur ancora non differenziabile, lo sarà localmente nei punti in cui l'errore si discosta da $0$. Ciò che l'algoritmo farà per correggere l'errore, dunque, sarà discendere verso l'area dove la funzione di errore si annulla. Questo è possibile esattamente perché è stato scelto di utilizzare una funzione derivabile nei punti di interesse. E' sempre possibile calcolare la direzione migliore da seguire affinchè ci si muova nella direzione del plateau più basso, ovvero verso l'errore nullo.<br />
 Le regole di adattamento possono essere applicate in due modi:
 -  **online learning**, ovvero l'opzione di adattare i pesi e threshold ad ogni singolo step di training; 
 - **batch learning**, ovvero l'opzione nel quale i cambiamenti vengono aggregati in **learning/training epoch** o **epoche**. Al termine di queste epoche, i cambiamenti aggregati vengono applicati.
 
-![[images/error2.png]]
+![[error2.png]]
 
 Si definisce di seguito la **delta rule** o **procedura di Widrow-Hoff** per allenare le TLU:
 
@@ -186,7 +186,7 @@ $$U = U_{in} \cup U_{out} \cup U_{hidden}, $$
 $$
 U_{in} \neq \emptyset, \quad U_{out} \neq \emptyset, \quad U_{hidden} \cap (U_{in} \cup U_{out}) = \emptyset$$
 
-![[images/ANN.png]]
+![[ANN.png]]
 
 Ogni connessione $(v,u) \in C$ possiede un peso $w_{uv}$ che definisce l'importanza del dato originato da $v$ per il neurone $u$. Ogni neurone $u \in U$ possiede, inoltre, quattro variabili: 
 - il **network input** $net_u$;
@@ -213,7 +213,7 @@ I processi all'interno di un ANN si dividono in due fasi:
 1.  La **input phase**, dove gli input esterni vengono acquisiti dai neuroni di input;
 2.  La **work phase**, dove gli input esterni vengono spenti e un nuovo output viene computato da ogni neurone. La work phase continua finchè gli output raggiungono la stabilità o si raggiunge un timeout.
 
-![[images/rnn1.png]]
+![[rnn1.png]]
 
 La fase di input ha lo scopo di inizializzare la rete. In questa fase, le attivazioni dei neuroni input sono impostate al valore degli input esterni corrispondenti. Le attivazioni dei neuroni rimanenti sono inizializzate arbitrariamente, tipicamente a $0$. Inoltre, la funzione di output va applicata alle attivazioni inizializzate. Di conseguenza, questa inizializzazione fa sì che tutti i neuroni producano un output iniziale.<br />
 Nella work phase, gli input esterni vengono scollegati, mentre le attivazioni e gli output dei neuroni vengono ricalcolati (potenzialmente molteplici volte). Per ottenere ciò, la network input function, la activation function e la output function sono applicate come descritto precedentemente. Se un neurone non riceve alcun network input, poichè privo di predecessori, mantiene semplicemente la sua attivazione (e, perciò, anche il suo output).<br />
@@ -272,7 +272,7 @@ Una migliore opzione è l'**$1$-in-$n$ encoding**, nel quale ogni attributo nomi
 ----------------------------------------------------------------
 
 ### Multi-layer perceptron ###
-![[images/MLP.png]]
+![[MLP.png]]
 
 Una delle prime ANN sviluppate furono i **multi-layer perceptron** ( in seguito **MLP**). I MLP sono particolari feed-forward network in cui le unità base sono organizzate in **layer** ed ogni layer presenta connessioni solo con il layer successivo. Questo permette di minimizzare il fenomeno delle continue ricomputazioni che avverrebbero durante la propagazione del segnale nei normali feed-forward network.<br />
 Un $r$-layer perceptron avrà, quindi, un input layer e un output layer totalmente disgiunti e $r-2$ layer nascosti, disgiunti gli uni dagli altri.
@@ -285,13 +285,13 @@ $$f^u_{net}(\mathbf{w}_u,\mathbf{i}_u) = \sum_{v \in pred(u)} w_{uv}out_v$$
 L'activation function di ogni neurone hidden, invece, è una cosiddetta **funzione sigmoide**, ossia una funzione monotona non descrescente tale che:
 $$f: \mathbb{R} \to [0,1] \quad \text{ con } \lim_{x\to-\infty}f(x) = 0 \quad \text{ e } \lim_{x\to\infty}f(x) = 1$$
 
-![[images/step.png]]
+![[step.png]]
 
-![[images/semilinear.png]]
+![[semilinear.png]]
 
-![[images/sineup.png]]
+![[sineup.png]]
 
-![[images/logistic.png]]
+![[logistic.png]]
 
 La funzione di attivazione di ogni neurone di output, invece, può essere sia una sigmoide oppure una semplice funzione lineare.<br />
 La struttura a layer di un MLP suggerisce che si possa descrivere il network con l'aiuto di una matrice dei pesi. In questo modo, la computazione del MLP può essere rappresentata attraverso la moltiplicazione tra matrici e vettori. Tuttavia, non si è utilizzata una matrice per l'intero network, ma una per ogni singolo layer.<br />
@@ -312,9 +312,9 @@ $$\mathbf{net}_{U_2} = W \mathbf{in}_{U_2} = W \mathbf{out}_{U_1}$$
 dove $\mathbf{net}_{U_2} = (net_{u_1}, \dots, net_{u_m})^\top$ e $\mathbf{in}_{U_2} = \mathbf{out}_{U_1} = (out_{v_1}, \dots, out_{v_n})^\top$.<br />
 Fino ad adesso si è osservato che le ANN possono rappresentare funzioni Booleane. Invece, per quanto riguarda le funzioni a valori continui, ogni funzione Riemann-integrabile può essere approssimata con precisione arbitraria da un MLP avente quattro layer.
 
-![[images/approx.png]]
+![[approx.png]]
 
-![[images/riemann.png]]
+![[riemann.png]]
 
 Ogni funzione, infatti, può essere approssimata da una step function. Ad ogni pivot $x_i$ verrà associato nel MLP un neurone nel primo hidden layer. Nel secondo hidden layer si utilizzerà un neurone per ogni scalino, il quale riceverà input dai due neuroni del primo livello assegnati ai valori $x_i$ e $x_{i+1}$, i quali definiscono i bordi dello scalino stesso. A questo punto, si sceglieranno pesi e threshold in modo tale da attivare il neurone se e solo se l'input è maggiore di $x_i$ e
 minore di $x_{i+1}$.<br />
@@ -413,7 +413,7 @@ Come osservato in precedenza, la regressione logistica funziona solo per MLP con
 Intuitivamente, il gradiente descrive la pendenza di una funzione. Si definisce gradiente della funzione $f$ nel punto $(x, y)$ il vettore che ha per componenti le derivate parziali della funzione nel punto considerato.
 L'operazione del calcolo del gradiente di un punto o di una funzione viene comunemente denotata con l'operatore differenziale $\nabla$.
 
-![[images/gradient.png]]
+![[gradient.png]]
 
 Nel caso dei MLP, calcolare il gradiente della funzione di errore si traduce nel calcolare la derivata parziale della funzione di errore rispetto ai pesi e le threshold presi come parametri.<br />
 Sia $\mathbf{w}_u = (-\theta,w_{u_1},\dots,w_{u_k})$ il vettore dei pesi di un singolo layer esteso così da includere anche la threshold. Si calcoli il gradiente come segue:
@@ -428,7 +428,7 @@ Nel caso in cui si abbia la funzione logistica come $f_{(act)}$, i cambiamenti o
 Il processo che permette di calcolare la correzione necessaria per ogni peso e threshold di ogni singolo neurone dopo aver trovato l'errore viene chiamato **error backpropagation**.<br />
 Si assuma che la funzione di attivazione sia la funzione logistica per ogni neurone $u \in U_{(hidden)} \cup U_{(out)}$ e non per i neuroni di input.
 
-![[images/backpropagation.png]]
+![[backpropagation.png]]
 
 Inizialmente, l'input viene passato ai neuroni di input che lo restituiscono senza modifiche in output al primo degli hidden layer. Ogni neurone dei seguenti layer calcola la somma pesata degli input ed applica al risultato la funzione logistica, generando così l'output che verrà propagato in tutto il network, fino ai neuroni terminali. A questo punto viene calcolata la differenza tra l'output atteso e quello attuale e, dato che la funzione di attivazione è invertibile, è possibile risalire dal vettore di errore all'input che ha condizionato quel particolare errore (la variabile $\delta_u$, nell'immagine). Avendo trasformato l'errore della variabile di output $out_u$ in quello della variabile di input $net_u$, diventa possibile distribuire l'errore (e la correzione necessaria) in modo proporzionale al ruolo dei singoli neuroni nel calcolo dell' output. L'errore viene propagato a ritroso fino ai neuroni di input. E' utile osservare che, data la forma della funzione logistica, l'errore non può azzerarsi completamente, in quanto il gradiente approssimerà il vettore nullo più l'errore si avvicinerà allo zero.
 
@@ -493,7 +493,7 @@ Alcune soluzioni al problema dell'overfitting sono:
 Il problema del vanishing gradient è dato dal fatto che la funzione di attivazione è una funzione logistica la cui derivata raggiunge al massimo il valore di $\frac{1}{4}$ (il quale è ottenuto per il valore della funzione $0.5$). Di conseguenza, ogni propagazione dell'errore ad un layer precedente vi aggiunge un valore moltiplicativo, spesso molto minore di $1$, riducendo così il gradiente, per via della chain rule delle derivate.<br /> 
 Una soluzione possibile sta nel modificare leggermente la funzione di attivazione in modo che sia sempre crescente. Questa modifica fa sì che la derivata della funzione non abbia più un valore massimo. Alcuni candidati di funzione di attivazione proposti in letteratura sono la **ramp function** (o **ReLU)** e la **softplus function**.<br />
 
-![[images/relu.png]]
+![[relu.png]]
 
 Un approccio completamente diverso è si basa sul costruire il network **layer a layer**.<br />
 Una tecnica molto usata è quella di pensare al network come una pila di **autoencoder**. Un autoencoder non è altro che un three-layer perceptron il quale mappa il suo input in una sua approssimazione, utilizzando un hidden layer di dimensioni minori. Il layer nascosto funge da encoder per la codifica dell'input in una sua rappresentazione interna, che è a sua volta decodificata dal layer di output. L'autoencoder, avendo un solo layer, non soffre delle stesse limitazioni e può essere allenato attraverso la normale backpropagation.<br />
@@ -545,18 +545,18 @@ Alcuni esempi famosi di funzioni appartenenti alla famiglia sono:
 $$k = 1: \text{Manhattan distance}$$ $$k=2:\text{Euclidian distance}$$
 $$k = \infty: \text{Maximum distance, ovvero } d(\mathbf{w},\mathbf{v})_\infty = max |w_i - v_i|$$
 
-![[images/circle.png]]
+![[circle.png]]
 
 Un modo utile di visualizzare queste funzioni è quello di vedere che forma assume il luogo dei punti equidistanti dal centro, a seconda delle varie metriche. Variando la definizione di distanza, varia la forma che assume la figura nei diversi spazi.<br />
 La funzione di attivazione dei neuroni hidden calcola l'area in cui il neurone focalizza la propria attenzione, definita dal **raggio di riferimento** $\sigma$. I vari parametri e la forma della funzione determinano l'ampiezza di questa area. Il nome attribuitogli, **funzione radiale**, deriva dal fatto che la funzione viene definita intorno ad un raggio e da un centro, descritto dal vettore dei pesi. Questa funzione assegna quindi ad ogni raggio un'attivazione. <br />
 Le funzioni più utilizzate per determinare l'area di attivazione sono quelle riportate nella figura sottostante.
 
-![[images/act_rbf.png]]
+![[act_rbf.png]]
 
 Non per tutte queste funzioni esiste un raggio oltre al quale il valore dell'attivazione vale $0$. Per esempio, la funzione Gaussiana restituisce un'attivazione positiva indipendentemente dalla distanza del vettore di input dal centro, nonostante la sua attivazione possa essere estremamente poco significiativa, dovuto al decadimento esponenziale della funzione stessa.<br />
 Come esempio, viene applicato un RBFN per simulare una congiunzione Booleana. Un network che risolve il problema è quello costituito da un singolo neurone hidden, il cui vettore dei pesi (il centro della funzione radiale) è esattamente il punto in cui in output sarebbe desiderabile il valore *vero*, ovvero (1,1). Il raggio $\sigma$ sarà posto ad un valore minore di $1$, nel caso specifico ad $\frac{1}{2}$, e verrà codificato nella threshold del neurone. La funzione di distanza usata è quella euclidea e come $f_{act}$ si impiega una funzione rettangolare.
 
-![[images/and_rbf.png]]
+![[and_rbf.png]]
 
 In generale, un RBFN ha lo stesso potere espressivo di un MLP e può essere visto come un approssimatore universale, ovvero può approssimare (con errore arbitrariamente piccolo) una qualsiasi funzione Riemann-integrabile.<br />
 Il procedimento è lo stesso che nel caso degli altri network: la funzione viene approssimata da una funzione a scalini, la quale può essere calcolata facilmente da una funzione radiale, a condizione di definirla come la somma pesata di funzioni rettangolari.
@@ -616,7 +616,7 @@ $$d_{neuroni} : U_{out} \times U_{out} \to \mathbb{R}^+$$
 
 Questa funzione assegna un numero reale non negativo ad ogni coppia di neuroni di output. Come conseguenza, una SOM viene considerata come una rete neurale a due layer, priva di neuroni hidden.
 
-![[images/grid.png]]
+![[grid.png]]
 
 Analogamente alle RBFN, i pesi delle connessioni dai neuroni di input ai neuroni di output definiscono le coordinate di un **centro**, dal quale viene misurata la distanza di un pattern di input. Questo centro è spesso chiamato **reference vector** o **vettore di riferimento**.<br />
 Maggiore la vicinanza di un pattern di input ad un vettore di riferimento, maggiore sarà il valore dell'attivazione del neurone corrispondente. Tipicamente, tutti i neuroni di output avranno la stessa $f_{net}$ e la stessa $f_{act}$, con lo stesso **raggio di riferimento** $\sigma$.<br />
@@ -650,11 +650,11 @@ $$\text{Repulsion rule: }\quad \mathbf{r}^{new} = \mathbf{r}^{old} -\eta(\mathbf
 
 In questo modo i vettori di riferimento si muovono verso gruppi di data point etichettati allo stesso modo.
 
-![[images/adapt.png]]
+![[adapt.png]]
 
 Fino ad ora si è sottointeso che il learning rate rimanesse fisso per la durata dell'apprendimento, tuttavia esistono delle situazioni in cui un learning rate costante può far insorgere alcuni problemi. Una di queste situazioni è rappresentata dal caso nel quale il vettore di riferimento oscilla ciclicamente verso uno dei punti possibili. Un metodo semplice per risolvere il problema è quello di decrementare il learning rate al crescere delle iterazioni (**time-dependent learning rate**). In questo modo, il movimento circolare collassa in una spirale con il passare del tempo, facendo così convergere l'algoritmo.
 
-![[images/oscill.png]]
+![[oscill.png]]
 
 Nonostante un time-dependent learning rate garantisca che la procedura converga, è bene tenere a mente che il learning rate non deve decrementare troppo velocemente, poichè altrimenti la procedura potrebbe terminare in ciò che viene definito **starvation**, cioè la casistica nella quale i passi di adattamento divengono molto piccoli rapidamente, così che il vettore di riferimento non raggiunga mai la sua destinazione naturale.<br />
 Un altro problema con la versione classica di questo algoritmo è che il processo di adattamento potrebbe portare i vettori di riferimento ad allontanarsi sempre di più tra loro. Per evitare questo effetto indesiderabile il quale ostacola la convergenza dell'algoritmo, si prevede la cosiddetta **window rule**, tale per cui un vettore di riferimento viene adattato solo se il punto $\mathbf{p}$ giace vicino al bordo della classificazione, ossia alla (iper-)superficie che separa le regioni contigue delle due classi. La nozione vaga di vicinanza viene formalizzata come segue:
@@ -800,7 +800,7 @@ $$y_{i-1}(t_i) = y_{i-1}(t_{i-1}) + f(t_{i-1}, x(t_{i-1}), \dots, y_{n-1}(t_{i-1
 
 è possibile sfruttare la derivata della funzione nell'istante di tempo precedente per calcolarne il valore successivo. Questo permette di trasformarle in un recurrent network, creando, per ogni variabile, un nodo nel grafo, cioè un neurone, ed associando alle connessioni il valore del differenziale.
 
-![[images/recurrent.png]]
+![[recurrent.png]]
 
 Tramite i **vectorial neural network**, cioè recurrent network composti da multipli recurrent sub-network, è possibile computare equazioni differenziali vettoriali.<br />
 I recurrent network vengono allenati allo stesso modo dei multilayer perceptron, cioè tramite error backpropagation. Tuttavia, a causa dei cicli nella struttura della rete, questo metodo non può essere applicato direttamente, in quanto questi cicli propagherebbero il segnale di errore in maniera ciclica. Un modo per risolvere questo problema consiste nel **dispiegare** (**unfolding**) nel tempo la rete tra due pattern di allenamento. A questo punto si potrà applicare la backpropagation come in un qualsiasi feed-forward network. Per calcolare gli aggiornamenti ai pesi e alle threshold sarà, però, necessario combinare gli aggiustamenti calcolati rispetto ai neuroni così aggiunti.
@@ -825,7 +825,7 @@ Dato un dominio del discorso $X$, un insieme fuzzy $\mu$ è una funzione $\mu : 
 Queste funzioni sono scelte a seconda del contesto di utilizzo e i gradi di appartenenza sono fissati per convenzione all'intervallo $[0, 1]$ ma non è obbligatorio. la funzione di appartenenza potrebbe avere un intervallo arbitrario come immagine.<br />
 E' possibile vedere i fuzzy set come interfacce tra espressioni lingustiche e loro rappresentazioni numeriche. Ad esempio, si voglia fornire un modello formale alla proprietà "essere alto per un bambino di 4 anni". Per farlo, si definirà un insieme fuzzy $\mu_{tall}$ attraverso una funzione sigmoide, tale per cui apparterranno **massimamente** all'estensione della proprietà i bambini più alti di 1.5 m e **massimamente** al di fuori dall'estensione quelli più bassi di 0.7 m. Tutti gli altri apparterranno all'insieme con un certo grado.
 
-![[images/tall.png]]
+![[tall.png]]
 
 Il grado di appartenenza è un concetto differente da quello della probabilità. Un insieme fuzzy $\mu$ non deve essere considerato come una distribuzione di probabilità o di densità perchè, in generale, $\mu$ non soddisfa la condizione richiesta nella teoria della probabilità per le funzioni di densità. Inoltre, il grado di appartenenza $\mu(x)$ di un elemento $x$ all'insieme fuzzy $\mu$ non deve essere interpretato come la probabilità che $x$ appartenga a $\mu$. La teoria della probabilità e gli insiemi fuzzy hanno lo scopo di modellare fenomeni totalmente differenti: da un lato, la probabilità mira a modellare la quantificazione dell'incertezza riguardo all'accadimento di un evento mentre, dall'altro lato, gli insiemi fuzzy mirano a quantificare quanto una proprietà o una proposizione sia soddisfatta o con quale grado una proprietà sia verificata.
 
@@ -867,7 +867,7 @@ $$\Pi_{a,b,c,d} : \mathbb{R} \to [0,1],\quad x \mapsto
 0 \quad \text{  altrimenti}
 \end{cases}$$
 
-![[images/triang.png]]
+![[triang.png]]
 
 Questa rappresentazione dei fuzzy set viene anche detta **rappresentazione verticale**.<br />
 Una diversa rappresentazione è invece quella **orizzontale**. Per un qualsiasi valore $\alpha \in [0,1]$, si consideri l'insieme di elementi aventi un grado di appartenenza all'insieme $\mu \geq \alpha$.
@@ -890,7 +890,7 @@ $$\mu(x) = \sup \{\alpha \in [0,1] \quad \vert \quad  x \in [\mu]_\alpha\}$$
 
 Per determinare il grado di appartenenza di un elemento, viene considerato l'alpha-cut superiore al quale l'elemento appartiene.
 
-![[images/alpha_cut.png]]
+![[alpha_cut.png]]
 
 Dal punto di vista geometrico, un fuzzy set può essere visto come un inviluppo superiore dei suoi alpha-cut. Ricostruire una funzione di appartenenza dai suoi alpha-cut restituisce una funzione a step.<br />
 Questa connessione tra insiemi fuzzy e famiglie di alpha-cut è utilizzata nella rappresentazione degli insiemi fuzzy nei computer. Solitamente ci si limita a considerare un numero finito di alpha-cut rilevanti ai fini della rappresentazione dell'insieme. Gli insiemi vengono poi conservati in memoria come catene di liste lineari. Ogni lista è l'unione di intervalli rappresentati dai loro estremi.
@@ -925,7 +925,7 @@ Siano $\mu$ e $\mu'$ due insiemi fuzzy. E' possibile, quindi, definire gli opera
 2.  $(\mu \wedge \mu')(x) \doteq \min\{\mu(x),\mu'(x)\}$;
 3.  $(\mu \vee \mu')(x) \doteq \max\{\mu(x),\mu'(x)\}$.
 
-![[images/fuzzyop.png]]
+![[fuzzyop.png]]
 
 ----------------------------------------------------------------
 
@@ -991,9 +991,9 @@ $$\top_{-1}(x,y) = \begin{cases}
                 0 \quad \text{ altrimenti}  
                 \end{cases}$$
 
-![[images/tnorme.png]]
+![[tnorme.png]]
 
-![[images/tconorme.png]]
+![[tconorme.png]]
 
 ----------------------------------------------------------------
 
@@ -1040,7 +1040,7 @@ Vi sono vari tipi di insiemi fuzzy e particolare rilevanza assumono quelli defin
 
 3) **fuzzy interval**: $F_I(\mathbb{R}) = \{\mu \in F_N(\mathbb{R}) | \forall a,b,c \in \mathbb{R} : c \in [a,b] \implies \mu(c) \geq \min\{ \mu(a),\mu(b) \} \}$
 
-![[images/lingvar.png]]
+![[lingvar.png]]
 
 Particolare interesse rivestono i **fuzzy interval**, anche detti **fuzzy numbers**, perchè essi permettono di definire **variabili fuzzy quantitative**. Tali variabili assumono come valore dei numeri fuzzy.<br />
 Quando le quantità fuzzy rappresentano concetti linguistici (come, ad esempio, piccolo, grande, etc.) si parla di variabili linguistiche. Ogni variabile linguistica è definita da un quintupla $(v,T,X,g,m)$, dove $v$ è il nome della variabile, $T$ è l'insieme dei termini che coprono $v$, $X$ è il dominio del discorso, $g$ è la grammatica per generare i termini ed $m$ la semantica che assegna un fuzzy number ad ogni termine. Per processare questo genere di variabili sarà necessario estendere le operazioni insiemistiche e aritmetiche originalmente utilizzate per i numeri.
@@ -1128,7 +1128,7 @@ Data una relazione $R(X,X)$, si definisce una **relazione di equivalenza** se e 
 
 ### Fuzzy controller ###
 
-![[images/fuzzycontroller.png]]
+![[fuzzycontroller.png]]
 
 Un'applicazione dei sistemi fuzzy che ha riscosso particolare successo riguarda i cosiddetti **fuzzy controller**.<br />
 Il concetto su cui si basa il fuzzy control è quello di definire un controller non-lineare basato su tabelle tra i diversi stati del sistema, dove la sua funzione di transizione non-lineare può essere definita senza specificare ogni singola entry della tabella. Questo permette di modellare sistemi complessi le cui dinamiche possono sfuggire ad un'analisi matematicamente precisa.<br />
@@ -1163,11 +1163,11 @@ Questo controller necessita di tre fasi fondamentali:
 2) al fine di calcolare la funzione di output, è necessario calcolare per ogni regola il valore minimo tra i gradi di appartenenza del vettore di input alle differenti componenti della regola e salvare poi il cut off nella rispettiva output rule. Successivamente, per ogni valore del dominio dell'output, si sceglie il massimo tra i cut off ottenuti nello step precedente; 
 3) la fase di defuzzificazione, utilizzata per tornare ad un valore crispy dall'insieme fuzzy. Il metodo utilizzato può essere MCM, MOM o COG.
 
-![[images/rulesfuzzy.png]]
+![[rulesfuzzy.png]]
 
-![[images/fuzrule.png]]
+![[fuzrule.png]]
 
-![[images/outputrules.png]]
+![[outputrules.png]]
 
 ----------------------------------------------------------------
 
@@ -1196,7 +1196,7 @@ Ci sono due casistiche in cui si parla di **fuzzy data analysis**. Una di esse r
 
 #### Fuzzy clustering ####
 
-![[images/symmetricdata.png]]
+![[symmetricdata.png]]
 
 Il **fuzzy clustering** è una procedura di apprendimento non supervisionato che permette di dividere il dataset in modo tale che 
 1) oggetti nello stesso cluster siano quanto più possibile simili;
@@ -1229,7 +1229,7 @@ $$d^2(x_j,C_j) = (x_j - c_i)^T \sum_i^{-1} (x_j - c_i)$$
 
 dove $\sum_i$ è la matrice covariante del cluster $i$. Questo algoritmo è preferito nel caso in cui il clustering sia utilizzato per la generazione automatica di fuzzy rule per i controller. La dimensione dei vari cluster può variare a seconda del determinante della matrice (solitamente le dimensioni dei vari cluster sono le stesse e il determinante è uguale a 1). In generale, l'algoritmo di Gustafson-Kessel estrae più informazioni dell'algoritmo standard ma è anche più sensibile ad una corretta inizializzazione. Può essere utile, al fine di ottenere una buona inizializzazione, procedere preliminarmente con alcune iterazioni dell'algoritmo standard. Data la presenza dell'inversione della matrice, questo algoritmo è più costoso di quello standard e difficile da applicare a grossi dataset. Restringersi a cluster che risultano distribuiti lungo una retta parallela rispetto agli assi riduce il costo computazionale. Un altro approccio è quello di permettere cluster di forma non convessa. 
 
-![[images/shellcluster.png]]
+![[shellcluster.png]]
 
 Gli algoritmi di **shell clustering** svolgono esattamente questo e sono particolarmente utili per il riconoscimento di immagini e la loro analisi. Un altro approccio presente in letteratura è quello del **kernel-based clustering**, il quale è utile qualora si abbia a che fare con dati non-vettoriali come sequenze, alberi o grafi. Questo metodo si basa su una mappa $\phi: \chi \to \mathbb{H}$, dove $\mathbb{H}$ è uno spazio di Hilbert e $\chi$ è lo spazio degli input. I dati così mappati non vengono utilizzati direttamente, ma solo attraverso il loro prodotto interno (la cui esistenza ci è garantita in quanto ci si trova in uno spazio di Hilbert). Si definisce per questo una funzione kernel $k$ tale che:
 
@@ -1286,7 +1286,7 @@ A questo punto l'algoritmo diverge a seconda di quale tipo di controller si vogl
 
 Il network così costruito può essere allenato grazie alla backpropagation.
 
-![[images/fuzzyneural.png]]
+![[fuzzyneural.png]]
 
 ----------------------------------------------------------------
 
@@ -1344,7 +1344,7 @@ $$IS^\xi : \mathbb{R}^r \to \{ 1, \dots, r \}^s$$
 
 dove $\{1, ..., r\}$ è l'insieme degli indici degli individui nello spazio di ricerca.
 
-![[images/evalg.png]]
+![[evalg.png]]
 
 E' possibile dare ora una definizione formale di algoritmo evolutivo: un **algoritmo evolutivo** su un problema di ottimizzazione $P$ è una tupla $(\Gamma, dec, Mut, Rek, IS_{genitori}, IS_{ambiente}, \mu, \lambda)$, dove $\mu$ descrive il numero degli individui della generazione precedente e $\lambda$ descrive il numero di figli per generazione.
 
@@ -1573,7 +1573,7 @@ Un importante teorema, il così detto **schema theorem**, sostiene che schemi co
 
 ### Programmazione genetica ###
 
-![[images/parsetree.png]]
+![[parsetree.png]]
 
 La **programmazione genetica** (in seguito GP) è una famiglia di algoritmi evolutivi i quali permettono la creazione automatica di programmi che possano risolvere problemi, mimando il processo mentale di un programmatore mentre costruisce un algoritmo. Per fare ciò occorre, innanzitutto, una codifica per rappresentare e manipolare un singolo programma:
 - **F**: l'insieme dei simboli di funzione e degli operatori;

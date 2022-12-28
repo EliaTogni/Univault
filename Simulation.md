@@ -6,7 +6,7 @@ Sistemi complessi differenti richiedono capacità di modellazione differenti.<br
 L'arte della costruzione del modello stesso può portare al modellatore un superiore livello di comprensione del sistema reale.<br />
 
 Spesso la modellazione di un evento, nonostante le numerose semplificazioni e restrizioni poste sul problema da modellare, può risultare estremamente complessa ed impossibile da modellare nel minimo dettaglio. In questo caso, si converge l'attenzione esclusivamente sugli elementi che si desidera studiare e si approssimano due porzioni del sistema:
-- i **Connettori** con il mondo esterno, che fungono da legante tra la porzione di realtà che è il caso di studio, ed il mondo esterno;
+- i **connettori** con il mondo esterno, che fungono da legante tra la porzione di realtà che è il caso di studio, ed il mondo esterno;
 - alcuni dettagli interni, approssimati tramite componenti stocastiche.
 
 I motivi dell'utilizzo di simulazioni sono molteplici:
@@ -323,7 +323,6 @@ Le proprietà attese di un generatore random sono:
 ---------------------------------------------------------------
 
 ## Metodo Monte Carlo ##
-
 Si vuole computare (numericamente) il valore di $\pi$.<br />
 Si consideri un cerchio. La sua area è definita dalla formula $A = \pi \cdot r^{2}$. Quindi, è possibile calcolare $\pi = \frac{A}{r^{2}}$.<br />
 Si applica ora il **Metodo Montecarlo**. L'idea è di procedere numericamente ma con un approccio geometrico.

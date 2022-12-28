@@ -32,7 +32,7 @@ La funzione tempo deve indicare se gli algoritmi paralleli e distribuiti utilizz
 
 Si richiami, ora, un classico modello di calcolo sequenziale, cioè la **macchina RAM**: essa consiste di un processore P, collegato ad una memoria M attraverso un'unità di accesso.
 
-![[RAMMachine.png]]
+![[Images/RAMMachine.png]]
 
 Nei modelli di calcolo parallelo, data la presenza di più processori, un elemento critico è la modalità di comunicazione tra processori. I due casi limite sono rappresentati dal [[Modello a Memoria Condivisa]] e dal [[Modello a Memoria Distribuita]].
 

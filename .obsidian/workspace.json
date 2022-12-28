@@ -101,20 +101,21 @@
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "command-palette:Open command palette": false,
-      "markdown-importer:Open format converter": false
+      "markdown-importer:Open format converter": false,
+      "templates:Insert template": false
     }
   },
   "active": "5c0cfff180e43430",
   "lastOpenFiles": [
-    "Sicurezza dei Sistemi e delle Reti.md",
-    "Intelligenza Artificiale.md",
-    "Grafo.md",
-    "Teoria della Complessità Computazionale.md",
-    "Git.md",
-    "Statistica e Probabilità.md",
-    "Albero.md",
+    "3D Video Games.md",
     "Albero 2-3.md",
-    "Struttura Dati.md",
-    "The Age of the Essay.md"
+    "Albero.md",
+    "Agent-Based Simulation.md",
+    "Albero di Decisione.md",
+    "Albero Binario.md",
+    "Albero AVL.md",
+    "Sequenza Unimodale e Bitonica.md",
+    "Separabilità Lineare.md",
+    "Sicurezza dei Sistemi e delle Reti.md"
   ]
 }

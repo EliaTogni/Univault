@@ -5,7 +5,6 @@ La sicurezza è lo stato in cui il rischio è inferiore al massimo rischio accet
 Una **vulnerabilità** è un punto debole che può essere sfruttato per causare danni al sistema. Degli esempi di vulnerabilità comprendono programmi con privilegi non necessari, programmi con difetti noti, configurazioni firewall deboli, etc.<br />
 Una **minaccia** invece è un'azione di un avversario che tenta di sfruttare le vulnerabilità per danneggiare un sistema IT.
 
-
 ----------------------------------------------------------------
 
 ## Cybersecurity ##
@@ -479,7 +478,10 @@ L'attacco SYN flood non da via di scampo se viene utilizzata una **botnet**. Di 
 
 ### DoS Attack ###
 Attacco il cui goal è l'esclusione di un nodo o di un servizio. Utilizza tipicamente degli amplification attack, nei quali la quantità di dati generati dall'attaccante è inferiore a quella che colpisce la vittima.<br />
-In un **Reflection Attack**, un attaccante, invece di colpire direttamente la vittima, dirige il suo traffico verso un host intermedio (**Reflector**) il quale poi dirige il traffico verso la vittima.
+In un **reflection attack**, un attaccante, invece di colpire direttamente la vittima, dirige il suo traffico verso un host intermedio (**reflector**) il quale poi dirige il traffico verso la vittima.
+
+#### Teardrop attack
+L'attaccante invia una serie di datagrammi che non possono combaciare correttamente. I datagrammi non possono essere ricomposti correttamente e, in un caso estremo, il sistema operativo si blocca con queste unità di dati parziali le quali non è possibile riassemblare, portando così alla negazione del servizio.
 
 ----------------------------------------------------------------
 
