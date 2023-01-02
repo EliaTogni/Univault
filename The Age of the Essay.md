@@ -1,7 +1,5 @@
-{{Title}}: The Age of the Essay
-{Author}: Paul Graham
-{{Date}}:
-{Link}: http://www.paulgraham.com/essay.html
+Title: {{Title}}
+Link: http://www.paulgraham.com/essay.html
 
 ## Articolo ##
 Remember the essays you had to write in high school? Topic sentence, introductory paragraph, supporting paragraphs, conclusion. The conclusion being, say, that Ahab in *Moby Dick* was a Christ-like figure. 

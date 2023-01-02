@@ -643,17 +643,30 @@ Il quarto bit rappresenta i permessi per gli utenti world.<br />
 ----------------------------------------------------------------
 
 ## Network Scanning ##
-Il **Network Scanning** rappresenta una tecnica nata per aiutare i sistemisti di rete a capire se nel sistema sono presenti superfici di attacco disponibili.
-Gli obiettivi dello scanning sono:
+Il **Network Scanning** rappresenta un'analisi per conoscere il sistema operativo ed i software (più eventuali configurazioni di tali software) presenti su una certa rete. Questa conosenza permette di determinare i tipi di attacco che possono essere eseguiti ai danni di tale rete.<br />
+Gli obiettivi del network scanning sono:
 1) riconoscere i servizi UDP e TCP disponibili;
 2) riconoscere i servizi in esecuzione su ogni porta;
 3) riconoscere quali utenti hanno accesso ai servizi;
 4) riconoscere i sistemi di filtraggio usati tra l'attaccante e la vittima;
 5) determinare il sistema operativo esaminando le risposte IP.
 
-Allo stesso modo, gli attaccanti usano questa stessa tecnica per trovare, appunto, superfici di attacco.<br />
-Esistono diverse modalità di scanning.<br />
-Si considerino ora le tipologie di scanning applicabili nel caso di **Single** source scanning (operata da una source a molti target):
+Si tratta di una tecnica nata per aiutare i sistemisti di rete a capire se nel sistema sono presenti superfici di attacco disponibili. Allo stesso modo, gli attaccanti usano questa stessa tecnica per trovare, appunto, superfici di attacco.<br />
+
+immagine da mettere
+
+Lo scanning può avere natura:
+1) **attiva**: si scansiona immettendo del traffico nella rete e creando pacchetti sonda che interrogano le macchine ed i dispositivi di rete;
+2) **passiva**: si osserva il traffico generato tra client e server per capire se i servizi sulle diverse porte sono attivi o spenti.
+
+Questa strategia può essere attuata da remoto a locale, da locale a remoto, da locale a locale o da remoto a remoto.
+
+Inoltre, il target può essere:
+1) **singolo**: una macchina;
+2) **multiplo**: più macchine.
+
+L'approccio può avere come scopo un ampio range oppure un target specifico, ed utilizzare il metodo **Single Source** scanning oppure **distributed** scanning.<br />
+Si considerino ora le tipologie di scanning applicabili nel caso di Single Source scanning (operata da una source a molti target):
 1) **verticale**: consiste di un port scan di alcune o tutte le porte su un singolo computer;
 2) **orizzontale**:scansiona una singola porta fra molti indirizzi IP;
 3) **strobe**: scansiona molte porte fra molti IP Address;
@@ -663,24 +676,25 @@ Si consideri ora il caso del **distributed** scanning:
 - molteplici sistemi agiscono in un unione strategica per scansionare una rete od un host;
 - riduce la traccia lasciata da uno scanning di un singolo sistema e diminuisce la possibilità di essere scoperti.
 
-Lo scanning può essere:
-1) **attivo**: si scansiona immettendo del traffico nella rete e creando pacchetti sonda che interrogano le macchine ed i dispositivi di rete;
-2) **passivo**: si osserva il traffico generato tra client e server per capire se i servizi sulle diverse porte sono attivi o spenti.
-
 Ognuno di questi approcci di scanning ha, ovviamente, dei pro e contro.<br />
 Lo scanning attivo fornisce un rapporto completo delle porte aperte e non rileva porte filtrate o protette da port knocking, oltre ad essere molto veloce. Di contro, è molto intrusivo e può essere rilevato da IDS, oltre a non essere in grado di identificare host temporaneamente non attivi.<br />
 Lo scanning passivo invece è uno scanning non intrusivo, in quanto non viene rilevato da IDS. E' inoltre in grado di rilevare attività proveniente da host temporanei e non consuma risorse. DI contro, però, è in grado di rilevare solo host attivi.
-
-Il target può essere:
-1) **singolo**: una macchina;
-2) **multiplo**: più macchine.
 
 La scansione di una porta può dare i seguenti esiti:
 1) **aperta**: il target ha risposto indicando che il servizio è in ascolto su quella porta;
 2) **chiusa**: il target ha risposto indicando che le connessioni alla porta saranno rifiutate;
 3) **bloccata/filtrata**: il target non ha risposto, pertanto le connessioni alla porta saranno rifiutate (è dovuto probabilmente alla presenza di un firewalll che blocca alcuni pacchetti).
 
-Ecco alcune scansioni esistenti:
+Seguono, ora, alcuni dettagli delle specifiche TCP fondamentali al fine di comprendere le tecniche di scanning esistenti:
+1) un segmento in arrivo con il flag RST viene sempre scartato senza alcuna risposta;
+2) se una porta è nello stato closed:
+	1) se il segmento in attivo non ha il flag RST attivo, allora viene inviato al mittente un pacchetto con il flag RST come risposta
+3) se una porta è nello stato di listen:
+	1) se il segmento in arrivo contiene un ACK, allora il messaggio di risposta conterrà un RST;
+	2) se il segmento in arrivo contiene un SYN, allora verrà inviato al mittente un pacchetto con i flag SYN e ACK come risposta;
+	3) se nessuno dei casi precedenti è verificato, allora il segmento viene scartato senza risposta.
+
+Seguono, ora, alcune scansioni esistenti:
 1) **ARP scan**: permette di scoprire gli host attivi nella sottorete inviando una serie di ARP Broadcast. Questa tecnica funziona solo sulla sottorete locale;
 2) **ICMP scan**: permette di scoprire gli host attivi nella sottorete inviando dei pacchetti ICMP di tipo **Echo Request** (PING);
 3) **TCP scan** (**intrusivo**): si invia un pacchetto di SYN e si effettua un three way handshake. Se la porta obiettivo della scansione risulterà aperta, l'attaccante riceverà in risposta un pacchetto TCP con i flag SYN e ACK attivi. A questo pacchetto, l'attaccante risponderà con un pacchetto ACK. Altrimenti, nel caso di porta chiusa, riceverà un pacchetto TCP con flag RST attivo, il quale terminerà la connessione;
