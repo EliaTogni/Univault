@@ -478,7 +478,7 @@ L'attacco SYN flood non da via di scampo se viene utilizzata una **botnet**. Di 
 
 ### DoS Attack ###
 Attacco il cui goal è l'esclusione di un nodo o di un servizio. Utilizza tipicamente degli amplification attack, nei quali la quantità di dati generati dall'attaccante è inferiore a quella che colpisce la vittima.<br />
-In un **reflection attack**, un attaccante, invece di colpire direttamente la vittima, dirige il suo traffico verso un host intermedio (**reflector**) il quale poi dirige il traffico verso la vittima.
+In un **reflection attack**, attacco basato su IP spoofing, un attaccante, invece di colpire direttamente la vittima, dirige il suo traffico verso un host intermedio (**reflector**) il quale poi dirige il traffico verso la vittima.
 
 #### Teardrop attack
 L'attaccante invia una serie di datagrammi che non possono combaciare correttamente. I datagrammi non possono essere ricomposti correttamente e, in un caso estremo, il sistema operativo si blocca con queste unità di dati parziali le quali non è possibile riassemblare, portando così alla negazione del servizio.
@@ -489,13 +489,13 @@ L'attaccante invia una serie di datagrammi che non possono combaciare correttame
 [[Dynamic Host Configuration Protocol]] è il protocollo che consente di assegnare a nuovi host un indirizzo IP scelto da un pool di indirizzi liberi e disponibili. Il protocollo, oltre a restituire l'IP Address, può assegnare:
 - l'indirizzo del router più vicino per il client (**Gateway**);
 - nome ed indirizzo del DNS server;
-- **Network Mask**.<br />
+- la **network mask**.
 
-Questo protocollo è privo di misure di protezione e di conseguenza è soggetto ai seguenti attacchi:
-1) **DHCP Starvation**: l'attaccante invia tante DHCP discover con MAC differenti. Questo causa un DoS al server, il quale non riesce a soddisfare tutte le richieste perchè esaurisce il pool di indirizzi. Eventuali host legittimi che vogliono ottenere un indirizzo IP ora sono impossibilitati;
+Il protocollo lavora a livello di rete locale, nella quale i nodi condividono il mezzo di trasmissione e sono identificati dal MAC address. Inoltre, questo protocollo è privo di misure di protezione e di conseguenza è soggetto ai seguenti attacchi:
+1) **DHCP Starvation**: non essendo previsa nessuna forma di autenticazione, un attaccante può inviare tante DHCP discover con MAC differenti. Questo causa un DoS al server, il quale non riesce a soddisfare tutte le richieste perchè esaurisce il pool di indirizzi. Eventuali host legittimi che vogliono ottenere un indirizzo IP ora sono impossibilitati;
 2) **Rogue DHCP**: il server DHCP, dopo aver ricevuto una DHCP Request, indicherà al mittente non solo l'IP Address disponibile, ma anche il **default gateway** ed il **default DNS**. L'attaccante può fingere di essere un server DHCP e rispondere alle DHCP discover dei client. Siccome nelle risposte del server, di solito, i nuovi host vengono istruiti anche su quale sia il gateway della rete e altre informazioni utili, l'attaccante può comunicare un falso IP per il gateway (indicando sè stesso) e quindi risolvere gli URL come preferisce, compiere attacchi di phishing, sniffare il traffico facendo Man in the Middle o altro ancora.
 
-Una contromisura attuabile per difendersi dagli attacchi al DHCP è il **DHCP snooping**. Si costruisce un **DHCP snooping binding database** (una tabella all'interno di uno switch) che contenga vari parametri:
+Una contromisura attuabile per difendersi dagli attacchi al DHCP è il **DHCP snooping**, il quale ha lo scopo di filtrare messaggi provenienti da server DHCP untrusted. Si costruisce un **DHCP snooping binding database** (una tabella all'interno di uno switch) che contenga vari parametri:
 1) **Client MAC Address**;
 2) **IP Address**;
 3) **Lease time**;
@@ -503,7 +503,7 @@ Una contromisura attuabile per difendersi dagli attacchi al DHCP è il **DHCP sn
 5) **VLAN number**;
 6) **Port ID**.
 
-Lo switch, il quale mette in comunicazione i vari dispositivi della rete, prevede che vi siano specifiche porte autorizzate (**trusted**) in grado di originare tutti i tipi di messaggi DHCP. <br />
+Lo switch, il quale mette in comunicazione i vari dispositivi della rete, prevede che vi siano specifiche porte autorizzate (**trusted**) in grado di originare tutti i tipi di messaggi DHCP, mentre le porte non autorizzate (**untrusted**) possono originare solo richieste. <br />
 Tutte le DHCP offer che arrivano su porte non autorizzate vengono quindi scartate. Infatti, la porta fisica dello switch viene chiusa ogniqualvolta arrivi un messaggio DHCP proveniente da host che non sono legittimati.<br />
 Quindi, se un rogue server tenta di mandare un pacchetto DHCP, in risposta la porta viene chiusa ed il client che si è finto un server DHCP non riesce a mettere in atto l'attacco.
 
