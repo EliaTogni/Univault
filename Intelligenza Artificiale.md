@@ -219,7 +219,7 @@ La fase di input ha lo scopo di inizializzare la rete. In questa fase, le attiva
 Nella work phase, gli input esterni vengono scollegati, mentre le attivazioni e gli output dei neuroni vengono ricalcolati (potenzialmente molteplici volte). Per ottenere ciò, la network input function, la activation function e la output function sono applicate come descritto precedentemente. Se un neurone non riceve alcun network input, poichè privo di predecessori, mantiene semplicemente la sua attivazione (e, perciò, anche il suo output).<br />
 Questo è importante solo per i neuroni input in un feed forward network.
 
-Le ricomputazioni terminano nel caso in cui o il network raggiunge uno stato stabile (cioè uno stato in cui ulteriori ricomputazioni non modifichino ulteriormene l'output dei neuroni) o se è stato eseguito un numero predefinito di ricomputazioni.
+Le ricomputazioni terminano nel caso in cui o il network raggiunga uno stato stabile (cioè uno stato in cui ulteriori ricomputazioni non modifichino ulteriormene l'output dei neuroni) o se sia stato eseguito un numero predefinito di ricomputazioni.
 L'ordine temporale delle ricomputazioni, generalmente, non è fissato.<br />
 Per esempio, tutti i neuroni di un network possono ricomputare il proprio output allo stesso tempo (**update sincrono**). E' possibile, inoltre, definire un ordine di neuroni nel quale viene computato il nuovo output (**update asincrono**). In questo caso i nuovi output degli altri neuroni possono essere già stati utilizzati come input di computazioni successive.<br />
 Per quanto riguarda le reti feed forward, le computazioni solitamente seguono l'ordinamento topologico.<br />
@@ -229,7 +229,7 @@ Nel caso delle recurrent neural network, potrebbe, però, accadere che non si gi
 ----------------------------------------------------------------
 
 ### Training delle ANN ###
-Si è osservato in precedenza che è possibile allenare in modo automatico una singola TLU grazie alla delta rule. Questo procedimento non può essere generalizzato alle ANN tuttavia, per quanto riguarda il training, ci si basa sui medesimi principi: calcolare correzioni ai pesi ed alle threshold dei singoli neuroni e aggiornarli di conseguenza.<br />
+Si è osservato in precedenza che è possibile allenare in modo automatico una singola TLU grazie alla delta rule. Questo procedimento non può essere generalizzato alle ANN, tuttavia, per quanto riguarda il training, ci si basa sui medesimi principi: calcolare correzioni ai pesi ed alle threshold dei singoli neuroni e aggiornarli di conseguenza.<br />
 A seconda del tipo dei dati utilizzati per allenare le ANN e a seconda dei criteri di ottimizzazione, è possibile distinguere due tipi di apprendimento:
 1. **fixed learning task** o apprendimento con supervisione;
 2. **free learning task** o apprendimento senza supervisione.
@@ -244,7 +244,7 @@ $$e = \sum_{l \in L_{fixed}} e^{(l)} = \sum_{v \in U_{out}} e_{v} = \sum_{l \in 
 
 dove
 
-$$e^l_v = (o^l_v - out_v)^2$$
+$$e^l_v = (o^l_v - out_v^{l})^2$$
 
 è l'errore individuale per una particolare coppia $l$ e per un neurone di output $v$.<br />
 Il quadrato delle differenze viene scelto per vari motivi. In primo piano, è chiaro che non è possibile semplicemente sommare le deviazioni direttamente, poichè le deviazioni positive e negative potrebbero cancellarsi a vicenda, producendo quindi un'impressione sbagliata dell'attuale bontà del network.<br />
@@ -254,7 +254,7 @@ Tuttavia, il quadrato della deviazione dell'output desiderato e dell'output otte
  
 Una **Learning Task Libera** $L_{free}$ per una rete neurale con $n$ neuroni input $U_{in} = \{ u_{1}, ..., u_{n} \}$, è un insieme di **training pattern** $l = (\textbf{i}^{(l)})$, ognuno consistente di un **vettore di input** $\textbf{i}^{(l)} = (ext_{u_{1}}^{(l)}, ..., ext_{u_{n}}^{(l)})$.<br />
 Nel free learning task si avrà, quindi, solo una sequenza di input $L = \{\mathbf{i}_1, \dots, \mathbf{i}_n\}$. Questo comporta che, a differenza del fixed learning task, non si avrà modo di calcolare una funzione di errore rispetto ad un output atteso.<br />
-Data una learning task libera, l'aspetto più importante al fine di allenare una rete neurale è il modo in cui viene misurata la similarità tra i traning pattern. Questa similarità può essere definita, per esempio, con l'aiuto di una funzione di distanza.<br />
+Data una learning task libera, l'aspetto più importante al fine di allenare una rete neurale è il modo in cui venga misurata la similarità tra i traning pattern. Questa similarità può essere definita, per esempio, con l'aiuto di una funzione di distanza.<br />
 Un caso particolare potrebbe essere quello del **clustering** dei vettori di input simili, così che per tutti i vettori in un cluster venga prodotto lo stesso output.<br />
 Qualsiasi processo di apprendimento si scelga, esistono alcune norme comuni che è utile seguire. Una di queste best practice riguarda il normalizzare il vettore di input (**normalizzazione z-score**). Comunemente, si scala tale vettore in modo che esso abbia media uguale a $0$ e varianza uguale ad $1$. Per fare ciò, è necessario calcolare per ogni neurone $u_k \in U_{(in)}$, a partire dal vettore di input dei training patter, la media aritmetica $\mu_k$ e la deviazione standard $\sigma_k$ degli input esterni:
 
