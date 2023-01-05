@@ -102,7 +102,7 @@ Un **guscio convesso** di un insieme di punti $X$ in uno spazio euclideo è il p
 Due insiemi di punti $X$ e $Y$ si dicono **linearmente separabili** se e solo se i loro gusci convessi sono tra loro disgiunti.
 
 Questo significa che, già all'interno delle funzioni Booleane, ne esistono alcune che non possono essere simulate da una TLU. Un esempio di ciò è la doppia implicazione.<br /> 
-Sebbene solo due funzioni Booleane a due argomenti non siano linearmente indipendenti, il numero di funzioni linearmente indipendenti diminuisce rapidamente al crescere degli argomenti ed infatti, per un numero di argomenti arbitrariamente grande, una singola TLU non può calcolare praticamente nessuna funzione.
+Sebbene solo due funzioni Booleane a due argomenti non siano linearmente separabili, il numero di funzioni linearmente separabili diminuisce rapidamente al crescere degli argomenti ed infatti, per un numero di argomenti arbitrariamente grande, una singola TLU non può calcolare praticamente nessuna funzione.
 
 ![[doppiaimplicazione.png]]
 
@@ -130,7 +130,7 @@ Sia $x$ l'input, $w$ il peso associato e $\theta$ la threshold. Allora l'output 
 
 $$y = \begin{cases}
     1 & \text{se } 0w = 0 \geq \theta \\
-    0 & \text{se } 1w = w \geq \theta
+    0 & \text{se } 1w = w < \theta
    \end{cases}$$
 
 Si calcoli la funzione errore al variare di $w$ e $\theta$. Nel caso in cui $x = 0$ l'errore sarà $0$ per un $\theta$ negativo e $1$ per un $\theta$ positivo. Il peso non avrà, infatti, alcuna influenza perchè viene annullato nella moltiplicazione con l'input.<br />
