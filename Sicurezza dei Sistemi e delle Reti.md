@@ -618,6 +618,7 @@ Prima di tornare, il programma controlla il valore canarino e, se è stato modif
 ## Set UID ##
 Tutte le risorse Linux (socket, dispositivi, file) sono gestite come file. Tutti i file e le directory hanno un unico proprietario utente ed un unico gruppo proprietario.<br />
 Il modello di autorizzazione di UNIX è una semplice implementazione di una strategia di controllo degli accessi, nota come **Access Control List** (**ACL**).<br />
+Le ACL definiscono le regole per il filtraggio statico dei pacchetti in transito.
 Ogni oggetto ha un'ACL, la quale identifica le operazioni che i soggetti possono eseguire. Ogni accesso ad un oggetto viene verificato rispetto all'ACL dell'oggetto.<br />
 
 ![[UnixACL.png]]
@@ -838,7 +839,7 @@ Se l'utente ha necessità di collegarsi con più server che sfruttano il meccani
 
 ## Firewall ##
 Il **Firewall** rappresenta la misura di sicurezza minima in un sistema connesso ad internet. Esso si interpone tra la rete interna ed internet, filtrando le richieste in ingresso ed in uscita per cercare di proteggere la rete da utenti malintenzionati.<br />
-Il firewall deve essere l'unico punto di contatto tra il mondo esterno e la rete da proteggere. Infatti, il suo scopo principale è quello di controllare l'accesso da e per una rete protetta. Questo controllo viene effettuato obbligando le connessioni a passare attraverso il firewall stesso, dove vengono esaminate e valutate.<br />
+Il firewall deve essere l'unico punto di contatto tra il mondo esterno (internet) e la rete da proteggere. Infatti, il suo scopo principale è quello di controllare l'accesso da e per una rete protetta. Questo controllo viene effettuato obbligando le connessioni a passare attraverso il firewall stesso, dove vengono esaminate e valutate.<br />
 Solo il traffico autorizzato può attraversare il firewall ed il firewall stesso deve essere un sistema altamente sicuro.<br />
 Un firewall può essere un router o anche un PC, posizionati topologicamente per proteggere host o sottoreti.<br />
 
@@ -857,13 +858,20 @@ Sul firewall dovranno essere installate tre interfacce di rete:
 3) una per la DMZ.
 
 Questa architettura si chiama anche **Three-legged architecture**.<br />
-Esistono diversi tipi di firewall. Innanzitutto, è necessario precisare che esistono firewall hardware ma anche software. Su ogni host è presente un firewall software. A seconda del livello dello **stack ISO/OSI** a cui sono implementati, è possibile distinguere:
-1) **static packet filter**: livello di rete ISO/OSI 3 o 4;
-2) **stateful filtering**: livello di rete ISO/OSI 3 o 4;
-3) **application gateway**: livello di rete ISO/OSI 7;
-4) **circuit-level gateway**: livello di rete ISO/OSI 5.
 
-Uno **static packet filter** (o **stateless**) analizza ogni pacchetto che lo attraversa, senza tenere conto dei pacchetti che lo hanno preceduto. In tale analisi, vengono considerate solo alcune informazioni contenute nell'header del pacchetto, in particolare quelle appartenenti ai primi tre livell idel modello OSI, più alcune informazioni del quarto livello. Le informazioni in questione sono:
+Esistono diversi tipi di firewall. Innanzitutto, è necessario precisare che esistono firewall hardware ma anche software. Su ogni host è presente un firewall software. Inoltre, in fase di configurazione di un firewall, per prima cosa si deve decidere la politica di default per i servizi di rete:
+1) **default deny**, ovvero tutti i servizi non esplicitamente permessi sono negati;
+2) **default allow**, ovvero tutti i servizi non esplicitamente negati sono permessi.
+
+
+Per ogni sottorete protetta da un firewall, si possono definire politiche di accesso e solo i componenti esterni al firewall sono direttamente accedibili senza protezione. Un fireall permette di festire le connessioni tra le diverse interfacce, permette una separazione in zone aventi diverso grado di sicurezza nell'architettura della rete.<br />
+A seconda del livello dello **stack ISO/OSI** a cui sono implementati, è possibile distinguere:
+4) **static packet filter**: livello di rete ISO/OSI 3 o 4;
+5) **stateful filtering**: livello di rete ISO/OSI 3 o 4;
+6) **application gateway**: livello di rete ISO/OSI 7;
+7) **circuit-level gateway**: livello di rete ISO/OSI 5.
+
+Uno **static packet filter** (o **stateless**) analizza ogni pacchetto che lo attraversa, senza tenere conto dei pacchetti che lo hanno preceduto. In tale analisi, vengono considerate solo alcune informazioni contenute nell'header del pacchetto (per essere confrontate con le regole definite in una ACL in modo da definire se scartare o ammettere i pacchetti in questione) e, in particolare, quelle appartenenti ai primi tre livelli del modello OSI, più alcune informazioni del quarto livello. Le informazioni in questione sono:
 1) l'indirizzo IP della sorgente;
 2) l'IP destinazione;
 3) la porta sorgente;
@@ -871,9 +879,15 @@ Uno **static packet filter** (o **stateless**) analizza ogni pacchetto che lo at
 5) il protocollo di trasporto;
 
 Su questi parametri, vengono costruite le regole che formalizzano la policy del firewall e che stabiliscono quali pacchetti lasciar passare e quali bloccare.<br />
-I firewall appartenenti a questa tipologia sono semplici e leggeri ma non garantiscono un'elevata sicurezza.
+I firewall appartenenti a questa tipologia sono semplici e leggeri ma non garantiscono un'elevata sicurezza. Lo stateless filtering è efficace contro:
+1) lo spoofing, in quanto controlla gli indirizzi IP sorgente;
+2) le tentate connessioni, in quanto controlla gli indirizzi IP, le porte di destinazione e i flag TCP;
+3) il traffico ICMP, in quanto controlla tipo e codice dei messaggi ICMP;
+4) il source routing, in quanto impedisce il traffico con l'opzione di source routing attiva.
 
-Uno **Stateful Filtering** utilizza la stateful inspection, ossia quel processo per cui ogni singola connessione autorizzata viene registrata dal firewall in un'apposita tabella (la cosiddetta **connection** o **stable state**). In pratica, ogni volta che un pacchetto arriva al firewall, esso viene verificato per comprendere se esso fa parte di una connessione precedentemente stabilita: in caso affermativo, esso viene lasciato passare senza ulteriori controlli, altrimenti subisce la sorte di un normale pacchetto in ingresso.
+Lo stateless filtering è uitile se viene configurato su un router come primo livello di protezione perimetrale, benchè protegga solo da tecniche di attacco non sofisticate.
+
+Uno **Stateful Filtering** utilizza la stateful inspection, ossia quel processo per cui ogni singola connessione autorizzata viene registrata dal firewall in un'apposita tabella (la cosiddetta **connection** o **stable state**). Infatti, oltre all'IP sorgente e di destinazione, solitamente vengono registrati tanti altri dati, quali il protocollo, le porte, i flag, ecc. In questo modo è complesso per un hacker potersi inserire in una connessione stabilita. In pratica, ogni volta che un pacchetto arriva al firewall, esso viene verificato per comprendere se esso fa parte di una connessione precedentemente stabilita: in caso affermativo, esso viene lasciato passare senza ulteriori controlli, altrimenti subisce la sorte di un normale pacchetto in ingresso.<br />Comunque, anche con la migliore configurazione, il packet filter non verifica il contenuto dei pacchetti, per cui non è in grado di bloccare virus ed ha problemi con protocolli che negoziano le porte.
 
 Un **Application Gateway** è un firewall che offre un servizio stateful e usa a supporto dei proxy. Come ricorda il nome, questo gateway è in grado di analizzare il contenuto dei pacchetti al livello applicativo. Ciò implica che se il firewall non conosce il protocollo utilizzato al livello 7, inizia allora a comportarsi come un normale firewall (tuttavia esistano numerose estensioni per allargare il pool di protocolli che il firewall conosce).<br />
 Il problema legato a questo firewall è che, spesso, i contenuti sono cifrati. Per ovviare a questo problema, si utilizzano dei proxy. Il proxy viene utilizzato per decifrare i pacchetti ed analizzarne il contenuto per individuare complesse tipologie di attacco (è utilizzato per cercare dei pattern riconducibili ad attacchi conosciuti). Nello specifico, il firewall gira il pacchetto al proxy, il quale procede con l'analisi. Se il pacchetto ispezionato non presenta nessun contenuto sospetto, allora il proxy lo ammette nella rete.<br />
