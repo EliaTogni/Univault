@@ -2,8 +2,10 @@
 Con **sicurezza** si intende il raggiungere un obiettivo in presenza di un avversario, il prevenire un comportamento non desiderato.<br />
 Un sistema sicuro è un sistema il quale assolve uno specifico compito, nonostante l'avversario voglia impedirlo o stia operando in qualsiasi modo per impedirlo.<br />
 La sicurezza è lo stato in cui il rischio è inferiore al massimo rischio accettabile, dove il termine rischio esprime la possibilità che un attacco causi un danno ad un'organizzazione. Il rischio viene valutato usando la quantità di danno e la probabilità che esso avvenga.<br />
-Una **vulnerabilità** è un punto debole che può essere sfruttato per causare danni al sistema. Degli esempi di vulnerabilità comprendono programmi con privilegi non necessari, programmi con difetti noti, configurazioni firewall deboli, etc.<br />
-Una **minaccia** invece è un'azione di un avversario che tenta di sfruttare le vulnerabilità per danneggiare un sistema IT.
+Una **vulnerabilità** è un punto debole che può essere sfruttato per causare danni al sistema, che può rendere concreta una minaccia. Degli esempi di vulnerabilità comprendono programmi con privilegi non necessari, programmi con difetti noti, configurazioni firewall deboli, etc.<br />
+Una **minaccia** invece è un'azione di un avversario che tenta di sfruttare le vulnerabilità per danneggiare un sistema IT.<br />
+Un **attacco** è l'attuazione di una minaccia attraverso una vulnerabilità.<br />
+Un **vettore di attacco** è un metodo o percorso attraverso il quale si concretizza l'attacco.
 
 ----------------------------------------------------------------
 
@@ -696,12 +698,12 @@ Seguono, ora, alcune scansioni esistenti:
 1) **ARP scan**: scan il quale permette di scoprire gli host attivi nella sottorete locale, inviando una serie di ARP Broadcast. Questa tecnica funziona solo sulla sottorete locale e si basa sull'incrementare il valore contenuto nel campo IP Address Target in ogni pacchetto broadcast;
 2) **ICMP scan**: scan il quale permette di scoprire gli host attivi nella sottorete inviando dei pacchetti ICMP di tipo **Echo Request** (PING). Un Ping misura, in millisecondi, il tempo affinchè i pacchetti ICMP raggiungano un dispositivo di rete. Questo scan invia un ICMP di tipo Echo Request e rimane in attesa di un Echo Reply in risposta;
 3) **TCP SYN Ping**: scan il quale si basa sull'inviare un TCP SYN sulla porta 80 dell'host remoto. Se l'host target risponde con un qualsiasi pacchetto (SYN/ACK o RST), significa che l'host è UP. In particolare, se la vittima dovesse rispondere con SYN/ACK, ciò significherebbe che la porta è open. Se, invece, la vittima dovesse rispondere con RST, ciò significherebbe che la porta è closed. Questa scan ha il vantaggio che la connessione al servizio non si conclude e quindi, poichè nei log vengono memorizzate le connessioni complete e non le half open, questo scan può essere considerato stealth;
-	1) **TCP ACK Ping**: scan il quale si basa sull'inviare un pacchetto TCP con il bit ACK attivo su una porta TCP. Viene, quindi, generato un RST di risposta in quanto la vittima non ha una sessione TCP attiva. Ciò permette di dedurre che la porta non è filtrata (ma non se sia chiusa o aperta). Il vantaggio rispetto all'usare il SYN Ping risede nel fatto che, se davanti all'host è presente un firewall stateless, si è in grado di superarlo, mentre non si è in grado di superare un firewall stateful. Infatti, se il firewall dovesse bloccare il pacchetto, permetterebbe alla sorgente di dedurre che la porta è filtrata allo scadere di un timeout di ricezione;
-4) **UDP Ping**: scan il quale si basa sull'inviare un pacchetto UDP vuoto ad una porta (probabilmente non aperta). Se l'host target risponde con un ICMP Port Unreachable, rivela di essere UP;
-5) **IP Protocol Ping**: in IPV4, un datagramma può contenere diversi protocolli di livello $4$. Se dovessero venire inviati pacchetti su di un protocollo non abilitato, la risposta è ICMP Protocol Unreachable. Questo scan si basa, quindi, sull'inviiare richieste su protocolli non abilitati e controllarne le risposte;
-6) **TCP Connect (Open) scan**: scan la quale fa uso della syscall _connect()_ da utente non privilegiato. Nel caso in cui si dovesse ricevere un ACK, ciò significherebbe che la porta è open. Nel caso, invece, in cui si dovesse ricevere un RST, ciò significherebbe che la porta è closed. Infine, la ricezione di ICMP Unreachable o di nessuna risposta significherebbe che la porta è filtered;
-7) **TCP Connect (Half-Open) scan**: scan il qualee fa uso della syscall _connect()_ da utente non privilegiato. Questa tecnica si basa sull'aprire una connessione TCP tramite three-way handshake. Se si dovesse ricevere un SYN + ACK, ciò significherebbe che la porta è open e ,in questo caso, si restituirebbe un RST per terminare la connessione aperta a metà. Se. invece, si dovesse ricevere un RST, ciò significherebbe che la porta è closed. Se, infine, si dovesse ricevere un ICMP Unreachable oppure nessuna risposta, ciò significherebbe che la porta è filtered;
-8) **Version Detection scan**: si tratta di un probing process, utilizzato al fine di scoprire informazioni rilevanti sull'applicazione, sulla versione e sul software. Questa tecnica necessita di banda e di tempo di elaborazione. Inoltre, non è una tecnica stealth in quanto la connessione viene memorizzata nel log.
+4) **TCP ACK Ping**: scan il quale si basa sull'inviare un pacchetto TCP con il bit ACK attivo su una porta TCP. Viene, quindi, generato un RST di risposta in quanto la vittima non ha una sessione TCP attiva. Ciò permette di dedurre che la porta non è filtrata (ma non se sia chiusa o aperta). Il vantaggio rispetto all'usare il SYN Ping risede nel fatto che, se davanti all'host è presente un firewall stateless, si è in grado di superarlo, mentre non si è in grado di superare un firewall stateful. Infatti, se il firewall dovesse bloccare il pacchetto, permetterebbe alla sorgente di dedurre che la porta è filtrata allo scadere di un timeout di ricezione;
+5) **UDP Ping**: scan il quale si basa sull'inviare un pacchetto UDP vuoto ad una porta (probabilmente non aperta). Se l'host target risponde con un ICMP Port Unreachable, rivela di essere UP;
+6) **IP Protocol Ping**: in IPV4, un datagramma può contenere diversi protocolli di livello $4$. Se dovessero venire inviati pacchetti su di un protocollo non abilitato, la risposta è ICMP Protocol Unreachable. Questo scan si basa, quindi, sull'inviiare richieste su protocolli non abilitati e controllarne le risposte;
+7) **TCP Connect (Open) scan**: scan la quale fa uso della syscall _connect()_ da utente non privilegiato. Nel caso in cui si dovesse ricevere un ACK, ciò significherebbe che la porta è open. Nel caso, invece, in cui si dovesse ricevere un RST, ciò significherebbe che la porta è closed. Infine, la ricezione di ICMP Unreachable o di nessuna risposta significherebbe che la porta è filtered;
+8) **TCP Connect (Half-Open) scan**: scan il qualee fa uso della syscall _connect()_ da utente non privilegiato. Questa tecnica si basa sull'aprire una connessione TCP tramite three-way handshake. Se si dovesse ricevere un SYN + ACK, ciò significherebbe che la porta è open e ,in questo caso, si restituirebbe un RST per terminare la connessione aperta a metà. Se. invece, si dovesse ricevere un RST, ciò significherebbe che la porta è closed. Se, infine, si dovesse ricevere un ICMP Unreachable oppure nessuna risposta, ciò significherebbe che la porta è filtered;
+9) **Version Detection scan**: si tratta di un probing process, utilizzato al fine di scoprire informazioni rilevanti sull'applicazione, sulla versione e sul software. Questa tecnica necessita di banda e di tempo di elaborazione. Inoltre, non è una tecnica stealth in quanto la connessione viene memorizzata nel log.
 
 Le tecniche di network scanning le quali usano il SYN flag sono facilmente rilevabili dall'**Intrusion Detection System** (**IDS**). Questo filtraggio viene evitato, quindi, utilizzando altri flag. Per determinare le porte open si usa la tecnica dell'**inverse mapping** (inverse poichè le risposte sono ottenute solo dalle porte chiuse).
 
@@ -838,15 +840,30 @@ Se l'utente ha necessità di collegarsi con più server che sfruttano il meccani
 Il **Firewall** rappresenta la misura di sicurezza minima in un sistema connesso ad internet. Esso si interpone tra la rete interna ed internet, filtrando le richieste in ingresso ed in uscita per cercare di proteggere la rete da utenti malintenzionati.<br />
 Il firewall deve essere l'unico punto di contatto tra il mondo esterno e la rete da proteggere. Infatti, il suo scopo principale è quello di controllare l'accesso da e per una rete protetta. Questo controllo viene effettuato obbligando le connessioni a passare attraverso il firewall stesso, dove vengono esaminate e valutate.<br />
 Solo il traffico autorizzato può attraversare il firewall ed il firewall stesso deve essere un sistema altamente sicuro.<br />
-Spesso, alcuni pc forniscono servizi pubblici i quali devono essere raggiungibili dall'esterno, una rete pubblica, visibile da tutto il mondo.
-Questa rete pubblica in gergo tecnico viene anche chiamata **De-Militarized Zone** o **DMZ**, un tratto di rete in cui il firewall permette l'accesso a tutti.<br />
-Esistono diversi tipi di firewall. Innanzitutto, è necessario precisare che esistono firewall hardware ma anche software. Su ogni host è presente un firewall software. A seconda del livello dello **stack ISO/OSI** a cui sono implementati, è possibile distinguere:
-1) **Static Packet Filter**: livello di rete ISO/OSI 3 o 4;
-2) **Stateful Filtering**: livello di rete ISO/OSI 3 o 4;
-3) **Application Gateway**: livello di rete ISO/OSI 7;
-4) **Circuit-Level Gateway**: livello di rete ISO/OSI 5.
+Un firewall può essere un router o anche un PC, posizionati topologicamente per proteggere host o sottoreti.<br />
 
-Uno **Static Packet Filter** (o **stateless**) analizza ogni pacchetto che lo attraversa, senza tenere conto dei pacchetti che lo hanno preceduto. In tale analisi, vengono considerate solo alcune informazioni contenute nell'header del pacchetto, in particolare quelle appartenenti ai primi tre livell idel modello OSI, più alcune informazioni del quarto livello. Le informazioni in questione sono:
+Un firewall non garantisce, però, la sicurezza:
+- **insider attack**: se una compromissione ha origine interna, il firewall non può impedirlo;
+- **security patch**: spesso non vengono applicate automaticamente;
+- **configuration mistake**: un firewall non è semplice da configurare e possono esserci dei conflitti;
+- **lack of deep packet inspection**: il cosiddetto firewalling di livello $7$, non sempre presente e non sempre accurato;
+- **DDoS attack**: relativamente facili da implementare ma molto difficili da bloccare a livello firewall.
+
+Spesso, alcuni pc forniscono servizi pubblici i quali devono essere raggiungibili dall'esterno, una **rete pubblica**, visibile da tutto il mondo.
+Questa rete pubblica in gergo tecnico viene anche chiamata **De-Militarized Zone** o **DMZ**, un tratto di rete in cui il firewall permette l'accesso a tutti. La **rete privata** è, invece, una rete i cui computer possono accedere ad internet ma non vengono visti dal mondo.<br />
+Sul firewall dovranno essere installate tre interfacce di rete:
+1) una per il collegamento internet;
+2) una per la rete privata o rete interna;
+3) una per la DMZ.
+
+Questa architettura si chiama anche **Three-legged architecture**.<br />
+Esistono diversi tipi di firewall. Innanzitutto, è necessario precisare che esistono firewall hardware ma anche software. Su ogni host è presente un firewall software. A seconda del livello dello **stack ISO/OSI** a cui sono implementati, è possibile distinguere:
+1) **static packet filter**: livello di rete ISO/OSI 3 o 4;
+2) **stateful filtering**: livello di rete ISO/OSI 3 o 4;
+3) **application gateway**: livello di rete ISO/OSI 7;
+4) **circuit-level gateway**: livello di rete ISO/OSI 5.
+
+Uno **static packet filter** (o **stateless**) analizza ogni pacchetto che lo attraversa, senza tenere conto dei pacchetti che lo hanno preceduto. In tale analisi, vengono considerate solo alcune informazioni contenute nell'header del pacchetto, in particolare quelle appartenenti ai primi tre livell idel modello OSI, più alcune informazioni del quarto livello. Le informazioni in questione sono:
 1) l'indirizzo IP della sorgente;
 2) l'IP destinazione;
 3) la porta sorgente;

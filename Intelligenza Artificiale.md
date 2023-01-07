@@ -274,7 +274,7 @@ Una migliore opzione è l'**$1$-in-$n$ encoding**, nel quale ogni attributo nomi
 ### Multi-layer perceptron ###
 ![[MLP.png]]
 
-Una delle prime ANN sviluppate furono i **multi-layer perceptron** ( in seguito **MLP**). I MLP sono particolari feed-forward network in cui le unità base sono organizzate in **layer** ed ogni layer presenta connessioni solo con il layer successivo. Questo permette di minimizzare il fenomeno delle continue ricomputazioni che avverrebbero durante la propagazione del segnale nei normali feed-forward network.<br />
+Una delle prime ANN sviluppate furono i **multi-layer perceptron** (in seguito **MLP**). I MLP sono particolari feed-forward network in cui le unità base sono organizzate in **layer** ed ogni layer presenta connessioni solo con il layer successivo. Questo permette di minimizzare il fenomeno delle continue ricomputazioni che avverrebbero durante la propagazione del segnale nei normali feed-forward network.<br />
 Un $r$-layer perceptron avrà, quindi, un input layer e un output layer totalmente disgiunti e $r-2$ layer nascosti, disgiunti gli uni dagli altri.
 
 $$U_{in} \cap U_{out} = \emptyset $$
@@ -328,7 +328,7 @@ Ciò nonostante, questo non garantisce che, per un multi-layer perceptron, il qu
 
 ![[Limits of the preposition.png]]
 
-In un caso del genere, l'area tra la funzione da rappresentare e l'output del perceptron è piccola (poichè lo spike è sottile e quindi contiene solamente un'area piccola), ma, nel punto dello spike, la deviazione dell'output dal vero valore della funzione può, tuttavia, essere cosiderabile.
+In un caso del genere, l'area tra la funzione da rappresentare e l'output del perceptron è piccola (poichè lo spike è sottile e quindi contiene solamente un'area piccola), ma, nel punto dello spike, la deviazione dell'output dal vero valore della funzione può, tuttavia, essere cosiderevole.
 
 Naturalmente, l'idea di approssimare una funzione data tramite una funzione a scalini può essere trasferita ed applicata a funzioni con multipli argomenti: lo spazio di input viene diviso in rettangoli, box o iperbox, ad ognuno dei quali viene assegnato un valore di funzione.
 
@@ -337,7 +337,7 @@ Nonostante i multi-layer perceptron abbiano un enorme potere espressivo, essi ha
 ----------------------------------------------------------------
 
 ### Regressione ###
-Si è osservato come per allenare un'ANN occorra minimizzare la funzione di errore, la quale si calcola solitamente come il quadrato della differenza tra output atteso ed output attuale. Per minimizzare questa funzione si effettuano adattamenti ai pesi ed ai parametri della funzione di attivazione. Questo approccio conduce al **metodo dei quadrati minimi** , conosciuto anche come **regressione**.<br />
+Si è osservato come per allenare un'ANN occorra minimizzare la funzione di errore, la quale si calcola solitamente come il quadrato della differenza tra output atteso ed output attuale. Per minimizzare questa funzione si effettuano adattamenti ai pesi ed ai parametri della funzione di attivazione. Questo approccio conduce al **metodo dei quadrati minimi**, conosciuto anche come **regressione**.<br />
 La regressione è una tecnica molto usata in analisi e in statistica per estrapolare la retta (o, più in generale, il polinomio) che meglio approssima la relazione esistente in un insieme di dati/osservazioni. Descritto in maniera formale, se $G = \{(\mathbf{w}_0,y_0), \dots, (\mathbf{w}_n,y_n)\}$ è il dataset e si immagina l'esistenza di una relazione funzionale tra il vettore di input $\mathbf{w}_i$ e l'ascissa $y$, allora la regressione permetterà di trovare i parametri di quella funzione. A seconda del diverso genere di funzione si avranno diverse forme di regressione.
 
 #### Regressione lineare ####
@@ -430,7 +430,7 @@ Si assuma che la funzione di attivazione sia la funzione logistica per ogni neur
 
 ![[backpropagation.png]]
 
-Inizialmente, l'input viene passato ai neuroni di input che lo restituiscono senza modifiche in output al primo degli hidden layer. Ogni neurone dei seguenti layer calcola la somma pesata degli input ed applica al risultato la funzione logistica, generando così l'output che verrà propagato in tutto il network, fino ai neuroni terminali. A questo punto viene calcolata la differenza tra l'output atteso e quello attuale e, dato che la funzione di attivazione è invertibile, è possibile risalire dal vettore di errore all'input che ha condizionato quel particolare errore (la variabile $\delta_u$, nell'immagine). Avendo trasformato l'errore della variabile di output $out_u$ in quello della variabile di input $net_u$, diventa possibile distribuire l'errore (e la correzione necessaria) in modo proporzionale al ruolo dei singoli neuroni nel calcolo dell' output. L'errore viene propagato a ritroso fino ai neuroni di input. E' utile osservare che, data la forma della funzione logistica, l'errore non può azzerarsi completamente, in quanto il gradiente approssimerà il vettore nullo più l'errore si avvicinerà allo zero.
+Inizialmente, l'input viene passato ai neuroni di input che lo restituiscono senza modifiche in output al primo degli hidden layer. Ogni neurone dei seguenti layer calcola la somma pesata degli input ed applica al risultato la funzione logistica, generando così l'output che verrà propagato in tutto il network, fino ai neuroni terminali. A questo punto viene calcolata la differenza tra l'output atteso e quello attuale e, dato che la funzione di attivazione è invertibile, è possibile risalire dal vettore di errore all'input che ha condizionato quel particolare errore (la variabile $\delta_u$, nell'immagine). Avendo trasformato l'errore della variabile di output $out_u$ in quello della variabile di input $net_u$, diventa possibile distribuire l'errore (e la correzione necessaria) in modo proporzionale al ruolo dei singoli neuroni nel calcolo dell'output. L'errore viene propagato a ritroso fino ai neuroni di input. E' utile osservare che, data la forma della funzione logistica, l'errore non può azzerarsi completamente, in quanto il gradiente approssimerà il vettore nullo più l'errore si avvicinerà allo zero.
 
 Se si inizializza il learning rate $\eta$ ad un valore troppo alto, al posto di discendere la curva, si corre il rischio di saltare da un picco della funzione all'altro senza convergere mai al minimo. Inoltre, non è affatto detto che il minimo raggiunto in questo modo sia il minimo globale della funzione. La causa sarà piuttosto da ascrivere alla scelta dei valori iniziali. Una soluzione al problema può essere quella di ripetere l'apprendimento, inizializzando il sistema con una diversa configurazione di pesi e threshold, e scegliere alla fine la configurazione risultante in un miglior minimo.
 
