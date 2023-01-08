@@ -176,7 +176,7 @@ Si osservi che questa procedura di allenamento vale solo per le singole TLU nono
 ----------------------------------------------------------------
 
 ### Artificial neural network ###
-Un'**artificial neural network** (in breve **ANN**) può essere rappresentata tramite un [[Grafo]] diretto $G = (U,C)$ dove i vertici $u \in U$ sono detti neuroni e gli archi $c \in C$ sono le connessioni tra le varie unità.<br />
+Un'**artificial neural network** (in breve **ANN**) può essere rappresentata tramite un [[Grafo |grafo]] diretto $G = (U,C)$ dove i vertici $u \in U$ sono detti neuroni e gli archi $c \in C$ sono le connessioni tra le varie unità.<br />
 L'insieme dei nodi $U$ può essere partizionato in tre sottoinsiemi:
 - $U_{(in)}$: è l'insieme dei neuroni di input, i quali ricevono in modo diretto l'informazione dall'ambiente;
 - $U_{(out)}$: è l'insieme dei neuroni di output, i quali sono i soli nodi a inviare informazioni all'esterno;
@@ -210,8 +210,8 @@ La funzione output, dall'altro lato, prende solamente l'attivazione come suo arg
 Se il grafo che rappresenta l'ANN è aciclico si parla di **feed forward network** e la computazione procede in modo unidirezionale da $U_{(in)}$ a $U_{(out)}$ seguendo l'ordine topologico del network. Nel caso in cui, invece, il grafo contenga un ciclo, allora si parla di **recurrent network**.
 
 I processi all'interno di un ANN si dividono in due fasi:
-1.  La **input phase**, dove gli input esterni vengono acquisiti dai neuroni di input;
-2.  La **work phase**, dove gli input esterni vengono spenti e un nuovo output viene computato da ogni neurone. La work phase continua finchè gli output raggiungono la stabilità o si raggiunge un timeout.
+1.  la **input phase**, dove gli input esterni vengono acquisiti dai neuroni di input;
+2.  la **work phase**, dove gli input esterni vengono spenti e un nuovo output viene computato da ogni neurone. La work phase continua finchè gli output raggiungono la stabilità o si raggiunge un timeout.
 
 ![[rnn1.png]]
 
@@ -236,8 +236,7 @@ A seconda del tipo dei dati utilizzati per allenare le ANN e a seconda dei crite
 
 Una **Learning Task Fissata** $L_{fixed}$ per una rete neurale con $n$ neuroni input, $U_{in} = \{ u_{1}, ..., u_{n} \}$, e $m$ neuroni output, $U_{out} = \{v_{1}, ..., v_{m}\}$, è un insieme di **training pattern** $l = (\textbf{i}^{(l)}, \textbf{o}^{(l)})$, ognuno consistente di un **vettore di input** $\textbf{i}^{(l)} = (ext_{u_{1}}^{(l)}, ..., ext_{u_{n}}^{(l)})$ e un **vettore di output** $\textbf{o}^{(l)} = (o_{v_{1}}^{(l)}, ..., o_{v_{m}}^{(l)})$.<br />
 Nel caso di una fixed learning task si avrà, quindi, un insieme $L=\{(\mathbf{i}_1,\mathbf{o}_1),\dots,(\mathbf{i}_k,\mathbf{o}_k)\}$ di coppie le quali assegnano ad ogni input un output desiderato. Una volta completato il processo di apprendimento, la ANN dovrebbe essere in grado di restituire l'output adeguato rispetto all'input che le viene presentato. Data una Learning Task Fissata, l'obiettivo è allenare una rete neurale in modo che produca, per tutti i training pattern $l \in L_{fixed}$, gli output contenuti nel vettore di output $\textbf{o}^{(l)}$ se gli input esterni del corrispondente vettore di input $\textbf{i}^{(l)}$ sono dati in pasto al network. In pratica, però, questo accade raramente e bisogna accontentarsi di un risultato approssimativo.<br />
-Per giudicare in che misura una ANN si avvicini alla soluzione della fixed learning task si adotta una funzione di errore, la quale misura quanto l'output ottenuto coincida con l'output desiderato nel training pattern.
-Questa funzione di errore è comunemente definita come la somma delle deviazioni dell'output desiderato e dell'output ottenuto al quadrato, per tutti i traning pattern e tutti i neuroni di output.<br />
+Per giudicare in che misura una ANN si avvicini alla soluzione della fixed learning task si adotta una funzione di errore, la quale misura quanto l'output ottenuto coincida con l'output desiderato nel training pattern. Questa funzione di errore è comunemente definita come la somma delle deviazioni dell'output desiderato e dell'output ottenuto al quadrato, per tutti i traning pattern e tutti i neuroni di output.<br />
 L'errore di una rete neurale in riferimento a una learning task fissata $L_{fixed}$ è definito come:
 
 $$e = \sum_{l \in L_{fixed}} e^{(l)} = \sum_{v \in U_{out}} e_{v} = \sum_{l \in L_{fixed}} \sum_{v \in U_{out}} e_{v}^{(l)}$$
@@ -250,7 +249,7 @@ $$e^l_v = (o^l_v - out_v^{l})^2$$
 Il quadrato delle differenze viene scelto per vari motivi. In primo piano, è chiaro che non è possibile semplicemente sommare le deviazioni direttamente, poichè le deviazioni positive e negative potrebbero cancellarsi a vicenda, producendo quindi un'impressione sbagliata dell'attuale bontà del network.<br />
 Tuttavia, il quadrato della deviazione dell'output desiderato e dell'output ottenuto ha almeno due vantaggi rispetto al valore assoluto:
 - il quadrato è continuamente differenziabile ovunque, mentre la derivata del valore assoluto non esiste/è discontinua in 0. E' desiderabile che la funzione di errore sia continuamente differenziabile, perchè questo semplifica la derivazione delle regole di update per i pesi;
-- Grandi deviazioni dall'output desiderato sono pesate in maniera più severa, così che ci sia una tendenza la quale permetta di evitare durante il training grandi deviazioni individuali dal valore desiderato.
+- grandi deviazioni dall'output desiderato sono pesate in maniera più severa, così che ci sia una tendenza la quale permetta di evitare durante il training grandi deviazioni individuali dal valore desiderato.
  
 Una **Learning Task Libera** $L_{free}$ per una rete neurale con $n$ neuroni input $U_{in} = \{ u_{1}, ..., u_{n} \}$, è un insieme di **training pattern** $l = (\textbf{i}^{(l)})$, ognuno consistente di un **vettore di input** $\textbf{i}^{(l)} = (ext_{u_{1}}^{(l)}, ..., ext_{u_{n}}^{(l)})$.<br />
 Nel free learning task si avrà, quindi, solo una sequenza di input $L = \{\mathbf{i}_1, \dots, \mathbf{i}_n\}$. Questo comporta che, a differenza del fixed learning task, non si avrà modo di calcolare una funzione di errore rispetto ad un output atteso.<br />

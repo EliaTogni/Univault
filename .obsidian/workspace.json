@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "f65f8d295307990d",
+        "id": "7be60515e8effb5b",
         "type": "tabs",
         "children": [
           {
-            "id": "5c0cfff180e43430",
+            "id": "e6cc86d1f52a212f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Sicurezza dei Sistemi e delle Reti.md",
+                "file": "Intelligenza Artificiale.md",
                 "mode": "source",
                 "source": false
               }
@@ -77,7 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Sicurezza dei Sistemi e delle Reti.md",
+                "file": "Intelligenza Artificiale.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -106,9 +106,10 @@
       "obsidian-kindle-plugin:Sync your Kindle highlights": false
     }
   },
-  "active": "5c0cfff180e43430",
+  "active": "e6cc86d1f52a212f",
   "lastOpenFiles": [
     "Beccaria-Dei delitti e delle pene.md",
+    "Sicurezza dei Sistemi e delle Reti.md",
     "Nietzsche-Carpi-Così parlò Zarathustra.md",
     "Voltaire-Trattato sulla tolleranza.md",
     "Modello P-RAM.md",
@@ -116,7 +117,6 @@
     "Polimorfismo.md",
     "Programmazione Dinamica.md",
     "Programmazione Orientata agli Oggetti.md",
-    "Queue.md",
-    "README.md"
+    "Queue.md"
   ]
 }
