@@ -195,9 +195,9 @@ Ogni connessione $(v,u) \in C$ possiede un peso $w_{uv}$ che definisce l'importa
 - l'**external input** $ext_u$.
 
 Le prime tre variabili vengono calcolate in ogni momento dell'evoluzione dell'ANN grazie a tre funzioni associate:
-1. La **network input function** $f^u_{net}$, la quale calcola la somma pesata degli input;
-2.  La **activation function** $f^u_{act}$, della quale ne esistono vari modelli (gaussiana, sigmoide, etc.) a seconda dell'applicazione;
-3. La **output function** $f^u_{out}$, la quale definisce l'output a seconda che il neurone venga attivato o meno.
+1) La **network input function** $f^u_{net}$, la quale calcola la somma pesata degli input;
+2) La **activation function** $f^u_{act}$, della quale ne esistono vari modelli (gaussiana, sigmoide, etc.) a seconda dell'applicazione;
+3) La **output function** $f^u_{out}$, la quale definisce l'output a seconda che il neurone venga attivato o meno.
 
 La network input function $f_{net}^{(u)}$ calcola il network input $net_{u}$ dagli input $in_{uv_{1}}, ..., in_{uv_{n}}$, i quali corrispondono agli output $out_{v_{1}}, ..., out_{v_{n}}$ del neurone predecessore del neurone $u$, e dai pesi delle connessioni $w_{uv_{1}}, ..., w_{uv_{n}}$.<br /> Questa computazione può essere influenzata da dei parametri addizionali, $\sigma_{1}, ..., \sigma_{n}$.<br />
 A partire dal network input, da un certo numero di parametri $\theta_{1}, ..., \theta_{k}$ e, potenziamente, dal feedback della corrente attivazione del neurone $u$, la funzione di attivazione $f_{act}^{(u)}$ calcola la nuova attivazione $act_{u}$ del neurone $u$. Infine, la funzione di output $f_{out}^{(u)}$ calcola l'output del neurone $u$ a partire dalla sua attivazione. L'input esterno $ext_{u}$ definisce l'iniziale attivazione del neurone $u$ nel caso si tratti di un neurone input.
@@ -221,7 +221,7 @@ Questo è importante solo per i neuroni input in un feed forward network.
 
 Le ricomputazioni terminano nel caso in cui o il network raggiunga uno stato stabile (cioè uno stato in cui ulteriori ricomputazioni non modifichino ulteriormene l'output dei neuroni) o se sia stato eseguito un numero predefinito di ricomputazioni.
 L'ordine temporale delle ricomputazioni, generalmente, non è fissato.<br />
-Per esempio, tutti i neuroni di un network possono ricomputare il proprio output allo stesso tempo (**update sincrono**). E' possibile, inoltre, definire un ordine di neuroni nel quale viene computato il nuovo output (**update asincrono**). In questo caso i nuovi output degli altri neuroni possono essere già stati utilizzati come input di computazioni successive.<br />
+Per esempio, tutti i neuroni di un network possono ricomputare il proprio output allo stesso tempo (**update sincrono**). E' possibile, inoltre, definire un ordine di neuroni nel quale viene computato il nuovo output (**update asincrono**). In questo caso, i nuovi output degli altri neuroni possono essere già stati utilizzati come input di computazioni successive.<br />
 Per quanto riguarda le reti feed forward, le computazioni solitamente seguono l'ordinamento topologico.<br />
 Per le recurrent network, l'output finale dipende dall'ordine nel quale i neuroni ricomputano l'output e da quante ricomputazioni sono state eseguite.<br />
 Nel caso delle recurrent neural network, potrebbe, però, accadere che non si giunga mai ad uno stato stabile a seconda di quale ordine di update dei neuroni si scelga di seguire. 
@@ -267,7 +267,7 @@ Questa normalizzazione può essere portata a termine come pre-processing step o 
 
 Si è assunto finora che gli input e gli output di una rete neurale fossero esclusivamente numeri reali. Tuttavia, nella pratica ci si trova spesso di fronte ad attributi nominali come, ad esempio, colori.<br />
 Per poterli processare, è necessario trasformarli in numeri e, nonostante il numerare i valori degli attributi possa apparire semplice, questa conversione può portare ad effetti indesiderati se i numeri non riflettono il naturale ordine dei valori.<br />
-Una migliore opzione è l'**$1$-in-$n$ encoding**, nel quale ogni attributo nominale è assegnato a tanti neuroni quanti i suoi valori: ogni neurone corrisponde ad un valore dell'attributo. Con l'input di un training pattern, il neurone che corrisponde al valore dell'attributo nominale ottenuto viene impostato a $1$, mentre tutti gli altri neuroni che appartengono allo stesso attributo ma a valori diversi vengono settati a $0$. In questo modo solamente $1$ neurone su $n$ viene impostato ad $1$, mentre i rimanenti a $0$, spiegando così il nome di questo encoding.
+Una migliore opzione è l'**$1$-in-$n$ encoding**, nel quale ogni attributo nominale è assegnato a tanti neuroni quanti i suoi possibili valori: ogni neurone corrisponde ad un valore dell'attributo. Con l'input di un training pattern, il neurone che corrisponde al valore dell'attributo nominale ottenuto viene impostato a $1$, mentre tutti gli altri neuroni che appartengono allo stesso attributo ma a valori diversi vengono settati a $0$. In questo modo solamente $1$ neurone su $n$ viene impostato ad $1$, mentre i rimanenti a $0$, spiegando così il nome di questo encoding.
 
 ----------------------------------------------------------------
 

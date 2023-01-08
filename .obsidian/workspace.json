@@ -102,20 +102,21 @@
       "canvas:Create new canvas": false,
       "command-palette:Open command palette": false,
       "markdown-importer:Open format converter": false,
-      "templates:Insert template": false
+      "templates:Insert template": false,
+      "obsidian-kindle-plugin:Sync your Kindle highlights": false
     }
   },
   "active": "5c0cfff180e43430",
   "lastOpenFiles": [
-    "Intelligenza Artificiale.md",
-    "Sicurezza dei Sistemi e delle Reti.md",
-    "Dynamic Host Configuration Protocol.md",
-    "The Age of the Essay.md",
-    "Templates/Template Articolo.md",
-    "Templates/Modello a Memoria Condivisa.md",
-    "3D Video Games.md",
-    "Albero 2-3.md",
-    "Albero.md",
-    "Agent-Based Simulation.md"
+    "Beccaria-Dei delitti e delle pene.md",
+    "Nietzsche-Carpi-Così parlò Zarathustra.md",
+    "Voltaire-Trattato sulla tolleranza.md",
+    "Modello P-RAM.md",
+    "Ordinamento Topologico.md",
+    "Polimorfismo.md",
+    "Programmazione Dinamica.md",
+    "Programmazione Orientata agli Oggetti.md",
+    "Queue.md",
+    "README.md"
   ]
 }
