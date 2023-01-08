@@ -309,14 +309,13 @@ Il vantaggio di questa matrice sta nel fatto che rende possibile scrivere il net
 $$\mathbf{net}_{U_2} = W \mathbf{in}_{U_2} = W \mathbf{out}_{U_1}$$
 
 dove $\mathbf{net}_{U_2} = (net_{u_1}, \dots, net_{u_m})^\top$ e $\mathbf{in}_{U_2} = \mathbf{out}_{U_1} = (out_{v_1}, \dots, out_{v_n})^\top$.<br />
-Fino ad adesso si è osservato che le ANN possono rappresentare funzioni Booleane. Invece, per quanto riguarda le funzioni a valori continui, ogni funzione Riemann-integrabile può essere approssimata con precisione arbitraria da un MLP avente quattro layer.
+Fino ad adesso si è osservato come le ANN possano rappresentare funzioni Booleane. Invece, per quanto riguarda le funzioni a valori continui, ogni funzione Riemann-integrabile può essere approssimata con precisione arbitraria da un MLP avente quattro layer.
 
 ![[approx.png]]
 
 ![[riemann.png]]
 
-Ogni funzione, infatti, può essere approssimata da una step function. Ad ogni pivot $x_i$ verrà associato nel MLP un neurone nel primo hidden layer. Nel secondo hidden layer si utilizzerà un neurone per ogni scalino, il quale riceverà input dai due neuroni del primo livello assegnati ai valori $x_i$ e $x_{i+1}$, i quali definiscono i bordi dello scalino stesso. A questo punto, si sceglieranno pesi e threshold in modo tale da attivare il neurone se e solo se l'input è maggiore di $x_i$ e
-minore di $x_{i+1}$.<br />
+Ogni funzione, infatti, può essere approssimata da una step function. Ad ogni pivot $x_i$ verrà associato nel MLP un neurone nel primo hidden layer. Nel secondo hidden layer si utilizzerà un neurone per ogni scalino, il quale riceverà input dai due neuroni del primo livello assegnati ai valori $x_i$ e $x_{i+1}$, i quali definiscono i bordi dello scalino stesso. A questo punto, si sceglieranno pesi e threshold in modo tale da attivare il neurone se e solo se l'input è maggiore di $x_i$ e minore di $x_{i+1}$.<br />
 La funzione di attivazione del neurone di output utilizzata in questo caso è la funzione di identità, in modo tale da restituire come output solamente il valore dell'approssimazione proveniente dai neuroni dell'ultimo hidden layer.<br />
 Dovrebbe essere chiaro che l'approssimazione può crescere a piacere semplicemente aggiungendo neuroni e diminuendo la lunghezza dei gradini.<br />
 E' possibile, inoltre, risparmiare un layer utilizzando come peso della connessione al neurone di output nel calcolo non l'altezza assoluta ma quella relativa. E' utile notare, comunque, che questo risultato non ha natura costruttiva, ossia non istruisce su come deve essere composto un MLP che approssimi con una data accuratezza una certa funzione. Tutto ciò che afferma il teorema è che limitare il numero di layer non pregiudica la proprietà del MLP di essere un **approssimatore universale**.
