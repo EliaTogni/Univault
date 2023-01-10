@@ -819,9 +819,11 @@ Bisogna, tuttavia, prestare attenzione a non confondere l'imprecisione con l'**i
 
 ### Insiemi fuzzy ###
 Un insieme classico è una collezione di elementi che possono (o meno) appartenere all'insieme. I set fuzzy, invece, sono in grado di gestire l'appartenenza parziale.<br />
-Pertanto, mentre un insieme classico (o insieme crispy) può essere definito a partire da una funzione caratteristica che assegna ad ogni elemento nel dominio del discorso il valore 1 se questo elemento appartiene all'insieme oppure 0 altrimenti, un **insieme fuzzy** può essere visto come una generalizzazione di questo concetto.
+Pertanto, mentre un insieme classico può essere definito a partire da una funzione caratteristica che assegna ad ogni elemento nel dominio del discorso il valore 1 se questo elemento appartiene all'insieme oppure 0 altrimenti, un **insieme fuzzy** può essere visto come una generalizzazione di questo concetto.
 
-Dato un dominio del discorso $X$, un insieme fuzzy $\mu$ è una funzione $\mu : X \to [0,1]$ la quale assegna ad ogni elemento $x \in X$ un **grado di appartenenza** $\mu(x)$ rispetto all'insieme $\mu$.
+Dato un dominio del discorso $X$, un insieme fuzzy $\mu$ è una funzione $\mu : X \to [0,1]$ la quale assegna ad ogni elemento $x \in X$ un **grado di appartenenza** $\mu(x)$ rispetto all'insieme $\mu$.<br />
+$\mu_{M}(u) = 1$ esprime la massima appartenenza ad $M$ e $\mu_{M} = 0$ esprime la totale non appartenenza ad $M$. Gli insiemi possono esere considerati come casi speciali di insiemi fuzzy, nei quali sono permesse solamente la totale appartenenza e la totale non appartenenza. Questi insiemi sono chiamati insiemi **crispy** o booleani.
+Un grado di appartenenza $0 < \mu_{M}(u) < 1$ rappresenta un'appartenenza parziale.
 
 Queste funzioni sono scelte a seconda del contesto di utilizzo e i gradi di appartenenza sono fissati per convenzione all'intervallo $[0, 1]$ ma la funzione di appartenenza potrebbe avere un intervallo arbitrario come immagine.<br />
 E' possibile interpretare i fuzzy set come interfacce tra espressioni lingustiche e loro rappresentazioni numeriche. Ad esempio, si voglia fornire un modello formale alla proprietà "essere alto per un bambino di 4 anni". Per farlo, si definirà un insieme fuzzy $\mu_{tall}$ attraverso una funzione sigmoide, tale per cui apparterranno **massimamente** all'estensione della proprietà i bambini più alti di 1.5 m e **massimamente** al di fuori dall'estensione quelli più bassi di 0.7 m. Tutti gli altri apparterranno all'insieme con un certo grado.
