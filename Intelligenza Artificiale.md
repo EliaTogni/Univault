@@ -823,8 +823,8 @@ Pertanto, mentre un insieme classico (o insieme crispy) può essere definito a p
 
 Dato un dominio del discorso $X$, un insieme fuzzy $\mu$ è una funzione $\mu : X \to [0,1]$ la quale assegna ad ogni elemento $x \in X$ un **grado di appartenenza** $\mu(x)$ rispetto all'insieme $\mu$.
 
-Queste funzioni sono scelte a seconda del contesto di utilizzo e i gradi di appartenenza sono fissati per convenzione all'intervallo $[0, 1]$ ma non è obbligatorio. la funzione di appartenenza potrebbe avere un intervallo arbitrario come immagine.<br />
-E' possibile vedere i fuzzy set come interfacce tra espressioni lingustiche e loro rappresentazioni numeriche. Ad esempio, si voglia fornire un modello formale alla proprietà "essere alto per un bambino di 4 anni". Per farlo, si definirà un insieme fuzzy $\mu_{tall}$ attraverso una funzione sigmoide, tale per cui apparterranno **massimamente** all'estensione della proprietà i bambini più alti di 1.5 m e **massimamente** al di fuori dall'estensione quelli più bassi di 0.7 m. Tutti gli altri apparterranno all'insieme con un certo grado.
+Queste funzioni sono scelte a seconda del contesto di utilizzo e i gradi di appartenenza sono fissati per convenzione all'intervallo $[0, 1]$ ma la funzione di appartenenza potrebbe avere un intervallo arbitrario come immagine.<br />
+E' possibile interpretare i fuzzy set come interfacce tra espressioni lingustiche e loro rappresentazioni numeriche. Ad esempio, si voglia fornire un modello formale alla proprietà "essere alto per un bambino di 4 anni". Per farlo, si definirà un insieme fuzzy $\mu_{tall}$ attraverso una funzione sigmoide, tale per cui apparterranno **massimamente** all'estensione della proprietà i bambini più alti di 1.5 m e **massimamente** al di fuori dall'estensione quelli più bassi di 0.7 m. Tutti gli altri apparterranno all'insieme con un certo grado.
 
 ![[tall.png]]
 
