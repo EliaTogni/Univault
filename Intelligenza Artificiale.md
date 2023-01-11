@@ -822,7 +822,7 @@ Un insieme classico è una collezione di elementi che possono (o meno) appartene
 Pertanto, mentre un insieme classico può essere definito a partire da una funzione caratteristica che assegna ad ogni elemento nel dominio del discorso il valore 1 se questo elemento appartiene all'insieme oppure 0 altrimenti, un **insieme fuzzy** può essere visto come una generalizzazione di questo concetto.
 
 Dato un dominio del discorso $X$, un insieme fuzzy $\mu$ è una funzione $\mu : X \to [0,1]$ la quale assegna ad ogni elemento $x \in X$ un **grado di appartenenza** $\mu(x)$ rispetto all'insieme $\mu$.<br />
-$\mu_{M}(u) = 1$ esprime la massima appartenenza ad $M$ e $\mu_{M} = 0$ esprime la totale non appartenenza ad $M$. Gli insiemi possono esere considerati come casi speciali di insiemi fuzzy, nei quali sono permesse solamente la totale appartenenza e la totale non appartenenza. Questi insiemi sono chiamati insiemi **crispy** o booleani.
+$\mu_{M}(u) = 1$ esprime la massima appartenenza ad $M$ e $\mu_{M}(u) = 0$ esprime la totale non appartenenza ad $M$. Gli insiemi possono essere considerati come casistiche speciali degli insiemi fuzzy, nei quali sono permesse solamente la totale appartenenza e la totale non appartenenza. Questi insiemi sono chiamati insiemi **crispy** o booleani.
 Un grado di appartenenza $0 < \mu_{M}(u) < 1$ rappresenta un'appartenenza parziale.
 
 Queste funzioni sono scelte a seconda del contesto di utilizzo e i gradi di appartenenza sono fissati per convenzione all'intervallo $[0, 1]$ ma la funzione di appartenenza potrebbe avere un intervallo arbitrario come immagine.<br />
