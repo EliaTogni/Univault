@@ -845,7 +845,7 @@ Ci sono varie semantiche che è possibile associare alla relazione di appartenen
 1) **somiglianza**;
 2) **preferenza**;
 3) **possibilità**.
-
+fuzzy 
 L'interpretazione più popolare del grado di appartenenza fuzzy è la somiglianza a dei valori di riferimento. $\mu(x)$ può essere visto come il grado di prossimità rispetto ad un elemento prototipale di $\mu$. Per ottenere un valore numerico indicativo di un'appartenenza graduale in questa interpetazione, l'approccio più naturale consiste nel comparare l'oggetto sotto considerazione con un oggetto che appartiene definitivamente al concetto considerato. Questa interpretazione viene utilizzata nei problemi di pattern classification, cluster analysis e regressione.<br />
 Il secondo caso, l'espressione di preferenze, è legato all'interpretazione precedente. In questa casistica, il grado di appartenenza determina quali valori dovrebbero essere preferiti rispetto ad altri. Il grado di appartenenza va interpretato in termini di ordinamento. La funzione $\mu$ rappresenta sia l'insieme degli oggetti preferiti, sia il valore associato ad una decisione $X$ e $\mu(x)$ rappresenta sia l'intensità della preferenza associata a $u$, sia la possibilità di scegliere $u$ come valore di $X$. Questa interpretazione di grado di appartenenza viene utilizzata nei problemi di ottimizzazione fuzzy e nella teoria decisionale ed è spesso correlata all'interpretazione di somiglianza, poichè un ordine di preferenza può essere derivato dalla somiglianza di un certo oggetto ad un oggetto ideale o ad un valore ideale.<br />
 L'ultima delle tre interpretazioni è usata per esprimere possibilità. Questa interpretazione considera $\mu(x)$ come il grado di possibilità che l'elemento $u$ sia il valore del parametro $X$ ed è usata per quantificare lo stato epistemico di un agente, cioè il suo stato di conoscenza. L'obiettivo è distinguere cosa sia sorprendente da cosa sia aspettato, e cosa sia plausibile da cosa sia impossibile: $\mu(x) = 0$ significa che $u$ è rifiutato in quanto impossibile e $\mu(x) = 1$ significa che $x$ è totalmente possibile e, di conseguenza, più grande $\mu(x)$, più plausibile $u$. Questa interpretazione viene utilizzata in data analysis.
@@ -1297,12 +1297,13 @@ Il network così costruito può essere allenato grazie alla backpropagation.
 
 ## Algoritmi evolutivi ##
 ### Introduzione ###
-Gli **algoritmi evolutivi** comprendono una classe di tecniche di ottimizzazione le quali imitano i principi dell'evoluzione biologica. Il principio cardine degli algoritmi evolutivi è l'applicare principi quali mutazione e selezione a popolazioni di soluzioni candidate al fine di trovare una soluzione sufficientemente valida per un dato problema di ottimizzazione.<br />
+Gli **algoritmi evolutivi** comprendono una classe di tecniche di ottimizzazione le quali imitano i principi dell'evoluzione biologica. Il principio cardine degli algoritmi evolutivi è l'applicare principi quali mutazione e selezione a popolazioni di soluzioni candidate, al fine di trovare una soluzione sufficientemente valida per un dato problema di ottimizzazione.<br />
 Un **problema di ottimizzazione** può essere descritto da una tripla $(\Omega,f,\prec)$, dove $\Omega$ è lo spazio di ricerca, $f$ è una funzione di valutazione della forma $f:\Omega \to \mathbb{R}$ e $\prec$ un preordine. L'insieme $H \subseteq \Omega$ tale che:
 
 $$H = \{ x \in \Omega | \forall x' \in \Omega: f(x) \succeq f(x') \}$$
 
-è definito l'insieme degli **ottimi globali**. Dato un problema di questo genere, la sua soluzione sta nel fornire un elemento il quale appartenga all'insieme $H$. In letteratura sono stati proposti vari metodi di soluzione per i problemi di ottimizzazione:
+è definito l'insieme degli **ottimi globali**. Dato un problema di questo genere, la sua soluzione sta nel fornire un elemento il quale appartenga all'insieme $H$.<br />
+In letteratura sono stati proposti vari metodi di soluzione per i problemi di ottimizzazione:
 - soluzioni analitiche;
 - brute-forcing;
 - random search;
@@ -1324,8 +1325,7 @@ Gli elementi di un algoritmo evolutivo sono:
 ----------------------------------------------------------------
 
 ### Definizione formale ###
-Per ogni problema di ottimizzazione occorre separare lo spazio dei **fenotipi** $\Omega$ (ovvero, come l'individuo appare) da quello dei **genotipi** $\Gamma$ (ovvero, come l'individuo è rappresentato dalla codifica scelta). La funzione di fitness sarà definita sui fenotipi, dove, invece, gli operatori genetici agiranno sui genotipi. Per valutare i cambiamenti nel genotipo sarà necessario fornire una funzione di
-*decodifica* $dec: \Gamma \to \Omega$.
+Per ogni problema di ottimizzazione occorre separare lo spazio dei **fenotipi** $\Omega$ (ovvero, come l'individuo appare) da quello dei **genotipi** $\Gamma$ (ovvero, come l'individuo è rappresentato dalla codifica scelta). La funzione di fitness sarà definita sui fenotipi, dove, invece, gli operatori genetici agiranno sui genotipi. Per valutare i cambiamenti nel genotipo sarà necessario fornire una funzione di **decodifica** $dec: \Gamma \to \Omega$.
 
 Ogni **individuo** $A$ è rappresentato da un tupla $(A.G, A.S, A.F)$ contenente il genotipo ($A.G \in \Gamma$), informazioni e parametri addizionali $A.S \in Z$ e la valutazione dello stesso rispetto alla funzione di fitness $A.F = f(dec(A.G))$.<br />
 L'operatore di **mutazione** è definito come una mappa:
