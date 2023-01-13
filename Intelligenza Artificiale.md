@@ -1463,7 +1463,7 @@ Vi sono varie strategie disponibili in letteratura per operare la selezione degl
 - **Tournament selection**: si estraggono $k$ individui casualmente dalla popolazione. Tramite scontri individuali si decide il migliore, il quale riceverà un discendente nella prossima generazione. Tutti i partecipanti tornano poi nella popolazione (anche il vincitore). Si riesce così ad evitare il problema della dominanza e si riesce a regolare la pressione di selezione grazie alla grandezza del torneo;
 - **Elitismo**: i migliori individui della generazione precedente costituiscono la generazione successiva. L'elite così scelta non è immune ai cambiamenti apportati dagli operatori genetici. Il vantaggio è che la convergenza viene ottenuta rapidamente. Lo svantaggio è che c'è il rischio di rimanere bloccati in ottimi locali.
 
-Si vuole soprattutto prevenire il **Crowding**: gli individui delle generazioni successive dovrebbero rimpiazzare gli individui più simili a loro. La densità locale in $\Omega$ non può crescere in modo indefinito. Questo permette una migliore esplorazione dello spazio.
+Si vuole soprattutto prevenire il **crowding**: gli individui delle generazioni successive dovrebbero rimpiazzare gli individui più simili a loro. La densità locale in $\Omega$ non può crescere in modo indefinito. Il prevenire ciò permette una migliore esplorazione dello spazio.
 
 Di seguito si elencano alcune proprietà che possono caratterizzare i metodi di selezione:
 - **Static**: la probabilità di selezione rimane costante;
@@ -1480,7 +1480,7 @@ Di seguito si elencano alcune proprietà che possono caratterizzare i metodi di 
 ----------------------------------------------------------------
 
 ### Operatori genetici ###
-Gli **operatori genetici** sono applicati ad una frazione di individui scelti (popolazione intermedia). Vengono così generate mutazioni e ricombinazioni delle soluzioni già esistenti. Gli operatori genetici vengono classificati secondo la loro arietà in:
+Gli **operatori genetici** sono applicati ad una frazione di individui scelti (**popolazione intermedia**). Vengono così generate mutazioni e ricombinazioni delle soluzioni già esistenti. Gli operatori genetici vengono classificati secondo la loro arietà in:
 1) **One-parent operators**;
 2) **Two-parent operators**;
 3) **Multiple-parent operators**.
@@ -1488,11 +1488,11 @@ Gli **operatori genetici** sono applicati ad una frazione di individui scelti (p
 Nella prima classe è possibile trovare l'operatore di **mutazione**, il quale introduce piccoli cambiamenti randomici nel genoma della soluzione a cui viene applicato. Risulta utile per introdurre biodiversità nel pool delle soluzioni e per favorire l'esplorazione dello spazio di ricerca. Esistono vari metodi per operare una mutazione:
 - **Standard mutation**: il valore di un gene o più viene mutato;
 - **Pair swap**: si scambia la posizione di due geni;
-- **Shift**: si shifta a destra o sinistra un gruppo di $k$ geni di $n$ posizioni;
-- **Arbitrary permutation**: si permuta arbitrariamente un gruppo di geni;
-- **Inversion**: si inverte l'ordine di apparizione di un gruppo di geni;
+- **Shift**: si shifta a destra o sinistra un gruppo di $n$ geni di $k$ posizioni;
+- **Arbitrary permutation**: si permuta arbitrariamente un gruppo di $n$ geni;
+- **Inversion**: si inverte l'ordine di apparizione di un gruppo di $n$ geni;
 - **Binary Mutation**: si flippano dei bit;
-- **Gaussian Mutation**: si aggiunge un numero randomico distribuito normalmente ad ogni gene.
+- **Gaussian Mutation**: si aggiunge un numero randomico che segue una distribuzione normale ad ogni gene.
 
 Invece, l'operatore di gran lunga più importante tra quelli two-parent è quello di **ricombinazione** o **crossover**, il quale ha il compito, date due soluzioni, di creare attraverso una combinazione del loro codice genetico le soluzioni che costituiranno la generazione futura. Vi sono vari modi per operare questa ricombinazione:
 - **one-point crossover**: si determina una posizione casuale nel cromosoma e si scambiano le due sequenze da un lato del taglio;
