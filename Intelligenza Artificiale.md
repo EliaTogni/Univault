@@ -1316,7 +1316,7 @@ Tutti questi metodi hanno delle criticità o sono applicabili solo ad alcuni tip
 Gli elementi di un algoritmo evolutivo sono:
 1) una **codifica** in **cromosomi** per i candidati, non in termini biologici ma in termini di oggetti computazionali, chiamati **geni**, rappresentati da bit, stringhe, interi, etc...;
 2) un metodo per creare una **popolazione iniziale**, tramite un **algoritmo costruttivo**;
-3) creare una **funzione di fitness** per valutare i candidati, il cui valore risultante rappresenta la qualità dell'individuo;
+3) una **funzione di fitness** per valutare i candidati, il cui valore risultante rappresenta la qualità dell'individuo;
 4) dei **metodi di selezione** in relazione ai valori di fitness: si scelgono così gli individui che dovranno procreare nella successiva generazione;
 5) un insieme di **operatori genetici** che modifichino i cromosomi: i due più usati sono quello di **mutazione**, il quale modifica in modo random i cromosomi e quello di **crossover**, il quale ricombina i cromosomi dei genitori per creare la prole;
 6) alcuni parametri come **dimensione della popolazione**, **probabilità di mutazione**, etc;
@@ -1327,18 +1327,18 @@ Gli elementi di un algoritmo evolutivo sono:
 ### Definizione formale ###
 Per ogni problema di ottimizzazione occorre separare lo spazio dei **fenotipi** $\Omega$ (ovvero, come l'individuo appare) da quello dei **genotipi** $\Gamma$ (ovvero, come l'individuo è rappresentato dalla codifica scelta). La funzione di fitness sarà definita sui fenotipi, dove, invece, gli operatori genetici agiranno sui genotipi. Per valutare i cambiamenti nel genotipo sarà necessario fornire una funzione di **decodifica** $dec: \Gamma \to \Omega$.
 
-Ogni **individuo** $A$ è rappresentato da un tupla $(A.G, A.S, A.F)$ contenente il genotipo ($A.G \in \Gamma$), informazioni e parametri addizionali $A.S \in Z$ e la valutazione dello stesso rispetto alla funzione di fitness $A.F = f(dec(A.G))$.<br />
+Ogni **individuo** $A$ è rappresentato da un tupla $(A.G, A.S, A.F)$ contenente il genotipo ($A.G \in \Gamma$), informazioni e parametri addizionali $A.S \in \mathbb{Z}$ e la valutazione dello stesso rispetto alla funzione di fitness $A.F = f(dec(A.G)) \in \mathbb{R}$.<br />
 L'operatore di **mutazione** è definito come una mappa:
 
 $$Mut^{\xi} : \Gamma \times Z \to \Gamma \times Z$$
 
-dove $\xi$ è un numero randomicamente generato.
-L'operatore di **ricombinazione** avente $r \geq 2$ genitori e $s \geq 1$ figli è definito come una mappa:
+dove $\xi$ è un numero generato randomicamente.<br />
+L'operatore di **ricombinazione**, avente $r \geq 2$ genitori e $s \geq 1$ figli, è definito come una mappa:
 
 $$Rek^\xi : (\Gamma \times Z)^r \to (\Gamma \times Z)^s$$
 
-dove $\xi$ è un numero randomicamente generato.<br />
-L'operatore di **selezione** permette di scegliere grazie ai valori di fitness tra una popolazione di $r$ individui un numero $s$ di individui i quali continueranno la specie. Sia $P = \{\ A_1, \dots, A_r \}$ la popolazione di individui. Allora, l'operatore di selezione avrà la forma:
+dove $\xi$ è un numero generato randomicamente.<br />
+L'operatore di **selezione** permette di scegliere grazie ai valori di fitness tra una popolazione di $r$ individui un numero $s$ di individui i quali continueranno la specie. Sia $P = \{A_1, \dots, A_r \}$ la popolazione di individui. Allora, l'operatore di selezione avrà la forma:
 
 $$Sel^\xi : (\Gamma \times Z \times \mathbb{R})^r \to (\Gamma \times Z \times \mathbb{R})^s$$
 $$\big\{A^{(i)}\big\}_{ 1 \leq i \leq r} \quad \mapsto  \quad \Big\{A^{(IS^\xi (c_1,\dots,c_r)_k)} \Big \}_{1 \leq k \leq s} $$
@@ -1428,16 +1428,16 @@ Le soluzioni al problema devono essere codificate in modo tale che si possa espl
 Non esiste una ricetta generale: la scelta della codifica è specifica per ogni problema. Tuttavia, esistono alcuni principi di massima da seguire:
 1) Rappresentare fenotipi simili con genotipi simili, principio il quale assicura che mutazioni di certi geni risultino in genotipi simili e che radicali cambiamenti permettano di evadere da minimi locali;
 2) La funzione di fitness deve restituire valori simili per candidati simili, principio il quale previene che si scelga una codifica troppo o troppo poco **epistatica**, ovvero fortemente dipendente da un singolo gene e non da tutto il cromosoma. Se troppo, una singola mutazione potrebbe produrre casuali cambiamenti di fitness. Se troppo poco, l'efficienza dell'algoritmo ne risente;
-3) Lo spazio $\Omega$ deve essere chiuso rispetto agli operatori genetici. Infatti, se lo spazio di ricerca non dovesse essere chiuso, un cromosoma modificato potrebbe non essere più decodificato e interpretato.
+3) Lo spazio $\Omega$ deve essere chiuso rispetto agli operatori genetici. Infatti, se lo spazio di ricerca non dovesse essere chiuso, un cromosoma modificato potrebbe non essere più decodificato e interpretato. Questa proprietà consente al risultato degli operatori genetici di essere ancora interno allo spazio di ricerca.
 
 ----------------------------------------------------------------
 
 ### Fitness ###
-Gli individui migliori (quelli che hanno migliori valori di fitness) dovrebbero avere le migliori opportunità di riprodursi. Per permettere questo, occorre esercitare ciò che in gergo viene chiamata **selective pressure** nel processo di creazione delle nuove generazioni. Se la selective pressure è bassa, si parla di **esplorazione dello spazio**: la deviazione permessa rispetto agli individui è la più ampia possibile (tutto $\Omega$), vi sono buone possibilità di raggiungere il massimo globale. Se la selective pressure è alta, si parla di **sfruttamento degli individui migliori**: si ricerca l'ottimo nelle vicinanze degli individui migliori e l'algoritmo converge velocemente, anche se col rischio di convergere ad un ottimo locale. Per poter scegliere la corretta selective pressure occorre una metrica per calcolarla. Alcune tra quelle utilizzate in letteratura sono: 
+Con **selective pressure** si definisce quanto vengano preferiti individui con un alto valore di fitness nel processo di creazione delle nuove generazioni. Se la selective pressure è bassa, si parla di **esplorazione dello spazio**: la deviazione permessa rispetto agli individui è la più ampia possibile (tutto $\Omega$), vi sono buone possibilità di raggiungere il massimo globale. Se la selective pressure è alta, si parla di **sfruttamento degli individui migliori**: si ricerca l'ottimo nelle vicinanze degli individui migliori e l'algoritmo converge velocemente, anche se col rischio di convergere ad un ottimo locale. Per poter scegliere la corretta selective pressure occorre una metrica per calcolarla. Alcune tra quelle utilizzate in letteratura sono: 
 - **selection intensity**: il differenziale tra la qualità media prima e dopo l'avvenimento della selezione. Definisce la porzione di popolazione che sopravviverà e che verrà usata nella successiva iterazione;
 - **time to takeover**: il numero di generazioni prima che la popolazione converga.
 
-Gli stessi metodi di selezioni possono variare al variare della pressione evolutiva. Uno dei più usati è quello chiamato **roulette-wheel selection**. Si computa il valore di fitness relativo di ogni individuo grazie alla seguente formula:
+Gli stessi metodi di selezione possono variare al variare della pressione evolutiva. Uno dei più usati è quello chiamato **roulette-wheel selection**. Si computa il valore di fitness relativo di ogni individuo grazie alla seguente formula:
 
 $$f_{rel}(A_i) = \frac{A_i.F}{\sum_{j=1}^{|P|} A_j.F}$$
 
@@ -1459,7 +1459,7 @@ La stessa funzione di fitness può essere adattata per impedire una convergenza 
 ### Selezione ###
 Vi sono varie strategie disponibili in letteratura per operare la selezione degli individui che costituiranno il pool genetico per la successiva generazione:
 - **Roulette-wheel selection**: vedi sopra;
-- **Rank-based selection**: si ordinano gli individui in ordine di fitness decrescente. A seconda della posizione si assegna ad ogni individuo un **rank** e con esso si definisce la probabilità di essere selezionati. Si procede ad una selezione del tipo roulette-wheel. Questo modello riesce ad ovviare al problema della dominanza e a regolare la pressione di selezione. Lo svantaggio sta nel fatto che occorre ordinare gli individui (complessità $O(n \log n)$);
+- **Rank-based selection**: si ordinano gli individui in ordine di fitness decrescente. A seconda della posizione, si assegna ad ogni individuo un **rank** e con esso si definisce la probabilità di essere selezionati. Si procede ad una selezione del tipo roulette-wheel. Questo modello riesce ad ovviare al problema della dominanza e a regolare la pressione di selezione. Lo svantaggio sta nel fatto che occorre ordinare gli individui (complessità $O(n \log n)$);
 - **Tournament selection**: si estraggono $k$ individui casualmente dalla popolazione. Tramite scontri individuali si decide il migliore, il quale riceverà un discendente nella prossima generazione. Tutti i partecipanti tornano poi nella popolazione (anche il vincitore). Si riesce così ad evitare il problema della dominanza e si riesce a regolare la pressione di selezione grazie alla grandezza del torneo;
 - **Elitismo**: i migliori individui della generazione precedente costituiscono la generazione successiva. L'elite così scelta non è immune ai cambiamenti apportati dagli operatori genetici. Il vantaggio è che la convergenza viene ottenuta rapidamente. Lo svantaggio è che c'è il rischio di rimanere bloccati in ottimi locali.
 
