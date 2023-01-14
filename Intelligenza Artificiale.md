@@ -1298,7 +1298,7 @@ Il network così costruito può essere allenato grazie alla backpropagation.
 ## Algoritmi evolutivi ##
 ### Introduzione ###
 Gli **algoritmi evolutivi** comprendono una classe di tecniche di ottimizzazione le quali imitano i principi dell'evoluzione biologica. Il principio cardine degli algoritmi evolutivi è l'applicare principi quali mutazione e selezione a popolazioni di soluzioni candidate, al fine di trovare una soluzione sufficientemente valida per un dato problema di ottimizzazione.<br />
-Un **problema di ottimizzazione** può essere descritto da una tripla $(\Omega,f,\prec)$, dove $\Omega$ è lo spazio di ricerca, $f$ è una funzione di valutazione della forma $f:\Omega \to \mathbb{R}$ e $\prec$ un preordine. L'insieme $H \subseteq \Omega$ tale che:
+Un **problema di ottimizzazione** può essere descritto da una tripla $(\Omega,f,\prec)$, dove $\Omega$ è lo spazio di ricerca, $f$ è una funzione di valutazione della forma $f:\Omega \to \mathbb{R}$ e $\prec$ è un preordine. L'insieme $H \subseteq \Omega$ tale che:
 
 $$H = \{ x \in \Omega | \forall x' \in \Omega: f(x) \succeq f(x') \}$$
 
@@ -1314,7 +1314,7 @@ Tutti questi metodi hanno delle criticità o sono applicabili solo ad alcuni tip
 2) gli individui che mostrano questi tratti vantaggiosi hanno migliori opportunità di procreare e moltiplicarsi.
 
 Gli elementi di un algoritmo evolutivo sono:
-1) una **codifica** in **cromosomi** per i candidati, non in termini biologici ma in termini di oggetti computazionali, chiamati **geni**, rappresentati da bit, stringhe, interi, etc...;
+1) una **codifica** in **cromosomi** per i candidati, non in termini biologici ma in termini di oggetti computazionali, chiamati **geni**, rappresentati da bit, stringhe, interi, etc.. Il valore di un oggetto computazionale, il quale seleziona solo uno dei possibili valori di un gene, è detto **allele**;
 2) un metodo per creare una **popolazione iniziale**, tramite un **algoritmo costruttivo**;
 3) una **funzione di fitness** per valutare i candidati, il cui valore risultante rappresenta la qualità dell'individuo;
 4) dei **metodi di selezione** in relazione ai valori di fitness: si scelgono così gli individui che dovranno procreare nella successiva generazione;
@@ -1486,32 +1486,32 @@ Gli **operatori genetici** sono applicati ad una frazione di individui scelti (*
 3) **Multiple-parent operators**.
 
 Nella prima classe è possibile trovare l'operatore di **mutazione**, il quale introduce piccoli cambiamenti randomici nel genoma della soluzione a cui viene applicato. Risulta utile per introdurre biodiversità nel pool delle soluzioni e per favorire l'esplorazione dello spazio di ricerca. Esistono vari metodi per operare una mutazione:
-- **Standard mutation**: il valore di un gene o più viene mutato;
-- **Pair swap**: si scambia la posizione di due geni;
-- **Shift**: si shifta a destra o sinistra un gruppo di $n$ geni di $k$ posizioni;
-- **Arbitrary permutation**: si permuta arbitrariamente un gruppo di $n$ geni;
-- **Inversion**: si inverte l'ordine di apparizione di un gruppo di $n$ geni;
-- **Binary Mutation**: si flippano dei bit;
-- **Gaussian Mutation**: si aggiunge un numero randomico che segue una distribuzione normale ad ogni gene.
+- **standard mutation**: il valore di un gene o più viene mutato;
+- **pair swap**: si scambia la posizione di due geni;
+- **shift**: si shifta a destra o sinistra un gruppo di $n$ geni di $k$ posizioni;
+- **arbitrary permutation**: si permuta arbitrariamente un gruppo di $n$ geni;
+- **inversion**: si inverte l'ordine di apparizione di un gruppo di $n$ geni;
+- **binary mutation**: si flippano dei bit;
+- **gaussian mutation**: si aggiunge un numero randomico che segue una distribuzione normale ad ogni gene.
 
 Invece, l'operatore di gran lunga più importante tra quelli two-parent è quello di **ricombinazione** o **crossover**, il quale ha il compito, date due soluzioni, di creare attraverso una combinazione del loro codice genetico le soluzioni che costituiranno la generazione futura. Vi sono vari modi per operare questa ricombinazione:
 - **one-point crossover**: si determina una posizione casuale nel cromosoma e si scambiano le due sequenze da un lato del taglio;
 - **two-point crossover**: si determinano due posizioni casuali nel cromosoma e si scambia quell'intervallo di geni;
-- **n-point crossover**: un generalizzazione dei precedenti. Si scambiano le aree incluse nei punti selezionati casualmente;
+- **n-point crossover**: un generalizzazione dei precedenti. Si scambiano gli intervalli delimitati dai punti selezionati casualmente;
 - **uniform crossover**: per ogni gene si determina se scambiarlo o meno a seconda di un certo parametro di probabilità;
-- **shuffle crossover**: si procede inizialmente ad operare una permutazione randomica sui due cromosomi. Dopo si procede come nel one-point crossover e si conclude facendo l'unmixing;
+- **shuffle crossover**: si procede inizialmente assegnando un indice ad ogni gene di entrambi i cromosomi. Si procede poi ad operare una permutazione randomica sui due cromosomi. Dopo si procede come nel one-point crossover e si conclude facendo l'unmixing in base agli indici iniziali;
 - **uniform order-based crossover**: simile allo uniform crossover, per ogni gene si decide se tenerlo o cambiarlo. Gli spazi dei geni da cambiare sono riempiti nell'ordine di apparizione dei geni nell'altro cromosoma;
 - **edge-recombination crossover**: il cromosoma è rappresentato come un grafo. Ogni gene è un vertice che ha archi verso i suoi vicini. Gli archi dei due grafi vengono mischiati. Si preserva l'informazione relativa alla vicinanza.
 
 Un caso di multiple-parent operator è quello del **diagonal crossover**. Simile al n-point crossover, ma vi partecipano più di due genitori. Dati $k$ genitori, si scelgono $k-1$ punti per il crossover e si procede shiftando diagonalmente le sequenze rispetto ai punti scelti. Si generano così $k$ figli. Aumentando il numero di genitori si ottiene un ottimo grado di esplorazione dello spazio.
 
 Alcune proprietà che possono caratterizzare gli operatori di crossover sono:
-- **Positional bias**: si ha quando la probabilità che due geni vengano ereditati assieme dallo stesso genitore dipende dalla posizione (relativa) dei due geni nel cromosoma. Deve essere evitato perchè può rendere la disposizione dei differenti geni in un cromosoma cruciale per la riuscita dell'algoritmo;
-- **Distributional bias**: si ha quando la probabilità che un certo numero di geni siano scambiati tra i genitori non è la stessa per tutti i possibili numeri di geni. Deve essere evitato perchè soluzioni parziali di differenti lunghezze hanno differenti probabilità di progredire alla generazione successiva. In generale, è meno problematico del positional bias.
+- **positional bias**: si ha quando la probabilità che due geni vengano ereditati assieme dallo stesso genitore dipende dalla posizione (relativa) dei due geni nel cromosoma. Deve essere evitato perchè può rendere la disposizione dei differenti geni in un cromosoma cruciale per la riuscita dell'algoritmo;
+- **distributional bias**: si ha quando la probabilità che un certo numero di geni siano scambiati tra i genitori non è la stessa per tutti i possibili numeri di geni. Deve essere evitato perchè soluzioni parziali di differenti lunghezze hanno differenti probabilità di progredire alla generazione successiva. In generale, è meno problematico del positional bias.
 
-Per migliorare le performance delle soluzioni si applicano due strategie:
-- **Interpolating recombination**: si opera una fusione dei tratti dei due genitori in modo tale da creare nuovi discendenti. Si creano nuovi alleli (valori dei geni) e ne beneficiano particolarmente gli individui con migliore fitness. Per un'esplorazione sufficientemente ampia di $\Omega$ nelle prime iterazioni, occorre utilizzare una probabilità di mutazione molto alta;
-- **Extrapolating recombination**: si inferiscono informazioni da una moltitudine di individui e si creano nuovi alleli in accordo E' l'unica tecnica di ricombinazione che prende in considerazione il fitness value. L'influenza della diversità è difficilmente quantificabile.
+Tutti gli operatori di ricombinazione che sono stati discussi finora ricombinano alleli già esistenti nei cromosomi genitori, ma non creano nessun allele nuovo. Come conseguenza, la loro efficacia dipende crucialmente nella diversità della popolazione. Per migliorare le performance delle soluzioni si applicano due strategie:
+- **Interpolating recombination**: si opera una fusione dei tratti dei due genitori in modo tale da creare nuovi discendenti. Si creano nuovi alleli e ne beneficiano particolarmente gli individui con migliore fitness. Per un'esplorazione sufficientemente ampia di $\Omega$ nelle prime iterazioni, occorre utilizzare una probabilità di mutazione molto alta;
+- **Extrapolating recombination**: si inferiscono informazioni da una moltitudine di individui riguardo a quale direzione si può ottenere un miglioramento del valore di fitness e si creano nuovi alleli in accordo. E' l'unica tecnica di ricombinazione che prende in considerazione il fitness value. L'influenza della diversità è difficilmente quantificabile.
 
 ----------------------------------------------------------------
 
