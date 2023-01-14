@@ -1501,7 +1501,7 @@ Invece, l'operatore di gran lunga più importante tra quelli two-parent è quell
 - **uniform crossover**: per ogni gene si determina se scambiarlo o meno a seconda di un certo parametro di probabilità;
 - **shuffle crossover**: si procede inizialmente assegnando un indice ad ogni gene di entrambi i cromosomi. Si procede poi ad operare una permutazione randomica sui due cromosomi. Dopo si procede come nel one-point crossover e si conclude facendo l'unmixing in base agli indici iniziali;
 - **uniform order-based crossover**: simile allo uniform crossover, per ogni gene si decide se tenerlo o cambiarlo. Gli spazi dei geni da cambiare sono riempiti nell'ordine di apparizione dei geni nell'altro cromosoma;
-- **edge-recombination crossover**: il cromosoma è rappresentato come un grafo. Ogni gene è un vertice che ha archi verso i suoi vicini. Gli archi dei due grafi vengono mischiati. Si preserva l'informazione relativa alla vicinanza.
+- **edge-recombination crossover**: il cromosoma è rappresentato come un grafo. Ogni gene è un vertice che ha archi verso i suoi vicini nel cromosoma. Gli archi dei due grafi vengono mischiati. Si preserva l'informazione relativa alla vicinanza.
 
 Un caso di multiple-parent operator è quello del **diagonal crossover**. Simile al n-point crossover, ma vi partecipano più di due genitori. Dati $k$ genitori, si scelgono $k-1$ punti per il crossover e si procede shiftando diagonalmente le sequenze rispetto ai punti scelti. Si generano così $k$ figli. Aumentando il numero di genitori si ottiene un ottimo grado di esplorazione dello spazio.
 
@@ -1510,8 +1510,8 @@ Alcune proprietà che possono caratterizzare gli operatori di crossover sono:
 - **distributional bias**: si ha quando la probabilità che un certo numero di geni siano scambiati tra i genitori non è la stessa per tutti i possibili numeri di geni. Deve essere evitato perchè soluzioni parziali di differenti lunghezze hanno differenti probabilità di progredire alla generazione successiva. In generale, è meno problematico del positional bias.
 
 Tutti gli operatori di ricombinazione che sono stati discussi finora ricombinano alleli già esistenti nei cromosomi genitori, ma non creano nessun allele nuovo. Come conseguenza, la loro efficacia dipende crucialmente nella diversità della popolazione. Per migliorare le performance delle soluzioni si applicano due strategie:
-- **Interpolating recombination**: si opera una fusione dei tratti dei due genitori in modo tale da creare nuovi discendenti. Si creano nuovi alleli e ne beneficiano particolarmente gli individui con migliore fitness. Per un'esplorazione sufficientemente ampia di $\Omega$ nelle prime iterazioni, occorre utilizzare una probabilità di mutazione molto alta;
-- **Extrapolating recombination**: si inferiscono informazioni da una moltitudine di individui riguardo a quale direzione si può ottenere un miglioramento del valore di fitness e si creano nuovi alleli in accordo. E' l'unica tecnica di ricombinazione che prende in considerazione il fitness value. L'influenza della diversità è difficilmente quantificabile.
+- **interpolating recombination**: si opera una fusione dei tratti dei due genitori in modo tale da creare nuovi discendenti. Si creano nuovi alleli e ne beneficiano particolarmente gli individui con migliore fitness. Per un'esplorazione sufficientemente ampia di $\Omega$ nelle prime iterazioni, occorre utilizzare una probabilità di mutazione molto alta;
+- **extrapolating recombination**: si inferiscono informazioni da una moltitudine di individui riguardo a quale direzione si può ottenere un miglioramento del valore di fitness e si creano nuovi alleli in accordo. E' l'unica tecnica di ricombinazione che prende in considerazione il fitness value. L'influenza della diversità è difficilmente quantificabile.
 
 ----------------------------------------------------------------
 
