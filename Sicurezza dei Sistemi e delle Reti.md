@@ -896,11 +896,19 @@ In una sessione TCP, se il server/porta è nello stato di listen, si deve contro
 Il protocollo UDP, invece, è un protocollo **connectionless**, in quanto non possiede informazioni di stato. Dal punto di vista dello stateful filtering, viene gestito uno **pseudo-stato**, correlando semplicemente indirizzi IP e porte sia sorgente che destinazione. Inoltre, poichè si tratta di un protocollo sprovvisto di terminazione, viene settato un time-out predefinito.<br />
 Un miglioramento della tecnologia di stateful filtering si ha con la funzionalità di **filtraggio applicativo**, utilizzata per l'analisi dei contenuti applicativi. Spesso questo filtraggio viene implementato sulla base di pattern di stringhe specifiche per worm, le quali vengono verificate rispetto al contenuto di una sessione applicativa. Fornisce, quindi, una protezione migliore rispetto allo static packet filtering ma impatta pesantemente sulle performance. 
 
-Un **Application Gateway** è un firewall che offre un servizio stateful e usa a supporto dei proxy. Come ricorda il nome, questo gateway è in grado di analizzare il contenuto dei pacchetti al livello applicativo. Ciò implica che se il firewall non conosce il protocollo utilizzato al livello 7, inizia allora a comportarsi come un normale firewall (tuttavia esistano numerose estensioni per allargare il pool di protocolli che il firewall conosce).<br />
-Il problema legato a questo firewall è che, spesso, i contenuti sono cifrati. Per ovviare a questo problema, si utilizzano dei proxy. Il proxy viene utilizzato per decifrare i pacchetti ed analizzarne il contenuto per individuare complesse tipologie di attacco (è utilizzato per cercare dei pattern riconducibili ad attacchi conosciuti). Nello specifico, il firewall gira il pacchetto al proxy, il quale procede con l'analisi. Se il pacchetto ispezionato non presenta nessun contenuto sospetto, allora il proxy lo ammette nella rete.<br />
-Ovviamente l'utilizzo del proxy rallenta notevolmente la gestione dei pacchetti.
+Una tecnica di **proxy** serve per introdurre un componente il quale medi le comunicazioni tra altri due componenti, che disaccoppi la comunicazione tra due componenti, rendendola indiretta.
+Esistono diversi tipi di proxy. I più comuni sono:
+1) **web proxy**;
+2) **anonymizing proxy**;
+3) **reverse proxy**;
+4) **proxy firewall**.
 
-Un **Circuit Level**, invece, sfrutta sempre i proxy server ma non è application-aware. Si limita, quindi, ad avere funzioni stateful.
+Un **Application Gateway** è un proxy firewall che offre un servizio stateful e usa a supporto dei proxy. Come ricorda il nome, questo gateway è in grado di analizzare il contenuto dei pacchetti al livello applicativo. Ciò implica che se il firewall non conosce il protocollo utilizzato al livello 7, inizia allora a comportarsi come un normale firewall (tuttavia esistono numerose estensioni per allargare il pool di protocolli che il firewall può conoscere).<br />
+Può opzionalmente effettuare il mascheramento e la rinumerazione degli indirizzi IP interni e, nell'ambito dei firewall, normalmente ha anche funzioni di autenticazione.<br />
+Una sua caratteristica è che ogni applicazione richiede un proxy specifico, utilizzato per decifrare i pacchetti ed analizzarne il contenuto al fine di individuare complesse tipologie di attacco (è utilizzato per cercare dei pattern riconducibili ad attacchi conosciuti). Nello specifico, il firewall gira il pacchetto al proxy, il quale procede con l'analisi. Se il pacchetto ispezionato non presenta nessun contenuto sospetto, allora il proxy lo ammette nella rete.<br />
+Ovviamente l'utilizzo dei vari proxy rallenta notevolmente la gestione dei pacchetti in caso di applicazioni in tempo reale, consuma molte risorse e ha basse prestazioni.
+
+Un **Circuit Level**, invece, sfrutta sempre i proxy server ma non è application-aware. Si limita, quindi, ad avere funzioni stateful. Crea un circuito tra client e server a livello trasporto ma non ha comprensione dei dati in transito.
 
 ----------------------------------------------------------------
 
@@ -923,13 +931,15 @@ Le tabelle sono:
 
 ## IDS e IPS ##
 Un **Intrusion Detection System** (o **IDS**) è un componente del sistema in grado di rilevare e far scattare l'allarme quando avviene un'intrusione o un abuso delle politiche di rete da parte di utenti esterni.<br />
-Un IDS non attua alcuna misura per bloccare o rispondere ad eventuali minacce, bensì si cura solamente di avvertire il sistema della presenza di un attacco in corso e di tenerne traccia mediante un log. Sarà compito dell'amministratore di sistema analizzare i log e mettere in atto misure di sicurezza e recovery.<br />
+L'IDS permette di rivelare network scan, traffico sospetto o traffico che coinvolge host sospetti. Può, inoltre, rivelare anche attacchi che originano da un host compromesso della LAN di cui si fa parte.<br />
+Un IDS, tuttavia, non attua alcuna misura per bloccare o rispondere ad eventuali minacce, bensì si cura solamente di avvertire il sistema della presenza di un attacco in corso e di tenerne traccia mediante un log. Sarà compito dell'amministratore di sistema analizzare i log e mettere in atto misure di sicurezza e recovery.<br />
 Gli IDS possono essere:
 1) **passivi**: si limitano ad analizzare pattern di attacchi e a verificarne la presenza;
-2) **attivi**: sono in continua evoluzione in quanto sfruttano tecniche di Deep Learning per apprendere dalle situazioni e migliorare il servizio offerto.
+2) **attivi**: sono in continua evoluzione in quanto sfruttano tecniche di [[Intelligenza Artificiale#Deep Learning |Deep Learning]] per apprendere dalle situazioni e migliorare il servizio offerto.
 
-Gli IDS possono essere posizionati sugli host (**HIDS**) oppure in punti strategici della rete (**NIDS**). Un IDS è costituito da vari sensori che comunicano in continuazione con un **director**. Il direcotr si occupa di analizzare i dati dei sensori ed eventualmente lanciare un allarme.<br />
-Gli **Intrusion Prevention Systems** (o **IPS**) sono degli IDS che non si limitano a sollevare l'allarme. Sono, infatti, in grado di prendere alcune contromisure (sempre ad attacco in corso, a differenza di ciò che dice il nome non sono in grado di prevenire attacchi), tra cui modificare le regole del firewall per cercare, quantomeno, di bloccare l'attacco. Si tratta di un meccanismo che permette di limitare i danni.
+Gli IDS possono essere posizionati sugli host (**HIDS**) oppure in punti strategici della rete (**NIDS**). Un IDS è costituito da vari sensori che comunicano in continuazione con un **director**, il quale si occupa di analizzare i dati dei sensori ed eventualmente lanciare un allarme.
+
+Gli **Intrusion Prevention Systems** (o **IPS**) sono degli IDS uniti ad un firewall dinamico distribuito, i quali non si limitano a sollevare l'allarme. Sono, infatti, in grado di prendere alcune contromisure (sempre ad attacco in corso, a differenza di ciò che dice il nome non sono in grado di prevenire attacchi), tra cui modificare le regole del firewall per cercare, quantomeno, di bloccare l'attacco. Si tratta di un meccanismo che permette di limitare i danni.
 
 ----------------------------------------------------------------
 
