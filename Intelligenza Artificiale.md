@@ -689,15 +689,15 @@ dove $\mathbf{x}$ è il training pattern considerato, $\mathbf{r}^{old}$ è il v
 ----------------------------------------------------------------
 
 ### Hopfield network ###
-Precedentemente si è posto l'interesse solo ed esclusivamente sulle feed-forward network, ovvero network rappresentati da un grafo aciclico. Esistono, tuttavia, in letteratura alcuni esempi di **recurrent network**, ovvero network il cui grafo contiene dei cicli diretti. Uno dei più semplici modelli di recurrent network è quello degli **Hopfield network** (in seguito HN). Una prima differenza degli HN rispetto alle altre ANN risiede nel fatto che tutti i neuroni sono sia neuroni di input che di output. Non esistono, inoltre, neuroni nascosti. Ogni neurone è connesso ad ogni altro neurone (sono esclusi cappi, cioè neuroni connessi a sè stessi. Per ogni neurone i cappi vengono esclusi imponendo a $0$ il peso dell'input proveniente dal neurone stesso) e i pesi delle connessioni sono simmetrici. La funzione di input di ogni neurone è la somma pesata degli output degli altri neuroni:
+Precedentemente si è posto l'interesse solo ed esclusivamente sui feed-forward network, ovvero network rappresentati da un grafo aciclico. Esistono, tuttavia, in letteratura alcuni esempi di **recurrent network**, ovvero network il cui grafo contiene dei cicli diretti. Uno dei più semplici modelli di recurrent network è quello degli **Hopfield network** (in seguito HN). Una prima differenza degli HN rispetto alle altre ANN risiede nel fatto che tutti i neuroni sono sia neuroni di input che di output. Non esistono, inoltre, neuroni nascosti. Ogni neurone è connesso ad ogni altro neurone (sono esclusi cappi, cioè neuroni connessi a sè stessi. Per ogni neurone i cappi vengono esclusi imponendo a $0$ il peso dell'input proveniente dal neurone stesso) e i pesi delle connessioni sono simmetrici. La funzione di input di ogni neurone è la somma pesata degli output degli altri neuroni:
 
 $$f_{(net)}^u(\mathbf{w},\mathbf{i}) = \sum_{v \in U - \{u\}} w_{uv} out_v$$
 
 La funzione di attivazione, invece, è una threshold function:
 
 $$f_{(act)}^u(net_u,\theta_u) = \begin{cases}
-                1 \quad \text{se} \quad net_u >= \theta_u \\
-                -1 \quad \text{se} \quad net_u < \theta_u
+                1 \quad \quad \text{se} \quad net_u >= \theta_u \\
+                -1 \quad \text{ altrimenti}
                               \end{cases}$$
 
 Infine, la funzione di output è la funzione identità. E' possibile, quindi, rappresentare un HN con $n$ neuroni attraverso la sua matrice dei pesi, di dimensione $n \times n$:
