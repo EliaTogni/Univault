@@ -725,7 +725,7 @@ Le tecniche di network scanning le quali usano il SYN flag sono facilmente rilev
 **IPSEC** è un protocollo di livello network che mira a rendere sicuro l'utilizzo di IP.<br />
 Essendo un protocollo del terzo livello, permette di proteggere i dati di tutti i livelli superiori.<br />
 IPSEC vuole garantire:
-- **data origin autentication** / **connectionless data integrity**, cioè impedisce di inviare un IP datagram con un IP Address spoofato senza che il destinatario se ne accorga. I dati vengono firmati dal sender e verificati dal receiver.;
+- **data origin autentication**/**connectionless data integrity**, cioè impedisce di inviare un IP datagram con un IP Address spoofato senza che il destinatario se ne accorga. I dati vengono firmati dal sender e verificati dal receiver.;
 - **replay protection**, cioè impedisce di mandare nuovamente un pacchetto IP senza che il ricevente se ne accorga;
 - **confindentiality**, cioè impedisce di esaminare il contenuto di un IP Datagram.
 
@@ -734,32 +734,33 @@ Esso è costituito da un insieme di protocolli, che sono:
 2) **ESP (Encapsulating Security Payload)** per cifrare, autenticare e rendere sicuri i dati;
 3) **IKE (Internet Key Exchange)**: utilizzato per negoziare i parametri di sicurezza e stabilire chiavi di autenticazione.
 
-AH ed ESP sono interscambiabili, ma ultimamente ESP sta diventando lo standard grazie alle funzionalità a breve illustrate. IPSEC è in grado di garantire confidenzialità. integrità ed autenticazione sul traffico. Infatti, i dati vengono firmati dal sender e tale firma viene verificata dal ricevente.<br />
+IPSEC è in grado di garantire confidenzialità. integrità ed autenticazione sul traffico. Infatti, i dati vengono firmati dal sender e tale firma viene verificata dal ricevente.<br />
 IPSEC funziona secondo due modalità:
-1) **tunnel mode**: il contenuto di un pacchetto IP viene cifrato ed incapsulato in un altro pacchetto IP. Questa tecnica risulta utile quando il pacchetto deve transitare attraverso nodi che, per qualche ragione, non conoscono IPSEC;
-2) **transport mode**: viene aggiunto un header al pacchetto IP orginale (non viene creato un nuovo pacchetto, ma viene aggiunta un'estensione) ed il tutto viene cifrato.
+1) **tunnel mode**: il contenuto di un pacchetto IP viene cifrato ed incapsulato in un altro pacchetto IP. Questa tecnica risulta utile quando i **cryptographic endpoint** (le entità che generano o processano un IPSEC header) coincidono con i **communication endopoint** (mittente e destinatario di un pacchetto IP);
+2) **transport mode**: viene aggiunto un header al pacchetto IP orginale (non viene creato un nuovo pacchetto, ma viene aggiunta un'estensione) ed il tutto viene cifrato. Questa tecnica risulta utile quando almeno un cryptographic endpoint non è un communication endpoint dei pacchetti IP.
 
-**Authentication Header** fa in modo di garantire l' autenticazione dei pacchetti e la loro integrità.<br />
-Non è in grado, però, di fornire confidenzialità.<br />
+**Authentication Header** fa in modo di garantire l'autenticazione dei pacchetti e la loro integrità. Non è in grado, però, di fornire confidenzialità.<br />
 Sia in modalità tunnel che transport viene aggiunto al pacchetto l'header AH, il quale contiene, tra le varie informazioni, anche l'hash del pacchetto (per garantirne l'integrità). La differenza tra le due modalità è che, in tunnel mode, viene aggiunto anche l'header del nuovo pacchetto.
 
 **Encapsulating Security Payload** invece, oltre alle funzionalità di AH, garantisce anche la confidenzialità dei dati, utilizzando la cifratura simmetrica.<br />
 Sia in trasport mode che in tunnel mode, viene aggiunto al pacchetto l'header ESP ma, nella modalità tunnel, il pacchetto viene anche incapsulato in un nuovo pacchetto IP (e, quindi, viene aggiunto un nuovo header IP). In modalità tunnel, viene cifrato anche l'header IP originale.
 
 Le due parti in procinto di comunicare devono scambiarsi le credenziali prima di iniziare. Per farlo, fanno uso delle **SA (Security Associations)**, le quali sono una collezione di parametri richiesti per stabilire una sessione sicura. Queste collezioni sono unidirezionali (è necessario generarne, quindi, due) e sono costituite da tre parametri:
-1) **SPI (Security Parameter Index)**: definisce i parametri della connessione;
+1) **Security Parameter Index** (**SPI**): serve per ricercare tutti gli algoritmi ed i parametri necessari per processare i pacchetti;
 2) **IP Destination Address**;
 3) **Security Protocol Identifier**: AH o ESP.
 
-Le security associations sono salvate all'interno del **SAD** (**Security Association Database**) e sono indirizzabili mediante l'SPI.
+Con le SA ci sono due database:
+1) il **security policy database**, il quale contiene quali servizi di sicurezza sono forniti a quali pacchetti IP ed in che modo;
+2) il **security association database**, il quale memorizza i tipi di protocollo di sicurezza per ogni SA, con i relativi parametri. Una SA deve essere nel SADB di entrambe le parti.
 
-Per generare le SA, si ricorre al protocollo **IKE** (basato su ISAKMP). Questa procedura si sviluppa in due fasi:
+Per generare dinamicamente le SA, si ricorre al protocollo **IKE** (basato su ISAKMP). Questa procedura si sviluppa in due fasi:
 1) nella prima fase, i due host si scambiano le informazioni necessarie a derivare le chiavi richieste per stabilire una ISAKMP SA, la quale verrà utilizzata nella fase 2;
 2) nella seconda fase, vengono inviate le chiavi vere e proprie per far sì che vengano utilizzate nel trasferimento dati.
 
-La prima fase può essere realizzata con due approcci:
+La prima fase ha come goal lo stabilire un canale sicuro tra i due end point e  può essere realizzata con due approcci:
 1) **main mode**: è un approccio più lento ma più flessibile. Il sender invia una o più proposte all'altro peer. Il responder seleziona una proposta;
-2) **aggressive mode**: è più veloce ed utilizza meno pacchetti.
+2) **aggressive mode**: è più veloce ed utilizza $3$ pacchetti.
 
 La main mode protegge, però, l'identità dei peers mentre l'aggressive mode no.
 
@@ -796,10 +797,13 @@ L'anonimato può essere attaccato tramite:
 - **analisi attiva del traffico**, ovvero iniettare pacchetti o inserire una firma temporale sul flusso dei pacchetti;
 - **compromissione dei nodi di rete**. L'utente malintenzionato potrebbe compromettere alcuni router e, ovviamente, non sarebbe immediatamente chiaro quali nodi siano compromessi. Inoltre, l'attaccante potrebbe registrare passivamente il traffico.
 
+Il protocollo di **Onion Routing** cerca di proteggere l'anonimato da questi attacchi e si basa sulla costruzione incrementale di un circuito, hop by hop.
+Utilizza un'encryption onion-like, a strati. Il mittente negozia una chiave AES con ogni router, i messaggi sono divisi in celle di taglia uguale e ogni router è a conoscenza solo del proprio predecessore e del proprio successore. Solamente il router finale può vedere il messaggio, nonostante non sappia da chi provenga.
+
 ----------------------------------------------------------------
 
 ## VPN ##
-Una **Virtual Private Network** (**VPN**) è una rete virtuale privata nella quale è possibile costruire una LAN privata, facendo sì che i dispositivi ad essa connessi siano sparsi per il globo.<br />
+Una **Virtual Private Network** (**VPN**) è una rete virtuale privata che opera ai livelli 2 o 3 del modello OSI e nella quale è possibile costruire una LAN privata, facendo sì che i dispositivi ad essa connessi siano sparsi per il globo.<br />
 Questa tecnologia porta diversi vantaggi, tra cui:
 1) non vi è necessità di usare cavi/linee dedicate per connettere una sottorete;
 2) flessibilità nell'allargamento della rete;
@@ -819,6 +823,8 @@ Nelle VPN possono presentarsi 3 diverse topologie di rete:
 1) **Intranet**: definisce una rete in cui ha accesso solo l'azienda (e le relative filiali);
 2) **Extranet**: definisce una rete in cui hanno accesso l'azienda ed i suoi partner (ma solo a determinate risorse);
 3) **Remote Access**: permette l'accesso da remoto alla rete aziendale a prescinfere dal luogo fisico in cui un utente si trova.
+
+Il tunneling di una VPN permette ai mittenti di incapsulare i dati in pacchetti IP che occultano le infrastrutture di routing e switching di Internet al fine di garantire data security contro spettatori indesiderati o hacker.
 
 ----------------------------------------------------------------
 
