@@ -604,7 +604,15 @@ Le vulnerabilità di DNS sono causate dal fatto che sia gli utenti che gli host 
 ### Buffer Overflow ###
 **Buffer Overflow** è una delle maggiori vulnerabilità di sicurezza, causato spesso dalla capacità dell'attaccante remoto di eseguire del codice arbitrario. Questo tipo di attacchi è causato in genere da programmi che non controllano input non validi, tipicamente più lunghi di quanto previsto.<br />
 Nell'implementazione della memoria di un calcolatore, uno **Stack Frame** contiene i parametri della funzione, le sue variabili locali, i dati necessari per ripristinare il precedente stack frame, incluso l'indirizzo dell'istruzione successiva alla chiamata a funzione.
-Se un programma non controlla il limite degli array, allora è possibile che il programma riceva input particolare per sovrascrivere questo indirizzo di ritorno, impedendo così il ritorno al programma chiamante e permettendo all'attaccante di inserire istruzioni malevole.
+Se un programma non controlla il limite degli array, allora è possibile che il programma riceva un input particolare per sovrascrivere questo indirizzo di ritorno, impedendo così il ritorno al programma chiamante e permettendo all'attaccante di inserire istruzioni malevole.
+
+Per prevenire l'attacco si utilizza:
+1) una migliore ingegneria del software;
+2) evitare le funzioni pericolose;
+3) una scelta accurata del linguaggio di programmazione;
+4) alcuni strumenti del compilatore (Stack Guard);
+5) alcuni strumenti di analisi;
+6) la prevenzione dell'esecuzione.
 
 ----------------------------------------------------------------
 
@@ -964,7 +972,15 @@ I fattori chiave che contribuiscono ai rischi sono:
 ----------------------------------------------------------------
 
 ### Wired Equivalent Protocol (WEP)###
-Il protocollo **WEP** era la protezione primaria per il protocollo 802.11 ed era progettato per rendere il wireless sicuro come una rete cablata. E' stato abbandonato a causa della crittografia debole (chiavi non più lunghe di 40 bit), chiavi di crittografia statiche e mancanza di metodo di distribuzione delle chiavi.
+Il protocollo **WEP** era la protezione primaria per il protocollo 802.11 ed era progettato per rendere il wireless sicuro come una rete cablata. 
+
+Gli access point hanno due modi per avviare la comunicazione con un client:
+1) autenticazione con chiave condivisa;
+2) sistema aperto, nel quale è necessario fornire l'SSID corretto e che consente a chiunque di avviare una conversazione con l'AP;
+
+Il client inizia inviando una richiesta di associazione all'AP e quest'ultimo risponde con un testo di sfida (non crittografato). Il client, utilizzando la chiave WEP corretta, crittografa il testo e lo invia all'AP. Se il testo è stato adeguatamente crittografato, l'AP consente la comunicazione con il client.
+
+E' stato abbandonato a causa della crittografia debole (chiavi non più lunghe di 40 bit), chiavi di crittografia statiche e mancanza di metodo di distribuzione delle chiavi.
 
 ----------------------------------------------------------------
 
@@ -975,6 +991,9 @@ Protocollo che migliora WEP in diversi modi:
 - cambia dinamicamente le chiavi mentre la sessione continua;
 - metodo crittografico per verificare l'integrità;
 - contatore di frame per prevenire attacchi di reply.
+
+WPA include il protocollo **Temporal Key Integrity Protocol** (**TKIP**) ed i meccanismi 802.1x.
+La combinazione di questi due meccanismi fornisce la crittografia della chiave dinamica e l'autenticazione reciproca.
 
 ----------------------------------------------------------------
 
