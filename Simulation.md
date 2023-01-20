@@ -1,7 +1,7 @@
 ## Simulation ##
-Una **Simulation** (**Simulazione**), secondo l'Oxford Dictionary, è il prodotto della modellazione a computer, della rappresentazione formale di un evento, un processo o sistema complesso nel mondo reale, soprattutto al fine di studio.<br />
+Una **simulation** (**simulazione**), secondo l'Oxford Dictionary, è il prodotto della modellazione a computer, della rappresentazione formale di un evento, un processo o sistema complesso nel mondo reale, soprattutto al fine di studio.<br />
 
-Una simulazione è uno strumento economico per approssimare comportamenti della vita reale all'interno di un calcolatore, tramite l'implementazione di un modello di [[Analisi Descrittiva]], il quale può essere usato per testare una selezione di scenari.<br />
+Una simulazione è uno strumento economico per approssimare comportamenti della vita reale all'interno di un calcolatore, tramite l'implementazione di un modello di [[Analisi Descrittiva |analisi descrittiva]], il quale può essere usato per testare una selezione di scenari.<br />
 Sistemi complessi differenti richiedono capacità di modellazione differenti.<br />
 L'arte della costruzione del modello stesso può portare al modellatore un superiore livello di comprensione del sistema reale.<br />
 
@@ -11,11 +11,12 @@ Spesso la modellazione di un evento, nonostante le numerose semplificazioni e re
 
 I motivi dell'utilizzo di simulazioni sono molteplici:
 - si tratta di un valido strumento (e, spesso, molto economico) per approssimare un evento reale;
+- permette di testare scenari;
 - la costruzione del modello stesso può giovare al modellatore in termini di maggior comprensione del sistema che si sta modellando;
 - la possibilità di eseguire analisi _what-if_ su circuito (i.e. _cosa succederebbe se questo parametro variasse da questo valore a quest'altro?_);
 - la possibilità di visualizzare i risultati di metodi complessi.
 
-Al contrario, l'utilizzo di simulazioni non è la migliore opzione quando i problemi analitici hanno soluzioni in forme chiuse oppure le analisi _what-if_ hanno troppi parametri (meglio utilizzare un modello di [[Analisi Prescrittiva]]).<br />
+Al contrario, l'utilizzo di simulazioni non è la migliore opzione quando i problemi analitici hanno soluzioni in forme chiuse oppure le analisi _what-if_ hanno troppi parametri (meglio utilizzare un modello di [[Analisi Prescrittiva |analisi prescrittiva]]).<br />
 
 Ovviamente, l'ottenimento di una soluzione ottima per la simulazione non implica l'aver trovato una soluzione ottima in real-world.<br />
 Queste simulazioni rappresentano solo una porzione del mondo reale. In ogni sistema complesso esistono delle connessioni tra modello e realtà, le quali dovranno essere approssimate con un grado di precisione direttamente proporzionale alla rilevanza della connessione stessa.<br />
@@ -27,11 +28,11 @@ Una semplice simulazione è [[The Game of Life]].<br />
 --------------------------------------------------------------
 
 Esistono tre macro paradigmi per la costruzione ed implementazione di modelli descrittivi:
-- Discrete Events Simulation;
-- [[Agent-Based Simulation]];
-- [[System Dynamics Simulation]].
+- **discrete events simulation**;
+- **[[Agent-Based Simulation |agent-based simulation]]**;
+- **[[System Dynamics Simulation |system dynamics simulation]]**.
 
-Questi tre paradigmi fanno affidamento su modelli che comprendono componenti stocastiche.<br />
+Questi tre paradigmi fanno affidamento su modelli che comprendono componenti stocastiche al fine di approssimare connessioni al mondo esterno e parti del sistema interno che sono al centro del focus dell'analisi.<br />
 E' possibile effettuare una comparazione tra questi paradigmi in termini di diverse feature:
 
 ![[ComparisonSimulation.png]]
