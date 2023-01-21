@@ -21,11 +21,11 @@ Al contrario, l'utilizzo di simulazioni non è la migliore opzione quando i prob
 Ovviamente, l'ottenimento di una soluzione ottima per la simulazione non implica l'aver trovato una soluzione ottima in real-world.<br />
 Queste simulazioni rappresentano solo una porzione del mondo reale. In ogni sistema complesso esistono delle connessioni tra modello e realtà, le quali dovranno essere approssimate con un grado di precisione direttamente proporzionale alla rilevanza della connessione stessa.<br />
 
---------------------------------------------------------------
+-------------------------------------------------------------
 
 Una semplice simulazione è [[The Game of Life]].<br /> 
  
---------------------------------------------------------------
+-------------------------------------------------------------
 
 Esistono tre macro paradigmi per la costruzione ed implementazione di modelli descrittivi:
 - **discrete events simulation**;
@@ -54,9 +54,9 @@ Il risultato complessivo della modellazione descrittiva di un sistema è una var
 ![[PharmacistSimulation.png]]
 
 Il modello descrittivo che andrà costruito renderà più chiara la distribuzione della variabile aleatoria. 
-E' possibile costruire un modello deterministico di questo sistema? La risposta è sì, anche se il considerare ogni singola variabile (ogni individuo esistente, la condizione di salute di ogni individuo, ...) è di gran lunga più complesso di quanto sia possibile fare. Per questo motivano, si approssimano delle componenti del sistema.<br />
-Ci sono due punti cardine nei quali si approssimerà:
-- i **connettori**, i collegamenti tra il sistema ed il mondo esterno;
+E' possibile costruire un modello deterministico di questo sistema? La risposta è sì, anche se il considerare ogni singola variabile (ogni individuo esistente, la condizione di salute di ogni individuo, ...) è di gran lunga più complesso di quanto sia possibile fare. Per questo motivo, si approssimano delle componenti del sistema.<br />
+Ci sono due punti cardine i quali verranno approssimati:
+- i **connettori**, cioè i collegamenti tra il sistema ed il mondo esterno;
 - i **dettagli** del sistema stesso, i quali non sono cruciali per lo studio.
 
 Come si approssimano questi due punti? Con l'utilizzo di ulteriori, sebbene più semplici, variabili aleatorie.<br />
@@ -191,15 +191,14 @@ def pharmacy(daily_working_time, exp_prescriptions_day, exp_prescr_time, stdev_p
 pharmacy(480, 32, 10, 4)
 ```
 
---------------------------------------------------------------
+-------------------------------------------------------------
 
-### Ripasso di [[Statistica e Probabilità]] ###
+### Ripasso di [[Statistica e Probabilità |statistica e probabilità]] ###
 
----------------------------------------------------------------
+-------------------------------------------------------------
 
-###  Generazione di Numeri Randomici ###
-
-La definizione di **Random** descrive l'avvenimento di un evento dovuto al caso piuttosto che ad una causa deterministica.<br />
+###  Generazione di numeri randomici ###
+La definizione di **random** descrive l'avvenimento di un evento dovuto al caso piuttosto che ad una causa deterministica.<br />
 E' noto che i calcolatori sono puramente deterministici. Infatti, secondo Von Neumann, è impossibile produrre una cifra casuale usando metodi aritmetici.<br />
 Infatti, la produzione di numeri attraverso calcolatore appare randomica ma, in realtà, non lo è. Il calcolatore agisce in maniera puramente deterministica, nonostante l'apparenza mascheri questo modo di agire, facendo pensare ad un comportamente casuale della macchina.<br />
 
@@ -286,7 +285,7 @@ def ripley_test(v):
 	plt.scatter(v, w)	
 ```
 
----------------------------------------------------------------
+-------------------------------------------------------------
 
 Si osservi ora la forma di una funzione di densità di probabilità e di una funzione di ripartizione (o di distribuzione cumulativa) per una variabile aleatoria uniformemente distribuita.
 
@@ -313,7 +312,7 @@ def empirical_cdf(v, x):
 	return (count / len(v))
 ```
 
----------------------------------------------------------------
+-------------------------------------------------------------
 
 #### Shift Register Generator ####
 Un'alternativa per la generazione di numeri randomici è lo **Shift Register Generator**.<br />
@@ -322,7 +321,7 @@ Le proprietà attese di un generatore random sono:
 - il periodo del generatore deve essere più ampio possibile;
 - l'implementazione del generatore deve essere efficiente (ad esempio, la scelta di $m = 2^{31} -1$ permette di codificarlo su $32$ bit).
 
----------------------------------------------------------------
+-------------------------------------------------------------
 
 ## Metodo Monte Carlo ##
 Si vuole computare (numericamente) il valore di $\pi$.<br />
