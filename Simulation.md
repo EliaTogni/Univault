@@ -1,7 +1,7 @@
 ## Simulation ##
 Una **simulation** (**simulazione**), secondo l'Oxford Dictionary, è il prodotto della modellazione a computer, della rappresentazione formale di un evento, un processo o sistema complesso nel mondo reale, soprattutto al fine di studio.<br />
 
-Una simulazione è uno strumento economico per approssimare comportamenti della vita reale all'interno di un calcolatore, tramite l'implementazione di un modello di [[Analisi Descrittiva |analisi descrittiva]], il quale può essere usato per testare una selezione di scenari.<br />
+Una simulazione è uno strumento economico per approssimare comportamenti della vita reale all'interno di un calcolatore, tramite l'implementazione di un [[Modello#Modello descrittivo |modello di analisi descrittiva]], il quale può essere usato per testare una selezione di scenari.<br />
 Sistemi complessi differenti richiedono capacità di modellazione differenti.<br />
 L'arte della costruzione del modello stesso può portare al modellatore un superiore livello di comprensione del sistema reale.<br />
 
@@ -16,7 +16,7 @@ I motivi dell'utilizzo di simulazioni sono molteplici:
 - la possibilità di eseguire analisi _what-if_ su circuito (i.e. _cosa succederebbe se questo parametro variasse da questo valore a quest'altro?_);
 - la possibilità di visualizzare i risultati di metodi complessi.
 
-Al contrario, l'utilizzo di simulazioni non è la migliore opzione quando i problemi analitici hanno soluzioni in forme chiuse oppure le analisi _what-if_ hanno troppi parametri (meglio utilizzare un modello di [[Analisi Prescrittiva |analisi prescrittiva]]).<br />
+Al contrario, l'utilizzo di simulazioni non è la migliore opzione quando i problemi analitici hanno soluzioni in forme chiuse oppure le analisi _what-if_ hanno troppi parametri (meglio utilizzare un [[Modello#Modello prescrittivo |modello di analisi prescrittiva]]).<br />
 
 Ovviamente, l'ottenimento di una soluzione ottima per la simulazione non implica l'aver trovato una soluzione ottima in real-world.<br />
 Queste simulazioni rappresentano solo una porzione del mondo reale. In ogni sistema complesso esistono delle connessioni tra modello e realtà, le quali dovranno essere approssimate con un grado di precisione direttamente proporzionale alla rilevanza della connessione stessa.<br />
@@ -40,13 +40,14 @@ E' possibile effettuare una comparazione tra questi paradigmi in termini di dive
 --------------------------------------------------------------
 
 ### Discrete Event Simulation ###
-Nelle simulazioni di tipo **Discrete Events**, il sistema procede per step durante il tempo di esecuzione e gli eventi accadono solamente durante questi precisi momenti.<br />
+Nelle simulazioni di tipo **discrete events**, il sistema procede per step durante il tempo di esecuzione e gli eventi accadono solamente durante questi precisi momenti.<br />
+
 
 Si consideri la seguente funzione:
 $$y = f(x)$$
 Dal punto di vista del modellatore, $x$ rappresenta i dati in input mentre $y$ è un'astrazione del processo modellato da $f()$.<br />
-Se $f()$ è solamente un'approssimazione del sistema reale, quando si applicherà $f()$ al parametro $x$, si otterrà una determinata osservazione, un determinato valore. Riapplicando la funzione, è plausibile ottenere un risultato differente. Per questo motivo, in un mondo deterministico, si definiscono $x$ **Variabile Indipendente** e $y$ **Variabile Dipendente**.
-Il risultato che si ottiene in $y$ è stocastico, quindi $y$ è una **Variabile Aleatoria** ed il risultato complessivo della modellazione descrittiva di un sistema è una variabile aleatoria più complessa.<br />
+Se $f()$ è solamente un'approssimazione del sistema reale, quando si applicherà $f()$ al parametro $x$, si otterrà una determinata osservazione, un determinato valore. Riapplicando la funzione, è plausibile ottenere un risultato differente. Per questo motivo, in un mondo deterministico, si definirebbero $x$ **variabile indipendente** e $y$ **variabile dipendente** mentre il risultato che si ottiene in $y$ è stocastico, quindi $y$ è una **variabile aleatoria**.
+Il risultato complessivo della modellazione descrittiva di un sistema è una variabile aleatoria più complessa.<br />
 
 
 ### Pharmacist (Ex. from Sheldon M. Ross "Simulation")###
