@@ -5,7 +5,7 @@ Un **modello** è una rappresentazione semplificata di una realtà complessa o d
 
 ## Classificazione dei modelli ##
 
-La classificazione dei modelli può essere fatta rispetto all'utilizzo, nel senso che la rappresentazione di una particolare realtà può essere diversa a seconda delle varie finalità;
+La classificazione dei modelli può essere fatta rispetto all'utilizzo, nel senso che la rappresentazione di una particolare realtà può essere diversa a seconda delle varie finalità:
 
 ### Modello descrittivo ###
 L'**analisi descrittiva** sintetizza o descrive i dati grezzi e crea un risultato interpretabile dagli esseri umani.<br />

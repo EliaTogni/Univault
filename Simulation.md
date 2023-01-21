@@ -332,7 +332,9 @@ immagine cerchio 1.27.30
 
 Si fissi il raggio del cerchio $r = 1$. Ora è solo necessario stimare l'area del quarto di cerchio per poter calcolare $\pi$.<br />
 L'approccio Montecarlo consiste nel riempire il quadrato di punti. Alcuni di essi cadranno all'interno dell'area del cerchio, altri al di fuori (ma sempre all'interno dell'area del quadrato).<br />
-Si chiami l'area del quarto di cerchio $B$. E' possibile stimare $B$ dal numero di punti caduti all'interno di $B$ diviso il numero di punti totali generati: $$B = \frac{\text{numero di punti interni a } B}{\text{numero di punti totali}}$$
+Si chiami l'area del quarto di cerchio $B$. E' possibile stimare $B$ dal numero di punti caduti all'interno di $B$ diviso il numero di punti totali generati:
+
+$$B = \frac{\text{numero di punti interni a } B}{\text{numero di punti totali}}$$
 Il codice si basa sul generare coppie di valori, ciascuno dei quali estratto da una distribuzione uniforme.<br />
 Per scoprire se i punti così ottenuti ricadono all'interno dell'area del quarto di cerchio, basta porre la distanza euclidea del punto dall'origine del quadrante minore di $1$.
 
