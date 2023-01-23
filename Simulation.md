@@ -197,14 +197,14 @@ pharmacy(480, 32, 10, 4)
 
 -------------------------------------------------------------
 
-###  Generazione di numeri randomici ###
+### Generazione di numeri randomici ###
 La definizione di **random** descrive l'avvenimento di un evento dovuto al caso piuttosto che ad una causa deterministica.<br />
 E' noto che i calcolatori sono puramente deterministici. Infatti, secondo Von Neumann, è impossibile produrre una cifra casuale usando metodi aritmetici.<br />
 Infatti, la produzione di numeri attraverso calcolatore appare randomica ma, in realtà, non lo è. Il calcolatore agisce in maniera puramente deterministica, nonostante l'apparenza mascheri questo modo di agire, facendo pensare ad un comportamente casuale della macchina.<br />
 
 Si distingue, quindi, in due categorie:
-- **Randomicità genuina**, cioè quella che è possibile osservare nel mondo;
-- **Randomicità artificiale**, o **pseudorandomicità**, cioè quella che è possibile simulare tramite computer.
+- **randomicità genuina**, cioè quella che è possibile osservare nel mondo;
+- **randomicità artificiale**, o **pseudorandomicità**, cioè quella che è possibile simulare tramite computer.
 
 La prima idea di algoritmi generatori di numeri pseudorandomici è il **Von Neumann's Middle Square Generator**.<br />
 L'algoritmo suggerisce di:
@@ -235,7 +235,7 @@ Questo algoritmo ha una debolezza (oltre al fatto che la scelta del seed è dete
 
 Inoltre, può accadere che i numeri generati dall'algoritmo inizino a ripetersi ciclicamente.<br />
 
-La seconda idea di algoritmi generatori è il **Congruential Generator**.<br />
+La seconda idea di algoritmi generatori è il **congruential generator**.<br />
 L'algoritmo suggerisce di:
 - scegliere tre parametri, $a$, $c$ e $m$, e un seed $s$.<br />
 - calcolare $x_{0} = s; \qquad x_{i+1} = (a \cdot x_{i} + c) \text{ mod } m$
@@ -274,8 +274,8 @@ Avere un periodo ampio non è abbastanza per ottenere un generatore pseudo rando
 La **predicibilità** è, quindi, un ulteriore fattore che determina la bontà del generatore. Meno un generatore è predicibile da parte dell'utente, meglio è.<br />
 E' possibile progettare un test che permetta di valutare la predicibilità di un generatore? 
 - **Ripley Test**: questo test considera il vettore di valori generati e il vettore ottenuto shiftando il precedente di una posizione. Per valutare la bontà, si può considerare la correlazione tra gli elementi dei due vettori nella stessa posizione ma questa analisi non è in grado di cogliere eventuali legami tra i due vettori. Si può quindi procedere a verificare la correlazione tra il vettore iniziale con tutti i possibili vettori ottenuti dagli shift del vettore iniziale.
-- **Funzione di distribuzione cumulativa empirica** (su sample $r$):<br />$ECDF(x) = \text{ }$ numero di elementi di $r$ aventi valore $\leq x$.
-  Il **Teorema di Glivenko-Cantelli** sostiene che se $\hat{F}$ è stata calcolata usando un sample di dimensione $n$ estratto da una distribuzione la cui funzione di ripartizione è $F$, $\hat{F}$ converge in probabilità a $F$ con l'aumentare di $n$.
+- **funzione di distribuzione cumulativa empirica** (su sample $r$):<br />$ECDF(x) = \text{ }$ numero di elementi di $r$ aventi valore $\leq x$.
+  Il **teorema di Glivenko-Cantelli** sostiene che se $\hat{F}$ è stata calcolata usando un sample di dimensione $n$ estratto da una distribuzione la cui funzione di ripartizione è $F$, $\hat{F}$ converge in probabilità a $F$ con l'aumentare di $n$.
 
 
 ```python

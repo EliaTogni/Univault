@@ -1,5 +1,5 @@
 ### Teoria degli Insiemi ###
-Si definisce $\Omega$ l'**Insieme Universo**, anche chiamato **Spazio Campionario**, ossia l'insieme che contiene tutti gli elementi possibili.<br />
+Si definisce $\Omega$ l'**insieme universo**, anche chiamato **spazio campionario**, ossia l'insieme che contiene tutti gli elementi possibili.<br />
 Si dirà che $w \in \Omega$ quando l'elemento $w$ appartiene all'insieme $\Omega$. <br />
 Si definisce $E \subseteq \Omega$ quando $E$ è un sottoinsieme dell'insieme $\Omega$.<br />
 Si definisce insieme $\emptyset$ l'_insieme vuoto_ e con $\{\}$ l'insieme privo di elementi.<br />
@@ -32,14 +32,14 @@ La probabilità di un esito non è una proprietà oggettiva, bensì la precisazi
 
 --------------------------------------------------------------
 
-L’insieme universo $\Omega$ viene spesso chiamato anche “spazio campionario” oppure “spazio degli eventi”:<br /> in entrambi i casi essi identificano l’insieme di tutti gli esiti di un esperimento casuale.<br />Si definisce “evento elementare” un elemento $w$ appartenente all’universo $\Omega$.<br />Si definisce banalmente _evento_ un generico sottoinsieme dello spazio degli eventi $E \subset \Omega$.<br />L’evento può essere interpretato come un sottoinsieme contenente eventi elementari. Gli insiemi composti da un solo elemento sono detti _insiemi singoletto_. Tra tutti gli insiemi, ve ne sono due di menzione particolare:
+L’insieme universo $\Omega$ viene spesso chiamato anche **spazio degli eventi**:<br /> Esso identifica l’insieme di tutti gli esiti di un esperimento casuale.<br />Si definisce **evento elementare** un elemento $w$ appartenente all’universo $\Omega$.<br />Si definisce, banalmente, **evento** un generico sottoinsieme dello spazio degli eventi $E \subset \Omega$.<br />L’evento può essere interpretato come un sottoinsieme contenente eventi elementari. Gli insiemi composti da un solo elemento sono detti **insiemi singoletto**. Tra tutti gli insiemi, ve ne sono due di menzione particolare:
 - $\{\}$: l'insieme di partenza, si verifica sempre;
 - $\emptyset$: l'insieme vuoto, non si verifica mai.
 
 --------------------------------------------------------------
 
 #### Algebra degli Eventi ###
-Si definisce _Algebra degli Eventi_ l'insieme
+Si definisce **Algebra degli Eventi** l'insieme
 
 $$A = \{E_{i} \subseteq \Omega \}$$
 
@@ -51,13 +51,13 @@ Per essere tale, è necessario che vengano soddisfatte le seguenti proprietà:
 
 --------------------------------------------------------------
 
-#### Funzione di Probabilità ####
+#### Funzione di probabilità ####
 $$P :A \rightarrow [0, 1]$$
 
 **Dominio**: generica algebra $A$.<br />
 **Codominio**: tutti i valori dell'intervallo chiuso $[0, 1]$.<br />
 
-Per ogni evento $A$, la **Probabilità** di $A$, o **$P(A)$**, è un valore numerico tale che:
+Per ogni evento $A$, la **probabilità** di $A$, o **$P(A)$**, è un valore numerico tale che:
 - $0 \leq P(A) \leq 1$;
 - $P(\Omega) = 1$;
 - per una sequenza di eventi mutualmente esclusivi $A_{1}, A_{2}, ..., A_{n}$ $$P(\bigcup_{i=1}^{n} A_{i}) = \sum_{i = 1}^{n} P(A_{i}) $$
@@ -85,7 +85,7 @@ Quindi, nel caso in cui $E$ ed $F$ siano due eventi indipendenti, $$P(E \vert F)
 --------------------------------------------------------------
 
 #### Variabile Aleatoria ####
-Si definisce _variabile aleatoria_ una qualsiasi variabile:
+Si definisce **variabile aleatoria** una qualsiasi variabile:
 $$X: \Omega \rightarrow R$$
 
 dove con $X = \alpha$ si indica l'evento:
@@ -97,12 +97,12 @@ Per semplicità, anzichè scrivere $P(\{X = \alpha\} )$, si scriverà $P(X = \al
 --------------------------------------------------------------
 
 #### Variabile Aleatoria Discreta ####
-Le variabili aleatorie _discrete_ assumono un insieme numerabile di specificazioni.
+Le variabili aleatorie **discrete** assumono un insieme numerabile di specificazioni.
 
 --------------------------------------------------------------
 
 #### Funzione di Massa di Probabilità ####
-Si definisce _funzione di massa di probabilità_ la funzione:
+Si definisce **funzione di massa di probabilità** la funzione:
 
 $$p_X : R \rightarrow [0, 1]$$
 $$\forall x \in R \qquad p_X(x) = P(X = x)$$
@@ -116,7 +116,7 @@ $$F_X(x) = P(X \leq x)$$
 
 E' possibile definire la funzione di ripartizione in funzione di quella di massa di probabilità e viceversa:
 
-$$F_X(x) = P(X \leq x) = \sum_{a \leq X}P(X = a) = \sum_{a \leq X}p_X(a)$$
+$$F_X(x) = P(X \leq x) = \sum_{a \leq x}P(X = a) = \sum_{a \leq x}p_X(a)$$
 
 --------------------------------------------------------------
 
@@ -125,14 +125,21 @@ $$F_X(x) = P(X \leq x) = \sum_{a \leq X}P(X = a) = \sum_{a \leq X}p_X(a)$$
 Data la variabile aleatoria discreta $X$ su $\{x_1, x_2, ..., x_n\}$ e $p_X$ come funzione di massa di probabilità, si definisce _valore atteso_ la quantità
 
 $$E[X] = \sum_{i}x_{i}p(x_{i}) = \sum_{i}x_{i}P(X = x_{i})$$
-Il valore atteso gode di diverse proprietà, tra cui la **linearità**, infatti $E[aX + b] = aE[X] +b$ e $E[\sum_{i = 1}^{k}X_{i}] = \sum_{i = 1}^{k}E[X_{i}]$.<br />
-La dimostrazione della prima proprietà si deriva dalla definizione di valore atteso $$E[aX + b] = \sum_{i = 1}^{n}(ax_{i}+b)p(x_{i}) = \sum_{i = 1}^{n}ax_{i}p(x_{i}) + \sum_{i=1}^{n}bp(x_{i}) =
+Il valore atteso gode di diverse proprietà, tra cui la **linearità**, infatti
+
+$$E[aX + b] = aE[X] +b$ e $E[\sum_{i = 1}^{k}X_{i}] = \sum_{i = 1}^{k}E[X_{i}]$$
+
+La dimostrazione della prima proprietà si deriva dalla definizione di valore atteso
+
+$$E[aX + b] = \sum_{i = 1}^{n}(ax_{i}+b)p(x_{i}) = \sum_{i = 1}^{n}ax_{i}p(x_{i}) + \sum_{i=1}^{n}bp(x_{i}) =
 $$$$ = aE[X] + b\cdot 1 = aE[X] + b$$
 La dimostrazione della seconda proprietà si deriva anch'essa dalla definizione di valore atteso:
+
 $$E[X_{1} + X_{2}] = \sum_{i =1}^{n}\sum_{j = 1}^{m}(x_{1}^{i} + x_{2}^{j})p_{1}^{i}p_{2}^{j} =$$
 $$= \sum_{i}\sum_{j} x_{1}^{i}p_{1}^{i}p_{2}^{j} + \sum_{i}\sum_{j} x_{2}^{j}p_{1}^{i}p_{2}^{j} = $$
 $$= \sum_{i}x_{1}^{i}p_{1}^{i}\sum_{j}p_{2}^{j} + \sum_{j}x_{2}^{j}p_{2}^{j}\sum_{i}p_{1}^{i} = = \sum_{i}x_{1}^{i}p_{1}^{i}\cdot 1 + \sum_{j}x_{2}^{j}p_{2}^{j}\cdot 1 =$$
 $$= E[X_{1}] + E[X_{2}]$$
+
 La dimostrazione vale anche per $k>2$.
 
 ---------------------------------------------------------------
