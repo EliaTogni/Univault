@@ -1,4 +1,4 @@
-## Sicurezza ##
+## Sicurezza
 Con **sicurezza** si intende il raggiungere un obiettivo in presenza di un avversario, il prevenire un comportamento non desiderato.<br />
 Un sistema sicuro è un sistema il quale assolve uno specifico compito, nonostante l'avversario voglia impedirlo o stia operando in qualsiasi modo per impedirlo.<br />
 La sicurezza è lo stato in cui il rischio è inferiore al massimo rischio accettabile, dove il termine rischio esprime la possibilità che un attacco causi un danno ad un'organizzazione. Il rischio viene valutato usando la quantità di danno e la probabilità che esso avvenga.<br />
@@ -9,7 +9,7 @@ Un **vettore di attacco** è un metodo o percorso attraverso il quale si concret
 
 ----------------------------------------------------------------
 
-## Cybersecurity ##
+## Cybersecurity
 Con **cybersecurity** si definisce la protezione delle informazioni archiviate, trasmesse ed elaborate in un sistema di rete di computer, altri dispositivi digitali e dispositivi di rete e linee di trasmissione, compresa internet.
 - la protezione comprende riservatezza, confidenzialità, integrità, disponibilità, autenticità e responsabilità;
 - i metodi di protezione includono politiche e procedure organizzative, nonchè mezzi tecnici come crittografia e protocolli di comunicazione sicuri.
@@ -24,55 +24,55 @@ Fondamentale la distinzione tra **attacchi passivi** ed **attacchi attivi**. Un 
 
 ----------------------------------------------------------------
 
-## Principi fondamentali della sicurezza informatica ##
-### Principio di Fail-Safe Defaults ###
+## Principi fondamentali della sicurezza informatica
+### Principio di Fail-Safe Defaults
 A meno che un soggetto non abbia accesso esplicito ad un oggetto, dovrebbe essergli negato l'accesso a quell'oggetto. Inoltre, se il soggetto non è in grado di completare la sua azione/attività, dovrebbe annullare le modifiche apportate nello stato sicuro del sistema prima che termini.
 
 ----------------------------------------------------------------
 
-### Principio dell'Economy of Mechanism ###
+### Principio dell'Economy of Mechanism
 I meccanismi di sicurezza dovrebbero essere i più semplici possibili.
 
 ----------------------------------------------------------------
 
-### Principio del Complete Mediation ###
+### Principio del Complete Mediation
 Tutti gli accessi agli oggetti devono essere controllati per assicurarsi che siano consentiti.
 
 ----------------------------------------------------------------
 
-### Principio dell'Open Design ###
+### Principio dell'Open Design
 La sicurezza di un meccanismo non dovrebbe dipendere dalla segretezza della sua progettazione o attuazione.
 
 ----------------------------------------------------------------
 
-### Principio della Separation of Privilege ###
+### Principio della Separation of Privilege
 Un sistema non dovrebbe concedere l'autorizzazione in base ad una singola condizione.
 
 ----------------------------------------------------------------
 
-### Principio del Least privileges ###
+### Principio del Least privileges 
 Ad un soggetto dobrebbero essere concessi solo i privilegi di cui ha bisogno al fine di completare il suo compito.
 
 ----------------------------------------------------------------
 
-## Malware ##
+## Malware
 Con **malware** si definisce un programma che viene inserito in un sistema, solitamente di nascosto, con l'intento di compromettere la riservatezza, l'integrità o la disponibilità di dati, delle applicazioni o del sistema della vittima, oppure con l'intento di infastidire o disturbare la vittima.
 
 ----------------------------------------------------------------
 
-### Trojan Horse ###
+### Trojan Horse
 Programma con un primo effetto evidente (e aspettato) ed un secondo effetto nascosto, il quale viola la politica di sicurezza. L'utente deve essere indotto all'esecuzione di un Trojan horse.
 
 Alcuni esempi sono:
-1) **The AIDS Trojan**, il quale risiedeva su floppy disks contenenti importanti informazioni sulla malattia dell'AIDS. Questo trojan crittografava il disco rigido dell'utente e offriva la possibilità di acquistare la password per decifrare i dati;
+1) **The AIDS Trojan**, il quale risiedeva su floppy disk contenenti importanti informazioni sulla malattia dell'AIDS. Questo trojan crittografava il disco rigido dell'utente e offriva la possibilità di acquistare la password per decifrare i dati;
 2) **Mocmex**, trojan il quale risiedeva in diverse cornici per foto digitali cinesi. Ogniqualvolta un frame infetto veniva collegato ad una macchina Windows, il malware veniva copiato dal frame al computer ed iniziava a racogliere e trasmettere le password.
 
 ----------------------------------------------------------------
 
-### Virus ###
+### Virus
 Un **virus** informatico è un codice informatico che può replicarsi, modificando altri file o programmi per inserire codice in grado di essere replicato ulteriormente.<br />
 La proprietà di autoreplicazione è ciò che distingue i virus informatici da altri tipi di malware. Un'altra proprietà di un virus risiede nel fatto che la replica del virus stesso richieda un certo tipo di assistenza da parte dell'utente, come ad esempio facendo clic su un allegato e-mail o condividendo un'unità USB.<br />
-Quando il programma viene richiamato, il controllo viene immediatamente trasferito al blocco di azioni principale contenente il codice del virus.<br 7>
+Quando il programma viene richiamato, il controllo viene immediatamente trasferito al blocco di azioni principale, il quale contiene il codice del virus.
 Il virus altera, quindi, il codice normale sostituendolo con una sua versione infetta senza però compiere azioni evidenti, cercando di rimanere nell'ombra.<br />
 Generalmente, i virus sono composti da tre parti:
 1) **meccanismo di infezione**;
@@ -85,54 +85,66 @@ Inoltre, i virus attraversano quattro fasi distinte:
 3) **triggering**;
 4) **execution**.
 
-I vettori di infezione per i virus sono tipicamente boot sector (come USB drive), file eseguibili, macro file e multipartiti.
+I vettori di infezione per i virus sono tipicamente **boot sector** (come, ad esempio, USB drive), file eseguibili, macro file e multipartiti.<br />
+Il settore di boot è la parte di un disco utilizzata per avviare il sistema o montare un disco. Il codice in quel settore viene eseguito quando il sistema vede il disco per la prima volta.
 
 ----------------------------------------------------------------
 
-#### Macro Virus ####
+#### Macro Virus
 Virus che si attacca a documenti e utilizza le capacità di programmazione macro dell'applicazione del documento per eseguire codice e propagarsi.
 
 ----------------------------------------------------------------
 
-#### Compression Virus ####
+#### Compression Virus
 Virus che comprime il file eseguibile, in modo tale che sia la versione infetta che quella non infetta abbiano la stessa lunghezza.
 
 ----------------------------------------------------------------
 
 E' possibile classificare i virus in base alla strategia attuata per non rivelarsi:
 
-#### Encrypted Virus ####
+#### Encrypted Virus
 Una parte del virus crea una chiave di crittografia casuale e crittografa il resto del virus. La chiave viene, quindi, memorizzata con il virus. Quando viene richiamato un programma infetto, il virus utilizza la chiave casuale memorizzata per decrittografare la parte di sè cifrata. Quando il virus si replica, viene selezionata una chiave casuale diversa, impendendo così di avere un modello di bit costante da osservare.
 
 ----------------------------------------------------------------
 
-#### Stealth Virus ####
-Virus progettato per nascondersi dal rilevamento da parte del software antivirus.
-Può utilizzare tecniche di mutazione del codice, compressione o rootkit.
+#### Stealth Virus
+Virus progettato per nascondersi dal rilevamento da parte del software antivirus. Può utilizzare tecniche di mutazione del codice, compressione o rootkit.
 
 ----------------------------------------------------------------
 
-#### Polymorphic Virus ####
-Virus che, durante la replica, crea copie funzionalmente equivalenti ma che hanno modelli di bit nettamente diversi.
+#### Polymorphic Virus
+Virus che, durante la replica, crea copie funzionalmente equivalenti ma che hanno modelli di bit nettamente diversi.<br />
+Questi virus tendono a mantenere la loro funzionalità maligna, come la capacità di diffondersi o di danneggiare il sistema, anche dopo aver modificato la propria struttura.
 
 ----------------------------------------------------------------
 
-#### Metamorphic Virus ####
-Virus il quale si riscrive completamente ad ogni iterazione, utilizzando più tecniche di trasformazione ed aumentando così la difficoltà di rilevamento.
+#### Metamorphic Virus
+Virus il quale si riscrive completamente ad ogni iterazione, utilizzando più tecniche di trasformazione ed aumentando così la difficoltà di rilevamento.<br />
+Questi virus possono inoltre avere funzionalità differenti nelle nuove varianti generate.
 
 ----------------------------------------------------------------
 
-### Trapdoor ###
+#### Contromisure
+Alcune contromisure contro i virus sono:
+1) Lo **static pattern matching**, il quale consiste nell'analizzare il codice di un programma alla ricerca di una firma specifica, che è una stringa di codice identificativa del virus. Questa tecnica può essere utile per rilevare virus noti, ma non è efficace contro i virus polimorfici, poiché questi cambiano la loro firma ad ogni infezione rendendo difficile il rilevamento;  
+2) Il **pattern matching during emulation**, il quale consiste nel far eseguire un programma sospetto in un ambiente simulato e osservare il suo comportamento alla ricerca di segni di infezione. Questa tecnica può essere più efficace contro i virus polimorfici poiché essi tendono a mantenere la loro funzionalità maligna anche se cambiano la loro forma;
+3) la **suspicious behavior detection**, la quale consiste nel rilevare comportamenti anomali del sistema che possono indicare la presenza di un malware, indipendentemente dalla sua firma o forma. Questa tecnica può essere efficace contro entrambi i virus polimorfici e metamorfici, poiché essi tendono a causare effetti collaterali nel sistema che possono essere rilevati.
+
+In generale, combinare più tecniche di rilevamento, come ad esempio l'utilizzo di una combinazione di pattern matching durante l'emulazione e il rilevamento di comportamenti sospetti, può aumentare l'efficacia nel rilevamento di virus polimorfici e metamorfici.
+
+-------------------------------------------------------------
+
+### Trapdoor
 Si tratta di un secret entry point in un sistema, il quale utilizza uno specifico user identifier o password che supera le normali procedure di sicurezza.
 
 ----------------------------------------------------------------
 
-### Logic Bomb ###
+### Logic Bomb
 Minaccia la quale si attiva quando specifiche condizioni vengono soddisfatte, come ad esempio la presenza o assenza di un file, e, quando scatta, danneggia il sistema modificando o cancellando file o dischi.
 
 ----------------------------------------------------------------
 
-### Zero Day Exploit ###
+### Zero Day Exploit
 Si osservi la sequenza di eventi che portano ad un exploit:
 - un attaccante scopre una vulnerabilità prima non conosciuta;
 - il manufacturer diventa conscio della vulnerabilità;
@@ -145,7 +157,7 @@ Un attacco prima della disponibilità della contromisura è chiamato **Zero Day 
 
 ----------------------------------------------------------------
 
-### Worm ###
+### Worm
 Malware che viene eseguito in maniera indipendente in quanto non richiede un programma host. Un worm propaga una versione completamente funzionante su una nuova macchina, portando con sè un payload che esegue dei task nascosti, come backdoors, spam relays o DDoS agents.
 
 Le fasi di azione di un worm sono:
@@ -164,17 +176,17 @@ Un worm attuale può essere polimorfico, cioè ogni copia del worm ha un nuovo c
 
 ----------------------------------------------------------------
 
-### Drive-by-Downloads ###
+### Drive-by-Downloads
 Malware che sfruttano dei bug nelle applicazioni utente per installare ulteriori malware. Questo malware attende che utenti ignari visitino la pagina Web dannosa per diffondersi sui loro sistemi.  
 
 ----------------------------------------------------------------
 
-### Clickjacking ###
+### Clickjacking
 L'attaccante raccoglie i click di un utente infetto e lo costringe a fare una varietà di azioni, come indirizzarlo a siti Web che potrebbero contenere codice dannoso. Questa tecnica utilizza più livelli trasparenti o opachi per indurre un utente a fare click su un pulsante o link ad un'altra pagina.
 
 ----------------------------------------------------------------
 
-### Zombie e Botnet ###
+### Zombie e Botnet
 Malware che prende il possesso segretamente di un altro computer in rete, sfruttando i difetti del software.<br />
 Assembla poi i computer compromessi in una rete di zombie o botnet, cioè una raccolta di macchine compromesse che eseguono programmi, generalmente denominati worm, trojan horses o backdoors, sotto un infrastruttura di comando e controllo comune.
 
@@ -182,7 +194,7 @@ Questa rete viene usata per lanciare indirettamente attacchi; ad esempio, DDos, 
 
 ----------------------------------------------------------------
 
-### Rootkit ###
+### Rootkit
 Un **rootkit** è un set di programmi installati su un sistema al fine di mantenere nascosto l'accesso con privilegi di amministratore, nascondendo le prove della sua presenza. Questo tipo di malware altera le funzionalità standard dell'host in maniera dannosa e furtiva. In questo modo, l'attaccante ha il completo controllo del sistema.
 
 I rootkit possono essere classificati in:
@@ -195,19 +207,19 @@ I rootkit possono essere classificati in:
 
 ----------------------------------------------------------------
 
-### Spyware ###
+### Spyware
 Malware che colleziona volta per volta piccoli pezzi di informazioni riguardanti l'utente, ovviamente senza i permessi necessari. Può anche reindirizzare la navigazione e visualizzare gli annunci.<br />
 Esempi di spyware sono i keyloggers.
 
 -----------------------------------------------------------------
 
 
-### Scareware ###
+### Scareware
 Software con payloads malevoli, utilizzati da ingegneri sociali per causare shock, ansia o convincere la vittima dell'esistenza di una minaccia.
 
 ----------------------------------------------------------------
 
-### Ransomware ###
+### Ransomware
 Malware che tiene in ostaggio un computer o i dati al suo interno, richiedendo un riscatto per riottenerne possesso.
 Questo malware:
 - disabilita i servizi essenziali di un sistema o locka il display all'avvio del sistema;
@@ -219,7 +231,7 @@ La vittima deve:
 
 ----------------------------------------------------------------
 
-### Contromisure per i malware ###
+### Contromisure per i malware
 Le contromisuro che dovrebbero essere adottate al fine di mitigare le minacce sono:
 - **rilevamento**: l'accertarsi dell'esistenza della minaccia e rilevare il malware;
 - **identificazione**: individuare lo specifico malware responsabile dell'infezione del sistema;
@@ -229,7 +241,7 @@ Un metodo per rilevare ed analizzare i malware prevede l'esecuzione di codici po
 
 ----------------------------------------------------------------
 
-## Politiche di sicurezza e modelli ##
+## Politiche di sicurezza e modelli
 Una **Politica di sicurezza** è un insieme di regole e linee guida definite in linguaggio naturale o attraverso un formalismo matematico le quali descrivono gli obiettivi di sicurezza di un sistema. Consiste, di fatto, in un insieme di assiomi che gli estensori della politica ritenfono possano essere applicati. Include:
 1) i **soggetti** che interagiscono con il sistema;
 2) gli **oggetti e risorse** di cui si vuole proteggere l'accesso;
