@@ -242,7 +242,7 @@ Presa una variabile aleatoria $X$ di valore atteso $E[X] = \mu$ e $Var[X] = \sig
 
 $$P(\vert X - \mu \vert \geq k) \leq \frac{\sigma^2}{k^2}$$
 
-L’importanza di queste due disequazioni risiede nel fatto che ci consentono di avere stime della probabilità a partire dal valore atteso o dall’unione del valore atteso con la varianza.<br />
+L’importanza di queste due disequazioni risiede nel fatto che permettono di derivare dei vincoli sulle probabilità quando la media o media e varianza della distribuzione di probabilità sono note. Ovviamente, se la distribuzione attuale fosse nota, allora le probabilità potrebbero essere calcolate direttamente e non sarebbe necessario ricorrere a questi vincoli.<br />
 
 Dimostrazione:<br />
 Si definisce una variabile aleatoria di supporto $$Y = \frac{(X -\mu)^2}{\sigma^2}$$
