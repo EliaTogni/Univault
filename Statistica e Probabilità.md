@@ -231,11 +231,11 @@ si definisce una nuova variabile aleatoria di supporto $$Y = \left\{ \begin{arra
 a & \mbox{if}  
 & X\geq a \\ 0 & \mbox{if} & X<a
 \end{array}\right.$$
-Si osserva che per $X \geq Y$, $E[X] \geq E[Y]$.<br />
-Inoltre, si osserva che $$E[Y] = a \cdot P(X\geq a) + 0 \cdot P(X < a)$$
+Si osservi che per $X \geq Y$, $E[X] \geq E[Y]$.<br />
+Inoltre, si osservi che $$E[Y] = a \cdot P(X\geq a) + 0 \cdot P(X < a)$$
 Quindi $$E[X] \geq aP(X\geq a) \quad = \quad P(X \geq a) \leq \frac{E[X]}{a}$$
 
---------------------------------------------------------------
+-------------------------------------------------------------
 
 #### Disuguaglianza di Chebyshev ####
 Presa una variabile aleatoria $X$ di valore atteso $E[X] = \mu$ e $Var[X] = \sigma^2$, allora $\forall k > 0$:
@@ -255,7 +255,7 @@ $$P\Bigg(\frac{(X-\mu)^2}{\sigma} \geq k\sigma\Bigg) \leq \frac{1}{k^2}$$
 --------------------------------------------------------------
 
 #### Legge Debole dei Grandi Numeri ####
-Definita una sequenza di variabili aleatorie indipendenti ed identicamente distribuite $X_{1}, X_{2}, ..., X_{n}$ aventi valore atteso $\mu$ e varianza $\sigma$. Allora, $\forall\epsilon > 0$
+Definita una sequenza di variabili aleatorie indipendenti ed identicamente distribuite $X_{1}, X_{2}, ..., X_{n}$ aventi valore atteso $\mu$ e varianza $\sigma$, allora, $\forall\epsilon > 0$
 $$P\Bigg(\Bigg\vert \frac{\sum_{i = 1}^{n}X_{i}}{n} -\mu \Bigg\vert > \epsilon\Bigg) \rightarrow 0 \text{ 
  per } n \rightarrow \infty $$
 Dimostrazione:
@@ -267,7 +267,7 @@ $$= \frac{n \cdot \sigma_{X}^2}{n^2} = \frac{\sigma_X^{2}}{n}$$
 $$\sigma_{Y}^{2} = \frac{\sigma_X^{2}}{n}$$
 Si osservi ora la probabilità
 $$P(\vert Y -\mu \vert \geq k\sigma_{Y})$$
-Si è nello stesso setting della disuguaglianza di Chebyshev. Allora
+Si è nello stesso contesto della disuguaglianza di Chebyshev. Allora
 $$P(\vert Y -\mu \vert \geq k\sigma_{Y}) \leq \frac{1}{k^2} = P\Bigg(\vert Y -\mu \vert \geq k \sqrt{\frac{\sigma_{X}^2}{n}}\Bigg) \leq \frac{1}{k^2}$$
 Si scelga allora una costante $\epsilon$ 
 $$\epsilon = k \sqrt{\frac{\sigma_{X}^2}{n}} \quad \text{ e } \quad k = \frac{\epsilon}{\sqrt{\frac{\sigma_{X}^2}{n}}}$$

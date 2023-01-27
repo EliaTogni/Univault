@@ -151,7 +151,7 @@ Si osservi la sequenza di eventi che portano ad un exploit:
 - un developer sviluppa il codice per dimostrare la vulnerabilità in un ambiente controllato;
 - il manufacturer sviluppa e distribuisce una patch contro la vulnerabilità;
 - un utente implementa il codice;
-- un utent estende la proof of concept fino ad un attacco attuale.
+- un utente estende la proof of concept fino ad un attacco attuale.
 
 Un attacco prima della disponibilità della contromisura è chiamato **Zero Day Exploit**
 
