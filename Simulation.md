@@ -213,7 +213,6 @@ L'algoritmo suggerisce di:
 - memorizzare le cifre centrali come numero randomico;
 - usare questo numero randomico come seed per le iterazioni seguenti.
 
-
 ``` python
 def middle_square_generator(seed = 1461, n = 1):
 	
@@ -237,7 +236,7 @@ Inoltre, può accadere che i numeri generati dall'algoritmo inizino a ripetersi 
 
 La seconda idea di algoritmi generatori è il **congruential generator**.<br />
 L'algoritmo suggerisce di:
-- scegliere tre parametri, $a$, $c$ e $m$, e un seed $s$.<br />
+- scegliere tre parametri, $a$, $c$ e $m$, e un seed $s$;<br />
 - calcolare $x_{0} = s; \qquad x_{i+1} = (a \cdot x_{i} + c) \text{ mod } m$
 
 ```python
@@ -256,7 +255,7 @@ def congruential_generator(seed = 1, a= 7 ** 5, c=0, m=(2 ** 31 - 1), n=1):
 ```
 
 Anche questo algoritmo ha una debolezza. Infatti, la sequenza prodotta tende a diventare ciclica dopo un numero fissato di iterazioni (oppure con una pessima scelta di parametri come, ad esempio, $a = 1$, $c = 0$ e $m$ libero.<br />
-E' possibile, però, fissare dei parametri in modo tale da avere un **periodo completo**, dove con periodo si intende l'avere un massimo numero di step nella sequenza dopo le quali la sequenza inizia a ripetersi.<br />
+E' possibile, però, fissare dei parametri in modo tale da avere un **periodo completo**, dove con completo si intende l'avere il massimo numero di step possibili nella sequenza prima che la sequenza inizi a ripetersi.<br />
 Il periodo del generatore è il parametro chiave, $m$.<br />
 Sono stati formulati diversi criteri per la scelta dei parametri:
 - **Knuth, 1981**: un generatore congruente misto ha periodo completo per tutti i valori scelti come seed se e solo se:
@@ -367,3 +366,5 @@ Alcuni parametri che è utile stabilire sono:
 
 Il trovarsi all'interno di un cerchio può essere modellato con una variabile aleatoria Bernoulliana:$$X = \cases{1 \qquad p \cr \cr 0 \qquad (1-p) }$$
 Il valore atteso di questa variabile aleatoria sarà $E[X] = 1 \cdot p + 0 \cdot (1-p) = p$, mentre la sua varianza sarà $V[X] = E[X^{2}] - E[X]^{2}$ = .
+
+-------------------------------------------------------------
