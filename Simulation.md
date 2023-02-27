@@ -257,7 +257,7 @@ def congruential_generator(seed = 1, a= 7 ** 5, c=0, m=(2 ** 31 - 1), n=1):
 Anche questo algoritmo ha una debolezza. Infatti, la sequenza prodotta tende a diventare ciclica dopo un numero fissato di iterazioni (oppure con una pessima scelta di parametri come, ad esempio, $a = 1$, $c = 0$ e $m$ libero.<br />
 E' possibile, però, fissare dei parametri in modo tale da avere un **periodo completo**, dove con completo si intende l'avere il massimo numero di step possibili nella sequenza prima che la sequenza inizi a ripetersi.<br />
 Il periodo del generatore è il parametro chiave, $m$.<br />
-Sono stati formulati diversi criteri per la scelta dei parametri:
+Sono stati formulati diversi criteri per la scelta di questi parametri:
 - **Knuth, 1981**: un generatore congruente misto ha periodo completo per tutti i valori scelti come seed se e solo se:
 	- $m$ e $c$ sono primi tra di loro;
 	- $a-1$ è divisibile per tutti i fattori primi di $m$;
@@ -272,10 +272,8 @@ L'obiettivo successivo è produrre numeri randomici composti sempre dallo stesso
 Avere un periodo ampio non è abbastanza per ottenere un generatore pseudo randomico. Infatti, se, ad esempio, il generatore ha un periodo completo ma aumenta il valore di un'unità ad ogni iterazione, sarà tutt'altro che randomico.<br />
 La **predicibilità** è, quindi, un ulteriore fattore che determina la bontà del generatore. Meno un generatore è predicibile da parte dell'utente, meglio è.<br />
 E' possibile progettare un test che permetta di valutare la predicibilità di un generatore? 
-- **Ripley Test**: questo test considera il vettore di valori generati e il vettore ottenuto shiftando il precedente di una posizione. Per valutare la bontà, si può considerare la correlazione tra gli elementi dei due vettori nella stessa posizione ma questa analisi non è in grado di cogliere eventuali legami tra i due vettori. Si può quindi procedere a verificare la correlazione tra il vettore iniziale con tutti i possibili vettori ottenuti dagli shift del vettore iniziale.
-- **funzione di distribuzione cumulativa empirica** (su sample $r$):<br />$ECDF(x) = \text{ }$ numero di elementi di $r$ aventi valore $\leq x$.
-  Il **teorema di Glivenko-Cantelli** sostiene che se $\hat{F}$ è stata calcolata usando un sample di dimensione $n$ estratto da una distribuzione la cui funzione di ripartizione è $F$, $\hat{F}$ converge in probabilità a $F$ con l'aumentare di $n$.
-
+- **Ripley test**: questo test considera il vettore di valori generati $v$ e il vettore $w$, ottenuto shiftando il precedente di una posizione. Per valutare la bontà, si può considerare la correlazione tra gli elementi dei due vettori nella stessa posizione ma questa analisi non è in grado di cogliere eventuali legami tra i due vettori. Per poter prevedere dei valori della sequenza, è necessario osservarne altri interni alla sequenza ma non esclusivamente considerando i due punti su cui si vuole effettuare un analisi di correlazione. Si può quindi procedere a verificare la correlazione tra il vettore iniziale con tutti i possibili vettori ottenuti dagli shift del vettore iniziale.
+- **funzione di distribuzione cumulativa empirica** (su sample $r$):<br />$ECDF(x) = \text{ }$ numero di elementi di $r$ aventi valore $\leq x$. Il **teorema di Glivenko-Cantelli** sostiene che se $\hat{F}$ è stata calcolata usando un sample di dimensione $n$ estratto da una distribuzione la cui funzione di ripartizione è $F$, $\hat{F}$ converge in probabilità a $F$ con l'aumentare di $n$.
 
 ```python
 def ripley_test(v):
