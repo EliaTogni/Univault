@@ -1,17 +1,23 @@
 # Introduzione
-*Informatica* $\to$ studio dell'informazione e della sua elaborazione automatica  
-Cosa è calcolabile? **Teoria della calcolabilità**  
-Quante risorse chiede una computazione? **Teoria della complessità**
+L' **informatica** è lo studio dell'informazione e della sua elaborazione per via **automatica**, cioè mediante dei sistemi di calcolo.<br />
+Si cerca di risolvere un problema automaticamente, scrivendo un programma. Ma è possibile scrivere un programma di soluzione per tutti i problemi? Questa è la domanda fondamentale alla base dell'informatica, cosa è in grado di fare l'informatica, qual è il range di applicazione dell'informatica.<br />
+La branca dell'informatica che cerca di rispondere in modo rigoroso a questa domanda prende il nome di **Teoria della Calcolabilità** (o **Teoria della Ricorsività**).
+- esistono problemi non calcolabili?
+- è possibile caratterizzare in modo rigoroso ciò che è calcolabile? Si tratta di uno studio qualitativo dei problemi;
+- 
+
+Il concetto di calcolabilità è intrinseco ai problemi e può essere catturato matematicamente.<br />
+Una volta stabilito il limite di ciò che è calcolabile, la domanda successiva che sorge spontanea riguarda il costo richiesto da una computazione, cioè quali **risorse computazionali** sono necessarie (elettricità, numero di processori, tempo, spazio di memoria). Lo studio di ciò prende il nome di **Teoria della Complessità**. Ai fini di ciò, sono necessarie delle definizioni rigorose di tempo e spazio di calcolo. A questo punto è possibile definire rigorosamente quando un problema sia **efficientemente calcolabile**, in termini di queste risorse. Questo è uno studio quantitativo dei problemi.
 
 -------------------------------------------------------------
 
 # Funzioni
-Una funzione è una relazione che associa ad un elemento $a \in A$ al più un elemento $b \in B$:
+Una funzione dall'insieme $A$ all'insieme $B$ è una **legge** $f$ che spiega come associare ad ogni elemento $a \in A$ un elemento $b \in B$:
 
 $$f: A \to B$$
 $$f(a) = b$$
 
-Una funzione opera da un insieme dominio ad un insieme codominio. Il sottoinsieme del codominio degli oggetti in relazione con almeno un elemento del dominio secondo la funzione è detto **immagine** della funzione: 
+Una funzione opera da un insieme dominio ad un insieme codominio. Il sottoinsieme del codominio degli oggetti in relazione con almeno un elemento del dominio secondo la funzione è detto **immagine** della funzione, dove $b$ è detta **immagine** di $a$ secondo $f$ ed $a$ è detta **controimmagine** di $b$ secondo $f$: 
 
 $$Im_f = \{b \in B: \exists a, f(a) = b\} = \{f(a): a \in A\}$$
 
@@ -27,7 +33,7 @@ $$f: A \to B \text{ iniettiva} \iff \forall a_1, a_2 \in A, a_1 \neq a_2 \implie
 $$f: A \to B \text{ suriettiva} \iff \forall b \in B, \exists a \in A: f(a) = b$$
 $$f: A \to B \text{ suriettiva} \iff Im_f = B$$
 
-### Biiettiva
+### Biiettiva o Biunivoca
 
 $$f: A \to B \text{ biiettiva} \iff f \text{ iniettiva} \wedge f \text{ suriettiva} \implies$$
 $$\forall b \in B, \exists! a \in A: f(a) = b$$
