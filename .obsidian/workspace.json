@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Informatica Teorica.md",
+                "file": "3D Video Games.md",
                 "mode": "source",
                 "source": false
               }
@@ -77,7 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Informatica Teorica.md",
+                "file": "3D Video Games.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,8 +108,19 @@
   },
   "active": "f12c5d874698c2bb",
   "lastOpenFiles": [
-    "Teoria della Complessità Computazionale.md",
+    "Images/hard_wired.jpeg",
+    "Images/Aspose.Words.f8057e00-861a-4e9b-9348-649fbf9a37a9.178.png",
+    "Images/Aspose.Words.f8057e00-861a-4e9b-9348-649fbf9a37a9.177.png",
+    "Images/Aspose.Words.f8057e00-861a-4e9b-9348-649fbf9a37a9.176.png",
+    "Images/Aspose.Words.f8057e00-861a-4e9b-9348-649fbf9a37a9.175.png",
+    "Images/Aspose.Words.f8057e00-861a-4e9b-9348-649fbf9a37a9.174.png",
+    "Images/Aspose.Words.f8057e00-861a-4e9b-9348-649fbf9a37a9.173.png",
+    "Images/Aspose.Words.f8057e00-861a-4e9b-9348-649fbf9a37a9.172.png",
+    "Images/Aspose.Words.f8057e00-861a-4e9b-9348-649fbf9a37a9.171.png",
+    "Images/Aspose.Words.f8057e00-861a-4e9b-9348-649fbf9a37a9.170.png",
+    "Images/Aspose.Words.f8057e00-861a-4e9b-9348-649fbf9a37a9.169.png",
     "Informatica Teorica.md",
+    "Teoria della Complessità Computazionale.md",
     "3D Video Games.md",
     "Efficienza.md",
     "Dynamic Host Configuration Protocol.md",
@@ -133,7 +144,6 @@
     "Albero Binario.md",
     "Statistical Methods for Machine Learning.md",
     "Simulation.md",
-    "Statistica e Probabilità.md",
     "Leggere per sapere - Alessandro de Concini.pdf"
   ]
 }
