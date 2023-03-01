@@ -1,15 +1,21 @@
 # Introduzione
-_Informatica_ $\to$ studio dell'informazione e della sua elaborazione automatica  
-Cosa è calcolabile? *Teoria della calcolabilità*  
-Quante risorse chiede una computazione? *Teoria della complessità*
+*Informatica* $\to$ studio dell'informazione e della sua elaborazione automatica  
+Cosa è calcolabile? **Teoria della calcolabilità**  
+Quante risorse chiede una computazione? **Teoria della complessità**
 
 -------------------------------------------------------------
 
 # Funzioni
 Una funzione è una relazione che associa ad un elemento $a \in A$ al più un elemento $b \in B$:
+
 $$f: A \to B$$
 $$f(a) = b$$
-Una funzione opera da un insieme dominio ad un insieme codominio. Il sottoinsieme del codominio degli oggetti in relazione con almeno un elemento del dominio secondo la funzione è detto _immagine_ della funzione: $Im_f = \{b \in B: \exists a, f(a) = b\} = \{f(a): a \in A\}$. Solitamente vale $Im_f \subseteq B$.
+
+Una funzione opera da un insieme dominio ad un insieme codominio. Il sottoinsieme del codominio degli oggetti in relazione con almeno un elemento del dominio secondo la funzione è detto **immagine** della funzione: 
+
+$$Im_f = \{b \in B: \exists a, f(a) = b\} = \{f(a): a \in A\}$$
+
+Solitamente vale $Im_f \subseteq B$.
 
 ## Classi di funzioni
 ### Iniettiva
@@ -27,13 +33,13 @@ $$f: A \to B \text{ biiettiva} \iff f \text{ iniettiva} \wedge f \text{ surietti
 $$\forall b \in B, \exists! a \in A: f(a) = b$$
 
 ## Composizione di funzioni
-Date $f: A \to B$ e $g: B \to C$, $f$ _composto_ $g$ è la funzione $g \circ f: A \to C$ definita come $g\circ f (a) = g(f(a))$. <br />
-La composizione non è un operatore commutativo ma, quando domini e codomini lo permettono, è _associativo_. 
+Date $f: A \to B$ e $g: B \to C$, $f$ **composto** $g$ è la funzione $g \circ f: A \to C$ definita come $g\circ f (a) = g(f(a))$. <br />
+La composizione non è un operatore commutativo ma, quando domini e codomini lo permettono, è **associativo**. 
 
 -------------------------------------------------------------
 
 ## Funzione inversa
-Data $f: A \to B$ biiettiva, la sua *inversa* è l'unica funzione $f^{-1}: B \to A$ che soddisfa
+Data $f: A \to B$ biiettiva, la sua **inversa** è l'unica funzione $f^{-1}: B \to A$ che soddisfa
 $$f^{-1}(b) = a \iff f(a) = b$$
 $$\text{oppure}$$
 $$f^{-1}\circ f = i_A \wedge f\circ f^{-1} = i_A$$

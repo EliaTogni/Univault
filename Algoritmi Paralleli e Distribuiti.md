@@ -4,7 +4,7 @@ Nel caso di **Algoritmi Paralleli e Distribuiti**, è chiave la presenza di un p
 
 ------------------------------------------------------------
 
-## Algoritmi Paralleli ##
+# Algoritmi Paralleli 
 I modelli di calcolo in cui sono presenti più processori che lavorano contemporaneamente sono detti **paralleli**, così come il modello di calcolo dotato di un solo processore è detto **sequenziale**.<br />
 Con più processori, sono possibili due differenti implementazioni:
 - Un solo [[Clock]], condiviso tra tutti i processori del sistema;
@@ -120,7 +120,7 @@ Nel caso in cui l'efficienza $E$ di un algoritmo tenda a $0$, è possibile prova
 
 ------------------------------------------------------------
 
-### SOMMATORIA ###
+## SOMMATORIA
 Si vuole trovare un algoritmo parallelo per risolvere il problema **Sommatoria**, un problema guida.<br />
 Ci si approccia con la tecnica della scomposizione del problema in sottoproblemi, per poi effettuare la fusione dei risultati.<br />
 Lo schema risolutivo di un problema guida potrà essere applicato per trovare la soluzione di altri problemi riguardanti operazioni associative.<br />
@@ -172,8 +172,8 @@ Si ha quindi un algoritmo EREW.
 
 ------------------------------------------------------------
 
-#### Correttezza dell'Algoritmo ####
-Si dimostra ora, per [[Induzione]], che l'algoritmo sottostante è corretto. La correttezza è data dalla seguente proprietà:
+### Correttezza dell'Algoritmo
+Si dimostra ora, per induzione, che l'algoritmo sottostante è corretto. La correttezza è data dalla seguente proprietà:
 
 $$M[2^{j}k] = M[2^{j}k] + ... + M[2^{j}(k-1) +1]$$
 
@@ -258,7 +258,7 @@ Il tempo parallelo è passato da $\frac{n}{p} + 5\log(p)$ a questo valore sostit
 E' stato utilizzato un numero di processori sublineare e si è mantenuto il tempo logaritmico.
 
 E' possibile ottenere un tempo migliore rispetto al tempo logaritmico ottenuto per il problema SOMMATORIA?<br />
-E' possibile dimostrare l'esistenza di un lower bound tramite l'utilizzo di un [[Albero]], in particolare un albero binario.<br />
+E' possibile dimostrare l'esistenza di un lower bound tramite l'utilizzo di un [[Albero |albero]], in particolare un [[Albero Binario |albero binario]].<br />
 Le foglie di questo albero sono i numeri da sommare ed i livelli dell'albero sono i passi paralleli.<br />
 Il livello con più nodi corrisponde anche al numero di processori e l'altezza dell'albero corrisponde al tempo dell'algoritmo.
 Il numero di foglie di un albero vincola la minima altezza dell'albero. Dato un albero con $n$ foglie e di altezza $h$:
@@ -269,7 +269,7 @@ $$h \geq \log_{2}(n)$$
 
 ------------------------------------------------------------
 
-### SOMMATORIA come schema per altri problemi ###
+## SOMMATORIA come schema per altri problemi
 Si osservi il problema OP ITERATA, del quale SOMMATORIA è un caso particolare.
 
 **Definizione del problema**
@@ -288,7 +288,7 @@ Mentre, con una soluzione EREW, questo è il miglior risultato ottenibile, in re
 
 ------------------------------------------------------------
 
-### $\wedge$ ITERATO ###
+## $\wedge$ ITERATO
 **Definizione del problema**
 
 **Input**: $M[1], M[2], ..., M[n]$ <br />
@@ -325,7 +325,7 @@ Non solo questo algoritmo fa da guida per le soluzioni ai problemi OP ITERATO ma
 
 ------------------------------------------------------------
 
-### PRODOTTO INTERNO DI VETTORI ###
+## PRODOTTO INTERNO DI VETTORI
 **Definizione del problema**
 
 **Input**: $x, y \in \mathbb{N}^{n}$<br />
@@ -354,7 +354,7 @@ Questo problema, a sua volta, è modulo di altri problemi, come, banalmente, il 
 
 ------------------------------------------------------------
 
-### PRODOTTO MATRICE VETTORE ###
+## PRODOTTO MATRICE VETTORE
 **Definizione del problema**
 
 **Input**: $A \in \mathbb{N}^{n \times n}, x \in \mathbb{N}^{n}$<br />
@@ -372,7 +372,7 @@ $$E(n, p(n)) \sim \frac{n^{2}}{\frac{n^{2}}{\log(n)} \cdot \log(n)} \rightarrow 
 
 ------------------------------------------------------------
 
-### PRODOTTO MATRICE MATRICE ###
+## PRODOTTO MATRICE MATRICE
 **Definizione del problema**
 
 **Input**: $A, B \in \mathbb{N}^{n \times n}$<br />
@@ -380,7 +380,7 @@ $$E(n, p(n)) \sim \frac{n^{2}}{\frac{n^{2}}{\log(n)} \cdot \log(n)} \rightarrow 
 
 Il problema consta, banalmente, del prodotto tra due matrici preesistenti e richiede, quindi, di calcolare una nuova matrice.<br />
 Il calcolo di una nuova matrice quadrata richiede il calcolo di $n^{2}$ componenti.<br />
-Il tempo sequenziale è pari a $n^{2,80}$, risultato ottenuto dall'[[Algoritmo di Strassen]], il miglior algoritmo sequenziale per il prodotto tra due matrici.<br />
+Il tempo sequenziale è pari a $n^{2,80}$, risultato ottenuto dall'algoritmo di Strassen, il miglior algoritmo sequenziale per il prodotto tra due matrici.<br />
 L'idea su cui si basa l'algoritmo parallelo è usare $n^{2}$ PRODOTTO INTERNO DI VETTORI in parallelo. Ogni riga di $A$ ed ogni colonna di $B$ vengono accedute simultaneamente, necessitando così di un algoritmo CREW.<br />
 Si necessita quindi di un'architettura che permetta la concurrent read.<br />
 
@@ -391,7 +391,7 @@ $$E(n, p(n)) \sim \frac{n^{2,8}}{\frac{n^{3}}{\log(n)} \cdot \log(n)} = \frac{n^
 
 ------------------------------------------------------------
 
-### POTENZA DI  UNA MATRICE ###
+## POTENZA DI  UNA MATRICE
 **Definizione del problema**
 
 **Input**: $A \in \mathbb{N}^{n \times n}$<br />
@@ -410,14 +410,15 @@ Per creare l'algoritmo parallelo, viene sfruttata l'idea di questo algoritmo seq
 Poichè il modulo utilizzato necessitava di un'architettura CREW, anche questo problema necessita di tale architettura.
 Il tempo sequenziale sarà quindi $n^{2,8} \cdot \log(n)$.<br />
 
-Si valutano ora le prestazioni dell'algoritmo.<br />
+Si valutano ora le prestazioni dell'algoritmo.
+
 $$p(n) \sim n^{2} \cdot \frac{n}{\log(n)} = \frac{n^{3}}{\log(n)}$$
 $$T(n, p(n)) = \log(n) \cdot \log(n) = \log^{2}(n)$$
 $$E \sim \frac{n^{2,8}\log(n)}{\frac{n^{3}}{\log(n)}\cdot \log^{2}(n)} = \frac{n^{2,8}}{n^{3}} \rightarrow 0$$
 
 ------------------------------------------------------------
 
-### SOMME PREFISSE ###
+## SOMME PREFISSE
 **Definizione del problema**
 
 **Input**: $M[1], M[2], ..., M[n]$<br />
@@ -447,8 +448,10 @@ Una proposta parallela è quella di risolvere con SOMMATORIA tutti i moduli pref
 
 Questo non è, ovviamente, un algoritmo EREW bensì CREW, in quanto ogni applicazione di SOMMATORIA richiederà le celle precedenti in lettura contemporanea. 
 
-Si valutano ora le prestazioni dell'algoritmo.<br />
+Si valutano ora le prestazioni dell'algoritmo.
+
 $$p(n) \leq (n-1) \cdot \frac{n}{\log(n)} \sim \frac{n^{2}}{\log(n)}$$
+
 In realtà $\frac{n}{\log(n)}$ è il costo dell'ultimo modulo che prende in input tutte le celle per effettuare SOMMATORIA. Si può calcolare che, in media, ogni modulo $i$ utilizzi un numero di processori di circa
 
 $$\sum_{i=2}^{n}\frac{i}{\log(i)} \geq \frac{1}{\log(n)}\sum_{i=2}^{n}i \sim \frac{n^{2}}{\log(n)}$$
@@ -460,7 +463,7 @@ Di conseguenza, la proposta analizzata risulta essere una scelta poco efficiente
 
 ------------------------------------------------------------
 
-### Tecnica di Kogge-Stone [1973] ###
+## Tecnica di Kogge-Stone [1973]
 Kogge-Stone introduce il **Pointer Doubling** per risolvere SOMME PREFISSE.<br />
 Si tratta di puntatori, di link tra coppie di numeri, indicati tramite frecce.<br />
 Ogni processore si occupa di un puntatore e ne fa la somma in questo modo:<br />
@@ -508,7 +511,7 @@ E' ovviamente molto plausibile avere un link entrante in una cella di memoria ed
 
 ![[ConcurrencyKoggeStone1.png]]
 
-Per visualizzare meglio questa operazione, si immaginino i due processori $P_{k}$ e $P_{k}'$ al tempo $t$.
+Per visualizzare meglio questa operazione, si immaginino i due processori $P_{k}$ e $P_{k}'$ al tempo $t$.<br />
 $P_{k}$ esegue una LOAD su $M[k]$ al tempo $t1$ mentre $P_{k}'$ esegue una LOAD su $M[k']$ allo stesso tempo $t1$. Poichè $k \neq k'$, i due valori sono diversi.<br />
 Al tempo $t2$, il primo processore esegue una LOAD su $S[k]$ mentre il secondo processore esegue una LOAD su $S[k']$. Anche in questo caso $k \neq k'$.<br />
 Al tempo $t3$, $P_{k}$ carica $M[S[k]]$ con una LOAD, mentre $P_{k'}$ carica con una LOAD$M[S[k']]$. Anche in questo caso i valori sono diversi.<br />
@@ -521,7 +524,7 @@ Se $i\neq j \rightarrow S[i] \neq S[j]$, quindi i due valori hanno successori di
 
 ------------------------------------------------------------
 
-#### Correttezza dell'Algoritmo ####
+### Correttezza dell'Algoritmo
 E' anche necessario dimostrare che l'algoritmo sia corretto.<br />
 La correttezza dell'algoritmo si dimostra facendo vedere che, per $1 \leq k \leq n$ si ha in $M[k]$ la somma degli elementi precedenti:
 
@@ -652,7 +655,7 @@ Come per il problema SOMMATORIA, anche l'algoritmo dato per SOMME PREFISSE può 
 
 ------------------------------------------------------------
 
-### OP-PREFISSA ###
+## OP-PREFISSA
 **Definizione del problema**
 
 **Input**: $M[1], M[2], ..., M[n]$<br />
@@ -662,7 +665,7 @@ OP deve essere associativa, come ad esempio $+, *, \wedge, \vee, \oplus, \min, \
 
 ------------------------------------------------------------
 
-### VALUTAZIONE DI POLINOMI ###
+## VALUTAZIONE DI POLINOMI
 **Definizione del problema**
 
 **Input**: $p(x) = a_{0} + a_{1}x + a_{2}x^{2} + ... + a_{n}x^{n}\text{, } \alpha$<br />
@@ -684,7 +687,7 @@ $$N \sim n^2$$
 
 ------------------------------------------------------------
 
-#### Miglioramento di Ruffini-Horner ####
+### Miglioramento di Ruffini-Horner
 Il numero di istruzioni impiegato può essere migliorato tramite l'idea di Ruffini-Horner.<br />
 Si osservi un esempio di applicazione su un polinomio di quarto grado:
 
@@ -723,7 +726,7 @@ cioè due operazioni all'interno di ogni iterazione del loop.
 
 ------------------------------------------------------------
 
-#### Implementazione Parallela di Ruffini-Horner ####
+### Implementazione Parallela di Ruffini-Horner
 Si dovrà trovare un possibile algoritmo parallelo che, confrontato con questo algoritmo lineare, risulti efficiente.<br />
 - Si costruisca il vettore delle potenze di $\alpha$, $Q$;
    $$Q[k] = \alpha^{k}\text{, } \quad 0 \leq k \leq n$$
@@ -812,7 +815,7 @@ Analizziamo ora le prestazioni dell'algoritmo.<br />
    
 ------------------------------------------------------------
 
-### RICERCA DI UN ELEMENTO ###
+## RICERCA DI UN ELEMENTO
 **Definizione del problema**
 
 **Input**: $M[1], M[2], ..., M[n], \alpha$<br />
@@ -864,10 +867,10 @@ $$\downarrow$$
 $$Wyllie$$
 $$p(n) = \frac{n}{\log(n)}$$
 $$T(n, p(n)) = \log(n)$$
-2)<br />
+2)
 $$p(n) = \frac{n}{\log(n)}$$
 $$T(n, p(n)) = \log(n)$$
-Totale:<br />
+Totale:
 $$p(n) = O(\frac{n}{\log(n)}$$
 $$T(n, p(n)) = O(\log(n)$$
 $$E(n, p(n)) \sim c \neq 0$$
@@ -905,7 +908,7 @@ Questo permette di portare il minimo valore della cella che contiene $\alpha$ ne
 
 ------------------------------------------------------------
 
-### ORDINAMENTO o RANKING ###
+## ORDINAMENTO o RANKING
 **Definizione del problema**
 
 **Input**: $M[1], M[2], ..., M[n]$<br />
@@ -915,7 +918,7 @@ In genere gli algoritmi di ordinamento sono basati sui confronti che coinvolgono
 Se si considerano gli algoritmi di ordinamento che usano i confronti, algoritmi sequenziali che ordinano $n$ valori hanno un tempo sequenziale pari ad $n\log(n)$, che è sia un upper bound che un lower bound.<br />
 Upper bound perchè esistono algoritmi sequenziali come il [[MergeSort]], che utilizza $n\log(n)$ passi per ordinare la sequenza di $n$ valori.<br />
 Lower bound perchè si può dimostrare che un algoritmo sequenziale necessita di minimo $n\log(n)$ passi per ordinare una sequenza di valori.<br />
-La dimostrazione di questo lower bound si basa sull'utilizzo di un [[Albero di Decisione]].<br />  
+La dimostrazione di questo lower bound si basa sull'utilizzo di un [[Albero di Decisione |albero di decisione]].<br />  
 
 Un primo approccio parallelo si basa su un algoritmo il quale utilizza il conteggio di certi confronti. Un algoritmo sequenziale di conteggio, per terminare,  richiede un tempo $t = \Theta(n^2)$.<br />
 Si prende spunto dall'algoritmo sequenziale [[CountingSort]]. <br />
@@ -975,7 +978,7 @@ Quando il _Merge_ risulta essere facile? Quando gli elementi $A_{s}$ e $A_{d}$ c
 ![[SimpleMerge.png]]
 
 Da questa osservazione, emerge l'idea per parallelizzare l'algoritmo di ordinamento.<br />
-- L'idea è di usare sequenze di numeri particolari, la [[Sequenza Unimodale e Bitonica]], insieme alle routine _Rev_, che effettua il reverse di un array,  e _minMax_, che permette di costruire gli array $A_{min}$ e $A_{Max}$.<br />
+- L'idea è di usare sequenze di numeri particolari, la [[Sequenza Unimodale e Bitonica |sequenza bitonica]], insieme alle routine _Rev_, che effettua il reverse di un array,  e _minMax_, che permette di costruire gli array $A_{min}$ e $A_{Max}$.<br />
 
 La funzione _Rev_ esegue queste operazioni in parallelo.
 
@@ -1024,7 +1027,7 @@ $$T(n, p(n)) = 5$$
 
 ------------------------------------------------------------
 
-### _BitMerge_ Sequenziale ###
+## _BitMerge_ Sequenziale
 Dato un array bitonico:
 
 ```
@@ -1040,7 +1043,7 @@ Procedura BitMerge(A[1], ..., A[n]){
 
 Quindi _BitMerge_ ordina le sequenze bitoniche.
 
-Si dimostra ora, per [[Induzione]], la correttezza di _BitMerge_.<br />
+Si dimostra ora, per induzione, la correttezza di _BitMerge_.<br />
 
 Al caso base, per $n=2$, una sequenza di lunghezza $2$ è banalmente ordinata da _minMax_.
 
@@ -1089,7 +1092,7 @@ Allo stesso modo, non è valido il viceversa (_BitSort_).<br />
 
 ------------------------------------------------------------
 
-### Valutazione Sequenziale di _BitSort_ ###
+## Valutazione Sequenziale di _BitSort_ ##
 - _BitMerge_:
   $$\begin{numcases}{T_{bm}(n) =}
   O(1), & se $ n = 2$ \\
@@ -1107,23 +1110,23 @@ $$T_{bm}(n) = O(n\log(n))$$
   
 ------------------------------------------------------------
   
-Per gestire strutture dati dinamiche come un [[Albero]], si utilizza la [[Tecnica del Ciclo Euleriano]].
+Per gestire strutture dati dinamiche come un [[Albero |albero]], si utilizza la [[Tecnica del Ciclo Euleriano |tecnica del ciclo Euleriano]].
 
 ------------------------------------------------------------
 
-### Osservazioni Finali su PRAM ###
+## Osservazioni Finali su PRAM ##
 
 1) Da un punto di vista teorico, si è in grado di distribuire i compiti tra i processori, i quali sono considerati alla pari, in modo tale che il tempo parallelo sia strettamente legato alla computazione (poichè la comunicazione avviene in tempo costante);
 2) L'interesse pratico è dovuto alla realizzazione fisica dei dispositivi multi-core;
 
 ------------------------------------------------------------
 
-### Architettura Parallela a Memoria Distribuita ###
-La rappresentazione grafica di queste architetture è data da un [[Grafo]] G in cui i nodi sono i processori e gli archi definiscono la struttura della rete di connessione.<br />
+## Architettura Parallela a Memoria Distribuita ##
+La rappresentazione grafica di queste architetture è data da un [[Grafo |grafo]] G in cui i nodi sono i processori e gli archi definiscono la struttura della rete di connessione.<br />
 L'elemento che viene a mancare è ovviamente la memoria condivisa, tipica delle PRAM.<br />
-Si torna quindi a parlare di [[Modello a Memoria Distribuita]].<br />
+Si torna quindi a parlare di [[Modello a Memoria Distribuita |modello a memoria distribuita]].<br />
 
 ------------------------------------------------------------
 
-## Algoritmi Distribuiti ##
+# Algoritmi Distribuiti #
 
