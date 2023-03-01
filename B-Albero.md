@@ -1,5 +1,5 @@
 # B-Albero #
-Il **B-Albero** è una [[Struttura Dati]] basata su un [[Albero]] nata per minimizzare il numero di letture e scritture su memoria esterna dato l'elevato tempo richiesto per l'accesso.<br />
+Il **B-Albero** è una [[Struttura Dati |struttura dati]] basata su un [[Albero |albero]] nata per minimizzare il numero di letture e scritture su memoria esterna dato l'elevato tempo richiesto per l'accesso.<br />
 
 Sia $t$ un intero fissato $\geq 2$, detto _grado minimo_ e tipicamente scelto in modo proporzionale alla dimensione $B$ di un blocco.<br />
 Un B-albero non vuoto di grado minimo $t$ è un albero radicato con le seguenti proprietà:

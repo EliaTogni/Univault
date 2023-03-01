@@ -1,5 +1,5 @@
-# BitSort #
-Il **BitSort** è un [[Algoritmo]] di ordinamento, inventato da Batcher nel 1968, che deve il proprio nome al termine **Bitonic**, derivato dalla [[Sequenza Unimodale e Bitonica]].<br />
+# BitSort
+Il **BitSort** è un [[Algoritmo |algoritmo]] di ordinamento, inventato da Batcher nel 1968, che deve il proprio nome al termine **Bitonic**, derivato dalla [[Sequenza Unimodale e Bitonica |sequenza bitonica]].<br />
 Prende spunto dall'algoritmo sequenziale [[MergeSort]] ma utilizza come funzione di fusione il _BitMerge_, il quale lavora su sequenze bitoniche.<br />
 
 ```
@@ -20,9 +20,9 @@ Poichè una sequenza_ unimodale è anche bitonica, è possibile effettuare la ch
 
 --------------------------------------------------------------
 
-#### Correttezza dell'Algoritmo ####
+## Correttezza dell'Algoritmo
 
-Per dimostrare la correttezza del _BitSort_, si utilizza l'[[Induzione]].<br />
+Per dimostrare la correttezza del _BitSort_, si utilizza l'induzione.<br />
 Nel caso base, cioè per $n = 2$:
 - il minimo viene inserito nella cella in prima posizione ed il massimo nella seconda cella, tramite procedura _minMax_;
 - l'algoritmo non entra nell'_if_;
@@ -39,7 +39,7 @@ Di conseguenza è dimostrato.<br />
 
 --------------------------------------------------------------
 
-#### Implementazione Parallela di BitSort####
+## Implementazione Parallela di BitSort
 
 ![[ParallelBitSort.png]]
 

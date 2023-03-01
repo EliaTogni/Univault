@@ -5,13 +5,13 @@ Dato un algoritmo $A$, si denota con $f_{A}$ la funzione che associa ad ogni inp
 
 ------------------------------------------------------------
 
-### Tecniche di Ricerca ###
-#### Ricerca Sequenziale ####
+## Tecniche di Ricerca
+### Ricerca Sequenziale
 E' un tipo di ricerca che impiega tempo $O(n)$. Scorre tutto il vettore in maniera ordinata fino a trovare il valore ricercato, altrimenti restituisce $-1$.<br />
 
 ------------------------------------------------------------
 
-#### Ricerca Binaria o Dicotomica ####
+### Ricerca Binaria o Dicotomica
 E' un tipo di ricerca che si avvale della tecnica [[Divide et Impera]]. Questa tecnica può essere applicata solo a vettori ordinati.<br />
 Ha complessità $O(n\log(n))$ perchè ad ogni iterazone, si dimezza il vettore in input.<br />
 
@@ -23,7 +23,7 @@ La **Tecnica Incrementale** è una tecnica di ordinamento in cui si suppone che 
 
 ------------------------------------------------------------
 
-#### Stabiltà ####
+#### Stabilità ####
 Si definisce un algoritmo di ordinamento _stabile_ se esso preserva l'ordine iniziale tra due elementi dello stesso valore.<br />
 
 ------------------------------------------------------------

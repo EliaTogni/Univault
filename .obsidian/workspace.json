@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Algoritmi Paralleli e Distribuiti.md",
+                "file": "Efficienza.md",
                 "mode": "source",
                 "source": false
               }
@@ -77,7 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Algoritmi Paralleli e Distribuiti.md",
+                "file": "Efficienza.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,24 +108,32 @@
   },
   "active": "f12c5d874698c2bb",
   "lastOpenFiles": [
-    "Albero di Decisione.md",
+    "Dynamic Host Configuration Protocol.md",
+    "Dizionario.md",
+    "Divide et Impera.md",
+    "CountingSort.md",
+    "BitSort.md",
+    "Controllo di Versione.md",
+    "Algoritmo.md",
+    "Configurazione ed Utilizzo di Git.md",
+    "Sequenza Unimodale e Bitonica.md",
+    "B-Albero.md",
+    "Array.md",
+    "Algoritmo Greedy.md",
     "Algoritmi Paralleli e Distribuiti.md",
-    "Albero Binario.md",
-    "Albero AVL.md",
-    "Albero 2-3.md",
-    "Albero.md",
-    "Agent-Based Simulation.md",
+    "Albero di Decisione.md",
     "3D Video Games.md",
+    "Agent-Based Simulation.md",
+    "Albero.md",
+    "Albero 2-3.md",
+    "Albero AVL.md",
+    "Albero Binario.md",
     "Informatica Teorica.md",
     "Statistical Methods for Machine Learning.md",
     "Simulation.md",
     "Statistica e Probabilità.md",
     "The Game of Life.md",
     "Sicurezza dei Sistemi e delle Reti.md",
-    "Modello.md",
-    "Templates/Template Articolo.md",
-    "Leggere per sapere - Alessandro de Concini.pdf",
-    "Highlights for Leggere per sapere - Alessandro de Concini.md",
-    "Template Libro.md"
+    "Leggere per sapere - Alessandro de Concini.pdf"
   ]
 }

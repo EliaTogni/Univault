@@ -1,11 +1,11 @@
-# Divide et Impera #
-La tecnica **Divide et Impera** è una tecnica di progettazione di un [[Algoritmo]] [[Top - Down]], la quale consiste nel suddividere i dati di ingresso in due o più sottinsiemi (_divide_), risolvere ricorsivamente il problema sui sottoproblemi e poi ricombinare la soluzione dei sottoproblemi (_impera_) per ottenere la soluzione globale del problema originario.<br />
-Ne consegue che la tecnica _divide et impera_ sarà tanto più efficace quanto più sarà conveniente decomporre un'istanza in ingresso in sottoistanze e ricombinare efficientemente le loro soluzioni.<br />
+# Divide et Impera
+La tecnica **divide et impera** è una tecnica di progettazione di un [[Algoritmo |algoritmo]] Top - Down, la quale consiste nel suddividere i dati di ingresso in due o più sottinsiemi (**divide**), risolvere ricorsivamente il problema sui sottoproblemi e poi ricombinare la soluzione dei sottoproblemi (**impera**) per ottenere la soluzione globale del problema originario.<br />
+Ne consegue che la tecnica divide et impera sarà tanto più efficace quanto più sarà conveniente decomporre un'istanza in ingresso in sottoistanze e ricombinare efficientemente le loro soluzioni.<br />
 
 --------------------------------------------------------------
 
-### Teorema fondamentale delle ricorrenze ###
-Molte delle relazioni di ricorrenza, derivanti da algoritmi basati sulla tecnica _divide et impera_, possono essere facilmente risolte usando il **Teorema fondamentale delle ricorrenze**.<br />
+## Teorema fondamentale delle ricorrenze
+Molte delle relazioni di ricorrenza, derivanti da algoritmi basati sulla tecnica divide et impera, possono essere facilmente risolte usando il **Teorema fondamentale delle ricorrenze**.<br />
 Si supponga che un problema di dimensione $n$ venga diviso in $a$ sottoproblemi, ciascuno di dimensione $\frac{n}{b}$, e che dividere i sottoproblemi e combinare le soluzioni richieda tempo $f(n)$.<br />
 L'equazione di ricorrenza corrispondente a questo scenario è:
 

@@ -1,7 +1,7 @@
 # Algoritmo Greedy #
-Un **Algoritmo Greedy** è una tecnica algoritmica (related to [[Algoritmo]]) la quale viene tipicamente utilizzata per risolvere problemi di _ottimizzazione_.<br />
+Un **Algoritmo Greedy** è una [[Algoritmo |tecnica algoritmica]] la quale viene tipicamente utilizzata per risolvere problemi di **ottimizzazione**.<br />
 In un generico problema di ottimizzazione si avrà:
-- Un insieme di candidati possibili;
+- un insieme di candidati possibili;
 - l'insieme dei candidati che sono già stati utilizzati;
 - una funzione ammissibile, la quale verifica se un insieme di candidati fornisce una soluzione (anche se non necessariamente ottima) al problema considerato;
 - una funzione _ottimo_ che verifica se un insieme di candidati fornisce una soluzione ottima al problema considerato;
