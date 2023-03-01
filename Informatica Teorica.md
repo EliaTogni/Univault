@@ -38,6 +38,8 @@ $$f: A \to B \text{ suriettiva} \iff Im_f = B$$
 $$f: A \to B \text{ biiettiva} \iff f \text{ iniettiva} \wedge f \text{ suriettiva} \implies$$
 $$\forall b \in B, \exists! a \in A: f(a) = b$$
 
+dove $\exists !$ significa esiste un unico elemento.
+
 ## Composizione di funzioni
 Date $f: A \to B$ e $g: B \to C$, $f$ **composto** $g$ è la funzione $g \circ f: A \to C$ definita come $g\circ f (a) = g(f(a))$. <br />
 La composizione non è un operatore commutativo ma, quando domini e codomini lo permettono, è **associativo**. 
@@ -48,7 +50,12 @@ La composizione non è un operatore commutativo ma, quando domini e codomini lo 
 Data $f: A \to B$ biiettiva, la sua **inversa** è l'unica funzione $f^{-1}: B \to A$ che soddisfa
 $$f^{-1}(b) = a \iff f(a) = b$$
 $$\text{oppure}$$
-$$f^{-1}\circ f = i_A \wedge f\circ f^{-1} = i_A$$
+$$f^{-1}\circ f = i_A \quad \wedge \quad f\circ f^{-1} = i_A$$
+
+-------------------------------------------------------------
+
+## Funzione identità
+Dato l'insieme $A$, la funzione **identità** su $A$ è la funzione $i_{A}: A \to A$ 
 
 -------------------------------------------------------------
 
