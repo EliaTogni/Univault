@@ -31,27 +31,34 @@ E’ prassi effettuare durante lo sviluppo di un gioco la tecnica del baking, es
 Le strutture dati dei modelli hanno come base tre diversi componenti:
 - **punti**: corrispondono ad una posizione nello spazio;
 - **vettori**: corrispondono allo spostamento di un oggetto nello spazio ed alla sua velocità;
-- **versori**: indicano l’orientamento o la direzione di un oggetto rispetto al piano di esistenza, e sono di grandezza unitaria;  
+- **versori**: indicano l’orientamento o la direzione di un oggetto rispetto al piano di esistenza, e sono di grandezza unitaria. 
 
-Esempio: il modello 3D di un telefono nello spazio è formato da punti, un suo eventuale spostamento è rappresentato da un vettore e, per capire se lo schermo è verso il basso oppure no, posso utilizzare un versore ortogonale al telefono per indicare il suo orientamento.
+Esempio: il modello 3D di un telefono nello spazio è formato da punti mentre un suo eventuale spostamento è rappresentato da un vettore e, per capire se lo schermo è rivolto verso il basso oppure no, è possibile utilizzare un versore ortogonale al telefono per indicare il suo orientamento.
 
-Queste tre entità sono alla base dei game engine e condividono la stessa struttura dati, quella che in Unity è conosciuta come Vector3 contenente una tripletta di valori (x, y e z), in questo motore grafico infatti vengono rappresentati con la stessa classe, tuttavia non è escluso l’utilizzo di classi differenti per farlo in altri game engine.
+Queste tre entità sono alla base dei game engine e condividono la stessa struttura dati, conosciuta in Unity come **Vector3**, contenente una tripletta di valori **(x, y, z)**. In questo motore grafico, infatti, i vettori vengono rappresentati con la stessa classe. Tuttavia non è escluso l’utilizzo di classi differenti per farlo in differenti game engine.
+
+-------------------------------------------------------------
+
 ## Possibili operazioni
-- **DIFFERENZA**: Dati due punti p e q, la differenza q-p è un vettore che indica lo spostamento da p a q:
+### Differenza
+Dati due punti $p$ e $q$, la differenza $q-p$ è un vettore che indica lo spostamento da $p$ a $q$:
 
-p=[px,py,pz]   q=[qx,qy,qz]   v=q-p=[qx-px,qy-py,qz-pz]
+$$p=[px,py,pz] \quad  q=[qx,qy,qz] \quad  v=q-p=[qx-px,qy-py,qz-pz]$$
 
-se p, q∈P, q-p= v∈V, con v=[qx-px,qy-py,qz-pz]
+	$$\text{se } p,q∈P, (q-p)= v∈V, \quad con v=[qx-px,qy-py,qz-pz]$$
 
-<differenza punti: da disegnare>
+differenza punti: da disegnare
 
-- **ADDIZIONE**: L’addizione tra un punto p e un vettore v da come risultato un punto q corrispondente al punto p spostato di v:
+--------------------------------------------------------------------------------
+
+### Addizione
+L’addizione tra un punto $p$ e un vettore $v$ dà come risultato un punto $q$ corrispondente al punto $p$ spostato di $v$:
 
 p=[px,py,pz]   v=[vx,vy,vz]   q=p+v=[px+vx,py+vy,pz+vz]
 
 se p∈P, v∈V, p+v= q∈P, dove q= p+v=[px+vx,py+vy,pz+vz]
 
-<somma punto vettore: da disegnare>
+somma punto vettore: da disegnare
 
 - **vettore identità o vettore zero z=[0,0,0]**: ogni punto p sommato con esso dà p come risultato.
 
