@@ -1,4 +1,4 @@
-## Simulation ##
+# Simulation
 Una **simulation** (**simulazione**), secondo l'Oxford Dictionary, è il prodotto della modellazione a computer, della rappresentazione formale di un evento, un processo o sistema complesso nel mondo reale, soprattutto al fine di studio.<br />
 
 Una simulazione è uno strumento economico per approssimare comportamenti della vita reale all'interno di un calcolatore, tramite l'implementazione di un [[Modello#Modello descrittivo |modello di analisi descrittiva]], il quale può essere usato per testare una selezione di scenari.<br />
@@ -39,7 +39,7 @@ E' possibile effettuare una comparazione tra questi paradigmi in termini di dive
 
 --------------------------------------------------------------
 
-### Discrete Event Simulation ###
+## Discrete Event Simulation
 Nelle simulazioni di tipo **discrete events**, il sistema procede per step durante il tempo di esecuzione e gli eventi accadono solamente durante questi precisi momenti.<br />
 
 
@@ -50,7 +50,7 @@ Se $f()$ è solamente un'approssimazione del sistema reale, quando si applicher�
 Il risultato complessivo della modellazione descrittiva di un sistema è una variabile aleatoria più complessa.<br />
 
 
-### Pharmacist (Ex. from Sheldon M. Ross "Simulation")###
+### Pharmacist (Ex. from Sheldon M. Ross "Simulation")
 ![[PharmacistSimulation.png]]
 
 Il modello descrittivo che andrà costruito renderà più chiara la distribuzione della variabile aleatoria. 
@@ -193,11 +193,11 @@ pharmacy(480, 32, 10, 4)
 
 -------------------------------------------------------------
 
-### Ripasso di [[Statistica e Probabilità |statistica e probabilità]] ###
+## Ripasso di [[Statistica e Probabilità |statistica e probabilità]]
 
 -------------------------------------------------------------
 
-### Generazione di numeri randomici ###
+## Generazione di numeri randomici ##
 La definizione di **random** descrive l'avvenimento di un evento dovuto al caso piuttosto che ad una causa deterministica.<br />
 E' noto che i calcolatori sono puramente deterministici. Infatti, secondo Von Neumann, è impossibile produrre una cifra casuale usando metodi aritmetici.<br />
 Infatti, la produzione di numeri attraverso calcolatore appare randomica ma, in realtà, non lo è. Il calcolatore agisce in maniera puramente deterministica, nonostante l'apparenza mascheri questo modo di agire, facendo pensare ad un comportamente casuale della macchina.<br />
@@ -237,7 +237,7 @@ Inoltre, può accadere che i numeri generati dall'algoritmo inizino a ripetersi 
 La seconda idea di algoritmi generatori è il **congruential generator**.<br />
 L'algoritmo suggerisce di:
 - scegliere tre parametri, $a$, $c$ e $m$, e un seed $s$;<br />
-- calcolare $x_{0} = s; \qquad x_{i+1} = (a \cdot x_{i} + c) \text{ mod } m$
+- calcolare $x_{0} = s; \qquad x_{i+1} = (a \cdot x_{i} + c) \text{ mod } m$.
 
 ```python
 def congruential_generator(seed = 1, a= 7 ** 5, c=0, m=(2 ** 31 - 1), n=1):
@@ -273,7 +273,7 @@ Avere un periodo ampio non è abbastanza per ottenere un generatore pseudo rando
 La **predicibilità** è, quindi, un ulteriore fattore che determina la bontà del generatore. Meno un generatore è predicibile da parte dell'utente, meglio è.<br />
 E' possibile progettare un test che permetta di valutare la predicibilità di un generatore? 
 - **Ripley test**: questo test considera il vettore di valori generati $v$ e il vettore $w$, ottenuto shiftando il precedente di una posizione. Per valutare la bontà, si può considerare la correlazione tra gli elementi dei due vettori nella stessa posizione ma questa analisi non è in grado di cogliere eventuali legami tra i due vettori. Per poter prevedere dei valori della sequenza, è necessario osservarne altri interni alla sequenza ma non esclusivamente considerando i due punti su cui si vuole effettuare un analisi di correlazione. Si può quindi procedere a verificare la correlazione tra il vettore iniziale con tutti i possibili vettori ottenuti dagli shift del vettore iniziale.
-- **funzione di distribuzione cumulativa empirica** (su sample $r$):<br />$ECDF(x) = \text{ }$ numero di elementi di $r$ aventi valore $\leq x$. Il **teorema di Glivenko-Cantelli** sostiene che se $\hat{F}$ è stata calcolata usando un sample di dimensione $n$ estratto da una distribuzione la cui funzione di ripartizione è $F$, $\hat{F}$ converge in probabilità a $F$ con l'aumentare di $n$.
+- **funzione di distribuzione cumulativa empirica** (su sample $r$):<br />$ECDF(x) =$ numero di elementi di $r$ aventi valore $\leq x$. Il **teorema di Glivenko-Cantelli** sostiene che se $\hat{F}$ è stata calcolata usando un sample di dimensione $n$ estratto da una distribuzione la cui funzione di ripartizione è $F$, $\hat{F}$ converge in probabilità a $F$ con l'aumentare di $n$.
 
 ```python
 def ripley_test(v):
@@ -313,6 +313,7 @@ def empirical_cdf(v, x):
 
 #### Shift Register Generator ####
 Un'alternativa per la generazione di numeri randomici è lo **Shift Register Generator**.<br />
+
 Le proprietà attese di un generatore random sono:
 - l'insieme dei valori pseudorandomici generati non può essere distinto da un semple analogo estratto da una distribuzione uniforme discreta nell'intervallo $\{0, ..., m-1\}$;
 - il periodo del generatore deve essere più ampio possibile;
@@ -323,6 +324,7 @@ Le proprietà attese di un generatore random sono:
 ## Metodo Monte Carlo ##
 Si vuole computare (numericamente) il valore di $\pi$.<br />
 Si consideri un cerchio. La sua area è definita dalla formula $A = \pi \cdot r^{2}$. Quindi, è possibile calcolare $\pi = \frac{A}{r^{2}}$.<br />
+L'area del più piccolo quadrato $S$ contenente tale cerchio è $(2 \cdot r)^2$.
 Si applica ora il **Metodo Montecarlo**. L'idea è di procedere numericamente ma con un approccio geometrico.
 
 immagine cerchio 1.27.30
@@ -366,3 +368,13 @@ Il trovarsi all'interno di un cerchio può essere modellato con una variabile al
 Il valore atteso di questa variabile aleatoria sarà $E[X] = 1 \cdot p + 0 \cdot (1-p) = p$, mentre la sua varianza sarà $V[X] = E[X^{2}] - E[X]^{2}$ = .
 
 -------------------------------------------------------------
+
+Main families of R.V.:
+- Discrete Random Variables
+- Continuous Random Variables
+
+Main techniques for generating R.V.:
+- inverse transform
+- acceptance-rejection
+- composition
+- (alias)

@@ -106,10 +106,13 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "f12c5d874698c2bb",
+  "active": "841d767269e7d257",
   "lastOpenFiles": [
-    "Informatica Teorica.md",
+    "Images/angoli_eulero.png",
     "3D Video Games.md",
+    "Simulation.md",
+    "Statistica e Probabilità.md",
+    "Informatica Teorica.md",
     "Images/hard_wired.jpeg",
     "Images/Aspose.Words.f8057e00-861a-4e9b-9348-649fbf9a37a9.178.png",
     "Images/Aspose.Words.f8057e00-861a-4e9b-9348-649fbf9a37a9.177.png",
@@ -141,8 +144,6 @@
     "Albero 2-3.md",
     "Albero AVL.md",
     "Albero Binario.md",
-    "Statistical Methods for Machine Learning.md",
-    "Simulation.md",
     "Leggere per sapere - Alessandro de Concini.pdf"
   ]
 }

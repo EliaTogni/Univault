@@ -196,7 +196,7 @@ Possono quindi considerare Tmondo⋅Tmacchinacome un’unica operazione componen
 
 **L’interpolazione nelle matrici è utile al fine di calcolare le trasformazioni intermedie mentre l’inversione serve a calcolare la matrice inversa**, quella che permette ad esempio il passaggio **dallo** **spazio mondo allo spazio oggetto**.
 
-Nel campo dei **videogiochi, l’utilizzo delle matrici come trasformazioni non è buono** dal momento che:
+Nel campo dei videogiochi, l’utilizzo delle matrici come trasformazioni non è buono** dal momento che:
 
 1. **Le matrici non sono compatte, bisogna memorizzare al minimo 12 numeri**;
 1. **non sono abbastanza veloci da utilizzare**;
@@ -205,7 +205,7 @@ Nel campo dei **videogiochi, l’utilizzo delle matrici come trasformazioni non 
 
 Nel caso del lancio di un oggetto
 
-<problema interpolazione matrici>
+problema interpolazione matrici
 
 **Anche se la traiettoria è dritta, l’oggetto lanciato viene ridotto di dimensioni**;
 
@@ -267,7 +267,7 @@ Oltre alle matrici, un metodo per rappresentare la rotazione sono gli angoli di 
 - **Beccheggio**: rotazione con l’asse orizzontale, imitato nell’intervallo [-90°,90°];
 - **Imbardata**: rotazione sull’asse verticale.
 
-![](Aspose.Words.f8057e00-861a-4e9b-9348-649fbf9a37a9.007.png)
+![[angoli_eulero.png]]
 
 Svantaggi negli angoli di Eulero:
 
@@ -520,7 +520,9 @@ La fisica può essere:![](Aspose.Words.f8057e00-861a-4e9b-9348-649fbf9a37a9.013.
 1. **dinamica:** tiene conto di velocità, accelerazione e inerzia, per misurare le forze in atto su un oggetto, la traiettoria che segue, ecc e cosa genera quelle forze**.**
 
 Non meno importante è la cinematica, ovvero lo studio dei moti in sè** e non come vengono generati.
-## Fisica Dinamica![](Aspose.Words.f8057e00-861a-4e9b-9348-649fbf9a37a9.014.png)
+## Fisica Dinamica
+
+![](Aspose.Words.f8057e00-861a-4e9b-9348-649fbf9a37a9.014.png)
 Sappiamo che ogni oggetto in un gioco 3D è definito da un punto che ne descrive posizione e orientamento, che possono essere rappresentati con diversi modi (vedi figura).
 #### Proprietà oggetti nella dinamica:
 Nella dinamica gli oggetti subiscono o possiedono le seguenti proprietà:
