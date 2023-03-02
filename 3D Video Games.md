@@ -27,73 +27,82 @@ E’ prassi, durante lo sviluppo di un gioco, praticare il baking, ovvero il mem
 
 # Algebra di punti e vettori
 Le strutture dati dei modelli hanno come base tre diversi componenti:
-- **punti**: corrispondono ad una posizione nello spazio;
-- **vettori**: corrispondono allo spostamento di un oggetto nello spazio ed alla sua velocità;
-- **versori**: indicano l’orientamento o la direzione di un oggetto rispetto al piano di esistenza, e sono di grandezza unitaria. 
+- i **punti**, ovvero triplette di coordinate le quali corrispondono ad una posizione nello spazio. Nel dettaglio, il punto $p \in \mathbb{R}^3 = [x_{p}, y_{p}, z_{p}]$;
+- i **vettori**, i quali corrispondono allo spostamento di un oggetto nello spazio ed alla sua velocità;
+- i **versori**, i quali indicano l’orientamento o la direzione di un oggetto rispetto al piano di esistenza e sono di grandezza unitaria. 
 
-Esempio: il modello 3D di un telefono nello spazio è formato da punti mentre un suo eventuale spostamento è rappresentato da un vettore e, per capire se lo schermo è rivolto verso il basso oppure no, è possibile utilizzare un versore ortogonale al telefono per indicare il suo orientamento.
+Come esempio, si pensi a come il modello 3D di un telefono nello spazio è formato da punti mentre un suo eventuale spostamento è rappresentato da un vettore e, per capire se lo schermo è rivolto verso il basso oppure no, è possibile utilizzare un versore ortogonale al telefono per indicare il suo orientamento.
 
-Queste tre entità sono alla base dei game engine e condividono la stessa struttura dati, conosciuta in Unity come **Vector3**, contenente una tripletta di valori **(x, y, z)**. In questo motore grafico, infatti, i vettori vengono rappresentati con la stessa classe. Tuttavia non è escluso l’utilizzo di classi differenti per farlo in differenti game engine.
+Queste tre entità sono alla base dei game engine ed esse condividono la stessa struttura dati, conosciuta in Unity come **Vector3**, contenente una tripletta di valori **(x, y, z)**. In questo motore grafico, infatti, i vettori vengono rappresentati con la stessa classe. Tuttavia non è escluso l’utilizzo di classi differenti per farlo in differenti game engine.
 
 -------------------------------------------------------------
 
 ## Possibili operazioni
 ### Differenza
 Dati due punti $p$ e $q$, la differenza $q-p$ è un vettore che indica lo spostamento da $p$ a $q$:
-
-$$p=[px,py,pz] \quad  q=[qx,qy,qz] \quad  v=q-p=[qx-px,qy-py,qz-pz]$$
-
-	$$\text{se } p,q∈P, (q-p)= v∈V, \quad con v=[qx-px,qy-py,qz-pz]$$
-
+$$p=[px,py,pz] \quad  q=[qx,qy,qz] \quad  v=q-p=[qx-px,qy-py,qz-pz]$$	$$\text{se } p,q∈P, (q-p)= v∈V, \quad \text{con } v=[qx-px,qy-py,qz-pz]$$
 differenza punti: da disegnare
 
 --------------------------------------------------------------------------------
 
 ### Addizione
-L’addizione tra un punto $p$ e un vettore $v$ dà come risultato un punto $q$ corrispondente al punto $p$ spostato di $v$:
+L’addizione tra un punto $p$ e un vettore $v$ dà come risultato un punto $q$ corrispondente al punto $p$ spostato di una quantità $v$:
 
-p=[px,py,pz]   v=[vx,vy,vz]   q=p+v=[px+vx,py+vy,pz+vz]
+$$p=[px,py,pz], \quad   v=[vx,vy,vz], \quad   q=p+v=[px+vx,py+vy,pz+vz]$$
 
-se p∈P, v∈V, p+v= q∈P, dove q= p+v=[px+vx,py+vy,pz+vz]
+$$\text{se } p∈P, v∈V, p+v= q∈P, \quad \text{dove } q= p+v=[px+vx,py+vy,pz+vz]$$
 
 somma punto vettore: da disegnare
 
-- **vettore identità o vettore zero z=[0,0,0]**: ogni punto p sommato con esso dà p come risultato.
+Il **vettore identità** o **vettore zero z** corrisponde al vettore [0,0,0]: ogni punto $p$ sommato con esso dà $p$ come risultato.
 
-**La somma tra due vettori v e w dà come risultato un vettore u** ottenuto col metodo del parallelogramma.
+La somma tra due vettori $v$ e $w$ dà come risultato un vettore $u$ ottenuto tramite il metodo del parallelogramma.
 
 ![[Aspose.Words.f8057e00-861a-4e9b-9348-649fbf9a37a9.003.png]]
 
-- **PRODOTTO**: Il prodotto tra un vettore v e uno scalare k è un vettore u avente stesso verso e direzione ma con la lunghezza moltiplicata per k.
-  - CASO PARTICOLARE: con k negativo la direzione del vettore si inverte.
+----------------------------------------------------------------
+
+### Prodotto
+Il prodotto tra un vettore $v$ e uno scalare $k$ è un vettore $u$ avente stesso verso e direzione ma con la lunghezza moltiplicata per $k$. Nel caso in cui $k$ sia negativo, la direzione del vettore si inverte.
 
 La differenza tra due vettori è un caso particolare della somma dal momento che:
 
-v-w= v+ (-w) = v+(-1)\*w
+$$ v-w= v+ (-w) = v+(-1)\cdot w$$
 
-- **INTERPOLAZIONE**: L’interpolazione tra due vettori v e w dà come risultato un vettore corrispondente alla loro media pesata utilizzando un valore k compreso tra 0 e 1:
+----------------------------------------------------------------
 
-Dato k ∈ [0,1]:
+### Interpolazione lineare
+L’interpolazione tra due vettori $v$ e $w$ dà come risultato un vettore corrispondente alla loro media pesata utilizzando un valore $k$ compreso tra $0$ e $1$:
+Dato $k ∈ [0,1], \quad u=lerp(v,w,k)= (1-k)⋅v + k⋅w$
 
-u=lerp(v,w,k)= (1-k)⋅v + k⋅w
+----------------------------------------------------------------
 
-- **NORMA**:La norma di un vettore indica la sua lunghezza:
+### Norma
+La norma di un vettore indica la sua lunghezza:
 
-v=[x,y,z] |v|=(x2 +y2 +z2)
+$$\text{Dato } v=[x,y,z], \quad |v|=(x2 +y2 +z2)$$
 
-- **NORMALIZZAZIONE**: La normalizzazione di un vettore v permette di ottenere il suo versore, per farlo si una la seguente formula:
+----------------------------------------------------------------
 
-vnorm=v||v||
+### Normalizzazione
+La normalizzazione di un vettore $v$ permette di ottenere il suo versore. Per farlo si una la seguente formula:
+
+$$ vnorm=v||v||$$
 
 La normalizzazione non funziona col vettore degenere.
 
 Le operazioni sui versori sono essenzialmente le stesse dei vettori, bisogna prendere però alcuni accorgimenti:
+- ’interpolazione tra due versori dà come risultato un vettore, quindi risulta necessario normalizzarlo. Una possibile soluzione è utilizzare la funzione _slerp()_, la quale restituisce un versore facendo l’interpolazione sferica. Questo metodo, però, non è consigliato, dal momento in cui le funzioni _cos_ e _sin_ sono molto lente.
 
-- **l’interpolazione tra due versori dà un vettore come risultato, quindi bisogna normalizzarlo**. Una possibile soluzione è utilizzare la funzione slerp() che restituisce un versore facendo l’interpolazione sferica, questo metodo però non è consigliato dal momento che le funzioni cos e sin sono molto lente.
+$$ slerp(v,w,k)=sin(1-k)α sin(α)v+sin(kα)sin(α)w \text{ dove } ɑ= \text{ angolo tra } v e w $$
 
-slerp(v,w,k)=sin(1-k)α)sin(α)v+sin(kα)sin(α)w Dove ɑ= angolo tra v e w.
+----------------------------------------------------------------
 
-- **ESTRAPOLAZIONE**: una combinazione lineare simile all’interpolazione con la differenza che i pesi non sono tra 0 e 1, ma la loro somma fa comunque 1.
+### ESTRAPOLAZIONE
+Una combinazione lineare simile all’interpolazione con la differenza che i pesi non sono tra 0 e 1, ma la loro somma fa comunque 1.
+
+----------------------------------------------------------------
+
 ## Prodotti tra vettori (e versori)
 Per quanto riguarda i prodotto tra due vettori, ve ne sono due:
 
