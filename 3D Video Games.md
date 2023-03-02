@@ -1,29 +1,27 @@
 
 # Introduzione
-I giochi 3D hanno permesso all’informatica di diventare quello che è oggi, senza la loro “fame di risorse” infatti non esisterebbero i monitor a colori le GPU, il machine learning, eccetera. Tutto questo è successo nell’arco di 30 anni.<br />
-I videogiochi vengono pubblicati dai publisher, essi sono anche quelli che forniscono i fondi necessari allo sviluppo.<br />
-Negli ultimi anni le spese inerenti al publishing sono diminuite, di conseguenza molti sviluppatori (per la maggior parte indipendenti) fanno self-publishing e finanziano i progetti col crowdfunding.<br />
-I giochi 2D sono formati da tilemap e sprite, questi ultimi sono bitmap che non modificano la schermata, essi sono ribaltabili (non bisogna quindi memorizzarli tutti) e permettono il cambio dinamico dei colori.<br />
-I giochi 3D invece sono formati da scene e modelli 3D, essi sono mostri di tecnologia dal momento che molti task come grafica e fisica devono essere computati in tempo reale, è prassi riutilizzare i componenti al fine di velocizzare lo sviluppo e sono rari i casi in cui si sviluppa tutto da zero.<br />
-Un videogioco è un “rischio” a livello economico e lo sarà sempre, infatti può dichiarare vita o morte allo studio che l’ha sviluppato.
+I giochi 3D hanno permesso all’informatica di diventare quello che è oggi. Senza la loro “fame di risorse”, infatti, non esisterebbero i monitor a colori, le GPU, il machine learning e numerose altre tecnologie. Lo sviluppo di tutto ciò è avvenuto nell’arco di 30 anni.<br />
+I videogiochi vengono pubblicati dai publisher, i quali sono anche le figure che forniscono i fondi necessari allo sviluppo.<br />
+Negli ultimi anni, le spese inerenti al publishing sono diminuite e, di conseguenza, un sempre crescente numero di sviluppatori (per la maggior parte indipendenti) hanno intrapreso la scelta di praticare self-publishing e finanziare i propri progetti tramite crowdfunding.<br />
+Per parlare di videogiochi è necessario prima distinguere tra due macrocategorie: i giochi **bidimensionali** (o **2D**) ed i giochi **tridimensionali** (o **3D**).<br />
+I giochi 2D sono formati da **tilemap** e **sprite**. Questi ultimi non sono altro che bitmap, le quali che non modificano la schermata. Esse sono ribaltabili (rendendo non necessaria, quindi, la memorizzazione di ciascuno di essi) e permettono il cambio dinamico dei colori.<br />
+I giochi 3D, invece, sono formati da scene e modelli 3D. Essi sono mostri di tecnologia dal momento che molte task come grafica e fisica devono essere necessariamente computate in tempo reale. Nello sviluppo dei 3D videogames è prassi riutilizzare i componenti al fine di velocizzare lo sviluppo, rendendo rari i casi in cui lo sviluppo parte da zero.<br />
 
 Gli sviluppatori di un videogioco sono divisi in tre categorie:
-
-- **tecnici**: sono tutti quelli che creano il videogioco a livello di programmazione e tutti i game tools che permettono di semplificare certi task. Alcuni tecnici possono sviluppare direttamente il game engine del gioco;
-- **artisti**: sono quelli che creano gli asset;
-- **designer**: sono comparabili ai registi e sono quelli che danno il “fattore divertimento” al gioco.
+- **tecnici**, ovvero gli individui che partecipano alla creazione del videogioco a livello di programmazione e tutti i game tools che permettono di semplificare certi task. Alcuni tecnici possono sviluppare direttamente il game engine del gioco;
+- **artisti**, ovvero gli individui che si occupano di creare gli asset;
+- **designer**, ovvero gli individui il cui ruolo è comparabile ai registi cinematografici. Sono coloro i quali si adoperano per aggiungere il “fattore divertimento” al gioco.
  
-![](hard_wired.jpeg)
+![](hard_wired.png)
 
-Una feature di un videogioco è tanto **hard-wired** in base a dove questa viene implementata. Se essa viene implementata in hardware ad esempio, solamente il produttore può cambiarla e ciò può causare dipendenze dalla piattaforma.
-
-Un vincolo molto hard-wired permette maggior efficienza, scalabilità e riutilizzo. Al contrario, un vincolo più soft è più facile da mantenere, più customizzabile e . inoltre, più flessibile.
+Una feature di un videogioco è tanto **hard-wired** in base a dove questa viene implementata. Se essa viene implementata nell'hardware, ad esempio, solamente il produttore può cambiarla e ciò può causare dipendenze dalla piattaforma.<br />
+Un vincolo molto hard-wired permette maggior efficienza, scalabilità e riutilizzo. Al contrario, un vincolo più soft è più facile da mantenere, più customizzabile e, inoltre, più flessibile.
 
 Le componenti di un videogioco possono essere:
-- **assets**: vengono costruite durante lo sviluppo del gioco, dato che sono scriptate permettono una maggior qualità, un maggior controllo e (di solito) sono più efficienti in tempo;
-- **procedurali**: vengono creati dal gioco a tempo di esecuzione, ciò permette maggior variazione e flessibilità oltre che a una maggior efficienza in spazio.
+- **assets**: vengono costruiti durante lo sviluppo del gioco e, dato che sono scriptati, permettono una maggior qualità, un maggior controllo e (di solito) sono più efficienti in termini di tempo;
+- **procedurali**: vengono create dal gioco a tempo di esecuzione. Ciò permette maggior variazione e flessibilità, oltre che ad una maggior efficienza in termini di spazio.
 
-E’ prassi effettuare durante lo sviluppo di un gioco la tecnica del baking, essa consiste nel memorizzare il risultato di una computazione per poi riutilizzarla in seguito.
+E’ prassi, durante lo sviluppo di un gioco, praticare il baking, ovvero il memorizzare il risultato di una computazione per poi riutilizzarla in seguito. In questo modo si guadagna in termini di tempo (e CPU/GPU workload) ma si perde in termini di spazio di memoria e di flessibilità.
 
 -------------------------------------------------------------
 
