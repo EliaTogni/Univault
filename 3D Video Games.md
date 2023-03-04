@@ -27,69 +27,82 @@ E’ prassi, durante lo sviluppo di un gioco, praticare il baking, ovvero il mem
 
 # Algebra di punti e vettori
 Le strutture dati dei modelli hanno come base tre diversi componenti:
-- i **punti**, ovvero triplette di coordinate le quali corrispondono ad una posizione nello spazio. Nel dettaglio, il punto $p \in \mathbb{R}^3 = [x_{p}, y_{p}, z_{p}]$;
-- i **vettori**, i quali corrispondono allo spostamento di un oggetto nello spazio ed alla sua velocità;
-- i **versori**, i quali indicano l’orientamento o la direzione di un oggetto rispetto al piano di esistenza e sono di grandezza unitaria. 
+- il **punto**, ovvero una tripletta di coordinate le quali corrispondono ad una posizione nello spazio. Nel dettaglio, il punto $p \in \mathbb{R}^3 = (x_{p}, y_{p}, z_{p})$;
+- il **vettore**, il quale corrisponde allo spostamento di un oggetto nello spazio ed alla sua velocità. Un vettore è calcolabile come la differenza tra due punti;
+- il **versore** (o **vettore unitario**, o **normale**, o **direzione**, o **vettore normalizzato**), il quale indica l’orientamento o la direzione di un oggetto rispetto al piano di esistenza e sono di grandezza unitaria. 
 
 Come esempio, si pensi a come il modello 3D di un telefono nello spazio è formato da punti mentre un suo eventuale spostamento è rappresentato da un vettore e, per capire se lo schermo è rivolto verso il basso oppure no, è possibile utilizzare un versore ortogonale al telefono per indicare il suo orientamento.
 
 Queste tre entità sono alla base dei game engine ed esse condividono la stessa struttura dati, conosciuta in Unity come **Vector3**, contenente una tripletta di valori **(x, y, z)**. In questo motore grafico, infatti, i vettori vengono rappresentati con la stessa classe. Tuttavia non è escluso l’utilizzo di classi differenti per farlo in differenti game engine.
 
+Librerie, motori grafici e linguaggi possono optare di utilizzare lo stesso tipo di dato per punti, vettori e versori tridimensionali così come è legito optare di utilizzare tre tipi differenti. Ciò nonostante, non dovrebbero essere considerati come la stessa cosa, come, ad esempio, nell'utilizzo dello stesso tipo con diverse semantiche (come il tipo double per rappresentare il peso, la temperatura e così dicendo).
+E' dovere del programmatore di utilizzarli nella maniera corretta.
+
 -------------------------------------------------------------
 
 ## Possibili operazioni
-### Differenza
-Dati due punti $p$ e $q$, la differenza $q-p$ è un vettore che indica lo spostamento da $p$ a $q$:
-$$p=[px,py,pz] \quad  q=[qx,qy,qz] \quad  v=q-p=[qx-px,qy-py,qz-pz]$$	$$\text{se } p,q∈P, (q-p)= v∈V, \quad \text{con } v=[qx-px,qy-py,qz-pz]$$
-differenza punti: da disegnare
 
---------------------------------------------------------------------------------
+Al fine di fornire la più completa descrizione delle operazioni, si fornirà di seguito una definizione sia dal punto di vista spaziale, sia dal punto di vista algebrico e sia dal punto di vista sintattico.
 
 ### Addizione
-L’addizione tra un punto $p$ e un vettore $v$ dà come risultato un punto $q$ corrispondente al punto $p$ spostato di una quantità $v$:
+L’addizione tra un punto $p$ e un vettore $v$ dà come risultato un punto $q$ corrispondente, in termini spaziali, al punto $p$ spostato di una quantità $v$ nella direzione del vettore:
 
-$$p=[px,py,pz], \quad   v=[vx,vy,vz], \quad   q=p+v=[px+vx,py+vy,pz+vz]$$
+$$a=(ax,ay,az), \quad   v=(vx,vy,vz), \quad   q=a+v=(ax+vx,ay+vy,az+vz)$$
 
-$$\text{se } p∈P, v∈V, p+v= q∈P, \quad \text{dove } q= p+v=[px+vx,py+vy,pz+vz]$$
+$$\text{se } a∈P, v∈V, a+v= q∈P, \quad \text{dove } q= a+v=(ax+vx,ay+vy,az+vz)$$
 
-somma punto vettore: da disegnare
+![[somma_punto_vettore.png]]
 
-Il **vettore identità** o **vettore zero z** corrisponde al vettore [0,0,0]: ogni punto $p$ sommato con esso dà $p$ come risultato.
+Il **vettore identità** o **vettore zero** $z$ corrisponde al vettore $(0,0,0)$: ogni punto $p$ sommato con esso restituirà come risultato lo stesso punto $p$.
 
-La somma tra due vettori $v$ e $w$ dà come risultato un vettore $u$ ottenuto tramite il metodo del parallelogramma.
+L'addizione tra due vettori $v$ e $w$ restituirà come risultato un nuovo vettore $u$, ottenuto tramite il metodo del parallelogramma.
 
-![[Aspose.Words.f8057e00-861a-4e9b-9348-649fbf9a37a9.003.png]]
+![[somma_vettoriale_regola_parallelogramma.png]]
 
 ----------------------------------------------------------------
 
-### Prodotto
-Il prodotto tra un vettore $v$ e uno scalare $k$ è un vettore $u$ avente stesso verso e direzione ma con la lunghezza moltiplicata per $k$. Nel caso in cui $k$ sia negativo, la direzione del vettore si inverte.
+### Differenza
+Dati due punti $p$ e $q$, la differenza $q-p$ è un vettore il quale, da un punto di vista spaziale, indica lo spostamento da $p$ a $q$:
+$$p=(px,py,pz) \quad  q=(qx,qy,qz) \quad  v=q-p=(qx-px,qy-py,qz-pz)$$	$$\text{se } p,q∈P, q-p= v∈V, \quad \text{con } v=(qx-px,qy-py,qz-pz)$$
+![[differenza_punto_punto.png]]
 
-La differenza tra due vettori è un caso particolare della somma dal momento che:
+La differenza tra due vettori $v$ e $w$ restituirà come risultato un nuovo vettore $u$, ottenuto tramite il secondo metodo del parallelogramma.
+
+![[differenza_vettoriale_regola_parallelogramma.png]]
+
+--------------------------------------------------------------------------------
+
+### Prodotto
+Il prodotto tra un vettore $v$ e uno scalare $k$ è un vettore $u$ avente stesso verso e direzione ma con la lunghezza moltiplicata per $k$.<br />Nel caso in cui $k$ sia negativo, la direzione del vettore si inverte. Infatti, il vettore $b$ opposto al vettore $a$ non è altro che il vettore $a$ moltiplicato per uno scalare $k = 1$.<br />
+La differenza tra due vettori è, quindi, un caso particolare della somma dal momento in cui:
 
 $$ v-w= v+ (-w) = v+(-1)\cdot w$$
 
 ----------------------------------------------------------------
 
 ### Interpolazione lineare
-L’interpolazione tra due vettori $v$ e $w$ dà come risultato un vettore corrispondente alla loro media pesata utilizzando un valore $k$ compreso tra $0$ e $1$:
-Dato $k ∈ [0,1], \quad u=lerp(v,w,k)= (1-k)⋅v + k⋅w$
+L’interpolazione tra due vettori $v$ e $w$ restituisce come risultato un vettore corrispondente alla loro media pesata utilizzando un valore $k$ compreso tra $0$ e $1$:
+$$\text{Dato }k ∈ [0,1], \quad u=lerp(v,w,k)= (1-k)⋅v + k⋅w$$
+
+o, in alternativa:
+
+$$\text{dato } k \in [0,1]. \quad u = lerp(v, w, k) = v + k(w-v)$$
 
 ----------------------------------------------------------------
 
 ### Norma
-La norma di un vettore indica la sua lunghezza:
+La **norma** di un vettore indica la sua lunghezza, la sua magnitudine:
 
-$$\text{Dato } v=[x,y,z], \quad |v|=(x2 +y2 +z2)$$
+$$\text{Dato } v=(x,y,z), \quad |v|=\sqrt{(x^2 +y^2 +z^2)}$$
 
 ----------------------------------------------------------------
 
 ### Normalizzazione
-La normalizzazione di un vettore $v$ permette di ottenere il suo versore. Per farlo si una la seguente formula:
+La **normalizzazione** di un vettore $v$ è una tecnica la quale permette di ottenere il suo versore. Per fare ciò, si utilizza la seguente formula:
 
-$$ vnorm=v||v||$$
+$$ vnorm=\frac{v}{||v||}$$
 
-La normalizzazione non funziona col vettore degenere.
+La normalizzazione non è applicabile al vettore degenere, in quanto si tratta di un vettore con lunghezza $0$.
 
 Le operazioni sui versori sono essenzialmente le stesse dei vettori, bisogna prendere però alcuni accorgimenti:
 - ’interpolazione tra due versori dà come risultato un vettore, quindi risulta necessario normalizzarlo. Una possibile soluzione è utilizzare la funzione _slerp()_, la quale restituisce un versore facendo l’interpolazione sferica. Questo metodo, però, non è consigliato, dal momento in cui le funzioni _cos_ e _sin_ sono molto lente.
