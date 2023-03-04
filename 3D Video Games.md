@@ -81,7 +81,7 @@ $$ v-w= v+ (-w) = v+(-1)\cdot w$$
 ----------------------------------------------------------------
 
 ### Interpolazione lineare
-L’interpolazione tra due vettori $v$ e $w$ restituisce come risultato un vettore corrispondente alla loro media pesata utilizzando un valore $k$ compreso tra $0$ e $1$:
+L’interpolazione (_lerp()_ o _mix()_)tra due vettori $v$ e $w$ restituisce come risultato un vettore corrispondente alla loro media pesata utilizzando un valore $k$ compreso tra $0$ e $1$:
 $$\text{Dato }k ∈ [0,1], \quad u=lerp(v,w,k)= (1-k)⋅v + k⋅w$$
 
 o, in alternativa:
@@ -91,9 +91,9 @@ $$\text{dato } k \in [0,1]. \quad u = lerp(v, w, k) = v + k(w-v)$$
 ----------------------------------------------------------------
 
 ### Norma
-La **norma** di un vettore indica la sua lunghezza, la sua magnitudine:
+La **norma** di un vettore indica la sua lunghezza, la sua magnitudine, la distanza tra due punti:
 
-$$\text{Dato } v=(x,y,z), \quad |v|=\sqrt{(x^2 +y^2 +z^2)}$$
+$$\text{Dato } v=(x,y,z), \quad ||v||=\sqrt{(x^2 +y^2 +z^2)}$$
 
 ----------------------------------------------------------------
 
@@ -104,10 +104,11 @@ $$ vnorm=\frac{v}{||v||}$$
 
 La normalizzazione non è applicabile al vettore degenere, in quanto si tratta di un vettore con lunghezza $0$.
 
-Le operazioni sui versori sono essenzialmente le stesse dei vettori, bisogna prendere però alcuni accorgimenti:
-- ’interpolazione tra due versori dà come risultato un vettore, quindi risulta necessario normalizzarlo. Una possibile soluzione è utilizzare la funzione _slerp()_, la quale restituisce un versore facendo l’interpolazione sferica. Questo metodo, però, non è consigliato, dal momento in cui le funzioni _cos_ e _sin_ sono molto lente.
+Le operazioni sui versori sono essenzialmente le stesse dei vettori. E' necessario, però, prendere alcuni accorgimenti:
+- l'interpolazione tra due versori restituisce come risultato un vettore. Risulta, quindi, necessario normalizzare tale vettore. Una possibile soluzione è utilizzare la funzione _slerp()_, la quale restituisce un versore facendo l’interpolazione sferica. Questo metodo, però, non è consigliato, dal momento in cui le funzioni _cos_ e _sin_ sono molto lente.
 
-$$ slerp(v,w,k)=sin(1-k)α sin(α)v+sin(kα)sin(α)w \text{ dove } ɑ= \text{ angolo tra } v e w $$
+$$slerp(v,w,k)=s in(1-k) \alpha sin(\alpha)v+sin(k\alpha)sin(\alpha)w$$
+$$ \text{ dove } \alpha= \text{ angolo tra } v \text{ e } w $$
 
 ----------------------------------------------------------------
 
@@ -119,36 +120,31 @@ Una combinazione lineare simile all’interpolazione con la differenza che i pes
 ## Prodotti tra vettori (e versori)
 Per quanto riguarda i prodotto tra due vettori, ve ne sono due:
 
-- prodotto dot;
-- il prodotto cross; 
+- il prodotto **dot**;
+- il prodotto **cross**; 
 
-Il prodotto dot è l’equivalente del prodotto scalare ed è la somma dei prodotti tra le coordinate dei vettori:
+Il prodotto dot è l’equivalente del **prodotto scalare** ed è la somma dei prodotti tra le coordinate dei vettori:
 
-v⋅w=(VX⋅Wx)+(Vy⋅Wy)+(Vz⋅Wz)
+$$v \cdot w=(vx\cdot wx)+(vy \cdot wy)+(vz \cdot wz)$$
 
-Il prodotto dot ha tante proprietà, per questo motivo non ci tira mai un bidone:
+Il prodotto dot gode di numerose proprietà:
+1) è un test di ortogonalità per vettori. infatti, due vettori sono ortogonali se il loro prodotto dot ha come risultato $0$;
+2) se il risultato del prodotto dot è diverso da $0$, il segno indicherà se i vettori sono direzionati allo stesso modo o meno. Nel primo caso il prodotto dot sarà positivo, altrimenti sarà negativo;
+3) il prodotto dot è direttamente proporzionale alle norme dei due vettori ed il coseno dell'angolo che formano. Quindi il prodotto dot tra due versori sarà proporzionale al solo coseno;
+$$v⋅w= |v| ⋅ |w| ⋅ cos(a)$$
 
-1. è un test di ortogonalità per vettori, **due vettori sono ortogonali se il loro prodotto dot fa 0**;
-1. **se il dot è diverso da 0, il segno indica se stanno guardando dalla stessa parte o meno**, nel primo caso sarà positivo, altrimenti è negativo;
-1. **il prodotto dot è direttamente proporzionale alle norme dei due vettori ed il coseno dell'angolo che formano**:
+4) il prodotto dot di un vettore con sè stesso dà come risultato la sua norma al quadrato:
 
-v⋅w= |v| ⋅ |w| ⋅ cos(a)
+$$v⋅v=|v|^2=(x^2 + y^2 +z^2)$$
 
-quindi, se si fa il prodotto dot tra due versori, esso sarà proporzionale al solo coseno;
+5) il prodotto dot tra un vettore $v$ ed il risultato di un’interpolazione tra $a$ e $b$ equivale all’interpolazione tra $v \cdot a$ e $v \cdot b$:
+$$v \cdot lerp(a,b,k) = lerp(v \cdot a,v \cdot b,k)$$
 
-1. **il prodotto dot di un vettore con sè stesso dà come risultato la sua norma al quadrato**:
+6) con questo prodotto è possibile estrarre una coordinata da un vettore:
 
-`	`v⋅v=|v|2=x2 + y2 +z2
+$$\text{se } v=(x,y,z) e w=0,1,0)  , \to v \cdot w=y$$
 
-1. **il prodotto dot tra un vettore v e il risultato di un’interpolazione tra a e b equivale all’interpolazione tra v\*a e v\*b**:
-
-`	`v⋅mix(a,b,k) = mix(v⋅a,v⋅b,k)
-
-1. con questo prodotto è **possibile estrarre una coordinata da un vettore:**
-
-se v=[x,y,z] e w=[0,1,0]  , ⇒v⋅w=y
-
-1. **Il prodotto dot é LINEARE e quindi si mischia bene con altri operatori lineari**;
+7) il prodotto dot é **lineare;
 
 **Il prodotto cross** è l’equivalente del prodotto vettoriale: **il risultato di questo prodotto tra due vettori è quello ortogonale a entrambi**, per calcolarlo si procede nel seguente modo:
 
@@ -165,6 +161,9 @@ A differenza del prodotto dot, **il cross non è commutativo**, infatti **invert
 `	`se u=v ×w, |u|=|v|⋅|w|⋅sin(a)
 
 1. **Il prodotto cross di un vettore con sè stesso dà il vettore degenere come risultato**
+
+----------------------------------------------------------------
+
 ## Sistemi di riferimento
 Punti, vettori e versori stanno in un sistema di riferimento con 3 assi, ovvero x, y e z e sono cartesiani nel caso generico. 
 
