@@ -81,12 +81,18 @@ $$ v-w= v+ (-w) = v+(-1)\cdot w$$
 ----------------------------------------------------------------
 
 ### Interpolazione lineare
-L’interpolazione (_lerp()_ o _mix()_)tra due vettori $v$ e $w$ restituisce come risultato un vettore corrispondente alla loro media pesata utilizzando un valore $k$ compreso tra $0$ e $1$:
+L’interpolazione (_lerp()_ o _mix()_)tra due vettori $v$ e $w$ restituisce come risultato un vettore corrispondente alla loro media pesata utilizzando un valore $k \in [0, 1]$:
 $$\text{Dato }k ∈ [0,1], \quad u=lerp(v,w,k)= (1-k)⋅v + k⋅w$$
 
 o, in alternativa:
 
 $$\text{dato } k \in [0,1]. \quad u = lerp(v, w, k) = v + k(w-v)$$
+
+L'interpolazione tra due punti $p_{0} e p_{1}$ è, invece:
+
+$$p_{0} + t(p_1 - p_0)$$
+
+infatti, nonostante sarebbe possibile sviluppare la moltiplicazione tra il coefficiente di interpolazione e la differenza tra $p_1$ e $p_0$, la risultate $(1-t)p_0 + (t)p_1$ non ha un significato geometrico facilmente definibile, poichè scalare un punto o sommare due punti non ha un'interpretazione spaziale intuibile.
 
 ----------------------------------------------------------------
 
@@ -112,15 +118,14 @@ $$ \text{ dove } \alpha= \text{ angolo tra } v \text{ e } w $$
 
 ----------------------------------------------------------------
 
-### ESTRAPOLAZIONE
-Una combinazione lineare simile all’interpolazione con la differenza che i pesi non sono tra 0 e 1, ma la loro somma fa comunque 1.
+## Estrapolazione
+L'**estrapolazione** è una combinazione lineare simile all’interpolazione, con la differenza che, nonostante $a+b = 1$,  $a, b \notin [0,1]$.
 
 ----------------------------------------------------------------
 
 ## Prodotti tra vettori (e versori)
 Per quanto riguarda i prodotto tra due vettori, ve ne sono due:
-
-- il prodotto **dot**;
+- il prodotto **dot**, indicato con $v \cdot w$, oppure $< v, w >$;
 - il prodotto **cross**; 
 
 Il prodotto dot è l’equivalente del **prodotto scalare** ed è la somma dei prodotti tra le coordinate dei vettori:
@@ -128,29 +133,29 @@ Il prodotto dot è l’equivalente del **prodotto scalare** ed è la somma dei p
 $$v \cdot w=(vx\cdot wx)+(vy \cdot wy)+(vz \cdot wz)$$
 
 Il prodotto dot gode di numerose proprietà:
-1) è un test di ortogonalità per vettori. infatti, due vettori sono ortogonali se il loro prodotto dot ha come risultato $0$;
-2) se il risultato del prodotto dot è diverso da $0$, il segno indicherà se i vettori sono direzionati allo stesso modo o meno. Nel primo caso il prodotto dot sarà positivo, altrimenti sarà negativo;
-3) il prodotto dot è direttamente proporzionale alle norme dei due vettori ed il coseno dell'angolo che formano. Quindi il prodotto dot tra due versori sarà proporzionale al solo coseno;
-$$v⋅w= |v| ⋅ |w| ⋅ cos(a)$$
+1) è un test di ortogonalità per vettori. infatti, due vettori (o versori) sono ortogonali se il loro prodotto dot ha come risultato $0$;
+2) se il risultato del prodotto dot è diverso da $0$, il segno indicherà se i vettori sono direzionati allo stesso modo o meno. Nel primo caso il prodotto dot sarà positivo (e quindi l'angolo tra di essi sarà un angolo acuto), altrimenti sarà negativo (e quindi, l'angolo tra di essi sarà ottuso);
+3) il prodotto dot è direttamente proporzionale alle norme dei due vettori ed il coseno dell'angolo che formano. Quindi, il prodotto dot tra due versori sarà proporzionale al solo coseno;
+$$v⋅w= ||v|| \cdot ||w|| \cdot cos(\alpha)$$
 
 4) il prodotto dot di un vettore con sè stesso dà come risultato la sua norma al quadrato:
 
-$$v⋅v=|v|^2=(x^2 + y^2 +z^2)$$
+$$v⋅v=||v||^2=(x^2 + y^2 +z^2)$$
 
 5) il prodotto dot tra un vettore $v$ ed il risultato di un’interpolazione tra $a$ e $b$ equivale all’interpolazione tra $v \cdot a$ e $v \cdot b$:
 $$v \cdot lerp(a,b,k) = lerp(v \cdot a,v \cdot b,k)$$
 
 6) con questo prodotto è possibile estrarre una coordinata da un vettore:
 
-$$\text{se } v=(x,y,z) e w=0,1,0)  , \to v \cdot w=y$$
+$$\text{se } v=(x,y,z) \text{ e } w=(0,1,0)  , \to v \cdot w=y$$
 
 7) il prodotto dot é **lineare;
 
-**Il prodotto cross** è l’equivalente del prodotto vettoriale: **il risultato di questo prodotto tra due vettori è quello ortogonale a entrambi**, per calcolarlo si procede nel seguente modo:
+Il prodotto **cross** è l’equivalente del prodotto vettoriale: il risultato di questo prodotto tra due vettori $v$ e $w$ è quello ortogonale a entrambi. Per calcolare tale prodotto, si procede nel seguente modo:
 
-dati v=[xv,yv,zv] & w=[wx,wy,wz],
+$$\text{dati } v=(xv,yv,zv) \text{ e } w=(wx,wy,wz),$$
 
-v × w= [ vy⋅wz - vz⋅wy , vz⋅wx - wx⋅vz , vx⋅wy - vy⋅wx ]
+$$v \times w= ( vy⋅wz - vz⋅wy , vz⋅wx - wx⋅vz , vx⋅wy - vy⋅wx )$$
 
 Il ragionamento che si fa è il seguente: per calcolare una coordinata, si esclude la linea corrispondente e si “disegna” una croce con le altre 2.
 
