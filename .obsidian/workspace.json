@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3D Video Games.md",
+                "file": "Informatica Teorica.md",
                 "mode": "source",
                 "source": false
               }
@@ -77,7 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "3D Video Games.md",
+                "file": "Informatica Teorica.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,6 +108,8 @@
   },
   "active": "f12c5d874698c2bb",
   "lastOpenFiles": [
+    "Informatica Teorica.md",
+    "3D Video Games.md",
     "Images/differenza_vettoriale_regola_parallelogramma.png",
     "Images/differenza_punto_punto.png",
     "Images/somma_vettoriale_regola_parallelogramma.png",
@@ -115,14 +117,11 @@
     "Images/hard_wired.png",
     "Images/Schermata del 2023-03-02 14-03-17.png",
     "Images/angoli_eulero.png",
-    "3D Video Games.md",
     "Simulation.md",
     "Statistica e Probabilità.md",
-    "Informatica Teorica.md",
     "Images/hard_wired.jpeg",
     "Images/Aspose.Words.f8057e00-861a-4e9b-9348-649fbf9a37a9.178.png",
     "Images/Aspose.Words.f8057e00-861a-4e9b-9348-649fbf9a37a9.177.png",
-    "Images/Aspose.Words.f8057e00-861a-4e9b-9348-649fbf9a37a9.176.png",
     "Teoria della Complessità Computazionale.md",
     "Efficienza.md",
     "Dynamic Host Configuration Protocol.md",
