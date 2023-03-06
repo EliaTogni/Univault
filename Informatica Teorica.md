@@ -100,48 +100,72 @@ Per abbreviare, si scrive $A \times A \times A \times ... \times A = A^n$.
 
 ----------------------------------------------------------------
 
+## Insiemi di funzioni
+$B^A = \{f:A \to B\} =$ l'insieme delle funzioni da $A$ a $B$.
+$B^A_{\bot} = \{f:A \to B\} =$ l'insieme delle funzioni parziali da $A$ a $B$ 
+
+----------------------------------------------------------------
+
 ## Funzione di valutazione
 Dati $A$, $B$ e $B_{\bot}^A$, si definisce la seguente **funzione di valutazione**:
 $$w: B_{\bot}^A \times A \to B$$
 $$w(f, a) = f(a)$$
-- Tenendo fisso $a$ provo tutte le funzioni su $a$  
-- Tenendo fisso $f$ ottengo il grafico di $f$
+- Tenendo fisso $a$ si provano tutte le funzioni su $a$  
+- Tenendo fisso $f$ si ottiene il grafico di $f$
 
 -------------------------------------------------------------
 
 # Sistema di calcolo
-Un sistema di calcolo $\mathbb{C}$ è un'oggetto che presi in ingresso un programma $P$ e dei dati $x$ produce in uscita l'output $y$ o $\bot$ ottenuto dall'esecuzione di $P$ su $x$.  
-Un programma $P \in \text{ DATI}_{\bot}^{\text{DATI}}$ è una sequenza di regole che trasformano un dato di input in un dato di output (o va in loop) $\implies P \in \text{ DATI}_{\bot}^{\text{DATI}}$ è una funzione (in un linguaggio).  
-$\mathbb{C}: \text{ DATI}_{\bot}^{\text{DATI}} \times \text{ DATI} \to \text{ DATI}_{\bot}$ è una funzione di valutazione e $\mathbb{C}(P, x)$ è la funzione calcolata da $P$, ovvero è la *semantica* di $P$.  
+Un **sistema di calcolo** $\mathbb{C}$ è un'oggetto il quale, presi in ingresso un programma $P$ e dei dati $x$, produce in uscita l'output $y$ o $\bot$ ottenuto dall'esecuzione di $P$ su $x$.<br />
+
+immagine
+
+Un programma $P \in \text{ DATI}_{\bot}^{\text{DATI}}$ è una sequenza di regole che trasformano un dato di input in un dato di output (o in un loop) $\implies P \in \text{ DATI}_{\bot}^{\text{DATI}}$ è una funzione (in un linguaggio). <br />
+$\mathbb{C}: \text{ DATI}_{\bot}^{\text{DATI}} \times \text{ DATI} \to \text{ DATI}_{\bot}$ è una funzione di valutazione e $\mathbb{C}(P, x)$ è la funzione calcolata da $P$, ovvero è la **semantica** di $P$. 
+
+----------------------------------------------------------------
+
 ## Potenza computazionale di un sistema di calcolo
-La _potenza computazionale_ di un sistema di calcolo indica cosa il sistema di calcolo è in grado di calcolare: ci chiediamo se la semantica del programma $P$ sia un sottoinsieme proprio o improprio delle funzioni che dai dati vanno nei dati.  
+La **potenza computazionale** di un sistema di calcolo indica cosa il sistema di calcolo è in grado di calcolare: ci si domanda se la semantica del programma $P$ sia un sottoinsieme proprio o improprio delle funzioni che dai dati vanno nei dati.  
 $$F(\mathbb{C}) = \{\mathbb{C}(P, \_): P \in \text{ PROG}\} \subseteq \text{ DATI}_{\bot}^{\text{DATI}}$$
 Stabilire cosa può fare l'informatica significa studiare il carattere dell'inclusione: se è impropria, ovvero se la semantica coincide con l'insieme delle funzioni da $\text{DATI}$ a $\text{DATI}$, allora l'informatica può tutto, altrimenti se è propria alcuni problemi non sono automatizzabili.  
 
-# Cardinalità di insiemi infiniti
-## Relazione
-Relazione binaria su $A$: $R \subseteq A \times A$. Gli elementi $a, b \in A$ stanno in relazione $R$ se e solo se  $(a, b) \in R$ e scriviamo $aRb$ o $a \cancel{R} b$.  
-### Relazione di equivalenza
-$R \subseteq A^2$ è una relazione di _equivalenza_ se e solo se è:  
-1. riflessiva: $\forall a, aRa$;  
-2. simmetrica: $\forall a, b, aRb \iff bRa$;  
-3. transitiva: $\forall a, b, c, aRb \wedge bRc \implies aRc$.  
+Calcolare funzioni significa risolvere problemi in generale. Ad ogni problema è possibile associare una funzione soluzione programmando si risolve automaticamente in problema.
 
-Definiamo classe di equivalenza $[a]_R$ per una relazione d'equivalenza $R$ l'insieme degli elementi che sono in relazione con $a$: $[a]_R = \{b \in A: aRb\}$.  
-Ogni classe di equivalenza induce una _partizione_ sull'insieme dominio, ovvero individua $A_1, \dots, A_n \subseteq A$ tali che  
-1. $A_i \neq \emptyset$;  
-2. $i \neq j \implies A_i \cap A_j = 0$;
-3. $\bigcup_{i \ge 1} A_i = A$.  
+----------------------------------------------------------------
+
+# Cardinalità di insiemi infiniti
+Dato un insieme $A$, si definisce **cardinalità** di $A$ (o $|A|$), intuiitivamente, il numero di elementi appartenenti ad $A$.<br />
+Mentre per quanto riguarda insiemi finiti, questa nozione sia adeguata, non è adatta per gli insiemi cardinalmente infiniti.<br />Il concetto di cardinalità di insiemi deve essere precisato e, in particolare, per poter parlare appropriatamente di insiemi conteneti un numero infinito di elementi.
+
+## Relazione
+Relazione binaria su $A$: $R \subseteq A \times A$. Gli elementi $a, b \in A$ stanno in relazione $R$ se e solo se  $(a, b) \in R$. La notazione è $aRb$ oppure $a \cancel{R} b$. 
+
+----------------------------------------------------------------
+
+### Relazione di equivalenza
+$R \subseteq A^2$ è una relazione di **equivalenza** se e solo se è:  
+1) **riflessiva**: $\forall a, aRa$;  
+2) **simmetrica**: $\forall a, b, aRb \iff bRa$;  
+3) **transitiva**: $\forall a, b, c, aRb \wedge bRc \implies aRc$.  
+
+Dato $a \in A$, si definisce **classe di equivalenza** $[a]_R$ per una relazione d'equivalenza $R$, l'insieme degli elementi che sono in relazione con $a$: $$[a]_R = \{b \in A: aRb\}$$ 
+Ogni classe di equivalenza induce una **partizione** sull'insieme dominio, ovvero individua $A_1, \dots, A_n \subseteq A$ tali che:  
+1) $A_i \neq \emptyset$;  
+2) $i \neq j \implies A_i \cap A_j = 0$;
+3) $\bigcup_{i \ge 1} A_i = A$.  
 
 Si dimostra facilmente che:  
-1. Non esistono classi di equivalenza vuote;
-2. Dati $a, b \in A$, vale $[a]_R \cap [b]_R = \emptyset$ oppure $[a]_R = [b]_R$;
-3. $\bigcup_{a \in A} [a]_R = A$.  
+1) Non esistono classi di equivalenza vuote;
+2) Dati $a, b \in A$, vale $[a]_R \cap [b]_R = \emptyset$ oppure $[a]_R = [b]_R$;
+3) $\bigcup_{a \in A} [a]_R = A$.  
 
-L'insieme $A$ partizionato in tal modo è detto _insieme quoziente_ di $A$ rispetto ad $R$ ed è denotato da $A / R$.  
+L'insieme $A$ partizionato in tal modo è detto **insieme quoziente** di $A$ rispetto ad $R$ ed è denotato da $A / R$.  
+
+----------------------------------------------------------------
 
 ## Isomorfismo
-Due insiemi sono _isomorfi_ (o equinumerosi) se esiste una biiezione tra essi. Formalmente scriviamo $A \sim B$. L'isomorfismo è una relazione d'equivalenza nella classe di tutti gli insiemi.  
+Due insiemi sono **isomorfi** (o **equinumerosi**) se esiste una biiezione tra essi.<br />Formalmente si scrive $A \sim B$. L'isomorfismo non è altro che una relazione d'equivalenza nella classe di tutti gli insiemi.  
 
 Dato $n \in \mathbb{N}$ definiamo la famiglia di insiemi $J_n$:  
 $$J_n = \begin{cases}
@@ -150,6 +174,8 @@ $$J_n = \begin{cases}
 \end{cases}$$
 Un insieme $A$ ha cardinalità _finita_ se e solo se $J_n \sim A$ per qualche $n \in N$.  
 Un insieme che non ha cardinalità finita ha cardinalità _infinita_.  
+
+----------------------------------------------------------------
 
 ## Insiemi numerabili e non numerabili
 Un insieme $A$ è detto numerabile se e solo se $\mathbb{N} \sim A$ (ovvero $A \in [\mathbb{N}]_{\sim}$).  

@@ -8,7 +8,7 @@ I giochi 2D sono formati da **tilemap** e **sprite**. Questi ultimi non sono alt
 I giochi 3D, invece, sono formati da scene e modelli 3D. Essi sono mostri di tecnologia dal momento che molte task come grafica e fisica devono essere necessariamente computate in tempo reale. Nello sviluppo dei 3D videogames è prassi riutilizzare i componenti al fine di velocizzare lo sviluppo, rendendo rari i casi in cui lo sviluppo parte da zero.<br />
 
 Gli sviluppatori di un videogioco sono divisi in tre categorie:
-- **tecnici**, ovvero gli individui che partecipano alla creazione del videogioco a livello di programmazione e tutti i game tools che permettono di semplificare certi task. Alcuni tecnici possono sviluppare direttamente il game engine del gioco;
+- **tecnici**, ovvero gli individui che partecipano alla creazione del videogioco a livello di programmazione e tutti i game tools che permettono di semplificare certe task. Alcuni tecnici possono sviluppare direttamente il game engine del gioco;
 - **artisti**, ovvero gli individui che si occupano di creare gli asset;
 - **designer**, ovvero gli individui il cui ruolo è comparabile ai registi cinematografici. Sono coloro i quali si adoperano per aggiungere il “fattore divertimento” al gioco.
  
