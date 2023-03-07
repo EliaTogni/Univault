@@ -144,8 +144,217 @@ It is important to note that, unlike $1-NN$, in general we have that $\ell \math
 
 ![[trend_training_error.png]]
 
-The figure above shows the typical trend of training error (orange curve) and test error (blue curve) of the $k-NN$ classifier for increasing values of the parameter $k$ on a real dataset (Breast Cancer Wisconsin) for binary classification with zero-one loss. Note that the minimum of the test error is attained at a value corresponding to a $h_{k−NN} classifier with training error generally bigger than zero. The learning algorithm suffers from high test error for small values of $k$ (overfitting) and for large values of $k$ (underfitting).
+The figure above shows the typical trend of training error (orange curve) and test error (blue curve) of the $k-NN$ classifier for increasing values of the parameter $k$ on a real dataset (Breast Cancer Wisconsin) for binary classification with zero-one loss. Note that the minimum of the test error is attained at a value corresponding to a $h_{k−NN}$ classifier with training error generally bigger than zero. The learning algorithm suffers from high test error for small values of $k$ (overfitting) and for large values of $k$ (underfitting).
 
-In addition to binary classification, $k-NN$ can be used to solve multiclass classification problems (where $\mathcal{Y}$ contains more than two symbols) and also regression problems (where $mathcal{Y} = \mathbb{R}$). In the first case, we operate like in the binary case and predict using the label corresponding to the majority of the labels of the $k$ closest training points. In the second case, the prediction is the average of the labels of the $k$ closest training points.
+In addition to binary classification, $k-NN$ can be used to solve multiclass classification problems (where $\mathcal{Y}$ contains more than two symbols) and also regression problems (where $\mathcal{Y} = \mathbb{R}$). In the first case, we operate like in the binary case and predict using the label corresponding to the majority of the labels of the $k$ closest training points. In the second case, the prediction is the average of the labels of the $k$ closest training points.
 
 ----------------------------------------------------------------
+
+# Tree Predictors
+As it was already said, while certain types of data (like images and texts) have a natural representation as vectors $x \in \mathbb{R}^d$, others (like medical records and other structured data) do not. For example, consider a problem of medical diagnosis, where data consist of medical records containing the following fields:
+
+$$age \in \{12, ...,90\} $$
+$$smoker \in \{yes,no,ex\}$$
+$$weight \in [10,120]$$$$sex \in \{M,F\}$$
+$$therapy \in \{antibiotics,cortisone,none\}$$
+
+Even if we compute rescaled numerical representations for the features (including the categorical fields smoker and sex), algorithms based on Euclidean distance like $k-NN$ may not work well.
+
+In order to learn data whose features vary in heterogeneous sets $\mathcal{X}_1, ..., \mathcal{X}_d$ (i.e., sets with incomparable ranges, including ranges corresponding to categorical variables), it will be introduced a new family of predictors: the **tree predictors**.
+
+A tree predictor has the structure of an ordered and rooted [[Albero |tree]] where each node is either a **leaf** (if it has zero children) or an **internal node** (if it has at least two children). Recall that an ordered tree is one where the children of any internal node are numbered consecutively. Hence, if the internal node $v$ has $k \geq 2$ children, we can access the first child, the second child, and so on until the $k$-th child.
+
+
+
+In the figure, it is possible to see a classical example of a tree classier for a binary classication task. The features are: outlook, humidity e windy.
+
+Fix $\mathcal{X} = \mathcal{X}_1 \times ... \times \mathcal{X}_d$,where $\mathcal{X}_i$ is the range of the $i$-th attribute $x_i$. A **tree predictor** $h_T : \mathcal{X} \to \mathcal{Y}$ is a predictor defined by a tree $T$ whose internal nodes are tagged with **tests** and whose leaves are tagged with **elements** in $\mathcal{Y}$. A test on attribute $i$ for an internal node with $k$ children is a function $f : \mathcal{X}_1 \to \{1, ..., k\}$. The function $f$ maps each element of $\mathcal{X}_i$ to the node children. For example, if $\mathcal{X}_i \equiv \{a,b,c,d\}$ and $k = 3$, then $f$ could be defined by
+
+$$f(x_i) = \cases{1 \quad \text{ if }
+x_i = c, \cr \cr 2 \quad \text{ if } x_i = d, \cr \cr 3 \quad \text{ if } x_i \in \{a, b\}}$$
+
+An example with $\mathcal{X}_i = \mathbb{R}$ and $k = 3$ is the following
+
+$$f(x_i) = \cases{1 \quad \text{ if }
+x_i \in (-\infty, \alpha], \cr \cr 2 \quad \text{ if } x_i \in (\beta, +\infty)\, \cr \cr 3 \quad \text{ if } x_i \in (\alpha, \beta]}$$
+
+where $\alpha < \beta$ are arbitrary values.<br />
+The prediction $h_T(x)$ is computed as follows. Start by assigning $v \leftarrow r$, where $r$ is the root of $T$:
+1) if $v$ is a leaf , then stop and let $h_T(x)$ be the label $y in \mathcal{Y}$ associated with $\ell$;
+2) otherwise, if $f : \mathcal{X}_i \to \{1, ..., k\}$ is the test associated with $v$, then assign $v \to  v_j$ where $j = f(x_i)$ and $v_j$ denotes the $j$-th children of $v$;
+2) go to step $1$.
+
+If the computation of $h_T(x)$ terminates in leaf $\ell$, we say that the example $x$ is routed to $\ell$. Hence $h_T(x)$ is always the label of the leaf to which $x$ is routed.
+
+
+
+In the above figure, it is plotted the decision surface for a multiclass tree classier trained on the colored dots (where each color corresponding to a different class) using the zero-one loss. It is possible to figure out a tree classifier consistent with this decision surface?
+
+How can a tree predictor be built given a training set S? For simplicity, we focus on the case of binary classication $\mathcal{Y} = \{-1, 1\}$ and we only consider complete binary trees, i.e., all internal nodes have exactly two children. The idea is to grow the tree classifier starting from a single-node tree (which must be a leaf) that corresponds to the classifier assigning to any data point the label that occurs most frequently in the training set. The tree is grown by picking a leaf (at the beginning there is only a leaf to pick) and replacing it with an internal node and two new leaves.
+
+Suppose we have grown a tree T up to a certain point, and the resulting classier is hT. We start by computing the contributions of each leaf to the training error `S(hT) (recall that each x is classied
+
+by some leaf, the leaf which x is routed to). For each leaf `, dene S`  f(xt;y ) 2 S : xt is routed to `g. That is, S` is+the subsettof trainingtexamples that \00are routedt to ` : yt = \00t1g.
+
+`. Dene further two subsets of
+
+S`, namely S`  f(xt;y ) 2 S` : y = +1g and S`  f(x ;yt) 2 S
+
+For each leaf `, let N` = S`+ , N` = S` and N` ` = N`\00 + N` . In order to minimize the
+
++ \00 \00 = S +
+
+training error `S(hT), the label associated with ` must be
+
+ + \00
+
+y = +1 if N` N` ,
+
+- \001 otherwise.
+
+Thus, ` errs on exactly minN \00; N + training examples in S . Therefore, we can write the training
+
+- ` `
+
+error as a sum of contributions due to all leaves
+
+X  N +  N
+
+`b(h) = 1 min N`\00; N = 1 X `+ N`
+
+`
+
+m ` N` N` ` m ` N`
+
+\00
+
+where we introduced the function (a) = minfa; 1 \00 ag dened on [0;1] |recall that N + +
+
+N \00N` = 1, so the argument of  is a number between zero and one. `
+
+`
+
+r![](Aspose.Words.fa785cf8-048c-4754-a465-f7d585ee05dd.004.png)![](Aspose.Words.fa785cf8-048c-4754-a465-f7d585ee05dd.005.png)
+
+r
+
+=) `0 v
+
+`0 `
+
+`0 `00
+
+Figure 2: A step in the growth of a tree classier: a leaf ` is replaced by an internal node v and be two new leaves `0 and `00.
+
+Suppose we replace a leaf ` in T with an internal node, and its associated test, and two new leaves `0 and `00|see Figure 2. Can the training error of the new tree be larger than the training error of T? To answer this question is sucient to observe that  is\00a concave function (just like the logarithm).
+
+We can then apply Jensen's inequality, stating that a+ (1 \00 )b (a) + (1 \00 ) (b), for all a;b 2 R and all 2 [0;1].
+
+Hence, via Jensen's inequality, we can study how the training error changes when ` is replaced by
+
+two new leaves `0 and `00,
+
+ +    +
+
+- N` =  N`+0 N`0 + N`+00N`00 N N`+0 N`0N +  N`00 N`00N
+
+N
+
+| N{z`~~ } N`0 N` N`00 N` ` N`0 N` ` N`00 N` ` contribution![](Aspose.Words.fa785cf8-048c-4754-a465-f7d585ee05dd.006.png) of `  
+
+N + N +
+
+`0 `00
+
+=  N{z`0 N`0 +  N`{z00 N`00![](Aspose.Words.fa785cf8-048c-4754-a465-f7d585ee05dd.007.png)![](Aspose.Words.fa785cf8-048c-4754-a465-f7d585ee05dd.008.png)![](Aspose.Words.fa785cf8-048c-4754-a465-f7d585ee05dd.009.png)![](Aspose.Words.fa785cf8-048c-4754-a465-f7d585ee05dd.010.png)
+
+| } | } contribution of `0 contribution of `00
+
+meaning that a split never increases the training error.
+
++ 
+
+A leaf ` such that N` 2 0;N` is called pure because it does not contribute to the training error. Note that `b(hT) > 0 unless all leaves are pure.
+
+We now describe a generic method to construct a binary tree given a training set S.
+
+1. Initialization: Create T with only the root ` and let S` = S. Let the label associated with the root be the most frequent label in S`.
+1. Main loop: pick a leaf ` and replace it with an internal node v creating two children `0(rst child) and `00(second child). Pick an attribute i and a test f : Xi ! f1;2g. Associate the test f with v and partition S` in the two subsets
+
+S`0 = f(xt;yt) 2 S` : f (xt;i) = 1g and S`00 = f(xt;yt) 2 S` : f (xt;i) = 2g :
+
+Let the labels associated with `0 and `00be, respectively, the most frequent labels in S`0 and S`00.
+
+Just like the classiers generated by the k-NN algorithm, also tree predictors may suer from overtting. In this case the relevant parameter is the number of tree nodes. If the number of tree nodes grows too much compared to the cardinality of the training set, then the tree may overt the training data. For this reason, the choice of the leaf to expand should at least approximately guarantee the largest decrease in the training error.
+
+In practice, functions dierent from (p) = minfp;1 \00 pg are used to measure this decrease. This happens because the min function might be problematic in certain circumstances. For example,
+
+consider splitting a leaf where p = N`+ = 0:8, q = N`+0 = 0:6, r = N`+00 = 1 and = N`0 = 0:5. In
+
+N` N`0 N`00 N`
+
+this case, when (p) = minfp;1 \00 pg we have that
+
+  \00 
+
+(p) \00 (q) + (1 \00 ) (r) = 0:2 \00 0:5  0:4 + 0:5  0 = 0 :
+
+As this split leaves the training error unchanged, it would be not be considered when growing the tree, and the algorithm might even get stuck if no split can be found to decrease the training error. On the other hand, the test in the new internal node is correctly classifying half of the examples
+
+in S`, and all these correctly classied examples are routed to leaf `00which is pure. Hence, half of the data in S` is \explained" by the split.
+
+In order to x this problem, dierent functions  are used in practice. These functions are similar to min because they are symmetric around 1 and satisfy (0) = (1) = 0. However, unlike min, they
+
+2
+
+have a nonzero curvature (i.e., strictly negative second derivative) |see Figure 3. The curvature helps in cases like the one described in the example above, that is when\00 p;q;r are all on the same side with respect to 1 and p = q+ (1 \00 )r. In this case, (p) \00 (q) + (1 \00 ) (r) = 0
+
+because between 0 and2 12 the function (a) = minfa; 1 \00 ag is a straight line.
+
+Some examples of functions  used in practice are
+
+•• GiniScaledfunction:entropy: 2(p()p=) =2 p\00(1p\00logp).(p) \00 1 \002 p log2(1 \00 p).![](Aspose.Words.fa785cf8-048c-4754-a465-f7d585ee05dd.011.png)
+
+p 3 2 2
+
+•  4(p) = p(1 \00 p).
+
+The following inequalities hold: minfp;1 \00 pg 2(p) 3(p) 4(p).
+
+![](Aspose.Words.fa785cf8-048c-4754-a465-f7d585ee05dd.012.png)
+
+Figure 3: Plots of the curves minfp;1 \00 pg (green line) and 2; 3; 4.
+
+Note that tree predictors can be naturally used also to solve multiclass classication or regression tasks. In the rst case, the label associated with a leaf is, once more, the most frequent label among
+
+all training examples routed to that leaf. In the regression case, where Y = R, the label associated to a leaf is the mean of the labels of all training examples that are routed to that leaf.
+
+An interesting feature of tree predictors for binary classication is that they can be represented with a formula of propositional logic in disjunctive normal form (DNF). This representation is obtained by considering the clauses (conjunctions of predicates) that result from the tests on each path that leads from the root to a leaf associated with label +1. For example, the classier corresponding to the tree of Figure 1 is represented by the formula
+
+(outlook = sunny) ^ (humidity 70%) \_ (outlook = overcast)
+
+\_ (outlook = rainy) ^ (windy = false) :
+
+This \rule-based" representation of the tree classier is very intuitive, and lends itself to being manipulated using the tools of propositional logic; for example, to obtain more compact repre- sentations of the same classier. More importantly, this representation provides an interpretable description of the knowledge the learning algorithm extracted from the training set.
+6
+
+----------------------------------------------------------------
+
+leaves = elements in Y (sbagliato sulle slides)
+zero training error in any prediction problem -> un esempio per rettangolo -> overfitting sicuramente
+$\forall \ell \mathcal{S} = \Big\{ (x_t, y_t) \in \mathcal{S} : X_t \text{ is related to } \ell$
+$U_l S_l = \mathcal{S} \quad \forall \ell , \ell' , \ell \neq \ell' S_{\ell} \wedge S_{\ell'} = \emptyset$
+
+$S_\ell^+ = \Big\{(x_t, y_t) \in S_\ell : y_t = 1$
+$S_\ell^-$
+$N_\ell = N_\ell^+ + N_\ell^-$
+$N_\ell^+ = \vert S_\ell^+ \vert$   $N_{\ell}^- = ...$
+
+
+in $\widehat{\ell}(h)$ si divide per $N_\ell$ e si moltiplica per lo stesso valore perchè farà comodo più avanti, ma è ovviamente corretto senza.
+
+template algorithm:
+start from root
+	repeat
+		pick a leaf and split it
+	until some criterion is met ( i.e. too many nodes, the traning error does not go down, the training error is zero)
