@@ -196,49 +196,20 @@ Suppose we have grown a tree $T$ up to a certain point, and the resulting classi
 
 For each leaf $\ell$, let $N^+_\ell = \vert \mathcal{S}^+_\ell \vert$, $N^-_\ell = \vert \mathcal{S}^-_\ell \vert$ and  $N_\ell = \vert \mathcal{S}_\ell \vert = N^+_\ell + N^-_\ell$. In order to minimize the training error $\ell_{\mathcal{S}}(h_T)$, the label associated with $\ell$ must be:
 
+$$y_\ell = \cases{+1 \quad \text{ if } N^+_\ell \geq N^-_\ell, \cr \cr -1 \quad \text{ otherwise.}}$$
 
+Thus, $\ell$ errs on exactly $min\{N^-_\ell, N^+_\ell\}$ training examples in $S_\ell$. Therefore, it is possible to write the training error as a sum of contributions due to all leaves
 
-Thus, ` errs on exactly minN \00; N + training examples in S . Therefore, we can write the training
+$$\widehat{\ell}(h) = \frac{1}{m}\sum_\ell min \Big\{ \frac{N^-_\ell}{N_\ell}, \frac{N^+_\ell}{N_\ell} \Big\} \cdot N_\ell = \frac{1}{m}\sum_{\ell}\psi \Big(\frac{N^+_\ell}{N_\ell}\Big)N_\ell$$
 
-- ` `
+where we introduced the function $\psi(a) = min\{a, 1 - a \}$ defined on $[0, 1]$. Recall that $(N^+_\ell + N^-_\ell )/ N_\ell = 1$, so the argument of $\psi$ is a number between zero and one. ``
 
-error as a sum of contributions due to all leaves
+In this figure it is possible to observe a step in the growth of a tree classier: a leaf $\ell$ is replaced by an internal node $v$ and be two new leaves $\ell'$ and $\ell''$.
 
-X  N +  N
+Suppose we replace a leaf $\ell$ in $T$ with an internal node, and its associated test, and two new leaves $\ell'$ and $\ell''$. Can the training error of the new tree be larger than the training error of $T$? To answer this question is sufficient to observe that $\psi$ is a concave function (just like the logarithm).<br />
+We can then apply **Jensen's inequality**, stating that $\psi(\alpha a + (1 -\alpha)b \geq \alpha \psi (a) + (1 - \alpha) \psi (b) \forall a, b \in \mathbb{R}$ and all $\alpha \in [0,1]$.
 
-`b(h) = 1 min N`\00; N = 1 X `+ N`
-
-`
-
-m ` N` N` ` m ` N`
-
-\00
-
-where we introduced the function (a) = minfa; 1 \00 ag dened on [0;1] |recall that N + +
-
-N \00N` = 1, so the argument of  is a number between zero and one. `
-
-`
-
-r![](Aspose.Words.fa785cf8-048c-4754-a465-f7d585ee05dd.004.png)![](Aspose.Words.fa785cf8-048c-4754-a465-f7d585ee05dd.005.png)
-
-r
-
-=) `0 v
-
-`0 `
-
-`0 `00
-
-Figure 2: A step in the growth of a tree classier: a leaf ` is replaced by an internal node v and be two new leaves `0 and `00.
-
-Suppose we replace a leaf ` in T with an internal node, and its associated test, and two new leaves `0 and `00|see Figure 2. Can the training error of the new tree be larger than the training error of T? To answer this question is sucient to observe that  is\00a concave function (just like the logarithm).
-
-We can then apply Jensen's inequality, stating that a+ (1 \00 )b (a) + (1 \00 ) (b), for all a;b 2 R and all 2 [0;1].
-
-Hence, via Jensen's inequality, we can study how the training error changes when ` is replaced by
-
-two new leaves `0 and `00,
+Hence, via Jensen's inequality, we can study how the training error changes when $\ell$ is replaced by two new leaves `0 and `00,
 
  +    +
 
