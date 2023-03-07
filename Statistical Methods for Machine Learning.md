@@ -192,25 +192,11 @@ In the above figure, it is plotted the decision surface for a multiclass tree cl
 
 How can a tree predictor be built given a training set S? For simplicity, we focus on the case of binary classication $\mathcal{Y} = \{-1, 1\}$ and we only consider complete binary trees, i.e., all internal nodes have exactly two children. The idea is to grow the tree classifier starting from a single-node tree (which must be a leaf) that corresponds to the classifier assigning to any data point the label that occurs most frequently in the training set. The tree is grown by picking a leaf (at the beginning there is only a leaf to pick) and replacing it with an internal node and two new leaves.
 
-Suppose we have grown a tree T up to a certain point, and the resulting classier is hT. We start by computing the contributions of each leaf to the training error `S(hT) (recall that each x is classied
+Suppose we have grown a tree $T$ up to a certain point, and the resulting classifier is $h_T$. We start by computing the contributions of each leaf to the training error $\ell_{\mathcal{S}}(h_T)$ (recall that each $x$ is classified by some leaf, the leaf which $x$ is routed to). For each leaf $\ell$, define $\mathcal{S}_\ell \equiv \{(x_t,y_t) \in \mathcal{S} : x_t$ is routed to $\ell\}$. That is, $\mathcal{S}_\ell$ is the subset of training examples that are routedt to $\ell$. Define further two subsets of $\mathcal{S}_\ell$, namely $\mathcal{S}^+_\ell \equiv \{(x_t, y_t ) \in \mathcal{S}_\ell : y_t = +1\}$ and $\mathcal{S}^-_\ell \equiv \{(x_t, y_t) \in \mathcal{S}_\ell : y_t = -1\}$.
 
-by some leaf, the leaf which x is routed to). For each leaf `, dene S`  f(xt;y ) 2 S : xt is routed to `g. That is, S` is+the subsettof trainingtexamples that \00are routedt to ` : yt = \00t1g.
+For each leaf $\ell$, let $N^+_\ell = \vert \mathcal{S}^+_\ell \vert$, $N^-_\ell = \vert \mathcal{S}^-_\ell \vert$ and  $N_\ell = \vert \mathcal{S}_\ell \vert = N^+_\ell + N^-_\ell$. In order to minimize the training error $\ell_{\mathcal{S}}(h_T)$, the label associated with $\ell$ must be:
 
-`. Dene further two subsets of
 
-S`, namely S`  f(xt;y ) 2 S` : y = +1g and S`  f(x ;yt) 2 S
-
-For each leaf `, let N` = S`+ , N` = S` and N` ` = N`\00 + N` . In order to minimize the
-
-+ \00 \00 = S +
-
-training error `S(hT), the label associated with ` must be
-
- + \00
-
-y = +1 if N` N` ,
-
-- \001 otherwise.
 
 Thus, ` errs on exactly minN \00; N + training examples in S . Therefore, we can write the training
 
@@ -336,11 +322,9 @@ An interesting feature of tree predictors for binary classication is that they c
 \_ (outlook = rainy) ^ (windy = false) :
 
 This \rule-based" representation of the tree classier is very intuitive, and lends itself to being manipulated using the tools of propositional logic; for example, to obtain more compact repre- sentations of the same classier. More importantly, this representation provides an interpretable description of the knowledge the learning algorithm extracted from the training set.
-6
 
 ----------------------------------------------------------------
 
-leaves = elements in Y (sbagliato sulle slides)
 zero training error in any prediction problem -> un esempio per rettangolo -> overfitting sicuramente
 $\forall \ell \mathcal{S} = \Big\{ (x_t, y_t) \in \mathcal{S} : X_t \text{ is related to } \ell$
 $U_l S_l = \mathcal{S} \quad \forall \ell , \ell' , \ell \neq \ell' S_{\ell} \wedge S_{\ell'} = \emptyset$
