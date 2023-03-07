@@ -108,6 +108,9 @@
   },
   "active": "f12c5d874698c2bb",
   "lastOpenFiles": [
+    "Images/trend_training_error.png",
+    "Images/hknn.png",
+    "Images/voronoi_diagram.png",
     "Aspose.Words.3350d2fb-3819-4c0e-a2d1-adf4ad772550.004.png.md",
     "Statistical Methods for Machine Learning.md",
     "Images/logarithmic_loss.png",
@@ -126,8 +129,6 @@
     "Images/angoli_eulero.png",
     "Simulation.md",
     "Statistica e Probabilità.md",
-    "Images/hard_wired.jpeg",
-    "Images/Aspose.Words.f8057e00-861a-4e9b-9348-649fbf9a37a9.178.png",
     "Teoria della Complessità Computazionale.md",
     "Efficienza.md",
     "Dynamic Host Configuration Protocol.md",
@@ -143,7 +144,6 @@
     "Array.md",
     "Algoritmo Greedy.md",
     "Algoritmi Paralleli e Distribuiti.md",
-    "Albero di Decisione.md",
     "Leggere per sapere - Alessandro de Concini.pdf"
   ]
 }
