@@ -7,9 +7,9 @@
 [[Algoritmo |Algorithms]] that solve a [[Intelligenza Artificiale#Training delle ANN |learning task]] based on semantically annotated historical data (e.g., documents annotated with their topic or images annotated with the objects they contain) are said to operate in a **supervised learning mode**. In contrast, algorithms that use data without any semantic annotation are said to operate in an **unsupervised learning mode**. The focus of this course is on supervised learning and study the design of machine learning systems whose goal is to learn predictors, i.e., functions that map data points $x$ to their labels $y$. Once learned, these functions can be used to categorize documents or images, predict the future price of a stock based on the current market data, diagnose a disease based on a patient’s medical record, and so on.
 
 ## Label sets
-It is common to use $Y$ to denote the set of all possible labels for a data point of a given learning problem. Note that labels can be of two different types: **categorical labels**, like the topics of a document, and **numerical labels**, like the price of a stock or the demand for a product. Categorical labels define **classification** problems, where labels sets $Y$ are typically finite and small (such as $Y = \{\text{sport, politics, business}\}$ for document topics). Numerical labels define **[[Intelligenza Artificiale#Regressione |regression]]** problems, where label sets $Y \subseteq R$ are typically infinite.
+It is common to use $\mathcal{Y}$ to denote the set of all possible labels for a data point of a given learning problem. Note that labels can be of two different types: **categorical labels**, like the topics of a document, and **numerical labels**, like the price of a stock or the demand for a product. Categorical labels define **classification** problems, where labels sets $\mathcal{Y}$ are typically finite and small (such as $\mathcal{Y} = \{\text{sport, politics, business}\}$ for document topics). Numerical labels define **[[Intelligenza Artificiale#Regressione |regression]]** problems, where label sets $\mathcal{Y} \subseteq R$ are typically infinite.
 
-As it is always possible to map symbols to numbers, it is needed to specify more precisely how regression differs from classification. In regression, prediction mistakes are typically a function of the difference $|y−\widehat{y}|$, where $\widehat{y}$  is the prediction for $y$. In classification, mistakes are typically binary: either $\widehat{y} = y$ (no mistake) or $\widehat{y} = y$ (mistake). This because the label set in a classification task is an abstract set of symbols (irrespective to whether we encode the symbols using numbers) without a natural notion of distance between them. When $|Y| = 2$, for example $Y = \{\text{healthy, sick}\}$, it is a binary classification problem, and conventionally use the numerical encoding $Y = \{−1,1\}$.
+As it is always possible to map symbols to numbers, it is needed to specify more precisely how regression differs from classification. In regression, prediction mistakes are typically a function of the difference $|y−\widehat{y}|$, where $\widehat{y}$  is the prediction for $y$. In classification, mistakes are typically binary: either $\widehat{y} = y$ (no mistake) or $\widehat{y} = y$ (mistake). This because the label set in a classification task is an abstract set of symbols (irrespective to whether we encode the symbols using numbers) without a natural notion of distance between them. When $|\mathcal{Y}| = 2$, for example $\mathcal{Y} = \{\text{healthy, sick}\}$, it is a binary classification problem, and conventionally use the numerical encoding $\mathcal{Y} = \{−1,1\}$.
 
 ## Loss functions
 In order to measure the goodness of a prediction for a prediction task we use a nonnegative **loss function** $\ell$, measuring the discrepancy $\ell(y,\widehat{y})$ between the predicted label $\widehat{y}$  and the correct label $y$. We always assume that $\ell(y,\widehat{y}) = 0$ when $\widehat{y} = y$. The simplest loss function for classification is the **zero-one loss**:
@@ -18,78 +18,55 @@ $$\ell(y, \widehat{y}) = \cases{0 \quad \text{ if }
  \widehat{y} = y \cr \cr 1 \quad \text{otherwise.}}$$
 
 In certain cases, it is needed a more complex classification losses.<br />
-Consider the problem of categorizing spam email using the label set $Y = \{\text{spam, nonspam}\}$. It is possible to penalize a **false positive mistake** (i.e., a nonspam email wrongly classified as spam) more than a **false negative mistake** (i.e., a spam email wrongly classified as nonspam). For example:
+Consider the problem of categorizing spam email using the label set $\mathcal{Y} = \{\text{spam, nonspam}\}$. It is possible to penalize a **false positive mistake** (i.e., a nonspam email wrongly classified as spam) more than a **false negative mistake** (i.e., a spam email wrongly classified as nonspam). For example:
 
 $$\ell(y, \widehat{y}) = \cases{2 \quad \text{ if }
  y  = \text{nonspam and }\widehat{y} = \text{spam,} \cr \cr 1 \quad \text{ if } y = \text{spam and } \widehat{y} = \text{nonspam,}\cr \cr 0 \quad \text{ otherwise.}}$$
 
 In regression, typical loss functions are the **absolute loss** $\ell(y,\widehat{y} ) = |y−\widehat{y}|$ and the **quadratic loss** $\ell(y,\widehat{y}) = (y − \widehat{y})^2$. Note that these losses are only meaningful for numerical labels.
 
-In some cases, it may be convenient to choose predictions from a set $Z$ different from the label set $Y$. For example, consider the problem of assigning a probability $y  ∈ (0,1)$ to the event $y = \text{ “it will rain tomorrow”}$ (and, consequently, assigning probability $1 − y$  to the complementary event $y = \text{ “it will not rain tomorrow”}$). In this case,$Y = \text{\{“rain”, “no rain”\}}$ and $Z = (0,1)$. Denoting these two events with $1$ (for rain) and $0$ (for no rain), we may use a loss function for regression, such as the absolute loss $\ell(y,\widehat{y}) = |y− \widehat{y}| \in (0,1)$. In order to extend the range of the loss function, so to punish more harshly predictions that depart too much from reality, it is possible to use instead the **logarithmic loss**,
+In some cases, it may be convenient to choose predictions from a set $Z$ different from the label set $\mathcal{Y}$. For example, consider the problem of assigning a probability $y  ∈ (0,1)$ to the event $y = \text{ “it will rain tomorrow”}$ (and, consequently, assigning probability $1 − y$  to the complementary event $y = \text{ “it will not rain tomorrow”}$). In this case,$Y = \text{\{“rain”, “no rain”\}}$ and $Z = (0,1)$. Denoting these two events with $1$ (for rain) and $0$ (for no rain), we may use a loss function for regression, such as the absolute loss $\ell(y,\widehat{y}) = |y− \widehat{y}| \in (0,1)$. In order to extend the range of the loss function, so to punish more harshly predictions that depart too much from reality, it is possible to use instead the **logarithmic loss**,
 
-ln 1 if y = 1 (rain),
+$$\ell(y, \widehat{y}) = \cases{\ln\frac{1}{\widehat{y}} \quad \text{ if }
+y = 1 \text{ (rain) }\cr \cr \ln\frac{1}{1-\widehat{y}} \quad \text{ if } y = 0 \text{ (no rain ).}}$$
 
-ℓ(y,y ) = y 
+Unlike the absolute loss, the logarithmic loss may take arbitrarily high values.
 
-ln 1 if y = 0 (no rain).
+![[logarithmic_loss.png]]
 
-1−y 
+In the figure, it is possible to observe the logarithmic loss function $\ell(1,\widehat{y}) = \ln \frac{1}{\widehat{y}}$ (blue curve) and absolute loss function $\ell(1,\widehat{y}) = |1 − \widehat{y}|$ (red line) for the case $y = 1$. In particular, we have $\lim_{y →0^+} \ell(1,\widehat{y}) = \lim_{y →1^−} \ell(0,\widehat{y}) = \infty$.
 
-Unlike the absolute loss, the logarithmic loss may take arbitrarily high values, see Figure 1.
+In practice, this fact prevents the predictor from using predictions $\widehat{y}$ that are too certain, namely too close to zero or one.
 
-![](Aspose.Words.71aa4c53-d7ba-4657-87a5-91bea0ef3125.002.png)
+## Data domain
+The symbol $\mathcal{X}$ denote the set of all possible data points for a given learning problem. Each data point $x$ is typically stored as a database record. In many interesting cases, data can be encoded as vectors of real numbers. Such a vector representation is natural whenever the data consist of a set of homogeneous quantities, such as pixels in an image or word frequencies in a document. The standard Euclidean geometry then works well because all coordinates use the same unit of measurement. In these cases, it is hopeful that the semantic information carried by the labels be reflected in the geometrical relationships between data points (e.g., in a classification task data points with the same label are close to each other in terms of their Euclidean distance).
 
-Figure 1: Logarithmic loss function ℓ(1,y ) = ln 1 (blue curve) and absolute loss function ℓ(1,y ) =
+In other cases, a vector space representation may not be that natural. For example, the values in the fields of a medical record may use different units, such as age and height, or even be categorical, such as sex. Using rescaling and other techniques (like binary encoding) for dealing with categorical quantities, it is possible to provide a homogenenous vector space representation to most types of data. However, the geometrical properties of these vectors might not be well correlated to their labels.
 
-y 
+In this course, it is often assumed that data can be represented as vectors of numbers, namely $\mathcal{X} \equiv \mathbb{R}^d$. Irrespective of whether $\mathcal{X} \equiv \mathbb{R}^d$ or $\mathcal{X} \equiv \mathcal{X}_1 \times ··· \times \mathcal{X}_d$ for some arbitrary sets $\mathcal{X}_1,..., \mathcal{X}_d$, given a data point $x = (x_1,...,x_d)$, it is said that $x_i$ is the value of the $i$-th feature or attribute.
 
-|1 − y | (red line) for the case y = 1. In particular, we have lim ℓ(1,y ) = lim ℓ(0,y ) = ∞.
+## Predictor
+A **predictor** is a function $f : \mathcal{X} \to \mathcal{Y}$ mapping data points to labels (or $f : \mathcal{X} \to \mathcal{Z}$ if the predictions belong to a set $\mathcal{Z}$ different from $\mathcal{Y}$). Informally speaking, in a prediction problem the goal is to learn a function $f$ that generates predictions $\widehat{y} = f(x)$ such that $\ell(y,\widehat{y})$ is small for most data points $x \in \mathcal{X}$ observed in practice. In practice, the function $f$ is represented by a certain choice of parameters in a certain model. For examples, a certain setting of the weights of a neural network.
 
-y →0+ y →1−
+## Example
+In supervised learning, an **example** is a pair $(x,y)$ where $x$ is a data point and $y$ is the “true” label associated with $x$. In some cases, there is a unique true label for $x$. This happens when $y$ measures some objective property of the data point; for example, $y$ is the closing price of a stock on a certain day. In some other cases, the label $y$ is subjectively assigned by a human annotator; for example, the genre of a movie. Clearly, different annotators may have different opinions about a movie’s genre, implying that the same data point may occur with different “true” labels.
 
-In practice, this fact prevents the predictor from using predictions y  that are too certain, namely too close to zero or one.
+In order to estimate the predictive power of a predictor it is typically used a test set. This is a set of examples $(x_1′ ,y_1′ ),..., (x_n′ ,y_n′ )$. Technically, it is a multiset because some examples may occur more than once. However, treating datasets as multisets complicates the notation. For this reason, and without much loss of generality, datasets will be mostly viewed as sets in the standard mathematical acception.Given a loss function $\ell$, the test set is used to compute the test error of a predictors $f$,
 
-Data domain. We use X to denote the set of all possible data points for a given learning problem. Each data point x is typically stored as a database record. In many interesting cases, data can be encoded as vectors of real numbers. Such a vector representation is natural whenever the data consist of a set of homogeneous quantities, such as pixels in an image or word frequencies in a document. The standard Euclidean geometry then works well because all coordinates use the same unit of measurement. In these cases we may hope that the semantic information carried by the labels be reflected in the geometrical relationships between data points (e.g., in a classification task data points with the same label are close to each other in terms of their Euclidean distance).
+$$ \frac{1}{n}\sum_{t = 1}^{n}\ell(y'_t, f({\mathbf{x}}'_t))$$
 
-In other cases, a vector space representation may not be that natural. For example, the values in the fields of a medical record may use different units, such as age and height, or even be categorical, such as sex. Using rescaling and other techniques (like binary encoding) for dealing with categorical quantities, we can provide a homogenenous vector space representation to most types of data. However, the geometrical properties of these vectors might not be well correlated to their labels.
+The test error is meant to estimate the **average performance** of the predictor on typical real-world data.
 
-In this course, we often assume that data can be represented as vectors of numbers, namely X ≡ Rd. Irrespective of whether X ≡ Rd or X ≡ X1 × ··· × Xd for some arbitrary sets X1,..., Xd, given a data point x = (x1,...,xd), we say that xi is the value of the i-th feature or attribute.
+A **learning algorithm** receives a training set as input and outputs a predictor. A training set is a set of examples $(x_1,y_1),..., (x_m,y_m).$ Training and test set are often prepared together, through a single round of data collection and annotation. Partitioning the examples in training and test data is done afterward, typically using a random split. The objective is to develop a theory to guide in the design of learning algorithms that generate predictors with low test error.
 
-A predictor is a function f : X → Y mapping data points to labels (or f : X → Z if the predictions belong to a set Z different from Y). Informally speaking, in a prediction problem the goal is to learn a function f that generates predictions y  = f (x) such that ℓ(y,y ) is small for most data points x ∈ X observed in practice. In practice, the function f is represented by a certain choice of parameters in a certain model. For examples, a certain setting of the weights of a neural network.
+Since the only input to a learning algorithm is the training set $S \equiv (x_1,y_1),..., (x_m,y_m)$, a natural approach to the design of learning algorithms is to assume that the **training error**
 
-Examples. In supervised learning, an example is a pair (x,y) where x is a data point and y is the “true” label associated with x. In some cases, there is a unique true label for x. This happens when y measures some objective property of the data point; for example, y is the closing price of a stock on a certain day. In some other cases, the label y is subjectively assigned by a human annotator; for example, the genre of a movie. Clearly, different annotators may have different opinions about
-
-a movie’s genre, implying that the same data point may occur with different “true” labels.
-
-In order to estimate the predictive power of a predictor, which is what we are ultimately interested in, we typically use a test set. This is a set[^1] of examples (x′ ,y′ ),..., (x′ ,y′ ). Given a loss
-
-1 1 n n
-
-function ℓ, the test set is used to compute the test error of a predictors f ,
-
-1 n
-
-ℓ y′,f (x′)
-
-n t t .
-
-t=1
-
-The test error is meant to estimate the average performance of the predictor on typical real-world data.
-
-An learning algorithm receives a training set as input and outputs a predictor. A training set is a set of examples (x1,y1),..., (xm,ym). Training and test set are often prepared together, through a single round of data collection and annotation. Partitioning the examples in training and test data is done afterward, typically using a random split. Our objective is to develop a theory to guide us in the design of learning algorithms that generate predictors with low test error.
-
-Since the only input to a learning algorithm is the training set S ≡ (x1,y1),..., (xm,ym) , a natural approach to the design of learning algorithms is to assume that the training error
-
-1 m
-
-ℓS(f ) = m ℓ yt,f (xt)
-
-t=1
+$$\ell_s(f) = \frac{1}{m}\sum_{t=1}^{m}\ell(y_t, f(\mathbf{x}_t)$$
 
 of a predictor be correlated to its test error.
 
-Empirical risk minimization. Let F be a given set of predictors and ℓ a loss function. The em- pirical risk minimizer (ERM) is the learning algorithm that outputs some predictor in F minimizing the training error
+## Empirical risk minimization
+Let $\mathcal{F}$ be a given set of predictors and ℓ a loss function. The em- pirical risk minimizer (ERM) is the learning algorithm that outputs some predictor in F minimizing the training error
 
 f  ∈argmin ℓS(f ) .
 
@@ -136,5 +113,3 @@ Noise may occur for at least three (not mutually exclusive) reasons.
 
 Noisy labels cause overfitting because they may mislead the algorithm with regard to what is the “true” label for a given data point.
 5
-
-[^1]: Technically, it is a multiset because some examples may occur more than once. However, treating datasets as multisets complicates the notation. For this reason, and without much loss of generality, we will mostly view datasets as sets in the standard mathematical acception.
