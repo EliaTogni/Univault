@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3D Video Games.md",
+                "file": "Statistical Methods for Machine Learning.md",
                 "mode": "source",
                 "source": false
               }
@@ -77,7 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "3D Video Games.md",
+                "file": "Statistical Methods for Machine Learning.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,8 +108,13 @@
   },
   "active": "f12c5d874698c2bb",
   "lastOpenFiles": [
-    "Informatica Teorica.md",
+    "Logica Matematica.md",
+    "Statistical Methods for Machine Learning.md",
+    "Intelligenza Artificiale.md",
+    "Aspose.Words.71aa4c53-d7ba-4657-87a5-91bea0ef3125.001.png.md",
     "3D Video Games.md",
+    "Untitled.md",
+    "Informatica Teorica.md",
     "Images/differenza_vettoriale_regola_parallelogramma.png",
     "Images/differenza_punto_punto.png",
     "Images/somma_vettoriale_regola_parallelogramma.png",
@@ -139,10 +144,6 @@
     "Algoritmi Paralleli e Distribuiti.md",
     "Albero di Decisione.md",
     "Agent-Based Simulation.md",
-    "Albero.md",
-    "Albero 2-3.md",
-    "Albero AVL.md",
-    "Albero Binario.md",
     "Leggere per sapere - Alessandro de Concini.pdf"
   ]
 }
