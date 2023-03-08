@@ -43,9 +43,9 @@ Librerie, motori grafici e linguaggi possono optare di utilizzare lo stesso tipo
 Al fine di fornire la più completa descrizione delle operazioni, si fornirà di seguito una definizione sia dal punto di vista intuitivo/spaziale (ovvero cosa comporta l'operazione visivamente), sia dal punto di vista algebrico (ovvero come computare matematicamente il risultato) e sia dal punto di vista sintattico (come utilizzare la notazione matematica e i linguaggi di programmazione per scrivere le operazioni).
 
 ### Addizione
-L’addizione tra un punto $p$ e un vettore $v$ dà come risultato un punto $q$ corrispondente, in termini spaziali, al punto $p$ spostato di una quantità $v$ nella direzione del vettore:
+L’addizione tra un punto $p$ e un vettore $\vec{v}$ restituisce come risultato un punto $q$ corrispondente, in termini spaziali, al punto $p$ spostato di una quantità $v$ nella direzione del vettore:
 
-$$a=(ax,ay,az), \quad   v=(vx,vy,vz), \quad   q=a+v=(ax+vx,ay+vy,az+vz)$$
+$$a=(ax,ay,az), \quad   \vec{v}=(vx,vy,vz), \quad   q=a+\vec{v}=(ax+vx,ay+vy,az+vz)$$
 
 $$\text{se } a∈P, v∈V, a+v= q∈P, \quad \text{dove } q= a+v=(ax+vx,ay+vy,az+vz)$$
 
@@ -91,6 +91,16 @@ L'interpolazione tra due punti $p_{0} e p_{1}$ è, invece:
 $$p_{0} + t(p_1 - p_0)$$
 
 infatti, nonostante sarebbe possibile sviluppare la moltiplicazione tra il coefficiente di interpolazione e la differenza tra $p_1$ e $p_0$, la risultate $(1-t)p_0 + (t)p_1$ non ha un significato geometrico facilmente definibile, poichè scalare un punto o sommare due punti non ha un'interpretazione spaziale intuibile.
+
+----------------------------------------------------------------
+
+### Interpolazione sferica
+L'**interpolazione sferica**, applicata dalla funzione _slerp()_ è un tipo di interpolazione applicabile a qualsiasi versore, includendo 2D, 3D e quaternioni. La _slerp()_ può anche essere applicata su vettori seguendo i seguenti step:
+1) computare la magnitudine dei vettori;
+2) computare la direzione dei vettori;
+3) moltiplicare la direzione ottenuta con la magnitudine ottenuta per ottenere il risultato finale.
+
+Infatti, è possibile computare la magnitudine risultante tramite _lerp()_ delle magnitudini e computare la direzione risultante tramite _slerp()_ delle direzioni;
 
 ----------------------------------------------------------------
 
