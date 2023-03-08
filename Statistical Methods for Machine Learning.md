@@ -164,9 +164,9 @@ In order to learn data whose features vary in heterogeneous sets $\mathcal{X}_1,
 
 A tree predictor has the structure of an ordered and rooted [[Albero |tree]] where each node is either a **leaf** (if it has zero children) or an **internal node** (if it has at least two children). Recall that an ordered tree is one where the children of any internal node are numbered consecutively. Hence, if the internal node $v$ has $k \geq 2$ children, we can access the first child, the second child, and so on until the $k$-th child.
 
+![[tree_classifier_example.png]]
 
-
-In the figure, it is possible to see a classical example of a tree classier for a binary classication task. The features are: outlook, humidity e windy.
+In the figure, it is possible to see a classical example of a tree classifier for a binary classification task. The features are: outlook, humidity e windy.
 
 Fix $\mathcal{X} = \mathcal{X}_1 \times ... \times \mathcal{X}_d$,where $\mathcal{X}_i$ is the range of the $i$-th attribute $x_i$. A **tree predictor** $h_T : \mathcal{X} \to \mathcal{Y}$ is a predictor defined by a tree $T$ whose internal nodes are tagged with **tests** and whose leaves are tagged with **elements** in $\mathcal{Y}$. A test on attribute $i$ for an internal node with $k$ children is a function $f : \mathcal{X}_1 \to \{1, ..., k\}$. The function $f$ maps each element of $\mathcal{X}_i$ to the node children. For example, if $\mathcal{X}_i \equiv \{a,b,c,d\}$ and $k = 3$, then $f$ could be defined by
 
@@ -186,7 +186,7 @@ The prediction $h_T(x)$ is computed as follows. Start by assigning $v \leftarrow
 
 If the computation of $h_T(x)$ terminates in leaf $\ell$, we say that the example $x$ is routed to $\ell$. Hence $h_T(x)$ is always the label of the leaf to which $x$ is routed.
 
-
+![[decision_surface.png]]
 
 In the above figure, it is plotted the decision surface for a multiclass tree classier trained on the colored dots (where each color corresponding to a different class) using the zero-one loss. It is possible to figure out a tree classifier consistent with this decision surface?
 
@@ -204,95 +204,66 @@ $$\widehat{\ell}(h) = \frac{1}{m}\sum_\ell min \Big\{ \frac{N^-_\ell}{N_\ell}, \
 
 where we introduced the function $\psi(a) = min\{a, 1 - a \}$ defined on $[0, 1]$. Recall that $(N^+_\ell + N^-_\ell )/ N_\ell = 1$, so the argument of $\psi$ is a number between zero and one. ``
 
+![[tree_classifier_growth.png]]
+
 In this figure it is possible to observe a step in the growth of a tree classier: a leaf $\ell$ is replaced by an internal node $v$ and be two new leaves $\ell'$ and $\ell''$.
 
 Suppose we replace a leaf $\ell$ in $T$ with an internal node, and its associated test, and two new leaves $\ell'$ and $\ell''$. Can the training error of the new tree be larger than the training error of $T$? To answer this question is sufficient to observe that $\psi$ is a concave function (just like the logarithm).<br />
-We can then apply **Jensen's inequality**, stating that $\psi(\alpha a + (1 -\alpha)b \geq \alpha \psi (a) + (1 - \alpha) \psi (b) \forall a, b \in \mathbb{R}$ and all $\alpha \in [0,1]$.
+We can then apply **Jensen's inequality**, stating that 
 
-Hence, via Jensen's inequality, we can study how the training error changes when $\ell$ is replaced by two new leaves `0 and `00,
+$$\psi(\alpha a + (1 -\alpha)b \geq \alpha \psi (a) + (1 - \alpha) \psi (b) \quad \forall a, b \in \mathbb{R} \text{ and all } \alpha \in [0,1]$$
 
- +    +
+Hence, via Jensen's inequality, we can study how the training error changes when $\ell$ is replaced by two new leaves $\ell'$ and $\ell''$,
 
-- N` =  N`+0 N`0 + N`+00N`00 N N`+0 N`0N +  N`00 N`00N
+$$\underbrace{\psi \Big ( \frac{N^+_\ell}{N_\ell} \Big)N_\ell}_{\text{contribution of }\ell} = \psi \Big ( \frac{N^+_{\ell'}}{N_{\ell'}} \frac{N_{\ell'}}{N_\ell} + \frac{N^+_{\ell''}}{N_{\ell''}} \frac{N_{\ell''}}{N_{\ell}}\ \Big ) N_{\ell} \geq \psi \Big (\frac{N^+_{\ell'}}{N_{\ell'}} \Big) \frac{N_{\ell'}}{N_{\ell}}N_{\ell} + \psi \Big(\frac{N^+_{\ell''}}{N_{\ell}} \Big ) N_{ell} =$$
+$$= \underbrace{\psi \Big(\frac{N^+_{\ell'}}{N_{\ell'}} \Big )N_{\ell'}}_{\text{contribution of }\ell'} + \underbrace{\psi \Big ( \frac{N^+_{\ell''}}{N_{\ell''}}N_{\ell''}}_{\text{contribution of }\ell''} \Big )$$
 
-N
-
-| N{z`~~ } N`0 N` N`00 N` ` N`0 N` ` N`00 N` ` contribution![](Aspose.Words.fa785cf8-048c-4754-a465-f7d585ee05dd.006.png) of `  
-
-N + N +
-
-`0 `00
-
-=  N{z`0 N`0 +  N`{z00 N`00![](Aspose.Words.fa785cf8-048c-4754-a465-f7d585ee05dd.007.png)![](Aspose.Words.fa785cf8-048c-4754-a465-f7d585ee05dd.008.png)![](Aspose.Words.fa785cf8-048c-4754-a465-f7d585ee05dd.009.png)![](Aspose.Words.fa785cf8-048c-4754-a465-f7d585ee05dd.010.png)
-
-| } | } contribution of `0 contribution of `00
 
 meaning that a split never increases the training error.
 
-+ 
+A leaf $\ell$ such that $N^+_{\ell} \in \{0, N_{\ell}\}$ is called **pure** because it does not contribute to the training error. Note that $\widehat{\ell}(h_T) > 0$ unless all leaves are pure.
 
-A leaf ` such that N` 2 0;N` is called pure because it does not contribute to the training error. Note that `b(hT) > 0 unless all leaves are pure.
+We now describe a generic method to construct a binary tree given a training set $S$.
+1) **initialization**: create $T$ with only the root $\ell$ and let $S_\ell = S$. Let the label associated with the root be the most frequent label in $S_\ell$;
+2) **main loop**: pick a leaf $\ell$ and replace it with an internal node $v$ creating two children $\ell'$ (first child) and $\ell''$ (second child). Pick an attribute $i$ and a test $f : \mathcal{X}_i \to \{1,2\}$. Associate the test $f$ with $v$ and partition $S_\ell$ in the two subsets
 
-We now describe a generic method to construct a binary tree given a training set S.
+$$S_{\ell} = \{(x_t, y_t) \in S_{\ell} : f(x_t, i) = 1\}$$
 
-1. Initialization: Create T with only the root ` and let S` = S. Let the label associated with the root be the most frequent label in S`.
-1. Main loop: pick a leaf ` and replace it with an internal node v creating two children `0(rst child) and `00(second child). Pick an attribute i and a test f : Xi ! f1;2g. Associate the test f with v and partition S` in the two subsets
+and
 
-S`0 = f(xt;yt) 2 S` : f (xt;i) = 1g and S`00 = f(xt;yt) 2 S` : f (xt;i) = 2g :
+$$S_{\ell''} = \{(x_t, y_t) \in S_{\ell} : f(x_t, i) = 2\}$$
 
-Let the labels associated with `0 and `00be, respectively, the most frequent labels in S`0 and S`00.
+Let the labels associated with $\ell'$ and $\ell''$ be, respectively, the most frequent labels in $S_{\ell'}$ and $S_{\ell''}$.
 
-Just like the classiers generated by the k-NN algorithm, also tree predictors may suer from overtting. In this case the relevant parameter is the number of tree nodes. If the number of tree nodes grows too much compared to the cardinality of the training set, then the tree may overt the training data. For this reason, the choice of the leaf to expand should at least approximately guarantee the largest decrease in the training error.
+Just like the classiers generated by the $k-NN$ algorithm, also tree predictors may suffer from overtting. In this case the relevant parameter is the number of tree nodes. If the number of tree nodes grows too much compared to the cardinality of the training set, then the tree may overfit the training data. For this reason, the choice of the leaf to expand should at least approximately guarantee the largest decrease in the training error.
 
-In practice, functions dierent from (p) = minfp;1 \00 pg are used to measure this decrease. This happens because the min function might be problematic in certain circumstances. For example,
+In practice, functions different from $\psi(p) = min\{p, 1-p\}$ are used to measure this decrease. This happens because the min function might be problematic in certain circumstances. For example, consider splitting a leaf where $p = \frac{N^+_{\ell}}{N^{\ell}} = 0.8, q = \frac{N^+_{\ell'}}{N_{\ell'}} = 0.6, r = \frac{N^+_{\ell''}}{N^{\ell''}} = 1$ and $\alpha = \frac{N_{\ell'}}{N_{|ell}} = 0.5$. In this case, when $\psi(p) = min\{p, 1-p\}$ we have that
 
-consider splitting a leaf where p = N`+ = 0:8, q = N`+0 = 0:6, r = N`+00 = 1 and = N`0 = 0:5. In
+$$\psi(p) - \Big(\alpha \psi(q) + (1 - \alpha)\psi(r) \Big ) = 0.2 - (0.5 \times 0.4 + 0.5 \times 0) = 0$$
 
-N` N`0 N`00 N`
+As this split leaves the training error unchanged, it would be not be considered when growing the tree, and the algorithm might even get stuck if no split can be found to decrease the training error. On the other hand, the test in the new internal node is correctly classifying half of the examples in $S\ell$, and all these correctly classified examples are routed to leaf $\ell''$ which is pure. Hence, half of the data in $S\ell$ is explained by the split.
 
-this case, when (p) = minfp;1 \00 pg we have that
+In order to fix this problem, different functions $\psi$ are used in practice. These functions are similar to min because they are symmetric around $\frac{1}{2}$ and satisfy $\psi(0) = \psi(1) = 0$. However, unlike min, they have a nonzero curvature (i.e., strictly negative second derivative). The curvature helps in cases like the one described in the example above, that is when $p, q, r$ are all on the same side with respect to $\frac{1}{2}$ and $p = \alpha q+ (1 - \alpha)r$. In this case, $\psi(p) - (\alpha \psi (q) + (1 - \alpha)\psi(r)) = 0$ because between $0$ and $\frac{1}{2}$ the function $\psi(a) = min\{a, 1 - a\}$ is a straight line.
 
-  \00 
+Some examples of functions $\psi$ used in practice are:
+1) **Gini function**: $\psi_2(p) = 2p(1-p)$;
+2) **scaled entropy**: $\psi_3(p) = -\frac{p}{2}\log_2(p) - \frac{1-p}{2}\log_2(1-p)$.
 
-(p) \00 (q) + (1 \00 ) (r) = 0:2 \00 0:5  0:4 + 0:5  0 = 0 :
+The following inequalities hold: $min\{p, 1-p\} \leq \psi_2(p) \leq \psi_3(p) \leq \psi_4(p)$.
 
-As this split leaves the training error unchanged, it would be not be considered when growing the tree, and the algorithm might even get stuck if no split can be found to decrease the training error. On the other hand, the test in the new internal node is correctly classifying half of the examples
+![[curves_plot_tree_classifier.png]]
 
-in S`, and all these correctly classied examples are routed to leaf `00which is pure. Hence, half of the data in S` is \explained" by the split.
+In the figure, it is possible to observe the plots of the curves $min \{p, 1-p\}$ (green line) and $\psi2$, $\psi3$, $\psi4$.
 
-In order to x this problem, dierent functions  are used in practice. These functions are similar to min because they are symmetric around 1 and satisfy (0) = (1) = 0. However, unlike min, they
+Note that tree predictors can be naturally used also to solve multiclass classification or regression tasks. In the first case, the label associated with a leaf is, once more, the most frequent label among all training examples routed to that leaf. In the regression case, where $\mathcal{Y} = \mathbb{R}$, the label associated to a leaf is the mean of the labels of all training examples that are routed to that leaf.
 
-2
+An interesting feature of tree predictors for binary classication is that they can be represented with a formula of [[Logica Matematica |propositional logic]] in **disjunctive normal form** (DNF). This representation is obtained by considering the clauses (conjunctions of predicates) that result from the tests on each path that leads from the root to a leaf associated with label $+1$. For example, the classifier corresponding to the tree in the figure below is represented by the formula
 
-have a nonzero curvature (i.e., strictly negative second derivative) |see Figure 3. The curvature helps in cases like the one described in the example above, that is when\00 p;q;r are all on the same side with respect to 1 and p = q+ (1 \00 )r. In this case, (p) \00 (q) + (1 \00 ) (r) = 0
+![[tree_classifier_example.png]]
 
-because between 0 and2 12 the function (a) = minfa; 1 \00 ag is a straight line.
+$$(outlook = sunny) \wedge (humidity 70\%) \vee (outlook = overcast) \vee (outlook = rainy) \wedge (windy = false)$$
 
-Some examples of functions  used in practice are
-
-•• GiniScaledfunction:entropy: 2(p()p=) =2 p\00(1p\00logp).(p) \00 1 \002 p log2(1 \00 p).![](Aspose.Words.fa785cf8-048c-4754-a465-f7d585ee05dd.011.png)
-
-p 3 2 2
-
-•  4(p) = p(1 \00 p).
-
-The following inequalities hold: minfp;1 \00 pg 2(p) 3(p) 4(p).
-
-![](Aspose.Words.fa785cf8-048c-4754-a465-f7d585ee05dd.012.png)
-
-Figure 3: Plots of the curves minfp;1 \00 pg (green line) and 2; 3; 4.
-
-Note that tree predictors can be naturally used also to solve multiclass classication or regression tasks. In the rst case, the label associated with a leaf is, once more, the most frequent label among
-
-all training examples routed to that leaf. In the regression case, where Y = R, the label associated to a leaf is the mean of the labels of all training examples that are routed to that leaf.
-
-An interesting feature of tree predictors for binary classication is that they can be represented with a formula of propositional logic in disjunctive normal form (DNF). This representation is obtained by considering the clauses (conjunctions of predicates) that result from the tests on each path that leads from the root to a leaf associated with label +1. For example, the classier corresponding to the tree of Figure 1 is represented by the formula
-
-(outlook = sunny) ^ (humidity 70%) \_ (outlook = overcast)
-
-\_ (outlook = rainy) ^ (windy = false) :
-
-This \rule-based" representation of the tree classier is very intuitive, and lends itself to being manipulated using the tools of propositional logic; for example, to obtain more compact repre- sentations of the same classier. More importantly, this representation provides an interpretable description of the knowledge the learning algorithm extracted from the training set.
+This rule-based representation of the tree classfiier is very intuitive, and lends itself to being manipulated using the tools of propositional logic; for example, to obtain more compact representations of the same classifier. More importantly, this representation provides an interpretable description of the knowledge the learning algorithm extracted from the training set.
 
 ----------------------------------------------------------------
 
@@ -313,3 +284,5 @@ start from root
 	repeat
 		pick a leaf and split it
 	until some criterion is met ( i.e. too many nodes, the traning error does not go down, the training error is zero)
+
+----------------------------------------------------------------

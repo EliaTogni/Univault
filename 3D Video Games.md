@@ -29,20 +29,18 @@ E’ prassi, durante lo sviluppo di un gioco, praticare il baking, ovvero il mem
 Le strutture dati dei modelli hanno come base tre diversi componenti:
 - il **punto**, ovvero una tripletta di coordinate le quali corrispondono ad una posizione nello spazio. Nel dettaglio, il punto $p \in \mathbb{R}^3 = (x_{p}, y_{p}, z_{p})$;
 - il **vettore**, il quale corrisponde allo spostamento di un oggetto nello spazio ed alla sua velocità. Un vettore è calcolabile come la differenza tra due punti;
-- il **versore** (o **vettore unitario**, o **normale**, o **direzione**, o **vettore normalizzato**), il quale indica l’orientamento o la direzione di un oggetto rispetto al piano di esistenza e sono di grandezza unitaria. 
+- il **versore** (o **vettore unitario**, o **normale**, o **direzione**, o **vettore normalizzato**), il quale indica l’orientamento o la direzione di un oggetto rispetto al piano di esistenza ed è di grandezza unitaria. 
 
 Come esempio, si pensi a come il modello 3D di un telefono nello spazio è formato da punti mentre un suo eventuale spostamento è rappresentato da un vettore e, per capire se lo schermo è rivolto verso il basso oppure no, è possibile utilizzare un versore ortogonale al telefono per indicare il suo orientamento.
 
-Queste tre entità sono alla base dei game engine ed esse condividono la stessa struttura dati, conosciuta in Unity come **Vector3**, contenente una tripletta di valori **(x, y, z)**. In questo motore grafico, infatti, i vettori vengono rappresentati con la stessa classe. Tuttavia non è escluso l’utilizzo di classi differenti per farlo in differenti game engine.
+Queste tre entità sono alla base dei game engine ed esse condividono la stessa struttura dati, conosciuta in Unity come **Vector3**, contenente una tripletta di valori $(x, y, z)$. In questo motore grafico, infatti, i vettori vengono rappresentati con la stessa classe. Tuttavia non è escluso l’utilizzo di classi differenti per farlo in differenti game engine.
 
-Librerie, motori grafici e linguaggi possono optare di utilizzare lo stesso tipo di dato per punti, vettori e versori tridimensionali così come è legito optare di utilizzare tre tipi differenti. Ciò nonostante, non dovrebbero essere considerati come la stessa cosa, come, ad esempio, nell'utilizzo dello stesso tipo con diverse semantiche (come il tipo double per rappresentare il peso, la temperatura e così dicendo).
-E' dovere del programmatore di utilizzarli nella maniera corretta.
+Librerie, motori grafici e linguaggi possono optare di utilizzare lo stesso tipo di dato per punti, vettori e versori tridimensionali così come è legito optare di utilizzare tre tipi differenti. Ciò nonostante, non dovrebbero essere considerati come la stessa cosa, come, ad esempio, nell'utilizzo dello stesso tipo con diverse semantiche (come il tipo double per rappresentare il peso, la temperatura e così dicendo). E' dovere del programmatore l'utilizzo corretto di essi.
 
 -------------------------------------------------------------
 
 ## Possibili operazioni
-
-Al fine di fornire la più completa descrizione delle operazioni, si fornirà di seguito una definizione sia dal punto di vista spaziale, sia dal punto di vista algebrico e sia dal punto di vista sintattico.
+Al fine di fornire la più completa descrizione delle operazioni, si fornirà di seguito una definizione sia dal punto di vista intuitivo/spaziale (ovvero cosa comporta l'operazione visivamente), sia dal punto di vista algebrico (ovvero come computare matematicamente il risultato) e sia dal punto di vista sintattico (come utilizzare la notazione matematica e i linguaggi di programmazione per scrivere le operazioni).
 
 ### Addizione
 L’addizione tra un punto $p$ e un vettore $v$ dà come risultato un punto $q$ corrispondente, in termini spaziali, al punto $p$ spostato di una quantità $v$ nella direzione del vettore:
