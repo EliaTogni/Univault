@@ -102,6 +102,8 @@ L'**interpolazione sferica**, applicata dalla funzione _slerp()_ è un tipo di i
 
 Infatti, è possibile computare la magnitudine risultante tramite _lerp()_ delle magnitudini e computare la direzione risultante tramite _slerp()_ delle direzioni;
 
+Non si ottiene, però, lo stesso risultato dell'interpolazione lineare, anche se è molto simile. Questa similarità aumenta quando $d_0$ e $d_1$ sono simii oppure $t$ è un valore vicino ad $\frac{1}{2}$. Il costo computazionale extra però non lo rende vantaggioso.
+
 ----------------------------------------------------------------
 
 ### Norma
@@ -186,6 +188,9 @@ Per rappresentarli vi sono principalmente due approcci:
 - **right-handed**: stesso approccio del left-handed ma con la mano destra.
 
 Questi assi rappresentano tante cose in base alle convenzioni e purtroppo non vi è uno standard tra i vari game engine: Unity e Unreal ad esempio sono left handed ma la loro posizione degli assi è differente.
+
+----------------------------------------------------------------
+
 # Trasformazioni spaziali nei giochi 3D
 **Una trasformazione è il passaggio di un oggetto dal suo sistema di riferimento ad un altro**, una trasformazione importante è quella che permette di passare dallo spazio locale (o spazio oggetto) allo spazio mondo, quello in cui vi sono tutti gli oggetti della scena. 
 

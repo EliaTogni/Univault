@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "f12c5d874698c2bb",
+            "id": "0b50027e5ed0ac5b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3D Video Games.md",
+                "file": "Bioinformatica.md",
                 "mode": "source",
                 "source": false
               }
@@ -77,7 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "3D Video Games.md",
+                "file": "Bioinformatica.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -106,8 +106,10 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "f12c5d874698c2bb",
+  "active": "0b50027e5ed0ac5b",
   "lastOpenFiles": [
+    "3D Video Games.md",
+    "Bioinformatica.md",
     "Statistical Methods for Machine Learning.md",
     "Images/curves_plot_tree_classifier.png",
     "Images/tree_classifier_growth.png",
@@ -122,7 +124,6 @@
     "Logica Matematica.md",
     "Intelligenza Artificiale.md",
     "Aspose.Words.71aa4c53-d7ba-4657-87a5-91bea0ef3125.001.png.md",
-    "3D Video Games.md",
     "Untitled.md",
     "Informatica Teorica.md",
     "Images/differenza_vettoriale_regola_parallelogramma.png",
