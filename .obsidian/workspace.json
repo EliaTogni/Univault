@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Bioinformatica.md",
+                "file": "3D Video Games.md",
                 "mode": "source",
                 "source": false
               }
@@ -77,7 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Bioinformatica.md",
+                "file": "3D Video Games.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,6 +109,7 @@
   "active": "0b50027e5ed0ac5b",
   "lastOpenFiles": [
     "Bioinformatica.md",
+    "Images/gene.png",
     "Images/side_chain_properties.png",
     "Statistical Methods for Machine Learning.md",
     "3D Video Games.md",
@@ -121,7 +122,6 @@
     "Images/tree_classifier_example.png",
     "Aspose.Words.fa785cf8-048c-4754-a465-f7d585ee05dd.003.png.md",
     "Images/trend_training_error.png",
-    "Images/hknn.png",
     "Aspose.Words.3350d2fb-3819-4c0e-a2d1-adf4ad772550.004.png.md",
     "Logica Matematica.md",
     "Intelligenza Artificiale.md",
