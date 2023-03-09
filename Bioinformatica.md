@@ -38,7 +38,9 @@ L'RNA messaggero interagisce nei ribosomi con il **tRNA** (**RNA di trasporto**)
 ----------------------------------------------------------------
 
 ## Proteine
-Le **proteine** sono biomolecole composte da una sequenza di **amminoacidi** (ne esistono 20 diversi): ogni amminoacido ha un carbonio $\alpha$ legato ad un gruppo amminico -NH$_{2}$ , ad un gruppo carbossilico -COOH, ad un idrogeno e ad una catena laterale. La catena laterale è ciò che differenzia ciascun amminoacido.
+Le **proteine** sono biomolecole composte da una sequenza di **amminoacidi** (ne esistono 20 diversi): ogni amminoacido ha un carbonio $\alpha$ legato ad un gruppo amminico -NH$_{2}$ , ad un gruppo carbossilico -COOH, ad un idrogeno e ad una catena laterale. La catena laterale è ciò che differenzia ciascun amminoacido, garantendogli proprietà differenti a seconda della catena laterale.
+
+![[side_chain_properties.png]]
 
 ### Struttura
 La funzione di una proteina è legata alla sua struttura. La struttura di una proteina può essere analizzata sotto quattro diversi livelli:
@@ -72,16 +74,17 @@ La funzione di una proteina, tuttavia, non è unica e può variare a seconda del
 ### Codice Genetico
 Il codice genetico è la codifica delle proteine come triplette di nucleotidi. È un codice ridondante: gli amminoacidi sono 20, le triplette possibili di nucleotidi sono $4^3=64$ (coppie di nucleotidi non sarebbero sufficienti).
 
-Questa ridondanza permette qualche grado di robustezza alle mutazioni: alcune variazioni di un nucleotide corrispondono allo stesso amminoacido, sono mutazioni sinonime. Nelle mutazioni missenso, la codifica errata corrisponde ad un altro amminoacido.
+Questa ridondanza permette qualche grado di robustezza alle mutazioni: alcune variazioni di un nucleotide corrispondono allo stesso amminoacido, sono mutazioni sinonime. Nelle mutazioni missenso, la codifica errata corrisponde ad un altro amminoacido. Le mutazioni possono occorrere a casua di mutazioni (per radiazioni o chimiche), per errore (durante la replicazione) o per mancanza di correzione (dopo una mutazione o un errore).
 
-Le mutazioni influiscono sulla fitness della cellula rispetto all'ambiente: in base a ciò, possono essere distinte in miglioranti, peggioranti o neutrali. Le mutazioni che si propagano alla progenie sono solo quelle che coinvolgono le cellule germinali (non quelle somatiche).
+Le mutazioni influiscono sul fitness della cellula rispetto all'ambiente. infatti, i cambiamenti nelle funzioni della cellula determinano se la mutazione del DNA viene mantenuta o persa: in base a ciò, le mutazioni possono essere distinte in **miglioranti**, **peggioranti** o **neutrali**. Solo le mutazioni miglioranti e neutrali si propagano alla progenie.<br />
+Le mutazioni che si propagano alla progenie sono, inoltre, solo quelle che coinvolgono le cellule germinali (non quelle somatiche).
 
 Alcune sezioni di DNA sono molto simili in molti organismi e sono dette regioni conservate: esse corrispondono a funzioni di base e una mutazione in una tale regione sarà probabilmente peggiorante.
 
 ----------------------------------------------------------------
 
 ### Geni
-Ogni gene è una porzione di DNA che codifica l'informazione riguardante una proteina. I geni hanno una lunghezza variabile tra $10^2$ e $10^5$ nucleotidi. Un gene ha una porzione trascritta e una porzione *promoter*.
+Ogni **gene** è una porzione di DNA che codifica l'informazione riguardante una proteina. I geni hanno una lunghezza variabile tra i $10^2$ ed i $10^5$ nucleotidi. Un gene ha una porzione **trascritta** e una porzione **promoter**.
 
 Nella porzione trascritta si alternano introni ed esoni: gli esoni sono trascrivibili in mRNA, mentre gli introni vengono tagliati in un processo chiamato *slicing*. Per una trascrizione può essere usato un sottoinsieme degli esoni di un gene: ogni sottoinsieme codificherà una proteina diversa (l'uomo ha 20000 geni, che sono molti meno delle proteine che produce).
 
