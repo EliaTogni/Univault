@@ -1,34 +1,73 @@
 # Elementi di Biologia Molecolare
 Per **bioinformatica** (**bioinformatics**) si intende l'applicazione di metodi informatici per l'elaborazione e l'analisi di dati biologici, soprattutto biomolecolari. Spesso viene usato intercambiabilmente il termine **biologia computazionale** (**computational biology**).
 
-La bioinformatica si occupa anche di dati medici di tipo clinico o fenotipico, ma soprattutto è specializzata nella genomica e nella proteomica. Ci concentreremo, quindi, sulla biologia molecolare delle macromolecole degli acidi nucleici e delle proteine.1
+La bioinformatica si occupa anche di dati medici di tipo clinico o fenotipico, ma soprattutto è specializzata nella genomica e nella proteomica. Il focus del corso sarà posto, quindi, sulla biologia molecolare delle macromolecole degli acidi nucleici e delle proteine.<br />
+Non rientrano nella bioinformatica, invece, le tecniche informatiche ispirate a princìpi biologici, come le reti neurali o i metodi di computazione evoluzionistica.
 
-Non rientrano nella bioinformatica le tecniche informatiche ispirate a princìpi biologici, come le reti neurali o i metodi di computazione evoluzionistica.
+https://www.youtube.com/watch?v=o_-6JXLYS-k
 
 ## DNA
-Il **DNA** (**Desoxyribonucleic Acid**) è un polimero che si trova nel nucleo delle cellule (eucariote, libero nelle cellule procariote) formato da due catene di nucleotidi in senso opposto. Ogni nucleotide è formato da un gruppo fosfato (fosfato organico), uno zucchero desossiribosio (ribosio senza gruppo idrossile) ed una base azotata.
+Il **DNA** (**DesoxyriboNucleic Acid**) è un polimero il quale si trova nel nucleo delle cellule eucariote oppure libero nelle cellule procariote, formato da due catene di nucleotidi in senso opposto. Ogni nucleotide è formato da un **gruppo fosfato** (fosfato organico), uno zucchero **desossiribosio** (ribosio senza gruppo idrossile) ed una **base azotata**.<br />
+Il fosfato organico e il desossiribosio sono uguali per tutti i nucleotidi e formano una **backbone** per la catena alternandosi: la **catena antisenso** è formata anch'essa da una backbone fosfato-zucchero, ma nell'ordine opposto.
 
-Il fosfato organico e il desossiribosio sono uguali per tutti i nucleotidi e formano una *backbone* per la catena alternandosi: la catena antisenso è formata anch'essa da una *backbone* fosfato-zucchero, ma nell'ordine opposto.
+I nucleotidi differiscono solo per la base azotata. Ogni nucleotide ha una di quattro basi azotate: **adenina**, **timina**, **guanina** o **citosina**. Ognuna di queste basi si può collegare solo con la propria base complementare: adenina con timina e guanina con citosina.
 
-I nucleotidi differiscono solo per la base azotata. Ogni nucleotide ha una di quattro basi azotate: adenina, timina, guanina o citosina. Ognuna di queste basi si può collegare solo con la propria base complementare: adenina con timina e guanina con citosina.
+Le due catene sono, quindi, legate internamente da **legami covalenti** (forti) e alla catena antisenso da **legami idrogeno** (deboli) tra le coppie di basi azotate.
 
-Le due catene sono, quindi, legate internamente da legami covalenti (forti) e alla catena antisenso da legami idrogeno (deboli) tra le coppie di basi azotate.
-
-Le catene sono avvolte a forma di doppia elica attorno a proteine chiamate istoni, che tendono a compattarsi e a compattare, così, il DNA. Questo insieme di proteine e DNA è detto cromatina e forma, così impaccata, i cromosomi.
+Le catene sono avvolte a forma di doppia elica attorno a proteine chiamate **istoni**, che tendono a compattarsi e a compattare, così, il DNA. Questo insieme di proteine e DNA è detto **cromatina** e forma, così impaccata, i **cromosomi**.
 
 ### Replicazione
 Durante la riproduzione cellulare, il DNA si duplica. Le due catene si separano: su ognuna di esse viene ricostruita l'opposta come concatenazione delle basi complementari.
 
+![[DNA_replication.png]]
+
+----------------------------------------------------------------
+
+## RNA
+L'**RNA** (**RiboNucleic Acid**) è un filamento a singola elica ma dalla struttura simile al DNA. L'unica differenza è che nell'RNA, la timina è sostituita dall'**uracile**.
+
 ----------------------------------------------------------------
 
 ## Dogma Centrale
-Il dogma centrale della biologia molecolare riguarda il flusso
-dell'informazione biologica: nella forma più semplificata afferma che il DNA viene trascritto sul mRNA, che viene tradotto in proteine. La trascrizione del DNA in mRNA avviene secondo il principio di corrispondenza delle basi già visto: l'unica differenza è che l'RNA non ha la timina, ma l'uracile.
+Il dogma centrale della biologia molecolare riguarda il flusso dell'informazione biologica: nella forma più semplificata afferma che il DNA viene trascritto sul **mRNA** (**RNA messaggero**), che viene tradotto in proteine. La trascrizione del DNA in mRNA avviene secondo il principio di corrispondenza delle basi descritto in precedenza:
 
 $$A\rightarrow U\hspace{1in} T\rightarrow A\hspace{1in} C\rightarrow G\hspace{1in} G\rightarrow C$$
 
-L'RNA messaggero interagisce nei ribosomi con il tRNA (RNA di
-trasporto): ogni tRNA trasporta un amminoacido e ha un anticodone con tre nucleotidi. Esso si legherà, quindi, ad un pezzo di RNA che contenga la tripletta complementare. La sequenza di triplette nel mRNA codifica, quindi, una sequenza di amminoacidi, ovvero, una proteina.
+L'RNA messaggero interagisce nei ribosomi con il tRNA (RNA di trasporto): ogni tRNA trasporta un amminoacido e ha un anticodone con tre nucleotidi. Esso si legherà, quindi, ad un pezzo di RNA che contenga la tripletta complementare. La sequenza di triplette nel mRNA codifica, quindi, una sequenza di amminoacidi, ovvero, una proteina.
+
+----------------------------------------------------------------
+
+## Proteine
+Le **proteine** sono biomolecole composte da una sequenza di **amminoacidi** (ne esistono 20 diversi): ogni amminoacido ha un carbonio $\alpha$ legato ad un gruppo amminico -NH$_{2}$ , ad un gruppo carbossilico -COOH, ad un idrogeno e ad una catena laterale. La catena laterale è ciò che differenzia ciascun amminoacido.
+
+### Struttura
+La funzione di una proteina è legata alla sua struttura. La struttura di una proteina può essere analizzata sotto quattro diversi livelli:
+-  struttura primaria: la sequenza lineare di amminoacidi;
+-  struttura secondaria: motivi strutturali, come $\alpha$-eliche, $\beta$-foglietti, ...;
+- struttura terziaria: forma complessiva della molecola, ripiegamenti e composizioni di strutture secondarie;
+- struttura quaternaria: forma di un complesso di più molecole che interagiscono fra loro.
+
+----------------------------------------------------------------
+
+### Funzioni
+Le proteine possono essere classificate in base alla loro funzione:
+- **elaborazione dell'informazione**:
+    - percezione extracellulare (recettori);
+    - trasduzione di segnali;
+    - regolazione dell'espressione genica;
+    - regolazione del ciclo cellulare;
+    - regolazione della differenziazione cellulare.
+- **metabolismo**:
+    - energia;
+    - sintesi di proteine, DNA, RNA, ...;
+    - biogenesi delle componenti cellulari.
+- **struttura**:
+    - citoscheletro;
+    - trasporto cellulare.
+
+La funzione di una proteina, tuttavia, non è unica e può variare a seconda del contesto cellulare. Dunque, la classificazione funzionale delle proteine non segue necessariamente una struttura ad albero.
+
+----------------------------------------------------------------
 
 ### Codice Genetico
 Il codice genetico è la codifica delle proteine come triplette di nucleotidi. È un codice ridondante: gli amminoacidi sono 20, le triplette possibili di nucleotidi sono $4^3=64$ (coppie di nucleotidi non sarebbero sufficienti).
@@ -47,38 +86,6 @@ Ogni gene è una porzione di DNA che codifica l'informazione riguardante una pro
 Nella porzione trascritta si alternano introni ed esoni: gli esoni sono trascrivibili in mRNA, mentre gli introni vengono tagliati in un processo chiamato *slicing*. Per una trascrizione può essere usato un sottoinsieme degli esoni di un gene: ogni sottoinsieme codificherà una proteina diversa (l'uomo ha 20000 geni, che sono molti meno delle proteine che produce).
 
 Il *promoter* regola la trascrizione: la trascrizione può avvenire solo in seguito all'attivazione del *promoter* causata da una proteina fattore di trascrizione, che permette all'enzima RNA-polimerasi di trascrivere il DNA. Questi meccanismi di regolazione sono influenzati anche da regioni distali chiamate *enhancer* e *silencer*. Nell'uomo, le regioni trascritte costituiscono solo il 2% del codice genetico: le porzioni restanti hanno funzioni regolatrici.
-
-----------------------------------------------------------------
-
-## Proteine
-Le proteine sono biomolecole composte da una sequenza di amminoacidi (ne esistono 20 diversi): ogni amminoacido ha un carbonio $\alpha$ legato ad un gruppo amminico -NH$_{2}$ , ad un gruppo carbossilico -COOH, ad un idrogeno e ad una catena laterale. La catena laterale è ciò che differenzia ciascun amminoacido.
-
-### Struttura
-La funzione di una proteina è legata alla sua struttura. La struttura di una proteina può essere analizzata sotto quattro diversi livelli:
--  struttura primaria: la sequenza lineare di amminoacidi;
--  struttura secondaria: motivi strutturali, come $\alpha$-eliche, $\beta$-foglietti, ...;
-- struttura terziaria: forma complessiva della molecola, ripiegamenti e composizioni di strutture secondarie;
-- struttura quaternaria: forma di un complesso di più molecole che interagiscono fra loro.
-
-----------------------------------------------------------------
-
-### Funzioni
-Le proteine possono essere classificate in base alla loro funzione:
-- elaborazione dell'informazione:
-    - percezione extracellulare (recettori);
-    - trasduzione di segnali;
-    - regolazione dell'espressione genica;
-    - regolazione del ciclo cellulare;
-    - regolazione della differenziazione cellulare.
-- Metabolismo:
-    - energia;
-    - sintesi di proteine, DNA, RNA, ...;
-    - biogenesi delle componenti cellulari.
-- struttura:
-    - citoscheletro;
-    - trasporto cellulare.
-
-La funzione di una proteina, tuttavia, non è unica e può variare a seconda del contesto cellulare. Dunque, la classificazione funzionale delle proteine non segue necessariamente una struttura ad albero.
 
 ----------------------------------------------------------------
 

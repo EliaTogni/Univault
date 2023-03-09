@@ -29,7 +29,7 @@ E’ prassi, durante lo sviluppo di un gioco, praticare il baking, ovvero il mem
 Le strutture dati dei modelli hanno come base tre diversi componenti:
 - il **punto**, ovvero una tripletta di coordinate le quali corrispondono ad una posizione nello spazio. Nel dettaglio, il punto $p \in \mathbb{R}^3 = (x_{p}, y_{p}, z_{p})$;
 - il **vettore**, il quale corrisponde allo spostamento di un oggetto nello spazio ed alla sua velocità. Un vettore è calcolabile come la differenza tra due punti;
-- il **versore** (o **vettore unitario**, o **normale**, o **direzione**, o **vettore normalizzato**), il quale indica l’orientamento o la direzione di un oggetto rispetto al piano di esistenza ed è di grandezza unitaria. 
+- il **versore** (o **vettore unitario**, o **normale**, o **direzione**, o **vettore normalizzato**), il quale indica l’orientamento o la direzione di un oggetto rispetto al piano di esistenza ed è di magnitudine unitaria. 
 
 Come esempio, si pensi a come il modello 3D di un telefono nello spazio è formato da punti mentre un suo eventuale spostamento è rappresentato da un vettore e, per capire se lo schermo è rivolto verso il basso oppure no, è possibile utilizzare un versore ortogonale al telefono per indicare il suo orientamento.
 
@@ -47,13 +47,13 @@ L’addizione tra un punto $p$ e un vettore $\vec{v}$ restituisce come risultato
 
 $$a=(ax,ay,az), \quad   \vec{v}=(vx,vy,vz), \quad   q=a+\vec{v}=(ax+vx,ay+vy,az+vz)$$
 
-$$\text{se } a∈P, v∈V, a+v= q∈P, \quad \text{dove } q= a+v=(ax+vx,ay+vy,az+vz)$$
+$$\text{se } a∈P, \vec{v}∈V, a+\vec{v}= q∈P, \quad \text{dove } q= a+\vec{v}=(ax+vx,ay+vy,az+vz)$$
 
 ![[somma_punto_vettore.png]]
 
-Il **vettore identità** o **vettore zero** $z$ corrisponde al vettore $(0,0,0)$: ogni punto $p$ sommato con esso restituirà come risultato lo stesso punto $p$.
+Il **vettore identità** o **vettore zero** $\vec{z}$ corrisponde al vettore $(0,0,0)$: ogni punto $p$ sommato con esso restituirà come risultato lo stesso punto $p$.
 
-L'addizione tra due vettori $v$ e $w$ restituirà come risultato un nuovo vettore $u$, ottenuto tramite il metodo del parallelogramma.
+L'addizione tra due vettori $\vec{v}$ e $\vec{w}$ restituirà come risultato un nuovo vettore $u$, ottenuto tramite il metodo del parallelogramma.
 
 ![[somma_vettoriale_regola_parallelogramma.png]]
 
@@ -61,32 +61,32 @@ L'addizione tra due vettori $v$ e $w$ restituirà come risultato un nuovo vettor
 
 ### Differenza
 Dati due punti $p$ e $q$, la differenza $q-p$ è un vettore il quale, da un punto di vista spaziale, indica lo spostamento da $p$ a $q$:
-$$p=(px,py,pz) \quad  q=(qx,qy,qz) \quad  v=q-p=(qx-px,qy-py,qz-pz)$$	$$\text{se } p,q∈P, q-p= v∈V, \quad \text{con } v=(qx-px,qy-py,qz-pz)$$
+$$p=(px,py,pz) \quad  q=(qx,qy,qz) \quad  \vec{v}=q-p=(qx-px,qy-py,qz-pz)$$	$$\text{se } p,q∈P, q-p= \vec{v}∈V, \quad \text{con } \vec{v}=(qx-px,qy-py,qz-pz)$$
 ![[differenza_punto_punto.png]]
 
-La differenza tra due vettori $v$ e $w$ restituirà come risultato un nuovo vettore $u$, ottenuto tramite il secondo metodo del parallelogramma.
+La differenza tra due vettori $\vec{v}$ e $\vec{w}$ restituirà come risultato un nuovo vettore $\vec{u}$, ottenuto tramite il secondo metodo del parallelogramma.
 
 ![[differenza_vettoriale_regola_parallelogramma.png]]
 
 --------------------------------------------------------------------------------
 
 ### Prodotto
-Il prodotto tra un vettore $v$ e uno scalare $k$ è un vettore $u$ avente stesso verso e direzione ma con la lunghezza moltiplicata per $k$.<br />Nel caso in cui $k$ sia negativo, la direzione del vettore si inverte. Infatti, il vettore $b$ opposto al vettore $a$ non è altro che il vettore $a$ moltiplicato per uno scalare $k = 1$.<br />
+Il prodotto tra un vettore $\vec{v}$ e uno scalare $k$ è un vettore $\vec{u}$ avente stesso verso e direzione ma con la lunghezza moltiplicata per $k$.<br />Nel caso in cui $k$ sia negativo, la direzione del vettore si inverte. Infatti, il vettore $\vec{b}$ opposto al vettore $\vec{a}$ non è altro che il vettore $\vec{a}$ moltiplicato per uno scalare $k = 1$.<br />
 La differenza tra due vettori è, quindi, un caso particolare della somma dal momento in cui:
 
-$$ v-w= v+ (-w) = v+(-1)\cdot w$$
+$$ vec{v}-\vec{w}= \vec{v}+ (-\vec{w}) = \vec{v}+(-1)\cdot \vec{w}$$
 
 ----------------------------------------------------------------
 
 ### Interpolazione lineare
-L’interpolazione (_lerp()_ o _mix()_)tra due vettori $v$ e $w$ restituisce come risultato un vettore corrispondente alla loro media pesata utilizzando un valore $k \in [0, 1]$:
-$$\text{Dato }k ∈ [0,1], \quad u=lerp(v,w,k)= (1-k)⋅v + k⋅w$$
+L’interpolazione (_lerp()_ o _mix()_)tra due vettori $\vec{v}$ e $\vec{w}$ restituisce come risultato un vettore corrispondente alla loro media pesata utilizzando un valore $k \in [0, 1]$:
+$$\text{Dato }k ∈ [0,1], \quad \vec{u}=lerp(\vec{v},\vec{w},k)= (1-k)\cdot \vec{v} + k\cdot \vec{w}$$
 
 o, in alternativa:
 
-$$\text{dato } k \in [0,1]. \quad u = lerp(v, w, k) = v + k(w-v)$$
+	$$\text{dato } k \in [0,1], \quad \vec{u} = lerp(\vec{v}, \vec{w}, k) = \vec{v} + k(\vec{w}-\vec{v})$$
 
-L'interpolazione tra due punti $p_{0} e p_{1}$ è, invece:
+L'interpolazione tra due punti $p_{0}$ e $p_{1}$ è, invece:
 
 $$p_{0} + t(p_1 - p_0)$$
 
@@ -109,22 +109,22 @@ Non si ottiene, però, lo stesso risultato dell'interpolazione lineare, anche se
 ### Norma
 La **norma** di un vettore indica la sua lunghezza, la sua magnitudine, la distanza tra due punti:
 
-$$\text{Dato } v=(x,y,z), \quad ||v||=\sqrt{(x^2 +y^2 +z^2)}$$
+$$\text{Dato } \vec{v}=(x,y,z), \quad \Vert \vec{v} \Vert =\sqrt{(x^2 +y^2 +z^2)}$$
 
 ----------------------------------------------------------------
 
 ### Normalizzazione
-La **normalizzazione** di un vettore $v$ è una tecnica la quale permette di ottenere il suo versore. Per fare ciò, si utilizza la seguente formula:
+La **normalizzazione** di un vettore $\vec{v}$ è una tecnica la quale permette di ottenere il suo versore. Per fare ciò, si utilizza la seguente formula:
 
-$$ vnorm=\frac{v}{||v||}$$
+$$ \vec{vnorm}=\frac{\vec{v}}{\Vert \vec{v} \Vert}$$
 
 La normalizzazione non è applicabile al vettore degenere, in quanto si tratta di un vettore con lunghezza $0$.
 
 Le operazioni sui versori sono essenzialmente le stesse dei vettori. E' necessario, però, prendere alcuni accorgimenti:
 - l'interpolazione tra due versori restituisce come risultato un vettore. Risulta, quindi, necessario normalizzare tale vettore. Una possibile soluzione è utilizzare la funzione _slerp()_, la quale restituisce un versore facendo l’interpolazione sferica. Questo metodo, però, non è consigliato, dal momento in cui le funzioni _cos_ e _sin_ sono molto lente.
 
-$$slerp(v,w,k)=s in(1-k) \alpha sin(\alpha)v+sin(k\alpha)sin(\alpha)w$$
-$$ \text{ dove } \alpha= \text{ angolo tra } v \text{ e } w $$
+$$slerp(\vec{v},\vec{w},k)=s in(1-k) \alpha sin(\alpha)\vec{v}+sin(k\alpha)sin(\alpha)\vec{w}$$
+$$ \text{ dove } \alpha= \text{ angolo tra } \vec{v} \text{ e } \vec{w} $$
 
 ----------------------------------------------------------------
 
@@ -135,56 +135,70 @@ L'**estrapolazione** è una combinazione lineare simile all’interpolazione, co
 
 ## Prodotti tra vettori (e versori)
 Per quanto riguarda i prodotto tra due vettori, ve ne sono due:
-- il prodotto **dot**, indicato con $v \cdot w$, oppure $< v, w >$;
-- il prodotto **cross**; 
+- il prodotto **dot**, indicato con $\vec{v} \cdot \vec{w}$, oppure $< \vec{v}, \vec{w} >$;
+- il prodotto **cross**, indicto con $\vec{v} \times \vec{w}$.
 
 Il prodotto dot è l’equivalente del **prodotto scalare** ed è la somma dei prodotti tra le coordinate dei vettori:
 
-$$v \cdot w=(vx\cdot wx)+(vy \cdot wy)+(vz \cdot wz)$$
+$$\vec{v} \cdot \vec{w} =(vx\cdot wx)+(vy \cdot wy)+(vz \cdot wz)$$
 
+### Prodotto dot
 Il prodotto dot gode di numerose proprietà:
 1) è un test di ortogonalità per vettori. infatti, due vettori (o versori) sono ortogonali se il loro prodotto dot ha come risultato $0$;
 2) se il risultato del prodotto dot è diverso da $0$, il segno indicherà se i vettori sono direzionati allo stesso modo o meno. Nel primo caso il prodotto dot sarà positivo (e quindi l'angolo tra di essi sarà un angolo acuto), altrimenti sarà negativo (e quindi, l'angolo tra di essi sarà ottuso);
 3) il prodotto dot è direttamente proporzionale alle norme dei due vettori ed il coseno dell'angolo che formano. Quindi, il prodotto dot tra due versori sarà proporzionale al solo coseno;
-$$v⋅w= ||v|| \cdot ||w|| \cdot cos(\alpha)$$
+$$\vec{v} \cdot \vec{w}= \Vert \vec{v} \Vert \cdot \Vert \vec{w} \Vert \cdot cos(\alpha)$$
 
 4) il prodotto dot di un vettore con sè stesso dà come risultato la sua norma al quadrato:
 
-$$v⋅v=||v||^2=(x^2 + y^2 +z^2)$$
+$$ \vec{v} \cdot \vec{v} = \Vert \vec{v} \Vert^2 = (x^2 + y^2 +z^2)$$
 
-5) il prodotto dot tra un vettore $v$ ed il risultato di un’interpolazione tra $a$ e $b$ equivale all’interpolazione tra $v \cdot a$ e $v \cdot b$:
-$$v \cdot lerp(a,b,k) = lerp(v \cdot a,v \cdot b,k)$$
+5) il prodotto dot tra un vettore $\vec{v}$ ed il risultato di un’interpolazione tra $a$ e $b$ equivale all’interpolazione tra $\vec{v} \cdot a$ e $\vec{v} \cdot b$:
+
+$$\vec{v} \cdot lerp(a,b,k) = lerp(\vec{v} \cdot a,\vec{v} \cdot b,k)$$
 
 6) con questo prodotto è possibile estrarre una coordinata da un vettore:
 
-$$\text{se } v=(x,y,z) \text{ e } w=(0,1,0)  , \to v \cdot w=y$$
+$$\text{se } \vec{v}=(x,y,z) \text{ e } \vec{w}=(0,1,0)  , \to \vec{v} \cdot \vec{w}=y$$
 
 7) il prodotto dot é **lineare;
 
-Il prodotto **cross** è l’equivalente del prodotto vettoriale: il risultato di questo prodotto tra due vettori $v$ e $w$ è quello ortogonale a entrambi. Per calcolare tale prodotto, si procede nel seguente modo:
+### Prodotto cross
+Il prodotto **cross** è l’equivalente del prodotto vettoriale: il risultato di questo prodotto tra due vettori $\vec{v}$ e $\vec{w}$ è quello ortogonale a entrambi e, geometricamente parlando, definisce l'area del parallelogramma costruito applicando i due vettori allo stesso punto. 
 
-$$\text{dati } v=(xv,yv,zv) \text{ e } w=(wx,wy,wz),$$
+![[cross_product.png]]
 
-$$v \times w= ( vy⋅wz - vz⋅wy , vz⋅wx - wx⋅vz , vx⋅wy - vy⋅wx )$$
+Per calcolare tale prodotto, si procede nel seguente modo:
 
-Il ragionamento che si fa è il seguente: per calcolare una coordinata, si esclude la linea corrispondente e si “disegna” una croce con le altre 2.
+$$\Vert \vec{v} \times \vec{w} \Vert = \Vert \vec{v} \vert \cdot \Vert \vec{w} \Vert \cdot \vert sin(\alpha) \vert$$
 
-A differenza del prodotto dot, **il cross non è commutativo**, infatti **invertire i due vettori permette di ottenere il vettore ortogonale opposto**. Nonostante queste limitazione, **il prodotto cross ha le seguenti qualità:**
+dove $\alpha$ è l'angolo compreso tra i due vettori.
 
-1. **La norma del vettore risultante è proporzionale a quella dei vettori operandi e al seno dell’angolo che formano**:
+$$\text{dati } \vec{v}=(xv,yv,zv) \text{ e } \vec{w}=(wx,wy,wz),$$
 
-`	`se u=v ×w, |u|=|v|⋅|w|⋅sin(a)
+$$\vec{v} \times \vec{w}= ( vy \cdot wz - vz \cdot wy , vz \cdot wx - wx\cdot vz , vx\cdot wy - vy\cdot wx )$$
 
-1. **Il prodotto cross di un vettore con sè stesso dà il vettore degenere come risultato**
+Il prodotto cross è utile a:
+- trovare vettori ortogonali e, di conseguenza, costruire basi ortonormali;
+- fare il test di collinearità;
+- trovare l'area di un triangolo tridimensionale;
+- trovare la normale di un triangolo tridimensionale;
+- 
+Mentre le altre operazioni sono generalizzabili ad un numero qualsiasi di dimensioni, il cross product è definito esclusivamente nel caso tridimensionale.
+
+A differenza del prodotto dot, il cross non è commutativo. Infatti, invertire i due vettori permette di ottenere il vettore ortogonale opposto. Nonostante queste limitazione, il prodotto cross gode delle seguenti proprietà:
+1) la norma del vettore risultante è proporzionale a quella dei vettori operandi e al seno dell’angolo che formano;
+2) Il prodotto cross di un vettore con sè stesso dà il vettore degenere come risultato, in quanto l'angolo tra un vettore e sè stesso è $0$.
 
 ----------------------------------------------------------------
 
 ## Sistemi di riferimento
-Punti, vettori e versori stanno in un sistema di riferimento con 3 assi, ovvero x, y e z e sono cartesiani nel caso generico. 
+Punti, vettori e versori giacciono in un sistema di riferimento con $3$ assi, ovvero $x$, $y$ e $z$, i quali sono versori e sono reciprocamente ortogonali.<br />
+Uno **spazio $n$-dimensionale di riferimento** è quindi formato da $n$ assi (vettori) e da un punto di origine.<bt />
+Un qualsiasi vettore $\vec{v}$ può essere espresso in esattamente $1$ modo come combinazione lineare dei versori degli assi.<br />
 
-Per rappresentarli vi sono principalmente due approcci:
-
-- **left-handed**: si usa uno schema “a mano sinistra” per rappresentare gli assi, precisamente la x è il pollice, l’indice è y mentre il medio è la z;
+Per rappresentarli intuitivamente, vi sono principalmente due approcci:
+- **left-handed**: si usa uno schema “a mano sinistra” per rappresentare gli assi, precisamente la $x$ è il pollice, l’indice è $y$ mentre il medio è la $z$;
 - **right-handed**: stesso approccio del left-handed ma con la mano destra.
 
 Questi assi rappresentano tante cose in base alle convenzioni e purtroppo non vi è uno standard tra i vari game engine: Unity e Unreal ad esempio sono left handed ma la loro posizione degli assi è differente.
