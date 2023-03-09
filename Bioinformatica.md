@@ -33,7 +33,7 @@ Il dogma centrale della biologia molecolare riguarda il flusso dell'informazione
 
 $$A\rightarrow U\hspace{1in} T\rightarrow A\hspace{1in} C\rightarrow G\hspace{1in} G\rightarrow C$$
 
-L'RNA messaggero interagisce nei ribosomi con il tRNA (RNA di trasporto): ogni tRNA trasporta un amminoacido e ha un anticodone con tre nucleotidi. Esso si legherà, quindi, ad un pezzo di RNA che contenga la tripletta complementare. La sequenza di triplette nel mRNA codifica, quindi, una sequenza di amminoacidi, ovvero, una proteina.
+L'RNA messaggero interagisce nei ribosomi con il **tRNA** (**RNA di trasporto**): ogni tRNA trasporta un amminoacido e ha un anticodone con tre nucleotidi. Esso si legherà, quindi, ad un pezzo di RNA che contenga la tripletta complementare. La sequenza di triplette nel mRNA codifica, quindi, una sequenza di amminoacidi, ovvero, una proteina.
 
 ----------------------------------------------------------------
 
@@ -42,10 +42,10 @@ Le **proteine** sono biomolecole composte da una sequenza di **amminoacidi** (ne
 
 ### Struttura
 La funzione di una proteina è legata alla sua struttura. La struttura di una proteina può essere analizzata sotto quattro diversi livelli:
--  struttura primaria: la sequenza lineare di amminoacidi;
--  struttura secondaria: motivi strutturali, come $\alpha$-eliche, $\beta$-foglietti, ...;
-- struttura terziaria: forma complessiva della molecola, ripiegamenti e composizioni di strutture secondarie;
-- struttura quaternaria: forma di un complesso di più molecole che interagiscono fra loro.
+- **struttura primaria**: la sequenza lineare di amminoacidi;
+- **struttura secondaria**: motivi strutturali, come $\alpha$-eliche, $\beta$-foglietti, ...;
+- **struttura terziaria**: forma complessiva della molecola, ripiegamenti e composizioni di strutture secondarie;
+- **struttura quaternaria**: forma di un complesso di più molecole che interagiscono fra loro.
 
 ----------------------------------------------------------------
 
@@ -89,7 +89,7 @@ Il *promoter* regola la trascrizione: la trascrizione può avvenire solo in segu
 
 ----------------------------------------------------------------
 
-## Dati Biomolecolari
+## Dati biomolecolari
 I tipi di dati che si utilizzano in biologia computazionale possono essere:
 - sequenze (stringhe):
     - proteine (sequenze di amminoacidi);
@@ -156,7 +156,7 @@ Sono, quindi, tre le principali componenti di un sistema di apprendimento automa
 
 Per quanto riguarda l'apprendimento, si possono distinguere algoritmi di apprendimento supervisionato, non-supervisionato, semi-supervisionato e apprendimento con rinforzo. Tipicamente, i problemi della biologia computazionale sono affrontati con tecniche supervisionate o semi-supervisionate in quanto si parte da una base di dati più o meno etichettati.
 
-# Classe di Ipotesi
+## Classe di Ipotesi
 La classe di ipotesi è l'insieme delle soluzioni ammesse dalle ipotesi effettuate alla base della specifica di un sistema di apprendimento: in particolare, il modello scelto determina la classe di ipotesi. L'apprendimento consisterà, quindi, nel cercare il migliore modello per il problema affrontato all'interno della classe di ipotesi.
 
 ----------------------------------------------------------------
@@ -317,6 +317,8 @@ Questo modello è chiamato **percettrone a singolo strato**: la classe predetta 
 
 $$\text{softmax}(y) = \frac{e^y}{\left|\left| e^{y} \right|\right|_1} = \left(\frac{e^{y_j}}{ \sum_{h=1}^{k}e^{y_h} }\right)_{j=1}^{k}$$
 
+----------------------------------------------------------------
+
 ### Multi-Layer Perceptron
 I percettroni a singolo strato possono apprendere solo funzioni lineari (e classi linearmente separabili): per apprendere funzioni non-lineari si utilizzano modelli composti da più strati di percettroni, le [[Intelligenza Artificiale#Artificial neural network |reti neurali]].
 Il [[Intelligenza Artificiale#Multi-layer perceptron |percettrone multistrato]] è composto da più *layer* in sequenza e ogni layer è composto da più percettroni: il primo layer ha come input il vettore di ingresso, mentre il layer $i$-esimo ha come ingresso il layer precedente. Ogni strato ha una matrice di pesi associata
@@ -332,8 +334,10 @@ In questo caso non è possibile utilizzare l'algoritmo di discesa del gradiente:
 
 Alcune tecniche di regolarizzazione utilizzate sono il *weight decay* (la norma $L^2$ dei pesi viene aggiunto alla funzione di perdita, è una regolarizzazione Tikhonov o *ridge regression*) e il *dropout* (mettere un peso a zero con una probabilità fissata).
 
+----------------------------------------------------------------
+
 ### CNN
-Le *convolutional neural networks* sono reti neurali in cui ogni strato viene ottenuto, non dal prodotto matrice-vettore dei pesi e dello strato precedente, ma dalla loro convoluzione
+Le **[[Intelligenza Artificiale#Deep Learning|convolutional neural networks]]** sono reti neurali in cui ogni strato viene ottenuto, non dal prodotto matrice-vettore dei pesi e dello strato precedente, ma dalla loro convoluzione
 
 $$y = w \ast x\ :\ y_i = \sum_{h=1}^{k} w_h\ x_{i-h}$$
 
@@ -361,6 +365,8 @@ Alternativamente, alcune tassonomie considerano strati semplici ed ognuno degli 
 
 Ogni *layer* convolutivo può avere più kernel: in questo modo la rete può apprendere in parallelo più feature. Inoltre, fare pooling sui risultati di più kernel permette alla rete di apprendere delle invarianze: ad esempio, nel riconoscimento di immagini è utile apprendere l'invarianza alla rotazione.
 
+----------------------------------------------------------------
+
 #### Convoluzioni
 Come abbiamo detto, le convoluzioni implementate non sempre sono uguali alla convoluzione matematica (spesso si usa la cross-correlazione). Esistono varie versioni della convoluzione.La *strided convolution* non calcola il risultato della convoluzione per tutti gli indici, ma solo 1 ogni $s$, che chiamiamo lo *stride* della
 convoluzione: questo è un metodo molto efficiente per ottenere
@@ -372,6 +378,8 @@ La *tiled convolution* è una via di mezzo tra convoluzione e local connection: 
 
 Nel caso di input di alta dimensionalità, le convoluzioni possono essere rese più efficienti effettuando il filtraggio nel dominio delle frequenze: infatti, se il kernel ha dimensione $k$ e l'input $m$, la convoluzione ha complessità $O(k\cdot m)$, mentre la procedura FFT, prodotto elemento-per-elemento e IFFT ha complessità
 $O(m\,\log{m})$ + $O(m)$ + $O(m\,\log{m})$ = $O(m\,\log{m})$ .
+
+----------------------------------------------------------------
 
 ### SVM
 *Support Vector Machine* è un algoritmo di apprendimento che produce il classificatore lineare dai margini massimali: nel caso di classi inearmente separabili, ciò vuol dire che tra gli infiniti iperpiani separatori viene determinato quello che massimizza la distanza dai punti di entrambe le classi.
@@ -462,6 +470,8 @@ $$w^* = \argmin_{w\in \mathbb{R}^N} \left|\left|w\right|\right| + C\sum_{(x_i,y_
 
 Dove $C$ è un parametro di trade-off che regola la tolleranza verso la violazione del vincolo di margine: $C\rightarrow+\infty$ corrisponde al SVM hard-margin.
 
+----------------------------------------------------------------
+
 #### Kernel trick
 Per apprendere classi non linearmente separabili, possiamo pensare di mappare l'input space in uno spazio a maggiore dimensionalità con una trasformazione non lineare: per il teorema di Cover, è più probabile ottenere una separazione lineare in uno spazio a maggior dimensionalità. Consideriamo, quindi, una mappa
 
@@ -487,6 +497,8 @@ $$K_n(x,y) = (1+x^Ty)^n$$
 e i kernel gaussiani (di parametro $\sigma > 0$), che implementano il prodotto interno in uno spazio di dimensionalità infinita
 
 $$K_\sigma(x,y) = e^{-\frac{\left|\left|x-y\right|\right|^2}{2\sigma^2}}$$
+
+----------------------------------------------------------------
 
 ## Metriche di Valutazione
 []{#fig:classcases label="fig:classcases"}
@@ -538,6 +550,8 @@ $0$. Per cui una curva ROC ha gli estremi nei punti $(0,0)$ e $(1,1)$ (figura [
 
 Un classificatore perfetto avrebbe sensitività e specificità unitarie: passerebbe, dunque, per il punto $(0,1)$ . Solitamente, però, tale classificatore non è possibile a causa della casualità nei dati. Per misurare la bontà di un classificatore binario possiamo osservare quanto la curva ROC è simile alla curva del classificatore perfetto: utilizziamo a questo proposito l'area sotto la curva ROC (AUROC), che varrà $1$ per il classificatore perfetto e $0.5$ per il classificatore casuale uniforme (la cui curva ROC è la bisettrice del quadrante).
 
+----------------------------------------------------------------
+
 ### PRC
 Consideriamo ciò che succede in una curva ROC per dati sbilanciati: ovvero, quando il numero di reali positivi è molto minore del numero di reali negativi.
 
@@ -564,10 +578,12 @@ A questi problemi, si aggiungono anche i problemi di basso livello come l'elabor
 
 Alcune applicazioni importanti sono nell'ambito della medicina genomica, che si basa sullo studio dei caratteri fenotipici e genotipici del paziente per determinare i trattamenti più adeguati. Diventa, così, possibile tutto un insieme di tecniche di diagnostica e terapia di precisione, che possono eventualmente servirsi di tecnologie all'avanguardia come quelle per l'editing del DNA.
 
-#### Cell variables
+## Cell variables
 Abbiamo detto che i problemi della biologia computazionale sono spesso formulati nei termini di problemi di apprendimento supervisionato: predire il rischio di una malattia a partire da una sequenza di DNA non è, tuttavia, una funzione semplice da apprendere.
 
 Spesso in bioinformatica si utilizzano delle variabili intermedie, chiamate *cell variable*, che rappresentano informazioni sulle caratteristiche biochimiche di una cellula. Possiamo separare il problema di apprendimento in due step: il primo si occupa della predizione delle cell variable a partire dalla sequenza di DNA e il secondo si occupa di predire il rischio della patologia a partire dalle cell variable.
+
+----------------------------------------------------------------
 
 ## GWAS
 I *Genome-Wide Association Studies* hanno raccolto dati sulla correlazione tra tratti fenotipici e genotipici: ad ogni patologia viene associata la significatività statistica delle mutazioni in loci particolari con tecniche di acquisizione basate su sequenziamento e microarray.
@@ -575,10 +591,14 @@ I *Genome-Wide Association Studies* hanno raccolto dati sulla correlazione tra t
 I GWAS hanno vari difetti. Innanzitutto, è molto difficile stabilire una significatività statistica di una mutazione potenzialmente causativa rispetto ad una variazione del rischio per una particolare patologia: in ogni caso, comunque, si tratta di una misura della correlazione e non della causalità. Inoltre, i GWAS restituiscono solitamente un grande numero di mutazioni potenzialmente causative (quindi, molti falsi positivi) e i ricercatori si sbilanciano rispetto ai preconcetti che
 hanno in materia.
 
+----------------------------------------------------------------
+
 ## Conservazione Evolutiva
 Molti metodi sono basati sulla conservazione evolutiva del genoma (figura [\[fig:ecr\]](#fig:ecr){reference-type="ref" reference="fig:ecr"}): se l'evoluzione si muove sotto la spinta di mutazioni casuali e della selezione delle varianti più adatte, allora, una mutazione in una regione conservata è molto probabilmente deleteria.
 
 Una mutazione è deleteria quando influisce negativamente sulla capacità riproduttiva dell'individuo: una mutazione deleteria è patogenica se è causa di una malattia.
+
+----------------------------------------------------------------
 
 ## CADD
 CADD (*Combined Annotation Dependent Depletion*) è uno strumento per la valutazione della *deleteriousness* delle varianti a singolo nucleotide e delle mutazioni per inserimento o delezione (*indel*) nel genoma umano.
@@ -587,20 +607,26 @@ Esistono molti metodi per l'annotazione delle varianti, ma molti tendono a sfrut
 
 I *C-score* così ottenuti sono molti correlati alla patogenicità delle varianti sia in regioni *coding* che *non-coding*, che hanno riscontri in effetti regolatori verificati sperimentalmente.
 
-#### Dati per l'addestramento 
+### Dati per l'addestramento 
 Il training del sistema viene effettuato su un dataset di 15 milioni di esempi positivi reali e 15 milioni di esempi negativi simulati.
 
 Gli esempi positivi sono ottenuti come le varianti alleliche che hanno una frequenza superiore al 95%. Per gli esempi negativi, invece, si è ricavato un modello di progenitore dei primati: ogni allele di questa sequenza viene permutato secondo la distribuzione di probabilità ottenuta dal dataset.
 
-#### Scores
+----------------------------------------------------------------
+
+### Scores
 Le feature in ingresso sono le 63 modalità di annotazione, integrate con un piccolo numero di termini di interazione. Lo score in uscita (*raw C-score*) è stato calcolato per tutte le possibili 8.6 miliardi di varianti del genoma umano di riferimento: per rendere il punteggio più leggibile, il range è stato riscalato tra 1 e 99, ottenendo uno *scaled C-score*.
 
 I *raw CADD score* sono il risultato diretto del modello e indicano, quando maggiori, una maggiore probabilità che la mutazione sia deleteria. I punteggi raw hanno un valore relativo e maggiore risoluzione, ma non hanno alcun valore assoluto.
 
 Invece, gli *scaled CADD score* sono ottenuti come la scalatura per ordini di grandezza dei punteggi grezzi: le varianti al primo decile sono CADD-10, quelle al primo percentile sono CADD-20, quelle al primo millile CADD-30, ...Questi punteggi hanno, quindi, un'interpretazione immediata e sono confrontabili anche tra diverse versioni di CADD, ma hanno una risoluzione inferiore.
 
-#### Versioni
+----------------------------------------------------------------
+
+### Versioni
 CADD 1.0 utilizza come algoritmo di apprendimento un SVM lineare, mentre da CADD 1.1 viene utilizzato un algoritmo di regressione logistica: inoltre, CADD 1.1 estende leggermente l'insieme di annotazioni utilizzate. In CADD 1.3 è stato aggiornato il training set.
+
+----------------------------------------------------------------
 
 ## DeepSEA
 *DeepSEA* è un sistema basato su deep learning per la predizione degli effetti degli SNP in regioni non-codificanti.
@@ -609,14 +635,16 @@ Come *cell variable*, vengono predette delle feature epigenetiche come siti di b
 
 L'analisi è rivolta alle regioni non-coding perché più del 96% degli SNP nelle patologie tumorali sono in tali regioni: tuttavia, solo poche sono causative. Varianti in regioni non-codificanti possono essere deleterie interrompendo o creando motivi nelle sequenze del DNA che inibiscono o abilitano il legame di fattori di trascrizione o il binding di miRNA; inoltre, mutazioni negli introni possono modificare lo splicing.
 
-#### Variabili
+### Variabili
 L'input della rete è costituito dalla sequenza target e dalla regione circostante: viene stabilita una dimensione di finestra di 1000 nucleotidi, di cui i 200 nucleotidi centrali rappresentano la sequenza target. La codifica è binaria a 4-bit e ogni base viene codificata con un uno sul bit corrispondente e con uno zero sugli altri tre bit: una sequenza din $n$ basi diventa, quindi, una matrice $4\times n$ di bit.
 
 Le cell variable intermedie sono l'ipersensitività alla DNasi, i legami di fattori di trascrizione e i marker istonici. Esse sono predette per ogni finestra di 200 basi dalla CNN.
 
 Il predittore finale utilizza le cell variable per stimare l'effetto della variante.
 
-#### Rete Convoluzionale
+----------------------------------------------------------------
+
+### Rete Convoluzionale
 Il primo layer della rete neurale di DeepSEA è composto da una matrice $D\times W$ di neuroni, dove il neurone $h_{d,w}$ si occupa di rilevare il motivo $d$ nella finestra $w$ . I motivi target hanno una lunghezza di 6 basi: la larghezza della finestra è 6, con un *hop size* di 1. Quindi il numero di finestre $W$ è cinque unità in meno rispetto alla
 lunghezza della sequenza (no padding).
 
@@ -624,8 +652,12 @@ Il numero di motivi è virtualmente variabile, ma tutti i neuroni $\graffe{h_{d,
 
 Ricapitolando: il primo layer di DeepSEA è uno strato convoluzionale con $D$ kernel $4\times 6$. Dopodiché viene applicata una funzione di attivazione ReLU e max pooling con stride di larghezza 4. A questo, seguono altri due strati convoluzionali con ReLU e max pooling. Infine, si trova uno strato completamente connesso con attivazione logistica e uno strato finale di output con 919 neuroni e attivazione logistica.
 
-#### Boosting
+----------------------------------------------------------------
+
+### Boosting
 L'output della rete convoluzionale restituisce 919 feature: da queste si calcolano le differenze assolute ( $P(ref)-P(alt)$ ) e relative ( $\log{\nicefrac{P(ref)}{P(alt)}}$ ) e si integrano gli score di conservazione evolutiva. Tutte queste feature (1842) sono preprocessate calcolandone il valore assoluto e sono standardizzate: il predittore viene ottenuto con un algoritmo di boosting per la regressione logistica.
+
+----------------------------------------------------------------
 
 ## HyperSMURF
 ![Rappresentazione schematica e pseudocodice dell'algoritmo hyperSMURF:
@@ -635,7 +667,7 @@ combinate](img/hypersmurf.png){#fig:hypersmurf width="75%"}
 
 HyperSMURF (*Hyper-ensamble of SMote Undersampled Random Forests*) è un metodo di *hyper-esamble* per la predizione delle varianti deleterie in regioni non-codificanti, che affronta direttamente il problema dello sbilanciamento dei dati. L'algoritmo è descritto in figura [1.1](#fig:hypersmurf){reference-type="ref" reference="fig:hypersmurf"} .
 
-#### SMOTE
+### SMOTE
 I dati disponibili nel training set, come spesso accade in bioinformatica, sono estremamente sbilanciati: essi vengono ribilanciati sovracampionando la classe minoritaria e sottocampionando la classe maggioritaria.
 
 La tecnica usata per il sovracampionamento della classe minoritaria è SMOTE (*Synthetic Minority Oversampling TEchnique*). Per creare un campione sintetico da un campione natutrale $x$ , viene scelto con probabilità uniforme $x_{knn}$ uno dei $k$ nearest neighbor del campione e un numero $\alpha$ tra 0 e 1 (con probabilità uniforme): il campione sintetico è dato dalla combinazione convessa dei due campioni $x$ e
@@ -643,12 +675,16 @@ $x_{knn}$ con coefficienti $\alpha$ e $1$-$\alpha$ .
 
 $$\text{SMOTE}(x) := (1-\alpha)\,x + \alpha\, x_{knn}\ :\ \alpha \leftarrow \text{rand}(0,1),\ x_{knn} \leftarrow \text{rand}(\text{KNN}(x))$$
 
-#### Hyper-ensemble
+----------------------------------------------------------------
+
+### Hyper-ensemble
 HyperSMURF è un metodo di hyper-ensemble. Un metodo di *ensemble* è un algoritmo di apprendimento in cui vengono addestrati più modelli: in fase di predizione, le etichette predette dai vari modelli vengono combinate per ottenere la predizione dell'ensemble. Nei metodi di *hyper-ensemble* vengono addestrati più ensemble.
 
 HyperSMURF utilizza un hyper-ensemble di random forest: ogni random forest è un ensemble di *decision tree*. Lo score predetto dall'hyper-ensemble è la media degli score predetti dalle random forest.
 
-#### Dati
+----------------------------------------------------------------
+
+### Dati
 L'algoritmo è stato sviluppato su due diversi dataset: uno relativo a patologie Mendeliane e uno relativo a dati GWAS.
 
 I dati relativi a patologie Mendeliane sono stati estratti da banche dati pubbliche e sono score di conservazione evolutiva, feature relative alla trascrizione e alla regolazione e altre caratteristiche epigenomiche.

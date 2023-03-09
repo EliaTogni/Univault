@@ -183,7 +183,7 @@ Il prodotto cross è utile a:
 - fare il test di collinearità;
 - trovare l'area di un triangolo tridimensionale;
 - trovare la normale di un triangolo tridimensionale;
-- 
+
 Mentre le altre operazioni sono generalizzabili ad un numero qualsiasi di dimensioni, il cross product è definito esclusivamente nel caso tridimensionale.
 
 A differenza del prodotto dot, il cross non è commutativo. Infatti, invertire i due vettori permette di ottenere il vettore ortogonale opposto. Nonostante queste limitazione, il prodotto cross gode delle seguenti proprietà:
@@ -206,7 +206,7 @@ Questi assi rappresentano tante cose in base alle convenzioni e purtroppo non vi
 ----------------------------------------------------------------
 
 # Trasformazioni spaziali nei giochi 3D
-**Una trasformazione è il passaggio di un oggetto dal suo sistema di riferimento ad un altro**, una trasformazione importante è quella che permette di passare dallo spazio locale (o spazio oggetto) allo spazio mondo, quello in cui vi sono tutti gli oggetti della scena. 
+Una trasformazione è il passaggio di un oggetto dal suo sistema di riferimento ad un altro. Una trasformazione importante è quella che permette di passare dallo spazio locale (o spazio oggetto) allo spazio mondo, quello in cui vi sono tutti gli oggetti della scena. 
 
 Precisamente, **la trasformazione è una funzione che, dato un insieme di oggetti, restituisce lo stesso insieme**. Le trasformazioni **vengono utilizzate al fine di definire uno spazio comune per gli oggetti**, esse sono alla base di dello sviluppo di un game engine e quindi di un gioco.
 
