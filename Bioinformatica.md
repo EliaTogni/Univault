@@ -7,14 +7,19 @@ Non rientrano nella bioinformatica, invece, le tecniche informatiche ispirate a 
 https://www.youtube.com/watch?v=o_-6JXLYS-k
 
 ## DNA
-Il **DNA** (**DesoxyriboNucleic Acid**) è un polimero il quale si trova nel nucleo delle cellule eucariote oppure libero nelle cellule procariote, formato da due catene di nucleotidi in senso opposto. Ogni nucleotide è formato da un **gruppo fosfato** (fosfato organico), uno zucchero **desossiribosio** (ribosio senza gruppo idrossile) ed una **base azotata**.<br />
-Il fosfato organico e il desossiribosio sono uguali per tutti i nucleotidi e formano una **backbone** per la catena alternandosi: la **catena antisenso** è formata anch'essa da una backbone fosfato-zucchero, ma nell'ordine opposto.
+Il **DNA** (**DesoxyriboNucleic Acid**) è un polimero il quale si trova nel nucleo delle cellule eucariote oppure libero nelle cellule procariote, formato da due filamenti di nucleotidi in senso opposto. Ogni nucleotide è formato da un **gruppo fosfato** (fosfato organico), uno zucchero **desossiribosio** (ribosio senza gruppo idrossile) ed una **base azotata**.<br />
+
+![[nucleotide.png]]
+
+Il fosfato organico e il desossiribosio sono uguali per tutti i nucleotidi e formano una **backbone** per la catena alternandosi: la **catena antisenso** è formata anch'essa da una backbone fosfato-zucchero, ma nell'ordine opposto. Il gruppo fosfato di un nucleotide si lega, infatti, con il $3'$ ossigeno del nucleotide precedente. Quindi, la numerazione del carbonio è fondamentale per descrivere la direzione del filamento. Nell'immagine precedente, il filamento segue ordinamento $5' \to 3'$ (o ordinamento **Watson**), in quanto l'atomo di carbonio $5'$ precede l'atomo $3'$. Nel filamento opposto, il carbonio $3'$ precederà il carbonio $5'$ ($3' \to 5'$ o ordinamento **Crick**).
 
 I nucleotidi differiscono solo per la base azotata. Ogni nucleotide ha una di quattro basi azotate: **adenina**, **timina**, **guanina** o **citosina**. Ognuna di queste basi si può collegare solo con la propria base complementare: adenina con timina e guanina con citosina.
 
-Le due catene sono, quindi, legate internamente da **legami covalenti** (forti) e alla catena antisenso da **legami idrogeno** (deboli) tra le coppie di basi azotate.
+Le due catene sono, quindi, legate internamente da **legami covalenti** (forti) e alla catena antisenso da **legami idrogeno** (deboli) tra le coppie di basi azotate. Ogni base forma più legami idrogeno con la base complementare. Il risultato di questi legami è chiamato **coppia di basi**. La timina e l'adenina si legano tra loro con due legami idrogeno mentre la rimanente coppia di basi si lega tra di loro con tre legami idrogeno.
 
-Le catene sono avvolte a forma di doppia elica attorno a proteine chiamate **istoni**, che tendono a compattarsi e a compattare, così, il DNA. Questo insieme di proteine e DNA è detto **cromatina** e forma, così impaccata, i **cromosomi**.
+Timina e citosina sono anche chiamate **pirimidine**, a causa della struttura a singolo anello, mentre adenina e guanina sono chiamate **purine**, per via della struttura a doppio anello.
+
+Le catene sono avvolte a forma di doppia elica la cui struttura regolare forma due tipi di spazi alternati, chiamati **solco maggiore** e **solco minore**. Questi solchi permettono al dna di legarsi attorno a proteine chiamate **istoni**, che tendono a compattarsi e a compattare, così, il DNA. Questo insieme di proteine e DNA è detto **cromatina** e forma, così impaccata, i **cromosomi**.
 
 ### Replicazione
 Durante la riproduzione cellulare, il DNA si duplica. Le due catene si separano: su ognuna di esse viene ricostruita l'opposta come concatenazione delle basi complementari.
@@ -29,11 +34,11 @@ L'**RNA** (**RiboNucleic Acid**) è un filamento a singola elica ma dalla strutt
 ----------------------------------------------------------------
 
 ## Dogma Centrale
-Il dogma centrale della biologia molecolare riguarda il flusso dell'informazione biologica: nella forma più semplificata afferma che il DNA viene trascritto sul **mRNA** (**RNA messaggero**), che viene tradotto in proteine. La trascrizione del DNA in mRNA avviene secondo il principio di corrispondenza delle basi descritto in precedenza:
+Il dogma centrale della biologia molecolare riguarda il flusso dell'informazione biologica: nella forma più semplificata afferma che il DNA, contenente le informazioni riguardanti l'organismo, viene trascritto sul **mRNA** (**RNA messaggero**), il quale viene tradotto in proteine dai **ribosomi**. La trascrizione del DNA in mRNA avviene secondo il principio di corrispondenza delle basi descritto in precedenza:
 
 $$A\rightarrow U\hspace{1in} T\rightarrow A\hspace{1in} C\rightarrow G\hspace{1in} G\rightarrow C$$
 
-L'RNA messaggero interagisce nei ribosomi con il **tRNA** (**RNA di trasporto**): ogni tRNA trasporta un amminoacido e ha un anticodone con tre nucleotidi. Esso si legherà, quindi, ad un pezzo di RNA che contenga la tripletta complementare. La sequenza di triplette nel mRNA codifica, quindi, una sequenza di amminoacidi, ovvero, una proteina.
+L'RNA messaggero interagisce nei ribosomi con il **tRNA** (**RNA di trasporto**): ogni tRNA trasporta un amminoacido e ha un **anticodone** con tre nucleotidi. Esso si legherà, quindi, ad un pezzo di RNA che contenga la tripletta complementare. La sequenza di triplette nel mRNA codifica, quindi, una sequenza di amminoacidi, ovvero, una proteina.
 
 ----------------------------------------------------------------
 
@@ -74,6 +79,8 @@ La funzione di una proteina, tuttavia, non è unica e può variare a seconda del
 ### Codice Genetico
 Il codice genetico è la codifica delle proteine attraverso triplette di nucleotidi, dette **codoni**. Ogni codone codifica per un amminoacido, per un segnale di start oppure per un segnale di stop.<br />
 È un codice ridondante: gli amminoacidi sono 20 mentre le triplette di nucleotidi possibili sono $4^3=64$ (mentre l'utilizzo di coppie di nucleotidi non permetterebbe di avere un numero sufficiente di combinazioni).
+
+![[codoni.png]]
 
 Questa ridondanza permette qualche grado di robustezza alle mutazioni: alcune variazioni di un nucleotide corrispondono allo stesso amminoacido, sono mutazioni sinonime. Nelle mutazioni missenso, la codifica errata corrisponde ad un altro amminoacido. Le mutazioni possono occorrere a casua di mutazioni (per radiazioni o chimiche), per errore (durante la replicazione) o per mancanza di correzione (dopo una mutazione o un errore).
 

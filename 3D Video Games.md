@@ -28,14 +28,14 @@ E’ prassi, durante lo sviluppo di un gioco, praticare il baking, ovvero il mem
 # Algebra di punti e vettori
 Le strutture dati dei modelli hanno come base tre diversi componenti:
 - il **punto**, ovvero una tripletta di coordinate le quali corrispondono ad una posizione nello spazio. Nel dettaglio, il punto $p \in \mathbb{R}^3 = (x_{p}, y_{p}, z_{p})$;
-- il **vettore**, il quale corrisponde allo spostamento di un oggetto nello spazio ed alla sua velocità. Un vettore è calcolabile come la differenza tra due punti;
+- il **vettore**, il quale corrisponde allo spostamento di un oggetto nello spazio. Un vettore è calcolabile come la differenza tra due punti;
 - il **versore** (o **vettore unitario**, o **normale**, o **direzione**, o **vettore normalizzato**), il quale indica l’orientamento o la direzione di un oggetto rispetto al piano di esistenza ed è di magnitudine unitaria. 
 
 Come esempio, si pensi a come il modello 3D di un telefono nello spazio è formato da punti mentre un suo eventuale spostamento è rappresentato da un vettore e, per capire se lo schermo è rivolto verso il basso oppure no, è possibile utilizzare un versore ortogonale al telefono per indicare il suo orientamento.
 
 Queste tre entità sono alla base dei game engine ed esse condividono la stessa struttura dati, conosciuta in Unity come **Vector3**, contenente una tripletta di valori $(x, y, z)$. In questo motore grafico, infatti, i vettori vengono rappresentati con la stessa classe. Tuttavia non è escluso l’utilizzo di classi differenti per farlo in differenti game engine.
 
-Librerie, motori grafici e linguaggi possono optare di utilizzare lo stesso tipo di dato per punti, vettori e versori tridimensionali così come è legito optare di utilizzare tre tipi differenti. Ciò nonostante, non dovrebbero essere considerati come la stessa cosa, come, ad esempio, nell'utilizzo dello stesso tipo con diverse semantiche (come il tipo double per rappresentare il peso, la temperatura e così dicendo). E' dovere del programmatore l'utilizzo corretto di essi.
+Librerie, motori grafici e linguaggi possono optare di utilizzare lo stesso tipo di dato per punti, vettori e versori tridimensionali, così come è legito optare di utilizzare tre tipi differenti. Ciò nonostante, non dovrebbero essere considerati come la stessa cosa, come, ad esempio, nell'utilizzo dello stesso tipo con diverse semantiche (come il tipo double per rappresentare il peso, la temperatura e così dicendo). E' dovere del programmatore l'utilizzo corretto di essi.
 
 -------------------------------------------------------------
 
@@ -60,7 +60,7 @@ L'addizione tra due vettori $\vec{v}$ e $\vec{w}$ restituirà come risultato un 
 ----------------------------------------------------------------
 
 ### Differenza
-Dati due punti $p$ e $q$, la differenza $q-p$ è un vettore il quale, da un punto di vista spaziale, indica lo spostamento da $p$ a $q$:
+Dati due punti $p$ e $q$, la differenza $q-p$ è un vettore $\vec{v}$ il quale, da un punto di vista spaziale, indica lo spostamento da $p$ a $q$:
 $$p=(px,py,pz) \quad  q=(qx,qy,qz) \quad  \vec{v}=q-p=(qx-px,qy-py,qz-pz)$$	$$\text{se } p,q∈P, q-p= \vec{v}∈V, \quad \text{con } \vec{v}=(qx-px,qy-py,qz-pz)$$
 ![[differenza_punto_punto.png]]
 
@@ -71,15 +71,16 @@ La differenza tra due vettori $\vec{v}$ e $\vec{w}$ restituirà come risultato u
 --------------------------------------------------------------------------------
 
 ### Prodotto
-Il prodotto tra un vettore $\vec{v}$ e uno scalare $k$ è un vettore $\vec{u}$ avente stesso verso e direzione ma con la lunghezza moltiplicata per $k$.<br />Nel caso in cui $k$ sia negativo, la direzione del vettore si inverte. Infatti, il vettore $\vec{b}$ opposto al vettore $\vec{a}$ non è altro che il vettore $\vec{a}$ moltiplicato per uno scalare $k = 1$.<br />
+Il prodotto tra un vettore $\vec{v}$ e uno scalare $k$ è un vettore $\vec{u}$ avente stesso verso e direzione ma con la lunghezza moltiplicata per $k$.<br />Nel caso in cui $k$ sia negativo, la direzione del vettore si inverte. Infatti, il vettore $\vec{b}$ opposto al vettore $\vec{a}$ non è altro che il vettore $\vec{a}$ moltiplicato per uno scalare $k = -1$.<br />
 La differenza tra due vettori è, quindi, un caso particolare della somma dal momento in cui:
 
-$$ vec{v}-\vec{w}= \vec{v}+ (-\vec{w}) = \vec{v}+(-1)\cdot \vec{w}$$
+$$\vec{v}-\vec{w}= \vec{v}+ (-\vec{w}) = \vec{v}+(-1)\cdot \vec{w}$$
 
 ----------------------------------------------------------------
 
 ### Interpolazione lineare
-L’interpolazione (_lerp()_ o _mix()_)tra due vettori $\vec{v}$ e $\vec{w}$ restituisce come risultato un vettore corrispondente alla loro media pesata utilizzando un valore $k \in [0, 1]$:
+L’interpolazione (_lerp()_ o _mix()_) tra due vettori $\vec{v}$ e $\vec{w}$ restituisce come risultato un vettore corrispondente alla loro media pesata utilizzando un valore $k \in [0, 1]$:
+
 $$\text{Dato }k ∈ [0,1], \quad \vec{u}=lerp(\vec{v},\vec{w},k)= (1-k)\cdot \vec{v} + k\cdot \vec{w}$$
 
 o, in alternativa:
@@ -90,7 +91,7 @@ L'interpolazione tra due punti $p_{0}$ e $p_{1}$ è, invece:
 
 $$p_{0} + t(p_1 - p_0)$$
 
-infatti, nonostante sarebbe possibile sviluppare la moltiplicazione tra il coefficiente di interpolazione e la differenza tra $p_1$ e $p_0$, la risultate $(1-t)p_0 + (t)p_1$ non ha un significato geometrico facilmente definibile, poichè scalare un punto o sommare due punti non ha un'interpretazione spaziale intuibile.
+infatti, nonostante sarebbe possibile sviluppare la moltiplicazione tra il coefficiente di interpolazione $t$ e la differenza tra $p_1$ e $p_0$, la risultate $(1-t)p_0 + (t)p_1$ non ha un significato geometrico facilmente definibile, poichè scalare un punto o sommare due punti non ha un'interpretazione spaziale intuibile.
 
 ----------------------------------------------------------------
 
@@ -138,30 +139,32 @@ Per quanto riguarda i prodotto tra due vettori, ve ne sono due:
 - il prodotto **dot**, indicato con $\vec{v} \cdot \vec{w}$, oppure $< \vec{v}, \vec{w} >$;
 - il prodotto **cross**, indicto con $\vec{v} \times \vec{w}$.
 
+### Prodotto dot
 Il prodotto dot è l’equivalente del **prodotto scalare** ed è la somma dei prodotti tra le coordinate dei vettori:
 
 $$\vec{v} \cdot \vec{w} =(vx\cdot wx)+(vy \cdot wy)+(vz \cdot wz)$$
+$$\vec{v} \cdot \vec{w} = \sum_{i = 1}^{n}\vec{v}_i\vec{w}_i$$
 
-### Prodotto dot
 Il prodotto dot gode di numerose proprietà:
-1) è un test di ortogonalità per vettori. infatti, due vettori (o versori) sono ortogonali se il loro prodotto dot ha come risultato $0$;
+1) è un test di **ortogonalità** per vettori. infatti, due vettori (o versori) sono ortogonali se e solo se il loro prodotto dot ha come risultato $0$;
 2) se il risultato del prodotto dot è diverso da $0$, il segno indicherà se i vettori sono direzionati allo stesso modo o meno. Nel primo caso il prodotto dot sarà positivo (e quindi l'angolo tra di essi sarà un angolo acuto), altrimenti sarà negativo (e quindi, l'angolo tra di essi sarà ottuso);
-3) il prodotto dot è direttamente proporzionale alle norme dei due vettori ed il coseno dell'angolo che formano. Quindi, il prodotto dot tra due versori sarà proporzionale al solo coseno;
+3) il prodotto dot è direttamente proporzionale alle norme dei due vettori ed al coseno dell'angolo che formano. Quindi, il prodotto dot tra due versori sarà proporzionale al solo coseno;
 $$\vec{v} \cdot \vec{w}= \Vert \vec{v} \Vert \cdot \Vert \vec{w} \Vert \cdot cos(\alpha)$$
 
-4) il prodotto dot di un vettore con sè stesso dà come risultato la sua norma al quadrato:
+4) il prodotto dot di un versore con un versore può essere interpretato come un valore indice della misura della similarità (tra $-1$ e $1$);
+5) il prodotto dot di un vettore con sè stesso dà come risultato la sua norma al quadrato:
 
 $$ \vec{v} \cdot \vec{v} = \Vert \vec{v} \Vert^2 = (x^2 + y^2 +z^2)$$
 
-5) il prodotto dot tra un vettore $\vec{v}$ ed il risultato di un’interpolazione tra $a$ e $b$ equivale all’interpolazione tra $\vec{v} \cdot a$ e $\vec{v} \cdot b$:
+6) il prodotto dot tra un vettore $\vec{v}$ ed il risultato di un’interpolazione tra $a$ e $b$ equivale all’interpolazione tra $\vec{v} \cdot a$ e $\vec{v} \cdot b$:
 
 $$\vec{v} \cdot lerp(a,b,k) = lerp(\vec{v} \cdot a,\vec{v} \cdot b,k)$$
 
-6) con questo prodotto è possibile estrarre una coordinata da un vettore:
+7) con questo prodotto è possibile estrarre una coordinata da un vettore:
 
 $$\text{se } \vec{v}=(x,y,z) \text{ e } \vec{w}=(0,1,0)  , \to \vec{v} \cdot \vec{w}=y$$
 
-7) il prodotto dot é **lineare;
+8) il prodotto dot é **lineare;
 
 ### Prodotto cross
 Il prodotto **cross** è l’equivalente del prodotto vettoriale: il risultato di questo prodotto tra due vettori $\vec{v}$ e $\vec{w}$ è quello ortogonale a entrambi e, geometricamente parlando, definisce l'area del parallelogramma costruito applicando i due vettori allo stesso punto. 
