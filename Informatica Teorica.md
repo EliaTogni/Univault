@@ -68,35 +68,40 @@ Dato l'insieme $A$, la funzione **identità** su $A$ è la funzione $i_{A}: A \t
 -------------------------------------------------------------
 
 ## Funzioni parziali e totali
-$f: A \to B$ è una legge la quale associa ad ogni elemento di $A$ un elemento di $B$. $f(a) \downarrow$ indica che la funzione è definita sull'elemento $a$, ovvero che la sua applicazione porta ad un valore definito del codominio.  
+$f: A \to B$ è una legge la quale associa ad ogni elemento di $A$ un elemento di $B$. $f(a) \downarrow$ indica che la funzione è **definita** sull'elemento $a$, ovvero che la sua applicazione porta ad un valore definito del codominio.  
 Per contro $f(a) \uparrow$ indica che la funzione non è definita sull'elemento $a$. <br />
 Una funzione definita su tutto $A$ è detta **totale**: $f \text{ totale} \iff \forall a \in A, f(a) \downarrow$. È invece detta **parziale** se per qualche elemento di $A$ non esiste immagine in $B$.  
 
-### Dominio e campo di esistenza
-$Dom_f = \{a \in A: f(a) \downarrow\} \subseteq A$  
-- $Dom_f \subset A \implies f \text{ parziale}$  
-- $Dom_f = A \implies f \text{ totale}$
+### Dominio di esistenza/campo di esistenza
+$Dom_f = \{a \in A: f(a) \downarrow\} \subseteq A$. Quindi:
+- $Dom_f \subset A \implies f \text{ parziale}$;
+- $Dom_f = A \implies f \text{ totale}$.
+
+Il **campo di esistenza** è, quindi, l'insieme dei punti su cui è definita una funzione.<br />Ad esempio, la funzione $f: \mathbb{N} \to \mathbb{N}$ tale che $f{n} = \lfloor\frac{1}{n} \rfloor$ non è definita in $n = 0 \implies f(0) \uparrow$. Quindi, $\forall n \in \mathbb{N} \setminus \{0\}, f(n) \downarrow$.
 
 -------------------------------------------------------------
 
-## Totalizzazione di una funzione parziale
-$f: A \to B \text{ parziale} \to f: A \to B \cup \{\bot\} \text{ totale}$, dove $\bot$ è il simbolo indice di indefinito.
+### Totalizzazione di una funzione parziale
+$f: A \to B \text{ parziale} \implies f: A \to B \cup \{\bot\} \text{ totale}$, dove $\bot$ è il simbolo di **indefinito**.
 $$f(a) = \begin{cases}
 f(a) & a \in Dom_f \\
 \bot & \text{altrimenti} \\
 \end{cases}$$
-Per abbreviare, si scrive $B \cup \{\bot\} \to B_{\bot}$
+Per abbreviare, si scrive $B \cup \{\bot\} \to B_{\bot}$. Seguendo l'esempio precedente
+
+$$f(n) = \lfloor \frac{1}{n} \rfloor = \cases{\lfloor \frac{1}{n} \rfloor \quad \text{se } n \neq 0 \cr \cr \bot \quad \text{se } n = 0 \implies f(0) = \bot}$$
 
 -------------------------------------------------------------
 
 ## Prodotto Cartesiano
-Si definisce **prodotto cartesiano** l'operazione $A \times B = \{(a,b) : a \in A \wedge b \in B\}$. Si tratta di un'operazione non commutativa, se non ne caso in cui $A = B$.
+Si definisce **prodotto cartesiano** l'operazione $A \times B = \{(a,b) : a \in A \wedge b \in B\}$, ovvero l'insieme delle coppie in cui la prima componente appartiene all'insieme $A$ mentre la seconda componente appartiene all'insieme $B$. Si tratta di un'operazione non commutativa, se non ne caso in cui $A = B$.
 
 $$A_1 \times A_2 \times ... \times A_n = \{(a_1, a_2, ..., a_n): a_i \in A_i\}$$
 
-Il **Proiettore i-esimo**, invece è $\Pi_i : A_1, A_2, ..., A_n \to A_i$, oppure $\Pi_i(a_1, a_2, ..., a_n) = a_i$
-
 Per abbreviare, si scrive $A \times A \times A \times ... \times A = A^n$.
+
+Il **Proiettore i-esimo**, invece, è una funzione $\Pi_i : A_1, A_2, ..., A_n \to A_i$. Nel caso specifico di una tupla $(a_1, a_2, ..., a_n)$, $\Pi_i(a_1, a_2, ..., a_n) = a_i$.<br />
+Mentre un prodotto cartesiano crea struttura, il proiettore, quindi, destruttura un elemento strutturato.
 
 ----------------------------------------------------------------
 
