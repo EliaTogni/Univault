@@ -106,8 +106,10 @@ Mentre un prodotto cartesiano crea struttura, il proiettore, quindi, destruttura
 ----------------------------------------------------------------
 
 ## Insiemi di funzioni
-$B^A = \{f:A \to B\} =$ l'insieme delle funzioni da $A$ a $B$.
-$B^A_{\bot} = \{f:A \to B\} =$ l'insieme delle funzioni parziali da $A$ a $B$ 
+$B^A = \{f:A \to B\} =$ l'insieme di tutte le funzioni da $A$ a $B$.
+$B^A_{\bot} = \{f:A \to B\} =$ l'insieme delle funzioni parziali da $A$ a $B$.
+
+La notazione $B^A$ viene utilizzata in quanto il numero di elementi dell'insieme è pari alla cardinalità di $B$ elevata alla cardinalità di $A$ (nel caso di insiemi con cardinalità finita).
 
 ----------------------------------------------------------------
 
@@ -115,22 +117,23 @@ $B^A_{\bot} = \{f:A \to B\} =$ l'insieme delle funzioni parziali da $A$ a $B$
 Dati $A$, $B$ e $B_{\bot}^A$, si definisce la seguente **funzione di valutazione**:
 $$w: B_{\bot}^A \times A \to B$$
 $$w(f, a) = f(a)$$
-- Tenendo fisso $a$ si provano tutte le funzioni su $a$  
-- Tenendo fisso $f$ si ottiene il grafico di $f$
+- fissando $a$, si provano tutte le funzioni su $a$;
+- fissando $f$, si ottiene il grafico di $f$.
 
 -------------------------------------------------------------
 
-# Sistema di calcolo
-Un **sistema di calcolo** $\mathbb{C}$ è un'oggetto il quale, presi in ingresso un programma $P$ e dei dati $x$, produce in uscita l'output $y$ o $\bot$ ottenuto dall'esecuzione di $P$ su $x$.<br />
+# Teoria della calcolabilità
+## Sistema di calcolo
+Un **sistema di calcolo** $\mathbb{C}$ è un oggetto il quale, presi in ingresso un programma $P$ e dei dati $x$, produce in uscita l'output $y$ o $\bot$, ottenuto dall'esecuzione di $P$ su $x$.<br />
 
-immagine
+![[sistema_di_calcolo.png]]
 
-Un programma $P \in \text{ DATI}_{\bot}^{\text{DATI}}$ è una sequenza di regole che trasformano un dato di input in un dato di output (o in un loop) $\implies P \in \text{ DATI}_{\bot}^{\text{DATI}}$ è una funzione (in un linguaggio). <br />
-$\mathbb{C}: \text{ DATI}_{\bot}^{\text{DATI}} \times \text{ DATI} \to \text{ DATI}_{\bot}$ è una funzione di valutazione e $\mathbb{C}(P, x)$ è la funzione calcolata da $P$, ovvero è la **semantica** di $P$. 
+Un programma $P \in \text{ DATI}_{\bot}^{\text{DATI}}$ è una sequenza di regole che trasformano un dato di input in un dato di output (o in un loop) esattamente come una funzione $\implies P \in \text{ DATI}_{\bot}^{\text{DATI}}$ è una funzione (in un linguaggio).<br />
+$\mathbb{C}: \text{ DATI}_{\bot}^{\text{DATI}} \times \text{ DATI} \to \text{ DATI}_{\bot}$ è, quindi, una funzione di valutazione e $\mathbb{C}(P, x)$, con $P$ fisso e $x$ variabile, si ottiene  è la funzione calcolata da $P$, ovvero è la **semantica** di $P$. 
 
 ----------------------------------------------------------------
 
-## Potenza computazionale di un sistema di calcolo
+### Potenza computazionale di un sistema di calcolo
 La **potenza computazionale** di un sistema di calcolo indica cosa il sistema di calcolo è in grado di calcolare: ci si domanda se la semantica del programma $P$ sia un sottoinsieme proprio o improprio delle funzioni che dai dati vanno nei dati.  
 $$F(\mathbb{C}) = \{\mathbb{C}(P, \_): P \in \text{ PROG}\} \subseteq \text{ DATI}_{\bot}^{\text{DATI}}$$
 Stabilire cosa può fare l'informatica significa studiare il carattere dell'inclusione: se è impropria, ovvero se la semantica coincide con l'insieme delle funzioni da $\text{DATI}$ a $\text{DATI}$, allora l'informatica può tutto, altrimenti se è propria alcuni problemi non sono automatizzabili.  
@@ -139,11 +142,11 @@ Calcolare funzioni significa risolvere problemi in generale. Ad ogni problema è
 
 ----------------------------------------------------------------
 
-# Cardinalità di insiemi infiniti
+## Cardinalità di insiemi infiniti
 Dato un insieme $A$, si definisce **cardinalità** di $A$ (o $|A|$), intuiitivamente, il numero di elementi appartenenti ad $A$.<br />
 Mentre per quanto riguarda insiemi finiti, questa nozione sia adeguata, non è adatta per gli insiemi cardinalmente infiniti.<br />Il concetto di cardinalità di insiemi deve essere precisato e, in particolare, per poter parlare appropriatamente di insiemi conteneti un numero infinito di elementi.
 
-## Relazione
+### Relazione
 Relazione binaria su $A$: $R \subseteq A \times A$. Gli elementi $a, b \in A$ stanno in relazione $R$ se e solo se  $(a, b) \in R$. La notazione è $aRb$ oppure $a \cancel{R} b$. 
 
 ----------------------------------------------------------------
@@ -169,7 +172,7 @@ L'insieme $A$ partizionato in tal modo è detto **insieme quoziente** di $A$ ris
 
 ----------------------------------------------------------------
 
-## Isomorfismo
+### Isomorfismo
 Due insiemi sono **isomorfi** (o **equinumerosi**) se esiste una biiezione tra essi.<br />Formalmente si scrive $A \sim B$. L'isomorfismo non è altro che una relazione d'equivalenza nella classe di tutti gli insiemi.  
 
 Dato $n \in \mathbb{N}$ definiamo la famiglia di insiemi $J_n$:  
