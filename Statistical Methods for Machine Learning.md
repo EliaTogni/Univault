@@ -160,15 +160,15 @@ $$therapy \in \{antibiotics,cortisone,none\}$$
 
 Even if we compute rescaled numerical representations for the features (including the categorical fields smoker and sex), algorithms based on Euclidean distance like $k-NN$ may not work well.
 
-In order to learn data whose features vary in heterogeneous sets $\mathcal{X}_1, ..., \mathcal{X}_d$ (i.e., sets with incomparable ranges, including ranges corresponding to categorical variables), it will be introduced a new family of predictors: the **tree predictors**.
+In order to learn data whose features vary in heterogeneous sets $\mathcal{X}_1, ..., \mathcal{X}_d$ (i.e., sets with incomparable ranges, including ranges corresponding to categorical variables), a new family of predictors will be introduced: the **tree predictors**.
 
-A tree predictor has the structure of an ordered and rooted [[Albero |tree]] where each node is either a **leaf** (if it has zero children) or an **internal node** (if it has at least two children). Recall that an ordered tree is one where the children of any internal node are numbered consecutively. Hence, if the internal node $v$ has $k \geq 2$ children, we can access the first child, the second child, and so on until the $k$-th child.
+A tree predictor has the structure of an **ordered and rooted [[Albero |tree]]** where each node is either a **leaf** (if it has zero children) or an **internal node** (if it has at least two children). Recall that an ordered tree is one where the children of any internal node are numbered consecutively. Hence, if the internal node $v$ has $k \geq 2$ children, we can access the first child, the second child, and so on until the $k$-th child.
 
 ![[tree_classifier_example.png]]
 
 In the figure, it is possible to see a classical example of a tree classifier for a binary classification task. The features are: outlook, humidity e windy.
 
-Fix $\mathcal{X} = \mathcal{X}_1 \times ... \times \mathcal{X}_d$,where $\mathcal{X}_i$ is the range of the $i$-th attribute $x_i$. A **tree predictor** $h_T : \mathcal{X} \to \mathcal{Y}$ is a predictor defined by a tree $T$ whose internal nodes are tagged with **tests** and whose leaves are tagged with **elements** in $\mathcal{Y}$. A test on attribute $i$ for an internal node with $k$ children is a function $f : \mathcal{X}_1 \to \{1, ..., k\}$. The function $f$ maps each element of $\mathcal{X}_i$ to the node children. For example, if $\mathcal{X}_i \equiv \{a,b,c,d\}$ and $k = 3$, then $f$ could be defined by
+Fix $\mathcal{X} = \mathcal{X}_1 \times ... \times \mathcal{X}_d$,where $\mathcal{X}_i$ is the range of the $i$-th attribute $x_i$. A **tree predictor** $h_T : \mathcal{X} \to \mathcal{Y}$ is a predictor defined by a tree $T$ whose internal nodes are tagged with **tests** and whose leaves are tagged with **elements** (or **labels**) in $\mathcal{Y}$. A test on attribute $i$ for an internal node with $k$ children is a function $f : \mathcal{X}_1 \to \{1, ..., k\}$. The function $f$ maps each element of $\mathcal{X}_i$ to the node children. For example, if $\mathcal{X}_i \equiv \{a,b,c,d\}$ and $k = 3$, then $f$ could be defined by
 
 $$f(x_i) = \cases{1 \quad \text{ if }
 x_i = c, \cr \cr 2 \quad \text{ if } x_i = d, \cr \cr 3 \quad \text{ if } x_i \in \{a, b\}}$$
@@ -180,19 +180,15 @@ x_i \in (-\infty, \alpha], \cr \cr 2 \quad \text{ if } x_i \in (\beta, +\infty)\
 
 where $\alpha < \beta$ are arbitrary values.<br />
 The prediction $h_T(x)$ is computed as follows. Start by assigning $v \leftarrow r$, where $r$ is the root of $T$:
-1) if $v$ is a leaf , then stop and let $h_T(x)$ be the label $y in \mathcal{Y}$ associated with $\ell$;
-2) otherwise, if $f : \mathcal{X}_i \to \{1, ..., k\}$ is the test associated with $v$, then assign $v \to  v_j$ where $j = f(x_i)$ and $v_j$ denotes the $j$-th children of $v$;
-2) go to step $1$.
+1) if $v$ is a leaf $\ell$, then stop and let $h_T(x)$ be the label $y \in \mathcal{Y}$ associated with $\ell$;
+2) otherwise, if $f : \mathcal{X}_i \to \{1, ..., k\}$ is the test associated with $v$, then assign $v \leftarrow v_j$, where $j = f(x_i)$ and $v_j$ denotes the $j$-th children of $v$;
+3) go to step $1$.
 
 If the computation of $h_T(x)$ terminates in leaf $\ell$, we say that the example $x$ is routed to $\ell$. Hence $h_T(x)$ is always the label of the leaf to which $x$ is routed.
 
-![[decision_surface.png]]
+How can a tree predictor be built given a training set $\mathcal{S}$? For simplicity, we focus on the case of binary classication $\mathcal{Y} = \{-1, 1\}$ and we only consider complete binary trees, i.e., all internal nodes have exactly two children. The idea is to grow the tree classifier starting from a single-node tree (which must be a leaf) that corresponds to the classifier assigning to any data point the label that occurs most frequently in the training set. The tree is grown by picking a leaf (at the beginning there is only a leaf to pick) and replacing it with an internal node and two new leaves.
 
-In the above figure, it is plotted the decision surface for a multiclass tree classier trained on the colored dots (where each color corresponding to a different class) using the zero-one loss. It is possible to figure out a tree classifier consistent with this decision surface?
-
-How can a tree predictor be built given a training set S? For simplicity, we focus on the case of binary classication $\mathcal{Y} = \{-1, 1\}$ and we only consider complete binary trees, i.e., all internal nodes have exactly two children. The idea is to grow the tree classifier starting from a single-node tree (which must be a leaf) that corresponds to the classifier assigning to any data point the label that occurs most frequently in the training set. The tree is grown by picking a leaf (at the beginning there is only a leaf to pick) and replacing it with an internal node and two new leaves.
-
-Suppose we have grown a tree $T$ up to a certain point, and the resulting classifier is $h_T$. We start by computing the contributions of each leaf to the training error $\ell_{\mathcal{S}}(h_T)$ (recall that each $x$ is classified by some leaf, the leaf which $x$ is routed to). For each leaf $\ell$, define $\mathcal{S}_\ell \equiv \{(x_t,y_t) \in \mathcal{S} : x_t$ is routed to $\ell\}$. That is, $\mathcal{S}_\ell$ is the subset of training examples that are routedt to $\ell$. Define further two subsets of $\mathcal{S}_\ell$, namely $\mathcal{S}^+_\ell \equiv \{(x_t, y_t ) \in \mathcal{S}_\ell : y_t = +1\}$ and $\mathcal{S}^-_\ell \equiv \{(x_t, y_t) \in \mathcal{S}_\ell : y_t = -1\}$.
+Suppose we have grown a tree $T$ up to a certain point, and the resulting classifier is $h_T$. We start by computing the contributions of each leaf to the training error $\ell_{\mathcal{S}}(h_T)$ (recall that each $x$ is classified by some leaf, the leaf which $x$ is routed to). For each leaf $\ell$, define $\mathcal{S}_\ell \equiv \{(x_t,y_t) \in \mathcal{S} : x_t$ is routed to $\ell\}$. That is, $\mathcal{S}_\ell$ is the subset of training examples that are routed to $\ell$. Define further two subsets of $\mathcal{S}_\ell$, namely $\mathcal{S}^+_\ell \equiv \{(x_t, y_t ) \in \mathcal{S}_\ell : y_t = +1\}$ and $\mathcal{S}^-_\ell \equiv \{(x_t, y_t) \in \mathcal{S}_\ell : y_t = -1\}$.
 
 For each leaf $\ell$, let $N^+_\ell = \vert \mathcal{S}^+_\ell \vert$, $N^-_\ell = \vert \mathcal{S}^-_\ell \vert$ and  $N_\ell = \vert \mathcal{S}_\ell \vert = N^+_\ell + N^-_\ell$. In order to minimize the training error $\ell_{\mathcal{S}}(h_T)$, the label associated with $\ell$ must be:
 
