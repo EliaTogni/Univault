@@ -1,8 +1,8 @@
 # Introduction
-**Data inference** is the study of methods that use data from the past for making predictions about the future. **Machine learning** is a powerful tool that can be used to solve a wide range of data inference problems including the ones listed below:
-- **Clustering**: grouping data points according to their similarity (e.g., clustering customers according to their consumer profiles);
-- **Prediction**: assigning semantic labels to data points (e.g., classifying documents based on their topics);
-- **Control**: performing a sequence of actions in an environment in order to maximize a notion of utility (e.g., using a robot to map an unknown terrain).
+**Data inference** is the study of methods that use data from the past for making predictions about the future. **Machine learning** is a powerful tool that can be used to solve a wide range of data inference problems, including the ones listed below:
+- **clustering**: grouping data points according to their similarity (e.g., clustering customers according to their consumer profiles);
+- **prediction**: assigning semantic labels to data points (e.g., classifying documents based on their topics);
+- **control**: performing a sequence of actions in an environment in order to maximize a notion of utility (e.g., using a robot to map an unknown terrain).
 
 [[Algoritmo |Algorithms]] that solve a [[Intelligenza Artificiale#Training delle ANN |learning task]] based on semantically annotated historical data (e.g., documents annotated with their topic or images annotated with the objects they contain) are said to operate in a **supervised learning mode**. In contrast, algorithms that use data without any semantic annotation are said to operate in an **unsupervised learning mode**. The focus of this course is on supervised learning and study the design of machine learning systems whose goal is to learn predictors, i.e., functions that map data points $x$ to their labels $y$. Once learned, these functions can be used to categorize documents or images, predict the future price of a stock based on the current market data, diagnose a disease based on a patient’s medical record, and so on.
 
@@ -19,7 +19,7 @@ In order to measure the goodness of a prediction for a prediction task we use a 
 $$\ell(y, \widehat{y}) = \cases{0 \quad \text{ if }
  \widehat{y} = y \cr \cr 1 \quad \text{otherwise.}}$$
 
-In certain cases, it is needed a more complex classification losses.<br />
+In certain cases, more complex classification losses are needed.<br />
 Consider the problem of categorizing spam email using the label set $\mathcal{Y} = \{\text{spam, nonspam}\}$. It is possible to penalize a **false positive mistake** (i.e., a nonspam email wrongly classified as spam) more than a **false negative mistake** (i.e., a spam email wrongly classified as nonspam). For example:
 
 $$\ell(y, \widehat{y}) = \cases{2 \quad \text{ if }
@@ -27,7 +27,7 @@ $$\ell(y, \widehat{y}) = \cases{2 \quad \text{ if }
 
 In regression, typical loss functions are the **absolute loss** $\ell(y,\widehat{y} ) = |y−\widehat{y}|$ and the **quadratic loss** $\ell(y,\widehat{y}) = (y − \widehat{y})^2$. Note that these losses are only meaningful for numerical labels.
 
-In some cases, it may be convenient to choose predictions from a set $Z$ different from the label set $\mathcal{Y}$. For example, consider the problem of assigning a probability $y  ∈ (0,1)$ to the event $y = \text{ “it will rain tomorrow”}$ (and, consequently, assigning probability $1 − y$  to the complementary event $y = \text{ “it will not rain tomorrow”}$). In this case,$Y = \text{\{“rain”, “no rain”\}}$ and $Z = (0,1)$. Denoting these two events with $1$ (for rain) and $0$ (for no rain), we may use a loss function for regression, such as the absolute loss $\ell(y,\widehat{y}) = |y− \widehat{y}| \in (0,1)$. In order to extend the range of the loss function, so to punish more harshly predictions that depart too much from reality, it is possible to use instead the **logarithmic loss**,
+In some cases, it may be convenient to choose predictions from a set $Z$ different from the label set $\mathcal{Y}$. For example, consider the problem of assigning a probability $y  ∈ (0,1)$ to the event $y = \text{ “it will rain tomorrow”}$ (and, consequently, assigning probability $1 − y$  to the complementary event $y = \text{ “it will not rain tomorrow”}$). In this case, $Y = \text{\{“rain”, “no rain”\}}$ and $Z = (0,1)$. Denoting these two events with $1$ (for rain) and $0$ (for no rain), we may use a loss function for regression, such as the absolute loss $\ell(y,\widehat{y}) = |y− \widehat{y}| \in (0,1)$. In order to extend the range of the loss function, so to punish more harshly predictions that depart too much from reality, it is possible to use instead the **logarithmic loss**,
 
 $$\ell(y, \widehat{y}) = \cases{\ln\frac{1}{\widehat{y}} \quad \text{ if }
 y = 1 \text{ (rain) }\cr \cr \ln\frac{1}{1-\widehat{y}} \quad \text{ if } y = 0 \text{ (no rain ).}}$$
@@ -59,7 +59,7 @@ A **predictor** is a function $f : \mathcal{X} \to \mathcal{Y}$ mapping data poi
 ## Example
 In supervised learning, an **example** is a pair $(x,y)$ where $x$ is a data point and $y$ is the “true” label associated with $x$. In some cases, there is a unique true label for $x$. This happens when $y$ measures some objective property of the data point; for example, $y$ is the closing price of a stock on a certain day. In some other cases, the label $y$ is subjectively assigned by a human annotator; for example, the genre of a movie. Clearly, different annotators may have different opinions about a movie’s genre, implying that the same data point may occur with different “true” labels.
 
-In order to estimate the predictive power of a predictor it is typically used a test set. This is a set of examples $(x_1′ ,y_1′ ),..., (x_n′ ,y_n′ )$. Technically, it is a multiset because some examples may occur more than once. However, treating datasets as multisets complicates the notation. For this reason, and without much loss of generality, datasets will be mostly viewed as sets in the standard mathematical acception.Given a loss function $\ell$, the test set is used to compute the test error of a predictors $f$,
+In order to estimate the predictive power of a predictor it is typically used a **test set**. This is a set of examples $(x_1′ ,y_1′ ),..., (x_n′ ,y_n′ )$. Technically, it is a multiset because some examples may occur more than once. However, treating datasets as multisets complicates the notation. For this reason, and without much loss of generality, datasets will be mostly viewed as sets in the standard mathematical acception. Given a loss function $\ell$, the test set is used to compute the test error of a predictors $f$,
 
 $$ \frac{1}{n}\sum_{t = 1}^{n}\ell(y'_t, f({\mathbf{x}}'_t))$$
 
@@ -69,16 +69,16 @@ A **learning algorithm** receives a training set as input and outputs a predicto
 
 Since the only input to a learning algorithm is the training set $S \equiv (x_1,y_1),..., (x_m,y_m)$, a natural approach to the design of learning algorithms is to assume that the **training error**
 
-$$\ell_s(f) = \frac{1}{m}\sum_{t=1}^{m}\ell(y_t, f(\mathbf{x}_t)$$
+$$\ell_s(f) = \frac{1}{m}\sum_{t=1}^{m}\ell(y_t, f(\mathbf{x}_t))$$
 
 of a predictor be correlated to its test error.
 
 ----------------------------------------------------------------
 
 ## Empirical risk minimization
-Let $\mathcal{F}$ be a given set of predictors and ℓ a loss function. The **empirical risk minimizer** (ERM) is the learning algorithm that outputs some predictor in F minimizing the training error
+Let $\mathcal{F}$ be a given set of predictors and $\ell$ a loss function. The **empirical risk minimizer** (**ERM**) is the learning algorithm that outputs some predictor in $\mathcal{F}$ minimizing the training error
 
-$\widehat{f} \in argmin_{f \in \mathcal{F}}\ell_{s}(f)$
+$$\widehat{f} \in argmin_{f \in \mathcal{F}}\ell_{s}(f)$$
 
 The $\widehat{f} \in$ notation takes into account the fact that there could be multiple $f \in \mathcal{F}$ minimizing the training error.
 
@@ -87,10 +87,9 @@ The $\widehat{f} \in$ notation takes into account the fact that there could be m
 ## Overfitting and underfitting
 ERM obviously fails when no predictor in $\mathcal{F}$ has a low test error. This suggests the fact that it should be better to run ERM with a large $\mathcal{F}$, so that there is a good chance that a predictor with low test error exists in $\mathcal{F}$ .
 
-On the other hand, choosing $\mathcal{F}$ large can also lead ERM to fail. To see this, assume $\mathcal{Y} \equiv \{−1,1\}$ and consider a toy problem with only five data points, $\mathcal{X} \equiv {x_1,..., x_5}$. Now, take some $\mathcal{F}$ containing a classifier $f : \{x_1,..., x_5\} → \{−1,1\} for each of the $2^5 = 32$ possible binary labelings of the five data points, and suppose the training set contains any three points and the test set contains the two remaining ones. Now assume data labels $y_1,...,y_5$ are all assigned using some $f^* \in \mathcal{F}$, $y_t = f^*(x_t) for t = 1,..., 5$. Clearly $f^*$ has zero training error and zero test error. However, with a training set of three points, ERM always finds four classifiers in $\mathcal{F}$ that have zero training error. Of these four classifiers with zero training error, only one (i.e., $f^*$) has also zero test error. But the
-training set does not contain enough information to help ERM select this classifier.
+On the other hand, choosing $\mathcal{F}$ large can also lead ERM to fail. To see this, assume $\mathcal{Y} \equiv \{−1,1\}$ and consider a toy problem with only five data points, $\mathcal{X} \equiv {x_1,..., x_5}$. Now, take some $\mathcal{F}$ containing a classifier $f : \{x_1,..., x_5\} \to \{−1,1\}$ for each of the $2^5 = 32$ possible binary labelings of the five data points, and suppose the training set contains any three points and the test set contains the two remaining ones. Now assume data labels $y_1,...,y_5$ are all assigned using some $f^* \in \mathcal{F}$, $y_t = f^*(x_t) \text{ for } t = 1,..., 5$. Clearly $f^*$ has zero training error and zero test error. However, with a training set of three points, ERM always finds four classifiers in $\mathcal{F}$ that have zero training error. Of these four classifiers with zero training error, only one (i.e., $f^*$) has also zero test error. But the training set does not contain enough information to help ERM select this classifier.
 
-The problem in the previous example is that $\mathcal{F}$ is too large with respect to the training set. Information theory tells us that we need $\log_2 |\mathcal{F}| = 5$ bits of information to identify $f^* \in \mathcal{F}$. Indeed, $f^*$ is determined the five labels $f^*(x ), ..., f^*(x_5)$. This is telling us that the training set should contain at least $\log_2|\mathcal{F}|$ distinct data points. Equivalently, $|\mathcal{F}|$ should be smaller than $2^m$, where $m$ is the training set size.
+The problem in the previous example is that $\mathcal{F}$ is too large with respect to the training set. Information theory says that there are needed $\log_2 |\mathcal{F}| = 5$ bits of information to identify $f^* \in \mathcal{F}$. Indeed, $f^*$ is determined the five labels $f^*(x ), ..., f^*(x_5)$. This is telling us that the training set should contain at least $\log_2|\mathcal{F}|$ distinct data points. Equivalently, $|\mathcal{F}|$ should be smaller than $2^m$, where $m$ is the training set size.
 
 it is possible to give specific names to these two ways of failing (i.e., returning a predictor with high test error) for a generic learning algorithm $A$:
 - if $A$ fails by returning predictors with high training error, then we say that $A$ is **underfitting**;
@@ -101,18 +100,17 @@ When $A$ is ERM and the training set size $m$ is fixed, the information-theoreti
 ----------------------------------------------------------------
 
 ## Noisy labels
-Overfitting often arises when labels are **noisy**. Namely, when labels $y$ are not deterministically associated with data points $x$, like in the previous example where $y_t = f^*(x_t$)$.<br />
-Noise may occur for at least three (not mutually exclusive) reasons:
-1) **Human in the loop**: The labels are assigned by a human annotator who decides the “true” label for each data point. In this case, different annotators may have different opinions;
-2) **Epistemic uncertainty**: Each data point is represented by a feature vector $x$ that does not contain enough information to uniquely determine the label. For example, suppose $x$ encodes measurements such as today’s temperature, pressure, humidity, whereas $y \in \{−1,1\}$ denotes whether tomorrow rains or not. It is quite possible that the same observed values lead to rain in some cases and to sun in other cases;
-3) **Aleatoric uncertainty**: The feature vector $x$ representing a data point is obtained through noisy measurements. The label associated with a given $x$ is then stochastic because the same $x$ could have been generated by different data points.
+Overfitting often arises when labels are **noisy**. Namely, when labels $y$ are not deterministically associated with data points $x$, like in the previous example where $y_t = f^*(x_t)$.<br />Noise may occur for at least three (not mutually exclusive) reasons:
+1) **human in the loop**: the labels are assigned by a human annotator who decides the “true” label for each data point. In this case, different annotators may have different opinions;
+2) **epistemic uncertainty**: each data point is represented by a feature vector $x$ that does not contain enough information to uniquely determine the label. For example, suppose $x$ encodes measurements such as today’s temperature, pressure, humidity, whereas $y \in \{−1,1\}$ denotes whether tomorrow rains or not. It is quite possible that the same observed values lead to rain in some cases and to sun in other cases;
+3) **aleatoric uncertainty**: the feature vector $x$ representing a data point is obtained through noisy measurements. The label associated with a given $x$ is then stochastic because the same $x$ could have been generated by different data points.
 
 Noisy labels cause overfitting because they may mislead the algorithm with regard to what is the “true” label for a given data point.
 
 ----------------------------------------------------------------
 
 # The Nearest Neighbour algorithm
-We now introduce a concrete learning algorithm for classification. This algorithm differs from ERM because it is not minimizing the training error in a given class of predictors. For now, we restrict our attention to binary classification tasks with numerical features, namely $\mathcal{X} = \mathbb{R}^d$ and $\mathcal{Y} = \{−1,1\}$. Given a training set, the classifier generated by this algorithm is based on the following simple rule: predict every point in the training set with its own label, and predict any other point with the label of the point in the training set which is closest to it.<br />
+It will now be introduced a concrete learning algorithm for classification. This algorithm differs from ERM because it is not minimizing the training error in a given class of predictors. For now, we restrict our attention to binary classification tasks with numerical features, namely $\mathcal{X} = \mathbb{R}^d$ and $\mathcal{Y} = \{−1,1\}$. Given a training set, the classifier generated by this algorithm is based on the following simple rule: predict every point in the training set with its own label, and predict any other point with the label of the point in the training set which is closest to it.<br />
 More formally, given a training set $\mathcal{S} \equiv (x_1,y_1),..., (x_m,y_m)$ , **the nearest neighbour algorithm** (**$NN$**) generates a classifier $h_{NN} : \mathbb{R}^d \to \{−1,1\}$ defined by:
 
 $$h_{NN}(x) = \text{ label yt of the point} x_t \in \mathcal{S} \text{ closest to } x$$
@@ -286,3 +284,1229 @@ start from root
 	until some criterion is met ( i.e. too many nodes, the traning error does not go down, the training error is zero)
 
 ----------------------------------------------------------------
+
+# Statistical Learning
+
+In order to analyze a learning algorithm, we must deﬁne a mathematical model of how examples $(x, y)$ are generated. In the statistical learning framework, we assume that every example $(x, y)$ is obtained through an independent draw from a ﬁxed but unknown probability distribution on $\mathcal{X} \times \mathcal{Y}$. We write $(X, Y)$ to highlight that $x$ and $y$ are random variables. The assumption that not all data points $x$ are equally likely is quite natural (for example, when data points are images, only a small fraction of all possible pixel conﬁgurations correspond to real-world images). Similarly, as we previously argued, labels are typically noisy. This corresponds to assuming that labels of any given datapoint are stochastic.
+
+Assuming that every example $(x, y)$ is the realization of an independent random draw from the same joint probability distribution $\mathcal{D}$ implies that every dataset (e.g., a training set or a test set) is a statistical sample. Note that the independence assumption is actually violated in many practical domains. Consider for example the problem of categorizing news stories. The newsfeed is clearly far from being an independent process, as the evolution of news reﬂects developing and related stories. Although not very realistic, the independence assumption is nevertheless convenient from the viewpoint of the analytical tractability of the problem, and works suprisingly well in practice.
+
+In statistical learning, a problem is fully speciﬁed by a pair $(\mathcal{D}, \ell)$, where $\mathcal{D}$ is the data distribution and $\ell$ is a loss function. The performance of a predictor $h : \mathcal{X} \to \mathcal{Y}$ with respect to (D, ℓ) is evaluated via the statistical risk, deﬁned by
+
+$$\ell_{\mathcal{D}}(h) = \mathbb{E}[\ell(Y, h(X))]$$
+
+This is the expected value of the loss function on a random example $(X, Y)$ drawn from $\mathcal{D}$. The best possible predictor $f : \mathcal{X} \to \mathcal{Y}$ given $\mathcal{D}$ is known as **Bayes optimal predictor**, and is deﬁned by
+
+$$f^*(x) = argmin_{\widehat{y} \in \mathcal{Y}} \text{ } \mathbb{E}[\ell(Y, \widehat(y) \vert X = x]$$
+
+The quantity $\mathbb{E} \ell(Y, \widehat{y}) \vert X = x]$ is the conditional risk, which is the expected loss of the prediction with respect to the distribution of the label $Y$ conditioned on $x$. Hence $f^*(x)$ is the prediction minimizing the conditional risk. By deﬁnition of $f^*$, we have that 
+
+$$\mathbb{E}[\ell(Y, f^*(X))\text{ } \vert \text{ } X = x] \leq \mathbb{E}[\ell(Y, h(X))\text{ } \vert \text{ } X = x]$$
+
+for every predictor $h : \mathcal{X} \to \mathcal{Y}$ and for any $x \in \mathcal{X}$. Because the above inequality holds for every $x \in \mathcal{X}$,$ it also holds in expectation with respect to the random draw of $X$. But since, for any predictor $h$,
+
+$$\mathbb{E} \Big[\mathbb{E}[\ell(Y, h(X))\text{ } \vert \text{ } X]\Big] = \mathbb{E}[\ell(Y, h(X))] = \ell_{\mathcal{D}}(h)$$
+
+we have that $\ell_{\mathcal{D}}(f^*) \leq \ell_{\mathcal{D}}(h)$ for every predictor $h$. The risk $\ell_{\mathcal{D}}(f^*)$ of the Bayes optimal predictor is called **Bayes risk**. Typically, the Bayes risk is larger than zero because labels are stochastic.
+
+We now compute the Bayes optimal predictor for the quadratic loss function ℓ(y, yb) = (y − yb)
+
+when Y ≡ R,
+
+2
+
+ꢀ
+1
+
+
+
+
+ꢂ
+
+ꢁ
+
+∗
+
+E
+
+2 ꢂ
+
+f (x) = argmin (Y − yb) X = x
+
+yb∈R
+
+ꢇ
+
+ꢈ
+
+ꢀ
+
+ꢂ
+
+ꢁ
+
+ꢀ ꢂ
+
+ꢁ
+
+= argmin E Y X = x + yb − 2yb Y X = x
+
+2 ꢂ
+
+2
+
+E
+
+ꢂ
+
+yb∈R
+
+ꢇ
+
+ꢈ
+
+ꢀ ꢂ
+
+ꢁ
+
+2
+
+E
+
+ꢂ
+
+= argmin yb − 2yb Y X = x
+
+(ignoring the term that does not depend on yb)
+
+yb∈R
+
+ꢀ ꢂ
+
+ꢁ
+
+ꢀ ꢂ
+
+ꢁ
+
+= E Y X = x
+
+ꢂ
+
+(minimizing the function F(yb) = yb − 2yb Y X = x )
+
+2
+
+E
+
+ꢂ
+
+Thus, the Bayes optimal prediction for the quadratic loss function is the expected value of the label
+
+conditioned on the instance.
+
+ꢀꢃ
+
+ꢄ ꢂ
+
+ꢁ
+
+2 ꢂ
+
+X = x = Var Y X = x .
+
+Substituting in the conditional risk formula E Y − f (X)
+
+∗
+
+X = x the Bayes optimal predictor
+
+∗
+
+E
+
+f (x) = [Y | X = x] we obtain
+
+h
+
+ꢂ
+
+i
+
+h
+
+ꢂ
+
+i
+
+ꢃ
+
+ꢄ
+
+ꢃ
+
+ꢄ
+
+ꢀ ꢂ
+
+In words, the conditional risk of the Bayes optimal predictor for the quadratic loss is the variance
+
+ꢁ
+
+2 ꢂ
+
+2 ꢂ
+
+E Y − f∗(X)
+
+X = x = E Y − E[Y | x]
+
+ꢂ
+
+ꢂ
+
+ꢂ
+
+ꢀ
+
+ꢁ
+
+∗
+
+E
+
+of the label conditioned on the instance. By averaging over X we obtain ℓ (f ) = Var[Y | X] .
+
+D
+
+Namely, the Bayes risk for the quadratic loss is the expected conditional variance of the label. Note
+
+that E Var[Y | X] is generally diﬀerent from Var[Y ]. Indeed, the law of total variance says that
+
+ꢀ
+
+ꢁ
+
+ꢀ
+
+ꢁ
+
+ꢀ
+
+ꢁ
+
+Var[Y ] − E Var[Y | X] = Var E[Y | X] .
+
+We now focus on binary classiﬁcation, where Y = {−1, 1}. Let η(x) be the probability of Y = 1
+
+ꢃ
+
+conditioned on X = x. We view η(x) = P Y = +1 | X = x) as the value on x of a function
+
+η : X → [0, 1].
+
+Let I{A} ∈ {0, 1} be the indicator function of an event A; that is, I{A} = 1 if and only if A occurs.
+
+The statistical risk with respect to the zero-one loss ℓ(y, yb) = I{yb
+
+The Bayes optimal predictor f : X → {−1, 1} for binary classiﬁcation is derived as follows
+
+̸
+
+ꢀ
+
+ꢁ
+
+ꢀ
+
+ꢁ
+
+ꢃ
+
+ꢄ
+
+ℓ (h) = E ℓ(Y, h(X)) = E I{h(X)
+
+= Y } = P h(X)
+
+D
+
+∗
+
+ꢀ
+
+ꢂ
+
+ꢁ
+
+f∗(x) = argmin ℓ(Y, yb) X = x
+
+E
+
+ꢂ
+
+yb∈{−1,1}
+
+ꢀ
+
+= argmin E I{Y = +1}I{yb = −1} + I{Y = −1}I{yb = +1} X = x
+
+yb∈{−1,1}
+
+ꢇ
+
+= argmin P(Y = +1 | X = x)I{yb = −1} + P(Y = −1 | X = x)I{yb = +1}
+
+yb∈{−1,1}
+
+yb∈{−1,1}
+
+ꢇ
+
+ꢈ
+
+ꢃ
+
+ꢄ
+
+= argmin η(x)I{yb = −1} + 1 − η(x) I{yb = +1}
+
+ꢉ
+
+Hence, the Bayes optimal classiﬁer predicts the label whose probability is the highest when con-
+
+−1 if η(x) < 1/2,
+
+\=
+
++1 if η(x) ≥ 1/2.
+
+∗
+
+ditioned on the instance. Finally, it is easy to verify that the Bayes risk in this case is ℓ (f ) =
+
+ꢀ
+
+ꢁ
+
+D
+
+E min{η(X), 1 − η(X)} .
+
+2
+
+
+
+
+
+Bounding the risk. Next, we study the problem of bounding the risk of a predictor. From now
+
+on, we assume ℓ(y, yb) ∈ [0, 1]. However, keep in mind that our analysis continues to hold also when
+
+ℓ(y, yb) ∈ [0, M] for any M > 0.
+
+It should be clear that, given an arbitrary predictor h, we cannot directly compute its risk ℓ (h)
+
+D
+
+with respect to D because D is typically unknown (if we knew D, we could directly construct the
+
+Bayes optimal predictor). We thus consider the problem of estimating the risk of a given predictor
+
+ꢊ
+
+ꢋ
+
+′
+
+′
+
+′
+
+′
+
+′
+
+n
+
+h. In order to compute this estimate, we can use the test set S = (x , y ), . . . , (x , y ) . We
+
+1
+
+1
+
+n
+
+can then estimate ℓ (h) with the test error, which is the average loss of h on the test set,
+
+D
+
+Xn
+
+ꢃ
+
+ꢄ
+
+1
+
+′
+
+′
+
+t
+
+ℓS′ (h) =
+
+ℓ y , h(x ) .
+
+t
+
+n
+
+t=1
+
+Under the assumption that the test set is generated through independent draws from D, the test
+
+error corresponds to the sample mean of the risk. Indeed, for each t = 1, . . . , n the example
+
+′
+
+′
+
+t
+
+(X , Y ) is an independent draw from D. Therefore,
+
+t
+
+h
+
+i
+
+ꢃ
+
+ꢄ
+
+E ℓ Y ′, h(X′ ) = ℓD(h)
+
+t = 1, . . . , n
+
+t
+
+t
+
+Note that the above equalities rely on the assumption that h does not depend on the test set. If it
+
+did, then the above equalities would not be necessarily true. This fact is important in the analysis
+
+of learning algorithms.
+
+In order to compute how good is the test error as an estimate for the risk, we can use the following
+
+result about the law of large numbers.
+
+Lemma 1 (Chernoﬀ-Hoeﬀding). Let Z , . . . , Z be independent and identically distributed random
+
+1
+
+n
+
+variables with expectation µ and such that 0 ≤ Z ≤ 1 for each t = 1, . . . , n. Then, for any given
+
+t
+
+ε > 0,
+
+
+
+!
+
+
+
+!
+
+Xn
+
+Xn
+
+1
+
+2
+
+1
+
+2
+
+P
+
+Zt > µ + ε ≤ e−2ε n
+
+and
+
+P
+
+Zt < µ − ε ≤ e−2ε n .
+
+n
+
+n
+
+t=1
+
+t=1
+
+In the rest of this course, we repeatedly use the following facts:
+
+• For any two events A and B, if A ⇒ B, then P(A) ≤ P(B)
+
+• (Union bound) For any collection A , . . . , A of (not necessarily disjoint) events,
+
+1
+
+n
+
+Xn
+
+If the events A , . . . , A are pairwise disjoint, then the union bound holds with equality.
+
+P(A ∪ · · · ∪ A ) ≤
+
+P(Ai)
+
+1
+
+n
+
+i=1
+
+1
+
+n
+
+Using the Chernoﬀ-Hoeﬀding bound with Z = ℓ(y , h(x )) ∈ [0, 1] we can compute a conﬁdence
+
+t
+
+interval for the risk as follows (where the test error is written as ℓ instead of ℓ ),
+
+t
+
+t
+
+S′
+
+ꢇ
+
+ꢈ
+
+ꢇ
+
+ꢈ
+
+ꢂ
+
+ꢂ
+
+P ꢂℓ (h) − ℓ(h)ꢂ > ε = P ℓ (h) − ℓ(h) > ε ∪ ℓ(h) − ℓ (h) > ε
+
+D
+
+D
+
+D
+
+ꢇ
+
+ꢈ
+
+ꢇ
+
+ꢈ
+
+−2ε2n
+
+= P ℓ (h) − ℓ(h) > ε + P ℓ(h) − ℓ (h) > ε ≤ 2 e
+
+(1)
+
+D
+
+D
+
+3
+
+
+
+
+
+where in the last step we applied the union bound to the disjoint events ℓ (h) − ℓ(h) > ε and
+
+D
+
+ℓ(h) − ℓ (h) > ε. Note that the probability is computed with respect to the random draw of the
+
+D
+
+test set. This inequality shows that the probability that a test set gives a test error ℓ (h) diﬀering
+
+S′
+
+from the true risk ℓD(h) for more than ε quickly decreases with the size n of the test set.
+
+More speciﬁcally: if we set to δ ∈ (0, 1) the right-hand side of (1) and then solve for ε, we get that
+
+r
+
+ꢂ
+
+ꢂ
+
+1
+
+2
+
+ꢂ
+
+ꢂ
+
+ℓ (h) − ℓ (h) ≤
+
+ln
+
+D
+
+S′
+
+2n
+
+δ
+
+holds with probability al least 1 − δ with respect to the random draw of the test set.
+
+The inequality (1) is telling us how to use a test set to estimate the risk of a classiﬁer. More precisely,
+
+the inequality shows that the test set, which is how we measure in practice the performance of a
+
+classiﬁer on unseen data, is close to the statistical risk with high probability.
+
+Overﬁtting and underﬁtting. Fix a learning problem (D, ℓ) and consider a generic learning
+
+algorithm A. Let H be the set of predictors generated by A: h ∈ H if and only if there exists
+
+A
+
+A
+
+a ﬁnite training set S such that A(S) = h. For example, A could be an algorithm for training
+
+a neural network and HA is the set of predictors obtained by training the neural network using
+
+∗
+
+∗
+
+arbitrary training sets of ﬁnite size. Let h be any predictor with minimum risk ℓ (h ) in H .
+
+D
+
+A
+
+That is,
+
+∗
+
+ℓ (h ) ≤ min ℓ (h)
+
+D
+
+D
+
+h∈H
+
+A
+
+Fix a training set S and let hS = A(S). The following is called the bias-variance decomposition:
+
+∗
+
+ℓ (h ) = ℓ (h ) − ℓ (h )
+
+estimation error (large when overﬁtting)
+
+approximation error (large when underﬁtting)
+
+Bayes error (unavoidable)
+
+D
+
+S
+
+D
+
+S
+
+D
+
+∗
+
+∗
+
+\+ ℓ (h ) − ℓ (f )
+
+D
+
+\+ ℓ (f )
+
+D
+
+∗
+
+D
+
+where f∗ is the Bayes optimal predictor for (D, ℓ). Note that:
+
+• the Bayes error is not controllable because it only depends on D and the loss ℓ,
+
+• the approximation (or bias) error, which is large when the algorithm underﬁts, arises because
+
+HA does not necessarily contain the Bayes optimal predictor,
+
+• the estimation (or variance) error, which is large when the algorithm overﬁts, arises because
+
+∗
+
+the risk of h is generally diﬀerent from the risk of h .
+
+S
+
+We now use the bias-variance decomposition to balance overﬁtting and underﬁtting in the ERM
+
+algorithm run over a ﬁnite classe H. Recall that ERM minimizes the training error in H,
+
+h = argmin ℓ (h)
+
+S
+
+S
+
+h∈H
+
+where ℓS(h) is the training error of h on the training set S. Similarly to before, the best predictor
+
+in the class H is any predictor h∗ satisfying
+
+∗
+
+ℓ (h ) = min ℓ (h) .
+
+D
+
+D
+
+h∈H
+
+4
+
+
+
+
+
+∗
+
+Thanks to the law of large numbers, we know that the training error ℓ (h ) is close to ℓ (h ) with
+
+high probability with respect to the random draw of the training set S. Unfortunately, we cannot
+
+∗
+
+S
+
+D
+
+directly apply the Chernoﬀ-Hoeﬀding bound to h to show that ℓ (h ) is close to ℓ (h ). The
+
+S
+
+reason is that h is a function of the training set, and thus a random variable. Chernoﬀ-Hoeﬀding
+
+D
+
+S
+
+S
+
+S
+
+S
+
+ensures that ℓ (h) is close to ℓ (h) for any ﬁxed h, whereas h is not ﬁxed as it depends on the
+
+b
+
+Next, we bound the variance error. For every given training set S of size m, we have that
+
+S
+
+D
+
+S
+
+sample.
+
+∗
+
+∗
+
+ℓ (h ) − ℓ (h ) = ℓ (h ) − ℓ (h ) + ℓ (h ) − ℓ (h )
+
+D
+
+S
+
+D
+
+D
+
+S
+
+S
+
+S
+
+S
+
+S
+
+D
+
+∗
+
+∗
+
+≤ ℓ (h ) − ℓ (h ) + ℓ (h ) − ℓ (h )
+
+D
+
+S
+
+S
+
+S
+
+S
+
+D
+
+ꢂ
+
+ꢂ
+
+ꢂ
+
+ꢂ
+
+ꢂ
+
+ꢂ
+
+ꢂ
+
+∗
+
+∗ ꢂ
+
+≤ ℓ (h ) − ℓ (h ) + ℓ (h ) − ℓ (h )
+
+D
+
+S
+
+S
+
+S
+
+S
+
+D
+
+ꢂ
+
+ꢂ
+
+ꢂ
+
+ꢂ
+
+≤ 2 max ℓ (h) − ℓ (h)
+
+S
+
+D
+
+h∈H
+
+where we used the assumption that h minimizes ℓ (h) among all h ∈ H. Therefore, for all ε > 0,
+
+S
+
+S
+
+ꢂ
+
+ꢂ
+
+ꢂ
+
+ꢂ
+
+ε
+
+ε
+
+∗
+
+ꢂ
+
+ꢂ
+
+ꢂ
+
+ꢂ
+
+ℓ (h ) − ℓ (h ) > ε
+
+⇒
+
+max ℓ (h) − ℓ (h) >
+
+⇒
+
+∃h ∈ H : ℓ (h) − ℓ (h) >
+
+.
+
+D
+
+S
+
+D
+
+S
+
+D
+
+S
+
+D
+
+h∈H
+
+2
+
+2
+
+Since the above chain of implications holds for any realization of the training set of size m, we can
+
+write
+
+ꢇ
+
+ꢈ
+
+ꢂ
+
+ꢂ
+
+ε
+
+P (ℓ (h ) − ℓ (h∗) > ε) ≤ P ∃h ∈ H : ꢂℓ (h) − ℓ (h)ꢂ >
+
+.
+
+D
+
+S
+
+D
+
+S
+
+D
+
+2
+
+We now study the case |H| < ∞, that is when the model space contains a ﬁnite number of predictors.
+
+Note that the event
+
+ꢂ
+
+ꢂ
+
+ε
+
+ꢂ
+
+ꢂ
+
+∃h ∈ H : ℓ (h) − ℓ (h) >
+
+S
+
+D
+
+2
+
+ꢂ
+
+ꢂ
+
+ꢂ
+
+ꢂ
+
+ε
+
+2
+
+is the union over h ∈ H of the (not necessarily disjoint) events ℓ (h) − ℓ (h) > . Using the
+
+S
+
+D
+
+union bound we get
+
+
+
+!
+
+ꢇ
+
+ꢈ
+
+ꢇ
+
+ꢂ
+
+ꢈ
+
+ꢂ
+
+ꢂ
+
+[ ꢂ
+
+ꢂ
+
+ε
+
+ε
+
+P ∃h ∈ H : ꢂℓ (h) − ℓ (h)ꢂ >
+
+= P
+
+ꢂℓ (h) − ℓ (h)ꢂ >
+
+S
+
+D
+
+S
+
+D
+
+2
+
+2
+
+h∈H
+
+ꢇ
+
+ꢈ
+
+X
+
+ꢂ
+
+ꢂ
+
+ε
+
+2
+
+ꢂ
+
+≤
+
+P
+
+ℓ (h) − ℓ (h) >
+
+ꢂ
+
+S
+
+D
+
+h∈H
+
+ꢇ
+
+ꢈ
+
+ꢂ
+
+ε
+
+≤ |H| max P ℓ (h) − ℓ (h) >
+
+ꢂ
+
+ꢂ
+
+S
+
+D
+
+h∈H
+
+2
+
+−mε2/2
+
+≤ |H|2e
+
+(2)
+
+(3)
+
+where in the last step we used the Chernoﬀ-Hoeﬀding bound.
+
+In conclusion, we have that
+
+P (ℓ (h ) − ℓ (h∗) > ε) ≤ 2|H|e−mε
+
+2/2
+
+.
+
+D
+
+S
+
+D
+
+Setting the right-hand side of (3) equal to δ and solving for ε we obtain that
+
+r
+
+2
+
+2|H|
+
+∗
+
+ℓ (h ) ≤ ℓ (h ) +
+
+ln
+
+D
+
+S
+
+D
+
+m
+
+δ
+
+5
+
+
+
+
+
+holds with probability at least 1−δ with respect to the random draw of a training set of cardinality
+
+m.
+
+For a given cardinality m of the training set, in order to decrease our bound on the variance error
+
+q
+
+2
+
+m
+
+2|H|
+
+∗
+
+of ERM,
+
+ln
+
+we must decrease |H|. But decreasing |H| might cause an increase of ℓ (h ),
+
+D
+
+δ
+
+which produces a corresponding increase of the bias error. In light of this statistical analysis, we
+
+conclude that the ERM algorithm generates predictors with high risk (compared to Bayes risk)
+
+when there is an unbalance between the variance error and the bias error. In particular, overﬁtting
+
+occurs when the variance error dominates the bias error, and underﬁtting occurs when the bias
+
+error dominates the variance error.
+
+In the proof of the bound on the variance error, we have also shown in (2) that
+
+r
+
+ꢂ
+
+ꢂ
+
+1
+
+2|H|
+
+ꢂ
+
+ꢂ
+
+∀h ∈ H ℓ (h) − ℓ (h) ≤
+
+ln
+
+S
+
+D
+
+2m
+
+δ
+
+with probability at least 1 − δ with respect to the random draw of the training set. This implies
+
+that when the cardinality of the training set is suﬃciently large with respect to ln |H|, then the
+
+training error ℓ (h) becomes a good estimate for the statistical risk ℓ (h) simultaneously for all
+
+S
+
+D
+
+predictors h ∈ H. This is suﬃcient to prevent overﬁtting, as it tells us the ranking the predictors in
+
+H according to their training error approximately corresponds to ranking them according to their
+
+risk.
+
+6
