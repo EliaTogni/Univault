@@ -162,13 +162,13 @@ Even if we compute rescaled numerical representations for the features (includin
 
 In order to learn data whose features vary in heterogeneous sets $\mathcal{X}_1, ..., \mathcal{X}_d$ (i.e., sets with incomparable ranges, including ranges corresponding to categorical variables), a new family of predictors will be introduced: the **tree predictors**.
 
-A tree predictor has the structure of an **ordered and rooted [[Albero |tree]]** where each node is either a **leaf** (if it has zero children) or an **internal node** (if it has at least two children). Recall that an ordered tree is one where the children of any internal node are numbered consecutively. Hence, if the internal node $v$ has $k \geq 2$ children, we can access the first child, the second child, and so on until the $k$-th child.
+A tree predictor has the structure of an **ordered and rooted [[Albero |tree]]** where each node is either a **leaf** (if it has zero children) or an **internal node** (if it has at least two children). Recall that an ordered tree is one where the children of any internal node are numbered consecutively. Hence, if the internal node $v$ has $k \geq 2$ children, it is possible to access the first child, the second child, and so on until the $k$-th child.
 
 ![[tree_classifier_example.png]]
 
 In the figure, it is possible to see a classical example of a tree classifier for a binary classification task. The features are: outlook, humidity e windy.
 
-Fix $\mathcal{X} = \mathcal{X}_1 \times ... \times \mathcal{X}_d$,where $\mathcal{X}_i$ is the range of the $i$-th attribute $x_i$. A **tree predictor** $h_T : \mathcal{X} \to \mathcal{Y}$ is a predictor defined by a tree $T$ whose internal nodes are tagged with **tests** and whose leaves are tagged with **elements** (or **labels**) in $\mathcal{Y}$. A test on attribute $i$ for an internal node with $k$ children is a function $f : \mathcal{X}_1 \to \{1, ..., k\}$. The function $f$ maps each element of $\mathcal{X}_i$ to the node children. For example, if $\mathcal{X}_i \equiv \{a,b,c,d\}$ and $k = 3$, then $f$ could be defined by
+Fix $\mathcal{X} = \mathcal{X}_1 \times ... \times \mathcal{X}_d$,where $\mathcal{X}_i$ is the range of the $i$-th attribute $x_i$. A **tree predictor** $h_T : \mathcal{X} \to \mathcal{Y}$ is a predictor defined by a tree $T$ whose internal nodes are tagged with **tests** and whose leaves are tagged with **elements** (or **labels**) in $\mathcal{Y}$. A test on attribute $i$ for an internal node with $k$ children is a function $f : \mathcal{X}_i \to \{1, ..., k\}$. The function $f$ maps each element of $\mathcal{X}_i$ to the node children. For example, if $\mathcal{X}_i \equiv \{a,b,c,d\}$ and $k = 3$, then $f$ could be defined by
 
 $$f(x_i) = \cases{1 \quad \text{ if }
 x_i = c, \cr \cr 2 \quad \text{ if } x_i = d, \cr \cr 3 \quad \text{ if } x_i \in \{a, b\}}$$
@@ -284,20 +284,19 @@ start from root
 ----------------------------------------------------------------
 
 # Statistical Learning
+In order to analyze a learning algorithm, a mathematical model of how examples $(x, y)$ are generated must be deﬁned. In the statistical learning framework, we assume that every example $(x, y)$ is obtained through an independent draw from a ﬁxed but unknown probability distribution on $\mathcal{X} \times \mathcal{Y}$. We write $(X, Y)$ to highlight that $x$ and $y$ are **random variables**. The assumption that not all data points $x$ are equally likely is quite natural (for example, when data points are images, only a small fraction of all possible pixel conﬁgurations correspond to real-world images). Similarly, as we previously argued, labels are typically noisy. This corresponds to assuming that labels of any given datapoint are stochastic.
 
-In order to analyze a learning algorithm, we must deﬁne a mathematical model of how examples $(x, y)$ are generated. In the statistical learning framework, we assume that every example $(x, y)$ is obtained through an independent draw from a ﬁxed but unknown probability distribution on $\mathcal{X} \times \mathcal{Y}$. We write $(X, Y)$ to highlight that $x$ and $y$ are random variables. The assumption that not all data points $x$ are equally likely is quite natural (for example, when data points are images, only a small fraction of all possible pixel conﬁgurations correspond to real-world images). Similarly, as we previously argued, labels are typically noisy. This corresponds to assuming that labels of any given datapoint are stochastic.
+Assuming that every example $(x, y)$ is the realization of an independent random draw from the same joint probability distribution $\mathcal{D}$ implies that every dataset (e.g., a training set or a test set) is a **statistical sample**. Note that the independence assumption is actually violated in many practical domains. Consider for example the problem of categorizing news stories. The newsfeed is clearly far from being an independent process, as the evolution of news reﬂects developing and related stories. Although not very realistic, the independence assumption is nevertheless convenient from the viewpoint of the analytical tractability of the problem, and works suprisingly well in practice.
 
-Assuming that every example $(x, y)$ is the realization of an independent random draw from the same joint probability distribution $\mathcal{D}$ implies that every dataset (e.g., a training set or a test set) is a statistical sample. Note that the independence assumption is actually violated in many practical domains. Consider for example the problem of categorizing news stories. The newsfeed is clearly far from being an independent process, as the evolution of news reﬂects developing and related stories. Although not very realistic, the independence assumption is nevertheless convenient from the viewpoint of the analytical tractability of the problem, and works suprisingly well in practice.
-
-In statistical learning, a problem is fully speciﬁed by a pair $(\mathcal{D}, \ell)$, where $\mathcal{D}$ is the data distribution and $\ell$ is a loss function. The performance of a predictor $h : \mathcal{X} \to \mathcal{Y}$ with respect to (D, ℓ) is evaluated via the statistical risk, deﬁned by
+In statistical learning, a **problem** is fully speciﬁed by a pair $(\mathcal{D}, \ell)$, where $\mathcal{D}$ is the data distribution and $\ell$ is a loss function. The performance of a predictor $h : \mathcal{X} \to \mathcal{Y}$ with respect to $(\mathcal{D}, \ell)$ is evaluated via the statistical risk, deﬁned by
 
 $$\ell_{\mathcal{D}}(h) = \mathbb{E}[\ell(Y, h(X))]$$
 
-This is the expected value of the loss function on a random example $(X, Y)$ drawn from $\mathcal{D}$. The best possible predictor $f : \mathcal{X} \to \mathcal{Y}$ given $\mathcal{D}$ is known as **Bayes optimal predictor**, and is deﬁned by
+This is the **expected value** of the loss function on a random example $(X, Y)$ drawn from $\mathcal{D}$. The best possible predictor $f : \mathcal{X} \to \mathcal{Y}$ given $\mathcal{D}$ is known as **Bayes optimal predictor**, and is deﬁned by
 
-$$f^*(x) = argmin_{\widehat{y} \in \mathcal{Y}} \text{ } \mathbb{E}[\ell(Y, \widehat(y) \vert X = x]$$
+$$f^*(x) = argmin_{\widehat{y} \in \mathcal{Y}} \text{ } \mathbb{E}[\ell(Y, \widehat{y}) \vert X = x]$$
 
-The quantity $\mathbb{E} \ell(Y, \widehat{y}) \vert X = x]$ is the conditional risk, which is the expected loss of the prediction with respect to the distribution of the label $Y$ conditioned on $x$. Hence $f^*(x)$ is the prediction minimizing the conditional risk. By deﬁnition of $f^*$, we have that 
+The quantity $\mathbb{E} [\ell(Y, \widehat{y}) \vert X = x]$ is the **conditional risk**, which is the expected loss of the prediction with respect to the distribution of the label $Y$ conditioned on $x$. Hence $f^*(x)$ is the prediction minimizing the conditional risk. By deﬁnition of $f^*$, we have that 
 
 $$\mathbb{E}[\ell(Y, f^*(X))\text{ } \vert \text{ } X = x] \leq \mathbb{E}[\ell(Y, h(X))\text{ } \vert \text{ } X = x]$$
 
@@ -307,193 +306,20 @@ $$\mathbb{E} \Big[\mathbb{E}[\ell(Y, h(X))\text{ } \vert \text{ } X]\Big] = \mat
 
 we have that $\ell_{\mathcal{D}}(f^*) \leq \ell_{\mathcal{D}}(h)$ for every predictor $h$. The risk $\ell_{\mathcal{D}}(f^*)$ of the Bayes optimal predictor is called **Bayes risk**. Typically, the Bayes risk is larger than zero because labels are stochastic.
 
-We now compute the Bayes optimal predictor for the quadratic loss function ℓ(y, yb) = (y − yb)
+We now compute the Bayes optimal predictor for the quadratic loss function $\ell(y, \widehat{y}) = (y − \widehat{y})^2$ when $\mathcal{Y} \equiv \mathbb{R}$,
 
-when Y ≡ R,
-
-2
-
-ꢀ
-1
-
-
-
-
-ꢂ
-
-ꢁ
-
-∗
-
-E
-
-2 ꢂ
-
-f (x) = argmin (Y − yb) X = x
-
-yb∈R
-
-ꢇ
-
-ꢈ
-
-ꢀ
-
-ꢂ
-
-ꢁ
-
-ꢀ ꢂ
-
-ꢁ
-
-= argmin E Y X = x + yb − 2yb Y X = x
-
-2 ꢂ
-
-2
-
-E
-
-ꢂ
-
-yb∈R
-
-ꢇ
-
-ꢈ
-
-ꢀ ꢂ
-
-ꢁ
-
-2
-
-E
-
-ꢂ
-
-= argmin yb − 2yb Y X = x
-
-(ignoring the term that does not depend on yb)
-
-yb∈R
-
-ꢀ ꢂ
-
-ꢁ
-
-ꢀ ꢂ
-
-ꢁ
-
-= E Y X = x
-
-ꢂ
+$$f^*(x) = \underset{\widehat{y} \in \mathbb{R}}{\operatorname{argmin}} \mathbb{E}\Big[(Y - \widehat{y})^2 \vert X = x\Big]$$
 
 (minimizing the function F(yb) = yb − 2yb Y X = x )
 
-2
+Thus, the Bayes optimal prediction for the quadratic loss function is the expected value of the label conditioned on the instance.
 
-E
+Substituting in the conditional risk formula $\mathbb{E}[(Y - f^*(X)^2 \vert X = x]$ the Bayes optimal predictor $f^*(X) = \mathbb{E}[Y \text{ }\vert \text{ } X = x]$ we obtain
 
-ꢂ
+$$$$
 
-Thus, the Bayes optimal prediction for the quadratic loss function is the expected value of the label
-
-conditioned on the instance.
-
-ꢀꢃ
-
-ꢄ ꢂ
-
-ꢁ
-
-2 ꢂ
-
-X = x = Var Y X = x .
-
-Substituting in the conditional risk formula E Y − f (X)
-
-∗
-
-X = x the Bayes optimal predictor
-
-∗
-
-E
-
-f (x) = [Y | X = x] we obtain
-
-h
-
-ꢂ
-
-i
-
-h
-
-ꢂ
-
-i
-
-ꢃ
-
-ꢄ
-
-ꢃ
-
-ꢄ
-
-ꢀ ꢂ
-
-In words, the conditional risk of the Bayes optimal predictor for the quadratic loss is the variance
-
-ꢁ
-
-2 ꢂ
-
-2 ꢂ
-
-E Y − f∗(X)
-
-X = x = E Y − E[Y | x]
-
-ꢂ
-
-ꢂ
-
-ꢂ
-
-ꢀ
-
-ꢁ
-
-∗
-
-E
-
-of the label conditioned on the instance. By averaging over X we obtain ℓ (f ) = Var[Y | X] .
-
-D
-
-Namely, the Bayes risk for the quadratic loss is the expected conditional variance of the label. Note
-
-that E Var[Y | X] is generally diﬀerent from Var[Y ]. Indeed, the law of total variance says that
-
-ꢀ
-
-ꢁ
-
-ꢀ
-
-ꢁ
-
-ꢀ
-
-ꢁ
-
-Var[Y ] − E Var[Y | X] = Var E[Y | X] .
+In words, the conditional risk of the Bayes optimal predictor for the quadratic loss is the variance of the label conditioned on the instance. By averaging over $X$ we obtain $\ell_{mathcal{D}}(f^*) = \mathbb{E}\big[Var[Y \tetx{ } \vert \text{ } X]\big]$.
+Namely, the Bayes risk for the quadratic loss is the expected conditional variance of the label. Note that E Var[Y | X] is generally diﬀerent from Var[Y ]. Indeed, the law of total variance says that Var[Y ] − E Var[Y | X] = Var E[Y | X] .
 
 We now focus on binary classiﬁcation, where Y = {−1, 1}. Let η(x) be the probability of Y = 1
 
@@ -1501,10 +1327,21 @@ S
 
 D
 
-predictors h ∈ H. This is suﬃcient to prevent overﬁtting, as it tells us the ranking the predictors in
+predictors h ∈ H. This is suﬃcient to prevent overﬁtting, as it tells us the ranking the predictors in H according to their training error approximately corresponds to ranking them according to their risk.
 
-H according to their training error approximately corresponds to ranking them according to their
+--------------------------------------------------------
 
-risk.
+in generale h non cerca di approssimare direttamente f* (pechè servono troppi dati) ma si fanno delle assunzioni al fine di poter approssimare f*.
 
-6
+Bayes optimal for the zero - one loss (binary classification):
+
+Y = {-1, 1}
+-> funzione indicatrice.
+
+-----------------------------
+
+X = R con problema di class binaria e si vuole plottare $\eta(x)$.
+A -> B allora p(A) -> p(B) = dimostrazione grafica
+Pure x la seconda assunzione
+$\delta$ = confidence level
+radice = bound n the confidence interval
