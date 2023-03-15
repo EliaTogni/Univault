@@ -322,117 +322,29 @@ $$\mathbb{E}\Big[\big(Y - f^*(X)\big)^2 \text{ }\Big \vert \text{ } X = x \Big] 
 In words, the conditional risk of the Bayes optimal predictor for the quadratic loss is the variance of the label conditioned on the instance. By averaging over $X$ we obtain $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\big[Var[Y \text{ } \vert \text{ } X]\big]$.
 Namely, the Bayes risk for the quadratic loss is the expected conditional variance of the label. Note that $\mathbb{E}\big[var[ Y \text{ } \vert \text{ } X]\big]$ is generally diﬀerent from $Var[Y]$. Indeed, the law of total variance says that $Var[Y] - \mathbb{E}\big[Var[Y \text{ } \vert \text{ } X]\big] = Var\big[\mathbb{E}[Y \text{ } \vert \text{ } X]\big]$.
 
-We now focus on binary classiﬁcation, where $\mathcal{Y} = \{−1, 1\}$. Let $\eta(x)$ be the probability of $Y = 1$ conditioned on $X = x$. We view η(x) = P Y = +1 | X = x) as the value on x of a function
+We now focus on binary classiﬁcation, where $\mathcal{Y} = \{−1, 1\}$. Let $\eta(x)$ be the probability of $Y = 1$ conditioned on $X = x$. We view $\eta(x) = \mathbb{P}( Y = +1 \text{ } \vert \text{ } X = x$ as the value on x of a function $\eta: \mathcal{X} \to [0, 1]$.
 
-η : X → [0, 1].
+Let $\mathbb{I}\{A\} \in \{0, 1\}$ be the **indicator function** of an event $A$; that is, $\mathbb{I}\{A\} = 1$ if and only if $A$ occurs.<br />
+The statistical risk with respect to the zero-one loss $\ell(y, \widehat{y}) = \mathbb{I}\{\widehat{y} \neq y\}$ is therefore defined by
 
-Let I{A} ∈ {0, 1} be the indicator function of an event A; that is, I{A} = 1 if and only if A occurs.
+$$\ell_{\mathcal{D}}(h) = \mathbb{E}\big[\ell(Y, h(X))\big] = \mathbb{E}\big[\mathbb{I}\{h(X) \neq Y \}\big] = \mathbb{P}(h(X) \neq Y)$$
 
-The statistical risk with respect to the zero-one loss ℓ(y, yb) = I{yb
+The Bayes optimal predictor $f^*: \mathcal{X} \to \{−1, 1\}$ for binary classiﬁcation is derived as follows
 
-The Bayes optimal predictor f : X → {−1, 1} for binary classiﬁcation is derived as follows
+$$f^*(x) = \underset{\widehat{y} \in \{-1, 1\}}{\operatorname{argmin}}\mathbb{E}\big[\ell(Y, \widehat{y}) \text{ } \vert \text{ } X = x\big]$$
+$$$$
 
-̸
-
-ꢀ
-
-ꢁ
-
-ꢀ
-
-ꢁ
-
-ꢃ
-
-ꢄ
-
-ℓ (h) = E ℓ(Y, h(X)) = E I{h(X)
-
-= Y } = P h(X)
-
-D
-
-∗
-
-ꢀ
-
-ꢂ
-
-ꢁ
-
-f∗(x) = argmin ℓ(Y, yb) X = x
-
-E
-
-ꢂ
-
-yb∈{−1,1}
-
-ꢀ
-
-= argmin E I{Y = +1}I{yb = −1} + I{Y = −1}I{yb = +1} X = x
-
-yb∈{−1,1}
-
-ꢇ
-
-= argmin P(Y = +1 | X = x)I{yb = −1} + P(Y = −1 | X = x)I{yb = +1}
-
-yb∈{−1,1}
-
-yb∈{−1,1}
-
-ꢇ
-
-ꢈ
-
-ꢃ
-
-ꢄ
-
-= argmin η(x)I{yb = −1} + 1 − η(x) I{yb = +1}
-
-ꢉ
-
-Hence, the Bayes optimal classiﬁer predicts the label whose probability is the highest when con-
-
-−1 if η(x) < 1/2,
-
-\=
-
-+1 if η(x) ≥ 1/2.
-
-∗
-
-ditioned on the instance. Finally, it is easy to verify that the Bayes risk in this case is ℓ (f ) =
-
-ꢀ
-
-ꢁ
-
-D
-
-E min{η(X), 1 − η(X)} .
-
-2
+Hence, the Bayes optimal classiﬁer predicts the label whose probability is the highest when conditioned on the instance. Finally, it is easy to verify that the Bayes risk in this case is $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\big[min\{\eta(X), 1 - \eta(X)\}\big]$.
 
 
-
-
-
-Bounding the risk. Next, we study the problem of bounding the risk of a predictor. From now
-
-on, we assume ℓ(y, yb) ∈ [0, 1]. However, keep in mind that our analysis continues to hold also when
-
-ℓ(y, yb) ∈ [0, M] for any M > 0.
+## Bounding the risk
+Next, we study the problem of bounding the risk of a predictor. From now on, we assume ℓ(y, yb) ∈ [0, 1]. However, keep in mind that our analysis continues to hold also when ℓ(y, yb) ∈ [0, M] for any M > 0.
 
 It should be clear that, given an arbitrary predictor h, we cannot directly compute its risk ℓ (h)
 
 D
 
-with respect to D because D is typically unknown (if we knew D, we could directly construct the
-
-Bayes optimal predictor). We thus consider the problem of estimating the risk of a given predictor
+with respect to D because D is typically unknown (if we knew D, we could directly construct the Bayes optimal predictor). We thus consider the problem of estimating the risk of a given predictor
 
 ꢊ
 
