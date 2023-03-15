@@ -360,13 +360,18 @@ Let $Z_1 , ... , Z_n$ be **independent and identically distributed random variab
 $$\mathbb{P}\Bigg(\frac{1}{n}\sum_{t = 1}^{n}Z_t > \mu + \epsilon \Bigg) \leq e^{-2\epsilon^2n}\quad \text{and}\quad \mathbb{P}\Bigg(\frac{1}{n}\sum_{t = 1}^{n}Z-t < \mu + \epsilon\Bigg) \leq e^{-2\epsilon^2n}$$
 
 In the rest of this course, we repeatedly use the following facts:
-1) for any two events $A$ and $B$, if $A \implies B$, then $P(A) \leq P(B)$;
+1) for any two events $A$ and $B$, if $B \implies A$, then $P(B) \leq P(A)$;
+
+![[fact1.png]]
+
 2) for any collection $A_1 , ... , A_n$ of (not necessarily disjoint) events, $\mathbb{P}(A_1, \cup ...\cup A_N) \leq \sum_{i = 1}^{n}\mathbb{P}(A_i)$ (**Union bound**). If the events $A_1 , ... , A_n$ are pairwise disjoint, then the union bound holds with equality.
+
+![[facts2.jpg]]
 
 Using the Chernoﬀ-Hoeﬀding bound with $Z_t = \ell(y_t , h(x_t)) \in [0, 1]$, we can compute a conﬁdence interval for the risk as follows (where the test error is written as $\ell$ instead of $\ell_{S'}$ ),
 
 $$\mathbb{P}\Big(\vert\ell_{\mathcal{D}}(h) - \ell(h) \vert > \epsilon\Big) = \mathbb{P}\Big(\ell_{\mathcal{D}}(h) - \ell(h) > \epsilon \cup \ell(h) - \ell_{\mathcal{D}}(h) > \epsilon\Big)$$
-$$\quad = \mathbb{P}\Big(\ell_{\mathcal{D}}(h) - \ell(h) > \epsilon\Big) + \Big(\ell(h) - \ell_{\mathcal{D}}(h) > \epsilon \Big) \leq 2e^{-2\epsilon^{2}n}$$
+$$\quad = \mathbb{P}\Big(\ell_{\mathcal{D}}(h) - \ell(h) > \epsilon\Big) + \Big(\ell(h) - \ell_{\mathcal{D}}(h) > \epsilon \Big) \leq 2e^{-2\epsilon^{2}n} \quad \text{ } \quad (1)$$
 
 where in the last step we applied the union bound to the disjoint events $\ell_{\mathcal{D}}(h) − \ell(h) > \epsilon$ and $\ell(h) − \ell_{\mathcal{D}}(h) > \epsilon$. Note that the probability is computed with respect to the random draw of the test set. This inequality shows that the probability that a test set gives a test error $\ell_{S'}(h)$ diﬀering from the true risk $\ell_{\mathcal{D}}(h)$ for more than $\epsilon$ quickly decreases with the size $n$ of the test set.
 
@@ -376,7 +381,7 @@ $$\vert \ell_{\mathcal{D}}(h) - \ell_{S'}(h)\vert \leq \sqrt{\frac{1}{n}\ln{\fra
 
 holds with probability al least $1 − \delta$ with respect to the random draw of the test set.
 
-The inequality $\mathbb{P}...$ is telling us how to use a test set to estimate the risk of a classiﬁer. More precisely, the inequality shows that the test set, which is how we measure in practice the performance of a classiﬁer on unseen data, is close to the statistical risk with high probability.
+The inequality $(1)$ is telling us how to use a test set to estimate the risk of a classiﬁer. More precisely, the inequality shows that the test set, which is how we measure in practice the performance of a classiﬁer on unseen data, is close to the statistical risk with high probability.
 
 ----------------------------------------------------------------
 
@@ -438,7 +443,7 @@ In conclusion, we have that
 
 $$\mathcal{P}\big(\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*) > \epsilon\big) \leq 2 \vert \mathcal{H}\vert e^{-m\epsilon^2/2} \quad \text{ } \quad (3)$$
 
-Setting the right-hand side of the last equation equal to $\delta$ and solving for $\epsilon$ we obtain that
+Setting the right-hand side of $(3)$ equal to $\delta$ and solving for $\epsilon$ we obtain that
 
 $$\ell_{\mathcal{D}}(h_S) \leq \ell_{\mathcal{D}}(h^*) + \sqrt{\frac{2}{m}\ln{\frac{2 \vert \mathcal{H}\vert}{\delta}}}$$
 
@@ -454,17 +459,6 @@ with probability at least $1 − \delta$ with respect to the random draw of the 
 
 --------------------------------------------------------
 
-in generale h non cerca di approssimare direttamente f* (pechè servono troppi dati) ma si fanno delle assunzioni al fine di poter approssimare f*.
-
-Bayes optimal for the zero - one loss (binary classification):
-
-Y = {-1, 1}
--> funzione indicatrice.
-
------------------------------
-
 X = R con problema di class binaria e si vuole plottare $\eta(x)$.
-A -> B allora p(A) -> p(B) = dimostrazione grafica
-Pure x la seconda assunzione
 $\delta$ = confidence level
 radice = bound n the confidence interval
