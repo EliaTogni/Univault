@@ -82,10 +82,10 @@ Il codice genetico è la codifica delle proteine attraverso triplette di nucleot
 
 ![[codoni.png]]
 
-Questa ridondanza permette qualche grado di robustezza alle mutazioni: alcune variazioni di un nucleotide corrispondono allo stesso amminoacido, sono mutazioni sinonime. Nelle mutazioni missenso, la codifica errata corrisponde ad un altro amminoacido. Le mutazioni possono occorrere a casua di mutazioni (per radiazioni o chimiche), per errore (durante la replicazione) o per mancanza di correzione (dopo una mutazione o un errore).
+Questa ridondanza permette qualche grado di robustezza alle mutazioni: alcune variazioni di un nucleotide corrispondono allo stesso amminoacido, sono mutazioni sinonime. Nelle mutazioni missenso, la codifica errata corrisponde ad un altro amminoacido. I cambiamenti possono occorrere a causa di mutazioni (per radiazioni o chi<miche), per errore (durante la replicazione) o per mancanza di correzione (dopo una mutazione o un errore).
 
 Le mutazioni influiscono sul fitness della cellula rispetto all'ambiente. infatti, i cambiamenti nelle funzioni della cellula determinano se la mutazione del DNA viene mantenuta o persa tramite la selezione naturale: in base a ciò, le mutazioni possono essere distinte in **miglioranti**, **peggioranti** o **neutrali**. Solo le mutazioni miglioranti e neutrali si propagano alla progenie.<br />
-Le mutazioni che si propagano alla progenie sono, inoltre, solo quelle che coinvolgono le cellule germinali (non quelle somatiche).
+Le mutazioni che si propagano alla progenie sono, inoltre, solo quelle che coinvolgono le **cellule germinali** (non quelle somatiche).
 
 Alcune sezioni di DNA sono molto simili in molti organismi e sono dette regioni conservate: esse corrispondono a funzioni di base e una mutazione in una tale regione sarà probabilmente peggiorante.
 
@@ -98,7 +98,9 @@ Ogni **gene** è una porzione di DNA che codifica l'informazione riguardante una
 
 Nella porzione trascritta si alternano **introni** ed **esoni**: gli esoni sono le regioni codificanti all'interno dei geni e sono trascrivibili in mRNA, mentre gli introni, ovvero le regioni non codificanti, vengono tagliati in un processo chiamato **slicing**. Per una trascrizione può essere utilizzato un sottoinsieme degli esoni di un gene: ogni sottoinsieme codificherà una proteina diversa (l'uomo possiede circa $20000$ geni, che sono in numero molto inferiore alle proteine che produce).
 
-Il **promoter** regola la trascrizione: la trascrizione può avvenire solo in seguito all'attivazione del promoter causata da una proteina fattore di trascrizione, la quale permette all'enzima **RNA-polimerasi** di trascrivere il DNA. Questi meccanismi di regolazione sono influenzati anche da regioni distali chiamate **enhancer** e **silencer**. Nell'uomo, le regioni trascritte costituiscono solo il 2% del codice genetico: le porzioni restanti hanno, invece, funzioni regolatrici.
+Il **promoter** regola la trascrizione: la trascrizione può avvenire solo in seguito all'attivazione del promoter causata da una proteina fattore di trascrizione, la quale permette all'enzima **RNA-polimerasi** di trascrivere il DNA. Questi meccanismi di regolazione sono influenzati anche da regioni distali chiamate **enhancer** e **silencer**. Nell'uomo, le regioni trascritte costituiscono solo il 3% del codice genetico: le porzioni restanti hanno, invece, funzioni regolatrici.
+
+Video robert tjian gene regulation
 
 ----------------------------------------------------------------
 

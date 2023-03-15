@@ -332,297 +332,52 @@ $$\ell_{\mathcal{D}}(h) = \mathbb{E}\big[\ell(Y, h(X))\big] = \mathbb{E}\big[\ma
 The Bayes optimal predictor $f^*: \mathcal{X} \to \{−1, 1\}$ for binary classiﬁcation is derived as follows
 
 $$f^*(x) = \underset{\widehat{y} \in \{-1, 1\}}{\operatorname{argmin}}\mathbb{E}\big[\ell(Y, \widehat{y}) \text{ } \vert \text{ } X = x\big]$$
-$$$$
+$$= \underset{\widehat{y} \in \{-1, 1\}}{\operatorname{argmin}}\mathbb{E}\Big[\mathbb{I}\big\{Y = +1\big\}\mathbb{I}\big\{\widehat{y} = -1\big\} + \mathbb{I}\big\{Y = -1\big\}\mathbb{I}\big\{\widehat{y} = +1\big\} \text{ } \vert \text{ } X = x\Big]$$
+$$= \underset{\widehat{y} \in \{-1, 1\}}{\operatorname{argmin}}\Big(\mathbb{P}\big(Y =  + 1 \text{ } \vert \text{ } X = x\big)\mathbb{I}\{\widehat{y} = -1\} + \mathbb{P}\big(Y = -1 \text{ } \vert \text{ } X = x\big)\mathbb{I}\{\widehat{y} = +1\}\Big)$$
+$$=\underset{\widehat{y} \in \{-1, 1\}}{\operatorname{argmin}}\Big(\eta(x) \mathbb{I}\{\widehat{y}= -1\} + (1 - \eta(x))\mathbb{I}\{\widehat{y} = +1\}\Big)$$
+$$= \cases{-1 \quad \text{if } \eta(x) < \frac{1}{2} \cr \cr +1 \quad \text{if} \eta(x) \geq \frac{1}{2}}$$
 
 Hence, the Bayes optimal classiﬁer predicts the label whose probability is the highest when conditioned on the instance. Finally, it is easy to verify that the Bayes risk in this case is $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\big[min\{\eta(X), 1 - \eta(X)\}\big]$.
 
-
 ## Bounding the risk
-Next, we study the problem of bounding the risk of a predictor. From now on, we assume ℓ(y, yb) ∈ [0, 1]. However, keep in mind that our analysis continues to hold also when ℓ(y, yb) ∈ [0, M] for any M > 0.
+Next, we study the problem of bounding the risk of a predictor. From now on, we assume $\ell(y, \widehat{y}) \in [0, 1]$. However, keep in mind that our analysis continues to hold also when $\ell(y, \widehat{y}) \in [0, M]$ for any $M > 0$.
 
-It should be clear that, given an arbitrary predictor h, we cannot directly compute its risk ℓ (h)
+It should be clear that, given an arbitrary predictor h, we cannot directly compute its risk $\ell_{\mathcal{D}}(h)$ with respect to $\mathcal{D}$ because $\mathcal{D}$ is typically unknown (if we knew $\mathcal{D}$, we could directly construct the Bayes optimal predictor). We thus consider the problem of estimating the risk of a given predictor $h$. In order to compute this estimate, we can use the **test set** $S' = \{(x_1' , y_1' ), ... , (x_n' , y_n')$. We can then estimate $\ell_{\mathcal{D}}(h)$ with the **test error**, which is the average loss of $h$ on the test set,
 
-D
+$$\ell_{s'}(h) = \frac{1}{n}\sum_{t = 1}^{n}\ell\big(y_{t}', h(x_t')\big)$$
 
-with respect to D because D is typically unknown (if we knew D, we could directly construct the Bayes optimal predictor). We thus consider the problem of estimating the risk of a given predictor
+Under the assumption that the test set is generated through independent draws from $\mathcal{D}$, the test error corresponds to the **sample mean** of the risk. Indeed, for each $t = 1, ... , n$ the example $(X_t', Y_t')$ is an independent draw from $\mathcal{D}$. Therefore,
 
-ꢊ
+$$\mathbb{E}\Big[\ell\big(Y_t', h(X_t')\big)\Big] = \ell_{\mathcal{D}}(h) \quad \quad t= 1, ..., n$$
 
-ꢋ
+Note that the above equalities rely on the assumption that $h$ does not depend on the test set. If it did, then the above equalities would not be necessarily true. This fact is important in the analysis of learning algorithms.
 
-′
+In order to compute how good is the test error as an estimate for the risk, we can use the following result about the law of large numbers.
 
-′
+### Lemma di Chernoﬀ-Hoeﬀding
+Let $Z_1 , ... , Z_n$ be **independent and identically distributed random variables** with expectation $\mu$ and such that $0 \leq Z \leq 1$ for each $t = 1, ... , n$. Then, for any given $\epsilon > 0$
 
-′
 
-′
-
-′
-
-n
-
-h. In order to compute this estimate, we can use the test set S = (x , y ), . . . , (x , y ) . We
-
-1
-
-1
-
-n
-
-can then estimate ℓ (h) with the test error, which is the average loss of h on the test set,
-
-D
-
-Xn
-
-ꢃ
-
-ꢄ
-
-1
-
-′
-
-′
-
-t
-
-ℓS′ (h) =
-
-ℓ y , h(x ) .
-
-t
-
-n
-
-t=1
-
-Under the assumption that the test set is generated through independent draws from D, the test
-
-error corresponds to the sample mean of the risk. Indeed, for each t = 1, . . . , n the example
-
-′
-
-′
-
-t
-
-(X , Y ) is an independent draw from D. Therefore,
-
-t
-
-h
-
-i
-
-ꢃ
-
-ꢄ
-
-E ℓ Y ′, h(X′ ) = ℓD(h)
-
-t = 1, . . . , n
-
-t
-
-t
-
-Note that the above equalities rely on the assumption that h does not depend on the test set. If it
-
-did, then the above equalities would not be necessarily true. This fact is important in the analysis
-
-of learning algorithms.
-
-In order to compute how good is the test error as an estimate for the risk, we can use the following
-
-result about the law of large numbers.
-
-Lemma 1 (Chernoﬀ-Hoeﬀding). Let Z , . . . , Z be independent and identically distributed random
-
-1
-
-n
-
-variables with expectation µ and such that 0 ≤ Z ≤ 1 for each t = 1, . . . , n. Then, for any given
-
-t
-
-ε > 0,
-
-
-
-!
-
-
-
-!
-
-Xn
-
-Xn
-
-1
-
-2
-
-1
-
-2
-
-P
-
-Zt > µ + ε ≤ e−2ε n
-
-and
-
-P
-
-Zt < µ − ε ≤ e−2ε n .
-
-n
-
-n
-
-t=1
-
-t=1
 
 In the rest of this course, we repeatedly use the following facts:
+1) for any two events $A$ and $B$, if $A \implies B$, then $P(A) \leq P(B)$;
+2) for any collection $A_1 , ... , A_n$ of (not necessarily disjoint) events, $\mathbb{P}(A_1, \cup ...\cup A_N) \leq \sum_{i = 1}^{n}\mathbb{P}(A_i)$ (**Union bound**). If the events $A_1 , ... , A_n$ are pairwise disjoint, then the union bound holds with equality.
 
-• For any two events A and B, if A ⇒ B, then P(A) ≤ P(B)
+Using the Chernoﬀ-Hoeﬀding bound with $Z_t = \ell(y_t , h(x_t)) \in [0, 1]$, we can compute a conﬁdence interval for the risk as follows (where the test error is written as $\ell$ instead of $\ell_{S'}$ ),
 
-• (Union bound) For any collection A , . . . , A of (not necessarily disjoint) events,
+$$\mathbb{P}\Big(\vert\ell_{\mathcal{D}}(h) - \ell(h) \vert > \epsilon\Big) = \mathbb{P}\Big(\ell_{\mathcal{D}}(h) - \ell(h) > \epsilon \cup \ell(h) - \ell_{\mathcal{D}}(h) > \epsilon\Big)$$
+$$\quad = \mathbb{P}\Big(\ell_{\mathcal{D}}(h) - \ell(h) > \epsilon\Big) + \Big(\ell(h) - \ell_{\mathcal{D}}(h) > \epsilon \Big) \leq 2e^{-2\epsilon^{2}n}$$
 
-1
+where in the last step we applied the union bound to the disjoint events ℓ (h) − ℓ(h) > ε and ℓ(h) − ℓ (h) > ε. Note that the probability is computed with respect to the random draw of the test set. This inequality shows that the probability that a test set gives a test error ℓ (h) diﬀering from the true risk ℓD(h) for more than ε quickly decreases with the size n of the test set.
 
-n
+More speciﬁcally: if we set to δ ∈ (0, 1) the right-hand side of (1) and then solve for ε, we get that holds with probability al least 1 − δ with respect to the random draw of the test set.
 
-Xn
+The inequality (1) is telling us how to use a test set to estimate the risk of a classiﬁer. More precisely, the inequality shows that the test set, which is how we measure in practice the performance of a classiﬁer on unseen data, is close to the statistical risk with high probability.
 
-If the events A , . . . , A are pairwise disjoint, then the union bound holds with equality.
+----------------------------------------------------------------
 
-P(A ∪ · · · ∪ A ) ≤
-
-P(Ai)
-
-1
-
-n
-
-i=1
-
-1
-
-n
-
-Using the Chernoﬀ-Hoeﬀding bound with Z = ℓ(y , h(x )) ∈ [0, 1] we can compute a conﬁdence
-
-t
-
-interval for the risk as follows (where the test error is written as ℓ instead of ℓ ),
-
-t
-
-t
-
-S′
-
-ꢇ
-
-ꢈ
-
-ꢇ
-
-ꢈ
-
-ꢂ
-
-ꢂ
-
-P ꢂℓ (h) − ℓ(h)ꢂ > ε = P ℓ (h) − ℓ(h) > ε ∪ ℓ(h) − ℓ (h) > ε
-
-D
-
-D
-
-D
-
-ꢇ
-
-ꢈ
-
-ꢇ
-
-ꢈ
-
-−2ε2n
-
-= P ℓ (h) − ℓ(h) > ε + P ℓ(h) − ℓ (h) > ε ≤ 2 e
-
-(1)
-
-D
-
-D
-
-3
-
-
-
-
-
-where in the last step we applied the union bound to the disjoint events ℓ (h) − ℓ(h) > ε and
-
-D
-
-ℓ(h) − ℓ (h) > ε. Note that the probability is computed with respect to the random draw of the
-
-D
-
-test set. This inequality shows that the probability that a test set gives a test error ℓ (h) diﬀering
-
-S′
-
-from the true risk ℓD(h) for more than ε quickly decreases with the size n of the test set.
-
-More speciﬁcally: if we set to δ ∈ (0, 1) the right-hand side of (1) and then solve for ε, we get that
-
-r
-
-ꢂ
-
-ꢂ
-
-1
-
-2
-
-ꢂ
-
-ꢂ
-
-ℓ (h) − ℓ (h) ≤
-
-ln
-
-D
-
-S′
-
-2n
-
-δ
-
-holds with probability al least 1 − δ with respect to the random draw of the test set.
-
-The inequality (1) is telling us how to use a test set to estimate the risk of a classiﬁer. More precisely,
-
-the inequality shows that the test set, which is how we measure in practice the performance of a
-
-classiﬁer on unseen data, is close to the statistical risk with high probability.
-
-Overﬁtting and underﬁtting. Fix a learning problem (D, ℓ) and consider a generic learning
+## Overﬁtting and underﬁtting
+Fix a learning problem (D, ℓ) and consider a generic learning
 
 algorithm A. Let H be the set of predictors generated by A: h ∈ H if and only if there exists
 
