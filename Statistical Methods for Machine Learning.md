@@ -412,18 +412,20 @@ Next, we bound the variance error. For every given training set S of size m, we 
 
 where we used the assumption that $h_S$ minimizes $\ell_S(h)$ among all $h \in \mathcal{H}$. Therefore, for all $\epsilon > 0$,
 
+$$\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*) > \epsilon \implies \underset{h \in \mathcal{H}}{\operatorname {max}}\vert\ell_S(h) - \ell_{\mathcal{D}}(h)\vert > \frac{\epsilon}{2} \implies \exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h)\vert > \frac{\epsilon}{2}$$
 
 Since the above chain of implications holds for any realization of the training set of size $m$, we can write
 
-
+$$\mathbb{P}\big(\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*) > \epsilon\big) \leq \mathbb{P} \Big(\exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \frac{\epsilon}{2}\Big)$$
 
 We now study the case $\vert \mathcal{H}\vert < \infty$, that is when the model space contains a ﬁnite number of predictors. Note that the event
 
-
+$$\exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \frac{\epsilon}{2}$$
 
 is the union over $h \in \mathcal{H}$ of the (not necessarily disjoint) events $\vert \ell_S(h) − \ell_{\mathcal{D}}(h) \vert > \frac{\epsilon}{2}$. Using the union bound we get
 
-
+$$\mathbb{P}\Big(\exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h) > \frac{\epsilon}{2} \Big) = \mathbb{P} \Bigg(\ \bigcup_{h \in \mathcal{H}} \Big(\vert \ell_S(h) - \ell_{\mathcal{D}}(h)\vert > \frac{\epsilon}{2} \Big)\Bigg)$$
+$$$$
 
 where in the last step we used the Chernoﬀ-Hoeﬀding bound.
 
@@ -439,7 +441,7 @@ holds with probability at least $1−\delta$ with respect to the random draw of 
 
 For a given cardinality $m$ of the training set, in order to decrease our bound on the variance error of ERM, $\sqrt{\frac{2}{m}\ln{\frac{2 \vert \mathcal{H}\vert}{\delta}}}$ we must decrease $\vert \mathcal{H} \vert$. But decreasing $\vert \mathcal{H} \vert$ might cause an increase of $\ell_{\mathcal{D}}(h^*)$, which produces a corresponding increase of the bias error. In light of this statistical analysis, we conclude that the ERM algorithm generates predictors with high risk (compared to Bayes risk) when there is an unbalance between the variance error and the bias error. In particular, overﬁtting occurs when the variance error dominates the bias error, and underﬁtting occurs when the bias error dominates the variance error.
 
-In the proof of the bound on the variance error, we have also shown in (2) that
+In the proof of the bound on the variance error, we have also shown in $(2)$ that
 
 $$\forall h \in \mathcal{H} \quad \vert\ell_S(h) - \ell_{\mathcal{D}}(h) \vert \leq \sqrt{\frac{1}{2m}\ln{\frac{2 \vert \mathcal{H}\vert}{\delta}}}$$
 
