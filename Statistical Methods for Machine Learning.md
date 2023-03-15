@@ -78,7 +78,7 @@ of a predictor be correlated to its test error.
 ## Empirical risk minimization
 Let $\mathcal{F}$ be a given set of predictors and $\ell$ a loss function. The **empirical risk minimizer** (**ERM**) is the learning algorithm that outputs some predictor in $\mathcal{F}$ minimizing the training error
 
-$$\widehat{f} \in argmin_{f \in \mathcal{F}}\ell_{s}(f)$$
+$$\widehat{f} \in \underset{\widehat{f} \in \mathcal{f}}{\operatorname{argmin}} \ell_{s}(f)$$
 
 The $\widehat{f} \in$ notation takes into account the fact that there could be multiple $f \in \mathcal{F}$ minimizing the training error.
 
@@ -294,7 +294,7 @@ $$\ell_{\mathcal{D}}(h) = \mathbb{E}[\ell(Y, h(X))]$$
 
 This is the **expected value** of the loss function on a random example $(X, Y)$ drawn from $\mathcal{D}$. The best possible predictor $f : \mathcal{X} \to \mathcal{Y}$ given $\mathcal{D}$ is known as **Bayes optimal predictor**, and is deﬁned by
 
-$$f^*(x) = argmin_{\widehat{y} \in \mathcal{Y}} \text{ } \mathbb{E}[\ell(Y, \widehat{y}) \vert X = x]$$
+$$f^*(x) = \underset{\widehat{y} \in \mathcal{Y}}{\operatorname{argmin}} \text{ } \mathbb{E}[\ell(Y, \widehat{y}) \vert X = x]$$
 
 The quantity $\mathbb{E} [\ell(Y, \widehat{y}) \vert X = x]$ is the **conditional risk**, which is the expected loss of the prediction with respect to the distribution of the label $Y$ conditioned on $x$. Hence $f^*(x)$ is the prediction minimizing the conditional risk. By deﬁnition of $f^*$, we have that 
 
@@ -308,24 +308,21 @@ we have that $\ell_{\mathcal{D}}(f^*) \leq \ell_{\mathcal{D}}(h)$ for every pred
 
 We now compute the Bayes optimal predictor for the quadratic loss function $\ell(y, \widehat{y}) = (y − \widehat{y})^2$ when $\mathcal{Y} \equiv \mathbb{R}$,
 
-$$f^*(x) = \underset{\widehat{y} \in \mathbb{R}}{\operatorname{argmin}} \mathbb{E}\Big[(Y - \widehat{y})^2 \vert X = x\Big]$$
-
-(minimizing the function F(yb) = yb − 2yb Y X = x )
+$$f^*(x) = \underset{\widehat{y} \in \mathbb{R}}{\operatorname{argmin}} \mathbb{E}\Big[(Y - \widehat{y})^2 \text{ } \vert \text{ } X = x\Big]$$
+$$= \underset{\widehat{y} \in \mathcal{Y}}{\operatorname {argmin}}\Big(\mathbb{E}\big[Y^2 \text{ }\vert \text{ }X = x \big] + \widehat{y}^2\mathbb{E} \big[Y \text{ }\vert \text{ }X = x\big] \Big)$$
+$$= \underset{\widehat{y} \in \mathbb{R}}{\operatorname {argmin}}\Big( \widehat{y}^2 - 2\widehat{y} \mathbb{E}\big[Y \vert X = x\big]\Big)\quad \text{ignoring the term that does not depend on } \widehat{y}$$
+$$= \mathbb{E}\big[Y \text{ } \vert \text{ } X = x\big] \quad \Big(\text{minimizing the function }F(\widehat{y}) = \widehat{y}^2 - 2\widehat{y}\mathbb{E}\big[Y \text{ } \vert \text{ } X = x\big]\Big)$$
 
 Thus, the Bayes optimal prediction for the quadratic loss function is the expected value of the label conditioned on the instance.
 
 Substituting in the conditional risk formula $\mathbb{E}[(Y - f^*(X)^2 \vert X = x]$ the Bayes optimal predictor $f^*(X) = \mathbb{E}[Y \text{ }\vert \text{ } X = x]$ we obtain
 
-$$$$
+$$\mathbb{E}\Big[\big(Y - f^*(X)\big)^2 \text{ }\Big \vert \text{ } X = x \Big] = \mathbb{E}\Big[\big(Y - \mathbb{E}[Y \text{ } \vert \text{ }x ]\big)^2 \text{ }\Big \vert \text{ } X = x \Big] = Var\big[Y \vert X = x\big]$$
 
-In words, the conditional risk of the Bayes optimal predictor for the quadratic loss is the variance of the label conditioned on the instance. By averaging over $X$ we obtain $\ell_{mathcal{D}}(f^*) = \mathbb{E}\big[Var[Y \tetx{ } \vert \text{ } X]\big]$.
-Namely, the Bayes risk for the quadratic loss is the expected conditional variance of the label. Note that E Var[Y | X] is generally diﬀerent from Var[Y ]. Indeed, the law of total variance says that Var[Y ] − E Var[Y | X] = Var E[Y | X] .
+In words, the conditional risk of the Bayes optimal predictor for the quadratic loss is the variance of the label conditioned on the instance. By averaging over $X$ we obtain $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\big[Var[Y \text{ } \vert \text{ } X]\big]$.
+Namely, the Bayes risk for the quadratic loss is the expected conditional variance of the label. Note that $\mathbb{E}\big[var[ Y \text{ } \vert \text{ } X]\big]$ is generally diﬀerent from $Var[Y]$. Indeed, the law of total variance says that $Var[Y] - \mathbb{E}\big[Var[Y \text{ } \vert \text{ } X]\big] = Var\big[\mathbb{E}[Y \text{ } \vert \text{ } X]\big]$.
 
-We now focus on binary classiﬁcation, where Y = {−1, 1}. Let η(x) be the probability of Y = 1
-
-ꢃ
-
-conditioned on X = x. We view η(x) = P Y = +1 | X = x) as the value on x of a function
+We now focus on binary classiﬁcation, where $\mathcal{Y} = \{−1, 1\}$. Let $\eta(x)$ be the probability of $Y = 1$ conditioned on $X = x$. We view η(x) = P Y = +1 | X = x) as the value on x of a function
 
 η : X → [0, 1].
 
