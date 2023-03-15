@@ -408,7 +408,10 @@ Thanks to the law of large numbers, we know that the training error $\ell_S(h^*)
 
 Next, we bound the variance error. For every given training set S of size m, we have that
 
-
+$$\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*) = \ell_{\mathcal{D}}(h_S) - \ell_S(h_S) + \ell_S(h_S) - \ell_{\mathcal{D}}(h^*)$$
+$$\leq \ell_{\mathcal{D}}(h_S) - \ell_S(h_S) + \ell_S(h^*) - \ell_{\mathcal{D}}(h^*)$$
+$$\leq \vert \ell_{\mathcal{D}}(h_S) - \ell_S(h_S)\vert + \vert \ell_S(h^*) - \ell_{\mathcal{D}}(h^*) \vert$$
+$$\leq 2 \underset{h \in \mathcal{H}}{\operatorname{max}} \vert \ell_S(h) - \ell_{\mathcal{D}}(h)\vert$$
 
 where we used the assumption that $h_S$ minimizes $\ell_S(h)$ among all $h \in \mathcal{H}$. Therefore, for all $\epsilon > 0$,
 
@@ -425,13 +428,15 @@ $$\exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \fr
 is the union over $h \in \mathcal{H}$ of the (not necessarily disjoint) events $\vert \ell_S(h) − \ell_{\mathcal{D}}(h) \vert > \frac{\epsilon}{2}$. Using the union bound we get
 
 $$\mathbb{P}\Big(\exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h) > \frac{\epsilon}{2} \Big) = \mathbb{P} \Bigg(\ \bigcup_{h \in \mathcal{H}} \Big(\vert \ell_S(h) - \ell_{\mathcal{D}}(h)\vert > \frac{\epsilon}{2} \Big)\Bigg)$$
-$$$$
+$$ \leq \sum_{h \in \mathcal{H}}\mathbb{P}\Big(\vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \frac{\epsilon}{2}\Big)$$
+$$\leq \vert \mathcal{H}\vert \underset{h \in H}{\operatorname{max}}\mathbb{P} \Big(\vert \ell_S(h) - \ell_{\mathcal{D}}(h) > \frac{\epsilon}{2}\Big)$$
+$$\leq \vert \mathcal{H} \vert 2e^{-m \epsilon^2/2} \quad \text{ } \quad (2)$$
 
 where in the last step we used the Chernoﬀ-Hoeﬀding bound.
 
 In conclusion, we have that
 
-$$\mathcal{P}\big(\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*) > \epsilon\big) \leq 2 \vert \mathcal{H}\vert e^{-m\epsilon^2/2}$$
+$$\mathcal{P}\big(\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*) > \epsilon\big) \leq 2 \vert \mathcal{H}\vert e^{-m\epsilon^2/2} \quad \text{ } \quad (3)$$
 
 Setting the right-hand side of the last equation equal to $\delta$ and solving for $\epsilon$ we obtain that
 
