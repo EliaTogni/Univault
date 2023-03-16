@@ -114,7 +114,7 @@ I tipi di dati che si utilizzano in biologia computazionale possono essere:
 
 ### Sequenze di DNA
 Il sequenziamento del DNA parte dall'acquisizione di sequenze di RNA, che vengono convertite in cDNA (**complementary DNA**), più stabile. Queste sequenze di cDNA vengono amplificate (replicate in molte copie). Dopodiché le sottosequenze devono essere assemblate (**assembly**): una problematica è la disambiguazione di ripetizioni.<BR />
-Altre tecniche, dette di *deep sequencing*, invece, sequenziano direttamente sottosequenze (circa $10^3$ basi) di DNA.
+Altre tecniche, dette di **deep sequencing**, invece, sequenziano direttamente sottosequenze (circa $10^3$ basi) di DNA.
 
 ----------------------------------------------------------------
 
@@ -129,7 +129,7 @@ I **microarray** sono vetrini sui quali vengono sintetizzate delle sequenze di D
 ----------------------------------------------------------------
 
 ### Espressione di proteine
-Per acquisire dati sull'espressione delle proteine si possono utilizzare tecniche come lo spettrometro di massa, i microarray *protein-chip*, l'elettroforesi o l'immunoprecipitazione. Inoltre, è possibile misurare l'abbondanza di metaboliti.
+Per acquisire dati sull'espressione delle proteine si possono utilizzare tecniche come lo spettrometro di massa, i microarray **protein-chip**, l'elettroforesi o l'immunoprecipitazione. Inoltre, è possibile misurare l'abbondanza di metaboliti.
 
 ----------------------------------------------------------------
 
@@ -186,16 +186,16 @@ La valutazione consiste nel misurare come si comporta il sistema con esempi che 
 
 ## Tipi di apprendimento
 L'apprendimento può essere: 
-- apprendimento supervisionato: all'algoritmo di apprendimento viene fornito un insieme di coppie input/output e il sistema deve imparare la relazione tra di essi;
-- apprendimento non-supervisionato: all'algoritmo di apprendimento viene fornito un insieme input e il sistema deve imparare alcune proprietà dei dati (es. clustering);
-- apprendimento semi-supervisionato: solo alcuni dati di input sono forniti insieme all'output corrispondente;
-- apprendimento con rinforzo: il sistema è un agente ed impara dal feedback che ottiene dall'interazione con l'ambiente.
+1) [[Intelligenza Artificiale#Training delle ANN|apprendimento supervisionato]]: all'algoritmo di apprendimento viene fornito un insieme di coppie input/output e il sistema deve imparare la relazione tra di essi;
+2) [[Intelligenza Artificiale#Training delle ANN|apprendimento non-supervisionato]]: all'algoritmo di apprendimento viene fornito un insieme input e il sistema deve imparare alcune proprietà dei dati (es. clustering);
+3) **apprendimento semi-supervisionato**: solo alcuni dati di input sono forniti insieme all'output corrispondente;
+4) **apprendimento con rinforzo**: il sistema è un agente ed impara dal feedback che ottiene dall'interazione con l'ambiente.
 
 ----------------------------------------------------------------
 
 ## Funzione di perdita
 La funzione di perdita è una funzione che indica quanto la stima in uscita da un modello sia errata: l'apprendimento diventa, quindi, un problema di ottimizzazione il cui obiettivo è la minimizzazione della funzione di perdita.<br />
-Il nostro obiettivo, però, è minimizzare la perdita attesa su esempi sui quali il sistema non è stato addestrato: per stimare questo valore, separiamo i dati in *training set* (dati usati per l'addestramento) e *test set* (dati usati per la valutazione).
+Il nostro obiettivo, però, è minimizzare la perdita attesa su esempi sui quali il sistema non è stato addestrato: per stimare questo valore, separiamo i dati in **training set** (dati usati per l'addestramento) e **test set** (dati usati per la valutazione).
 
 ### Funzione
 La funzione scelta dipende dal problema affrontato: per problemi di classificazione l'errore consiste nello sbagliare la predizione e la funzione naturale è la funzione di perdita zero-uno
@@ -210,24 +210,24 @@ $$loss(y,\hat{y}) := (y-\hat{y})^2$$
 ----------------------------------------------------------------
 
 ### Rischio empirico
-Il *training error* è la media campionaria della funzione di perdita valutata sul *training set* ed è la funzione che l'algoritmo minimizza.
+Il **training error** è la media campionaria della funzione di perdita valutata sul *training set* ed è la funzione che l'algoritmo minimizza.
 
-$$f^* = \argmin_{\hat{f}\in\mathcal{H}} \frac{1}{n} \sum_{i=1}^{N} loss(y_i, \hat{f}(x_i))$$
+$$f^* = \underset{\widehat{f}\in\mathcal{H}}{\operatorname{argmin}} \frac{1}{n} \sum_{i=1}^{N} loss \big(y_i, \hat{f}(x_i)\big)$$
 
-Dove $\graffe{(x_i,y_i)}_{i=1}^n$ è il training set e $\mathcal{H}$ è la classe di ipotesi. Il predittore $f^*$ è detto minimizzatore del rischio empirico.
+Dove $\graffe{(x_i,y_i)}_{i=1}^n$ è il training set e $\mathcal{H}$ è la classe di ipotesi. Il predittore $f^*$ è detto [[Statistical Methods for Machine Learning#Empirical risk minimization|minimizzatore del rischio empirico]].
 
 ----------------------------------------------------------------
 
 ### Rischio statistico
 Il rischio statistico (o rischio atteso) è il valore atteso della perdita sull'universo dei dati e il minimizzatore di tale rischio è il minimizzatore del rischio statistico
 
-$$f^* = \argmin_{\hat{f}\in\mathcal{H}}  \ \mathbb{E}\left[loss(y_i, \hat{f}(x_i))\right]$$
+$$f^* = \underset{\widehat{f}\in\mathcal{H}}{\operatorname{argmin}}\mathbb{E}\left[loss(y_i, \hat{f}(x_i))\right]$$
 
 Per ottenere questo valore atteso dovremmo conoscere la probabilità congiunta $p( X , Y )$, da cui avremmo che
 
-$$f^* = \argmin_{\hat{f}\in\mathcal{H}} \int_{x\in X}\int_{y\in Y} loss(y,\hat{f}(x))\,p(X=x,Y=y)\ dx\ dy$$
+$$f^* = \underset{\hat{f}\in\mathcal{H}}{\operatorname{argmin}} \int_{x\in X}\int_{y\in Y} loss\Big(y,\hat{f}(x)\Big)\,p(X=x,Y=y)\ dx\ dy$$
 
-Se conoscessimo tale distribuzione, l'apprendimento non sarebbe necessario. In generale, non la conosciamo, quindi, stimiamo il rischio atteso con il rischio empirico valutato sul *test set*.
+Se conoscessimo tale distribuzione, l'apprendimento non sarebbe necessario. In generale, non la conosciamo, quindi, stimiamo il rischio atteso con il rischio empirico valutato sul test set.
 
 ----------------------------------------------------------------
 
