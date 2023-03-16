@@ -100,8 +100,6 @@ Nella porzione trascritta si alternano **introni** ed **esoni**: gli esoni sono 
 
 Il **promoter** regola la trascrizione: la trascrizione può avvenire solo in seguito all'attivazione del promoter causata da una proteina fattore di trascrizione, la quale permette all'enzima **RNA-polimerasi** di trascrivere il DNA. Questi meccanismi di regolazione sono influenzati anche da regioni distali chiamate **enhancer** e **silencer**. Nell'uomo, le regioni trascritte costituiscono solo il 3% del codice genetico: le porzioni restanti hanno, invece, funzioni regolatrici.
 
-Video robert tjian gene regulation
-
 ----------------------------------------------------------------
 
 ## Dati biomolecolari
@@ -115,18 +113,18 @@ I tipi di dati che si utilizzano in biologia computazionale possono essere:
 - dati di espressione (matrici).
 
 ### Sequenze di DNA
-Il sequenziamento del DNA parte dall'acquisizione di sequenze di RNA, che vengono convertite in cDNA (*complementary DNA*), più stabile. Queste sequenze di cDNA vengono amplificate (replicate in molte copie). Dopodiché le sottosequenze devono essere assemblate (*assembly*): una problematica è la disambiguazione di ripetizioni.<BR />
+Il sequenziamento del DNA parte dall'acquisizione di sequenze di RNA, che vengono convertite in cDNA (**complementary DNA**), più stabile. Queste sequenze di cDNA vengono amplificate (replicate in molte copie). Dopodiché le sottosequenze devono essere assemblate (**assembly**): una problematica è la disambiguazione di ripetizioni.<BR />
 Altre tecniche, dette di *deep sequencing*, invece, sequenziano direttamente sottosequenze (circa $10^3$ basi) di DNA.
 
 ----------------------------------------------------------------
 
 ### Dati su popolazioni
-Grazie alla nuova disponibilità di dati genomici, è possibile fare analisi su popolazioni di individui, considerando le variazioni rispetto ad un genoma di riferimento: vengono considerate le SNP (*single nucleotide polymorphism*), le inserzioni o le delezioni (*indel*).
+Grazie alla nuova disponibilità di dati genomici, è possibile fare analisi su popolazioni di individui, considerando le variazioni rispetto ad un genoma di riferimento: vengono considerate le **SNP** (**single nucleotide polymorphism**), le inserzioni o le delezioni (**indel**).
 
 ----------------------------------------------------------------
 
 ### Microarray 
-I *microarray* sono vetrini sui quali vengono sintetizzate delle sequenze di DNA (10$\sim$`<!-- -->`{=html}20 oligonucleotidi), scelte tra le sequenze più indicative dell'espressione dei geni target. Alcuni frammenti di mRNA di un campione analizzato saranno complementari alle sequenze sul *DNA-chip* e vi si legheranno: le coppie legate vengono individuate perché sensibili al laser grazie a delle molecole fotosensibili aggiunte al mRNA. In base alle sequenze presenti si inferisce, poi, il gene espresso.
+I **microarray** sono vetrini sui quali vengono sintetizzate delle sequenze di DNA, scelte tra le sequenze più indicative dell'espressione dei geni target. Alcuni frammenti di mRNA di un campione analizzato saranno complementari alle sequenze sul **DNA-chip** e vi si legheranno: le coppie legate vengono individuate perché sensibili al laser grazie a delle molecole fotosensibili aggiunte al mRNA. In base alle sequenze presenti si inferisce, poi, il gene espresso.
 
 ----------------------------------------------------------------
 
@@ -139,40 +137,40 @@ Per acquisire dati sull'espressione delle proteine si possono utilizzare tecnich
 La genetica è lo studio della trasmissione ereditaria del genoma: si interessa, inoltre delle relazioni tra il genotipo e il fenotipo (l'insieme delle caratteristiche ereditarie osservabili).
 
 ### Cromosomi
-I cromosomi nelle cellule umane sono 46: 22 coppie di cromosomi omologhi (autosomi) e 2 cromosomi sessuali. Di ogni coppia di cromosomi, uno deriva dal gamete del padre e uno dal gamete della madre: i gameti sono cellule per la riproduzione (nell'uomo, spermatozoi e ovuli), che hanno 23 cromosomi ciascuno.<br />
+I cromosomi nelle cellule umane sono 46: 22 coppie di cromosomi omologhi (**autosomi**) e 2 cromosomi sessuali. Di ogni coppia di cromosomi, uno deriva dal gamete del padre e uno dal gamete della madre: i gameti sono cellule per la riproduzione (nell'uomo, spermatozoi e ovuli), che hanno 23 cromosomi ciascuno.<br />
 Le mutazioni di un individuo si trasmettono alla prole solo se interessano i gameti: infatti, le altre cellule non influiscono sul DNA ereditato.
 
 ----------------------------------------------------------------
 
 ### Definizioni
-Un *locus* è una posizione all'interno di una sequenza di nucleotidi di un particolare nucleotide o di una sottosequenza: un allele è una specifica variante ad un locus. L'insieme degli alleli di un individuo costituisce il suo genotipo.
+Un **locus** è una posizione all'interno di una sequenza di nucleotidi di un particolare nucleotide o di una sottosequenza: un allele è una specifica variante ad un locus. L'insieme degli alleli di un individuo costituisce il suo genotipo.
 
-Un *single nucleotide polymorphism* (SNP) è una variazione su un singolo nucleotide: sono molto comuni e il genoma umano ne ha, in media, uno ogni mille nucleotidi. La maggioranza degli SNP sono biallelici, ovvero hanno due possibili alleli: uno è detto *reference allele* e l'altro *alternative allele*. Il genotipo rispetto ad un allele viene indicato con il numero di reference allele nei due cromosomi: il genotipo 2 ha l'allele di riferimento in entrambi i cromosomi, il genotipo 1 lo ha solo in uno e il genotipo 0 ha in entrambi i cromosomi l'allele alternativo.
+Un **single nucleotide polymorphism** (**SNP**) è una variazione su un singolo nucleotide: sono molto comuni e il genoma umano ne ha, in media, uno ogni mille nucleotidi. La maggioranza degli SNP sono biallelici, ovvero hanno due possibili alleli: uno è detto **reference allele** e l'altro **alternative allele**. Il genotipo rispetto ad un allele viene indicato con il numero di reference allele nei due cromosomi: il genotipo 2 ha l'allele di riferimento in entrambi i cromosomi, il genotipo 1 lo ha solo in uno e il genotipo 0 ha in entrambi i cromosomi l'allele alternativo.
 
 ----------------------------------------------------------------
 
 ### Leggi dell'Erediterietà di Mendel
 #### Legge di Segregazione
-La prima legge di Mendel è la legge di segregazione e asserisce che in ogni organismo, che ha due alleli per ogni tratto fenotipico, gli alleli si separano durante la meiosi in modo tale che i gameti contengano solo uno degli alleli. Il figlio erediterà un allele da ciascun genitore.
+La prima legge di Mendel è la **legge di segregazione**, la quale asserisce che in ogni organismo, avente due alleli per ogni tratto fenotipico, gli alleli si separano durante la meiosi in modo tale che i gameti contengano solo uno degli alleli. Il figlio erediterà un allele da ciascun genitore.
 
 ----------------------------------------------------------------
 
 #### Legge dell'Assortimento Indipendente
-La seconda legge di Mendel è la legge dell'assortimento indipendente e asserisce che tratti distinti si trasmettono indipendentemente gli uni dagli altri.
+La seconda legge di Mendel è la **legge dell'assortimento indipendente**, la quale asserisce che tratti distinti si trasmettono indipendentemente gli uni dagli altri.
 
 In realtà, tale legge non è sempre rispettata. È vero per tratti codificati su cromosomi diversi: infatti, la scelta di uno specifico cromosoma tra i due omologhi non influenza la scelta di uno specifico cromosoma di un'altra coppia di omologhi. Per alleli dello stesso cromosoma, invece, non è sempre vero, perché possono essere separati solo se il sito di crossover cade tra i loci degli alleli.
 
 ----------------------------------------------------------------
 
 # Metodi di Apprendimento Automatico
-I metodi di *machine learning* sono algoritmi di tipo *data driven*: si contrappongono alla programmazione tradizionale perché, anziché produrre un output da degli input e da un programma, producono un programma (un modello) a partire da input e output.
+I metodi di machine learning sono algoritmi di tipo **data driven**: si contrappongono alla programmazione tradizionale perché, anziché produrre un output da degli input e da un programma, producono un programma (un modello) a partire da input e output.
 
-Sono, quindi, tre le principali componenti di un sistema di apprendimento automatico: la forma di rappresentazione del modello, la funzione di valutazione delle performance del modello prodotto e l'algoritmo di ottimizzazione che implementa l'apprendimento. Inoltre, è molto importante avere un formato di rappresentazione dei dati che sia adatto al sistema di apprendimento scelto.
+Sono, quindi, tre le principali componenti di un sistema di apprendimento automatico: la **forma di rappresentazione** del modello, la **funzione di valutazione delle performance** del modello prodotto e l'**algoritmo di ottimizzazione** che implementa l'apprendimento. Inoltre, è molto importante avere un formato di rappresentazione dei dati che sia adatto al sistema di apprendimento scelto.
 
 Per quanto riguarda l'apprendimento, si possono distinguere algoritmi di apprendimento supervisionato, non-supervisionato, semi-supervisionato e apprendimento con rinforzo. Tipicamente, i problemi della biologia computazionale sono affrontati con tecniche supervisionate o semi-supervisionate in quanto si parte da una base di dati più o meno etichettati.
 
-## Classe di Ipotesi
-La classe di ipotesi è l'insieme delle soluzioni ammesse dalle ipotesi effettuate alla base della specifica di un sistema di apprendimento: in particolare, il modello scelto determina la classe di ipotesi. L'apprendimento consisterà, quindi, nel cercare il migliore modello per il problema affrontato all'interno della classe di ipotesi.
+## Classe di ipotesi
+La **classe di ipotesi** è l'insieme delle soluzioni ammesse dalle ipotesi effettuate alla base della specifica di un sistema di apprendimento: in particolare, il modello scelto determina la classe di ipotesi. L'apprendimento consisterà, quindi, nel cercare il migliore modello per il problema affrontato all'interno della classe di ipotesi.
 
 ----------------------------------------------------------------
 

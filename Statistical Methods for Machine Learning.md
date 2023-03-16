@@ -459,6 +459,5 @@ with probability at least $1 − \delta$ with respect to the random draw of the 
 
 --------------------------------------------------------
 
-X = R con problema di class binaria e si vuole plottare $\eta(x)$.
 $\delta$ = confidence level
 radice = bound n the confidence interval
