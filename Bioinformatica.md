@@ -1,5 +1,5 @@
 # Elementi di Biologia Molecolare
-Per **bioinformatica** (**bioinformatics**) si intende l'applicazione di metodi informatici per l'elaborazione e l'analisi di dati biologici, soprattutto biomolecolari. Spesso viene usato intercambiabilmente il termine **biologia computazionale** (**computational biology**).
+Per **bioinformatica** (**bioinformatics**) si intende l'applicazione di metodi informatici per la gestione, l'elaborazione e l'analisi di dati biologici, soprattutto biomolecolari. Spesso viene usato intercambiabilmente il termine **biologia computazionale** (**computational biology**).
 
 La bioinformatica si occupa anche di dati medici di tipo clinico o fenotipico, ma soprattutto è specializzata nella genomica e nella proteomica. Il focus del corso sarà posto, quindi, sulla biologia molecolare delle macromolecole degli acidi nucleici e delle proteine.<br />
 Non rientrano nella bioinformatica, invece, le tecniche informatiche ispirate a princìpi biologici, come le reti neurali o i metodi di computazione evoluzionistica.
@@ -11,9 +11,9 @@ Il **DNA** (**DesoxyriboNucleic Acid**) è un polimero il quale si trova nel nuc
 
 ![[nucleotide.png]]
 
-Il fosfato organico e il desossiribosio sono uguali per tutti i nucleotidi e formano una **backbone** per la catena alternandosi: la **catena antisenso** è formata anch'essa da una backbone fosfato-zucchero, ma nell'ordine opposto. Il gruppo fosfato di un nucleotide si lega, infatti, con il $3'$ ossigeno del nucleotide precedente. Quindi, la numerazione del carbonio è fondamentale per descrivere la direzione del filamento. Nell'immagine precedente, il filamento segue ordinamento $5' \to 3'$ (o ordinamento **Watson**), in quanto l'atomo di carbonio $5'$ precede l'atomo $3'$. Nel filamento opposto, il carbonio $3'$ precederà il carbonio $5'$ ($3' \to 5'$ o ordinamento **Crick**).
+Il fosfato organico e il desossiribosio sono uguali per tutti i nucleotidi e formano una **backbone** per la catena di nucleotidi alternandosi: la **catena antisenso** è formata anch'essa da una backbone fosfato-zucchero, ma nell'ordine opposto. Il gruppo fosfato di un nucleotide si lega, infatti, con il $3'$ ossigeno del nucleotide precedente. Quindi, la numerazione del carbonio è fondamentale per descrivere la direzione del filamento. Nell'immagine precedente, il filamento segue ordinamento $5' \to 3'$ (o ordinamento **Watson**), in quanto l'atomo di carbonio $5'$ precede l'atomo $3'$. Nel filamento opposto, il carbonio $3'$ precederà il carbonio $5'$ ($3' \to 5'$ o ordinamento **Crick**).
 
-I nucleotidi differiscono solo per la base azotata. Ogni nucleotide ha una di quattro basi azotate: **adenina**, **timina**, **guanina** o **citosina**. Ognuna di queste basi si può collegare solo con la propria base complementare: adenina con timina e guanina con citosina.
+I nucleotidi differiscono solo per la base azotata. Ogni nucleotide è composto da una di quattro basi azotate: **adenina**, **timina**, **guanina** o **citosina**. Ognuna di queste basi si può collegare solo con la propria base complementare: adenina con timina e guanina con citosina.
 
 Le due catene sono, quindi, legate internamente da **legami covalenti** (forti) e alla catena antisenso da **legami idrogeno** (deboli) tra le coppie di basi azotate. Ogni base forma più legami idrogeno con la base complementare. Il risultato di questi legami è chiamato **coppia di basi**. La timina e l'adenina si legano tra loro con due legami idrogeno mentre la rimanente coppia di basi si lega tra di loro con tre legami idrogeno.
 
@@ -29,7 +29,7 @@ Durante la riproduzione cellulare, il DNA si duplica. Le due catene si separano:
 ----------------------------------------------------------------
 
 ## RNA
-L'**RNA** (**RiboNucleic Acid**) è un filamento a singola elica ma dalla struttura simile al DNA. L'unica differenza è che nell'RNA, la timina è sostituita dall'**uracile**.
+L'**RNA** (**RiboNucleic Acid**) è un filamento a singola elica ma dalla struttura simile al DNA. L'unica differenza è che, nell'RNA, la timina è sostituita dall'**uracile**.
 
 ----------------------------------------------------------------
 
@@ -113,23 +113,23 @@ I tipi di dati che si utilizzano in biologia computazionale possono essere:
 - dati di espressione (matrici).
 
 ### Sequenze di DNA
-Il sequenziamento del DNA parte dall'acquisizione di sequenze di RNA, che vengono convertite in cDNA (**complementary DNA**), più stabile. Queste sequenze di cDNA vengono amplificate (replicate in molte copie). Dopodiché le sottosequenze devono essere assemblate (**assembly**): una problematica è la disambiguazione di ripetizioni.<BR />
+Il sequenziamento del DNA parte dall'acquisizione di sequenze di RNA, che vengono convertite in **cDNA** (**complementary DNA**), più stabile. Queste sequenze di cDNA vengono amplificate (replicate in molte copie). Dopodiché le sottosequenze devono essere assemblate (**assembly**): una problematica è la disambiguazione di ripetizioni.<BR />
 Altre tecniche, dette di **deep sequencing**, invece, sequenziano direttamente sottosequenze (circa $10^3$ basi) di DNA.
 
 ----------------------------------------------------------------
 
 ### Dati su popolazioni
-Grazie alla nuova disponibilità di dati genomici, è possibile fare analisi su popolazioni di individui, considerando le variazioni rispetto ad un genoma di riferimento: vengono considerate le **SNP** (**single nucleotide polymorphism**), le inserzioni o le delezioni (**indel**).
-
-----------------------------------------------------------------
-
-### Microarray 
-I **microarray** sono vetrini sui quali vengono sintetizzate delle sequenze di DNA, scelte tra le sequenze più indicative dell'espressione dei geni target. Alcuni frammenti di mRNA di un campione analizzato saranno complementari alle sequenze sul **DNA-chip** e vi si legheranno: le coppie legate vengono individuate perché sensibili al laser grazie a delle molecole fotosensibili aggiunte al mRNA. In base alle sequenze presenti si inferisce, poi, il gene espresso.
+Grazie alla nuova disponibilità di dati genomici, è possibile fare analisi su popolazioni di individui, considerando le variazioni rispetto ad un genoma di riferimento: vengono considerate le deviazioni dalla norma, come **single nucleotide polymorphism** (**SNP**),  inserzioni o delezioni (**indel**).
 
 ----------------------------------------------------------------
 
 ### Espressione di proteine
-Per acquisire dati sull'espressione delle proteine si possono utilizzare tecniche come lo spettrometro di massa, i microarray **protein-chip**, l'elettroforesi o l'immunoprecipitazione. Inoltre, è possibile misurare l'abbondanza di metaboliti.
+Per acquisire dati sull'espressione delle proteine si possono utilizzare tecniche come lo spettrometro di massa, i **microarray** **protein-chip**, l'elettroforesi o l'immunoprecipitazione. Inoltre, è possibile misurare l'abbondanza di metaboliti.
+
+----------------------------------------------------------------
+
+#### Microarray 
+I **microarray** sono vetrini sui quali vengono sintetizzate delle sequenze di DNA, scelte tra le sequenze più indicative dell'espressione dei geni target. Alcuni frammenti di mRNA di un campione analizzato saranno complementari alle sequenze sul **DNA-chip** e vi si legheranno: le coppie legate vengono individuate perché sensibili al laser grazie a delle molecole fotosensibili aggiunte al mRNA. In base alle sequenze presenti si inferisce, poi, il gene espresso.
 
 ----------------------------------------------------------------
 
