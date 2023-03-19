@@ -165,11 +165,11 @@ In realtà, tale legge non è sempre rispettata. È vero per tratti codificati s
 # Metodi di Apprendimento Automatico
 I metodi di machine learning sono algoritmi di tipo **data driven**: si contrappongono alla programmazione tradizionale perché, anziché produrre un output da degli input e da un programma, producono un programma (un modello) a partire da input e output.
 
-Sono, quindi, tre le principali componenti di un sistema di apprendimento automatico: la **forma di rappresentazione** del modello, la **funzione di valutazione delle performance** del modello prodotto e l'**algoritmo di ottimizzazione** che implementa l'apprendimento. Inoltre, è molto importante avere un formato di rappresentazione dei dati che sia adatto al sistema di apprendimento scelto.
+Sono, quindi, tre le principali componenti di un sistema di apprendimento automatico: la **forma di rappresentazione** del modello, la **funzione di valutazione delle performance** del modello prodotto e l'**algoritmo di ottimizzazione** che implementa l'apprendimento. Inoltre, è molto importante avere un formato di rappresentazione dei dati che sia adatto al sistema di apprendimento scelto ([[Albero di Decisione |alberi di decisione]], programmi logici, istanze, modelli grafici come le reti di Markov, [[Intelligenza Artificiale#Reti neurali |reti neurali]], support vector machines, ...).
 
 Per quanto riguarda l'apprendimento, si possono distinguere algoritmi di apprendimento **supervisionato**, **non-supervisionato**, **semi-supervisionato** e apprendimento **con rinforzo**. Tipicamente, i problemi della biologia computazionale sono affrontati con tecniche supervisionate o semi-supervisionate, in quanto si parte da una base di dati più o meno etichettati.
 
-I possibili approcci all'analisi genomica tramite machine learning si basano sul riconoscere strutture nel DNA. In particolar modo si cerca di ricostruire la storia evoutiva tramite la **comparazione genomica**, ovvero la ricerca di duplicazioni e riarrangiamenti o la ricostruzione della **filogenesi** delle specie (la ricostruzione delle tappe che caratterizzano l'evoluzione di un gruppo sistematico di animali o piante). Si 
+I possibili approcci all'analisi genomica tramite machine learning si basano sul riconoscere strutture nel DNA. In particolar modo si cerca di ricostruire la storia evoutiva tramite la **comparazione genomica**, ovvero la ricerca di duplicazioni e riarrangiamenti o la ricostruzione della **filogenesi** delle specie (la ricostruzione delle tappe che caratterizzano l'evoluzione di un gruppo sistematico di animali o piante). Un altro obiettivo riguarda la ricerca dei geni e il tentativo di risoluzione della struttura genica. Ciò si dirama nell'identificare gli elementi promoter, le zone di splicing e le sequenze di coding.
 
 ## Classe di ipotesi
 La **classe di ipotesi** è l'insieme delle soluzioni ammesse dalle ipotesi effettuate alla base della specifica di un sistema di apprendimento: in particolare, il modello scelto determina la classe di ipotesi. L'apprendimento consisterà, quindi, nel cercare il migliore modello per il problema affrontato all'interno della classe di ipotesi.
@@ -177,7 +177,7 @@ La **classe di ipotesi** è l'insieme delle soluzioni ammesse dalle ipotesi effe
 ----------------------------------------------------------------
 
 ## Ottimizzazione
-L'ottimizzazione può sfruttare diverse tecniche, in particolare si distinguono tecniche di ottimizzazione combinatoria, ottimizzazione convessa (discesa del gradiente) e ottimizzazione vincolata (programmazione lineare).
+L'ottimizzazione può sfruttare diverse tecniche, in particolare si distinguono tecniche di **ottimizzazione combinatoria** (ricerca greedy), **ottimizzazione convessa** (discesa del gradiente) e **ottimizzazione vincolata** (programmazione lineare).
 
 ----------------------------------------------------------------
 
@@ -192,6 +192,8 @@ L'apprendimento può essere:
 2) [[Intelligenza Artificiale#Training delle ANN|apprendimento non-supervisionato]]: all'algoritmo di apprendimento viene fornito un insieme input e il sistema deve imparare alcune proprietà dei dati (es. clustering);
 3) **apprendimento semi-supervisionato**: solo alcuni dati di input sono forniti insieme all'output corrispondente;
 4) **apprendimento con rinforzo**: il sistema è un agente ed impara dal feedback che ottiene dall'interazione con l'ambiente.
+
+![[learning.png]]
 
 ----------------------------------------------------------------
 
