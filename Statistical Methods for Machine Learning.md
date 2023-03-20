@@ -211,9 +211,12 @@ $$\psi(\alpha a + (1 -\alpha)b) \geq \alpha \psi (a) + (1 - \alpha) \psi (b) \qu
 
 Hence, via Jensen's inequality, we can study how the training error changes when $\ell$ is replaced by two new leaves $\ell'$ and $\ell''$,
 
-$$\underbrace{\psi \Big ( \frac{N^+_\ell}{N_\ell} \Big)N_\ell}_{\text{contribution of }\ell} = \psi \Big ( \frac{N^+_{\ell'}}{N_\ell} + \frac{N^+_{\ell''}}{N_\ell} \Big)N_\ell = \psi \Big ( \frac{N^+_{\ell'}}{N_\ell} \frac{N_{\ell'}}{N_{\ell'}} + \frac{N^+_{\ell''}}{N_\ell}\frac{N_{\ell''}}{N_{\ell''}} \Big)N_\ell = $$ $$= \psi \Big ( \frac{N^+_{\ell'}}{N_{\ell'}} \frac{N_{\ell'}}{N_\ell} + \frac{N^+_{\ell''}}{N_{\ell''}} \frac{N_{\ell''}}{N_{\ell}}\ \Big ) N_{\ell} \geq \psi \Big (\frac{N^+_{\ell'}}{N_{\ell'}} \Big) \frac{N_{\ell'}}{N_{\ell}}N_{\ell} + \psi \Big(\frac{N^+_{\ell''}}{N_{\ell''}} \Big ) \frac{N_{\ell''}}{N_\ell} N_{\ell} =$$
-$$= \underbrace{\psi \Big(\frac{N^+_{\ell'}}{N_{\ell'}} \Big )N_{\ell'}}_{\text{contribution of }\ell'} + \underbrace{\psi \Big ( \frac{N^+_{\ell''}}{N_{\ell''}}\Big )N_{\ell''}}_{\text{contribution of }\ell''} $$
+$$\underbrace{\psi \Big ( \frac{N^+_\ell}{N_\ell} \Big)N_\ell}_{\text{contribution of }\ell} = \psi \Big ( \frac{N^+_{\ell'}}{N_\ell} + \frac{N^+_{\ell''}}{N_\ell} \Big)N_\ell = \psi \Big ( \frac{N^+_{\ell'}}{N_\ell} \frac{N_{\ell'}}{N_{\ell'}} + \frac{N^+_{\ell''}}{N_\ell}\frac{N_{\ell''}}{N_{\ell''}} \Big)N_\ell = $$
 
+At this point it is possible to apply Jensen's inequality:
+
+$$= \psi \Big ( \text{ }\underbrace{\frac{N^+_{\ell'}}{N_{\ell'}}}_{a} \underbrace{\frac{N_{\ell'}}{N_\ell}}_{\alpha} + \underbrace{\frac{N^+_{\ell''}}{N_{\ell''}}}_{b} \underbrace{\frac{N_{\ell''}}{N_{\ell}}}_{1- \alpha} \text{ } \Big ) N_{\ell} \geq \psi \Big( \text{ }\underbrace{\frac{N^+_{\ell'}}{N_{\ell'}}}_{a} \text { }\Big) \underbrace{\frac{N_{\ell'}}{N_{\ell}}}_{\alpha}N_{\ell} + \psi \Big( \text{ } \underbrace{\frac{N^+_{\ell''}}{N_{\ell''}}}_{b} \text{ } \Big ) \underbrace{\frac{N_{\ell''}}{N_\ell}}_{1-\alpha} N_{\ell} =$$
+$$= \underbrace{\psi \Big(\frac{N^+_{\ell'}}{N_{\ell'}} \Big )N_{\ell'}}_{\text{contribution of }\ell'} + \underbrace{\psi \Big ( \frac{N^+_{\ell''}}{N_{\ell''}}\Big )N_{\ell''}}_{\text{contribution of }\ell''} $$
 
 meaning that a split never increases the training error (recall that $N_{\ell'}^+ + N_{\ell''}^+ = N_{\ell}^+$).
 
