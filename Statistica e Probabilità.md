@@ -174,7 +174,7 @@ $$\sigma_{x} = \sqrt{Var[X]}$$
 #### Variabile Aleatoria Multivariata ####
 Si ragioni in termini di coppie di variabili aleatorie $X$, $Y$.<br />
 - _Funzione di ripartizione congiunta_: $F_{XY}(x, y) = P(X \leq x \wedge Y \leq y)$
--  _Funzione di massa di probabilità congiunta_: $P_{XY}(x, y) = P(X = x \wedge Y = y)$
+- _Funzione di massa di probabilità congiunta_: $P_{XY}(x, y) = P(X = x \wedge Y = y)$
 
 Le variabili $X$ e $Y$ sono indipendenti se, per ogni coppia di insiemi $C \subseteq \mathbb{R}$, $D \subseteq \mathbb{R}$, vale la seguente proprietà:
 $$P(X \in C, Y \in D) = P(X \in C) \cdot P(Y \in D)$$
