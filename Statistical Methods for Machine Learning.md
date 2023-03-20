@@ -340,7 +340,7 @@ $$\mathbb{E}\Big[\ell\big(Y_t', h(X_t')\big)\Big] = \ell_{\mathcal{D}}(h) \quad 
 
 Note that the above equalities rely on the assumption that $h$ does not depend on the test set. If it did, then the above equalities would not be necessarily true. This fact is important in the analysis of learning algorithms.
 
-In order to compute how good is the test error as an estimate for the risk, we can use the following result about the law of large numbers.
+In order to compute how good is the test error as an estimate for the risk, we can use the following result about the law of large num1bers.
 
 ### Chernoﬀ-Hoeﬀding's lemma
 Let $Z_1 , ... , Z_n$ be **independent and identically distributed random variables** with expectation $\mu$ and such that $0 \leq Z \leq 1$ for each $t = 1, ... , n$. Then, for any given $\epsilon > 0$
@@ -378,9 +378,11 @@ Fix a learning problem $(\mathcal{D}, \ell)$ and consider a generic learning alg
 
 $$\ell_{\mathcal{D}}(h^*) \leq \underset{h \in \mathcal{H}_A}{\operatorname{min}}\ell_{\mathcal{D}}(h)$$
 
-Fix a training set $S$ and let $h_S = A(S)$. The following is called the **bias-variance** decomposition:
+In general $\ell_{\mathcal{D}}(h^*) > \ell_{\mathcal{D}}(f^*)$.
 
-$$\ell_{\mathcal{D}}(h_S) = \ell_{\mathcal{D}}(H-S) - \ell_{\mathcal{D}}(h^*)\quad\text{estimation error (large when overfitting)}$$
+Fix a finite training set $S$ and let $h_S = A(S)$. The following is called the **bias-variance** decomposition:
+
+$$\ell_{\mathcal{D}}(h_S) = \ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*)\quad\text{estimation error (large when overfitting)}$$
 $$\quad + \ell_{\mathcal{D}}(h^*) - \ell_{\mathcal{D}}(f^*)\quad \text{approximation error (large when underfitting)}$$
 $$\quad + \ell_{\mathcal{D}}(f^*) \quad \text{Bayes error (unavoidable)}$$
 
@@ -391,7 +393,7 @@ where $f^*$ is the Bayes optimal predictor for $(\mathcal{D}, \ell)$. Note that:
 
 We now use the bias-variance decomposition to balance overﬁtting and underﬁtting in the ERM algorithm run over a ﬁnite classe $\mathcal{H}$. Recall that ERM minimizes the training error in $\mathcal{H}$,
 
-$$h_S = \underset{h \in \mathcal{H}}{\operatorname {argmin}}\ell_S(h)$$
+$$A(S) = h_S = \underset{h \in \mathcal{H}}{\operatorname {argmin}}\ell_S(h)$$
 
 where $\ell_S(h)$ is the training error of $h$ on the training set $S$. Similarly to before, the best predictor in the class $\mathcal{H}$ is any predictor $h^*$ satisfying
 
@@ -403,8 +405,12 @@ Next, we bound the variance error. For every given training set S of size m, we 
 
 $$\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*) = \ell_{\mathcal{D}}(h_S) - \ell_S(h_S) + \ell_S(h_S) - \ell_{\mathcal{D}}(h^*)$$
 $$\leq \ell_{\mathcal{D}}(h_S) - \ell_S(h_S) + \ell_S(h^*) - \ell_{\mathcal{D}}(h^*)$$
-$$\leq \vert \ell_{\mathcal{D}}(h_S) - \ell_S(h_S)\vert + \vert \ell_S(h^*) - \ell_{\mathcal{D}}(h^*) \vert$$
-$$\leq 2 \underset{h \in \mathcal{H}}{\operatorname{max}} \vert \ell_S(h) - \ell_{\mathcal{D}}(h)\vert$$
+
+This replacement is legal because $h_S$ is the minimizer of the training error.
+The last subctraction is bounded by $\sqrt(...)$ with probability at least $1 - \delta$.
+
+$$\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*)\leq \vert \ell_{\mathcal{D}}(h_S) - \ell_S(h_S)\vert + \vert \ell_S(h^*) - \ell_{\mathcal{D}}(h^*) \vert$$
+$$\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*) \leq 2 \underset{h \in \mathcal{H}}{\operatorname{max}} \vert \ell_S(h) - \ell_{\mathcal{D}}(h)\vert$$
 
 where we used the assumption that $h_S$ minimizes $\ell_S(h)$ among all $h \in \mathcal{H}$. Therefore, for all $\epsilon > 0$,
 
@@ -443,6 +449,6 @@ In the proof of the bound on the variance error, we have also shown in $(2)$ tha
 
 $$\forall h \in \mathcal{H} \quad \vert\ell_S(h) - \ell_{\mathcal{D}}(h) \vert \leq \sqrt{\frac{1}{2m}\ln{\frac{2 \vert \mathcal{H}\vert}{\delta}}}$$
 
-with probability at least $1 − \delta$ with respect to the random draw of the training set. This implies that when the cardinality of the training set is suﬃciently large with respect to $\ln{\vert \mathcal{H} \vert}$, then the training error $\ell_S(h)$ becomes a good estimate for the statistical risk $\ell_{\mathcal{D}}(h)$ simultaneously for all predictors $h \in \mathcal{H}$. This is suﬃcient to prevent overﬁtting, as it tells us the ranking the predictors in $\mathcal{H}$ according to their training error approximately corresponds to ranking them according to their risk.
+with probability at least $1 − \delta$ with respect to the random draw of the training set. This implies that when the cardinality of the training set $m$ is suﬃciently large with respect to $\ln{\vert \mathcal{H} \vert}$, then the training error $\ell_S(h)$ becomes a good estimate for the statistical risk $\ell_{\mathcal{D}}(h)$ simultaneously for all predictors $h \in \mathcal{H}$. This is suﬃcient to prevent overﬁtting, as it tells us the ranking the predictors in $\mathcal{H}$ according to their training error approximately corresponds to ranking them according to their risk.
 
 ----------------------------------------------------------------
