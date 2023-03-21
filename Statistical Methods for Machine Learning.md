@@ -303,19 +303,19 @@ $$= \mathbb{E}\big[Y \text{ } \vert \text{ } X = x\big] \quad \Big(\text{minimiz
 
 Thus, the Bayes optimal prediction for the quadratic loss function is the expected value of the label conditioned on the instance.
 
-Substituting in the conditional risk formula $\mathbb{E}[(Y - f^*(X)^2 \vert X = x]$ the Bayes optimal predictor $f^*(X) = \mathbb{E}[Y \text{ }\vert \text{ } X = x]$ we obtain
+Substituting in the conditional risk formula $\mathbb{E}[(Y - f^*(X))^2 \vert X = x]$ the Bayes optimal predictor $f^*(X) = \mathbb{E}[Y \text{ }\vert \text{ } X = x]$ we obtain
 
 $$\mathbb{E}\Big[\big(Y - f^*(X)\big)^2 \text{ }\Big \vert \text{ } X = x \Big] = \mathbb{E}\Big[\big(Y - \mathbb{E}[Y \text{ } \vert \text{ }x ]\big)^2 \text{ }\Big \vert \text{ } X = x \Big] = Var\big[Y \vert X = x\big]$$
 
 In words, the conditional risk of the Bayes optimal predictor for the quadratic loss is the **variance** of the label conditioned on the instance. By averaging over $X$ we obtain $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\big[Var[Y \text{ } \vert \text{ } X]\big]$.<br />
 Namely, the Bayes risk for the quadratic loss is the expected conditional variance of the label. Note that $\mathbb{E}\big[var[ Y \text{ } \vert \text{ } X]\big]$ is generally diﬀerent from $Var[Y]$. Indeed, the law of total variance says that $Var[Y] - \mathbb{E}\big[Var[Y \text{ } \vert \text{ } X]\big] = Var\big[\mathbb{E}[Y \text{ } \vert \text{ } X]\big]$.
 
-We now focus on binary classiﬁcation, where $\mathcal{Y} = \{−1, 1\}$. Let $\eta(x)$ be the probability of $Y = 1$ conditioned on $X = x$. We view $\eta(x) = \mathbb{P}( Y = +1 \text{ } \vert \text{ } X = x$ as the value on x of a function $\eta: \mathcal{X} \to [0, 1]$.
+We now focus on binary classiﬁcation, where $\mathcal{Y} = \{−1, 1\}$. Let $\eta(x)$ be the probability of $Y = 1$ conditioned on $X = x$. We view $\eta(x) = \mathbb{P}( Y = +1 \text{ } \vert \text{ } X = x)$ as the value on $x$ of a function $\eta: \mathcal{X} \to [0, 1]$.
 
 Let $\mathbb{I}\{A\} \in \{0, 1\}$ be the **indicator function** of an event $A$; that is, $\mathbb{I}\{A\} = 1$ if and only if $A$ occurs.<br />
 The statistical risk with respect to the zero-one loss $\ell(y, \widehat{y}) = \mathbb{I}\{\widehat{y} \neq y\}$ is therefore defined by
 
-$$\ell_{\mathcal{D}}(h) = \mathbb{E}\big[\ell(Y, h(X))\big] = \mathbb{E}\big[\mathbb{I}\{h(X) \neq Y \}\big] = \mathbb{P}(h(X) \neq Y)$$
+$$\ell_{\mathcal{D}}(h) = \mathbb{E}\big[\ell(Y, h(X))\big] = \mathbb{E}\big[\mathbb{I}\{h(X) \neq Y \}\big] =$$ $$ = 1 \cdot \mathbb{P}(h(X) \neq Y) + 0 \cdot \mathbb{P}(h(X) = Y) =  \mathbb{P}(h(X) \neq Y)$$
 
 The Bayes optimal predictor $f^*: \mathcal{X} \to \{−1, 1\}$ for binary classiﬁcation is derived as follows
 
@@ -325,7 +325,7 @@ $$= \underset{\widehat{y} \in \{-1, 1\}}{\operatorname{argmin}}\Big(\mathbb{P}\b
 $$=\underset{\widehat{y} \in \{-1, 1\}}{\operatorname{argmin}}\Big(\eta(x) \mathbb{I}\{\widehat{y}= -1\} + (1 - \eta(x))\mathbb{I}\{\widehat{y} = +1\}\Big)$$
 $$= \cases{-1 \quad \text{if } \eta(x) < \frac{1}{2} \cr \cr +1 \quad \text{if} \eta(x) \geq \frac{1}{2}}$$
 
-Hence, the Bayes optimal classiﬁer predicts the label whose probability is the highest when conditioned on the instance. Finally, it is easy to verify that the Bayes risk in this case is $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\big[min\{\eta(X), 1 - \eta(X)\}\big]$.
+Hence, the Bayes optimal classifier predicts the label whose probability is the highest when conditioned on the instance. Finally, it is easy to verify that the Bayes risk in this case is $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\big[min\{\eta(X), 1 - \eta(X)\}\big]$.
 
 ## Bounding the risk
 Next, we study the problem of bounding the risk of a predictor. From now on, we assume $\ell(y, \widehat{y}) \in [0, 1]$. However, keep in mind that our analysis continues to hold also when $\ell(y, \widehat{y}) \in [0, M]$ for any $M > 0$.
@@ -450,5 +450,60 @@ In the proof of the bound on the variance error, we have also shown in $(2)$ tha
 $$\forall h \in \mathcal{H} \quad \vert\ell_S(h) - \ell_{\mathcal{D}}(h) \vert \leq \sqrt{\frac{1}{2m}\ln{\frac{2 \vert \mathcal{H}\vert}{\delta}}}$$
 
 with probability at least $1 − \delta$ with respect to the random draw of the training set. This implies that when the cardinality of the training set $m$ is suﬃciently large with respect to $\ln{\vert \mathcal{H} \vert}$, then the training error $\ell_S(h)$ becomes a good estimate for the statistical risk $\ell_{\mathcal{D}}(h)$ simultaneously for all predictors $h \in \mathcal{H}$. This is suﬃcient to prevent overﬁtting, as it tells us the ranking the predictors in $\mathcal{H}$ according to their training error approximately corresponds to ranking them according to their risk.
+
+----------------------------------------------------------------
+
+# Hyperparameter tuning and risk estimates
+In practice, learning algorithms are often speciﬁed up to one or more hyperparameters. These are special parameters (like $k$ in $k-NN$ or the learning rate, the number of epochs, and the batch size in neural networks) whose value must be determined before the training phase can start. Crucially, setting the hyperparameters in the wrong way can lead to underﬁtting or overﬁtting.
+
+A learning algorithm with one or more hyperparameters is not really an algorithm, but rather a family of algorithms, one for each possible assignment of values to the hyperparameters. Let $\{A_\theta : \theta \in \Theta\}$ be such a family of learning algorithms, where $\Theta$ is the set of all possible hyperparameter values. Fix a learning problem $(\mathcal{D}, \ell)$ and let $A_\theta(S)$ be the predictor output when $A_\theta$ is run on the training set $S$. Let $\ell_{\mathcal{D}}(A_\theta(S))$ be the risk of the predictor $A_\theta(S)$, and let $E\big[\ell_{\mathcal{D}}(A_\theta)\big]$ be the expected risk of $A_\theta(S)$ where the expectation is with respect to the random draw of the training set $S$ of a given ﬁxed size. Intuitively, $E\big[\ell_{\mathcal{D}}(A_\theta)\big]$ measures the performance of $A_\theta$ on a typical training set of that size.
+
+## Evaluating a learning algorithm using external cross-validation
+Assume for now the hyperparameter θ is ﬁxed and focus on the problem of estimating $E\big[\ell_{\mathcal{D}}(A)\big]$. To do so we can use a technique called $K$-fold (external) cross-validation.
+
+Let $S$ be our entire dataset. We partition $S$ in $K$ subsets (also known as **folds**) $D_1, ..., D_K$ of size $m/K$ each (assume for simplicity that $K$ divides $m$). The extreme case $K = m$ provides an estimate known as **leave-one-out**. Now let $S^{(i)} \equiv S \ D_i$. We call $D_i$ the **testing part** of the $i$-th fold while $S^{(i)}$ is the **training part**.
+
+For example, if we partition $S=\big \{(x_1, y_1), ..., (x_{20}, y_{20})\big \}$ in $K = 4$ subsets
+
+
+then $S^{(2)} = \big \{(x_1, y_1), ..., (x_5, y_5), (x_{11}, y_{11}), ..., (x_{20}, y_{20}) \big \}$.
+
+The K-fold CV estimate of $E\big[\ell_{\mathcal{D}}(A)\big]$ on $S$, denoted by $\ell_S^{CV}(A)$, is then computed as follows: we run $A$ on each training part $S^{(i)}$ of the folds $i = 1, ..., K$ and obtain the predictors $h_1 =A(S^{(1)}), ..., h_K =  A(S^{(K)})$. We then compute the (rescaled) errors on the testing part of each fold,
+
+$$\ell_{D_i}(h_i) = \frac{K}{m} \sum_{(x, y) \in  D_i} \ell(y, h_i(x))$$
+
+Finally, we compute the CV estimate by averaging these errors
+
+$$\ell_{S}^{CV}(A) = \frac{1}{K} \sum_{i = 1}^{K} \ell_{D_i}(h_i)$$
+
+----------------------------------------------------------------
+
+## Tuning hyperparameters on a given training set
+In practice, we face the problem of choosing the hyperparameters so to obtain a predictor with small risk. This is typically done by minimizing a risk estimate computed using the training data. As $\Theta$ may be very large, possibly inﬁnite, the minimization is generally not over $\Theta$, but over a suitably chosen subset $\Theta_0 \subset \Theta$ (for example, if $\Theta = [0, 1]$, then $\Theta_0$ could by a ﬁnite grid of equally spaced values in $[0, 1]$). If $S$ is our training set, then we want to ﬁnd $\theta^* \in \Theta$ such that
+
+
+
+The estimate is computed by splitting the training data in two subsets $S_{train}$ and $S_{dev}$. The development set $S_{dev}$ (also called validation set) is used as a surrogate test set. The algorithm is run on $S_{train}$ once for each value of the hyperparameter in $\Theta_0$. The resulting predictors are tested on the dev set. In order to obtain the ﬁnal predictor, the learning algorithm is run once more on the original training set $S$ using the value of the hyperparameter corresponding to the predictor with smallest error on the validation set.
+
+----------------------------------------------------------------
+
+## Tuning parameters via nested cross-validation
+What if we want to estimate the expected value of $(1)$ with respect to the random draw of the training set of ﬁxed size?
+
+$$\mathbb{E}\Big[\text{ }\underset{\theta \in \Theta_0}{\operatorname{min}} \text{ } \ell_{\mathcal{D}\big(A_\theta\big)}\Big] \quad \text{ } (2)$$
+
+In other words, we want to estimate the performance of $A_\theta$ on a typical training set of a given size when $\theta$ is tuned on the training set.
+
+Given a dataset $S$, a cheap way of estimating $(2)$ is to use the best CV-estimate over $\{A_\theta : \theta \in \Theta_0\}$,
+
+$$\underset{\theta \in \Theta_0}{\operatorname{min}} \text{ } \ell_{S}^{CV} \big(A_{\theta}\big) $$
+
+Although this estimate tends to underestimate $(2)$, in practice the diﬀerence is typically small.
+
+A better, though more computationally intensive estimate of $(2)$ is computed through nested CV.
+
+
+
+Note that in each run of internal cross-validation we optimize $\theta$ locally, on the training part $S^{(i)}$ of the external cross-validation fold. Hence, the nested cross-validation estimate is computed by averaging the performance of predictors obtained with potentially diﬀerent values of their hyper-parameters.
 
 ----------------------------------------------------------------
