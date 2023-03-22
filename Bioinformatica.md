@@ -171,9 +171,9 @@ Per quanto riguarda l'apprendimento, si possono distinguere algoritmi di apprend
 
 I possibili approcci all'analisi genomica tramite machine learning si basano sul riconoscere strutture nel DNA. In particolar modo si cerca di ricostruire la storia evoutiva tramite la **comparazione genomica**, ovvero la ricerca di duplicazioni e riarrangiamenti o la ricostruzione della **filogenesi** delle specie (la ricostruzione delle tappe che caratterizzano l'evoluzione di un gruppo sistematico di animali o piante). Un altro obiettivo riguarda la ricerca dei geni e il tentativo di risoluzione della struttura genica. Ciò si dirama nell'identificare gli elementi promoter, le zone di splicing e le sequenze di coding.
 
-I possibili approcci alla predizione delle proprietà delle proteine tramite machine learning 
+I possibili approcci alla predizione delle proprietà delle proteine tramite machine learning si basano sull'utilizzo di sequenze di basi azotate, struttura di proteine (ovvero la loro forma), l'espressione di esse e la filogenesi al fine di predire la struttura delle proteine(ovvero le coordinate tridimensionali degli atomi), la loro funzione, la loro struttura e la localizzazione.
 
-I possibili approcci alla medicina di precisione tramite machine learning
+I possibili approcci alla medicina di precisione tramite machine learning mirano all'identificazione di cause molecolari di stati macroscopici (a partire da geni, SNP e ligandi si predicono fenotipo e dati clinici), all'identificazione e raffinamento di stati macroscopici (come clustering di dati riguardanti l'espressione genica) e alla simulazione dinamica di intere cellule o organi.
 
 ## Classe di ipotesi
 La **classe di ipotesi** è l'insieme delle soluzioni ammesse dalle ipotesi effettuate alla base della specifica di un sistema di apprendimento: in particolare, il modello scelto determina la classe di ipotesi. L'apprendimento consisterà, quindi, nel cercare il migliore modello per il problema affrontato all'interno della classe di ipotesi.
@@ -239,11 +239,11 @@ Se si conoscesse tale distribuzione, l'apprendimento non sarebbe necessario. In 
 ----------------------------------------------------------------
 
 ### Decomposizione dell'errore
-L'errore che compie un predittore può essere decomposto in due componenti. L'errore strutturale (o errore di *bias*) è l'errore introdotto dalla classe di ipotesi: ovvero, è l'errore che compie il miglior predittore all'interno della classe di ipotesi
+L'errore che compie un predittore può essere decomposto in due componenti. L'**errore strutturale** (o errore di **bias**) è l'errore introdotto dalla classe di ipotesi: ovvero, è l'errore che compie il miglior predittore all'interno della classe di ipotesi
 
 $$\mathbb{E}\left[loss(y_i, f^*(x_i))\right] = \min_{\hat{f}\in\mathcal{H}}  \ \mathbb{E}\left[loss(y_i, \hat{f}(x_i))\right]$$
 
-Invece, l'errore di approssimazione (o errore di varianza) è l'errore che compie il predittore ottenuto rispetto al miglior predittore della classe
+Invece, l'**errore di approssimazione** (o **errore di varianza**) è l'errore che compie il predittore ottenuto rispetto al miglior predittore della classe
 
 $$\mathbb{E}\left[loss(y_i, \hat{f}(x_i))\right] - \mathbb{E}\left[loss(y_i, f^*(x_i))\right]$$
 
@@ -252,11 +252,11 @@ Come è evidente, l'errore totale è dato dalla somma delle due componenti.
 ----------------------------------------------------------------
 
 ## Stima dell'errore di generalizzazione
-Ciò che interessa è minimizzare non il rischio empirico sull'insieme dei dati disponibili, ma il rischio atteso sull'intero dominio dei dati: occorre un metodo per la stima di tale errore. La teoria statistica dell'apprendimento di Vapnik fornisce una maggiorazione del rischio statistico
+Ciò che interessa è minimizzare non il rischio empirico sull'insieme dei dati disponibili, ma il rischio atteso sull'intero dominio dei dati: occorre un metodo per la stima di tale errore. La teoria statistica dell'apprendimento di Vapnik fornisce una **maggiorazione del rischio statistico**
 $$R(\omega) = R_{emp}(\omega) + \Phi\left(\frac{h}{m}\right)$$Questa quantità è il rischio empirico maggiorato di una confidenza $\Phi$ che dipende dalla complessità $h$ della classe di ipotesi e dalla cardinalità $m$ del training set. Una strada, quindi, è quella di analizzare a livello teorico il rischio atteso, ma un'altra è quella della stima sperimentale.
 
-Per scegliere il predittore migliore nella classe in fase di training, dividiamo il training set in due insiemi: *training set* e *validation set*. Il training set è l'insieme utilizzato per l'apprendimento e il validation set l'insieme utilizzato per stimare l'errore di generalizzazione in fase di training: verrà scelto il modello con il
-minor *validation error*, che sarà riaddestrato sulla totalità del training set. L'errore di generalizzazione viene, a questo punto, stimato con la perdita sul test set del predittore ottimo per il validation set.
+Per scegliere il predittore migliore nella classe in fase di training, dividiamo il training set in due insiemi: training set e **validation set**. Il training set è l'insieme utilizzato per l'apprendimento e il validation set l'insieme utilizzato per stimare l'errore di generalizzazione in fase di training: verrà scelto il modello con il
+minor **validation error**, che sarà riaddestrato sulla totalità del training set. L'errore di generalizzazione viene, a questo punto, stimato con la perdita sul test set del predittore ottimo per il validation set.
 
 La cross-validazione, invece, non è una tecnica per determinare il predittore migliore, ma per stimare l'errore di generalizzazione tipico di un algoritmo: esso viene eseguito con diverse configurazioni di training set e validation set, ottenendo predittori diversi. La media dei validation error costituisce una stima dell'errore di generalizzazione del predittore.
 
