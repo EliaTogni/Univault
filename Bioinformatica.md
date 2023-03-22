@@ -163,13 +163,17 @@ In realtà, tale legge non è sempre rispettata. È vero per tratti codificati s
 ----------------------------------------------------------------
 
 # Metodi di Apprendimento Automatico
-I metodi di machine learning sono algoritmi di tipo **data driven**: si contrappongono alla programmazione tradizionale perché, anziché produrre un output da degli input e da un programma, producono un programma (un modello) a partire da input e output.
+I metodi di machine learning sono algoritmi di tipo **data driven**: si contrappongono alla programmazione tradizionale perché, anziché produrre un output da degli input e da un programma, producono un programma (un modello) a partire da input e output. Invece di scrivere un programma a mano, si colleziona una grande magnitudine di esempi i quali specificano l'outputo corretto per un input dato e si dà questo dataset in pasto ad un algoritmo di apprendimento automatico.
 
 Sono, quindi, tre le principali componenti di un sistema di apprendimento automatico: la **forma di rappresentazione** del modello, la **funzione di valutazione delle performance** del modello prodotto e l'**algoritmo di ottimizzazione** che implementa l'apprendimento. Inoltre, è molto importante avere un formato di rappresentazione dei dati che sia adatto al sistema di apprendimento scelto ([[Albero di Decisione |alberi di decisione]], programmi logici, istanze, modelli grafici come le reti di Markov, [[Intelligenza Artificiale#Reti neurali |reti neurali]], support vector machines, ...).
 
 Per quanto riguarda l'apprendimento, si possono distinguere algoritmi di apprendimento **supervisionato**, **non-supervisionato**, **semi-supervisionato** e apprendimento **con rinforzo**. Tipicamente, i problemi della biologia computazionale sono affrontati con tecniche supervisionate o semi-supervisionate, in quanto si parte da una base di dati più o meno etichettati.
 
 I possibili approcci all'analisi genomica tramite machine learning si basano sul riconoscere strutture nel DNA. In particolar modo si cerca di ricostruire la storia evoutiva tramite la **comparazione genomica**, ovvero la ricerca di duplicazioni e riarrangiamenti o la ricostruzione della **filogenesi** delle specie (la ricostruzione delle tappe che caratterizzano l'evoluzione di un gruppo sistematico di animali o piante). Un altro obiettivo riguarda la ricerca dei geni e il tentativo di risoluzione della struttura genica. Ciò si dirama nell'identificare gli elementi promoter, le zone di splicing e le sequenze di coding.
+
+I possibili approcci alla predizione delle proprietà delle proteine tramite machine learning 
+
+I possibili approcci alla medicina di precisione tramite machine learning
 
 ## Classe di ipotesi
 La **classe di ipotesi** è l'insieme delle soluzioni ammesse dalle ipotesi effettuate alla base della specifica di un sistema di apprendimento: in particolare, il modello scelto determina la classe di ipotesi. L'apprendimento consisterà, quindi, nel cercare il migliore modello per il problema affrontato all'interno della classe di ipotesi.
@@ -182,14 +186,14 @@ L'ottimizzazione può sfruttare diverse tecniche, in particolare si distinguono 
 ----------------------------------------------------------------
 
 ## Valutazione
-La valutazione consiste nel misurare come si comporta il sistema con esempi che non ha mai visto in precedenza: quanto è buono un sistema può essere determinato calcolando la precisione, l'errore quadratico medio, l'entropia, l'area sotto la curva ROC o PRC, ...
+La valutazione consiste nel misurare come si comporta il sistema con esempi che non ha mai visto in precedenza: quanto è buono un sistema può essere determinato calcolando la **precisione**, l'**errore quadratico medio**, l'**entropia**, l'area sotto la **curva ROC** o **PRC**, ...
 
 ----------------------------------------------------------------
 
 ## Tipi di apprendimento
 L'apprendimento può essere: 
 1) [[Intelligenza Artificiale#Training delle ANN|apprendimento supervisionato]]: all'algoritmo di apprendimento viene fornito un insieme di coppie input/output e il sistema deve imparare la relazione tra di essi;
-2) [[Intelligenza Artificiale#Training delle ANN|apprendimento non-supervisionato]]: all'algoritmo di apprendimento viene fornito un insieme input e il sistema deve imparare alcune proprietà dei dati (es. clustering);
+2) [[Intelligenza Artificiale#Training delle ANN|apprendimento non-supervisionato]]: all'algoritmo di apprendimento viene fornito un insieme input e il sistema deve imparare alcune proprietà dei dati (es. clustering, rilevamento di anomalie, information retrieval, compressione dei dati);
 3) **apprendimento semi-supervisionato**: solo alcuni dati di input sono forniti insieme all'output corrispondente;
 4) **apprendimento con rinforzo**: il sistema è un agente ed impara dal feedback che ottiene dall'interazione con l'ambiente.
 
@@ -198,40 +202,39 @@ L'apprendimento può essere:
 ----------------------------------------------------------------
 
 ## Funzione di perdita
-La funzione di perdita è una funzione che indica quanto la stima in uscita da un modello sia errata: l'apprendimento diventa, quindi, un problema di ottimizzazione il cui obiettivo è la minimizzazione della funzione di perdita.<br />
-Il nostro obiettivo, però, è minimizzare la perdita attesa su esempi sui quali il sistema non è stato addestrato: per stimare questo valore, separiamo i dati in **training set** (dati usati per l'addestramento) e **test set** (dati usati per la valutazione).
+La funzione di perdita è una funzione che indica quanto la stima in uscita da un modello sia errata: l'apprendimento diventa, quindi, un problema di ottimizzazione il cui obiettivo è la **minimizzazione della funzione di perdita**.<br />
+L'obiettivo, però, è minimizzare la perdita attesa su esempi sui quali il sistema non è stato addestrato: per stimare questo valore, si separano i dati in **training set** (dati usati per l'addestramento) e **test set** (dati usati per la valutazione).
 
 ### Funzione
 La funzione scelta dipende dal problema affrontato: per problemi di classificazione l'errore consiste nello sbagliare la predizione e la funzione naturale è la funzione di perdita zero-uno
 
-$$loss(y,\hat{y}) := \mathbb{I}\graffe{y=\hat{y}}$$
+$$loss(y,\hat{y}) := \mathbb{I}\big (y=\hat{y}\big)$$
 
-Per problemi di regressione, invece, la perdita è tanto maggiore quanto il valore
-predetto si discosta da quello misurato e la funzione più naturale è l'errore quadratico
+Per problemi di regressione, invece, la perdita è tanto maggiore quanto il valore predetto si discosta da quello misurato e la funzione più naturale è l'errore quadratico
 
 $$loss(y,\hat{y}) := (y-\hat{y})^2$$
 
 ----------------------------------------------------------------
 
 ### Rischio empirico
-Il **training error** è la media campionaria della funzione di perdita valutata sul *training set* ed è la funzione che l'algoritmo minimizza.
+Il **training error** è la media campionaria della funzione di perdita valutata sul training set ed è la funzione che l'algoritmo minimizza.
 
 $$f^* = \underset{\widehat{f}\in\mathcal{H}}{\operatorname{argmin}} \frac{1}{n} \sum_{i=1}^{N} loss \big(y_i, \hat{f}(x_i)\big)$$
 
-Dove $\graffe{(x_i,y_i)}_{i=1}^n$ è il training set e $\mathcal{H}$ è la classe di ipotesi. Il predittore $f^*$ è detto [[Statistical Methods for Machine Learning#Empirical risk minimization|minimizzatore del rischio empirico]].
+dove $\big \{(x_i,y_i)\big \}_{i=1}^n$ è il training set e $\mathcal{H}$ è la classe di ipotesi. Il predittore $f^*$ è detto [[Statistical Methods for Machine Learning#Empirical risk minimization|minimizzatore del rischio empirico]].
 
 ----------------------------------------------------------------
 
 ### Rischio statistico
-Il rischio statistico (o rischio atteso) è il valore atteso della perdita sull'universo dei dati e il minimizzatore di tale rischio è il minimizzatore del rischio statistico
+Il **rischio statistico** (o **rischio atteso**) è il valore atteso della perdita sull'universo dei dati e il minimizzatore di tale rischio è il minimizzatore del rischio statistico
 
 $$f^* = \underset{\widehat{f}\in\mathcal{H}}{\operatorname{argmin}}\mathbb{E}\left[loss(y_i, \hat{f}(x_i))\right]$$
 
-Per ottenere questo valore atteso dovremmo conoscere la probabilità congiunta $p( X , Y )$, da cui avremmo che
+Per ottenere questo valore atteso sarà necessario conoscere la probabilità congiunta $p( X , Y )$, da cui si avrà che
 
 $$f^* = \underset{\hat{f}\in\mathcal{H}}{\operatorname{argmin}} \int_{x\in X}\int_{y\in Y} loss\Big(y,\hat{f}(x)\Big)\,p(X=x,Y=y)\ dx\ dy$$
 
-Se conoscessimo tale distribuzione, l'apprendimento non sarebbe necessario. In generale, non la conosciamo, quindi, stimiamo il rischio atteso con il rischio empirico valutato sul test set.
+Se si conoscesse tale distribuzione, l'apprendimento non sarebbe necessario. In generale la distribuzione non è nota e, quindi, si stima il rischio atteso con il rischio empirico valutato sul test set.
 
 ----------------------------------------------------------------
 
