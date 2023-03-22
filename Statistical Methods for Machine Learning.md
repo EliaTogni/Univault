@@ -453,6 +453,578 @@ with probability at least $1 − \delta$ with respect to the random draw of the 
 
 ----------------------------------------------------------------
 
+# Risk analysis for tree predictors
+The risk analysis for ERM over a ﬁnite class $\mathcal{H}$ of predictors states that, with probability at least $1 −\delta$ with respect the random draw of training set of size $m$, we have
+
+$$\ell_{\mathcal{D}}(\widehat{h}) \leq \underset{h \in \mathcal{H}}{\operatorname{min}}\ell_{\mathcal{D}}(h) + \sqrt{\frac{2}{m} \ln\frac{2 \vert \mathcal{H} \vert}{\delta}} \quad \text{ } \quad (1)$$
+
+We can see what happens when applying this result to the class of predictors computed by binary tree classiﬁers over $\mathcal{X} = {0, 1}^d$ (i.e., d binary attributes). We consider **complete [[Albero Binario|binary trees]]**: trees whose node have either zero or two children. A full binary tree is a complete binary tree whose leaves (nodes with zero children) are all at the same depth. A complete binary tree with $N$ nodes has always $(N + 1)/2$ leaves.
+
+For each function of the form $h : \{0, 1\}^d \to \{-1, 1\}$ there exists a binary tree classiﬁer with at most $2^{d+1}-1$ nodes that computes $h$.
+
+To proof this assumption, consider a full binary tree with $2^d$ leaves (which therefore has $2^{d+1}-1$ nodes). The root node implements a binary test on $x_1$, the $2$ nodes at depth $1$ implement binary tests on $x_2$, and so on until the $2^{d−1}$ nodes at depth $d-1$ which test $x_d$. Now note that any path from root to a leaf corresponds to a binary sequence in $\{0, 1\}^d$ . Given any $h : \{0, 1\}^d \to \{-1, 1\}$, we can assign a label $y_\ell \in \{−1, 1\}$ to each leaf $\ell$ so that if the path to the leaf corresponds to $x \in \{0, 1\}$ , then the label is set to $h(x)$. The classiﬁer computed by the tree then corresponds to $h$.
+
+Since there are $2^{2^d}$ binary functions over $\{0, 1\}$, it is possible to run ERM with a class $\mathcal{H}$ containing $2^{2^d}$ tree classiﬁers. The upper bound $(1)$ then becomes
+
+$$\ell_{\mathcal{D}}(\widehat{h}) \leq \underset{h \in \mathcal{H}}{\operatorname{min}}\ell_{\mathcal{D}}(h) + \sqrt{\frac{2}{m}\Big(2^d \ln2 + \ln \frac{2}{\delta}\Big) }$$
+
+Therefore, in order to make the risk of ERM small, the training set must contain a number $m$ of training examples of the order of $2^d$, which is the cardinality of $\mathcal{X}= \{0, 1\}$. This is a truly extreme case of overﬁtting.
+
+## Limiting the number of nodes
+In order to reduce overﬁtting, we can minimize training error within a smaller class of trees. Consider the set $\mathcal{H}_N$ of all classiﬁers computed by complete binary tree predictors with $N$ nodes on $\{0, 1\}^d$, where $N \ll 2^d$.
+
+$$\vert \mathcal{H}\vert \leq (2de)^N$$
+
+To proof this assumption,  note that $\vert \mathcal{H}_N \vert$ is smaller than the product of the number of binary trees with $N$ nodes, the number of ways of assigning binary tests to attributes at the internal nodes, the number of ways of assigning binary labels to the leaves. If we conventionally assign the left child of a node to the negative result of a test, and the right child to a positive result, a test is uniquely identiﬁed
+
+just by the index of the tested attribute. Therefore, if the tree has M internal nodes, there are
+
+dM ways of assigning tests to internal nodes. Moreover, since there are N M leaves, there are
+
+2N−M ways of assigning binary labels to leaves. Therefore, each tree of N nodes can implement
+
+−
+
+up to dM 2
+
+N nodes (N is odd because the tree is complete) is given by the
+
+N−M ≤
+
+dN (since d 2) classiﬁers. Finally, the number of complete binary trees with
+
+≥
+
+N~~−~~1
+
+-th Catalan number
+
+2
+
+ꢀ
+
+ꢁ
+
+2
+
+N − 1
+
+C
+
+\=
+
+.
+
+N~~−~~1
+
+N + 1 (N − 1)/2
+
+2
+
+ꢂ ꢃ
+
+ꢂ
+
+ꢃ
+
+n
+
+k
+
+en
+
+k
+
+k
+
+Thus, using the standard upper bound
+
+coeﬃcients, we get
+
+≤
+
+derived from Stirling approximation to binomial
+
+ꢀ
+
+ꢁ
+
+N~~−~~1
+
+2
+
+2e(N − 1)
+
+N − 1
+
+2
+
+|HN | ≤
+
+dN < (2ed)N
+
+N + 1
+
+concluding the proof.
+
+ꢀ
+
+b
+
+Hence, if h = argmin `S(h) for a given N and training set S, the upper bound (1) becomes
+
+HN
+
+s
+
+~~ꢀ~~
+
+~~ꢁ~~
+
+ꢂ
+
+From that, we deduce that in this case a training set of size of order N ln d is enough to control the
+
+ꢃ
+
+2
+
+2
+
+b
+
+` (h) ≤ min ` (h) +
+
+N 1 + ln(2d) + ln
+
+.
+
+D
+
+D
+
+h∈H
+
+m
+
+δ
+
+N
+
+b
+
+risk of h ∈ H .
+
+N
+
+A more reﬁned bound. As it is not clear what N should be used in practice, we now derive
+
+a more reﬁned bound. Recall that we control the variance error of ERM in H by making sure
+
+N
+
+that the risk of each predictor in H can exceed its training error by at most ε. We now take a
+
+N
+
+diﬀerent approach. Namely, we upper bound the risk of a tree predictor h by its training error plus
+
+a quantity ε that now depends on the size of the tree. To this purpose, let H be the set of all
+
+h
+
+tree classiﬁers with at most 2
+
+d+1 −
+
+1 nodes. Because of Fact 1,
+
+H →
+
+H
+
+implements all binary classiﬁers
+
+[0, 1] and call w(h) the weight of tree
+
+h : {0, 1}
+
+d → {−
+
+1, 1 . We introduce a function w :
+
+}
+
+predictor h. We assume
+
+X
+
+w(h) ≤ 1 .
+
+(2)
+
+h∈H
+
+We can then write the following chain of inequalities, where εh > 0 will be chosen later on,
+
+ꢂ
+
+ꢄ
+
+Note that we used Chernoﬀ-Hoeﬀding bound in the last step. Now, choosing
+
+ꢄ
+
+ꢃ
+
+X
+
+ꢂ
+
+ꢄ
+
+ꢄ
+
+ꢃ
+
+X
+
+P ∃h ∈ H : ꢄ` (h) − ` (h)ꢄ > ε
+
+≤
+
+P ꢄ` (h) − ` (h)ꢄ > ε
+
+≤
+
+2e−2mε .
+
+2
+
+h
+
+S
+
+D
+
+h
+
+S
+
+D
+
+h
+
+h∈H
+
+h∈H
+
+s
+
+ꢀ
+
+ꢁ
+
+1
+
+1
+
+2
+
+εh =
+
+ln
+
+\+ ln
+
+2m
+
+w(h)
+
+δ
+
+we get that
+
+ꢂ
+
+ꢄ
+
+ꢄ
+
+ꢃ
+
+X
+
+P ∃h ∈ H : ꢄ` (h) − ` (h)ꢄ > ε
+
+≤
+
+δw(h) ≤ δ
+
+S
+
+D
+
+h
+
+h∈H
+
+2
+
+
+
+
+
+where we used the property (2) of the function w.
+
+A consequence of this analysis is that, with probabilty at least 1 − δ with respect to the training
+
+set random draw, we have
+
+s
+
+ꢀ
+
+ꢁ
+
+1
+
+1
+
+2
+
+` (h) ≤ ` (h) +
+
+ln
+
+\+ ln
+
+(3)
+
+D
+
+S
+
+2m
+
+w(h)
+
+δ
+
+simultaneously for every h ∈ H. This suggests an alternative algorithm to training error minimiza-
+
+tion: while ERM uses
+
+b
+
+h = argmin `S(h)
+
+h∈HN
+
+for a given N, the new approach leads to the choice
+
+
+
+s
+
+!
+
+ꢀ
+
+ꢁ
+
+1
+
+1
+
+2
+
+b
+
+h = argmin ` (h) +
+
+ln
+
+\+ ln
+
+.
+
+(4)
+
+S
+
+2m
+
+w(h)
+
+δ
+
+h∈H
+
+The function w can be naturally viewed as a complexity measure for the tree predictor h. Note that
+
+this analysis oﬀers a diﬀerent viewpoint on overﬁtting: ` (h) becomes a good estimate of ` (h)
+
+S
+
+D
+
+when it is “penalized” by the term
+
+s
+
+ꢀ
+
+ꢁ
+
+1
+
+1
+
+2
+
+ln
+
+\+ ln
+
+2m
+
+w(h)
+
+δ
+
+this accounts for the fact that we used the m training examples to choose a tree predictor h of
+
+complexity w(h).
+
+A concrete choice for the function w is obtained as follows. Using coding theoretic techniques,
+
+we can encode each tree predictor h with N nodes using a binary string σ(h) of length |σ(h)| =
+
+ꢅ
+
+ꢆ
+
+h
+
+0
+
+(N + 1) log (d + 3) + 2blog N c + 1 = O(N log d), so that there are no two predictors h and h
+
+such that σ(h) is a preﬁx of σ(h ). Codes of this kind are called instantaneous and always satisfy
+
+h
+
+2
+
+2
+
+h
+
+0
+
+h
+
+the Kraft inequality
+
+X
+
+2−|σ(h)| ≤ 1 .
+
+h∈H
+
+Thanks to Kraft inequality —which implies property (2)— we can assign weight w(h) = 2−|σ(h)| to
+
+a classiﬁer h computed by a tree predictor with Nh nodes. Applying bound (3) we get that, with
+
+probability at least 1 − δ with respect to the training set random draw,
+
+s
+
+ꢀ
+
+ꢁ
+
+1
+
+2
+
+` (h) ≤ ` (h) +
+
+|σ(h)| + ln
+
+(with |σ(h)| = O(Nh log d))
+
+D
+
+S
+
+2m
+
+δ
+
+simultaneously for each h ∈ H. Hence, a learning algorithm for tree predictors can control overﬁt-
+
+b
+
+ting by generating predictors h deﬁned by
+
+
+
+s
+
+!
+
+ꢀ
+
+ꢁ
+
+1
+
+2
+
+b
+
+h = argmin ` (h) +
+
+|σ(h)| + ln
+
+.
+
+S
+
+2m
+
+δ
+
+h∈H
+
+3
+
+
+
+
+
+Note that the choice of the weight function w is not determined by the analysis. In particular,
+
+we may choose any other w satisfying (2). We should then interpret w as a bias term, giving
+
+preference to certain trees as opposed to others. A bias towards smaller trees is an instance of the
+
+principle known as Occam Razor: if two explanations agree with a set of observations, then the
+
+shortest explanation is the one with the biggest predictive power. This is supported by the empirical
+
+observation that, given two predictors with the same training error, the “simpler” predictor tends
+
+to have smaller risk.
+
+4
+
+
+
+----------------------------------------------------------------
+
 # Hyperparameter tuning and risk estimates
 In practice, learning algorithms are often speciﬁed up to one or more hyperparameters. These are special parameters (like $k$ in $k-NN$ or the learning rate, the number of epochs, and the batch size in neural networks) whose value must be determined before the training phase can start. Crucially, setting the hyperparameters in the wrong way can lead to underﬁtting or overﬁtting.
 

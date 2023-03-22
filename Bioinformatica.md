@@ -219,9 +219,11 @@ $$loss(y,\hat{y}) := (y-\hat{y})^2$$
 ### Rischio empirico
 Il **training error** è la media campionaria della funzione di perdita valutata sul training set ed è la funzione che l'algoritmo minimizza.
 
-$$f^* = \underset{\widehat{f}\in\mathcal{H}}{\operatorname{argmin}} \frac{1}{n} \sum_{i=1}^{N} loss \big(y_i, \hat{f}(x_i)\big)$$
+$$R_{emp} = \frac{1}{n} \sum_{i = 1}^{n}loss(g(x_i), t_i)$$
 
-dove $\big \{(x_i,y_i)\big \}_{i=1}^n$ è il training set e $\mathcal{H}$ è la classe di ipotesi. Il predittore $f^*$ è detto [[Statistical Methods for Machine Learning#Empirical risk minimization|minimizzatore del rischio empirico]].
+dove $\mathcal{D} = \big \{(x_i,y_i)\big \}_{i=1}^n$ è il training set e $\mathcal{H}$ è la classe di ipotesi. Il predittore $f^*$ è detto [[Statistical Methods for Machine Learning#Empirical risk minimization|minimizzatore del rischio empirico]].
+
+$$f^* = \underset{\widehat{f}\in\mathcal{H}}{\operatorname{argmin}} \frac{1}{n} \sum_{i=1}^{N} loss \big(y_i, \hat{f}(x_i)\big)$$
 
 ----------------------------------------------------------------
 
@@ -234,7 +236,7 @@ Per ottenere questo valore atteso sarà necessario conoscere la probabilità con
 
 $$f^* = \underset{\hat{f}\in\mathcal{H}}{\operatorname{argmin}} \int_{x\in X}\int_{y\in Y} loss\Big(y,\hat{f}(x)\Big)\,p(X=x,Y=y)\ dx\ dy$$
 
-Se si conoscesse tale distribuzione, l'apprendimento non sarebbe necessario. In generale la distribuzione non è nota e, quindi, si stima il rischio atteso con il rischio empirico valutato sul test set.
+Se si conoscesse tale distribuzione, l'apprendimento non sarebbe necessario. In generale la distribuzione non è nota e, quindi, si stima il rischio atteso con il r ischio empirico valutato sul test set.
 
 ----------------------------------------------------------------
 
