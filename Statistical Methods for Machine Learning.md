@@ -460,7 +460,7 @@ $$\ell_{\mathcal{D}}(\widehat{h}) \leq \underset{h \in \mathcal{H}}{\operatornam
 
 We can see what happens when applying this result to the class of predictors computed by binary tree classiﬁers over $\mathcal{X} = {0, 1}^d$ (i.e., d binary attributes). We consider **complete [[Albero Binario|binary trees]]**: trees whose node have either zero or two children. A full binary tree is a complete binary tree whose leaves (nodes with zero children) are all at the same depth. A complete binary tree with $N$ nodes has always $(N + 1)/2$ leaves.
 
-For each function of the form $h : \{0, 1\}^d \to \{-1, 1\}$ there exists a binary tree classiﬁer with at most $2^{d+1}-1$ nodes that computes $h$.
+**Fact $1$**: for each function of the form $h : \{0, 1\}^d \to \{-1, 1\}$ there exists a binary tree classiﬁer with at most $2^{d+1}-1$ nodes that computes $h$.
 
 To proof this assumption, consider a full binary tree with $2^d$ leaves (which therefore has $2^{d+1}-1$ nodes). The root node implements a binary test on $x_1$, the $2$ nodes at depth $1$ implement binary tests on $x_2$, and so on until the $2^{d−1}$ nodes at depth $d-1$ which test $x_d$. Now note that any path from root to a leaf corresponds to a binary sequence in $\{0, 1\}^d$ . Given any $h : \{0, 1\}^d \to \{-1, 1\}$, we can assign a label $y_\ell \in \{−1, 1\}$ to each leaf $\ell$ so that if the path to the leaf corresponds to $x \in \{0, 1\}$ , then the label is set to $h(x)$. The classiﬁer computed by the tree then corresponds to $h$.
 
@@ -494,391 +494,55 @@ From that, we deduce that in this case a training set of size of order $N \ln d$
 ----------------------------------------------------------------
 
 ## A more reﬁned bound
-As it is not clear what $N$ should be used in practice, we now derive a more reﬁned bound. Recall that we control the variance error of ERM in $H_N$ by making sure that the risk of each predictor in $H_N$ can exceed its training error by at most $\epsilon$. We now take a diﬀerent approach. Namely, we upper bound the risk of a tree predictor h by its training error plus a quantity $\epsilon_h$ that now depends on the size of the tree. To this purpose, let $H$ be the set of all tree classiﬁers with at most $2^{d+1}-1$ nodes. Because of Fact 1,
+As it is not clear what $N$ should be used in practice, we now derive a more reﬁned bound. Recall that we control the variance error of ERM in $H_N$ by making sure that the risk of each predictor in $H_N$ can exceed its training error by at most $\epsilon$. We now take a diﬀerent approach. Namely, we upper bound the risk of a tree predictor h by its training error plus a quantity $\epsilon_h$ that now depends on the size of the tree. To this purpose, let $H$ be the set of all tree classiﬁers with at most $2^{d+1}-1$ nodes. Because of Fact $1$, $\mathcal{H}$ implements all binary classiﬁers $h: \{0,1\}^d \to \{-1, 1\}$. We introduce a function $w : \mathcal{H} \to [0, 1]$ and call $w(h)$ the weight of tree predictor $h$. We assume
 
-H →
+$$\sum_{h in \mathcal{H}}w(h) \leq 1 \quad \text{ } \quad (2)$$
 
-H
+We can then write the following chain of inequalities, where $\epsilon_h > 0$ will be chosen later on,
 
-implements all binary classiﬁers
-
-[0, 1] and call w(h) the weight of tree
-
-h : {0, 1}
-
-d → {−
-
-1, 1 . We introduce a function w :
-
-}
-
-predictor h. We assume
-
-X
-
-w(h) ≤ 1 .
-
-(2)
-
-h∈H
-
-We can then write the following chain of inequalities, where εh > 0 will be chosen later on,
-
-ꢂ
-
-ꢄ
+$$\mathbb{P}\big(\exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \epsilon_h \big) \leq \sum_{h \in \mathcal{H}}\mathbb{P}\big(\vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \epsilon_h\big) \leq \sum_{h \in \mathcal{H}}2e^{-2me_h^2}$$
 
 Note that we used Chernoﬀ-Hoeﬀding bound in the last step. Now, choosing
 
-ꢄ
-
-ꢃ
-
-X
-
-ꢂ
-
-ꢄ
-
-ꢄ
-
-ꢃ
-
-X
-
-P ∃h ∈ H : ꢄ` (h) − ` (h)ꢄ > ε
-
-≤
-
-P ꢄ` (h) − ` (h)ꢄ > ε
-
-≤
-
-2e−2mε .
-
-2
-
-h
-
-S
-
-D
-
-h
-
-S
-
-D
-
-h
-
-h∈H
-
-h∈H
-
-s
-
-ꢀ
-
-ꢁ
-
-1
-
-1
-
-2
-
-εh =
-
-ln
-
-\+ ln
-
-2m
-
-w(h)
-
-δ
+$$\epsilon_h = \sqrt{\frac{1}{2m}\Big(\ln\frac{1}{w(h)} + \ln\frac{2}{\delta}\Big)}$$
 
 we get that
 
-ꢂ
+$$\mathbb{P}\big(\exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \epsilon_h \big) \leq \sum_{h \in \mathcal{H}}\delta w(h) \leq \delta$$
 
-ꢄ
+where we used the property $(2)$ of the function w.
 
-ꢄ
+A consequence of this analysis is that, with probabilty at least $1 − \delta$ with respect to the training set random draw, we have
 
-ꢃ
+$$ \ell_{\mathcal{D}}(h) \leq \ell_S(h)+ \sqrt{\frac{1}{2m}\Big(\ln\frac{1}{w(h)} + \ln\frac{2}{\delta}\Big)}$$
 
-X
+simultaneously for every $h \in \mathcal{H}$. This suggests an alternative algorithm to training error minimization: while ERM uses
 
-P ∃h ∈ H : ꢄ` (h) − ` (h)ꢄ > ε
+$$\widehat{h} = \underset{h \in \mathcal{H}_N}{\operatorname{argmin}}\ell_S(h)$$
 
-≤
+for a given $N$, the new approach leads to the choice
 
-δw(h) ≤ δ
+$$\widehat{h} = \underset{h \in \mathcal{H}_N}{\operatorname{argmin}}\Bigg( \ell_S(h)+ \sqrt{\frac{1}{2m}\Big(\ln\frac{1}{w(h)} + \ln\frac{2}{\delta}\Big)} \Bigg)$$
 
-S
+The function $w$ can be naturally viewed as a complexity measure for the tree predictor h. Note that this analysis oﬀers a diﬀerent viewpoint on overﬁtting: $\ell_S(h)$ becomes a good estimate of $\ell_{\mathcal{D}}(h)$ when it is “penalized” by the term
 
-D
+$$\sqrt{\frac{1}{2m}\Big(\ln\frac{1}{w(h)} + \ln\frac{2}{\delta}\Big)}$$
 
-h
+this accounts for the fact that we used the $m$ training examples to choose a tree predictor $h$ of complexity $w(h)$.
 
-h∈H
+A concrete choice for the function w is obtained as follows. Using coding theoretic techniques, we can encode each tree predictor $h$ with $N_h$ nodes using a binary string $\sigma(h)$ of length $\vert \sigma (h) \vert = (N_h +1 ) \lceil \log_2(d+3) \rceil + 2 \lfloor \log_2 N_h \rfloor + 1 = \mathcal{O}(N_h \log d)$, so that there are no two predictors $h$ and $h'$ such that $\sigma(h)$ is a preﬁx of $\sigma(h')$. Codes of this kind are called **instantaneous** and always satisfy the Kraft inequality
 
-2
+$$\sum_{h \in \mathcal{H}}2^{- \vert \sigma(h) \vert} \leq 1$$
 
+Thanks to Kraft inequality (which implies property $(2)$) we can assign weight $w(h) = 2^{−\vert \sigma(h)\vert}$ to a classiﬁer $h$ computed by a tree predictor with $N_h$ nodes. Applying bound $(3)$ we get that, with probability at least $1 − \delta$ with respect to the training set random draw,
 
+$$\ell_{\mathcal{D}}(h) \leq \ell_S(h)+ \sqrt{\frac{1}{2m}\Big(\vert \sigma(h) \vert + \ln\frac{2}{\delta}\Big)} \quad (\text{with }\vert \sigma(h) \vert = \mathcal{O}(N_h\log d)) $$
 
+simultaneously for each $h \in \mathcal{H}$. Hence, a learning algorithm for tree predictors can control overﬁtting by generating predictors $\widehat{h}$ deﬁned by
 
+$$\widehat{h} = \underset{h \in \mathcal{H}}{\operatorname{argmin}}\Bigg(\ell_S(h)+ \sqrt{\frac{1}{2m}\Big(\vert \sigma(h) \vert + \ln\frac{2}{\delta}\Big)}\Bigg)$$
 
-where we used the property (2) of the function w.
-
-A consequence of this analysis is that, with probabilty at least 1 − δ with respect to the training
-
-set random draw, we have
-
-s
-
-ꢀ
-
-ꢁ
-
-1
-
-1
-
-2
-
-` (h) ≤ ` (h) +
-
-ln
-
-\+ ln
-
-(3)
-
-D
-
-S
-
-2m
-
-w(h)
-
-δ
-
-simultaneously for every h ∈ H. This suggests an alternative algorithm to training error minimiza-
-
-tion: while ERM uses
-
-b
-
-h = argmin `S(h)
-
-h∈HN
-
-for a given N, the new approach leads to the choice
-
-
-
-s
-
-!
-
-ꢀ
-
-ꢁ
-
-1
-
-1
-
-2
-
-b
-
-h = argmin ` (h) +
-
-ln
-
-\+ ln
-
-.
-
-(4)
-
-S
-
-2m
-
-w(h)
-
-δ
-
-h∈H
-
-The function w can be naturally viewed as a complexity measure for the tree predictor h. Note that
-
-this analysis oﬀers a diﬀerent viewpoint on overﬁtting: ` (h) becomes a good estimate of ` (h)
-
-S
-
-D
-
-when it is “penalized” by the term
-
-s
-
-ꢀ
-
-ꢁ
-
-1
-
-1
-
-2
-
-ln
-
-\+ ln
-
-2m
-
-w(h)
-
-δ
-
-this accounts for the fact that we used the m training examples to choose a tree predictor h of
-
-complexity w(h).
-
-A concrete choice for the function w is obtained as follows. Using coding theoretic techniques,
-
-we can encode each tree predictor h with N nodes using a binary string σ(h) of length |σ(h)| =
-
-ꢅ
-
-ꢆ
-
-h
-
-0
-
-(N + 1) log (d + 3) + 2blog N c + 1 = O(N log d), so that there are no two predictors h and h
-
-such that σ(h) is a preﬁx of σ(h ). Codes of this kind are called instantaneous and always satisfy
-
-h
-
-2
-
-2
-
-h
-
-0
-
-h
-
-the Kraft inequality
-
-X
-
-2−|σ(h)| ≤ 1 .
-
-h∈H
-
-Thanks to Kraft inequality —which implies property (2)— we can assign weight w(h) = 2−|σ(h)| to
-
-a classiﬁer h computed by a tree predictor with Nh nodes. Applying bound (3) we get that, with
-
-probability at least 1 − δ with respect to the training set random draw,
-
-s
-
-ꢀ
-
-ꢁ
-
-1
-
-2
-
-` (h) ≤ ` (h) +
-
-|σ(h)| + ln
-
-(with |σ(h)| = O(Nh log d))
-
-D
-
-S
-
-2m
-
-δ
-
-simultaneously for each h ∈ H. Hence, a learning algorithm for tree predictors can control overﬁt-
-
-b
-
-ting by generating predictors h deﬁned by
-
-
-
-s
-
-!
-
-ꢀ
-
-ꢁ
-
-1
-
-2
-
-b
-
-h = argmin ` (h) +
-
-|σ(h)| + ln
-
-.
-
-S
-
-2m
-
-δ
-
-h∈H
-
-3
-
-
-
-
-
-Note that the choice of the weight function w is not determined by the analysis. In particular,
-
-we may choose any other w satisfying (2). We should then interpret w as a bias term, giving
-
-preference to certain trees as opposed to others. A bias towards smaller trees is an instance of the
-
-principle known as Occam Razor: if two explanations agree with a set of observations, then the
-
-shortest explanation is the one with the biggest predictive power. This is supported by the empirical
-
-observation that, given two predictors with the same training error, the “simpler” predictor tends
-
-to have smaller risk.
-
-4
-
-
+Note that the choice of the weight function $w$ is not determined by the analysis. In particular, we may choose any other $w$ satisfying $(2)$. We should then interpret $w$ as a bias term, giving preference to certain trees as opposed to others. A bias towards smaller trees is an instance of the principle known as **Occam Razor**: if two explanations agree with a set of observations, then the shortest explanation is the one with the biggest predictive power. This is supported by the empirical observation that, given two predictors with the same training error, the “simpler” predictor tends to have smaller risk.
 
 ----------------------------------------------------------------
 
