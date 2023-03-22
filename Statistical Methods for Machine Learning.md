@@ -475,169 +475,26 @@ In order to reduce overﬁtting, we can minimize training error within a smaller
 
 $$\vert \mathcal{H}\vert \leq (2de)^N$$
 
-To proof this assumption,  note that $\vert \mathcal{H}_N \vert$ is smaller than the product of the number of binary trees with $N$ nodes, the number of ways of assigning binary tests to attributes at the internal nodes, the number of ways of assigning binary labels to the leaves. If we conventionally assign the left child of a node to the negative result of a test, and the right child to a positive result, a test is uniquely identiﬁed
+To proof this assumption,  note that $\vert \mathcal{H}_N \vert$ is smaller than the product of the number of binary trees with $N$ nodes, the number of ways of assigning binary tests to attributes at the internal nodes, the number of ways of assigning binary labels to the leaves. If we conventionally assign the left child of a node to the negative result of a test, and the right child to a positive result, a test is uniquely identiﬁed just by the index of the tested attribute. Therefore, if the tree has $M$ internal nodes, there are $d^M$ ways of assigning tests to internal nodes. Moreover, since there are $N-M$ leaves, there are $2^{N−M}$ ways of assigning binary labels to leaves. Therefore, each tree of $N$ nodes can implement up to $d^M 2^{N-M} \leq d^N$ classiﬁers. Finally, the number of complete binary trees with $N$ nodes ($N$ is odd because the tree is complete) is given by the $\frac{N-1}{2}$-th Catalan number
 
-just by the index of the tested attribute. Therefore, if the tree has M internal nodes, there are
+$$C_{\frac{N-1}{2}} = \frac{2}{N+1}\binom{N -1}{(N-1)/2} $$
 
-dM ways of assigning tests to internal nodes. Moreover, since there are N M leaves, there are
+Thus, using the standard upper bound $\binom{n}{k} \leq (\frac{en}{k})^k$ derived from **Stirling approximation to binomial coeﬃcients**, we get
 
-2N−M ways of assigning binary labels to leaves. Therefore, each tree of N nodes can implement
-
-−
-
-up to dM 2
-
-N nodes (N is odd because the tree is complete) is given by the
-
-N−M ≤
-
-dN (since d 2) classiﬁers. Finally, the number of complete binary trees with
-
-≥
-
-N~~−~~1
-
--th Catalan number
-
-2
-
-ꢀ
-
-ꢁ
-
-2
-
-N − 1
-
-C
-
-\=
-
-.
-
-N~~−~~1
-
-N + 1 (N − 1)/2
-
-2
-
-ꢂ ꢃ
-
-ꢂ
-
-ꢃ
-
-n
-
-k
-
-en
-
-k
-
-k
-
-Thus, using the standard upper bound
-
-coeﬃcients, we get
-
-≤
-
-derived from Stirling approximation to binomial
-
-ꢀ
-
-ꢁ
-
-N~~−~~1
-
-2
-
-2e(N − 1)
-
-N − 1
-
-2
-
-|HN | ≤
-
-dN < (2ed)N
-
-N + 1
+$$\vert \mathcal{H}_N \vert \leq \frac{2}{N +1} \Big(\frac{2e(N -1)}{N-1} \Big)^{\frac{N-1}{2}}d^N < (2ed)^N$$
 
 concluding the proof.
 
-ꢀ
+Hence, if $\widehat{h} = \underset{\mathcal{H}_N}{\operatorname{argmin}}\ell_S(h)$ for a given $N$ and training set $S$, the upper bound $(1)$ becomes
 
-b
+$$\ell_{\mathcal{D}}(\widehat{h}) \leq \underset{h \in \mathcal{H}_N}{\operatorname{min}}\ell_{\mathcal{D}}(h) + \sqrt{\frac{2}{m}\Big(N\big(1 + \ln(2d)\big) + \ln \frac{2}{\delta}\Big)}$$
 
-Hence, if h = argmin `S(h) for a given N and training set S, the upper bound (1) becomes
+From that, we deduce that in this case a training set of size of order $N \ln d$ is enough to control the risk of $\widehat{h} \in H_N$.
 
-HN
+----------------------------------------------------------------
 
-s
-
-~~ꢀ~~
-
-~~ꢁ~~
-
-ꢂ
-
-From that, we deduce that in this case a training set of size of order N ln d is enough to control the
-
-ꢃ
-
-2
-
-2
-
-b
-
-` (h) ≤ min ` (h) +
-
-N 1 + ln(2d) + ln
-
-.
-
-D
-
-D
-
-h∈H
-
-m
-
-δ
-
-N
-
-b
-
-risk of h ∈ H .
-
-N
-
-A more reﬁned bound. As it is not clear what N should be used in practice, we now derive
-
-a more reﬁned bound. Recall that we control the variance error of ERM in H by making sure
-
-N
-
-that the risk of each predictor in H can exceed its training error by at most ε. We now take a
-
-N
-
-diﬀerent approach. Namely, we upper bound the risk of a tree predictor h by its training error plus
-
-a quantity ε that now depends on the size of the tree. To this purpose, let H be the set of all
-
-h
-
-tree classiﬁers with at most 2
-
-d+1 −
-
-1 nodes. Because of Fact 1,
+## A more reﬁned bound
+As it is not clear what $N$ should be used in practice, we now derive a more reﬁned bound. Recall that we control the variance error of ERM in $H_N$ by making sure that the risk of each predictor in $H_N$ can exceed its training error by at most $\epsilon$. We now take a diﬀerent approach. Namely, we upper bound the risk of a tree predictor h by its training error plus a quantity $\epsilon_h$ that now depends on the size of the tree. To this purpose, let $H$ be the set of all tree classiﬁers with at most $2^{d+1}-1$ nodes. Because of Fact 1,
 
 H →
 
