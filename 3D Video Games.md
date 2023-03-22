@@ -1,4 +1,3 @@
-
 # Introduzione
 I giochi 3D hanno permesso all’informatica di diventare quello che è oggi. Senza la loro “fame di risorse”, infatti, non esisterebbero i monitor a colori, le GPU, il machine learning e numerose altre tecnologie. Lo sviluppo di tutto ciò è avvenuto nell’arco di 30 anni.<br />
 I videogiochi vengono pubblicati dai publisher, i quali sono anche le figure che forniscono i fondi necessari allo sviluppo.<br />

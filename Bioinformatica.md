@@ -264,17 +264,17 @@ La cross-validazione, invece, non è una tecnica per determinare il predittore m
 
 In ogni caso, training set, validation set e test set devono essere divisi in modo che siano indipendenti e identicamente distribuiti (tipicamente si effettuano partizioni causali).
 
-Esistono metodi alternativi alla cross-validazione, come i metodi di *bootstrap* e i metodi *out-of-the-bag*.
+Esistono metodi alternativi alla cross-validazione, come i metodi di **bootstrap** e i metodi **out-of-the-bag**.
 
 ### Hold Out
-Nella validazione *hold-out*, i dati di training vengono divisi in due insiemi, che costituiranno il training set ed il validation set. Questa stima sarà fortemente dipendente da come sono stati partizionati i dati e, inoltre, sottrae dati al training: è possibile arginare questi problemi facendo un hold out ripetuto su bipartizioni casuali del dataset (*random subsampling*).
+Nella validazione **hold-out**, i dati di training vengono divisi in due insiemi, che costituiranno il training set ed il validation set. Questa stima sarà fortemente dipendente da come sono stati partizionati i dati e, inoltre, sottrae dati al training: è possibile arginare questi problemi facendo un hold out ripetuto su bipartizioni casuali del dataset (**random subsampling**).
 
 ----------------------------------------------------------------
 
 ### Cross-validation
-La cross-validazione può essere effettuata tramite *random subsampling* o tramite *k-fold cross-validation*. K-fold cross-validation consiste nel dividere i dati di training in $k$ insiemi indipendenti edidenticamente distribuiti: ad ogni iterazione $i\in[1,k]$ l'insieme $i$-esimo viene sottratto dai dati di training e utilizzato come insieme di validazione, mentre i restanti $k-1$ insiemi sono utilizzati come training set. Anche in questo caso la stima dell'errore di generalizzazione è data dalla media degli errori di validazione: la differenza sostanziale è che in questo caso ogni esempio viene considerato una e una sola volta come caso di test (e $k-1$ come dato di training).
+La **cross-validazione** può essere effettuata tramite **random subsampling** o tramite **k-fold cross-validation**. K-fold cross-validation consiste nel dividere i dati di training in $k$ insiemi indipendenti edidenticamente distribuiti: ad ogni iterazione $i\in[1,k]$ l'insieme $i$-esimo viene sottratto dai dati di training e utilizzato come insieme di validazione, mentre i restanti $k-1$ insiemi sono utilizzati come training set. Anche in questo caso la stima dell'errore di generalizzazione è data dalla media degli errori di validazione: la differenza sostanziale è che in questo caso ogni esempio viene considerato una e una sola volta come caso di test (e $k-1$ come dato di training).
 
-Nel caso limite in cui $k$ è la dimensione del training set, k-fold cross-validation prende il nome di *leave-one-out cross-validation* (LOOCV): ad ogni iterazione il validation set è composto da un solo esempio, mentre tutti gli altri compongono il test set.
+Nel caso limite in cui $k$ è la dimensione del training set, k-fold cross-validation prende il nome di **leave-one-out cross-validation** (**LOOCV**): ad ogni iterazione il validation set è composto da un solo esempio, mentre tutti gli altri compongono il test set.
 
 In generale, valori elevati di $k$ restituiscono una stima più realistica dell'errore di generalizzazione, ma richiedono un tempo maggiore per la procedura di cross-validazione. Per cui LOOCV viene utilizzato soprattutto su dataset molto piccoli, mentre random subsampling su dataset molto ampi.
 
@@ -288,7 +288,7 @@ $$f(x) = \argmax_{y\in Y} \left|\graffe{ (x_i,y_i)\in D : y=y_i \land \left|\gra
 
 KNN è molto costoso: in termini di spazio perché richiede di avere in memoria tutto il dataset, e in termini di tempo, perché richiede di calcolare la distanza da ogni punto del dataset. Inoltre, per valori bassi di $k$ è molto sensibile al rumore, mentre per valori alti diventa ancora più costoso.
 
-Inoltre, soffre della *curse of dimensionality*: in spazi ad alta dimensionalità i punti risultano più sparsi e la distanza risulta meno significativa. Sono necessarie tecniche di *dimensionality reduction* o di *feature selection*.
+Inoltre, soffre della **curse of dimensionality**: in spazi ad alta dimensionalità i punti risultano più sparsi e la distanza risulta meno significativa. Sono necessarie tecniche di **dimensionality reduction** o di **feature selection**.
 
 ----------------------------------------------------------------
 

@@ -514,7 +514,7 @@ where we used the property $(2)$ of the function w.
 
 A consequence of this analysis is that, with probabilty at least $1 − \delta$ with respect to the training set random draw, we have
 
-$$ \ell_{\mathcal{D}}(h) \leq \ell_S(h)+ \sqrt{\frac{1}{2m}\Big(\ln\frac{1}{w(h)} + \ln\frac{2}{\delta}\Big)}$$
+$$ \ell_{\mathcal{D}}(h) \leq \ell_S(h)+ \sqrt{\frac{1}{2m}\Big(\ln\frac{1}{w(h)} + \ln\frac{2}{\delta}\Big)} \quad \text{ } (3)$$
 
 simultaneously for every $h \in \mathcal{H}$. This suggests an alternative algorithm to training error minimization: while ERM uses
 
@@ -522,7 +522,7 @@ $$\widehat{h} = \underset{h \in \mathcal{H}_N}{\operatorname{argmin}}\ell_S(h)$$
 
 for a given $N$, the new approach leads to the choice
 
-$$\widehat{h} = \underset{h \in \mathcal{H}_N}{\operatorname{argmin}}\Bigg( \ell_S(h)+ \sqrt{\frac{1}{2m}\Big(\ln\frac{1}{w(h)} + \ln\frac{2}{\delta}\Big)} \Bigg)$$
+$$\widehat{h} = \underset{h \in \mathcal{H}_N}{\operatorname{argmin}}\Bigg( \ell_S(h)+ \sqrt{\frac{1}{2m}\Big(\ln\frac{1}{w(h)} + \ln\frac{2}{\delta}\Big)} \Bigg) \quad \text{ } (4)$$
 
 The function $w$ can be naturally viewed as a complexity measure for the tree predictor h. Note that this analysis oﬀers a diﬀerent viewpoint on overﬁtting: $\ell_S(h)$ becomes a good estimate of $\ell_{\mathcal{D}}(h)$ when it is “penalized” by the term
 
