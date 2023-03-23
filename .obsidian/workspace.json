@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Statistical Methods for Machine Learning.md",
+                "file": "Bioinformatica.md",
                 "mode": "source",
                 "source": false
               }
@@ -77,7 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Statistical Methods for Machine Learning.md",
+                "file": "Bioinformatica.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,15 +108,15 @@
   },
   "active": "0b50027e5ed0ac5b",
   "lastOpenFiles": [
+    "Statistical Methods for Machine Learning.md",
+    "Logica Matematica.md",
     "Simulation.md",
     "Stack.md",
     "Statistica e Probabilità.md",
-    "Statistical Methods for Machine Learning.md",
     "Struttura Dati.md",
     "System Dynamics Simulation.md",
     "Tecnica del Ciclo Euleriano.md",
     "Teorema di Wyllie.md",
-    "Logica Matematica.md",
     "Intelligenza Artificiale.md",
     "Informatica Teorica.md",
     "Bioinformatica.md",
