@@ -284,7 +284,7 @@ In generale, valori elevati di $k$ restituiscono una stima più realistica dell'
 ### KNN
 **[[Statistical Methods for Machine Learning#The Nearest Neighbour algorithm |K-Nearest-Neighbours]]** è un algoritmo di classificazione che, dato un training set $D\in X\times Y$ e una funzione di distanza $d:X \rightarrow \mathbb{R}$ associa ad una nuova istanza $x$ l'etichetta della maggior parte dei $k$ elementi più vicini a $x$ in $D$:
 
-$$f(x) = \argmax_{y\in Y} \left|\graffe{ (x_i,y_i)\in D : y=y_i \land \left|\graffe{(x_j,y_j)\in D} : d(x_j) \leq d(x_i) \right| \leq k} \right|$$
+$$f(x) = \underset{y \in Y}{\left \vert\graffe{ (x_i,y_i)\in D : y=y_i \land \left \vert\graffe{(x_j,y_j)\in D} : d(x_j) \leq d(x_i) \right| \leq k} \right \vert}$$
 
 KNN è molto costoso: in termini di spazio perché richiede di avere in memoria tutto il dataset, e in termini di tempo, perché richiede di calcolare la distanza da ogni punto del dataset. Inoltre, per valori bassi di $k$ è molto sensibile al rumore, mentre per valori alti diventa ancora più costoso.
 
@@ -318,24 +318,27 @@ dove $\eta$ è il parametro di *learning rate*. Il gradiente dell'errore è
 
 $$\nabla E(w) = \left( \frac{\partial E(w)}{\partial w_i} \right)_{i=1}^{n} = \left( \frac{\partial \left[ \sum_{t=1}^{m} loss(\sigma(wx^{(t)}),y^{(t)}) \right] }{\partial w_i} \right)_{i=1}^{n}$$
 
-Per $\sigma(x) = x$ e $loss(\hat{y},y)=\nicefrac{1}{2}(\hat{y}-y)^2$
+Per $\sigma(x) = x$ e $loss(\hat{y},y)=\frac{1}{2}(\hat{y}-y)^2$
 
-$$\nabla E(w) = \left( \frac{\partial \left[ \sum_{t=1}^{m} \nicefrac{1}{2}\left(wx^{(t)}-y^{(t)}\right)^2 \right] }{\partial w_i} \right)_{i=1}^{n} = \left( \sum_{t=1}^{m} x_i^{(t)}\left(wx^{(t)}-y^{(t)}\right) \right)_{i=1}^{n}$$
+$$\nabla E(w) = \left( \frac{\partial \left[ \sum_{t=1}^{m} \frac{1}{2}\left(wx^{(t)}-y^{(t)}\right)^2 \right] }{\partial w_i} \right)_{i=1}^{n} = \left( \sum_{t=1}^{m} x_i^{(t)}\left(wx^{(t)}-y^{(t)}\right) \right)_{i=1}^{n}$$
 
 L'algoritmo di discesa del gradiente è
 
+```
     initialize w
     repeat
         for (x,y) $\in$ D
             $\Delta$w := $\eta$ (y - w $\cdot$ x) x
             w := w + $\Delta$w
     until convergence
+```
+
 
 Condizioni di convergenza possono essere la convergenza dell'errore ($E(w) < \tau$) o dell'aggiornamento ($\Delta w < \tau$), oppure il raggiungimento di un numero di iterazioni prefissate.<br />
 Per problemi di classificazione multiclasse, possono essere utilizzati k percettroni: l'input rimane un vettore $x$, i pesi sono la matrice $W$ e le uscite il vettore $y$, dove
 $$y = Wx\ :\ y_k = \sum_{j=1}^{k} W_{k,j}\,x_j$$
 
-Questo modello è chiamato **percettrone a singolo strato**: la classe predetta può essere inferita osservando il massimo di $y$ (*winner takes all*), oppure si può esprimere la probabilità di ogni classe con un operazione come il *softmax*
+Questo modello è chiamato **percettrone a singolo strato**: la classe predetta può essere inferita osservando il massimo di $y$ (**winner takes all**), oppure si può esprimere la probabilità di ogni classe con un operazione come il **softmax**
 
 $$\text{softmax}(y) = \frac{e^y}{\left|\left| e^{y} \right|\right|_1} = \left(\frac{e^{y_j}}{ \sum_{h=1}^{k}e^{y_h} }\right)_{j=1}^{k}$$
 
@@ -343,18 +346,18 @@ $$\text{softmax}(y) = \frac{e^y}{\left|\left| e^{y} \right|\right|_1} = \left(\f
 
 ### Multi-Layer Perceptron
 I percettroni a singolo strato possono apprendere solo funzioni lineari (e classi linearmente separabili): per apprendere funzioni non-lineari si utilizzano modelli composti da più strati di percettroni, le [[Intelligenza Artificiale#Artificial neural network |reti neurali]].
-Il [[Intelligenza Artificiale#Multi-layer perceptron |percettrone multistrato]] è composto da più *layer* in sequenza e ogni layer è composto da più percettroni: il primo layer ha come input il vettore di ingresso, mentre il layer $i$-esimo ha come ingresso il layer precedente. Ogni strato ha una matrice di pesi associata
+Il [[Intelligenza Artificiale#Multi-layer perceptron |percettrone multistrato]] è composto da più *l*ayer** in sequenza e ogni layer è composto da più percettroni: il primo layer ha come input il vettore di ingresso, mentre il layer $i$-esimo ha come ingresso il layer precedente. Ogni strato ha una matrice di pesi associata
 
 $$h_i = \begin{cases}
 W_i\ x & i = 1 \\
 W_i\ h_{i-1} & i > 1
 \end{cases}$$
 
-Il vettore $x$ è detto *input layer*, l'ultimo strato è detto *output layer* e i rimanenti strati intermedi sono detti *hidden layer*. Le reti neurali sono dette profonde (*deep neural networks*) tipicamente quando hanno più di due strati (più di uno strato nascosto, l'input non conta come strato).
+Il vettore $x$ è detto **input layer**, l'ultimo strato è detto **output layer** e i rimanenti strati intermedi sono detti **hidden layer**. Le reti neurali sono dette profonde (**deep neural networks**) tipicamente quando hanno più di due strati (più di uno strato nascosto, l'input non conta come strato).
 
-In questo caso non è possibile utilizzare l'algoritmo di discesa del gradiente: l'algoritmo di training per le reti neurali è l'algoritmo di *back-propagation* (o algoritmo di retropropagazione dell'errore).
+In questo caso non è possibile utilizzare l'algoritmo di discesa del gradiente: l'algoritmo di training per le reti neurali è l'algoritmo di **back-propagation** (o algoritmo di retropropagazione dell'errore).
 
-Alcune tecniche di regolarizzazione utilizzate sono il *weight decay* (la norma $L^2$ dei pesi viene aggiunto alla funzione di perdita, è una regolarizzazione Tikhonov o *ridge regression*) e il *dropout* (mettere un peso a zero con una probabilità fissata).
+Alcune tecniche di regolarizzazione utilizzate sono il **weight decay** (la norma $L^2$ dei pesi viene aggiunto alla funzione di perdita, è una regolarizzazione Tikhonov o **ridge regression**) e il **dropout** (mettere un peso a zero con una probabilità fissata).
 
 ----------------------------------------------------------------
 
