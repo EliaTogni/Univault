@@ -285,31 +285,48 @@ The best possible predictor $f^*: \mathcal{X} \to \mathcal{Y}$ given $\mathcal{D
 $$\forall x \in \mathcal{X} \quad f^*(x) = \underset{\widehat{y} \in \mathcal{Y}}{\operatorname{argmin}} \text{ } \mathbb{E}[\ell(Y, \widehat{y}) \vert X = x]$$
 
 where $\widehat{y} \in \mathcal{Y}$ is the value for which the function $\mathbb{E}[\ell(Y, \widehat{y}) \vert X = x]$ attains its minimum.<br />
-What does it mean to condition an expectation? It means that we want to know the prediction of $f^*$ on $x$. This predictor tries to pick the best $\widehat{y}$, the one minimizing the expected loss on $x$.
-The quantity $\mathbb{E} [\ell(Y, \widehat{y}) \vert X = x]$ is the **conditional risk**, which is the expected loss of the prediction with respect to the distribution of the label $Y$ conditioned on $x$. Hence $f^*(x)$ is the prediction minimizing the conditional risk. By deﬁnition of $f^*$, we have that 
+What does it mean to condition an expectation? It means that we want to know the prediction of $f^*$ on $x$. This predictor tries to pick the best $\widehat{y}$, the one minimizing the expected loss on $x$.<br />
+The quantity $\mathbb{E} [\ell(Y, \widehat{y}) \vert X = x]$ is the **conditional risk**, which is the expected loss of the prediction with respect to the distribution of the label $Y$ conditioned on $x$. Hence $f^*(x)$ is the prediction $\widehat{y}$ minimizing the conditional risk, given $x$.
 
-$$\mathbb{E}[\ell(Y, f^*(X))\text{ } \vert \text{ } X = x] \leq \mathbb{E}[\ell(Y, h(X))\text{ } \vert \text{ } X = x]$$
+By deﬁnition of $f^*$, we have that 
 
-for every predictor $h : \mathcal{X} \to \mathcal{Y}$ and for any $x \in \mathcal{X}$. Because the above inequality holds for every $x \in \mathcal{X}$, it also holds in expectation with respect to the random draw of $X$. But since, for any predictor $h$,
+$$\forall x \in \mathcal{X} \quad \mathbb{E}[\ell(Y, f^*(X))\text{ } \vert \text{ } X = x] \leq \mathbb{E}[\ell(Y, h(X))\text{ } \vert \text{ } X = x]$$
+
+for every predictor $h : \mathcal{X} \to \mathcal{Y}$ and for any $x \in \mathcal{X}$. Because the above inequality holds for every $x \in \mathcal{X}$, it also holds in expectation with respect to the random draw of $X$. But, since
+
+$$\mathbb{E}\Big[ \mathbb{E} \big[Y \vert X \big] \Big] = \mathbb{E}\big[Y \big]\quad \forall X, Y \text{ random variables} $$
+
+for any predictor $h$ holds that
 
 $$\mathbb{E} \Big[\mathbb{E}[\ell(Y, h(X))\text{ } \vert \text{ } X]\Big] = \mathbb{E}[\ell(Y, h(X))] = \ell_{\mathcal{D}}(h)$$
 
-we have that $\ell_{\mathcal{D}}(f^*) \leq \ell_{\mathcal{D}}(h)$ for every predictor $h$. The risk $\ell_{\mathcal{D}}(f^*)$ of the Bayes optimal predictor is called **Bayes risk**. Typically, the Bayes risk is larger than zero because labels are stochastic.
+Therefore, we have that
 
-We now compute the Bayes optimal predictor for the quadratic loss function $\ell(y, \widehat{y}) = (y − \widehat{y})^2$ when $\mathcal{Y} \equiv \mathbb{R}$,
+$$\forall x \in X \quad \mathbb{E}\Big[\mathbb{E}[\ell(Y, f^*(X))\text{ } \vert \text{ } X = x]\Big ] \leq \mathbb{E} \Big[\mathbb{E}[\ell(Y, h(X))\text{ } \vert \text{ } X = x]\Big]$$
+
+and , therefore, $\ell_{\mathcal{D}}(f^*) \leq \ell_{\mathcal{D}}(h)$ for every predictor $h: \mathcal{X} \to \mathcal{Y}$. The risk $\ell_{\mathcal{D}}(f^*)$ of the Bayes optimal predictor is called **Bayes risk**. Typically, the Bayes risk is larger than zero because labels are stochastic, noisy and that means that $Y$ is not determined by $X$.
+
+We now compute the Bayes optimal predictor $f^*$ for the quadratic loss function $\ell(y, \widehat{y}) = (y − \widehat{y})^2$ when $\mathcal{Y} \equiv \mathbb{R}$,
 
 $$f^*(x) = \underset{\widehat{y} \in \mathbb{R}}{\operatorname{argmin}} \mathbb{E}\Big[(Y - \widehat{y})^2 \text{ } \vert \text{ } X = x\Big]$$
-$$= \underset{\widehat{y} \in \mathcal{Y}}{\operatorname {argmin}}\Big(\mathbb{E}\big[Y^2 \text{ }\vert \text{ }X = x \big] + \widehat{y}^2 - 2 \widehat{y} \mathbb{E} \big[Y \text{ }\vert \text{ }X = x\big] \Big)$$
-$$= \underset{\widehat{y} \in \mathbb{R}}{\operatorname {argmin}}\Big( \widehat{y}^2 - 2\widehat{y} \mathbb{E}\big[Y \vert X = x\big]\Big)\quad \text{ignoring the term that does not depend on } \widehat{y}$$
-$$= \mathbb{E}\big[Y \text{ } \vert \text{ } X = x\big] \quad \Big(\text{minimizing the function }F(\widehat{y}) = \widehat{y}^2 - 2\widehat{y}\mathbb{E}\big[Y \text{ } \vert \text{ } X = x\big]\Big)$$
+$$= \underset{\widehat{y} \in \mathbb{R}}{\operatorname{argmin}} \mathbb{E}\Big[Y^2 + \widehat{y}^2 -2\widehat{y}Y \text{ } \vert \text{ } X = x\Big]$$
+Because we are interested in the minimizing of $\widehat{y}$, it is possible to notice that the term $Y^2$ does not depend on $\widehat{y}$. Using the linear property of expectation $\mathbb{E}[aX + bY] = a\mathbb{E}[X] + b\mathbb{E}[Y], \quad a, b \in \mathbb{R}$, we are able to write 
 
-Thus, the Bayes optimal prediction for the quadratic loss function is the expected value of the label conditioned on the instance.
+$$= \underset{\widehat{y} \in \mathcal{Y}}{\operatorname {argmin}}\Big(\underbrace{\mathbb{E}\big[Y^2 \text{ }\vert \text{ }X = x \big]}_{\text{does not depend on }\widehat{y}} + \widehat{y}^2 - 2 \widehat{y} \mathbb{E} \big[Y \text{ }\vert \text{ }X = x\big] \Big)$$
+$$= \underset{\widehat{y} \in \mathbb{R}}{\operatorname {argmin}}\Big( \widehat{y}^2 - 2\widehat{y} \mathbb{E}\big[Y \vert X = x\big]\Big)\quad \text{ignoring the term that does not depend on } \widehat{y}$$
+
+and the reason why this is possible is because the term ignored is just a costant and so it is possible to extract it from the $argmin$ operator.<br />
+Now, we have to minimize the function $F(\widehat{y}) = \widehat{y}^2 - 2\widehat{y}\mathbb{E}\big[Y \text{ } \vert \text{ } X = x\big]$, which can be seen as $F(z) = z^2 - 2zc$. Its derivative is $F'(z) = 2z -2c$ and it is minimized for $F'(z) = 0$. After the substitution, we obtain $2 \widehat{y} - 2 \mathbb{E}\big[Y \vert X\big]$ and, therefore
+
+$$ f^*(x) = \mathbb{E}\big[Y \text{ } \vert \text{ } X = x\big]$$
+
+Thus, the Bayes optimal prediction for the quadratic loss function is the expected value of the label conditioned on the instance. So, if it is desired to minimize the loss, the expectation must be predicted.
 
 Substituting in the conditional risk formula $\mathbb{E}[(Y - f^*(X))^2 \vert X = x]$ the Bayes optimal predictor $f^*(X) = \mathbb{E}[Y \text{ }\vert \text{ } X = x]$ we obtain
 
 $$\mathbb{E}\Big[\big(Y - f^*(X)\big)^2 \text{ }\Big \vert \text{ } X = x \Big] = \mathbb{E}\Big[\big(Y - \mathbb{E}[Y \text{ } \vert \text{ }x ]\big)^2 \text{ }\Big \vert \text{ } X = x \Big] = Var\big[Y \vert X = x\big]$$
 
-In words, the conditional risk of the Bayes optimal predictor for the quadratic loss is the **variance** of the label conditioned on the instance. By averaging over $X$ we obtain $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\big[Var[Y \text{ } \vert \text{ } X]\big]$.<br />
+In words, the conditional risk of the Bayes optimal predictor for the quadratic loss is the **conditional variance** of the label on the instance. By averaging over $X$ we obtain $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\big[Var[Y \text{ } \vert \text{ } X]\big]$.<br />
 Namely, the Bayes risk for the quadratic loss is the expected conditional variance of the label. Note that $\mathbb{E}\big[var[ Y \text{ } \vert \text{ } X]\big]$ is generally diﬀerent from $Var[Y]$. Indeed, the law of total variance says that $Var[Y] - \mathbb{E}\big[Var[Y \text{ } \vert \text{ } X]\big] = Var\big[\mathbb{E}[Y \text{ } \vert \text{ } X]\big]$.
 
 We now focus on binary classiﬁcation, where $\mathcal{Y} = \{−1, 1\}$. Let $\eta(x)$ be the probability of $Y = 1$ conditioned on $X = x$. We view $\eta(x) = \mathbb{P}( Y = +1 \text{ } \vert \text{ } X = x)$ as the value on $x$ of a function $\eta: \mathcal{X} \to [0, 1]$.
