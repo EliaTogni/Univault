@@ -284,7 +284,7 @@ In generale, valori elevati di $k$ restituiscono una stima più realistica dell'
 ### KNN
 **[[Statistical Methods for Machine Learning#The Nearest Neighbour algorithm |K-Nearest-Neighbours]]** è un algoritmo di classificazione che, dato un training set $D\in X\times Y$ e una funzione di distanza $d:X \rightarrow \mathbb{R}$ associa ad una nuova istanza $x$ l'etichetta della maggior parte dei $k$ elementi più vicini a $x$ in $D$:
 
-$$f(x) = \underset{y \in Y}{\left \vert\graffe{ (x_i,y_i)\in D : y=y_i \land \left \vert\graffe{(x_j,y_j)\in D} : d(x_j) \leq d(x_i) \right| \leq k} \right \vert}$$
+$$\underset{y \in Y}{\operatorname{argmax}}\Big \vert \Big \{ (x_i, y_i) \in D : y = y_i \text{ }\wedge \text{ } \vert \{ (x_j, y_j) \in D : d(x_j) \leq d(x_i)\}\vert  \leq k \Big \} \Big \vert$$
 
 KNN è molto costoso: in termini di spazio perché richiede di avere in memoria tutto il dataset, e in termini di tempo, perché richiede di calcolare la distanza da ogni punto del dataset. Inoltre, per valori bassi di $k$ è molto sensibile al rumore, mentre per valori alti diventa ancora più costoso.
 
@@ -325,14 +325,13 @@ $$\nabla E(w) = \left( \frac{\partial \left[ \sum_{t=1}^{m} \frac{1}{2}\left(wx^
 L'algoritmo di discesa del gradiente è
 
 ```
-    initialize w
-    repeat
-        for (x,y) $\in$ D
-            $\Delta$w := $\eta$ (y - w $\cdot$ x) x
-            w := w + $\Delta$w
-    until convergence
+initialize w
+repeat
+    for (x,y) ∈ D
+        Δw := η(y - w · x) x
+        w := w + Δw
+until convergence
 ```
-
 
 Condizioni di convergenza possono essere la convergenza dell'errore ($E(w) < \tau$) o dell'aggiornamento ($\Delta w < \tau$), oppure il raggiungimento di un numero di iterazioni prefissate.<br />
 Per problemi di classificazione multiclasse, possono essere utilizzati k percettroni: l'input rimane un vettore $x$, i pesi sono la matrice $W$ e le uscite il vettore $y$, dove
@@ -345,8 +344,7 @@ $$\text{softmax}(y) = \frac{e^y}{\left|\left| e^{y} \right|\right|_1} = \left(\f
 ----------------------------------------------------------------
 
 ### Multi-Layer Perceptron
-I percettroni a singolo strato possono apprendere solo funzioni lineari (e classi linearmente separabili): per apprendere funzioni non-lineari si utilizzano modelli composti da più strati di percettroni, le [[Intelligenza Artificiale#Artificial neural network |reti neurali]].
-Il [[Intelligenza Artificiale#Multi-layer perceptron |percettrone multistrato]] è composto da più *l*ayer** in sequenza e ogni layer è composto da più percettroni: il primo layer ha come input il vettore di ingresso, mentre il layer $i$-esimo ha come ingresso il layer precedente. Ogni strato ha una matrice di pesi associata
+I percettroni a singolo strato possono apprendere solo funzioni lineari (e classi linearmente separabili): per apprendere funzioni non-lineari si utilizzano modelli composti da più strati di percettroni, le [[Intelligenza Artificiale#Artificial neural network |reti neurali]]. Il [[Intelligenza Artificiale#Multi-layer perceptron |percettrone multistrato]] è composto da più **layer** in sequenza, ed ogni layer è composto da più percettroni: il primo layer ha come input il vettore di ingresso, mentre il layer $i$-esimo ha come ingresso il layer precedente. Ogni strato ha una matrice di pesi associata
 
 $$h_i = \begin{cases}
 W_i\ x & i = 1 \\
@@ -366,40 +364,39 @@ Le **[[Intelligenza Artificiale#Deep Learning|convolutional neural networks]]** 
 
 $$y = w \ast x\ :\ y_i = \sum_{h=1}^{k} w_h\ x_{i-h}$$
 
-Il vettore di pesi viene chiamato *kernel*. Le funzioni di convoluzione implementate sono anche diverse da quella ortodossa (detta *flipped-kernel*): ad esempio, può essere la funzione di cross-correlazione (senza rovesciamento del kernel, ma non commutativa). Gli strati convoluzionali possono implementare anche il padding (senza padding la lunghezza degli strati diminuisce inesorabilmente).
+Il vettore di pesi viene chiamato **kernel**. Le funzioni di convoluzione implementate sono anche diverse da quella ortodossa (detta **flipped-kernel**): ad esempio, può essere la funzione di cross-correlazione (senza rovesciamento del kernel, ma non commutativa). Gli strati convoluzionali possono implementare anche il padding (senza padding la lunghezza degli strati diminuisce inesorabilmente).
 
-Un primo vantaggio delle CNN contro i MLP è che hanno meno parametri: i kernel sono generalmente piccoli, quindi occupano meno memoria, sono più semplici da apprendere (sono meno parametri) e implementano la sparsità delle connessioni (ogni strato è connesso solo al proprio *campo recettivo*) propria delle reti neurali naturali. I parametri, oltre a essere meno, sono anche gli stessi per ogni neurone dello stesso strato, ciò che cambia è la sezione di input che viene considerata: questo fenomeno è detto *parameter sharing*. In questo modo, le convoluzioni sono considerabili come un prodotto per una matrice di pesi con i vincoli enunciati di sparsità e di uguaglianza dei parametri e, quindi, possono essere considerate una regolarizzazione dei MLP.
+Un primo vantaggio delle CNN contro i MLP è che hanno meno parametri: i kernel sono generalmente piccoli, quindi occupano meno memoria, sono più semplici da apprendere (sono meno parametri) e implementano la sparsità delle connessioni (ogni strato è connesso solo al proprio **campo recettivo**) propria delle reti neurali naturali. I parametri, oltre a essere meno, sono anche gli stessi per ogni neurone dello stesso strato, ciò che cambia è la sezione di input che viene considerata: questo fenomeno è detto **parameter sharing**. In questo modo, le convoluzioni sono considerabili come un prodotto per una matrice di pesi con i vincoli enunciati di sparsità e di uguaglianza dei parametri e, quindi, possono essere considerate una regolarizzazione dei MLP.
 
-Una proprietà delle CNN che deriva dall'utilizzo dell'operazione di convoluzione è che le trasformazioni da uno strato al successivo sono *equivarianti per traslazione*: una traslazione nel vettore di input corrisponde a una stessa traslazione nel vettore di output.
+Una proprietà delle CNN che deriva dall'utilizzo dell'operazione di convoluzione è che le trasformazioni da uno strato al successivo sono **equivarianti per traslazione**: una traslazione nel vettore di input corrisponde a una stessa traslazione nel vettore di output.
 
-Le CNN possono avere input di arbitrarie dimensioni se si gestisce il *pooling* per ottenere questa proprietà, oppure utilizzando delle *fully convolutional networks*.
+Le CNN possono avere input di arbitrarie dimensioni se si gestisce il **pooling** per ottenere questa proprietà, oppure utilizzando delle **fully convolutional networks**.
 
 #### Layers
 Gli strati di una rete convoluzionale sono complessi. Sono composti da:
-- Stadio convolutivo: è lo stadio che implementa la convoluzione dell'input per un kernel;
-- Stadio non-lineare: è lo stadio che applica la funzione di attivazione. La funzione di attivazione più comune nelle reti convoluzionali è la funzione ReLU
+- **stadio convolutivo**: è lo stadio che implementa la convoluzione dell'input per un kernel;
+- **stadio non-lineare**: è lo stadio che applica la funzione di attivazione. La funzione di attivazione più comune nelle reti convoluzionali è la funzione ReLU
 
 $$\text{ReLU}(x) = \begin{cases}
         x & x \geq 0\\
         0 & x < 0
         \end{cases}$$
 
-- Stadio di *pooling*: questo stadio calcola delle statistiche locali sull'output. Lo stadio di pooling più comune nelle reti convoluzionali è il *max pooling*, che restituisce il massimo di finestre dell'output: questo consente di avere un output invariante rispetto a piccole fluttuazioni dell'input;
+- **stadio di pooling**: questo stadio calcola delle statistiche locali sull'output. Lo stadio di pooling più comune nelle reti convoluzionali è il **max pooling**, che restituisce il massimo di finestre dell'output: questo consente di avere un output invariante rispetto a piccole fluttuazioni dell'input;
 
 Alternativamente, alcune tassonomie considerano strati semplici ed ognuno degli stadi sopra riportati costituisce uno strato a sé.
 
-Ogni *layer* convolutivo può avere più kernel: in questo modo la rete può apprendere in parallelo più feature. Inoltre, fare pooling sui risultati di più kernel permette alla rete di apprendere delle invarianze: ad esempio, nel riconoscimento di immagini è utile apprendere l'invarianza alla rotazione.
+Ogni layer convolutivo può avere più kernel: in questo modo la rete può apprendere in parallelo più feature. Inoltre, fare pooling sui risultati di più kernel permette alla rete di apprendere delle invarianze: ad esempio, nel riconoscimento di immagini è utile apprendere l'invarianza alla rotazione.
 
 ----------------------------------------------------------------
 
 #### Convoluzioni
-Come abbiamo detto, le convoluzioni implementate non sempre sono uguali alla convoluzione matematica (spesso si usa la cross-correlazione). Esistono varie versioni della convoluzione.La *strided convolution* non calcola il risultato della convoluzione per tutti gli indici, ma solo 1 ogni $s$, che chiamiamo lo *stride* della
-convoluzione: questo è un metodo molto efficiente per ottenere
+Come abbiamo detto, le convoluzioni implementate non sempre sono uguali alla convoluzione matematica (spesso si usa la cross-correlazione). Esistono varie versioni della convoluzione. La **strided convolution** non calcola il risultato della convoluzione per tutti gli indici, ma solo 1 ogni $s$, che chiamiamo lo **stride** della convoluzione: questo è un metodo molto efficiente per ottenere
 downsampling.
 
-La *local connection* può essere vista come una convoluzione senza parameter sharing: ogni neurone è influenzato solo dal proprio campo recettivo nello strato precedente, ma i pesi cambiano da neurone a neurone. È anche chiamata *unshared convolution*. Non garantisce l'equivarianza per traslazione, ma permette di apprendere in un solo strato kernel diversi che dipendono dalla regione dell'input a cui sono applicati.
+La **local connection** può essere vista come una convoluzione senza parameter sharing: ogni neurone è influenzato solo dal proprio campo recettivo nello strato precedente, ma i pesi cambiano da neurone a neurone. È anche chiamata **unshared convolution*. Non garantisce l'equivarianza per traslazione, ma permette di apprendere in un solo strato kernel diversi che dipendono dalla regione dell'input a cui sono applicati.
 
-La *tiled convolution* è una via di mezzo tra convoluzione e local connection: viene appreso un set di kernel che si ripetono. Se lo strato sta apprendendo $n$ kernel, il neurone $i$-esimo userà il kernel $[i]_n$ .
+La **tiled convolution** è una via di mezzo tra convoluzione e local connection: viene appreso un set di kernel che si ripetono. Se lo strato sta apprendendo $n$ kernel, il neurone $i$-esimo userà il kernel $[i]_n$ .
 
 Nel caso di input di alta dimensionalità, le convoluzioni possono essere rese più efficienti effettuando il filtraggio nel dominio delle frequenze: infatti, se il kernel ha dimensione $k$ e l'input $m$, la convoluzione ha complessità $O(k\cdot m)$, mentre la procedura FFT, prodotto elemento-per-elemento e IFFT ha complessità
 $O(m\,\log{m})$ + $O(m)$ + $O(m\,\log{m})$ = $O(m\,\log{m})$ .
@@ -407,28 +404,28 @@ $O(m\,\log{m})$ + $O(m)$ + $O(m\,\log{m})$ = $O(m\,\log{m})$ .
 ----------------------------------------------------------------
 
 ### SVM
-*Support Vector Machine* è un algoritmo di apprendimento che produce il classificatore lineare dai margini massimali: nel caso di classi inearmente separabili, ciò vuol dire che tra gli infiniti iperpiani separatori viene determinato quello che massimizza la distanza dai punti di entrambe le classi.
+**Support Vector Machine** è un algoritmo di apprendimento che produce il classificatore lineare dai margini massimali: nel caso di classi inearmente separabili, ciò vuol dire che tra gli infiniti iperpiani separatori viene determinato quello che massimizza la distanza dai punti di entrambe le classi.
 
 Dato un vettore $w$, l'iperpiano definito da quel vettore è
 
-$$S(w,b):=\graffe{ x \in \mathbb{R}^N : w^Tx + b = 0 }$$
+$$S(w,b):=\{ x \in \mathbb{R}^N : w^Tx + b = 0 \}$$
 
 Per avere il termine di bias incluso nel vettore $w$, fissiamo $x_1 := 1$
 
-$$S(w):=\graffe{ x \in \graffe{1}\times\mathbb{R}^N \ |\  w^Tx = 0 }$$
+$$S(w):=\big \{ x \in \{1\}\times\mathbb{R}^N \ |\  w^Tx = 0 \big \}$$
 
 Se il margine dell'iperpiano ha larghezza $\gamma$, vuol dire che un punto $x_m$ è esattamente sul margine se
 
 $$\exists x_p\in S(w) : x_m = x_p + \frac{w}{\left|\left|w\right|\right|}\gamma$$
 
-Dove $\nicefrac{w}{\left|\left|w\right|\right|}$ è in effetti il versore normale all'iperpiano. Allora, data $f(x):=w^Tx$, vale
+Dove $\frac{w}{\left|\left|w\right|\right|}$ è in effetti il versore normale all'iperpiano. Allora, data $f(x):=w^Tx$, vale
 
 $$f(x_m) = w^Tx_m = w^T\left( x_p + \frac{w}{\left|\left|w\right|\right|}\gamma \right) = w^Tx_p + \frac{w^Tw}{\left|\left|w\right|\right|}\gamma$$
 
 Ma $x_p\in S(w) \Rightarrow w^Tx_P = 0$, quindi
 
 $$f(x_m) = \frac{\left|\left|w\right|\right|^2}{\left|\left|w\right|\right|}\gamma = \left|\left|w\right|\right|\gamma$$
-Chiameremo tale misura il *margine funzionale*. Chiameremo *il margine geometrico* 
+ Tale misura verrà chiamata **margine funzionale**. Verrà chiamato, invece, ** margine geometrico** il rapporto
 
 $$\gamma = \frac{f(x_m)}{\left|\left|w\right|\right|}$$
 
@@ -443,9 +440,9 @@ $$f_c(x_m) = \frac{f(x_m)}{\left|\left|w\right|\right|\gamma} = \frac{\left|\lef
 
 Il margine geometrico dell'iperpiano canonico vale
 
-$$\gamma_c = \frac{f(x_m)}{\left|\left|w_c\right|\right|} = \frac{f(x_m)}{\left|\left|\nicefrac{w}{f(x_m)}\right|\right|} = \frac{1}{\left|\left|w\right|\right|}$$
+$$\gamma_c = \frac{f(x_m)}{\left \vert\left \vert w_c\right \vert \right \vert} = \frac{f(x_m)}{\left \vert \left \vert \frac{w}{f(x_m)}\right \vert\right \vert} = \frac{1}{\left \vert \left \vert w\right \vert \right \vert}$$
 
-D'ora in avanti considereremo solo iperpiani canonici, che sono gli iperpiani con margine funzionale unitario e margine geometrico $\nicefrac{1}{\left|\left|w\right|\right|}$ . Esprimiamo allora, ciò che vogliamo: vogliamo massimizzare il margine
+D'ora in avanti considereremo solo iperpiani canonici, che sono gli iperpiani con margine funzionale unitario e margine geometrico $\frac{1}{\left|\left|w\right|\right|}$ . Esprimiamo allora, ciò che vogliamo: vogliamo massimizzare il margine
 
 $$w^* = \argmax_{w\in \mathbb{R}^N} \frac{1}{\left|\left|w\right|\right|} = \argmin_{w\in \mathbb{R}^N} \left|\left|w\right|\right|$$
 
@@ -526,10 +523,6 @@ $$K_\sigma(x,y) = e^{-\frac{\left|\left|x-y\right|\right|^2}{2\sigma^2}}$$
 ----------------------------------------------------------------
 
 ## Metriche di Valutazione
-[]{#fig:classcases label="fig:classcases"}
-
- 
-
 +:----------:+:-:+:--------------:+:--------------:+
 |            |   | *label*        |                |
 +------------+---+----------------+----------------+
@@ -542,22 +535,20 @@ $$K_\sigma(x,y) = e^{-\frac{\left|\left|x-y\right|\right|^2}{2\sigma^2}}$$
 |            | N | False Negative | True Negative  |
 +------------+---+----------------+----------------+
 
-I classificatori binari (molto usati in bioinformatica) possono predire due classi: positivo o negativo. In base al valore reale dell'esempio, si possono distinguere quattro casi: vero positivo, falso positivo, vero negativo e falso negativo
-(figura [\[fig:classcases\]](#fig:classcases){reference-type="ref"
-reference="fig:classcases"}). Si definiscono le seguenti misure:
-- Precisione: rapporto tra il numero di veri positivi e il numero di predizioni positive. Esprime la probabilità che una predizione positiva sia corretta
+I classificatori binari (molto usati in bioinformatica) possono predire due classi: positivo o negativo. In base al valore reale dell'esempio, si possono distinguere quattro casi: vero positivo, falso positivo, vero negativo e falso negativo. Si definiscono le seguenti misure:
+- **precisione**: rapporto tra il numero di veri positivi e il numero di predizioni positive. Esprime la probabilità che una predizione positiva sia corretta
 
 $$\frac{TP}{TP+FP} = P( \text{label}=P\ |\ \text{output}=P )$$
 
-- Accuratezza: percentuale di predizioni corrette. Esprime la probabilità che una predizione sia corretta
+- **accuratezza**: percentuale di predizioni corrette. Esprime la probabilità che una predizione sia corretta
  
 $$\frac{TP+TN}{TP+FP+TN+FN} = P( \text{label}=\text{output} )$$
 
-- Sensitività (o *recall*): rapporto tra il numero di veri positivi e il numero di positivi reali. Esprime la probabilità che un positivo sia correttamente riconosciuto
+- **sensitività** (o **recall**): rapporto tra il numero di veri positivi e il numero di positivi reali. Esprime la probabilità che un positivo sia correttamente riconosciuto
 
 $$\frac{TP}{TP+FN} = P( \text{output}=P\ |\ \text{label}=P )$$
 
-- Specificità: rapporto tra il numero di veri negativi e il numero di negativi reali. Esprime la probabilità che un negativo sia correttamente riconosciuto
+- **specificità**: rapporto tra il numero di veri negativi e il numero di negativi reali. Esprime la probabilità che un negativo sia correttamente riconosciuto
 
 $$\frac{TN}{TN+FP} = P( \text{output}=N\ |\ \text{label}=N )$$
 
@@ -566,12 +557,9 @@ $$\frac{TN}{TN+FP} = P( \text{output}=N\ |\ \text{label}=N )$$
 $$\frac{2}{\frac{1}{\text{recall}}+\frac{1}{\text{precision}}} = \frac{2\,TP}{2\,TP+FP+FN}$$
 
 ### ROC
-  ![image](img/roc.png){width="\\textwidth"}
+La curva ROC (**Receiver Operating Characteristic**) è un grafico che mostra le performance di un classificatore binario al variare della sua soglia di discriminazione: sull'asse delle ordinate è riportata la sensitività e sull'asse delle ascisse 1 meno la specificità (ovvero, la percentuale di veri positivi e la percentuale di falsi positivi).
 
-La curva ROC (*Receiver Operating Characteristic*) è un grafico che mostra le performance di un classificatore binario al variare della sua soglia di discriminazione: sull'asse delle ordinate è riportata la sensitività e sull'asse delle ascisse 1 meno la specificità (ovvero, la percentuale di veri positivi e la percentuale di falsi positivi).
-
-Se il classificatore predice come negativi i valori sotto la soglia e come positivi i valori sopra la soglia. Con una soglia massima tutti gli esempi vengono classificati come negativi: la sensitività varrà $0$ e la specificità $1$. Con una soglia minima tutti gli esempi vengono classificati come positivi: la sensitività varrà $1$ e la specificità
-$0$. Per cui una curva ROC ha gli estremi nei punti $(0,0)$ e $(1,1)$ (figura [\[fig:roc\]](#fig:roc){reference-type="ref" reference="fig:roc"}).
+Se il classificatore predice come negativi i valori sotto la soglia e come positivi i valori sopra la soglia. Con una soglia massima tutti gli esempi vengono classificati come negativi: la sensitività varrà $0$ e la specificità $1$. Con una soglia minima tutti gli esempi vengono classificati come positivi: la sensitività varrà $1$ e la specificità $0$. Per cui una curva ROC ha gli estremi nei punti $(0,0)$ e $(1,1)$.
 
 Un classificatore perfetto avrebbe sensitività e specificità unitarie: passerebbe, dunque, per il punto $(0,1)$ . Solitamente, però, tale classificatore non è possibile a causa della casualità nei dati. Per misurare la bontà di un classificatore binario possiamo osservare quanto la curva ROC è simile alla curva del classificatore perfetto: utilizziamo a questo proposito l'area sotto la curva ROC (AUROC), che varrà $1$ per il classificatore perfetto e $0.5$ per il classificatore casuale uniforme (la cui curva ROC è la bisettrice del quadrante).
 
@@ -585,10 +573,8 @@ Il rapporto di falsi positivi (1 meno la specificità), essendo i reali negativi
 Al contrario, il rapporto di veri positivi (la sensitività), essendo i reali positivi pochi, tende a salire molto velocemente al calare della soglia.
 
 Un classificatore che cerca di massimizzare sensitività e specificità su un insieme di dati altamente sbilanciato tenderà ad avere un elevato numero di falsi positivi, perché ad un grande guadagno nell'aumento di veri positivi per la sensitività non corrisponde una perdita altrettanto pesante in termini di specificità.
-  
-![image](img/prcroc.png){width="90%"}
 
-Per questo, su dati sbilanciati come sono i dati in bioinformatica, si preferisce utilizzare la PRC (*Precision-Recall Curve*), che riporta sulle ordinate la precisione e sulle ascisse la recall (figura [\[fig:prcroc\]](#fig:prcroc){reference-type="ref" reference="fig:prcroc"}): la precisione, al contrario della specificità, è molto influenzata dal numero di falsi positivi e per niente influenzata dal numero di negativi reali.
+Per questo, su dati sbilanciati come sono i dati in bioinformatica, si preferisce utilizzare la **PRC** (**Precision-Recall Curve**), che riporta sulle ordinate la precisione e sulle ascisse la recall: la precisione, al contrario della specificità, è molto influenzata dal numero di falsi positivi e per niente influenzata dal numero di negativi reali.
 
 L'ottimo per la curva precision-recall sarebbe il punto $(1,1)$ e un classifcatore casuale uniforme ha come curva il segmento tra $(0,1)$ e $(1,0)$ . Anche nel caso della PRC, possimo utilizzare l'area sotto la curva (AUPRC) come indicatore della performance del classificatore.
 
