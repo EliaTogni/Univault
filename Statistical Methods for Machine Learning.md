@@ -571,9 +571,9 @@ In practice, learning algorithms are often speciﬁed up to one or more hyperpar
 A learning algorithm with one or more hyperparameters is not really an algorithm, but rather a family of algorithms, one for each possible assignment of values to the hyperparameters. Let $\{A_\theta : \theta \in \Theta\}$ be such a family of learning algorithms, where $\theta$ is a vector of hyperparameters and $\Theta$ is the set of all possible hyperparameter values. Fix a learning problem $(\mathcal{D}, \ell)$ and let $A_\theta(S) = h$ be the predictor output when $A_\theta$ is run on the training set $S$. Let $\ell_{\mathcal{D}}(A_\theta(S))$ be the risk of the predictor $A_\theta(S)$, and let $E\big[\ell_{\mathcal{D}}(A_\theta)\big]$ be the expected risk of $A_\theta(S)$ where the expectation is with respect to the random draw of the training set $S$ of a given ﬁxed size. Intuitively, $E\big[\ell_{\mathcal{D}}(A_\theta)\big]$ measures the performance of $A_\theta$ on a typical training set of that size.
 
 ## Evaluating a learning algorithm using external cross-validation
-Assume for now the hyperparameter $\theta$ is ﬁxed and focus on the problem of estimating $E\big[\ell_{\mathcal{D}}(A)\big]$. To do so we can use a technique called $K$-fold (external) **cross-validation**.
+Assume for now the hyperparameter $\theta$ is ﬁxed and focus on the problem of estimating $E\big[\ell_{\mathcal{D}}(A(S_m))\big]$. To do so we can use a technique called $K$-fold (external) **cross-validation**.
 
-Let $S$ be our entire dataset. We partition $S$ in $K$ subsets (also known as **folds**) $S_1, ..., S_K$ of size $m/K$ each (assume for simplicity that $K$ divides $m$). The extreme case $K = m$ provides an estimate known as **leave-one-out**. Now let $S_{-i} \equiv S \ S_i$. We call $S_i$ the **testing part** of the $i$-th fold while $S^{-i}$ is the **training part**.
+Let $S$ be our entire dataset. We partition $S_m$ in $K$ subsets (also known as **folds**) $S_1, ..., S_K$ of size $m/K$ each (assume for simplicity that $K$ divides $m$). The extreme case $K = m$ provides an estimate known as **leave-one-out**. Now let $S_{-i} \equiv S \setminus S_i$. We call $S_i$ the **testing part** of the $i$-th fold while $S_{-i}$ is the **training part**.
 
 For example, if we partition $S=\big \{(x_1, y_1), ..., (x_{20}, y_{20})\big \}$ in $K = 4$ subsets
 
@@ -582,7 +582,7 @@ $$S_3 = \Big\{(x_{11}, y_{11}), ..., (x_{15}, y_{15}) \Big \} \quad S_4 = \Big\{
 
 then $S_{-2} = S_1 \cup S_2 \cup S_4$.
 
-The **$K$-fold CV estimate** of $E\big[\ell_{\mathcal{D}}(A)\big]$ on $S$, denoted by $\ell_S^{CV}(A)$, is then computed as follows: we run $A$ on each training part $S^{-i}$ of the folds $i = 1, ..., K$ and obtain the predictors $h_1 =A(S^{-1}), ..., h_K =  A(S^{-K})$. We then compute the (rescaled) errors on the testing part of each fold,
+The **$K$-fold CV estimate** of $E\big[\ell_{\mathcal{D}}(A)\big]$ on $S$, denoted by $\ell_S^{CV}(A)$, is then computed as follows: we run $A$ on each training part $S_{-i}$ of the folds $i = 1, ..., K$ and obtain the predictors $h_1 =A(S_{-1}), ..., h_K =  A(S_{-K})$. We then compute the (rescaled) errors on the testing part of each fold,
 
 $$\ell_{S_i}(h_i) = \frac{K}{m} \sum_{(x, y) \in  S_i} \ell(y, h_i(x))$$
 
@@ -595,16 +595,20 @@ $$\ell_{S}^{CV}(A) = \frac{1}{K} \sum_{i = 1}^{K} \ell_{S_i}(h_i)$$
 ## Tuning hyperparameters on a given training set
 In practice, we face the problem of choosing the hyperparameters so to obtain a predictor with small risk. This is typically done by minimizing a risk estimate computed using the training data. As $\Theta$ may be very large, possibly inﬁnite, the minimization is generally not over $\Theta$, but over a suitably chosen subset $\Theta_0 \subset \Theta$ (for example, if $\Theta = [0, 1]$, then $\Theta_0$ could by a ﬁnite grid of equally spaced values in $[0, 1]$). If $S$ is our training set, then we want to ﬁnd $\theta^* \in \Theta$ such that
 
+$$\theta^* = \underset{\theta \in \Theta_0}{\operatorname{argmin}}\ell_{D}\Big(A_{\theta}(S)\Big)$$
+
+That is
+
 $$\ell_{D}\Big( A_{\theta^*}(S)\Big) = \underset{\theta \in \Theta_0}{\operatorname{min}}\ell_{D}\Big(A_{\theta}(S)\Big)$$
 
-The estimate is computed by splitting the training data in two subsets $S_{train}$ and $S_{dev}$. The development set $S_{dev}$ (also called validation set) is used as a surrogate test set. The algorithm is run on $S_{train}$ once for each value of the hyperparameter in $\Theta_0$. The resulting predictors are tested on the dev set. In order to obtain the ﬁnal predictor, the learning algorithm is run once more on the original training set $S$ using the value of the hyperparameter corresponding to the predictor with smallest error on the validation set.
+The estimate is computed by splitting the training data in two subsets $S_{train}$ and $S_{dev}$. The development set $S_{dev}$ (also called **validation set**) is used as a surrogate test set. The algorithm is run on $S_{train}$ once for each value of the hyperparameter in $\Theta_0$. The resulting predictors are tested on the dev set. In order to obtain the ﬁnal predictor, the learning algorithm is run once more on the original training set $S$ using the value of the hyperparameter corresponding to the predictor with smallest error on the validation set. That will provide an estimate of $\ell_{\mathcal{D}}\big(A_{\theta^*}(S)\big)$.
 
 ----------------------------------------------------------------
 
 ## Tuning parameters via nested cross-validation
 What if we want to estimate the expected value of $(1)$ with respect to the random draw of the training set of ﬁxed size?
 
-$$\mathbb{E}\Big[\text{ }\underset{\theta \in \Theta_0}{\operatorname{min}} \text{ } \ell_{\mathcal{D}\big(A_\theta\big)}\Big] \quad \text{ } (2)$$
+$$\mathbb{E}\Big[\text{ }\underset{\theta \in \Theta_0}{\operatorname{min}} \text{ } \ell_{\mathcal{D}}\big(A_\theta\big)\Big] \quad \text{ } (2)$$
 
 In other words, we want to estimate the performance of $A_\theta$ on a typical training set of a given size when $\theta$ is tuned on the training set.
 
@@ -618,7 +622,9 @@ A better, though more computationally intensive estimate of $(2)$ is computed th
 
 
 
-Note that in each run of internal cross-validation we optimize $\theta$ locally, on the training part $S^{(i)}$ of the external cross-validation fold. Hence, the nested cross-validation estimate is computed by averaging the performance of predictors obtained with potentially diﬀerent values of their hyper-parameters.
+Note that in each run of internal cross-validation we optimize $\theta$ locally, on the training part $S_{-i}$ of the external cross-validation fold. Hence, the nested cross-validation estimate is computed by averaging the performance of predictors obtained with potentially diﬀerent values of their hyper-parameters.
+
+aggiungere jupyter cv
 
 ----------------------------------------------------------------
 
