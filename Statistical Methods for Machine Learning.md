@@ -345,7 +345,7 @@ $$= \underset{\widehat{y} \in \{-1, 1\}}{\operatorname{argmin}}\Big(\mathbb{P}\b
 $$=\underset{\widehat{y} \in \{-1, 1\}}{\operatorname{argmin}}\Big(\eta(x) \mathbb{I}\{\widehat{y}= -1\} + (1 - \eta(x))\mathbb{I}\{\widehat{y} = +1\}\Big)$$
 $$= \cases{-1 \quad \text{if } \eta(x) < \frac{1}{2} \cr \cr +1 \quad \text{if } \eta(x) \geq \frac{1}{2}}$$
 
-Hence, the Bayes optimal classifier predicts the label whose probability is the highest when conditioned on the instance. Finally, it is easy to verify that the Bayes risk in this case is $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\big[min\{\eta(X), 1 - \eta(X)\}\big]$.
+Hence, the Bayes optimal classifier predicts the label whose probability is the highest when conditioned on the instance. Finally, it is easy to verify that the Bayes risk in this case is $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\big[min\{\eta(X), 1 - \eta(X)\}\big]$. That is, the Bayes risk is the expectation of the probability of the event that is less likely to happen conditioned on the instance.
 
 ## Bounding the risk
 Next, we study the problem of bounding the risk of a predictor. From now on, we assume $\ell(y, \widehat{y}) \in [0, 1]$. However, keep in mind that our analysis continues to hold also when $\ell(y, \widehat{y}) \in [0, M]$ for any $M > 0$.
