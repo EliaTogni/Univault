@@ -102,8 +102,7 @@
       "canvas:Create new canvas": false,
       "command-palette:Open command palette": false,
       "markdown-importer:Open format converter": false,
-      "templates:Insert template": false,
-      "obsidian-extract-pdf-highlights:PDF Highlights": false
+      "templates:Insert template": false
     }
   },
   "active": "0b50027e5ed0ac5b",

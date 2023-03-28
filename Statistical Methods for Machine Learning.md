@@ -67,7 +67,7 @@ The test error is meant to estimate the **average performance** of the predictor
 
 A **learning algorithm** receives a training set as input and outputs a predictor. A training set is a set of examples $(x_1,y_1),..., (x_m,y_m).$ Training and test set are often prepared together, through a single round of data collection and annotation. Partitioning the examples in training and test data is done afterward, typically using a random split. The objective is to develop a theory to guide in the design of learning algorithms that generate predictors with low test error.
 
-Since the only input to a learning algorithm is the training set $S \equiv (x_1,y_1),..., (x_m,y_m)$, a natural approach to the design of learning algorithms is to assume that the **training error**
+Since the only input to a learning algorithm is the training set $S \equiv (x_1,y_1),..., (x_m,y_m)$, a natural approach to the design of learning algorithms is to assume that the **training error** (or **empirical risk**)
 
 $$\ell_s(f) = \frac{1}{m}\sum_{t=1}^{m}\ell(y_t, f(\mathbf{x}_t))$$
 
@@ -304,19 +304,20 @@ Therefore, we have that
 
 $$\forall x \in X \quad \mathbb{E}\Big[\mathbb{E}[\ell(Y, f^*(X))\text{ } \vert \text{ } X = x]\Big ] \leq \mathbb{E} \Big[\mathbb{E}[\ell(Y, h(X))\text{ } \vert \text{ } X = x]\Big]$$
 
-and, therefore, $\ell_{\mathcal{D}}(f^*) \leq \ell_{\mathcal{D}}(h)$ for every predictor $h: \mathcal{X} \to \mathcal{Y}$. The risk $\ell_{\mathcal{D}}(f^*)$ of the Bayes optimal predictor is called **Bayes risk**. Typically, the Bayes risk is larger than zero because labels are stochastic, noisy and that means that $Y$ is not determined by $X$.
+and, therefore, $\ell_{\mathcal{D}}(f^*) \leq \ell_{\mathcal{D}}(h)$ for every predictor $h: \mathcal{X} \to \mathcal{Y}$. The risk $\ell_{\mathcal{D}}(f^*)$ of the Bayes optimal predictor is called **Bayes risk**. Typically, the Bayes risk is larger than zero because labels are stochastic, noisy and that means that $Y$ is not always determined by $X$.
 
 We now compute the Bayes optimal predictor $f^*$ for the quadratic loss function $\ell(y, \widehat{y}) = (y − \widehat{y})^2$ when $\mathcal{Y} \equiv \mathbb{R}$,
 
 $$f^*(x) = \underset{\widehat{y} \in \mathbb{R}}{\operatorname{argmin}} \mathbb{E}\Big[(Y - \widehat{y})^2 \text{ } \vert \text{ } X = x\Big]$$
 $$= \underset{\widehat{y} \in \mathbb{R}}{\operatorname{argmin}} \mathbb{E}\Big[Y^2 + \widehat{y}^2 -2\widehat{y}Y \text{ } \vert \text{ } X = x\Big]$$
+
 Because we are interested in the minimizing of $\widehat{y}$, it is possible to notice that the term $Y^2$ is a costant and, in fact, it does not depend on $\widehat{y}$. Using the linear property of expectation $\mathbb{E}[aX + bY] = a\mathbb{E}[X] + b\mathbb{E}[Y], \quad a, b \in \mathbb{R}$, we are able to write 
 
 $$= \underset{\widehat{y} \in \mathcal{Y}}{\operatorname {argmin}}\Big(\underbrace{\mathbb{E}\big[Y^2 \text{ }\vert \text{ }X = x \big]}_{\text{does not depend on }\widehat{y}} + \widehat{y}^2 - 2 \widehat{y} \mathbb{E} \big[Y \text{ }\vert \text{ }X = x\big] \Big)$$
 $$= \underset{\widehat{y} \in \mathbb{R}}{\operatorname {argmin}}\Big( \widehat{y}^2 - 2\widehat{y} \mathbb{E}\big[Y \vert X = x\big]\Big)\quad \text{ignoring the term that does not depend on } \widehat{y}$$
 
 and the reason why this is possible is because the term ignored is just a costant and so it is possible to extract it from the $argmin$ operator.<br />
-Now, we have to minimize the function $F(\widehat{y}) = \widehat{y}^2 - 2\widehat{y}\mathbb{E}\big[Y \text{ } \vert \text{ } X = x\big]$, which can be seen as $F(z) = z^2 - 2zc$. Its derivative is $F'(z) = 2z -2c$ and it is minimized for $F'(z) = 0$. After the substitution, we obtain $2 \widehat{y} - 2 \mathbb{E}\big[Y \vert X\big]$ and, therefore
+Now, we have to minimize the function $F(\widehat{y}) = \widehat{y}^2 - 2\widehat{y}\mathbb{E}\big[Y \text{ } \vert \text{ } X = x\big]$, which can be seen as $F(z) = z^2 - 2zc$. Its derivative is $F'(z) = 2z -2c$ and it is minimized for $F'(z) = 0$. After the substitution, we obtain $2 \widehat{y} - 2 \mathbb{E}\big[Y \vert X = x\big] = 0$ and, therefore
 
 $$ f^*(x) = \mathbb{E}\big[Y \text{ } \vert \text{ } X = x\big]$$
 
@@ -324,10 +325,10 @@ Thus, the Bayes optimal prediction for the quadratic loss function is the expect
 
 Substituting in the conditional risk formula $\mathbb{E}[(Y - f^*(X))^2 \vert X = x]$ the Bayes optimal predictor $f^*(X) = \mathbb{E}[Y \text{ }\vert \text{ } X = x]$ we obtain
 
-$$\mathbb{E}\Big[\big(Y - f^*(X)\big)^2 \text{ }\Big \vert \text{ } X = x \Big] = \mathbb{E}\Big[\big(Y - \mathbb{E}[Y \text{ } \vert \text{ }x ]\big)^2 \text{ }\Big \vert \text{ } X = x \Big] = Var\big[Y \vert X = x\big]$$
+$$\mathbb{E}\Big[\big(Y - f^*(X)\big)^2 \text{ }\Big \vert \text{ } X = x \Big] = \mathbb{E}\Big[\big(Y - \mathbb{E}[Y \text{ } \vert \text{ } X = x ]\big)^2 \text{ }\Big \vert \text{ } X = x \Big] = Var\big[Y \vert X = x\big]$$
 
 In words, the conditional risk of the Bayes optimal predictor for the quadratic loss is the **conditional variance** of the label on the instance. By averaging over $X$ we obtain $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\big[Var[Y \text{ } \vert \text{ } X]\big]$.<br />
-Namely, the Bayes risk for the quadratic loss is the expected conditional variance of the label. Note that $\mathbb{E}\big[var[ Y \text{ } \vert \text{ } X]\big]$ is generally diﬀerent from $Var[Y]$. Indeed, the law of total variance says that $Var[Y] - \mathbb{E}\big[Var[Y \text{ } \vert \text{ } X]\big] = Var\big[\mathbb{E}[Y \text{ } \vert \text{ } X]\big]$.
+Namely, the Bayes risk for the quadratic loss is the expected conditional variance of the label. Note that $\mathbb{E}\big[Var[ Y \text{ } \vert \text{ } X]\big]$ is generally diﬀerent from $Var[Y]$. Indeed, the law of total variance says that $Var[Y] - \mathbb{E}\big[Var[Y \text{ } \vert \text{ } X]\big] = Var\big[\mathbb{E}[Y \text{ } \vert \text{ } X]\big]$.
 
 We now focus on binary classiﬁcation, where $\mathcal{Y} = \{−1, 1\}$. Let $\eta(x)$ be the probability of $Y = 1$ conditioned on $X = x$. We view $\eta(x) = \mathbb{P}( Y = +1 \text{ } \vert \text{ } X = x)$ as the value on $x$ of a function $\eta: \mathcal{X} \to [0, 1]$.
 
@@ -342,18 +343,18 @@ $$\forall x \in \mathcal{X} \quad f^*(x) = \underset{\widehat{y} \in \{-1, 1\}}{
 $$= \underset{\widehat{y} \in \{-1, 1\}}{\operatorname{argmin}}\mathbb{E}\Big[\mathbb{I}\big\{Y = +1\big\}\mathbb{I}\big\{\widehat{y} = -1\big\} + \mathbb{I}\big\{Y = -1\big\}\mathbb{I}\big\{\widehat{y} = +1\big\} \text{ } \vert \text{ } X = x\Big]$$
 $$= \underset{\widehat{y} \in \{-1, 1\}}{\operatorname{argmin}}\Big(\mathbb{P}\big(Y =  + 1 \text{ } \vert \text{ } X = x\big)\mathbb{I}\{\widehat{y} = -1\} + \mathbb{P}\big(Y = -1 \text{ } \vert \text{ } X = x\big)\mathbb{I}\{\widehat{y} = +1\}\Big)$$
 $$=\underset{\widehat{y} \in \{-1, 1\}}{\operatorname{argmin}}\Big(\eta(x) \mathbb{I}\{\widehat{y}= -1\} + (1 - \eta(x))\mathbb{I}\{\widehat{y} = +1\}\Big)$$
-$$= \cases{-1 \quad \text{if } \eta(x) < \frac{1}{2} \cr \cr +1 \quad \text{if} \eta(x) \geq \frac{1}{2}}$$
+$$= \cases{-1 \quad \text{if } \eta(x) < \frac{1}{2} \cr \cr +1 \quad \text{if } \eta(x) \geq \frac{1}{2}}$$
 
 Hence, the Bayes optimal classifier predicts the label whose probability is the highest when conditioned on the instance. Finally, it is easy to verify that the Bayes risk in this case is $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\big[min\{\eta(X), 1 - \eta(X)\}\big]$.
 
 ## Bounding the risk
 Next, we study the problem of bounding the risk of a predictor. From now on, we assume $\ell(y, \widehat{y}) \in [0, 1]$. However, keep in mind that our analysis continues to hold also when $\ell(y, \widehat{y}) \in [0, M]$ for any $M > 0$.
 
-It should be clear that, given an arbitrary predictor h, we cannot directly compute its risk $\ell_{\mathcal{D}}(h)$ with respect to $\mathcal{D}$ because $\mathcal{D}$ is typically unknown (if we knew $\mathcal{D}$, we could directly construct the Bayes optimal predictor). We thus consider the problem of estimating the empirical risk of a given predictor $h$. In order to compute this estimate, we can use the **test set** $S' = \{(x_1' , y_1' ), ... , (x_n' , y_n')$. We can then estimate $\ell_{\mathcal{D}}(h)$ with the **test error**, which is the average loss of $h$ on the test set,
+It should be clear that, given an arbitrary predictor $h$, we cannot directly compute its statistical risk $\ell_{\mathcal{D}}(h)$ with respect to $\mathcal{D}$ because $\mathcal{D}$ is typically unknown (if we knew $\mathcal{D}$, we could directly construct the Bayes optimal predictor). We thus consider the problem of estimating the empirical risk of a given predictor $h$. In order to compute this estimate, we can use the **test set** $S' = \{(x_1' , y_1' ), ... , (x_n' , y_n')$. We can then estimate $\ell_{\mathcal{D}}(h)$ with the **test error**, which is the average loss of $h$ on the test set
 
 $$\ell_{s'}(h) = \frac{1}{n}\sum_{t = 1}^{n}\ell\big(y_{t}', h(x_t')\big)$$
 
-Under the assumption that the test set is generated through independent draws from $\mathcal{D}$, the test error corresponds to the **sample mean** of the risk. Indeed, for each $t = 1, ... , n$ the example $(X_t', Y_t')$ is an independent draw from $\mathcal{D}$. Therefore,
+Under the assumption that the test set is generated through independent draws from $\mathcal{D}$, the test error corresponds to the **sample mean** of the statistical risk. Indeed, for each $t = 1, ... , n$ the example $(X_t', Y_t')$ is an independent draw from $\mathcal{D}$. Therefore,
 
 $$\mathbb{E}\Big[\ell\big(Y_t', h(X_t')\big)\Big] = \ell_{\mathcal{D}}(h) \quad \quad t= 1, ..., n$$
 
@@ -375,7 +376,7 @@ In the rest of this course, we repeatedly use the following facts:
 
 ![[facts2.jpg]]
 
-Using the Chernoﬀ-Hoeﬀding bound with $Z_t = \ell(y_t , h(x_t)) \in [0, 1]$, we can compute a conﬁdence interval for the risk as follows (where the test error is written as $\ell$ instead of $\ell_{S'}$ ),
+Using the Chernoﬀ-Hoeﬀding bound with $Z_t = \ell(y_t , h(x_t)) \in [0, 1]$, we can compute a conﬁdence interval for the statistical risk as follows (where the test error is written as $\ell$ instead of $\ell_{S'}$ ),
 
 $$\mathbb{P}\Big(\vert\ell_{\mathcal{D}}(h) - \ell(h) \vert > \epsilon\Big) = \mathbb{P}\Big(\ell_{\mathcal{D}}(h) - \ell(h) > \epsilon \cup \ell(h) - \ell_{\mathcal{D}}(h) > \epsilon\Big)$$
 $$\quad = \mathbb{P}\Big(\ell_{\mathcal{D}}(h) - \ell(h) > \epsilon\Big) + \Big(\ell(h) - \ell_{\mathcal{D}}(h) > \epsilon \Big) \leq 2e^{-2\epsilon^{2}n} \quad \text{ } \quad (1)$$
@@ -627,5 +628,21 @@ Note that in each run of internal cross-validation we optimize $\theta$ locally,
 aggiungere jupyter cv
 
 ----------------------------------------------------------------
+
+Ex binary classification w/ 0.1 loss
+$D = d_x, \eta  x ~ D_x \eta(x9 = P(Y = 1 | X = x ))$
+
+assume $\eta$ is Lipschitz on $\mathcal{X}$. This means $\exists c > 0 \quad \vert \eta(x) - \eta(x') \vert \leq c \Vert x - x' \Vert \quad \forall x, x' \in \mathcal{X}$
+
+Disegno
+
+Lipschitz implies continuity because if the function is discontinuous, this property will cause the function to jump.
+in general this property will be stronger than continuity
+
+
+Nonparametric algorihms:
+$\mathcal{H}_m = \{h: \exists S_m A(S_m) = h\}$
+
+---------------------------------------------------------------
 
 # Risk analysis for 1-NN
