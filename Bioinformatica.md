@@ -347,7 +347,7 @@ $$\text{softmax}(y) = \frac{e^y}{\left|\left| e^{y} \right|\right|_1} = \left(\f
 I percettroni a singolo strato possono apprendere solo funzioni lineari (e classi linearmente separabili): per apprendere funzioni non-lineari si utilizzano modelli composti da più strati di percettroni, le [[Intelligenza Artificiale#Artificial neural network |reti neurali]]. Il [[Intelligenza Artificiale#Multi-layer perceptron |percettrone multistrato]] è composto da più **layer** in sequenza, ed ogni layer è composto da più percettroni: il primo layer ha come input il vettore di ingresso, mentre il layer $i$-esimo ha come ingresso il layer precedente. Ogni strato ha una matrice di pesi associata
 
 $$h_i = \begin{cases}
-W_i\ x & i = 1 \\
+W_i\ x & i = 1 \cr \cr
 W_i\ h_{i-1} & i > 1
 \end{cases}$$
 
@@ -444,7 +444,7 @@ $$\gamma_c = \frac{f(x_m)}{\left \vert\left \vert w_c\right \vert \right \vert} 
 
 D'ora in avanti considereremo solo iperpiani canonici, che sono gli iperpiani con margine funzionale unitario e margine geometrico $\frac{1}{\left|\left|w\right|\right|}$ . Esprimiamo allora, ciò che vogliamo: vogliamo massimizzare il margine
 
-$$w^* = \argmax_{w\in \mathbb{R}^N} \frac{1}{\left|\left|w\right|\right|} = \argmin_{w\in \mathbb{R}^N} \left|\left|w\right|\right|$$
+$$w^* = \underset{w\in \mathbb{R}^N}{\operatorname{argmax}} \frac{1}{\left|\left|w\right|\right|} = \underset{w\in \mathbb{R}^N}{\operatorname{argmin}} \left|\left|w\right|\right|$$
 
 mantenendo una classificazione corretta per tutti i punti (siamo nel caso in cui il dataset sia linearmente separabile)
 
@@ -453,13 +453,13 @@ $$yw^Tx\geq 1\hspace{0.5in} \forall(x,y)\in D$$
 Deve valere $yw^Tx\geq 1$ perché, per i punti sul margine in una delle due direzioni vale, come abbiamo mostrato prima, $|yw^Tx_m| = 1$ . Inoltre, il segno di $f(x_m)$ deve essere lo stesso di $y$ perché la classificazione sia corretta, quindi 
 
 $$yw^Tx_m = \begin{cases}
-(-1)\cdot (-1) & y = -1 \\
+(-1)\cdot (-1) & y = -1 \cr \cr
 (+1)\cdot (+1) & y = +1 
 \end{cases}\Rightarrow yw^Tx_m = 1$$
 
 Per i punti oltre il margine deve valere $|w^Tx|>1$, quindi $yw^Tx > 1$. In generale arriviamo a dire che per tutti i punti vale $yw^Tx\geq 1$. Possiamo esprimere il tutto come un problema di ottimizzazione quadratica vincolata
 
-$$w^* = \argmin_{w\in \mathbb{R}^N} \left|\left|w\right|\right|\hspace{0.2in}:\hspace{0.2in}yw^Tx\geq 1\hspace{0.1in} \forall(x,y)\in D$$
+$$w^* = \underset{w\in \mathbb{R}^N}{\operatorname{argmin}} \left|\left|w\right|\right|\hspace{0.2in}:\hspace{0.2in}yw^Tx\geq 1\hspace{0.1in} \forall(x,y)\in D$$
 
 Risolvendo con KKT otteniamo che il vettore ottimo è determinato solo dai punti sul margine: questi saranno chiamati *support vector*. La soluzione ottima è descritta da un vettore di pesi $\alpha^*$ nulli per punti che non sono support vector
 
@@ -468,7 +468,7 @@ $$w^* = \sum_{(x_i,y_i)\in D\ :\ x_i \in \mathcal{SV}} y_i\alpha_ix_i$$
 
 Il bound sul rischio statistico che deriva dal teorema di Vapnik garantisce che
 
-$$P \left( er(f) \leq \tilde{er}(f) + \sqrt{\frac{h\left( \ln{\frac{2n}{h}} + 1\right) - \ln{(\nicefrac{\delta}{4})}}{n}}\ \right) \geq 1-\delta$$
+$$P \left( er(f) \leq \tilde{er}(f) + \sqrt{\frac{h\left( \ln{\frac{2n}{h}} + 1\right) - \ln{(\frac{\delta}{4})}}{n}}\ \right) \geq 1-\delta$$
 
 Dove $n$ è la dimensione del training set e $h$ è la dimensione di Vapnik-Chervonenkis. Nel caso di SVM, se vale
 
@@ -482,13 +482,13 @@ $$h = R^2\Lambda^2$$
 Una prospettiva di questo risultato è che l'algoritmo, minimizzando la norma del vettore $w$ sta anche minimizzando la dimensione di VC agendo sul termine $\Lambda$.
 
 #### Soft-margin
-In contrapposizione a *hard-margin* SVM, le SVM *soft-margin* permettono una violazione del vincolo di margine. Introducendo delle *slack variables* $\xi$, il problema risulta vincolato dalle condizioni
+In contrapposizione a **hard-margin** SVM, le SVM **soft-margin** permettono una violazione del vincolo di margine. Introducendo delle **slack variables** $\xi$, il problema risulta vincolato dalle condizioni
 
 $$y_iw^Tx_i\geq1-\xi_i \hspace{0.5in}\forall(x_i,y_i)\in D$$
 
 Per ottenere una classificazione il più corretta possibile, le violazioni del vincolo di margine devono essere nella minor misura possibile, quindi minimizziamo anche rispetto alle slack
 
-$$w^* = \argmin_{w\in \mathbb{R}^N} \left|\left|w\right|\right| + C\sum_{(x_i,y_i)}\xi_i$$
+$$w^* = \underset{w\in \mathbb{R}^N}{\operatorname{argmin}} \left|\left|w\right|\right| + C\sum_{(x_i,y_i)}\xi_i$$
 
 Dove $C$ è un parametro di trade-off che regola la tolleranza verso la violazione del vincolo di margine: $C\rightarrow+\infty$ corrisponde al SVM hard-margin.
 
@@ -523,17 +523,11 @@ $$K_\sigma(x,y) = e^{-\frac{\left|\left|x-y\right|\right|^2}{2\sigma^2}}$$
 ----------------------------------------------------------------
 
 ## Metriche di Valutazione
-+:----------:+:-:+:--------------:+:--------------:+
-|            |   | *label*        |                |
-+------------+---+----------------+----------------+
-| ::: turn   |   | P              | N              |
-| 90*output* |   |                |                |
-| :::        |   |                |                |
-+------------+---+----------------+----------------+
-|            | P | True Positive  | False Positive |
-+------------+---+----------------+----------------+
-|            | N | False Negative | True Negative  |
-+------------+---+----------------+----------------+
+
+|    | P    |         N|
+|-----|--- |----|
+| P      | True Positive   |   False Positive |
+| N | False Negative | True Negative |
 
 I classificatori binari (molto usati in bioinformatica) possono predire due classi: positivo o negativo. In base al valore reale dell'esempio, si possono distinguere quattro casi: vero positivo, falso positivo, vero negativo e falso negativo. Si definiscono le seguenti misure:
 - **precisione**: rapporto tra il numero di veri positivi e il numero di predizioni positive. Esprime la probabilità che una predizione positiva sia corretta
@@ -597,7 +591,7 @@ Spesso in bioinformatica si utilizzano delle variabili intermedie, chiamate *cel
 ----------------------------------------------------------------
 
 ## GWAS
-I *Genome-Wide Association Studies* hanno raccolto dati sulla correlazione tra tratti fenotipici e genotipici: ad ogni patologia viene associata la significatività statistica delle mutazioni in loci particolari con tecniche di acquisizione basate su sequenziamento e microarray.
+I **Genome-Wide Association Studies** hanno raccolto dati sulla correlazione tra tratti fenotipici e genotipici: ad ogni patologia viene associata la significatività statistica delle mutazioni in loci particolari con tecniche di acquisizione basate su sequenziamento e microarray.
 
 I GWAS hanno vari difetti. Innanzitutto, è molto difficile stabilire una significatività statistica di una mutazione potenzialmente causativa rispetto ad una variazione del rischio per una particolare patologia: in ogni caso, comunque, si tratta di una misura della correlazione e non della causalità. Inoltre, i GWAS restituiscono solitamente un grande numero di mutazioni potenzialmente causative (quindi, molti falsi positivi) e i ricercatori si sbilanciano rispetto ai preconcetti che
 hanno in materia.
@@ -605,7 +599,7 @@ hanno in materia.
 ----------------------------------------------------------------
 
 ## Conservazione Evolutiva
-Molti metodi sono basati sulla conservazione evolutiva del genoma (figura [\[fig:ecr\]](#fig:ecr){reference-type="ref" reference="fig:ecr"}): se l'evoluzione si muove sotto la spinta di mutazioni casuali e della selezione delle varianti più adatte, allora, una mutazione in una regione conservata è molto probabilmente deleteria.
+Molti metodi sono basati sulla conservazione evolutiva del genoma: se l'evoluzione si muove sotto la spinta di mutazioni casuali e della selezione delle varianti più adatte, allora, una mutazione in una regione conservata è molto probabilmente deleteria.
 
 Una mutazione è deleteria quando influisce negativamente sulla capacità riproduttiva dell'individuo: una mutazione deleteria è patogenica se è causa di una malattia.
 
