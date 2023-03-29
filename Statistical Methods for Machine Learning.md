@@ -349,12 +349,23 @@ If $\widehat{y} = 1$, the first term goes to $0$ and we predict the second term.
 
 $$= \cases{-1 \quad \text{if } \eta(x) < \frac{1}{2} \cr \cr +1 \quad \text{if } \eta(x) \geq \frac{1}{2}}$$
 
-Hence, the Bayes optimal classifier predicts the label whose probability is the highest when conditioned on the instance. Finally, it is easy to verify that the Bayes risk in this case is $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\big[min\{\eta(X), 1 - \eta(X)\}\big]$. That is, the Bayes risk is the expectation of the probability of the event that is less likely to happen conditioned on the instance.
+Hence, the Bayes optimal classifier predicts the label whose probability is the highest when conditioned on the instance. Finally, it is easy to verify that the Bayes risk in this case is $\ell_{\mathcal{D}}(f^*) = \mathbb{E}[\ell(f^*(X), Y)] = \mathbb{E}\big[\mathbb{I}\{f^*(x) \neq Y\}\big] = \mathbb{P}(f^*(X) \neq Y)$.
+Knowing that $\mathbb{P}(f^*(X) \neq Y \vert X = x) = min \{\eta(x), (1 - \eta(x))\}$ and knowing that $\mathbb{E}\Big[\mathbb{E}\big[\mathbb{I}\{f^*(x) \neq Y\}\big \vert X = x]\Big] = \mathbb{E}[\mathbb{I}\{f^*(x) \neq Y\}\big]$, it is possible to define $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\big[min\{\eta(X), 1 - \eta(X)\}\big]$.<br />
+That is, the Bayes risk is the expectation of the probability of the event that is less likely to happen conditioned on the instance.
+
+Let's assume we have a one directional problem (that is, based on a one directional feature) and consider $\eta: X \to [0, 1]$.
+
+
+
+Now, consider the plot of the function $min \{Z, (1 - Z)\}$:
+
+
+
+In the central region of the first plot, the label is basically random, because the function $min \{Z, (1 - Z)\}$ returns $1$ and $-1$ both with probability $\frac{1}{2}.$
 
 ## Bounding the risk
-Next, we study the problem of bounding the risk of a predictor. From now on, we assume $\ell(y, \widehat{y}) \in [0, 1]$. However, keep in mind that our analysis continues to hold also when $\ell(y, \widehat{y}) \in [0, M]$ for any $M > 0$.
-
-It should be clear that, given an arbitrary predictor $h$, we cannot directly compute its statistical risk $\ell_{\mathcal{D}}(h)$ with respect to $\mathcal{D}$ because $\mathcal{D}$ is typically unknown (if we knew $\mathcal{D}$, we could directly construct the Bayes optimal predictor). We thus consider the problem of estimating the statistical risk of a given predictor $h$. In order to compute this estimate, we can use the **test set** $S' = \{(x_1' , y_1' ), ... , (x_n' , y_n')$. We can then estimate $\ell_{\mathcal{D}}(h)$ with the **test error**, which is the average loss of $h$ on the test set
+Next, we study the problem of bounding the risk of a predictor. From now on, we assume $\ell(y, \widehat{y}) \in [0, 1]$. However, keep in mind that our analysis continues to hold also when $\ell(y, \widehat{y}) \in [0, M]$ for any $M > 0$.<br />
+It should be clear that, given an arbitrary predictor $h: X \to Y$, we cannot directly compute its statistical risk $\ell_{\mathcal{D}}(h)$ with respect to $\mathcal{D}$ because $\mathcal{D}$ is typically unknown (if we knew $\mathcal{D}$, we could directly construct the Bayes optimal predictor). We thus consider the problem of estimating the statistical risk of a given predictor $h$. In order to compute this estimate, we can use the **test set** $S' = \{(x_1' , y_1' ), ... , (x_n' , y_n')$. We can then estimate $\ell_{\mathcal{D}}(h)$ with the **test error**, which is the average loss of $h$ on the test set
 
 $$\ell_{s'}(h) = \frac{1}{n}\sum_{t = 1}^{n}\ell\big(y_{t}', h(x_t')\big)$$
 
@@ -362,7 +373,7 @@ Under the assumption that the test set is generated through independent draws fr
 
 $$\mathbb{E}\Big[\ell\big(Y_t', h(X_t')\big)\Big] = \ell_{\mathcal{D}}(h) \quad \quad t= 1, ..., n$$
 
-Note that the above equalities rely on the assumption that $h$ does not depend on the test set (but it depends on the training set). If it did, then the above equalities would not be necessarily true. This fact is important in the analysis of learning algorithms.
+Note that the above equalities rely on the assumption that $h$ does not depend on the test set $S'$ (but it depends on the training set). If it did, then the above equalities would not be necessarily true. This fact is important in the analysis of learning algorithms.
 
 In order to compute how good is the test error as an estimate for the risk, we can use the following result about the law of large numbers.
 
@@ -370,6 +381,8 @@ In order to compute how good is the test error as an estimate for the risk, we c
 Let $Z_1 , ... , Z_n$ be **independent and identically distributed random variables** with expectation $\mu$ and such that $0 \leq Z \leq 1$ for each $t = 1, ... , n$. Then, for any given $\epsilon > 0$
 
 $$\mathbb{P}\Bigg(\frac{1}{n}\sum_{t = 1}^{n}Z_t > \mu + \epsilon \Bigg) \leq e^{-2\epsilon^2n}\quad \text{and}\quad \mathbb{P}\Bigg(\frac{1}{n}\sum_{t = 1}^{n}Z_t < \mu + \epsilon\Bigg) \leq e^{-2\epsilon^2n}$$
+
+This means that if we compute the sample mean of the variables, the probability that this will be much larger (or much smaller) than the expectation, with respect to the draw of the sample, decreases exponentially with the sample size.
 
 In the rest of this course, we repeatedly use the following facts:
 1) for any two events $A$ and $B$, if $B \implies A$, then $P(B) \leq P(A)$;
@@ -388,6 +401,10 @@ $$\quad = \mathbb{P}\Big(\ell_{\mathcal{D}}(h) - \ell(h) > \epsilon\Big) + \Big(
 where in the last step we applied the union bound to the disjoint events $\ell_{\mathcal{D}}(h) − \ell(h) > \epsilon$ and $\ell(h) − \ell_{\mathcal{D}}(h) > \epsilon$. Note that the probability is computed with respect to the random draw of the test set. This inequality shows that the probability that a test set gives a test error $\ell_{S'}(h)$ diﬀering from the true statistical risk $\ell_{\mathcal{D}}(h)$ (which is $\mu$ in the Chernoff-Hoeffding bound) for more than $\epsilon$ quickly decreases with the size $n$ of the test set.
 
 More speciﬁcally: if we set to $\delta \in (0, 1)$ the right-hand side of the previous equation and then solve for $\epsilon$, we get that
+
+$$\epsilon = \sqrt{\frac{1}{2n}\ln\frac{1}{\delta}}$$
+
+For this value of $\epsilon$, the probability (the right-hand side of the equation) is at most $\delta$.
 
 $$\vert \ell_{\mathcal{D}}(h) - \ell_{S'}(h)\vert \leq \sqrt{\frac{1}{n}\ln{\frac{2}{\delta}}}$$
 
