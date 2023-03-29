@@ -557,6 +557,10 @@ Se il classificatore predice come negativi i valori sotto la soglia e come posit
 
 Un classificatore perfetto avrebbe sensitività e specificità unitarie: passerebbe, dunque, per il punto $(0,1)$ . Solitamente, però, tale classificatore non è possibile a causa della casualità nei dati. Per misurare la bontà di un classificatore binario possiamo osservare quanto la curva ROC è simile alla curva del classificatore perfetto: utilizziamo a questo proposito l'area sotto la curva ROC (AUROC), che varrà $1$ per il classificatore perfetto e $0.5$ per il classificatore casuale uniforme (la cui curva ROC è la bisettrice del quadrante).
 
+
+
+In figura è possibile osservare un esempio di curva ROC: sulla sinistra sono riportate le distribuzioni dei reali negativi $H_0$ e positivi $H_1$, nonchè un esempio di valore di soglia (in rosso) e sulla destra la curva ROC ottenuta facendo variare il valore della soglia.
+
 ----------------------------------------------------------------
 
 ### PRC
@@ -571,6 +575,12 @@ Un classificatore che cerca di massimizzare sensitività e specificità su un in
 Per questo, su dati sbilanciati come sono i dati in bioinformatica, si preferisce utilizzare la **PRC** (**Precision-Recall Curve**), che riporta sulle ordinate la precisione e sulle ascisse la recall: la precisione, al contrario della specificità, è molto influenzata dal numero di falsi positivi e per niente influenzata dal numero di negativi reali.
 
 L'ottimo per la curva precision-recall sarebbe il punto $(1,1)$ e un classifcatore casuale uniforme ha come curva il segmento tra $(0,1)$ e $(1,0)$ . Anche nel caso della PRC, possimo utilizzare l'area sotto la curva (AUPRC) come indicatore della performance del classificatore.
+
+
+
+In figura si può osservare il confronto tra le curve PR e ROC per una famiglia di classificatori binari. Osservando la curva ROC, il classificatore migliore sembra quello di parametro $w = 1000$  
+(curva nera), anche se molto simile ai concorrenti. Dalla PRC, invece, risulta evidente come tale classificatore sia uno dei peggiori, mentre risultano migliori i classificatori ottenuti con  
+parametri intermedi (con $w = 1$ risulta pessimo per entrambe)
 
 ---------------------------------------------------------------
 
@@ -622,6 +632,10 @@ Gli esempi positivi sono ottenuti come le varianti alleliche che hanno una frequ
 ### Scores
 Le feature in ingresso sono le 63 modalità di annotazione, integrate con un piccolo numero di termini di interazione. Lo score in uscita (*raw C-score*) è stato calcolato per tutte le possibili 8.6 miliardi di varianti del genoma umano di riferimento: per rendere il punteggio più leggibile, il range è stato riscalato tra 1 e 99, ottenendo uno *scaled C-score*.
 
+![[ecr-gata3.png]]
+
+In figura è possibile osservare lo score di conservazione evolutiva del gene GATA3 forniti dal ECR browser ➮. Si notino le regioni colorate in blu, conservate in tutte le specie confrontate.
+
 I *raw CADD score* sono il risultato diretto del modello e indicano, quando maggiori, una maggiore probabilità che la mutazione sia deleteria. I punteggi raw hanno un valore relativo e maggiore risoluzione, ma non hanno alcun valore assoluto.
 
 Invece, gli *scaled CADD score* sono ottenuti come la scalatura per ordini di grandezza dei punteggi grezzi: le varianti al primo decile sono CADD-10, quelle al primo percentile sono CADD-20, quelle al primo millile CADD-30, ...Questi punteggi hanno, quindi, un'interpretazione immediata e sono confrontabili anche tra diverse versioni di CADD, ma hanno una risoluzione inferiore.
@@ -636,7 +650,7 @@ CADD 1.0 utilizza come algoritmo di apprendimento un SVM lineare, mentre da CADD
 ## DeepSEA
 *DeepSEA* è un sistema basato su deep learning per la predizione degli effetti degli SNP in regioni non-codificanti.
 
-Come *cell variable*, vengono predette delle feature epigenetiche come siti di binding dei fattori di trascrizione, sensitività alla DNasi, ...per poi predire gli effetti sulla cromatina e ordinare le varianti.
+Come *cell variable*, vengono predette delle feature epigenetiche come siti di binding dei fattori di trascrizione, sensitività alla DNasi, ... per poi predire gli effetti sulla cromatina e ordinare le varianti.
 
 L'analisi è rivolta alle regioni non-coding perché più del 96% degli SNP nelle patologie tumorali sono in tali regioni: tuttavia, solo poche sono causative. Varianti in regioni non-codificanti possono essere deleterie interrompendo o creando motivi nelle sequenze del DNA che inibiscono o abilitano il legame di fattori di trascrizione o il binding di miRNA; inoltre, mutazioni negli introni possono modificare lo splicing.
 
@@ -653,32 +667,30 @@ Il predittore finale utilizza le cell variable per stimare l'effetto della varia
 Il primo layer della rete neurale di DeepSEA è composto da una matrice $D\times W$ di neuroni, dove il neurone $h_{d,w}$ si occupa di rilevare il motivo $d$ nella finestra $w$ . I motivi target hanno una lunghezza di 6 basi: la larghezza della finestra è 6, con un *hop size* di 1. Quindi il numero di finestre $W$ è cinque unità in meno rispetto alla
 lunghezza della sequenza (no padding).
 
-Il numero di motivi è virtualmente variabile, ma tutti i neuroni $\graffe{h_{d,w}}_{w=1}^{W}$ cercano di rilevare lo stesso motivo: non ha senso usare uno strato completamente connesso, ma si sfrutta il parameter sharing degli strati convoluzionali per facilitare il training e ridurre il numero di parametri. Ogni motivo sarà, quindi, rilevato da uno specifico kernel $4\times 6$.
+Il numero di motivi è virtualmente variabile, ma tutti i neuroni $\{h_{d,w}\}_{w=1}^{W}$ cercano di rilevare lo stesso motivo: non ha senso usare uno strato completamente connesso, ma si sfrutta il parameter sharing degli strati convoluzionali per facilitare il training e ridurre il numero di parametri. Ogni motivo sarà, quindi, rilevato da uno specifico kernel $4\times 6$.
 
 Ricapitolando: il primo layer di DeepSEA è uno strato convoluzionale con $D$ kernel $4\times 6$. Dopodiché viene applicata una funzione di attivazione ReLU e max pooling con stride di larghezza 4. A questo, seguono altri due strati convoluzionali con ReLU e max pooling. Infine, si trova uno strato completamente connesso con attivazione logistica e uno strato finale di output con 919 neuroni e attivazione logistica.
 
 ----------------------------------------------------------------
 
 ### Boosting
-L'output della rete convoluzionale restituisce 919 feature: da queste si calcolano le differenze assolute ( $P(ref)-P(alt)$ ) e relative ( $\log{\nicefrac{P(ref)}{P(alt)}}$ ) e si integrano gli score di conservazione evolutiva. Tutte queste feature (1842) sono preprocessate calcolandone il valore assoluto e sono standardizzate: il predittore viene ottenuto con un algoritmo di boosting per la regressione logistica.
+L'output della rete convoluzionale restituisce 919 feature: da queste si calcolano le differenze assolute ( $P(ref)-P(alt)$ ) e relative ( $\log{\frac{P(ref)}{P(alt)}}$ ) e si integrano gli score di conservazione evolutiva. Tutte queste feature (1842) sono preprocessate calcolandone il valore assoluto e sono standardizzate: il predittore viene ottenuto con un algoritmo di boosting per la regressione logistica.
 
 ----------------------------------------------------------------
 
 ## HyperSMURF
-![Rappresentazione schematica e pseudocodice dell'algoritmo hyperSMURF:
-i dati vengono partizionati, bilanciati e usati come training set degli
-algoritmi di apprendimento random forest, le cui predizioni vengono
-combinate](img/hypersmurf.png){#fig:hypersmurf width="75%"}
-
-HyperSMURF (*Hyper-ensamble of SMote Undersampled Random Forests*) è un metodo di *hyper-esamble* per la predizione delle varianti deleterie in regioni non-codificanti, che affronta direttamente il problema dello sbilanciamento dei dati. L'algoritmo è descritto in figura [1.1](#fig:hypersmurf){reference-type="ref" reference="fig:hypersmurf"} .
+HyperSMURF (*Hyper-ensamble of SMote Undersampled Random Forests*) è un metodo di *hyper-esamble* per la predizione delle varianti deleterie in regioni non-codificanti, che affronta direttamente il problema dello sbilanciamento dei dati.
 
 ### SMOTE
 I dati disponibili nel training set, come spesso accade in bioinformatica, sono estremamente sbilanciati: essi vengono ribilanciati sovracampionando la classe minoritaria e sottocampionando la classe maggioritaria.
 
-La tecnica usata per il sovracampionamento della classe minoritaria è SMOTE (*Synthetic Minority Oversampling TEchnique*). Per creare un campione sintetico da un campione natutrale $x$ , viene scelto con probabilità uniforme $x_{knn}$ uno dei $k$ nearest neighbor del campione e un numero $\alpha$ tra 0 e 1 (con probabilità uniforme): il campione sintetico è dato dalla combinazione convessa dei due campioni $x$ e
-$x_{knn}$ con coefficienti $\alpha$ e $1$-$\alpha$ .
+La tecnica usata per il sovracampionamento della classe minoritaria è SMOTE (*Synthetic Minority Oversampling TEchnique*). Per creare un campione sintetico da un campione natutrale $x$ , viene scelto con probabilità uniforme $x_{knn}$ uno dei $k$ nearest neighbor del campione e un numero $\alpha$ tra 0 e 1 (con probabilità uniforme): il campione sintetico è dato dalla combinazione convessa dei due campioni $x$ e $x_{knn}$ con coefficienti $\alpha$ e $1$-$\alpha$ .
 
 $$\text{SMOTE}(x) := (1-\alpha)\,x + \alpha\, x_{knn}\ :\ \alpha \leftarrow \text{rand}(0,1),\ x_{knn} \leftarrow \text{rand}(\text{KNN}(x))$$
+
+![[SMOTE.png]]
+
+In figura è possibile osservare lappresentazione schematica e lo pseudocodice dell’algoritmo hyperSMURF: i dati vengono partizionati, bilanciati e usati come training set degli algoritmi di apprendimento random forest, le cui predizioni vengono combinate.
 
 ----------------------------------------------------------------
 
@@ -695,8 +707,5 @@ L'algoritmo è stato sviluppato su due diversi dataset: uno relativo a patologie
 I dati relativi a patologie Mendeliane sono stati estratti da banche dati pubbliche e sono score di conservazione evolutiva, feature relative alla trascrizione e alla regolazione e altre caratteristiche epigenomiche.
 
 I dati GWAS, invece, sono mappati dalla sequenza di DNA in 1842 feature tramite la rete convoluzionale di DeepSEA e l'integrazione di score di conservazione evolutiva.
-
-![image](img/hycomparePRC.jpg){width="66%"}
-![image](img/hycompareIMB.jpg){width="33%"}
 
 ----------------------------------------------------------------
