@@ -587,16 +587,16 @@ parametri intermedi (con $w = 1$ risulta pessimo per entrambe)
 # Biologia Computazionale
 I problemi della bioinformatica sono: la ricerca delle strutture del DNA, la predizione delle proprietà delle proteine (proteomica funzionale), la predizione di dati fenotipici a partire da dati genotipici (es. genomica medica).
 
-Tipicamente, sono problemi risolti con tecniche di *machine learning*, perché sono troppo complessi per essere trattati con soluzioni teoriche. Inoltre, sono generalmente disponibili grandi moli di dati. I problemi della bioinformatica rappresentano una sfida per le tecniche di machine learning in quanto: i campioni sono tipicamente molto rumorosi e poco etichettati, inoltre sia gli input sia gli output possono essere dati strutturati (array, alberi, grafi, ...) e composti da diversi tipi di dato elementari.
+Tipicamente, sono problemi risolti con tecniche di machine learning, perché sono troppo complessi per essere trattati con soluzioni teoriche. Inoltre, sono generalmente disponibili grandi moli di dati. I problemi della bioinformatica rappresentano una sfida per le tecniche di machine learning in quanto: i campioni sono tipicamente molto rumorosi e poco etichettati, inoltre sia gli input sia gli output possono essere dati strutturati ([[Array|array]], [[Albero|alberi]], [[Grafo|grafi]], ...) e composti da diversi tipi di dato elementari.
 
 A questi problemi, si aggiungono anche i problemi di basso livello come l'elaborazione delle immagini e l'elaborazione di sequenze di dati.
 
 Alcune applicazioni importanti sono nell'ambito della medicina genomica, che si basa sullo studio dei caratteri fenotipici e genotipici del paziente per determinare i trattamenti più adeguati. Diventa, così, possibile tutto un insieme di tecniche di diagnostica e terapia di precisione, che possono eventualmente servirsi di tecnologie all'avanguardia come quelle per l'editing del DNA.
 
-## Cell variables
+## Cell variable
 Abbiamo detto che i problemi della biologia computazionale sono spesso formulati nei termini di problemi di apprendimento supervisionato: predire il rischio di una malattia a partire da una sequenza di DNA non è, tuttavia, una funzione semplice da apprendere.
 
-Spesso in bioinformatica si utilizzano delle variabili intermedie, chiamate *cell variable*, che rappresentano informazioni sulle caratteristiche biochimiche di una cellula. Possiamo separare il problema di apprendimento in due step: il primo si occupa della predizione delle cell variable a partire dalla sequenza di DNA e il secondo si occupa di predire il rischio della patologia a partire dalle cell variable.
+Spesso in bioinformatica si utilizzano delle variabili intermedie, chiamate **cell variable**, che rappresentano informazioni sulle caratteristiche biochimiche di una cellula. Possiamo separare il problema di apprendimento in due step: il primo si occupa della predizione delle cell variable a partire dalla sequenza di DNA e il secondo si occupa di predire il rischio della patologia a partire dalle cell variable.
 
 ----------------------------------------------------------------
 
@@ -616,7 +616,7 @@ Una mutazione è deleteria quando influisce negativamente sulla capacità riprod
 ----------------------------------------------------------------
 
 ## CADD
-CADD (*Combined Annotation Dependent Depletion*) è uno strumento per la valutazione della *deleteriousness* delle varianti a singolo nucleotide e delle mutazioni per inserimento o delezione (*indel*) nel genoma umano.
+**Combined Annotation Dependent Depletion** (**CADD**) è uno strumento per la valutazione della **deleteriousness** delle varianti a singolo nucleotide e delle mutazioni per inserimento o delezione (**indel**) nel genoma umano.
 
 Esistono molti metodi per l'annotazione delle varianti, ma molti tendono a sfruttare solamente un tipo di informazione o si riferiscono ad un tipo particolare di mutazione. CADD è un framework unico che integra più di 60 modalità di annotazione in una sola metrica, confrontando varianti reali con varianti simulate.
 
