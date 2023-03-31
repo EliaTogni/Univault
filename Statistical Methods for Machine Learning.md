@@ -683,72 +683,25 @@ $$\underset{m \to \infty}{\operatorname{lim}}\mathbb{E}\Big[\ell_{\mathcal{D}}(k
 
 for any data distribution $\mathcal{D}$. However, if we let $k$ be chosen as a function $k_m$ of the training set size, then the algorithm becomes consistent provided $k_m \to \infty$ and $k_m = o(m)$.
 
-Similarly, the greedy algorithm for building tree classiﬁers is consistent (for X ≡ R ) whenever  the two following conditions are fulﬁlled. Let $\ell(x)$ be the leaf to which x ∈ R is routed in the d current tree and let N to guarantee consistency we must have that N be the number of training examples routed to (x). Then, as m → ∞,
-x ∈ R : `(X) = `(x) goes to zero, where both conditions must hold in probability with respect to the random draw of X. In other words, the tree must grow unboundedly but not too fast.
+Similarly, the greedy algorithm for building tree classiﬁers is consistent (for $X \equiv \mathbb{R}^d$ ) whenever the two following conditions are fulﬁlled. Let $\ell(x)$ be the leaf to which $x \in \mathbb{R}^d$ is routed in the current tree and let $N_{\ell(x)}$ be the number of training examples routed to $\ell(x)$. Then, as $m \to \infty$, to guarantee consistency we must have that $N_{\ell(x)} \to \infty$ and the diameter of the leaf region $\{x \in \mathbb{R}^d : \ell(X) = \ell(x)\}$ goes to zero, where both conditions must hold in probability with respect to the random draw of $X$. In other words, the tree must grow unboundedly but not too fast.
 
-In practice, a consistent algorithm may not be preferred over a nonconsistent one, see Figure 1. This due to the fact that the rate of convergence to the Bayes risk of a consistent algorithm can be arbitrarily slow, as shown by the following result.
+In practice, a consistent algorithm may not be preferred over a nonconsistent one. This due to the fact that the rate of convergence to the Bayes risk of a consistent algorithm can be arbitrarily slow, as shown by the following result.
 
+![[behaviour_expected_risk.png]]
 
-Figure 1: Typical behavior of expected risk E ` A(Sm) as a function of training set size for
+In the figure, it is possible to observe the typical behavior of expected risk $\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big]$ as a function of training set size for a consistent algorithm (red line) and for a nonconsistent algorithm (blue line). For small training set sizes $m < m^*$, the nonconsistent algorithm has a better performance.
 
-a consistent algorithm (red line) and for a nonconsistent algorithm (blue line). For small training
+----------------------------------------------------------------
 
-∗
+## Theorem of No Free Lunch
+For any sequence $a_1 , a_2 , . . .$ of positive numbers converging to zero and such that $\frac{1}{16}≥ a_1 ≥ a_2 ≥ · · ·$ and for any consistent learning algorithm $A$ for binary classiﬁcation with zero-one loss, there exists a data distribution $\mathcal{D}$ such that $\ell_{\mathcal{D}}(f^*) = 0$ and $\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big] \leq a_m \quad \forall m \geq 1$.
 
-set sizes m < m , the nonconsistent algorithm has a better performance. (Thanks to Edoardo
-
-Marangoni for drawing the picture.)
-
-D
-
-Theorem 1 (No Free Lunch). For any sequence a , a , . . . of positive numbers converging to
-
-1
-
-2
-
-1
-
-16
-
-zero and such that
-
-≥ a1 ≥ a2 ≥ · · · and for any consistent learning algorithm A for bi-
-
-∗
-
-nary classiﬁcation with zero-one loss, there exists a data distribution D such that ` (f ) = 0 and
-
-ꢄ
-
-ꢀ
-
-ꢁꢅ
-
-D
-
-E ` A(S ) ≥ a for all m ≥ 1.
-
-D
-
-m
-
-m
-
-∗
-
-P
-
-Note that ` (f ) = 0 implies η(x) ∈ {0, 1} for each x, where η(x) = (Y = 1 | X = x). This
-
-D
-
-means that η : X → [0, 1] is not a Lipschitz function. Also, Theorem 1 does not prevent a consistent algorithm from converging fast to the Bayes risk for speciﬁc distributions D. What the theorem shows is that if A converges to the Bayes risk for any data distribution, then it will converge arbitrarily slow for some of these distributions.
+Note that $\ell_{mathcal{D}}(f^*) = 0$ implies $\eta(x) \in \{0, 1\}$ for each $x$, where $\eta(x) = \mathbb{P}(Y = 1 | X = x)$. This means that $\eta : \mathcal{X} \to [0, 1]$ is not a Lipschitz function. Also, Theorem of No Free Lunch does not prevent a consistent algorithm from converging fast to the Bayes risk for specific distributions $\mathcal{D}$. What the theorem shows is that if $A$ converges to the Bayes risk for any data distribution, then it will converge arbitrarily slow for some of these distributions.
 
 For binary classiﬁcation, we can summarize the situation as follows:
-- under Lipschitz assumptions on η, the typical convergence rate to Bayes risk is m−1/(d+1) (exponentially slow in d);
-- under no assumption on η, there is no guaranteed convergence rate to Bayes risk;
-- under no assumptions on η, the typical convergence rate to the risk of the best predictor in a parametric (or ﬁnite) class H is m−1/2, exponentially better than the nonparametric rate.
+- under Lipschitz assumptions on $\eta$, the typical convergence rate to Bayes risk is $m^{−1/(d+1)}$ (exponentially slow in $d$);
+- under no assumption on $\eta$, there is no guaranteed convergence rate to Bayes risk;
+- under no assumptions on $\eta$, the typical convergence rate to the risk of the best predictor in a parametric (or ﬁnite) class $\mathcal{H}$ is $m^{−1/2}$, exponentially better than the nonparametric rate.
 
 ---------------------------------------------------------------
 
