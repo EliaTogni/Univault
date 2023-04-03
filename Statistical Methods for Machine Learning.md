@@ -286,9 +286,7 @@ $$\forall x \in \mathcal{X} \quad f^*(x) = \underset{\widehat{y} \in \mathcal{Y}
 
 where $\widehat{y} \in \mathcal{Y}$ is the value for which the function $\mathbb{E}[\ell(Y, \widehat{y}) \vert X = x]$ attains its minimum.<br />
 What does it mean to condition an expectation? It means that we want to know the prediction of $f^*$ on $x$. This predictor tries to pick the best $\widehat{y}$, the one minimizing the expected loss on $x$.<br />
-The quantity $\mathbb{E} [\ell(Y, \widehat{y}) \vert X = x]$ is the **conditional risk**, which is the expected loss of the prediction with respect to the distribution of the label $Y$ conditioned on $x$. Hence $f^*(x)$ is the prediction $\widehat{y}$ minimizing the conditional risk, given $x$.
-
-By deﬁnition of $f^*$, we have that 
+The quantity $\mathbb{E} [\ell(Y, \widehat{y}) \vert X = x]$ is the **conditional risk**, which is the expected loss of the prediction with respect to the distribution of the label $Y$ conditioned on $x$. Hence $f^*(x)$ is the prediction $\widehat{y}$ minimizing the conditional risk, given $x$. By deﬁnition of $f^*$, we have that 
 
 $$\forall x \in \mathcal{X} \quad \mathbb{E}[\ell(Y, f^*(X))\text{ } \vert \text{ } X = x] \leq \mathbb{E}[\ell(Y, h(X))\text{ } \vert \text{ } X = x]$$
 
@@ -427,7 +425,13 @@ $$\ell_{\mathcal{D}}(h_S) = \ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*)\qu
 $$\quad + \ell_{\mathcal{D}}(h^*) - \ell_{\mathcal{D}}(f^*)\quad \text{approximation error (large when underfitting)}$$
 $$\quad + \ell_{\mathcal{D}}(f^*) \quad \text{Bayes error (unavoidable)}$$
 
-where $f^*$ is the Bayes optimal predictor for $(\mathcal{D}, \ell)$. Note that:
+where $f^*$ is the Bayes optimal predictor for $(\mathcal{D}, \ell)$. 
+
+![[bias-variance_decomposition.png]]
+
+In the figure it is possible to observe a visual explanation of the bias-variance decomposition.
+
+Note that:
 1) the Bayes error is not controllable because it only depends on $\mathcal{D}$ and the loss $\ell$;
 2) the approximation (or bias) error, which is large when the algorithm underﬁts, arises because the risk of $H_A$ does not necessarily contain the Bayes optimal predictor;
 3) the estimation (or variance) error, which is large when the algorithm overﬁts, arises because the risk of $h_S$ is generally diﬀerent from the risk of $h^*$.
