@@ -724,3 +724,489 @@ For binary classiﬁcation, we can summarize the situation as follows:
 Note that the convergence rate $m^{-1/(d+1)}$ implies that to get $\epsilon$-close to Bayes risk, we need a traning set size $m$ of order $\epsilon^{-(d+1)}$. This exponential dependence on the number of features of the training set size is known as **curse of dimensionality** and refers to the difficulty of learning in a nonparametric setting when datapoints live in a high-dimensional space.
 
 ----------------------------------------------------------------
+
+# Risk Analysys for Nearest-Neighbor
+We investigate the problem of bounding the zero-one loss risk of the $1-NN$ binary classiﬁer averaged with respect to the random draw of the training set. Under some assumptions on the data distribution $\mathcal{D}$, we prove a bound of the form
+
+$$\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big] \leq 2 \ell_{\mathcal{D}}(f^*) + \epsilon_m \quad \text{ } (1)$$
+
+where $A$ denotes the $1-NN$ algorithm, $S_m$ the training set of size $m$, $\ell_{\mathcal{D}}(f^*)$ is the Bayes risk, and $\epsilon_m$ is a quantity that vanishes for $m \to \infty$. Note that we are able to compare $\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big]$ directly to the Bayes risk, showing that $1-NN$ is, in some sense, a powerful learning algorithm.
+
+Recall that in binary classiﬁcation we denote the joint distribution of $(X, Y)$ with the pair $(\mathcal{D}_X, \eta)$, where $\mathcal{D}_X$ is the marginal of $\mathcal{D}$ on $X$ and $\eta(x) = \mathbb{P}(Y = 1 \vert X = x)$. Fix $m$ and let $S = (x_1, y_1), ..., (x_m, y_m)$ be a training set of size $m$. We deﬁne the map $\pi(S, \cdot) : \mathbb{R}^d \to \{1, ..., m\}$ by
+
+$$\pi(S, x) = \underset{t = 1, ..., m}{\operatorname{argmin}}\Vert x - x_t \Vert$$
+
+If there is more than one point $x_t$ achieving the minimum in the above expression, then $\pi(S, x)$ selects one of them using any deterministic tie-breaking rule; our analysis does not depend on the speciﬁc rule being used. The $1-NN$ classiﬁer $h_S = A(S)$ is deﬁned by $h_S(x) = y_{\pi(S, x)}$.
+
+From now on, the training set $S$ is a sample $(X_1, Y_1), ..., (X_m, Y_m)$ drawn i.i.d. from $\mathcal{D}$. The expected risk is deﬁned by 
+
+$$\mathbb{E}\Big[\ell_{\mathcal{D}(A(S))}\Big] = \mathbb{P}\Big(Y_{\pi(S, X)} \neq Y\Big)$$
+
+where probabilities and expectations are understood with respect to the random draw of training set $S$ and of the example $(X, Y)$ with respect to which the risk of $A(S)$ is computed.
+
+We now state a crucial lemma.
+
+## Lemma 1
+The expected risk of the $1-NN$ classiﬁer can be written as follows
+
+$$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big] = \mathbb{E}\Big[\eta(X_{\pi(S, X)})(1- \eta(X))\Big] + \mathbb{E}\Big[\big(1 - \eta(X_{\pi(S, X)})\big)\eta(X)\Big]$$
+
+To proceed with the analysis, we now need some assumptions on $D_X$ and $\eta$. First, all data points $X$ drawn from $D_X$ satisfy max $\vert X \vert \leq 1$ with probability one. In other words, $X \in [−1, 1]^d$ with probability 1. Let $X \equiv [−1, 1]^d$ the subsets of data points with this property. Second we assume that $\eta$ is Lipschitz on $\mathcal{X}$ with constant $c > 0$. We can thus write
+
+$$\eta(x') \leq \eta(x) + c \Vert x - x' \Vert \quad \text{ } (2)$$
+$$1 - \eta(x') \leq 1 - \eta(x) + c \Vert x - x' \Vert \quad \text{ } (3)$$
+
+Using $(2)$ and $(3)$, for all $x, x′ \in X$ we have
+
+
+where the last inequality holds because $z(1 − z) \leq min\{z, 1 − z\}$ for all $z \in [0, 1]$. Therefore
+
+$$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big] \leq 2 \mathbb{E}\Big[min \{\eta(X), 1 - \eta(X)\}\Big] + c \mathbb{E}\Big[\Vert X - X_{\pi(S, X)} \Vert\Big]$$
+
+Recalling that the Bayes risk for the zero-one loss is $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\Big[min\{\eta(X), 1 − \eta(X)\}\Big]$ we have
+
+$$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big] \leq 2 \ell_{\mathcal{D}}(f^*) + c \mathbb{E}\Big[\Vert X - X_{\pi(S, X)}\Vert\Big]$$
+
+In order to bound the term containing the expected value of $\Vert X − X_{\pi(S, X)} \Vert$ we partition the data space $\mathcal{X}$ in $d$-dimensional hypercubes with side $\epsilon > 0$, see in the figure below for a bidimensional example.
+
+
+Let $C_1, ..., C_r$ the resulting hypercubes. We can now bound $\Vert X − X_{\pi(S, X) \Vert}$ using a
+
+1
+is at most the length of the diagonal of the hypercube, which is ε d, see the
+
+√
+
+t
+
+ꢈ
+
+ꢈ
+
+Then X − X
+
+π(S,X)
+
+left pane in Figure 1. Now assume that X belongs to a C in which there are no training points.
+
+ꢈ
+
+ꢈ
+
+i
+
+√
+
+ꢈ
+
+ꢈ
+
+Then X − X
+
+is only bounded by the length of the diagonal of X, which is 2 d, see the
+
+π(S,X)
+
+2
+
+
+
+
+
+right pane in Figure 1. Hence, we may write
+
+"
+
+\#
+
+h
+
+i
+
+r
+
+r
+
+ꢈ
+
+ꢈ
+
+√ X
+
+√ X
+
+E ꢈX − X
+
+ꢈ ≤ E ε d
+
+I{Ci ∩ S
+
+I{Ci ∩ S
+
+̸
+
+I{C ∩ S = ∅}I{X ∈ C }
+
+π(S,X)
+
+i
+
+i
+
+i
+
+i=1
+
+Xr
+
+i=1
+
+√ Xr
+
+"
+
+√
+
+= ε d E
+
+= ∅}I{X ∈ C } + 2 d
+
+E [I{C ∩ S = ∅}I{X ∈ C }]
+
+i
+
+i
+
+i=1
+
+i=1
+
+where in the last step we used linearity of the expected value. Now observe that, for all S and X,
+
+Xr
+
+I{Ci ∩ S = ∅}I{X ∈ C } ∈ {0, 1}
+
+̸
+
+i
+
+i=1
+
+because X ∈ C for only one i = 1, . . . , d. Therefore,
+
+i
+
+"
+
+\#
+
+Xr
+
+E
+
+I{Ci ∩ S
+
+̸
+
+i
+
+i=1
+
+To bound the remaining term, we use the independence between X and the training set S,
+
+E [I{C ∩ S = ∅}I{X ∈ C }] = E [I{C ∩ S = ∅}] E [I{X ∈ C }] = P (C ∩ S = ∅) P (X ∈ C ) .
+
+i
+
+i
+
+i
+
+i
+
+i
+
+i
+
+Since S contains m data points independently drawn, for a generic data point X′ we have that
+
+ꢁ
+
+ꢂ
+
+ꢁ
+
+ꢂ
+
+P(C ∩ S = ∅) = 1 − P(X′ ∈ C ) ≤ exp −mP(X ∈ C )
+
+m
+
+′
+
+i
+
+i
+
+i
+
+where in the last step we used the inequality (1 − p)
+
+m ≤
+
+e−pm. Setting p = (X
+
+P
+
+′ ∈
+
+Ci) we have
+
+i
+
+h
+
+i
+
+ꢆ
+
+ꢇ
+
+r
+
+ꢈ
+
+ꢈ
+
+√
+
+√
+
+X
+
+E ꢈX − X
+
+ꢈ ≤ ε d + 2 d
+
+e−pimpi
+
+π(S,X)
+
+i=1
+
+ꢆ
+
+ꢇ
+
+r
+
+√
+
+√
+
+X
+
+≤ ε d + 2 d
+
+max e−pm
+
+p
+
+0≤p≤1
+
+i=1
+
+ꢆ
+
+ꢇ
+
+√
+
+√
+
+= ε d + 2 d r max e−pmp .
+
+0≤p≤1
+
+The concave function g(p) = e−pmp is maximized for p = . Therefore,
+
+1
+
+m
+
+
+
+!
+
+ꢉ ꢊ
+
+h
+
+i
+
+ꢆ
+
+ꢇ
+
+ꢈ
+
+ꢈ
+
+√
+
+√
+
+√
+
+d
+
+r
+
+2
+
+2
+
+E ꢈX − X
+
+where we used the fact that the number r of hypercubes is equal to
+
+ꢈ ≤ ε d + 2 d
+
+\=
+
+d ε +
+
+πS(X)
+
+em
+
+em
+
+ε
+
+ꢁ ꢂ
+
+d. Putting evertything
+
+2
+
+ε
+
+together we ﬁnd that
+
+
+
+!
+
+ꢉ ꢊ
+
+ꢀ
+
+ꢃ
+
+√
+
+d
+
+2
+
+2
+
+E ℓ (h ) ≤ 2 ℓ (f∗) + c d ε +
+
+D
+
+S
+
+D
+
+em
+
+ε
+
+Since this holds for all 0 < ε < 1, we can set ε = 2 m−1/(d+1). This gives
+
+ꢉ ꢊ
+
+ꢉ
+
+ꢊ
+
+d
+
+2d+12−dmd/(d+1)
+
+2
+
+2
+
+1
+
+ε +
+
+= 2m−1/(d+1)
+
+\+
+
+= 2m−1/(d+1) 1 +
+
+≤ 4m−1/(d+1)
+
+.
+
+(4)
+
+em
+
+ε
+
+em
+
+e
+
+3
+
+
+
+
+
+Substituting this bound in (4), we ﬁnally obtain
+
+ꢀ
+
+ꢃ
+
+√
+
+E ℓ (h ) t ≤ 2 ℓ (f∗) + c 4m−1/(d+1) d .
+
+D
+
+S
+
+D
+
+ꢀ
+
+ꢃ
+
+∗
+
+E
+
+∗
+
+Note that for m → ∞, ℓ (f ) ≤ ℓ (h ) ≤ 2 ℓ (f ). Namely, the asymptotic risk of 1-NN lies
+
+D
+
+D
+
+S
+
+between the Bayes risk and twice the Bayes risk.
+
+D
+
+4
