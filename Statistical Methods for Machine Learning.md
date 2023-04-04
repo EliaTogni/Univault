@@ -758,6 +758,10 @@ $$1 - \eta(x') \leq 1 - \eta(x) + c \Vert x - x' \Vert \quad \text{ } (3)$$
 
 Using $(2)$ and $(3)$, for all $x, x′ \in X$ we have
 
+$$\eta(x)(1 - \eta(x')) + (1 - \eta(x))\eta(x')$$
+$$\leq \eta(x)(1-\eta(x)) + \eta(x) c \Vert x - x' \Vert + (1 - \eta(x))\eta(x) + (1 \eta(x))c \Vert x - x' \Vert$$
+$$= 2 \eta(x)(1- \eta(x)) + c \Vert x - x' \Vert$$
+$$\leq 2min \{\eta(x), 1 - \eta(x)\} + c \Vert x - x' \Vert$$
 
 where the last inequality holds because $z(1 − z) \leq min\{z, 1 − z\}$ for all $z \in [0, 1]$. Therefore
 
@@ -770,443 +774,47 @@ $$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big] \leq 2 \ell_{\mathcal{D}}(f^*) + c
 In order to bound the term containing the expected value of $\Vert X − X_{\pi(S, X)} \Vert$ we partition the data space $\mathcal{X}$ in $d$-dimensional hypercubes with side $\epsilon > 0$, see in the figure below for a bidimensional example.
 
 
-Let $C_1, ..., C_r$ the resulting hypercubes. We can now bound $\Vert X − X_{\pi(S, X) \Vert}$ using a
 
-1
-is at most the length of the diagonal of the hypercube, which is ε d, see the
+Let $C_1, ..., C_r$ the resulting hypercubes. We can now bound $\Vert X − X_{\pi(S, X)} \Vert$ using a case analysis. Assume first that $X$ belong to a $C_i$ in which there is at least a training point $X_t$. Then $\Vert X - X_{\pi(S, X)} \Vert$ is at most the length of the diagonal of the hypercube, which is $\epsilon \sqrt{d}$, as it is possible to see int the left pane of the figure. Now assume that $X$ belongs to a $C_i$ in which there are no training points. Then $\Vert X − X_{\pi(S, X)} \Vert$ is only bounded by the length of the diagonal of $\mathcal{X}$, which is $2 \sqrt{d}$, as it is possible to see in the right pane of the figure. Hence, we may write
 
-√
 
-t
 
-ꢈ
+where in the last step we used linearity of the expected value. Now observe that, for all $S$ and $X$,
 
-ꢈ
+$$\sum_{i = 1}^{r} \mathbb{I}\{C_i \cap S \neq \emptyset\} \mathbb{I}\{X \in C_i\} \in \{0, 1\}$$
 
-Then X − X
+because $X \in C_i$ for only one $i = 1, ..., d$. Therefore,
 
-π(S,X)
+$$\mathbb{E}\Big[\sum_{i = 1}^{r} \mathbb{I}\{C_i \cap S \neq  \emptyset\} \mathbb{I}\{X \in C_i\}\Big] \leq 1$$
 
-left pane in Figure 1. Now assume that X belongs to a C in which there are no training points.
+To bound the remaining term, we use the independence between $X$ and the training set $S$,
 
-ꢈ
+$$\mathbb{E}\big[\mathbb{I}\{C_i \cap S = \emptyset \} \mathbb{I}\{X \in C_i\}\big] = \mathbb{E}\big[\mathbb{I}\{C_i \cap S = \emptyset\}\big]\mathbb{E}\big[\mathbb{I}\{X \in C_i\}\big] = \mathbb{P}(C_i \cap S = \emptyset)\mathbb{P}(X \in C_i)$$
 
-ꢈ
+Since $S$ contains $m$ data points independently drawn, for a generic data point $X′$ we have that
 
-i
+$$\mathbb{P}(C_i \cap S = \emptyset) = (1 - \mathbb{P}(X' \in C_i))^m \leq exp(-m\mathbb{P}(X' \in C_i))$$
 
-√
+where in the last step we used the inequality $(1 − p)^m \leq e ^{-pm}$. Setting $p_i = \mathbb{P}(X' \in C_i)$ we have
 
-ꢈ
 
-ꢈ
 
-Then X − X
+The concave function $g(p) = e^{−pm}p$ is maximized for $p = \frac{1}{m}$. Therefore,
 
-is only bounded by the length of the diagonal of X, which is 2 d, see the
+$$\mathbb{E}\Big[\Vert X - X_{\pi_{S}(X)} \Vert\Big] \leq \epsilon \sqrt{d} + (2 \sqrt{d}) \frac{r}{em} = \sqrt{d}\Big(\epsilon + \frac{2}{em} \Big(\frac{2}{\epsilon}\Big)^d\Big)$$
 
-π(S,X)
+where we used the fact that the number r of hypercubes is equal to $(\frac{2}{\epsilon})^d$. Putting evertything together we ﬁnd that
 
-2
+$$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big] \leq 2 \ell_{\mathcal{D}}(f^*) + c \sqrt{d}\Big(\epsilon + \frac{2}{em} \big(\frac{2}{\epsilon}\big)^d\Big)$$
 
+Since this holds for all $0 < \epsilon < 1$, we can set $\epsilon = 2 m^{−1/(d+1)}$. This gives
 
 
 
+Substituting this bound in $(4)$, we ﬁnally obtain
 
-right pane in Figure 1. Hence, we may write
+$$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big]t \leq 2 \ell_{\mathcal{D}}(f^*) + c4m^{-1/(d+1)}$$
 
-"
+Note that for $m \to \infty$, $\ell_{\mathcal{D}}(f^*) \leq \mathbb{E}[\ell_{\mathcal{D}(h_S)}] \leq 2\ell_{\mathcal{D}}(f^*)$. Namely, the asymptotic risk of $1-NN$ lies between the Bayes risk and twice the Bayes risk.
 
-\#
-
-h
-
-i
-
-r
-
-r
-
-ꢈ
-
-ꢈ
-
-√ X
-
-√ X
-
-E ꢈX − X
-
-ꢈ ≤ E ε d
-
-I{Ci ∩ S
-
-I{Ci ∩ S
-
-̸
-
-I{C ∩ S = ∅}I{X ∈ C }
-
-π(S,X)
-
-i
-
-i
-
-i
-
-i=1
-
-Xr
-
-i=1
-
-√ Xr
-
-"
-
-√
-
-= ε d E
-
-= ∅}I{X ∈ C } + 2 d
-
-E [I{C ∩ S = ∅}I{X ∈ C }]
-
-i
-
-i
-
-i=1
-
-i=1
-
-where in the last step we used linearity of the expected value. Now observe that, for all S and X,
-
-Xr
-
-I{Ci ∩ S = ∅}I{X ∈ C } ∈ {0, 1}
-
-̸
-
-i
-
-i=1
-
-because X ∈ C for only one i = 1, . . . , d. Therefore,
-
-i
-
-"
-
-\#
-
-Xr
-
-E
-
-I{Ci ∩ S
-
-̸
-
-i
-
-i=1
-
-To bound the remaining term, we use the independence between X and the training set S,
-
-E [I{C ∩ S = ∅}I{X ∈ C }] = E [I{C ∩ S = ∅}] E [I{X ∈ C }] = P (C ∩ S = ∅) P (X ∈ C ) .
-
-i
-
-i
-
-i
-
-i
-
-i
-
-i
-
-Since S contains m data points independently drawn, for a generic data point X′ we have that
-
-ꢁ
-
-ꢂ
-
-ꢁ
-
-ꢂ
-
-P(C ∩ S = ∅) = 1 − P(X′ ∈ C ) ≤ exp −mP(X ∈ C )
-
-m
-
-′
-
-i
-
-i
-
-i
-
-where in the last step we used the inequality (1 − p)
-
-m ≤
-
-e−pm. Setting p = (X
-
-P
-
-′ ∈
-
-Ci) we have
-
-i
-
-h
-
-i
-
-ꢆ
-
-ꢇ
-
-r
-
-ꢈ
-
-ꢈ
-
-√
-
-√
-
-X
-
-E ꢈX − X
-
-ꢈ ≤ ε d + 2 d
-
-e−pimpi
-
-π(S,X)
-
-i=1
-
-ꢆ
-
-ꢇ
-
-r
-
-√
-
-√
-
-X
-
-≤ ε d + 2 d
-
-max e−pm
-
-p
-
-0≤p≤1
-
-i=1
-
-ꢆ
-
-ꢇ
-
-√
-
-√
-
-= ε d + 2 d r max e−pmp .
-
-0≤p≤1
-
-The concave function g(p) = e−pmp is maximized for p = . Therefore,
-
-1
-
-m
-
-
-
-!
-
-ꢉ ꢊ
-
-h
-
-i
-
-ꢆ
-
-ꢇ
-
-ꢈ
-
-ꢈ
-
-√
-
-√
-
-√
-
-d
-
-r
-
-2
-
-2
-
-E ꢈX − X
-
-where we used the fact that the number r of hypercubes is equal to
-
-ꢈ ≤ ε d + 2 d
-
-\=
-
-d ε +
-
-πS(X)
-
-em
-
-em
-
-ε
-
-ꢁ ꢂ
-
-d. Putting evertything
-
-2
-
-ε
-
-together we ﬁnd that
-
-
-
-!
-
-ꢉ ꢊ
-
-ꢀ
-
-ꢃ
-
-√
-
-d
-
-2
-
-2
-
-E ℓ (h ) ≤ 2 ℓ (f∗) + c d ε +
-
-D
-
-S
-
-D
-
-em
-
-ε
-
-Since this holds for all 0 < ε < 1, we can set ε = 2 m−1/(d+1). This gives
-
-ꢉ ꢊ
-
-ꢉ
-
-ꢊ
-
-d
-
-2d+12−dmd/(d+1)
-
-2
-
-2
-
-1
-
-ε +
-
-= 2m−1/(d+1)
-
-\+
-
-= 2m−1/(d+1) 1 +
-
-≤ 4m−1/(d+1)
-
-.
-
-(4)
-
-em
-
-ε
-
-em
-
-e
-
-3
-
-
-
-
-
-Substituting this bound in (4), we ﬁnally obtain
-
-ꢀ
-
-ꢃ
-
-√
-
-E ℓ (h ) t ≤ 2 ℓ (f∗) + c 4m−1/(d+1) d .
-
-D
-
-S
-
-D
-
-ꢀ
-
-ꢃ
-
-∗
-
-E
-
-∗
-
-Note that for m → ∞, ℓ (f ) ≤ ℓ (h ) ≤ 2 ℓ (f ). Namely, the asymptotic risk of 1-NN lies
-
-D
-
-D
-
-S
-
-between the Bayes risk and twice the Bayes risk.
-
-D
-
-4
+----------------------------------------------------------------
