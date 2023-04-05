@@ -376,9 +376,9 @@ Note that the above equalities rely on the assumption that $h$ does not depend o
 In order to compute how good is the test error as an estimate for the risk, we can use the following result about the law of large numbers.
 
 ### Chernoﬀ-Hoeﬀding's lemma
-Let $Z_1 , ... , Z_n$ be **independent and identically distributed random variables** with expectation $\mu$ and such that $0 \leq Z \leq 1$ for each $t = 1, ... , n$. Then, for any given $\epsilon > 0$
+Let $Z_1 , ... , Z_n$ be **independent and identically distributed random variables** with expectation $\mu$ and such that $0 \leq Z \leq 1$ for each $t = 1, ... , n$. Then, for any given $\varepsilon > 0$
 
-$$\mathbb{P}\Bigg(\frac{1}{n}\sum_{t = 1}^{n}Z_t > \mu + \epsilon \Bigg) \leq e^{-2\epsilon^2n}\quad \text{and}\quad \mathbb{P}\Bigg(\frac{1}{n}\sum_{t = 1}^{n}Z_t < \mu + \epsilon\Bigg) \leq e^{-2\epsilon^2n}$$
+$$\mathbb{P}\Bigg(\frac{1}{n}\sum_{t = 1}^{n}Z_t > \mu + \varepsilon \Bigg) \leq e^{-2\varepsilon^2n}\quad \text{and}\quad \mathbb{P}\Bigg(\frac{1}{n}\sum_{t = 1}^{n}Z_t < \mu + \varepsilon\Bigg) \leq e^{-2\varepsilon^2n}$$
 
 This means that if we compute the sample mean of the variables, the probability that this will be much larger (or much smaller) than the expectation, with respect to the draw of the sample, decreases exponentially with the sample size.
 
@@ -393,16 +393,16 @@ In the rest of this course, we repeatedly use the following facts:
 
 Using the Chernoﬀ-Hoeﬀding bound with $Z_t = \ell(y_t , h(x_t)) \in [0, 1]$, we can compute a conﬁdence interval for the statistical risk as follows (where the test error is written as $\ell$ instead of $\ell_{S'}$ )
 
-$$\mathbb{P}\Big(\vert\ell_{\mathcal{D}}(h) - \ell(h) \vert > \epsilon\Big) = \mathbb{P}\Big(\ell_{\mathcal{D}}(h) - \ell(h) > \epsilon \cup \ell(h) - \ell_{\mathcal{D}}(h) > \epsilon\Big)$$
-$$\quad = \mathbb{P}\Big(\ell_{\mathcal{D}}(h) - \ell(h) > \epsilon\Big) + \Big(\ell(h) - \ell_{\mathcal{D}}(h) > \epsilon \Big) \leq 2e^{-2\epsilon^{2}n} \quad \text{ } \quad (1)$$
+$$\mathbb{P}\Big(\vert\ell_{\mathcal{D}}(h) - \ell(h) \vert > \varepsilon\Big) = \mathbb{P}\Big(\ell_{\mathcal{D}}(h) - \ell(h) > \varepsilon \cup \ell(h) - \ell_{\mathcal{D}}(h) > \varepsilon\Big)$$
+$$\quad = \mathbb{P}\Big(\ell_{\mathcal{D}}(h) - \ell(h) > \varepsilon\Big) + \Big(\ell(h) - \ell_{\mathcal{D}}(h) > \varepsilon \Big) \leq 2e^{-2\varepsilon^{2}n} \quad \text{ } \quad (1)$$
 
-where in the last step we applied the union bound to the disjoint events $\ell_{\mathcal{D}}(h) − \ell(h) > \epsilon$ and $\ell(h) − \ell_{\mathcal{D}}(h) > \epsilon$. Note that the probability is computed with respect to the random draw of the test set. This inequality shows that the probability that a test set gives a test error $\ell_{S'}(h)$ diﬀering from the true statistical risk $\ell_{\mathcal{D}}(h)$ (which is $\mu$ in the Chernoff-Hoeffding bound) for more than $\epsilon$ quickly decreases with the size $n$ of the test set.
+where in the last step we applied the union bound to the disjoint events $\ell_{\mathcal{D}}(h) − \ell(h) > \varepsilon$ and $\ell(h) − \ell_{\mathcal{D}}(h) > \varepsilon$. Note that the probability is computed with respect to the random draw of the test set. This inequality shows that the probability that a test set gives a test error $\ell_{S'}(h)$ diﬀering from the true statistical risk $\ell_{\mathcal{D}}(h)$ (which is $\mu$ in the Chernoff-Hoeffding bound) for more than $\varepsilon$ quickly decreases with the size $n$ of the test set.
 
-More speciﬁcally: if we set to $\delta \in (0, 1)$ the right-hand side of the previous equation and then solve for $\epsilon$, we get that
+More speciﬁcally: if we set to $\delta \in (0, 1)$ the right-hand side of the previous equation and then solve for $\varepsilon$, we get that
 
-$$\epsilon = \sqrt{\frac{1}{2n}\ln\frac{1}{\delta}}$$
+$$\varepsilon = \sqrt{\frac{1}{2n}\ln\frac{1}{\delta}}$$
 
-For this value of $\epsilon$, the probability (the right-hand side of the equation) is at most $\delta$.
+For this value of $\varepsilon$, the probability (the right-hand side of the equation) is at most $\delta$.
 
 $$\vert \ell_{\mathcal{D}}(h) - \ell_{S'}(h)\vert \leq \sqrt{\frac{1}{n}\ln{\frac{2}{\delta}}}$$
 
@@ -457,32 +457,32 @@ The last subctraction is bounded by $\sqrt(...)$ with probability at least $1 - 
 $$\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*)\leq \vert \ell_{\mathcal{D}}(h_S) - \ell_S(h_S)\vert + \vert \ell_S(h^*) - \ell_{\mathcal{D}}(h^*) \vert$$
 $$\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*) \leq 2 \underset{h \in \mathcal{H}}{\operatorname{max}} \vert \ell_S(h) - \ell_{\mathcal{D}}(h)\vert$$
 
-where we used the assumption that $h_S$ minimizes $\ell_S(h)$ among all $h \in \mathcal{H}$. Therefore, for all $\epsilon > 0$,
+where we used the assumption that $h_S$ minimizes $\ell_S(h)$ among all $h \in \mathcal{H}$. Therefore, for all $\varepsilon > 0$,
 
-$$\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*) > \epsilon \implies \underset{h \in \mathcal{H}}{\operatorname {max}}\vert\ell_S(h) - \ell_{\mathcal{D}}(h)\vert > \frac{\epsilon}{2} \implies \exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h)\vert > \frac{\epsilon}{2}$$
+$$\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*) > \varepsilon \implies \underset{h \in \mathcal{H}}{\operatorname {max}}\vert\ell_S(h) - \ell_{\mathcal{D}}(h)\vert > \frac{\varepsilon}{2} \implies \exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h)\vert > \frac{\varepsilon}{2}$$
 
 Since the above chain of implications holds for any realization of the training set of size $m$, we can write
 
-$$\mathbb{P}\big(\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*) > \epsilon\big) \leq \mathbb{P} \Big(\exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \frac{\epsilon}{2}\Big)$$
+$$\mathbb{P}\big(\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*) > \varepsilon\big) \leq \mathbb{P} \Big(\exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \frac{\varepsilon}{2}\Big)$$
 
 We now study the case $\vert \mathcal{H}\vert < \infty$, that is when the model space contains a ﬁnite number of predictors. Note that the event
 
-$$\exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \frac{\epsilon}{2}$$
+$$\exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \frac{\varepsilon}{2}$$
 
-is the union over $h \in \mathcal{H}$ of the (not necessarily disjoint) events $\vert \ell_S(h) − \ell_{\mathcal{D}}(h) \vert > \frac{\epsilon}{2}$. Using the union bound we get
+is the union over $h \in \mathcal{H}$ of the (not necessarily disjoint) events $\vert \ell_S(h) − \ell_{\mathcal{D}}(h) \vert > \frac{\varepsilon}{2}$. Using the union bound we get
 
-$$\mathbb{P}\Big(\exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h) > \frac{\epsilon}{2} \Big) = \mathbb{P} \Bigg(\ \bigcup_{h \in \mathcal{H}} \Big(\vert \ell_S(h) - \ell_{\mathcal{D}}(h)\vert > \frac{\epsilon}{2} \Big)\Bigg)$$
-$$ \leq \sum_{h \in \mathcal{H}}\mathbb{P}\Big(\vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \frac{\epsilon}{2}\Big)$$
-$$\leq \vert \mathcal{H}\vert \underset{h \in H}{\operatorname{max}}\mathbb{P} \Big(\vert \ell_S(h) - \ell_{\mathcal{D}}(h) > \frac{\epsilon}{2}\Big)$$
-$$\leq \vert \mathcal{H} \vert 2e^{-m \epsilon^2/2} \quad \text{ } \quad (2)$$
+$$\mathbb{P}\Big(\exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h) > \frac{\varepsilon}{2} \Big) = \mathbb{P} \Bigg(\ \bigcup_{h \in \mathcal{H}} \Big(\vert \ell_S(h) - \ell_{\mathcal{D}}(h)\vert > \frac{\varepsilon}{2} \Big)\Bigg)$$
+$$ \leq \sum_{h \in \mathcal{H}}\mathbb{P}\Big(\vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \frac{\varepsilon}{2}\Big)$$
+$$\leq \vert \mathcal{H}\vert \underset{h \in H}{\operatorname{max}}\mathbb{P} \Big(\vert \ell_S(h) - \ell_{\mathcal{D}}(h) > \frac{\varepsilon}{2}\Big)$$
+$$\leq \vert \mathcal{H} \vert 2e^{-m \varepsilon^2/2} \quad \text{ } \quad (2)$$
 
 where in the last step we used the Chernoﬀ-Hoeﬀding bound.
 
 In conclusion, we have that
 
-$$\mathcal{P}\big(\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*) > \epsilon\big) \leq 2 \vert \mathcal{H}\vert e^{-m\epsilon^2/2} \quad \text{ } \quad (3)$$
+$$\mathcal{P}\big(\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*) > \varepsilon\big) \leq 2 \vert \mathcal{H}\vert e^{-m\varepsilon^2/2} \quad \text{ } \quad (3)$$
 
-Setting the right-hand side of $(3)$ equal to $\delta$ and solving for $\epsilon$ we obtain that
+Setting the right-hand side of $(3)$ equal to $\delta$ and solving for $\varepsilon$ we obtain that
 
 $$\ell_{\mathcal{D}}(h_S) \leq \ell_{\mathcal{D}}(h^*) + \sqrt{\frac{2}{m}\ln{\frac{2 \vert \mathcal{H}\vert}{\delta}}}$$
 
@@ -539,21 +539,21 @@ From that, we deduce that in this case a training set of size of order $N \ln d$
 ----------------------------------------------------------------
 
 ## A more reﬁned bound
-As it is not clear what $N$ should be used in practice, we now derive a more reﬁned bound. Recall that we control the variance error of ERM in $H_N$ by making sure that the risk of each predictor in $H_N$ can exceed its training error by at most $\epsilon$. We now take a diﬀerent approach. Namely, we upper bound the risk of a tree predictor h by its training error plus a quantity $\epsilon_h$ that now depends on the size of the tree. To this purpose, let $H$ be the set of all tree classiﬁers with at most $2^{d+1}-1$ nodes. Because of Fact $1$, $\mathcal{H}$ implements all binary classiﬁers $h: \{0,1\}^d \to \{-1, 1\}$. We introduce a function $w : \mathcal{H} \to [0, 1]$ and call $w(h)$ the weight of tree predictor $h$. We assume
+As it is not clear what $N$ should be used in practice, we now derive a more reﬁned bound. Recall that we control the variance error of ERM in $H_N$ by making sure that the risk of each predictor in $H_N$ can exceed its training error by at most $\varepsilon$. We now take a diﬀerent approach. Namely, we upper bound the risk of a tree predictor h by its training error plus a quantity $\varepsilon_h$ that now depends on the size of the tree. To this purpose, let $H$ be the set of all tree classiﬁers with at most $2^{d+1}-1$ nodes. Because of Fact $1$, $\mathcal{H}$ implements all binary classiﬁers $h: \{0,1\}^d \to \{-1, 1\}$. We introduce a function $w : \mathcal{H} \to [0, 1]$ and call $w(h)$ the weight of tree predictor $h$. We assume
 
 $$\sum_{h in \mathcal{H}}w(h) \leq 1 \quad \text{ } \quad (2)$$
 
-We can then write the following chain of inequalities, where $\epsilon_h > 0$ will be chosen later on,
+We can then write the following chain of inequalities, where $\varepsilon_h > 0$ will be chosen later on,
 
-$$\mathbb{P}\big(\exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \epsilon_h \big) \leq \sum_{h \in \mathcal{H}}\mathbb{P}\big(\vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \epsilon_h\big) \leq \sum_{h \in \mathcal{H}}2e^{-2me_h^2}$$
+$$\mathbb{P}\big(\exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \varepsilon_h \big) \leq \sum_{h \in \mathcal{H}}\mathbb{P}\big(\vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \varepsilon_h\big) \leq \sum_{h \in \mathcal{H}}2e^{-2me_h^2}$$
 
 Note that we used Chernoﬀ-Hoeﬀding bound in the last step. Now, choosing
 
-$$\epsilon_h = \sqrt{\frac{1}{2m}\Big(\ln\frac{1}{w(h)} + \ln\frac{2}{\delta}\Big)}$$
+$$\varepsilon_h = \sqrt{\frac{1}{2m}\Big(\ln\frac{1}{w(h)} + \ln\frac{2}{\delta}\Big)}$$
 
 we get that
 
-$$\mathbb{P}\big(\exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \epsilon_h \big) \leq \sum_{h \in \mathcal{H}}\delta w(h) \leq \delta$$
+$$\mathbb{P}\big(\exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \varepsilon_h \big) \leq \sum_{h \in \mathcal{H}}\delta w(h) \leq \delta$$
 
 where we used the property $(2)$ of the function w.
 
@@ -721,16 +721,16 @@ For binary classiﬁcation, we can summarize the situation as follows:
 - under no assumption on $\eta$, there is no guaranteed convergence rate to Bayes risk;
 - under no assumptions on $\eta$, the typical convergence rate to the risk of the best predictor in a parametric (or ﬁnite) class $\mathcal{H}$ is $m^{−1/2}$, exponentially better than the nonparametric rate.
 
-Note that the convergence rate $m^{-1/(d+1)}$ implies that to get $\epsilon$-close to Bayes risk, we need a traning set size $m$ of order $\epsilon^{-(d+1)}$. This exponential dependence on the number of features of the training set size is known as **curse of dimensionality** and refers to the difficulty of learning in a nonparametric setting when datapoints live in a high-dimensional space.
+Note that the convergence rate $m^{-1/(d+1)}$ implies that to get $\varepsilon$-close to Bayes risk, we need a traning set size $m$ of order $\varepsilon^{-(d+1)}$. This exponential dependence on the number of features of the training set size is known as **curse of dimensionality** and refers to the difficulty of learning in a nonparametric setting when datapoints live in a high-dimensional space.
 
 ----------------------------------------------------------------
 
 # Risk Analysys for Nearest-Neighbor
 We investigate the problem of bounding the zero-one loss risk of the $1-NN$ binary classiﬁer averaged with respect to the random draw of the training set. Under some assumptions on the data distribution $\mathcal{D}$, we prove a bound of the form
 
-$$\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big] \leq 2 \ell_{\mathcal{D}}(f^*) + \epsilon_m \quad \text{ } (1)$$
+$$\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big] \leq 2 \ell_{\mathcal{D}}(f^*) + \varepsilon_m \quad \text{ } (1)$$
 
-where $A$ denotes the $1-NN$ algorithm, $S_m$ the training set of size $m$, $\ell_{\mathcal{D}}(f^*)$ is the Bayes risk, and $\epsilon_m$ is a quantity that vanishes for $m \to \infty$. Note that we are able to compare $\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big]$ directly to the Bayes risk, showing that $1-NN$ is, in some sense, a powerful learning algorithm.
+where $A$ denotes the $1-NN$ algorithm, $S_m$ the training set of size $m$, $\ell_{\mathcal{D}}(f^*)$ is the Bayes risk, and $\varepsilon_m$ is a quantity that vanishes for $m \to \infty$. Note that we are able to compare $\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big]$ directly to the Bayes risk, showing that $1-NN$ is, in some sense, a powerful learning algorithm.
 
 Recall that in binary classiﬁcation we denote the joint distribution of $(X, Y)$ with the pair $(\mathcal{D}_X, \eta)$, where $\mathcal{D}_X$ is the marginal of $\mathcal{D}$ on $X$ and $\eta(x) = \mathbb{P}(Y = 1 \vert X = x)$. Fix $m$ and let $S = (x_1, y_1), ..., (x_m, y_m)$ be a training set of size $m$. We deﬁne the map $\pi(S, \cdot) : \mathbb{R}^d \to \{1, ..., m\}$ by
 
@@ -740,7 +740,7 @@ If there is more than one point $x_t$ achieving the minimum in the above express
 
 From now on, the training set $S$ is a sample $(X_1, Y_1), ..., (X_m, Y_m)$ drawn i.i.d. from $\mathcal{D}$. The expected risk is deﬁned by 
 
-$$\mathbb{E}\Big[\ell_{\mathcal{D}(A(S))}\Big] = \mathbb{P}\Big(Y_{\pi(S, X)} \neq Y\Big)$$
+$$\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S))\Big] = \mathbb{P}\Big(Y_{\pi(S, X)} \neq Y\Big)$$
 
 where probabilities and expectations are understood with respect to the random draw of training set $S$ and of the example $(X, Y)$ with respect to which the risk of $A(S)$ is computed.
 
@@ -759,25 +759,28 @@ $$1 - \eta(x') \leq 1 - \eta(x) + c \Vert x - x' \Vert \quad \text{ } (3)$$
 Using $(2)$ and $(3)$, for all $x, x′ \in X$ we have
 
 $$\eta(x)(1 - \eta(x')) + (1 - \eta(x))\eta(x')$$
-$$\leq \eta(x)(1-\eta(x)) + \eta(x) c \Vert x - x' \Vert + (1 - \eta(x))\eta(x) + (1 \eta(x))c \Vert x - x' \Vert$$
+$$\leq \eta(x)(1-\eta(x)) + \eta(x) c \Vert x - x' \Vert + (1 - \eta(x))\eta(x) + (1 - \eta(x))c \Vert x - x' \Vert$$
 $$= 2 \eta(x)(1- \eta(x)) + c \Vert x - x' \Vert$$
-$$\leq 2min \{\eta(x), 1 - \eta(x)\} + c \Vert x - x' \Vert$$
+$$\leq 2 \text{ }min \{\eta(x), 1 - \eta(x)\} + c \Vert x - x' \Vert$$
 
 where the last inequality holds because $z(1 − z) \leq min\{z, 1 − z\}$ for all $z \in [0, 1]$. Therefore
 
-$$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big] \leq 2 \mathbb{E}\Big[min \{\eta(X), 1 - \eta(X)\}\Big] + c \mathbb{E}\Big[\Vert X - X_{\pi(S, X)} \Vert\Big]$$
+$$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big] \leq 2 \text{ }\mathbb{E}\Big[min \{\eta(X), 1 - \eta(X)\}\Big] + c \text{ }\mathbb{E}\Big[\Vert X - X_{\pi(S, X)} \Vert\Big]$$
 
 Recalling that the Bayes risk for the zero-one loss is $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\Big[min\{\eta(X), 1 − \eta(X)\}\Big]$ we have
 
-$$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big] \leq 2 \ell_{\mathcal{D}}(f^*) + c \mathbb{E}\Big[\Vert X - X_{\pi(S, X)}\Vert\Big]$$
+$$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big] \leq 2 \text{ }\ell_{\mathcal{D}}(f^*) + c \text{ }\mathbb{E}\Big[\Vert X - X_{\pi(S, X)}\Vert\Big]$$
 
-In order to bound the term containing the expected value of $\Vert X − X_{\pi(S, X)} \Vert$ we partition the data space $\mathcal{X}$ in $d$-dimensional hypercubes with side $\epsilon > 0$, see in the figure below for a bidimensional example.
+In order to bound the term containing the expected value of $\Vert X − X_{\pi(S, X)} \Vert$ we partition the data space $\mathcal{X}$ in $d$-dimensional hypercubes with side $\varepsilon > 0$, see in the figure below for a bidimensional example.
 
+![[2d_example_analysis_1-NN.png]]
 
+In the figure, it is possible to see a bidimensional example of the construction used in the analysis of $1-NN$. Left pane: $X$ (the red point) is in the same square $C_i$ as its closest training point $X_{\pi(S, X)}$. Hence, $\Vert X - X_{\pi(S, X)}\Vert$ is bounded by the length of the diagonal of this square. Right pane: here there are no training points in the square where $X$ lies. Hence, $\Vert X - X_{\pi(S, X)} \Vert$ can only be bounded by the length of the entire data space (the large square).
 
-Let $C_1, ..., C_r$ the resulting hypercubes. We can now bound $\Vert X − X_{\pi(S, X)} \Vert$ using a case analysis. Assume first that $X$ belong to a $C_i$ in which there is at least a training point $X_t$. Then $\Vert X - X_{\pi(S, X)} \Vert$ is at most the length of the diagonal of the hypercube, which is $\epsilon \sqrt{d}$, as it is possible to see int the left pane of the figure. Now assume that $X$ belongs to a $C_i$ in which there are no training points. Then $\Vert X − X_{\pi(S, X)} \Vert$ is only bounded by the length of the diagonal of $\mathcal{X}$, which is $2 \sqrt{d}$, as it is possible to see in the right pane of the figure. Hence, we may write
+Let $C_1, ..., C_r$ the resulting hypercubes. We can now bound $\Vert X − X_{\pi(S, X)} \Vert$ using a case analysis. Assume first that $X$ belong to a $C_i$ in which there is at least a training point $X_t$. Then $\Vert X - X_{\pi(S, X)} \Vert$ is at most the length of the diagonal of the hypercube, which is $\varepsilon \sqrt{d}$, as it is possible to see int the left pane of the figure. Now assume that $X$ belongs to a $C_i$ in which there are no training points. Then $\Vert X − X_{\pi(S, X)} \Vert$ is only bounded by the length of the diagonal of $\mathcal{X}$, which is $2 \sqrt{d}$, as it is possible to see in the right pane of the figure. Hence, we may write
 
-
+$$\mathbb{E}\Big[\Vert X - X_{\pi(S, X)}\Vert\Big] \leq \mathbb{E}\Big[ \varepsilon\sqrt{d} \sum_{i = 1}^{r} \mathbb{I}\{C_i \cap S \neq \emptyset\}\mathbb{I}\{X \in C_i\} + 2 \sqrt{d}\sum_{i = 1}^{r}\mathbb{I}\{C_i \cap S = \emptyset\}\mathbb{I}\{X \in C_i\}\Big]$$
+$$= \varepsilon\sqrt{d}\mathbb{E} \Big[\sum_{i = 1}^r \mathbb{I}\{C_i \cap S \neq \emptyset\}\mathbb{I}\{X \in C_i\}\Big] + 2 \sqrt{d}\sum_{i = 1}^r \mathbb{E}\big[\mathbb{I}\{C_i \cap S \neq \emptyset\}\mathbb{I}\{X \in C_i\}\big]$$
 
 where in the last step we used linearity of the expected value. Now observe that, for all $S$ and $X$,
 
@@ -801,19 +804,19 @@ where in the last step we used the inequality $(1 − p)^m \leq e ^{-pm}$. Setti
 
 The concave function $g(p) = e^{−pm}p$ is maximized for $p = \frac{1}{m}$. Therefore,
 
-$$\mathbb{E}\Big[\Vert X - X_{\pi_{S}(X)} \Vert\Big] \leq \epsilon \sqrt{d} + (2 \sqrt{d}) \frac{r}{em} = \sqrt{d}\Big(\epsilon + \frac{2}{em} \Big(\frac{2}{\epsilon}\Big)^d\Big)$$
+$$\mathbb{E}\Big[\Vert X - X_{\pi_{S}(X)} \Vert\Big] \leq \varepsilon \sqrt{d} + (2 \sqrt{d}) \frac{r}{em} = \sqrt{d}\Big(\varepsilon + \frac{2}{em} \Big(\frac{2}{\varepsilon}\Big)^d\Big)$$
 
-where we used the fact that the number r of hypercubes is equal to $(\frac{2}{\epsilon})^d$. Putting evertything together we ﬁnd that
+where we used the fact that the number r of hypercubes is equal to $(\frac{2}{\varepsilon})^d$. Putting evertything together we ﬁnd that
 
-$$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big] \leq 2 \ell_{\mathcal{D}}(f^*) + c \sqrt{d}\Big(\epsilon + \frac{2}{em} \big(\frac{2}{\epsilon}\big)^d\Big)$$
+$$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big] \leq 2 \ell_{\mathcal{D}}(f^*) + c \sqrt{d}\Big(\varepsilon + \frac{2}{em} \big(\frac{2}{\varepsilon}\big)^d\Big)$$
 
-Since this holds for all $0 < \epsilon < 1$, we can set $\epsilon = 2 m^{−1/(d+1)}$. This gives
+Since this holds for all $0 < \varepsilon < 1$, we can set $\varepsilon = 2 m^{−1/(d+1)}$. This gives
 
-
+$$\varepsilon + \frac{2}{em} \Big(\frac{2}{\varepsilon}\Big)^d = 2m^{-1/(d+1)} + \frac{2^{d+1}2^{-d}m ^{d/(d+1)}}{em} = 2m^{-1/(d+1)} \Big(1 + \frac{1}{e}\Big) \leq 4m^{-1/(d+1)} \quad \text{ } (4)$$
 
 Substituting this bound in $(4)$, we ﬁnally obtain
 
-$$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big]t \leq 2 \ell_{\mathcal{D}}(f^*) + c4m^{-1/(d+1)}$$
+$$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big]t \leq 2 \ell_{\mathcal{D}}(f^*) + c4m^{-1/(d+1)}\sqrt{d}$$
 
 Note that for $m \to \infty$, $\ell_{\mathcal{D}}(f^*) \leq \mathbb{E}[\ell_{\mathcal{D}(h_S)}] \leq 2\ell_{\mathcal{D}}(f^*)$. Namely, the asymptotic risk of $1-NN$ lies between the Bayes risk and twice the Bayes risk.
 
