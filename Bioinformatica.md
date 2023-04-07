@@ -7,11 +7,12 @@ Non rientrano nella bioinformatica, invece, le tecniche informatiche ispirate a 
 https://www.youtube.com/watch?v=o_-6JXLYS-k
 
 ## DNA
-Il **DNA** (**DesoxyriboNucleic Acid**) è un polimero il quale si trova nel nucleo delle cellule eucariote oppure libero nelle cellule procariote, formato da due filamenti di nucleotidi in senso opposto. Ogni nucleotide è formato da un **gruppo fosfato** (fosfato organico), uno zucchero **desossiribosio** (ribosio senza gruppo idrossile) ed una **base azotata**.<br />
+Il **DNA** (**DesoxyriboNucleic Acid**) è un acido nucleico il quale contiene le informazioni geniche, necessarie alla formazione ed omeostasi degli esseri viventi, attravero la biosintesi di RNA e proteine.<br />
+Dal punto di vista chimico, si tratta di un polimero organico, il quale si trova nel nucleo delle cellule eucariote oppure libero nelle cellule procariote, formato da due filamenti di monomeri, chiamati **nucleotidi**, direzionati in senso opposto. Ogni nucleotide è formato da un **gruppo fosfato** (fosfato organico), uno zucchero **desossiribosio** (ribosio senza gruppo idrossile) ed una **base azotata**.<br />
 
 ![[nucleotide.png]]
 
-Il fosfato organico e il desossiribosio sono uguali per tutti i nucleotidi e formano una **backbone** per la catena di nucleotidi alternandosi: la **catena antisenso** è formata anch'essa da una backbone fosfato-zucchero, ma nell'ordine opposto. Il gruppo fosfato di un nucleotide si lega, infatti, con il $3'$ ossigeno del nucleotide precedente. Quindi, la numerazione del carbonio è fondamentale per descrivere la direzione del filamento. Nell'immagine precedente, il filamento segue ordinamento $5' \to 3'$ (o ordinamento **Watson**), in quanto l'atomo di carbonio $5'$ precede l'atomo $3'$. Nel filamento opposto, il carbonio $3'$ precederà il carbonio $5'$ ($3' \to 5'$ o ordinamento **Crick**).
+Il fosfato organico e il desossiribosio sono uguali per tutti i nucleotidi e formano una **backbone** per la catena di nucleotidi alternandosi: la **catena antisenso** è formata anch'essa da una backbone fosfato-zucchero, ma nell'ordine opposto. Il gruppo fosfato di un nucleotide, legato all'ossigeno $5'$, si lega, infatti, con il $3'$ ossigeno del nucleotide precedente. Quindi, la numerazione del carbonio è fondamentale per descrivere la direzione del filamento. Nell'immagine precedente, il filamento segue ordinamento $5' \to 3'$ (o ordinamento **Watson**), in quanto l'atomo di carbonio $5'$ precede l'atomo $3'$. Nel filamento opposto, il carbonio $3'$ precederà il carbonio $5'$ ($3' \to 5'$ o ordinamento **Crick**).
 
 I nucleotidi differiscono solo per la base azotata. Ogni nucleotide è composto da una di quattro basi azotate: **adenina**, **timina**, **guanina** o **citosina**. Ognuna di queste basi si può collegare solo con la propria base complementare: adenina con timina e guanina con citosina.
 
