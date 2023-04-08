@@ -404,7 +404,7 @@ $$\varepsilon = \sqrt{\frac{1}{2n}\ln\frac{1}{\delta}}$$
 
 For this value of $\varepsilon$, the probability (the right-hand side of the equation) is at most $\delta$.
 
-$$\vert \ell_{\mathcal{D}}(h) - \ell_{S'}(h)\vert \leq \sqrt{\frac{1}{n}\ln{\frac{2}{\delta}}}$$
+$$\vert \ell_{\mathcal{D}}(h) - \ell_{S'}(h)\vert \leq \sqrt{\frac{1}{2n}\ln{\frac{2}{\delta}}}$$
 
 holds with probability al least $1 − \delta$ with respect to the random draw of the test set.
 
