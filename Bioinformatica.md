@@ -713,3 +713,40 @@ I dati relativi a patologie Mendeliane sono stati estratti da banche dati pubbli
 I dati GWAS, invece, sono mappati dalla sequenza di DNA in 1842 feature tramite la rete convoluzionale di DeepSEA e l'integrazione di score di conservazione evolutiva.
 
 ----------------------------------------------------------------
+
+# Progetto
+Il progetto da realizzare è composto da due parti:
+1) il codice eseguibile per replicare i risultati del progetto. Questo può essere un semplice script in R oppure un notebook R. E' bene che il codice sia commentato propriamente al fine di valutare se lo studente ha compreso il codice stesso;
+2) un report il quale descriva il problema considerato, gli approcci di apprendimento automatico applicati al fine di risolverlo, il set-up sperimentale, i risultati ottenuti ed una discussione dei risultati. 
+
+Il profetto riguarda la scoperta di sottotipi di malattie tramite l'utilizzo di un dataset multiomico proveniente dal _TCGA_. Il dataset riguarda l'adenocarcinoma della prostata (codice: _PRAD_). Si considerino come sottotipi quelli identificati nel lavoro performato dal _The Cancer Genome Atlas Research Network_, nel quale viene utilizzato un modello di clustering integrativo su dati multiomici e vengono scoperti tre sottotipi della malattia.
+
+Il procedimento può essere scomposto in:
+1) download del dataset considerando tre differenti sorgenti di dati omici, quali mRNA, miRNA e i dati di espressione delle proteine;
+2) pre-processing del dataset seguendo gli stessi step del paragrafo successivo. Durante il filtering per varianza, si selezionino le prime $100$ feature con la più alta varianza per ogni sorgente di dati;
+3) download dei sottotipi di malattia (). Si noti che non tutti i sottotipi sono disponibili per l'insieme di sample avente tutte le sorgenti di dati omici considerate, perciò sarà necessario trattenere dal dataset multiomico solo i sample aventi un sottotipo associato;
+4) check che i pazienti nel dataset multiomico e i sottotipi siano nello stesso ordine;
+5) ...
+6) ...
+7) ...
+8) ...
+	1) ...
+	2) ...
+	3) ...
+	4) ...
+9) ...
+10) ...
+11) ...
+
+## Report
+Il report deve contenere le seguenti sezioni:
+1) **INTRODUZIONE**: si illustrino i problemi della scoperta di sottotipi di malattie a partire da dati multiomici;
+2) **METODI**: si descriva l'integrazione dei dati e gli approcci di clustering sfruttati. Si descriva, inoltre, il dataset utilizzato, i sottotipi di malattia considerati e le metriche utilizzate al fine di comparare i clustering ottenuti con i sottotipi di malattia. Si espliciti, infine, il preprocessing dei dati applicato;
+3) **RISULTATI**: si presentino i risultati dei vari approcci utilizzando tabelle e grafici. Si discutano i risultati ottenuti. Si noti, inoltre, che i risultati non devono necessariamente essere buoni.
+
+----------------------------------------------------------------
+
+# Semi-supervised classification using graph-based algorithms on gene expression data
+
+
+----------------------------------------------------------------
