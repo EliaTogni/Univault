@@ -26,7 +26,7 @@ Timina e citosina sono anche chiamate **pirimidine**, a causa della struttura a 
 Le catene sono avvolte a forma di doppia elica la cui struttura regolare forma due tipi di spazi alternati, chiamati **solco maggiore** e **solco minore**. Questi solchi permettono al dna di legarsi attorno a proteine chiamate **istoni**, che tendono a compattarsi e a compattare, così, il DNA. Questo insieme di proteine e DNA è detto **cromatina** e forma, così impaccata, i **cromosomi**.
 
 ### Replicazione
-Durante la riproduzione cellulare, il DNA si duplica. Le due catene si separano: su ognuna di esse viene ricostruita l'opposta come concatenazione delle basi complementari.
+La divisione cellulare, necessaria ad un organismo per crescere e vivere, richiede una duplicazione del DNA cellulare, in modo che le cellule figlie possano avere la stessa informazione genetica della cellula madre. La struttura a doppia elica del DNA permette un meccanismo estremamente semplice per la replicazione del DNA. I due filamenti, infatti, sono separati e da ognuno viene creato un filamento complementare, ad opera di un enzima chiamato **DNA polimerasi**. Con questo meccanismo, le basi presenti sul filamento figlio sono determinate da quelle presenti sul filamento parentale: è proprio attraverso questo meccanismo che le cellule figlie presentano genoma identico alla cellula madre.
 
 ![[DNA_replication.png]]
 
@@ -38,7 +38,7 @@ L'**RNA** (**RiboNucleic Acid**) è un filamento a singola elica ma dalla strutt
 ----------------------------------------------------------------
 
 ## Dogma Centrale
-Il dogma centrale della biologia molecolare riguarda il flusso dell'informazione biologica: nella forma più semplificata afferma che il DNA, contenente le informazioni riguardanti l'organismo, viene trascritto sul **mRNA** (**RNA messaggero**), il quale viene tradotto in proteine dai **ribosomi**. La trascrizione del DNA in mRNA avviene secondo il principio di corrispondenza delle basi descritto in precedenza:
+Il dogma centrale della biologia molecolare riguarda il flusso unidirezionale dell'informazione biologica: nella forma più semplificata afferma che il DNA, contenente le informazioni riguardanti l'organismo, viene trascritto sul **mRNA** (**RNA messaggero**), il quale viene tradotto in proteine dai **ribosomi**. La trascrizione del DNA in mRNA avviene secondo il principio di corrispondenza delle basi descritto in precedenza:
 
 $$A\rightarrow U\hspace{1in} T\rightarrow A\hspace{1in} C\rightarrow G\hspace{1in} G\rightarrow C$$
 
