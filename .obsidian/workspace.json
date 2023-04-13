@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Statistical Methods for Machine Learning.md",
+                "file": "Bioinformatica.md",
                 "mode": "source",
                 "source": false
               }
@@ -77,7 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Statistical Methods for Machine Learning.md",
+                "file": "Bioinformatica.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -107,8 +107,8 @@
   },
   "active": "0b50027e5ed0ac5b",
   "lastOpenFiles": [
-    "Bioinformatica.md",
     "Statistical Methods for Machine Learning.md",
+    "Bioinformatica.md",
     "Images/2d_example_analysis_1-NN.png",
     "Images/bias-variance_decomposition.png",
     "Images/behaviour_expected_risk.png",
