@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "1d89a3ebfdb1f1a3",
+        "id": "3de16dc7c2dcb485",
         "type": "tabs",
         "children": [
           {
-            "id": "0b50027e5ed0ac5b",
+            "id": "d57d82faf40151dd",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -105,16 +105,17 @@
       "templates:Insert template": false
     }
   },
-  "active": "0b50027e5ed0ac5b",
+  "active": "d57d82faf40151dd",
   "lastOpenFiles": [
-    "Statistical Methods for Machine Learning.md",
+    "Macchina di Turing.md",
     "Bioinformatica.md",
+    "Untitled.md",
+    "Statistical Methods for Machine Learning.md",
     "Images/2d_example_analysis_1-NN.png",
     "Images/bias-variance_decomposition.png",
     "Images/behaviour_expected_risk.png",
     "Images/ecr-gata3.png",
     "Images/SMOTE.png",
-    "Untitled.md",
     "Statistica e Probabilità.md",
     "Logica Matematica.md",
     "Simulation.md",

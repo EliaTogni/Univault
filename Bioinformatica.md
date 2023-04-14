@@ -1,14 +1,14 @@
 # Elementi di Biologia Molecolare
 Per **bioinformatica** (**bioinformatics**) si intende l'applicazione di metodi informatici per la gestione, l'elaborazione e l'analisi di dati biologici, soprattutto biomolecolari. Spesso viene usato intercambiabilmente il termine **biologia computazionale** (**computational biology**).
 
-La bioinformatica si occupa anche di dati medici di tipo clinico o fenotipico, ma soprattutto è specializzata nella genomica e nella proteomica. Il focus del corso sarà posto, quindi, sulla biologia molecolare delle macromolecole degli acidi nucleici e delle proteine.<br />
+La bioinformatica si occupa anche di dati medici di tipo clinico o fenotipico, ma soprattutto è specializzata nella **genomica** (una branca della biologia molecolare che si occupa dello studio del **genoma** degli organismi viventi) e nella **proteomica** (una branca della biologia molecolare che consiste nell'identificazione sistematica di proteine e nella loro caratterizzazione rispetto a struttura, funzione, attività, quantità e interazioni molecolari). Il focus del corso sarà posto, quindi, sulla biologia molecolare delle macromolecole degli acidi nucleici e delle proteine.<br />
 Non rientrano nella bioinformatica, invece, le tecniche informatiche ispirate a princìpi biologici, come le reti neurali o i metodi di computazione evoluzionistica.
 
 https://www.youtube.com/watch?v=o_-6JXLYS-k
 
 ## DNA
 Il **DNA** (**DesoxyriboNucleic Acid**) è un acido nucleico il quale contiene le informazioni geniche, necessarie alla formazione ed omeostasi degli esseri viventi, attravero la biosintesi di RNA e proteine.<br />
-Dal punto di vista chimico, si tratta di un polimero organico, il quale si trova nel nucleo delle cellule eucariote oppure libero nelle cellule procariote, formato da due filamenti di monomeri, chiamati **nucleotidi**, direzionati in senso opposto. Ogni nucleotide è formato da un **gruppo fosfato** (fosfato organico), uno zucchero **desossiribosio** (ribosio senza gruppo idrossile) ed una **base azotata**.<br />
+Dal punto di vista chimico, si tratta di un polimero organico, il quale si trova nel nucleo delle cellule eucariote oppure libero nelle cellule procariote, ed è formato da due filamenti di monomeri, chiamati **nucleotidi**, direzionati in senso opposto. Ogni nucleotide è formato da un **gruppo fosfato** (fosfato organico), uno zucchero **desossiribosio** (ribosio senza gruppo idrossile) ed una **base azotata**.<br />
 
 ![[nucleotide.png]]
 
@@ -747,6 +747,142 @@ Il report deve contenere le seguenti sezioni:
 ----------------------------------------------------------------
 
 # Semi-supervised classification using graph-based algorithms on gene expression data
+In this lesson, we will explore the application of different semi-supervised algorithms that work on graphs to predict if a patient has Acute Myeloid Leukemia (AML) or Acute Lymphoblastic Leukemia (ALL) from gene expression data.
+
+# Install and load packages
+First of all, we need to install all the packages needed for this lesson:
+
+```r
+if (!require("BiocManager", quietly = TRUE))
+
+install.packages("BiocManager")
+
+BiocManager::install("golubEsets");
+
+BiocManager::install("hu6800.db");
+
+BiocManager::install("annotate");
+
+BiocManager::install("genefilter");
+
+BiocManager::install("limma");
+
+BiocManager::install("RBGL");
+
+install.packages("PerfMeas");
+
+install.packages("RANKS");
+
+install.packages("SNFtool");
+
+install.packages("caret");
+
+install.packages("ROCR");
+```
+
+Now we can load the packages:
+
+```r
+library("golubEsets");
+
+library("genefilter");
+
+library("hu6800.db");
+
+library("annotate");
+
+library("RANKS");
+
+library("caret");
+
+library("ROCR");
+
+library("SNFtool");
+
+```
+
+# Leukemia gene expression dataset
+We will use a famous dataset available for R, called "Golub dataset", from the name of the first author of the corresponding study. The dataset is composed of 72 samples/patients having Leukemia and described by their gene expression profiles (i.e. the level of mRNA expression for each patient).<br />
+The task is to predict their type of leukemia: Acute Lymphoblastic Leukemia (ALL) or Acute Myeloid Leukemia (AML).
+
+The following code is used to load the dataset from the package "golubEsets":
+
+```r
+# Load data:
+
+data(Golub_Merge);
+
+# Print summary of the eSet object:
+
+Golub_Merge;
+
+```
+
+As we can see, the data are stored in an object of class "ExpressionSet". An ExpressionSet is a data structure commonly used to represent genomic data, which allows to store and manipulate many different sources of information.
+
+In particular, the following information are usually present:
+- expression data often from microarray technology (we'll briefly see in the next section what are microarrays) - **AssayData**. Opposite to what we see in machine learning and data analysis application, the expression matrix has features in the rows and samples in the columns (note that this is quite common in genomics data);
+- data describing the considered samples (e.g. age, sex, clinical condition, etc) - **phenoData**. We have the same number of rows in this matrix and columns in the expression data (i.e. the number of samples has to match). Also the names of the samples has to be the same. A **varMetadata** can be present to explain the meaning of the different columns;
+- metadata related to features are also important - **Annotation** Since they are related to the used high-throughput technology (i.e. which microarray was used to perform the experiment), specific packages containing information on the different technologies are present on Bioconductor. We will see later how they are important to annotate each microarray probe. In pratice, annotation contains just a string with the name of the microarray chip used for the experiment, and we need this to install the corresponding annotation package;
+- information about th experiment are available under **experimentData**;
+
+In the following chunk of code, we will access the main different information we have in the Golub dataset:
+
+```r
+# Access expression matrix:
+
+expr <- exprs(Golub_Merge);
+
+as.data.frame(expr[1:5, 1:5]);
+
+# Access phenotypic data:
+
+pheno <- pData(Golub_Merge);
+
+pheno[1:5, 1:5];
+
+# Access the annotation data
+
+message("The used chip is: ", annotation(Golub_Merge), "\n");
+
+# Access the experiment data:
+
+experimentData(Golub_Merge);
+```
+
 
 
 ----------------------------------------------------------------
+
+# Introduzione
+Disease subtype discovery from multi-omics data is a complex task that involves the integration of diverse types of biological data, such as genomics, transcriptomics, proteomics, and metabolomics, to identify different disease subtypes that might respond differently to treatment.
+
+One of the main challenges in this field is the high dimensionality of the data. Multi-omics datasets can contain thousands of features, and many of these features might be redundant or irrelevant. Therefore, feature selection and dimensionality reduction techniques are often employed to identify the most informative features.
+
+Another challenge is the heterogeneity of the data. Different types of biological data might capture different aspects of the disease, and the relationships between these data types might not be straightforward. Integrating these data types requires sophisticated statistical methods, such as multi-view clustering, to identify disease subtypes that are consistent across the different data types.
+
+Furthermore, the interpretation of the results can be challenging. The identification of disease subtypes based on multi-omics data is often an exploratory analysis, and the resulting subtypes might not have a clear biological interpretation. Therefore, additional experiments and analyses might be required to validate the subtypes and understand their biological relevance.
+
+Overall, disease subtype discovery from multi-omics data is a challenging problem that requires sophisticated statistical methods, careful data preprocessing, and careful interpretation of the results.
+
+Prostate adenocarcinoma is a heterogeneous disease with multiple subtypes that can vary in aggressiveness and response to treatment. Identifying these subtypes is important for personalized treatment and improving patient outcomes.
+
+Multi-omics data, including genomics, transcriptomics, and proteomics, have been used to identify prostate adenocarcinoma subtypes. For example, a study published in the journal Cancer Cell in 2018 used multi-omics data from The Cancer Genome Atlas (TCGA) to identify seven molecular subtypes of prostate adenocarcinoma. These subtypes were associated with distinct clinical features and outcomes, suggesting that they represent biologically and clinically relevant subtypes.
+
+The study used unsupervised clustering methods to integrate data from multiple platforms and identify the molecular subtypes. They found that different subtypes were associated with different pathways and biological processes, such as androgen signaling, cell cycle regulation, and DNA damage repair. The subtypes also showed different responses to treatments such as androgen deprivation therapy and chemotherapy.
+
+Another study published in the journal Nature in 2019 used a similar approach to identify three molecular subtypes of prostate adenocarcinoma. These subtypes were associated with different genomic alterations, gene expression patterns, and clinical outcomes.
+
+While these studies represent important advances in our understanding of prostate adenocarcinoma subtypes, there are still challenges in translating these findings to clinical practice. For example, there is a need for more standardized methods for subtyping and for validating the subtypes in independent datasets. Additionally, the complexity of multi-omics data and the need for sophisticated statistical methods and bioinformatics expertise can limit their widespread use in clinical settings.
+
+In summary, multi-omics data can provide valuable insights into the molecular subtypes of prostate adenocarcinoma, which can have important implications for personalized treatment and improving patient outcomes. However, further research is needed to fully translate these findings into clinical practice.
+
+The seven subtypes of prostate adenocarcinoma were identified using unsupervised clustering analysis of multi-omics data from The Cancer Genome Atlas (TCGA) project. The TCGA dataset includes comprehensive molecular profiling data, including genomics, transcriptomics, and proteomics, for hundreds of prostate adenocarcinoma samples.
+
+The study used an algorithm called ConsensusClusterPlus to identify molecular subtypes of prostate adenocarcinoma based on gene expression, DNA methylation, and copy number alterations data. ConsensusClusterPlus is a robust clustering algorithm that combines multiple clustering methods and resampling techniques to identify stable and reproducible clusters.
+
+The study identified seven molecular subtypes of prostate adenocarcinoma, which they named as: (1) Luminal A, (2) Luminal B, (3) Luminal INTP, (4) Luminal NE, (5) Basal, (6) Basal-like, and (7) Neuroendocrine-like. These subtypes showed distinct molecular and clinical features, such as different expression of genes involved in androgen signaling, cell cycle regulation, DNA damage repair, and immune response.
+
+The study further validated the subtypes in independent datasets and found that the subtypes were associated with different clinical outcomes, such as biochemical recurrence, metastasis, and survival. These findings suggest that the subtypes represent biologically and clinically relevant subgroups of prostate adenocarcinoma.
+
+In summary, the seven subtypes of prostate adenocarcinoma were identified using unsupervised clustering analysis of multi-omics data from TCGA, which provided a comprehensive view of the molecular features of the disease. The subtypes represent different biological and clinical entities that can have important implications for personalized treatment and improving patient outcomes.
