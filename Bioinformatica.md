@@ -93,6 +93,11 @@ Nella porzione trascritta si alternano **introni** ed **esoni**: gli esoni sono 
 
 Il **promoter** regola la trascrizione: la trascrizione può avvenire solo in seguito all'attivazione del promoter causata da una proteina fattore di trascrizione, la quale permette all'enzima **RNA-polimerasi** di trascrivere il DNA. Questi meccanismi di regolazione sono influenzati anche da regioni distali chiamate **enhancer** e **silencer**. Nell'uomo, le regioni trascritte costituiscono solo il 3% del codice genetico: le porzioni restanti hanno, invece, funzioni regolatrici.
 
+La trascrizione genica corrisponde all'espressione genica. Un numero di fattori di trascrizione necessita di essere presente o assente affinchè un gene sia espresso. Questi fattori sono proteine che sono regolate o a livello di proteine o di geni.
+
+L'ammontare di mRNA di un gene presente all'interno della cellula è una misura del livello di espressione del gene. Questo livello di espressione del gene è determinato dalla sua regolazione. I geni coinvolti negli stessi processi saranno regolati similarmente e, perciò, avranno pattern di espressione simili.<br />
+I geni necessari in certe condizioni saranno sovraregolati mentre quelli non necessari saranno sottoregolati.
+
 ----------------------------------------------------------------
 
 ## Dogma Centrale
