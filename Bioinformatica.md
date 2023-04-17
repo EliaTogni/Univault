@@ -70,7 +70,7 @@ La funzione di una proteina, tuttavia, non è unica e può variare a seconda del
 ----------------------------------------------------------------
 
 ### Codice Genetico
-Il codice genetico è la codifica delle proteine attraverso triplette di nucleotidi, dette **codoni**. Ogni codone codifica per un amminoacido, per un segnale di start oppure per un segnale di stop.<br />
+Il codice genetico è il sistema attraverso cui si conserva e si trasmette l’informazione genetica. La trasmissione dell’informazione avviene attraverso triplette di nucleotidi, dette **codoni**. Ogni codone codifica per un amminoacido, per un segnale di start oppure per un segnale di stop.<br />
 È un codice ridondante: gli amminoacidi sono 20 mentre le triplette di nucleotidi possibili sono $4^3=64$ (mentre l'utilizzo di coppie di nucleotidi non permetterebbe di avere un numero sufficiente di combinazioni).
 
 ![[codoni.png]]
@@ -121,7 +121,7 @@ Altre tecniche, dette di **deep sequencing**, invece, sequenziano direttamente s
 ----------------------------------------------------------------
 
 ### Dati su popolazioni
-Grazie alla nuova disponibilità di dati genomici, è possibile fare analisi su popolazioni di individui, considerando le variazioni rispetto ad un genoma di riferimento: vengono considerate le deviazioni dalla norma, come **single nucleotide polymorphism** (**SNP**),  inserzioni o delezioni (**indel**).
+Grazie alla nuova disponibilità di dati genomici, è possibile fare analisi su popolazioni di individui, considerando le variazioni rispetto ad un genoma di riferimento: vengono considerate le deviazioni dalla norma, come **single nucleotide polymorphism** (**SNP**),  inserzioni o delezioni (**indel**). Esistono però delle complicanze, in casi di eterozigosi.
 
 ----------------------------------------------------------------
 
@@ -131,7 +131,9 @@ Per acquisire dati sull'espressione delle proteine si possono utilizzare tecnich
 ----------------------------------------------------------------
 
 #### Microarray 
-I **microarray** sono vetrini sui quali vengono sintetizzate delle sequenze di DNA, scelte tra le sequenze più indicative dell'espressione dei geni target. Alcuni frammenti di mRNA di un campione analizzato saranno complementari alle sequenze sul **DNA-chip** e vi si legheranno: le coppie legate vengono individuate perché sensibili al laser grazie a delle molecole fotosensibili aggiunte al mRNA. In base alle sequenze presenti si inferisce, poi, il gene espresso.
+La tecnologia dei **microarray** di DNA per lo studio degli acidi nucleici si basa sulla proprietà di questi ultimi di **ibridare**, cioè di riassociarsi con la propria sequenza complementare secondo le regole di appaiamento delle basi scoperte da Watson e Crick. Questa caratteristica degli acidi nucleici è alla base di molte delle loro proprietà biologiche nonché delle tecnologie tradizionali per studiare l’espressione genica. Grazie a questa proprietà, un frammento di acido nucleico può funzionare da sonda specifica per il riconoscimento della sua sequenza complementare, e permette quindi di identificarla anche in una miscela complessa. Il processo di ibridazione è estremamente selettivo, specifico e sensibile. Nelle tecniche tradizionali, la sonda è costituita da più molecole identiche di acido nucleico marcate generalmente con un isotopo radioattivo. Le molecole della sonda si trovano in fase liquida e solo un tipo di sonda alla volta può essere ibridata alle sequenze bersaglio dei campioni in esame, che sono invece ancorate a un supporto, il cosìddetto **DNA-chip**. Una volta che l’ibridazione è avvenuta e le molecole di sonda in eccesso sono state eliminate, sarà possibile per mezzo di autoradiografia visualizzare e quantificare il segnale emesso dalla sonda ibridata, che sarà proporzionale alla quantità di sequenza specifica contenuta nei campioni in esame.
+
+Strutturalmente, i microarray sono costituiti da un supporto solido su cui sono disposte ordinatamente un numero elevato di sonde specifiche di DNA in maniera da formare una matrice di punti regolare. Ogni punto della matrice ha dimensioni tipicamente inferiori a 200 micron ed è costituito da molte copie della stessa sequenza di DNA. Esso rappresenta l’unità minima del microarray ed è chiamato _feature_. I microarray si classificano per il numero di features presenti sulla loro superficie, una sorta di misura della loro complessità e capacità di risoluzione. Ogni feature è costituita da più copie uguali di sequenze sonda (**probe sequences**), che ibrideranno con le sequenze bersaglio (**target sequences**) complementari marcate contenute nei campioni in esame.
 
 ----------------------------------------------------------------
 
