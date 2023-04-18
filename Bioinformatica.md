@@ -375,7 +375,7 @@ $$y = w \ast x\ :\ y_i = \sum_{h=1}^{k} w_h\ x_{i-h}$$
 
 Il vettore di pesi viene chiamato **kernel**. Le funzioni di convoluzione implementate sono anche diverse da quella ortodossa (detta **flipped-kernel**): ad esempio, può essere la funzione di cross-correlazione (senza rovesciamento del kernel, ma non commutativa). Gli strati convoluzionali possono implementare anche il padding (senza padding la lunghezza degli strati diminuisce inesorabilmente).
 
-Un primo vantaggio delle CNN contro i MLP è che hanno meno parametri: i kernel sono generalmente piccoli, quindi occupano meno memoria, sono più semplici da apprendere (sono meno parametri) e implementano la sparsità delle connessioni (ogni strato è connesso solo al proprio **campo recettivo**) propria delle reti neurali naturali. I parametri, oltre a essere meno, sono anche gli stessi per ogni neurone dello stesso strato, ciò che cambia è la sezione di input che viene considerata: questo fenomeno è detto **parameter sharing**. In questo modo, le convoluzioni sono considerabili come un prodotto per una matrice di pesi con i vincoli enunciati di sparsità e di uguaglianza dei parametri e, quindi, possono essere considerate una regolarizzazione dei MLP.
+Un primo vantaggio delle CNN rispetto ad i MLP è la necessità di un numero minore di parametri: i kernel sono generalmente piccoli, quindi occupano meno memoria, sono più semplici da apprendere (in quanto un numero minore di parametri) ed implementano la sparsità delle connessioni (ogni strato è connesso solo al proprio **campo recettivo**) propria delle reti neurali naturali. I parametri, oltre a essere meno, sono anche gli stessi per ogni neurone dello stesso strato: ciò che cambia è la sezione di input considerata: questo fenomeno è detto **parameter sharing**. In questo modo, le convoluzioni sono considerabili come un prodotto per una matrice di pesi con i vincoli enunciati di sparsità e di uguaglianza dei parametri e, quindi, possono essere considerate una regolarizzazione dei MLP.
 
 Una proprietà delle CNN che deriva dall'utilizzo dell'operazione di convoluzione è che le trasformazioni da uno strato al successivo sono **equivarianti per traslazione**: una traslazione nel vettore di input corrisponde a una stessa traslazione nel vettore di output.
 
@@ -632,14 +632,14 @@ Esistono molti metodi per l'annotazione delle varianti, ma molti tendono a sfrut
 I *C-score* così ottenuti sono molti correlati alla patogenicità delle varianti sia in regioni *coding* che *non-coding*, che hanno riscontri in effetti regolatori verificati sperimentalmente.
 
 ### Dati per l'addestramento 
-Il training del sistema viene effettuato su un dataset di 15 milioni di esempi positivi reali e 15 milioni di esempi negativi simulati.
+Il training del sistema viene effettuato su un dataset di $15$ milioni di esempi positivi reali e $15$ milioni di esempi negativi simulati.
 
-Gli esempi positivi sono ottenuti come le varianti alleliche che hanno una frequenza superiore al 95%. Per gli esempi negativi, invece, si è ricavato un modello di progenitore dei primati: ogni allele di questa sequenza viene permutato secondo la distribuzione di probabilità ottenuta dal dataset.
+Gli esempi positivi sono ottenuti come le varianti alleliche che hanno una frequenza superiore al $95$%. Per gli esempi negativi, invece, si è ricavato un modello di progenitore dei primati: ogni allele di questa sequenza viene permutato secondo la distribuzione di probabilità ottenuta dal dataset.
 
 ----------------------------------------------------------------
 
 ### Scores
-Le feature in ingresso sono le 63 modalità di annotazione, integrate con un piccolo numero di termini di interazione. Lo score in uscita (*raw C-score*) è stato calcolato per tutte le possibili 8.6 miliardi di varianti del genoma umano di riferimento: per rendere il punteggio più leggibile, il range è stato riscalato tra 1 e 99, ottenendo uno *scaled C-score*.
+Le feature in ingresso sono le $63$ modalità di annotazione, integrate con un piccolo numero di termini di interazione. Lo score in uscita (**raw C-score**) è stato calcolato per tutte le possibili $8.6$ miliardi di varianti del genoma umano di riferimento: per rendere il punteggio più leggibile, il range è stato riscalato tra $1$ e $99$, ottenendo uno **scaled C-score**.
 
 ![[ecr-gata3.png]]
 
