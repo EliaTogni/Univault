@@ -172,7 +172,7 @@ In realtà, tale legge non è sempre rispettata. È vero per tratti codificati s
 ----------------------------------------------------------------
 
 # Metodi di Apprendimento Automatico
-I metodi di machine learning sono algoritmi di tipo **data driven**: si contrappongono alla programmazione tradizionale perché, anziché produrre un output da degli input e da un programma, producono un programma (un modello) a partire da input e output. Invece di scrivere un programma a mano, si colleziona una grande magnitudine di esempi i quali specificano l'outputo corretto per un input dato e si dà questo dataset in pasto ad un algoritmo di apprendimento automatico.
+I metodi di machine learning sono algoritmi di tipo **data driven**: si contrappongono alla programmazione tradizionale perché, anziché produrre un output da degli input e da un programma, producono un programma (un modello) a partire da input e output. Invece di scrivere un programma a mano, si colleziona una grande magnitudine di esempi i quali specificano l'output corretto per un input dato e si dà questo dataset in pasto ad un algoritmo di apprendimento automatico.
 
 Sono, quindi, tre le principali componenti di un sistema di apprendimento automatico: la **forma di rappresentazione** del modello, la **funzione di valutazione delle performance** del modello prodotto e l'**algoritmo di ottimizzazione** che implementa l'apprendimento. Inoltre, è molto importante avere un formato di rappresentazione dei dati che sia adatto al sistema di apprendimento scelto ([[Albero di Decisione |alberi di decisione]], programmi logici, istanze, modelli grafici come le reti di Markov, [[Intelligenza Artificiale#Reti neurali |reti neurali]], support vector machines, ...).
 
@@ -245,7 +245,7 @@ Per ottenere questo valore atteso sarà necessario conoscere la probabilità con
 
 $$f^* = \underset{\hat{f}\in\mathcal{H}}{\operatorname{argmin}} \int_{x\in X}\int_{y\in Y} loss\Big(y,\hat{f}(x)\Big)\,p(X=x,Y=y)\ dx\ dy$$
 
-Se si conoscesse tale distribuzione, l'apprendimento non sarebbe necessario. In generale la distribuzione non è nota e, quindi, si stima il rischio atteso con il r ischio empirico valutato sul test set.
+Se si conoscesse tale distribuzione, l'apprendimento non sarebbe necessario. In generale la distribuzione non è nota e, quindi, si stima il rischio atteso con il rischio empirico valutato sul test set.
 
 ----------------------------------------------------------------
 
@@ -281,7 +281,7 @@ Nella validazione **hold-out**, i dati di training vengono divisi in due insiemi
 ----------------------------------------------------------------
 
 ### Cross-validation
-La **cross-validazione** può essere effettuata tramite **random subsampling** o tramite **k-fold cross-validation**. K-fold cross-validation consiste nel dividere i dati di training in $k$ insiemi indipendenti edidenticamente distribuiti: ad ogni iterazione $i\in[1,k]$ l'insieme $i$-esimo viene sottratto dai dati di training e utilizzato come insieme di validazione, mentre i restanti $k-1$ insiemi sono utilizzati come training set. Anche in questo caso la stima dell'errore di generalizzazione è data dalla media degli errori di validazione: la differenza sostanziale è che in questo caso ogni esempio viene considerato una e una sola volta come caso di test (e $k-1$ come dato di training).
+La **cross-validazione** può essere effettuata tramite **random subsampling** o tramite **k-fold cross-validation**. $K$-fold cross-validation consiste nel dividere i dati di training in $k$ insiemi indipendenti ed identicamente distribuiti: ad ogni iterazione $i\in[1,k]$ l'insieme $i$-esimo viene sottratto dai dati di training e utilizzato come insieme di validazione, mentre i restanti $k-1$ insiemi sono utilizzati come training set. Anche in questo caso la stima dell'errore di generalizzazione è data dalla media degli errori di validazione: la differenza sostanziale è che in questo caso ogni esempio viene considerato una e una sola volta come caso di test (e $k-1$ volte come dato di training).
 
 Nel caso limite in cui $k$ è la dimensione del training set, k-fold cross-validation prende il nome di **leave-one-out cross-validation** (**LOOCV**): ad ogni iterazione il validation set è composto da un solo esempio, mentre tutti gli altri compongono il test set.
 
@@ -291,7 +291,7 @@ In generale, valori elevati di $k$ restituiscono una stima più realistica dell'
 
 ## Algoritmi di Apprendimento Supervisionato
 ### KNN
-**[[Statistical Methods for Machine Learning#The Nearest Neighbour algorithm |K-Nearest-Neighbours]]** è un algoritmo di classificazione che, dato un training set $D\in X\times Y$ e una funzione di distanza $d:X \rightarrow \mathbb{R}$ associa ad una nuova istanza $x$ l'etichetta della maggior parte dei $k$ elementi più vicini a $x$ in $D$:
+**[[Statistical Methods for Machine Learning#The Nearest Neighbour algorithm |K-Nearest-Neighbours]]** è un algoritmo di classificazione che, dato un training set $D\in X\times Y$ e una funzione di distanza $d:X \rightarrow \mathbb{R}$ associa ad una nuova istanza $x$ l'etichetta più frequente tra i $k$ elementi più vicini a $x$ in $D$:
 
 $$\underset{y \in Y}{\operatorname{argmax}}\Big \vert \Big \{ (x_i, y_i) \in D : y = y_i \text{ }\wedge \text{ } \vert \{ (x_j, y_j) \in D : d(x_j) \leq d(x_i)\}\vert  \leq k \Big \} \Big \vert$$
 
@@ -343,7 +343,7 @@ until convergence
 ```
 
 Condizioni di convergenza possono essere la convergenza dell'errore ($E(w) < \tau$) o dell'aggiornamento ($\Delta w < \tau$), oppure il raggiungimento di un numero di iterazioni prefissate.<br />
-Per problemi di classificazione multiclasse, possono essere utilizzati k percettroni: l'input rimane un vettore $x$, i pesi sono la matrice $W$ e le uscite il vettore $y$, dove
+Per problemi di classificazione multiclasse, possono essere utilizzati $k$ percettroni: l'input rimane un vettore $x$, i pesi sono la matrice $W$ e le uscite il vettore $y$, dove
 $$y = Wx\ :\ y_k = \sum_{j=1}^{k} W_{k,j}\,x_j$$
 
 Questo modello è chiamato **percettrone a singolo strato**: la classe predetta può essere inferita osservando il massimo di $y$ (**winner takes all**), oppure si può esprimere la probabilità di ogni classe con un operazione come il **softmax**
@@ -369,7 +369,7 @@ Alcune tecniche di regolarizzazione utilizzate sono il **weight decay** (la norm
 ----------------------------------------------------------------
 
 ### CNN
-Le **[[Intelligenza Artificiale#Deep Learning|convolutional neural networks]]** sono reti neurali in cui ogni strato viene ottenuto, non dal prodotto matrice-vettore dei pesi e dello strato precedente, ma dalla loro convoluzione
+Le **[[Intelligenza Artificiale#Deep Learning|convolutional neural networks]]** sono reti neurali in cui ogni strato viene ottenuto non dal prodotto matrice-vettore dei pesi e dello strato precedente, ma dalla loro convoluzione
 
 $$y = w \ast x\ :\ y_i = \sum_{h=1}^{k} w_h\ x_{i-h}$$
 
@@ -652,48 +652,48 @@ Invece, gli *scaled CADD score* sono ottenuti come la scalatura per ordini di gr
 ----------------------------------------------------------------
 
 ### Versioni
-CADD 1.0 utilizza come algoritmo di apprendimento un SVM lineare, mentre da CADD 1.1 viene utilizzato un algoritmo di regressione logistica: inoltre, CADD 1.1 estende leggermente l'insieme di annotazioni utilizzate. In CADD 1.3 è stato aggiornato il training set.
+CADD $1.0$ utilizza come algoritmo di apprendimento un SVM lineare, mentre da CADD $1.1$ viene utilizzato un algoritmo di regressione logistica: inoltre, CADD $1.1$ estende leggermente l'insieme di annotazioni utilizzate. In CADD $1.3$ è stato aggiornato il training set.
 
 ----------------------------------------------------------------
 
 ## DeepSEA
-*DeepSEA* è un sistema basato su deep learning per la predizione degli effetti degli SNP in regioni non-codificanti.
+**DeepSEA** è un sistema basato su deep learning per la predizione degli effetti degli SNP in regioni non-codificanti.
 
-Come *cell variable*, vengono predette delle feature epigenetiche come siti di binding dei fattori di trascrizione, sensitività alla DNasi, ... per poi predire gli effetti sulla cromatina e ordinare le varianti.
+Come **cell variable**, vengono predette delle feature epigenetiche come siti di binding dei fattori di trascrizione, sensitività alla DNasi, ... per poi predire gli effetti sulla cromatina e ordinare le varianti.
 
-L'analisi è rivolta alle regioni non-coding perché più del 96% degli SNP nelle patologie tumorali sono in tali regioni: tuttavia, solo poche sono causative. Varianti in regioni non-codificanti possono essere deleterie interrompendo o creando motivi nelle sequenze del DNA che inibiscono o abilitano il legame di fattori di trascrizione o il binding di miRNA; inoltre, mutazioni negli introni possono modificare lo splicing.
+L'analisi è rivolta alle regioni non-coding perché più del $96$% degli SNP nelle patologie tumorali sono in tali regioni: tuttavia, solo poche sono causative. Varianti in regioni non-codificanti possono essere deleterie interrompendo o creando motivi nelle sequenze del DNA che inibiscono o abilitano il legame di fattori di trascrizione o il binding di miRNA; inoltre, mutazioni negli introni possono modificare lo splicing.
 
 ### Variabili
-L'input della rete è costituito dalla sequenza target e dalla regione circostante: viene stabilita una dimensione di finestra di 1000 nucleotidi, di cui i 200 nucleotidi centrali rappresentano la sequenza target. La codifica è binaria a 4-bit e ogni base viene codificata con un uno sul bit corrispondente e con uno zero sugli altri tre bit: una sequenza din $n$ basi diventa, quindi, una matrice $4\times n$ di bit.
+L'input della rete è costituito dalla sequenza target e dalla regione circostante: viene stabilita una dimensione di finestra di $1000$ nucleotidi, di cui i $200$ nucleotidi centrali rappresentano la sequenza target. La codifica è binaria a $4$-bit e ogni base viene codificata con un uno sul bit corrispondente e con uno zero sugli altri tre bit: una sequenza din $n$ basi diventa, quindi, una matrice $4\times n$ di bit.
 
-Le cell variable intermedie sono l'ipersensitività alla DNasi, i legami di fattori di trascrizione e i marker istonici. Esse sono predette per ogni finestra di 200 basi dalla CNN.
+Le cell variable intermedie sono l'ipersensitività alla DNasi, i legami di fattori di trascrizione e i marker istonici. Esse sono predette per ogni finestra di $200$ basi dalla CNN.
 
 Il predittore finale utilizza le cell variable per stimare l'effetto della variante.
 
 ----------------------------------------------------------------
 
 ### Rete Convoluzionale
-Il primo layer della rete neurale di DeepSEA è composto da una matrice $D\times W$ di neuroni, dove il neurone $h_{d,w}$ si occupa di rilevare il motivo $d$ nella finestra $w$ . I motivi target hanno una lunghezza di 6 basi: la larghezza della finestra è 6, con un *hop size* di 1. Quindi il numero di finestre $W$ è cinque unità in meno rispetto alla
+Il primo layer della rete neurale di DeepSEA è composto da una matrice $D\times W$ di neuroni, dove il neurone $h_{d,w}$ si occupa di rilevare il motivo $d$ nella finestra $w$ . I motivi target hanno una lunghezza di $6$ basi: la larghezza della finestra è $6$, con un *hop size* di $1$. Quindi il numero di finestre $W$ è cinque unità in meno rispetto alla
 lunghezza della sequenza (no padding).
 
 Il numero di motivi è virtualmente variabile, ma tutti i neuroni $\{h_{d,w}\}_{w=1}^{W}$ cercano di rilevare lo stesso motivo: non ha senso usare uno strato completamente connesso, ma si sfrutta il parameter sharing degli strati convoluzionali per facilitare il training e ridurre il numero di parametri. Ogni motivo sarà, quindi, rilevato da uno specifico kernel $4\times 6$.
 
-Ricapitolando: il primo layer di DeepSEA è uno strato convoluzionale con $D$ kernel $4\times 6$. Dopodiché viene applicata una funzione di attivazione ReLU e max pooling con stride di larghezza 4. A questo, seguono altri due strati convoluzionali con ReLU e max pooling. Infine, si trova uno strato completamente connesso con attivazione logistica e uno strato finale di output con 919 neuroni e attivazione logistica.
+Ricapitolando: il primo layer di DeepSEA è uno strato convoluzionale con $D$ kernel $4\times 6$. Dopodiché viene applicata una funzione di attivazione ReLU e max pooling con stride di larghezza 4. A questo, seguono altri due strati convoluzionali con ReLU e max pooling. Infine, si trova uno strato completamente connesso con attivazione logistica e uno strato finale di output con $919$ neuroni e attivazione logistica.
 
 ----------------------------------------------------------------
 
 ### Boosting
-L'output della rete convoluzionale restituisce 919 feature: da queste si calcolano le differenze assolute ( $P(ref)-P(alt)$ ) e relative ( $\log{\frac{P(ref)}{P(alt)}}$ ) e si integrano gli score di conservazione evolutiva. Tutte queste feature (1842) sono preprocessate calcolandone il valore assoluto e sono standardizzate: il predittore viene ottenuto con un algoritmo di boosting per la regressione logistica.
+L'output della rete convoluzionale restituisce $919$ feature: da queste si calcolano le differenze assolute ( $P(ref)-P(alt)$ ) e relative ( $\log{\frac{P(ref)}{P(alt)}}$ ) e si integrano gli score di conservazione evolutiva. Tutte queste feature ($1842$) sono preprocessate calcolandone il valore assoluto e sono standardizzate: il predittore viene ottenuto con un algoritmo di boosting per la regressione logistica.
 
 ----------------------------------------------------------------
 
 ## HyperSMURF
-HyperSMURF (*Hyper-ensamble of SMote Undersampled Random Forests*) è un metodo di *hyper-esamble* per la predizione delle varianti deleterie in regioni non-codificanti, che affronta direttamente il problema dello sbilanciamento dei dati.
+**HyperSMURF** (**Hyper-ensamble of SMote Undersampled Random Forests**) è un metodo di **hyper-esamble** per la predizione delle varianti deleterie in regioni non-codificanti, che affronta direttamente il problema dello sbilanciamento dei dati.
 
 ### SMOTE
 I dati disponibili nel training set, come spesso accade in bioinformatica, sono estremamente sbilanciati: essi vengono ribilanciati sovracampionando la classe minoritaria e sottocampionando la classe maggioritaria.
 
-La tecnica usata per il sovracampionamento della classe minoritaria è SMOTE (*Synthetic Minority Oversampling TEchnique*). Per creare un campione sintetico da un campione natutrale $x$ , viene scelto con probabilità uniforme $x_{knn}$ uno dei $k$ nearest neighbor del campione e un numero $\alpha$ tra 0 e 1 (con probabilità uniforme): il campione sintetico è dato dalla combinazione convessa dei due campioni $x$ e $x_{knn}$ con coefficienti $\alpha$ e $1$-$\alpha$ .
+La tecnica usata per il sovracampionamento della classe minoritaria è **SMOTE** (**Synthetic Minority Oversampling TEchnique**). Per creare un campione sintetico da un campione natutrale $x$ , viene scelto con probabilità uniforme $x_{knn}$ uno dei $k$ nearest neighbor del campione e un numero $\alpha$ tra $0$ e $1$ (con probabilità uniforme): il campione sintetico è dato dalla combinazione convessa dei due campioni $x$ e $x_{knn}$ con coefficienti $\alpha$ e $1$-$\alpha$ .
 
 $$\text{SMOTE}(x) := (1-\alpha)\,x + \alpha\, x_{knn}\ :\ \alpha \leftarrow \text{rand}(0,1),\ x_{knn} \leftarrow \text{rand}(\text{KNN}(x))$$
 
@@ -704,9 +704,9 @@ In figura è possibile osservare lappresentazione schematica e lo pseudocodice d
 ----------------------------------------------------------------
 
 ### Hyper-ensemble
-HyperSMURF è un metodo di hyper-ensemble. Un metodo di *ensemble* è un algoritmo di apprendimento in cui vengono addestrati più modelli: in fase di predizione, le etichette predette dai vari modelli vengono combinate per ottenere la predizione dell'ensemble. Nei metodi di *hyper-ensemble* vengono addestrati più ensemble.
+HyperSMURF è un metodo di hyper-ensemble. Un metodo di **ensemble** è un algoritmo di apprendimento in cui vengono addestrati più modelli: in fase di predizione, le etichette predette dai vari modelli vengono combinate per ottenere la predizione dell'ensemble. Nei metodi di **hyper-ensemble** vengono addestrati più ensemble.
 
-HyperSMURF utilizza un hyper-ensemble di random forest: ogni random forest è un ensemble di *decision tree*. Lo score predetto dall'hyper-ensemble è la media degli score predetti dalle random forest.
+HyperSMURF utilizza un hyper-ensemble di random forest: ogni random forest è un ensemble di [[Albero di Decisione|decision tree]]. Lo score predetto dall'hyper-ensemble è la media degli score predetti dalle random forest.
 
 ----------------------------------------------------------------
 
@@ -724,7 +724,8 @@ Il progetto da realizzare è composto da due parti:
 1) il codice eseguibile per replicare i risultati del progetto. Questo può essere un semplice script in R oppure un notebook R. E' bene che il codice sia commentato propriamente al fine di valutare se lo studente ha compreso il codice stesso;
 2) un report il quale descriva il problema considerato, gli approcci di apprendimento automatico applicati al fine di risolverlo, il set-up sperimentale, i risultati ottenuti ed una discussione dei risultati. 
 
-Il profetto riguarda la scoperta di sottotipi di malattie tramite l'utilizzo di un dataset multiomico proveniente dal _TCGA_. Il dataset riguarda l'adenocarcinoma della prostata (codice: _PRAD_). Si considerino come sottotipi quelli identificati nel lavoro performato dal _The Cancer Genome Atlas Research Network_, nel quale viene utilizzato un modello di clustering integrativo su dati multiomici e vengono scoperti tre sottotipi della malattia.
+Il prof
+getto riguarda la scoperta di sottotipi di malattie tramite l'utilizzo di un dataset multiomico proveniente dal **TCGA**. Il dataset riguarda l'adenocarcinoma della prostata (codice: **PRAD**). Si considerino come sottotipi quelli identificati nel lavoro performato dal **The Cancer Genome Atlas Research Network**, nel quale viene utilizzato un modello di clustering integrativo su dati multiomici e vengono scoperti tre sottotipi della malattia.
 
 Il procedimento può essere scomposto in:
 1) download del dataset considerando tre differenti sorgenti di dati omici, quali mRNA, miRNA e i dati di espressione delle proteine;
