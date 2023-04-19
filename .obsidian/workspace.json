@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "d57d82faf40151dd",
+            "id": "c3d51d4aae69904c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Bioinformatica.md",
+                "file": "Highlights for PrimerMolecularBiology.md",
                 "mode": "source",
                 "source": false
               }
@@ -77,7 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Bioinformatica.md",
+                "file": "Highlights for PrimerMolecularBiology.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,13 +102,17 @@
       "canvas:Create new canvas": false,
       "command-palette:Open command palette": false,
       "markdown-importer:Open format converter": false,
-      "templates:Insert template": false
+      "templates:Insert template": false,
+      "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "d57d82faf40151dd",
+  "active": "c3d51d4aae69904c",
   "lastOpenFiles": [
-    "Statistical Methods for Machine Learning.md",
+    "PrimerMolecularBiology.pdf",
+    "Programmazione Dinamica.md",
+    "Highlights for PrimerMolecularBiology.md",
     "Bioinformatica.md",
+    "Statistical Methods for Machine Learning.md",
     "Macchina di Turing.md",
     "Untitled.md",
     "Images/2d_example_analysis_1-NN.png",
@@ -141,9 +145,6 @@
     "Images/sistema_di_calcolo.png",
     "Images/codoni.png",
     "Aspose.Words.fa785cf8-048c-4754-a465-f7d585ee05dd.003.png.md",
-    "Aspose.Words.3350d2fb-3819-4c0e-a2d1-adf4ad772550.004.png.md",
-    "Aspose.Words.71aa4c53-d7ba-4657-87a5-91bea0ef3125.001.png.md",
-    "Teoria della Complessità Computazionale.md",
     "Leggere per sapere - Alessandro de Concini.pdf"
   ]
 }
