@@ -1,12 +1,17 @@
 # The cell
-A cell is basically a watery solution of certain molecules, surrounded by a lipid (fat) membrane. The most important properties of a living cell (and, infact, of life itself) are the following: It consists of a set of molecules that is separated from the exterior (as a human being is separated from his or her surroundings). It has a metabolism, that is, it can take up nutrients and convert them in to other molecules and usable energy. The cell uses nutrients to renew its constituents, to grow, and to drive its actions (just like a human does). It is able to (approximately) replicate, that is, produceospringthatresembleitself.
-- Itcanreacttoitsenvironmentinawaythattendstoprolongitsownexistence
-- andtheexistenceofa(preferablyhigh)numberofospring.
-- ThemajorpartoftheheritableinformationofacellisstoredintheformofDNAmolecules.Theyarecalledthecell'sgenome.
-- Thechainofnucleotideshasadirection,becauseitstwoendsarechemicallydierent.
-- Chemistsdenoteitsbeginningasthe50-endanditsendasthe30-end.Thetwodirectionsaredenotedbyupstream,for\towards"thebeginning,anddownstream,for\towards"theend.Molecularchainsofonlyafewnucleotidesarecalledoligonucleotides.
-- ThecomplementofaDNAsequenceisthesequenceofthecomplementsofitsbases,butreadinthereversedirection;complementsareoftencalledcomplementaryDNA(cDNA)
-- ThebindingoftwocomplementaryDNAmoleculesisoftenreferredtoashybridization.
+A cell is basically a watery solution of certain molecules, surrounded by a lipid (fat) membrane. The most important properties of a living cell (and, infact, of life itself) are the following: 
+- it consists of a set of molecules that is separated from the exterior (as a human being is separated from his or her surroundings);
+- it has a metabolism, that is, it can take up nutrients and convert them in to other molecules and usable energy. The cell uses nutrients to renew its constituents, to grow, and to drive its actions (just like a human does);
+- It is able to (approximately) replicate, that is, produce offspring that resemble itself;
+- it can react to its environment in a way that tends to prolong its own existence and the existence of a (preferably high) number of offspring.
+
+----------------------------------------------------------------
+
+# DNA
+The major part of the heritable information of a cell is stored in the form of DNA molecules. They are called the cell's **genome**;
+The chain of nucleotides has a direction, because its two ends are chemically different. Chemists denote its beginning as the $5'$-end and its end as the $3'$-end. The two directions are denoted by **upstream**, for "towards" the beginning, and **downstream**, for "towards" the end. Molecular chains of only a few nucleotides are called **oligonucleotides**.<br />
+The complement of a DNA sequence is the sequence of the complements of its bases, but read in the reverse direction; complements are often called complementary DNA (cDNA).
+The binding of two complementary DNA molecules is often referred to as **hybridization**.
 - thegenomicDNAisindeedpresentintheformofadoublehelixoftwocomplementarystrands
 - partfromtheincreasedsta-bility,thisprovidesredundancy,whichservesthecellintwoways.First,erroneouschangesfromonenucleotidetoanother,termedpointmutations,cantherebybedetectedandcorrected.
 - Second,thereisanaturalwaytoduplicatethegenome,whichisnecessarywhenthecelldividestoproducetwodaughtercells.
