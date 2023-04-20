@@ -83,11 +83,13 @@ Although techniques for the determination of protein sequences exist, it is nowa
 ----------------------------------------------------------------
 
 ## Gene Expression Data
-- Geneexpressiondatausuallycomeintheformofamatrixofexpressionlevelsforanumberofgenesinarangeofcellsamples.
-- Therearequiteafewtechnologiesavailabletomeasurethelevelofexpressionofalargenumberofgenessimultane-ously.Wefocusonmicroarrays,whicharepresentlythemostpopulartechnologyforlarge-scalegeneexpressionmeasurement
-- MicroarraysMicroarrays,sometimesalsocalledDNAchips,employhybridiza-tiontodistinguishdierentgenes,andthereforerequirethatthesequencesofgenestobemeasuredbeknowninadvance.Infact,amicroarrayisessentiallyasurfacewithaknownlocation(calledspot)foreachgenetobemeasured.
-- Ateachspot
-- cDNAfragmentsarexedwhicharecomplementarytoa(transcribed)subsequenceofagene.
+Gene expression data usually come in the form of a matrix of expression levels for a number of genes in a range of cell samples. There are quite a few technologies available to measure the level of expression of a large number of genes simultaneously. We focus on **microarrays**, which are presently the most popular technology for large-scale gene expression measurement.
+
+----------------------------------------------------------------
+
+### Microarrays
+Microarrays, sometimes also called DNA chips, employ hybridization to distinguish different genes, and therefore require that the sequences of genes to be measured be known in advance. Infact, a microarray is essentially a surface with a known location (called **spot**) for each gene to be measured.<br />
+At each spot, cDNA fragments are fixed which are complementary to a (transcribed) subsequence of a gene.
 - Ide-ally,thesubsequencesaredeterminedinsuchawaythattheyarespecictothecorrespondinggene,thatis,theyarenotsimilartothecomplementofanyothermRNAthatisexpectedtooccurinthesample.
 - Themeasurementofasamplewithamicroarray(jargon:hybridization)beginsbyreverse-transcribingthemRNAsofacellsampletocDNA.ThecDNAsarelabeledtomakethemdetectable,forinstance,byincorporating
 uorescingorradioactivetags.
