@@ -724,25 +724,24 @@ Il progetto da realizzare è composto da due parti:
 1) il codice eseguibile per replicare i risultati del progetto. Questo può essere un semplice script in R oppure un notebook R. E' bene che il codice sia commentato propriamente al fine di valutare se lo studente ha compreso il codice stesso;
 2) un report il quale descriva il problema considerato, gli approcci di apprendimento automatico applicati al fine di risolverlo, il set-up sperimentale, i risultati ottenuti ed una discussione dei risultati. 
 
-Il prof
-getto riguarda la scoperta di sottotipi di malattie tramite l'utilizzo di un dataset multiomico proveniente dal **TCGA**. Il dataset riguarda l'adenocarcinoma della prostata (codice: **PRAD**). Si considerino come sottotipi quelli identificati nel lavoro performato dal **The Cancer Genome Atlas Research Network**, nel quale viene utilizzato un modello di clustering integrativo su dati multiomici e vengono scoperti tre sottotipi della malattia.
+Il progetto riguarda la scoperta di sottotipi di malattie tramite l'utilizzo di un dataset multiomico proveniente dal **TCGA**. Il dataset riguarda l'adenocarcinoma della prostata (codice: **PRAD**). Si considerino come sottotipi quelli identificati nel lavoro performato dal **The Cancer Genome Atlas Research Network**, nel quale viene utilizzato un modello di clustering integrativo su dati multiomici e vengono scoperti tre sottotipi della malattia.
 
 Il procedimento può essere scomposto in:
 1) download del dataset considerando tre differenti sorgenti di dati omici, quali mRNA, miRNA e i dati di espressione delle proteine;
 2) pre-processing del dataset seguendo gli stessi step del paragrafo successivo. Durante il filtering per varianza, si selezionino le prime $100$ feature con la più alta varianza per ogni sorgente di dati;
 3) download dei sottotipi di malattia (). Si noti che non tutti i sottotipi sono disponibili per l'insieme di sample avente tutte le sorgenti di dati omici considerate, perciò sarà necessario trattenere dal dataset multiomico solo i sample aventi un sottotipo associato;
 4) check che i pazienti nel dataset multiomico e i sottotipi siano nello stesso ordine;
-5) ...
-6) ...
-7) ...
-8) ...
-	1) ...
-	2) ...
-	3) ...
-	4) ...
-9) ...
-10) ...
-11) ...
+5) integrare i dati utilizzando Similarity Network Fusion con la distanza euclida esponenziale scalata;
+6) provare ad integrare la matrice di similarità da ogni sorgente di dati (calcolata tramite la distanza euclidea esponenziale scalata) utilizzando una semplice media delle matrici. Questo può essere considerato come una triviale strategia di integrazione di dati multi omici;
+7) [Gruppo] integrare il dataset utilizzando un ulteriore metodo di fusione dei dati chiamato NEMO al fine di ottenere una matrice di similarità integrata;
+8) performare la scoperta di sottotipi di malattia (con un numero di cluster pari al numero di sottotipi di malattia trovato da iCluster) utilizzando l'algoritmo PAM sulle seguenti matrici di similarità:
+	1) matrici di similarità ottenute da singole sorgenti di dati (miRNA, mRNA, proteine) utilizzando la distanza euclidea esponenziale scalata. Si otterranno tre differenti matrici di similarità;
+	2) matrice integrata ottenuta usando la media delle matrici;
+	3) matrice integrata ottenuta usando la Similarity Network Fusion;
+	4) [Gruppo] matrice integrata ottenuta usando NEMO.
+9) [Gruppo] NEMO fornisce la possibilità di performare clustering utilizzando un altro approccio, chiamato Spectral Clustering. Si usi la funzione _nemo.clustering()_ per testare questo approccio; 
+10) [Opzionale] applicare lo Spectral Clustering alla matrice integrata ottenuta utilizzando la Similarity Network Function;
+11) comparare i clustering ottenuti da ogni approccio considerato con i sottotipi di malattia trovati da iCluster. Si facciano tabelle e grafici per mostrare i risultati e discuterli.
 
 ## Report
 Il report deve contenere le seguenti sezioni:

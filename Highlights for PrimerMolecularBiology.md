@@ -49,7 +49,7 @@ One of the most fundamental processes in the cell is the production (and disposa
 
 The process of splicing implies complex gene structures composed of alternating introns and exons.
 
-
+![[genome.png]]
 
 At the top of the figure, a section of a genome is shown that contains a gene. Important features of the gene are the promoter containing several TF binding sites and the transcribed region, which is partitioned into exons and introns. After transcription, the pre-mRNA (not shown) is spliced: the introns are cut out; thus, the mature mRNA is the concatenation of the exons. Only a part of the mRNA encodes a protein.
 
