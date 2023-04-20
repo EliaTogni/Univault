@@ -47,13 +47,17 @@ One of the most fundamental processes in the cell is the production (and disposa
 	1) **iniziation**: the ribosome finds a **start codon** (usually, the first AUG subsequence that has favorable neighboring nucleotides) in the mRNA;
 	2) **elongation**: one by one, the ribosome attaches amino acids to the growing polypeptide (protein) chain. In each step, the ribosome translates the current codon into an amino acid according to the genetic code. The ribosome then moves to the next codon in the same **reading frame**, that is, to the next adjacent nonoverlapping codon;
 	3) **termination**: translation is stopped by any of three different **stop codons** encountered in the current reading frame.
-- Degradation.Almostallproteinsareeventuallydestroyedbydigestionintotheirindividualaminoacids.
-- Theprocessofsplicingimpliescomplexgenestructurescomposedofalternatingintronsandexons;
-- Atthetopofthegure,asectionofagenomeisshownthatcontainsagene.ImportantfeaturesofthegenearethepromotercontainingseveralTFbindingsitesandthetranscribedregion,whichispartitionedintoexonsandintrons.
-- Aftertranscription,thepre-mRNA(notshown)isspliced:theintronsarecutout;thus,thematuremRNAistheconcatenationoftheexons.OnlyapartofthemRNAencodesaprotein
-- Steps1and2oftheschemedescribedabovearecalledgeneexpression,whilesteps1through5arecalledproteinexpression.Thetermexpressionlevelofamoleculetypeis(abitimprecisely)usedtorefertoeitheritscurrentabundanceinthecell,ortotherateofsynthesisofnewmolecules.
-- Thecellularconcentrationofanytypeofproteincanbein
-uencedbychangingtheecienciesoftheabovesteps.Thisiscalledregulationofexpression.Whilecellsinfactregulateeachoftheabovesteps,themainpointforthequantitativecontrolofproteinexpressioniscertainlytranscriptioninitiation
+4) **degradation**: almost all proteins are eventually destroyed by digestion into their individual amino acids.
+
+The process of splicing implies complex gene structures composed of alternating introns and exons.
+
+
+
+At the top of the figure, a section of a genome is shown that contains a gene. Important features of the gene are the promoter containing several TF binding sites and the transcribed region, which is partitioned into exons and introns. After transcription, the pre-mRNA (not shown) is spliced: the introns are cut out; thus, the mature mRNA is the concatenation of the exons. Only a part of the mRNA encodes a protein.
+
+Steps $1$ and $2$ of the scheme described above are called **gene expression**, while steps $1$ through $5$are called **protein expression**. The term **expression level** of a molecule type is (a bit imprecisely) used to refer to either its current abundance in the cell, or to the rate of synthesis of new molecules.
+
+The cellular concentration of any type of protein can be infuenced by changing the effciencies of the above steps. This is called **regulation of expression**. While cellsinfactregulateeachoftheabovesteps,themainpointforthequantitativecontrolofproteinexpressioniscertainlytranscriptioninitiation
 - Inadditionto
 - thegeneralTFs,whicharealwaysrequiredforinitiation,thereareadditionalTFswhichmodifytheprobabilityorspeedoftranscription.
 - TheybindtoshortDNAmotifs,forobviousreasonscalledenhancersandsilencers,inthepromoter.
