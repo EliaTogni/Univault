@@ -40,14 +40,13 @@ Due to the diversity of the side chains, this allows for the generation of a hug
 One of the most fundamental processes in the cell is the production (and disposal) of proteins. Below, the life cycle of proteins is outlined for eukaryotic cells:
 1) **transcription**: messenger RNA (mRNA) copies of a gene are produced. The products, called pre-mRNAs are complementary to the DNA sequence;
 	1) **initiation**: certain proteins, called **transcription factors** (**TFs**),bind to **TF binding sites** in the gene promoters in the DNA;
-- ThemRNAcopyofthegeneissynthesizedbyaspecialprotein(RNApolymeraseII).ItmovesalongtheDNAandtherebysequentiallyextendsthepre-mRNAbylinkinganucleotidecomplementarytothatfoundintheDNA.
-- Termination:AsignalintheDNAcausesthetranscriptiontoendandthemRNAtobereleased.
-- Splicing.Partsofthepre-mRNA,whicharecalledintrons,areremoved.Theremainingparts,calledexons,arereconnectedtoformthematuremRNA.
-- ThesplicedmRNAstravelfromthenucleus(throughhuge,selectiveporesinitsdoublemembrane)intothecytosol.
-- Translation.Inthecytosol,ribosomesawaitthemRNAs.Ribosomessynthesizeproteinsasspeciedbycodons|tripletsofconsecutivenucleotides|inthemRNA.
-- Theribosomendsastartcodon(usually,therstAUGsubse-quencethathasfavorableneighboringnucleotides)inthemRNA.
-- byone,theribosomeattachesaminoacidstothegrowingpolypeptide(protein)chain.Ineachstep,theribosometranslatesthecurrentcodonintoanaminoacidaccordingtothegeneticcode.Theribosomethenmovestothenextcodoninthesamereadingframe,thatis,tothenextadjacentnonoverlappingcodon.
-- Termination:Translationisstoppedbyanyofthreedierentstopcodonsencounteredinthecurrentreadingframe
+	2) **elongation**: the mRNA copy of the gene is synthesized by a special protein (RNA polymerase II). It moves along the DNA and thereby sequentially extends the pre-mRNA by linking a nucleotide complementary to that found in the DNA;
+	3) **termination**: A signal in the DNA causes the transcription to end and the mRNA to be released.
+2) **splicing**: parts of the pre-mRNA, which are called **introns**, are removed. The remaining parts, called **exons**, are reconnected to form the mature mRNA. The spliced mRNAs travel from the nucleus (through huge, selective pores in its double membrane) into the cytosol;
+3) **translation**: In the cytosol, ribosomes await the mRNAs. Ribosomes synthesize proteinsas specied by **codons**, triplets of consecutive nucleotides, in the mRNA;
+	1) **iniziation**: the ribosome finds a **start codon** (usually, the first AUG subsequence that has favorable neighboring nucleotides) in the mRNA;
+	2) **elongation**: one by one, the ribosome attaches amino acids to the growing polypeptide (protein) chain. In each step, the ribosome translates the current codon into an amino acid according to the genetic code. The ribosome then moves to the next codon in the same **reading frame**, that is, to the next adjacent nonoverlapping codon;
+	3) **termination**: translation is stopped by any of three different **stop codons** encountered in the current reading frame.
 - Degradation.Almostallproteinsareeventuallydestroyedbydigestionintotheirindividualaminoacids.
 - Theprocessofsplicingimpliescomplexgenestructurescomposedofalternatingintronsandexons;
 - Atthetopofthegure,asectionofagenomeisshownthatcontainsagene.ImportantfeaturesofthegenearethepromotercontainingseveralTFbindingsitesandthetranscribedregion,whichispartitionedintoexonsandintrons.
