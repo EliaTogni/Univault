@@ -89,41 +89,38 @@ Gene expression data usually come in the form of a matrix of expression levels f
 
 ### Microarrays
 Microarrays, sometimes also called DNA chips, employ hybridization to distinguish different genes, and therefore require that the sequences of genes to be measured be known in advance. Infact, a microarray is essentially a surface with a known location (called **spot**) for each gene to be measured.<br />
-At each spot, cDNA fragments are fixed which are complementary to a (transcribed) subsequence of a gene.
-- Ide-ally,thesubsequencesaredeterminedinsuchawaythattheyarespecictothecorrespondinggene,thatis,theyarenotsimilartothecomplementofanyothermRNAthatisexpectedtooccurinthesample.
-- Themeasurementofasamplewithamicroarray(jargon:hybridization)beginsbyreverse-transcribingthemRNAsofacellsampletocDNA.ThecDNAsarelabeledtomakethemdetectable,forinstance,byincorporating
-uorescingorradioactivetags.
-- Then,thesampleisadministeredontothemicroarray,andanumberofcDNAsfromthesamplehybridizetothecorrespondingspot.ThisnumberisapproximatelyproportionaltotherespectivemRNAconcentrationinthesample
-- Afterwashingthearraytheconcentrationcanbedeterminedbymeasuring,atthecorrespondingspot,theintensityofthesignalemittedbythemolecularlabels.
-- backgroundnoiseispresentduetoincompletewashingandnonspecichybridiza-tion.
-- uetovaryingecienciesoftheintermediarystepsofthemeasurement,andtovaryingamountsofmRNApercell,theresultsobtainedwithdierentmicroarraysorfordierentsamplesarenotlikelytobeonthesamescale.Normalizationshouldthereforebeapplied.
+At each spot, cDNA fragments are fixed which are complementary to a (transcribed) subsequence of a gene. Ideally, the subsequences are determined in such a way that they are specific to the corresponding gene, that is, they are not similar to the complement of any other mRNA that is expected to occur in the sample.
+
+The measurement of a sample with a microarray  (jargon: hybridization) begins by reverse-transcribing the mRNAs of a cell sample to cDNA. The cDNAs are labeled to make them detectable, for instance, by incorporating
+fluorescing or radioactive tags. Then, the sample is administered onto the microarray, and a number of cDNAs from the sample hybridize to the corresponding spot. This number is approximately proportional to the respective mRNA concentration in the sample. After washing the array the concentration can be determined by measuring, at the corresponding spot, the intensity of the signal emitted by the molecular labels.
+
+Background noise is present due to incomplete washing and nonspecific hybridization. Moreover, due to varying efficiencies of the intermediary steps of the measurement, and to varying amounts of mRNA per cell, the results obtained with different microarrays or for different samples are not likely to be on the same scale. Normalization should therefore be applied.
 
 ----------------------------------------------------------------
 
 # Bioinformatics Challenges
-- modernmolecularbiologistsmeasurehugeamountsofdataofvarioustypes.Theintentionistousethesedatato(1)reconstructthepast(e.g.,infertheevolutionofspecies);(2)predictthefuture(e.g.,predicthowsomeonewillrespondtoacertaindrug);(3)guidebiologicalengineering(such
-- asimprovingtheeciencyofbrewer'syeast)
+Modern molecular biologists measure huge amounts of data of various types. The intention is to use these data to:
+1) reconstruct the past (e.g., infer the evolution of species);
+2) predict the future (e.g., predict how someone will respond to a certain drug);
+3) guide biological engineering (such as improving the effciency of brewer's yeast).
 
-# Genome Structure Analysis
-- TheanalysisofDNAsequences
-- canbeorganizedintoasmalltree
-- Itcontainsatleastthree\grandchallenge"problems:
-- Genomecomparison.Thegoalofthisdisciplineistoreconstructtheevolutionaryhistory,thatis,theseriesofgenomerearrangements,thatledtodierentspecies.Adicultyisthatthephylogenyandthecommonancestorsmustbeinferredonthebasisofgenomesofpresent-dayspecies.
-- Genending.Thisincludestheidenticationofthegenestructure,thatis,thearrangementofthegene'selements
-- theproblemistolabelsubstringsoftheDNA
-- Understandingtranscriptionalregulation.HerethegoalistoquantitativelypredicttheexpressionlevelsofgenesfromthedetailsoftheirpromotersandthepresentquantitiesofTFs.
-- Alltasksarecomplicatedbythefactthat(presumably)byfarnotallfunctionalDNAmotifsareknownbynow
+## Genome Structure Analysis
+The analysis of DNA sequences can be organized into a small tree. It contains at least three "grand challenge" problems:
+- **genome comparison**: the goal of this discipline is to reconstruct the evolutionary history, that is, the series of genome rearrangements, that led to different species. A diffculty is that the phylogeny and the common ancestors must be inferred on the basis of genomes of present-day species;
+- **genending**: this includes the identication of the gene structure, that is, the arrangement of the gene's elements. In computer science terms, the problem is to label substrings of the DNA;
+- **understanding transcriptional regulation**: here the goal is to quantitatively predict the expression levels of genes from the details of their promoters and the present quantities of TFs.
+
+All tasks are complicated by the fact that (presumably) by far not all functional DNA motifs are known by now.
+
+----------------------------------------------------------------
 
 ## Relation of Molecular to Macroscopic Data
-- Itismostinterestingtoidentifythemolecularcausesofmacroscopiceventsorstates,becausethisunderstandingallowsforadirectedsearchforwaystocauseorpreventsucheventsandtomaintainorchangesuchstates.
-- Threeclassesoftasksemergefromthisgeneralproblemstatement:
-- Populationgenetics.Thestrategyinpopulationgeneticsistondchromosomalregionsthatareinheritedalongwith
-- heritabletraits;suchregionscanbesupposedtocontaingenesresponsibleforthosetraits.
-- Diagnosis.Asanexample,itisdesirabletobeabletobasethediagnosisofcertaindiseasesongeneexpressionpatterns.Fordiseasesthatarehardtorecognizeordistinguishbyclassicmeans(e.g.,histology),thiscanpotentiallybelesssubjectiveandambiguous.
-- Therapyoptimization.Here,theideaisthateveryindividualisdierentandthatoptimaltreatmentmaybederivedfrommoleculardata:theecacyofdrugsmaybepredictedonthebasisofthegenotypeofapathogen
-- theinterplayofthegenotype(SNPs)ofthepatientwiththatofthepathogenshouldbetakenintoaccount.
-- Targetnding.Thisessentiallyamountstoapplyingfeatureselectiontoasuccessfulpredictionofadisease(diagnosis)
-- Systemsbiology
-- thegoalisnothinglessthantoquantitativelysimulateentirecells(orlargesubsystems)
+It is most interesting to identify the molecular causes of macroscopic events or states, because this understanding allows for a directed search for ways to cause or prevent such events and to maintain or change such states.<br />
+Three classes of tasks emerge from this general problem statement:
+- **population genetics**: the strategy in population genetics is to find chromosomal regions that are inherited along with heritable traits; such regions can be supposed to contain genes responsible for those traits;
+- **diagnosis**: as an example, it is desirable to be able to base the diagnosis of certain diseases on gene expression patterns. For diseases that are hard to recognize or distinguish by classic means (e.g., histology), this can potentially be less subjective and ambiguous;
+- **therapy optimization**: here, the idea is that every individual is different and that optimal treatment may be derived from molecular data: the efficacy of drugs may be predicted on the basis of the genotype of a pathogen. The interplay of the genotype (SNPs) of the patient with that of the pathogen should be taken into account;
+- **target finding**: this essentially amounts to applying feature selection to a successful prediction of a disease (diagnosis);
+- **systems biology**: the goal is nothing less than to quantitatively simulate entire cells (or large subsystems).
 
 ----------------------------------------------------------------
