@@ -5,9 +5,7 @@ A cell is basically a watery solution of certain molecules, surrounded by a lipi
 - It is able to (approximately) replicate, that is, produce offspring that resemble itself;
 - it can react to its environment in a way that tends to prolong its own existence and the existence of a (preferably high) number of offspring.
 
-----------------------------------------------------------------
-
-# DNA
+## DNA
 The major part of the heritable information of a cell is stored in the form of DNA molecules. They are called the cell's **genome**;
 The chain of nucleotides has a direction, because its two ends are chemically different. Chemists denote its beginning as the $5'$-end and its end as the $3'$-end. The two directions are denoted by **upstream**, for "towards" the beginning, and **downstream**, for "towards" the end. Molecular chains of only a few nucleotides are called **oligonucleotides**.<br />
 The complement of a DNA sequence is the sequence of the complements of its bases, but read in the reverse direction; complements are often called complementary DNA (cDNA).
@@ -19,7 +17,7 @@ The nucleosomes themselves are usually packed on top of one another to form a mo
 
 ----------------------------------------------------------------
 
-# Genes
+## Genes
 The importance of the genome is that it typically contains many genes. Although there is still debate about the exact definition, a **gene** can be thought of as a substring of the genome that is responsible for the production of one or a couple of types of RNA molecules.<br />
 In the process of **gene expression**, the RNA is synthesized to be complementary to a part of the DNA template. As a result, each gene can control one or more properties of the organism, although often quite indirectly, as will become apparent below.<br />
 Genes also include parts of DNA that are not copied into RNA. Most important, each gene contains a sequence called a **promoter**, which species the conditions under which RNA copies of certain parts of the gene are produced.<br />
@@ -28,7 +26,7 @@ The RNA molecules involved in this process are called **messenger RNAs**, or **m
 
 ----------------------------------------------------------------
 
-# Proteins
+## Proteins
 **Proteins** are polymers composed of **amino acids**. Cells use 20 different types of amino acids for protein synthesis.<br />
 Proteins are also sometimes called **polypeptides**.
 Each amino acid also has a third group, the **side chain**. The side chains of the $20$ natural amino acids show very different chemical properties.<br />
@@ -36,7 +34,7 @@ Due to the diversity of the side chains, this allows for the generation of a hug
 
 ----------------------------------------------------------------
 
-# Expression of Genes and Proteins
+## Expression of Genes and Proteins
 One of the most fundamental processes in the cell is the production (and disposal) of proteins. Below, the life cycle of proteins is outlined for eukaryotic cells:
 1) **transcription**: messenger RNA (mRNA) copies of a gene are produced. The products, called pre-mRNAs are complementary to the DNA sequence;
 	1) **initiation**: certain proteins, called **transcription factors** (**TFs**),bind to **TF binding sites** in the gene promoters in the DNA;
@@ -57,29 +55,34 @@ At the top of the figure, a section of a genome is shown that contains a gene. 
 
 Steps $1$ and $2$ of the scheme described above are called **gene expression**, while steps $1$ through $5$are called **protein expression**. The term **expression level** of a molecule type is (a bit imprecisely) used to refer to either its current abundance in the cell, or to the rate of synthesis of new molecules.
 
-The cellular concentration of any type of protein can be infuenced by changing the effciencies of the above steps. This is called **regulation of expression**. While cellsinfactregulateeachoftheabovesteps,themainpointforthequantitativecontrolofproteinexpressioniscertainlytranscriptioninitiation
-- Inadditionto
-- thegeneralTFs,whicharealwaysrequiredforinitiation,thereareadditionalTFswhichmodifytheprobabilityorspeedoftranscription.
-- TheybindtoshortDNAmotifs,forobviousreasonscalledenhancersandsilencers,inthepromoter.
-- Thecomplexityofcellsandorganismshasevolvedoverseveralbillionyearsofinterplayofmutationandselection.Here,mutationmeansanykindofmodicationoftheheritableinformation
-- ofreproductivecells.Thetotalityofheritableinformationgivingrisetoanorganismiscalleditsgenotype,asopposedtophenotype,whichsubsumestheobservablephysicalpropertiesoftheorganism.
-- Dierencesinthegenotypesometimesmanifestindierentphenotypes;otherwise,thecorrespondingmutationsaresaidtobesilent.
-- Selectionreferstothefactthatthephenotypicchangesmayleadtodierentialreproductivesuccess
-- thismaycorrelatewiththeorganism'sabilitytosurviveinitsenvironment.
-- Often,however,mutationshavenooranegligibleimpactonsurvivalandreproduction
-- Severaldierentgenotypes
-- maythencoexistinapopulation.Inthiscase,theirgeneticdierencesarecalledpolymorphisms.
-- Thereareseveraldierenttypesofmutations.
-- Thesimplestisthepointmutationorsubstitution;here,asinglenucleotideinthegenomeischanged.Inthecaseofpolymorphisms,theyarecalledsinglenucleotidepolymorphisms(SNPs).
-- nsertion.ApieceofDNAisinsertedintothegenomeatacertainposition.Deletion.ApieceofDNAiscutfromthegenomeatacertainposition.Inversion.ApieceofDNAiscut,
-ippedaroundandthenre-inserted,therebyconvertingitintoitscomplement.Translocation.ApieceofDNAismovedtoadierentposition.Duplication.AcopyofapieceofDNAisinsertedintothegenome.
-- Therebymutationscanincreasethegeneticdiversityofapopulation,thatis,thenumberofpresentpolymorphisms.
-- Theclassicmolecularbiologydatatypeisthesequence(moreprecisely,theDNAsequence).Theprocessof\measuring"thesequenceofnucleotidesinapieceofDNAiscalledsequencingandispresentlyhighlyautomated.
-- thesequencingprocessrequiresahugenumberofidenticalDNAmolecules.Thesecanbegainedfromasmallsample
-- byamplicationthroughthepolymerasechainreaction(PCR).
-- theDNAisrstsplitintopartswhicharesequencedseparately.Theresultingsetofsequencesmustbecomputationallyassembledintothecontiguousgenome.
-- Althoughtechniquesforthedeterminationofproteinsequencesexist,itisnowadayscommontosequencemRNAs
-- orcompletegenomes,andthencomputethetranslationproducts.
+The cellular concentration of any type of protein can be infuenced by changing the effciencies of the above steps. This is called **regulation of expression**. While cells in fact regulate each of the above steps, the main point for the quantitative control of protein expression is certainly transcription initiation. In addition to the general TFs, which are always required for initiation, there are additional TFs which modify the probability or speed of transcription. They bind to short DNA motifs, for obvious reasons called **enhancers** and **silencers**, in the promoter.
+
+----------------------------------------------------------------
+
+## Evolution
+The complexity of cells and organisms has evolved over several billion years of interplay of mutation and selection. Here, mutation means any kind of modification of the heritable information of reproductive cells. The totality of heritable information giving rise to an organism is called its **genotype**, as opposed to **phenotype**, which subsumes the observable physical properties of the organism. Differences in the genotype sometimes manifest in different phenotypes; otherwise, the corresponding mutations are said to be **silent**. **Selection** refers to the fact that the phenotypic changes may lead to differential reproductive success; this may correlate with the organism's ability to survive in its environment. Often, however, mutations have no or a negligible impact on survival and reproduction.
+Several different genotypes may then coexist in a population. In this case, their genetic differences are called **polymorphisms**. There are several didfferent types of mutations. The simplest is the **point mutation** or **substitution**; here, a single nucleotide in the genome is changed. In the case of polymorphisms, they are called **single nucleotide polymorphisms** (**SNPs**). other types of mutations include the following:
+1) **insertion**: a piece of DNA is inserted into the genome at a certain position;
+2) **deletion**: a piece of DNA is cut from the genome at a certain position;
+3) **inversion**: a piece of DNA is cut, flipped around and then re-inserted, thereby converting it into its complement;
+4) **translocation**: a piece of DNA is moved to a different position;
+5) **duplication**: a copy of a piece of DNA is inserted into the genome.
+
+Thereby mutations can increase the genetic diversity of a population, that is, the number of present polymorphisms.
+
+----------------------------------------------------------------
+
+# Molecular Biology Measurement Data
+## Sequence Data
+The classic molecular biology data type is the sequence (more precisely, the DNA sequence). The process of "measuring" the sequence of nucleotides in a piece of DNA is called **sequencing** and is presently highly automated.<br />
+The sequencing process requires a huge number of identical DNA molecules. These can be gained from a small sample by **amplication** through the **polymerase chain reaction** (**PCR**).
+
+The DNA is first split into parts which are sequenced separately. The resulting set of sequences must be computationally assembled into the contiguous genome.<br />
+Although techniques for the determination of protein sequences exist, it is nowadays common to sequence mRNAs or complete genomes, and then compute the translation products.
+
+----------------------------------------------------------------
+
+## Gene Expression Data
 - Geneexpressiondatausuallycomeintheformofamatrixofexpressionlevelsforanumberofgenesinarangeofcellsamples.
 - Therearequiteafewtechnologiesavailabletomeasurethelevelofexpressionofalargenumberofgenessimultane-ously.Wefocusonmicroarrays,whicharepresentlythemostpopulartechnologyforlarge-scalegeneexpressionmeasurement
 - MicroarraysMicroarrays,sometimesalsocalledDNAchips,employhybridiza-tiontodistinguishdierentgenes,andthereforerequirethatthesequencesofgenestobemeasuredbeknowninadvance.Infact,amicroarrayisessentiallyasurfacewithaknownlocation(calledspot)foreachgenetobemeasured.
@@ -92,8 +95,14 @@ uorescingorradioactivetags.
 - Afterwashingthearraytheconcentrationcanbedeterminedbymeasuring,atthecorrespondingspot,theintensityofthesignalemittedbythemolecularlabels.
 - backgroundnoiseispresentduetoincompletewashingandnonspecichybridiza-tion.
 - uetovaryingecienciesoftheintermediarystepsofthemeasurement,andtovaryingamountsofmRNApercell,theresultsobtainedwithdierentmicroarraysorfordierentsamplesarenotlikelytobeonthesamescale.Normalizationshouldthereforebeapplied.
+
+----------------------------------------------------------------
+
+# Bioinformatics Challenges
 - modernmolecularbiologistsmeasurehugeamountsofdataofvarioustypes.Theintentionistousethesedatato(1)reconstructthepast(e.g.,infertheevolutionofspecies);(2)predictthefuture(e.g.,predicthowsomeonewillrespondtoacertaindrug);(3)guidebiologicalengineering(such
 - asimprovingtheeciencyofbrewer'syeast)
+
+# Genome Structure Analysis
 - TheanalysisofDNAsequences
 - canbeorganizedintoasmalltree
 - Itcontainsatleastthree\grandchallenge"problems:
@@ -102,6 +111,8 @@ uorescingorradioactivetags.
 - theproblemistolabelsubstringsoftheDNA
 - Understandingtranscriptionalregulation.HerethegoalistoquantitativelypredicttheexpressionlevelsofgenesfromthedetailsoftheirpromotersandthepresentquantitiesofTFs.
 - Alltasksarecomplicatedbythefactthat(presumably)byfarnotallfunctionalDNAmotifsareknownbynow
+
+## Relation of Molecular to Macroscopic Data
 - Itismostinterestingtoidentifythemolecularcausesofmacroscopiceventsorstates,becausethisunderstandingallowsforadirectedsearchforwaystocauseorpreventsucheventsandtomaintainorchangesuchstates.
 - Threeclassesoftasksemergefromthisgeneralproblemstatement:
 - Populationgenetics.Thestrategyinpopulationgeneticsistondchromosomalregionsthatareinheritedalongwith
@@ -113,5 +124,4 @@ uorescingorradioactivetags.
 - Systemsbiology
 - thegoalisnothinglessthantoquantitativelysimulateentirecells(orlargesubsystems)
 
-## Source
-[[PrimerMolecularBiology.pdf]]
+----------------------------------------------------------------
