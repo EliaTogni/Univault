@@ -821,3 +821,277 @@ $$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big]t \leq 2 \ell_{\mathcal{D}}(f^*) + 
 Note that for $m \to \infty$, $\ell_{\mathcal{D}}(f^*) \leq \mathbb{E}[\ell_{\mathcal{D}(h_S)}] \leq 2\ell_{\mathcal{D}}(f^*)$. Namely, the asymptotic risk of $1-NN$ lies between the Bayes risk and twice the Bayes risk.
 
 ----------------------------------------------------------------
+
+# Linear predictors
+A linear predictor for $\mathcal{X} = \mathbb{R}^d$ is a function $h : \mathbb{R}^d \to \mathbb{R}$ such that $h(x) = f(w^{\top}x)$ for some $w \in \mathbb{R}^d$, where $f : \mathbb{R} \to \mathbb{R}$ is sometimes called the activation function. In linear regression tasks, $f$ is the identity function and so $h(x) = w^{\top}x$. In linear classification tasks, $h(x) = \operatorname{sgn}(w^{\top}x − c)$ for some $c \to \mathbb{R}$, where $\operatorname{sgn}(z) = 1$ if $z > 0$ and $−1$ otherwise. We mostly focus on classification and return to regression only at the end.
+
+## Hyperplanes
+Recall that an hyperplane with coefficients $(w,c)$ is defined by $\Big \{x \in \mathcal{R}^d : w^{\top}x = c\Big \}$ , where w⊤x = ∥w∥∥x∥cosθ and θ is the angle between w and x and ∥x∥cosθ is the length of the projection of x onto w. Hence, the hyperplane defined by (w,c) is orthogonal to w and intersects it at distance c/ ∥w∥from the origin.
+
+The halfspaces $H^+$ e $H^−$ defined by the hyperplane $x \in \mathcal{R}^d : w^{\top}x = c$ are
+
+$$H^+ \equiv \Bigg\{ x : w^{\top}x > c \Bigg\} \text{ and } \Bigg \{H^− \equiv x′ : w^{\top}x′ \leq c \Bigg\}$$
+
+That is, all points $x$ whose projection onto $w$ has length strictly bigger than $\frac{c}{ \Vert w \Vert}$, and all points $x′$ whose projection onto $w$ has length not larger than $\frac{c}{\Vert w \Vert}$. Geometrically, a linear classifier is thus defined by
+
++1 if x ∈H +
+
+h(x) = −1 if x ∈H −
+
+Hyperplanes of the form x ∈Rd : w⊤x = 0 pass through the origin and are called homoge- neous. Any non-homogeneous hyperplane x ∈Rd : w⊤x = c , with c = 0, is equivalent to the homogeneous hyperplane x ∈Rd+1 : v⊤x = 0 with v = (w1,...,wd,−c) in the following sense: w⊤x − c = v⊤x′ for all x ∈Rd and x′ = (x1,...,x ,1) ∈Rd+1. For this reason, without any loss of
+
+d
+
+generality we only deal with algorithms that learn linear predictors corresponding to homogeneous hyperplanes. This amounts to saying that we automatically add an extra feature with value 1 to all of our data points.
+
+Training linear classifiers. Recall that a linear classifier is a predictor h such that h(x) = sgn(w⊤x). Clearly, sgn(w⊤x) = sgn ∥w∥∥x∥cosθ = sgn(cos θ). As the classification is only
+
+determined by the angle θ between w and x, the value of ∥w∥is immaterial and we may take ∥w∥= 1. Note that the zero-one loss I{h(xt) = yt} can be equivalently rewritten as I{ytw⊤xt ≤ 0}.
+
+1
+
+Let Hd be the family of linear classifiers h(x) = sgn(w⊤x) for w ∈ Rd such that ∥w∥ = 1. Consider the ERM algorithm for zero-one loss that, given a training set S containing examples![](Aspose.Words.0285eff5-79e7-478f-aa71-0051b38e8e41.002.png)
+
+1Note that ytw⊤xt = 0 only when w = 0 (we assume xt = 0 for all t). In this case, sgn w⊤x = −1 and so the
+
+t
+
+classification is actually correct when yt = −1. Hence, using I{ytw⊤xt ≤ 0} to count mistakes we overcount only when w = 0 and yt = −1.
+
+(x1,y1),..., (xm,ym) ∈Rd × {−1,1}, outputs
+
+1 m 1 m
+
+hS = argmin m I{h(xt) = yt} = argmin m I{ytw⊤xt ≤ 0} . (1)
+
+h∈Hd t=1 w∈Rd :∥w∥=1 t=1
+
+Unfortunately, it is unlikely to find an efficient implementation of ERM for linear classifiers with zero-one loss. In fact, the decision problem associated with finding hS is NP-complete even when xt ∈ {0,1}d for t = 1,...,m. More precisely, introduce the following decision problem.
+
+MinDisagreement![](Aspose.Words.0285eff5-79e7-478f-aa71-0051b38e8e41.003.png)
+
+Instance: Pairs (x1,y1),..., (xm,ym) ∈ {0,1}d × {−1,1}. Integer k.
+
+Question: Is there w ∈Qd such that yt w⊤xt ≤ 0 for at most k indices t = 1,...,m?
+
+The following result can be shown.
+
+Theorem 1. MinDisagreement is NP-complete.
+
+In addition to that, the following stronger hardness-of-approximation result can be also shown.
+
+MinDisOpt![](Aspose.Words.0285eff5-79e7-478f-aa71-0051b38e8e41.004.png)
+
+Instance: Pairs (x1,y1),..., (xm,ym) ∈ {0,1}d × {−1,1}.
+
+Solution: A point w ∈ Qd minimizing the number of indices t = 1,...,m such that
+
+⊤
+
+yt w xt ≤ 0.
+
+Given an instance S (i.e., a training set) of MinDisOpt, let Opt(S) the number of examples in S that are misclassified by the ERM classifier hS. In other words, Opt(S)/m = ℓS(hS).
+
+Theorem 2. If P = NP , then for all C > 0 there are no polynomial time algorithms that approx- imately solve every instance S of MinDisOpt with a number of misclassified examples bounded by C × Opt(S).
+
+This implies that, unless P = NP (which is believed unlikely), there are no efficient algorithms that approximate the solution of (1) to within any constant factor. Here efficient means with running time polynomial in the input size md.
+
+The ERM problem (1) becomes easier when the training set is linearly separable. A training set (x1,y1),..., (xm,ym) is linearly separable where there exists a linear classifier with zero training error. In other words, there exists a separating hyperplane u ∈Rd such that
+
+γ(u) def= min yt u⊤xt > 0
+
+t=1,...,m
+
+The quantity γ(u) is known as the margin of u on the training set. The scaled margin γ(u)/ ∥u∥ measures the distance between the separating hyperplane and the closest training example.
+
+Now observe that the ERM problem (1) can be expressed as a system of linear inequalities,
+
+⊤
+
+yt w xt > 0 t = 1,...,m .
+
+When the training set is linearly separable, the system has at least a solution. This solution can be found in polynomial time using an algorithm for linear programming.
+
+We now introduce a very simple algorithm for learning linear classifiers that can be used to solve the ERM problem in the linearly separable case. The Perceptron algorithm finds a homogeneous separating hyperplane by runnning through the training examples one after the other. The current linear classifier is tested on each training example and, in case of misclassification, the associated hyperplane is adjusted. Note that if the algorithm terminates, then w is a separating hyperplane.
+
+Data: Training set (x1,y1),..., (xm,ym) ![](Aspose.Words.0285eff5-79e7-478f-aa71-0051b38e8e41.005.png)w = (0,..., 0)
+
+while true do
+
+for t = 1,...,m do (epoch)
+
+if yt w⊤xt ≤ 0 then
+
+w ← w + yt xt (update)
+
+end
+
+if no update in last epoch then break
+
+end
+
+Output: w
+
+Algorithm 1: The Perceptron algorithm (for the linearly separable case)
+
+- ⊤
+
+The update w ← w + yt xt when yt w xt ≤ 0 makes yt w xt bigger. Indeed,
+
+⊤
+
+yt w + yt xt xt = yt w⊤xt + ∥xt∥2 > yt w⊤xt
+
+Geometrically, each update moves w towards xt if yt = 1 and moves w away from xt if yt = −1. We now prove that Perceptron always terminates on linearly separable training sets.
+
+Theorem 3 (Convergence of Perceptron). Let (x1,y1),..., (xm,ym) be a linearly separable training set. Then the Perceptron algorithm terminates after a number of updates not bigger than
+
+min ∥u∥2 max ∥x t∥ (2) u :γ(u)≥1 t=1,...,m
+
+2
+
+The apparently stonger margin constraint γ(u) ≥ 1 is actually achievable by any separating hy- perplane u. Indeed, if γ(u) > 0, then ytu⊤xt ≥ γ(u) is equivalent to ytv⊤xt ≥ 1 for v = u/γ (u).
+
+Hence, γ(u) ≥ 1 can be achieved simply by rescaling u.
+
+Proof. Let w0 = (0,..., 0) be the initial hyperplane. Let wM be the hyperplane after M updates and let tM ∈ {1,...,m} be the index of the training example (xt ,yt ) that caused the M-th
+
+update wM = wM −1 + yt xt . We prove an upper bound on MMby Mderiving upper and lower
+
+M M
+
+bounds on ∥wM ∥∥u∥. We start by observing that
+
+4
+
+∥wM ∥2 = ∥wM −1 + yt xt ∥2 = ∥wM −1∥2 + ∥xtM ∥2 + 2 yt wM −1xt
+
+⊤
+
+M M M M
+
+≤ ∥wM − 1∥2 + ∥x t ∥2 M
+
+
+
+because yt w⊤M −1xt ≤ 0 due to the update wM = wM −1 + yt xt . Iterating this argument M
+
+M M M M
+
+times, and recalling that w0 = (0,..., 0), we obtain
+
+M
+
+∥wM ∥2 ≤ ∥w0∥2 + ∥x t ∥2 ≤ M max ∥x t∥2 .
+
+i t=1,...,m
+
+i=1
+
+Hence
+
+√ ![](Aspose.Words.0285eff5-79e7-478f-aa71-0051b38e8e41.006.png)
+
+∥wM ∥∥u∥ ≤ ∥u∥ max ∥x t∥ M .
+
+t=1,...,m
+
+To prove the lower bound, fix any separating hyperplane u with γ(u) ≥ 1 and let θ be the angle between u and wM . We have
+
+∥wM ∥∥u∥ ≥ ∥wM ∥∥u∥cos(θ) (since − 1 ≤ cos(θ) ≤ 1)
+
+- w⊤M u (by definition of inner product)
+- (wM −1 + yt xt )⊤ u
+
+M M
+
+- w⊤M −1u + yt u⊤xt
+
+M M
+
+≥ w⊤M −1u + 1
+
+where the last inequality holds because 1 ≤ γ(u) ≤ ytu⊤xt for all t = 1,...,m. Iterating M times we get
+
+∥wM ∥∥u∥ ≥ w⊤0 u + M = M
+
+Where we used w⊤u = 0 since w0 = (0,..., 0). Combining upper and lower bound we obtain
+
+0
+
+√ ![](Aspose.Words.0285eff5-79e7-478f-aa71-0051b38e8e41.007.png)
+
+M ≤ ∥u∥ max ∥x t∥ M .
+
+t=1,...,M
+
+Solving for M, and recalling the choice of u, we obtain (2). Hence, the update count M cannot grow larger than (2). Since the algorithm stops when no more updates are possible, we conclude
+
+that the Perceptron terminates after a bounded number of updates. □
+
+Note that the Perceptron convergence theorem does not imply that the Perceptron algorithm ter- minates in polynomial time on any linearly separable training set. Indeed, it can be shown that the bound (2) is tight in any fixed dimension d ≥ 2. Hence, although each update takes constant time Θ(d), the number of updates can still be exponential in md whenever γ(u) ≥ 1 only for those u whose length ∥u∥is very big. Or, equivalently, when the margin γ(u) is very small for any linear separator u such that ∥u∥= 1.
+
+Linear regression. In linear regression our predictors are linear functions h : Rd → R each parameterized by a vector w ∈Rd of real coefficients. That is, h(x) = w⊤x.
+
+Given a training set (x1,y1),..., (xm,ym) ∈ Rd × R, the linear regression predictor is the ERM
+
+with respect to the square loss,
+
+m
+
+wS = argmin w⊤xt − yt 2
+
+w∈Rd t=1
+
+Now let v = w⊤x1,..., w⊤xm and y = (y1,...,ym). Then
+
+m
+
+- 2
+
+w xt − yt = ∥v − y∥2 .
+
+t=1
+
+View all vectors as column vectors. Since v = Sw, where S is the m × d design matrix such that S⊤ = [x1,..., xm], we may also write
+
+2
+
+wS = argmin ∥Sw − y∥ .
+
+w∈Rd
+
+Since F (w) = ∥Sw − y∥2 is a convex function, the minimizer satisfies the condition ∇F (w) = 0.
+
+Using matrix calculus, we have that ∇∥Sw − y∥2 = 2S⊤(Sw − y). Hence, ∇∥Sw − y∥2 = 0 for w = S⊤S −1S⊤y provided S⊤S is nonsingular (i.e., invertible)—which is equivalent to x1,..., xm spanning Rd. When this happens, we have that the ERM with respect to the square loss is
+
+wS = S S −1S⊤y.
+
+⊤
+
+Ridge Regression. When S⊤S is nearly singular, w is highly sensitive to perturbations of the
+
+S
+
+training set. This instability increases the estimation error (or variance). A more stable predictor is obtained by introducing a regularizer in the ERM functional which increases the approximation error (or bias) and reduces the variance with a beneficial effect on the risk.
+
+In other words, instead of defining wS by
+
+wS = argmin ∥Sw − y∥2
+
+w∈Rd
+
+we use the regularized form, also known as Ridge Regression,
+
+wS,α = argmin ∥Sw − y∥2 + α ∥w∥2
+
+w∈Rd
+
+where α > 0 is the regularization parameter. When α → 0 we recover the standard linear regression solution. When α → ∞, the solution wS,α becomes the zero vector. This shows that α can be used to control the bias of the algorithm.
+
+Similarly to before, we have that
+
+∇ ∥Sw − y∥2 + α ∥w∥2 = 2S⊤(Sw − y) + 2αw .
+
+Hence, the gradient vanishes for w = wS,α = αI + S⊤S −1S⊤y. Note that we do not have to worry anymore about the singularity of S⊤S. Indeed, if λ1 ≥ ··· ≥ λd ≥ 0 are the eigenvalues of S⊤S, the eigenvalues of αI + S⊤S are simply α + λ1 ≥ ··· ≥ α + λd > 0. Hence, αI + S⊤S is invertible for all α > 0.
+6
