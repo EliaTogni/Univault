@@ -826,7 +826,7 @@ Note that for $m \to \infty$, $\ell_{\mathcal{D}}(f^*) \leq \mathbb{E}[\ell_{\ma
 A linear predictor for $\mathcal{X} = \mathbb{R}^d$ is a function $h : \mathbb{R}^d \to \mathbb{R}$ such that $h(x) = f(w^{\top}x)$ for some $w \in \mathbb{R}^d$, where $f : \mathbb{R} \to \mathbb{R}$ is sometimes called the activation function. In linear regression tasks, $f$ is the identity function and so $h(x) = w^{\top}x$. In linear classification tasks, $h(x) = \operatorname{sgn}(w^{\top}x − c)$ for some $c \to \mathbb{R}$, where $\operatorname{sgn}(z) = 1$ if $z > 0$ and $−1$ otherwise. We mostly focus on classification and return to regression only at the end.
 
 ## Hyperplanes
-Recall that an hyperplane with coefficients $(w,c)$ is defined by $\Big \{x \in \mathcal{R}^d : w^{\top}x = c\Big \}$ , where w⊤x = ∥w∥∥x∥cosθ and θ is the angle between w and x and ∥x∥cosθ is the length of the projection of x onto w. Hence, the hyperplane defined by (w,c) is orthogonal to w and intersects it at distance c/ ∥w∥from the origin.
+Recall that an hyperplane with coefficients $(w,c)$ is defined by $\Big \{x \in \mathcal{R}^d : w^{\top}x = c\Big \}$ , where $w^{\top}x = \Vert w \Vert \Vert x \Vert \cos\theta$ and $\theta$ is the angle between $w$ and $x$ and $\Vert x \Vert \cos\theta$ is the length of the projection of $x$ onto $w$. Hence, the hyperplane defined by $(w,c)$ is orthogonal to $w$ and intersects it at distance $\frac{c}{\Vert w \Vert}$ from the origin.
 
 The halfspaces $H^+$ e $H^−$ defined by the hyperplane $x \in \mathcal{R}^d : w^{\top}x = c$ are
 
@@ -834,31 +834,17 @@ $$H^+ \equiv \Bigg\{ x : w^{\top}x > c \Bigg\} \text{ and } \Bigg \{H^− \equiv
 
 That is, all points $x$ whose projection onto $w$ has length strictly bigger than $\frac{c}{ \Vert w \Vert}$, and all points $x′$ whose projection onto $w$ has length not larger than $\frac{c}{\Vert w \Vert}$. Geometrically, a linear classifier is thus defined by
 
-+1 if x ∈H +
+$$ h(x) = \cases{+1 \quad \text{ if } x \in H^+ \cr \cr −1 \quad \text{ if } x \in H^−}$$
 
-h(x) = −1 if x ∈H −
+Hyperplanes of the form $\Big \{x \in \mathbb{R}^d : w^{\top}x = 0\Big\}$ pass through the origin and are called **homogeneous**. Any non-homogeneous hyperplane $\Big \{x \in \mathbb{R}^d : w^{\top}x = c\Big\}$, with $c \neq 0$, is equivalent to the homogeneous hyperplane $\Big \{x \in \mathbb{R}^{d+1} : v^{\top}x = 0 \Big \}$ with $v = (w_1, ..., w_d, −c)$ in the following sense: $w^{\top}x − c = v^{\top}x′$ for all $x \in \mathbb{R}^d$ and $x′ = (x_1, ..., x_d, 1) \in \mathbb{R}^{d+1}$. For this reason, without any loss of generality we only deal with algorithms that learn linear predictors corresponding to homogeneous hyperplanes. This amounts to saying that we automatically add an extra feature with value $1$ to all of our data points.
 
-Hyperplanes of the form x ∈Rd : w⊤x = 0 pass through the origin and are called homoge- neous. Any non-homogeneous hyperplane x ∈Rd : w⊤x = c , with c = 0, is equivalent to the homogeneous hyperplane x ∈Rd+1 : v⊤x = 0 with v = (w1,...,wd,−c) in the following sense: w⊤x − c = v⊤x′ for all x ∈Rd and x′ = (x1,...,x ,1) ∈Rd+1. For this reason, without any loss of
+----------------------------------------------------------------
 
-d
+## Training linear classifiers
+Recall that a linear classifier is a predictor $h$ such that $h(x) = \operatorname{sgn}(w^{\top}x)$. Clearly, $\operatorname{sgn}(w^{\top}x) = \operatorname{sgn} \Vert w \Vert \Vert x \Vert \cos \theta = \operatorname{sgn}(\cos \theta)$. As the classification is only determined by the angle $\theta$ between $w$ and $x$, the value of $\Vert w \Vert$ is immaterial and we may take $\Vert w \Vert = 1$. Note that the zero-one loss $\mathbb{I}\{h(x_t) \neq y_t\}$ can be equivalently rewritten as $\mathbb{I}\{y_tw^{\top}x_t \leq 0\}$.<br />
+Note that $y_tw^{\top}x_t = 0$ only when $w = 0$ (we assume $x_t = 0$ for all $t$). In this case, $\operatorname{sgn}w^{\top}x = −1$ and so the classification is actually correct when $y_t = −1$. Hence, using $\mathbb{I}\{y_tw^{\top}x_t \leq 0\}$ to count mistakes we overcount only when $w = 0$ and $y_t = −1$.
 
-generality we only deal with algorithms that learn linear predictors corresponding to homogeneous hyperplanes. This amounts to saying that we automatically add an extra feature with value 1 to all of our data points.
-
-Training linear classifiers. Recall that a linear classifier is a predictor h such that h(x) = sgn(w⊤x). Clearly, sgn(w⊤x) = sgn ∥w∥∥x∥cosθ = sgn(cos θ). As the classification is only
-
-determined by the angle θ between w and x, the value of ∥w∥is immaterial and we may take ∥w∥= 1. Note that the zero-one loss I{h(xt) = yt} can be equivalently rewritten as I{ytw⊤xt ≤ 0}.
-
-1
-
-Let Hd be the family of linear classifiers h(x) = sgn(w⊤x) for w ∈ Rd such that ∥w∥ = 1. Consider the ERM algorithm for zero-one loss that, given a training set S containing examples![](Aspose.Words.0285eff5-79e7-478f-aa71-0051b38e8e41.002.png)
-
-1Note that ytw⊤xt = 0 only when w = 0 (we assume xt = 0 for all t). In this case, sgn w⊤x = −1 and so the
-
-t
-
-classification is actually correct when yt = −1. Hence, using I{ytw⊤xt ≤ 0} to count mistakes we overcount only when w = 0 and yt = −1.
-
-(x1,y1),..., (xm,ym) ∈Rd × {−1,1}, outputs
+Let Hd be the family of linear classifiers h(x) = sgn(w⊤x) for w ∈ Rd such that ∥w∥ = 1. Consider the ERM algorithm for zero-one loss that, given a training set S containing examples (x1,y1),..., (xm,ym) ∈Rd × {−1,1}, outputs
 
 1 m 1 m
 
