@@ -844,43 +844,31 @@ Hyperplanes of the form $\Big \{x \in \mathbb{R}^d : w^{\top}x = 0\Big\}$ pass t
 Recall that a linear classifier is a predictor $h$ such that $h(x) = \operatorname{sgn}(w^{\top}x)$. Clearly, $\operatorname{sgn}(w^{\top}x) = \operatorname{sgn} \Vert w \Vert \Vert x \Vert \cos \theta = \operatorname{sgn}(\cos \theta)$. As the classification is only determined by the angle $\theta$ between $w$ and $x$, the value of $\Vert w \Vert$ is immaterial and we may take $\Vert w \Vert = 1$. Note that the zero-one loss $\mathbb{I}\{h(x_t) \neq y_t\}$ can be equivalently rewritten as $\mathbb{I}\{y_tw^{\top}x_t \leq 0\}$.<br />
 Note that $y_tw^{\top}x_t = 0$ only when $w = 0$ (we assume $x_t = 0$ for all $t$). In this case, $\operatorname{sgn}w^{\top}x = −1$ and so the classification is actually correct when $y_t = −1$. Hence, using $\mathbb{I}\{y_tw^{\top}x_t \leq 0\}$ to count mistakes we overcount only when $w = 0$ and $y_t = −1$.
 
-Let Hd be the family of linear classifiers h(x) = sgn(w⊤x) for w ∈ Rd such that ∥w∥ = 1. Consider the ERM algorithm for zero-one loss that, given a training set S containing examples (x1,y1),..., (xm,ym) ∈Rd × {−1,1}, outputs
+Let $\mathcal{H}_d$ be the family of linear classifiers $h(x) = \operatorname{sgn}(w^{\top}x)$ for $w \in \mathbb{R}^d$ such that $\Vert w \Vert = 1$. Consider the ERM algorithm for zero-one loss that, given a training set $S$ containing examples $(x_1,y_1), ..., (x_m,y_m) \in \mathbb{R}^d \times \{−1,1\}$, outputs
 
-1 m 1 m
+$$h_S = \underset{h \in \mathcal{H}_d}{\operatorname{argmin}} \frac{1}{m} \sum_{t = 1}^{m}\mathbb{I} \{h(x_t) \neq y_t\} = \underset{w \in \mathbb{R}^d : \Vert w \Vert = 1}{\operatorname{argmin}} \frac{1}{m} \mathbb{I}\{y_tw^{\top}x_t \leq 0\big\} \quad \quad (1)$$
 
-hS = argmin m I{h(xt) = yt} = argmin m I{ytw⊤xt ≤ 0} . (1)
+Unfortunately, it is unlikely to find an efficient implementation of ERM for linear classifiers with zero-one loss. In fact, the decision problem associated with finding $h_S$ is $NP$-complete even when $x_t \in \{0,1\}^d$ for $t = 1, ..., m$. More precisely, introduce the following decision problem.
 
-h∈Hd t=1 w∈Rd :∥w∥=1 t=1
-
-Unfortunately, it is unlikely to find an efficient implementation of ERM for linear classifiers with zero-one loss. In fact, the decision problem associated with finding hS is NP-complete even when xt ∈ {0,1}d for t = 1,...,m. More precisely, introduce the following decision problem.
-
-MinDisagreement![](Aspose.Words.0285eff5-79e7-478f-aa71-0051b38e8e41.003.png)
-
-Instance: Pairs (x1,y1),..., (xm,ym) ∈ {0,1}d × {−1,1}. Integer k.
-
-Question: Is there w ∈Qd such that yt w⊤xt ≤ 0 for at most k indices t = 1,...,m?
+**MinDisagreement**<br />
+Instance: Pairs $(x_1, y_1), ..., (x_m,y_m) \in \{0,1\}^d \times \{−1,1\}$. Integer $k$.<br />
+Question: Is there $w \in Q^d$ such that $y_t w^{\top}x_t \leq 0$ for at most $k$ indices $t = 1, ..., m$?
 
 The following result can be shown.
 
-Theorem 1. MinDisagreement is NP-complete.
+**Theorem 1**: MinDisagreement is NP-complete.
 
 In addition to that, the following stronger hardness-of-approximation result can be also shown.
 
-MinDisOpt![](Aspose.Words.0285eff5-79e7-478f-aa71-0051b38e8e41.004.png)
+**MinDisOpt**<br />
+Instance: Pairs $(x_1, y_1), ..., (x_m,y_m) \in \{0,1\}^d \times \{−1,1\}$.<br />
+Solution: A point $w \in \mathbb{Q}^d$ minimizing the number of indices $t = 1, ..., m$ such that $y_t w^{\top}x_t \leq 0$.
 
-Instance: Pairs (x1,y1),..., (xm,ym) ∈ {0,1}d × {−1,1}.
+Given an instance S (i.e., a training set) of **MinDisOpt**, let Opt(S) the number of examples in $S$ that are misclassified by the ERM classifier $h_S$. In other words, $\operatorname{Opt}(S)/m = \ell S(h_S)$.
 
-Solution: A point w ∈ Qd minimizing the number of indices t = 1,...,m such that
+**Theorem 2**: If $P \neq NP$, then for all $C > 0$ there are no polynomial time algorithms that approximately solve every instance $S$ of **MinDisOpt** with a number of misclassified examples bounded by $C \times \operatorname{Opt}(S)$.
 
-⊤
-
-yt w xt ≤ 0.
-
-Given an instance S (i.e., a training set) of MinDisOpt, let Opt(S) the number of examples in S that are misclassified by the ERM classifier hS. In other words, Opt(S)/m = ℓS(hS).
-
-Theorem 2. If P = NP , then for all C > 0 there are no polynomial time algorithms that approx- imately solve every instance S of MinDisOpt with a number of misclassified examples bounded by C × Opt(S).
-
-This implies that, unless P = NP (which is believed unlikely), there are no efficient algorithms that approximate the solution of (1) to within any constant factor. Here efficient means with running time polynomial in the input size md.
+This implies that, unless $P = NP$ (which is believed unlikely), there are no efficient algorithms that approximate the solution of (1) to within any constant factor. Here efficient means with running time polynomial in the input size md.
 
 The ERM problem (1) becomes easier when the training set is linearly separable. A training set (x1,y1),..., (xm,ym) is linearly separable where there exists a linear classifier with zero training error. In other words, there exists a separating hyperplane u ∈Rd such that
 
