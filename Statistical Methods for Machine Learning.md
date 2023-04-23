@@ -868,25 +868,21 @@ Given an instance S (i.e., a training set) of **MinDisOpt**, let Opt(S) the numb
 
 **Theorem 2**: If $P \neq NP$, then for all $C > 0$ there are no polynomial time algorithms that approximately solve every instance $S$ of **MinDisOpt** with a number of misclassified examples bounded by $C \times \operatorname{Opt}(S)$.
 
-This implies that, unless $P = NP$ (which is believed unlikely), there are no efficient algorithms that approximate the solution of (1) to within any constant factor. Here efficient means with running time polynomial in the input size md.
+This implies that, unless $P = NP$ (which is believed unlikely), there are no efficient algorithms that approximate the solution of $(1)$ to within any constant factor. Here efficient means with running time polynomial in the input size $md$.
 
-The ERM problem (1) becomes easier when the training set is linearly separable. A training set (x1,y1),..., (xm,ym) is linearly separable where there exists a linear classifier with zero training error. In other words, there exists a separating hyperplane u ∈Rd such that
+The ERM problem $(1)$ becomes easier when the training set is linearly separable. A training set $(x_1, y_1), ..., (x_m,y_m)$ is linearly separable where there exists a linear classifier with zero training error. In other words, there exists a separating hyperplane $u \in \mathbb{R}^d$ such that
 
-γ(u) def= min yt u⊤xt > 0
+$$\gamma(u) \overset{def}{=} \underset{t = 1, ..., m}{\operatorname{min}} y_t u^{\top}x_t > 0$$
 
-t=1,...,m
+The quantity $\gamma(u)$ is known as the **margin** of $u$ on the training set. The scaled margin $\gamma(u)/ \Vert u \Vert$ measures the distance between the separating hyperplane and the closest training example.
 
-The quantity γ(u) is known as the margin of u on the training set. The scaled margin γ(u)/ ∥u∥ measures the distance between the separating hyperplane and the closest training example.
+Now observe that the ERM problem $(1)$ can be expressed as a system of linear inequalities,
 
-Now observe that the ERM problem (1) can be expressed as a system of linear inequalities,
-
-⊤
-
-yt w xt > 0 t = 1,...,m .
+$$y_t w^{\top} x_t > 0 \quad \text{ } \quad t = 1,...,m$$
 
 When the training set is linearly separable, the system has at least a solution. This solution can be found in polynomial time using an algorithm for linear programming.
 
-We now introduce a very simple algorithm for learning linear classifiers that can be used to solve the ERM problem in the linearly separable case. The Perceptron algorithm finds a homogeneous separating hyperplane by runnning through the training examples one after the other. The current linear classifier is tested on each training example and, in case of misclassification, the associated hyperplane is adjusted. Note that if the algorithm terminates, then w is a separating hyperplane.
+We now introduce a very simple algorithm for learning linear classifiers that can be used to solve the ERM problem in the linearly separable case. The Perceptron algorithm finds a homogeneous separating hyperplane by runnning through the training examples one after the other. The current linear classifier is tested on each training example and, in case of misclassification, the associated hyperplane is adjusted. Note that if the algorithm terminates, then $w$ is a separating hyperplane.
 
 Data: Training set (x1,y1),..., (xm,ym) ![](Aspose.Words.0285eff5-79e7-478f-aa71-0051b38e8e41.005.png)w = (0,..., 0)
 
