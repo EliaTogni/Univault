@@ -884,7 +884,7 @@ When the training set is linearly separable, the system has at least a solution.
 
 We now introduce a very simple algorithm for learning linear classifiers that can be used to solve the ERM problem in the linearly separable case. The Perceptron algorithm finds a homogeneous separating hyperplane by runnning through the training examples one after the other. The current linear classifier is tested on each training example and, in case of misclassification, the associated hyperplane is adjusted. Note that if the algorithm terminates, then $w$ is a separating hyperplane.
 
-Data: Training set (x1,y1),..., (xm,ym) ![](Aspose.Words.0285eff5-79e7-478f-aa71-0051b38e8e41.005.png)w = (0,..., 0)
+Data: Training set (x1,y1),..., (xm,ym) w = (0,..., 0)
 
 while true do
 
@@ -902,29 +902,21 @@ end
 
 Output: w
 
-Algorithm 1: The Perceptron algorithm (for the linearly separable case)
+In this algorithm, it si possible to observe the Perceptron algorithm (for the linearly separable case).
 
-- ⊤
+The update $w \leftarrow w + y_t x_t$ when $y_t w^{\top}x_t \leq 0$ makes $y_t w^{\top} x_t$ bigger. Indeed,
 
-The update w ← w + yt xt when yt w xt ≤ 0 makes yt w xt bigger. Indeed,
+$$y_t\Big(w + y_t x_t\Big)^{\top} x_t = y_t w^{\top}x_t + \Vert x_t \Vert ^2 > y_t w^{\top}x_t$$
 
-⊤
+Geometrically, each update moves $w$ towards $x_t$ if $y_t = 1$ and moves $w$ away from $x_t$ if $y_t = −1$. We now prove that Perceptron always terminates on linearly separable training sets.
 
-yt w + yt xt xt = yt w⊤xt + ∥xt∥2 > yt w⊤xt
+**Theorem 3** (**Convergence of Perceptron**): Let $(x_1, y_1), ...,  (x_m, y_m)$ be a linearly separable training set. Then the Perceptron algorithm terminates after a number of updates not bigger than
 
-Geometrically, each update moves w towards xt if yt = 1 and moves w away from xt if yt = −1. We now prove that Perceptron always terminates on linearly separable training sets.
+$$\Bigg(\underset{u: \gamma(u) \geq 1}{\operatorname{min}} \Vert u \Vert^2 \Bigg)\Bigg( \underset{t = 1, ..., m}{\operatorname{max}} \Vert x_t \Vert^2 \Bigg) \quad \text{ } \quad (2)$$
 
-Theorem 3 (Convergence of Perceptron). Let (x1,y1),..., (xm,ym) be a linearly separable training set. Then the Perceptron algorithm terminates after a number of updates not bigger than
+The apparently stonger margin constraint $\gamma(u) \geq 1$ is actually achievable by any separating hyperplane $u$. Indeed, if $\gamma(u) > 0$, then $y_tu^{\top}x_t \geq \gamma(u)$ is equivalent to $y_tv^{\top}x_t \geq 1$ for $v = u/\gamma(u)$. Hence, $\gamma(u) \geq 1$ can be achieved simply by rescaling $u$.
 
-min ∥u∥2 max ∥x t∥ (2) u :γ(u)≥1 t=1,...,m
-
-2
-
-The apparently stonger margin constraint γ(u) ≥ 1 is actually achievable by any separating hy- perplane u. Indeed, if γ(u) > 0, then ytu⊤xt ≥ γ(u) is equivalent to ytv⊤xt ≥ 1 for v = u/γ (u).
-
-Hence, γ(u) ≥ 1 can be achieved simply by rescaling u.
-
-Proof. Let w0 = (0,..., 0) be the initial hyperplane. Let wM be the hyperplane after M updates and let tM ∈ {1,...,m} be the index of the training example (xt ,yt ) that caused the M-th
+**Proof**: Let $w_0 = (0, ..., 0)$ be the initial hyperplane. Let $w_M$ be the hyperplane after $M$ updates and let $t_M \in \{1, ..., m\}$ be the index of the training example $(x_t, y_t)$ that caused the $M$-th
 
 update wM = wM −1 + yt xt . We prove an upper bound on MMby Mderiving upper and lower
 
