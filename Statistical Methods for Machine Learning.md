@@ -916,49 +916,19 @@ $$\Bigg(\underset{u: \gamma(u) \geq 1}{\operatorname{min}} \Vert u \Vert^2 \Bigg
 
 The apparently stonger margin constraint $\gamma(u) \geq 1$ is actually achievable by any separating hyperplane $u$. Indeed, if $\gamma(u) > 0$, then $y_tu^{\top}x_t \geq \gamma(u)$ is equivalent to $y_tv^{\top}x_t \geq 1$ for $v = u/\gamma(u)$. Hence, $\gamma(u) \geq 1$ can be achieved simply by rescaling $u$.
 
-**Proof**: Let $w_0 = (0, ..., 0)$ be the initial hyperplane. Let $w_M$ be the hyperplane after $M$ updates and let $t_M \in \{1, ..., m\}$ be the index of the training example $(x_t, y_t)$ that caused the $M$-th
+**Proof**: Let $w_0 = (0, ..., 0)$ be the initial hyperplane. Let $w_M$ be the hyperplane after $M$ updates and let $t_M \in \{1, ..., m\}$ be the index of the training example $(x_t, y_t)$ that caused the $M$-th update $w_M = w_{M −1} + y_{t_M} x_{t_M}$. We prove an upper bound on $M$ by deriving upper and lower bounds on $\Vert w_M \Vert \Vert u \Vert$. We start by observing that
 
-update wM = wM −1 + yt xt . We prove an upper bound on MMby Mderiving upper and lower
+$$\Vert w_M \Vert^2 = \Vert w_{M−1} + y_{t_M} x_t \Vert^2 = \Vert w_{M −1} \Vert^2 + \Vert x_{t_M} \Vert^2 + 2y_{t_M}w^{\top}_{M −1}x_{t_M} \leq \Vert w_{M_1} \Vert^2 + \Vert x_{t_M} \Vert^2$$
 
-M M
+because $y_t w^{\top}_{M −1}x_t \leq 0$ due to the update $w_M = w_{M −1} + y_{t_M} x_{t_M}$. Iterating this argument $M$ times, and recalling that $w_0 = (0, ...,  0)$, we obtain
 
-bounds on ∥wM ∥∥u∥. We start by observing that
-
-4
-
-∥wM ∥2 = ∥wM −1 + yt xt ∥2 = ∥wM −1∥2 + ∥xtM ∥2 + 2 yt wM −1xt
-
-⊤
-
-M M M M
-
-≤ ∥wM − 1∥2 + ∥x t ∥2 M
-
-
-
-because yt w⊤M −1xt ≤ 0 due to the update wM = wM −1 + yt xt . Iterating this argument M
-
-M M M M
-
-times, and recalling that w0 = (0,..., 0), we obtain
-
-M
-
-∥wM ∥2 ≤ ∥w0∥2 + ∥x t ∥2 ≤ M max ∥x t∥2 .
-
-i t=1,...,m
-
-i=1
+$$\Vert w_M \Vert^2 \leq \Vert w_0\Vert^2 + \sum_{i = 1}^{M} \Vert x_{t_i} \Vert^2 \leq M \Big( \underset{t = 1, ...., m}{max} \Vert x_t \Vert^2 \Big )$$
 
 Hence
 
-√ ![](Aspose.Words.0285eff5-79e7-478f-aa71-0051b38e8e41.006.png)
+$$\Vert w_M \Vert \Vert u \Vert \leq \Vert u \Vert \Big (\underset{t = 1, ..., m}{max} \Vert x_t \Vert \Big)\sqrt{M}$$
 
-∥wM ∥∥u∥ ≤ ∥u∥ max ∥x t∥ M .
-
-t=1,...,m
-
-To prove the lower bound, fix any separating hyperplane u with γ(u) ≥ 1 and let θ be the angle between u and wM . We have
+To prove the lower bound, fix any separating hyperplane $u$ with $\gamma(u) \geq 1$ and let $\theta$ be the angle between $u$ and $w_M$. We have
 
 ∥wM ∥∥u∥ ≥ ∥wM ∥∥u∥cos(θ) (since − 1 ≤ cos(θ) ≤ 1)
 
@@ -973,49 +943,32 @@ M M
 
 ≥ w⊤M −1u + 1
 
-where the last inequality holds because 1 ≤ γ(u) ≤ ytu⊤xt for all t = 1,...,m. Iterating M times we get
+where the last inequality holds because $1 \leq \gamma(u) \leq y_tu^{\top}x_t$ for all $t = 1, ..., m$. Iterating $M$ times we get
 
-∥wM ∥∥u∥ ≥ w⊤0 u + M = M
+$$\Vert w_M \Vert \Vert u \Vert \geq w^{\top}_0 u + M = M$$
 
-Where we used w⊤u = 0 since w0 = (0,..., 0). Combining upper and lower bound we obtain
+Where we used $w^{\top}_0u = 0$ since $w_0 = (0, ..., 0)$. Combining upper and lower bound we obtain
 
-0
+$$M \leq \Vert u \Vert \Big ( \underset{t = 1, ..., m}{max} \Vert x_t \Vert \Big )\sqrt{M}$$
 
-√ ![](Aspose.Words.0285eff5-79e7-478f-aa71-0051b38e8e41.007.png)
+Solving for $M$, and recalling the choice of $u$, we obtain $(2)$. Hence, the update count $M$ cannot grow larger than $(2)$. Since the algorithm stops when no more updates are possible, we conclude that the Perceptron terminates after a bounded number of updates.
 
-M ≤ ∥u∥ max ∥x t∥ M .
+Note that the Perceptron convergence theorem does not imply that the Perceptron algorithm terminates in polynomial time on any linearly separable training set. Indeed, it can be shown that the bound $(2)$ is tight in any fixed dimension $d \geq 2$. Hence, although each update takes constant time $\Theta(d)$, the number of updates can still be exponential in $md$ whenever $\gamma(u) \geq 1$ only for those u whose length $\Vert u \Vert$ is very big. Or, equivalently, when the margin $\gamma(u)$ is very small for any linear separator $u$ such that $\Vert u \Vert = 1$.
 
-t=1,...,M
+----------------------------------------------------------------
 
-Solving for M, and recalling the choice of u, we obtain (2). Hence, the update count M cannot grow larger than (2). Since the algorithm stops when no more updates are possible, we conclude
+## Linear regression
+In linear regression our predictors are linear functions $h : \mathbb{R}^d \to \mathbb{R}$ each parameterized by a vector $w \in \mathbb{R}^d$ of real coefficients. That is, $h(x) = w^{\top}x$.
 
-that the Perceptron terminates after a bounded number of updates. □
+Given a training set $(x_1, y_1), ..., (x_m, y_m) \in \mathbb{R}^d \times \mathbb{R}$, the linear regression predictor is the ERM with respect to the square loss,
 
-Note that the Perceptron convergence theorem does not imply that the Perceptron algorithm ter- minates in polynomial time on any linearly separable training set. Indeed, it can be shown that the bound (2) is tight in any fixed dimension d ≥ 2. Hence, although each update takes constant time Θ(d), the number of updates can still be exponential in md whenever γ(u) ≥ 1 only for those u whose length ∥u∥is very big. Or, equivalently, when the margin γ(u) is very small for any linear separator u such that ∥u∥= 1.
+$$w_S = \underset{w \in \mathbb{R}^d}{\operatorname{argmin}} \sum_{t=1}^{m} \Big ( w^{\top}x_t − y_t \Big)^2$$
 
-Linear regression. In linear regression our predictors are linear functions h : Rd → R each parameterized by a vector w ∈Rd of real coefficients. That is, h(x) = w⊤x.
+Now let $v = (w^{\top}x_1, ..., w^{\top}x_m)$ and $y = (y_1, ..., y_m)$. Then
 
-Given a training set (x1,y1),..., (xm,ym) ∈ Rd × R, the linear regression predictor is the ERM
+$$\sum_{t =1}^{m}\big (w^{\top}x_t − y_t\big)^2 = \Vert v − y \Vert^2$$
 
-with respect to the square loss,
-
-m
-
-wS = argmin w⊤xt − yt 2
-
-w∈Rd t=1
-
-Now let v = w⊤x1,..., w⊤xm and y = (y1,...,ym). Then
-
-m
-
-- 2
-
-w xt − yt = ∥v − y∥2 .
-
-t=1
-
-View all vectors as column vectors. Since v = Sw, where S is the m × d design matrix such that S⊤ = [x1,..., xm], we may also write
+View all vectors as column vectors. Since $v = Sw$, where $S$ is the $m \times d$ design matrix such that $S^{\top} = [x_1, ..., x_m]$, we may also write
 
 2
 
