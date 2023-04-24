@@ -968,45 +968,33 @@ Now let $v = (w^{\top}x_1, ..., w^{\top}x_m)$ and $y = (y_1, ..., y_m)$. Then
 
 $$\sum_{t =1}^{m}\big (w^{\top}x_t − y_t\big)^2 = \Vert v − y \Vert^2$$
 
-View all vectors as column vectors. Since $v = Sw$, where $S$ is the $m \times d$ design matrix such that $S^{\top} = [x_1, ..., x_m]$, we may also write
+View all vectors as column vectors. Since $v = Sw$, where $S$ is the $m \times d$ **design matrix** such that $S^{\top} = [x_1, ..., x_m]$, we may also write
 
-2
+$$w_S = \underset{w \in \mathbb{R}^d}{\operatorname{argmin}} \Vert Sw − y \Vert ^2$$
 
-wS = argmin ∥Sw − y∥ .
+Since $F(w) = \Vert Sw − y\Vert^2$ is a convex function, the minimizer satisfies the condition $\nabla F(w) = 0$.
 
-w∈Rd
+Using matrix calculus, we have that $\nabla \Vert Sw − y \Vert^2 = 2S^{\top}(Sw − y)$. Hence, $\nabla \Vert Sw − y \Vert^2 = 0$ for $w = (S^{\top}S)^{−1}S^{\top}y$ provided $S^{\top}S$ is nonsingular (i.e., invertible), which is equivalent to $x_1, ..., x_m$ spanning $\mathbb{R}^d$. When this happens, we have that the ERM with respect to the square loss is $w_S = (S^{\top}S)^{-1}S^{\top}y$.
 
-Since F (w) = ∥Sw − y∥2 is a convex function, the minimizer satisfies the condition ∇F (w) = 0.
+----------------------------------------------------------------
 
-Using matrix calculus, we have that ∇∥Sw − y∥2 = 2S⊤(Sw − y). Hence, ∇∥Sw − y∥2 = 0 for w = S⊤S −1S⊤y provided S⊤S is nonsingular (i.e., invertible)—which is equivalent to x1,..., xm spanning Rd. When this happens, we have that the ERM with respect to the square loss is
+## Ridge Regression
+When $S^{\top}S$ is nearly singular, $w_S$ is highly sensitive to perturbations of the training set. This instability increases the estimation error (or variance). A more stable predictor is obtained by introducing a regularizer in the ERM functional which increases the approximation error (or bias) and reduces the variance with a beneficial effect on the risk.
 
-wS = S S −1S⊤y.
+In other words, instead of defining $w_S$ by
 
-⊤
-
-Ridge Regression. When S⊤S is nearly singular, w is highly sensitive to perturbations of the
-
-S
-
-training set. This instability increases the estimation error (or variance). A more stable predictor is obtained by introducing a regularizer in the ERM functional which increases the approximation error (or bias) and reduces the variance with a beneficial effect on the risk.
-
-In other words, instead of defining wS by
-
-wS = argmin ∥Sw − y∥2
-
-w∈Rd
+$$w_S = \underset{w \in \mathbb{R}^d}{\operatorname{argmin}} \Vert S_w − y \Vert^2$$
 
 we use the regularized form, also known as Ridge Regression,
 
-wS,α = argmin ∥Sw − y∥2 + α ∥w∥2
+$$w_{S,\alpha} = \underset{w \in \mathbb{R}^d}{\operatorname{argmin}} \Vert Sw − y \vert^2 + \alpha \Vert w \Vert ^2$$
 
-w∈Rd
-
-where α > 0 is the regularization parameter. When α → 0 we recover the standard linear regression solution. When α → ∞, the solution wS,α becomes the zero vector. This shows that α can be used to control the bias of the algorithm.
+where $\alpha > 0$ is the regularization parameter. When $\alpha \to 0$ we recover the standard linear regression solution. When $\alpha \to \infty$, the solution $w_{S,\alpha}$ becomes the zero vector. This shows that $\alpha$ can be used to control the bias of the algorithm.
 
 Similarly to before, we have that
 
-∇ ∥Sw − y∥2 + α ∥w∥2 = 2S⊤(Sw − y) + 2αw .
+$$\nabla \Vert Sw − y \Vert ^2 + \alpha \Vert w\Vert ^2 = 2S^{\top}(Sw − y) + 2 \alpha w$$
 
-Hence, the gradient vanishes for w = wS,α = αI + S⊤S −1S⊤y. Note that we do not have to worry anymore about the singularity of S⊤S. Indeed, if λ1 ≥ ··· ≥ λd ≥ 0 are the eigenvalues of S⊤S, the eigenvalues of αI + S⊤S are simply α + λ1 ≥ ··· ≥ α + λd > 0. Hence, αI + S⊤S is invertible for all α > 0.
-6
+Hence, the gradient vanishes for $w = w{S,\alpha} = (\alpha I + S^{\top}S)^{−1}S^{\top}y$. Note that we do not have to worry anymore about the singularity of $S^{\top}S$. Indeed, if $\lambda_1 \geq ··· \geq \lambda_d \geq 0$ are the eigenvalues of $S^{\top}S$, the eigenvalues of $\alpha I + S^{\top}S$ are simply $\alpha + \lambda_1 \geq ··· \geq \alpha + \lambda_d > 0$. Hence, $\alpha I + S^{\top}S$ is invertible for all $\alpha > 0$.
+
+----------------------------------------------------------------
