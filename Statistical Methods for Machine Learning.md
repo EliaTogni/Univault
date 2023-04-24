@@ -930,18 +930,12 @@ $$\Vert w_M \Vert \Vert u \Vert \leq \Vert u \Vert \Big (\underset{t = 1, ..., m
 
 To prove the lower bound, fix any separating hyperplane $u$ with $\gamma(u) \geq 1$ and let $\theta$ be the angle between $u$ and $w_M$. We have
 
-∥wM ∥∥u∥ ≥ ∥wM ∥∥u∥cos(θ) (since − 1 ≤ cos(θ) ≤ 1)
+$$\Vert w_M \Vert \Vert u \Vert \geq \Vert w_M \Vert \Vert u \Vert cos(\theta)\quad \text{ } \quad (since − 1 \leq cos(\theta) \leq 1)$$
 
-- w⊤M u (by definition of inner product)
-- (wM −1 + yt xt )⊤ u
-
-M M
-
-- w⊤M −1u + yt u⊤xt
-
-M M
-
-≥ w⊤M −1u + 1
+$$= w^{\top}_M u \quad \text{ } \quad \text{(by definition of inner product)}$$
+$$ = (w_{M−1} + y_{t_M} x_{t_M} )^{\top} u$$
+$$= w^{\top}_{M −1}u + y_{t_M} u^{\top}x_{t_M}$$
+$$\geq w^{\top}_{M−1}u + 1$$
 
 where the last inequality holds because $1 \leq \gamma(u) \leq y_tu^{\top}x_t$ for all $t = 1, ..., m$. Iterating $M$ times we get
 
