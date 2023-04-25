@@ -823,14 +823,14 @@ Note that for $m \to \infty$, $\ell_{\mathcal{D}}(f^*) \leq \mathbb{E}[\ell_{\ma
 ----------------------------------------------------------------
 
 # Linear predictors
-A linear predictor for $\mathcal{X} = \mathbb{R}^d$ is a function $h : \mathbb{R}^d \to \mathbb{R}$ such that $h(x) = f(w^{\top}x)$ for some $w \in \mathbb{R}^d$, where $f : \mathbb{R} \to \mathbb{R}$ is sometimes called the activation function. In linear regression tasks, $f$ is the identity function and so $h(x) = w^{\top}x$. In linear classification tasks, $h(x) = \operatorname{sgn}(w^{\top}x − c)$ for some $c \to \mathbb{R}$, where $\operatorname{sgn}(z) = 1$ if $z > 0$ and $−1$ otherwise. We mostly focus on classification and return to regression only at the end.
+A linear predictor for $\mathcal{X} = \mathbb{R}^d$ is a function $h : \mathbb{R}^d \to \mathbb{R}$ such that $h(x) = f(w^{\top}x)$ for some $w \in \mathbb{R}^d$, where $f : \mathbb{R} \to \mathbb{R}$ is sometimes called the activation function. In linear regression tasks, $f$ is the identity function and so $h(x) = w^{\top}x$. In linear classification tasks, $h(x) = \operatorname{sgn}(w^{\top}x − c)$ for some $c \in \mathbb{R}$, where $\operatorname{sgn}(z) = 1$ if $z > 0$ and $−1$ otherwise. We mostly focus on classification and return to regression only at the end.
 
 ## Hyperplanes
-Recall that an hyperplane with coefficients $(w,c)$ is defined by $\Big \{x \in \mathcal{R}^d : w^{\top}x = c\Big \}$ , where $w^{\top}x = \Vert w \Vert \Vert x \Vert \cos\theta$ and $\theta$ is the angle between $w$ and $x$ and $\Vert x \Vert \cos\theta$ is the length of the projection of $x$ onto $w$. Hence, the hyperplane defined by $(w,c)$ is orthogonal to $w$ and intersects it at distance $\frac{c}{\Vert w \Vert}$ from the origin.
+Recall that an hyperplane with coefficients $(w,c)$ is defined by $\Big \{x \in \mathbb{R}^d : w^{\top}x = c\Big \}$ , where $w^{\top}x = \Vert w \Vert \Vert x \Vert \cos\theta$ and $\theta$ is the angle between $w$ and $x$ and $\Vert x \Vert \cos\theta$ is the length of the projection of $x$ onto $w$. Hence, the hyperplane defined by $(w,c)$ is orthogonal to $w$ and intersects it at distance $\frac{c}{\Vert w \Vert}$ from the origin.
 
-The halfspaces $H^+$ e $H^−$ defined by the hyperplane $x \in \mathcal{R}^d : w^{\top}x = c$ are
+The halfspaces $H^+$ e $H^−$ defined by the hyperplane $\{x \in \mathbb{R}^d : w^{\top}x = c\}$ are
 
-$$H^+ \equiv \Bigg\{ x : w^{\top}x > c \Bigg\} \text{ and } \Bigg \{H^− \equiv x′ : w^{\top}x′ \leq c \Bigg\}$$
+$$H^+ \equiv \Bigg\{ x : w^{\top}x > c \Bigg\} \text{ and } H^− \equiv \Bigg \{ x′ : w^{\top}x′ \leq c \Bigg\}$$
 
 That is, all points $x$ whose projection onto $w$ has length strictly bigger than $\frac{c}{ \Vert w \Vert}$, and all points $x′$ whose projection onto $w$ has length not larger than $\frac{c}{\Vert w \Vert}$. Geometrically, a linear classifier is thus defined by
 
