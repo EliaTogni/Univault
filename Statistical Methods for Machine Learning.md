@@ -728,7 +728,7 @@ Note that the convergence rate $m^{-1/(d+1)}$ implies that to get $\varepsilon$-
 # Risk Analysys for Nearest-Neighbor
 We investigate the problem of bounding the zero-one loss risk of the $1-NN$ binary classiﬁer averaged with respect to the random draw of the training set. Under some assumptions on the data distribution $\mathcal{D}$, we prove a bound of the form
 
-$$\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big] \leq 2 \ell_{\mathcal{D}}(f^*) + \varepsilon_m \quad \text{ } (1)$$
+$$\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big] \leq 2 \ell_{\mathcal{D}}(f^*) + \varepsilon_m \quad \text{ } \quad (1)$$
 
 where $A$ denotes the $1-NN$ algorithm, $S_m$ the training set of size $m$, $\ell_{\mathcal{D}}(f^*)$ is the Bayes risk, and $\varepsilon_m$ is a quantity that vanishes for $m \to \infty$. Note that we are able to compare $\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big]$ directly to the Bayes risk, showing that $1-NN$ is, in some sense, a powerful learning algorithm.
 
@@ -751,23 +751,23 @@ The expected risk of the $1-NN$ classiﬁer can be written as follows
 
 $$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big] = \mathbb{E}\Big[\eta(X_{\pi(S, X)})(1- \eta(X))\Big] + \mathbb{E}\Big[\big(1 - \eta(X_{\pi(S, X)})\big)\eta(X)\Big]$$
 
-To proceed with the analysis, we now need some assumptions on $D_X$ and $\eta$. First, all data points $X$ drawn from $D_X$ satisfy max $\vert X \vert \leq 1$ with probability one. In other words, $X \in [−1, 1]^d$ with probability 1. Let $X \equiv [−1, 1]^d$ the subsets of data points with this property. Second we assume that $\eta$ is Lipschitz on $\mathcal{X}$ with constant $c > 0$. We can thus write
+To proceed with the analysis, we now need some assumptions on $D_X$ and $\eta$. First, all data points $X$ drawn from $D_X$ satisfy max $\vert X_i \vert \leq 1$ with probability one. In other words, $X \in [−1, 1]^d$ with probability $1$. Let $\mathcal{X} \equiv [−1, 1]^d$ the subsets of data points with this property. Second we assume that $\eta$ is Lipschitz on $\mathcal{X}$ with constant $c > 0$. We can thus write
 
-$$\eta(x') \leq \eta(x) + c \Vert x - x' \Vert \quad \text{ } (2)$$
-$$1 - \eta(x') \leq 1 - \eta(x) + c \Vert x - x' \Vert \quad \text{ } (3)$$
+$$\eta(x') \leq \eta(x) + c \Vert x - x' \Vert \quad \text{ } \quad (2)$$
+$$1 - \eta(x') \leq 1 - \eta(x) + c \Vert x - x' \Vert \quad \text{ } \quad (3)$$
 
-Using $(2)$ and $(3)$, for all $x, x′ \in X$ we have
+Using $(2)$ and $(3)$, for all $x, x′ \in \mathcal{X}$ we have
 
 $$\eta(x)(1 - \eta(x')) + (1 - \eta(x))\eta(x')$$
 $$\leq \eta(x)(1-\eta(x)) + \eta(x) c \Vert x - x' \Vert + (1 - \eta(x))\eta(x) + (1 - \eta(x))c \Vert x - x' \Vert$$
 $$= 2 \eta(x)(1- \eta(x)) + c \Vert x - x' \Vert$$
 $$\leq 2 \text{ }min \{\eta(x), 1 - \eta(x)\} + c \Vert x - x' \Vert$$
 
-where the last inequality holds because $z(1 − z) \leq min\{z, 1 − z\}$ for all $z \in [0, 1]$. Therefore
+where the last inequality holds because $z(1 − z) \leq \operatorname{min}\{z, 1 − z\}$ for all $z \in [0, 1]$. Therefore
 
-$$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big] \leq 2 \text{ }\mathbb{E}\Big[min \{\eta(X), 1 - \eta(X)\}\Big] + c \text{ }\mathbb{E}\Big[\Vert X - X_{\pi(S, X)} \Vert\Big]$$
+$$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big] \leq 2 \text{ }\mathbb{E}\Big[\operatorname{min} \{\eta(X), 1 - \eta(X)\}\Big] + c \text{ }\mathbb{E}\Big[\Vert X - X_{\pi(S, X)} \Vert\Big]$$
 
-Recalling that the Bayes risk for the zero-one loss is $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\Big[min\{\eta(X), 1 − \eta(X)\}\Big]$ we have
+Recalling that the Bayes risk for the zero-one loss is $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\Big[\operatorname{min}\{\eta(X), 1 − \eta(X)\}\Big]$ we have
 
 $$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big] \leq 2 \text{ }\ell_{\mathcal{D}}(f^*) + c \text{ }\mathbb{E}\Big[\Vert X - X_{\pi(S, X)}\Vert\Big]$$
 
@@ -796,17 +796,19 @@ $$\mathbb{E}\big[\mathbb{I}\{C_i \cap S = \emptyset \} \mathbb{I}\{X \in C_i\}\b
 
 Since $S$ contains $m$ data points independently drawn, for a generic data point $X′$ we have that
 
-$$\mathbb{P}(C_i \cap S = \emptyset) = (1 - \mathbb{P}(X' \in C_i))^m \leq exp(-m\mathbb{P}(X' \in C_i))$$
+$$\mathbb{P}(C_i \cap S = \emptyset) = (1 - \mathbb{P}(X' \in C_i))^m \leq \operatorname{exp}(-m\mathbb{P}(X' \in C_i))$$
 
 where in the last step we used the inequality $(1 − p)^m \leq e ^{-pm}$. Setting $p_i = \mathbb{P}(X' \in C_i)$ we have
 
-
+$$\mathbb{E}\Big[\Vert X - X_{\pi(S, X)} \Vert\Big] \leq \varepsilon \sqrt{d} + (2 \sqrt{d})\sum_{i = 1}^{r} e^{-p_im}p_i $$
+$$\leq \varepsilon \sqrt{d} + (2 \sqrt{d})\sum_{i = 1}^{r} \underset{0 \leq p \leq 1}{\operatorname{max}}e^{-pm}p$$
+$$\leq \varepsilon \sqrt{d} + (2 \sqrt{d})r \underset{0 \leq p \leq 1}{\operatorname{max}}e^{-pm}p$$
 
 The concave function $g(p) = e^{−pm}p$ is maximized for $p = \frac{1}{m}$. Therefore,
 
 $$\mathbb{E}\Big[\Vert X - X_{\pi_{S}(X)} \Vert\Big] \leq \varepsilon \sqrt{d} + (2 \sqrt{d}) \frac{r}{em} = \sqrt{d}\Big(\varepsilon + \frac{2}{em} \Big(\frac{2}{\varepsilon}\Big)^d\Big)$$
 
-where we used the fact that the number r of hypercubes is equal to $(\frac{2}{\varepsilon})^d$. Putting evertything together we ﬁnd that
+where we used the fact that the number $r$ of hypercubes is equal to $(\frac{2}{\varepsilon})^d$. Putting evertything together we ﬁnd that
 
 $$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big] \leq 2 \ell_{\mathcal{D}}(f^*) + c \sqrt{d}\Big(\varepsilon + \frac{2}{em} \big(\frac{2}{\varepsilon}\big)^d\Big)$$
 
@@ -818,7 +820,7 @@ Substituting this bound in $(4)$, we ﬁnally obtain
 
 $$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big]t \leq 2 \ell_{\mathcal{D}}(f^*) + c4m^{-1/(d+1)}\sqrt{d}$$
 
-Note that for $m \to \infty$, $\ell_{\mathcal{D}}(f^*) \leq \mathbb{E}[\ell_{\mathcal{D}(h_S)}] \leq 2\ell_{\mathcal{D}}(f^*)$. Namely, the asymptotic risk of $1-NN$ lies between the Bayes risk and twice the Bayes risk.
+Note that for $m \to \infty$, $\ell_{\mathcal{D}}(f^*) \leq \mathbb{E}[\ell_{\mathcal{D}}(h_S)] \leq 2\ell_{\mathcal{D}}(f^*)$. Namely, the asymptotic risk of $1-NN$ lies between the Bayes risk and twice the Bayes risk.
 
 ----------------------------------------------------------------
 
@@ -939,13 +941,13 @@ where the last inequality holds because $1 \leq \gamma(u) \leq y_tu^{\top}x_t$ f
 
 $$\Vert w_M \Vert \Vert u \Vert \geq w^{\top}_0 u + M = M$$
 
-Where we used $w^{\top}_0u = 0$ since $w_0 = (0, ..., 0)$. Combining upper and lower bound we obtain
+where we used $w^{\top}_0u = 0$ since $w_0 = (0, ..., 0)$. Combining upper and lower bound we obtain
 
 $$M \leq \Vert u \Vert \Big ( \underset{t = 1, ..., m}{max} \Vert x_t \Vert \Big )\sqrt{M}$$
 
 Solving for $M$, and recalling the choice of $u$, we obtain $(2)$. Hence, the update count $M$ cannot grow larger than $(2)$. Since the algorithm stops when no more updates are possible, we conclude that the Perceptron terminates after a bounded number of updates.
 
-Note that the Perceptron convergence theorem does not imply that the Perceptron algorithm terminates in polynomial time on any linearly separable training set. Indeed, it can be shown that the bound $(2)$ is tight in any fixed dimension $d \geq 2$. Hence, although each update takes constant time $\Theta(d)$, the number of updates can still be exponential in $md$ whenever $\gamma(u) \geq 1$ only for those u whose length $\Vert u \Vert$ is very big. Or, equivalently, when the margin $\gamma(u)$ is very small for any linear separator $u$ such that $\Vert u \Vert = 1$.
+Note that the Perceptron convergence theorem does not imply that the Perceptron algorithm terminates in polynomial time on any linearly separable training set. Indeed, it can be shown that the bound $(2)$ is tight in any fixed dimension $d \geq 2$. Hence, although each update takes constant time $\Theta(d)$, the number of updates can still be exponential in $md$ whenever $\gamma(u) \geq 1$ only for those $u$ whose length $\Vert u \Vert$ is very big. Or, equivalently, when the margin $\gamma(u)$ is very small for any linear separator $u$ such that $\Vert u \Vert = 1$.
 
 ----------------------------------------------------------------
 
@@ -971,11 +973,11 @@ Using matrix calculus, we have that $\nabla \Vert Sw − y \Vert^2 = 2S^{\top}(S
 ----------------------------------------------------------------
 
 ## Ridge Regression
-When $S^{\top}S$ is nearly singular, $w_S$ is highly sensitive to perturbations of the training set. This instability increases the estimation error (or variance). A more stable predictor is obtained by introducing a regularizer in the ERM functional which increases the approximation error (or bias) and reduces the variance with a beneficial effect on the risk.
+When $S^{\top}S$ is nearly singular, $w_S$ is highly sensitive to perturbations of the training set. This instability increases the estimation error (or variance). A more stable predictor is obtained by introducing a **regularizer** in the ERM functional which increases the approximation error (or bias) and reduces the variance with a beneficial effect on the risk.
 
 In other words, instead of defining $w_S$ by
 
-$$w_S = \underset{w \in \mathbb{R}^d}{\operatorname{argmin}} \Vert S_w − y \Vert^2$$
+$$w_S = \underset{w \in \mathbb{R}^d}{\operatorname{argmin}} \Vert Sw − y \Vert^2$$
 
 we use the regularized form, also known as Ridge Regression,
 
@@ -985,7 +987,7 @@ where $\alpha > 0$ is the regularization parameter. When $\alpha \to 0$ we recov
 
 Similarly to before, we have that
 
-$$\nabla \Vert Sw − y \Vert ^2 + \alpha \Vert w\Vert ^2 = 2S^{\top}(Sw − y) + 2 \alpha w$$
+$$\nabla \Big (\Vert Sw − y \Vert ^2 + \alpha \Vert w\Vert ^2 \Big ) = 2S^{\top}(Sw − y) + 2 \alpha w$$
 
 Hence, the gradient vanishes for $w = w{S,\alpha} = (\alpha I + S^{\top}S)^{−1}S^{\top}y$. Note that we do not have to worry anymore about the singularity of $S^{\top}S$. Indeed, if $\lambda_1 \geq ··· \geq \lambda_d \geq 0$ are the eigenvalues of $S^{\top}S$, the eigenvalues of $\alpha I + S^{\top}S$ are simply $\alpha + \lambda_1 \geq ··· \geq \alpha + \lambda_d > 0$. Hence, $\alpha I + S^{\top}S$ is invertible for all $\alpha > 0$.
 
