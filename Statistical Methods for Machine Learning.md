@@ -830,7 +830,7 @@ Recall that an hyperplane with coefficients $(w,c)$ is defined by $\Big \{x \in 
 
 The halfspaces $H^+$ e $H^−$ defined by the hyperplane $\{x \in \mathbb{R}^d : w^{\top}x = c\}$ are
 
-$$H^+ \equiv \Bigg\{ x : w^{\top}x > c \Bigg\} \text{ and } H^− \equiv \Bigg \{ x′ : w^{\top}x′ \leq c \Bigg\}$$
+$$H^+ \equiv \Bigg\{ x : w^{\top}x > c \Bigg\} \quad \text{ and } \quad H^− \equiv \Bigg \{ x′ : w^{\top}x′ \leq c \Bigg\}$$
 
 That is, all points $x$ whose projection onto $w$ has length strictly bigger than $\frac{c}{ \Vert w \Vert}$, and all points $x′$ whose projection onto $w$ has length not larger than $\frac{c}{\Vert w \Vert}$. Geometrically, a linear classifier is thus defined by
 
@@ -841,12 +841,12 @@ Hyperplanes of the form $\Big \{x \in \mathbb{R}^d : w^{\top}x = 0\Big\}$ pass t
 ----------------------------------------------------------------
 
 ## Training linear classifiers
-Recall that a linear classifier is a predictor $h$ such that $h(x) = \operatorname{sgn}(w^{\top}x)$. Clearly, $\operatorname{sgn}(w^{\top}x) = \operatorname{sgn} \Vert w \Vert \Vert x \Vert \cos \theta = \operatorname{sgn}(\cos \theta)$. As the classification is only determined by the angle $\theta$ between $w$ and $x$, the value of $\Vert w \Vert$ is immaterial and we may take $\Vert w \Vert = 1$. Note that the zero-one loss $\mathbb{I}\{h(x_t) \neq y_t\}$ can be equivalently rewritten as $\mathbb{I}\{y_tw^{\top}x_t \leq 0\}$.<br />
-Note that $y_tw^{\top}x_t = 0$ only when $w = 0$ (we assume $x_t = 0$ for all $t$). In this case, $\operatorname{sgn}w^{\top}x = −1$ and so the classification is actually correct when $y_t = −1$. Hence, using $\mathbb{I}\{y_tw^{\top}x_t \leq 0\}$ to count mistakes we overcount only when $w = 0$ and $y_t = −1$.
+Recall that a linear classifier is a predictor $h$ such that $h(x) = \operatorname{sgn}(w^{\top}x)$. Clearly, $\operatorname{sgn}(w^{\top}x) = \operatorname{sgn} (\Vert w \Vert \Vert x \Vert \cos \theta ) = \operatorname{sgn}(\cos \theta)$. As the classification is only determined by the angle $\theta$ between $w$ and $x$, the value of $\Vert w \Vert$ is immaterial and we may take $\Vert w \Vert = 1$. Note that the zero-one loss $\mathbb{I}\{h(x_t) \neq y_t\}$ can be equivalently rewritten as $\mathbb{I}\{y_tw^{\top}x_t \leq 0\}$.<br />
+Note also that $y_tw^{\top}x_t = 0$ only when $w = 0$ (we assume $x_t \neq 0$ for all $t$). In this case, $\operatorname{sgn}(w^{\top}x_t) = −1$ and so the classification is actually correct when $y_t = −1$. Hence, using $\mathbb{I}\{y_tw^{\top}x_t \leq 0\}$ to count mistakes we overcount only when $w = 0$ and $y_t = −1$.
 
 Let $\mathcal{H}_d$ be the family of linear classifiers $h(x) = \operatorname{sgn}(w^{\top}x)$ for $w \in \mathbb{R}^d$ such that $\Vert w \Vert = 1$. Consider the ERM algorithm for zero-one loss that, given a training set $S$ containing examples $(x_1,y_1), ..., (x_m,y_m) \in \mathbb{R}^d \times \{−1,1\}$, outputs
 
-$$h_S = \underset{h \in \mathcal{H}_d}{\operatorname{argmin}} \frac{1}{m} \sum_{t = 1}^{m}\mathbb{I} \{h(x_t) \neq y_t\} = \underset{w \in \mathbb{R}^d : \Vert w \Vert = 1}{\operatorname{argmin}} \frac{1}{m} \mathbb{I}\{y_tw^{\top}x_t \leq 0\big\} \quad \quad (1)$$
+$$h_S = \underset{h \in \mathcal{H}_d}{\operatorname{argmin}} \frac{1}{m} \sum_{t = 1}^{m}\mathbb{I} \{h(x_t) \neq y_t\} = \underset{w \in \mathbb{R}^d : \Vert w \Vert = 1}{\operatorname{argmin}} \frac{1}{m} \sum_{t = 1}^{m} \mathbb{I}\{y_tw^{\top}x_t \leq 0\big\} \quad \quad (1)$$
 
 Unfortunately, it is unlikely to find an efficient implementation of ERM for linear classifiers with zero-one loss. In fact, the decision problem associated with finding $h_S$ is $NP$-complete even when $x_t \in \{0,1\}^d$ for $t = 1, ..., m$. More precisely, introduce the following decision problem.
 
@@ -856,7 +856,7 @@ Question: Is there $w \in Q^d$ such that $y_t w^{\top}x_t \leq 0$ for at most $k
 
 The following result can be shown.
 
-**Theorem 1**: MinDisagreement is NP-complete.
+**Theorem 1**: **MinDisagreement is NP-complete**.
 
 In addition to that, the following stronger hardness-of-approximation result can be also shown.
 
@@ -864,13 +864,13 @@ In addition to that, the following stronger hardness-of-approximation result can
 Instance: Pairs $(x_1, y_1), ..., (x_m,y_m) \in \{0,1\}^d \times \{−1,1\}$.<br />
 Solution: A point $w \in \mathbb{Q}^d$ minimizing the number of indices $t = 1, ..., m$ such that $y_t w^{\top}x_t \leq 0$.
 
-Given an instance S (i.e., a training set) of **MinDisOpt**, let Opt(S) the number of examples in $S$ that are misclassified by the ERM classifier $h_S$. In other words, $\operatorname{Opt}(S)/m = \ell S(h_S)$.
+Given an instance $S$ (i.e., a training set) of **MinDisOpt**, let $\operatorname{Opt}(S)$ the number of examples in $S$ that are misclassified by the ERM classifier $h_S$. In other words, $\operatorname{Opt}(S)/m = \ell_S(h_S)$.
 
-**Theorem 2**: If $P \neq NP$, then for all $C > 0$ there are no polynomial time algorithms that approximately solve every instance $S$ of **MinDisOpt** with a number of misclassified examples bounded by $C \times \operatorname{Opt}(S)$.
+**Theorem 2**: if $P \neq NP$, then for all $C > 0$ there are no polynomial time algorithms that approximately solve every instance $S$ of **MinDisOpt** with a number of misclassified examples bounded by $C \times \operatorname{Opt}(S)$.
 
 This implies that, unless $P = NP$ (which is believed unlikely), there are no efficient algorithms that approximate the solution of $(1)$ to within any constant factor. Here efficient means with running time polynomial in the input size $md$.
 
-The ERM problem $(1)$ becomes easier when the training set is linearly separable. A training set $(x_1, y_1), ..., (x_m,y_m)$ is linearly separable where there exists a linear classifier with zero training error. In other words, there exists a separating hyperplane $u \in \mathbb{R}^d$ such that
+The ERM problem $(1)$ becomes easier when the training set is **linearly separable**. A training set $(x_1, y_1), ..., (x_m,y_m)$ is linearly separable where there exists a linear classifier with zero training error. In other words, there exists a separating hyperplane $u \in \mathbb{R}^d$ such that
 
 $$\gamma(u) \overset{def}{=} \underset{t = 1, ..., m}{\operatorname{min}} y_t u^{\top}x_t > 0$$
 
@@ -884,23 +884,19 @@ When the training set is linearly separable, the system has at least a solution.
 
 We now introduce a very simple algorithm for learning linear classifiers that can be used to solve the ERM problem in the linearly separable case. The Perceptron algorithm finds a homogeneous separating hyperplane by runnning through the training examples one after the other. The current linear classifier is tested on each training example and, in case of misclassification, the associated hyperplane is adjusted. Note that if the algorithm terminates, then $w$ is a separating hyperplane.
 
-Data: Training set (x1,y1),..., (xm,ym) w = (0,..., 0)
+```
+Data: Training set (x_1,y_1),..., (x_m,y_m) w = (0,..., 0)
 
 while true do
-
-for t = 1,...,m do (epoch)
-
-if yt w⊤xt ≤ 0 then
-
-w ← w + yt xt (update)
-
-end
-
-if no update in last epoch then break
-
+	for t = 1,...,m do (epoch)
+		if y_t w^{\top}x_t ≤ 0 then
+			w ← w + yt xt     (update)
+	end
+	if no update in last epoch then break
 end
 
 Output: w
+```
 
 In this algorithm, it si possible to observe the Perceptron algorithm (for the linearly separable case).
 
@@ -908,19 +904,21 @@ The update $w \leftarrow w + y_t x_t$ when $y_t w^{\top}x_t \leq 0$ makes $y_t w
 
 $$y_t\Big(w + y_t x_t\Big)^{\top} x_t = y_t w^{\top}x_t + \Vert x_t \Vert ^2 > y_t w^{\top}x_t$$
 
-Geometrically, each update moves $w$ towards $x_t$ if $y_t = 1$ and moves $w$ away from $x_t$ if $y_t = −1$. We now prove that Perceptron always terminates on linearly separable training sets.
+Geometrically, each update moves $w$ towards $x_t$ if $y_t = 1$ and moves $w$ away from $x_t$ if $y_t = −1$.
 
-**Theorem 3** (**Convergence of Perceptron**): Let $(x_1, y_1), ...,  (x_m, y_m)$ be a linearly separable training set. Then the Perceptron algorithm terminates after a number of updates not bigger than
+We now prove that Perceptron always terminates on linearly separable training sets.
+
+**Theorem 3** (**Convergence of Perceptron**): let $(x_1, y_1), ...,  (x_m, y_m)$ be a linearly separable training set. Then the Perceptron algorithm terminates after a number of updates not bigger than
 
 $$\Bigg(\underset{u: \gamma(u) \geq 1}{\operatorname{min}} \Vert u \Vert^2 \Bigg)\Bigg( \underset{t = 1, ..., m}{\operatorname{max}} \Vert x_t \Vert^2 \Bigg) \quad \text{ } \quad (2)$$
 
 The apparently stonger margin constraint $\gamma(u) \geq 1$ is actually achievable by any separating hyperplane $u$. Indeed, if $\gamma(u) > 0$, then $y_tu^{\top}x_t \geq \gamma(u)$ is equivalent to $y_tv^{\top}x_t \geq 1$ for $v = u/\gamma(u)$. Hence, $\gamma(u) \geq 1$ can be achieved simply by rescaling $u$.
 
-**Proof**: Let $w_0 = (0, ..., 0)$ be the initial hyperplane. Let $w_M$ be the hyperplane after $M$ updates and let $t_M \in \{1, ..., m\}$ be the index of the training example $(x_t, y_t)$ that caused the $M$-th update $w_M = w_{M −1} + y_{t_M} x_{t_M}$. We prove an upper bound on $M$ by deriving upper and lower bounds on $\Vert w_M \Vert \Vert u \Vert$. We start by observing that
+**Proof**: let $w_0 = (0, ..., 0)$ be the initial hyperplane. Let $w_M$ be the hyperplane after $M$ updates and let $t_M \in \{1, ..., m\}$ be the index of the training example $(x_{t_M}, y_{t_M})$ that caused the $M$-th update $w_M = w_{M −1} + y_{t_M} x_{t_M}$. We prove an upper bound on $M$ by deriving upper and lower bounds on $\Vert w_M \Vert \Vert u \Vert$. We start by observing that
 
-$$\Vert w_M \Vert^2 = \Vert w_{M−1} + y_{t_M} x_t \Vert^2 = \Vert w_{M −1} \Vert^2 + \Vert x_{t_M} \Vert^2 + 2y_{t_M}w^{\top}_{M −1}x_{t_M} \leq \Vert w_{M_1} \Vert^2 + \Vert x_{t_M} \Vert^2$$
+$$\Vert w_M \Vert^2 = \Vert w_{M−1} + y_{t_M} x_{t_M} \Vert^2 = \Vert w_{M −1} \Vert^2 + \Vert x_{t_M} \Vert^2 + 2y_{t_M}w^{\top}_{M −1}x_{t_M} \leq \Vert w_{M-1} \Vert^2 + \Vert x_{t_M} \Vert^2$$
 
-because $y_t w^{\top}_{M −1}x_t \leq 0$ due to the update $w_M = w_{M −1} + y_{t_M} x_{t_M}$. Iterating this argument $M$ times, and recalling that $w_0 = (0, ...,  0)$, we obtain
+because $y_{t_M} w^{\top}_{M −1}x_{t_M} \leq 0$ due to the update $w_M = w_{M −1} + y_{t_M} x_{t_M}$. Iterating this argument $M$ times, and recalling that $w_0 = (0, ...,  0)$, we obtain
 
 $$\Vert w_M \Vert^2 \leq \Vert w_0\Vert^2 + \sum_{i = 1}^{M} \Vert x_{t_i} \Vert^2 \leq M \Big( \underset{t = 1, ...., m}{max} \Vert x_t \Vert^2 \Big )$$
 
