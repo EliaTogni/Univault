@@ -13,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "Highlights for Primer Molecular Biology.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "404d51af1d450b7d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "Statistical Methods for Machine Learning.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -106,22 +119,35 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "c3d51d4aae69904c",
+  "active": "404d51af1d450b7d",
   "lastOpenFiles": [
+    "Bioinformatica.md",
+    "Images/find largest r - Cerca con Google_files/app.html",
+    "Images/find largest r - Cerca con Google_files/RotateCookiesPage.html",
+    "Images/find largest r - Cerca con Google_files/a.html",
+    "Images/find largest r - Cerca con Google.html",
+    "Images/find largest r - Cerca con Google_files/app_data/m=_b,_tp,_r",
+    "Images/find largest r - Cerca con Google_files/a_data/remote.js",
+    "Images/find largest r - Cerca con Google_files/m=CW5FZe,Da4hkd,Eox39d,FmAr0c,HYSCof,K6HGfd,MpJwZc,RagDlc,aD8OEe",
+    "Images/find largest r - Cerca con Google_files/m=sys7,rFNHyc",
+    "Images/find largest r - Cerca con Google_files/iframe_api",
+    "Images/find largest r - Cerca con Google_files/a_data/embed.js",
+    "Images/find largest r - Cerca con Google_files/unnamed_002.jpg",
+    "Images/find largest r - Cerca con Google_files/unnamed.jpg",
+    "Images/find largest r - Cerca con Google_files/device_default_thumbnail2.png",
+    "Images/find largest r - Cerca con Google_files/loading_24.gif",
+    "Images/find largest r - Cerca con Google_files/googlelogo_color_92x30dp.png",
+    "Images/find largest r - Cerca con Google_files/light_thumbnail2.png",
+    "Images/find largest r - Cerca con Google_files/dark_thumbnail2.png",
+    "Images/find largest r - Cerca con Google_files/192px.svg",
+    "Images/find largest r - Cerca con Google_files/mqdefault.jpg",
     "Highlights for Primer Molecular Biology.md",
     "Statistical Methods for Machine Learning.md",
     "Aspose.Words.0285eff5-79e7-478f-aa71-0051b38e8e41.002.png.md",
-    "Bioinformatica.md",
     "Images/genome.png",
-    "PrimerMolecularBiology.pdf",
     "Programmazione Dinamica.md",
     "Macchina di Turing.md",
     "Untitled.md",
-    "Images/2d_example_analysis_1-NN.png",
-    "Images/bias-variance_decomposition.png",
-    "Images/behaviour_expected_risk.png",
-    "Images/ecr-gata3.png",
-    "Images/SMOTE.png",
     "Statistica e Probabilità.md",
     "Logica Matematica.md",
     "Simulation.md",
@@ -139,13 +165,7 @@
     "Albero 2-3.md",
     "Albero.md",
     "3D Video Games.md",
-    "Images/learning.png",
     "facts2.png.md",
-    "Images/facts2.jpg",
-    "Images/fact1.png",
-    "Untitled.canvas",
-    "Images/sistema_di_calcolo.png",
-    "Aspose.Words.fa785cf8-048c-4754-a465-f7d585ee05dd.003.png.md",
-    "Leggere per sapere - Alessandro de Concini.pdf"
+    "Untitled.canvas"
   ]
 }

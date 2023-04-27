@@ -140,6 +140,8 @@ La tecnologia dei **microarray** di DNA per lo studio degli acidi nucleici si ba
 
 Strutturalmente, i microarray sono costituiti da un supporto solido su cui sono disposte ordinatamente un numero elevato di sonde specifiche di DNA in maniera da formare una matrice di punti regolare. Ogni punto della matrice ha dimensioni tipicamente inferiori a 200 micron ed è costituito da molte copie della stessa sequenza di DNA. Esso rappresenta l’unità minima del microarray ed è chiamato **feature**. I microarray si classificano per il numero di features presenti sulla loro superficie, una sorta di misura della loro complessità e capacità di risoluzione. Ogni feature è costituita da più copie uguali di sequenze sonda (**probe sequences**), che ibrideranno con le sequenze bersaglio (**target sequences**) complementari marcate contenute nei campioni in esame.
 
+Come regola generale, le sequenze bersaglio marcate, costituite da DNA complementare (cDNA) preparato con l’enzima **trascrittasi inversa** dalla popolazione di RNA messaggero (mRNA) che si vuole esaminare, sono ibridate a sonde geniche specifiche distribuite e fissate su un supporto solido, il microarray.
+
 ----------------------------------------------------------------
 
 ## Genetica
