@@ -8,18 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "c3d51d4aae69904c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Highlights for Primer Molecular Biology.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "404d51af1d450b7d",
             "type": "leaf",
             "state": {
@@ -31,8 +19,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"

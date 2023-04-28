@@ -302,7 +302,7 @@ $$= \underset{\widehat{y} \in \mathbb{R}}{\operatorname{argmin}} \mathbb{E}\Big[
 Because we are interested in the minimizing of $\widehat{y}$, it is possible to notice that the term $Y^2$ is a costant and, in fact, it does not depend on $\widehat{y}$. Using the linear property of expectation $\mathbb{E}[aX + bY] = a\mathbb{E}[X] + b\mathbb{E}[Y], \quad a, b \in \mathbb{R}$, we are able to write 
 
 $$= \underset{\widehat{y} \in \mathcal{Y}}{\operatorname {argmin}}\Big(\underbrace{\mathbb{E}\big[Y^2 \text{ }\vert \text{ }X = x \big]}_{\text{does not depend on }\widehat{y}} + \widehat{y}^2 - 2 \widehat{y} \mathbb{E} \big[Y \text{ }\vert \text{ }X = x\big] \Big)$$
-$$= \underset{\widehat{y} \in \mathbb{R}}{\operatorname {argmin}}\Big( \widehat{y}^2 - 2\widehat{y} \mathbb{E}\big[Y \vert X = x\big]\Big)\quad \text{ignoring the term that does not depend on } \widehat{y}$$
+$$= \underset{\widehat{y} \in \mathbb{R}}{\operatorname {argmin}}\Big( \widehat{y}^2 - 2\widehat{y} \mathbb{E}\big[Y \vert X = x\big]\Big)\quad \text{ } \quad (\text{ignoring the term that does not depend on } \widehat{y})$$
 
 and the reason why this is possible is because the term ignored is just a costant and so it is possible to extract it from the $argmin$ operator.<br />
 Now, we have to minimize the function $F(\widehat{y}) = \widehat{y}^2 - 2\widehat{y}\mathbb{E}\big[Y \text{ } \vert \text{ } X = x\big]$, which can be seen as $F(z) = z^2 - 2zc$. Its derivative is $F'(z) = 2z -2c$ and it is minimized for $F'(z) = 0$. After the substitution, we obtain $2 \widehat{y} - 2 \mathbb{E}\big[Y \vert X = x\big] = 0$ and, therefore
@@ -315,7 +315,7 @@ Substituting in the conditional risk formula $\mathbb{E}[(Y - f^*(X))^2 \vert X 
 
 $$ \ell_{\mathcal{D}}(f^*) = \mathbb{E}\Big[\big(Y - f^*(X)\big)^2 \text{ }\Big \vert \text{ } X = x \Big] = \mathbb{E}\Big[\big(Y - \mathbb{E}[Y \text{ } \vert \text{ } X = x ]\big)^2 \text{ }\Big \vert \text{ } X = x \Big] = Var\big[Y \vert X = x\big]$$
 
-In words, the conditional risk of the Bayes optimal predictor for the quadratic loss is the **conditional variance** of the label on the instance. By averaging over $X$ we obtain $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\big[Var[Y \text{ } \vert \text{ } X]\big]$.<br />
+In words, the conditional risk of the Bayes optimal predictor for the quadratic loss is the **conditional variance**, the variance of the label conditioned on the instance. By averaging over $X$ we obtain $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\big[Var[Y \text{ } \vert \text{ } X]\big]$.<br />
 Namely, the Bayes risk for the quadratic loss is the expected conditional variance of the label. Note that $\mathbb{E}\big[Var[ Y \text{ } \vert \text{ } X]\big]$ is generally diﬀerent from $Var[Y]$. Indeed, the **law of total variance** says that $Var[Y] - \mathbb{E}\big[Var[Y \text{ } \vert \text{ } X]\big] = Var\big[\mathbb{E}[Y \text{ } \vert \text{ } X]\big]$.
 
 We now focus on binary classiﬁcation, where $\mathcal{Y} = \{−1, 1\}$. Let $\eta(x)$ be the probability of $Y = 1$ conditioned on $X = x$. We view $\eta(x) = \mathbb{P}( Y = +1 \text{ } \vert \text{ } X = x)$ as the value on $x$ of a function $\eta: \mathcal{X} \to [0, 1]$.
@@ -335,7 +335,7 @@ $$=\underset{\widehat{y} \in \{-1, 1\}}{\operatorname{argmin}}\Big(\eta(x) \math
 
 If $\widehat{y} = 1$, the first term goes to $0$ and we predict the second term. Viceversa, we predict the first term. The algorithm should, then, predict $-1$ when $\eta(x) < (1 - \eta(x))$. So 
 
-$$= \cases{-1 \quad \text{if } \eta(x) < \frac{1}{2} \cr \cr +1 \quad \text{if } \eta(x) \geq \frac{1}{2}}$$
+$$ f^*(x)= \cases{-1 \quad \text{if } \eta(x) < \frac{1}{2} \cr \cr +1 \quad \text{if } \eta(x) \geq \frac{1}{2}}$$
 
 Hence, the Bayes optimal classifier predicts the label whose probability is the highest when conditioned on the instance. Finally, it is easy to verify that the Bayes risk in this case is $\ell_{\mathcal{D}}(f^*) = \mathbb{E}[\ell(f^*(X), Y)] = \mathbb{E}\big[\mathbb{I}\{f^*(x) \neq Y\}\big] = \mathbb{P}(f^*(X) \neq Y)$.
 Knowing that $\mathbb{P}(f^*(X) \neq Y \vert X = x) = min \{\eta(x), (1 - \eta(x))\}$ and knowing that $\mathbb{E}\Big[\mathbb{E}\big[\mathbb{I}\{f^*(x) \neq Y\}\big \vert X = x]\Big] = \mathbb{E}[\mathbb{I}\{f^*(x) \neq Y\}\big]$, it is possible to define $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\big[min\{\eta(X), 1 - \eta(X)\}\big]$.<br />
@@ -352,7 +352,8 @@ Now, consider the plot of the function $min \{Z, (1 - Z)\}$:
 In the central region of the first plot, the label is basically random, because the function $min \{Z, (1 - Z)\}$ returns $1$ and $-1$ both with probability $\frac{1}{2}.$
 
 ## Bounding the risk
-Next, we study the problem of bounding the risk of a predictor. From now on, we assume $\ell(y, \widehat{y}) \in [0, 1]$. However, keep in mind that our analysis continues to hold also when $\ell(y, \widehat{y}) \in [0, M]$ for any $M > 0$.<br />
+Next, we study the problem of bounding the risk of a predictor. From now on, we assume $\ell(y, \widehat{y}) \in [0, 1]$. However, keep in mind that our analysis continues to hold also when $\ell(y, \widehat{y}) \in [0, M]$ for any $M > 0$.
+
 It should be clear that, given an arbitrary predictor $h: X \to Y$, we cannot directly compute its statistical risk $\ell_{\mathcal{D}}(h)$ with respect to $\mathcal{D}$ because $\mathcal{D}$ is typically unknown (if we knew $\mathcal{D}$, we could directly construct the Bayes optimal predictor). We thus consider the problem of estimating the statistical risk of a given predictor $h$. In order to compute this estimate, we can use the **test set** $S' = \{(x_1' , y_1' ), ... , (x_n' , y_n')$. We can then estimate $\ell_{\mathcal{D}}(h)$ with the **test error**, which is the average loss of $h$ on the test set
 
 $$\ell_{s'}(h) = \frac{1}{n}\sum_{t = 1}^{n}\ell\big(y_{t}', h(x_t')\big)$$
@@ -366,9 +367,9 @@ Note that the above equalities rely on the assumption that $h$ does not depend o
 In order to compute how good is the test error as an estimate for the risk, we can use the following result about the law of large numbers.
 
 ### Chernoﬀ-Hoeﬀding's lemma
-Let $Z_1 , ... , Z_n$ be **independent and identically distributed random variables** with expectation $\mu$ and such that $0 \leq Z \leq 1$ for each $t = 1, ... , n$. Then, for any given $\varepsilon > 0$
+Let $Z_1 , ... , Z_n$ be **independent and identically distributed random variables** with expectation $\mu$ and such that $0 \leq Z_t \leq 1$ for each $t = 1, ... , n$. Then, for any given $\varepsilon > 0$
 
-$$\mathbb{P}\Bigg(\frac{1}{n}\sum_{t = 1}^{n}Z_t > \mu + \varepsilon \Bigg) \leq e^{-2\varepsilon^2n}\quad \text{and}\quad \mathbb{P}\Bigg(\frac{1}{n}\sum_{t = 1}^{n}Z_t < \mu + \varepsilon\Bigg) \leq e^{-2\varepsilon^2n}$$
+$$\mathbb{P}\Bigg(\frac{1}{n}\sum_{t = 1}^{n}Z_t > \mu + \varepsilon \Bigg) \leq e^{-2\varepsilon^2n}\quad \text{and}\quad \mathbb{P}\Bigg(\frac{1}{n}\sum_{t = 1}^{n}Z_t < \mu - \varepsilon\Bigg) \leq e^{-2\varepsilon^2n}$$
 
 This means that if we compute the sample mean of the variables, the probability that this will be much larger (or much smaller) than the expectation, with respect to the draw of the sample, decreases exponentially with the sample size.
 
@@ -377,7 +378,7 @@ In the rest of this course, we repeatedly use the following facts:
 
 ![[fact1.png]]
 
-2) for any collection $A_1 , ... , A_n$ of (not necessarily disjoint) events, $\mathbb{P}(A_1, \cup ...\cup A_N) \leq \sum_{i = 1}^{n}\mathbb{P}(A_i)$ (**Union bound**). If the events $A_1 , ... , A_n$ are pairwise disjoint, then the union bound holds with equality.
+2) for any collection $A_1 , ... , A_n$ of (not necessarily disjoint) events, $\mathbb{P}(A_1, \cup ...\cup A_n) \leq \sum_{i = 1}^{n}\mathbb{P}(A_i)$ (**Union bound**). If the events $A_1 , ... , A_n$ are pairwise disjoint, then the union bound holds with equality.
 
 ![[facts2.jpg]]
 
@@ -388,7 +389,7 @@ $$\quad = \mathbb{P}\Big(\ell_{\mathcal{D}}(h) - \ell(h) > \varepsilon\Big) + \B
 
 where in the last step we applied the union bound to the disjoint events $\ell_{\mathcal{D}}(h) − \ell(h) > \varepsilon$ and $\ell(h) − \ell_{\mathcal{D}}(h) > \varepsilon$. Note that the probability is computed with respect to the random draw of the test set. This inequality shows that the probability that a test set gives a test error $\ell_{S'}(h)$ diﬀering from the true statistical risk $\ell_{\mathcal{D}}(h)$ (which is $\mu$ in the Chernoff-Hoeffding bound) for more than $\varepsilon$ quickly decreases with the size $n$ of the test set.
 
-More speciﬁcally: if we set to $\delta \in (0, 1)$ the right-hand side of the previous equation and then solve for $\varepsilon$, we get that
+More speciﬁcally: if we set to $\delta \in (0, 1)$ the right-hand side of $(1)$ and then solve for $\varepsilon$, we get that
 
 $$\varepsilon = \sqrt{\frac{1}{2n}\ln\frac{1}{\delta}}$$
 
@@ -403,7 +404,7 @@ The inequality $(1)$ is telling us how to use a test set to estimate the risk of
 ----------------------------------------------------------------
 
 ## Overﬁtting and underﬁtting
-Fix a learning problem $(\mathcal{D}, \ell)$ and consider a generic learning algorithm $A$. Let $\mathcal{H}_A$ be the set of predictors generated by $A$ such that $h \in \mathcal{H}_A$ if and only if there exists a ﬁnite training set $S$ such that $A(S) = h$. For example, $A$ could be an algorithm for training a neural network and $\mathcal{H}_A$ is the set of all possible predictors obtained by training the neural network using arbitrary training sets of ﬁnite size. Let $h^*$ be any predictor with minimum risk $\ell_{\mathcal{D}}(h^*)$ in $\mathcal{H}_A$. That is,
+Fix a learning problem $(\mathcal{D}, \ell)$ and consider a generic learning algorithm $A$. In the following, we write $A(S)$ to denote the predictor output by $A$ when given the training set $S$. Let $\mathcal{H}_A$ be the set of predictors generated by $A: h \in \mathcal{H}_A$ if and only if there exists a ﬁnite training set $S$ such that $A(S) = h$. For example, $A$ could be an algorithm for training a neural network and $\mathcal{H}_A$ is the set of all possible predictors obtained by training the neural network using arbitrary training sets of ﬁnite size. Let $h^*$ be any predictor with minimum risk $\ell_{\mathcal{D}}(h^*)$ in $\mathcal{H}_A$. That is,
 
 $$\ell_{\mathcal{D}}(h^*) \leq \underset{h \in \mathcal{H}_A}{\operatorname{min}}\ell_{\mathcal{D}}(h)$$
 
@@ -423,7 +424,7 @@ In the figure it is possible to observe a visual explanation of the bias-varianc
 
 Note that:
 1) the Bayes error is not controllable because it only depends on $\mathcal{D}$ and the loss $\ell$;
-2) the approximation (or bias) error, which is large when the algorithm underﬁts, arises because the risk of $H_A$ does not necessarily contain the Bayes optimal predictor;
+2) the approximation (or bias) error, which is large when the algorithm underﬁts, arises because the risk of $\mathcal{H}_A$ does not necessarily contain the Bayes optimal predictor;
 3) the estimation (or variance) error, which is large when the algorithm overﬁts, arises because the risk of $h_S$ is generally diﬀerent from the risk of $h^*$.
 
 We now use the bias-variance decomposition to balance overﬁtting and underﬁtting in the ERM algorithm run over a ﬁnite classe $\mathcal{H}$. Recall that ERM minimizes the training error in $\mathcal{H}$,
@@ -434,9 +435,9 @@ where $\ell_S(h)$ is the training error of $h$ on the training set $S$. Similarl
 
 $$\ell_{D}(h^*) = \underset{h \in \mathcal{H}}{\operatorname{min}}\ell_{\mathcal{D}}(h)$$
 
-Thanks to the law of large numbers, we know that the training error $\ell_S(h^*)$ is close to $ℓ_{\mathcal{D}}(h^*)$ with high probability with respect to the random draw of the training set $S$. Unfortunately, we cannot directly apply the Chernoﬀ-Hoeﬀding bound to $h_S$ to show that $\ell_{\mathcal{D}}(h_S)$ is close to $\ell_S(h_S)$. The reason is that $h_S$ is a function of the training set, and thus a random variable. Chernoﬀ-Hoeﬀding ensures that $\widehat{\ell}_S(h)$ is close to $\ell_{\mathcal{D}}(h)$ for any ﬁxed $h$, whereas $h_S$ is not ﬁxed as it depends on the sample.
+Thanks to the law of large numbers, we know that the training error $\ell_S(h^*)$ is close to $ℓ_{\mathcal{D}}(h^*)$ with high probability with respect to the random draw of the training set $S$. Unfortunately, we cannot directly apply the Chernoﬀ-Hoeﬀding bound to $h_S$ to show that $\ell_{\mathcal{D}}(h_S)$ is close to $\ell_S(h_S)$. The reason is that $h_S$ is a function of the training set, and thus a random variable. Indeed Chernoﬀ-Hoeﬀding ensures that the sample mean $\ell_S(h)$ is close to its true mean $\ell_{\mathcal{D}}(h)$ with high probability for any given $h$. On the other hand, it is unclear how to prove that $\ell_S(h_S)$ is close to $\ell_{\mathcal{D}}(h_S)$ given that they are both random variables whose expectations do not necessarily coincide.
 
-Next, we bound the variance error. For every given training set S of size m, we have that
+We now show how to overcome this problem and bound the variance error. For every given training set $S$ of size $m$, we have that
 
 $$\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*) = \ell_{\mathcal{D}}(h_S) - \ell_S(h_S) + \ell_S(h_S) - \ell_{\mathcal{D}}(h^*)$$
 $$\leq \ell_{\mathcal{D}}(h_S) - \ell_S(h_S) + \ell_S(h^*) - \ell_{\mathcal{D}}(h^*)$$
@@ -463,7 +464,7 @@ is the union over $h \in \mathcal{H}$ of the (not necessarily disjoint) events $
 
 $$\mathbb{P}\Big(\exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h) > \frac{\varepsilon}{2} \Big) = \mathbb{P} \Bigg(\ \bigcup_{h \in \mathcal{H}} \Big(\vert \ell_S(h) - \ell_{\mathcal{D}}(h)\vert > \frac{\varepsilon}{2} \Big)\Bigg)$$
 $$ \leq \sum_{h \in \mathcal{H}}\mathbb{P}\Big(\vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \frac{\varepsilon}{2}\Big)$$
-$$\leq \vert \mathcal{H}\vert \underset{h \in H}{\operatorname{max}}\mathbb{P} \Big(\vert \ell_S(h) - \ell_{\mathcal{D}}(h) > \frac{\varepsilon}{2}\Big)$$
+$$\leq \vert \mathcal{H}\vert \underset{h \in H}{\operatorname{max}}\mathbb{P} \Big(\vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \frac{\varepsilon}{2}\Big)$$
 $$\leq \vert \mathcal{H} \vert 2e^{-m \varepsilon^2/2} \quad \text{ } \quad (2)$$
 
 where in the last step we used the Chernoﬀ-Hoeﬀding bound.
