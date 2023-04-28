@@ -158,7 +158,7 @@ $$smoker \in \{yes,no,ex\}$$
 $$weight \in [10,120]$$$$sex \in \{M,F\}$$
 $$therapy \in \{antibiotics,cortisone,none\}$$
 
-Even if we compute rescaled numerical representations for the features (including the categorical fields smoker and sex), algorithms based on Euclidean distance like $k-NN$ may not work well.
+Even if we compute rescaled numerical representations for the features (including the categorical fields _smoker_ and _sex_), algorithms based on Euclidean distance like $k-NN$ may not work well.
 
 In order to learn data whose features vary in heterogeneous sets $\mathcal{X}_1, ..., \mathcal{X}_d$ (i.e., sets with incomparable ranges, including ranges corresponding to categorical variables), a new family of predictors will be introduced: the **tree predictors**.
 
@@ -178,19 +178,20 @@ An example with $\mathcal{X}_i = \mathbb{R}$ and $k = 3$ is the following
 $$f(x_i) = \cases{1 \quad \text{ if }
 x_i \in (-\infty, \alpha], \cr \cr 2 \quad \text{ if } x_i \in (\beta, +\infty)\, \cr \cr 3 \quad \text{ if } x_i \in (\alpha, \beta]}$$
 
-where $\alpha < \beta$ are arbitrary values.<br />
-The prediction $h_T(x)$ is computed as follows. Start by assigning $v \leftarrow r$, where $r$ is the root of $T$:
+where $\alpha < \beta$ are arbitrary values.
+
+The prediction $h_T(x)$ is computed as follows. Start by assigning $v \leftarrow r$, where $r$ is the root of $T$;
 1) if $v$ is a leaf $\ell$, then stop and let $h_T(x)$ be the label $y \in \mathcal{Y}$ associated with $\ell$;
 2) otherwise, if $f : \mathcal{X}_i \to \{1, ..., k\}$ is the test associated with $v$, then assign $v \leftarrow v_j$, where $j = f(x_i)$ and $v_j$ denotes the $j$-th children of $v$;
 3) go to step $1$.
 
 If the computation of $h_T(x)$ terminates in leaf $\ell$, we say that the example $x$ is routed to $\ell$. Hence $h_T(x)$ is always the label of the leaf to which $x$ is routed.
 
-How can a tree predictor be built given a training set $\mathcal{S}$? For simplicity, we focus on the case of binary classication $\mathcal{Y} = \{-1, 1\}$ and we only consider complete binary trees, i.e., all internal nodes have exactly two children. The idea is to grow the tree classifier starting from a single-node tree (which must be a leaf) that corresponds to the classifier assigning to any data point the label that occurs most frequently in the training set (and the reason of that is, obviously, the existence of only one node and, therefore, only one possible label tagged to it). The tree is grown by picking a leaf (at the beginning there is only a leaf to pick) and replacing it with an internal node and two new leaves.
+How can a tree predictor be built given a training set $S$? For simplicity, we focus on the case of binary classication $\mathcal{Y} = \{-1, 1\}$ and we only consider complete binary trees, i.e., all internal nodes have exactly two children. The idea is to grow the tree classifier starting from a single-node tree (which must be a leaf) that corresponds to the classifier assigning to any data point the label that occurs most frequently in the training set (and the reason of that is, obviously, the existence of only one node and, therefore, only one possible label tagged to it). The tree is grown by picking a leaf (at the beginning there is only a leaf to pick) and replacing it with an internal node and two new leaves.
 
-Suppose we have grown a tree $T$ up to a certain point, and the resulting classifier is $h_T$. We start by computing the contributions of each leaf to the training error $\ell_{\mathcal{S}}(h_T)$ (recall that each $x$ is classified by some leaf, the leaf which $x$ is routed to). For each leaf $\ell$, define $\mathcal{S}_\ell \equiv \{(x_t,y_t) \in \mathcal{S} : x_t$ is routed to $\ell\}$. That is, $\mathcal{S}_\ell$ is the subset of training examples that are routed to $\ell$. Define further two subsets of $\mathcal{S}_\ell$, namely $\mathcal{S}^+_\ell \equiv \{(x_t, y_t ) \in \mathcal{S}_\ell : y_t = +1\}$ and $\mathcal{S}^-_\ell \equiv \{(x_t, y_t) \in \mathcal{S}_\ell : y_t = -1\}$.
+Suppose we have grown a tree $T$ up to a certain point, and the resulting classifier is $h_T$. We start by computing the contributions of each leaf to the training error $\ell_{S}(h_T)$ (recall that each $x$ is classified by some leaf, the leaf which $x$ is routed to). For each leaf $\ell$, define $S_\ell \equiv \{(x_t,y_t) \in S : x_t$ is routed to $\ell\}$. That is, $S_\ell$ is the subset of training examples that are routed to $\ell$. Define further two subsets of $S_\ell$, namely $S^+_\ell \equiv \{(x_t, y_t ) \in S_\ell : y_t = +1\}$ and $S^-_\ell \equiv \{(x_t, y_t) \in S_\ell : y_t = -1\}$.
 
-For each leaf $\ell$, let $N^+_\ell = \vert \mathcal{S}^+_\ell \vert$, $N^-_\ell = \vert \mathcal{S}^-_\ell \vert$ and $N_\ell = \vert \mathcal{S}_\ell \vert = N^+_\ell + N^-_\ell$. In order to minimize the training error $\ell_{\mathcal{S}}(h_T)$, the label associated with $\ell$ must be:
+For each leaf $\ell$, let $N^+_\ell = \vert S^+_\ell \vert$, $N^-_\ell = \vert S^-_\ell \vert$ and $N_\ell = \vert S_\ell \vert = N^+_\ell + N^-_\ell$. In order to minimize the training error $\ell_{S}(h_T)$, the label associated with $\ell$ must be:
 
 $$y_\ell = \cases{+1 \quad \text{ if } N^+_\ell \geq N^-_\ell, \cr \cr -1 \quad \text{ otherwise.}}$$
 
@@ -220,11 +221,11 @@ $$= \underbrace{\psi \Big ( \frac{N^+_\ell}{N_\ell} \Big)N_\ell}_{\text{contribu
 
 meaning that a split never increases the training error (recall that $N_{\ell'}^+ + N_{\ell''}^+ = N_{\ell}^+$).
 
-A leaf $\ell$ such that $N^+_{\ell} \in \{0, N_{\ell}\}$ is called **pure** because it does not contribute to the training error. Note that $\widehat{\ell}(h_T) > 0$ unless all leaves are pure.
+A leaf $\ell$ such that $N^+_{\ell} \in \{0, N_{\ell}\}$ is called **pure** because it does not contribute to the training error. Note that $\ell_S(h_T) > 0$ unless all leaves are pure.
 
 We now describe a generic method to construct a binary tree given a training set $S$.
 1) **initialization**: create $T$ with only the root $\ell$ and let $S_\ell = S$. Let the label associated with the root be the most frequent label in $S_\ell$;
-2) **main loop**: pick a leaf $\ell$ and replace it with an internal node $v$ creating two children $\ell'$ (first child) and $\ell''$ (second child). Pick an attribute $i$ and a test $f : \mathcal{X}_i \to \{1,2\}$. Associate the test $f$ with $v$ and partition $S_\ell$ in the two subsets $S_{\ell} = \{(x_t, y_t) \in S_{\ell} : f(x_t, i) = 1\}$ and $S_{\ell''} = \{(x_t, y_t) \in S_{\ell} : f(x_t, i) = 2\}$. Let the labels associated with $\ell'$ and $\ell''$ be, respectively, the most frequent labels in $S_{\ell'}$ and $S_{\ell''}$;
+2) **main loop**: pick a leaf $\ell$ and replace it with an internal node $v$ creating two children $\ell'$ (first child) and $\ell''$ (second child). Pick an attribute $i$ and a test $f : \mathcal{X}_i \to \{1,2\}$. Associate the test $f$ with $v$ and partition $S_\ell$ in the two subsets $S_{\ell} = \{(x_t, y_t) \in S_{\ell} : f(x_{t, i}) = 1\}$ and $S_{\ell''} = \{(x_t, y_t) \in S_{\ell} : f(x_{t, i}) = 2\}$. Let the labels associated with $\ell'$ and $\ell''$ be, respectively, the most frequent labels in $S_{\ell'}$ and $S_{\ell''}$;
 
 Just like the classifiers generated by the $k-NN$ algorithm, also tree predictors may suffer from overfitting. In this case, the relevant parameter is the number of tree nodes. If the number of tree nodes grows too much compared to the cardinality of the training set, then the tree may overfit the training data. For this reason, the choice of the leaf to expand should at least approximately guarantee the largest decrease in the training error.
 
@@ -232,13 +233,14 @@ In practice, functions different from $\psi(p) = min\{p, 1-p\}$ are used to meas
 
 $$\psi(p) - \Big(\alpha \psi(q) + (1 - \alpha)\psi(r) \Big ) = 0.2 - (0.5 \times 0.4 + 0.5 \times 0) = 0$$
 
-As this split leaves the training error unchanged, it would be not be considered when growing the tree, and the algorithm might even get stuck if no split can be found to decrease the training error. On the other hand, the test in the new internal node is correctly classifying half of the examples in $S\ell$, and all these correctly classified examples are routed to leaf $\ell''$ which is pure. Hence, half of the data in $S\ell$ is explained by the split.
+As this split leaves the training error unchanged, it would be not be considered when growing the tree, and the algorithm might even get stuck if no split can be found to decrease the training error. On the other hand, the test in the new internal node is correctly classifying half of the examples in $S_\ell$, and all these correctly classified examples are routed to leaf $\ell''$ which is pure. Hence, half of the data in $S_\ell$ is explained by the split.
 
-In order to fix this problem, different functions $\psi$ are used in practice. These functions are similar to min because they are symmetric around $\frac{1}{2}$ and satisfy $\psi(0) = \psi(1) = 0$. However, unlike min, they have a nonzero curvature (i.e., strictly negative second derivative). The curvature helps in cases like the one described in the example above, that is when $p, q, r$ are all on the same side with respect to $\frac{1}{2}$ and $p = \alpha q+ (1 - \alpha)r$. In this case, $\psi(p) - (\alpha \psi (q) + (1 - \alpha)\psi(r)) = 0$ because between $0$ and $\frac{1}{2}$ the function $\psi(a) = min\{a, 1 - a\}$ is a straight line.
+In order to fix this problem, different functions $\psi$ are used in practice. These functions are similar to $\operatorname{min}$ because they are symmetric around $\frac{1}{2}$ and satisfy $\psi(0) = \psi(1) = 0$. However, unlike $\operatorname{min}$, they have a nonzero curvature (i.e., strictly negative second derivative). The curvature helps in cases like the one described in the example above, that is when $p, q, r$ are all on the same side with respect to $\frac{1}{2}$ and $p = \alpha q+ (1 - \alpha)r$. In this case, $\psi(p) - (\alpha \psi (q) + (1 - \alpha)\psi(r)) = 0$ because between $0$ and $\frac{1}{2}$ the function $\psi(a) = min\{a, 1 - a\}$ is a straight line.
 
 Some examples of functions $\psi$ used in practice are:
 1) **Gini function**: $\psi_2(p) = 2p(1-p)$;
 2) **scaled entropy**: $\psi_3(p) = -\frac{p}{2}\log_2(p) - \frac{1-p}{2}\log_2(1-p)$.
+3) $\psi_4(p) = \sqrt{p(1-p)}$.
 
 The following inequalities hold: $min\{p, 1-p\} \leq \psi_2(p) \leq \psi_3(p) \leq \psi_4(p)$.
 
@@ -252,21 +254,9 @@ An interesting feature of tree predictors for binary classication is that they c
 
 ![[tree_classifier_example.png]]
 
-$$(outlook = sunny) \wedge (humidity 70\%) \vee (outlook = overcast) \vee (outlook = rainy) \wedge (windy = false)$$
+$$(outlook = sunny) \wedge (humidity \leq 70\%) \vee (outlook = overcast) \vee (outlook = rainy) \wedge (windy = false)$$
 
 This rule-based representation of the tree classfiier is very intuitive, and lends itself to being manipulated using the tools of propositional logic; for example, to obtain more compact representations of the same classifier. More importantly, this representation provides an interpretable description of the knowledge the learning algorithm extracted from the training set.
-
-----------------------------------------------------------------
-
-zero training error in any prediction problem -> un esempio per rettangolo -> overfitting sicuramente
-
-$U_l S_l = \mathcal{S} \quad \forall \ell , \ell' , \ell \neq \ell' S_{\ell} \wedge S_{\ell'} = \emptyset$
-
-template algorithm:
-start from root
-	repeat
-		pick a leaf and split it
-	until some criterion is met ( i.e. too many nodes, the traning error does not go down, the training error is zero)
 
 ----------------------------------------------------------------
 
@@ -503,28 +493,28 @@ The risk analysis for ERM over a ﬁnite class $\mathcal{H}$ of predictors state
 
 $$\ell_{\mathcal{D}}(\widehat{h}) \leq \underset{h \in \mathcal{H}}{\operatorname{min}}\ell_{\mathcal{D}}(h) + \sqrt{\frac{2}{m} \ln\frac{2 \vert \mathcal{H} \vert}{\delta}} \quad \text{ } \quad (1)$$
 
-We can see what happens when applying this result to the class of predictors computed by binary tree classiﬁers over $\mathcal{X} = {0, 1}^d$ (i.e., d binary attributes). We consider **complete [[Albero Binario|binary trees]]**: trees whose node have either zero or two children. A full binary tree is a complete binary tree whose leaves (nodes with zero children) are all at the same depth. A complete binary tree with $N$ nodes has always $(N + 1)/2$ leaves.
+We can see what happens when applying this result to the class of predictors computed by binary tree classiﬁers over $\mathcal{X} = \{0, 1\}^d$ (i.e., $d \geq 2$ binary attributes). We consider **complete [[Albero Binario|binary trees]]**: trees whose node have either zero or two children. A full binary tree is a complete binary tree whose leaves (nodes with zero children) are all at the same depth. A complete binary tree with $N$ nodes has always $(N + 1)/2$ leaves.
 
 **Fact $1$**: for each function of the form $h : \{0, 1\}^d \to \{-1, 1\}$ there exists a binary tree classiﬁer with at most $2^{d+1}-1$ nodes that computes $h$.
 
 To proof this assumption, consider a full binary tree with $2^d$ leaves (which therefore has $2^{d+1}-1$ nodes). The root node implements a binary test on $x_1$, the $2$ nodes at depth $1$ implement binary tests on $x_2$, and so on until the $2^{d−1}$ nodes at depth $d-1$ which test $x_d$. Now note that any path from root to a leaf corresponds to a binary sequence in $\{0, 1\}^d$ . Given any $h : \{0, 1\}^d \to \{-1, 1\}$, we can assign a label $y_\ell \in \{−1, 1\}$ to each leaf $\ell$ so that if the path to the leaf corresponds to $x \in \{0, 1\}$ , then the label is set to $h(x)$. The classiﬁer computed by the tree then corresponds to $h$.
 
-Since there are $2^{2^d}$ binary functions over $\{0, 1\}$, it is possible to run ERM with a class $\mathcal{H}$ containing $2^{2^d}$ tree classiﬁers. The upper bound $(1)$ then becomes
+Since there are $2^{2^d}$ binary functions over $\{0, 1\}^d$, it is possible to run ERM with a class $\mathcal{H}$ containing $2^{2^d}$ tree classiﬁers. The upper bound $(1)$ then becomes
 
 $$\ell_{\mathcal{D}}(\widehat{h}) \leq \underset{h \in \mathcal{H}}{\operatorname{min}}\ell_{\mathcal{D}}(h) + \sqrt{\frac{2}{m}\Big(2^d \ln2 + \ln \frac{2}{\delta}\Big) }$$
 
-Therefore, in order to make the risk of ERM small, the training set must contain a number $m$ of training examples of the order of $2^d$, which is the cardinality of $\mathcal{X}= \{0, 1\}$. This is a truly extreme case of overﬁtting.
+Therefore, in order to make the risk of ERM small, the training set must contain a number $m$ of training examples of the order of $2^d$, which is the cardinality of $\mathcal{X}= \{0, 1\}^d$. This is a truly extreme case of overfitting.
 
 ## Limiting the number of nodes
-In order to reduce overﬁtting, we can minimize training error within a smaller class of trees. Consider the set $\mathcal{H}_N$ of all classiﬁers computed by complete binary tree predictors with $N$ nodes on $\{0, 1\}^d$, where $N \ll 2^d$.
+In order to reduce overﬁtting, we can minimize training error within a smaller class of trees. Consider the set $\mathcal{H}_N$ of all classifiers computed by complete binary tree predictors with $N$ nodes on $\{0, 1\}^d$, where $N \ll 2^d$.
 
 $$\vert \mathcal{H}\vert \leq (2de)^N$$
 
-To proof this assumption,  note that $\vert \mathcal{H}_N \vert$ is smaller than the product of the number of binary trees with $N$ nodes, the number of ways of assigning binary tests to attributes at the internal nodes, the number of ways of assigning binary labels to the leaves. If we conventionally assign the left child of a node to the negative result of a test, and the right child to a positive result, a test is uniquely identiﬁed just by the index of the tested attribute. Therefore, if the tree has $M$ internal nodes, there are $d^M$ ways of assigning tests to internal nodes. Moreover, since there are $N-M$ leaves, there are $2^{N−M}$ ways of assigning binary labels to leaves. Therefore, each tree of $N$ nodes can implement up to $d^M 2^{N-M} \leq d^N$ classiﬁers. Finally, the number of complete binary trees with $N$ nodes ($N$ is odd because the tree is complete) is given by the $\frac{N-1}{2}$-th Catalan number
+To proof this assumption, note that $\vert \mathcal{H}_N \vert$ is smaller than the product of the number of binary trees with $N$ nodes, the number of ways of assigning binary tests to attributes at the internal nodes, the number of ways of assigning binary labels to the leaves. If we conventionally assign the left child of a node to the negative result of a test, and the right child to a positive result, a test is uniquely identified just by the index of the tested attribute. Therefore, if the tree has $M$ internal nodes, there are $d^M$ ways of assigning tests to internal nodes. Moreover, since there are $N-M$ leaves, there are $2^{N−M}$ ways of assigning binary labels to leaves. Therefore, each tree of $N$ nodes can implement up to $d^M 2^{N-M} \leq d^N$ classifiers. Finally, the number of complete binary trees with $N$ nodes ($N$ is odd because the tree is complete) is given by the $\frac{N-1}{2}$-th Catalan number
 
 $$C_{\frac{N-1}{2}} = \frac{2}{N+1}\binom{N -1}{(N-1)/2} $$
 
-Thus, using the standard upper bound $\binom{n}{k} \leq (\frac{en}{k})^k$ derived from **Stirling approximation to binomial coeﬃcients**, we get
+Thus, using the standard upper bound $\binom{n}{k} \leq (\frac{en}{k})^k$ derived from **Stirling approximation to binomial coefficients**, we get
 
 $$\vert \mathcal{H}_N \vert \leq \frac{2}{N +1} \Big(\frac{2e(N -1)}{N-1} \Big)^{\frac{N-1}{2}}d^N < (2ed)^N$$
 
@@ -534,12 +524,14 @@ Hence, if $\widehat{h} = \underset{\mathcal{H}_N}{\operatorname{argmin}}\ell_S(h
 
 $$\ell_{\mathcal{D}}(\widehat{h}) \leq \underset{h \in \mathcal{H}_N}{\operatorname{min}}\ell_{\mathcal{D}}(h) + \sqrt{\frac{2}{m}\Big(N\big(1 + \ln(2d)\big) + \ln \frac{2}{\delta}\Big)}$$
 
-From that, we deduce that in this case a training set of size of order $N \ln d$ is enough to control the risk of $\widehat{h} \in H_N$.
+From that, we deduce that in this case a training set of size of order $N \ln d$ is enough to control the risk of $\widehat{h} \in \mathcal{H}_N$.
 
 ----------------------------------------------------------------
 
-## A more reﬁned bound
-As it is not clear what $N$ should be used in practice, we now derive a more reﬁned bound. Recall that we control the variance error of ERM in $H_N$ by making sure that the risk of each predictor in $H_N$ can exceed its training error by at most $\varepsilon$. We now take a diﬀerent approach. Namely, we upper bound the risk of a tree predictor h by its training error plus a quantity $\varepsilon_h$ that now depends on the size of the tree. To this purpose, let $H$ be the set of all tree classiﬁers with at most $2^{d+1}-1$ nodes. Because of Fact $1$, $\mathcal{H}$ implements all binary classiﬁers $h: \{0,1\}^d \to \{-1, 1\}$. We introduce a function $w : \mathcal{H} \to [0, 1]$ and call $w(h)$ the weight of tree predictor $h$. We assume
+## A more refined bound
+As it is not clear what $N$ should be used in practice, we now derive a more refined bound. Recall that we control the variance error of ERM in $H_N$ by making sure that the risk of each predictor in $H_N$ can exceed its training error by at most $\varepsilon$. We now take a diﬀerent approach. Namely, we upper bound the risk of a tree predictor h by its training error plus a quantity $\varepsilon_h$ that now depends on the size of the tree. To this purpose, let $H$ be the set of all tree classifiers with at most $2^{d+1}-1$ nodes. Because of Fact $1$, $\mathcal{H}$ implements all binary classifiers $h: \{0,1\}^d \to \{-1, 1\}$.
+
+We introduce a function $w : \mathcal{H} \to [0, 1]$ and call $w(h)$ the weight of tree predictor $h$. We assume
 
 $$\sum_{h in \mathcal{H}}w(h) \leq 1 \quad \text{ } \quad (2)$$
 
@@ -555,7 +547,7 @@ we get that
 
 $$\mathbb{P}\big(\exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \varepsilon_h \big) \leq \sum_{h \in \mathcal{H}}\delta w(h) \leq \delta$$
 
-where we used the property $(2)$ of the function w.
+where we used the property $(2)$ of the function $w$.
 
 A consequence of this analysis is that, with probabilty at least $1 − \delta$ with respect to the training set random draw, we have
 
@@ -565,25 +557,25 @@ simultaneously for every $h \in \mathcal{H}$. This suggests an alternative algor
 
 $$\widehat{h} = \underset{h \in \mathcal{H}_N}{\operatorname{argmin}}\ell_S(h)$$
 
-for a given $N$, the new approach leads to the choice
+for a given $N$, the new approach (which is sometimes called **Structural Risk Minimization**) leads to the choice
 
-$$\widehat{h} = \underset{h \in \mathcal{H}_N}{\operatorname{argmin}}\Bigg( \ell_S(h)+ \sqrt{\frac{1}{2m}\Big(\ln\frac{1}{w(h)} + \ln\frac{2}{\delta}\Big)} \Bigg) \quad \text{ } (4)$$
+$$\widehat{h} = \underset{h \in \mathcal{H}}{\operatorname{argmin}}\Bigg( \ell_S(h)+ \sqrt{\frac{1}{2m}\Big(\ln\frac{1}{w(h)} + \ln\frac{2}{\delta}\Big)} \Bigg) \quad \text{ } (4)$$
 
-The function $w$ can be naturally viewed as a complexity measure for the tree predictor $h$. Note that this analysis oﬀers a diﬀerent viewpoint on overﬁtting: $\ell_S(h)$ becomes a good estimate of $\ell_{\mathcal{D}}(h)$ when it is “penalized” by the term
+The function $w$ can be naturally viewed as a complexity measure for the tree predictor $h$. Note that this analysis oﬀers a diﬀerent viewpoint on overfitting: $\ell_S(h)$ becomes a good estimate of $\ell_{\mathcal{D}}(h)$ when it is “penalized” by the term
 
 $$\sqrt{\frac{1}{2m}\Big(\ln\frac{1}{w(h)} + \ln\frac{2}{\delta}\Big)}$$
 
 this accounts for the fact that we used the $m$ training examples to choose a tree predictor $h$ of complexity $w(h)$.
 
-A concrete choice for the function $w$ is obtained as follows. Using coding theoretic techniques, we can encode each tree predictor $h$ with $N_h$ nodes using a binary string $\sigma(h)$ of length $\vert \sigma (h) \vert = (N_h +1 ) \lceil \log_2(d+3) \rceil + 2 \lfloor \log_2 N_h \rfloor + 1 = \mathcal{O}(N_h \log d)$, so that there are no two predictors $h$ and $h'$ such that $\sigma(h)$ is a preﬁx of $\sigma(h')$. Codes of this kind are called **instantaneous** and always satisfy the Kraft inequality
+A concrete choice for the function $w$ is obtained as follows. Using coding theoretic techniques, we can encode each tree predictor $h$ with $N_h$ nodes using a binary string $\sigma(h)$ of length $\vert \sigma (h) \vert = (N_h +1 ) \lceil \log_2(d+3) \rceil + 2 \lfloor \log_2 N_h \rfloor + 1 = \mathcal{O}(N_h \log d)$, so that there are no two predictors $h$ and $h'$ such that $\sigma(h)$ is a prefix of $\sigma(h')$. Codes of this kind are called **instantaneous** and always satisfy the Kraft inequality
 
 $$\sum_{h \in \mathcal{H}}2^{- \vert \sigma(h) \vert} \leq 1$$
 
-Thanks to Kraft inequality (which implies property $(2)$) we can assign weight $w(h) = 2^{−\vert \sigma(h)\vert}$ to a classiﬁer $h$ computed by a tree predictor with $N_h$ nodes. Applying bound $(3)$ we get that, with probability at least $1 − \delta$ with respect to the training set random draw,
+Thanks to Kraft inequality (which implies property $(2)$) we can assign weight $w(h) = 2^{−\vert \sigma(h)\vert}$ to a classifier $h$ computed by a tree predictor with $N_h$ nodes. Applying bound $(3)$ we get that, with probability at least $1 − \delta$ with respect to the training set random draw,
 
-$$\ell_{\mathcal{D}}(h) \leq \ell_S(h)+ \sqrt{\frac{1}{2m}\Big(\vert \sigma(h) \vert + \ln\frac{2}{\delta}\Big)} \quad (\text{with }\vert \sigma(h) \vert = \mathcal{O}(N_h\log d)) $$
+$$\ell_{\mathcal{D}}(h) \leq \ell_S(h)+ \sqrt{\frac{1}{2m}\Big(\vert \sigma(h) \vert + \ln\frac{2}{\delta}\Big)} \quad \text{ } \quad (\text{with }\vert \sigma(h) \vert = \mathcal{O}(N_h\log d)) $$
 
-simultaneously for each $h \in \mathcal{H}$. Hence, a learning algorithm for tree predictors can control overﬁtting by generating predictors $\widehat{h}$ deﬁned by
+simultaneously for each $h \in \mathcal{H}$. Hence, a learning algorithm for tree predictors can control overfitting by generating predictors $\widehat{h}$ defined by
 
 $$\widehat{h} = \underset{h \in \mathcal{H}}{\operatorname{argmin}}\Bigg(\ell_S(h)+ \sqrt{\frac{1}{2m}\Big(\vert \sigma(h) \vert + \ln\frac{2}{\delta}\Big)}\Bigg)$$
 
@@ -592,12 +584,12 @@ Note that the choice of the weight function $w$ is not determined by the analysi
 ----------------------------------------------------------------
 
 # Hyperparameter tuning and risk estimates
-In practice, learning algorithms are often speciﬁed up to one or more hyperparameters. These are special parameters (like $k$ in $k-NN$ or the learning rate, the number of epochs, and the batch size in neural networks) whose value must be determined before the training phase can start. Crucially, setting the hyperparameters in the wrong way can lead to underfitting or overfitting.
+In practice, learning algorithms are often specified up to one or more hyperparameters. These are special parameters (like $k$ in $k-NN$ or the learning rate, the number of epochs, and the batch size in neural networks) whose value must be determined before the training phase can start. Crucially, setting the hyperparameters in the wrong way can lead to underfitting or overfitting.
 
-A learning algorithm with one or more hyperparameters is not really an algorithm, but rather a family of algorithms, one for each possible assignment of values to the hyperparameters. Let $\{A_\theta : \theta \in \Theta\}$ be such a family of learning algorithms, where $\theta$ is a vector of hyperparameters and $\Theta$ is the set of all possible hyperparameter values. Fix a learning problem $(\mathcal{D}, \ell)$ and let $A_\theta(S) = h$ be the predictor output when $A_\theta$ is run on the training set $S$. Let $\ell_{\mathcal{D}}(A_\theta(S))$ be the risk of the predictor $A_\theta(S)$, and let $E\big[\ell_{\mathcal{D}}(A_\theta)\big]$ be the expected risk of $A_\theta(S)$ where the expectation is with respect to the random draw of the training set $S$ of a given ﬁxed size. Intuitively, $E\big[\ell_{\mathcal{D}}(A_\theta)\big]$ measures the performance of $A_\theta$ on a typical training set of that size.
+A learning algorithm with one or more hyperparameters is not really an algorithm, but rather a family of algorithms, one for each possible assignment of values to the hyperparameters. Let $\{A_\theta : \theta \in \Theta\}$ be such a family of learning algorithms, where $\theta$ is a vector of hyperparameters and $\Theta$ is the set of all possible hyperparameter values. Fix a learning problem $(\mathcal{D}, \ell)$ and let $A_\theta(S) = h$ be the predictor output when $A_\theta$ is run on the training set $S$. Let $\ell_{\mathcal{D}}(A_\theta(S))$ be the risk of the predictor $A_\theta(S)$, and let $E\big[\ell_{\mathcal{D}}(A_\theta)\big]$ be the expected risk of $A_\theta(S)$ where the expectation is with respect to the random draw of the training set $S$ of a given fixed size. Intuitively, $E\big[\ell_{\mathcal{D}}(A_\theta)\big]$ measures the performance of $A_\theta$ on a typical training set of that size.
 
 ## Evaluating a learning algorithm using external cross-validation
-Assume for now the hyperparameter $\theta$ is ﬁxed and focus on the problem of estimating $E\big[\ell_{\mathcal{D}}(A)\big]$. To do so we can use a technique called $K$-fold (external) **cross-validation**.
+Assume for now the hyperparameter $\theta$ is fixed and focus on the problem of estimating $E\big[\ell_{\mathcal{D}}(A)\big]$. To do so we can use a technique called $K$-fold (external) **cross-validation**.
 
 Let $S$ be our entire dataset. We partition $S$ in $K$ subsets (also known as **folds**) $S_1, ..., S_K$ of size $m/K$ each (assume for simplicity that $K$ divides $m$). The extreme case $K = m$ provides an estimate known as **leave-one-out**. Now let $S_{-i} \equiv S \setminus S_i$. We call $S_i$ the **testing part** of the $i$-th fold while $S_{-i}$ is the **training part**.
 
@@ -619,7 +611,7 @@ $$\ell_{S}^{CV}(A) = \frac{1}{K} \sum_{i = 1}^{K} \ell_{S_i}(h_i)$$
 ----------------------------------------------------------------
 
 ## Tuning hyperparameters on a given training set
-In practice, we face the problem of choosing the hyperparameters so to obtain a predictor with small risk. This is typically done by minimizing a risk estimate computed using the training data. As $\Theta$ may be very large, possibly inﬁnite, the minimization is generally not over $\Theta$, but over a suitably chosen subset $\Theta_0 \subset \Theta$ (for example, if $\Theta = [0, 1]$, then $\Theta_0$ could by a ﬁnite grid of equally spaced values in $[0, 1]$). If $S$ is our training set, then we want to ﬁnd $\theta^* \in \Theta$ such that
+In practice, we face the problem of choosing the hyperparameters so to obtain a predictor with small risk. This is typically done by minimizing a risk estimate computed using the training data. As $\Theta$ may be very large, possibly infinite, the minimization is generally not over $\Theta$, but over a suitably chosen subset $\Theta_0 \subset \Theta$ (for example, if $\Theta = [0, 1]$, then $\Theta_0$ could by a finite grid of equally spaced values in $[0, 1]$). If $S$ is our training set, then we want to find $\theta^* \in \Theta$ such that
 
 $$\theta^* = \underset{\theta \in \Theta_0}{\operatorname{argmin}}\ell_{D}\Big(A_{\theta}(S)\Big)$$
 
@@ -627,12 +619,12 @@ That is
 
 $$\ell_{D}\Big( A_{\theta^*}(S)\Big) = \underset{\theta \in \Theta_0}{\operatorname{min}}\ell_{D}\Big(A_{\theta}(S)\Big)$$
 
-The estimate is computed by splitting the training data in two subsets $S_{train}$ and $S_{dev}$. The development set $S_{dev}$ (also called **validation set**) is used as a surrogate test set. The algorithm is run on $S_{train}$ once for each value of the hyperparameter in $\Theta_0$. The resulting predictors are tested on the dev set. In order to obtain the ﬁnal predictor, the learning algorithm is run once more on the original training set $S$ using the value of the hyperparameter corresponding to the predictor with smallest error on the validation set. That will provide an estimate of $\ell_{\mathcal{D}}\big(A_{\theta^*}(S)\big)$.
+The estimate is computed by splitting the training data in two subsets $S_{train}$ and $S_{dev}$. The development set $S_{dev}$ (also called **validation set**) is used as a surrogate test set. The algorithm is run on $S_{train}$ once for each value of the hyperparameter in $\Theta_0$. The resulting predictors are tested on the dev set. In order to obtain the final predictor, the learning algorithm is run once more on the original training set $S$ using the value of the hyperparameter corresponding to the predictor with smallest error on the validation set. That will provide an estimate of $\ell_{\mathcal{D}}\big(A_{\theta^*}(S)\big)$.
 
 ----------------------------------------------------------------
 
 ## Tuning parameters via nested cross-validation
-What if we want to estimate the expected value of $(1)$ with respect to the random draw of the training set of ﬁxed size?
+What if we want to estimate the expected value of $(1)$ with respect to the random draw of the training set of fixed size?
 
 $$\mathbb{E}\Big[\text{ }\underset{\theta \in \Theta_0}{\operatorname{min}} \text{ } \ell_{\mathcal{D}}\big(A_\theta\big)\Big] \quad \text{ } (2)$$
 
@@ -668,7 +660,7 @@ Recall that $A(S_m)$ is the predictor generated by a learning algorithm $A$ on a
 
 $$\underset{m \to \infty}{\operatorname{lim}}\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big] = \ell_{\mathcal{D}}(f^*)$$
 
-where the expectation is with respect to the random draw of the training set $S_m$ of size $m$ from the distribution $\mathcal{D}$, and $\ell_{\mathcal{D}}(f^*)$ is the Bayes risk for $(\mathcal{D}, \ell)$. In some cases, we may deﬁne consistency with respect to a restricted class of distributions $\mathcal{D}$. For example, in binary classiﬁcation we may restrict to all distributions $\mathcal{D}$ such that $\eta(x) = \mathbb{P}(Y = 1 \vert X = x)$ is a **Lipschitz function** on $\mathcal{X}$. Formally, there exists $0 < c < \infty$ such that
+where the expectation is with respect to the random draw of the training set $S_m$ of size $m$ from the distribution $\mathcal{D}$, and $\ell_{\mathcal{D}}(f^*)$ is the Bayes risk for $(\mathcal{D}, \ell)$. In some cases, we may define consistency with respect to a restricted class of distributions $\mathcal{D}$. For example, in binary classification we may restrict to all distributions $\mathcal{D}$ such that $\eta(x) = \mathbb{P}(Y = 1 \vert X = x)$ is a **Lipschitz function** on $\mathcal{X}$. Formally, there exists $0 < c < \infty$ such that
 
 $$\vert \eta(x) - \eta(x')\vert \leq c \Vert x - x' \Vert \quad \text{ for all } x, x' \in \mathcal{X}$$
 
@@ -683,7 +675,7 @@ $$\underset{m \to \infty}{\operatorname{lim}}\underset{h \in \mathcal{H}_m}{\ope
 Two notable examples of nonparametric learning algorithms are $k-NN$ and the greedy algorithm for decision tree classifiers (i.e., the algorithm that always chooses to split a leaf that maximizes the decrease in training error). Nonparametric algorithms are recognizable because:
 - the size (memory footprint) of their predictors tends to grow with the training set size;
 - for any $m$ and for all $S_m$, $\underset{h \in \mathcal{H}_m}{\operatorname{min}}\ell_{\mathcal{S}}(s)$ is close to zero.
-The standard $k-NN$ algorithm is nonparametric but not known to be consistent for any ﬁxed value of $k$. Indeed, one can only show that
+The standard $k-NN$ algorithm is nonparametric but not known to be consistent for any fixed value of $k$. Indeed, one can only show that
 
 $$\underset{m \to \infty}{\operatorname{lim}}\mathbb{E}\Big[\ell_{\mathcal{D}}(k-NN(S_m))\Big] \leq \ell_{\mathcal{D}}(f^*) + 2 \sqrt{\frac{\ell_{\mathcal{D}}(f^*)}{k}} \quad \text{ } (1)$$
 
@@ -693,7 +685,7 @@ for any data distribution $\mathcal{D}$. However, if we let $k$ be chosen as a f
 
 In the figure, it is possible to observe the typical behavior of expected risk $\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big]$ as a function of training set size for a consistent algorithm (red line) and for a nonconsistent algorithm (blue line). For small training set sizes $m < m^*$, the nonconsistent algorithm has a better performance.
 
-Similarly, the greedy algorithm for building tree classiﬁers is consistent (for $\mathcal{X} \equiv \mathbb{R}^d$ ) whenever the two following conditions are fulﬁlled. Let $\ell(x)$ be the leaf to which $x \in \mathbb{R}^d$ is routed in the current tree and let $N_{\ell}$ be the number of training examples routed to a leaf $\ell$. Then, as $m \to \infty$, to guarantee consistency we must have that
+Similarly, the greedy algorithm for building tree classifiers is consistent (for $\mathcal{X} \equiv \mathbb{R}^d$ ) whenever the two following conditions are fulfilled. Let $\ell(x)$ be the leaf to which $x \in \mathbb{R}^d$ is routed in the current tree and let $N_{\ell}$ be the number of training examples routed to a leaf $\ell$. Then, as $m \to \infty$, to guarantee consistency we must have that
 - diameter $\Big(\{x' \in \mathbb{R}^d : \ell(X) = \ell(x')\}\Big) \to 0$;
 - $N_{\ell(X)} \to \infty$.
 
@@ -704,33 +696,33 @@ In practice, a consistent algorithm may not be preferred over a nonconsistent on
 ----------------------------------------------------------------
 
 ## Theorem of No Free Lunch
-For any sequence $a_1 , a_2 , . . .$ of positive numbers converging to zero and such that $\frac{1}{16}≥ a_1 ≥ a_2 ≥ · · ·$ and for any consistent learning algorithm $A$ for binary classiﬁcation with zero-one loss, there exists a data distribution $\mathcal{D}$ such that $\ell_{\mathcal{D}}(f^*) = 0$ and $\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big] \geq a_m \quad \forall m \geq 1$.
+For any sequence $a_1 , a_2 , . . .$ of positive numbers converging to zero and such that $\frac{1}{16}≥ a_1 ≥ a_2 ≥ · · ·$ and for any consistent learning algorithm $A$ for binary classification with zero-one loss, there exists a data distribution $\mathcal{D}$ such that $\ell_{\mathcal{D}}(f^*) = 0$ and $\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big] \geq a_m \quad \forall m \geq 1$.
 
 Theorem of No Free Lunch does not prevent a consistent algorithm from converging fast to the Bayes risk for specific distributions $\mathcal{D}$. What the theorem shows is that if $A$ converges to the Bayes risk for any data distribution, then it will converge arbitrarily slow for some of these distributions.
 
-For binary classiﬁcation, we can summarize the situation as follows:
+For binary classification, we can summarize the situation as follows:
 - under Lipschitz assumptions on $\eta$, the typical convergence rate to Bayes risk is $m^{−1/(d+1)}$ (exponentially slow in $d$);
 - under no assumption on $\eta$, there is no guaranteed convergence rate to Bayes risk;
-- under no assumptions on $\eta$, the typical convergence rate to the risk of the best predictor in a parametric (or ﬁnite) class $\mathcal{H}$ is $m^{−1/2}$, exponentially better than the nonparametric rate.
+- under no assumptions on $\eta$, the typical convergence rate to the risk of the best predictor in a parametric (or finite) class $\mathcal{H}$ is $m^{−1/2}$, exponentially better than the nonparametric rate.
 
 Note that the convergence rate $m^{-1/(d+1)}$ implies that to get $\varepsilon$-close to Bayes risk, we need a traning set size $m$ of order $\varepsilon^{-(d+1)}$. This exponential dependence on the number of features of the training set size is known as **curse of dimensionality** and refers to the difficulty of learning in a nonparametric setting when datapoints live in a high-dimensional space.
 
 ----------------------------------------------------------------
 
 # Risk Analysys for Nearest-Neighbor
-We investigate the problem of bounding the zero-one loss risk of the $1-NN$ binary classiﬁer averaged with respect to the random draw of the training set. Under some assumptions on the data distribution $\mathcal{D}$, we prove a bound of the form
+We investigate the problem of bounding the zero-one loss risk of the $1-NN$ binary classifier averaged with respect to the random draw of the training set. Under some assumptions on the data distribution $\mathcal{D}$, we prove a bound of the form
 
 $$\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big] \leq 2 \ell_{\mathcal{D}}(f^*) + \varepsilon_m \quad \text{ } \quad (1)$$
 
 where $A$ denotes the $1-NN$ algorithm, $S_m$ the training set of size $m$, $\ell_{\mathcal{D}}(f^*)$ is the Bayes risk, and $\varepsilon_m$ is a quantity that vanishes for $m \to \infty$. Note that we are able to compare $\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big]$ directly to the Bayes risk, showing that $1-NN$ is, in some sense, a powerful learning algorithm.
 
-Recall that in binary classiﬁcation we denote the joint distribution of $(X, Y)$ with the pair $(\mathcal{D}_X, \eta)$, where $\mathcal{D}_X$ is the marginal of $\mathcal{D}$ on $X$ and $\eta(x) = \mathbb{P}(Y = 1 \vert X = x)$. Fix $m$ and let $S = (x_1, y_1), ..., (x_m, y_m)$ be a training set of size $m$. We deﬁne the map $\pi(S, \cdot) : \mathbb{R}^d \to \{1, ..., m\}$ by
+Recall that in binary classification we denote the joint distribution of $(X, Y)$ with the pair $(\mathcal{D}_X, \eta)$, where $\mathcal{D}_X$ is the marginal of $\mathcal{D}$ on $X$ and $\eta(x) = \mathbb{P}(Y = 1 \vert X = x)$. Fix $m$ and let $S = (x_1, y_1), ..., (x_m, y_m)$ be a training set of size $m$. We define the map $\pi(S, \cdot) : \mathbb{R}^d \to \{1, ..., m\}$ by
 
 $$\pi(S, x) = \underset{t = 1, ..., m}{\operatorname{argmin}}\Vert x - x_t \Vert$$
 
-If there is more than one point $x_t$ achieving the minimum in the above expression, then $\pi(S, x)$ selects one of them using any deterministic tie-breaking rule; our analysis does not depend on the speciﬁc rule being used. The $1-NN$ classiﬁer $h_S = A(S)$ is deﬁned by $h_S(x) = y_{\pi(S, x)}$.
+If there is more than one point $x_t$ achieving the minimum in the above expression, then $\pi(S, x)$ selects one of them using any deterministic tie-breaking rule; our analysis does not depend on the specific rule being used. The $1-NN$ classifier $h_S = A(S)$ is defined by $h_S(x) = y_{\pi(S, x)}$.
 
-From now on, the training set $S$ is a sample $(X_1, Y_1), ..., (X_m, Y_m)$ drawn i.i.d. from $\mathcal{D}$. The expected risk is deﬁned by 
+From now on, the training set $S$ is a sample $(X_1, Y_1), ..., (X_m, Y_m)$ drawn i.i.d. from $\mathcal{D}$. The expected risk is defined by 
 
 $$\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S))\Big] = \mathbb{P}\Big(Y_{\pi(S, X)} \neq Y\Big)$$
 
@@ -739,7 +731,7 @@ where probabilities and expectations are understood with respect to the random d
 We now state a crucial lemma.
 
 ## Lemma 1
-The expected risk of the $1-NN$ classiﬁer can be written as follows
+The expected risk of the $1-NN$ classifier can be written as follows
 
 $$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big] = \mathbb{E}\Big[\eta(X_{\pi(S, X)})(1- \eta(X))\Big] + \mathbb{E}\Big[\big(1 - \eta(X_{\pi(S, X)})\big)\eta(X)\Big]$$
 
@@ -800,7 +792,7 @@ The concave function $g(p) = e^{−pm}p$ is maximized for $p = \frac{1}{m}$. The
 
 $$\mathbb{E}\Big[\Vert X - X_{\pi_{S}(X)} \Vert\Big] \leq \varepsilon \sqrt{d} + (2 \sqrt{d}) \frac{r}{em} = \sqrt{d}\Big(\varepsilon + \frac{2}{em} \Big(\frac{2}{\varepsilon}\Big)^d\Big)$$
 
-where we used the fact that the number $r$ of hypercubes is equal to $(\frac{2}{\varepsilon})^d$. Putting evertything together we ﬁnd that
+where we used the fact that the number $r$ of hypercubes is equal to $(\frac{2}{\varepsilon})^d$. Putting evertything together we find that
 
 $$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big] \leq 2 \ell_{\mathcal{D}}(f^*) + c \sqrt{d}\Big(\varepsilon + \frac{2}{em} \big(\frac{2}{\varepsilon}\big)^d\Big)$$
 
@@ -808,7 +800,7 @@ Since this holds for all $0 < \varepsilon < 1$, we can set $\varepsilon = 2 m^{�
 
 $$\varepsilon + \frac{2}{em} \Big(\frac{2}{\varepsilon}\Big)^d = 2m^{-1/(d+1)} + \frac{2^{d+1}2^{-d}m ^{d/(d+1)}}{em} = 2m^{-1/(d+1)} \Big(1 + \frac{1}{e}\Big) \leq 4m^{-1/(d+1)} \quad \text{ } (4)$$
 
-Substituting this bound in $(4)$, we ﬁnally obtain
+Substituting this bound in $(4)$, we finally obtain
 
 $$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big]t \leq 2 \ell_{\mathcal{D}}(f^*) + c4m^{-1/(d+1)}\sqrt{d}$$
 
