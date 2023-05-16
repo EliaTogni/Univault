@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "404d51af1d450b7d",
+            "id": "cf197cc6ac7eb7e1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Statistical Methods for Machine Learning.md",
+                "file": "Highlights for NEMO, cancer subtyping by integration ofpartial multi-omic data.md",
                 "mode": "source",
                 "source": false
               }
@@ -56,6 +56,14 @@
                 "sortOrder": "alphabetical"
               }
             }
+          },
+          {
+            "id": "3d1fe9d32e28e577",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
           }
         ]
       }
@@ -77,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Statistical Methods for Machine Learning.md",
+                "file": "Highlights for NEMO, cancer subtyping by integration ofpartial multi-omic data.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -106,9 +114,12 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "404d51af1d450b7d",
+  "active": "cf197cc6ac7eb7e1",
   "lastOpenFiles": [
+    "art_4.pdf",
+    "Highlights for NEMO, cancer subtyping by integration ofpartial multi-omic data.md",
     "Bioinformatica.md",
+    "Statistical Methods for Machine Learning.md",
     "Images/find largest r - Cerca con Google_files/app.html",
     "Images/find largest r - Cerca con Google_files/RotateCookiesPage.html",
     "Images/find largest r - Cerca con Google_files/a.html",
@@ -118,7 +129,6 @@
     "Images/find largest r - Cerca con Google_files/m=CW5FZe,Da4hkd,Eox39d,FmAr0c,HYSCof,K6HGfd,MpJwZc,RagDlc,aD8OEe",
     "Images/find largest r - Cerca con Google_files/m=sys7,rFNHyc",
     "Images/find largest r - Cerca con Google_files/iframe_api",
-    "Images/find largest r - Cerca con Google_files/a_data/embed.js",
     "Images/find largest r - Cerca con Google_files/unnamed_002.jpg",
     "Images/find largest r - Cerca con Google_files/unnamed.jpg",
     "Images/find largest r - Cerca con Google_files/device_default_thumbnail2.png",
@@ -129,7 +139,6 @@
     "Images/find largest r - Cerca con Google_files/192px.svg",
     "Images/find largest r - Cerca con Google_files/mqdefault.jpg",
     "Highlights for Primer Molecular Biology.md",
-    "Statistical Methods for Machine Learning.md",
     "Aspose.Words.0285eff5-79e7-478f-aa71-0051b38e8e41.002.png.md",
     "Images/genome.png",
     "Programmazione Dinamica.md",
@@ -152,7 +161,6 @@
     "Albero 2-3.md",
     "Albero.md",
     "3D Video Games.md",
-    "facts2.png.md",
     "Untitled.canvas"
   ]
 }
