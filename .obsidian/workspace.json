@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Highlights for NEMO, cancer subtyping by integration ofpartial multi-omic data.md",
+                "file": "Statistical Methods for Machine Learning.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Highlights for NEMO, cancer subtyping by integration ofpartial multi-omic data.md",
+                "file": "Statistical Methods for Machine Learning.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,8 +116,8 @@
   },
   "active": "cf197cc6ac7eb7e1",
   "lastOpenFiles": [
-    "art_4.pdf",
     "Highlights for NEMO, cancer subtyping by integration ofpartial multi-omic data.md",
+    "art_4.pdf",
     "Bioinformatica.md",
     "Statistical Methods for Machine Learning.md",
     "Images/find largest r - Cerca con Google_files/app.html",
