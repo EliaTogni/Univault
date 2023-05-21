@@ -1083,250 +1083,85 @@ Substituting this value for $G$ in the previous upper bound we get
 
 
 
-OGD with strongly convex losses. The upper bound (7) holds for any sequence ℓ ,ℓ ,... of convex and differentiable loss functions, including linear functions such as ℓ (w) = y −1w⊤2x  for
+----------------------------------------------------------------
 
-t t t
+## OGD with strongly convex losses
+The upper bound $(7)$ holds for any sequence $\ell_1, \ell_2, ...$ of convex and differentiable loss functions, including linear functions such as $\ell_t(w) = \vert y_t −w^{\top}x_t \vert$ for $x_t \in \mathbb{R}^d$ and $y_t \in \mathbb{R}$. It can be shown that $(7)$ can not be significantly improved if the loss functions are all linear. But what if all loss functions are convex and never flat? To formalize this scenario, we use the notion of strong convexity. A differentiable function $\ell$ is $\sigma$-strongly convex, for some $\sigma > 0$, if
 
-d
+$$\ell(w) − \ell(u) \leq \nabla \ell(w)^{\top}(w − u) − \frac{\sigma}{2}\Vert u − w \Vert^2 \quad \text{ } \quad (8)$$
 
-xt ∈R and yt ∈R. It can be shown that (7) can not be significantly improved if the loss functions
+If $\ell$ is also twice-differentiable, then $(8)$ is equivalent to saying that the Hessian matrix of $\ell$ has full rank, that is, all of its eigenvalues are positive. A simple example of strongly convex function is $\ell(w) = \frac{1}{2} \Vert w \Vert^2$. Indeed,
 
-are all linear. But what if all loss functions are convex and never flat? To formalize this scenario,
 
-we use the notion of strong convexity. A differentiable function ℓ is σ-strongly convex, for some
 
-σ > 0, if
+Hence, this function is strongly convex for $\sigma = 1$.
 
-σ
-
-ℓ(w) − ℓ(u) ≤ ∇ℓ(w)⊤(w − u) − ∥u − w∥2 . (8)
-
-2
-
-If ℓ is also twice-differentiable, then (8) is equivalent to saying that the Hessian matrix of ℓ has full rank, that is, all of its eigenvalues are positive. A simple example of strongly convex function is
-
-ℓ(w) = 1 ∥w∥2. Indeed,
-
-2
-
-1  2 1 2 ⊤ 1 2 ∥w∥ − ∥u∥ = w (w − u) − ∥w − u∥ 2 2 2
-
-Hence, this function is strongly convex for σ = 1.
-
-As we see later, OGD with strongly convex functions can be applied to a vast and important class of learning algorithms, including Support Vector Machines, corresponding to regularized forms of ERM.
+As we see later, OGD with strongly convex functions can be applied to a vast and important class of learning algorithms, including **Support Vector Machines**, corresponding to regularized forms of ERM.
 
 When run on a sequence of strongly convex function, OGD does not need the projection step.
 
-The OGD algorithm for σ-strongly convex functions![](Aspose.Words.be2eedc9-7d64-4df8-8460-0bf98398b84c.017.png)
+----------------------------------------------------------------
 
-Initialization: w1 = 0
+## The OGD algorithm for σ-strongly convex functions
+Initialization: $w_1 = 0$
+For $t = 1, 2, ...$
+1) $w_{t+1} = w_t − \frac{1}{\sigma t} \nabla \ell_t(w_t)$
 
-For t = 1,2,...
+In order to prove a regret bound, we apply $(4)$ to the analysis of OGD under the assumption that $\ell_1, \ell_2, ...$ are all $\sigma$-strongly convex functions. Setting $\eta_t = \frac{1}{\sigma_t}$ we get
 
-1\. wt+1 = wt − 1 ∇ℓt(wt) σt
 
-In order to prove a regret bound, we apply (4) to the analysis of OGD under the assumption that
 
-1
+Proceeding just like we did in the proof of OGD with projection, while exploiting the additional terms $−\frac{\sigma}{2} \Vert u − w_t\Vert^2$, we obtain
 
-ℓ1,ℓ2,... are all σ-strongly convex functions. Setting ηt = σt we get
 
-⊤ σ 2
 
-ℓt(wt) − ℓt(u) ≤ ∇ℓt(wt) (wt − u) − 2 ∥u − wt∥
+where, similarly to before, $G \geq max_t \Vert \nabla \ell_t(w_t)\Vert$.
 
-- − 1 (wt+1 − wt)⊤(wt − u) − σ ∥u − wt∥2
+Dropping the negative term $−\frac{1}{2\eta_T} \Vert w_{T+1} − u \Vert^2$, simplifying the term $\frac{1}{2\eta_{T+1}} \Vert w_{T+1} − u \Vert^2$ which occurs with opposite signs, using the choice $\eta_t = \frac{1}{\sigma_t}$ , and making some further cancellations leads us to
 
-η 2
+$$R_T(u) \leq \frac{G^2}{2\sigma} \sum_{t = 1}^{T} \frac{1}{t} \leq \frac{G^2}{2\sigma}\ln{(T + 1)}$$
 
-- 1 t 1 ∥wt − u∥2 − 12 ∥wt+1 − u∥2 + 1 ∥wt+1 − wt∥2 − σ ∥u − wt∥2 . ηt 2 2 2
-
-Proceeding just like we did in the proof of OGD with projection, while exploiting the additional terms − σ ∥u − wt∥2, we obtain
-
-2
-
-RT(u) ≤ 1 − σ 1 ∥w1 − u∥2 − 2η1~~ ∥wT+1 − u∥2
-
-η1 2 T+1
-
-1 T−1 1 1 1 1 G2 T
-
-+ ∥wt+1 − u∥2 − − σ + ∥wT+1 − u∥2 1 − + ηt
-
-2 t=1 ηt+1 ηt 2 ηT+1 ηT 2 t=1 where, similarly to before, G ≥ maxt ∥∇ℓt(wt)∥.
-
-2 2 occurs with opposite signs, using Tthe∥wchoice ηt = 1 , and making some further1 cancellations leads
-
-Dropping the negative term − 2η1 T+1 − u∥, simplifying the term 2η~~ ∥wT+1 − u∥ which
-
-T +1
-
-σt
-
-us to
-
-G2 T 1 G2
-
-R (u) ≤ ≤ ln(T + 1)
-
-T 2σ t 2σ
-
-t=1
-
-where we used a simple logarithmic upper bound to the harmonic sum 1 + 1 + 1 + ···+ 1 .
-
-2  3 T
+where we used a simple logarithmic upper bound to the harmonic sum $1 + \frac{1}{2} + \frac{1}{3} + ···+ \frac{1}{T}$.
 
 This gives the final result
 
-6
+$$\frac{1}{T}\sum_{t = 1}^{T}\ell_t(w_t) \leq \underset{u \in \mathbb{R}^d}{\operatorname{min}} \frac{1}{T} \sum_{t = 1}{T} \ell_t(u) + \frac{G^2}{2\sigma}\frac{\ln{(T + 1)}}{T}$$
 
-1 T T
+Note the improved dependence $\frac{\ln{T}}{T}$ compared to $\frac{1}{\sqrt{T}}$ obtained in $(7)$ for convex (as opposed to strongly convex) loss functions.
 
-t=1
+----------------------------------------------------------------
 
-Note the improved dependence strongly convex) loss functions.
+## A mistake bound for the Perceptron algorithm
+We now prove an upper bound on the number of prediction mistakes made by the Perceptron on an arbitrary stream. Because the zero- one loss is not convex, we cannot directly apply the machinery developed for OGD. Instead, we adapt the proof of the Perceptron convergence theorem and use a convex upper bound on the zero-one loss to compensate for the lack of convexity.
 
-1 T G2 ln(T + 1)
+Let $(x_1 , y_1),(x_2, y_2), ... \in \mathbb{R}^d \times \{−1,1\}$ be a stream of data points with binary labels and let $M$ be the number of prediction mistakes made by the Perceptron in the first $T$ examples of the stream. Let $w_M$ be the Perceptron hyperplane after these $M$ prediction mistakes and let $t_M \in \{1, ..., T\}$ be the index of the example $(x_{t_M}, y_{t_M})$ in the stream that caused the $M$-th mistake $w_M = w_{M −1}+y_{t_M}x_{t_M}$. Now fix any $u \in \mathbb{R}^d$. This $u$ is not necessarily a separator, because we are not making any assumption on the stream. The first part of the proof of the Perceptron convergence theorem does not use any special property of $u$. Therefore, proceeding in exactly the same way, we have that
 
-ℓt(wt) ≤ min ℓ (u) +
+$$\Vert w_M \Vert \Vert u \Vert \leq \Vert u \Vert \Bigg (\underset{t = 1, ..., m}{\operatorname{max}}\Vert x_t \Vert \Bigg) \sqrt{M}$$
 
-u∈Rd T t 2σ T
+In order to prove a lower bound on $\Vert w_M \Vert \Vert u \Vert$ and finish the proof, we proceed as follows
 
-t=1
 
-ln T compared to ~~√~~1 obtained in (7) for convex (as opposed to![](Aspose.Words.be2eedc9-7d64-4df8-8460-0bf98398b84c.018.png)
 
-T T
+where $[z]_+ = \operatorname{max}\{0,z\}$. Iterating $M$ times we get
 
-7
+$$\Vert w_M \Vert \Vert u \Vert \geq M + \sum_{i = 1}{M}[1 + y_{t_i}u^{\top}x_{t_i}]_+$$
 
-[^3]A mistake bound for the Perceptron algorithm. We now prove an upper bound on the number of prediction mistakes made by the Perceptron on an arbitrary stream. Because the zero- one loss is not convex, we cannot directly apply the machinery developed for OGD. Instead, we adapt the proof of the Perceptron convergence theorem and use a convex upper bound on the zero-one loss to compensate for the lack of convexity.
+Where we used $w^{\top}_0 u = 0$ since $w_0 = (0, ..., 0)$. Let $X = \operatorname{max}_t \Vert x_t \Vert$. Combining upper and lower bound we obtain
 
-Let (x ,y1),(x2,y2),... ∈Rd ×{−1,1} be a stream of data points with binary labels and let M be
+$$M \leq \sum_{i = 1}{M}[1 + y_{t_i}u^{\top}x_{t_i}]_+ + \Vert U \Vert X \sqrt{M} \quad \text{ } \quad (9)$$
 
-1
+The function $h_t(u) = [1 + y_t u^{\top}x_t]_+$ is a loss function called **hinge loss**. Since $\mathbb{I}\{sgn(z) = y\} \leq [1− zy]_+$ for all $z \in \mathbb{R}$ and $y \in \{−1,1\}$, the hinge loss is a convex upper bound on the zero-one loss. Because $\{t_1, ..., t_M\} \subseteq \{1, ..., T\}$,
 
-the number of prediction mistakes made by the Perceptron in the first T examples of the stream. Let wM be the Perceptron hyperplane after these M prediction mistakes and let tM ∈ {1,...,T } be the index of the example (xt ,yt ) in the stream that caused the M-th mistake wM = wM −1+ytM xt .
+$$\sum_{i = 1}^{M}h_{t_i}(u) \leq \sum_{tt = 1}^{T}h_t(u)$$
 
-M M M Now fix any u ∈ Rd. This u is not necessarily a separator, because we are not making any
+we can rewrite $(9)$ as
 
-assumption on the stream. The first part of the proof of the Perceptron convergence theorem does
+$$M \leq \sum_{t = 1}^{T}h_t(u) + \Vert u \Vert X \sqrt{M}$$
 
-not use any special property of u. Therefore, proceeding in exactly the same way, we have that
+Solving with respect to $M$ and overapproximating, we get
 
-√ ![](Aspose.Words.be2eedc9-7d64-4df8-8460-0bf98398b84c.019.png)
+$$M \leq \sum_{t = 1}^{T}h_t(u) + \big(\Vert u \Vert X\big)^2 + \Vert u \Vert X \sqrt{\sum_{t = 1}^{T}h_t(u)} \quad \text{ for all } u \in \mathbb{R}^d$$
 
-∥wM ∥∥u∥ ≤ ∥u∥ max ∥x t∥ M .
+This shows a bound on the number of mistakes made by the Perceptron on any data sequence of arbitrary length $T$, including those sequences that are not linearly separable. When the sequence is linearly separable, then there exists $u \in \mathbb{R}^d$ such that $y_t u^{\top}x_t \geq 1$ for all $t$, which in turn implies $h_t(u) = 0$ for all $t$. Hence, the bound reduces to the one already proved in the Perceptron convergence theorem, $M_T \leq \Vert u \Vert X^2$.
 
-t=1,...,m
-
-In order to prove a lower bound on ∥wM ∥∥u∥and finish the proof, we proceed as follows
-
-∥wM ∥∥u∥ ≥ w⊤ u
-
-M
-
-- (wM −1 + yt xt )⊤ u
-
-M M
-
-- w⊤M −1u + yt u⊤xtM
-
-M
-
-- w⊤M −1u + 1 − 1 + yt u⊤xt
-
-M M
-
-≥ wM −1u + 1 − 1 + yt u⊤xt[^4] +
-
-⊤
-
-M
-
-where [z]+ = max{0,z}. Iterating M times we get
-
-M
-
-∥wM ∥∥u∥ ≥ M + 1 + yt u⊤xt
-
-i i +
-
-i=1
-
-Where we used w⊤0 u = 0 since w0 = (0,..., 0). Let X = maxt ∥xt∥. Combining upper and lower bound we obtain
-
-M √ ![](Aspose.Words.be2eedc9-7d64-4df8-8460-0bf98398b84c.020.png)
-
-M ≤ 1 + yt u⊤xt + ∥u∥X M (9)
-
-i i +
-
-i=1
-
-The function h (u) = 1 + y u⊤xt is a loss function called hinge loss. Since I{sgn(z) = y} ≤
-
-t t +
-
-[1− zy]+ for all z ∈ R and y ∈ {−1,1}, the hinge loss is a convex upper bound on the zero-one loss. Because {t1,...,tM } ⊆ {1,...,T },
-
-M T
-
-ht (u) ≤ ht(u)
-
-i
-
-i=1 t=1
-
-Solving with respect to M and overapproximating, we get![](Aspose.Words.be2eedc9-7d64-4df8-8460-0bf98398b84c.021.png)
-
-T T
-
-2
-
-M ≤ ht(u) + ∥u∥X + ∥u∥X ht(u) for all u ∈Rd
-
-t=1 t=1
-
-This shows a bound on the number of mistakes made by the Perceptron on any data sequence of arbitrary length T, including those sequences that are not linearly separable. When the sequence
-
-is linearly separable, then there exists u ∈ Rd such that yt u xt ≥ 1 for all t, which in turn
-
-⊤
-
-implies ht(u) = 0 for all t. Hence, the bound reduces to the one already proved in the Perceptron convergence theorem, M ≤ ∥u∥X 2.
-
-T![](Aspose.Words.be2eedc9-7d64-4df8-8460-0bf98398b84c.022.png)![](Aspose.Words.be2eedc9-7d64-4df8-8460-0bf98398b84c.023.png)
-8
-
-[^1]: step 2, we project w′ in an Euclidean sphere of radius U. If w′  ≤ U, then wt+1 = w′ .
-
-    √ t+1 t+1 t+1
-
-    Let ηt = η t, where η > 0 will be determined by the analysis.
-
-    Our goal is to control the regret
-
-    1 T 1 T 1 T
-[^2]: ℓt(wt) − T t=1 ℓt(u∗T) where u u :∥u∥≤U t=1
-
-    ∗T = argmin T ℓt(u)
-
-    t=1
-
-    Note that u∗ is the predictor in the ball of radius U with smallest average loss over the first T
-
-    T
-
-    steps. In what follows, we use the notation RT(u) = T ℓt(wt) − ℓt(u) . The analysis of OGD
-
-    t=1
-
-    is based on the following well-known result.
-[^3]: we can rewrite (9) as
-
-    T √ 
-[^4]: ≤ ht(u) + ∥u∥X M
-
-    t=1
+----------------------------------------------------------------
