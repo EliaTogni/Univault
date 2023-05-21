@@ -1019,69 +1019,45 @@ For $t = 1, 2, ...$
 1) $w_{t+1}' = w_t − \frac{\eta}{\sqrt{t}} \nabla \ell_t(w_t)$;
 2) $w_{t+1} = \underset{w: \Vert w \Vert \leq U}{\operatorname{argmin}} \Vert w − w_{t+1}′ \Vert$
 
-In step $2$, we project $w_{t+1}'$ in an Euclidean sphere of radius $U$. If
+In step $2$, we project $w_{t+1}'$ in an Euclidean sphere of radius $U$. If $\Vert w_{t+1}' \leq U$, then $w_{t+1} = w_{t+1}'$. Let $\eta_t = \frac{\eta}{\sqrt{t}}$, where $\eta > 0$ will be determined by the analysis.
 
-Lemma 1 (Taylor’s formula for multivariate functions). Let f : Rd → R be a twice differentiable function. Then, for all w,u ∈Rd,
+Our goal is to control the regret
 
-f (u) = f (w) + ∇f (w)⊤(u − w) + 1(u − w)⊤∇2f (ξ)(u − w)
+$$\frac{1}{T}\sum_{t = 1}^{T}\ell_t(w_t) - \frac{1}{T}\sum_{t = 1}^{T}\ell_t(u^*_T) \quad \text{ where } \quad u^*_T = \underset{u:\Vert u \Vert \leq U}{\operatorname{argmin}} \frac{1}{T} \sum_{t = 1}^{T}\ell_t(u)$$
 
-2
+Note that $u^*_T$ is the predictor in the ball of radius $U$ with smallest average loss over the first $T$ steps. In what follows, we use the notation $R_T(u) = \sum_{t = 1}^{T} \Big(\ell_t(w_t) - \ell_t(u) \Big)$. The analysis of OGD is based on the following well-know result. 
 
-where ∇2f (ξ) is the Hessian matrix of f evaluated at a point ξ on the segment joining u and w. If f is convex, then ∇2f is positive semidefinite, and so z⊤∇2f (ξ)z ≥ 0 for all z,ξ ∈Rd. This in
+--------------------------------------------
 
-turn implies
+## Lemma 1 (Taylor’s formula for multivariate functions)
+Let $f : \mathbb{R}^d \to \mathbb{R}$ be a **twice differentiable function**. Then, for all $w,u \in \mathbb{R}^d$,
 
-f (w) − f (u) ≤ ∇f (w)⊤(w − u). (1) This actually holds for any convex and differentiable f (i.e., f need not be twice differentiable).
+$$f (u) = f (w) + \nabla f (w)^{\top}(u − w) + \frac{1}{2}(u − w)^{\top}\nabla^2f(\xi)(u − w)$$
 
-Now fix T, let u = u∗, and note that, for each t = 1,2,... ,
+where $\nabla^2f(\xi)$ is the Hessian matrix of $f$ evaluated at a point $\xi$ on the segment joining $u$ and $w$. If $f$ is convex, then $\nabla^2 f$ is positive semidefinite, and so $z^{\top}\nabla^2f(\xi)z geq 0$ for all $z,\xi \in \mathbb{R}^d$. This in turn implies
 
-T
+$$f(w) − f(u) \leq \nabla f(w)^{\top}(w − u) \quad \text{ } \quad (1)$$
 
-ℓt(wt) − ℓt(u) ≤ ∇ℓt(wt)⊤(wt − u)
+This actually holds for any convex and differentiable $f$ (i.e., $f$ need not be twice differentiable). Now fix $T$, let $u = u_{T}^*$, and note that, for each $t = 1,2,...$,
 
-η1t t − u∥2 − 12 w′t+1 − u 2 + (3)(2)
 
-- −~~ (w′ − wt)⊤(wt − u)
 
-t+1
+Inequality $(2)$ is due to $(1)$. Equality $(3)$ uses $w_{t+1}' − w_t = −\eta t \nabla \ell_t(w_t)$. Equality $(4)$ is an easily verified algebraic identity. Finally, inequality $(5)$ holds because $u$ belong to the sphere of radius $U$ centered at the origin. Hence, by projecting $w_{t+1}'$ onto this sphere, the distance to $u$ can not increase.
 
-- η11t 1 ∥wt 2 ∥wt+1 − u∥2 + 21 w ′t+1 − wt 2 (4) 1 1 w
+We now add and subtract the same term $\frac{1}{2\eta_{t+1}}\Vert w_{t+1} − u \Vert^2$ to the last member of the above chain of inequalities. Then, we regroup terms as indicated below here
 
-2 2
 
-≤ ∥w − u∥2 − 1 ′ − w 2 . (5) ηt 2 t+1 t
 
-Inequality (2) is due to (1). Equality (3) uses w′t+1 − wt = −ηt∇ℓt(wt). Equality (4) is an easily verified algebraic identity. Finally, inequality (5) holds because u belong to the sphere of radius
+Summing over $t = 1, ..., T$ we observe that the first pair of terms forms a telescopic sum, while the terms in the second pair have a common factor,
 
-U centered at the origin. Hence, by projecting w′t+1 onto this sphere, the distance to u can not increase.
 
-We now add and subtract the same term 1 ∥wt+1 − u∥2 to the last member of the above chain
-
-2ηt+1
-
-of inequalities. Then, we regroup terms as indicated below here
-
-1 ∥w − u∥2 − 1 ∥w − u∥2 − 1 ∥w − u∥2 + 1 − u∥2 + 1 w′ 2 . 2η t 2η t+1 2η t+1 2ηt+1 ∥wt+1 2η t+1 − wt
-
-t t+1 t t![](Aspose.Words.be2eedc9-7d64-4df8-8460-0bf98398b84c.004.png)![](Aspose.Words.be2eedc9-7d64-4df8-8460-0bf98398b84c.005.png)![](Aspose.Words.be2eedc9-7d64-4df8-8460-0bf98398b84c.006.png)![](Aspose.Words.be2eedc9-7d64-4df8-8460-0bf98398b84c.007.png)
-
-Summing over t = 1,...,T we observe that the first pair of terms forms a telescopic sum, while the terms in the second pair have a common factor,
-
-1 2 1 2
-
-R (u) ≤ ∥w − u∥ −
-
-T 2η1 1 2ηT+1 ∥wT+1 − u∥
-
-1 T 1 1 1 T 1 2
-
-+ 2 ∥wt+1 − u∥2 ηt+1 − η + 2 η w′t+1 − wt . (6) t=1 t t=1 t
 
 Next, we make use of the following facts:
 
-w1 = 0 by construction
+$$w_1 = 0 \quad \text{ by construction}$$
 
-∥wt+1 − u∥2 ≤ 4U2 since both wt+1 and u belong to a sphere of radius U  w′t+1 − wt 2 = ηt2 ∥∇ℓt(wt)∥2 by construction.
+$$\Vert w_{t+1} − u\Vert^2 \leq 4U^2 \quad \text{ since both } w_{t+1} \text{ and } u \text{ belong to a sphere of radius} U$$
+$$\Vert w_{t+1}' − w_t \Vert^2 = \eta_t^2 \Vert \nabla \ell_t(w_t)\Vert^2 \quad \text{ by construction}$$
 
 Substituting these relations in (6), and choosing G so that ∥∇ℓt(wt)∥ ≤ G for all t ≤ T, we obtain
 
