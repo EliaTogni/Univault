@@ -1059,65 +1059,29 @@ $$w_1 = 0 \quad \text{ by construction}$$
 $$\Vert w_{t+1} − u\Vert^2 \leq 4U^2 \quad \text{ since both } w_{t+1} \text{ and } u \text{ belong to a sphere of radius} U$$
 $$\Vert w_{t+1}' − w_t \Vert^2 = \eta_t^2 \Vert \nabla \ell_t(w_t)\Vert^2 \quad \text{ by construction}$$
 
-Substituting these relations in (6), and choosing G so that ∥∇ℓt(wt)∥ ≤ G for all t ≤ T, we obtain
+Substituting these relations in $(6)$, and choosing $G$ so that $\Vert \nabla \ell_t(w_t)∥ \leq G$ for all $t \leq T$, we obtain
 
-R (u) ≤ 2 − 1~~ ∥w − u∥2
 
-T + 22UUη1 T−1 T+11 T+1 ∥w − u∥2 − ∥w − u∥2 + 2 ηt .
 
-2η
+We proceed by simplifying the telescopic sum, deleting terms with opposite signs, and dropping the term $−\frac{1}{2\eta_T} \Vert w_{T+1} − u \Vert^2$,
 
-1 G T
 
-2 ηt+1 − η1 + 2ηT1+1 T+1 2ηT T+1 2 t=1
-
-t=1 t
-
-We proceed by simplifying the telescopic sum, deleting terms with opposite signs, and dropping the term − 1 ∥wT+1 − u∥2,
-
-2ηT
-
-U2 2U2 2U2 G2 T 2U2√T G2η T 1 2U2√T √ ![](Aspose.Words.be2eedc9-7d64-4df8-8460-0bf98398b84c.008.png)![](Aspose.Words.be2eedc9-7d64-4df8-8460-0bf98398b84c.009.png)![](Aspose.Words.be2eedc9-7d64-4df8-8460-0bf98398b84c.010.png)
-
-RT(u) ≤ + − + ηt ≤~~ + ~~√~~ ≤~~ + G2η T![](Aspose.Words.be2eedc9-7d64-4df8-8460-0bf98398b84c.011.png)
-
-2η1 ηT η1 2 t=1 η 2 t=1 t η
 
 where we used the upper bound
 
-T 1 √ ![](Aspose.Words.be2eedc9-7d64-4df8-8460-0bf98398b84c.012.png)
+$$\sum_{t = 1}{T}\frac{1}{\sqrt{t}} \leq 2 \sqrt{T}$$
 
-~~√~~ ≤ 2 T .![](Aspose.Words.be2eedc9-7d64-4df8-8460-0bf98398b84c.013.png)
+Choosing $\eta = (U/G)\sqrt{2}$ and dividing everything by $T$ we obtain the final regret bound
 
-t=1 t
 
-` `√ ![](Aspose.Words.be2eedc9-7d64-4df8-8460-0bf98398b84c.014.png)
 
-Choosing η = U G 2 and dividing everything by T we obtain the final regret bound
+Explicit values for $G$ may be obtained under specific assumptions. For example, in case of regression with square loss $\ell_t(w) = (w^{\top}x_t − y_t)^2, assuming $\Vert x_t \Vert \leq X$ and $\vert y_t \vert \leq UX$ for all $t$ we can compute
 
-1 T 1 T 8![](Aspose.Words.be2eedc9-7d64-4df8-8460-0bf98398b84c.015.png)
 
-T ℓt(wt) ≤ min T ℓt(u) + UG T . (7)
 
-u :∥u∥≤U
+Substituting this value for $G$ in the previous upper bound we get
 
-t=1 t=1
 
-Explicit values for G may be obtained under specific assumptions. For example, in case of regression with square loss ℓt(w) = w xt − yt 2, assuming ∥xt∥ ≤ X and |yt| ≤ UX for all t we can compute
-
-⊤
-
-∥∇ℓt(wt)∥ ≤ 2 w⊤xt − yt  ∥xt∥ ≤ 2 ∥wt∥∥xt∥+ |yt| ∥xt∥ ≤ 4UX2 .
-
-Substituting this value for G in the previous upper bound we get
-
-1 T 1 T 2![](Aspose.Words.be2eedc9-7d64-4df8-8460-0bf98398b84c.016.png)
-
-T ℓt(wt) ≤ min T ℓt(u) + 8(UX)2 T .
-
-u :∥u∥≤U
-
-t=1 t=1
 
 OGD with strongly convex losses. The upper bound (7) holds for any sequence ℓ ,ℓ ,... of convex and differentiable loss functions, including linear functions such as ℓ (w) = y −1w⊤2x  for
 
