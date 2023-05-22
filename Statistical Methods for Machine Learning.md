@@ -988,11 +988,11 @@ This sequential learning protocol, which we call **online learning**, can be sum
 **Parameters**: Class $\mathcal{H}$ of predictors, loss function $\ell$.
 The algorithm outputs a default initial predictor $h_1 \in \mathcal{H}$.
 For $t = 1,2,...$
-1) The next example $(x_t,y_t)$ is observed;
-2) The loss $\ell\Big( h_t(x_t),y_t\Big)$ of the current predictor $h_t$ is computed;
-3) The online learner updates $h_t$ generating a new predictor $h_{t+1} \in \mathcal{H}$.
+1) the next example $(x_t,y_t)$ is observed;
+2) the loss $\ell\Big( h_t(x_t),y_t\Big)$ of the current predictor $h_t$ is computed;
+3) the online learner updates $h_t$ generating a new predictor $h_{t+1} \in \mathcal{H}$.
 
-A characterizing feature of online learning is that the model update $h_t \to h_{t+1}$ is typically local. That is, it only involves the current predictor $h_t$ and the current example $(x_t,y_t)$.
+A characterizing feature of online learning is that the model update $h_t \to h_{t+1}$ is typically **local**. That is, it only involves the current predictor $h_t$ and the current example $(x_t,y_t)$.
 
 Note that an online learner $A$ generates a sequence $h_1,h_2,... \in \mathcal{H}$ of predictors. We evaluate the performance of $A$ through the notion of **sequential risk**,
 
@@ -1000,7 +1000,7 @@ $$\frac{1}{T}\sum_{t = 1}^{T}\ell\Big(h_t(x_t), y_t\Big)$$
 
 measuring, as a function of $T$, the average loss of the predictor sequence over the first $T$ examples. The sequential risks is the online learning counterpart of the notion of statistical risk in statistical learning.
 
-In what follows, we use the notation $\ell_t(h) = \ell\Big( h(x_t),y_t \Big)$ when the sequence $(x_1, y_1), (x_2, y_2), ...$ is understood from the context. This defines a sequence $\ell_1, \ell_2, ...$ of loss functions.
+In what follows, we use the notation $\ell_t(h) = \ell\big( h(x_t),y_t \big)$ when the sequence $(x_1, y_1), (x_2, y_2), ...$ is understood from the context. This defines a sequence $\ell_1, \ell_2, ...$ of loss functions.
 
 In keeping with the analogy between online and statistical learning, we also define the **regret**
 
@@ -1017,15 +1017,15 @@ Parameters: $\eta > 0, U > 0$<br />
 Initialization: $w_1 = 0$<br />
 For $t = 1, 2, ...$
 1) $w_{t+1}' = w_t − \frac{\eta}{\sqrt{t}} \nabla \ell_t(w_t)$;
-2) $w_{t+1} = \underset{w: \Vert w \Vert \leq U}{\operatorname{argmin}} \Vert w − w_{t+1}′ \Vert$
+2) $w_{t+1} = \underset{w: \Vert w \Vert \leq U}{\operatorname{argmin}} \Vert w − w_{t+1}' \Vert$.
 
-In step $2$, we project $w_{t+1}'$ in an Euclidean sphere of radius $U$. If $\Vert w_{t+1}' \leq U$, then $w_{t+1} = w_{t+1}'$. Let $\eta_t = \frac{\eta}{\sqrt{t}}$, where $\eta > 0$ will be determined by the analysis.
+In step $2$, we project $w_{t+1}'$ in an Euclidean sphere of radius $U$. If $\Vert w_{t+1}' \Vert \leq U$, then $w_{t+1} = w_{t+1}'$. Let $\eta_t = \frac{\eta}{\sqrt{t}}$, where $\eta > 0$ will be determined by the analysis.
 
 Our goal is to control the regret
 
 $$\frac{1}{T}\sum_{t = 1}^{T}\ell_t(w_t) - \frac{1}{T}\sum_{t = 1}^{T}\ell_t(u^*_T) \quad \text{ where } \quad u^*_T = \underset{u:\Vert u \Vert \leq U}{\operatorname{argmin}} \frac{1}{T} \sum_{t = 1}^{T}\ell_t(u)$$
 
-Note that $u^*_T$ is the predictor in the ball of radius $U$ with smallest average loss over the first $T$ steps. In what follows, we use the notation $R_T(u) = \sum_{t = 1}^{T} \Big(\ell_t(w_t) - \ell_t(u) \Big)$. The analysis of OGD is based on the following well-know result. 
+Note that $u^*_T$ is the predictor in the ball of radius $U$ with smallest average loss over the first $T$ steps. In what follows, we use the notation $R_T(u) = \sum_{t = 1}^{T} \big(\ell_t(w_t) - \ell_t(u) \big)$. The analysis of OGD is based on the following well-know result. 
 
 --------------------------------------------
 
@@ -1034,23 +1034,29 @@ Let $f : \mathbb{R}^d \to \mathbb{R}$ be a **twice differentiable function**. Th
 
 $$f (u) = f (w) + \nabla f (w)^{\top}(u − w) + \frac{1}{2}(u − w)^{\top}\nabla^2f(\xi)(u − w)$$
 
-where $\nabla^2f(\xi)$ is the Hessian matrix of $f$ evaluated at a point $\xi$ on the segment joining $u$ and $w$. If $f$ is convex, then $\nabla^2 f$ is positive semidefinite, and so $z^{\top}\nabla^2f(\xi)z geq 0$ for all $z,\xi \in \mathbb{R}^d$. This in turn implies
+where $\nabla^2f(\xi)$ is the **Hessian matrix** of $f$ evaluated at a point $\xi$ on the segment joining $u$ and $w$.
+
+If $f$ is convex, then $\nabla^2 f$ is positive semidefinite, and so $z^{\top}\nabla^2f(\xi)z \geq 0$ for all $z,\xi \in \mathbb{R}^d$. This in turn implies
 
 $$f(w) − f(u) \leq \nabla f(w)^{\top}(w − u) \quad \text{ } \quad (1)$$
 
 This actually holds for any convex and differentiable $f$ (i.e., $f$ need not be twice differentiable). Now fix $T$, let $u = u_{T}^*$, and note that, for each $t = 1,2,...$,
 
+$$\ell_t(w_t) - \ell_t(u) \leq \nabla \ell_t(w_t)^{\top}(w_t - u) \quad \text{ } \quad (2)$$
+$$= -\frac{1}{\eta_t}(w_{t+1}' - w_t)^{\top}(w_t - u) \quad \text{ } \quad (3)$$
+$$= \frac{1}{\eta_t}\Big(\frac{1}{2} \Vert w_t - u \Vert^2 - \frac{1}{2}\Vert w_{t+1}' - u\Vert^2 + \frac{1}{2} \Vert w_{t+1}' - w_t\Vert^2 \Big) \quad \text{ } \quad (4)$$
+$$\leq \frac{1}{\eta_t}\Big(\frac{1}{2} \Vert w_t - u \Vert^2 - \frac{1}{2}\Vert w_{t+1} - u\Vert^2 + \frac{1}{2} \Vert w_{t+1}' - w_t\Vert^2 \Big) \quad \text{ } \quad (5)$$
 
 
-Inequality $(2)$ is due to $(1)$. Equality $(3)$ uses $w_{t+1}' − w_t = −\eta t \nabla \ell_t(w_t)$. Equality $(4)$ is an easily verified algebraic identity. Finally, inequality $(5)$ holds because $u$ belong to the sphere of radius $U$ centered at the origin. Hence, by projecting $w_{t+1}'$ onto this sphere, the distance to $u$ can not increase.
+Inequality $(2)$ is due to $(1)$. Equality $(3)$ uses $w_{t+1}' − w_t = −\eta_t \nabla \ell_t(w_t)$. Equality $(4)$ is an easily verified algebraic identity. Finally, inequality $(5)$ holds because $u$ belong to the sphere of radius $U$ centered at the origin. Hence, by projecting $w_{t+1}'$ onto this sphere, the distance to $u$ can not increase.
 
 We now add and subtract the same term $\frac{1}{2\eta_{t+1}}\Vert w_{t+1} − u \Vert^2$ to the last member of the above chain of inequalities. Then, we regroup terms as indicated below here
 
-
+$$\underbrace{\frac{1}{2\eta_t}\Vert w_t - u\Vert^2 - \frac{1}{2\eta_{t+1}} \Vert w_{t+1} - u \Vert^2} \underbrace{- \frac{1}{2\eta_t}\Vert w_{t+1} - u \Vert^2 + \frac{1}{2\eta_{t+1}}\Vert w_{t+1} - u\Vert^2} + \frac{1}{2\eta_t} \Vert w_{t+1}' - w_t \Vert^2$$
 
 Summing over $t = 1, ..., T$ we observe that the first pair of terms forms a telescopic sum, while the terms in the second pair have a common factor,
 
-
+$$R_T(u) \leq \frac{1}{2\eta_1} \Vert w_1 - u \Vert^2 - \frac{1}{2\eta_{T+1}}\Vert w_{T+1} - u \Vert^2  + ...$$$$... + \frac{1}{2}\sum_{t = 1}^{T} \Vert w_{t+1} - u\Vert^2 \Big(\frac{1}{\eta_{t+1}} - \frac{1}{\eta_t}\Big) + \frac{1}{2}\sum_{t = 1}^{T}\frac{1}{\eta_t}\Vert w_{t+1}' - w_t\Vert^2 \quad \text{ } \quad (6)$$
 
 Next, we make use of the following facts:
 
@@ -1061,23 +1067,24 @@ $$\Vert w_{t+1}' − w_t \Vert^2 = \eta_t^2 \Vert \nabla \ell_t(w_t)\Vert^2 \qua
 
 Substituting these relations in $(6)$, and choosing $G$ so that $\Vert \nabla \ell_t(w_t)∥ \leq G$ for all $t \leq T$, we obtain
 
-
+$$R_T(u) \leq \frac{U^2}{2\eta_1} - \frac{1}{2\eta_{T+1}} \Vert w_{T+1} -u\Vert^2 + ...$$
+$$... + 2U^2\sum_{t = 1}^{T-1}\Big(\frac{1}{\eta_{t+1}} - \frac{1}{\eta_t}\Big) + \frac{1}{2\eta_{T+1}} \Vert w_{T+1} - u\Vert^2 - \frac{1}{2\eta_T}\Vert w_{T+1} - u\Vert^2 + \frac{G^2}{2}\sum_{t = 1}^{T}\eta_t$$
 
 We proceed by simplifying the telescopic sum, deleting terms with opposite signs, and dropping the term $−\frac{1}{2\eta_T} \Vert w_{T+1} − u \Vert^2$,
 
-
+$$R_T(u) \leq $$
 
 where we used the upper bound
 
-$$\sum_{t = 1}{T}\frac{1}{\sqrt{t}} \leq 2 \sqrt{T}$$
+$$\sum_{t = 1}^{T}\frac{1}{\sqrt{t}} \leq 2 \sqrt{T}$$
 
 Choosing $\eta = (U/G)\sqrt{2}$ and dividing everything by $T$ we obtain the final regret bound
 
+$$\frac{1}{T}\sum_{t = 1}^{T}\ell_t(w_t) \leq \underset{u : \Vert u \Vert \leq U}{\operatorname{min}} \frac{1}{T} \sum_{t = 1}^{T} \ell_t(u) + UG\sqrt{\frac{8}{T}} \quad \text{ } \quad (7)$$
 
+Explicit values for $G$ may be obtained under specific assumptions. For example, in case of regression with square loss $\ell_t(w) = (w^{\top}x_t − y_t)^2$, assuming $\Vert x_t \Vert \leq X$ and $\vert y_t \vert \leq UX$ for all $t$ we can compute
 
-Explicit values for $G$ may be obtained under specific assumptions. For example, in case of regression with square loss $\ell_t(w) = (w^{\top}x_t − y_t)^2, assuming $\Vert x_t \Vert \leq X$ and $\vert y_t \vert \leq UX$ for all $t$ we can compute
-
-
+$$\Vert \nabla \ell_t(w_t)\Vert \leq 2 \vert w^{\top}x_t - y_t \vert \Vert x_t \Vert \leq 2(\Vert w_t \Vert \Vert x_t \Vert + \vert y_t \vert) \Vert x_t \Vert \leq 4UX^2$$
 
 Substituting this value for $G$ in the previous upper bound we get
 
@@ -1092,7 +1099,7 @@ $$\ell(w) − \ell(u) \leq \nabla \ell(w)^{\top}(w − u) − \frac{\sigma}{2}\V
 
 If $\ell$ is also twice-differentiable, then $(8)$ is equivalent to saying that the Hessian matrix of $\ell$ has full rank, that is, all of its eigenvalues are positive. A simple example of strongly convex function is $\ell(w) = \frac{1}{2} \Vert w \Vert^2$. Indeed,
 
-
+$$\frac{1}{2} \Vert w \Vert^2 - \frac{1}{2} \Vert u \Vert^2 = w^{\top}(w - u) - \frac{1}{2} \Vert w - u\Vert^2$$
 
 Hence, this function is strongly convex for $\sigma = 1$.
 
