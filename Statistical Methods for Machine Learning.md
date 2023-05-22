@@ -1110,21 +1110,24 @@ When run on a sequence of strongly convex function, OGD does not need the projec
 ----------------------------------------------------------------
 
 ## The OGD algorithm for σ-strongly convex functions
-Initialization: $w_1 = 0$
+Initialization: $w_1 = 0$<br />
 For $t = 1, 2, ...$
 1) $w_{t+1} = w_t − \frac{1}{\sigma t} \nabla \ell_t(w_t)$
 
 In order to prove a regret bound, we apply $(4)$ to the analysis of OGD under the assumption that $\ell_1, \ell_2, ...$ are all $\sigma$-strongly convex functions. Setting $\eta_t = \frac{1}{\sigma_t}$ we get
 
-
+$$\ell_t(w_t) - \ell_t(u) \leq \nabla \ell_t(w_t)^{\top}(w_t - u) - \frac{\sigma}{2}\Vert u - w_t\Vert^2$$
+$$= -\frac{1}{\eta_t}(w_{t+1} - w_t)^{\top}(w_t - u) - \frac{\sigma}{2}\Vert u - w_t\Vert^2$$
+$$= \frac{1}{\eta_t}\Big(\frac{1}{2}\Vert w_t -u \Vert^2 - \frac{1}{2}\Vert w_{t+1} -u \Vert^2 + \frac{1}{2}\Vert w_{t+1} -w_t \Vert^2\Big) - \frac{\sigma}{2}\Vert u -w_t \Vert^2$$
 
 Proceeding just like we did in the proof of OGD with projection, while exploiting the additional terms $−\frac{\sigma}{2} \Vert u − w_t\Vert^2$, we obtain
 
+$$R_T(u) \leq \Big(\frac{1}{\eta_1} - \sigma\Big) \frac{1}{2} \Vert w_1 - u\Vert^2 - \frac{1}{2\eta_{T+1}}\Vert w_{T+1} - u\Vert^2 + ...$$
+$$... + \frac{1}{2}\sum_{t = 1}^{T-1} \Vert w_{t+1} - u\Vert^2 \Big(\frac{1}{\eta_{t- 1}} - \frac{1}{\eta_t} - \sigma\Big) + \Vert w_{T+1} - u\Vert^2 \frac{1}{2}\Big(\frac{1}{\eta_{T + 1}} - \frac{1}{\eta_t}\Big) + \frac{G^2}{2}\sum_{t = 1}^{T}\eta_t$$
 
+where, similarly to before, $G \geq \operatorname{max}_t \Vert \nabla \ell_t(w_t)\Vert$.
 
-where, similarly to before, $G \geq max_t \Vert \nabla \ell_t(w_t)\Vert$.
-
-Dropping the negative term $−\frac{1}{2\eta_T} \Vert w_{T+1} − u \Vert^2$, simplifying the term $\frac{1}{2\eta_{T+1}} \Vert w_{T+1} − u \Vert^2$ which occurs with opposite signs, using the choice $\eta_t = \frac{1}{\sigma_t}$ , and making some further cancellations leads us to
+Dropping the negative term $−\frac{1}{2\eta_T} \Vert w_{T+1} − u \Vert^2$, simplifying the term $\frac{1}{2\eta_{T+1}} \Vert w_{T+1} − u \Vert^2$ which occurs with opposite signs, using the choice $\eta_t = \frac{1}{\sigma t}$, and making some further cancellations leads us to
 
 $$R_T(u) \leq \frac{G^2}{2\sigma} \sum_{t = 1}^{T} \frac{1}{t} \leq \frac{G^2}{2\sigma}\ln{(T + 1)}$$
 
@@ -1132,14 +1135,14 @@ where we used a simple logarithmic upper bound to the harmonic sum $1 + \frac{1}
 
 This gives the final result
 
-$$\frac{1}{T}\sum_{t = 1}^{T}\ell_t(w_t) \leq \underset{u \in \mathbb{R}^d}{\operatorname{min}} \frac{1}{T} \sum_{t = 1}{T} \ell_t(u) + \frac{G^2}{2\sigma}\frac{\ln{(T + 1)}}{T}$$
+$$\frac{1}{T}\sum_{t = 1}^{T}\ell_t(w_t) \leq \underset{u \in \mathbb{R}^d}{\operatorname{min}} \frac{1}{T} \sum_{t = 1}^{T} \ell_t(u) + \frac{G^2}{2\sigma}\frac{\ln{(T + 1)}}{T}$$
 
 Note the improved dependence $\frac{\ln{T}}{T}$ compared to $\frac{1}{\sqrt{T}}$ obtained in $(7)$ for convex (as opposed to strongly convex) loss functions.
 
 ----------------------------------------------------------------
 
 ## A mistake bound for the Perceptron algorithm
-We now prove an upper bound on the number of prediction mistakes made by the Perceptron on an arbitrary stream. Because the zero- one loss is not convex, we cannot directly apply the machinery developed for OGD. Instead, we adapt the proof of the Perceptron convergence theorem and use a convex upper bound on the zero-one loss to compensate for the lack of convexity.
+We now prove an upper bound on the number of prediction mistakes made by the Perceptron on an arbitrary stream. Because the zero-one loss is not convex, we cannot directly apply the machinery developed for OGD. Instead, we adapt the proof of the Perceptron convergence theorem and use a convex upper bound on the zero-one loss to compensate for the lack of convexity.
 
 Let $(x_1 , y_1),(x_2, y_2), ... \in \mathbb{R}^d \times \{−1,1\}$ be a stream of data points with binary labels and let $M$ be the number of prediction mistakes made by the Perceptron in the first $T$ examples of the stream. Let $w_M$ be the Perceptron hyperplane after these $M$ prediction mistakes and let $t_M \in \{1, ..., T\}$ be the index of the example $(x_{t_M}, y_{t_M})$ in the stream that caused the $M$-th mistake $w_M = w_{M −1}+y_{t_M}x_{t_M}$. Now fix any $u \in \mathbb{R}^d$. This $u$ is not necessarily a separator, because we are not making any assumption on the stream. The first part of the proof of the Perceptron convergence theorem does not use any special property of $u$. Therefore, proceeding in exactly the same way, we have that
 
@@ -1147,19 +1150,23 @@ $$\Vert w_M \Vert \Vert u \Vert \leq \Vert u \Vert \Bigg (\underset{t = 1, ..., 
 
 In order to prove a lower bound on $\Vert w_M \Vert \Vert u \Vert$ and finish the proof, we proceed as follows
 
-
+$$\Vert w_M \Vert \Vert u \Vert \geq w_M^{\top}u$$
+$$= (w_{M-1} + y_{t_M}x_{t_M})^{\top}u$$
+$$= w_{M-1}^{\top} u + y_{t_M} u ^{\top} x_{t_M}$$
+$$= w_{M-1}^{\top} u + 1 - 1 + y_{t_M} u ^{\top} x_{t_M}$$
+$$\geq w_{M-1}^{\top} u + 1 - [1 + y_{t_M} u ^{\top} x_{t_M}]_+$$
 
 where $[z]_+ = \operatorname{max}\{0,z\}$. Iterating $M$ times we get
 
-$$\Vert w_M \Vert \Vert u \Vert \geq M + \sum_{i = 1}{M}[1 + y_{t_i}u^{\top}x_{t_i}]_+$$
+$$\Vert w_M \Vert \Vert u \Vert \geq M + \sum_{i = 1}^{M}[1 + y_{t_i}u^{\top}x_{t_i}]_+$$
 
 Where we used $w^{\top}_0 u = 0$ since $w_0 = (0, ..., 0)$. Let $X = \operatorname{max}_t \Vert x_t \Vert$. Combining upper and lower bound we obtain
 
-$$M \leq \sum_{i = 1}{M}[1 + y_{t_i}u^{\top}x_{t_i}]_+ + \Vert U \Vert X \sqrt{M} \quad \text{ } \quad (9)$$
+$$M \leq \sum_{i = 1}^{M}[1 + y_{t_i}u^{\top}x_{t_i}]_+ + \Vert u \Vert X \sqrt{M} \quad \text{ } \quad (9)$$
 
-The function $h_t(u) = [1 + y_t u^{\top}x_t]_+$ is a loss function called **hinge loss**. Since $\mathbb{I}\{sgn(z) = y\} \leq [1− zy]_+$ for all $z \in \mathbb{R}$ and $y \in \{−1,1\}$, the hinge loss is a convex upper bound on the zero-one loss. Because $\{t_1, ..., t_M\} \subseteq \{1, ..., T\}$,
+The function $h_t(u) = [1 + y_t u^{\top}x_t]_+$ is a loss function called **hinge loss**. Since $\mathbb{I}\{\operatorname{sgn}(z) \neq y\} \leq [1− zy]_+$ for all $z \in \mathbb{R}$ and $y \in \{−1,1\}$, the hinge loss is a convex upper bound on the zero-one loss. Because $\{t_1, ..., t_M\} \subseteq \{1, ..., T\}$,
 
-$$\sum_{i = 1}^{M}h_{t_i}(u) \leq \sum_{tt = 1}^{T}h_t(u)$$
+$$\sum_{i = 1}^{M}h_{t_i}(u) \leq \sum_{t = 1}^{T}h_t(u)$$
 
 we can rewrite $(9)$ as
 
@@ -1169,6 +1176,6 @@ Solving with respect to $M$ and overapproximating, we get
 
 $$M \leq \sum_{t = 1}^{T}h_t(u) + \big(\Vert u \Vert X\big)^2 + \Vert u \Vert X \sqrt{\sum_{t = 1}^{T}h_t(u)} \quad \text{ for all } u \in \mathbb{R}^d$$
 
-This shows a bound on the number of mistakes made by the Perceptron on any data sequence of arbitrary length $T$, including those sequences that are not linearly separable. When the sequence is linearly separable, then there exists $u \in \mathbb{R}^d$ such that $y_t u^{\top}x_t \geq 1$ for all $t$, which in turn implies $h_t(u) = 0$ for all $t$. Hence, the bound reduces to the one already proved in the Perceptron convergence theorem, $M_T \leq \Vert u \Vert X^2$.
+This shows a bound on the number of mistakes made by the Perceptron on any data sequence of arbitrary length $T$, including those sequences that are not linearly separable. When the sequence is linearly separable, then there exists $u \in \mathbb{R}^d$ such that $y_t u^{\top}x_t \geq 1$ for all $t$, which in turn implies $h_t(u) = 0$ for all $t$. Hence, the bound reduces to the one already proved in the Perceptron convergence theorem, $M_T \leq (\Vert u \Vert X)^2$.
 
 ----------------------------------------------------------------
