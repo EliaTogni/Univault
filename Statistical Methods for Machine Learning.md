@@ -1072,7 +1072,7 @@ $$... + 2U^2\sum_{t = 1}^{T-1}\Big(\frac{1}{\eta_{t+1}} - \frac{1}{\eta_t}\Big) 
 
 We proceed by simplifying the telescopic sum, deleting terms with opposite signs, and dropping the term $−\frac{1}{2\eta_T} \Vert w_{T+1} − u \Vert^2$,
 
-$$R_T(u) \leq $$
+$$R_T(u) \leq \frac{U^2}{2\eta_1} + \frac{2U^2}{\eta_T} - \frac{2U^2}{\eta_1} + \frac{G^2}{2}\sum_{t = 1}^{T}\eta_t \leq \frac{2U^2\sqrt{T}}{\eta} + \frac{G^2\eta}{2}\sum_{t = 1}^{T}\frac{1}{\sqrt{t}} \leq \frac{2U^2\sqrt{T}}{\eta} + G$$
 
 where we used the upper bound
 
@@ -1088,7 +1088,7 @@ $$\Vert \nabla \ell_t(w_t)\Vert \leq 2 \vert w^{\top}x_t - y_t \vert \Vert x_t \
 
 Substituting this value for $G$ in the previous upper bound we get
 
-
+$$\frac{1}{T}\sum_{t = 1}^{T}\ell_t(w_t) \leq \underset{u : \Vert u \Vert \leq U}{\operatorname{min}} \frac{1}{T} \sum_{t = 1}^{T} \ell_t(u) + 8(UX)^2\sqrt{\frac{2}{T}}$$
 
 ----------------------------------------------------------------
 
