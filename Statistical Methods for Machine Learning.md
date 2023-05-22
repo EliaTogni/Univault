@@ -1072,7 +1072,7 @@ $$... + 2U^2\sum_{t = 1}^{T-1}\Big(\frac{1}{\eta_{t+1}} - \frac{1}{\eta_t}\Big) 
 
 We proceed by simplifying the telescopic sum, deleting terms with opposite signs, and dropping the term $−\frac{1}{2\eta_T} \Vert w_{T+1} − u \Vert^2$,
 
-$$R_T(u) \leq \frac{U^2}{2\eta_1} + \frac{2U^2}{\eta_T} - \frac{2U^2}{\eta_1} + \frac{G^2}{2}\sum_{t = 1}^{T}\eta_t \leq \frac{2U^2\sqrt{T}}{\eta} + \frac{G^2\eta}{2}\sum_{t = 1}^{T}\frac{1}{\sqrt{t}} \leq \frac{2U^2\sqrt{T}}{\eta} + G$$
+$$R_T(u) \leq \frac{U^2}{2\eta_1} + \frac{2U^2}{\eta_T} - \frac{2U^2}{\eta_1} + \frac{G^2}{2}\sum_{t = 1}^{T}\eta_t \leq \frac{2U^2\sqrt{T}}{\eta} + \frac{G^2\eta}{2}\sum_{t = 1}^{T}\frac{1}{\sqrt{t}} \leq \frac{2U^2\sqrt{T}}{\eta} + G^2\eta\sqrt{T}$$
 
 where we used the upper bound
 
@@ -1093,7 +1093,7 @@ $$\frac{1}{T}\sum_{t = 1}^{T}\ell_t(w_t) \leq \underset{u : \Vert u \Vert \leq U
 ----------------------------------------------------------------
 
 ## OGD with strongly convex losses
-The upper bound $(7)$ holds for any sequence $\ell_1, \ell_2, ...$ of convex and differentiable loss functions, including linear functions such as $\ell_t(w) = \vert y_t −w^{\top}x_t \vert$ for $x_t \in \mathbb{R}^d$ and $y_t \in \mathbb{R}$. It can be shown that $(7)$ can not be significantly improved if the loss functions are all linear. But what if all loss functions are convex and never flat? To formalize this scenario, we use the notion of strong convexity. A differentiable function $\ell$ is $\sigma$-strongly convex, for some $\sigma > 0$, if
+The upper bound $(7)$ holds for any sequence $\ell_1, \ell_2, ...$ of convex and differentiable loss functions, including linear functions such as $\ell_t(w) = \vert y_t −w^{\top}x_t \vert$ for $x_t \in \mathbb{R}^d$ and $y_t \in \mathbb{R}$. It can be shown that $(7)$ can not be significantly improved if the loss functions are all linear. But what if all loss functions are convex and never flat? To formalize this scenario, we use the notion of **strong convexity**. A differentiable function $\ell$ is $\sigma$-strongly convex, for some $\sigma > 0$, if
 
 $$\ell(w) − \ell(u) \leq \nabla \ell(w)^{\top}(w − u) − \frac{\sigma}{2}\Vert u − w \Vert^2 \quad \text{ } \quad (8)$$
 
