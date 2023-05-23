@@ -1187,31 +1187,21 @@ For example, consider the quadratic feature-expansion map $\phi : \mathbb{R}^2 \
 
 In general, we may consider polynomial feature expansion maps $\phi : \mathbb{R}^d \to \mathcal{H}$, where $\mathcal{H} \equiv \mathbb{R}^N$ , that use features of the form $\prod_{s 0 1}^{k}x_{v_s} for all $v \in \{1,...,d\}^k$ and for all $k = 0, 1, ..., n$ (the previous example is a special case for $d = 2$ and $n = 2$). Fix such a $\phi$ and consider the classifier $h : \mathbb{R}^d \to \{−1,1\}$ defined by
 
+$$h(x) = \operatorname{sgn}(w^{\top}\phi(x)) \quad \text {where } \quad w^{\top}\phi(x) = \sum_{i = 1}^{N}w_i \phi(x)_i$$
 
+This nonlinear classifier in $\mathbb{R}^d$ corresponds to a linear classifier in the space $\mathbb{R}^N$ . Note, however, that
 
-This nonlinear classifier in Rd corresponds to a linear classifier in the space RN . Note, however, that N = n {1,...,d}k  = n dk = dn+1 − 1
+$$N = \sum_ {k = 0}^{n}\vert \{1, ..., d\}^k\vert = \sum_{k = 0}^{n}d^k = \frac{d^{n+1}-1}{d-1}$$
 
-d − 1
+This implies that $N = \Theta(d^n)$ is exponential in the degree $n$, and computing $\phi$ becomes infeasible even for moderately large $n$.
 
-k=0 k=0
+This computational barrier can be fully sidestepped using the so-called **kernel trick**, which can be applied to many algorithms for learning linear predictors. For example, recall the Perceptron update rule $w_{t+1} = w_t+ y_tx_t$ where $w_1 = 0$. Then, linear classifiers learned through the Perceptron are of the form
 
-This implies that N = Θ(dn) is exponential in the degree n, and computing ϕ becomes infeasible even for moderately large n.
+$$h(x) = \operatorname{sgn}\Big(\sum_{s \in S}y_sx_s^{\top}x \Big)$$
 
-This computational barrier can be fully sidestepped using the so-called kernel trick, which can be applied to many algorithms for learning linear predictors. For example, recall the Perceptron update rule wt+1 = wt+ ytxt where w1 = 0. Then, linear classifiers learned through the Perceptron are of the form
+where $S$ is the set of indices $s$ of training examples $(x_s, y_s)$ on which the Perceptron made an update. If we run the Perceptron in the space $\mathbb{R}^N$ , the linear classifier $h$ becomes
 
-h(x) = sgn ysx⊤x
-
-s
-
-s∈S
-
-where S is the set of indices s of training examples (xs,ys) on which the Perceptron made an
-
-[^1]update. If we run the Perceptron in the space RN , the linear classifier h becomes
-
-hϕ x = sgn ys ϕ(xs)⊤ϕ(x) .
-
-s∈S
+$$$$
 
 Hence, in order to compute hϕ(x) quickly we need a way of computing quickly each term ϕ(xs)⊤ϕ(x). The kernel trick helps us find an efficiently computable kernel function K : R[^2] × Rd → R such that
 
