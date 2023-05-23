@@ -717,13 +717,13 @@ $$\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big] \leq 2 \ell_{\mathcal{D}}(f^*) 
 
 where $A$ denotes the $1-NN$ algorithm, $S_m$ the training set of size $m$, $\ell_{\mathcal{D}}(f^*)$ is the Bayes risk, and $\varepsilon_m$ is a quantity that vanishes for $m \to \infty$. Note that we are able to compare $\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big]$ directly to the Bayes risk, showing that $1-NN$ is, in some sense, a powerful learning algorithm.
 
-Recall that in binary classification we denote the joint distribution of $(X, Y)$ with the pair $(\mathcal{D}_X, \eta)$, where $\mathcal{D}_X$ is the marginal of $\mathcal{D}$ on $X$ and $\eta(x) = \mathbb{P}(Y = 1 \vert X = x)$. Fix $m$ and let $S = (x_1, y_1), ..., (x_m, y_m)$ be a training set of size $m$. We define the map $\pi(S, \cdot) : \mathbb{R}^d \to \{1, ..., m\}$ by
+Recall that in binary classification we denote the joint distribution of $(X, Y)$ with the pair $(\mathcal{D}_X, \eta)$, where $\mathcal{D}_X$ is the marginal of $\mathcal{D}$ on $X$ and $\eta(x) = \mathbb{P}(Y = 1 \vert X = x)$. Fix $m$ and let $S = \{(x_1, y_1), ..., (x_m, y_m)\}$ be a training set of size $m$. We define the map $\pi(S, \cdot) : \mathbb{R}^d \to \{1, ..., m\}$ by
 
 $$\pi(S, x) = \underset{t = 1, ..., m}{\operatorname{argmin}}\Vert x - x_t \Vert$$
 
 If there is more than one point $x_t$ achieving the minimum in the above expression, then $\pi(S, x)$ selects one of them using any deterministic tie-breaking rule; our analysis does not depend on the specific rule being used. The $1-NN$ classifier $h_S = A(S)$ is defined by $h_S(x) = y_{\pi(S, x)}$.
 
-From now on, the training set $S$ is a sample $(X_1, Y_1), ..., (X_m, Y_m)$ drawn i.i.d. from $\mathcal{D}$. The expected risk is defined by 
+From now on, the training set $S$ is a sample $\{(X_1, Y_1), ..., (X_m, Y_m)\}$ drawn i.i.d. from $\mathcal{D}$. The expected risk is defined by 
 
 $$\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S))\Big] = \mathbb{P}\Big(Y_{\pi(S, X)} \neq Y\Big)$$
 
@@ -736,7 +736,7 @@ The expected risk of the $1-NN$ classifier can be written as follows
 
 $$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big] = \mathbb{E}\Big[\eta(X_{\pi(S, X)})(1- \eta(X))\Big] + \mathbb{E}\Big[\big(1 - \eta(X_{\pi(S, X)})\big)\eta(X)\Big]$$
 
-To proceed with the analysis, we now need some assumptions on $D_X$ and $\eta$. First, all data points $X$ drawn from $D_X$ satisfy max $\vert X_i \vert \leq 1$ with probability one. In other words, $X \in [−1, 1]^d$ with probability $1$. Let $\mathcal{X} \equiv [−1, 1]^d$ the subsets of data points with this property. Second we assume that $\eta$ is Lipschitz on $\mathcal{X}$ with constant $c > 0$. We can thus write
+To proceed with the analysis, we now need some assumptions on $D_X$ and $\eta$. First, all data points $X$ drawn from $D_X$ satisfy $\operatorname{max}_i \vert X_i \vert \leq 1$ with probability one. In other words, $X \in [−1, 1]^d$ with probability $1$. Let $\mathcal{X} \equiv [−1, 1]^d$ the subsets of data points with this property. Second we assume that $\eta$ is Lipschitz on $\mathcal{X}$ with constant $c > 0$. We can thus write
 
 $$\eta(x') \leq \eta(x) + c \Vert x - x' \Vert \quad \text{ } \quad (2)$$
 $$1 - \eta(x') \leq 1 - \eta(x) + c \Vert x - x' \Vert \quad \text{ } \quad (3)$$
@@ -746,7 +746,7 @@ Using $(2)$ and $(3)$, for all $x, x′ \in \mathcal{X}$ we have
 $$\eta(x)(1 - \eta(x')) + (1 - \eta(x))\eta(x')$$
 $$\leq \eta(x)(1-\eta(x)) + \eta(x) c \Vert x - x' \Vert + (1 - \eta(x))\eta(x) + (1 - \eta(x))c \Vert x - x' \Vert$$
 $$= 2 \eta(x)(1- \eta(x)) + c \Vert x - x' \Vert$$
-$$\leq 2 \text{ }min \{\eta(x), 1 - \eta(x)\} + c \Vert x - x' \Vert$$
+$$\leq 2 \text{ }\operatorname{min} \{\eta(x), 1 - \eta(x)\} + c \Vert x - x' \Vert$$
 
 where the last inequality holds because $z(1 − z) \leq \operatorname{min}\{z, 1 − z\}$ for all $z \in [0, 1]$. Therefore
 
@@ -765,7 +765,7 @@ In the figure, it is possible to see a bidimensional example of the construction
 Let $C_1, ..., C_r$ the resulting hypercubes. We can now bound $\Vert X − X_{\pi(S, X)} \Vert$ using a case analysis. Assume first that $X$ belong to a $C_i$ in which there is at least a training point $X_t$. Then $\Vert X - X_{\pi(S, X)} \Vert$ is at most the length of the diagonal of the hypercube, which is $\varepsilon \sqrt{d}$, as it is possible to see int the left pane of the figure. Now assume that $X$ belongs to a $C_i$ in which there are no training points. Then $\Vert X − X_{\pi(S, X)} \Vert$ is only bounded by the length of the diagonal of $\mathcal{X}$, which is $2 \sqrt{d}$, as it is possible to see in the right pane of the figure. Hence, we may write
 
 $$\mathbb{E}\Big[\Vert X - X_{\pi(S, X)}\Vert\Big] \leq \mathbb{E}\Big[ \varepsilon\sqrt{d} \sum_{i = 1}^{r} \mathbb{I}\{C_i \cap S \neq \emptyset\}\mathbb{I}\{X \in C_i\} + 2 \sqrt{d}\sum_{i = 1}^{r}\mathbb{I}\{C_i \cap S = \emptyset\}\mathbb{I}\{X \in C_i\}\Big]$$
-$$= \varepsilon\sqrt{d}\mathbb{E} \Big[\sum_{i = 1}^r \mathbb{I}\{C_i \cap S \neq \emptyset\}\mathbb{I}\{X \in C_i\}\Big] + 2 \sqrt{d}\sum_{i = 1}^r \mathbb{E}\big[\mathbb{I}\{C_i \cap S \neq \emptyset\}\mathbb{I}\{X \in C_i\}\big]$$
+$$= \varepsilon\sqrt{d}\mathbb{E} \Big[\sum_{i = 1}^r \mathbb{I}\{C_i \cap S \neq \emptyset\}\mathbb{I}\{X \in C_i\}\Big] + 2 \sqrt{d}\sum_{i = 1}^r \mathbb{E}\big[\mathbb{I}\{C_i \cap S = \emptyset\}\mathbb{I}\{X \in C_i\}\big]$$
 
 where in the last step we used linearity of the expected value. Now observe that, for all $S$ and $X$,
 
@@ -779,7 +779,7 @@ To bound the remaining term, we use the independence between $X$ and the trainin
 
 $$\mathbb{E}\big[\mathbb{I}\{C_i \cap S = \emptyset \} \mathbb{I}\{X \in C_i\}\big] = \mathbb{E}\big[\mathbb{I}\{C_i \cap S = \emptyset\}\big]\mathbb{E}\big[\mathbb{I}\{X \in C_i\}\big] = \mathbb{P}(C_i \cap S = \emptyset)\mathbb{P}(X \in C_i)$$
 
-Since $S$ contains $m$ data points independently drawn, for a generic data point $X′$ we have that
+Since $S$ contains $m$ data points independently drawn, for a generic data point $X'$ we have that
 
 $$\mathbb{P}(C_i \cap S = \emptyset) = (1 - \mathbb{P}(X' \in C_i))^m \leq \operatorname{exp}(-m\mathbb{P}(X' \in C_i))$$
 
