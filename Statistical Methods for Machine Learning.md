@@ -1270,9 +1270,9 @@ $$f8x) = \sum_{i = 1}^{N}\alpha_iK(x_i, x)$$
 
 for some $x_1, ..., x_N \in \mathcal{X}, \alpha_1, ..., \alpha_N \in \mathbb{R}$, and $N \in \mathbb{N}$.
 
-A learning algorithm producing linear predictors g ∈ HK becomes nonparametric when K is the Gaussian kernel and N (the number of terms in the sum defining any g ∈ HK ) is free to grow unbounded as the sample size increases. If, instead, K is a kernel such that ϕK maps X to a finite dimensional space, then any g ∈ HK can be always represented with a fixed number of parameters, and therefore any algorithm choosing predictors from HK is parametric.
+A learning algorithm producing linear predictors $g \in \mathcal{H}_K$ becomes nonparametric when $K$ is the Gaussian kernel and $N$ (the number of terms in the sum defining any $g \in \mathcal{H}_K$) is free to grow unbounded as the sample size increases. If, instead, $K$ is a kernel such that $\phi_K$ maps $\mathcal{X}$ to a finite dimensional space, then any $g \in \mathcal{H}_K$ can be always represented with a fixed number of parameters, and therefore any algorithm choosing predictors from $\mathcal{H}_K$ is parametric.
 
-For linear predictors w ∈ Rd, we compute w⊤x using the standard notion of Euclidean inner product. For linear predictors f ∈ HK , instead, we compute f,ϕK (x) K using the inner product for HK . Now, since ϕK is the feature map for K, we must have ϕK (x),ϕK (x′) = K(x,x′).
+For linear predictors $w \in \mathcal{R}^d$, we compute $w^{\top}x$ using the standard notion of Euclidean inner product. For linear predictors $f \in \mathcal{H}_K$ , instead, we compute $f, \phi_K(x)_K$ using the inner product for $\mathcal{H}_K$ . Now, since ϕK is the feature map for K, we must have ϕK (x),ϕK (x′) = K(x,x′).
 
 K
 
