@@ -1272,126 +1272,43 @@ for some $x_1, ..., x_N \in \mathcal{X}, \alpha_1, ..., \alpha_N \in \mathbb{R}$
 
 A learning algorithm producing linear predictors $g \in \mathcal{H}_K$ becomes nonparametric when $K$ is the Gaussian kernel and $N$ (the number of terms in the sum defining any $g \in \mathcal{H}_K$) is free to grow unbounded as the sample size increases. If, instead, $K$ is a kernel such that $\phi_K$ maps $\mathcal{X}$ to a finite dimensional space, then any $g \in \mathcal{H}_K$ can be always represented with a fixed number of parameters, and therefore any algorithm choosing predictors from $\mathcal{H}_K$ is parametric.
 
-For linear predictors $w \in \mathcal{R}^d$, we compute $w^{\top}x$ using the standard notion of Euclidean inner product. For linear predictors $f \in \mathcal{H}_K$ , instead, we compute $f, \phi_K(x)_K$ using the inner product for $\mathcal{H}_K$ . Now, since ϕK is the feature map for K, we must have ϕK (x),ϕK (x′) = K(x,x′).
+For linear predictors $w \in \mathbb{R}^d$, we compute $w^{\top}x$ using the standard notion of Euclidean inner product. For linear predictors $f \in \mathcal{H}_K$ , instead, we compute $\langle f, \phi_K(x)\rangle_K$ using the inner product for $\mathcal{H}_K$ . Now, since $\phi_K$ is the feature map for $K$, we must have $\langle \phi_K(x), \phi_K(x')\langle_k = K(x,x')$. Thus, recalling that the inner product is a bilinear operator, we can write
 
-K
 
-Thus, recalling that the inner product is a bilinear operator, we can write
 
-N N N
+The equality $\langle f,\phi_K(x)\rangle_K = f(x)$ is known as **reproducing property**. For this reason, $\mathcal{H}_K$ (or, more precisely, an appropriate completion of $\mathcal{H}_K$ ) is also known as **reproducing kernel Hilbert space** (**RKHS**).
 
-f,ϕK (x) K = αi K(xi,·),ϕK (x) K = αi ϕK (xi),ϕK (x) K = αi K(xi,x) = f (x)
+Next, we see how the inner product $\langle f,g \rangle_K$ between two arbitrary $f, g \in \mathcal{H}_K$ is computed, where
 
-i=1 i=1 i=1
 
-The equality f,ϕK (x) K = f (x) is known as reproducing property. For this reason, HK (or, more precisely, an appropriate completion of HK ) is also known as reproducing kernel Hilbert space (RKHS).
-
-Next, we see how the inner product f,g K between two arbitrary f,g ∈ HK is computed, where
-
-N M
-
-f = αi K(xi,·) and g = βj K(x′ ,·)
-
-j
-
-i=1 j=1
 
 Using once more the bilinearity of inner products,
 
-N M
 
-f,g = αi K(xi,·), βj K(x′j,·)
-
-K
-
-i=1 j=1 K N M
-
-- αi K(xi,·), βj K(x′j,·) i=1 j=1 K
-
-N M = αiβj K(xi,·),K (x′ ,·)
-
-j K i=1 j=1
-
-N M
-
-- αiβjK(xi,x′ )
-
-j
-
-i=1 j=1
 
 We can lift to any RKHS the bounds we derived for learning algorithms that can be run with kernels. For instance recall the bound on the number of mistakes provided by the Perceptron convergence theorem,
 
-∥u∥2 max ∥x t∥2
+$$\Vert u \Vert^2 \Big(\underset{t}{\operatorname{max}} \Vert x_t \Vert^2\Big)$$
 
-t
+which holds for any $u \in \mathbb{R}^d$ such that $y_tu^{top}x \geq 1$ for $t = 1, ..., m$.
 
-which holds for any u ∈Rd such that ytu⊤x ≥ 1 for t = 1,...,m.
+In a generic RKHS $\mathcal{H}_K$ , the linear separator $u$ is some $g \in \mathcal{H}_K$ such that $y_tg(x_t) \geq 1$ for $t = 1, ..., m$. The squared norm $\Vert x_t \Vert^2 = x{\top}_tx_t$ becomes $\Vert \phi_K(x)\Vert^2_K = \langle K(x,\cdot), K(x, \cdot)\rangle_K = K(x,x)$. Finally $\Vert u \Vert^2$ is replaced by
 
-t
 
-In a generic RKHS HK , the linear separator u is some g ∈ HK such that yt g(xt) ≥ 1 for t = 1,...,m. The squared norm ∥xt∥2 = x⊤t xt becomes ∥ϕK (x)∥2K = K(x,·),K (x,·) K = K(x,x).
 
-Finally ∥u∥2 is replaced by
+A more complex linear predictor that can be kernelized is ridge regression, $w = \big( \alpha I + S^{\top}S\big)^{−1}S^\top y$, where $S$ is the $m \times d$ matrix whose rows are the training points $x_1, ...,  x_m \in \mathbb{R}^d$ and $y = (y_1, ..., y_m)$ is the vector of training labels $y_t \in \mathbb{R}$. Using the identity
 
-N 2 N N N
+$$\Big( \alpha I + S^{\top}S\Big)^{−1}S^\top = S\top \Big(\alpha I + SS^\top\Big)^{−1} \quad  \text{ } \quad (6)$$
 
-∥f ∥2K = αi K(xi,·) = αi K(xi,·), αj K(xj,·) = αiαj K(xi,xj) .
+we can represent the ridge regression predictor in a generic RHKS by $y^\top \Big( \alpha I + K\Big)^{−1} k(\cdot)$, where $K$ is the $m \times m$ matrix with entries $K_{i,j} = K(x_i,x_j)$ and $k(\cdot)$ is the vector $\Big (K(x_1,\cdot), ..., K(x_m,\cdot)\Big)$ of functions $K(x_t,\cdot) = \langle \phi_K(x_t),\cdot \rangle_K$. Indeed, using $(6)$,
 
-i=1 K i=1 j=1 K i,j=1
+$$w^\top x = y^\top S \Big( \alpha I + S^\top S\Big)^{−1}x = y^\top \Big( \alpha I + SS^{\top}\Big)^{−1}Sx$$
 
-A more complex linear predictor that can be kernelized is ridge regression, w = αI + S⊤S −1S⊤y, where S is the m×d matrix whose rows are the training points x1,..., xm ∈Rd and y = (y1,...,ym) is the vector of training labels yt ∈R. Using the identity
+Now, the elements of $SS^\top$ are $x^\top_i x_j$, that in kernel space become $K(x_i, x_j)$. Similarly, the components of $Sx$ are $x^\top_i x$, that correspond to $K(x_i, x)$ in kernel space. Hence, the ridge regression prediction $w^\top x = y^\top S\Big( \alpha I + S^\top S\Big)^{−1}x$ in kernel space becomes $\langle g, \phi_K(x)\rangle_K = y^\top \Big( \alpha I + K\Big)^{−1}k(x)$.
 
-αI + S⊤S −1S⊤ = S⊤ αI + SS ⊤ −1 (6)
+Linear predictors in RKHS can incur overfitting. For example, by increasing the degree $n$ of a polynomial kernel $K_n$ we reduce the training error because higher-degree curves can be used to separate the training points. If the degree is too high, the predictor will overfit. A similar reasoning applies to Gaussian kernels $K_\gamma$. The $\gamma$ parameter corresponds to the width of the Gaussians centered on training points $x_s$. If $\gamma$ is small relatively to the typical squared distances $\Vert x_s − x \Vert^2$ between training and test points, then the classification of a test point $x$ is essentially determined by the training point closest to it. This implies a training error equal or close to zero, because, similarly to $1-NN$ classifiers,  the training points are never misclassified. Once again, the resulting predictor is likely to overfit. On the other hand, for values of $\gamma$ that are large with respect to the squared distances $\Vert x_s − x \Vert^2$, the Gaussians centered on training points are very wide, and the resulting predictors are similar to $k-NN$ classifiers when $k$ is chosen close to the training set size, which is likely to cause underfitting.
 
-we can represent the ridge regression predictor in a generic RHKS by y⊤ αI + K −1k(·), where K is the m × m matrix with entries K i,j = K(xi,xj) and k(·) is the vector K(x1,·),...,K (xm,·)
-
-of functions K(xt,·) = ϕK (xt),· K . Indeed, using (6),
-
-w⊤x = y⊤S αI + S⊤S −1x = y⊤ αI + SS ⊤ −1Sx
-
-Now, the elements of SS ⊤ are x⊤i xj, that in kernel space become K(xi,xj). Similarly, the com- ponents of Sx are x⊤i x, that correspond to K(x ,x) in kernel space. Hence, the ridge regression
-
-prediction w⊤x = y⊤S αI + S⊤S −1x in kernel spacei becomes g,ϕ (x) = y⊤ αI + K −1k(x).
-
-K K
-
-Linear predictors in RKHS can incur overfitting. For example, by increasing the degree n of a polynomial kernel Kn we reduce the training error because higher-degree curves can be used to separate the training points. If the degree is too high, the predictor will overfit. A similar reasoning applies to Gaussian kernels Kγ. The γ parameter corresponds to the width of the Gaussians centered
-
-on training points xs. If γ is small relatively to the typical squared distances ∥xs − x∥2 between training and test points, then the classification of a test point x is essentially determined by the
-
-training point closest to it. This implies a training error equal or close to zero, because —similarly
-
-to 1-NN classifiers— the training points are never misclassified. Once again, the resulting predictor
-
-is likely to overfit. On the other hand, for values of γ that are large with respect to the squared distances ∥xs − x∥2, the Gaussians centered on training points are very wide, and the resulting
-
-predictors are similar to k-NN classifiers when k is chosen close to the training set size, which is likely to cause underfitting.
-
-We established that any symmetric function K : X × X → R is a kernel if and only if the kernel matrix K is positive semidefinite. This is an important result, because it holds irrespective to the choice of the data space X. We can therefore define kernels on any set X: be it a set of matrices, sequences, trees, graphs, and so on. Kernels can be viewed as a way of encapsulating the data space, offering a uniform interface to a learning algorithm that can be efficiently run in the corresponding RKHS. In order to guide the intuition when designing a kernel function on a given data space X, one should recall that K(x,x′) implements an inner product between K(x, ·) and K(x′,·) in some RKHS. We can then first define a notion of similarity on X, and then adjust it so that arbitrary kernel matrices are always positive semidefinite.
-6
-
- n
-
-    n n
-
-    n n n k
-
-    1 + x⊤x′ = x⊤x′ . (3)
-
-    k
-
-    k=0
-
-    Now observe that
-[^2]: k k
-
-    x⊤x′ k = xix′i = xv x′v .
-
-    s s
-
-    i=1 v∈{1,...,d}k s=1
-
+We established that any symmetric function $K : \mathcal{X} \times \mathcal{X} \to \mathbb{R}$ is a kernel if and only if the kernel matrix $K$ is positive semidefinite. This is an important result, because it holds irrespective to the choice of the data space $\mathcal{X}$. We can therefore define kernels on any set $\mathcal{X}$: be it a set of matrices, sequences, trees, graphs, and so on. Kernels can be viewed as a way of encapsulating the data space, offering a uniform interface to a learning algorithm that can be efficiently run in the corresponding RKHS. In order to guide the intuition when designing a kernel function on a given data space $\mathcal{X}$, one should recall that $K(x,x')$ implements an inner product between $K(x, \cdot)$ and $K(x',\cdot)$ in some RKHS. We can then first define a notion of similarity on $\mathcal{X}$, and then adjust it so that arbitrary kernel matrices are always positive semidefinite.
 
 ----------------------------------------------------------------
 
