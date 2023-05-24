@@ -1281,25 +1281,28 @@ The equality $\langle f,\phi_K(x)\rangle_K = f(x)$ is known as **reproducing pro
 
 Next, we see how the inner product $\langle f,g \rangle_K$ between two arbitrary $f, g \in \mathcal{H}_K$ is computed, where
 
-
+$$f = \sum_{i = 1}^{N} \alpha_i K (x_i, \cdot) \quad \text{ and } \quad g = \sum_{j = 1}^{M}\beta_jK(x'_j, \cdot)$$
 
 Using once more the bilinearity of inner products,
 
-
+$$\langle f, g \rangle_K = \Bigg \langle  \sum_{i = 1}^{N} \alpha_i K (x_i, \cdot), \sum_{j = 1}^{M}\beta_jK(x'_j, \cdot)\Bigg \rangle_K$$
+$$= \sum_{i = 1}^{N} \alpha_i \Bigg \langle   K (x_i, \cdot), \sum_{j = 1}^{M}\beta_jK(x'_j, \cdot)\Bigg \rangle_K$$
+$$= \sum_{i = 1}^{N} \sum_{j = 1}^{M} \alpha_i \beta_j \Bigg \langle   K (x_i, \cdot), K(x'_j, \cdot)\Bigg \rangle_K$$
+$$= \sum_{i = 1}^{N} \sum_{j = 1}^{M} \alpha_i \beta_j K(x_i, x'_j)$$
 
 We can lift to any RKHS the bounds we derived for learning algorithms that can be run with kernels. For instance recall the bound on the number of mistakes provided by the Perceptron convergence theorem,
 
 $$\Vert u \Vert^2 \Big(\underset{t}{\operatorname{max}} \Vert x_t \Vert^2\Big)$$
 
-which holds for any $u \in \mathbb{R}^d$ such that $y_tu^{top}x \geq 1$ for $t = 1, ..., m$.
+which holds for any $u \in \mathbb{R}^d$ such that $y_tu^{\top}x_t \geq 1$ for $t = 1, ..., m$.
 
-In a generic RKHS $\mathcal{H}_K$ , the linear separator $u$ is some $g \in \mathcal{H}_K$ such that $y_tg(x_t) \geq 1$ for $t = 1, ..., m$. The squared norm $\Vert x_t \Vert^2 = x{\top}_tx_t$ becomes $\Vert \phi_K(x)\Vert^2_K = \langle K(x,\cdot), K(x, \cdot)\rangle_K = K(x,x)$. Finally $\Vert u \Vert^2$ is replaced by
+In a generic RKHS $\mathcal{H}_K$ , the linear separator $u$ is some $g \in \mathcal{H}_K$ such that $y_tg(x_t) \geq 1$ for $t = 1, ..., m$. The squared norm $\Vert x_t \Vert^2 = x^{\top}_tx_t$ becomes $\Vert \phi_K(x)\Vert^2_K = \langle K(x,\cdot), K(x, \cdot)\rangle_K = K(x,x)$. Finally $\Vert u \Vert^2$ is replaced by
 
-
+$$\Vert f \Vert^2_K = \Bigg \Vert \sum_{i = 1}^{N}\alpha_iK(x_i, \cdot)\Bigg \Vert^2_K = \Bigg \langle  \sum_{i = 1}^{N} \alpha_i K (x_i, \cdot), \sum_{j = 1}^{N}\alpha_jK(x_j, \cdot)\Bigg \rangle_K = \sum_{i, j = 1}^{N}\alpha_i \alpha_j K (x_i, x_j)$$
 
 A more complex linear predictor that can be kernelized is ridge regression, $w = \big( \alpha I + S^{\top}S\big)^{−1}S^\top y$, where $S$ is the $m \times d$ matrix whose rows are the training points $x_1, ...,  x_m \in \mathbb{R}^d$ and $y = (y_1, ..., y_m)$ is the vector of training labels $y_t \in \mathbb{R}$. Using the identity
 
-$$\Big( \alpha I + S^{\top}S\Big)^{−1}S^\top = S\top \Big(\alpha I + SS^\top\Big)^{−1} \quad  \text{ } \quad (6)$$
+$$\Big( \alpha I + S^{\top}S\Big)^{−1}S^\top = S^\top \Big(\alpha I + SS^\top\Big)^{−1} \quad  \text{ } \quad (6)$$
 
 we can represent the ridge regression predictor in a generic RHKS by $y^\top \Big( \alpha I + K\Big)^{−1} k(\cdot)$, where $K$ is the $m \times m$ matrix with entries $K_{i,j} = K(x_i,x_j)$ and $k(\cdot)$ is the vector $\Big (K(x_1,\cdot), ..., K(x_m,\cdot)\Big)$ of functions $K(x_t,\cdot) = \langle \phi_K(x_t),\cdot \rangle_K$. Indeed, using $(6)$,
 
