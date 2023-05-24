@@ -1185,7 +1185,7 @@ Linear predictors may potentially suffer from a large approximation error becaus
 
 For example, consider the quadratic feature-expansion map $\phi : \mathbb{R}^2 \to \mathbb{R}^6$ defined by $\phi(x_1, x_2) = (1, x_1^2, x_2^2, x_1, x_2, x_1x_2)$. Recall that a homogeneous hyperplane in $\mathbb{R}^6$ with coefficients given by $w = (w_1, ..., w_6)$ is the set of points $\{z \in \mathbb{R}^6 : w^{\top}z = 0\}$. Now note that $w^{\top}\phi(x) = w_1 + w_2x^2_1+ w_3x^2_2+ w_4x1+w_5x_2 + w_6x_1x_2$. Sets of the form $\{x \in \mathbb{R}^2 : w_1 + w_2x_1^2 + w_3x_2^2 + w_4x_1 + w_5x_2 + w_6x_1x_2 = 0\}$ describe second-degree curves on the plane $\mathbb{R}^2$. These  surfaces include ellipses, parabolas, and hyperbolas.
 
-In general, we may consider polynomial feature expansion maps $\phi : \mathbb{R}^d \to \mathcal{H}$, where $\mathcal{H} \equiv \mathbb{R}^N$ , that use features of the form $\prod_{s 0 1}^{k}x_{v_s} for all $v \in \{1,...,d\}^k$ and for all $k = 0, 1, ..., n$ (the previous example is a special case for $d = 2$ and $n = 2$). Fix such a $\phi$ and consider the classifier $h : \mathbb{R}^d \to \{−1,1\}$ defined by
+In general, we may consider polynomial feature expansion maps $\phi : \mathbb{R}^d \to \mathcal{H}$, where $\mathcal{H} \equiv \mathbb{R}^N$ , that use features of the form $\prod_{s = 1}^{k}x_{v_s}$ for all $v \in \{1,...,d\}^k$ and for all $k = 0, 1, ..., n$ (the previous example is a special case for $d = 2$ and $n = 2$). Fix such a $\phi$ and consider the classifier $h : \mathbb{R}^d \to \{−1,1\}$ defined by
 
 $$h(x) = \operatorname{sgn}(w^{\top}\phi(x)) \quad \text {where } \quad w^{\top}\phi(x) = \sum_{i = 1}^{N}w_i \phi(x)_i$$
 
@@ -1220,7 +1220,7 @@ $$h_K(x) = \operatorname{sgn}\Bigg(\sum_{s \in S}y_sK(x_s, x) \Bigg)\quad \text{
 Below here, we give the pseudo-code of the Kernel Perceptron algorithm.
 
 ## Algorithm: Kernel Perceptron
-Let S be the empty set.
+Let S be the empty set.<br />
 For all $t = 1, 2, ...$
 1) get next example $(x_t, y_t)$;
 2) compute $\hat{y}_t = \operatorname{sgn} \Bigg(\sum_{s \in S}y_sK(x_s, x_t)\Bigg)$;
@@ -1232,17 +1232,17 @@ $$(1 + x^{\top}x')^n = \sum_{k = 0}^{n} \binom{n}{k}(x^{\top}x')\quad \text{ } \
 
 Now observe that
 
-$$$$
+$$(x^\top x')^k = \Big(\sum_{i = 1}^{d}x_ix'_i \Big)^k = \sum_{v \in \{1, ..., d\}^k}\Big(\prod_{s = 1}^{k} x_{v_s}x'_{v_s}\Big)$$
 
 Therefore, 
 
-
+$$\phi_n(x) = \Bigg( \sqrt{\binom{n}{k}} \prod_{s = 1}^{k}x_{v_s}\Bigg)_{k = 0, ..., n,\text{ } v \in \{1, ..., d\}^k} \quad \text{ } \quad (4)$$
 
 In other words, the feature map $\phi_n: \mathbb{R}^d \to \mathbb{R}^N$ associated with the polynomial kernel $K_n$ sends each $x \in \mathbb{R}^d$ to a vector whose components are indexed by all monomials $\prod_{s = 1}^k x_{v_s}$ of degree at most $n$ and weighted by the roots of the binomial coefficients.
 
 Another type of kernel is the Gaussian kernel,
 
-
+$$K_{\gamma}(x, x') = \operatorname{exp}\Big(-\frac{1}{2\gamma} \Vert x - x'\Vert^2\Big) \quad \text{ } \quad \gamma > 0$$
 
 In order to derive the map $\phi_\gamma$ associated with $K_\gamma$ we proceeed as follows,
 
@@ -1252,9 +1252,9 @@ where we used the Taylor series expansion $e^x = 1 + x + \frac{x^2}{2!} + ···
 
 Note that predictors of the form $(2)$ that utilize Gaussian kernels predict any point $x$ using a linear combination (with coefficients $y_t$) of Gaussians $e^{-z^2/(2\gamma)}$ centered on $x_s$ for $s \in S$ and evaluated at $x$.
 
-The Gaussian kernel is universal in the following sense: for each $\gamma > 0$, for each continuous function $f : \mathbb{R}^d \to \mathbb{R}$, and for each $\varepsilon > 0$, there exists a function $g$ of the form
+The Gaussian kernel is **universal** in the following sense: for each $\gamma > 0$, for each continuous function $f : \mathbb{R}^d \to \mathbb{R}$, and for each $\varepsilon > 0$, there exists a function $g$ of the form
 
-
+$$g = \sum_{i = 1}^{N} \alpha_i K_\gamma(x_i, \cdot)$$
 
 for some $x_1, ..., x_N \in \mathcal{X}, \alpha_1, ..., \alpha_N \in  \mathbb{R}$, and $N \in \mathbb{N}$ such that $g$ approximates $f$ with error bounded by $\varepsilon$. An important consequence of this fact is that learning algorithms that use Gaussian kernels can be consistent (that is, the expected risk of their predictors converges to the Bayes risk as the sample size grows to infinity).
 
