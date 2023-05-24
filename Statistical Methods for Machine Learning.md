@@ -1246,7 +1246,8 @@ $$K_{\gamma}(x, x') = \operatorname{exp}\Big(-\frac{1}{2\gamma} \Vert x - x'\Ver
 
 In order to derive the map $\phi_\gamma$ associated with $K_\gamma$ we proceeed as follows,
 
-
+$$\operatorname{exp}\Big(-\frac{1}{2\gamma} \Vert x - x' \Vert^2 \Big) = \operatorname{exp}\Big(-\frac{1}{2\gamma} (\Vert x \Vert^2 + \Vert x' \Vert^2 \Big)$$
+$$= \operatorname{exp}\Big(-\frac{\Vert x \Vert^2}{2\gamma} \Big) \operatorname{exp}\Big(-\frac{\Vert x' \Vert^2}{2\gamma} \Big) \sum_{n = 0}^{\infty} \frac{1}{n!} \frac{(x^\top x')^n}{\gamma^n} \quad \text{ }\quad (5)$$
 
 where we used the Taylor series expansion $e^x = 1 + x + \frac{x^2}{2!} + ···$. A closer look at $(5)$ reveals that the Gaussian kernel is a linear combination of infinitely many polynomial kernels $(3)$ of increasing degree, each weighted by the reciprocal of the factorial of its degree. The parameter $\gamma$ is a scaling factor for the products $x^{\top}x'$. Finally, the factors $e^{-\Vert x \Vert^2 / (2 \gamma)}e^{-\Vert x' \Vert^2/(2\gamma)}$ normalize with respect to $x$ and $x'$ giving $K_\gamma(x,x) = 1$ for each $x \in \mathbb{R}^d$.
 
@@ -1258,23 +1259,23 @@ $$g = \sum_{i = 1}^{N} \alpha_i K_\gamma(x_i, \cdot)$$
 
 for some $x_1, ..., x_N \in \mathcal{X}, \alpha_1, ..., \alpha_N \in  \mathbb{R}$, and $N \in \mathbb{N}$ such that $g$ approximates $f$ with error bounded by $\varepsilon$. An important consequence of this fact is that learning algorithms that use Gaussian kernels can be consistent (that is, the expected risk of their predictors converges to the Bayes risk as the sample size grows to infinity).
 
-Given a data space $\mathcal{X}$ (not necessarily $\mathbb{R}^d$) and a symmetric function $K : \mathcal{X} \times \mathcal{X} \to \mathbb{R}$ how can we check whether $K$ is a kernel? In other words, we want to know whether there exists a feature map $\phi_K: \mathcal{X} \to \mathcal{H}_K$, where $\mathcal{H}_K$ is a linear space with inner product $a$ such that $b$ for all. The space $\mathcal{H}_K$ must be linear because our algorithms build linear predictors using additive updates. Luckily, there is a very simple characterization: $K$ is a kernel if and only if for all $m \in \mathbb{N}$ and for all $x_1, ..., x_m \in  \mathcal{X}$, the $m\times m$ matrix $K$ such that $K_{i, j} = K(x_i, x_j)$ is positive semidefinite. That is, $z^{top}Kz \geq 0$ for all $z \in \mathbb{R}^m$.
+Given a data space $\mathcal{X}$ (not necessarily $\mathbb{R}^d$) and a symmetric function $K : \mathcal{X} \times \mathcal{X} \to \mathbb{R}$ how can we check whether $K$ is a kernel? In other words, we want to know whether there exists a feature map $\phi_K: \mathcal{X} \to \mathcal{H}_K$, where $\mathcal{H}_K$ is a linear space with inner product $\langle \cdot, \cdot \rangle$ such that $\langle \phi_K(x), \phi_K(x')\rangle_K = K(x, x')$ for all $x, x' \in \mathcal{X}$. The space $\mathcal{H}_K$ must be linear because our algorithms build linear predictors using additive updates. Luckily, there is a very simple characterization: $K$ is a kernel if and only if for all $m \in \mathbb{N}$ and for all $x_1, ..., x_m \in  \mathcal{X}$, the $m\times m$ matrix $K$ such that $K_{i, j} = K(x_i, x_j)$ is positive semidefinite. That is, $z^{\top}Kz \geq 0$ for all $z \in \mathbb{R}^m$.
 
 The above result tells us the conditions under which $\phi_K$ exists for a given $K$. On the other hand, it does not tell us how $\phi_K$ looks like. In fact, there is no unique representation of the pair $\big(\Phi_K ,\mathcal{H}_K\big)$ for a given kernel $K$. However, it can be shown that if $K$ is a kernel, then we can always represent $\phi_K : \mathcal{X} \to \mathcal{H}_K$ as $\phi_K(x) = K(x, \cdot )$. Now, since $\mathcal{H}_K$ must be a linear space, we define it as the set of all linear combinations of $K(x,\cdot)$ for arbitrary choices of the coefficients and of the points $x \in  \mathcal{X}$,
 
-
+$$\mathcal{H}_K \equiv \Bigg \{\sum_{i = 1}^N \alpha_i K(x_i, \cdot) : x_1, ..., x_N \in \mathcal{X}, \alpha_i, ...., \alpha_N \in \mathbb{R}, N \in \mathbb{N} \Bigg\}$$
 
 An element $f \in \mathcal{H}_K$ is then a function $f : \mathcal{X} \to \mathbb{R}$ such that
 
-$$f8x) = \sum_{i = 1}^{N}\alpha_iK(x_i, x)$$
+$$f(x) = \sum_{i = 1}^{N}\alpha_iK(x_i, x)$$
 
 for some $x_1, ..., x_N \in \mathcal{X}, \alpha_1, ..., \alpha_N \in \mathbb{R}$, and $N \in \mathbb{N}$.
 
 A learning algorithm producing linear predictors $g \in \mathcal{H}_K$ becomes nonparametric when $K$ is the Gaussian kernel and $N$ (the number of terms in the sum defining any $g \in \mathcal{H}_K$) is free to grow unbounded as the sample size increases. If, instead, $K$ is a kernel such that $\phi_K$ maps $\mathcal{X}$ to a finite dimensional space, then any $g \in \mathcal{H}_K$ can be always represented with a fixed number of parameters, and therefore any algorithm choosing predictors from $\mathcal{H}_K$ is parametric.
 
-For linear predictors $w \in \mathbb{R}^d$, we compute $w^{\top}x$ using the standard notion of Euclidean inner product. For linear predictors $f \in \mathcal{H}_K$ , instead, we compute $\langle f, \phi_K(x)\rangle_K$ using the inner product for $\mathcal{H}_K$ . Now, since $\phi_K$ is the feature map for $K$, we must have $\langle \phi_K(x), \phi_K(x')\langle_k = K(x,x')$. Thus, recalling that the inner product is a bilinear operator, we can write
+For linear predictors $w \in \mathbb{R}^d$, we compute $w^{\top}x$ using the standard notion of Euclidean inner product. For linear predictors $f \in \mathcal{H}_K$ , instead, we compute $\langle f, \phi_K(x)\rangle_K$ using the inner product for $\mathcal{H}_K$ . Now, since $\phi_K$ is the feature map for $K$, we must have $\langle \phi_K(x), \phi_K(x')\rangle_K = K(x,x')$. Thus, recalling that the inner product is a bilinear operator, we can write
 
-
+$$\langle f, \phi_K(x)\rangle_K = \sum_{i = 1}^{N}\alpha_i \langle K(x_i, \cdot), \phi_K(x)\rangle_K = \sum_{i = 1}^{N} \alpha_i \langle \phi_K(x_i), \phi_K(x)\rangle_K = \sum_{i = 1}^{N} \alpha_i K(x_i, x) = f(x)$$
 
 The equality $\langle f,\phi_K(x)\rangle_K = f(x)$ is known as **reproducing property**. For this reason, $\mathcal{H}_K$ (or, more precisely, an appropriate completion of $\mathcal{H}_K$ ) is also known as **reproducing kernel Hilbert space** (**RKHS**).
 
