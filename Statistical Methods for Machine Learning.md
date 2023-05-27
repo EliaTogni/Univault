@@ -1355,63 +1355,32 @@ Consider the problem
 
 $$$$
 
-where the functions f,g1,...,gm are all differentiable. If w0 is an optimal solution, then there exists a nonnegative vector α ∈Rm such that
+where the functions $f, g_1, ..., g_m$ are all differentiable. If $w_0$ is an optimal solution, then there exists a nonnegative vector $\alpha \in \mathbb{R}^m$ such that
 
-∇f (w0) + αt∇gt(w0) = 0
+$$\nabla f(w_0) + \sum_{t \in I}\alpha_t\nabla_{g_t}(w_0) = 0$$
 
-t∈I
+where $I = \{1 \leq t \leq m : g_t(w_0) = 0\}$.
 
-where I = {1 ≤ t ≤ m : gt(w0) = 0}.
+By applying the Fritz John optimality condition to the SVM objective with $f(w) = \frac{1}{2} \Vert w \Vert^2$ and $g_t(w) = 1 − y_tw^{\top}x_t$ we obtain
 
-By applying the Fritz John optimality condition to the SVM objective with f (w) = 1 ∥w∥[^3] and
-
-2
-
-⊤
-
-gt(w) = 1 − yt w xt we obtain
-
-w∗− αtyt xt = 0 .
-
-t∈I
+$$w^* - \sum_{t \in I} \alpha_ty_tx_t = 0$$
 
 Hence, the optimal solution has form
 
-w∗= αty xt
-
-t
-
-t∈I
-
-∗ ⊤
-
-where I denotes the set of training examples (xt,yt) such that yt(w ) xt = 1. These xt are called support vectors, and are all those training points for which the margin of w∗is exactly 1. If we
-
-removed all training examples except for the support vectors, the SVM solution would not change.
+$$w^* = \sum_{t \in I} \alpha_ty_yx_t$$
+where I denotes the set of training examples $(x_t, y_t)$ such that $y_t(w^*)^{\top} x_t = 1$. These $x_t$ are called **support vectors**, and are all those training points for which the margin of $w^*$ is exactly $1$. If we removed all training examples except for the support vectors, the SVM solution would not change.
 
 We now move on to consider the case of a training set that is not linearly separable. How should we change the SVM objective? Conside the following formulation
 
-λ 2 1 m
 
-min 2 m ξt
 
-∥w∥ +
+The components of $\xi = (\xi_1, ..., \xi_m)$ are called **slack variables** and measure how much each margin constraint is violated by a potential solution $w$. The average of these violations is then added to the objective function. Finally, a regularization parameter $\lambda > 0$ is introduced to balance the two terms.
 
-(w,ξ)∈Rd+m yt w⊤xt ≥ 1 −t=1ξ
+We now consider the constraints involving the slack variables $\xi_t$. That is, $\xi_t \geq 1 − y_tw^{\top}x_t and \xi_t \geq 0$. In order to minimize each $\xi_t$, we can set
 
-s.t. t t = 1,...,m
 
-ξt ≥ 0 t = 1,...,m.
 
-The components of ξ = (ξ1,...,ξm) are called slack variables and measure how much each margin constraint is violated by a potential solution w. The average of these violations is then added to the objective function. Finally, a regularization parameter λ > 0 is introduced to balance the two terms.
-
-We now consider the constraints involving the slack variables ξt. That is, ξt ≥ 1 − yt w⊤xt and ξt ≥ 0. In order to minimize each ξt, we can set
-
-ξ = 1 − yt w⊤xt if yt w⊤xt < 1
-
-t 0 otherwise.
-
-TOtherwise,o see this,iffixthewconstrain∈Rd. Ifthetis constrainnot satisfiedt yt wby ⊤xw,≥xthen1. Suis satisfiedwmemarizinset ξtbg,y wξt,=then1−ξyt w⊤xt +, which is
+To see this,iffixthewconstrain∈Rd. Ifthetis constrainnot satisfiedt yt wby ⊤xw,≥xthen1. Otherwise,Suis satisfiedwmemarizinset ξtbg,y wξt,=then1−ξyt w⊤xt +, which is
 
 t t can be set to zero. to the smallest value such that
 
