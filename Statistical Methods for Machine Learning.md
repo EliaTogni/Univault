@@ -1316,6 +1316,391 @@ We established that any symmetric function $K : \mathcal{X} \times \mathcal{X} \
 
 ----------------------------------------------------------------
 
+# Support Vector Machines
+
+The **Support Vector Machine** (**SVM**) is an algorithm for learning linear classifiers. Given a linearly separable training set $(x_1, y_1), ..., (x_m,y_) \in \mathbb{R}^d \times \{−1, 1\}$, SVM outputs the linear classifier corresponding to the unique solution $w^* \in \mathbb{R}^d$ of the following convex optimization problem with linear constraints
+
+$$\underset{w \in \mathbb{R}^d}{\operatorname{min}} \frac{1}{2}\Vert w \Vert ^2 \quad \text{ } \quad (1)$$
+$$\text{s.t. }\quad y_tw^{\top}x_t \geq 1 \quad t = 1, ..., m$$
+
+Geometrically, $w^*$ corresponds to the **maximum margin separating hyperplane**. For every linearly separable set $(x_1, y_1), ..., (x_m, y_m) \in \mathbb{R}^d \times \{−1, 1\}, the maximum margin is defined by
+
+$$\gamma^* = \underset{u: \Vert u \Vert = 1}{\operatorname{max}} \underset{t = 1, ..., m}{\operatorname{min}} y_t u^{\top}x_t$$
+
+and the vector $u^*$ achieving the maximum margin is the maximum margin separator.
+
+## Theorem $1$
+For every linearly separable set $(x_1, y_1), ..., (x_m, y_m) \in \mathbb{R}^d \times \{−1, 1\}$, the maximum margin separator $u^*$ satisfies $u^* =  \gamma^*w^*$, where $w^*$ is the unique solution of $(1)$.
+
+**Proof**: Note that $u^*$ is the solution of the following optimization problem
+
+$$\underset{u \in \mathbb{R}^d, \gamma > 0}{\operatorname{max}} \quad \gamma^2$$
+$$\text{s.t.} \quad \Vert u \Vert ^2 = 1$$
+$$\quad \text{ } \quad y_tu^{\top}x_t \geq \gamma \quad \text{ } t = 1, ..., m$$
+
+Indeed, $u$ maximizing the margin $\gamma$ is the same $u$ maximizing $\gamma^2$ because the function $f(\gamma) = \gamma^2$, is monotone for $\gamma > 0$. Dividing by $\gamma > 0$ both sides of each constraint $y_t u^{\top} x_t \geq \gamma$, we obtain the equivalent constraint $y_t(u^{\top} x_t)/ \gamma \geq 1$. Introducing $w = u/\gamma$, and noting that $\Vert w \Vert^2 = 1/\gamma^2$ because of the constraint $\Vert u \Vert^2 = 1$, we obtain the equivalent problem
+
+$$\underset{u \in \mathbb{R}^d,\gamma > u}{\operatorname{max}} \quad \gamma^2$$
+$$\text{s.t. } \gamma^2 \Vert w \Vert^2 = 1$$
+$$y_tw^{\top}x_t \geq 1 \quad t = 1, ..., m$$
+
+We have thus shown the equivalence between the problem of maximizing the margin of $u$ while keeping the norm $\Vert u \Vert constant, and the problem of minimizing the norm $\Vert w \Vert while keeping the margin of $w$ constant.
+
+The following result helps us compute the form of the optimal solution $w^*$.
+
+----------------------------------------------------------------
+
+## Lemma $2$ (Fritz John optimality condition)
+Consider the problem
+
+$$$$
+
+where the functions f,g1,...,gm are all differentiable. If w0 is an optimal solution, then there exists a nonnegative vector α ∈Rm such that
+
+∇f (w0) + αt∇gt(w0) = 0
+
+t∈I
+
+where I = {1 ≤ t ≤ m : gt(w0) = 0}.
+
+By applying the Fritz John optimality condition to the SVM objective with f (w) = 1 ∥w∥[^3] and
+
+2
+
+⊤
+
+gt(w) = 1 − yt w xt we obtain
+
+w∗− αtyt xt = 0 .
+
+t∈I
+
+Hence, the optimal solution has form
+
+w∗= αty xt
+
+t
+
+t∈I
+
+∗ ⊤
+
+where I denotes the set of training examples (xt,yt) such that yt(w ) xt = 1. These xt are called support vectors, and are all those training points for which the margin of w∗is exactly 1. If we
+
+removed all training examples except for the support vectors, the SVM solution would not change.
+
+We now move on to consider the case of a training set that is not linearly separable. How should we change the SVM objective? Conside the following formulation
+
+λ 2 1 m
+
+min 2 m ξt
+
+∥w∥ +
+
+(w,ξ)∈Rd+m yt w⊤xt ≥ 1 −t=1ξ
+
+s.t. t t = 1,...,m
+
+ξt ≥ 0 t = 1,...,m.
+
+The components of ξ = (ξ1,...,ξm) are called slack variables and measure how much each margin constraint is violated by a potential solution w. The average of these violations is then added to the objective function. Finally, a regularization parameter λ > 0 is introduced to balance the two terms.
+
+We now consider the constraints involving the slack variables ξt. That is, ξt ≥ 1 − yt w⊤xt and ξt ≥ 0. In order to minimize each ξt, we can set
+
+ξ = 1 − yt w⊤xt if yt w⊤xt < 1
+
+t 0 otherwise.
+
+TOtherwise,o see this,iffixthewconstrain∈Rd. Ifthetis constrainnot satisfiedt yt wby ⊤xw,≥xthen1. Suis satisfiedwmemarizinset ξtbg,y wξt,=then1−ξyt w⊤xt +, which is
+
+t t can be set to zero. to the smallest value such that
+
+the constraint becomes satisfied, namely 1 − y w⊤
+
+t t
+
+exactly the hinge loss ht(w) of w.
+
+The SVM problem can then be re-formulated as min F (w), where
+
+w∈Rd
+
+F (w) = 1 m ht(w) + 2 ∥w∥2 .
+
+λ
+
+m
+
+t=1
+
+We now show that, even when the training set is not linearly separable, the solution w∗belongs to the subspace defined by linear combinations of training points multiplied by their labels.
+
+Theorem 3. The minimizer w∗ of F can be written as a linear combination of y1x1,...,ymxm. Proof. By contradiction, assume
+
+m
+
+w∗= αt yt xt + u (2)
+
+t=1
+
+where u ∈Rd is the component of w∗orthogonal to the subspace spanned by x1,..., xm. Therefore,
+
+ytu⊤xt = 0 t = 1,...,m. (3) Now, let v = w∗− u. First, ∥v∥2 ≤ ∥w∗∥2 because in (2) we wrote w∗as a sum of two orthogonal
+
+components and we removed one of them, and so its length decreased. Second,
+
+ht(v) = 1 − ytv⊤xt = 1 − yt w∗− u ⊤xt = 1 − yt(w∗)⊤xt + ytu⊤xt = ht(w∗)
+
+\+ + +
+
+using (3). Therefore F (v) ≤ F (w∗), contradicting the optimality of w∗. Hence u = 0 and the proof is concluded. □
+
+Note that, as in the linearly separable case, w∗ generally depends on a subset of support vectors. However, unlike the linearly separable case, these support vectors also include the training points associated with positive slack variables.
+
+We proceed by showing how F can be minimized using Online Gradient Descent (OGD). First, observe that
+
+1 m
+
+F (w) = ℓ (w)
+
+m t
+
+t=1
+
+where ℓt(w) = ht(w)+ λ2 ∥w∥2 is a strongly convex function. Indeed, 2 ∥w∥2 is λ-strongly convex,
+
+λ
+
+and ht is convex (and also piecewise linear). This implies that their sum is λ-strongly convex. We can then apply the OGD algorithm for strongly convex functions to the set of losses ℓ1,...,ℓm. This instance of OGD, which is known as Pegasos, can be described as follows.
+
+[^4]Parameters: number T of rounds, regularization coefficient λ > 0 Input:![](Aspose.Words.ac1dd16f-25dd-422d-8423-93d10833aa9d.002.png) Training set (x1,y1),..., (xm,ym) ∈Rd × {−1,1}
+
+Set w1 = 0
+
+For t = 1,...,T
+
+1. Draw uniformly at random an element (xZ ,yZ ) from the training set t t
+1. Set wt+1 = wt − ηt∇ℓZ (wt)
+
+t
+
+Output: w = 1 w + ···+ w .
+
+T 1 T
+
+Pegasos is an example of a class of algorithms known as stochastic gradient descent. These are OGD-like algorithms that are run over a sequence of examples randomly drawn from the training set.
+
+We now move on to analyze Pegasos. Let (xZ ,yZ1),..., (xZ ,yZ ) the sequence of training set ex-
+
+1 T T
+
+sequence of loss functions. Namely, ℓ t(w) = hZt(w)+ 2 ∥w∥2 whereℓZh1, t.(.w.,)ℓZ=T the1−correspy w⊤ondinx t g. amples that were drawn at random in step 1 of the algorithm, and let
+
+λ
+
+Z Z Zt Z +
+
+Let w∗be the optimal SVM solution,
+
+w∗= argmin m1  ht(w) + λ ∥w∥2 . (4)
+
+m
+
+w∈Rd t=1 2
+
+For every realization s1,...,sT of the random variables Z1,...,ZT, OGD analysis for strongly convex losses immediately gives
+
+1 T 1 T G2
+
+T ℓst(wt) ≤ T ℓst(w∗) + 2λT ln(T + 1) (5)
+
+t=1 t=1
+
+where G = max ∥∇ℓst(wt)∥is also a random variable.
+
+t=1,...,T
+
+In order to show how this result can be used to bound F (w), we use the following fact![](Aspose.Words.ac1dd16f-25dd-422d-8423-93d10833aa9d.003.png)
+
+1 m
+
+E ℓZ (wt) | Z1,...,Zt−1 = ℓs(wt) = F (wt) . (6)
+
+[^5] m
+
+s=1
+
+X,Y the following holds E[X] = E E[X | Y] . Hence, we can write
+
+1 T![](Aspose.Words.ac1dd16f-25dd-422d-8423-93d10833aa9d.004.png)
+
+E F (w) = E F T wt
+
+t=1
+
+1 T
+
+- E T t using Jensen inequality, since
+
+F (w ) F is convex
+
+t=1
+
+1 T
+
+- E E ℓZ (wt) | Z1,...,Zt−1 using (6)
+
+T t
+
+t=1
+
+T
+
+- E T1 ℓZt(wt) using E[X] = E E[X | Y]
+
+t=1
+
+- E 1 T ℓ (w∗) + E G2 ln T + 1 using (5)![](Aspose.Words.ac1dd16f-25dd-422d-8423-93d10833aa9d.005.png)
+
+T Zt 2λT
+
+t=1
+
+T E G2
+
+- E 1 E ℓZ (w∗) | Z1,...,Zt−1 + ln T + 1 using E[X] = E E[X | Y]![](Aspose.Words.ac1dd16f-25dd-422d-8423-93d10833aa9d.006.png)
+
+T t 2λT
+
+t=1
+
+E G2
+
+- F (w∗) +~~ ln(T + 1) using (6).
+
+2λT
+
+We thus obtained
+
+E G2![](Aspose.Words.ac1dd16f-25dd-422d-8423-93d10833aa9d.007.png)
+
+E F (w) ≤ F (w∗) + ln T + 1 . (7)![](Aspose.Words.ac1dd16f-25dd-422d-8423-93d10833aa9d.008.png)
+
+2λT
+
+Therefore, if E G2 can be upper bounded by a constant, the average w of the vectors generated by OGD![](Aspose.Words.ac1dd16f-25dd-422d-8423-93d10833aa9d.009.png) converges (in expectation with respect to the random draw of the elements from the training
+
+set) to w∗with rate ln T . With a bit more work, one can show that w converges to w∗not only in![](Aspose.Words.ac1dd16f-25dd-422d-8423-93d10833aa9d.010.png)
+
+T
+
+expectation but also in probability.
+
+We now bound G for every realization s1,...,sT of the random variables Z1,...,ZT. We have ∇ℓs (wt) = −ys xs I{hs (wt) > 0} + λ wt. Let vt = ys xs I{hs (wt) > 0}. Because ηt = 1/(λt),
+
+t t t t t t t
+
+the update rule for wt takes the following simple form,
+
+wt+1 = wt − ηt∇ℓt(wt) = wt + ηtvt − ηtλwt = 1 − 1t wt + λt vt .
+
+1
+
+Let X = maxs=1,...,m ∥xs∥. Since ∥∇ℓs (wt)∥ ≤ ∥vt∥+ λ ∥wt∥ ≤ X + λ ∥wt∥, we are left with the task of computing an upper bound for t∥wt∥. In order to do so, we look at the recurrence
+
+wt+1 = 1 − 1 wt + λt vt .
+
+1
+
+t
+
+As one can easily show by induction, wt+1 can be written as a linear combination of v1,..., vt. In order to determine the coefficients of this linear combination, we fix s ≤ t and observe that vs is added to the sum with coefficient 1/(λs). When wt+1, is computed, the coefficient of vs has become
+
+1 t 1 1 t r − 1 1
+
+1 − = = .
+
+λs r λs r λt
+
+r=s+1 r=s+1
+
+We thus obtain a simple expression for wt+1,
+
+wt+1 = λt1  vs . (8)
+
+t
+
+s=1
+
+Because wt+1 is an average of v divided by λ, we finally have ∥wt+1∥ ≤ 1 max ∥vs∥ ≤ 1X. This
+
+s λ s λ
+
+allows us to conclude that ∥∇ℓt(wt)∥ ≤ X + λ ∥wt∥ ≤ 2X. Substituting this bound for G in (7) we get
+
+2X 2![](Aspose.Words.ac1dd16f-25dd-422d-8423-93d10833aa9d.011.png)
+
+E F (w) ≤ F (w∗) + ln(T + 1) .
+
+λT
+
+Theorem 3 states that the solution w∗to the SVM problem can be written as
+
+w∗= ysαsxs
+
+s∈S
+
+where αs > 0 and S ≡ {t = 1,...,m : ht(w∗) > 0}. An important consequence of this result is that we can solve the problem (4) in a RKHS HK , where the objective function F becomes
+
+1 m λ
+
+∥g∥2
+
+FK (g) = m ht(g) + 2 K g ∈ HK
+
+t=1
+
+with ht(g) = 1 − ytg(xt) +. In HK , the SVM solution can therefore be written as
+
+ysαsK(xs,·)
+
+s∈S
+
+which is clearly an element of the RKHS
+
+N
+
+HK ≡ αi K(xi,·) : x1,..., xN ∈Rd, α1,...,αN ∈R, N ∈N
+
+i=1
+
+As we did for the Perceptron, we can run Pegasos in the RKHS HK . The gradient update in kernel Pegasos on some training example (xs ,ys ) can be written as
+
+t t
+
+g = 1 − 1 g + yst I{h (g ) > 0}K(x ,·) t+1 t t λt st t st
+
+where hst(gt) = 1 − ystgt(xst) +.
+7
+
+[^1]: Now observe that the constraint γ2 ∥w∥2 = 1 is redundant and can be eliminated. Indeed, for all
+[^2]: ∈Rd we can find γ > 0 such that the constraint is satisfied. Multiplying the objective function
+
+    by 12, we obtain
+
+    min 1 ∥w∥2
+
+    d 2
+
+    ws.t.∈R yt w⊤xt ≥ 1 t = 1,...,m
+
+    concluding the proof. □
+[^3]: 
+[^4]: In other words, conditioned on the first t − 1 random draws (which determine wt), the expected value of ℓZ (wt) is equal to F (wt). We also use the fact that for every pair of random variables
+[^5]: 
+
+----------------------------------------------------------------
+
 # Quiz list for the written test
 A variable subset of this quiz list will be used to create the written test in each exam session. The list will be expanded as the course nears its end. Bonus quizzes (not in this list) will be added to each test for extra points.
 
