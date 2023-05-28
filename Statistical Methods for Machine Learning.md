@@ -1344,7 +1344,14 @@ $$\underset{u \in \mathbb{R}^d,\gamma > u}{\operatorname{max}} \quad \gamma^2$$
 $$\text{s.t. } \gamma^2 \Vert w \Vert^2 = 1$$
 $$y_tw^{\top}x_t \geq 1 \quad t = 1, ..., m$$
 
-We have thus shown the equivalence between the problem of maximizing the margin of $u$ while keeping the norm $\Vert u \Vert constant, and the problem of minimizing the norm $\Vert w \Vert while keeping the margin of $w$ constant.
+Now observe that the constraint $\gamma^2 \Vert w \Vert^2 = 1$ is reduntant and can be eliminated. Indeed, for all $w \in \mathbb{R}^d$ we can find $\gamma >0$ such that the constraint is satisfied. Multiplying the objective function by $\frac{1}{2}$, we obtain
+
+$$\underset{w \in \mathbb{R}^d}{\operatorname{min}} \frac{1}{2}\Vert w \Vert ^2$$
+$$s.t. y_tw^{\top}x_t \geq 1 \quad \text{ } t = 1, ..., m$$
+
+concluding the proof.
+
+We have thus shown the equivalence between the problem of maximizing the margin of $u$ while keeping the norm $\Vert u \Vert$ constant, and the problem of minimizing the norm $\Vert w \Vert$ while keeping the margin of $w$ constant.
 
 The following result helps us compute the form of the optimal solution $w^*$.
 
@@ -1376,7 +1383,7 @@ We now move on to consider the case of a training set that is not linearly separ
 
 The components of $\xi = (\xi_1, ..., \xi_m)$ are called **slack variables** and measure how much each margin constraint is violated by a potential solution $w$. The average of these violations is then added to the objective function. Finally, a regularization parameter $\lambda > 0$ is introduced to balance the two terms.
 
-We now consider the constraints involving the slack variables $\xi_t$. That is, $\xi_t \geq 1 − y_tw^{\top}x_t and \xi_t \geq 0$. In order to minimize each $\xi_t$, we can set
+We now consider the constraints involving the slack variables $\xi_t$. That is, $\xi_t \geq 1 − y_tw^{\top}x_t$ and $\xi_t \geq 0$. In order to minimize each $\xi_t$, we can set
 
 
 
