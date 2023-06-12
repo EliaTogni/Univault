@@ -1360,7 +1360,8 @@ The following result helps us compute the form of the optimal solution $w^*$.
 ## Lemma $2$ (Fritz John optimality condition)
 Consider the problem
 
-$$$$
+$$\underset{w \in \mathbb{R}^d}{\operatorname{min}} f(w)$$
+$$\text{s.t.}\quad \text{ } g_t(w) \leq 0 \quad \text{ } t = 1, ..., m$$
 
 where the functions $f, g_1, ..., g_m$ are all differentiable. If $w_0$ is an optimal solution, then there exists a nonnegative vector $\alpha \in \mathbb{R}^m$ such that
 
@@ -1379,15 +1380,17 @@ where I denotes the set of training examples $(x_t, y_t)$ such that $y_t(w^*)^{\
 
 We now move on to consider the case of a training set that is not linearly separable. How should we change the SVM objective? Conside the following formulation
 
-
+$$\underset{(w, \xi) \in \mathbb{R}^{d+m}}{\operatorname{min}}\quad \text{ } \frac{\lambda}{2} \Vert w \Vert^2 + \frac{1}{m} \sum_{t = 1}^{m}\xi_t$$
+$$\text{s.t. } \quad \text{ } y_tw^{\top}x_t \geq 1 - \xi_t \quad \text{ }t = 1, ...., m$$
+$$\xi_t \geq 0 \quad \text{ } \quad t = 1, ..., m$$
 
 The components of $\xi = (\xi_1, ..., \xi_m)$ are called **slack variables** and measure how much each margin constraint is violated by a potential solution $w$. The average of these violations is then added to the objective function. Finally, a regularization parameter $\lambda > 0$ is introduced to balance the two terms.
 
 We now consider the constraints involving the slack variables $\xi_t$. That is, $\xi_t \geq 1 − y_tw^{\top}x_t$ and $\xi_t \geq 0$. In order to minimize each $\xi_t$, we can set
 
+$$\xi_t = \cases{1 - y_tw^{\top}x_t \quad \text{ if }y_tw^{\top}x_t < 1 \\ \\ \quad 0 \quad \text{ } \quad \text{ otherwise}}$$
 
-
-To see this,iffixthewconstrain∈Rd. Ifthetis constrainnot satisfiedt yt wby ⊤xw,≥xthen1. Otherwise,Suis satisfiedwmemarizinset ξtbg,y wξt,=then1−ξyt w⊤xt +, which is
+To see this, fix $w \in \mathbb{R}^d$. If the constraint $y_tw^{\top}x_t \geq 1$ is satisfied by $w$, then $xi_t$ can be set to zero. Otherwise, if the constraint is not satisfied by $w$, then we set $xi_t$ to the smallest value such that the constraint becomes satisfied, namely $1-y_tw^{\top}x_t$. Summarizing, $\xi_t = [1 - y_tw^{\top}x_t]_+$, which is exactly the hinge loss $h_t(w)$ of $w$.
 
 t t can be set to zero. to the smallest value such that
 
@@ -1731,3 +1734,16 @@ A variable subset of this quiz list will be used to create the written test in e
 - Let f be an element of the linear space HK induced by a kernel K. Write f (x) in terms of K.
 - Write the statement of the Perceptron convergence theorem when the Perceptron is run with a kernel K. Define the main quantities occurring in the bound.
 - Write the closed-form formula (i.e., not the argmin definition) of the kernel version of the Ridge Regression predictor.
+- Write the convex optimization problem with linear constraints that defines the SVM hyperplane in the linearly separable case.
+- Write the unconstrained optimization problem whose solution defines the SVM hyperplane when the training set is not necessarily linearly separable.
+- Write the bound on the expected value of the SVM objective function achieved by Pegasos. Provide also a bound on the expected squared norm of the loss gradient.
+- Write the definition of ε-stability for a learning algorithm.
+- Write the value of ε for which SVM is known to be stable. The value depends on the radius X of the ball where the training datapoints live, the training set size m, and the regularization coefficient λ.
+- Write the mathematical conditions on the regularization coefficient λ ensuring consistency for the SVM algorithm wih Gaussian kernel.
+- Consider the class Fd of all functions of the form f : {−1, 1}d → {−1, 1}. Let FG,sgn be the class of functions computed by a feedforward neural networks with the sgn activation function and graph G = (V, E). Provide asymptotic upper and lower bounds on |V | such that Fd ⊆ FG,sgn.
+- Define a class of neural networks for which the ERM problem with the square loss is probably NP-hard.
+- Write the update line of the stochastic gradient descent algorithm. Explain the main quantities.
+- Write the definition of logistic loss for logistic regression with linear models.
+- Write the definition of consistency for surrogate losses.
+- Write a sufficient condition for consistency of a surrogate loss.
+- Write the formula for Bayes optimal predictor and Bayes risk for the logistic loss.
