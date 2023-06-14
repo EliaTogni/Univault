@@ -1392,82 +1392,50 @@ $$\xi_t = \cases{1 - y_tw^{\top}x_t \quad \text{ if }y_tw^{\top}x_t < 1 \\ \\ \q
 
 To see this, fix $w \in \mathbb{R}^d$. If the constraint $y_tw^{\top}x_t \geq 1$ is satisfied by $w$, then $xi_t$ can be set to zero. Otherwise, if the constraint is not satisfied by $w$, then we set $xi_t$ to the smallest value such that the constraint becomes satisfied, namely $1-y_tw^{\top}x_t$. Summarizing, $\xi_t = [1 - y_tw^{\top}x_t]_+$, which is exactly the hinge loss $h_t(w)$ of $w$.
 
-t t can be set to zero. to the smallest value such that
+The SVM problem can then be re-formulated as $\underset{w \in \mathbb{R}^d}{\operatorname{min}} F(w)$, where
 
-the constraint becomes satisfied, namely 1 − y w⊤
+$$F(w) = \frac{1}{m} \sum_{t = 1}^{m} h_t(w) + \frac{\lambda}{2} \Vert w \Vert^2$$
 
-t t
+We now show that, even when the training set is not linearly separable, the solution $w^*$ belongs to the subspace defined by linear combinations of training points multiplied by their labels.
 
-exactly the hinge loss ht(w) of w.
+## Theorem 3
+The minimizer $w^*$ of $F$ can be written as a linear combination of $y_1x_1, ..., y_mx_m$. 
 
-The SVM problem can then be re-formulated as min F (w), where
+**Proof**
+By contradiction, assume
 
-w∈Rd
+$$w^* = \sum_{t = 1}^{m} \alpha_ty_yx_t + u \quad \text{ } \quad (2)$$
 
-F (w) = 1 m ht(w) + 2 ∥w∥2 .
+where $u \in \mathbb{R}^d$ is the component of $w^*$ orthogonal to the subspace spanned by $x_1, ..., x_m$. Therefore,
 
-λ
+$$y_tu^{\top}x_t = 0 \quad \text{ } \quad t = 1, ..., m$$
 
-m
+Now, let $v = w^* − u$. First, $\Vert v \Vert^2 \leq \Vert w^* \Vert^2$ because in $(2)$ we wrote $w^*$ as a sum of two orthogonal components and we removed one of them, and so its length decreased. Second,
 
-t=1
+$$h_t(v) = [1 - y_tv^{\top}x_t]_+ = [1 - y_t(w^* - u)^{\top} x_t] = [1 - y_t(w^*)^{\top}x_t + y_tu^{\top}x_t] = h_t(w^*)$$
 
-We now show that, even when the training set is not linearly separable, the solution w∗belongs to the subspace defined by linear combinations of training points multiplied by their labels.
+using $(3)$. Therefore $F(v) \leq F(w^*)$, contradicting the optimality of $w^*$. Hence $u = 0$ and the proof is concluded.
 
-Theorem 3. The minimizer w∗ of F can be written as a linear combination of y1x1,...,ymxm. Proof. By contradiction, assume
+Note that, as in the linearly separable case, $w^*$ generally depends on a subset of support vectors. However, unlike the linearly separable case, these support vectors also include the training points associated with positive slack variables.
 
-m
+We proceed by showing how $F$ can be minimized using Online Gradient Descent (OGD). First, observe that
 
-w∗= αt yt xt + u (2)
+$$F(w) = \frac{1}{m} \sum_{t = 1}^{m} \ell_t(w)$$
 
-t=1
+where $\ell_t(w) = h_t(w)+ \frac{\lambda}{2} \Vert w \Vert^2$ is a strongly convex function. Indeed, $\frac{\lambda}{2} \Vert w \Vert^2$ is $\lambda$-strongly convex, and h_t is convex (and also piecewise linear). This implies that their sum is $\lambda$-strongly convex. We can then apply the OGD algorithm for strongly convex functions to the set of losses $\ell_1, ..., \ell_m$. This instance of OGD, which is known as **Pegasos**, can be described as follows.
 
-where u ∈Rd is the component of w∗orthogonal to the subspace spanned by x1,..., xm. Therefore,
+**Parameters**: number $T$ of rounds, regularization coefficient $\lambda > 0$<br />
+**Input**: Training set $(x_1, y_1), ..., (x_m, y_m) \in \mathbb{R}^d \times \{−1, 1\}$<br />
 
-ytu⊤xt = 0 t = 1,...,m. (3) Now, let v = w∗− u. First, ∥v∥2 ≤ ∥w∗∥2 because in (2) we wrote w∗as a sum of two orthogonal
+Set $w_1 = 0$
 
-components and we removed one of them, and so its length decreased. Second,
+For $t = 1, ..., T$:
+1) draw uniformly at random an element $(x_{Z_t} ,y_{Z_t})$ from the training set;
+2) set $w_{t+1} = w_t − \eta_t\nabla \ell_{Z_t}(w_t$)$
 
-ht(v) = 1 − ytv⊤xt = 1 − yt w∗− u ⊤xt = 1 − yt(w∗)⊤xt + ytu⊤xt = ht(w∗)
+**Output**: $\overline{w} = \frac{1}{T}(w_1 + ··· + w_T)$.
 
-\+ + +
-
-using (3). Therefore F (v) ≤ F (w∗), contradicting the optimality of w∗. Hence u = 0 and the proof is concluded. □
-
-Note that, as in the linearly separable case, w∗ generally depends on a subset of support vectors. However, unlike the linearly separable case, these support vectors also include the training points associated with positive slack variables.
-
-We proceed by showing how F can be minimized using Online Gradient Descent (OGD). First, observe that
-
-1 m
-
-F (w) = ℓ (w)
-
-m t
-
-t=1
-
-where ℓt(w) = ht(w)+ λ2 ∥w∥2 is a strongly convex function. Indeed, 2 ∥w∥2 is λ-strongly convex,
-
-λ
-
-and ht is convex (and also piecewise linear). This implies that their sum is λ-strongly convex. We can then apply the OGD algorithm for strongly convex functions to the set of losses ℓ1,...,ℓm. This instance of OGD, which is known as Pegasos, can be described as follows.
-
-[^4]Parameters: number T of rounds, regularization coefficient λ > 0 Input:![](Aspose.Words.ac1dd16f-25dd-422d-8423-93d10833aa9d.002.png) Training set (x1,y1),..., (xm,ym) ∈Rd × {−1,1}
-
-Set w1 = 0
-
-For t = 1,...,T
-
-1. Draw uniformly at random an element (xZ ,yZ ) from the training set t t
-1. Set wt+1 = wt − ηt∇ℓZ (wt)
-
-t
-
-Output: w = 1 w + ···+ w .
-
-T 1 T
-
-Pegasos is an example of a class of algorithms known as stochastic gradient descent. These are OGD-like algorithms that are run over a sequence of examples randomly drawn from the training set.
+Pegasos is an example of a class of algorithms known as **stochastic gradient descent**. These are OGD-like algorithms that are run over a sequence of examples randomly drawn from the training set.
 
 We now move on to analyze Pegasos. Let (xZ ,yZ1),..., (xZ ,yZ ) the sequence of training set ex-
 
