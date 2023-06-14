@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "f057cf183a471577",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Quiz Statistical Methods for Machine Learning.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Statistical Methods for Machine Learning.md",
+                "file": "Quiz Statistical Methods for Machine Learning.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,9 +127,10 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "cf197cc6ac7eb7e1",
+  "active": "f057cf183a471577",
   "lastOpenFiles": [
     "Statistical Methods for Machine Learning.md",
+    "Quiz Statistical Methods for Machine Learning.md",
     "Aspose.Words.81476c7a-1f55-4fbe-aea1-653552ec7103.006.png.md",
     "Highlights for NEMO, cancer subtyping by integration ofpartial multi-omic data.md",
     "art_4.pdf",
@@ -144,7 +158,6 @@
     "Images/genome.png",
     "Programmazione Dinamica.md",
     "Macchina di Turing.md",
-    "Untitled.md",
     "Statistica e Probabilità.md",
     "Logica Matematica.md",
     "Simulation.md",
