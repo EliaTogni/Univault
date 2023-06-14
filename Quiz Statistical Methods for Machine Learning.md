@@ -27,7 +27,7 @@
 - **Write the formulas for at least two splitting criteria $\psi$ used in practice to build tree classifiers.**
 - **What are the elements of a learning problem in statistical learning? (BONUS)**
 	...
-- **Write the formula for the statistical risk of a predictor $h$ with respect to a generic loss function and data distribution**.
+- **Write the formula for the statistical risk of a predictor $h$ with respect to a generic loss function and data distribution.**
 - **Write the formula for the Bayes optimal predictor for a generic loss function and data distribution.**
 - **Write the formula for Bayes optimal predictor and Bayes risk for the zero-one loss.**
 - **Can the Bayes risk for the zero-one loss be zero? If yes, then explain how.**
@@ -74,7 +74,7 @@
 - **Write the definition of $\varepsilon$-stability for a learning algorithm.**
 - **Write the value of $\varepsilon$ for which SVM is known to be stable. The value depends on the radius $X$ of the ball where the training datapoints live, the training set size $m$, and the regularization coefficient $\lambda$.**
 - **Write the mathematical conditions on the regularization coefficient $\lambda$ ensuring consistency for the SVM algorithm wih Gaussian kernel.**
-- Consider the class Fd of all functions of the form f : {−1, 1}d → {−1, 1}. Let FG,sgn be the class of functions computed by a feedforward neural networks with the sgn activation function and graph G = (V, E). Provide asymptotic upper and lower bounds on |V | such that Fd ⊆ FG,sgn.
+- **Consider the class $\mathcal{F}_d$ of all functions of the form $f : \{−1, 1\}^d \to \{−1, 1\}$. Let $\mathcal{F}_{G,\operatorname{sgn}}$ be the class of functions computed by a feedforward neural networks with the $\operatorname{sgn}$ activation function and graph $G = (V, E)$. Provide asymptotic upper and lower bounds on $\vert V \vert$ such that $\mathcal{F}_d \subseteq \mathcal{F}_{G,\operatorname {sgn}}$.**
 - **Define a class of neural networks for which the ERM problem with the square loss is probably NP-hard.**
 - **Write the update line of the stochastic gradient descent algorithm. Explain the main quantities.**
 - **Write the definition of logistic loss for logistic regression with linear models.**
