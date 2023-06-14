@@ -239,7 +239,7 @@ In order to fix this problem, different functions $\psi$ are used in practice. T
 
 Some examples of functions $\psi$ used in practice are:
 1) **Gini function**: $\psi_2(p) = 2p(1-p)$;
-2) **scaled entropy**: $\psi_3(p) = -\frac{p}{2}\log_2(p) - \frac{1-p}{2}\log_2(1-p)$.
+2) **scaled entropy**: $\psi_3(p) = -\frac{p}{2}\log_2(p) - \frac{1-p}{2}\log_2(1-p)$;
 3) $\psi_4(p) = \sqrt{p(1-p)}$.
 
 The following inequalities hold: $\operatorname{min}\{p, 1-p\} \leq \psi_2(p) \leq \psi_3(p) \leq \psi_4(p)$.
@@ -256,7 +256,7 @@ An interesting feature of tree predictors for binary classication is that they c
 
 $$(outlook = sunny) \wedge (humidity \leq 70\%) \vee (outlook = overcast) \vee (outlook = rainy) \wedge (windy = false)$$
 
-This rule-based representation of the tree classfiier is very intuitive, and lends itself to being manipulated using the tools of propositional logic; for example, to obtain more compact representations of the same classifier. More importantly, this representation provides an interpretable description of the knowledge the learning algorithm extracted from the training set.
+This rule-based representation of the tree classifier is very intuitive, and lends itself to being manipulated using the tools of propositional logic; for example, to obtain more compact representations of the same classifier. More importantly, this representation provides an interpretable description of the knowledge the learning algorithm extracted from the training set.
 
 ----------------------------------------------------------------
 

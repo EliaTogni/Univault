@@ -25,8 +25,14 @@
 - **Is $k-NN$ more likely to overfit when $k$ is large or small?**
 	The learning algorithm suffers from high test error for small values of $k$ (overfitting) and for large values of $k$ (underfitting).
 - **Write a short pseudo-code for building a tree classifier based on a training set $S$.**
+	1) **initialization**: create $T$ with only the root $\ell$ and let $S_\ell = S$. Let the label associated with the root be the most frequent label in $S_\ell$;
+	2) **main loop**: pick a leaf $\ell$ and replace it with an internal node $v$ creating two children $\ell'$ (first child) and $\ell''$ (second child). Pick an attribute $i$ and a test $f : \mathcal{X}_i \to \{1,2\}$. Associate the test $f$ with $v$ and partition $S_\ell$ in the two subsets $S_{\ell '} = \{(x_t, y_t) \in S_{\ell} : f(x_{t, i}) = 1\}$ and $S_{\ell''} = \{(x_t, y_t) \in S_{\ell} : f(x_{t, i}) = 2\}$. Let the labels associated with $\ell'$ and $\ell''$ be, respectively, the most frequent labels in $S_{\ell'}$ and $S_{\ell''}$;
 - **What is the property of a splitting criterion $\psi$ ensuring that the training error of a tree classifier does not increase after a split? Bonus points if you justify your answer with a proof.**
 - **Write the formulas for at least two splitting criteria $\psi$ used in practice to build tree classifiers.**
+	Some examples of functions $\psi$ used in practice are:
+	1) **Gini function**: $\psi_2(p) = 2p(1-p)$;
+	2) **scaled entropy**: $\psi_3(p) = -\frac{p}{2}\log_2(p) - \frac{1-p}{2}\log_2(1-p)$;
+	3) $\psi_4(p) = \sqrt{p(1-p)}$.
 - **What are the elements of a learning problem in statistical learning? (BONUS)**
 	...
 - **Write the formula for the statistical risk of a predictor $h$ with respect to a generic loss function and data distribution.**
