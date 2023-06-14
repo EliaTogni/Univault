@@ -76,7 +76,7 @@ of a predictor be correlated to its test error.
 ----------------------------------------------------------------
 
 ## Empirical risk minimization
-Let $\mathcal{F}$ be a given set of predictors and $\ell$ a loss function. The **empirical risk minimizer** (**ERM**) is the learning algorithm that outputs some predictor in $\mathcal{F}$ minimizing the training error
+Let $\mathcal{F}$ be a given set of predictors and $\ell$ a loss function. The **empirical risk minimizer** (**ERM**) is the learning algorithm that outputs some predictors in $\mathcal{F}$ minimizing the training error
 
 $$\widehat{f} \in \underset{f \in \mathcal{F}}{\operatorname{argmin}} \ell_{s}(f)$$
 
@@ -1676,25 +1676,33 @@ where hst(gt) = 1 − ystgt(xst) +.
     concluding the proof. □
 [^3]: 
 [^4]: In other words, conditioned on the first t − 1 random draws (which determine wt), the expected value of ℓZ (wt) is equal to F (wt). We also use the fact that for every pair of random variables
-[^5]: 
 
 ----------------------------------------------------------------
 
 # Quiz list for the written test
 A variable subset of this quiz list will be used to create the written test in each exam session. The list will be expanded as the course nears its end. Bonus quizzes (not in this list) will be added to each test for extra points.
 
-- Write the formula for the square loss, the zero-one loss, and the logarithmic loss.
-- What is the mathematical definition of predictor?
-- What does a learning algorithm receive in input? And what does it produce in output?
-- Write the mathematical formula defining the ERM algorithm over a class H of predictors. Define the main quantities occurring in the formula.
-- How do you define overfitting and underfitting in terms of behavior of an algorithm on training and test set?
-- Name and describe three reasons why labels may be noisy.
-- Write a short pseudo-code for the k-NN algorithm for binary classification.
-- Is k-NN more likely to overfit when k is large or small?
-- Write a short pseudo-code for building a tree classifier based on a training set.
-- What is the property of a splitting criterion ψ ensuring that the training error of a tree classifier does not increase after a split? Bonus points if you justify your answer with a proof.
-- Name at least two splitting criteria ψ used in practice to build tree classifiers. Bonus points if you write their formula.
-- What are the elements of a learning problem in statistical learning?
+- **Write the formula for the square loss, the zero-one loss, and the logarithmic loss.**
+	The square loss formula is $\ell(y, \widehat{y}) = (y - \widehat{y})^2$;
+	the zero-one loss is $\ell(y, \widehat{y}) = \cases{1 \quad \text{ if } y \neq \widehat{y} \cr \cr 0 \quad \text{ otherwise }}$
+	the logarithmic loss is $\ell(y, \widehat{y}) = \cases{\ln{\frac{1}{\widehat{y}}} \quad \text{ if } y = 1 \cr \cr \ln{\frac{1}{1 - \widehat{y}}} \quad \text{ if } y = 0}$
+- **What is the mathematical definition of predictor?**
+	A predictor is a function $f: \mathcal{X} \to \mathcal{Y}$ mapping data points to labels (or $f: \mathcal{X} \to \mathcal{Z}$ if the predictions belong to a set $\mathcal{Z}$ different from $\mathcal{Y}$).
+- **What does a learning algorithm receive in input? And what does it produce in output?**
+	A learning algorithm receives a training set in input and it produces a predictor in output. A training set is a set of examples $\{(x_1, y_1), ..., (x_m, y_m)\}$.
+- **Write the mathematical formula defining the ERM algorithm over a class $\mathcal{H}$ of predictors. Define the main quantities occurring in the formula.**
+	Given a class $\mathcal{H}$ of predictors and a loss function $\ell$, the Empirical Risk Minimizer is the learning algorithm that outputs some predictors minimizing the empirical risk $\widehat{f} \in \underset{f \in \mathcal{H}}{\operatorname{argmin}} \ell_S(f)$. The $\widehat{f} \in$ notation takes into account the fact that there could be multiple $f \in \mathcal{H}$ minimizing the training error.
+- **How do you define overfitting and underfitting in terms of behavior of an algorithm on training and test set?**
+	
+- **Name and describe three reasons why labels may be noisy.**
+	...
+- **Write a short pseudo-code for the $k-NN$ algorithm for binary classification.**
+- **Is $k-NN$ more likely to overfit when $k$ is large or small?**
+- **Write a short pseudo-code for building a tree classifier based on a training set.**
+- **What is the property of a splitting criterion $\psi$ ensuring that the training error of a tree classifier does not increase after a split? Bonus points if you justify your answer with a proof.**
+- **Name at least two splitting criteria $\psi$ used in practice to build tree classifiers. Bonus points if you write their formula.**
+- **What are the elements of a learning problem in statistical learning?**
+	...
 - Write the formula for the statistical risk of a predictor h with respect to a generic loss function.
 - Write the formula for the Bayes optimal predictor for a generic loss function.
 - Write the formula for Bayes optimal predictor and Bayes risk for the zero-one loss.
