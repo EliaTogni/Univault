@@ -1479,21 +1479,15 @@ We thus obtain a simple expression for $w_{t+1}$,
 
 $$w_{t+1} = \frac{1}{\lambda t}\sum_{s = 1}^{t}v_s \quad \text{ } \quad (8)$$
 
-Because $w_{t+1}$ is an average of $v_s$ divided by $\lambda$, we finally have $\Vert w_{t+1} \Vert \leq \frac{1}{\lambda} \operatorname{max}_s \Vert v_s \Vert \leq \frac{1}{\lambda}X$. This allows us to conclude that $\Vert \nabla \ell_t (w_t) \Vert  \leq X + \nabla \Vert w_t \Vert \leq 2X$. Substituting this bound for G in (7) we get
+Because $w_{t+1}$ is an average of $v_s$ divided by $\lambda$, we finally have $\Vert w_{t+1} \Vert \leq \frac{1}{\lambda} \operatorname{max}_s \Vert v_s \Vert \leq \frac{1}{\lambda}X$. This allows us to conclude that $\Vert \nabla \ell_t (w_t) \Vert  \leq X + \nabla \Vert w_t \Vert \leq 2X$. Substituting this bound for $G$ in $(7)$ we get
 
-2X 2![](Aspose.Words.ac1dd16f-25dd-422d-8423-93d10833aa9d.011.png)
+$$\mathbb{E}[F(\overline{w})] \leq F(w^*) + \frac{2X^2}{\lambda T} \ln{(T+1)}$$
 
-E F (w) ≤ F (w∗) + ln(T + 1) .
+Theorem $3$ states that the solution $w^*$ to the SVM problem can be written as
 
-λT
 
-Theorem 3 states that the solution w∗to the SVM problem can be written as
 
-w∗= ysαsxs
-
-s∈S
-
-where αs > 0 and S ≡ {t = 1,...,m : ht(w∗) > 0}. An important consequence of this result is that we can solve the problem (4) in a RKHS HK , where the objective function F becomes
+where $\alpha_s > 0$ and $S \equiv \{t = 1,...,m : ht(w∗) > 0\}. An important consequence of this result is that we can solve the problem (4) in a RKHS HK , where the objective function F becomes
 
 1 m λ
 
