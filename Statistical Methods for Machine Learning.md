@@ -278,7 +278,7 @@ where $\widehat{y} \in \mathcal{Y}$ is the value for which the function $\mathbb
 What does it mean to condition an expectation? It means that we want to know the prediction of $f^*$ on $x$. This predictor tries to pick the best $\widehat{y}$, the one minimizing the expected loss on $x$.<br />
 The quantity $\mathbb{E} [\ell(Y, \widehat{y}) \vert X = x]$ is the **conditional risk**, which is the expected loss of the prediction with respect to the distribution of the label $Y$ conditioned on $x$. Hence $f^*(x)$ is the prediction $\widehat{y}$ minimizing the conditional risk, given $x$. By deﬁnition of $f^*$, we have that 
 
-$$\forall x \in \mathcal{X} \quad \mathbb{E}[\ell(Y, f^*(X))\text{ } \vert \text{ } X = x] \leq \mathbb{E}[\ell(Y, h(X))\text{ } \vert \text{ } X = x]$$
+$$\mathbb{E}[\ell(Y, f^*(X))\text{ } \vert \text{ } X = x] \leq \mathbb{E}[\ell(Y, h(X))\text{ } \vert \text{ } X = x]$$
 
 for every predictor $h : \mathcal{X} \to \mathcal{Y}$ and for any $x \in \mathcal{X}$. Because the above inequality holds for every $x \in \mathcal{X}$, it also holds in expectation with respect to the random draw of $X$. But, since
 

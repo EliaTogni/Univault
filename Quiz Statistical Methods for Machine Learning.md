@@ -29,18 +29,26 @@
 - **Is $k-NN$ more likely to overfit when $k$ is large or small?**
 	The learning algorithm suffers from high test error for small values of $k$ (overfitting) and for large values of $k$ (underfitting).
 - **Write a short pseudo-code for building a tree classifier based on a training set $S$.**
-	1) **initialization**: create $T$ with only the root $\ell$ and let $S_\ell = S$. Let the label associated with the root be the most frequent label in $S_\ell$;
+	1) **initialization**: create a tree $T$ with only the root $\ell$ and let $S_\ell = S$. Let the label associated with the root be the most frequent label in $S_\ell$;
 	2) **main loop**: pick a leaf $\ell$ and replace it with an internal node $v$ creating two children $\ell'$ (first child) and $\ell''$ (second child). Pick an attribute $i$ and a test $f : \mathcal{X}_i \to \{1,2\}$. Associate the test $f$ with $v$ and partition $S_\ell$ in the two subsets $S_{\ell '} = \{(x_t, y_t) \in S_{\ell} : f(x_{t, i}) = 1\}$ and $S_{\ell''} = \{(x_t, y_t) \in S_{\ell} : f(x_{t, i}) = 2\}$. Let the labels associated with $\ell'$ and $\ell''$ be, respectively, the most frequent labels in $S_{\ell'}$ and $S_{\ell''}$;
 - **What is the property of a splitting criterion $\psi$ ensuring that the training error of a tree classifier does not increase after a split? Bonus points if you justify your answer with a proof.**
+	The property of a splitting criterion $\psi$ ensuring that the training error of a tree classifier does not increase after a split is the fact that $\psi$ is a concave function.
+	To prove it, we can utilize Jensen's inequality, stating that $\psi(\alpha a + (1 -\alpha)b) \geq \alpha \psi (a) + (1 - \alpha) \psi (b) \quad \forall a, b \in \mathbb{R} \text{ and all } \alpha \in [0,1]$.<br />
+	We can study how the training error changes when $\ell$ is replaced by two new leaves $\ell'$ and $\ell''$, $\underbrace{\psi \Big ( \frac{N^+_\ell}{N_\ell} \Big)N_\ell}_{\text{contribution of }\ell \text { to the training error}} = \psi \Big ( \frac{N^+_{\ell'}}{N_\ell} + \frac{N^+_{\ell''}}{N_\ell} \Big)N_\ell = \psi \Big ( \frac{N^+_{\ell'}}{N_\ell} \frac{N_{\ell'}}{N_{\ell'}} + \frac{N^+_{\ell''}}{N_\ell}\frac{N_{\ell''}}{N_{\ell''}} \Big)N_\ell =$
+	At this point it is possible to apply Jensen's inequality: $= \psi \Big ( \text{ }\underbrace{\frac{N^+_{\ell'}}{N_{\ell'}}}_{a} \underbrace{\frac{N_{\ell'}}{N_\ell}}_{\alpha} + \underbrace{\frac{N^+_{\ell''}}{N_{\ell''}}}_{b} \underbrace{\frac{N_{\ell''}}{N_{\ell}}}_{1- \alpha} \text{ } \Big ) N_{\ell} \geq \psi \Big( \text{ }\underbrace{\frac{N^+_{\ell'}}{N_{\ell'}}}_{a} \text { }\Big) \underbrace{\frac{N_{\ell'}}{N_{\ell}}}_{\alpha}N_{\ell} + \psi \Big( \text{ } \underbrace{\frac{N^+_{\ell''}}{N_{\ell''}}}_{b} \text{ } \Big ) \underbrace{\frac{N_{\ell''}}{N_\ell}}_{1-\alpha} N_{\ell} =$
+	$= \underbrace{\psi \Big ( \frac{N^+_\ell}{N_\ell} \Big)N_\ell}_{\text{contribution of }\ell} \geq \underbrace{\psi \Big(\frac{N^+_{\ell'}}{N_{\ell'}} \Big )N_{\ell'}}_{\text{contribution of }\ell'} + \underbrace{\psi \Big ( \frac{N^+_{\ell''}}{N_{\ell''}}\Big )N_{\ell''}}_{\text{contribution of }\ell''}$
+	meaning that a split never increases the training error (recall that $N_{\ell'}^+ + N_{\ell''}^+ = N_{\ell}^+$).
 - **Write the formulas for at least two splitting criteria $\psi$ used in practice to build tree classifiers.**
 	Some examples of functions $\psi$ used in practice are:
-	1) **Gini function**: $\psi_2(p) = 2p(1-p)$;
-	2) **scaled entropy**: $\psi_3(p) = -\frac{p}{2}\log_2(p) - \frac{1-p}{2}\log_2(1-p)$;
+	1) Gini function: $\psi_2(p) = 2p(1-p)$;
+	2) scaled entropy: $\psi_3(p) = -\frac{p}{2}\log_2(p) - \frac{1-p}{2}\log_2(1-p)$;
 	3) $\psi_4(p) = \sqrt{p(1-p)}$.
 - **What are the elements of a learning problem in statistical learning? (BONUS)**
-	...
+	In statistical learning, a **problem** is fully speciﬁed by a pair $(\mathcal{D}, \ell)$, where $\mathcal{D}$ is the data distribution and $\ell$ is a loss function.
 - **Write the formula for the statistical risk of a predictor $h$ with respect to a generic loss function and data distribution.**
+	The performance of a predictor $h : \mathcal{X} \to \mathcal{Y}$ with respect to $(\mathcal{D}, \ell)$ is evaluated via the statistical risk, deﬁned by $\ell_{\mathcal{D}}(h) = \mathbb{E}[\ell(Y, h(X))]$. This is the expected value of the loss function on a random example $(X, Y)$ drawn from $\mathcal{D}$.
 - **Write the formula for the Bayes optimal predictor for a generic loss function and data distribution.**
+	The best possible predictor $f^*: \mathcal{X} \to \mathcal{Y}$ given $\mathcal{D}$ is known as Bayes optimal predictor, and is deﬁned by $\forall x \in \mathcal{X} \quad f^*(x) = \underset{\widehat{y} \in \mathcal{Y}}{\operatorname{argmin}} \text{ } \mathbb{E}[\ell(Y, \widehat{y}) \vert X = x]$ where $\widehat{y} \in \mathcal{Y}$ is the value for which the function $\mathbb{E}[\ell(Y, \widehat{y}) \vert X = x]$ attains its minimum.
 - **Write the formula for Bayes optimal predictor and Bayes risk for the zero-one loss.**
 - **Can the Bayes risk for the zero-one loss be zero? If yes, then explain how.**
 - **Write the formula for Bayes optimal predictor and Bayes risk for the square loss.**
