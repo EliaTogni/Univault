@@ -1471,29 +1471,15 @@ Let $X = \underset{s = 1, ..., m}{\operatorname{max}}\Vert x_s \Vert$. Since $\V
 
 $$w_{t+1} = \Big( 1 - \frac{1}{t}\Big)w_t + \frac{1}{\lambda t}v_t$$
 
-As one can easily show by induction, wt+1 can be written as a linear combination of v1,..., vt. In order to determine the coefficients of this linear combination, we fix s ≤ t and observe that vs is added to the sum with coefficient 1/(λs). When wt+1, is computed, the coefficient of vs has become
+As one can easily show by induction, $w_{t+1}$ can be written as a linear combination of $v_1, ..., v_t$. In order to determine the coefficients of this linear combination, we fix $s \leq t$ and observe that $v_s$ is added to the sum with coefficient $\frac{1}{(\lambda s)}$. When $w_{t+1}$, is computed, the coefficient of $v_s$ has become
 
-1 t 1 1 t r − 1 1
+$$\frac{1}{\lambda s} \prod_{r = s+1}^{t} \Big(1 - \frac{1}{r}\Big) = \frac{1}{\lambda s} \prod_{r = s+1}^{t} \frac{r-1}{r} = \frac{1}{\lambda t}$$
 
-1 − = = .
+We thus obtain a simple expression for $w_{t+1}$,
 
-λs r λs r λt
+$$w_{t+1} = \frac{1}{\lambda t}\sum_{s = 1}^{t}v_s \quad \text{ } \quad (8)$$
 
-r=s+1 r=s+1
-
-We thus obtain a simple expression for wt+1,
-
-wt+1 = λt1  vs . (8)
-
-t
-
-s=1
-
-Because wt+1 is an average of v divided by λ, we finally have ∥wt+1∥ ≤ 1 max ∥vs∥ ≤ 1X. This
-
-s λ s λ
-
-allows us to conclude that ∥∇ℓt(wt)∥ ≤ X + λ ∥wt∥ ≤ 2X. Substituting this bound for G in (7) we get
+Because $w_{t+1}$ is an average of $v_s$ divided by $\lambda$, we finally have $\Vert w_{t+1} \Vert \leq \frac{1}{\lambda} \operatorname{max}_s \Vert v_s \Vert \leq \frac{1}{\lambda}X$. This allows us to conclude that $\Vert \nabla \ell_t (w_t) \Vert  \leq X + \nabla \Vert w_t \Vert \leq 2X$. Substituting this bound for G in (7) we get
 
 2X 2![](Aspose.Words.ac1dd16f-25dd-422d-8423-93d10833aa9d.011.png)
 
