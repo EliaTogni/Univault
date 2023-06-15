@@ -52,6 +52,7 @@
 - **Write the formula for Bayes optimal predictor and Bayes risk for the zero-one loss.**
 - **Can the Bayes risk for the zero-one loss be zero? If yes, then explain how.**
 - **Write the formula for Bayes optimal predictor and Bayes risk for the square loss.**
+	The Bayes optimal predictor for the square loss is $f^*(x) = \mathbb{E}\big[Y \text{ } \vert \text{ } X = x\big]$ and the Bayes risk for the square loss is $\ell_{\mathcal{D}}(f^*) =  Var\big[Y \vert X = x\big]$.
 - **Explain in mathematical terms the relationship between test error and statistical risk.**
 - **State the Chernoff-Hoeffding bounds.**
 - **Write the bias-variance decomposition for a generic learning algorithm $A$ and associate the resulting components to overfitting and underfitting.**

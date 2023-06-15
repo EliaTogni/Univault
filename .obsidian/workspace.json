@@ -31,8 +31,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -98,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Quiz Statistical Methods for Machine Learning.md",
+                "file": "Statistical Methods for Machine Learning.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,10 +126,10 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "763a63dd9d672945",
+  "active": "cf197cc6ac7eb7e1",
   "lastOpenFiles": [
-    "Statistical Methods for Machine Learning.md",
     "Quiz Statistical Methods for Machine Learning.md",
+    "Statistical Methods for Machine Learning.md",
     "Aspose.Words.ac1dd16f-25dd-422d-8423-93d10833aa9d.009.png.md",
     "Aspose.Words.81476c7a-1f55-4fbe-aea1-653552ec7103.006.png.md",
     "Highlights for NEMO, cancer subtyping by integration ofpartial multi-omic data.md",

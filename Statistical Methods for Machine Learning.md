@@ -304,8 +304,8 @@ Because we are interested in the minimizing of $\widehat{y}$, it is possible to 
 $$= \underset{\widehat{y} \in \mathcal{Y}}{\operatorname {argmin}}\Big(\underbrace{\mathbb{E}\big[Y^2 \text{ }\vert \text{ }X = x \big]}_{\text{does not depend on }\widehat{y}} + \widehat{y}^2 - 2 \widehat{y} \mathbb{E} \big[Y \text{ }\vert \text{ }X = x\big] \Big)$$
 $$= \underset{\widehat{y} \in \mathbb{R}}{\operatorname {argmin}}\Big( \widehat{y}^2 - 2\widehat{y} \mathbb{E}\big[Y \vert X = x\big]\Big)\quad \text{ } \quad (\text{ignoring the term that does not depend on } \widehat{y})$$
 
-and the reason why this is possible is because the term ignored is just a costant and so it is possible to extract it from the $argmin$ operator.<br />
-Now, we have to minimize the function $F(\widehat{y}) = \widehat{y}^2 - 2\widehat{y}\mathbb{E}\big[Y \text{ } \vert \text{ } X = x\big]$, which can be seen as $F(z) = z^2 - 2zc$. Its derivative is $F'(z) = 2z -2c$ and it is minimized for $F'(z) = 0$. After the substitution, we obtain $2 \widehat{y} - 2 \mathbb{E}\big[Y \vert X = x\big] = 0$ and, therefore
+and the reason why this is possible is because the term ignored is just a costant and so it is possible to extract it from the $\operatorname{argmin}$ operator.<br />
+Now, we have to minimize the function $F(\widehat{y}) = \widehat{y}^2 - 2\widehat{y}\mathbb{E}\big[Y \text{ } \vert \text{ } X = x\big]$, which can be seen as $F(z) = z^2 - 2zc$. Its derivative is $F'(z) = 2z -2c$ and it is minimized for $F'(z) = 0$. After the substitution in the derivative, we obtain $2 \widehat{y} - 2c = 2 \widehat{y} - 2 \mathbb{E}\big[Y \vert X = x\big] = 0$ and, therefore
 
 $$ f^*(x) = \mathbb{E}\big[Y \text{ } \vert \text{ } X = x\big]$$
  
