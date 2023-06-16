@@ -7,7 +7,7 @@
 - **What is the mathematical definition of predictor?(BONUS)**
 	Given the set $\mathcal{X}$ of all possible data points for a given learning problem and given the set $\mathcal{Y}$ of all possible labels, a predictor is a function $f: \mathcal{X} \to \mathcal{Y}$ mapping data points to labels (or $f: \mathcal{X} \to \mathcal{Z}$ if the predictions belong to a set $\mathcal{Z}$ different from $\mathcal{Y}$).
 - **Write the mathematical formula defining the training error of a predictor $h$.**
-	The training error or statistical risk is $\ell_s(f) = \frac{1}{m}\sum_{t=1}^{m}\ell(y_t, f(\mathbf{x}_t))$.
+	The training error or empirical risk is $\ell_s(h) = \frac{1}{m}\sum_{t=1}^{m}\ell(y_t, h(\mathbf{x}_t))$.
 - **What does a learning algorithm receive in input? And what does it produce in output?**
 	A learning algorithm receives a training set in input and it produces a predictor in output. A training set $S$ is a set of examples $\{(x_1, y_1), ..., (x_m, y_m)\}$, where $x$ is a data point and $y$ is the corresponding label.
 - **Write the mathematical formula defining the ERM algorithm over a class $\mathcal{H}$ of predictors. Define the main quantities occurring in the formula.**

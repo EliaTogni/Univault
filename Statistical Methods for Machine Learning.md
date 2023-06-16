@@ -1455,6 +1455,13 @@ $$\mathbb{E}[\ell_{Z_t}(w_t)] \vert Z_1, ..., Z_{t-1}] = \frac{1}{m} \sum_{s = 1
 
 In other words, conditioned on the first $t - 1$ random draws (which determine $w_t$), the expected value of $\ell_{Z_t}(w_t)$ is equal to $F(w_t)$. We also use the fact that for every pair of random variables $X, Y$ the following holds $\mathbb{E}[X] = \mathbb{E}[\mathbb{E}[X \vert Y]$. Hence, we can write
 
+$$\mathbb{E}[F(\overline{w})] = \mathbb{E}\Bigg[F\Big(\frac{1}{T}\sum_{t = 1}^{T}w_t\Big)\Bigg]$$
+$$\leq \mathbb{E}\Bigg[\frac{1}{T}\sum_{t = 1}^{T}F(w_t)\Bigg] \quad \text{ using Jensen inequality, since }F \text{ is convex}$$
+$$= \mathbb{E}\Bigg[\frac{1}{T}\sum_{t = 1}^{T}\mathbb{E}[\ell_{Z_t}(w_t) \vert Z_1, ..., Z_{t-1}]\Bigg] \quad \text{ using }(6)$$
+$$= \mathbb{E}\Bigg[\frac{1}{T}\sum_{t = 1}^{T}\ell_{Z_t}(w_t)\Bigg] \quad \text{ using }\mathbb{E}[X] = \mathbb{E}[\mathbb{E}[X \vert Y]]$$
+$$\leq \mathbb{E}\Bigg[\frac{1}{T}\sum_{t = 1}^{T}\ell_{Z_t}(w^*)\Bigg] + \frac{\mathbb{E}[G^2]}{2 \lambda T}\ln(T + 1) \quad \text{ using }(5)$$
+$$= \mathbb{E}\Bigg[\frac{1}{T}\sum_{t = 1}^{T}\mathbb{E}[\ell_{Z_t}(w^*) \vert Z_1, ..., Z_{t-1}]\Bigg] + \frac{\mathbb{E}[G^2]}{2 \lambda T}\ln(T + 1) \quad \text{ using }\mathbb{E}[X] = \mathbb{E}[\mathbb{E}[X \vert Y]]$$
+$$= F(w^*) + \frac{\mathbb{E}[G^2]}{2 \lambda T}\ln(T + 1) \quad \text{ using }(6)$$
 
 
 We thus obtained
@@ -1497,7 +1504,7 @@ $$\sum_{s \in S} y_s \alpha_s K(x_s, \cdot)$$
 
 which is clearly an element of the RKHS
 
-
+$$\mathcal{H}_K \equiv \Bigg\{\sum_{i = 1}^{N} \alpha_iK(x_i, \cdot) : x_1, ..., x_N \in \mathbb{R}^d, \alpha_1, ..., \alpha_N \in \mathbb{R}, N \in \mathbb{N} \Bigg\}$$
 
 As we did for the Perceptron, we can run Pegasos in the RKHS $\mathcal{H}_K$ . The gradient update in kernel Pegasos on some training example $(x_{s_t} ,y_{s_t})$ can be written as
 
