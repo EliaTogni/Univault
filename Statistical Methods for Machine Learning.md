@@ -1485,55 +1485,25 @@ $$\mathbb{E}[F(\overline{w})] \leq F(w^*) + \frac{2X^2}{\lambda T} \ln{(T+1)}$$
 
 Theorem $3$ states that the solution $w^*$ to the SVM problem can be written as
 
+$$w^* = \sum_{s \in S} y_s \alpha_s x_s$$
 
+where $\alpha_s > 0$ and $S \equiv \{t = 1,...,m : h_t(w^*) > 0\}$. An important consequence of this result is that we can solve the problem $(4)4 in a RKHS $\mathcal{H}_K$, where the objective function $F$ becomes
 
-where $\alpha_s > 0$ and $S \equiv \{t = 1,...,m : ht(w∗) > 0\}. An important consequence of this result is that we can solve the problem (4) in a RKHS HK , where the objective function F becomes
+$$F_K(g) = \frac{1}{m}\sum_{t = 1}^m h_t(g) + \frac{\lambda}{2}\Vert g \Vert^2_K \quad \text{ } \quad g \in \mathcal{H}_K$$
 
-1 m λ
+with $h_t(g) = [ 1 − y_tg(x_t)]_+$. In $\mathcal{H}_K$, the SVM solution can therefore be written as
 
-∥g∥2
-
-FK (g) = m ht(g) + 2 K g ∈ HK
-
-t=1
-
-with ht(g) = 1 − ytg(xt) +. In HK , the SVM solution can therefore be written as
-
-ysαsK(xs,·)
-
-s∈S
+$$\sum_{s \in S} y_s \alpha_s K(x_s, \cdot)$$
 
 which is clearly an element of the RKHS
 
-N
 
-HK ≡ αi K(xi,·) : x1,..., xN ∈Rd, α1,...,αN ∈R, N ∈N
 
-i=1
+As we did for the Perceptron, we can run Pegasos in the RKHS $\mathcal{H}_K$ . The gradient update in kernel Pegasos on some training example $(x_{s_t} ,y_{s_t})$ can be written as
 
-As we did for the Perceptron, we can run Pegasos in the RKHS HK . The gradient update in kernel Pegasos on some training example (xs ,ys ) can be written as
+$$g_{t+1} = \Big (1 - \frac{1}{t} \Big) g_t + \frac{y_{s_t}}{\lambda_t} \mathbb{I}\{h_{s_t}(g_t) > 0\}K(x_{s_t},\cdot)$$
 
-t t
-
-g = 1 − 1 g + yst I{h (g ) > 0}K(x ,·) t+1 t t λt st t st
-
-where hst(gt) = 1 − ystgt(xst) +.
-7
-
-[^1]: Now observe that the constraint γ2 ∥w∥2 = 1 is redundant and can be eliminated. Indeed, for all
-[^2]: ∈Rd we can find γ > 0 such that the constraint is satisfied. Multiplying the objective function
-
-    by 12, we obtain
-
-    min 1 ∥w∥2
-
-    d 2
-
-    ws.t.∈R yt w⊤xt ≥ 1 t = 1,...,m
-
-    concluding the proof. □
-[^3]: 
-[^4]: In other words, conditioned on the first t − 1 random draws (which determine wt), the expected value of ℓZ (wt) is equal to F (wt). We also use the fact that for every pair of random variables
+where $h_{s_t}(g_t) = [1 − y_{s_t}g_t(x_{s_t})]_+$.
 
 ----------------------------------------------------------------
 
