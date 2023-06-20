@@ -265,11 +265,11 @@ In order to analyze a learning algorithm, a mathematical model of how examples $
 
 Assuming that every example $(x, y)$ is the realization of an independent random draw from the same joint probability distribution $\mathcal{D}$ implies that every dataset (e.g., a training set or a test set) is a **statistical sample**. Note that the independence assumption is actually violated in many practical domains. Consider, for example, the problem of categorizing news stories. The newsfeed is clearly far from being an independent process, as the evolution of news reﬂects developing and related stories. Although not very realistic, the independence assumption is nevertheless convenient from the viewpoint of the analytical tractability of the problem, and works suprisingly well in practice.
 
-In statistical learning, a **problem** is fully speciﬁed by a pair $(\mathcal{D}, \ell)$, where $\mathcal{D}$ is the data distribution and $\ell$ is a loss function. The performance of a predictor $h : \mathcal{X} \to \mathcal{Y}$ with respect to $(\mathcal{D}, \ell)$ is evaluated via the **statistical risk**, deﬁned by
+In statistical learning, a **problem** is fully speciﬁed by a pair $(\mathcal{D}, \ell)$, where $\mathcal{D}$ is the data distribution and $\ell$ is a loss function. The performance of a predictor $h : \mathcal{X} \to \mathcal{Y}$ with respect to $(\mathcal{D}, \ell)$ (where $\ell$ is known and $\mathcal{D}$ is uknown) is evaluated via the **statistical risk**, deﬁned by
 
 $$\ell_{\mathcal{D}}(h) = \mathbb{E}[\ell(Y, h(X))]$$
 
-This is the **expected value** of the loss function on a random example $(X, Y)$ drawn from $\mathcal{D}$. Without knowing $\mathcal{D}$ it is not possible to compute $\ell_{\mathcal{D}}(h)$ but it is possible to rank the predictors and, therefore, to find the optimal one.<br />
+This is the **expected value** of the loss function on a random example $(X, Y)$ drawn from $\mathcal{D}$. Without knowing $\mathcal{D}$ it is not possible to compute $\ell_{\mathcal{D}}(h)$ but it is easy to understand that the predictors are ranked according to the statistical risk and, therefore, is possible to find the optimal one.<br />
 The best possible predictor $f^*: \mathcal{X} \to \mathcal{Y}$ given $\mathcal{D}$ is known as **Bayes optimal predictor**, and is deﬁned by
 
 $$\forall x \in \mathcal{X} \quad f^*(x) = \underset{\widehat{y} \in \mathcal{Y}}{\operatorname{argmin}} \text{ } \mathbb{E}[\ell(Y, \widehat{y}) \vert X = x]$$
