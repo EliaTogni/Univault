@@ -261,7 +261,7 @@ This rule-based representation of the tree classifier is very intuitive, and len
 ----------------------------------------------------------------
 
 # Statistical Learning
-In order to analyze a learning algorithm, a mathematical model of how examples $(x, y)$ are generated must be deﬁned. In the statistical learning framework, we assume that every example $(x, y)$ is obtained through an **independent draw** from a ﬁxed but unknown [[Statistica e Probabilità |probablity distribution]] on $\mathcal{X} \times \mathcal{Y}$. We write $(X, Y)$ to highlight that $x$ and $y$ are **[[Statistica e Probabilità#Variabili Aleatorie|random variables]]**. it is important to recall that the difference between a random variable and a **realization** is that the realization is the possible value of a random variable while the random variable is a function. The assumption that not all data points $x$ are equally likely is quite natural (for example, when data points are images, only a small fraction of all possible pixel conﬁgurations correspond to real-world images). Similarly, as we previously argued, labels are typically noisy. This corresponds to assuming that labels of any given datapoint are stochastic.
+In order to analyze a learning algorithm, a mathematical model of how examples $(x, y)$ are generated must be deﬁned. In the statistical learning framework, we assume that every example $(x, y)$ is obtained through an **independent draw** from a ﬁxed but unknown [[Statistica e Probabilità |probability distribution]] on $\mathcal{X} \times \mathcal{Y}$. We write $(X, Y)$ to highlight that $x$ and $y$ are **[[Statistica e Probabilità#Variabili Aleatorie|random variables]]**. it is important to recall that the difference between a random variable and a **realization** is that the realization is the possible value of a random variable while the random variable is a function. The assumption that not all data points $x$ are equally likely is quite natural (for example, when data points are images, only a small fraction of all possible pixel conﬁgurations correspond to real-world images). Similarly, as we previously argued, labels are typically noisy. This corresponds to assuming that labels of any given datapoint are stochastic.
 
 Assuming that every example $(x, y)$ is the realization of an independent random draw from the same joint probability distribution $\mathcal{D}$ implies that every dataset (e.g., a training set or a test set) is a **statistical sample**. Note that the independence assumption is actually violated in many practical domains. Consider, for example, the problem of categorizing news stories. The newsfeed is clearly far from being an independent process, as the evolution of news reﬂects developing and related stories. Although not very realistic, the independence assumption is nevertheless convenient from the viewpoint of the analytical tractability of the problem, and works suprisingly well in practice.
 
@@ -338,7 +338,7 @@ If $\widehat{y} = 1$, the first term goes to $0$ and we predict the second term.
 $$ f^*(x)= \cases{-1 \quad \text{if } \eta(x) < \frac{1}{2} \cr \cr +1 \quad \text{if } \eta(x) \geq \frac{1}{2}}$$
 
 Hence, the Bayes optimal classifier predicts the label whose probability is the highest when conditioned on the instance. Finally, it is easy to verify that the Bayes risk in this case is $\ell_{\mathcal{D}}(f^*) = \mathbb{E}[\ell(f^*(X), Y)] = \mathbb{E}\big[\mathbb{I}\{f^*(X) \neq Y\}\big] = \mathbb{P}(f^*(X) \neq Y)$.
-Knowing that $\mathbb{P}(f^*(X) \neq Y \vert X = x) = \operatorname{min} \{\eta(x), (1 - \eta(x))\}$ and knowing that $\mathbb{E}\Big[\mathbb{E}\big[\mathbb{I}\{f^*(x) \neq Y\}\big \vert X = x]\Big] = \mathbb{E}[\mathbb{I}\{f^*(x) \neq Y\}\big]$, it is possible to define $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\big[min\{\eta(X), 1 - \eta(X)\}\big]$.<br />
+Knowing that $\mathbb{P}(f^*(X) \neq Y \vert X = x) = \operatorname{min} \{\eta(x), (1 - \eta(x))\}$ and knowing that $\mathbb{E}\Big[\mathbb{E}\big[\mathbb{I}\{f^*(X) \neq Y\}\big \vert X = x]\Big] = \mathbb{E}[\mathbb{I}\{f^*(X) \neq Y\}\big]$, it is possible to define $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\big[min\{\eta(X), 1 - \eta(X)\}\big]$.<br />
 That is, the Bayes risk is the expectation of the probability of the event that is less likely to happen conditioned on the instance.
 
 Let's assume we have a one directional problem (that is, based on a one directional feature) and consider $\eta: X \to [0, 1]$.
@@ -443,7 +443,7 @@ $$\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*) = \ell_{\mathcal{D}}(h_S) - 
 $$\leq \ell_{\mathcal{D}}(h_S) - \ell_S(h_S) + \ell_S(h^*) - \ell_{\mathcal{D}}(h^*)$$
 
 This replacement is legal because $h_S$ is the minimizer of the training error.
-The last subctraction is bounded by $\sqrt(...)$ with probability at least $1 - \delta$.
+The last subctraction is bounded by $\sqrt{\frac{1}{2n}\ln{\frac{2}{\delta}}}$ with probability at least $1 - \delta$.
 
 $$\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*)\leq \vert \ell_{\mathcal{D}}(h_S) - \ell_S(h_S)\vert + \vert \ell_S(h^*) - \ell_{\mathcal{D}}(h^*) \vert$$
 $$\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*) \leq 2 \underset{h \in \mathcal{H}}{\operatorname{max}} \vert \ell_S(h) - \ell_{\mathcal{D}}(h)\vert$$

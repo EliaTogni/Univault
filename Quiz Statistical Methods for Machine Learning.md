@@ -84,8 +84,13 @@
 	Let $Z_1 , ... , Z_n$ be **independent and identically distributed random variables** with expectation $\mu$ and such that $0 \leq Z_t \leq 1$ for each $t = 1, ... , n$. Then, for any given $\varepsilon > 0$ <br />
 	$\mathbb{P}\Bigg(\frac{1}{n}\sum_{t = 1}^{n}Z_t > \mu + \varepsilon \Bigg) \leq e^{-2\varepsilon^2n}\quad \text{and}\quad \mathbb{P}\Bigg(\frac{1}{n}\sum_{t = 1}^{n}Z_t < \mu - \varepsilon\Bigg) \leq e^{-2\varepsilon^2n}$
 - **Write the bias-variance decomposition for a generic learning algorithm $A$ and associate the resulting components to overfitting and underfitting.**
+	Fix a finite training set $S$ and let $h_S = A(S)$. The following is called the **bias-variance** decomposition:<br />
+	$\ell_{\mathcal{D}}(h_S) = \ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*)\quad\text{estimation error (large when overfitting)}$<br />
+	$\quad + \ell_{\mathcal{D}}(h^*) - \ell_{\mathcal{D}}(f^*)\quad \text{approximation error (large when underfitting)}$<br />
+	$\quad + \ell_{\mathcal{D}}(f^*) \quad \text{Bayes error (unavoidable)}$<br />
+	where $f^*$ is the Bayes optimal predictor for $(\mathcal{D}, \ell)$. 
 - **Write the upper bound on the estimation error of ERM run on a finite class $\mathcal{H}$ of predictors. Bonus points if you justify your answer with a proof.**
-- **Write the upper bpund on the estimation error of ERM run on the class of complete binary tree predictors with at most $N$ nodes on $d$ binary features.**
+- **Write the upper bound on the estimation error of ERM run on the class of complete binary tree predictors with at most $N$ nodes on $d$ binary features.**
 - **Write the bound on the difference between risk and training error for an arbitrary complete binary tree classifier $h$ on $d$ binary features in terms of its number $N_h$ of nodes. Bonus points if you provide a short explanation on how this bound is obtained.**
 - **Write the formula for the $K$-fold cross validation estimate. Explain the main quantities occurring in the formula.**
 - **Write the pseudo-code for computing the nested cross validation estimate.**
