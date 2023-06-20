@@ -77,7 +77,12 @@
 	$\mathbb{E}\Big[\big(Y - f^*(X)\big)^2 \text{ }\Big \vert \text{ } X = x \Big] = \mathbb{E}\Big[\big(Y - \mathbb{E}[Y \text{ } \vert \text{ } X = x ]\big)^2 \text{ }\Big \vert \text{ } X = x \Big] = Var\big[Y \vert X = x\big]$<br />
 	In words, the conditional risk of the Bayes optimal predictor for the quadratic loss is the **conditional variance**, the variance of the label conditioned on the instance. By averaging over $X$ we obtain $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\big[Var[Y \text{ } \vert \text{ } X]\big]$
 - **Explain in mathematical terms the relationship between test error and statistical risk.**
+	We can then estimate $\ell_{\mathcal{D}}(h)$ with the **test error**, which is the average loss of $h$ on the test set $\ell_{s'}(h) = \frac{1}{n}\sum_{t = 1}^{n}\ell\big(y_{t}', h(x_t')\big)$.<br />
+	Under the assumption that the test set is generated through independent draws from $\mathcal{D}$, the test error corresponds to the **sample mean** of the statistical risk. Indeed, for each $t = 1, ... , n$ the example $(X_t', Y_t')$ is an independent draw from $\mathcal{D}$. Therefore, $\mathbb{E}\Big[\ell\big(Y_t', h(X_t')\big)\Big] = \ell_{\mathcal{D}}(h) \quad \quad t= 1, ..., n$<br />
+	Note that the above equalities rely on the assumption that $h$ does not depend on the test set $S'$ (but it depends on the training set). If it did, then the above equalities would not be necessarily true.
 - **State the Chernoff-Hoeffding bounds.**
+	Let $Z_1 , ... , Z_n$ be **independent and identically distributed random variables** with expectation $\mu$ and such that $0 \leq Z_t \leq 1$ for each $t = 1, ... , n$. Then, for any given $\varepsilon > 0$ <br />
+	$\mathbb{P}\Bigg(\frac{1}{n}\sum_{t = 1}^{n}Z_t > \mu + \varepsilon \Bigg) \leq e^{-2\varepsilon^2n}\quad \text{and}\quad \mathbb{P}\Bigg(\frac{1}{n}\sum_{t = 1}^{n}Z_t < \mu - \varepsilon\Bigg) \leq e^{-2\varepsilon^2n}$
 - **Write the bias-variance decomposition for a generic learning algorithm $A$ and associate the resulting components to overfitting and underfitting.**
 - **Write the upper bound on the estimation error of ERM run on a finite class $\mathcal{H}$ of predictors. Bonus points if you justify your answer with a proof.**
 - **Write the upper bpund on the estimation error of ERM run on the class of complete binary tree predictors with at most $N$ nodes on $d$ binary features.**
