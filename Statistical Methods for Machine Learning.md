@@ -378,7 +378,7 @@ In the rest of this course, we repeatedly use the following facts:
 
 ![[fact1.png]]
 
-2) for any collection $A_1 , ... , A_n$ of (not necessarily disjoint) events, $\mathbb{P}(A_1, \cup ...\cup A_n) \leq \sum_{i = 1}^{n}\mathbb{P}(A_i)$ (**Union bound**). If the events $A_1 , ... , A_n$ are pairwise disjoint, then the union bound holds with equality.
+2) for any collection $A_1 , ... , A_n$ of (not necessarily disjoint) events, $\mathbb{P}(A_1 \cup ...\cup A_n) \leq \sum_{i = 1}^{n}\mathbb{P}(A_i)$ (**Union bound**). If the events $A_1 , ... , A_n$ are pairwise disjoint, then the union bound holds with equality.
 
 ![[facts2.jpg]]
 
@@ -399,7 +399,7 @@ $$\vert \ell_{\mathcal{D}}(h) - \ell_{S'}(h)\vert \leq \sqrt{\frac{1}{2n}\ln{\fr
 
 holds with probability al least $1 − \delta$ with respect to the random draw of the test set.
 
-The inequality $(1)$ is telling us how to use a test set to estimate the risk of a classiﬁer. More precisely, the inequality shows that the test set, which is how we measure in practice the performance of a classiﬁer on unseen data, is close to the statistical risk with high probability.
+The inequality $(1)$ is telling us how to use a test set to estimate the risk of a classiﬁer. More precisely, the inequality shows that the test error, which is how we measure in practice the performance of a classiﬁer on unseen data, is close to the statistical risk with high probability.
 
 ----------------------------------------------------------------
 
@@ -424,7 +424,7 @@ In the figure it is possible to observe a visual explanation of the bias-varianc
 
 Note that:
 1) the Bayes error is not controllable because it only depends on $\mathcal{D}$ and the loss $\ell$;
-2) the approximation (or bias) error, which is large when the algorithm underﬁts (the range of $\mathcal{H}_A$ is too short), arises because the risk of $\mathcal{H}_A$ does not necessarily contain the Bayes optimal predictor;
+2) the approximation (or bias) error, which is large when the algorithm underﬁts (the range of $\mathcal{H}_A$ is too short), arises because $\mathcal{H}_A$ does not necessarily contain the Bayes optimal predictor;
 3) the estimation (or variance) error, which is large when the algorithm overﬁts (the ranghe of $\mathcal{H}_A$ is too big), arises because the risk of $h_S$ is generally diﬀerent from the risk of $h^*$.
 
 We now use the bias-variance decomposition to balance overﬁtting and underﬁtting in the ERM algorithm run over a ﬁnite classe $\mathcal{H}$. Recall that ERM minimizes the training error in $\mathcal{H}$,
@@ -471,7 +471,7 @@ where in the last step we used the Chernoﬀ-Hoeﬀding bound.
 
 In conclusion, we have that
 
-$$\mathcal{P}\big(\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*) > \varepsilon\big) \leq 2 \vert \mathcal{H}\vert e^{-m\varepsilon^2/2} \quad \text{ } \quad (3)$$
+$$\mathbb{P}\big(\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*) > \varepsilon\big) \leq 2 \vert \mathcal{H}\vert e^{-m\varepsilon^2/2} \quad \text{ } \quad (3)$$
 
 Setting the right-hand side of $(3)$ equal to $\delta$ and solving for $\varepsilon$ we obtain that
 
@@ -498,7 +498,7 @@ We can see what happens when applying this result to the class of predictors com
 
 **Fact $1$**: for each function of the form $h : \{0, 1\}^d \to \{-1, 1\}$ there exists a binary tree classiﬁer with at most $2^{d+1}-1$ nodes that computes $h$.
 
-To proof this assumption, consider a full binary tree with $2^d$ leaves (which therefore has $2^{d+1}-1$ nodes). The root node implements a binary test on $x_1$, the $2$ nodes at depth $1$ implement binary tests on $x_2$, and so on until the $2^{d−1}$ nodes at depth $d-1$ which test $x_d$. Now note that any path from root to a leaf corresponds to a binary sequence in $\{0, 1\}^d$ . Given any $h : \{0, 1\}^d \to \{-1, 1\}$, we can assign a label $y_\ell \in \{−1, 1\}$ to each leaf $\ell$ so that if the path to the leaf corresponds to $x \in \{0, 1\}$ , then the label is set to $h(x)$. The classiﬁer computed by the tree then corresponds to $h$.
+To proof this assumption, consider a full binary tree with $2^d$ leaves (which therefore has $2^{d+1}-1$ nodes). The root node implements a binary test on $x_1$, the $2$ nodes at depth $1$ implement binary tests on $x_2$, and so on until the $2^{d−1}$ nodes at depth $d-1$ which test $x_d$. Now note that any path from root to a leaf corresponds to a binary sequence in $\{0, 1\}^d$ . Given any $h : \{0, 1\}^d \to \{-1, 1\}$, we can assign a label $y_\ell \in \{−1, 1\}$ to each leaf $\ell$ so that if the path to the leaf corresponds to $x \in \{0, 1\}^d$ , then the label is set to $h(x)$. The classiﬁer computed by the tree then corresponds to $h$.
 
 Since there are $2^{2^d}$ binary functions over $\{0, 1\}^d$, it is possible to run ERM with a class $\mathcal{H}$ containing $2^{2^d}$ tree classiﬁers. The upper bound $(1)$ then becomes
 
