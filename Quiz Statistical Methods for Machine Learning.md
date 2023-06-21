@@ -90,8 +90,12 @@
 	$\quad + \ell_{\mathcal{D}}(f^*) \quad \text{Bayes error (unavoidable)}$<br />
 	where $f^*$ is the Bayes optimal predictor for $(\mathcal{D}, \ell)$. 
 - **Write the upper bound on the estimation error of ERM run on a finite class $\mathcal{H}$ of predictors. Bonus points if you justify your answer with a proof.**
+	
 - **Write the upper bound on the estimation error of ERM run on the class of complete binary tree predictors with at most $N$ nodes on $d$ binary features.**
+	Knowing that $\vert \mathcal{H}_N \vert \leq (2de)^N$ obtained via $\frac{N-1}{2}$-th Catalan number, we can write the upper bound on the estimation error of ERM run on a class of complete binary tree predictors with at most $N$ nodes on $d$ binary features as follows: $\ell_{\mathcal{D}}(h_S) \leq \ell_{\mathcal{D}}(h^*) + \sqrt{\frac{2}{m}\Big(N(1 + \ln{(2d)}) + \ln{\frac{2}{\delta}}\Big)}$.<br />
+	From that. we deduce that on this case a training set of size of order $N \ln{d}$ is enough to control the risk of $h_s \in \mathcal{H}_N$.
 - **Write the bound on the difference between risk and training error for an arbitrary complete binary tree classifier $h$ on $d$ binary features in terms of its number $N_h$ of nodes. Bonus points if you provide a short explanation on how this bound is obtained.**
+	
 - **Write the formula for the $K$-fold cross validation estimate. Explain the main quantities occurring in the formula.**
 - **Write the pseudo-code for computing the nested cross validation estimate.**
 - **Write the mathematical definition of consistency for an algorithm $A$.**

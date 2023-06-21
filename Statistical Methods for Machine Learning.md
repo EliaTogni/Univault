@@ -494,7 +494,7 @@ The risk analysis for ERM over a ﬁnite class $\mathcal{H}$ of predictors state
 
 $$\ell_{\mathcal{D}}(\widehat{h}) \leq \underset{h \in \mathcal{H}}{\operatorname{min}}\ell_{\mathcal{D}}(h) + \sqrt{\frac{2}{m} \ln\frac{2 \vert \mathcal{H} \vert}{\delta}} \quad \text{ } \quad (1)$$
 
-We can see what happens when applying this result to the class of predictors computed by binary tree classiﬁers over $\mathcal{X} = \{0, 1\}^d$ (i.e., $d \geq 2$ binary attributes). We consider **complete [[Albero Binario|binary trees]]**: trees whose node have either zero or two children. A full binary tree is a complete binary tree whose leaves (nodes with zero children) are all at the same depth. A complete binary tree with $N$ nodes has always $(N + 1)/2$ leaves.
+We can see what happens when applying this result to the class of predictors computed by binary tree classiﬁers over $\mathcal{X} = \{0, 1\}^d$ (i.e., $d \geq 2$ binary attributes). We consider **complete [[Albero Binario|binary trees]]**: trees whose nodes have either zero or two children. A full binary tree is a complete binary tree whose leaves (nodes with zero children) are all at the same depth. A complete binary tree with $N$ nodes has always $(N + 1)/2$ leaves.
 
 **Fact $1$**: for each function of the form $h : \{0, 1\}^d \to \{-1, 1\}$ there exists a binary tree classiﬁer with at most $2^{d+1}-1$ nodes that computes $h$.
 
@@ -529,15 +529,15 @@ From that, we deduce that in this case a training set of size of order $N \ln d$
 ----------------------------------------------------------------
 
 ## A more refined bound
-As it is not clear what $N$ should be used in practice, we now derive a more refined bound. Recall that we control the variance error of ERM in $H_N$ by making sure that the risk of each predictor in $H_N$ can exceed its training error by at most $\varepsilon$. We now take a diﬀerent approach. Namely, we upper bound the risk of a tree predictor h by its training error plus a quantity $\varepsilon_h$ that now depends on the size of the tree. To this purpose, let $H$ be the set of all tree classifiers with at most $2^{d+1}-1$ nodes. Because of Fact $1$, $\mathcal{H}$ implements all binary classifiers $h: \{0,1\}^d \to \{-1, 1\}$.
+As it is not clear what $N$ should be used in practice, we now derive a more refined bound. Recall that we control the variance error of ERM in $\mathcal{H}_N$ by making sure that the risk of each predictor in $\mathcal{H}_N$ can exceed its training error by at most $\varepsilon$. We now take a diﬀerent approach. Namely, we upper bound the risk of a tree predictor $h$ by its training error plus a quantity $\varepsilon_h$ that now depends on the size of the tree. To this purpose, let $\mathcal{H}$ be the set of all tree classifiers with at most $2^{d+1}-1$ nodes. Because of Fact $1$, $\mathcal{H}$ implements all binary classifiers $h: \{0,1\}^d \to \{-1, 1\}$.
 
 We introduce a function $w : \mathcal{H} \to [0, 1]$ and call $w(h)$ the weight of tree predictor $h$. We assume
 
-$$\sum_{h in \mathcal{H}}w(h) \leq 1 \quad \text{ } \quad (2)$$
+$$\sum_{h \in \mathcal{H}}w(h) \leq 1 \quad \text{ } \quad (2)$$
 
 We can then write the following chain of inequalities, where $\varepsilon_h > 0$ will be chosen later on,
 
-$$\mathbb{P}\big(\exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \varepsilon_h \big) \leq \sum_{h \in \mathcal{H}}\mathbb{P}\big(\vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \varepsilon_h\big) \leq \sum_{h \in \mathcal{H}}2e^{-2me_h^2}$$
+$$\mathbb{P}\big(\exists h \in \mathcal{H}: \vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \varepsilon_h \big) \leq \sum_{h \in \mathcal{H}}\mathbb{P}\big(\vert \ell_S(h) - \ell_{\mathcal{D}}(h) \vert > \varepsilon_h\big) \leq \sum_{h \in \mathcal{H}}2e^{-2m\varepsilon_h^2}$$
 
 Note that we used Chernoﬀ-Hoeﬀding bound in the last step. Now, choosing
 
@@ -561,7 +561,7 @@ for a given $N$, the new approach (which is sometimes called **Structural Risk M
 
 $$\widehat{h} = \underset{h \in \mathcal{H}}{\operatorname{argmin}}\Bigg( \ell_S(h)+ \sqrt{\frac{1}{2m}\Big(\ln\frac{1}{w(h)} + \ln\frac{2}{\delta}\Big)} \Bigg) \quad \text{ } (4)$$
 
-The function $w$ can be naturally viewed as a complexity measure for the tree predictor $h$. Note that this analysis oﬀers a diﬀerent viewpoint on overfitting: $\ell_S(h)$ becomes a good estimate of $\ell_{\mathcal{D}}(h)$ when it is “penalized” by the term
+The function $w$ can be naturally viewed as a **complexity measure** for the tree predictor $h$. Note that this analysis oﬀers a diﬀerent viewpoint on overfitting: $\ell_S(h)$ becomes a good estimate of $\ell_{\mathcal{D}}(h)$ when it is “penalized” by the term
 
 $$\sqrt{\frac{1}{2m}\Big(\ln\frac{1}{w(h)} + \ln\frac{2}{\delta}\Big)}$$
 
