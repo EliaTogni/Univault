@@ -95,9 +95,18 @@
 	Knowing that $\vert \mathcal{H}_N \vert \leq (2de)^N$ obtained via $\frac{N-1}{2}$-th Catalan number, we can write the upper bound on the estimation error of ERM run on a class of complete binary tree predictors with at most $N$ nodes on $d$ binary features as follows: $\ell_{\mathcal{D}}(h_S) \leq \ell_{\mathcal{D}}(h^*) + \sqrt{\frac{2}{m}\Big(N(1 + \ln{(2d)}) + \ln{\frac{2}{\delta}}\Big)}$.<br />
 	From that. we deduce that on this case a training set of size of order $N \ln{d}$ is enough to control the risk of $h_s \in \mathcal{H}_N$.
 - **Write the bound on the difference between risk and training error for an arbitrary complete binary tree classifier $h$ on $d$ binary features in terms of its number $N_h$ of nodes. Bonus points if you provide a short explanation on how this bound is obtained.**
-	
+	$\ell_{\mathcal{D}}(h) \leq \ell_S(h) + \sqrt{\frac{1}{2m}\Big(\vert \sigma(h) \vert + \ln{\frac{2}{\delta}}\Big)}$<br />
+	Hence, with Occam Razor given two predictor with the same training error the simpler (the shortest $\vert \sigma \vert$) is the best.<br />
+	We upper bound the risk of a tree predictor $h$ by its training error plus a quantity $\varepsilon_h$ that now depends on the size of the tree.<br />
+	We introduce a function $w: \mathcal{H} \to [0, 1]$ and call $w(h)$ the weight of tree predictor $h$. We assume $\sum_{h \in \mathcal{H}} w(h) \leq 1$.<br />
+	And now choosing $\varepsilon_h = \sqrt{\frac{1}{2m}\Big(\ln{\frac{1}{w(h)}} + \ln{\frac{2}{\delta}}\Big)}$, we get that $\mathbb{P}(\exists h \in \mathcal{H}) : \vert \ell_{\mathcal{D}}(h) - \ell_S(h) \vert > \varepsilon_h \geq \sum_{h \in \mathcal{H}} \delta w(h) \leq \delta$.<br />
+	A consequence of this analysis is that, with probability at least $1 - \delta$ with respect to the training set random draw, we have that $\ell_{\mathcal{D}}(h) \leq \ell_S(h) + \sqrt{\frac{1}{2m}\Big(\ln{\frac{1}{w(h)}} + \ln{\frac{2}{\delta}}\Big)}$.<br />
+	Now, using a theoretic technique we can encode each tree predictor $h$ as a binary string $\sigma(h)$ of length $\vert \sigma(h) \vert = \mathcal{O}(N_h \log{d})$. Thanks to Kraft inequality, we can associate a weight $w(h) = 2^{-\vert \sigma(h) \vert}$ to each tree predictor $h$ in order to get the bound shown at the beginning.
 - **Write the formula for the $K$-fold cross validation estimate. Explain the main quantities occurring in the formula.**
+	The **$K$-fold CV estimate** of $\mathbb{E}\big[\ell_{\mathcal{D}}(A)\big]$ on $S$, denoted by $\ell_S^{CV}(A)$, is computed as follows: we run $A$ on each training part $S_{-i}$ of the folds $i = 1, ..., K$ and obtain the predictors $h_1 =A(S_{-1}), ..., h_K =  A(S_{-K})$. We then compute the (rescaled) errors on the testing part of each fold, $\ell_{S_i}(h_i) = \frac{K}{m} \sum_{(x, y) \in  S_i} \ell(y, h_i(x))$.<br />
+	Finally, we compute the CV estimate by averaging these errors $\ell_{S}^{CV}(A) = \frac{1}{K} \sum_{i = 1}^{K} \ell_{S_i}(h_i)$.
 - **Write the pseudo-code for computing the nested cross validation estimate.**
+	![[K-fold Nested Cross Validation.png]]
 - **Write the mathematical definition of consistency for an algorithm $A$.**
 - **Write the statement of the no-free-lunch theorem.**
 - **Write the mathematical definition of nonparametric learning algorithm. Define the main quantities occurring in the formula.**

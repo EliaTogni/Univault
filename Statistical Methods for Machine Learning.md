@@ -586,10 +586,10 @@ Note that the choice of the weight function $w$ is not determined by the analysi
 # Hyperparameter tuning and risk estimates
 In practice, learning algorithms are often specified up to one or more hyperparameters. These are special parameters (like $k$ in $k-NN$ or the learning rate, the number of epochs, and the batch size in neural networks) whose value must be determined before the training phase can start. Crucially, setting the hyperparameters in the wrong way can lead to underfitting or overfitting.
 
-A learning algorithm with one or more hyperparameters is not really an algorithm, but rather a family of algorithms, one for each possible assignment of values to the hyperparameters. Let $\{A_\theta : \theta \in \Theta\}$ be such a family of learning algorithms, where $\theta$ is a vector of hyperparameters and $\Theta$ is the set of all possible hyperparameter values. Fix a learning problem $(\mathcal{D}, \ell)$ and let $A_\theta(S) = h$ be the predictor output when $A_\theta$ is run on the training set $S$. Let $\ell_{\mathcal{D}}(A_\theta(S))$ be the risk of the predictor $A_\theta(S)$, and let $E\big[\ell_{\mathcal{D}}(A_\theta)\big]$ be the expected risk of $A_\theta(S)$ where the expectation is with respect to the random draw of the training set $S$ of a given fixed size. Intuitively, $E\big[\ell_{\mathcal{D}}(A_\theta)\big]$ measures the performance of $A_\theta$ on a typical training set of that size.
+A learning algorithm with one or more hyperparameters is not really an algorithm, but rather a family of algorithms, one for each possible assignment of values to the hyperparameters. Let $\{A_\theta : \theta \in \Theta\}$ be such a family of learning algorithms, where $\theta$ is a vector of hyperparameters and $\Theta$ is the set of all possible hyperparameter values. Fix a learning problem $(\mathcal{D}, \ell)$ and let $A_\theta(S) = h$ be the predictor output when $A_\theta$ is run on the training set $S$. Let $\ell_{\mathcal{D}}(A_\theta(S))$ be the risk of the predictor $A_\theta(S)$, and let $\mathbb{E}\big[\ell_{\mathcal{D}}(A_\theta)\big]$ be the expected risk of $A_\theta(S)$ where the expectation is with respect to the random draw of the training set $S$ of a given fixed size. Intuitively, $\mathbb{E}\big[\ell_{\mathcal{D}}(A_\theta)\big]$ measures the performance of $A_\theta$ on a typical training set of that size.
 
 ## Evaluating a learning algorithm using external cross-validation
-Assume for now the hyperparameter $\theta$ is fixed and focus on the problem of estimating $E\big[\ell_{\mathcal{D}}(A)\big]$. To do so we can use a technique called $K$-fold (external) **cross-validation**.
+Assume for now the hyperparameter $\theta$ is fixed and focus on the problem of estimating $\mathbb{E}\big[\ell_{\mathcal{D}}(A)\big]$. To do so we can use a technique called $K$-fold (external) **cross-validation**.
 
 Let $S$ be our entire dataset. We partition $S$ in $K$ subsets (also known as **folds**) $S_1, ..., S_K$ of size $m/K$ each (assume for simplicity that $K$ divides $m$). The extreme case $K = m$ provides an estimate known as **leave-one-out**. Now let $S_{-i} \equiv S \setminus S_i$. We call $S_i$ the **testing part** of the $i$-th fold while $S_{-i}$ is the **training part**.
 
@@ -600,7 +600,7 @@ $$S_3 = \Big\{(x_{11}, y_{11}), ..., (x_{15}, y_{15}) \Big \} \quad S_4 = \Big\{
 
 then $S_{-2} = S_1 \cup S_3 \cup S_4$.
 
-The **$K$-fold CV estimate** of $E\big[\ell_{\mathcal{D}}(A)\big]$ on $S$, denoted by $\ell_S^{CV}(A)$, is then computed as follows: we run $A$ on each training part $S_{-i}$ of the folds $i = 1, ..., K$ and obtain the predictors $h_1 =A(S_{-1}), ..., h_K =  A(S_{-K})$. We then compute the (rescaled) errors on the testing part of each fold,
+The **$K$-fold CV estimate** of $\mathbb{E}\big[\ell_{\mathcal{D}}(A)\big]$ on $S$, denoted by $\ell_S^{CV}(A)$, is then computed as follows: we run $A$ on each training part $S_{-i}$ of the folds $i = 1, ..., K$ and obtain the predictors $h_1 =A(S_{-1}), ..., h_K =  A(S_{-K})$. We then compute the (rescaled) errors on the testing part of each fold,
 
 $$\ell_{S_i}(h_i) = \frac{K}{m} \sum_{(x, y) \in  S_i} \ell(y, h_i(x))$$
 
@@ -617,7 +617,7 @@ $$\theta^* = \underset{\theta \in \Theta_0}{\operatorname{argmin}}\ell_{D}\Big(A
 
 That is
 
-$$\ell_{D}\Big( A_{\theta^*}(S)\Big) = \underset{\theta \in \Theta_0}{\operatorname{min}}\ell_{D}\Big(A_{\theta}(S)\Big)$$
+$$\ell_{D}\Big( A_{\theta^*}(S)\Big) = \underset{\theta \in \Theta_0}{\operatorname{min}}\ell_{D}\Big(A_{\theta}(S)\Big) \quad \text{ } \quad (1)$$
 
 The estimate is computed by splitting the training data in two subsets $S_{train}$ and $S_{dev}$. The development set $S_{dev}$ (also called **validation set**) is used as a surrogate test set. The algorithm is run on $S_{train}$ once for each value of the hyperparameter in $\Theta_0$. The resulting predictors are tested on the dev set. In order to obtain the final predictor, the learning algorithm is run once more on the original training set $S$ using the value of the hyperparameter corresponding to the predictor with smallest error on the validation set. That will provide an estimate of $\ell_{\mathcal{D}}\big(A_{\theta^*}(S)\big)$.
 
@@ -638,24 +638,14 @@ Although this estimate tends to underestimate $(2)$, in practice the diﬀerence
 
 A better, though more computationally intensive estimate of $(2)$ is computed through nested CV.
 
-```
-Data: Dataset S
-Split S into folds S_1, ..., S_k
-for i = 1, ..., K do
-	Compute training part of i-th fold: S_{-i} \equiv S \min S_i
-	Run CV on S_{-i} for each \theta \in \Theta_{0} and find \theta_i = 
-	Re-traing A_{\theta_{i}} on S_{-i}: h_i = A_{\theta_{i}}(S_{-i})
-	Compute error of i-th fold: \varepsilon_i = \ell_{S_i}(h_i)
-end
-Output: (\varepsilon_1 + ... + \varepsilon_K)/K
-```
+![[K-fold Nested Cross Validation.png]]
 
 Note that in each run of internal cross-validation we optimize $\theta$ locally, on the training part $S_{-i}$ of the external cross-validation fold. Hence, the nested cross-validation estimate is computed by averaging the performance of predictors obtained with potentially diﬀerent values of their hyper-parameters.
 
 ----------------------------------------------------------------
 
 # Consistency and nonparametric algorithms
-Consistency is an asymptotical property certifying that the risk of the predictors generated by a learning algorithm converges to the Bayes risk in expectation as the size of the training set increases.<br />
+**Consistency** is an asymptotical property certifying that the risk of the predictors generated by a learning algorithm converges to the Bayes risk in expectation as the size of the training set increases.<br />
 Recall that $A(S_m)$ is the predictor generated by a learning algorithm $A$ on a training set $S_m$ of size $m$. A learning algorithm $A$ is **consistent** with respect to a loss function $\ell$ if for any data distribution $\mathcal{D}$ it holds that
 
 $$\underset{m \to \infty}{\operatorname{lim}}\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big] = \ell_{\mathcal{D}}(f^*)$$
