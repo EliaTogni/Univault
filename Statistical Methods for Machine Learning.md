@@ -676,7 +676,7 @@ for any data distribution $\mathcal{D}$. However, if we let $k$ be chosen as a f
 In the figure, it is possible to observe the typical behavior of expected risk $\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big]$ as a function of training set size for a consistent algorithm (red line) and for a nonconsistent algorithm (blue line). For small training set sizes $m < m^*$, the nonconsistent algorithm has a better performance.
 
 Similarly, the greedy algorithm for building tree classifiers is consistent (for $\mathcal{X} \equiv \mathbb{R}^d$ ) whenever the two following conditions are fulfilled. Let $\ell(x)$ be the leaf to which $x \in \mathbb{R}^d$ is routed in the current tree and let $N_{\ell}$ be the number of training examples routed to a leaf $\ell$. Then, as $m \to \infty$, to guarantee consistency we must have that
-- diameter $\Big(\{x' \in \mathbb{R}^d : \ell(X) = \ell(x')\}\Big) \to 0$;
+- diameter$\Big(\{x' \in \mathbb{R}^d : \ell(X) = \ell(x')\}\Big) \to 0$;
 - $N_{\ell(X)} \to \infty$.
 
 where both conditions must hold when $m \to \infty$ and in probability with respect to the random draw of $X$. In other words, the tree must grow unboundedly but not too fast.
