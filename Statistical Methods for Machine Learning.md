@@ -1503,4 +1503,227 @@ where $h_{s_t}(g_t) = [1 − y_{s_t}g_t(x_{s_t})]_+$.
 
 ----------------------------------------------------------------
 
+# Stability and risk control for SVM
+We investigate stability, a technique that prevents overfitting by ensuring a learning algorithm has enough bias. The bias is quantified by how much the learning algorithm is able to react to small changes in the training set.
+
+Fix a training set $S$ of examples $(x_1, y_1), ..., (x_m, y_m)$ and use $z_t$ to denote the $t$-th example $(x_t, y_t) \in \mathbb{R}^d \times \mathbb{R}$. Given a loss function $\ell$ and a predictor $h$, let $\ell(h, z_t) = \ell(h(x_t), y_t)$ and use
+
+$$\ell_S(h) = \frac{1}{m}\sum_{t = 1}^{m}\ell(h, z_t)$$
+
+to denote the training error of $h$. From now on, we assume $S = S_m$ is a sample of $m$ examples $Z_t = (X_t, Y_t)$ independently drawn from a distribution $\mathcal{D}$. We use $S^{(t)}$ to denote $S$ where the $t$-th example $(X_t, Y_t)$ is replaced by $Z_t' = (X_t', Y_t')$, also drawn from $\mathcal{D}$ independently of $S$.
+
+Fix a learning algorithm $A$ and let $h_S = A(S)$ and $h_{S^{(t)}} = A(S^{(t)})$. We say that $A$ is $\varepsilon$-stable for a training set size $m$ if, for each $t = 1, ..., m$
+
+$$\mathbb{E}\big[ \ell(h_{S^{(t)}}, Z_t) - \ell(h_S, Z_t)\big] \leq \varepsilon$$
+
+where the expected value is computed with respect to the random draw of $S$ and $Z'$. Note that, in general, $\ell(h_{S^{(t)}}, Z_t) > \ell(h_S,Z_t)$ because $Z_t$ is not in $S^{(t)}$. Stability demands that $\ell(h_{S^{(t)}}, Z_t)$ be not much bigger than $\ell(h_S, Z_t)$ in expectation with respect to $S$ and $Z_t'$. In other words, an algorithm is stable if replacing a single example in the training set does not significantly increase the loss on that example. In our analysis, we use the following equivalent definition of stability:
+
+$$\mathbb{E}\big[ \ell(h_S, Z_t') - \ell(h_{S^{(t)}, Z_t'})\big] \leq \varepsilon$$
+
+The next result shows that a stable algorithm produces predictors whose training error is a good proxy for their risk.
+
+**Theorem 1**: If $A$ is $\varepsilon$-stable for training set size $m$, then $\mathbb{E}\Big[\ell_\mathcal{D}(A(S_m)) − \ell_S(A(S_m))\Big] \leq \varepsilon$.
+
+Proof: let $S = \{(x_1, y_1), ..., (x_m, y_m)\}$ and $S' = \{(x'_1, y'_1 ), ..., (x'_m, y'_m)\}$ be drawn i.i.d. from $\mathcal{D}$. Let $h_S = A(S_m)$. Then
+
+$$\mathbb{E}[\ell_S(h_S)] = \mathbb{E}\Big[ \frac{1}{m} \sum_{t = 1}^{m} \ell(h_S, z_t)\Big] = \frac{1}{m} \sum_{t = 1}^{m} \mathbb{E}[\ell(h_S, z_t)] = \frac{1}{m}\sum_{t = 1}^{m}\mathbb{E}[\ell(h_{S^{(t)}}, z'_t)]$$
+
+Moreover,
+
+$$\ell_{\mathcal{D}}(h_S) = \mathbb{E}\big[\ell(h_S, z'_t) \vert S\big] = \frac{1}{m} \sum_{t = 1}^{m} \mathbb{E}\big[\ell(h_S, z'_t) \vert S \big]$$
+
+averaging with respect to the random draw of S, this implies
+
+m
+
+E ℓD(hS) = m1 E ℓ(hS,z′t) .
+
+t=1
+
+Therefore,
+
+m
+
+E ℓD(hS) − ℓS(hS) = m1 E ℓ(hS,z′t) − ℓ(hS(t),z′t) ≤ ε
+
+t=1
+
+due to the stability assumption. □
+
+In order to control the estimation error using stability, we need to control the training error. Indeed, if the training error is small and the algorithm is stable, then the risk is also small because of the previous result. We say that an algorithm A is γ-ERM for training set size m and with respect to a class H of predictors if
+
+ℓS(hS) ≤ inf ℓS(h) + γ
+
+h∈H
+
+for all S of size m.
+
+Theorem 2. If for a training set size m the algorithm A is γ-ERM and ε-stable with respect to a class H of predictors, then
+
+E ℓD A(Sm) ≤ inf ℓD(h) + ε + γ .
+
+h∈H
+
+Proof. Let hS = A(Sm) and let h∗be the predictor with smallest risk in H. Then
+
+E ℓD(hS) = E ℓD(hS) − ℓS(hS) + E ℓS(hS) − ℓS(h∗) + E ℓS(h∗)![](Aspose.Words.6d7bc536-27cc-4863-9c2a-10e4b3797a75.002.png)![](Aspose.Words.6d7bc536-27cc-4863-9c2a-10e4b3797a75.003.png)![](Aspose.Words.6d7bc536-27cc-4863-9c2a-10e4b3797a75.004.png)![](Aspose.Words.6d7bc536-27cc-4863-9c2a-10e4b3797a75.005.png)
+
+≤ε (stability) ≤γ (ERM approximation)
+
+- ε + γ + E ℓS(h∗) .
+
+The proof is concluded by observing that E ℓS(h∗) = ℓD(h∗), namely the expected value of the empirical risk is the risk. □
+
+In case of predictors parameterized by a vector w ∈Rd (like linear predictors), ERM can be made stable by adding to the empirical loss a so-called regularization term. We also need an additional condition, namely that the loss function ℓis such that ℓ(·,z) be convex and Lipschitz, where ℓ(w,z) is the error of w on the example z. Recall that Lipschitz means that there exists a constant L
+
+such that ℓ(w,z) − ℓ(w′,z)  ≤ L ∥w − w′∥for all w,w′ ∈ Rd and for all z = (x,y). No other assumptions on ℓ are required.
+
+Theorem 3. Let ℓ be a loss function such that ℓ(·,z) is convex, differentiable[^1] and Lipschitz with constant L > 0. Then the learning algorithm A such that
+
+A(S) = argmin ℓS(w) + λ ∥w∥[^2]
+
+w∈Rd 2
+
+for all training sets S of size m is (2L)2/(λm)-stable for every λ > 0.
+
+Proof. Introduce
+
+FS(w) = ℓS(w) + λ2 ∥w∥2
+
+and also
+
+wS = argmin FS(w) and wS(t) = argmin FS(t)(w) .
+
+w∈Rd w∈Rd
+
+In order to prove stability, we need to upper bound E ℓ(wS,z′t) − ℓ(wS(t),z′t) . We actually prove
+
+,z′) − ℓ(w ,z′) for all S and z′. As a first step, a stronger result by bounding the quantity ℓ(wS t S(t) t t
+
+we use the Lipschitz condition to write
+
+ℓ(wS,z′t) − ℓ(wS(t),z′t) ≤ L ∥wS − wS(t)∥ . (1) Next, we upper bound ∥wS − wS(t)∥. Introduce the abbreviations w = wS e w′ = wS(t). Then
+
+F (w′) − F (w) = ℓ (w′) − ℓ (w) + λ  w′ 2 − ∥w∥2
+
+S S S S 2
+
+- ℓ (t)(w ) − ℓS(t)(w) + ℓ(w′,z )m− ℓ(w,z ) − t m t +
+- t t ℓ(w′,z′) − ℓ(w,z′)
+- FS(t)(w′) − FS(t)(w) + ℓ(w ,zt)m− ℓ(w,z ) − m λ2 w′ 2 − ∥w∥2
+
+S
+
+- t ℓ(w′,z′t) − ℓ(w,z′)
+
+t
+
+- ℓ(w′,zt) − ℓ(w,zt) + ℓ(w′,z′t) − ℓ(w,z′t)
+
+m m
+
+- 2L w − w′ 
+
+m
+
+where the first inequality holds because w′ = w (t) minimizes F (t) and the second inequality holds
+
+S S
+
+because ℓ(·,z) is Lipschitz.
+
+is λ-strongly convex: indeed, ℓ(·,z) is convex, λ ∥w∥2 is We proceed by noting that the function FS 2
+
+λ-strongly convex, which implies that their sum is also λ-strongly convex. Therefore, by definition of strongly convex function,
+
+F (w′) ≥ F (w) + ∇F (w)⊤(w′ − w) + λ w − w′ 2 .
+
+S S S 2
+
+Because w is the minimizer of FS, ∇FS(w) = 0 and so
+
+F (w′) − F (w) = ℓ (w′) + λ w′ 2 − ℓ (w) + λ ∥w∥2 ≥ λ w − w′ 2
+
+S S S 2 S 2 2
+
+Combining the two inequalities we get
+
+λ w − w′ 2 ≤ 2L w − w′ ovvero w − w′  ≤ 4L
+
+2 m λm
+
+which, together with (1) shows the stability of w = wS. □
+
+We now show how the notion of stability can be used to control the risk of the SVM predictor. First, recall that the hinge loss ℓ w,(x,y) = 1 − yw⊤x is convex in w for (x,y) ∈Rd × {−1,1}. In
+
+\+
+
+order to compute the Lipschitz constant L, observe that, using Taylor’s theorem and the Cauchy- Schwartz inequality u⊤v ≤ ∥u∥∥v∥, we can write
+
+ℓ(w′,z) − ℓ(w,z) ≤ ∇ℓ(w,z)⊤ w′ − w) ≤ ∥∇ℓ(w,z)∥ w′ − w
+
+Now note that ∇ℓ(w,z) = yx I{yw⊤x ≤ 1}, and thus ∥∇ℓ(w,z)∥ ≤ ∥x∥. Assuming ∥xt∥ ≤ X for t = 1,...,m we can then set L = X and show the following result.
+
+Theorem 4. Given a training set S of size m, the SVM solution
+
+wS = argmin ℓS(w) + λ ∥w∥2 (2)
+
+w∈Rd 2
+
+satisfies
+
+0-1 λ 2 4X 2
+
+E ℓD (wS) ≤ umin∈R ℓD(u) + 2 ∥u∥ λm .
+
+\+
+
+d
+
+where ℓ0-1(w ) is the risk of w with respect to the zero-one loss.
+
+D S S
+
+Proof. Clearly, for each u ∈Rd we have
+
+λ 2 λ 2
+
+ℓS(wS) ≤ ℓS(wS) + 2 ∥wS∥ ≤ ℓS(u) + 2 ∥u∥ . (3) Therefore, because Theorem 3 implies that wS is (4L2)/(λm)-stable for L = X,
+
+2
+
+E ℓD(wS) ≤ E ℓS(wS) + 4λmX by Theorem 1
+
+λ 2 4X 2
+
+- E ℓ (u) + + using (3)
+
+S 2 ∥u∥ λm
+
+- ℓD(u) + 2 ∥u∥2 + 4λmX 2
+
+λ
+
+The proof is concluded by noting that, for any linear predictor w, ℓ0-1(w) = P Y w⊤X ≤ 0 ≤
+
+D
+
+ℓD(w). This is an immediate consequence of the fact that the hinge loss is a convex upper bound
+
+on the zero-one loss. □
+
+Consistency of SVM. In a kernel space HK the SVM objective function (2) becomes
+
+gS = argmin ℓS(g) + λ ∥g∥2K
+
+g∈HK 2
+
+If the kernel is Gaussian, then one can prove that SVM becomes a consistent learning algorithm (with respect to the zero-one loss) when the regularization parameter λ is chosen as a function λm of the training set size m. In particular, for m → ∞, λm must satisfy the two following conditions: λm = o(1) and λm = ω(m−1/2).
+5
+
+[^1]: Some loss functions, notably the hinge loss, are not everywhere differentiable. However, they are everywhere subdifferentiable, which is sufficient for this theorem to hold.
+[^2]: 
+
+----------------------------------------------------------------
+
 [[Quiz Statistical Methods for Machine Learning]]
