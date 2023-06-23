@@ -24,8 +24,8 @@
 	Noisy labels cause overfitting because they may mislead the algorithm with regard to what is the “true” label for a given data point.
 - **Write a short pseudo-code for the $k-NN$ algorithm for binary classification. (BONUS)**
 	In order to compute $h_{k−NN}(x)$, the following operations are performed:
-	1) find the $k$ training points $x_{t_1} ,..., x_{t_k}$ closest to $x$. Let $y_{t_1} ,...,y_{t_k}$ be their labels;
-	2) if the majority of the labels $y_{t_1} ,...,y_{t_k}$ is $+1$, then $h_{k−NN}(x) = +1$; if the majority is $−1$, then $h_{k−NN}(x) = −1$.
+	1) find the $k$ training points $x_{t_1} ,..., x_{t_k}$ closest to $x$ (if there are more than $k$ training points closest to $x$, choose the $k'$ training points where $k'$ is the smallest integer bigger or equal to $k$ such that the $(k' +1)$-th data point has distance from $x$ strictly larger than the $k'$-th point). Let $y_{t_1} ,...,y_{t_k}$ be their labels;
+	2) if the majority of the labels $y_{t_1} ,...,y_{t_k}$ is $+1$, then $h_{k−NN}(x) = +1$; if the majority is $−1$, then $h_{k−NN}(x) = −1$. If there is an equal number of closest points with positive and negative labels, then the algorithm predicts a default value in $\{−1,1\}$ (for instance, the most frequent label in the training set).
 - **Is $k-NN$ more likely to overfit when $k$ is large or small?**
 	The learning algorithm suffers from high test error for small values of $k$ (overfitting) and for large values of $k$ (underfitting).
 - **Write a short pseudo-code for building a tree classifier based on a training set $S$.**
@@ -90,7 +90,7 @@
 	$\quad + \ell_{\mathcal{D}}(f^*) \quad \text{Bayes error (unavoidable)}$<br />
 	where $f^*$ is the Bayes optimal predictor for $(\mathcal{D}, \ell)$. 
 - **Write the upper bound on the estimation error of ERM run on a finite class $\mathcal{H}$ of predictors. Bonus points if you justify your answer with a proof.**
-	
+	We study the case $\vert \mathcal{H} \vert < \infty$, that is when the model space contains a finite number of predictors. Note that the event $\exists h \in \mathcal{H} : \vert \ell_{\mathcal{D}}(h) - \ell_S(h) \vert > \varepsilon/2$ is the union over $h \in \mathcal{H}$ of the events $\vert \ell_{\mathcal{D}}(h) - \ell_S(h) \vert > \varepsilon/2$. Therefore, by the union bound, we have that its probability is bounded by $\mathcal{H}$ times the probability of the event $\vert \ell_{\mathcal{D}}(h) - \ell_S(h) \vert > \varepsilon/2$ for a single predictor $h \in \mathcal{H}$ is $\leq \vert \mathcal{H} \vert 2 e^{-m\varepsilon^2/2}$. In conclusion, we have that $\mathbb{P}\big(\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*) > \varepsilon \big) \leq 2 \vert \mathcal{H} \vert e^{-m \varepsilon^2/2}$. Setting the right-hand side of the equation to $\delta$ and solving for $\varepsilon$, we obtain that $\ell_{\mathcal{D}}(h_S) \leq \ell_{\mathcal{D}}(h^*) + \sqrt{\frac{2}{m}\ln{\frac{2 \vert \mathcal{H} \vert}{\delta}}}$.
 - **Write the upper bound on the estimation error of ERM run on the class of complete binary tree predictors with at most $N$ nodes on $d$ binary features.**
 	Knowing that $\vert \mathcal{H}_N \vert \leq (2de)^N$ obtained via $\frac{N-1}{2}$-th Catalan number, we can write the upper bound on the estimation error of ERM run on a class of complete binary tree predictors with at most $N$ nodes on $d$ binary features as follows: $\ell_{\mathcal{D}}(h_S) \leq \ell_{\mathcal{D}}(h^*) + \sqrt{\frac{2}{m}\Big(N(1 + \ln{(2d)}) + \ln{\frac{2}{\delta}}\Big)}$.<br />
 	From that. we deduce that on this case a training set of size of order $N \ln{d}$ is enough to control the risk of $h_s \in \mathcal{H}_N$.
