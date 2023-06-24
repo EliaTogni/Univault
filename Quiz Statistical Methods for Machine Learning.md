@@ -123,6 +123,7 @@
 	Under Lipschitz assumptions on $\eta$, the typical convergence rate to Bayes risk is $m^{−1/(d+1)}$ (exponentially slow in $d$).
 - **Explain the curse of dimensionality.**
 	Te convergence rate $m^{\frac{-1}{d+1}}$ implies that to get $\varepsilon$-close to the Bayes Risk, we need a training set size $m$ of order $\varepsilon^{-(d+1)}$. This exponential dependence on the number of features of the training set size is known a curse of dimensionality and refers to the difficulty of learning in a nonparametric setting when datapoints live in a high-dimensional space.
+- **Why non parametric algorithm cannot be consistent?**
 - **Write the bound on the risk of $1-NN$ binary classifier under Lipschitz assumptions.**
 - **Can the ERM over linear classifiers be computed efficiently? Can it be approximated efficiently? Motivate your answers.**
 - **Write the system of linear inequalities stating the condition of linear separability for a training set for binary classfication.**
