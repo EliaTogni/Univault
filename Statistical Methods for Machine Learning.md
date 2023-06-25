@@ -699,7 +699,7 @@ Note that the convergence rate $m^{-1/(d+1)}$ implies that to get $\varepsilon$-
 
 ----------------------------------------------------------------
 
-# Risk Analysys for Nearest-Neighbor
+# Risk Analysis for Nearest-Neighbor
 We investigate the problem of bounding the zero-one loss risk of the $1-NN$ binary classifier averaged with respect to the random draw of the training set. Under some assumptions on the data distribution $\mathcal{D}$, we prove a bound of the form
 
 $$\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big] \leq 2 \ell_{\mathcal{D}}(f^*) + \varepsilon_m \quad \text{ } \quad (1)$$
@@ -733,7 +733,6 @@ $$1 - \eta(x') \leq 1 - \eta(x) + c \Vert x - x' \Vert \quad \text{ } \quad (3)$
 Using $(2)$ and $(3)$, for all $x, x' \in \mathcal{X}$ we have
 
 $$\eta(x)(1 - \eta(x')) + (1 - \eta(x))\eta(x')$$
-$$\leq \eta(x)(1-\eta(x)) + c \Vert x - x' \Vert + (1 - \eta(x))\eta(x) +c \Vert x - x' \Vert$$
 $$\leq \eta(x)(1-\eta(x)) + \eta(x) c \Vert x - x' \Vert + (1 - \eta(x))\eta(x) + (1 - \eta(x))c \Vert x - x' \Vert$$
 $$= 2 \eta(x)(1- \eta(x)) + c \Vert x - x' \Vert$$
 $$\leq 2 \text{ }\operatorname{min} \{\eta(x), 1 - \eta(x)\} + c \Vert x - x' \Vert$$
@@ -793,7 +792,7 @@ $$\varepsilon + \frac{2}{em} \Big(\frac{2}{\varepsilon}\Big)^d = 2m^{-1/(d+1)} +
 
 Substituting this bound in $(4)$, we finally obtain
 
-$$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big]t \leq 2 \ell_{\mathcal{D}}(f^*) + c4m^{-1/(d+1)}\sqrt{d}$$
+$$\mathbb{E}\Big[\ell_{\mathcal{D}}(h_S)\Big] \leq 2 \ell_{\mathcal{D}}(f^*) + c4m^{-1/(d+1)}\sqrt{d}$$
 
 Note that for $m \to \infty$, $\ell_{\mathcal{D}}(f^*) \leq \mathbb{E}[\ell_{\mathcal{D}}(h_S)] \leq 2\ell_{\mathcal{D}}(f^*)$. Namely, the asymptotic risk of $1-NN$ lies between the Bayes risk and twice the Bayes risk.
 
