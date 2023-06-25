@@ -806,18 +806,18 @@ Recall that an hyperplane with coefficients $(w,c)$ is defined by $\Big \{x \in 
 
 The halfspaces $H^+$ e $H^−$ defined by the hyperplane $\{x \in \mathbb{R}^d : w^{\top}x = c\}$ are
 
-$$H^+ \equiv \Bigg\{ x : w^{\top}x > c \Bigg\} \quad \text{ and } \quad H^− \equiv \Bigg \{ x′ : w^{\top}x′ \leq c \Bigg\}$$
+$$H^+ \equiv \Bigg\{ x : w^{\top}x > c \Bigg\} \quad \text{ and } \quad H^− \equiv \Bigg \{ x' : w^{\top}x' \leq c \Bigg\}$$
 
-That is, all points $x$ whose projection onto $w$ has length strictly bigger than $\frac{c}{ \Vert w \Vert}$, and all points $x′$ whose projection onto $w$ has length not larger than $\frac{c}{\Vert w \Vert}$. Geometrically, a linear classifier is thus defined by
+That is, all points $x$ whose projection onto $w$ has length strictly bigger than $\frac{c}{ \Vert w \Vert}$, and all points $x'$ whose projection onto $w$ has length not larger than $\frac{c}{\Vert w \Vert}$. Geometrically, a linear classifier is thus defined by
 
 $$ h(x) = \cases{+1 \quad \text{ if } x \in H^+ \cr \cr −1 \quad \text{ if } x \in H^−}$$
 
-Hyperplanes of the form $\Big \{x \in \mathbb{R}^d : w^{\top}x = 0\Big\}$ pass through the origin and are called **homogeneous**. Any non-homogeneous hyperplane $\Big \{x \in \mathbb{R}^d : w^{\top}x = c\Big\}$, with $c \neq 0$, is equivalent to the homogeneous hyperplane $\Big \{x \in \mathbb{R}^{d+1} : v^{\top}x = 0 \Big \}$ with $v = (w_1, ..., w_d, −c)$ in the following sense: $w^{\top}x − c = v^{\top}x′$ for all $x \in \mathbb{R}^d$ and $x′ = (x_1, ..., x_d, 1) \in \mathbb{R}^{d+1}$. For this reason, without any loss of generality we only deal with algorithms that learn linear predictors corresponding to homogeneous hyperplanes. This amounts to saying that we automatically add an extra feature with value $1$ to all of our data points.
+Hyperplanes of the form $\Big \{x \in \mathbb{R}^d : w^{\top}x = 0\Big\}$ pass through the origin and are called **homogeneous**. Any non-homogeneous hyperplane $\Big \{x \in \mathbb{R}^d : w^{\top}x = c\Big\}$, with $c \neq 0$, is equivalent to the homogeneous hyperplane $\Big \{x \in \mathbb{R}^{d+1} : v^{\top}x = 0 \Big \}$ with $v = (w_1, ..., w_d, −c)$ in the following sense: $w^{\top}x − c = v^{\top}x'$ for all $x \in \mathbb{R}^d$ and $x' = (x_1, ..., x_d, 1) \in \mathbb{R}^{d+1}$. For this reason, without any loss of generality we only deal with algorithms that learn linear predictors corresponding to homogeneous hyperplanes. This amounts to saying that we automatically add an extra feature with value $1$ to all of our data points.
 
 ----------------------------------------------------------------
 
 ## Training linear classifiers
-Recall that a linear classifier is a predictor $h$ such that $h(x) = \operatorname{sgn}(w^{\top}x)$. Clearly, $\operatorname{sgn}(w^{\top}x) = \operatorname{sgn} (\Vert w \Vert \Vert x \Vert \cos \theta ) = \operatorname{sgn}(\cos \theta)$. As the classification is only determined by the angle $\theta$ between $w$ and $x$, the value of $\Vert w \Vert$ is immaterial and we may take $\Vert w \Vert = 1$. Note that the zero-one loss $\mathbb{I}\{h(x_t) \neq y_t\}$ can be equivalently rewritten as $\mathbb{I}\{y_tw^{\top}x_t \leq 0\}$.<br />
+Recall that a linear classifier is a predictor $h$ such that $h(x) = \operatorname{sgn}(w^{\top}x)$. Clearly, $\operatorname{sgn}(w^{\top}x) = \operatorname{sgn} (\Vert w \Vert \Vert x \Vert \cos \theta ) = \operatorname{sgn}(\cos \theta)$ (because the norm is always positive). As the classification is only determined by the angle $\theta$ between $w$ and $x$, the value of $\Vert w \Vert$ is immaterial and we may take $\Vert w \Vert = 1$. Note that the zero-one loss $\mathbb{I}\{h(x_t) \neq y_t\}$ can be equivalently rewritten as $\mathbb{I}\{y_tw^{\top}x_t \leq 0\}$ (because if the prediction differs from the actual label, the sign must be negative).<br />
 Note also that $y_tw^{\top}x_t = 0$ only when $w = 0$ (we assume $x_t \neq 0$ for all $t$). In this case, $\operatorname{sgn}(w^{\top}x_t) = −1$ and so the classification is actually correct when $y_t = −1$. Hence, using $\mathbb{I}\{y_tw^{\top}x_t \leq 0\}$ to count mistakes we overcount only when $w = 0$ and $y_t = −1$.
 
 Let $\mathcal{H}_d$ be the family of linear classifiers $h(x) = \operatorname{sgn}(w^{\top}x)$ for $w \in \mathbb{R}^d$ such that $\Vert w \Vert = 1$. Consider the ERM algorithm for zero-one loss that, given a training set $S$ containing examples $(x_1,y_1), ..., (x_m,y_m) \in \mathbb{R}^d \times \{−1,1\}$, outputs
@@ -828,7 +828,7 @@ Unfortunately, it is unlikely to find an efficient implementation of ERM for lin
 
 **MinDisagreement**<br />
 Instance: Pairs $(x_1, y_1), ..., (x_m,y_m) \in \{0,1\}^d \times \{−1,1\}$. Integer $k$.<br />
-Question: Is there $w \in Q^d$ such that $y_t w^{\top}x_t \leq 0$ for at most $k$ indices $t = 1, ..., m$?
+Question: Is there $w \in \mathbb{Q}^d$ such that $y_t w^{\top}x_t \leq 0$ for at most $k$ indices $t = 1, ..., m$?
 
 The following result can be shown.
 
@@ -840,7 +840,7 @@ In addition to that, the following stronger hardness-of-approximation result can
 Instance: Pairs $(x_1, y_1), ..., (x_m,y_m) \in \{0,1\}^d \times \{−1,1\}$.<br />
 Solution: A point $w \in \mathbb{Q}^d$ minimizing the number of indices $t = 1, ..., m$ such that $y_t w^{\top}x_t \leq 0$.
 
-Given an instance $S$ (i.e., a training set) of **MinDisOpt**, let $\operatorname{Opt}(S)$ the number of examples in $S$ that are misclassified by the ERM classifier $h_S$. In other words, $\operatorname{Opt}(S)/m = \ell_S(h_S)$.
+Given an instance $S$ (i.e., a training set) of **MinDisOpt**, let $\operatorname{Opt}(S)$ be the number of examples in $S$ that are misclassified by the ERM classifier $h_S$. In other words, $\operatorname{Opt}(S)/m = \ell_S(h_S)$.
 
 **Theorem 2**: if $P \neq NP$, then for all $C > 0$ there are no polynomial time algorithms that approximately solve every instance $S$ of **MinDisOpt** with a number of misclassified examples bounded by $C \times \operatorname{Opt}(S)$.
 
