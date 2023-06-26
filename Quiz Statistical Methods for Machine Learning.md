@@ -132,6 +132,8 @@
 - **Can the ERM over linear classifiers be computed efficiently? Can it be approximated efficiently? Motivate your answers.**
 	
 - **Write the system of linear inequalities stating the condition of linear separability for a training set for binary classfication.**
+	A training set $(x_1, y_1), ..., (x_m, y_m)$ is linearly separable where here exists a linear classifier with zero training error. In other words, there exists a separating hyperplane $u \in \mathbb{R}^d$ such that $\gamma(u) \overset{\text{def}}{=}\underset{t = 1, ..., m}{\operatorname{min}} y_t u^{\top}x_t > 0$.<br />
+	We can write the condition of linear separability as a system of linear inequalities, and this solution can be found in polynomial time using an algorithm for linear programming $\cases{ u^\top x_t > 0 \quad \text{ if }t = 1 \cr \cr ... \quad \text{ } \quad \text{ } \quad \text{ }... \cr \cr u^\top x_t > 0 \quad \text{ if } t = m}$
 - **Write the pseudo-code for the Perceptron algorithm.**
 	![[Perceptron Algorithm.png]]
 - **Write the statement of the Perceptron convergence theorem. Bonus points if you provide the proof.**
