@@ -4,10 +4,11 @@
 	The square loss formula is $\ell(y, \widehat{y}) = (y - \widehat{y})^2$;
 	the zero-one loss is $\ell(y, \widehat{y}) = \cases{1 \quad \text{ if } y \neq \widehat{y} \cr \cr 0 \quad \text{ otherwise }}$
 	the logarithmic loss is $\ell(y, \widehat{y}) = \cases{\ln{\frac{1}{\widehat{y}}} \quad \text{ if } y = 1 \cr \cr \ln{\frac{1}{1 - \widehat{y}}} \quad \text{ if } y = 0}$
+	where $y$ is the label of the data point and $\widehat{y}$ is the predicted label.
 - **What is the mathematical definition of predictor?(BONUS)**
 	Given the set $\mathcal{X}$ of all possible data points for a given learning problem and given the set $\mathcal{Y}$ of all possible labels, a predictor is a function $f: \mathcal{X} \to \mathcal{Y}$ mapping data points to labels (or $f: \mathcal{X} \to \mathcal{Z}$ if the predictions belong to a set $\mathcal{Z}$ different from $\mathcal{Y}$).
 - **Write the mathematical formula defining the training error of a predictor $h$.**
-	The training error or empirical risk is $\ell_s(h) = \frac{1}{m}\sum_{t=1}^{m}\ell(y_t, h(\mathbf{x}_t))$.
+	The training error or empirical risk is $\ell_s(h) = \frac{1}{m}\sum_{t=1}^{m}\ell(y_t, h(\mathbf{x}_t))$, where $S$ is the training set of size $m$, $\ell$ is a loss function, $h: \mathcal{X} \to \mathcal{Y}$ is a predictor and $(x_t, y_t)$ is a training example from the training set.
 - **What does a learning algorithm receive in input? And what does it produce in output?**
 	A learning algorithm receives a training set in input and it produces a predictor in output. A training set $S$ is a set of examples $\{(x_1, y_1), ..., (x_m, y_m)\}$, where $x$ is a data point and $y$ is the corresponding label.
 - **Write the mathematical formula defining the ERM algorithm over a class $\mathcal{H}$ of predictors. Define the main quantities occurring in the formula.**
@@ -46,9 +47,9 @@
 - **What are the elements of a learning problem in statistical learning? (BONUS)**
 	In statistical learning, a **problem** is fully speciﬁed by a pair $(\mathcal{D}, \ell)$, where $\mathcal{D}$ is the data distribution and $\ell$ is a loss function.
 - **Write the formula for the statistical risk of a predictor $h$ with respect to a generic loss function and data distribution.**
-	The performance of a predictor $h : \mathcal{X} \to \mathcal{Y}$ with respect to $(\mathcal{D}, \ell)$, where $\mathcal{D}$ is a generic data distribution and $\ell$ is a generic loss function, is evaluated via the statistical risk, deﬁned by $\ell_{\mathcal{D}}(h) = \mathbb{E}[\ell(Y, h(X))]$. This is the expected value of the loss function on a random example $(X, Y)$ drawn from $\mathcal{D}$.
+	The performance of a predictor $h : \mathcal{X} \to \mathcal{Y}$ with respect to the pair $(\mathcal{D}, \ell)$, where $\mathcal{D}$ is an uknown generic data distribution and $\ell$ is a known generic loss function, is evaluated via the statistical risk, deﬁned by $\ell_{\mathcal{D}}(h) = \mathbb{E}[\ell(Y, h(X))]$. This is the expected value of the loss function on a random example $(X, Y)$ drawn from $\mathcal{D}$.
 - **Write the formula for the Bayes optimal predictor for a generic loss function and data distribution.**
-	The best possible predictor $f^*: \mathcal{X} \to \mathcal{Y}$ given $\mathcal{D}$ is known as Bayes optimal predictor, and is deﬁned by $f^*(x) = \underset{\widehat{y} \in \mathcal{Y}}{\operatorname{argmin}} \text{ } \mathbb{E}[\ell(Y, \widehat{y}) \vert X = x]$ where $\widehat{y} \in \mathcal{Y}$ is the value for which the conditional risk $\mathbb{E}[\ell(Y, \widehat{y}) \vert X = x]$ attains its minimum.
+	The best possible predictor $f^*: \mathcal{X} \to \mathcal{Y}$ given $\mathcal{D}$ is known as Bayes optimal predictor, and is deﬁned by $f^*(x) = \underset{\widehat{y} \in \mathcal{Y}}{\operatorname{argmin}} \text{ } \mathbb{E}[\ell(Y, \widehat{y}) \vert X = x]$ where $\widehat{y} \in \mathcal{Y}$ is the value of the prediction for which the conditional risk $\mathbb{E}[\ell(Y, \widehat{y}) \vert X = x]$ attains its minimum.
 - **Write the formula for Bayes optimal predictor and Bayes risk for the zero-one loss.**
 	Let $\eta(x)$ be the probability of $Y = 1$ conditioned on $X = x$. We view $\eta(x) = \mathbb{P}( Y = +1 \text{ } \vert \text{ } X = x)$ as the value on $x$ of a function $\eta: \mathcal{X} \to [0, 1]$. Let $\mathbb{I}\{A\} \in \{0, 1\}$ be the **indicator function** of an event $A$, that is, $\mathbb{I}\{A\} = 1$ if and only if $A$ occurs.<br /> The statistical risk with respect to the zero-one loss $\ell(y, \widehat{y}) = \mathbb{I}\{\widehat{y} \neq y\}$ is therefore defined by $\ell_{\mathcal{D}}(h) = \mathbb{E}\big[\ell(Y, h(X))\big] = \mathbb{E}\big[\mathbb{I}\{h(X) \neq Y \}\big] =$ 
 	$= 1 \cdot \mathbb{P}(h(X) \neq Y) + 0 \cdot \mathbb{P}(h(X) = Y) =  \mathbb{P}(h(X) \neq Y)$<br />
@@ -82,14 +83,15 @@
 	Note that the above equalities rely on the assumption that $h$ does not depend on the test set $S'$ (but it depends on the training set). If it did, then the above equalities would not be necessarily true.
 - **State the Chernoff-Hoeffding bounds.**
 	Let $Z_1 , ... , Z_n$ be **independent and identically distributed random variables** with expectation $\mu$ and such that $0 \leq Z_t \leq 1$ for each $t = 1, ... , n$. Then, for any given $\varepsilon > 0$ <br />
-	$\mathbb{P}\Bigg(\frac{1}{n}\sum_{t = 1}^{n}Z_t > \mu + \varepsilon \Bigg) \leq e^{-2\varepsilon^2n}\quad \text{and}\quad \mathbb{P}\Bigg(\frac{1}{n}\sum_{t = 1}^{n}Z_t < \mu - \varepsilon\Bigg) \leq e^{-2\varepsilon^2n}$
+	$\mathbb{P}\Bigg(\frac{1}{n}\sum_{t = 1}^{n}Z_t > \mu + \varepsilon \Bigg) \leq e^{-2\varepsilon^2n}\quad \text{and}\quad \mathbb{P}\Bigg(\frac{1}{n}\sum_{t = 1}^{n}Z_t < \mu - \varepsilon\Bigg) \leq e^{-2\varepsilon^2n}$<br />
+	This means that if we compute the sample mean of the variables, the probability that this will be much larger (or much smaller) than the expectation, with respect to the draw of the sample, decreases exponentially with the sample size.
 - **Write the bias-variance decomposition for a generic learning algorithm $A$ and associate the resulting components to overfitting and underfitting.**
 	Fix a finite training set $S$ and let $h_S = A(S)$. The following is called the **bias-variance** decomposition:<br />
 	$\ell_{\mathcal{D}}(h_S) = \ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*)\quad\text{estimation error (large when overfitting)}$<br />
 	$\quad + \ell_{\mathcal{D}}(h^*) - \ell_{\mathcal{D}}(f^*)\quad \text{approximation error (large when underfitting)}$<br />
 	$\quad + \ell_{\mathcal{D}}(f^*) \quad \text{Bayes error (unavoidable)}$<br />
 	where $f^*$ is the Bayes optimal predictor for $(\mathcal{D}, \ell)$. 
-- **Write the upper bound on the estimation error of ERM run on a finite class $\mathcal{H}$ of predictors. Bonus points if you justify your answer with a proof.**
+- **Write the upper bound on thBone estimation error of ERM run on a finite class $\mathcal{H}$ of predictors. Bonus points if you justify your answer with a proof.**
 	We study the case $\vert \mathcal{H} \vert < \infty$, that is when the model space contains a finite number of predictors. Note that the event $\exists h \in \mathcal{H} : \vert \ell_{\mathcal{D}}(h) - \ell_S(h) \vert > \varepsilon/2$ is the union over $h \in \mathcal{H}$ of the events $\vert \ell_{\mathcal{D}}(h) - \ell_S(h) \vert > \varepsilon/2$. Therefore, by the union bound, we have that its probability is bounded by $\mathcal{H}$ times the probability of the event $\vert \ell_{\mathcal{D}}(h) - \ell_S(h) \vert > \varepsilon/2$ for a single predictor $h \in \mathcal{H}$ is $\leq \vert \mathcal{H} \vert 2 e^{-m\varepsilon^2/2}$. In conclusion, we have that $\mathbb{P}\big(\ell_{\mathcal{D}}(h_S) - \ell_{\mathcal{D}}(h^*) > \varepsilon \big) \leq 2 \vert \mathcal{H} \vert e^{-m \varepsilon^2/2}$. Setting the right-hand side of the equation to $\delta$ and solving for $\varepsilon$, we obtain that $\ell_{\mathcal{D}}(h_S) \leq \ell_{\mathcal{D}}(h^*) + \sqrt{\frac{2}{m}\ln{\frac{2 \vert \mathcal{H} \vert}{\delta}}}$.
 - **Write the upper bound on the estimation error of ERM run on the class of complete binary tree predictors with at most $N$ nodes on $d$ binary features.**
 	Knowing that $\vert \mathcal{H}_N \vert \leq (2de)^N$ obtained via $\frac{N-1}{2}$-th Catalan number, we can write the upper bound on the estimation error of ERM run on a class of complete binary tree predictors with at most $N$ nodes on $d$ binary features as follows: $\ell_{\mathcal{D}}(h_S) \leq \ell_{\mathcal{D}}(h^*) + \sqrt{\frac{2}{m}\Big(N(1 + \ln{(2d)}) + \ln{\frac{2}{\delta}}\Big)}$.<br />
@@ -110,7 +112,8 @@
 - **Write the mathematical definition of consistency for an algorithm $A$.**
 	A learning algorithm $A$ is **consistent** with respect to a loss function $\ell$ if for any data distribution $\mathcal{D}$ it holds that $\underset{m \to \infty}{\operatorname{lim}}\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big] = \ell_{\mathcal{D}}(f^*)$ where the expectation is with respect to the random draw of the training set $S_m$ of size $m$ from the distribution $\mathcal{D}$, and $\ell_{\mathcal{D}}(f^*)$ is the Bayes risk for $(\mathcal{D}, \ell)$.
 - **Write the statement of the no-free-lunch theorem.**
-	For any sequence $a_1 , a_2 , . . .$ of positive numbers converging to zero and such that $\frac{1}{16}≥ a_1 ≥ a_2 ≥ · · ·$ and for any consistent learning algorithm $A$ for binary classification with zero-one loss, there exists a data distribution $\mathcal{D}$ such that $\ell_{\mathcal{D}}(f^*) = 0$ and $\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big] \geq a_m \quad \forall m \geq 1$.
+	For any sequence $a_1 , a_2 , . . .$ of positive numbers converging to zero and such that $\frac{1}{16}≥ a_1 ≥ a_2 ≥ · · ·$ and for any consistent learning algorithm $A$ for binary classification with zero-one loss, there exists a data distribution $\mathcal{D}$ such that $\ell_{\mathcal{D}}(f^*) = 0$ and $\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big] \geq a_m \quad \forall m \geq 1$.<br />
+	Theorem of No Free Lunch does not prevent a consistent algorithm from converging fast to the Bayes risk for specific distributions $\mathcal{D}$. What the theorem shows is that if $A$ converges to the Bayes risk for any data distribution, then it will converge arbitrarily slow for some of these distributions.
 - **Write the mathematical definition of nonparametric learning algorithm. Define the main quantities occurring in the formula.**
 	We say that $A$ is a **nonparametric learning algorithm** if $A$'s approssimation error vanishes as $m$ grows to infinity. Formally, $\underset{m \to \infty}{\operatorname{lim}}\underset{h \in \mathcal{H}_m}{\operatorname{min}}\ell_{\mathcal{D}}(h^*) = \ell_{\mathcal{D}}(f^*)$.
 - **Name one nonparametric learning algorithm and one parametric learning algorithm.**
@@ -122,13 +125,36 @@
 - **Write the rate at which the risk of a consistent learning algorithm for binary classification vanish as a function of the training set size $m$ and the dimension $d$ under Lipschitz assumptions.**
 	Under Lipschitz assumptions on $\eta$, the typical convergence rate to Bayes risk is $m^{−1/(d+1)}$ (exponentially slow in $d$).
 - **Explain the curse of dimensionality.**
-	Te convergence rate $m^{\frac{-1}{d+1}}$ implies that to get $\varepsilon$-close to the Bayes Risk, we need a training set size $m$ of order $\varepsilon^{-(d+1)}$. This exponential dependence on the number of features of the training set size is known a curse of dimensionality and refers to the difficulty of learning in a nonparametric setting when datapoints live in a high-dimensional space.
-- **Why non parametric algorithm cannot be consistent?**
+	Te convergence rate $m^{\frac{-1}{d+1}}$ implies that to get $\varepsilon$-close to the Bayes Risk, we need a training set size $m$ of order $\varepsilon^{-(d+1)}$. We may define consistency with respect to a restricted class of distributions ￼￼. For exampleThis exponential dependence on the number of features of the training set size is known a curse of dimensionality and refers to the difficulty of learning in a nonparametric setting when datapoints live in a high-dimensional space.
+- **Why non parametric algorithm cannot be consistent? (BONUS)**
 - **Write the bound on the risk of $1-NN$ binary classifier under Lipschitz assumptions.**
+	$\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big] \leq 2 \ell_{\mathcal{D}}(f^*) + \varepsilon_m$, where $A$ denotes the $1-NN$ algorithm, $S_m$ the training set of size $m$, $\ell_{\mathcal{D}}(f^*)$ is the Bayes risk, and $\varepsilon_m$ is a quantity that vanishes for $m \to \infty$.
 - **Can the ERM over linear classifiers be computed efficiently? Can it be approximated efficiently? Motivate your answers.**
+	
 - **Write the system of linear inequalities stating the condition of linear separability for a training set for binary classfication.**
 - **Write the pseudo-code for the Perceptron algorithm.**
+	![[Perceptron Algorithm.png]]
 - **Write the statement of the Perceptron convergence theorem. Bonus points if you provide the proof.**
+	(**Convergence of Perceptron**): let $(x_1, y_1), ...,  (x_m, y_m)$ be a linearly separable training set. Then the Perceptron algorithm terminates after a number of updates not bigger than $\Bigg(\underset{u: \gamma(u) \geq 1}{\operatorname{min}} \Vert u \Vert^2 \Bigg)\Bigg( \underset{t = 1, ..., m}{\operatorname{max}} \Vert x_t \Vert^2 \Bigg)$<br />
+	The apparently stonger margin constraint $\gamma(u) \geq 1$ is actually achievable by any separating hyperplane $u$. Indeed, if $\gamma(u) > 0$, then $y_tu^{\top}x_t \geq \gamma(u)$ is equivalent to $y_tv^{\top}x_t \geq 1$ for $v = u/\gamma(u)$. Hence, $\gamma(u) \geq 1$ can be achieved simply by rescaling $u$.<br />
+	**Proof**: let $w_0 = (0, ..., 0)$ be the initial hyperplane. Let $w_M$ be the hyperplane after $M$ updates and let $t_M \in \{1, ..., m\}$ be the index of the training example $(x_{t_M}, y_{t_M})$ that caused the $M$-th update $w_M = w_{M −1} + y_{t_M} x_{t_M}$. We prove an upper bound on $M$ by deriving upper and lower bounds on $\Vert w_M \Vert \Vert u \Vert$. We start by observing that<br />
+	$\Vert w_M \Vert^2 = \Vert w_{M−1} + y_{t_M} x_{t_M} \Vert^2 = \Vert w_{M −1} \Vert^2 + \Vert x_{t_M} \Vert^2 + 2y_{t_M}w^{\top}_{M −1}x_{t_M} \leq \Vert w_{M-1} \Vert^2 + \Vert x_{t_M} \Vert^2$<br />
+	because $y_{t_M} w^{\top}_{M −1}x_{t_M} \leq 0$ due to the update $w_M = w_{M −1} + y_{t_M} x_{t_M}$. Iterating this argument $M$ times, and recalling that $w_0 = (0, ...,  0)$, we obtain<br />
+	$\Vert w_M \Vert^2 \leq \Vert w_0\Vert^2 + \sum_{i = 1}^{M} \Vert x_{t_i} \Vert^2 \leq M \Big( \underset{t = 1, ...., m}{\operatorname{max}} \Vert x_t \Vert^2 \Big )$.<br />
+	Hence
+	$\Vert w_M \Vert \Vert u \Vert \leq \Vert u \Vert \Big (\underset{t = 1, ..., m}{\operatorname{max}} \Vert x_t \Vert \Big)\sqrt{M}$.<br />
+	To prove the lower bound, fix any separating hyperplane $u$ with $\gamma(u) \geq 1$ and let $\theta$ be the angle between $u$ and $w_M$. We have
+	$\Vert w_M \Vert \Vert u \Vert \geq \Vert w_M \Vert \Vert u \Vert \cos(\theta)\quad \text{ } \quad (\text{since } − 1 \leq \cos(\theta) \leq 1)$<br />
+	$= w^{\top}_M u \quad \text{ } \quad \text{(by definition of inner product)}$<br />
+	$= (w_{M−1} + y_{t_M} x_{t_M} )^{\top} u$<br />
+	$= w^{\top}_{M −1}u + y_{t_M} u^{\top}x_{t_M}$<br />
+	$\geq w^{\top}_{M−1}u + 1$<br />
+	where the last inequality holds because $1 \leq \gamma(u) \leq y_tu^{\top}x_t$ for all $t = 1, ..., m$. Iterating $M$ times we get<br />
+	$\Vert w_M \Vert \Vert u \Vert \geq w^{\top}_0 u + M = M$<br />
+	where we used $w^{\top}_0u = 0$ since $w_0 = (0, ..., 0)$. Combining upper and lower bound we obtain<br />
+	$M \leq \Vert u \Vert \Big ( \underset{t = 1, ..., m}{max} \Vert x_t \Vert \Big )\sqrt{M}$<br />
+	Solving for $M$, and recalling the choice of $u$, we obtain $(2)$. Hence, the update count $M$ cannot grow larger than $(2)$. Since the algorithm stops when no more updates are possible, we conclude that the Perceptron terminates after a bounded number of updates.<br />
+	Note that the Perceptron convergence theorem does not imply that the Perceptron algorithm terminates in polynomial time on any linearly separable training set. Indeed, it can be shown that the bound $(2)$ is tight in any fixed dimension $d \geq 2$. Hence, although each update takes constant time $\Theta(d)$, the number of updates can still be exponential in $md$ whenever $\gamma(u) \geq 1$ only for those $u$ whose length $\Vert u \Vert$ is very big. Or, equivalently, when the margin $\gamma(u)$ is very small for any linear separator $u$ such that $\Vert u \Vert = 1$.
 - **Write the closed-form formula (i.e., not the argmin definition) for the Ridge Regression predictor. Define the main quantities occurring in the formula.**
 - **Write the pseudo-code for the projected online gradient descent algorithm.**
 - **Write the upper bound on the regret of projected online gradient descent on convex functions. Define the main quantities occurring in the bound.**
