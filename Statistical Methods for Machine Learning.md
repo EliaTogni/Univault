@@ -1556,59 +1556,34 @@ Proof: let $h_S = A(S_m)$ and let $h^*$ be the predictor with smallest risk in $
 
 $$\mathbb{E}\big[\ell_{\mathcal{D}}(h_S)\big] 0 \mathbb{E}\Big[\underbrace{\ell_{\mathcal{D}}(h_S) - \ell_S(h_S)}_{\leq \varepsilon \text{ (stability) }}\Big] + \mathbb{E}\Big[\Big]$$
 
-The proof is concluded by observing that E ℓS(h∗) = ℓD(h∗), namely the expected value of the empirical risk is the risk. □
+The proof is concluded by observing that $\mathbb{E}\ell_S(h^*) = \ell_\mathcal{D}(h^*)$, namely the expected value of the empirical risk is the risk. 
 
-In case of predictors parameterized by a vector w ∈Rd (like linear predictors), ERM can be made stable by adding to the empirical loss a so-called regularization term. We also need an additional condition, namely that the loss function ℓis such that ℓ(·,z) be convex and Lipschitz, where ℓ(w,z) is the error of w on the example z. Recall that Lipschitz means that there exists a constant L
+In case of predictors parameterized by a vector $w \in \mathbb{R}^d$ (like linear predictors), ERM can be made stable by adding to the empirical loss a so-called **regularization term**. We also need an additional condition, namely that the loss function $\ell$ is such that $\ell(\cdot, z)$ be convex and Lipschitz, where $\ell(w, z)$ is the error of $w$ on the example $z$. Recall that Lipschitz means that there exists a constant $L$ such that $\vert \ell(w, z) − \ell(w', z) \vert  \leq L\Vert w − w' \Vert$ for all $w, w' \in \mathbb{R}^d$ and for all $z = (x,y)$. No other assumptions on $\ell$ are required.
 
-such that ℓ(w,z) − ℓ(w′,z)  ≤ L ∥w − w′∥for all w,w′ ∈ Rd and for all z = (x,y). No other assumptions on ℓ are required.
+Recall that some loss functions, notably the hinge loss, are not everywhere differentiable. However, they are everywhere subdifferentiable, which is sufficient for the following theorem to hold.
 
-Theorem 3. Let ℓ be a loss function such that ℓ(·,z) is convex, differentiable[^1] and Lipschitz with constant L > 0. Then the learning algorithm A such that
+**Theorem 3**: Let $\ell$ be a loss function such that $\ell(\cdot,z)$ is convex, differentiable and Lipschitz with constant $L > 0$. Then the learning algorithm $A$ such that
 
-A(S) = argmin ℓS(w) + λ ∥w∥[^2]
+$$A(S) = \underset{w \in \mathbb{R}^d}{\operatorname{argmin}}\Big(\ell_S(w) + \frac{\lambda}{2} \Vert w \Vert^2\Big)$$
 
-w∈Rd 2
+for all training sets $S$ of size $m$ is $(2L)^2/(\lambda m)$-stable for every $\lambda > 0$.
 
-for all training sets S of size m is (2L)2/(λm)-stable for every λ > 0.
+Proof:<br />
+Introduce
 
-Proof. Introduce
-
-FS(w) = ℓS(w) + λ2 ∥w∥2
+$$F_S(w) = \ell_S(w) + \frac{\lambda}{2}\Vert w \Vert^2$$
 
 and also
 
-wS = argmin FS(w) and wS(t) = argmin FS(t)(w) .
+$$w_S = \underset{w \in \mathbb{R}^d}{\operatorname{argmin}}F_S(w) \quad \text{ } \quad \text{ and } \quad \text{ } \quad w_S = \underset{w \in \mathbb{R}^d}{\operatorname{argmin}}F_{S^{(t)}}(w)$$
 
-w∈Rd w∈Rd
+In order to prove stability, we need to upper bound $\mathbb{E}\big[ \ell(w_S,z'_t) − \ell(w_{S^{(t)}},z'_t)\big]$. We actually prove a stronger result by bounding the quantity $\ell(w_S, z'_t) − \ell(w_{S^{(t)}}, z'_t)$ for all $S$ and $z'_t$. As a first step, we use the Lipschitz condition to write 
 
-In order to prove stability, we need to upper bound E ℓ(wS,z′t) − ℓ(wS(t),z′t) . We actually prove
+$$\ell(w_S,z'_t) − \ell(w_{S^{(t)}},z'_t) \leq L \Vert w_S − w_{S^{(t)}} \Vert$$
 
-,z′) − ℓ(w ,z′) for all S and z′. As a first step, a stronger result by bounding the quantity ℓ(wS t S(t) t t
+Next, we upper bound $\Vert w_S − w_{S^{(t)}}\Vert$. Introduce the abbreviations $w = w_S$ e $w' = w_{S^{(t)}}$. Then
 
-we use the Lipschitz condition to write
 
-ℓ(wS,z′t) − ℓ(wS(t),z′t) ≤ L ∥wS − wS(t)∥ . (1) Next, we upper bound ∥wS − wS(t)∥. Introduce the abbreviations w = wS e w′ = wS(t). Then
-
-F (w′) − F (w) = ℓ (w′) − ℓ (w) + λ  w′ 2 − ∥w∥2
-
-S S S S 2
-
-- ℓ (t)(w ) − ℓS(t)(w) + ℓ(w′,z )m− ℓ(w,z ) − t m t +
-- t t ℓ(w′,z′) − ℓ(w,z′)
-- FS(t)(w′) − FS(t)(w) + ℓ(w ,zt)m− ℓ(w,z ) − m λ2 w′ 2 − ∥w∥2
-
-S
-
-- t ℓ(w′,z′t) − ℓ(w,z′)
-
-t
-
-- ℓ(w′,zt) − ℓ(w,zt) + ℓ(w′,z′t) − ℓ(w,z′t)
-
-m m
-
-- 2L w − w′ 
-
-m
 
 where the first inequality holds because w′ = w (t) minimizes F (t) and the second inequality holds
 
