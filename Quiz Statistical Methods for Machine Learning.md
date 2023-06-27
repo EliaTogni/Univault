@@ -92,7 +92,7 @@
 21) **Write the upper bound on the estimation error of ERM run on the class of complete binary tree predictors with at most $N$ nodes on $d$ binary features.**
 	Knowing that $\vert \mathcal{H}_N \vert \leq (2de)^N$ obtained via $\frac{N-1}{2}$-th Catalan number, we can write the upper bound on the estimation error of ERM run on a class of complete binary tree predictors with at most $N$ nodes on $d$ binary features as follows: $\ell_{\mathcal{D}}(h_S) \leq \ell_{\mathcal{D}}(h^*) + \sqrt{\frac{2}{m}\Big(N(1 + \ln{(2d)}) + \ln{\frac{2}{\delta}}\Big)}$.<br />
 	From that. we deduce that on this case a training set of size of order $N \ln{d}$ is enough to control the risk of $h_s \in \mathcal{H}_N$.
-- **Write the bound on the difference between risk and training error for an arbitrary complete binary tree classifier $h$ on $d$ binary features in terms of its number $N_h$ of nodes. Bonus points if you provide a short explanation on how this bound is obtained.**
+22) **Write the bound on the difference between risk and training error for an arbitrary complete binary tree classifier $h$ on $d$ binary features in terms of its number $N_h$ of nodes. Bonus points if you provide a short explanation on how this bound is obtained.**
 	$\ell_{\mathcal{D}}(h) \leq \ell_S(h) + \sqrt{\frac{1}{2m}\Big(\vert \sigma(h) \vert + \ln{\frac{2}{\delta}}\Big)}$<br />
 	Hence, with Occam Razor given two predictor with the same training error the simpler (the shortest $\vert \sigma \vert$) is the best.<br />
 	We upper bound the risk of a tree predictor $h$ by its training error plus a quantity $\varepsilon_h$ that now depends on the size of the tree.<br />
@@ -100,39 +100,39 @@
 	And now choosing $\varepsilon_h = \sqrt{\frac{1}{2m}\Big(\ln{\frac{1}{w(h)}} + \ln{\frac{2}{\delta}}\Big)}$, we get that $\mathbb{P}(\exists h \in \mathcal{H}) : \vert \ell_{\mathcal{D}}(h) - \ell_S(h) \vert > \varepsilon_h \geq \sum_{h \in \mathcal{H}} \delta w(h) \leq \delta$.<br />
 	A consequence of this analysis is that, with probability at least $1 - \delta$ with respect to the training set random draw, we have that $\ell_{\mathcal{D}}(h) \leq \ell_S(h) + \sqrt{\frac{1}{2m}\Big(\ln{\frac{1}{w(h)}} + \ln{\frac{2}{\delta}}\Big)}$.<br />
 	Now, using a theoretic technique we can encode each tree predictor $h$ as a binary string $\sigma(h)$ of length $\vert \sigma(h) \vert = \mathcal{O}(N_h \log{d})$. Thanks to Kraft inequality, we can associate a weight $w(h) = 2^{-\vert \sigma(h) \vert}$ to each tree predictor $h$ in order to get the bound shown at the beginning.
-- **Write the formula for the $K$-fold cross validation estimate. Explain the main quantities occurring in the formula.**
+23) **Write the formula for the $K$-fold cross validation estimate. Explain the main quantities occurring in the formula.**
 	The **$K$-fold CV estimate** of $\mathbb{E}\big[\ell_{\mathcal{D}}(A)\big]$ on $S$, denoted by $\ell_S^{CV}(A)$, is computed as follows: we run $A$ on each training part $S_{-i}$ of the folds $i = 1, ..., K$ and obtain the predictors $h_1 =A(S_{-1}), ..., h_K =  A(S_{-K})$. We then compute the (rescaled) errors on the testing part of each fold, $\ell_{S_i}(h_i) = \frac{K}{m} \sum_{(x, y) \in  S_i} \ell(y, h_i(x))$.<br />
 	Finally, we compute the CV estimate by averaging these errors $\ell_{S}^{CV}(A) = \frac{1}{K} \sum_{i = 1}^{K} \ell_{S_i}(h_i)$.
-- **Write the pseudo-code for computing the nested cross validation estimate.**
+24) **Write the pseudo-code for computing the nested cross validation estimate.**
 	![[K-fold Nested Cross Validation.png]]
-- **Write the mathematical definition of consistency for an algorithm $A$.**
+25) **Write the mathematical definition of consistency for an algorithm $A$.**
 	A learning algorithm $A$ is **consistent** with respect to a loss function $\ell$ if for any data distribution $\mathcal{D}$ it holds that $\underset{m \to \infty}{\operatorname{lim}}\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big] = \ell_{\mathcal{D}}(f^*)$ where the expectation is with respect to the random draw of the training set $S_m$ of size $m$ from the distribution $\mathcal{D}$, and $\ell_{\mathcal{D}}(f^*)$ is the Bayes risk for $(\mathcal{D}, \ell)$.
-- **Write the statement of the no-free-lunch theorem.**
+26) **Write the statement of the no-free-lunch theorem.**
 	For any sequence $a_1 , a_2 , . . .$ of positive numbers converging to zero and such that $\frac{1}{16}≥ a_1 ≥ a_2 ≥ · · ·$ and for any consistent learning algorithm $A$ for binary classification with zero-one loss, there exists a data distribution $\mathcal{D}$ such that $\ell_{\mathcal{D}}(f^*) = 0$ and $\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big] \geq a_m \quad \forall m \geq 1$.<br />
 	Theorem of No Free Lunch does not prevent a consistent algorithm from converging fast to the Bayes risk for specific distributions $\mathcal{D}$. What the theorem shows is that if $A$ converges to the Bayes risk for any data distribution, then it will converge arbitrarily slow for some of these distributions.
-- **Write the mathematical definition of nonparametric learning algorithm. Define the main quantities occurring in the formula.**
+27) **Write the mathematical definition of nonparametric learning algorithm. Define the main quantities occurring in the formula.**
 	We say that $A$ is a **nonparametric learning algorithm** if $A$'s approssimation error vanishes as $m$ grows to infinity. Formally, $\underset{m \to \infty}{\operatorname{lim}}\underset{h \in \mathcal{H}_m}{\operatorname{min}}\ell_{\mathcal{D}}(h^*) = \ell_{\mathcal{D}}(f^*)$.
-- **Name one nonparametric learning algorithm and one parametric learning algorithm.**
+28) **Name one nonparametric learning algorithm and one parametric learning algorithm.**
 	Some examples of nonparametric learning algorithms are $k$-nearest neighboors and greedy decision tree classifiers. Some examples of parametric learning algorithms are linear regression and logistic regression.
-- **Write the mathematical conditions on $k$ ensuring consistency for the $k-NN$ algorithm.**
+29) **Write the mathematical conditions on $k$ ensuring consistency for the $k-NN$ algorithm.**
 	The standard $k-NN$ algorithm is nonparametric but not known to be consistent for any fixed value of $k$. Indeed, one can only show that $\underset{m \to \infty}{\operatorname{lim}}\mathbb{E}\Big[\ell_{\mathcal{D}}(k-NN(S_m))\Big] \leq \ell_{\mathcal{D}}(f^*) + 2 \sqrt{\frac{\ell_{\mathcal{D}}(f^*)}{k}}$ for any data distribution $\mathcal{D}$. However, if we let $k$ be chosen as a function $k_m$ of the training set size, then the algorithm becomes consistent provided $k_m \to \infty$ and $k_m = o(m)$.
-- **Write the formula for the Lipschitz condition in a binary classification problem. Define the main quantities occurring in the formula.**
+30) **Write the formula for the Lipschitz condition in a binary classification problem. Define the main quantities occurring in the formula.**
 	We may define consistency with respect to a restricted class of distributions $\mathcal{D}$. For example, in binary classification we may restrict to all distributions $\mathcal{D}$ such that $\eta(x) = \mathbb{P}(Y = 1 \vert X = x)$ is a Lipschitz function on $\mathcal{X}$. Formally, there exists $0 < c < \infty$ such that $\vert \eta(x) - \eta(x')\vert \leq c \Vert x - x' \Vert \quad \text{ for all } x, x' \in \mathcal{X}$. Technically, this conditions implies that $\eta$ is Lipschitz in $\mathcal{X}$. This is a restriction on the set of all allowed $\eta$ as $c < \infty$ implies continuity (but the opposite is not true).
-- **Write the rate at which the risk of a consistent learning algorithm for binary classification vanish as a function of the training set size $m$ and the dimension $d$ under Lipschitz assumptions.**
+31) **Write the rate at which the risk of a consistent learning algorithm for binary classification vanish as a function of the training set size $m$ and the dimension $d$ under Lipschitz assumptions.**
 	Under Lipschitz assumptions on $\eta$, the typical convergence rate to Bayes risk is $m^{−1/(d+1)}$ (exponentially slow in $d$).
-- **Explain the curse of dimensionality.**
+32) **Explain the curse of dimensionality.**
 	Te convergence rate $m^{\frac{-1}{d+1}}$ implies that to get $\varepsilon$-close to the Bayes Risk, we need a training set size $m$ of order $\varepsilon^{-(d+1)}$. We may define consistency with respect to a restricted class of distributions ￼￼. For exampleThis exponential dependence on the number of features of the training set size is known a curse of dimensionality and refers to the difficulty of learning in a nonparametric setting when datapoints live in a high-dimensional space.
-- **Why non parametric algorithm cannot be consistent? (BONUS)**
-- **Write the bound on the risk of $1-NN$ binary classifier under Lipschitz assumptions.**
+33) **Why non parametric algorithm cannot be consistent? (BONUS)**
+34) **Write the bound on the risk of $1-NN$ binary classifier under Lipschitz assumptions.**
 	$\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big] \leq 2 \ell_{\mathcal{D}}(f^*) + \varepsilon_m$, where $A$ denotes the $1-NN$ algorithm, $S_m$ the training set of size $m$, $\ell_{\mathcal{D}}(f^*)$ is the Bayes risk, and $\varepsilon_m$ is a quantity that vanishes for $m \to \infty$.
-- **Can the ERM over linear classifiers be computed efficiently? Can it be approximated efficiently? Motivate your answers.**
+35) **Can the ERM over linear classifiers be computed efficiently? Can it be approximated efficiently? Motivate your answers.**
 	
-- **Write the system of linear inequalities stating the condition of linear separability for a training set for binary classfication.**
+36) **Write the system of linear inequalities stating the condition of linear separability for a training set for binary classfication.**
 	A training set $(x_1, y_1), ..., (x_m, y_m)$ is linearly separable where here exists a linear classifier with zero training error. In other words, there exists a separating hyperplane $u \in \mathbb{R}^d$ such that $\gamma(u) \overset{\text{def}}{=}\underset{t = 1, ..., m}{\operatorname{min}} y_t u^{\top}x_t > 0$.<br />
 	We can write the condition of linear separability as a system of linear inequalities, and this solution can be found in polynomial time using an algorithm for linear programming $\cases{ u^\top x_t > 0 \quad \text{ if }t = 1 \cr \cr ... \quad \text{ } \quad \text{ } \quad \text{ }... \cr \cr u^\top x_t > 0 \quad \text{ if } t = m}$
-- **Write the pseudo-code for the Perceptron algorithm.**
+37) **Write the pseudo-code for the Perceptron algorithm.**
 	![[Perceptron Algorithm.png]]
-- **Write the statement of the Perceptron convergence theorem. Bonus points if you provide the proof.**
+38) **Write the statement of the Perceptron convergence theorem.
 	(**Convergence of Perceptron**): let $(x_1, y_1), ...,  (x_m, y_m)$ be a linearly separable training set. Then the Perceptron algorithm terminates after a number of updates not bigger than $\Bigg(\underset{u: \gamma(u) \geq 1}{\operatorname{min}} \Vert u \Vert^2 \Bigg)\Bigg( \underset{t = 1, ..., m}{\operatorname{max}} \Vert x_t \Vert^2 \Bigg)$<br />
 	The apparently stonger margin constraint $\gamma(u) \geq 1$ is actually achievable by any separating hyperplane $u$. Indeed, if $\gamma(u) > 0$, then $y_tu^{\top}x_t \geq \gamma(u)$ is equivalent to $y_tv^{\top}x_t \geq 1$ for $v = u/\gamma(u)$. Hence, $\gamma(u) \geq 1$ can be achieved simply by rescaling $u$.<br />
 	**Proof**: let $w_0 = (0, ..., 0)$ be the initial hyperplane. Let $w_M$ be the hyperplane after $M$ updates and let $t_M \in \{1, ..., m\}$ be the index of the training example $(x_{t_M}, y_{t_M})$ that caused the $M$-th update $w_M = w_{M −1} + y_{t_M} x_{t_M}$. We prove an upper bound on $M$ by deriving upper and lower bounds on $\Vert w_M \Vert \Vert u \Vert$. We start by observing that<br />
@@ -153,12 +153,29 @@
 	$M \leq \Vert u \Vert \Big ( \underset{t = 1, ..., m}{max} \Vert x_t \Vert \Big )\sqrt{M}$<br />
 	Solving for $M$, and recalling the choice of $u$, we obtain $(2)$. Hence, the update count $M$ cannot grow larger than $(2)$. Since the algorithm stops when no more updates are possible, we conclude that the Perceptron terminates after a bounded number of updates.<br />
 	Note that the Perceptron convergence theorem does not imply that the Perceptron algorithm terminates in polynomial time on any linearly separable training set. Indeed, it can be shown that the bound $(2)$ is tight in any fixed dimension $d \geq 2$. Hence, although each update takes constant time $\Theta(d)$, the number of updates can still be exponential in $md$ whenever $\gamma(u) \geq 1$ only for those $u$ whose length $\Vert u \Vert$ is very big. Or, equivalently, when the margin $\gamma(u)$ is very small for any linear separator $u$ such that $\Vert u \Vert = 1$.
-- **Write the closed-form formula (i.e., not the argmin definition) for the Ridge Regression predictor. Define the main quantities occurring in the formula.**
-- **Write the pseudo-code for the projected online gradient descent algorithm.**
-- **Write the upper bound on the regret of projected online gradient descent on convex functions. Define the main quantities occurring in the bound.**
-- **Write the upper bound on the regret of online gradient descent on $\sigma$-strongly convex functions. Define the main quantities occurring in the bound.**
-- **Write the formula for the hinge loss.**
-- **Write the mistake bound for the Perceptron run on an arbitrary data stream for binary classification. Define the main quantities occurring in the bound.**
+39) **Write the closed-form formula (i.e., not the argmin definition) for the Ridge Regression predictor. Define the main quantities occurring in the formula.**
+	The closed-form formula for the Ridge Regression coefficients (predictor) is $w = w_{S, \alpha} = (S^\top S + \alpha I)^-1 S^\top y$, where $S$ is the matrix of training examples of size $m \times d$ called design matrix, $y$ is the vector of labels of size $m \times 1$, $\alpha$ is the regularization parameter or penalty factor that shrinks the regression coefficients towards zero and $w$ is the vector of Ridge Regression coefficients of length $d$.
+40) **Write the pseudo-code for the projected online gradient descent algorithm.**
+	![[Projected OGD.png]]
+41) **Write the upper bound on the regret of projected online gradient descent on convex functions. Define the main quantities occurring in the bound.**
+	$\underbrace{\frac{1}{T}\sum_{t = 1}^{T}\ell_t(w_t)}_{A} \leq \underbrace{\underset{u : \Vert u \Vert \leq U}{\operatorname{min}} \frac{1}{T} \sum_{t = 1}^{T} \ell_t(u)}_{B} + UG\sqrt{\frac{8}{T}}$<br />
+	- $A$ is the sequential risk of a sequence of predictors generated by an online algorithm;
+	- $B$ is the sequential risk of the predictor $u$ in the ball of radius $U$ with smallest average loss over the first $T$ steps;
+	- $UG\sqrt{\frac{8}{T}}$ is an upper bound of the regret of the online alogrithm;
+	- $U$ is the radius of the Euclidean sphere;
+	- $G$ is the bound on the norm of the gradient of the loss function;
+	- $T$ is the number of training points.
+42) **Write the upper bound on the regret of online gradient descent on $\sigma$-strongly convex functions. Define the main quantities occurring in the bound.**
+	
+43) **Write the formula for the hinge loss.**
+	The function $h_t(u) = [1 - y_t u^{\top}x_t]_+$ is a loss function called **hinge loss**, which is a convex function and, since $\mathbb{I}\{\operatorname{sgn}(z) \neq y\} \leq [1− zy]_+$ for all $z \in \mathbb{R}$ and $y \in \{−1,1\}$, it is also a convex upper bound on the zero-one loss.
+44) **Write the mistake bound for the Perceptron run on an arbitrary data stream for binary classification. Define the main quantities occurring in the bound.**
+	$M \leq \sum_{t = 1}^{T}h_t(u) + \big(\Vert u \Vert X\big)^2 + \Vert u \Vert X \sqrt{\sum_{t = 1}^{T}h_t(u)} \quad \text{ for all } u \in \mathbb{R}^d$.<br />
+	This shows a bound on the number of mistakes made by the Perceptron on any data sequence of arbitrary length $T$, including those sequences that are not linearly separable.
+	- $u$ is a weight vector and not necessarily a separator, because we are not making any assumption on the stream;
+	- $m$ is the number of mistakes made by the Perceptron algorithm;
+	- $h_t(u)$ is the hinge loss at time $t$ for the weight vector $u$. When the sequence is linearly separable then there exists $u \in \mathbb{R}^d$ such that $y_tu^\top x_t \geq 1$ for all $t \leq T$, which in turn implies that $h_t(u) = 0$;
+	- $X$ is the maximum norm of the data points, i.e. $\Vert x_t \Vert \leq X$ for all $t \leq T$.
 - **Write the formula for the polynomial kernel of degree $n$.**
 - **Write the formula for the Gaussian kernel with parameter $\gamma$.**
 - **Write the pseudo-code for the kernel Perceptron algorithm.**

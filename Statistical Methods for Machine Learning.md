@@ -975,7 +975,7 @@ Note that an online learner $A$ generates a sequence $h_1,h_2,... \in \mathcal{H
 
 $$\frac{1}{T}\sum_{t = 1}^{T}\ell\Big(h_t(x_t), y_t\Big)$$
 
-measuring, as a function of $T$, the average loss of the predictor sequence over the first $T$ examples. The sequential risks is the online learning counterpart of the notion of statistical risk in statistical learning.
+measuring, as a function of $T$, the average loss of the predictor sequence over the first $T$ examples. The sequential risk is the online learning counterpart of the notion of statistical risk in statistical learning.
 
 In what follows, we use the notation $\ell_t(h) = \ell\big( h(x_t),y_t \big)$ when the sequence $(x_1, y_1), (x_2, y_2), ...$ is understood from the context. This defines a sequence $\ell_1, \ell_2, ...$ of loss functions.
 
@@ -1055,7 +1055,7 @@ where we used the upper bound
 
 $$\sum_{t = 1}^{T}\frac{1}{\sqrt{t}} \leq 2 \sqrt{T}$$
 
-Choosing $\eta = (U/G)\sqrt{2}$ and dividing everything by $T$ we obtain the final regret bound
+Choosing $\eta = (U/G)\sqrt{2}$ and dividing everything by $T$ (because of the definition of regret) we obtain the final regret bound
 
 $$\frac{1}{T}\sum_{t = 1}^{T}\ell_t(w_t) \leq \underset{u : \Vert u \Vert \leq U}{\operatorname{min}} \frac{1}{T} \sum_{t = 1}^{T} \ell_t(u) + UG\sqrt{\frac{8}{T}} \quad \text{ } \quad (7)$$
 
@@ -1086,7 +1086,7 @@ When run on a sequence of strongly convex function, OGD does not need the projec
 
 ----------------------------------------------------------------
 
-## The OGD algorithm for σ-strongly convex functions
+## The OGD algorithm for $\sigma$-strongly convex functions
 Initialization: $w_1 = 0$<br />
 For $t = 1, 2, ...$
 1) $w_{t+1} = w_t − \frac{1}{\sigma t} \nabla \ell_t(w_t)$
@@ -1131,17 +1131,17 @@ $$\Vert w_M \Vert \Vert u \Vert \geq w_M^{\top}u$$
 $$= (w_{M-1} + y_{t_M}x_{t_M})^{\top}u$$
 $$= w_{M-1}^{\top} u + y_{t_M} u ^{\top} x_{t_M}$$
 $$= w_{M-1}^{\top} u + 1 - 1 + y_{t_M} u ^{\top} x_{t_M}$$
-$$\geq w_{M-1}^{\top} u + 1 - [1 + y_{t_M} u ^{\top} x_{t_M}]_+$$
+$$\geq w_{M-1}^{\top} u + 1 - [1 - y_{t_M} u ^{\top} x_{t_M}]_+$$
 
 where $[z]_+ = \operatorname{max}\{0,z\}$. Iterating $M$ times we get
 
-$$\Vert w_M \Vert \Vert u \Vert \geq M + \sum_{i = 1}^{M}[1 + y_{t_i}u^{\top}x_{t_i}]_+$$
+$$\Vert w_M \Vert \Vert u \Vert \geq M + \sum_{i = 1}^{M}[1 - y_{t_i}u^{\top}x_{t_i}]_+$$
 
 Where we used $w^{\top}_0 u = 0$ since $w_0 = (0, ..., 0)$. Let $X = \operatorname{max}_t \Vert x_t \Vert$. Combining upper and lower bound we obtain
 
-$$M \leq \sum_{i = 1}^{M}[1 + y_{t_i}u^{\top}x_{t_i}]_+ + \Vert u \Vert X \sqrt{M} \quad \text{ } \quad (9)$$
+$$M \leq \sum_{i = 1}^{M}[1 - y_{t_i}u^{\top}x_{t_i}]_+ + \Vert u \Vert X \sqrt{M} \quad \text{ } \quad (9)$$
 
-The function $h_t(u) = [1 + y_t u^{\top}x_t]_+$ is a loss function called **hinge loss**. Since $\mathbb{I}\{\operatorname{sgn}(z) \neq y\} \leq [1− zy]_+$ for all $z \in \mathbb{R}$ and $y \in \{−1,1\}$, the hinge loss is a convex upper bound on the zero-one loss. Because $\{t_1, ..., t_M\} \subseteq \{1, ..., T\}$,
+The function $h_t(u) = [1 - y_t u^{\top}x_t]_+$ is a loss function called **hinge loss**. Since $\mathbb{I}\{\operatorname{sgn}(z) \neq y\} \leq [1− zy]_+$ for all $z \in \mathbb{R}$ and $y \in \{−1,1\}$, the hinge loss is a convex upper bound on the zero-one loss. Because $\{t_1, ..., t_M\} \subseteq \{1, ..., T\}$,
 
 $$\sum_{i = 1}^{M}h_{t_i}(u) \leq \sum_{t = 1}^{T}h_t(u)$$
 
