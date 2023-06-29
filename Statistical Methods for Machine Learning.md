@@ -1160,7 +1160,7 @@ This shows a bound on the number of mistakes made by the Perceptron on any data 
 # Kernel functions
 Linear predictors may potentially suffer from a large approximation error because they are always described by a number of coefficients which can not be larger than the number of features. A popular technique to reduce this bias is feature expansion, which adds new parameters by constructing new features through nonlinear combinations of the base features. Formally, this can be viewed in terms of a function $\phi: \mathbb{R}^d \to \mathcal{H}$ mapping data points $x \in \mathbb{R}^d$ to a higher-dimensional space $\mathcal{H}$. By training a linear predictor on a feature-expanded training set, one actually learns a more complex nonlinear predictor in the original space.
 
-For example, consider the quadratic feature-expansion map $\phi : \mathbb{R}^2 \to \mathbb{R}^6$ defined by $\phi(x_1, x_2) = (1, x_1^2, x_2^2, x_1, x_2, x_1x_2)$. Recall that a homogeneous hyperplane in $\mathbb{R}^6$ with coefficients given by $w = (w_1, ..., w_6)$ is the set of points $\{z \in \mathbb{R}^6 : w^{\top}z = 0\}$. Now note that $w^{\top}\phi(x) = w_1 + w_2x^2_1+ w_3x^2_2+ w_4x1+w_5x_2 + w_6x_1x_2$. Sets of the form $\{x \in \mathbb{R}^2 : w_1 + w_2x_1^2 + w_3x_2^2 + w_4x_1 + w_5x_2 + w_6x_1x_2 = 0\}$ describe second-degree curves on the plane $\mathbb{R}^2$. These  surfaces include ellipses, parabolas, and hyperbolas.
+For example, consider the quadratic feature-expansion map $\phi : \mathbb{R}^2 \to \mathbb{R}^6$ defined by $\phi(x_1, x_2) = (1, x_1^2, x_2^2, x_1, x_2, x_1x_2)$. Recall that a homogeneous hyperplane in $\mathbb{R}^6$ with coefficients given by $w = (w_1, ..., w_6)$ is the set of points $\{z \in \mathbb{R}^6 : w^{\top}z = 0\}$. Now note that $w^{\top}\phi(x) = w_1 + w_2x^2_1+ w_3x^2_2+ w_4x1+w_5x_2 + w_6x_1x_2$. Sets of the form $\{x \in \mathbb{R}^2 : w_1 + w_2x_1^2 + w_3x_2^2 + w_4x_1 + w_5x_2 + w_6x_1x_2 = 0\}$ describe second-degree curves on the plane $\mathbb{R}^2$. These surfaces include ellipses, parabolas, and hyperbolas.
 
 In general, we may consider polynomial feature expansion maps $\phi : \mathbb{R}^d \to \mathcal{H}$, where $\mathcal{H} \equiv \mathbb{R}^N$ , that use features of the form $\prod_{s = 1}^{k}x_{v_s}$ for all $v \in \{1,...,d\}^k$ and for all $k = 0, 1, ..., n$ (the previous example is a special case for $d = 2$ and $n = 2$). Fix such a $\phi$ and consider the classifier $h : \mathbb{R}^d \to \{−1,1\}$ defined by
 
@@ -1172,11 +1172,11 @@ $$N = \sum_ {k = 0}^{n}\vert \{1, ..., d\}^k\vert = \sum_{k = 0}^{n}d^k = \frac{
 
 This implies that $N = \Theta(d^n)$ is exponential in the degree $n$, and computing $\phi$ becomes infeasible even for moderately large $n$.
 
-This computational barrier can be fully sidestepped using the so-called **kernel trick**, which can be applied to many algorithms for learning linear predictors. For example, recall the Perceptron update rule $w_{t+1} = w_t+ y_tx_t$ where $w_1 = 0$. Then, linear classifiers learned through the Perceptron are of the form
+This computational barrier can be fully sidestepped using the so-called **kernel trick**, which can be applied to many algorithms for learning linear predictors. For example, recall the Perceptron update rule $w_{t+1} = w_t+ y_tx_t \mathbb{I}\{y_tw_t^\top x_t \leq 0\}$ where $w_1 = 0$ and $w_t = \sum_{s \in S}y_s x_s$. Then, linear classifiers learned through the Perceptron are of the form
 
-$$h(x) = \operatorname{sgn}\Big(\sum_{s \in S}y_sx_s^{\top}x \Big)$$
+$$h(x) = \operatorname{sgn}\Big(\sum_{s \in S}y_sx_s^{\top}x \Big) \quad \text{ } \quad S \subseteq \{1, ..., t-1\}$$
 
-where $S$ is the set of indices $s$ of training examples $(x_s, y_s)$ on which the Perceptron made an update. If we run the Perceptron in the space $\mathbb{R}^N$ , the linear classifier $h$ becomes
+where $S$ is the set of indices $s$ of training examples $(x_s, y_s)$ on which the Perceptron made an update. If we run the Perceptron in the space $\mathbb{R}^N$ (the expanded feature space), the linear classifier $h$ becomes
 
 $$h_{\phi}(x) = \operatorname{sgn}\Big(\sum_{s \in S}y_s\phi(x_s)^{\top}\phi(x)\Big)$$
 
@@ -1197,15 +1197,11 @@ $$h_K(x) = \operatorname{sgn}\Bigg(\sum_{s \in S}y_sK(x_s, x) \Bigg)\quad \text{
 Below here, we give the pseudo-code of the Kernel Perceptron algorithm.
 
 ## Algorithm: Kernel Perceptron
-Let S be the empty set.<br />
-For all $t = 1, 2, ...$
-1) get next example $(x_t, y_t)$;
-2) compute $\hat{y}_t = \operatorname{sgn} \Bigg(\sum_{s \in S}y_sK(x_s, x_t)\Bigg)$;
-3) if $\hat{y}_t \neq y_t$ add $t$ to $S$.
+![[Kernel Perceptron.png]]
 
 The polynomial kernel $K_n(x,x') = (1 + x{\top}x')^n$ for all $n \in \mathbb{N}$ generalizes the quadratic kernel defined earlier. Using Newton’s Binomial Theorem, we can explicitely compute the map $\phi_n$ such that $K_n(x,x') = \phi_n(x)^{\top}\phi_n(x')$,
 
-$$(1 + x^{\top}x')^n = \sum_{k = 0}^{n} \binom{n}{k}(x^{\top}x')\quad \text{ } \quad(3)$$
+$$(1 + x^{\top}x')^n = \sum_{k = 0}^{n} \binom{n}{k}(x^{\top}x')^k \quad \text{ } \quad(3)$$
 
 Now observe that
 

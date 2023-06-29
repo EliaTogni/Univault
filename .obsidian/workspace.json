@@ -31,8 +31,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -98,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Quiz Statistical Methods for Machine Learning.md",
+                "file": "Statistical Methods for Machine Learning.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,10 +126,11 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "4a687463181fd175",
+  "active": "cf197cc6ac7eb7e1",
   "lastOpenFiles": [
-    "Statistical Methods for Machine Learning.md",
     "Quiz Statistical Methods for Machine Learning.md",
+    "Images/Kernel Perceptron.png",
+    "Statistical Methods for Machine Learning.md",
     "Images/Projected OGD.png",
     "Images/Perceptron Algorithm.png",
     "Images/K-fold Nested Cross Validation.png",
@@ -154,7 +154,6 @@
     "Images/find largest r - Cerca con Google_files/loading_24.gif",
     "Images/find largest r - Cerca con Google_files/googlelogo_color_92x30dp.png",
     "Images/find largest r - Cerca con Google_files/light_thumbnail2.png",
-    "Images/find largest r - Cerca con Google_files/dark_thumbnail2.png",
     "Highlights for Primer Molecular Biology.md",
     "Aspose.Words.0285eff5-79e7-478f-aa71-0051b38e8e41.002.png.md",
     "Programmazione Dinamica.md",
