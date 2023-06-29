@@ -31,7 +31,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -97,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Statistical Methods for Machine Learning.md",
+                "file": "Quiz Statistical Methods for Machine Learning.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -126,11 +127,11 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "cf197cc6ac7eb7e1",
+  "active": "4a687463181fd175",
   "lastOpenFiles": [
+    "Statistical Methods for Machine Learning.md",
     "Quiz Statistical Methods for Machine Learning.md",
     "Images/Kernel Perceptron.png",
-    "Statistical Methods for Machine Learning.md",
     "Images/Projected OGD.png",
     "Images/Perceptron Algorithm.png",
     "Images/K-fold Nested Cross Validation.png",
