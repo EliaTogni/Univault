@@ -56,7 +56,7 @@
 	$=\underset{\widehat{y} \in \{-1, 1\}}{\operatorname{argmin}}\Big(\eta(x) \mathbb{I}\{\widehat{y}= -1\} + (1 - \eta(x))\mathbb{I}\{\widehat{y} = +1\}\Big)$<br />
 	If $\widehat{y} = 1$, the first term goes to $0$ and we predict the second term. Viceversa, we predict the first term. The algorithm should, then, predict $-1$ when $\eta(x) < (1 - \eta(x))$. So $f^*(x)= \cases{-1 \quad \text{if } \eta(x) < \frac{1}{2} \cr \cr +1 \quad \text{if } \eta(x) \geq \frac{1}{2}}$<br />
 	Hence, the Bayes optimal classifier predicts the label whose probability is the highest when conditioned on the instance. Finally, it is easy to verify that the Bayes risk in this case is $\ell_{\mathcal{D}}(f^*) = \mathbb{E}[\ell(f^*(X), Y)] = \mathbb{E}\big[\mathbb{I}\{f^*(X) \neq Y\}\big] = \mathbb{P}(f^*(X) \neq Y)$<br />
-		Knowing that $\mathbb{P}(f^*(X) \neq Y \vert X = x) = \operatorname{min} \{\eta(x), (1 - \eta(x))\}$ and knowing that $\mathbb{E}\Big[\mathbb{E}\big[\mathbb{I}\{f^*(x) \neq Y\}\big \vert X = x]\Big] = \mathbb{E}[\mathbb{I}\{f^*(x) \neq Y\}\big]$, it is possible to define $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\big[\operatorname{min\{\eta(X), 1 - \eta(X)\}\big]$.<br /><br />
+		Knowing that $\mathbb{P}(f^*(X) \neq Y \vert X = x) = \operatorname{min} \{\eta(x), (1 - \eta(x))\}$ and knowing that $\mathbb{E}\Big[\mathbb{E}\big[\mathbb{I}\{f^*(x) \neq Y\}\big \vert X = x]\Big] = \mathbb{E}[\mathbb{I}\{f^*(x) \neq Y\}\big]$, it is possible to define $\ell_{\mathcal{D}}(f^*) = \mathbb{E}\big[\operatorname{min}\{\eta(X), 1 - \eta(X)\}\big]$.<br /><br />
 	That is, the Bayes risk is the expectation of the probability of the event that is less likely to happen conditioned on the instance.
 15) **Can the Bayes risk for the zero-one loss be zero? If yes, then explain how.**
 	
@@ -176,34 +176,47 @@
 	- $m$ is the number of mistakes made by the Perceptron algorithm;
 	- $h_t(u)$ is the hinge loss at time $t$ for the weight vector $u$. When the sequence is linearly separable then there exists $u \in \mathbb{R}^d$ such that $y_tu^\top x_t \geq 1$ for all $t \leq T$, which in turn implies that $h_t(u) = 0$;
 	- $X$ is the maximum norm of the data points, i.e. $\Vert x_t \Vert \leq X$ for all $t \leq T$.
-- **Write the formula for the polynomial kernel of degree $n$.**
+45) **Write the formula for the polynomial kernel of degree $n$.**
 	The polynomial kernel $K_n(x,x') = (1 + x{\top}x')^n$ for all $n \in \mathbb{N}$ uses Newton’s Binomial Theorem to explicitely compute the map $\phi_n$ such that $K_n(x,x') = \phi_n(x)^{\top}\phi_n(x')$: $(1 + x^{\top}x')^n = \sum_{k = 0}^{n} \binom{n}{k}(x^{\top}x')^k$
-- **Write the formula for the Gaussian kernel with parameter $\gamma$.**
+46) **Write the formula for the Gaussian kernel with parameter $\gamma$.**
 	$K_{\gamma}(x, x') = \operatorname{exp}\Big(-\frac{1}{2\gamma} \Vert x - x'\Vert^2\Big) \quad \text{ } \quad \gamma > 0$, where $\gamma$ determines the width of the gaussian. This equality can be manipulated into a linear combination of infinitely many polynomial kernels $(x^\top x')^n$ of increasing degree, each weighted by the reciprocal of the factorial of its degree and scaled by $\gamma$. Finally, the factors $e^{-\Vert x \Vert^2 / (2 \gamma)}e^{-\Vert x' \Vert^2/(2\gamma)}$ normalize with respect to $x$ and $x'$ giving $K_\gamma(x,x) = 1$ for each $x \in \mathbb{R}^d$.
-- **Write the pseudo-code for the kernel Perceptron algorithm.**
+47) **Write the pseudo-code for the kernel Perceptron algorithm.**
 	![[Kernel Perceptron.png]]
-- **Write the mathematical definition of the linear space $\mathcal{H}_K$ of functions induced by a kernel $K$.**
+48) **Write the mathematical definition of the linear space $\mathcal{H}_K$ of functions induced by a kernel $K$.**
 	
-- **Let $f$ be an element of the linear space $\mathcal{H}_K$ induced by a kernel $K$. Write $f(x)$ in terms of $K$.**
+49) **Let $f$ be an element of the linear space $\mathcal{H}_K$ induced by a kernel $K$. Write $f(x)$ in terms of $K$.**
 	
-- **Write the statement of the Perceptron convergence theorem when the Perceptron is run with a kernel $K$. Define the main quantities occurring in the bound. (BONUS)**
+50) **Write the statement of the Perceptron convergence theorem when the Perceptron is run with a kernel $K$. Define the main quantities occurring in the bound. (BONUS)**
 	
-- **Write the mistake bound of the Perceptron convergence theorem when the Perceptron is run with a kernel $K$. Define the main quantities occurring in the bound.**
+51) **Write the mistake bound of the Perceptron convergence theorem when the Perceptron is run with a kernel $K$. Define the main quantities occurring in the bound.**
 	
-- **Write the mistake bound for the kernel Perceptron run on an arbitrary data stream for binary classification. Define the main quantities occurring in the bound.**
+52) **Write the mistake bound for the kernel Perceptron run on an arbitrary data stream for binary classification. Define the main quantities occurring in the bound.**
 	
-- **Write the closed-form formula (i.e., not the argmin definition) of the kernel version of the Ridge Regression predictor.**
+53) **Write the closed-form formula (i.e., not the argmin definition) of the kernel version of the Ridge Regression predictor.**
 	
-- **Write the convex optimization problem with linear constraints that defines the SVM hyperplane in the linearly separable case.**
-- **Write the unconstrained optimization problem whose solution defines the SVM hyperplane when the training set is not necessarily linearly separable.**
-- **Write the bound on the expected value of the SVM objective function achieved by Pegasos. Provide also a bound on the expected squared norm of the loss gradient.**
-- **Write the definition of $\varepsilon$-stability for a learning algorithm.**
-- **Write the value of $\varepsilon$ for which SVM is known to be stable. The value depends on the radius $X$ of the ball where the training datapoints live, the training set size $m$, and the regularization coefficient $\lambda$.**
-- **Write the mathematical conditions on the regularization coefficient $\lambda$ ensuring consistency for the SVM algorithm wih Gaussian kernel.**
-- **Consider the class $\mathcal{F}_d$ of all functions of the form $f : \{−1, 1\}^d \to \{−1, 1\}$. Let $\mathcal{F}_{G,\operatorname{sgn}}$ be the class of functions computed by a feedforward neural networks with the $\operatorname{sgn}$ activation function and graph $G = (V, E)$. Provide asymptotic upper and lower bounds on $\vert V \vert$ such that $\mathcal{F}_d \subseteq \mathcal{F}_{G,\operatorname {sgn}}$.**
-- **Define a class of neural networks for which the ERM problem with the square loss is probably NP-hard.**
-- **Write the update line of the stochastic gradient descent algorithm. Explain the main quantities.**
-- **Write the definition of logistic loss for logistic regression with linear models.**
-- **Write the definition of consistency for surrogate losses.**
-- **Write a sufficient condition for consistency of a surrogate loss.**
-- **Write the formula for Bayes optimal predictor and Bayes risk for the logistic loss.**
+54) **Write the convex optimization problem with linear constraints that defines the SVM hyperplane in the linearly separable case.**
+	
+55) **Write the unconstrained optimization problem whose solution defines the SVM hyperplane when the training set is not necessarily linearly separable.**
+	
+56) **Write the bound on the expected value of the SVM objective function achieved by Pegasos. Provide also a bound on the expected squared norm of the loss gradient.**
+	
+57) **Write the definition of $\varepsilon$-stability for a learning algorithm.**
+	
+58) **Write the value of $\varepsilon$ for which SVM is known to be stable. The value depends on the radius $X$ of the ball where the training datapoints live, the training set size $m$, and the regularization coefficient $\lambda$.**
+	
+59) **Write the mathematical conditions on the regularization coefficient $\lambda$ ensuring consistency for the SVM algorithm wih Gaussian kernel.**
+	
+60) **Consider the class $\mathcal{F}_d$ of all functions of the form $f : \{−1, 1\}^d \to \{−1, 1\}$. Let $\mathcal{F}_{G,\operatorname{sgn}}$ be the class of functions computed by a feedforward neural networks with the $\operatorname{sgn}$ activation function and graph $G = (V, E)$. Provide asymptotic upper and lower bounds on $\vert V \vert$ such that $\mathcal{F}_d \subseteq \mathcal{F}_{G,\operatorname {sgn}}$.**
+	
+61) **Define a class of neural networks for which the ERM problem with the square loss is probably NP-hard.**
+	
+62) **Write the update line of the stochastic gradient descent algorithm. Explain the main quantities.**
+	
+63) **Write the definition of logistic loss for logistic regression with linear models.**
+	
+64) **Write the definition of consistency for surrogate losses.**
+	
+65) **Write a sufficient condition for consistency of a surrogate loss.**
+	
+66) **Write the formula for Bayes optimal predictor and Bayes risk for the logistic loss.**
+	
