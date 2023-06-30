@@ -121,7 +121,7 @@
 31) **Write the rate at which the risk of a consistent learning algorithm for binary classification vanish as a function of the training set size $m$ and the dimension $d$ under Lipschitz assumptions.**
 	Under Lipschitz assumptions on $\eta$, the typical convergence rate to Bayes risk is $m^{−1/(d+1)}$ (exponentially slow in $d$).
 32) **Explain the curse of dimensionality.**
-	Te convergence rate $m^{\frac{-1}{d+1}}$ implies that to get $\varepsilon$-close to the Bayes Risk, we need a training set size $m$ of order $\varepsilon^{-(d+1)}$. We may define consistency with respect to a restricted class of distributions ￼￼. For exampleThis exponential dependence on the number of features of the training set size is known a curse of dimensionality and refers to the difficulty of learning in a nonparametric setting when datapoints live in a high-dimensional space.
+	The convergence rate $m^{\frac{-1}{d+1}}$ implies that to get $\varepsilon$-close to the Bayes Risk, we need a training set size $m$ of order $\varepsilon^{-(d+1)}$. This exponential dependence on the number of features of the training set size is known a curse of dimensionality and refers to the difficulty of learning in a nonparametric setting when datapoints live in a high-dimensional space.
 33) **Why non parametric algorithm cannot be consistent? (BONUS)**
 34) **Write the bound on the risk of $1-NN$ binary classifier under Lipschitz assumptions.**
 	$\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big] \leq 2 \ell_{\mathcal{D}}(f^*) + \varepsilon_m$, where $A$ denotes the $1-NN$ algorithm, $S_m$ the training set of size $m$, $\ell_{\mathcal{D}}(f^*)$ is the Bayes risk, and $\varepsilon_m$ is a quantity that vanishes for $m \to \infty$.
