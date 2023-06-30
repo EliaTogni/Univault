@@ -1296,7 +1296,7 @@ The **Support Vector Machine** (**SVM**) is an algorithm for learning linear cla
 $$\underset{w \in \mathbb{R}^d}{\operatorname{min}} \frac{1}{2}\Vert w \Vert ^2 \quad \text{ } \quad (1)$$
 $$\text{s.t. }\quad y_tw^{\top}x_t \geq 1 \quad t = 1, ..., m$$
 
-Geometrically, $w^*$ corresponds to the **maximum margin separating hyperplane**. For every linearly separable set $(x_1, y_1), ..., (x_m, y_m) \in \mathbb{R}^d \times \{−1, 1\}, the maximum margin is defined by
+Geometrically, $w^*$ corresponds to the **maximum margin separating hyperplane**. For every linearly separable set $(x_1, y_1), ..., (x_m, y_m) \in \mathbb{R}^d \times \{−1, 1\}$, the maximum margin is defined by
 
 $$\gamma^* = \underset{u: \Vert u \Vert = 1}{\operatorname{max}} \underset{t = 1, ..., m}{\operatorname{min}} y_t u^{\top}x_t$$
 

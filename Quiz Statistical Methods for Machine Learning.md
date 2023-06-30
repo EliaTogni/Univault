@@ -166,8 +166,15 @@
 	- $G$ is the bound on the norm of the gradient of the loss function;
 	- $T$ is the number of training points.
 42) **Write the upper bound on the regret of online gradient descent on $\sigma$-strongly convex functions. Define the main quantities occurring in the bound.**
+	$\underbrace{\frac{1}{T}\sum_{t = 1}^{T}\ell_t(w_t)}_{\ell_T(w)} \leq \underset{u \in \mathbb{R}^d}{\operatorname{min}} \frac{1}{T} \sum_{t = 1}^{T} \ell_t(u) + \frac{G^2}{2\sigma}\frac{\ln{(T + 1)}}{T}$<br />
+	where
+	- $\ell_T(w)$ is the average loss of the algorithm, 
+	- $\sigma$ is the strong convexity parameter and it must be $> 0$;
+	- $G$ is the bound on the norm of the gradient of the loss function $\underset{t}{\operatorname{max}} \Vert \nabla \ell_t(w_t) \Vert \leq G$;
+	- $\ln{(T + 1)}$ is the upper bound of harmonic series over $T$;
+	- $T$ is the number of epochs.
 	
-43) **Write the formula for the hinge loss.**
+1) **Write the formula for the hinge loss.**
 	The function $h_t(u) = [1 - y_t u^{\top}x_t]_+$ is a loss function called **hinge loss**, which is a convex function and, since $\mathbb{I}\{\operatorname{sgn}(z) \neq y\} \leq [1− zy]_+$ for all $z \in \mathbb{R}$ and $y \in \{−1,1\}$, it is also a convex upper bound on the zero-one loss.
 44) **Write the mistake bound for the Perceptron run on an arbitrary data stream for binary classification. Define the main quantities occurring in the bound.**
 	$M \leq \sum_{t = 1}^{T}h_t(u) + \big(\Vert u \Vert X\big)^2 + \Vert u \Vert X \sqrt{\sum_{t = 1}^{T}h_t(u)} \quad \text{ for all } u \in \mathbb{R}^d$.<br />
@@ -198,8 +205,12 @@
 	We can represent the ridge regression predictor in a generic reproducing kernel Hilbert space $\mathcal{H}_K$ as by<br />
 	$y^{\top}\big(\alpha I + K\big)^{-1}k(\cdot)$ where $K$ is the $m \times m$ matrix with entries $K_{i, j} = K(x_i, x_j)$ and $K(\cdot)$ is the vector $(K(x_1, \cdot), ..., K(x_m, \cdot))$ of functions $K(x_t, \cdot) = \langle \phi_K(x_t) \rangle$. Similarly to the non-kernel case, where the prediction on $x$ is $w^{\top}x$, the prediction on $\phi_K(x)$ is $\langle g, \phi_K(x_t),\cdot \rangle_K$ which evaluates to $g(x) = y^\top \Big( \alpha I + K\Big)^{−1}k(x)$ where $k(x) = (K(x_1, x), ..., K(x_m, x))$.
 53) **Write the convex optimization problem with linear constraints that defines the SVM hyperplane in the linearly separable case.**
-	
-54) **Write the unconstrained optimization problem whose solution defines the SVM hyperplane when the training set is not necessarily linearly separable.**
+	Given a linearly separable training set $(x_1, y_1), ..., (x_m,y_) \in \mathbb{R}^d \times \{−1, 1\}$, SVM outputs the linear classifier corresponding to the unique solution $w^* \in \mathbb{R}^d$ of the following convex optimization problem with linear constraints $\underset{w \in \mathbb{R}^d}{\operatorname{min}} \frac{1}{2}\Vert w \Vert ^2$<br />
+	$\text{s.t. }\quad y_tw^{\top}x_t \geq 1 \quad t = 1, ..., m$<br />
+	Geometrically, $w^*$ corresponds to the maximum margin separating hyperplane. For every linearly separable set $(x_1, y_1), ..., (x_m, y_m) \in \mathbb{R}^d \times \{−1, 1\}$, the maximum margin is defined by <br />
+	$\gamma^* = \underset{u: \Vert u \Vert = 1}{\operatorname{max}} \underset{t = 1, ..., m}{\operatorname{min}} y_t u^{\top}x_t$<br />
+	and the vector $u^*$ achieving the maximum margin is the maximum margin separator.
+1) **Write the unconstrained optimization problem whose solution defines the SVM hyperplane when the training set is not necessarily linearly separable.**
 	
 55) **Write the bound on the expected value of the SVM objective function achieved by Pegasos. Provide also a bound on the expected squared norm of the loss gradient.**
 	
