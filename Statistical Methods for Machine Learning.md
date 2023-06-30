@@ -1199,7 +1199,7 @@ Below here, we give the pseudo-code of the Kernel Perceptron algorithm.
 ## Algorithm: Kernel Perceptron
 ![[Kernel Perceptron.png]]
 
-The polynomial kernel $K_n(x,x') = (1 + x{\top}x')^n$ for all $n \in \mathbb{N}$ generalizes the quadratic kernel defined earlier. Using Newton’s Binomial Theorem, we can explicitely compute the map $\phi_n$ such that $K_n(x,x') = \phi_n(x)^{\top}\phi_n(x')$,
+The polynomial kernel $K_n(x,x') = (1 + x{^\top}x')^n$ for all $n \in \mathbb{N}$ generalizes the quadratic kernel defined earlier. Using Newton’s Binomial Theorem, we can explicitely compute the map $\phi_n$ such that $K_n(x,x') = \phi_n(x)^{\top}\phi_n(x')$,
 
 $$(1 + x^{\top}x')^n = \sum_{k = 0}^{n} \binom{n}{k}(x^{\top}x')^k \quad \text{ } \quad(3)$$
 
