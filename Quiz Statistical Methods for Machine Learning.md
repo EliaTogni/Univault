@@ -183,40 +183,39 @@
 47) **Write the pseudo-code for the kernel Perceptron algorithm.**
 	![[Kernel Perceptron.png]]
 48) **Write the mathematical definition of the linear space $\mathcal{H}_K$ of functions induced by a kernel $K$.**
-	
+	Since $\mathcal{H}_K$ must be a linear space, it is possible to define it as the set of all linear combinations of $K(x,\cdot)$ for arbitrary choices of the coefficients and of the points $x \in  \mathcal{X}$, $\mathcal{H}_K \equiv \Bigg \{\sum_{i = 1}^N \alpha_i K(x_i, \cdot) : x_1, ..., x_N \in \mathcal{X}, \alpha_i, ...., \alpha_N \in \mathbb{R}, N \in \mathbb{N} \Bigg\}$
 49) **Let $f$ be an element of the linear space $\mathcal{H}_K$ induced by a kernel $K$. Write $f(x)$ in terms of $K$.**
+	An element $f \in \mathcal{H}_K$ is a function $f : \mathcal{X} \to \mathbb{R}$ such that $f(x) = \sum_{i = 1}^{N}\alpha_iK(x_i, x)$ for some $x_1, ..., x_N \in \mathcal{X}, \alpha_1, ..., \alpha_N \in \mathbb{R}$, and $N \in \mathbb{N}$.
+50) **Write the mistake bound of the Perceptron convergence theorem when the Perceptron is run with a kernel $K$. Define the main quantities occurring in the bound.**
+	Recall the bound on the number of mistakes provided by the Perceptron convergence theorem, $\Vert u \Vert^2 \Big(\underset{t}{\operatorname{max}} \Vert x_t \Vert^2\Big)$ which holds for any $u \in \mathbb{R}^d$ such that $y_tu^{\top}x_t \geq 1$ for $t = 1, ..., m$.<br />
+	In a generic reproducing kernel  Hilbert space $\mathcal{H}_K$ , the linear separator $u$ is some $g \in \mathcal{H}_K$ such that $y_tg(x_t) \geq 1$ for $t = 1, ..., m$. The squared norm $\Vert x_t \Vert^2 = x^{\top}_tx_t$ becomes $\Vert \phi_K(x)\Vert^2_K = \langle K(x,\cdot), K(x, \cdot)\rangle_K = K(x,x)$. Finally $\Vert u \Vert^2$ is replaced by $\Vert f \Vert^2_K = \Bigg \Vert \sum_{i = 1}^{N}\alpha_iK(x_i, \cdot)\Bigg \Vert^2_K = \Bigg \langle  \sum_{i = 1}^{N} \alpha_i K (x_i, \cdot), \sum_{j = 1}^{N}\alpha_jK(x_j, \cdot)\Bigg \rangle_K = \sum_{i, j = 1}^{N}\alpha_i \alpha_j K (x_i, x_j)$.
+51) **Write the mistake bound for the kernel Perceptron run on an arbitrary data stream for binary classification. Define the main quantities occurring in the bound.**
 	
-50) **Write the statement of the Perceptron convergence theorem when the Perceptron is run with a kernel $K$. Define the main quantities occurring in the bound. (BONUS)**
+52) **Write the closed-form formula (i.e., not the argmin definition) of the kernel version of the Ridge Regression predictor.**
 	
-51) **Write the mistake bound of the Perceptron convergence theorem when the Perceptron is run with a kernel $K$. Define the main quantities occurring in the bound.**
+53) **Write the convex optimization problem with linear constraints that defines the SVM hyperplane in the linearly separable case.**
 	
-52) **Write the mistake bound for the kernel Perceptron run on an arbitrary data stream for binary classification. Define the main quantities occurring in the bound.**
+54) **Write the unconstrained optimization problem whose solution defines the SVM hyperplane when the training set is not necessarily linearly separable.**
 	
-53) **Write the closed-form formula (i.e., not the argmin definition) of the kernel version of the Ridge Regression predictor.**
+55) **Write the bound on the expected value of the SVM objective function achieved by Pegasos. Provide also a bound on the expected squared norm of the loss gradient.**
 	
-54) **Write the convex optimization problem with linear constraints that defines the SVM hyperplane in the linearly separable case.**
+56) **Write the definition of $\varepsilon$-stability for a learning algorithm.**
 	
-55) **Write the unconstrained optimization problem whose solution defines the SVM hyperplane when the training set is not necessarily linearly separable.**
+57) **Write the value of $\varepsilon$ for which SVM is known to be stable. The value depends on the radius $X$ of the ball where the training datapoints live, the training set size $m$, and the regularization coefficient $\lambda$.**
 	
-56) **Write the bound on the expected value of the SVM objective function achieved by Pegasos. Provide also a bound on the expected squared norm of the loss gradient.**
+58) **Write the mathematical conditions on the regularization coefficient $\lambda$ ensuring consistency for the SVM algorithm wih Gaussian kernel.**
 	
-57) **Write the definition of $\varepsilon$-stability for a learning algorithm.**
+59) **Consider the class $\mathcal{F}_d$ of all functions of the form $f : \{−1, 1\}^d \to \{−1, 1\}$. Let $\mathcal{F}_{G,\operatorname{sgn}}$ be the class of functions computed by a feedforward neural networks with the $\operatorname{sgn}$ activation function and graph $G = (V, E)$. Provide asymptotic upper and lower bounds on $\vert V \vert$ such that $\mathcal{F}_d \subseteq \mathcal{F}_{G,\operatorname {sgn}}$.**
 	
-58) **Write the value of $\varepsilon$ for which SVM is known to be stable. The value depends on the radius $X$ of the ball where the training datapoints live, the training set size $m$, and the regularization coefficient $\lambda$.**
+60) **Define a class of neural networks for which the ERM problem with the square loss is probably NP-hard.**
 	
-59) **Write the mathematical conditions on the regularization coefficient $\lambda$ ensuring consistency for the SVM algorithm wih Gaussian kernel.**
+61) **Write the update line of the stochastic gradient descent algorithm. Explain the main quantities.**
 	
-60) **Consider the class $\mathcal{F}_d$ of all functions of the form $f : \{−1, 1\}^d \to \{−1, 1\}$. Let $\mathcal{F}_{G,\operatorname{sgn}}$ be the class of functions computed by a feedforward neural networks with the $\operatorname{sgn}$ activation function and graph $G = (V, E)$. Provide asymptotic upper and lower bounds on $\vert V \vert$ such that $\mathcal{F}_d \subseteq \mathcal{F}_{G,\operatorname {sgn}}$.**
+62) **Write the definition of logistic loss for logistic regression with linear models.**
 	
-61) **Define a class of neural networks for which the ERM problem with the square loss is probably NP-hard.**
+63) **Write the definition of consistency for surrogate losses.**
 	
-62) **Write the update line of the stochastic gradient descent algorithm. Explain the main quantities.**
+64) **Write a sufficient condition for consistency of a surrogate loss.**
 	
-63) **Write the definition of logistic loss for logistic regression with linear models.**
-	
-64) **Write the definition of consistency for surrogate losses.**
-	
-65) **Write a sufficient condition for consistency of a surrogate loss.**
-	
-66) **Write the formula for Bayes optimal predictor and Bayes risk for the logistic loss.**
+65) **Write the formula for Bayes optimal predictor and Bayes risk for the logistic loss.**
 	
