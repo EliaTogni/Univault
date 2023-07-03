@@ -129,7 +129,7 @@
 	The convergence rate $m^{\frac{-1}{d+1}}$ implies that to get $\varepsilon$-close to the Bayes Risk, we need a training set size $m$ of order $\varepsilon^{-(d+1)}$. This exponential dependence on the number of features of the training set size is known a curse of dimensionality and refers to the difficulty of learning in a nonparametric setting when datapoints live in a high-dimensional space.
 33) **Why non parametric algorithm cannot be consistent? (BONUS)**
 34) **Write the bound on the risk of $1-NN$ binary classifier under Lipschitz assumptions.**
-	$\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big] \leq 2 \ell_{\mathcal{D}}(f^*) + \varepsilon_m$, where $A$ denotes the $1-NN$ algorithm, $S_m$ the training set of size $m$, $\ell_{\mathcal{D}}(f^*)$ is the Bayes risk, and $\varepsilon_m$ is a quantity that vanishes for $m \to \infty$.
+	$\mathbb{E}\Big[\ell_{\mathcal{D}}(A(S_m))\Big] \leq 2 \ell_{\mathcal{D}}(f^*) + \varepsilon_m$, where $A$ denotes the $1-NN$ algorithm, $S_m$ the training set of size $m$, $\ell_{\mathcal{D}}(f^*)$ is the Bayes risk, and $\varepsilon_m = c4m^{-1/(d+1)}\sqrt{d}$ is a quantity that vanishes for $m \to \infty$.
 35) **Can the ERM over linear classifiers be computed efficiently? Can it be approximated efficiently? Motivate your answers.**
 	It is unlikely to find an efficient implementation of ERM for linear classifiers with zero-one loss. in fact, the problem associated with the finding of $h_s = \underset{w \in \mathbb{R}^d : \Vert w \Vert = 1}{\operatorname{argmin}} \frac{1}{m} \sum_{t = 1}^{m} \mathbb{I}\{y_tw^{\top}x_t \leq 0\big\}$ is NP-complete even when $x_t \in \{0, 1\}^d$ for $t = 1, ..., m$. It can be shown that minDisagreement (given pairs $(x_1, y_1), ..., (x_m,y_m) \in \{0,1\}^d \times \{−1,1\}$ and an integer $k$, is there $w \in \mathbb{Q}^d$ such that $y_t w^{\top}x_t \leq 0$ for at most $k$ indices $t = 1, ..., m$?) is NP-complete.<br />
 	It is possible to show the following stronger hardness-of-approximation result:
@@ -145,7 +145,7 @@
 	The apparently stonger margin constraint $\gamma(u) \geq 1$ is actually achievable by any separating hyperplane $u$. Indeed, if $\gamma(u) > 0$, then $y_tu^{\top}x_t \geq \gamma(u)$ is equivalent to $y_tv^{\top}x_t \geq 1$ for $v = u/\gamma(u)$. Hence, $\gamma(u) \geq 1$ can be achieved simply by rescaling $u$.<br />
 	After the proof of this theorem and finding the upper and lower bound, we can bound the number of updates $M$:<br />
 	$$M \leq \Vert u \Vert \Big ( \underset{t = 1, ..., m}{max} \Vert x_t \Vert \Big )\sqrt{M}$$
-1) **Write the closed-form formula (i.e., not the argmin definition) for the Ridge Regression predictor. Define the main quantities occurring in the formula.**
+39) **Write the closed-form formula (i.e., not the argmin definition) for the Ridge Regression predictor. Define the main quantities occurring in the formula.**
 	The closed-form formula for the Ridge Regression coefficients (predictor) is $w = w_{S, \alpha} = (S^\top S + \alpha I)^{-1} S^\top y$, where $S$ is the matrix of training examples of size $m \times d$ called design matrix, $y$ is the vector of labels of size $m \times 1$, $\alpha$ is the regularization parameter or penalty factor that shrinks the regression coefficients towards zero and $w$ is the vector of Ridge Regression coefficients of length $d$.
 40) **Write the pseudo-code for the projected online gradient descent algorithm.**
 	![[Projected OGD.png]]
