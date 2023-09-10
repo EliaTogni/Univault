@@ -1,7 +1,7 @@
 # Simulation
 Una **simulation** (**simulazione**), secondo l'Oxford Dictionary, è il prodotto della modellazione a computer, della rappresentazione formale di un evento, un processo o sistema complesso nel mondo reale, soprattutto al fine di studio.<br />
 
-Una simulazione è uno strumento economico per approssimare comportamenti della vita reale all'interno di un calcolatore, tramite l'implementazione di un [[Modello#Modello descrittivo |modello di analisi descrittiva]], il quale può essere usato per testare una selezione di scenari.<br />
+Una simulazione è una rappresentazione digitale di un sistema, uno strumento economico per approssimare comportamenti della vita reale all'interno di un calcolatore, tramite l'implementazione di un [[Modello#Modello descrittivo |modello di analisi descrittiva]], il quale può essere usato per testare una selezione di scenari.<br />
 Sistemi complessi differenti richiedono capacità di modellazione differenti.<br />
 L'arte della costruzione del modello stesso può portare al modellatore un superiore livello di comprensione del sistema reale.<br />
 
