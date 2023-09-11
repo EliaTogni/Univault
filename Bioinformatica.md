@@ -227,7 +227,7 @@ $$loss(y,\hat{y}) := (y-\hat{y})^2$$
 ----------------------------------------------------------------
 
 ### Rischio empirico
-Il **training error** è la media campionaria della funzione di perdita valutata sul training set ed è la funzione che l'algoritmo minimizza.
+Il **rischio empirico** o **training error** è la media campionaria della funzione di perdita valutata sul training set ed è la funzione che l'algoritmo minimizza.
 
 $$R_{emp} = \frac{1}{n} \sum_{i = 1}^{n}loss(g(x_i), t_i)$$
 
@@ -324,7 +324,7 @@ L'aggiornamento iterativo è
 
 $$w \leftarrow w - \eta\cdot\nabla E(w)$$
 
-dove $\eta$ è il parametro di *learning rate*. Il gradiente dell'errore è
+dove $\eta$ è il parametro di **learning rate**. Il gradiente dell'errore è
 
 $$\nabla E(w) = \left( \frac{\partial E(w)}{\partial w_i} \right)_{i=1}^{n} = \left( \frac{\partial \left[ \sum_{t=1}^{m} loss(\sigma(wx^{(t)}),y^{(t)}) \right] }{\partial w_i} \right)_{i=1}^{n}$$
 
@@ -370,18 +370,17 @@ Alcune tecniche di regolarizzazione utilizzate sono il **weight decay** (la norm
 ----------------------------------------------------------------
 
 ### CNN
-Le **[[Intelligenza Artificiale#Deep Learning|convolutional neural networks]]** sono reti neurali in cui ogni strato viene ottenuto non dal prodotto matrice-vettore dei pesi e dello strato precedente, ma dalla loro convoluzione
+Le **[[Intelligenza Artificiale#Deep Learning|convolutional neural networks]]** sono reti neurali in cui ogni layer viene ottenuto non dal prodotto matrice-vettore dei pesi e dell'output del layer precedente, ma dalla loro convoluzione
 
 $$y = w \ast x\ :\ y_i = \sum_{h=1}^{k} w_h\ x_{i-h}$$
 
 Il vettore di pesi viene chiamato **kernel**. Le funzioni di convoluzione implementate sono anche diverse da quella ortodossa (detta **flipped-kernel**): ad esempio, può essere la funzione di cross-correlazione (senza rovesciamento del kernel, ma non commutativa). Gli strati convoluzionali possono implementare anche il padding (senza padding la lunghezza degli strati diminuisce inesorabilmente).
 
-Un primo vantaggio delle CNN rispetto ad i MLP è la necessità di un numero minore di parametri: i kernel sono generalmente piccoli, quindi occupano meno memoria, sono più semplici da apprendere (in quanto un numero minore di parametri) ed implementano la sparsità delle connessioni (ogni strato è connesso solo al proprio **campo recettivo**) propria delle reti neurali naturali. I parametri, oltre a essere meno, sono anche gli stessi per ogni neurone dello stesso strato: ciò che cambia è la sezione di input considerata: questo fenomeno è detto **parameter sharing**. In questo modo, le convoluzioni sono considerabili come un prodotto per una matrice di pesi con i vincoli enunciati di sparsità e di uguaglianza dei parametri e, quindi, possono essere considerate una regolarizzazione dei MLP.
+Un primo vantaggio delle CNN rispetto ai MLP è la necessità di un numero minore di parametri: i kernel sono generalmente piccoli, quindi occupano meno memoria, sono più semplici da apprendere (in quanto un numero minore di parametri) ed implementano la sparsità delle connessioni (ogni strato è connesso solo al proprio **campo recettivo**) propria delle reti neurali naturali. I parametri, oltre a essere meno, sono anche gli stessi per ogni neurone dello stesso strato: ciò che cambia è la sezione di input considerata: questo fenomeno è detto **parameter sharing**. In questo modo, le convoluzioni sono considerabili come un prodotto per una matrice di pesi con i vincoli enunciati di sparsità e di uguaglianza dei parametri e, quindi, possono essere considerate una regolarizzazione dei MLP.
 
 Una proprietà delle CNN che deriva dall'utilizzo dell'operazione di convoluzione è che le trasformazioni da uno strato al successivo sono **equivarianti per traslazione**: una traslazione nel vettore di input corrisponde a una stessa traslazione nel vettore di output.
 
 Le CNN possono avere input di arbitrarie dimensioni se si gestisce il **pooling** per ottenere questa proprietà, oppure utilizzando delle **fully convolutional networks**.
-
 #### Layers
 Gli strati di una rete convoluzionale sono complessi. Sono composti da:
 - **stadio convolutivo**: è lo stadio che implementa la convoluzione dell'input per un kernel;
@@ -392,7 +391,7 @@ $$\text{ReLU}(x) = \begin{cases}
         0 & x < 0
         \end{cases}$$
 
-- **stadio di pooling**: questo stadio calcola delle statistiche locali sull'output. Lo stadio di pooling più comune nelle reti convoluzionali è il **max pooling**, che restituisce il massimo di finestre dell'output: questo consente di avere un output invariante rispetto a piccole fluttuazioni dell'input;
+- **stadio di pooling**: questo stadio calcola delle statistiche locali sull'output. Lo stadio di pooling più comune nelle reti convoluzionali è il **max pooling**, che restituisce il massimo di finestre dell'output: questo consente di avere un output invariante rispetto a piccole fluttuazioni dell'input.
 
 Alternativamente, alcune tassonomie considerano strati semplici ed ognuno degli stadi sopra riportati costituisce uno strato a sé.
 
@@ -567,8 +566,6 @@ Se il classificatore predice come negativi i valori sotto la soglia e come posit
 
 Un classificatore perfetto avrebbe sensitività e specificità unitarie: passerebbe, dunque, per il punto $(0,1)$ . Solitamente, però, tale classificatore non è possibile a causa della casualità nei dati. Per misurare la bontà di un classificatore binario possiamo osservare quanto la curva ROC è simile alla curva del classificatore perfetto: utilizziamo a questo proposito l'area sotto la curva ROC (AUROC), che varrà $1$ per il classificatore perfetto e $0.5$ per il classificatore casuale uniforme (la cui curva ROC è la bisettrice del quadrante).
 
-
-
 In figura è possibile osservare un esempio di curva ROC: sulla sinistra sono riportate le distribuzioni dei reali negativi $H_0$ e positivi $H_1$, nonchè un esempio di valore di soglia (in rosso) e sulla destra la curva ROC ottenuta facendo variare il valore della soglia.
 
 ----------------------------------------------------------------
@@ -585,8 +582,6 @@ Un classificatore che cerca di massimizzare sensitività e specificità su un in
 Per questo, su dati sbilanciati come sono i dati in bioinformatica, si preferisce utilizzare la **PRC** (**Precision-Recall Curve**), che riporta sulle ordinate la precisione e sulle ascisse la recall: la precisione, al contrario della specificità, è molto influenzata dal numero di falsi positivi e per niente influenzata dal numero di negativi reali.
 
 L'ottimo per la curva precision-recall sarebbe il punto $(1,1)$ e un classifcatore casuale uniforme ha come curva il segmento tra $(0,1)$ e $(1,0)$ . Anche nel caso della PRC, possimo utilizzare l'area sotto la curva (AUPRC) come indicatore della performance del classificatore.
-
-
 
 In figura si può osservare il confronto tra le curve PR e ROC per una famiglia di classificatori binari. Osservando la curva ROC, il classificatore migliore sembra quello di parametro $w = 1000$  
 (curva nera), anche se molto simile ai concorrenti. Dalla PRC, invece, risulta evidente come tale classificatore sia uno dei peggiori, mentre risultano migliori i classificatori ottenuti con  
@@ -674,12 +669,11 @@ Il predittore finale utilizza le cell variable per stimare l'effetto della varia
 ----------------------------------------------------------------
 
 ### Rete Convoluzionale
-Il primo layer della rete neurale di DeepSEA è composto da una matrice $D\times W$ di neuroni, dove il neurone $h_{d,w}$ si occupa di rilevare il motivo $d$ nella finestra $w$ . I motivi target hanno una lunghezza di $6$ basi: la larghezza della finestra è $6$, con un *hop size* di $1$. Quindi il numero di finestre $W$ è cinque unità in meno rispetto alla
-lunghezza della sequenza (no padding).
+Il primo layer della rete neurale di DeepSEA è composto da una matrice $D\times W$ di neuroni, dove il neurone $h_{d,w}$ si occupa di rilevare il motivo $d$ nella finestra $w$ . I motivi target hanno una lunghezza di $6$ basi: la larghezza della finestra è $6$, con un *hop size* di $1$. Quindi il numero di finestre $W$ è cinque unità in meno rispetto alla lunghezza della sequenza (no padding).
 
 Il numero di motivi è virtualmente variabile, ma tutti i neuroni $\{h_{d,w}\}_{w=1}^{W}$ cercano di rilevare lo stesso motivo: non ha senso usare uno strato completamente connesso, ma si sfrutta il parameter sharing degli strati convoluzionali per facilitare il training e ridurre il numero di parametri. Ogni motivo sarà, quindi, rilevato da uno specifico kernel $4\times 6$.
 
-Ricapitolando: il primo layer di DeepSEA è uno strato convoluzionale con $D$ kernel $4\times 6$. Dopodiché viene applicata una funzione di attivazione ReLU e max pooling con stride di larghezza 4. A questo, seguono altri due strati convoluzionali con ReLU e max pooling. Infine, si trova uno strato completamente connesso con attivazione logistica e uno strato finale di output con $919$ neuroni e attivazione logistica.
+Ricapitolando, il primo layer di DeepSEA è uno strato convoluzionale con $D$ kernel $4\times 6$. Dopodiché viene applicata una funzione di attivazione ReLU e max pooling con stride di larghezza 4. A questo seguono altri due strati convoluzionali con ReLU e max pooling. Infine, si trova uno strato completamente connesso con attivazione logistica e uno strato finale di output con $919$ neuroni e attivazione logistica.
 
 ----------------------------------------------------------------
 
@@ -688,35 +682,25 @@ L'output della rete convoluzionale restituisce $919$ feature: da queste si calco
 
 ----------------------------------------------------------------
 
-## HyperSMURF
-**HyperSMURF** (**Hyper-ensamble of SMote Undersampled Random Forests**) è un metodo di **hyper-esamble** per la predizione delle varianti deleterie in regioni non-codificanti, che affronta direttamente il problema dello sbilanciamento dei dati.
+# Predizione di varianti patogene
+Diverse malattie sono causate da alterazioni del DNA (mutazioni) che possono essere ereditate (nelle malattie genetiche) o determinate dall'ambiente. Molte malattie, compreso il cancro, sono determinate sia da mutazioni del germline che da mutazioni somatiche. È cruciale:
+1) rilevare varianti genetiche;
+2) prevederne la potenziale patogenicità;
+3) trovare terapie precise mirate alle varianti patogene.
 
-### SMOTE
-I dati disponibili nel training set, come spesso accade in bioinformatica, sono estremamente sbilanciati: essi vengono ribilanciati sovracampionando la classe minoritaria e sottocampionando la classe maggioritaria.
+Dato
+1) un insieme di varianti genetiche (esempi);
+2) un insieme di annotazioni associate a ciascuna variante (caratteristiche);
+3) un insieme di etichette (patogenico/controllo) associate a ciascuna variante
+il prevedere se una variante genetica (esempio) è patogena è considerato un **problema di classificazione** o **prioritizzazione**.
 
-La tecnica usata per il sovracampionamento della classe minoritaria è **SMOTE** (**Synthetic Minority Oversampling TEchnique**). Per creare un campione sintetico da un campione natutrale $x$ , viene scelto con probabilità uniforme $x_{knn}$ uno dei $k$ nearest neighbor del campione e un numero $\alpha$ tra $0$ e $1$ (con probabilità uniforme): il campione sintetico è dato dalla combinazione convessa dei due campioni $x$ e $x_{knn}$ con coefficienti $\alpha$ e $1$-$\alpha$ .
+La sfida attuale riguarda lo studio delle varianti nelle regioni non codificanti: come possono alterare gli elementi di regolazione
 
-$$\text{SMOTE}(x) := (1-\alpha)\,x + \alpha\, x_{knn}\ :\ \alpha \leftarrow \text{rand}(0,1),\ x_{knn} \leftarrow \text{rand}(\text{KNN}(x))$$
-
-![[SMOTE.png]]
-
-In figura è possibile osservare lappresentazione schematica e lo pseudocodice dell’algoritmo hyperSMURF: i dati vengono partizionati, bilanciati e usati come training set degli algoritmi di apprendimento random forest, le cui predizioni vengono combinate.
-
-----------------------------------------------------------------
-
-### Hyper-ensemble
-HyperSMURF è un metodo di hyper-ensemble. Un metodo di **ensemble** è un algoritmo di apprendimento in cui vengono addestrati più modelli: in fase di predizione, le etichette predette dai vari modelli vengono combinate per ottenere la predizione dell'ensemble. Nei metodi di **hyper-ensemble** vengono addestrati più ensemble.
-
-HyperSMURF utilizza un hyper-ensemble di random forest: ogni random forest è un ensemble di [[Albero di Decisione|decision tree]]. Lo score predetto dall'hyper-ensemble è la media degli score predetti dalle random forest.
-
-----------------------------------------------------------------
-
-### Dati
-L'algoritmo è stato sviluppato su due diversi dataset: uno relativo a patologie Mendeliane e uno relativo a dati GWAS.
-
-I dati relativi a patologie Mendeliane sono stati estratti da banche dati pubbliche e sono score di conservazione evolutiva, feature relative alla trascrizione e alla regolazione e altre caratteristiche epigenomiche.
-
-I dati GWAS, invece, sono mappati dalla sequenza di DNA in 1842 feature tramite la rete convoluzionale di DeepSEA e l'integrazione di score di conservazione evolutiva.
+Innanzitutto, i principali elementi di regolazione sono:
+   - i **promoters**, sequenze del DNA situate nella regione 5' dei geni le quali attivano la trascrizione attraverso la RNAPII. Attraverso l'azione di vari fattori di trascrizione (TF), la RNAPII si lega a una sequenza di consenso chiamata scatola TATA, formando il complesso di iniziazione della trascrizione RNAPII. Il complesso RNAPII inizia quindi la trascrizione del gene;
+   - gli **enhancers**, brevi regioni del DNA che possono essere legate da proteine leganti il DNA chiamate attivatori. Aumentano la trascrizione genica attraverso la loro interazione con la RNAPII. Possono trovarsi a migliaia di coppie di basi di distanza dal sito di inizio della trascrizione (TSS). Attraverso la loro interazione con gli attivatori, spesso formano cicli di DNA che le avvicinano alla regione promotore;
+   - i **silencers**, brevi sequenze di DNA che si legano a proteine leganti il DNA chiamate repressori, causando una diminuzione nella trascrizione genica. Inoltre, inibiscono altri elementi genomici come i promotori. Possono trovarsi vicino al TSS o a migliaia di coppie di basi di distanza da esso, formando cicli di DNA utilizzando proteine leganti il DNA e altre proteine per avvicinarsi alle regioni promotrici.
+   - gli **insulators**, brevi sequenze di DNA che impediscono le interazioni tra domini di cromatina. Ad esempio, il fattore di legame CCCTC (CTCF) può agire come isolante sia bloccando le interazioni tra enhancer e promotori che impedendo l'espansione dell'eterocromatina, agendo efficacemente come una barriera di cromatina.
 
 ----------------------------------------------------------------
 
