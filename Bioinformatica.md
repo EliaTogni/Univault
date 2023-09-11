@@ -370,11 +370,28 @@ Alcune tecniche di regolarizzazione utilizzate sono il **weight decay** (la norm
 ----------------------------------------------------------------
 
 ### CNN
-Le **[[Intelligenza Artificiale#Deep Learning|convolutional neural networks]]** sono reti neurali in cui ogni layer viene ottenuto non dal prodotto matrice-vettore dei pesi e dell'output del layer precedente, ma dalla loro convoluzione
+Le **[[Intelligenza Artificiale#Deep Learning|convolutional neural networks]]** (o **CNN**) sono un tipo di [[Intelligenza Artificiale#Reti neurali |reti neurali]] specializzato nel processing di dati strutturati in una topologia a griglia. Strutturalmente si tratta di semplici reti neurali che utilizzano la **convoluzione** al posto del prodotto matrice - vettore in almeno uno dei layer.<br />
+Nella sua forma più generale, la convoluzione è un'operazione su due funzioni di un argomento a valori reali. Per motivare la definizione della convoluzione, iniziamo con esempi di due funzioni che potremmo utilizzare.
+Supponiamo di essere in grado di monitorare la posizione di una navicella spaziale con un sensore laser. Il nostro sensore laser fornisce un'unica uscita $x(t)$, che rappresenta la posizione della navicella spaziale al tempo $t$. Sia $x$ che $t$ sono valori reali, il che significa che possiamo ottenere una lettura diversa dal sensore laser in qualsiasi istante di tempo.<br />
+Supponiamo ora che il nostro sensore laser sia leggermente rumoroso. Per ottenere una stima meno rumorosa della posizione della navicella spaziale, vorremmo fare una media di diverse misurazioni. Naturalmente, le misurazioni più recenti sono più rilevanti, quindi vorremmo che fosse una media ponderata che dia maggior peso alle misurazioni recenti. Possiamo farlo con una funzione di pesatura $w(a)$, dove $a$ è l'età di una misurazione.<br />
+Se applichiamo un'operazione di media ponderata in questo modo in ogni istante, otteniamo una nuova funzione che fornisce una stima liscia della posizione della navicella spaziale.<\br />
+La definizione matematica della convoluzione è:
+
+$$s(t) = \int_{a \in A} x(a) w(t-a)da$$
+
+La convoluzione è tipicamente denotata con un asterisco:
+
+$$s(t) = (x * w)(t)$$
+
+Nella terminologia delle reti convoluzionali, il primo argomento (in questo esempio, la funzione $x$) della convoluzione viene spesso chiamato **input** e il secondo argomento (in questo esempio, la funzione w) viene chiamato **kernel**. L'output è talvolta chiamato **feature map**. Nelle applicazioni di machine learning, l'input è solitamente una matrice multidimensionale di dati, e il kernel è di solito una matrice multidimensionale di parametri che vengono adattati dall'algoritmo di apprendimento. Chiameremo queste matrici multidimensionali **tensori**.
+
+Nel contesto delle convoluzioni e delle operazioni su tensori utilizzate nelle reti neurali convoluzionali (CNN), è importante considerare la gestione efficiente della memoria.
+Poiché ogni elemento dell'input e del kernel deve essere memorizzato esplicitamente separatamente, di solito assumiamo che queste funzioni siano nulle ovunque tranne che per il finito insieme di punti per cui memorizziamo i valori. Ciò significa che in molti casi, le dimensioni di input e kernel possono essere molto grandi, ma la maggior parte dei loro valori è zero. Ad esempio, se stiamo lavorando con un'immagine digitale, la maggior parte dei pixel dell'immagine è nera (valore zero) o rappresenta parti vuote, e solo alcune aree contengono effettivamente dati significativi. Pertanto, invece di memorizzare esplicitamente tutti i valori zero o non significativi nell'input e nel kernel, è conveniente memorizzare solo i valori non zero o significativi insieme alle informazioni sulla loro posizione. Questo permette di risparmiare memoria e di eseguire le operazioni di convoluzione in modo più efficiente.
+In pratica possiamo implementare la somma infinita come una somma su un numero finito di elementi dell'array. La somma infinita menzionata si riferisce all'idea teorica di eseguire la convoluzione su tutte le possibili posizioni dell'input e del kernel, che sarebbe un processo infinito in termini matematici. Tuttavia, nella pratica, è possibile effettuare questa somma solo su un numero finito di elementi dell'array, poiché la maggior parte dei valori è zero e quindi non contribuisce al risultato finale.
 
 $$y = w \ast x\ :\ y_i = \sum_{h=1}^{k} w_h\ x_{i-h}$$
 
-Il vettore di pesi viene chiamato **kernel**. Le funzioni di convoluzione implementate sono anche diverse da quella ortodossa (detta **flipped-kernel**): ad esempio, può essere la funzione di cross-correlazione (senza rovesciamento del kernel, ma non commutativa). Gli strati convoluzionali possono implementare anche il padding (senza padding la lunghezza degli strati diminuisce inesorabilmente).
+Le funzioni di convoluzione implementate sono anche diverse da quella ortodossa (detta **flipped-kernel**): ad esempio, può essere la funzione di cross-correlazione (senza rovesciamento del kernel, ma non commutativa). Gli strati convoluzionali possono implementare anche il padding (senza padding la lunghezza degli strati diminuisce inesorabilmente).
 
 Un primo vantaggio delle CNN rispetto ai MLP è la necessità di un numero minore di parametri: i kernel sono generalmente piccoli, quindi occupano meno memoria, sono più semplici da apprendere (in quanto un numero minore di parametri) ed implementano la sparsità delle connessioni (ogni strato è connesso solo al proprio **campo recettivo**) propria delle reti neurali naturali. I parametri, oltre a essere meno, sono anche gli stessi per ogni neurone dello stesso strato: ciò che cambia è la sezione di input considerata: questo fenomeno è detto **parameter sharing**. In questo modo, le convoluzioni sono considerabili come un prodotto per una matrice di pesi con i vincoli enunciati di sparsità e di uguaglianza dei parametri e, quindi, possono essere considerate una regolarizzazione dei MLP.
 
