@@ -216,7 +216,6 @@ L'apprendimento può essere:
 La funzione di perdita è una funzione che indica quanto la stima in uscita da un modello sia errata: l'apprendimento diventa, quindi, un problema di ottimizzazione il cui obiettivo è la **minimizzazione della funzione di perdita**.<br />
 L'obiettivo, però, è minimizzare la perdita attesa su esempi sui quali il sistema non è stato addestrato: per stimare questo valore, si separano i dati in **training set** (dati usati per l'addestramento) e **test set** (dati usati per la valutazione).
 
-### Funzione
 La funzione scelta dipende dal problema affrontato: per problemi di classificazione l'errore consiste nello sbagliare la predizione e la funzione naturale è la funzione di perdita zero-uno
 
 $$loss(y,\hat{y}) := \mathbb{I}\big (y=\hat{y}\big)$$
