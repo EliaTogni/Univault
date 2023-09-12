@@ -845,20 +845,21 @@ I passi principali della Random Walk (RW) sono i seguenti:
 3) la procedura può essere ripetuta per un numero predefinito di passi $p$ (lunghezza del percorso = $p$);
 4) una RW di $p$ passi (una RW di lunghezza $p$) è quindi composta dalla sequenza di nodi attraversati dalla RW durante i suoi passi.
 
-Dato una matrice di adiacenza $W$ di un grafo non diretto pesato $G$, il  Random Walk Kernel di un passo può essere ottenuto utilizzando la formula:
+Dato una matrice di adiacenza $W$ di un grafo non diretto pesato $G$, il Random Walk Kernel di un passo può essere ottenuto utilizzando la formula:
 
 $$K_1 = (I - \alpha D^{-1}W)^{-1}$$
 
 dove:
-- $K_1$ è la matrice del Kernel delle passeggiate casuali di un passo.
+- $K_1$ è la matrice della funzione di Random Walk Kernel.
 - $I$ è la matrice identità.
 - $D$ è la matrice diagonale con elementi $d_{ii} = \sum_{j} w_{ij}$ (ossia la somma dei pesi delle connessioni del nodo $i$) e $\alpha$ è un valore maggiore di $1$.
 
-Il Kernel delle passeggiate casuali di \(p\) passi può quindi essere calcolato utilizzando la stessa formula sopra riportata:
+Il Random Walk Kernel di $p$ passi può quindi essere calcolato utilizzando la stessa formula qui riportata:
 
-$$K_p = K_1$$
+$$K_{p-step} = K^p$$
 
-Dove $K_p$ è la matrice del Kernel delle passeggiate casuali di $p$ passi.
+dove $K_{p-step}$ è la matrice del Random Walk Kernel di $p$ passi.<br />
+In questo modo, possiamo prendere in considerazione sia i vicini diretti di un nodo $(p=1)$ che i vicini indiretti di un nodo $(p \geq 2)$.
 
 ----------------------------------------------------------------
 
