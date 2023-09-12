@@ -780,7 +780,62 @@ Ma quando un problema di classificazione binaria è sbilanciato? Supponiamo che 
 Quando i dati sono sbilanciati, i classificatori classici cercano di ridurre le quantità globali (ad esempio, il tasso di errore), tendendo quindi a classificare erroneamente gli esempi della classe minoritaria. In questo modo, però, si fallisce nella generalizzazione delle regole induttive tramite algoritmi di apprendimento:
 - si ha difficoltà nell'apprendimento su un maggior numero di caratteristiche ma con meno campioni;
 - i classificatori naive spesso sono inclini verso la classe di maggioranza;
-- si corre il riischio di overfitting.
+- si corre il rischio di overfitting.
+
+Nella network medicine, molti problemi vengono modellati come [[Grafo |grafi]], in cui i nodi sono istanze (ad esempio pazienti, proteine/geni) e gli archi rappresentano le loro relazioni (ad esempio profili clinici o genetici simili). Definendo il grafo come: G = 〈V, W, y〉, L ⊂ V etichettato, U = V\L. Di solito si propagano le etichette attraverso la rete e si esegue l'Inferenza(U) per minimizzare yTWy (o usando il Laplaciano di W). Questi sono metodi generici che rientrano nella categoria generale di metodi. Cosa fare quando y è sbilanciato? Gli approcci canonici considerano il proiettare il grafo su un feature space (con perdita di informazioni) oppure  introdurre regolarizzazioni non convesse.<br />
+Un'altra soluzione si basa sulle [[Intelligenza Artificiale#Hopfield network|Hopfield Networks]].
+Si consideri un ambito di apprendimento semi-supervisionato in cui i nodi rappresentano le istanze, le connessioni sono precomputate e possono essere pesate e i nodi sono suddivisi in etichettati e non etichettati per la task attuale.
+L' obbiettivo consiste nel trasformare i punti interrogativi in nodi blu o neri.
+
+immagine hopfield 20/36
+
+Questo problema può essere risolto utilizzando le Hopfield Network in quanto sono efficienti ottimizzatori locali. i vantaggi che comportano sono:
+- il massimizzare la somma pesata dei bordi coerenti e ciò si ottiene tramite il minimizzare la funzione di energia;
+- la convergenza di solito richiede poche iterazioni;
+- flessibilità.
+
+Gli svantaggi invece comprendono:
+- l'incagliarsi dell'algoritmo in minimi locali invece che nel minimo globale;
+- la presenza di attrattori triviali;
+- la mancata gestione dello sbilanciamento delle labels.
+
+
+----------------------------------------------------------------
+
+# Kernels on Graphs
+## Il problema della previsione degli esiti clinici
+La previsione degli esiti clinici è un problema ben consolidato nella biologia computazionale e comprende diverse attività (ad esempio, la previsione della risposta ai farmaci, la prognosi, la diagnosi, la ricorrenza delle malattie). In questo contesto, i metodi all'avanguardia impiegano:
+- modelli induttivi supervisionati che utilizzano biomarcatori selezionati per prevedere l'outcomes di interesse. Questi metodi, tuttavia, non tengono esplicitamente conto delle relazioni tra gli individui;
+- approcci non supervisionati basati su reti per scoprire sottotipi di malattie. Questi metodi non sono adatti per problemi di previsione degli esiti;
+- metodi **transduttivi** semi-supervisionati basati su reti che utilizzano **reti di similarità tra pazienti** (PSN) basate sui profili biomolecolari dei soggetti.  È infatti importante se non fondamentale considerare sia le relazioni tra i pazienti che i dati non etichettati nel processo di previsione.
+
+La **trasduzione** o **inferenza transduttiva** è il ragionamento dai casi specifici osservati (training) ai casi specifici (test). In contrasto, l'induzione è il ragionamento dai casi di addestramento osservati a regole generali, che vengono poi applicate ai casi di test.
+
+immagine kernels on graphs pag 4
+
+----------------------------------------------------------------
+
+## Kernel on graph
+In modo informale, un [[Statistical Methods for Machine Learning#Kernel functions|kernel]] è un modo conveniente per calcolare un prodotto interno tra due vettori $x$ e $x'$ nello spazio delle caratteristiche, comunemente caratterizzato da una dimensionalità superiore rispetto a quella dello spazio di input.
+
+Si consideri un mapping $\psi : \mathbb{R}^n \to \mathbb{R}^m (m >> n)$. Una kernel function tra due vettori $x$ e $x'$ è definita come $k(x, x') = \psi(x)^\top \psi(x')$.
+
+Una funzione kernel rappresenta i dati attraverso confronti a coppie e assegna a ciascuna coppia di vettori un valore reale:
+
+$$k: \mathcal{X} \times \mathcal{X} \to \mathbb{R}$$
+
+$k(x, x')$ può essere interpretato come una misura di similarità tra $x$ e $x'$. Quindi, quando $k(x, x')$ è elevato, allora $x$ e $x'$ sono simili.
+
+Un kernel su un grafo $G = <V, E>$, dove $V$ è l'insieme dei vertici ed $E$ è l'insieme degli archi del grafo, è una funzione kernel definita tra i vertici di un singolo grafo:
+
+$$k: V \times V \to \mathbb{R}$$
+
+La funzione kernel $k$ assegna a ciascuna coppia di nodi un singolo valore che esprime le relazioni (cioè la similarità) tra i nodi.
+
+Si tenga a mente che i kernel dei grafi sono diversi dai kernel sui grafi, i primi si riferiscono a kernel in grado di confrontare coppie di grafi, mentre i secondi confrontano nodi appartenenti a un singolo grafo.
+
+----------------------------------------------------------------
+
 
 
 
