@@ -836,8 +836,29 @@ Si tenga a mente che i kernel dei grafi sono diversi dai kernel sui grafi, i pri
 
 ----------------------------------------------------------------
 
+## Random Walk Kernel
+I Random Walk kernel rappresentano la versione kernelizzata delle Random Walk, mediante le quali è possibile sfruttare traiettorie casuali attraverso i grafi per esplorare le relazioni tra i nodi.
 
+I passi principali della Random Walk (RW) sono i seguenti:
+1) dato un grafo e un nodo di partenza (ad esempio, il nodo $1$), selezioniamo uno dei suoi vicini a caso (ad esempio, il nodo $3$) e ci spostiamo su questo vicino;
+2) quindi selezioniamo un vicino di questo nodo (ad esempio, il nodo $5$) e ci spostiamo su di esso;
+3) la procedura può essere ripetuta per un numero predefinito di passi $p$ (lunghezza del percorso = $p$);
+4) una RW di $p$ passi (una RW di lunghezza $p$) è quindi composta dalla sequenza di nodi attraversati dalla RW durante i suoi passi.
 
+Dato una matrice di adiacenza $W$ di un grafo non diretto pesato $G$, il  Random Walk Kernel di un passo può essere ottenuto utilizzando la formula:
 
+$$K_1 = (I - \alpha D^{-1}W)^{-1}$$
 
+dove:
+- $K_1$ è la matrice del Kernel delle passeggiate casuali di un passo.
+- $I$ è la matrice identità.
+- $D$ è la matrice diagonale con elementi $d_{ii} = \sum_{j} w_{ij}$ (ossia la somma dei pesi delle connessioni del nodo $i$) e $\alpha$ è un valore maggiore di $1$.
+
+Il Kernel delle passeggiate casuali di \(p\) passi può quindi essere calcolato utilizzando la stessa formula sopra riportata:
+
+$$K_p = K_1$$
+
+Dove $K_p$ è la matrice del Kernel delle passeggiate casuali di $p$ passi.
+
+----------------------------------------------------------------
 
