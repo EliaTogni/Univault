@@ -724,555 +724,65 @@ Innanzitutto, i principali elementi di regolazione sono:
 
 ----------------------------------------------------------------
 
-# Progetto
-Il progetto da realizzare è composto da due parti:
-1) il codice eseguibile per replicare i risultati del progetto. Questo può essere un semplice script in R oppure un notebook R. E' bene che il codice sia commentato propriamente al fine di valutare se lo studente ha compreso il codice stesso;
-2) un report il quale descriva il problema considerato, gli approcci di apprendimento automatico applicati al fine di risolverlo, il set-up sperimentale, i risultati ottenuti ed una discussione dei risultati. 
+# Biological Networks
+Non possiamo comprendere la vita semplicemente caratterizzando i suoi singoli componenti, ma considerando le interazioni e le relazioni tra i suoi componenti: è necessario un approccio sistemico. Le **reti biologiche** sono strumenti fondamentali nel contesto della **biologia dei sistemi**. I dati omici (dati genomici, trascrittomica, proteomici) vengono utilizzati per costruire reti biologiche e vengono applicati metodi di teoria dei grafi e di apprendimento automatico per modellare e analizzare questi oggetti complessi.
 
-Il progetto riguarda la scoperta di sottotipi di malattie tramite l'utilizzo di un dataset multiomico proveniente dal **TCGA**. Il dataset riguarda l'adenocarcinoma della prostata (codice: **PRAD**). Si considerino come sottotipi quelli identificati nel lavoro performato dal **The Cancer Genome Atlas Research Network**, nel quale viene utilizzato un modello di clustering integrativo su dati multiomici e vengono scoperti tre sottotipi della malattia.
+## Intra-cellular Networks
+Il funzionamento cellulare si basa su un ampio insieme di relazioni fortemente interconnesse tra le molecole (DNA, RNA, proteine, metaboliti). La maggior parte delle attività cellulari si basa sulle interazioni tra diverse molecole. Gli elementi fondamentali in queste complesse reti di interazioni sono le proteine.
 
-Il procedimento può essere scomposto in:
-1) download del dataset considerando tre differenti sorgenti di dati omici, quali mRNA, miRNA e i dati di espressione delle proteine;
-2) pre-processing del dataset seguendo gli stessi step del paragrafo successivo. Durante il filtering per varianza, si selezionino le prime $100$ feature con la più alta varianza per ogni sorgente di dati;
-3) download dei sottotipi di malattia (). Si noti che non tutti i sottotipi sono disponibili per l'insieme di sample avente tutte le sorgenti di dati omici considerate, perciò sarà necessario trattenere dal dataset multiomico solo i sample aventi un sottotipo associato;
-4) check che i pazienti nel dataset multiomico e i sottotipi siano nello stesso ordine;
-5) integrare i dati utilizzando Similarity Network Fusion con la distanza euclida esponenziale scalata;
-6) provare ad integrare la matrice di similarità da ogni sorgente di dati (calcolata tramite la distanza euclidea esponenziale scalata) utilizzando una semplice media delle matrici. Questo può essere considerato come una triviale strategia di integrazione di dati multi omici;
-7) [Gruppo] integrare il dataset utilizzando un ulteriore metodo di fusione dei dati chiamato NEMO al fine di ottenere una matrice di similarità integrata;
-8) performare la scoperta di sottotipi di malattia (con un numero di cluster pari al numero di sottotipi di malattia trovato da iCluster) utilizzando l'algoritmo PAM sulle seguenti matrici di similarità:
-	1) matrici di similarità ottenute da singole sorgenti di dati (miRNA, mRNA, proteine) utilizzando la distanza euclidea esponenziale scalata. Si otterranno tre differenti matrici di similarità;
-	2) matrice integrata ottenuta usando la media delle matrici;
-	3) matrice integrata ottenuta usando la Similarity Network Fusion;
-	4) [Gruppo] matrice integrata ottenuta usando NEMO.
-9) [Gruppo] NEMO fornisce la possibilità di performare clustering utilizzando un altro approccio, chiamato Spectral Clustering. Si usi la funzione _nemo.clustering()_ per testare questo approccio; 
-10) [Opzionale] applicare lo Spectral Clustering alla matrice integrata ottenuta utilizzando la Similarity Network Function;
-11) comparare i clustering ottenuti da ogni approccio considerato con i sottotipi di malattia trovati da iCluster. Si facciano tabelle e grafici per mostrare i risultati e discuterli.
+Queste reti descrivono il funzionamento della cellula a diversi livelli e sono interconnesse:
+- reti metaboliche;
+- reti di regolazione trascrizionale;
+- reti di segnalazione;
+- reti di interazione proteina-proteina (PPI);
+- reti strutturale delle proteine.
 
-## Report
-Il report deve contenere le seguenti sezioni:
-1) **INTRODUZIONE**: si illustrino i problemi della scoperta di sottotipi di malattie a partire da dati multiomici;
-2) **METODI**: si descriva l'integrazione dei dati e gli approcci di clustering sfruttati. Si descriva, inoltre, il dataset utilizzato, i sottotipi di malattia considerati e le metriche utilizzate al fine di comparare i clustering ottenuti con i sottotipi di malattia. Si espliciti, infine, il preprocessing dei dati applicato;
-3) **RISULTATI**: si presentino i risultati dei vari approcci utilizzando tabelle e grafici. Si discutano i risultati ottenuti. Si noti, inoltre, che i risultati non devono necessariamente essere buoni.
+### Reti Metaboliche
+Gli elementi che compongono le reti metaboliche sono:
+  - i **metaboliti**: piccole molecole, come il glucosio o gli aminoacidi;
+  - le **vie metaboliche**: insiemi ordinati di reazioni biochimiche che realizzano una specifica funzione biologica. Le vie metaboliche sono strutturate in pathways in cui un metabolita viene trasformato in un altro metabolita.
+  - gli **enzimi**: proteine specializzate con attività catalitica, i quali guidano ciascun passaggio di ciascuna via.
+
+I nodi nella rete rappresentano metaboliti e, eventualmente, anche enzimi, mentre i collegamenti rappresentano reazioni biochimiche.
+
+Queste reti rappresentano l'insieme delle reazioni biochimiche che consentono agli organismi di rinnovare la loro energia, di rispondere agli stimoli esterni, di crescere, di mantenere la loro struttura e di mantenere il loro equilibrio dinamico (**omeostasi**).
+
+----------------------------------------------------------------
+### Reti di Regolazione Genica
+I nodi all'interno di queste reti sono geni e fattori di trascrizione.
+Le interazioni possono essere unidirezionali o bidirezionali e di attivazione o inibizione.
 
 ----------------------------------------------------------------
 
-# Semi-supervised classification using graph-based algorithms on gene expression data
-In this lesson, we will explore the application of different semi-supervised algorithms that work on graphs to predict if a patient has Acute Myeloid Leukemia (AML) or Acute Lymphoblastic Leukemia (ALL) from gene expression data.
-
-# Install and load packages
-First of all, we need to install all the packages needed for this lesson:
-
-```r
-if (!require("BiocManager", quietly = TRUE))
-
-install.packages("BiocManager")
-
-BiocManager::install("golubEsets");
-
-BiocManager::install("hu6800.db");
-
-BiocManager::install("annotate");
-
-BiocManager::install("genefilter");
-
-BiocManager::install("limma");
-
-BiocManager::install("RBGL");
-
-install.packages("PerfMeas");
-
-install.packages("RANKS");
-
-install.packages("SNFtool");
-
-install.packages("caret");
-
-install.packages("ROCR");
-```
-
-Now we can load the packages:
-
-```r
-library("golubEsets");
-
-library("genefilter");
-
-library("hu6800.db");
-
-library("annotate");
-
-library("RANKS");
-
-library("caret");
-
-library("ROCR");
-
-library("SNFtool");## Annotation of microarrays
-
-Let's look at the names of the features of our expression matrix. They are the names
-
-of the corresponding probes (essentially codes defined by the company that
-
-produces the microarray). However, we would like to have more interpretable names
-
-that are immediately linked to biological information available online. Thus, we
-
-need to map the "probesID" to other IDs (e.g. gene symbol, entrez ID, ensembl ID,
-
-etc). This process is usually called "annotation".
-
-```{r}
-
-as.data.frame(expr[1:5, 1:5]);
-
-```
-
-To perform a correct annotation, we have to take into account the microarray chip
-
-used for our experiment. This information is stored in the expressionSet
-
-object and we need to install the corresponding Bioconductor package (hu6800.db)
-
-containing all the information for annotation. I already installed and loaded
-
-the package at the beginning of this notebook.
-
-```{r}
-
-# Get information about annotation file to use
-
-ann <- annotation(Golub_Merge);
-
-print(ann);
-
-```
-
-Now, we use the following code to map each probeID to a set of other IDs of
-
-interest and we substitute the probeID with their gene symbol in the
-
-expression matrix.
-
-```{r}
-
-# Perform annotation:
-
-map <- select(hu6800.db, keys = colnames(expr), columns = c('PROBEID','ENSEMBL', 'ENTREZID', 'SYMBOL'), keytype="PROBEID");
-
-idx <- match(colnames(expr), map$PROBEID);
-
-colnames(expr) <- map[idx, "SYMBOL"];
-
-# Print part of expression matrix:
-
-as.data.frame(expr[1:5, 1:5]);
-
-```
-```
-
-# Leukemia gene expression dataset
-We will use a famous dataset available for R, called "Golub dataset", from the name of the first author of the corresponding study. The dataset is composed of 72 samples/patients having Leukemia and described by their gene expression profiles (i.e. the level of mRNA expression for each patient).<br />
-The task is to predict their type of leukemia: Acute Lymphoblastic Leukemia (ALL) or Acute Myeloid Leukemia (AML).
-
-The following code is used to load the dataset from the package "golubEsets":
-
-```r
-# Load data:
-
-data(Golub_Merge);
-
-# Print summary of the eSet object:
-
-Golub_Merge;
-```
-
-As we can see, the data are stored in an object of class "ExpressionSet". An ExpressionSet is a data structure commonly used to represent genomic data, which allows to store and manipulate many different sources of information.
-
-In particular, the following information are usually present:
-- expression data often from microarray technology (we'll briefly see in the next section what are microarrays) - **AssayData**. Opposite to what we see in machine learning and data analysis application, the expression matrix has features in the rows and samples in the columns (note that this is quite common in genomics data);
-- data describing the considered samples (e.g. age, sex, clinical condition, etc) - **phenoData**. We have the same number of rows in this matrix and columns in the expression data (i.e. the number of samples has to match). Also the names of the samples has to be the same. A **varMetadata** can be present to explain the meaning of the different columns;
-- metadata related to features are also important - **Annotation** Since they are related to the used high-throughput technology (i.e. which microarray was used to perform the experiment), specific packages containing information on the different technologies are present on Bioconductor. We will see later how they are important to annotate each microarray probe. In pratice, annotation contains just a string with the name of the microarray chip used for the experiment, and we need this to install the corresponding annotation package;
-- information about th experiment are available under **experimentData**;
-
-In the following chunk of code, we will access the main different information we have in the Golub dataset:
-
-```r
-# Access expression matrix:
-
-expr <- exprs(Golub_Merge);
-
-as.data.frame(expr[1:5, 1:5]);
-
-# Access phenotypic data:
-
-pheno <- pData(Golub_Merge);
-
-pheno[1:5, 1:5];
-
-# Access the annotation data
-
-message("The used chip is: ", annotation(Golub_Merge), "\n");
-
-# Access the experiment data:
-
-experimentData(Golub_Merge);
-```
-
-## What is a microarray?
-A DNA microarray is a technology able to capture the expression of thousands of mRNA at the same time. It is composed of a slide where little spots of DNA molecules are attached to the surface (either directly synthesised on the surface or synthesized prior to deposition on the array). In each spot multiple copies of a specific DNA sequence are attached, which are called "probes" or "oligos", and represent part of a gene sequence. Then from a cell/tissue of interested we can extract the messenger RNA, which is subsequently retro-transcribed to cDNA. The molecules of cDNA are called targets. cDNA stands for complementary DNA because it is a sequence of DNA which nucleotides are complementary to that of the original mRNA sequence.<br />
-Then, the cDNA coming from a specific sample is labelled using a fluorophore, which is a chemical compound that can emit light when excited. Then, the labelled cDNA molecules are released onto the slides and they can hybridize, which means that they can form hydrogen bounds with complementary probes.<br />
-Not-hybridized targets are washed away and finally the slide is scanned to detect the signal coming from targets bound to probes. Since, total strength of the signal depends upon the amount of target sample binding to the probes present on that spot, we can have a quantification of the level of each transcript in a considered sample. In the figure we can see a one-color microarray, where a single sample is hybridized on the slide and we get the “absolute” expression level of the genes. However, also two-color microarray are common, where two samples with different labels can be evaluated at the same time and we consider the ratio between the two samples intensities (the two samples are labeled with different fluorophores emitting light in different spectra).
-
-# Data pre-processing
-The data needs to be pre-processed in order to remove features having low expression and low variance. Moreover, multiple features (i.e. probes) can point to the same gene in a microarray. We retain only the probe sets with the highest mean expression for each gene. Finally, data undergo to logarithmic transformation and standardization.
-
-```r
-# Transpose matrix (samples x features):
-
-expr <- t(expr);
-
-# Floor & ceiling
-
-expr[expr < 100] <- 100;
-
-expr[expr > 16000] <- 16000;
-
-# Remove features having
-
-mean <- apply(expr, 2, mean);
-
-expr <- expr[, mean > 6];
-
-sd <- apply (expr, 2, sd);
-
-expr <- expr[, sd > 1];
-
-# Retaining only the probe sets with the highest mean expression for each gene
-
-idx <- findLargest(colnames(expr), apply(expr, 2, mean), data = "hu6800");
-
-expr <- expr[, idx];
-
-# Log_10 transformation
-
-expr <- log(expr, 10);
-
-# Standardization using z-score
-
-zscore <- function(data){
-
-zscore_vec <- function(x) { return ((x - mean(x)) / sd(x))}
-
-data <- apply(data, 2, zscore_vec)
-
-return(data)
-
-}
-
-expr <- zscore(expr);
-
-print(dim(expr));
-```
-
-## Annotation of microarrays
-Let's look at the names of the features of our expression matrix. They are the names of the corresponding probes (essentially codes defined by the company that produces the microarray). However, we would like to have more interpretable names that are immediately linked to biological information available online. Thus, we need to map the "probesID" to other IDs (e.g. gene symbol, entrez ID, ensembl ID, etc). This process is usually called "annotation".
-
-```r
-as.data.frame(expr[1:5, 1:5]);
-```
-
-To perform a correct annotation, we have to take into account the microarray chip used for our experiment. This information is stored in the expressionSet object and we need to install the corresponding Bioconductor package (hu6800.db) containing all the information for annotation. I already installed and loaded the package at the beginning of this notebook.
-
-```r
-# Get information about annotation file to use
-
-ann <- annotation(Golub_Merge);
-
-print(ann);
-```
-
-Now, we use the following code to map each probeID to a set of other IDs of interest and we substitute the probeID with their gene symbol in the expression matrix.
-
-```r
-# Perform annotation:
-
-map <- select(hu6800.db, keys = colnames(expr), columns = c('PROBEID','ENSEMBL', 'ENTREZID', 'SYMBOL'), keytype="PROBEID");
-
-idx <- match(colnames(expr), map$PROBEID);
-
-colnames(expr) <- map[idx, "SYMBOL"];
-
-# Print part of expression matrix:
-
-as.data.frame(expr[1:5, 1:5]);
-```
-
-# Definition of the prediction task
-We will attempt to predict if the considered patients have ALL (Acute Lymphoblastic Leukemia) or AML (Acute Myeloid Leukemia), which are two very different types of Leukemia. Leukemia is a collection of blood cancers originating from the bone marrow. Blood cells are not developing correctly leading to many different symptoms like: bleeding and bruising, bone pain, fatigue, fever, and an increased risk of infections.
-
-The phenotypic data we extract before contain a column with the kind of leukemia. As prediction task, we label ALL as 1 and AML as 0.
-
-```r
-labels <- pheno$ALL.AML;
-
-labels <- ifelse(labels == "ALL", 1, 0);
-
-names(labels) <- rownames(pheno);
-
-table(labels);
-```
-
-# Semi-supervised graph-based algorithms for classification
-To perform our clinical outcome prediction, we will employ the following algorithms:
-1) **Patient-Net (P-Net)** @gliozzo2020pnet: it is a novel semi-supervised network-based algorithm to rank and classify patients with respect to their odd to show a given outcome of interest. Briefly, in the first step the biomolecular profiles of patients are collected into a matrix. The predictor is constructed from patients’ molecular profiles using an undirected weighted graph, where the set of vertices corresponds to patients and the set of edges to the similarity between patients. From this similarity network among patients, a graph kernel (e.g. a random walk kernel) is applied to obtain weighted edges aware of the global topology of the network. The idea is to derive a new graph where there is an edge between each pair of nodes that are highly connected (i.e. there exist many short paths between them), in the original graph. This means that two nodes may be directly connected in the new graph even if they were not in the original graph.
-2) **Label propagation (LP)** @zhu2002label.prop @bengio2006labelprop: it exploits the simple idea of iteratively propagating node's labels to neighboring nodes considering their proximity. The first step is the computation of the adjacency matrix $W$ using an appropriate similarity measure and of the diagonal degree matrix $D$. The vector of estimated labels $\hat{Y}$ is initialized with the known label for labeled nodes $Y_{l}$ (+1 or -1) and zero for the unlabeled nodes $Y_{u}$. Then, iteratively the labels are propagated though the graph, where $D^{-1}W$ can be interpreted as a probabilistic transition matrix showing the probability to jump from one node to another one. After the propagation step, the algorithm forces the labels on the labeled data to be $\hat{Y}_{l}=Y_{l}$ (i.e. label clamping). In this way, labeled data act like sources that "push out" labels thought the unlabeled data. Propagation and label clamping are repeated until convergence (stop criterion can be a pre-defined number of iterations). The computed score for each node $x_i$ can be used for classification by setting a threshold, e.g. the sign of $\hat{y_i}^{(\infty)}$. The main steps of the algorithm are showed below:
-3) **Guilt-by-association (GBA)** @oliver2000GBA: This is an algorithm based on the principle of "guilt-by-association", which assumes that the label/score of a given node depends on the label/scores of their neighborhood @re2012fast. In particular, we will use the GBAmax algorithm. A score for each node $i$ is computed by taking the maximum of the weights $w_{i,j} \in W$, where $W$ is the adjacency matrixof the graph, connecting the node $i$ with nodes $j$ having positive label.
-
-GBAmax and label propagation are already implemented in the package RANKS @valentini2016ranks, which was already loaded. Note that in the implementation of the label propagation we are using, both unlabeled and negative examples are set to zero. Moreover, we will apply a different threshold for classification.
-
-```r
-# Download P-Net repository and unzip it
-
-download.file(url = "https://github.com/GliozzoJ/P-Net/archive/refs/heads/master.zip",
-
-destfile = "pnet-master.zip");
-
-unzip(zipfile = "pnet-master.zip");
-
-file.remove("./pnet-master.zip");
-
-# Load P-Net package
-
-source("./P-Net-master/P-Net/pnet.R");
-```
-
-The first step is the computation of the adjacency matrix of the graph expressing the similarity between patients based on their gene expression profiles. To this end, many similarity measures are available in literature (a list in available in this paper @gliozzo2022heterogeneous). For this practice, we will consider the scaled exponential euclidean distance @wang2014similarity, defined as: 
-
-$$W(i,j) = exp \left(- \frac{\rho(x_i,x_j)^2}{\mu \varepsilon_{ij}}\right)$$
-
-where:
-* $\rho(x_i, x_j)$ is the Euclidean distance between patients \(x_i\) and \(x_j\);
-* $\mu$ is a parameter;
-* $\varepsilon_{i,j}$ is a scaling factor: $\varepsilon_{i,j} = \frac{mean(\rho(x_i, N_i)) + mean(\rho(x_j, N_j)) + \rho(x_i, x_j)}{3}$, where \(mean(\rho(x_i, N_i))\) is the average value of the distances between \(x_i\) and each of its neighbors.
-
-```r
-# Compute similarity matrix:
-
-Dist1 <- (SNFtool::dist2(as.matrix(expr),as.matrix(expr)))^(1/2);
-
-W <- SNFtool::affinityMatrix(Dist1, K=20, sigma=0.5);
-```
-
-We will test the generalization performance of the considered algorithms using a stratified multiple holdout procedure (i.e. we repeat the classical holdout 10 times) on pre-computed data splits. In each split, we have 70 % training set and 30 % test set examples. For each considered algorithm, only the labels of the training set will be provided to the considered methods.
-
-```r
-# Create 10 data splits (set seed for reproducibility):
-
-set.seed(123);
-
-folds <- caret::createDataPartition(as.factor(labels), times = 10, p = 0.7,
-
-list = TRUE);
-
-# Iterate over splits and apply the algorithms on the training set:
-
-gba <- matrix(numeric(nrow(W)*length(folds)), ncol=length(folds));
-
-lp <- matrix(numeric(nrow(W)*length(folds)), ncol=length(folds));
-
-pnet.s <- matrix(numeric(nrow(W)*length(folds)), ncol=length(folds));
-
-pnet.l <- matrix(numeric(nrow(W)*length(folds)), ncol=length(folds));
-
-for(i in 1:length(folds)){
-
-# Compute indices of the positive examples for each fold
-
-idx.pos <- which(labels[folds[[i]]] == 1);
-
-idx.test <- setdiff(1:nrow(W), folds[[i]]);
-
-# GBAmax
-
-gba[, i] <- GBAmax(W, ind.positives = idx.pos)$p;
-
-# Label propagation
-
-lp[, i] <- label.prop(W, ind.positives = idx.pos)$p;
-
-# P-Net
-
-W_rw <- rw.kernel(W);
-
-res <- pnet.class.heldout(W_rw, ind.pos = idx.pos, test=idx.test, score=KNN.score,
-
-k=3);
-
-pnet.s[, i] <- res$s;
-
-pnet.l[, i] <- res$labels;
-
-}
-```
-
-Note that we are providing as input only the indices of the positive examples (i.e. label is 1) in the training set. Thus, we use only this information to predict unlabeled examples in an unbiased way.
-
-# Compute performance metrics and compare results
-We consider the following classification metrics computed on the test set: precision, recall, specificity, f-measure, accuracy, AUC, AUPRC.
-
-```r
-# Normalize scores in the range [0,1] using min-max normalization.
-
-minmax <- function(data){
-
-minmax_vec <- function(x) { return ((x - min(x)) / (max(x) - min(x)))}
-
-data <- apply(data, 2, minmax_vec)
-
-return(data)
-
-}
-
-gba <- minmax(gba);
-
-lp <- minmax(lp);
-
-# Binarize scores
-
-thr <- 0.5;
-
-gba.bin <- ifelse(gba > thr, 1, 0);
-
-lp.bin <- ifelse(lp > thr, 1, 0);
-
-# Compute classification metrics on the test set
-
-comp.perf <- function(scores, pred.labels, labels, ind.test){
-
-metrics <- F.measure.single(pred.labels[ind.test], labels[ind.test])
-
-pred_ROCR <- prediction(scores[ind.test], as.factor(labels[ind.test]));
-
-auc_ROCR <- performance(pred_ROCR, measure = "auc");
-
-auc_ROCR <- auc_ROCR@y.values[[1]];
-
-aucpr_ROCR <- performance(pred_ROCR, measure = "aucpr");
-
-aucpr_ROCR <- aucpr_ROCR@y.values[[1]];
-
-# Store results
-
-perf <- list(prec=metrics["P"], rec=metrics["R"], spec=metrics["S"],
-
-fmeas=metrics["F"], acc=metrics["A"], auc=auc_ROCR,
-
-auprc=aucpr_ROCR)
-
-return(perf)
-
-}
-
-gba.res <- list();
-
-lp.res <- list();
-
-pnet.res <- list();
-
-for (i in 1:length(folds)){
-
-idx.test <- setdiff(1:nrow(W), folds[[i]]);
-
-gba.res[[i]] <- comp.perf(gba[, i], gba.bin[, i], labels, idx.test);
-
-lp.res[[i]] <- comp.perf(lp[, i], lp.bin[, i], labels, idx.test);
-
-pnet.res[[i]] <- comp.perf(pnet.s[, i], pnet.l[, i], labels, idx.test);
-
-}
-
-gba.res <- matrix(unlist(gba.res), ncol = 7, byrow = TRUE);
-
-lp.res <- matrix(unlist(lp.res), ncol = 7, byrow = TRUE);
-
-pnet.res <- matrix(unlist(pnet.res), ncol = 7, byrow = TRUE);
-```
-
-Now we can compute the mean and standard deviation of the considered metrics to compare the prediction results of our graph-based approaches. Moreover, we plot the accuracy, AUC and AUPRC.
-
-```r
-# Create a barplot
-
-means <- cbind(colMeans(gba.res), colMeans(lp.res), colMeans(pnet.res));
-
-colnames(means) <- c("gba", "lp", "pnet");
-
-rownames(means) <- c("prec", "rec.", "spec", "fmeas", "acc", "auc", "auprc");
-
-print(as.data.frame(means));
-
-sd <- cbind(apply(gba.res,2,sd), apply(lp.res,2,sd), apply(pnet.res,2,sd));
-
-colnames(sd) <- c("gba", "lp", "pnet");
-
-rownames(sd) <- c("prec", "rec.", "spec", "fmeas", "acc", "auc", "auprc");
-```
-
-```r
-barCenters <- barplot(t(means[c("acc", "auc", "auprc"), ]), beside = T, ylim=c(0,1),
-
-col = c("yellow", "green", "blue"));
-
-arrows(barCenters, t(means-sd)[, c("acc", "auc", "auprc")],
-
-barCenters, t(means+sd)[, c("acc", "auc", "auprc")], angle=90,code=3,
-
-length=0.1, lwd=1.5)
-
-legend(x = "topleft", legend = colnames(means), fill = c("yellow", "green", "blue"),
-
-cex = 0.75)
-```
-
-# Session Info
-
-```r
-sessionInfo();
-```
+### Reti Drug-Target
+I farmaci possono essere collegati tramite archi ai loro bersagli proteici conosciuti.
 
 ----------------------------------------------------------------
 
-# Introduzione
-Disease subtype discovery from multi-omics data is a complex task that involves the integration of diverse types of biological data, such as genomics, transcriptomics, proteomics, and metabolomics, to identify different disease subtypes that might respond differently to treatment.
-
-One of the main challenges in this field is the high dimensionality of the data. Multi-omics datasets can contain thousands of features, and many of these features might be redundant or irrelevant. Therefore, feature selection and dimensionality reduction techniques are often employed to identify the most informative features.
-
-Another challenge is the heterogeneity of the data. Different types of biological data might capture different aspects of the disease, and the relationships between these data types might not be straightforward. Integrating these data types requires sophisticated statistical methods, such as multi-view clustering, to identify disease subtypes that are consistent across the different data types.
-
-Furthermore, the interpretation of the results can be challenging. The identification of disease subtypes based on multi-omics data is often an exploratory analysis, and the resulting subtypes might not have a clear biological interpretation. Therefore, additional experiments and analyses might be required to validate the subtypes and understand their biological relevance.
-
-Overall, disease subtype discovery from multi-omics data is a challenging problem that requires sophisticated statistical methods, careful data preprocessing, and careful interpretation of the results.
-
-Prostate adenocarcinoma is a heterogeneous disease with multiple subtypes that can vary in aggressiveness and response to treatment. Identifying these subtypes is important for personalized treatment and improving patient outcomes.
-
-Multi-omics data, including genomics, transcriptomics, and proteomics, have been used to identify prostate adenocarcinoma subtypes. For example, a study published in the journal Cancer Cell in 2018 used multi-omics data from The Cancer Genome Atlas (TCGA) to identify seven molecular subtypes of prostate adenocarcinoma. These subtypes were associated with distinct clinical features and outcomes, suggesting that they represent biologically and clinically relevant subtypes.
-
-The study used unsupervised clustering methods to integrate data from multiple platforms and identify the molecular subtypes. They found that different subtypes were associated with different pathways and biological processes, such as androgen signaling, cell cycle regulation, and DNA damage repair. The subtypes also showed different responses to treatments such as androgen deprivation therapy and chemotherapy.
-
-Another study published in the journal Nature in 2019 used a similar approach to identify three molecular subtypes of prostate adenocarcinoma. These subtypes were associated with different genomic alterations, gene expression patterns, and clinical outcomes.
-
-While these studies represent important advances in our understanding of prostate adenocarcinoma subtypes, there are still challenges in translating these findings to clinical practice. For example, there is a need for more standardized methods for subtyping and for validating the subtypes in independent datasets. Additionally, the complexity of multi-omics data and the need for sophisticated statistical methods and bioinformatics expertise can limit their widespread use in clinical settings.
-
-In summary, multi-omics data can provide valuable insights into the molecular subtypes of prostate adenocarcinoma, which can have important implications for personalized treatment and improving patient outcomes. However, further research is needed to fully translate these findings into clinical practice.
-
-The seven subtypes of prostate adenocarcinoma were identified using unsupervised clustering analysis of multi-omics data from The Cancer Genome Atlas (TCGA) project. The TCGA dataset includes comprehensive molecular profiling data, including genomics, transcriptomics, and proteomics, for hundreds of prostate adenocarcinoma samples.
-
-The study used an algorithm called ConsensusClusterPlus to identify molecular subtypes of prostate adenocarcinoma based on gene expression, DNA methylation, and copy number alterations data. ConsensusClusterPlus is a robust clustering algorithm that combines multiple clustering methods and resampling techniques to identify stable and reproducible clusters.
-
-The study identified seven molecular subtypes of prostate adenocarcinoma, which they named as: (1) Luminal A, (2) Luminal B, (3) Luminal INTP, (4) Luminal NE, (5) Basal, (6) Basal-like, and (7) Neuroendocrine-like. These subtypes showed distinct molecular and clinical features, such as different expression of genes involved in androgen signaling, cell cycle regulation, DNA damage repair, and immune response.
-
-The study further validated the subtypes in independent datasets and found that the subtypes were associated with different clinical outcomes, such as biochemical recurrence, metastasis, and survival. These findings suggest that the subtypes represent biologically and clinically relevant subgroups of prostate adenocarcinoma.
-
-In summary, the seven subtypes of prostate adenocarcinoma were identified using unsupervised clustering analysis of multi-omics data from TCGA, which provided a comprehensive view of the molecular features of the disease. The subtypes represent different biological and clinical entities that can have important implications for personalized treatment and improving patient outcomes.
+### Disease Network
+Ogni nodo corrisponde a un disturbo distintivo, colorato in base alla classe di disturbo. Le dimensioni di ciascun nodo sono proporzionali al numero di geni nel disturbo corrispondente, e la spessore dei collegamenti è proporzionale al numero di geni condivisi tra i disturbi collegati dal collegamento.
 
 ----------------------------------------------------------------
+
+# Learning from Unbalanced Data
+Lo **sbilanciamento** caratterizza diversi contesti. Ci sono diverse ragioni per cui possa accadere:
+- il costo eccessivo dell'etichettatura dei dati;
+- l'etichettatura potrebbe dipendere dai risultati della ricercaç
+- il problema in questione può essere intrinsecamente sbilanciato.
+
+I classificatori di solito assumono, benchè in maniera erronea, che i dati siano bilanciati e il costo uguale di classificazione errata.
+
+Il fallimento delle regole induttive di generalizzazione per la classe di dati con freqeunza minore comporta il rischio di overfitting.<br />
+Ma quando un problema di classificazione binaria è sbilanciato? Supponiamo che i punti siano vettori $x \in \mathbb{R}^n$. Possiamo quindi definire la rarità relativa e assoluta dei dati come:
+- **rarità relativa**, ad esempio, $10^6 \vert 10^3$: la classe minoritaria è in minoranza, ma non necessariamente rara. Può essere appresa con precisione;
+- **rarità assoluta**, ad esempio, $10^3 \vert 1$: la classe minoritaria non è solo in minoranza, ma è anche mal definita.
+
+Quando i dati sono sbilanciati, i classificatori classici cercano di ridurre le quantità globali (ad esempio, il tasso di errore), tendendo quindi a classificare erroneamente gli esempi della classe minoritaria. In questo modo, però, si fallisce nella generalizzazione delle regole induttive tramite algoritmi di apprendimento:
+- si ha difficoltà nell'apprendimento su un maggior numero di caratteristiche ma con meno campioni;
+- i classificatori naive spesso sono inclini verso la classe di maggioranza;
+- si corre il riischio di overfitting.
+
+
+
+
+
