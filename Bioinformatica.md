@@ -845,6 +845,15 @@ I passi principali della Random Walk (RW) sono i seguenti:
 3) la procedura può essere ripetuta per un numero predefinito di passi $p$ (lunghezza del percorso = $p$);
 4) una RW di $p$ passi (una RW di lunghezza $p$) è quindi composta dalla sequenza di nodi attraversati dalla RW durante i suoi passi.
 
+Una **catena di Markov** descrive un processo stocastico su un insieme di stati in base a una matrice di probabilità di transizione.
+Le catene di Markov sono prive di memoria, il che significa che la probabilità di transizione futura dipende solo dallo stato attuale e non dalla sequenza degli stati precedenti.
+
+Le Random Walk corrispondono alle catene di Markov. In questo contesto:
+- l'insieme degli stati corrisponde all'insieme dei nodi nel grafo;
+- gli elementi della matrice di probabilità di transizione rappresentano le probabilità di seguire un arco da un nodo all'altro.
+
+In altre parole, una catena di Markov può essere utilizzata per modellare un processo casuale che si sposta tra diversi stati (nodi) in un grafo, con le probabilità di transizione specificate nella matrice di probabilità di transizione. Questa rappresentazione è utilizzata in vari contesti, come l'analisi delle reti e le simulazioni di sistemi complessi.
+
 Dato una matrice di adiacenza $W$ di un grafo non diretto pesato $G$, il Random Walk Kernel di un passo può essere ottenuto utilizzando la formula:
 
 $$K_1 = (I - \alpha D^{-1}W)^{-1}$$
@@ -863,3 +872,16 @@ In questo modo, possiamo prendere in considerazione sia i vicini diretti di un n
 
 ----------------------------------------------------------------
 
+## Patient-Net Algorithm
+**Patient-Net** (o **P-Net**) è un nuovo algoritmo basato sulla rete transduttiva semi-supervisionata per classificare o ordinare i pazienti in base alla loro probabilità di mostrare un determinato esito di interesse. I passi principali includono:
+1) **raccolta dei dati** (e selezione delle caratteristiche) in una matrice $M$: I profili di espressione genica di ciascun paziente vengono raccolti in una matrice $m \times n$, in cui le righe rappresentano i trascritti e le colonne rappresentano i pazienti. Di solito, si hanno dati ad alta dimensionalità, ovvero $m >> n$. Pertanto, è possibile ridurre la dimensionalità tramite feature selection;
+2) **costruzione della patient similarity net** tramite la correlazione di Pearson. Possono essere utilizzate altre misure (correlazione di Spearman, inverso di alcune distanze) al suo posto. La matrice $W$ può essere vista come la matrice di adiacenza del [[Grafo|grafo]] pesato $G$, dove i pesi degli archi rappresentano la **similarità biomolecolare** tra i pazienti;
+3) calcolo di una matrice kernel $K$ a partire dalla matrice di similarità tra pazienti. Questo è necessario per ottenere archi pesati consapevoli della **topologia globale** della rete. Un kernel su un grafo induce implicitamente una nuova misura di similarità non lineare tra i pazienti;
+4) **filtraggio della matrice kernel $K$**: è necessario conservare solo i bordi più informativi per il compito di previsione, riducendo il rumore introdotto dalle somiglianze molto scarse. Selezioniamo una soglia utilizzando una tecnica Leave-One-Out efficiente che massimizzi una misura delle prestazioni sul set di addestramento;
+5) classificazione dei pazienti mediante funzioni di punteggio: sono disponibili diverse funzioni di punteggio le quali assegnano un punteggio a ciascun nodo in base all'etichettatura e ai pesi degli archi del suo vicinato. I punteggi vengono utilizzati per classificare i pazienti in base alla loro probabilità di manifestare l'evento considerato.
+
+Questo algoritmo sfrutta:
+- la topologia globale della rete sfruttando un kernel sul grafo;
+- informazioni locali attraverso l'applicazione di funzioni di punteggio basate sui vicini diretti di ciascun nodo.
+
+La visualizzazione del grafo è un vantaggio di P-Net. Essa comporta la costruzione di un grafo dei pazienti che mostra esplicitamente le loro relazioni biomolecolari e allo stesso tempo incorpora i punteggi previsti nel grafo. L'utente può effettuare un'ispezione visiva della rete, il che potrebbe consentire di scoprire informazioni sulle caratteristiche fenotipiche e/o biomolecolari dei campioni.
