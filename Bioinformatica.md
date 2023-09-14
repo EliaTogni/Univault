@@ -912,6 +912,17 @@ Le funzioni di punteggio kernelizzate sono un framework algoritmico flessibile c
 
 ----------------------------------------------------------------
 
+## Word Embedding
+Le Rappresentazioni Distribuite delle Parole (note anche come **word embeddings**) sono rappresentazioni geometriche di parole o entità apprese dai dati in modo tale che parole semanticamente correlate siano spesso rappresentate spazialmente vicine tra loro. Nella pratica, si cerca di inserire le entità in uno spazio metrico a bassa dimensionalità in cui parole simili vengono collocate vicine.
+
+Innanzitutto, è fondamentale distinguere il significato di **similarity** (**similarità**) dal significato di **relatedness** (**relazione**):
+
+La similarità tra due parole non implica che esse siano necessariamente sinonimi ma, bensì, comporta la condivisione di qualche elemento di significato. Alcuni sempi sono cane e gatto, caffè e  tè,  corto e lungo (**antonimi**).
+
+La relazione, chiamata anche **associazione di parole** implica la condivisione del campo semantico. Alcuni esempi sono macchina e benzina, monitor e RAM,  complessità e algoritmo.
+
+----------------------------------------------------------------
+
 ## Metodi di Apprendimento della Rappresentazione dei Grafi per la Network Medicine
 
 
