@@ -885,3 +885,33 @@ Questo algoritmo sfrutta:
 - informazioni locali attraverso l'applicazione di funzioni di punteggio basate sui vicini diretti di ciascun nodo.
 
 La visualizzazione del grafo è un vantaggio di P-Net. Essa comporta la costruzione di un grafo dei pazienti che mostra esplicitamente le loro relazioni biomolecolari e allo stesso tempo incorpora i punteggi previsti nel grafo. L'utente può effettuare un'ispezione visiva della rete, il che potrebbe consentire di scoprire informazioni sulle caratteristiche fenotipiche e/o biomolecolari dei campioni.
+
+----------------------------------------------------------------
+
+## Label Propagation Algorithm
+
+![[Label Propagation.png]]
+
+Questo algoritmo sfrutta l'idea semplice di propagare iterativamente le etichette dei nodi ai nodi vicini considerando la loro prossimità. Il primo passo è il calcolo della matrice di adiacenza $W$, utilizzando una misura di similarità appropriata. Il passo successivo comprende il calcolo della matrice diagonale dei gradi $D$. Il vettore delle etichette stimate $\hat{Y}$ viene inizializzato con l'etichetta conosciuta per i nodi etichettati $Y_l$ ($+1$ o $-1$) e zero per i nodi non etichettati $Y_u$. Successivamente, in modo iterativo, le etichette vengono propagate attraverso il grafo, dove $D^{-1}W$ può essere interpretato come una **matrice di transizione probabilistica** che mostra la probabilità di passare da un nodo a un altro. Dopo il passo di propagazione, l'algoritmo forza le etichette sui dati etichettati a essere $\hat{Y}_l$ = $Y_l$ (cioè il **clamping** delle etichette). In questo modo, i dati etichettati agiscono come fonti che "spingono" le etichette attraverso i dati non etichettati. La propagazione e il blocco delle etichette vengono ripetuti fino alla convergenza (il criterio di arresto può essere un numero predefinito di iterazioni). Il punteggio calcolato per ciascun nodo $x_i$ può essere utilizzato per la classificazione impostando una soglia, ad esempio il segno di $\hat{y}_i^{(\infty)}$.
+
+----------------------------------------------------------------
+
+## RAnking of Nodes with Kernelized Score Funcions
+Problemi rilevanti nella biologia molecolare e nella medicina possono essere modellati attraverso l'utilizzo di grafi, con l'utilizzo di strategie di apprendimento semi-supervisionato locale e globale per apprendere le etichette dei nodi.
+Un approccio innovativo comporta la **fusione di strategie di apprendimento locale e globale**: lo schema algoritmico delle funzioni di punteggio kernelizzate (**RAnking of Nodes with Kernelized Score Funcions** o **RANKS**).
+
+Una strategia di apprendimento locale è quella denominata **guilt-by-association**. Si tratta di un algoritmo il quale assume che l'etichetta (o lo score) di un nodo dato dipenda dall'etichetta (o dallo score) dei loro vicini. Il punteggio per ciascun nodo $i$ viene calcolato prendendo il massimo dei pesi $w_{i,j} \in W$, dove $W$ è la matrice di adiacenza del grafo, che collega il nodo $i$ ai nodi $j$ aventi etichetta positiva.
+
+Le strategie di apprendimento globali, invece, sfruttano la topologia complessiva della rete e minimizzano una funzione di costo quadratica.
+
+Le kernelized score functions uniscono le strategie di apprendimento locali alle strategie globali.
+
+immagine kernelized
+
+Le funzioni di punteggio kernelizzate sono un framework algoritmico flessibile che può essere applicato a una vasta gamma di interessanti problemi di bioinformatica. Queste funzioni e gli altri metodi di apprendimento semi-supervisionato all'avanguardia per l'analisi delle reti biologiche sono tuttavia afflitti da seri problemi di scalabilità su reti di grandi dimensioni.
+
+----------------------------------------------------------------
+
+## Metodi di Apprendimento della Rappresentazione dei Grafi per la Network Medicine
+
+
