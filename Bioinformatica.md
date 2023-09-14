@@ -878,8 +878,36 @@ Ora il focus va posto su come rappresentare una parola. Il primo approccio è lo
 
 Un secondo approccio è il conto delle frequenze. 
 
+Un terzo approccio possibile è **Word2vec**, una tecnica che fornisce una stima efficiente della rappresentazione delle parole nello spazio vettoriale. Si basa sul costruire una rappresentazione vettoriale delle parole tramite una rete neurale per un compito di classificazione. Data una parola, l'obiettivo è prevedere se un'altra parola è nello stesso contesto. Il contesto è definito da una finestra intorno a ciascuna parola (**auto-supervisione**).
+
+![[Word2Vec.png]]
+
+Problemi del word embedding:
+1) solo un significato per parola: gli embedding delle parole spesso rappresentano una parola con un unico vettore, anche se una parola può avere più significati (**polisemi**a). Ad esempio, "apple" potrebbe riferirsi al frutto o all'azienda "Apple Inc.". Questo può portare a ambiguità nei contesti in cui la parola è utilizzata.
+2) **Bias umani dai dati di addestramento**: gli embedding delle parole possono ereditare pregiudizi e bias presenti nei dati con cui sono stati addestrati. 
+3) **Difficoltà a catturare informazioni di livello superiore**: gli embedding delle parole sono spesso limitati nell'acquisizione di informazioni di livello superiore, come relazioni complesse tra parole o concetti astratti. Possono essere efficaci per rappresentare somiglianze semantiche di base, ma potrebbero non cogliere sfumature più profonde o significati contestuali avanzati.
+
 ----------------------------------------------------------------
 
 ## Metodi di Apprendimento della Rappresentazione dei Grafi per la Network Medicine
 
 
+----------------------------------------------------------------
+
+## Biomedical Knowledge Graphs.
+
+I sistemi biologici sono naturalmente rappresentati come reti:
+- **reti di interazioni proteiche**: queste reti rappresentano le interazioni tra le proteine all'interno di un organismo. Possono essere utilizzate per comprendere come le proteine lavorino insieme per svolgere diverse funzioni biologiche e possono essere fondamentali nella ricerca sulla biologia molecolare;
+- **reti di cellule**: queste reti rappresentano le interazioni e le comunicazioni tra le cellule all'interno di un organismo. Possono essere utilizzate per studiare la comunicazione cellulare, il controllo dei processi biologici e le dinamiche dei tessuti biologici;
+- **reti di malattie**: queste reti rappresentano le relazioni tra le malattie, i geni coinvolti e altri fattori. Possono essere utilizzate per identificare le cause genetiche di malattie, valutare la predisposizione genetica alle malattie e guidare la ricerca sulla terapia delle malattie.
+
+La chiave per l'analisi di queste reti comprende l'integrare la conoscenza per catturare complessi meccanismi biologici nascosti.
+
+immagine slide 4/57
+
+Gli **Knowledge Graph** (**KG**) rappresentano un approccio potente e versatile per la rappresentazione delle informazioni in termini di entità di base e delle relazioni che esistono tra di loro. L'industria farmaceutica sta adottando rapidamente i KG per accelerare la scoperta di nuovi farmaci basata sulla scienza dei dati. L'integrazione tra diversi tipi e fonti di dati è facilitata. Un unico modello comune può, infatti, essere sfruttato per la rappresentazione di dati molecolari, dati relativi agli studi clinici e dati sui farmaci etichettati.
+Ciò consente l'utilizzo di algoritmi per diverse tipologie di applicazioni, che vanno dalla prioritizzazione di nuovi bersagli per le malattie alla previsione di associazioni tra farmaci e malattie precedentemente sconosciute.
+
+Attualmente, una vasta quantità di informazioni biomediche viene prodotta dalla comunità di ricerca. Le fonti di informazione offrono prospettive diverse che possono essere integrate. Tuttavia, questa conoscenza è bloccata in migliaia di pubblicazioni e in numerose basi di dati. Raccogliere, strutturare ed integrare questa conoscenza è estremamente rilevante per la scoperta di farmaci, la prioritizzazione dei bersagli, il riutilizzo dei farmaci e molte altre applicazioni biomediche. Moltissime relazioni possono essere identificate e utilizzate per scoprire nuove conoscenze. Tuttavia, la varietà di fonti e formati dei dati, l'immensa quantità di dati prodotti e le diverse semantiche adottate rendono questa attività una sfida che richiede tempo e risorse considerevoli. (pag 8/57)
+
+----------------------------------------------------------------
