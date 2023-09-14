@@ -625,53 +625,6 @@ Spesso in bioinformatica si utilizzano delle variabili intermedie, chiamate **ce
 
 ----------------------------------------------------------------
 
-## GWAS
-I **Genome-Wide Association Studies** hanno raccolto dati sulla correlazione tra tratti fenotipici e genotipici: ad ogni patologia viene associata la significatività statistica delle mutazioni in loci particolari con tecniche di acquisizione basate su sequenziamento e microarray.
-
-I GWAS hanno vari difetti. Innanzitutto, è molto difficile stabilire una significatività statistica di una mutazione potenzialmente causativa rispetto ad una variazione del rischio per una particolare patologia: in ogni caso, comunque, si tratta di una misura della correlazione e non della causalità. Inoltre, i GWAS restituiscono solitamente un grande numero di mutazioni potenzialmente causative (quindi, molti falsi positivi) e i ricercatori si sbilanciano rispetto ai preconcetti che
-hanno in materia.
-
-----------------------------------------------------------------
-
-## Conservazione Evolutiva
-Molti metodi sono basati sulla conservazione evolutiva del genoma: se l'evoluzione si muove sotto la spinta di mutazioni casuali e della selezione delle varianti più adatte, allora, una mutazione in una regione conservata è molto probabilmente deleteria.
-
-Una mutazione è deleteria quando influisce negativamente sulla capacità riproduttiva dell'individuo: una mutazione deleteria è patogenica se è causa di una malattia.
-
-----------------------------------------------------------------
-
-## CADD
-**Combined Annotation Dependent Depletion** (**CADD**) è uno strumento per la valutazione della **deleteriousness** delle varianti a singolo nucleotide e delle mutazioni per inserimento o delezione (**indel**) nel genoma umano.
-
-Esistono molti metodi per l'annotazione delle varianti, ma molti tendono a sfruttare solamente un tipo di informazione o si riferiscono ad un tipo particolare di mutazione. CADD è un framework unico che integra più di 60 modalità di annotazione in una sola metrica, confrontando varianti reali con varianti simulate.
-
-I *C-score* così ottenuti sono molti correlati alla patogenicità delle varianti sia in regioni *coding* che *non-coding*, che hanno riscontri in effetti regolatori verificati sperimentalmente.
-
-### Dati per l'addestramento 
-Il training del sistema viene effettuato su un dataset di $15$ milioni di esempi positivi reali e $15$ milioni di esempi negativi simulati.
-
-Gli esempi positivi sono ottenuti come le varianti alleliche che hanno una frequenza superiore al $95$%. Per gli esempi negativi, invece, si è ricavato un modello di progenitore dei primati: ogni allele di questa sequenza viene permutato secondo la distribuzione di probabilità ottenuta dal dataset.
-
-----------------------------------------------------------------
-
-### Scores
-Le feature in ingresso sono le $63$ modalità di annotazione, integrate con un piccolo numero di termini di interazione. Lo score in uscita (**raw C-score**) è stato calcolato per tutte le possibili $8.6$ miliardi di varianti del genoma umano di riferimento: per rendere il punteggio più leggibile, il range è stato riscalato tra $1$ e $99$, ottenendo uno **scaled C-score**.
-
-![[ecr-gata3.png]]
-
-In figura è possibile osservare lo score di conservazione evolutiva del gene GATA3 forniti dal ECR browser ➮. Si notino le regioni colorate in blu, conservate in tutte le specie confrontate.
-
-I *raw CADD score* sono il risultato diretto del modello e indicano, quando maggiori, una maggiore probabilità che la mutazione sia deleteria. I punteggi raw hanno un valore relativo e maggiore risoluzione, ma non hanno alcun valore assoluto.
-
-Invece, gli *scaled CADD score* sono ottenuti come la scalatura per ordini di grandezza dei punteggi grezzi: le varianti al primo decile sono CADD-10, quelle al primo percentile sono CADD-20, quelle al primo millile CADD-30, ...Questi punteggi hanno, quindi, un'interpretazione immediata e sono confrontabili anche tra diverse versioni di CADD, ma hanno una risoluzione inferiore.
-
-----------------------------------------------------------------
-
-### Versioni
-CADD $1.0$ utilizza come algoritmo di apprendimento un SVM lineare, mentre da CADD $1.1$ viene utilizzato un algoritmo di regressione logistica: inoltre, CADD $1.1$ estende leggermente l'insieme di annotazioni utilizzate. In CADD $1.3$ è stato aggiornato il training set.
-
-----------------------------------------------------------------
-
 ## DeepSEA
 **DeepSEA** è un sistema basato su deep learning per la predizione degli effetti degli SNP in regioni non-codificanti.
 
@@ -787,7 +740,7 @@ Un'altra soluzione si basa sulle [[Intelligenza Artificiale#Hopfield network|Hop
 Si consideri un ambito di apprendimento semi-supervisionato in cui i nodi rappresentano le istanze, le connessioni sono precomputate e possono essere pesate e i nodi sono suddivisi in etichettati e non etichettati per la task attuale.
 L' obbiettivo consiste nel trasformare i punti interrogativi in nodi blu o neri.
 
-immagine hopfield 20/36
+![[Semi-supervised learning setting.png]]
 
 Questo problema può essere risolto utilizzando le Hopfield Network in quanto sono efficienti ottimizzatori locali. i vantaggi che comportano sono:
 - il massimizzare la somma pesata dei bordi coerenti e ciò si ottiene tramite il minimizzare la funzione di energia;
@@ -811,7 +764,7 @@ La previsione degli esiti clinici è un problema ben consolidato nella biologia 
 
 La **trasduzione** o **inferenza transduttiva** è il ragionamento dai casi specifici osservati (training) ai casi specifici (test). In contrasto, l'induzione è il ragionamento dai casi di addestramento osservati a regole generali, che vengono poi applicate ai casi di test.
 
-immagine kernels on graphs pag 4
+![[Inductive vs Transductive.png]]
 
 ----------------------------------------------------------------
 
@@ -906,7 +859,7 @@ Le strategie di apprendimento globali, invece, sfruttano la topologia complessiv
 
 Le kernelized score functions uniscono le strategie di apprendimento locali alle strategie globali.
 
-immagine kernelized
+![[Kernelized Score Functions.png]]
 
 Le funzioni di punteggio kernelizzate sono un framework algoritmico flessibile che può essere applicato a una vasta gamma di interessanti problemi di bioinformatica. Queste funzioni e gli altri metodi di apprendimento semi-supervisionato all'avanguardia per l'analisi delle reti biologiche sono tuttavia afflitti da seri problemi di scalabilità su reti di grandi dimensioni.
 
@@ -919,7 +872,11 @@ Innanzitutto, è fondamentale distinguere il significato di **similarity** (**si
 
 La similarità tra due parole non implica che esse siano necessariamente sinonimi ma, bensì, comporta la condivisione di qualche elemento di significato. Alcuni sempi sono cane e gatto, caffè e  tè,  corto e lungo (**antonimi**).
 
-La relazione, chiamata anche **associazione di parole** implica la condivisione del campo semantico. Alcuni esempi sono macchina e benzina, monitor e RAM,  complessità e algoritmo.
+La relazione, chiamata anche **associazione di parole** implica la condivisione del campo semantico. Alcuni esempi sono macchina e benzina, monitor e RAM, complessità e algoritmo.
+
+Ora il focus va posto su come rappresentare una parola. Il primo approccio è lo **one-hot encoding**. Si tratta di una tecnica di rappresentazione dei dati la quale consiste nel rappresentare una variabile categorica o discreta, come ad esempio una categoria di prodotti o una classificazione di colori, attraverso un vettore binario in cui una sola delle posizioni è impostata su $1$ per rappresentare la categoria specifica, mentre tutte le altre posizioni sono impostate su $0$. Questo metodo consente di trattare le variabili categoriche come input numerici in modelli di machine learning, consentendo loro di essere utilizzate in algoritmi che richiedono dati numerici. Il problema di questo approccio è che non è in grado di catturare la relatedness e la similarity oltre alla rappresentazione sparsa in termini spaziali.
+
+Un secondo approccio è il conto delle frequenze. 
 
 ----------------------------------------------------------------
 
