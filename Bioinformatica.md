@@ -903,11 +903,39 @@ I sistemi biologici sono naturalmente rappresentati come reti:
 
 La chiave per l'analisi di queste reti comprende l'integrare la conoscenza per catturare complessi meccanismi biologici nascosti.
 
-immagine slide 4/57
+![[Knowledge integration.png]]
 
-Gli **Knowledge Graph** (**KG**) rappresentano un approccio potente e versatile per la rappresentazione delle informazioni in termini di entità di base e delle relazioni che esistono tra di loro. L'industria farmaceutica sta adottando rapidamente i KG per accelerare la scoperta di nuovi farmaci basata sulla scienza dei dati. L'integrazione tra diversi tipi e fonti di dati è facilitata. Un unico modello comune può, infatti, essere sfruttato per la rappresentazione di dati molecolari, dati relativi agli studi clinici e dati sui farmaci etichettati.
+Gli **Knowledge Graph** (**KG**) rappresentano un approccio potente e versatile per la rappresentazione dell'informazione in termini di entità di base e delle relazioni che intercorrono tra di loro. L'integrazione tra diversi tipi e fonti di dati viene facilitata dall'utilizzo di questi grafi. Un unico modello comune può, infatti, essere sfruttato per la rappresentazione di dati molecolari, dati relativi agli studi clinici e dati sui farmaci etichettati.
 Ciò consente l'utilizzo di algoritmi per diverse tipologie di applicazioni, che vanno dalla prioritizzazione di nuovi bersagli per le malattie alla previsione di associazioni tra farmaci e malattie precedentemente sconosciute.
 
-Attualmente, una vasta quantità di informazioni biomediche viene prodotta dalla comunità di ricerca. Le fonti di informazione offrono prospettive diverse che possono essere integrate. Tuttavia, questa conoscenza è bloccata in migliaia di pubblicazioni e in numerose basi di dati. Raccogliere, strutturare ed integrare questa conoscenza è estremamente rilevante per la scoperta di farmaci, la prioritizzazione dei bersagli, il riutilizzo dei farmaci e molte altre applicazioni biomediche. Moltissime relazioni possono essere identificate e utilizzate per scoprire nuove conoscenze. Tuttavia, la varietà di fonti e formati dei dati, l'immensa quantità di dati prodotti e le diverse semantiche adottate rendono questa attività una sfida che richiede tempo e risorse considerevoli. (pag 8/57)
+Attualmente, una vasta quantità di informazioni biomediche viene prodotta dalla comunità scientifica. Le fonti di informazione offrono prospettive diverse che possono essere integrate. Tuttavia, questa conoscenza è bloccata in migliaia di pubblicazioni e in numerose basi di dati. Raccogliere, strutturare ed integrare questa conoscenza è estremamente rilevante per la scoperta di farmaci, la prioritizzazione dei bersagli, il riutilizzo dei farmaci e molte altre applicazioni biomediche. Moltissime relazioni possono essere identificate e utilizzate per scoprire nuove conoscenze. Tuttavia, la varietà di fonti e formati dei dati, l'immensa quantità di dati prodotti e le diverse semantiche adottate rendono questa attività una sfida che richiede tempo e risorse considerevoli. 
+
+### Ontologie
+Le **ontologie** sono descrizioni formali delle entità e dei concetti in un determinato dominio che consentono procedure di ragionamento computazionale.
+Ad esempio, supponiamo che un'ontologia dica che "virus" è un agente infettivo, e che "meningite infettiva" sia un tipo di meningite causata da un agente infettivo. Di conseguenza, "meningite virale" è una sottoclasse di "meningite infettiva".<br />
+Le **logiche di descrizione** sono un sottoinsieme delle logiche del primo ordine utilizzate per il ragionamento su un'ontologia e per identificare fatti implicati ma non esplicitamente dichiarati nei dati originali.
+La **Gene Ontology** (GO) è un esempio di ontologia biomedica. Si tratta di un vocabolario controllato per descrivere i prodotti genetici (proteine, RNA) in qualsiasi organismo, organizzato come un grafo diretto aciclico gerarchico. Questa ontologia rappresenta componenti cellulari, funzioni molecolari e processi biologici e presenta due tipi di relazioni: **è-un** e **parte-di**.
+
+Oltre alle ontologie, i dizionari, i tesauri e le tassonomie sono termini spesso utilizzati per rappresentare i metadati riguardanti una fonte di informazioni. Sono impiegati per la caratterizzazione semantica delle fonti a diversi livelli di espressività.
+
+immagine 13/57
+
+----------------------------------------------------------------
+
+### Costruzione di un Knowledge Graph
+Nella creazione di un grafo di conoscenza da diverse fonti, è necessario tenere conto di diversi fattori:
+1) l'utilizzo di diversi formati (tabelle relazionali, CSV, JSON, XML). Le fonti di dati possono, infatti, essere rappresentate in vari formati, e la conversione tra questi formati può essere necessaria per l'integrazione dei dati nel grafo di conoscenza;
+2) l'utilizzo di diversi identificatori per rappresentare la stessa cosa. Le diverse fonti possono utilizzare identificatori differenti per rappresentare gli stessi oggetti o concetti. È importante mappare e unificare tali identificatori per garantire l'integrità del grafo di conoscenza;
+3) l'adozione di diverse semantiche. Le fonti di dati possono utilizzare semantici diverse per gli stessi concetti. L'armonizzazione delle semantiche è fondamentale per evitare ambiguità nei dati integrati.
+
+Per l'estrazione delle informazioni dalle fonti e la loro trasformazione e integrazione in un grafo di conoscenza, possono essere impiegate diverse tecniche, come l'utilizzo di linguaggi dichiarativi basati su modelli e motori per la loro applicazione. Questi linguaggi consentono di definire modelli o schemi per l'estrazione e la trasformazione dei dati dalle fonti.
+Queste tecniche possono essere utilizzate per
+1) la materializzazione del grafo di conoscenza in un repository centralizzato: i dati estratti e trasformati dalle diverse fonti possono essere archiviati in un unico repository centralizzato, creando così un grafo di conoscenza consolidato;
+2) la specifica di piani di accesso ai dati da utilizzare durante le interrogazioni: è possibile definire come i dati nel grafo di conoscenza possono essere accessibili e interrogati in modo efficiente, ad esempio tramite l'ottimizzazione delle query.
+
+
+
+I grafi di conoscenza non sono tuttavia perfetti e possono contenere errori o informazioni incomplete. Gli approcci alla scoperta devono essere robusti per gestire tali imperfezioni. Questo è particolarmente rilevante quando si cercano percorsi lunghi nella rete, poiché una singola previsione errata può causare una catena di errori. Diviene quindi fondamentale creare un benchmark per valutare l'efficacia degli approcci di scoperta basati sui grafi di conoscenza. Si possono utilizzare test pseudo-prospettici, ovvero identificare dati passati che possono essere utilizzati per prevedere conoscenze attuali, ma può essere difficile stabilire una linea di separazione chiara tra ciò che è noto e ciò che è futuro.
+Nei KG, le previsioni con punteggi elevati tendono a dominare l'output dei sistemi di scoperta basati sui grafi di conoscenza. Tuttavia, alcune di queste previsioni potrebbero sembrare banali agli esperti. Ad esempio, la scoperta che il Farmaco A influisce sulla Malattia B e il Farmaco A* influisce sulla Malattia B potrebbe sembrare ovvia. Filtrare queste previsioni banali può essere molto difficile.
 
 ----------------------------------------------------------------
