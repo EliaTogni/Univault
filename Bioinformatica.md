@@ -949,3 +949,12 @@ I grafi di conoscenza non sono quindi perfetti e possono contenere errori o info
 Nei KG, le previsioni con punteggi elevati tendono a dominare l'output dei sistemi di scoperta basati sui grafi di conoscenza. Tuttavia, alcune di queste previsioni potrebbero sembrare banali agli esperti. Filtrare queste previsioni banali può essere molto difficile.
 
 ----------------------------------------------------------------
+
+### Graph database
+Un database di grafi è un sistema di gestione dei dati che sfrutta il modello di dati a grafo per la rappresentazione delle informazioni. Attualmente, ci sono due modelli principali per i database di grafi:
+1) **property graphs**: questo modello non ha uno standard reale associato ad esso ed è spesso utilizzato per la rappresentazione dei dati in modo flessibile. I grafi delle proprietà sono costituiti da nodi, i quali rapresentano gli oggetti del grafo e possono essere etichettati, e relazioni tra i nodi, le quali possono essere direzionate e riflessive, e ciascuno di essi può avere proprietà associate che forniscono ulteriori dettagli o metadati sul nodo o sulla relazione;
+2) **Resource Description Framework graphs**: i grafi RDF rappresentano un framework per rappresentare l'informazione nel Web e utilizzano un formato standardizzato per rappresentare dati strutturati basati su **triple** (soggetto, predicato, oggetto). Sono utilizzati per la rappresentazione semantica dei dati e consentono ragionamenti sofisticati sulla conoscenza. Questo framework è progettato per essere letto e compreso dai computer.
+
+Entrambi i modelli di dati sono utilizzati per rappresentare la conoscenza in un determinato dominio e permettono diversi tipi di ragionamento sui dati. È possibile convertire i dati da uno dei due modelli all'altro, ma il modello RDF offre una base più ricca e semanticamente coerente rispetto ai grafi delle proprietà, specialmente per l'elaborazione di dati semantici avanzati.
+
+----------------------------------------------------------------
