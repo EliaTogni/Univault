@@ -918,7 +918,7 @@ La **Gene Ontology** (GO) è un esempio di ontologia biomedica. Si tratta di un 
 
 Oltre alle ontologie, i dizionari, i tesauri e le tassonomie sono termini spesso utilizzati per rappresentare i metadati riguardanti una fonte di informazioni. Sono impiegati per la caratterizzazione semantica delle fonti a diversi livelli di espressività.
 
-immagine 13/57
+![[Semantic characterization.png]]
 
 ----------------------------------------------------------------
 
@@ -933,9 +933,19 @@ Queste tecniche possono essere utilizzate per
 1) la materializzazione del grafo di conoscenza in un repository centralizzato: i dati estratti e trasformati dalle diverse fonti possono essere archiviati in un unico repository centralizzato, creando così un grafo di conoscenza consolidato;
 2) la specifica di piani di accesso ai dati da utilizzare durante le interrogazioni: è possibile definire come i dati nel grafo di conoscenza possono essere accessibili e interrogati in modo efficiente, ad esempio tramite l'ottimizzazione delle query.
 
+È possibile applicare approcci di Deep Learning per lavorare con i grafi? I moderni approcci di deep learning sono progettati per griglie o sequenze semplici. Infatti, le immagini hanno una struttura a griglia bidimensionale, il che consente di definire convoluzioni per l'elaborazione delle immagini.
+I testi e le sequenze hanno invece una struttura lineare monodimensionale, il che permette di definire approcci come sliding window, Recurrent NN, word2vec, e così via, per l'elaborazione del testo e delle sequenze.
 
+Una tecnica consiste nel mappare i nodi in embedding a $d$ dimensioni in modo che i nodi simili nella rete siano incorporati vicini l'uno all'altro. 
 
-I grafi di conoscenza non sono tuttavia perfetti e possono contenere errori o informazioni incomplete. Gli approcci alla scoperta devono essere robusti per gestire tali imperfezioni. Questo è particolarmente rilevante quando si cercano percorsi lunghi nella rete, poiché una singola previsione errata può causare una catena di errori. Diviene quindi fondamentale creare un benchmark per valutare l'efficacia degli approcci di scoperta basati sui grafi di conoscenza. Si possono utilizzare test pseudo-prospettici, ovvero identificare dati passati che possono essere utilizzati per prevedere conoscenze attuali, ma può essere difficile stabilire una linea di separazione chiara tra ciò che è noto e ciò che è futuro.
-Nei KG, le previsioni con punteggi elevati tendono a dominare l'output dei sistemi di scoperta basati sui grafi di conoscenza. Tuttavia, alcune di queste previsioni potrebbero sembrare banali agli esperti. Ad esempio, la scoperta che il Farmaco A influisce sulla Malattia B e il Farmaco A* influisce sulla Malattia B potrebbe sembrare ovvia. Filtrare queste previsioni banali può essere molto difficile.
+immagine 20/57
+
+Spplicare gli approcci di deep learning ai grafi presenta tuttavia notevoli complicazioni:
+1) grande complessità delle reti: le reti possono avere una struttura topologica arbitraria e complessa, senza la località spaziale tipica delle griglie. Questo rende difficile applicare approcci basati su convoluzioni o altri modelli progettati per dati con una struttura più regolare;
+2) l'assenza di ordinamento fisso dei nodi o punto di riferimento: nei grafi, non c'è un ordinamento fisso dei nodi o un punto di riferimento comune. Questo impedisce l'applicazione diretta di molti algoritmi di deep learning che dipendono da tali strutture;
+3) la dinamicità e multimodalità: le reti possono essere dinamiche, ovvero cambiare nel tempo, e possono includere una varietà di modalità o tipi di informazioni. Gestire questa complessità richiede approcci specializzati che possano adattarsi a situazioni diverse.
+
+I grafi di conoscenza non sono quindi perfetti e possono contenere errori o informazioni incomplete. Gli approcci alla scoperta devono essere robusti per gestire tali imperfezioni. Questo è particolarmente rilevante quando si cercano percorsi lunghi nella rete, poiché una singola previsione errata può causare una catena di errori. Diviene quindi fondamentale creare un benchmark per valutare l'efficacia degli approcci di scoperta basati sui grafi di conoscenza. Si possono utilizzare test pseudo-prospettici, ovvero identificare dati passati che possono essere utilizzati per prevedere conoscenze attuali, ma può essere difficile stabilire una linea di separazione chiara tra ciò che è noto e ciò che è futuro.
+Nei KG, le previsioni con punteggi elevati tendono a dominare l'output dei sistemi di scoperta basati sui grafi di conoscenza. Tuttavia, alcune di queste previsioni potrebbero sembrare banali agli esperti. Filtrare queste previsioni banali può essere molto difficile.
 
 ----------------------------------------------------------------
