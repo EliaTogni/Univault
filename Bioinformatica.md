@@ -656,7 +656,7 @@ L'output della rete convoluzionale restituisce $919$ feature: da queste si calco
 ----------------------------------------------------------------
 
 # Predizione di varianti patogene
-Diverse malattie sono causate da alterazioni del DNA (mutazioni) che possono essere ereditate (nelle malattie genetiche) o determinate dall'ambiente. Molte malattie, compreso il cancro, sono determinate sia da mutazioni del germline che da mutazioni somatiche. È cruciale:
+Diverse malattie sono causate da alterazioni del DNA (mutazioni) che possono essere ereditate (nelle malattie genetiche) o determinate dall'ambiente. Molte malattie, compreso il cancro, sono determinate sia da mutazioni della linea germinale che da mutazioni somatiche. È cruciale:
 1) rilevare varianti genetiche;
 2) prevederne la potenziale patogenicità;
 3) trovare terapie precise mirate alle varianti patogene.
@@ -759,7 +759,7 @@ Gli svantaggi invece comprendono:
 ## Il problema della previsione degli esiti clinici
 La previsione degli esiti clinici è un problema ben consolidato nella biologia computazionale e comprende diverse attività (ad esempio, la previsione della risposta ai farmaci, la prognosi, la diagnosi, la ricorrenza delle malattie). In questo contesto, i metodi all'avanguardia impiegano:
 - modelli induttivi supervisionati che utilizzano biomarcatori selezionati per prevedere l'outcomes di interesse. Questi metodi, tuttavia, non tengono esplicitamente conto delle relazioni tra gli individui;
-- approcci non supervisionati basati su reti per scoprire sottotipi di malattie. Questi metodi non sono adatti per problemi di previsione degli esiti;
+- approcci non supervisionati basati su reti per scoprire sottotipi di malattie. Questi metodi non sono adatti per problemi di  della bioinformatica previsione degli esiti;
 - metodi **transduttivi** semi-supervisionati basati su reti che utilizzano **reti di similarità tra pazienti** (PSN) basate sui profili biomolecolari dei soggetti.  È infatti importante se non fondamentale considerare sia le relazioni tra i pazienti che i dati non etichettati nel processo di previsione.
 
 La **trasduzione** o **inferenza transduttiva** è il ragionamento dai casi specifici osservati (training) ai casi specifici (test). In contrasto, l'induzione è il ragionamento dai casi di addestramento osservati a regole generali, che vengono poi applicate ai casi di test.
@@ -870,11 +870,11 @@ Le Rappresentazioni Distribuite delle Parole (note anche come **word embeddings*
 
 Innanzitutto, è fondamentale distinguere il significato di **similarity** (**similarità**) dal significato di **relatedness** (**relazione**):
 
-La similarità tra due parole non implica che esse siano necessariamente sinonimi ma, bensì, comporta la condivisione di qualche elemento di significato. Alcuni sempi sono cane e gatto, caffè e  tè,  corto e lungo (**antonimi**).
+La similarità tra due parole non implica che esse siano necessariamente sinonimi ma comporta la condivisione di qualche elemento di significato. Alcuni sempi sono cane e gatto, caffè e tè, corto e lungo (**antonimi**).
 
 La relazione, chiamata anche **associazione di parole** implica la condivisione del campo semantico. Alcuni esempi sono macchina e benzina, monitor e RAM, complessità e algoritmo.
 
-Ora il focus va posto su come rappresentare una parola. Il primo approccio è lo **one-hot encoding**. Si tratta di una tecnica di rappresentazione dei dati la quale consiste nel rappresentare una variabile categorica o discreta, come ad esempio una categoria di prodotti o una classificazione di colori, attraverso un vettore binario in cui una sola delle posizioni è impostata su $1$ per rappresentare la categoria specifica, mentre tutte le altre posizioni sono impostate su $0$. Questo metodo consente di trattare le variabili categoriche come input numerici in modelli di machine learning, consentendo loro di essere utilizzate in algoritmi che richiedono dati numerici. Il problema di questo approccio è che non è in grado di catturare la relatedness e la similarity oltre alla rappresentazione sparsa in termini spaziali.
+Ora il focus va posto su come rappresentare una parola. Il primo approccio è lo **one-hot encoding**. Si tratta di una tecnica di rappresentazione dei dati la quale consiste nel rappresentare una variabile categorica o discreta, come ad esempio una categoria di prodotti o una classificazione di colori, attraverso un vettore binario in cui una sola delle posizioni è impostata su $1$ per rappresentare la categoria specifica, mentre tutte le altre posizioni sono impostate su $0$. Questo metodo consente di trattare le variabili categoriche come input numerici in modelli di machine learning, consentendo loro di essere utilizzate in algoritmi che richiedono dati numerici. Il problema di questo approccio è che non è in grado di catturare la relatedness e la similarity. Inoltre si rischia facilmente di avere una rappresentazione sparsa in termini spaziali.
 
 Un secondo approccio è il conto delle frequenze. 
 
@@ -968,7 +968,7 @@ Nel contesto dei grafi o delle reti, **embedding dei nodi** significa rappresent
 Fino ad ora ci siamo concentrati su encoder superficiali, ossia ricerche di incorporamento.
 Limitazioni dell'incorporamento superficiale:
 1) **numero elevato di parametri** ($\mathcal{O}(\vert V \vert)$): in questo caso, è necessario un grande numero di parametri, poiché non vi è condivisione di parametri e ogni nodo ha il suo vettore di incorporamento unico;
-2) è **inerentemente "transduttivo"**: questo approccio è transduttivo, il che significa che è impossibile generare enbedding per nodi che non sono stati visti durante l'addestramento. Non è in grado di generalizzare a nodi sconosciuti;
+2) è **inerentemente "transduttivo"**: questo approccio è transduttivo, il che significa che è impossibile generare embedding per nodi che non sono stati visti durante l'addestramento. Non è in grado di generalizzare a nodi sconosciuti;
 3) **non incorpora le caratteristiche dei nodi**: molte reti hanno delle caratteristiche associate ai nodi che potremmo e dovremmo sfruttare. Tuttavia, l'incorporamento superficiale non tiene conto di queste caratteristiche.
 
 Adesso discuteremo dei metodi deep basati sulle graph neural network. In generale, tutti questi encoder più complessi possono essere combinati con le funzioni di similarità della sezione precedente.
@@ -981,7 +981,7 @@ Supponiamo di avere un [[Grafo|grafo]] $G$:
   - queste caratteristiche possono includere attributi categorici, dati testuali, immagini, ecc;
   - le caratteristiche possono essere rappresentate mediante vettori indicatori o altre rappresentazioni appropriate.
 
-L' idea chiave si basa sul generare enbedding dei nodi basati sui neighborhood locali.
+L' idea chiave si basa sul generare embedding dei nodi basati sui neighborhood locali.
 
 ![[Neighborhood aggregation.png]]
 
@@ -989,9 +989,20 @@ I nodi aggregano informazioni dai loro vicini utilizzando reti neurali. Ogni nod
 
 immagine 13/72
 
-Per quanto riguarda l'aggregazione dei neighborhood, i nodi hanno enbedding in ogni layer. Il modello può avere inoltre una profondità arbitraria. L'incorporamento del layer-$0$ del nodo $u$ è la sua caratteristica di input, cioè $x_u$.
+Per quanto riguarda l'aggregazione dei neighborhood, i nodi hanno embedding in ogni layer. Il modello può avere inoltre una profondità arbitraria. L'incorporamento del layer-$0$ del nodo $u$ è la sua caratteristica di input, cioè $x_u$.
 L'aggregazione del vicinato può essere vista come un filtro centro-periferia, una specie di convoluzione di vicinati.
 
 Le distinzioni chiave riguardano il modo in cui diversi approcci aggregano informazioni attraverso i layer. L'approccio di base consiste ne calcolare la media delle informazioni dei vicini e applicare una rete neurale;
+
+immagine 17/72
+
+Gli embeddings sono calcolati ad ogni livello tramite una funzione appropriata (una rete neurale). $h_v^k$ rappresenta l'embedding del nodo $v$ al livello $k$ ($k= 0$ corrisponde all'input $x_v$). L'embedding del livello $k+1$ viene calcolato attraverso la funzione $f$:
+
+$$h_v^{k+1} = f\Big[\operatorname{COMB}\Big(\big\{ h_u^k \vert u \in N(v)\big\}, h_v^K\Big)\Big]$$
+
+dove $f$ è una rete neurale, $N(v)$ rappresenta i vicini di $v$, e $\operatorname{COMB}$ è una funzione di aggregazione (come la media pointwise).
+
+Per addestrare il modello a generare embeddings di alta qualità, è necessario definire una funzione di perdita sugli embeddings.
+Dopo $K$ layer di aggregazione dei vicini, otteniamo embeddings di output per ciascun nodo. Possiamo dare in pasto questi embeddings a una qualsiasi funzione di perdita ed eseguire la [[Intelligenza Artificiale#Backpropagation|stochastic gradient descent]] per addestrare i parametri di aggregazione.
 
 ----------------------------------------------------------------
