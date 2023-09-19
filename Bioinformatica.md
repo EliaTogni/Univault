@@ -958,3 +958,42 @@ Un database di grafi è un sistema di gestione dei dati che sfrutta il modello d
 Entrambi i modelli di dati sono utilizzati per rappresentare la conoscenza in un determinato dominio e permettono diversi tipi di ragionamento sui dati. È possibile convertire i dati da uno dei due modelli all'altro, ma il modello RDF offre una base più ricca e semanticamente coerente rispetto ai grafi delle proprietà, specialmente per l'elaborazione di dati semantici avanzati.
 
 ----------------------------------------------------------------
+
+## Graph Neural Networks
+Innanzitutto, è necessario fare una premessa sul significato di **embedding** L'embedding (o **incorporazione**) è un concetto ampiamente utilizzato nell'apprendimento automatico e nella rappresentazione dei dati. Si riferisce al processo di rappresentare dati complessi in uno spazio di dimensioni inferiori in modo che le informazioni rilevanti siano preservate o catturate in modo efficiente. Questo spazio di dimensioni inferiori è chiamato **embedding space** o **spazio di incorporazione**.
+Nel contesto dei grafi o delle reti, **embedding dei nodi** significa rappresentare i nodi di un grafo in uno spazio di dimensioni inferiori in modo che la struttura e le relazioni tra i nodi possano essere modellate in modo più compatto ed efficiente. Questo può essere utile per varie applicazioni, come il clustering, la classificazione, il calcolo della similarità tra nodi e molte altre analisi delle reti. Gli algoritmi di incorporamento dei nodi cercano di catturare le caratteristiche dei nodi in modo che le operazioni di calcolo possano essere eseguite più facilmente nello spazio di incorporamento.
+
+immagine 2/72
+
+Fino ad ora ci siamo concentrati su encoder superficiali, ossia ricerche di incorporamento.
+Limitazioni dell'incorporamento superficiale:
+1) **numero elevato di parametri** ($\mathcal{O}(\vert V \vert)$): in questo caso, è necessario un grande numero di parametri, poiché non vi è condivisione di parametri e ogni nodo ha il suo vettore di incorporamento unico;
+2) è **inerentemente "transduttivo"**: questo approccio è transduttivo, il che significa che è impossibile generare enbedding per nodi che non sono stati visti durante l'addestramento. Non è in grado di generalizzare a nodi sconosciuti;
+3) **non incorpora le caratteristiche dei nodi**: molte reti hanno delle caratteristiche associate ai nodi che potremmo e dovremmo sfruttare. Tuttavia, l'incorporamento superficiale non tiene conto di queste caratteristiche.
+
+Adesso discuteremo dei metodi deep basati sulle graph neural network. In generale, tutti questi encoder più complessi possono essere combinati con le funzioni di similarità della sezione precedente.
+
+### Setup
+Supponiamo di avere un [[Grafo|grafo]] $G$:
+- $V$ è l'insieme dei vertici.
+- $A$ è la matrice di adiacenza (assumiamo binaria).
+- $X \in \mathbb{R}^{m \times \vert V \vert}$ è una matrice delle feature dei nodi:
+  - queste caratteristiche possono includere attributi categorici, dati testuali, immagini, ecc;
+  - le caratteristiche possono essere rappresentate mediante vettori indicatori o altre rappresentazioni appropriate.
+
+L' idea chiave si basa sul generare enbedding dei nodi basati sui neighborhood locali.
+
+immagine 11/72
+
+I nodi aggregano informazioni dai loro vicini utilizzando reti neurali. Ogni nodo definirà un grafo di calcolo unico.
+
+immagine 13/72
+
+Per quanto riguarda l'aggregazione dei neighborhood, i nodi hanno enbedding in ogni layer. Il modello può avere inoltre una profondità arbitraria. L'incorporamento del layer-$0$ del nodo $u$ è la sua caratteristica di input, cioè $x_u$.
+L'aggregazione del vicinato può essere vista come un filtro centro-periferia, una specie di convoluzione di vicinati.
+
+immagine 15/72
+
+Le distinzioni chiave riguardano il modo in cui diversi approcci aggregano informazioni attraverso i layer. L'approccio di base consiste ne calcolare la media delle informazioni dei vicini e applicare una rete neurale;
+
+----------------------------------------------------------------
