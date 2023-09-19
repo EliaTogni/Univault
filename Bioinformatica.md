@@ -1005,4 +1005,34 @@ dove $f$ è una rete neurale, $N(v)$ rappresenta i vicini di $v$, e $\operatorna
 Per addestrare il modello a generare embeddings di alta qualità, è necessario definire una funzione di perdita sugli embeddings.
 Dopo $K$ layer di aggregazione dei vicini, otteniamo embeddings di output per ciascun nodo. Possiamo dare in pasto questi embeddings a una qualsiasi funzione di perdita ed eseguire la [[Intelligenza Artificiale#Backpropagation|stochastic gradient descent]] per addestrare i parametri di aggregazione.
 
+È possibile addestrare il modello in modo non supervisionato utilizzando solo la struttura del grafo. La funzione di perdita non supervisionata può essere qualsiasi delle opzioni dalla sezione precedente, ad esempio, basata su random walk (node2vec, DeepWalk), sulla fattorizzazione del grafo, cioè addestrare il modello in modo tale che i nodi "simili" abbiano embeddings simili.
+
+Un'alternativa è addestrare direttamente il modello per un compito supervisionato (ad esempio, la classificazione dei nodi).
+
+Abbiamo visto una variante di base di questa idea. Ora copriremo alcune varianti all'avanguardia tratte dalla letteratura.
+
+#### Graph Convolutional Networks
+Le **Graph Convolutional Networks** (**GCN**) sono una leggera variazione dell'idea di aggregazione del vicinato. Da un punto di vista empirico, hanno scoperto che la configurazione delle GCN (utilizzare la stessa matrice di trasformazione per gli embeddings propri e dei vicini e, invece di una semplice media, normalizzare in base ai vicini) fornisce i migliori risultati. Si ottiene una maggior condivisione di parametri e una riduzione del peso dei vicini ad alto grado.
+
+----------------------------------------------------------------
+
+#### GraphSAGE
+Finora abbiamo aggregato i messaggi dai neighbors calcolando la loro media (ponderata). Possiamo fare meglio? Possiamo utilizzare qualsiasi funzione differenziabile che mappi un insieme di vettori in un singolo vettore.<br />
+Concateniamo l'embedding proprio e l'embedding dei vicini utilizzando uno qualsiasi dei diversi tipi di aggregazioni disponibili.
+- media;
+- **pool** (o **riduzione**), la quale trasforma i vettori dei vicini e applica una funzione vettoriale simmetrica;
+- **Long Short-Term Memory** (o **LSTM**): applica LSTM a una permutazione casuale dei vicini.
+
+----------------------------------------------------------------
+
+#### Gated Graph Neural Networks
+
+----------------------------------------------------------------
+
+#### Graph Attention Networks
+
+----------------------------------------------------------------
+
+#### Subgraph Embeddings
+
 ----------------------------------------------------------------
