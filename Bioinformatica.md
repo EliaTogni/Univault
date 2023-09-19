@@ -610,13 +610,13 @@ parametri intermedi (con $w = 1$ risulta pessimo per entrambe)
 ---------------------------------------------------------------
 
 # Biologia Computazionale
-I problemi della bioinformatica sono: la ricerca delle strutture del DNA, la predizione delle proprietà delle proteine (proteomica funzionale), la predizione di dati fenotipici a partire da dati genotipici (es. genomica medica).
+I problemi della bioinformatica consistono nella ricerca delle strutture del DNA, nella predizione delle proprietà delle proteine (proteomica funzionale)e nella predizione di dati fenotipici a partire da dati genotipici (es. genomica medica).
 
-Tipicamente, sono problemi risolti con tecniche di machine learning, perché sono troppo complessi per essere trattati con soluzioni teoriche. Inoltre, sono generalmente disponibili grandi moli di dati. I problemi della bioinformatica rappresentano una sfida per le tecniche di machine learning in quanto: i campioni sono tipicamente molto rumorosi e poco etichettati, inoltre sia gli input sia gli output possono essere dati strutturati ([[Array|array]], [[Albero|alberi]], [[Grafo|grafi]], ...) e composti da diversi tipi di dato elementari.
+Tipicamente, sono problemi risolti con tecniche di machine learning, perché sono troppo complessi per essere trattati con soluzioni teoriche. Inoltre, sono generalmente disponibili grandi moli di dati. Questi problemi rappresentano una sfida per le tecniche di machine learning in quanto i campioni sono tipicamente molto rumorosi e poco etichettati. Inoltre, sia gli input sia gli output possono essere dati strutturati ([[Array|array]], [[Albero|alberi]], [[Grafo|grafi]], ...) e composti da diversi tipi di dati elementari.
 
-A questi problemi, si aggiungono anche i problemi di basso livello come l'elaborazione delle immagini e l'elaborazione di sequenze di dati.
+A questi problemi si aggiungono anche i problemi di basso livello come l'elaborazione delle immagini e l'elaborazione di sequenze di dati.
 
-Alcune applicazioni importanti sono nell'ambito della medicina genomica, che si basa sullo studio dei caratteri fenotipici e genotipici del paziente per determinare i trattamenti più adeguati. Diventa, così, possibile tutto un insieme di tecniche di diagnostica e terapia di precisione, che possono eventualmente servirsi di tecnologie all'avanguardia come quelle per l'editing del DNA.
+Alcune applicazioni importanti sono nell'ambito della medicina genomica, la quale si basa sullo studio dei caratteri fenotipici e genotipici del paziente per determinare i trattamenti più adeguati. Diventa, così, possibile tutto un insieme di tecniche di diagnostica e terapia di precisione, le quali possono eventualmente servirsi di tecnologie all'avanguardia come quelle per l'editing del DNA.
 
 ## Cell variable
 Abbiamo detto che i problemi della biologia computazionale sono spesso formulati nei termini di problemi di apprendimento supervisionato: predire il rischio di una malattia a partire da una sequenza di DNA non è, tuttavia, una funzione semplice da apprendere.
@@ -642,7 +642,7 @@ Il predittore finale utilizza le cell variable per stimare l'effetto della varia
 ----------------------------------------------------------------
 
 ### Rete Convoluzionale
-Il primo layer della rete neurale di DeepSEA è composto da una matrice $D\times W$ di neuroni, dove il neurone $h_{d,w}$ si occupa di rilevare il motivo $d$ nella finestra $w$ . I motivi target hanno una lunghezza di $6$ basi: la larghezza della finestra è $6$, con un *hop size* di $1$. Quindi il numero di finestre $W$ è cinque unità in meno rispetto alla lunghezza della sequenza (no padding).
+Il primo layer della rete neurale di DeepSEA è composto da una matrice $D\times W$ di neuroni, dove il neurone $h_{d,w}$ si occupa di rilevare il motivo $d$ nella finestra $w$ . I motivi target hanno una lunghezza di $6$ basi: la larghezza della finestra è $6$, con un **hop size** di $1$. Quindi il numero di finestre $W$ è cinque unità in meno rispetto alla lunghezza della sequenza (no padding).
 
 Il numero di motivi è virtualmente variabile, ma tutti i neuroni $\{h_{d,w}\}_{w=1}^{W}$ cercano di rilevare lo stesso motivo: non ha senso usare uno strato completamente connesso, ma si sfrutta il parameter sharing degli strati convoluzionali per facilitare il training e ridurre il numero di parametri. Ogni motivo sarà, quindi, rilevato da uno specifico kernel $4\times 6$.
 
@@ -651,7 +651,7 @@ Ricapitolando, il primo layer di DeepSEA è uno strato convoluzionale con $D$ ke
 ----------------------------------------------------------------
 
 ### Boosting
-L'output della rete convoluzionale restituisce $919$ feature: da queste si calcolano le differenze assolute ( $P(ref)-P(alt)$ ) e relative ( $\log{\frac{P(ref)}{P(alt)}}$ ) e si integrano gli score di conservazione evolutiva. Tutte queste feature ($1842$) sono preprocessate calcolandone il valore assoluto e sono standardizzate: il predittore viene ottenuto con un algoritmo di boosting per la regressione logistica.
+L'output della rete convoluzionale restituisce $919$ feature: da queste si calcolano le differenze assolute $(P(ref)-P(alt))$ e relative $(\log{\frac{P(ref)}{P(alt)}})$ e si integrano gli score di conservazione evolutiva. Tutte queste feature ($1842$) sono preprocessate calcolandone il valore assoluto e sono standardizzate: il predittore viene ottenuto con un algoritmo di boosting per la regressione logistica.
 
 ----------------------------------------------------------------
 
