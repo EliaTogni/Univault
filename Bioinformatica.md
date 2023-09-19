@@ -372,7 +372,7 @@ Alcune tecniche di regolarizzazione utilizzate sono il **weight decay** (la norm
 ### CNN
 Le **[[Intelligenza Artificiale#Deep Learning|convolutional neural networks]]** (o **CNN**) sono un tipo di [[Intelligenza Artificiale#Reti neurali |reti neurali]] specializzato nel processing di dati strutturati in una topologia a griglia. Strutturalmente si tratta di semplici reti neurali che utilizzano la **convoluzione** al posto del prodotto matrice - vettore in almeno uno dei layer.<br />
 Nella sua forma più generale, la convoluzione è un'operazione su due funzioni di un argomento a valori reali. Per motivare la definizione della convoluzione, iniziamo con esempi di due funzioni che potremmo utilizzare.
-Supponiamo di essere in grado di monitorare la posizione di una navicella spaziale con un sensore laser. Il nostro sensore laser fornisce un'unica uscita $x(t)$, che rappresenta la posizione della navicella spaziale al tempo $t$. Sia $x$ che $t$ sono valori reali, il che significa che possiamo ottenere una lettura diversa dal sensore laser in qualsiasi istante di tempo.<br />
+Supponiamo di essere in grado di monitorare la posizione di una navicella spaziale con un sensore laser. Il nostro sensore laser fornisce un'unico output $x(t)$, che rappresenta la posizione della navicella spaziale al tempo $t$. Sia $x$ che $t$ sono valori reali, il che significa che possiamo ottenere una lettura diversa dal sensore laser in qualsiasi istante di tempo.<br />
 Supponiamo ora che il nostro sensore laser sia noisy. Per ottenere una stima meno rumorosa della posizione della navicella spaziale, vorremmo fare una media di diverse misurazioni. Naturalmente, le misurazioni più recenti sono più rilevanti, quindi vorremmo che fosse una media ponderata che dia maggior peso alle misurazioni recenti. Possiamo farlo con una funzione di pesatura $w(a)$, dove $a$ è l'età di una misurazione.<br />
 Se applichiamo un'operazione di media ponderata in questo modo in ogni istante, otteniamo una nuova funzione che fornisce una stima della posizione della navicella spaziale.<\br />
 La definizione matematica della convoluzione è:
@@ -938,9 +938,9 @@ I testi e le sequenze hanno invece una struttura lineare monodimensionale, il ch
 
 Una tecnica consiste nel mappare i nodi in embedding a $d$ dimensioni in modo che i nodi simili nella rete siano incorporati vicini l'uno all'altro. 
 
-immagine 20/57
+![[Node embedding.png]]
 
-Spplicare gli approcci di deep learning ai grafi presenta tuttavia notevoli complicazioni:
+Applicare gli approcci di deep learning ai grafi presenta tuttavia notevoli complicazioni:
 1) grande complessità delle reti: le reti possono avere una struttura topologica arbitraria e complessa, senza la località spaziale tipica delle griglie. Questo rende difficile applicare approcci basati su convoluzioni o altri modelli progettati per dati con una struttura più regolare;
 2) l'assenza di ordinamento fisso dei nodi o punto di riferimento: nei grafi, non c'è un ordinamento fisso dei nodi o un punto di riferimento comune. Questo impedisce l'applicazione diretta di molti algoritmi di deep learning che dipendono da tali strutture;
 3) la dinamicità e multimodalità: le reti possono essere dinamiche, ovvero cambiare nel tempo, e possono includere una varietà di modalità o tipi di informazioni. Gestire questa complessità richiede approcci specializzati che possano adattarsi a situazioni diverse.
@@ -963,7 +963,7 @@ Entrambi i modelli di dati sono utilizzati per rappresentare la conoscenza in un
 Innanzitutto, è necessario fare una premessa sul significato di **embedding** L'embedding (o **incorporazione**) è un concetto ampiamente utilizzato nell'apprendimento automatico e nella rappresentazione dei dati. Si riferisce al processo di rappresentare dati complessi in uno spazio di dimensioni inferiori in modo che le informazioni rilevanti siano preservate o catturate in modo efficiente. Questo spazio di dimensioni inferiori è chiamato **embedding space** o **spazio di incorporazione**.
 Nel contesto dei grafi o delle reti, **embedding dei nodi** significa rappresentare i nodi di un grafo in uno spazio di dimensioni inferiori in modo che la struttura e le relazioni tra i nodi possano essere modellate in modo più compatto ed efficiente. Questo può essere utile per varie applicazioni, come il clustering, la classificazione, il calcolo della similarità tra nodi e molte altre analisi delle reti. Gli algoritmi di incorporamento dei nodi cercano di catturare le caratteristiche dei nodi in modo che le operazioni di calcolo possano essere eseguite più facilmente nello spazio di incorporamento.
 
-immagine 2/72
+![[Embedding nodes.png]]
 
 Fino ad ora ci siamo concentrati su encoder superficiali, ossia ricerche di incorporamento.
 Limitazioni dell'incorporamento superficiale:
@@ -983,7 +983,7 @@ Supponiamo di avere un [[Grafo|grafo]] $G$:
 
 L' idea chiave si basa sul generare enbedding dei nodi basati sui neighborhood locali.
 
-immagine 11/72
+![[Neighborhood aggregation.png]]
 
 I nodi aggregano informazioni dai loro vicini utilizzando reti neurali. Ogni nodo definirà un grafo di calcolo unico.
 
@@ -991,8 +991,6 @@ immagine 13/72
 
 Per quanto riguarda l'aggregazione dei neighborhood, i nodi hanno enbedding in ogni layer. Il modello può avere inoltre una profondità arbitraria. L'incorporamento del layer-$0$ del nodo $u$ è la sua caratteristica di input, cioè $x_u$.
 L'aggregazione del vicinato può essere vista come un filtro centro-periferia, una specie di convoluzione di vicinati.
-
-immagine 15/72
 
 Le distinzioni chiave riguardano il modo in cui diversi approcci aggregano informazioni attraverso i layer. L'approccio di base consiste ne calcolare la media delle informazioni dei vicini e applicare una rete neurale;
 
