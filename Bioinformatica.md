@@ -1042,9 +1042,23 @@ In particolare, è utile per reti complesse che rappresentano formule logiche op
 #### Graph Attention Networks
 E se alcuni vicini fossero più importanti di altri?
 
+immagine 59/72
+
+E' possibile potenziare il modello base delle reti neurali grafiche tramite attention weights. Sono inoltre possibili vari modelli di attenzione.
 
 ----------------------------------------------------------------
 
 #### Subgraph Embeddings
+Finora ci siamo concentrati sugli embeddings a livello di nodo, ma cosa succede con gli embeddings a livello di sottografo?
+
+- sommare (o fare la media) gli embeddings dei nodi nel (sotto)grafo; 
+- introdurre un "nodo virtuale" per rappresentare il sottografo e eseguire una normale rete neurale grafica;
+- imparare come raggruppare gerarchicamente i nodi.
+
+L'ultima opzione è quella che offre i risultati migliori. Si fornisce ora una panoramica di base di tale algoritmo:
+1) si esegue una GNN sul grafo e si ottengono gli embeddings dei nodi;
+2) si raggruppano gli embeddings dei nodi per creare un grafo rifinito;
+3) si esegue una GNN sul grafo rifinito;
+4) si itera fino alla convergenza.
 
 ----------------------------------------------------------------
