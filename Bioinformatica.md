@@ -890,6 +890,29 @@ Problemi del word embedding:
 ----------------------------------------------------------------
 
 ## Metodi di Apprendimento della Rappresentazione dei Grafi per la Network Medicine
+Le task di Machine Learning classiche sulle reti sono:
+- classificazione dei nodi;
+- predizione dei collegamenti;
+- rilevamento delle comunità;
+- similarità tra reti.
+
+immagine 3/65
+
+Vogliamo affrontare l'apprendimento delle caratteristiche in grafi. Perché imparare gli embeddings? L'obiettivo è mappare ogni nodo in uno spazio a bassa dimensione. Vogliamo avere una rappresentazione distribuita per i nodi. Inoltre, la similarità tra i nodi indica la forza del collegamento e l'embedding codifica le informazioni della rete e genera la rappresentazione dei nodi.<br />
+Perché è difficile incorporare i nodi di un grafo in uno spazio euclideo? Perché i grafi sono non euclidei. Infatti, l'enumerazione dei nodi è arbitraria e hanno una struttura complessa.
+
+Come possiamo trasformare un grafo in uno spazio euclideo? Possiamo cercare di linearizzare il grafo (ad esempio, creando una sequenza per ciascun nodo mediante random walk) o attraverso Graph Convolution Networks (e propagare le informazioni tra i nodi del grafo).
+
+Ci sono due principali linee di ricerca per l'apprendimento della rappresentazione dei grafi:
+1) Embedding dei grafi;
+2) Reti neurali sui grafi.
+
+immagin 14/65
+
+### node2vec: Unsupervised Feature Learning
+Ricordiamo che negli embeddings di word2vec, i punti sono nello spazio euclideo: punti vicini (parole) sono semanticamente correlati.
+Ma come si possono incorporare i grafi? Intuizione: trovare l'embedding dei nodi in $d$ dimensioni per cui venga preservata la similarità. Idea: apprendere l'embedding dei nodi in modo tale che i nodi vicini nel grafo siano vicini tra loro nell'embedding.
+
 
 
 ----------------------------------------------------------------
@@ -1050,7 +1073,7 @@ E' possibile potenziare il modello base delle reti neurali grafiche tramite atte
 
 #### Subgraph Embeddings
 Finora ci siamo concentrati sugli embeddings a livello di nodo, ma cosa succede con gli embeddings a livello di sottografo?
-
+Possiamo approcciarci al problema in diverse maniere:
 - sommare (o fare la media) gli embeddings dei nodi nel (sotto)grafo; 
 - introdurre un "nodo virtuale" per rappresentare il sottografo e eseguire una normale rete neurale grafica;
 - imparare come raggruppare gerarchicamente i nodi.
