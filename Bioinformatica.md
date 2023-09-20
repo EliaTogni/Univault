@@ -913,7 +913,33 @@ immagin 14/65
 Ricordiamo che negli embeddings di word2vec, i punti sono nello spazio euclideo: punti vicini (parole) sono semanticamente correlati.
 Ma come si possono incorporare i grafi? Intuizione: trovare l'embedding dei nodi in $d$ dimensioni per cui venga preservata la similarità. Idea: apprendere l'embedding dei nodi in modo tale che i nodi vicini nel grafo siano vicini tra loro nell'embedding.
 
+E' possibile definire in multipli modi il concetto di neighborhood, come, ad esempio, i nodi attraversati nello shortest path tra due nodi, oppure i nodi attraversati attraverso una random walk;
 
+E' possibile, inoltre, considerare il problema dell'apprendimento delle feature come un problema di ottimizzazione.<br />
+Dato un grafo $G = (V, E)$, l'obiettivo è apprendere la funzione $f: u \to \mathbb{R}^d$, dove $f$ è una tabella di lookup. Dato un nodo $u$, vogliamo apprendere la feature representation $f(u)$ che predice i nodi nel vicinato di $u$ ($N_S(u)$).
+
+Ci possiamo approcciare al problema di definire il vicinato $N_S(u)$ di un nodo dato $u$ in due modi: tramite la **Breadth First Search** (o **BFS**), la quale fornisce una visione microscopica locale, oppure tramite la **Depth First Search** (o **DFS**), la quale fornisce una visione macroscopica globale.
+
+immagine 36/65
+
+Node2Vec è un algoritmo di embedding dei grafi che utilizza il concetto di **biased random walks** per apprendere gli embeddings dei nodi in un grafo. Le biased random walks sono passeggiate casuali che vengono guidate o indirizzate in base a determinate probabilità durante la scelta dei prossimi nodi da visitare.
+
+Node2Vec utilizza due parametri, $p$ e $q$, per bilanciare la probabilità di esplorare la vicinanza locale o la struttura globale del grafo:
+1) quando $p > q$, la passeggiata è incline a tornare indietro sui propri passi, cioè a visitare nodi simili a quelli visitati di recente. Questo favorisce l'acquisizione di informazioni sulla struttura locale del grafo;
+2) quando $p < q$, la passeggiata è incline a esplorare nuove aree del grafo, cioè a visitare nodi che sono diversi da quelli visitati di recente. Questo favorisce l'acquisizione di informazioni sulla struttura globale del grafo.
+
+In breve, le biased random walks in Node2Vec sono progettate per bilanciare l'esplorazione di vicinanza locale e struttura globale del grafo, consentendo agli embeddings di nodi di catturare sia le relazioni locali che quelle globali nel grafo. Questo approccio rende Node2Vec efficace nell'apprendimento di embeddings di alta qualità per i nodi dei grafi, utilizzabili in una varietà di compiti di analisi dei grafi.
+
+L'algoritmo si sviluppa in questo modo:
+1) simula $r$ random walk di lunghezza $l$ partendo da ogni nodo $u$;
+2) ottimizza l'obiettivo di node2vec usando lo Stochastic Gradient Descent.
+Questo algoritmo ha complessità lineare nel tempo.
+
+Le due fasi degli approcci di embedding dei grafi sono:
+1) apprendere gli embeddings dei nodi o degli archi dalla topologia del grafo (ad esempio, utilizzando passeggiate casuali);
+2) utilizzare gli embeddings per compiti di apprendimento non supervisionato o supervisionato sulle rappresentazioni incorporate dei nodi e degli archi.
+
+Riassumendo, node2vec è un algoritmo robusto e scalabile il quale, tramite le biased random walks riesce a catturare la diversità dei pattern nella rete.
 
 ----------------------------------------------------------------
 
