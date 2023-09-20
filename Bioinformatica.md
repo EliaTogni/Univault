@@ -896,9 +896,11 @@ Le task di Machine Learning classiche sulle reti sono:
 - rilevamento delle comunità;
 - similarità tra reti.
 
-immagine 3/65
+Vogliamo affrontare l'apprendimento delle feature in grafi. 
 
-Vogliamo affrontare l'apprendimento delle caratteristiche in grafi. Perché imparare gli embeddings? L'obiettivo è mappare ogni nodo in uno spazio a bassa dimensione. Vogliamo avere una rappresentazione distribuita per i nodi. Inoltre, la similarità tra i nodi indica la forza del collegamento e l'embedding codifica le informazioni della rete e genera la rappresentazione dei nodi.<br />
+![[Node embedding.png]]
+
+Perché imparare gli embeddings? L'obiettivo è mappare ogni nodo in uno spazio a bassa dimensione. Vogliamo avere una rappresentazione distribuita per i nodi. Inoltre, la similarità tra i nodi indica la forza del collegamento e l'embedding codifica le informazioni della rete e genera la rappresentazione dei nodi.<br />
 Perché è difficile incorporare i nodi di un grafo in uno spazio euclideo? Perché i grafi sono non euclidei. Infatti, l'enumerazione dei nodi è arbitraria e hanno una struttura complessa.
 
 Come possiamo trasformare un grafo in uno spazio euclideo? Possiamo cercare di linearizzare il grafo (ad esempio, creando una sequenza per ciascun nodo mediante random walk) o attraverso Graph Convolution Networks (e propagare le informazioni tra i nodi del grafo).
@@ -907,7 +909,7 @@ Ci sono due principali linee di ricerca per l'apprendimento della rappresentazio
 1) Embedding dei grafi;
 2) Reti neurali sui grafi.
 
-immagin 14/65
+![[Graph representation.png]]
 
 ### node2vec: Unsupervised Feature Learning
 Ricordiamo che negli embeddings di word2vec, i punti sono nello spazio euclideo: punti vicini (parole) sono semanticamente correlati.
@@ -920,7 +922,7 @@ Dato un grafo $G = (V, E)$, l'obiettivo è apprendere la funzione $f: u \to \mat
 
 Ci possiamo approcciare al problema di definire il vicinato $N_S(u)$ di un nodo dato $u$ in due modi: tramite la **Breadth First Search** (o **BFS**), la quale fornisce una visione microscopica locale, oppure tramite la **Depth First Search** (o **DFS**), la quale fornisce una visione macroscopica globale.
 
-immagine 36/65
+![[BFS vs DFS.png]]
 
 Node2Vec è un algoritmo di embedding dei grafi che utilizza il concetto di **biased random walks** per apprendere gli embeddings dei nodi in un grafo. Le biased random walks sono passeggiate casuali che vengono guidate o indirizzate in base a determinate probabilità durante la scelta dei prossimi nodi da visitare.
 
@@ -1036,14 +1038,12 @@ L' idea chiave si basa sul generare embedding dei nodi basati sui neighborhood l
 
 I nodi aggregano informazioni dai loro vicini utilizzando reti neurali. Ogni nodo definirà un grafo di calcolo unico.
 
-immagine 13/72
+![[Neighborhood aggregation 2.png]]
 
 Per quanto riguarda l'aggregazione dei neighborhood, i nodi hanno embedding in ogni layer. Il modello può avere inoltre una profondità arbitraria. L'incorporamento del layer-$0$ del nodo $u$ è la sua caratteristica di input, cioè $x_u$.
 L'aggregazione del vicinato può essere vista come un filtro centro-periferia, una specie di convoluzione di vicinati.
 
-Le distinzioni chiave riguardano il modo in cui diversi approcci aggregano informazioni attraverso i layer. L'approccio di base consiste ne calcolare la media delle informazioni dei vicini e applicare una rete neurale;
-
-immagine 17/72
+Le distinzioni chiave riguardano il modo in cui diversi approcci aggregano informazioni attraverso i layer. L'approccio di base consiste ne calcolare la media delle informazioni dei vicini e applicare una rete neurale.
 
 Gli embeddings sono calcolati ad ogni livello tramite una funzione appropriata (una rete neurale). $h_v^k$ rappresenta l'embedding del nodo $v$ al livello $k$ ($k= 0$ corrisponde all'input $x_v$). L'embedding del livello $k+1$ viene calcolato attraverso la funzione $f$:
 
@@ -1091,7 +1091,7 @@ In particolare, è utile per reti complesse che rappresentano formule logiche op
 #### Graph Attention Networks
 E se alcuni vicini fossero più importanti di altri?
 
-immagine 59/72
+![[Neighborhood attention.png]]
 
 E' possibile potenziare il modello base delle reti neurali grafiche tramite attention weights. Sono inoltre possibili vari modelli di attenzione.
 
