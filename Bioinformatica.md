@@ -1026,10 +1026,22 @@ Concateniamo l'embedding proprio e l'embedding dei vicini utilizzando uno qualsi
 ----------------------------------------------------------------
 
 #### Gated Graph Neural Networks
+GCNs e GraphSAGE generalmente hanno solo $2-3$ strati. Ma cosa succede se vogliamo andare più in profondità? Come possiamo costruire modelli con molti strati di aggregazione dei vicini? Si presentano delle challenge per riuscire a costruire questi modelli: 
+- overfitting dovuto a troppi parametri;
+- gradienti che svaniscono/esplodono durante la retropropagazione. 
+
+L'idea che permette di superare questi scogli consiste nell'usare tecniche dai moderni reti neurali ricorrenti.  E' possibile testare la condivisione di parametri tra i livelli oppure l'update dello stato tramite RNN:
+1) si ottiene un "messaggio" dai vicini al passo $k$;
+2) si aggiorna lo stato del nodo utilizzando la **Gated Recurrent Unit** (**GRU**). Il nuovo stato del nodo dipende dal vecchio stato e dal messaggio dai vicini:
+
+GGNN è in grado di gestire modelli con più di $20$ layers. La maggior parte delle reti reali ha diametri ridotti (ad esempio, meno di $7$). Inoltre, consente di propagare informazioni complesse sulla struttura globale del grafo a tutti i nodi.
+In particolare, è utile per reti complesse che rappresentano formule logiche oppure programmi.
 
 ----------------------------------------------------------------
 
 #### Graph Attention Networks
+E se alcuni vicini fossero più importanti di altri?
+
 
 ----------------------------------------------------------------
 
