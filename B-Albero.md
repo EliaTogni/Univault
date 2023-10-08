@@ -11,4 +11,4 @@ Un B-albero non vuoto di grado minimo $t$ è un albero radicato con le seguenti 
  
  Un nodo è _pieno_ se contiene esattamente $(2t-1)$ chiavi e _quasi vuoto_ se ne contiene $(t-1)$.
  
- -------------------------------------------------------------
+ ---------------------------------------------------------------

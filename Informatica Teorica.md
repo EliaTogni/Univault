@@ -17,7 +17,7 @@ La branca dell'informatica che cerca di rispondere in modo rigoroso a questa dom
 Il concetto di calcolabilità è intrinseco ai problemi e può essere catturato matematicamente.<br />
 Una volta stabilito il limite di ciò che è calcolabile, la domanda successiva che sorge spontanea riguarda il costo richiesto da una computazione, cioè quali **risorse computazionali** sono necessarie (elettricità, numero di processori, tempo, spazio di memoria). Lo studio di ciò prende il nome di **Teoria della Complessità**. Ai fini di ciò, sono necessarie delle definizioni rigorose di tempo e spazio di calcolo. A questo punto è possibile definire rigorosamente quando un problema sia **efficientemente calcolabile**, in termini di queste risorse. Questo è uno studio quantitativo dei problemi.
 
--------------------------------------------------------------
+----------------------------------------------------------------
 
 # Funzioni
 Una funzione dall'insieme $A$ all'insieme $B$ è una **legge** $f$ che spiega come associare ad ogni elemento $a \in A$ un elemento $b \in B$:

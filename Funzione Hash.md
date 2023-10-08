@@ -38,7 +38,7 @@ Per risolvere la problematica delle _collisioni_, cioè quando due diversi input
 ### Analisi del Costo di Scansione ###
 Sebbene, usando l'indirizzamento aperto, la scansione per la ricerca di un elemento o di una cella vuota possa richiedere tempo $O(n)$ nel caso peggiore, nel caso medio la situazione migliora:
 
-![[CostoDiScansione.png]]
+![[Images/CostoDiScansione.png]]
 
 dove $\alpha = \frac{n}{m}$ è il fattore di carico della tavola.
 

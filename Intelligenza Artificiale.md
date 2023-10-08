@@ -39,9 +39,9 @@ Il cervello umano permette di analizzare in maniera sofisticata l'ambiente in cu
 Lo studio di questi processi è un campo di ricerca molto attivo e multidisciplinare nel quale convergono gli interessi della biologia, della medicina e della psicologia. Tali studi offrono dei modelli che simulano l'attività celebrale. Proprio questi modelli vengono poi utilizzati dall'informatica per offrire strumenti di predizione, ottimizzazione e problem-solving in vari campi applicativi (guida automatizzata, smart cities, etc.).<br />
 Il successo di questi modelli è condizionato dal fatto che il cervello è considerabile alla pari di un potente computer capace di computare in parallelo grandi porzioni di dati.
 
-![[neurone.jpeg]]
+![[Images/Neurone.jpeg]]
 
-![[Biological neurons.png]]
+![[Images/BiologicalNeurons.png]]
 
 Il cervello è composto da miliardi semplici unità, chiamate **neuroni**. Un neurone è una cellula la quale raccoglie e trasmette attività elettrica. I neuroni esistono in differenti forme e grandezze, ed è possibile risalire ad un neurone "prototipo" dal quale ricondursi a tutti i tipi di neuroni.<br />
 Questi neuroni comunicano tra di loro inviando informazioni sotto forma di segnali di attivazione l'un l'altro, lungo connessioni orientate.<br />
@@ -93,7 +93,7 @@ Naturalmente, le computazioni delle TLU con più di due input possono essere int
 Da quanto detto, tuttavia, si può dedurre che una singola TLU potrà computare solo funzioni **linearmente separabili**. Due insiemi di punti in uno spazio Euclideo vengono definiti linearmente separabili  se e solo se esiste almeno un punto, una retta, un piano o iperpiano (dipendentemente dalla dimensione dello spazio Euclideo), tale che tutti i punti di un insieme giacciano da un lato e tutti i punti dell'altro insieme giacciano dall'altro lato di questo punto, retta, piano o iperpiano.<br />
 Sfortunatamente, non tutte le funzioni sono linearmente separabili.
 
-![[geometria.png]]
+![[Images/Geometria.png]]
 
 Un insieme di punti $X$ in uno spazio euclideo si dice **convesso** se e solo se non è vuoto, è connesso e, per ogni coppia di punti appartenenti all'insieme, ogni punto del segmento che li congiunge appartiene anch'esso all'insieme.
 
@@ -104,12 +104,12 @@ Due insiemi di punti $X$ e $Y$ si dicono **linearmente separabili** se e solo se
 Questo significa che, già all'interno delle funzioni Booleane, ne esistono alcune che non possono essere simulate da una TLU. Un esempio di ciò è la doppia implicazione.<br /> 
 Sebbene solo due funzioni Booleane a due argomenti non siano linearmente separabili, il numero di funzioni linearmente separabili diminuisce rapidamente al crescere degli argomenti ed infatti, per un numero di argomenti arbitrariamente grande, una singola TLU non può calcolare praticamente nessuna funzione.
 
-![[doppiaimplicazione.png]]
+![[Images/DoppiaImplicazione.png]]
 
 Il problema può essere ovviato attraverso la costruzione di network di TLU più complessi.<br />
 Come esempio, si consideri il network che simula la doppia implicazione.
 
-![[netTLU.png]]
+![[Images/NetTLU.png]]
 
 E' risaputo, infatti, che la congiunzione di due variabili Booleane sia linearmente separabile.<br />
 Può essere dimostrato, inoltre, che tutte le funzioni Booleane con un numero arbitrario di input possano essere computate da reti di TLU semplicemente sfruttando delle equivalenze logiche al fine di dividere queste funzioni in un modo tale che tutte le sottofunzioni occorrenti siano linearmente separabili. 
@@ -136,14 +136,14 @@ $$y = \begin{cases}
 Si calcoli la funzione errore al variare di $w$ e $\theta$. Nel caso in cui $x = 0$ l'errore sarà $0$ per un $\theta$ negativo e $1$ per un $\theta$ positivo. Il peso non avrà, infatti, alcuna influenza perchè viene annullato nella moltiplicazione con l'input.<br />
 Quando, invece, $x = 1$, si avrà che la funzione dipenderà da entrambi i parametri.
 
-![[error1.png]]
+![[Images/Error1.png]]
 
 La funzione di errore così calcolata non può essere usata direttamente nella computazione perchè è composta da plateau e, quindi, non è ovunque derivabile. La soluzione è quella di calcolare la funzione di errore in modo tale che offra una misura di quanto sia sbagliata la relazione tra pesi e threshold. Si otterrà così una funzione di errore che, seppur ancora non differenziabile, lo sarà localmente nei punti in cui l'errore si discosta da $0$. Ciò che l'algoritmo farà per correggere l'errore, dunque, sarà discendere verso l'area dove la funzione di errore si annulla. Questo è possibile esattamente perché è stato scelto di utilizzare una funzione derivabile nei punti di interesse. E' sempre possibile calcolare la direzione migliore da seguire affinchè ci si muova nella direzione del plateau più basso, ovvero verso l'errore nullo.<br />
 Le regole di adattamento possono essere applicate in due modi:
 -  **online learning**, ovvero l'opzione di adattare i pesi e threshold ad ogni singolo step di training; 
 - **batch learning**, ovvero l'opzione nel quale i cambiamenti vengono aggregati in **learning/training epoch** o **epoche**. Al termine di queste epoche, i cambiamenti aggregati vengono applicati.
 
-![[error2.png]]
+![[Images/Error2.png]]
 
 Si definisce di seguito la **delta rule** o **procedura di Widrow-Hoff** per allenare le TLU:
 
@@ -156,7 +156,7 @@ dove $\eta$ è il **learning rate**. Più questo valore è alto, più i cambiame
 
 Ora verrano mostrari alcuni esempi di training, partendo dai valori $\theta = 3/2$, $w = 2$ e learning rate $\eta= 1$.
 
-![[Online training ex.png]]
+![[Images/OnlineTrainingExercise.png]]
 
 ![[Batch training ex.png]]
 

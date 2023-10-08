@@ -444,7 +444,7 @@ Si può ottenere un risultato migliore? E' evidente che il problema SOMME PREFIS
 
 Una proposta parallela è quella di risolvere con SOMMATORIA tutti i moduli prefissi. Si applicano $n-1$ moduli SOMMATORIA, tutti in parallelo.
 
-![[SommePrefisseParallelo.png]]
+![[Images/SommePrefisseParallelo.png]]
 
 Questo non è, ovviamente, un algoritmo EREW bensì CREW, in quanto ogni applicazione di SOMMATORIA richiederà le celle precedenti in lettura contemporanea. 
 
@@ -469,21 +469,21 @@ Si tratta di puntatori, di link tra coppie di numeri, indicati tramite frecce.<b
 Ogni processore si occupa di un puntatore e ne fa la somma in questo modo:<br />
 Dati $M[k] = m$ e $M[S[k]] = q$, sia $S[k]$ la cella di memoria contenente la distanza del successivo da $M[k]$. <br />Questa distanza può essere interpretata come un link, un collegamento tra le due celle.<br /> 
 
-![[KoggeStone0.png]]
+![[Images/KoggeStone0.png]]
 
 Il processore assegnato a questo link esegue, al passo $j=1$, la somma $m + q$ e memorizza il risultato in $M[S[k]]$, cioè $M[k+1]$. Al passo $j=0$, quindi, l'algoritmo prende un elemento ed il suo successore e ne calcola la somma (tranne per l'ultimo elemento, in quanto privo di successore).<br />
 L'algoritmo aggiorna poi il contenuto di $M[S[k]]$.<br />
 Al passo $j=2$, l'algoritmo prende un elemento ed il suo successore non più a distanza $S[k] = 1$ bensì a distanza $S[k] = 2$, e ne effettua la somma (anche in questo caso non viene eseguita per l'ultimo ed il penultimo elemento, in quanto privi di successore).<br />
 
-![[KoggeStone1.png]]
+![[Images/KoggeStone1.png]]
 
 Questo algoritmo raddoppia la distanza ad ogni passo successivo, fino al terminare dell'algoritmo. Da questo il nome **pointer doubling**.
 
-![[KoggeStone2.png]]
+![[Images/KoggeStone2.png]]
 
 Lo step successivo sarà, quindi, questo:
 
-![[KoggeStone3.png]]
+![[Images/KoggeStone3.png]]
 
 L'algoritmo termina quando nessun elemento ha più un successore. A questo punto, in ogni cella di memoria ho le somme prefisse desiderate.
 
@@ -509,7 +509,7 @@ for j = 1 to log(n) do{
 I processori non competono per accedere alla stessa cella. Si sta risolvendo il problema con un architettura EREW.
 E' ovviamente molto plausibile avere un link entrante in una cella di memoria ed un link uscente dalla medesima cella ma le operazioni di lettura (e scrittura) vengono svolte in momenti diversi.
 
-![[ConcurrencyKoggeStone1.png]]
+![[Images/ConcurrencyKoggeStone1.png]]
 
 Per visualizzare meglio questa operazione, si immaginino i due processori $P_{k}$ e $P_{k}'$ al tempo $t$.<br />
 $P_{k}$ esegue una LOAD su $M[k]$ al tempo $t1$ mentre $P_{k}'$ esegue una LOAD su $M[k']$ allo stesso tempo $t1$. Poichè $k \neq k'$, i due valori sono diversi.<br />
@@ -517,7 +517,7 @@ Al tempo $t2$, il primo processore esegue una LOAD su $S[k]$ mentre il secondo p
 Al tempo $t3$, $P_{k}$ carica $M[S[k]]$ con una LOAD, mentre $P_{k'}$ carica con una LOAD$M[S[k']]$. Anche in questo caso i valori sono diversi.<br />
 Si temeva che $M[S[k]]$ ed $M[k']$ venissero acceduti simultaneamente ma non è così.
 
-![[ConcurrencyKoggeStone2.png]]
+![[Images/ConcurrencyKoggeStone2.png]]
 
 Questa dimostrazione ribadisce la struttura EREW dell'algoritmo.<br />
 Se $i\neq j \rightarrow S[i] \neq S[j]$, quindi i due valori hanno successori diversi (eccetto il caso $S[i] = S[j] = 0$).
@@ -806,7 +806,7 @@ Essendo $\alpha$ una cella di $M$, risulta essere un accesso simultaneo in lettu
    
    Finamente si è ottenuto un algoritmo EREW.
    
-![[ValutazionePolinomio.png]]
+![[Images/ValutazionePolinomio.png]]
 In questo schema viene visualizzato complessivamente l'algoritmo EREW per la valutazione di un polinomio.<br />
 Analizziamo ora le prestazioni dell'algoritmo.<br />
    $$p(n) = \frac{n}{\log(n)}$$
@@ -969,27 +969,27 @@ Esistono algoritmo di ordinamento efficienti, cioè la cui efficienza tende ad u
 Si usa ora l'algoritmo sequenziale [[MergeSort]] per prendere ispirazione. <br />
 L'idea iniziale è di utilizzare un algoritmo parallelo per eseguire la routine _Merge_. Sarebbero necessari $\log(n)$ passi paralleli.
 
-![[SchemaMergeSort.png]]
+![[Images/SchemaMergeSort.png]]
 
 Purtroppo _Merge_ non è parallelizzabile, si ottiene ancora $T(n) \sim n\log(n)$.<br />
 
 Quando il _Merge_ risulta essere facile? Quando gli elementi $A_{s}$ e $A_{d}$ che vengono passati alla routine sono ordinati e tutti gli elementi di $A_{s}$ sono minori di tutti gli elementi di $A_{d}$. Basta quindi concatenarli.
 
-![[SimpleMerge.png]]
+![[Images/SimpleMerge.png]]
 
 Da questa osservazione, emerge l'idea per parallelizzare l'algoritmo di ordinamento.<br />
 - L'idea è di usare sequenze di numeri particolari, la [[Sequenza Unimodale e Bitonica |sequenza bitonica]], insieme alle routine _Rev_, che effettua il reverse di un array,  e _minMax_, che permette di costruire gli array $A_{min}$ e $A_{Max}$.<br />
 
 La funzione _Rev_ esegue queste operazioni in parallelo.
 
-![[Rev.png]]
+![[Images/Rev.png]]
 
 Di conseguenza non ci sono problemi di sovrascrittura dei dati.<br />
 
 La funzione _minMax_ esegue, invece, considera l'array come due metà (da $1$ a $\frac{n}{2}$ e da $\frac{n}{2} + 1$, fino ad $n$).<br />
 Confronta poi gli elementi a coppie, prendendo un elemento della prima metà ed uno della seconda metà. In particolare, gli elementi devono essere a distanza $\frac{n}{2}$.
 
-![[minMAX.png]]
+![[Images/minMAX.png]]
 
 L'elemento minimo viene inserito in $A[k]$ mentre quello massimo viene inserito in $A[k] + \frac{n}{2}$.<br />
 Alla fine dell'esecuzione, gli elementi della prima metà contengono i minimi del confronto a coppie, mentre gli elementi della seconda metà contengono i massimi, sempre del confronto a coppie.<br />
@@ -1055,7 +1055,7 @@ Al passo induttivo, si suppone l'algoritmo corretto per $n = 2^{k}$ e si dimostr
 ------------------------------------------------------------
 
 ### Implementazione Parallela di _BitMerge_ ###
-![[BitMergeParallelo.png]]
+![[Images/BitMergeParallelo.png]]
 
 Prima si effettua la fase delle chiamate ricorsive e poi la fase, tipicamente, della fusione ma, in questo caso, della semplice concatenazione.<br />
 Si indica con _MM_ il modulo _minMax_. A partire dall'array $A$, si applica _minMax_, si divide l'array in due parti della stessa cardinalità e si richiama _minMax_ su entrambe le metà.<br />

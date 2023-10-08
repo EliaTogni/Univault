@@ -8,7 +8,7 @@ Non rientrano nella bioinformatica, invece, le tecniche informatiche ispirate a 
 Il **DNA** (**DesoxyriboNucleic Acid**) è un acido nucleico il quale contiene le informazioni geniche, necessarie alla formazione ed omeostasi degli esseri viventi, attraverso la biosintesi di RNA e proteine.<br />
 Dal punto di vista chimico, si tratta di un polimero organico, il quale si trova nel nucleo delle cellule eucariote oppure libero nelle cellule procariote, ed è formato da due filamenti di monomeri, chiamati **nucleotidi**, direzionati in senso opposto. Ogni nucleotide è formato da un **gruppo fosfato** (fosfato organico), uno zucchero **desossiribosio** (ribosio senza gruppo idrossile) ed una **base azotata**.<br />
 
-![[nucleotide.png]]
+![[Images/Nucleotide.png]]
 
 La doppia catena polinucleotidica del DNA ha struttura **antiparallela**, **spiralizzata** e **complementare**.<br />
 Il fosfato organico e il desossiribosio sono uguali per tutti i nucleotidi e formano una **backbone** per la catena alternandosi: la **catena antisenso**, ovvero la catena antiparallela, è formata anch'essa da una backbone fosfato-zucchero, ma nell'ordine opposto. In pratica, ogni molecola di fosfato forma un ponte molecolare collegando, attraverso legami fosfodiesterici, il carbonio in posizione $3'$ di una molecola di deossiribosio con quello in posizione $5'$ dello zucchero successivo. Conseguenza di questi legami asimmetrici è che ogni filamento di DNA ha un **senso**, determinato dalla direzione dei legami fosfodiesterici. Le basi azotate, invece, si uniscono in posizione $1'$ dello zucchero desossiribosio con legami $N$-glicosidici. In una doppia elica, quindi, il senso di un filamento è opposto a quello del filamento complementare e, per tale motivo, i due filamenti che costituiscono una doppia elica sono detti antiparalleli.<br />
@@ -26,7 +26,7 @@ Le catene sono avvolte a forma di doppia elica la cui struttura regolare forma d
 ### Replicazione
 La divisione cellulare, necessaria ad un organismo per crescere e vivere, richiede una duplicazione del DNA cellulare, in modo che le cellule figlie possano avere la stessa informazione genetica della cellula madre. La struttura a doppia elica del DNA permette un meccanismo estremamente semplice per la replicazione del DNA. I due filamenti, infatti, vengono separati e da ognuno viene creato un filamento complementare, ad opera di un enzima chiamato **DNA polimerasi**. Con questo meccanismo, le basi presenti sul filamento figlio sono determinate da quelle presenti sul filamento parentale: è proprio attraverso questo meccanismo che le cellule figlie presentano genoma identico alla cellula madre.
 
-![[DNA_replication.png]]
+![[Images/DNAReplication.png]]
 
 ----------------------------------------------------------------
 
@@ -38,7 +38,7 @@ L'**RNA** (**RiboNucleic Acid**) è un filamento a singola elica ma dalla strutt
 ## Proteine
 Le **proteine** sono biomolecole composte da una sequenza di **amminoacidi** (ne esistono 20 diversi): ogni amminoacido ha un carbonio $\alpha$ legato ad un gruppo amminico -NH$_{2}$ , ad un gruppo carbossilico -COOH, ad un idrogeno e ad una catena laterale. La catena laterale è ciò che differenzia ciascun amminoacido, garantendogli proprietà differenti a seconda della composizione della catena stessa.
 
-![[side_chain_properties.png]]
+![[Images/SideChainProperties.png]]
 
 ### Struttura
 La funzione di una proteina è legata alla sua struttura e la struttura di essa può essere analizzata sotto quattro diversi livelli:
@@ -73,7 +73,7 @@ La funzione di una proteina, tuttavia, non è unica e può variare a seconda del
 Il codice genetico è il sistema attraverso cui si conserva e si trasmette l’informazione genetica. La trasmissione dell’informazione avviene attraverso triplette di nucleotidi, dette **codoni**. Ogni codone codifica per un amminoacido, per un segnale di start oppure per un segnale di stop.<br />
 È un codice ridondante: gli amminoacidi sono 20 mentre le triplette di nucleotidi possibili sono $4^3=64$ (mentre l'utilizzo di coppie di nucleotidi non permetterebbe di avere un numero sufficiente di combinazioni).
 
-![[codoni.png]]
+![[Images/codoni.png]]
 
 Questa ridondanza permette qualche grado di robustezza alle mutazioni: alcune variazioni di un nucleotide corrispondono allo stesso amminoacido, sono mutazioni sinonime. Le mutazioni nelle quali la codifica errata corrisponde ad un altro amminoacido sono dette **missenso**. I cambiamenti possono occorrere a causa di mutazioni (per radiazioni o chimiche), per errore (durante la replicazione) o per mancanza di correzione (dopo una mutazione o un errore).
 
@@ -87,7 +87,7 @@ Alcune sezioni di DNA sono molto simili in molti organismi e sono dette regioni 
 ### Geni
 Ogni **gene** è una porzione di DNA che codifica l'informazione riguardante una proteina. I geni hanno una lunghezza variabile tra i $10^2$ ed i $10^5$ nucleotidi. Un gene ha una porzione **trascritta** e una porzione **promoter**.
 
-![[gene.png]]
+![[Images/gene.png]]
 
 Nella porzione trascritta si alternano **introni** ed **esoni**: gli esoni sono le regioni codificanti all'interno dei geni e sono trascrivibili in mRNA, mentre gli introni, ovvero le regioni non codificanti, vengono tagliati in un processo chiamato **slicing**. Per una trascrizione può essere utilizzato un sottoinsieme degli esoni di un gene: ogni sottoinsieme codificherà una proteina diversa (l'uomo possiede circa $20000$ geni, che sono in numero molto inferiore alle proteine che produce).
 
@@ -208,7 +208,7 @@ L'apprendimento può essere:
 3) **apprendimento semi-supervisionato**: solo alcuni dati di input sono forniti insieme all'output corrispondente;
 4) **apprendimento con rinforzo**: il sistema è un agente ed impara dal feedback che ottiene dall'interazione con l'ambiente.
 
-![[learning.png]]
+![[Images/learning.png]]
 
 ----------------------------------------------------------------
 
@@ -740,7 +740,7 @@ Un'altra soluzione si basa sulle [[Intelligenza Artificiale#Hopfield network|Hop
 Si consideri un ambito di apprendimento semi-supervisionato in cui i nodi rappresentano le istanze, le connessioni sono precomputate e possono essere pesate e i nodi sono suddivisi in etichettati e non etichettati per la task attuale.
 L' obbiettivo consiste nel trasformare i punti interrogativi in nodi blu o neri.
 
-![[Semi-supervised learning setting.png]]
+![[Images/SemiSupervisedLearningSetting.png]]
 
 Questo problema può essere risolto utilizzando le Hopfield Network in quanto sono efficienti ottimizzatori locali. i vantaggi che comportano sono:
 - il massimizzare la somma pesata dei bordi coerenti e ciò si ottiene tramite il minimizzare la funzione di energia;
@@ -764,7 +764,7 @@ La previsione degli esiti clinici è un problema ben consolidato nella biologia 
 
 La **trasduzione** o **inferenza transduttiva** è il ragionamento dai casi specifici osservati (training) ai casi specifici (test). In contrasto, l'induzione è il ragionamento dai casi di addestramento osservati a regole generali, che vengono poi applicate ai casi di test.
 
-![[Inductive vs Transductive.png]]
+![[Images/InductiveVsTransductive.png]]
 
 ----------------------------------------------------------------
 
@@ -843,7 +843,7 @@ La visualizzazione del grafo è un vantaggio di P-Net. Essa comporta la costruzi
 
 ## Label Propagation Algorithm
 
-![[Label Propagation.png]]
+![[Images/LabelPropagation.png]]
 
 Questo algoritmo sfrutta l'idea semplice di propagare iterativamente le etichette dei nodi ai nodi vicini considerando la loro prossimità. Il primo passo è il calcolo della matrice di adiacenza $W$, utilizzando una misura di similarità appropriata. Il passo successivo comprende il calcolo della matrice diagonale dei gradi $D$. Il vettore delle etichette stimate $\hat{Y}$ viene inizializzato con l'etichetta conosciuta per i nodi etichettati $Y_l$ ($+1$ o $-1$) e zero per i nodi non etichettati $Y_u$. Successivamente, in modo iterativo, le etichette vengono propagate attraverso il grafo, dove $D^{-1}W$ può essere interpretato come una **matrice di transizione probabilistica** che mostra la probabilità di passare da un nodo a un altro. Dopo il passo di propagazione, l'algoritmo forza le etichette sui dati etichettati a essere $\hat{Y}_l$ = $Y_l$ (cioè il **clamping** delle etichette). In questo modo, i dati etichettati agiscono come fonti che "spingono" le etichette attraverso i dati non etichettati. La propagazione e il blocco delle etichette vengono ripetuti fino alla convergenza (il criterio di arresto può essere un numero predefinito di iterazioni). Il punteggio calcolato per ciascun nodo $x_i$ può essere utilizzato per la classificazione impostando una soglia, ad esempio il segno di $\hat{y}_i^{(\infty)}$.
 
@@ -859,7 +859,7 @@ Le strategie di apprendimento globali, invece, sfruttano la topologia complessiv
 
 Le kernelized score functions uniscono le strategie di apprendimento locali alle strategie globali.
 
-![[Kernelized Score Functions.png]]
+![[Images/KernelizedScoreFunctions.png]]
 
 Le funzioni di punteggio kernelizzate sono un framework algoritmico flessibile che può essere applicato a una vasta gamma di interessanti problemi di bioinformatica. Queste funzioni e gli altri metodi di apprendimento semi-supervisionato all'avanguardia per l'analisi delle reti biologiche sono tuttavia afflitti da seri problemi di scalabilità su reti di grandi dimensioni.
 
@@ -880,7 +880,7 @@ Un secondo approccio è il conto delle frequenze.
 
 Un terzo approccio possibile è **Word2vec**, una tecnica che fornisce una stima efficiente della rappresentazione delle parole nello spazio vettoriale. Si basa sul costruire una rappresentazione vettoriale delle parole tramite una rete neurale per un compito di classificazione. Data una parola, l'obiettivo è prevedere se un'altra parola è nello stesso contesto. Il contesto è definito da una finestra intorno a ciascuna parola (**auto-supervisione**).
 
-![[Word2Vec.png]]
+![[Images/Word2Vec.png]]
 
 Problemi del word embedding:
 1) solo un significato per parola: gli embedding delle parole spesso rappresentano una parola con un unico vettore, anche se una parola può avere più significati (**polisemi**a). Ad esempio, "apple" potrebbe riferirsi al frutto o all'azienda "Apple Inc.". Questo può portare a ambiguità nei contesti in cui la parola è utilizzata.
@@ -898,7 +898,7 @@ Le task di Machine Learning classiche sulle reti sono:
 
 Vogliamo affrontare l'apprendimento delle feature in grafi. 
 
-![[Node embedding.png]]
+![[Images/NodeEmbedding.png]]
 
 Perché imparare gli embeddings? L'obiettivo è mappare ogni nodo in uno spazio a bassa dimensione. Vogliamo avere una rappresentazione distribuita per i nodi. Inoltre, la similarità tra i nodi indica la forza del collegamento e l'embedding codifica le informazioni della rete e genera la rappresentazione dei nodi.<br />
 Perché è difficile incorporare i nodi di un grafo in uno spazio euclideo? Perché i grafi sono non euclidei. Infatti, l'enumerazione dei nodi è arbitraria e hanno una struttura complessa.
@@ -909,7 +909,7 @@ Ci sono due principali linee di ricerca per l'apprendimento della rappresentazio
 1) Embedding dei grafi;
 2) Reti neurali sui grafi.
 
-![[Graph representation.png]]
+![[Images/GraphRepresentation.png]]
 
 ### node2vec: Unsupervised Feature Learning
 Ricordiamo che negli embeddings di word2vec, i punti sono nello spazio euclideo: punti vicini (parole) sono semanticamente correlati.
@@ -922,7 +922,7 @@ Dato un grafo $G = (V, E)$, l'obiettivo è apprendere la funzione $f: u \to \mat
 
 Ci possiamo approcciare al problema di definire il vicinato $N_S(u)$ di un nodo dato $u$ in due modi: tramite la **Breadth First Search** (o **BFS**), la quale fornisce una visione microscopica locale, oppure tramite la **Depth First Search** (o **DFS**), la quale fornisce una visione macroscopica globale.
 
-![[BFS vs DFS.png]]
+![[Images/BFSVsDFS.png]]
 
 Node2Vec è un algoritmo di embedding dei grafi che utilizza il concetto di **biased random walks** per apprendere gli embeddings dei nodi in un grafo. Le biased random walks sono passeggiate casuali che vengono guidate o indirizzate in base a determinate probabilità durante la scelta dei prossimi nodi da visitare.
 
@@ -954,7 +954,7 @@ I sistemi biologici sono naturalmente rappresentati come reti:
 
 La chiave per l'analisi di queste reti comprende l'integrare la conoscenza per catturare complessi meccanismi biologici nascosti.
 
-![[Knowledge integration.png]]
+![[Images/KnowledgeIntegration.png]]
 
 Gli **Knowledge Graph** (**KG**) rappresentano un approccio potente e versatile per la rappresentazione dell'informazione in termini di entità di base e delle relazioni che intercorrono tra di loro. L'integrazione tra diversi tipi e fonti di dati viene facilitata dall'utilizzo di questi grafi. Un unico modello comune può, infatti, essere sfruttato per la rappresentazione di dati molecolari, dati relativi agli studi clinici e dati sui farmaci etichettati.
 Ciò consente l'utilizzo di algoritmi per diverse tipologie di applicazioni, che vanno dalla prioritizzazione di nuovi bersagli per le malattie alla previsione di associazioni tra farmaci e malattie precedentemente sconosciute.
@@ -969,7 +969,7 @@ La **Gene Ontology** (GO) è un esempio di ontologia biomedica. Si tratta di un 
 
 Oltre alle ontologie, i dizionari, i tesauri e le tassonomie sono termini spesso utilizzati per rappresentare i metadati riguardanti una fonte di informazioni. Sono impiegati per la caratterizzazione semantica delle fonti a diversi livelli di espressività.
 
-![[Semantic characterization.png]]
+![[Images/SemanticCharacterization.png]]
 
 ----------------------------------------------------------------
 
@@ -1014,7 +1014,7 @@ Entrambi i modelli di dati sono utilizzati per rappresentare la conoscenza in un
 Innanzitutto, è necessario fare una premessa sul significato di **embedding** L'embedding (o **incorporazione**) è un concetto ampiamente utilizzato nell'apprendimento automatico e nella rappresentazione dei dati. Si riferisce al processo di rappresentare dati complessi in uno spazio di dimensioni inferiori in modo che le informazioni rilevanti siano preservate o catturate in modo efficiente. Questo spazio di dimensioni inferiori è chiamato **embedding space** o **spazio di incorporazione**.
 Nel contesto dei grafi o delle reti, **embedding dei nodi** significa rappresentare i nodi di un grafo in uno spazio di dimensioni inferiori in modo che la struttura e le relazioni tra i nodi possano essere modellate in modo più compatto ed efficiente. Questo può essere utile per varie applicazioni, come il clustering, la classificazione, il calcolo della similarità tra nodi e molte altre analisi delle reti. Gli algoritmi di incorporamento dei nodi cercano di catturare le caratteristiche dei nodi in modo che le operazioni di calcolo possano essere eseguite più facilmente nello spazio di incorporamento.
 
-![[Embedding nodes.png]]
+![[Images/EmbeddingNodes.png]]
 
 Fino ad ora ci siamo concentrati su encoder superficiali, ossia ricerche di incorporamento.
 Limitazioni dell'incorporamento superficiale:
@@ -1034,11 +1034,11 @@ Supponiamo di avere un [[Grafo|grafo]] $G$:
 
 L' idea chiave si basa sul generare embedding dei nodi basati sui neighborhood locali.
 
-![[Neighborhood aggregation.png]]
+![[Images/NeighborhoodAggregation.png]]
 
 I nodi aggregano informazioni dai loro vicini utilizzando reti neurali. Ogni nodo definirà un grafo di calcolo unico.
 
-![[Neighborhood aggregation 2.png]]
+![[Images/NeighborhoodAggregation2.png]]
 
 Per quanto riguarda l'aggregazione dei neighborhood, i nodi hanno embedding in ogni layer. Il modello può avere inoltre una profondità arbitraria. L'incorporamento del layer-$0$ del nodo $u$ è la sua caratteristica di input, cioè $x_u$.
 L'aggregazione del vicinato può essere vista come un filtro centro-periferia, una specie di convoluzione di vicinati.
@@ -1091,7 +1091,7 @@ In particolare, è utile per reti complesse che rappresentano formule logiche op
 #### Graph Attention Networks
 E se alcuni vicini fossero più importanti di altri?
 
-![[Neighborhood attention.png]]
+![[Images/NeighborhoodAttention.png]]
 
 E' possibile potenziare il modello base delle reti neurali grafiche tramite attention weights. Sono inoltre possibili vari modelli di attenzione.
 
