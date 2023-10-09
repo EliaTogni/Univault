@@ -1,6 +1,6 @@
 Nei **Modelli a Memoria Distribuita**, ogni processore può accedere solo alla sua memoria privata (locale).
 
-![[Memoria Distribuita.png]]
+![[Images/MemoriaDistribuita.png]]
 
 La comunicazione avviene qui attraverso l'invio di messaggi attraverso una rete di interconnessione, la quale può essere descritta da un [[Grafo]], i cui vertici sono i processori e i lati rappresentano collegamenti diretti tra processori.<br />
 Poichè in tali reti non tutti i processori sono collegati direttamente, non è possibile ipotizzare tempi di comunicazione costanti.
@@ -25,13 +25,13 @@ Tra le caratteristiche più peculiari dei modelli a memoria distribuita, spicca 
 Non solo l'elaborazione, inoltre avviene in parallelo bensì anche la comunicazione.<br />
 Se, ad esempio, $k$ processori desiderano comunicare con il processore $p$, essi sono in grado di farlo tramite delle _Send_ parallele.<br />
 
-![[SendParallelo.png]]
+![[Images/SendParallelo.png]]
 
 Ma il processore $p$, lavorando sequenzialmente, deve richiedere $k$ _Receive_. Sono quindi necessari $k+1$ passi per la comunicazione.<br />
 
 Un'altra caratteristica fondamentale riguarda i collegamenti tra processori, i quali sono _Full-Duplex_. Di conseguenza sarà possibile considerare gli archi del grafo G come non orientati.<br />
 
-![[FullDuplexDistribuito.png]]
+![[Images/FullDuplexDistribuito.png]]
 
 Dal punto di vista di Input ed Output, la mancanza di memoria condivisa modifica significativamente la struttura:
 - l'input è ora distribuito tra i processori;
@@ -59,12 +59,12 @@ Tipici problemi su queste architetture sono:
 
 Valgono i seguenti limiti inferiori per i tempi di soluzione di questi due problemi:
 1) Il tempo richiesto per risolvere MAX in $G$ è almeno $\delta$;
-2) Il tempo richiesto per risolvere ORDINAMENTO in $G$ è almeno $\frac{n}{2} \cdot \frac{1}{\beta}}$;
+2) Il tempo richiesto per risolvere ORDINAMENTO in $G$ è almeno $\frac{n}{2} \cdot \frac{1}{\beta}$;
 
 La dimostrazione del primo lower bound è, banalmente, legata al fatto che ogni coppia di processori deve comunicare e, quindi, entra in gioco la distanza.<br />
 La dimostrazione del secondo lower bound si basa si può vedere nella rappresentazione sottostante:
 
-![[DimostrazioneORDINAMENTO.png]]
+![[Images/DimostrazioneORDINAMENTO.png]]
 
 Si supponga che in una metà siano presenti, tra i$\frac{n}{2}$ numeri distribuiti tra i processori in quella metà, solamente i numeri più alti (i quali dovrebbero stare nella seconda metà).<br />
 Allo stesso modo, supponiamo che i rimanenti numeri siano nella restante metà.<br />
@@ -73,7 +73,7 @@ Le connessioni sono sì Full-Duplex ma i numeri passano da una metà all'altra t
 Quanti trasferimenti sono necessari affinchè tutti i numeri si trovino nella metà corretta, sapendo di poterli trasferire a gruppi di $\beta$?
 Questo genera il lower bound osservato prima.<br />
 
-![[LowerBoundMemDistribuita.png]]
+![[Images/LowerBoundMemDistribuita.png]]
 
 --------------------------------------------------------------
 
@@ -81,7 +81,7 @@ Risulta evidente che la topologia della rete impatta in maniera influente sul te
 
 Per affrontare i problemi precedentemente citati, si introducono ora i **Confrontatori** e le loro **Primitive**.
 
-![[Comparatori.png]]
+![[Images/Comparatori.png]]
 
 Si supponga che sul filo superiore viaggi il dato $x$ e sul filo inferiore viaggi il dato $y$. Un comparatore o **Confrontatore**, viene rappresentato come una linea verticale e agisce in questo modo: sul filo superiore fa passare il minimo tra $x$ e $y$ mentre fa passare il massimo tra i due sul filo inferiore.<br />
 Esiste anche il comparatore opposto, rappresentato con un filo e due cerchi vuoti.<br />
@@ -95,7 +95,7 @@ con $i<j$.<br />
 
 Ovviamente è possibile avere delle reti di comparatori e, se questi comparatori sono distribuiti in un certo modo, si hanno delle **Sorting Network**.
 
-![[ReteConfrontatori.png]]
+![[Images/ReteConfrontatori.png]]
 
 --------------------------------------------------------------
 
@@ -103,7 +103,7 @@ Ovviamente è possibile avere delle reti di comparatori e, se questi comparatori
 
 Ecco una versione dell'algoritmo [[BubbleSort]] riproposta utilizzando le Sorting Network.
 
-![[BubbleSortSN.png]]
+![[Images/BubbleSortSN.png]]
 
 Tramite Sorting Network è possibile avere un'idea su come parallelizzare certi algoritmi.<br />
 

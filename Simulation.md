@@ -35,7 +35,7 @@ Esistono tre macro paradigmi per la costruzione ed implementazione di modelli de
 Questi tre paradigmi fanno affidamento su modelli che comprendono componenti stocastiche al fine di approssimare connessioni al mondo esterno e parti del sistema interno che sono al centro del focus dell'analisi.<br />
 E' possibile effettuare una comparazione tra questi paradigmi in termini di diverse feature:
 
-![[ComparisonSimulation.png]]
+![[Images/ComparisonSimulation.png]]
 
 --------------------------------------------------------------
 
@@ -51,7 +51,7 @@ Il risultato complessivo della modellazione descrittiva di un sistema è una var
 
 
 ### Pharmacist (Ex. from Sheldon M. Ross "Simulation")
-![[PharmacistSimulation.png]]
+![[Images/PharmacistSimulation.png]]
 
 Il modello descrittivo che andrà costruito renderà più chiara la distribuzione della variabile aleatoria. 
 E' possibile costruire un modello deterministico di questo sistema? La risposta è sì, anche se il considerare ogni singola variabile (ogni individuo esistente, la condizione di salute di ogni individuo, ...) è di gran lunga più complesso di quanto sia possibile fare. Per questo motivo, si approssimano delle componenti del sistema.<br />
@@ -61,7 +61,7 @@ Ci sono due punti cardine i quali verranno approssimati:
 
 Come si approssimano questi due punti? Con l'utilizzo di ulteriori, sebbene più semplici, variabili aleatorie.<br />
 
-![[Pharmacy Scheme.png]]
+![[Images/Pharmacy Scheme.png]]
 
 Un'assunzione comune è che gli individui del mondo esterno agiscano in maniera indipendente e, perciò, osservare che ad un determinato tempo $t$ è arrivata una prescrizione non fornisce nessuna informazione sull'arrivo della prossima prescrizione. Questa assunzione è sufficiente per modellare il processo dell'arrivo delle prescrizioni tramite una **variabile aleatoria esponenziale**.<br />
 Per quanto riguarda il processo di preparazione delle medicine, il problema fornisce una media ed una deviazione standard senza fornire la forma della distribuzione. Le informazioni riguardanti il processo sono minime e la forma della perturbazione non ha una particolare struttura, quindi è possibile utilizzare una **variabile aleatoria normale**.<br />

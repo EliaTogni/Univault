@@ -7,7 +7,7 @@ Una sequenza è, invece detta **BITONICA** quando può essere trasformata in una
 A è bitonica se e solo se $\exists$ una permutazione ciclica di $A$ tale per cui mi dà una sequenza unimodale:<br />
 $j \text{ tale che } A[j], .., A[n], A[1], ..., A[j-1] \text{ sia unimodale}$
 
-![[Sequenze.png]]
+![[Images/Sequenze.png]]
 
 Se una sequenza è unimodale, essa è, ovviamente, anche bitonica, grazie alla permutazione identità.<br />
 Inoltre, gli elementi di fine array devono essere maggiori degli elementi di inizio array per la forma $I$, viceversa nella forma $II$.<br />
@@ -21,11 +21,11 @@ Sia $A$ bitonica. Se si esegue _minMax_($A$), si ottiene che:
 1) $A_{min}$ e $A_{Max}$ sono bitoniche;
 2) Ogni elemento di $A_{min}$ è minore di ogni elemento di $A_{Max}$.
 
-![[minMaxBitonica1.png]]
+![[Images/minMaxBitonica1.png]]
 
 La dimostrazione di questa proprietà si ha graficamente.<br />
 
-![[minMaxBitonica2.png]]
+![[Images/minMaxBitonica2.png]]
 
 Questa operazione divide la sequenza a metà e confronta un elemento della prima sequenza con l'elemento della seconda che si trova a distanza $\frac{n}{2}$ dal primo.<br />
 Si osserva che le due sequenze così ottenute, evidenziate dal colore rosso, sono entrambe bitoniche.<br />

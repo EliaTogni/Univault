@@ -641,7 +641,7 @@ Il modello di autorizzazione di UNIX è una semplice implementazione di una stra
 Le ACL definiscono le regole per il filtraggio statico dei pacchetti in transito.
 Ogni oggetto ha un'ACL, la quale identifica le operazioni che i soggetti possono eseguire. Ogni accesso ad un oggetto viene verificato rispetto all'ACL dell'oggetto.<br />
 
-![[UnixACL.png]]
+![[Images/UnixACL.png]]
 
 I file UNIX sono amministrati utilizzando gli [[Inode]], strutture di controllo con informazioni chiave sui file.<br />
 I processi sono isolati l'uno dall'altro durante l'esecuzione: infatti non possono accedere alla memoria reciproca. Inoltre, vengono eseguiti come un utente specifico e con le autorizzazioni dell'UID dell'utente. I processi possono quindi accedere a tutti i file a cui l'UID ha accesso. All'esecuzione di un comando, esso viene eseguito con i privilegi dell'utente perchè la shell viene eseguita come account utente ed avvia una fork per avviare il comando.<br />

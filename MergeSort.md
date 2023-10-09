@@ -34,6 +34,6 @@ $$t(n) = 2t\Big(\frac{n}{2}\Big) + n \sim 2\Big(2t(\frac{n}{4})\Big) + n + n$$
 $$\sim 2^{k}t\Big(\frac{n}{2^{k}}\Big) + kn$$
 $$\sim n \cdot 0 + \log(n) \cdot n = n\log(n)$$
 
-![[SchemaMergeSort.png]]
+![[Images/SchemaMergeSort.png]]
 
 --------------------------------------------------------------

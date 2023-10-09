@@ -17,7 +17,6 @@ Anche questa è una deduzione esatta, nonostante per l'esperienza comune la prim
 
 $$\cases{\text{Every tove is durfish.} \cr \cr \text{Sbroppo is a tove.} \cr \cr \hline \cr \text{Therefore, Sbroppo is a durfish.}}$$
 
-
 Di nuovo, la linea di ragionamento è corretta anche senza avere consapevolezza del significato delle parole utilizzate.<br />
 La conclusione è corretta se accettiamo le premesse, indipendentemente dal significato.<br />
 Ora è necessario formalizzare questa struttura, soprattutto per eliminare le parti irrilevanti del discorso:
@@ -67,7 +66,7 @@ Due enunciati "dicono la stessa cosa" se sono vere nelle stesse esatte circostan
 _Se piove allora prendo l'ombrello_ dopo aver astratto diventa _se $A$ allora $B$_.
 
 If $P$, then $Q$.
-![[Implicazione.png]]
+![[Images/Implicazione.png]]
 $P \rightarrow Q$
 
 Esistono quattro classificazioni di mondi possibili in questo caso, corrispondenti alla tavola di verità dell'implicazione logica. All'interno di ogni insieme sono compresi tutti i mondi nei quali è vero l'enunciato indicato dal nome dell'insieme.
@@ -77,16 +76,20 @@ $P \rightarrow Q$ è vero se ogniqualvolta $p$ è vero, anche $q$ è vero.
 -------------------
 Si consideri $P \vee Q$ e un universo di infiniti possibili mondi:
 Di nuovo, si avranno quattro possibili classificazioni di mondi.
-![[Unione.png]]
+
+![[Images/Unione.png]]
 
 Si consideri $P \wedge Q$:
-![[Intersezione.png]]
+
+![[Images/Intersezione.png]]
 
 Si consideri $P \oplus Q$:
-![[XOR.png]]
+
+![[Images/XOR.png]]
 
 Ora si consideri $\neg P \vee Q$:
-![[Implicazione2.png]]
+
+![[Images/Implicazione2.png]]
 Questa proposizione e quella iniziale sono equivalenti in ogni mondo possibile.
 
 ---------------------------------------------------------------
@@ -168,7 +171,7 @@ Una **$L$-Struttura** che mostri come $w \in F_{L}$ è una sequenza finita di st
 
 Si fornisce ora una $L$-struttura la quale dimostri che $((p \wedge q) \rightarrow r) \in F_{L}$
 $$p, q, r, (p \wedge q), ((p \wedge q) \rightarrow r)$$
-![[L-Struttura.png]]
+![[Images/L-Struttura.png]]
 
 Sono possibili infinite L-costruzioni, basta definire lettere che non verranno utilizzate.<br />
 Si provi ora a dimostrare che $\rightarrow (p \wedge q) \notin F_{L}$.
