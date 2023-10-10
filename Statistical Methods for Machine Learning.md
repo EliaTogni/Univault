@@ -860,7 +860,7 @@ When the training set is linearly separable, the system has at least a solution.
 
 We now introduce a very simple algorithm for learning linear classifiers that can be used to solve the ERM problem in the linearly separable case. The **Perceptron algorithm** finds a homogeneous separating hyperplane by runnning through the training examples one after the other. The current linear classifier is tested on each training example and, in case of misclassification, the associated hyperplane is adjusted. Note that if the algorithm terminates, then $w$ is a separating hyperplane.
 
-![[Perceptron Algorithm.png]]
+![[Images/PerceptronAlgorithm.png]]
 
 In this algorithm, it is possible to observe the Perceptron algorithm (for the linearly separable case).
 
@@ -1197,7 +1197,7 @@ $$h_K(x) = \operatorname{sgn}\Bigg(\sum_{s \in S}y_sK(x_s, x) \Bigg)\quad \text{
 Below here, we give the pseudo-code of the Kernel Perceptron algorithm.
 
 ## Algorithm: Kernel Perceptron
-![[Kernel Perceptron.png]]
+![[Images/KernelPerceptron.png]]
 
 The polynomial kernel $K_n(x,x') = (1 + x{^\top}x')^n$ for all $n \in \mathbb{N}$ generalizes the quadratic kernel defined earlier. Using Newton’s Binomial Theorem, we can explicitely compute the map $\phi_n$ such that $K_n(x,x') = \phi_n(x)^{\top}\phi_n(x')$,
 

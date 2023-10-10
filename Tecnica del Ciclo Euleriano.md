@@ -2,7 +2,7 @@ Per comprendere la Tecnica del Ciclo Euleriano, è necessario avere in mente la 
 
 Questa tecnica viene usata per costruire algoritmi paralleli efficienti che gestiscono strutture dinamiche come un [[Albero Binario]].
 
-![[AlberiBinariEuleriano.png]]
+![[Images/AlberiBinariEuleriano.png]]
 
 Poichè si vuole costruire degli algoritmi paralleli, nella memoria condivisa della PRAM è necessario avere la codifica di un albero binario sotto forma di tabella, cioè le celle di memoria della PRAM.<br />
 
@@ -14,7 +14,7 @@ Si può farlo utilizzando delle liste, le quali sono facili da gestire in parall
 
 Nel primo passo, si associa all'albero binario un ciclo Euleriano.
 
-![[AlberoBinarioCicloEuleriano.png]]
+![[Images/AlberoBinarioCicloEuleriano.png]]
 
 Ogni ramo dell'albero viene sostituito da due archi, uno che scende verso uno dei nodi figli ed uno che sale verso il nodo padre.<br />
 In questo modo è possibile navigare l'albero seguendo il ciclo Euleriano. In questo modo si è trasformato l'albero binario in un grafo Euleriano.<br />
@@ -23,7 +23,7 @@ Nel secondo passo, si passa dal ciclo Euleriano al cammino Euleriano, in modo da
 Si esegue un'operazione di trasformazione dei nodi dove ogni nodo viene triplicato.<br />
 Si segue, infatti, la seguente regola: ogni nodo $v$ viene espanso in $(v,s)$, $(v, c)$e $(v, d)$.<br />
 
-![[CicloCamminoEuleriano.png]]
+![[Images/CicloCamminoEuleriano.png]]
 
 Nel terzo passo, si passa dal cammino Euleriano alla costruzione della lista, per poter rappresentare il cammino nella memoria centrale. L'unico modo per fare ciò è utilizzare un vettore bidimensionale  di successori, $S[(v, x)]$ dove $1 \leq v \leq n$ e $x \in {s, c, d}$.<br />
 
@@ -82,7 +82,7 @@ $$
 \end{numcases}
 $$
 
-![[AttraversamentoPreordine.png]]
+![[Images/AttraversamentoPreordine.png]]
 
 L'array A così ottenuto conterrà:
 $$A = [0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0]$$
@@ -119,7 +119,7 @@ $$
 \end{numcases}
 $$
 
-![[ProfonditàNodi.png]]
+![[Images/ProfonditàNodi.png]]
 
 L'array così ottenuto conterrà:
 
