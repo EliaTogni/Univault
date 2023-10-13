@@ -135,208 +135,91 @@ The attributes in the original microdata table can be classified as:
 
 ----------------------------------------------------------------
 
-### Re-identification
-Factors contributing to disclosure risk – 1
-Possible sources of the disclosure risk of microdata
-• Existence of high visibility records. Some records on the file may
-represent respondents with unique characteristics such as very
-unusual jobs (e.g., movie star) or very large incomes
-• Possibility of matching the microdata with external information.
-There may be individuals in the population who possess a unique
-or peculiar combination of the characteristic variables on the
-microdata
-◦ if some of those individuals happen to be chosen in the sample of
-the population, there is a disclosure risk
-◦ note that the identity of the individuals that have been chosen
-should be kept secret
+### Factors contributing to disclosure risk
+Possible sources of the disclosure risk of microdata:
+- **existence of high visibility records**: some records on the file may represent respondents with unique characteristics such as very unusual jobs (e.g., movie star) or very large incomes;
+- **possibility of matching the microdata with external information**: there may be individuals in the population who possess a unique or peculiar combination of the characteristic variables on the microdata:
+	- if some of those individuals happen to be chosen in the sample of the population, there is a disclosure risk;
+	- note that the identity of the individuals that have been chosen should be kept secret.
 
-Factors contributing to disclosure risk – 2
 The possibility of linking or its precision increases with:
-• the existence of a high number of common attributes between
-the microdata table and the external sources
-• the accuracy or resolution of the data
-• the number and richness of outside sources, not all of which may
-be known to the agency releasing the microdata
+- the existence of a high number of common attributes between the microdata table and the external sources;
+- the accuracy or resolution of the data;
+- the number and richness of outside sources, not all of which may be known to the agency releasing the microdata.
 
+----------------------------------------------------------------
 
-Factors contributing to decrease the disclosure risk – 1
-• A microdata table often contains a subset of the whole population
-◦ this implies that the information of a specific respondent may not be
-included in the microdata table
+### Factors contributing to decrease the disclosure risk
+A microdata table often contains a subset of the whole population. This implies that the information of a specific respondent may not be included in the microdata table.<br />
+Furthermore, the information specified in microdata tables released to the
+public is not always up-to-date (often at least one or two-year old). Therefore, the values of the attributes of the corresponding respondents may have been changed in the meanwhile. Also, the age of the external sources of information used for linking may be different from the age of the information contained in the
+microdata table.<br />
+A microdata table and the external sources of information naturally contain noise that decreases the ability to link the information and can also contain data expressed in different forms thus decreasing the ability to link information.
 
-• The information specified in microdata tables released to the
-public is not always up-to-date (often at least one or two-year old)
-◦ the values of the attributes of the corresponding respondents may
-have been changed in the meanwhile
-◦ the age of the external sources of information used for linking may
-be different from the age of the information contained in the
-microdata table
+----------------------------------------------------------------
 
-
-Factors contributing to decrease the disclosure risk – 2
-• A microdata table and the external sources of information naturally
-contain noise that decreases the ability to link the information
-• A microdata table and the external sources of information can
-contain data expressed in different forms thus decreasing the
-ability to link information
-
-
-Measures of risk
+### Measures of risk
 Measuring the disclosure risk requires considering:
-• the probability that the respondent for whom an intruder is looking
-for is represented on both the microdata and some external file
-• the probability that the matching variables are recorded in a
-linkable way on the microdata and on the external file
-• the probability that the respondent for whom the intruder is looking
-for is unique (or peculiar) in the population of the external file
-The percentage of records representing respondents who are unique
-in the population (population unique) plays a major role in the
-disclosure risk of microdata (with respect to the specific respondent)
-Note that each population unique is a sample unique; the vice-versa is
-not true
+- the probability that the respondent for whom an intruder is looking for is represented on both the microdata and some external file;
+- the probability that the matching variables are recorded in a linkable way on the microdata and on the external file;
+- the probability that the respondent for whom the intruder is looking for is unique (or peculiar) in the population of the external file.
+The percentage of records representing respondents who are unique in the population (**population unique**) plays a major role in the disclosure risk of microdata (with respect to the specific respondent). Note that each population unique is a sample unique; the vice-versa is not true.
 
-## K-Anonymity
-k-anonymity [S-01] – 1
-• k-anonymity, together with its enforcement via generalization and
-suppression, aims to protect respondents’ identities while
-releasing truthful information
-• k-anonymity tries to capture the following requirement:
-◦ the released data should be indistinguishably related to no less
-than a certain number of respondents
+----------------------------------------------------------------
 
-• Quasi-identifier: set of attributes that can be exploited for linking
-(whose release must be controlled)
+## $K$-Anonymity
+
+**$K$-anonymity**, together with its enforcement via generalization and suppression, aims to protect respondents’ identities while releasing truthful information. It tries to capture the following requirement:
+- the released data should be indistinguishably related to no less than a certain number of respondents;
+- Quasi-identifier: set of attributes that can be exploited for linking (whose release must be controlled).
 
+The basic idea is to translate the $k$-anonymity requirement on the released data. Each release of data must be such that every combination of values of quasi-identifiers can be indistinctly matched to at least $k$ respondents.<br />
+In the released table the respondents must be indistinguishable
+(within a given set) with respect to a set of attributes. $K$-anonymity requires that each quasi-identifier value appearing in the released table must have at least $k$ occurrences. This is a sufficient condition for the satisfaction of $k$-anonymity requirement
 
-k-anonymity [S-01] – 2
-• Basic idea: translate the k-anonymity requirement on the released
-data
-◦ each release of data must be such that every combination of
-values of quasi-identifiers can be indistinctly matched to at least k
-respondents
+### Generalization and suppression
+with **generalization**, the values of a given attribute are substituted by using more general values. Based on the definition of a generalization hierarchy, for example, consider the attribute ZIP code and suppose that a step in the corresponding generalization hierarchy consists in suppressing the least significant digit in the ZIP code.
+With one generalization step, $20222$ and $20223$ become $2022*$ and 
+$20238$ and $20239$ become $2023*$.<br />
+With **suppression**,  it is possible to protect sensitive information by removing it. The introduction of suppression can reduce the amount of generalization necessary to satisfy the $k$-anonymity constraint.
 
-• In the released table the respondents must be indistinguishable
-(within a given set) with respect to a set of attributes
-• k-anonymity requires that each quasi-identifier value appearing in
-the released table must have at least k occurrences
-◦ sufficient condition for the satisfaction of k-anonymity requirement
+----------------------------------------------------------------
+
+### Domain generalization hierarchy
+A **generalization relationship** $\leq_{D}$ defines a mapping between
+domain $D$ and its generalizations. Given two domains $D_i, D_j \in Dom$, $D_i \leq_{D} D_j$ states that the values in domain $D_j$ are generalizations of values in $D_i$. $\leq_{D}$ implies the existence, for each domain $D$, of a **domain generalization hierarchy** $DGH_D = (Dom, \leq_D )$:
+- $\forall D_i, D_j, D_z \in Dom: D_i \leq_D D_j, D_i \leq_D D_z \to D_j \leq_D D_z \vee D_z \leq_D D_j$
+- all maximal elements of $Dom$ are singleton.
+
+Given a domain tuple $D_T = \langle D_1, . . . , D_n \rangle$ such that $D_i \in Dom, i = 1, . . . , n$, the domain generalization hierarchy of $D_T$ is $DGH_{DT} = DGH_{D1} \times . . . \times DGH_{Dn}$.
 
 
-Generalization and suppression
-• Generalization. The values of a given attribute are substituted by
-using more general values. Based on the definition of a
-generalization hierarchy
-◦ Example: consider attribute ZIP code and suppose that a step in
-the corresponding generalization hierarchy consists in suppressing
-the least significant digit in the ZIP code
-With one generalization step: 20222 and 20223 become 2022*;
-20238 and 20239 become 2023*
+An example of a domain generalization hierarchy.
+slide 34/155
 
-• Suppression. Protect sensitive information by removing it
-◦ the introduction of suppression can reduce the amount of
-generalization necessary to satisfy the k-anonymity constraint
+----------------------------------------------------------------
 
+### Value generalization hierarchy
+A **value generalization relationship** $\leq_V$ associates with each value in domain $D_i$ a unique value in domain $D_j$, direct generalization of $D_i$. $\leq_V$ implies the existence, for each domain $D$, of a value generalization hierarchy $VGH_D$. $VGH_D$ is a tree where the leaves are the values in $D$ and the root (i.e., the most general value) is the value in the maximum element in $DGH_D$.
 
+An example of value generalization hierarchy.
+slide 36/155
 
-Domain generalization hierarchy
-• A generalization relationship ≤D defines a mapping between
-domain D and its generalizations
-• Given two domains Di , Dj ∈ Dom, Di ≤D Dj states that the values
-in domain Dj are generalizations of values in Di
-• ≤D implies the existence, for each domain D, of a domain
-generalization hierarchy DGHD = (Dom, ≤D ):
-◦ ∀Di , Dj , Dz ∈ Dom:
-Di ≤D Dj , Di ≤D Dz =⇒ Dj ≤D Dz ∨ Dz ≤D Dj
-◦ all maximal elements of Dom are singleton
+----------------------------------------------------------------
 
-• Given a domain tuple DT = ⟨D1 , . . . , Dn ⟩ such that Di ∈ Dom,
-i = 1, . . . , n, the domain generalization hierarchy of DT is
-DGHDT = DGHD1 × . . . × DGHDn
+### Generalized table with suppression
+Let $T_i$ and $T_j$ be two tables defined on the same set of attributes. Table $T_j$ is said to be a generalization (with tuple suppression) of table $T_i$, denoted $T_i \preceq T_j$ , if:
+1) $\vert T_j \vert \leq \vert T_i \vert$;
+2) the domain $dom(A, T_j)$ of each attribute $A$ in $T_j$ is equal to, or a generalization of, the domain $dom(A, T_i)$ of attribute $A$ in $T_i$;
+3) it is possible to define an injective function associating each tuple $t_j$ in $T_j$ with a tuple $t_i$ in $T_i$ , such that the value of each attribute in $t_j$ is equal to, or a generalization of, the value of the corresponding attribute in $t_i$.
 
 
-Domain generalization hierarchy – Example
+An example of a generalized table with suppression.
+slide 38/155
 
+----------------------------------------------------------------
 
-Value generalization hierarchy
-• A value generalization relationship ≤V associates with each value
-in domain Di a unique value in domain Dj , direct generalization of
-Di
-• ≤V implies the existence, for each domain D, of a value
-generalization hierarchy VGHD
-• VGHD is a tree
-◦ the leaves are the values in D
-◦ the root (i.e., the most general value) is the value in the maximum
-element in DGHD
-
-
-
-Value generalization hierarchy – Example
-
-
-Generalized table with suppression
-Let Ti and Tj be two tables defined on the same set of attributes. Table
-Tj is said to be a generalization (with tuple suppression) of table Ti ,
-denoted Ti ⪯ Tj , if:
-1. |Tj | ≤ |Ti |
-2. the domain dom(A, Tj ) of each attribute A in Tj is equal to, or a
-generalization of, the domain dom(A, Ti ) of attribute A in Ti
-3. it is possible to define an injective function associating each tuple
-tj in Tj with a tuple ti in Ti , such that the value of each attribute in tj
-is equal to, or a generalization of, the value of the corresponding
-attribute in ti
-
-
-Generalized table with suppression – Example
-Race
-
-ZIP
-
-asian
-asian
-asian
-asian
-asian
-black
-black
-white
-white
-
-94142
-94141
-94139
-94139
-94139
-94138
-94139
-94139
-94141
-
-PT
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Race
-
-ZIP
-
-person
-person
-person
-person
-
-94141
-94139
-94139
-94139
-
-person 94139
-person 94139
-person 94141
-GT
-
-
-
-k-minimal generalization with suppression – 1
+### k-minimal generalization with suppression
 • Distance vector. Let Ti (A1 , . . . , An ) and Tj (A1 , . . . , An ) be two tables
 such that Ti ⪯ Tj . The distance vector of Tj from Ti is the vector
 DVi,j = [d1 , . . . , dn ], where each dz , z = 1, . . . , n, is the length of the
