@@ -8,18 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "a09b08d017b8da19",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Intelligenza Artificiale.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "4b2410dd3dec1ef2",
             "type": "leaf",
             "state": {
@@ -31,8 +19,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"

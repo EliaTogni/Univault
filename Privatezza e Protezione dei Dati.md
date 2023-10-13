@@ -53,7 +53,7 @@ An example of a microdata table is the records about delinquent children in coun
 
 slide 11/155
 
----------------------------------------------------------
+----------------------------------------------------------------
 
 ### Information disclosure
 Disclosure relates to attribution of sensitive information to a
@@ -69,653 +69,73 @@ the identification leads to divulging confidential information
 (attribute disclosure)
 In microdata, identification is generally regarded as a problem, since microdata records are detailed; identity disclosure usually implies also attribute disclosure.
 
---------------------------------------------------------------
+----------------------------------------------------------------
 
 #### Attribute disclosure
 It occurs when confidential information about a respondent is revealed and can be attributed to her. Confidential information may be:
 - revealed exactly;
 - closely estimated.
 
-----------------------------------------------------------
+----------------------------------------------------------------
 
 #### Inferential disclosure
-It occurs when information can be inferred with high confidence from statistical properties of the released data EXAMPLE : the data may show a high correlation between income and
-purchase price of home. As purchase price of home is typically public
-information, a third party might use this information to infer the income
-of a respondent
-
+It occurs when information can be inferred with high confidence from statistical properties of the released data. For example, the data may show a high correlation between income and purchase price of home. As purchase price of home is typically public information, a third party might use this information to infer the income of a respondent.<br />
 Inference disclosure does not always represent a risk:
-• statistical data are released for enabling users to infer and
-understand relationships between variables
-• inferences are designed to predict aggregate behavior, not
+- statistical data are released for enabling users to infer and
+understand relationships between variables;
+- inferences are designed to predict aggregate behavior, not
 individual attributes, and are then often poor predictors of
-individual data values
+individual data values.
 
+----------------------------------------------------------------
 
-Restricted data and restricted access – 1
-• The choice of statistical disclosure limitation methods depends on
-the nature of the data products whose confidentiality must be
-protected
-• Some microdata include explicit identifiers (e.g., name, address,
-or Social Security Number)
-• Removing such identifiers is a first step in preparing for the
-release of microdata for which the confidentiality of individual
-information must be protected
-
-
-Restricted data and restricted access – 2
+### Restricted data and restricted access
+The choice of statistical disclosure limitation methods depends on the nature of the data products whose confidentiality must be protected. Some microdata include explicit identifiers (e.g., name, address or Social Security Number). Removing such identifiers is a first step in preparing for the release of microdata for which the confidentiality of individual information must be protected.<br />
 Confidentiality can be protected by:
-• restricting the amount of information in the released tables
-(restricted data)
-• imposing conditions on access to the data products (restricted
-access)
-• some combination of these two strategies
+- restricting the amount of information in the released tables (restricted data);
+- imposing conditions on access to the data products (restricted access);
+- some combination of these two strategies.
 
+----------------------------------------------------------------
 
-Protection for count/frequencies macrodata
-• The data collected from most surveys about people are published
-in tables that show counts (number of people by category) or
-frequencies (fraction or percentage of people by category)
-• The protection techniques include:
-◦ sampling: publish a survey rather than a census
-◦ special rules: define restrictions on the level of details that can be
-provided in a table (e.g., do not publish or make inferrable earnings
-within a $ 1,000 interval)
-◦ threshold rules: define a cell of a table sensitive if the number of
-respondents is less than some specified number
+### Protection for count/frequencies macrodata
+The data collected from most surveys about people are published in tables that show counts (number of people by category) or frequencies (fraction or percentage of people by category). The protection techniques include:
+- **sampling**: publish a survey rather than a census;
+- **special rules**: define restrictions on the level of details that can be provided in a table (e.g., do not publish or make inferrable earnings within a $ 1,000 interval);
+- **threshold rules**: define a cell of a table sensitive if the number of respondents is less than some specified number.
 
+----------------------------------------------------------------
 
-Disclosure protection techniques for microdata
-The classical protection techniques (often applied to protect microdata
-before computing statistics) can be classified as follows:
-• masking techniques: transform the original set of data by not
-releasing or perturbing their values
-◦ non-perturbative: the original data are not modified, but some data
-are suppressed and/or some details are removed (e.g., sampling,
-local suppression, generalization)
-◦ perturbative: the original data are modified (e.g., rounding,
-swapping)
+### Disclosure protection techniques for microdata
+The classical protection techniques (often applied to protect microdata before computing statistics) can be classified as follows:
+- **masking techniques**: transform the original set of data by not releasing or perturbing their values:
+	- non-perturbative: the original data are not modified, but some data are suppressed and/or some details are removed (e.g., sampling, local suppression, generalization);
+	- perturbative: the original data are modified (e.g., rounding, swapping).
+- synthetic data generation techniques: release plausible but synthetic values instead of the real ones:
+	- fully synthetic: the released dataset contains synthetic data only;
+	- partially synthetic: the released dataset contains a mix of original and synthetic data.
 
-• synthetic data generation techniques: release plausible but
-synthetic values instead of the real ones
-◦ fully synthetic: the released dataset contains synthetic data only
-◦ partially synthetic: the released dataset contains a mix of original
-and synthetic data
+----------------------------------------------------------------
 
+### The anonymity problem
+The amount of privately owned records that describe each citizen’s finances, interests, and demographics is increasing every day. These data are de-identified before release, that is, any explicit identifier (e.g., SSN) is removed. De-identification is not sufficient. In fact, most municipalities sell population registers that include the identities of individuals along with basic demographics. These data can then be used for linking identities with de-identified information (**re-identification**).
 
-The anonymity problem
-• The amount of privately owned records that describe each
-citizen’s finances, interests, and demographics is increasing every
-day
-• These data are de-identified before release, that is, any explicit
-identifier (e.g., SSN) is removed
-• De-identification is not sufficient
-• Most municipalities sell population registers that include the
-identities of individuals along with basic demographics
-• These data can then be used for linking identities with
-de-identified information =⇒re-identification
+An example of the anonymity problem
 
+slides 21/155
 
-The anonymity problem – Example
-SSN Name
+----------------------------------------------------------------
 
-Race DoB
-
-Sue J. Doe asian
-asian
-asian
-asian
-asian
-black
-black
-white
-white
-Name
-
-Address
-
-64/04/12
-64/09/13
-64/04/15
-63/03/13
-63/03/18
-64/09/27
-64/09/27
-64/09/27
-64/09/27
-
-Sex ZIP
-
-Marital status Disease
-
-F
-F
-F
-M
-M
-F
-F
-F
-F
-
-divorced
-divorced
-married
-married
-married
-single
-single
-single
-widow
-
-94142
-94141
-94139
-94139
-94139
-94138
-94139
-94139
-94141
-
-City
-
-................
-................
-................
-................
-................
-................
-Sue J. Doe 900 Market St. San Francisco
-................
-................
-................
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-ZIP
-
-DOB
-
-hypertension
-obesity
-chest pain
-obesity
-short breath
-short breath
-obesity
-chest pain
-short breath
-Sex
-
-Status
-
-........
-........
-........ ................
-........
-........
-........ ................
-94142 64/04/12
-F
-divorced
-........
-........
-........ ................
-
-
-The anonymity problem – Example
-SSN Name
-
-Race DoB
-
-Sue J. Doe asian
-asian
-asian
-asian
-asian
-black
-black
-white
-white
-Name
-
-Address
-
-64/04/12
-64/09/13
-64/04/15
-63/03/13
-63/03/18
-64/09/27
-64/09/27
-64/09/27
-64/09/27
-
-Sex ZIP
-
-Marital status Disease
-
-F
-F
-F
-M
-M
-F
-F
-F
-F
-
-divorced
-divorced
-married
-married
-married
-single
-single
-single
-widow
-
-94142
-94141
-94139
-94139
-94139
-94138
-94139
-94139
-94141
-
-City
-
-................
-................
-................
-................
-................
-................
-Sue J. Doe 900 Market St. San Francisco
-................
-................
-................
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-ZIP
-
-DOB
-
-hypertension
-obesity
-chest pain
-obesity
-short breath
-short breath
-obesity
-chest pain
-short breath
-Sex
-
-Status
-
-........
-........
-........ ................
-........
-........
-........ ................
-94142 64/04/12
-F
-divorced
-........
-........
-........ ................
-
-
-The anonymity problem – Example
-SSN Name
-
-Race DoB
-
-Sue J. Doe asian
-asian
-asian
-asian
-asian
-black
-black
-white
-white
-Name
-
-Address
-
-64/04/12
-64/09/13
-64/04/15
-63/03/13
-63/03/18
-64/09/27
-64/09/27
-64/09/27
-64/09/27
-
-Sex ZIP
-
-Marital status Disease
-
-F
-F
-F
-M
-M
-F
-F
-F
-F
-
-divorced
-divorced
-married
-married
-married
-single
-single
-single
-widow
-
-94142
-94141
-94139
-94139
-94139
-94138
-94139
-94139
-94141
-
-City
-
-................
-................
-................
-................
-................
-................
-Sue J. Doe 900 Market St. San Francisco
-................
-................
-................
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-ZIP
-
-DOB
-
-hypertension
-obesity
-chest pain
-obesity
-short breath
-short breath
-obesity
-chest pain
-short breath
-Sex
-
-Status
-
-........
-........
-........ ................
-........
-........
-........ ................
-94142 64/04/12
-F
-divorced
-........
-........
-........ ................
-
-
-The anonymity problem – Example
-SSN Name
-
-Race DoB
-
-Sue J. Doe asian
-asian
-asian
-asian
-asian
-black
-black
-white
-white
-Name
-
-Address
-
-64/04/12
-64/09/13
-64/04/15
-63/03/13
-63/03/18
-64/09/27
-64/09/27
-64/09/27
-64/09/27
-
-Sex ZIP
-
-Marital status Disease
-
-F
-F
-F
-M
-M
-F
-F
-F
-F
-
-divorced
-divorced
-married
-married
-married
-single
-single
-single
-widow
-
-94142
-94141
-94139
-94139
-94139
-94138
-94139
-94139
-94141
-
-City
-
-................
-................
-................
-................
-................
-................
-Sue J. Doe 900 Market St. San Francisco
-................
-................
-................
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-ZIP
-
-DOB
-
-hypertension
-obesity
-chest pain
-obesity
-short breath
-short breath
-obesity
-chest pain
-short breath
-Sex
-
-Status
-
-........
-........
-........ ................
-........
-........
-........ ................
-94142 64/04/12
-F
-divorced
-........
-........
-........ ................
-
-
-The anonymity problem – Example
-SSN Name
-
-Race DoB
-
-Sue J. Doe asian
-asian
-asian
-asian
-asian
-black
-black
-white
-white
-Name
-
-Address
-
-64/04/12
-64/09/13
-64/04/15
-63/03/13
-63/03/18
-64/09/27
-64/09/27
-64/09/27
-64/09/27
-
-Sex ZIP
-
-Marital status Disease
-
-F
-F
-F
-M
-M
-F
-F
-F
-F
-
-divorced
-divorced
-married
-married
-married
-single
-single
-single
-widow
-
-94142
-94141
-94139
-94139
-94139
-94138
-94139
-94139
-94141
-
-City
-
-................
-................
-................
-................
-................
-................
-Sue J. Doe 900 Market St. San Francisco
-................
-................
-................
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-ZIP
-
-DOB
-
-hypertension
-obesity
-chest pain
-obesity
-short breath
-short breath
-obesity
-chest pain
-short breath
-Sex
-
-Status
-
-........
-........
-........ ................
-........
-........
-........ ................
-94142 64/04/12
-F
-divorced
-........
-........
-........ ................
-
-Classification of attributes in a microdata table
+### Classification of attributes in a microdata table
 The attributes in the original microdata table can be classified as:
-• identifiers: attributes that uniquely identify a microdata respondent
-(e.g., SSN uniquely identifies the person with which is associated)
-• quasi-identifiers: attributes that, in combination, can be linked with
-external information to reidentify all or some of the respondents to
-whom information refers or reduce the uncertainty over their
-identities (e.g., DoB, ZIP, and Sex)
-• confidential: attributes of the microdata table that contain sensitive
-information (e.g., Disease)
-• non confidential: attributes that the respondents do not consider
-sensitive and whose release does not cause disclosure
+- **identifiers**: attributes that uniquely identify a microdata respondent (e.g., SSN uniquely identifies the person with which is associated);
+- **quasi-identifiers**: attributes that, in combination, can be linked with external information to reidentify all or some of the respondents to whom information refers or reduce the uncertainty over their identities (e.g., DoB, ZIP, and Sex);
+- **confidential**: attributes of the microdata table that contain sensitive information (e.g., Disease);
+- **non confidential**: attributes that the respondents do not consider sensitive and whose release does not cause disclosure.
 
+----------------------------------------------------------------
 
-
-Re-identification
-A study of the 2000 census data reported that the US population was
-uniquely identifiable by:
-• gender, year of birth, 5-digit ZIP code: 0.2%
-• gender, year of birth, county: 0.0%
-• gender, year and month of birth, 5-digit ZIP code: 4.2%
-• gender, year and month of birth, county: 0.2%
-• gender, year, month, and day of birth, 5-digit ZIP code: 63.3%
-• gender, year, month, and day of birth, county: 14.8%
-
-
+### Re-identification
 Factors contributing to disclosure risk – 1
 Possible sources of the disclosure risk of microdata
 • Existence of high visibility records. Some records on the file may
@@ -1375,7 +795,7 @@ proposed
 
 Algorithms for AG_TS and AG_
 
-
+# ARRIVARE FINO A QUI
 
 Computing a k-minimal solution [S-01] – 1
 • Each path in DGHDT represents a generalization strategy for PT
