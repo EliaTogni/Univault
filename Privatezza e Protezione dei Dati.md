@@ -42,8 +42,7 @@ Macrodata tables can be classified into the following two groups (types of table
 - **Count/Frequency**: each cell of the table contains the number of respondents (**count**) or the percentage of respondents (**frequency**) that have the same value over all attributes of analysis associated with the table;
 - **Magnitude data**: each cell of the table contains an aggregate value of a quantity of interest over all attributes of analysis associated with the table.
 
-
-An example of a count table is a two-dimensional table showing the number of employees by department and annual income (in K Euro).
+An example of a count table is a two-dimensional table showing the number of employees by department and annual income (in $K$ Euro).
 
 ![[CountTable.png]]
 
@@ -58,17 +57,14 @@ An example of a microdata table is the records about delinquent children in coun
 ----------------------------------------------------------------
 
 ### Information disclosure
-Disclosure relates to attribution of sensitive information to a
-respondent (an individual or organization) There is disclosure when:
+Disclosure relates to attribution of sensitive information to a respondent (an individual or organization) There is disclosure when:
 - a respondent is identified from released data (**identity disclosure**);
 - sensitive information about a respondent is revealed through the released data (**attribute disclosure**);
 - the released data make it possible to determine the value of some characteristic of a respondent even if no released record refers to the respondent (**inferential disclosure**).
 
 #### Identity disclosure
 It occurs if a third party can identify a respondent from the released data. Revealing that an individual is a respondent in a data collection may or may not violate confidentiality requirements.<br />
-In macrodata, revealing identity is generally not a problem, unless
-the identification leads to divulging confidential information
-(attribute disclosure)
+In macrodata, revealing identity is generally not a problem, unless the identification leads to divulging confidential information (attribute disclosure).
 In microdata, identification is generally regarded as a problem, since microdata records are detailed; identity disclosure usually implies also attribute disclosure.
 
 ----------------------------------------------------------------
@@ -83,11 +79,8 @@ It occurs when confidential information about a respondent is revealed and can b
 #### Inferential disclosure
 It occurs when information can be inferred with high confidence from statistical properties of the released data. For example, the data may show a high correlation between income and purchase price of home. As purchase price of home is typically public information, a third party might use this information to infer the income of a respondent.<br />
 Inference disclosure does not always represent a risk:
-- statistical data are released for enabling users to infer and
-understand relationships between variables;
-- inferences are designed to predict aggregate behavior, not
-individual attributes, and are then often poor predictors of
-individual data values.
+- statistical data are released for enabling users to infer and understand relationships between variables;
+- inferences are designed to predict aggregate behavior, not individual attributes, and are then often poor predictors of individual data values.
 
 ----------------------------------------------------------------
 
@@ -152,10 +145,7 @@ The possibility of linking or its precision increases with:
 ----------------------------------------------------------------
 
 ### Factors contributing to decrease the disclosure risk
-A microdata table often contains a subset of the whole population. This implies that the information of a specific respondent may not be included in the microdata table.<br />
-Furthermore, the information specified in microdata tables released to the
-public is not always up-to-date (often at least one or two-year old). Therefore, the values of the attributes of the corresponding respondents may have been changed in the meanwhile. Also, the age of the external sources of information used for linking may be different from the age of the information contained in the
-microdata table.<br />
+A microdata table often contains a subset of the whole population. This implies that the information of a specific respondent may not be included in the microdata table.<br /> Furthermore, the information specified in microdata tables released to the public is not always up-to-date (often at least one or two-year old). Therefore, the values of the attributes of the corresponding respondents may have been changed in the meanwhile. Also, the age of the external sources of information used for linking may be different from the age of the information contained in the microdata table.<br />
 A microdata table and the external sources of information naturally contain noise that decreases the ability to link the information and can also contain data expressed in different forms thus decreasing the ability to link information.
 
 ----------------------------------------------------------------
@@ -173,17 +163,15 @@ The percentage of records representing respondents who are unique in the populat
 
 **$K$-anonymity**, together with its enforcement via generalization and suppression, aims to protect respondents’ identities while releasing truthful information. It tries to capture the following requirement:
 - the released data should be indistinguishably related to no less than a certain number of respondents;
-- Quasi-identifier: set of attributes that can be exploited for linking (whose release must be controlled).
+- quasi-identifier, a set of attributes that can be exploited for linking (whose release must be controlled).
 
 The basic idea is to translate the $k$-anonymity requirement on the released data. Each release of data must be such that every combination of values of quasi-identifiers can be indistinctly matched to at least $k$ respondents.<br />
-In the released table the respondents must be indistinguishable
-(within a given set) with respect to a set of attributes. $K$-anonymity requires that each quasi-identifier value appearing in the released table must have at least $k$ occurrences. This is a sufficient condition for the satisfaction of $k$-anonymity requirement
+In the released table the respondents must be indistinguishable (within a given set) with respect to a set of attributes. $K$-anonymity requires that each quasi-identifier value appearing in the released table must have at least $k$ occurrences. This is a sufficient condition for the satisfaction of $k$-anonymity requirement
 
 ### Generalization and suppression
 with **generalization**, the values of a given attribute are substituted by using more general values. Based on the definition of a generalization hierarchy, for example, consider the attribute ZIP code and suppose that a step in the corresponding generalization hierarchy consists in suppressing the least significant digit in the ZIP code.
-With one generalization step, $20222$ and $20223$ become $2022*$ and 
-$20238$ and $20239$ become $2023*$.<br />
-With **suppression**,  it is possible to protect sensitive information by removing it. The introduction of suppression can reduce the amount of generalization necessary to satisfy the $k$-anonymity constraint.
+With one generalization step, $20222$ and $20223$ become $2022*$ and $20238$ and $20239$ become $2023*$.<br />
+With **suppression**, it is possible to protect sensitive information by removing it. The introduction of suppression can reduce the amount of generalization necessary to satisfy the $k$-anonymity constraint.
 
 ----------------------------------------------------------------
 
@@ -224,9 +212,7 @@ An example of a generalized table with suppression.
 ----------------------------------------------------------------
 
 ### $k$-minimal generalization with suppression
-Now, it will be provided the definition of **Distance vector**. Let $T_i (A_1 , . . . , A_n)$ and $T_j (A_1 , . . . , A_n)$ be two tables such that $T_i \preceq T_j$. The distance vector of $T_j$ from $T_i$ is the vector $DV_{i,j} = [d_1 , . . . , d_n]$, where each $d_z, z = 1, . . . , n$, is the length of the
-unique path between $dom(A_z , T_i)$ and $dom(A_z, T_j)$ in the domain
-generalization hierarchy $DGH_{D_z}.
+Now, it will be provided the definition of **Distance vector**. Let $T_i (A_1 , . . . , A_n)$ and $T_j (A_1 , . . . , A_n)$ be two tables such that $T_i \preceq T_j$. The distance vector of $T_j$ from $T_i$ is the vector $DV_{i,j} = [d_1 , . . . , d_n]$, where each $d_z, z = 1, . . . , n$, is the length of the unique path between $dom(A_z , T_i)$ and $dom(A_z, T_j)$ in the domain generalization hierarchy $DGH_{D_z}$.
 
 ![[DistanceVector.png]]
 
@@ -259,15 +245,19 @@ Suppression can be applied at the level of row (i.e., a suppression operation re
 
 An example of $2$-anonymized tables with regard to different models.
 
-slides 45 - 48 /155
+![[2Anonymized1.png]]
+
+![[2Anonymized2.png]]
+
+![[2Anonymized3.png]]
+
+![[2Anonymized4.png]]
 
 ----------------------------------------------------------------
 
 ### Algorithms for computing a $k$-anonymous table
-The problem of finding minimal k-anonymous tables, with attribute generalization and tuple suppression, is computationally hard. The majority of the exact algorithms proposed in literature have computational time exponential in the number of the attributes composing the quasi-identifier. When the number $\vert QI \vert$ of attributes in the quasi-identifier is small
-compared with the number $n$ of tuples in the private table PT, these exact algorithms with attribute generalization and tuple suppression are practical.<br />
-Many exact algorithms for producing $k$-anonymous tables through attribute generalization and tuple suppression have been
-proposed.
+The problem of finding minimal $k$-anonymous tables, with attribute generalization and tuple suppression, is computationally hard. The majority of the exact algorithms proposed in literature have computational time exponential in the number of the attributes composing the quasi-identifier. When the number $\vert QI \vert$ of attributes in the quasi-identifier is small compared with the number $n$ of tuples in the private table PT, these exact algorithms with attribute generalization and tuple suppression are practical.<br />
+Many exact algorithms for producing $k$-anonymous tables through attribute generalization and tuple suppression have been proposed.
 
 ----------------------------------------------------------------
 
