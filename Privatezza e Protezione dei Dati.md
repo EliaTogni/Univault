@@ -20,274 +20,66 @@
 - Privacy in data outsourcing $\to$ third parties store and manage data (towards cloud scenarios).
 
 ## Privacy in Data Publication
-Statistical DBMS vs statistical data
-Release of data for statistical purpose
-• statistical DBMS [AW-89]
-◦ the DBMS responds only to statistical queries
-◦ need run time checking to control information (indirectly) released
+
+### Statistical DBMS vs statistical data
+Release of data for statistical purpose:
+- statistical DBMS:
+	- the DBMS responds only to statistical queries;
+	- need run time checking to control information (indirectly) released.
+- statistical data:
+	- publish statistics;
+	- control on indirect release performed before publication.
 
-• statistical data [CDFS-07b]
-◦ publish statistics
-◦ control on indirect release performed before publication
+----------------------------------------------------------------
 
+### Macrodata vs microdata
+In the past data were mainly released in tabular form (**macrodata**) and through statistical databases. Today many situations require that the specific stored data themselves, called **microdata**, be released, increasing flexibility and availability of information for the users. Microdata are subject to a greater risk of privacy breaches (**linking attacks**).
 
-Macrodata vs microdata
-• In the past data were mainly released in tabular form (macrodata)
-and through statistical databases
-• Today many situations require that the specific stored data
-themselves, called microdata, be released
-◦ increased flexibility and availability of information for the users
-
-• Microdata are subject to a greater risk of privacy breaches
-(linking attacks)
-
+#### Macrodata
+Macrodata tables can be classified into the following two groups (types of tables):
+- **Count/Frequency**: each cell of the table contains the number of respondents (**count**) or the percentage of respondents (**frequency**) that have the same value over all attributes of analysis associated with the table;
+- **Magnitude data**: each cell of the table contains an aggregate value of a quantity of interest over all attributes of analysis associated with the table.
 
 
-Macrodata
-Macrodata tables can be classified into the following two groups (types
-of tables)
-• Count/Frequency. Each cell of the table contains the number of
-respondents (count) or the percentage of respondents (frequency)
-that have the same value over all attributes of analysis associated
-with the table
-• Magnitude data. Each cell of the table contains an aggregate
-value of a quantity of interest over all attributes of analysis
-associated with the table
+An example of a count table is a two-dimensional table showing the number of employees by department and annual income (in K Euro).
 
+slide 9/155
 
-Count table – Example
-Two-dimensional table showing the number of employees by
-department and annual income (in K Euro)
+An example of a magnitude table is the average number of days spent in the hospital by respondents with a given disease.
 
-Income
-Dept [0-21) [21-23) [23-25) [25-27) [27-29) 29+ Total
-Dept1
-2
-4
-18
-20
-7
-1
-52
-Dept2
-7
-9
-16
-Dept3
-6
-30
-15
-4
-55
-Dept4
-2
-2
+slide 10/155
 
+An example of a microdata table is the records about delinquent children in county Alfa.
 
+slide 11/155
 
-Magnitude table – Example
-Average number of days spent in the hospital by respondents with a
-given disease
+---------------------------------------------------------
 
-Hypertension Obesity Chest Pain Short Breath Tot
-M
-2
-08.5
-23.5
-3
-37.0
-F
-3
-30.5
-00.0
-5
-38.5
-Tot
-5
-39.0
-23.5
-8
-75.5
-
-
-
-Microdata table – Example
-Records about delinquent children in county Alfa
-N
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-
-Child
-John
-Jim
-Sue
-Pete
-Ramesh
-Dante
-Virgil
-Wanda
-Stan
-Irmi
-Renee
-Virginia
-Mary
-Kim
-Tom
-Ken
-Mike
-Joe
-Jeff
-Nancy
-
-County
-Alfa
-Alfa
-Alfa
-Alfa
-Alfa
-Alfa
-Alfa
-Alfa
-Alfa
-Alfa
-Alfa
-Alfa
-Alfa
-Alfa
-Alfa
-Alfa
-Alfa
-Alfa
-Alfa
-Alfa
-
-Educ. HH
-very high
-high
-high
-high
-medium
-low
-low
-low
-low
-low
-low
-low
-low
-low
-low
-low
-low
-low
-low
-low
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Salary HH
-201
-103
-77
-61
-72
-103
-91
-84
-75
-62
-58
-56
-54
-52
-55
-48
-48
-41
-44
-37
-
-Race HH
-black
-white
-black
-white
-white
-white
-black
-white
-white
-black
-white
-black
-black
-white
-black
-white
-white
-black
-black
-white
-
-
-Information disclosure
+### Information disclosure
 Disclosure relates to attribution of sensitive information to a
-respondent (an individual or organization)
-There is disclosure when:
-• a respondent is identified from released data (identity disclosure)
-• sensitive information about a respondent is revealed through the
-released data (attribute disclosure)
-• the released data make it possible to determine the value of some
-characteristic of a respondent even if no released record refers to
-the respondent (inferential disclosure)
+respondent (an individual or organization) There is disclosure when:
+- a respondent is identified from released data (**identity disclosure**);
+- sensitive information about a respondent is revealed through the released data (**attribute disclosure**);
+- the released data make it possible to determine the value of some characteristic of a respondent even if no released record refers to the respondent (**inferential disclosure**).
 
-
-
-Identity disclosure
-It occurs if a third party can identify a respondent from the released
-data
-Revealing that an individual is a respondent in a data collection may or
-may not violate confidentiality requirements
-• Macrodata: revealing identity is generally not a problem, unless
+#### Identity disclosure
+It occurs if a third party can identify a respondent from the released data. Revealing that an individual is a respondent in a data collection may or may not violate confidentiality requirements.<br />
+In macrodata, revealing identity is generally not a problem, unless
 the identification leads to divulging confidential information
 (attribute disclosure)
-• Microdata: identification is generally regarded as a problem, since
-microdata records are detailed; identity disclosure usually implies
-also attribute disclosure
+In microdata, identification is generally regarded as a problem, since microdata records are detailed; identity disclosure usually implies also attribute disclosure.
 
+--------------------------------------------------------------
 
+#### Attribute disclosure
+It occurs when confidential information about a respondent is revealed and can be attributed to her. Confidential information may be:
+- revealed exactly;
+- closely estimated.
 
-Attribute disclosure
-It occurs when confidential information about a respondent is revealed
-and can be attributed to her
-Confidential information may be:
-• revealed exactly
-• closely estimated
+----------------------------------------------------------
 
-
-
-Inferential disclosure
-It occurs when information can be inferred with high confidence from
-statistical properties of the released data
-EXAMPLE : the data may show a high correlation between income and
+#### Inferential disclosure
+It occurs when information can be inferred with high confidence from statistical properties of the released data EXAMPLE : the data may show a high correlation between income and
 purchase price of home. As purchase price of home is typically public
 information, a third party might use this information to infer the income
 of a respondent
