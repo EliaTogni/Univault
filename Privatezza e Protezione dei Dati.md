@@ -219,468 +219,55 @@ slide 38/155
 
 ----------------------------------------------------------------
 
-### k-minimal generalization with suppression
-• Distance vector. Let Ti (A1 , . . . , An ) and Tj (A1 , . . . , An ) be two tables
-such that Ti ⪯ Tj . The distance vector of Tj from Ti is the vector
-DVi,j = [d1 , . . . , dn ], where each dz , z = 1, . . . , n, is the length of the
-unique path between dom(Az , Ti ) and dom(Az , Tj ) in the domain
-generalization hierarchy DGHDz
+### $k$-minimal generalization with suppression
+Now, it will be provided the definition of **Distance vector**. Let $T_i (A_1 , . . . , A_n)$ and $T_j (A_1 , . . . , A_n)$ be two tables such that $T_i \preceq T_j$. The distance vector of $T_j$ from T_i$ is the vector $DV_{i,j} = [d_1 , . . . , d_n]$, where each $d_z, z = 1, . . . , n$, is the length of the
+unique path between $dom(A_z , T_i)$ and $dom(A_z, T_j)$ in the domain
+generalization hierarchy $DGH_{D_z}.
 
+slide 39/155
 
-k-minimal generalization with suppression – 2
-Let Ti and Tj be two tables such that Ti ⪯ Tj , and let MaxSup be the
-specified threshold of acceptable suppression. Tj is said to be a
-k-minimal generalization of table Ti iff:
-1. Tj satisfies k-anonymity enforcing minimal required suppression,
-that is, Tj satisfies k-anonymity and ∀Tz : Ti ⪯ Tz , DVi,z = DVi,j , Tz
-satisfies k-anonymity =⇒ |Tj | ≥ |Tz |
-2. |Ti | − |Tj | ≤ MaxSup
-3. ∀Tz : Ti ⪯ Tz and Tz satisfies conditions 1 and 2 =⇒ ¬(DVi,z < DVi,j )
+Let $T_i$ and $T_j$ be two tables such that $T_i \preceq T_j$ , and let $MaxSup$ be the specified threshold of acceptable suppression. $T_j$ is said to be a **$k$-minimal generalization** of table $T_i$ iff:
+1) $T_j$ satisfies $k$-anonymity enforcing minimal required suppression, that is, $T_j$ satisfies $k$-anonymity and $\forall T_z : T_i \preceq T_z, DV_{i,z} = DV_{i,j}$, $T_z$ satisfies $k$-anonymity $\to \vert T_j \vert \geq \vert T_z \vert$;
+2) $\vert T_i \vert − \vert T_j \vert \leq MaxSup$;
+3) $\forall T_z : T_i \preceq T_z$ and $T_z$ satisfies conditions $1$ and $2$ $\to \neg (DV_{i,z} < DV_{i,j})$
 
+Examples of $2$-minimal generalizations with $MaxSup = 2$.
+slide 41/155
 
+----------------------------------------------------------------
 
-Examples of 2-minimal generalizations
-MaxSup=2
-Race:R0 ZIP:Z0
-asian
-asian
-asian
-asian
-asian
-black
-black
-white
-white
-PT
+### Computing a preferred generalization
+Different preference criteria can be applied in choosing a preferred minimal generalization, among which:
+- **minimum absolute distance** prefers the generalization(s) with the smallest absolute distance, that is, with the smallest total number of generalization steps (regardless of the hierarchies on which they have been taken);
+- **minimum relative distance** prefers the generalization(s) with the smallest relative distance, that is, that minimizes the total number of relative steps (a step is made relative by dividing it over the height of the domain hierarchy to which it refers):
+- **maximum distribution** prefers the generalization(s) with the greatest number of distinct tuples;
+- **minimum suppression** prefers the generalization(s) that suppresses less tuples, that is, the one with the greatest cardinality.
 
-94142
-94141
-94139
-94139
-94139
-94138
-94139
-94139
-94141
+----------------------------------------------------------------
 
-Race:R1 ZIP:Z0
-person
-person
-person
-person
+### Classification of k-anonymity techniques
+Generalization and suppression can be applied at different levels of granularity. Generalization can be applied at the level of single column (i.e., a generalization step generalizes all the values in the column) or single cell (i.e., for a specific column, the table may contain values at different generalization levels).<br />
+Suppression can be applied at the level of row (i.e., a suppression operation removes a whole tuple), column (i.e., a suppression operation obscures all the values of a column), or single cells (i.e., a $k$-anonymized table may wipe out only certain cells of a given tuple/attribute).
 
-94141
-94139
-94139
-94139
+slide 44/155
 
-person 94139
-person 94139
-person 94141
-GT[1,0]
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+An example of $2$-anonymized tables with regard to different models.
 
-Race:R0 ZIP:Z1
-asian
-asian
-asian
-asian
-asian
-black
-black
+slides 45 - 48 /155
 
-9414*
-9414*
-9413*
-9413*
-9413*
-9413*
-9413*
+----------------------------------------------------------------
 
-GT[0,1]
+### Algorithms for computing a $k$-anonymous table
+The problem of finding minimal k-anonymous tables, with attribute generalization and tuple suppression, is computationally hard. The majority of the exact algorithms proposed in literature have computational time exponential in the number of the attributes composing the quasi-identifier. When the number $\vert QI \vert$ of attributes in the quasi-identifier is small
+compared with the number $n$ of tuples in the private table PT, these exact algorithms with attribute generalization and tuple suppression are practical.<br />
+Many exact algorithms for producing $k$-anonymous tables through attribute generalization and tuple suppression have been
+proposed.
 
+----------------------------------------------------------------
 
-Computing a preferred generalization
-Different preference criteria can be applied in choosing a preferred
-minimal generalization, among which:
-• minimum absolute distance prefers the generalization(s) with the
-smallest absolute distance, that is, with the smallest total number
-of generalization steps (regardless of the hierarchies on which
-they have been taken)
-• minimum relative distance prefers the generalization(s) with the
-smallest relative distance, that is, that minimizes the total number
-of relative steps (a step is made relative by dividing it over the
-height of the domain hierarchy to which it refers)
-• maximum distribution prefers the generalization(s) with the
-greatest number of distinct tuples
-• minimum suppression prefers the generalization(s) that
-suppresses less tuples, that is, the one with the greatest
-cardinality
-
-
-Classification of k-anonymity techniques – 1
-Generalization and suppression can be applied at different levels of
-granularity
-• Generalization can be applied at the level of single column (i.e., a
-generalization step generalizes all the values in the column) or
-single cell (i.e., for a specific column, the table may contain values
-at different generalization levels)
-• Suppression can be applied at the level of row (i.e., a suppression
-operation removes a whole tuple), column (i.e., a suppression
-operation obscures all the values of a column), or single cells (i.e.,
-a k-anonymized table may wipe out only certain cells of a given
-tuple/attribute)
-
-
-
-Classification of k-anonymity techniques – 2
-
-Generalization
-
-Tuple
-
-Attribute
-
-AG_TS
-
-Cell
-
-CG_TS
-not applicable
-_TS
-
-None
-
-Suppression
-Attribute
-Cell
-AG_AS
-≡ AG_
-CG_AS
-not applicable
-_AS
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-AG_CS
-CG_CS
-≡ CG_
-_CS
-
-None
-AG_
-≡ AG_AS
-CG_
-≡ CG_CS
-_
-not interesting
-
-
-2-anonymized tables wrt different models – 1
-Race
-asian
-asian
-asian
-asian
-asian
-black
-black
-white
-white
-
-DOB
-
-Sex
-
-64/04/12 F
-64/09/13 F
-64/04/15 F
-63/03/13 M
-63/03/18 M
-64/09/27 F
-64/09/27 F
-64/09/27 F
-64/09/27 F
-PT
-
-ZIP
-94142
-94141
-94139
-94139
-94139
-94138
-94139
-94139
-94141
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Race DOB Sex
-asian 64/04
-asian
-asian
-asian
-black
-black
-white
-white
-
-ZIP
-
-F
-
-941**
-
-64/04 F
-63/03 M
-63/03 M
-64/09 F
-64/09 F
-64/09 F
-64/09 F
-AG_TS
-
-941**
-941**
-941**
-941**
-941**
-941**
-941**
-
-
-
-2-anonymized tables wrt different models – 2
-Race DOB Sex
-asian
-asian
-asian
-asian
-asian
-black
-black
-white
-white
-
-*
-F
-*
-F
-*
-F
-63/03 M
-63/03 M
-64/09 F
-64/09 F
-64/09 F
-64/09 F
-AG_CS
-
-ZIP
-*
-*
-*
-9413*
-9413*
-9413*
-9413*
-*
-*
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Race DOB Sex
-
-ZIP
-
-asian 64
-F 941**
-asian 64
-F 941**
-asian 64
-F 941**
-asian 63
-M 941**
-asian 63
-M 941**
-black 64
-F 941**
-black 64
-F 941**
-white 64
-F 941**
-white 64
-F 941**
-AG_≡AG_AS
-
-
-
-2-anonymized tables wrt different models – 3
-Race
-asian
-asian
-asian
-asian
-asian
-black
-black
-white
-white
-
-DOB
-
-Sex
-
-64
-F
-64
-F
-64
-F
-63/03
-M
-63/03
-M
-64/09/27 F
-64/09/27 F
-64/09/27 F
-64/09/27 F
-CG_≡CG_CS
-
-ZIP
-
-Race DOB Sex ZIP
-
-941**
-941**
-941**
-94139
-94139
-9413*
-9413*
-941**
-941**
-
-_TS
-
-
-2-anonymized tables wrt different models – 4
-Race DOB Sex ZIP
-
-Race
-
-DOB
-
-Sex
-
-ZIP
-
-asian
-asian
-asian
-asian
-asian
-black
-black
-white
-white
-
-asian
-asian
-asian
-asian
-asian
-*
-*
-*
-*
-
-*
-*
-*
-*
-*
-64/09/27
-64/09/27
-64/09/27
-64/09/27
-_CS
-
-F
-F
-F
-M
-M
-F
-F
-F
-F
-
-*
-*
-*
-94139
-94139
-*
-94139
-94139
-*
-
-*
-*
-*
-*
-*
-*
-*
-*
-*
-_AS
-
-F
-F
-F
-M
-M
-F
-F
-F
-F
-
-*
-*
-*
-*
-*
-*
-*
-*
-*
-
-
-Algorithms for computing a k-anonymous table
-• The problem of finding minimal k-anonymous tables, with attribute
-generalization and tuple suppression, is computationally hard
-• The majority of the exact algorithms proposed in literature have
-computational time exponential in the number of the attributes
-composing the quasi-identifier
-◦ when the number |QI| of attributes in the quasi-identifier is small
-compared with the number n of tuples in the private table PT, these
-exact algorithms with attribute generalization and tuple suppression
-are practical
-
-• Many exact algorithms for producing k-anonymous tables through
-attribute generalization and tuple suppression have been
-proposed
-
-
-Algorithms for AG_TS and AG_
-
-# ARRIVARE FINO A QUI
-
-Computing a k-minimal solution [S-01] – 1
+## Algorithms for AG_TS and AG_
+### Computing a $k$-minimal solution
 • Each path in DGHDT represents a generalization strategy for PT
 • We call locally minimal generalization the lowest node of each
 path satisfying k-anonymity
