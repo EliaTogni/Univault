@@ -1,5 +1,5 @@
 # Privacy and Data Protection in Emerging Scenarios
-### Motivations:
+## Motivations:
 - Continuous growth of:
 	- government and company databases;
 	- user-generated content delivered through collaborative Internet services such as YouTube, Flickr;
@@ -15,9 +15,11 @@
 
 ----------------------------------------------------------------
 
-### Outline
+## Outline
 - Privacy in data publication $\to$ data release/dissemination;
 - Privacy in data outsourcing $\to$ third parties store and manage data (towards cloud scenarios).
+
+----------------------------------------------------------------
 
 ## Privacy in Data Publication
 
@@ -43,15 +45,15 @@ Macrodata tables can be classified into the following two groups (types of table
 
 An example of a count table is a two-dimensional table showing the number of employees by department and annual income (in K Euro).
 
-slide 9/155
+![[CountTable.png]]
 
 An example of a magnitude table is the average number of days spent in the hospital by respondents with a given disease.
 
-slide 10/155
+![[MagnitudeTable.png]]
 
 An example of a microdata table is the records about delinquent children in county Alfa.
 
-slide 11/155
+![[MicrodataTable.png]]
 
 ----------------------------------------------------------------
 
@@ -122,7 +124,7 @@ The amount of privately owned records that describe each citizen’s finances, i
 
 An example of the anonymity problem
 
-slides 21/155
+![[AnonymityProblem.png]]
 
 ----------------------------------------------------------------
 
@@ -193,9 +195,9 @@ domain $D$ and its generalizations. Given two domains $D_i, D_j \in Dom$, $D_i \
 
 Given a domain tuple $D_T = \langle D_1, . . . , D_n \rangle$ such that $D_i \in Dom, i = 1, . . . , n$, the domain generalization hierarchy of $D_T$ is $DGH_{DT} = DGH_{D1} \times . . . \times DGH_{Dn}$.
 
-
 An example of a domain generalization hierarchy.
-slide 34/155
+
+![[DomainGeneralizationHierarchy.png]]
 
 ----------------------------------------------------------------
 
@@ -203,7 +205,9 @@ slide 34/155
 A **value generalization relationship** $\leq_V$ associates with each value in domain $D_i$ a unique value in domain $D_j$, direct generalization of $D_i$. $\leq_V$ implies the existence, for each domain $D$, of a value generalization hierarchy $VGH_D$. $VGH_D$ is a tree where the leaves are the values in $D$ and the root (i.e., the most general value) is the value in the maximum element in $DGH_D$.
 
 An example of value generalization hierarchy.
-slide 36/155
+
+
+![[ValueGeneralizationHierarchy.png]]
 
 ----------------------------------------------------------------
 
@@ -213,18 +217,18 @@ Let $T_i$ and $T_j$ be two tables defined on the same set of attributes. Table $
 2) the domain $dom(A, T_j)$ of each attribute $A$ in $T_j$ is equal to, or a generalization of, the domain $dom(A, T_i)$ of attribute $A$ in $T_i$;
 3) it is possible to define an injective function associating each tuple $t_j$ in $T_j$ with a tuple $t_i$ in $T_i$ , such that the value of each attribute in $t_j$ is equal to, or a generalization of, the value of the corresponding attribute in $t_i$.
 
-
 An example of a generalized table with suppression.
-slide 38/155
+
+![[GeneralizedTableSuppression.png]]
 
 ----------------------------------------------------------------
 
 ### $k$-minimal generalization with suppression
-Now, it will be provided the definition of **Distance vector**. Let $T_i (A_1 , . . . , A_n)$ and $T_j (A_1 , . . . , A_n)$ be two tables such that $T_i \preceq T_j$. The distance vector of $T_j$ from T_i$ is the vector $DV_{i,j} = [d_1 , . . . , d_n]$, where each $d_z, z = 1, . . . , n$, is the length of the
+Now, it will be provided the definition of **Distance vector**. Let $T_i (A_1 , . . . , A_n)$ and $T_j (A_1 , . . . , A_n)$ be two tables such that $T_i \preceq T_j$. The distance vector of $T_j$ from $T_i$ is the vector $DV_{i,j} = [d_1 , . . . , d_n]$, where each $d_z, z = 1, . . . , n$, is the length of the
 unique path between $dom(A_z , T_i)$ and $dom(A_z, T_j)$ in the domain
 generalization hierarchy $DGH_{D_z}.
 
-slide 39/155
+![[DistanceVector.png]]
 
 Let $T_i$ and $T_j$ be two tables such that $T_i \preceq T_j$ , and let $MaxSup$ be the specified threshold of acceptable suppression. $T_j$ is said to be a **$k$-minimal generalization** of table $T_i$ iff:
 1) $T_j$ satisfies $k$-anonymity enforcing minimal required suppression, that is, $T_j$ satisfies $k$-anonymity and $\forall T_z : T_i \preceq T_z, DV_{i,z} = DV_{i,j}$, $T_z$ satisfies $k$-anonymity $\to \vert T_j \vert \geq \vert T_z \vert$;
@@ -232,7 +236,8 @@ Let $T_i$ and $T_j$ be two tables such that $T_i \preceq T_j$ , and let $MaxSup$
 3) $\forall T_z : T_i \preceq T_z$ and $T_z$ satisfies conditions $1$ and $2$ $\to \neg (DV_{i,z} < DV_{i,j})$
 
 Examples of $2$-minimal generalizations with $MaxSup = 2$.
-slide 41/155
+
+![[Example2MinimalGeneralizations.png]]
 
 ----------------------------------------------------------------
 
@@ -249,7 +254,7 @@ Different preference criteria can be applied in choosing a preferred minimal gen
 Generalization and suppression can be applied at different levels of granularity. Generalization can be applied at the level of single column (i.e., a generalization step generalizes all the values in the column) or single cell (i.e., for a specific column, the table may contain values at different generalization levels).<br />
 Suppression can be applied at the level of row (i.e., a suppression operation removes a whole tuple), column (i.e., a suppression operation obscures all the values of a column), or single cells (i.e., a $k$-anonymized table may wipe out only certain cells of a given tuple/attribute).
 
-slide 44/155
+![[ClassificationKAnonymity.png]]
 
 
 An example of $2$-anonymized tables with regard to different models.
