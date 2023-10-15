@@ -326,7 +326,6 @@ $k$-anonymity with respect to a proper subset of $QI$ is a necessary (not suffic
 - iteration $\vert QI \vert$ returns the final result.
 Incognito adopts a bottom-up approach for the visit of $DGH_s$.
 
-
 An example of the Incognito algorithm.
 
 slide 59-60/155
@@ -360,7 +359,6 @@ Mondrian algorithm is flexible and can operate:
 	- relaxed (i.e., potentially overlapping) partitioning.
 - using different metrics to determine how to split on each dimension.
 
-
 An example of the Mondrian multidimensional algorithm.
 We wished $k=3$
 
@@ -369,10 +367,10 @@ slide 65/155
 ----------------------------------------------------------------
 
 ### Approximation algorithms
-Approximation algorithms for general and specific values of $k$ (e.g., 1.5-approximation for 2-anonymity, and 2-approximation for 3-anonymity). Approximation algorithm for _CS
-◦ [MW-04]: O(k log(k))-approximation
-◦ [AFKMPTZ-05a]: with unbounded value of k, O(k)-approximation
-solution
+Approximation algorithms for general and specific values of $k$ (e.g., $1.5$-approximation for $2$-anonymity, and $2$-approximation for $3$-anonymity).<br />
+Approximation algorithm for _CS:
+- [MW-04]: O(k log(k))-approximation;
+- [AFKMPTZ-05a]: with unbounded value of k, O(k)-approximation solution
 
 • Approximation algorithm for CG_
 ◦ [AFKMPTZ-05b]: with unbounded value of k, O(k)-approximation
