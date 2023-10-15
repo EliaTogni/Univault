@@ -263,379 +263,59 @@ Many exact algorithms for producing $k$-anonymous tables through attribute gener
 
 ## Algorithms for AG_TS and AG_
 ### Computing a $k$-minimal solution
-• Each path in DGHDT represents a generalization strategy for PT
-• We call locally minimal generalization the lowest node of each
-path satisfying k-anonymity
-• Properties exploited by the algorithm:
-1. each k-minimal generalization is locally minimal with respect to a
-path (but the converse is not true)
-2. going up in the hierarchy the number of tuples that must be
-removed to guarantee k-anonymity decreases
+Each path in $DGH_{DT}$ represents a generalization strategy for PT. We call **locally minimal generalization** the lowest node of each path satisfying $k$-anonymity. The properties exploited by the algorithm are:
+1) each $k$-minimal generalization is locally minimal with respect to a path (but the converse is not true);
+2) going up in the hierarchy the number of tuples that must be removed to guarantee $k$-anonymity decreases.
 
-• If there is no solution that guarantees k-anonymity suppressing
-less than MaxSup tuples at height h, there cannot exist a solution,
-with height lower than h that guarantees it
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-51/155
-
-Computing a k-minimal solution [S-01] – 2
-• The algorithm adopts a binary search on the lattice of distance
+If there is no solution that guarantees $k$-anonymity suppressing
+less than $MaxSup$ tuples at height $h$, there cannot exist a solution, with height lower than h that guarantees it.<br />
+The algorithm adopts a binary search on the lattice of distance
 vectors:
-1. evaluate solutions at height ⌊h/2⌋
-2. if there exists at least a solution satisfying k-anonymity
-− then evaluates solutions at height ⌊h/4⌋
-− otherwise evaluates solutions at height ⌊3h/4⌋
+1) evaluate solutions at height $\lfloor h/2\rfloor$;
+2) if there exists at least a solution satisfying $k$-anonymity
+	1) then evaluates solutions at height $\lfloor h/4 \rfloor$;
+	2) otherwise evaluates solutions at height $\lfloor 3h/4 \rfloor$.
+3) until the algorithm reaches the lowest height for which there is a distance vector that satisfies $k$-anonymity.
 
-3. until the algorithm reaches the lowest height for which there is a
-distance vector that satisfies k-anonymity
-
-• To reduce the computational cost, it adopts a distance vector
+To reduce the computational cost, it adopts a distance vector
 matrix that avoids the explicit computation of each generalized
-table
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+table.
 
-52/155
+An example for computing a $k$-minimal solution
 
-Computing a k-minimal solution – Example (1)
-Distance vector matrix
+slide 53/155
 
-t1
-t2
-t3
-t4
-t5
-t6
-t7
-t8
-t9
+Suppose $k = 2$ and $MaxSup = 2$.
+Compute first solutions at height $1$ : $GT_{[1,0]}$ and $GT_{[0,1]}$.
 
-Race:R0
+Slide 54/155
 
-ZIP:Z0
+Satisfies $2$-anonymity (suppressing $t_1$ and $t_6$).
 
-asian
-asian
-asian
-asian
-asian
-black
-black
-white
-white
+slide 54_2/ 155
 
-94142
-94141
-94139
-94139
-94139
-94138
-94139
-94139
-94141
+Satisfies $2$-anonymity (suppressing $t_8$ and $t_9$)
 
-t1
-t2
-t6
-t7
-t8
-t9
+----------------------------------------------------------------
 
-t1
-[0, 0]
-[0, 1]
-[1, 2]
-[1, 2]
-[1, 2]
-[1, 1]
+### $k$-Optimize algorithm
+Order attributes in QI and the values in their domains. Associate an integer index value with each domain value, following the defined order
 
-t2 t3 /t4 /t5
-[0, 1] [0, 2]
-[0, 0] [0, 2]
-[1, 2] [1, 1]
-[1, 2] [1, 0]
-[1, 2] [1, 0]
-[1, 0] [1, 2]
+slide 55/155
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+A generalization is the union of individual index values. The least value in an attribute domain is omitted. E.g., $\{6\}$ corresponds to:
+- Race: $\{1\}$, that is: $\langle [\text{asian or black or white}]\rangle$;
+- ZIP: $\{4, 6\}$, that is: $\langle[94138 \text{ or } 94139],[94141 \text{ or } 94142]\rangle$.
 
-t6
-[1, 2]
-[1, 2]
-[0, 0]
-[0, 1]
-[1, 1]
-[1, 2]
+Order of values within domains has impact on generalization. $k$-Optimize builds a set enumeration tree over the set $I$ of indexes:
 
-t7
-[1, 2]
-[1, 2]
-[0, 1]
-[0, 0]
-[1, 0]
-[1, 2]
+slide 56/155
 
-t8
-[1, 2]
-[1, 2]
-[1, 1]
-[1, 0]
-[0, 0]
-[0, 2]
+The root node of the tree is the empty set. The children of $n$ are the sets obtained by appending a single element $i$ of $I$ to $n$, such that $\forall i' \in n, i > i'$. Each node has a cost that reflects the amount of generalization and suppression of the anonymization represented by the node. this implies that each tuple is associated with a cost that reflects the information loss associated with its generalization or suppression.<br />
+$k$-Optimize visits the tree (e.g., using a depth-first search) for
+searching the anonymization with lowest cost. Since the number of nodes in the tree is $2^{\vert I \vert}$, the visit of the tree is not practical. This implies that a **pruning** strategy is fundamental to reduce computational cost. The node $n$ is pruned iff none of its descendants could be optimal. This determination can be made by computing a lower bound on the cost of the nodes in the subtree rooted at $n$. if the lower bound is greater than the current best cost, node $n$ is pruned.
 
-t9
-[1, 1]
-[1, 0]
-[1, 2]
-[1, 2]
-[0, 2]
-[0, 0]
-
-53/155
-
-Computing a k-minimal solution – Example (2)
-Suppose k = 2 and MaxSup=2.
-Compute first solutions at height 1: GT[1,0] and GT[0,1]
-Race:R1 ZIP:Z0
-t1
-t2
-t3
-t4
-t5
-t6
-t7
-t8
-t9
-
-person
-person
-person
-person
-person
-person
-person
-person
-person
-
-94142
-94141
-94139
-94139
-94139
-94138
-94139
-94139
-94141
-
-t1
-t2
-t6
-t7
-t8
-t9
-
-t1
-[0, 0]
-[0, 1]
-[1, 2]
-[1, 2]
-[1, 2]
-[1, 1]
-
-t2 t3 /t4 /t5
-[0, 1] [0, 2]
-[0, 0] [0, 2]
-[1, 2] [1, 1]
-[1, 2] [1, 0]
-[1, 2] [1, 0]
-[1, 0] [1, 2]
-
-t6
-[1, 2]
-[1, 2]
-[0, 0]
-[0, 1]
-[1, 1]
-[1, 2]
-
-t7
-[1, 2]
-[1, 2]
-[0, 1]
-[0, 0]
-[1, 0]
-[1, 2]
-
-t8
-[1, 2]
-[1, 2]
-[1, 1]
-[1, 0]
-[0, 0]
-[0, 2]
-
-t9
-[1, 1]
-[1, 0]
-[1, 2]
-[1, 2]
-[0, 2]
-[0, 0]
-
-Satisfies 2-anonymity (suppressing t1 and t6 )
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-54/155
-
-Computing a k-minimal solution – Example (2)
-Suppose k = 2 and MaxSup=2.
-Compute first solutions at height 1: GT[1,0] and GT[0,1]
-Race:R0 ZIP:Z1
-t1
-t2
-t3
-t4
-t5
-t6
-t7
-t8
-t9
-
-asian
-asian
-asian
-asian
-asian
-black
-black
-white
-white
-
-9414*
-9414*
-9413*
-9413*
-9413*
-9413*
-9413*
-9413*
-9414*
-
-t1
-t2
-t6
-t7
-t8
-t9
-
-t1
-[0, 0]
-[0, 1]
-[1, 2]
-[1, 2]
-[1, 2]
-[1, 1]
-
-t2 t3 /t4 /t5
-[0, 1] [0, 2]
-[0, 0] [0, 2]
-[1, 2] [1, 1]
-[1, 2] [1, 0]
-[1, 2] [1, 0]
-[1, 0] [1, 2]
-
-t6
-[1, 2]
-[1, 2]
-[0, 0]
-[0, 1]
-[1, 1]
-[1, 2]
-
-t7
-[1, 2]
-[1, 2]
-[0, 1]
-[0, 0]
-[1, 0]
-[1, 2]
-
-t8
-[1, 2]
-[1, 2]
-[1, 1]
-[1, 0]
-[0, 0]
-[0, 2]
-
-t9
-[1, 1]
-[1, 0]
-[1, 2]
-[1, 2]
-[0, 2]
-[0, 0]
-
-Satisfies 2-anonymity (suppressing t8 and t9 )
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-54/155
-
-k-Optimize algorithm [BA-05] – 1
-• Order attributes in QI and the values in their domains
-• Associate an integer index value with each domain value,
-following the defined order
-Race
-ZIP
-⟨[asian] [black] [white]⟩ ⟨[94138] [94139] [94141] [94142]⟩
-1
-2
-3
-4
-5
-6
-7
-• A generalization is the union of individual index values
-• The least value in an attribute domain is omitted. E.g., {6}
-corresponds to:
-◦ Race: {1}, that is: ⟨[asian or black or white]⟩
-◦ ZIP: {4, 6}, that is: ⟨[94138 or 94139],[94141 or 94142]⟩
-
-• Order of values within domains has impact on generalization
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-55/155
-
-k-Optimize algorithm [BA-05] – 2
-• k-Optimize builds a set enumeration tree over the set I of indexes
-
-• The root node of the tree is the empty set
-• The children of n are the sets obtained by appending a single
-element i of I to n, such that ∀i′ ∈ n, i > i′
-• Each node has a cost that reflects the amount of generalization
-and suppression of the anonymization represented by the node
-=⇒ each tuple is associated with a cost that reflects the
-information loss associated with its generalization or
-suppression
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-56/155
-
-k-Optimize algorithm [BA-05] – 3
-• k-Optimize visits the tree (e.g., using a depth-first search) for
-searching the anonymization with lowest cost
-• Since the number of nodes in the tree is 2|I| , the visit of the tree is
-not practical =⇒ pruning strategy to reduce computational cost
-• Node n is pruned iff none of its descendants could be optimal
-• This determination can be made by computing a lower bound on
-the cost of the nodes in the subtree rooted at n
-=⇒ if the lower bound is greater than the current best cost, node n
-is pruned
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-57/155
+----------------------------------------------------------------
 
 Incognito algorithm [LDR-05]
 k-anonymity with respect to a proper subset of QI is a necessary (not
@@ -651,15 +331,11 @@ i − 1. Discard non k-anonymous solutions
 ...
 • Iteration |QI| returns the final result
 Incognito adopts a bottom-up approach for the visit of DGHs
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-58/155
 
 Incognito – Example (1)
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-59/155
 
 Incognito – Example (2)
 Race Sex Marital status
@@ -693,9 +369,7 @@ single
 single
 widow
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-60/155
 
 Heuristic algorithms
 • The exact algorithms have complexity exponential in the size of QI
@@ -714,15 +388,9 @@ k-anonymity requirement is violated
 given
 • Experimental results can be used to assess the quality of the
 solution retrieved
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-61/155
 
 Algorithms for _CS and CG_
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-62/155
 
 Mondrian multidimensional algorithm [LDR-06] – 1
 • Each attribute in QI represents a dimension
@@ -734,9 +402,7 @@ such that each area contains at least k occurrences of point values
 • All the points in a region are generalized to a unique value
 • The corresponding tuples are substituted by the computed
 generalization
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-63/155
 
 Mondrian multidimensional algorithm [LDR-06] – 2
 Mondrian algorithm is flexible and can operate
@@ -754,9 +420,7 @@ Mondrian algorithm is flexible and can operate
 
 • using different metrics to determine how to split on each
 dimension
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-64/155
 
 Mondrian multidimensional algorithm – Example
 wished k=3
@@ -785,9 +449,7 @@ white
 94141
 PT
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-65/155
 
 Mondrian multidimensional algorithm – Example
 wished k=3
@@ -816,9 +478,6 @@ white
 94141
 PT
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-65/155
 
 Mondrian multidimensional algorithm – Example
 wished k=3
@@ -847,9 +506,7 @@ white
 94141
 PT
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-65/155
 
 Mondrian multidimensional algorithm – Example
 wished k=3
@@ -878,9 +535,7 @@ white
 94141
 PT
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-65/155
 
 Mondrian multidimensional algorithm – Example
 wished k=3
@@ -910,9 +565,6 @@ asian or white
 
 GT
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-65/155
 
 Approximation algorithms
 • Approximation algorithms for general and specific values of k
@@ -927,9 +579,6 @@ solution
 ◦ [AFKMPTZ-05b]: with unbounded value of k, O(k)-approximation
 solution
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-66/155
 
 k-anonymity revisited [GMT-08]
 • k-anonymity requirement: each release of data must be such that
@@ -946,9 +595,7 @@ in GT[QI] that contain a sequence of values generalizing pt
 2. for each sequence of values t in GT[QI] there are at least k tuples in
 PT[QI] that contain a sequence of values for which t is a
 generalization
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-67/155
 
 k-anonymity revisited – Example
 Race
@@ -1017,7 +664,6 @@ asian
 9414*
 no 2-anonymity
 
-68/155
 
 k-anonymity revisited – Example
 Race
@@ -1085,7 +731,6 @@ asian
 asian
 9414*
 no 2-anonymity
-68/155
 
 k-anonymity revisited – Example
 Race
@@ -1153,7 +798,6 @@ asian
 asian
 9414*
 no 2-anonymity
-68/155
 
 k-anonymity revisited – Example
 Race
@@ -1221,7 +865,6 @@ asian
 asian
 9414*
 no 2-anonymity
-68/155
 
 k-anonymity revisited – Example
 Race
@@ -1289,13 +932,9 @@ asian
 asian
 9414*
 no 2-anonymity
-68/155
 
 Attribute Disclosure
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-69/155
 
 2-anonymous table according to the AG_ model
 k-anonymity is vulnerable to some attacks [MGK-06,S-01]
@@ -1360,7 +999,6 @@ short breath
 chest pain
 short breath
 
-70/155
 
 Homogeneity of the sensitive attribute values
 • All tuples with a quasi-identifier value in a k-anonymous table may
@@ -1405,7 +1043,6 @@ short breath
 short breath
 ...
 
-71/155
 
 Background knowledge
 • Based on prior knowledge of some additional external information
@@ -1447,7 +1084,6 @@ Disease
 ...
 chest pain
 short breath
-72/155
 
 ℓ-diversity – 1
 • A q-block (i.e., set of tuples with the same value for QI) is ℓ-diverse
@@ -1460,9 +1096,6 @@ remains (ℓ-1)-diverse)
 • ℓ-diversity: an adversary needs to eliminate at least ℓ-1 possible
 values to infer that a respondent has a given value
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-73/155
 
 ℓ-diversity – 2
 • A table is ℓ-diverse if all its q-blocks are ℓ-diverse
@@ -1477,9 +1110,6 @@ BUT
 ℓ-diversity leaves space to attacks based on the distribution of values
 inside q-blocks (skewness and similarity attacks)
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-74/155
 
 Skewness attack
 • Skewness attack occurs when the distribution in a q-block is
@@ -1524,7 +1154,6 @@ short breath
 diabetes
 diabetes
 
-75/155
 
 Similarity attack
 • Similarity attack happens when a q-block has different but
@@ -1560,7 +1189,6 @@ stomach ulcer
 stomach ulcer
 gastritis
 
-76/155
 
 Group closeness
 • A q-block respects t-closeness if the distance between the
@@ -1572,9 +1200,6 @@ hierarchies considered for k-anonymity purposes
 • Any algorithm for k-anonymity can be extended to enforce the
 t-closeness property, which however might be difficult to achieve
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-77/155
 
 External knowledge modeling
 • An observer may have external/background knowledge that can
@@ -1586,9 +1211,6 @@ be exploited to infer information
 individuals have the same sensitive value (e.g., genomic
 information)
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-78/155
 
 External knowledge – Example (1)
 Name
@@ -1644,9 +1266,6 @@ DOB Sex ZIP Disease
 
 Released table is 4-anonymized but . . . . . .
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-79/155
 
 External knowledge – Example (2)
 DOB Sex ZIP Disease
@@ -1670,9 +1289,6 @@ DOB Sex ZIP Disease
 An adversary knows that Harry, born in 64 and living in area 94139, is
 in the table
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-80/155
 
 External knowledge – Example (2)
 DOB Sex ZIP Disease
@@ -1715,9 +1331,6 @@ in the table
 =⇒ Harry belongs to the second group
 =⇒ Harry has aids with confidence 1/4
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-80/155
 
 External knowledge – Example (3)
 DOB Sex
@@ -1738,9 +1351,6 @@ Disease
 From another dataset, the adversary knows that George (who is in the
 table, is born in 64, and leaves in area 941**) has flu
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-81/155
 
 External knowledge – Example (3)
 DOB Sex
@@ -1776,9 +1386,6 @@ From another dataset, the adversary knows that George (who is in the
 table, is born in 64, and leaves in area 941**) has flu
 =⇒ Harry has aids with confidence 1/3
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-81/155
 
 External knowledge – Example (4)
 DOB Sex
@@ -1797,9 +1404,6 @@ Disease
 From personal knowledge, the adversary knows that Harry does not
 have short breath
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-82/155
 
 External knowledge – Example (4)
 DOB Sex
@@ -1831,9 +1435,6 @@ From personal knowledge, the adversary knows that Harry does not
 have short breath
 =⇒ Harry has aids with confidence 1/2
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-82/155
 
 Multiple releases
 • Data may be subject to frequent changes and may need to be
@@ -1842,9 +1443,6 @@ published on regular basis
 leakage since a malicious recipient can correlate the released
 datasets
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-83/155
 
 Multiple independent releases – Example (1)
 T1
@@ -1882,9 +1480,6 @@ DOB Sex ZIP Disease
 An adversary knows that Alice, born in 1974 and living in area 94142,
 is in both releases
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-84/155
 
 Multiple independent releases – Example (1)
 T1
@@ -1914,9 +1509,6 @@ is in both releases
 =⇒ Alice belongs to the first group in T1
 =⇒ Alice belongs to the first group in T2
 Alice suffers from aids (it is the only illness common to both groups)
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-84/155
 
 Multiple independent releases – Example (1)
 T1
@@ -1946,9 +1538,6 @@ is in both releases
 =⇒ Alice belongs to the first group in T1
 =⇒ Alice belongs to the first group in T2
 Alice suffers from aids (it is the only illness common to both groups)
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-84/155
 
 Multiple independent releases – Example (2)
 T1
@@ -1986,9 +1575,6 @@ DOB Sex ZIP Disease
 An adversary knows that Frank, born in 1964 and living in area 94132,
 is the only patient in T1 but not in T2
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-85/155
 
 Multiple independent releases – Example (2)
 DOB Sex
@@ -2026,9 +1612,6 @@ hypertension
 An adversary knows that Frank, born in 1964 and living in area 94132,
 is the only patient in T1 but not in T2
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-85/155
 
 Multiple independent releases – Example (2)
 DOB Sex
@@ -2067,18 +1650,11 @@ An adversary knows that Frank, born in 1964 and living in area 94132,
 is the only patient in T1 but not in T2
 =⇒ Frank suffers from short breath
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-85/155
-
 Multiple releases
 Multiple (i.e., longitudinal) releases cannot be independent
 =⇒ need to ensure multiple releases are safe with respect to
 intersection attacks
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-86/155
 
 m-invariance [XT-07]
 Addresses the problem of longitudinal release
@@ -2092,9 +1668,6 @@ sequence are characterized by the same set of sensitive values
 =⇒ the correlation of the tuples in T1 , . . . , Tn does not permit a
 malicious recipient to associate less than m different sensitive
 values with each respondent
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-87/155
 
 Extended scenarios – 1
 k-anonymity, ℓ-diversity, and t-closeness are based on assumptions
@@ -2111,9 +1684,6 @@ dependencies
 • Multiple quasi-identifiers
 ◦ butterfly [PTLX-09]
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-88/155
 
 Extended scenarios – 2
 • Non-predefined quasi-identifiers
@@ -2128,9 +1698,6 @@ dependencies
 ◦ personalized anonymity [XT-06]
 ◦ δ -presence [NAC-07]
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-89/155
 
 k-anonymity in various applications
 In addition to classical microdata release problem, the concept of
@@ -2141,18 +1708,12 @@ e.g.:
 • location data (e.g., [GL-08])
 • ...
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-90/155
 
 k-anonymity in social networks – 1
 • Neighborhood attack =⇒ given a de-identified graph G′ of a social
 network graph G, exploit knowledge about the neighbors of user u
 to re-identify the vertex representing u
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-91/155
 
 k-anonymity in social networks – 2
 Idea: adapt the k-anonymity requirement to social networks [ZP-11]
@@ -2168,10 +1729,6 @@ confidence larger than 1/k
 • Goal: compute a k-anonymous version of a social network graph
 minimizing the number of added edges
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-92/155
-
 k-anonymous data mining
 • Privacy preserving data mining techniques depend on the
 definition of privacy capturing what information is sensitive in the
@@ -2184,9 +1741,6 @@ collection of data maintained in a private table PT subject to
 k-anonymity constraints. E.g.:
 ◦ association rule mining
 ◦ classification mining
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-93/155
 
 Association rule mining
 Marital_status
@@ -2246,9 +1800,6 @@ If QI includes Marital_status and Sex =⇒
 ◦ violates also k-anonymity for any k > 2 since it reflects the existence
 of 2 divorced and female respondents
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-94/155
 
 Classification mining – Decision trees
 Marital_status
@@ -2294,7 +1845,6 @@ M
 (2Y, 7N)
 (6Y, 20N)
 
-95/155
 
 Classification mining – Decision trees
 Marital_status
@@ -2341,9 +1891,6 @@ M
 path ⟨F,35⟩ implies the existence
 of 2 females working 35 hours
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-95/155
 
 Classification mining – Decision trees
 Marital_status
@@ -2394,9 +1941,6 @@ paths ⟨F⟩ (#11) and ⟨F,50⟩
 females who do not work 50 hours
 per week
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-95/155
 
 Classification mining – Decision trees
 Marital_status
@@ -2448,15 +1992,9 @@ females who do not work 50 hours
 per week
 If QI includes Sex and Hours =⇒
 k-anonym. is violated for any k > 2
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-95/155
 
 Approaches for combining k-anonymity and data mining
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-96/155
 
 k-anonymity in location-based services
 Protect identity of people in locations
@@ -2471,11 +2009,8 @@ decrease its precision or
 confidence
 protect the location path of users (trajectory privacy)
 =⇒ block tracking by mixing
-©Security, Privacy,
-and Data Protection Laboratory (SPDP Lab)
 trajectories
 
-97/155
 
 k-anonymity in location-based services
 Protect identity of people in locations
@@ -2490,11 +2025,8 @@ decrease its precision or
 confidence
 protect the location path of users (trajectory privacy)
 =⇒ block tracking by mixing
-©Security, Privacy,
-and Data Protection Laboratory (SPDP Lab)
 trajectories
 
-97/155
 
 k-anonymity in location-based services
 Protect identity of people in locations
@@ -2509,11 +2041,8 @@ decrease its precision or
 confidence
 protect the location path of users (trajectory privacy)
 =⇒ block tracking by mixing
-©Security, Privacy,
-and Data Protection Laboratory (SPDP Lab)
 trajectories
 
-97/155
 
 Privacy in location-based applications
 Protect identity of people in locations
@@ -2529,11 +2058,9 @@ decrease its precision or
 confidence
 protect the location path of users (trajectory privacy)
 =⇒ block tracking by mixing
-©Security, Privacy,
-and Data Protection Laboratory (SPDP Lab)
 trajectories
 
-98/155
+
 
 Privacy in location-based applications
 Protect identity of people in locations
@@ -2549,11 +2076,8 @@ decrease its precision or
 confidence
 protect the location path of users (trajectory privacy)
 =⇒ block tracking by mixing
-©Security, Privacy,
-and Data Protection Laboratory (SPDP Lab)
-trajectories
 
-98/155
+trajectories
 
 Privacy in location-based applications
 Protect identity of people in locations
@@ -2571,9 +2095,8 @@ confidence
 (trajectory privacy)
 =⇒ block tracking by mixing/
 modifying trajectories
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-98/155
+
 
 Privacy in location-based applications
 Protect identity of people in locations
@@ -2591,9 +2114,6 @@ confidence
 (trajectory privacy)
 =⇒ block tracking by mixing/
 modifying trajectories
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-98/155
 
 Re-identification with any information
 • Any information can be used to re-identify anonymous data
@@ -2604,9 +2124,6 @@ increased
 ◦ AOL
 ◦ Netflix
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-99/155
 
 AOL data release – 1
 • In 2006, to embrace the vision of an open research community,
@@ -2618,9 +2135,7 @@ AOL username and IP address
 • AOL replaced these identifiers with unique identification numbers
 (this made searches by the same user linkable)
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-100/155
+# Arrivare qui
 
 AOL data release – 2
 • User 4417749:
