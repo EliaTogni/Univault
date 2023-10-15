@@ -312,62 +312,23 @@ Order of values within domains has impact on generalization. $k$-Optimize builds
 slide 56/155
 
 The root node of the tree is the empty set. The children of $n$ are the sets obtained by appending a single element $i$ of $I$ to $n$, such that $\forall i' \in n, i > i'$. Each node has a cost that reflects the amount of generalization and suppression of the anonymization represented by the node. this implies that each tuple is associated with a cost that reflects the information loss associated with its generalization or suppression.<br />
-$k$-Optimize visits the tree (e.g., using a depth-first search) for
-searching the anonymization with lowest cost. Since the number of nodes in the tree is $2^{\vert I \vert}$, the visit of the tree is not practical. This implies that a **pruning** strategy is fundamental to reduce computational cost. The node $n$ is pruned iff none of its descendants could be optimal. This determination can be made by computing a lower bound on the cost of the nodes in the subtree rooted at $n$. if the lower bound is greater than the current best cost, node $n$ is pruned.
+$k$-Optimize visits the tree (e.g., using a depth-first search) for searching the anonymization with lowest cost. Since the number of nodes in the tree is $2^{\vert I \vert}$, the visit of the tree is not practical. This implies that a **pruning** strategy is fundamental to reduce computational cost. The node $n$ is pruned iff none of its descendants could be optimal. This determination can be made by computing a lower bound on the cost of the nodes in the subtree rooted at $n$. if the lower bound is greater than the current best cost, node $n$ is pruned.
 
 ----------------------------------------------------------------
 
-Incognito algorithm [LDR-05]
-k-anonymity with respect to a proper subset of QI is a necessary (not
-sufficient) condition for k-anonymity with respect to QI
-• Iteration 1: check k-anonymity for each attribute in QI, discarding
-generalizations that do not satisfy k-anonymity
-• Iteration 2: combine the remaining generalizations in pairs and
-check k-anonymity for each couple obtained
-...
-• Iteration i: consider all the i-uples of attributes, obtained
-combining generalizations that satisfied k-anonymity at iteration
-i − 1. Discard non k-anonymous solutions
-...
-• Iteration |QI| returns the final result
-Incognito adopts a bottom-up approach for the visit of DGHs
+### Incognito algorithm
+$k$-anonymity with respect to a proper subset of $QI$ is a necessary (not sufficient) condition for $k$-anonymity with respect to $QI$.
+- iteration $1$: check $k$-anonymity for each attribute in $QI$, discarding generalizations that do not satisfy $k$-anonymity;
+- iteration $2$: combine the remaining generalizations in pairs and check $k$-anonymity for each couple obtained;
+- ...
+- iteration $i$: consider all the $i$-uples of attributes, obtained combining generalizations that satisfied $k$-anonymity at iteration $i − 1$. Discard non $k$ anonymous solutions;
+- ...
+- iteration $\vert QI \vert$ returns the final result.
+Incognito adopts a bottom-up approach for the visit of $DGH_s$.
 
 
-Incognito – Example (1)
+An example of the Incognito algorithm.
 
-
-
-Incognito – Example (2)
-Race Sex Marital status
-asian
-asian
-asian
-asian
-asian
-black
-black
-white
-white
-
-F
-F
-F
-M
-M
-F
-F
-F
-F
-
-divorced
-divorced
-married
-married
-married
-single
-single
-single
-widow
 
 
 
