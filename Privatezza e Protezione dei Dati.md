@@ -329,209 +329,47 @@ Incognito adopts a bottom-up approach for the visit of $DGH_s$.
 
 An example of the Incognito algorithm.
 
+slide 59-60/155
+
+----------------------------------------------------------------
+
+### Heuristic algorithms
+The exact algorithms have complexity exponential in the size of $QI$. Heuristic algorithms have been proposed:
+- \[I-02\]: based on genetic algorithms, it solves the $k$-anonymity problem using an incomplete stochastic search method;
+- \[MW-04\]: based on simulated annealing for finding locally minimal solutions, it requires high computational time and does not assure the quality of the solution;
+- \[FWY-05\]: top-down heuristic to make a table to be released
+$k$-anonymous; it starts from the most general solution, and iteratively specializes some values of the current solution until the k-anonymity requirement is violated
+
+No bounds on efficiency and goodness of the solutions can be
+given. Experimental results can be used to assess the quality of the solution retrieved.
+
+----------------------------------------------------------------
+
+## Algorithms for _CS_ and _CG_
+### Mondrian multidimensional algorithm
+Each attribute in $QI$ represents a dimension. Each tuple in PT represents a point in the space defined by $QI$. Tuples with the same $QI$ value are represented by giving a multiplicity value to points. The multi-dimensional space is partitioned by splitting dimensions such that each area contains at least k occurrences of point values. All the points in a region are generalized to a unique value. The corresponding tuples are substituted by the computed generalization.<br />
+Mondrian algorithm is flexible and can operate:
+- on a different number of attributes:
+	- single-dimension;
+	- multi-dimension.
+- with different recoding (generalization) strategies:
+	- global recoding;
+	- local recoding.
+- with different partitioning strategies:
+	- strict (i.e., non-overlapping) partitioning;
+	- relaxed (i.e., potentially overlapping) partitioning.
+- using different metrics to determine how to split on each dimension.
 
 
+An example of the Mondrian multidimensional algorithm.
+We wished $k=3$
 
-Heuristic algorithms
-• The exact algorithms have complexity exponential in the size of QI
-• Heuristic algorithms have been proposed
-◦ [I-02]: based on genetic algorithms, it solves the k-anonymity
-problem using an incomplete stochastic search method
-◦ [MW-04]: based on simulated annealing for finding locally minimal
-solutions, it requires high computational time and does not assure
-the quality of the solution
-◦ [FWY-05]: top-down heuristic to make a table to be released
-k-anonymous; it starts from the most general solution, and
-iteratively specializes some values of the current solution until the
-k-anonymity requirement is violated
+slide 65/155
 
-• No bounds on efficiency and goodness of the solutions can be
-given
-• Experimental results can be used to assess the quality of the
-solution retrieved
+----------------------------------------------------------------
 
-
-Algorithms for _CS and CG_
-
-Mondrian multidimensional algorithm [LDR-06] – 1
-• Each attribute in QI represents a dimension
-• Each tuple in PT represents a point in the space defined by QI
-• Tuples with the same QI value are represented by giving a
-multiplicity value to points
-• The multi-dimensional space is partitioned by splitting dimensions
-such that each area contains at least k occurrences of point values
-• All the points in a region are generalized to a unique value
-• The corresponding tuples are substituted by the computed
-generalization
-
-
-Mondrian multidimensional algorithm [LDR-06] – 2
-Mondrian algorithm is flexible and can operate
-• on a different number of attributes
-◦ single-dimension
-◦ multi-dimension
-
-• with different recoding (generalization) strategies
-◦ global recoding
-◦ local recoding
-
-• with different partitioning strategies
-◦ strict (i.e., non-overlapping) partitioning
-◦ relaxed (i.e., potentially overlapping) partitioning
-
-• using different metrics to determine how to split on each
-dimension
-
-
-Mondrian multidimensional algorithm – Example
-wished k=3
-Race
-
-ZIP
-
-asian
-asian
-asian
-asian
-asian
-black
-black
-white
-white
-
-94142
-94141
-94139
-94139
-94139
-94138
-94139
-94139
-94141
-PT
-
-
-
-Mondrian multidimensional algorithm – Example
-wished k=3
-Race
-
-ZIP
-
-asian
-asian
-asian
-asian
-asian
-black
-black
-white
-white
-
-94142
-94141
-94139
-94139
-94139
-94138
-94139
-94139
-94141
-PT
-
-
-Mondrian multidimensional algorithm – Example
-wished k=3
-Race
-
-ZIP
-
-asian
-asian
-asian
-asian
-asian
-black
-black
-white
-white
-
-94142
-94141
-94139
-94139
-94139
-94138
-94139
-94139
-94141
-PT
-
-
-
-Mondrian multidimensional algorithm – Example
-wished k=3
-Race
-
-ZIP
-
-asian
-asian
-asian
-asian
-asian
-black
-black
-white
-white
-
-94142
-94141
-94139
-94139
-94139
-94138
-94139
-94139
-94141
-PT
-
-
-
-Mondrian multidimensional algorithm – Example
-wished k=3
-Race
-
-ZIP
-
-asian or white
-asian or white
-asian
-asian
-asian
-black or white
-black or white
-black or white
-asian or white
-
-9414*
-9414*
-94139
-94139
-94139
-9413*
-9413*
-9413*
-9414*
-
-GT
-
-
-Approximation algorithms
-• Approximation algorithms for general and specific values of k
-(e.g., 1.5-approximation for 2-anonymity, and 2-approximation for
-3-anonymity [AFKMPTZ-05b])
-• Approximation algorithm for _CS
+### Approximation algorithms
+Approximation algorithms for general and specific values of $k$ (e.g., 1.5-approximation for 2-anonymity, and 2-approximation for 3-anonymity). Approximation algorithm for _CS
 ◦ [MW-04]: O(k log(k))-approximation
 ◦ [AFKMPTZ-05a]: with unbounded value of k, O(k)-approximation
 solution
