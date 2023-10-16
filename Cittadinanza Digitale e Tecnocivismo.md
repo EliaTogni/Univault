@@ -57,24 +57,27 @@
 	un router potrebbe tranquillamente modificare un pacchetto prima di ruotarlo, operando quello che viene chiamato Man-In-The-Middle attack.
 23) **Cos'è la "Deep Packet Inspection"? E' sempre possibile/facile?**
 	La deep packet inspection (DPI, ispezione profonda dei pacchetti), che prevede l’analisi non solo dei metadati ma anche del contenuto (tenendo perfino una traccia storica) dei pacchetti che vengono instradati. Con la DPI è possibile controllare ogni aspetto di tutta l’informazione veicolata su Internet, consentendo quindi - tipicamente ai governi e alle aziende che gestiscono la Rete - di esercitare il controllo sistematico del contenuto delle comunicazioni su intere zone di Internet e di conseguenza decidere cosa può essere comunicato, chi può comunicare e chi può ricevere la comunicazione.
-1) Cosa si intende con "crittografia"? Sai citare qualche tipo di crittografia nota?
-1) Cos'è un indirizzo IP? Che tipi esistono?
-2) Cosa si intende con "la rete è relativistica"?
-3) In che senso la rete "non è un universo euclideo"?
-4) Cos'è un URL? In cosa differisce da un indirizzo IP?
-5) Cosa fa un motore di ricerca?
-6) Un URL viene "risolto" sempre allo stesso modo da qualunque DNS?
-7) Una volta che ottengo l'IP di un indirizzo simbolico, riesco sempre a raggiungere il nodo? Sempre lo stesso univocamente?
-8) Cos'è `dig`? (o nslookup, ecc)
-9) Cosa si intende con "sito oscurato" (mediante decisione legale)? (filtro DNS)
-10) Cos'è Tor? Come funziona? Cosa c'entrano le cipolle?
-11) Cos'è un "proxy"?
-12) Cos'è "whois"?
-13) Cosa fa un "firewall"?
-14) Fai qualche esempio notevole di sottoreti quasi certamente "molto relativistiche" (in cui ci sono molte "ombre/buchi/ecc").
-15) Differenze fra "whitelist" e "blacklist"?
-16) Cosa si intende con "velocità di trasmissione" in Internet? Da cosa è influenzata?
-17) Differenze fra ADSL, VDSL, FIBRA, ecc.
+24) **Cosa si intende con "crittografia"? Sai citare qualche tipo di crittografia nota?**
+	i
+25) **Cos'è un indirizzo IP? Che tipi esistono?**
+	i
+26) **Cosa si intende con "la rete è relativistica"?**
+	i
+1) In che senso la rete "non è un universo euclideo"?
+2) Cos'è un URL? In cosa differisce da un indirizzo IP?
+3) Cosa fa un motore di ricerca?
+4) Un URL viene "risolto" sempre allo stesso modo da qualunque DNS?
+5) Una volta che ottengo l'IP di un indirizzo simbolico, riesco sempre a raggiungere il nodo? Sempre lo stesso univocamente?
+6) Cos'è `dig`? (o nslookup, ecc)
+7) Cosa si intende con "sito oscurato" (mediante decisione legale)? (filtro DNS)
+8) Cos'è Tor? Come funziona? Cosa c'entrano le cipolle?
+9) Cos'è un "proxy"?
+10) Cos'è "whois"?
+11) Cosa fa un "firewall"?
+12) Fai qualche esempio notevole di sottoreti quasi certamente "molto relativistiche" (in cui ci sono molte "ombre/buchi/ecc").
+13) Differenze fra "whitelist" e "blacklist"?
+14) Cosa si intende con "velocità di trasmissione" in Internet? Da cosa è influenzata?
+15) Differenze fra ADSL, VDSL, FIBRA, ecc.
 	ADSL sta per Asymmetrical Digital Subscriber Line 
 1) Cosa si intende con "sito" e con "nodo della rete"?
 2) Cosa si intende con "ultimo miglio"?
