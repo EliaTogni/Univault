@@ -18,21 +18,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "128e85c5d507ff0e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Cittadinanza Digitale e Tecnocivismo.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -98,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Cittadinanza Digitale e Tecnocivismo.md",
+                "file": "Privatezza e Protezione dei Dati.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,10 +114,10 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "128e85c5d507ff0e",
+  "active": "4b2410dd3dec1ef2",
   "lastOpenFiles": [
-    "Privatezza e Protezione dei Dati.md",
     "Cittadinanza Digitale e Tecnocivismo.md",
+    "Privatezza e Protezione dei Dati.md",
     "Images/2Anonymized4.png",
     "Images/2Anonymized3.png",
     "Images/2Anonymized2.png",

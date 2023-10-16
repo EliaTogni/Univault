@@ -368,1006 +368,134 @@ slide 65/155
 
 ### Approximation algorithms
 Approximation algorithms for general and specific values of $k$ (e.g., $1.5$-approximation for $2$-anonymity, and $2$-approximation for $3$-anonymity).<br />
-Approximation algorithm for _CS:
-- [MW-04]: O(k log(k))-approximation;
-- [AFKMPTZ-05a]: with unbounded value of k, O(k)-approximation solution
-
-• Approximation algorithm for CG_
-◦ [AFKMPTZ-05b]: with unbounded value of k, O(k)-approximation
-solution
-
-
-k-anonymity revisited [GMT-08]
-• k-anonymity requirement: each release of data must be such that
-every combination of values of quasi-identifiers can be indistinctly
-matched to at least k respondents
-• When generalization is performed at attribute level (AG) this is
-equivalent to require each quasi-identifier n-uple to have at least k
-occurrences
-• When generalization is performed at cell level (CG) the existence
-of at least k occurrences is a sufficient but not necessary
-condition; a less stricter requirement would suffice
-1. for each sequence of values pt in PT[QI] there are at least k tuples
-in GT[QI] that contain a sequence of values generalizing pt
-2. for each sequence of values t in GT[QI] there are at least k tuples in
-PT[QI] that contain a sequence of values for which t is a
-generalization
-
-
-k-anonymity revisited – Example
-Race
-white
-black
-asian
-asian
-asian
-
-Race
-ZIP
-person 9413*
-person 9413*
-asian
-94141
-asian
-9414*
-asian
-9414*
-2-anonymity
-(revisited)
-
-ZIP
-94138
-94139
-94141
-94141
-94142
-PT
-
-Race
-ZIP
-person 9413*
-person 9413*
-asian
-9414*
-asian
-9414*
-asian
-9414*
-2-anonymity
-
-Race
-ZIP
-person 9413*
-person 9413*
-asian
-9414*
-asian
-9414*
-asian
-94142
-no 2-anonymity
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Race
-ZIP
-person 9413*
-person 9413*
-asian
-94141
-asian
-94141
-asian
-9414*
-no 2-anonymity
-
-
-k-anonymity revisited – Example
-Race
-white
-black
-asian
-asian
-asian
-
-Race
-ZIP
-person 9413*
-person 9413*
-asian
-94141
-asian
-9414*
-asian
-9414*
-2-anonymity
-(revisited)
-
-ZIP
-94138
-94139
-94141
-94141
-94142
-PT
-
-Race
-ZIP
-person 9413*
-person 9413*
-asian
-9414*
-asian
-9414*
-asian
-9414*
-2-anonymity
-
-Race
-ZIP
-person 9413*
-person 9413*
-asian
-9414*
-asian
-9414*
-asian
-94142
-no 2-anonymity
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Race
-ZIP
-person 9413*
-person 9413*
-asian
-94141
-asian
-94141
-asian
-9414*
-no 2-anonymity
-
-k-anonymity revisited – Example
-Race
-white
-black
-asian
-asian
-asian
-
-Race
-ZIP
-person 9413*
-person 9413*
-asian
-94141
-asian
-9414*
-asian
-9414*
-2-anonymity
-(revisited)
-
-ZIP
-94138
-94139
-94141
-94141
-94142
-PT
-
-Race
-ZIP
-person 9413*
-person 9413*
-asian
-9414*
-asian
-9414*
-asian
-9414*
-2-anonymity
-
-Race
-ZIP
-person 9413*
-person 9413*
-asian
-9414*
-asian
-9414*
-asian
-94142
-no 2-anonymity
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Race
-ZIP
-person 9413*
-person 9413*
-asian
-94141
-asian
-94141
-asian
-9414*
-no 2-anonymity
-
-k-anonymity revisited – Example
-Race
-white
-black
-asian
-asian
-asian
-
-Race
-ZIP
-person 9413*
-person 9413*
-asian
-94141
-asian
-9414*
-asian
-9414*
-2-anonymity
-(revisited)
-
-ZIP
-94138
-94139
-94141
-94141
-94142
-PT
-
-Race
-ZIP
-person 9413*
-person 9413*
-asian
-9414*
-asian
-9414*
-asian
-9414*
-2-anonymity
-
-Race
-ZIP
-person 9413*
-person 9413*
-asian
-9414*
-asian
-9414*
-asian
-94142
-no 2-anonymity
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Race
-ZIP
-person 9413*
-person 9413*
-asian
-94141
-asian
-94141
-asian
-9414*
-no 2-anonymity
-
-k-anonymity revisited – Example
-Race
-white
-black
-asian
-asian
-asian
-
-Race
-ZIP
-person 9413*
-person 9413*
-asian
-94141
-asian
-9414*
-asian
-9414*
-2-anonymity
-(revisited)
-
-ZIP
-94138
-94139
-94141
-94141
-94142
-PT
-
-Race
-ZIP
-person 9413*
-person 9413*
-asian
-9414*
-asian
-9414*
-asian
-9414*
-2-anonymity
-
-Race
-ZIP
-person 9413*
-person 9413*
-asian
-9414*
-asian
-9414*
-asian
-94142
-no 2-anonymity
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Race
-ZIP
-person 9413*
-person 9413*
-asian
-94141
-asian
-94141
-asian
-9414*
-no 2-anonymity
-
-Attribute Disclosure
-
-
-2-anonymous table according to the AG_ model
-k-anonymity is vulnerable to some attacks [MGK-06,S-01]
-Race
-
-DOB
-
-Sex
-
-ZIP
-
-asian
-asian
-asian
-asian
-asian
-black
-black
-white
-white
-
-64
-64
-64
-63
-63
-64
-64
-64
-64
-
-F
-F
-F
-M
-M
-F
-F
-F
-F
-
-941**
-941**
-941**
-941**
-941**
-941**
-941**
-941**
-941**
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Disease
-hypertension
-obesity
-chest pain
-obesity
-obesity
-short breath
-short breath
-chest pain
-short breath
-
-
-Homogeneity of the sensitive attribute values
-• All tuples with a quasi-identifier value in a k-anonymous table may
-have the same sensitive attribute value
-◦ an adversary knows that Carol is a black female and that her data
-are in the microdata table
-◦ the adversary can infer that Carol suffers from short breath
-
-Race
-
-DOB
-
-Sex
-
-ZIP
-
-...
-black
-black
-...
-
-...
-64
-64
-...
-
-...
-F
-F
-...
-
-...
-941**
-941**
-...
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Disease
-...
-short breath
-short breath
-...
-
-
-Background knowledge
-• Based on prior knowledge of some additional external information
-◦ an adversary knows that Hellen is a white female and she is in the
-microdata table
-◦ the adversary can infer that the disease of Hellen is either
-chest pain or short breath
-◦ the adversary knows that Hellen runs 2 hours a day and therefore
-that Hellen cannot suffer from short breath
-=⇒ the adversary infers that Hellen’s disease is chest pain
-
-Race
-
-DOB
-
-Sex
-
-ZIP
-
-...
-white
-white
-
-...
-64
-64
-
-...
-F
-F
-
-...
-941**
-941**
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Disease
-...
-chest pain
-short breath
-
-ℓ-diversity – 1
-• A q-block (i.e., set of tuples with the same value for QI) is ℓ-diverse
-if it contains at least ℓ different “well-represented” values for the
-sensitive attribute
-◦ “well-represented”: different definitions based on entropy or
-recursion (e.g., a q-block is ℓ-diverse if removing a sensitive value it
-remains (ℓ-1)-diverse)
-
-• ℓ-diversity: an adversary needs to eliminate at least ℓ-1 possible
-values to infer that a respondent has a given value
-
-
-ℓ-diversity – 2
-• A table is ℓ-diverse if all its q-blocks are ℓ-diverse
-=⇒ the homogeneity attack is not possible anymore
-=⇒ the background knowledge attack becomes more difficult
-
-• ℓ-diversity is monotonic with respect to the generalization
-hierarchies considered for k-anonymity purposes
-• Any algorithm for k-anonymity can be extended to enforce the
-ℓ-diverse property
-BUT
-ℓ-diversity leaves space to attacks based on the distribution of values
-inside q-blocks (skewness and similarity attacks)
-
-
-Skewness attack
-• Skewness attack occurs when the distribution in a q-block is
-different than the distribution in the original population
-• 20% of the population suffers from diabetes; 75% of tuples in a
-q-block have diabetes
-=⇒ people in the q-block have higher probability of suffering from
-diabetes
-Race
-
-DOB
-
-Sex
-
-ZIP
-
-black
-black
-black
-black
-
-64
-64
-64
-64
-
-F
-F
-F
-F
-
-941**
-941**
-941**
-941**
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Disease
-diabetes
-short breath
-diabetes
-diabetes
-
-
-Similarity attack
-• Similarity attack happens when a q-block has different but
-semantically similar values for the sensitive attribute
-Race
-
-DOB
-
-Sex
-
-ZIP
-
-black
-black
-black
-
-64
-64
-64
-
-F
-F
-F
-
-941**
-941**
-941**
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Disease
-stomach ulcer
-stomach ulcer
-gastritis
-
-
-Group closeness
-• A q-block respects t-closeness if the distance between the
-distribution of the values of the sensitive attribute in the q-block
-and in the considered population is lower than t
-• A table respects t-closeness if all its q-blocks respect t-closeness
-• t-closeness is monotonic with respect to the generalization
-hierarchies considered for k-anonymity purposes
-• Any algorithm for k-anonymity can be extended to enforce the
-t-closeness property, which however might be difficult to achieve
-
-
-External knowledge modeling
-• An observer may have external/background knowledge that can
-be exploited to infer information
-• Knowledge may be about:
-◦ the target individual
-◦ others: information about individuals other than the target
-◦ same-value families: knowledge that a group (or family) of
-individuals have the same sensitive value (e.g., genomic
-information)
-
-
-External knowledge – Example (1)
-Name
-Alice
-Bob
-Carol
-David
-Elen
-Frank
-George
-Harry
-
-DOB Sex ZIP
-74/04/12 F 94142
-74/04/13 M 94141
-74/09/15 F 94139
-74/03/13 M 94139
-64/03/18 F 94139
-64/09/27 M 94138
-64/09/27 M 94139
-64/09/27 M 94139
-Original table
-
-Disease
-aids
-flu
-flu
-aids
-flu
-short breath
-flu
-aids
-
-=⇒
-
-DOB Sex ZIP Disease
-047412 * 941** aids
-74
-* 941** flu
-74
-* 941** flu
-74
-* 941** aids
-64
-* 941** flu
-64
-* 941** short breath
-64
-* 941** flu
-64
-* 941** aids
-4-anonymized table
-
-Released table is 4-anonymized but . . . . . .
-
-
-External knowledge – Example (2)
-DOB Sex ZIP Disease
-047412 * 941** aids
-74
-* 941** flu
-74
-* 941** flu
-74
-* 941** aids
-64
-* 941** flu
-64
-* 941** short breath
-64
-* 941** flu
-64
-* 941** aids
-4-anonymized table
-
-An adversary knows that Harry, born in 64 and living in area 94139, is
-in the table
-
-
-External knowledge – Example (2)
-DOB Sex ZIP Disease
-047412 * 941** aids
-74
-* 941** flu
-74
-* 941** flu
-74
-* 941** aids
-64
-* 941** flu
-64
-* 941** short breath
-64
-* 941** flu
-64
-* 941** aids
-4-anonymized table
-
-DOB Sex
-
-=⇒
-
-ZIP
-
-Disease
-
-046412 * 941** flu
-64
-* 941** short breath
-64
-* 941** flu
-64
-* 941** aids
-4-anonymized table
-
-An adversary knows that Harry, born in 64 and living in area 94139, is
-in the table
-=⇒ Harry belongs to the second group
-=⇒ Harry has aids with confidence 1/4
-
-
-External knowledge – Example (3)
-DOB Sex
-
-ZIP
-
-Disease
-
-046404 * 941** flu
-64
-* 941** short breath
-64
-* 941** flu
-64
-* 941** aids
-4-anonymized table
-
-From another dataset, the adversary knows that George (who is in the
-table, is born in 64, and leaves in area 941**) has flu
-
-
-External knowledge – Example (3)
-DOB Sex
-
-ZIP
-
-Disease
-
-046404 * 941** flu
-64
-* 941** short breath
-64
-* 941** flu
-64
-* 941** aids
-4-anonymized table
-
-DOB Sex
-
-ZIP
-
-Disease
-
-=⇒
-046404 * 941** short breath
-64
-* 941** flu
-64
-* 941** aids
-4-anonymized table
-
-From another dataset, the adversary knows that George (who is in the
-table, is born in 64, and leaves in area 941**) has flu
-=⇒ Harry has aids with confidence 1/3
-
-
-External knowledge – Example (4)
-DOB Sex
-
-ZIP
-
-Disease
-
-046404 * 941** short breath
-64
-* 941** flu
-64
-* 941** aids
-4-anonymized table
-
-From personal knowledge, the adversary knows that Harry does not
-have short breath
-
-
-External knowledge – Example (4)
-DOB Sex
-
-ZIP
-
-Disease
-
-DOB Sex
-
-ZIP
-
-Disease
-
-=⇒
-046404 * 941** short breath
-64
-* 941** flu
-64
-* 941** aids
-4-anonymized table
-
-046404 * 941** flu
-64
-* 941** aids
-4-anonymized table
-
-From personal knowledge, the adversary knows that Harry does not
-have short breath
-=⇒ Harry has aids with confidence 1/2
-
-
-Multiple releases
-• Data may be subject to frequent changes and may need to be
-published on regular basis
-• The multiple release of a microdata table may cause information
-leakage since a malicious recipient can correlate the released
-datasets
-
-
-Multiple independent releases – Example (1)
-T1
-DOB Sex ZIP Disease
-74
-* 941** aids
-74
-* 941** flu
-74
-* 941** flu
-74
-* 941** aids
-64
-* 941** flu
-64
-* 941** short breath
-64
-* 941** flu
-64
-* 941** aids
-4-anonymized table at time t1
-
-T2
-DOB Sex ZIP Disease
-[70-80] * 9414* hypertension
-[70-80] * 9414* gastritis
-[70-80] * 9414* aids
-[70-80] * 9414* gastritis
-[60-70] * 9413* flu
-[60-70] * 9413* aids
-[60-70] * 9413* flu
-[60-70] * 9413* gastritis
-4-anonymized table at time t2
-
-An adversary knows that Alice, born in 1974 and living in area 94142,
-is in both releases
-
-
-Multiple independent releases – Example (1)
-T1
-DOB Sex ZIP Disease
-74
-* 941** aids
-74
-* 941** flu
-74
-* 941** flu
-74
-* 941** aids
-
-T2
-DOB Sex ZIP Disease
-[70-80] * 9414* hypertension
-[70-80] * 9414* gastritis
-[70-80] * 9414* aids
-[70-80] * 9414* gastritis
-
-4-anonymized table at time t1
-
-4-anonymized table at time t2
-
-An adversary knows that Alice, born in 1974 and living in area 94142,
-is in both releases
-=⇒ Alice belongs to the first group in T1
-=⇒ Alice belongs to the first group in T2
-Alice suffers from aids (it is the only illness common to both groups)
-
-Multiple independent releases – Example (1)
-T1
-DOB Sex ZIP Disease
-74
-* 941** aids
-74
-* 941** flu
-74
-* 941** flu
-74
-* 941** aids
-
-T2
-DOB Sex ZIP Disease
-[70-80] * 9414* hypertension
-[70-80] * 9414* gastritis
-[70-80] * 9414* aids
-[70-80] * 9414* gastritis
-
-4-anonymized table at time t1
-
-4-anonymized table at time t2
-
-An adversary knows that Alice, born in 1974 and living in area 94142,
-is in both releases
-=⇒ Alice belongs to the first group in T1
-=⇒ Alice belongs to the first group in T2
-Alice suffers from aids (it is the only illness common to both groups)
-
-Multiple independent releases – Example (2)
-T1
-DOB Sex ZIP Disease
-74
-* 941** aids
-74
-* 941** flu
-74
-* 941** flu
-74
-* 941** aids
-64
-* 941** flu
-64
-* 941** short breath
-64
-* 941** flu
-64
-* 941** aids
-4-anonymized table at time t1
-
-T2
-DOB Sex ZIP Disease
-[70-80] * 9414* hypertension
-[70-80] * 9414* gastritis
-[70-80] * 9414* aids
-[70-80] * 9414* gastritis
-[60-70] * 9413* flu
-[60-70] * 9413* aids
-[60-70] * 9413* flu
-[60-70] * 9413* gastritis
-4-anonymized table at time t2
+Approximation algorithm for _CS_:
+- [MW-04]: $\mathcal{O}(k \log{k})$-approximation;
+- [AFKMPTZ-05a]: with unbounded value of $k$, $\mathcal{O}(k)$-approximation solution.
+
+Approximation algorithm for _CG_:
+- [AFKMPTZ-05b]: with unbounded value of $k$, $\mathcal{O}(k)$-approximation solution.
+
+----------------------------------------------------------------
+
+### k-anonymity revisited
+$k$-anonymity requirement: each release of data must be such that
+every combination of values of quasi-identifiers can be indistinctly matched to at least $k$ respondents.<br />
+When generalization is performed at attribute level (_AG_) this is equivalent to require each quasi-identifier $n$-uple to have at least $k$ occurrences.<br />
+When generalization is performed at cell level (_CG_) the existence
+of at least $k$ occurrences is a sufficient but not necessary condition; a less stricter requirement would suffice:
+1) for each sequence of values $pt$ in $PT[QI]$ there are at least $k$ tuples in $GT[QI]$ that contain a sequence of values generalizing $pt$;
+2) for each sequence of values $t$ in $GT[QI]$ there are at least $k$ tuples in $PT[QI]$ that contain a sequence of values for which $t$ is a generalization.
+
+An example of $k$-anonymity revisited.
+
+slide 68/155
+
+----------------------------------------------------------------
+
+## Attribute Disclosure
+### $2$-anonymous table according to the _AG_ model
+$k$-anonymity is vulnerable to some attacks:
+
+slide 70/155
+
+----------------------------------------------------------------
+
+### Homogeneity of the sensitive attribute values
+All tuples with a quasi-identifier value in a $k$-anonymous table may have the same sensitive attribute value:
+- an adversary knows that Carol is a black female and that her data are in the microdata table;
+- the adversary can infer that Carol suffers from short breath.
+
+slide 71/155
+
+----------------------------------------------------------------
+
+### Background knowledge
+Based on prior knowledge of some additional external information:
+- an adversary knows that Hellen is a white female and she is in the microdata table;
+- the adversary can infer that the disease of Hellen is either chest pain or short breath;
+- the adversary knows that Hellen runs $2$ hours a day and therefore that Hellen cannot suffer from short breath;
+
+$\to$ the adversary infers that Hellen’s disease is chest pain.
+
+slide 72/155
+
+----------------------------------------------------------------
+
+### $\ell$-diversity
+A $q$-block (i.e., set of tuples with the same value for $QI$) is $\ell$-diverse if it contains at least $\ell$ different “well-represented” values for the sensitive attribute. "Well-represented" has different definitions based on entropy or recursion (e.g., a q-block is $\ell$-diverse if removing a sensitive value it remains $(\ell-1)$-diverse).<br />
+$\ell$-diversity means that an adversary needs to eliminate at least $\ell-1$ possible values to infer that a respondent has a given value.<br />
+A table is $\ell$-diverse if all its $q$-blocks are $\ell$-diverse. This implies that the homogeneity attack is not possible anymore and, therefore, that the background knowledge attack becomes more difficult.<br />
+$\ell$-diversity is monotonic with respect to the generalization hierarchies considered for $k$-anonymity purposes.<br />
+Any algorithm for $k$-anonymity can be extended to enforce the
+$\ell$-diverse property BUT $\ell$-diversity leaves space to attacks based on the distribution of values inside $q$-blocks (**skewness and similarity attacks**):
+
+----------------------------------------------------------------
+
+### Skewness attack
+**Skewness attack** occurs when the distribution in a $q$-block is different than the distribution in the original population.<br />
+Consider the following example:
+$20\%$ of the population suffers from diabetes and $75\%$ of tuples in a $q$-block have diabetes. This implies that people in the $q$-block have higher probability of suffering from diabetes.
+
+slide 75/155
+
+----------------------------------------------------------------
+
+### Similarity attack
+Similarity attack happens when a $q$-block has different but
+semantically similar values for the sensitive attribute.
+
+slide 76/155
+
+----------------------------------------------------------------
+
+### Group closeness
+A $q$-block respects **$t$-closeness** if the distance between the
+distribution of the values of the sensitive attribute in the $q$-block
+and in the considered population is lower than $t$. A table respects $t$-closeness if all its $q$-blocks respect $t$-closeness.<br />
+$t$-closeness is **monotonic** with respect to the generalization
+hierarchies considered for k-anonymity purposes. Any algorithm for $k$-anonymity can be extended to enforce the $t$-closeness property, which however might be difficult to achieve.
+
+----------------------------------------------------------------
+
+### External knowledge modeling
+An observer may have external/background knowledge that can be exploited to infer information. Knowledge may be about:
+- the target individual;
+- others, that is, information about individuals other than the target;
+- same-value families, that is, knowledge that a group (or family) of individuals have the same sensitive value (e.g., genomic information).
+
+An example of external knowledge.
+
+slides 79-80/155
+
+An adversary knows that Harry, born in 64 and living in area $94139$, is in the table. This implies that Harry belongs to the second group and, therefore, that Harry has aids with confidence $\frac{1}{4}$.
+
+slide 81/155
+
+From another dataset, the adversary knows that George (who is in the table, is born in $'64$, and leaves in area $941**$) has flu. This implies that Harry has aids with confidence $\frac{1}{3}$.
+
+slide 82/155
+
+From personal knowledge, the adversary knows that Harry does not have short breath. Therefore, Harry has aids with confidence $\frac{1}{2}$.
+
+----------------------------------------------------------------
+
+### Multiple releases
+Data may be subject to frequent changes and may need to be
+published on regular basis. The multiple release of a microdata table may cause information leakage since a malicious recipient can correlate the released datasets.
+
+
+An example of multiple independent releases.
+
+slide 84/155
+
+An adversary knows that Alice, born in $1974$ and living in area $94142$, is in both releases.
+
+slide 84/155
+
+
+This implies that Alice belongs to the first group in $T1$ and, therefore, Alice belongs to the first group in $T2$. Alice suffers from aids (it is the only illness common to both groups).
+
+slide 85/155
 
 An adversary knows that Frank, born in 1964 and living in area 94132,
 is the only patient in T1 but not in T2
