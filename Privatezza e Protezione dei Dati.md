@@ -483,7 +483,6 @@ From personal knowledge, the adversary knows that Harry does not have short brea
 Data may be subject to frequent changes and may need to be
 published on regular basis. The multiple release of a microdata table may cause information leakage since a malicious recipient can correlate the released datasets.
 
-
 An example of multiple independent releases.
 
 slide 84/155
@@ -493,226 +492,101 @@ An adversary knows that Alice, born in $1974$ and living in area $94142$, is in 
 slide 84/155
 
 
-This implies that Alice belongs to the first group in $T1$ and, therefore, Alice belongs to the first group in $T2$. Alice suffers from aids (it is the only illness common to both groups).
+This implies that Alice belongs to the first group in $T_1$ and, therefore, Alice belongs to the first group in $T_2$. Alice suffers from aids (it is the only illness common to both groups).
 
 slide 85/155
 
-An adversary knows that Frank, born in 1964 and living in area 94132,
-is the only patient in T1 but not in T2
+An adversary knows that Frank, born in $1964$ and living in area $94132$, is the only patient in $T_1$ but not in $T_2$
 
+slide 85/155
 
-Multiple independent releases – Example (2)
-DOB Sex
-M
+Therefore, Frank suffers from short breath.
 
-T1
-ZIP Disease
+Multiple (i.e., longitudinal) releases cannot be independent. This implies that there is the need to ensure multiple releases are safe with respect to intersection attacks.
 
-64
-* 941** flu
-64
-* 941** short breath
-64
-* 941** flu
-64
-* 941** aids
-4-anonymized table at time t1
+----------------------------------------------------------------
 
-DOB
+### $m$-invariance
+It addresses the problem of longitudinal release A sequence $T_1$ , . . . , T_n$ of released microdata tables satisfies $m$-invariance iff:
+- each equivalence class includes at least $m$ tuples;
+- no sensitive value appears more than once in each equivalence class;
+- for each tuple $t$, the equivalence classes to which t belongs in the sequence are characterized by the same set of sensitive values.
+Therefore, the correlation of the tuples in $T_1, . . . , T_n$ does not permit a malicious recipient to associate less than m different sensitive values with each respondent.
 
-Sex
+--------------------------------------------------------------
 
-T2
-ZIP
+
+### Extended scenarios
+$k$-anonymity, $\ell$-diversity, and $t$-closeness are based on assumptions that make them not always applicable in specific scenarios. When we have multiple tuples per respondent we can apply:
+- $(X,Y)$-privacy;
+- $k^m$-anonymity.
 
-Disease
-hypertension
+When we have the release of multiple tables, characterized by (functional) dependencies, we can apply:
+- $(X,Y)$-privacy;
+- MultiR $k$-anonymity.
 
-[60-70] * 9413* flu
-[60-70] * 9413* aids
-[60-70] * 9413* flu
-[60-70] * 9413* gastritis
-4-anonymized table at time t2
+When we have multiple quasi-identifiers, we can apply:
+- butterfly.
 
-An adversary knows that Frank, born in 1964 and living in area 94132,
-is the only patient in T1 but not in T2
+When we have non-predefined quasi-identifiers, we can apply:
+- $k^m$-anonymity.
 
+When we have the release of data streams, we can apply:
+- anonymize temporal data;
+- $k$-anonymous data streams.
 
-Multiple independent releases – Example (2)
-DOB Sex
-M
+When we have fine-grained privacy preferences, we can apply:
+- $(\alpha_i, \beta_i)$-closeness;
+- personalized anonymity;
+- $\delta$-presence.
 
-T1
-ZIP Disease
+----------------------------------------------------------------
 
-64
-* 941** flu
-64
-* 941** short breath
-64
-* 941** flu
-64
-* 941** aids
-4-anonymized table at time t1
-
-DOB
-
-Sex
-
-T2
-ZIP
-
-Disease
-hypertension
-
-[60-70] * 9413* flu
-[60-70] * 9413* aids
-[60-70] * 9413* flu
-[60-70] * 9413* gastritis
-4-anonymized table at time t2
-
-An adversary knows that Frank, born in 1964 and living in area 94132,
-is the only patient in T1 but not in T2
-=⇒ Frank suffers from short breath
-
-Multiple releases
-Multiple (i.e., longitudinal) releases cannot be independent
-=⇒ need to ensure multiple releases are safe with respect to
-intersection attacks
-
-
-m-invariance [XT-07]
-Addresses the problem of longitudinal release
-A sequence T1 , . . . , Tn of released microdata tables satisfies
-m-invariance iff
-• each equivalence class includes at least m tuples
-• no sensitive value appears more than once in each equivalence
-class
-• for each tuple t, the equivalence classes to which t belongs in the
-sequence are characterized by the same set of sensitive values
-=⇒ the correlation of the tuples in T1 , . . . , Tn does not permit a
-malicious recipient to associate less than m different sensitive
-values with each respondent
-
-Extended scenarios – 1
-k-anonymity, ℓ-diversity, and t-closeness are based on assumptions
-that make them not always applicable in specific scenarios
-• Multiple tuples per respondent
-◦ (X,Y)-privacy [WF-06]
-◦ km -anonymity [TMK-08]
-
-• Release of multiple tables, characterized by (functional)
-dependencies
-◦ (X,Y)-privacy [WF-06]
-◦ MultiR k-anonymity [NCN-07]
-
-• Multiple quasi-identifiers
-◦ butterfly [PTLX-09]
-
-
-Extended scenarios – 2
-• Non-predefined quasi-identifiers
-◦ km -anonymity [TMK-08]
-
-• Release of data streams
-◦ anonymize temporal data [WXWF-10]
-◦ k-anonymous data streams [ZHPJTJ-09]
-
-• Fine-grained privacy preferences
-◦ (αi , βi )-closeness [FZ-08]
-◦ personalized anonymity [XT-06]
-◦ δ -presence [NAC-07]
-
-
-k-anonymity in various applications
+### $k$-anonymity in various applications
 In addition to classical microdata release problem, the concept of
-k-anonymity and its extensions can be applied in different scenarios,
-e.g.:
-• social networks (e.g., [HMJTW-08])
-• data mining (e.g., [CDFS-08, FWY-07, FWS-08])
-• location data (e.g., [GL-08])
-• ...
+$k$-anonymity and its extensions can be applied in different scenarios, e.g.:
+- social networks;
+- data mining;
+- location data.
 
+#### k-anonymity in social networks – 1
+**Neighborhood attack** $\to$ given a de-identified graph $G'$ of a social
+network graph $G$, exploit knowledge about the neighbors of user $u$ to re-identify the vertex representing $u$
 
-k-anonymity in social networks – 1
-• Neighborhood attack =⇒ given a de-identified graph G′ of a social
-network graph G, exploit knowledge about the neighbors of user u
-to re-identify the vertex representing u
+slide 91/155
 
+Idea: adapt the $k$-anonymity requirement to social networks. A vertex $u$ is $k$-anonymous if there exist at least $k − 1$ other vertices
+$v_1 , . . . , v_{k−1}$ such that the sub-graphs induced by the neighborhood of $u$ and the neighborhood of $v_1 , . . . , v_{k−1}$ are **isomorphic**. $G'$ is $k$-anonymous if every vertex $u$ in $G'$ is $k$-anonymous. Intuition: add fake edges to satisfy the requirement.
 
-k-anonymity in social networks – 2
-Idea: adapt the k-anonymity requirement to social networks [ZP-11]
-• A vertex u is k-anonymous if there exist at least k − 1 other vertices
-v1 , . . . , vk−1 such that the sub-graphs induced by the neighborhood
-of u and the neighborhood of v1 , . . . , vk−1 are isomorphic
-• G′ is k-anonymous if every vertex u in G′ is k-anonymous
-◦ intuition: add fake edges to satisfy the requirement
+If $G'$ is $k$-anonymous, with the neighborhood background
+knowledge, any vertex in $G$ cannot be re-identified in $G'$ with
+confidence larger than $1/k$.
 
-• If G′ is k-anonymous, with the neighborhood background
-knowledge, any vertex in G cannot be re-identified in G′ with
-confidence larger than 1/k
-• Goal: compute a k-anonymous version of a social network graph
-minimizing the number of added edges
+Goal: compute a $k$-anonymous version of a social network graph
+minimizing the number of added edges.
 
-k-anonymous data mining
-• Privacy preserving data mining techniques depend on the
+----------------------------------------------------------------
+
+#### $k$-anonymous data mining
+Privacy preserving data mining techniques depend on the
 definition of privacy capturing what information is sensitive in the
-original data and should then be protected
-• k-anonymous data mining aims at ensuring that the data mining
-results do not violate the k-anonymity requirement over the
-original data
-• Threats to k-anonymity can arise from performing mining on a
-collection of data maintained in a private table PT subject to
-k-anonymity constraints. E.g.:
-◦ association rule mining
-◦ classification mining
+original data and should then be protected.<br />
+$k$-anonymous data mining aims at ensuring that the data mining results do not violate the $k$-anonymity requirement over the original data.<br />
+Threats to $k$-anonymity can arise from performing mining on a
+collection of data maintained in a private table $PT$ subject to
+$k$-anonymity constraints. E.g.:
+- association rule mining;
+- classification mining.
+- 
+##### Association rule mining
 
-Association rule mining
-Marital_status
-divorced
-divorced
-divorced
-married
-married
-single
-
-Sex
-
-Hours
-
-M
-M
-F
-M
-F
-M
-
-35
-40
-35
-35
-50
-40
+slide 94/155
 
 • {divorced} → {M} with support
 
 19
 66
 
-#tuples (Hyp. values)
-2
-17
-2
-10
-9
-26
-
-(0Y, 2N)
-(16Y, 1N)
-(0Y, 2N)
-(8Y, 2N)
-(2Y, 7N)
-(6Y, 20N)
 
 and confidence
 
@@ -725,200 +599,13 @@ If QI includes Marital_status and Sex =⇒
 ◦ violates also k-anonymity for any k > 2 since it reflects the existence
 of 2 divorced and female respondents
 
+slide 95/155
 
-Classification mining – Decision trees
-Marital_status
-divorced
-divorced
-divorced
-married
-married
-single
+path ⟨F,35⟩ implies the existence of 2 females working 35 hours
+paths ⟨F⟩ (#11) and ⟨F,50⟩ (#9) imply the existence of 2 females who do not work 50 hours per week.
+If QI includes Sex and Hours =⇒ k-anonym. is violated for any k > 2.
 
-Sex
-
-Hours
-
-M
-M
-F
-M
-F
-M
-
-35
-40
-35
-35
-50
-40
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-#tuples (Hyp. values)
-2
-17
-2
-10
-9
-26
-
-(0Y, 2N)
-(16Y, 1N)
-(0Y, 2N)
-(8Y, 2N)
-(2Y, 7N)
-(6Y, 20N)
-
-
-Classification mining – Decision trees
-Marital_status
-divorced
-divorced
-divorced
-married
-married
-single
-
-Sex
-
-Hours
-
-M
-M
-F
-M
-F
-M
-
-35
-40
-35
-35
-50
-40
-
-#tuples (Hyp. values)
-2
-17
-2
-10
-9
-26
-
-(0Y, 2N)
-(16Y, 1N)
-(0Y, 2N)
-(8Y, 2N)
-(2Y, 7N)
-(6Y, 20N)
-
-path ⟨F,35⟩ implies the existence
-of 2 females working 35 hours
-
-
-Classification mining – Decision trees
-Marital_status
-divorced
-divorced
-divorced
-married
-married
-single
-
-Sex
-
-Hours
-
-M
-M
-F
-M
-F
-M
-
-35
-40
-35
-35
-50
-40
-
-#tuples (Hyp. values)
-2
-17
-2
-10
-9
-26
-
-(0Y, 2N)
-(16Y, 1N)
-(0Y, 2N)
-(8Y, 2N)
-(2Y, 7N)
-(6Y, 20N)
-
-path ⟨F,35⟩ implies the existence
-of 2 females working 35 hours
-paths ⟨F⟩ (#11) and ⟨F,50⟩
-(#9) imply the existence of 2
-females who do not work 50 hours
-per week
-
-
-Classification mining – Decision trees
-Marital_status
-divorced
-divorced
-divorced
-married
-married
-single
-
-Sex
-
-Hours
-
-M
-M
-F
-M
-F
-M
-
-35
-40
-35
-35
-50
-40
-
-#tuples (Hyp. values)
-2
-17
-2
-10
-9
-26
-
-(0Y, 2N)
-(16Y, 1N)
-(0Y, 2N)
-(8Y, 2N)
-(2Y, 7N)
-(6Y, 20N)
-
-path ⟨F,35⟩ implies the existence
-of 2 females working 35 hours
-paths ⟨F⟩ (#11) and ⟨F,50⟩
-(#9) imply the existence of 2
-females who do not work 50 hours
-per week
-If QI includes Sex and Hours =⇒
-k-anonym. is violated for any k > 2
-
-Approaches for combining k-anonymity and data mining
+Approaches for combining k-anonymity and data mining
 
 
 k-anonymity in location-based services
@@ -1059,8 +746,6 @@ summarizing three months of activity
 AOL username and IP address
 • AOL replaced these identifiers with unique identification numbers
 (this made searches by the same user linkable)
-
-# Arrivare qui
 
 AOL data release – 2
 • User 4417749:
