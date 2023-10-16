@@ -26,10 +26,20 @@
 3) **Un pacchetto in rete ha un "autore"? Se sì, in che senso?**
 4) **E' possibile decidere il routing di una sequenza di pacchetti in base alle convinzioni politiche del soggetto che genera il traffico? (argomentare)**
 5) **Quali metadati contiene un pacchetto IP?**
-6) Cos'è il Time To Live? Perché ci può interessare in CDT?
-7) Cosa si intende con "mittente" o "destinatario" di un flusso di pacchetti?
-8) Cos'è una "porta"?
-9) **Cos'è un "protocollo"?**
+	- TTL (Time To Live): un contatore che viene decrementato ogni volta che il pacchetto passa da un router, quando il contatore va a 0 il pacchetto viene scartato e muore;
+	- Protocol: tipo di protocollo, informazione che aiuta chi riceve il flusso di dati a capirne la semantica;
+	- Checksum: valore di controllo per capire se il pacchetto è integro;
+	- Source IP Address: indirizzo sorgente (mittente), il ricevente di un flusso dati sa da dove arriva (o dichiara di arrivare) l’informazione;
+	- Destination IP Address: indirizzo destinatario;
+	- Source Port e Destination Port;
+	- Length: lunghezza, altro dato di controllo;
+	- Sequence number: numero di sequenza, quando un flusso dati generico deve essere ordinato (ad esempio i frame di un video che non devono essere visualizzati in ordine sbagliato) il numero di sequenza permette la flessibilità di inviare pacchetti senza preoccuparsi troppo della strada che faranno perché lato ricezione sarà suﬀiciente memorizzarli temporaneamente per poterli riordinare prima di presentarli all’utente.
+1) **Cos'è il Time To Live? Perché ci può interessare in CDT?**
+	TTL (Time To Live): un contatore che viene decrementato ogni volta che il pacchetto passa da un router, quando il contatore va a 0 il pacchetto viene scartato e muore.
+1) Cosa si intende con "mittente" o "destinatario" di un flusso di pacchetti?
+2) **Cos'è una "porta"?**
+	il concetto di porta serve a differenziare un flusso dati tra due nodi in modo da simulare più sotto-flussi, i.e., i pacchetti che vanno da A a B vengono smistati su code diverse in funzione delle porte dichiarate nei pacchetti stessi;
+1) **Cos'è un "protocollo"?**
 	I protocolli di rete servono a codificare opportunamente (cioè al meglio per la particolare esigenza di scambio dati) i contenuti e le sequenze di dati in modo da ottenere la funzione richiesta.
 1) **Che differenza c'è tra metadati e contenuto di un pacchetto?**
 2) **Cos'è un "Man-In-The-Middle attack"?**
