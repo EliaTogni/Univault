@@ -3,29 +3,38 @@
 1) **Cos'è un "pacchetto"? Com'è strutturato?**
 	Un pacchetto di rete non è altro che una sequenza di bit di lunghezza finita che viene trasmessa sotto forma di segnale elettrico (rame) o luminoso (fibra ottica) da un nodo all’altro di una rete. E' strutturato in segmenti, detti campi, ed ogni campo della sequenza ha una ben precisa semantica dipendente dal tipo di protocollo di rete utilizzato. I pacchetti vengono ordinati in sequenze che costruiscono dei flussi di dati che poi l’utente fruisce.
 2) **Quali sono i concetti fondamentali (ai fini della CDT) dell'architettura di Internet?**
+	i
 3) **Chi è un "provider"? Che tipi di provider esistono?**
 	 I provider di connettività forniscono il servizio ultimo miglio. Si definisce ultimo miglio quel tratto della rete che va dalla casa/uﬀicio dell’utente finale fino al primo concentratore
 4) **Perché è importante (nel contesto della CDT) analizzare il (mal)funzionamento della rete?**
+	che
 5) **Cos'è il "routing" e perché ci interessa in CDT? (sia dal punto di vista storico che attuale)**
+	i
 6) **Cos'è il DNS e perché ci interessa in CDT? Esistono meccanismi simili (per funzioni) ma più semplici?**
+	i
 7) **Cos'è il multiplexing?**
 	E' una tecnica utilizzata per permettere la gestione contemporanea di più comunicazioni sullo stesso canale. Ogni canale di trasmissione ha una sua capacità trasmissiva superiormente limitata, se ogni singola trasmissione impegnasse stabilmente un canale si rischierebbe di non poter servire altre richieste per tempo molto lungo. Spezzando la singola trasmissione si realizza il cosiddetto multiplexing del canale: viene inviato un pacchetto relativo ad una trasmissione, poi un pacchetto relativo ad un’altra, poi uno di un’altra ancora e così via. In questo modo ogni richiesta di trasmissione vedrà un avanzamento lavori progressivo, senza lunghe interruzioni.
-1) **Cosa si intende con "percorso migliore"? Quali sono gli aspetti tecnici di una trasmissione in rete?**
-2) **Come si potrebbero definire dei concetti di "distanza" in rete?**
+8) **Cosa si intende con "percorso migliore"? Quali sono gli aspetti tecnici di una trasmissione in rete?**
+	i
+9) **Come si potrebbero definire dei concetti di "distanza" in rete?**
 	Il concetto di distanza tra due nodi della rete. I retisti definiscono generalmente la distanza, declinata in termini spaziali e temporali, tra due nodi di una rete come:
 	• numero di salti/hop tra i due nodi;
 	• tempo di percorrenza di pacchetti speciali (ICMP - Internet Control Message Protocol - echo request) che vengono inviati e di cui si misura il tempo di ritorno, il cosiddetto ping time.
-1) **Cos'è un "ping"? (e "ping time", con che ordini di grandezza?)**
+10) **Cos'è un "ping"? (e "ping time", con che ordini di grandezza?)**
 	Pacchetti speciali (ICMP - Internet Control Message Protocol - echo request) che vengono inviati e di cui si misura il tempo di ritorno, il cosiddetto ping time, per valutare la distanza tra due nodi nella rete.
-1) **Cos'è un "hop"?**
+11) **Cos'è un "hop"?**
 	Un hop, o salto, è una connessione tra due nodi della rete. Una sequenza di hop determinano un path, ovverso una catena di canali che collegano un generico nodo della rete ad un altro.
-1) **Cos'è il "traceroute"?**
+12) **Cos'è il "traceroute"?**
 	E' uno strumento che combina la funzionalità del 'ping' con la possibilità di tenere traccia della rotta seguita dal flusso di pacchetti al fine di tracciare una rotta tra due nodi della rete e di misurarne il tempo.
-1) **Come viene declinata in rete la frase di Orwell "Tutti gli animali sono uguali, ma alcuni sono più uguali degli altri"?**
-2) **Da cosa dipende la "funzione di routing"?**
-3) **Un pacchetto in rete ha un "autore"? Se sì, in che senso?**
-4) **E' possibile decidere il routing di una sequenza di pacchetti in base alle convinzioni politiche del soggetto che genera il traffico? (argomentare)**
-5) **Quali metadati contiene un pacchetto IP?**
+13) **Come viene declinata in rete la frase di Orwell "Tutti gli animali sono uguali, ma alcuni sono più uguali degli altri"?**
+	i
+14) **Da cosa dipende la "funzione di routing"?**
+	i
+15) **Un pacchetto in rete ha un "autore"? Se sì, in che senso?**
+	
+16) **E' possibile decidere il routing di una sequenza di pacchetti in base alle convinzioni politiche del soggetto che genera il traffico? (argomentare)**
+	i
+17) **Quali metadati contiene un pacchetto IP?**
 	- TTL (Time To Live): un contatore che viene decrementato ogni volta che il pacchetto passa da un router, quando il contatore va a 0 il pacchetto viene scartato e muore;
 	- Protocol: tipo di protocollo, informazione che aiuta chi riceve il flusso di dati a capirne la semantica;
 	- Checksum: valore di controllo per capire se il pacchetto è integro;
@@ -34,34 +43,38 @@
 	- Source Port e Destination Port;
 	- Length: lunghezza, altro dato di controllo;
 	- Sequence number: numero di sequenza, quando un flusso dati generico deve essere ordinato (ad esempio i frame di un video che non devono essere visualizzati in ordine sbagliato) il numero di sequenza permette la flessibilità di inviare pacchetti senza preoccuparsi troppo della strada che faranno perché lato ricezione sarà suﬀiciente memorizzarli temporaneamente per poterli riordinare prima di presentarli all’utente.
-1) **Cos'è il Time To Live? Perché ci può interessare in CDT?**
-	TTL (Time To Live): un contatore che viene decrementato ogni volta che il pacchetto passa da un router, quando il contatore va a 0 il pacchetto viene scartato e muore.
-1) Cosa si intende con "mittente" o "destinatario" di un flusso di pacchetti?
-2) **Cos'è una "porta"?**
+18) **Cos'è il Time To Live? Perché ci può interessare in CDT?**
+	TTL (Time To Live): un contatore che viene decrementato ogni volta che il pacchetto passa da un router, quando il contatore va a 0 il pacchetto viene scartato e muore. Ci può interessare perchè modificando un TTL rendendolo elevato fa sì che il pacchetto possa andare lontano, cioè raggiungere destinazioni a molti hop di distanza. Se, invece, si modifica (tipicamente abbassandolo) il TTL si rende un pacchetto meno longevo e lo si confina ad un raggio d’azione limitato superiormente.
+19) **Cosa si intende con "mittente" o "destinatario" di un flusso di pacchetti?**
+	i
+20) **Cos'è una "porta"?**
 	il concetto di porta serve a differenziare un flusso dati tra due nodi in modo da simulare più sotto-flussi, i.e., i pacchetti che vanno da A a B vengono smistati su code diverse in funzione delle porte dichiarate nei pacchetti stessi;
-1) **Cos'è un "protocollo"?**
+21) **Cos'è un "protocollo"?**
 	I protocolli di rete servono a codificare opportunamente (cioè al meglio per la particolare esigenza di scambio dati) i contenuti e le sequenze di dati in modo da ottenere la funzione richiesta.
-1) **Che differenza c'è tra metadati e contenuto di un pacchetto?**
-2) **Cos'è un "Man-In-The-Middle attack"?**
-3) Cos'è la "Deep Packet Inspection"? E' sempre possibile/facile?
-4) Cosa si intende con "crittografia"? Sai citare qualche tipo di crittografia nota?
-5) Cos'è un indirizzo IP? Che tipi esistono?
-6) Cosa si intende con "la rete è relativistica"?
-7) In che senso la rete "non è un universo euclideo"?
-8) Cos'è un URL? In cosa differisce da un indirizzo IP?
-9) Cosa fa un motore di ricerca?
-10) Un URL viene "risolto" sempre allo stesso modo da qualunque DNS?
-11) Una volta che ottengo l'IP di un indirizzo simbolico, riesco sempre a raggiungere il nodo? Sempre lo stesso univocamente?
-12) Cos'è `dig`? (o nslookup, ecc)
-13) Cosa si intende con "sito oscurato" (mediante decisione legale)? (filtro DNS)
-14) Cos'è Tor? Come funziona? Cosa c'entrano le cipolle?
-15) Cos'è un "proxy"?
-16) Cos'è "whois"?
-17) Cosa fa un "firewall"?
-18) Fai qualche esempio notevole di sottoreti quasi certamente "molto relativistiche" (in cui ci sono molte "ombre/buchi/ecc").
-19) Differenze fra "whitelist" e "blacklist"?
-20) Cosa si intende con "velocità di trasmissione" in Internet? Da cosa è influenzata?
-21) Differenze fra ADSL, VDSL, FIBRA, ecc.
+22) **Che differenza c'è tra metadati e contenuto di un pacchetto?**
+	i
+22) **Cos'è un "Man-In-The-Middle attack"?**
+	un router potrebbe tranquillamente modificare un pacchetto prima di ruotarlo, operando quello che viene chiamato Man-In-The-Middle attack.
+23) **Cos'è la "Deep Packet Inspection"? E' sempre possibile/facile?**
+	La deep packet inspection (DPI, ispezione profonda dei pacchetti), che prevede l’analisi non solo dei metadati ma anche del contenuto (tenendo perfino una traccia storica) dei pacchetti che vengono instradati. Con la DPI è possibile controllare ogni aspetto di tutta l’informazione veicolata su Internet, consentendo quindi - tipicamente ai governi e alle aziende che gestiscono la Rete - di esercitare il controllo sistematico del contenuto delle comunicazioni su intere zone di Internet e di conseguenza decidere cosa può essere comunicato, chi può comunicare e chi può ricevere la comunicazione.
+1) Cosa si intende con "crittografia"? Sai citare qualche tipo di crittografia nota?
+1) Cos'è un indirizzo IP? Che tipi esistono?
+2) Cosa si intende con "la rete è relativistica"?
+3) In che senso la rete "non è un universo euclideo"?
+4) Cos'è un URL? In cosa differisce da un indirizzo IP?
+5) Cosa fa un motore di ricerca?
+6) Un URL viene "risolto" sempre allo stesso modo da qualunque DNS?
+7) Una volta che ottengo l'IP di un indirizzo simbolico, riesco sempre a raggiungere il nodo? Sempre lo stesso univocamente?
+8) Cos'è `dig`? (o nslookup, ecc)
+9) Cosa si intende con "sito oscurato" (mediante decisione legale)? (filtro DNS)
+10) Cos'è Tor? Come funziona? Cosa c'entrano le cipolle?
+11) Cos'è un "proxy"?
+12) Cos'è "whois"?
+13) Cosa fa un "firewall"?
+14) Fai qualche esempio notevole di sottoreti quasi certamente "molto relativistiche" (in cui ci sono molte "ombre/buchi/ecc").
+15) Differenze fra "whitelist" e "blacklist"?
+16) Cosa si intende con "velocità di trasmissione" in Internet? Da cosa è influenzata?
+17) Differenze fra ADSL, VDSL, FIBRA, ecc.
 	ADSL sta per Asymmetrical Digital Subscriber Line 
 1) Cosa si intende con "sito" e con "nodo della rete"?
 2) Cosa si intende con "ultimo miglio"?
