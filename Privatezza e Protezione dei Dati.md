@@ -369,11 +369,11 @@ slide 65/155
 ### Approximation algorithms
 Approximation algorithms for general and specific values of $k$ (e.g., $1.5$-approximation for $2$-anonymity, and $2$-approximation for $3$-anonymity).<br />
 Approximation algorithm for _CS_:
-- [MW-04]: $\mathcal{O}(k \log{k})$-approximation;
-- [AFKMPTZ-05a]: with unbounded value of $k$, $\mathcal{O}(k)$-approximation solution.
+- \[MW-04\]: $\mathcal{O}(k \log{k})$-approximation;
+- \[AFKMPTZ-05a\]: with unbounded value of $k$, $\mathcal{O}(k)$-approximation solution.
 
 Approximation algorithm for _CG_:
-- [AFKMPTZ-05b]: with unbounded value of $k$, $\mathcal{O}(k)$-approximation solution.
+- \[AFKMPTZ-05b\]: with unbounded value of $k$, $\mathcal{O}(k)$-approximation solution.
 
 ----------------------------------------------------------------
 
@@ -415,7 +415,7 @@ Based on prior knowledge of some additional external information:
 - the adversary can infer that the disease of Hellen is either chest pain or short breath;
 - the adversary knows that Hellen runs $2$ hours a day and therefore that Hellen cannot suffer from short breath;
 
-$\to$ the adversary infers that Hellen’s disease is chest pain.
+Therefore, the adversary is able to infer that Hellen’s disease is chest pain.
 
 slide 72/155
 
@@ -617,7 +617,7 @@ Any information can be used to re-identify anonymous data. Ensuring proper priva
 - Netflix.
 
 #### AOL data release
-In 2006, to embrace the vision of an open research community,
+In $2006$, to embrace the vision of an open research community,
 **AOL** (America OnLine) publicly posted to a website $20$ million
 search queries for $650,000$ users of AOL’s search engine summarizing three months of activity. AOL suppressed any obviously identifying information such as AOL username and IP address. AOL replaced these identifiers with unique identification numbers (this made searches by the same user linkable).
 
@@ -627,7 +627,7 @@ User $4417749$:
 - “Arnold” (several people with this last name);
 - “landscapers in Lilburn, Ga”, “homes sold in shadow lake subdivision Gwinnett county, Georgia”.
 
-$\to$ Thelma Arnold, a $62$-year-old widow who lives in Lilburn, Ga. She was re-identified by two New York Times reporters. She explained in an interview that she has three dogs and that she searched for medical conditions of some friends.
+All of these informations led to Thelma Arnold, a $62$-year-old widow who lives in Lilburn, Ga. She was re-identified by two New York Times reporters. She explained in an interview that she has three dogs and that she searched for medical conditions of some friends.
 
 slide 102/155
 
