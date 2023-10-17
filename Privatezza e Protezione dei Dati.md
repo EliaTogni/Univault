@@ -632,166 +632,74 @@ $\to$ Thelma Arnold, a $62$-year-old widow who lives in Lilburn, Ga. She was re-
 slide 102/155
 
 
-What about user 17556639?
-• how to kill your wife
+What about user $17556639$?
+• how to kill your wife;
+• steak and cheese;
+• how to kill your wife;
+• photo of death;
+• wife killer;
+• photo of death;
+• how to kill a wife;
+• death;
+• poop;
+• dead people photos;
+• dead people;
+• photo of dead people;
+• pictures of dead people;
+• www.murderdpeople.com;
+• killed people;
+• decapatated photos;
+• dead pictures;
+• decapatated photos;
+• dead pictures;
+• car crashes3;
+• dead pictures;
+• car crashes3;
+• murder photo;
+• car crash photo;
 
-• steak and cheese
+slide 104/155
 
-• how to kill your wife
+----------------------------------------------------------------
 
-• photo of death
-
-• wife killer
-
-• photo of death
-
-• how to kill a wife
-
-• death
-
-• poop
-
-• dead people photos
-
-• dead people
-
-• photo of dead people
-
-• pictures of dead people
-
-• www.murderdpeople.com
-
-• killed people
-
-• decapatated photos
-
-• dead pictures
-
-• decapatated photos
-
-• dead pictures
-
-• car crashes3
-
-• dead pictures
-
-• car crashes3
-
-• murder photo
-
-• car crash photo
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-103/155
-
-AOL data release – 5
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-104/155
-
-Netflix prize data study – 1
-• In 2006, Netflix (the world largest online movie rental service),
+#### Netflix prize data study
+In $2006$, Netflix (the world largest online movie rental service),
 launched the "Netflix Prize" (a challenge that lasted almost three
-years)
-◦ Prize of USD 1 million to be awarded to those who could provide a
-movie recommendation algorithm that improved Netflix’s algorithm
-by 10%
+years). There was a prize of USD $1$ million to be awarded to those who could provide a movie recommendation algorithm that improved Netflix’s algorithm by $10\%$. Netflix provided $100$ million records revealing how nearly $500,000$ of its users had rated movies from Oct.$’98$ to Dec.$’05$. In each record Netflix disclosed the movie rated, the rating assigned ($1$ to $5$), and the date of the rating.<br />
+Only a sample (one tenth) of the database was released. Some ratings were perturbed (but not much, not to alter statistics). Identifying information (e.g., usernames) was removed, but a unique user identifier was assigned to preserve rating-to-rating continuity. Release was not $k$-anonymous for any $k > 1$.<br />
+Very little auxiliary information is needed to de-anonymize an average subscriber record:
+- with $6$ movie ratings and dates ($\pm 2$ weeks), $99\%$ of records uniquely identified;
+- with $2$ movie ratings and dates ($\pm 3$ days), $68\%$ of records uniquely identified;
+- $84\%$ of subscribers in the dataset uniquely identified by knowing $6$ obscure (outside the top $500$) movies.
+Auxiliary information can be obtained from other sources (e.g., user ratings from IMDb users).
 
-• Netflix provided 100 million records revealing how nearly 500,000
-of its users had rated movies from Oct.’98 to Dec.’05
-• In each record Netflix disclosed the movie rated, the rating
-assigned (1 to 5), and the date of the rating
+----------------------------------------------------------------
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+#### Another example of privacy issue
+Movies may reveal your political orientation, religious views, or sexual orientations (Netflix was sued by a lesbian for breaching her privacy).
 
-105/155
+slide 108/155
 
-Netflix prize data study – 2
-• Only a sample (one tenth) of the database was released
-• Some ratings were perturbed (but not much, not to alter statistics)
-• Identifying information (e.g., usernames) was removed, but a
-unique user identifier was assigned to preserve rating-to-rating
-continuity
-• Release was not k-anonymous for any k > 1
+----------------------------------------------------------------
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+#### JetBlue
+In $2003$, JetBlue Airways Corporation gave the travel records of five million customers to Torch Concepts (a private DoD contractor) for an antiterrorism study to track high-risk passengers or suspected terrorists. Torch Concepts purchased additional customer demographic information (e.g., SSN) about these passengers from Axciom, one of the largest data aggregation companies in the U.S. The information from JetBlue and Axciom was then used by Torch Concepts to develop passenger profiles. Claims of violation of JetBlue Privacy Policy.
 
-106/155
+slide 109/155
 
-Netflix prize data study – 3
-Very little auxiliary information is needed to de-anonymize an average
-subscriber record:
-• with 6 movie ratings and dates (± 2 weeks), 99% of records
-uniquely identified
-• with 2 movie ratings and dates (± 3 days), 68% of records
-uniquely identified
-• 84% of subscribers in the dataset uniquely identified by knowing 6
-obscure (outside the top 500) movies
-Auxiliary information can be obtained from other sources (e.g., user
-ratings from IMDb users)
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+----------------------------------------------------------------
 
-107/155
+#### Fitness app
+An interactive map shows the whereabouts of people who use fitness devices such as Fitbit also reveals highly sensitive information about the locations and activities of soldiers at U.S. military bases.
 
-Another example of privacy issue
-Movies may reveal your political orientation, religious views, or sexual
-orientations (Netflix was sued by a lesbian for breaching her privacy)
+slide 110/155
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+----------------------------------------------------------------
 
-108/155
+### Syntactic vs semantic privacy definitions
+Syntactic privacy definitions capture the protection degree enjoyed by data respondents with a numerical value. E.g., each release of data must be indistinguishably related to no less than a certain number of individuals in the population. Semantic privacy definitions are based on the satisfaction of a semantic privacy requirement by the mechanism chosen for releasing the data. E.g., the result of an analysis carried out on a released dataset must be insensitive to the insertion or deletion of a tuple in the dataset.
 
-JetBlue
-• In 2003, JetBlue Airways Corporation
-gave the travel records of five million
-customers to Torch Concepts (a
-private DoD contractor) for an
-antiterrorism study to track high-risk
-passengers or suspected terrorists
-• Torch Concepts purchased additional
-customer demographic information
-(e.g., SSN) about these passengers
-from Axciom, one of the largest data
-aggregation companies in the U.S.
-• The information from JetBlue and
-Axciom was then used by Torch
-Concepts to develop passenger
-profiles
-• Claims of violation of JetBlue Privacy
-Policy
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-109/155
-
-Fitness app
-An interactive map shows the whereabouts of people who use fitness
-devices such as Fitbit also reveals highly sensitive information about
-the locations and activities of soldiers at U.S. military bases
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-110/155
-
-Syntactic vs semantic privacy definitions
-• Syntactic privacy definitions capture the protection degree enjoyed
-by data respondents with a numerical value
-E.g., each release of data must be indistinguishably related to no
-less than a certain number of individuals in the population
-• Semantic privacy definitions are based on the satisfaction of a
-semantic privacy requirement by the mechanism chosen for
-releasing the data
-E.g., the result of an analysis carried out on a released dataset
-must be insensitive to the insertion or deletion of a tuple in the
-dataset
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-111/155
-
-Differential privacy [D-06] – 1
+Differential privacy
 • Differential privacy aims at preventing adversaries from being
 capable to detect the presence or absence of a given individual in
 a dataset. E.g.,:
