@@ -549,7 +549,7 @@ $k$-anonymity and its extensions can be applied in different scenarios, e.g.:
 - data mining;
 - location data.
 
-#### k-anonymity in social networks – 1
+#### k-anonymity in social networks
 **Neighborhood attack** $\to$ given a de-identified graph $G'$ of a social
 network graph $G$, exploit knowledge about the neighbors of user $u$ to re-identify the vertex representing $u$
 
@@ -577,200 +577,61 @@ collection of data maintained in a private table $PT$ subject to
 $k$-anonymity constraints. E.g.:
 - association rule mining;
 - classification mining.
-- 
+
 ##### Association rule mining
 
 slide 94/155
 
-• {divorced} → {M} with support
-
-19
-66
-
-
-and confidence
-
-19
-21
-
-If QI includes Marital_status and Sex =⇒
-{divorced} → {M}:
-◦ violates k-anonymity for any k > 19
-◦ violates also k-anonymity for any k > 2 since it reflects the existence
-of 2 divorced and female respondents
+$\{$divorced$\} \to \{$M$\}$ with support $\frac{19}{66}$ and confidence $\frac{19}{21}$.<br />
+If $QI$ includes _Marital_status_ and _Sex_, then $\{$divorced$\} \to \{$M$\}$:
+- violates $k$-anonymity for any $k > 19$;
+- violates also $k$-anonymity for any $k > 2$ since it reflects the existence of $2$ divorced and female respondents.
 
 slide 95/155
 
-path ⟨F,35⟩ implies the existence of 2 females working 35 hours
-paths ⟨F⟩ (#11) and ⟨F,50⟩ (#9) imply the existence of 2 females who do not work 50 hours per week.
-If QI includes Sex and Hours =⇒ k-anonym. is violated for any k > 2.
+Path $\langle F,35 \rangle$ implies the existence of $2$ females working $35$ hours.<br />
+paths $\langle F \rangle$ $(\#11)$ and $\langle F,50 \rangle$ $(\#9)$ imply the existence of $2$ females who do not work $50$ hours per week.<br />
+If $QI$ includes _Sex_ and _Hours_ $\to$ $k$-anonym. is violated for any $k > 2$. (????)
 
-Approaches for combining k-anonymity and data mining
+----------------------------------------------------------------
 
+##### Approaches for combining k-anonymity and data mining
 
-k-anonymity in location-based services
-Protect identity of people in locations
-by considering always locations that
-contain no less than k individuals:
-=⇒ enlarge the area to include
-at least other k-1 users
-(k-anonymity)
-protect the location of users (location privacy)
-=⇒ obfuscate the area so to
-decrease its precision or
-confidence
-protect the location path of users (trajectory privacy)
-=⇒ block tracking by mixing
-trajectories
+slide 96/155
 
+----------------------------------------------------------------
 
-k-anonymity in location-based services
-Protect identity of people in locations
-by considering always locations that
-contain no less than k individuals:
-• enlarge the area to include
-at least other k-1 users
-(k-anonymity)
-protect the location of users (location privacy)
-=⇒ obfuscate the area so to
-decrease its precision or
-confidence
-protect the location path of users (trajectory privacy)
-=⇒ block tracking by mixing
-trajectories
+#### k-anonymity in location-based services
+Protect identity of people in locations by considering always locations that contain no less than $k$ individuals:
+- enlarge the area to include at least other $k-1$ users ($k$ anonymity);
+- protect the location of users (**location privacy**) $\to$ obfuscate the area so to decrease its precision or confidence;
+- protect the location path of users (trajectory privacy) $\to$ block tracking by mixing trajectories.
 
+slides 97-98/155
 
-k-anonymity in location-based services
-Protect identity of people in locations
-by considering always locations that
-contain no less than k individuals:
-• enlarge the area to include
-at least other k-1 users
-(k-anonymity)
-protect the location of users (location privacy)
-=⇒ obfuscate the area so to
-decrease its precision or
-confidence
-protect the location path of users (trajectory privacy)
-=⇒ block tracking by mixing
-trajectories
+----------------------------------------------------------------
 
+### Re-identification with any information
+Any information can be used to re-identify anonymous data. Ensuring proper privacy protection is a difficult task since the amount and variety of data collected about individuals is increased. Two examples:
+- AOL;
+- Netflix.
 
-Privacy in location-based applications
-Protect identity of people in locations
-by considering always locations that
-contain no less than k individuals:
-• enlarge the area to include
-at least other k-1 users
-(k-anonymity)
-• protect the location of users
-(location privacy)
-=⇒ obfuscate the area so to
-decrease its precision or
-confidence
-protect the location path of users (trajectory privacy)
-=⇒ block tracking by mixing
-trajectories
+#### AOL data release
+In 2006, to embrace the vision of an open research community,
+**AOL** (America OnLine) publicly posted to a website $20$ million
+search queries for $650,000$ users of AOL’s search engine summarizing three months of activity. AOL suppressed any obviously identifying information such as AOL username and IP address. AOL replaced these identifiers with unique identification numbers (this made searches by the same user linkable).
 
+User $4417749$:
+- “numb fingers”, “$60$ single men”, “dog that urinates on everything”;
+- “hand tremors”, “nicotine effects on the body”, “dry mouth”, and “bipolar”;
+- “Arnold” (several people with this last name);
+- “landscapers in Lilburn, Ga”, “homes sold in shadow lake subdivision Gwinnett county, Georgia”.
 
+$\to$ Thelma Arnold, a $62$-year-old widow who lives in Lilburn, Ga. She was re-identified by two New York Times reporters. She explained in an interview that she has three dogs and that she searched for medical conditions of some friends.
 
-Privacy in location-based applications
-Protect identity of people in locations
-by considering always locations that
-contain no less than k individuals:
-• enlarge the area to include
-at least other k-1 users
-(k-anonymity)
-• protect the location of users
-(location privacy)
-=⇒ obfuscate the area so to
-decrease its precision or
-confidence
-protect the location path of users (trajectory privacy)
-=⇒ block tracking by mixing
+slide 102/155
 
-trajectories
-
-Privacy in location-based applications
-Protect identity of people in locations
-by considering always locations that
-contain no less than k individuals:
-• enlarge the area to include
-at least other k-1 users
-(k-anonymity)
-• protect the location of users
-(location privacy)
-=⇒ obfuscate the area so to
-decrease its precision or
-confidence
-• protect the location path of users
-(trajectory privacy)
-=⇒ block tracking by mixing/
-modifying trajectories
-
-
-
-Privacy in location-based applications
-Protect identity of people in locations
-by considering always locations that
-contain no less than k individuals:
-• enlarge the area to include
-at least other k-1 users
-(k-anonymity)
-• protect the location of users
-(location privacy)
-=⇒ obfuscate the area so to
-decrease its precision or
-confidence
-• protect the location path of users
-(trajectory privacy)
-=⇒ block tracking by mixing/
-modifying trajectories
-
-Re-identification with any information
-• Any information can be used to re-identify anonymous data
-=⇒ ensuring proper privacy protection is a difficult task since the
-amount and variety of data collected about individuals is
-increased
-• Two examples:
-◦ AOL
-◦ Netflix
-
-
-AOL data release – 1
-• In 2006, to embrace the vision of an open research community,
-AOL (America OnLine) publicly posted to a website 20 million
-search queries for 650,000 users of AOL’s search engine
-summarizing three months of activity
-• AOL suppressed any obviously identifying information such as
-AOL username and IP address
-• AOL replaced these identifiers with unique identification numbers
-(this made searches by the same user linkable)
-
-AOL data release – 2
-• User 4417749:
-◦ “numb fingers”, “60 single men”, “dog that urinates on everything”
-◦ “hand tremors”, “nicotine effects on the body”, “dry mouth”, and
-“bipolar”
-◦ “Arnold” (several people with this last name)
-◦ “landscapers in Lilburn, Ga”, “homes sold in shadow lake
-subdivision Gwinnett county, Georgia”
-
-=⇒ Thelma Arnold, a 62-year-old widow who lives in Lilburn, Ga
-• She was re-identified by two New York Times reporters
-• She explained in an interview that she has three dogs and that
-she searched for medical conditions of some friends
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-101/155
-
-AOL data release – 3
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-102/155
-
-AOL data release – 4
+
 What about user 17556639?
 • how to kill your wife
 
