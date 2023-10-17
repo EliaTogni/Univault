@@ -709,11 +709,6 @@ datasets differing on one individual probably returns the same result
 
 • It defines a property on the data release mechanism
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-112/155
-
-Differential privacy [D-06] – 2
 Informally:
 • Differential privacy requires the probability distribution on the
 published results of an analysis to be “essentially the same”
@@ -724,11 +719,6 @@ Formally:
 sets D and D′ differing on at most one row, and all S ⊆ Range(K),
 Pr[K(D) ∈ S] ≤ eε × Pr[K(D′ ) ∈ S]
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-113/155
-
-Differential privacy [D-06] – 3
 • Applicable to two scenarios
 ◦ interactive scenario: run-time evaluation of queries
 ◦ non-interactive scenario: release of pre-computed macrodata
@@ -738,11 +728,8 @@ tables
 =⇒ data truthfulness is not preserved
 • ε-differentially private mechanisms compose automatically
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-114/155
-
-Differential privacy variations and applications
+Differential privacy variations and applications
 • Variations of differential privacy to reduce the amount of noise in
 data/query result:
 ◦ (ε, δ )-differential privacy [DS-09]: the ε bound on query answer
@@ -759,10 +746,6 @@ been developed for different domains:
 ◦ location data (e.g., [HR-11])
 ◦ ...
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-115/155
-
 Is differential privacy enough?
 • Limiting the inference about the presence of a tuple is different
 from limiting the inference about the participation of the individual
@@ -776,10 +759,6 @@ with other privacy definitions or data release mechanisms (which
 represent background knowledge that can cause privacy
 breaches)
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-116/155
-
 k-anonymity vs differential privacy
 Each has its strengths and weaknesses, e.g.,
 k-anonymity:
@@ -791,17 +770,11 @@ Differential privacy:
 protection either
 Still work to be done on both fronts
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-117/155
+Some Examples of Other Privacy Issues
 
-Some Examples of Other Privacy Issues
+Sensitive value distributions
 
-Sensitive value distributions
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-119/155
 
 Sensitive value distributions
 • Individual tuples are not sensitive
@@ -813,11 +786,8 @@ E XAMPLE : soldiers’ medical records
 ◦ young soldiers: training campus
 ◦ old officials: headquarter
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-120/155
-
-Sensitive value distributions
+Sensitive value distributions
 
 trusted environment
 
@@ -869,11 +839,7 @@ s(y2 )
 .
 .
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-121/155
-
-Sensitive value distributions
+Sensitive value distributions
 
 trusted environment
 
@@ -930,11 +896,8 @@ observer
 public
 statistics
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-121/155
-
-Sensitive value distributions
+Sensitive value distributions
 
 trusted environment
 
@@ -1026,11 +989,9 @@ observer
 public
 statistics
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-121/155
 
-Sensitive value distributions
+Sensitive value distributions
 
 trusted environment
 
@@ -1125,11 +1086,7 @@ observer
 public
 statistics
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-121/155
-
-Sensitive value distributions
+Sensitive value distributions
 
 trusted environment
 
@@ -1226,8 +1183,6 @@ statistics
 public
 statistics
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
 compare
 
 observer
@@ -1239,9 +1194,8 @@ campus
 ◦ old officials:
 headquarter
 
-121/155
 
-Inference channel - Example
+Inference channel - Example
 Attributes:
 R= {Name, Age, Location}
 Inference channel:
@@ -1343,11 +1297,8 @@ Total
 21
 10000
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-122/155
-
-Inference channel - Example
+Inference channel - Example
 Baseline distribution P(Age)
 0.3
 
@@ -1385,7 +1336,6 @@ Age⇝Location
 
 45
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
 40
 
@@ -1512,9 +1462,8 @@ L1
 
 Age
 
-122/155
 
-Inference channel - Example
+Inference channel - Example
 Baseline distribution P(Age)
 0.3
 
@@ -1625,8 +1574,6 @@ P(Age|L1)
 25
 
 8
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
 256
 649
@@ -1862,7 +1809,6 @@ P(Age|L2)
 
 8
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
 256
 649
@@ -1984,9 +1930,8 @@ L1
 
 Age
 
-122/155
 
-Counteracting inference channels – 1
+Counteracting inference channels – 1
 Need to characterize:
 • What is the sensitive information
 ◦ peculiar value distribution identifying an outlier
@@ -1998,11 +1943,6 @@ accuracy
 ◦ number of released tuples reaches a threshold =⇒ number of
 releases
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-123/155
-
-Counteracting inference channels – 2
 • How to assess the exposure of released data
 ◦ a priori computation of the maximum amount of tuples w.r.t. the
 baseline =⇒ number of releases for different attribute values
@@ -2135,8 +2075,6 @@ Exposed Tuples
 
 -3
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
 35
 
 4
@@ -2229,13 +2167,8 @@ Exposed Tuples
 
 124/155
 
-Privacy and genomic data
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-125/155
-
-Privacy and genomic data
+Privacy and genomic data
 Genomic information is an opportunity for medicine but there are
 several privacy issues to be addressed
 E.g., human genome:
@@ -2245,17 +2178,11 @@ several diseases, and other phenotypic traits
 • discloses information about the relatives and descendants of the
 genome’s owner
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-126/155
+Individuals’ re-identification – 1
 
-Individuals’ re-identification – 1
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-127/155
-
-Individuals’ re-identification – 2
+Individuals’ re-identification – 2
 The 1000 Genomes Project: international project (2008) to establish a
 catalogue of human genetic variation
 • Five men involved in both the 1000 Genomes Project and a project
@@ -2270,15 +2197,9 @@ Y chromosome (only for males)
 2. enter the haplotypes into genealogical databases to find possible
 surnames of the donor
 3. enter the surnames into demographic databases
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-128/155
 
-Sensitive inference from data mining
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-129/155
+Sensitive inference from data mining
 
 The Target case – 1
 • Target is the second-largest discount retailer in the U.S.
@@ -2287,17 +2208,8 @@ surnames of the donor
 ◦ stores history of bought goods and other (bought) information
 ◦ mining on these data for targeted advertising
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-130/155
-
-The Target case – 2
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-131/155
-
-The Target case – 3
+The Target case – 3
 • Analysts at Target identified ∼ 25 products that assign each
 shopper a pregnancy prediction score
 ◦ e.g., woman, 23 y.o., buying in March cocoa-butter lotion, a purse
@@ -2312,82 +2224,22 @@ from college or getting a new job or moving to a new town)
 mines for retailers
 ◦ between 2002 (starting of similar campaigns) and 2010 Target’s
 revenues grew from $44B to $67B
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-132/155
 
-Social media
+# Social media
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-133/155
-
-Profiling in social media
+Profiling in social media
 Our social media activities and likes may reveal sensitive information
-
-[M. Kosinski, D. Stillwell, T. Graepel, “Digital records of behavior expose personal traits,” PNAS, Apr 2013, 110 (15) 5802-5805]
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-134/155
 
 ... With the users’ help
 
 “Can’t I just email you a link to my blog, Miss?”
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-135/155
-
-Is information shared with whom?
+Is information shared with whom?
 Facebook default sharing settings from 2005 to 2010
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-136/155
-
-Is information shared with whom?
-Facebook default sharing settings from 2005 to 2010
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-136/155
-
-Is information shared with whom?
-Facebook default sharing settings from 2005 to 2010
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-136/155
-
-Is information shared with whom?
-Facebook default sharing settings from 2005 to 2010
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-136/155
-
-Is information shared with whom?
-Facebook default sharing settings from 2005 to 2010
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-136/155
-
-Is information shared with whom?
-Facebook default sharing settings from 2005 to 2010
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-136/155
-
-Is information shared with whom?
-Facebook default sharing settings from 2005 to 2010
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-136/155
-
-Friends on Facebook? – 1
+Friends on Facebook? – 1
 • In 2011: experiment to study how friendships are created on
 Facebook
 • Implementation of a socialbot
@@ -2397,11 +2249,6 @@ Facebook
 • The socialbot sent friendship requests to unknown users
 • Two-step process: no friends in common, and friends of friends
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-137/155
-
-Friends on Facebook? – 2
 • Accepted requests:
 ◦ 2 out of 10 if no friends in
 common
@@ -2413,63 +2260,25 @@ common
 ◦ 46,500 e-mail addresses
 ◦ 14,500 physical addresses
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-138/155
-
-Friends on Facebook? – 2
-• Accepted requests:
-◦ 2 out of 10 if no friends in
-common
-◦ 6 out of 10 if friends in
-common
-
-• Three weeks activity, 102 bots:
-◦ 3,000 friends
-◦ 46,500 e-mail addresses
-◦ 14,500 physical addresses
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-138/155
 
 Facebook: information on you
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-139/155
 
 Facebook: information on you
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-139/155
 
 Facebook: information on you
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-139/155
 
 . . . And it’s not only Facebook
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-140/155
 
 . . . And data can be shared
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-141/155
 
 Cambridge Analytica scandal – 1
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-142/155
-
-Cambridge Analytica scandal – 2
 • Personality quiz app
 ◦ installed by 330,000 Facebook users who gave permission for
 accessing their data. . .
@@ -2479,10 +2288,6 @@ accessing their data. . .
 ◦ data shared with Cambridge Analytica
 ◦ users profiled through their data
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-143/155
-
 User profiling - Facebook/Cambridge Analytica
 OCEAN model
 • Openness
@@ -2496,53 +2301,18 @@ do you value others’ needs
 and society?
 • Neuroticism
 how much do you tend to worry?
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-144/155
 
-User profiling - Facebook/Cambridge Analytica
-OCEAN model
-• Openness
-do you enjoy new experiences?
-• Conscientiousness
-do you prefer plans and order?
-• Extraversion
-how social you are?
-• Agreeableness
-do you value others’ needs
-and society?
-• Neuroticism
-how much do you tend to worry?
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-144/155
-
-User profiling - Facebook/Cambridge Analytica
-OCEAN model
-• Openness
-Message to push support for
-do you enjoy new experiences? Second Amendment of US Constitution
-• Conscientiousness
-do you prefer plans and order?
 
 Conscientious individual with
 high neuroticism:
-
-• Extraversion
-how social you are?
-• Agreeableness
-do you value others’ needs
-and society?
-• Neuroticism
-how much do you tend to worry?
 
 “The second amendment isn’t just
 a right. It’s an insurance policy.
 Defend the righ to bear arms!”
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-144/155
 
 User profiling - Facebook/Cambridge Analytica
 OCEAN model
@@ -2567,10 +2337,6 @@ how much do you tend to worry?
 since the birth of our Nation.
 Defend the second amendment.”
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-144/155
-
 Online quizzes?
 
 • What color are you?
@@ -2579,30 +2345,15 @@ Defend the second amendment.”
 • Who will be your Valentine’s Day date?
 • ...
 • What will you look like when old?
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-145/155
 
 ... Is it worth?
 
 “It’s this new app – you put in your Social Security Number,
 and it makes you look like a cat.”
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-146/155
-
 Facebook facial recognition
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-147/155
-
 Facebook facial recognition
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-147/155
 
 Some open issues
 • New privacy metrics
@@ -2610,163 +2361,12 @@ and it makes you look like a cat.”
 • External knowledge and adversarial attacks
 • Evaluation of privacy vs utility
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+----------------------------------------------------------------
 
-148/155
 
-References – 1
-• [AFKMPTZ-05a] G. Aggarwal, T. Feder, K. Kenthapadi, R. Motwani, R.
-Panigrahy, D. Thomas, A. Zhu, “Anonymizing Tables,” in Proc. of ICDT,
-Edinburgh, Scotland, January 2005.
-• [AFKMPTZ-05b] G. Aggarwal, T. Feder, K. Kenthapadi, R. Motwani, R.
-Panigrahy, D. Thomas, A. Zhu, “Approximation Algorithms for k-Anonymity,”
-Journal of Privacy Technology, paper number 20051120001.
-• [ALP-12] C.A. Ardagna, G. Livraga, P. Samarati, “Protecting Privacy of User
-Information in Continuous Location-Based Services,” in Proc. of CSE, Paphos,
-Cyprus, December 2012.
-• [AW-89] N.R. Adam, J.C. Wortmann, “Security-control Methods for Statistical
-Databases: A Comparative Study,” in ACM Computing Survey, vol. 21, no. 4,
-December 1989.
-• [BA-05] R.J. Bayardo, R. Agrawal, “Data Privacy through Optimal
-k-anonymization,” in Proc. of ICDE, Tokyo, Japan, April 2005.
-• [BDFLSS-12] M. Bezzi, S. De Capitani di Vimercati, S. Foresti, G. Livraga, P.
-Samarati, R. Sassi, “Modeling and Preventing Inferences from Sensitive Value
-Distributions in Data Release,” in JCS, vol. 2, no. 4, 2012.
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-149/155
 
-References – 2
-• [BDLS-10] M. Bezzi, S. De Capitani di Vimercati, G. Livraga, P. Samarati,
-“Protecting Privacy of Sensitive Value Distributions in Data Release” in Proc. of
-STM, Athens, Greece, September 2010.
-• [CDFS-07a] V. Ciriani, S. De Capitani di Vimercati, S. Foresti, P. Samarati,
-“k-Anonymity,” in Secure Data Management in Decentralized Systems, T. Yu and
-S. Jajodia (eds), Springer-Verlag, 2007.
-• [CDFS-07b] V. Ciriani, S. De Capitani di Vimercati, S. Foresti, P. Samarati,
-“Microdata Protection,” in Secure Data Management in Decentralized Systems,
-T. Yu, and S. Jajodia (eds.), Springer, 2007.
-• [CDFS-08] V. Ciriani, S. De Capitani di Vimercati, S. Foresti, P. Samarati,
-“k-Anonymous Data Mining: A Survey,” in Privacy-Preserving Data Mining:
-Models and Algorithms, C.C. Aggarwal, P.S. Yu (eds.), Springer-Verlag, 2008.
-• [CMFDX-11] R. Chen, N. Mohammed, B.C.M. Fung, B.C. Desai, L. Xiong,
-“Publishing Set-Valued Data via Differential Privacy,” in PVLDB, vol. 4, no. 11,
-September 2011.
-• [CLR-07] B-C. Chen, K. LeFevre, R. Ramakrishnan, “Privacy Skyline: Privacy
-with Multidimensional Adversarial Knowledge,” in Proc. of VLDB, Vienna,
-Austria, September 2007.
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-150/155
-
-References – 3
-• [D-06] C. Dwork, “Differential Privacy,” in Proc. of ICALP, Venice, Italy, July 2006.
-• [DFLS-11] S. De Capitani di Vimercati, S. Foresti, G. Livraga, P. Samarati,
-“Protecting Privacy in Data Release,” in Foundations of Security Analysis and
-Design VI, A. Aldini, R. Gorrieri (eds.), Springer, 2011.
-• [DS-09] C. Dwork, A. Smith, “Differential Privacy for Statistics: What We Know
-and What We Want to Learn,” in Journal of Privacy and Confidentiality, vol. 1,
-no. 2, 2009.
-• [DWHL-11] B. Ding, M. Winslett, J. Han, Z. Li, “Differentially Private Data Cubes:
-Optimizing Noise Sources and Consistency,” in Proc. of SIGMOD, Athens,
-Greece, June 2011.
-• [FWY-05] B. Fung, K. Wang, P. Yu, “Top-down Specialization for Information and
-Privacy Preservation,” in Proc. of ICDE, Tokyo, Japan, April 2005.
-• [FWY-07] B.C.M. Fung, K. Wang, P.S. Yu, “Anonymizing Classification Data for
-Privacy Preservation,” in IEEE TKDE, vol. 19, no. 5, May 2007.
-• [FWS-08] A. Friedman, R. Wolff, A. Schuster, “Providing k-anonymity in Data
-Mining,” in the VLDB Journal, vol. 17, no. 4, July 2008.
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-151/155
-
-References – 4
-• [FZ-08] K.B. Frikken, Y. Zhang, “Yet Another Privacy Metric for Publishing
-Micro-Data,” In Proc. of WPES, Alexandria, VA, USA, October 2008.
-• [GL-08] B. Gedik, L. Liu, “Protecting Location Privacy with Personalized
-k-anonymity: Architecture and Algorithms,” in IEEE TMC, vol. 7, no. 1, January
-2008.
-• [GMT-08] A. Gionis, A. Mazza and T. Tassa, “k-Anonymization Revisited,” in
-Proc. of ICDE, Cancun, Mexico, April 2008.
-• [HLMJ-09] M. Hay, C. Li, G. Miklau, D. Jensen, “Accurate Estimation of the
-Degree Distribution of Private Networks,” in Proc. of ICDM, Miami, FL, USA,
-December 2009.
-• [HMJTW-08] M. Hay, G. Miklau, D. Jensen, D. Towsley, P. Weis, “Resisting
-Structural Re-Identification in Anonymized Social Networks,” in PVLDB, vol. 1,
-no. 1, August 2008.
-• [HR-11] S.-S. Ho, S. Ruan, “Differential Privacy for Location Pattern Mining,” in
-Proc. of SPRINGL, Chicago, IL, USA, November 2011.
-• [KM-11] D. Kifer, A. Machanavajjhala, “No Free Lunch in Data Privacy,” in Proc.
-of SIGMOD, Athens, Greece, June 2011.
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-152/155
-
-References – 5
-• [KM-12] D. Kifer, A. Machanavajjhala, “A Rigorous and Customizable Framework
-for Privacy,” in Proc. of PODS, Scottsdale, AZ, USA, May 2012.
-• [I-02] V. Iyengar, “Transforming Data to Satisfy Privacy Constraints,” in Proc. of
-ACM SIGKDD, Edmonton, Alberta, Canada, June 2002.
-• [LDR-05] K. LeFevre, D.J. DeWitt, R. Ramakrishnan, “Incognito: Efficient
-Fulldomain k-Anonymity,” in Proc. of ACM SIGMOD , Baltimore, MD, USA, June
-2005.
-• [LLV-07] N. Li, T. Li, and S. Venkatasubramanian. “t-closeness: Privacy Beyond
-k-Anonymity and ℓ-Diversity,” in Proc. of ICDE, Istanbul, Turkey, April 2007.
-• [MCFY-11] N. Mohammed, R. Chen, B.C.M. Fung, P.S. Yu, “Differentially Private
-Data Release for Data Mining,” in Proc. of KDD, San Diego, CA, USA, August
-2011.
-• [MGK-06] A. Machanavajjhala, J. Gehrke, D. Kifer “ℓ-Diversity: Privacy Beyond
-k-Anonymity,” in Proc. of ICDE, Atlanta, GA, USA, April 2006.
-• [MKMGH-07] D.J. Martin, D. Kifer, A. Machanavajjhala, J. Gehrke, J.Y. Halpern,
-“Worst-Case Background Knowledge for Privacy-Preserving Data Publishing,” in
-Proc. of ICDE, Istanbul, Turkey, April 2007.
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-153/155
-
-References – 6
-• [MPRV-09] I. Mironov, O. Pandey, O. Reingold, S.P. Vadhan, “Computational
-Differential Privacy.” in Proc. of CRYPTO, Santa Barbara, CA, USA, August
-2009.
-• [MW-04] A. Meyerson and R. Williams, “On the Complexity of Optimal
-k-Anonymity,” in Proc. of PODS, Paris, France, June 2004.
-• [MW-09] D.J. Mir, R.N. Wright, “A Differentially Private Graph Estimator,” in Proc.
-of ICDMW, Miami, FL, USA, December 2009.
-• [NAC-07] M.E. Nergiz, M. Atzori, C. Clifton, “Hiding the Presence of Individuals
-from Shared Databases,” in Proc. of ACM SIGMOD , Beijing, China, 2007.
-• [NCN-07] M. Nergiz, C. Clifton, A. Nergiz, “Multirelational k-anonymity,” in Proc.
-of ICDE, Istanbul, Turkey April 2007.
-• [PTLX-09] J. Pei, Y. Tao, J. Li, X. Xiao, “Privacy Preserving Publishing on Multiple
-Quasi-Identifiers,” in Proc. of ICDE, Shanghai, China, April 2009.
-• [S-01] P. Samarati, “Protecting Respondents’ Identities in Microdata Release,” in
-IEEE TKDE, vol. 13, no. 6, November/December 2001.
-• [TMK-08] M. Terrovitis, N. Mamoulis, P. Kalnis, “Privacy-Preserving
-Anonymization of Set-Valued Data,” Proc. of the VLDB Endowment, vol. 1, no. 1,
-August 2008.
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-154/155
-
-References – 7
-• [WF-06] K. Wang, B. Fung, “Anonymizing Sequential Releases,” in Proc. of
-KDD, Philadelphia, PA, USA, August 2006.
-• [WXWF-10] K. Wang, Y. Xu, R. Wong, A. Fu, “Anonymizing Temporal Data,” in
-Proc. of ICDM, Sydney, Australia, December 2010.
-• [XT-06] X. Xiao, Y. Tao, “Personalized Privacy Preservation,” in Proc. of ACM
-SIGMOD , Chicago, IL, USA, June 2006.
-• [XT-07] X. Xiao, Y. Tao, “m-Invariance: Towards Privacy Preserving
-Re-Publication of Dynamic Datasets,” in Proc. of ACM SIGMOD, Beijing, China,
-June 2007.
-• [XWG-11] X. Xiao, G. Wang, J. Gehrke, “Differential Privacy via Wavelet
-Transforms,” in IEEE TKDE, vol. 23, no. 8, August 2011.
-• [ZHPJTJ-09] B. Zhou, Y. Han, J. Pei, B. Jiang, Y. Tao, Y. Jia, “Continuous Privacy
-Preserving Publishing of Data Streams,” in Proc. of EDBT, Saint Petersburg,
-Russia, March 2009.
-• [ZP-11] B. Zhou, J. Pei, “The k-anonymity and ℓ-diversity Approaches for Privacy
-Preservation in Social Networks Against Neighborhood Attacks,” in KAIS, vol. 28,
-no. 1, July 2011.
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-155/155
+
 
 
