@@ -159,26 +159,24 @@ The percentage of records representing respondents who are unique in the populat
 
 ----------------------------------------------------------------
 
-## $K$-Anonymity
+## $k$-Anonymity
 
-**$K$-anonymity**, together with its enforcement via generalization and suppression, aims to protect respondents’ identities while releasing truthful information. It tries to capture the following requirement:
+**$k$-anonymity**, together with its enforcement via generalization and suppression, aims to protect respondents’ identities while releasing truthful information. It tries to capture the following requirement:
 - the released data should be indistinguishably related to no less than a certain number of respondents;
 - quasi-identifier, a set of attributes that can be exploited for linking (whose release must be controlled).
 
 The basic idea is to translate the $k$-anonymity requirement on the released data. Each release of data must be such that every combination of values of quasi-identifiers can be indistinctly matched to at least $k$ respondents.<br />
-In the released table the respondents must be indistinguishable (within a given set) with respect to a set of attributes. $K$-anonymity requires that each quasi-identifier value appearing in the released table must have at least $k$ occurrences. This is a sufficient condition for the satisfaction of $k$-anonymity requirement
+In the released table the respondents must be indistinguishable (within a given set) with respect to a set of attributes. $k$-anonymity requires that each quasi-identifier value appearing in the released table must have at least $k$ occurrences. This is a sufficient condition for the satisfaction of $k$-anonymity requirement.
 
 ### Generalization and suppression
-with **generalization**, the values of a given attribute are substituted by using more general values. Based on the definition of a generalization hierarchy, for example, consider the attribute ZIP code and suppose that a step in the corresponding generalization hierarchy consists in suppressing the least significant digit in the ZIP code.
-With one generalization step, $20222$ and $20223$ become $2022*$ and $20238$ and $20239$ become $2023*$.<br />
+with **generalization**, the values of a given attribute are substituted by using more general values. Based on the definition of a generalization hierarchy, for example, consider the attribute ZIP code and suppose that a step in the corresponding generalization hierarchy consists in suppressing the least significant digit in the ZIP code. With one generalization step, $20222$ and $20223$ become $2022*$ and $20238$ and $20239$ become $2023*$.<br />
 With **suppression**, it is possible to protect sensitive information by removing it. The introduction of suppression can reduce the amount of generalization necessary to satisfy the $k$-anonymity constraint.
 
 ----------------------------------------------------------------
 
 ### Domain generalization hierarchy
-A **generalization relationship** $\leq_{D}$ defines a mapping between
-domain $D$ and its generalizations. Given two domains $D_i, D_j \in Dom$, $D_i \leq_{D} D_j$ states that the values in domain $D_j$ are generalizations of values in $D_i$. $\leq_{D}$ implies the existence, for each domain $D$, of a **domain generalization hierarchy** $DGH_D = (Dom, \leq_D )$:
-- $\forall D_i, D_j, D_z \in Dom: D_i \leq_D D_j, D_i \leq_D D_z \to D_j \leq_D D_z \vee D_z \leq_D D_j$
+A **generalization relationship** $\leq_{D}$ defines a mapping between domain $D$ and its generalizations. Given two domains $D_i, D_j \in Dom$, $D_i \leq_{D} D_j$ states that the values in domain $D_j$ are generalizations of values in $D_i$. $\leq_{D}$ implies the existence, for each domain $D$, of a **domain generalization hierarchy** $DGH_D = (Dom, \leq_D )$:
+- $\forall D_i, D_j, D_z \in Dom: D_i \leq_D D_j, D_i \leq_D D_z \to D_j \leq_D D_z \vee D_z \leq_D D_j$;
 - all maximal elements of $Dom$ are singleton.
 
 Given a domain tuple $D_T = \langle D_1, . . . , D_n \rangle$ such that $D_i \in Dom, i = 1, . . . , n$, the domain generalization hierarchy of $D_T$ is $DGH_{DT} = DGH_{D1} \times . . . \times DGH_{Dn}$.
@@ -441,19 +439,15 @@ slide 75/155
 ----------------------------------------------------------------
 
 ### Similarity attack
-Similarity attack happens when a $q$-block has different but
-semantically similar values for the sensitive attribute.
+Similarity attack happens when a $q$-block has different but semantically similar values for the sensitive attribute.
 
 slide 76/155
 
 ----------------------------------------------------------------
 
 ### Group closeness
-A $q$-block respects **$t$-closeness** if the distance between the
-distribution of the values of the sensitive attribute in the $q$-block
-and in the considered population is lower than $t$. A table respects $t$-closeness if all its $q$-blocks respect $t$-closeness.<br />
-$t$-closeness is **monotonic** with respect to the generalization
-hierarchies considered for k-anonymity purposes. Any algorithm for $k$-anonymity can be extended to enforce the $t$-closeness property, which however might be difficult to achieve.
+A $q$-block respects **$t$-closeness** if the distance between the distribution of the values of the sensitive attribute in the $q$-block and in the considered population is lower than $t$. A table respects $t$-closeness if all its $q$-blocks respect $t$-closeness.<br />
+$t$-closeness is **monotonic** with respect to the generalization hierarchies considered for k-anonymity purposes. Any algorithm for $k$-anonymity can be extended to enforce the $t$-closeness property, which however might be difficult to achieve.
 
 ----------------------------------------------------------------
 
@@ -2363,8 +2357,3424 @@ and it makes you look like a cat.”
 
 ----------------------------------------------------------------
 
+# Macrodata and Microdata Protection
 
 
+• Statistical DBMS
+
+
+• Macrodata protection
+        ◦ Count and frequency tables
+        ◦ Magnitude tables
+
+
+• Microdata protection
+        ◦ Masking techniques
+        ◦ Synthetic techniques
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   2/98
+                        Statistical data dissemination
+
+• Often statistical data (or data for statistical purpose) are released
+
+• Such released data can be used to infer information that was not
+  intended for disclosure
+
+• Disclosure can:
+        ◦ occur based on the released data alone
+        ◦ result from combination of the released data with publicly available
+          information
+
+        ◦ be possible only through combination of the released data with
+          detailed external (public) data sources
+
+• The disclosure risk from the released data should be very low
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                3/98
+                   Statistical DBMS vs statistical data
+
+Release of data for statistical purpose
+
+  • statistical DBMS
+          ◦ the DBMS responds only to statistical queries
+
+          ◦ need run time checking to control information (indirectly) released
+
+  • statistical data
+          ◦ publish statistics (macrodata release)
+
+          ◦ control on indirect release performed before publication
+
+
+
+
+  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                   4/98
+                                      Statistical DBMS
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   5/98
+                                      Statistical DBMS
+
+• A statistical DBMS is a DBMS that provides access to statistics
+  about groups of individuals
+        ◦ should not reveal information about any particular individual
+
+
+• Confidential information about an individual can be deduced
+        ◦ combining the results of different statistics
+
+        ◦ combining the results of statistics with external knowledge (possibly
+          about the database content)
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                6/98
+                       Statistical DBMS – Example (1)
+
+                          Name            Sex          Major      Class   Income
+                          Allen        Female          CS         1980     68k
+                          Baker        Female          EE         1980     50k
+                          Cook         Male            EE         1978     70k
+                          Davis        Female          CS         1978     80k
+                          Evans        Male            EE         1981     60k
+                          Frank        Male            CS         1978     76k
+                          Good         Male            CS         1981     64k
+                          Hall         Male            EE         1978     60k
+                          Iles         Male            CS         1979     70k
+
+Query: sum of the incomes of females with major in EE
+Result: it reveals the income of Baker (only female with EE)
+=⇒ The query is sensitive
+=⇒ Block statistics computed over a single (or few) individual
+
+
+  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    7/98
+                       Statistical DBMS – Example (1)
+
+                          Name            Sex          Major      Class   Income
+                          Allen        Female          CS         1980     68k
+                          Baker        Female          EE         1980     50k
+                          Cook         Male            EE         1978     70k
+                          Davis        Female          CS         1978     80k
+                          Evans        Male            EE         1981     60k
+                          Frank        Male            CS         1978     76k
+                          Good         Male            CS         1981     64k
+                          Hall         Male            EE         1978     60k
+                          Iles         Male            CS         1979     70k
+
+Query: sum of the incomes of females with major in EE
+Result: it reveals the income of Baker (only female with EE)
+=⇒ The query is sensitive
+=⇒ Block statistics computed over a single (or few) individual
+
+
+  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    7/98
+                       Statistical DBMS – Example (1)
+
+                          Name            Sex          Major      Class   Income
+                          Allen        Female          CS         1980     68k
+                          Baker        Female          EE         1980     50k
+                          Cook         Male            EE         1978     70k
+                          Davis        Female          CS         1978     80k
+                          Evans        Male            EE         1981     60k
+                          Frank        Male            CS         1978     76k
+                          Good         Male            CS         1981     64k
+                          Hall         Male            EE         1978     60k
+                          Iles         Male            CS         1979     70k
+
+Query: sum of the incomes of females with major in EE
+Result: it reveals the income of Baker (only female with EE)
+=⇒ The query is sensitive
+=⇒ Block statistics computed over a single (or few) individual
+
+
+  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    7/98
+                       Statistical DBMS – Example (1)
+
+                          Name            Sex          Major      Class   Income
+                          Allen        Female          CS         1980     68k
+                          Baker        Female          EE         1980     50k
+                          Cook         Male            EE         1978     70k
+                          Davis        Female          CS         1978     80k
+                          Evans        Male            EE         1981     60k
+                          Frank        Male            CS         1978     76k
+                          Good         Male            CS         1981     64k
+                          Hall         Male            EE         1978     60k
+                          Iles         Male            CS         1979     70k
+
+Query: sum of the incomes of females with major in EE
+Result: it reveals the income of Baker (only female with EE)
+=⇒ The query is sensitive
+=⇒ Block statistics computed over a too small number of respondents
+
+
+  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    7/98
+                       Statistical DBMS – Example (2)
+
+                          Name            Sex          Major      Class   Income
+                          Allen        Female          CS         1980     68k
+                          Baker        Female          EE         1980     50k
+                          Cook         Male            EE         1978     70k
+                          Davis        Female          CS         1978     80k
+                          Evans        Male            EE         1981     60k
+                          Frank        Male            CS         1978     76k
+                          Good         Male            CS         1981     64k
+                          Hall         Male            EE         1978     60k
+                          Iles         Male            CS         1979     70k
+
+Query 1: sum of the incomes of individuals with major in EE
+
+
+
+
+  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    8/98
+                       Statistical DBMS – Example (2)
+
+                          Name            Sex          Major      Class   Income
+                          Allen        Female          CS         1980     68k
+                          Baker        Female          EE         1980     50k
+                          Cook         Male            EE         1978     70k
+                          Davis        Female          CS         1978     80k
+                          Evans        Male            EE         1981     60k
+                          Frank        Male            CS         1978     76k
+                          Good         Male            CS         1981     64k
+                          Hall         Male            EE         1978     60k
+                          Iles         Male            CS         1979     70k
+
+Query 1: sum of the incomes of individuals with major in EE
+Result: it does not reveal the income of any individual (240k)
+=⇒ The query is not sensitive
+
+
+
+
+  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    8/98
+                       Statistical DBMS – Example (2)
+
+                          Name            Sex          Major      Class   Income
+                          Allen        Female          CS         1980     68k
+                          Baker        Female          EE         1980     50k
+                          Cook         Male            EE         1978     70k
+                          Davis        Female          CS         1978     80k
+                          Evans        Male            EE         1981     60k
+                          Frank        Male            CS         1978     76k
+                          Good         Male            CS         1981     64k
+                          Hall         Male            EE         1978     60k
+                          Iles         Male            CS         1979     70k
+
+Query 2: sum of the incomes of males with major in EE
+
+
+
+
+  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    8/98
+                       Statistical DBMS – Example (2)
+
+                          Name            Sex          Major      Class   Income
+                          Allen        Female          CS         1980     68k
+                          Baker        Female          EE         1980     50k
+                          Cook         Male            EE         1978     70k
+                          Davis        Female          CS         1978     80k
+                          Evans        Male            EE         1981     60k
+                          Frank        Male            CS         1978     76k
+                          Good         Male            CS         1981     64k
+                          Hall         Male            EE         1978     60k
+                          Iles         Male            CS         1979     70k
+
+Query 2: sum of the incomes of males with major in EE
+Result: it does not reveal the income of any individual (190k)
+=⇒ The query is not sensitive
+
+
+
+
+  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    8/98
+                       Statistical DBMS – Example (2)
+
+                          Name            Sex          Major      Class   Income
+                          Allen        Female          CS         1980     68k
+                          Baker        Female          EE         1980     50k
+                          Cook         Male            EE         1978     70k
+                          Davis        Female          CS         1978     80k
+                          Evans        Male            EE         1981     60k
+                          Frank        Male            CS         1978     76k
+                          Good         Male            CS         1981     64k
+                          Hall         Male            EE         1978     60k
+                          Iles         Male            CS         1979     70k
+
+Query 1: sum of the incomes of individuals with major in EE (240k)
+Query 2: sum of the incomes of males with major in EE (190k)
+= sum of the incomes of females with major in EE
+(50k, income of Baker)
+=⇒ The query is not sensitive
+
+
+  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    8/98
+                       Statistical DBMS – Example (2)
+
+                          Name            Sex          Major      Class   Income
+                          Allen        Female          CS         1980     68k
+                          Baker        Female          EE         1980     50k
+                          Cook         Male            EE         1978     70k
+                          Davis        Female          CS         1978     80k
+                          Evans        Male            EE         1981     60k
+                          Frank        Male            CS         1978     76k
+                          Good         Male            CS         1981     64k
+                          Hall         Male            EE         1978     60k
+                          Iles         Male            CS         1979     70k
+
+Query 1: sum of the incomes of individuals with major in EE (240k)
+Query 2: sum of the incomes of males with major in EE (190k)
+Query = sum of the incomes of females with major in EE (50k)
+Query = income of Baker
+=⇒ The query is not sensitive
+
+
+  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    8/98
+                       Statistical DBMS – Example (2)
+
+                          Name            Sex          Major      Class   Income
+                          Allen        Female          CS         1980     68k
+                          Baker        Female          EE         1980     50k
+                          Cook         Male            EE         1978     70k
+                          Davis        Female          CS         1978     80k
+                          Evans        Male            EE         1981     60k
+                          Frank        Male            CS         1978     76k
+                          Good         Male            CS         1981     64k
+                          Hall         Male            EE         1978     60k
+                          Iles         Male            CS         1979     70k
+
+Query 1: sum of the incomes of individuals with major in EE (240k)
+Query 2: sum of the incomes of males with major in EE (190k)
+Query = sum of the incomes of females with major in EE (50k)
+Query = income of Baker
+=⇒ The combination of queries is sensitive
+
+
+  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    8/98
+                                 Macrodata protection
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   9/98
+                                                  Outline
+
+ • Statistical DBMS
+
+
+ • Macrodata protection
+         ◦ Count and frequency tables
+         ◦ Magnitude tables
+
+
+ • Microdata protection
+         ◦ Masking techniques
+         ◦ Synthetic techniques
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   10/98
+                                               Macrodata
+
+Macrodata tables can be classified into the following two groups (types
+of tables)
+  • Count/Frequency. Each cell contains the number (count) or the
+    percentage (frequency) of respondents that have the same value
+    over all attributes in the table
+
+  • Magnitude data. Each cell contains an aggregate value of a
+    quantity of interest over all attributes in the table
+
+
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      11/98
+                                 Count table – Example
+
+Two-dimensional table showing the number of employees by
+department and annual income (in K Euro)
+
+
+                                Income
+     Dept [0-21) [21-23) [23-25) [25-27) [27-29) 29+ Total
+     Dept1     2       4      18      20       7   1   52
+     Dept2     -       -       7       9       -   -   16
+     Dept3     -       6      30      15       4   -   55
+     Dept4     -       -       2       -       -   -    2
+
+
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   12/98
+                            Magnitude table – Example
+
+Average number of days spent in the hospital by respondents with a
+given disease
+
+
+       Hypertension Obesity Chest Pain Short Breath Tot
+    M       2        08.5     23.5          3       37.0
+    F       3        30.5     00.0          5       38.5
+   Tot      5        39.0     23.5          8       75.5
+
+
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)       13/98
+                             Microdata table – Example
+
+Records about employees of company Alfa
+               N       Employee            Company               Education   Salary   Race
+               1       John                Alfa                  very high    201     black
+               2       Jim                 Alfa                  high         103     white
+               3       Sue                 Alfa                  high          77     black
+               4       Pete                Alfa                  high          61     white
+               5       Ramesh              Alfa                  medium        72     white
+               6       Dante               Alfa                  low          103     white
+               7       Virgil              Alfa                  low          91      black
+               8       Wanda               Alfa                  low          84      white
+               9       Stan                Alfa                  low          75      white
+               10      Irmi                Alfa                  low          62      black
+               11      Renee               Alfa                  low          58      white
+               12      Virginia            Alfa                  low          56      black
+               13      Mary                Alfa                  low          54      black
+               14      Kim                 Alfa                  low          52      white
+               15      Tom                 Alfa                  low          55      black
+               16      Ken                 Alfa                  low          48      white
+               17      Mike                Alfa                  low          48      white
+               18      Joe                 Alfa                  low          41      black
+               19      Jeff                Alfa                  low          44      black
+               20      Nancy               Alfa                  low          37      white
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                                14/98
+      Macrodata Disclosure Protection Techniques:
+           Tables of Counts or Frequencies
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   15/98
+                                                  Outline
+
+ • Statistical DBMS
+
+
+ • Macrodata protection
+         ◦ Count and frequency tables
+         ◦ Magnitude tables
+
+
+ • Microdata protection
+         ◦ Masking techniques
+         ◦ Synthetic techniques
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   16/98
+                       Tables of counts or frequencies
+
+ • Data collected from most surveys are published in tables of count
+   or frequencies
+
+ • Protection operates in three steps
+       1. Sampling
+       2. Identification of sensitive cells
+                − special rules
+                − threshold rules
+
+       3. Protection of sensitive cells
+                − table restructuring
+                − suppression
+                − rounding
+                − confidentiality edit
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)     17/98
+                                                Sampling
+
+ • Conduct (and publish) a sample survey rather than a census
+
+ • Estimates are made by multiplying individual responses by a
+   sampling weight before aggregating them
+
+ • If weights are not published, weighting helps to make an individual
+   respondent’s data less identifiable from published totals
+
+ • Estimates must achieve a specified accuracy
+         ◦ data that do not meet the accuracy requirements are not published
+           (not considered meaningful)
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)             18/98
+                       Tables of counts or frequencies
+
+ • Data collected from most surveys are published in tables of count
+   or frequencies
+
+ • Protection operates in three steps
+       1. Sampling
+       2. Identification of sensitive cells
+                − special rules
+                − threshold rules
+
+       3. Protection of sensitive cells
+                − table restructuring
+                − suppression
+                − rounding
+                − confidentiality edit
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)     19/98
+                                            Special rules
+
+ • When macrodata tables are defined on the whole population,
+   disclosure limitation procedures must be applied
+
+ • Special rules define restrictions on the level of detail that can be
+   provided in a table
+
+ • Special rules differ depending on the agency and the kind of table
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)         20/98
+                            Special rules – Example (1)
+
+Social Security Administration (SSA) rules prohibit publishing tables
+where the value of a cell:
+  • is equal to a marginal total or
+
+  • would allow users to determine
+          ◦ an individual’s age within a five-year interval
+
+          ◦ earnings within a $1,000 interval
+
+          ◦ benefits within a $50 interval
+
+  • to satisfy special rules
+          ◦ table restructuring or category combination
+
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)          21/98
+                            Special rules – Example (2)
+
+Number of employees by department and annual income (in K Euro)
+Special rule: Income within a 5K Euro interval
+                                               Income
+              Dept       [0-21) [21-23) [23-25) [25-27) [27-29) 29+           Total
+             Dept1              2            4           18      20   7   1     52
+             Dept2              -            -            7       9   -   -     16
+             Dept3              -            6           30      15   4   -     55
+             Dept4              -            -            2       -   -   -      2
+
+Cells that cannot be released
+      its value is equal to total
+      The table allows users to determine benefit within a $50 interval
+              between $40 and $59 for county D
+              between $40 to $79 for county B
+
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                        22/98
+                            Special rules – Example (2)
+
+Number of employees by department and annual income (in K Euro)
+Special rule: Income within a 5K Euro interval
+                                               Income
+              Dept       [0-21) [21-23) [23-25) [25-27) [27-29) 29+           Total
+             Dept1              2            4           18      20   7   1     52
+             Dept2              -            -            7       9   -   -     16
+             Dept3              -            6           30      15   4   -     55
+             Dept4              -            -            2       -   -   -      2
+
+Cells that cannot be released
+  •    a its value is equal to total
+      allows users to determine income within a 3K interval
+              between 40 and 59 for county Dept4
+              between 40 to 79 for county Dept2
+
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                        22/98
+                            Special rules – Example (2)
+
+Number of employees by department and annual income (in K Euro)
+Special rule: Income within a 5K Euro interval
+                                               Income
+              Dept       [0-21) [21-23) [23-25) [25-27) [27-29) 29+           Total
+             Dept1              2            4           18      20   7   1     52
+             Dept2              -            -            7       9   -   -     16
+             Dept3              -            6           30      15   4   -     55
+             Dept4              -            -            2       -   -   -      2
+
+Cells that cannot be released
+  •    a  its value is equal to total
+  •    a , a , a allow recipients to determine income within a 5K interval
+
+              between 23K and 25K for Dept4
+              between 23K and 27K for Dept2
+
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                        22/98
+                            Special rules – Example (2)
+
+Number of employees by department and annual income (in K Euro)
+Special rule: Income within a 5K Euro interval
+                                               Income
+               Dept      [0-21) [21-23) [23-25) [25-27) [27-29) 29+           Total
+               Dept1            2            4           18      20   7   1     52
+               Dept2            -            -            7       9   -   -     16
+               Dept3            -            6           30      15   4   -     55
+               Dept4            -            -            2       -   -   -      2
+
+Cells that cannot be released
+  •    a  its value is equal to total
+  •    a , a , a allow recipients to determine income within a 5K interval
+
+           ◦   a    between 23K and 25K for Dept4
+           ◦   a   , a between 23K and 27K for Dept2
+
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                        22/98
+                Special rules – Example (U.S. HIPAA)
+
+Health Insurance Portability and Accountability Act
+“Safe Harbor” rules, include:
+
+  • identifying information must be removed
+
+  • locations have to be generalized to units that contain at least
+    20,000 residents
+
+  • dates of birth must be rounded up to the year of birth only (or to
+    larger value if the person is older than 90)
+
+
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)           23/98
+                                         Threshold rules
+
+ • A cell is sensitive if the number of respondents is less than some
+   specified number (e.g., some agencies consider 5, others 3)
+
+ • A sensitive cell cannot be released
+
+ • Different techniques can be applied to protect sensitive cells:
+         ◦ table restructuring and category combination
+         ◦ cell suppression
+
+         ◦ random rounding
+         ◦ controlled rounding
+         ◦ confidentiality edit
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)        24/98
+                     Table with disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+            Alfa                 15                1      3         1     20
+           Beta                  20               10    10         15     55
+          Gamma                   3               10    10          2     25
+           Delta                 12               14      7         2     35
+           Total                 50               35    30         20    135
+
+Suppress one additional cell for each row/column with a sensitive cell
+suppressed
+
+
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  25/98
+                     Table with disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+            Alfa                 15                1      3         1     20
+           Beta                  20               10    10         15     55
+          Gamma                   3               10    10          2     25
+           Delta                 12               14      7         2     35
+           Total                 50               35    30         20    135
+
+A cell with fewer than 5 respondents is defined as sensitive
+Suppress one additional cell for each row/column with a sensitive cell
+suppressed
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  25/98
+                     Table with disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+            Alfa                 15                1      3         1     20
+           Beta                  20               10    10         15     55
+          Gamma                   3               10    10          2     25
+           Delta                 12               14      7         2     35
+           Total                 50               35    30         20    135
+
+A cell with fewer than 5 respondents is defined as sensitive
+Suppress one additional cell for each row/column with a sensitive cell
+suppressed
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  25/98
+                       Tables of counts or frequencies
+
+ • Data collected from most surveys are published in tables of count
+   or frequencies
+
+ • Protection operates in three steps
+       1. Sampling
+       2. Identification of sensitive cells
+                − special rules
+                − threshold rules
+
+       3. Protection of sensitive cells
+                − table restructuring
+                − suppression
+                − rounding
+                − confidentiality edit
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)     26/98
+                        Table restructuring – Example
+
+ • Number of employees by department and annual income (in K
+   Euro)
+   Special rule: Income within a 5K Euro interval
+ • To protect confidentiality, the table can be restructured and rows
+   or columns combined (“rolling-up categories”)
+                                              Income
+             Dept       [0-21) [21-23) [23-25) [25-27) [27-29) 29+           Total
+            Dept1              2            4           18      20   7   1     52
+            Dept2              -            -            7       9   -   -     16
+            Dept3              -            6           30      15   4   -     55
+            Dept4              -            -            2       -   -   -      2
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                        27/98
+                        Table restructuring – Example
+
+ • Number of employees by department and annual income (in K
+   Euro)
+   Special rule: Income within a 5K Euro interval
+ • To protect confidentiality, the table can be restructured and rows
+   or columns combined (“rolling-up categories”)
+                                              Income
+             Dept       [0-21) [21-23) [23-25) [25-27) [27-29) 29+           Total
+            Dept1
+                               2            4           25      29   7   1     68
+            Dept2
+            Dept3
+                                -           6           32      15   4   -     57
+            Dept4
+
+ • Combining Dept1 with Dept2 and Dept3 with Dept4 does offer the
+   required protection
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                        27/98
+                        Table restructuring – Example
+
+ • Number of employees by department and annual income (in K
+   Euro)
+   Special rule: Income within a 5K Euro interval
+ • To protect confidentiality, the table can be restructured and rows
+   or columns combined (“rolling-up categories”)
+                                              Income
+             Dept       [0-21) [21-23) [23-25) [25-27) [27-29) 29+           Total
+            Dept1              2            4           18      20   7   1     52
+            Dept2
+                                -            -           9      9        -     16
+            Dept4
+            Dept3               -           6           30      15   4   -     55
+
+ • Combining Dept2 with Dept4 would still reveal that the income is
+   within a 5K interval [23K, 27K)
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                        27/98
+                                       Cell suppression
+
+ • One of the most used ways of protecting sensitive cells is
+   suppression
+
+ • Suppressing sensitive cells (primary suppression) is not sufficient
+
+ • At least one additional cell must be suppressed (complementary
+   suppression) for each row or column with a suppressed sensitive
+   cell (primary suppression)
+         ◦ the value in the sensitive cell can be calculated from the marginal
+           total
+
+
+ • Even with complementary suppression it is difficult to guarantee
+   adequate protection
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                28/98
+                        Complementary suppressions
+
+ • The selection of cells for complementary suppression is
+   complicated
+
+ • Linear programming techniques are used to automatically select
+   cells for complementary suppression
+
+ • Audit techniques can be applied to evaluate the proposed
+   suppression pattern to see if it provides the required protection
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)          29/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15                1      3         1     20
+           Beta                  20               10    10         15     55
+          Gamma                   3               10    10          2     25
+           Delta                 12               14      7         2     35
+           Total                 50               35    30         20    135
+
+A cell with fewer than 5 respondents is defined as sensitive
+
+
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15                1      3         1     20
+           Beta                  20               10    10         15     55
+          Gamma                   3               10    10          2     25
+           Delta                 12               14      7         2     35
+           Total                 50               35    30         20    135
+
+A cell with fewer than 5 respondents is defined as sensitive
+
+
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15               D1    D2         D3     20
+           Beta                  20               10    10         15     55
+          Gamma                  D4               10    10         D5     25
+           Delta                 12               14      7        D6     35
+           Total                 50               35    30         20    135
+
+Suppress sensitive cells
+
+
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15               D1    D2         D3     20
+           Beta                  20               10    10         15     55
+          Gamma                  D4               10    10         D5     25
+           Delta                 12               14      7        D6     35
+           Total                 50               35    30         20    135
+
+Suppressing sensitive cells is not sufficient
+35 = D1 + 10 + 10 + 14
+=⇒ D1 = 1
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15                1    D2         D3     20
+           Beta                  20               10    10         15     55
+          Gamma                  D4               10    10         D5     25
+           Delta                 12               14      7        D6     35
+           Total                 50               35    30         20    135
+
+Suppressing sensitive cells is not sufficient
+35 = D1 + 10 + 10 + 14
+=⇒ D1 = 1
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15                1    D2         D3     20
+           Beta                  20               10    10         15     55
+          Gamma                  D4               10    10         D5     25
+           Delta                 12               14      7        D6     35
+           Total                 50               35    30         20    135
+
+Suppressing sensitive cells is not sufficient
+30 = D2 + 10 + 10 + 7
+=⇒ D2 = 3
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15                1      3        D3     20
+           Beta                  20               10    10         15     55
+          Gamma                  D4               10    10         D5     25
+           Delta                 12               14      7        D6     35
+           Total                 50               35    30         20    135
+
+Suppressing sensitive cells is not sufficient
+30 = D2 + 10 + 10 + 7
+=⇒ D2 = 3
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15                1      3        D3     20
+           Beta                  20               10    10         15     55
+          Gamma                  D4               10    10         D5     25
+           Delta                 12               14      7        D6     35
+           Total                 50               35    30         20    135
+
+Suppressing sensitive cells is not sufficient
+50 = 15 + 20 + D4 + 12
+=⇒ D4 = 3
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15                1      3        D3     20
+           Beta                  20               10    10         15     55
+          Gamma                   3               10    10         D5     25
+           Delta                 12               14      7        D6     35
+           Total                 50               35    30         20    135
+
+Suppressing sensitive cells is not sufficient
+50 = 15 + 20 + D4 + 12
+=⇒ D4 = 3
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15                1      3        D3     20
+           Beta                  20               10    10         15     55
+          Gamma                   3               10    10         D5     25
+           Delta                 12               14      7        D6     35
+           Total                 50               35    30         20    135
+
+Suppressing sensitive cells is not sufficient
+35 = 12 + 14 + 7 + D6
+=⇒ D6 = 2
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15                1      3        D3     20
+           Beta                  20               10    10         15     55
+          Gamma                   3               10    10         D5     25
+           Delta                 12               14      7         2     35
+           Total                 50               35    30         20    135
+
+Suppressing sensitive cells is not sufficient
+35 = 12 + 14 + 7 + D6
+=⇒ D6 = 2
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15                1      3        D3     20
+           Beta                  20               10    10         15     55
+          Gamma                   3               10    10         D5     25
+           Delta                 12               14      7         2     35
+           Total                 50               35    30         20    135
+
+Suppressing sensitive cells is not sufficient
+20 = 15 + 1 + 3 + D3
+=⇒ D3 = 1
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15                1      3         1     20
+           Beta                  20               10    10         15     55
+          Gamma                   3               10    10         D5     25
+           Delta                 12               14      7         2     35
+           Total                 50               35    30         20    135
+
+Suppressing sensitive cells is not sufficient
+20 = 15 + 1 + 3 + D3
+=⇒ D3 = 1
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15                1      3         1     20
+           Beta                  20               10    10         15     55
+          Gamma                   3               10    10         D5     25
+           Delta                 12               14      7         2     35
+           Total                 50               35    30         20    135
+
+Suppressing sensitive cells is not sufficient
+25 = 3 + 10 + 10 + D5
+=⇒ D5 = 2
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15                1      3         1     20
+           Beta                  20               10    10         15     55
+          Gamma                   3               10    10          2     25
+           Delta                 12               14      7         2     35
+           Total                 50               35    30         20    135
+
+Suppressing sensitive cells is not sufficient
+25 = 3 + 10 + 10 + D5
+=⇒ D5 = 2
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15               D1    D2         D3     20
+           Beta                  20               D4    D5         15     55
+          Gamma                  D6               10    10         D7     25
+           Delta                 D8               14      7        D9     35
+           Total                 50               35    30         20    135
+
+Suppress one additional cell for each row/column with a sensitive cell
+suppressed
+
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15               D1    D2         D3     20
+           Beta                  20               D4    D5         15     55
+          Gamma                  D6               10    10         D7     25
+           Delta                 D8               14      7        D9     35
+           Total                 50               35    30         20    135
+
+The table appears to offer protection to the sensitive cells but:
+(15 + D1 + D2 + D3 ) + (20 + D4 + D5 + 15) - (D1 + D4 + 10 + 14) -
+(D2 + D5 + 10 + 7) = 20 + 55 - 35 - 30
+=⇒ D3 = 1
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15               D1    D2         D3     20
+           Beta                  20               D4    D5         15     55
+          Gamma                  D6               10    10         D7     25
+           Delta                 D8               14      7        D9     35
+           Total                 50               35    30         20    135
+
+The table appears to offer protection to the sensitive cells, but:
+(15 + D1 + D2 + D3 ) + (20 + D4 + D5 + 15) - (D1 + D4 + 10 + 14) -
+(D2 + D5 + 10 + 7) = 20 + 55 - 35 - 30
+=⇒ D3 = 1
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15               D1    D2         D3     20
+           Beta                  20               D4    D5         15     55
+          Gamma                  D6               10    10         D7     25
+           Delta                 D8               14      7        D9     35
+           Total                 50               35    30         20    135
+
+The table appears to offer protection to the sensitive cells, but:
+ (15 + D1 + D2 + D3 ) + (20 + D4 + D5 + 15) - (D1 + D4 + 10 + 14) -
+(D2 + D5 + 10 + 7) = 20 + 55 - 35 - 30
+=⇒ D3 = 1
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15               D1    D2         D3     20
+           Beta                  20               D4    D5         15     55
+          Gamma                  D6               10    10         D7     25
+           Delta                 D8               14      7        D9     35
+           Total                 50               35    30         20    135
+
+The table appears to offer protection to the sensitive cells, but:
+(15 + D1 + D2 + D3 ) + (20 + D4 + D5 + 15) - (D1 + D4 + 10 + 14) -
+(D2 + D5 + 10 + 7) = 20 + 55 - 35 - 30
+=⇒ D3 = 1
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15               D1    D2         D3     20
+           Beta                  20               D4    D5         15     55
+          Gamma                  D6               10    10         D7     25
+           Delta                 D8               14      7        D9     35
+           Total                 50               35    30         20    135
+
+The table appears to offer protection to the sensitive cells but:
+(15 + D1 + D2 + D3 ) + (20 + D4 + D5 + 15) - (D1 + D4 + 10 + 14) -
+(D2 + D5 + 10 + 7) = 20 + 55 - 35 - 30
+=⇒ D3 = 1
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15               D1    D2         D3     20
+           Beta                  20               D4    D5         15     55
+          Gamma                  D6               10    10         D7     25
+           Delta                 D8               14      7        D9     35
+           Total                 50               35    30         20    135
+
+The table appears to offer protection to the sensitive cells but:
+(15 + D1 + D2 + D3 ) + (20 + D4 + D5 + 15) - (D1 + D4 + 10 + 14) -
+ (D2 + D5 + 10 + 7) = 20 + 55 - 35 - 30
+=⇒ D3 = 1
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15               D1    D2         D3     20
+           Beta                  20               D4    D5         15     55
+          Gamma                  D6               10    10         D7     25
+           Delta                 D8               14      7        D9     35
+           Total                 50               35    30         20    135
+
+The table appears to offer protection to the sensitive cells but:
+(15 + D1 + D2 + D3 ) + (20 + D4 + D5 + 15) - (D1 + D4 + 10 + 14) - (D2 +
+D5 + 10 + 7) = 20 + 55 - 35 - 30
+=⇒ D3 = 1
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15               D1    D2          1     20
+           Beta                  20               D4    D5         15     55
+          Gamma                  D6               10    10         D7     25
+           Delta                 D8               14      7        D9     35
+           Total                 50               35    30         20    135
+
+The table appears to offer protection to the sensitive cells but:
+(15 + D1 + D2 + D3 ) + (20 + D4 + D5 + 15) - (D1 + D4 + 10 + 14) - (D2 +
+D5 + 10 + 7) = 20 + 55 - 35 - 30
+=⇒ D3 = 1
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+Cell suppression: Table without disclosures – Example
+
+Table containing information about employees by company and
+education level
+                                                   Education level
+         Company                Low          Medium High Very High      Total
+           Alpha                 15               D1    D2         D3     20
+           Beta                  20               10    10         15     55
+          Gamma                  D4               D5    10         D6     25
+           Delta                 D7               14    D8         D9     35
+           Total                 50               35    30         20    135
+
+The table provides adequate protection for the sensitive cells but out of
+a total of 16 cells, only 7 cells are published, while 9 are suppressed
+
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
+                                                Rounding
+
+To reduce data loss due to suppression, use rounding of values to a
+multiple of the sensitivity threshold
+
+  • random: random decision on whether cell values will be rounded
+    up or down
+          ◦ the sum of the values in a row/column may be different from the
+            published marginal totals (recipients may lose confidence in the
+            data)
+
+  • controlled: ensure that the sum of published entries is equal to
+    published marginal totals
+Note: all cell values must be a multiple of the threshold value
+
+
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                 31/98
+                         Random rounding – Example
+
+                                                   Education level
+              Company             Low        Medium High Very High        Total
+                 Alfa                15                1         3    1     20
+                 Beta                20               10        10   15     55
+                Gamma                 3               10        10    2     25
+                 Delta               12               14         7    2     35
+                  Total              50               35        30   20    135
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                     32/98
+                         Random rounding – Example
+
+                                                   Education level
+              Company             Low        Medium High Very High         Total
+                 Alfa                15                1         3     1     20
+                 Beta                20               10        10    15     55
+                Gamma                 3               10        10     2     25
+                 Delta               12               14         7     2     35
+                  Total              50               35        30    20    135
+
+                                          Education level (random rounding)
+              Company             Low       Medium High Very High         Total
+                 Alfa                15               *0         *0   *0     20
+                 Beta                20               10         10   15     55
+                Gamma                *5               10         10   *0     25
+                 Delta              *15              *15        *10   *0     35
+                  Total              50               35        30    20    135
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                      32/98
+                       Controlled rounding – Example
+
+                                                    Education level
+               Company             Low        Medium High Very High       Total
+                 Alfa                 15                1        3    1     20
+                 Beta                 20               10       10   15     55
+                Gamma                  3               10       10    2     25
+                 Delta                12               14        7    2     35
+                  Total               50               35       30   20    135
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                     33/98
+                       Controlled rounding – Example
+
+                                                    Education level
+               Company             Low        Medium High Very High       Total
+                 Alfa                 15                1        3    1     20
+                 Beta                 20               10       10   15     55
+                Gamma                  3               10       10    2     25
+                 Delta                12               14        7    2     35
+                  Total               50               35       30   20    135
+
+                                    Education level (controlled rounding)
+              Company             Low Medium High Very High            Total
+                 Alfa                15               *0        *5   *0     20
+                 Beta                20               10        10   15     55
+                Gamma                *5               10        10   *0     25
+                 Delta              *10              *15        *5   *5     35
+                  Total              50               35        30   20    135
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                     33/98
+                                    Controlled rounding
+
+ • Linear programming methods are used to identify a controlled
+   rounding for a table
+
+ • Disadvantages:
+         ◦ it requires the use of specialized computer programs
+
+         ◦ controlled rounding solutions may not always exist for complex
+           tables
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)               34/98
+                                 Confidentiality edit (1)
+
+ • Developed by the U.S. Census Bureau to provide protection of
+   tables prepared from the 1990 Census
+
+ • Two different approaches:
+         ◦ to protect the regular decennial Census data (100% of the
+           population)
+
+         ◦ to protect the long-form of the Census which refers to a sample of
+           the population
+
+ • Both approaches apply statistical disclosure limitation techniques
+   to the microdata on which statistics are calculated:
+         ◦ statistics are protected by changing input data
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)               35/98
+                                 Confidentiality edit (2)
+
+ • For the 100 percent microdata file, confidentiality edit applies
+   switching
+       1. Take a sample of records from the microdata file
+
+       2. Find a match for these records in some other geographic region,
+          matching on a specified set of important attributes
+
+       3. Swap all attributes on the matched records
+
+ • For small blocks, the sampling fraction is increased to provide
+   additional protection
+
+ • The microdata file can be used directly to prepare macrodata
+   tables
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)               36/98
+                     Confidentiality edit – Example (1)
+
+Records for the 20 employees of company Alfa prova prova prova
+prova
+               N       Employee            Company               Education   Salary   Race
+               1       John                Alfa                  very high    201     black
+               2       Jim                 Alfa                  high         103     white
+               3       Sue                 Alfa                  high          77     black
+               4       Pete                Alfa                  high          61     white
+               5       Ramesh              Alfa                  medium        72     white
+               6       Dante               Alfa                  low          103     white
+               7       Virgil              Alfa                  low          91      black
+               8       Wanda               Alfa                  low          84      white
+               9       Stan                Alfa                  low          75      white
+               10      Irmi                Alfa                  low          62      black
+               11      Renee               Alfa                  low          58      white
+               12      Virginia            Alfa                  low          56      black
+               13      Mary                Alfa                  low          54      black
+               14      Kim                 Alfa                  low          52      white
+               15      Tom                 Alfa                  low          55      black
+               16      Ken                 Alfa                  low          48      white
+               17      Mike                Alfa                  low          48      white
+               18      Joe                 Alfa                  low          41      black
+               19      Jeff                Alfa                  low          44      black
+               20      Nancy               Alfa                  low          37      white
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                                37/98
+                    Confidentiality edit – Example (2)
+
+1. Take a sample of records from the microdata file (say a 10%
+   sample, 2 tuples for company Alfa). Assume that records number
+   4 and 17 were selected as part of our 10% sample
+
+2. Since we need tables by company and education level, we find a
+   match in some other company on the other variables (race and
+   salary, company totals for these variables remain unchanged)
+         ◦ A match for record 4 (Pete) is found in company Beta, the match is
+           with Alonso, who has very high education
+
+         ◦ Record 17 (Mike) is matched with George in company Delta, who
+           has medium education
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)              38/98
+                    Confidentiality edit – Example (3)
+
+3. We also assume that part of the randomly selected 10% sample
+   from other companies match records in company Alfa
+         ◦ One record from company Delta (June with high education)
+           matches with Virginia (record 12)
+
+         ◦ One record from company Gamma (Heather with low education)
+           matched with Nancy (record 20)
+
+4. After all matches are made, swap attributes on matched records
+
+5. Use the swapped data file directly to produce tables
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)           39/98
+                     Confidentiality edit – Example (4)
+
+Records for the 20 employees of company Alfa prova prova prova
+prova
+               N       Employee            Company               Education   Salary   Race
+               1       John                Alfa                  very high    201     black
+               2       Jim                 Alfa                  high         103     white
+               3       Sue                 Alfa                  high          77     black
+               4       Pete                Alfa                  high          61     white
+               5       Ramesh              Alfa                  medium        72     white
+               6       Dante               Alfa                  low          103     white
+               7       Virgil              Alfa                  low          91      black
+               8       Wanda               Alfa                  low          84      white
+               9       Stan                Alfa                  low          75      white
+               10      Irmi                Alfa                  low          62      black
+               11      Renee               Alfa                  low          58      white
+               12      Virginia            Alfa                  low          56      black
+               13      Mary                Alfa                  low          54      black
+               14      Kim                 Alfa                  low          52      white
+               15      Tom                 Alfa                  low          55      black
+               16      Ken                 Alfa                  low          48      white
+               17      Mike                Alfa                  low          48      white
+               18      Joe                 Alfa                  low          41      black
+               19      Jeff                Alfa                  low          44      black
+               20      Nancy               Alfa                  low          37      white
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                                40/98
+                     Confidentiality edit – Example (4)
+
+Take a sample of records from the microdata file (say a 10% sample)
+prova prova prova prova
+               N       Employee            Company               Education   Salary   Race
+               1       John                Alfa                  very high    201     black
+               2       Jim                 Alfa                  high         103     white
+               3       Sue                 Alfa                  high          77     black
+               4       Pete                Alfa                  high         61      white
+               5       Ramesh              Alfa                  medium        72     white
+               6       Dante               Alfa                  low          103     white
+               7       Virgil              Alfa                  low           91     black
+               8       Wanda               Alfa                  low          84      white
+               9       Stan                Alfa                  low          75      white
+               10      Irmi                Alfa                  low          62      black
+               11      Renee               Alfa                  low          58      white
+               12      Virginia            Alfa                  low          56      black
+               13      Mary                Alfa                  low          54      black
+               14      Kim                 Alfa                  low          52      white
+               15      Tom                 Alfa                  low          55      black
+               16      Ken                 Alfa                  low          48      white
+               17      Mike                Alfa                  low          48      white
+               18      Joe                 Alfa                  low          41      black
+               19      Jeff                Alfa                  low          44      black
+               20      Nancy               Alfa                  low          37      white
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                                40/98
+                     Confidentiality edit – Example (4)
+
+Since we need tables by company and education level, we find a
+match in some other company on the other variables
+               N       Employee            Company               Education   Salary   Race
+               1       John                Alfa                  very high    201     black
+               2       Jim                 Alfa                  high         103     white
+               3       Sue                 Alfa                  high          77     black
+               4       Alonso              Alfa                  very high     61     white
+               5       Ramesh              Alfa                  medium        72     white
+               6       Dante               Alfa                  low          103     white
+               7       Virgil              Alfa                  low           91     black
+               8       Wanda               Alfa                  low          84      white
+               9       Stan                Alfa                  low          75      white
+               10      Irmi                Alfa                  low          62      black
+               11      Renee               Alfa                  low          58      white
+               12      Virginia            Alfa                  low          56      black
+               13      Mary                Alfa                  low          54      black
+               14      Kim                 Alfa                  low          52      white
+               15      Tom                 Alfa                  low          55      black
+               16      Ken                 Alfa                  low          48      white
+               17      George              Alfa                  medium        48     white
+               18      Joe                 Alfa                  low          41      black
+               19      Jeff                Alfa                  low          44      black
+               20      Nancy               Alfa                  low          37      white
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                                40/98
+                     Confidentiality edit – Example (4)
+
+Part of the randomly selected 10% sample from other companies
+match records in company Alfa
+               N       Employee            Company               Education   Salary   Race
+               1       John                Alfa                  very high    201     black
+               2       Jim                 Alfa                  high         103     white
+               3       Sue                 Alfa                  high          77     black
+               4       Alonso              Alfa                  very high     61     white
+               5       Ramesh              Alfa                  medium        72     white
+               6       Dante               Alfa                  low          103     white
+               7       Virgil              Alfa                  low           91     black
+               8       Wanda               Alfa                  low          84      white
+               9       Stan                Alfa                  low          75      white
+               10      Irmi                Alfa                  low          62      black
+               11      Renee               Alfa                  low          58      white
+               12      June                Alfa                  high         56      black
+               13      Mary                Alfa                  low          54      black
+               14      Kim                 Alfa                  low          52      white
+               15      Tom                 Alfa                  low          55      black
+               16      Ken                 Alfa                  low          48      white
+               17      George              Alfa                  medium        48     white
+               18      Joe                 Alfa                  low          41      black
+               19      Jeff                Alfa                  low          44      black
+               20      Heather             Alfa                  low          37      white
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                                40/98
+                    Confidentiality edit – Example (5)
+
+                                               Education level (original)
+               Company             Low        Medium High Very High         Total
+                 Alfa                 15                1        3     1      20
+                 Beta                 20               10       10    15      55
+                Gamma                  3               10       10     2      25
+                 Delta                12               14        7     2      35
+                  Total               50               35       30    20     135
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                       41/98
+                    Confidentiality edit – Example (5)
+
+                                               Education level (original)
+               Company             Low        Medium High Very High         Total
+                 Alfa                 15                1        3     1      20
+                 Beta                 20               10       10    15      55
+                Gamma                  3               10       10     2      25
+                 Delta                12               14        7     2      35
+                  Total               50               35       30    20     135
+
+                                   Education level (with confidentiality edit)
+              Company             Low Medium High Very High               Total
+                 Alfa                13                2         3     2      20
+                 Beta                20               10        10    15      55
+                Gamma                 4                9        10     2      25
+                 Delta               13               14         7     1      35
+                  Total              50               35        30    20     135
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                       41/98
+      Macrodata Disclosure Protection Techniques:
+              Tables of Magnitude Data
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   42/98
+                                                  Outline
+
+ • Statistical DBMS
+
+
+ • Macrodata protection
+         ◦ Count and frequency tables
+         ◦ Magnitude tables
+
+
+ • Microdata protection
+         ◦ Masking techniques
+         ◦ Synthetic techniques
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   43/98
+          Protection of tables of magnitude data – 1
+
+ • Magnitude data are generally nonnegative quantities reported in
+   surveys or censuses
+
+ • The distribution of these values is likely to be skewed
+
+ • Disclosure limitation techniques focus on preventing precise
+   estimation of the values for outliers
+
+ • Sampling is less likely to provide protection
+
+ • The units that are most visible because of their size do not receive
+   any protection from sampling
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)       44/98
+          Protection of tables of magnitude data – 2
+
+1. Identify sensitive cells
+         ◦ p-percent
+         ◦ pq
+
+         ◦ (n,k)
+
+
+2. Protect sensitive cells
+         ◦ Suppression
+
+
+3. Verify result
+         ◦ Audit
+
+         ◦ Information loss
+         ◦ (Parameters are not disclosed)
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   45/98
+                                      Suppression rules
+
+ • Primary suppression rules determine whether a cell could reveal
+   individual respondent information
+
+ • Such cells are considered sensitive and cannot be released
+
+ • The most common suppression rules are:
+         ◦ the p-percent rule
+
+         ◦ the pq rule
+
+         ◦ the (n,k) rule
+
+ • These rules are used to identify sensitive cells by verifying
+   whether it is enough difficult for one respondent to estimate the
+   value reported by another respondent too closely
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)          46/98
+                 Primary suppression rule: p-percent
+
+ • Disclosure of magnitude data occurs if the user can estimate the
+   contribution of a respondent too accurately
+
+ • A cell is sensitive, if upper and lower estimates for the
+   respondent’s value are closer to the reported value than a
+   pre-specified percentage p
+
+ • Formally, a cell is protected if
+                                                    N
+                                                                  p
+                                                   ∑      xi ≥       x1
+                                                 i=c+2           100
+
+     x1 , x2 , . . . , xN : respondent’s value in decreasing order
+     c: size of a coalition of respondents interested in estimating x1
+
+ • The largest value x1 is the most exposed
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)             47/98
+    Primary suppression rule: p-percent – Example
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+
+ • The most sensitive value is Alice’s, because it is easier to estimate
+
+ • If Alice’s income cannot be estimated accurately, the income of
+   the other citizens is protected
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)        48/98
+    Primary suppression rule: p-percent – Example
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+
+ • Which is the coalition of c = 3 respondents that can better
+   estimate Alice’s income?
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      48/98
+    Primary suppression rule: p-percent – Example
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+
+ • Which is the coalition of c = 3 respondents that can better
+   estimate Alice’s income?
+   Bob, Carol, David, whose total income is 130K
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      48/98
+    Primary suppression rule: p-percent – Example
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+
+ • Which is the coalition of c = 3 respondents that can better
+   estimate Alice’s income?
+   Bob, Carol, David, whose total income is 130K
+   can estimate that Alice’s income is between 80K and 120K
+         ◦ ≥80K since it is higher than Bob’s
+         ◦ ≤120K (=250K−130K)
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      48/98
+    Primary suppression rule: p-percent – Example
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+
+ • Which is the coalition of c = 3 respondents that can better
+   estimate Alice’s income?
+   Bob, Carol, David, whose total income is 130K
+   can estimate that Alice’s income is between 80K and 120K
+   =⇒ sensitive for any p≥20
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      48/98
+    Primary suppression rule: p-percent – Example
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+
+ • Which is the coalition of c = 3 respondents that can better
+   estimate Alice’s income? Bob, Carol, David
+
+ • Formally, the cell is protected for any p such that:
+                                 N
+                                          p
+                                 ∑ xi ≥ 100 x1
+                               i=c+2
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      48/98
+    Primary suppression rule: p-percent – Example
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+
+ • Which is the coalition of c = 3 respondents that can better
+   estimate Alice’s income? Bob, Carol, David
+
+ • Formally, the cell is protected for any p such that:
+                               N
+                                        p
+                               ∑ xi ≥ 100 Alice
+                             i=3+2
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      48/98
+    Primary suppression rule: p-percent – Example
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+
+ • Which is the coalition of c = 3 respondents that can better
+   estimate Alice’s income? Bob, Carol, David
+
+ • Formally, the cell is protected for any p such that:
+                                N
+                                        p
+                               ∑ xi ≥ 100 100
+                               i=5
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      48/98
+    Primary suppression rule: p-percent – Example
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+
+ • Which is the coalition of c = 3 respondents that can better
+   estimate Alice’s income? Bob, Carol, David
+
+ • Formally, the cell is protected for any p such that:
+                                                                 4
+                                                  p ≤ Cell − ∑ xi
+                                                                i=1
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)         48/98
+    Primary suppression rule: p-percent – Example
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+
+ • Which is the coalition of c = 3 respondents that can better
+   estimate Alice’s income? Bob, Carol, David
+
+ • Formally, the cell is protected for any p such that:
+                  p ≤ Cell − (Alice + Bob + Carol + David)
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      48/98
+    Primary suppression rule: p-percent – Example
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+
+ • Which is the coalition of c = 3 respondents that can better
+   estimate Alice’s income? Bob, Carol, David
+
+ • Formally, the cell is protected for any p such that:
+                        p ≤ 250 − (100 + 80 + 30 + 20)
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      48/98
+    Primary suppression rule: p-percent – Example
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+
+ • Which is the coalition of c = 3 respondents that can better
+   estimate Alice’s income? Bob, Carol, David
+
+ • Formally, the cell is protected for any p such that:
+                                   p ≤ 20
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      48/98
+                     Primary suppression rule: pq (1)
+
+ • In the p-percent rule, we assumed that there was no prior
+   knowledge about respondent’s values
+
+ • Agencies should not make this assumption
+
+ • In the pq rule, agencies can specify how much prior knowledge
+   there is by assigning a value q which represents how accurately
+   respondents can estimate another respondent’s value before any
+   data are published (p < q < 100)
+
+ • Parameter q represents the error in estimation before the cell is
+   published
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)          49/98
+                     Primary suppression rule: pq (2)
+
+ • Formally, a cell is protected if
+
+                                               q N            p
+                                                    ∑   xi ≥     x1
+                                              100 i=c+2      100
+
+     x1 , x2 , . . . , xN : respondent’s value in decreasing order
+     c: size of a coalition of respondents interested in estimating x1
+
+ • The pq rule reduces to the p-percent rule when q=100 (i.e., no
+   estimate ability)
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)            50/98
+        Primary suppression rule: pq – Example (1)
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+ • Assume q=80% to represent how accurately respondents can
+   estimate another respondent’s value before any data publishing
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)       51/98
+        Primary suppression rule: pq – Example (1)
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+ • Assume q=80% to represent how accurately respondents can
+   estimate another respondent’s value before any data publishing
+ • For Alice’s income this implies range [20,180]
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)       51/98
+        Primary suppression rule: pq – Example (2)
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      52/98
+        Primary suppression rule: pq – Example (2)
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+ • The coalition of c = 3 respondents that can better estimate Alice’s
+   income is Bob, Carol, David
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      52/98
+        Primary suppression rule: pq – Example (2)
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+ • The coalition of c = 3 respondents that can better estimate Alice’s
+   income is Bob, Carol, David
+ • The coalition can reduce uncertainty about Alice’s income from
+   [20K-180K] to [80K-120K]
+         ◦ ≥80K since it is higher than Bob’s
+         ◦ ≤120K (=250K−130K)
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)       52/98
+        Primary suppression rule: pq – Example (2)
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+ • Assuming q = 80% and c = 3
+ • Formally, the cell is protected for any p such that:
+                              q N            p
+                                   ∑   xi ≥     x1
+                             100 i=c+2      100
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      52/98
+        Primary suppression rule: pq – Example (2)
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+ • Assuming q = 80% and c = 3
+ • Formally, the cell is protected for any p such that:
+                            80 N           p
+                                 ∑   xi ≥     Alice
+                           100 i=3+2      100
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      52/98
+        Primary suppression rule: pq – Example (2)
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+ • Assuming q = 80% and c = 3
+ • Formally, the cell is protected for any p such that:
+                              80 N         p
+                                 ∑   xi ≥     100
+                             100 i=5      100
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      52/98
+        Primary suppression rule: pq – Example (2)
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+ • Assuming q = 80% and c = 3
+ • Formally, the cell is protected for any p such that:
+                                 80 N
+                                     ∑ xi ≥ p
+                                100 i=5
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      52/98
+        Primary suppression rule: pq – Example (2)
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+ • Assuming q = 80% and c = 3
+ • Formally, the cell is protected for any p such that:
+                                 N
+                                          p
+                                 ∑ xi ≥ 0.80
+                                i=5
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      52/98
+        Primary suppression rule: pq – Example (2)
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+ • Assuming q = 80% and c = 3
+ • Formally, the cell is protected for any p such that:
+                                                           4
+                                                                  p
+                                               Cell − ∑ xi ≥
+                                                          i=1   0.80
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)          52/98
+        Primary suppression rule: pq – Example (2)
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+ • Assuming q = 80% and c = 3
+ • Formally, the cell is protected for any p such that:
+                                                                    p
+                          Cell − (Alice + Bob + Carol + David) ≥
+                                                                   0.80
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)             52/98
+        Primary suppression rule: pq – Example (2)
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+ • Assuming q = 80% and c = 3
+ • Formally, the cell is protected for any p such that:
+                                                    p
+                     250 − (100 + 80 + 30 + 20) ≥
+                                                   0.80
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      52/98
+        Primary suppression rule: pq – Example (2)
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+ • Assuming q = 80% and c = 3
+ • Formally, the cell is protected for any p such that:
+                                         p
+                                 20 ≥
+                                       0.80
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      52/98
+        Primary suppression rule: pq – Example (2)
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+ • Assuming q = 80% and c = 3
+ • Formally, the cell is protected for any p such that:
+                                                         p ≤ 16
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      52/98
+                       Primary suppression rule: (n,k)
+
+ • Regardless of the number of respondents in a cell, if a small
+   number (n or fewer) of these respondents contribute a large
+   percentage (k% or more) of the total cell value, the cell is
+   considered sensitive
+
+ • Intuitive rule: if a cell is dominated by one respondent, the
+   published total is an upper estimate for her value
+
+ • n selected to be larger than the number of any suspected
+   coalitions
+
+ • Many agencies use an (n,k) rule with n = 1 or n = 2
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      53/98
+          Primary suppression rule: (n,k) – Example
+
+ • Consider the respondents that contribute to the total income in a
+   city, which is equal to 250K, to be (in decreasing order)
+         ◦   Alice: 100K
+         ◦   Bob: 80K
+         ◦   Carol: 30K
+         ◦   David: 20K
+         ◦   Eve: 10K
+         ◦   Frank: 3K
+         ◦   ...
+
+ • Assuming n=2 and k=70, the cell is considered sensitive
+   The income of Alice and Bob (100K+80K=180K) represents the
+   72% of the cell value (250K)
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      54/98
+               Protection of tables of magnitude data
+
+1. Identify sensitive cells
+         ◦ p-percent
+         ◦ pq
+
+         ◦ (n,k)
+
+
+2. Protect sensitive cells
+         ◦ Suppression
+
+
+3. Verify result
+         ◦ Audit
+
+         ◦ Information loss
+         ◦ (Parameters are not disclosed)
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   55/98
+                           Secondary suppression (1)
+
+ • Once sensitive cells have been identified, there are two options:
+         ◦ restructure the table and collapse cells until no sensitive cells
+           remain
+
+         ◦ cell suppression: do not publish sensitive cells (primary
+           suppressions) and remove other cells (complementary
+           suppressions)
+
+ • An administrative way to avoid cell suppression consists in
+   obtaining written permission from respondents
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  56/98
+                           Secondary suppression (2)
+
+ • Other non-sensitive cells must be selected for suppression to
+   ensure that the respondent level data in sensitive cells cannot be
+   estimated too accurately
+         ◦ a respondent’s data cannot be estimated too closely
+
+ • Sensitive cells might be leaked due to the fact that:
+         ◦ implicitly published unions of suppressed cells may be sensitive
+           according to the sensitivity rule adopted
+
+         ◦ the row and column equations represented by the published table
+           may be solved, and the value for a suppressed cell estimated too
+           accurately
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                 57/98
+                           Secondary suppression (3)
+
+ • Any complementary suppression is acceptable as long as the
+   sensitive cells are protected
+
+ • For small tables the selection of complementary cells can be done
+   manually
+
+ • Data analysts know which cells are of greatest interest (and
+   should not be used for complementary suppression)
+
+ • Manual selection of complementary cells is acceptable as long as
+   the resulting table provides sufficient protection to sensitive cells
+
+ • An automated audit should be applied to ensure this is true
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)         58/98
+               Protection of tables of magnitude data
+
+1. Identify sensitive cells
+         ◦ p-percent
+         ◦ pq
+
+         ◦ (n,k)
+
+
+2. Protect sensitive cells
+         ◦ Suppression
+
+
+3. Verify result
+         ◦ Audit
+
+         ◦ Information loss
+         ◦ (Parameters are not disclosed)
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   59/98
+                                                     Audit
+
+ • If totals are published the sum of the (primary or secondary)
+   suppressed cells can be derived
+
+ • Apply the sensitivity rule to these sums to ensure that they are not
+   sensitive
+         ◦ Rows and columns can be seen as a large system of linear
+           equations
+         ◦ Estimate a lower and upper bound of each suppressed cell using
+           linear programming
+         ◦ If bounds are too close to the original value, the cell is sensitive
+
+ • Simple for small tables, possibly computationally intractable for
+   large tables
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                     60/98
+                                        Information loss
+
+ • The selection of the complementary cells should result in
+   minimum information loss
+
+ • There is no unique definition of information loss
+
+ • For instance, we can try to minimize:
+         ◦ the sum of the suppressed values (a large number of cells with
+           small values can be suppressed)
+
+         ◦ the total number of suppressed cells
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)               61/98
+                       Information in parameter values
+
+While the suppression rules can be published, parameter values
+should be kept confidential
+
+E XAMPLE: Assume that:
+  • p-percent rule is used with p=20% and the same value is used for
+    complementary suppression
+  • a cell x with value 100 has been suppressed along with other
+    suitable complementary cells
+  • by solving a system of linear equations, the upper bound is 120
+    and the lower bound is 80: 80≤ x ≤120 =⇒ x =100
+Once the value for one suppressed cell has been uniquely determined,
+other cell values can easily be derived
+
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)        62/98
+  Protection of tables of magnitude data – Example
+
+                    Employees by sex and department
+               Sex    Dept1 Dept2 Dept3 Dept4       Total
+             Female        1      2       2     1      6
+              Male         3      2       0     2      7
+              Total        4      4       2     3     13
+              Total   6300 11400 4200        8000 29900
+                 Monthly income by sex and department
+              Sex     Dept1 Dept2 Dept3 Dept4       Total
+             Female    1800   5600    4200   2500 14100
+              Male     4500   5800        0  5500 15800
+              Total    6300 11400     4200   8000 29900
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   63/98
+   Protection of tables of magnitude data – Example
+
+                     Employees by sex and department
+                Sex    Dept1 Dept2 Dept3 Dept4       Total
+              Female        1      2       2     1      6
+               Male         3      2       0     2      7
+               Total        4      4       2     3     13
+               Total   6300 11400 4200        8000 29900
+                  Monthly income by sex and department
+               Sex     Dept1 Dept2 Dept3 Dept4       Total
+              Female    1800   5600    4200   2500 14100
+               Male     4500   5800        0  5500 15800
+               Total    6300 11400     4200   8000 29900
+
+(n,k) rule with n=1, k=90 ⇒ a cell is sensitive if one respondent
+contributes more than 90%
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      63/98
+   Protection of tables of magnitude data – Example
+
+                     Employees by sex and department
+                Sex    Dept1 Dept2 Dept3 Dept4       Total
+              Female        1      2       2     1      6
+               Male         3      2       0     2      7
+               Total        4      4       2     3     13
+               Total   6300 11400 4200        8000 29900
+                  Monthly income by sex and department
+               Sex     Dept1 Dept2 Dept3 Dept4       Total
+              Female    1800   5600    4200   2500 14100
+               Male     4500   5800        0  5500 15800
+               Total    6300 11400     4200   8000 29900
+
+(n,k) rule with n=1, k=90 ⇒ a cell is sensitive if one respondent
+contributes more than 90%
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      63/98
+   Protection of tables of magnitude data – Example
+
+                     Employees by sex and department
+                Sex    Dept1 Dept2 Dept3 Dept4       Total
+              Female        1      2       2     1      6
+               Male         3      2       0     2      7
+               Total        4      4       2     3     13
+               Total   6300 11400 4200        8000 29900
+                  Monthly income by sex and department
+               Sex     Dept1 Dept2 Dept3 Dept4       Total
+              Female      D1   5600    4200     D2 14100
+               Male     4500   5800        0  5500 15800
+               Total    6300 11400     4200   8000 29900
+
+(n,k) rule with n=1, k=90 ⇒ a cell is sensitive if one respondent
+contributes more than 90%
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      63/98
+   Protection of tables of magnitude data – Example
+
+                     Employees by sex and department
+                Sex    Dept1 Dept2 Dept3 Dept4       Total
+              Female        1      2       2     1       6
+               Male         3      2       0     2       7
+               Total        4      4       2     3     13
+               Total    6300 11400 4200       8000 29900
+                  Monthly income by sex and department
+               Sex     Dept1 Dept2 Dept3 Dept4       Total
+              Female      D1   5600    4200     D2 14100
+               Male       D3   5800       0     D4 15800
+               Total    6300 11400     4200   8000 29900
+
+Secondary suppression
+
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   63/98
+                                             Microdata
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   64/98
+                                                  Outline
+
+ • Statistical DBMS
+
+
+ • Macrodata protection
+         ◦ Count and frequency tables
+         ◦ Magnitude tables
+
+
+ • Microdata protection
+         ◦ Masking techniques
+         ◦ Synthetic techniques
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   65/98
+                               Macrodata vs microdata
+
+ • In the past data were mainly released in tabular form (macrodata)
+   and through statistical DBMS
+
+ • Today many situations require that the specific stored data
+   themselves, called microdata, be released
+         ◦ increased flexibility and availability of information for recipients
+
+ • Microdata are subject to a greater risk of privacy breaches (linking
+   attacks)
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                     66/98
+                                           Microdata (1)
+
+ • Many situations require today that the specific stored data
+   themselves (microdata) be released
+
+ • The advantage of releasing microdata is an increased flexibility
+   and availability of information for the recipients
+
+ • To protect the anonymity of the respondents, data holders often
+   remove or encrypt explicit identifiers such as names, addresses,
+   and phone numbers
+
+ • De-identifying data, however, provides no guarantee of anonymity
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)         67/98
+                                           Microdata (2)
+
+ • Released information often contains other quasi-identifying data
+   (e.g., race, birth date, sex, and ZIP code) that can be linked to
+   publicly available information to reidentify respondents
+ • The data recipients can determine (or restrict uncertainty) to
+   which respondent some pieces of released data refer
+ • This has created an increasing demand to devote resources for an
+   adequate protection of sensitive data
+ • The microdata protection techniques follow two main strategies:
+         ◦ reduce the information content
+         ◦ change the data in such a way that the information content is
+           maintained as much as possible
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)              68/98
+                             Disclosure risk – Example
+
+  SSN Name Race Date of birth Sex ZIP                                   Marital status Disease
+                      asian     64/04/12             F          94142   divorced            hypertension
+                      asian     64/09/13             F          94141   divorced            obesity
+                      asian     64/04/15             F          94139   married             chest pain
+                      asian     63/03/13             M          94139   married             obesity
+                      asian     63/03/18             M          94139   married             short breath
+                      black     64/09/27             F          94138   single              short breath
+                      black     64/09/27             F          94139   single              obesity
+                      white     64/09/27             F          94139   single              chest pain
+                      white     64/09/27             F          94141   widow               short breath
+
+
+     Name               Address                   City             ZIP        DOB        Sex       Status
+ ................ ................ ................                ........ ........ ........ ................
+ ................ ................ ................                ........ ........ ........ ................
+ Sue J. Doe 900 Market St. San Francisco                          94142 64/04/12        F      divorced
+ ................ ................ ................                ........ ........ ........ ................
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                                                    69/98
+          Microdata disclosure protection techniques
+
+To limit the disclosure risk, the following procedures should be applied:
+
+  • including data from a sample of the whole population only
+
+  • removal of identifiers
+
+  • limiting geographic details
+
+  • limiting the number of variables
+
+
+                             Limiting geographic details
+
+  • Geographic location is a characteristic that:
+          ◦ often appears in microdata
+          ◦ can be used for re-identifying respondents
+
+  • It is therefore important limiting geographic details
+E XAMPLE:
+  • The Census Bureau will not identify any geographic region with
+    less than 100,000 persons in the sampling (250,000 in the ’80)
+
+  • Microdata contain contextual variables that describe the area in
+    which a respondent resides but do not identify that area (e.g.,
+    average temperature of an area)
+
+
+ Classification of microdata protection techniques (1)
+
+These techniques are based on the principle that reidentification can
+be counteracted by reducing the amount of released information:
+  • masking the data (e.g., by not releasing or by perturbing their
+    values)
+
+  • releasing plausible but made up values instead of the real ones
+
+According to this principle, the microdata protection techniques can be
+classified into two main categories:
+
+  • masking techniques
+
+  • synthetic data generation techniques
+
+ Classification of microdata protection techniques (2)
+
+They can operate on different data types:
+
+  • Continuous. An attribute is said to be continuous if it is numerical
+    and arithmetic operations are defined on it
+      E XAMPLE: date of birth, temperature, . . .
+
+  • Categorical. An attribute is said to be categorical if it can assume
+    a limited and specified set of values and arithmetic operations do
+    not have sense on it
+      E XAMPLE: marital status, race, . . .
+
+
+       Microdata Disclosure Protection Techniques:
+                  Masking Techniques
+
+
+                                                  Outline
+
+ • Statistical DBMS
+
+
+ • Macrodata protection
+         ◦ Count and frequency tables
+         ◦ Magnitude tables
+
+
+ • Microdata protection
+         ◦ Masking techniques
+         ◦ Synthetic techniques
+
+
+                                    Masking techniques
+
+ • The original data are transformed to produce new data that are
+   valid for statistical analysis and such that they preserve the
+   confidentiality of respondents
+
+ • They are classified as:
+         ◦ non-perturbative, the original data are not modified, but some data
+           are suppressed and/or some details are removed
+
+         ◦ perturbative, the original data are modified
+
+
+
+                 Masking techniques – Classification
+                                      Non-perturbative
+                          Technique        Continuous           Categorical
+                       Sampling                yes                  yes
+                       Local suppression       yes                  yes
+                       Global recoding         yes                  yes
+                       Top-coding              yes                  yes
+                       Bottom-coding           yes                  yes
+                       Generalization          yes                  yes
+                                        Perturbative
+                          Technique        Continuous           Categorical
+                      Resampling               yes                  no
+                      Lossy compression        yes                  no
+                      Rounding                 yes                  no
+                      PRAM                      no                  yes
+                      MASSC                     no                  yes
+                      Random noise             yes                  yes
+                      Swapping                 yes                  yes
+                      Rank swapping            yes                  yes
+                      Micro-aggregation        yes                  yes
+
+
+                                                Sampling
+
+ • The protected microdata table is obtained as a sample of the
+   original microdata table
+
+ • Since there is uncertainty about whether or not a specific
+   respondent is in the sample, reidentification risk decreases
+
+
+                                   Sampling – Example
+
+
+      SSN Name Race                    DoB         Sex      ZIP   MarStat Holidays Income
+                          Asian     64/09/27        F     94139   Divorced   13     260
+                          Asian     64/09/30        F     94139   Divorced   01     170
+                          Asian     64/04/18        M     94139   Married    40     200
+                          Asian     64/04/15        M     94139   Married    17     280
+                          Asian     64/03/09        M     94138   Married    10     190
+                          Black     63/03/13        M     94138   Married    02     190
+                          Black     63/03/18        M     94138   Married    13     185
+                          Black     64/03/18        M     94141   Married    60     290
+                          Black     64/09/13        F     94141   Married    15     200
+                          Black     64/09/07        F     94141   Married    60     290
+                          White     61/05/02        M     94138   Single     22     140
+                          White     61/05/14        M     94138   Single     17     170
+                          White     61/05/08        M     94138   Single     10     300
+                          White     61/09/15        F     94142   Widow      15     200
+
+
+                                    Sampling – Example
+
+
+       SSN Name Race                    DoB         Sex      ZIP   MarStat Holidays Income
+                           Asian     64/09/27        F     94139   Divorced   13     260
+                           Asian     64/09/30        F     94139   Divorced   01     170
+                           Asian     64/04/18        M     94139   Married    40     200
+                           Asian     64/04/15        M     94139   Married    17     280
+                           Asian     64/03/09        M     94138   Married    10     190
+                           Black     63/03/13        M     94138   Married    02     190
+                           Black     63/03/18        M     94138   Married    13     185
+                           Black     64/03/18        M     94141   Married    60     290
+                           Black     64/09/13        F     94141   Married    15     200
+                           Black     64/09/07        F     94141   Married    60     290
+                           White     61/05/02        M     94138   Single     22     140
+                           White     61/05/14        M     94138   Single     17     170
+                           White     61/05/08        M     94138   Single     10     300
+                           White     61/09/15        F     94142   Widow      15     200
+
+Compute a sample of 3 tuples out of 14
+
+
+                                   Sampling – Example
+
+
+      SSN Name Race                    DoB         Sex      ZIP   MarStat Holidays Income
+                          Asian 64/09/27             F    94139 Divorced    13      260
+
+
+
+
+                          Black 64/09/13             F    94141 Married     15      200
+
+
+
+
+                          White 61/09/15             F    94142 Widow       15      200
+
+
+
+                                      Local suppression
+
+ • It suppresses the value of an attribute (i.e., it replaces it with a
+   missing value) thus limiting the possibilities of analysis
+
+ • This technique blanks out some attribute values (sensitive cells)
+   that are likely to contribute significantly to the disclosure risk of the
+   tuple involved
+
+
+                          Local suppression – Example
+
+
+       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
+                           Asian     64/09/27        F      94139      Divorced   13     260
+                           Asian     64/09/30        F      94139      Divorced    1     170
+                           Asian     64/04/18        M      94139      Married    40     200
+                           Asian     64/04/15        M      94139      Married    17     280
+                           Black     63/03/13        M      94138      Married     2     190
+                           Black     63/03/18        M      94138      Married    13     185
+                           Black     64/09/13        F      94141      Married    15     200
+                           Black     64/09/07        F      94141      Married    60     290
+                           White     61/05/14        M      94138      Single     17     170
+                           White     61/05/08        M      94138      Single     10     300
+                           White     61/09/15        F      94142      Widow      15     200
+                          White 61/09/15              F     94142 Widow           5      200
+
+Suppress cells that contribute significantly to re-identification
+
+
+                          Local suppression – Example
+
+
+       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
+                           Asian     64/09/27        F      94139      Divorced   13     260
+                           Asian     64/09/30        F      94139      Divorced    1     170
+                           Asian     64/04/18        M      94139      Married    40     200
+                           Asian     64/04/15        M      94139      Married    17     280
+                           Black     63/03/13        M      94138      Married     2     190
+                           Black     63/03/18        M      94138      Married    13     185
+                           Black     64/09/13        F      94141      Married    15     200
+                           Black     64/09/07        F      94141      Married    60     290
+                           White     61/05/14        M      94138      Single     17     170
+                           White     61/05/08        M      94138      Single     10     300
+                           White     61/09/15        F      94142      Widow      15     200
+                          White 61/09/15              F     94142 Widow           15     200
+
+Suppress cells that contribute significantly to re-identification
+
+                         Local suppression – Example
+
+
+      SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
+                          Asian     64/09/27        F      94139      Divorced   13     260
+                          Asian     64/09/30        F      94139      Divorced    1     170
+                          Asian     64/04/18        M      94139      Married    40     200
+                          Asian     64/04/15        M      94139      Married    17     280
+                          Black     63/03/13        M      94138      Married     2     190
+                          Black     63/03/18        M      94138      Married    13     185
+                          Black     64/09/13        F      94141      Married    15     200
+                          Black     64/09/07        F      94141      Married    60     290
+                          White     61/05/14        M      94138      Single     17     170
+                          White     61/05/08        M      94138      Single     10     300
+                          White     61/09/15        F                            15     200
+                         White 61/09/15              F     94142 Widow           5      200
+
+
+
+                                        Global recoding
+
+ • The domain of an attribute is partitioned into disjoint intervals,
+   usually of the same width, and each interval is associated with a
+   label
+
+ • The protected microdata table is obtained by replacing the values
+   of the attribute with the label associated with the corresponding
+   interval
+
+
+
+                            Global recoding – Example
+
+
+       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
+                           Asian     64/09/27        F      94139      Divorced   13     260
+                           Asian     64/09/30        F      94139      Divorced    1     170
+                           Asian     64/04/18        M      94139      Married    40     200
+                           Asian     64/04/15        M      94139      Married    17     280
+                           Black     63/03/13        M      94138      Married     2     190
+                           Black     63/03/18        M      94138      Married    13     185
+                           Black     64/09/13        F      94141      Married    15     200
+                           Black     64/09/07        F      94141      Married    60     290
+                           White     61/05/14        M      94138      Single     17     170
+                           White     61/05/08        M      94138      Single     10     300
+                           White     61/09/15        F      94142      Widow      15     200
+                          White 61/09/15              F     94142 Widow           5      200
+
+Global recoding on Income:
+[150-199]: low, [200-289]: medium, [290-310] high
+
+
+                            Global recoding – Example
+
+
+       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
+                           Asian     64/09/27        F      94139      Divorced   13     260
+                           Asian     64/09/30        F      94139      Divorced    1     170
+                           Asian     64/04/18        M      94139      Married    40     200
+                           Asian     64/04/15        M      94139      Married    17     280
+                           Black     63/03/13        M      94138      Married     2     190
+                           Black     63/03/18        M      94138      Married    13     185
+                           Black     64/09/13        F      94141      Married    15     200
+                           Black     64/09/07        F      94141      Married    60     290
+                           White     61/05/14        M      94138      Single     17     170
+                           White     61/05/08        M      94138      Single     10     300
+                           White     61/09/15        F      94142      Widow      15     200
+                          White 61/09/15              F     94142 Widow           5      200
+
+Global recoding on Income:
+[150-199]: low, [200-289]: medium, [290-310] high
+
+                           Global recoding – Example
+
+
+      SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
+                          Asian     64/09/27        F      94139      Divorced   13     med
+                          Asian     64/09/30        F      94139      Divorced    1     low
+                          Asian     64/04/18        M      94139      Married    40     med
+                          Asian     64/04/15        M      94139      Married    17     med
+                          Black     63/03/13        M      94138      Married     2     low
+                          Black     63/03/18        M      94138      Married    13     low
+                          Black     64/09/13        F      94141      Married    15     med
+                          Black     64/09/07        F      94141      Married    60     high
+                          White     61/05/14        M      94138      Single     17     low
+                          White     61/05/08        M      94138      Single     10     high
+                          White     61/09/15        F      94142      Widow      15     med
+                         White 61/09/15              F     94142 Widow           5      200
+
+
+                        Top-coding and bottom-coding
+
+ • Top-coding
+         ◦ It defines an upper limit (top-code) for each attribute to be
+           protected. Any value greater than it is replaced with a flag that tells
+           the user what the top-code is and that this value exceeds it
+
+         ◦ It can be applied to categorical attributes that can be linearly
+           ordered as well as to continuous attributes
+
+ • Bottom-coding
+         ◦ It defines a lower limit (bottom-code) for each attribute to be
+           protected. Any value lower than it is replaced with a flag that tells
+           the user what the bottom-code is and that this value is less than it
+
+         ◦ It can be applied to categorical attributes that can be linearly
+           ordered as well as to continuous attributes
+
+            Top-coding and bottom-coding – Example
+
+
+       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
+                           Asian     64/09/27        F      94139      Divorced   13     260
+                           Asian     64/09/30        F      94139      Divorced    1     170
+                           Asian     64/04/18        M      94139      Married    40     200
+                           Asian     64/04/15        M      94139      Married    17     280
+                           Black     63/03/13        M      94138      Married     2     190
+                           Black     63/03/18        M      94138      Married    13     185
+                           Black     64/09/13        F      94141      Married    15     200
+                           Black     64/09/07        F      94141      Married    60     290
+                           White     61/05/14        M      94138      Single     17     170
+                           White     61/05/08        M      94138      Single     10     300
+                           White     61/09/15        F      94142      Widow      15     200
+                          White 61/09/15              F     94142 Widow           5      200
+
+Top-coding on Holidays for values higher than 30
+Bottom-coding on Holidays for values lower than 10
+
+
+            Top-coding and bottom-coding – Example
+
+
+       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
+                           Asian     64/09/27        F      94139      Divorced   13     260
+                           Asian     64/09/30        F      94139      Divorced    1     170
+                           Asian     64/04/18        M      94139      Married    40     200
+                           Asian     64/04/15        M      94139      Married    17     280
+                           Black     63/03/13        M      94138      Married     2     190
+                           Black     63/03/18        M      94138      Married    13     185
+                           Black     64/09/13        F      94141      Married    15     200
+                           Black     64/09/07        F      94141      Married    60     290
+                           White     61/05/14        M      94138      Single     17     170
+                           White     61/05/08        M      94138      Single     10     300
+                           White     61/09/15        F      94142      Widow      15     200
+                          White 61/09/15              F     94142 Widow           5      200
+
+Top-coding on Holidays for values higher than 30
+Bottom-coding on Holidays for values lower than 10
+
+
+            Top-coding and bottom-coding – Example
+
+
+       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
+                           Asian     64/09/27        F      94139      Divorced    13    260
+                           Asian     64/09/30        F      94139      Divorced   <10    170
+                           Asian     64/04/18        M      94139      Married    >30    200
+                           Asian     64/04/15        M      94139      Married     17    280
+                           Black     63/03/13        M      94138      Married    <10    190
+                           Black     63/03/18        M      94138      Married     13    185
+                           Black     64/09/13        F      94141      Married     15    200
+                           Black     64/09/07        F      94141      Married    >30    290
+                           White     61/05/14        M      94138      Single     17     170
+                           White     61/05/08        M      94138      Single     10     300
+                           White     61/09/15        F      94142      Widow      15     200
+                          White 61/09/15              F     94142 Widow            5     200
+
+Top-coding on Holidays for values higher than 30
+Bottom-coding on Holidays for values lower than 10
+
+
+                                          Generalization
+
+ • Replaces values with more general values
+
+ • Typically based on the definition of a generalization hierarchy,
+   where the most general value is the root and the leaves
+   correspond to the most specific values
+
+ • Different generalized microdata tables can be built, depending on
+   the number of generalization steps applied
+
+
+                              Generalization – Example
+
+
+       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
+                           Asian     64/09/27        F      94139      Divorced   13     260
+                           Asian     64/09/30        F      94139      Divorced    1     170
+                           Asian     64/04/18        M      94139      Married    40     200
+                           Asian     64/04/15        M      94139      Married    17     280
+                           Black     63/03/13        M      94138      Married     2     190
+                           Black     63/03/18        M      94138      Married    13     185
+                           Black     64/09/13        F      94141      Married    15     200
+                           Black     64/09/07        F      94141      Married    60     290
+                           White     61/05/14        M      94138      Single     17     170
+                           White     61/05/08        M      94138      Single     10     300
+                           White     61/09/15        F      94142      Widow      15     200
+                          White 61/09/15              F     94142 Widow           5      200
+
+Generalize attribute DoB to the granularity of month
+
+
+                              Generalization – Example
+
+
+       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
+                           Asian     64/09/27        F      94139      Divorced   13     260
+                           Asian     64/09/30        F      94139      Divorced    1     170
+                           Asian     64/04/18        M      94139      Married    40     200
+                           Asian     64/04/15        M      94139      Married    17     280
+                           Black     63/03/13        M      94138      Married     2     190
+                           Black     63/03/18        M      94138      Married    13     185
+                           Black     64/09/13        F      94141      Married    15     200
+                           Black     64/09/07        F      94141      Married    60     290
+                           White     61/05/14        M      94138      Single     17     170
+                           White     61/05/08        M      94138      Single     10     300
+                           White     61/09/15        F      94142      Widow      15     200
+                          White 61/09/15              F     94142 Widow           5      200
+
+Generalize attribute DoB to the granularity of month
+
+                             Generalization – Example
+
+
+      SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
+                          Asian       64/09         F      94139      Divorced   13     260
+                          Asian       64/09         F      94139      Divorced    1     170
+                          Asian       64/04         M      94139      Married    40     200
+                          Asian       64/04         M      94139      Married    17     280
+                          Black       63/03         M      94138      Married     2     190
+                          Black       63/03         M      94138      Married    13     185
+                          Black       64/09         F      94141      Married    15     200
+                          Black       64/09         F      94141      Married    60     290
+                          White       61/05         M      94138      Single     17     170
+                          White       61/05         M      94138      Single     10     300
+                          White       61/09         F      94142      Widow      15     200
+                         White 61/09/15              F     94142 Widow           5      200
+
+
+
+                 Masking techniques – Classification
+                                      Non-perturbative
+                          Technique        Continuous           Categorical
+                       Sampling                yes                  yes
+                       Local suppression       yes                  yes
+                       Global recoding         yes                  yes
+                       Top-coding              yes                  yes
+                       Bottom-coding           yes                  yes
+                       Generalization          yes                  yes
+                                        Perturbative
+                          Technique        Continuous           Categorical
+                      Resampling               yes                  no
+                      Lossy compression        yes                  no
+                      Rounding                 yes                  no
+                      PRAM                      no                  yes
+                      MASSC                     no                  yes
+                      Random noise             yes                  yes
+                      Swapping                 yes                  yes
+                      Rank swapping            yes                  yes
+                      Micro-aggregation        yes                  yes
+
+                                          Random noise
+
+ • It perturbs a sensitive attribute by adding or by multiplying it with a
+   random variable with a given distribution
+
+ • It is necessary to decide whether or not to publish the
+   distribution(s) used to add noise to the data
+
+ • Publishing the distribution(s) might increase disclosure risk of the
+   data
+
+
+                              Random noise – Example
+
+
+ SSN Name Race                     DoB        Sex       ZIP      MarStat Holidays Noise Income
+                     Asian      64/09/27        F     94139      Divorced   13    +2     260
+                     Asian      64/09/30        F     94139      Divorced    1    +1     170
+                     Asian      64/04/18        M     94139      Married    40    -10    200
+                     Asian      64/04/15        M     94139      Married    17    +3     280
+                     Black      63/03/13        M     94138      Married     2    +5     190
+                     Black      63/03/18        M     94138      Married    13    +8     185
+                     Black      64/09/13        F     94141      Married    15    +4     200
+                     Black      64/09/07        F     94141      Married    60    -11    290
+                     White      61/05/14        M     94138      Single     17     -2    170
+                     White      61/05/08        M     94138      Single     10     -3    300
+                     White      61/09/15        F     94142      Widow      15    +3     200
+                     White 61/09/15             F     94142 Widow           5     200
+
+Additive noise over attribute Holidays (to preserve average)
+
+                              Random noise – Example
+
+
+ SSN Name Race                     DoB        Sex       ZIP      MarStat Holidays Noise Income
+                     Asian      64/09/27        F     94139      Divorced   13    +2     260
+                     Asian      64/09/30        F     94139      Divorced    1    +1     170
+                     Asian      64/04/18        M     94139      Married    40    -10    200
+                     Asian      64/04/15        M     94139      Married    17    +3     280
+                     Black      63/03/13        M     94138      Married     2    +5     190
+                     Black      63/03/18        M     94138      Married    13    +8     185
+                     Black      64/09/13        F     94141      Married    15    +4     200
+                     Black      64/09/07        F     94141      Married    60    -11    290
+                     White      61/05/14        M     94138      Single     17     -2    170
+                     White      61/05/08        M     94138      Single     10     -3    300
+                     White      61/09/15        F     94142      Widow      15    +3     200
+                     White 61/09/15             F     94142 Widow           5     200
+
+Additive noise over attribute Holidays (to preserve average)
+
+
+                              Random noise – Example
+
+
+ SSN Name Race                     DoB        Sex       ZIP      MarStat Holidays Noise Income
+                     Asian      64/09/27        F     94139      Divorced   15    +2     260
+                     Asian      64/09/30        F     94139      Divorced    2    +1     170
+                     Asian      64/04/18        M     94139      Married    30    -10    200
+                     Asian      64/04/15        M     94139      Married    20    +3     280
+                     Black      63/03/13        M     94138      Married     7    +5     190
+                     Black      63/03/18        M     94138      Married    21    +8     185
+                     Black      64/09/13        F     94141      Married    19    +4     200
+                     Black      64/09/07        F     94141      Married    49    -11    290
+                     White      61/05/14        M     94138      Single     15     -2    170
+                     White      61/05/08        M     94138      Single      7     -3    300
+                     White      61/09/15        F     94142      Widow      18    +3     200
+                     White 61/09/15             F     94142 Widow           5     200
+
+Additive noise over attribute Holidays (to preserve average)
+
+                                               Swapping
+
+ • A small percent of records are matched with other records in the
+   same file, perhaps in different geographic regions, on a set of
+   predetermined variables
+
+ • The values of all other variables on the file are then swapped
+   between the two records
+
+ • This technique reduces the risk of reidentification because it
+   introduces uncertainty about the true value of a respondentent’s
+   data
+
+
+                                   Swapping – Example
+
+
+       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
+                           Asian     64/09/27        F      94139      Divorced   13     260
+                           Asian     64/09/30        F      94139      Divorced    1     170
+                           Asian     64/04/18        M      94139      Married    40     200
+                           Asian     64/04/15        M      94139      Married    17     280
+                           Black     63/03/13        M      94138      Married     2     190
+                           Black     63/03/18        M      94138      Married    13     185
+                           Black     64/09/13        F      94141      Married    15     200
+                           Black     64/09/07        F      94141      Married    60     290
+                           White     61/05/14        M      94138      Single     17     170
+                           White     61/05/08        M      94138      Single     10     300
+                           White     61/09/15        F      94142      Widow      15     200
+                          White 61/09/15              F     94142 Widow           5      200
+
+Swap Holidays and Income for tuples with the same Sex and MarStat
+
+                                   Swapping – Example
+
+
+       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
+                           Asian     64/09/27        F      94139      Divorced   13     260
+                           Asian     64/09/30        F      94139      Divorced    1     170
+                           Asian     64/04/18        M      94139      Married    40     200
+                           Asian     64/04/15        M      94139      Married    17     280
+                           Black     63/03/13        M      94138      Married     2     190
+                           Black     63/03/18        M      94138      Married    13     185
+                           Black     64/09/13        F      94141      Married    15     200
+                           Black     64/09/07        F      94141      Married    60     290
+                           White     61/05/14        M      94138      Single     17     170
+                           White     61/05/08        M      94138      Single     10     300
+                           White     61/09/15        F      94142      Widow      15     200
+                          White 61/09/15              F     94142 Widow           5      200
+
+Identify 3 pairs of tuples with same Sex and MarStat
+
+
+
+
+                                   Swapping – Example
+
+
+       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
+                           Asian     64/09/27        F      94139      Divorced   13     260
+                           Asian     64/09/30        F      94139      Divorced    1     170
+                           Asian     64/04/18        M      94139      Married     2     190
+                           Asian     64/04/15        M      94139      Married    17     280
+                           Black     63/03/13        M      94138      Married    40     200
+                           Black     63/03/18        M      94138      Married    13     185
+                           Black     64/09/13        F      94141      Married    60     290
+                           Black     64/09/07        F      94141      Married    15     200
+                           White     61/05/14        M      94138      Single     10     300
+                           White     61/05/08        M      94138      Single     17     170
+                           White     61/09/15        F      94142      Widow      15     200
+                          White 61/09/15              F     94142 Widow           5      200
+
+Swap Holidays and Income
+
+
+
+                          Micro-aggregation (blurring)
+
+ • It consists in grouping individual tuples into small groups of a fixed
+   dimension k
+
+ • The average over each group is published instead of individual
+   values
+
+ • Groups are formed by using maximal similarity criteria
+
+ • There are different variations of micro-aggregation:
+         ◦ the average can substitute the original value only for a tuple in the
+           group or for all of them
+
+         ◦ different attributes can be protected through micro-aggregation
+           using the same or different grouping
+         ◦ ...
+
+              Micro-aggregation (blurring) – Example
+
+
+      SSN Name Race                     DoB        Sex       ZIP   MarStat    Holidays Income
+                          Asian      64/09/27        F     94139   Divorced     13      260
+                          Asian      64/09/30        F     94139   Divorced      1      170
+                          Asian      64/04/18        M     94139   Married      40      200
+                          Asian      64/04/15        M     94139   Married      17      280
+                          Black      63/03/13        M     94138   Married       2      190
+                          Black      63/03/18        M     94138   Married      13      185
+                          Black      64/09/13        F     94141   Married      15      200
+                          Black      64/09/07        F     94141   Married      60      290
+                          White      61/05/14        M     94138   Single       17      170
+                          White      61/05/08        M     94138   Single       10      300
+                          White      61/09/15        F     94142   Widow        15      200
+                          White 61/09/15             F     94142 Divorced        5      200
+
+Group tuples based on Sex and MarStat
+
+
+
+              Micro-aggregation (blurring) – Example
+
+
+      SSN Name Race                     DoB        Sex       ZIP   MarStat    Holidays Income
+                          Asian      64/09/27        F     94139   Divorced     13      260
+                          Asian      64/09/30        F     94139   Divorced     1       170
+                          Asian      64/04/18        M     94139   Married      40      200
+                          Asian      64/04/15        M     94139   Married      17      280
+                          Black      63/03/13        M     94138   Married      2       190
+                          Black      63/03/18        M     94138   Married      13      185
+                          Black      64/09/13        F     94141   Married      15      200
+                          Black      64/09/07        F     94141   Married      60      290
+                          White      61/05/14        M     94138   Single       17      170
+                          White      61/05/08        M     94138   Single       10      300
+                          White      61/09/15        F     94142   Widow        15      200
+                          White 61/09/15             F     94142 Widow           5      200
+
+Group tuples based on Sex and MarStat
+
+
+
+ 
+              Micro-aggregation (blurring) – Example
+
+
+      SSN Name Race                     DoB        Sex       ZIP   MarStat    Holidays Income
+                          Asian      64/09/27        F     94139   Divorced     13      215
+                          Asian      64/09/30        F     94139   Divorced     1       215
+                          Asian      64/04/18        M     94139   Married      40      213
+                          Asian      64/04/15        M     94139   Married      17      213
+                          Black      63/03/13        M     94138   Married      2       213
+                          Black      63/03/18        M     94138   Married      13      213
+                          Black      64/09/13        F     94141   Married      15      245
+                          Black      64/09/07        F     94141   Married      60      245
+                          White      61/05/14        M     94138   Single       17      235
+                          White      61/05/08        M     94138   Single       10      235
+                          White      61/09/15        F     94142   Widow        15      200
+                          White 61/09/15             F     94142 Widow           5      200
+
+Substitute Income with the average for each group
+
+
+       Microdata Disclosure Protection Techniques:
+                  Synthetic Techniques
+
+
+
+                                                  Outline
+
+ • Statistical DBMS
+
+
+ • Macrodata protection
+         ◦ Count and frequency tables
+         ◦ Magnitude tables
+
+
+ • Microdata protection
+         ◦ Masking techniques
+         ◦ Synthetic techniques
+
+                               Synthetic techniques (1)
+
+ • Since the statistical content of the data is not related to the
+   information provided by each respondent, a model well
+   representing the data could in principle replace the data
+   themselves
+
+ • An important requirement for the generation of synthetic data is
+   that the synthetic and original data should present the same
+   quality of statistical analysis
+
+ • The main advantage of this class of techniques is that the
+   released synthetic data are not referred to any respondent and
+   therefore their release cannot lead to reidentification
+
+                               Synthetic techniques (2)
+
+                                       Fully Synthetic
+                           Technique           Continuous Categorical
+                   Bootstrap                       yes        no
+                   Cholesky decomposition          yes        no
+                   Multiple imputation             yes        yes
+                   Maximum entropy                 yes        yes
+                   Latin Hypercube Sampling        yes        yes
+
+
+                                   Partially Synthetic
+                       Technique                     Continuous Categorical
+        IPSO                                            yes         no
+        Hybrid masking                                  yes         no
+        Random response                                  no         yes
+        Blank and impute                                yes         yes
+        SMIKe                                           yes         yes
+        Multiply imputed partially synthetic dataset    yes         yes
+
+
 
 
 
