@@ -1060,162 +1060,54 @@ slide 30/98 ultima
 ### Rounding
 To reduce data loss due to suppression, use **rounding of values** to a multiple of the sensitivity threshold:
 - **random**: random decision on whether cell values will be rounded up or down. The sum of the values in a row/column may be different from the published marginal totals (recipients may lose confidence in the data);
-- **controlled**: ensure that the sum of published entries is equal to published marginal totals
+- **controlled**: ensure that the sum of published entries is equal to published marginal totals.
 
 Note: all cell values must be a multiple of the threshold value.
 
-                         Random rounding – Example
+An example of random rounding.
 
-                                                   Education level
-              Company             Low        Medium High Very High        Total
-                 Alfa                15                1         3    1     20
-                 Beta                20               10        10   15     55
-                Gamma                 3               10        10    2     25
-                 Delta               12               14         7    2     35
-                  Total              50               35        30   20    135
+slide 32/98
 
+----------------------------------------------------------------
 
-                         Random rounding – Example
+### Controlled rounding
 
-                                                   Education level
-              Company             Low        Medium High Very High         Total
-                 Alfa                15                1         3     1     20
-                 Beta                20               10        10    15     55
-                Gamma                 3               10        10     2     25
-                 Delta               12               14         7     2     35
-                  Total              50               35        30    20    135
+An example of controlled rounding.
 
-                                          Education level (random rounding)
-              Company             Low       Medium High Very High         Total
-                 Alfa                15               *0         *0   *0     20
-                 Beta                20               10         10   15     55
-                Gamma                *5               10         10   *0     25
-                 Delta              *15              *15        *10   *0     35
-                  Total              50               35        30    20    135
+slide 33/98
 
+Linear programming methods are used to identify a controlled rounding for a table.<br />
+Disadvantages:
+- it requires the use of specialized computer programs;
+- controlled rounding solutions may not always exist for complex tables.
 
-                       Controlled rounding – Example
+----------------------------------------------------------------
 
-                                                    Education level
-               Company             Low        Medium High Very High       Total
-                 Alfa                 15                1        3    1     20
-                 Beta                 20               10       10   15     55
-                Gamma                  3               10       10    2     25
-                 Delta                12               14        7    2     35
-                  Total               50               35       30   20    135
+### Confidentiality edit
+Developed by the U.S. Census Bureau to provide protection of tables prepared from the $1990$ Census. Two different approaches:
+- to protect the regular decennial Census data ($100\%$ of the population);
+- to protect the long-form of the Census which refers to a sample of the population.
 
+Both approaches apply statistical disclosure limitation techniques to the microdata on which statistics are calculated. Statistics are protected by changing input data.
 
-                       Controlled rounding – Example
+For the $100$ percent microdata file, confidentiality edit applie **switching**:
+1) take a sample of records from the microdata file;
+2) find a match for these records in some other geographic region, matching on a specified set of important attributes;
+3) swap all attributes on the matched records.
 
-                                                    Education level
-               Company             Low        Medium High Very High       Total
-                 Alfa                 15                1        3    1     20
-                 Beta                 20               10       10   15     55
-                Gamma                  3               10       10    2     25
-                 Delta                12               14        7    2     35
-                  Total               50               35       30   20    135
+For small blocks, the sampling fraction is increased to provide additional protection. The microdata file can be used directly to prepare macrodata tables.
 
-                                    Education level (controlled rounding)
-              Company             Low Medium High Very High            Total
-                 Alfa                15               *0        *5   *0     20
-                 Beta                20               10        10   15     55
-                Gamma                *5               10        10   *0     25
-                 Delta              *10              *15        *5   *5     35
-                  Total              50               35        30   20    135
+An example of confidentiality edit.
 
+Records for the 20 employees of company Alfa 
 
-                                    Controlled rounding
+slide 37/98
 
- • Linear programming methods are used to identify a controlled
-   rounding for a table
-
- • Disadvantages:
-         ◦ it requires the use of specialized computer programs
-
-         ◦ controlled rounding solutions may not always exist for complex
-           tables
-
-
-                                 Confidentiality edit (1)
-
- • Developed by the U.S. Census Bureau to provide protection of
-   tables prepared from the 1990 Census
-
- • Two different approaches:
-         ◦ to protect the regular decennial Census data (100% of the
-           population)
-
-         ◦ to protect the long-form of the Census which refers to a sample of
-           the population
-
- • Both approaches apply statistical disclosure limitation techniques
-   to the microdata on which statistics are calculated:
-         ◦ statistics are protected by changing input data
-
-
-                                 Confidentiality edit (2)
-
- • For the 100 percent microdata file, confidentiality edit applies
-   switching
-       1. Take a sample of records from the microdata file
-
-       2. Find a match for these records in some other geographic region,
-          matching on a specified set of important attributes
-
-       3. Swap all attributes on the matched records
-
- • For small blocks, the sampling fraction is increased to provide
-   additional protection
-
- • The microdata file can be used directly to prepare macrodata
-   tables
-
-
-                     Confidentiality edit – Example (1)
-
-Records for the 20 employees of company Alfa prova prova prova
-prova
-               N       Employee            Company               Education   Salary   Race
-               1       John                Alfa                  very high    201     black
-               2       Jim                 Alfa                  high         103     white
-               3       Sue                 Alfa                  high          77     black
-               4       Pete                Alfa                  high          61     white
-               5       Ramesh              Alfa                  medium        72     white
-               6       Dante               Alfa                  low          103     white
-               7       Virgil              Alfa                  low          91      black
-               8       Wanda               Alfa                  low          84      white
-               9       Stan                Alfa                  low          75      white
-               10      Irmi                Alfa                  low          62      black
-               11      Renee               Alfa                  low          58      white
-               12      Virginia            Alfa                  low          56      black
-               13      Mary                Alfa                  low          54      black
-               14      Kim                 Alfa                  low          52      white
-               15      Tom                 Alfa                  low          55      black
-               16      Ken                 Alfa                  low          48      white
-               17      Mike                Alfa                  low          48      white
-               18      Joe                 Alfa                  low          41      black
-               19      Jeff                Alfa                  low          44      black
-               20      Nancy               Alfa                  low          37      white
-
-                    Confidentiality edit – Example (2)
-
-1. Take a sample of records from the microdata file (say a 10%
-   sample, 2 tuples for company Alfa). Assume that records number
-   4 and 17 were selected as part of our 10% sample
-
-2. Since we need tables by company and education level, we find a
-   match in some other company on the other variables (race and
-   salary, company totals for these variables remain unchanged)
-         ◦ A match for record 4 (Pete) is found in company Beta, the match is
-           with Alonso, who has very high education
-
-         ◦ Record 17 (Mike) is matched with George in company Delta, who
-           has medium education
-
-
-                    Confidentiality edit – Example (3)
-
-3. We also assume that part of the randomly selected 10% sample
+1) take a sample of records from the microdata file (say a $10\%$ sample, $2$ tuples for company Alfa). Assume that records number $4$ and $17$ were selected as part of our $10\%$ sample;
+2) since we need tables by company and education level, we find a match in some other company on the other variables (race and salary, company totals for these variables remain unchanged):
+	- a match for record $4$ (Pete) is found in company Beta, the match is with Alonso, who has very high education;
+	- Record $17$ (Mike) is matched with George in company Delta, who has medium education.
+3) we also assume that part of the randomly selected 10% sample
    from other companies match records in company Alfa
          ◦ One record from company Delta (June with high education)
            matches with Virginia (record 12)
@@ -1718,6 +1610,8 @@ match records in company Alfa
 
  • The pq rule reduces to the p-percent rule when q=100 (i.e., no
    estimate ability)
+
+# Arrivare qui
 
 
         Primary suppression rule: pq – Example (1)
@@ -3628,12 +3522,7 @@ SN Computer Science, vol. 4, n. 5, September 2023.
 S. De Capitani di Vimercati, S. Foresti, P. Samarati, “Protecting Data and Queries in Cloud-Based Scenarios,” in
 SN Computer Science, vol. 4, n. 5, September 2023.
 
-
-
-
-
-
-
+----------------------------------------------------------------
 
 
 
