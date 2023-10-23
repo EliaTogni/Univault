@@ -850,1331 +850,238 @@ slide 139/155
 slide 142/155
 
 Personality quiz app, installed by $330,000$ Facebook users who gave permission for accessing their data but the app was also collecting data of those users’ friends.<br />
-Data from 87 million Facebook users retrieved by the app:
+Data from $87$ million Facebook users retrieved by the app:
 - data shared with Cambridge Analytica;
 - users profiled through their data.
 
-User profiling - Facebook/Cambridge Analytica
-OCEAN model
-• Openness
-do you enjoy new experiences?
-• Conscientiousness
-do you prefer plans and order?
-• Extraversion
-how social you are?
-• Agreeableness
-do you value others’ needs
-and society?
-• Neuroticism
-how much do you tend to worry?
+----------------------------------------------------------------
 
+#### User profiling - Facebook/Cambridge Analytica
+**OCEAN model**:
+- **Openness**: do you enjoy new experiences?
+- **Conscientiousness**: do you prefer plans and order
+- **Extraversion**: how social you are?
+- **Agreeableness**: do you value others’ needs and society
+- **Neuroticism** how much do you tend to worry
 
+----------------------------------------------------------------
 
-
-Conscientious individual with
-high neuroticism:
-
-“The second amendment isn’t just
-a right. It’s an insurance policy.
-Defend the righ to bear arms!”
-
-
-
-User profiling - Facebook/Cambridge Analytica
-OCEAN model
-• Openness
-Message to push support for
-do you enjoy new experiences? Second Amendment of US Constitution
-• Conscientiousness
-do you prefer plans and order?
-
-Close and agreeable individual:
-individual:
-
-• Extraversion
-how social you are?
-• Agreeableness
-do you value others’ needs
-and society?
-• Neuroticism
-how much do you tend to worry?
-
-“From father to son,
-since the birth of our Nation.
-Defend the second amendment.”
-
-Online quizzes?
-
-• What color are you?
-• Which famous historical figure are you?
-• Which famous painting are you?
-• Who will be your Valentine’s Day date?
-• ...
-• What will you look like when old?
-
-... Is it worth?
-
-“It’s this new app – you put in your Social Security Number,
-and it makes you look like a cat.”
-
-Facebook facial recognition
-
-Facebook facial recognition
-
-Some open issues
-• New privacy metrics
-• New techniques to protect privacy
-• External knowledge and adversarial attacks
-• Evaluation of privacy vs utility
+#### Some open issues
+- New privacy metrics;
+- new techniques to protect privacy;
+- external knowledge and adversarial attacks;
+- evaluation of privacy vs utility.
 
 ----------------------------------------------------------------
 
 # Macrodata and Microdata Protection
+## Outline
+- **Statistical DBMS**
+- **Macrodata protection**:
+	- count and frequency tables;
+	- magnitude tables.
+- **Microdata protection**:
+	- masking techniques;
+	- synthetic techniques.
+
+slide 2/98
+
+### Statistical data dissemination
+Often statistical data (or data for statistical purpose) are released. Such released data can be used to infer information that was not intended for disclosure.<br />
+Disclosure can:
+- occur based on the released data alone;
+- result from combination of the released data with publicly available information;
+- be possible only through combination of the released data with detailed external (public) data sources.
+
+The disclosure risk from the released data should be very low.
+
+----------------------------------------------------------------
+
+### Statistical DBMS vs statistical data
+Release of data for statistical purpose:
+- statistical DBMS:
+	- the DBMS responds only to statistical queries;
+	- need run time checking to control information (indirectly) released.
+- statistical data:
+	- publish statistics (macrodata release);
+	- control on indirect release performed before publication.
+
+
+----------------------------------------------------------------
+
+## Statistical DBMS
+A statistical DBMS is a DBMS that provides access to statistics about groups of individuals. It should not reveal information about any particular individual. Confidential information about an individual can be deduced, combining the results of different statistics or combining the results of statistics with external knowledge (possibly about the database content).
+
+An example of a Statistical DBMS
+
+slides 7/98
+
+Query: sum of the incomes of females with major in EE.<br />
+Result: it reveals the income of Baker (only female with EE) $\to$ the query is sensitive so it is necessary to block statistics computed over a single (or few) individual
+
+Another example of a Statistical DBMS 
+
+slide 8/98
+
+Query $1$: sum of the incomes of individuals with major in EE.<br />
+Result: it does not reveal the income of any individual ($240k$) $\to$ the query is not sensitive<br />
+Query $2$: sum of the incomes of males with major in EE.<br />
+Result: it does not reveal the income of any individual ($190k$) $\to$ the query is not sensitive.<br />
+Query 3 = sum of the incomes of females with major in EE ($50k$) = income of Baker $\to$ the combination of queries is sensitive.
+
+----------------------------------------------------------------
+
+## Macrodata protection
+### Macrodata
+Macrodata tables can be classified into the following two groups (types of tables):
+- **Count/Frequency**: Each cell contains the number (count) or the percentage (frequency) of respondents that have the same value over all attributes in the table;
+- **Magnitude data**: Each cell contains an aggregate value of  quantity of interest over all attributes in the table.
+
+----------------------------------------------------------------
+
+## Macrodata Disclosure Protection Techniques
+### Tables of Counts or Frequencies
+
+Data collected from most surveys are published in tables of count or frequencies.<br />
+Protection operates in three steps:
+1) **sampling**;
+2) **identification** of sensitive cells:
+	- **special rules**;
+	- **threshold rules**.
+3) **protection** of sensitive cells:
+	- **table restructuring**;
+	- **suppression**;
+	- **rounding**;
+	- **confidentiality edit**.
+
+----------------------------------------------------------------
+
+### Sampling
+Conduct (and publish) a sample survey rather than a census.<br />
+Estimates are made by multiplying individual responses by a sampling weight before aggregating them. If weights are not published, weighting helps to make an individual respondent’s data less identifiable from published totals.<br />
+Estimates must achieve a specified accuracy. Data that do not meet the accuracy requirements are not published (not considered meaningful).
+
+----------------------------------------------------------------
+
+### Special rules
+When macrodata tables are defined on the whole population disclosure limitation procedures must be applied. Special rules define restrictions on the level of detail that can be provided in a table. Special rules differ depending on the agency and the kind of table.
+
+An example of Special rules.
+Social Security Administration (SSA) rules prohibit publishing tables where the value of a cell:
+- is equal to a marginal total or:
+- would allow users to determine:
+	- an individual’s age within a five-year interval;
+	- earnings within a $ $1,000$ interval;
+	- benefits within a $ $50$ interval.
+- to satisfy special rules:
+	- table restructuring or category combination.
+
 
+Another example of Special rules.
 
-• Statistical DBMS
+Number of employees by department and annual income (in $K$ Euro).<br />
+Special rule: Income within a $5K$ Euro interval.
+ 
+slide 22/98
 
+Cells that cannot be released:
+- its value is equal to total;
+- the table allows users to determine benefit within a $ $5k$ interval:
+	- between $23K$ and $25K$ for _Dept$4$_
+	- between $23K$ and $27K$ for _Dept$2$_
 
-• Macrodata protection
-        ◦ Count and frequency tables
-        ◦ Magnitude tables
+Another example of Special rules (U.S. HIPAA).
+Health Insurance Portability and Accountability Act “Safe Harbor” rules, include:
+- identifying information must be removed;
+- locations have to be generalized to units that contain at least $20,000$ residents;
+- dates of birth must be rounded up to the year of birth only (or to larger value if the person is older than $90$).
 
+----------------------------------------------------------------
 
-• Microdata protection
-        ◦ Masking techniques
-        ◦ Synthetic techniques
+### Threshold rules
+A cell is sensitive if the number of respondents is less than some specified number (e.g., some agencies consider $5$, others $3$). A sensitive cell cannot be released. Different techniques can be applied to protect sensitive cells:
+- table restructuring and category combination;
+- cell suppression;
+- random rounding;
+- controlled rounding;
+- confidentiality edit.
 
+An example of Table with disclosures.
+Table containing information about employees by company and education level.
 
+slide 25/98
 
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   2/98
-                        Statistical data dissemination
-
-• Often statistical data (or data for statistical purpose) are released
-
-• Such released data can be used to infer information that was not
-  intended for disclosure
-
-• Disclosure can:
-        ◦ occur based on the released data alone
-        ◦ result from combination of the released data with publicly available
-          information
-
-        ◦ be possible only through combination of the released data with
-          detailed external (public) data sources
-
-• The disclosure risk from the released data should be very low
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                3/98
-                   Statistical DBMS vs statistical data
-
-Release of data for statistical purpose
-
-  • statistical DBMS
-          ◦ the DBMS responds only to statistical queries
-
-          ◦ need run time checking to control information (indirectly) released
-
-  • statistical data
-          ◦ publish statistics (macrodata release)
-
-          ◦ control on indirect release performed before publication
-
-
-
-
-  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                   4/98
-                                      Statistical DBMS
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   5/98
-                                      Statistical DBMS
-
-• A statistical DBMS is a DBMS that provides access to statistics
-  about groups of individuals
-        ◦ should not reveal information about any particular individual
-
-
-• Confidential information about an individual can be deduced
-        ◦ combining the results of different statistics
-
-        ◦ combining the results of statistics with external knowledge (possibly
-          about the database content)
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                6/98
-                       Statistical DBMS – Example (1)
-
-                          Name            Sex          Major      Class   Income
-                          Allen        Female          CS         1980     68k
-                          Baker        Female          EE         1980     50k
-                          Cook         Male            EE         1978     70k
-                          Davis        Female          CS         1978     80k
-                          Evans        Male            EE         1981     60k
-                          Frank        Male            CS         1978     76k
-                          Good         Male            CS         1981     64k
-                          Hall         Male            EE         1978     60k
-                          Iles         Male            CS         1979     70k
-
-Query: sum of the incomes of females with major in EE
-Result: it reveals the income of Baker (only female with EE)
-=⇒ The query is sensitive
-=⇒ Block statistics computed over a single (or few) individual
-
-
-  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    7/98
-                       Statistical DBMS – Example (1)
-
-                          Name            Sex          Major      Class   Income
-                          Allen        Female          CS         1980     68k
-                          Baker        Female          EE         1980     50k
-                          Cook         Male            EE         1978     70k
-                          Davis        Female          CS         1978     80k
-                          Evans        Male            EE         1981     60k
-                          Frank        Male            CS         1978     76k
-                          Good         Male            CS         1981     64k
-                          Hall         Male            EE         1978     60k
-                          Iles         Male            CS         1979     70k
-
-Query: sum of the incomes of females with major in EE
-Result: it reveals the income of Baker (only female with EE)
-=⇒ The query is sensitive
-=⇒ Block statistics computed over a single (or few) individual
-
-
-  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    7/98
-                       Statistical DBMS – Example (1)
-
-                          Name            Sex          Major      Class   Income
-                          Allen        Female          CS         1980     68k
-                          Baker        Female          EE         1980     50k
-                          Cook         Male            EE         1978     70k
-                          Davis        Female          CS         1978     80k
-                          Evans        Male            EE         1981     60k
-                          Frank        Male            CS         1978     76k
-                          Good         Male            CS         1981     64k
-                          Hall         Male            EE         1978     60k
-                          Iles         Male            CS         1979     70k
-
-Query: sum of the incomes of females with major in EE
-Result: it reveals the income of Baker (only female with EE)
-=⇒ The query is sensitive
-=⇒ Block statistics computed over a single (or few) individual
-
-
-  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    7/98
-                       Statistical DBMS – Example (1)
-
-                          Name            Sex          Major      Class   Income
-                          Allen        Female          CS         1980     68k
-                          Baker        Female          EE         1980     50k
-                          Cook         Male            EE         1978     70k
-                          Davis        Female          CS         1978     80k
-                          Evans        Male            EE         1981     60k
-                          Frank        Male            CS         1978     76k
-                          Good         Male            CS         1981     64k
-                          Hall         Male            EE         1978     60k
-                          Iles         Male            CS         1979     70k
-
-Query: sum of the incomes of females with major in EE
-Result: it reveals the income of Baker (only female with EE)
-=⇒ The query is sensitive
-=⇒ Block statistics computed over a too small number of respondents
-
-
-  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    7/98
-                       Statistical DBMS – Example (2)
-
-                          Name            Sex          Major      Class   Income
-                          Allen        Female          CS         1980     68k
-                          Baker        Female          EE         1980     50k
-                          Cook         Male            EE         1978     70k
-                          Davis        Female          CS         1978     80k
-                          Evans        Male            EE         1981     60k
-                          Frank        Male            CS         1978     76k
-                          Good         Male            CS         1981     64k
-                          Hall         Male            EE         1978     60k
-                          Iles         Male            CS         1979     70k
-
-Query 1: sum of the incomes of individuals with major in EE
-
-
-
-
-  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    8/98
-                       Statistical DBMS – Example (2)
-
-                          Name            Sex          Major      Class   Income
-                          Allen        Female          CS         1980     68k
-                          Baker        Female          EE         1980     50k
-                          Cook         Male            EE         1978     70k
-                          Davis        Female          CS         1978     80k
-                          Evans        Male            EE         1981     60k
-                          Frank        Male            CS         1978     76k
-                          Good         Male            CS         1981     64k
-                          Hall         Male            EE         1978     60k
-                          Iles         Male            CS         1979     70k
-
-Query 1: sum of the incomes of individuals with major in EE
-Result: it does not reveal the income of any individual (240k)
-=⇒ The query is not sensitive
-
-
-
-
-  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    8/98
-                       Statistical DBMS – Example (2)
-
-                          Name            Sex          Major      Class   Income
-                          Allen        Female          CS         1980     68k
-                          Baker        Female          EE         1980     50k
-                          Cook         Male            EE         1978     70k
-                          Davis        Female          CS         1978     80k
-                          Evans        Male            EE         1981     60k
-                          Frank        Male            CS         1978     76k
-                          Good         Male            CS         1981     64k
-                          Hall         Male            EE         1978     60k
-                          Iles         Male            CS         1979     70k
-
-Query 2: sum of the incomes of males with major in EE
-
-
-
-
-  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    8/98
-                       Statistical DBMS – Example (2)
-
-                          Name            Sex          Major      Class   Income
-                          Allen        Female          CS         1980     68k
-                          Baker        Female          EE         1980     50k
-                          Cook         Male            EE         1978     70k
-                          Davis        Female          CS         1978     80k
-                          Evans        Male            EE         1981     60k
-                          Frank        Male            CS         1978     76k
-                          Good         Male            CS         1981     64k
-                          Hall         Male            EE         1978     60k
-                          Iles         Male            CS         1979     70k
-
-Query 2: sum of the incomes of males with major in EE
-Result: it does not reveal the income of any individual (190k)
-=⇒ The query is not sensitive
-
-
-
-
-  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    8/98
-                       Statistical DBMS – Example (2)
-
-                          Name            Sex          Major      Class   Income
-                          Allen        Female          CS         1980     68k
-                          Baker        Female          EE         1980     50k
-                          Cook         Male            EE         1978     70k
-                          Davis        Female          CS         1978     80k
-                          Evans        Male            EE         1981     60k
-                          Frank        Male            CS         1978     76k
-                          Good         Male            CS         1981     64k
-                          Hall         Male            EE         1978     60k
-                          Iles         Male            CS         1979     70k
-
-Query 1: sum of the incomes of individuals with major in EE (240k)
-Query 2: sum of the incomes of males with major in EE (190k)
-= sum of the incomes of females with major in EE
-(50k, income of Baker)
-=⇒ The query is not sensitive
-
-
-  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    8/98
-                       Statistical DBMS – Example (2)
-
-                          Name            Sex          Major      Class   Income
-                          Allen        Female          CS         1980     68k
-                          Baker        Female          EE         1980     50k
-                          Cook         Male            EE         1978     70k
-                          Davis        Female          CS         1978     80k
-                          Evans        Male            EE         1981     60k
-                          Frank        Male            CS         1978     76k
-                          Good         Male            CS         1981     64k
-                          Hall         Male            EE         1978     60k
-                          Iles         Male            CS         1979     70k
-
-Query 1: sum of the incomes of individuals with major in EE (240k)
-Query 2: sum of the incomes of males with major in EE (190k)
-Query = sum of the incomes of females with major in EE (50k)
-Query = income of Baker
-=⇒ The query is not sensitive
-
-
-  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    8/98
-                       Statistical DBMS – Example (2)
-
-                          Name            Sex          Major      Class   Income
-                          Allen        Female          CS         1980     68k
-                          Baker        Female          EE         1980     50k
-                          Cook         Male            EE         1978     70k
-                          Davis        Female          CS         1978     80k
-                          Evans        Male            EE         1981     60k
-                          Frank        Male            CS         1978     76k
-                          Good         Male            CS         1981     64k
-                          Hall         Male            EE         1978     60k
-                          Iles         Male            CS         1979     70k
-
-Query 1: sum of the incomes of individuals with major in EE (240k)
-Query 2: sum of the incomes of males with major in EE (190k)
-Query = sum of the incomes of females with major in EE (50k)
-Query = income of Baker
-=⇒ The combination of queries is sensitive
-
-
-  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    8/98
-                                 Macrodata protection
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   9/98
-                                                  Outline
-
- • Statistical DBMS
-
-
- • Macrodata protection
-         ◦ Count and frequency tables
-         ◦ Magnitude tables
-
-
- • Microdata protection
-         ◦ Masking techniques
-         ◦ Synthetic techniques
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   10/98
-                                               Macrodata
-
-Macrodata tables can be classified into the following two groups (types
-of tables)
-  • Count/Frequency. Each cell contains the number (count) or the
-    percentage (frequency) of respondents that have the same value
-    over all attributes in the table
-
-  • Magnitude data. Each cell contains an aggregate value of a
-    quantity of interest over all attributes in the table
-
-
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      11/98
-                                 Count table – Example
-
-Two-dimensional table showing the number of employees by
-department and annual income (in K Euro)
-
-
-                                Income
-     Dept [0-21) [21-23) [23-25) [25-27) [27-29) 29+ Total
-     Dept1     2       4      18      20       7   1   52
-     Dept2     -       -       7       9       -   -   16
-     Dept3     -       6      30      15       4   -   55
-     Dept4     -       -       2       -       -   -    2
-
-
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   12/98
-                            Magnitude table – Example
-
-Average number of days spent in the hospital by respondents with a
-given disease
-
-
-       Hypertension Obesity Chest Pain Short Breath Tot
-    M       2        08.5     23.5          3       37.0
-    F       3        30.5     00.0          5       38.5
-   Tot      5        39.0     23.5          8       75.5
-
-
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)       13/98
-                             Microdata table – Example
-
-Records about employees of company Alfa
-               N       Employee            Company               Education   Salary   Race
-               1       John                Alfa                  very high    201     black
-               2       Jim                 Alfa                  high         103     white
-               3       Sue                 Alfa                  high          77     black
-               4       Pete                Alfa                  high          61     white
-               5       Ramesh              Alfa                  medium        72     white
-               6       Dante               Alfa                  low          103     white
-               7       Virgil              Alfa                  low          91      black
-               8       Wanda               Alfa                  low          84      white
-               9       Stan                Alfa                  low          75      white
-               10      Irmi                Alfa                  low          62      black
-               11      Renee               Alfa                  low          58      white
-               12      Virginia            Alfa                  low          56      black
-               13      Mary                Alfa                  low          54      black
-               14      Kim                 Alfa                  low          52      white
-               15      Tom                 Alfa                  low          55      black
-               16      Ken                 Alfa                  low          48      white
-               17      Mike                Alfa                  low          48      white
-               18      Joe                 Alfa                  low          41      black
-               19      Jeff                Alfa                  low          44      black
-               20      Nancy               Alfa                  low          37      white
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                                14/98
-      Macrodata Disclosure Protection Techniques:
-           Tables of Counts or Frequencies
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   15/98
-                                                  Outline
-
- • Statistical DBMS
-
-
- • Macrodata protection
-         ◦ Count and frequency tables
-         ◦ Magnitude tables
-
-
- • Microdata protection
-         ◦ Masking techniques
-         ◦ Synthetic techniques
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   16/98
-                       Tables of counts or frequencies
-
- • Data collected from most surveys are published in tables of count
-   or frequencies
-
- • Protection operates in three steps
-       1. Sampling
-       2. Identification of sensitive cells
-                − special rules
-                − threshold rules
-
-       3. Protection of sensitive cells
-                − table restructuring
-                − suppression
-                − rounding
-                − confidentiality edit
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)     17/98
-                                                Sampling
-
- • Conduct (and publish) a sample survey rather than a census
-
- • Estimates are made by multiplying individual responses by a
-   sampling weight before aggregating them
-
- • If weights are not published, weighting helps to make an individual
-   respondent’s data less identifiable from published totals
-
- • Estimates must achieve a specified accuracy
-         ◦ data that do not meet the accuracy requirements are not published
-           (not considered meaningful)
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)             18/98
-                       Tables of counts or frequencies
-
- • Data collected from most surveys are published in tables of count
-   or frequencies
-
- • Protection operates in three steps
-       1. Sampling
-       2. Identification of sensitive cells
-                − special rules
-                − threshold rules
-
-       3. Protection of sensitive cells
-                − table restructuring
-                − suppression
-                − rounding
-                − confidentiality edit
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)     19/98
-                                            Special rules
-
- • When macrodata tables are defined on the whole population,
-   disclosure limitation procedures must be applied
-
- • Special rules define restrictions on the level of detail that can be
-   provided in a table
-
- • Special rules differ depending on the agency and the kind of table
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)         20/98
-                            Special rules – Example (1)
-
-Social Security Administration (SSA) rules prohibit publishing tables
-where the value of a cell:
-  • is equal to a marginal total or
-
-  • would allow users to determine
-          ◦ an individual’s age within a five-year interval
-
-          ◦ earnings within a $1,000 interval
-
-          ◦ benefits within a $50 interval
-
-  • to satisfy special rules
-          ◦ table restructuring or category combination
-
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)          21/98
-                            Special rules – Example (2)
-
-Number of employees by department and annual income (in K Euro)
-Special rule: Income within a 5K Euro interval
-                                               Income
-              Dept       [0-21) [21-23) [23-25) [25-27) [27-29) 29+           Total
-             Dept1              2            4           18      20   7   1     52
-             Dept2              -            -            7       9   -   -     16
-             Dept3              -            6           30      15   4   -     55
-             Dept4              -            -            2       -   -   -      2
-
-Cells that cannot be released
-      its value is equal to total
-      The table allows users to determine benefit within a $50 interval
-              between $40 and $59 for county D
-              between $40 to $79 for county B
-
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                        22/98
-                            Special rules – Example (2)
-
-Number of employees by department and annual income (in K Euro)
-Special rule: Income within a 5K Euro interval
-                                               Income
-              Dept       [0-21) [21-23) [23-25) [25-27) [27-29) 29+           Total
-             Dept1              2            4           18      20   7   1     52
-             Dept2              -            -            7       9   -   -     16
-             Dept3              -            6           30      15   4   -     55
-             Dept4              -            -            2       -   -   -      2
-
-Cells that cannot be released
-  •    a its value is equal to total
-      allows users to determine income within a 3K interval
-              between 40 and 59 for county Dept4
-              between 40 to 79 for county Dept2
-
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                        22/98
-                            Special rules – Example (2)
-
-Number of employees by department and annual income (in K Euro)
-Special rule: Income within a 5K Euro interval
-                                               Income
-              Dept       [0-21) [21-23) [23-25) [25-27) [27-29) 29+           Total
-             Dept1              2            4           18      20   7   1     52
-             Dept2              -            -            7       9   -   -     16
-             Dept3              -            6           30      15   4   -     55
-             Dept4              -            -            2       -   -   -      2
-
-Cells that cannot be released
-  •    a  its value is equal to total
-  •    a , a , a allow recipients to determine income within a 5K interval
-
-              between 23K and 25K for Dept4
-              between 23K and 27K for Dept2
-
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                        22/98
-                            Special rules – Example (2)
-
-Number of employees by department and annual income (in K Euro)
-Special rule: Income within a 5K Euro interval
-                                               Income
-               Dept      [0-21) [21-23) [23-25) [25-27) [27-29) 29+           Total
-               Dept1            2            4           18      20   7   1     52
-               Dept2            -            -            7       9   -   -     16
-               Dept3            -            6           30      15   4   -     55
-               Dept4            -            -            2       -   -   -      2
-
-Cells that cannot be released
-  •    a  its value is equal to total
-  •    a , a , a allow recipients to determine income within a 5K interval
-
-           ◦   a    between 23K and 25K for Dept4
-           ◦   a   , a between 23K and 27K for Dept2
-
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                        22/98
-                Special rules – Example (U.S. HIPAA)
-
-Health Insurance Portability and Accountability Act
-“Safe Harbor” rules, include:
-
-  • identifying information must be removed
-
-  • locations have to be generalized to units that contain at least
-    20,000 residents
-
-  • dates of birth must be rounded up to the year of birth only (or to
-    larger value if the person is older than 90)
-
-
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)           23/98
-                                         Threshold rules
-
- • A cell is sensitive if the number of respondents is less than some
-   specified number (e.g., some agencies consider 5, others 3)
-
- • A sensitive cell cannot be released
-
- • Different techniques can be applied to protect sensitive cells:
-         ◦ table restructuring and category combination
-         ◦ cell suppression
-
-         ◦ random rounding
-         ◦ controlled rounding
-         ◦ confidentiality edit
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)        24/98
-                     Table with disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-            Alfa                 15                1      3         1     20
-           Beta                  20               10    10         15     55
-          Gamma                   3               10    10          2     25
-           Delta                 12               14      7         2     35
-           Total                 50               35    30         20    135
-
-Suppress one additional cell for each row/column with a sensitive cell
-suppressed
-
-
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  25/98
-                     Table with disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-            Alfa                 15                1      3         1     20
-           Beta                  20               10    10         15     55
-          Gamma                   3               10    10          2     25
-           Delta                 12               14      7         2     35
-           Total                 50               35    30         20    135
-
+Suppress one additional cell for each row/column with a sensitive cell suppressed.<br />
 A cell with fewer than 5 respondents is defined as sensitive
 Suppress one additional cell for each row/column with a sensitive cell
 suppressed
 
+----------------------------------------------------------------
 
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  25/98
-                     Table with disclosures – Example
+### Table restructuring
+An example of Table restructuring.
+Number of employees by department and annual income (in $K$ Euro).<br />
+Special rule: Income within a $5K$ Euro interval.<br />
+To protect confidentiality, the table can be restructured and rows or columns combined (“rolling-up categories”)
 
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-            Alfa                 15                1      3         1     20
-           Beta                  20               10    10         15     55
-          Gamma                   3               10    10          2     25
-           Delta                 12               14      7         2     35
-           Total                 50               35    30         20    135
+slide 27/98 1 e 2
 
-A cell with fewer than 5 respondents is defined as sensitive
-Suppress one additional cell for each row/column with a sensitive cell
-suppressed
+Combining _Dept$1$_ with _Dept$2$_ and _Dept$3$_ with _Dept$4$_ does offer the required protection.
 
+slide 27/98 3
 
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  25/98
-                       Tables of counts or frequencies
+Combining _Dept$2$_ with _Dept$4$_ would still reveal that the income is within a 5K interval $[23K, 27K)$.
 
- • Data collected from most surveys are published in tables of count
-   or frequencies
+----------------------------------------------------------------
 
- • Protection operates in three steps
-       1. Sampling
-       2. Identification of sensitive cells
-                − special rules
-                − threshold rules
+### Cell suppression
+One of the most used ways of protecting sensitive cells is **suppression**. Suppressing sensitive cells (**primary suppression**) is not sufficient. At least one additional cell must be suppressed (**complementary suppression**) for each row or column with a suppressed sensitive cell (primary suppression). The value in the sensitive cell can be calculated from the marginal total.<br />
+Even with complementary suppression it is difficult to guarantee adequate protection.
 
-       3. Protection of sensitive cells
-                − table restructuring
-                − suppression
-                − rounding
-                − confidentiality edit
+----------------------------------------------------------------
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)     26/98
-                        Table restructuring – Example
+### Complementary suppressions
+The selection of cells for complementary suppression is complicated. **Linear programming** techniques are used to automatically select cells for complementary suppression.<br />
+**Audit techniques** can be applied to evaluate the proposed suppression pattern to see if it provides the required protection.
 
- • Number of employees by department and annual income (in K
-   Euro)
-   Special rule: Income within a 5K Euro interval
- • To protect confidentiality, the table can be restructured and rows
-   or columns combined (“rolling-up categories”)
-                                              Income
-             Dept       [0-21) [21-23) [23-25) [25-27) [27-29) 29+           Total
-            Dept1              2            4           18      20   7   1     52
-            Dept2              -            -            7       9   -   -     16
-            Dept3              -            6           30      15   4   -     55
-            Dept4              -            -            2       -   -   -      2
+An example of cell suppression: Table without disclosures.<br />
+Table containing information about employees by company and education level
 
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                        27/98
-                        Table restructuring – Example
-
- • Number of employees by department and annual income (in K
-   Euro)
-   Special rule: Income within a 5K Euro interval
- • To protect confidentiality, the table can be restructured and rows
-   or columns combined (“rolling-up categories”)
-                                              Income
-             Dept       [0-21) [21-23) [23-25) [25-27) [27-29) 29+           Total
-            Dept1
-                               2            4           25      29   7   1     68
-            Dept2
-            Dept3
-                                -           6           32      15   4   -     57
-            Dept4
-
- • Combining Dept1 with Dept2 and Dept3 with Dept4 does offer the
-   required protection
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                        27/98
-                        Table restructuring – Example
-
- • Number of employees by department and annual income (in K
-   Euro)
-   Special rule: Income within a 5K Euro interval
- • To protect confidentiality, the table can be restructured and rows
-   or columns combined (“rolling-up categories”)
-                                              Income
-             Dept       [0-21) [21-23) [23-25) [25-27) [27-29) 29+           Total
-            Dept1              2            4           18      20   7   1     52
-            Dept2
-                                -            -           9      9        -     16
-            Dept4
-            Dept3               -           6           30      15   4   -     55
-
- • Combining Dept2 with Dept4 would still reveal that the income is
-   within a 5K interval [23K, 27K)
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                        27/98
-                                       Cell suppression
-
- • One of the most used ways of protecting sensitive cells is
-   suppression
-
- • Suppressing sensitive cells (primary suppression) is not sufficient
-
- • At least one additional cell must be suppressed (complementary
-   suppression) for each row or column with a suppressed sensitive
-   cell (primary suppression)
-         ◦ the value in the sensitive cell can be calculated from the marginal
-           total
-
-
- • Even with complementary suppression it is difficult to guarantee
-   adequate protection
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                28/98
-                        Complementary suppressions
-
- • The selection of cells for complementary suppression is
-   complicated
-
- • Linear programming techniques are used to automatically select
-   cells for complementary suppression
-
- • Audit techniques can be applied to evaluate the proposed
-   suppression pattern to see if it provides the required protection
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)          29/98
-Cell suppression: Table without disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15                1      3         1     20
-           Beta                  20               10    10         15     55
-          Gamma                   3               10    10          2     25
-           Delta                 12               14      7         2     35
-           Total                 50               35    30         20    135
+slide 30/98 2
 
 A cell with fewer than 5 respondents is defined as sensitive
 
-
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15                1      3         1     20
-           Beta                  20               10    10         15     55
-          Gamma                   3               10    10          2     25
-           Delta                 12               14      7         2     35
-           Total                 50               35    30         20    135
-
-A cell with fewer than 5 respondents is defined as sensitive
-
-
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15               D1    D2         D3     20
-           Beta                  20               10    10         15     55
-          Gamma                  D4               10    10         D5     25
-           Delta                 12               14      7        D6     35
-           Total                 50               35    30         20    135
+slide 30/98 3
 
 Suppress sensitive cells
 
+slide 30/98 4
 
+Suppressing sensitive cells is not sufficient:<br />
+$35 = D1 + 10 + 10 + 14 \to D1 = 1$<br />
+$30 = D2 + 10 + 10 + 7 \to D2 = 3$<br />
+$50 = 15 + 20 + D4 + 12 \to D4 = 3$
+$35 = 12 + 14 + 7 + D6 \to D6 = 2$
+$20 = 15 + 1 + 3 + D3 \to D3 = 1$
+$25 = 3 + 10 + 10 + D5 \to D5 = 2$
 
+slide 30/98 ??
 
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15               D1    D2         D3     20
-           Beta                  20               10    10         15     55
-          Gamma                  D4               10    10         D5     25
-           Delta                 12               14      7        D6     35
-           Total                 50               35    30         20    135
-
-Suppressing sensitive cells is not sufficient
-35 = D1 + 10 + 10 + 14
-=⇒ D1 = 1
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15                1    D2         D3     20
-           Beta                  20               10    10         15     55
-          Gamma                  D4               10    10         D5     25
-           Delta                 12               14      7        D6     35
-           Total                 50               35    30         20    135
-
-Suppressing sensitive cells is not sufficient
-35 = D1 + 10 + 10 + 14
-=⇒ D1 = 1
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15                1    D2         D3     20
-           Beta                  20               10    10         15     55
-          Gamma                  D4               10    10         D5     25
-           Delta                 12               14      7        D6     35
-           Total                 50               35    30         20    135
-
-Suppressing sensitive cells is not sufficient
-30 = D2 + 10 + 10 + 7
-=⇒ D2 = 3
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15                1      3        D3     20
-           Beta                  20               10    10         15     55
-          Gamma                  D4               10    10         D5     25
-           Delta                 12               14      7        D6     35
-           Total                 50               35    30         20    135
-
-Suppressing sensitive cells is not sufficient
-30 = D2 + 10 + 10 + 7
-=⇒ D2 = 3
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15                1      3        D3     20
-           Beta                  20               10    10         15     55
-          Gamma                  D4               10    10         D5     25
-           Delta                 12               14      7        D6     35
-           Total                 50               35    30         20    135
-
-Suppressing sensitive cells is not sufficient
-50 = 15 + 20 + D4 + 12
-=⇒ D4 = 3
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15                1      3        D3     20
-           Beta                  20               10    10         15     55
-          Gamma                   3               10    10         D5     25
-           Delta                 12               14      7        D6     35
-           Total                 50               35    30         20    135
-
-Suppressing sensitive cells is not sufficient
-50 = 15 + 20 + D4 + 12
-=⇒ D4 = 3
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15                1      3        D3     20
-           Beta                  20               10    10         15     55
-          Gamma                   3               10    10         D5     25
-           Delta                 12               14      7        D6     35
-           Total                 50               35    30         20    135
-
-Suppressing sensitive cells is not sufficient
-35 = 12 + 14 + 7 + D6
-=⇒ D6 = 2
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15                1      3        D3     20
-           Beta                  20               10    10         15     55
-          Gamma                   3               10    10         D5     25
-           Delta                 12               14      7         2     35
-           Total                 50               35    30         20    135
-
-Suppressing sensitive cells is not sufficient
-35 = 12 + 14 + 7 + D6
-=⇒ D6 = 2
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15                1      3        D3     20
-           Beta                  20               10    10         15     55
-          Gamma                   3               10    10         D5     25
-           Delta                 12               14      7         2     35
-           Total                 50               35    30         20    135
-
-Suppressing sensitive cells is not sufficient
-20 = 15 + 1 + 3 + D3
-=⇒ D3 = 1
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15                1      3         1     20
-           Beta                  20               10    10         15     55
-          Gamma                   3               10    10         D5     25
-           Delta                 12               14      7         2     35
-           Total                 50               35    30         20    135
-
-Suppressing sensitive cells is not sufficient
-20 = 15 + 1 + 3 + D3
-=⇒ D3 = 1
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15                1      3         1     20
-           Beta                  20               10    10         15     55
-          Gamma                   3               10    10         D5     25
-           Delta                 12               14      7         2     35
-           Total                 50               35    30         20    135
-
-Suppressing sensitive cells is not sufficient
-25 = 3 + 10 + 10 + D5
-=⇒ D5 = 2
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15                1      3         1     20
-           Beta                  20               10    10         15     55
-          Gamma                   3               10    10          2     25
-           Delta                 12               14      7         2     35
-           Total                 50               35    30         20    135
-
-Suppressing sensitive cells is not sufficient
-25 = 3 + 10 + 10 + D5
-=⇒ D5 = 2
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15               D1    D2         D3     20
-           Beta                  20               D4    D5         15     55
-          Gamma                  D6               10    10         D7     25
-           Delta                 D8               14      7        D9     35
-           Total                 50               35    30         20    135
-
-Suppress one additional cell for each row/column with a sensitive cell
-suppressed
-
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15               D1    D2         D3     20
-           Beta                  20               D4    D5         15     55
-          Gamma                  D6               10    10         D7     25
-           Delta                 D8               14      7        D9     35
-           Total                 50               35    30         20    135
-
+Suppress one additional cell for each row/column with a sensitive cell suppressed.<br />
 The table appears to offer protection to the sensitive cells but:
-(15 + D1 + D2 + D3 ) + (20 + D4 + D5 + 15) - (D1 + D4 + 10 + 14) -
-(D2 + D5 + 10 + 7) = 20 + 55 - 35 - 30
-=⇒ D3 = 1
+$(15 + D1 + D2 + D3 ) + (20 + D4 + D5 + 15) - (D1 + D4 + 10 + 14) - (D2 + D5 + 10 + 7)$
+$= 20 + 55 - 35 - 30 \to D3 = 1$
 
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
+slide 30/98 ?? più slides
 
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15               D1    D2         D3     20
-           Beta                  20               D4    D5         15     55
-          Gamma                  D6               10    10         D7     25
-           Delta                 D8               14      7        D9     35
-           Total                 50               35    30         20    135
+The table provides adequate protection for the sensitive cells but out of a total of $16$ cells, only $7$ cells are published, while $9$ are suppressed.
 
-The table appears to offer protection to the sensitive cells, but:
-(15 + D1 + D2 + D3 ) + (20 + D4 + D5 + 15) - (D1 + D4 + 10 + 14) -
-(D2 + D5 + 10 + 7) = 20 + 55 - 35 - 30
-=⇒ D3 = 1
+slide 30/98 ultima
 
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
+----------------------------------------------------------------
 
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15               D1    D2         D3     20
-           Beta                  20               D4    D5         15     55
-          Gamma                  D6               10    10         D7     25
-           Delta                 D8               14      7        D9     35
-           Total                 50               35    30         20    135
-
-The table appears to offer protection to the sensitive cells, but:
- (15 + D1 + D2 + D3 ) + (20 + D4 + D5 + 15) - (D1 + D4 + 10 + 14) -
-(D2 + D5 + 10 + 7) = 20 + 55 - 35 - 30
-=⇒ D3 = 1
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15               D1    D2         D3     20
-           Beta                  20               D4    D5         15     55
-          Gamma                  D6               10    10         D7     25
-           Delta                 D8               14      7        D9     35
-           Total                 50               35    30         20    135
-
-The table appears to offer protection to the sensitive cells, but:
-(15 + D1 + D2 + D3 ) + (20 + D4 + D5 + 15) - (D1 + D4 + 10 + 14) -
-(D2 + D5 + 10 + 7) = 20 + 55 - 35 - 30
-=⇒ D3 = 1
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15               D1    D2         D3     20
-           Beta                  20               D4    D5         15     55
-          Gamma                  D6               10    10         D7     25
-           Delta                 D8               14      7        D9     35
-           Total                 50               35    30         20    135
-
-The table appears to offer protection to the sensitive cells but:
-(15 + D1 + D2 + D3 ) + (20 + D4 + D5 + 15) - (D1 + D4 + 10 + 14) -
-(D2 + D5 + 10 + 7) = 20 + 55 - 35 - 30
-=⇒ D3 = 1
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15               D1    D2         D3     20
-           Beta                  20               D4    D5         15     55
-          Gamma                  D6               10    10         D7     25
-           Delta                 D8               14      7        D9     35
-           Total                 50               35    30         20    135
-
-The table appears to offer protection to the sensitive cells but:
-(15 + D1 + D2 + D3 ) + (20 + D4 + D5 + 15) - (D1 + D4 + 10 + 14) -
- (D2 + D5 + 10 + 7) = 20 + 55 - 35 - 30
-=⇒ D3 = 1
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15               D1    D2         D3     20
-           Beta                  20               D4    D5         15     55
-          Gamma                  D6               10    10         D7     25
-           Delta                 D8               14      7        D9     35
-           Total                 50               35    30         20    135
-
-The table appears to offer protection to the sensitive cells but:
-(15 + D1 + D2 + D3 ) + (20 + D4 + D5 + 15) - (D1 + D4 + 10 + 14) - (D2 +
-D5 + 10 + 7) = 20 + 55 - 35 - 30
-=⇒ D3 = 1
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15               D1    D2          1     20
-           Beta                  20               D4    D5         15     55
-          Gamma                  D6               10    10         D7     25
-           Delta                 D8               14      7        D9     35
-           Total                 50               35    30         20    135
-
-The table appears to offer protection to the sensitive cells but:
-(15 + D1 + D2 + D3 ) + (20 + D4 + D5 + 15) - (D1 + D4 + 10 + 14) - (D2 +
-D5 + 10 + 7) = 20 + 55 - 35 - 30
-=⇒ D3 = 1
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-Cell suppression: Table without disclosures – Example
-
-Table containing information about employees by company and
-education level
-                                                   Education level
-         Company                Low          Medium High Very High      Total
-           Alpha                 15               D1    D2         D3     20
-           Beta                  20               10    10         15     55
-          Gamma                  D4               D5    10         D6     25
-           Delta                 D7               14    D8         D9     35
-           Total                 50               35    30         20    135
-
-The table provides adequate protection for the sensitive cells but out of
-a total of 16 cells, only 7 cells are published, while 9 are suppressed
-
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  30/98
-                                                Rounding
-
-To reduce data loss due to suppression, use rounding of values to a
-multiple of the sensitivity threshold
+### Rounding
+To reduce data loss due to suppression, use **rounding of values** to a multiple of the sensitivity threshold.
 
   • random: random decision on whether cell values will be rounded
     up or down
