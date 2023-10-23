@@ -1093,10 +1093,6 @@ To reduce data loss due to suppression, use **rounding of values** to a multiple
     published marginal totals
 Note: all cell values must be a multiple of the threshold value
 
-
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                 31/98
                          Random rounding – Example
 
                                                    Education level
@@ -1108,9 +1104,6 @@ Note: all cell values must be a multiple of the threshold value
                   Total              50               35        30   20    135
 
 
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                     32/98
                          Random rounding – Example
 
                                                    Education level
@@ -1130,8 +1123,6 @@ Note: all cell values must be a multiple of the threshold value
                   Total              50               35        30    20    135
 
 
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                      32/98
                        Controlled rounding – Example
 
                                                     Education level
@@ -1143,9 +1134,6 @@ Note: all cell values must be a multiple of the threshold value
                   Total               50               35       30   20    135
 
 
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                     33/98
                        Controlled rounding – Example
 
                                                     Education level
@@ -1165,8 +1153,6 @@ Note: all cell values must be a multiple of the threshold value
                   Total              50               35        30   20    135
 
 
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                     33/98
                                     Controlled rounding
 
  • Linear programming methods are used to identify a controlled
@@ -1179,9 +1165,6 @@ Note: all cell values must be a multiple of the threshold value
            tables
 
 
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)               34/98
                                  Confidentiality edit (1)
 
  • Developed by the U.S. Census Bureau to provide protection of
@@ -1199,7 +1182,6 @@ Note: all cell values must be a multiple of the threshold value
          ◦ statistics are protected by changing input data
 
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)               35/98
                                  Confidentiality edit (2)
 
  • For the 100 percent microdata file, confidentiality edit applies
@@ -1218,7 +1200,6 @@ Note: all cell values must be a multiple of the threshold value
    tables
 
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)               36/98
                      Confidentiality edit – Example (1)
 
 Records for the 20 employees of company Alfa prova prova prova
@@ -1244,7 +1225,7 @@ prova
                18      Joe                 Alfa                  low          41      black
                19      Jeff                Alfa                  low          44      black
                20      Nancy               Alfa                  low          37      white
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                                37/98
+
                     Confidentiality edit – Example (2)
 
 1. Take a sample of records from the microdata file (say a 10%
@@ -1261,9 +1242,6 @@ prova
            has medium education
 
 
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)              38/98
                     Confidentiality edit – Example (3)
 
 3. We also assume that part of the randomly selected 10% sample
@@ -1278,10 +1256,6 @@ prova
 
 5. Use the swapped data file directly to produce tables
 
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)           39/98
                      Confidentiality edit – Example (4)
 
 Records for the 20 employees of company Alfa prova prova prova
@@ -1307,7 +1281,7 @@ prova
                18      Joe                 Alfa                  low          41      black
                19      Jeff                Alfa                  low          44      black
                20      Nancy               Alfa                  low          37      white
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                                40/98
+
                      Confidentiality edit – Example (4)
 
 Take a sample of records from the microdata file (say a 10% sample)
@@ -1333,7 +1307,7 @@ prova prova prova prova
                18      Joe                 Alfa                  low          41      black
                19      Jeff                Alfa                  low          44      black
                20      Nancy               Alfa                  low          37      white
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                                40/98
+ 
                      Confidentiality edit – Example (4)
 
 Since we need tables by company and education level, we find a
@@ -1359,7 +1333,7 @@ match in some other company on the other variables
                18      Joe                 Alfa                  low          41      black
                19      Jeff                Alfa                  low          44      black
                20      Nancy               Alfa                  low          37      white
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                                40/98
+
                      Confidentiality edit – Example (4)
 
 Part of the randomly selected 10% sample from other companies
@@ -1385,7 +1359,7 @@ match records in company Alfa
                18      Joe                 Alfa                  low          41      black
                19      Jeff                Alfa                  low          44      black
                20      Heather             Alfa                  low          37      white
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                                40/98
+
                     Confidentiality edit – Example (5)
 
                                                Education level (original)
@@ -1397,9 +1371,6 @@ match records in company Alfa
                   Total               50               35       30    20     135
 
 
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                       41/98
                     Confidentiality edit – Example (5)
 
                                                Education level (original)
@@ -1419,15 +1390,11 @@ match records in company Alfa
                   Total              50               35        30    20     135
 
 
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                       41/98
       Macrodata Disclosure Protection Techniques:
               Tables of Magnitude Data
 
 
 
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   42/98
                                                   Outline
 
  • Statistical DBMS
@@ -1443,9 +1410,6 @@ match records in company Alfa
          ◦ Synthetic techniques
 
 
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   43/98
           Protection of tables of magnitude data – 1
 
  • Magnitude data are generally nonnegative quantities reported in
@@ -1461,11 +1425,7 @@ match records in company Alfa
  • The units that are most visible because of their size do not receive
    any protection from sampling
 
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)       44/98
-          Protection of tables of magnitude data – 2
+		  Protection of tables of magnitude data – 2
 
 1. Identify sensitive cells
          ◦ p-percent
@@ -1483,7 +1443,8 @@ match records in company Alfa
 
          ◦ Information loss
          ◦ (Parameters are not disclosed)
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   45/98
+
+
                                       Suppression rules
 
  • Primary suppression rules determine whether a cell could reveal
@@ -1502,7 +1463,7 @@ match records in company Alfa
    whether it is enough difficult for one respondent to estimate the
    value reported by another respondent too closely
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)          46/98
+
                  Primary suppression rule: p-percent
 
  • Disclosure of magnitude data occurs if the user can estimate the
@@ -1523,7 +1484,7 @@ match records in company Alfa
 
  • The largest value x1 is the most exposed
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)             47/98
+
     Primary suppression rule: p-percent – Example
 
  • Consider the respondents that contribute to the total income in a
@@ -1542,8 +1503,6 @@ match records in company Alfa
    the other citizens is protected
 
 
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)        48/98
     Primary suppression rule: p-percent – Example
 
  • Consider the respondents that contribute to the total income in a
@@ -1560,9 +1519,6 @@ match records in company Alfa
    estimate Alice’s income?
 
 
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      48/98
     Primary suppression rule: p-percent – Example
 
  • Consider the respondents that contribute to the total income in a
@@ -1580,9 +1536,6 @@ match records in company Alfa
    Bob, Carol, David, whose total income is 130K
 
 
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      48/98
     Primary suppression rule: p-percent – Example
 
  • Consider the respondents that contribute to the total income in a
@@ -1602,7 +1555,6 @@ match records in company Alfa
          ◦ ≥80K since it is higher than Bob’s
          ◦ ≤120K (=250K−130K)
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      48/98
     Primary suppression rule: p-percent – Example
 
  • Consider the respondents that contribute to the total income in a
@@ -1621,8 +1573,6 @@ match records in company Alfa
    can estimate that Alice’s income is between 80K and 120K
    =⇒ sensitive for any p≥20
 
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      48/98
     Primary suppression rule: p-percent – Example
 
  • Consider the respondents that contribute to the total income in a
@@ -1645,7 +1595,6 @@ match records in company Alfa
                                i=c+2
 
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      48/98
     Primary suppression rule: p-percent – Example
 
  • Consider the respondents that contribute to the total income in a
@@ -1668,7 +1617,6 @@ match records in company Alfa
                              i=3+2
 
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      48/98
     Primary suppression rule: p-percent – Example
 
  • Consider the respondents that contribute to the total income in a
@@ -1691,7 +1639,6 @@ match records in company Alfa
                                i=5
 
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      48/98
     Primary suppression rule: p-percent – Example
 
  • Consider the respondents that contribute to the total income in a
@@ -1713,7 +1660,7 @@ match records in company Alfa
                                                                 i=1
 
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)         48/98
+
     Primary suppression rule: p-percent – Example
 
  • Consider the respondents that contribute to the total income in a
@@ -1733,7 +1680,6 @@ match records in company Alfa
                   p ≤ Cell − (Alice + Bob + Carol + David)
 
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      48/98
     Primary suppression rule: p-percent – Example
 
  • Consider the respondents that contribute to the total income in a
@@ -1753,7 +1699,6 @@ match records in company Alfa
                         p ≤ 250 − (100 + 80 + 30 + 20)
 
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      48/98
     Primary suppression rule: p-percent – Example
 
  • Consider the respondents that contribute to the total income in a
@@ -1773,7 +1718,6 @@ match records in company Alfa
                                    p ≤ 20
 
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      48/98
                      Primary suppression rule: pq (1)
 
  • In the p-percent rule, we assumed that there was no prior
@@ -1790,9 +1734,6 @@ match records in company Alfa
    published
 
 
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)          49/98
                      Primary suppression rule: pq (2)
 
  • Formally, a cell is protected if
@@ -1808,9 +1749,6 @@ match records in company Alfa
    estimate ability)
 
 
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)            50/98
         Primary suppression rule: pq – Example (1)
 
  • Consider the respondents that contribute to the total income in a
@@ -1825,10 +1763,6 @@ match records in company Alfa
  • Assume q=80% to represent how accurately respondents can
    estimate another respondent’s value before any data publishing
 
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)       51/98
         Primary suppression rule: pq – Example (1)
 
  • Consider the respondents that contribute to the total income in a
@@ -1845,9 +1779,6 @@ match records in company Alfa
  • For Alice’s income this implies range [20,180]
 
 
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)       51/98
         Primary suppression rule: pq – Example (2)
 
  • Consider the respondents that contribute to the total income in a
@@ -1861,9 +1792,6 @@ match records in company Alfa
          ◦   ...
 
 
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      52/98
         Primary suppression rule: pq – Example (2)
 
  • Consider the respondents that contribute to the total income in a
@@ -1878,10 +1806,6 @@ match records in company Alfa
  • The coalition of c = 3 respondents that can better estimate Alice’s
    income is Bob, Carol, David
 
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      52/98
         Primary suppression rule: pq – Example (2)
 
  • Consider the respondents that contribute to the total income in a
@@ -1900,7 +1824,6 @@ match records in company Alfa
          ◦ ≥80K since it is higher than Bob’s
          ◦ ≤120K (=250K−130K)
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)       52/98
         Primary suppression rule: pq – Example (2)
 
  • Consider the respondents that contribute to the total income in a
@@ -1919,8 +1842,6 @@ match records in company Alfa
                              100 i=c+2      100
 
 
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      52/98
         Primary suppression rule: pq – Example (2)
 
  • Consider the respondents that contribute to the total income in a
@@ -1939,8 +1860,6 @@ match records in company Alfa
                            100 i=3+2      100
 
 
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      52/98
         Primary suppression rule: pq – Example (2)
 
  • Consider the respondents that contribute to the total income in a
@@ -1959,8 +1878,6 @@ match records in company Alfa
                              100 i=5      100
 
 
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      52/98
         Primary suppression rule: pq – Example (2)
 
  • Consider the respondents that contribute to the total income in a
@@ -1979,8 +1896,6 @@ match records in company Alfa
                                 100 i=5
 
 
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      52/98
         Primary suppression rule: pq – Example (2)
 
  • Consider the respondents that contribute to the total income in a
@@ -2000,9 +1915,6 @@ match records in company Alfa
                                 i=5
 
 
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      52/98
         Primary suppression rule: pq – Example (2)
 
  • Consider the respondents that contribute to the total income in a
@@ -2022,8 +1934,6 @@ match records in company Alfa
                                                           i=1   0.80
 
 
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)          52/98
         Primary suppression rule: pq – Example (2)
 
  • Consider the respondents that contribute to the total income in a
@@ -2042,8 +1952,6 @@ match records in company Alfa
                                                                    0.80
 
 
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)             52/98
         Primary suppression rule: pq – Example (2)
 
  • Consider the respondents that contribute to the total income in a
@@ -2062,8 +1970,6 @@ match records in company Alfa
                                                    0.80
 
 
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      52/98
         Primary suppression rule: pq – Example (2)
 
  • Consider the respondents that contribute to the total income in a
@@ -2082,8 +1988,6 @@ match records in company Alfa
                                        0.80
 
 
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      52/98
         Primary suppression rule: pq – Example (2)
 
  • Consider the respondents that contribute to the total income in a
@@ -2100,9 +2004,6 @@ match records in company Alfa
                                                          p ≤ 16
 
 
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      52/98
                        Primary suppression rule: (n,k)
 
  • Regardless of the number of respondents in a cell, if a small
@@ -2119,9 +2020,6 @@ match records in company Alfa
  • Many agencies use an (n,k) rule with n = 1 or n = 2
 
 
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      53/98
           Primary suppression rule: (n,k) – Example
 
  • Consider the respondents that contribute to the total income in a
@@ -2138,10 +2036,6 @@ match records in company Alfa
    The income of Alice and Bob (100K+80K=180K) represents the
    72% of the cell value (250K)
 
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      54/98
                Protection of tables of magnitude data
 
 1. Identify sensitive cells
@@ -2160,7 +2054,8 @@ match records in company Alfa
 
          ◦ Information loss
          ◦ (Parameters are not disclosed)
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   55/98
+
+
                            Secondary suppression (1)
 
  • Once sensitive cells have been identified, there are two options:
@@ -2174,10 +2069,6 @@ match records in company Alfa
  • An administrative way to avoid cell suppression consists in
    obtaining written permission from respondents
 
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                  56/98
                            Secondary suppression (2)
 
  • Other non-sensitive cells must be selected for suppression to
@@ -2194,9 +2085,6 @@ match records in company Alfa
            accurately
 
 
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                 57/98
                            Secondary suppression (3)
 
  • Any complementary suppression is acceptable as long as the
@@ -2213,8 +2101,6 @@ match records in company Alfa
 
  • An automated audit should be applied to ensure this is true
 
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)         58/98
                Protection of tables of magnitude data
 
 1. Identify sensitive cells
@@ -2233,7 +2119,7 @@ match records in company Alfa
 
          ◦ Information loss
          ◦ (Parameters are not disclosed)
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   59/98
+ 
                                                      Audit
 
  • If totals are published the sum of the (primary or secondary)
@@ -2250,8 +2136,6 @@ match records in company Alfa
  • Simple for small tables, possibly computationally intractable for
    large tables
 
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                     60/98
                                         Information loss
 
  • The selection of the complementary cells should result in
@@ -2266,9 +2150,6 @@ match records in company Alfa
          ◦ the total number of suppressed cells
 
 
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)               61/98
                        Information in parameter values
 
 While the suppression rules can be published, parameter values
@@ -2285,8 +2166,6 @@ Once the value for one suppressed cell has been uniquely determined,
 other cell values can easily be derived
 
 
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)        62/98
   Protection of tables of magnitude data – Example
 
                     Employees by sex and department
@@ -2302,9 +2181,6 @@ other cell values can easily be derived
               Total    6300 11400     4200   8000 29900
 
 
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   63/98
    Protection of tables of magnitude data – Example
 
                      Employees by sex and department
@@ -2323,7 +2199,6 @@ other cell values can easily be derived
 contributes more than 90%
 
 
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      63/98
    Protection of tables of magnitude data – Example
 
                      Employees by sex and department
@@ -2342,7 +2217,6 @@ contributes more than 90%
 contributes more than 90%
 
 
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      63/98
    Protection of tables of magnitude data – Example
 
                      Employees by sex and department
@@ -2361,7 +2235,6 @@ contributes more than 90%
 contributes more than 90%
 
 
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      63/98
    Protection of tables of magnitude data – Example
 
                      Employees by sex and department
@@ -2378,15 +2251,10 @@ contributes more than 90%
 
 Secondary suppression
 
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   63/98
                                              Microdata
 
 
 
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   64/98
                                                   Outline
 
  • Statistical DBMS
@@ -2402,9 +2270,6 @@ Secondary suppression
          ◦ Synthetic techniques
 
 
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   65/98
                                Macrodata vs microdata
 
  • In the past data were mainly released in tabular form (macrodata)
@@ -2417,10 +2282,6 @@ Secondary suppression
  • Microdata are subject to a greater risk of privacy breaches (linking
    attacks)
 
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                     66/98
                                            Microdata (1)
 
  • Many situations require today that the specific stored data
@@ -2436,9 +2297,6 @@ Secondary suppression
  • De-identifying data, however, provides no guarantee of anonymity
 
 
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)         67/98
                                            Microdata (2)
 
  • Released information often contains other quasi-identifying data
@@ -2454,9 +2312,6 @@ Secondary suppression
            maintained as much as possible
 
 
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)              68/98
                              Disclosure risk – Example
 
   SSN Name Race Date of birth Sex ZIP                                   Marital status Disease
@@ -2477,7 +2332,6 @@ Secondary suppression
  Sue J. Doe 900 Market St. San Francisco                          94142 64/04/12        F      divorced
  ................ ................ ................                ........ ........ ........ ................
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                                                    69/98
           Microdata disclosure protection techniques
 
 To limit the disclosure risk, the following procedures should be applied:
@@ -3252,6 +3106,559 @@ Substitute Income with the average for each group
         Blank and impute                                yes         yes
         SMIKe                                           yes         yes
         Multiply imputed partially synthetic dataset    yes         yes
+
+----------------------------------------------------------------
+
+# Privacy and Data Protection in Emerging Scenarios
+
+ICT ecosystem
+• Advancements in the ICT and networks have changed our society
+• 5G and beyond, infrastructures and services are more powerful,
+efficient, and complex
+
+• ICT and network advancements are enabling factors for a smart
+society . . .
+
+
+. . . Everything is getting smart
+
+Smart car
+
+Augmented reality
+
+Smart entertainment systems
+
+Museum and exhibitions
+
+Smart e-commerce
+
+Smart governance
+
+Health Care
+
+Intelligent shops
+
+Smart toothbrush
+
+Smart society
+
+
+Smart society - Advantages
+
+
+Smart services and security – Advantages
++ Better protection mechanisms
++ Business continuity and disaster recovery
++ Prevention and response
+
+. . . but . . .
+
+
+Smart services and security – Disadvantages
+− More complexity . . .
+. . . weakest link becomes a point of attack
+◦ system hacking
+◦ improper information leakage
+◦ data and process tampering
+
+− Explosion of damages and violations
+− Loss of control over data and processes
+
+Maybe too smart? – 1
+
+
+Maybe too smart? – 2
+
+Security . . . a complex problem
+
+The role of data in a smart environment
+
+=⇒ better governance and intelligent systems
+
+The most valuable resource - Data
+
+Impact on data protection and privacy
+
+Huge amount of data stored at external providers
+
+Cloud computing
+• The Cloud allows users and organizations to rely on external
+providers for storing, processing, and accessing their data
++ high configurability and economy of scale
++ data and services are always available
++ scalable infrastructure for applications
+
+• Users lose control over their own data
+− new security and privacy problems
+
+• Need solutions to protect data and to securely process them
+in the cloud
+
+
+Cloud computing: Today
+Cloud Service Providers (CSPs) apply security measures in the
+services they offer but these measures protect only the perimeter and
+storage against outsiders
+
+data owner
+
+cloud
+
+data owner
+
+cloud
+
+functionality implies full trust in the CSP that has full access to the da
+
+protection but limited functionality since the CSP cannot access data
+
+
+
+Cloud computing: Today
+Cloud Service Providers (CSPs) apply security measures in the
+services they offer but these measures protect only the perimeter and
+storage against outsiders
+
+data owner
+
+cloud
+
+data owner
+
+cloud
+
+functionality
+
+• functionality
+implies full trust in the CSP that has full access to the data (e.g., Goo
+
+protection but limited functionality since the CSP cannot access data
+
+Cloud computing: Today
+Cloud Service Providers (CSPs) apply security measures in the
+services they offer but these measures protect only the perimeter and
+storage against outsiders
+
+data owner
+
+cloud
+
+data owner
+
+cloud
+
+functionality but no protection
+(key is with the CSP)
+
+• functionality implies full trust in the CSP that has full access to the
+data (e.g., Google Cloud Storage, iCloud)
+
+protection but limited functionality since the CSP cannot access data
+
+Cloud computing: Today
+Cloud Service Providers (CSPs) apply security measures in the
+services they offer but these measures protect only the perimeter and
+storage against outsiders
+
+data owner
+
+cloud
+
+functionality but no protection
+(key is with the CSP)
+
+data owner
+
+cloud
+
+protection
+
+• functionality implies full trust in the CSP that has full access to the
+data (e.g., Google Cloud Storage, iCloud)
+
+• protection
+but limited functionality since the CSP cannot access data (e.g., Boxc
+
+Cloud computing: Today
+Cloud Service Providers (CSPs) apply security measures in the
+services they offer but these measures protect only the perimeter and
+storage against outsiders
+
+data owner
+
+cloud
+
+functionality but no protection
+(key is with the CSP)
+
+data owner
+
+cloud
+
+protection but limited functionality
+(you cannot access data as you like)
+
+• functionality implies full trust in the CSP that has full access to the
+data (e.g., Google Cloud Storage, iCloud)
+• protection but limited functionality since the CSP cannot access
+data (e.g., Boxcryptor, SpiderOak)
+
+Cloud computing: New vision
+Solutions that provide protection guarantees giving the data owners
+both: full control over their data and cloud functionality over them
+
+data owner
+
+cloud
+
+client-side trust boundary: only the behavior of the client should be co
+=⇒ techniques and implementations supporting direct processing
+of encrypted data in the cloud
+
+https://mosaicrown.eu
+
+https://www.marsalproject.eu
+
+
+https://glaciation-project.eu
+
+
+Cloud computing: New vision
+Solutions that provide protection guarantees giving the data owners
+both: full control over their data and cloud functionality over them
+
+• client-side trust boundary: only the behavior of the client should
+be considered trusted
+=⇒ techniques and implementations supporting direct processing
+of encrypted data in the cloud
+
+https://mosaicrown.eu
+
+https://www.marsalproject.eu
+
+https://glaciation-project.eu
+
+
+Data protection – Base level
+
+
+Data protection – Base level
+
+
+
+Data protection – Regulation
+
+
+Data protection – Confidentiality (1)
+• Minimize release/exposition
+◦ correlation among different data sources
+◦ indirect exposure of sensitive information
+◦ de-identification ̸= anonymization
+
+
+Data protection – Confidentiality (2)
+
+Characterization of Data Protection
+Challenges in Cloud Scenarios
+
+Scientific and technical challenges
+Three dimensions characterize the problems and challenges
+
+
+Security properties
+
+
+Access requirements
+
+
+
+Architectures
+
+
+Combinations of the dimensions
+• Every combination of the different instances of the dimensions
+identifies new problems and challenges
+• The security properties to be guaranteed can depend on the
+access requirements and on the trust assumption on the providers
+involved in storage and/or processing of data
+• Providers can be:
+◦ curious
+◦ lazy
+◦ malicious
+
+
+Digital Data Market
+
+Digital Data Market
+
+
+
+Dimensions of the problem and challenges
+• Requirements capturing and representation
+policies regulating access, sharing, usage and processing
+
+Enforcing technologies
+data wrapping / sanitization
+
+Enforcement phase
+ingestion / storage / analytics
+
+
+Dimensions of the problem and challenges
+• Requirements capturing and representation
+policies regulating access, sharing, usage and processing
+
+Enforcing technologies
+data wrapping / sanitization
+
+Enforcement phase
+ingestion / storage / analytics
+
+
+
+Dimensions of the problem and challenges
+• Requirements capturing and representation
+policies regulating access, sharing, usage and processing
+
+• Enforcing technologies
+data wrapping / sanitization
+
+Enforcement phase
+ingestion / storage / analytics
+
+
+
+Dimensions of the problem and challenges
+• Requirements capturing and representation
+policies regulating access, sharing, usage and processing
+
+• Enforcing technologies
+data wrapping / sanitization
+
+Enforcement phase
+ingestion / storage / analytics
+
+
+Dimensions of the problem and challenges
+• Requirements capturing and representation
+policies regulating access, sharing, usage and processing
+
+• Enforcing technologies
+data wrapping / sanitization
+
+• Enforcement phase
+ingestion / storage / analytics
+
+
+
+Enforcement phase
+• Ingestion / Storage / Analytics
+____
+____
+____
+
+Data Market
+
+Data Owner
+
+____
+____
+____
+
+Data Owner
+
+____
+____
+____
+
+Data Owner
+LEGEND
+
+policy
+
+plaintext data
+
+wrapped data
+
+sanitized data
+
+Multi-Owner data Sharing for Analytics and Integration respecting Confidentiality and OWNer control - https://mosaicrown.eu
+
+
+Enforcement phase
+• Ingestion / Storage / Analytics
+____
+____
+____
+
+Ingestion
+
+Data Market
+
+Data Owner
+
+____
+____
+____
+
+Ingestion
+
+Data Owner
+
+____
+____
+____
+
+Ingestion
+
+Data Owner
+LEGEND
+
+policy
+
+plaintext data
+
+wrapped data
+
+sanitized data
+
+Multi-Owner data Sharing for Analytics and Integration respecting Confidentiality and OWNer control - https://mosaicrown.eu
+
+Enforcement phase
+• Ingestion / Storage / Analytics
+____
+____
+____
+
+Ingestion
+
+Data Market
+
+Data Owner
+
+____
+____
+____
+
+Ingestion
+
+Data Owner
+
+Storage
+
+____
+____
+____
+
+Ingestion
+
+Data Owner
+LEGEND
+
+policy
+
+plaintext data
+
+wrapped data
+
+sanitized data
+
+Multi-Owner data Sharing for Analytics and Integration respecting Confidentiality and OWNer control - https://mosaicrown.eu
+
+
+Enforcement phase
+• Ingestion / Storage / Analytics
+____
+____
+____
+
+Ingestion
+
+Data Market
+
+Data Owner
+
+____
+____
+____
+____
+____
+____
+
+Ingestion
+Analytics
+
+Data Owner
+
+Storage
+
+Analytics
+
+____
+____
+____
+
+Ingestion
+
+Data Owner
+LEGEND
+
+policy
+
+plaintext data
+
+wrapped data
+
+sanitized data
+
+Multi-Owner data Sharing for Analytics and Integration respecting Confidentiality and OWNer control - https://mosaicrown.eu
+
+
+Some Challenges in Data Protection
+
+Issues to be addressed
+• Privacy of users
+• Data protection
+• Query execution
+• Private access
+• Data integrity and correctness
+• Access control enforcement
+• Data publication and utility
+• Collaborative query execution: authorization enforcement
+in distributed query execution
+
+
+Security and privacy problems
+
+S. De Capitani di Vimercati, S. Foresti, P. Samarati, “Protecting Data and Queries in Cloud-Based Scenarios,” in
+SN Computer Science, vol. 4, n. 5, September 2023.
+
+
+Security and privacy problems
+
+S. De Capitani di Vimercati, S. Foresti, P. Samarati, “Protecting Data and Queries in Cloud-Based Scenarios,” in
+SN Computer Science, vol. 4, n. 5, September 2023.
+
+
+Security and privacy problems
+
+S. De Capitani di Vimercati, S. Foresti, P. Samarati, “Protecting Data and Queries in Cloud-Based Scenarios,” in
+SN Computer Science, vol. 4, n. 5, September 2023.
+
+
+Security and privacy problems
+
+S. De Capitani di Vimercati, S. Foresti, P. Samarati, “Protecting Data and Queries in Cloud-Based Scenarios,” in
+SN Computer Science, vol. 4, n. 5, September 2023.
+
+
+Security and privacy problems
+
+S. De Capitani di Vimercati, S. Foresti, P. Samarati, “Protecting Data and Queries in Cloud-Based Scenarios,” in
+SN Computer Science, vol. 4, n. 5, September 2023.
+
+
+
 
 
 
