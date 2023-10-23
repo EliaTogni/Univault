@@ -795,91 +795,64 @@ Cross-reference analysis by the Whitehead Institute for Biomedical Research in C
 
 ### Sensitive inference from data mining
 #### The Target case
-• Target is the second-largest discount retailer in the U.S.
-• Target assigns every customer a Guest ID number:
-◦ tied to credit card, name, email address, . . .
-◦ stores history of bought goods and other (bought) information
-◦ mining on these data for targeted advertising
+Target is the second-largest discount retailer in the U.S. It assigns every customer a Guest ID number:
+- tied to credit card, name, email address, . . .;
+- stores history of bought goods and other (bought) information;
+- mining on these data for targeted advertising.
 
+slide 131/155
 
-The Target case – 3
-• Analysts at Target identified ∼ 25 products that assign each
-shopper a pregnancy prediction score
-◦ e.g., woman, 23 y.o., buying in March cocoa-butter lotion, a purse
-large enough to double as a diaper bag, zinc and magnesium
-supplements and a bright blue rug =⇒ 87% due late August
-◦ due time in a small window to send coupons timed to very specific
-stages of a pregnancy
+Analysts at Target identified $\sim 25$ products that assign each shopper a pregnancy prediction score. E.g., woman, $23$ y.o., buying in March cocoa-butter lotion, a purse large enough to double as a diaper bag, zinc and magnesium supplements and a bright blue rug $\to$ $87\%$ due late August. Due time in a small window to send coupons timed to very specific stages of a pregnancy.
 
-• Mining data reveals customers’ major life events (e.g., graduating
-from college or getting a new job or moving to a new town)
-◦ shopping habits became flexible, predictable, and potential gold
-mines for retailers
-◦ between 2002 (starting of similar campaigns) and 2010 Target’s
-revenues grew from $44B to $67B
+Mining data reveals customers’ major life events (e.g., graduating
+from college or getting a new job or moving to a new town):
+- shopping habits became flexible, predictable, and potential gold mines for retailers;
+- between $2002$ (starting of similar campaigns) and $2010$ Target’s revenues grew from $ $44$B to $ $67$B.
 
+----------------------------------------------------------------
 
-# Social media
+### Social media
+#### Profiling in social media
+Our social media activities and likes may reveal sensitive information.
 
-Profiling in social media
-Our social media activities and likes may reveal sensitive information
+slide 134/155
 
-... With the users’ help
+----------------------------------------------------------------
 
-“Can’t I just email you a link to my blog, Miss?”
-
-
-Is information shared with whom?
+#### Is information shared with whom?
 Facebook default sharing settings from 2005 to 2010
 
-Friends on Facebook? – 1
-• In 2011: experiment to study how friendships are created on
-Facebook
-• Implementation of a socialbot
-◦ software agent simulating human behaviors
-◦ impersonating a non-existing user
+slide 136/155
 
-• The socialbot sent friendship requests to unknown users
-• Two-step process: no friends in common, and friends of friends
+----------------------------------------------------------------
 
-• Accepted requests:
-◦ 2 out of 10 if no friends in
-common
-◦ 6 out of 10 if friends in
-common
+#### Friends on Facebook?
+In $2011$ an experiment was conducted to study how friendships are created on Facebook:
+- implementation of a socialbot;
+- software agent simulating human behaviors;
+- impersonating a non-existing user.
 
-• Three weeks activity, 102 bots:
-◦ 3,000 friends
-◦ 46,500 e-mail addresses
-◦ 14,500 physical addresses
+The socialbot sent friendship requests to unknown users. Two-step process: no friends in common, and friends of friends.
 
+Accepted requests:
+- $2$ out of $10$ if no friends in common;
+- $6$ out of $10$ if friends in common.
 
+Three weeks activity, $102$ bots:
+- $3,000$ friends;
+- $46,500$ e-mail addresses;
+- $14,500$ physical addresses
 
-Facebook: information on you
+slide 139/155
 
+#### Cambridge Analytica scandal
 
-Facebook: information on you
+slide 142/155
 
-
-Facebook: information on you
-
-
-. . . And it’s not only Facebook
-
-
-. . . And data can be shared
-
-
-Cambridge Analytica scandal – 1
-
-• Personality quiz app
-◦ installed by 330,000 Facebook users who gave permission for
-accessing their data. . .
-◦ . . . but the app was also collecting data of those users’ friends
-
-• Data from 87 million Facebook users retrieved by the app
-◦ data shared with Cambridge Analytica
-◦ users profiled through their data
+Personality quiz app, installed by $330,000$ Facebook users who gave permission for accessing their data but the app was also collecting data of those users’ friends.<br />
+Data from 87 million Facebook users retrieved by the app:
+- data shared with Cambridge Analytica;
+- users profiled through their data.
 
 User profiling - Facebook/Cambridge Analytica
 OCEAN model
