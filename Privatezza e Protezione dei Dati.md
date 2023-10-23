@@ -63,7 +63,8 @@ Disclosure relates to attribution of sensitive information to a respondent (an i
 - the released data make it possible to determine the value of some characteristic of a respondent even if no released record refers to the respondent (**inferential disclosure**).
 
 #### Identity disclosure
-It occurs if a third party can identify a respondent from the released data. Revealing that an individual is a respondent in a data collection may or may not violate confidentiality requirements.<br />
+It occurs if a third party can identify a respondent from the released data.<br />
+Revealing that an individual is a respondent in a data collection may or may not violate confidentiality requirements.<br />
 In macrodata, revealing identity is generally not a problem, unless the identification leads to divulging confidential information (attribute disclosure).
 In microdata, identification is generally regarded as a problem, since microdata records are detailed; identity disclosure usually implies also attribute disclosure.
 
@@ -265,21 +266,17 @@ Each path in $DGH_{DT}$ represents a generalization strategy for PT. We call **l
 1) each $k$-minimal generalization is locally minimal with respect to a path (but the converse is not true);
 2) going up in the hierarchy the number of tuples that must be removed to guarantee $k$-anonymity decreases.
 
-If there is no solution that guarantees $k$-anonymity suppressing
-less than $MaxSup$ tuples at height $h$, there cannot exist a solution, with height lower than h that guarantees it.<br />
-The algorithm adopts a binary search on the lattice of distance
-vectors:
+If there is no solution that guarantees $k$-anonymity suppressing less than $MaxSup$ tuples at height $h$, there cannot exist a solution, with height lower than h that guarantees it.<br />
+The algorithm adopts a binary search on the lattice of distance vectors:
 1) evaluate solutions at height $\lfloor h/2\rfloor$;
 2) if there exists at least a solution satisfying $k$-anonymity
 	1) then evaluates solutions at height $\lfloor h/4 \rfloor$;
 	2) otherwise evaluates solutions at height $\lfloor 3h/4 \rfloor$.
 3) until the algorithm reaches the lowest height for which there is a distance vector that satisfies $k$-anonymity.
 
-To reduce the computational cost, it adopts a distance vector
-matrix that avoids the explicit computation of each generalized
-table.
+To reduce the computational cost, it adopts a distance vector matrix that avoids the explicit computation of each generalized table.
 
-An example for computing a $k$-minimal solution
+An example for computing a $k$-minimal solution.
 
 slide 53/155
 
@@ -297,7 +294,7 @@ Satisfies $2$-anonymity (suppressing $t_8$ and $t_9$)
 ----------------------------------------------------------------
 
 ### $k$-Optimize algorithm
-Order attributes in QI and the values in their domains. Associate an integer index value with each domain value, following the defined order
+Order attributes in QI and the values in their domains. Associate an integer index value with each domain value, following the defined order.
 
 slide 55/155
 
@@ -322,6 +319,7 @@ $k$-anonymity with respect to a proper subset of $QI$ is a necessary (not suffic
 - iteration $i$: consider all the $i$-uples of attributes, obtained combining generalizations that satisfied $k$-anonymity at iteration $i − 1$. Discard non $k$ anonymous solutions;
 - ...
 - iteration $\vert QI \vert$ returns the final result.
+
 Incognito adopts a bottom-up approach for the visit of $DGH_s$.
 
 An example of the Incognito algorithm.
@@ -335,6 +333,7 @@ The exact algorithms have complexity exponential in the size of $QI$. Heuristic 
 - \[I-02\]: based on genetic algorithms, it solves the $k$-anonymity problem using an incomplete stochastic search method;
 - \[MW-04\]: based on simulated annealing for finding locally minimal solutions, it requires high computational time and does not assure the quality of the solution;
 - \[FWY-05\]: top-down heuristic to make a table to be released
+
 $k$-anonymous; it starts from the most general solution, and iteratively specializes some values of the current solution until the k-anonymity requirement is violated
 
 No bounds on efficiency and goodness of the solutions can be
@@ -376,11 +375,9 @@ Approximation algorithm for _CG_:
 ----------------------------------------------------------------
 
 ### k-anonymity revisited
-$k$-anonymity requirement: each release of data must be such that
-every combination of values of quasi-identifiers can be indistinctly matched to at least $k$ respondents.<br />
+$k$-anonymity requirement: each release of data must be such that every combination of values of quasi-identifiers can be indistinctly matched to at least $k$ respondents.<br />
 When generalization is performed at attribute level (_AG_) this is equivalent to require each quasi-identifier $n$-uple to have at least $k$ occurrences.<br />
-When generalization is performed at cell level (_CG_) the existence
-of at least $k$ occurrences is a sufficient but not necessary condition; a less stricter requirement would suffice:
+When generalization is performed at cell level (_CG_) the existence of at least $k$ occurrences is a sufficient but not necessary condition; a less stricter requirement would suffice:
 1) for each sequence of values $pt$ in $PT[QI]$ there are at least $k$ tuples in $GT[QI]$ that contain a sequence of values generalizing $pt$;
 2) for each sequence of values $t$ in $GT[QI]$ there are at least $k$ tuples in $PT[QI]$ that contain a sequence of values for which $t$ is a generalization.
 
@@ -424,14 +421,13 @@ A $q$-block (i.e., set of tuples with the same value for $QI$) is $\ell$-diverse
 $\ell$-diversity means that an adversary needs to eliminate at least $\ell-1$ possible values to infer that a respondent has a given value.<br />
 A table is $\ell$-diverse if all its $q$-blocks are $\ell$-diverse. This implies that the homogeneity attack is not possible anymore and, therefore, that the background knowledge attack becomes more difficult.<br />
 $\ell$-diversity is monotonic with respect to the generalization hierarchies considered for $k$-anonymity purposes.<br />
-Any algorithm for $k$-anonymity can be extended to enforce the
-$\ell$-diverse property BUT $\ell$-diversity leaves space to attacks based on the distribution of values inside $q$-blocks (**skewness and similarity attacks**):
+Any algorithm for $k$-anonymity can be extended to enforce the $\ell$-diverse property BUT $\ell$-diversity leaves space to attacks based on the distribution of values inside $q$-blocks (**skewness and similarity attacks**):
 
 ----------------------------------------------------------------
 
 ### Skewness attack
 **Skewness attack** occurs when the distribution in a $q$-block is different than the distribution in the original population.<br />
-Consider the following example:
+Consider the following example:<br />
 $20\%$ of the population suffers from diabetes and $75\%$ of tuples in a $q$-block have diabetes. This implies that people in the $q$-block have higher probability of suffering from diabetes.
 
 slide 75/155
@@ -474,8 +470,7 @@ From personal knowledge, the adversary knows that Harry does not have short brea
 ----------------------------------------------------------------
 
 ### Multiple releases
-Data may be subject to frequent changes and may need to be
-published on regular basis. The multiple release of a microdata table may cause information leakage since a malicious recipient can correlate the released datasets.
+Data may be subject to frequent changes and may need to be published on regular basis. The multiple release of a microdata table may cause information leakage since a malicious recipient can correlate the released datasets.
 
 An example of multiple independent releases.
 
@@ -501,7 +496,7 @@ Multiple (i.e., longitudinal) releases cannot be independent. This implies that 
 ----------------------------------------------------------------
 
 ### $m$-invariance
-It addresses the problem of longitudinal release A sequence $T_1$ , . . . , T_n$ of released microdata tables satisfies $m$-invariance iff:
+It addresses the problem of longitudinal release A sequence $T_1 , . . . , T_n$ of released microdata tables satisfies $m$-invariance iff:
 - each equivalence class includes at least $m$ tuples;
 - no sensitive value appears more than once in each equivalence class;
 - for each tuple $t$, the equivalence classes to which t belongs in the sequence are characterized by the same set of sensitive values.
@@ -537,38 +532,29 @@ When we have fine-grained privacy preferences, we can apply:
 ----------------------------------------------------------------
 
 ### $k$-anonymity in various applications
-In addition to classical microdata release problem, the concept of
-$k$-anonymity and its extensions can be applied in different scenarios, e.g.:
+In addition to classical microdata release problem, the concept of $k$-anonymity and its extensions can be applied in different scenarios, e.g.:
 - social networks;
 - data mining;
 - location data.
 
 #### k-anonymity in social networks
-**Neighborhood attack** $\to$ given a de-identified graph $G'$ of a social
-network graph $G$, exploit knowledge about the neighbors of user $u$ to re-identify the vertex representing $u$
+**Neighborhood attack** $\to$ given a de-identified graph $G'$ of a social network graph $G$, exploit knowledge about the neighbors of user $u$ to re-identify the vertex representing $u$
 
 slide 91/155
 
-Idea: adapt the $k$-anonymity requirement to social networks. A vertex $u$ is $k$-anonymous if there exist at least $k − 1$ other vertices
-$v_1 , . . . , v_{k−1}$ such that the sub-graphs induced by the neighborhood of $u$ and the neighborhood of $v_1 , . . . , v_{k−1}$ are **isomorphic**. $G'$ is $k$-anonymous if every vertex $u$ in $G'$ is $k$-anonymous. Intuition: add fake edges to satisfy the requirement.
+Idea: adapt the $k$-anonymity requirement to social networks. A vertex $u$ is $k$-anonymous if there exist at least $k − 1$ other vertices $v_1 , . . . , v_{k−1}$ such that the sub-graphs induced by the neighborhood of $u$ and the neighborhood of $v_1 , . . . , v_{k−1}$ are **isomorphic**. $G'$ is $k$-anonymous if every vertex $u$ in $G'$ is $k$-anonymous.<br />
+Intuition: add fake edges to satisfy the requirement.
 
-If $G'$ is $k$-anonymous, with the neighborhood background
-knowledge, any vertex in $G$ cannot be re-identified in $G'$ with
-confidence larger than $1/k$.
+If $G'$ is $k$-anonymous, with the neighborhood background knowledge, any vertex in $G$ cannot be re-identified in $G'$ with confidence larger than $1/k$.
 
-Goal: compute a $k$-anonymous version of a social network graph
-minimizing the number of added edges.
+Goal: compute a $k$-anonymous version of a social network graph minimizing the number of added edges.
 
 ----------------------------------------------------------------
 
 #### $k$-anonymous data mining
-Privacy preserving data mining techniques depend on the
-definition of privacy capturing what information is sensitive in the
-original data and should then be protected.<br />
+Privacy preserving data mining techniques depend on the definition of privacy capturing what information is sensitive in the original data and should then be protected.<br />
 $k$-anonymous data mining aims at ensuring that the data mining results do not violate the $k$-anonymity requirement over the original data.<br />
-Threats to $k$-anonymity can arise from performing mining on a
-collection of data maintained in a private table $PT$ subject to
-$k$-anonymity constraints. E.g.:
+Threats to $k$-anonymity can arise from performing mining on a collection of data maintained in a private table $PT$ subject to $k$-anonymity constraints. E.g.:
 - association rule mining;
 - classification mining.
 
@@ -611,9 +597,7 @@ Any information can be used to re-identify anonymous data. Ensuring proper priva
 - Netflix.
 
 #### AOL data release
-In $2006$, to embrace the vision of an open research community,
-**AOL** (America OnLine) publicly posted to a website $20$ million
-search queries for $650,000$ users of AOL’s search engine summarizing three months of activity. AOL suppressed any obviously identifying information such as AOL username and IP address. AOL replaced these identifiers with unique identification numbers (this made searches by the same user linkable).
+In $2006$, to embrace the vision of an open research community, **AOL** (America OnLine) publicly posted to a website $20$ million search queries for $650,000$ users of AOL’s search engine summarizing three months of activity. AOL suppressed any obviously identifying information such as AOL username and IP address. AOL replaced these identifiers with unique identification numbers (this made searches by the same user linkable).
 
 User $4417749$:
 - “numb fingers”, “$60$ single men”, “dog that urinates on everything”;
@@ -657,9 +641,7 @@ slide 104/155
 ----------------------------------------------------------------
 
 #### Netflix prize data study
-In $2006$, Netflix (the world largest online movie rental service),
-launched the "Netflix Prize" (a challenge that lasted almost three
-years). There was a prize of USD $1$ million to be awarded to those who could provide a movie recommendation algorithm that improved Netflix’s algorithm by $10\%$. Netflix provided $100$ million records revealing how nearly $500,000$ of its users had rated movies from Oct.$’98$ to Dec.$’05$. In each record Netflix disclosed the movie rated, the rating assigned ($1$ to $5$), and the date of the rating.<br />
+In $2006$, Netflix (the world largest online movie rental service), launched the "Netflix Prize" (a challenge that lasted almost three years). There was a prize of USD $1$ million to be awarded to those who could provide a movie recommendation algorithm that improved Netflix’s algorithm by $10\%$. Netflix provided $100$ million records revealing how nearly $500,000$ of its users had rated movies from Oct.$’98$ to Dec.$’05$. In each record Netflix disclosed the movie rated, the rating assigned ($1$ to $5$), and the date of the rating.<br />
 Only a sample (one tenth) of the database was released. Some ratings were perturbed (but not much, not to alter statistics). Identifying information (e.g., usernames) was removed, but a unique user identifier was assigned to preserve rating-to-rating continuity. Release was not $k$-anonymous for any $k > 1$.<br />
 Very little auxiliary information is needed to de-anonymize an average subscriber record:
 - with $6$ movie ratings and dates ($\pm 2$ weeks), $99\%$ of records uniquely identified;
@@ -700,7 +682,7 @@ slide 110/155
 **Differential privacy** aims at preventing adversaries from being capable to detect the presence or absence of a given individual in a dataset. E.g., the count of individuals with cancer from a medical database is produced with a release mechanism that when executed on datasets differing on one individual probably returns the same result.<br />
 Differential privacy defines a property on the data release mechanism.
 
-Informally, differential privacy requires the probability distribution on the published results of an analysis to be “essentially the same” independent of whether an individual is represented or not in the dataset.
+Informally, differential privacy requires the probability distribution on the published results of an analysis to be “essentially the same” independent of whether an individual is represented or not in the dataset.<br />
 Formally, a randomized function $K$ gives $\varepsilon$-differential privacy if for all data sets $D$ and $D'$ differing on at most one row, and all $S \subseteq Range(K), Pr[K(D) \in S] \leq e^{\varepsilon} \times Pr[K(D' ) \in S]$.
 
 Differential privacy is applicable to two scenarios:
@@ -715,8 +697,7 @@ Variations of differential privacy to reduce the amount of noise in data/query r
 - adversaries with polynomial time computational bounds;
 - use of wavelet transforms for improving data utility.
 
-Similarly to $k$-anonymity, differentially private mechanisms have
-been developed for different domains:
+Similarly to $k$-anonymity, differentially private mechanisms have been developed for different domains:
 - social networks;
 - data mining;
 - location data.
@@ -724,16 +705,14 @@ been developed for different domains:
 ----------------------------------------------------------------
 
 #### Is differential privacy enough?
-Limiting the inference about the presence of a tuple is different
-from limiting the inference about the participation of the individual in the data generating process. E.g., Bob’s participation in a social network can cause links to form between Bob’s friends (Bob’s participation affects more than just the tuple marked “Bob”).
+Limiting the inference about the presence of a tuple is different from limiting the inference about the participation of the individual in the data generating process. E.g., Bob’s participation in a social network can cause links to form between Bob’s friends (Bob’s participation affects more than just the tuple marked “Bob”).
 
 Differential privacy composes well with itself but not necessarily with other privacy definitions or data release mechanisms (which represent background knowledge that can cause privacy breaches).
 
 ----------------------------------------------------------------
 
 #### k-anonymity vs differential privacy
-Each has its strengths and weaknesses, e.g., $k$-anonymity provides a nice capturing of real-world requirement but not complete protection. Differential privacy, on the other hand, has better protection guarantees but it is not easy to understand/enforce, not guaranteeing complete protection either.<<br />
-Therefore, there is still work to be done on both fronts
+Each has its strengths and weaknesses, e.g., $k$-anonymity provides a nice capturing of real-world requirement but not complete protection. Differential privacy, on the other hand, has better protection guarantees but it is not easy to understand/enforce, not guaranteeing complete protection either.<br /> Therefore, there is still work to be done on both fronts
 
 ----------------------------------------------------------------
 
@@ -804,8 +783,7 @@ slide 131/155
 
 Analysts at Target identified $\sim 25$ products that assign each shopper a pregnancy prediction score. E.g., woman, $23$ y.o., buying in March cocoa-butter lotion, a purse large enough to double as a diaper bag, zinc and magnesium supplements and a bright blue rug $\to$ $87\%$ due late August. Due time in a small window to send coupons timed to very specific stages of a pregnancy.
 
-Mining data reveals customers’ major life events (e.g., graduating
-from college or getting a new job or moving to a new town):
+Mining data reveals customers’ major life events (e.g., graduating from college or getting a new job or moving to a new town):
 - shopping habits became flexible, predictable, and potential gold mines for retailers;
 - between $2002$ (starting of similar campaigns) and $2010$ Target’s revenues grew from $ $44$B to $ $67$B.
 
@@ -917,7 +895,7 @@ An example of a Statistical DBMS
 slides 7/98
 
 Query: sum of the incomes of females with major in EE.<br />
-Result: it reveals the income of Baker (only female with EE) $\to$ the query is sensitive so it is necessary to block statistics computed over a single (or few) individual
+Result: it reveals the income of Baker (only female with EE) $\to$ the query is sensitive so it is necessary to block statistics computed over a single (or few) individual.
 
 Another example of a Statistical DBMS 
 
@@ -975,7 +953,6 @@ Social Security Administration (SSA) rules prohibit publishing tables where the 
 	- benefits within a $ $50$ interval.
 - to satisfy special rules:
 	- table restructuring or category combination.
-
 
 Another example of Special rules.
 
@@ -1049,11 +1026,11 @@ Table containing information about employees by company and education level
 
 slide 30/98 2
 
-A cell with fewer than 5 respondents is defined as sensitive
+A cell with fewer than 5 respondents is defined as sensitive.
 
 slide 30/98 3
 
-Suppress sensitive cells
+Suppress sensitive cells.
 
 slide 30/98 4
 
@@ -1081,17 +1058,11 @@ slide 30/98 ultima
 ----------------------------------------------------------------
 
 ### Rounding
-To reduce data loss due to suppression, use **rounding of values** to a multiple of the sensitivity threshold.
+To reduce data loss due to suppression, use **rounding of values** to a multiple of the sensitivity threshold:
+- **random**: random decision on whether cell values will be rounded up or down. The sum of the values in a row/column may be different from the published marginal totals (recipients may lose confidence in the data);
+- **controlled**: ensure that the sum of published entries is equal to published marginal totals
 
-  • random: random decision on whether cell values will be rounded
-    up or down
-          ◦ the sum of the values in a row/column may be different from the
-            published marginal totals (recipients may lose confidence in the
-            data)
-
-  • controlled: ensure that the sum of published entries is equal to
-    published marginal totals
-Note: all cell values must be a multiple of the threshold value
+Note: all cell values must be a multiple of the threshold value.
 
                          Random rounding – Example
 
