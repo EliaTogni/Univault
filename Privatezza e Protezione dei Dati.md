@@ -457,7 +457,7 @@ An example of external knowledge.
 
 slides 79-80/155
 
-An adversary knows that Harry, born in 64 and living in area $94139$, is in the table. This implies that Harry belongs to the second group and, therefore, that Harry has aids with confidence $\frac{1}{4}$.
+An adversary knows that Harry, born in $64$ and living in area $94139$, is in the table. This implies that Harry belongs to the second group and, therefore, that Harry has aids with confidence $\frac{1}{4}$.
 
 slide 81/155
 
@@ -502,7 +502,7 @@ It addresses the problem of longitudinal release A sequence $T_1 , . . . , T_n$ 
 - for each tuple $t$, the equivalence classes to which t belongs in the sequence are characterized by the same set of sensitive values.
 Therefore, the correlation of the tuples in $T_1, . . . , T_n$ does not permit a malicious recipient to associate less than m different sensitive values with each respondent.
 
---------------------------------------------------------------
+----------------------------------------------------------------
 
 
 ### Extended scenarios
@@ -538,7 +538,7 @@ In addition to classical microdata release problem, the concept of $k$-anonymity
 - location data.
 
 #### k-anonymity in social networks
-**Neighborhood attack** $\to$ given a de-identified graph $G'$ of a social network graph $G$, exploit knowledge about the neighbors of user $u$ to re-identify the vertex representing $u$
+**Neighborhood attack** $\to$ given a de-identified graph $G'$ of a social network graph $G$, exploit knowledge about the neighbors of user $u$ to re-identify the vertex representing $u$.
 
 slide 91/155
 
@@ -890,7 +890,7 @@ Release of data for statistical purpose:
 ## Statistical DBMS
 A statistical DBMS is a DBMS that provides access to statistics about groups of individuals. It should not reveal information about any particular individual. Confidential information about an individual can be deduced, combining the results of different statistics or combining the results of statistics with external knowledge (possibly about the database content).
 
-An example of a Statistical DBMS
+An example of a statistical DBMS
 
 slides 7/98
 
@@ -1261,6 +1261,7 @@ Consider the respondents that contribute to the total income in a city, which is
 Assuming $n=2$ and $k=70$, the cell is considered sensitive. The income of Alice and Bob $(100K+80K=180K)$ represents the $72\%$ of the cell value ($250K$).
 
 ----------------------------------------------------------------
+
 #### Secondary suppression
 Once sensitive cells have been identified, there are two options:
 - restructure the table and collapse cells until no sensitive cells remain;
@@ -1358,706 +1359,157 @@ They can operate on different data types:
 
 ----------------------------------------------------------------
 
-       Microdata Disclosure Protection Techniques:
-                  Masking Techniques
+### Microdata Disclosure Protection Techniques: Masking Techniques
+The original data are transformed to produce new data that are valid for statistical analysis and such that they preserve the confidentiality of respondents. They are classified as:
+- **non-perturbative**: the original data are not modified, but some data are suppressed and/or some details are removed;
+- **perturbative**: the original data are modified.
 
+slide 77/98
 
-                                    Masking techniques
+#### Non Perturbative Techniques
+##### Sampling
+The protected microdata table is obtained as a sample of the original microdata table. Since there is uncertainty about whether or not a specific respondent is in the sample, reidentification risk decreases.
 
- • The original data are transformed to produce new data that are
-   valid for statistical analysis and such that they preserve the
-   confidentiality of respondents
+An example of sampling.
 
- • They are classified as:
-         ◦ non-perturbative, the original data are not modified, but some data
-           are suppressed and/or some details are removed
+slide 79/98
 
-         ◦ perturbative, the original data are modified
+slide 79/98 2
 
+Compute a sample of $3$ tuples out of $14$.
 
+slide 79/98 3 
 
-                 Masking techniques – Classification
-                                      Non-perturbative
-                          Technique        Continuous           Categorical
-                       Sampling                yes                  yes
-                       Local suppression       yes                  yes
-                       Global recoding         yes                  yes
-                       Top-coding              yes                  yes
-                       Bottom-coding           yes                  yes
-                       Generalization          yes                  yes
-                                        Perturbative
-                          Technique        Continuous           Categorical
-                      Resampling               yes                  no
-                      Lossy compression        yes                  no
-                      Rounding                 yes                  no
-                      PRAM                      no                  yes
-                      MASSC                     no                  yes
-                      Random noise             yes                  yes
-                      Swapping                 yes                  yes
-                      Rank swapping            yes                  yes
-                      Micro-aggregation        yes                  yes
+----------------------------------------------------------------
 
+
+##### Local suppression
+It suppresses the value of an attribute (i.e., it replaces it with a missing value) thus limiting the possibilities of analysis. This technique blanks out some attribute values (sensitive cells) that are likely to contribute significantly to the disclosure risk of the tuple involved.
 
-                                                Sampling
+An example of local suppression.
 
- • The protected microdata table is obtained as a sample of the
-   original microdata table
+slide 81/98 2
 
- • Since there is uncertainty about whether or not a specific
-   respondent is in the sample, reidentification risk decreases
+Suppress cells that contribute significantly to re-identification.
 
+slide 81/98 3
 
-                                   Sampling – Example
+----------------------------------------------------------------
 
+##### Global recoding
+The domain of an attribute is partitioned into disjoint intervals, usually of the same width, and each interval is associated with a label. The protected microdata table is obtained by replacing the values of the attribute with the label associated with the corresponding interval.
 
-      SSN Name Race                    DoB         Sex      ZIP   MarStat Holidays Income
-                          Asian     64/09/27        F     94139   Divorced   13     260
-                          Asian     64/09/30        F     94139   Divorced   01     170
-                          Asian     64/04/18        M     94139   Married    40     200
-                          Asian     64/04/15        M     94139   Married    17     280
-                          Asian     64/03/09        M     94138   Married    10     190
-                          Black     63/03/13        M     94138   Married    02     190
-                          Black     63/03/18        M     94138   Married    13     185
-                          Black     64/03/18        M     94141   Married    60     290
-                          Black     64/09/13        F     94141   Married    15     200
-                          Black     64/09/07        F     94141   Married    60     290
-                          White     61/05/02        M     94138   Single     22     140
-                          White     61/05/14        M     94138   Single     17     170
-                          White     61/05/08        M     94138   Single     10     300
-                          White     61/09/15        F     94142   Widow      15     200
+An example of global recoding.
 
+slide 83/98 2
 
-                                    Sampling – Example
+Global recoding on _Income_:
+$[150-199]$: low, $[200-289]$: medium, $[290-310]$ high.
 
+slide 83/98 3
 
-       SSN Name Race                    DoB         Sex      ZIP   MarStat Holidays Income
-                           Asian     64/09/27        F     94139   Divorced   13     260
-                           Asian     64/09/30        F     94139   Divorced   01     170
-                           Asian     64/04/18        M     94139   Married    40     200
-                           Asian     64/04/15        M     94139   Married    17     280
-                           Asian     64/03/09        M     94138   Married    10     190
-                           Black     63/03/13        M     94138   Married    02     190
-                           Black     63/03/18        M     94138   Married    13     185
-                           Black     64/03/18        M     94141   Married    60     290
-                           Black     64/09/13        F     94141   Married    15     200
-                           Black     64/09/07        F     94141   Married    60     290
-                           White     61/05/02        M     94138   Single     22     140
-                           White     61/05/14        M     94138   Single     17     170
-                           White     61/05/08        M     94138   Single     10     300
-                           White     61/09/15        F     94142   Widow      15     200
+----------------------------------------------------------------
 
-Compute a sample of 3 tuples out of 14
+##### Top-coding and bottom-coding
+**Top-coding** defines an upper limit (top-code) for each attribute to be protected. Any value greater than it is replaced with a flag that tells the user what the top-code is and that this value exceeds it. It can be applied to categorical attributes that can be linearly ordered as well as to continuous attributes.
 
+**Bottom-coding** defines a lower limit (bottom-code) for each attribute to be protected. Any value lower than it is replaced with a flag that tells the user what the bottom-code is and that this value is less than it. It can be applied to categorical attributes that can be linearly ordered as well as to continuous attributes
 
-                                   Sampling – Example
+An example of top-coding and bottom-coding.
 
+slide 85/98 2
 
-      SSN Name Race                    DoB         Sex      ZIP   MarStat Holidays Income
-                          Asian 64/09/27             F    94139 Divorced    13      260
+Top-coding on _Holidays_ for values higher than $30$.
+Bottom-coding on _Holidays_ for values lower than $10$.
 
+slide 85/98 3
 
+----------------------------------------------------------------
 
+##### Generalization
+It replaces values with more general values. Typically based on the definition of a generalization hierarchy, where the most general value is the root and the leaves correspond to the most specific values.
 
-                          Black 64/09/13             F    94141 Married     15      200
+Different generalized microdata tables can be built, depending on the number of generalization steps applied.
 
+An example of generalization.
 
+slide 87/98 2
 
+Generalize attribute _DoB_ to the granularity of month.
 
-                          White 61/09/15             F    94142 Widow       15      200
+slide 87/98 3
 
+----------------------------------------------------------------
 
+#### Perturbative Techniques
+##### Random noise
+It perturbs a sensitive attribute by adding or by multiplying it with a random variable with a given distribution. It is necessary to decide whether or not to publish the distribution(s) used to add noise to the data.<br />
+Publishing the distribution(s) might increase disclosure risk of the data.
 
-                                      Local suppression
+An example of random noise.
 
- • It suppresses the value of an attribute (i.e., it replaces it with a
-   missing value) thus limiting the possibilities of analysis
+slide 90/98 1
 
- • This technique blanks out some attribute values (sensitive cells)
-   that are likely to contribute significantly to the disclosure risk of the
-   tuple involved
+Additive noise over attribute _Holidays_ (to preserve average).
 
+slide 90/98 2
+
 
-                          Local suppression – Example
+slide 90/98 3
 
+----------------------------------------------------------------
 
-       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
-                           Asian     64/09/27        F      94139      Divorced   13     260
-                           Asian     64/09/30        F      94139      Divorced    1     170
-                           Asian     64/04/18        M      94139      Married    40     200
-                           Asian     64/04/15        M      94139      Married    17     280
-                           Black     63/03/13        M      94138      Married     2     190
-                           Black     63/03/18        M      94138      Married    13     185
-                           Black     64/09/13        F      94141      Married    15     200
-                           Black     64/09/07        F      94141      Married    60     290
-                           White     61/05/14        M      94138      Single     17     170
-                           White     61/05/08        M      94138      Single     10     300
-                           White     61/09/15        F      94142      Widow      15     200
-                          White 61/09/15              F     94142 Widow           5      200
+##### Swapping
+A small percent of records are matched with other records in the same file, perhaps in different geographic regions, on a set of predetermined variables. The values of all other variables on the file are then swapped between the two records.
 
-Suppress cells that contribute significantly to re-identification
+This technique reduces the risk of reidentification because it introduces uncertainty about the true value of a respondentent’s data.
 
+An example of swapping.
 
-                          Local suppression – Example
+slide 92/98 1
 
+Swap _Holidays_ and _Income_ for tuples with the same _Sex_ and _MarStat_. Identify $3$ pairs of tuples with same _Sex_ and _MarStat_
 
-       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
-                           Asian     64/09/27        F      94139      Divorced   13     260
-                           Asian     64/09/30        F      94139      Divorced    1     170
-                           Asian     64/04/18        M      94139      Married    40     200
-                           Asian     64/04/15        M      94139      Married    17     280
-                           Black     63/03/13        M      94138      Married     2     190
-                           Black     63/03/18        M      94138      Married    13     185
-                           Black     64/09/13        F      94141      Married    15     200
-                           Black     64/09/07        F      94141      Married    60     290
-                           White     61/05/14        M      94138      Single     17     170
-                           White     61/05/08        M      94138      Single     10     300
-                           White     61/09/15        F      94142      Widow      15     200
-                          White 61/09/15              F     94142 Widow           15     200
+slide 92/98 2
 
-Suppress cells that contribute significantly to re-identification
+Swap _Holidays_ and _Income_.
 
-                         Local suppression – Example
+slide 92/98 3
 
+----------------------------------------------------------------
 
-      SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
-                          Asian     64/09/27        F      94139      Divorced   13     260
-                          Asian     64/09/30        F      94139      Divorced    1     170
-                          Asian     64/04/18        M      94139      Married    40     200
-                          Asian     64/04/15        M      94139      Married    17     280
-                          Black     63/03/13        M      94138      Married     2     190
-                          Black     63/03/18        M      94138      Married    13     185
-                          Black     64/09/13        F      94141      Married    15     200
-                          Black     64/09/07        F      94141      Married    60     290
-                          White     61/05/14        M      94138      Single     17     170
-                          White     61/05/08        M      94138      Single     10     300
-                          White     61/09/15        F                            15     200
-                         White 61/09/15              F     94142 Widow           5      200
+##### Micro-aggregation (blurring)
+It consists in grouping individual tuples into small groups of a fixed dimension $k$. The average over each group is published instead of individual values.<br />
+Groups are formed by using maximal similarity criteria.
 
+There are different variations of micro-aggregation:
+-  the average can substitute the original value only for a tuple in the group or for all of them;
+- different attributes can be protected through micro-aggregation using the same or different grouping;
+- ...
 
+An example of micro-aggregation (blurring).
 
-                                        Global recoding
+slide 94/98 1
 
- • The domain of an attribute is partitioned into disjoint intervals,
-   usually of the same width, and each interval is associated with a
-   label
+Group tuples based on _Sex_ and _MarStat_
 
- • The protected microdata table is obtained by replacing the values
-   of the attribute with the label associated with the corresponding
-   interval
+slide 94/98 2
 
+slide 94/98 3
 
+Substitute _Income_ with the average for each group.
 
-                            Global recoding – Example
+----------------------------------------------------------------
 
+## Microdata Disclosure Protection Techniques: Synthetic Techniques
+### Synthetic techniques
+Since the statistical content of the data is not related to the information provided by each respondent, a model well representing the data could in principle replace the data themselves.
 
-       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
-                           Asian     64/09/27        F      94139      Divorced   13     260
-                           Asian     64/09/30        F      94139      Divorced    1     170
-                           Asian     64/04/18        M      94139      Married    40     200
-                           Asian     64/04/15        M      94139      Married    17     280
-                           Black     63/03/13        M      94138      Married     2     190
-                           Black     63/03/18        M      94138      Married    13     185
-                           Black     64/09/13        F      94141      Married    15     200
-                           Black     64/09/07        F      94141      Married    60     290
-                           White     61/05/14        M      94138      Single     17     170
-                           White     61/05/08        M      94138      Single     10     300
-                           White     61/09/15        F      94142      Widow      15     200
-                          White 61/09/15              F     94142 Widow           5      200
+An important requirement for the generation of synthetic data is that the synthetic and original data should present the same quality of statistical analysis.
 
-Global recoding on Income:
-[150-199]: low, [200-289]: medium, [290-310] high
+The main advantage of this class of techniques is that the released synthetic data are not referred to any respondent and therefore their release cannot lead to reidentification.
 
-
-                            Global recoding – Example
-
-
-       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
-                           Asian     64/09/27        F      94139      Divorced   13     260
-                           Asian     64/09/30        F      94139      Divorced    1     170
-                           Asian     64/04/18        M      94139      Married    40     200
-                           Asian     64/04/15        M      94139      Married    17     280
-                           Black     63/03/13        M      94138      Married     2     190
-                           Black     63/03/18        M      94138      Married    13     185
-                           Black     64/09/13        F      94141      Married    15     200
-                           Black     64/09/07        F      94141      Married    60     290
-                           White     61/05/14        M      94138      Single     17     170
-                           White     61/05/08        M      94138      Single     10     300
-                           White     61/09/15        F      94142      Widow      15     200
-                          White 61/09/15              F     94142 Widow           5      200
-
-Global recoding on Income:
-[150-199]: low, [200-289]: medium, [290-310] high
-
-                           Global recoding – Example
-
-
-      SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
-                          Asian     64/09/27        F      94139      Divorced   13     med
-                          Asian     64/09/30        F      94139      Divorced    1     low
-                          Asian     64/04/18        M      94139      Married    40     med
-                          Asian     64/04/15        M      94139      Married    17     med
-                          Black     63/03/13        M      94138      Married     2     low
-                          Black     63/03/18        M      94138      Married    13     low
-                          Black     64/09/13        F      94141      Married    15     med
-                          Black     64/09/07        F      94141      Married    60     high
-                          White     61/05/14        M      94138      Single     17     low
-                          White     61/05/08        M      94138      Single     10     high
-                          White     61/09/15        F      94142      Widow      15     med
-                         White 61/09/15              F     94142 Widow           5      200
-
-
-                        Top-coding and bottom-coding
-
- • Top-coding
-         ◦ It defines an upper limit (top-code) for each attribute to be
-           protected. Any value greater than it is replaced with a flag that tells
-           the user what the top-code is and that this value exceeds it
-
-         ◦ It can be applied to categorical attributes that can be linearly
-           ordered as well as to continuous attributes
-
- • Bottom-coding
-         ◦ It defines a lower limit (bottom-code) for each attribute to be
-           protected. Any value lower than it is replaced with a flag that tells
-           the user what the bottom-code is and that this value is less than it
-
-         ◦ It can be applied to categorical attributes that can be linearly
-           ordered as well as to continuous attributes
-
-            Top-coding and bottom-coding – Example
-
-
-       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
-                           Asian     64/09/27        F      94139      Divorced   13     260
-                           Asian     64/09/30        F      94139      Divorced    1     170
-                           Asian     64/04/18        M      94139      Married    40     200
-                           Asian     64/04/15        M      94139      Married    17     280
-                           Black     63/03/13        M      94138      Married     2     190
-                           Black     63/03/18        M      94138      Married    13     185
-                           Black     64/09/13        F      94141      Married    15     200
-                           Black     64/09/07        F      94141      Married    60     290
-                           White     61/05/14        M      94138      Single     17     170
-                           White     61/05/08        M      94138      Single     10     300
-                           White     61/09/15        F      94142      Widow      15     200
-                          White 61/09/15              F     94142 Widow           5      200
-
-Top-coding on Holidays for values higher than 30
-Bottom-coding on Holidays for values lower than 10
-
-
-            Top-coding and bottom-coding – Example
-
-
-       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
-                           Asian     64/09/27        F      94139      Divorced   13     260
-                           Asian     64/09/30        F      94139      Divorced    1     170
-                           Asian     64/04/18        M      94139      Married    40     200
-                           Asian     64/04/15        M      94139      Married    17     280
-                           Black     63/03/13        M      94138      Married     2     190
-                           Black     63/03/18        M      94138      Married    13     185
-                           Black     64/09/13        F      94141      Married    15     200
-                           Black     64/09/07        F      94141      Married    60     290
-                           White     61/05/14        M      94138      Single     17     170
-                           White     61/05/08        M      94138      Single     10     300
-                           White     61/09/15        F      94142      Widow      15     200
-                          White 61/09/15              F     94142 Widow           5      200
-
-Top-coding on Holidays for values higher than 30
-Bottom-coding on Holidays for values lower than 10
-
-
-            Top-coding and bottom-coding – Example
-
-
-       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
-                           Asian     64/09/27        F      94139      Divorced    13    260
-                           Asian     64/09/30        F      94139      Divorced   <10    170
-                           Asian     64/04/18        M      94139      Married    >30    200
-                           Asian     64/04/15        M      94139      Married     17    280
-                           Black     63/03/13        M      94138      Married    <10    190
-                           Black     63/03/18        M      94138      Married     13    185
-                           Black     64/09/13        F      94141      Married     15    200
-                           Black     64/09/07        F      94141      Married    >30    290
-                           White     61/05/14        M      94138      Single     17     170
-                           White     61/05/08        M      94138      Single     10     300
-                           White     61/09/15        F      94142      Widow      15     200
-                          White 61/09/15              F     94142 Widow            5     200
-
-Top-coding on Holidays for values higher than 30
-Bottom-coding on Holidays for values lower than 10
-
-
-                                          Generalization
-
- • Replaces values with more general values
-
- • Typically based on the definition of a generalization hierarchy,
-   where the most general value is the root and the leaves
-   correspond to the most specific values
-
- • Different generalized microdata tables can be built, depending on
-   the number of generalization steps applied
-
-
-                              Generalization – Example
-
-
-       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
-                           Asian     64/09/27        F      94139      Divorced   13     260
-                           Asian     64/09/30        F      94139      Divorced    1     170
-                           Asian     64/04/18        M      94139      Married    40     200
-                           Asian     64/04/15        M      94139      Married    17     280
-                           Black     63/03/13        M      94138      Married     2     190
-                           Black     63/03/18        M      94138      Married    13     185
-                           Black     64/09/13        F      94141      Married    15     200
-                           Black     64/09/07        F      94141      Married    60     290
-                           White     61/05/14        M      94138      Single     17     170
-                           White     61/05/08        M      94138      Single     10     300
-                           White     61/09/15        F      94142      Widow      15     200
-                          White 61/09/15              F     94142 Widow           5      200
-
-Generalize attribute DoB to the granularity of month
-
-
-                              Generalization – Example
-
-
-       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
-                           Asian     64/09/27        F      94139      Divorced   13     260
-                           Asian     64/09/30        F      94139      Divorced    1     170
-                           Asian     64/04/18        M      94139      Married    40     200
-                           Asian     64/04/15        M      94139      Married    17     280
-                           Black     63/03/13        M      94138      Married     2     190
-                           Black     63/03/18        M      94138      Married    13     185
-                           Black     64/09/13        F      94141      Married    15     200
-                           Black     64/09/07        F      94141      Married    60     290
-                           White     61/05/14        M      94138      Single     17     170
-                           White     61/05/08        M      94138      Single     10     300
-                           White     61/09/15        F      94142      Widow      15     200
-                          White 61/09/15              F     94142 Widow           5      200
-
-Generalize attribute DoB to the granularity of month
-
-                             Generalization – Example
-
-
-      SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
-                          Asian       64/09         F      94139      Divorced   13     260
-                          Asian       64/09         F      94139      Divorced    1     170
-                          Asian       64/04         M      94139      Married    40     200
-                          Asian       64/04         M      94139      Married    17     280
-                          Black       63/03         M      94138      Married     2     190
-                          Black       63/03         M      94138      Married    13     185
-                          Black       64/09         F      94141      Married    15     200
-                          Black       64/09         F      94141      Married    60     290
-                          White       61/05         M      94138      Single     17     170
-                          White       61/05         M      94138      Single     10     300
-                          White       61/09         F      94142      Widow      15     200
-                         White 61/09/15              F     94142 Widow           5      200
-
-
-
-                 Masking techniques – Classification
-                                      Non-perturbative
-                          Technique        Continuous           Categorical
-                       Sampling                yes                  yes
-                       Local suppression       yes                  yes
-                       Global recoding         yes                  yes
-                       Top-coding              yes                  yes
-                       Bottom-coding           yes                  yes
-                       Generalization          yes                  yes
-                                        Perturbative
-                          Technique        Continuous           Categorical
-                      Resampling               yes                  no
-                      Lossy compression        yes                  no
-                      Rounding                 yes                  no
-                      PRAM                      no                  yes
-                      MASSC                     no                  yes
-                      Random noise             yes                  yes
-                      Swapping                 yes                  yes
-                      Rank swapping            yes                  yes
-                      Micro-aggregation        yes                  yes
-
-                                          Random noise
-
- • It perturbs a sensitive attribute by adding or by multiplying it with a
-   random variable with a given distribution
-
- • It is necessary to decide whether or not to publish the
-   distribution(s) used to add noise to the data
-
- • Publishing the distribution(s) might increase disclosure risk of the
-   data
-
-
-                              Random noise – Example
-
-
- SSN Name Race                     DoB        Sex       ZIP      MarStat Holidays Noise Income
-                     Asian      64/09/27        F     94139      Divorced   13    +2     260
-                     Asian      64/09/30        F     94139      Divorced    1    +1     170
-                     Asian      64/04/18        M     94139      Married    40    -10    200
-                     Asian      64/04/15        M     94139      Married    17    +3     280
-                     Black      63/03/13        M     94138      Married     2    +5     190
-                     Black      63/03/18        M     94138      Married    13    +8     185
-                     Black      64/09/13        F     94141      Married    15    +4     200
-                     Black      64/09/07        F     94141      Married    60    -11    290
-                     White      61/05/14        M     94138      Single     17     -2    170
-                     White      61/05/08        M     94138      Single     10     -3    300
-                     White      61/09/15        F     94142      Widow      15    +3     200
-                     White 61/09/15             F     94142 Widow           5     200
-
-Additive noise over attribute Holidays (to preserve average)
-
-                              Random noise – Example
-
-
- SSN Name Race                     DoB        Sex       ZIP      MarStat Holidays Noise Income
-                     Asian      64/09/27        F     94139      Divorced   13    +2     260
-                     Asian      64/09/30        F     94139      Divorced    1    +1     170
-                     Asian      64/04/18        M     94139      Married    40    -10    200
-                     Asian      64/04/15        M     94139      Married    17    +3     280
-                     Black      63/03/13        M     94138      Married     2    +5     190
-                     Black      63/03/18        M     94138      Married    13    +8     185
-                     Black      64/09/13        F     94141      Married    15    +4     200
-                     Black      64/09/07        F     94141      Married    60    -11    290
-                     White      61/05/14        M     94138      Single     17     -2    170
-                     White      61/05/08        M     94138      Single     10     -3    300
-                     White      61/09/15        F     94142      Widow      15    +3     200
-                     White 61/09/15             F     94142 Widow           5     200
-
-Additive noise over attribute Holidays (to preserve average)
-
-
-                              Random noise – Example
-
-
- SSN Name Race                     DoB        Sex       ZIP      MarStat Holidays Noise Income
-                     Asian      64/09/27        F     94139      Divorced   15    +2     260
-                     Asian      64/09/30        F     94139      Divorced    2    +1     170
-                     Asian      64/04/18        M     94139      Married    30    -10    200
-                     Asian      64/04/15        M     94139      Married    20    +3     280
-                     Black      63/03/13        M     94138      Married     7    +5     190
-                     Black      63/03/18        M     94138      Married    21    +8     185
-                     Black      64/09/13        F     94141      Married    19    +4     200
-                     Black      64/09/07        F     94141      Married    49    -11    290
-                     White      61/05/14        M     94138      Single     15     -2    170
-                     White      61/05/08        M     94138      Single      7     -3    300
-                     White      61/09/15        F     94142      Widow      18    +3     200
-                     White 61/09/15             F     94142 Widow           5     200
-
-Additive noise over attribute Holidays (to preserve average)
-
-                                               Swapping
-
- • A small percent of records are matched with other records in the
-   same file, perhaps in different geographic regions, on a set of
-   predetermined variables
-
- • The values of all other variables on the file are then swapped
-   between the two records
-
- • This technique reduces the risk of reidentification because it
-   introduces uncertainty about the true value of a respondentent’s
-   data
-
-
-                                   Swapping – Example
-
-
-       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
-                           Asian     64/09/27        F      94139      Divorced   13     260
-                           Asian     64/09/30        F      94139      Divorced    1     170
-                           Asian     64/04/18        M      94139      Married    40     200
-                           Asian     64/04/15        M      94139      Married    17     280
-                           Black     63/03/13        M      94138      Married     2     190
-                           Black     63/03/18        M      94138      Married    13     185
-                           Black     64/09/13        F      94141      Married    15     200
-                           Black     64/09/07        F      94141      Married    60     290
-                           White     61/05/14        M      94138      Single     17     170
-                           White     61/05/08        M      94138      Single     10     300
-                           White     61/09/15        F      94142      Widow      15     200
-                          White 61/09/15              F     94142 Widow           5      200
-
-Swap Holidays and Income for tuples with the same Sex and MarStat
-
-                                   Swapping – Example
-
-
-       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
-                           Asian     64/09/27        F      94139      Divorced   13     260
-                           Asian     64/09/30        F      94139      Divorced    1     170
-                           Asian     64/04/18        M      94139      Married    40     200
-                           Asian     64/04/15        M      94139      Married    17     280
-                           Black     63/03/13        M      94138      Married     2     190
-                           Black     63/03/18        M      94138      Married    13     185
-                           Black     64/09/13        F      94141      Married    15     200
-                           Black     64/09/07        F      94141      Married    60     290
-                           White     61/05/14        M      94138      Single     17     170
-                           White     61/05/08        M      94138      Single     10     300
-                           White     61/09/15        F      94142      Widow      15     200
-                          White 61/09/15              F     94142 Widow           5      200
-
-Identify 3 pairs of tuples with same Sex and MarStat
-
-
-
-
-                                   Swapping – Example
-
-
-       SSN Name Race                    DoB         Sex          ZIP   MarStat Holidays Income
-                           Asian     64/09/27        F      94139      Divorced   13     260
-                           Asian     64/09/30        F      94139      Divorced    1     170
-                           Asian     64/04/18        M      94139      Married     2     190
-                           Asian     64/04/15        M      94139      Married    17     280
-                           Black     63/03/13        M      94138      Married    40     200
-                           Black     63/03/18        M      94138      Married    13     185
-                           Black     64/09/13        F      94141      Married    60     290
-                           Black     64/09/07        F      94141      Married    15     200
-                           White     61/05/14        M      94138      Single     10     300
-                           White     61/05/08        M      94138      Single     17     170
-                           White     61/09/15        F      94142      Widow      15     200
-                          White 61/09/15              F     94142 Widow           5      200
-
-Swap Holidays and Income
-
-
-
-                          Micro-aggregation (blurring)
-
- • It consists in grouping individual tuples into small groups of a fixed
-   dimension k
-
- • The average over each group is published instead of individual
-   values
-
- • Groups are formed by using maximal similarity criteria
-
- • There are different variations of micro-aggregation:
-         ◦ the average can substitute the original value only for a tuple in the
-           group or for all of them
-
-         ◦ different attributes can be protected through micro-aggregation
-           using the same or different grouping
-         ◦ ...
-
-              Micro-aggregation (blurring) – Example
-
-
-      SSN Name Race                     DoB        Sex       ZIP   MarStat    Holidays Income
-                          Asian      64/09/27        F     94139   Divorced     13      260
-                          Asian      64/09/30        F     94139   Divorced      1      170
-                          Asian      64/04/18        M     94139   Married      40      200
-                          Asian      64/04/15        M     94139   Married      17      280
-                          Black      63/03/13        M     94138   Married       2      190
-                          Black      63/03/18        M     94138   Married      13      185
-                          Black      64/09/13        F     94141   Married      15      200
-                          Black      64/09/07        F     94141   Married      60      290
-                          White      61/05/14        M     94138   Single       17      170
-                          White      61/05/08        M     94138   Single       10      300
-                          White      61/09/15        F     94142   Widow        15      200
-                          White 61/09/15             F     94142 Divorced        5      200
-
-Group tuples based on Sex and MarStat
-
-
-
-              Micro-aggregation (blurring) – Example
-
-
-      SSN Name Race                     DoB        Sex       ZIP   MarStat    Holidays Income
-                          Asian      64/09/27        F     94139   Divorced     13      260
-                          Asian      64/09/30        F     94139   Divorced     1       170
-                          Asian      64/04/18        M     94139   Married      40      200
-                          Asian      64/04/15        M     94139   Married      17      280
-                          Black      63/03/13        M     94138   Married      2       190
-                          Black      63/03/18        M     94138   Married      13      185
-                          Black      64/09/13        F     94141   Married      15      200
-                          Black      64/09/07        F     94141   Married      60      290
-                          White      61/05/14        M     94138   Single       17      170
-                          White      61/05/08        M     94138   Single       10      300
-                          White      61/09/15        F     94142   Widow        15      200
-                          White 61/09/15             F     94142 Widow           5      200
-
-Group tuples based on Sex and MarStat
-
-
-
- 
-              Micro-aggregation (blurring) – Example
-
-
-      SSN Name Race                     DoB        Sex       ZIP   MarStat    Holidays Income
-                          Asian      64/09/27        F     94139   Divorced     13      215
-                          Asian      64/09/30        F     94139   Divorced     1       215
-                          Asian      64/04/18        M     94139   Married      40      213
-                          Asian      64/04/15        M     94139   Married      17      213
-                          Black      63/03/13        M     94138   Married      2       213
-                          Black      63/03/18        M     94138   Married      13      213
-                          Black      64/09/13        F     94141   Married      15      245
-                          Black      64/09/07        F     94141   Married      60      245
-                          White      61/05/14        M     94138   Single       17      235
-                          White      61/05/08        M     94138   Single       10      235
-                          White      61/09/15        F     94142   Widow        15      200
-                          White 61/09/15             F     94142 Widow           5      200
-
-Substitute Income with the average for each group
-
-
-       Microdata Disclosure Protection Techniques:
-                  Synthetic Techniques
-
-
-
-                                                  Outline
-
- • Statistical DBMS
-
-
- • Macrodata protection
-         ◦ Count and frequency tables
-         ◦ Magnitude tables
-
-
- • Microdata protection
-         ◦ Masking techniques
-         ◦ Synthetic techniques
-
-                               Synthetic techniques (1)
-
- • Since the statistical content of the data is not related to the
-   information provided by each respondent, a model well
-   representing the data could in principle replace the data
-   themselves
-
- • An important requirement for the generation of synthetic data is
-   that the synthetic and original data should present the same
-   quality of statistical analysis
-
- • The main advantage of this class of techniques is that the
-   released synthetic data are not referred to any respondent and
-   therefore their release cannot lead to reidentification
-
-                               Synthetic techniques (2)
-
-                                       Fully Synthetic
-                           Technique           Continuous Categorical
-                   Bootstrap                       yes        no
-                   Cholesky decomposition          yes        no
-                   Multiple imputation             yes        yes
-                   Maximum entropy                 yes        yes
-                   Latin Hypercube Sampling        yes        yes
-
-
-                                   Partially Synthetic
-                       Technique                     Continuous Categorical
-        IPSO                                            yes         no
-        Hybrid masking                                  yes         no
-        Random response                                  no         yes
-        Blank and impute                                yes         yes
-        SMIKe                                           yes         yes
-        Multiply imputed partially synthetic dataset    yes         yes
+slide 98/98
 
 ----------------------------------------------------------------
 
