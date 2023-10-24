@@ -1318,143 +1318,48 @@ Secondary suppression.
 ----------------------------------------------------------------
 
 ## Microdata
-### Macrodata vs microdata
- • In the past data were mainly released in tabular form (macrodata)
-   and through statistical DBMS
+Many situations require today that the specific stored data themselves (**microdata**) be released. The advantage of releasing microdata is an increased flexibility and availability of information for the recipients.
 
- • Today many situations require that the specific stored data
-   themselves, called microdata, be released
-         ◦ increased flexibility and availability of information for recipients
+To protect the anonymity of the respondents, data holders often remove or encrypt explicit identifiers such as names, addresses, and phone numbers. De-identifying data, however, provides no guarantee of anonymity.
 
- • Microdata are subject to a greater risk of privacy breaches (linking
-   attacks)
+Released information often contains other quasi-identifying data (e.g., race, birth date, sex, and ZIP code) that can be linked to publicly available information to reidentify respondents. The data recipients can determine (or restrict uncertainty) to which respondent some pieces of released data refer. This has created an increasing demand to devote resources for an adequate protection of sensitive data. The microdata protection techniques follow two main strategies:
+- reduce the information content;
+- change the data in such a way that the information content is maintained as much as possible.
 
-                                           Microdata (1)
-
- • Many situations require today that the specific stored data
-   themselves (microdata) be released
-
- • The advantage of releasing microdata is an increased flexibility
-   and availability of information for the recipients
-
- • To protect the anonymity of the respondents, data holders often
-   remove or encrypt explicit identifiers such as names, addresses,
-   and phone numbers
-
- • De-identifying data, however, provides no guarantee of anonymity
-
-
-                                           Microdata (2)
-
- • Released information often contains other quasi-identifying data
-   (e.g., race, birth date, sex, and ZIP code) that can be linked to
-   publicly available information to reidentify respondents
- • The data recipients can determine (or restrict uncertainty) to
-   which respondent some pieces of released data refer
- • This has created an increasing demand to devote resources for an
-   adequate protection of sensitive data
- • The microdata protection techniques follow two main strategies:
-         ◦ reduce the information content
-         ◦ change the data in such a way that the information content is
-           maintained as much as possible
-
-
-                             Disclosure risk – Example
-
-  SSN Name Race Date of birth Sex ZIP                                   Marital status Disease
-                      asian     64/04/12             F          94142   divorced            hypertension
-                      asian     64/09/13             F          94141   divorced            obesity
-                      asian     64/04/15             F          94139   married             chest pain
-                      asian     63/03/13             M          94139   married             obesity
-                      asian     63/03/18             M          94139   married             short breath
-                      black     64/09/27             F          94138   single              short breath
-                      black     64/09/27             F          94139   single              obesity
-                      white     64/09/27             F          94139   single              chest pain
-                      white     64/09/27             F          94141   widow               short breath
-
-
-     Name               Address                   City             ZIP        DOB        Sex       Status
- ................ ................ ................                ........ ........ ........ ................
- ................ ................ ................                ........ ........ ........ ................
- Sue J. Doe 900 Market St. San Francisco                          94142 64/04/12        F      divorced
- ................ ................ ................                ........ ........ ........ ................
-
-          Microdata disclosure protection techniques
-
+### Microdata disclosure protection techniques
 To limit the disclosure risk, the following procedures should be applied:
+- including data from a sample of the whole population only;
+- removal of identifiers;
+- limiting geographic details;
+- limiting the number of variables.
 
-  • including data from a sample of the whole population only
+#### Limiting geographic details
+Geographic location is a characteristic that:
+- often appears in microdata;
+- can be used for re-identifying respondents.
 
-  • removal of identifiers
+It is therefore important limiting geographic details.
+For example, the Census Bureau will not identify any geographic region with less than $100,000$ persons in the sampling ($250,000$ in the $’80$). Microdata contain, in fact, contextual variables that describe the area in which a respondent resides but do not identify that area (e.g., average temperature of an area).
 
-  • limiting geographic details
+----------------------------------------------------------------
 
-  • limiting the number of variables
+### Classification of microdata protection techniques
+These techniques are based on the principle that reidentification can be counteracted by reducing the amount of released information:
+- masking the data (e.g., by not releasing or by perturbing their values);
+- releasing plausible but made up values instead of the real ones.
 
-
-                             Limiting geographic details
-
-  • Geographic location is a characteristic that:
-          ◦ often appears in microdata
-          ◦ can be used for re-identifying respondents
-
-  • It is therefore important limiting geographic details
-E XAMPLE:
-  • The Census Bureau will not identify any geographic region with
-    less than 100,000 persons in the sampling (250,000 in the ’80)
-
-  • Microdata contain contextual variables that describe the area in
-    which a respondent resides but do not identify that area (e.g.,
-    average temperature of an area)
-
-
- Classification of microdata protection techniques (1)
-
-These techniques are based on the principle that reidentification can
-be counteracted by reducing the amount of released information:
-  • masking the data (e.g., by not releasing or by perturbing their
-    values)
-
-  • releasing plausible but made up values instead of the real ones
-
-According to this principle, the microdata protection techniques can be
-classified into two main categories:
-
-  • masking techniques
-
-  • synthetic data generation techniques
-
- Classification of microdata protection techniques (2)
+According to this principle, the microdata protection techniques can be classified into two main categories:
+- masking techniques;
+- synthetic data generation techniques.
 
 They can operate on different data types:
+- **continuous**: an attribute is said to be continuous if it is numerical and arithmetic operations are defined on it (e.g., date of birth, temperature, . . .);
+- **categorical**: an attribute is said to be categorical if it can assume a limited and specified set of values and arithmetic operations do not have sense on it (e.g., marital status, race, . . .).
 
-  • Continuous. An attribute is said to be continuous if it is numerical
-    and arithmetic operations are defined on it
-      E XAMPLE: date of birth, temperature, . . .
-
-  • Categorical. An attribute is said to be categorical if it can assume
-    a limited and specified set of values and arithmetic operations do
-    not have sense on it
-      E XAMPLE: marital status, race, . . .
-
+----------------------------------------------------------------
 
        Microdata Disclosure Protection Techniques:
                   Masking Techniques
-
-
-                                                  Outline
-
- • Statistical DBMS
-
-
- • Macrodata protection
-         ◦ Count and frequency tables
-         ◦ Magnitude tables
-
-
- • Microdata protection
-         ◦ Masking techniques
-         ◦ Synthetic techniques
 
 
                                     Masking techniques
