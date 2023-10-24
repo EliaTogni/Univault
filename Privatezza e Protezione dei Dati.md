@@ -255,14 +255,14 @@ An example of $2$-anonymized tables with regard to different models.
 ----------------------------------------------------------------
 
 ### Algorithms for computing a $k$-anonymous table
-The problem of finding minimal $k$-anonymous tables, with attribute generalization and tuple suppression, is computationally hard. The majority of the exact algorithms proposed in literature have computational time exponential in the number of the attributes composing the quasi-identifier. When the number $\vert QI \vert$ of attributes in the quasi-identifier is small compared with the number $n$ of tuples in the private table PT, these exact algorithms with attribute generalization and tuple suppression are practical.<br />
+The problem of finding minimal $k$-anonymous tables, with attribute generalization and tuple suppression, is computationally hard. The majority of the exact algorithms proposed in literature have computational time exponential in the number of the attributes composing the quasi-identifier. When the number $\vert QI \vert$ of attributes in the quasi-identifier is small compared with the number $n$ of tuples in the private table $PT$, these exact algorithms with attribute generalization and tuple suppression are practical.<br />
 Many exact algorithms for producing $k$-anonymous tables through attribute generalization and tuple suppression have been proposed.
 
 ----------------------------------------------------------------
 
 ## Algorithms for AG_TS and AG_
 ### Computing a $k$-minimal solution
-Each path in $DGH_{DT}$ represents a generalization strategy for PT. We call **locally minimal generalization** the lowest node of each path satisfying $k$-anonymity. The properties exploited by the algorithm are:
+Each path in $DGH_{DT}$ represents a generalization strategy for $PT$. We call **locally minimal generalization** the lowest node of each path satisfying $k$-anonymity. The properties exploited by the algorithm are:
 1) each $k$-minimal generalization is locally minimal with respect to a path (but the converse is not true);
 2) going up in the hierarchy the number of tuples that must be removed to guarantee $k$-anonymity decreases.
 
@@ -294,7 +294,7 @@ Satisfies $2$-anonymity (suppressing $t_8$ and $t_9$)
 ----------------------------------------------------------------
 
 ### $k$-Optimize algorithm
-Order attributes in QI and the values in their domains. Associate an integer index value with each domain value, following the defined order.
+Order attributes in $QI$ and the values in their domains. Associate an integer index value with each domain value, following the defined order.
 
 slide 55/155
 
@@ -343,7 +343,7 @@ given. Experimental results can be used to assess the quality of the solution re
 
 ## Algorithms for _CS_ and _CG_
 ### Mondrian multidimensional algorithm
-Each attribute in $QI$ represents a dimension. Each tuple in PT represents a point in the space defined by $QI$. Tuples with the same $QI$ value are represented by giving a multiplicity value to points. The multi-dimensional space is partitioned by splitting dimensions such that each area contains at least k occurrences of point values. All the points in a region are generalized to a unique value. The corresponding tuples are substituted by the computed generalization.<br />
+Each attribute in $QI$ represents a dimension. Each tuple in $PT$ represents a point in the space defined by $QI$. Tuples with the same $QI$ value are represented by giving a multiplicity value to points. The multi-dimensional space is partitioned by splitting dimensions such that each area contains at least k occurrences of point values. All the points in a region are generalized to a unique value. The corresponding tuples are substituted by the computed generalization.<br />
 Mondrian algorithm is flexible and can operate:
 - on a different number of attributes:
 	- single-dimension;
