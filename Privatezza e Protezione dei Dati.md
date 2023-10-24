@@ -1261,8 +1261,6 @@ Consider the respondents that contribute to the total income in a city, which is
 Assuming $n=2$ and $k=70$, the cell is considered sensitive. The income of Alice and Bob $(100K+80K=180K)$ represents the $72\%$ of the cell value ($250K$).
 
 ----------------------------------------------------------------
-
-### Protection of tables of magnitude data
 #### Secondary suppression
 Once sensitive cells have been identified, there are two options:
 - restructure the table and collapse cells until no sensitive cells remain;
@@ -1275,70 +1273,27 @@ Sensitive cells might be leaked due to the fact that:
 - implicitly published unions of suppressed cells may be sensitive according to the sensitivity rule adopted;
 - the row and column equations represented by the published table may be solved, and the value for a suppressed cell estimated too accurately.
 
- • Any complementary suppression is acceptable as long as the
-   sensitive cells are protected
+Any complementary suppression is acceptable as long as the sensitive cells are protected. For small tables the selection of complementary cells can be done manually.<br />
+Data analysts know which cells are of greatest interest (and should not be used for complementary suppression). Manual selection of complementary cells is acceptable as long as the resulting table provides sufficient protection to sensitive cells. An automated audit should be applied to ensure this is true.
 
- • For small tables the selection of complementary cells can be done
-   manually
+----------------------------------------------------------------
 
- • Data analysts know which cells are of greatest interest (and
-   should not be used for complementary suppression)
+#### Audit
+If totals are published the sum of the (primary or secondary) suppressed cells can be derived. Apply the sensitivity rule to these sums to ensure that they are not sensitive:
+- rows and columns can be seen as a large system of linear equations;
+- estimate a lower and upper bound of each suppressed cell using linear programming;
+- if bounds are too close to the original value, the cell is sensitive.
 
- • Manual selection of complementary cells is acceptable as long as
-   the resulting table provides sufficient protection to sensitive cells
+Simple for small tables, possibly computationally intractable for large tables.
 
- • An automated audit should be applied to ensure this is true
+##### Information loss
+The selection of the complementary cells should result in minimum **information loss**. There is no unique definition of information loss. For instance, we can try to minimize:
+- the sum of the suppressed values (a large number of cells with small values can be suppressed);
+- the total number of suppressed cells.
 
-               Protection of tables of magnitude data
+----------------------------------------------------------------
 
-1. Identify sensitive cells
-         ◦ p-percent
-         ◦ pq
-
-         ◦ (n,k)
-
-
-2. Protect sensitive cells
-         ◦ Suppression
-
-
-3. Verify result
-         ◦ Audit
-
-         ◦ Information loss
-         ◦ (Parameters are not disclosed)
- 
-                                                     Audit
-
- • If totals are published the sum of the (primary or secondary)
-   suppressed cells can be derived
-
- • Apply the sensitivity rule to these sums to ensure that they are not
-   sensitive
-         ◦ Rows and columns can be seen as a large system of linear
-           equations
-         ◦ Estimate a lower and upper bound of each suppressed cell using
-           linear programming
-         ◦ If bounds are too close to the original value, the cell is sensitive
-
- • Simple for small tables, possibly computationally intractable for
-   large tables
-
-                                        Information loss
-
- • The selection of the complementary cells should result in
-   minimum information loss
-
- • There is no unique definition of information loss
-
- • For instance, we can try to minimize:
-         ◦ the sum of the suppressed values (a large number of cells with
-           small values can be suppressed)
-
-         ◦ the total number of suppressed cells
-
-
-                       Information in parameter values
+##### Information in parameter values
 
 While the suppression rules can be published, parameter values
 should be kept confidential
@@ -1439,7 +1394,9 @@ contributes more than 90%
 
 Secondary suppression
 
-                                             Microdata
+----------------------------------------------------------------
+
+## Microdata
 
 
 
