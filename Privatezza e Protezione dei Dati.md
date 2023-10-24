@@ -917,8 +917,7 @@ Macrodata tables can be classified into the following two groups (types of table
 
 ----------------------------------------------------------------
 
-## Macrodata Disclosure Protection Techniques
-### Tables of Counts or Frequencies
+## Macrodata Disclosure Protection Techniques: Tables of Counts or Frequencies
 
 Data collected from most surveys are published in tables of count or frequencies.<br />
 Protection operates in three steps:
@@ -931,8 +930,6 @@ Protection operates in three steps:
 	- **suppression**;
 	- **rounding**;
 	- **confidentiality edit**.
-
-----------------------------------------------------------------
 
 ### Sampling
 Conduct (and publish) a sample survey rather than a census.<br />
@@ -1107,486 +1104,102 @@ slide 37/98
 2) since we need tables by company and education level, we find a match in some other company on the other variables (race and salary, company totals for these variables remain unchanged):
 	- a match for record $4$ (Pete) is found in company Beta, the match is with Alonso, who has very high education;
 	- Record $17$ (Mike) is matched with George in company Delta, who has medium education.
-3) we also assume that part of the randomly selected 10% sample
-   from other companies match records in company Alfa
-         ◦ One record from company Delta (June with high education)
-           matches with Virginia (record 12)
+3) we also assume that part of the randomly selected $10\%$ sample from other companies match records in company Alfa:
+	- one record from company Delta (June with high education) matches with Virginia (record $12$);
+	- One record from company Gamma (Heather with low education) matched with Nancy (record $20$).
+4) After all matches are made, swap attributes on matched records;
+5) Use the swapped data file directly to produce tables.
 
-         ◦ One record from company Gamma (Heather with low education)
-           matched with Nancy (record 20)
+check slide 40/98
 
-4. After all matches are made, swap attributes on matched records
+
+Take a sample of records from the microdata file (say a $10\%$ sample).
 
-5. Use the swapped data file directly to produce tables
-
-                     Confidentiality edit – Example (4)
-
-Records for the 20 employees of company Alfa prova prova prova
-prova
-               N       Employee            Company               Education   Salary   Race
-               1       John                Alfa                  very high    201     black
-               2       Jim                 Alfa                  high         103     white
-               3       Sue                 Alfa                  high          77     black
-               4       Pete                Alfa                  high          61     white
-               5       Ramesh              Alfa                  medium        72     white
-               6       Dante               Alfa                  low          103     white
-               7       Virgil              Alfa                  low          91      black
-               8       Wanda               Alfa                  low          84      white
-               9       Stan                Alfa                  low          75      white
-               10      Irmi                Alfa                  low          62      black
-               11      Renee               Alfa                  low          58      white
-               12      Virginia            Alfa                  low          56      black
-               13      Mary                Alfa                  low          54      black
-               14      Kim                 Alfa                  low          52      white
-               15      Tom                 Alfa                  low          55      black
-               16      Ken                 Alfa                  low          48      white
-               17      Mike                Alfa                  low          48      white
-               18      Joe                 Alfa                  low          41      black
-               19      Jeff                Alfa                  low          44      black
-               20      Nancy               Alfa                  low          37      white
-
-                     Confidentiality edit – Example (4)
-
-Take a sample of records from the microdata file (say a 10% sample)
-prova prova prova prova
-               N       Employee            Company               Education   Salary   Race
-               1       John                Alfa                  very high    201     black
-               2       Jim                 Alfa                  high         103     white
-               3       Sue                 Alfa                  high          77     black
-               4       Pete                Alfa                  high         61      white
-               5       Ramesh              Alfa                  medium        72     white
-               6       Dante               Alfa                  low          103     white
-               7       Virgil              Alfa                  low           91     black
-               8       Wanda               Alfa                  low          84      white
-               9       Stan                Alfa                  low          75      white
-               10      Irmi                Alfa                  low          62      black
-               11      Renee               Alfa                  low          58      white
-               12      Virginia            Alfa                  low          56      black
-               13      Mary                Alfa                  low          54      black
-               14      Kim                 Alfa                  low          52      white
-               15      Tom                 Alfa                  low          55      black
-               16      Ken                 Alfa                  low          48      white
-               17      Mike                Alfa                  low          48      white
-               18      Joe                 Alfa                  low          41      black
-               19      Jeff                Alfa                  low          44      black
-               20      Nancy               Alfa                  low          37      white
+slide 40/98
  
-                     Confidentiality edit – Example (4)
-
-Since we need tables by company and education level, we find a
-match in some other company on the other variables
-               N       Employee            Company               Education   Salary   Race
-               1       John                Alfa                  very high    201     black
-               2       Jim                 Alfa                  high         103     white
-               3       Sue                 Alfa                  high          77     black
-               4       Alonso              Alfa                  very high     61     white
-               5       Ramesh              Alfa                  medium        72     white
-               6       Dante               Alfa                  low          103     white
-               7       Virgil              Alfa                  low           91     black
-               8       Wanda               Alfa                  low          84      white
-               9       Stan                Alfa                  low          75      white
-               10      Irmi                Alfa                  low          62      black
-               11      Renee               Alfa                  low          58      white
-               12      Virginia            Alfa                  low          56      black
-               13      Mary                Alfa                  low          54      black
-               14      Kim                 Alfa                  low          52      white
-               15      Tom                 Alfa                  low          55      black
-               16      Ken                 Alfa                  low          48      white
-               17      George              Alfa                  medium        48     white
-               18      Joe                 Alfa                  low          41      black
-               19      Jeff                Alfa                  low          44      black
-               20      Nancy               Alfa                  low          37      white
-
-                     Confidentiality edit – Example (4)
-
-Part of the randomly selected 10% sample from other companies
-match records in company Alfa
-               N       Employee            Company               Education   Salary   Race
-               1       John                Alfa                  very high    201     black
-               2       Jim                 Alfa                  high         103     white
-               3       Sue                 Alfa                  high          77     black
-               4       Alonso              Alfa                  very high     61     white
-               5       Ramesh              Alfa                  medium        72     white
-               6       Dante               Alfa                  low          103     white
-               7       Virgil              Alfa                  low           91     black
-               8       Wanda               Alfa                  low          84      white
-               9       Stan                Alfa                  low          75      white
-               10      Irmi                Alfa                  low          62      black
-               11      Renee               Alfa                  low          58      white
-               12      June                Alfa                  high         56      black
-               13      Mary                Alfa                  low          54      black
-               14      Kim                 Alfa                  low          52      white
-               15      Tom                 Alfa                  low          55      black
-               16      Ken                 Alfa                  low          48      white
-               17      George              Alfa                  medium        48     white
-               18      Joe                 Alfa                  low          41      black
-               19      Jeff                Alfa                  low          44      black
-               20      Heather             Alfa                  low          37      white
+
+Since we need tables by company and education level, we find a match in some other company on the other variables.
 
-                    Confidentiality edit – Example (5)
+slide 40/98
 
-                                               Education level (original)
-               Company             Low        Medium High Very High         Total
-                 Alfa                 15                1        3     1      20
-                 Beta                 20               10       10    15      55
-                Gamma                  3               10       10     2      25
-                 Delta                12               14        7     2      35
-                  Total               50               35       30    20     135
+
+Part of the randomly selected $10\%$ sample from other companies
+match records in company Alfa.
 
+slide 40/98
 
-                    Confidentiality edit – Example (5)
+slide 41/98
 
-                                               Education level (original)
-               Company             Low        Medium High Very High         Total
-                 Alfa                 15                1        3     1      20
-                 Beta                 20               10       10    15      55
-                Gamma                  3               10       10     2      25
-                 Delta                12               14        7     2      35
-                  Total               50               35       30    20     135
+----------------------------------------------------------------
 
-                                   Education level (with confidentiality edit)
-              Company             Low Medium High Very High               Total
-                 Alfa                13                2         3     2      20
-                 Beta                20               10        10    15      55
-                Gamma                 4                9        10     2      25
-                 Delta               13               14         7     1      35
-                  Total              50               35        30    20     135
+## Macrodata Disclosure Protection Techniques: Tables of Magnitude Data
+### Protection of tables of magnitude data 
+Magnitude data are generally nonnegative quantities reported in surveys or censuses. The distribution of these values is likely to be skewed. Disclosure limitation techniques focus on preventing precise estimation of the values for outliers. Sampling is less likely to provide protection. The units that are most visible because of their size do not receive any protection from sampling.
 
+1) Identify sensitive cells:
+	 - **$p$-percent**;
+	 - **$pq$**;
+	 - **$(n,k)$**.
+2) protect sensitive cells:
+	- **suppression**.
+3) verify result:
+	- **audit**;
+	- **information loss**;
+	- (parameters are not disclosed)
 
-      Macrodata Disclosure Protection Techniques:
-              Tables of Magnitude Data
+----------------------------------------------------------------
 
+### Suppression rules
+Primary suppression rules determine whether a cell could reveal individual respondent information. Such cells are considered sensitive and cannot be released. The most common suppression rules are:
+- the $p$-percent rule;
+- the $pq$ rule;
+- the $(n,k)$ rule.
 
+These rules are used to identify sensitive cells by verifying whether it is enough difficult for one respondent to estimate the value reported by another respondent too closely.
 
-                                                  Outline
+----------------------------------------------------------------
 
- • Statistical DBMS
+#### Primary suppression rule: $p$-percent
+Disclosure of magnitude data occurs if the user can estimate the contribution of a respondent too accurately. A cell is sensitive, if upper and lower estimates for the respondent’s value are closer to the reported value than a pre-specified percentage $p$.
 
+Formally, a cell is protected if:
 
- • Macrodata protection
-         ◦ Count and frequency tables
-         ◦ Magnitude tables
+$$\sum_{i = c + 2}^{N} x_i \geq \frac{p}{100} x_1$$
 
+$x_1, x_2, . . ., x_N$ : respondent’s value in decreasing order.<br />
+$c$: size of a coalition of respondents interested in estimating $x_1$.
 
- • Microdata protection
-         ◦ Masking techniques
-         ◦ Synthetic techniques
+The largest value $x_1$ is the most exposed
 
+An example of the primary suppression rule: $p$-percent.<br />
+Consider the respondents that contribute to the total income in a city, which is equal to $250K$, to be (in decreasing order):
+- Alice: $100K$;
+- Bob: $80K$;
+- Carol: $30K$;
+- David: $20K$;
+- Eve: $10K$;
+- Frank: $3K$;
+- ...
 
-          Protection of tables of magnitude data – 1
+The most sensitive value is Alice’s, because it is easier to estimate. If Alice’s income cannot be estimated accurately, the income of the other citizens is protected.
 
- • Magnitude data are generally nonnegative quantities reported in
-   surveys or censuses
+Which is the coalition of $c = 3$ respondents that can better estimate Alice’s income? Bob, Carol, David, whose total income is $130K$, can estimate that Alice’s income is between $80K$ and $120K$:
+- $\geq 80K$ since it is higher than Bob’s;
+- $\ leq 120K (=250K−130K)$.
 
- • The distribution of these values is likely to be skewed
+Therefore, it is sensitive for any $p \geq 20$.
+Formally, the cell is protected for any $p$ such that
 
- • Disclosure limitation techniques focus on preventing precise
-   estimation of the values for outliers
+$$\sum_{i = 3 + 2}^{N} x_i \geq \frac{p}{100} \text{Alice}$$
+$$\sum_{i = 5}^{N} x_i \geq \frac{p}{100} 100$$
+$$p \leq \text{ Cell } - \sum_{i = 1}^{4} x_i$$
+$$p \leq \text{ Cell } − (\text{Alice } + \text{ Bob }+ \text{ Carol }+ \text{ David})$$
+$$p \leq 250 − (100 + 80 + 30 + 20)$$$$p \leq 20$$
 
- • Sampling is less likely to provide protection
+----------------------------------------------------------------
 
- • The units that are most visible because of their size do not receive
-   any protection from sampling
-
-		  Protection of tables of magnitude data – 2
-
-1. Identify sensitive cells
-         ◦ p-percent
-         ◦ pq
-
-         ◦ (n,k)
-
-
-2. Protect sensitive cells
-         ◦ Suppression
-
-
-3. Verify result
-         ◦ Audit
-
-         ◦ Information loss
-         ◦ (Parameters are not disclosed)
-
-
-                                      Suppression rules
-
- • Primary suppression rules determine whether a cell could reveal
-   individual respondent information
-
- • Such cells are considered sensitive and cannot be released
-
- • The most common suppression rules are:
-         ◦ the p-percent rule
-
-         ◦ the pq rule
-
-         ◦ the (n,k) rule
-
- • These rules are used to identify sensitive cells by verifying
-   whether it is enough difficult for one respondent to estimate the
-   value reported by another respondent too closely
-
-
-                 Primary suppression rule: p-percent
-
- • Disclosure of magnitude data occurs if the user can estimate the
-   contribution of a respondent too accurately
-
- • A cell is sensitive, if upper and lower estimates for the
-   respondent’s value are closer to the reported value than a
-   pre-specified percentage p
-
- • Formally, a cell is protected if
-                                                    N
-                                                                  p
-                                                   ∑      xi ≥       x1
-                                                 i=c+2           100
-
-     x1 , x2 , . . . , xN : respondent’s value in decreasing order
-     c: size of a coalition of respondents interested in estimating x1
-
- • The largest value x1 is the most exposed
-
-
-    Primary suppression rule: p-percent – Example
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
-
- • The most sensitive value is Alice’s, because it is easier to estimate
-
- • If Alice’s income cannot be estimated accurately, the income of
-   the other citizens is protected
-
-
-    Primary suppression rule: p-percent – Example
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
-
- • Which is the coalition of c = 3 respondents that can better
-   estimate Alice’s income?
-
-
-    Primary suppression rule: p-percent – Example
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
-
- • Which is the coalition of c = 3 respondents that can better
-   estimate Alice’s income?
-   Bob, Carol, David, whose total income is 130K
-
-
-    Primary suppression rule: p-percent – Example
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
-
- • Which is the coalition of c = 3 respondents that can better
-   estimate Alice’s income?
-   Bob, Carol, David, whose total income is 130K
-   can estimate that Alice’s income is between 80K and 120K
-         ◦ ≥80K since it is higher than Bob’s
-         ◦ ≤120K (=250K−130K)
-
-    Primary suppression rule: p-percent – Example
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
-
- • Which is the coalition of c = 3 respondents that can better
-   estimate Alice’s income?
-   Bob, Carol, David, whose total income is 130K
-   can estimate that Alice’s income is between 80K and 120K
-   =⇒ sensitive for any p≥20
-
-    Primary suppression rule: p-percent – Example
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
-
- • Which is the coalition of c = 3 respondents that can better
-   estimate Alice’s income? Bob, Carol, David
-
- • Formally, the cell is protected for any p such that:
-                                 N
-                                          p
-                                 ∑ xi ≥ 100 x1
-                               i=c+2
-
-
-    Primary suppression rule: p-percent – Example
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
-
- • Which is the coalition of c = 3 respondents that can better
-   estimate Alice’s income? Bob, Carol, David
-
- • Formally, the cell is protected for any p such that:
-                               N
-                                        p
-                               ∑ xi ≥ 100 Alice
-                             i=3+2
-
-
-    Primary suppression rule: p-percent – Example
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
-
- • Which is the coalition of c = 3 respondents that can better
-   estimate Alice’s income? Bob, Carol, David
-
- • Formally, the cell is protected for any p such that:
-                                N
-                                        p
-                               ∑ xi ≥ 100 100
-                               i=5
-
-
-    Primary suppression rule: p-percent – Example
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
-
- • Which is the coalition of c = 3 respondents that can better
-   estimate Alice’s income? Bob, Carol, David
-
- • Formally, the cell is protected for any p such that:
-                                                                 4
-                                                  p ≤ Cell − ∑ xi
-                                                                i=1
-
-
-
-    Primary suppression rule: p-percent – Example
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
-
- • Which is the coalition of c = 3 respondents that can better
-   estimate Alice’s income? Bob, Carol, David
-
- • Formally, the cell is protected for any p such that:
-                  p ≤ Cell − (Alice + Bob + Carol + David)
-
-
-    Primary suppression rule: p-percent – Example
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
-
- • Which is the coalition of c = 3 respondents that can better
-   estimate Alice’s income? Bob, Carol, David
-
- • Formally, the cell is protected for any p such that:
-                        p ≤ 250 − (100 + 80 + 30 + 20)
-
-
-    Primary suppression rule: p-percent – Example
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
-
- • Which is the coalition of c = 3 respondents that can better
-   estimate Alice’s income? Bob, Carol, David
-
- • Formally, the cell is protected for any p such that:
-                                   p ≤ 20
-
-
-                     Primary suppression rule: pq (1)
-
- • In the p-percent rule, we assumed that there was no prior
-   knowledge about respondent’s values
-
- • Agencies should not make this assumption
+#### Primary suppression rule: $pq$
+In the $p$-percent rule, we assumed that there was no prior knowledge about respondent’s values. Agencies should not make this assumption.
 
  • In the pq rule, agencies can specify how much prior knowledge
    there is by assigning a value q which represents how accurately
