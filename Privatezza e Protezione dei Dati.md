@@ -1294,129 +1294,31 @@ The selection of the complementary cells should result in minimum **information 
 ----------------------------------------------------------------
 
 ##### Information in parameter values
-
 While the suppression rules can be published, parameter values
-should be kept confidential
+should be kept confidential.
 
-E XAMPLE: Assume that:
-  • p-percent rule is used with p=20% and the same value is used for
-    complementary suppression
-  • a cell x with value 100 has been suppressed along with other
-    suitable complementary cells
-  • by solving a system of linear equations, the upper bound is 120
-    and the lower bound is 80: 80≤ x ≤120 =⇒ x =100
-Once the value for one suppressed cell has been uniquely determined,
-other cell values can easily be derived
+For example, assume that:
+- $p$-percent rule is used with $p=20\%$ and the same value is used for complementary suppression;
+- a cell $x$ with value $100$ has been suppressed along with other suitable complementary cells;
+- by solving a system of linear equations, the upper bound is $120$ and the lower bound is $80$: $80 \leq x  \leq 120 \to x =100$.
 
+Once the value for one suppressed cell has been uniquely determined, other cell values can easily be derived.
 
-  Protection of tables of magnitude data – Example
+An example of the protection of tables of magnitude data.
 
-                    Employees by sex and department
-               Sex    Dept1 Dept2 Dept3 Dept4       Total
-             Female        1      2       2     1      6
-              Male         3      2       0     2      7
-              Total        4      4       2     3     13
-              Total   6300 11400 4200        8000 29900
-                 Monthly income by sex and department
-              Sex     Dept1 Dept2 Dept3 Dept4       Total
-             Female    1800   5600    4200   2500 14100
-              Male     4500   5800        0  5500 15800
-              Total    6300 11400     4200   8000 29900
+slide 63/98 3
+slide 63/98 4
 
+$(n,k)$ rule with $n=1$, $k=90$ implies that a cell is sensitive if one respondent contributes more than $90\%$.
 
-   Protection of tables of magnitude data – Example
+slide 63/98 5
 
-                     Employees by sex and department
-                Sex    Dept1 Dept2 Dept3 Dept4       Total
-              Female        1      2       2     1      6
-               Male         3      2       0     2      7
-               Total        4      4       2     3     13
-               Total   6300 11400 4200        8000 29900
-                  Monthly income by sex and department
-               Sex     Dept1 Dept2 Dept3 Dept4       Total
-              Female    1800   5600    4200   2500 14100
-               Male     4500   5800        0  5500 15800
-               Total    6300 11400     4200   8000 29900
-
-(n,k) rule with n=1, k=90 ⇒ a cell is sensitive if one respondent
-contributes more than 90%
-
-
-   Protection of tables of magnitude data – Example
-
-                     Employees by sex and department
-                Sex    Dept1 Dept2 Dept3 Dept4       Total
-              Female        1      2       2     1      6
-               Male         3      2       0     2      7
-               Total        4      4       2     3     13
-               Total   6300 11400 4200        8000 29900
-                  Monthly income by sex and department
-               Sex     Dept1 Dept2 Dept3 Dept4       Total
-              Female    1800   5600    4200   2500 14100
-               Male     4500   5800        0  5500 15800
-               Total    6300 11400     4200   8000 29900
-
-(n,k) rule with n=1, k=90 ⇒ a cell is sensitive if one respondent
-contributes more than 90%
-
-
-   Protection of tables of magnitude data – Example
-
-                     Employees by sex and department
-                Sex    Dept1 Dept2 Dept3 Dept4       Total
-              Female        1      2       2     1      6
-               Male         3      2       0     2      7
-               Total        4      4       2     3     13
-               Total   6300 11400 4200        8000 29900
-                  Monthly income by sex and department
-               Sex     Dept1 Dept2 Dept3 Dept4       Total
-              Female      D1   5600    4200     D2 14100
-               Male     4500   5800        0  5500 15800
-               Total    6300 11400     4200   8000 29900
-
-(n,k) rule with n=1, k=90 ⇒ a cell is sensitive if one respondent
-contributes more than 90%
-
-
-   Protection of tables of magnitude data – Example
-
-                     Employees by sex and department
-                Sex    Dept1 Dept2 Dept3 Dept4       Total
-              Female        1      2       2     1       6
-               Male         3      2       0     2       7
-               Total        4      4       2     3     13
-               Total    6300 11400 4200       8000 29900
-                  Monthly income by sex and department
-               Sex     Dept1 Dept2 Dept3 Dept4       Total
-              Female      D1   5600    4200     D2 14100
-               Male       D3   5800       0     D4 15800
-               Total    6300 11400     4200   8000 29900
-
-Secondary suppression
+Secondary suppression.
 
 ----------------------------------------------------------------
 
 ## Microdata
-
-
-
-                                                  Outline
-
- • Statistical DBMS
-
-
- • Macrodata protection
-         ◦ Count and frequency tables
-         ◦ Magnitude tables
-
-
- • Microdata protection
-         ◦ Masking techniques
-         ◦ Synthetic techniques
-
-
-                               Macrodata vs microdata
-
+### Macrodata vs microdata
  • In the past data were mainly released in tabular form (macrodata)
    and through statistical DBMS
 
