@@ -1185,7 +1185,7 @@ The most sensitive value is Alice’s, because it is easier to estimate. If Alic
 
 Which is the coalition of $c = 3$ respondents that can better estimate Alice’s income? Bob, Carol, David, whose total income is $130K$, can estimate that Alice’s income is between $80K$ and $120K$:
 - $\geq 80K$ since it is higher than Bob’s;
-- $\ leq 120K (=250K−130K)$.
+- $\leq 120K (=250K−130K)$.
 
 Therefore, it is sensitive for any $p \geq 20$.
 Formally, the cell is protected for any $p$ such that
@@ -1199,371 +1199,81 @@ $$p \leq 250 − (100 + 80 + 30 + 20)$$$$p \leq 20$$
 ----------------------------------------------------------------
 
 #### Primary suppression rule: $pq$
-In the $p$-percent rule, we assumed that there was no prior knowledge about respondent’s values. Agencies should not make this assumption.
-
- • In the pq rule, agencies can specify how much prior knowledge
-   there is by assigning a value q which represents how accurately
-   respondents can estimate another respondent’s value before any
-   data are published (p < q < 100)
-
- • Parameter q represents the error in estimation before the cell is
-   published
-
-
-                     Primary suppression rule: pq (2)
-
- • Formally, a cell is protected if
-
-                                               q N            p
-                                                    ∑   xi ≥     x1
-                                              100 i=c+2      100
-
-     x1 , x2 , . . . , xN : respondent’s value in decreasing order
-     c: size of a coalition of respondents interested in estimating x1
-
- • The pq rule reduces to the p-percent rule when q=100 (i.e., no
-   estimate ability)
-
-# Arrivare qui
-
-
-        Primary suppression rule: pq – Example (1)
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
- • Assume q=80% to represent how accurately respondents can
-   estimate another respondent’s value before any data publishing
-
-        Primary suppression rule: pq – Example (1)
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
- • Assume q=80% to represent how accurately respondents can
-   estimate another respondent’s value before any data publishing
- • For Alice’s income this implies range [20,180]
-
-
-        Primary suppression rule: pq – Example (2)
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
-
-
-        Primary suppression rule: pq – Example (2)
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
- • The coalition of c = 3 respondents that can better estimate Alice’s
-   income is Bob, Carol, David
-
-        Primary suppression rule: pq – Example (2)
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
- • The coalition of c = 3 respondents that can better estimate Alice’s
-   income is Bob, Carol, David
- • The coalition can reduce uncertainty about Alice’s income from
-   [20K-180K] to [80K-120K]
-         ◦ ≥80K since it is higher than Bob’s
-         ◦ ≤120K (=250K−130K)
-
-        Primary suppression rule: pq – Example (2)
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
- • Assuming q = 80% and c = 3
- • Formally, the cell is protected for any p such that:
-                              q N            p
-                                   ∑   xi ≥     x1
-                             100 i=c+2      100
-
-
-        Primary suppression rule: pq – Example (2)
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
- • Assuming q = 80% and c = 3
- • Formally, the cell is protected for any p such that:
-                            80 N           p
-                                 ∑   xi ≥     Alice
-                           100 i=3+2      100
-
-
-        Primary suppression rule: pq – Example (2)
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
- • Assuming q = 80% and c = 3
- • Formally, the cell is protected for any p such that:
-                              80 N         p
-                                 ∑   xi ≥     100
-                             100 i=5      100
-
-
-        Primary suppression rule: pq – Example (2)
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
- • Assuming q = 80% and c = 3
- • Formally, the cell is protected for any p such that:
-                                 80 N
-                                     ∑ xi ≥ p
-                                100 i=5
-
-
-        Primary suppression rule: pq – Example (2)
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
- • Assuming q = 80% and c = 3
- • Formally, the cell is protected for any p such that:
-                                 N
-                                          p
-                                 ∑ xi ≥ 0.80
-                                i=5
-
-
-        Primary suppression rule: pq – Example (2)
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
- • Assuming q = 80% and c = 3
- • Formally, the cell is protected for any p such that:
-                                                           4
-                                                                  p
-                                               Cell − ∑ xi ≥
-                                                          i=1   0.80
-
-
-        Primary suppression rule: pq – Example (2)
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
- • Assuming q = 80% and c = 3
- • Formally, the cell is protected for any p such that:
-                                                                    p
-                          Cell − (Alice + Bob + Carol + David) ≥
-                                                                   0.80
-
-
-        Primary suppression rule: pq – Example (2)
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
- • Assuming q = 80% and c = 3
- • Formally, the cell is protected for any p such that:
-                                                    p
-                     250 − (100 + 80 + 30 + 20) ≥
-                                                   0.80
-
-
-        Primary suppression rule: pq – Example (2)
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
- • Assuming q = 80% and c = 3
- • Formally, the cell is protected for any p such that:
-                                         p
-                                 20 ≥
-                                       0.80
-
-
-        Primary suppression rule: pq – Example (2)
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
- • Assuming q = 80% and c = 3
- • Formally, the cell is protected for any p such that:
-                                                         p ≤ 16
-
-
-                       Primary suppression rule: (n,k)
-
- • Regardless of the number of respondents in a cell, if a small
-   number (n or fewer) of these respondents contribute a large
-   percentage (k% or more) of the total cell value, the cell is
-   considered sensitive
-
- • Intuitive rule: if a cell is dominated by one respondent, the
-   published total is an upper estimate for her value
-
- • n selected to be larger than the number of any suspected
-   coalitions
-
- • Many agencies use an (n,k) rule with n = 1 or n = 2
-
-
-          Primary suppression rule: (n,k) – Example
-
- • Consider the respondents that contribute to the total income in a
-   city, which is equal to 250K, to be (in decreasing order)
-         ◦   Alice: 100K
-         ◦   Bob: 80K
-         ◦   Carol: 30K
-         ◦   David: 20K
-         ◦   Eve: 10K
-         ◦   Frank: 3K
-         ◦   ...
-
- • Assuming n=2 and k=70, the cell is considered sensitive
-   The income of Alice and Bob (100K+80K=180K) represents the
-   72% of the cell value (250K)
-
-               Protection of tables of magnitude data
-
-1. Identify sensitive cells
-         ◦ p-percent
-         ◦ pq
-
-         ◦ (n,k)
-
-
-2. Protect sensitive cells
-         ◦ Suppression
-
-
-3. Verify result
-         ◦ Audit
-
-         ◦ Information loss
-         ◦ (Parameters are not disclosed)
-
-
-                           Secondary suppression (1)
-
- • Once sensitive cells have been identified, there are two options:
-         ◦ restructure the table and collapse cells until no sensitive cells
-           remain
-
-         ◦ cell suppression: do not publish sensitive cells (primary
-           suppressions) and remove other cells (complementary
-           suppressions)
-
- • An administrative way to avoid cell suppression consists in
-   obtaining written permission from respondents
-
-                           Secondary suppression (2)
-
- • Other non-sensitive cells must be selected for suppression to
-   ensure that the respondent level data in sensitive cells cannot be
-   estimated too accurately
-         ◦ a respondent’s data cannot be estimated too closely
-
- • Sensitive cells might be leaked due to the fact that:
-         ◦ implicitly published unions of suppressed cells may be sensitive
-           according to the sensitivity rule adopted
-
-         ◦ the row and column equations represented by the published table
-           may be solved, and the value for a suppressed cell estimated too
-           accurately
-
-
-                           Secondary suppression (3)
+In the $p$-percent rule, we assumed that there was no prior knowledge about respondent’s values. Agencies should not make this assumption.<br />
+In the $pq$ rule, agencies can specify how much prior knowledge there is by assigning a value $q$ which represents how accurately respondents can estimate another respondent’s value before any data are published ($p < q < 100$).<br />
+Parameter $q$ represents the error in estimation before the cell is published.
+
+Formally, a cell is protected if
+
+$$\frac{q}{100} \sum_{i = c + 2}^{N} x_i \geq \frac{p}{100} x_1$$
+
+$x_1, x_2, . . ., x_N$: respondent’s value in decreasing order.<br />
+$c$: size of a coalition of respondents interested in estimating $x_1$.
+
+The $pq$ rule reduces to the $p$-percent rule when $q=100$ (i.e., no estimate ability).
+
+An example of the primary suppression rule: $pq$.<br />
+Consider the respondents that contribute to the total income in a city, which is equal to $250K$, to be (in decreasing order):
+- Alice: $100K$;
+- Bob: $80K$;
+- Carol: $30K$;
+- David: $20K$;
+- Eve: $10K$;
+- Frank: $3K$;
+- ...
+
+Assume $q=80\%$ to represent how accurately respondents can estimate another respondent’s value before any data publishing. For Alice’s income this implies range $[20,180]$.<br />
+Again, the coalition of $c = 3$ respondents that can better estimate Alice’s income is Bob, Carol, David.<br />
+The coalition can reduce uncertainty about Alice’s income from $[20K-180K]$ to $[80K-120K]$:
+- $\geq 80K$ since it is higher than Bob’s;
+- $\leq 120K (=250K−130K)$.
+
+Assuming $q = 80\%$ and $c = 3$, formally, the cell is protected for any $p$ such that:
+
+$$\frac{q}{100} \sum_{i = c+2}^{N} x_i \geq \frac{p}{100}x_1$$
+$$\frac{80}{100} \sum_{i = 3+2}^{N} x_i \geq \frac{p}{100}\text{Alice}$$
+$$\frac{80}{100} \sum_{i = 5}^{N} x_i \geq \frac{p}{100}100$$
+$$\frac{80}{100} \sum_{i = 5}^{N} x_i \geq p$$
+$$\sum_{i = 5}^{N} x_i \geq \frac{p}{0.80}$$
+$$\text{Cell} - \sum_{i = 1}^{4} x_i \geq \frac{p}{0.80}$$
+$$\text{Cell} - (\text{Alice } + \text{ Bob } + \text{ Carol } + \text{ David}) \geq \frac{p}{0.80}$$
+$$250 - (100 + 80 + 30 + 20) \geq \frac{p}{0.80}$$
+$$20 \geq \frac{p}{0.80}$$
+$$p \leq 16$$
+
+----------------------------------------------------------------
+
+#### Primary suppression rule: $(n,k)$
+Regardless of the number of respondents in a cell, if a small number ($n$ or fewer) of these respondents contribute a large percentage ($k\%$ or more) of the total cell value, the cell is considered sensitive.
+
+Intuitive rule: if a cell is dominated by one respondent, the published total is an upper estimate for her value. $n$ selected to be larger than the number of any suspected coalitions. Many agencies use an $(n,k)$ rule with $n = 1$ or $n = 2$
+
+An example of the primary suppression rule: $(n,k)$.<br />
+Consider the respondents that contribute to the total income in a city, which is equal to $250K$, to be (in decreasing order):
+- Alice: $100K$;
+- Bob: $80K$;
+- Carol: $30K$;
+- David: $20K$;
+- Eve: $10K$;
+- Frank: $3K$;
+- ...
+
+Assuming $n=2$ and $k=70$, the cell is considered sensitive. The income of Alice and Bob $(100K+80K=180K)$ represents the $72\%$ of the cell value ($250K$).
+
+----------------------------------------------------------------
+
+### Protection of tables of magnitude data
+#### Secondary suppression
+Once sensitive cells have been identified, there are two options:
+- restructure the table and collapse cells until no sensitive cells remain;
+- cell suppression: do not publish sensitive cells (**primary suppressions**) and remove other cells (**complementary suppressions**).
+
+An administrative way to avoid cell suppression consists in obtaining written permission from respondents.<br />
+Other non-sensitive cells must be selected for suppression to ensure that the respondent level data in sensitive cells cannot be estimated too accurately.A respondent’s data cannot be estimated too closely.
+
+Sensitive cells might be leaked due to the fact that:
+- implicitly published unions of suppressed cells may be sensitive according to the sensitivity rule adopted;
+- the row and column equations represented by the published table may be solved, and the value for a suppressed cell estimated too accurately.
 
  • Any complementary suppression is acceptable as long as the
    sensitive cells are protected
