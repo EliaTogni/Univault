@@ -116,7 +116,7 @@ The classical protection techniques (often applied to protect microdata before c
 ### The anonymity problem
 The amount of privately owned records that describe each citizen’s finances, interests, and demographics is increasing every day. These data are de-identified before release, that is, any explicit identifier (e.g., SSN) is removed. De-identification is not sufficient. In fact, most municipalities sell population registers that include the identities of individuals along with basic demographics. These data can then be used for linking identities with de-identified information (**re-identification**).
 
-An example of the anonymity problem
+An example of the anonymity problem.
 
 ![[AnonymityProblem.png]]
 
@@ -220,7 +220,7 @@ Let $T_i$ and $T_j$ be two tables such that $T_i \preceq T_j$ , and let $MaxSup$
 2) $\vert T_i \vert − \vert T_j \vert \leq MaxSup$;
 3) $\forall T_z : T_i \preceq T_z$ and $T_z$ satisfies conditions $1$ and $2$ $\to \neg (DV_{i,z} < DV_{i,j})$
 
-Examples of $2$-minimal generalizations with $MaxSup = 2$.
+An example of $2$-minimal generalizations with $MaxSup = 2$.
 
 ![[Example2MinimalGeneralizations.png]]
 
@@ -356,8 +356,8 @@ Mondrian algorithm is flexible and can operate:
 	- relaxed (i.e., potentially overlapping) partitioning.
 - using different metrics to determine how to split on each dimension.
 
-An example of the Mondrian multidimensional algorithm.
-We wished $k=3$
+An example of the Mondrian multidimensional algorithm.<br />
+We wished $k=3$.
 
 slide 65/155
 
@@ -426,8 +426,9 @@ Any algorithm for $k$-anonymity can be extended to enforce the $\ell$-diverse pr
 ----------------------------------------------------------------
 
 ### Skewness attack
-**Skewness attack** occurs when the distribution in a $q$-block is different than the distribution in the original population.<br />
-Consider the following example:<br />
+**Skewness attack** occurs when the distribution in a $q$-block is different than the distribution in the original population.
+
+An example of the skewness attack.<br />
 $20\%$ of the population suffers from diabetes and $75\%$ of tuples in a $q$-block have diabetes. This implies that people in the $q$-block have higher probability of suffering from diabetes.
 
 slide 75/155
@@ -649,9 +650,6 @@ Very little auxiliary information is needed to de-anonymize an average subscribe
 - $84\%$ of subscribers in the dataset uniquely identified by knowing $6$ obscure (outside the top $500$) movies.
 Auxiliary information can be obtained from other sources (e.g., user ratings from IMDb users).
 
-----------------------------------------------------------------
-
-#### Another example of privacy issue
 Movies may reveal your political orientation, religious views, or sexual orientations (Netflix was sued by a lesbian for breaching her privacy).
 
 slide 108/155
@@ -726,9 +724,7 @@ Individual tuples are not sensitive. A collection of tuples might leak sensitive
 
 slide 121/155
 
-----------------------------------------------------------------
-
-### Inference channel - Example
+An example of the inference channel.
 
 slide 122/155
 
@@ -890,14 +886,14 @@ Release of data for statistical purpose:
 ## Statistical DBMS
 A statistical DBMS is a DBMS that provides access to statistics about groups of individuals. It should not reveal information about any particular individual. Confidential information about an individual can be deduced, combining the results of different statistics or combining the results of statistics with external knowledge (possibly about the database content).
 
-An example of a statistical DBMS
+An example of a statistical DBMS.
 
 slides 7/98
 
 Query: sum of the incomes of females with major in EE.<br />
 Result: it reveals the income of Baker (only female with EE) $\to$ the query is sensitive so it is necessary to block statistics computed over a single (or few) individual.
 
-Another example of a Statistical DBMS 
+Another example of a Statistical DBMS.
 
 slide 8/98
 
@@ -941,7 +937,7 @@ Estimates must achieve a specified accuracy. Data that do not meet the accuracy 
 ### Special rules
 When macrodata tables are defined on the whole population disclosure limitation procedures must be applied. Special rules define restrictions on the level of detail that can be provided in a table. Special rules differ depending on the agency and the kind of table.
 
-An example of Special rules.
+An example of special rules.<br />
 Social Security Administration (SSA) rules prohibit publishing tables where the value of a cell:
 - is equal to a marginal total or:
 - would allow users to determine:
@@ -951,7 +947,7 @@ Social Security Administration (SSA) rules prohibit publishing tables where the 
 - to satisfy special rules:
 	- table restructuring or category combination.
 
-Another example of Special rules.
+Another example of special rules.
 
 Number of employees by department and annual income (in $K$ Euro).<br />
 Special rule: Income within a $5K$ Euro interval.
@@ -964,7 +960,7 @@ Cells that cannot be released:
 	- between $23K$ and $25K$ for _Dept$4$_
 	- between $23K$ and $27K$ for _Dept$2$_
 
-Another example of Special rules (U.S. HIPAA).
+Another example of Special rules (U.S. HIPAA).<br />
 Health Insurance Portability and Accountability Act “Safe Harbor” rules, include:
 - identifying information must be removed;
 - locations have to be generalized to units that contain at least $20,000$ residents;
@@ -980,7 +976,7 @@ A cell is sensitive if the number of respondents is less than some specified num
 - controlled rounding;
 - confidentiality edit.
 
-An example of Table with disclosures.
+An example of Table with disclosures.<br />
 Table containing information about employees by company and education level.
 
 slide 25/98
@@ -993,7 +989,7 @@ suppressed
 ----------------------------------------------------------------
 
 ### Table restructuring
-An example of Table restructuring.
+An example of Table restructuring.<br />
 Number of employees by department and annual income (in $K$ Euro).<br />
 Special rule: Income within a $5K$ Euro interval.<br />
 To protect confidentiality, the table can be restructured and rows or columns combined (“rolling-up categories”)
@@ -1019,7 +1015,7 @@ The selection of cells for complementary suppression is complicated. **Linear pr
 **Audit techniques** can be applied to evaluate the proposed suppression pattern to see if it provides the required protection.
 
 An example of cell suppression: Table without disclosures.<br />
-Table containing information about employees by company and education level
+Table containing information about employees by company and education level.
 
 slide 30/98 2
 
@@ -1096,7 +1092,7 @@ For small blocks, the sampling fraction is increased to provide additional prote
 
 An example of confidentiality edit.
 
-Records for the 20 employees of company Alfa 
+Records for the 20 employees of company Alfa.
 
 slide 37/98
 
@@ -1169,7 +1165,7 @@ $$\sum_{i = c + 2}^{N} x_i \geq \frac{p}{100} x_1$$
 $x_1, x_2, . . ., x_N$ : respondent’s value in decreasing order.<br />
 $c$: size of a coalition of respondents interested in estimating $x_1$.
 
-The largest value $x_1$ is the most exposed
+The largest value $x_1$ is the most exposed.
 
 An example of the primary suppression rule: $p$-percent.<br />
 Consider the respondents that contribute to the total income in a city, which is equal to $250K$, to be (in decreasing order):
@@ -1212,7 +1208,7 @@ $c$: size of a coalition of respondents interested in estimating $x_1$.
 
 The $pq$ rule reduces to the $p$-percent rule when $q=100$ (i.e., no estimate ability).
 
-An example of the primary suppression rule: $pq$.<br />
+An example of the primary suppression rule: $pq$.<br />
 Consider the respondents that contribute to the total income in a city, which is equal to $250K$, to be (in decreasing order):
 - Alice: $100K$;
 - Bob: $80K$;
@@ -1248,7 +1244,7 @@ Regardless of the number of respondents in a cell, if a small number ($n$ or few
 
 Intuitive rule: if a cell is dominated by one respondent, the published total is an upper estimate for her value. $n$ selected to be larger than the number of any suspected coalitions. Many agencies use an $(n,k)$ rule with $n = 1$ or $n = 2$
 
-An example of the primary suppression rule: $(n,k)$.<br />
+An example of the primary suppression rule: $(n,k)$.<br />
 Consider the respondents that contribute to the total income in a city, which is equal to $250K$, to be (in decreasing order):
 - Alice: $100K$;
 - Bob: $80K$;
@@ -1419,7 +1415,7 @@ An example of top-coding and bottom-coding.
 
 slide 85/98 2
 
-Top-coding on _Holidays_ for values higher than $30$.
+Top-coding on _Holidays_ for values higher than $30$.<br />
 Bottom-coding on _Holidays_ for values lower than $10$.
 
 slide 85/98 3
@@ -1514,92 +1510,49 @@ slide 98/98
 ----------------------------------------------------------------
 
 # Privacy and Data Protection in Emerging Scenarios
+### ICT ecosystem
+Advancements in the ICT and networks have changed our society. $5$G and beyond, infrastructures and services are more powerful, efficient, and complex. ICT and network advancements are enabling factors for a smart society. Everything is getting smart: smart cars, augmented reality, smart entertainment systems, museum and exhibitions, smart e-commerce, smart governance, healthcare, intelligent shop, smart toothbrush...
 
-ICT ecosystem
-• Advancements in the ICT and networks have changed our society
-• 5G and beyond, infrastructures and services are more powerful,
-efficient, and complex
+----------------------------------------------------------------
 
-• ICT and network advancements are enabling factors for a smart
-society . . .
+### Smart society
 
-
-. . . Everything is getting smart
-
-Smart car
-
-Augmented reality
-
-Smart entertainment systems
-
-Museum and exhibitions
-
-Smart e-commerce
-
-Smart governance
-
-Health Care
-
-Intelligent shops
-
-Smart toothbrush
-
-Smart society
+slide 4/34
+slide 5/34
 
 
-Smart society - Advantages
+The advantages of smart services and security are:
+- better protection mechanisms;
+- business continuity and disaster recovery;
+- prevention and response.
 
+While the disadvantages are:
+- more complexity, that is, theweakest link becomes a point of attack:
+	- system hacking;
+	- improper information leakage;
+	- data and process tampering.
+- explosion of damages and violations;
+- loss of control over data and processes.
 
-Smart services and security – Advantages
-+ Better protection mechanisms
-+ Business continuity and disaster recovery
-+ Prevention and response
+----------------------------------------------------------------
 
-. . . but . . .
+### The role of data in a smart environment
 
+slide 11/34
 
-Smart services and security – Disadvantages
-− More complexity . . .
-. . . weakest link becomes a point of attack
-◦ system hacking
-◦ improper information leakage
-◦ data and process tampering
+This implies better governance and intelligent systems.
 
-− Explosion of damages and violations
-− Loss of control over data and processes
+----------------------------------------------------------------
 
-Maybe too smart? – 1
+### Cloud computing
+The **Cloud** allows users and organizations to rely on external providers for storing, processing, and accessing their data:
+- high configurability and economy of scale;
+- data and services are always available;
+- scalable infrastructure for applications.
 
+Users lose control over their own data. This fact causes new security and privacy problems.Need solutions to protect data and to securely process them in the cloud.
 
-Maybe too smart? – 2
-
-Security . . . a complex problem
-
-The role of data in a smart environment
-
-=⇒ better governance and intelligent systems
-
-The most valuable resource - Data
-
-Impact on data protection and privacy
-
-Huge amount of data stored at external providers
-
-Cloud computing
-• The Cloud allows users and organizations to rely on external
-providers for storing, processing, and accessing their data
-+ high configurability and economy of scale
-+ data and services are always available
-+ scalable infrastructure for applications
-
-• Users lose control over their own data
-− new security and privacy problems
-
-• Need solutions to protect data and to securely process them
-in the cloud
-
-
-Cloud computing: Today
+#### Cloud computing: Today
 Cloud Service Providers (CSPs) apply security measures in the
 services they offer but these measures protect only the perimeter and
 storage against outsiders
