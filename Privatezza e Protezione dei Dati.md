@@ -3,7 +3,7 @@
 - Continuous growth of:
 	- government and company databases;
 	- user-generated content delivered through collaborative Internet services such as YouTube, Flickr;
-	- personally identifiable information collected whenever a user creates an account, submits an application, signs up for newsletters, participates in a survey, . . .
+	- personally identifiable information collected whenever a user creates an account, submits an application, signs up for newsletters, participates in a survey, ...
 - Data sharing and dissemination, for e.g.:
 	- study trends or to make useful statistical inference;
 	- share knowledge;
@@ -11,26 +11,28 @@
 - External data storage and computation:
 	- cost saving and service benefits;
 	- higher availability and more effective disaster protection.
-- Need to ensure data privacy and integrity are properly protected.
+
+Need to ensure data privacy and integrity are properly protected.
 
 ----------------------------------------------------------------
 
 ## Outline
-- Privacy in data publication $\to$ data release/dissemination;
-- Privacy in data outsourcing $\to$ third parties store and manage data (towards cloud scenarios).
+- **Privacy in data publication** $\to$ data release/dissemination;
+- **Privacy in data outsourcing** $\to$ third parties store and manage data (towards cloud scenarios).
 
 ----------------------------------------------------------------
 
 ## Privacy in Data Publication
 
 ### Statistical DBMS vs statistical data
-Release of data for statistical purpose:
-- statistical DBMS:
-	- the DBMS responds only to statistical queries;
-	- need run time checking to control information (indirectly) released.
-- statistical data:
-	- publish statistics;
+Release of data to the public for statistical purpose:
+- **statistical DBMS**:
+	- the DBMS responds only to statistical queries (the aggregate ones);
+	- need run time checking to control information (indirectly) released. An example is described by a dataset composed by $1000$ respondents, $999$ males and $1$ female. If the user makes a query which returns a value aggregated from all the respondents and, then, a query which returns a value aggregated from all the males, the DBMS must block the second query because it will expose the female respondent.
+- **statistical data**:
+	- publish statistics generated a priori and the user can only access these statistics;
 	- control on indirect release performed before publication.
+
 
 ----------------------------------------------------------------
 
@@ -1520,7 +1522,6 @@ Advancements in the ICT and networks have changed our society. $5$G and beyond, 
 slide 4/34
 slide 5/34
 
-
 The advantages of smart services and security are:
 - better protection mechanisms;
 - business continuity and disaster recovery;
@@ -1570,40 +1571,6 @@ functionality implies full trust in the CSP that has full access to the da
 protection but limited functionality since the CSP cannot access data
 
 
-
-Cloud computing: Today
-Cloud Service Providers (CSPs) apply security measures in the
-services they offer but these measures protect only the perimeter and
-storage against outsiders
-
-data owner
-
-cloud
-
-data owner
-
-cloud
-
-functionality
-
-• functionality
-implies full trust in the CSP that has full access to the data (e.g., Goo
-
-protection but limited functionality since the CSP cannot access data
-
-Cloud computing: Today
-Cloud Service Providers (CSPs) apply security measures in the
-services they offer but these measures protect only the perimeter and
-storage against outsiders
-
-data owner
-
-cloud
-
-data owner
-
-cloud
-
 functionality but no protection
 (key is with the CSP)
 
@@ -1612,10 +1579,6 @@ data (e.g., Google Cloud Storage, iCloud)
 
 protection but limited functionality since the CSP cannot access data
 
-Cloud computing: Today
-Cloud Service Providers (CSPs) apply security measures in the
-services they offer but these measures protect only the perimeter and
-storage against outsiders
 
 data owner
 
@@ -1660,7 +1623,9 @@ data (e.g., Google Cloud Storage, iCloud)
 • protection but limited functionality since the CSP cannot access
 data (e.g., Boxcryptor, SpiderOak)
 
-Cloud computing: New vision
+----------------------------------------------------------------
+
+#### Cloud computing: New vision
 Solutions that provide protection guarantees giving the data owners
 both: full control over their data and cloud functionality over them
 
@@ -1676,11 +1641,9 @@ https://mosaicrown.eu
 
 https://www.marsalproject.eu
 
-
 https://glaciation-project.eu
 
 
-Cloud computing: New vision
 Solutions that provide protection guarantees giving the data owners
 both: full control over their data and cloud functionality over them
 
@@ -1706,16 +1669,13 @@ https://glaciation-project.eu
 Data protection – Regulation
 
 
-Data protection – Confidentiality (1)
+Data protection – Confidentiality
 • Minimize release/exposition
 ◦ correlation among different data sources
 ◦ indirect exposure of sensitive information
 ◦ de-identification ̸= anonymization
 
-
-Data protection – Confidentiality (2)
-
-Characterization of Data Protection
+Characterization of Data Protection
 Challenges in Cloud Scenarios
 
 Scientific and technical challenges
