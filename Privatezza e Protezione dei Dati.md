@@ -28,11 +28,18 @@ Need to ensure data privacy and integrity are properly protected.
 Release of data to the public for statistical purpose:
 - **statistical DBMS**:
 	- the DBMS responds only to statistical queries (the aggregate ones);
-	- need run time checking to control information (indirectly) released. An example is described by a dataset composed by $1000$ respondents, $999$ males and $1$ female. If the user makes a query which returns a value aggregated from all the respondents and, then, a query which returns a value aggregated from all the males, the DBMS must block the second query because it will expose the female respondent.
+	- need run time checking to control information (indirectly) released. A first example is described by a dataset composed by $1000$ respondents, $999$ males and $1$ female. If the user makes a query which returns a value aggregated from all the **respondents** (the people replying with answers to a survey, the ones the data refers to) and, then, a query which returns a value aggregated from all the males, the DBMS must block the second query because it will expose the female respondent. A second example is described by the same dataset and two different and colluded users. The first one will be able to make the first query and the second one will be able to make the second one. Therefore, togheter they are able to expose the female respondent (**collusion**).
 - **statistical data**:
 	- publish statistics generated a priori and the user can only access these statistics;
 	- control on indirect release performed before publication.
 
+immagine DBMS + transboundary
+
+In the statistical DBMS case, the transboundary stands between the user and the DBMS.
+
+immagine statistic data + transboundary
+
+In the statistic data case, the transboundary stands between the statistical data release to the public and the initial data. 
 
 ----------------------------------------------------------------
 
@@ -59,7 +66,7 @@ An example of a microdata table is the records about delinquent children in coun
 ----------------------------------------------------------------
 
 ### Information disclosure
-Disclosure relates to attribution of sensitive information to a respondent (an individual or organization) There is disclosure when:
+Disclosure relates to attribution of sensitive information to a respondent (an individual or organization). There is disclosure when:
 - a respondent is identified from released data (**identity disclosure**);
 - sensitive information about a respondent is revealed through the released data (**attribute disclosure**);
 - the released data make it possible to determine the value of some characteristic of a respondent even if no released record refers to the respondent (**inferential disclosure**).
@@ -74,8 +81,8 @@ In microdata, identification is generally regarded as a problem, since microdata
 
 #### Attribute disclosure
 It occurs when confidential information about a respondent is revealed and can be attributed to her. Confidential information may be:
-- revealed exactly;
-- closely estimated.
+- **revealed exactly**;
+- **closely estimated**.
 
 ----------------------------------------------------------------
 
