@@ -33,11 +33,11 @@ Release of data to the public for statistical purpose:
 	- publish statistics generated a priori and the user can only access these statistics;
 	- control on indirect release performed before publication.
 
-immagine DBMS + transboundary
+![[StatisticalDBMS.png]]
 
 In the statistical DBMS case, the transboundary stands between the user and the DBMS.
 
-immagine statistic data + transboundary
+![[StatisticalData.png]]
 
 In the statistic data case, the transboundary stands between the statistical data release to the public and the initial data. 
 
@@ -106,7 +106,7 @@ Confidentiality can be protected by:
 ### Protection for count/frequencies macrodata
 The data collected from most surveys about people are published in tables that show counts (number of people by category) or frequencies (fraction or percentage of people by category). The protection techniques include:
 - **sampling**: publish a survey rather than a census;
-- **special rules**: define restrictions on the level of details that can be provided in a table (e.g., do not publish or make inferrable earnings within a $ 1,000 interval);
+- **special rules**: define restrictions on the level of details that can be provided in a table (e.g., do not publish or make inferrable earnings within a $ $1000$ interval);
 - **threshold rules**: define a cell of a table sensitive if the number of respondents is less than some specified number.
 
 ----------------------------------------------------------------
@@ -114,18 +114,19 @@ The data collected from most surveys about people are published in tables that s
 ### Disclosure protection techniques for microdata
 The classical protection techniques (often applied to protect microdata before computing statistics) can be classified as follows:
 - **masking techniques**: transform the original set of data by not releasing or perturbing their values:
-	- non-perturbative: the original data are not modified, but some data are suppressed and/or some details are removed (e.g., sampling, local suppression, generalization);
-	- perturbative: the original data are modified (e.g., rounding, swapping).
-- synthetic data generation techniques: release plausible but synthetic values instead of the real ones:
-	- fully synthetic: the released dataset contains synthetic data only;
-	- partially synthetic: the released dataset contains a mix of original and synthetic data.
+	- **non-perturbative**: the original data are not modified, but some data are suppressed and/or some details are removed (e.g., sampling, local suppression, generalization);
+	- **perturbative**: the original data are modified (e.g., rounding, swapping).
+- **synthetic data generation techniques**: release plausible but synthetic values instead of the real ones:
+	- **fully synthetic**: the released dataset contains synthetic data only;
+	- **partially synthetic**: the released dataset contains a mix of original and synthetic data.
 
 ----------------------------------------------------------------
 
 ### The anonymity problem
-The amount of privately owned records that describe each citizen’s finances, interests, and demographics is increasing every day. These data are de-identified before release, that is, any explicit identifier (e.g., SSN) is removed. De-identification is not sufficient. In fact, most municipalities sell population registers that include the identities of individuals along with basic demographics. These data can then be used for linking identities with de-identified information (**re-identification**).
+The amount of privately owned records that describe each citizen’s finances, interests, and demographics is increasing every day. These data are **de-identified** before release, that is, any explicit identifier (e.g., _SSN_) is removed.<br />
+De-identification is not sufficient. In fact, most municipalities sell population registers that include the identities of individuals along with basic demographics. These data can then be used for linking identities with de-identified information (**re-identification**).
 
-An example of the anonymity problem.
+An example of the anonymity problem.
 
 ![[AnonymityProblem.png]]
 
@@ -133,10 +134,12 @@ The amount of privately owned records that describe each citizen’s finances, i
 
 ### Classification of attributes in a microdata table
 The attributes in the original microdata table can be classified as:
-- **identifiers**: attributes that uniquely identify a microdata respondent (e.g., SSN uniquely identifies the person with which is associated);
-- **quasi-identifiers**: attributes that, in combination, can be linked with external information to reidentify all or some of the respondents to whom information refers or reduce the uncertainty over their identities (e.g., DoB, ZIP, and Sex);
-- **confidential**: attributes of the microdata table that contain sensitive information (e.g., Disease);
+- **identifiers**: attributes that uniquely identify a microdata respondent (e.g., _SSN_ uniquely identifies the person with which is associated);
+- **quasi-identifiers**: attributes that, in combination, can be linked with external information to reidentify all or some of the respondents to whom information refers or reduce the uncertainty over their identities (e.g., _DoB_, _ZIP_, and _Sex_);
+- **confidential**: attributes of the microdata table that contain sensitive information (e.g., _Disease_);
 - **non confidential**: attributes that the respondents do not consider sensitive and whose release does not cause disclosure.
+
+The more detailed the information at disposal (e.g., a high number of attributes or a sufficient number of detailed attributes), the higher the chance of being able to re-identify a respondent.
 
 ----------------------------------------------------------------
 
@@ -156,7 +159,7 @@ The possibility of linking or its precision increases with:
 
 ### Factors contributing to decrease the disclosure risk
 A microdata table often contains a subset of the whole population. This implies that the information of a specific respondent may not be included in the microdata table.<br /> Furthermore, the information specified in microdata tables released to the public is not always up-to-date (often at least one or two-year old). Therefore, the values of the attributes of the corresponding respondents may have been changed in the meanwhile. Also, the age of the external sources of information used for linking may be different from the age of the information contained in the microdata table.<br />
-A microdata table and the external sources of information naturally contain noise that decreases the ability to link the information and can also contain data expressed in different forms thus decreasing the ability to link information.
+A microdata table and the external sources of information naturally contain **noise** that decreases the ability to link the information and can also contain data expressed in different forms thus decreasing the ability to link information.
 
 ----------------------------------------------------------------
 
