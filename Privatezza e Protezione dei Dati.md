@@ -175,8 +175,9 @@ The percentage of records representing respondents who are unique in the populat
 ## $k$-Anonymity
 
 **$k$-anonymity**, together with its enforcement via generalization and suppression, aims to protect respondents’ identities while releasing truthful information. It tries to capture the following requirement:
-- the released data should be indistinguishably related to no less than a certain number of respondents;
-- quasi-identifier, a set of attributes that can be exploited for linking (whose release must be controlled).
+- the released data should be indistinguishably related to no less than a certain number of respondents.
+
+The quasi-identifiers are the set of attributes that can be exploited for linking (whose release must be controlled).
 
 The basic idea is to translate the $k$-anonymity requirement on the released data. Each release of data must be such that every combination of values of quasi-identifiers can be indistinctly matched to at least $k$ respondents.<br />
 In the released table the respondents must be indistinguishable (within a given set) with respect to a set of attributes. $k$-anonymity requires that each quasi-identifier value appearing in the released table must have at least $k$ occurrences. This is a sufficient condition for the satisfaction of $k$-anonymity requirement.
