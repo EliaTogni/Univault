@@ -470,17 +470,19 @@ An observer may have external/background knowledge that can be exploited to infe
 
 An example of external knowledge.
 
-slides 79-80/155
+![[ExternalKnowledgeExample1.png]]
 
-An adversary knows that Harry, born in $64$ and living in area $94139$, is in the table. This implies that Harry belongs to the second group and, therefore, that Harry has aids with confidence $\frac{1}{4}$.
+Released table is $4$-anonymized but suppose that an adversary knows that Harry, born in $64$ and living in area $94139$, is in the table. This helps discover that Harry belongs to the second group and, therefozre, that Harry has aids with confidence $\frac{1}{4}$.
 
-slide 81/155
+![[ExternalKnowledgeExample2.png]]
 
 From another dataset, the adversary knows that George (who is in the table, is born in $'64$, and leaves in area $941**$) has flu. This implies that Harry has aids with confidence $\frac{1}{3}$.
 
-slide 82/155
+![[ExternalKnowledgeExample3.png]]
 
 From personal knowledge, the adversary knows that Harry does not have short breath. Therefore, Harry has aids with confidence $\frac{1}{2}$.
+
+![[ExternalKnowledgeExample4.png]]
 
 ----------------------------------------------------------------
 
