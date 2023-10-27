@@ -290,16 +290,16 @@ To reduce the computational cost, it adopts a distance vector matrix that avoids
 
 An example for computing a $k$-minimal solution.
 
-slide 53/155
+![[kMinimalSolution1.png]]
 
 Suppose $k = 2$ and $MaxSup = 2$.
 Compute first solutions at height $1$ : $GT_{[1,0]}$ and $GT_{[0,1]}$.
 
-Slide 54/155
+![[kMinimalSolution2.png]]
 
 Satisfies $2$-anonymity (suppressing $t_1$ and $t_6$).
 
-slide 54_2/ 155
+![[kMinimalSolution3.png]]
 
 Satisfies $2$-anonymity (suppressing $t_8$ and $t_9$)
 
@@ -308,7 +308,7 @@ Satisfies $2$-anonymity (suppressing $t_8$ and $t_9$)
 ### $k$-Optimize algorithm
 Order attributes in $QI$ and the values in their domains. Associate an integer index value with each domain value, following the defined order.
 
-slide 55/155
+![[kOptimizeAlgorithm1.png]]
 
 A generalization is the union of individual index values. The least value in an attribute domain is omitted. E.g., $\{6\}$ corresponds to:
 - Race: $\{1\}$, that is: $\langle [\text{asian or black or white}]\rangle$;
@@ -316,7 +316,7 @@ A generalization is the union of individual index values. The least value in an 
 
 Order of values within domains has impact on generalization. $k$-Optimize builds a set enumeration tree over the set $I$ of indexes:
 
-slide 56/155
+![[kOptimizeAlgorithm2.png]]
 
 The root node of the tree is the empty set. The children of $n$ are the sets obtained by appending a single element $i$ of $I$ to $n$, such that $\forall i' \in n, i > i'$. Each node has a cost that reflects the amount of generalization and suppression of the anonymization represented by the node. this implies that each tuple is associated with a cost that reflects the information loss associated with its generalization or suppression.<br />
 $k$-Optimize visits the tree (e.g., using a depth-first search) for searching the anonymization with lowest cost. Since the number of nodes in the tree is $2^{\vert I \vert}$, the visit of the tree is not practical. This implies that a **pruning** strategy is fundamental to reduce computational cost. The node $n$ is pruned iff none of its descendants could be optimal. This determination can be made by computing a lower bound on the cost of the nodes in the subtree rooted at $n$. if the lower bound is greater than the current best cost, node $n$ is pruned.
@@ -336,7 +336,8 @@ Incognito adopts a bottom-up approach for the visit of $DGH_s$.
 
 An example of the Incognito algorithm.
 
-slide 59-60/155
+![[IncognitoExample1.png]]
+![[IncognitoExample2.png]]
 
 ----------------------------------------------------------------
 
@@ -371,7 +372,8 @@ Mondrian algorithm is flexible and can operate:
 An example of the Mondrian multidimensional algorithm.<br />
 We wished $k=3$.
 
-slide 65/155
+![[MondrianMultidimensionalExample1.png]]
+![[MondrianMultidimensionalExample2.png]]
 
 ----------------------------------------------------------------
 
@@ -395,7 +397,7 @@ When generalization is performed at cell level (_CG_) the existence of at least 
 
 An example of $k$-anonymity revisited.
 
-slide 68/155
+![[kAnonimityRevised.png]]
 
 ----------------------------------------------------------------
 
@@ -403,7 +405,7 @@ slide 68/155
 ### $2$-anonymous table according to the _AG_ model
 $k$-anonymity is vulnerable to some attacks:
 
-slide 70/155
+![[2AnonymousTableExample.png]]
 
 ----------------------------------------------------------------
 
@@ -412,7 +414,7 @@ All tuples with a quasi-identifier value in a $k$-anonymous table may have the s
 - an adversary knows that Carol is a black female and that her data are in the microdata table;
 - the adversary can infer that Carol suffers from short breath.
 
-slide 71/155
+![[SensitiveAttributeValuesHomogeneity.png]]
 
 ----------------------------------------------------------------
 
@@ -424,7 +426,7 @@ Based on prior knowledge of some additional external information:
 
 Therefore, the adversary is able to infer that Hellen’s disease is chest pain.
 
-slide 72/155
+![[BackgroundKnowledgeExample.png]]
 
 ----------------------------------------------------------------
 
@@ -443,14 +445,14 @@ Any algorithm for $k$-anonymity can be extended to enforce the $\ell$-diverse pr
 An example of the skewness attack.<br />
 $20\%$ of the population suffers from diabetes and $75\%$ of tuples in a $q$-block have diabetes. This implies that people in the $q$-block have higher probability of suffering from diabetes.
 
-slide 75/155
+![[SkewnessAttackExample.png]]
 
 ----------------------------------------------------------------
 
 ### Similarity attack
 Similarity attack happens when a $q$-block has different but semantically similar values for the sensitive attribute.
 
-slide 76/155
+![[SimilarityAttackExample.png]]
 
 ----------------------------------------------------------------
 
