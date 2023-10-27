@@ -472,7 +472,7 @@ An example of external knowledge.
 
 ![[ExternalKnowledgeExample1.png]]
 
-Released table is $4$-anonymized but suppose that an adversary knows that Harry, born in $64$ and living in area $94139$, is in the table. This helps discover that Harry belongs to the second group and, therefozre, that Harry has aids with confidence $\frac{1}{4}$.
+Released table is $4$-anonymized but suppose that an adversary knows that Harry, born in $64$ and living in area $94139$, is in the table. This helps discover that Harry belongs to the second group and, therefore, that Harry has aids with confidence $\frac{1}{4}$.
 
 ![[ExternalKnowledgeExample2.png]]
 
@@ -486,12 +486,12 @@ From personal knowledge, the adversary knows that Harry does not have short brea
 
 ----------------------------------------------------------------
 
-### Multiple releases
+### Multiple independent releases
 Data may be subject to frequent changes and may need to be published on regular basis. The multiple release of a microdata table may cause information leakage since a malicious recipient can correlate the released datasets.
 
 An example of multiple independent releases.
 
-slide 84/155
+![[MultipleReleasesExample1.png]]
 
 An adversary knows that Alice, born in $1974$ and living in area $94142$, is in both releases.
 
@@ -557,7 +557,7 @@ In addition to classical microdata release problem, the concept of $k$-anonymity
 #### k-anonymity in social networks
 **Neighborhood attack** $\to$ given a de-identified graph $G'$ of a social network graph $G$, exploit knowledge about the neighbors of user $u$ to re-identify the vertex representing $u$.
 
-slide 91/155
+![[kAnonymitySocialNetworks.png]]
 
 Idea: adapt the $k$-anonymity requirement to social networks. A vertex $u$ is $k$-anonymous if there exist at least $k − 1$ other vertices $v_1 , . . . , v_{k−1}$ such that the sub-graphs induced by the neighborhood of $u$ and the neighborhood of $v_1 , . . . , v_{k−1}$ are **isomorphic**. $G'$ is $k$-anonymous if every vertex $u$ in $G'$ is $k$-anonymous.<br />
 Intuition: add fake edges to satisfy the requirement.
@@ -577,14 +577,14 @@ Threats to $k$-anonymity can arise from performing mining on a collection of dat
 
 ##### Association rule mining
 
-slide 94/155
+![[AssociationRuleMining.png]]
 
 $\{$divorced$\} \to \{$M$\}$ with support $\frac{19}{66}$ and confidence $\frac{19}{21}$.<br />
 If $QI$ includes _Marital_status_ and _Sex_, then $\{$divorced$\} \to \{$M$\}$:
 - violates $k$-anonymity for any $k > 19$;
 - violates also $k$-anonymity for any $k > 2$ since it reflects the existence of $2$ divorced and female respondents.
 
-slide 95/155
+![[ClassificationMiningDecisionTree.png]]
 
 Path $\langle F,35 \rangle$ implies the existence of $2$ females working $35$ hours.<br />
 paths $\langle F \rangle$ $(\#11)$ and $\langle F,50 \rangle$ $(\#9)$ imply the existence of $2$ females who do not work $50$ hours per week.<br />
@@ -594,17 +594,26 @@ If $QI$ includes _Sex_ and _Hours_ $\to$ $k$-anonym. is violated for any $k > 2$
 
 ##### Approaches for combining k-anonymity and data mining
 
-slide 96/155
+![[ApprochesCombiningkAnonymityDM.png]]
 
 ----------------------------------------------------------------
 
 #### k-anonymity in location-based services
 Protect identity of people in locations by considering always locations that contain no less than $k$ individuals:
 - enlarge the area to include at least other $k-1$ users ($k$ anonymity);
+
+![[kAnonymityLBServices1.png]]
+![[kAnonymityLBServices2.png]]
+
 - protect the location of users (**location privacy**) $\to$ obfuscate the area so to decrease its precision or confidence;
+
+![[PrivacyLB1.png]]
+![[PrivacyLB2.png]]
+
 - protect the location path of users (trajectory privacy) $\to$ block tracking by mixing trajectories.
 
-slides 97-98/155
+![[PrivacyLB3.png]]
+![[PrivacyLB4.png]]
 
 ----------------------------------------------------------------
 
