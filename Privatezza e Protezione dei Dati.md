@@ -39,7 +39,7 @@ In the statistical DBMS case, the transboundary stands between the user and the 
 
 ![[StatisticalData.png]]
 
-In the statistic data case, the transboundary stands between the statistical data release to the public and the initial data. 
+In the statistical data case, the transboundary stands between the statistical data released to the public and the initial data. 
 
 ----------------------------------------------------------------
 
