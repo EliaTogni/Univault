@@ -179,7 +179,7 @@ The percentage of records representing respondents who are unique in the populat
 
 The quasi-identifiers are the set of attributes that can be exploited for linking (whose release must be controlled).
 
-The basic idea is to translate the $k$-anonymity requirement on the released data. Each release of data must be such that every combination of values of quasi-identifiers can be indistinctly matched to at least $k$ respondents.<br />
+The basic idea is to translate the $k$-anonymity requirement on the released data. Each release of data must be such that every combination of values of quasi-identifiers can be indistinctly matched to at least $k$ respondents. This assumption is based on the worst case scenario in which the respondents in the database are population uniques.<br />
 In the released table the respondents must be indistinguishable (within a given set) with respect to a set of attributes. $k$-anonymity requires that each quasi-identifier value appearing in the released table must have at least $k$ occurrences. This is a sufficient condition for the satisfaction of $k$-anonymity requirement.
 
 ### Generalization and suppression
@@ -190,10 +190,10 @@ With **suppression**, it is possible to protect sensitive information by removin
 
 ### Domain generalization hierarchy
 A **generalization relationship** $\leq_{D}$ defines a mapping between domain $D$ and its generalizations. Given two domains $D_i, D_j \in Dom$, $D_i \leq_{D} D_j$ states that the values in domain $D_j$ are generalizations of values in $D_i$. $\leq_{D}$ implies the existence, for each domain $D$, of a **domain generalization hierarchy** $DGH_D = (Dom, \leq_D )$:
-- $\forall D_i, D_j, D_z \in Dom: D_i \leq_D D_j, D_i \leq_D D_z \to D_j \leq_D D_z \vee D_z \leq_D D_j$;
-- all maximal elements of $Dom$ are singleton.
+- $\forall D_i, D_j, D_z \in Dom: D_i \leq_D D_j, D_i \leq_D D_z \to D_j \leq_D D_z \vee D_z \leq_D D_j$. This property shows that the generalization hiearchy is a chain, that is, there is a total order  between the elements of the hierarchy;
+- all maximal elements of $Dom$ are singleton. As an example, observe the $DGH_{Z_0}$ in the image below.
 
-Given a domain tuple $D_T = \langle D_1, . . . , D_n \rangle$ such that $D_i \in Dom, i = 1, . . . , n$, the domain generalization hierarchy of $D_T$ is $DGH_{DT} = DGH_{D1} \times . . . \times DGH_{Dn}$.
+Given a domain tuple $D_T = \langle D_1, . . . , D_n \rangle$ such that $D_i \in Dom, i = 1, . . . , n$, the domain generalization hierarchy of $D_T$ is $DGH_{DT} = DGH_{D1} \times . . . \times DGH_{Dn}$. The domain generalization hiearchy of $D_T$ defines a [[Reticolo|lattice]].
 
 An example of a domain generalization hierarchy.
 
@@ -202,7 +202,8 @@ Given a domain tuple $D_T = \langle D_1, . . . , D_n \rangle$ such that $D_i \in
 ----------------------------------------------------------------
 
 ### Value generalization hierarchy
-A **value generalization relationship** $\leq_V$ associates with each value in domain $D_i$ a unique value in domain $D_j$, direct generalization of $D_i$. $\leq_V$ implies the existence, for each domain $D$, of a value generalization hierarchy $VGH_D$. $VGH_D$ is a tree where the leaves are the values in $D$ and the root (i.e., the most general value) is the value in the maximum element in $DGH_D$.
+A **value generalization relationship** $\leq_V$ associates with each value in domain $D_i$ a unique value in domain $D_j$, direct generalization of $D_i$. $\leq_V$ implies the existence, for each domain $D$, of a value generalization hierarchy $VGH_D$.<br />
+$VGH_D$ is a [[Albero|tree]] where the leaves are the values in $D$ and the root (i.e., the most general value) is the value in the maximum element in $DGH_D$.
 
 An example of value generalization hierarchy.
 
@@ -573,8 +574,8 @@ Goal: compute a $k$-anonymous version of a social network graph minimizing the n
 Privacy preserving data mining techniques depend on the definition of privacy capturing what information is sensitive in the original data and should then be protected.<br />
 $k$-anonymous data mining aims at ensuring that the data mining results do not violate the $k$-anonymity requirement over the original data.<br />
 Threats to $k$-anonymity can arise from performing mining on a collection of data maintained in a private table $PT$ subject to $k$-anonymity constraints. E.g.:
-- association rule mining;
-- classification mining.
+- **association rule mining**;
+- **classification mining**.
 
 ##### Association rule mining
 
@@ -634,7 +635,7 @@ User $4417749$:
 
 All of these informations led to Thelma Arnold, a $62$-year-old widow who lives in Lilburn, Ga. She was re-identified by two New York Times reporters. She explained in an interview that she has three dogs and that she searched for medical conditions of some friends.
 
-slide 102/155
+![[AOL3.png]]
 
 
 What about user $17556639$?
@@ -663,7 +664,7 @@ What about user $17556639$?
 • murder photo;
 • car crash photo;
 
-slide 104/155
+![[AOL5.png]]
 
 ----------------------------------------------------------------
 
@@ -678,21 +679,15 @@ Auxiliary information can be obtained from other sources (e.g., user ratings fro
 
 Movies may reveal your political orientation, religious views, or sexual orientations (Netflix was sued by a lesbian for breaching her privacy).
 
-slide 108/155
-
 ----------------------------------------------------------------
 
 #### JetBlue
 In $2003$, JetBlue Airways Corporation gave the travel records of five million customers to Torch Concepts (a private DoD contractor) for an antiterrorism study to track high-risk passengers or suspected terrorists. Torch Concepts purchased additional customer demographic information (e.g., SSN) about these passengers from Axciom, one of the largest data aggregation companies in the U.S. The information from JetBlue and Axciom was then used by Torch Concepts to develop passenger profiles. Claims of violation of JetBlue Privacy Policy.
 
-slide 109/155
-
 ----------------------------------------------------------------
 
 #### Fitness app
 An interactive map shows the whereabouts of people who use fitness devices such as Fitbit also reveals highly sensitive information about the locations and activities of soldiers at U.S. military bases.
-
-slide 110/155
 
 ----------------------------------------------------------------
 
@@ -748,11 +743,12 @@ Individual tuples are not sensitive. A collection of tuples might leak sensitive
 	- young soldiers: training campus;
 	- old officials: headquarter.
 
-slide 121/155
+![[SensitiveValueDistributionsExample.png]]
 
 An example of the inference channel.
 
-slide 122/155
+![[InferenceChannelExample1.png]]
+![[InferenceChannelExample2.png]]
 
 #### Counteracting inference channels
 Need to characterize:
@@ -767,7 +763,7 @@ How to assess the exposure of released data:
 - a priori computation of the maximum amount of tuples w.r.t. the baseline $\to$ number of releases for different attribute values;
 - evaluation of exposure metrics over the requested tuples.
 
-slide 124/155
+![[CounteractingInferenceChannels.png]]
 
 ----------------------------------------------------------------
 
@@ -780,9 +776,6 @@ Genomic information is an opportunity for medicine but there are several privacy
 ----------------------------------------------------------------
 
 ### Individuals’ re-identification
-
-slide 127/155
-
 The $1000$ Genomes Project: international project ($2008$) to establish a catalogue of human genetic variation. Five men involved in both the $1000$ Genomes Project and a project that studied Mormon families from Utah have been re-identified:
 - their identities were determined;
 - identities of their male and female relatives were also discovered.
@@ -801,8 +794,6 @@ Target is the second-largest discount retailer in the U.S. It assigns every cust
 - stores history of bought goods and other (bought) information;
 - mining on these data for targeted advertising.
 
-slide 131/155
-
 Analysts at Target identified $\sim 25$ products that assign each shopper a pregnancy prediction score. E.g., woman, $23$ y.o., buying in March cocoa-butter lotion, a purse large enough to double as a diaper bag, zinc and magnesium supplements and a bright blue rug $\to$ $87\%$ due late August. Due time in a small window to send coupons timed to very specific stages of a pregnancy.
 
 Mining data reveals customers’ major life events (e.g., graduating from college or getting a new job or moving to a new town):
@@ -815,14 +806,7 @@ Mining data reveals customers’ major life events (e.g., graduating from colleg
 #### Profiling in social media
 Our social media activities and likes may reveal sensitive information.
 
-slide 134/155
-
-----------------------------------------------------------------
-
-#### Is information shared with whom?
-Facebook default sharing settings from 2005 to 2010
-
-slide 136/155
+![[ProfilingInSocialMedia.png]]
 
 ----------------------------------------------------------------
 
@@ -843,12 +827,9 @@ Three weeks activity, $102$ bots:
 - $46,500$ e-mail addresses;
 - $14,500$ physical addresses
 
-slide 139/155
+----------------------------------------------------------------
 
 #### Cambridge Analytica scandal
-
-slide 142/155
-
 Personality quiz app, installed by $330,000$ Facebook users who gave permission for accessing their data but the app was also collecting data of those users’ friends.<br />
 Data from $87$ million Facebook users retrieved by the app:
 - data shared with Cambridge Analytica;
