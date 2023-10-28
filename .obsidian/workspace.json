@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Privatezza e Protezione dei Dati.md",
+                "file": "Reticolo.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Privatezza e Protezione dei Dati.md",
+                "file": "Reticolo.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,6 +116,7 @@
   },
   "active": "4b2410dd3dec1ef2",
   "lastOpenFiles": [
+    "Privatezza e Protezione dei Dati.md",
     "Images/ProfilingInSocialMedia.png",
     "Images/profilingInSocialMedia.png",
     "Images/CounteractingInferenceChannels.png",
@@ -125,11 +126,9 @@
     "Images/AOL5.png",
     "Images/AOL3.png",
     "Albero.md",
-    "Privatezza e Protezione dei Dati.md",
     "Reticolo.md",
     "Images/PrivacyLB4.png",
     "Images/PrivacyLB3.png",
-    "Images/PrivacyLB2.png",
     "Cittadinanza Digitale e Tecnocivismo.md",
     "Quiz Statistical Methods for Machine Learning.md",
     "Intelligenza Artificiale.md",

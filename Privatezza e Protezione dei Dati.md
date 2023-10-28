@@ -954,8 +954,7 @@ Social Security Administration (SSA) rules prohibit publishing tables where the 
 - to satisfy special rules:
 	- table restructuring or category combination.
 
-Another example of special rules.
-
+Another example of special rules.<br />
 Number of employees by department and annual income (in $K$ Euro).<br />
 Special rule: Income within a $5K$ Euro interval.
  
