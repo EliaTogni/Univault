@@ -6364,7 +6364,7 @@ Data conﬁdentiality is provided by wrapping a layer of encryption around sensi
 slide 6/268
 
 ### Fine-grained access to data in the cloud
-For conﬁdentiality reasons, CSPs storing data cannot decrypt them for data processing/access. Need mechanisms to support access to the outsourced data:
+For conﬁdentiality reasons, Cloud Service Providers storing data cannot decrypt them for data processing/access. Need mechanisms to support access to the outsourced data:
 - effective and efﬁcient;
 - should not open the door to inferences.
 
@@ -6418,156 +6418,32 @@ slide 15/268
 ----------------------------------------------------------------
 
 #### Indexes for queries: Flattened (1:n)
-Flat indexes
-+ decreases exposure to inference attacks
-− remains vulnerabile to dynamic observations
+Flat indexes:
+- decreases exposure to inference attacks;
+- remains vulnerabile to dynamic observations.
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+slide 16/268
 
-16/268
+----------------------------------------------------------------
 
-Indexes for queries: Flattened (1:n)
-Flat indexes
-+ decreases exposure to inference attacks
-− remains vulnerabile to dynamic observations
-SSN
-123. . .89
-234. . .91
-345. . .12
-456. . .23
-567. . .34
-232. . .11
+### Partition-based index
+Consider an arbitrary plaintext attribute $A_i$ in relational schema $R$, with domain $D_i$. $D_i$ is partitioned in a number of non-overlapping subsets of values, called **partitions**, containing contiguous values. Given a plaintext tuple $t$ in $r$, the value of attribute $A_i$ for $t$ belongs to a partition. The function $ident_{R.A_i} (p_j)$ assigns to each partition $p_j$ of attribute $A_i$ in $R$ an identiﬁer.
 
-Patients
-Name Illness
+The corresponding index value is the unique value associated with the partition to which the plaintext value $t[A_i]$ belongs. $Map_{R.A_i} (v) = ident_{R.A_i} (p_j), where p_j is the partition containing v.
 
-Doctor
+$Map_{R.A_i} can be order-preserving or random.
 
-Alice
-Bob
-Carol
-David
-Eva
-Eva
-
-Angel
-Angel
-Bell
-Clark
-Dan
-Ellis
-
-Asthma
-Asthma
-Asthma
-Bronchitis
-Gastritis
-Stroke
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Tid
-
-Patientsk
-Etuple
-IS IN II ID
-
-1 x4Z3tfX2ShOSM π κ α δ
-2 mNHg1oC010p8w ϖ ω α δ
-3 WsIaCvfyF1Dxw ξ λ α ν
-4 JpO8eLTVgwV1E ρ υ β γ
-5 qctG6XnFNDTQc ι µ α σ
-6 kotG8XnFNDTaW χ o β ψ
-
-16/268
-
-Indexes for queries: Flattened (1:n)
-Flat indexes
-+ decreases exposure to inference attacks
-− remains vulnerabile to dynamic observations
-SSN
-123. . .89
-234. . .91
-345. . .12
-456. . .23
-567. . .34
-232. . .11
-
-Patients
-Name Illness
-
-Doctor
-
-Alice
-Bob
-Carol
-David
-Eva
-Eva
-
-Angel
-Angel
-Bell
-Clark
-Dan
-Ellis
-
-Asthma
-Asthma
-Asthma
-Bronchitis
-Gastritis
-Stroke
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Tid
-
-Patientsk
-Etuple
-IS IN II ID
-
-1 x4Z3tfX2ShOSM π κ α δ
-2 mNHg1oC010p8w ϖ ω α δ
-3 WsIaCvfyF1Dxw ξ λ α ν
-4 JpO8eLTVgwV1E ρ υ β γ
-5 qctG6XnFNDTQc ι µ α σ
-6 kotG8XnFNDTaW χ o β ψ
-
-16/268
-
-Partition-based index [HIML-02]
-• Consider an arbitrary plaintext attribute Ai in relational schema R,
-with domain Di
-• Di is partitioned in a number of non-overlapping subsets of values,
-called partitions, containing contiguous values
-• Given a plaintext tuple t in r, the value of attribute Ai for t belongs
-to a partition
-◦ function identR.Ai (pj ) assigns to each partition pj of attribute Ai in R
-an identiﬁer
-
-• The corresponding index value is the unique value associated with
-the partition to which the plaintext value t[Ai ] belongs
-◦ MapR.Ai (v) = identR.Ai (pj ), where pj is the partition containing v
-
-• MapR.Ai can be order-preserving or random
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-17/268
-
-Partition-based index – Example
+An example of a partition-based index.<br />
 Random mapping
 
-• MapBalance (100) = µ
-• MapBalance (200) = κ
-• MapBalance (300) = η
-• MapBalance (400) = θ
+slide 18/268
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+- $MapBalance (100) = \mu$;
+- $MapBalance (200) = \kappa$;
+- $MapBalance (300) = \eta$;
+- $MapBalance (400) = \theta$.
 
-18/268
-
-Query conditions supported by the partition-based index
+Query conditions supported by the partition-based index
 • Support queries where conditions are boolean formulas over
 terms of the form
 ◦ Attribute op Value
