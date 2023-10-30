@@ -6334,441 +6334,90 @@ delegated by a particular authority preferred by the server”)
 
 # Privacy and Data Protection in Emerging Scenarios
 
-Privacy and integrity of data storage
+## Privacy and integrity of data storage
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+slide 2/268
 
-2/268
+### Contributions and advancements
+The research community has been very active and produced several contributions and advancements. E.g.,:
+- solutions for protecting conﬁdentiality of stored data;
+- indexes supporting different types of queries;
+- inference exposure evaluation;
+- data integrity;
+- selective access to outsourced data
+- ...
 
-Contributions and advancements
-The research community has been very active and produced several
-contributions and advancements. E.g.,:
-• Solutions for protecting conﬁdentiality of stored data
-[ABGGKMSTX-05, CDJJPS-09b, CDFJPS-10, HIML-02]
+----------------------------------------------------------------
 
-• Indexes supporting different types of queries [CDDJPS-05, HIML-02,
-WL-06]
+### Protecting data conﬁdentiality
+Solutions for protecting data can be based on:
+- encryption;
+- encryption and fragmentation;
+- fragmentation.
 
-• Inference exposure evaluation [CDDJPS-05]
-• Data integrity [S-05, XWYM-07, WYPY-08]
-• Selective access to outsourced data [DFJPS-10b]
-• ...
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+----------------------------------------------------------------
 
-3/268
+## Encryption
+The server can be honest-but-curious and should not have access to the resource content.<br />
+Data conﬁdentiality is provided by wrapping a layer of encryption around sensitive data. For performance reasons, encryption is typically applied at the tuple level.
 
-Protecting data conﬁdentiality
-• Solutions for protecting data can be based on:
-◦ encryption
-◦ encryption and fragmentation
-◦ fragmentation
+slide 6/268
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+### Fine-grained access to data in the cloud
+For conﬁdentiality reasons, CSPs storing data cannot decrypt them for data processing/access. Need mechanisms to support access to the outsourced data:
+- effective and efﬁcient;
+- should not open the door to inferences.
 
-4/268
+### Fine-grained access: Approaches
+- **Keyword-based searches directly on the encrypted data**: supported by speciﬁc cryptographic techniques;
 
-Encryption
+slide 8/268
 
-Encryption
-• The server can be honest-but-curious and should not have access
-to the resource content
-• Data conﬁdentiality is provided by wrapping a layer of encryption
-around sensitive data [HIML-02]
-◦ for performance reasons, encryption is typically applied at the
-tuple level
+
+- **homomorphic encryption**: supports the execution of operations directly on the encrypted data;
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+slide 9/268
 
-6/268
+- **encryption schemas**: each column can be encrypted with a different encryption schema, depending on the conditions to be evaluated on it (e.g., Google encrypted BigQuery);
+- **onion encryption (CryptDB)**: different onion layers each of which supports the execution of a speciﬁc SQL operation (e.g., HanaDB SEEED framework);
 
-Fine-grained access to data in the cloud
-• For conﬁdentiality reasons, CSPs storing data cannot decrypt
-them for data processing/access
-• Need mechanisms to support access to the outsourced data
-◦ effective and efﬁcient
-◦ should not open the door to inferences
+slide 10/268
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+- **indexes**: metadata attached to the data and used for ﬁne-grained information retrieval and query execution. They can also be complementary to encryption (even with encryption users want to have the ability to perform searches based on metadata).
 
-7/268
+slide 11/268
 
-Fine-grained access: Approaches – 1
-Keyword-based searches directly on the encrypted data: supported by
-speciﬁc cryptographic techniques (e.g., [CWLRL-11])
+Indexes associated with attributes are used by the server to select data to be returned in response to a query.
 
-Tokenk(w)
-Ek ( ) Ek ( )
+slide 12/268
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+----------------------------------------------------------------
 
-8/268
+### Query Evaluation process
 
-Fine-grained access: Approaches – 2
-Homomorphic encryption: supports the execution of operations
-directly on the encrypted data (e.g., [BV11,G-09,GSW13])
+slide 13/268
 
-query
+#### Indexes for queries: Direct (1:1)
+Actual value or coding:
+- simple and precise for equality queries;
+- preserves plaintext value distinguishability (inference attacks).
 
-encrypted data
+slide 14/268
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+----------------------------------------------------------------
 
-9/268
+#### Indexes for queries: Bucket (n:1)
+Partition-based or hash-based:
+- supports for equality queries;
+- collisions remove plaintext distinguishability;
+- result may contain spurious tuples (postprocessing query);
+- still vulnerable to inference attacks.
 
-Fine-grained access: Approaches – 3
-• Encryption schemas: each column can be encrypted with a
-different encryption schema, depending on the conditions to be
-evaluated on it (e.g., Google encrypted BigQuery)
-• Onion encryption (CryptDB): different onion layers each of which
-supports the execution of a speciﬁc SQL operation (e.g., HanaDB
-SEEED framework) [PRZB-11]
+slide 15/268
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+----------------------------------------------------------------
 
-10/268
-
-Fine-grained access: Approaches – 4
-Indexes: metadata attached to the data and used for ﬁne-grained
-information retrieval and query execution (e.g., [CDDJPS-05, HIML-02,
-WL-06])
-
-can also be complementary to encryption (even with encryption users
-want to have the ability to perform searches based on metadata)
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-11/268
-
-Encryption and indexes – Example
-Indexes associated with attributes are used by the server to select data
-to be returned in response to a query
-Account
-
-Accounts
-Customer
-
-Balance
-
-Acc1
-Acc2
-Acc3
-Acc4
-Acc5
-Acc6
-
-Alice
-Alice
-Bob
-Chris
-Donna
-Elvis
-
-100
-200
-300
-200
-400
-200
-
-Counter
-1
-2
-3
-4
-5
-6
-
-Accountsk1
-Etuple
-
-IA
-
-IC
-
-IB
-
-x4Z3tfX2ShOSM
-mNHg1oC010p8w
-WsIaCvfyF1Dxw
-JpO8eLTVgwV1E
-qctG6XnFNDTQc
-4QbqCeq3hxZHklU
-
-π
-ϖ
-ξ
-ρ
-ς
-ι
-
-α
-α
-β
-γ
-δ
-ε
-
-µ
-κ
-η
-κ
-θ
-κ
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-12/268
-
-Query evaluation process
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-13/268
-
-Indexes for queries: Direct (1:1)
-Actual value or coding
-+ simple and precise for equality queries
-− preserves plaintext value distinguishability (inference attacks)
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-14/268
-
-Indexes for queries: Direct (1:1)
-Actual value or coding
-+ simple and precise for equality queries
-− preserves plaintext value distinguishability (inference attacks)
-SSN
-123. . .89
-234. . .91
-345. . .12
-456. . .23
-567. . .34
-232. . .11
-
-Patients
-Name Illness
-
-Doctor
-
-Alice
-Bob
-Carol
-David
-Eva
-Eva
-
-Angel
-Angel
-Bell
-Clark
-Dan
-Ellis
-
-Asthma
-Asthma
-Asthma
-Bronchitis
-Gastritis
-Stroke
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Tid
-
-Patientsk
-Etuple
-IS IN II ID
-
-1 x4Z3tfX2ShOSM π κ α δ
-2 mNHg1oC010p8w ϖ ω α δ
-3 WsIaCvfyF1Dxw ξ λ α ν
-4 JpO8eLTVgwV1E ρ υ β γ
-5 qctG6XnFNDTQc ι µ α σ
-6 kotG8XnFNDTaW χ o β ψ
-
-14/268
-
-Indexes for queries: Direct (1:1)
-Actual value or coding
-+ simple and precise for equality queries
-− preserves plaintext value distinguishability (inference attacks)
-SSN
-123. . .89
-234. . .91
-345. . .12
-456. . .23
-567. . .34
-232. . .11
-
-Patients
-Name Illness
-
-Doctor
-
-Alice
-Bob
-Carol
-David
-Eva
-Eva
-
-Angel
-Angel
-Bell
-Clark
-Dan
-Ellis
-
-Asthma
-Asthma
-Asthma
-Bronchitis
-Gastritis
-Stroke
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Tid
-
-Patientsk
-Etuple
-IS IN II ID
-
-1 x4Z3tfX2ShOSM π κ α δ
-2 mNHg1oC010p8w ϖ ω α δ
-3 WsIaCvfyF1Dxw ξ λ α ν
-4 JpO8eLTVgwV1E ρ υ β γ
-5 qctG6XnFNDTQc ι µ α σ
-6 kotG8XnFNDTaW χ o β ψ
-
-14/268
-
-Indexes for queries: Bucket (n:1)
-Partition-based or hash-based
-+ supports for equality queries
-+ collisions remove plaintext distinguishability
-− result may contain spurious tuples (postprocessing query)
-− still vulnerable to inference attacks
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-15/268
-
-Indexes for queries: Bucket (n:1)
-Partition-based or hash-based
-+ supports for equality queries
-+ collisions remove plaintext distinguishability
-− result may contain spurious tuples (postprocessing query)
-− still vulnerable to inference attacks
-SSN
-123. . .89
-234. . .91
-345. . .12
-456. . .23
-567. . .34
-232. . .11
-
-Patients
-Name Illness
-
-Doctor
-
-Alice
-Bob
-Carol
-David
-Eva
-Eva
-
-Angel
-Angel
-Bell
-Clark
-Dan
-Ellis
-
-Asthma
-Asthma
-Asthma
-Bronchitis
-Gastritis
-Stroke
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Tid
-
-Patientsk
-Etuple
-IS IN II ID
-
-1 x4Z3tfX2ShOSM π κ α δ
-2 mNHg1oC010p8w ϖ ω α δ
-3 WsIaCvfyF1Dxw ξ λ α ν
-4 JpO8eLTVgwV1E ρ υ β γ
-5 qctG6XnFNDTQc ι µ α σ
-6 kotG8XnFNDTaW χ o β ψ
-
-15/268
-
-Indexes for queries: Bucket (n:1)
-Partition-based or hash-based
-+ supports for equality queries
-+ collisions remove plaintext distinguishability
-− result may contain spurious tuples (postprocessing query)
-− still vulnerable to inference attacks
-SSN
-123. . .89
-234. . .91
-345. . .12
-456. . .23
-567. . .34
-232. . .11
-
-Patients
-Name Illness
-
-Doctor
-
-Alice
-Bob
-Carol
-David
-Eva
-Eva
-
-Angel
-Angel
-Bell
-Clark
-Dan
-Ellis
-
-Asthma
-Asthma
-Asthma
-Bronchitis
-Gastritis
-Stroke
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Tid
-
-Patientsk
-Etuple
-IS IN II ID
-
-1 x4Z3tfX2ShOSM π κ α δ
-2 mNHg1oC010p8w ϖ ω α δ
-3 WsIaCvfyF1Dxw ξ λ α ν
-4 JpO8eLTVgwV1E ρ υ β γ
-5 qctG6XnFNDTQc ι µ α σ
-6 kotG8XnFNDTaW χ o β ψ
-
-15/268
-
-Indexes for queries: Flattened (1:n)
+#### Indexes for queries: Flattened (1:n)
 Flat indexes
 + decreases exposure to inference attacks
 − remains vulnerabile to dynamic observations
@@ -28428,149 +28077,8 @@ fragment and reversed in another fragment
 • Development of ﬂattened index functions that generate collisions
 • Deﬁnition of metrics for assessing exposures due to indexes
 • ...
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-261/268
-
-References – 1
-• [ABGGKMSTX-05] G. Aggarwal, M. Bawa, P. Ganesan, H. Garcia-Molina, K.
-Kenthapadi, R. Motwani, U. Srivastava, D. Thomas, Y. Xu, “Two Can Keep a
-Secret: A Distributed Architecture for Secure Database Services,” in Proc. of
-CIDR, Asilomar, CA, USA, January 2005.
-• [AFB-05] M. Atallah, K. Frikken, M. Blanton, “Dynamic and Efﬁcient Key
-Management for Access Hierarchies,” in Proc. of CCS, Alexandria, VA, USA,
-November 2005.
-• [AKSX-04] R. Agrawal, J. Kierman, R. Srikant, Y. Xu, “Order Preserving
-Encryption for Numeric Data,” in Proc. of ACM SIGMOD, Paris, France, 2004.
-• [AT-83] S. Akl, P. Taylor, “Cryptographic Solution to a Problem of Access Control
-in a Hierarchy,” ACM TOCS, vol. 1, no. 3, August 1983.
-• [B-70] B.H. Bloom, “Trade-offs in Hash Coding with Allowable Error,” in
-Communication of the ACM, vol. 13, no. 7, July 1970.
-• [BV11] Z. Brakerski, V. Vaikuntanathan, “Efﬁcient Fully Homomorphic Encryption
-from (standard) LWE,” in Proc. of FOCS, Palm Springs, CA, USA, October 2011.
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-262/268
-
-References – 2
-• [CDDJPS-05] A. Ceselli, E. Damiani, S. De Capitani di Vimercati, S. Jajodia, S.
-Paraboschi, P. Samarati, “Modeling and Assessing Inference Exposure in
-Encrypted Databases,” in ACM TISSEC, vol. 8, no. 1, February 2005.
-• [CDFJPS-07] V. Ciriani, S. De Capitani di Vimercati, S. Foresti, S. Jajodia, S.
-Paraboschi, P. Samarati, “Fragmentation and Encryption to Enforce Privacy in
-Data Storage,” in Proc. of ESORICS, Dresden, Germany, September 2007.
-• [CDFJPS-09a] V. Ciriani, S. De Capitani di Vimercati, S. Foresti, S. Jajodia, S.
-Paraboschi, and P. Samarati, “Fragmentation Design for Efﬁcient Query
-Execution over Sensitive Distributed Databases,” in Proc. of ICDCS, Montreal,
-Quebec, Canada, June 2009.
-• [CDFJPS-09b] V. Ciriani, S. De Capitani di Vimercati, S. Foresti, S. Jajodia, S.
-Paraboschi, P. Samarati, “Keep a Few: Outsourcing Data while Maintaining
-Conﬁdentiality,” in Proc. of ESORICS, Saint Malo, France, September 2009.
-• [CDFJPS-10] V. Ciriani, S. De Capitani di Vimercati, S. Foresti, S. Jajodia, S.
-Paraboschi, P. Samarati, “Combining Fragmentation and Encryption to Protect
-Privacy in Data Storage,” in ACM TISSEC, vol. 13, no. 3, July 2010.
-• [CMW-06] J. Crampton, K. Martin, P. Wild, “On Key Assignment for Hierarchical
-Access Control,” in Proc. of CSFW , Venice, Italy, July 2006.
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-263/268
-
-References – 3
-• [CSYZ-08] G. Cormode, D. Srivastava, T. YU, Q. Zhang, “Anonymizing Bipartite
-Graph Data Using Safe Groupings,” in Proc. of VLDB, Auckland, New Zealand,
-August 2008.
-• [DFJL-12] S. De Capitani di Vimercati, S. Foresti, S. Jajodia, G. Livraga,
-“Enforcing Subscription-based Authorization Policies in Cloud Scenarios,” in
-Proc. of DBSec, Paris, France, July 2012.
-• [DFJLPS-14] S. De Capitani di Vimercati, S. Foresti, S. Jajodia, G. Livraga, S.
-Paraboschi, P. Samarati, “Fragmentation in Presence of Data Dependencies,” in
-IEEE TDSC, 2014 (to appear).
-• [DFJPPS-10] S. De Capitani di Vimercati, S. Foresti, S. Jajodia, S. Paraboschi,
-G. Pelosi, P. Samarati, “Encryption-based Policy Enforcement for Cloud Storage,”
-in Proc. of SPCC 2010, Genova, Italy, June 2010.
-• [DFJPS-07] S. De Capitani di Vimercati, S. Foresti, S. Jajodia, S. Paraboschi, P.
-Samarati, “Over-encryption: Management of Access Control Evolution on
-Outsourced Data,” in Proc. of VLDB, Vienna, Austria, 2007.
-• [DFJPS-10a] S. De Capitani di Vimercati, S. Foresti, S. Jajodia, S. Paraboschi, P.
-Samarati, “Fragments and Loose Associations: Respecting Privacy in Data
-Publishing,” in Proc. of the VLDB Endowment, vol. 3, no. 1, September 2010.
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-264/268
-
-References – 4
-• [DFJPS-10b] S. De Capitani di Vimercati, S. Foresti, S. Jajodia, S. Paraboschi, P.
-Samarati, “Encryption Policies for Regulating Access to Outsourced Data,” in
-ACM TODS, vol. 35, no. 2, April 2010.
-• [DFJPS-11] S. De Capitani di Vimercati, S. Foresti, S. Jajodia, S. Paraboschi, P.
-Samarati, “Private Data Indexes for Selective Access to Outsourced Data,” in
-Proc. of WPES, Chicago, IL, USA, October 2011.
-• [DFJPS-12] S. De Capitani di Vimercati, S. Foresti, S. Jajodia, S. Paraboschi, P.
-Samarati, “Support for Write Privileges on Outsourced Data,” in Proc. of SEC,
-Heraklion, Crete, Greece, June 2012.
-• [DFJPS-13] S. De Capitani di Vimercati, S. Foresti, S. Jajodia, S. Paraboschi, P.
-Samarati, “On Information Leakage by Indexes over Data Fragments,” in Proc. of
-PrivDB, Brisbane, Australia, April 2013.
-• [DFM-04] A. De Santis, A.L. Ferrara, B. Masucci, “Cryptographic Key
-Assignment Schemes for any Access Control Policy,” in Inf. Process. Lett.,
-vol. 92, no. 4, 2004.
-• [G-09] C. Gentry, “Fully Homomorphic Encryption using Ideal Lattices,” in Proc.
-of STOC, Bethesda, MA, USA, 2009.
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-265/268
-
-References – 5
-• [G-80] E. Gudes, “The Design of a Cryptography based Secure File System,” in
-IEEE TSE, vol. 6, no. 5, September 1980.
-• [GKPVZ-13] S. Goldwasser, Y.T. Kalai, R.A. Popa, V. Vaikuntanathan, N.
-Zeldovich, “Reusable Garbled Circuits and Succinct Functional Encryption,” in
-Proc. of STOC, Palo Alto, CA, USA, June 2013.
-• [GSW13] C. Gentry, A. Sahai, B. Waters, “Homomorphic Encryption from
-Learning with Errors: Conceptually-simpler, Asymptotically-faster,
-Attribute-based,” in Proc. of CRYPTO, Santa Barbara, CA, USA, August 2013.
-• [HIML-02] H. Hacigümüş, B. Iyer, S. Mehrotra, C. Li, “Executing SQL over
-Encrypted Data in the Database-Service-Provider Model,” in Proc. of the ACM
-SIGMOD, Madison, Wisconsin, USA, June 2002.
-• [HL-90] L. Harn, H. Lin, “A Cryptographic Key Generation Scheme for Multilevel
-Data Security,” Computers and Security , vol. 9, no. 6, October 1990.
-• [HY-03] M. Hwang, W. Yang, “Controlling Access in Large Partially Ordered
-Hierarchies using Cryptographic Keys,” The Journal of Systems and Software,
-vol. 67, no. 2, August 2003.
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-266/268
-
-References – 6
-• [LWL-89] H. Liaw, S. Wang, C. Lei, “On the Design of a Single-Key-Lock
-Mechanism Based on Newton’s Interpolating Polynomial,” in IEEE TSE, vol. 15,
-no. 9, September 1989.
-• [M-85] S. MacKinnon et al., “An Optimal Algorithm for Assigning Cryptographic
-Keys to Control Access in a Hierarchy,” in IEEE TC, vol. 34, no. 9, September
-1985.
-• [MNT-06] E. Mykletun, M. Narasimha, G. Tsudik, “Authentication and Integrity in
-Outsourced Databases,” in ACM TS, vol. 2, no. 2, May 2006.
-• [S-87] R. Sandhu, “On Some Cryptographic Solutions for Access Control in a
-Tree Hierarchy,” in Proc. of the 1987 Fall Joint Computer Conference on
-Exploring Technology: Today and Tomorrow, Dallas, TX, USA, October 1987.
-• [S-88] R. Sandhu, “Cryptographic Implementation of a Tree Hierarchy for Access
-Control,” in Information Processing Letters, vol. 27, no. 2, 1988.
-• [SC-02] V. Shen, T. Chen, “A Novel Key Management Scheme Based on
-Discrete Logarithms and Polynomial Interpolations,” in Computers and Security ,
-vol. 21, no. 2, March 2002.
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-267/268
-
-References – 7
-• [WL-06] H. Wang, Laks V. S. Lakshmanan, “Efﬁcient Secure Query Evaluation
-over Encrypted XML Databases,” in Proc. of VLDB, Seoul, Korea, September
-2006.
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-268/268
+----------------------------------------------------------------
 
 
 
