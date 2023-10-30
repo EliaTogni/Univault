@@ -967,8 +967,8 @@ Special rule: Income within a $5K$ Euro interval.
 Cells that cannot be released:
 - its value is equal to total;
 - the table allows users to determine benefit within a $ $5k$ interval:
-	- between $23K$ and $25K$ for _Dept$4$_
-	- between $23K$ and $27K$ for _Dept$2$_
+	- between $23K$ and $25K$ for _Dept$4$_;
+	- between $23K$ and $27K$ for _Dept$2$_.
 
 Another example of Special rules (U.S. HIPAA).<br />
 Health Insurance Portability and Accountability Act “Safe Harbor” rules, include:
@@ -989,12 +989,9 @@ A cell is sensitive if the number of respondents is less than some specified num
 An example of Table with disclosures.<br />
 Table containing information about employees by company and education level.
 
-slide 25/98
+![[TableDisclosuresExample.png]]
 
-Suppress one additional cell for each row/column with a sensitive cell suppressed.<br />
-A cell with fewer than 5 respondents is defined as sensitive
-Suppress one additional cell for each row/column with a sensitive cell
-suppressed
+A cell with fewer than 5 respondents is defined as sensitive. Suppress one additional cell for each row/column with a sensitive cell suppressed.
 
 ----------------------------------------------------------------
 
@@ -1002,13 +999,14 @@ suppressed
 An example of Table restructuring.<br />
 Number of employees by department and annual income (in $K$ Euro).<br />
 Special rule: Income within a $5K$ Euro interval.<br />
-To protect confidentiality, the table can be restructured and rows or columns combined (“rolling-up categories”)
+To protect confidentiality, the table can be restructured and rows or columns combined (“rolling-up categories”).
 
-slide 27/98 1 e 2
+![[TableRestructuringExample1.png]]
+![[TableRestructuringExample2.png]]
 
 Combining _Dept$1$_ with _Dept$2$_ and _Dept$3$_ with _Dept$4$_ does offer the required protection.
 
-slide 27/98 3
+![[TableRestructuringExample3.png]]
 
 Combining _Dept$2$_ with _Dept$4$_ would still reveal that the income is within a 5K interval $[23K, 27K)$.
 
@@ -1024,18 +1022,14 @@ Even with complementary suppression it is difficult to guarantee adequate protec
 The selection of cells for complementary suppression is complicated. **Linear programming** techniques are used to automatically select cells for complementary suppression.<br />
 **Audit techniques** can be applied to evaluate the proposed suppression pattern to see if it provides the required protection.
 
-An example of cell suppression: Table without disclosures.<br />
+An example of cell suppression: Table without disclosures.<br />
 Table containing information about employees by company and education level.
 
-slide 30/98 2
+![[CellSuppressionExample1.png]]
 
 A cell with fewer than 5 respondents is defined as sensitive.
 
-slide 30/98 3
-
-Suppress sensitive cells.
-
-slide 30/98 4
+![[CellSuppressionExample2.png]]
 
 Suppressing sensitive cells is not sufficient:<br />
 $35 = D1 + 10 + 10 + 14 \to D1 = 1$<br />
@@ -1045,18 +1039,21 @@ $35 = 12 + 14 + 7 + D6 \to D6 = 2$
 $20 = 15 + 1 + 3 + D3 \to D3 = 1$
 $25 = 3 + 10 + 10 + D5 \to D5 = 2$
 
-slide 30/98 ??
+![[CellSuppressionExample3.png]]
 
 Suppress one additional cell for each row/column with a sensitive cell suppressed.<br />
 The table appears to offer protection to the sensitive cells but:
 $(15 + D1 + D2 + D3 ) + (20 + D4 + D5 + 15) - (D1 + D4 + 10 + 14) - (D2 + D5 + 10 + 7)$
 $= 20 + 55 - 35 - 30 \to D3 = 1$
 
-slide 30/98 ?? più slides
+![[CellSuppresionExample4.png]]
+![[CellSuppresionExample5.png]]
+![[CellSuppresionExample6.png]]
+![[CellSuppresionExample7.png]]
 
 The table provides adequate protection for the sensitive cells but out of a total of $16$ cells, only $7$ cells are published, while $9$ are suppressed.
 
-slide 30/98 ultima
+![[CellSuppressionExample8.png]]
 
 ----------------------------------------------------------------
 
@@ -1069,7 +1066,7 @@ Note: all cell values must be a multiple of the threshold value.
 
 An example of random rounding.
 
-slide 32/98
+![[RandomRoundingExample.png]]
 
 ----------------------------------------------------------------
 
@@ -1077,7 +1074,7 @@ slide 32/98
 
 An example of controlled rounding.
 
-slide 33/98
+![[ControlledRoundingExample.png]]
 
 Linear programming methods are used to identify a controlled rounding for a table.<br />
 Disadvantages:
@@ -1100,11 +1097,10 @@ For the $100$ percent microdata file, confidentiality edit applie **switching**:
 
 For small blocks, the sampling fraction is increased to provide additional protection. The microdata file can be used directly to prepare macrodata tables.
 
-An example of confidentiality edit.
+An example of confidentiality edit.<br />
+Records for the $20$ employees of company Alfa.
 
-Records for the 20 employees of company Alfa.
-
-slide 37/98
+![[ConfidentialityEditExample.png]]
 
 1) take a sample of records from the microdata file (say a $10\%$ sample, $2$ tuples for company Alfa). Assume that records number $4$ and $17$ were selected as part of our $10\%$ sample;
 2) since we need tables by company and education level, we find a match in some other company on the other variables (race and salary, company totals for these variables remain unchanged):
