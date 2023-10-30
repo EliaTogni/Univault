@@ -6429,12 +6429,12 @@ slide 16/268
 ### Partition-based index
 Consider an arbitrary plaintext attribute $A_i$ in relational schema $R$, with domain $D_i$. $D_i$ is partitioned in a number of non-overlapping subsets of values, called **partitions**, containing contiguous values. Given a plaintext tuple $t$ in $r$, the value of attribute $A_i$ for $t$ belongs to a partition. The function $ident_{R.A_i} (p_j)$ assigns to each partition $p_j$ of attribute $A_i$ in $R$ an identiﬁer.
 
-The corresponding index value is the unique value associated with the partition to which the plaintext value $t[A_i]$ belongs. $Map_{R.A_i} (v) = ident_{R.A_i} (p_j), where p_j is the partition containing v.
+The corresponding index value is the unique value associated with the partition to which the plaintext value $t[A_i]$ belongs. $Map_{R.A_i} (v) = ident_{R.A_i} (p_j)$, where $p_j$ is the partition containing $v$.
 
-$Map_{R.A_i} can be order-preserving or random.
+$Map_{R.A_i}$ can be order-preserving or random.
 
 An example of a partition-based index.<br />
-Random mapping
+Random mapping:
 
 slide 18/268
 
@@ -6443,24 +6443,24 @@ slide 18/268
 - $MapBalance (300) = \eta$;
 - $MapBalance (400) = \theta$.
 
-Query conditions supported by the partition-based index
-• Support queries where conditions are boolean formulas over
-terms of the form
-◦ Attribute op Value
-◦ Attribute op Attribute
+The partition-based index supports queries where conditions are boolean formulas over terms of the form;
+- **Attribute op Value**;
+- **Attribute op Attribute**.
 
-• Allowed operations for op include {=, <, >, ≤, ≥}
+The allowed operations for op include ${=, <, >, \leq, \geq}$.
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+----------------------
 
-19/268
+### Mapping conditions Mapcond
+- $A_i = v$. The mapping is deﬁned as:
 
-Mapping conditions Mapcond – 1
-• Ai = v. The mapping is deﬁned as:
-Mapcond (Ai = v) =⇒ Ii =MapAi (v)
-Example
-Mapcond (Balance = 100) =⇒ IBalance =MapBalance (100) = µ
-• Ai < v. The mapping depends on whether or not the mapping
+$$Map_{cond} (A_i = v) \to I_i =Map_{A_i} (v)$$
+
+Example:
+
+$$Map_{cond} (Balance = 100) \to I_{Balance} = Map_{Balance} (100) = \mu$$
+
+- Ai < v. The mapping depends on whether or not the mapping
 function MapAi is order-preserving or random
 ◦ order-preserving: Mapcond (Ai < v) =⇒ Ii ≤MapAi (v)
 ◦ random: check if attribute Ii lies in any of the partitions that may
@@ -6470,11 +6470,7 @@ Ai (v)
 Example
 Mapcond (Balance< 200) =⇒ IBalance ∈ {µ , κ }
 • Ai > v. Symmetric with respect to Ai < v
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-20/268
-
-Mapping conditions Mapcond – 2
 • Ai = Aj . The translation is performed by considering all possible
 pairs of partitions of Ai and Aj that overlap.
 Example
@@ -6488,9 +6484,6 @@ Mapcond (Balance=Beneﬁt) =⇒
 
 • Ai < Aj . The mapping depends on whether or not the mapping
 functions MapAi and MapAj are order-preserving or random
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-21/268
 
 Query execution
 • Each query Q on the plaintext DB is translated into:
@@ -6503,9 +6496,6 @@ spurious tuples
 • The translation should be performed in such a way that the server
 is responsible for the majority of the work
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-22/268
 
 Query execution – Simple example
 
@@ -6600,9 +6590,98 @@ Qc := SELECT *
 FROM Decrypt(Qs , Key)
 WHERE Balance=200
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+Query execution – Simple example
 
-23/268
+Account
+
+Accounts
+Customer
+
+Balance
+
+Counter
+
+Acc1
+Acc2
+Acc3
+Acc4
+Acc5
+Acc6
+
+Alice
+Alice
+Bob
+Chris
+Donna
+Elvis
+
+100
+200
+300
+200
+400
+200
+
+1
+2
+3
+4
+5
+6
+
+Accountsk2
+Etuple
+x4Z3tfX2ShOSM
+mNHg1oC010p8w
+WsIaCvfyF1Dxw
+JpO8eLTVgwV1E
+qctG6XnFNDTQc
+4QbqC3hxZHklU
+
+IA
+
+IC
+
+IB
+
+π
+ϖ
+ξ
+ρ
+ς
+ι
+
+α
+α
+δ
+α
+β
+β
+
+µ
+κ
+θ
+κ
+κ
+κ
+
+Original query on Accounts Translation over Accountsk2
+Q :=
+
+SELECT
+FROM
+WHERE
+
+*
+Accounts
+Balance=200
+
+Qs := SELECT Etuple
+FROM Accountsk2
+WHERE IB =κ
+Qc := SELECT *
+FROM Decrypt(Qs , Key)
+WHERE Balance=200
 
 Query execution – Simple example
 
@@ -6697,10 +6776,6 @@ Qc := SELECT *
 FROM Decrypt(Qs , Key)
 WHERE Balance=200
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-23/268
-
 Query execution – Simple example
 
 Account
@@ -6794,10 +6869,6 @@ Qc := SELECT *
 FROM Decrypt(Qs , Key)
 WHERE Balance=200
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-23/268
-
 Query execution – Simple example
 
 Account
@@ -6890,107 +6961,6 @@ WHERE IB =κ
 Qc := SELECT *
 FROM Decrypt(Qs , Key)
 WHERE Balance=200
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-23/268
-
-Query execution – Simple example
-
-Account
-
-Accounts
-Customer
-
-Balance
-
-Counter
-
-Acc1
-Acc2
-Acc3
-Acc4
-Acc5
-Acc6
-
-Alice
-Alice
-Bob
-Chris
-Donna
-Elvis
-
-100
-200
-300
-200
-400
-200
-
-1
-2
-3
-4
-5
-6
-
-Accountsk2
-Etuple
-x4Z3tfX2ShOSM
-mNHg1oC010p8w
-WsIaCvfyF1Dxw
-JpO8eLTVgwV1E
-qctG6XnFNDTQc
-4QbqC3hxZHklU
-
-IA
-
-IC
-
-IB
-
-π
-ϖ
-ξ
-ρ
-ς
-ι
-
-α
-α
-δ
-α
-β
-β
-
-µ
-κ
-θ
-κ
-κ
-κ
-
-Original query on Accounts Translation over Accountsk2
-Q :=
-
-SELECT
-FROM
-WHERE
-
-*
-Accounts
-Balance=200
-
-Qs := SELECT Etuple
-FROM Accountsk2
-WHERE IB =κ
-Qc := SELECT *
-FROM Decrypt(Qs , Key)
-WHERE Balance=200
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-23/268
 
 Hash-based index [CDDJPS-05]
 • Based on the concept of one-way hash function
@@ -7006,9 +6976,6 @@ is h(t[Ai ])
 ◦ given two distinct but near values x, y (| x − y |< ε ) chosen randomly
 in Di , the discrete probability distribution of the difference h(x) − h(y)
 is uniform (strong mixing)
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-24/268
 
 An example of encrypted relation with hashing
 Account
@@ -7081,9 +7048,6 @@ qctG6XnFNDTQc
 • hb (200)=hb (400)=κ
 • hb (100)=µ
 • hb (300)=θ
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-25/268
 
 Query conditions supported by the hash-based index
 • Support queries where conditions are boolean formulas over
@@ -7099,9 +7063,6 @@ domain
 
 • Query translation works like in the partition-based method
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-26/268
 
 Interval-based queries [CDDJPS-05]
 • Order-preserving indexing techniques (e.g., [AKSX-04]): support
@@ -7117,10 +7078,6 @@ Possible solution:
 ◦ Calculate the nodes in the B+-tree at the client and encrypt each
 node as a whole at the server
 ◦ B+-tree traversal must be performed at the trusted front-end
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-27/268
 
 B+-tree example – 1
 
@@ -7143,7 +7100,6 @@ Node
 (Donna,_,6)
 (Elvis,_,_)
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
 Encrypted B+-tree Table
 ID
@@ -7164,8 +7120,6 @@ GLDWRnBGIvYBA
 a9yl36PA3LeLk
 H6GwdJpXiU8MY
 
-28/268
-
 B+-tree example – 2
 Query on the plaintext relation
 SELECT
@@ -7178,15 +7132,8 @@ Accounts WHERE Customer = ‘Bob’
 
 Interaction for query evaluation
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-29/268
 
 Searchable encryption
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-30/268
 
 Order preserving encryption
 • Order Preserving Encryption Schema (OPES) takes as input a
@@ -7201,10 +7148,6 @@ target distribution
 schema creates index values so that their frequency distribution is
 ﬂat [WL-06]
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-31/268
-
 Fully homomorphic encryption [G-09, GKPVZ-13]
 Fully homomorphic encryption schema:
 • allows performing speciﬁc computation on encrypted data
@@ -7215,17 +7158,11 @@ together several existing schemes (homomorphic encryption, garbled
 circuit, attribute-based encryption) [GKPVZ-13]
 • still too computationally intensive for practical DBMS applications
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-32/268
 
 Inference exposure
 
 A. Ceselli, E. Damiani, S. De Capitani di Vimercati, S. Jajodia, S. Paraboschi, and P. Samarati, “Modeling and Assessing Inference
 Exposure in Encrypted Databases,” in ACM TISSEC, vol. 8, no. 1, February 2005.
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-33/268
 
 Inference exposure
 There are two conﬂicting requirements in indexing data:
@@ -7235,10 +7172,6 @@ It is important to measure quantitatively the level of exposure due to
 the publication of indexes:
 
 ε = Exposure Coefﬁcient
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-34/268
 
 Scenarios
 The computation of the exposure coefﬁcient ε depends on two factors:
@@ -7255,9 +7188,6 @@ The computation of the exposure coefﬁcient ε depends on two factors:
 ◦ DB+DBk :
 − the plaintext database (DB)
 − the encrypted database (DBk )
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-35/268
 
 Possible inferences
 Freq+DBk
@@ -7269,10 +7199,6 @@ DB+DBk
 • indexing function: determine the correspondence between
 plaintext values and indexes
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-36/268
-
 Exposure coefﬁcient computation [CDDJPS-05]
 
 Freq+DBk
@@ -7282,13 +7208,10 @@ Direct Encryption
 Quotient Table
 RCV graph
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
 Hashing
 Multiple subset sum problem
 RCV line graph
 
-37/268
 
 Freq+DBk – Example
 Knowledge
@@ -7365,9 +7288,6 @@ IA IC IB
 θ
 κ
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-38/268
 
 Direct encryption – Freq+DBk
 • Correspondence between an index and a plaintext value can be
@@ -7380,10 +7300,6 @@ indistinguishable to the attacker
 where index/plaintext values with same number of occurrences
 belong to the same class
 ◦ Exposure of values in equivalence class C is 1/ | C |
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-39/268
 
 Freq+DBk – Example of exposure computation
 A.1 = {π , ϖ , ξ , ρ , ς , ι } = {Acc1,. . .,Acc6}
@@ -7436,9 +7352,7 @@ icB
 1/6 1/4 1
 
 E = 1n ∑ni=1 ∏kj=1 ICi,j = 1/18
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-40/268
+# Arrivare qui
 
 Direct encryption – DB+DBk
 • 3-colored undirected Row-Column-Value graph:
