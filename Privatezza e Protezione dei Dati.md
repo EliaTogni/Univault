@@ -865,7 +865,7 @@ Data from $87$ million Facebook users retrieved by the app:
 	- masking techniques;
 	- synthetic techniques.
 
-slide 2/98
+![[Outline.png]]
 
 ### Statistical data dissemination
 Often statistical data (or data for statistical purpose) are released. Such released data can be used to infer information that was not intended for disclosure.<br />
@@ -887,7 +887,6 @@ Release of data for statistical purpose:
 	- publish statistics (macrodata release);
 	- control on indirect release performed before publication.
 
-
 ----------------------------------------------------------------
 
 ## Statistical DBMS
@@ -895,20 +894,25 @@ A statistical DBMS is a DBMS that provides access to statistics about groups of 
 
 An example of a statistical DBMS.
 
-slides 7/98
+![[StatisticalDBMSExample.png]]
 
 Query: sum of the incomes of females with major in EE.<br />
 Result: it reveals the income of Baker (only female with EE) $\to$ the query is sensitive so it is necessary to block statistics computed over a single (or few) individual.
 
 Another example of a Statistical DBMS.
+Query $1$: sum of the incomes of individuals with major in EE.
 
-slide 8/98
+![[StatisticalDBMSExample2-1.png]]
 
-Query $1$: sum of the incomes of individuals with major in EE.<br />
 Result: it does not reveal the income of any individual ($240k$) $\to$ the query is not sensitive<br />
-Query $2$: sum of the incomes of males with major in EE.<br />
+Query $2$: sum of the incomes of males with major in EE.
+
+![[StatisticalDBMSExample2-2.png]]
+
 Result: it does not reveal the income of any individual ($190k$) $\to$ the query is not sensitive.<br />
 Query 3 = sum of the incomes of females with major in EE ($50k$) = income of Baker $\to$ the combination of queries is sensitive.
+
+![[StatisticalDBMSExample2-3.png]]
 
 ----------------------------------------------------------------
 
@@ -958,7 +962,7 @@ Another example of special rules.<br />
 Number of employees by department and annual income (in $K$ Euro).<br />
 Special rule: Income within a $5K$ Euro interval.
  
-slide 22/98
+![[SpecialRuleExample.png]]
 
 Cells that cannot be released:
 - its value is equal to total;
