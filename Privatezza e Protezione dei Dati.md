@@ -1109,28 +1109,21 @@ Records for the $20$ employees of company Alfa.
 3) we also assume that part of the randomly selected $10\%$ sample from other companies match records in company Alfa:
 	- one record from company Delta (June with high education) matches with Virginia (record $12$);
 	- One record from company Gamma (Heather with low education) matched with Nancy (record $20$).
-4) After all matches are made, swap attributes on matched records;
-5) Use the swapped data file directly to produce tables.
-
-check slide 40/98
+4) after all matches are made, swap attributes on matched records;
+5) use the swapped data file directly to produce tables.
 
 
-Take a sample of records from the microdata file (say a $10\%$ sample).
+Take a sample of records from the microdata file (say a $10\%$ sample). Since we need tables by company and education level, we find a match in some other company on the other variables.
 
-slide 40/98
- 
-
-Since we need tables by company and education level, we find a match in some other company on the other variables.
-
-slide 40/98
+![[ConfidentialityEditExample1.png]]
+![[ConfidentialityEditExample2.png]]
 
 
-Part of the randomly selected $10\%$ sample from other companies
-match records in company Alfa.
+Part of the randomly selected $10\%$ sample from other companies match records in company Alfa.
 
-slide 40/98
+![[ConfidentialityEditExample3.png]]
 
-slide 41/98
+![[ConfidentialityEditExample4.png]]
 
 ----------------------------------------------------------------
 
@@ -1190,7 +1183,7 @@ Which is the coalition of $c = 3$ respondents that can better estimate Alice’s
 - $\leq 120K (=250K−130K)$.
 
 Therefore, it is sensitive for any $p \geq 20$.
-Formally, the cell is protected for any $p$ such that
+Formally, the cell is protected for any $p$ such that:
 
 $$\sum_{i = 3 + 2}^{N} x_i \geq \frac{p}{100} \text{Alice}$$
 $$\sum_{i = 5}^{N} x_i \geq \frac{p}{100} 100$$
@@ -1205,7 +1198,7 @@ In the $p$-percent rule, we assumed that there was no prior knowledge about resp
 In the $pq$ rule, agencies can specify how much prior knowledge there is by assigning a value $q$ which represents how accurately respondents can estimate another respondent’s value before any data are published ($p < q < 100$).<br />
 Parameter $q$ represents the error in estimation before the cell is published.
 
-Formally, a cell is protected if
+Formally, a cell is protected if:
 
 $$\frac{q}{100} \sum_{i = c + 2}^{N} x_i \geq \frac{p}{100} x_1$$
 
@@ -1297,8 +1290,7 @@ The selection of the complementary cells should result in minimum **information 
 ----------------------------------------------------------------
 
 ##### Information in parameter values
-While the suppression rules can be published, parameter values
-should be kept confidential.
+While the suppression rules can be published, parameter values should be kept confidential.
 
 For example, assume that:
 - $p$-percent rule is used with $p=20\%$ and the same value is used for complementary suppression;
@@ -1309,12 +1301,12 @@ Once the value for one suppressed cell has been uniquely determined, other cell 
 
 An example of the protection of tables of magnitude data.
 
-slide 63/98 3
-slide 63/98 4
+![[ProtectionMagnitudeDataExample1.png]]
+![[ProtectionMagnitudeDataExample2.png]]
 
 $(n,k)$ rule with $n=1$, $k=90$ implies that a cell is sensitive if one respondent contributes more than $90\%$.
 
-slide 63/98 5
+![[ProtectionMagnitudeDataExample3.png]]
 
 Secondary suppression.
 
@@ -1488,12 +1480,12 @@ There are different variations of micro-aggregation:
 
 An example of micro-aggregation (blurring).
 
-![[MicoAggregationBlurringExample1.png]]
+![[MicroAggregationBlurringExample1.png]]
 
 Group tuples based on _Sex_ and _MarStat_
 
-![[MicoAggregationBlurringExample2.png]]
-![[MicoAggregationBlurringExample3.png]]
+![[MicroAggregationBlurringExample2.png]]
+![[MicroAggregationBlurringExample3.png]]
 
 Substitute _Income_ with the average for each group.
 
