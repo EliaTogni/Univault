@@ -1366,7 +1366,7 @@ The original data are transformed to produce new data that are valid for statist
 - **non-perturbative**: the original data are not modified, but some data are suppressed and/or some details are removed;
 - **perturbative**: the original data are modified.
 
-slide 77/98
+![[MaskingTechniquesClassification.png]]
 
 #### Non Perturbative Techniques
 ##### Sampling
@@ -1374,13 +1374,11 @@ The protected microdata table is obtained as a sample of the original microdata 
 
 An example of sampling.
 
-slide 79/98
-
-slide 79/98 2
+![[SamplingExample1.png]]
 
 Compute a sample of $3$ tuples out of $14$.
 
-slide 79/98 3 
+![[SamplingExample2.png]]
 
 ----------------------------------------------------------------
 
@@ -1390,11 +1388,11 @@ It suppresses the value of an attribute (i.e., it replaces it with a missing val
 
 An example of local suppression.
 
-slide 81/98 2
+![[LocalSuppressionExample1.png]]
 
 Suppress cells that contribute significantly to re-identification.
 
-slide 81/98 3
+![[LocalSuppressionExample2.png]]
 
 ----------------------------------------------------------------
 
@@ -1403,12 +1401,12 @@ The domain of an attribute is partitioned into disjoint intervals, usually of th
 
 An example of global recoding.
 
-slide 83/98 2
+![[GlobalRecodingExample1.png]]
 
 Global recoding on _Income_:
 $[150-199]$: low, $[200-289]$: medium, $[290-310]$ high.
 
-slide 83/98 3
+![[GlobalRecondingExample2.png]]
 
 ----------------------------------------------------------------
 
@@ -1419,12 +1417,12 @@ slide 83/98 3
 
 An example of top-coding and bottom-coding.
 
-slide 85/98 2
+![[TopCodingBottomCodingExample1.png]]
 
 Top-coding on _Holidays_ for values higher than $30$.<br />
 Bottom-coding on _Holidays_ for values lower than $10$.
 
-slide 85/98 3
+![[TopCodingBottomCodingExample2.png]]
 
 ----------------------------------------------------------------
 
@@ -1435,11 +1433,11 @@ Different generalized microdata tables can be built, depending on the number of 
 
 An example of generalization.
 
-slide 87/98 2
+![[GeneralizationExample1.png]]
 
 Generalize attribute _DoB_ to the granularity of month.
 
-slide 87/98 3
+![[GeneralizationExample2.png]]
 
 ----------------------------------------------------------------
 
@@ -1450,14 +1448,13 @@ Publishing the distribution(s) might increase disclosure risk of the data.
 
 An example of random noise.
 
-slide 90/98 1
+![[RandomNoiseExample1.png]]
 
 Additive noise over attribute _Holidays_ (to preserve average).
 
-slide 90/98 2
+![[RandomNoiseExample2.png]]
 
-
-slide 90/98 3
+![[RandomNoiseExample3.png]]
 
 ----------------------------------------------------------------
 
@@ -1468,15 +1465,15 @@ This technique reduces the risk of reidentification because it introduces uncert
 
 An example of swapping.
 
-slide 92/98 1
+![[SwappingExample1.png]]
 
-Swap _Holidays_ and _Income_ for tuples with the same _Sex_ and _MarStat_. Identify $3$ pairs of tuples with same _Sex_ and _MarStat_
+Swap _Holidays_ and _Income_ for tuples with the same _Sex_ and _MarStat_. Identify $3$ pairs of tuples with same _Sex_ and _MarStat_.
 
-slide 92/98 2
+![[SwappingExample2.png]]
 
 Swap _Holidays_ and _Income_.
 
-slide 92/98 3
+![[SwappingExample3.png]]
 
 ----------------------------------------------------------------
 
@@ -1491,13 +1488,12 @@ There are different variations of micro-aggregation:
 
 An example of micro-aggregation (blurring).
 
-slide 94/98 1
+![[MicoAggregationBlurringExample1.png]]
 
 Group tuples based on _Sex_ and _MarStat_
 
-slide 94/98 2
-
-slide 94/98 3
+![[MicoAggregationBlurringExample2.png]]
+![[MicoAggregationBlurringExample3.png]]
 
 Substitute _Income_ with the average for each group.
 
@@ -1511,7 +1507,7 @@ An important requirement for the generation of synthetic data is that the synthe
 
 The main advantage of this class of techniques is that the released synthetic data are not referred to any respondent and therefore their release cannot lead to reidentification.
 
-slide 98/98
+![[SyntheticTechniques.png]]
 
 ----------------------------------------------------------------
 
