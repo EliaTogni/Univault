@@ -6500,106 +6500,41 @@ slide 23/268 multiple
 ----------------------------------------------------------------
 
 ### Hash-based index
-Based on the concept of one-way hash function. For each attribute Ai in R with domain Di , a secure one-way hash function h : Di → Bi is deﬁned, where Bi is the domain of index Ii associated with Ai
-• Given a plaintext tuple t in r, the index value corresponding to t[Ai ]
-is h(t[Ai ])
-• Important properties of any secure hash function h are:
-◦ ∀x, y ∈ Di : x = y =⇒ h(x) = h(y) (determinism)
-◦ given two values x, y ∈ Di with x 6= y, we may have that h(x) = h(y)
-(collision)
-◦ given two distinct but near values x, y (| x − y |< ε ) chosen randomly
-in Di , the discrete probability distribution of the difference h(x) − h(y)
-is uniform (strong mixing)
+The **hash-based index** is based on the concept of **one-way hash function**. For each attribute $A_i$ in $R$ with domain $D_i$, a secure one-way hash function $h : D_i \to B_i$ is deﬁned, where $B_i$ is the domain of index $I_i$ associated with $A_i$.
 
-An example of encrypted relation with hashing
-Account
+Given a plaintext tuple $t$ in $r$, the index value corresponding to $t[A_i]$ is $h(t[A_i])$.
 
-Accounts
-Customer
+Important properties of any secure hash function $h$ are:
+- $\forall x, y \in D_i : x = y \to h(x) = h(y)$ (**determinism**);
+- given two values $x, y \in D_i$ with $x \neq y$, we may have that $h(x) = h(y)$ (**collision**);
+- given two distinct but near values $x, y (\vert x − y \vert < \varepsilon)$ chosen randomly in $D_i$, the discrete probability distribution of the difference $h(x) − h(y)$ is uniform (**strong mixing**).
 
-Balance
+An example of encrypted relation with hashing.
 
-Acc1
-Acc2
-Acc3
-Acc4
-Acc5
-Acc6
+slide 25/268
 
-Alice
-Alice
-Bob
-Chris
-Donna
-Elvis
+- $h_c(Alice)=h_c(Chris)= \alpha$;
+- $h_c(Donna)=h_c(Elvis)=\beta$;
+- $h_c(Bob)= \delta$;
+- $h_b(200)=h_b(400)= \kappa$;
+- $h_b(100)= \eta$;
+- $h_b (300)= \theta$.
 
-100
-200
-300
-200
-400
-200
+----------------------------------------------------------------
 
-Accountsk2
-Enc_tuple
-IA
+#### Query conditions supported by the hash-based index
+Support queries where conditions are boolean formulas over terms of the form:
+- $Attribute = Value$;
+- $Attribute1 = Attribute2$, if $Attribute1$ and $Attribute2$ are indexed with the same hash function.
 
-IC
+It does not support range queries (a solution similar to the one adopted for partition-based methods is not viable). Colliding values in general are not contiguous in the plaintext domain.
 
-IB
+Query translation works like in the partition-based method.
 
-π
-ϖ
-ξ
-ρ
-ς
-ι
+----------------------------------------------------------------
 
-α
-α
-δ
-α
-β
-β
-
-µ
-κ
-θ
-κ
-κ
-κ
-
-x4Z3tfX2ShOSM
-mNHg1oC010p8w
-WsIaCvfyF1Dxw
-JpO8eLTVgwV1E
-qctG6XnFNDTQc
-4QbqC3hxZHklU
-
-• hc (Alice)=hc (Chris)=α
-• hc (Donna)=hc(Elvis)=β
-• hc (Bob)=δ
-• hb (200)=hb (400)=κ
-• hb (100)=µ
-• hb (300)=θ
-
-Query conditions supported by the hash-based index
-• Support queries where conditions are boolean formulas over
-terms of the form
-◦ Attribute = Value
-◦ Attribute1 = Attribute2, if Attribute1 and Attribute2 are indexed with
-the same hash function
-
-• It does not support range queries (a solution similar to the one
-adopted for partition-based methods is not viable)
-◦ colliding values in general are not contiguous in the plaintext
-domain
-
-• Query translation works like in the partition-based method
-
-
-Interval-based queries [CDDJPS-05]
-• Order-preserving indexing techniques (e.g., [AKSX-04]): support
+#### Interval-based queries
+Order-preserving indexing techniques (e.g., [AKSX-04]): support
 interval-based queries but expose to inference
 ◦ comparing the ordered sequences of plaintext and indexes would
 lead to reconstruct the correspondence
@@ -6613,46 +6548,11 @@ Possible solution:
 node as a whole at the server
 ◦ B+-tree traversal must be performed at the trusted front-end
 
-B+-tree example – 1
+----------------------------------------------------------------
 
-ID
-0
-1
-2
-3
-4
-5
-6
+#### B+-tree example – 1
 
-B+-tree Table
-Node
-(1,Donna,2,_,_)
-(3,Chris,4,_,_)
-(5,Elvis,6,_,_)
-(Alice,Bob,4)
-(Chris,_,5)
-(Donna,_,6)
-(Elvis,_,_)
-
-
-Encrypted B+-tree Table
-ID
-Enc_Node
-0
-1
-2
-3
-4
-5
-6
-
-/WKu5y8laqK82(
-AXYaqohgyVObU
-IUf7R.PK5h5fU
-uOtdm/HDXNSqU
-GLDWRnBGIvYBA
-a9yl36PA3LeLk
-H6GwdJpXiU8MY
+slide 28/268
 
 B+-tree example – 2
 Query on the plaintext relation
