@@ -6451,8 +6451,8 @@ The allowed operations for op include ${=, <, >, \leq, \geq}$.
 
 ----------------------
 
-### Mapping conditions Mapcond
-- $A_i = v$. The mapping is deﬁned as:
+### Mapping conditions $Map_{cond}$
+- $A_i = v$: the mapping is deﬁned as:
 
 $$Map_{cond} (A_i = v) \to I_i =Map_{A_i} (v)$$
 
@@ -6460,513 +6460,47 @@ Example:
 
 $$Map_{cond} (Balance = 100) \to I_{Balance} = Map_{Balance} (100) = \mu$$
 
-- Ai < v. The mapping depends on whether or not the mapping
-function MapAi is order-preserving or random
-◦ order-preserving: Mapcond (Ai < v) =⇒ Ii ≤MapAi (v)
-◦ random: check if attribute Ii lies in any of the partitions that may
-contain a value v′ where v′ < v: Mapcond (Ai < v) =⇒ Ii ∈Map<
-Ai (v)
+- $A_i < v$: the mapping depends on whether or not the mapping function $Map_{A_i} is order-preserving or random:
+	- **order-preserving**: $Map_{cond} (A_i < v) \to I_i \leq Map_{A_i} (v)$;
+	- **random**: check if attribute $I_i$ lies in any of the partitions that may contain a value $v'$ where $v' < v: Map_{cond} (A_i < v) \to I_i \in Map^{<}_{A_i} (v)$.
 
-Example
-Mapcond (Balance< 200) =⇒ IBalance ∈ {µ , κ }
-• Ai > v. Symmetric with respect to Ai < v
+Example:
 
-• Ai = Aj . The translation is performed by considering all possible
-pairs of partitions of Ai and Aj that overlap.
-Example
+$$Map_{cond} (Balance< 200) \to I_{Balance} \in \{\mu , \kappa\}$$
 
-Mapcond (Balance=Beneﬁt) =⇒
+- $A_i > v$: symmetric with respect to $A_i < v$;
+- $A_i = A_j$: the translation is performed by considering all possible pairs of partitions of $A_i$ and $A_j$ that overlap;
 
-(IBalance =µ ∧ IBenefit =γ )
-∨ (IBalance =κ ∧ IBenefit =γ )
-∨ (IBalance =η ∧ IBenefit =α )
-∨ (IBalance =θ ∧ IBenefit =α )
+Example:
 
-• Ai < Aj . The mapping depends on whether or not the mapping
-functions MapAi and MapAj are order-preserving or random
+slide 21/268
 
-Query execution
-• Each query Q on the plaintext DB is translated into:
-◦ a query Qs to be executed at the server
-◦ a query Qc to be executed at client on the result
+$$ Map_{cond} (Balance=Benefit) \to (I_{Balance} = \mu \wedge I_{Benefit} = \gamma)
+\vee (IBalance = \kappa \wedge IBenefit =gamma )
+∨ (IBalance =\eta \wedge IBenefit = \alpha )
+∨ (IBalance = \theta \wedge IBenefit =\alpha )$$
 
-• Query Qs is deﬁned by exploiting the deﬁnition of Mapcond (C)
-• Query Qc is executed on the decrypted result of Qs to ﬁlter out
-spurious tuples
-• The translation should be performed in such a way that the server
-is responsible for the majority of the work
+- $A_i < A_j$: the mapping depends on whether or not the mapping functions $Map_{A_i}$ and $Map_{A_j}$ are order-preserving or random.
 
+----------------------------------------------------------------
 
-Query execution – Simple example
+#### Query execution
+Each query $Q$ on the plaintext $DB$ is translated into:
+- a query $Q_s$ to be executed at the server;
+- a query $Q_c$ to be executed at client on the result.
 
-Account
+Query $Q_s$ is deﬁned by exploiting the deﬁnition of $Map_{cond}(C)$.<br />
+Query $Q_c$ is executed on the decrypted result of $Q_s$ to ﬁlter out spurious tuples.<br />
+The translation should be performed in such a way that the server is responsible for the majority of the work.
 
-Accounts
-Customer
+An example of a query execution.
 
-Balance
+slide 23/268 multiple
 
-Counter
+----------------------------------------------------------------
 
-Acc1
-Acc2
-Acc3
-Acc4
-Acc5
-Acc6
-
-Alice
-Alice
-Bob
-Chris
-Donna
-Elvis
-
-100
-200
-300
-200
-400
-200
-
-1
-2
-3
-4
-5
-6
-
-Accountsk2
-Etuple
-x4Z3tfX2ShOSM
-mNHg1oC010p8w
-WsIaCvfyF1Dxw
-JpO8eLTVgwV1E
-qctG6XnFNDTQc
-4QbqC3hxZHklU
-
-IA
-
-IC
-
-IB
-
-π
-ϖ
-ξ
-ρ
-ς
-ι
-
-α
-α
-δ
-α
-β
-β
-
-µ
-κ
-θ
-κ
-κ
-κ
-
-Original query on Accounts Translation over Accountsk2
-Q :=
-
-SELECT
-FROM
-WHERE
-
-*
-Accounts
-Balance=200
-
-Qs := SELECT Etuple
-FROM Accountsk2
-WHERE IB =κ
-Qc := SELECT *
-FROM Decrypt(Qs , Key)
-WHERE Balance=200
-
-Query execution – Simple example
-
-Account
-
-Accounts
-Customer
-
-Balance
-
-Counter
-
-Acc1
-Acc2
-Acc3
-Acc4
-Acc5
-Acc6
-
-Alice
-Alice
-Bob
-Chris
-Donna
-Elvis
-
-100
-200
-300
-200
-400
-200
-
-1
-2
-3
-4
-5
-6
-
-Accountsk2
-Etuple
-x4Z3tfX2ShOSM
-mNHg1oC010p8w
-WsIaCvfyF1Dxw
-JpO8eLTVgwV1E
-qctG6XnFNDTQc
-4QbqC3hxZHklU
-
-IA
-
-IC
-
-IB
-
-π
-ϖ
-ξ
-ρ
-ς
-ι
-
-α
-α
-δ
-α
-β
-β
-
-µ
-κ
-θ
-κ
-κ
-κ
-
-Original query on Accounts Translation over Accountsk2
-Q :=
-
-SELECT
-FROM
-WHERE
-
-*
-Accounts
-Balance=200
-
-Qs := SELECT Etuple
-FROM Accountsk2
-WHERE IB =κ
-Qc := SELECT *
-FROM Decrypt(Qs , Key)
-WHERE Balance=200
-
-Query execution – Simple example
-
-Account
-
-Accounts
-Customer
-
-Balance
-
-Counter
-
-Acc1
-Acc2
-Acc3
-Acc4
-Acc5
-Acc6
-
-Alice
-Alice
-Bob
-Chris
-Donna
-Elvis
-
-100
-200
-300
-200
-400
-200
-
-1
-2
-3
-4
-5
-6
-
-Accountsk2
-Etuple
-x4Z3tfX2ShOSM
-mNHg1oC010p8w
-WsIaCvfyF1Dxw
-JpO8eLTVgwV1E
-qctG6XnFNDTQc
-4QbqC3hxZHklU
-
-IA
-
-IC
-
-IB
-
-π
-ϖ
-ξ
-ρ
-ς
-ι
-
-α
-α
-δ
-α
-β
-β
-
-µ
-κ
-θ
-κ
-κ
-κ
-
-Original query on Accounts Translation over Accountsk2
-Q :=
-
-SELECT
-FROM
-WHERE
-
-*
-Accounts
-Balance=200
-
-Qs := SELECT Etuple
-FROM Accountsk2
-WHERE IB =κ
-Qc := SELECT *
-FROM Decrypt(Qs , Key)
-WHERE Balance=200
-
-Query execution – Simple example
-
-Account
-
-Accounts
-Customer
-
-Balance
-
-Counter
-
-Acc1
-Acc2
-Acc3
-Acc4
-Acc5
-Acc6
-
-Alice
-Alice
-Bob
-Chris
-Donna
-Elvis
-
-100
-200
-300
-200
-400
-200
-
-1
-2
-3
-4
-5
-6
-
-Accountsk2
-Etuple
-x4Z3tfX2ShOSM
-mNHg1oC010p8w
-WsIaCvfyF1Dxw
-JpO8eLTVgwV1E
-qctG6XnFNDTQc
-4QbqC3hxZHklU
-
-IA
-
-IC
-
-IB
-
-π
-ϖ
-ξ
-ρ
-ς
-ι
-
-α
-α
-δ
-α
-β
-β
-
-µ
-κ
-θ
-κ
-κ
-κ
-
-Original query on Accounts Translation over Accountsk2
-Q :=
-
-SELECT
-FROM
-WHERE
-
-*
-Accounts
-Balance=200
-
-Qs := SELECT Etuple
-FROM Accountsk2
-WHERE IB =κ
-Qc := SELECT *
-FROM Decrypt(Qs , Key)
-WHERE Balance=200
-
-Query execution – Simple example
-
-Account
-
-Accounts
-Customer
-
-Balance
-
-Counter
-
-Acc1
-Acc2
-Acc3
-Acc4
-Acc5
-Acc6
-
-Alice
-Alice
-Bob
-Chris
-Donna
-Elvis
-
-100
-200
-300
-200
-400
-200
-
-1
-2
-3
-4
-5
-6
-
-Accountsk2
-Etuple
-x4Z3tfX2ShOSM
-mNHg1oC010p8w
-WsIaCvfyF1Dxw
-JpO8eLTVgwV1E
-qctG6XnFNDTQc
-4QbqC3hxZHklU
-
-IA
-
-IC
-
-IB
-
-π
-ϖ
-ξ
-ρ
-ς
-ι
-
-α
-α
-δ
-α
-β
-β
-
-µ
-κ
-θ
-κ
-κ
-κ
-
-Original query on Accounts Translation over Accountsk2
-Q :=
-
-SELECT
-FROM
-WHERE
-
-*
-Accounts
-Balance=200
-
-Qs := SELECT Etuple
-FROM Accountsk2
-WHERE IB =κ
-Qc := SELECT *
-FROM Decrypt(Qs , Key)
-WHERE Balance=200
-
-Hash-based index [CDDJPS-05]
-• Based on the concept of one-way hash function
-• For each attribute Ai in R with domain Di , a secure one-way hash
-function h : Di → Bi is deﬁned, where Bi is the domain of index Ii
-associated with Ai
+### Hash-based index
+Based on the concept of one-way hash function. For each attribute Ai in R with domain Di , a secure one-way hash function h : Di → Bi is deﬁned, where Bi is the domain of index Ii associated with Ai
 • Given a plaintext tuple t in r, the index value corresponding to t[Ai ]
 is h(t[Ai ])
 • Important properties of any secure hash function h are:
