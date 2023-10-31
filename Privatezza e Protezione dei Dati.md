@@ -6413,9 +6413,9 @@ slide 14/268
 
 #### Indexes for queries: Bucket (n:1)
 Partition-based or hash-based:
-- supports for equality queries;
+- supports for equality queries; 
 - collisions remove plaintext distinguishability;
-- result may contain spurious tuples (postprocessing query);
+- result may contain spurious tuples (postprocessing query); (cosa intende per spurie?)
 - still vulnerable to inference attacks.
 
 slide 15/268
@@ -6539,51 +6539,40 @@ Query translation works like in the partition-based method.
 ----------------------------------------------------------------
 
 #### Interval-based queries
-Order-preserving indexing techniques (e.g., [AKSX-04]): support
-interval-based queries but expose to inference
-◦ comparing the ordered sequences of plaintext and indexes would
-lead to reconstruct the correspondence
+**Order-preserving indexing techniques**: support interval-based queries but expose to inference. Comparing the ordered sequences of plaintext and indexes would lead to reconstruct the correspondence;
 
-• Non order-preserving techniques: data are not exposed to
-inference but interval-based queries are not supported
-• DBMSs support interval-based queries using B+-trees, but the
-B+-tree deﬁned by the server on indexes is of no use
-Possible solution:
-◦ Calculate the nodes in the B+-tree at the client and encrypt each
-node as a whole at the server
-◦ B+-tree traversal must be performed at the trusted front-end
+**Non order-preserving techniques**: data are not exposed to inference but interval-based queries are not supported;
+
+**DBMSs support interval-based queries using B+-trees**, but the $B+$-tree deﬁned by the server on indexes is of no use. Possible solution:
+- calculate the nodes in the $B+$-tree at the client and encrypt each node as a whole at the server;
+- $B+$-tree traversal must be performed at the trusted front-end.
 
 ----------------------------------------------------------------
 
-#### B+-tree example – 1
+#### $B+$-tree example 
 
 slide 28/268
 
-B+-tree example – 2
 Query on the plaintext relation
-SELECT
 
-*
-
-FROM
-
-Accounts WHERE Customer = ‘Bob’
+```SQL
+SELECT * FROM Accounts WHERE Customer = 'Bob'
+```
 
 Interaction for query evaluation
 
+slide 29/268
 
-Searchable encryption
+----------------------------------------------------------------
 
-Order preserving encryption
-• Order Preserving Encryption Schema (OPES) takes as input a
-target distribution of index values and applies an order preserving
-transformation [AKS-04] so that the resulting index values follow the
-target distribution
-+ comparison can be directly applied on the encrypted data
-+ query evaluation does not produce spurious tuples
-− vulnerable with respect to inference attacks
+## Searchable encryption
+### Order preserving encryption
+**Order Preserving Encryption Schema** (**OPES**) takes as input a target distribution of index values and applies an order preserving transformation so that the resulting index values follow the target distribution:
+- comparison can be directly applied on the encrypted data;
+- query evaluation does not produce spurious tuples;
+- vulnerable with respect to inference attacks.
 
-• Order Preserving Encryption with Splitting and Scaling (OPESS)
+**Order Preserving Encryption with Splitting and Scaling** (**OPESS**)
 schema creates index values so that their frequency distribution is
 ﬂat [WL-06]
 
