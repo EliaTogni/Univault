@@ -229,8 +229,8 @@ Now, it will be provided the definition of **Distance vector**. Let $T_i (A_1 , 
 
 ![[DistanceVector.png]]
 
-Let $T_i$ and $T_j$ be two tables such that $T_i \preceq T_j$ , and let $MaxSup$ be the specified threshold of acceptable suppression. $T_j$ is said to be a **$k$-minimal generalization** of table $T_i$ iff:
-1) $T_j$ satisfies $k$-anonymity enforcing minimal required suppression, that is, $T_j$ satisfies $k$-anonymity and $\forall T_z : T_i \preceq T_z, DV_{i,z} = DV_{i,j}$, $T_z$ satisfies $k$-anonymity $\to \vert T_j \vert \geq \vert T_z \vert$;
+Let $T_i$ and $T_j$ be two tables such that $T_i \preceq T_j$ , and let $MaxSup$ be the specified **threshold of acceptable suppression**. $T_j$ is said to be a **$k$-minimal generalization** of table $T_i$ iff:
+1) $T_j$ satisfies $k$-anonymity enforcing minimal required suppression, that is, $T_j$ satisfies $k$-anonymity and $\forall T_z : T_i \preceq T_z, DV_{i,z} = DV_{i,j}$, $T_z$ satisfies $k$-anonymity $\to \vert T_j \vert \geq \vert T_z \vert$. This means that for each table $T_z$, which is a generalization of $T_i$, and with the same $DV$, $T_j$ has more tuples so it does perform less suppression; 
 2) $\vert T_i \vert − \vert T_j \vert \leq MaxSup$;
 3) $\forall T_z : T_i \preceq T_z$ and $T_z$ satisfies conditions $1$ and $2$ $\to \neg (DV_{i,z} < DV_{i,j})$
 
@@ -242,25 +242,30 @@ An example of $2$-minimal generalizations with $MaxSup = 2$.
 
 ### Computing a preferred generalization
 Different preference criteria can be applied in choosing a preferred minimal generalization, among which:
-- **minimum absolute distance** prefers the generalization(s) with the smallest absolute distance, that is, with the smallest total number of generalization steps (regardless of the hierarchies on which they have been taken);
-- **minimum relative distance** prefers the generalization(s) with the smallest relative distance, that is, that minimizes the total number of relative steps (a step is made relative by dividing it over the height of the domain hierarchy to which it refers):
+- **minimum absolute distance** prefers the generalization(s) with the smallest absolute distance, that is, with the smallest total number of generalization steps (regardless of the hierarchies on which they have been taken). It is computed as $\sum_{i = 1}^{N}d_i$;
+- **minimum relative distance** prefers the generalization(s) with the smallest relative distance, that is, that minimizes the total number of relative steps (a step is made relative by dividing it over the height of the domain hierarchy to which it refers). It is computed as $\sum_{i = 1}^{N} \frac{d_i}{n_i}$;
 - **maximum distribution** prefers the generalization(s) with the greatest number of distinct tuples;
 - **minimum suppression** prefers the generalization(s) that suppresses less tuples, that is, the one with the greatest cardinality.
 
 ----------------------------------------------------------------
 
 ### Classification of k-anonymity techniques
-Generalization and suppression can be applied at different levels of granularity. Generalization can be applied at the level of single column (i.e., a generalization step generalizes all the values in the column) or single cell (i.e., for a specific column, the table may contain values at different generalization levels).<br />
+Generalization and suppression can be applied at different levels of granularity. Generalization can be applied at the level of **single column** (i.e., a generalization step generalizes all the values in the column) or single cell (i.e., for a specific column, the table may contain values at different generalization levels).<br />
 Suppression can be applied at the level of row (i.e., a suppression operation removes a whole tuple), column (i.e., a suppression operation obscures all the values of a column), or single cells (i.e., a $k$-anonymized table may wipe out only certain cells of a given tuple/attribute).
 
 ![[ClassificationKAnonymity.png]]
 
+The notation _not applicable_ refers to the fact that we are able to generalize to a finer level than the level at which we are able to suppress.
+
+The notation $\equiv$ referst to the fact that the ability to generalize and suppress at the same levels is equal to generalize at the highest level of the hierarchy. Therefore, the suppression is redundant.
 
 An example of $2$-anonymized tables with regard to different models.
 
 ![[2Anonymized1.png]]
 
 ![[2Anonymized2.png]]
+
+In the last example, each tuple has a different $DV$. This type of dataset is better in terms of utility but it worsen the performance.
 
 ![[2Anonymized3.png]]
 
