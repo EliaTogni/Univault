@@ -27,24 +27,25 @@ Need to ensure data privacy and integrity are properly protected.
 ### Statistical DBMS vs statistical data
 Release of data to the public for statistical purpose:
 - **statistical DBMS**:
-	- the DBMS responds only to statistical queries (the aggregate ones);
-	- need run time checking to control information (indirectly) released. A first example is described by a dataset composed by $1000$ respondents, $999$ males and $1$ female. If the user makes a query which returns a value aggregated from all the **respondents** (the people replying with answers to a survey, the ones the data refers to) and, then, a query which returns a value aggregated from all the males, the DBMS must block the second query because it will expose the female respondent. A second example is described by the same dataset and two different and colluded users. The first one will be able to make the first query and the second one will be able to make the second one. Therefore, togheter they are able to expose the female respondent (**collusion**).
+	- the DBMS responds only to **statistical queries** (the aggregate ones);
+	- need **run time checking** to control information (indirectly) released. Consider a dataset composed by $1000$ respondents, $999$ males and $1$ female, as an example. If the user makes a query which returns a value aggregated from all the **respondents** (the people replying with answers to a survey, the ones the data refers to) and, then, a query which returns a value aggregated from all the males, the DBMS must block the second query because it will expose the female respondent.<br />
+	  Consider the same dataset and two different and colluded users as an example. The first one will be able to make the first query and the second one will be able to make the second one. Therefore, togheter they are able to expose the female respondent (**collusion**).
 - **statistical data**:
 	- publish statistics generated a priori and the user can only access these statistics;
 	- control on indirect release performed before publication.
 
 ![[StatisticalDBMS.png]]
 
-In the statistical DBMS case, the transboundary stands between the user and the DBMS.
+In the statistical DBMS case, the **transboundary** stands between the user and the DBMS.
 
 ![[StatisticalData.png]]
 
-In the statistical data case, the transboundary stands between the statistical data released to the public and the initial data. 
+In the statistical data case, the transboundary stands between the statistical data released to the public and the initial data.
 
 ----------------------------------------------------------------
 
 ### Macrodata vs microdata
-In the past data were mainly released in tabular form (**macrodata**) and through statistical databases. Today many situations require that the specific stored data themselves, called **microdata**, be released, increasing flexibility and availability of information for the users. Microdata are subject to a greater risk of privacy breaches (**linking attacks**).
+In the past data, were mainly released in tabular form (**macrodata**) and through statistical databases. Today many situations require that the specific stored data themselves, called **microdata**, be released, increasing flexibility and availability of information for the users. Microdata are subject to a greater risk of privacy breaches (**linking attacks**).
 
 #### Macrodata
 Macrodata tables can be classified into the following two groups (types of tables):

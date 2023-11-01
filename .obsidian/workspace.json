@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "1d9a8ebcd32e5ef6",
+        "id": "09e77d5b411fa037",
         "type": "tabs",
         "children": [
           {
-            "id": "4b2410dd3dec1ef2",
+            "id": "96ef9f8b3e45f972",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -114,8 +114,14 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "4b2410dd3dec1ef2",
+  "active": "96ef9f8b3e45f972",
   "lastOpenFiles": [
+    "Teorema di Wyllie.md",
+    "The Age of the Essay.md",
+    "Tecnica del Ciclo Euleriano.md",
+    "Privatezza e Protezione dei Dati.md",
+    "Bioinformatica.md",
+    "Informatica Teorica.md",
     "Images/ConfidentialityEditExample2.png",
     "Images/ConfidentialityEditExample3.png",
     "Images/ConfidentialityEditExample4.png",
@@ -126,20 +132,14 @@
     "Images/MicroAggregationBlurringExample1.png",
     "Images/MicroAggregationBlurringExample2.png",
     "Images/MicroAggregationBlurringExample3.png",
-    "Images/MaskingTechniquesClassification.png",
     "Reticolo.md",
-    "Privatezza e Protezione dei Dati.md",
     "Albero.md",
     "Cittadinanza Digitale e Tecnocivismo.md",
     "Quiz Statistical Methods for Machine Learning.md",
     "Intelligenza Artificiale.md",
-    "Bioinformatica.md",
     "Vettore.md",
     "The Game of Life.md",
     "Version Control System.md",
-    "The Age of the Essay.md",
-    "Teorema di Wyllie.md",
-    "Tecnica del Ciclo Euleriano.md",
     "System Dynamics Simulation.md",
     "Struttura Dati.md",
     "Statistical Methods for Machine Learning.md",
