@@ -191,7 +191,7 @@ With **suppression**, it is possible to protect sensitive information by removin
 
 ### Domain generalization hierarchy
 A **generalization relationship** $\leq_{D}$ defines a mapping between domain $D$ and its generalizations. Given two domains $D_i, D_j \in Dom$, $D_i \leq_{D} D_j$ states that the values in domain $D_j$ are generalizations of values in $D_i$. $\leq_{D}$ implies the existence, for each domain $D$, of a **domain generalization hierarchy** $DGH_D = (Dom, \leq_D )$:
-- $\forall D_i, D_j, D_z \in Dom: D_i \leq_D D_j, D_i \leq_D D_z \to D_j \leq_D D_z \vee D_z \leq_D D_j$. This property shows that the generalization hiearchy is a chain, that is, there is a total order  between the elements of the hierarchy;
+- $\forall D_i, D_j, D_z \in Dom: D_i \leq_D D_j, D_i \leq_D D_z \to D_j \leq_D D_z \vee D_z \leq_D D_j$. This property shows that the generalization hiearchy is a chain, that is, there is a **total order** between the elements of the hierarchy;
 - all maximal elements of $Dom$ are singleton. As an example, observe the $DGH_{Z_0}$ in the image below.
 
 Given a domain tuple $D_T = \langle D_1, . . . , D_n \rangle$ such that $D_i \in Dom, i = 1, . . . , n$, the domain generalization hierarchy of $D_T$ is $DGH_{DT} = DGH_{D1} \times . . . \times DGH_{Dn}$. The domain generalization hiearchy of $D_T$ defines a [[Reticolo|lattice]].
@@ -203,10 +203,10 @@ Given a domain tuple $D_T = \langle D_1, . . . , D_n \rangle$ such that $D_i \in
 ----------------------------------------------------------------
 
 ### Value generalization hierarchy
-A **value generalization relationship** $\leq_V$ associates with each value in domain $D_i$ a unique value in domain $D_j$, direct generalization of $D_i$. $\leq_V$ implies the existence, for each domain $D$, of a value generalization hierarchy $VGH_D$.<br />
+A **value generalization relationship** $\leq_V$ associates with each value in domain $D_i$ a unique value in domain $D_j$, direct generalization of $D_i$. $\leq_V$ implies the existence, for each domain $D$, of a **value generalization hierarchy** $VGH_D$.<br />
 $VGH_D$ is a [[Albero|tree]] where the leaves are the values in $D$ and the root (i.e., the most general value) is the value in the maximum element in $DGH_D$.
 
-An example of value generalization hierarchy.
+An example of value generalization hierarchy.
 
 
 ![[ValueGeneralizationHierarchy.png]]
@@ -214,10 +214,10 @@ $VGH_D$ is a [[Albero|tree]] where the leaves are the values in $D$ and the root
 ----------------------------------------------------------------
 
 ### Generalized table with suppression
-Let $T_i$ and $T_j$ be two tables defined on the same set of attributes. Table $T_j$ is said to be a generalization (with tuple suppression) of table $T_i$, denoted $T_i \preceq T_j$ , if:
+Let $T_i$ and $T_j$ be two tables defined on the same set of attributes. Table $T_j$ is said to be a **generalization with tuple suppression** of table $T_i$, denoted $T_i \preceq T_j$ , if:
 1) $\vert T_j \vert \leq \vert T_i \vert$;
 2) the domain $dom(A, T_j)$ of each attribute $A$ in $T_j$ is equal to, or a generalization of, the domain $dom(A, T_i)$ of attribute $A$ in $T_i$;
-3) it is possible to define an injective function associating each tuple $t_j$ in $T_j$ with a tuple $t_i$ in $T_i$ , such that the value of each attribute in $t_j$ is equal to, or a generalization of, the value of the corresponding attribute in $t_i$.
+3) it is possible to define an **injective function** associating each tuple $t_j$ in $T_j$ with a tuple $t_i$ in $T_i$ , such that the value of each attribute in $t_j$ is equal to, or a generalization of, the value of the corresponding attribute in $t_i$.
 
 An example of a generalized table with suppression.
 
@@ -226,11 +226,11 @@ An example of a generalized table with suppression.
 ----------------------------------------------------------------
 
 ### $k$-minimal generalization with suppression
-Now, it will be provided the definition of **Distance vector**. Let $T_i (A_1 , . . . , A_n)$ and $T_j (A_1 , . . . , A_n)$ be two tables such that $T_i \preceq T_j$. The distance vector of $T_j$ from $T_i$ is the vector $DV_{i,j} = [d_1 , . . . , d_n]$, where each $d_z, z = 1, . . . , n$, is the length of the unique path between $dom(A_z , T_i)$ and $dom(A_z, T_j)$ in the domain generalization hierarchy $DGH_{D_z}$.
+Now, it will be provided the definition of **Distance Vector**. Let $T_i (A_1 , . . . , A_n)$ and $T_j (A_1 , . . . , A_n)$ be two tables such that $T_i \preceq T_j$. The distance vector of $T_j$ from $T_i$ is the vector $DV_{i,j} = [d_1 , . . . , d_n]$, where each $d_z, z = 1, . . . , n$, is the length of the unique path between $dom(A_z , T_i)$ and $dom(A_z, T_j)$ in the domain generalization hierarchy $DGH_{D_z}$.
 
 ![[DistanceVector.png]]
 
-Let $T_i$ and $T_j$ be two tables such that $T_i \preceq T_j$ , and let $MaxSup$ be the specified **threshold of acceptable suppression**. $T_j$ is said to be a **$k$-minimal generalization** of table $T_i$ iff:
+Let $T_i$ and $T_j$ be two tables such that $T_i \preceq T_j$, and let $MaxSup$ be the specified **threshold of acceptable suppression**. $T_j$ is said to be a **$k$-minimal generalization** of table $T_i$ iff:
 1) $T_j$ satisfies $k$-anonymity enforcing minimal required suppression, that is, $T_j$ satisfies $k$-anonymity and $\forall T_z : T_i \preceq T_z, DV_{i,z} = DV_{i,j}$, $T_z$ satisfies $k$-anonymity $\to \vert T_j \vert \geq \vert T_z \vert$. This means that for each table $T_z$, which is a generalization of $T_i$, and with the same $DV$, $T_j$ has more tuples so it does perform less suppression; 
 2) $\vert T_i \vert − \vert T_j \vert \leq MaxSup$;
 3) $\forall T_z : T_i \preceq T_z$ and $T_z$ satisfies conditions $1$ and $2$ $\to \neg (DV_{i,z} < DV_{i,j})$
