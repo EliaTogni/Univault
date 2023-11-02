@@ -258,24 +258,22 @@ Suppression can be applied at the level of row (i.e., a suppression operation re
 
 The notation _not applicable_ refers to the fact that we are able to generalize to a finer level than the level at which we are able to suppress.
 
-The notation $\equiv$ referst to the fact that the ability to generalize and suppress at the same levels is equal to generalize at the highest level of the hierarchy. Therefore, the suppression is redundant.
+The notation $\equiv$ referst to the fact that the ability to generalize and suppress at the same level is equal to generalize the column or the cell at the highest level of the hierarchy. Therefore, the suppression is redundant.
 
 An example of $2$-anonymized tables with regard to different models.
 
 ![[2Anonymized1.png]]
-
 ![[2Anonymized2.png]]
-
-In the last example, each tuple has a different $DV$. This type of dataset is better in terms of utility but it worsen the performance.
-
 ![[2Anonymized3.png]]
+
+In the last example (_CG_CS_), each tuple has a different $DV$. This type of dataset is better in terms of utility but it worsen the performance.
 
 ![[2Anonymized4.png]]
 
 ----------------------------------------------------------------
 
 ### Algorithms for computing a $k$-anonymous table
-The problem of finding minimal $k$-anonymous tables, with attribute generalization and tuple suppression, is computationally hard. The majority of the exact algorithms proposed in literature have computational time exponential in the number of the attributes composing the quasi-identifier. When the number $\vert QI \vert$ of attributes in the quasi-identifier is small compared with the number $n$ of tuples in the private table $PT$, these exact algorithms with attribute generalization and tuple suppression are practical.<br />
+The problem of finding minimal $k$-anonymous tables, with attribute generalization and tuple suppression, is **computationally hard**. The majority of the exact algorithms proposed in literature have computational time exponential in the number of the attributes composing the quasi-identifier. When the number $\vert QI \vert$ of attributes in the quasi-identifier is small compared with the number $n$ of tuples in the private table $PT$, these exact algorithms with attribute generalization and tuple suppression are practical.<br />
 Many exact algorithms for producing $k$-anonymous tables through attribute generalization and tuple suppression have been proposed.
 
 ----------------------------------------------------------------
@@ -286,7 +284,7 @@ Each path in $DGH_{DT}$ represents a generalization strategy for $PT$. We call *
 1) each $k$-minimal generalization is locally minimal with respect to a path (but the converse is not true);
 2) going up in the hierarchy the number of tuples that must be removed to guarantee $k$-anonymity decreases.
 
-If there is no solution that guarantees $k$-anonymity suppressing less than $MaxSup$ tuples at height $h$, there cannot exist a solution, with height lower than h that guarantees it.<br />
+If there is no solution that guarantees $k$-anonymity suppressing less than $MaxSup$ tuples at height $h$, there cannot exist a solution, with height lower than $h$ that guarantees it.<br />
 The algorithm adopts a binary search on the lattice of distance vectors:
 1) evaluate solutions at height $\lfloor h/2\rfloor$;
 2) if there exists at least a solution satisfying $k$-anonymity
@@ -300,7 +298,7 @@ An example for computing a $k$-minimal solution.
 
 ![[kMinimalSolution1.png]]
 
-Suppose $k = 2$ and $MaxSup = 2$.
+Suppose $k = 2$ and $MaxSup = 2$.<br />
 Compute first solutions at height $1$ : $GT_{[1,0]}$ and $GT_{[0,1]}$.
 
 ![[kMinimalSolution2.png]]
@@ -309,38 +307,38 @@ Satisfies $2$-anonymity (suppressing $t_1$ and $t_6$).
 
 ![[kMinimalSolution3.png]]
 
-Satisfies $2$-anonymity (suppressing $t_8$ and $t_9$)
+Satisfies $2$-anonymity (suppressing $t_8$ and $t_9$).
 
 ----------------------------------------------------------------
 
 ### $k$-Optimize algorithm
-Order attributes in $QI$ and the values in their domains. Associate an integer index value with each domain value, following the defined order.
+This algorithm orders the attributes in $QI$ and the values in their domains. It also associates an integer index value with each domain value, following the defined order.
 
 ![[kOptimizeAlgorithm1.png]]
 
-A generalization is the union of individual index values. The least value in an attribute domain is omitted. E.g., $\{6\}$ corresponds to:
+A generalization is the **union** of individual index values. The least value in an attribute domain is omitted. E.g., $\{6\}$ corresponds to:
 - Race: $\{1\}$, that is: $\langle [\text{asian or black or white}]\rangle$;
 - ZIP: $\{4, 6\}$, that is: $\langle[94138 \text{ or } 94139],[94141 \text{ or } 94142]\rangle$.
 
-Order of values within domains has impact on generalization. $k$-Optimize builds a set enumeration tree over the set $I$ of indexes:
+The order of values within domains has impact on generalization. $k$-Optimize builds a **set enumeration [[Albero|tree]]** over the set $I$ of indexes:
 
 ![[kOptimizeAlgorithm2.png]]
 
-The root node of the tree is the empty set. The children of $n$ are the sets obtained by appending a single element $i$ of $I$ to $n$, such that $\forall i' \in n, i > i'$. Each node has a cost that reflects the amount of generalization and suppression of the anonymization represented by the node. this implies that each tuple is associated with a cost that reflects the information loss associated with its generalization or suppression.<br />
-$k$-Optimize visits the tree (e.g., using a depth-first search) for searching the anonymization with lowest cost. Since the number of nodes in the tree is $2^{\vert I \vert}$, the visit of the tree is not practical. This implies that a **pruning** strategy is fundamental to reduce computational cost. The node $n$ is pruned iff none of its descendants could be optimal. This determination can be made by computing a lower bound on the cost of the nodes in the subtree rooted at $n$. if the lower bound is greater than the current best cost, node $n$ is pruned.
+The root node of the tree is the empty set. The children of $n$ are the sets obtained by appending a single element $i$ of $I$ to $n$, such that $\forall i' \in n, i > i'$. Each node has a cost that reflects the amount of generalization and suppression of the anonymization represented by the node. This implies that each tuple is associated with a cost that reflects the information loss associated with its generalization or suppression.<br />
+$k$-Optimize visits the tree (e.g., using a depth-first search) for searching the anonymization with lowest cost. Since the number of nodes in the tree is $2^{\vert I \vert}$, the visit of the tree is not practical. This implies that a **pruning** strategy is fundamental to reduce computational cost. The node $n$ is pruned iff none of its descendants could be optimal. This determination can be made by computing a lower bound on the cost of the nodes in the subtree rooted at $n$. If the lower bound is greater than the current best cost, node $n$ is pruned.
 
 ----------------------------------------------------------------
 
 ### Incognito algorithm
-$k$-anonymity with respect to a proper subset of $QI$ is a necessary (not sufficient) condition for $k$-anonymity with respect to $QI$.
+$k$-anonymity with respect to a proper subset of $QI$ is a necessary (not sufficient) condition for $k$-anonymity with respect to $QI$. The **Incognito algorithm** works in the following way:
 - iteration $1$: check $k$-anonymity for each attribute in $QI$, discarding generalizations that do not satisfy $k$-anonymity;
 - iteration $2$: combine the remaining generalizations in pairs and check $k$-anonymity for each couple obtained;
 - ...
-- iteration $i$: consider all the $i$-uples of attributes, obtained combining generalizations that satisfied $k$-anonymity at iteration $i − 1$. Discard non $k$ anonymous solutions;
+- iteration $i$: consider all the $i$-uples of attributes, obtained combining generalizations that satisfied $k$-anonymity at iteration $i − 1$. Discard non $k$-anonymous solutions;
 - ...
 - iteration $\vert QI \vert$ returns the final result.
 
-Incognito adopts a bottom-up approach for the visit of $DGH_s$.
+Incognito adopts a **[[Programmazione Dinamica|bottom-up]]** approach for the visit of $DGH_s$.
 
 An example of the Incognito algorithm.
 
@@ -353,18 +351,18 @@ An example of the Incognito algorithm.
 The exact algorithms have complexity exponential in the size of $QI$. Heuristic algorithms have been proposed:
 - \[I-02\]: based on genetic algorithms, it solves the $k$-anonymity problem using an incomplete stochastic search method;
 - \[MW-04\]: based on simulated annealing for finding locally minimal solutions, it requires high computational time and does not assure the quality of the solution;
-- \[FWY-05\]: top-down heuristic to make a table to be released
+- \[FWY-05\]: top-down heuristic to make a table to be released.
 
-$k$-anonymous; it starts from the most general solution, and iteratively specializes some values of the current solution until the k-anonymity requirement is violated
+$k$-anonymous; it starts from the most general solution, and iteratively specializes some values of the current solution until the $k$-anonymity requirement is violated.
 
-No bounds on efficiency and goodness of the solutions can be
-given. Experimental results can be used to assess the quality of the solution retrieved.
+No bounds on efficiency and goodness of the solutions can be given.<br />
+Experimental results can be used to assess the quality of the solution retrieved.
 
 ----------------------------------------------------------------
 
 ## Algorithms for _CS_ and _CG_
 ### Mondrian multidimensional algorithm
-Each attribute in $QI$ represents a dimension. Each tuple in $PT$ represents a point in the space defined by $QI$. Tuples with the same $QI$ value are represented by giving a multiplicity value to points. The multi-dimensional space is partitioned by splitting dimensions such that each area contains at least k occurrences of point values. All the points in a region are generalized to a unique value. The corresponding tuples are substituted by the computed generalization.<br />
+In the **Mondrian multidimensional algorithm**, each attribute in $QI$ represents a dimension. Each tuple in $PT$ represents a point in the space defined by $QI$. Tuples with the same $QI$ value are represented by giving a **multiplicity value** to points. The multi-dimensional space is partitioned by splitting dimensions such that each area contains at least $k$ occurrences of point values. All the points in a region are generalized to a unique value. The corresponding tuples are substituted by the computed generalization.<br />
 Mondrian algorithm is flexible and can operate:
 - on a different number of attributes:
 	- single-dimension;

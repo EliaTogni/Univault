@@ -1,4 +1,4 @@
-La **Programmazione Dinamica** è una tecnica di progettazione di un [[Algoritmo]] [[Bottom-Up]].<br />
+La **Programmazione Dinamica** è una tecnica di progettazione di un [[Algoritmo]] **bottom-up**.<br />
 Questa tecnica può essere descritta nel seguente modo:
 - Si identificano dei sottoproblemi del problema originario, e si utilizza una tabella per memorizzare i risultati intermedi dei sottoproblemi;
 - inizialmente si definiscono i valori iniziali di alcuni elementi della tabella, corrispondenti ai sottoproblemi più semplici;
