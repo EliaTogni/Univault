@@ -882,19 +882,9 @@ The disclosure risk from the released data should be very low.
 
 ----------------------------------------------------------------
 
-### Statistical DBMS vs statistical data
-Release of data for statistical purpose:
-- statistical DBMS:
-	- the DBMS responds only to statistical queries;
-	- need run time checking to control information (indirectly) released.
-- statistical data:
-	- publish statistics (macrodata release);
-	- control on indirect release performed before publication.
-
-----------------------------------------------------------------
-
 ## Statistical DBMS
-A statistical DBMS is a DBMS that provides access to statistics about groups of individuals. It should not reveal information about any particular individual. Confidential information about an individual can be deduced, combining the results of different statistics or combining the results of statistics with external knowledge (possibly about the database content).
+A **statistical DBMS** is a DBMS that provides access to statistics about groups of individuals. It should not reveal information about any particular individual.<br />
+Confidential information about an individual can be deduced, combining the results of different statistics or combining the results of statistics with external knowledge (possibly about the database content).
 
 An example of a statistical DBMS.
 
@@ -903,7 +893,7 @@ An example of a statistical DBMS.
 Query: sum of the incomes of females with major in EE.<br />
 Result: it reveals the income of Baker (only female with EE) $\to$ the query is sensitive so it is necessary to block statistics computed over a single (or few) individual.
 
-Another example of a Statistical DBMS.
+Another example of a Statistical DBMS.<br />
 Query $1$: sum of the incomes of individuals with major in EE.
 
 ![[StatisticalDBMSExample2-1.png]]
@@ -917,14 +907,6 @@ Result: it does not reveal the income of any individual ($190k$) $\to$ the query
 Query 3 = sum of the incomes of females with major in EE ($50k$) = income of Baker $\to$ the combination of queries is sensitive.
 
 ![[StatisticalDBMSExample2-3.png]]
-
-----------------------------------------------------------------
-
-## Macrodata protection
-### Macrodata
-Macrodata tables can be classified into the following two groups (types of tables):
-- **Count/Frequency**: Each cell contains the number (count) or the percentage (frequency) of respondents that have the same value over all attributes in the table;
-- **Magnitude data**: Each cell contains an aggregate value of  quantity of interest over all attributes in the table.
 
 ----------------------------------------------------------------
 
