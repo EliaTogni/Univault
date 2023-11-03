@@ -979,10 +979,10 @@ A cell with fewer than 5 respondents is defined as sensitive. Suppress one addit
 ----------------------------------------------------------------
 
 ### Table restructuring
-An example of Table restructuring.<br />
+An example of table restructuring.<br />
 Number of employees by department and annual income (in $K$ Euro).<br />
 Special rule: Income within a $5K$ Euro interval.<br />
-To protect confidentiality, the table can be restructured and rows or columns combined (“rolling-up categories”).
+To protect confidentiality, the table can be restructured and rows or columns combined (**rolling-up** categories).
 
 ![[TableRestructuringExample1.png]]
 ![[TableRestructuringExample2.png]]
