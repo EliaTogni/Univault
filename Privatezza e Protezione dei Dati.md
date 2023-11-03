@@ -615,7 +615,7 @@ Protect identity of people in locations by considering always locations that con
 ![[PrivacyLB1.png]]
 ![[PrivacyLB2.png]]
 
-- protect the location path of users (trajectory privacy) $\to$ block tracking by mixing trajectories.
+- protect the location path of users (**trajectory privacy**) $\to$ block tracking by mixing trajectories.
 
 ![[PrivacyLB3.png]]
 ![[PrivacyLB4.png]]
@@ -665,7 +665,7 @@ What about user $17556639$?
 • dead pictures;
 • car crashes3;
 • murder photo;
-• car crash photo;
+• car crash photo.
 
 ![[AOL5.png]]
 
@@ -702,13 +702,14 @@ An interactive map shows the whereabouts of people who use fitness devices such 
 
 ### Differential privacy
 **Differential privacy** aims at preventing adversaries from being capable to detect the presence or absence of a given individual in a dataset. E.g., the count of individuals with cancer from a medical database is produced with a release mechanism that when executed on datasets differing on one individual probably returns the same result.<br />
-Differential privacy defines a property on the data release mechanism.
+Differential privacy defines a property on the **data release mechanism**.
 
 Informally, differential privacy requires the probability distribution on the published results of an analysis to be “essentially the same” independent of whether an individual is represented or not in the dataset.<br />
-Formally, a randomized function $K$ gives $\varepsilon$-differential privacy if for all data sets $D$ and $D'$ differing on at most one row, and all $S \subseteq Range(K), Pr[K(D) \in S] \leq e^{\varepsilon} \times Pr[K(D' ) \in S]$.
+Formally, a randomized function $K$ gives **$\varepsilon$-differential privacy** if for all data sets $D$ and $D'$ differing on at most one row, and all
+$S \subseteq Range(K)$, $Pr[K(D) \in S] \leq e^{\varepsilon} \times Pr[K(D' ) \in S]$.
 
 Differential privacy is applicable to two scenarios:
-- **interactive scenario**: run-time evaluation of queries:
+- **interactive scenario**: run-time evaluation of queries;
 - **non-interactive scenario**: release of pre-computed macrodata tables.
 
 Furthermore, it is typically enforced by adding random noise. This implies that data truthfulness is not preserved. $\varepsilon$-differentially private mechanisms compose automatically.
@@ -843,10 +844,10 @@ Data from $87$ million Facebook users retrieved by the app:
 #### User profiling - Facebook/Cambridge Analytica
 **OCEAN model**:
 - **Openness**: do you enjoy new experiences?
-- **Conscientiousness**: do you prefer plans and order
+- **Conscientiousness**: do you prefer plans and order?
 - **Extraversion**: how social you are?
-- **Agreeableness**: do you value others’ needs and society
-- **Neuroticism** how much do you tend to worry
+- **Agreeableness**: do you value others’ needs and society?
+- **Neuroticism** how much do you tend to worry?
 
 ----------------------------------------------------------------
 
