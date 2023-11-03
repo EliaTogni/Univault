@@ -555,12 +555,12 @@ When we have fine-grained privacy preferences, we can apply:
 
 ### $k$-anonymity in various applications
 In addition to classical microdata release problem, the concept of $k$-anonymity and its extensions can be applied in different scenarios, e.g.:
-- social networks;
-- data mining;
-- location data.
+- **social networks**;
+- **data mining**;
+- **location data**.
 
 #### k-anonymity in social networks
-**Neighborhood attack** $\to$ given a de-identified graph $G'$ of a social network graph $G$, exploit knowledge about the neighbors of user $u$ to re-identify the vertex representing $u$.
+**Neighborhood attack** $\to$ given a de-identified [[Grafo|graph]] $G'$ of a social network graph $G$, exploit knowledge about the neighbors of user $u$ to re-identify the vertex representing $u$.
 
 ![[kAnonymitySocialNetworks.png]]
 
@@ -593,7 +593,7 @@ If $QI$ includes _Marital_status_ and _Sex_, then $\{$divorced$\} \to \{$M$\}$:
 
 Path $\langle F,35 \rangle$ implies the existence of $2$ females working $35$ hours.<br />
 paths $\langle F \rangle$ $(\#11)$ and $\langle F,50 \rangle$ $(\#9)$ imply the existence of $2$ females who do not work $50$ hours per week.<br />
-If $QI$ includes _Sex_ and _Hours_ $\to$ $k$-anonym. is violated for any $k > 2$. (????)
+If $QI$ includes _Sex_ and _Hours_ $\to$ $k$-anonymity is violated for any $k > 2$.
 
 ----------------------------------------------------------------
 
