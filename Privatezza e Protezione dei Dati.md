@@ -384,7 +384,7 @@ We wished $k=3$.
 ----------------------------------------------------------------
 
 ### Approximation algorithms
-Approximation algorithms for general and specific values of $k$ (e.g., $1.5$-approximation for $2$-anonymity, and $2$-approximation for $3$-anonymity).<br />
+There exist some **approximation algorithms** for general and specific values of $k$ (e.g., $1.5$-approximation for $2$-anonymity, and $2$-approximation for $3$-anonymity).<br />
 Approximation algorithm for _CS_:
 - \[MW-04\]: $\mathcal{O}(k \log{k})$-approximation;
 - \[AFKMPTZ-05a\]: with unbounded value of $k$, $\mathcal{O}(k)$-approximation solution.
@@ -395,8 +395,8 @@ Approximation algorithm for _CG_:
 ----------------------------------------------------------------
 
 ### k-anonymity revisited
-$k$-anonymity requirement: each release of data must be such that every combination of values of quasi-identifiers can be indistinctly matched to at least $k$ respondents.<br />
-When generalization is performed at attribute level (_AG_) this is equivalent to require each quasi-identifier $n$-uple to have at least $k$ occurrences.<br />
+$k$-anonymity requires that each release of data must be such that every combination of values of quasi-identifiers can be indistinctly matched to at least $k$ respondents.<br />
+When generalization is performed at attribute level (_AG_), this is equivalent to require each quasi-identifier $n$-uple to have at least $k$ occurrences.<br />
 When generalization is performed at cell level (_CG_) the existence of at least $k$ occurrences is a sufficient but not necessary condition; a less stricter requirement would suffice:
 1) for each sequence of values $pt$ in $PT[QI]$ there are at least $k$ tuples in $GT[QI]$ that contain a sequence of values generalizing $pt$;
 2) for each sequence of values $t$ in $GT[QI]$ there are at least $k$ tuples in $PT[QI]$ that contain a sequence of values for which $t$ is a generalization.
@@ -428,7 +428,7 @@ All tuples with a quasi-identifier value in a $k$-anonymous table may have the s
 Based on prior knowledge of some additional external information:
 - an adversary knows that Hellen is a white female and she is in the microdata table;
 - the adversary can infer that the disease of Hellen is either chest pain or short breath;
-- the adversary knows that Hellen runs $2$ hours a day and therefore that Hellen cannot suffer from short breath;
+- the adversary knows that Hellen runs $2$ hours a day and therefore infers that Hellen cannot suffer from short breath;
 
 Therefore, the adversary is able to infer that Hellen’s disease is chest pain.
 
@@ -437,15 +437,13 @@ Therefore, the adversary is able to infer that Hellen’s disease is chest pain.
 ----------------------------------------------------------------
 
 ### $\ell$-diversity
-A $q$-block (i.e., set of tuples with the same value for $QI$) is $\ell$-diverse if it contains at least $\ell$ different “well-represented” values for the sensitive attribute. "Well-represented" has different definitions based on entropy or recursion (e.g., a q-block is $\ell$-diverse if removing a sensitive value it remains $(\ell-1)$-diverse).<br />
+A $q$-block (i.e., set of tuples with the same value for $QI$) is **$\ell$-diverse** if it contains at least $\ell$ different “well-represented” values for the sensitive attribute. "Well-represented" has different definitions based on entropy or recursion (e.g., a $q$-block is $\ell$-diverse if removing a sensitive value it remains $(\ell-1)$-diverse).<br />
 $\ell$-diversity means that an adversary needs to eliminate at least $\ell-1$ possible values to infer that a respondent has a given value.<br />
 A table is $\ell$-diverse if all its $q$-blocks are $\ell$-diverse. This implies that the homogeneity attack is not possible anymore and, therefore, that the background knowledge attack becomes more difficult.<br />
-$\ell$-diversity is monotonic with respect to the generalization hierarchies considered for $k$-anonymity purposes.<br />
-Any algorithm for $k$-anonymity can be extended to enforce the $\ell$-diverse property BUT $\ell$-diversity leaves space to attacks based on the distribution of values inside $q$-blocks (**skewness and similarity attacks**):
+$\ell$-diversity is **monotonic** with respect to the generalization hierarchies considered for $k$-anonymity purposes.<br />
+Any algorithm for $k$-anonymity can be extended to enforce the $\ell$-diverse property but $\ell$-diversity leaves space to attacks based on the distribution of values inside $q$-blocks (**skewness** and **similarity attacks**).
 
-----------------------------------------------------------------
-
-### Skewness attack
+#### Skewness attack
 **Skewness attack** occurs when the distribution in a $q$-block is different than the distribution in the original population.
 
 An example of the skewness attack.<br />
@@ -455,14 +453,14 @@ $20\%$ of the population suffers from diabetes and $75\%$ of tuples in a $q$-blo
 
 ----------------------------------------------------------------
 
-### Similarity attack
-Similarity attack happens when a $q$-block has different but semantically similar values for the sensitive attribute.
+#### Similarity attack
+**Similarity attack** happens when a $q$-block has different but semantically similar values for the sensitive attribute.
 
 ![[SimilarityAttackExample.png]]
 
 ----------------------------------------------------------------
 
-### Group closeness
+#### Group closeness
 A $q$-block respects **$t$-closeness** if the distance between the distribution of the values of the sensitive attribute in the $q$-block and in the considered population is lower than $t$. A table respects $t$-closeness if all its $q$-blocks respect $t$-closeness.<br />
 $t$-closeness is **monotonic** with respect to the generalization hierarchies considered for k-anonymity purposes. Any algorithm for $k$-anonymity can be extended to enforce the $t$-closeness property, which however might be difficult to achieve.
 
