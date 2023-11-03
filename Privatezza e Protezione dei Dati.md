@@ -926,23 +926,20 @@ Protection operates in three steps:
 
 ### Sampling
 Conduct (and publish) a sample survey rather than a census.<br />
-Estimates are made by multiplying individual responses by a sampling weight before aggregating them. If weights are not published, weighting helps to make an individual respondent’s data less identifiable from published totals.<br />
+Estimates are made by multiplying individual responses by a **sampling weight** before aggregating them. If weights are not published, weighting helps to make an individual respondent’s data less identifiable from published totals.<br />
 Estimates must achieve a specified accuracy. Data that do not meet the accuracy requirements are not published (not considered meaningful).
 
 ----------------------------------------------------------------
 
 ### Special rules
-When macrodata tables are defined on the whole population disclosure limitation procedures must be applied. Special rules define restrictions on the level of detail that can be provided in a table. Special rules differ depending on the agency and the kind of table.
+When macrodata tables are defined on the whole population, disclosure limitation procedures must be applied. Special rules define restrictions on the level of detail that can be provided in a table. These rules differ depending on the agency and the kind of table.
 
 An example of special rules.<br />
-Social Security Administration (SSA) rules prohibit publishing tables where the value of a cell:
-- is equal to a marginal total or:
-- would allow users to determine:
-	- an individual’s age within a five-year interval;
-	- earnings within a $ $1,000$ interval;
-	- benefits within a $ $50$ interval.
-- to satisfy special rules:
-	- table restructuring or category combination.
+Social Security Administration (SSA) rules prohibit publishing tables where the value of a cell is equal to a marginal total or would allow users to determine:
+- an individual’s age within a five-year interval;
+- earnings within a $ $1,000$ interval;
+- benefits within a $ $50$ interval.
+to satisfy special rules such as **table restructuring** or **category combination**.
 
 Another example of special rules.<br />
 Number of employees by department and annual income (in $K$ Euro).<br />
