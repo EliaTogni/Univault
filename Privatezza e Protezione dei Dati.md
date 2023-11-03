@@ -512,12 +512,12 @@ An adversary knows that Frank, born in $1964$ and living in area $94132$, is the
 
 Therefore, Frank suffers from short breath.
 
-Multiple (i.e., longitudinal) releases cannot be independent. This implies that there is the need to ensure that multiple releases are safe with respect to **intersection attacks**.
+Multiple (e.g., **longitudinal**) releases cannot be independent. This implies that there is the need to ensure that multiple releases are safe with respect to **intersection attacks**.
 
 ----------------------------------------------------------------
 
 ### $m$-invariance
-It addresses the problem of longitudinal release A sequence $T_1 , . . . , T_n$ of released microdata tables satisfies $m$-invariance iff:
+The **$m$-invariance** addresses the problem of longitudinal release. A sequence $T_1 , . . . , T_n$ of released microdata tables satisfies $m$-invariance iff:
 - each equivalence class includes at least $m$ tuples;
 - no sensitive value appears more than once in each equivalence class;
 - for each tuple $t$, the equivalence classes to which t belongs in the sequence are characterized by the same set of sensitive values.
@@ -527,13 +527,14 @@ Therefore, the correlation of the tuples in $T_1, . . . , T_n$ does not permit a
 
 
 ### Extended scenarios
-$k$-anonymity, $\ell$-diversity, and $t$-closeness are based on assumptions that make them not always applicable in specific scenarios. When we have multiple tuples per respondent we can apply:
+$k$-anonymity, $\ell$-diversity, and $t$-closeness are based on assumptions that make them not always applicable in specific scenarios.<br />
+When we have multiple tuples per respondent we can apply:
 - $(X,Y)$-privacy;
 - $k^m$-anonymity.
 
 When we have the release of multiple tables, characterized by (functional) dependencies, we can apply:
 - $(X,Y)$-privacy;
-- MultiR $k$-anonymity.
+- Multi$R$ $k$-anonymity.
 
 When we have multiple quasi-identifiers, we can apply:
 - butterfly.
