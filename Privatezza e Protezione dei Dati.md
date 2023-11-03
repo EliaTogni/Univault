@@ -963,13 +963,13 @@ Health Insurance Portability and Accountability Act “Safe Harbor” rules, inc
 
 ### Threshold rules
 A cell is sensitive if the number of respondents is less than some specified number (e.g., some agencies consider $5$, others $3$). A sensitive cell cannot be released. Different techniques can be applied to protect sensitive cells:
-- table restructuring and category combination;
-- cell suppression;
-- random rounding;
-- controlled rounding;
-- confidentiality edit.
+- **table restructuring** and **category combination**;
+- **cell suppression**;
+- **random rounding**;
+- **controlled rounding**;
+- **confidentiality edit**.
 
-An example of Table with disclosures.<br />
+An example of table with disclosures.<br />
 Table containing information about employees by company and education level.
 
 ![[TableDisclosuresExample.png]]
