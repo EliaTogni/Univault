@@ -462,7 +462,7 @@ $20\%$ of the population suffers from diabetes and $75\%$ of tuples in a $q$-blo
 
 #### Group closeness
 A $q$-block respects **$t$-closeness** if the distance between the distribution of the values of the sensitive attribute in the $q$-block and in the considered population is lower than $t$. A table respects $t$-closeness if all its $q$-blocks respect $t$-closeness.<br />
-$t$-closeness is **monotonic** with respect to the generalization hierarchies considered for k-anonymity purposes. Any algorithm for $k$-anonymity can be extended to enforce the $t$-closeness property, which however might be difficult to achieve.
+$t$-closeness is **monotonic** with respect to the generalization hierarchies considered for $k$-anonymity purposes. Any algorithm for $k$-anonymity can be extended to enforce the $t$-closeness property, which however might be difficult to achieve.
 
 ----------------------------------------------------------------
 
@@ -499,20 +499,20 @@ An example of multiple independent releases.
 
 An adversary knows that Alice, born in $1974$ and living in area $94142$, is in both releases.
 
-slide 84/155
+![[MultipleReleasesExample2.png]]
 
 
-This implies that Alice belongs to the first group in $T_1$ and, therefore, Alice belongs to the first group in $T_2$. Alice suffers from aids (it is the only illness common to both groups).
+This implies that Alice belongs to the first group in $T_1$ and also belongs to the first group in $T_2$. Therefore, Alice suffers from aids (it is the only illness common to both groups).
 
-slide 85/155
+![[MultipleReleasesExample1.png]]
 
 An adversary knows that Frank, born in $1964$ and living in area $94132$, is the only patient in $T_1$ but not in $T_2$
 
-slide 85/155
+![[MultipleReleasesExample3.png]]
 
 Therefore, Frank suffers from short breath.
 
-Multiple (i.e., longitudinal) releases cannot be independent. This implies that there is the need to ensure multiple releases are safe with respect to intersection attacks.
+Multiple (i.e., longitudinal) releases cannot be independent. This implies that there is the need to ensure that multiple releases are safe with respect to **intersection attacks**.
 
 ----------------------------------------------------------------
 
