@@ -12,14 +12,13 @@ La comunicazione dipende dalla "distanza" tra i processori: se $p_{j}$ vuole com
 E' bene non confondere questo modello con le architetture distribuite.
 
 La rete di interconnessione è fissa e può essere strutturata come:
-- array lineare;
-- mesh;
-- ipercubo.
+- **array lineare**;
+- **mesh**;
+- **ipercubo**.
 
 --------------------------------------------------------------
 
-### Caratteristiche ###
-
+### Caratteristiche
 Tra le caratteristiche più peculiari dei modelli a memoria distribuita, spicca sicuramente la struttura dei processori. Essi non sono altro che RAM sequenziali con degli elementi di calcolo (istruzioni necessarie per il calcolo e una memoria privata) e con dei router (istruzioni necessarie alla comunicazione _Send_/_Receive_).<br />
 
 Non solo l'elaborazione, inoltre avviene in parallelo bensì anche la comunicazione.<br />
@@ -51,8 +50,7 @@ Data l'architettura $G = (V, E)$, si definisce:
 
 --------------------------------------------------------------
 
-### Problemi Tipici ###
-
+### Problemi Tipici
 Tipici problemi su queste architetture sono:
 - **MAX**, nel quale è richiesta la comunicazione a coppie di processori (quindi si cerca di avere un valore di $\delta$ minore possibile, in modo da abbattere il tempo di comunicazione tra processori);
 - **ORDINAMENTO**, nel quale si richiede lo spostamento di parti dell'input (quindi si cerca di avere un valore di $\beta$alto possibile, in modo da avere una soluzione più efficiente).
@@ -91,7 +89,7 @@ Questa operazione può essere descritta da queste istruzioni:<br />
 
 \*\*)$if(A[i]<A[j] then Swap(A[i], A[j])$<br />
 
-con $i<j$.<br />
+con $i<j$.
 
 Ovviamente è possibile avere delle reti di comparatori e, se questi comparatori sono distribuiti in un certo modo, si hanno delle **Sorting Network**.
 
@@ -100,25 +98,24 @@ Ovviamente è possibile avere delle reti di comparatori e, se questi comparatori
 --------------------------------------------------------------
 
 ### Algoritmo BubbleSort  con Sorting Network ###
-
 Ecco una versione dell'algoritmo [[BubbleSort]] riproposta utilizzando le Sorting Network.
 
 ![[Images/BubbleSortSN.png]]
 
 Tramite Sorting Network è possibile avere un'idea su come parallelizzare certi algoritmi.<br />
 
-
 immagine sorting network 4 elementi.
 
- I confrontatori, i quali agiscono su fili diversi nello stesso momento, rappresentano un passo parallelo, dove lo stesso momento è rappresentato dal'indice dello step.<br />
- Chiaramente, nel caso di confronti differenti che prendono in considerazione uno stesso filo, esiste una sequenzialità necessaria la quale deve essere rispettata.<br />
- Il numero di step dà un'idea di quanto sia costoso l'algoritmo in termini di tempo mentre il numero di fili rispecchia il numero di processori necessari.<br />
- 
- Formalmente, si definisce una rete di confrontatori nel seguente modo:
- $$R(x_{1}, x_{2}, ..., x_{n}) = (y_{1}, y_{2}, ..., y_{n})$$
+I confrontatori, i quali agiscono su fili diversi nello stesso momento, rappresentano un passo parallelo, dove lo stesso momento è rappresentato dal'indice dello step.<br />
+Chiaramente, nel caso di confronti differenti che prendono in considerazione uno stesso filo, esiste una sequenzialità necessaria la quale deve essere rispettata.<br />
+Il numero di step dà un'idea di quanto sia costoso l'algoritmo in termini di tempo mentre il numero di fili rispecchia il numero di processori necessari.<br />
 
+Formalmente, si definisce una rete di confrontatori nel seguente modo:
+ $$R(x_{1}, x_{2}, ..., x_{n}) = (y_{1}, y_{2}, ..., y_{n})$$
+ 
 dove il primo membro fa riferimento all'input della rete di confrontatori ed il secondo membro fa riferimento all'output.<br />
 Si definisce $R$ una _Sorting Network_ se e solo se
+
 $$\forall(x_{1}, ..., x_{n}) \in \mathbb{N},\quad R(x_{1}, ..., x_{n}) = (y_{1}, ..., y_{n}),\quad \text{con } y_{1} <y_{2}<...<y_{n}$$
 
 Queste sono dette anche **Reti di Ordinamento**.<br />
