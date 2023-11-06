@@ -1529,7 +1529,7 @@ Users lose control over their own data. This fact causes new security and privac
 Cloud Service Providers (CSPs) apply security measures in the
 services they offer but these measures protect only the perimeter and storage against outsiders.
 
-slide 16/34
+![[CloudComputingToday.png]]
 
 Functionality implies full trust in the CSP that has full access to the data (e.g., Google Cloud Storage, iCloud).
 
@@ -1539,24 +1539,24 @@ Protection but limited functionality since the CSP cannot access data (e.g., Box
 ----------------------------------------------------------------
 
 #### Cloud computing: New vision
-Solutions that provide protection guarantees giving the data owners both: full control over their data and cloud functionality over them
+Solutions that provide protection guarantees giving the data owners both: full control over their data and cloud functionality over them.
 
-slide 17/34
+![[CloudComputingNewVision.png]]
 
-client-side trust boundary: only the behavior of the client should
+Client-side trust boundary: only the behavior of the client should
 be considered trusted $\to$ techniques and implementations supporting direct processing of encrypted data in the cloud.
 
 ----------------------------------------------------------------
 
 ### Data protection – Base level
 
-slide 18/34
+![[DPBaseLevel.png]]
 
 ----------------------------------------------------------------
 
 ### Data protection – Regulation
 
-slide 19/34
+![[DPRegulation.png]]
 
 ----------------------------------------------------------------
 
@@ -1573,10 +1573,10 @@ Minimize release/exposition:
 ### Scientific and technical challenges
 Three dimensions characterize the problems and challenges
 
-slide 23/34
-24/34
-25/34
-26/34
+![[ScientificChallenges3D.png]]
+![[SecurityProperties.png]]
+![[AccessRequirements.png]]
+![[Architectures.png]]
 
 #### Combinations of the dimensions
 Every combination of the different instances of the dimensions
@@ -1590,23 +1590,24 @@ Providers can be:
 ----------------------------------------------------------------
 
 ## Digital Data Market
-slide 29/34
+
+![[DigitalDataMarket.png]]
 
 ### Dimensions of the problem and challenges
 Requirements capturing and representation:
 - policies regulating access, sharing, usage and processing.
 
-	30/34
+![[Challenge1.png]]
 
 Enforcing technologies:
 - data wrapping / sanitization.
 
-	30/34
+![[Challenge2.png]]
 
 Enforcement phase:
 - ingestion / storage / analytics.
 
-slide 31/34 ultima
+![[EnforcementPhase.png]]
 
 ----------------------------------------------------------------
 
@@ -1623,7 +1624,9 @@ Issues to be addressed:
 
 ### Security and privacy problems
 
-ultime 4 slide
+![[PrivacyOfUsers.png]]
+![[PrivacyOfStorage.png]]![[PrivacyOfQueries.png]]
+![[SecureConnections.png]]
 
 ----------------------------------------------------------------
 
