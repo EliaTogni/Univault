@@ -1707,38 +1707,24 @@ $\to$ need to provide users with means to effectively deﬁne privacy preference
 	- e.g., “I do not mind saying that I am older than 30 but I do not want to release my age”.
 - **instance-based preferences**:
 	- e.g., “I prefer to release my credit card over my bank account if the credit card expires in less than one year”.
+- **history-based preferences**:
+	- e.g., “I prefer to release my county over my phone if you already have my zip code”.
+- **proof-based preferences**:
+	- e.g., “I prefer to release the proof that I have an Italian passport rather than releasing the passport itself”.
+- **non-linkability preferences**:
+	- e.g., “I prefer to release the piece of information that, merged with the other party knowledge, identiﬁes me the less”.
 
-• History-based preferences
-◦ e.g., “I prefer to release my county over my phone if you already
-have my zip code”
+----------------------------------------------------------------
 
-• Proof-based preferences
-◦ e.g., “I prefer to release the proof that I have an Italian passport
-rather than releasing the passport itself”
+#### User privacy preferences: Some approaches
+- **cost-sensitive trust negotiation**;
+- **point-based trust management model**;
+- **logic-based minimal credential disclosure**;
+- **privacy preferences in credential-based interactions**.
 
-• Non-linkability preferences
-◦ e.g., “I prefer to release the piece of information that, merged with
-the other party knowledge, identiﬁes me the less”
-
-• ...
-
-User privacy preferences: Some approaches
-• Cost-sensitive trust negotiation
-
-• Point-based trust management model
-
-• Logic-based minimal credential disclosure
-
-• Privacy preferences in credential-based interactions
-
-
-Cost-Sensitive Trust Negotiation
-
-W. Chen, L. Clarke, J. Kurose, D. Towsley, “Optimizing Cost-Sensitive Trust-Negotiation Protocols,” in Proc. of INFOCOM, Miami,
-FL, USA, March 2005.
-
-Cost-sensitive trust negotiation – 1
-• Two parties (client and server) interact with each other to establish
+##### Cost-Sensitive Trust Negotiation
+
+Two parties (client and server) interact with each other to establish
 mutual trust by the exchange of credentials
 =⇒ trust negotiation protocol
 • The disclosure of a credential is regulated by a policy that
