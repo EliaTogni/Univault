@@ -1634,10 +1634,6 @@ Privacy and Data Protection in Emerging Scenarios
 
 Privacy of users
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-2/51
-
 Privacy of users’ identities
 Users may wish to remain anonymous or to not disclose much
 information about themselves when operating in the cloud
@@ -1652,9 +1648,6 @@ properties needed for the access
 • Support for user-privacy preferences in information disclosure
 [ACCM-12, ADFPS-10a, ADFPS-10b, ADFPS-12, CCKT-05, KOB-08, YFAR-08]
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-3/51
 
 User empowerment
 Users may want to specify policies regulating information disclosed:
@@ -1667,9 +1660,6 @@ Two aspects of protection:
 agrees to release information
 • secondary usage regulates usage and further dissemination of
 user information by the receiving parties (e.g., P3P)
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-4/51
 
 User empowerment
 Users may want to specify policies regulating information disclosed:
@@ -1682,9 +1672,7 @@ Two aspects of protection:
 agrees to release information
 • secondary usage regulates usage and further dissemination of
 user information by the receiving parties (e.g., P3P)
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-4/51
 
 Direct release – Several contributions (1)
 The research community has been very active and produced several
@@ -1698,9 +1686,6 @@ with requirements that the requestor must satisfy to get access
 ◦ clients want guarantees too (e.g., privacy)
 =⇒ some form of negotiation may be introduced
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-5/51
 
 Direct release – Several contributions (2)
 Large body of proposals (e.g., [BS-02; LWBW-08 WCJS-97, YWS-03])
@@ -1713,36 +1698,25 @@ addressing:
 • evaluation of termination, correctness, no improper information
 disclosure in the negotiation
 =⇒ typically using logic-based languages
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-6/51
 
 Interactive access control
 
 • No conditions by the client
 Multi-step negotiation
 Two-step interaction
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-7/51
 
 Interactive access control
 
 • No conditions by the client
 • Multi-step negotiation
 Two-step interaction
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-7/51
 
 Interactive access control
 
 • No conditions by the client
 • Multi-step negotiation
 • Two-step interaction
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-7/51
 
 Existing/emerging technologies supporting ABAC
 • U-Prove/Idemix: provide advance credential management
@@ -1753,9 +1727,6 @@ policies
 certiﬁcates (e.g., attribute nationality should be certiﬁed by a
 passport) or policy dialog
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-8/51
 
 User privacy preferences
 Access control speciﬁcations do not always ﬁt well with the problem at
@@ -1768,9 +1739,6 @@ release some information over other when given the choice
 =⇒ Need to provide users with means to effectively deﬁne
 privacy preferences on the release of their information
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-9/51
 
 User privacy preferences: Desiderata – 1
 • Context-based preferences
@@ -1788,9 +1756,6 @@ more sensitive than the two pieces of information singularly taken”
 ◦ e.g., “I do not mind saying that I am older than 30 but I do not want
 to release my age”
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-10/51
 
 User privacy preferences: Desiderata – 2
 • Instance-based preferences
@@ -1810,9 +1775,6 @@ rather than releasing the passport itself”
 the other party knowledge, identiﬁes me the less”
 
 • ...
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-11/51
 
 User privacy preferences: Some approaches
 • Cost-sensitive trust negotiation
@@ -1823,17 +1785,11 @@ the other party knowledge, identiﬁes me the less”
 
 • Privacy preferences in credential-based interactions
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-12/51
 
 Cost-Sensitive Trust Negotiation
 
 W. Chen, L. Clarke, J. Kurose, D. Towsley, “Optimizing Cost-Sensitive Trust-Negotiation Protocols,” in Proc. of INFOCOM, Miami,
 FL, USA, March 2005.
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-13/51
 
 Cost-sensitive trust negotiation – 1
 • Two parties (client and server) interact with each other to establish
@@ -1846,9 +1802,6 @@ disclose the credential
 =⇒ more sensitive credentials/policies have higher cost
 • The goal is to minimize the total sensitivity cost of credentials and
 policies disclosed during a trust negotiation
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-14/51
 
 Cost-sensitive trust negotiation – 2
 Policies
@@ -1887,9 +1840,6 @@ Server:
 • s2 ← TRUE
 • s3 ← TRUE
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-15/51
 
 Cost-sensitive trust negotiation – 2
 Policies
@@ -1928,9 +1878,6 @@ Server:
 • s2 ← TRUE
 • s3 ← TRUE
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-15/51
 
 Cost-sensitive trust negotiation – 2
 Policies
@@ -1969,9 +1916,6 @@ Server:
 • s2 ← TRUE
 • s3 ← TRUE
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-15/51
 
 Cost-sensitive trust negotiation – 3
 • Provide a mechanism for regulating the release of credentials
@@ -1983,19 +1927,14 @@ associations as well as forbidden releases cannot be expressed
 considered
 • Minimizing overall cost (client + server) has limited applicability
 • Linear combination of costs may not be always desirable
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-16/51
-
-Point-based Trust Management Model
+Point-based Trust Management Model
 
 D. Yao, K.B. Frikken, M.J. Atallah, R. Tamassia, “Private Information: To Reveal or not to Reveal,” in ACM TISSEC, vol. 12, no. 1,
 October 2008.
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-17/51
 
-Point-based trust management model – 1
+Point-based trust management model – 1
 How to get a New York Driver License . . .
 • Documents that prove your name are assigned a point value; you
 must present identiﬁcation that totals six points or more:
@@ -2006,11 +1945,9 @@ must present identiﬁcation that totals six points or more:
 ◦ US Social Security Card [2 points]
 ◦ Bank statement [1 point]
 ◦ ...
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-18/51
 
-Point-based trust management model – 2
+Point-based trust management model – 2
 • A server associates a given number of points with each credential
 ◦ represent the trustworthiness of its holder
 ◦ the points associated with credentials are private
@@ -2025,11 +1962,7 @@ granting a client access to a resource
 Goal: ﬁnd a subset of the client credentials that satisﬁes the threshold
 ﬁxed by the server and that has minimum privacy value to the client
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-19/51
-
-Point-based trust management model – 3
+Point-based trust management model – 3
 Threshold of accessing a resource: 10
 S ERVER
 Point value
@@ -2048,11 +1981,8 @@ Sensitivity score
 50
 100
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-20/51
-
-Point-based trust management model – 3
+Point-based trust management model – 3
 Threshold of accessing a resource: 10
 S ERVER
 Point value
@@ -2074,11 +2004,8 @@ Sensitivity score
 Client’s options:
 • SSN [Points: 10; Sensitivity: 100]
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-20/51
-
-Point-based trust management model – 3
+Point-based trust management model – 3
 Threshold of accessing a resource: 10
 S ERVER
 Point value
@@ -2101,11 +2028,8 @@ Client’s options:
 • SSN [Points: 10; Sensitivity: 100]
 • College ID, Credit card [Points: 11; Sensitivity: 60]
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-20/51
-
-Point-based trust management model – 3
+Point-based trust management model – 3
 Threshold of accessing a resource: 10
 S ERVER
 Point value
@@ -2128,11 +2052,8 @@ Client’s options:
 • SSN [Points: 10; Sensitivity: 100]
 • College ID, Credit card [Points: 11; Sensitivity: 60]
 • Driver’s license, Credit card [Points: 14; Sensitivity: 80]
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-20/51
-
-Point-based trust management model – 3
+Point-based trust management model – 3
 Threshold of accessing a resource: 10
 S ERVER
 Point value
@@ -2155,11 +2076,8 @@ Client’s options:
 • SSN [Points: 10; Sensitivity: 100]
 • College ID, Credit card [Points: 11; Sensitivity: 60]
 • Driver’s license, Credit card [Points: 14; Sensitivity: 80]
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-20/51
-
-Point-based trust management model – 4
+Point-based trust management model – 4
 Problem
 • The problem consists in fulﬁlling the access threshold while
 disclosing the least amount of sensitive information (Credential
@@ -2173,11 +2091,9 @@ solving the knapsack problem
 scores for the released credentials without revealing their private
 parameters
 ◦ the protocol uses homomorphic encryption
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-21/51
 
-Point-based trust management model – 5
+Point-based trust management model – 5
 • The solution can model only the additive characteristic of privacy
 • The client and server must agree on the universe of possible
 credential types (it may compromise the conﬁdentiality of the
@@ -2186,17 +2102,11 @@ server policy)
 associations as well as forbidden releases cannot be expressed
 • Put focus on negotiation rather than on client control
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-22/51
 
 Logic-based Minimal Credential Disclosure
 
 P. Kärger, D. Olmedilla, W.-T. Balke, “Exploiting Preferences for Minimal Credential Disclosure in Policy-Driven Trust Negotiations,”
 in Proc. of SDM, Auckland, New Zealand, August 2008.
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-23/51
 
 Logic-based minimal credential disclosure – 1
 • Parties are involved in a trust negotiation where the release of
@@ -2208,9 +2118,6 @@ negotiation succeed
 • Logic-based approach for users to specify privacy preferences
 exploited for selecting a negotiation path
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-24/51
 
 Logic-based minimal credential disclosure – 2
 On-line book shop’s policy
@@ -2235,7 +2142,6 @@ cbaccount ← cbbb ∧ cosc
 ccredit_card ← cbbb ∧ cosc
 cpin ← cbbb ∧ cosc
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
 Negotiation paths
 name
@@ -2315,7 +2221,6 @@ cpin ← cbbb ∧ cosc
 
 Disclosure sets are represented as binary vectors
 =⇒ 0 means do not disclose; 1 means disclose
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
 Negotiation paths
 name
@@ -2395,7 +2300,6 @@ cpin ← cbbb ∧ cosc
 
 Disclosure sets are represented as binary vectors
 =⇒ 0 means do not disclose; 1 means disclose
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
 Negotiation paths
 name
@@ -2443,9 +2347,6 @@ S9 : [1,0,0,0,0,1,0,1,1,0,0]
 S5 [i] = S9 [i], i = 2, . . . , 11 and S5 [1] ≻1 S9 [1]
 =⇒ S5 dominates S9 (S5 ≻P S9 )
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-26/51
 
 Logic-based minimal credential disclosure – 4
 • Hierarchies specify (possibly contextual) user preferences on the
@@ -2475,9 +2376,6 @@ pin
 • Transitive combination of preferences
 ◦ e.g., a disclosure set containing bname and baccount is preferred
 than a disclosure set containing credit_card and pin
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-27/51
 
 Logic-based minimal credential disclosure – 5
 
@@ -2651,9 +2549,6 @@ S12
 0
 1
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-28/51
 
 Logic-based minimal credential disclosure – 5
 Pareto composition
@@ -2830,10 +2725,6 @@ S5 dominates S9 since 0 ≻name 1
 0
 1
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-28/51
-
 Logic-based minimal credential disclosure – 5
 Pareto composition
 
@@ -3009,191 +2900,8 @@ S5 dominates S9 since 0 ≻name 1
 0
 1
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-28/51
-
-Logic-based minimal credential disclosure – 5
-Pareto composition
-
-name
-bdate
-telephone
-email
-pcode
-id
-passport
-bname
-baccount
-credit_card
-pin
-
-Disclosure sets
-
-S1
-S2
-S3
-S4
-S5
-S6
-S7
-S8
-S9
-S10
-S11
-S12
-
-1
-1
-1
-1
-0
-0
-0
-0
-1
-1
-0
-0
-
-1
-1
-1
-1
-0
-0
-0
-0
-0
-0
-0
-0
-
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-
-1
-1
-0
-0
-0
-0
-0
-0
-0
-0
-1
-1
-
-0
-0
-1
-1
-0
-0
-0
-0
-0
-0
-0
-0
-
-0
-0
-0
-0
-1
-1
-0
-0
-1
-1
-1
-1
-
-0
-0
-0
-0
-0
-0
-1
-1
-0
-0
-0
-0
-
-1
-0
-1
-0
-1
-0
-1
-0
-1
-0
-1
-0
-
-1
-0
-1
-0
-1
-0
-1
-0
-1
-0
-1
-0
-
-0
-1
-0
-1
-0
-1
-0
-1
-0
-1
-0
-1
-
-S5 dominates S9 since 0 ≻name 1
-S5 dominates S11 since 0 ≻email 1
-
-0
-1
-0
-1
-0
-1
-0
-1
-0
-1
-0
-1
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-28/51
-
-Logic-based minimal credential disclosure – 5
+Logic-based minimal credential disclosure – 5
 Pareto composition
 
 name
@@ -3369,11 +3077,185 @@ S5 dominates S11 since 0 ≻email 1
 0
 1
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-28/51
+Logic-based minimal credential disclosure – 5
+Pareto composition
 
-Logic-based minimal credential disclosure – 5
+name
+bdate
+telephone
+email
+pcode
+id
+passport
+bname
+baccount
+credit_card
+pin
+
+Disclosure sets
+
+S1
+S2
+S3
+S4
+S5
+S6
+S7
+S8
+S9
+S10
+S11
+S12
+
+1
+1
+1
+1
+0
+0
+0
+0
+1
+1
+0
+0
+
+1
+1
+1
+1
+0
+0
+0
+0
+0
+0
+0
+0
+
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+
+1
+1
+0
+0
+0
+0
+0
+0
+0
+0
+1
+1
+
+0
+0
+1
+1
+0
+0
+0
+0
+0
+0
+0
+0
+
+0
+0
+0
+0
+1
+1
+0
+0
+1
+1
+1
+1
+
+0
+0
+0
+0
+0
+0
+1
+1
+0
+0
+0
+0
+
+1
+0
+1
+0
+1
+0
+1
+0
+1
+0
+1
+0
+
+1
+0
+1
+0
+1
+0
+1
+0
+1
+0
+1
+0
+
+0
+1
+0
+1
+0
+1
+0
+1
+0
+1
+0
+1
+
+S5 dominates S9 since 0 ≻name 1
+S5 dominates S11 since 0 ≻email 1
+
+0
+1
+0
+1
+0
+1
+0
+1
+0
+1
+0
+1
+
+
+Logic-based minimal credential disclosure – 5
 Pareto composition
 
 name
@@ -3550,11 +3432,9 @@ S6 dominates S10 since 0 ≻name 1
 0
 1
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-28/51
 
-Logic-based minimal credential disclosure – 5
+Logic-based minimal credential disclosure – 5
 Pareto composition
 
 name
@@ -3731,11 +3611,8 @@ S6 dominates S10 since 0 ≻name 1
 0
 1
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-28/51
-
-Logic-based minimal credential disclosure – 5
+Logic-based minimal credential disclosure – 5
 Pareto composition
 
 name
@@ -3918,11 +3795,9 @@ dominates S11 since 0 ≻email 1
 dominates S10 since 0 ≻name 1
 dominates S12 since 0 ≻email 1
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-28/51
 
-Logic-based minimal credential disclosure – 5
+Logic-based minimal credential disclosure – 5
 Pareto composition
 
 name
@@ -4105,11 +3980,8 @@ dominates S11 since 0 ≻email 1
 dominates S10 since 0 ≻name 1
 dominates S12 since 0 ≻email 1
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-28/51
-
-Logic-based minimal credential disclosure – 5
+Logic-based minimal credential disclosure – 5
 Hierarchical preferences
 
 name
@@ -4288,11 +4160,7 @@ S6 dominates S8
 id
 passport
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-28/51
-
-Logic-based minimal credential disclosure – 5
+Logic-based minimal credential disclosure – 5
 Hierarchical preferences
 
 name
@@ -4471,11 +4339,8 @@ S6 dominates S8
 id
 passport
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-28/51
-
-Logic-based minimal credential disclosure – 5
+Logic-based minimal credential disclosure – 5
 Hierarchical preferences
 
 name
@@ -4664,8 +4529,6 @@ name
 
 passport telephone
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
 bdate
 
 pcode
@@ -4675,9 +4538,7 @@ if¬bdate
 
 email
 
-28/51
-
-Logic-based minimal credential disclosure – 5
+Logic-based minimal credential disclosure – 5
 Hierarchical preferences
 
 name
@@ -4866,7 +4727,6 @@ name
 
 passport telephone
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
 bdate
 
@@ -4876,7 +4736,6 @@ if¬bdate
 
 email
 
-28/51
 
 Logic-based minimal credential disclosure – 5
 Transitive combination of preferences
@@ -5059,9 +4918,6 @@ baccount
 credit_card
 pin
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-28/51
 
 Logic-based minimal credential disclosure – 5
 Transitive combination of preferences
@@ -5243,10 +5099,6 @@ bname
 baccount
 credit_card
 pin
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-28/51
 
 Logic-based minimal credential disclosure – 5
 Transitive combination of preferences
@@ -5430,10 +5282,6 @@ credit_card
 pin
 =⇒ user has to choose between S1 , S5
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-28/51
-
 Logic-based minimal credential disclosure – 6
 • Users are still involved in choosing the disclosure set
 • Assume only attributes (does not reason about credentials)
@@ -5443,9 +5291,6 @@ always easy
 • Forbidden releases (e.g., the release of name, bdate, and pcode
 is forbidden) are not supported
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-29/51
 
 Privacy Preferences in
 Credential-based Interactions
@@ -5456,9 +5301,6 @@ C.A. Ardagna, S. De Capitani di Vimercati, S. Foresti, S. Paraboschi, P. Samarat
 Credential-Based Interactions,” in Proc. of WPES, Chicago, IL, USA, October 2010.
 C.A. Ardagna, S. De Capitani di Vimercati, S. Foresti, S. Paraboschi, P. Samarati, “Minimising Disclosure of Client Information in
 Credential-Based Interactions,” in IJIPSI, vol. 1, no. 2/3, 2012.
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-30/51
 
 Goal of the work
 Enable users to effectively regulate disclosure of their properties and
@@ -5472,9 +5314,6 @@ user’s preferences
 • provide a basis for investigating user-friendly/user-understandable
 approaches for regulating release of user’s properties
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-31/51
 
 Client portfolio modeling
 • The information of the client forms a client portfolio
@@ -5486,9 +5325,6 @@ approaches for regulating release of user’s properties
 • Hierarchy of abstractions of credential types H (T ,isa )
 (e.g., id_card isa id , id isa credential)
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-32/51
 
 An example of hierarchy of credential types
 
@@ -5503,9 +5339,6 @@ declaration
 med_record cc
 passport
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-33/51
 
 Client portfolio – Properties
 • Credential-independent:
@@ -5518,10 +5351,6 @@ the certifying credential
 (e.g., credit card
 number)
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-34/51
-
 Client portfolio – Properties
 • Credential-independent:
 the value depends only
@@ -5533,9 +5362,6 @@ the certifying credential
 (e.g., credit card
 number)
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-34/51
 
 Client portfolio – Credentials
 • Atomic: released as a
@@ -5547,9 +5373,6 @@ proof-of-possession can
 be certiﬁed (e.g., Idemix,
 U-Prove)
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-35/51
 
 Client portfolio – Credentials
 • Atomic: released as a
@@ -5561,10 +5384,6 @@ proof-of-possession can
 be certiﬁed (e.g., Idemix,
 U-Prove)
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-35/51
-
 Disclosure
 A disclosure is a subset
 of the client portfolio that
@@ -5578,9 +5397,6 @@ disclosed, all its
 properties are disclosed
 Does not satisfy atomicity!
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-36/51
 
 Disclosure
 
@@ -5595,9 +5411,6 @@ an atomic credential is
 disclosed, all its
 properties are disclosed
 Does not satisfy atomicity!
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-36/51
 
 Portfolio sensitivity
 • Different portfolio components have different sensitivity
@@ -5611,9 +5424,6 @@ Does not satisfy atomicity!
 • We assume sensitivity labels to be integer values, composed
 through the + operator
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-37/51
 
 Sensitivity of properties and credentials
 
@@ -5625,9 +5435,6 @@ taken
 • λ (c): sensitivity of the
 existence of credential c
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-38/51
 
 Sensitivity of associations
 
@@ -5642,10 +5449,6 @@ release of each element
 in A
 =⇒ dependency
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-39/51
-
 Sensitivity of associations
 
 λ (A): sensitivity of an association A={Ai , . . . , Aj , c k , . . . , c n },
@@ -5659,9 +5462,6 @@ release of each element
 in A
 =⇒ dependency
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-39/51
 
 Sensitivity of associations
 
@@ -5676,9 +5476,6 @@ release of each element
 in A
 =⇒ dependency
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-39/51
 
 Disclosure constraints
 
@@ -5692,11 +5489,9 @@ most n elements in A
 can be released
 
 A disclosure is valid if no disclosure constraints is violated
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-40/51
 
-Disclosure constraints
+Disclosure constraints
 Set A={Ai , . . . , Aj , c k , . . . , c n }
 of elements whose release
 must be controlled
@@ -5708,11 +5503,7 @@ can be released
 
 A disclosure is valid if no disclosure constraints is violated
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-40/51
-
-Disclosure constraints
+Disclosure constraints
 Set A={Ai , . . . , Aj , c k , . . . , c n }
 of elements whose release
 must be controlled
@@ -5724,11 +5515,8 @@ can be released
 
 A disclosure is valid if no disclosure constraints is violated
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-40/51
-
-Disclosure constraints
+Disclosure constraints
 Set A={Ai , . . . , Aj , c k , . . . , c n }
 of elements whose release
 must be controlled
@@ -5740,11 +5528,8 @@ can be released
 
 A disclosure is valid if no disclosure constraint is violated
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-40/51
-
-Disclosure sensitivity
+Disclosure sensitivity
 
 The sensitivity λ (D) of a disclosure D is the sum of the
 sensitivity labels of released:
@@ -5754,11 +5539,8 @@ associations
 
 λ (D) = 1+5+5+10+1+3+5 = 30
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-41/51
-
-Disclosure sensitivity
+Disclosure sensitivity
 
 The sensitivity λ (D) of a disclosure D is the sum of the
 sensitivity labels of released:
@@ -5768,11 +5550,7 @@ associations
 
 λ (D) = 1+5+5+10+1+3+5 = 30
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-41/51
-
-Disclosure sensitivity
+Disclosure sensitivity
 
 The sensitivity λ (D) of a disclosure D is the sum of the
 sensitivity labels of released:
@@ -5782,11 +5560,8 @@ associations
 
 λ (D) = 1+5+5+10+1+3+5 = 30
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-41/51
-
-Disclosure sensitivity
+Disclosure sensitivity
 
 The sensitivity λ (D) of a disclosure D is the sum of the
 sensitivity labels of released:
@@ -5796,11 +5571,7 @@ sensitivity labels of released:
 
 λ (D) = 1+5+5+10+1+3+5 = 30
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-41/51
-
-Server request
+Server request
 Request R: disjunction of simple requests
 • Simple request R: conjunction of terms
 ◦ term r =type.{A1 , . . . , Am }: disclosure of {A1 , . . . , Am } from c
@@ -5812,11 +5583,8 @@ R = r 1 ∧r 2
 r 1 = id.{Name,Address}
 r 2 = cc.{Name,CCNum}
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-42/51
-
-Min-disclosure problem
+Min-disclosure problem
 A disclosure D:
 • satisﬁes R if it satisﬁes at
 least a R in R
@@ -5830,11 +5598,9 @@ is minimum if ∄ a valid
 disclosure D ′ s.t. D ′
 satisﬁes R and
 λ (D ′ )<λ (D)
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-43/51
 
-Min-disclosure problem
+Min-disclosure problem
 R = id.{Name,Address} ∧ cc.{Name,CCNum}
 
 A disclosure D:
@@ -5850,11 +5616,8 @@ is minimum if ∄ a valid
 disclosure D ′ s.t. D ′
 satisﬁes R and
 λ (D ′ )<λ (D)
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-43/51
-
-Min-disclosure problem
+Min-disclosure problem
 R = id.{Name,Address} ∧ cc.{Name,CCNum}
 
 A disclosure D:
@@ -5870,13 +5633,11 @@ is minimum if ∄ a valid
 disclosure D ′ s.t. D ′
 satisﬁes R and
 λ (D ′ )<λ (D)
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
 λ (D) = 1+8+1+5+5+15 = 35
 
-43/51
 
-Min-disclosure problem
+Min-disclosure problem
 R = id.{Name,Address} ∧ cc.{Name,CCNum}
 
 A disclosure D:
@@ -5892,13 +5653,10 @@ it includes c s.t.:
 disclosure D ′ s.t. D ′
 satisﬁes R and
 λ (D ′ )<λ (D)
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
 λ (D) = 35 =⇒ D is not minimum
 
-43/51
-
-Min-disclosure problem
+Min-disclosure problem
 R = id.{Name,Address} ∧ cc.{Name,CCNum}
 
 A disclosure D:
@@ -5914,13 +5672,10 @@ it includes c s.t.:
 disclosure D ′ s.t. D ′
 satisﬁes R and
 λ (D ′ )<λ (D)
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
 λ (D ′ ) = 30 =⇒ D ′ is minimum
 
-43/51
-
-Computing a minimal disclosure
+Computing a minimal disclosure
 The problem of computing a disclosure that minimizes release of
 information is NP-hard
 • exploit graph-based representation of portfolio and requests,
@@ -5928,11 +5683,7 @@ providing heuristics based on graph-matching [ADFPS-10a]
 • exploit Max-SAT representation of the problem and existing SAT
 solver [ADFPS-10b]
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-44/51
-
-Work to be investigated – 1
+Work to be investigated – 1
 • Enable derivation of sensitivity levels of properties (e.g., based on
 identity exposure)
 • Support speciﬁcations in terms of preferences (e.g., my id_card is
@@ -5945,22 +5696,16 @@ dialysis certiﬁcates is less sensitive if released to a doctor than to
 a generic server)
 • User-intuitive approaches for expressing preferences (and
 possibly translate them to sensitivity labels)
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-45/51
 
-Work to be investigated – 2
+Work to be investigated – 2
 • Consideration of previous disclosures
 • Type vs instance mismatch (server talks about classes, users refer
 to instances)
 • Integration with server-side solutions and more expressive server
 requests [ADFNPPSV-10]
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-46/51
-
-Server-side open issues – 1
+Server-side open issues – 1
 On the server-side there is still work to do to increase expressiveness.
 Today XACML:
 • does not provide a support for expressing and reasoning about
@@ -5973,9 +5718,6 @@ digital certiﬁcates in the speciﬁcation of the authorization policies:
 
 C. Ardagna, S. De Capitani di Vimercati, S. Paraboschi, E. Pedrini, P. Samarati, M. Verdicchio, “Expressive and Deployable
 Access Control in Open Web Service Applications,” in IEEE TSC, vol. 4, no. 2, April-June 2011.
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-47/51
 
 Server-side open issues – 2
 • does not have support for policy dialog (to communicate policies
