@@ -1630,137 +1630,83 @@ Issues to be addressed:
 
 ----------------------------------------------------------------
 
-Privacy and Data Protection in Emerging Scenarios
+# Privacy and Data Protection in Emerging Scenarios
+## Privacy of users
+### Privacy of users’ identities
 
-Privacy of users
+![[PrivacyOfUsers.png]]
 
-Privacy of users’ identities
 Users may wish to remain anonymous or to not disclose much
-information about themselves when operating in the cloud
-• Anonymous communication techniques (e.g., Mix networks, onion
-routing, Tor, Crowds)
-• Privacy in location-based services [ACCDS-11, ALS-12]
-• Attribute-based access control [ACCDS-11, BS-02, DFJPPS-12]
-◦ instead of declaring their identities, users prove they satisfy
-properties needed for the access
-◦ changes the way access control process works
+information about themselves when operating in the cloud:
+- anonymous communication techniques (e.g., Mix networks, onion routing, Tor, Crowds);
+- Privacy in location-based services;
+- attribute-based access control;
+	- instead of declaring their identities, users prove they satisfy properties needed for the access;
+	- changes the way access control process works.
+- Support for user-privacy preferences in information disclosure.
 
-• Support for user-privacy preferences in information disclosure
-[ACCM-12, ADFPS-10a, ADFPS-10b, ADFPS-12, CCKT-05, KOB-08, YFAR-08]
-
-
-User empowerment
+### User empowerment
 Users may want to specify policies regulating information disclosed:
-• when using external servers for sharing/disseminating their own
-resources (e.g., Facebook)
-• when releasing information in digital interactions (e.g., releasing
-credit card to access a service)
+- when using external servers for sharing/disseminating their own resources (e.g., Facebook);
+- when releasing information in digital interactions (e.g., releasing credit card to access a service).
+
 Two aspects of protection:
-• direct release regulates to whom, when, for what purpose a user
-agrees to release information
-• secondary usage regulates usage and further dissemination of
-user information by the receiving parties (e.g., P3P)
+- direct release regulates to whom, when, for what purpose a user agrees to release information;
+- secondary usage regulates usage and further dissemination of user information by the receiving parties (e.g., P3P).
 
-User empowerment
-Users may want to specify policies regulating information disclosed:
-• when using external servers for sharing/disseminating their own
-resources (e.g., Facebook)
-• when releasing information in digital interactions (e.g., releasing
-credit card to access a service)
-Two aspects of protection:
-• direct release regulates to whom, when, for what purpose a user
-agrees to release information
-• secondary usage regulates usage and further dissemination of
-user information by the receiving parties (e.g., P3P)
+----------------------------------------------------------------
 
+### Direct release – Several contributions
+The research community has been very active and produced several approaches for regulating interactions among unknown parties through the deﬁnition of attribute-based access control mechanisms.<br />
+What users can do depend on assertions (attributes) they can
+prove presenting certiﬁcates. Access control does not return yes/no anymore, but responds with requirements that the requestor must satisfy to get access. Not only the server needs to be protected but the clients want guarantees too (e.g., privacy) $\to$ some form of negotiation may be introduced.
 
-Direct release – Several contributions (1)
-The research community has been very active and produced several
-approaches for regulating interactions among unknown parties through
-the deﬁnition of attribute-based access control mechanisms
-• What users can do depend on assertions (attributes) they can
-prove presenting certiﬁcates
-• Access control does not return “yes/no” anymore, but responds
-with requirements that the requestor must satisfy to get access
-• Not only the server needs to be protected . . .
-◦ clients want guarantees too (e.g., privacy)
-=⇒ some form of negotiation may be introduced
+Large body of proposals addressing:
+- credential/attribute-based policy speciﬁcations;
+- policy evaluation with partial information;
+- policy conﬁdentiality support;
+- policy communication and dialog;
+- negotiation strategies and trust management;
+- evaluation of termination, correctness, no improper information disclosure in the negotiation.
 
+$\to$ typically using logic-based languages.
 
-Direct release – Several contributions (2)
-Large body of proposals (e.g., [BS-02; LWBW-08 WCJS-97, YWS-03])
-addressing:
-• credential/attribute-based policy speciﬁcations
-• policy evaluation with partial information
-• policy conﬁdentiality support
-• policy communication and dialog
-• negotiation strategies and trust management
-• evaluation of termination, correctness, no improper information
-disclosure in the negotiation
-=⇒ typically using logic-based languages
+------------------------------------------------------------------
 
-Interactive access control
+### Interactive access control
 
-• No conditions by the client
-Multi-step negotiation
-Two-step interaction
+slide 7/51
 
-Interactive access control
+- No conditions by the client;
+- multi-step negotiation;
+- two-step interaction.
 
-• No conditions by the client
-• Multi-step negotiation
-Two-step interaction
+The existing/emerging technologies supporting ABAC are:
+- U-Prove/Idemix: provide advance credential management technologies (selective release, proof of possession, . . .);
+- XACML: standard today for interoperation of access control policies:
+	- expressive but with limited features for reasoning about digital certiﬁcates (e.g., attribute nationality should be certiﬁed by a passport) or policy dialog.
 
-Interactive access control
+----------------------------------------------------------------
 
-• No conditions by the client
-• Multi-step negotiation
-• Two-step interaction
+### User privacy preferences
+Access control speciﬁcations do not always ﬁt well with the problem at the client (user) side:
+- they are expressive and powerful;
+- they allow users to specify whether some information can be or cannot be released;
+- they do not allow users to express the fact that they might prefer to release some information over other when given the choice.
 
+$\to$ need to provide users with means to effectively deﬁne privacy preferences on the release of their information.
 
-Existing/emerging technologies supporting ABAC
-• U-Prove/Idemix: provide advance credential management
-technologies (selective release, proof of possession, . . .)
-• XACML: standard today for interoperation of access control
-policies
-◦ expressive but with limited features for reasoning about digital
-certiﬁcates (e.g., attribute nationality should be certiﬁed by a
-passport) or policy dialog
-
-
-User privacy preferences
-Access control speciﬁcations do not always ﬁt well with the problem at
-the client (user) side
-+ they are expressive and powerful
-+ they allow users to specify whether some information can be or
-cannot be released
-− they do not allow users to express the fact that they might prefer to
-release some information over other when given the choice
-=⇒ Need to provide users with means to effectively deﬁne
-privacy preferences on the release of their information
-
-
-User privacy preferences: Desiderata – 1
-• Context-based preferences
-◦ e.g., “I want to disclose my credit card to ﬁnancial servers in the
-context of payment transactions only”
-
-• Forbidden disclosures
-◦ e.g., “I do not want to release both my name and my nickname”
-
-• Sensitive associations
-◦ e.g., “The association between my zip code and my date of birth is
-more sensitive than the two pieces of information singularly taken”
-
-• Limited disclosure
-◦ e.g., “I do not mind saying that I am older than 30 but I do not want
-to release my age”
-
-
-User privacy preferences: Desiderata – 2
-• Instance-based preferences
-◦ e.g., “I prefer to release my credit card over my bank account if the
-credit card expires in less than one year”
+#### User privacy preferences: Desiderata
+- **context-based preferences**:
+	-  e.g., “I want to disclose my credit card to ﬁnancial servers in the context of payment transactions only”.
+- **forbidden disclosures**:
+	- e.g., “I do not want to release both my name and my nickname”.
+- **sensitive associations**:
+	- e.g., “The association between my zip code and my date of birth is more sensitive than the two pieces of information singularly taken”.
+- **limited disclosure**:
+	- e.g., “I do not mind saying that I am older than 30 but I do not want to release my age”.
+- **instance-based preferences**:
+	- e.g., “I prefer to release my credit card over my bank account if the credit card expires in less than one year”.
 
 • History-based preferences
 ◦ e.g., “I prefer to release my county over my phone if you already
