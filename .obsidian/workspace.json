@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Modello a Memoria Distribuita.md",
+                "file": "Privatezza e Protezione dei Dati.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Modello a Memoria Distribuita.md",
+                "file": "Privatezza e Protezione dei Dati.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,8 +116,10 @@
   },
   "active": "96ef9f8b3e45f972",
   "lastOpenFiles": [
-    "Memoria Distribuita.png.md",
+    "Images/RoleOfDataSmartEnvironment.png",
+    "Images/SmartSociety.png",
     "Modello a Memoria Distribuita.md",
+    "Memoria Distribuita.png.md",
     "Modello a Memoria Condivisa.md",
     "Modello P-RAM.md",
     "Ordinamento Topologico.md",
@@ -143,7 +145,6 @@
     "Images/SwappingExample2.png",
     "Images/SwappingExample1.png",
     "Images/SamplingExample2.png",
-    "Images/SamplingExample1.png",
     "The Age of the Essay.md",
     "Reticolo.md",
     "Bioinformatica.md",
@@ -151,7 +152,6 @@
     "Albero.md",
     "Cittadinanza Digitale e Tecnocivismo.md",
     "Quiz Statistical Methods for Machine Learning.md",
-    "Intelligenza Artificiale.md",
     "Imaes",
     "art_4.pdf",
     "Images/find largest r - Cerca con Google_files/app.html",

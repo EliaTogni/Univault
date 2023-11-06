@@ -1105,7 +1105,6 @@ Take a sample of records from the microdata file (say a $10\%$ sample). Since we
 Part of the randomly selected $10\%$ sample from other companies match records in company Alfa.
 
 ![[ConfidentialityEditExample3.png]]
-
 ![[ConfidentialityEditExample4.png]]
 
 ----------------------------------------------------------------
@@ -1492,18 +1491,16 @@ Advancements in the ICT and networks have changed our society. $5$G and beyond, 
 
 ----------------------------------------------------------------
 
-### Smart society
-
-slide 4/34
-slide 5/34
-
+### Smart society
 The advantages of smart services and security are:
 - better protection mechanisms;
 - business continuity and disaster recovery;
 - prevention and response.
 
+![[SmartSociety.png]]
+
 While the disadvantages are:
-- more complexity, that is, theweakest link becomes a point of attack:
+- more complexity, that is, the weakest link becomes a point of attack:
 	- system hacking;
 	- improper information leakage;
 	- data and process tampering.
@@ -1514,7 +1511,7 @@ While the disadvantages are:
 
 ### The role of data in a smart environment
 
-slide 11/34
+![[RoleOfDataSmartEnvironment.png]]
 
 This implies better governance and intelligent systems.
 
@@ -1530,424 +1527,103 @@ Users lose control over their own data. This fact causes new security and privac
 
 #### Cloud computing: Today
 Cloud Service Providers (CSPs) apply security measures in the
-services they offer but these measures protect only the perimeter and
-storage against outsiders
+services they offer but these measures protect only the perimeter and storage against outsiders.
 
-data owner
+slide 16/34
 
-cloud
+Functionality implies full trust in the CSP that has full access to the data (e.g., Google Cloud Storage, iCloud).
 
-data owner
-
-cloud
-
-functionality implies full trust in the CSP that has full access to the da
-
-protection but limited functionality since the CSP cannot access data
-
-
-functionality but no protection
-(key is with the CSP)
-
-• functionality implies full trust in the CSP that has full access to the
-data (e.g., Google Cloud Storage, iCloud)
-
-protection but limited functionality since the CSP cannot access data
-
-
-data owner
-
-cloud
-
-functionality but no protection
-(key is with the CSP)
-
-data owner
-
-cloud
-
-protection
-
-• functionality implies full trust in the CSP that has full access to the
-data (e.g., Google Cloud Storage, iCloud)
-
-• protection
-but limited functionality since the CSP cannot access data (e.g., Boxc
-
-Cloud computing: Today
-Cloud Service Providers (CSPs) apply security measures in the
-services they offer but these measures protect only the perimeter and
-storage against outsiders
-
-data owner
-
-cloud
-
-functionality but no protection
-(key is with the CSP)
-
-data owner
-
-cloud
-
-protection but limited functionality
-(you cannot access data as you like)
-
-• functionality implies full trust in the CSP that has full access to the
-data (e.g., Google Cloud Storage, iCloud)
-• protection but limited functionality since the CSP cannot access
-data (e.g., Boxcryptor, SpiderOak)
+Protection but limited functionality since the CSP cannot access data (e.g., Boxcryptor, SpiderOak).
+
 
 ----------------------------------------------------------------
 
 #### Cloud computing: New vision
-Solutions that provide protection guarantees giving the data owners
-both: full control over their data and cloud functionality over them
+Solutions that provide protection guarantees giving the data owners both: full control over their data and cloud functionality over them
 
-data owner
+slide 17/34
 
-cloud
+client-side trust boundary: only the behavior of the client should
+be considered trusted $\to$ techniques and implementations supporting direct processing of encrypted data in the cloud.
 
-client-side trust boundary: only the behavior of the client should be co
-=⇒ techniques and implementations supporting direct processing
-of encrypted data in the cloud
+----------------------------------------------------------------
 
-https://mosaicrown.eu
+### Data protection – Base level
 
-https://www.marsalproject.eu
+slide 18/34
 
-https://glaciation-project.eu
+----------------------------------------------------------------
 
+### Data protection – Regulation
 
-Solutions that provide protection guarantees giving the data owners
-both: full control over their data and cloud functionality over them
+slide 19/34
 
-• client-side trust boundary: only the behavior of the client should
-be considered trusted
-=⇒ techniques and implementations supporting direct processing
-of encrypted data in the cloud
-
-https://mosaicrown.eu
-
-https://www.marsalproject.eu
-
-https://glaciation-project.eu
+----------------------------------------------------------------
 
 
-Data protection – Base level
+### Data protection – Confidentiality
+Minimize release/exposition:
+- correlation among different data sources;
+- indirect exposure of sensitive information;
+- de-identification $\neq$ anonymization.
 
+----------------------------------------------------------------
 
-Data protection – Base level
-
-
-
-Data protection – Regulation
-
-
-Data protection – Confidentiality
-• Minimize release/exposition
-◦ correlation among different data sources
-◦ indirect exposure of sensitive information
-◦ de-identification ̸= anonymization
-
-Characterization of Data Protection
-Challenges in Cloud Scenarios
-
-Scientific and technical challenges
+## Characterization of Data Protection: Challenges in Cloud Scenarios
+### Scientific and technical challenges
 Three dimensions characterize the problems and challenges
 
+slide 23/34
+24/34
+25/34
+26/34
 
-Security properties
+#### Combinations of the dimensions
+Every combination of the different instances of the dimensions
+identifies new problems and challenges. The security properties to be guaranteed can depend on the access requirements and on the trust assumption on the providers involved in storage and/or processing of data.
 
+Providers can be:
+- curious;
+- lazy;
+- malicious.
 
-Access requirements
+----------------------------------------------------------------
 
+## Digital Data Market
+slide 29/34
 
+### Dimensions of the problem and challenges
+Requirements capturing and representation:
+- policies regulating access, sharing, usage and processing.
 
-Architectures
+	30/34
 
+Enforcing technologies:
+- data wrapping / sanitization.
 
-Combinations of the dimensions
-• Every combination of the different instances of the dimensions
-identifies new problems and challenges
-• The security properties to be guaranteed can depend on the
-access requirements and on the trust assumption on the providers
-involved in storage and/or processing of data
-• Providers can be:
-◦ curious
-◦ lazy
-◦ malicious
+	30/34
 
+Enforcement phase:
+- ingestion / storage / analytics.
 
-Digital Data Market
+slide 31/34 ultima
 
-Digital Data Market
+----------------------------------------------------------------
 
+## Some Challenges in Data Protection
+Issues to be addressed:
+- privacy of users;
+- data protection;
+- query execution;
+- private access;
+- data integrity and correctness;
+- access control enforcement;
+- data publication and utility;
+- collaborative query execution: authorization enforcement in distributed query execution.
 
+### Security and privacy problems
 
-Dimensions of the problem and challenges
-• Requirements capturing and representation
-policies regulating access, sharing, usage and processing
-
-Enforcing technologies
-data wrapping / sanitization
-
-Enforcement phase
-ingestion / storage / analytics
-
-
-Dimensions of the problem and challenges
-• Requirements capturing and representation
-policies regulating access, sharing, usage and processing
-
-Enforcing technologies
-data wrapping / sanitization
-
-Enforcement phase
-ingestion / storage / analytics
-
-
-
-Dimensions of the problem and challenges
-• Requirements capturing and representation
-policies regulating access, sharing, usage and processing
-
-• Enforcing technologies
-data wrapping / sanitization
-
-Enforcement phase
-ingestion / storage / analytics
-
-
-
-Dimensions of the problem and challenges
-• Requirements capturing and representation
-policies regulating access, sharing, usage and processing
-
-• Enforcing technologies
-data wrapping / sanitization
-
-Enforcement phase
-ingestion / storage / analytics
-
-
-Dimensions of the problem and challenges
-• Requirements capturing and representation
-policies regulating access, sharing, usage and processing
-
-• Enforcing technologies
-data wrapping / sanitization
-
-• Enforcement phase
-ingestion / storage / analytics
-
-
-
-Enforcement phase
-• Ingestion / Storage / Analytics
-____
-____
-____
-
-Data Market
-
-Data Owner
-
-____
-____
-____
-
-Data Owner
-
-____
-____
-____
-
-Data Owner
-LEGEND
-
-policy
-
-plaintext data
-
-wrapped data
-
-sanitized data
-
-Multi-Owner data Sharing for Analytics and Integration respecting Confidentiality and OWNer control - https://mosaicrown.eu
-
-
-Enforcement phase
-• Ingestion / Storage / Analytics
-____
-____
-____
-
-Ingestion
-
-Data Market
-
-Data Owner
-
-____
-____
-____
-
-Ingestion
-
-Data Owner
-
-____
-____
-____
-
-Ingestion
-
-Data Owner
-LEGEND
-
-policy
-
-plaintext data
-
-wrapped data
-
-sanitized data
-
-Multi-Owner data Sharing for Analytics and Integration respecting Confidentiality and OWNer control - https://mosaicrown.eu
-
-Enforcement phase
-• Ingestion / Storage / Analytics
-____
-____
-____
-
-Ingestion
-
-Data Market
-
-Data Owner
-
-____
-____
-____
-
-Ingestion
-
-Data Owner
-
-Storage
-
-____
-____
-____
-
-Ingestion
-
-Data Owner
-LEGEND
-
-policy
-
-plaintext data
-
-wrapped data
-
-sanitized data
-
-Multi-Owner data Sharing for Analytics and Integration respecting Confidentiality and OWNer control - https://mosaicrown.eu
-
-
-Enforcement phase
-• Ingestion / Storage / Analytics
-____
-____
-____
-
-Ingestion
-
-Data Market
-
-Data Owner
-
-____
-____
-____
-____
-____
-____
-
-Ingestion
-Analytics
-
-Data Owner
-
-Storage
-
-Analytics
-
-____
-____
-____
-
-Ingestion
-
-Data Owner
-LEGEND
-
-policy
-
-plaintext data
-
-wrapped data
-
-sanitized data
-
-Multi-Owner data Sharing for Analytics and Integration respecting Confidentiality and OWNer control - https://mosaicrown.eu
-
-
-Some Challenges in Data Protection
-
-Issues to be addressed
-• Privacy of users
-• Data protection
-• Query execution
-• Private access
-• Data integrity and correctness
-• Access control enforcement
-• Data publication and utility
-• Collaborative query execution: authorization enforcement
-in distributed query execution
-
-
-Security and privacy problems
-
-S. De Capitani di Vimercati, S. Foresti, P. Samarati, “Protecting Data and Queries in Cloud-Based Scenarios,” in
-SN Computer Science, vol. 4, n. 5, September 2023.
-
-
-Security and privacy problems
-
-S. De Capitani di Vimercati, S. Foresti, P. Samarati, “Protecting Data and Queries in Cloud-Based Scenarios,” in
-SN Computer Science, vol. 4, n. 5, September 2023.
-
-
-Security and privacy problems
-
-S. De Capitani di Vimercati, S. Foresti, P. Samarati, “Protecting Data and Queries in Cloud-Based Scenarios,” in
-SN Computer Science, vol. 4, n. 5, September 2023.
-
-
-Security and privacy problems
-
-S. De Capitani di Vimercati, S. Foresti, P. Samarati, “Protecting Data and Queries in Cloud-Based Scenarios,” in
-SN Computer Science, vol. 4, n. 5, September 2023.
-
-
-Security and privacy problems
-
-S. De Capitani di Vimercati, S. Foresti, P. Samarati, “Protecting Data and Queries in Cloud-Based Scenarios,” in
-SN Computer Science, vol. 4, n. 5, September 2023.
+ultime 4 slide
 
 ----------------------------------------------------------------
 
