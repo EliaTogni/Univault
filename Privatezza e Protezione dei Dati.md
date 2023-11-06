@@ -1704,7 +1704,7 @@ $\to$ need to provide users with means to effectively deﬁne privacy preference
 - **sensitive associations**:
 	- e.g., “The association between my zip code and my date of birth is more sensitive than the two pieces of information singularly taken”.
 - **limited disclosure**:
-	- e.g., “I do not mind saying that I am older than 30 but I do not want to release my age”.
+	- e.g., “I do not mind saying that I am older than $30$ but I do not want to release my age”.
 - **instance-based preferences**:
 	- e.g., “I prefer to release my credit card over my bank account if the credit card expires in less than one year”.
 - **history-based preferences**:
@@ -1724,323 +1724,69 @@ $\to$ need to provide users with means to effectively deﬁne privacy preference
 
 ##### Cost-Sensitive Trust Negotiation
 
-Two parties (client and server) interact with each other to establish
-mutual trust by the exchange of credentials
-=⇒ trust negotiation protocol
-• The disclosure of a credential is regulated by a policy that
-speciﬁes the prerequisite conditions that must be satisﬁed to
-disclose the credential
-• Credentials and policies are associated with a cost
-=⇒ more sensitive credentials/policies have higher cost
-• The goal is to minimize the total sensitivity cost of credentials and
-policies disclosed during a trust negotiation
-
-Cost-sensitive trust negotiation – 2
-Policies
-Client:
-
-Costs
-
-Policy graph
-
-• cost(c1 )=2
-
-• c1 ← s1
-
-• cost(c2 )=7
-
-• c2 ← s3
-
-• cost(c3 )=2
-
-• c3 ← s2
-
-• cost(c4 )=1
-
-• c4 ← s2
-
-• cost(s)=5
-• cost(s1 )=2
-
-Server:
-• s← (c1 ∧ c4 )∨ c2
-
-• cost(s2 )=0
-• cost(s3 )=0
-
-• s1 ← c3 ∨ c4
-• s2 ← TRUE
-• s3 ← TRUE
-
-
-Cost-sensitive trust negotiation – 2
-Policies
-Client:
-
-Costs
-
-Policy graph
-
-• cost(c1 )=2
-
-• c1 ← s1
-
-• cost(c2 )=7
-
-• c2 ← s3
-
-• cost(c3 )=2
-
-• c3 ← s2
-
-• cost(c4 )=1
-
-• c4 ← s2
-
-• cost(s)=5
-• cost(s1 )=2
-
-Server:
-• s← (c1 ∧ c4 )∨ c2
-
-• cost(s2 )=0
-• cost(s3 )=0
-
-• s1 ← c3 ∨ c4
-• s2 ← TRUE
-• s3 ← TRUE
-
-
-Cost-sensitive trust negotiation – 2
-Policies
-Client:
-
-Costs
-
-Policy graph
-
-• cost(c1 )=2
-
-• c1 ← s1
-
-• cost(c2 )=7
-
-• c2 ← s3
-
-• cost(c3 )=2
-
-• c3 ← s2
-
-• cost(c4 )=1
-
-• c4 ← s2
-
-• cost(s)=5
-• cost(s1 )=2
-
-Server:
-• s← (c1 ∧ c4 )∨ c2
-
-• cost(s2 )=0
-• cost(s3 )=0
-
-• s1 ← c3 ∨ c4
-• s2 ← TRUE
-• s3 ← TRUE
-
-
-Cost-sensitive trust negotiation – 3
-• Provide a mechanism for regulating the release of credentials
-according to their sensitivity
-• Put focus on negotiation rather than on client control
-• Support only coarse-grain (credentials) speciﬁcations; sensitive
-associations as well as forbidden releases cannot be expressed
-• Possession-sensitive credentials (e.g., dialysis certiﬁcate) are not
-considered
-• Minimizing overall cost (client + server) has limited applicability
-• Linear combination of costs may not be always desirable
-
-Point-based Trust Management Model
-
-D. Yao, K.B. Frikken, M.J. Atallah, R. Tamassia, “Private Information: To Reveal or not to Reveal,” in ACM TISSEC, vol. 12, no. 1,
-October 2008.
-
-
-Point-based trust management model – 1
-How to get a New York Driver License . . .
-• Documents that prove your name are assigned a point value; you
-must present identiﬁcation that totals six points or more:
-◦ US Passport or Passport Card [4 points]
-◦ Certiﬁcate of Naturalization (Form N-550, N-570) [3 points]
-◦ Certiﬁcate of Citizenship (Form N-560 and N-561) [3 points]
-◦ NYS Certiﬁcate of Title [2 points]
-◦ US Social Security Card [2 points]
-◦ Bank statement [1 point]
-◦ ...
-
-
-Point-based trust management model – 2
-• A server associates a given number of points with each credential
-◦ represent the trustworthiness of its holder
-◦ the points associated with credentials are private
-
-• A server requires a minimum total threshold of points before
-granting a client access to a resource
-◦ the threshold is private
-
-• A client values each of its credentials with a private score
-◦ indicates the sensitivity of the credential and should be kept private
-
-Goal: ﬁnd a subset of the client credentials that satisﬁes the threshold
-ﬁxed by the server and that has minimum privacy value to the client
-
-Point-based trust management model – 3
-Threshold of accessing a resource: 10
-S ERVER
-Point value
-
-College ID Driver’s license Credit card SSN
-3
-6
-8
-10
-
-C LIENT
-College ID Driver’s license Credit card SSN
-Sensitivity score
-10
-30
-50
-100
-
-
-Point-based trust management model – 3
-Threshold of accessing a resource: 10
-S ERVER
-Point value
-
-College ID Driver’s license Credit card SSN
-3
-6
-8
-10
-
-C LIENT
-College ID Driver’s license Credit card SSN
-Sensitivity score
-10
-30
-50
-100
+Two parties (client and server) interact with each other to establish mutual trust by the exchange of credentials $\to$ **trust negotiation protocol**.<br />
+The disclosure of a credential is regulated by a policy that speciﬁes the prerequisite conditions that must be satisﬁed to disclose the credential.<br />
+Credentials and policies are associated with a cost $\to$ more sensitive credentials/policies have higher cost.<br />
+The goal is to minimize the total sensitivity cost of credentials and policies disclosed during a trust negotiation.
+
+slide 15/51
+
+Provide a mechanism for regulating the release of credentials
+according to their sensitivity.<br />
+Put focus on negotiation rather than on client control.<br />
+Support only coarse-grain (credentials) speciﬁcations; sensitive
+associations as well as forbidden releases cannot be expressed.<br />
+Possession-sensitive credentials (e.g., dialysis certiﬁcate) are not
+considered.<br />
+Minimizing overall cost (client + server) has limited applicability.<br />
+Linear combination of costs may not be always desirable.
+
+----------------------------------------------------------------
+
+##### Point-based Trust Management Model
+How to get a New York Driver License? Documents that prove your name are assigned a point value; you must present identiﬁcation that totals six points or more:
+- US Passport or Passport Card \[$4$ points\];
+- Certiﬁcate of Naturalization (Form N-$550$, N-$570$) \[$3$ points\];
+- Certiﬁcate of Citizenship (Form N-$560$ and N-$561$) \[$3$ points\];
+- NYS Certiﬁcate of Title \[$2$ points\].
+- US Social Security Card \[$2$ points\].
+- Bank statement \[$1$ point\];
+- ...
+
+A server associates a given number of points with each credential:
+- represent the trustworthiness of its holder;
+- the points associated with credentials are private.
+
+A server requires a **minimum total threshold** of points before
+granting a client access to a resource. The threshold is private
+
+A client values each of its credentials with a **private score**. It indicates the sensitivity of the credential and should be kept private.
+
+Goal: ﬁnd a subset of the client credentials that satisﬁes the threshold ﬁxed by the server and that has minimum privacy value to the client.
+
+Threshold of accessing a resource: $10$
+
+slide 20/51
 
 Client’s options:
-• SSN [Points: 10; Sensitivity: 100]
+- _SSN_ \[Points: $10$; Sensitivity: $100$\];
+- _College ID_, _Credit card_ \[Points: $11$; Sensitivity: $60$\].
+- _Driver’s license_, _Credit card_ \[Points: $14$; Sensitivity: $80$\].
 
+There is a problem that consists in fulﬁlling the access threshold while disclosing the least amount of sensitive information (**Credential Selection Problem**).
+To solve it, the problem is converted into a knapsack problem and solved with a dynamic programming approach. A secure two-party dynamic programming protocol is used for solving the knapsack problem:
+- the server and user jointly compute the optimal sum of privacy scores for the released credentials without revealing their private parameters;
+- the protocol uses homomorphic encryption.
 
-Point-based trust management model – 3
-Threshold of accessing a resource: 10
-S ERVER
-Point value
+The solution can model only the additive characteristic of privacy.<br/>
+The client and server must agree on the universe of possible credential types (it may compromise the conﬁdentiality of the server policy).<br />
+Support only coarse-grain (credential) speciﬁcation; sensitive
+associations as well as forbidden releases cannot be expressed.<br />
+Put focus on negotiation rather than on client control.
 
-College ID Driver’s license Credit card SSN
-3
-6
-8
-10
+----------------------------------------------------------------
 
-C LIENT
-College ID Driver’s license Credit card SSN
-Sensitivity score
-10
-30
-50
-100
-
-Client’s options:
-• SSN [Points: 10; Sensitivity: 100]
-• College ID, Credit card [Points: 11; Sensitivity: 60]
-
-
-Point-based trust management model – 3
-Threshold of accessing a resource: 10
-S ERVER
-Point value
-
-College ID Driver’s license Credit card SSN
-3
-6
-8
-10
-
-C LIENT
-College ID Driver’s license Credit card SSN
-Sensitivity score
-10
-30
-50
-100
-
-Client’s options:
-• SSN [Points: 10; Sensitivity: 100]
-• College ID, Credit card [Points: 11; Sensitivity: 60]
-• Driver’s license, Credit card [Points: 14; Sensitivity: 80]
-
-Point-based trust management model – 3
-Threshold of accessing a resource: 10
-S ERVER
-Point value
-
-College ID Driver’s license Credit card SSN
-3
-6
-8
-10
-
-C LIENT
-College ID Driver’s license Credit card SSN
-Sensitivity score
-10
-30
-50
-100
-
-Client’s options:
-• SSN [Points: 10; Sensitivity: 100]
-• College ID, Credit card [Points: 11; Sensitivity: 60]
-• Driver’s license, Credit card [Points: 14; Sensitivity: 80]
-
-Point-based trust management model – 4
-Problem
-• The problem consists in fulﬁlling the access threshold while
-disclosing the least amount of sensitive information (Credential
-Selection Problem)
-Solution
-• The problem is converted into a knapsack problem and solved
-with a dynamic programming approach
-• A secure two-party dynamic programming protocol is used for
-solving the knapsack problem
-◦ the server and user jointly compute the optimal sum of privacy
-scores for the released credentials without revealing their private
-parameters
-◦ the protocol uses homomorphic encryption
-
-
-Point-based trust management model – 5
-• The solution can model only the additive characteristic of privacy
-• The client and server must agree on the universe of possible
-credential types (it may compromise the conﬁdentiality of the
-server policy)
-• Support only coarse-grain (credential) speciﬁcation; sensitive
-associations as well as forbidden releases cannot be expressed
-• Put focus on negotiation rather than on client control
-
-
-Logic-based Minimal Credential Disclosure
-
-P. Kärger, D. Olmedilla, W.-T. Balke, “Exploiting Preferences for Minimal Credential Disclosure in Policy-Driven Trust Negotiations,”
-in Proc. of SDM, Auckland, New Zealand, August 2008.
-
-Logic-based minimal credential disclosure – 1
+##### Logic-based Minimal Credential Disclosure
 • Parties are involved in a trust negotiation where the release of
 credentials is regulated by given policies
 • Each credential contains a single attribute
