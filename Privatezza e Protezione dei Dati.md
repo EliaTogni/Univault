@@ -1879,7 +1879,7 @@ Hierarchy of abstractions of credential types $\mathcal{H}$ ($\mathcal{T}$ ,$\pr
 - **Credential-independent**: the value depends only on the credential’s owner (e.g., birth date);
 - **credential-dependent**: the value depends on the certifying credential (e.g., credit card number).
 
-slide 34/51
+![[ClientPortfolioProperties.png]]
 
 ----------------------------------------------------------------
 ###### Client portfolio – Credentials
@@ -1887,7 +1887,7 @@ slide 34/51
 - **non-atomic**: properties can be selectively
 released, proof-of-possession can be certiﬁed (e.g., Idemix, U-Prove).
 
-slide 35/51
+![[ClientPortfolioCredentials.png]]
 
 ----------------------------------------------------------------
 
@@ -1896,7 +1896,7 @@ A **disclosure** is a subset of the client portfolio that satisﬁes:
 - **certiﬁability**: each property is certiﬁed by a credential;
 - **atomicity**: if a property of an atomic credential is disclosed, all its properties are disclosed.
 
-slide 36/51
+![[Disclosure.png]]
 
 ----------------------------------------------------------------
 
@@ -1917,7 +1917,7 @@ Specify how a client values information in her portfolio:
 - $\lambda(A)$: sensitivity of property $A$ individually taken;
 - $\lambda(c)$: sensitivity of the existence of credential $c$.
 
-slide 38/51
+![[SensitivityPropertiesCredentials.png]]
 
 ----------------------------------------------------------------
 
@@ -1925,11 +1925,11 @@ slide 38/51
 $\lambda(A)$: sensitivity of an association $A=\{A_i , ..., A_j, c_k, ..., c_n\}$, whose joint release carries:
 - more information than the release of each element in $A$ $\to$ **sensitive view**;
 
-slide 39/51 2
+![[SensitivityOfAssociations1.png]]
 
 - less information than the release of each element in $A$ $\to$ **dependency**.
 
-slide 39/51 3
+![[SensitivityOfAssociations2.png]]
 
 ----------------------------------------------------------------
 
@@ -1937,11 +1937,11 @@ slide 39/51 3
 Set $A=\{A_i, ..., A_j, c_k, ..., c_n\}$ of elements whose release must be controlled:
 - **forbidden view**: the release of $A$ is prohibited;
 
-slide 40/51 2
+![[Disclosure1.png]]
 
 - **disclosure limitation**: at most $n$ elements in $A$ can be released.
 
-slide 40/51 3
+![[Disclosure2.png]]
 
 A disclosure is valid if no disclosure constraints is violated.
 
