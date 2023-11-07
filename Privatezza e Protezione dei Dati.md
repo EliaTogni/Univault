@@ -1948,12 +1948,22 @@ A disclosure is valid if no disclosure constraints is violated.
 ----------------------------------------------------------------
 
 ###### Disclosure sensitivity
+
+![[DisclosureSensitivity1.png]]
+
 The sensitivity $\lambda(\mathcal{D})$ of a disclosure $\mathcal{D}$ is the sum of the sensitivity labels of released:
 - properties;
+
+![[DisclosureSensitivity2.png]]
+
 - credentials;
+
+![[DisclosureSensitivity3.png]]
+
 - associations.
 
-slide 41/51
+![[DisclosureSensitivity4.png]]
+
 
 $$\lambda(\mathcal{D}) = 1+5+5+10+1+3+5 = 30$$
 
@@ -1978,17 +1988,19 @@ A disclosure $\mathcal{D}$:
 	- $c$ certiﬁes $\{A_1, ..., A_m\}$;
 	- $type(c) \preceq_{isa} type$;
 
-slide 43/51 primo disegno
+![[MinDisclosure1.png]]
 
-	$\lambda{\mathcal{D}} = 1 + 8 + 1 + 5 + 5 + 15 = 35$
+$\lambda(\mathcal{D}) = 1 + 8 + 1 + 5 + 5 + 15 = 35$
 
 - is minimum if $\nexists$ a valid disclosure $\mathcal{D}'$ s.t. $\mathcal{D}'$ satisﬁes $\mathcal{R}$ and $\lambda(\mathcal{D}')< \lambda(\mathcal{D})$.
 
-slide 43/51 secondo disegno
-	$\lambda(\mathcal{D}) = 35 \to \mathcal{D}$ is not minimum
+![[MinDisclosure2.png]]
 
-slide 43/51 terzo disegno
-	$\lambda(\mathcal{D}') = 30 \to \mathcal{D}'$ is minimum
+$\lambda(\mathcal{D}) = 35 \to \mathcal{D}$ is not minimum.
+
+![[MinDisclosure3.png]]
+
+$\lambda(\mathcal{D}') = 30 \to \mathcal{D}'$ is minimum.
 
 ----------------------------------------------------------------
 
