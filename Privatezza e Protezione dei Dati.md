@@ -2013,34 +2013,21 @@ Integration with server-side solutions and more expressive server requests.
 
 ----------------------------------------------------------------
 
-Server-side open issues
-On the server-side there is still work to do to increase expressiveness.
-Today XACML:
-• does not provide a support for expressing and reasoning about
-digital certiﬁcates in the speciﬁcation of the authorization policies:
-◦ e.g., “attribute nationality should be certiﬁed by a passport”
-
-• does not have support for abstractions
-◦ e.g., “id_document is an abstraction including credentials
-{identity_card, driver_license, passport}”
-
-C. Ardagna, S. De Capitani di Vimercati, S. Paraboschi, E. Pedrini, P. Samarati, M. Verdicchio, “Expressive and Deployable
-Access Control in Open Web Service Applications,” in IEEE TSC, vol. 4, no. 2, April-June 2011.
-
-Server-side open issues 
-• does not have support for policy dialog (to communicate policies
-to users):
-◦ condition (e.g., “identity_card.age > 18”)
-◦ predicate (e.g., “identity_card.age >”)
-◦ property (e.g., “identity_card.age”)
-◦ credential (e.g., “identity_card”)
-◦ none (nothing can be disclosed about the condition)
-
-• does not have support for recursive conditions:
-◦ for expressing policies based on chains of credentials/properties
-◦ for supporting delegation and recursion (e.g., “the certiﬁcation
-authority signing a user’s credential has been directly or indirectly
-delegated by a particular authority preferred by the server”)
+###### Server-side open issues
+On the server-side there is still work to do to increase expressiveness. Today XACML:
+- does not provide a support for expressing and reasoning about digital certiﬁcates in the speciﬁcation of the authorization policies:
+	- e.g., “attribute nationality should be certiﬁed by a passport”.
+- does not have support for abstractions:
+-  e.g., “id_document is an abstraction including credentials $\{identity\_card, driver\_license, passport\}$”
+- does not have support for policy dialog (to communicate policies to users):
+	- condition (e.g., "_identity_card.age_ $> 18$”);
+	- predicate (e.g., “_identity_card.age_ $>$”);
+	- property (e.g., “_identity_card.age_”);
+	- credential (e.g., “_identity_card_”);
+	- none (nothing can be disclosed about the condition).
+- does not have support for recursive conditions:
+	- for expressing policies based on chains of credentials/properties;
+	- for supporting delegation and recursion (e.g., “the certiﬁcation authority signing a user’s credential has been directly or indirectly delegated by a particular authority preferred by the server”).
 
 ----------------------------------------------------------------
 
