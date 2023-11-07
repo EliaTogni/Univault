@@ -1849,13 +1849,13 @@ The goal of the work is to enable users to effectively regulate disclosure of th
 
 ###### Client portfolio modeling
 The information of the client forms a **client portfolio**.<br />
-Credential: certiﬁcate issued and signed by a third party
-◦ certiﬁes a set of properties
-◦ has a type, an identiﬁer, and an issuer
+**Credential**: certiﬁcate issued and signed by a third party:
+- it certiﬁes a set of properties;
+- it has a type, an identiﬁer, and an issuer.
 
-• Declaration: property stored as a self-signed credential
-• Hierarchy of abstractions of credential types H (T ,isa )
-(e.g., id_card isa id , id isa credential)
+**Declaration**: property stored as a self-signed credential.
+
+Hierarchy of abstractions of credential types $\mathcal{H}$ ($\mathcal{T}$ ,$\preceq_{isa}$) (e.g., _id_card_ $\preceq_{isa}$ _id_, _id_ $\succ_{isa}$ _credential_).
 
 
 An example of hierarchy of credential types.
@@ -1865,360 +1865,155 @@ slide 33/51
 ----------------------------------------------------------------
 
 ###### Client portfolio - Properties
-• Credential-independent:
-the value depends only
-on the credential’s
-owner (e.g., birth date)
-Credential-dependent :
-the value depends on
-the certifying credential
-(e.g., credit card
-number)
+- **Credential-independent**: the value depends only on the credential’s owner (e.g., birth date);
+- **credential-dependent**: the value depends on the certifying credential (e.g., credit card number).
+
+slide 34/51
 
 ----------------------------------------------------------------
 ###### Client portfolio – Credentials
-• Atomic: released as a
-whole (e.g., X.509)
-non-atomic: properties
-can be selectively
-released,
-proof-of-possession can
-be certiﬁed (e.g., Idemix,
-U-Prove)
-
-
-Client portfolio – Credentials
-• Atomic: released as a
-whole (e.g., X.509)
-• Non-atomic: properties
-can be selectively
-released,
-proof-of-possession can
-be certiﬁed (e.g., Idemix,
-U-Prove)
-
-Disclosure
-A disclosure is a subset
-of the client portfolio that
-satisﬁes:
-• certiﬁability: each
-property is certiﬁed by a
-credential
-• atomicity: if a property of
-an atomic credential is
-disclosed, all its
-properties are disclosed
-Does not satisfy atomicity!
-
-
-Disclosure
-
-A disclosure is a subset
-of the client portfolio that
-satisﬁes:
-• certiﬁability: each
-property is certiﬁed by a
-credential
-• atomicity: if a property of
-an atomic credential is
-disclosed, all its
-properties are disclosed
-Does not satisfy atomicity!
-
-Portfolio sensitivity
-• Different portfolio components have different sensitivity
-◦ the client may prefer to disclose some properties or credentials
-
-• Sensitivity labels express privacy requirements:
-◦ partial order relationship 
-◦ arbitrary composition operator ⊕
-(the composition of two sensitivity labels λ1 ⊕λ2 is a sensitivity label)
-
-• We assume sensitivity labels to be integer values, composed
-through the + operator
-
-
-Sensitivity of properties and credentials
-
-Specify how a client values
-information in her portfolio
-• λ (A): sensitivity of
-property A individually
-taken
-• λ (c): sensitivity of the
-existence of credential c
-
-
-Sensitivity of associations
-
-λ (A): sensitivity of an association A={Ai , . . . , Aj , c k , . . . , c n },
-whose joint release carries:
-more information than
-the release of each
-element in A
-=⇒ sensitive view
-less information than the
-release of each element
-in A
-=⇒ dependency
-
-Sensitivity of associations
-
-λ (A): sensitivity of an association A={Ai , . . . , Aj , c k , . . . , c n },
-whose joint release carries:
-• more information than
-the release of each
-element in A
-=⇒ sensitive view
-less information than the
-release of each element
-in A
-=⇒ dependency
-
-
-Sensitivity of associations
-
-λ (A): sensitivity of an association A={Ai , . . . , Aj , c k , . . . , c n },
-whose joint release carries:
-• more information than
-the release of each
-element in A
-=⇒ sensitive view
-• less information than the
-release of each element
-in A
-=⇒ dependency
+- **Atomic**: released as a whole (e.g., X.509);
+- **non-atomic**: properties can be selectively
+released, proof-of-possession can be certiﬁed (e.g., Idemix, U-Prove).
 
+slide 35/51
 
-Disclosure constraints
+----------------------------------------------------------------
 
-Set A={Ai , . . . , Aj , c k , . . . , c n }
-of elements whose release
-must be controlled
-forbidden view: the
-release of A is prohibited
-disclosure limitation: at
-most n elements in A
-can be released
+###### Disclosure
+A **disclosure** is a subset of the client portfolio that satisﬁes:
+- **certiﬁability**: each property is certiﬁed by a credential;
+- **atomicity**: if a property of an atomic credential is disclosed, all its properties are disclosed.
 
-A disclosure is valid if no disclosure constraints is violated
+slide 36/51
 
+----------------------------------------------------------------
 
-Disclosure constraints
-Set A={Ai , . . . , Aj , c k , . . . , c n }
-of elements whose release
-must be controlled
-• forbidden view: the
-release of A is prohibited
-disclosure limitation: at
-most n elements in A
-can be released
+###### Portfolio sensitivity
+Different portfolio components have different sensitivity. In fact, the client may prefer to disclose some properties or credentials.
 
-A disclosure is valid if no disclosure constraints is violated
+**Sensitivity labels** express privacy requirements:
+- partial order relationship $\succeq$;
+- arbitrary composition operator $\oplus$ (the composition of two sensitivity labels $\lambda_1 \oplus \lambda_2$ is a sensitivity label).
 
-Disclosure constraints
-Set A={Ai , . . . , Aj , c k , . . . , c n }
-of elements whose release
-must be controlled
-• forbidden view: the
-release of A is prohibited
-• disclosure limitation: at
-most n elements in A
-can be released
+We assume sensitivity labels to be integer values, composed
+through the $+$ operator.
 
-A disclosure is valid if no disclosure constraints is violated
-
-
-Disclosure constraints
-Set A={Ai , . . . , Aj , c k , . . . , c n }
-of elements whose release
-must be controlled
-• forbidden view: the
-release of A is prohibited
-• disclosure limitation: at
-most n elements in A
-can be released
-
-A disclosure is valid if no disclosure constraint is violated
-
-
-Disclosure sensitivity
-
-The sensitivity λ (D) of a disclosure D is the sum of the
-sensitivity labels of released:
-properties
-credentials
-associations
-
-λ (D) = 1+5+5+10+1+3+5 = 30
-
-
-Disclosure sensitivity
-
-The sensitivity λ (D) of a disclosure D is the sum of the
-sensitivity labels of released:
-• properties
-credentials
-associations
-
-λ (D) = 1+5+5+10+1+3+5 = 30
-
-Disclosure sensitivity
-
-The sensitivity λ (D) of a disclosure D is the sum of the
-sensitivity labels of released:
-• properties
-• credentials
-associations
-
-λ (D) = 1+5+5+10+1+3+5 = 30
-
-
-Disclosure sensitivity
-
-The sensitivity λ (D) of a disclosure D is the sum of the
-sensitivity labels of released:
-• properties
-• credentials
-• associations
-
-λ (D) = 1+5+5+10+1+3+5 = 30
-
-Server request
-Request R: disjunction of simple requests
-• Simple request R: conjunction of terms
-◦ term r =type.{A1 , . . . , Am }: disclosure of {A1 , . . . , Am } from c
-s.t. type(c )isa type
-=⇒ type is an abstraction of credential type type(c) in H
-
-Example
-R = r 1 ∧r 2
-r 1 = id.{Name,Address}
-r 2 = cc.{Name,CCNum}
-
-
-Min-disclosure problem
-A disclosure D:
-• satisﬁes R if it satisﬁes at
-least a R in R
-• satisﬁes R if, ∀
-r =type.{A1 , . . . , Am } in R,
-it includes c s.t.:
-◦ c certiﬁes {A1 , . . . , Am }
-◦ type(c )isa type
-
-is minimum if ∄ a valid
-disclosure D ′ s.t. D ′
-satisﬁes R and
-λ (D ′ )<λ (D)
-
-
-Min-disclosure problem
-R = id.{Name,Address} ∧ cc.{Name,CCNum}
-
-A disclosure D:
-• satisﬁes R if it satisﬁes at
-least a R in R
-• satisﬁes R if, ∀
-r =type.{A1 , . . . , Am } in R,
-it includes c s.t.:
-◦ c certiﬁes {A1 , . . . , Am }
-◦ type(c )isa type
-
-is minimum if ∄ a valid
-disclosure D ′ s.t. D ′
-satisﬁes R and
-λ (D ′ )<λ (D)
-
-Min-disclosure problem
-R = id.{Name,Address} ∧ cc.{Name,CCNum}
-
-A disclosure D:
-• satisﬁes R if it satisﬁes at
-least a R in R
-• satisﬁes R if, ∀
-r =type.{A1 , . . . , Am } in R,
-it includes c s.t.:
-◦ c certiﬁes {A1 , . . . , Am }
-◦ type(c )isa type
-
-is minimum if ∄ a valid
-disclosure D ′ s.t. D ′
-satisﬁes R and
-λ (D ′ )<λ (D)
-
-λ (D) = 1+8+1+5+5+15 = 35
-
-
-Min-disclosure problem
-R = id.{Name,Address} ∧ cc.{Name,CCNum}
-
-A disclosure D:
-• satisﬁes R if it satisﬁes at
-least a R in R
-• satisﬁes R if, ∀
-r =type.{A1 , . . . , Am } in R,
-it includes c s.t.:
-◦ c certiﬁes {A1 , . . . , Am }
-◦ type(c )isa type
-
-• is minimum if ∄ a valid
-disclosure D ′ s.t. D ′
-satisﬁes R and
-λ (D ′ )<λ (D)
-
-λ (D) = 35 =⇒ D is not minimum
-
-Min-disclosure problem
-R = id.{Name,Address} ∧ cc.{Name,CCNum}
-
-A disclosure D:
-• satisﬁes R if it satisﬁes at
-least a R in R
-• satisﬁes R if, ∀
-r =type.{A1 , . . . , Am } in R,
-it includes c s.t.:
-◦ c certiﬁes {A1 , . . . , Am }
-◦ type(c )isa type
-
-• is minimum if ∄ a valid
-disclosure D ′ s.t. D ′
-satisﬁes R and
-λ (D ′ )<λ (D)
-
-λ (D ′ ) = 30 =⇒ D ′ is minimum
-
-Computing a minimal disclosure
+----------------------------------------------------------------
+
+###### Sensitivity of properties and credentials
+Specify how a client values information in her portfolio:
+- $\lambda(A)$: sensitivity of property $A$ individually taken;
+- $\lambda(c)$: sensitivity of the existence of credential $c$.
+
+slide 38/51
+
+----------------------------------------------------------------
+
+###### Sensitivity of associations
+$\lambda(A)$: sensitivity of an association $A=\{A_i , ..., A_j, c_k, ..., c_n\}$, whose joint release carries:
+- more information than the release of each element in $A$ $\to$ **sensitive view**;
+
+slide 39/51 2
+
+- less information than the release of each element in $A$ $\to$ **dependency**.
+
+slide 39/51 3
+
+----------------------------------------------------------------
+
+###### Disclosure constraints
+Set $A=\{A_i, ..., A_j, c_k, ..., c_n\}$ of elements whose release must be controlled:
+- **forbidden view**: the release of $A$ is prohibited;
+
+slide 40/51 2
+
+- **disclosure limitation**: at most $n$ elements in $A$ can be released.
+
+slide 40/51 3
+
+A disclosure is valid if no disclosure constraints is violated.
+
+----------------------------------------------------------------
+
+###### Disclosure sensitivity
+The sensitivity $\lambda(\mathcal{D})$ of a disclosure $\mathcal{D}$ is the sum of the sensitivity labels of released:
+- properties;
+- credentials;
+- associations.
+
+slide 41/51
+
+$$\lambda(\mathcal{D}) = 1+5+5+10+1+3+5 = 30$$
+
+----------------------------------------------------------------
+
+###### Server request
+Request $\mathcal{R}$: disjunction of simple requests.<br />
+Simple request $\mathcal{R}$: conjunction of terms:
+- term $r =type.\{A_1, ..., A_m\}$: disclosure of $\{A_1, ..., A_m\}$ from $c$ s.t. $type(c) \succeq_{isa} type \to type$ is an abstraction of credential type $type(c)$ in $\mathcal{H}$.
+
+Example:
+$$\mathcal{R} = r_1 \wedge r_2$$
+$$r_1 = id.\{Name,Address\}$$
+$$r_2 = cc.\{Name,CCNum\}$$
+
+----------------------------------------------------------------
+
+###### Min-disclosure problem
+A disclosure $\mathcal{D}$:
+- satisﬁes $\mathcal{R}$ if it satisﬁes at least a $R$ in $\mathcal{R}$;
+- satisﬁes $R$ if, $\forall r =type.\{A_1, ..., A_m\}$ in $\mathcal{R}$, it includes $c$ s.t.:
+	- $c$ certiﬁes $\{A_1, ..., A_m\}$;
+	- $type(c) \preceq_{isa} type$;
+
+slide 43/51 primo disegno
+
+	$\lambda{\mathcal{D}} = 1 + 8 + 1 + 5 + 5 + 15 = 35$
+
+- is minimum if $\nexists$ a valid disclosure $\mathcal{D}'$ s.t. $\mathcal{D}'$ satisﬁes $\mathcal{R}$ and $\lambda(\mathcal{D}')< \lambda(\mathcal{D})$.
+
+slide 43/51 secondo disegno
+	$\lambda(\mathcal{D}) = 35 \to \mathcal{D}$ is not minimum
+
+slide 43/51 terzo disegno
+	$\lambda(\mathcal{D}') = 30 \to \mathcal{D}'$ is minimum
+
+----------------------------------------------------------------
+
+###### Computing a minimal disclosure
 The problem of computing a disclosure that minimizes release of
-information is NP-hard
-• exploit graph-based representation of portfolio and requests,
-providing heuristics based on graph-matching [ADFPS-10a]
-• exploit Max-SAT representation of the problem and existing SAT
-solver [ADFPS-10b]
+information is $NP$-hard:
+- exploit **graph-based** representation of portfolio and requests, providing heuristics based on graph-matching;
+- exploit **Max-SAT** representation of the problem and existing SAT solver.
 
-Work to be investigated – 1
-• Enable derivation of sensitivity levels of properties (e.g., based on
-identity exposure)
-• Support speciﬁcations in terms of preferences (e.g., my id_card is
-less sensitive than my passport)
-• Sensitivity labels assigned to proofs (provided by non-atomic
-credentials)
-• Support referring to existence of a credential (without releasing it)
-• Allow recipient/context-based sensitivity speciﬁcations (e.g.,
-dialysis certiﬁcates is less sensitive if released to a doctor than to
-a generic server)
-• User-intuitive approaches for expressing preferences (and
-possibly translate them to sensitivity labels)
+----------------------------------------------------------------
 
+###### Work to be investigated
+Enable **derivation of sensitivity levels** of properties (e.g., based on identity exposure).
 
-Work to be investigated – 2
-• Consideration of previous disclosures
-• Type vs instance mismatch (server talks about classes, users refer
-to instances)
-• Integration with server-side solutions and more expressive server
-requests [ADFNPPSV-10]
+Support speciﬁcations in terms of **preferences** (e.g., my id_card is
+less sensitive than my passport).
 
-Server-side open issues – 1
+Sensitivity labels assigned to **proofs** (provided by non-atomic
+credentials).
+
+Support referring to **existence of a credential** (without releasing it).
+
+Allow **recipient/context-based sensitivity speciﬁcations** (e.g., dialysis certiﬁcates is less sensitive if released to a doctor than to a generic server).
+
+User-intuitive approaches for expressing preferences (and
+possibly translate them to sensitivity labels).
+
+Consideration of previous disclosures.
+
+Type vs instance mismatch (server talks about classes, users refer to instances).
+
+Integration with server-side solutions and more expressive server requests.
+
+----------------------------------------------------------------
+
+Server-side open issues
 On the server-side there is still work to do to increase expressiveness.
 Today XACML:
 • does not provide a support for expressing and reasoning about
@@ -2232,7 +2027,7 @@ digital certiﬁcates in the speciﬁcation of the authorization policies:
 C. Ardagna, S. De Capitani di Vimercati, S. Paraboschi, E. Pedrini, P. Samarati, M. Verdicchio, “Expressive and Deployable
 Access Control in Open Web Service Applications,” in IEEE TSC, vol. 4, no. 2, April-June 2011.
 
-Server-side open issues – 2
+Server-side open issues 
 • does not have support for policy dialog (to communicate policies
 to users):
 ◦ condition (e.g., “identity_card.age > 18”)
