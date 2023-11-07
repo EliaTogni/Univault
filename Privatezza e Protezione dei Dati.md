@@ -1674,15 +1674,20 @@ $\to$ typically using logic-based languages.
 ------------------------------------------------------------------
 
 ### Interactive access control
-
-slide 7/51
-
 - No conditions by the client;
+
+![[InteractiveAccessControl1.png]]
+
 - multi-step negotiation;
+
+![[InteractiveAccessControl2.png]]
+
 - two-step interaction.
 
+![[InteractiveAccessControl3.png]]
+
 The existing/emerging technologies supporting ABAC are:
-- U-Prove/Idemix: provide advance credential management technologies (selective release, proof of possession, . . .);
+- U-Prove/Idemix: provide advance credential management technologies (selective release, proof of possession, ...);
 - XACML: standard today for interoperation of access control policies:
 	- expressive but with limited features for reasoning about digital certiﬁcates (e.g., attribute nationality should be certiﬁed by a passport) or policy dialog.
 
@@ -1729,7 +1734,7 @@ The disclosure of a credential is regulated by a policy that speciﬁes the prer
 Credentials and policies are associated with a cost $\to$ more sensitive credentials/policies have higher cost.<br />
 The goal is to minimize the total sensitivity cost of credentials and policies disclosed during a trust negotiation.
 
-slide 15/51
+![[CostSensitiveTrustNegotiation.png]]
 
 Provide a mechanism for regulating the release of credentials
 according to their sensitivity.<br />
@@ -1766,7 +1771,7 @@ Goal: ﬁnd a subset of the client credentials that satisﬁes the threshold ﬁ
 
 Threshold of accessing a resource: $10$
 
-slide 20/51
+![[PointBasedTrustManagementModel.png]]
 
 Client’s options:
 - _SSN_ \[Points: $10$; Sensitivity: $100$\];
@@ -1789,11 +1794,11 @@ Put focus on negotiation rather than on client control.
 ##### Logic-based Minimal Credential Disclosure
 Parties are involved in a trust negotiation where the release of credentials is regulated by given policies. Each credential contains a single attribute. By matching the policies of the involved parties, several negotiation paths (i.e., credential disclosure sets) will make the negotiation succeed. Logic-based approach for users to specify privacy preferences exploited for selecting a negotiation path.
 
-slide 25/51 n 1
+![[LogicBasedMinimalCredentialDisclosure1.png]]
 
 Disclosure sets are represented as binary vectors $\to$ $0$ means do not disclose; $1$ means disclose.
 
-slide 25/51 n 3
+![[LogicBasedMinimalCredentialDisclosure2.png]]
 
 Default preference: not disclosing a credential is preferred to
 disclosing it $\to$ $0 \succ_i 1$, with $i$ the $i$-th credential.
@@ -1809,25 +1814,26 @@ $S_5[i] = S_9[i], i = 2, . . . , 11$ and $S_5[1] \succ_1 S_9[1] \to S_5$ dominat
 Hierarchies specify (possibly contextual) user preferences on the release of credentials ($c_i \to c_j$ means that the user prefers to
 release $c_i$ over $c_j$).
 
-slide 27/51
+![[LogicBasedMinimalCredentialDisclosure3.png]]
 
 **Transitive combination of preferences**:
 - e.g., a disclosure set containing _bname_ and _baccount_ is preferred than a disclosure set containing _credit_card_ and _pin_.
 
 slide 28/51
 
+**Pareto composition**.<br />
 $S_5$ dominates $S_9$ since $0 \succ_{name} 1$;
 $S_5$ dominates $S_{11} since $0 \succ_{email} 1$;
 $S_6$ dominates $S_{10} since $0 \succ_{name} 1$;
 $S_6$ dominates $S_{12}$ since $0 \succ_{email} 1$.
 
-Hierarchical preferences
+**Hierarchical preferences**.<br />
 $S_5$ dominates $S_7$;
 $S_6$ dominates $S_8$;
 $S_1$ dominates $S_3$;
 $S_2$ dominates $S_4$.
 
-Transitive combination of preferences
+**Transitive combination of preferences**.<br />
 $S_1$ dominates $S_2$;
 $S_5$ dominates $S_6$;
 $\to$ user has to choose between $S_1$, $S_5$.
