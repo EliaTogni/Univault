@@ -1819,7 +1819,7 @@ release $c_i$ over $c_j$).
 **Transitive combination of preferences**:
 - e.g., a disclosure set containing _bname_ and _baccount_ is preferred than a disclosure set containing _credit_card_ and _pin_.
 
-slide 28/51
+![[LogicBasedMinimalCredentialDisclosure4.png]]
 
 **Pareto composition**.<br />
 $S_5$ dominates $S_9$ since $0 \succ_{name} 1$;
@@ -1833,9 +1833,14 @@ $S_6$ dominates $S_8$;
 $S_1$ dominates $S_3$;
 $S_2$ dominates $S_4$.
 
+![[LogicBasedMinimalCredentialDisclosure5.png]]
+
 **Transitive combination of preferences**.<br />
 $S_1$ dominates $S_2$;
-$S_5$ dominates $S_6$;
+$S_5$ dominates $S_6$.
+
+![[LogicBasedMinimalCredentialDisclosure6.png]]
+
 $\to$ user has to choose between $S_1$, $S_5$.
 
 
@@ -1866,7 +1871,7 @@ Hierarchy of abstractions of credential types $\mathcal{H}$ ($\mathcal{T}$ ,$\pr
 
 An example of hierarchy of credential types.
 
-slide 33/51
+![[HierarchyCredentialTypesExample.png]]
 
 ----------------------------------------------------------------
 
