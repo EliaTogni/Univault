@@ -935,7 +935,7 @@ Estimates must achieve a specified accuracy. Data that do not meet the accuracy 
 When macrodata tables are defined on the whole population, disclosure limitation procedures must be applied. Special rules define restrictions on the level of detail that can be provided in a table. These rules differ depending on the agency and the kind of table.
 
 An example of special rules.<br />
-Social Security Administration (SSA) rules prohibit publishing tables where the value of a cell is equal to a marginal total or would allow users to determine:
+**Social Security Administration** (**SSA**) rules prohibit publishing tables where the value of a cell is equal to a marginal total or would allow users to determine:
 - an individual’s age within a five-year interval;
 - earnings within a $ $1,000$ interval;
 - benefits within a $ $50$ interval.
@@ -974,7 +974,7 @@ Table containing information about employees by company and education level.
 
 ![[TableDisclosuresExample.png]]
 
-A cell with fewer than 5 respondents is defined as sensitive. Suppress one additional cell for each row/column with a sensitive cell suppressed.
+A cell with fewer than $5$ respondents is defined as sensitive. Suppress one additional cell for each row/column with a sensitive cell suppressed.
 
 ----------------------------------------------------------------
 
@@ -991,7 +991,7 @@ Combining _Dept$1$_ with _Dept$2$_ and _Dept$3$_ with _Dept$4$_ does offer the r
 
 ![[TableRestructuringExample3.png]]
 
-Combining _Dept$2$_ with _Dept$4$_ would still reveal that the income is within a 5K interval $[23K, 27K)$.
+Combining _Dept$2$_ with _Dept$4$_ would still reveal that the income is within a $5$K interval $[23K, 27K)$.
 
 ----------------------------------------------------------------
 
@@ -1003,9 +1003,9 @@ Even with complementary suppression it is difficult to guarantee adequate protec
 
 ### Complementary suppressions
 The selection of cells for complementary suppression is complicated. **Linear programming** techniques are used to automatically select cells for complementary suppression.<br />
-**Audit techniques** can be applied to evaluate the proposed suppression pattern to see if it provides the required protection.
+**[[Privatezza e Protezione dei Dati#Audit|Audit]] techniques** can be applied to evaluate the proposed suppression pattern to see if it provides the required protection.
 
-An example of cell suppression: Table without disclosures.<br />
+An example of cell suppression: table without disclosures.<br />
 Table containing information about employees by company and education level.
 
 ![[CellSuppressionExample1.png]]
@@ -1015,17 +1015,16 @@ A cell with fewer than 5 respondents is defined as sensitive.
 ![[CellSuppressionExample2.png]]
 
 Suppressing sensitive cells is not sufficient:<br />
-$35 = D1 + 10 + 10 + 14 \to D1 = 1$<br />
-$30 = D2 + 10 + 10 + 7 \to D2 = 3$<br />
-$50 = 15 + 20 + D4 + 12 \to D4 = 3$
-$35 = 12 + 14 + 7 + D6 \to D6 = 2$
-$20 = 15 + 1 + 3 + D3 \to D3 = 1$
-$25 = 3 + 10 + 10 + D5 \to D5 = 2$
+$35 = D1 + 10 + 10 + 14 \to D1 = 1$;<br />
+$30 = D2 + 10 + 10 + 7 \to D2 = 3$;<br />
+$50 = 15 + 20 + D4 + 12 \to D4 = 3$;<br />
+$35 = 12 + 14 + 7 + D6 \to D6 = 2$;<br />
+$20 = 15 + 1 + 3 + D3 \to D3 = 1$;<br />
+$25 = 3 + 10 + 10 + D5 \to D5 = 2$.
 
 ![[CellSuppressionExample3.png]]
 
-Suppress one additional cell for each row/column with a sensitive cell suppressed.<br />
-The table appears to offer protection to the sensitive cells but:
+Suppress one additional cell for each row/column with a sensitive cell suppressed. The table appears to offer protection to the sensitive cells but:
 $(15 + D1 + D2 + D3 ) + (20 + D4 + D5 + 15) - (D1 + D4 + 10 + 14) - (D2 + D5 + 10 + 7)$
 $= 20 + 55 - 35 - 30 \to D3 = 1$
 
@@ -1073,7 +1072,7 @@ Developed by the U.S. Census Bureau to provide protection of tables prepared fro
 
 Both approaches apply statistical disclosure limitation techniques to the microdata on which statistics are calculated. Statistics are protected by changing input data.
 
-For the $100$ percent microdata file, confidentiality edit applie **switching**:
+For the $100$ percent microdata file, confidentiality edit applied **switching**:
 1) take a sample of records from the microdata file;
 2) find a match for these records in some other geographic region, matching on a specified set of important attributes;
 3) swap all attributes on the matched records.
@@ -1086,8 +1085,8 @@ Records for the $20$ employees of company Alfa.
 ![[ConfidentialityEditExample.png]]
 
 1) take a sample of records from the microdata file (say a $10\%$ sample, $2$ tuples for company Alfa). Assume that records number $4$ and $17$ were selected as part of our $10\%$ sample;
-2) since we need tables by company and education level, we find a match in some other company on the other variables (race and salary, company totals for these variables remain unchanged):
-	- a match for record $4$ (Pete) is found in company Beta, the match is with Alonso, who has very high education;
+2) since we need tables by _Company_ and _Education_ level, we find a match in some other company on the other variables (_Race_ and _Salary_, company totals for these variables remain unchanged):
+	- a match for record $4$ (Pete) is found in company Beta. The match is with Alonso, who has very high education;
 	- Record $17$ (Mike) is matched with George in company Delta, who has medium education.
 3) we also assume that part of the randomly selected $10\%$ sample from other companies match records in company Alfa:
 	- one record from company Delta (June with high education) matches with Virginia (record $12$);
