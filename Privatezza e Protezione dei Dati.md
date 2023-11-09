@@ -1110,7 +1110,7 @@ Part of the randomly selected $10\%$ sample from other companies match records i
 
 ## Macrodata Disclosure Protection Techniques: Tables of Magnitude Data
 ### Protection of tables of magnitude data 
-Magnitude data are generally nonnegative quantities reported in surveys or censuses. The distribution of these values is likely to be skewed. Disclosure limitation techniques focus on preventing precise estimation of the values for outliers. Sampling is less likely to provide protection. The units that are most visible because of their size do not receive any protection from sampling.
+Magnitude data are generally nonnegative quantities reported in surveys or censuses. The distribution of these values is likely to be skewed. Disclosure limitation techniques focus on preventing precise estimation of the values for outliers. However, sampling is less likely to provide protection. The units that are most visible because of their size do not receive any protection from sampling.
 
 1) Identify sensitive cells:
 	 - **$p$-percent**;
@@ -1121,7 +1121,7 @@ Magnitude data are generally nonnegative quantities reported in surveys or censu
 3) verify result:
 	- **audit**;
 	- **information loss**;
-	- (parameters are not disclosed)
+	- (parameters are not disclosed).
 
 ----------------------------------------------------------------
 
@@ -1136,7 +1136,7 @@ These rules are used to identify sensitive cells by verifying whether it is enou
 ----------------------------------------------------------------
 
 #### Primary suppression rule: $p$-percent
-Disclosure of magnitude data occurs if the user can estimate the contribution of a respondent too accurately. A cell is sensitive, if upper and lower estimates for the respondent’s value are closer to the reported value than a pre-specified percentage $p$.
+Disclosure of magnitude data occurs if the user can estimate the contribution of a respondent too accurately. A cell is sensitive if upper and lower estimates for the respondent’s value are closer to the reported value than a pre-specified percentage $p$.
 
 Formally, a cell is protected if:
 
