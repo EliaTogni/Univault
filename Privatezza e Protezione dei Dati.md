@@ -1451,7 +1451,7 @@ Swap _Holidays_ and _Income_.
 
 ##### Micro-aggregation (blurring)
 It consists in grouping individual tuples into small groups of a fixed dimension $k$. The average over each group is published instead of individual values.<br />
-Groups are formed by using maximal similarity criteria.
+Groups are formed by using **maximal similarity criteria**.
 
 There are different variations of micro-aggregation:
 -  the average can substitute the original value only for a tuple in the group or for all of them;
@@ -1485,7 +1485,7 @@ The main advantage of this class of techniques is that the released synthetic da
 
 # Privacy and Data Protection in Emerging Scenarios
 ### ICT ecosystem
-Advancements in the ICT and networks have changed our society. $5$G and beyond, infrastructures and services are more powerful, efficient, and complex. ICT and network advancements are enabling factors for a smart society. Everything is getting smart: smart cars, augmented reality, smart entertainment systems, museum and exhibitions, smart e-commerce, smart governance, healthcare, intelligent shop, smart toothbrush...
+Advancements in the **Information and Communication Technology** (**ICT**) and networks have changed our society. $5$G and beyond, infrastructures and services are more powerful, efficient, and complex. ICT and network advancements are enabling factors for a smart society. Everything is getting smart: smart cars, augmented reality, smart entertainment systems, museum and exhibitions, smart e-commerce, smart governance, healthcare, intelligent shop, smart toothbrush...
 
 ----------------------------------------------------------------
 
@@ -1521,10 +1521,10 @@ The **Cloud** allows users and organizations to rely on external providers for s
 - data and services are always available;
 - scalable infrastructure for applications.
 
-Users lose control over their own data. This fact causes new security and privacy problems.Need solutions to protect data and to securely process them in the cloud.
+Users lose control over their own data. This fact causes new security and privacy problems. Need solutions to protect data and to securely process them in the cloud.
 
 #### Cloud computing: Today
-Cloud Service Providers (CSPs) apply security measures in the
+**Cloud Service Providers** (**CSPs**) apply security measures in the
 services they offer but these measures protect only the perimeter and storage against outsiders.
 
 ![[CloudComputingToday.png]]
