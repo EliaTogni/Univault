@@ -233,7 +233,7 @@ Now, it will be provided the definition of **Distance Vector**. Let $T_i (A_1 , 
 Let $T_i$ and $T_j$ be two tables such that $T_i \preceq T_j$, and let $MaxSup$ be the specified **threshold of acceptable suppression**. $T_j$ is said to be a **$k$-minimal generalization** of table $T_i$ iff:
 1) $T_j$ satisfies $k$-anonymity enforcing minimal required suppression, that is, $T_j$ satisfies $k$-anonymity and $\forall T_z : T_i \preceq T_z, DV_{i,z} = DV_{i,j}$, $T_z$ satisfies $k$-anonymity $\to \vert T_j \vert \geq \vert T_z \vert$. This means that for each table $T_z$, which is a generalization of $T_i$, and with the same $DV$, $T_j$ has more tuples so it does perform less suppression; 
 2) $\vert T_i \vert − \vert T_j \vert \leq MaxSup$;
-3) $\forall T_z : T_i \preceq T_z$ and $T_z$ satisfies conditions $1$ and $2$ $\to \neg (DV_{i,z} < DV_{i,j})$
+3) $\forall T_z : T_i \preceq T_z$ and $T_z$ satisfies conditions $1$ and $2$ $\to \neg (DV_{i,z} < DV_{i,j})$. This means that for each $T_z$ such that it is a generalization of $T_i$ and that satisfies the previous conditions, it is not true that the $DV$ of $T_z$ is dominated by the $DV$ of $T_j$, with respect to $i$.
 
 An example of $2$-minimal generalizations with $MaxSup = 2$.
 
