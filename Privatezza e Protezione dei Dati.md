@@ -1145,7 +1145,7 @@ $$\sum_{i = c + 2}^{N} x_i \geq \frac{p}{100} x_1$$
 $x_1, x_2, . . ., x_N$ : respondent’s value in decreasing order.<br />
 $c$: size of a coalition of respondents interested in estimating $x_1$.
 
-The largest value $x_1$ is the most exposed.
+The largest value $x_1$ is the most exposed. Therefore, if $x_1$ is protected, every other value is protected too.
 
 An example of the primary suppression rule: $p$-percent.<br />
 Consider the respondents that contribute to the total income in a city, which is equal to $250K$, to be (in decreasing order):
@@ -1244,7 +1244,7 @@ Once sensitive cells have been identified, there are two options:
 - cell suppression: do not publish sensitive cells (**primary suppressions**) and remove other cells (**complementary suppressions**).
 
 An administrative way to avoid cell suppression consists in obtaining written permission from respondents.<br />
-Other non-sensitive cells must be selected for suppression to ensure that the respondent level data in sensitive cells cannot be estimated too accurately.A respondent’s data cannot be estimated too closely.
+Other non-sensitive cells must be selected for suppression to ensure that the respondent level data in sensitive cells cannot be estimated too accurately. A respondent’s data cannot be estimated too closely.
 
 Sensitive cells might be leaked due to the fact that:
 - implicitly published unions of suppressed cells may be sensitive according to the sensitivity rule adopted;
@@ -1256,7 +1256,7 @@ Data analysts know which cells are of greatest interest (and should not be used 
 ----------------------------------------------------------------
 
 #### Audit
-If totals are published the sum of the (primary or secondary) suppressed cells can be derived. Apply the sensitivity rule to these sums to ensure that they are not sensitive:
+If totals are published, the sum of the (primary or secondary) suppressed cells can be derived. Apply the **sensitivity rule** to these sums to ensure that they are not sensitive:
 - rows and columns can be seen as a large system of linear equations;
 - estimate a lower and upper bound of each suppressed cell using linear programming;
 - if bounds are too close to the original value, the cell is sensitive.
@@ -1298,7 +1298,7 @@ Many situations require today that the specific stored data themselves (**microd
 
 To protect the anonymity of the respondents, data holders often remove or encrypt explicit identifiers such as names, addresses, and phone numbers. De-identifying data, however, provides no guarantee of anonymity.
 
-Released information often contains other quasi-identifying data (e.g., race, birth date, sex, and ZIP code) that can be linked to publicly available information to reidentify respondents. The data recipients can determine (or restrict uncertainty) to which respondent some pieces of released data refer. This has created an increasing demand to devote resources for an adequate protection of sensitive data. The microdata protection techniques follow two main strategies:
+Released information often contains other quasi-identifying data (e.g., _Race_, _Birth_date_, _Sex_, and _ZIP_ code) that can be linked to publicly available information to reidentify respondents. The data recipients can determine (or restrict uncertainty) to which respondent some pieces of released data refer. This has created an increasing demand to devote resources for an adequate protection of sensitive data. The microdata protection techniques follow two main strategies:
 - reduce the information content;
 - change the data in such a way that the information content is maintained as much as possible.
 
@@ -1314,8 +1314,7 @@ Geographic location is a characteristic that:
 - often appears in microdata;
 - can be used for re-identifying respondents.
 
-It is therefore important limiting geographic details.
-For example, the Census Bureau will not identify any geographic region with less than $100,000$ persons in the sampling ($250,000$ in the $’80$). Microdata contain, in fact, contextual variables that describe the area in which a respondent resides but do not identify that area (e.g., average temperature of an area).
+Therefore, it is important limiting geographic details. For example, the Census Bureau will not identify any geographic region with less than $100,000$ persons in the sampling ($250,000$ in the $’80$). Microdata contain, in fact, contextual variables that describe the area in which a respondent resides but do not identify that area (e.g., average temperature of an area).
 
 ----------------------------------------------------------------
 
@@ -1325,8 +1324,8 @@ These techniques are based on the principle that reidentification can be counter
 - releasing plausible but made up values instead of the real ones.
 
 According to this principle, the microdata protection techniques can be classified into two main categories:
-- masking techniques;
-- synthetic data generation techniques.
+- **masking techniques**;
+- **synthetic data generation techniques**.
 
 They can operate on different data types:
 - **continuous**: an attribute is said to be continuous if it is numerical and arithmetic operations are defined on it (e.g., date of birth, temperature, . . .);
@@ -1384,9 +1383,9 @@ $[150-199]$: low, $[200-289]$: medium, $[290-310]$ high.
 ----------------------------------------------------------------
 
 ##### Top-coding and bottom-coding
-**Top-coding** defines an upper limit (top-code) for each attribute to be protected. Any value greater than it is replaced with a flag that tells the user what the top-code is and that this value exceeds it. It can be applied to categorical attributes that can be linearly ordered as well as to continuous attributes.
+**Top-coding** defines an upper limit (**top-code**) for each attribute to be protected. Any value greater than that is replaced with a flag that tells the user what the top-code is and that this value exceeds it. It can be applied to categorical attributes that can be linearly ordered as well as to continuous attributes.
 
-**Bottom-coding** defines a lower limit (bottom-code) for each attribute to be protected. Any value lower than it is replaced with a flag that tells the user what the bottom-code is and that this value is less than it. It can be applied to categorical attributes that can be linearly ordered as well as to continuous attributes
+**Bottom-coding** defines a lower limit (**bottom-code**) for each attribute to be protected. Any value lower than it is replaced with a flag that tells the user what the bottom-code is and that this value is less than it. It can be applied to categorical attributes that can be linearly ordered as well as to continuous attributes
 
 An example of top-coding and bottom-coding.
 
