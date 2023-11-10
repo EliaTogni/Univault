@@ -2456,113 +2456,48 @@ Data integrity in storage relies on digital signatures. Signatures are usually c
 - table and attribute level signatures can be veriﬁed only after downloading the whole table/column;
 - cell level signature causes a high veriﬁcation overhead.
 
-• The veriﬁcation cost grows linearly with the number of tuples in
-the query result
-=⇒ the signature of a set of tuples can be combined to generate
-the aggregated signature [MNT-06]
+The **veriﬁcation cost** grows linearly with the number of tuples in the query result $\to$ the signature of a set of tuples can be combined to generate the aggregated signature.
 
+----------------------------------------------------------------
 
-Selective Encryption and
-Over-Encryption
+## Selective Encryption and Over Encryption
+### Selective information sharing
+Different users might need to enjoy different views on the
+outsourced data. Enforcement of the access control policy requires the data owner to mediate access requests $\to$ impractical (if not inapplicable).<br />
+Authorization enforcement may not be delegated to the provider
+$\to$ data owner should remain in control.
 
-S. De Capitani di Vimercati, S. Foresti, S. Jajodia, S. Paraboschi, P. Samarati, “Encryption Policies for Regulating Access to Outsourced Data,” in ACM TODS, vol. 35, no. 2, April 2010.
+#### Selective information sharing: Approaches
+**Attribute-based encryption** (**ABE**): allow derivation of a key only by users who hold certain attributes (based on asymmetric
+cryptography).
 
-Selective information sharing
-• Different users might need to enjoy different views on the
-outsourced data
-• Enforcement of the access control policy requires the data owner
-to mediate access requests
-=⇒ impractical (if not inapplicable)
-• Authorization enforcement may not be delegated to the provider
-=⇒ data owner should remain in control
+**Selective encryption**: the authorization policy deﬁned by the data owner is translated into an equivalent encryption policy
 
-Selective information sharing: Approaches – 1
-• Attribute-based encryption (ABE): allow derivation of a key only by
-users who hold certain attributes (based on asymmetric
-cryptography)
+----------------------------------------------------------------
 
-Selective information sharing: Approaches – 2
-• Selective encryption: the authorization policy deﬁned by the data
-owner is translated into an equivalent encryption policy
+### Selective encryption – Scenario
 
-Selective encryption – Scenario
+slide 59/268
 
-Selective encryption [DFJPS-10b]
+----------------------------------------------------------------
+
+### Selective encryption
 Basic idea/desiderata:
-• data themselves need to directly enforce access control
-• different keys should be used for encrypting data
-• authorization to access a resource translated into
-knowledge of the key with which the resource is encrypted
-• each user is communicated the keys necessary to decrypt the
-resources she is entailed to access
+- data themselves need to directly enforce access control;
+- different keys should be used for encrypting data;
+- authorization to access a resource translated into knowledge of the key with which the resource is encrypted;
+- each user is communicated the keys necessary to decrypt the resources she is entailed to access.
 
-Authorization policy
-• The data owner deﬁnes a discretionary access control
-(authorization) policy to regulate read access to the resources
-• An authorization policy A , is a set of permissions of the form
-huser,resourcei.
-It can be represented as:
-◦ an access matrix
-◦ a directed and bipartite graph having a vertex for each user u and
-for each resource r, and an edge from u to r for each permission
-hu, ri
+#### Authorization policy
+The data owner deﬁnes a **discretionary access control** (authorization) policy to regulate read access to the resources. An authorization policy $\mathcal{A}$ is a set of permissions of the form $\langle \text{ user, resource } \rangle$. It can be represented as:
+- an access matrix;
+- a directed and bipartite [[Grafo|graph]] having a vertex for each user $u$ and for each resource $r$, and an edge from $u$ to $r$ for each permission $\langle u, r \rangle$.
 
-• Basic idea:
-◦ different ACLs implies different encryption keys
+The basic idea is that different ACLs implies different encryption keys.
 
-Authorization policy – Example
+An example of an authorization policy.
 
-A
-B
-C
-D
-
-r1
-1
-1
-1
-0
-
-r2
-1
-1
-1
-0
-
-r3
-1
-1
-1
-1
-
-r4
-0
-1
-1
-1
-
-r5
-0
-1
-1
-1
-
-A
-
-r1
-
-B
-
-r2
-
-C
-
-r3
-
-D
-
-r4
-r5
+slide 62/268
 
 Encryption policy
 • The authorization policy deﬁned by the data owner is translated
