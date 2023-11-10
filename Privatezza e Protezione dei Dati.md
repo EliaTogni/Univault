@@ -28,8 +28,8 @@ Need to ensure data privacy and integrity are properly protected.
 Release of data to the public for statistical purpose:
 - **statistical DBMS**:
 	- the DBMS responds only to **statistical queries** (the aggregate ones);
-	- need **run time checking** to control information (indirectly) released. Consider a dataset composed by $1000$ respondents, $999$ males and $1$ female, as an example. If the user makes a query which returns a value aggregated from all the **respondents** (the people replying with answers to a survey, the ones the data refers to) and, then, a query which returns a value aggregated from all the males, the DBMS must block the second query because it will expose the female respondent.<br />
-	  Consider the same dataset and two different and colluded users as an example. The first one will be able to make the first query and the second one will be able to make the second one. Therefore, togheter they are able to expose the female respondent (**collusion**).
+	- consider a dataset composed by $1000$ respondents, $999$ males and $1$ female, as an example. If the user makes a query which would return a value aggregated from all the **respondents** (the people replying with answers to a survey, the ones the data refers to) and, then, a query which would return a value aggregated from all the males, the DBMS must block the second query because it would expose the female respondent.<br />
+	  Consider the same dataset and two different and colluded users as an example. The first one si able to make the first query and the second one is able to make the second one. Therefore, together they are able to expose the female respondent (**collusion**). therefore, the statistical DBMS need **run time checking** to control information (directly and indirectly) released.
 - **statistical data**:
 	- publish statistics generated a priori and the user can only access these statistics;
 	- control on indirect release performed before publication.
@@ -2312,7 +2312,7 @@ It is important to measure quantitatively the level of exposure due to the publi
 $$\varepsilon = \text{ Exposure Coefficient}$$
 
 ### Scenarios
-The computation of the exposure coefﬁcient $\varepsilom$ depends on two factors:
+The computation of the exposure coefﬁcient $\varepsilon$ depends on two factors:
 - the indexing method adopted, e.g.:
 	- direct encryption;
 	- hashing.
@@ -2325,11 +2325,11 @@ The computation of the exposure coefﬁcient $\varepsilom$ depends on two factor
 		- the encrypted database (**DB$^k$**).
 
 #### Possible inferences
-Freq+DB$^k$:
-- plaintext content: determine the existence of a certain tuple (or association of values) in the original database;
-- indexing function: determine the correspondence between plaintext values and indexes.
-DB+DB$^k$:
-- indexing function: determine the correspondence between plaintext values and indexes.
+- Freq+DB$^k$:
+	- plaintext content: determine the existence of a certain tuple (or association of values) in the original database;
+	- indexing function: determine the correspondence between plaintext values and indexes.
+- DB+DB$^k$:
+	- indexing function: determine the correspondence between plaintext values and indexes.
 
 ##### Exposure coefﬁcient computation
 
@@ -2435,35 +2435,26 @@ Search car: $H_1(frog)=1$; $H_2(frog)=5$; $H_3(frog)=9$.<br />
 $\to$ maybe Yes; false positive!
 
 ### Bloom ﬁlter – Properties
-• Generalization of hashing (Bloom ﬁlter with one hash function is
-equivalent to ordinary hashing)
-+ space efﬁcient (roughly ten bit for every element in the dictionary
-with 1% error)
-− elements cannot be removed
+Generalization of hashing (Bloom ﬁlter with one hash function is equivalent to ordinary hashing):
+- space efﬁcient (roughly ten bit for every element in the dictionary with $1\%$ error);
+- elements cannot be removed.
 
-• Yield a constant false positive probability
-− theoretically considered not acceptable
-+ acceptable in practical applications as ﬁne price to pay for space
-efﬁciency
+It yield a constant false positive probability:
+- theoretically considered not acceptable;
+- acceptable in practical applications as ﬁne price to pay for space efﬁciency.
 
+----------------------------------------------------------------
 
-Data Integrity
-
-Integrity of outsourced data
+## Data Integrity
+### Integrity of outsourced data
 Two aspects:
-• Integrity in storage: data must be protected against improper
-modiﬁcations
-=⇒ unauthorized updates to the data must be detected
-• Integrity in query computation: query results must be correct and
-complete
-=⇒ server’s misbehavior in query evaluation must be detected
+- **integrity in storage**: data must be protected against improper modiﬁcations $\to$ unauthorized updates to the data must be detected;
+- **Integrity in query computation**: query results must be correct and complete $\to$ server’s misbehavior in query evaluation must be detected.
 
-Integrity in storage
-• Data integrity in storage relies on digital signatures
-• Signatures are usually computed at tuple level
-◦ table and attribute level signatures can be veriﬁed only after
-downloading the whole table/column
-◦ cell level signature causes a high veriﬁcation overhead
+#### Integrity in storage
+Data integrity in storage relies on digital signatures. Signatures are usually computed at tuple level:
+- table and attribute level signatures can be veriﬁed only after downloading the whole table/column;
+- cell level signature causes a high veriﬁcation overhead.
 
 • The veriﬁcation cost grows linearly with the number of tuples in
 the query result
