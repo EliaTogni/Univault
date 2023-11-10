@@ -1,6 +1,0 @@
-{{Title}}:
-{Author}:
-{{Date}}:
-
-## Articolo ##
-

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Privatezza e Protezione dei Dati.md",
+                "file": "Cittadinanza Digitale e Tecnocivismo.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Privatezza e Protezione dei Dati.md",
+                "file": "Cittadinanza Digitale e Tecnocivismo.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,6 +116,8 @@
   },
   "active": "96ef9f8b3e45f972",
   "lastOpenFiles": [
+    "Privatezza e Protezione dei Dati.md",
+    "Templates/Template Articolo.md",
     "Images/TableRestructuringExample3.png",
     "Images/DisclosureSensitivity4.png",
     "Images/DisclosureSensitivity3.png",
@@ -126,7 +128,6 @@
     "Images/MinDisclosure1.png",
     "Images/Disclosure1.png",
     "Images/Disclosure2.png",
-    "Images/SensitivityOfAssociations1.png",
     "Modello a Memoria Distribuita.md",
     "Memoria Distribuita.png.md",
     "Modello a Memoria Condivisa.md",
@@ -139,7 +140,6 @@
     "Teorema di Wyllie.md",
     "Algoritmi Paralleli e Distribuiti.md",
     "Statistical Methods for Machine Learning.md",
-    "Privatezza e Protezione dei Dati.md",
     "Algoritmo Greedy.md",
     "Algoritmo.md",
     "Divide et Impera.md",
