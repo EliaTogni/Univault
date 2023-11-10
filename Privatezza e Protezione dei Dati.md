@@ -2289,644 +2289,152 @@ slide 29/268
 - vulnerable with respect to inference attacks.
 
 **Order Preserving Encryption with Splitting and Scaling** (**OPESS**)
-schema creates index values so that their frequency distribution is
-ﬂat [WL-06]
+schema creates index values so that their frequency distribution is ﬂat.
 
-Fully homomorphic encryption [G-09, GKPVZ-13]
+----------------------------------------------------------------
+
+### Fully homomorphic encryption
 Fully homomorphic encryption schema:
-• allows performing speciﬁc computation on encrypted data
-• decryption of the computation result, yields the result of
-operations performed on the plaintext data
-Recent advancement: a functional-encryption schema that ﬁts
-together several existing schemes (homomorphic encryption, garbled
-circuit, attribute-based encryption) [GKPVZ-13]
-• still too computationally intensive for practical DBMS applications
+- allows performing speciﬁc computation on encrypted data;
+- decryption of the computation result, yields the result of operations performed on the plaintext data.
 
+Recent advancement: a functional-encryption schema that ﬁts together several existing schemes (homomorphic encryption, garbled circuit, attribute-based encryption). This is still too computationally intensive for practical DBMS applications.
 
-Inference exposure
+----------------------------------------------------------------
 
-A. Ceselli, E. Damiani, S. De Capitani di Vimercati, S. Jajodia, S. Paraboschi, and P. Samarati, “Modeling and Assessing Inference
-Exposure in Encrypted Databases,” in ACM TISSEC, vol. 8, no. 1, February 2005.
-
-Inference exposure
+## Inference exposure
 There are two conﬂicting requirements in indexing data:
-• indexes should provide an effective query execution mechanism
-• indexes should not open the door to inference and linking attacks
-It is important to measure quantitatively the level of exposure due to
-the publication of indexes:
+- indexes should provide an effective query execution mechanism;
+- indexes should not open the door to inference and linking attacks
 
-ε = Exposure Coefﬁcient
+It is important to measure quantitatively the level of exposure due to the publication of indexes:
 
-Scenarios
-The computation of the exposure coefﬁcient ε depends on two factors:
-• the indexing method adopted, e.g.,
-◦ direct encryption
-◦ hashing
+$$\varepsilon = \text{ Exposure Coefficient}$$
 
-• the a-priori knowledge of the intruder, e.g.,
-◦ Freq+DBk :
-− the frequency distribution of plaintext values in the original database
-(Freq)
-− the encrypted database (DBk )
+### Scenarios
+The computation of the exposure coefﬁcient $\varepsilom$ depends on two factors:
+- the indexing method adopted, e.g.:
+	- direct encryption;
+	- hashing.
+- the a-priori knowledge of the intruder, e.g.:
+	- **Freq+DB$^k$**:
+		- the frequency distribution of plaintext values in the original database (**Freq**);
+		- the encrypted database (**DB$^k$**).
+	- **DB+DB$^k$**:
+		- the plaintext database (**DB**);
+		- the encrypted database (**DB$^k$**).
 
-◦ DB+DBk :
-− the plaintext database (DB)
-− the encrypted database (DBk )
+#### Possible inferences
+Freq+DB$^k$:
+- plaintext content: determine the existence of a certain tuple (or association of values) in the original database;
+- indexing function: determine the correspondence between plaintext values and indexes.
+DB+DB$^k$:
+- indexing function: determine the correspondence between plaintext values and indexes.
 
-Possible inferences
-Freq+DBk
-• plaintext content: determine the existence of a certain tuple (or
-association of values) in the original database
-• indexing function: determine the correspondence between
-plaintext values and indexes
-DB+DBk
-• indexing function: determine the correspondence between
-plaintext values and indexes
+##### Exposure coefﬁcient computation
 
-Exposure coefﬁcient computation [CDDJPS-05]
+slide 37/268
 
-Freq+DBk
-DB+DBk
+An example of Freq+DB$^k$.
 
-Direct Encryption
-Quotient Table
-RCV graph
+slide 38/268
 
-Hashing
-Multiple subset sum problem
-RCV line graph
+----------------------------------------------------------------
 
+##### Direct encryption – Freq+DBk
+Correspondence between an index and a plaintext value can be determined based on the number of occurrences of the index/value:
+- basic protection: values with the same number of occurrences are indistinguishable to the attacker.
 
-Freq+DBk – Example
-Knowledge
-Account
-Acc1
-Acc2
-Acc3
-Acc4
-Acc5
-Acc6
-
-Customer
-Alice
-Alice
-Bob
-Chris
-Donna
-Elvis
-
-Inference
-Balance
-100
-200
-300
-200
-400
-200
-
-• IA = Account
-• IC = Customer
-• IB = Balance
-• κ = 200 (indexing inference)
-• α =Alice (indexing inference)
-• hAlice,200i is in the table (association inference)
-• Alice is also associated with a value different
-from 200 (“100,300,400”, all equiprobable)
-
-Accountsk1
-Counter Etuple
-1
-2
-3
-4
-5
-6
-
-x4Z3tfX2ShOSM
-mNHg1oC010p8w
-WsIaCvfyF1Dxw
-JpO8eLTVgwV1E
-qctG6XnFNDTQc
-4QbqC3hxZHklU
-
-IA IC IB
-
-π
-ϖ
-ξ
-ρ
-ς
-ι
-
-α
-α
-β
-γ
-δ
-ε
-
-µ
-κ
-η
-κ
-θ
-κ
-
-
-Direct encryption – Freq+DBk
-• Correspondence between an index and a plaintext value can be
-determined based on the number of occurrences of the
-index/value
-◦ Basic protection: values with the same number of occurrences are
-indistinguishable to the attacker
-
-• Assessment of index exposure based on equivalence relation
+Assessment of index exposure based on equivalence relation
 where index/plaintext values with same number of occurrences
 belong to the same class
-◦ Exposure of values in equivalence class C is 1/ | C |
-
-Freq+DBk – Example of exposure computation
-A.1 = {π , ϖ , ξ , ρ , ς , ι } = {Acc1,. . .,Acc6}
-C.1 = {β , γ , δ , ε } = {Bob,Chris,Donna,Elvis}
-C.2 = {α } = {Alice}
-B.1 = {µ , η , θ } = {100,300,400}
-B.3 = {κ } = {200}
-I NDEX _ VALUES
-IA IC
-IB
-π
-α
-µ
-ϖ
-α
-κ
-ξ
-β
-η
-ρ
-γ
-κ
-ς
-δ
-θ
-ι
-ε
-κ
-
-Q UOTIENT
-qtA qtC qtB
-A.1 C.2 B.1
-A.1 C.2 B.3
-A.1 C.1 B.1
-A.1 C.1 B.3
-A.1 C.1 B.1
-A.1 C.1 B.3
-
-I NVERSE C ARDINALITY
-icA
-icC
-icB
-1/6 1
-1/3
-1/6 1
-1
-1/6 1/4 1/3
-1/6 1/4 1
-1/6 1/4 1/3
-1/6 1/4 1
-
-E = 1n ∑ni=1 ∏kj=1 ICi,j = 1/18
-# Arrivare qui
-
-Direct encryption – DB+DBk
-• 3-colored undirected Row-Column-Value graph:
-◦
-◦
-◦
-◦
-
-one vertex of color “column” for every attribute
-one vertex of color “row” for every tuple
-one vertex for every distinct value in a column
-an arc connects every value to the column and row(s) in which it
-appears
-
-• RCV on plaintext values is identical to the one on indexes
-• Inference exposure can be measured by evaluating the
-automorphisms of the graph
-• Not sufﬁcient to count the number of automorphisms:
-◦ if there are K automorphisms and in k of them the label assigned to
-vi is the same, there is a probability of k/K of identifying the value
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-41/268
-
-DB+DBk – Example (1)
-Customer
-Alice
-Alice
-Bob
-Chris
-Donna
-Elvis
-
-Balance
-100
-200
-300
-200
-400
-200
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-IC
-α
-α
-β
-γ
-δ
-ε
-
-IB
-µ
-κ
-η
-κ
-θ
-κ
-
-42/268
-
-DB+DBk – Example (2)
-Inference
-• IC = Customer
-• IB = Balance
-• α = Alice
-• µ = 100
-• κ = 200
-• {γ , ε } = {Chris,Elvis}
-• {hβ ,η i,hδ ,θ i}=
-{hBob,300i,hDonna,400i}
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-43/268
-
-Computing the exposure coefﬁcient
-• The set of automorphisms constitutes a group described by the
-coarsest equitable partition of the vertices:
-◦ each subset appearing in the partition contains vertices that can be
-substituted one for the other in an automorphism
-
-• Nauty algorithm: iteratively derives the partition
-• Probability of identifying a vertex in partition C: 1/ | C |
-Exposure with equitable partition of n elements over a total number of
-m: n/m
-Example
-• β indistinguishable from δ
-• η indistinguishable from θ
-• γ indistinguishable from ε
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-44/268
-
-Computing the exposure coefﬁcient – Example
-Inference
-• IC = Customer
-• IB = Balance
-• α = Alice
-• µ = 100
-• κ = 200
-• {γ , ε } = {Chris,Elvis}
-• {hβ ,η i,hδ ,θ i}=
-{hBob,300i,hDonna,400i}
-
-Equitable partition: {(α ),(β , δ ),(γ , ε ),(µ ),(η , θ ),(κ )}
-E = 6/9 = 2/3
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+- exposure of values in equivalence class $C$ is $\frac{1}{\vert  C \vert}$.
 
-45/268
-
-Hashing exposure – Freq+DBk
-• The hash function is characterized by a collision factor, denoting
-the number of attribute values that on average collide on the same
-index value
-• There are different possible mappings of plaintext values in index
-values, w.r.t. the constraints imposed by frequencies
-• Need to enumerate the different mappings by using an adaptation
-of Pisinger’s algorithm for the subset sum problem
-• Compute the exposure coefﬁcient for each mapping
+An example of exposure computation in Freq+DB$^k$.<br />
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+slide 40/268
 
-46/268
+----------------------------------------------------------------
 
-Hashing exposure – DB+DBk
-• The RCV-graph built on plaintext and encrypted data are not
-identical
-• Different vertexes of the plaintext RCV-graph may collapse to the
-same encrypted RCV-graph vertex
-• The number of edges connecting row vertexes to value vertexes in
-the plaintext and encrypted RCV-graph is the same
-• The problem becomes ﬁnding a correct matching between the
-edges of the plaintext RCV-graph and the edges of the encrypted
-RCV-graph
+##### Direct encryption – DB+DB$^k$
+$3$-colored undirected **Row-Column-Value** graph:
+- one vertex of color “column” for every attribute;
+- one vertex of color “row” for every tuple;
+- one vertex for every distinct value in a column;
+- an arc connects every value to the column and row(s) in which it appears.
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+RCV on plaintext values is identical to the one on indexes. Inference exposure can be measured by evaluating the automorphisms of the graph. Not sufﬁcient to count the number of automorphisms:
+- if there are $K$ automorphisms and in $k$ of them the label assigned to $v_i$ is the same, there is a probability of $k/K$ of identifying the value.
 
-47/268
+An example of DB+DB$^k$.
 
-Bloom Filter
+slide 42/268
+slide 43/268
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+----------------------------------------------------------------
 
-48/268
+##### Computing the exposure coefﬁcient
+The set of automorphisms constitutes a group described by the
+coarsest equitable partition of the vertices. Each subset appearing in the partition contains vertices that can be substituted one for the other in an automorphism
 
-Bloom ﬁlter [B-70]
-A Bloom ﬁlter is at the basis of the construction of some indexing
-techniques. It is an efﬁcient method to encode set membership
-• Set of n elements (n is large)
-• Vector of l bits (l is small)
-• h independent hash functions Hi : {0, 1}∗ → [1, l]
-Insert element x:
-• Sets to 1 the bit values at index positions H1 (x), H2 (x), . . . , Hh (x)
-Search element x:
-• Compute H1 (x), H2 (x), . . . , Hh (x) and check whether those values
-are set in the bit vector
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+**Nauty algorithm**: iteratively derives the partition.
+Probability of identifying a vertex in partition $C: 1/ \vert C \vert$.
+Exposure with equitable partition of $n$ elements over a total number of $m: n/m$
 
-49/268
+For example:
+- $\beta$ indistinguishable from $\delta$;
+- $\eta$ indistinguishable from $\theta$;
+- $\gamma$ indistinguishable from $\varepsilon$.
 
-Bloom ﬁlter [B-70] – Example
-Let l = 10 and h = 3
 
-1
+An example of computing the exposure coefﬁcient.
 
-2
+slide 45/268
 
-3
+----------------------------------------------------------------
 
-4
+##### Hashing exposure – Freq+DB$^k$
+The hash function is characterized by a collision factor, denoting the number of attribute values that on average collide on the same index value.
 
-5
+There are different possible mappings of plaintext values in index
+values, w.r.t. the constraints imposed by frequencies. Need to enumerate the different mappings by using an adaptation of Pisinger’s algorithm for the subset sum problem. Compute the exposure coefﬁcient for each mapping.
 
-6
+----------------------------------------------------------------
 
-7
+#### Hashing exposure – DB+DB$^k$
+The RCV-graph built on plaintext and encrypted data are not
+identical.
 
-8
+Different vertexes of the plaintext RCV-graph may collapse to the
+same encrypted RCV-graph vertex. The number of edges connecting row vertexes to value vertexes in the plaintext and encrypted RCV-graph is the same. The problem becomes ﬁnding a correct matching between the edges of the plaintext RCV-graph and the edges of the encrypted RCV-graph.
 
-9
+----------------------------------------------------------------
 
-10
+## Bloom Filter
+A **Bloom ﬁlter** is at the basis of the construction of some indexing techniques. It is an efﬁcient method to encode set membership:
+- set of $n$ elements ($n$ is large);
+- vector of $l$ bits ($l$ is small);
+- $h$ independent hash functions $H_i : \{0, 1\}^* \to [1, l]$.
 
-Insert sun: H1 (sun)=2; H2 (sun)=5; H3 (sun)=9
-Insert frog: H1 (frog)=1; H2 (frog)=5; H3 (frog)=7
-Search dog: H1 (dog)=2; H2 (dog)=5; H3 (dog)=10
-=⇒ No
-Search car: H1 (frog)=1; H2 (frog)=5; H3 (frog)=9
-=⇒ Yes; false positive!
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+Insert element $x$:
+- Sets to $1$ the bit values at index positions $H_1(x), H_2(x), ..., H_h (x)$.
 
-50/268
+Search element $x$:
+- Compute $H_1(x), H_2(x), ..., H_h(x)$ and check whether those values are set in the bit vector.
 
-Bloom ﬁlter [B-70] – Example
-Let l = 10 and h = 3
-1
-1
+An example of Bloom ﬁlter.<br />
+Let $l = 10$ and $h = 3$.
 
-2
+slide 50/268
 
-1
-3
+Insert sun: $H_1(sun)=2$; $H_2(sun)=5$; H_3(sun)=9$.<br />
+Insert frog: $H_1(frog)=1$; $H_2(frog)=5$; $H_3(frog)=7$.<br />
+Search dog: $H_1(dog)=2$; H_2(dog)=5$; H_3(dog)=10$.<br />
+$\to$ No.
+Search car: $H_1(frog)=1$; $H_2(frog)=5$; $H_3(frog)=9$.<br />
+$\to$ maybe Yes; false positive!
 
-4
-
-5
-
-1
-6
-
-7
-
-8
-
-9
-
-10
-
-• Insert sun: H1 (sun)=2; H2 (sun)=5; H3 (sun)=9
-Insert frog: H1 (frog)=1; H2 (frog)=5; H3 (frog)=7
-Search dog: H1 (dog)=2; H2 (dog)=5; H3 (dog)=10
-=⇒ No
-Search car: H1 (frog)=1; H2 (frog)=5; H3 (frog)=9
-=⇒ Yes; false positive!
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-50/268
-
-Bloom ﬁlter [B-70] – Example
-Let l = 10 and h = 3
-1
-
-1
-
-1
-
-2
-
-1
-3
-
-4
-
-5
-
-1
-6
-
-7
-
-1
-8
-
-9
-
-10
-
-• Insert sun: H1 (sun)=2; H2 (sun)=5; H3 (sun)=9
-• Insert frog: H1 (frog)=1; H2 (frog)=5; H3 (frog)=7
-Search dog: H1 (dog)=2; H2 (dog)=5; H3 (dog)=10
-=⇒ No
-Search car: H1 (frog)=1; H2 (frog)=5; H3 (frog)=9
-=⇒ Yes; false positive!
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-50/268
-
-Bloom ﬁlter [B-70] – Example
-Let l = 10 and h = 3
-1
-
-1
-
-1
-
-2
-
-1
-
-1
-3
-
-4
-
-5
-
-6
-
-7
-
-1
-8
-
-9
-
-10
-
-• Insert sun: H1 (sun)=2; H2 (sun)=5; H3 (sun)=9
-• Insert frog: H1 (frog)=1; H2 (frog)=5; H3 (frog)=7
-• Search dog: H1 (dog)=2; H2 (dog)=5; H3 (dog)=10
-=⇒ No
-Search car: H1 (car)=1; H2 (car)=5; H3 (car)=9
-=⇒ Yes; false positive!
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-50/268
-
-Bloom ﬁlter [B-70] – Example
-Let l = 10 and h = 3
-1
-
-1
-
-1
-
-2
-
-1
-
-1
-3
-
-4
-
-5
-
-6
-
-7
-
-1
-8
-
-9
-
-10
-
-• Insert sun: H1 (sun)=2; H2 (sun)=5; H3 (sun)=9
-• Insert frog: H1 (frog)=1; H2 (frog)=5; H3 (frog)=7
-• Search dog: H1 (dog)=2; H2 (dog)=5; H3 (dog)=10
-=⇒ No
-Search car: H1 (car)=1; H2 (car)=5; H3 (car)=9
-=⇒ Yes; false positive!
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-50/268
-
-Bloom ﬁlter [B-70] – Example
-Let l = 10 and h = 3
-1
-
-1
-
-1
-
-2
-
-1
-
-1
-3
-
-4
-
-5
-
-6
-
-7
-
-1
-8
-
-9
-
-10
-
-• Insert sun: H1 (sun)=2; H2 (sun)=5; H3 (sun)=9
-• Insert frog: H1 (frog)=1; H2 (frog)=5; H3 (frog)=7
-• Search dog: H1 (dog)=2; H2 (dog)=5; H3 (dog)=10
-=⇒ No
-• Search car: H1 (car)=1; H2 (car)=5; H3 (car)=9
-=⇒ Yes; false positive!
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-50/268
-
-Bloom ﬁlter [B-70] – Example
-Let l = 10 and h = 3
-1
-
-1
-
-1
-
-2
-
-1
-
-1
-3
-
-4
-
-5
-
-6
-
-7
-
-1
-8
-
-9
-
-10
-
-• Insert sun: H1 (sun)=2; H2 (sun)=5; H3 (sun)=9
-• Insert frog: H1 (frog)=1; H2 (frog)=5; H3 (frog)=7
-• Search dog: H1 (dog)=2; H2 (dog)=5; H3 (dog)=10
-=⇒ No
-• Search car: H1 (car)=1; H2 (car)=5; H3 (car)=9
-=⇒ Maybe Yes; false positive!
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-50/268
-
-Bloom ﬁlter – Properties
+### Bloom ﬁlter – Properties
 • Generalization of hashing (Bloom ﬁlter with one hash function is
 equivalent to ordinary hashing)
 + space efﬁcient (roughly ten bit for every element in the dictionary
@@ -2938,15 +2446,8 @@ with 1% error)
 + acceptable in practical applications as ﬁne price to pay for space
 efﬁciency
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-51/268
 
 Data Integrity
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-52/268
 
 Integrity of outsourced data
 Two aspects:
@@ -2956,10 +2457,6 @@ modiﬁcations
 • Integrity in query computation: query results must be correct and
 complete
 =⇒ server’s misbehavior in query evaluation must be detected
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-53/268
 
 Integrity in storage
 • Data integrity in storage relies on digital signatures
@@ -2973,17 +2470,11 @@ the query result
 =⇒ the signature of a set of tuples can be combined to generate
 the aggregated signature [MNT-06]
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-54/268
 
 Selective Encryption and
 Over-Encryption
 
 S. De Capitani di Vimercati, S. Foresti, S. Jajodia, S. Paraboschi, P. Samarati, “Encryption Policies for Regulating Access to Outsourced Data,” in ACM TODS, vol. 35, no. 2, April 2010.
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-55/268
 
 Selective information sharing
 • Different users might need to enjoy different views on the
@@ -2994,32 +2485,16 @@ to mediate access requests
 • Authorization enforcement may not be delegated to the provider
 =⇒ data owner should remain in control
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-56/268
-
 Selective information sharing: Approaches – 1
 • Attribute-based encryption (ABE): allow derivation of a key only by
 users who hold certain attributes (based on asymmetric
 cryptography)
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-57/268
-
 Selective information sharing: Approaches – 2
 • Selective encryption: the authorization policy deﬁned by the data
 owner is translated into an equivalent encryption policy
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-58/268
-
 Selective encryption – Scenario
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-59/268
 
 Selective encryption [DFJPS-10b]
 Basic idea/desiderata:
@@ -3029,10 +2504,6 @@ Basic idea/desiderata:
 knowledge of the key with which the resource is encrypted
 • each user is communicated the keys necessary to decrypt the
 resources she is entailed to access
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-60/268
 
 Authorization policy
 • The data owner deﬁnes a discretionary access control
@@ -3047,10 +2518,6 @@ hu, ri
 
 • Basic idea:
 ◦ different ACLs implies different encryption keys
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-61/268
 
 Authorization policy – Example
 
@@ -3106,10 +2573,6 @@ D
 r4
 r5
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-62/268
-
 Encryption policy
 • The authorization policy deﬁned by the data owner is translated
 into an equivalent encryption policy
@@ -3122,10 +2585,6 @@ resources she is authorized to access
 ◦ use a key derivation method for allowing users to derive from their
 user keys all the keys that they are entitled to access
 + allows limiting to one the key to be released to each user
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-63/268
 
 Key derivation methods
 • Based on a key derivation hierarchy (K , )
@@ -3142,9 +2601,6 @@ derivation hierarchy can be:
 ◦ a chain [S-87]
 ◦ a tree [G-80,S-87,S-88]
 ◦ a DAG [AT-83,CMW-06,DFM-04,HL-90,HY-03,LWL-89,M-85,SC-02]
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-64/268
 
 Token-based key derivation methods [AFB-05]
 • Keys are arbitrarily assigned to vertices
@@ -3160,9 +2616,6 @@ each edge in the hierarchy
 while having to worry about a single one
 ◦ they can be stored on the remote server (just like the encrypted
 data), so any user can access them
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-65/268
 
 Key and token graph
 • Relationships between keys through tokens can be represented
@@ -3189,9 +2642,6 @@ k5 , l5
 k9 , l9
 
 k6 , l6
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-66/268
 
 Key assignment and encryption schema
 Translation of the authorization policy into an encryption policy:
@@ -3202,11 +2652,7 @@ Translation of the authorization policy into an encryption policy:
 • Function φ :U ∪ R → L describes:
 ◦ the association between a user and (the label of) her key
 ◦ the association between a resource and (the label of) the key used
-for encrypting it
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-67/268
+for encrypting it.
 
 Formal deﬁnition of encryption policy
 • An encryption policy over users U and resources R, denoted E ,
@@ -3222,10 +2668,6 @@ extending the key and token graph to include:
 ◦ an edge from each user vertex u to the vertex hk, li such that φ (u)=l
 ◦ an edge from each vertex hk, li to each resource vertex r such that
 φ (r) = l
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-68/268
 
 Encryption policy graph – Example
 A
@@ -3276,9 +2718,7 @@ token
 • user D can access {r1 , r2 , r3 }
 • user E can access {r1 , r2 , r3 }
 • user F can access {r3 }
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-69/268
 
 Policy transformation
 Goal: translate an authorization policy A into an equivalent encryption
@@ -3295,10 +2735,6 @@ E
 • ∀u ∈ U , r ∈ R : u −→r =⇒ u −→r
 • ∀u ∈ U , r ∈ R : u −→r =⇒ u −→r
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-70/268
-
 Translating A into E – 1
 • Naive solution
 ◦ each user is associated with a different key
@@ -3311,10 +2747,6 @@ can be unfeasible in practice
 ◦ group users with the same access privileges
 ◦ encrypt each resource with the key associated with the set of users
 that can access it
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-71/268
 
 Translating A into E – 2
 • It is possible to create an encryption policy graph by exploiting the
@@ -3371,9 +2803,7 @@ v15 [ABCD]
 r3
 
 v10 [CD]
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-72/268
 
 Minimum encryption policy
 • Observation: user groups that do not correspond to any acl do not
@@ -3389,9 +2819,6 @@ needed to enforce a given authorization policy, connecting them to
 ensure a correct key derivability
 ◦ other vertices can be included if they are useful for reducing the
 size of the catalog
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-73/268
 
 Construction of the key and token graph
 Start from an authorization policy A
@@ -3402,10 +2829,6 @@ cover without redundancies (covering)
 - for each user u in v.acl, ﬁnd an ancestor v′ of v with u ∈ v′ .acl
 
 3. Factorize common ancestors (factorization)
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-74/268
 
 Key and token graph – Example
 A
@@ -3457,10 +2880,6 @@ v4 [D]
 v7 [ABCD]
 
 v6 [BCD]
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-75/268
 
 Key and token graph – Example
 A
@@ -3526,10 +2945,6 @@ v4 [D]
 v7 [ABCD]
 
 v6 [BCD]
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-75/268
 
 Key and token graph – Example
 A
@@ -3601,8 +3016,6 @@ v7 [ABCD]
 
 v6 [BCD]
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
 v5 [ABC]
 
 v8 [BC]
@@ -3658,8 +3071,6 @@ v5 .l
 v6 .l
 v7 .l
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
 source destination token_value
 v1 .l
 v5 .l
@@ -3685,7 +3096,6 @@ t8,5
 v6 .l
 t8,6
 v8 .l
-76/268
 
 Multiple owners and policy changes
 • When multiple owners need to share their data, the use of a key
@@ -3702,9 +3112,6 @@ catalog updates
 
 =⇒ inefﬁcient
 • Possible solution: over-encryption
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-77/268
 
 Over-encryption [DFJPS-07]
 • Resources are encrypted twice
@@ -3718,10 +3125,6 @@ BEL and SEL keys
 • Grant and revoke operations may require
 ◦ the addition of new tokens at the BEL level
 ◦ the update of the SEL level according to the operations performed
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-78/268
 
 BEL and SEL structures
 • BEL. At the BEL level we distinguish two kinds of keys: access
@@ -3737,10 +3140,6 @@ enabling key derivation and enabling resource access
 • SEL. The SEL level is characterized by an encryption policy
 deﬁned as previously illustrated
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-79/268
-
 Full_SEL and Delta_SEL
 • Full_SEL: starts from a SEL identical to the BEL and keeps the
 SEL always updated to represent the current policy
@@ -3748,10 +3147,6 @@ SEL always updated to represent the current policy
 • Delta_SEL: starts from an empty SEL and adds elements to it as
 the policy evolves, such that the pair BEL-SEL represents the
 policy
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-80/268
 
 Running example for over-encryption
 Access matrix
@@ -3853,9 +3248,6 @@ s11 [DEF]
 s9 [BDEF]
 
 s6 [F]
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-81/268
 
 Initial conﬁguration for Full_SEL – Example
 BEL
@@ -3951,7 +3343,6 @@ b11
 b9
 
 b6
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
 s5 [E]
 
@@ -3960,7 +3351,6 @@ s11 [DEF]
 s9 [BDEF]
 
 s6 [F]
-82/268
 
 Initial conﬁguration for Delta_SEL – Example
 BEL
@@ -4043,11 +3433,9 @@ b11
 b9
 
 b6
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
 s5 [E]
 s6 [F]
-83/268
 
 Algorithms for the evolution of SEL and BEL
 • The evolution of the BEL and SEL are managed by:
@@ -4055,10 +3443,6 @@ s6 [F]
 over-encrypting the resources at the SEL level
 ◦ grant and revoke procedures that are needed for granting and
 revoking a privilege, respectively
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-84/268
 
 Procedure over-encrypt (at SEL)
 Receive from BEL requests of the form over-encrypt(U,R) to make the
@@ -4074,10 +3458,6 @@ end (no need to do anything);
 if it does not exist, create it and add it to SEL graph
 4. encrypt each resource r ∈ R with s.key and update φs (r) and the
 corresponding table accordingly
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-85/268
 
 Procedure Grant (at BEL)
 Upon request to grant user u access to resource r, currently encrypted
@@ -4095,9 +3475,6 @@ resources with aclS )
 ◦ Delta_SEL: if the set of users that can derive bj .key a is acl(r), call
 over-encrypt(ALL,{r}); otherwise call over-encrypt(acl(r),{r})
 ◦ Full_SEL: call over-encrypt(acl(r),{r})
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-86/268
 
 Procedure Revoke (at BEL)
 Receive a request to revoke from user u access to resource r
@@ -4105,10 +3482,6 @@ Receive a request to revoke from user u access to resource r
 2. request over-encrypt(acl(r),{r}) to SEL to make r accessible only
 to users in acl(r)
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-87/268
-
 An example of grant operation – Full_SEL
 BEL
 
@@ -4190,10 +3563,6 @@ s11 [DEF]
 s9 [BDEF]
 
 s6 [F]
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-88/268
 
 An example of grant operation – Full_SEL
 BEL
@@ -4278,10 +3647,6 @@ s9 [BDEF]
 
 s6 [F]
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-88/268
-
 An example of grant operation – Full_SEL
 BEL
 
@@ -4364,10 +3729,6 @@ s11 [DEF]
 s9 [BDEF]
 
 s6 [F]
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-88/268
 
 An example of grant operation – Full_SEL
 BEL
@@ -4452,10 +3813,6 @@ s11 [DEF]
 s9 [BDEF]
 
 s6 [F]
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-88/268
 
 An example of grant operation – Full_SEL
 BEL
@@ -4541,10 +3898,6 @@ s11 [DEF]
 s9 [BDEF]
 
 s6 [F]
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-88/268
 
 An example of grant operation – Full_SEL
 BEL
@@ -4633,10 +3986,6 @@ s9 [BDEF]
 
 s6 [F]
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-88/268
-
 An example of grant operation – Delta_SEL
 BEL
 
@@ -4701,10 +4050,6 @@ s3 [C]
 s4 [D]
 s5 [E]
 s6 [F]
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-89/268
 
 An example of grant operation – Delta_SEL
 BEL
@@ -4772,10 +4117,6 @@ s4 [D]
 s5 [E]
 s6 [F]
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-89/268
-
 An example of grant operation – Delta_SEL
 BEL
 
@@ -4841,10 +4182,6 @@ s3 [C]
 s4 [D]
 s5 [E]
 s6 [F]
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-89/268
 
 An example of grant operation – Delta_SEL
 BEL
@@ -4913,10 +4250,6 @@ s4 [D]
 s5 [E]
 s6 [F]
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-89/268
-
 An example of grant operation – Delta_SEL
 BEL
 
@@ -4984,9 +4317,6 @@ s4 [D]
 s5 [E]
 s6 [F]
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-89/268
 
 An example of grant operation – Delta_SEL
 BEL
@@ -5055,10 +4385,6 @@ s3 [C]
 s4 [D]
 s5 [E]
 s6 [F]
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-89/268
 
 An example of revoke operation – Full_SEL
 BEL
@@ -5143,10 +4469,6 @@ s11 [DEF]
 s9 [BDEF]
 
 s6 [F]
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-90/268
 
 An example of revoke operation – Full_SEL
 BEL
@@ -5233,10 +4555,6 @@ s11 [DEF]
 s9 [BDEF]
 
 s6 [F]
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-90/268
 
 An example of revoke operation – Full_SEL
 BEL
@@ -5324,10 +4642,6 @@ s11 [DEF]
 s9 [BDEF]
 
 s6 [F]
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-90/268
 
 An example of revoke operation – Full_SEL
 BEL
@@ -5413,13 +4727,10 @@ b9
 s5 [E]
 s6 [F]
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
 s13 [BDE]
 
-90/268
-
-An example of revoke operation – Delta_SEL
+An example of revoke operation – Delta_SEL
 BEL
 A
 
@@ -5485,10 +4796,6 @@ s13 [BDE]
 
 s5 [E]
 s6 [F]
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-91/268
 
 An example of revoke operation – Delta_SEL
 BEL
@@ -5559,10 +4866,6 @@ s13 [BDE]
 
 s5 [E]
 s6 [F]
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-91/268
 
 An example of revoke operation – Delta_SEL
 BEL
@@ -5634,10 +4937,6 @@ s13 [BDE]
 
 s5 [E]
 s6 [F]
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-91/268
 
 An example of revoke operation – Delta_SEL
 BEL
@@ -5711,10 +5010,6 @@ s13 [BDE]
 s5 [E]
 s6 [F]
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-91/268
-
 Protection evaluation
 • The BEL and SEL encryption policy are equivalent to the
 authorization policy at initialization time
@@ -5727,9 +5022,6 @@ be broken
 user to steal keys from another user
 • Vulnerable to collusion?
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-92/268
 
 Collusion attacks
 • Collusion exists every time two entities combining their knowledge
@@ -5740,10 +5032,6 @@ can acquire knowledge that neither of them has access to
 • Collusion attacks depend on the different views that one can have
 on a resource r
 • We assume users to be not oblivious
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-93/268
 
 Views on resource r – 1
 • Four views:
@@ -5757,10 +5045,6 @@ not know the key at the SEL level
 not know the one at the BEL level
 
 • The server always has the bel_locked view
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-94/268
 
 Views on resource r – 2
 
@@ -5810,10 +5094,6 @@ bel_locked
 ◦ discontinuous, if the key is known
 ◦ continuous, if the key is not known (protection cannot be passed)
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-95/268
-
 Classiﬁcation of users
 • Consider a resource r and the history of its acl(r)
 • Users in acl(r) can be classiﬁed into 4 categories
@@ -5828,10 +5108,6 @@ All users
 
 • Collusion risk for r iff there are users in Bel_accessible that do not
 belong to Past_acl
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-96/268
 
 View transitions in the Full_SEL – 1
 SEL
@@ -5854,10 +5130,6 @@ sel_locked
 
 locked
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-97/268
-
 View transitions in the Full_SEL – 2
 A user can have the sel_locked view on r due to:
 • past acl or
@@ -5877,21 +5149,15 @@ grant(r’,u)
 
 locked
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
 r
 sel_locked
 
 r’
 open
 
-98/268
 
 View transitions in the Delta_SEL – 1
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-99/268
 
 View transitions in the Delta_SEL – 2
 The view of a user u′ on r can evolve from bel_locked to locked due to:
@@ -5927,12 +5193,10 @@ BEL
 r
 locked
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
 r’
 bel_locked
 
-100/268
+# QUI
 
 Collusion in the Full_SEL
 • Collusion among users:
