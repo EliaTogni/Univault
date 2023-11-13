@@ -32,7 +32,7 @@ Release of data to the public for statistical purpose:
 	  Consider the same dataset and two different and colluded users as an example. The first one si able to make the first query and the second one is able to make the second one. Therefore, together they are able to expose the female respondent (**collusion**). therefore, the statistical DBMS need **run time checking** to control information (directly and indirectly) released.
 - **statistical data**:
 	- publish statistics generated a priori and the user can only access these statistics;
-	- control on indirect release performed before publication.
+	- the control on the indirect release is performed before publication.
 
 ![[StatisticalDBMS.png]]
 
@@ -45,7 +45,7 @@ In the statistical data case, the transboundary stands between the statistical d
 ----------------------------------------------------------------
 
 ### Macrodata vs microdata
-In the past data, were mainly released in tabular form (**macrodata**) and through statistical databases. Today many situations require that the specific stored data themselves, called **microdata**, be released, increasing flexibility and availability of information for the users. Microdata are subject to a greater risk of privacy breaches (**linking attacks**).
+In the past, data were mainly released in tabular form (**macrodata**) and through statistical databases. Today many situations require that the specific stored data themselves, called **microdata**, be released, increasing flexibility and availability of information for the users. However, microdata are subject to a greater risk of privacy breaches (**linking attacks**).
 
 #### Macrodata
 Macrodata tables can be classified into the following two groups (types of tables):
@@ -96,7 +96,7 @@ Inference disclosure does not always represent a risk:
 ----------------------------------------------------------------
 
 ### Restricted data and restricted access
-The choice of statistical disclosure limitation methods depends on the nature of the data products whose confidentiality must be protected. Some microdata include explicit identifiers (e.g., name, address or Social Security Number). Removing such identifiers is a first step in preparing for the release of microdata for which the confidentiality of individual information must be protected.<br />
+The choice of **statistical disclosure limitation methods** depends on the nature of the data products whose confidentiality must be protected. Some microdata include explicit identifiers (e.g., name, address or Social Security Number). Removing such identifiers is a first step in preparing for the release of microdata for which the confidentiality of individual information must be protected.<br />
 Confidentiality can be protected by:
 - restricting the amount of information in the released tables (restricted data);
 - imposing conditions on access to the data products (restricted access);
