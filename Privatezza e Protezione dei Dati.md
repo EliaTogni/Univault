@@ -98,8 +98,8 @@ Inference disclosure does not always represent a risk:
 ### Restricted data and restricted access
 The choice of **statistical disclosure limitation methods** depends on the nature of the data products whose confidentiality must be protected. Some microdata include explicit identifiers (e.g., name, address or Social Security Number). Removing such identifiers is a first step in preparing for the release of microdata for which the confidentiality of individual information must be protected.<br />
 Confidentiality can be protected by:
-- restricting the amount of information in the released tables (restricted data);
-- imposing conditions on access to the data products (restricted access);
+- restricting the amount of information in the released tables (**restricted data**);
+- imposing conditions on access to the data products (**restricted access**);
 - some combination of these two strategies.
 
 ----------------------------------------------------------------
@@ -196,7 +196,7 @@ A **generalization relationship** $\leq_{D}$ defines a mapping between domain $D
 
 Given a domain tuple $D_T = \langle D_1, . . . , D_n \rangle$ such that $D_i \in Dom, i = 1, . . . , n$, the domain generalization hierarchy of $D_T$ is $DGH_{DT} = DGH_{D1} \times . . . \times DGH_{Dn}$. The domain generalization hiearchy of $D_T$ defines a [[Reticolo|lattice]].
 
-An example of a domain generalization hierarchy.
+An example of a domain generalization hierarchy.
 
 ![[DomainGeneralizationHierarchy.png]]
 
@@ -266,7 +266,7 @@ An example of $2$-anonymized tables with regard to different models.
 ![[2Anonymized2.png]]
 ![[2Anonymized3.png]]
 
-In the last example (_CG_CS_), each tuple has a different $DV$. This type of dataset is better in terms of utility but it worsen the performance.
+In the last example (_CG\_CS_), each tuple has a different $DV$. This type of dataset is better in terms of utility but it worsen the performance.
 
 ![[2Anonymized4.png]]
 
@@ -278,7 +278,7 @@ Many exact algorithms for producing $k$-anonymous tables through attribute gener
 
 ----------------------------------------------------------------
 
-## Algorithms for AG_TS and AG_
+## Algorithms for AG\_TS and AG\_
 ### Computing a $k$-minimal solution
 Each path in $DGH_{DT}$ represents a generalization strategy for $PT$. We call **locally minimal generalization** the lowest node of each path satisfying $k$-anonymity. The properties exploited by the algorithm are:
 1) each $k$-minimal generalization is **locally minimal** with respect to a path (but the converse is not true). This means that a global minimal is also a locally minimal with respect to a path;
