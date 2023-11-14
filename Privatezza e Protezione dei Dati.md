@@ -300,15 +300,18 @@ In the table on the right, every cell $c_{ij}$ measures how much the tuple $t_i$
 ![[kMinimalSolution1.png]]
 
 Suppose $k = 2$ and $MaxSup = 2$.<br />
-Compute first solutions at height $1$ : $GT_{[1,0]}$ and $GT_{[0,1]}$.
+Compute first solutions at height $1$ : $GT_{[1,0]}$ and $GT_{[0,1]}$. In the image below, all the cells with $DV <= [1, 0]$ are generalized to the same value.
 
 ![[kMinimalSolution2.png]]
 
-Satisfies $2$-anonymity (suppressing $t_1$ and $t_6$).
+Satisfies $2$-anonymity (suppressing $t_1$ and $t_6$).<br />
+In the image below, all the cells with $DV <= [0, 1]$ are generalized to the same value.
 
 ![[kMinimalSolution3.png]]
 
 Satisfies $2$-anonymity (suppressing $t_8$ and $t_9$).
+
+All the assumptions of the algorithm are based on the fact that the $VGH_D$ is a tree. Therefore, we must be careful in choosing the steps of generalization because, if chosen wrongly, we may lose the monotonicity.
 
 ----------------------------------------------------------------
 
