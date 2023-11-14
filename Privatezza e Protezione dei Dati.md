@@ -281,7 +281,7 @@ Many exact algorithms for producing $k$-anonymous tables through attribute gener
 ## Algorithms for AG\_TS and AG\_
 ### Computing a $k$-minimal solution
 Each path in $DGH_{DT}$ represents a generalization strategy for $PT$. We call **locally minimal generalization** the lowest node of each path satisfying $k$-anonymity. The properties exploited by the algorithm are:
-1) each $k$-minimal generalization is **locally minimal** with respect to a path (but the converse is not true). This means that a global minimal is also a locally minimal with respect to a path;
+1) each $k$-minimal generalization is **locally minimal** with respect to a path (but the converse is not true, that is, a locally minimal generalization with respect to a path is not granted to be the $k$-minimal one). This means that a global minimal is also a locally minimal with respect to a path;
 2) going up in the hierarchy the number of tuples that must be removed to guarantee $k$-anonymity decreases.
 
 If there is no solution that guarantees $k$-anonymity suppressing less than $MaxSup$ tuples at height $h$, there cannot exist a solution, with height lower than $h$ that guarantees it.<br />
