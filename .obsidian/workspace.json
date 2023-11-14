@@ -11,12 +11,8 @@
             "id": "96ef9f8b3e45f972",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Privatezza e Protezione dei Dati.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "graph",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Privatezza e Protezione dei Dati.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,8 +111,8 @@
   },
   "active": "96ef9f8b3e45f972",
   "lastOpenFiles": [
-    "Cittadinanza Digitale e Tecnocivismo.md",
     "Privatezza e Protezione dei Dati.md",
+    "Cittadinanza Digitale e Tecnocivismo.md",
     "Templates/Template Articolo.md",
     "Images/TableRestructuringExample3.png",
     "Images/DisclosureSensitivity4.png",
