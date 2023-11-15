@@ -11,11 +11,28 @@
             "id": "96ef9f8b3e45f972",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Privatezza e Protezione dei Dati.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "6330ffeedd14c021",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Reticolo.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -81,6 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Reticolo.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,7 +127,7 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "96ef9f8b3e45f972",
+  "active": "6330ffeedd14c021",
   "lastOpenFiles": [
     "Privatezza e Protezione dei Dati.md",
     "Cittadinanza Digitale e Tecnocivismo.md",

@@ -8,11 +8,11 @@
 	- study trends or to make useful statistical inference;
 	- share knowledge;
 	- access on-line services.
-- External data storage and computation:
+- External data storage and computation (third party services):
 	- cost saving and service benefits;
 	- higher availability and more effective disaster protection.
 
-Need to ensure data privacy and integrity are properly protected.
+Need to ensure **data privacy** and **integrity** are properly protected.
 
 ----------------------------------------------------------------
 
@@ -28,11 +28,11 @@ Need to ensure data privacy and integrity are properly protected.
 Release of data to the public for statistical purpose:
 - **statistical DBMS**:
 	- the DBMS responds only to **statistical queries** (the aggregate ones);
-	- consider a dataset composed by $1000$ respondents, $999$ males and $1$ female, as an example. If the user makes a query which would return a value aggregated from all the **respondents** (the people replying with answers to a survey, the ones the data refers to) and, then, a query which would return a value aggregated from all the males, the DBMS must block the second query because it would expose the female respondent.<br />
-	  Consider the same dataset and two different and colluded users as an example. The first one si able to make the first query and the second one is able to make the second one. Therefore, together they are able to expose the female respondent (**collusion**). therefore, the statistical DBMS need **run time checking** to control information (directly and indirectly) released.
+	- consider a dataset composed by $1000$ respondents, $999$ males and $1$ female, as an example. A query returning only the female respondent would be blocked by the DBMS. If the user would make a query which would return a value aggregated from all the **respondents** (the people replying with answers to a survey, the ones the data refers to) and, then, a query which would return a value aggregated from all the males, the DBMS will block the second query because it would expose the female respondent.<br />
+	  Consider the same dataset and two different and colluded users as an example. The first one is able to make the first query and the second one is able to make the second one. Therefore, together they are able to expose the female respondent (**collusion**). therefore, the statistical DBMS need **run time checking** to control information (directly and indirectly) released (**dinamic**).
 - **statistical data**:
 	- publish statistics generated a priori and the user can only access these statistics;
-	- the control on the indirect release is performed before publication.
+	- the control on the indirect release is performed before publication (**static**).
 
 ![[StatisticalDBMS.png]]
 
@@ -99,7 +99,7 @@ Inference disclosure does not always represent a risk:
 The choice of **statistical disclosure limitation methods** depends on the nature of the data products whose confidentiality must be protected. Some microdata include explicit identifiers (e.g., name, address or Social Security Number). Removing such identifiers is a first step in preparing for the release of microdata for which the confidentiality of individual information must be protected.<br />
 Confidentiality can be protected by:
 - restricting the amount of information in the released tables (**restricted data**);
-- imposing conditions on access to the data products (**restricted access**);
+- imposing conditions on access to the data products (**restricted access**). The data are released only to autorized people and only for a predetermined purpose (**purpose of use**);
 - some combination of these two strategies.
 
 ----------------------------------------------------------------
@@ -159,7 +159,7 @@ The possibility of linking or its precision increases with:
 ----------------------------------------------------------------
 
 ### Factors contributing to decrease the disclosure risk
-A microdata table often contains a subset of the whole population. This implies that the information of a specific respondent may not be included in the microdata table.<br /> Furthermore, the information specified in microdata tables released to the public is not always up-to-date (often at least one or two-year old). Therefore, the values of the attributes of the corresponding respondents may have been changed in the meanwhile. Also, the age of the external sources of information used for linking may be different from the age of the information contained in the microdata table.<br />
+A microdata table often contains a subset of the whole population. This implies that the information of a specific respondent may not be included in the microdata table. Furthermore, the information specified in microdata tables released to the public is not always up-to-date (often at least one or two-year old). Therefore, the values of the attributes of the corresponding respondents may have been changed in the meanwhile. Also, the age of the external sources of information used for linking may be different from the age of the information contained in the microdata table.<br />
 A microdata table and the external sources of information naturally contain **noise** that decreases the ability to link the information and can also contain data expressed in different forms thus decreasing the ability to link information.
 
 ----------------------------------------------------------------
@@ -181,20 +181,20 @@ The percentage of records representing respondents who are unique in the populat
 The quasi-identifiers are the set of attributes that can be exploited for linking (whose release must be controlled).
 
 The basic idea is to translate the $k$-anonymity requirement on the released data. Each release of data must be such that every combination of values of quasi-identifiers can be indistinctly matched to at least $k$ respondents. This assumption is based on the worst case scenario in which the respondents in the database are population uniques.<br />
-In the released table the respondents must be indistinguishable (within a given set) with respect to a set of attributes. $k$-anonymity requires that each quasi-identifier value appearing in the released table must have at least $k$ occurrences. This is a sufficient condition for the satisfaction of $k$-anonymity requirement.
+In the released table, the respondents must be indistinguishable (within a given set) with respect to a set of attributes. $k$-anonymity requires that each quasi-identifier value appearing in the released table must have at least $k$ occurrences. This is a sufficient condition for the satisfaction of $k$-anonymity requirement.
 
 ### Generalization and suppression
-with **generalization**, the values of a given attribute are substituted by using more general values. Based on the definition of a generalization hierarchy, for example, consider the attribute ZIP code and suppose that a step in the corresponding generalization hierarchy consists in suppressing the least significant digit in the ZIP code. With one generalization step, $20222$ and $20223$ become $2022*$ and $20238$ and $20239$ become $2023*$.<br />
+with **generalization**, the values of a given attribute are substituted by using more general values. Based on the definition of a generalization hierarchy, for example, consider the attribute ZIP code and suppose that a step in the corresponding generalization hierarchy consists in suppressing the least significant digit in the ZIP code. With one generalization step, $20222$ and $20223$ become $2022*$ and $20238$ and $20239$ become $2023*$. We are not perturbating the data, we are only removing details.<br />
 With **suppression**, it is possible to protect sensitive information by removing it. The introduction of suppression can reduce the amount of generalization necessary to satisfy the $k$-anonymity constraint.
 
 ----------------------------------------------------------------
 
 ### Domain generalization hierarchy
-A **generalization relationship** $\leq_{D}$ defines a mapping between domain $D$ and its generalizations. Given two domains $D_i, D_j \in Dom$, $D_i \leq_{D} D_j$ states that the values in domain $D_j$ are generalizations of values in $D_i$. $\leq_{D}$ implies the existence, for each domain $D$, of a **domain generalization hierarchy** $DGH_D = (Dom, \leq_D )$:
+A **generalization relationship** $\leq_{D}$ defines a mapping between domain $D$ and its generalizations. Given two domains $D_i, D_j \in Dom$, $D_i \leq_{D} D_j$ ($D_i$ is dominated by $D_j$) states that the values in domain $D_j$ are generalizations of values in $D_i$. $\leq_{D}$ implies the existence, for each domain $D$, of a **domain generalization hierarchy** $DGH_D = (Dom, \leq_D )$:
 - $\forall D_i, D_j, D_z \in Dom: D_i \leq_D D_j, D_i \leq_D D_z \to D_j \leq_D D_z \vee D_z \leq_D D_j$. This property shows that the generalization hiearchy is a chain, that is, there is a **total order** between the elements of the hierarchy;
-- all maximal elements of $Dom$ are singleton. As an example, observe the $DGH_{Z_0}$ in the image below.
+- all maximal elements (the **radices**) of $Dom$ are singleton. As an example, observe the $DGH_{Z_0}$ in the image below.
 
-Given a domain tuple $D_T = \langle D_1, . . . , D_n \rangle$ such that $D_i \in Dom, i = 1, . . . , n$, the domain generalization hierarchy of $D_T$ is $DGH_{DT} = DGH_{D1} \times . . . \times DGH_{Dn}$. The domain generalization hiearchy of $D_T$ defines a [[Reticolo|lattice]].
+Given a domain tuple $D_T = \langle D_1, . . . , D_n \rangle$ such that $D_i \in Dom, i = 1, . . . , n$, the domain generalization hierarchy of $D_T$ is $DGH_{DT} = DGH_{D1} \times . . . \times DGH_{Dn}$. While the domain generalization of a single domain defines a chain, the domain generalization hierarchy of a tuple of domains $D_T$ defines a [[Reticolo|lattice]].
 
 An example of a domain generalization hierarchy.
 
