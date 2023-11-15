@@ -11,28 +11,11 @@
             "id": "96ef9f8b3e45f972",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Privatezza e Protezione dei Dati.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "6330ffeedd14c021",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Reticolo.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "graph",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -98,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Reticolo.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,10 +109,17 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "6330ffeedd14c021",
+  "active": "96ef9f8b3e45f972",
   "lastOpenFiles": [
-    "Privatezza e Protezione dei Dati.md",
-    "Cittadinanza Digitale e Tecnocivismo.md",
+    "Classes/Cittadinanza Digitale e Tecnocivismo.md",
+    "Classes/Statistical Methods for Machine Learning.md",
+    "Albero 2-3.md",
+    "Classes/Privatezza e Protezione dei Dati.md",
+    "Videos",
+    "Classes",
+    "Books",
+    "Articles",
+    "Reticolo.md",
     "Templates/Template Articolo.md",
     "Images/TableRestructuringExample3.png",
     "Images/DisclosureSensitivity4.png",
@@ -152,29 +141,22 @@
     "Sequenza Unimodale e Bitonica.md",
     "Tecnica del Ciclo Euleriano.md",
     "Teorema di Wyllie.md",
-    "Algoritmi Paralleli e Distribuiti.md",
-    "Statistical Methods for Machine Learning.md",
+    "Classes/Algoritmi Paralleli e Distribuiti.md",
     "Algoritmo Greedy.md",
     "Algoritmo.md",
     "Divide et Impera.md",
     "Programmazione Dinamica.md",
     "BitSort.md",
     "The Age of the Essay.md",
-    "Reticolo.md",
-    "Bioinformatica.md",
-    "Informatica Teorica.md",
+    "Classes/Bioinformatica.md",
+    "Classes/Informatica Teorica.md",
     "Albero.md",
-    "Quiz Statistical Methods for Machine Learning.md",
     "Imaes",
     "art_4.pdf",
     "Images/find largest r - Cerca con Google_files/app.html",
     "Images/find largest r - Cerca con Google_files/RotateCookiesPage.html",
     "Images/find largest r - Cerca con Google_files/a.html",
     "Images/find largest r - Cerca con Google.html",
-    "Images/find largest r - Cerca con Google_files/app_data/m=_b,_tp,_r",
-    "Images/find largest r - Cerca con Google_files/a_data/remote.js",
-    "Images/find largest r - Cerca con Google_files/m=CW5FZe,Da4hkd,Eox39d,FmAr0c,HYSCof,K6HGfd,MpJwZc,RagDlc,aD8OEe",
-    "Images/find largest r - Cerca con Google_files/m=sys7,rFNHyc",
     "Untitled.canvas"
   ]
 }

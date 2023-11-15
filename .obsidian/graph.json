@@ -8,23 +8,44 @@
   "collapse-color-groups": true,
   "colorGroups": [
     {
-      "query": "",
+      "query": "path:Classes  ",
       "color": {
         "a": 1,
-        "rgb": 14701138
+        "rgb": 1514682
+      }
+    },
+    {
+      "query": "path:Articles  ",
+      "color": {
+        "a": 1,
+        "rgb": 5308165
+      }
+    },
+    {
+      "query": "path:Books  ",
+      "color": {
+        "a": 1,
+        "rgb": 11657298
+      }
+    },
+    {
+      "query": "path:Videos  ",
+      "color": {
+        "a": 1,
+        "rgb": 5431378
       }
     }
   ],
-  "collapse-display": true,
+  "collapse-display": false,
   "showArrow": false,
   "textFadeMultiplier": 0,
   "nodeSizeMultiplier": 1,
   "lineSizeMultiplier": 1,
-  "collapse-forces": true,
-  "centerStrength": 0.518713248970312,
-  "repelStrength": 10,
-  "linkStrength": 1,
-  "linkDistance": 250,
-  "scale": 0.6689468275991067,
+  "collapse-forces": false,
+  "centerStrength": 0.514687965344524,
+  "repelStrength": 12.2864491674563,
+  "linkStrength": 0.657641803167727,
+  "linkDistance": 309,
+  "scale": 0.23075549061913792,
   "close": true
 }
