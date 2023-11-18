@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Templates/Video Template.md",
+                "file": "Classes/Privatezza e Protezione dei Dati.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Templates/Video Template.md",
+                "file": "Classes/Privatezza e Protezione dei Dati.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,9 +116,9 @@
   },
   "active": "96ef9f8b3e45f972",
   "lastOpenFiles": [
+    "Templates/Video Template.md",
     "Templates/Book Template.md",
     "Templates/Article Template.md",
-    "Templates/Video Template.md",
     "Books/La pimpa.md",
     "README.md",
     "Reticolo.md",

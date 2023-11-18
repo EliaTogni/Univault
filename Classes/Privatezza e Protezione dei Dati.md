@@ -15398,6 +15398,1185 @@ preserving a given degree of privacy
 
 ----------------------------------------------------------------
 
+# Privacy and Data Protection in Emerging Scenarios
+
+Privacy and integrity of queries and computations
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   2/76
+                    Access and pattern confidentiality
+
+Guaranteeing privacy of outsourced data entails protecting the
+confidentiality of the data (content confidentiality) as well as of the
+accesses to them
+
+  • Access confidentiality: confidentiality of the fact that an access
+    aims at a specific data
+
+
+  • Pattern confidentiality: confidentiality of the fact that two accesses
+    aim at the same data
+
+
+
+
+  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)           3/76
+          Approaches for protecting data accesses
+
+• Private Information Retrieval (PIR) proposals (e.g., [CKGS-98,
+  SC-07])
+
+
+• Oblivious traversal of tree-structured data/indexes [LC-04]
+
+• Pyramid-shaped database layout of Oblivious RAM [WSC-08,
+   WS-12]]
+
+
+• Path ORAM protocol, working on a tree structure [SVSFRYD-13]
+
+• Ring ORAM, variation of Path ORAM with better performance and
+  same protection guarantees [RFKSSvD-15]
+
+• Shuffle index based on the definition of a B+-tree structure with
+  dynamic allocation of data [DFPPS-11a, DFPPS-11b, DFPPS-13]
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)         4/76
+                                             Path ORAM
+
+Server side
+  • Binary tree structure with L levels (L = ⌈log2 (N) − 1⌉, with N the
+    number of blocks)
+  • Each node in the tree is a bucket that contains up to Z real blocks
+    (padded with dummy blocks)
+  • Each leaf node x defines a unique path P(x) from x to the root
+
+Client side
+  • The client locally stores a small number of blocks in a stash
+  • The client stores a position map: x = position[a] means that a
+    block identified by a is currently mapped to the x-th leaf node
+    =⇒ block a (if it exists) resides in some bucket in path P(x) or in
+        the stash
+  • The position map changes every time blocks are accessed and
+    remapped
+  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)           5/76
+                          Path ORAM – Main invariant
+
+At any time:
+
+  • each block is mapped to a uniformly random leaf bucket
+    in the tree
+
+
+  • unstashed blocks are always placed in some bucket along the
+    path to the mapped leaf
+
+
+
+
+  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   6/76
+                        Path ORAM reads and writes
+
+1. Remap block: Let x be the old position of a. Randomly remap the
+   position of a to a new random position (a new leaf node)
+
+
+2. Read path: read nodes in P(x) containing a.
+   If the access is a write, update the data stored for block a
+
+
+3. Write path: write the nodes in P(x) back possibly including some
+   additional blocks from the stash if they can be placed into the path
+   (i.e., the main invariant is satisfied)
+
+
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)       7/76
+                              Path ORAM – Example
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   8/76
+                              Path ORAM – Example
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   8/76
+                              Path ORAM – Example
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   8/76
+                              Path ORAM – Example
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   8/76
+                              Path ORAM – Example
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   8/76
+                                           Ring ORAM
+
+• Variation of Path ORAM that reduces the online access bandwidth
+  to O(1) and the overall bandwidth to ∼ 2 − 2.5 log(N)
+
+• Same server-side structure as Path ORAM but each node has
+       ◦ S additional dummy blocks
+       ◦ a small map of the offsets of its blocks
+       ◦ a counter of accesses
+
+• Protocol
+       ◦ Remap (step 1) is the same as Path ORAM
+       ◦ Read path (step 2) is revised to download only one block per bucket
+       ◦ Write path (step 3) is factorized among multiple access operations
+         (eviction phase)
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)             9/76
+       Path ORAM and Ring ORAM: Pros and cons
+
+Path ORAM and Ring ORAM provide access and pattern
+confidentiality
+ + same protection guarantees as ORAM (no inferences)
+ + much more efficient than ORAM =⇒ more applicable in practice
+ + limited access time
+ − range queries are not supported
+ − accesses by multiple clients are not supported
+
+ − vulnerable to failures of the client
+ − ∼ 2 − 2.5 log(N) overall bandwidth overhead w.r.t. non protected
+   accesses
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)        10/76
+                                              Shuffle Index
+
+
+
+
+S. De Capitani di Vimercati, S. Foresti, S. Paraboschi, G. Pelosi, P. Samarati, “Efficient and Private Access to Outsourced Data,”
+in Proc. of ICDCS, Minneapolis, MN, USA, June 2011.
+   ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                                                               11/76
+                          Shuffle index data structure
+
+• Data are indexed over a candidate key K and organized as an
+  unchained B+-tree with fan out F
+
+• Data are stored in the leaves in association with their index values
+
+• Accesses to the data (searches) are based on the value of the
+  index
+
+• Node structure:
+        ◦ q ≥ ⌈F/2⌉ children with q − 1 values v1 ≤ . . . ≤ vq−1
+
+        ◦ i-th child is the root of a subtree containing the values v with: v < v1 ;
+          vi−1 ≤ v < vi , i = 2, . . . , q − 2; v ≥ vq−1
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    12/76
+Abstract representation of shuffle index – Example
+
+
+
+
+                                                 Search: L
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   13/76
+Abstract representation of shuffle index – Example
+
+
+
+
+                                                 Search: L
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   13/76
+Abstract representation of shuffle index – Example
+
+
+
+
+                                                 Search: L
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   13/76
+              Logical representation of shuffle index
+
+• Pointers between nodes of the abstract data structure correspond,
+  at logical level, to node identifiers
+
+• Set of pairs ⟨id, n⟩, with id the node identifier and n the node
+  content
+        ◦ the order between identifiers does not necessarily correspond to
+          the order in which nodes appear in the abstract representation
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                14/76
+        Abstract and logical shuffle index – Example
+
+
+
+
+Abstract
+Logical
+
+
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   15/76
+             Physical representation of shuffle index
+
+• Each node ⟨id, n⟩ of the logical shuffle index is stored on the
+  server in encrypted form (content confidentiality)
+
+• A node ⟨id, n⟩ corresponds to a block ⟨id, b⟩, with b=C ||T ,
+  C =Ek (s||n), T =MACk′ (id||C ), s a value chosen at random during
+  each encryption
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)       16/76
+       Logical and physical shuffle index – Example
+
+
+
+
+Logical
+Physical
+
+
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   17/76
+                                         Data accesses
+
+• Access to the data requires an iterative process between the client
+  and the server
+
+• The client performs an iteration for each level of the shuffle index
+  starting from the root
+
+• At each iteration, the client:
+        ◦ decrypts the retrieved block
+
+        ◦ determines the block to be retrieved from the server at the next level
+
+• The process ends when a leaf block is retrieved
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                18/76
+                                 Data accesses – Example
+Search: F
+
+
+level: 0
+download: 001
+decrypt: 001
+
+
+level: 1
+download: 103
+decrypt: 103
+
+
+level: 2
+download: 207
+decrypt: 207
+
+
+
+
+     ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   19/76
+                                 Data accesses – Example
+Search: F
+
+
+level: 0
+download: 001
+decrypt: 001
+
+
+level: 1
+download: 103
+decrypt: 103
+
+
+level: 2
+download: 207
+decrypt: 207
+
+
+
+
+     ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   19/76
+                                 Data accesses – Example
+Search: F
+
+
+level: 0
+download: 001
+decrypt: 001
+
+
+level: 1
+download: 103
+decrypt: 103
+
+
+level: 2
+download: 207
+decrypt: 207
+
+
+
+
+     ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   19/76
+                                 Data accesses – Example
+Search: F
+
+
+level: 0
+download: 001
+decrypt: 001
+
+
+level: 1
+download: 001
+decrypt:001
+
+
+level: 2
+download: 207
+decrypt: 207
+
+
+
+
+     ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   19/76
+                                 Data accesses – Example
+Search: F
+
+
+level: 0
+download: 001
+decrypt: 001
+
+
+level: 1
+download: 103
+decrypt: 001
+
+
+level: 2
+download: 207
+decrypt: 207
+
+
+
+
+     ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   19/76
+                                 Data accesses – Example
+Search: F
+
+
+level: 0
+download: 001
+decrypt: 001
+
+
+level: 1
+download: 103
+decrypt: 103
+
+
+level: 2
+download: 207
+decrypt: 207
+
+
+
+
+     ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   19/76
+                                 Data accesses – Example
+Search: F
+
+
+level: 0
+download: 001
+decrypt: 001
+
+
+level: 1
+download: 103
+decrypt: 103
+
+
+level: 2
+download: 103
+decrypt: 103
+
+
+
+
+     ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   19/76
+                                 Data accesses – Example
+Search: F
+
+
+level: 0
+download: 001
+decrypt: 001
+
+
+level: 1
+download: 103
+decrypt: 103
+
+
+level: 2
+download: 207
+decrypt: 103
+
+
+
+
+     ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   19/76
+                                 Data accesses – Example
+Search: F
+
+
+level: 0
+download: 001
+decrypt: 001
+
+
+level: 1
+download: 103
+decrypt: 103
+
+
+level: 2
+download: 207
+decrypt: 207
+
+
+
+
+     ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   19/76
+                 Knowledge of the observer (server)
+
+• The server receives a set of blocks to store
+
+• The server receives requests to access the blocks that translate
+  into observations
+        ◦ an observation oi corresponds to a sequence of blocks {bi1 , . . . , bih }
+
+
+• The server knows or can easily infer:
+        ◦ the number m of blocks and their identifiers
+        ◦ the height h of the shuffle index
+        ◦ the level associated with each block (after the observation of a long
+          history of accesses)
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    20/76
+                                      Problem statement
+
+Given a sequence of observations {o1 , . . . , oz } the server should not be
+able to infer:
+
+  • the data stored in the shuffle index (content confidentiality)
+
+  • the data to which access requests are aimed, that is, ∀i = 1, . . . , z,
+    the server should not infer that oi aims at a specific node
+    (access confidentiality)
+
+  • oi aims at accessing the same node as oj , ∀i, j = 1, . . . , z, i ̸= j
+    (pattern confidentiality)
+
+
+
+
+  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)               21/76
+                                Is encryption enough?
+
++ It protects:
+        ◦ content confidentiality of data at rest
+
+        ◦ access confidentiality of individual requests
+
+− Access and pattern confidentiality is not provided
+        ◦ accesses to the same blocks imply accesses to the same data
+
+    =⇒ frequency-based attacks allow the server to reconstruct
+       the correspondence between plaintext values and blocks
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)           22/76
+                            Rationale of the approach
+
+• Destroy the correspondence between the frequencies with which
+  blocks are accessed and the frequencies of accesses to different
+  values
+
+• Combine three strategies:
+        ◦ cover searches
+               − provide confusion in individual accesses
+
+        ◦ cached searches
+               − allow protection of accesses to the same values
+
+        ◦ shuffling
+               − dynamically changes node allocation to blocks at every access, so
+                 destroying the fixed node-block correspondence
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                        23/76
+                                        Cover searches
+
+• Introduce confusion on the target of an access by hiding it within a
+  group of other requests that act as covers
+
+• The number of covers (num_cover) is a protection parameter
+
+• Cover searches must:
+        ◦ provide block diversity (i.e., on a path disjoint from the target
+          searched, apart from the root)
+
+        ◦ be indistinguishable from actual searches (i.e., enjoy a believable
+          frequency of access)
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                 24/76
+                         Cover searches – Example (1)
+Target value: F; Cover: I
+
+
+
+
+  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   25/76
+                         Cover searches – Example (1)
+Target value: F; Cover: I
+
+
+
+
+  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   25/76
+                Cover searches – Protection offered
+
++ Leaf blocks have the same probability of containing the actual
+  target
+        ◦ e.g., blocks 201 and 207 can be both the target block
+
++ The parent-child relationship between accessed blocks is
+  confused
+        ◦ e.g., block 201 could be child of either 101 or 103
+
+− Parent-child relationship can be disclosed by intersection attacks
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      26/76
+                        Cover searches – Example (2)
+Target value: F; cover: M
+
+
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   27/76
+                        Cover searches – Example (2)
+Target value: F; cover: M
+
+
+
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   27/76
+                Cover searches – Intersection attack
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   28/76
+                Cover searches – Intersection attack
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   28/76
+                Cover searches – Intersection attack
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   28/76
+                                      Cached searches
+
+• The client maintains a local cache of nodes in the path to the
+  target for counteracting intersection attacks
+        ◦ initialized with num_cache disjoint paths and is managed according
+          to the LRU policy
+
+        ◦ if a node is in cache, its parent also is (path continuity property)
+
+        ◦ refreshed at every access
+
+        ◦ recently searched nodes will be found in the cache
+
+        ◦ if a target node is in cache, only cover searches will be performed
+               − provides fake observations for the server
+
+               − allows (with shuffling) refreshing the cache
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    29/76
+                              Cached searches – Example (1)
+
+l Cachel
+0 001 [103 G101 M104 S102 ]
+1 102 [202 U206 W208 - -]
+2 202 [ST-]
+
+num_cover=1
+num_cache=1
+
+first search:
+target= F
+cover= I
+
+
+
+
+      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   30/76
+                              Cached searches – Example (1)
+
+l Cachel
+0 001 [103 G101 M104 S102 ]
+1 102 [202 U206 W208 - -]
+2 202 [ST-]
+
+num_cover=1
+num_cache=1
+
+first search:
+target= F
+cover= I
+
+
+
+
+      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   30/76
+                              Cached searches – Example (1)
+
+l Cachel
+0 001 [103 G101 M104 S102 ]
+1 102 [202 U206 W208 - -]
+2 202 [ST-]
+
+num_cover=1
+num_cache=1
+
+first search:
+target= F
+cover= I
+
+
+
+
+      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   30/76
+                              Cached searches – Example (1)
+
+l Cachel
+0 001 [103 G101 M104 S102 ]
+1 103 [210 C204 E207 - -]
+2 202 [ST-]
+
+num_cover=1
+num_cache=1
+
+first search:
+target= F
+cover= I
+
+
+
+
+      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   30/76
+                              Cached searches – Example (1)
+
+l Cachel
+0 001 [103 G101 M104 S102 ]
+1 103 [210 C204 E207 - -]
+2 202 [ST-]
+
+num_cover=1
+num_cache=1
+
+first search:
+target= F
+cover= I
+
+
+
+
+      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   30/76
+                              Cached searches – Example (1)
+
+l Cachel
+0 001 [103 G101 M104 S102 ]
+1 103 [210 C204 E207 - -]
+2 207 [EF-]
+
+num_cover=1
+num_cache=1
+
+first search:
+target= F
+cover= I
+
+
+
+
+      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   30/76
+                              Cached searches – Example (2)
+
+l Cachel
+0 001 [103 G101 M104 S102 ]
+1 103 [210 C204 E207 - -]
+2 207 [EF-]
+
+num_cover=1
+num_cache=1
+
+second search:
+target= F
+covers= M,W
+
+
+
+
+      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   31/76
+                              Cached searches – Example (2)
+
+l Cachel
+0 001 [103 G101 M104 S102 ]
+1 103 [210 C204 E207 - -]
+2 207 [EF-]
+
+num_cover=1
+num_cache=1
+
+second search:
+target= F
+covers= M,W
+
+
+
+
+      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   31/76
+                              Cached searches – Example (2)
+
+l Cachel
+0 001 [103 G101 M104 S102 ]
+1 103 [210 C204 E207 - -]
+2 207 [EF-]
+
+num_cover=1
+num_cache=1
+
+second search:
+target= F
+covers= M,W
+
+
+
+
+      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   31/76
+                              Cached searches – Example (2)
+
+l Cachel
+0 001 [103 G101 M104 S102 ]
+1 103 [210 C204 E207 - -]
+2 207 [EF-]
+
+num_cover=1
+num_cache=1
+
+second search:
+target= F
+covers= M,W
+
+
+
+
+      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   31/76
+            Cached searches – No intersection attack
+Server’s observation: first request
+
+
+
+
+Server’s observation: second request
+
+
+
+
+  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   32/76
+              Cached searches – Protection offered
+
++ Caching helps in counteracting short term intersection attacks
+        ◦ e.g., the observations of the server on the two previous requests
+          would be {(001); (101,103); (201,207)} and {(001); (102,104);
+          (208,211)}
+            =⇒ the server would not be able to determine whether the two
+               requests aim at the same target
+
+− Caching does not prevent intersection attacks on observations
+  that go beyond the size of the cache
+
+− A long history of observations will allow the server to reconstruct
+  the topology (parent-child relationship) of the shuffle index
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                 33/76
+                                                Shuffling
+
+• Shuffling breaks the one-to-one correspondence blocks-nodes by
+  exchanging the content among nodes (and therefore blocks)
+
+• Shuffling requires node decryption and re-encryption
+        ◦ encrypted text corresponding to a given node changes at each
+          access (different node identifier and salt)
+
+• The contents of all blocks read in the execution of an access and
+  the nodes in cache are exchanged
+
+• The shuffled blocks are rewritten back on the server
+
+    =⇒ node shuffling at a given level requires to update the parents
+       of the nodes
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)            34/76
+                                   Shuffling – Example
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   35/76
+                                   Shuffling – Example
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   35/76
+                                   Shuffling – Example
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   35/76
+   Access execution and shuffle index management
+
+Let v be the target value. Determine num_cover+1 cover values and
+for each level l of the shuffle index:
+  • determine the identifiers (ToRead_ids) of the blocks in the path to
+    v and cover values
+  • if the node in the path to v does not belong to Cachel (cache
+    miss), only num_cover cover searches are performed
+  • send to the server a request for the blocks with identifier in
+    ToRead_ids and decrypt their content (set Read of nodes)
+  • shuffle nodes in Read and in Cachel according to a permutation π
+  • update the pointers of the parents of the shuffled nodes
+  • update Cachel by inserting the most recently accessed node in
+    the path to v (only if a cache miss occurred)
+
+ ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)       36/76
+                               Access execution – Example
+
+l Cachel
+0 001 [103 G101 M104 S102 ]
+1 101 [203 I201 K205 - -]
+  103 [210 C204 E207 - -]
+
+2 203 [GH-]
+  210 [AB-]
+
+
+num_cover=1
+num_cache=2
+target= F
+covers= S,M
+
+
+
+
+      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   37/76
+                               Access execution – Example
+
+l Cachel
+0 001 [103 G101 M104 S102 ]
+1 101 [203 I201 K205 - -]
+  103 [210 C204 E207 - -]
+
+2 203 [GH-]
+  210 [AB-]
+
+
+num_cover=1
+num_cache=2
+target= F
+covers= S,M
+
+
+
+
+      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   37/76
+                               Access execution – Example
+
+l Cachel
+0 001 [103 G101 M104 S102 ]
+1 101 [203 I201 K205 - -]
+  103 [210 C204 E207 - -]
+
+2 203 [GH-]
+  210 [AB-]
+
+
+num_cover=1
+num_cache=2
+target= F
+covers= S,M
+
+
+
+
+      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   37/76
+                               Access execution – Example
+
+l Cachel
+0 001 [103 G101 M104 S102 ]
+1 101 [203 I201 K205 - -]
+  103 [210 C204 E207 - -]
+
+2 203 [GH-]
+  210 [AB-]
+
+
+num_cover=1
+num_cache=2
+target= F
+covers= S,M
+
+
+
+
+      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   37/76
+                               Access execution – Example
+
+l Cachel
+0 001 [103 G101 M104 S102 ]
+1 101 [203 I201 K205 - -]
+  103 [210 C204 E207 - -]
+
+2 203 [GH-]
+  210 [AB-]
+
+
+num_cover=1
+num_cache=2
+target= F
+covers= S,M
+
+
+
+
+      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   37/76
+                               Access execution – Example
+
+l Cachel
+0 001 [101 G102 M103 S104 ]
+1 102 [203 I201 K205 - -]
+  101 [210 C204 E207 - -]
+
+2 203 [GH-]
+  210 [AB-]
+
+
+num_cover=1
+num_cache=2
+target= F
+covers= S,M
+
+
+
+
+      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   37/76
+                               Access execution – Example
+
+l Cachel
+0 001 [101 G102 M103 S104 ]
+1 102 [203 I201 K205 - -]
+  101 [210 C204 E207 - -]
+
+2 203 [GH-]
+  210 [AB-]
+
+
+num_cover=1
+num_cache=2
+target= F
+covers= S,M
+
+
+
+
+      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   37/76
+                               Access execution – Example
+
+l Cachel
+0 001 [101 G102 M103 S104 ]
+1 102 [203 I201 K205 - -]
+  101 [210 C204 E207 - -]
+
+2 203 [GH-]
+  210 [AB-]
+
+
+num_cover=1
+num_cache=2
+target= F
+covers= S,M
+
+
+
+
+      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   37/76
+                               Access execution – Example
+
+l Cachel
+0 001 [101 G102 M103 S104 ]
+1 102 [207 I201 K205 - -]
+  101 [203 C204 E202 - -]
+
+2 207 [GH-]
+  202 [EF-]
+
+
+num_cover=1
+num_cache=2
+target= F
+covers= S,M
+
+
+
+
+      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   37/76
+                               Access execution – Example
+
+l Cachel
+0 001 [101 G102 M103 S104 ]
+1 102 [207 I201 K205 - -]
+  101 [203 C204 E202 - -]
+
+2 207 [GH-]
+  202 [EF-]
+
+
+num_cover=1
+num_cache=2
+target= F
+covers= S,M
+
+
+
+
+      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   37/76
+      Access execution – Impact on the logical index
+Before the access
+
+
+
+
+After the access
+
+
+
+
+  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   38/76
+                                    Protection analysis
+
+• Degradation due to shuffling: shuffling degrades any information
+  the server may possess on the correspondence between nodes
+  and blocks
+
+• Access confidentiality: every time an access is performed any
+  information on the specific access has to be divided among
+  num_cover + 1 nodes and shuffling destroys the correspondence
+  nodes-blocks
+
+• Pattern confidentiality: accesses separated by a significant
+  number of steps cannot be recognized (shuffling):
+        ◦ protection by covers and cache (short term)
+
+        ◦ protection by covers and shuffling (long term)
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)    39/76
+                            Protection vs performance
+
+• Protection comes at a cost:
+       − one read access implies num_cover + num_cache + 1 writes back
+         to the server
+
+
+       + better performance with respect to Path ORAM
+
+
+       + no solution providing support for access and pattern confidentiality
+         offers comparable performance (even in a WAN configuration)
+
+
+
+
+©Security, Privacy, and Data Protection Laboratory (SPDP Lab)              40/76
+                         Extensions to the shuffle index
+
+The shuffle index can be extended to efficiently:
+
+  • support concurrent accesses (delta versions) [DFPPS-11b]
+
+  • operate on multiple servers for storing and accessing data
+    (shadows) [DFPPS-13]
+
+
+----------------------------------------------------------------
+
 
 
 
