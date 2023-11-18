@@ -5,7 +5,7 @@
   "showAttachments": false,
   "hideUnresolved": false,
   "showOrphans": true,
-  "collapse-color-groups": true,
+  "collapse-color-groups": false,
   "colorGroups": [
     {
       "query": "path:Classes  ",
@@ -18,21 +18,21 @@
       "query": "path:Articles  ",
       "color": {
         "a": 1,
-        "rgb": 5308165
+        "rgb": 16403200
       }
     },
     {
       "query": "path:Books  ",
       "color": {
         "a": 1,
-        "rgb": 11657298
+        "rgb": 11206400
       }
     },
     {
       "query": "path:Videos  ",
       "color": {
         "a": 1,
-        "rgb": 5431378
+        "rgb": 2852976
       }
     }
   ],
@@ -46,6 +46,6 @@
   "repelStrength": 12.2864491674563,
   "linkStrength": 0.657641803167727,
   "linkDistance": 309,
-  "scale": 0.31595320796091675,
+  "scale": 0.2874317961537824,
   "close": true
 }
