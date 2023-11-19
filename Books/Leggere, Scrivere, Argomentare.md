@@ -16,9 +16,9 @@ inserire copertina
 # Lessico
 - [[Perigliare|Perigliarvi]]
 - [[Corrivo |Corrivamente]]
-- Improperio
-- Contenzioso
-- Pamphlet
+- [[Improperio]]
+- [[Contenzioso]]
+- [[Pamphlet]]
 - 
 
 ----------------------------------------------------------------
