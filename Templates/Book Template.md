@@ -6,6 +6,8 @@ Sottotitolo:
 Edizione: 
 "Anno:":
 ---
+Inserire copertina
+
 # Sommario
 
 

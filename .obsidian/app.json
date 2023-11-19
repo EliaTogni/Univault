@@ -9,5 +9,6 @@
     "downscalePercent": 100
   },
   "promptDelete": false,
-  "spellcheck": false
+  "spellcheck": false,
+  "attachmentFolderPath": "Images"
 }

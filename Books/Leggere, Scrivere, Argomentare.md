@@ -6,12 +6,19 @@ Sottotitolo: Prove ragionate di scrittura
 Edizione: "6"
 "Anno:": "2020"
 ---
+inserire copertina
+
 # Sommario
 
 
 ----------------------------------------------------------------
 
 # Lessico
-
+- [[Perigliare|Perigliarvi]]
+- [[Corrivo |Corrivamente]]
+- Improperio
+- Contenzioso
+- Pamphlet
+- 
 
 ----------------------------------------------------------------
