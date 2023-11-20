@@ -1,12 +1,12 @@
 ---
-"Titolo:": Leggere, Scrivere, Argomentare
+"Titolo:": Leggere, scrivere, argomentare
 Sottotitolo: Prove ragionate di scrittura
 "Autore:": Luca Serianni
 "Casa Editrice:": Laterza
 Edizione: "6"
 "Anno:": "2020"
 ---
-inserire copertina
+![[Leggere,Scrivere,Argomentare.png |300]]
 
 # Sommario
 

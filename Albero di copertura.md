@@ -1,0 +1,1 @@
+Un **Albero di copertura** è un [[Struttura Dati|struttura dati]] basata su un [[Albero |albero]].

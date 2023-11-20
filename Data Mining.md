@@ -1,0 +1,1 @@
+L'**estrazione di dati** o **data mining** è l'insieme di tecniche e metodologie che hanno per oggetto l'estrazione di informazioni utili da grandi quantità di dati (es. banche dati, data warehouse, ecc.), attraverso metodi automatici o semi-automatici (es. apprendimento automatico) e l'utilizzo scientifico, aziendale, industriale o operativo delle stesse.

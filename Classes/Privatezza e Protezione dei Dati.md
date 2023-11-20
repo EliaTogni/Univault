@@ -28,7 +28,7 @@ Need to ensure **data privacy** and **integrity** are properly protected.
 Release of data to the public for statistical purpose:
 - **statistical DBMS**:
 	- the DBMS responds only to **statistical queries** (the aggregate ones);
-	- consider a dataset composed by $1000$ respondents, $999$ males and $1$ female, as an example. A query returning only the female respondent would be blocked by the DBMS. If the user would make a query which would return a value aggregated from all the **respondents** (the people replying with answers to a survey, the ones the data refers to) and, then, a query which would return a value aggregated from all the males, the DBMS will block the second query because it would expose the female respondent.<br />
+	- consider a dataset composed by $1000$ respondents, $999$ males and $1$ female, as an example. A query returning only the female respondent would be blocked by the DBMS. If the user would make a query which would return a value aggregated from all the **respondents** (the people replying with answers to a survey, the ones the data refers to) and, then, a query which would return a value aggregated from all the males, the DBMS will block the second query because it would expose the female respondent. Therefore, it is necessary to keep the **windows history** in check.<br />
 	  Consider the same dataset and two different and colluded users as an example. The first one is able to make the first query and the second one is able to make the second one. Therefore, together they are able to expose the female respondent (**collusion**). therefore, the statistical DBMS need **run time checking** to control information (directly and indirectly) released (**dinamic**).
 - **statistical data**:
 	- publish statistics generated a priori and the user can only access these statistics;
@@ -217,7 +217,7 @@ An example of value generalization hierarchy.
 Let $T_i$ and $T_j$ be two tables defined on the same set of attributes. Table $T_j$ is said to be a **generalization with tuple suppression** of table $T_i$, denoted $T_i \preceq T_j$ , if:
 1) $\vert T_j \vert \leq \vert T_i \vert$;
 2) the domain $dom(A, T_j)$ of each attribute $A$ in $T_j$ is equal to, or a generalization of, the domain $dom(A, T_i)$ of attribute $A$ in $T_i$;
-3) it is possible to define an **injective function** associating each tuple $t_j$ in $T_j$ with a tuple $t_i$ in $T_i$ , such that the value of each attribute in $t_j$ is equal to, or a generalization of, the value of the corresponding attribute in $t_i$.
+3) it is possible to define an **injective function** associating each tuple $t_j$ in $T_j$ with a tuple $t_i$ in $T_i$ , such that the value of each attribute in $t_j$ is equal to, or a generalization of, the value of the corresponding attribute in $t_i$. The function is defined as injective because the viceversa isn't necessary true due to the suppression.
 
 An example of a generalized table with suppression.
 
@@ -231,9 +231,9 @@ Now, it will be provided the definition of **Distance Vector**. Let $T_i (A_1 , 
 ![[DistanceVector.png]]
 
 Let $T_i$ and $T_j$ be two tables such that $T_i \preceq T_j$, and let $MaxSup$ be the specified **threshold of acceptable suppression**. $T_j$ is said to be a **$k$-minimal generalization** of table $T_i$ iff:
-1) $T_j$ satisfies $k$-anonymity enforcing minimal required suppression, that is, $T_j$ satisfies $k$-anonymity and $\forall T_z : T_i \preceq T_z, DV_{i,z} = DV_{i,j}$, $T_z$ satisfies $k$-anonymity $\to \vert T_j \vert \geq \vert T_z \vert$. This means that for each table $T_z$, which is a generalization of $T_i$, and with the same $DV$, $T_j$ has more tuples so it does perform less suppression; 
+1) $T_j$ satisfies $k$-anonymity enforcing minimal required suppression, that is, $T_j$ satisfies $k$-anonymity and $\forall T_z : T_i \preceq T_z, DV_{i,z} = DV_{i,j}$, $T_z$ satisfies $k$-anonymity $\to \vert T_j \vert \geq \vert T_z \vert$. This means that for each table $T_z$, which is a generalization of $T_i$, and with the same $DV$, $T_j$ has a number of tuples greater or equal than $T_i$ so it does perform less suppression; 
 2) $\vert T_i \vert − \vert T_j \vert \leq MaxSup$;
-3) $\forall T_z : T_i \preceq T_z$ and $T_z$ satisfies conditions $1$ and $2$ $\to \neg (DV_{i,z} < DV_{i,j})$. This means that for each $T_z$ such that it is a generalization of $T_i$ and that satisfies the previous conditions, it is not true that the $DV$ of $T_z$ is dominated by the $DV$ of $T_j$, with respect to $i$.
+3) $\forall T_z : T_i \preceq T_z$ and $T_z$ satisfies conditions $1$ and $2$ $\to \neg (DV_{i,z} < DV_{i,j})$. This means that for each $T_z$ such that it is a generalization of $T_i$ and that satisfies the previous conditions (satisfying $k$-anonymity enforcing minimal required suppression and suppressing less than $MaxSup$), it is not true that the $DV$ of $T_z$ is dominated by the $DV$ of $T_j$, with respect to $i$.
 
 An example of $2$-minimal generalizations with $MaxSup = 2$.
 
@@ -266,7 +266,7 @@ An example of $2$-anonymized tables with regard to different models.
 ![[2Anonymized2.png]]
 ![[2Anonymized3.png]]
 
-In the last example (_CG\_CS_), each tuple has a different $DV$. This type of dataset is better in terms of utility but it worsen the performance.
+In the last example (_CG\_CS_), each tuple has a different $DV$ because the tuple domain is heterogeneous. This type of dataset is better in terms of utility but it worsen the performance.
 
 ![[2Anonymized4.png]]
 
@@ -284,7 +284,7 @@ Each path in $DGH_{DT}$ represents a generalization strategy for $PT$. We call *
 1) each $k$-minimal generalization is **locally minimal** with respect to a path (but the converse is not true, that is, a locally minimal generalization with respect to a path is not granted to be the $k$-minimal one). This means that a global minimal is also a locally minimal with respect to a path;
 2) going up in the hierarchy the number of tuples that must be removed to guarantee $k$-anonymity decreases.
 
-If there is no solution that guarantees $k$-anonymity suppressing less than $MaxSup$ tuples at height $h$, there cannot exist a solution, with height lower than $h$ that guarantees it.<br />
+If there is no solution that guarantees $k$-anonymity suppressing less than $MaxSup$ tuples at height $h$, there cannot exist a solution, with height lower than $h$ that guarantees it. The current height $h$ depends on the $DV$ (e.g., $DV = [1, 1]$ implies that $h = 1 + 1 = 2$).<br />
 The algorithm adopts a binary search on the lattice of distance vectors:
 1) evaluate solutions at height $\lfloor h/2\rfloor$;
 2) if there exists at least a solution satisfying $k$-anonymity
@@ -324,12 +324,12 @@ A generalization is the **union** of individual index values. The least value in
 - Race: $\{1\}$, that is: $\langle [\text{asian or black or white}]\rangle$;
 - ZIP: $\{4, 6\}$, that is: $\langle[94138 \text{ or } 94139],[94141 \text{ or } 94142]\rangle$.
 
-The order of values within domains has impact on generalization. $k$-Optimize builds a **set enumeration [[Albero|tree]]** over the set $I$ of indexes:
+The order of values within domains has impact on generalization. $k$-Optimize builds a **[[Albero di copertura|set enumeration tree]]** over the set $I$ of indexes:
 
 ![[kOptimizeAlgorithm2.png]]
 
 The root node of the tree is the empty set. The children of $n$ are the sets obtained by appending a single element $i$ of $I$ to $n$, such that $\forall i' \in n, i > i'$. Each node has a cost that reflects the amount of generalization and suppression of the anonymization represented by the node. This implies that each tuple is associated with a cost that reflects the information loss associated with its generalization or suppression.<br />
-$k$-Optimize visits the tree (e.g., using a depth-first search) for searching the anonymization with lowest cost. Since the number of nodes in the tree is $2^{\vert I \vert}$, the visit of the tree is not practical. This implies that a **pruning** strategy is fundamental to reduce computational cost. The node $n$ is pruned iff none of its descendants could be optimal. This determination can be made by computing a lower bound on the cost of the nodes in the subtree rooted at $n$. If the lower bound is greater than the current best cost, node $n$ is pruned.
+$k$-Optimize visits the tree starting from the root (e.g., using a depth-first search) for searching the anonymization with lowest cost. Since the number of nodes in the tree is $2^{\vert I \vert}$, the visit of the tree is not practical. This implies that a **pruning** strategy is fundamental to reduce computational cost. The node $n$ is pruned iff none of its descendants could be optimal. This determination can be made by computing a lower bound on the cost of the nodes in the subtree rooted at $n$. If the lower bound is greater than the current best cost, node $n$ is pruned. This algorithm exploit the monotonicity property of the trees.
 
 ----------------------------------------------------------------
 
@@ -349,13 +349,15 @@ An example of the Incognito algorithm.
 ![[IncognitoExample1.png]]
 ![[IncognitoExample2.png]]
 
+After the construction of the lattice by the Incognito algorithm, it is still necessary to search the solutions in the hierarchy. This algorithm searches by cutting the space of the solutions.
+
 ----------------------------------------------------------------
 
 ### Heuristic algorithms
 The exact algorithms have complexity exponential in the size of $QI$. Heuristic algorithms have been proposed:
-- \[I-02\]: based on genetic algorithms, it solves the $k$-anonymity problem using an incomplete stochastic search method;
-- \[MW-04\]: based on simulated annealing for finding locally minimal solutions, it requires high computational time and does not assure the quality of the solution;
-- \[FWY-05\]: top-down heuristic to make a table to be released.
+- based on genetic algorithms, it solves the $k$-anonymity problem using an incomplete stochastic search method;
+- based on simulated annealing for finding locally minimal solutions, it requires high computational time and does not assure the quality of the solution;
+- top-down heuristic to make a table to be released.
 
 $k$-anonymous; it starts from the most general solution, and iteratively specializes some values of the current solution until the $k$-anonymity requirement is violated.
 
@@ -369,14 +371,14 @@ Experimental results can be used to assess the quality of the solution retrieved
 In the **Mondrian multidimensional algorithm**, each attribute in $QI$ represents a dimension. Each tuple in $PT$ represents a point in the space defined by $QI$. Tuples with the same $QI$ value are represented by giving a **multiplicity value** to points. The multi-dimensional space is partitioned by splitting dimensions such that each area contains at least $k$ occurrences of point values. All the points in a region are generalized to a unique value. The corresponding tuples are substituted by the computed generalization.<br />
 Mondrian algorithm is flexible and can operate:
 - on a different number of attributes:
-	- single-dimension;
-	- multi-dimension.
+	- **single-dimension**;
+	- **multi-dimension**.
 - with different recoding (generalization) strategies:
-	- global recoding;
-	- local recoding.
+	- **global recoding** (attribute generalization);
+	- **local recoding** (cell generalization).
 - with different partitioning strategies:
 	- strict (i.e., non-overlapping) partitioning;
-	- relaxed (i.e., potentially overlapping) partitioning.
+	- relaxed (i.e., potentially overlapping, a point can belong to more than one cluster) partitioning.
 - using different metrics to determine how to split on each dimension.
 
 An example of the Mondrian multidimensional algorithm.<br />
@@ -408,6 +410,8 @@ When generalization is performed at cell level (_CG_) the existence of at least 
 An example of $k$-anonymity revisited.
 
 ![[kAnonimityRevised.png]]
+
+The issue of this algorithm is that to be sure to have reached $k$-anonymity, we have to check not only the sanitized table but also the primary one.
 
 ----------------------------------------------------------------
 
@@ -575,11 +579,13 @@ If $G'$ is $k$-anonymous, with the neighborhood background knowledge, any vertex
 
 Goal: compute a $k$-anonymous version of a social network graph minimizing the number of added edges.
 
+Can the intuition utilized in this context be used also in the previous contexts? No, because the dataset will cease to be truthful (even though the majority of the tuples will still be). Can duplicating the data be an effective solution? No, because if the respondent is population unique, it will still be exposed.
+
 ----------------------------------------------------------------
 
 #### $k$-anonymous data mining
-Privacy preserving data mining techniques depend on the definition of privacy capturing what information is sensitive in the original data and should then be protected.<br />
-$k$-anonymous data mining aims at ensuring that the data mining results do not violate the $k$-anonymity requirement over the original data.<br />
+Privacy preserving [[Data Mining |data mining]] techniques depend on the definition of privacy capturing what information is sensitive in the original data and should then be protected.<br />
+**$k$-anonymous data mining** aims at ensuring that the data mining results do not violate the $k$-anonymity requirement over the original data.<br />
 Threats to $k$-anonymity can arise from performing mining on a collection of data maintained in a private table $PT$ subject to $k$-anonymity constraints. E.g.:
 - **association rule mining**;
 - **classification mining**.
