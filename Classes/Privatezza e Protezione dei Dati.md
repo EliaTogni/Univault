@@ -324,7 +324,7 @@ A generalization is the **union** of individual index values. The least value in
 - Race: $\{1\}$, that is: $\langle [\text{asian or black or white}]\rangle$;
 - ZIP: $\{4, 6\}$, that is: $\langle[94138 \text{ or } 94139],[94141 \text{ or } 94142]\rangle$.
 
-The order of values within domains has impact on generalization. $k$-Optimize builds a **[[Albero di copertura|set enumeration tree]]** over the set $I$ of indexes:
+The order of values within domains has impact on generalization. $k$-Optimize builds a **[[Albero di Copertura|set enumeration tree]]** over the set $I$ of indexes:
 
 ![[kOptimizeAlgorithm2.png]]
 
@@ -587,14 +587,15 @@ Can the intuition utilized in this context be used also in the previous contexts
 Privacy preserving [[Data Mining |data mining]] techniques depend on the definition of privacy capturing what information is sensitive in the original data and should then be protected.<br />
 **$k$-anonymous data mining** aims at ensuring that the data mining results do not violate the $k$-anonymity requirement over the original data.<br />
 Threats to $k$-anonymity can arise from performing mining on a collection of data maintained in a private table $PT$ subject to $k$-anonymity constraints. E.g.:
-- **association rule mining**;
-- **classification mining**.
+- **association rule mining** (**support** and **confidence**);
+- **classification mining** (**[[Albero di Decisione |decision trees]]**).
 
 ##### Association rule mining
+The association rules check on the correlations between datas.
 
 ![[AssociationRuleMining.png]]
 
-$\{$divorced$\} \to \{$M$\}$ with support $\frac{19}{66}$ and confidence $\frac{19}{21}$.<br />
+$\{$divorced$\} \to \{$M$\}$ with **support** $\frac{19}{66}$ (where support is defined as $\frac{\#(x \wedge y)}{\#tuple}$) and confidence $\frac{19}{21}$ (where confidence is defined as $\frac{\#(x \wedge y)}{\#x}$).<br />
 If $QI$ includes _Marital_status_ and _Sex_, then $\{$divorced$\} \to \{$M$\}$:
 - violates $k$-anonymity for any $k > 19$;
 - violates also $k$-anonymity for any $k > 2$ since it reflects the existence of $2$ divorced and female respondents.
@@ -610,6 +611,12 @@ If $QI$ includes _Sex_ and _Hours_ $\to$ $k$-anonymity is violated for any $k > 
 ##### Approaches for combining k-anonymity and data mining
 
 ![[ApprochesCombiningkAnonymityDM.png]]
+
+In these different strategies, the transboundary is put in different places.
+
+immagine transboundary nuova
+
+Do these techniques all have the same range of application? No, because in the first case everybody can mine the datas while, in the other cases, only who is authorized to access the $PT$ can mine the data.
 
 ----------------------------------------------------------------
 
@@ -638,7 +645,7 @@ Any information can be used to re-identify anonymous data. Ensuring proper priva
 - Netflix.
 
 #### AOL data release
-In $2006$, to embrace the vision of an open research community, **AOL** (America OnLine) publicly posted to a website $20$ million search queries for $650,000$ users of AOL’s search engine summarizing three months of activity. AOL suppressed any obviously identifying information such as AOL username and IP address. AOL replaced these identifiers with unique identification numbers (this made searches by the same user linkable).
+In $2006$, to embrace the vision of an open research community, **AOL** (America OnLine) publicly posted to a website $20$ million search queries for $650,000$ users of AOL’s search engine summarizing three months of activity. AOL suppressed any obviously identifying information such as AOL username and IP address. AOL replaced these identifiers with unique **identification numbers** (this made searches by the same user linkable). This approach is called **pseudonymization**.
 
 User $4417749$:
 - “numb fingers”, “$60$ single men”, “dog that urinates on everything”;
@@ -718,9 +725,10 @@ Informally, differential privacy requires the probability distribution on the pu
 Formally, a randomized function $K$ gives **$\varepsilon$-differential privacy** if for all data sets $D$ and $D'$ differing on at most one row, and all
 $S \subseteq Range(K)$, $Pr[K(D) \in S] \leq e^{\varepsilon} \times Pr[K(D' ) \in S]$.
 
+The goodness of differential privacy depends on $\varepsilon$: the smaller, the better.<br />
 Differential privacy is applicable to two scenarios:
-- **interactive scenario**: run-time evaluation of queries;
-- **non-interactive scenario**: release of pre-computed macrodata tables.
+- **interactive scenario**: run-time evaluation of queries (statistical DBMS);
+- **non-interactive scenario**: release of pre-computed macrodata tables (statistical data).
 
 Furthermore, it is typically enforced by adding random noise. This implies that data truthfulness is not preserved. $\varepsilon$-differentially private mechanisms compose automatically.
 
@@ -740,7 +748,7 @@ Similarly to $k$-anonymity, differentially private mechanisms have been develope
 #### Is differential privacy enough?
 Limiting the inference about the presence of a tuple is different from limiting the inference about the participation of the individual in the data generating process. E.g., Bob’s participation in a social network can cause links to form between Bob’s friends (Bob’s participation affects more than just the tuple marked “Bob”).
 
-Differential privacy composes well with itself but not necessarily with other privacy definitions or data release mechanisms (which represent background knowledge that can cause privacy breaches).
+Differential privacy composes well with itself (the composition/observation of differential private documents is differential private itself) but not necessarily with other privacy definitions or data release mechanisms (which represent background knowledge that can cause privacy breaches).
 
 ----------------------------------------------------------------
 
