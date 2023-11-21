@@ -15461,112 +15461,45 @@ Protocol:
 - read path (step $2$) is revised to download only one block per bucket;
 - write path (step $3$) is factorized among multiple access operations (eviction phase).
 
-       Path ORAM and Ring ORAM: Pros and cons
+----------------------------------------------------------------
 
-Path ORAM and Ring ORAM provide access and pattern
-confidentiality
- + same protection guarantees as ORAM (no inferences)
- + much more efficient than ORAM =⇒ more applicable in practice
- + limited access time
- − range queries are not supported
- − accesses by multiple clients are not supported
+##### Path ORAM and Ring ORAM: Pros and cons
+Path ORAM and Ring ORAM provide access and pattern confidentialitysame protection guarantees as ORAM (no inferences):
+- much more efficient than ORAM $\to$ more applicable in practice;
+- limited access time;
+- range queries are not supported;
+- accesses by multiple clients are not supported;
+- vulnerable to failures of the client;
+- $\sim 2 − 2.5\log{(N)}$ overall bandwidth overhead with regard to non protected accesses.
 
- − vulnerable to failures of the client
- − ∼ 2 − 2.5 log(N) overall bandwidth overhead w.r.t. non protected
-   accesses
+----------------------------------------------------------------
 
+## Shuffle Index
+### Shuffle index data structure
+Data are indexed over a candidate key $K$ and organized as an unchained $B+$-tree with fan out $F$.<br />
+Data are stored in the leaves in association with their index values. Accesses to the data (searches) are based on the value of the index
 
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)        10/76
-                                              Shuffle Index
+Node structure:
+- $q \geq \lceil F/2 \rceil$ children with $q − 1$ values $v_1 \leq ... \leq v_{q−1}$;
+- $i$-th child is the root of a subtree containing the values $v$ with: $v < v_1$; $v_{i−1} \leq v < v_i, i = 2, ..., q − 2$; $v \geq v_{q−1}$.
 
+An example of the abstract representation of shuffle index.
 
+slide 13/76
 
+----------------------------------------------------------------
 
-S. De Capitani di Vimercati, S. Foresti, S. Paraboschi, G. Pelosi, P. Samarati, “Efficient and Private Access to Outsourced Data,”
-in Proc. of ICDCS, Minneapolis, MN, USA, June 2011.
-   ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                                                               11/76
-                          Shuffle index data structure
+### Logical representation of shuffle index
+Pointers between nodes of the abstract data structure correspond, at logical level, to node identifiers. Set of pairs $\langle id, n \rangle$, with _id_ the node identifier and $n$ the node content. The order between identifiers does not necessarily correspond to the order in which nodes appear in the abstract representation.
 
-• Data are indexed over a candidate key K and organized as an
-  unchained B+-tree with fan out F
+An example of the abstract and logical shuffle index.
 
-• Data are stored in the leaves in association with their index values
+slide 15/76
 
-• Accesses to the data (searches) are based on the value of the
-  index
+----------------------------------------------------------------
 
-• Node structure:
-        ◦ q ≥ ⌈F/2⌉ children with q − 1 values v1 ≤ . . . ≤ vq−1
-
-        ◦ i-th child is the root of a subtree containing the values v with: v < v1 ;
-          vi−1 ≤ v < vi , i = 2, . . . , q − 2; v ≥ vq−1
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    12/76
-Abstract representation of shuffle index – Example
-
-
-
-
-                                                 Search: L
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   13/76
-Abstract representation of shuffle index – Example
-
-
-
-
-                                                 Search: L
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   13/76
-Abstract representation of shuffle index – Example
-
-
-
-
-                                                 Search: L
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   13/76
-              Logical representation of shuffle index
-
-• Pointers between nodes of the abstract data structure correspond,
-  at logical level, to node identifiers
-
-• Set of pairs ⟨id, n⟩, with id the node identifier and n the node
-  content
-        ◦ the order between identifiers does not necessarily correspond to
-          the order in which nodes appear in the abstract representation
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                14/76
-        Abstract and logical shuffle index – Example
-
-
-
-
-Abstract
-Logical
-
-
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   15/76
-             Physical representation of shuffle index
-
-• Each node ⟨id, n⟩ of the logical shuffle index is stored on the
-  server in encrypted form (content confidentiality)
-
-• A node ⟨id, n⟩ corresponds to a block ⟨id, b⟩, with b=C ||T ,
-  C =Ek (s||n), T =MACk′ (id||C ), s a value chosen at random during
-  each encryption
+### Physical representation of shuffle index
+Each node $\langle id, n \rangle$ of the logical shuffle index is stored on the server in encrypted form (content confidentiality). A node $\langle id, n \rangle$ corresponds to a block $\langle id, b \rangle$, with $b= \mathcal{C} \Vert \mathcal{T}$, $\mathcal{C} =E_k (s \Vert n)$, T =MACk′ (id||C ), s a value chosen at random during each encryption.
 
 
 
