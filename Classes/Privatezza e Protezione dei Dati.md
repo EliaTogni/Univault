@@ -1296,11 +1296,11 @@ An example of the protection of tables of magnitude data.
 ![[ProtectionMagnitudeDataExample1.png]]
 ![[ProtectionMagnitudeDataExample2.png]]
 
-$(n,k)$ rule with $n=1$, $k=90$ implies that a cell is sensitive if one respondent contributes more than $90\%$.
+$(n,k)$ rule with $n=1$, $k=90$ implies that a cell is sensitive if one respondent contributes more than $90\%$. Consequently, the red cells below need to be suppressed.
 
 ![[ProtectionMagnitudeDataExample3.png]]
 
-Secondary suppression.
+Therefore, It is compulsory to apply secondary suppression to hide these values.
 
 ----------------------------------------------------------------
 
@@ -1465,7 +1465,7 @@ It consists in grouping individual tuples into small groups of a fixed dimension
 Groups are formed by using **maximal similarity criteria**.
 
 There are different variations of micro-aggregation:
--  the average can substitute the original value only for a tuple in the group or for all of them;
+- the average can substitute the original value only for a tuple in the group or for all of them;
 - different attributes can be protected through micro-aggregation using the same or different grouping;
 - ...
 
@@ -15406,149 +15406,61 @@ preserving a given degree of privacy
 ----------------------------------------------------------------
 
 # Privacy and Data Protection in Emerging Scenarios
+## Privacy and integrity of queries and computations
+
+slide 2/76
+
+### Access and pattern confidentiality
+Guaranteeing privacy of outsourced data entails protecting the confidentiality of the data (content confidentiality) as well as of the accesses to them:
+- **access confidentiality**: confidentiality of the fact that an access aims at a specific data;
+- **pattern confidentiality**: confidentiality of the fact that two accesses aim at the same data.
+
+#### Approaches for protecting data accesses
+- **Private Information Retrieval** (**PIR**) proposals;
+- **oblivious traversal of tree-structured data/indexes**;
+- **pyramid-shaped database layout of Oblivious RAM**;
+- **path ORAM protocol**, working on a tree structure;
+- **ring ORAM,** variation of Path ORAM with better performance and same protection guarantees;
+- **shuffle index** based on the definition of a B+-tree structure with dynamic allocation of data.
+
+##### Path ORAM
+Server side:
+- binary tree structure with $L$ levels ($L = \lceil \log_2{(N)} − 1\rceil$, with $N$ the number of blocks);
+- each node in the tree is a bucket that contains up to $Z$ real blocks (padded with dummy blocks);
+- each leaf node $x$ defines a unique path $P(x)$ from $x$ to the root.
+
+Client side:
+- the client locally stores a small number of blocks in a stash;
+- the client stores a position map: $x = position[a]$ means that a block identified by a is currently mapped to the $x$-th leaf node $\to$ block $a$ (if it exists) resides in some bucket in path $P(x)$ or in the stash;
+- The position map changes every time blocks are accessed and remapped.
+
+The main invariant are that at any time:
+- each block is mapped to a uniformly random leaf bucket in the tree;
+- unstashed blocks are always placed in some bucket along the path to the mapped leaf.
+
+The path ORAM reads and writes are managed in the following way:
+1) **remap block**: Let $x$ be the old position of $a$. Randomly remap the position of $a$ to a new random position (a new leaf node);
+2) **read path**: read nodes in $P(x)$ containing $a$. If the access is a write, update the data stored for block $a$;
+3) **write path**: write the nodes in $P(x)$ back possibly including some additional blocks from the stash if they can be placed into the path (i.e., the main invariant is satisfied).
+
+An example of Path ORAM.
+
+slide 8/76
+
+----------------------------------------------------------------
+
+##### Ring ORAM
+Variation of Path ORAM that reduces the online access bandwidth to $\mathcal{O}(1)$ and the overall bandwidth to $\sim 2 − 2.5\log{(N)}$.<br />
+Same server-side structure as Path ORAM but each node has:
+- $S$ additional dummy blocks;
+- a small map of the offsets of its blocks;
+- a counter of accesses.
+
+Protocol:
+- remap (step $1$) is the same as Path ORAM;
+- read path (step $2$) is revised to download only one block per bucket;
+- write path (step $3$) is factorized among multiple access operations (eviction phase).
 
-Privacy and integrity of queries and computations
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   2/76
-                    Access and pattern confidentiality
-
-Guaranteeing privacy of outsourced data entails protecting the
-confidentiality of the data (content confidentiality) as well as of the
-accesses to them
-
-  • Access confidentiality: confidentiality of the fact that an access
-    aims at a specific data
-
-
-  • Pattern confidentiality: confidentiality of the fact that two accesses
-    aim at the same data
-
-
-
-
-  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)           3/76
-          Approaches for protecting data accesses
-
-• Private Information Retrieval (PIR) proposals (e.g., [CKGS-98,
-  SC-07])
-
-
-• Oblivious traversal of tree-structured data/indexes [LC-04]
-
-• Pyramid-shaped database layout of Oblivious RAM [WSC-08,
-   WS-12]]
-
-
-• Path ORAM protocol, working on a tree structure [SVSFRYD-13]
-
-• Ring ORAM, variation of Path ORAM with better performance and
-  same protection guarantees [RFKSSvD-15]
-
-• Shuffle index based on the definition of a B+-tree structure with
-  dynamic allocation of data [DFPPS-11a, DFPPS-11b, DFPPS-13]
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)         4/76
-                                             Path ORAM
-
-Server side
-  • Binary tree structure with L levels (L = ⌈log2 (N) − 1⌉, with N the
-    number of blocks)
-  • Each node in the tree is a bucket that contains up to Z real blocks
-    (padded with dummy blocks)
-  • Each leaf node x defines a unique path P(x) from x to the root
-
-Client side
-  • The client locally stores a small number of blocks in a stash
-  • The client stores a position map: x = position[a] means that a
-    block identified by a is currently mapped to the x-th leaf node
-    =⇒ block a (if it exists) resides in some bucket in path P(x) or in
-        the stash
-  • The position map changes every time blocks are accessed and
-    remapped
-  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)           5/76
-                          Path ORAM – Main invariant
-
-At any time:
-
-  • each block is mapped to a uniformly random leaf bucket
-    in the tree
-
-
-  • unstashed blocks are always placed in some bucket along the
-    path to the mapped leaf
-
-
-
-
-  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   6/76
-                        Path ORAM reads and writes
-
-1. Remap block: Let x be the old position of a. Randomly remap the
-   position of a to a new random position (a new leaf node)
-
-
-2. Read path: read nodes in P(x) containing a.
-   If the access is a write, update the data stored for block a
-
-
-3. Write path: write the nodes in P(x) back possibly including some
-   additional blocks from the stash if they can be placed into the path
-   (i.e., the main invariant is satisfied)
-
-
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)       7/76
-                              Path ORAM – Example
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   8/76
-                              Path ORAM – Example
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   8/76
-                              Path ORAM – Example
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   8/76
-                              Path ORAM – Example
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   8/76
-                              Path ORAM – Example
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   8/76
-                                           Ring ORAM
-
-• Variation of Path ORAM that reduces the online access bandwidth
-  to O(1) and the overall bandwidth to ∼ 2 − 2.5 log(N)
-
-• Same server-side structure as Path ORAM but each node has
-       ◦ S additional dummy blocks
-       ◦ a small map of the offsets of its blocks
-       ◦ a counter of accesses
-
-• Protocol
-       ◦ Remap (step 1) is the same as Path ORAM
-       ◦ Read path (step 2) is revised to download only one block per bucket
-       ◦ Write path (step 3) is factorized among multiple access operations
-         (eviction phase)
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)             9/76
        Path ORAM and Ring ORAM: Pros and cons
 
 Path ORAM and Ring ORAM provide access and pattern
