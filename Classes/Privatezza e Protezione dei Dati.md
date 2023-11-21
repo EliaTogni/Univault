@@ -1147,14 +1147,14 @@ These rules are used to identify sensitive cells by verifying whether it is enou
 ----------------------------------------------------------------
 
 #### Primary suppression rule: $p$-percent
-Disclosure of magnitude data occurs if the user can estimate the contribution of a respondent too accurately. A cell is sensitive if upper and lower estimates for the respondent’s value are closer to the reported value than a pre-specified percentage $p$.
+Disclosure of magnitude data occurs if the user can estimate the contribution of a respondent too accurately. A cell is sensitive if **upper and lower estimates** for the respondent’s value are closer to the reported value than a pre-specified percentage $p$.
 
 Formally, a cell is protected if:
 
 $$\sum_{i = c + 2}^{N} x_i \geq \frac{p}{100} x_1$$
 
 $x_1, x_2, . . ., x_N$ : respondent’s value in decreasing order.<br />
-$c$: size of a coalition of respondents interested in estimating $x_1$.
+$c$: size of a **coalition of respondents** interested in estimating $x_1$.
 
 The largest value $x_1$ is the most exposed. Therefore, if $x_1$ is protected, every other value is protected too.
 
@@ -1172,7 +1172,7 @@ The most sensitive value is Alice’s, because it is easier to estimate. If Alic
 
 Which is the coalition of $c = 3$ respondents that can better estimate Alice’s income? Bob, Carol, David, whose total income is $130K$, can estimate that Alice’s income is between $80K$ and $120K$:
 - $\geq 80K$ since it is higher than Bob’s;
-- $\leq 120K (=250K−130K)$.
+- $\leq 120K (=250K−130K = \sum_{i = 3 + 2}^{N} x_i)$.
 
 Therefore, it is sensitive for any $p \geq 20$.
 Formally, the cell is protected for any $p$ such that:
