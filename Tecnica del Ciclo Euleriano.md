@@ -26,7 +26,6 @@ Si segue, infatti, la seguente regola: ogni nodo $v$ viene espanso in $(v,s)$, $
 ![[Images/CicloCamminoEuleriano.png]]
 
 Nel terzo passo, si passa dal cammino Euleriano alla costruzione della lista, per poter rappresentare il cammino nella memoria centrale. L'unico modo per fare ciò è utilizzare un vettore bidimensionale  di successori, $S[(v, x)]$ dove $1 \leq v \leq n$ e $x \in {s, c, d}$.<br />
-
 In input si ha la tabella e, per costruire $S$ è necessario seguire delle regole ben definite.<br />
 
 Analizzando la struttura di un nodo foglia nel cammino Euleriano, si nota come un nodo $(n,s)$ punti ad un nodo $(n, c)$ e come un nodo $(n, c)$ punti ad un nodo $(n, d)$. <br />

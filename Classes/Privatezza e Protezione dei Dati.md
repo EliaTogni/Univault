@@ -614,7 +614,7 @@ If $QI$ includes _Sex_ and _Hours_ $\to$ $k$-anonymity is violated for any $k > 
 
 In these different strategies, the transboundary is put in different places.
 
-immagine transboundary nuova
+![[ApprochesCombiningkAnonymityDM1.png]]
 
 Do these techniques all have the same range of application? No, because in the first case everybody can mine the datas while, in the other cases, only who is authorized to access the $PT$ can mine the data.
 
@@ -929,7 +929,6 @@ Query 3 = sum of the incomes of females with major in EE ($50k$) = income of Bak
 ----------------------------------------------------------------
 
 ## Macrodata Disclosure Protection Techniques: Tables of Counts or Frequencies
-
 Data collected from most surveys are published in tables of count or frequencies.<br />
 Protection operates in three steps:
 1) **sampling**;
@@ -1017,9 +1016,7 @@ Combining _Dept$2$_ with _Dept$4$_ would still reveal that the income is within 
 One of the most used ways of protecting sensitive cells is **suppression**. Suppressing sensitive cells (**primary suppression**) is not sufficient. At least one additional cell must be suppressed (**complementary suppression**) for each row or column with a suppressed sensitive cell (primary suppression). The value in the sensitive cell can be calculated from the marginal total.<br />
 Even with complementary suppression it is difficult to guarantee adequate protection.
 
-----------------------------------------------------------------
-
-### Complementary suppressions
+#### Complementary suppressions
 The selection of cells for complementary suppression is complicated. **Linear programming** techniques are used to automatically select cells for complementary suppression.<br />
 **[[Privatezza e Protezione dei Dati#Audit|Audit]] techniques** can be applied to evaluate the proposed suppression pattern to see if it provides the required protection.
 
@@ -1067,10 +1064,6 @@ Note: all cell values must be a multiple of the threshold value.
 An example of random rounding.
 
 ![[RandomRoundingExample.png]]
-
-----------------------------------------------------------------
-
-### Controlled rounding
 
 An example of controlled rounding.
 

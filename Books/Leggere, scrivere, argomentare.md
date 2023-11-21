@@ -14,11 +14,11 @@ Edizione: "6"
 ----------------------------------------------------------------
 
 # Lessico
-- [[Perigliare|Perigliarvi]]
-- [[Corrivo |Corrivamente]]
-- [[Improperio]]
-- [[Contenzioso]]
-- [[Pamphlet]]
-- 
+- [[Perigliare|Perigliarvi]];
+- [[Corrivo |Corrivamente]];
+- [[Improperio]];
+- [[Contenzioso]];
+- [[Pamphlet]];
+- [[Excerpta]];
 
 ----------------------------------------------------------------

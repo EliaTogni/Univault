@@ -31,7 +31,7 @@ Questa operazione divide la sequenza a metà e confronta un elemento della prima
 Si osserva che le due sequenze così ottenute, evidenziate dal colore rosso, sono entrambe bitoniche.<br />
 E', inoltre, evidente anche il secondo punto.
 
-Tali proprietà suggeriscono un approccio [[Divide et Impera]] per le BITONICHE.<br />
+Tali proprietà suggeriscono un approccio [[Divide et Impera |divide et impera]] per le BITONICHE.<br />
 1) _minMax_ suddivide il problema su $n$ elementi in istanze più piccole, $A_{min}$ e $A_{Max}$, grazie alla prima proposizione vista in precedenza;
 2) Ordinando $A_{min}$ e $A_{Max}$, la funzione _merge_ avviene per concatenazione (grazie alla seconda proposizione dimostrata).
 
