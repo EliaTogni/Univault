@@ -79,14 +79,14 @@ Al contrario, la ricerca di un grado Hamiltoniano è un problema _NP_-completo.<
 ### Strutture Dati per rappresentare grafi ###
 #### Rappresentazione di grafi con lista di archi ####
 Consiste nel rappresentare il grafo tramite una struttura per ogni vertice ed un'altra struttura, contenente puntatori ai due vertici estremi dell'arco, per ogni arco.<br />Una tale rappresentazione avrò una lista o un array di strutture.<br />
-Lo spazio totale usato da questa rappresentazione è $O(m + n)$, poichè è necessaria una quantità costante di spazio (una stuttura) per ogni vertice e per ogni arco.<br />
+Lo spazio totale usato da questa rappresentazione è $\mathcal{O}(m + n)$, poichè è necessaria una quantità costante di spazio (una stuttura) per ogni vertice e per ogni arco.<br />
 
 ----------------------------------------------------------------
 
 #### Rappresentazione di grafi con liste di adiacenza ####
 In tale rappresentazione, ogni vertice $v$ ha una lista contenente i suoi vertici adiacenti, ovvero tutti i vertici $u$ per cui essite un arco $(v, u)$.<br />
 Nel caso di gradi non orientati, la lunghezza totale delle liste di adiacenza è esattamente $2m$, poichè ogni arco $(x, y)$ è rappresentato due volte.<br />
-Lo spazio richiesto dalla rappresentazione con liste di adiacenza è $O(m+n)$.<br />
+Lo spazio richiesto dalla rappresentazione con liste di adiacenza è $\mathcal{O}(m+n)$.<br />
 
 ---------------------------------------------------------------
 
@@ -101,14 +101,14 @@ $$
 \end{numcases}
 $$
 
-Nel caso di grafi orientati, la matrice di adiacenza è simmetrica. Un punto di forza della rappresentazione con matrici di adiacenza è la possibilità di verificare la presenza di un arco $(x, y)$ in un tempo costante, controllando semplicemente il valore memorizzato in $M[x, y]$. D'altro canto, però, trovre i vicini di un vertice $v$ diventa un'operazione costosa: è necessario, infatti, esaminare tutte le posizioni $M[v, *]$ della matrice. Questa operazione richiede quindi tempo $O(n)$.<br />
-Per memorizzare informazioni ausiliarie, come ad esempio il costo o la lunghezza di un arco, si possono sempre utilizzare altre matrici oltre alla matrice di adiacenza ma questa rappresentazione è particolamente utile in calcoli algebrici. La matrice di adiacenza codifica tutti i cammini di lunghezza $1$ nel grafo (ovvero gli archi). Eseguendo il prodotto $M^{2} = M \times M$, si otterà invece informazione sui cammini di lunghezza $2$. $M^{2}[u, v]$ avrà valore diverso da zero se e soltato se esisterà almeno un vertice $y$ tale che $M[u, y] = M[y, v] = 1$, ovvero se e solo se esiste almeno un cammino tra i vertici $u$ e $v$ contenente due archi.<br />La quantità di spazio richiesta è $O(n^{2})$.
+Nel caso di grafi orientati, la matrice di adiacenza è simmetrica. Un punto di forza della rappresentazione con matrici di adiacenza è la possibilità di verificare la presenza di un arco $(x, y)$ in un tempo costante, controllando semplicemente il valore memorizzato in $M[x, y]$. D'altro canto, però, trovre i vicini di un vertice $v$ diventa un'operazione costosa: è necessario, infatti, esaminare tutte le posizioni $M[v, *]$ della matrice. Questa operazione richiede quindi tempo $\mathcal{O}(n)$.<br />
+Per memorizzare informazioni ausiliarie, come ad esempio il costo o la lunghezza di un arco, si possono sempre utilizzare altre matrici oltre alla matrice di adiacenza ma questa rappresentazione è particolamente utile in calcoli algebrici. La matrice di adiacenza codifica tutti i cammini di lunghezza $1$ nel grafo (ovvero gli archi). Eseguendo il prodotto $M^{2} = M \times M$, si otterà invece informazione sui cammini di lunghezza $2$. $M^{2}[u, v]$ avrà valore diverso da zero se e soltato se esisterà almeno un vertice $y$ tale che $M[u, y] = M[y, v] = 1$, ovvero se e solo se esiste almeno un cammino tra i vertici $u$ e $v$ contenente due archi.<br />La quantità di spazio richiesta è $\mathcal{O}(n^{2})$.
 
 ----------------------------------------------------------------
 
 #### Rappresentazione di grafi con matrici di incidenza ####
 E' una matrice di dimensione $n \times m$: le righe della matrice sono indicizzate dai vertici, mentre le colonne sono indicizzate dagli archi. Similmente al caso della matrice di adiacenza, la matrice di incidenza avrò un valore uguale ad $1$ quando arco e vertice corrispondenti sono incidenti. Di conseguenza ogni colonna ha esattamente due $1$. Nel caso di un grafo orientato, è possibile usare una matrice simile, in cui ogni colonna ha esattamente valore $+1$ e valore $-1$ per distinguere tra il vertice sorgente ed il vertice destinazione dell'arco.<br />
-la quantità di spazio richiesta è $O(nm)$.<br />
+la quantità di spazio richiesta è $\mathcal{O}(nm)$.<br />
 
 ----------------------------------------------------------------
 
