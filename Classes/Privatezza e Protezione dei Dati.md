@@ -15539,288 +15539,54 @@ Combine three strategies:
 - cached searches, which allow protection of accesses to the same values;
 - shuffling, which dynamically changes node allocation to blocks at every access, so destroying the fixed node-block correspondence.
 
-Cover searches
+#### Cover searches
+Introduce confusion on the target of an access by hiding it within a group of other requests that act as covers. The number of covers (_num_cover_) is a protection parameter.
 
-• Introduce confusion on the target of an access by hiding it within a
-  group of other requests that act as covers
+Cover searches must:
+- provide block diversity (i.e., on a path disjoint from the target searched, apart from the root);
+- be indistinguishable from actual searches (i.e., enjoy a believable frequency of access).
 
-• The number of covers (num_cover) is a protection parameter
+An example of cover searches.
 
-• Cover searches must:
-        ◦ provide block diversity (i.e., on a path disjoint from the target
-          searched, apart from the root)
+slide 25/76
 
-        ◦ be indistinguishable from actual searches (i.e., enjoy a believable
-          frequency of access)
+Protection offered by cover searches:
+- leaf blocks have the same probability of containing the actual target, e.g., blocks $201$ and $207$ can be both the target block;
+- the parent-child relationship between accessed blocks is confused, e.g., block $201$ could be child of either $101$ or $103$;
+
+
 
+However, parent-child relationship can be disclosed by intersection attacks.
 
+Another example of cover searches.
 
+slide 27/76
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                 24/76
-                         Cover searches – Example (1)
-Target value: F; Cover: I
+An example of an intersection attack on cover searches.
 
+slide 28/76
 
+----------------------------------------------------------------
 
+#### Cached searches
+The client maintains a local cache of nodes in the path to the target for counteracting intersection attack:
+- initialized with _num_cache_ disjoint paths and is managed according to the LRU policy;
+- if a node is in cache, its parent also is (**path continuity property**);
+- refreshed at every access;
+- recently searched nodes will be found in the cache;
+- if a target node is in cache, only cover searches will be performed:
+	- provides fake observations for the server;
+	- allows (with shuffling) refreshing the cache.
 
-  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   25/76
-                         Cover searches – Example (1)
-Target value: F; Cover: I
+An example of cached searches.
 
+slide 30/76
 
+Another example of cached searches.
 
+slide 31/76
 
-  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   25/76
-                Cover searches – Protection offered
-
-+ Leaf blocks have the same probability of containing the actual
-  target
-        ◦ e.g., blocks 201 and 207 can be both the target block
-
-+ The parent-child relationship between accessed blocks is
-  confused
-        ◦ e.g., block 201 could be child of either 101 or 103
-
-− Parent-child relationship can be disclosed by intersection attacks
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)      26/76
-                        Cover searches – Example (2)
-Target value: F; cover: M
-
-
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   27/76
-                        Cover searches – Example (2)
-Target value: F; cover: M
-
-
-
-
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   27/76
-                Cover searches – Intersection attack
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   28/76
-                Cover searches – Intersection attack
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   28/76
-                Cover searches – Intersection attack
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   28/76
-                                      Cached searches
-
-• The client maintains a local cache of nodes in the path to the
-  target for counteracting intersection attacks
-        ◦ initialized with num_cache disjoint paths and is managed according
-          to the LRU policy
-
-        ◦ if a node is in cache, its parent also is (path continuity property)
-
-        ◦ refreshed at every access
-
-        ◦ recently searched nodes will be found in the cache
-
-        ◦ if a target node is in cache, only cover searches will be performed
-               − provides fake observations for the server
-
-               − allows (with shuffling) refreshing the cache
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    29/76
-                              Cached searches – Example (1)
-
-l Cachel
-0 001 [103 G101 M104 S102 ]
-1 102 [202 U206 W208 - -]
-2 202 [ST-]
-
-num_cover=1
-num_cache=1
-
-first search:
-target= F
-cover= I
-
-
-
-
-      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   30/76
-                              Cached searches – Example (1)
-
-l Cachel
-0 001 [103 G101 M104 S102 ]
-1 102 [202 U206 W208 - -]
-2 202 [ST-]
-
-num_cover=1
-num_cache=1
-
-first search:
-target= F
-cover= I
-
-
-
-
-      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   30/76
-                              Cached searches – Example (1)
-
-l Cachel
-0 001 [103 G101 M104 S102 ]
-1 102 [202 U206 W208 - -]
-2 202 [ST-]
-
-num_cover=1
-num_cache=1
-
-first search:
-target= F
-cover= I
-
-
-
-
-      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   30/76
-                              Cached searches – Example (1)
-
-l Cachel
-0 001 [103 G101 M104 S102 ]
-1 103 [210 C204 E207 - -]
-2 202 [ST-]
-
-num_cover=1
-num_cache=1
-
-first search:
-target= F
-cover= I
-
-
-
-
-      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   30/76
-                              Cached searches – Example (1)
-
-l Cachel
-0 001 [103 G101 M104 S102 ]
-1 103 [210 C204 E207 - -]
-2 202 [ST-]
-
-num_cover=1
-num_cache=1
-
-first search:
-target= F
-cover= I
-
-
-
-
-      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   30/76
-                              Cached searches – Example (1)
-
-l Cachel
-0 001 [103 G101 M104 S102 ]
-1 103 [210 C204 E207 - -]
-2 207 [EF-]
-
-num_cover=1
-num_cache=1
-
-first search:
-target= F
-cover= I
-
-
-
-
-      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   30/76
-                              Cached searches – Example (2)
-
-l Cachel
-0 001 [103 G101 M104 S102 ]
-1 103 [210 C204 E207 - -]
-2 207 [EF-]
-
-num_cover=1
-num_cache=1
-
-second search:
-target= F
-covers= M,W
-
-
-
-
-      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   31/76
-                              Cached searches – Example (2)
-
-l Cachel
-0 001 [103 G101 M104 S102 ]
-1 103 [210 C204 E207 - -]
-2 207 [EF-]
-
-num_cover=1
-num_cache=1
-
-second search:
-target= F
-covers= M,W
-
-
-
-
-      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   31/76
-                              Cached searches – Example (2)
-
-l Cachel
-0 001 [103 G101 M104 S102 ]
-1 103 [210 C204 E207 - -]
-2 207 [EF-]
-
-num_cover=1
-num_cache=1
-
-second search:
-target= F
-covers= M,W
-
-
-
-
-      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   31/76
-                              Cached searches – Example (2)
-
-l Cachel
-0 001 [103 G101 M104 S102 ]
-1 103 [210 C204 E207 - -]
-2 207 [EF-]
-
-num_cover=1
-num_cache=1
-
-second search:
-target= F
-covers= M,W
-
-
-
-
-      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   31/76
-            Cached searches – No intersection attack
+Cached searches – No intersection attack
 Server’s observation: first request
 
 
@@ -15829,9 +15595,6 @@ Server’s observation: first request
 Server’s observation: second request
 
 
-
-
-  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   32/76
               Cached searches – Protection offered
 
 + Caching helps in counteracting short term intersection attacks
