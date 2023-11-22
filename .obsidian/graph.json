@@ -34,6 +34,13 @@
         "a": 1,
         "rgb": 2852976
       }
+    },
+    {
+      "query": "path:Lexicon  ",
+      "color": {
+        "a": 1,
+        "rgb": 2523709
+      }
     }
   ],
   "collapse-display": false,
@@ -46,6 +53,6 @@
   "repelStrength": 12.2864491674563,
   "linkStrength": 0.657641803167727,
   "linkDistance": 309,
-  "scale": 0.2953073293724672,
+  "scale": 0.22460148646479824,
   "close": true
 }

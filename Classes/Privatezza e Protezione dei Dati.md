@@ -1,5 +1,4 @@
-# Privacy and Data Protection in Emerging Scenarios
-## Motivations:
+# Motivations:
 - Continuous growth of:
 	- government and company databases;
 	- user-generated content delivered through collaborative Internet services such as YouTube, Flickr;
@@ -16,7 +15,7 @@ Need to ensure **data privacy** and **integrity** are properly protected.
 
 ----------------------------------------------------------------
 
-## Outline
+# Outline
 - **Privacy in data publication** $\to$ data release/dissemination;
 - **Privacy in data outsourcing** $\to$ third parties store and manage data (towards cloud scenarios).
 
@@ -1532,15 +1531,14 @@ The **Cloud** allows users and organizations to rely on external providers for s
 - data and services are always available;
 - scalable infrastructure for applications.
 
-Users lose control over their own data. This fact causes new security and privacy problems. Need solutions to protect data and to securely process them in the cloud.
+However, users lose control over their own data. This fact causes new security and privacy problems. There is a need of solutions to protect data and to securely process them in the cloud.
 
 #### Cloud computing: Today
-**Cloud Service Providers** (**CSPs**) apply security measures in the
-services they offer but these measures protect only the perimeter and storage against outsiders.
+**Cloud Service Providers** (**CSPs**) apply security measures in the services they offer but these measures protect only the perimeter and storage against outsiders (but not against the providers themselves).
 
 ![[CloudComputingToday.png]]
 
-Functionality implies full trust in the CSP that has full access to the data (e.g., Google Cloud Storage, iCloud).
+**Functionality** implies full trust in the CSP that has full access to the data (e.g., Google Cloud Storage, iCloud).
 
 Protection but limited functionality since the CSP cannot access data (e.g., Boxcryptor, SpiderOak).
 
@@ -1552,8 +1550,7 @@ Solutions that provide protection guarantees giving the data owners both: full c
 
 ![[CloudComputingNewVision.png]]
 
-Client-side trust boundary: only the behavior of the client should
-be considered trusted $\to$ techniques and implementations supporting direct processing of encrypted data in the cloud.
+Client-side trust boundary: only the behavior of the client should be considered trusted $\to$ techniques and implementations supporting direct processing of encrypted data in the cloud.
 
 ----------------------------------------------------------------
 
@@ -1580,10 +1577,13 @@ Minimize release/exposition:
 
 ## Characterization of Data Protection: Challenges in Cloud Scenarios
 ### Scientific and technical challenges
-Three dimensions characterize the problems and challenges
+Three dimensions characterize the problems and challenges:
 
 ![[ScientificChallenges3D.png]]
 ![[SecurityProperties.png]]
+
+Availability in Cloud is tipically declined as SLA, which stands for **Service Liability Agreement**.
+
 ![[AccessRequirements.png]]
 ![[Architectures.png]]
 
@@ -1645,8 +1645,7 @@ Issues to be addressed:
 
 ![[PrivacyOfUsers.png]]
 
-Users may wish to remain anonymous or to not disclose much
-information about themselves when operating in the cloud:
+Users may wish to remain anonymous or to not disclose much information about themselves when operating in the cloud:
 - anonymous communication techniques (e.g., Mix networks, onion routing, Tor, Crowds);
 - Privacy in location-based services;
 - attribute-based access control;
@@ -1667,8 +1666,7 @@ Two aspects of protection:
 
 ### Direct release – Several contributions
 The research community has been very active and produced several approaches for regulating interactions among unknown parties through the deﬁnition of attribute-based access control mechanisms.<br />
-What users can do depend on assertions (attributes) they can
-prove presenting certiﬁcates. Access control does not return yes/no anymore, but responds with requirements that the requestor must satisfy to get access. Not only the server needs to be protected but the clients want guarantees too (e.g., privacy) $\to$ some form of negotiation may be introduced.
+What users can do depend on assertions (attributes) they can prove presenting certiﬁcates. Access control does not return yes/no anymore, but responds with requirements that the requestor must satisfy to get access. Not only the server needs to be protected but the clients want guarantees too (e.g., privacy) $\to$ some form of negotiation may be introduced.
 
 Large body of proposals addressing:
 - credential/attribute-based policy speciﬁcations;
@@ -1745,13 +1743,10 @@ The goal is to minimize the total sensitivity cost of credentials and policies d
 
 ![[CostSensitiveTrustNegotiation.png]]
 
-Provide a mechanism for regulating the release of credentials
-according to their sensitivity.<br />
+Provide a mechanism for regulating the release of credentials according to their sensitivity.<br />
 Put focus on negotiation rather than on client control.<br />
-Support only coarse-grain (credentials) speciﬁcations; sensitive
-associations as well as forbidden releases cannot be expressed.<br />
-Possession-sensitive credentials (e.g., dialysis certiﬁcate) are not
-considered.<br />
+Support only coarse-grain (credentials) speciﬁcations; sensitive associations as well as forbidden releases cannot be expressed.<br />
+Possession-sensitive credentials (e.g., dialysis certiﬁcate) are not considered.<br />
 Minimizing overall cost (client + server) has limited applicability.<br />
 Linear combination of costs may not be always desirable.
 
@@ -1771,8 +1766,7 @@ A server associates a given number of points with each credential:
 - represent the trustworthiness of its holder;
 - the points associated with credentials are private.
 
-A server requires a **minimum total threshold** of points before
-granting a client access to a resource. The threshold is private
+A server requires a **minimum total threshold** of points before granting a client access to a resource. The threshold is private.
 
 A client values each of its credentials with a **private score**. It indicates the sensitivity of the credential and should be kept private.
 
@@ -1794,8 +1788,7 @@ To solve it, the problem is converted into a knapsack problem and solved with a 
 
 The solution can model only the additive characteristic of privacy.<br/>
 The client and server must agree on the universe of possible credential types (it may compromise the conﬁdentiality of the server policy).<br />
-Support only **coarse-grain** (credential) **speciﬁcation**; sensitive
-associations as well as forbidden releases cannot be expressed.<br />
+Support only **coarse-grain** (credential) **speciﬁcation**; sensitive associations as well as forbidden releases cannot be expressed.<br />
 Put focus on negotiation rather than on client control.
 
 ----------------------------------------------------------------
@@ -1809,8 +1802,7 @@ Disclosure sets are represented as binary vectors $\to$ $0$ means do not disclos
 
 ![[LogicBasedMinimalCredentialDisclosure2.png]]
 
-Default preference: not disclosing a credential is preferred to
-disclosing it $\to$ $0 \succ_i 1$, with $i$ the $i$-th credential.
+Default preference: not disclosing a credential is preferred to disclosing it $\to$ $0 \succ_i 1$, with $i$ the $i$-th credential.
 Disclosure sets are compared according to the **Pareto composition** ($\succ_P$):
 	$S_i$ dominates $S_j$ if $S_i$ shows better or equal values than $S_j$ with respect to all credential preferences and is strictly better with respect to at least one credential.
 
@@ -1820,8 +1812,7 @@ $S_9: [1,0,0,0,0,1,0,1,1,0,0]$
 
 $S_5[i] = S_9[i], i = 2, . . . , 11$ and $S_5[1] \succ_1 S_9[1] \to S_5$ dominates $S_9$ ($S_5 \succ_P S_9$).
 
-Hierarchies specify (possibly contextual) user preferences on the release of credentials ($c_i \to c_j$ means that the user prefers to
-release $c_i$ over $c_j$).
+Hierarchies specify (possibly contextual) user preferences on the release of credentials ($c_i \to c_j$ means that the user prefers to release $c_i$ over $c_j$).
 
 ![[LogicBasedMinimalCredentialDisclosure3.png]]
 
@@ -1877,7 +1868,6 @@ The information of the client forms a **client portfolio**.<br />
 
 Hierarchy of abstractions of credential types $\mathcal{H}$ ($\mathcal{T}$ ,$\preceq_{isa}$) (e.g., _id_card_ $\preceq_{isa}$ _id_, _id_ $\succ_{isa}$ _credential_).
 
-
 An example of hierarchy of credential types.
 
 ![[HierarchyCredentialTypesExample.png]]
@@ -1893,8 +1883,7 @@ Hierarchy of abstractions of credential types $\mathcal{H}$ ($\mathcal{T}$ ,$\pr
 ----------------------------------------------------------------
 ###### Client portfolio – Credentials
 - **Atomic**: released as a whole (e.g., X.509);
-- **non-atomic**: properties can be selectively
-released, proof-of-possession can be certiﬁed (e.g., Idemix, U-Prove).
+- **non-atomic**: properties can be selectively released, proof-of-possession can be certiﬁed (e.g., Idemix, U-Prove).
 
 ![[ClientPortfolioCredentials.png]]
 
@@ -1916,8 +1905,7 @@ Different portfolio components have different sensitivity. In fact, the client m
 - partial order relationship $\succeq$;
 - arbitrary composition operator $\oplus$ (the composition of two sensitivity labels $\lambda_1 \oplus \lambda_2$ is a sensitivity label).
 
-We assume sensitivity labels to be integer values, composed
-through the $+$ operator.
+We assume sensitivity labels to be integer values, composed through the $+$ operator.
 
 ----------------------------------------------------------------
 
@@ -2014,8 +2002,7 @@ $\lambda(\mathcal{D}') = 30 \to \mathcal{D}'$ is minimum.
 ----------------------------------------------------------------
 
 ###### Computing a minimal disclosure
-The problem of computing a disclosure that minimizes release of
-information is $NP$-hard:
+The problem of computing a disclosure that minimizes release of information is $NP$-hard:
 - exploit **graph-based** representation of portfolio and requests, providing heuristics based on graph-matching;
 - exploit **Max-SAT** representation of the problem and existing SAT solver.
 
@@ -2024,18 +2011,15 @@ information is $NP$-hard:
 ###### Work to be investigated
 Enable **derivation of sensitivity levels** of properties (e.g., based on identity exposure).
 
-Support speciﬁcations in terms of **preferences** (e.g., my id_card is
-less sensitive than my passport).
+Support speciﬁcations in terms of **preferences** (e.g., my id_card is less sensitive than my passport).
 
-Sensitivity labels assigned to **proofs** (provided by non-atomic
-credentials).
+Sensitivity labels assigned to **proofs** (provided by non-atomic credentials).
 
 Support referring to **existence of a credential** (without releasing it).
 
 Allow **recipient/context-based sensitivity speciﬁcations** (e.g., dialysis certiﬁcates is less sensitive if released to a doctor than to a generic server).
 
-User-intuitive approaches for expressing preferences (and
-possibly translate them to sensitivity labels).
+User-intuitive approaches for expressing preferences (and possibly translate them to sensitivity labels).
 
 Consideration of previous disclosures.
 
