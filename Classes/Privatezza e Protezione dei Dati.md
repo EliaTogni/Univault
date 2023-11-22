@@ -1580,9 +1580,15 @@ Minimize release/exposition:
 Three dimensions characterize the problems and challenges:
 
 ![[ScientificChallenges3D.png]]
-![[SecurityProperties.png]]
 
-Availability in Cloud is tipically declined as SLA, which stands for **Service Liability Agreement**.
+The **Security Properties** are **Confidentiality**, **Integrity** and **Availability**, which in Cloud is tipically declined as SLA compliance, where SLA stands for **Service Level Agreement** (if I pay a provider for a service, I must be able to utilize that service at the level agreed).<br />
+Confidentiality of the data means that only authorized personel can access the data (confidentiality not only with respect to the external world but also with respect to the cloud provider).<br />
+Confidentiality of the users identities
+Confidentiality of the actions that users perform on the data means that the queries the user performs may carry sensible informations and, therefore, must be protected.
+
+Integrity of the dara externally stored means that the data must not be manipolated in a
+
+![[SecurityProperties.png]]
 
 ![[AccessRequirements.png]]
 ![[Architectures.png]]
@@ -2175,7 +2181,7 @@ Example:
 
 $$Map_{cond} (Balance = 100) \to I_{Balance} = Map_{Balance} (100) = \mu$$
 
-- $A_i < v$: the mapping depends on whether or not the mapping function $Map_{A_i} is order-preserving or random:
+- $A_i < v$: the mapping depends on whether or not the mapping function $Map_{A_i}$ is order-preserving or random:
 	- **order-preserving**: $Map_{cond} (A_i < v) \to I_i \leq Map_{A_i} (v)$;
 	- **random**: check if attribute $I_i$ lies in any of the partitions that may contain a value $v'$ where $v' < v: Map_{cond} (A_i < v) \to I_i \in Map^{<}_{A_i} (v)$.
 
@@ -2339,9 +2345,7 @@ slide 38/268
 Correspondence between an index and a plaintext value can be determined based on the number of occurrences of the index/value:
 - basic protection: values with the same number of occurrences are indistinguishable to the attacker.
 
-Assessment of index exposure based on equivalence relation
-where index/plaintext values with same number of occurrences
-belong to the same class
+Assessment of index exposure based on equivalence relation where index/plaintext values with same number of occurrences belong to the same class
 - exposure of values in equivalence class $C$ is $\frac{1}{\vert  C \vert}$.
 
 An example of exposure computation in Freq+DB$^k$.<br />
@@ -2368,10 +2372,9 @@ slide 43/268
 ----------------------------------------------------------------
 
 ##### Computing the exposure coefﬁcient
-The set of automorphisms constitutes a group described by the
-coarsest equitable partition of the vertices. Each subset appearing in the partition contains vertices that can be substituted one for the other in an automorphism
+The set of automorphisms constitutes a group described by the coarsest equitable partition of the vertices. Each subset appearing in the partition contains vertices that can be substituted one for the other in an automorphism
 
-**Nauty algorithm**: iteratively derives the partition.
+**Nauty algorithm**: iteratively derives the partition.<br />
 Probability of identifying a vertex in partition $C: 1/ \vert C \vert$.
 Exposure with equitable partition of $n$ elements over a total number of $m: n/m$
 
@@ -2390,17 +2393,14 @@ slide 45/268
 ##### Hashing exposure – Freq+DB$^k$
 The hash function is characterized by a collision factor, denoting the number of attribute values that on average collide on the same index value.
 
-There are different possible mappings of plaintext values in index
-values, w.r.t. the constraints imposed by frequencies. Need to enumerate the different mappings by using an adaptation of Pisinger’s algorithm for the subset sum problem. Compute the exposure coefﬁcient for each mapping.
+There are different possible mappings of plaintext values in index values, with regard to the constraints imposed by frequencies. Need to enumerate the different mappings by using an adaptation of Pisinger’s algorithm for the subset sum problem. Compute the exposure coefﬁcient for each mapping.
 
 ----------------------------------------------------------------
 
 #### Hashing exposure – DB+DB$^k$
-The RCV-graph built on plaintext and encrypted data are not
-identical.
+The RCV-graph built on plaintext and encrypted data are not identical.
 
-Different vertexes of the plaintext RCV-graph may collapse to the
-same encrypted RCV-graph vertex. The number of edges connecting row vertexes to value vertexes in the plaintext and encrypted RCV-graph is the same. The problem becomes ﬁnding a correct matching between the edges of the plaintext RCV-graph and the edges of the encrypted RCV-graph.
+Different vertexes of the plaintext RCV-graph may collapse to the same encrypted RCV-graph vertex. The number of edges connecting row vertexes to value vertexes in the plaintext and encrypted RCV-graph is the same. The problem becomes ﬁnding a correct matching between the edges of the plaintext RCV-graph and the edges of the encrypted RCV-graph.
 
 ----------------------------------------------------------------
 
@@ -2421,7 +2421,7 @@ Let $l = 10$ and $h = 3$.
 
 slide 50/268
 
-Insert sun: $H_1(sun)=2$; $H_2(sun)=5$; H_3(sun)=9$.<br />
+Insert sun: $H_1(sun)=2$; $H_2(sun)=5$; $H_3(sun)=9$.<br />
 Insert frog: $H_1(frog)=1$; $H_2(frog)=5$; $H_3(frog)=7$.<br />
 Search dog: $H_1(dog)=2$; H_2(dog)=5$; H_3(dog)=10$.<br />
 $\to$ No.
@@ -2456,14 +2456,11 @@ The **veriﬁcation cost** grows linearly with the number of tuples in the query
 
 ## Selective Encryption and Over Encryption
 ### Selective information sharing
-Different users might need to enjoy different views on the
-outsourced data. Enforcement of the access control policy requires the data owner to mediate access requests $\to$ impractical (if not inapplicable).<br />
-Authorization enforcement may not be delegated to the provider
-$\to$ data owner should remain in control.
+Different users might need to enjoy different views on the outsourced data. Enforcement of the access control policy requires the data owner to mediate access requests $\to$ impractical (if not inapplicable).<br />
+Authorization enforcement may not be delegated to the provider $\to$ data owner should remain in control.
 
 #### Selective information sharing: Approaches
-**Attribute-based encryption** (**ABE**): allow derivation of a key only by users who hold certain attributes (based on asymmetric
-cryptography).
+**Attribute-based encryption** (**ABE**): allow derivation of a key only by users who hold certain attributes (based on asymmetric cryptography).
 
 **Selective encryption**: the authorization policy deﬁned by the data owner is translated into an equivalent encryption policy
 
@@ -2494,13 +2491,10 @@ An example of an authorization policy.
 slide 62/268
 
 Encryption policy
-• The authorization policy deﬁned by the data owner is translated
-into an equivalent encryption policy
+• The authorization policy deﬁned by the data owner is translated into an equivalent encryption policy
 • Possible solutions:
-◦ encrypt each resource with a different key and give users the keys
-for the resources they can access
-− requires each user to manage as many keys as the number of
-resources she is authorized to access
+◦ encrypt each resource with a different key and give users the keys for the resources they can access
+− requires each user to manage as many keys as the number of resources she is authorized to access
 
 ◦ use a key derivation method for allowing users to derive from their
 user keys all the keys that they are entitled to access
