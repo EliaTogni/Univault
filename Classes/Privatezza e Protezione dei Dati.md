@@ -1583,14 +1583,22 @@ Three dimensions characterize the problems and challenges:
 
 The **Security Properties** are **Confidentiality**, **Integrity** and **Availability**, which in Cloud is tipically declined as SLA compliance, where SLA stands for **Service Level Agreement** (if I pay a provider for a service, I must be able to utilize that service at the level agreed).<br />
 Confidentiality of the data means that only authorized personel can access the data (confidentiality not only with respect to the external world but also with respect to the cloud provider).<br />
-Confidentiality of the users identities
+Confidentiality of the users identities ...
 Confidentiality of the actions that users perform on the data means that the queries the user performs may carry sensible informations and, therefore, must be protected.
 
-Integrity of the dara externally stored means that the data must not be manipolated in a
+Integrity of the data externally stored means that if data were manipolated in a illegal way it is still possible to recover the data. To do so it is also necessary to have a way to find if the data were compromised.<br />
+Checking the integrity of the data on the computation and query results is complex because it is a dynamic task.
 
 ![[SecurityProperties.png]]
 
+What the user wants to do with the data is what defines how to manage them. If the user only wants to archive them, the cloud provider has to grant him the ability to pull or push the data and the protection of the data in storage.<br />
+If the user also wants to retrieve the data through queries, the cloud provider has to grant support for fine-grained data retrieval and queries and also protection of computaton and queries results.<br />
+if the datas are dynamic, the cloud provider must provide support for access retrieval and enfocement of updates.
+
 ![[AccessRequirements.png]]
+
+
+
 ![[Architectures.png]]
 
 #### Combinations of the dimensions
