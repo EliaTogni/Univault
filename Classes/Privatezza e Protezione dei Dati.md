@@ -15486,315 +15486,60 @@ slide 15/76
 ----------------------------------------------------------------
 
 ### Physical representation of shuffle index
-Each node $\langle id, n \rangle$ of the logical shuffle index is stored on the server in encrypted form (content confidentiality). A node $\langle id, n \rangle$ corresponds to a block $\langle id, b \rangle$, with $b= \mathcal{C} \Vert \mathcal{T}$, $\mathcal{C} =E_k (s \Vert n)$, T =MACk′ (id||C ), s a value chosen at random during each encryption.
+Each node $\langle id, n \rangle$ of the logical shuffle index is stored on the server in encrypted form (content confidentiality). A node $\langle id, n \rangle$ corresponds to a block $\langle id, b \rangle$, with $b= \mathcal{C} \Vert \mathcal{T}$, $\mathcal{C} =E_k (s \Vert n)$, $T=MAC_{k'} (id \Vert \mathcal{C})$, $s$ a value chosen at random during each encryption.
 
+An example of the logical and physical shuffle index.
 
+slide 17/76
 
+----------------------------------------------------------------
+### Data accesses
+Access to the data requires an iterative process between the client and the server. The client performs an iteration for each level of the shuffle index starting from the root. At each iteration, the client:
+- decrypts the retrieved block;
+- determines the block to be retrieved from the server at the next level.
+The process ends when a leaf block is retrieved.
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)       16/76
-       Logical and physical shuffle index – Example
+An example of data accesses.
 
+slide 19/76
+
 
+----------------------------------------------------------------
 
+### Knowledge of the observer (server)
+The server receives a set of blocks to store. The server receives requests to access the blocks that translate into observations, where an observation $o_i$ corresponds to a sequence of blocks $\{b_{i1}, ..., b_{ih}\}.
 
-Logical
-Physical
+The server knows or can easily infer:
+- the number m of blocks and their identifiers;
+- the height h of the shuffle index;
+- the level associated with each block (after the observation of a long history of accesses).
 
+Problem statement:<br />
+Given a sequence of observations $\{o_1, ..., o_z\}$,the server should not be able to infer:
+- the data stored in the shuffle index (**content confidentiality**);
+- the data to which access requests are aimed, that is, $\forall i = 1, ..., z$. the server should not infer that $o_i$ aims at a specific node (**access confidentiality**);
+- $o_i$ aims at accessing the same node as $o_j$, $\forall i, j = 1, ..., z, i \neq j$ (**pattern confidentiality**).
 
+----------------------------------------------------------------
 
+### Is encryption enough?
+It protects:
+- content confidentiality of data at rest;
+- access confidentiality of individual requests
 
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   17/76
-                                         Data accesses
+Access and pattern confidentiality is not provided. Accesses to the same blocks imply accesses to the same data $\to$ requency-based attacks allow the server to reconstruct the correspondence between plaintext values and blocks.
 
-• Access to the data requires an iterative process between the client
-  and the server
+----------------------------------------------------------------
 
-• The client performs an iteration for each level of the shuffle index
-  starting from the root
+### Rationale of the approach
+Destroy the correspondence between the frequencies with which blocks are accessed and the frequencies of accesses to different values.
 
-• At each iteration, the client:
-        ◦ decrypts the retrieved block
+Combine three strategies:
+- cover searches, which provide confusion in individual accesses;
+- cached searches, which allow protection of accesses to the same values;
+- shuffling, which dynamically changes node allocation to blocks at every access, so destroying the fixed node-block correspondence.
 
-        ◦ determines the block to be retrieved from the server at the next level
-
-• The process ends when a leaf block is retrieved
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                18/76
-                                 Data accesses – Example
-Search: F
-
-
-level: 0
-download: 001
-decrypt: 001
-
-
-level: 1
-download: 103
-decrypt: 103
-
-
-level: 2
-download: 207
-decrypt: 207
-
-
-
-
-     ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   19/76
-                                 Data accesses – Example
-Search: F
-
-
-level: 0
-download: 001
-decrypt: 001
-
-
-level: 1
-download: 103
-decrypt: 103
-
-
-level: 2
-download: 207
-decrypt: 207
-
-
-
-
-     ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   19/76
-                                 Data accesses – Example
-Search: F
-
-
-level: 0
-download: 001
-decrypt: 001
-
-
-level: 1
-download: 103
-decrypt: 103
-
-
-level: 2
-download: 207
-decrypt: 207
-
-
-
-
-     ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   19/76
-                                 Data accesses – Example
-Search: F
-
-
-level: 0
-download: 001
-decrypt: 001
-
-
-level: 1
-download: 001
-decrypt:001
-
-
-level: 2
-download: 207
-decrypt: 207
-
-
-
-
-     ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   19/76
-                                 Data accesses – Example
-Search: F
-
-
-level: 0
-download: 001
-decrypt: 001
-
-
-level: 1
-download: 103
-decrypt: 001
-
-
-level: 2
-download: 207
-decrypt: 207
-
-
-
-
-     ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   19/76
-                                 Data accesses – Example
-Search: F
-
-
-level: 0
-download: 001
-decrypt: 001
-
-
-level: 1
-download: 103
-decrypt: 103
-
-
-level: 2
-download: 207
-decrypt: 207
-
-
-
-
-     ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   19/76
-                                 Data accesses – Example
-Search: F
-
-
-level: 0
-download: 001
-decrypt: 001
-
-
-level: 1
-download: 103
-decrypt: 103
-
-
-level: 2
-download: 103
-decrypt: 103
-
-
-
-
-     ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   19/76
-                                 Data accesses – Example
-Search: F
-
-
-level: 0
-download: 001
-decrypt: 001
-
-
-level: 1
-download: 103
-decrypt: 103
-
-
-level: 2
-download: 207
-decrypt: 103
-
-
-
-
-     ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   19/76
-                                 Data accesses – Example
-Search: F
-
-
-level: 0
-download: 001
-decrypt: 001
-
-
-level: 1
-download: 103
-decrypt: 103
-
-
-level: 2
-download: 207
-decrypt: 207
-
-
-
-
-     ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   19/76
-                 Knowledge of the observer (server)
-
-• The server receives a set of blocks to store
-
-• The server receives requests to access the blocks that translate
-  into observations
-        ◦ an observation oi corresponds to a sequence of blocks {bi1 , . . . , bih }
-
-
-• The server knows or can easily infer:
-        ◦ the number m of blocks and their identifiers
-        ◦ the height h of the shuffle index
-        ◦ the level associated with each block (after the observation of a long
-          history of accesses)
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                    20/76
-                                      Problem statement
-
-Given a sequence of observations {o1 , . . . , oz } the server should not be
-able to infer:
-
-  • the data stored in the shuffle index (content confidentiality)
-
-  • the data to which access requests are aimed, that is, ∀i = 1, . . . , z,
-    the server should not infer that oi aims at a specific node
-    (access confidentiality)
-
-  • oi aims at accessing the same node as oj , ∀i, j = 1, . . . , z, i ̸= j
-    (pattern confidentiality)
-
-
-
-
-  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)               21/76
-                                Is encryption enough?
-
-+ It protects:
-        ◦ content confidentiality of data at rest
-
-        ◦ access confidentiality of individual requests
-
-− Access and pattern confidentiality is not provided
-        ◦ accesses to the same blocks imply accesses to the same data
-
-    =⇒ frequency-based attacks allow the server to reconstruct
-       the correspondence between plaintext values and blocks
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)           22/76
-                            Rationale of the approach
-
-• Destroy the correspondence between the frequencies with which
-  blocks are accessed and the frequencies of accesses to different
-  values
-
-• Combine three strategies:
-        ◦ cover searches
-               − provide confusion in individual accesses
-
-        ◦ cached searches
-               − allow protection of accesses to the same values
-
-        ◦ shuffling
-               − dynamically changes node allocation to blocks at every access, so
-                 destroying the fixed node-block correspondence
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                        23/76
-                                        Cover searches
+Cover searches
 
 • Introduce confusion on the target of an access by hiding it within a
   group of other requests that act as covers
