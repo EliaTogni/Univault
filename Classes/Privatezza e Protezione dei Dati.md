@@ -1597,18 +1597,17 @@ if the datas are dynamic, the cloud provider must provide support for access ret
 
 ![[AccessRequirements.png]]
 
-
+There are different kind of architectures that can be behind the cloud provider.
 
 ![[Architectures.png]]
 
 #### Combinations of the dimensions
-Every combination of the different instances of the dimensions
-identifies new problems and challenges. The security properties to be guaranteed can depend on the access requirements and on the trust assumption on the providers involved in storage and/or processing of data.
+Every combination of the different instances of the dimensions identifies new problems and challenges. The security properties to be guaranteed can depend on the access requirements and on the trust assumption on the providers involved in storage and/or processing of data.
 
 Providers can be:
-- curious;
-- lazy;
-- malicious.
+- curious (honest-but-curious or trustworthy-but-not-trusted with respect to the data confidentiality);
+- lazy (not trusted with respect to the integrity in addition to confidentiality);
+- malicious (not trusted with respect to the integrity in addition to confidentiality).
 
 ----------------------------------------------------------------
 
@@ -1659,11 +1658,11 @@ Issues to be addressed:
 
 ![[PrivacyOfUsers.png]]
 
-Users may wish to remain anonymous or to not disclose much information about themselves when operating in the cloud:
+Users may wish to remain **anonymous** or to not disclose much information about themselves when operating in the cloud:
 - anonymous communication techniques (e.g., Mix networks, onion routing, Tor, Crowds);
-- Privacy in location-based services;
-- attribute-based access control;
-	- instead of declaring their identities, users prove they satisfy properties needed for the access;
+- privacy in location-based services;
+- **attribute-based** (or **credential-based** or **certificated-based**) access control;
+	- instead of declaring their identities, users prove they satisfy properties needed for the access (with a certificate);
 	- changes the way access control process works.
 - Support for user-privacy preferences in information disclosure.
 
@@ -1674,20 +1673,20 @@ Users may want to specify policies regulating information disclosed:
 
 Two aspects of protection:
 - direct release regulates to whom, when, for what purpose a user agrees to release information;
-- secondary usage regulates usage and further dissemination of user information by the receiving parties (e.g., P3P).
+- secondary usage regulates usage and further dissemination of user information by the receiving parties (what usage is done with the data after the primary use).
 
 ----------------------------------------------------------------
 
 ### Direct release – Several contributions
-The research community has been very active and produced several approaches for regulating interactions among unknown parties through the deﬁnition of attribute-based access control mechanisms.<br />
-What users can do depend on assertions (attributes) they can prove presenting certiﬁcates. Access control does not return yes/no anymore, but responds with requirements that the requestor must satisfy to get access. Not only the server needs to be protected but the clients want guarantees too (e.g., privacy) $\to$ some form of negotiation may be introduced.
+The research community has been very active and produced several approaches for regulating interactions among unknown parties through the deﬁnition of attribute-based access control mechanisms (instead of identity-baed access control mechanism).<br />
+What users can do depend on assertions (**attributes**) they can prove presenting certiﬁcates. Access control does not return yes/no anymore, but responds with requirements that the requestor must satisfy to get access. Not only the server needs to be protected but the clients want guarantees too (e.g., privacy) $\to$ some form of negotiation may be introduced.
 
 Large body of proposals addressing:
-- credential/attribute-based policy speciﬁcations;
+- credential/attribute-based policy speciﬁcations (the usage of the term credential means that these documents must be certificated by someone);
 - policy evaluation with partial information;
 - policy conﬁdentiality support;
 - policy communication and dialog;
-- negotiation strategies and trust management;
+- negotiation strategies and **trust management**;
 - evaluation of termination, correctness, no improper information disclosure in the negotiation.
 
 $\to$ typically using logic-based languages.
@@ -1695,21 +1694,21 @@ $\to$ typically using logic-based languages.
 ------------------------------------------------------------------
 
 ### Interactive access control
-- No conditions by the client;
+- The negotiation proceed as in the image below, assuming that there are no conditions imposed by the client;
 
 ![[InteractiveAccessControl1.png]]
 
-- multi-step negotiation;
+- **multi-step negotiation**: n the case depicted by the image below, the client too requires certificates from the server. There is a problematic situation in the case of a failing transaction: the server acquires informations step by step but, in the case of termination of the interaction before the server has granted the service, this one has now access to the previous data (leakage). E.g., the server asks the age of the user but doesn't explicitly say what age is necessary to access to the server;
 
 ![[InteractiveAccessControl2.png]]
 
-- two-step interaction.
+- **two-step interaction**: to avoid the leakage discussed before, this technique consists in the server asking the client some requirements (necessary conditions) before granting access. E.g., the server asks the age of the user and also says that if his age is $\leq 18$, the access will not be granted to him.
 
 ![[InteractiveAccessControl3.png]]
 
-The existing/emerging technologies supporting ABAC are:
-- U-Prove/Idemix: provide advance credential management technologies (selective release, proof of possession, ...);
-- XACML: standard today for interoperation of access control policies:
+The existing/emerging technologies supporting Attribute-based Access Control are:
+- **U-Prove/Idemix**: provide advance credential management technologies (selective release, proof of possession, ...);
+- **XACML**: standard today for interoperation of access control policies:
 	- expressive but with limited features for reasoning about digital certiﬁcates (e.g., attribute nationality should be certiﬁed by a passport) or policy dialog.
 
 ----------------------------------------------------------------
@@ -1728,7 +1727,7 @@ $\to$ need to provide users with means to effectively deﬁne privacy preference
 - **forbidden disclosures**:
 	- e.g., “I do not want to release both my name and my nickname”.
 - **sensitive associations**:
-	- e.g., “The association between my zip code and my date of birth is more sensitive than the two pieces of information singularly taken”.
+	- e.g., “The association between my zip code and my date of birth is more sensitive than the two pieces of information singularly taken” (a combination of $QI$ is more effective than a single one for doing linkage).
 - **limited disclosure**:
 	- e.g., “I do not mind saying that I am older than $30$ but I do not want to release my age”.
 - **instance-based preferences**:
@@ -1739,6 +1738,8 @@ $\to$ need to provide users with means to effectively deﬁne privacy preference
 	- e.g., “I prefer to release the proof that I have an Italian passport rather than releasing the passport itself”.
 - **non-linkability preferences**:
 	- e.g., “I prefer to release the piece of information that, merged with the other party knowledge, identiﬁes me the less”.
+
+These preferences are hard to express with classical access control mechanisms.
 
 ----------------------------------------------------------------
 
@@ -1761,7 +1762,7 @@ Provide a mechanism for regulating the release of credentials according to their
 Put focus on negotiation rather than on client control.<br />
 Support only coarse-grain (credentials) speciﬁcations; sensitive associations as well as forbidden releases cannot be expressed.<br />
 Possession-sensitive credentials (e.g., dialysis certiﬁcate) are not considered.<br />
-Minimizing overall cost (client + server) has limited applicability.<br />
+Minimizing overall cost (client $+$ server) has limited applicability.<br />
 Linear combination of costs may not be always desirable.
 
 ----------------------------------------------------------------
