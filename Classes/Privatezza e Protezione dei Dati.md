@@ -15586,34 +15586,18 @@ slide 30/76
 
 slide 31/76
 
-Cached searches – No intersection attack
-Server’s observation: first request
+No intersection attack on cached searches.
 
+slide 32/76
 
+Protection offered by cached searches:
+- caching helps in counteracting short term intersection attacks, e.g., the observations of the server on the two previous requests would be {(001); (101,103); (201,207)} and {(001); (102,104); (208,211)} $\to$ the server would not be able to determine whether the two requests aim at the same target;
+- Caching does not prevent intersection attacks on observations that go beyond the size of the cache;
+- A long history of observations will allow the server to reconstruct the topology (parent-child relationship) of the shuffle index.
 
+----------------------------------------------------------------
 
-Server’s observation: second request
-
-
-              Cached searches – Protection offered
-
-+ Caching helps in counteracting short term intersection attacks
-        ◦ e.g., the observations of the server on the two previous requests
-          would be {(001); (101,103); (201,207)} and {(001); (102,104);
-          (208,211)}
-            =⇒ the server would not be able to determine whether the two
-               requests aim at the same target
-
-− Caching does not prevent intersection attacks on observations
-  that go beyond the size of the cache
-
-− A long history of observations will allow the server to reconstruct
-  the topology (parent-child relationship) of the shuffle index
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)                 33/76
-                                                Shuffling
+#### Shuffling
 
 • Shuffling breaks the one-to-one correspondence blocks-nodes by
   exchanging the content among nodes (and therefore blocks)
@@ -15630,26 +15614,13 @@ Server’s observation: second request
     =⇒ node shuffling at a given level requires to update the parents
        of the nodes
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)            34/76
-                                   Shuffling – Example
+
+An example of shuffling.
+
+slide 35/76
 
 
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   35/76
-                                   Shuffling – Example
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   35/76
-                                   Shuffling – Example
-
-
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   35/76
-   Access execution and shuffle index management
+Access execution and shuffle index management
 
 Let v be the target value. Determine num_cover+1 cover values and
 for each level l of the shuffle index:
@@ -15664,208 +15635,12 @@ for each level l of the shuffle index:
   • update Cachel by inserting the most recently accessed node in
     the path to v (only if a cache miss occurred)
 
- ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)       36/76
-                               Access execution – Example
 
-l Cachel
-0 001 [103 G101 M104 S102 ]
-1 101 [203 I201 K205 - -]
-  103 [210 C204 E207 - -]
+An example of access execution.
 
-2 203 [GH-]
-  210 [AB-]
+slide 37/76
 
-
-num_cover=1
-num_cache=2
-target= F
-covers= S,M
-
-
-
-
-      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   37/76
-                               Access execution – Example
-
-l Cachel
-0 001 [103 G101 M104 S102 ]
-1 101 [203 I201 K205 - -]
-  103 [210 C204 E207 - -]
-
-2 203 [GH-]
-  210 [AB-]
-
-
-num_cover=1
-num_cache=2
-target= F
-covers= S,M
-
-
-
-
-      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   37/76
-                               Access execution – Example
-
-l Cachel
-0 001 [103 G101 M104 S102 ]
-1 101 [203 I201 K205 - -]
-  103 [210 C204 E207 - -]
-
-2 203 [GH-]
-  210 [AB-]
-
-
-num_cover=1
-num_cache=2
-target= F
-covers= S,M
-
-
-
-
-      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   37/76
-                               Access execution – Example
-
-l Cachel
-0 001 [103 G101 M104 S102 ]
-1 101 [203 I201 K205 - -]
-  103 [210 C204 E207 - -]
-
-2 203 [GH-]
-  210 [AB-]
-
-
-num_cover=1
-num_cache=2
-target= F
-covers= S,M
-
-
-
-
-      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   37/76
-                               Access execution – Example
-
-l Cachel
-0 001 [103 G101 M104 S102 ]
-1 101 [203 I201 K205 - -]
-  103 [210 C204 E207 - -]
-
-2 203 [GH-]
-  210 [AB-]
-
-
-num_cover=1
-num_cache=2
-target= F
-covers= S,M
-
-
-
-
-      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   37/76
-                               Access execution – Example
-
-l Cachel
-0 001 [101 G102 M103 S104 ]
-1 102 [203 I201 K205 - -]
-  101 [210 C204 E207 - -]
-
-2 203 [GH-]
-  210 [AB-]
-
-
-num_cover=1
-num_cache=2
-target= F
-covers= S,M
-
-
-
-
-      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   37/76
-                               Access execution – Example
-
-l Cachel
-0 001 [101 G102 M103 S104 ]
-1 102 [203 I201 K205 - -]
-  101 [210 C204 E207 - -]
-
-2 203 [GH-]
-  210 [AB-]
-
-
-num_cover=1
-num_cache=2
-target= F
-covers= S,M
-
-
-
-
-      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   37/76
-                               Access execution – Example
-
-l Cachel
-0 001 [101 G102 M103 S104 ]
-1 102 [203 I201 K205 - -]
-  101 [210 C204 E207 - -]
-
-2 203 [GH-]
-  210 [AB-]
-
-
-num_cover=1
-num_cache=2
-target= F
-covers= S,M
-
-
-
-
-      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   37/76
-                               Access execution – Example
-
-l Cachel
-0 001 [101 G102 M103 S104 ]
-1 102 [207 I201 K205 - -]
-  101 [203 C204 E202 - -]
-
-2 207 [GH-]
-  202 [EF-]
-
-
-num_cover=1
-num_cache=2
-target= F
-covers= S,M
-
-
-
-
-      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   37/76
-                               Access execution – Example
-
-l Cachel
-0 001 [101 G102 M103 S104 ]
-1 102 [207 I201 K205 - -]
-  101 [203 C204 E202 - -]
-
-2 207 [GH-]
-  202 [EF-]
-
-
-num_cover=1
-num_cache=2
-target= F
-covers= S,M
-
-
-
-
-      ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   37/76
-      Access execution – Impact on the logical index
+Impact on the logical index of access execution. 
 Before the access
 
 
@@ -15875,8 +15650,6 @@ After the access
 
 
 
-
-  ©Security, Privacy, and Data Protection Laboratory (SPDP Lab)   38/76
                                     Protection analysis
 
 • Degradation due to shuffling: shuffling degrades any information
@@ -15894,7 +15667,6 @@ After the access
 
         ◦ protection by covers and shuffling (long term)
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)    39/76
                             Protection vs performance
 
 • Protection comes at a cost:
@@ -15909,9 +15681,6 @@ After the access
          offers comparable performance (even in a WAN configuration)
 
 
-
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)              40/76
                          Extensions to the shuffle index
 
 The shuffle index can be extended to efficiently:
