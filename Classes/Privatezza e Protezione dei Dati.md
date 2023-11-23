@@ -15591,105 +15591,60 @@ No intersection attack on cached searches.
 slide 32/76
 
 Protection offered by cached searches:
-- caching helps in counteracting short term intersection attacks, e.g., the observations of the server on the two previous requests would be {(001); (101,103); (201,207)} and {(001); (102,104); (208,211)} $\to$ the server would not be able to determine whether the two requests aim at the same target;
+- caching helps in counteracting short term intersection attacks, e.g., the observations of the server on the two previous requests would be $\{(001); (101,103); (201,207)\}$ and $\{(001); (102,104); (208,211)\} \to$ the server would not be able to determine whether the two requests aim at the same target;
 - Caching does not prevent intersection attacks on observations that go beyond the size of the cache;
 - A long history of observations will allow the server to reconstruct the topology (parent-child relationship) of the shuffle index.
 
 ----------------------------------------------------------------
 
 #### Shuffling
+Shuffling breaks the one-to-one correspondence blocks-nodes by exchanging the content among nodes (and therefore blocks).
+Shuffling requires node decryption and re-encryption. Encrypted text corresponding to a given node changes at each access (different node identifier and salt).<br />
+The contents of all blocks read in the execution of an access and the nodes in cache are exchanged.
 
-• Shuffling breaks the one-to-one correspondence blocks-nodes by
-  exchanging the content among nodes (and therefore blocks)
-
-• Shuffling requires node decryption and re-encryption
-        ◦ encrypted text corresponding to a given node changes at each
-          access (different node identifier and salt)
-
-• The contents of all blocks read in the execution of an access and
-  the nodes in cache are exchanged
-
-• The shuffled blocks are rewritten back on the server
-
-    =⇒ node shuffling at a given level requires to update the parents
-       of the nodes
+The shuffled blocks are rewritten back on the server $\to$ node shuffling at a given level requires to update the parents of the nodes.
 
 
 An example of shuffling.
 
 slide 35/76
 
-
-Access execution and shuffle index management
-
-Let v be the target value. Determine num_cover+1 cover values and
-for each level l of the shuffle index:
-  • determine the identifiers (ToRead_ids) of the blocks in the path to
-    v and cover values
-  • if the node in the path to v does not belong to Cachel (cache
-    miss), only num_cover cover searches are performed
-  • send to the server a request for the blocks with identifier in
-    ToRead_ids and decrypt their content (set Read of nodes)
-  • shuffle nodes in Read and in Cachel according to a permutation π
-  • update the pointers of the parents of the shuffled nodes
-  • update Cachel by inserting the most recently accessed node in
-    the path to v (only if a cache miss occurred)
-
+##### Access execution and shuffle index management
+Let $v$ be the target value. Determine _num_cover_$+1$ cover values and for each level $l$ of the shuffle index:
+- determine the identifiers (_ToRead_ids_) of the blocks in the path to $v$ and cover values;
+- if the node in the path to $v$ does not belong to Cachel (cache miss), only _num_cover_ cover searches are performed;
+- send to the server a request for the blocks with identifier in _ToRead_ids_ and decrypt their content (set Read of nodes);
+- shuffle nodes in Read and in Cachel according to a permutation $\pi$;
+- update the pointers of the parents of the shuffled nodes;
+- update Cachel by inserting the most recently accessed node in the path to $v$ (only if a cache miss occurred).
 
 An example of access execution.
 
 slide 37/76
 
 Impact on the logical index of access execution. 
-Before the access
 
+38/76
 
+----------------------------------------------------------------
 
+### Protection analysis
+- **Degradation due to shuffling**: shuffling degrades any information the server may possess on the correspondence between nodes and blocks.
+- **access confidentiality**: every time an access is performed any information on the specific access has to be divided among _num_cover_$+1$ nodes and shuffling destroys the correspondence nodes-blocks
+- **pattern confidentiality**: accesses separated by a significant number of steps cannot be recognized (shuffling):
+	- protection by covers and cache (short term);
+	- protection by covers and shuffling (long term).
 
-After the access
+#### Protection vs performance
+Protection comes at a cost:
+- one read access implies _num_cover_$+$_num_cache_$+1$ writes back to the server;
+- better performance with respect to Path ORAM;
+- no solution providing support for access and pattern confidentiality offers comparable performance (even in a WAN configuration).
 
-
-
-                                    Protection analysis
-
-• Degradation due to shuffling: shuffling degrades any information
-  the server may possess on the correspondence between nodes
-  and blocks
-
-• Access confidentiality: every time an access is performed any
-  information on the specific access has to be divided among
-  num_cover + 1 nodes and shuffling destroys the correspondence
-  nodes-blocks
-
-• Pattern confidentiality: accesses separated by a significant
-  number of steps cannot be recognized (shuffling):
-        ◦ protection by covers and cache (short term)
-
-        ◦ protection by covers and shuffling (long term)
-
-                            Protection vs performance
-
-• Protection comes at a cost:
-       − one read access implies num_cover + num_cache + 1 writes back
-         to the server
-
-
-       + better performance with respect to Path ORAM
-
-
-       + no solution providing support for access and pattern confidentiality
-         offers comparable performance (even in a WAN configuration)
-
-
-                         Extensions to the shuffle index
-
+### Extensions to the shuffle index
 The shuffle index can be extended to efficiently:
-
-  • support concurrent accesses (delta versions) [DFPPS-11b]
-
-  • operate on multiple servers for storing and accessing data
-    (shadows) [DFPPS-13]
-
+ - support concurrent accesses (delta versions);
+ - operate on multiple servers for storing and accessing data (shadows).
 
 ----------------------------------------------------------------
 
