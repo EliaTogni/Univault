@@ -1758,8 +1758,11 @@ The goal is to minimize the total sensitivity cost of credentials and policies d
 
 ![[CostSensitiveTrustNegotiation.png]]
 
+In this example, the client has $4$ credentials, $c_1$, $c_2$, $c_3$ and $c_4$. The server has $3$ credentials, $s_1$, $s_2$ and $s_3$, and the service he provides, $s$.<br />
+The policies release the service only the conditions are satisfied. Therefore, in this example, $s_2$ and $s_3$ are released to everyone (because the condition is always true).<br />
+The graph describes the paths to reach the release of the service.<br />
 Provide a mechanism for regulating the release of credentials according to their sensitivity.<br />
-Put focus on negotiation rather than on client control.<br />
+Put focus on negotiation (total of released informations) rather than on client control.<br />
 Support only coarse-grain (credentials) speciﬁcations; sensitive associations as well as forbidden releases cannot be expressed.<br />
 Possession-sensitive credentials (e.g., dialysis certiﬁcate) are not considered.<br />
 Minimizing overall cost (client $+$ server) has limited applicability.<br />
