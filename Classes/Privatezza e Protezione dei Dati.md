@@ -21,9 +21,9 @@ Need to ensure **data privacy** and **integrity** are properly protected.
 
 ----------------------------------------------------------------
 
-## Privacy in Data Publication
+# Privacy in Data Publication
 
-### Statistical DBMS vs statistical data
+## Statistical DBMS vs statistical data
 Release of data to the public for statistical purpose:
 - **statistical DBMS**:
 	- the DBMS responds only to **statistical queries** (the aggregate ones);
@@ -43,10 +43,10 @@ In the statistical data case, the transboundary stands between the statistical d
 
 ----------------------------------------------------------------
 
-### Macrodata vs microdata
+## Macrodata vs microdata
 In the past, data were mainly released in tabular form (**macrodata**) and through statistical databases. Today many situations require that the specific stored data themselves, called **microdata**, be released, increasing flexibility and availability of information for the users. However, microdata are subject to a greater risk of privacy breaches (**linking attacks**).
 
-#### Macrodata
+### Macrodata
 Macrodata tables can be classified into the following two groups (types of tables):
 - **Count/Frequency**: each cell of the table contains the number of respondents (**count**) or the percentage of respondents (**frequency**) that have the same value over all attributes of analysis associated with the table;
 - **Magnitude data**: each cell of the table contains an aggregate value of a quantity of interest over all attributes of analysis associated with the table.
@@ -65,13 +65,13 @@ An example of a microdata table is the records about delinquent children in coun
 
 ----------------------------------------------------------------
 
-### Information disclosure
+## Information disclosure
 Disclosure relates to attribution of sensitive information to a respondent (an individual or organization). There is disclosure when:
 - a respondent is identified from released data (**identity disclosure**);
 - sensitive information about a respondent is revealed through the released data (**attribute disclosure**);
 - the released data make it possible to determine the value of some characteristic of a respondent even if no released record refers to the respondent (**inferential disclosure**).
 
-#### Identity disclosure
+### Identity disclosure
 It occurs if a third party can identify a respondent from the released data.<br />
 Revealing that an individual is a respondent in a data collection may or may not violate confidentiality requirements.<br />
 In macrodata, revealing identity is generally not a problem, unless the identification leads to divulging confidential information (attribute disclosure).
@@ -79,14 +79,14 @@ In microdata, identification is generally regarded as a problem, since microdata
 
 ----------------------------------------------------------------
 
-#### Attribute disclosure
+### Attribute disclosure
 It occurs when confidential information about a respondent is revealed and can be attributed to her. Confidential information may be:
 - **revealed exactly**;
 - **closely estimated**.
 
 ----------------------------------------------------------------
 
-#### Inferential disclosure
+### Inferential disclosure
 It occurs when information can be inferred with high confidence from statistical properties of the released data. For example, the data may show a high correlation between income and purchase price of home. As purchase price of home is typically public information, a third party might use this information to infer the income of a respondent.<br />
 Inference disclosure does not always represent a risk:
 - statistical data are released for enabling users to infer and understand relationships between variables;
@@ -94,7 +94,7 @@ Inference disclosure does not always represent a risk:
 
 ----------------------------------------------------------------
 
-### Restricted data and restricted access
+## Restricted data and restricted access
 The choice of **statistical disclosure limitation methods** depends on the nature of the data products whose confidentiality must be protected. Some microdata include explicit identifiers (e.g., name, address or Social Security Number). Removing such identifiers is a first step in preparing for the release of microdata for which the confidentiality of individual information must be protected.<br />
 Confidentiality can be protected by:
 - restricting the amount of information in the released tables (**restricted data**);
@@ -103,7 +103,7 @@ Confidentiality can be protected by:
 
 ----------------------------------------------------------------
 
-### Protection for count/frequencies macrodata
+## Protection for count/frequencies macrodata
 The data collected from most surveys about people are published in tables that show counts (number of people by category) or frequencies (fraction or percentage of people by category). The protection techniques include:
 - **sampling**: publish a survey rather than a census;
 - **special rules**: define restrictions on the level of details that can be provided in a table (e.g., do not publish or make inferrable earnings within a $ $1000$ interval);
@@ -111,7 +111,7 @@ The data collected from most surveys about people are published in tables that s
 
 ----------------------------------------------------------------
 
-### Disclosure protection techniques for microdata
+## Disclosure protection techniques for microdata
 The classical protection techniques (often applied to protect microdata before computing statistics) can be classified as follows:
 - **masking techniques**: transform the original set of data by not releasing or perturbing their values:
 	- **non-perturbative**: the original data are not modified, but some data are suppressed and/or some details are removed (e.g., sampling, local suppression, generalization);
@@ -122,7 +122,7 @@ The classical protection techniques (often applied to protect microdata before c
 
 ----------------------------------------------------------------
 
-### The anonymity problem
+## The anonymity problem
 The amount of privately owned records that describe each citizen’s finances, interests, and demographics is increasing every day. These data are **de-identified** before release, that is, any explicit identifier (e.g., _SSN_) is removed.<br />
 De-identification is not sufficient. In fact, most municipalities sell population registers that include the identities of individuals along with basic demographics. These data can then be used for linking identities with de-identified information (**re-identification**).
 
@@ -132,7 +132,7 @@ An example of the anonymity problem.
 
 ----------------------------------------------------------------
 
-### Classification of attributes in a microdata table
+## Classification of attributes in a microdata table
 The attributes in the original microdata table can be classified as:
 - **identifiers**: attributes that uniquely identify a microdata respondent (e.g., _SSN_ uniquely identifies the person with which is associated);
 - **quasi-identifiers**: attributes that, in combination, can be linked with external information to reidentify all or some of the respondents to whom information refers or reduce the uncertainty over their identities (e.g., _DoB_, _ZIP_, and _Sex_);
@@ -143,7 +143,7 @@ The more detailed the information at disposal (e.g., a high number of attributes
 
 ----------------------------------------------------------------
 
-### Factors contributing to disclosure risk
+## Factors contributing to disclosure risk
 Possible sources of the disclosure risk of microdata:
 - **existence of high visibility records**: some records on the file may represent respondents with unique characteristics such as very unusual jobs (e.g., movie star) or very large incomes;
 - **possibility of matching the microdata with external information**: there may be individuals in the population who possess a unique or peculiar combination of the characteristic variables on the microdata:
@@ -157,13 +157,13 @@ The possibility of linking or its precision increases with:
 
 ----------------------------------------------------------------
 
-### Factors contributing to decrease the disclosure risk
+## Factors contributing to decrease the disclosure risk
 A microdata table often contains a subset of the whole population. This implies that the information of a specific respondent may not be included in the microdata table. Furthermore, the information specified in microdata tables released to the public is not always up-to-date (often at least one or two-year old). Therefore, the values of the attributes of the corresponding respondents may have been changed in the meanwhile. Also, the age of the external sources of information used for linking may be different from the age of the information contained in the microdata table.<br />
 A microdata table and the external sources of information naturally contain **noise** that decreases the ability to link the information and can also contain data expressed in different forms thus decreasing the ability to link information.
 
 ----------------------------------------------------------------
 
-### Measures of risk
+## Measures of risk
 Measuring the disclosure risk requires considering:
 - the probability that the respondent for whom an intruder is looking for is represented on both the microdata and some external file;
 - the probability that the matching variables are recorded in a linkable way on the microdata and on the external file;
@@ -172,7 +172,7 @@ The percentage of records representing respondents who are unique in the populat
 
 ----------------------------------------------------------------
 
-## $k$-Anonymity
+# $k$-Anonymity
 
 **$k$-anonymity**, together with its enforcement via generalization and suppression, aims to protect respondents’ identities while releasing truthful information. It tries to capture the following requirement:
 - the released data should be indistinguishably related to no less than a certain number of respondents.
@@ -182,13 +182,13 @@ The quasi-identifiers are the set of attributes that can be exploited for linkin
 The basic idea is to translate the $k$-anonymity requirement on the released data. Each release of data must be such that every combination of values of quasi-identifiers can be indistinctly matched to at least $k$ respondents. This assumption is based on the worst case scenario in which the respondents in the database are population uniques.<br />
 In the released table, the respondents must be indistinguishable (within a given set) with respect to a set of attributes. $k$-anonymity requires that each quasi-identifier value appearing in the released table must have at least $k$ occurrences. This is a sufficient condition for the satisfaction of $k$-anonymity requirement.
 
-### Generalization and suppression
+## Generalization and suppression
 with **generalization**, the values of a given attribute are substituted by using more general values. Based on the definition of a generalization hierarchy, for example, consider the attribute ZIP code and suppose that a step in the corresponding generalization hierarchy consists in suppressing the least significant digit in the ZIP code. With one generalization step, $20222$ and $20223$ become $2022*$ and $20238$ and $20239$ become $2023*$. We are not perturbating the data, we are only removing details.<br />
 With **suppression**, it is possible to protect sensitive information by removing it. The introduction of suppression can reduce the amount of generalization necessary to satisfy the $k$-anonymity constraint.
 
 ----------------------------------------------------------------
 
-### Domain generalization hierarchy
+## Domain generalization hierarchy
 A **generalization relationship** $\leq_{D}$ defines a mapping between domain $D$ and its generalizations. Given two domains $D_i, D_j \in Dom$, $D_i \leq_{D} D_j$ ($D_i$ is dominated by $D_j$) states that the values in domain $D_j$ are generalizations of values in $D_i$. $\leq_{D}$ implies the existence, for each domain $D$, of a **domain generalization hierarchy** $DGH_D = (Dom, \leq_D )$:
 - $\forall D_i, D_j, D_z \in Dom: D_i \leq_D D_j, D_i \leq_D D_z \to D_j \leq_D D_z \vee D_z \leq_D D_j$. This property shows that the generalization hiearchy is a chain, that is, there is a **total order** between the elements of the hierarchy;
 - all maximal elements (the **radices**) of $Dom$ are singleton. As an example, observe the $DGH_{Z_0}$ in the image below.
@@ -201,7 +201,7 @@ An example of a domain generalization hierarchy.
 
 ----------------------------------------------------------------
 
-### Value generalization hierarchy
+## Value generalization hierarchy
 A **value generalization relationship** $\leq_V$ associates with each value in domain $D_i$ a unique value in domain $D_j$, direct generalization of $D_i$. $\leq_V$ implies the existence, for each domain $D$, of a **value generalization hierarchy** $VGH_D$.<br />
 $VGH_D$ is a [[Albero|tree]] where the leaves are the values in $D$ and the root (i.e., the most general value) is the value in the maximum element in $DGH_D$.
 
@@ -212,7 +212,7 @@ An example of value generalization hierarchy.
 
 ----------------------------------------------------------------
 
-### Generalized table with suppression
+## Generalized table with suppression
 Let $T_i$ and $T_j$ be two tables defined on the same set of attributes. Table $T_j$ is said to be a **generalization with tuple suppression** of table $T_i$, denoted $T_i \preceq T_j$ , if:
 1) $\vert T_j \vert \leq \vert T_i \vert$;
 2) the domain $dom(A, T_j)$ of each attribute $A$ in $T_j$ is equal to, or a generalization of, the domain $dom(A, T_i)$ of attribute $A$ in $T_i$;
@@ -224,7 +224,7 @@ An example of a generalized table with suppression.
 
 ----------------------------------------------------------------
 
-### $k$-minimal generalization with suppression
+## $k$-minimal generalization with suppression
 Now, it will be provided the definition of **Distance Vector**. Let $T_i (A_1 , . . . , A_n)$ and $T_j (A_1 , . . . , A_n)$ be two tables such that $T_i \preceq T_j$. The distance vector of $T_j$ from $T_i$ is the vector $DV_{i,j} = [d_1 , . . . , d_n]$, where each $d_z, z = 1, . . . , n$, is the length of the unique path between $dom(A_z , T_i)$ and $dom(A_z, T_j)$ in the domain generalization hierarchy $DGH_{D_z}$.
 
 ![[DistanceVector.png]]
@@ -240,7 +240,7 @@ An example of $2$-minimal generalizations with $MaxSup = 2$.
 
 ----------------------------------------------------------------
 
-### Computing a preferred generalization
+## Computing a preferred generalization
 Different preference criteria can be applied in choosing a preferred minimal generalization, among which:
 - **minimum absolute distance** prefers the generalization(s) with the smallest absolute distance, that is, with the smallest total number of generalization steps (regardless of the hierarchies on which they have been taken). It is computed as $\sum_{i = 1}^{N}d_i$;
 - **minimum relative distance** prefers the generalization(s) with the smallest relative distance, that is, that minimizes the total number of relative steps (a step is made relative by dividing it over the height of the domain hierarchy to which it refers). It is computed as $\sum_{i = 1}^{N} \frac{d_i}{n_i}$;
@@ -249,7 +249,7 @@ Different preference criteria can be applied in choosing a preferred minimal gen
 
 ----------------------------------------------------------------
 
-### Classification of k-anonymity techniques
+## Classification of k-anonymity techniques
 Generalization and suppression can be applied at different levels of granularity. Generalization can be applied at the level of **single column** (i.e., a generalization step generalizes all the values in the column) or single cell (i.e., for a specific column, the table may contain values at different generalization levels).<br />
 Suppression can be applied at the level of row (i.e., a suppression operation removes a whole tuple), column (i.e., a suppression operation obscures all the values of a column), or single cells (i.e., a $k$-anonymized table may wipe out only certain cells of a given tuple/attribute).
 
@@ -271,14 +271,14 @@ In the last example (_CG\_CS_), each tuple has a different $DV$ because the tupl
 
 ----------------------------------------------------------------
 
-### Algorithms for computing a $k$-anonymous table
+## Algorithms for computing a $k$-anonymous table
 The problem of finding minimal $k$-anonymous tables, with attribute generalization and tuple suppression, is **computationally hard**. The majority of the exact algorithms proposed in literature have computational time exponential in the number of the attributes composing the quasi-identifier. When the number $\vert QI \vert$ of attributes in the quasi-identifier is small compared with the number $n$ of tuples in the private table $PT$, these exact algorithms with attribute generalization and tuple suppression are practical.<br />
 Many exact algorithms for producing $k$-anonymous tables through attribute generalization and tuple suppression have been proposed.
 
 ----------------------------------------------------------------
 
-## Algorithms for AG\_TS and AG\_
-### Computing a $k$-minimal solution
+# Algorithms for AG\_TS and AG\_
+## Computing a $k$-minimal solution
 Each path in $DGH_{DT}$ represents a generalization strategy for $PT$. We call **locally minimal generalization** the lowest node of each path satisfying $k$-anonymity. The properties exploited by the algorithm are:
 1) each $k$-minimal generalization is **locally minimal** with respect to a path (but the converse is not true, that is, a locally minimal generalization with respect to a path is not granted to be the $k$-minimal one). This means that a global minimal is also a locally minimal with respect to a path;
 2) going up in the hierarchy the number of tuples that must be removed to guarantee $k$-anonymity decreases.
@@ -314,7 +314,7 @@ All the assumptions of the algorithm are based on the fact that the $VGH_D$ is a
 
 ----------------------------------------------------------------
 
-### $k$-Optimize algorithm
+## $k$-Optimize algorithm
 This algorithm orders the attributes in $QI$ and the values in their domains. It also associates an integer index value with each domain value, following the defined order.
 
 ![[kOptimizeAlgorithm1.png]]
@@ -332,7 +332,7 @@ $k$-Optimize visits the tree starting from the root (e.g., using a depth-first s
 
 ----------------------------------------------------------------
 
-### Incognito algorithm
+## Incognito algorithm
 $k$-anonymity with respect to a proper subset of $QI$ is a necessary (not sufficient) condition for $k$-anonymity with respect to $QI$. The **Incognito algorithm** works in the following way:
 - iteration $1$: check $k$-anonymity for each attribute in $QI$, discarding generalizations that do not satisfy $k$-anonymity;
 - iteration $2$: combine the remaining generalizations in pairs and check $k$-anonymity for each couple obtained;
@@ -352,7 +352,7 @@ After the construction of the lattice by the Incognito algorithm, it is still ne
 
 ----------------------------------------------------------------
 
-### Heuristic algorithms
+## Heuristic algorithms
 The exact algorithms have complexity exponential in the size of $QI$. Heuristic algorithms have been proposed:
 - based on genetic algorithms, it solves the $k$-anonymity problem using an incomplete stochastic search method;
 - based on simulated annealing for finding locally minimal solutions, it requires high computational time and does not assure the quality of the solution;
@@ -365,8 +365,8 @@ Experimental results can be used to assess the quality of the solution retrieved
 
 ----------------------------------------------------------------
 
-## Algorithms for _CS_ and _CG_
-### Mondrian multidimensional algorithm
+# Algorithms for _CS_ and _CG_
+## Mondrian multidimensional algorithm
 In the **Mondrian multidimensional algorithm**, each attribute in $QI$ represents a dimension. Each tuple in $PT$ represents a point in the space defined by $QI$. Tuples with the same $QI$ value are represented by giving a **multiplicity value** to points. The multi-dimensional space is partitioned by splitting dimensions such that each area contains at least $k$ occurrences of point values. All the points in a region are generalized to a unique value. The corresponding tuples are substituted by the computed generalization.<br />
 Mondrian algorithm is flexible and can operate:
 - on a different number of attributes:
@@ -388,7 +388,7 @@ We wished $k=3$.
 
 ----------------------------------------------------------------
 
-### Approximation algorithms
+## Approximation algorithms
 There exist some **approximation algorithms** for general and specific values of $k$ (e.g., $1.5$-approximation for $2$-anonymity, and $2$-approximation for $3$-anonymity).<br />
 Approximation algorithm for _CS_:
 - \[MW-04\]: $\mathcal{O}(k \log{k})$-approximation;
@@ -399,7 +399,7 @@ Approximation algorithm for _CG_:
 
 ----------------------------------------------------------------
 
-### k-anonymity revisited
+## k-anonymity revisited
 $k$-anonymity requires that each release of data must be such that every combination of values of quasi-identifiers can be indistinctly matched to at least $k$ respondents.<br />
 When generalization is performed at attribute level (_AG_), this is equivalent to require each quasi-identifier $n$-uple to have at least $k$ occurrences.<br />
 When generalization is performed at cell level (_CG_) the existence of at least $k$ occurrences is a sufficient but not necessary condition; a less stricter requirement would suffice:
@@ -414,15 +414,15 @@ The issue of this algorithm is that to be sure to have reached $k$-anonymity, we
 
 ----------------------------------------------------------------
 
-## Attribute Disclosure
-### $2$-anonymous table according to the _AG_ model
+# Attribute Disclosure
+## $2$-anonymous table according to the _AG_ model
 $k$-anonymity is vulnerable to some attacks:
 
 ![[2AnonymousTableExample.png]]
 
 ----------------------------------------------------------------
 
-### Homogeneity of the sensitive attribute values
+## Homogeneity of the sensitive attribute values
 All tuples with a quasi-identifier value in a $k$-anonymous table may have the same sensitive attribute value:
 - an adversary knows that Carol is a black female and that her data are in the microdata table;
 - the adversary can infer that Carol suffers from short breath.
@@ -431,7 +431,7 @@ All tuples with a quasi-identifier value in a $k$-anonymous table may have the s
 
 ----------------------------------------------------------------
 
-### Background knowledge
+## Background knowledge
 Based on prior knowledge of some additional external information:
 - an adversary knows that Hellen is a white female and she is in the microdata table;
 - the adversary can infer that the disease of Hellen is either chest pain or short breath;
@@ -443,14 +443,14 @@ Therefore, the adversary is able to infer that Hellen’s disease is chest pain.
 
 ----------------------------------------------------------------
 
-### $\ell$-diversity
+## $\ell$-diversity
 A $q$-block (i.e., set of tuples with the same value for $QI$) is **$\ell$-diverse** if it contains at least $\ell$ different “well-represented” values for the sensitive attribute. "Well-represented" has different definitions based on entropy or recursion (e.g., a $q$-block is $\ell$-diverse if removing a sensitive value it remains $(\ell-1)$-diverse).<br />
 $\ell$-diversity means that an adversary needs to eliminate at least $\ell-1$ possible values to infer that a respondent has a given value.<br />
 A table is $\ell$-diverse if all its $q$-blocks are $\ell$-diverse. This implies that the homogeneity attack is not possible anymore and, therefore, that the background knowledge attack becomes more difficult.<br />
 $\ell$-diversity is **monotonic** with respect to the generalization hierarchies considered for $k$-anonymity purposes.<br />
 Any algorithm for $k$-anonymity can be extended to enforce the $\ell$-diverse property but $\ell$-diversity leaves space to attacks based on the distribution of values inside $q$-blocks (**skewness** and **similarity attacks**).
 
-#### Skewness attack
+### Skewness attack
 **Skewness attack** occurs when the distribution in a $q$-block is different than the distribution in the original population.
 
 An example of the skewness attack.<br />
@@ -460,20 +460,20 @@ $20\%$ of the population suffers from diabetes and $75\%$ of tuples in a $q$-blo
 
 ----------------------------------------------------------------
 
-#### Similarity attack
+### Similarity attack
 **Similarity attack** happens when a $q$-block has different but semantically similar values for the sensitive attribute.
 
 ![[SimilarityAttackExample.png]]
 
 ----------------------------------------------------------------
 
-#### Group closeness
+### Group closeness
 A $q$-block respects **$t$-closeness** if the distance between the distribution of the values of the sensitive attribute in the $q$-block and in the considered population is lower than $t$. A table respects $t$-closeness if all its $q$-blocks respect $t$-closeness.<br />
 $t$-closeness is **monotonic** with respect to the generalization hierarchies considered for $k$-anonymity purposes. Any algorithm for $k$-anonymity can be extended to enforce the $t$-closeness property, which however might be difficult to achieve.
 
 ----------------------------------------------------------------
 
-### External knowledge modeling
+## External knowledge modeling
 An observer may have external/background knowledge that can be exploited to infer information. Knowledge may be about:
 - the target individual;
 - others, that is, information about individuals other than the target;
@@ -497,7 +497,7 @@ From personal knowledge, the adversary knows that Harry does not have short brea
 
 ----------------------------------------------------------------
 
-### Multiple independent releases
+## Multiple independent releases
 Data may be subject to frequent changes and may need to be published on regular basis. The multiple release of a microdata table may cause information leakage since a malicious recipient can correlate the released datasets.
 
 An example of multiple independent releases.
@@ -523,7 +523,7 @@ Multiple (e.g., **longitudinal**) releases cannot be independent. This implies t
 
 ----------------------------------------------------------------
 
-### $m$-invariance
+## $m$-invariance
 The **$m$-invariance** addresses the problem of longitudinal release. A sequence $T_1 , . . . , T_n$ of released microdata tables satisfies $m$-invariance iff:
 - each equivalence class includes at least $m$ tuples;
 - no sensitive value appears more than once in each equivalence class;
@@ -533,7 +533,7 @@ Therefore, the correlation of the tuples in $T_1, . . . , T_n$ does not permit a
 ----------------------------------------------------------------
 
 
-### Extended scenarios
+## Extended scenarios
 $k$-anonymity, $\ell$-diversity, and $t$-closeness are based on assumptions that make them not always applicable in specific scenarios.<br />
 When we have multiple tuples per respondent we can apply:
 - $(X,Y)$-privacy;
@@ -560,13 +560,13 @@ When we have fine-grained privacy preferences, we can apply:
 
 ----------------------------------------------------------------
 
-### $k$-anonymity in various applications
+## $k$-anonymity in various applications
 In addition to classical microdata release problem, the concept of $k$-anonymity and its extensions can be applied in different scenarios, e.g.:
 - **social networks**;
 - **data mining**;
 - **location data**.
 
-#### k-anonymity in social networks
+### k-anonymity in social networks
 **Neighborhood attack** $\to$ given a de-identified [[Grafo|graph]] $G'$ of a social network graph $G$, exploit knowledge about the neighbors of user $u$ to re-identify the vertex representing $u$.
 
 ![[kAnonymitySocialNetworks.png]]
@@ -582,14 +582,14 @@ Can the intuition utilized in this context be used also in the previous contexts
 
 ----------------------------------------------------------------
 
-#### $k$-anonymous data mining
+### $k$-anonymous data mining
 Privacy preserving [[Data Mining |data mining]] techniques depend on the definition of privacy capturing what information is sensitive in the original data and should then be protected.<br />
 **$k$-anonymous data mining** aims at ensuring that the data mining results do not violate the $k$-anonymity requirement over the original data.<br />
 Threats to $k$-anonymity can arise from performing mining on a collection of data maintained in a private table $PT$ subject to $k$-anonymity constraints. E.g.:
 - **association rule mining** (**support** and **confidence**);
 - **classification mining** (**[[Albero di Decisione |decision trees]]**).
 
-##### Association rule mining
+#### Association rule mining
 The association rules check on the correlations between datas.
 
 ![[AssociationRuleMining.png]]
@@ -607,7 +607,7 @@ If $QI$ includes _Sex_ and _Hours_ $\to$ $k$-anonymity is violated for any $k > 
 
 ----------------------------------------------------------------
 
-##### Approaches for combining k-anonymity and data mining
+#### Approaches for combining k-anonymity and data mining
 
 ![[ApprochesCombiningkAnonymityDM.png]]
 
@@ -619,7 +619,7 @@ Do these techniques all have the same range of application? No, because in the f
 
 ----------------------------------------------------------------
 
-#### k-anonymity in location-based services
+### k-anonymity in location-based services
 Protect identity of people in locations by considering always locations that contain no less than $k$ individuals:
 - enlarge the area to include at least other $k-1$ users ($k$ anonymity);
 
@@ -638,12 +638,12 @@ Protect identity of people in locations by considering always locations that con
 
 ----------------------------------------------------------------
 
-### Re-identification with any information
+## Re-identification with any information
 Any information can be used to re-identify anonymous data. Ensuring proper privacy protection is a difficult task since the amount and variety of data collected about individuals is increased. Two examples:
 - AOL;
 - Netflix.
 
-#### AOL data release
+### AOL data release
 In $2006$, to embrace the vision of an open research community, **AOL** (America OnLine) publicly posted to a website $20$ million search queries for $650,000$ users of AOL’s search engine summarizing three months of activity. AOL suppressed any obviously identifying information such as AOL username and IP address. AOL replaced these identifiers with unique **identification numbers** (this made searches by the same user linkable). This approach is called **pseudonymization**.
 
 User $4417749$:
@@ -687,7 +687,7 @@ What about user $17556639$?
 
 ----------------------------------------------------------------
 
-#### Netflix prize data study
+### Netflix prize data study
 In $2006$, Netflix (the world largest online movie rental service), launched the "Netflix Prize" (a challenge that lasted almost three years). There was a prize of USD $1$ million to be awarded to those who could provide a movie recommendation algorithm that improved Netflix’s algorithm by $10\%$. Netflix provided $100$ million records revealing how nearly $500,000$ of its users had rated movies from Oct.$’98$ to Dec.$’05$. In each record Netflix disclosed the movie rated, the rating assigned ($1$ to $5$), and the date of the rating.<br />
 Only a sample (one tenth) of the database was released. Some ratings were perturbed (but not much, not to alter statistics). Identifying information (e.g., usernames) was removed, but a unique user identifier was assigned to preserve rating-to-rating continuity. Release was not $k$-anonymous for any $k > 1$.<br />
 Very little auxiliary information is needed to de-anonymize an average subscriber record:
@@ -700,23 +700,23 @@ Movies may reveal your political orientation, religious views, or sexual orienta
 
 ----------------------------------------------------------------
 
-#### JetBlue
+### JetBlue
 In $2003$, JetBlue Airways Corporation gave the travel records of five million customers to Torch Concepts (a private DoD contractor) for an antiterrorism study to track high-risk passengers or suspected terrorists. Torch Concepts purchased additional customer demographic information (e.g., SSN) about these passengers from Axciom, one of the largest data aggregation companies in the U.S. The information from JetBlue and Axciom was then used by Torch Concepts to develop passenger profiles. Claims of violation of JetBlue Privacy Policy.
 
 ----------------------------------------------------------------
 
-#### Fitness app
+### Fitness app
 An interactive map shows the whereabouts of people who use fitness devices such as Fitbit also reveals highly sensitive information about the locations and activities of soldiers at U.S. military bases.
 
 ----------------------------------------------------------------
 
-### Syntactic vs semantic privacy definitions
+## Syntactic vs semantic privacy definitions
 **Syntactic privacy** definitions capture the protection degree enjoyed by data respondents with a numerical value. E.g., each release of data must be indistinguishably related to no less than a certain number of individuals in the population.<br />
 **Semantic privacy** definitions are based on the satisfaction of a semantic privacy requirement by the mechanism chosen for releasing the data. E.g., the result of an analysis carried out on a released dataset must be insensitive to the insertion or deletion of a tuple in the dataset.
 
 ----------------------------------------------------------------
 
-### Differential privacy
+## Differential privacy
 **Differential privacy** aims at preventing adversaries from being capable to detect the presence or absence of a given individual in a dataset. E.g., the count of individuals with cancer from a medical database is produced with a release mechanism that when executed on datasets differing on one individual probably returns the same result.<br />
 Differential privacy defines a property on the **data release mechanism**.
 
@@ -731,7 +731,7 @@ Differential privacy is applicable to two scenarios:
 
 Furthermore, it is typically enforced by adding random noise. This implies that data truthfulness is not preserved. $\varepsilon$-differentially private mechanisms compose automatically.
 
-#### Differential privacy variations and applications
+### Differential privacy variations and applications
 Variations of differential privacy to reduce the amount of noise in data/query result:
 - **($\varepsilon$, $\delta$)-differential privacy**: the $\varepsilon$ bound on query answer probabilities may be violated with small probability (controlled by $\delta$);
 - adversaries with polynomial time computational bounds;
@@ -744,20 +744,20 @@ Similarly to $k$-anonymity, differentially private mechanisms have been develope
 
 ----------------------------------------------------------------
 
-#### Is differential privacy enough?
+### Is differential privacy enough?
 Limiting the inference about the presence of a tuple is different from limiting the inference about the participation of the individual in the data generating process. E.g., Bob’s participation in a social network can cause links to form between Bob’s friends (Bob’s participation affects more than just the tuple marked “Bob”).
 
 Differential privacy composes well with itself (the composition/observation of differential private documents is differential private itself) but not necessarily with other privacy definitions or data release mechanisms (which represent background knowledge that can cause privacy breaches).
 
 ----------------------------------------------------------------
 
-#### k-anonymity vs differential privacy
+### k-anonymity vs differential privacy
 Each has its strengths and weaknesses, e.g., $k$-anonymity provides a nice capturing of real-world requirement but not complete protection. Differential privacy, on the other hand, has better protection guarantees but it is not easy to understand/enforce, not guaranteeing complete protection either.<br /> Therefore, there is still work to be done on both fronts
 
 ----------------------------------------------------------------
 
-## Some Examples of Other Privacy Issues
-### Sensitive value distributions
+# Some Examples of Other Privacy Issues
+## Sensitive value distributions
 Individual tuples are not sensitive. A collection of tuples might leak sensitive information not explicitly reported (e.g., due to peculiar value distributions). E.g., soldiers’ medical records:
 - individual records are not sensitive;
 - age distribution of soldiers in a location may help to infer the type of location:
@@ -771,7 +771,7 @@ An example of the inference channel.
 ![[InferenceChannelExample1.png]]
 ![[InferenceChannelExample2.png]]
 
-#### Counteracting inference channels
+### Counteracting inference channels
 Need to characterize:
 - **what** is the sensitive information:
 	- peculiar value distribution identifying an outlier;
@@ -788,7 +788,7 @@ How to assess the exposure of released data:
 
 ----------------------------------------------------------------
 
-### Privacy and genomic data
+## Privacy and genomic data
 Genomic information is an opportunity for medicine but there are several privacy issues to be addressed. E.g., human genome:
 - identifies its owner;
 - contains information about ethnic heritage, predisposition to several diseases, and other phenotypic traits;
@@ -796,7 +796,7 @@ Genomic information is an opportunity for medicine but there are several privacy
 
 ----------------------------------------------------------------
 
-### Individuals’ re-identification
+## Individuals’ re-identification
 The $1000$ Genomes Project: international project ($2008$) to establish a catalogue of human genetic variation. Five men involved in both the $1000$ Genomes Project and a project that studied Mormon families from Utah have been re-identified:
 - their identities were determined;
 - identities of their male and female relatives were also discovered.
@@ -808,8 +808,8 @@ Cross-reference analysis by the Whitehead Institute for Biomedical Research in C
 
 ----------------------------------------------------------------
 
-### Sensitive inference from data mining
-#### The Target case
+## Sensitive inference from data mining
+### The Target case
 Target is the second-largest discount retailer in the U.S. It assigns every customer a Guest ID number:
 - tied to credit card, name, email address, . . .;
 - stores history of bought goods and other (bought) information;
@@ -823,15 +823,15 @@ Mining data reveals customers’ major life events (e.g., graduating from colleg
 
 ----------------------------------------------------------------
 
-### Social media
-#### Profiling in social media
+## Social media
+### Profiling in social media
 Our social media activities and likes may reveal sensitive information.
 
 ![[ProfilingInSocialMedia.png]]
 
 ----------------------------------------------------------------
 
-#### Friends on Facebook?
+### Friends on Facebook?
 In $2011$ an experiment was conducted to study how friendships are created on Facebook:
 - implementation of a socialbot;
 - software agent simulating human behaviors;
@@ -850,7 +850,7 @@ Three weeks activity, $102$ bots:
 
 ----------------------------------------------------------------
 
-#### Cambridge Analytica scandal
+### Cambridge Analytica scandal
 Personality quiz app, installed by $330,000$ Facebook users who gave permission for accessing their data but the app was also collecting data of those users’ friends.<br />
 Data from $87$ million Facebook users retrieved by the app:
 - data shared with Cambridge Analytica;
@@ -858,7 +858,7 @@ Data from $87$ million Facebook users retrieved by the app:
 
 ----------------------------------------------------------------
 
-#### User profiling - Facebook/Cambridge Analytica
+### User profiling - Facebook/Cambridge Analytica
 **OCEAN model**:
 - **Openness**: do you enjoy new experiences?
 - **Conscientiousness**: do you prefer plans and order?
@@ -868,7 +868,7 @@ Data from $87$ million Facebook users retrieved by the app:
 
 ----------------------------------------------------------------
 
-#### Some open issues
+### Some open issues
 - New privacy metrics;
 - new techniques to protect privacy;
 - external knowledge and adversarial attacks;
@@ -888,7 +888,7 @@ Data from $87$ million Facebook users retrieved by the app:
 
 ![[Outline.png]]
 
-### Statistical data dissemination
+## Statistical data dissemination
 Often statistical data (or data for statistical purpose) are released. Such released data can be used to infer information that was not intended for disclosure.<br />
 Disclosure can:
 - occur based on the released data alone;
@@ -927,7 +927,7 @@ Query 3 = sum of the incomes of females with major in EE ($50k$) = income of Bak
 
 ----------------------------------------------------------------
 
-## Macrodata Disclosure Protection Techniques: Tables of Counts or Frequencies
+# Macrodata Disclosure Protection Techniques: Tables of Counts or Frequencies
 Data collected from most surveys are published in tables of count or frequencies.<br />
 Protection operates in three steps:
 1) **sampling**;
@@ -940,14 +940,14 @@ Protection operates in three steps:
 	- **rounding**;
 	- **confidentiality edit**.
 
-### Sampling
+## Sampling
 Conduct (and publish) a sample survey rather than a census.<br />
 Estimates are made by multiplying individual responses by a **sampling weight** before aggregating them. If weights are not published, weighting helps to make an individual respondent’s data less identifiable from published totals.<br />
 Estimates must achieve a specified accuracy. Data that do not meet the accuracy requirements are not published (not considered meaningful).
 
 ----------------------------------------------------------------
 
-### Special rules
+## Special rules
 When macrodata tables are defined on the whole population, disclosure limitation procedures must be applied. Special rules define restrictions on the level of detail that can be provided in a table. These rules differ depending on the agency and the kind of table.
 
 An example of special rules.<br />
@@ -977,7 +977,7 @@ Health Insurance Portability and Accountability Act “Safe Harbor” rules, inc
 
 ----------------------------------------------------------------
 
-### Threshold rules
+## Threshold rules
 A cell is sensitive if the number of respondents is less than some specified number (e.g., some agencies consider $5$, others $3$). A sensitive cell cannot be released. Different techniques can be applied to protect sensitive cells:
 - **table restructuring** and **category combination**;
 - **cell suppression**;
@@ -994,7 +994,7 @@ A cell with fewer than $5$ respondents is defined as sensitive. Suppress one add
 
 ----------------------------------------------------------------
 
-### Table restructuring
+## Table restructuring
 An example of table restructuring.<br />
 Number of employees by department and annual income (in $K$ Euro).<br />
 Special rule: Income within a $5K$ Euro interval.<br />
@@ -1011,11 +1011,11 @@ Combining _Dept$2$_ with _Dept$4$_ would still reveal that the income is within 
 
 ----------------------------------------------------------------
 
-### Cell suppression
+## Cell suppression
 One of the most used ways of protecting sensitive cells is **suppression**. Suppressing sensitive cells (**primary suppression**) is not sufficient. At least one additional cell must be suppressed (**complementary suppression**) for each row or column with a suppressed sensitive cell (primary suppression). The value in the sensitive cell can be calculated from the marginal total.<br />
 Even with complementary suppression it is difficult to guarantee adequate protection.
 
-#### Complementary suppressions
+### Complementary suppressions
 The selection of cells for complementary suppression is complicated. **Linear programming** techniques are used to automatically select cells for complementary suppression.<br />
 **[[Privatezza e Protezione dei Dati#Audit|Audit]] techniques** can be applied to evaluate the proposed suppression pattern to see if it provides the required protection.
 
@@ -1053,7 +1053,7 @@ The table provides adequate protection for the sensitive cells but out of a tota
 
 ----------------------------------------------------------------
 
-### Rounding
+## Rounding
 To reduce data loss due to suppression, use **rounding of values** to a multiple of the sensitivity threshold:
 - **random**: random decision on whether cell values will be rounded up or down. The sum of the values in a row/column may be different from the published marginal totals (recipients may lose confidence in the data);
 - **controlled**: ensure that the sum of published entries is equal to published marginal totals.
@@ -1075,7 +1075,7 @@ Disadvantages:
 
 ----------------------------------------------------------------
 
-### Confidentiality edit
+## Confidentiality edit
 Developed by the U.S. Census Bureau to provide protection of tables prepared from the $1990$ Census. Two different approaches:
 - to protect the regular decennial Census data ($100\%$ of the population);
 - to protect the long-form of the Census which refers to a sample of the population.
@@ -1118,8 +1118,8 @@ Part of the randomly selected $10\%$ sample from other companies match records i
 
 ----------------------------------------------------------------
 
-## Macrodata Disclosure Protection Techniques: Tables of Magnitude Data
-### Protection of tables of magnitude data 
+# Macrodata Disclosure Protection Techniques: Tables of Magnitude Data
+## Protection of tables of magnitude data 
 Magnitude data are generally nonnegative quantities reported in surveys or censuses. The distribution of these values is likely to be skewed. Disclosure limitation techniques focus on preventing precise estimation of the values for outliers. However, sampling is less likely to provide protection. The units that are most visible because of their size do not receive any protection from sampling.
 
 1) Identify sensitive cells:
@@ -1135,7 +1135,7 @@ Magnitude data are generally nonnegative quantities reported in surveys or censu
 
 ----------------------------------------------------------------
 
-### Suppression rules
+## Suppression rules
 Primary suppression rules determine whether a cell could reveal individual respondent information. Such cells are considered sensitive and cannot be released. The most common suppression rules are:
 - the $p$-percent rule;
 - the $pq$ rule;
@@ -1145,7 +1145,7 @@ These rules are used to identify sensitive cells by verifying whether it is enou
 
 ----------------------------------------------------------------
 
-#### Primary suppression rule: $p$-percent
+### Primary suppression rule: $p$-percent
 Disclosure of magnitude data occurs if the user can estimate the contribution of a respondent too accurately. A cell is sensitive if **upper and lower estimates** for the respondent’s value are closer to the reported value than a pre-specified percentage $p$.
 
 Formally, a cell is protected if:
@@ -1184,7 +1184,7 @@ $$p \leq 250 − (100 + 80 + 30 + 20)$$$$p \leq 20$$
 
 ----------------------------------------------------------------
 
-#### Primary suppression rule: $pq$
+### Primary suppression rule: $pq$
 In the $p$-percent rule, we assumed that there was no prior knowledge about respondent’s values. Agencies should not make this assumption.<br />
 In the $pq$ rule, agencies can specify how much prior knowledge there is by assigning a value $q$ which represents how accurately respondents can estimate another respondent’s value before any data are published ($p < q < 100$).<br />
 Parameter $q$ represents the error in estimation before the cell is published.
@@ -1229,7 +1229,7 @@ $$p \leq 16$$
 
 ----------------------------------------------------------------
 
-#### Primary suppression rule: $(n,k)$
+### Primary suppression rule: $(n,k)$
 Regardless of the number of respondents in a cell, if a small number ($n$ or fewer) of these respondents contribute a large percentage ($k\%$ or more) of the total cell value, the cell is considered sensitive.
 
 Intuitive rule: if a cell is dominated by one respondent, the published total is an upper estimate for her value. $n$ selected to be larger than the number of any suspected coalitions. Many agencies use an $(n,k)$ rule with $n = 1$ or $n = 2$
@@ -1248,7 +1248,7 @@ Assuming $n=2$ and $k=70$, the cell is considered sensitive. The income of Alice
 
 ----------------------------------------------------------------
 
-#### Secondary suppression
+### Secondary suppression
 Once sensitive cells have been identified, there are two options:
 - restructure the table and collapse cells until no sensitive cells remain;
 - cell suppression: do not publish sensitive cells (**primary suppressions**) and remove other cells (**complementary suppressions**).
@@ -1265,7 +1265,7 @@ Data analysts know which cells are of greatest interest (and should not be used 
 
 ----------------------------------------------------------------
 
-#### Audit
+### Audit
 If totals are published, the sum of the (primary or secondary) suppressed cells can be derived. Apply the **sensitivity rule** to these sums to ensure that they are not sensitive:
 - rows and columns can be seen as a large system of linear equations;
 - estimate a lower and upper bound of each suppressed cell using linear programming;
@@ -1273,14 +1273,14 @@ If totals are published, the sum of the (primary or secondary) suppressed cells 
 
 Simple for small tables, possibly computationally intractable for large tables.
 
-##### Information loss
+#### Information loss
 The selection of the complementary cells should result in minimum **information loss**. There is no unique definition of information loss. For instance, we can try to minimize:
 - the sum of the suppressed values (a large number of cells with small values can be suppressed);
 - the total number of suppressed cells.
 
 ----------------------------------------------------------------
 
-##### Information in parameter values
+#### Information in parameter values
 While the suppression rules can be published, parameter values should be kept confidential.
 
 For example, assume that:
@@ -1303,7 +1303,7 @@ Therefore, It is compulsory to apply secondary suppression to hide these values.
 
 ----------------------------------------------------------------
 
-## Microdata
+# Microdata
 Many situations require today that the specific stored data themselves (**microdata**) be released. The advantage of releasing microdata is an increased flexibility and availability of information for the recipients.
 
 To protect the anonymity of the respondents, data holders often remove or encrypt explicit identifiers such as names, addresses, and phone numbers. De-identifying data, however, provides no guarantee of anonymity.
@@ -1312,14 +1312,14 @@ Released information often contains other quasi-identifying data (e.g., _Race_, 
 - reduce the information content;
 - change the data in such a way that the information content is maintained as much as possible.
 
-### Microdata disclosure protection techniques
+## Microdata disclosure protection techniques
 To limit the disclosure risk, the following procedures should be applied:
 - including data from a sample of the whole population only;
 - removal of identifiers;
 - limiting geographic details;
 - limiting the number of variables.
 
-#### Limiting geographic details
+### Limiting geographic details
 Geographic location is a characteristic that:
 - often appears in microdata;
 - can be used for re-identifying respondents.
@@ -1328,7 +1328,7 @@ Therefore, it is important limiting geographic details. For example, the Census 
 
 ----------------------------------------------------------------
 
-### Classification of microdata protection techniques
+## Classification of microdata protection techniques
 These techniques are based on the principle that reidentification can be counteracted by reducing the amount of released information:
 - masking the data (e.g., by not releasing or by perturbing their values);
 - releasing plausible but made up values instead of the real ones.
@@ -1343,15 +1343,15 @@ They can operate on different data types:
 
 ----------------------------------------------------------------
 
-### Microdata Disclosure Protection Techniques: Masking Techniques
+## Microdata Disclosure Protection Techniques: Masking Techniques
 The original data are transformed to produce new data that are valid for statistical analysis and such that they preserve the confidentiality of respondents. They are classified as:
 - **non-perturbative**: the original data are not modified, but some data are suppressed and/or some details are removed;
 - **perturbative**: the original data are modified.
 
 ![[MaskingTechniquesClassification.png]]
 
-#### Non Perturbative Techniques
-##### Sampling
+### Non Perturbative Techniques
+#### Sampling
 The protected microdata table is obtained as a sample of the original microdata table. Since there is uncertainty about whether or not a specific respondent is in the sample, reidentification risk decreases.
 
 An example of sampling.
@@ -1365,7 +1365,7 @@ Compute a sample of $3$ tuples out of $14$.
 ----------------------------------------------------------------
 
 
-##### Local suppression
+#### Local suppression
 It suppresses the value of an attribute (i.e., it replaces it with a missing value) thus limiting the possibilities of analysis. This technique blanks out some attribute values (sensitive cells) that are likely to contribute significantly to the disclosure risk of the tuple involved.
 
 An example of local suppression.
@@ -1378,7 +1378,7 @@ Suppress cells that contribute significantly to re-identification.
 
 ----------------------------------------------------------------
 
-##### Global recoding
+#### Global recoding
 The domain of an attribute is partitioned into disjoint intervals, usually of the same width, and each interval is associated with a label. The protected microdata table is obtained by replacing the values of the attribute with the label associated with the corresponding interval.
 
 An example of global recoding.
@@ -1392,7 +1392,7 @@ $[150-199]$: low, $[200-289]$: medium, $[290-310]$ high.
 
 ----------------------------------------------------------------
 
-##### Top-coding and bottom-coding
+#### Top-coding and bottom-coding
 **Top-coding** defines an upper limit (**top-code**) for each attribute to be protected. Any value greater than that is replaced with a flag that tells the user what the top-code is and that this value exceeds it. It can be applied to categorical attributes that can be linearly ordered as well as to continuous attributes.
 
 **Bottom-coding** defines a lower limit (**bottom-code**) for each attribute to be protected. Any value lower than it is replaced with a flag that tells the user what the bottom-code is and that this value is less than it. It can be applied to categorical attributes that can be linearly ordered as well as to continuous attributes
@@ -1408,7 +1408,7 @@ Bottom-coding on _Holidays_ for values lower than $10$.
 
 ----------------------------------------------------------------
 
-##### Generalization
+#### Generalization
 It replaces values with more general values. Typically based on the definition of a generalization hierarchy, where the most general value is the root and the leaves correspond to the most specific values.
 
 Different generalized microdata tables can be built, depending on the number of generalization steps applied.
@@ -1423,8 +1423,8 @@ Generalize attribute _DoB_ to the granularity of month.
 
 ----------------------------------------------------------------
 
-#### Perturbative Techniques
-##### Random noise
+### Perturbative Techniques
+#### Random noise
 It perturbs a sensitive attribute by adding or by multiplying it with a random variable with a given distribution. It is necessary to decide whether or not to publish the distribution(s) used to add noise to the data.<br />
 Publishing the distribution(s) might increase disclosure risk of the data.
 
@@ -1440,7 +1440,7 @@ Additive noise over attribute _Holidays_ (to preserve average).
 
 ----------------------------------------------------------------
 
-##### Swapping
+#### Swapping
 A small percent of records are matched with other records in the same file, perhaps in different geographic regions, on a set of predetermined variables. The values of all other variables on the file are then swapped between the two records.
 
 This technique reduces the risk of reidentification because it introduces uncertainty about the true value of a respondentent’s data.
@@ -1459,7 +1459,7 @@ Swap _Holidays_ and _Income_.
 
 ----------------------------------------------------------------
 
-##### Micro-aggregation (blurring)
+#### Micro-aggregation (blurring)
 It consists in grouping individual tuples into small groups of a fixed dimension $k$. The average over each group is published instead of individual values.<br />
 Groups are formed by using **maximal similarity criteria**.
 
@@ -1481,8 +1481,8 @@ Substitute _Income_ with the average for each group.
 
 ----------------------------------------------------------------
 
-## Microdata Disclosure Protection Techniques: Synthetic Techniques
-### Synthetic techniques
+# Microdata Disclosure Protection Techniques: Synthetic Techniques
+## Synthetic techniques
 Since the statistical content of the data is not related to the information provided by each respondent, a model well representing the data could in principle replace the data themselves.
 
 An important requirement for the generation of synthetic data is that the synthetic and original data should present the same quality of statistical analysis.
@@ -1493,13 +1493,12 @@ The main advantage of this class of techniques is that the released synthetic da
 
 ----------------------------------------------------------------
 
-# Privacy and Data Protection in Emerging Scenarios
-### ICT ecosystem
+# ICT ecosystem
 Advancements in the **Information and Communication Technology** (**ICT**) and networks have changed our society. $5$G and beyond, infrastructures and services are more powerful, efficient, and complex. ICT and network advancements are enabling factors for a smart society. Everything is getting smart: smart cars, augmented reality, smart entertainment systems, museum and exhibitions, smart e-commerce, smart governance, healthcare, intelligent shop, smart toothbrush...
 
 ----------------------------------------------------------------
 
-### Smart society
+## Smart society
 The advantages of smart services and security are:
 - better protection mechanisms;
 - business continuity and disaster recovery;
@@ -1517,7 +1516,7 @@ While the disadvantages are:
 
 ----------------------------------------------------------------
 
-### The role of data in a smart environment
+## The role of data in a smart environment
 
 ![[RoleOfDataSmartEnvironment.png]]
 
@@ -1525,7 +1524,7 @@ This implies better governance and intelligent systems.
 
 ----------------------------------------------------------------
 
-### Cloud computing
+## Cloud computing
 The **Cloud** allows users and organizations to rely on external providers for storing, processing, and accessing their data:
 - high configurability and economy of scale;
 - data and services are always available;
@@ -1533,7 +1532,7 @@ The **Cloud** allows users and organizations to rely on external providers for s
 
 However, users lose control over their own data. This fact causes new security and privacy problems. There is a need of solutions to protect data and to securely process them in the cloud.
 
-#### Cloud computing: Today
+### Cloud computing: Today
 **Cloud Service Providers** (**CSPs**) apply security measures in the services they offer but these measures protect only the perimeter and storage against outsiders (but not against the providers themselves).
 
 ![[CloudComputingToday.png]]
@@ -1545,7 +1544,7 @@ Protection but limited functionality since the CSP cannot access data (e.g., Box
 
 ----------------------------------------------------------------
 
-#### Cloud computing: New vision
+### Cloud computing: New vision
 Solutions that provide protection guarantees giving the data owners both: full control over their data and cloud functionality over them.
 
 ![[CloudComputingNewVision.png]]
@@ -1554,20 +1553,20 @@ Client-side trust boundary: only the behavior of the client should be considered
 
 ----------------------------------------------------------------
 
-### Data protection – Base level
+## Data protection – Base level
 
 ![[DPBaseLevel.png]]
 
 ----------------------------------------------------------------
 
-### Data protection – Regulation
+## Data protection – Regulation
 
 ![[DPRegulation.png]]
 
 ----------------------------------------------------------------
 
 
-### Data protection – Confidentiality
+## Data protection – Confidentiality
 Minimize release/exposition:
 - correlation among different data sources;
 - indirect exposure of sensitive information;
@@ -1575,8 +1574,8 @@ Minimize release/exposition:
 
 ----------------------------------------------------------------
 
-## Characterization of Data Protection: Challenges in Cloud Scenarios
-### Scientific and technical challenges
+# Char# Privacy and Data Protection in Emerging Scenariosacterization of Data Protection: Challenges in Cloud Scenarios
+## Scientific and technical challenges
 Three dimensions characterize the problems and challenges:
 
 ![[ScientificChallenges3D.png]]
@@ -1601,7 +1600,7 @@ There are different kind of architectures that can be behind the cloud provider.
 
 ![[Architectures.png]]
 
-#### Combinations of the dimensions
+### Combinations of the dimensions
 Every combination of the different instances of the dimensions identifies new problems and challenges. The security properties to be guaranteed can depend on the access requirements and on the trust assumption on the providers involved in storage and/or processing of data.
 
 Providers can be:
@@ -1611,11 +1610,11 @@ Providers can be:
 
 ----------------------------------------------------------------
 
-## Digital Data Market
+# Digital Data Market
 
 ![[DigitalDataMarket.png]]
 
-### Dimensions of the problem and challenges
+## Dimensions of the problem and challenges
 Requirements capturing and representation:
 - policies regulating access, sharing, usage and processing.
 
@@ -1633,7 +1632,7 @@ Enforcement phase:
 
 ----------------------------------------------------------------
 
-## Some Challenges in Data Protection
+# Some Challenges in Data Protection
 Issues to be addressed:
 - privacy of users;
 - data protection;
@@ -1652,9 +1651,8 @@ Issues to be addressed:
 
 ----------------------------------------------------------------
 
-# Privacy and Data Protection in Emerging Scenarios
-## Privacy of users
-### Privacy of users’ identities
+# Privacy of users
+## Privacy of users’ identities
 
 ![[PrivacyOfUsers.png]]
 
@@ -1666,7 +1664,7 @@ Users may wish to remain **anonymous** or to not disclose much information about
 	- changes the way access control process works.
 - Support for user-privacy preferences in information disclosure.
 
-### User empowerment
+## User empowerment
 Users may want to specify policies regulating information disclosed:
 - when using external servers for sharing/disseminating their own resources (e.g., Facebook);
 - when releasing information in digital interactions (e.g., releasing credit card to access a service).
@@ -1677,7 +1675,7 @@ Two aspects of protection:
 
 ----------------------------------------------------------------
 
-### Direct release – Several contributions
+## Direct release – Several contributions
 The research community has been very active and produced several approaches for regulating interactions among unknown parties through the deﬁnition of attribute-based access control mechanisms (instead of identity-baed access control mechanism).<br />
 What users can do depend on assertions (**attributes**) they can prove presenting certiﬁcates. Access control does not return yes/no anymore, but responds with requirements that the requestor must satisfy to get access. Not only the server needs to be protected but the clients want guarantees too (e.g., privacy) $\to$ some form of negotiation may be introduced.
 
@@ -1693,7 +1691,7 @@ $\to$ typically using logic-based languages.
 
 ------------------------------------------------------------------
 
-### Interactive access control
+## Interactive access control
 - The negotiation proceed as in the image below, assuming that there are no conditions imposed by the client;
 
 ![[InteractiveAccessControl1.png]]
@@ -1713,7 +1711,7 @@ The existing/emerging technologies supporting Attribute-based Access Control are
 
 ----------------------------------------------------------------
 
-### User privacy preferences
+## User privacy preferences
 Access control speciﬁcations do not always ﬁt well with the problem at the client (user) side:
 - they are expressive and powerful;
 - they allow users to specify whether some information can be or cannot be released;
@@ -1721,7 +1719,7 @@ Access control speciﬁcations do not always ﬁt well with the problem at the c
 
 $\to$ need to provide users with means to effectively deﬁne privacy preferences on the release of their information.
 
-#### User privacy preferences: Desiderata
+### User privacy preferences: Desiderata
 - **context-based preferences**:
 	-  e.g., “I want to disclose my credit card to ﬁnancial servers in the context of payment transactions only”.
 - **forbidden disclosures**:
@@ -1743,13 +1741,13 @@ These preferences are hard to express with classical access control mechanisms.
 
 ----------------------------------------------------------------
 
-#### User privacy preferences: Some approaches
+### User privacy preferences: Some approaches
 - **cost-sensitive trust negotiation**;
 - **point-based trust management model**;
 - **logic-based minimal credential disclosure**;
 - **privacy preferences in credential-based interactions**.
 
-##### Cost-Sensitive Trust Negotiation
+#### Cost-Sensitive Trust Negotiation
 
 Two parties (client and server) interact with each other to establish mutual trust by the exchange of credentials $\to$ **trust negotiation protocol**.<br />
 The disclosure of a credential is regulated by a policy that speciﬁes the prerequisite conditions that must be satisﬁed to disclose the credential.<br />
