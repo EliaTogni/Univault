@@ -2013,40 +2013,33 @@ $\lambda(\mathcal{D}') = 30 \to \mathcal{D}'$ is minimum.
 
 ----------------------------------------------------------------
 
-###### Computing a minimal disclosure
+##### Computing a minimal disclosure
 The problem of computing a disclosure that minimizes release of information is $NP$-hard:
 - exploit **graph-based** representation of portfolio and requests, providing heuristics based on graph-matching;
 - exploit **Max-SAT** representation of the problem and existing SAT solver.
 
 ----------------------------------------------------------------
 
-###### Work to be investigated
-Enable **derivation of sensitivity levels** of properties (e.g., based on identity exposure).
-
-Support speciﬁcations in terms of **preferences** (e.g., my id_card is less sensitive than my passport).
-
-Sensitivity labels assigned to **proofs** (provided by non-atomic credentials).
-
-Support referring to **existence of a credential** (without releasing it).
-
-Allow **recipient/context-based sensitivity speciﬁcations** (e.g., dialysis certiﬁcates is less sensitive if released to a doctor than to a generic server).
-
-User-intuitive approaches for expressing preferences (and possibly translate them to sensitivity labels).
-
-Consideration of previous disclosures.
-
-Type vs instance mismatch (server talks about classes, users refer to instances).
-
-Integration with server-side solutions and more expressive server requests.
+##### Work to be investigated
+It is desirable to:
+- enable **derivation of sensitivity levels** of properties (e.g., based on identity exposure);
+- support speciﬁcations in terms of **preferences** (e.g., my id_card is less sensitive than my passport);
+- have sensitivity labels assigned to **proofs** (e.g., a proof that the user is of ageprovided by non-atomic credentials);
+- have support referring to **existence of a credential** (without releasing it);
+- allow **recipient/context-based sensitivity speciﬁcations** (e.g., dialysis certiﬁcates is less sensitive if released to a doctor than to a generic server);
+- have user-intuitive approaches for expressing preferences (and possibly translate them to sensitivity labels);
+- have a consideration of previous disclosures.
+- have type vs instance mismatch (server talks about classes, users refer to instances);
+- have the integration with server-side solutions and more expressive server requests.
 
 ----------------------------------------------------------------
 
-###### Server-side open issues
+##### Server-side open issues
 On the server-side there is still work to do to increase expressiveness. Today XACML:
 - does not provide a support for expressing and reasoning about digital certiﬁcates in the speciﬁcation of the authorization policies:
 	- e.g., “attribute nationality should be certiﬁed by a passport”.
 - does not have support for abstractions:
--  e.g., “id_document is an abstraction including credentials $\{identity\_card, driver\_license, passport\}$”
+	-  e.g., “id_document is an abstraction including credentials $\{identity\_card, driver\_license, passport\}$”
 - does not have support for policy dialog (to communicate policies to users):
 	- condition (e.g., "_identity_card.age_ $> 18$”);
 	- predicate (e.g., “_identity_card.age_ $>$”);
@@ -2055,17 +2048,15 @@ On the server-side there is still work to do to increase expressiveness. Today X
 	- none (nothing can be disclosed about the condition).
 - does not have support for recursive conditions:
 	- for expressing policies based on chains of credentials/properties;
-	- for supporting delegation and recursion (e.g., “the certiﬁcation authority signing a user’s credential has been directly or indirectly delegated by a particular authority preferred by the server”).
+	- for supporting **delegation** and **recursion** (e.g., “the certiﬁcation authority signing a user’s credential has been directly or indirectly delegated by a particular authority preferred by the server”).
 
 ----------------------------------------------------------------
 
-# Privacy and Data Protection in Emerging Scenarios
-
-## Privacy and integrity of data storage
+# Privacy and integrity of data storage
 
 slide 2/268
 
-### Contributions and advancements
+## Contributions and advancements
 The research community has been very active and produced several contributions and advancements. E.g.,:
 - solutions for protecting conﬁdentiality of stored data;
 - indexes supporting different types of queries;
