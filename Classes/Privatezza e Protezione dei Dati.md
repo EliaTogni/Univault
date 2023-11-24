@@ -1763,12 +1763,11 @@ Provide a mechanism for regulating the release of credentials according to their
 Put focus on negotiation (total of released informations) rather than on client control.<br />
 Support only coarse-grain (credentials) speciﬁcations; sensitive associations as well as forbidden releases cannot be expressed.<br />
 Possession-sensitive credentials (e.g., dialysis certiﬁcate) are not considered.<br />
-Minimizing overall cost (client $+$ server) has limited applicability.<br />
-Linear combination of costs may not be always desirable.
+Minimizing overall cost (client $+$ server) has limited applicability and, also, linear combination of costs may not be always desirable.
 
 ----------------------------------------------------------------
 
-##### Point-based Trust Management Model
+#### Point-based Trust Management Model
 How to get a New York Driver License? Documents that prove your name are assigned a point value; you must present identiﬁcation that totals six points or more:
 - US Passport or Passport Card \[$4$ points\];
 - Certiﬁcate of Naturalization (Form N-$550$, N-$570$) \[$3$ points\];
@@ -1782,9 +1781,7 @@ A server associates a given number of points with each credential:
 - represent the trustworthiness of its holder;
 - the points associated with credentials are private.
 
-A server requires a **minimum total threshold** of points before granting a client access to a resource. The threshold is private.
-
-A client values each of its credentials with a **private score**. It indicates the sensitivity of the credential and should be kept private.
+A server requires a **minimum total threshold** of points before granting a client access to a resource. The threshold is private. A client values each of its credentials with a **private score**. It indicates the sensitivity of the credential and should be kept private.
 
 Goal: ﬁnd a subset of the client credentials that satisﬁes the threshold ﬁxed by the server and that has minimum privacy value to the client.
 
@@ -1797,19 +1794,19 @@ Client’s options:
 - _College ID_, _Credit card_ \[Points: $11$; Sensitivity: $60$\].
 - _Driver’s license_, _Credit card_ \[Points: $14$; Sensitivity: $80$\].
 
-There is a problem that consists in fulﬁlling the access threshold while disclosing the least amount of sensitive information (**Credential Selection Problem**).
-To solve it, the problem is converted into a knapsack problem and solved with a dynamic programming approach. A secure two-party dynamic programming protocol is used for solving the knapsack problem:
+There is an evident problem that consists in fulﬁlling the access threshold while disclosing the least amount of sensitive information (**Credential Selection Problem**).
+To solve it, the problem is converted into a knapsack problem and solved with a [[Programmazione Dinamica |dynamic programming]] approach. A secure two-party dynamic programming protocol is used for solving the knapsack problem:
 - the server and user jointly compute the optimal sum of privacy scores for the released credentials without revealing their private parameters;
-- the protocol uses homomorphic encryption.
+- the protocol uses **homomorphic encryption** (the result of the operation on the crypted data is the same as if we operated on the decrypted data and then we crypted them).
 
 The solution can model only the additive characteristic of privacy.<br/>
 The client and server must agree on the universe of possible credential types (it may compromise the conﬁdentiality of the server policy).<br />
 Support only **coarse-grain** (credential) **speciﬁcation**; sensitive associations as well as forbidden releases cannot be expressed.<br />
-Put focus on negotiation rather than on client control.
+Again, this approach put the focus on the negotiation rather than on the client control.
 
 ----------------------------------------------------------------
 
-##### Logic-based Minimal Credential Disclosure
+#### Logic-based Minimal Credential Disclosure
 Parties are involved in a trust negotiation where the release of credentials is regulated by given policies. Each credential contains a single attribute. By matching the policies of the involved parties, several negotiation paths (i.e., credential disclosure sets) will make the negotiation succeed. Logic-based approach for users to specify privacy preferences exploited for selecting a negotiation path.
 
 ![[LogicBasedMinimalCredentialDisclosure1.png]]
@@ -1828,7 +1825,7 @@ $S_9: [1,0,0,0,0,1,0,1,1,0,0]$
 
 $S_5[i] = S_9[i], i = 2, . . . , 11$ and $S_5[1] \succ_1 S_9[1] \to S_5$ dominates $S_9$ ($S_5 \succ_P S_9$).
 
-Hierarchies specify (possibly contextual) user preferences on the release of credentials ($c_i \to c_j$ means that the user prefers to release $c_i$ over $c_j$).
+Hierarchies specify (possibly contextual) user preferences on the release of credentials ($c_i \to c_j$ means that the user prefers to release $c_i$ over $c_j$). In the example below, the user prefers to release the _id_ than the _passport_.
 
 ![[LogicBasedMinimalCredentialDisclosure3.png]]
 
@@ -1839,21 +1836,21 @@ Hierarchies specify (possibly contextual) user preferences on the release of cre
 
 **Pareto composition**.<br />
 $S_5$ dominates $S_9$ since $0 \succ_{name} 1$;
-$S_5$ dominates $S_{11} since $0 \succ_{email} 1$;
-$S_6$ dominates $S_{10} since $0 \succ_{name} 1$;
+$S_5$ dominates $S_{11}$ since $0 \succ_{email} 1$;
+$S_6$ dominates $S_{10}$ since $0 \succ_{name} 1$;
 $S_6$ dominates $S_{12}$ since $0 \succ_{email} 1$.
 
 **Hierarchical preferences**.<br />
-$S_5$ dominates $S_7$;
-$S_6$ dominates $S_8$;
+$S_5$ dominates $S_7$ because the user prefers to release the _id_ than the _passport_;
+$S_6$ dominates $S_8$ for the same reason;
 $S_1$ dominates $S_3$;
 $S_2$ dominates $S_4$.
 
 ![[LogicBasedMinimalCredentialDisclosure5.png]]
 
 **Transitive combination of preferences**.<br />
-$S_1$ dominates $S_2$;
-$S_5$ dominates $S_6$.
+$S_1$ dominates $S_2$ because the user prefers to release _bname_ and _baccount_ than _credit_card_ and _pin_;
+$S_5$ dominates $S_6$ for the same reason.
 
 ![[LogicBasedMinimalCredentialDisclosure6.png]]
 
@@ -1866,46 +1863,46 @@ The speciﬁcation of preferences among groups of attributes is not always easy.
 
 ----------------------------------------------------------------
 
-##### Privacy Preferences in Credential-based Interactions
+#### Privacy Preferences in Credential-based Interactions
 The goal of the work is to enable users to effectively regulate disclosure of their properties and credentials:
 - identify requirements and concepts that need to be captured;
-- organize user’s properties and credentials in the user portfolio;
+- organize user’s properties and credentials in the **user portfolio** (the set of his credentials);
 - enable user to specify how much she values the disclosure of different components of the portfolio;
 - provide possible technical approaches for supporting user’s preferences;
 - provide a basis for investigating user-friendly/user-understandable approaches for regulating release of user’s properties.
 
-###### Client portfolio modeling
+##### Client portfolio modeling
 The information of the client forms a **client portfolio**.<br />
 **Credential**: certiﬁcate issued and signed by a third party:
 - it certiﬁes a set of properties;
-- it has a type, an identiﬁer, and an issuer.
+- it has a **type**, an **identiﬁer**, and an **issuer**.
 
 **Declaration**: property stored as a self-signed credential.
 
-Hierarchy of abstractions of credential types $\mathcal{H}$ ($\mathcal{T}$ ,$\preceq_{isa}$) (e.g., _id_card_ $\preceq_{isa}$ _id_, _id_ $\succ_{isa}$ _credential_).
+Credentials have a type, therefore it is possible to define a hierarchy of abstractions of credential types $\mathcal{H}$ ($\mathcal{T}$, $\preceq_{isa}$) (e.g., _id_card_ $\preceq_{isa}$ _id_, _id_ $\succ_{isa}$ _credential_).
 
-An example of hierarchy of credential types.
+An example of hierarchy of credential types.
 
 ![[HierarchyCredentialTypesExample.png]]
 
 ----------------------------------------------------------------
 
-###### Client portfolio - Properties
-- **Credential-independent**: the value depends only on the credential’s owner (e.g., birth date);
-- **credential-dependent**: the value depends on the certifying credential (e.g., credit card number).
+##### Client portfolio - Properties
+- **Credential-independent**: the value depends only on the credential’s owner (e.g., birth date, name, surname);
+- **credential-dependent**: the value depends on the credential's owner and also on the certifying credential itself (e.g., credit card number).
 
 ![[ClientPortfolioProperties.png]]
 
 ----------------------------------------------------------------
 ###### Client portfolio – Credentials
-- **Atomic**: released as a whole (e.g., X.509);
-- **non-atomic**: properties can be selectively released, proof-of-possession can be certiﬁed (e.g., Idemix, U-Prove).
+- **Atomic**: released as a whole (e.g., $X.509$). The black boxes in the example below;
+- **non-atomic**: properties can be selectively released, proof-of-possession can be certiﬁed (e.g., Idemix, U-Prove). The red boxes in the example below
 
 ![[ClientPortfolioCredentials.png]]
 
 ----------------------------------------------------------------
 
-###### Disclosure
+##### Disclosure
 A **disclosure** is a subset of the client portfolio that satisﬁes:
 - **certiﬁability**: each property is certiﬁed by a credential;
 - **atomicity**: if a property of an atomic credential is disclosed, all its properties are disclosed.
@@ -1914,27 +1911,27 @@ A **disclosure** is a subset of the client portfolio that satisﬁes:
 
 ----------------------------------------------------------------
 
-###### Portfolio sensitivity
+##### Portfolio sensitivity
 Different portfolio components have different sensitivity. In fact, the client may prefer to disclose some properties or credentials.
 
 **Sensitivity labels** express privacy requirements:
 - partial order relationship $\succeq$;
 - arbitrary composition operator $\oplus$ (the composition of two sensitivity labels $\lambda_1 \oplus \lambda_2$ is a sensitivity label).
 
-We assume sensitivity labels to be integer values, composed through the $+$ operator.
+We assume sensitivity labels to be integer values, composed through the $+$ operator. In a multilevel policy (where the labels can assume the values _unclassified_, _classified_, _secret_ and _top secret_) the labels are composed through the _max_ operator, where it returns the maximum level of security from the the set of lables.
 
 ----------------------------------------------------------------
 
-###### Sensitivity of properties and credentials
+##### Sensitivity of properties and credentials
 Specify how a client values information in her portfolio:
 - $\lambda(A)$: sensitivity of property $A$ individually taken;
-- $\lambda(c)$: sensitivity of the existence of credential $c$.
+- $\lambda(c)$: sensitivity of the existence of credential $c$. In fact, the credential itself can carry informations.
 
 ![[SensitivityPropertiesCredentials.png]]
 
 ----------------------------------------------------------------
 
-###### Sensitivity of associations
+##### Sensitivity of associations
 $\lambda(A)$: sensitivity of an association $A=\{A_i , ..., A_j, c_k, ..., c_n\}$, whose joint release carries:
 - more information than the release of each element in $A$ $\to$ **sensitive view**;
 
@@ -1946,7 +1943,7 @@ $\lambda(A)$: sensitivity of an association $A=\{A_i , ..., A_j, c_k, ..., c_n\}
 
 ----------------------------------------------------------------
 
-###### Disclosure constraints
+##### Disclosure constraints
 Set $A=\{A_i, ..., A_j, c_k, ..., c_n\}$ of elements whose release must be controlled:
 - **forbidden view**: the release of $A$ is prohibited;
 
@@ -1960,7 +1957,7 @@ A disclosure is valid if no disclosure constraints is violated.
 
 ----------------------------------------------------------------
 
-###### Disclosure sensitivity
+##### Disclosure sensitivity
 
 ![[DisclosureSensitivity1.png]]
 
@@ -1982,10 +1979,9 @@ $$\lambda(\mathcal{D}) = 1+5+5+10+1+3+5 = 30$$
 
 ----------------------------------------------------------------
 
-###### Server request
-Request $\mathcal{R}$: disjunction of simple requests.<br />
-Simple request $\mathcal{R}$: conjunction of terms:
-- term $r =type.\{A_1, ..., A_m\}$: disclosure of $\{A_1, ..., A_m\}$ from $c$ s.t. $type(c) \succeq_{isa} type \to type$ is an abstraction of credential type $type(c)$ in $\mathcal{H}$.
+##### Server request
+Request $\mathcal{R}$: disjunction of **simple requests**, where a simple request $R$ is a conjunction of **terms**:
+- term $r =type.\{A_1, ..., A_m\}$: disclosure of $\{A_1, ..., A_m\}$ from $c$ such that $type(c) \succeq_{isa} type \to type$ is an abstraction of credential type $type(c)$ in $\mathcal{H}$. The server can't talk in terms of instances.
 
 Example:
 $$\mathcal{R} = r_1 \wedge r_2$$
@@ -1994,10 +1990,10 @@ $$r_2 = cc.\{Name,CCNum\}$$
 
 ----------------------------------------------------------------
 
-###### Min-disclosure problem
+##### Min-disclosure problem
 A disclosure $\mathcal{D}$:
 - satisﬁes $\mathcal{R}$ if it satisﬁes at least a $R$ in $\mathcal{R}$;
-- satisﬁes $R$ if, $\forall r =type.\{A_1, ..., A_m\}$ in $\mathcal{R}$, it includes $c$ s.t.:
+- satisﬁes $R$ if, $\forall r =type.\{A_1, ..., A_m\}$ in $R$, it includes $c$ such that:
 	- $c$ certiﬁes $\{A_1, ..., A_m\}$;
 	- $type(c) \preceq_{isa} type$;
 
