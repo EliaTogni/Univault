@@ -2062,27 +2062,27 @@ The research community has been very active and produced several contributions a
 - indexes supporting different types of queries;
 - inference exposure evaluation;
 - data integrity;
-- selective access to outsourced data
+- selective access to outsourced data;
 - ...
 
 ----------------------------------------------------------------
 
-### Protecting data conﬁdentiality
+## Protecting data conﬁdentiality
 Solutions for protecting data can be based on:
-- encryption;
-- encryption and fragmentation;
-- fragmentation.
+- **encryption**;
+- **encryption and fragmentation**;
+- **fragmentation**.
 
 ----------------------------------------------------------------
 
 ## Encryption
-The server can be honest-but-curious and should not have access to the resource content.<br />
-Data conﬁdentiality is provided by wrapping a layer of encryption around sensitive data. For performance reasons, encryption is typically applied at the tuple level.
+The server can be **honest-but-curious** (therefore we want to protect the confidentiality and not the integrity) and should not have access to the resource content.<br />
+Data conﬁdentiality is provided by wrapping a **layer of encryption** around sensitive data. For performance reasons, encryption is typically applied at the tuple level but it is also possible to apply it at the table level, at the column level or at the cell level.
 
 slide 6/268
 
 ### Fine-grained access to data in the cloud
-For conﬁdentiality reasons, Cloud Service Providers storing data cannot decrypt them for data processing/access. Need mechanisms to support access to the outsourced data:
+For conﬁdentiality reasons, **Cloud Service Providers** storing data cannot decrypt them for data processing/access. Therefore, it is needed a mechanisms to support access to the outsourced data:
 - effective and efﬁcient;
 - should not open the door to inferences.
 
