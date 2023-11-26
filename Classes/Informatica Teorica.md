@@ -126,7 +126,7 @@ $$w(f, a) = f(a)$$
 ## Sistema di calcolo
 Un **sistema di calcolo** $\mathbb{C}$ è un oggetto il quale, presi in ingresso un programma $P$ e dei dati $x$, produce in uscita l'output $y$ o $\bot$, ottenuto dall'esecuzione di $P$ su $x$.<br />
 
-![[sistema_di_calcolo.png]]
+immagine sistema di calcolo
 
 Un programma $P \in \text{ DATI}_{\bot}^{\text{DATI}}$ è una sequenza di regole che trasformano un dato di input in un dato di output (o in un loop) esattamente come una funzione $\implies P \in \text{ DATI}_{\bot}^{\text{DATI}}$ è una funzione (in un linguaggio).<br />
 $\mathbb{C}: \text{ DATI}_{\bot}^{\text{DATI}} \times \text{ DATI} \to \text{ DATI}_{\bot}$ è, quindi, una funzione di valutazione e $\mathbb{C}(P, x)$, con $P$ fisso e $x$ variabile, si ottiene  è la funzione calcolata da $P$, ovvero è la **semantica** di $P$. 
