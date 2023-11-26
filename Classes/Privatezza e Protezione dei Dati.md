@@ -2097,7 +2097,9 @@ slide 8/268
 slide 9/268
 
 - **encryption schemas**: each column can be encrypted with a different encryption schema, depending on the conditions to be evaluated on it (e.g., Google encrypted BigQuery);
-- **onion encryption (CryptDB)**: different onion layers each of which supports the execution of a speciﬁc SQL operation (e.g., HanaDB SEEED framework);
+- **onion encryption (CryptDB)**: different onion layers, each of which supports the execution of a speciﬁc SQL operation (e.g., HanaDB SEEED framework). It suffers from two problems:
+	- in storage, the data are protected but, when a layer is peeled, the data are exposed;
+	- the encryption layer could leak informations about the data, e.g., the use of order preserving encryption leaks the order of the data.
 
 slide 10/268
 
@@ -2105,40 +2107,35 @@ slide 10/268
 
 slide 11/268
 
-Indexes associated with attributes are used by the server to select data to be returned in response to a query.
+An example of encryption and indexes.<br />
+Indexes associated with attributes are used by the server to select data to be returned in response to a query. 
 
 slide 12/268
 
-----------------------------------------------------------------
+In the example above, it is possible to notice how the original tuple is encrypted and how the indexes are used by the server.
 
-### Query Evaluation process
+An example of how does the query evaluation process works.
 
 slide 13/268
 
 #### Indexes for queries: Direct (1:1)
-Actual value or coding:
-- simple and precise for equality queries;
-- preserves plaintext value distinguishability (inference attacks).
+It is possible to use actual value or coding as indexes, because they are simple and precise for equality queries but they preserves plaintext value distinguishability (inference attacks).
 
 slide 14/268
+
+Technically, it is not advisable to use the actual value as index but, in case the data is not sensible and it does not leak informations, it becomes possible to utilize it.
 
 ----------------------------------------------------------------
 
 #### Indexes for queries: Bucket (n:1)
-Partition-based or hash-based:
-- supports for equality queries; 
-- collisions remove plaintext distinguishability;
-- result may contain spurious tuples (postprocessing query); (cosa intende per spurie?)
-- still vulnerable to inference attacks.
+The term **bucket** let suppose that there will be **collisions**. We want to have different values mapped on the same encryption. This tecnhique could be **partition-based** or **hash-based** and it stills supports for equality queries while collisions remove plaintext distinguishability. Nevertheless, result may contain spurious tuples (**postprocessing query**, e.g., we wanna return all the tuples about doctor Angel but he is mapped on the same values of doctor Bell. Therefore, we return all the tuple with this value and then we do a postprocessing step, removing the tuples we don't need) and this approach is still vulnerable to inference attacks (based on frequence of the tuples).
 
 slide 15/268
 
 ----------------------------------------------------------------
 
 #### Indexes for queries: Flattened (1:n)
-Flat indexes:
-- decreases exposure to inference attacks;
-- remains vulnerabile to dynamic observations.
+The use of flat indexes decreases exposure to inference attacks but remains vulnerabile to dynamic observations.
 
 slide 16/268
 
