@@ -2054,7 +2054,7 @@ On the server-side there is still work to do to increase expressiveness. Today X
 
 # Privacy and integrity of data storage
 
-slide 2/268
+![[PrivacyAndIntegrityOfDataStorage.png]]
 
 ## Contributions and advancements
 The research community has been very active and produced several contributions and advancements. E.g.,:
@@ -2079,7 +2079,7 @@ Solutions for protecting data can be based on:
 The server can be **honest-but-curious** (therefore we want to protect the confidentiality and not the integrity) and should not have access to the resource content.<br />
 Data conﬁdentiality is provided by wrapping a **layer of encryption** around sensitive data. For performance reasons, encryption is typically applied at the tuple level but it is also possible to apply it at the table level, at the column level or at the cell level.
 
-slide 6/268
+![[Encryption.png]]
 
 ### Fine-grained access to data in the cloud
 For conﬁdentiality reasons, **Cloud Service Providers** storing data cannot decrypt them for data processing/access. Therefore, it is needed a mechanisms to support access to the outsourced data:
@@ -2089,39 +2089,39 @@ For conﬁdentiality reasons, **Cloud Service Providers** storing data cannot de
 ### Fine-grained access: Approaches
 - **Keyword-based searches directly on the encrypted data**: supported by speciﬁc cryptographic techniques;
 
-slide 8/268
+![[FineGrainedAccessApproach1.png]]
 
 
 - **homomorphic encryption**: supports the execution of operations directly on the encrypted data;
 
-slide 9/268
+![[FineGrainedAccessApproach2.png]]
 
 - **encryption schemas**: each column can be encrypted with a different encryption schema, depending on the conditions to be evaluated on it (e.g., Google encrypted BigQuery);
 - **onion encryption (CryptDB)**: different onion layers, each of which supports the execution of a speciﬁc SQL operation (e.g., HanaDB SEEED framework). It suffers from two problems:
 	- in storage, the data are protected but, when a layer is peeled, the data are exposed;
 	- the encryption layer could leak informations about the data, e.g., the use of order preserving encryption leaks the order of the data.
 
-slide 10/268
+![[FineGrainedAccessApproach3.png]]
 
 - **indexes**: metadata attached to the data and used for ﬁne-grained information retrieval and query execution. They can also be complementary to encryption (even with encryption users want to have the ability to perform searches based on metadata).
 
-slide 11/268
+![[FineGrainedAccessApproach4.png]]
 
 An example of encryption and indexes.<br />
 Indexes associated with attributes are used by the server to select data to be returned in response to a query. 
 
-slide 12/268
+![[EncryptionAndIndexesExample.png]]
 
 In the example above, it is possible to notice how the original tuple is encrypted and how the indexes are used by the server.
 
 An example of how does the query evaluation process works.
 
-slide 13/268
+![[QueryEvaluationProcessExample.png]]
 
 #### Indexes for queries: Direct (1:1)
 It is possible to use actual value or coding as indexes, because they are simple and precise for equality queries but they preserves plaintext value distinguishability (inference attacks).
 
-slide 14/268
+![[IndexesForQueriesDirect.png]]
 
 Technically, it is not advisable to use the actual value as index but, in case the data is not sensible and it does not leak informations, it becomes possible to utilize it.
 
@@ -2130,14 +2130,14 @@ Technically, it is not advisable to use the actual value as index but, in case t
 #### Indexes for queries: Bucket (n:1)
 The term **bucket** let suppose that there will be **collisions**. We want to have different values mapped on the same encryption. This tecnhique could be **partition-based** or **hash-based** and it stills supports for equality queries while collisions remove plaintext distinguishability. Nevertheless, result may contain spurious tuples (**postprocessing query**, e.g., we wanna return all the tuples about doctor Angel but he is mapped on the same values of doctor Bell. Therefore, we return all the tuple with this value and then we do a postprocessing step, removing the tuples we don't need) and this approach is still vulnerable to inference attacks (based on frequence of the tuples).
 
-slide 15/268
+![[IndexesForQueriesBucket.png]]
 
 ----------------------------------------------------------------
 
 #### Indexes for queries: Flattened (1:n)
 The use of flat indexes decreases exposure to inference attacks but remains vulnerabile to dynamic observations.
 
-slide 16/268
+![[IndexedForQueriesFlattened.png]]
 
 ----------------------------------------------------------------
 
