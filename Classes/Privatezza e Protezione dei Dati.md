@@ -2326,9 +2326,11 @@ The computation of the exposure coefﬁcient $\varepsilon$ depends on two factor
 
 slide 37/268
 
-An example of Freq+DB$^k$.
+An example of Freq+DB$^k$ ($1:1$).
 
 slide 38/268
+
+To quantify how a tuple is exposed, we just have to do the product of the inverse cardinality of each element of the tuple itself. To quantify how a table is exposed, we just have to calculate the mean of the exposure of the tuples in the table itself.
 
 ----------------------------------------------------------------
 
@@ -2336,8 +2338,7 @@ slide 38/268
 Correspondence between an index and a plaintext value can be determined based on the number of occurrences of the index/value:
 - basic protection: values with the same number of occurrences are indistinguishable to the attacker.
 
-Assessment of index exposure based on equivalence relation where index/plaintext values with same number of occurrences belong to the same class
-- exposure of values in equivalence class $C$ is $\frac{1}{\vert  C \vert}$.
+Assessment of index exposure based on equivalence relation where index/plaintext values with same number of occurrences belong to the same class. The exposure of values in equivalence class $C$ is $\frac{1}{\vert  C \vert}$.
 
 An example of exposure computation in Freq+DB$^k$.<br />
 
