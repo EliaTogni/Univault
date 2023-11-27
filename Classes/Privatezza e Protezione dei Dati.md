@@ -2149,7 +2149,7 @@ The corresponding index value is the unique value associated with the partition 
 An example of a partition-based index.<br />
 Random mapping:
 
-slide 18/268
+![[PartitionBasedIndexExample.png]]
 
 - $Map_{Balance} (100) = \mu$;
 - $Map_{Balance} (200) = \kappa$;
@@ -2186,7 +2186,7 @@ $$Map_{cond} (Balance< 200) \to I_{Balance} \in \{\mu , \kappa\}$$
 
 Example:
 
-slide 21/268
+![[MappingConditions.png]]
 
 $$ Map_{cond} (Balance=Benefit) \to (I_{Balance} = \mu \wedge I_{Benefit} = \gamma)
 \vee (IBalance = \kappa \wedge IBenefit =gamma )
@@ -2209,7 +2209,7 @@ The translation should be performed in such a way that the server is responsible
 
 An example of a query execution.
 
-slide 23/268 multiple
+![[QueryExecutionExample.png]]
 
 ----------------------------------------------------------------
 
@@ -2225,7 +2225,7 @@ Important properties of any secure hash function $h$ are:
 
 An example of encrypted relation with hashing.
 
-slide 25/268
+![[EncryptedRelationWithHashingExample.png]]
 
 - $h_c(Alice)=h_c(Chris)= \alpha$;
 - $h_c(Donna)=h_c(Elvis)=\beta$;
@@ -2258,7 +2258,7 @@ Query translation works like in the partition-based method.
 
 #### $B+$-tree example 
 
-slide 28/268
+![[B+-TreeExample1.png]]
 
 Query on the plaintext relation
 
@@ -2268,7 +2268,7 @@ SELECT * FROM Accounts WHERE Customer = 'Bob'
 
 Interaction for query evaluation
 
-slide 29/268
+![[B+-TreeExample2.png]]
 
 ----------------------------------------------------------------
 
@@ -2324,11 +2324,11 @@ The computation of the exposure coefﬁcient $\varepsilon$ depends on two factor
 
 ##### Exposure coefﬁcient computation
 
-slide 37/268
+![[ExposureCoefficientComputation.png]]
 
 An example of Freq+DB$^k$ ($1:1$).
 
-slide 38/268
+![[Freq+DBkExample.png]]
 
 To quantify how a tuple is exposed, we just have to do the product of the inverse cardinality of each element of the tuple itself. To quantify how a table is exposed, we just have to calculate the mean of the exposure of the tuples in the table itself.
 
@@ -2342,7 +2342,7 @@ Assessment of index exposure based on equivalence relation where index/plaintext
 
 An example of exposure computation in Freq+DB$^k$.<br />
 
-slide 40/268
+![[Freq+DBkExposureComputationExample.png]]
 
 ----------------------------------------------------------------
 
@@ -2374,7 +2374,6 @@ For example:
 - $\beta$ indistinguishable from $\delta$;
 - $\eta$ indistinguishable from $\theta$;
 - $\gamma$ indistinguishable from $\varepsilon$.
-
 
 An example of computing the exposure coefﬁcient.
 
