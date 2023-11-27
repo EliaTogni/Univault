@@ -2305,8 +2305,8 @@ $$\varepsilon = \text{ Exposure Coefficient}$$
 ### Scenarios
 The computation of the exposure coefﬁcient $\varepsilon$ depends on two factors:
 - the indexing method adopted, e.g.:
-	- direct encryption;
-	- hashing.
+	- direct encryption ($1:1$);
+	- hashing ($n:1$).
 - the a-priori knowledge of the intruder, e.g.:
 	- **Freq+DB$^k$**:
 		- the frequency distribution of plaintext values in the original database (**Freq**);
