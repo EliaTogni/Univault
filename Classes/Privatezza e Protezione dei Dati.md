@@ -2347,13 +2347,13 @@ slide 40/268
 ----------------------------------------------------------------
 
 ##### Direct encryption – DB+DB$^k$
-$3$-colored undirected **Row-Column-Value** graph:
+$3$-colored undirected **Row-Column-Value** [[Grafo |graph]]:
 - one vertex of color “column” for every attribute;
 - one vertex of color “row” for every tuple;
 - one vertex for every distinct value in a column;
 - an arc connects every value to the column and row(s) in which it appears.
 
-RCV on plaintext values is identical to the one on indexes. Inference exposure can be measured by evaluating the automorphisms of the graph. Not sufﬁcient to count the number of automorphisms:
+RCV on plaintext values is identical to the one on indexes. Inference exposure can be measured by evaluating the **automorphisms** of the graph. Not sufﬁcient to count the number of automorphisms:
 - if there are $K$ automorphisms and in $k$ of them the label assigned to $v_i$ is the same, there is a probability of $k/K$ of identifying the value.
 
 An example of DB+DB$^k$.
