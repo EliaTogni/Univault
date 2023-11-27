@@ -1,6 +1,6 @@
 # Funzione Hash #
 Una **Funzione Hash** è una funzione $h:U \rightarrow {0, ..., m-1}$, la quale trasforma chiavi in indici di una tavola.<br />
-Si indicherà con il nome $tavola hash$ una tavola indicizzata tramite funzioni hash.<br />
+Si indicherà con il nome di **tavola hash** una tavola indicizzata tramite funzioni hash.<br />
 
 Una funzione hash $h$ è **Perfetta** se è una [[Funzione Iniettiva]], cioè per ogni $u, v \in U, [u \neq v] \rightarrow [h(u) neq h(v)]$.<br />
 Questo implica che, affinchè una funzione di hash sia perfetta, $|U| \leq m$.<br />
