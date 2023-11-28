@@ -2789,613 +2789,123 @@ slide 100/268
 
 ----------------------------------------------------------------
 
-Collusion in the Full_SEL
-• Collusion among users:
-◦ not a problem: users never gain in the exchange
-
-• Collusion with the server:
-◦ users in Bel_accessible who have a sel_locked view and who never
-had the authorization to access the resource
-◦ exposure is limited to resources involved in a policy split to make
-other resources, encrypted with the same BEL key, available to the
-user
-=⇒ easily identiﬁable; can be avoided by re-encrypting
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-101/268
-
-Collusion in the Delta_SEL
-• A single user by herself can hold the two different views:
-sel_locked and bel_locked
-◦ a user could retrieve the resources at initial time, when she is not
-authorized, getting and storing at her side resources’ bel_locked
-views
-◦ if the user acquires the sel_locked view on a resource r (the user is
-released φ (r) to make accessible to her another resource r′ )
-she can enjoy the open view on r
-
-• Again, exposure is limited to resources involved in a policy split
-=⇒ easily identiﬁable; can be avoided by re-encrypting
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-102/268
-
-Mix&Slice for Policy Revocation
-
-E. Bacis, S. De Capitani di Vimercati, S. Foresti, S. Paraboschi, M. Rosa, P. Samarati, “Mix&slice for Efﬁcient Access Revocation
-on Outsourced Data,” in IEEE Transactions on Dependable and Secure Computing (TDSC), 2023.
-E. Bacis, S. De Capitani di Vimercati, S. Foresti, S. Paraboschi, M. Rosa, P. Samarati, “Mix&Slice: Efﬁcient Access Revocation
-in the Cloud,” in Proc. of the 23rd ACM Conference on Computer and Communications Security (CCS 2016), Vienna, Austria,
-October 2016.
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-103/268
-
-Mix&Slice
-• Over-encryption requires support by the server (i.e., the server
-implements more than simple get/put methods)
-• Alternative solution to enforce revoke operations: Mix&Slice
-• Use different rounds of encryption to provide complete mixing of
-the resource
-=⇒ unavailability of a small portion of the encrypted resource prevents
-its (even partial) reconstruction
+###### Collusion in the Full_SEL
+Collusion among users is not a problem. in fact, users never gain in the exchange.
+About collusion with the server:
+- users in Bel_accessible who have a sel_locked view and who never had the authorization to access the resource;
+- exposure is limited to resources involved in a policy split to make other resources, encrypted with the same BEL key, available to the user $\to$ easily identiﬁable; can be avoided by re-encrypting.
 
-• Slice the resource into fragments and, every time a user is revoked
-access to the resource, re-encrypt a randomly chosen fragment
-=⇒ lack of a fragment prevents resource decryption
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+----------------------------------------------------------------
 
-104/268
+###### Collusion in the Delta_SEL
+A single user by herself can hold the two different views: sel_locked and bel_locked:
+- a user could retrieve the resources at initial time, when she is not authorized, getting and storing at her side resources’ bel_locked views;
+- if the user acquires the sel_locked view on a resource $r$ (the user is released $\phi (r)$ to make accessible to her another resource $r'$) she can enjoy the open view on $r$.
 
-Resource organization
-• Block: sequence of bits input to a block cipher
-Block: AES uses block of 128 bits
-Mini-block:
-Mini-block:
-Mini-block:
-Mini-block:
+Again, exposure is limited to resources involved in a policy split $\to$ easily identiﬁable; can be avoided by re-encrypting.
 
-sequence of bits in a block
-it is our atomic unit of protection
-mini-blocks of 32 bits imply a cost of
-232 for brute-force attacks
+----------------------------------------------------------------
 
-Macro-block: sequence of blocks
-Macro-block: mixing operates at the level of macro-block
-Macro-block: a macro-block of 1KB includes 8 blocks
+# Mix&Slice for Policy Revocation
+## Mix&Slice
+Over-encryption requires support by the server (i.e., the server implements more than simple get/put methods). Alternative solution to enforce revoke operations: **Mix&Slice**.
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+Mix&Slice uses different rounds of encryption to provide complete mixing of
+the resource $\to$ unavailability of a small portion of the encrypted resource prevents its (even partial) reconstruction.
 
-105/268
+Slice the resource into fragments and, every time a user is revoked access to the resource, re-encrypt a randomly chosen fragment $\to$ lack of a fragment prevents resource decryption.
 
-Resource organization
-• Block: sequence of bits input to a block cipher
-Block: AES uses block of 128 bits
-• Mini-block: sequence of bits in a block
-Mini-block: it is our atomic unit of protection
-Mini-block: mini-blocks of 32 bits imply a cost of
-Mini-block: 232 for brute-force attacks
-Macro-block: sequence of blocks
-Macro-block: mixing operates at the level of macro-block
-Macro-block: a macro-block of 1KB includes 8 blocks
+----------------------------------------------------------------
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+### Resource organization
+- **Block**: sequence of bits input to a block cipher AES uses block of $128$ bits.
+- **mini-block**: sequence of bits in a block it is our **atomic unit of protection** mini blocks of $32$ bits imply a cost of $232$ for brute-force attacks.
+- **macro-block**: sequence of blocks mixing operates at the level of macro-block a macro-block of $1$KB includes $8$ blocks.
 
-105/268
+slide 105/268
 
-Resource organization
-• Block: sequence of bits input to a block cipher
-Block: AES uses block of 128 bits
-• Mini-block: sequence of bits in a block
-Mini-block: it is our atomic unit of protection
-Mini-block: mini-blocks of 32 bits imply a cost of
-Mini-block: 232 for brute-force attacks
-• Macro-block: sequence of blocks
-Macro-block: mixing operates at the level of macro-block
-Macro-block: a macro-block of 1KB includes 8 blocks
+----------------------------------------------------------------
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+
+
+### Mixing
+When encryption is applied to a block, all the mini-blocks are mixed. The absence of a mini-block in a block from the result prevents reconstruction of the block. It does not prevent the reconstruction of other blocks in the resource.
 
-105/268
+Extend mixing to a macro-block:
+- iteratively apply block encryption;
+- at iteration $i$, each block has a mini-block for each encrypted block obtained at iteration $i − 1$ (at distance $4^{i−1}$);
+- x rounds mix $4^x$ mini-blocks
 
-Mixing – 1
-• When encryption is applied to a block, all the mini-blocks are
-mixed
-+ absence of a mini-block in a block from the result prevents
-reconstruction of the block
-− does not prevent the reconstruction of other blocks in the resource
+slide 107/268
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+----------------------------------------------------------------
 
-106/268
+### Slicing
+• To be mixed, large resources require large macro-blocks:
+- many rounds of encryption;
+- considerable computation and data transfer overhead;
 
-Mixing – 2
-• Extend mixing to a macro-block
-◦ iteratively apply block encryption
-◦ at iteration i, each block has a mini-block for each encrypted block
-obtained at iteration i − 1 (at distance 4i−1 )
-◦ x rounds mix 4x mini-blocks
-[0]
+Large resources are split in different macro-blocks for encryption. Absence of a mini-block for each macro-block prevents the (even partial) reconstruction of the resource.
 
-0
+Slice resources in fragments having a mini-block for each macro-block (the ones in the same position). Absence of a fragment prevents reconstruction of the resource.
 
-[1]
+slide 109/268
 
-0
+----------------------------------------------------------------
 
-[2]
+### Revoke
+To revoke user $u$ access to a resource $r$:
+1) randomly select a fragment $F_i$ of $r$ and download it;
+2) decrypt $F_i$;
+3) generate a new key $k_l$ that u does not know and cannot derive (generated with **key regression** and seed encrypted with new ACL);
+4) re-encrypt $F_i$ with the new key $k_l$;
+5) upload the encrypted fragment.
 
-0
+slide 110/268
 
-[3]
+----------------------------------------------------------------
 
-0
+#### Effectiveness of the approach
+A revoked user does not know the encryption key of at least one fragment:
+- a brute force attack is needed to reconstruct the fragment (and the resource);
+- $2^{msize}$ attempts, with $msize$ the number of bits in a mini-block.
 
-[4]
+A user can locally store $f_{loc}$ of the $f$ fragments of a resource:
+- probability to be able to reconstruct the resource after $f_{miss}$ fragments have been re-encrypted: $P = (f_{loc} /f)^{f_{miss}}$:
+	- proportional to the number of locally stored fragments;
+	- decreases exponentially with the number of policy updates.
 
-0
+----------------------------------------------------------------
 
-[5]
+# Write Authorizations
+Problem: the support of only read accesses may be limiting $\to$ users may be authorized to modify resources.
 
-1
+Keys regulating read accesses cannot regulate write accesses $\to$ the set $w[o]$ of users authorized to write $o$ may be a subset of the set $r[o]$ of users authorized to read $o$.
 
-[1]
+Solution: associate a write tag $tag[o]$ with each resource $o$ encrypted
+with a key:
+- known to the users in $w[o]$ (derivable from the key of $w[o]$ via secure hashing);
+- known to the storage server (derivable from its key via tokens);
+$\to$ write authorized iff $u$ proves knowledge of $tag[o]$ to the server.
 
-1
-
-[2]
-
-1
-
-[3]
-
-1
-
-[4]
-
-1
-
-[5]
-
-E
-[0]
-
-2
-
-[1]
-
-2
-
-0
-
-[7]
-
-0
-
-[8]
-
-0
-
-[9]
-
-0
-
-1
-
-[6]
-
-1
-
-[7]
-
-1
-
-[8]
-
-1
-
-[9]
-
-1
-
-E
-[2]
-
-2
-
-[3]
-
-2
-
-[4]
-
-2
-
-[5]
-
-2
-
-[10] [11] [12] [13] [14] [15]
-0
-
-0
-
-0
-
-2
-
-[7]
-
-2
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-[8]
-
-2
-
-[9]
-
-2
-
-0
-
-0
-
-[10] [11] [12] [13] [14] [15]
-1
-
-1
-
-1
-
-1
-
-1
-
-1
-
-E
-
-E
-[6]
-
-0
-
-E
-
-E
-
-E
-
-E
-[0]
-
-[6]
-
-0
-
-[10] [11] [12] [13] [14] [15]
-2
-
-2
-
-2
-
-2
-
-2
-
-2
-
-107/268
-
-Slicing – 1
-• To be mixed, large resources require large macro-blocks
-− many rounds of encryption
-− considerable computation and data transfer overhead
-
-• Large resources are split in different macro-blocks for encryption
-• Absence of a mini-block for each macro-block prevents the (even
-partial) reconstruction of the resource
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-108/268
-
-Slicing – 2
-• Slice resources in fragments having a mini-block for each
-macro-block (the ones in the same position)
-◦ absence of a fragment prevents reconstruction of the resource
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-109/268
-
-Revoke
-To revoke user u access to a resource r
-1. randomly select a fragment Fi of r and download it
-2. decrypt Fi
-3. generate a new key kl that u does not know and cannot derive
-(generated with key regression and seed encrypted with new ACL)
-4. re-encrypt Fi with the new key kl
-5. upload the encrypted fragment
-
-macroblock
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-fragment
-
-F 00 F 10 F 20 F 30 F 40 F 50 F 60 F 70 F 80 F 90 F100 F110 F120 F130 F140 F150
-
-110/268
-
-Revoke
-To revoke user u access to a resource r
-1. randomly select a fragment Fi of r and download it
-2. decrypt Fi
-3. generate a new key kl that u does not know and cannot derive
-(generated with key regression and seed encrypted with new ACL)
-4. re-encrypt Fi with the new key kl
-5. upload the encrypted fragment
-F 00 F 10 F 20 F 30 F 40 F 50 F 60 F 70 F 80 F 90
-
-F110 F120 F130 F140 F150
-
-fragment
-
-F101
-macroblock
-
-k0
-key
-
-k1
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-110/268
-
-Revoke
-To revoke user u access to a resource r
-1. randomly select a fragment Fi of r and download it
-2. decrypt Fi
-3. generate a new key kl that u does not know and cannot derive
-(generated with key regression and seed encrypted with new ACL)
-4. re-encrypt Fi with the new key kl
-5. upload the encrypted fragment
-F 00 F 10 F 20 F 30
-
-F 50 F 60 F 70 F 80 F 90
-
-F110 F120 F130 F140 F150
-
-F 42
-
-fragment
-
-F101
-macroblock
-
-k0
-
-key
-
-k1
-k2
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-110/268
-
-Revoke
-To revoke user u access to a resource r
-1. randomly select a fragment Fi of r and download it
-2. decrypt Fi
-3. generate a new key kl that u does not know and cannot derive
-(generated with key regression and seed encrypted with new ACL)
-4. re-encrypt Fi with the new key kl
-5. upload the encrypted fragment
-
-macroblock
-
-F 50 F 60 F 70 F 80 F 90
-
-F110 F120 F130 F140 F150
-
-F 42
-F103
-
-fragment
-
-F 00 F 10 F 20 F 30
-
-k0
-
-key
-
-k1
-k2
-k3
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-110/268
-
-Effectiveness of the approach
-• A revoked user does not know the encryption key of at least one
-fragment
-◦ a brute force attack is needed to reconstruct the fragment (and the
-resource)
-◦ 2msize attempts, with msize the number of bits in a mini-block
-
-• A user can locally store floc of the f fragments of a resource
-◦ probability to be able to reconstruct the resource after fmiss
-fragments have been re-encrypted: P = (floc /f )fmiss
-− proportional to the number of locally stored fragments
-− decreases exponentially with the number of policy updates
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-111/268
-
-Write Authorizations
-
-S. De Capitani di Vimercati, S. Foresti, S. Jajodia, S. Paraboschi, P. Samarati, “Support for Write Privileges on Outsourced Data,” in
-Proc. of SEC, Heraklion, Crete, Greece, June 2012.
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-112/268
-
-Write authorizations
-Problem:
-• The support of only read accesses may be limiting
-=⇒ users may be authorized to modify resources
-
-• Keys regulating read accesses cannot regulate write accesses
-=⇒ the set w[o] of users authorized to write o may be a subset of the
-set r[o] of users authorized to read o
-
-Solution: associate a write tag tag[o] with each resource o encrypted
-with a key
-• known to the users in w[o] (derivable from the key of w[o] via
-secure hashing)
-• known to the storage server (derivable from its key via tokens)
-=⇒ write authorized iff u proves knowledge of tag[o] to the server
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-113/268
-
-Key derivation graph
-• Key derivation graph extended with the storage server S
-• The key derivation graph has
-◦ a key ku for each user u
-◦ a key kS for the storage server S
-◦ a key kr[o] for each read access control list r[o]
-◦ a key kw[o] for each write access control list w[o]
-◦ a key kw[o]∪{S} for each write access control list, extended with
-the server w[o]∪{S}
-◦ a secure hash function h to compute kw[o]∪{S} from kw[o]
-◦ a set of tokens that permit each user u to derive kr[o] (kw[o] ) s.t.
-u∈r[o] (u∈w[o])
-◦ a set of tokens that permit the storage server S to derive kw[o]∪{S}
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-114/268
-
-Key derivation graph – Example
-Alice
-
-o1
-
-A
-
-tag[o1]
-
-AB
-Bob
-
-B
-
-ABC
-
-o2
-tag[o2]
-
-BCD
-Carol
-
-C
-
-David
-
-D
-
-tag[o3]
-o3
-
-CD
-
-tag[o4]
-o4
-
-o r[o] w[o]
-o1 ABC AB
-o2 BCDCD
-o3 ABC C
-o4 AB AB
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-key assignment/
-encryption
-token
-
-115/268
-
-Key derivation graph – Example
-Alice
-
-o1
-
-A
-AB
-
-Bob
-
-B
-
-Server
-
-S
-
-tag[o1]
-
-ABS
-ABC
-
-tag[o2]
-
-CS
-BCD
-
-Carol
-
-C
-
-David
-
-D
-
-o2
-tag[o3]
-o3
-
-CD
-
-CDS
-
-tag[o4]
-o4
-
-o r[o] w[o]
-o1 ABC AB
-o2 BCD CD
-o3 ABC C
-o4 AB AB
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-key assignment/
-encryption
-hash
-token
-
-115/268
-
-Authorization enforcement
+## Key derivation graph
+Key derivation graph extended with the storage server $S$. The key derivation graph has:
+- a key $k_u$ for each user $u$;
+- a key $k_S$ for the storage server $S$;
+- a key $k_{r[o]}$ for each read access control list $r[o]$;
+- a key $k_{w[o]}$ for each write access control list $w[o]$;
+- a key $k_{w[o] \cup \{S\}}$ for each write access control list, extended with the server $w[o] \cup \{S\}$;
+- a secure hash function $h$ to compute $k_{w[o]} \cup \{S\}$ from $k_{w[o]}$;
+- a set of tokens that permit each user $u$ to derive $k_{r[o]} (k_{w[o]}) such that $u \in r[o]$ ($u \in w[o]$);
+- a set of tokens that permit the storage server $S$ to derive $k_{w[o]} \cup \{S\}$.
+
+An example of a key derivation graph.
+
+slide 115/268
+
+----------------------------------------------------------------
+
+## Authorization enforcement
 • The data owner deﬁnes the key derivation graph and
 ◦ communicates to each user u key ku
 ◦ communicates to the storage server S key kS
@@ -3409,9 +2919,7 @@ token
 ◦ u sends a request to write o to the storage server
 ◦ the server accepts the request only if u provides (plaintext) tag[o]
 ◦ u can provide tag[o] only if u can decrypt it (i.e., if u∈w[o])
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
 
-116/268
 
 Structure of outsourced resources
 
@@ -4335,7 +3843,7 @@ and the time when resources have been published
 
 123/268
 
-Fragmentation and Encryption
+# Fragmentation and Encryption
 
 Fragmentation and encryption
 • Encryption makes query evaluation and application execution
