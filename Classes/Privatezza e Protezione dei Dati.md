@@ -2553,27 +2553,20 @@ slide 69/268
 - user $E$ can access $\{r_1, r_2, r_3\}$
 - user $F$ can access $\{r_3\}$
 
-Policy transformation
-Goal: translate an authorization policy A into an equivalent encryption policy E .
-A and E are equivalent if they allow exactly the same accesses:
-E
+----------------------------------------------------------------
 
-A
+###### Policy transformation
+Goal: translate an authorization policy $\mathcal{A}$ into an equivalent encryption policy $\mathcal{E}$. $\mathcal{A}$ and $\mathcal{E}$ are equivalent if they allow exactly the same accesses:
+- $\forall u \in \mathcal{U}, r \in \mathcal{R} : u \rightarrow^{\mathcal{E}} r \Rightarrow u \to^{\mathcal{A}} r$;
+- $\forall u \in \mathcal{U}, r \in \mathcal{R} : u \rightarrow^{\mathcal{A}} r \Rightarrow u \to^{\mathcal{E}} r$.
 
-A
+----------------------------------------------------------------
 
-E
-
-• ∀u ∈ U , r ∈ R : u −→r =⇒ u −→r
-• ∀u ∈ U , r ∈ R : u −→r =⇒ u −→r
-
-Translating A into E – 1
-• Naive solution:
+###### Translating A into E
+Naive solution:
 - each user is associated with a different key;
 - each resource is encrypted with a different key;
-- a token tu,r is generated and published for each permission hu, ri-
-
-$\to$ producing and managing a token for each single permission can be unfeasible in practice.
+- a token $t_{u,r}$ is generated and published for each permission $\langle u, r \rangle \to$ producing and managing a token for each single permission can be unfeasible in practice.
 
 Exploiting acls and user groups:
 - group users with the same access privileges;
@@ -2583,12 +2576,13 @@ slide authorization policy example
 
 r4 e r5 sono uguali (hanno la stessa acl) e quindi non serve crittarle diversamente
 
-It is possible to create an encryption policy graph by exploiting the hierarchy among sets of users induced by the partial order relationship based on set containment (⊆)
-• If the system has a large number of users, the encryption policy has a large number of tokens and keys ( at most 2|U | − 1) (we subtract the empty set).
+It is possible to create an encryption policy graph by exploiting the hierarchy among sets of users induced by the partial order relationship based on set containment ($\subseteq$). If the system has a large number of users, the encryption policy has a large number of tokens and keys ( at most $2^{\vert \mathcal{U} \vert } − 1$) (we subtract the empty set) $\to$ inefﬁcient key derivation.
 
-$\to$ inefﬁcient key derivation
+slide 72/268
 
-Minimum encryption policy
+----------------------------------------------------------------
+
+###### Minimum encryption policy
 Observation: user groups that do not correspond to any acl do not need to have a key.
 
 Goal: compute a minimum encryption policy, equivalent to a given authorization policy, that minimize the number of tokens to be maintained by the server.
@@ -2598,47 +2592,50 @@ Solution: heuristic algorithm based on the observation that:
 - the encryption policy graph may include only the vertices that are needed to enforce a given authorization policy, connecting them to ensure a correct key derivability;
 - other vertices can be included if they are useful for reducing the size of the catalog.
 
-Construction of the key and token graph
-Start from an authorization policy A
-1. Create a vertex/key for each user and for each non-singleton acl (initialization)
-2. For each vertex v corresponding to a non-singleton acl, ﬁnd a cover without redundancies (covering)
-- for each user u in v.acl, ﬁnd an ancestor v′ of v with u ∈ v′ .acl
+----------------------------------------------------------------
 
-3. Factorize common ancestors (factorization)
+###### Construction of the key and token graph
+Start from an authorization policy $\mathcal{A}$:
+1) create a vertex/key for each user and for each non-singleton acl (**initialization**);
+2) for each vertex $v$ corresponding to a non-singleton acl, ﬁnd a cover without redundancies (**covering**):
+	1) for each user $u$ in _v.acl_, ﬁnd an ancestor $v'$ of $v$ with $u \in v'$_acl_.
+3) factorize common ancestors (**factorization**).
 
 An example of a key and token graph.
 
-slide 
+slide 75/268
 
 
 Key assignment and encryption schema φ and catalog
 
-slide
+slide 77/268
 
-Multiple owners and policy changes
-• When multiple owners need to share their data, the use of a key agreement method allows two data owners to share a secret key for subsequent cryptographic use [DFJPPS-10]
-• When authorizations dynamically change, the data owner needs to:
-◦ download the resource from the server
-◦ create a new key for the resource
-◦ decrypt the resource with the old key
-◦ re-encrypt the resource with the new key
-◦ upload the resource to the server and communicate the public catalog updates
+----------------------------------------------------------------
 
-=⇒ inefﬁcient
-• Possible solution: over-encryption
+##### Multiple owners and policy changes
+When multiple owners need to share their data, the use of a key agreement method allows two data owners to share a secret key for subsequent cryptographic use.
 
-Over-encryption
-• Resources are encrypted twice
-◦ by the owner, with a key shared with the users and unknown to the server (Base Encryption Layer - BEL level)
-◦ by the server, with a key shared with authorized users
-(Surface Encryption Layer - SEL level)
+When authorizations dynamically change, the data owner needs to:
+- download the resource from the server;
+- create a new key for the resource;
+- decrypt the resource with the old key;
+- re-encrypt the resource with the new key;
+- upload the resource to the server and communicate the public catalog updates.
 
-# QUI
+$\to$ inefﬁcient. A possible solution is the **over-encryption**.
 
-• To access a resource a user must know both the corresponding BEL and SEL keys
-• Grant and revoke operations may require
-◦ the addition of new tokens at the BEL level;
-◦ the update of the SEL level according to the operations performed.
+----------------------------------------------------------------
+
+###### Over-encryption
+Resources are encrypted twice:
+- by the owner, with a key shared with the users and unknown to the server (**Base Encryption Layer** - **BEL** level);
+- by the server, with a key shared with authorized users (**Surface Encryption Layer** - **SEL** level).
+
+To access a resource a user must know both the corresponding BEL and SEL keys. Grant and revoke operations may require:
+- the addition of new tokens at the BEL level;
+- the update of the SEL level according to the operations performed.
+
+----------------------------------------------------------------
 
 BEL and SEL structures
 • BEL. At the BEL level we distinguish two kinds of keys: access
