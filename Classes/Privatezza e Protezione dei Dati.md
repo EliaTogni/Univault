@@ -2495,45 +2495,28 @@ $(\mathcal{K} , \preceq)$ can be graphically represented as a graph with a verte
 Depending on the partial order relation deﬁned on $\mathcal{K}$, the key derivation hierarchy can be:
 - a chain;
 - a [[Albero |tree]];
-- a DAG;
+- a direct acyclic [[Grafo |graph]];
+
+----------------------------------------------------------------
 
 ###### Token-based key derivation methods
-Keys are arbitrarily assigned to vertices. A public label $l_i$ is associated with each key $k_i$. A piece of public information $t_{i,j}, called token, is associated with
+Keys are arbitrarily assigned to vertices. A public label $l_i$ is associated with each key $k_i$. A piece of public information $t_{i,j}$, called token, is associated with
 each edge in the hierarchy. Given an edge $(k_i,k_j)$, token $t_{i,j}$ is computed as $k_j \oplus h(k_i, l_j)$ where:
 - $\oplus$ is the $n$-ary xor operator;
 - $h$ is a secure [[Funzione Hash |hash function]].
 
-• Advantages of tokens:
-◦ they are public and allow users to derive multiple encryption keys,
-while having to worry about a single one
-◦ they can be stored on the remote server (just like the encrypted
-data), so any user can access them
+Advantages of tokens:
+- they are public and allow users to derive multiple encryption keys, while having to worry about a single one;
+- they can be stored on the remote server (just like the encrypted data), so any user can access them.
 
-Key and token graph
-• Relationships between keys through tokens can be represented
-via a key and token graph
-◦ a vertex for each pair hk, li, where k ∈ K is a key and l ∈ L the
-corresponding label
-◦ an edge from a vertex hki , li i to vertex hkj , lj i if there exists a token
-ti,j ∈ T allowing the derivation of kj from ki
+----------------------------------------------------------------
 
-Example
-k1 , l1
-k2 , l2
+###### Key and token graph
+Relationships between keys through tokens can be represented via a key and token graph:
+- a vertex for each pair hk, li, where k ∈ K is a key and l ∈ L the corresponding label;
+- an edge from a vertex hki , li i to vertex hkj , lj i if there exists a token ti,j ∈ T allowing the derivation of kj from ki.
 
-k8 , l8
-k7 , l7
-
-k3 , l3
-
-k10 , l10
-
-k4 , l4
-k5 , l5
-
-k9 , l9
-
-k6 , l6
+slide 66/268
 
 Key assignment and encryption schema
 Translation of the authorization policy into an encryption policy:
@@ -2554,43 +2537,14 @@ corresponding labels
 ◦ φ is a key assignment and encryption schema
 ◦ T is a set of tokens deﬁned on K and L
 
-• The encryption policy can be represented via a graph by
-extending the key and token graph to include:
+• The encryption policy can be represented via a graph by extending the key and token graph to include:
 ◦ a vertex for each user and each resource
 ◦ an edge from each user vertex u to the vertex hk, li such that φ (u)=l
 ◦ an edge from each vertex hk, li to each resource vertex r such that
 φ (r) = l
 
 Encryption policy graph – Example
-A
 
-k1 , l1
-
-B
-
-k2 , l2
-
-C
-
-k3 , l3
-
-D
-
-k4 , l4
-
-E
-
-k5 , l5
-
-F
-
-k6 , l6
-
-k8 , l8
-
-r1
-
-k7 , l7
 
 • user A can access {r1 , r2 }
 • user B can access {r2 , r3 }
@@ -2611,10 +2565,8 @@ token
 • user E can access {r1 , r2 , r3 }
 • user F can access {r3 }
 
-
-Policy transformation
-Goal: translate an authorization policy A into an equivalent encryption
-policy E .
+Policy transformation
+Goal: translate an authorization policy A into an equivalent encryption policy E .
 A and E are equivalent if they allow exactly the same accesses:
 E
 
@@ -2628,22 +2580,22 @@ E
 • ∀u ∈ U , r ∈ R : u −→r =⇒ u −→r
 
 Translating A into E – 1
-• Naive solution
-◦ each user is associated with a different key
-◦ each resource is encrypted with a different key
-◦ a token tu,r is generated and published for each permission hu, ri
+• Naive solution:
+- each user is associated with a different key;
+- each resource is encrypted with a different key;
+- a token tu,r is generated and published for each permission hu, ri-
 
-=⇒ producing and managing a token for each single permission
-can be unfeasible in practice
-• Exploiting acls and user groups
-◦ group users with the same access privileges
-◦ encrypt each resource with the key associated with the set of users
-that can access it
+$\to$ producing and managing a token for each single permission can be unfeasible in practice.
 
-Translating A into E – 2
-• It is possible to create an encryption policy graph by exploiting the
-hierarchy among sets of users induced by the partial order
-relationship based on set containment (⊆)
+Exploiting acls and user groups:
+- group users with the same access privileges;
+- encrypt each resource with the key associated with the set of users that can access it.
+
+slide authorization policy example
+
+r4 e r5 sono uguali (hanno la stessa acl) e quindi non serve crittarle diversamente
+
+It is possible to create an encryption policy graph by exploiting the hierarchy among sets of users induced by the partial order relationship based on set containment (⊆)
 • If the system has a large number of users, the encryption policy
 has a large number of tokens and keys (2|U | − 1)
 
