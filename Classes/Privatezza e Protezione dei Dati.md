@@ -2431,10 +2431,10 @@ It obviusly yield a constant false positive probability, which theoretically con
 ### Integrity of outsourced data
 Two aspects:
 - **integrity in storage**: data must be protected against improper modiﬁcations $\to$ unauthorized updates to the data must be detected;
-- **Integrity in query computation**: query results must be correct and complete $\to$ server’s misbehavior in query evaluation must be detected.
+- **integrity in query computation**: query results must be correct and complete $\to$ server’s misbehavior in query evaluation must be detected.
 
 #### Integrity in storage
-Data integrity in storage relies on digital signatures. Signatures are usually computed at tuple level:
+Data integrity in storage relies on **digital signatures**. Signatures are usually computed at tuple level:
 - table and attribute level signatures can be veriﬁed only after downloading the whole table/column;
 - cell level signature causes a high veriﬁcation overhead.
 
@@ -2445,73 +2445,63 @@ The **veriﬁcation cost** grows linearly with the number of tuples in the query
 ## Selective Encryption and Over Encryption
 ### Selective information sharing
 Different users might need to enjoy different views on the outsourced data. Enforcement of the access control policy requires the data owner to mediate access requests $\to$ impractical (if not inapplicable).<br />
-Authorization enforcement may not be delegated to the provider $\to$ data owner should remain in control.
+Authorization enforcement may not be delegated to the provider $\to$ data owner should remain in control. 
 
-#### Selective information sharing: Approaches
-**Attribute-based encryption** (**ABE**): allow derivation of a key only by users who hold certain attributes (based on asymmetric cryptography).
+There are different approaches to the selective information sharing: 
+- **attribute-based encryption** (**ABE**): this approach allows **derivation** of a key (the computation of a key to gain access to an object) only by users who hold certain attributes (based on asymmetric cryptography);
 
-**Selective encryption**: the authorization policy deﬁned by the data owner is translated into an equivalent encryption policy
+slide 57/268
 
-----------------------------------------------------------------
+- **selective encryption**: the authorization policy deﬁned by the data owner is translated into an equivalent encryption policy. Different parts of the datas are encrypted with different keys and giving a user only one of the keys grants him access only to that specific fragment of the datas
 
-### Selective encryption – Scenario
+slide 58/268
+
+This is a typical scenario of selective encryption.
 
 slide 59/268
 
-----------------------------------------------------------------
-
-### Selective encryption
+#### Selective encryption
 Basic idea/desiderata:
 - data themselves need to directly enforce access control;
 - different keys should be used for encrypting data;
 - authorization to access a resource translated into knowledge of the key with which the resource is encrypted;
 - each user is communicated the keys necessary to decrypt the resources she is entailed to access.
 
-#### Authorization policy
-The data owner deﬁnes a **discretionary access control** (authorization) policy to regulate read access to the resources. An authorization policy $\mathcal{A}$ is a set of permissions of the form $\langle \text{ user, resource } \rangle$. It can be represented as:
+##### Authorization policy
+The data owner deﬁnes a **discretionary access control** (authorization) policy to regulate read access to the resources. An authorization policy $\mathcal{A}$ is a set of permissions of the form $\langle \text{ user, resource } \rangle$ (because only the owner can write and the user can only read, therefore it is useless to specify the operation to apply on the data). It can be represented as:
 - an access matrix;
 - a directed and bipartite [[Grafo|graph]] having a vertex for each user $u$ and for each resource $r$, and an edge from $u$ to $r$ for each permission $\langle u, r \rangle$.
 
 The basic idea is that different ACLs implies different encryption keys.
 
-An example of an authorization policy.
+An example of an authorization policy and its representations.
 
 slide 62/268
 
-Encryption policy
-• The authorization policy deﬁned by the data owner is translated into an equivalent encryption policy
-• Possible solutions:
-◦ encrypt each resource with a different key and give users the keys for the resources they can access
-− requires each user to manage as many keys as the number of resources she is authorized to access
+##### Encryption policy
+The authorization policy deﬁned by the data owner is translated into an equivalent encryption policy. Possible solutions could be to encrypt each resource with a different key and give users the keys for the resources they can access. Howevere, this approach requires each user to manage as many keys as the number of resources she is authorized to access.<br />
+Alternatively, it is possible to use a **key derivation method** for allowing users to derive from their user keys all the keys that they are entitled to access, which allows limiting to one the key to be released to each user.
 
-◦ use a key derivation method for allowing users to derive from their
-user keys all the keys that they are entitled to access
-+ allows limiting to one the key to be released to each user
+###### Key derivation methods
+This approach is based on a key derivation hierarchy $(\mathcal{K} , \preceq)$:
+- $\mathcal{K}$ is the set of keys in the system;
+- $\preceq$ is the partial order relation deﬁned on $\mathcal{K}$.
 
-Key derivation methods
-• Based on a key derivation hierarchy (K , )
-◦ K is the set of keys in the system
-◦  partial order relation deﬁned on K
+The knowledge of the key of vertex $v_1$ and of a piece of
+information publicly available allows the computation of the key of a lower level vertex $v_2$ such that $v_2 \preceq v_1$.
 
-• The knowledge of the key of vertex v1 and of a piece of
-information publicly available allows the computation of the key of
-a lower level vertex v2 such that v2  v1
-• (K , ) can be graphically represented as a graph with a vertex for
-each x ∈ K and a path from x to y iff y  x
-• Depending on the partial order relation deﬁned on K , the key
-derivation hierarchy can be:
-◦ a chain [S-87]
-◦ a tree [G-80,S-87,S-88]
-◦ a DAG [AT-83,CMW-06,DFM-04,HL-90,HY-03,LWL-89,M-85,SC-02]
+$(\mathcal{K} , \preceq)$ can be graphically represented as a graph with a vertex for each $x \in \mathcal{K}$ and a path from $x$ to $y$ iff $y \preceq x$.
 
-Token-based key derivation methods [AFB-05]
-• Keys are arbitrarily assigned to vertices
-• A public label li is associated with each key ki
-• A piece of public information ti,j , called token, is associated with
-each edge in the hierarchy
-• Given an edge (ki ,kj ), token ti,j is computed as kj ⊕ h(ki , lj ) where
-◦ ⊕ is the n-ary xor operator
-◦ h is a secure hash function
+Depending on the partial order relation deﬁned on $\mathcal{K}$, the key derivation hierarchy can be:
+- a chain;
+- a [[Albero |tree]];
+- a DAG;
+
+###### Token-based key derivation methods
+Keys are arbitrarily assigned to vertices. A public label $l_i$ is associated with each key $k_i$. A piece of public information $t_{i,j}, called token, is associated with
+each edge in the hierarchy. Given an edge $(k_i,k_j)$, token $t_{i,j}$ is computed as $k_j \oplus h(k_i, l_j)$ where:
+- $\oplus$ is the $n$-ary xor operator;
+- $h$ is a secure [[Funzione Hash |hash function]].
 
 • Advantages of tokens:
 ◦ they are public and allow users to derive multiple encryption keys,

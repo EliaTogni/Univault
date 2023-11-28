@@ -113,7 +113,7 @@ la quantità di spazio richiesta è $\mathcal{O}(nm)$.<br />
 ----------------------------------------------------------------
 
 ### Albero Ricoprente ###
-Dato un grafo $G = (V, E)$ non orientato e connesso, un albero ricoprente di $G$ è un sottografo $T \subseteq G$ tale che:
+Dato un grafo $G = (V, E)$ non orientato e connesso, un [[Albero di Copertura |albero ricoprente]] di $G$ è un sottografo $T \subseteq G$ tale che:
 - $T$ è un albero;
 - $T$ contiene tutti i vertici di $G$.
 
