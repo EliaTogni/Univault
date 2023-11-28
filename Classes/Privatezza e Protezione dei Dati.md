@@ -2353,13 +2353,13 @@ $3$-colored undirected **Row-Column-Value** [[Grafo |graph]]:
 - one vertex for every distinct value in a column;
 - an arc connects every value to the column and row(s) in which it appears ($1:1$).
 
-RCV on plaintext values is identical to the one on indexes, as it is possible to notice in the images below. Inference exposure can be measured not by evaluating the frequencies of the values but by evaluating the **automorphisms** of the graph. Not sufﬁcient to count the number of automorphisms:
+RCV on plaintext values is identical to the one on indexes, as it is possible to notice in the images below. Inference exposure can be measured not by evaluating the frequencies of the values but by evaluating the **[[Grafo#Automorfismo |automorphisms]]** of the graph. Not sufﬁcient to count the number of automorphisms:
 - if there are $K$ automorphisms and in $k$ of them the label assigned to $v_i$ is the same, there is a probability of $k/K$ of identifying the value.
 
 An example of DB+DB$^k$.
 
-slide 42/268
-slide 43/268
+![[DB+DBkExample1.png]]
+![[DB+DBkExample2.png]]
 
 ----------------------------------------------------------------
 
@@ -2378,7 +2378,7 @@ For example:
 
 An example of computing the exposure coefﬁcient.
 
-slide 45/268
+![[ComputingTheExposureCoefficientExample.png]]
 
 ----------------------------------------------------------------
 
@@ -2411,7 +2411,7 @@ Search element $x$:
 An example of Bloom ﬁlter.<br />
 Let $l = 10$ and $h = 3$.
 
-slide 50/268
+![[BloomFilterExample.png]]
 
 Insert sun: $H_1(sun)=2$; $H_2(sun)=5$; $H_3(sun)=9$.<br />
 Insert frog: $H_1(frog)=1$; $H_2(frog)=5$; $H_3(frog)=7$.<br />
@@ -2450,15 +2450,15 @@ Authorization enforcement may not be delegated to the provider $\to$ data owner 
 There are different approaches to the selective information sharing: 
 - **attribute-based encryption** (**ABE**): this approach allows **derivation** of a key (the computation of a key to gain access to an object) only by users who hold certain attributes (based on asymmetric cryptography);
 
-slide 57/268
+![[SelectiveInformationSharingApproach1.png]]
 
 - **selective encryption**: the authorization policy deﬁned by the data owner is translated into an equivalent encryption policy. Different parts of the datas are encrypted with different keys and giving a user only one of the keys grants him access only to that specific fragment of the datas
 
-slide 58/268
+![[SelectiveInformationSharingApproach2.png]]
 
 This is a typical scenario of selective encryption.
 
-slide 59/268
+![[SelectiveEncryptionScenario.png]]
 
 #### Selective encryption
 Basic idea/desiderata:
@@ -2476,7 +2476,7 @@ The basic idea is that different ACLs implies different encryption keys.
 
 An example of an authorization policy and its representations.
 
-slide 62/268
+![[AuthorizationPolicy.png]]
 
 ##### Encryption policy
 The authorization policy deﬁned by the data owner is translated into an equivalent encryption policy. Possible solutions could be to encrypt each resource with a different key and give users the keys for the resources they can access. Howevere, this approach requires each user to manage as many keys as the number of resources she is authorized to access.<br />
@@ -2493,7 +2493,7 @@ information publicly available allows the computation of the key of a lower leve
 $(\mathcal{K} , \preceq)$ can be graphically represented as a graph with a vertex for each $x \in \mathcal{K}$ and a path from $x$ to $y$ iff $y \preceq x$.
 
 Depending on the partial order relation deﬁned on $\mathcal{K}$, the key derivation hierarchy can be:
-- a chain;
+- a [[Grafo#Catena |chain]];
 - a [[Albero |tree]];
 - a direct acyclic [[Grafo |graph]];
 
@@ -2516,7 +2516,7 @@ Relationships between keys through tokens can be represented via a **key and tok
 - a vertex for each pair $\langle k, l \rangle$, where $k \in \mathcal{K}$ is a key and $l \in \mathcal{L}$ the corresponding label;
 - an edge from a vertex $\langle k_i, l_i \rangle$ to vertex $\langle k_j, l_j \rangle$ if there exists a token $t_{i,j} \in \mathcal{T}$ allowing the derivation of $k_j$ from $k_i$.
 
-slide 66/268
+![[KeyAndTokenGraph.png]]
 
 ----------------------------------------------------------------
 
@@ -2544,7 +2544,8 @@ The encryption policy can be represented via a graph by extending the key and to
 
 An example of an encryption policy graph.
 
-slide 69/268
+![[EncryptionPolicyGraph1.png]]
+![[EncryptionPolicyGraph2.png]]
 
 - user $A$ can access $\{r_1, r_2\}$;
 - user $B$ can access $\{r_2, r_3\}$;
@@ -2578,7 +2579,7 @@ r4 e r5 sono uguali (hanno la stessa acl) e quindi non serve crittarle diversame
 
 It is possible to create an encryption policy graph by exploiting the hierarchy among sets of users induced by the partial order relationship based on set containment ($\subseteq$). If the system has a large number of users, the encryption policy has a large number of tokens and keys ( at most $2^{\vert \mathcal{U} \vert } − 1$) (we subtract the empty set) $\to$ inefﬁcient key derivation.
 
-slide 72/268
+![[TranslatingAIntoE.png]]
 
 ----------------------------------------------------------------
 
@@ -2603,12 +2604,13 @@ Start from an authorization policy $\mathcal{A}$:
 
 An example of a key and token graph.
 
-slide 75/268
+![[KeyAndTokenGraphExample.png]]
 
+----------------------------------------------------------------
 
-Key assignment and encryption schema φ and catalog
+###### Key assignment and encryption schema $\phi$ and catalog
 
-slide 77/268
+![[KeyAssignment.png]]
 
 ----------------------------------------------------------------
 
@@ -2637,29 +2639,20 @@ To access a resource a user must know both the corresponding BEL and SEL keys. G
 
 ----------------------------------------------------------------
 
-BEL and SEL structures
-• BEL. At the BEL level we distinguish two kinds of keys: access
-(ka ) and derivation (k) keys
-◦ each node in the BEL is associated with a pair of keys (k, ka ), where
-ka = h(k), with h a one-way hash function, and a pair of labels (l, la )
-◦ key k (with label l) is used for derivation purpose
-◦ key ka (with label la ) is used to encrypt the resources associated
-with the node
-◦ this distinction separates the two roles associated with keys:
-enabling key derivation and enabling resource access
+###### BEL and SEL structures
+- **BEL**: At the BEL level we distinguish two kinds of keys: access (ka ) and derivation (k) keys:
+	- each node in the BEL is associated with a pair of keys (k, ka ), where ka = h(k), with h a one-way hash function, and a pair of labels (l, la );
+	- key k (with label l) is used for derivation purpose;
+	- key ka (with label la ) is used to encrypt the resources associated with the node;
+	- this distinction separates the two roles associated with keys: enabling key derivation and enabling resource access
+- SEL: The SEL level is characterized by an encryption policy deﬁned as previously illustrated.
 
-• SEL. The SEL level is characterized by an encryption policy
-deﬁned as previously illustrated
+Full_SEL and Delta_SEL
+• Full_SEL: starts from a SEL identical to the BEL and keeps the SEL always updated to represent the current policy
 
-Full_SEL and Delta_SEL
-• Full_SEL: starts from a SEL identical to the BEL and keeps the
-SEL always updated to represent the current policy
+• Delta_SEL: starts from an empty SEL and adds elements to it as the policy evolves, such that the pair BEL-SEL represents the policy
 
-• Delta_SEL: starts from an empty SEL and adds elements to it as
-the policy evolves, such that the pair BEL-SEL represents the
-policy
-
-Running example for over-encryption
+Running example for over-encryption
 Access matrix
 A
 B

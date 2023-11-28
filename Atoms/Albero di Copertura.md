@@ -6,4 +6,8 @@ Si supponga che ogni arco $e$ di $G$ abbia associato un peso $\omega(e)$. In mod
 
 $$\omega\Big(T\Big) = \sum_{e \in T}\omega(e)$$
 
+#### Minimo Albero Ricoprente
+Dato un grafo $G = (V, E)$ non orientato, connesso e pesato sugli archi, un **minimo albero ricoprente** di $G$ è un albero ricoprente di $G$ di costo minimo.<br />
+
+
 ----------------------------------------------------------------
