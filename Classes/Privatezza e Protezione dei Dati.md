@@ -2512,58 +2512,46 @@ Advantages of tokens:
 ----------------------------------------------------------------
 
 ###### Key and token graph
-Relationships between keys through tokens can be represented via a key and token graph:
-- a vertex for each pair hk, li, where k ∈ K is a key and l ∈ L the corresponding label;
-- an edge from a vertex hki , li i to vertex hkj , lj i if there exists a token ti,j ∈ T allowing the derivation of kj from ki.
+Relationships between keys through tokens can be represented via a **key and token graph**:
+- a vertex for each pair $\langle k, l \rangle$, where $k \in \mathcal{K}$ is a key and $l \in \mathcal{L}$ the corresponding label;
+- an edge from a vertex $\langle k_i, l_i \rangle$ to vertex $\langle k_j, l_j \rangle$ if there exists a token $t_{i,j} \in \mathcal{T}$ allowing the derivation of $k_j$ from $k_i$.
 
 slide 66/268
 
-Key assignment and encryption schema
-Translation of the authorization policy into an encryption policy:
-• Starting assumptions (desiderata):
-◦ each user can be released only a single key
-◦ each resource is encrypted only once (with a single key)
+----------------------------------------------------------------
 
-• Function φ :U ∪ R → L describes:
-◦ the association between a user and (the label of) her key
-◦ the association between a resource and (the label of) the key used
-for encrypting it.
+###### Key assignment and encryption schema
+We want a translation of the authorization policy into an encryption policy. The starting assumptions (desiderata):
+- each user can be released only a single key:
+- each resource is encrypted only once (with a single key).
 
-Formal deﬁnition of encryption policy
-• An encryption policy over users U and resources R, denoted E ,
-is a 6-tuple hU ,R,K ,L ,φ ,T i, where:
-◦ K is the set of keys deﬁned in the system and L is the set of
-corresponding labels
-◦ φ is a key assignment and encryption schema
-◦ T is a set of tokens deﬁned on K and L
+Function $\phi$ :$\mathcal{U} \cup \ \mathcal{R} \to \mathcal{L}$ describes:
+- the association between a user and (the label of) her key;
+- the association between a resource and (the label of) the key used for encrypting it.
 
-• The encryption policy can be represented via a graph by extending the key and token graph to include:
-◦ a vertex for each user and each resource
-◦ an edge from each user vertex u to the vertex hk, li such that φ (u)=l
-◦ an edge from each vertex hk, li to each resource vertex r such that
-φ (r) = l
+----------------------------------------------------------------
 
-Encryption policy graph – Example
+###### Formal deﬁnition of encryption policy
+An encryption policy over users $\mathcal{U}$ and resources $\mathcal{R}$, denoted $\mathcal{E}$ , is a $6$-tuple $\langle \mathcal{U}, \mathcal{R}, \mathcal{K}, \mathcal{L}, \phi, \mathcal{T} \rangle$, where:
+- $\mathcal{K}$ is the set of keys deﬁned in the system and $\mathcal{L}$ is the set of corresponding labels;
+- $\phi$ is a key assignment and encryption schema;
+- $\mathcal{T}$ is a set of tokens deﬁned on $\mathcal{K}$ and $\mathcal{L}$.
 
+The encryption policy can be represented via a graph by extending the key and token graph to include:
+- a vertex for each user and each resource;
+- an edge from each user vertex $u$ to the vertex $\langle k, l \rangle$ such that $\phi (u)=l$;
+- an edge from each vertex $\langle k, l \rangle$ to each resource vertex $r$ such that $\phi (r) = l$.
 
-• user A can access {r1 , r2 }
-• user B can access {r2 , r3 }
-• user C can access {r2 }
+An example of an encryption policy graph.
 
-k10 , l10
+slide 69/268
 
-k9 , l9
-
-r2
-
-r3
-
-φ
-token
-
-• user D can access {r1 , r2 , r3 }
-• user E can access {r1 , r2 , r3 }
-• user F can access {r3 }
+- user $A$ can access $\{r_1, r_2\}$;
+- user $B$ can access $\{r_2, r_3\}$;
+- user $C$ can access $\{r_2\}$;
+- user $D$ can access $\{r_1, r_2, r_3\}$
+- user $E$ can access $\{r_1, r_2, r_3\}$
+- user $F$ can access $\{r_3\}$
 
 Policy transformation
 Goal: translate an authorization policy A into an equivalent encryption policy E .
@@ -2596,379 +2584,61 @@ slide authorization policy example
 r4 e r5 sono uguali (hanno la stessa acl) e quindi non serve crittarle diversamente
 
 It is possible to create an encryption policy graph by exploiting the hierarchy among sets of users induced by the partial order relationship based on set containment (⊆)
-• If the system has a large number of users, the encryption policy
-has a large number of tokens and keys (2|U | − 1)
+• If the system has a large number of users, the encryption policy has a large number of tokens and keys ( at most 2|U | − 1) (we subtract the empty set).
 
-=⇒ inefﬁcient key derivation
-v5 [AB]
+$\to$ inefﬁcient key derivation
 
-r1
+Minimum encryption policy
+Observation: user groups that do not correspond to any acl do not need to have a key.
 
-A
+Goal: compute a minimum encryption policy, equivalent to a given authorization policy, that minimize the number of tokens to be maintained by the server.
 
-v1 [A]
+Solution: heuristic algorithm based on the observation that:
+- only vertices associated with user groups corresponding to actual acls need to be associated with a key;
+- the encryption policy graph may include only the vertices that are needed to enforce a given authorization policy, connecting them to ensure a correct key derivability;
+- other vertices can be included if they are useful for reducing the size of the catalog.
 
-v6 [AC]
-
-v11 [ABC]
-
-B
-
-v2 [B]
-
-v7 [AD]
-
-v12 [ABD]
-
-C
-
-v3 [C]
-
-v8 [BC]
-
-v13 [ACD]
-
-r4
-
-D
-
-v4 [D]
-
-v9 [BD]
-
-v14 [BCD]
-
-r5
-
-r2
-
-v15 [ABCD]
-
-r3
-
-v10 [CD]
-
-
-Minimum encryption policy
-• Observation: user groups that do not correspond to any acl do not
-need to have a key
-• Goal: compute a minimum encryption policy, equivalent to a given
-authorization policy, that minimize the number of tokens to be
-maintained by the server
-• Solution: heuristic algorithm based on the observation that:
-◦ only vertices associated with user groups corresponding to actual
-acls need to be associated with a key
-◦ the encryption policy graph may include only the vertices that are
-needed to enforce a given authorization policy, connecting them to
-ensure a correct key derivability
-◦ other vertices can be included if they are useful for reducing the
-size of the catalog
-
-Construction of the key and token graph
+Construction of the key and token graph
 Start from an authorization policy A
-1. Create a vertex/key for each user and for each non-singleton acl
-(initialization)
-2. For each vertex v corresponding to a non-singleton acl, ﬁnd a
-cover without redundancies (covering)
+1. Create a vertex/key for each user and for each non-singleton acl (initialization)
+2. For each vertex v corresponding to a non-singleton acl, ﬁnd a cover without redundancies (covering)
 - for each user u in v.acl, ﬁnd an ancestor v′ of v with u ∈ v′ .acl
 
 3. Factorize common ancestors (factorization)
 
-Key and token graph – Example
-A
-B
-C
-D
+An example of a key and token graph.
 
-r1
-0
-1
-0
-0
+slide 
 
-r2
-1
-1
-1
-0
 
-r3
-0
-1
-1
-1
+Key assignment and encryption schema φ and catalog
 
-r4
-1
-1
-1
-1
+slide
 
-r5
-1
-1
-1
-1
-
-Initialization
-v1 [A]
-
-v5 [ABC]
-
-v2 [B]
-
-v3 [C]
-
-v4 [D]
-
-v7 [ABCD]
-
-v6 [BCD]
-
-Key and token graph – Example
-A
-B
-C
-D
-Initialization
-v1 [A]
-
-v5 [ABC]
-
-r3
-0
-1
-1
-1
-
-r4
-1
-1
-1
-1
-
-r5
-1
-1
-1
-1
-
-v5 [ABC]
-
-v2 [B]
-
-v3 [C]
-
-v4 [D]
-
-r2
-1
-1
-1
-0
-
-Covering
-v1 [A]
-
-v2 [B]
-
-r1
-0
-1
-0
-0
-
-v7 [ABCD]
-
-v6 [BCD]
-
-v3 [C]
-
-v4 [D]
-
-v7 [ABCD]
-
-v6 [BCD]
-
-Key and token graph – Example
-A
-B
-C
-D
-Initialization
-v1 [A]
-
-v5 [ABC]
-
-r3
-0
-1
-1
-1
-
-r4
-1
-1
-1
-1
-
-v7 [ABCD]
-
-v6 [BCD]
-
-r5
-1
-1
-1
-1
-Factorization
-
-v5 [ABC]
-
-v1 [A]
-
-v2 [B]
-
-v3 [C]
-
-v4 [D]
-
-r2
-1
-1
-1
-0
-
-Covering
-v1 [A]
-
-v2 [B]
-
-r1
-0
-1
-0
-0
-
-v2 [B]
-
-v3 [C]
-
-v4 [D]
-
-v7 [ABCD]
-
-v6 [BCD]
-
-v5 [ABC]
-
-v8 [BC]
-
-v3 [C]
-
-v4 [D]
-
-v7 [ABCD]
-
-v6 [BCD]
-
-75/268
-
-Key assignment and encryption schema φ and catalog
-v1 [A]
-
-v2 [B]
-
-v5 [ABC]
-
-v8 [BC]
-
-v3 [C]
-
-v7 [ABCD]
-
-v4 [D]
-
-u
-A
-B
-C
-D
-
-φ (u)
-v1 .l
-v2 .l
-v3 .l
-v4 .l
-
-r
-r1
-r2
-r3
-r4 ,r5
-
-v6 [BCD]
-
-φ (r)
-v2 .l
-v5 .l
-v6 .l
-v7 .l
-
-source destination token_value
-v1 .l
-v5 .l
-t1,5
-v8 .l
-t2,8
-v2 .l
-v3 .l
-v8 .l
-t3,8
-v6 .l
-t4,6
-v4 .l
-v7 .l
-t5,7
-v5 .l
-v7 .l
-t6,7
-v6 .l
-v8 .l
-v5 .l
-t8,5
-v6 .l
-t8,6
-v8 .l
-
-Multiple owners and policy changes
-• When multiple owners need to share their data, the use of a key
-agreement method allows two data owners to share a secret key
-for subsequent cryptographic use [DFJPPS-10]
-• When authorizations dynamically change, the data owner needs
-to:
+Multiple owners and policy changes
+• When multiple owners need to share their data, the use of a key agreement method allows two data owners to share a secret key for subsequent cryptographic use [DFJPPS-10]
+• When authorizations dynamically change, the data owner needs to:
 ◦ download the resource from the server
 ◦ create a new key for the resource
 ◦ decrypt the resource with the old key
 ◦ re-encrypt the resource with the new key
-◦ upload the resource to the server and communicate the public
-catalog updates
+◦ upload the resource to the server and communicate the public catalog updates
 
 =⇒ inefﬁcient
 • Possible solution: over-encryption
 
-Over-encryption [DFJPS-07]
+Over-encryption
 • Resources are encrypted twice
-◦ by the owner, with a key shared with the users and unknown to the
-server (Base Encryption Layer - BEL level)
+◦ by the owner, with a key shared with the users and unknown to the server (Base Encryption Layer - BEL level)
 ◦ by the server, with a key shared with authorized users
 (Surface Encryption Layer - SEL level)
 
-• To access a resource a user must know both the corresponding
-BEL and SEL keys
+# QUI
+
+• To access a resource a user must know both the corresponding BEL and SEL keys
 • Grant and revoke operations may require
-◦ the addition of new tokens at the BEL level
-◦ the update of the SEL level according to the operations performed
+◦ the addition of new tokens at the BEL level;
+◦ the update of the SEL level according to the operations performed.
 
 BEL and SEL structures
 • BEL. At the BEL level we distinguish two kinds of keys: access
@@ -5039,8 +4709,6 @@ locked
 
 r’
 bel_locked
-
-# QUI
 
 Collusion in the Full_SEL
 • Collusion among users:
