@@ -25,21 +25,28 @@
       "query": "path:Books  ",
       "color": {
         "a": 1,
-        "rgb": 11206400
+        "rgb": 65403
       }
     },
     {
       "query": "path:Videos  ",
       "color": {
         "a": 1,
-        "rgb": 2852976
+        "rgb": 1958603
       }
     },
     {
       "query": "path:Lexicon  ",
       "color": {
         "a": 1,
-        "rgb": 2523709
+        "rgb": 1100607
+      }
+    },
+    {
+      "query": "path:Atoms  ",
+      "color": {
+        "a": 1,
+        "rgb": 16777215
       }
     }
   ],
@@ -53,6 +60,6 @@
   "repelStrength": 12.2864491674563,
   "linkStrength": 0.657641803167727,
   "linkDistance": 309,
-  "scale": 0.30033874511718667,
+  "scale": 0.3568207871584238,
   "close": true
 }

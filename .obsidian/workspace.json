@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "04545b90e63d016e",
+        "id": "95274a6c80a2dd83",
         "type": "tabs",
         "children": [
           {
-            "id": "31ff7b0b4a2c3049",
+            "id": "156ae2c10866d068",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -18,21 +18,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "6f4eb49657bd6baa",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Videos/Set SIX Alarms. It'll Change Your Life..md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -98,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Videos/Set SIX Alarms. It'll Change Your Life..md",
+                "file": "Classes/Privatezza e Protezione dei Dati.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,11 +114,13 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "6f4eb49657bd6baa",
+  "active": "156ae2c10866d068",
   "lastOpenFiles": [
-    "Videos/L'informatica è donna!.md",
-    "Videos/Set SIX Alarms. It'll Change Your Life..md",
+    "Classes/Statistica e Probabilità.md",
+    "Atoms",
     "Classes/Privatezza e Protezione dei Dati.md",
+    "Videos/Set SIX Alarms. It'll Change Your Life..md",
+    "Videos/L'informatica è donna!.md",
     "Images/Freq+DBkExposureComputationExample.png",
     "Images/Freq+DBkExample.png",
     "Images/ExposureCoefficientComputation.png",
@@ -142,29 +131,28 @@
     "Images/MappingConditions.png",
     "Images/PartitionBasedIndexExample.png",
     "Classes/Statistical Methods for Machine Learning.md",
-    "Funzione Hash.md",
+    "Atoms/Funzione Hash.md",
     "Images/IndexedForQueriesFlattened.png",
     "Classes/Informatica Teorica.md",
-    "Agent-Based Simulation.md",
+    "Atoms/Agent-Based Simulation.md",
     "Templates/Article Template.md",
     "Templates/Video Template.md",
     "Templates/Lexicon Template.md",
     "Templates/Book Template.md",
     "Lexicon/Edificante.md",
-    "Programmazione Dinamica.md",
+    "Atoms/Programmazione Dinamica.md",
     "programmazione Dimanica.md",
     "Lexicon/Sicumera.md",
-    "CountingSort.md",
+    "Atoms/CountingSort.md",
     "Lexicon/Refolo.md",
-    "Data Mining.md",
-    "Dizionario.md",
-    "B-Albero.md",
-    "Albero Binario.md",
-    "Albero di Decisione.md",
-    "Albero di Copertura.md",
-    "Grafo.md",
-    "Struttura Dati.md",
-    "Albero AVL.md",
+    "Atoms/Data Mining.md",
+    "Atoms/Dizionario.md",
+    "Atoms/B-Albero.md",
+    "Atoms/Albero Binario.md",
+    "Atoms/Albero di Decisione.md",
+    "Atoms/Albero di Copertura.md",
+    "Atoms/Grafo.md",
+    "Atoms/Struttura Dati.md",
     "Lexicon",
     "Videos",
     "Classes",
@@ -174,7 +162,6 @@
     "art_4.pdf",
     "Images/find largest r - Cerca con Google_files/app.html",
     "Images/find largest r - Cerca con Google_files/RotateCookiesPage.html",
-    "Images/find largest r - Cerca con Google_files/a.html",
     "Untitled.canvas"
   ]
 }

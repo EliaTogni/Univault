@@ -2351,9 +2351,9 @@ $3$-colored undirected **Row-Column-Value** [[Grafo |graph]]:
 - one vertex of color “column” for every attribute;
 - one vertex of color “row” for every tuple;
 - one vertex for every distinct value in a column;
-- an arc connects every value to the column and row(s) in which it appears.
+- an arc connects every value to the column and row(s) in which it appears ($1:1$).
 
-RCV on plaintext values is identical to the one on indexes. Inference exposure can be measured by evaluating the **automorphisms** of the graph. Not sufﬁcient to count the number of automorphisms:
+RCV on plaintext values is identical to the one on indexes, as it is possible to notice in the images below. Inference exposure can be measured not by evaluating the frequencies of the values but by evaluating the **automorphisms** of the graph. Not sufﬁcient to count the number of automorphisms:
 - if there are $K$ automorphisms and in $k$ of them the label assigned to $v_i$ is the same, there is a probability of $k/K$ of identifying the value.
 
 An example of DB+DB$^k$.
@@ -2363,10 +2363,11 @@ slide 43/268
 
 ----------------------------------------------------------------
 
-##### Computing the exposure coefﬁcient
-The set of automorphisms constitutes a group described by the coarsest equitable partition of the vertices. Each subset appearing in the partition contains vertices that can be substituted one for the other in an automorphism
+###### Computing the exposure coefﬁcient
+The set of automorphisms constitutes a group described by the coarsest **equitable partition** of the vertices. Each subset appearing in the partition contains vertices that can be substituted one for the other in an automorphism.
 
-**Nauty algorithm**: iteratively derives the partition.<br />
+**Nauty algorithm**: iteratively derives the partition.
+
 Probability of identifying a vertex in partition $C: 1/ \vert C \vert$.
 Exposure with equitable partition of $n$ elements over a total number of $m: n/m$
 
@@ -2399,7 +2400,7 @@ Different vertexes of the plaintext RCV-graph may collapse to the same encrypted
 A **Bloom ﬁlter** is at the basis of the construction of some indexing techniques. It is an efﬁcient method to encode set membership:
 - set of $n$ elements ($n$ is large);
 - vector of $l$ bits ($l$ is small);
-- $h$ independent hash functions $H_i : \{0, 1\}^* \to [1, l]$.
+- $h$ independent [[Funzione Hash |hash functions]] $H_i : \{0, 1\}^* \to [1, l]$.
 
 Insert element $x$:
 - Sets to $1$ the bit values at index positions $H_1(x), H_2(x), ..., H_h (x)$.
@@ -2414,19 +2415,15 @@ slide 50/268
 
 Insert sun: $H_1(sun)=2$; $H_2(sun)=5$; $H_3(sun)=9$.<br />
 Insert frog: $H_1(frog)=1$; $H_2(frog)=5$; $H_3(frog)=7$.<br />
-Search dog: $H_1(dog)=2$; H_2(dog)=5$; H_3(dog)=10$.<br />
+Search dog: $H_1(dog)=2$; $H_2(dog)=5$; $H_3(dog)=10$.<br />
 $\to$ No.
 Search car: $H_1(frog)=1$; $H_2(frog)=5$; $H_3(frog)=9$.<br />
 $\to$ maybe Yes; false positive!
 
 ### Bloom ﬁlter – Properties
-Generalization of hashing (Bloom ﬁlter with one hash function is equivalent to ordinary hashing):
-- space efﬁcient (roughly ten bit for every element in the dictionary with $1\%$ error);
-- elements cannot be removed.
+It is a generalization of hashing (Bloom ﬁlter with one hash function is equivalent to ordinary hashing) and it is space efﬁcient (roughly ten bit for every element in the dictionary with $1\%$ error). However, elements cannot be removed.
 
-It yield a constant false positive probability:
-- theoretically considered not acceptable;
-- acceptable in practical applications as ﬁne price to pay for space efﬁciency.
+It obviusly yield a constant false positive probability, which theoretically considered not acceptable but becomes acceptable in practical applications as it is  a ﬁne price to pay for having space efﬁciency. Notice that this technique cannot yield false negative and also that deletion cannot be implemented in this technique.
 
 ----------------------------------------------------------------
 
