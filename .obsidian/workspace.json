@@ -11,15 +11,24 @@
             "id": "156ae2c10866d068",
             "type": "leaf",
             "state": {
+              "type": "graph",
+              "state": {}
+            }
+          },
+          {
+            "id": "ac700348cc83b7c8",
+            "type": "leaf",
+            "state": {
               "type": "markdown",
               "state": {
-                "file": "Classes/Privatezza e Protezione dei Dati.md",
+                "file": "Videos/The Unfair Advantage Of The 60 Second Procrastination Rule.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -69,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -86,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Privatezza e Protezione dei Dati.md",
+                "file": "Videos/The Unfair Advantage Of The 60 Second Procrastination Rule.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,8 +123,11 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "156ae2c10866d068",
+  "active": "ac700348cc83b7c8",
   "lastOpenFiles": [
+    "Videos/The Unfair Advantage Of The 60 Second Procrastination Rule.md",
+    "Classes/Privatezza e Protezione dei Dati.md",
+    "Books/Leggere, scrivere, argomentare.md",
     "Images/KeyAssignment.png",
     "Images/KeyAndTokenGraphExample.png",
     "Images/TranslatingAIntoE.png",
@@ -127,8 +138,6 @@
     "Images/SelectiveEncryptionScenario.png",
     "Images/SelectiveInformationSharingApproach2.png",
     "Images/SelectiveInformationSharingApproach1.png",
-    "Classes/Privatezza e Protezione dei Dati.md",
-    "Images/BloomFilterExample.png",
     "Atoms/Grafo.md",
     "Atoms/Albero di Copertura.md",
     "Atoms/Albero di Decisione.md",
@@ -153,7 +162,6 @@
     "Atoms/Data Mining.md",
     "Atoms/Dizionario.md",
     "Atoms/B-Albero.md",
-    "Atoms/Albero Binario.md",
     "Lexicon",
     "Videos",
     "Classes",
