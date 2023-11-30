@@ -2123,7 +2123,7 @@ It is possible to use actual value or coding as indexes, because they are simple
 
 ![[IndexesForQueriesDirect.png]]
 
-Technically, it is not advisable to use the actual value as index but, in case the data is not sensible and it does not leak informations, it becomes possible to utilize it.
+Technically, it is not advisable to use the actual value as index but, in case the data is not sensible and it does not leak informations (like an identifier does), it becomes possible to utilize it.
 
 ----------------------------------------------------------------
 
@@ -2135,7 +2135,7 @@ The term **bucket** let suppose that there will be **collisions**. We want to ha
 ----------------------------------------------------------------
 
 #### Indexes for queries: Flattened (1:n)
-The use of flat indexes decreases exposure to inference attacks but remains vulnerabile to dynamic observations.
+A plaintext value can be mapped to $n$ indexes, e.g., the three occurrences of _Asthma_ in the example below are mapped to three different indexes. The use of flat indexes decreases exposure to inference attacks but remains vulnerabile to dynamic observations (because every time the user needs to access the value _Asthma_, he will be obliged to ask every time the same indexes).
 
 ![[IndexedForQueriesFlattened.png]]
 
@@ -2165,11 +2165,12 @@ The allowed operations for op include $\{=, <, >, \leq, \geq\}$.
 ----------------------
 
 ###### Mapping conditions $Map_{cond}$
+To map the conditions of a query using the partition-based index, we proceed as follows:
 - $A_i = v$: the mapping is deﬁned as:
 
 $$Map_{cond} (A_i = v) \to I_i =Map_{A_i} (v)$$
-
-Example:
+ 
+ For example, to map the condition $Balance = 100$ of a query, we map it into $I_B = \mu$:
 
 $$Map_{cond} (Balance = 100) \to I_{Balance} = Map_{Balance} (100) = \mu$$
 
@@ -2188,9 +2189,9 @@ Example:
 
 ![[MappingConditions.png]]
 
-$$ Map_{cond} (Balance=Benefit) \to (I_{Balance} = \mu \wedge I_{Benefit} = \gamma)
-\vee (IBalance = \kappa \wedge IBenefit =gamma )
-∨ (IBalance =\eta \wedge IBenefit = \alpha )
+$$ Map_{cond} (Balance=Benefit) \to (I_{Balance} = \mu \wedge I_{Benefit} = \gamma)$$
+$$\vee (IBalance = \kappa \wedge IBenefit =\gamma )$$
+$$∨ (IBalance =\eta \wedge IBenefit = \alpha )
 ∨ (IBalance = \theta \wedge IBenefit =\alpha )$$
 
 - $A_i < A_j$: the mapping depends on whether or not the mapping functions $Map_{A_i}$ and $Map_{A_j}$ are order-preserving or random.
@@ -2238,8 +2239,8 @@ An example of encrypted relation with hashing.
 
 ###### Query conditions supported by the hash-based index
 Support queries where conditions are boolean formulas over terms of the form:
-- $Attribute = Value$ ($I_{Attribute} = H_{Value}$);
-- $Attribute1 = Attribute2$, if $Attribute1$ and $Attribute2$ are indexed with the same hash function.
+- $Attribute = Value$ (mapping them into the form $I_{Attribute} = h_{Value}$);
+- $Attribute1 = Attribute2$, if $Attribute1$ and $Attribute2$ are indexed with the same hash function (because if the hash function is deterministic, hashing the same value twice will result into the same hash).
 
 It does not support range queries (a solution similar to the one adopted for partition-based methods is not viable) because colliding values in general are not contiguous in the plaintext domain.
 
