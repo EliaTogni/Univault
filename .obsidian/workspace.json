@@ -8,27 +8,30 @@
         "type": "tabs",
         "children": [
           {
-            "id": "156ae2c10866d068",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
-            }
-          },
-          {
             "id": "ac700348cc83b7c8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Videos/The Unfair Advantage Of The 60 Second Procrastination Rule.md",
+                "file": "Templates/Article Template.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "ba3d21efdd238d57",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Articles/Image Classification with Classic and Deep Learning Techniques.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -94,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Videos/The Unfair Advantage Of The 60 Second Procrastination Rule.md",
+                "file": "Templates/Article Template.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -125,6 +128,7 @@
   },
   "active": "ac700348cc83b7c8",
   "lastOpenFiles": [
+    "Articles/Image Classification with Classic and Deep Learning Techniques.md",
     "Videos/The Unfair Advantage Of The 60 Second Procrastination Rule.md",
     "Classes/Privatezza e Protezione dei Dati.md",
     "Books/Leggere, scrivere, argomentare.md",
@@ -161,7 +165,6 @@
     "Lexicon/Refolo.md",
     "Atoms/Data Mining.md",
     "Atoms/Dizionario.md",
-    "Atoms/B-Albero.md",
     "Lexicon",
     "Videos",
     "Classes",
