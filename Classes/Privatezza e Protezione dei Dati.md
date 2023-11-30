@@ -2251,11 +2251,11 @@ Query translation works like in the partition-based method.
 #### Interval-based queries
 - **Order-preserving indexing techniques**: support interval-based queries but expose to inference. Comparing the ordered sequences of plaintext and indexes would lead to reconstruct the correspondence;
 - **Non order-preserving techniques**: data are not exposed to inference but interval-based queries are not supported;
-- **DBMSs support interval-based queries using B+-trees**, but the $B+$-tree deﬁned by the server on indexes is of no use. Possible solution:
+- **DBMSs support interval-based queries using [[B-Albero |B+-trees]]** (for each node $n$, the values in the left subtree are smaller than the value in $n$ and the values in the right subtree are bigger than the value in $n$.), but the $B+$-tree deﬁned by the server on indexes is of no use. Possible solution:
 	- calculate the nodes in the $B+$-tree at the client and encrypt each node as a whole at the server;
 	- $B+$-tree traversal must be performed at the trusted front-end.
 
-An example of a $B+$-tree.
+An example of a $B+$-tree. In a $B+$-tree, the leaves are linked to reduce the search time.
 
 ![[B+-TreeExample1.png]]
 
