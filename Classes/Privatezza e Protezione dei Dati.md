@@ -2086,7 +2086,7 @@ For conﬁdentiality reasons, **Cloud Service Providers** storing data cannot de
 - effective and efﬁcient, that is, does not require to import the whole data every time;
 - should not open the door to inferences.
 
-### Fine-grained access: Approaches
+The most used approaches for granting gine-grained access are:
 - **Keyword-based searches directly on the encrypted data**: supported by speciﬁc cryptographic techniques;
 
 ![[FineGrainedAccessApproach1.png]]
@@ -2141,7 +2141,7 @@ The use of flat indexes decreases exposure to inference attacks but remains vuln
 
 ----------------------------------------------------------------
 
-### Partition-based index
+##### Partition-based index
 Consider an arbitrary plaintext attribute $A_i$ in relational schema $R$, with domain $D_i$. $D_i$ is partitioned in a number of non-overlapping subsets of values, called **partitions**, containing contiguous values. Given a plaintext tuple $t$ in $r$, the value of attribute $A_i$ for $t$ belongs to a partition. The function $ident_{R.A_i} (p_j)$ assigns to each partition $p_j$ of attribute $A_i$ in $R$ an identiﬁer.
 
 The corresponding index value is the unique value associated with the partition to which the plaintext value $t[A_i]$ belongs. $Map_{R.A_i} (v) = ident_{R.A_i} (p_j)$, where $p_j$ is the partition containing $v$. $Map_{R.A_i}$ can be order-preserving or random. This mapping is $n:1$, therefore it has collisions. The index of an attribute is the identifier of the partition in which it falls.
@@ -2164,7 +2164,7 @@ The allowed operations for op include $\{=, <, >, \leq, \geq\}$.
 
 ----------------------
 
-### Mapping conditions $Map_{cond}$
+###### Mapping conditions $Map_{cond}$
 - $A_i = v$: the mapping is deﬁned as:
 
 $$Map_{cond} (A_i = v) \to I_i =Map_{A_i} (v)$$
@@ -2197,7 +2197,7 @@ $$ Map_{cond} (Balance=Benefit) \to (I_{Balance} = \mu \wedge I_{Benefit} = \gam
 
 ----------------------------------------------------------------
 
-#### Query execution
+###### Query execution
 Each query $Q$ on the plaintext $DB$ is translated into:
 - a query $Q_s$ to be executed at the server;
 - a query $Q_c$ to be executed at client on the result.
@@ -2213,7 +2213,7 @@ An example of a query execution.
 
 ----------------------------------------------------------------
 
-### Hash-based index
+##### Hash-based index
 The **hash-based index** is based on the concept of **one-way [[Funzione Hash |hash function]]**. For each attribute $A_i$ in $R$ with domain $D_i$, a secure one-way hash function $h : D_i \to B_i$ is deﬁned, where $B_i$ is the domain of index $I_i$ associated with $A_i$.
 
 Given a plaintext tuple $t$ in $r$, the index value corresponding to $t[A_i]$ is $h(t[A_i])$.
@@ -2236,7 +2236,7 @@ An example of encrypted relation with hashing.
 
 ----------------------------------------------------------------
 
-#### Query conditions supported by the hash-based index
+###### Query conditions supported by the hash-based index
 Support queries where conditions are boolean formulas over terms of the form:
 - $Attribute = Value$ ($I_{Attribute} = H_{Value}$);
 - $Attribute1 = Attribute2$, if $Attribute1$ and $Attribute2$ are indexed with the same hash function.
@@ -2254,19 +2254,17 @@ Query translation works like in the partition-based method.
 	- calculate the nodes in the $B+$-tree at the client and encrypt each node as a whole at the server;
 	- $B+$-tree traversal must be performed at the trusted front-end.
 
-----------------------------------------------------------------
-
-#### $B+$-tree example 
+An example of a $B+$-tree.
 
 ![[B+-TreeExample1.png]]
 
-Query on the plaintext relation
+Query on the plaintext relation.
 
 ```SQL
 SELECT * FROM Accounts WHERE Customer = 'Bob'
 ```
 
-Interaction for query evaluation
+Interaction for query evaluation.
 
 ![[B+-TreeExample2.png]]
 

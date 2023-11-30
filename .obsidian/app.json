@@ -10,5 +10,7 @@
   },
   "promptDelete": false,
   "spellcheck": false,
-  "attachmentFolderPath": "Images"
+  "attachmentFolderPath": "Images",
+  "newFileLocation": "folder",
+  "newFileFolderPath": "Atoms"
 }

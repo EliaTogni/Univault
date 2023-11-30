@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Articles/Image Classification with Classic and Deep Learning Techniques.md",
+                "file": "Classes/Privatezza e Protezione dei Dati.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Articles/Image Classification with Classic and Deep Learning Techniques.md",
+                "file": "Classes/Privatezza e Protezione dei Dati.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,9 +116,9 @@
   },
   "active": "ba3d21efdd238d57",
   "lastOpenFiles": [
-    "Spazio Vettoriale.md",
-    "Templates/Article Template.md",
+    "Atoms/Spazio Vettoriale.md",
     "Articles/Image Classification with Classic and Deep Learning Techniques.md",
+    "Templates/Article Template.md",
     "Videos/The Unfair Advantage Of The 60 Second Procrastination Rule.md",
     "Classes/Privatezza e Protezione dei Dati.md",
     "Books/Leggere, scrivere, argomentare.md",
