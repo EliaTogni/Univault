@@ -3037,34 +3037,20 @@ slide 131/268
 ----------------------------------------------------------------
 
 #### Query execution
-At the logical level: replace R with R1 ⊲⊳ R2
+At the logical level: replace $R$ with $R_1 \bowtie R_2$.
+
 Query plans:
-• Fetch R1 and R2 from the servers and execute the query locally
-◦ extremely expensive
+- fetch $R_1$ and $R_2$ from the servers and execute the query locally but it is extremely expensive;
+- involve servers $S_1$ and $S_2$ in the query evaluation can do the usual optimizations, e.g. push down selections and projections.
+- Selections cannot be pushed down on encrypted attributes different options for executing queries:
+	- send sub-queries to both $S_1$ and $S_2$ in parallel, and join the results at the client;
+	- send only one of the two sub-queries, say to $S_1$; the tuple IDs of the result from $S_1$ are then used to perform a semi-join with the result of the sub-query of $S_2$ to ﬁlter $R_2$.
 
-• Involve servers S1 and S2 in the query evaluation
-◦ can do the usual optimizations, e.g. push down selections and
-projections
-◦ selections cannot be pushed down on encrypted attributes
-◦ different options for executing queries:
-− send sub-queries to both S1 and S2 in parallel, and join the results at
-the client
-− send only one of the two sub-queries, say to S1 ; the tuple IDs of the
-result from S1 are then used to perform a semi-join with the result of
-the sub-query of S2 to ﬁlter R2
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+An example of a query execution.
 
-132/268
+slide 133/268
 
-Query execution – Example
-• F1 : (tid,Name,YoB,SSNk ,Diseasek )
-• F2 : (tid,Job,SSNk ,Diseasek )
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-133/268
-
-Identifying the optimal decomposition – 1
+Identifying the optimal decomposition
 Brute force approach for optimizing wrt workload W:
 • For each possible safe decomposition of R:
 ◦ optimize each query in W for the decomposition
@@ -3074,11 +3060,7 @@ optimized query plans
 • Select the decomposition that has the lowest overall query cost
 Too expensive! =⇒ Exploit afﬁnity matrix
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-134/268
-
-Identifying the optimal decomposition – 2
+
 Adapted afﬁnity matrix M:
 • Mi,j : ‘cost’ of placing cleartext attributes i and j in different
 fragments
@@ -3088,14 +3070,9 @@ Goal: Minimize
 ∑
 i,j:i∈(R1 −E),j∈(R2 −E)
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
 Mi,j + ∑ Mi,i
 i∈E
 
-135/268
-
-Identifying the optimal decomposition – 3
 Optimization problem equivalent to hypergraph coloring problem
 Given relation R, deﬁne graph G(R):
 • attributes are vertexes
@@ -3104,11 +3081,6 @@ Given relation R, deﬁne graph G(R):
 • conﬁdentiality constraints C represent a hypergraph H(R, C ) on
 the same vertexes
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-136/268
-
-Identifying the optimal decomposition – 4
 Find a 2-coloring of the vertexes such that:
 • no hypergraph edge is monochromatic
 • the weight of bichromatic edges is minimized
@@ -3120,11 +3092,7 @@ Different heuristics, all exploiting:
 • approximate min-cuts
 • approximate weighted set cover
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-137/268
-
-Multiple non-linkable fragments – 1
+Multiple non-linkable fragments
 Coupling fragmentation and encryption is interesting and provides
 advantages, but assumption of two non-communicating servers:
 − too strong and difﬁcult to enforce in real environments
@@ -3135,11 +3103,7 @@ fragmenting data, often forcing the use of encryption
 • E1 ∪ C1 = . . . = En ∪ Cn = R
 • C1 ∪ . . . ∪ Cn ⊆ R
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-138/268
-
-Multiple non-linkable fragments – 2
+
 • A fragmentation of R is a set of fragments F = {F1 , . . . , Fm }, where
 Fi ⊆ R, for i = 1, . . . , m
 • A fragmentation F of R correctly enforces a set C of
@@ -3149,11 +3113,6 @@ constraints)
 ◦ ∀Fi , Fj ∈ F , i 6= j : Fi ∩ Fj = 0/ (fragments do not have attributes in
 common)
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-139/268
-
-Multiple non-linkable fragments – 3
 • Each fragment F is mapped into a physical fragment containing:
 ◦ all the attributes in F in the clear
 ◦ all the other attributes of R encrypted (a salt is applied on each
@@ -3167,191 +3126,11 @@ over Fie and:
 − te [enc] = Ek (t[R − Fi ] ⊗ te [salt])
 − te [Aij ] = t[Aij ], for j = 1, . . . , n
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+An example of multiple non-linkable fragments.
 
-140/268
+slide 141/268
 
-Multiple non-linkable fragments – Example
-
-SSN
-t1
-t2
-t3
-t4
-t5
-t6
-t7
-t8
-
-123456789
-234567891
-345678912
-456789123
-567891234
-678912345
-789123456
-891234567
-
-salt enc
-S11
-S12
-S13
-S14
-S15
-S16
-S17
-S18
-
-PATIENTS
-Name
-YoB
-
-Job
-
-Disease
-
-Alice
-Bob
-Carol
-David
-Eva
-Frank
-Gary
-Hilary
-
-Clerk
-Doctor
-Nurse
-Lawyer
-Doctor
-Doctor
-Teacher
-Nurse
-
-Asthma
-Asthma
-Asthma
-Bronchitis
-Bronchitis
-Gastritis
-Gastritis
-Diabetes
-
-F1
-Name YoB
-
-Bd6!l3
-Oij3X.
-9kEf6?
-ker5/2
-C:mE91
-4lDwqz
-me3,op
-zWf4g>
-
-Alice
-Bob
-Carol
-David
-Eva
-Frank
-Gary
-Hilary
-
-1980
-1980
-1970
-1970
-1970
-1960
-1960
-1960
-
-1980
-1980
-1970
-1970
-1970
-1960
-1960
-1960
-
-c0
-c1
-c2
-c3
-
-= {SSN}
-= {Name, Disease}
-= {Name, Job}
-= {Job, Disease}
-
-F2
-salt enc
-S21
-S22
-S23
-S24
-S25
-S26
-S27
-S28
-
-8de6TO
-X’mlE3
-wq.vy0
-nh=I3a
-hh%kj)
-;vf5eS
-e4+YUp
-pgt6eC
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-F3
-Job
-
-salt enc
-
-Clerk
-Doctor
-Nurse
-Lawyer
-Doctor
-Doctor
-Teacher
-Nurse
-
-S31
-S32
-S33
-S34
-S35
-S36
-S37
-S38
-
-ew3)V!
-LkEd69
-w8vd66
-1"qPdd
-(mn2eW
-wD}x1X
-0opAuEl
-Sw@Fez
-
-Disease
-Asthma
-Asthma
-Asthma
-Bronchitis
-Bronchitis
-Gastritis
-Gastritis
-Diabetes
-141/268
-
-Executing queries on fragments
+Executing queries on fragments
 • Every physical fragment of R contains all the attributes of R
 =⇒ no more than one fragment needs to be accessed
 to respond to a query
