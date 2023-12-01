@@ -13,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Videos/Set SIX Alarms. It'll Change Your Life..md",
+                "file": "Articles/Image Classification with Classic and Deep Learning Techniques.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "3e6e61c82b334e92",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Videos/Mastering the Art of Continuous Learning.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Videos/Set SIX Alarms. It'll Change Your Life..md",
+                "file": "Videos/Mastering the Art of Continuous Learning.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,18 +127,21 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "ba3d21efdd238d57",
+  "active": "3e6e61c82b334e92",
   "lastOpenFiles": [
-    "Atoms/Reticolo.md",
+    "Articles/Image Classification with Classic and Deep Learning Techniques.md",
+    "Videos/Mastering the Art of Continuous Learning.md",
+    "Templates/Blog Template.md",
+    "Blogs",
+    "Templates/Article Template.md",
     "Videos/Set SIX Alarms. It'll Change Your Life..md",
+    "Atoms/Reticolo.md",
     "Classes/Privatezza e Protezione dei Dati.md",
     "Atoms/B-Albero.md",
     "Videos/The Unfair Advantage Of The 60 Second Procrastination Rule.md",
     "Videos/L'informatica è donna!.md",
     "Videos/AI influencer are getting filthy rich... let's build one.md",
     "Atoms/Spazio Vettoriale.md",
-    "Articles/Image Classification with Classic and Deep Learning Techniques.md",
-    "Templates/Article Template.md",
     "Books/Leggere, scrivere, argomentare.md",
     "Images/KeyAssignment.png",
     "Images/KeyAndTokenGraphExample.png",
@@ -151,8 +167,6 @@
     "Templates/Book Template.md",
     "Lexicon/Edificante.md",
     "Atoms/Programmazione Dinamica.md",
-    "programmazione Dimanica.md",
-    "Lexicon/Sicumera.md",
     "Lexicon",
     "Videos",
     "Classes",
@@ -161,7 +175,6 @@
     "Imaes",
     "art_4.pdf",
     "Images/find largest r - Cerca con Google_files/app.html",
-    "Images/find largest r - Cerca con Google_files/RotateCookiesPage.html",
     "Untitled.canvas"
   ]
 }
