@@ -20,3 +20,9 @@ La classificazione delle immagini in base al contenuto è uno dei topic più stu
 
 
 ----------------------------------------------------------------
+
+# Related to
+- [[Intelligenza Artificiale]]
+- [[Statistical Methods for Machine Learning]]
+
+----------------------------------------------------------------

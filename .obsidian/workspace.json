@@ -8,31 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "ba3d21efdd238d57",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Articles/Image Classification with Classic and Deep Learning Techniques.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "3e6e61c82b334e92",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Videos/Mastering the Art of Continuous Learning.md",
+                "file": "Classes/Privatezza e Protezione dei Dati.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -82,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -98,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Videos/Mastering the Art of Continuous Learning.md",
+                "file": "Classes/Privatezza e Protezione dei Dati.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -130,19 +118,31 @@
   "active": "3e6e61c82b334e92",
   "lastOpenFiles": [
     "Articles/Image Classification with Classic and Deep Learning Techniques.md",
-    "Videos/Mastering the Art of Continuous Learning.md",
-    "Templates/Blog Template.md",
-    "Blogs",
-    "Templates/Article Template.md",
-    "Videos/Set SIX Alarms. It'll Change Your Life..md",
-    "Atoms/Reticolo.md",
-    "Classes/Privatezza e Protezione dei Dati.md",
-    "Atoms/B-Albero.md",
+    "Books/Leggere, scrivere, argomentare.md",
     "Videos/The Unfair Advantage Of The 60 Second Procrastination Rule.md",
+    "Videos/Set SIX Alarms. It'll Change Your Life..md",
+    "Videos/Mastering the Art of Continuous Learning.md",
     "Videos/L'informatica è donna!.md",
+    "Templates/Video Template.md",
+    "Lexicon/Contenzioso.md",
+    "Lexicon/Corrivo.md",
+    "Lexicon/Edificante.md",
+    "Lexicon/Excerpta.md",
+    "Lexicon/Improperio.md",
+    "Lexicon/Pamphlet.md",
+    "Lexicon/Perigliare.md",
+    "Lexicon/Refolo.md",
+    "Lexicon/Sicumera.md",
+    "Templates/Lexicon Template.md",
+    "Templates/Book Template.md",
+    "Templates/Blog Template.md",
+    "Templates/Article Template.md",
+    "Classes/Privatezza e Protezione dei Dati.md",
+    "Blogs",
+    "Atoms/Reticolo.md",
+    "Atoms/B-Albero.md",
     "Videos/AI influencer are getting filthy rich... let's build one.md",
     "Atoms/Spazio Vettoriale.md",
-    "Books/Leggere, scrivere, argomentare.md",
     "Images/KeyAssignment.png",
     "Images/KeyAndTokenGraphExample.png",
     "Images/TranslatingAIntoE.png",
@@ -154,19 +154,7 @@
     "Images/SelectiveInformationSharingApproach2.png",
     "Images/SelectiveInformationSharingApproach1.png",
     "Atoms/Grafo.md",
-    "Atoms/Albero di Copertura.md",
-    "Atoms/Albero di Decisione.md",
-    "Classes/Statistica e Probabilità.md",
     "Atoms",
-    "Classes/Statistical Methods for Machine Learning.md",
-    "Atoms/Funzione Hash.md",
-    "Classes/Informatica Teorica.md",
-    "Atoms/Agent-Based Simulation.md",
-    "Templates/Video Template.md",
-    "Templates/Lexicon Template.md",
-    "Templates/Book Template.md",
-    "Lexicon/Edificante.md",
-    "Atoms/Programmazione Dinamica.md",
     "Lexicon",
     "Videos",
     "Classes",

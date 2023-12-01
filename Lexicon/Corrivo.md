@@ -6,3 +6,8 @@ Avventato nel fare qualcosa, troppo facilmente disposto.
 _- deplorando i politici, che si lasciano andare troppo **corrivamente** all'incontrollato improperio -_
 
 ----------------------------------------------------------------
+
+# Related to
+- [[Leggere, scrivere, argomentare]]
+
+----------------------------------------------------------------

@@ -2314,14 +2314,14 @@ The computation of the exposure coefﬁcient $\varepsilon$ depends on two factor
 		- the plaintext database (**DB**);
 		- the encrypted database (**DB$^k$**).
 
-#### Possible inferences
+The possible inferences are:
 - Freq+DB$^k$:
 	- plaintext content: determine the existence of a certain tuple (or association of values) in the original database;
 	- indexing function: determine the correspondence between plaintext values and indexes.
 - DB+DB$^k$:
 	- indexing function: determine the correspondence between plaintext values and indexes.
 
-##### Exposure coefﬁcient computation
+#### Exposure coefﬁcient computation
 
 ![[ExposureCoefficientComputation.png]]
 
@@ -2388,7 +2388,7 @@ There are different possible mappings of plaintext values in index values, with 
 
 ----------------------------------------------------------------
 
-#### Hashing exposure – DB+DB$^k$
+##### Hashing exposure – DB+DB$^k$
 The RCV-graph built on plaintext and encrypted data are not identical.
 
 Different vertexes of the plaintext RCV-graph may collapse to the same encrypted RCV-graph vertex. The number of edges connecting row vertexes to value vertexes in the plaintext and encrypted RCV-graph is the same. The problem becomes ﬁnding a correct matching between the edges of the plaintext RCV-graph and the edges of the encrypted RCV-graph.
@@ -2809,8 +2809,7 @@ Again, exposure is limited to resources involved in a policy split $\to$ easily 
 ## Mix&Slice
 Over-encryption requires support by the server (i.e., the server implements more than simple get/put methods). Alternative solution to enforce revoke operations: **Mix&Slice**.
 
-Mix&Slice uses different rounds of encryption to provide complete mixing of
-the resource $\to$ unavailability of a small portion of the encrypted resource prevents its (even partial) reconstruction.
+Mix&Slice uses different rounds of encryption to provide complete mixing of the resource $\to$ unavailability of a small portion of the encrypted resource prevents its (even partial) reconstruction.
 
 Slice the resource into fragments and, every time a user is revoked access to the resource, re-encrypt a randomly chosen fragment $\to$ lack of a fragment prevents resource decryption.
 
@@ -2833,7 +2832,7 @@ When encryption is applied to a block, all the mini-blocks are mixed. The absenc
 Extend mixing to a macro-block:
 - iteratively apply block encryption;
 - at iteration $i$, each block has a mini-block for each encrypted block obtained at iteration $i − 1$ (at distance $4^{i−1}$);
-- x rounds mix $4^x$ mini-blocks
+- x rounds mix $4^x$ mini-blocks.
 
 slide 107/268
 
@@ -2895,7 +2894,7 @@ Key derivation graph extended with the storage server $S$. The key derivation gr
 - a key $k_{w[o]}$ for each write access control list $w[o]$;
 - a key $k_{w[o] \cup \{S\}}$ for each write access control list, extended with the server $w[o] \cup \{S\}$;
 - a secure hash function $h$ to compute $k_{w[o]} \cup \{S\}$ from $k_{w[o]}$;
-- a set of tokens that permit each user $u$ to derive $k_{r[o]} (k_{w[o]}) such that $u \in r[o]$ ($u \in w[o]$);
+- a set of tokens that permit each user $u$ to derive $k_{r[o]} (k_{w[o]})$ such that $u \in r[o]$ ($u \in w[o]$);
 - a set of tokens that permit the storage server $S$ to derive $k_{w[o]} \cup \{S\}$.
 
 An example of a key derivation graph.
@@ -2906,17 +2905,17 @@ slide 115/268
 
 ## Authorization enforcement
 The data owner deﬁnes the key derivation graph and:
-- communicates to each user u key ku;
-- communicates to the storage server S key kS;
-- encrypts each resource o with key kr[o];
-- encrypts the write tag tag[o] of each resource o with key kw[o]∪{S}.
+- communicates to each user $u$ key $k_u$;
+- communicates to the storage server $S$ key $k_S$;
+- encrypts each resource $o$ with key $k_{r[o]}$;
+- encrypts the write tag $tag[o]$ of each resource $o$ with key $k_{w[o] \cup \{S\}}$.
 
-Read accesses: u can read o iff she can decrypt its content (i.e., if u∈r[o]).
+Read accesses: u can read $o$ iff she can decrypt its content (i.e., if $u \in r[o]$).
 
 Write accesses:
-- u sends a request to write o to the storage server;
-- the server accepts the request only if u provides (plaintext) tag[o];
-- u can provide tag[o] only if u can decrypt it (i.e., if u∈w[o]).
+- u sends a request to write $o$ to the storage server;
+- the server accepts the request only if $u$ provides (plaintext) $tag[o]$;
+- $u$ can provide $tag[o]$ only if $u$ can decrypt it (i.e., if $u \in w[o]$).
 
 ----------------------------------------------------------------
 
@@ -2928,9 +2927,10 @@ An example of an authorization enforcement.
 
 slide 118/268
 
-## Write integrity
-The data owner needs to verify the proper behavior of users and
-storage server. Write integrity control:
+----------------------------------------------------------------
+
+### Write integrity
+The data owner needs to verify the proper behavior of users and storage server. Write integrity control:
 - allows detecting resource tampering;
 - discourages improper behaviors;
 - provides non repudiation.
@@ -2939,7 +2939,7 @@ Straightforward solution: signature-based approach:
 - users sign the resource with their private key;
 - the data owner checks if the signature has been produced by an authorized user for the resource content $\to$ it is computationally expensive.
 
-### HMAC-based approach
+#### HMAC-based approach
 Each resource $o$ has:
 - a timestamp, encw_ts, of the last write operation;
 - a user_tag computed as the HMAC, with the key ku of the writer, over o, the old value of the user_tag, and the timestamp of the write operation;
@@ -2952,346 +2952,91 @@ At each write operation, the writer updates the _user_tag_ and _group_tag_.
 ----------------------------------------------------------------
 
 ### Integrity tags
-• User_tag of resource o
-◦ write integrity and accountability of user actions
-◦ checked only by the data owner
-
-• Group_tag of resource o
-◦ write integrity of the resource content
-◦ checked by all the users in w[o]
+User_tag of resource $o$:
+- write integrity and accountability of user actions;
+- checked only by the data owner.
 
-• Permit to detect
-◦ tampering by S with o =⇒ S cannot produce a valid user_tag for o
-◦ tampering by S with tag[o] to include u in w[o] =⇒ u cannot produce
-valid integrity tags
-◦ unauthorized write operations by u =⇒ u cannot produce valid
-integrity tags
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-121/268
-
-Structure of outsourced resources
-
-METADATA
-
-
-
-r_label
- w_label
-
- o_id
-encw_tag
+Group_tag of resource $o$:
+- write integrity of the resource content;
+- checked by all the users in $w[o]$.
 
-RESOURCE
+Permit to detect:
+- tampering by $S$ with $o \to S$ cannot produce a valid user_tag for $o$;
+- tampering by $S$ with $tag[o]$ to include $u$ in $w[o] \to u$ cannot produce valid integrity tags;
+- unauthorized write operations by $u \to u$ cannot produce valid integrity tags.
 
-
-
-lr[o]
-lw[o]∪{S}
-o_id
-E(tag[o], kw[o]∪{S} )
-
-label of the key used for o
-label of the key used for tag[o]
-object identiﬁer
-encrypted write tag
+### Structure of outsourced resources
 
-encr_resource E(o, kr[o] ) encrypted resource
-
-
-WRITE INTEGRITY 
-
-encw_ts E(ts, kw[o]∪{S} )
-timestamp
-user_tag HMAC(o||u_t′ ||ts, ku ) tag for the owner
-group_tag HMAC(o||ts, kw[o] )
-tag for writers
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-122/268
-
-Other issues
-• Write integrity controlled by any reader
-• Support for write privileges for data collections with multiple
-owners
-• Selective encryption for supporting subscription-based
-authorization policies [DFJL-12]
-◦ users are authorized to access all and only the resources published
-during their subscribed periods
-◦ user authorizations remain valid also after the expiration of their
-subscriptions
-=⇒ need to take into account both the subscriptions of the users
-and the time when resources have been published
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+slide 122/268
 
-123/268
 
-# Fragmentation and Encryption
+----------------------------------------------------------------
 
-Fragmentation and encryption
-• Encryption makes query evaluation and application execution
-more expensive or not always possible
-• Often what is sensitive is the association between values of
-different attributes, rather than the values themselves
-◦ e.g., association between employee’s names and salaries
-
-=⇒protect associations by breaking them, rather than encrypting
-• Recent solutions for enforcing privacy requirements couple:
-◦ encryption
-◦ data fragmentation
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-125/268
-
-Conﬁdentiality constraints
-• Sets of attributes such that the (joint) visibility of values of the
-attributes in the sets should be protected
-• Sensitive attributes: the values of some attributes are considered
-sensitive and should not be visible
-=⇒ singleton constraints
-• Sensitive associations: the associations among values of given
-attributes are sensitive and should not be visible
-=⇒ non-singleton constraints
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-126/268
-
-Conﬁdentiality constraints – Example
-R = (Name,DoB,Gender,Zip,Position,Salary,Email,Telephone)
-• {Telephone}, {Email}
-◦ attributes Telephone and Email are sensitive (cannot be stored in
-the clear)
-
-• {Name,Salary}, {Name,Position}, {Name,DoB}
-◦ attributes Salary, Position, and DoB are private of an individual and
-cannot be stored in the clear in association with the name
-
-• {DoB,Gender,Zip,Salary}, {DoB,Gender,Zip,Position}
-◦ attributes DoB, Gender, Zip can work as quasi-identiﬁer
-
-• {Position,Salary}, {Salary,DoB}
-◦ association rules between Position and Salary and between Salary
-and DoB need to be protected from an adversary
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-127/268
-
-Outline
-• Data fragmentation
-◦ Non-communicating pair of servers [ABGGKMSTX-05]
-◦ Multiple non-linkable fragments [CDFJPS-07,CDFJPS-10]
-◦ Departing from encryption: Keep a few [CDFJPS-09b]
-◦ Fragmentation and inferences [DFJLPS-14]
-
-• Publishing obfuscated associations
-◦ Anonymizing bipartite graph [CSYZ-08]
-◦ Fragments and loose associations [DFJPS-10]
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-128/268
-
-Non-communicating pair of servers
-• Conﬁdentiality constraints are enforced by splitting information
-over two independent servers that cannot communicate (need to
-be completely unaware of each other) [ABGGKMSTX-05]
-◦ Sensitive associations are protected by distributing the attributes
-among the two servers
-◦ Encryption is applied only when explicitly demanded by the
-conﬁdentiality constraints or when storing an attribute in any of the
-two servers would expose at least a sensitive association
-
-• E ∪ C1 ∪ C2 = R
-• C1 ∪ C2 ⊆ R
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-129/268
-
-Enforcing conﬁdentiality constraints
-• Conﬁdentiality constraints C deﬁned over a relation R are
-enforced by decomposing R as hR1 , R2 , Ei where:
-◦ R1 and R2 include a unique tuple ID needed to ensure lossless
-decomposition
-◦ R1 ∪ R2 = R
-◦ E is the set of encrypted attributes and E ⊆ R1 , E ⊆ R2
-◦ for each c ∈ C , c 6⊆ (R1 − E) and c 6⊆ (R2 − E)
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-130/268
-
-Non-communicating pair of servers – Example
-
-SSN
-t1
-t2
-t3
-t4
-t5
-t6
-t7
-t8
-
-123456789
-234567891
-345678912
-456789123
-567891234
-678912345
-789123456
-891234567
-
-PATIENTS
-Name
-YoB
-
-Job
-
-Disease
-
-Alice
-Bob
-Carol
-David
-Eva
-Frank
-Gary
-Hilary
-
-Clerk
-Doctor
-Nurse
-Lawyer
-Doctor
-Doctor
-Teacher
-Nurse
-
-Asthma
-Asthma
-Asthma
-Bronchitis
-Bronchitis
-Gastritis
-Gastritis
-Diabetes
-
-1980
-1980
-1970
-1970
-1970
-1960
-1960
-1960
-
-F1
-tid Name YoB SSNk Diseasek
-1
-2
-3
-4
-5
-6
-7
-8
-
-Alice
-Bob
-Carol
-David
-Eva
-Frank
-Gary
-Hilary
-
-1980
-1980
-1970
-1970
-1970
-1960
-1960
-1960
-
-jdkis
-u9hs9
-j9und
-p0vp8
-8nn[
-j9jMK
-87l’D
-8pm}n
-
-hyaf4k
-j97;qx
-9jp‘md
-p;nd92
-0-mw-n
-wqp9[i
-L0MB2G
-@h8hwu
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-tid Job
-1
-2
-3
-4
-5
-6
-7
-8
-
-Clerk
-Doctor
-Nurse
-Lawyer
-Doctor
-Doctor
-Teacher
-Nurse
-
-c0
-c1
-c2
-c3
-
-= {SSN}
-= {Name, Disease}
-= {Name, Job}
-= {Job, Disease}
-
-F2
-SSNk
-
-Diseasek
-
-uwq8hd
-j-0.dl;
-8ojqdkf
-j0i12nd
-mj[9;’s
-aQ14l[
-8qsdQW
-0890UD
-
-jsd7ql
-0],nid
-j-0/?n
-5lkdpq
-j0982e
-jnd%d
-OP[’
-UP0D@
-131/268
-
-Query execution
+### Other issues
+Write integrity controlled by any reader. Support for write privileges for data collections with multiple owners. Selective encryption for supporting subscription-based authorization policies:
+- users are authorized to access all and only the resources published during their subscribed periods;
+- user authorizations remain valid also after the expiration of their subscriptions $\to$ need to take into account both the subscriptions of the users and the time when resources have been published
+
+----------------------------------------------------------------
+
+## Fragmentation and Encryption
+
+Encryption makes query evaluation and application execution more expensive or not always possible. Often what is sensitive is the association between values of different attributes, rather than the values themselves, e.g., association between employee’s names and salaries $\to$protect associations by breaking them, rather than encrypting.
+
+Recent solutions for enforcing privacy requirements couple:
+- encryption;
+- data fragmentation.
+
+### Conﬁdentiality constraints
+Sets of attributes such that the (joint) visibility of values of the attributes in the sets should be protected.
+
+Sensitive attributes: the values of some attributes are considered sensitive and should not be visible $\to$ singleton constraints.
+
+Sensitive associations: the associations among values of given attributes are sensitive and should not be visible $\to$ non-singleton constraints.
+
+An example of conﬁdentiality constraints.<br />
+$R = (Name,DoB,Gender,Zip,Position,Salary,Email,Telephone)$
+- $\{Telephone\}$, $\{Email\}$: attributes _Telephone_ and _Email_ are sensitive (cannot be stored in the clear);
+- $\{Name,Salary\}$, $\{Name,Position\}$, $\{Name,DoB\}$: attributes _Salary_, _Position_, and _DoB_ are private of an individual and cannot be stored in the clear in association with the name;
+- $\{DoB,Gender,Zip,Salary\}$, $\{DoB,Gender,Zip,Position\}$: attributes _DoB_, _Gender_, _Zip_ can work as quasi-identiﬁer.
+- $\{Position,Salary\}$, $\{Salary,DoB\}$: association rules between _Position_ and _Salary_ and between _Salary_ and _DoB_ need to be protected from an adversary.
+
+----------------------------------------------------------------
+
+### Outline
+Data fragmentation:
+- non-communicating pair of servers;
+- multiple non-linkable fragments;
+- departing from encryption: **Keep a few**;
+- fragmentation and inferences.
+
+Publishing obfuscated associations:
+- anonymizing bipartite graph;
+- fragments and loose associations.
+
+#### Non-communicating pair of servers
+Conﬁdentiality constraints are enforced by splitting information over two independent servers that cannot communicate (need to be completely unaware of each other):
+- sensitive associations are protected by distributing the attributes among the two servers;
+- encryption is applied only when explicitly demanded by the conﬁdentiality constraints or when storing an attribute in any of the two servers would expose at least a sensitive association.
+
+slide 129/268
+
+----------------------------------------------------------------
+
+#### Enforcing conﬁdentiality constraints
+Conﬁdentiality constraints $\mathcal{C}$ deﬁned over a relation $R$ are enforced by decomposing $R$ as $\langle R_1, R_2, E \rangle$ where:
+- $R_1$ and $R_2$ include a unique tuple $ID$ needed to ensure lossless decomposition;
+- $R_1 \cup R_2 = R$;
+- $E$ is the set of encrypted attributes and $E \subseteq R_1, E \subseteq R_2$;
+- for each $c \in \mathcal{C}, c \nsubseteq (R_1 − E)$ and $c \nsubseteq (R_2 − E)$.
+
+An example of non-communicating pair of servers.
+
+slide 131/268
+
+----------------------------------------------------------------
+
+#### Query execution
 At the logical level: replace R with R1 ⊲⊳ R2
 Query plans:
 • Fetch R1 and R2 from the servers and execute the query locally

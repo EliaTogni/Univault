@@ -6,3 +6,8 @@ Un **pamphlet** è una breve pubblicazione, scritta con intento polemico o satir
 _- in un brillante **pamphlet** del 2005 -_
 
 ----------------------------------------------------------------
+
+# Related to
+- [[Leggere, scrivere, argomentare]]
+
+----------------------------------------------------------------
