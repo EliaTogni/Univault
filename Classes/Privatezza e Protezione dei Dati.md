@@ -3050,68 +3050,54 @@ An example of a query execution.
 
 slide 133/268
 
-Identifying the optimal decomposition
-Brute force approach for optimizing wrt workload W:
-• For each possible safe decomposition of R:
-◦ optimize each query in W for the decomposition
-◦ estimate the total cost for executing the queries in W using the
-optimized query plans
+##### Identifying the optimal decomposition
+Brute force approach for optimizing with regard to workload $W$:
+- For each possible safe decomposition of $R$:
+	- optimize each query in $W$ for the decomposition;
+	- estimate the total cost for executing the queries in $W$ using the optimized query plans.
+- Select the decomposition that has the lowest overall query cost
 
-• Select the decomposition that has the lowest overall query cost
-Too expensive! =⇒ Exploit afﬁnity matrix
+Too expensive! $\to$ Exploit afﬁnity matrix
 
 
-Adapted afﬁnity matrix M:
-• Mi,j : ‘cost’ of placing cleartext attributes i and j in different
-fragments
-• Mi,i : ‘cost’ of placing encrypted attribute i (across both fragments)
+Adapted afﬁnity matrix $M$:
+- $M_{i,j}$: ‘cost’ of placing cleartext attributes $i$ and $j$ in different fragments;
+- $M_{i,i}: ‘cost’ of placing encrypted attribute $i$ (across both fragments).
+
 Goal: Minimize
 
-∑
-i,j:i∈(R1 −E),j∈(R2 −E)
+$$\sum_{i,j: i\in (R_1 - E), j \in (R_2 - E)} M_{i, j} + \sum_{i \in E} M_{i, i}$$
 
-Mi,j + ∑ Mi,i
-i∈E
+Optimization problem equivalent to **hypergraph coloring problem**. Given relation $R$, deﬁne graph $G(R)$:
+- attributes are vertexes;
+- afﬁnity value $M_{i,j} \to$ weight of arc $(i, j)$;
+- afﬁnity value $M_{i,i} \to$ weight of vertex $i$;
+- conﬁdentiality constraints $\mathcal{C}$ represent a hypergraph $H(R, \mathcal{C})$ on the same vertexes.
 
-Optimization problem equivalent to hypergraph coloring problem
-Given relation R, deﬁne graph G(R):
-• attributes are vertexes
-• afﬁnity value Mi,j =⇒ weight of arc (i, j)
-• afﬁnity value Mi,i =⇒ weight of vertex i
-• conﬁdentiality constraints C represent a hypergraph H(R, C ) on
-the same vertexes
+Find a $2$-coloring of the vertexes such that:
+- no hypergraph edge is monochromatic;
+- the weight of bichromatic edges is minimized;
+- a vertex can be deleted (i.e., encrypted) by paying the price equal to the vertex weight.
 
-Find a 2-coloring of the vertexes such that:
-• no hypergraph edge is monochromatic
-• the weight of bichromatic edges is minimized
-• a vertex can be deleted (i.e., encrypted) by paying the price equal
-to the vertex weight
-Coloring a vertex is equivalent to place it in one of the two fragments.
-The 2-coloring problem is NP-hard.
-Different heuristics, all exploiting:
-• approximate min-cuts
-• approximate weighted set cover
+Coloring a vertex is equivalent to place it in one of the two fragments. The $2$-coloring problem is NP-hard. Different heuristics, all exploiting:
+- approximate min-cuts;
+- approximate weighted set cover.
 
-Multiple non-linkable fragments
-Coupling fragmentation and encryption is interesting and provides
-advantages, but assumption of two non-communicating servers:
-− too strong and difﬁcult to enforce in real environments
-− limits the number of associations that can be solved by
-fragmenting data, often forcing the use of encryption
-=⇒ allow for more than two non-linkable fragments [CDFJPS-10]
+----------------------------------------------------------------
 
-• E1 ∪ C1 = . . . = En ∪ Cn = R
-• C1 ∪ . . . ∪ Cn ⊆ R
+#### Multiple non-linkable fragments
+Coupling fragmentation and encryption is interesting and provides advantages, but assumption of two non-communicating servers:
+- too strong and difﬁcult to enforce in real environments;
+- limits the number of associations that can be solved by fragmenting data, often forcing the use of encryption $\to$ allow for more than two non-linkable fragments.
+
+slide 138/268
 
 
-• A fragmentation of R is a set of fragments F = {F1 , . . . , Fm }, where
-Fi ⊆ R, for i = 1, . . . , m
-• A fragmentation F of R correctly enforces a set C of
-conﬁdentiality constraints iff the following conditions are satisﬁed:
-◦ ∀F ∈ F , ∀c ∈ C : c 6⊆ F (each individual fragment satisﬁes the
-constraints)
-◦ ∀Fi , Fj ∈ F , i 6= j : Fi ∩ Fj = 0/ (fragments do not have attributes in
-common)
+A fragmentation of $R$ is a set of fragments $\mathcal{F} = \{F_1, ..., F_m\}$, where $F_i \subseteq R$, for $i = 1, ..., m$.
+
+A fragmentation $\mathcal{F}$ of $R$ correctly enforces a set $\mathcal{C}$ of conﬁdentiality constraints iff the following conditions are satisﬁed:
+- $\forall F \in \mathcal{F}, \forall c \in \mathcal{C}: c \nsubseteq F$ (each individual fragment satisﬁes the constraints);
+- $\forall F_i, F_j \in \mathcal{F}, i \neq j: F_i \cap F_j = \emptyset$ (fragments do not have attributes in common).
 
 • Each fragment F is mapped into a physical fragment containing:
 ◦ all the attributes in F in the clear
@@ -3130,43 +3116,18 @@ An example of multiple non-linkable fragments.
 
 slide 141/268
 
-Executing queries on fragments
+##### Executing queries on fragments
 • Every physical fragment of R contains all the attributes of R
 =⇒ no more than one fragment needs to be accessed
 to respond to a query
 • If the query involves an encrypted attribute, an additional query
 may need to be executed by the client
-Original query on R
 
-Translation over fragment F 3
+slide 142/268
 
-Q3 := SELECT
-Q := SELECT SSN, Name
-FROM
-FROM
-PATIENTS
-WHERE
-WHERE (Disease=‘Gastritis’ OR
-Disease=‘Asthma’) AND
-Job=‘Doctor’
-′
-Q := SELECT
-FROM
-WHERE
+----------------------------------------------------------------
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-salt, enc
-F3
-(Disease=‘Gastritis’ OR
-Disease=‘Asthma’)
-SSN, Name
-Decrypt(Q3 , Key)
-Job=‘Doctor’
-
-142/268
-
-Optimization criteria
+##### Optimization criteria
 • Goal: ﬁnd a fragmentation that makes query execution efﬁcient
 • The fragmentation process can then take into consideration
 different optimization criteria:
