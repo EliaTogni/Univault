@@ -150,17 +150,42 @@ Il risultato è certamente intrigante e, nonostante non segua nessuna distribuzi
 ----------------------------------------------------------------
 
 ### Travelling Salesman sorting
+Il **problema del commesso viaggiatore** si riferisce ad un problema pratico: il visitare un certo numero di città minimizzando la distanza complessiva e visitando ogni città una volta sola. Questo suona esattamente come ciò che desideriamo: visitare ogni colore esattamente una volta, minimizzando la distanza complessiva. Nonostante sia un problema così critico, il problema del commesso viaggiatore è NP-completo cioè, nel nostro caso, è computazionalmente troppo dispendioso per essere eseguito su migliaia di colori. L'algoritmo che verrà utilizzato sarà invece una versione subottimale, chamata **nearest neighbour**. Si tratta di un algoritmo che spesso trova soluzioni al problema del commesso viaggiatore e quali sono, in media, peggiori del $25\%$. Questa è la versione utilizzata:
 
+```python
+from scipy.spatial import distance
+# Distance matrix
+A = np.zeros([colours_length,colours_length])
+for x in range(0, colours_length-1):
+    for y in range(0, colours_length-1):
+        A[x,y] = distance.euclidean(colours[x],colours[y])
+
+# Nearest neighbour algorithm
+path, _ = NN(A, 0)
+
+# Final array
+colours_nn = []
+for i in path:
+    colours_nn.append(    colours[i]    )
+```
+
+![[SortNNRGB.png]]
+
+Il risultato è molto smooth anche se ciascun colore è distribuito lungo tutto il vettore. Questa soluzione, tuttavia, dovrebbe essere quella che minimizza realmente la distanza tra i colori stessi.
 
 ----------------------------------------------------------------
 
 ## Colour distance
+Il sorting dei colori è fortemente connesso ad un altro problema. Dati due colori differenti, quanto sono distanti? Il concetto di distanza dipende da quale spazio li stiamo analizzando. Seguono qui alcuni grafici che rappresentano come la distanza è percepita in diversi spazi di colore. Nei diagrammi seguenti, ogni pixel $(x, y)$ indica quanto distanti sono i rispettivi colori negli assi $X$ e $Y$. Gli assi $X$ e $Y$ dispongono i colori in base al loro valore di hue. I pixel bianchi indicano un match perfetto: i colori hanno distanza zero, cioè sono identici. I pixel scuri, invece, indicano una grande distanza.
 
+HSV (e HSL).
+
+![[DistanceHLS.png|300]]
 
 ----------------------------------------------------------------
 
 ## Conclusion
-
+Ordinare i colori è una task incredibilmente complessa. Ogni tentativo di appiattirli in una singola dimensione richiederà dei tradeoffs. E' quindi fondamentale quale feature si vuole evidenziare.
 
 ----------------------------------------------------------------
 
