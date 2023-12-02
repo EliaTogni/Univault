@@ -5,7 +5,7 @@
 "Link:": https://www.alanzucconi.com/2015/09/30/colour-sorting/
 ---
 # Sommario
-Il blogpost parte con un introduzione sul sorting dei numeri. Indipendentemente dall'algoritmo utilizzato, i numeri reali sono ordinati naturalmente. Questi numeri hanno un ordine totale, è sempre possibile decidere se un numero è maggiore di un altro. Di conseguenza è sempre possibile ordinarli e, escludendo duplicati, questo ordine è unico.
+Il blogpost parte con un'introduzione sul sorting dei numeri. Indipendentemente dall'algoritmo utilizzato, i numeri reali sono ordinati naturalmente. Questi numeri hanno un ordine totale, è sempre possibile decidere se un numero è maggiore di un altro. Di conseguenza è sempre possibile ordinarli e, escludendo duplicati, questo ordine è unico.
 
 Al contrario, non siamo così fortunati per quanto riguarda i colori.<br />
 Suppondendo di rappresentare i colori tramite i loro valor RGB, non esiste una tecnica standard per ordinare una tripla in una linea, poichè non sono organizzati naturalmente in una maniera lineare. Di conseguenza, come si possono ordinare i colori affinchè sembrino più continui possibile? Quali parametri influenzano questo ordine? Ad esempio, l'azzurro è più vicino al blu (tonalità simile) oppure al ciano (luminosità simile)? Non esiste una soluzione a questo problema: è possibile ordinare i colori ma il risultato complessivo dipende da cosa si sta cercando di ottenere. Questo post esplorerà come ordinare i colori e come ciò conduca a diversi risultati.
@@ -85,12 +85,67 @@ Sfortunatamente, questo sorting restituisce comunque un risultato deludente.
 ----------------------------------------------------------------
 
 ### Step sorting
+Se si desidera ordinaare i colori in un fashion visualmente appagante, è necessario utilizzare un approccio più complicato. E' possibile, per esempio, mergere le informazioni date da hue e luminosità per ottenere un risultato più smooth. Per diminuire l'impatto dato dall' ordinare rispetto al primo componente, è possibile ridurre lo spazio dei colori da un valore float nell'intervallo tra $0$ a $1$ ad un intero nell'intervallo tra $0$ e $7$. Facendo ciò, la maggior parte del rumore viene rimossa.
 
+```python
+def step (r,g,b, repetitions=1):
+    lum = math.sqrt( .241 * r + .691 * g + .068 * b )
+
+    h, s, v = colorsys.rgb_to_hsv(r,g,b)
+
+    h2 = int(h * repetitions)
+    lum2 = int(lum * repetitions)
+    v2 = int(v * repetitions)
+
+    return (h2, lum, v2)
+colours.sort(key=lambda (r,g,b): step(r,g,b,8)    )
+```
+
+![[SortHSVLUM.png]]
+
+La maggior parte del rumore è stata rimossa ma i segmenti ora non appiono puù continui. Per risolvere questo, è possibile invertire la luminosità di un segmento sì e uno no.
+
+```python
+def step (r,g,b, repetitions=1):
+    lum = math.sqrt( .241 * r + .691 * g + .068 * b )
+
+    h, s, v = colorsys.rgb_to_hsv(r,g,b)
+
+    h2 = int(h * repetitions)
+    lum2 = int(lum * repetitions)
+    v2 = int(v * repetitions)
+
+    if h2 % 2 == 1:
+        v2 = repetitions - v2
+        lum = repetitions - lum
+
+    return (h2, lum, v2)
+colours.sort(key=lambda (r,g,b): step(r,g,b,8)    )
+```
+
+![[sortHSVLUMTrans.png]]
+
+I colori ora appaiono organizzati in una maniera decisamente migliore. Sono continui, per la maggior parte, con ben poco rumore rispetto al sorting HSV iniziale. Ciò viene ottenuto, tuttavia, alle spese della luminosità monotonica. 
 
 ----------------------------------------------------------------
 
 ### Hilbert Sorting
+Un altro approccio per ordinare i colori si basa sul concetto di **curva di Hilbert**. E' possibile immaginare una curva di Hilbert come una tecnica per mappare ogni punto in uno spazio bidimensionale utilizzando una curva monodimensionale.
 
+![[HilbertCurve.gif]]
+
+Questo è possibile perchè la curva di Hilbert è un oggetto frattale che riempie lo spazio. E' possibile estendere lo stesso concetto di riempimento di spazio allo spazio dei colori tridimensionale. Nel prossimo esempio è stato usata l'implementazione di un cammino Hilbertiano di Steve Witham.
+
+```python
+import hilbert
+colours.sort(key=lambda (r,g,b):hilbert.Hilbert_to_int([int(r*255),int(g*255),int(b*255)])    )
+```
+
+![[SortHilbert.png]]
+
+Il risultato è certamente intrigante e, nonostante non segua nessuna distribuzione di colore intuitiva, appare decisamente omogeneo. E' interessante notare che, mentre tutti gli approcci menzionati precedentemente siano in grado di ordinare correttamente i colori in scala di grigio, l'Hilbert sorting li riarrangia in una maniera differente.
+
+![[SortGrayHilbert.png]]
 
 ----------------------------------------------------------------
 

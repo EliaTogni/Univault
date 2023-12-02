@@ -8,18 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "3e6e61c82b334e92",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Classes/Privatezza e Protezione dei Dati.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "0da0ed1548d6151e",
             "type": "leaf",
             "state": {
@@ -31,8 +19,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -130,6 +117,11 @@
   },
   "active": "0da0ed1548d6151e",
   "lastOpenFiles": [
+    "Images/SortGrayHilbert.png",
+    "Images/SortHilbert.png",
+    "Images/HilbertCurve.gif",
+    "Images/sortHSVLUMTrans.png",
+    "Images/SortHSVLUM.png",
     "Images/SortLum.png",
     "Images/SortHSL.png",
     "Images/SortHSV.png",
@@ -162,11 +154,6 @@
     "Blogs",
     "Atoms/Reticolo.md",
     "Atoms/B-Albero.md",
-    "Images/KeyAssignment.png",
-    "Images/KeyAndTokenGraphExample.png",
-    "Images/TranslatingAIntoE.png",
-    "Images/EncryptionPolicyGraph2.png",
-    "Images/EncryptionPolicyGraph1.png",
     "Atoms",
     "Lexicon",
     "Videos",
