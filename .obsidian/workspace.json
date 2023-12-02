@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "0da0ed1548d6151e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Blogs/The incredibly challenging task of sorting colours.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -86,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Privatezza e Protezione dei Dati.md",
+                "file": "Blogs/The incredibly challenging task of sorting colours.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,8 +128,16 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "3e6e61c82b334e92",
+  "active": "0da0ed1548d6151e",
   "lastOpenFiles": [
+    "Images/SortLum.png",
+    "Images/SortHSL.png",
+    "Images/SortHSV.png",
+    "Images/SortRGB.png",
+    "Images/SortRandom.png",
+    "Images/sort_random.png",
+    "Blogs/The incredibly challenging task of sorting colours.md",
+    "Templates/Blog Template.md",
     "Classes/Privatezza e Protezione dei Dati.md",
     "Articles/Image Classification with Classic and Deep Learning Techniques.md",
     "Lexicon/Allampanato.md",
@@ -137,23 +158,15 @@
     "Lexicon/Sicumera.md",
     "Templates/Lexicon Template.md",
     "Templates/Book Template.md",
-    "Templates/Blog Template.md",
     "Templates/Article Template.md",
     "Blogs",
     "Atoms/Reticolo.md",
     "Atoms/B-Albero.md",
-    "Videos/AI influencer are getting filthy rich... let's build one.md",
-    "Atoms/Spazio Vettoriale.md",
     "Images/KeyAssignment.png",
     "Images/KeyAndTokenGraphExample.png",
     "Images/TranslatingAIntoE.png",
     "Images/EncryptionPolicyGraph2.png",
     "Images/EncryptionPolicyGraph1.png",
-    "Images/KeyAndTokenGraph.png",
-    "Images/AuthorizationPolicy.png",
-    "Images/SelectiveEncryptionScenario.png",
-    "Images/SelectiveInformationSharingApproach2.png",
-    "Images/SelectiveInformationSharingApproach1.png",
     "Atoms",
     "Lexicon",
     "Videos",
