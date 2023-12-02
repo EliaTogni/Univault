@@ -3099,124 +3099,65 @@ A fragmentation $\mathcal{F}$ of $R$ correctly enforces a set $\mathcal{C}$ of c
 - $\forall F \in \mathcal{F}, \forall c \in \mathcal{C}: c \nsubseteq F$ (each individual fragment satisﬁes the constraints);
 - $\forall F_i, F_j \in \mathcal{F}, i \neq j: F_i \cap F_j = \emptyset$ (fragments do not have attributes in common).
 
-• Each fragment F is mapped into a physical fragment containing:
-◦ all the attributes in F in the clear
-◦ all the other attributes of R encrypted (a salt is applied on each
-encryption)
+Each fragment $F$ is mapped into a physical fragment containing:
+- all the attributes in $F$ in the clear;
+- all the other attributes of $R$ encrypted (a **salt** is applied on each encryption).
 
-• Fragment Fi = {Ai1 , . . . , Ain } of R mapped to physical fragment
-Fie (salt,enc,Ai1 , . . . , Ain ):
-
-◦ each t ∈ r over R is mapped into a tuple te ∈ fie where fie is a relation
-over Fie and:
-− te [enc] = Ek (t[R − Fi ] ⊗ te [salt])
-− te [Aij ] = t[Aij ], for j = 1, . . . , n
+Fragment $F_i = \{A_{i_1}, ..., A_{i_n}\}$ of $R$ mapped to physical fragment $F_i^e (salt, enc, A_{i_1}, ..., A_{i_n})$:
+- each $t \in r$ over $R$ is mapped into a tuple $t^e \in f_i^e$ where $f_i^e$ is a relation over $F_i^e$ and:
+- $t^e[enc] = E_k (t[R − F_i] \otimes t^e[salt])$;
+- $t^e[A_{i_j}] = t[A_{i_j}]$, for $j = 1, ..., n$.
 
 An example of multiple non-linkable fragments.
 
 slide 141/268
 
 ##### Executing queries on fragments
-• Every physical fragment of R contains all the attributes of R
-=⇒ no more than one fragment needs to be accessed
-to respond to a query
-• If the query involves an encrypted attribute, an additional query
-may need to be executed by the client
+Every physical fragment of $R$ contains all the attributes of $R \to$ no more than one fragment needs to be accessed to respond to a query.<br />
+If the query involves an encrypted attribute, an additional query may need to be executed by the client.
 
 slide 142/268
 
 ----------------------------------------------------------------
 
 ##### Optimization criteria
-• Goal: ﬁnd a fragmentation that makes query execution efﬁcient
-• The fragmentation process can then take into consideration
-different optimization criteria:
-◦ number of fragments [CDFJPS-07]
-◦ afﬁnity among attributes [CDFJPS-10]
-◦ query workload [CDFJPS-09a]
+Goal: ﬁnd a fragmentation that makes query execution efﬁcient. The fragmentation process can then take into consideration different optimization criteria:
+- number of fragments;
+- afﬁnity among attributes;
+- query workload.
 
-• All criteria obey maximal visibility
-◦ only attributes that appear in singleton constraints (sensitive
-attributes) are encrypted
-◦ all attributes that are not sensitive appear in the clear in one
-fragment
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+All criteria obey maximal visibility:
+- only attributes that appear in singleton constraints (sensitive attributes) are encrypted;
+- all attributes that are not sensitive appear in the clear in one fragment.
 
-143/268
+----------------------------------------------------------------
 
-Minimal number of fragments
+##### Minimal number of fragments
 Basic principles:
-• avoid excessive fragmentation =⇒ minimal number of fragments
+- avoid excessive fragmentation $\to$ minimal number of fragments.
 Goal:
-• determine a correct fragmentation with the minimal number of
-fragments
-=⇒ NP-hard problem (minimum hyper-graph coloring problem)
+- determine a correct fragmentation with the minimal number of fragments $\to$ NP-hard problem (minimum hyper-graph coloring problem).
 Basic idea of the heuristic:
-• deﬁne a notion of minimality that can be used for efﬁciently
-computing a fragmentation
-◦ F is minimal if all the fragmentations that can be obtained from F
-by merging any two fragments in F violate at least one constraint
+- deﬁne a notion of minimality that can be used for efﬁciently computing a fragmentation;
+	- $\mathcal{F}$ is minimal if all the fragmentations that can be obtained from $\mathcal{F}$ by merging any two fragments in $\mathcal{F}$ violate at least one constraint.
+- iteratively select an attribute with the highest number of non-solved constraints and insert it in an existing fragment if no constraint is violated; create a new fragment otherwise.
 
-• iteratively select an attribute with the highest number of
-non-solved constraints and insert it in an existing fragment if no
-constraint is violated; create a new fragment otherwise
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+An example of minimal number of fragments.
 
-144/268
+slide 145/268
 
-Minimal number of fragments – Example
+Minimal fragmentation $\mathcal{F}$;
+- $F_1 = \{Name\}$;
+- $F_2 = \{DoB, Zip\}$;
+- $F_3 = \{Illness, Physician\}$.
 
-SSN
-123-45-6789
-987-65-4321
-963-85-2741
-147-85-2369
+Merging any two fragments would violate at least a constraint.
 
-Name
-Nancy
-Ned
-Nell
-Nick
+----------------------------------------------------------------
 
-M EDICAL D ATA
-DoB
-Zip
-Illness
-65/12/07 94142 hypertension
-73/01/05 94141 gastritis
-86/03/31 94139 ﬂu
-90/07/19 94139 asthma
-
-Physician
-M. White
-D. Warren
-M. White
-D. Warren
-
-Conﬁdentiality constraints
-c 0 = {SSN}
-c 1 = {Name, DoB}
-c 2 = {Name, Zip}
-c 3 = {Name, Illness}
-c 4 = {Name, Physician}
-c 5 = {DoB, Zip, Illness}
-c 6 = {DoB, Zip, Physician}
-
-Minimal fragmentation F
-• F1 = {Name}
-• F2 = {DoB,Zip}
-• F3 = {Illness,Physician}
-Merging any two fragments would violate at least a constraint
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-145/268
-
-Maximum afﬁnity
+#### Maximum afﬁnity
 Basic principles:
-• preserve the associations among some attributes
-◦ e.g., association (Illness,DoB) should be preserved to explore the
-link between a speciﬁc illness and the age of patients
+- preserve the associations among some attributes, e.g., association (Illness,DoB) should be preserved to explore the link between a speciﬁc illness and the age of patients.
 
 • afﬁnity matrix for representing the advantage of having pairs of
 attributes in the same fragment
@@ -3228,9 +3169,6 @@ different pairs of attributes in the fragment)
 Basic idea of the heuristic:
 • iteratively combine fragments that have the highest afﬁnity and do
 not violate any conﬁdentiality constraint
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-146/268
 
 Maximum afﬁnity – Example
 
@@ -3292,8 +3230,6 @@ F5
 5
 15
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
 n
 d
 z
@@ -3343,8 +3279,6 @@ c6
 ×
 ×
 ×
-
-147/268
 
 Maximum afﬁnity – Example
 
@@ -11237,17 +11171,16 @@ preserving a given degree of privacy
 
 ----------------------------------------------------------------
 
-# Privacy and Data Protection in Emerging Scenarios
-## Privacy and integrity of queries and computations
+# Privacy and integrity of queries and computations
 
 slide 2/76
 
-### Access and pattern confidentiality
+## Access and pattern confidentiality
 Guaranteeing privacy of outsourced data entails protecting the confidentiality of the data (content confidentiality) as well as of the accesses to them:
 - **access confidentiality**: confidentiality of the fact that an access aims at a specific data;
 - **pattern confidentiality**: confidentiality of the fact that two accesses aim at the same data.
 
-#### Approaches for protecting data accesses
+### Approaches for protecting data accesses
 - **Private Information Retrieval** (**PIR**) proposals;
 - **oblivious traversal of tree-structured data/indexes**;
 - **pyramid-shaped database layout of Oblivious RAM**;
@@ -11255,7 +11188,7 @@ Guaranteeing privacy of outsourced data entails protecting the confidentiality o
 - **ring ORAM,** variation of Path ORAM with better performance and same protection guarantees;
 - **shuffle index** based on the definition of a B+-tree structure with dynamic allocation of data.
 
-##### Path ORAM
+#### Path ORAM
 Server side:
 - binary tree structure with $L$ levels ($L = \lceil \log_2{(N)} − 1\rceil$, with $N$ the number of blocks);
 - each node in the tree is a bucket that contains up to $Z$ real blocks (padded with dummy blocks);
@@ -11281,7 +11214,7 @@ slide 8/76
 
 ----------------------------------------------------------------
 
-##### Ring ORAM
+#### Ring ORAM
 Variation of Path ORAM that reduces the online access bandwidth to $\mathcal{O}(1)$ and the overall bandwidth to $\sim 2 − 2.5\log{(N)}$.<br />
 Same server-side structure as Path ORAM but each node has:
 - $S$ additional dummy blocks;
@@ -11295,7 +11228,7 @@ Protocol:
 
 ----------------------------------------------------------------
 
-##### Path ORAM and Ring ORAM: Pros and cons
+#### Path ORAM and Ring ORAM: Pros and cons
 Path ORAM and Ring ORAM provide access and pattern confidentialitysame protection guarantees as ORAM (no inferences):
 - much more efficient than ORAM $\to$ more applicable in practice;
 - limited access time;
