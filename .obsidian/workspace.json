@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -117,18 +116,18 @@
   },
   "active": "0da0ed1548d6151e",
   "lastOpenFiles": [
+    "Images/GradientLAB.png",
+    "Images/GradientYIQ.png",
+    "Images/GradientRGB.png",
+    "Images/GradientHSV.png",
+    "Images/DistanceLAB.png",
+    "Images/DistanceYIQ.png",
+    "Images/DistanceRGB.png",
+    "Blogs/The incredibly challenging task of sorting colours.md",
     "Images/DistanceHLS.png",
     "Images/SortNNRGB.png",
     "Images/SortGrayHilbert.png",
     "Images/SortHilbert.png",
-    "Images/HilbertCurve.gif",
-    "Images/sortHSVLUMTrans.png",
-    "Images/SortHSVLUM.png",
-    "Images/SortLum.png",
-    "Images/SortHSL.png",
-    "Images/SortHSV.png",
-    "Images/SortRGB.png",
-    "Blogs/The incredibly challenging task of sorting colours.md",
     "Templates/Blog Template.md",
     "Classes/Privatezza e Protezione dei Dati.md",
     "Articles/Image Classification with Classic and Deep Learning Techniques.md",

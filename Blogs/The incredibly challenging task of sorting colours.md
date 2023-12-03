@@ -176,11 +176,41 @@ Il risultato è molto smooth anche se ciascun colore è distribuito lungo tutto 
 ----------------------------------------------------------------
 
 ## Colour distance
-Il sorting dei colori è fortemente connesso ad un altro problema. Dati due colori differenti, quanto sono distanti? Il concetto di distanza dipende da quale spazio li stiamo analizzando. Seguono qui alcuni grafici che rappresentano come la distanza è percepita in diversi spazi di colore. Nei diagrammi seguenti, ogni pixel $(x, y)$ indica quanto distanti sono i rispettivi colori negli assi $X$ e $Y$. Gli assi $X$ e $Y$ dispongono i colori in base al loro valore di hue. I pixel bianchi indicano un match perfetto: i colori hanno distanza zero, cioè sono identici. I pixel scuri, invece, indicano una grande distanza.
+Il sorting dei colori è fortemente connesso ad un altro problema: dati due colori differenti, quanto sono distanti? Il concetto di distanza dipende da in quale spazio li stiamo analizzando. Seguono qui alcuni grafici che rappresentano come la distanza è percepita in diversi spazi di colore. Nei diagrammi seguenti, ogni pixel $(x, y)$ indica quanto distanti sono i rispettivi colori negli assi $X$ e $Y$. Gli assi $X$ e $Y$ dispongono i colori in base al loro valore di hue. I pixel bianchi indicano un match perfetto: i colori hanno distanza zero, cioè sono identici. I pixel scuri, invece, indicano una grande distanza.
 
-HSV (e HSL).
+Distanza percepita nello spazio HSV (e HSL).
 
 ![[DistanceHLS.png|300]]
+
+Distanza percepita nello spazio RGB.
+
+![[DistanceRGB.png|300]]
+
+Distanza percepita nello spazio YIQ.
+
+![[DistanceYIQ.png|300]]
+
+Distanza percepita nello spazio LAB.
+
+![[DistanceLAB.png|300]]
+
+I diagrammi successivi rimpiazzano i colori sull'asse orizzontale con un gradiente in scala di grigi. Non ci saranno più pixel bianchi poichè nessun colore sarà uguale ad un altro.
+
+Distanza percepita nello spazio HSV (e HSL).
+
+![[GradientHSV.png|300]]
+
+Distanza percepita nello spazio RGB.
+
+![[GradientRGB.png|300]]
+
+Distanza percepita nello spazio YIQ.
+
+![[GradientYIQ.png|300]]
+
+Distanza percepita nello spazio LAB.
+
+![[GradientLAB.png|300]]
 
 ----------------------------------------------------------------
 
