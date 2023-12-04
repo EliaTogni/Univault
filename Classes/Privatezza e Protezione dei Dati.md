@@ -2325,17 +2325,15 @@ The possible inferences, having DB+DB$^k$, are:
 
 ![[ExposureCoefficientComputation.png]]
 
+##### Direct encryption – Freq+DBk
+Correspondence between an index and a plaintext value can be determined based on the number of occurrences of the index/value:
+- basic protection: values with the same number of occurrences are indistinguishable to the attacker.
+
 An example of Freq+DB$^k$ ($1:1$).
 
 ![[Freq+DBkExample.png]]
 
 To quantify how a tuple is exposed, we just have to do the product of the inverse cardinality of each element of the tuple itself. To quantify how a table is exposed, we just have to calculate the mean of the exposure of the tuples in the table itself.
-
-----------------------------------------------------------------
-
-##### Direct encryption – Freq+DBk
-Correspondence between an index and a plaintext value can be determined based on the number of occurrences of the index/value:
-- basic protection: values with the same number of occurrences are indistinguishable to the attacker.
 
 Assessment of index exposure based on equivalence relation where index/plaintext values with same number of occurrences belong to the same class. The exposure of values in equivalence class $C$ is $\frac{1}{\vert  C \vert}$.
 
@@ -2352,7 +2350,7 @@ $3$-colored undirected **Row-Column-Value** [[Grafo |graph]]:
 - one vertex for every distinct value in a column;
 - an arc connects every value to the column and row(s) in which it appears ($1:1$).
 
-RCV on plaintext values is identical to the one on indexes, as it is possible to notice in the images below. Inference exposure can be measured not by evaluating the frequencies of the values but by evaluating the **[[Grafo#Automorfismo |automorphisms]]** of the graph. Not sufﬁcient to count the number of automorphisms:
+RCV on plaintext values is identical to the one on indexes, as it is possible to notice in the images below. Inference exposure can be measured not by evaluating the frequencies of the values but by evaluating the **[[Grafo#Automorfismo |automorphisms]]** of the graph. However, it is not sufﬁcient to count the number of automorphisms:
 - if there are $K$ automorphisms and in $k$ of them the label assigned to $v_i$ is the same, there is a probability of $k/K$ of identifying the value.
 
 An example of DB+DB$^k$.
@@ -2363,7 +2361,7 @@ An example of DB+DB$^k$.
 ----------------------------------------------------------------
 
 ###### Computing the exposure coefﬁcient
-The set of automorphisms constitutes a group described by the coarsest **equitable partition** of the vertices. Each subset appearing in the partition contains vertices that can be substituted one for the other in an automorphism.
+The set of automorphisms constitutes a group described by the coarsest **equitable partition** of the vertices, where an equitable partition is composed by each subset appearing in the partition that contains vertices that can be substituted one for the other in an automorphism.
 
 **Nauty algorithm**: iteratively derives the partition.
 
@@ -2402,10 +2400,10 @@ A **Bloom ﬁlter** is at the basis of the construction of some indexing techniq
 - $h$ independent [[Funzione Hash |hash functions]] $H_i : \{0, 1\}^* \to [1, l]$.
 
 Insert element $x$:
-- Sets to $1$ the bit values at index positions $H_1(x), H_2(x), ..., H_h (x)$.
+- sets to $1$ the bit values at index positions $H_1(x), H_2(x), ..., H_h (x)$.
 
 Search element $x$:
-- Compute $H_1(x), H_2(x), ..., H_h(x)$ and check whether those values are set in the bit vector.
+- compute $H_1(x), H_2(x), ..., H_h(x)$ and check whether those values are set in the bit vector.
 
 An example of Bloom ﬁlter.<br />
 Let $l = 10$ and $h = 3$.
@@ -2422,7 +2420,7 @@ $\to$ maybe Yes; false positive!
 ### Bloom ﬁlter – Properties
 It is a generalization of hashing (Bloom ﬁlter with one hash function is equivalent to ordinary hashing) and it is space efﬁcient (roughly ten bit for every element in the dictionary with $1\%$ error). However, elements cannot be removed.
 
-It obviusly yield a constant false positive probability, which theoretically considered not acceptable but becomes acceptable in practical applications as it is  a ﬁne price to pay for having space efﬁciency. Notice that this technique cannot yield false negative and also that deletion cannot be implemented in this technique.
+It obviously yields a constant false positive probability, which theoretically considered not acceptable but becomes acceptable in practical applications as it is  a ﬁne price to pay for having space efﬁciency. Notice that this technique cannot yield false negative and also that deletion cannot be implemented in this technique.
 
 ----------------------------------------------------------------
 

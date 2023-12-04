@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Classes/Privatezza e Protezione dei Dati.md",
+                "file": "Blogs/Evolving Game of Life.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Privatezza e Protezione dei Dati.md",
+                "file": "Blogs/Evolving Game of Life.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,6 +116,7 @@
   },
   "active": "0da0ed1548d6151e",
   "lastOpenFiles": [
+    "Classes/Privatezza e Protezione dei Dati.md",
     "Blogs/The incredibly challenging task of sorting colours.md",
     "Lexicon/Sedicente.md",
     "Lexicon/Bovindo.md",
@@ -135,7 +136,6 @@
     "Images/DistanceHLS.png",
     "Images/SortNNRGB.png",
     "Images/SortGrayHilbert.png",
-    "Classes/Privatezza e Protezione dei Dati.md",
     "Articles/Image Classification with Classic and Deep Learning Techniques.md",
     "Lexicon/Allampanato.md",
     "Books/Leggere, scrivere, argomentare.md",
