@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -116,6 +117,7 @@
   },
   "active": "0da0ed1548d6151e",
   "lastOpenFiles": [
+    "Images/GoL.gif",
     "Classes/Privatezza e Protezione dei Dati.md",
     "Blogs/The incredibly challenging task of sorting colours.md",
     "Lexicon/Sedicente.md",
@@ -151,7 +153,6 @@
     "Lexicon/Pamphlet.md",
     "Lexicon/Perigliare.md",
     "Lexicon/Refolo.md",
-    "Lexicon/Sicumera.md",
     "Blogs",
     "Atoms",
     "Lexicon",
