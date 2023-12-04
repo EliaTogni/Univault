@@ -1,16 +1,8 @@
----
-"Titolo:": 
-Sottotitolo: 
-"Autore:": 
-"Anno:": 
-"Link:":
----
-# Sommario
-
+Adattamento dell'inglese **bow window**, finestra ad arco orizzontale.
 
 ----------------------------------------------------------------
 
-# Lessico
+# Esempi
 
 
 ----------------------------------------------------------------

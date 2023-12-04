@@ -1,16 +1,8 @@
----
-"Titolo:": 
-Sottotitolo: 
-"Autore:": 
-"Anno:": 
-"Link:":
----
-# Sommario
-
+Chi si attribuisce arbitrariamente un nome, una qualifica o una qualità.
 
 ----------------------------------------------------------------
 
-# Lessico
+# Esempi
 
 
 ----------------------------------------------------------------

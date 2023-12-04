@@ -1,5 +1,6 @@
 ---
 "Titolo:": 
+Sottotitolo: 
 "Autore:": 
 "Casa Editrice:": 
 "Anno:": 

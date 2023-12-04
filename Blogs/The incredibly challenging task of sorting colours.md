@@ -1,5 +1,6 @@
 ---
 "Titolo:": The incredibly challenging task of sorting colours
+Sottotitolo: 
 "Autore:": Alan Zucconi
 "Anno:": "2015"
 "Link:": https://www.alanzucconi.com/2015/09/30/colour-sorting/
