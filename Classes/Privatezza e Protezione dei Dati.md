@@ -2314,12 +2314,12 @@ The computation of the exposure coefﬁcient $\varepsilon$ depends on two factor
 		- the plaintext database (**DB**);
 		- the encrypted database (**DB$^k$**).
 
-The possible inferences are:
-- Freq+DB$^k$:
-	- plaintext content: determine the existence of a certain tuple (or association of values) in the original database;
-	- indexing function: determine the correspondence between plaintext values and indexes.
-- DB+DB$^k$:
-	- indexing function: determine the correspondence between plaintext values and indexes.
+The possible inferences, having Freq+DB$^k$, are:
+- **plaintext content**: determine the existence of a certain tuple (or association of values) in the original database;
+- **indexing function**: determine the correspondence between plaintext values and indexes.
+
+The possible inferences, having DB+DB$^k$, are:
+- **indexing function**: determine the correspondence between plaintext values and indexes.
 
 #### Exposure coefﬁcient computation
 
