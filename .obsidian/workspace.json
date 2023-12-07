@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Blogs/Evolving Game of Life.md",
+                "file": "Lexicon/Bovindo.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Blogs/Evolving Game of Life.md",
+                "file": "Lexicon/Bovindo.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,12 +116,13 @@
   },
   "active": "0da0ed1548d6151e",
   "lastOpenFiles": [
+    "Lexicon/Sedicente.md",
+    "Lexicon/Bovindo.md",
+    "Lexicon/Allampanato.md",
+    "Blogs/Evolving Game of Life.md",
     "Images/GoL.gif",
     "Classes/Privatezza e Protezione dei Dati.md",
     "Blogs/The incredibly challenging task of sorting colours.md",
-    "Lexicon/Sedicente.md",
-    "Lexicon/Bovindo.md",
-    "Blogs/Evolving Game of Life.md",
     "Templates/Video Template.md",
     "Templates/Lexicon Template.md",
     "Templates/Book Template.md",
@@ -137,9 +137,7 @@
     "Images/DistanceRGB.png",
     "Images/DistanceHLS.png",
     "Images/SortNNRGB.png",
-    "Images/SortGrayHilbert.png",
     "Articles/Image Classification with Classic and Deep Learning Techniques.md",
-    "Lexicon/Allampanato.md",
     "Books/Leggere, scrivere, argomentare.md",
     "Videos/The Unfair Advantage Of The 60 Second Procrastination Rule.md",
     "Videos/Set SIX Alarms. It'll Change Your Life..md",
