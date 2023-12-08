@@ -20,7 +20,7 @@ Qui un esempio di cosa è possibile ottenere da GoL.
 
 L'autore sottolinea come spesso chieda ai candidati per la sua compagnia di implementare GoL.
 
-Un'altra osservazione dell'autore è il fatto che nessuno si sia mai offerto volontario per implementare GoL tramite convoluzione.  Di seguito, il codice Python dell'autore per fare ciò.
+Un'altra osservazione dell'autore è il fatto che nessuno si sia mai offerto volontario per implementare GoL tramite convoluzione. Di seguito, il codice Python dell'autore per fare ciò.
 
 ```Python
 import cv2
