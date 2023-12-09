@@ -2465,9 +2465,7 @@ Basic idea/desiderata:
 - each user is communicated the keys necessary to decrypt the resources she is entailed to access.
 
 ##### Authorization policy
-The data owner deﬁnes a **discretionary access control** (authorization) policy to regulate read access to the resources. An authorization policy $\mathcal{A}$ is a set of permissions of the form $\langle \text{ user, resource } \rangle$ (because only the owner can write and the user can only read, therefore it is useless to specify the operation to apply on the data). It can be represented as:
-- an access matrix;
-- a directed and bipartite [[Grafo|graph]] having a vertex for each user $u$ and for each resource $r$, and an edge from $u$ to $r$ for each permission $\langle u, r \rangle$.
+The data owner deﬁnes a **discretionary access control** (authorization) policy to regulate **read access** to the resources. An authorization policy $\mathcal{A}$ is a set of permissions of the form $\langle \text{ user, resource } \rangle$ (because only the owner can write and the user can only read, therefore it is useless to specify the operation to apply on the data). It can be represented as an access matrix or a directed and bipartite [[Grafo|graph]], having a vertex for each user $u$ and for each resource $r$, and an edge from $u$ to $r$ for each permission $\langle u, r \rangle$.
 
 The basic idea is that different ACLs implies different encryption keys.
 
@@ -3174,477 +3172,103 @@ Maximum afﬁnity fragmentation F (fragmentation afﬁnity = $65$). Merging any 
 
 ##### Query workload
 Basic principles:
-• minimize the execution cost of queries
-• representative queries (query workload) used as starting point
-• query cost model: based on the selectivity of the conditions in
-queries and queries’ frequencies
+- minimize the execution cost of queries;
+- representative queries (query workload) used as starting point;
+- query cost model: based on the selectivity of the conditions in queries and queries’ frequencies.
+
 Goal:
-• determine a fragmentation that minimizes the query workload cost
-=⇒ NP-hard problem (minimum hitting set problem)
+- determine a fragmentation that minimizes the query workload cost $\to$ NP-hard problem (minimum hitting set problem).
+
 Basic idea of the heuristic:
-• exploit monotonicity of the query cost function with respect to a
-dominance relationship among fragmentations
-• traversal (checking ps solutions at levels multiple of d ) over a
-spanning tree of the fragmentation lattice
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+- exploit monotonicity of the query cost function with respect to a dominance relationship among fragmentations;
+- traversal (checking ps solutions at levels multiple of d ) over a spanning tree of the fragmentation lattice.
 
-148/268
+----------------------------------------------------------------
 
-Fragmentation
+## Fragmentation
+Keep a few Basic idea (hybrid scenarios):
+- encryption makes query execution more expensive and not always possible;
+- encryption brings overhead of key management.
 
-Keep a few
-Basic idea (hybrid scenarios):
-− encryption makes query execution more expensive and not always
-possible
-− encryption brings overhead of key management
-=⇒ Depart from encryption by involving the owner as a trusted
-party to maintain a limited amount of data [CDFJPS-09b, CDFJPS-11]
+$\to$ Depart from encryption by involving the owner as a trusted party to maintain a limited amount of data.
 
 • Fo ∪ Fs = R
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-150/268
-
-Keep a few – Fragmentation
 Given:
-• R(A1 , . . . , An ): relation schema
-• C = {c1 , . . . , cm }: conﬁdentiality constraints over R
-Determine a fragmentation F = hFo , Fs i for R, where Fo is stored at the
-owner and Fs is stored at a storage server, and
-• Fo ∪ Fs = R (completeness)
-• ∀c ∈ C , c 6⊆ Fs (conﬁdentiality)
-• Fo ∩ Fs = 0/ (non-redundancy)
+- R(A1 , . . . , An ): relation schema;
+- C = {c1 , . . . , cm }: conﬁdentiality constraints over R
+
+Determine a fragmentation F = hFo , Fs i for R, where Fo is stored at the owner and Fs is stored at a storage server, and:
+- Fo ∪ Fs = R (**completeness**);
+- ∀c ∈ C , c 6⊆ Fs (**conﬁdentiality**);
+- Fo ∩ Fs = 0/ (**non-redundancy**)
 
 /* can be relaxed */
 
-At the physical level Fo and Fs have a common attribute (additional tid
-or non-sensitive key attribute) to guarantee lossless join
+At the physical level Fo and Fs have a common attribute (additional tid or non-sensitive key attribute) to guarantee lossless join.
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+An example of ...
 
-151/268
+slide /268
 
-Keep a few – Example
+### Query evaluation
+Queries are formulated on R, therefore need to be translated into equivalent queries on Fo and/or Fs. Queries of the form: SELECT A FROM R WHERE C where C is a conjunction of basic conditions:
+- C o : conditions that involve only attributes stored at the client;
+- C s : conditions that involve only attributes stored at the sever;
+- C so : conditions that involve attributes stored at the client and attributes stored at the server.
 
-SSN
-t1
-t2
-t3
-t4
-t5
-t6
-t7
-t8
+An example of query evaluation.
 
-123456789
-234567891
-345678912
-456789123
-567891234
-678912345
-789123456
-891234567
+slide 154/268
 
-PATIENTS
-Name
-YoB
+#### Query evaluation strategies
+Server-Client strategy:
+- server: evaluate C s and return result to client;
+- client: receive result from server and join it with Fo;
+- client: evaluate C o and C so on the joined relation.
 
-Job
+Client-Server strategy:
+- client: evaluate C o and send tid of tuples in result to server;
+- server: join input with Fs , evaluate C s , and return result to client;
+- client: join result from server with Fo and evaluate C so.
 
-Disease
-
-Alice
-Bob
-Carol
-David
-Eva
-Frank
-Gary
-Hilary
-
-Clerk
-Doctor
-Nurse
-Lawyer
-Doctor
-Doctor
-Teacher
-Nurse
-
-Asthma
-Asthma
-Asthma
-Bronchitis
-Bronchitis
-Gastritis
-Gastritis
-Diabetes
-
-tid SSN
-1
-2
-3
-4
-5
-6
-7
-8
-
-123456789
-234567891
-345678912
-456789123
-567891234
-678912345
-789123456
-891234567
-
-1980
-1980
-1970
-1970
-1970
-1960
-1960
-1960
-
-Fo
-Job
-
-Disease
-
-Clerk
-Doctor
-Nurse
-Lawyer
-Doctor
-Doctor
-Teacher
-Nurse
-
-Asthma
-Asthma
-Asthma
-Bronchitis
-Bronchitis
-Gastritis
-Gastritis
-Diabetes
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-c0
-c1
-c2
-c3
-
-= {SSN}
-= {Name, Disease}
-= {Name, Job}
-= {Job, Disease}
-
-Fs
-tid Name YoB
-1
-2
-3
-4
-5
-6
-7
-8
-
-Alice
-Bob
-Carol
-David
-Eva
-Frank
-Gary
-Hilary
-
-1980
-1980
-1970
-1970
-1970
-1960
-1960
-1960
-152/268
-
-Query evaluation
-• Queries are formulated on R, therefore need to be translated into
-equivalent queries on Fo and/or Fs
-• Queries of the form: SELECT A FROM R WHERE C
-where C is a conjunction of basic conditions
-◦ C o : conditions that involve only attributes stored at the client
-◦ C s : conditions that involve only attributes stored at the sever
-◦ C so : conditions that involve attributes stored at the client and
-attributes stored at the server
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-153/268
-
-Query evaluation – Example
-• Fo ={SSN,Job,Disease}, Fs ={Name,YoB}
-• q=
-
-SELECT
-FROM
-WHERE
-
-SSN, YoB
-Patients
-(Disease=“Bronchitis”)
-AND (YoB=“1970”)
-AND (Name=Job)
-
-• The conditions in the
-
-WHERE
-
-clause are split as follows
-
-◦ C o = {Disease = “Bronchitis”}
-◦ C s = {YoB = “1970”}
-◦ C so = {Name = Job}
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-154/268
-
-Query evaluation strategies
-Server-Client strategy
-• server: evaluate C s and return result to client
-• client: receive result from server and join it with Fo
-• client: evaluate C o and C so on the joined relation
-Client-Server strategy
-• client: evaluate C o and send tid of tuples in result to server
-• server: join input with Fs , evaluate C s , and return result to client
-• client: join result from server with Fo and evaluate C so
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-155/268
-
-Server-client strategy – Example
-q=
-
-SSN, YoB
-
-SELECT
-
-C o ={Disease = “Bronchitis”}
-C s ={YoB = “1970”}
-C so ={Name = Job}
-
-FROM Patients
-WHERE (Disease
-AND
-AND
-
-qs =
-
-= “Bronchitis”)
-(YoB = “1970”)
-(Name = Job)
-
-tid,Name,YoB
-Fs
-WHERE YoB = “1970”
-
-SELECT
-FROM
-
-q so =
-
-SELECT SSN, YoB
-FROM F o JOIN r s
-
-F o .tid=r s .tid
-(Disease = “Bronchitis”)
-
-ON
-WHERE
-
-AND
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-(Name = Job)
+An example of a server-client strategy.
 
 156/268
 
-Client-server strategy – Example
-q=
+An example of the client-server strategy.
 
-SSN, YoB
+slide 157/268
 
-SELECT
+#### Server-client vs client-server strategies
+If the storage server knows or can infer the query, Client-Server leaks information: the server infers that some tuples are associated with values that satisfy C o.
 
-FROM Patients
-WHERE (Disease
-AND
-AND
+If the storage server does not know and cannot infer the query, Server-Client and Client-Server strategies can be adopted without privacy violations. Possible strategy based on performances: evaluate most selective conditions ﬁrst.
 
-qo =
+----------------------------------------------------------------
 
-= “Bronchitis”)
-(YoB = “1970”)
-(Name = Job)
+### Minimal fragmentation
+The goal is to minimize the owner’s workload due to the management of F o. Weight function w takes a pair hF o ,F s i as input and returns the owner’s workload (i.e., storage and/or computational load). A fragmentation F = hFo , Fs i is minimal iff:
+1) F is correct (i.e., it satisﬁes the completeness, conﬁdentiality, and non-redundancy properties);
+2) ∄F ′ such that w(F ′ )<w(F ) and F ′ is correct.
 
-tid
-
-SELECT
-
-FROM F o
-WHERE Disease
-
-qs =
-
-SELECT
-
-C o ={Disease = “Bronchitis”}
-C s ={YoB = “1970”}
-C so ={Name = Job}
-
-= “Bronchitis”
-
-tid,Name,YoB
-
-FROM F s JOIN r o ON F s .tid=r o .tid
-WHERE YoB = “1970”
-
-q so =
-
-SSN, YoB
-F o JOIN r s ON F o .tid=r s .tid
-WHERE Name = Job
-SELECT
-
-FROM
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-157/268
-
-Server-client vs client-server strategies
-• If the storage server knows or can infer the query:
-◦ Client-Server leaks information: the server infers that some tuples
-are associated with values that satisfy C o
-
-• If the storage server does not know and cannot infer the query:
-◦ Server-Client and Client-Server strategies can be adopted without
-privacy violations
-◦ possible strategy based on performances: evaluate most selective
-conditions ﬁrst
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-158/268
-
-Minimal fragmentation
-• The goal is to minimize the owner’s workload due to the
-management of F o
-• Weight function w takes a pair hF o ,F s i as input and returns the
-owner’s workload (i.e., storage and/or computational load)
-• A fragmentation F = hFo , Fs i is minimal iff:
-1. F is correct (i.e., it satisﬁes the completeness, conﬁdentiality, and
-non-redundancy properties)
-2. ∄F ′ such that w(F ′ )<w(F ) and F ′ is correct
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-159/268
-
-Fragmentation metrics
+#### Fragmentation metrics
 Different metrics could be applied splitting the attributes between Fo
-and Fs , such as minimizing:
-• storage
-◦ number of attributes in Fo (Min-Attr )
-◦ size of attributes in Fo (Min-Size)
+and Fs, such as minimizing:
+- storage:
+	- number of attributes in Fo (Min-Attr );
+	- size of attributes in Fo (Min-Size).
+- computation/trafﬁc:
+	- number of queries in which the owner needs to be involved (Min-Query );
+	- number of conditions within queries in which the owner needs to be involved (Min-Cond).
 
-• computation/trafﬁc
-◦ number of queries in which the owner needs to be involved
-(Min-Query )
-◦ number of conditions within queries in which the owner needs to be
-involved (Min-Cond)
+The metrics to be applied may depend on the information available.
 
-The metrics to be applied may depend on the information available
+An example of data and workload information.
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+slide 161/268
 
-160/268
-
-Data and workload information – Example
-PATIENT(SSN,Name,DoB,Race,Job,Illness,Treatment,HDate)
-A
-SSN
-Name
-DoB
-Race
-Job
-Illness
-Treatment
-HDate
-
-q
-
-freq(q )
-
-q1
-q2
-q3
-q4
-q5
-q6
-q7
-
-5
-4
-10
-1
-7
-7
-1
-
-size(A)
-9
-20
-8
-5
-18
-15
-40
-8
-
-Attr (q )
-
-Cond(q )
-
-DoB, Illness
-Race, Illness
-Job, Illness
-Illness, Treatment
-Illness
-DoB, HDate, Treatment
-SSN, Name
-
-hDobi, hIllnessi
-hRacei, hIllnessi
-hJobi, hIllnessi
-hIllnessi, hTreatmenti
-hIllnessi
-hDoB,HDatei, hTreatmenti
-hSSNi, hNamei
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-161/268
-
-Weight metrics and minimization problems – 1
+Weight metrics and minimization problems – 1
 • Min-Attr. Only the relation schema (set of attributes) and the
 conﬁdentiality constraints are known
 =⇒ minimize the number of the attributes in F o
