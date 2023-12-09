@@ -2273,7 +2273,7 @@ Interaction for query evaluation.
 
 ## Searchable encryption
 ### Order preserving encryption
-**Order Preserving Encryption Schema** (**OPES**) takes as input a target distribution of index values and applies an order preserving transformation so that the resulting index values follow the target distribution:
+**Order Preserving [[Schema di cifratura |Encryption Schema]]** (**OPES**) takes as input a target distribution of index values and applies an order preserving transformation so that the resulting index values follow the target distribution:
 - comparison can be directly applied on the encrypted data;
 - query evaluation does not produce spurious tuples.
 

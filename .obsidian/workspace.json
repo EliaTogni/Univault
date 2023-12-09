@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Lexicon/Sedicente.md",
+                "file": "Classes/Privatezza e Protezione dei Dati.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Lexicon/Sedicente.md",
+                "file": "Classes/Privatezza e Protezione dei Dati.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,13 +116,14 @@
   },
   "active": "0da0ed1548d6151e",
   "lastOpenFiles": [
-    "Lexicon/Sicumera.md",
+    "Atoms/Schema di cifratura.md",
+    "Classes/Privatezza e Protezione dei Dati.md",
     "Blogs/Evolving Game of Life.md",
-    "Lexicon/Bovindo.md",
     "Lexicon/Sedicente.md",
+    "Lexicon/Sicumera.md",
+    "Lexicon/Bovindo.md",
     "Lexicon/Allampanato.md",
     "Images/GoL.gif",
-    "Classes/Privatezza e Protezione dei Dati.md",
     "Blogs/The incredibly challenging task of sorting colours.md",
     "Templates/Video Template.md",
     "Templates/Lexicon Template.md",
@@ -151,7 +152,6 @@
     "Lexicon/Improperio.md",
     "Lexicon/Pamphlet.md",
     "Lexicon/Perigliare.md",
-    "Lexicon/Refolo.md",
     "Blogs",
     "Atoms",
     "Lexicon",

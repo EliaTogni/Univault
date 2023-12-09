@@ -59,8 +59,26 @@ while True:
 
 ```
 
+Il frammento più importante è la convoluzione e la non linearità. Questo frammento è:
+
+```Python
+newboard = F.conv2d(board, weights, padding=1) \  .view(BOARD_HEIGHT,BOARD_WIDTH)newboard = (newboard==12) | (newboard==3) | (newboard==13)
+```
+
+Di seguito, un grafico che illustra semplicemente come e perchè la convoluzione funziona:
+
+immagine convolution
+
+In questo caso, il kernel è $3 \times 3$.
+
 ----------------------------------------------------------------
 ## Can a neural network learn Game of Life?
+Ora abbiamo:
+- illimitati training data (quante giocate vogliamo, partendo da configurazioni iniziali randomiche);
+- un kernel di convoluzione con pesi che dovrebbero essere apprendibili;
+- una non-linearità non differenziabile.
+
+----------------------------------------------------------------
 
 ## Did it work?
 
