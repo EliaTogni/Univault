@@ -2482,8 +2482,7 @@ This approach is based on a key derivation hierarchy $(\mathcal{K} , \preceq)$:
 - $\mathcal{K}$ is the set of keys in the system;
 - $\preceq$ is the partial order relation deﬁned on $\mathcal{K}$.
 
-The knowledge of the key of vertex $v_1$ and of a piece of
-information publicly available allows the computation of the key of a lower level vertex $v_2$ such that $v_2 \preceq v_1$.
+The knowledge of the key of vertex $v_1$ and of a piece of information publicly available allows the computation of the key of a lower level vertex $v_2$ such that $v_2 \preceq v_1$.
 
 $(\mathcal{K} , \preceq)$ can be graphically represented as a graph with a vertex for each $x \in \mathcal{K}$ and a path from $x$ to $y$ iff $y \preceq x$.
 
@@ -2495,8 +2494,7 @@ Depending on the partial order relation deﬁned on $\mathcal{K}$, the key deriv
 ----------------------------------------------------------------
 
 ###### Token-based key derivation methods
-Keys are arbitrarily assigned to vertices. A public label $l_i$ is associated with each key $k_i$. A piece of public information $t_{i,j}$, called token, is associated with
-each edge in the hierarchy. Given an edge $(k_i,k_j)$, token $t_{i,j}$ is computed as $k_j \oplus h(k_i, l_j)$ where:
+Keys are arbitrarily assigned to vertices. A public label $l_i$ is associated with each key $k_i$. A piece of public information $t_{i,j}$, called token, is associated with each edge in the hierarchy. Given an edge $(k_i,k_j)$, token $t_{i,j}$ is computed as $k_j \oplus h(k_i, l_j)$ where:
 - $\oplus$ is the $n$-ary xor operator;
 - $h$ is a secure [[Funzione Hash |hash function]].
 
@@ -3160,7 +3158,7 @@ Goal:
 - determine a correct fragmentation with maximum afﬁnity (sum of fragments afﬁnity computed as the sum of the afﬁnity of the different pairs of attributes in the fragment) $\to$ NP-hard problem (minimum hitting set problem).
 
 Basic idea of the heuristic:
-- iteratively combine fragments that have the highest afﬁnity and do not violate any conﬁdentiality constraint
+- iteratively combine fragments that have the highest afﬁnity and do not violate any conﬁdentiality constraint.
 
 An example of maximum afﬁnity.
 
@@ -3173,49 +3171,56 @@ Maximum afﬁnity fragmentation F (fragmentation afﬁnity = $65$). Merging any 
 ##### Query workload
 Basic principles:
 - minimize the execution cost of queries;
-- representative queries (query workload) used as starting point;
-- query cost model: based on the selectivity of the conditions in queries and queries’ frequencies.
+- representative queries (**query workload**) used as starting point;
+- **query cost model**: based on the selectivity of the conditions in queries and queries’ frequencies.
 
 Goal:
 - determine a fragmentation that minimizes the query workload cost $\to$ NP-hard problem (minimum hitting set problem).
 
 Basic idea of the heuristic:
 - exploit monotonicity of the query cost function with respect to a dominance relationship among fragmentations;
-- traversal (checking ps solutions at levels multiple of d ) over a spanning tree of the fragmentation lattice.
+- traversal (checking ps solutions at levels multiple of $d$) over a spanning tree of the fragmentation lattice.
 
 ----------------------------------------------------------------
 
 ## Fragmentation
-Keep a few Basic idea (hybrid scenarios):
+### Keep a few
+Basic idea (hybrid scenarios):
 - encryption makes query execution more expensive and not always possible;
 - encryption brings overhead of key management.
 
 $\to$ Depart from encryption by involving the owner as a trusted party to maintain a limited amount of data.
 
-• Fo ∪ Fs = R
+slide 150/268
 
 Given:
-- R(A1 , . . . , An ): relation schema;
-- C = {c1 , . . . , cm }: conﬁdentiality constraints over R
+- $R(A_1, ..., A_n)$: relation schema;
+- $\mathcal{C} = \{c_1, ..., c_m\}$: conﬁdentiality constraints over $R$.
 
-Determine a fragmentation F = hFo , Fs i for R, where Fo is stored at the owner and Fs is stored at a storage server, and:
-- Fo ∪ Fs = R (**completeness**);
-- ∀c ∈ C , c 6⊆ Fs (**conﬁdentiality**);
-- Fo ∩ Fs = 0/ (**non-redundancy**)
+Determine a fragmentation $\mathcal{F} = \langle F_o, F_s \rangle$ for $R$, where $F_o$ is stored at the owner and $F_s$ is stored at a storage server, and:
+- $F_o \cup F_s = R$ (**completeness**);
+- $\forall c \in \mathcal{C}, c \nsubseteq F_s$ (**conﬁdentiality**);
+- $F_o \cap F_s = \emptyset$ (**non-redundancy**).
 
-/* can be relaxed */
+At the physical level $F_o$ and $F_s$ have a common attribute (additional _tid_ or non-sensitive key attribute) to guarantee lossless join.
 
-At the physical level Fo and Fs have a common attribute (additional tid or non-sensitive key attribute) to guarantee lossless join.
+An example of keep a few.
 
-An example of ...
+slide 152/268
 
-slide /268
+----------------------------------------------------------------
 
 ### Query evaluation
-Queries are formulated on R, therefore need to be translated into equivalent queries on Fo and/or Fs. Queries of the form: SELECT A FROM R WHERE C where C is a conjunction of basic conditions:
-- C o : conditions that involve only attributes stored at the client;
-- C s : conditions that involve only attributes stored at the sever;
-- C so : conditions that involve attributes stored at the client and attributes stored at the server.
+Queries are formulated on $R$, therefore need to be translated into equivalent queries on $F_o$ and/or $F_s$. Queries of the form
+
+```MySQL
+SELECT A FROM R WHERE C
+```
+
+where $C$ is a conjunction of basic conditions:
+- $C_o$: conditions that involve only attributes stored at the client;
+- $C_s$: conditions that involve only attributes stored at the sever;
+- $C_{so}$: conditions that involve attributes stored at the client and attributes stored at the server.
 
 An example of query evaluation.
 
@@ -3223,14 +3228,14 @@ slide 154/268
 
 #### Query evaluation strategies
 Server-Client strategy:
-- server: evaluate C s and return result to client;
-- client: receive result from server and join it with Fo;
-- client: evaluate C o and C so on the joined relation.
+- server: evaluate $C_s$ and return result to client;
+- client: receive result from server and join it with $F_o$;
+- client: evaluate $C_o$ and $C_{so}$ on the joined relation.
 
 Client-Server strategy:
-- client: evaluate C o and send tid of tuples in result to server;
-- server: join input with Fs , evaluate C s , and return result to client;
-- client: join result from server with Fo and evaluate C so.
+- client: evaluate $C_o$ and send _tid_ of tuples in result to server;
+- server: join input with $F_s$, evaluate $C_s$, and return result to client;
+- client: join result from server with $F_o$ and evaluate $C_{so}$.
 
 An example of a server-client strategy.
 
@@ -3241,26 +3246,25 @@ An example of the client-server strategy.
 slide 157/268
 
 #### Server-client vs client-server strategies
-If the storage server knows or can infer the query, Client-Server leaks information: the server infers that some tuples are associated with values that satisfy C o.
+If the storage server knows or can infer the query, Client-Server leaks information: the server infers that some tuples are associated with values that satisfy $C_o$.
 
 If the storage server does not know and cannot infer the query, Server-Client and Client-Server strategies can be adopted without privacy violations. Possible strategy based on performances: evaluate most selective conditions ﬁrst.
 
 ----------------------------------------------------------------
 
 ### Minimal fragmentation
-The goal is to minimize the owner’s workload due to the management of F o. Weight function w takes a pair hF o ,F s i as input and returns the owner’s workload (i.e., storage and/or computational load). A fragmentation F = hFo , Fs i is minimal iff:
-1) F is correct (i.e., it satisﬁes the completeness, conﬁdentiality, and non-redundancy properties);
-2) ∄F ′ such that w(F ′ )<w(F ) and F ′ is correct.
+The goal is to minimize the owner’s workload due to the management of $F_o$. Weight function $w$ takes a pair $\langle F_o, F_s \rangle$ as input and returns the owner’s workload (i.e., storage and/or computational load). A fragmentation $\mathcal{F} = \langle F_o, F_s \rangle$ is minimal iff:
+1) $\mathcal{F}$ is correct (i.e., it satisﬁes the completeness, conﬁdentiality, and non-redundancy properties);
+2) $\nexists \mathcal{F}'$ such that $w(\mathcal{F}') < w(\mathcal{F})$ and $\mathcal{F}'$ is correct.
 
 #### Fragmentation metrics
-Different metrics could be applied splitting the attributes between Fo
-and Fs, such as minimizing:
-- storage:
-	- number of attributes in Fo (Min-Attr );
-	- size of attributes in Fo (Min-Size).
-- computation/trafﬁc:
-	- number of queries in which the owner needs to be involved (Min-Query );
-	- number of conditions within queries in which the owner needs to be involved (Min-Cond).
+Different metrics could be applied splitting the attributes between $F_o$ and $F_s$, such as minimizing:
+- **storage**:
+	- number of attributes in $F_o$ (**Min-Attr**);
+	- size of attributes in $F_o$ (**Min-Size**).
+- **computation/trafﬁc**:
+	- number of queries in which the owner needs to be involved (**Min-Query**);
+	- number of conditions within queries in which the owner needs to be involved (**Min-Cond**).
 
 The metrics to be applied may depend on the information available.
 
@@ -3268,112 +3272,48 @@ An example of data and workload information.
 
 slide 161/268
 
-Weight metrics and minimization problems – 1
-• Min-Attr. Only the relation schema (set of attributes) and the
-conﬁdentiality constraints are known
-=⇒ minimize the number of the attributes in F o
-◦ w a (F )=card(F o )
+----------------------------------------------------------------
 
-• Min-Size. The relation schema (set of attributes), the
-conﬁdentiality constraints, and the size of each attribute are known
-=⇒ minimize the physical size of F o
-◦ w s (F )=∑A ∈F size(A)
-o
+### Weight metrics and minimization problems
+- **Min-Attr**: only the relation schema (set of attributes) and the conﬁdentiality constraints are known $\to$ minimize the number of the attributes in $F_o$:
+	- $w_a(\mathcal{F})=card(F_o)$.
+- **Min-Size**: the relation schema (set of attributes), the conﬁdentiality constraints, and the size of each attribute are known $\to$ minimize the physical size of $F_o$:
+	- $w_s(\mathcal{F})=\sum_{A \in F_o} size(A)$.
+- **Min-Query**: the relation schema (set of attributes), the conﬁdentiality constraints, and a representative proﬁle of the expected query workload are known. Query workload proﬁle:
+	$Q=\{(q_1, freq(q_1), Attr(q_1)), ..., (q_l, freq(q_l)Attr(q_l))\}$
+	- $q_1, ..., q_l$ queries to be executed;
+	- $freq(q_i)$ expected execution frequency of $q_i$;
+	- $Attr(q_i)$ attributes appearing in the $WHERE$ clause of $q_i$
+	
+	$\to$ minimize the number of query executions that require processing at the owner:
+	- $w_q(F) = \sum_{q \in \mathcal{Q}} freq(q)$ such that $Attr(q) \cap F_o \neq \emptyset$.
+- **Min-Cond**: the relation schema (set of attributes), the conﬁdentiality constraints, and a complete proﬁle (conditions in each query of the form $a_i$ op $v$ or $a_i$ op $a_j$) of the expected query workload are known.
+	Query workload proﬁle:
+	$\mathcal{Q}=\{(q_1, freq(q_1), Cond(q_1)), ..., (q_l, freq(q_l)Cond(q_l))\}$
+	- $q_1, ..., q_l$ queries to be executed;
+	- $freq(q_i)$ expected execution frequency of $q_i$;
+	- $Cond(q_i)$ set of conditions in the $WHERE$ clause of query $q_i$; each condition is represented as a single attribute or a pair of attributes.
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+$\to$ minimize the number of conditions that require processing at the owner:
+- $w_c(F)= \sum_{cnd \in Cond(\mathcal{Q})} freq(cnd)$ such that $cnd \cap F_o \neq \emptyset$, where $Cond(\mathcal{Q})$ denotes the set of all conditions of queries in $Q$, and $freq(cnd)$ is the overall frequency of $cnd$.
 
-162/268
+----------------------------------------------------------------
 
-Weight metrics and minimization problems – 2
-• Min-Query. The relation schema (set of attributes), the
-conﬁdentiality constraints, and a representative proﬁle of the
-expected query workload are known
-Query workload proﬁle:
-Q={(q 1 , freq(q 1 ), Attr (q 1 )), . . . , (q l , freq(q l )Attr (q l ))}
-◦ q 1 , . . . , q l queries to be executed
-◦ freq(q i ) expected execution frequency of q i
-◦ Attr (q i ) attributes appearing in the
+### Modeling of the minimization problems
+All the problems of minimizing storage or computation/trafﬁc aim at identifying a **hitting set**. $F_o$ must contain at least an attribute for each constraint.<br />
+Different metrics correspond to different criteria according to which the hitting set should be minimized. We represent all criteria with a uniform model based on:
+- **target set**: elements (i.e., attributes, queries, or conditions) with respect to which the minimization problem is deﬁned;
+- **weight function**: function that associates a weight with each target element;
+- **weight of a set of attributes**: sum of the weights of the targets intersecting with the set.
 
-WHERE
+$\to$ compute the hitting set of attributes with minimum weight.
 
-clause of q i
+slide 166/268
 
-=⇒ minimize the number of query executions that require
-processing at the owner
-◦ w q (F )=∑q ∈Q freq(q ) s.t. Attr (q) ∩ F o 6= 0/
+**Weighted Minimum Target Hitting Set Problem** (**WMTHSP**). Given a ﬁnite set $A$, a set $C$ of subsets of $A$, a set $\mathcal{T}$ (target) of subsets of $A$, and a weight function $w: T \to \mathbb{R}^+$, determine a subset $S$ of $A$ such that:
+1) $S$ is a hitting set of $A$;
+2) $\nexists S'$ such that $S'$ is a hitting set of $A$ and $\sum_{t \in \mathcal{T}, t \cap S' \neq \emptyset} w(t) < \sum_{t \in \mathcal{T}, t\cap S \neq \emptyset} w(t)$.
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-163/268
-
-Weight metrics and minimization problems – 3
-• Min-Cond. The relation schema (set of attributes), the
-conﬁdentiality constraints, and a complete proﬁle (conditions in
-each query of the form ai op v or ai op aj ) of the expected query
-workload are known
-Query workload proﬁle:
-Q={(q 1 , freq(q 1 ), Cond(q 1 )), . . . , (q l , freq(q l )Cond(q l ))}
-◦ q 1 , . . . , q l queries to be executed
-◦ freq(q i ) expected execution frequency of q i
-◦ Cond(q i ) set of conditions in the WHERE clause of query q i ; each
-condition is represented as a single attribute or a pair of attributes
-
-=⇒ minimize the number of conditions that require processing at
-the owner
-◦ w c (F )=∑cnd ∈Cond(Q) freq(cnd ) s.t. cnd ∩F o 6=0,
-/ where Cond(Q)
-denotes the set of all conditions of queries in Q, and freq(cnd ) is
-the overall frequency of cnd
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-164/268
-
-Modeling of the minimization problems – 1
-• All the problems of minimizing storage or computation/trafﬁc aim
-at identifying a hitting set
-◦ F o must contain at least an attribute for each constraint
-
-• Different metrics correspond to different criteria according to
-which the hitting set should be minimized
-• We represent all criteria with a uniform model based on:
-◦ target set: elements (i.e., attributes, queries, or conditions) with
-respect to which the minimization problem is deﬁned
-◦ weight function: function that associates a weight with each target
-element
-◦ weight of a set of attributes: sum of the weights of the targets
-intersecting with the set
-
-=⇒ compute the hitting set of attributes with minimum weight
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-165/268
-
-Modeling of the minimization problems – 2
-Problem Target T
-
-w(t) ∀t ∈T
-
-Min-Attr {{A}|A∈R}
-1
-Min-Size {{A}|A∈R}
-size(A) s.t. {A}=t
-Min-Query {attr|∃q∈Q, Attr (q)=attr}
-∑q ∈Q freq(q) s.t. Attr (q)=t
-Min-Cond {cnd |∃q∈Q, cnd ∈Cond(q)} freq(cnd ) s.t. cnd =t
-
-Weighted Minimum Target Hitting Set Problem (WMTHSP). Given a
-ﬁnite set A, a set C of subsets of A, a set T (target) of subsets of A,
-and a weight function w:T →R+ , determine a subset S of A such that:
-1. S is a hitting set of A
-2. ∄S′ such that S′ is a hitting set of A and
-∑t∈T ,t∩S′ 6=0/ w(t) < ∑t∈T ,t∩S6=0/ w(t)
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-166/268
-
-Modeling of the minimization problems – 3
 • The Minimum Hitting Set Problem can be reduced to the
 WMTHSP
 ◦ T = {A1 , . . . , An }; w({Ai }) = 1, i = 1, . . . , n
