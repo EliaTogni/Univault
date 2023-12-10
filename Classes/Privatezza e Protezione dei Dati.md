@@ -2520,16 +2520,16 @@ We want a translation of the authorization policy into an encryption policy. The
 - each user can be released only a single key;
 - each resource is encrypted only once (with a single key).
 
-Function $\phi$ : $\mathcal{U} \cup \ \mathcal{R} \to \mathcal{L}$ describes:
+Function $\phi$ : $\mathcal{U} \cup \mathcal{R} \to \mathcal{L}$ describes:
 - the association between a user and (the label of) her key;
 - the association between a resource and (the label of) the key used for encrypting it.
 
 ----------------------------------------------------------------
 
 ###### Formal deﬁnition of encryption policy
-An encryption policy over users $\mathcal{U}$ and resources $\mathcal{R}$, denoted $\mathcal{E}$ , is a $6$-tuple $\langle \mathcal{U}, \mathcal{R}, \mathcal{K}, \mathcal{L}, \phi, \mathcal{T} \rangle$, where:
+An **encryption policy** over users $\mathcal{U}$ and resources $\mathcal{R}$, denoted $\mathcal{E}$ , is a $6$-tuple $\langle \mathcal{U}, \mathcal{R}, \mathcal{K}, \mathcal{L}, \phi, \mathcal{T} \rangle$, where:
 - $\mathcal{K}$ is the set of keys deﬁned in the system and $\mathcal{L}$ is the set of corresponding labels;
-- $\phi$ is a key assignment and encryption schema;
+- $\phi$ is a key assignment and [[Schema di cifratura |encryption schema]];
 - $\mathcal{T}$ is a set of tokens deﬁned on $\mathcal{K}$ and $\mathcal{L}$.
 
 The encryption policy can be represented via a graph by extending the key and token graph to include:
@@ -2545,14 +2545,16 @@ The encryption policy can be represented via a graph by extending the key and to
 - user $A$ can access $\{r_1, r_2\}$;
 - user $B$ can access $\{r_2, r_3\}$;
 - user $C$ can access $\{r_2\}$;
-- user $D$ can access $\{r_1, r_2, r_3\}$
-- user $E$ can access $\{r_1, r_2, r_3\}$
-- user $F$ can access $\{r_3\}$
+- user $D$ can access $\{r_1, r_2, r_3\}$;
+- user $E$ can access $\{r_1, r_2, r_3\}$;
+- user $F$ can access $\{r_3\}$.
 
 ----------------------------------------------------------------
 
 ###### Policy transformation
-Goal: translate an authorization policy $\mathcal{A}$ into an equivalent encryption policy $\mathcal{E}$. $\mathcal{A}$ and $\mathcal{E}$ are equivalent if they allow exactly the same accesses:
+Goal: translate an authorization policy $\mathcal{A}$ into an equivalent encryption policy $\mathcal{E}$.
+
+$\mathcal{A}$ and $\mathcal{E}$ are equivalent if they allow exactly the same accesses:
 - $\forall u \in \mathcal{U}, r \in \mathcal{R} : u \rightarrow^{\mathcal{E}} r \Rightarrow u \to^{\mathcal{A}} r$;
 - $\forall u \in \mathcal{U}, r \in \mathcal{R} : u \rightarrow^{\mathcal{A}} r \Rightarrow u \to^{\mathcal{E}} r$.
 
@@ -2562,17 +2564,17 @@ Goal: translate an authorization policy $\mathcal{A}$ into an equivalent encrypt
 Naive solution:
 - each user is associated with a different key;
 - each resource is encrypted with a different key;
-- a token $t_{u,r}$ is generated and published for each permission $\langle u, r \rangle \to$ producing and managing a token for each single permission can be unfeasible in practice.
+- a token $t_{u,r}$ is generated and published for each permission $\langle u, r \rangle$ (it practically means to use the bipartite graph previously seen as a key and token graph) $\to$ producing and managing a token for each single permission can be unfeasible in practice.
 
 Exploiting acls and user groups:
 - group users with the same access privileges;
 - encrypt each resource with the key associated with the set of users that can access it.
 
-slide authorization policy example
+![[AuthorizationPolicy.png]]
 
-r4 e r5 sono uguali (hanno la stessa acl) e quindi non serve crittarle diversamente
+$r4$ and $r5$ can be accessed by the same users. Therefore, these resources may be encrypted in the same way.
 
-It is possible to create an encryption policy graph by exploiting the hierarchy among sets of users induced by the partial order relationship based on set containment ($\subseteq$). If the system has a large number of users, the encryption policy has a large number of tokens and keys ( at most $2^{\vert \mathcal{U} \vert } − 1$) (we subtract the empty set) $\to$ inefﬁcient key derivation.
+It is possible to create an encryption policy graph by exploiting the hierarchy among sets of users induced by the partial order relationship based on set containment ($\subseteq$). If the system has a large number of users, the encryption policy has a large number of tokens and keys (at most $2^{\vert \mathcal{U} \vert } − 1$ because we subtract the empty set) $\to$ inefﬁcient key derivation.
 
 ![[TranslatingAIntoE.png]]
 
@@ -2581,7 +2583,7 @@ It is possible to create an encryption policy graph by exploiting the hierarchy 
 ###### Minimum encryption policy
 Observation: user groups that do not correspond to any acl do not need to have a key.
 
-Goal: compute a minimum encryption policy, equivalent to a given authorization policy, that minimize the number of tokens to be maintained by the server.
+Goal: compute a **minimum encryption policy**, equivalent to a given authorization policy that minimize the number of tokens to be maintained by the server.
 
 Solution: heuristic algorithm based on the observation that:
 - only vertices associated with user groups corresponding to actual acls need to be associated with a key;
@@ -2592,9 +2594,9 @@ Solution: heuristic algorithm based on the observation that:
 
 ###### Construction of the key and token graph
 Start from an authorization policy $\mathcal{A}$:
-1) create a vertex/key for each user and for each non-singleton acl (**initialization**);
+1) create a vertex/key for each user and for each **non-singleton acl** (**initialization**);
 2) for each vertex $v$ corresponding to a non-singleton acl, ﬁnd a cover without redundancies (**covering**):
-	1) for each user $u$ in _v.acl_, ﬁnd an ancestor $v'$ of $v$ with $u \in v'$_acl_.
+	1) for each user $u$ in $v$._acl_, ﬁnd an ancestor $v'$ of $v$ with $u \in v'$._acl_.
 3) factorize common ancestors (**factorization**).
 
 An example of a key and token graph.
@@ -2606,6 +2608,8 @@ An example of a key and token graph.
 ###### Key assignment and encryption schema $\phi$ and catalog
 
 ![[KeyAssignment.png]]
+
+These informations can be stored on the server.
 
 ----------------------------------------------------------------
 
