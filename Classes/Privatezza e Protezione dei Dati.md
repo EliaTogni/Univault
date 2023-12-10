@@ -2449,7 +2449,7 @@ There are different approaches to the selective information sharing:
 
 ![[SelectiveInformationSharingApproach1.png]]
 
-- **selective encryption**: the authorization policy deﬁned by the data owner is translated into an equivalent encryption policy. Different parts of the datas are encrypted with different keys and giving a user only one of the keys grants him access only to that specific fragment of the datas
+- **selective encryption**: the authorization policy deﬁned by the data owner is translated into an equivalent encryption policy. Different parts of the datas are encrypted with different symmetric keys and giving a user only one of the keys grants him access only to that specific fragment of the datas
 
 ![[SelectiveInformationSharingApproach2.png]]
 
@@ -2465,7 +2465,7 @@ Basic idea/desiderata:
 - each user is communicated the keys necessary to decrypt the resources she is entailed to access.
 
 ##### Authorization policy
-The data owner deﬁnes a **discretionary access control** (authorization) policy to regulate **read access** to the resources. An authorization policy $\mathcal{A}$ is a set of permissions of the form $\langle \text{ user, resource } \rangle$ (because only the owner can write and the user can only read, therefore it is useless to specify the operation to apply on the data). It can be represented as an access matrix or a directed and bipartite [[Grafo|graph]], having a vertex for each user $u$ and for each resource $r$, and an edge from $u$ to $r$ for each permission $\langle u, r \rangle$.
+The data owner deﬁnes a **discretionary access control** (authorization) policy to regulate **read access** to the resources. An authorization policy $\mathcal{A}$ is a set of **permissions** of the form $\langle \text{ user, resource } \rangle$ (because only the owner can write and the user can only read, therefore it is useless to specify the operation to apply on the data). It can be represented as an access matrix or a directed and bipartite [[Grafo|graph]], having a vertex for each user $u$ and for each permissions resource $r$, and an edge from $u$ to $r$ for each permission $\langle u, r \rangle$.
 
 The basic idea is that different ACLs implies different encryption keys.
 
@@ -2494,9 +2494,11 @@ Depending on the partial order relation deﬁned on $\mathcal{K}$, the key deriv
 ----------------------------------------------------------------
 
 ###### Token-based key derivation methods
-Keys are arbitrarily assigned to vertices. A public label $l_i$ is associated with each key $k_i$. A piece of public information $t_{i,j}$, called token, is associated with each edge in the hierarchy. Given an edge $(k_i,k_j)$, token $t_{i,j}$ is computed as $k_j \oplus h(k_i, l_j)$ where:
+Keys are arbitrarily assigned to vertices. A public **label** $l_i$ is associated with each key $k_i$. A piece of public information $t_{i,j}$, called **token**, is associated with each edge in the hierarchy. Given an edge $(k_i,k_j)$, token $t_{i,j}$ is computed as $k_j \oplus h(k_i, l_j)$ where:
 - $\oplus$ is the $n$-ary xor operator;
 - $h$ is a secure [[Funzione Hash |hash function]].
+
+Computing the token in this way makes possible to derive the desired key $k_j$ from the token $t_{i, j}$ and the key $k_i$.
 
 Advantages of tokens:
 - they are public and allow users to derive multiple encryption keys, while having to worry about a single one;
@@ -2515,10 +2517,10 @@ Relationships between keys through tokens can be represented via a **key and tok
 
 ###### Key assignment and encryption schema
 We want a translation of the authorization policy into an encryption policy. The starting assumptions (desiderata):
-- each user can be released only a single key:
+- each user can be released only a single key;
 - each resource is encrypted only once (with a single key).
 
-Function $\phi$ :$\mathcal{U} \cup \ \mathcal{R} \to \mathcal{L}$ describes:
+Function $\phi$ : $\mathcal{U} \cup \ \mathcal{R} \to \mathcal{L}$ describes:
 - the association between a user and (the label of) her key;
 - the association between a resource and (the label of) the key used for encrypting it.
 

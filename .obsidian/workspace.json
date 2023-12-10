@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -117,8 +116,9 @@
   },
   "active": "0da0ed1548d6151e",
   "lastOpenFiles": [
-    "Atoms/Schema di cifratura.md",
+    "Lexicon/Nappina.md",
     "Classes/Privatezza e Protezione dei Dati.md",
+    "Atoms/Schema di cifratura.md",
     "Blogs/Evolving Game of Life.md",
     "Lexicon/Sedicente.md",
     "Lexicon/Sicumera.md",
@@ -152,7 +152,6 @@
     "Lexicon/Excerpta.md",
     "Lexicon/Improperio.md",
     "Lexicon/Pamphlet.md",
-    "Lexicon/Perigliare.md",
     "Blogs",
     "Atoms",
     "Lexicon",
