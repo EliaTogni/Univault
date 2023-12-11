@@ -2639,12 +2639,12 @@ To access a resource a user must know both the corresponding BEL and SEL keys. G
 ----------------------------------------------------------------
 
 ###### BEL and SEL structures
-- **BEL**: at the BEL level we distinguish two kinds of keys, **access** ($k_a$) and **derivation** ($k$) keys:
-	- each node in the BEL is associated with a pair of keys $(k, k_a)$, where $k_a = h(k)$, with $h$ a one-way hash function, and a pair of labels $(l, l_a)$;
-	- key $k$ (with label $l$) is used for derivation purpose;
-	- key $k_a$ (with label $l_a$) is used to encrypt the resources associated with the node;
-	- this distinction separates the two roles associated with keys: enabling key derivation and enabling resource access.
-- **SEL**: the SEL level is characterized by an encryption policy deﬁned as previously illustrated.
+At the BEL level we distinguish two kinds of keys, **access** ($k_a$) and **derivation** ($k$) keys:
+- each node in the BEL is associated with a pair of keys $(k, k_a)$, where $k_a = h(k)$, with $h$ a one-way hash function, and a pair of labels $(l, l_a)$;
+- key $k$ (with label $l$) is used for derivation purpose;
+- key $k_a$ (with label $l_a$) is used to encrypt the resources associated with the node;
+- this distinction separates the two roles associated with keys: enabling key derivation and enabling resource access.
+The SEL level is characterized by an encryption policy deﬁned as previously illustrated.
 
 ----------------------------------------------------------------
 
@@ -2653,7 +2653,7 @@ To access a resource a user must know both the corresponding BEL and SEL keys. G
 
 **Delta_SEL** starts from an empty SEL and adds elements to it as the policy evolves, such that the pair BEL-SEL represents the policy.
 
-A running example for over-encryption with 5 different acls.
+A running example for over-encryption with 5 different acls ($r_1 = r_2$, $r_3 = r_4 = r_5$, $r_6 = r_7$, $r_8$ and $r_9$).
 
 ![[RunningExampleForOverEncryption.png]]
 
@@ -2678,7 +2678,7 @@ The evolution of the BEL and SEL are managed by:
 Receive from BEL requests of the form $over-encrypt(U,R)$ to make the
 set $R$ of resources accessible only to users in $U$:
 1) for each resource in $R$, if currently over-encrypted $\to$ decrypt it;
-2) if $U = ALL$, end (no need to do anything);
+2) if $U = ALL$ (so everybody can see the resource), end (no need to do anything);
 3) check if $\exists s$ such that _s.key_ is derivable only by users in $U$; if it does not exist, create it and add it to SEL graph;
 4) encrypt each resource $r \in R$ with _s.key_ and update $\phi_s(r)$ and the corresponding table accordingly.
 
@@ -2703,15 +2703,15 @@ Receive a request to revoke from user $u$ access to resource $r$:
 1) remove $u$ from $acl(r)$;
 2) request $over-encrypt(acl(r),\{r\})$ to SEL to make $r$ accessible only to users in $acl(r)$.
 
-An example of grant operation – Full_SEL.
+An example of grant operation – Full_SEL. In this case, we want to grant $D$ access to $r_3$ but we can't just add a token from $b_4$ to $b_7$ because it will expose $r_4$ and $r_5$. Therefore, the server must perform an over-encrypt on $r_4$ and $r_5$.
 
 ![[GrantFullSEL.png]]
 
-An example of grant operation – Delta_SEL.
+An example of grant operation – Delta_SEL. The server necrypts only to cover data from unauthoryzed users. In this case, the server encrypts $r_4$ and $r_5$.
 
 ![[GrantDeltaSEL.png]]
 
-An example of revoke operation – Full_SEL.
+An example of revoke operation – Full_SEL. We want to revoke the access to $r_8$ from $F$. At the start, $B$, $D$, $E$ and $F$ have access to it. The graph changes because the hub $b_{11}$ isn't needed anymore.
 
 ![[RevokeFullSEL.png]]
 
@@ -2722,31 +2722,27 @@ An example of revoke operation – Delta_SEL
 ----------------------------------------------------------------
 
 ###### Protection evaluation
-The BEL and SEL encryption policy are equivalent to the
-authorization policy at initialization time. Procedure grant, revoke, and over-encryption preserve the equivalence. The key derivation function adopted is secure. All the encryption functions and the tokens are robust and cannot
-be broken. Each user correctly manages her keys, without the possibility for a
-user to steal keys from another user. Vulnerable to collusion?
+The BEL and SEL encryption policy are equivalent to the authorization policy at initialization time. Procedure grant, revoke, and over-encryption preserve the equivalence. The key derivation function adopted is secure. All the encryption functions and the tokens are robust and cannot be broken. Each user correctly manages her keys, without the possibility for a user to steal keys from another user. Vulnerable to collusion?
 
 ----------------------------------------------------------------
 
 ###### Collusion attacks
-Collusion exists every time two entities combining their knowledge can acquire knowledge that neither of them has access to:
+**Collusion** exists every time two entities combining their knowledge can acquire knowledge that neither of them has access to. It can happen in case of:
 - collusion among users;
 - collusion with the server;
 
-Collusion attacks depend on the different views that one can have
-on a resource $r$. We assume users to be not oblivious.
+Collusion attacks depend on the different views that one can have on a resource $r$. We assume users to be not oblivious.
 
 ----------------------------------------------------------------
 
 ###### Views on resource $r$. 
 Four views:
-1) **open**: the user knows the key at the BEL level as well as the key at the SEL level;
-2) **locked**: the user knows neither the key at the BEL level nor the key at the SEL level;
-3) **sel_locked**: the user knows only the key at the BEL level but does not know the key at the SEL level;
-4) **bel_locked**: the user knows only the key at the SEL level but does not know the one at the BEL level.
+1) **_open_**: the user knows the key at the BEL level as well as the key at the SEL level;
+2) **_locked_**: the user knows neither the key at the BEL level nor the key at the SEL level;
+3) **_sel_locked_**: the user knows only the key at the BEL level but does not know the key at the SEL level;
+4) **_bel_locked_**: the user knows only the key at the SEL level but does not know the one at the BEL level.
 
-The server always has the bel_locked view.
+The server always has the _bel_locked_ view.
 
 ![[ViewsOnResourceR.png]]
 
@@ -2757,21 +2753,20 @@ Each layer is depicted as a fence:
 ----------------------------------------------------------------
 
 ###### Classiﬁcation of users
-Consider a resource $r$ and the history of its $acl(r)$. Users in $acl(r)$ can be classiﬁed into $4$ categories.
+Consider a resource $r$ and the **history** of its $acl(r)$. Users in $acl(r)$ can be classiﬁed into $4$ categories.
 
 ![[ClassificationOfUsers.png]]
 
-Collusion risk for $r$ iff there are users in _Bel_accessible_ that do not belong to _Past_acl_.
+There is **collusion risk** for $r$ iff there are users in _Bel_accessible_ that do not belong to _Past_acl_.
 
 ----------------------------------------------------------------
 
 ###### View transitions in the Full_SEL
+The two states on the left are the possible starting points, where the server and the client are synchronized.
 
 ![[ViewTransitionFullSEL1.png]]
 
-A user can have the sel_locked view on r due to:
-- past acl or;
-- policy split: $u$ is authorized to access $r'$ (not $r$), encrypted at the BEL level with the same key as $r$.
+A user can have the _sel_locked_ view on $r$ due to a past acl or policy split, that is, $u$ is authorized to access $r'$ (not $r$), encrypted at the BEL level with the same key as $r$.
 
 ![[ViewTransitionFullSEL2.png]]
 
@@ -2781,8 +2776,7 @@ A user can have the sel_locked view on r due to:
 
 ![[ViewTransitionDeltaSEL1.png]]
 
-The view of a user $u'$ on $r$ can evolve from bel_locked to locked due to:
-- **policy split**: $u$ is authorized to access $r'$ (not $r$), encrypted at the BEL level with the same key as $r$.
+The view of a user $u'$ on $r$ can evolve from bel_locked to locked due to the **policy split**, that is, $u$ is authorized to access $r'$ (not $r$), encrypted at the BEL level with the same key as $r$.
 
 ![[ViewTransitionDeltaSEL2.png]]
 
@@ -2797,7 +2791,7 @@ About collusion with the server:
 ----------------------------------------------------------------
 
 ###### Collusion in the Delta_SEL
-A single user by herself can hold the two different views: sel_locked and bel_locked:
+A single user by herself can hold the two different views, sel_locked and bel_locked:
 - a user could retrieve the resources at initial time, when she is not authorized, getting and storing at her side resources’ bel_locked views;
 - if the user acquires the sel_locked view on a resource $r$ (the user is released $\phi (r)$ to make accessible to her another resource $r'$) she can enjoy the open view on $r$.
 
@@ -2880,8 +2874,7 @@ Problem: the support of only read accesses may be limiting $\to$ users may be au
 
 Keys regulating read accesses cannot regulate write accesses $\to$ the set $w[o]$ of users authorized to write $o$ may be a subset of the set $r[o]$ of users authorized to read $o$.
 
-Solution: associate a write tag $tag[o]$ with each resource $o$ encrypted
-with a key:
+Solution: associate a write tag $tag[o]$ with each resource $o$ encrypted with a key:
 - known to the users in $w[o]$ (derivable from the key of $w[o]$ via secure hashing);
 - known to the storage server (derivable from its key via tokens);
 $\to$ write authorized iff $u$ proves knowledge of $tag[o]$ to the server.
