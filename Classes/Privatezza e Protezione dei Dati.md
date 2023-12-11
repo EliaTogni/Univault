@@ -2639,7 +2639,7 @@ To access a resource a user must know both the corresponding BEL and SEL keys. G
 ----------------------------------------------------------------
 
 ###### BEL and SEL structures
-- **BEL**: at the BEL level we distinguish two kinds of keys: **access** ($k_a$) and **derivation** ($k$) keys:
+- **BEL**: at the BEL level we distinguish two kinds of keys, **access** ($k_a$) and **derivation** ($k$) keys:
 	- each node in the BEL is associated with a pair of keys $(k, k_a)$, where $k_a = h(k)$, with $h$ a one-way hash function, and a pair of labels $(l, l_a)$;
 	- key $k$ (with label $l$) is used for derivation purpose;
 	- key $k_a$ (with label $l_a$) is used to encrypt the resources associated with the node;
@@ -2653,17 +2653,17 @@ To access a resource a user must know both the corresponding BEL and SEL keys. G
 
 **Delta_SEL** starts from an empty SEL and adds elements to it as the policy evolves, such that the pair BEL-SEL represents the policy.
 
-A running example for over-encryption.
+A running example for over-encryption with 5 different acls.
 
-slide 81/268
+![[RunningExampleForOverEncryption.png]]
 
 An example of an initial conﬁguration for Full_SEL.
 
-slide 82/268
+![[InitialConfigurationFullSELExample.png]]
 
 An example of an initial conﬁguration for Delta_SEL.
 
-slide 83/268
+![[InitialConfigurationDeltaSELExample.png]]
 
 ----------------------------------------------------------------
 
@@ -2691,7 +2691,7 @@ with $b_j.key_a$:
 2) if $u$ cannot derive $b_j.key_a \to$ add a token from $u$’s key to $b_j.key_a$ in the BEL graph;
 3) if there is a set $R'$ of resources encrypted with $b_j.key_a$ that should not be accessible to $u$ (need to be protected from $u$ at SEL);
 	1) partition $R'$ in sets according to their acl (each set $S \subseteq R'$ includes all resources with $acl_S$);
-	2) for each set $S$, request $over-encrypt(aclS ,S)$ to SEL.
+	2) for each set $S$, request $over-encrypt(acl_S ,S)$ to SEL.
 4) make $r$ accessible by $u$ at SEL:
 	- Delta_SEL: if the set of users that can derive $b_j.key_a$ is $acl(r)$, call $over-encrypt(ALL,\{r\})$; otherwise call $over-encrypt(acl(r),\{r\})$;
 	- Full_SEL: call $over-encrypt(acl(r),\{r\})$.
@@ -2705,19 +2705,19 @@ Receive a request to revoke from user $u$ access to resource $r$:
 
 An example of grant operation – Full_SEL.
 
-slide 88/268
+![[GrantFullSEL.png]]
 
 An example of grant operation – Delta_SEL.
 
-slide 89/268
+![[GrantDeltaSEL.png]]
 
 An example of revoke operation – Full_SEL.
 
-slide 90/268
+![[RevokeFullSEL.png]]
 
 An example of revoke operation – Delta_SEL
 
-slide 91/268
+![[RevokeDeltaSEL.png]]
 
 ----------------------------------------------------------------
 
@@ -2748,7 +2748,7 @@ Four views:
 
 The server always has the bel_locked view.
 
-slide 95/268
+![[ViewsOnResourceR.png]]
 
 Each layer is depicted as a fence:
 - discontinuous, if the key is known;
@@ -2759,7 +2759,7 @@ Each layer is depicted as a fence:
 ###### Classiﬁcation of users
 Consider a resource $r$ and the history of its $acl(r)$. Users in $acl(r)$ can be classiﬁed into $4$ categories.
 
-slie 96/268
+![[ClassificationOfUsers.png]]
 
 Collusion risk for $r$ iff there are users in _Bel_accessible_ that do not belong to _Past_acl_.
 
@@ -2767,24 +2767,24 @@ Collusion risk for $r$ iff there are users in _Bel_accessible_ that do not belon
 
 ###### View transitions in the Full_SEL
 
-slide 97/268
+![[ViewTransitionFullSEL1.png]]
 
 A user can have the sel_locked view on r due to:
 - past acl or;
 - policy split: $u$ is authorized to access $r'$ (not $r$), encrypted at the BEL level with the same key as $r$.
 
-slide 98/268
+![[ViewTransitionFullSEL2.png]]
 
 ----------------------------------------------------------------
 
 ###### View transitions in the Delta_SEL 
 
-slide 99/268
+![[ViewTransitionDeltaSEL1.png]]
 
 The view of a user $u'$ on $r$ can evolve from bel_locked to locked due to:
 - **policy split**: $u$ is authorized to access $r'$ (not $r$), encrypted at the BEL level with the same key as $r$.
 
-slide 100/268
+![[ViewTransitionDeltaSEL2.png]]
 
 ----------------------------------------------------------------
 
