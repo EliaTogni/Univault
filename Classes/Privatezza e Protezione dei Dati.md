@@ -3349,10 +3349,10 @@ The priority is dictated by $E.w$/$E.nc$: elements with lower ratio have higher 
 
 An example of inizialization of the heuristic algorithm.
 
-slide 170/268
+![[ExampleOfInitializationHeuristicAlgorithm.png]]
 
 
-slide 171/268
+![[ExampleOfInitializationHeuristicAlgorithm1.png]]
 
 The following is the working process of the heuristic algorithm:
 - While $PQ \neq \emptyset$ and $\exists E \in PQ4, $E.n_c \neq 0$:
@@ -3370,7 +3370,7 @@ slide 173/268
 
 An example of solutions computed by the heuristic algorithm.
 
-slide 174/268
+![[ExampleOfSolutionsHeuristicAlgorithm.png]]
 
 ----------------------------------------------------------------
 
@@ -3381,14 +3381,14 @@ Fragmentation assumes attributes to be independent. In presence of data dependen
 
 An example of fragmentation and inference.
 
-slide 176/268
+![[FragmentationAndInferenceExample.png]]
 
 ----------------------------------------------------------------
 
 #### Fragmenting with data dependencies
 Take into account data dependencies in fragmentation. Fragments should not contain sensitive attributes/associations neither directly nor indirectly.
 
-slide 177/268
+![[FragmentingWithDataDependencies.png]]
 
 ----------------------------------------------------------------
 
@@ -3410,209 +3410,38 @@ slide 181/268
 
 #### Problem statement
 Publish anonymized and useful version of bipartite graph in such a way that:
-• a broad class of queries can be answered accurately
-◦ Type 0 - Graph structure only. E.g., what is the average number of
-products purchased by customers?
-◦ Type 1 - Attribute predicate on one side only. E.g., what is the
-average number of products purchased by NJ customers?
-◦ Type 2 - Attribute predicate on both side. E.g., what is the average
-number of OTC products purchased by NJ customers?
+- a broad class of queries can be answered accurately:
+	- type $0$ - Graph structure only, e.g., what is the average number of products purchased by customers?
+	- type $1$ - Attribute predicate on one side only, e.g., what is the average number of products purchased by $NJ$ customers?
+	- type $2$ - Attribute predicate on both side, e.g., what is the average number of OTC products purchased by $NJ$ customers?
+- privacy of the speciﬁc associations is preserved.
 
-• privacy of the speciﬁc associations is preserved
+----------------------------------------------------------------
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+### $(k, l)$ grouping
+Basic idea: preserve the graph structure but permute mapping from entities to nodes. **$(k, l)$ grouping** of bipartite graph $G = (V, W, E)$:
+- partition $V (W, resp.)$ into non-intersecting subsets of size $\geq k (l, resp.)$;
+- publish edges $E'$ that are isomorphic to $E$, where mapping from $E$ to $E'$ is anonymized based on partitions of $V$ and $W$.
 
-182/268
+An example of $(3,3)$ grouping.
 
-(k,l) grouping
-Basic idea: preserve the graph structure but permute mapping from
-entities to nodes
-(k,l) grouping of bipartite graph G = (V, W, E)
-• Partition V (W, resp.) into non-intersecting subsets of size ≥ k (l,
-resp.)
-• Publish edges E′ that are isomorphic to E, where mapping from E
-to E′ is anonymized based on partitions of V and W
+slide 184/268
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+Another example of $(3,3)$ grouping.
 
-183/268
+slide 185/268
 
-(3,3) grouping – Example (1)
-Customer
-c1
-c2
-c3
-c4
-c5
-c6
+#### Safe groupings
+There are different ways for creating a $(k, l)$ grouping but not all the resulting groupings offer the same level of privacy (e.g., local clique) $\to$ safe $(k,l)$ groupings: nodes in the same group of $V$ are not connected to a same node in $W$. The computation of a safe grouping can be hard even for small values of $k$ and $l$. In fact, the computation of a safe, strict $(3,3)$-grouping is NP-hard (reduction from partitioning a graph into triangles).
 
-State
-NJ
-NC
-CA
-NJ
-NC
-CA
+The authors propose a greedy algorithm that iteratively adds a node to a group with fewer than $k$ nodes, if it is safe (it creates a new group if such insertion is not possible). The algorithm works when bipartite graph is sparse enough.
 
-Product
-p1
-p2
-p3
-p4
-p5
-p6
+----------------------------------------------------------------
 
-Avail
-Rx
-OTC
-OTC
-OTC
-Rx
-OTC
-
-Customer
-c1
-c1
-c2
-c2
-c3
-c3
-c4
-c5
-c5
-c6
-c6
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Product
-p2
-p6
-p3
-p4
-p2
-p4
-p5
-p1
-p5
-p3
-p6
-
-184/268
-
-c1
-c2
-c3
-c4
-c5
-c6
-
-CG1
-CG1
-CG2
-CG1
-CG2
-CG2
-HV
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-p1 PG2
-p2 PG1
-p3 PG1
-p4 PG2
-p5 PG1
-p6 PG2
-HW
-
-x1
-x2
-x3
-x4
-x5
-x6
-
-CG1
-CG1
-CG1
-CG2
-CG2
-CG2
-RV
-
-Group
-
-Y-node
-
-Group
-
-X-node
-
-Group
-
-Product
-
-Group
-
-x1 y2
-x1 y6
-x2 y1
-x3 y3
-x3 y4
-x4 y2
-x4 y4
-x5 y3
-x5 y6
-x6 y1
-x6 y5
-E′
-
-Customer
-
-(3,3) grouping – Example (2)
-
-y1 PG1
-y2 PG1
-y3 PG1
-y4 PG2
-y5 PG2
-y6 PG2
-RW
-
-185/268
-
-Safe groupings
-• There are different ways for creating a (k, l) grouping but not all the
-resulting groupings offer the same level of privacy (e.g., local
-clique)
-=⇒ safe (k,l) groupings: nodes in the same group of V are not
-connected to a same node in W
-• The computation of a safe grouping can be hard even for small
-values of k and l
-◦ the computation of a safe, strict (3,3)-grouping is NP-hard
-(reduction from partitioning a graph into triangles)
-
-• The authors propose a greedy algorithm that iteratively adds a
-node to a group with fewer than k nodes, if it is safe (it creates a
-new group if such insertion is not possible)
-• The algorithm works when bipartite graph is sparse enough
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-186/268
-
-Fragments and Loose Associations
-
-S. De Capitani di Vimercati, S. Foresti, S. Jajodia, S. Paraboschi, P. Samarati, “Fragments and Loose Associations: Respecting
-Privacy in Data Publishing,” in Proc. of the VLDB Endowment, vol. 3, no. 1, September 2010.
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-187/268
-
-Data publication
-• Fragmentation can also be used to protect sensitive associations
-in data publishing
-=⇒ publish/release to external parties only views (fragments) that
-do not expose sensitive associations
+## Fragments and Loose Associations
+### Data publication
+Fragmentation can also be used to protect sensitive associations in data publishing $\to$ publish/release to external parties only views (fragments) that
+do not expose sensitive associations.
 • To increase utility of published information fragments could be
 coupled with some associations in sanitized form
 =⇒ loose associations: associations among groups of values
