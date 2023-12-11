@@ -2766,7 +2766,7 @@ The two states on the left are the possible starting points, where the server an
 
 ![[ViewTransitionFullSEL1.png]]
 
-A user can have the _sel_locked_ view on $r$ due to a past acl or policy split, that is, $u$ is authorized to access $r'$ (not $r$), encrypted at the BEL level with the same key as $r$.
+A user can have the _sel_locked_ view on $r$ due to a past acl or **policy split**, that is, $u$ is authorized to access $r'$ (not $r$), encrypted at the BEL level with the same key as $r$.
 
 ![[ViewTransitionFullSEL2.png]]
 
@@ -2783,17 +2783,18 @@ The view of a user $u'$ on $r$ can evolve from bel_locked to locked due to the *
 ----------------------------------------------------------------
 
 ###### Collusion in the Full_SEL
-Collusion among users is not a problem. in fact, users never gain in the exchange.
+Collusion among users is not a problem. In fact, users never gain in the exchange.
+
 About collusion with the server:
-- users in Bel_accessible who have a sel_locked view and who never had the authorization to access the resource;
+- users in Bel_accessible who have a _sel_locked_ view and who never had the authorization to access the resource;
 - exposure is limited to resources involved in a policy split to make other resources, encrypted with the same BEL key, available to the user $\to$ easily identiﬁable; can be avoided by re-encrypting.
 
 ----------------------------------------------------------------
 
 ###### Collusion in the Delta_SEL
-A single user by herself can hold the two different views, sel_locked and bel_locked:
-- a user could retrieve the resources at initial time, when she is not authorized, getting and storing at her side resources’ bel_locked views;
-- if the user acquires the sel_locked view on a resource $r$ (the user is released $\phi (r)$ to make accessible to her another resource $r'$) she can enjoy the open view on $r$.
+A single user by herself can hold the two different views, _sel_locked_ and _bel_locked_:
+- a user could retrieve the resources at initial time, when she is not authorized, getting and storing at her side resources’ _bel_locked_ views;
+- if the user acquires the _sel_locked_ view on a resource $r$ (the user is released $\phi (r)$ to make accessible to her another resource $r'$) she can enjoy the open view on $r$.
 
 Again, exposure is limited to resources involved in a policy split $\to$ easily identiﬁable; can be avoided by re-encrypting.
 
@@ -2814,7 +2815,7 @@ Slice the resource into fragments and, every time a user is revoked access to th
 - **mini-block**: sequence of bits in a block it is our **atomic unit of protection** mini blocks of $32$ bits imply a cost of $232$ for brute-force attacks.
 - **macro-block**: sequence of blocks mixing operates at the level of macro-block a macro-block of $1$KB includes $8$ blocks.
 
-slide 105/268
+![[ResourceOrganization.png]]
 
 ----------------------------------------------------------------
 
@@ -2823,12 +2824,14 @@ slide 105/268
 ### Mixing
 When encryption is applied to a block, all the mini-blocks are mixed. The absence of a mini-block in a block from the result prevents reconstruction of the block. It does not prevent the reconstruction of other blocks in the resource.
 
+![[Mixing1.png]]
+
 Extend mixing to a macro-block:
 - iteratively apply block encryption;
 - at iteration $i$, each block has a mini-block for each encrypted block obtained at iteration $i − 1$ (at distance $4^{i−1}$);
 - x rounds mix $4^x$ mini-blocks.
 
-slide 107/268
+![[Mixing2.png]]
 
 ----------------------------------------------------------------
 
@@ -2841,7 +2844,7 @@ Large resources are split in different macro-blocks for encryption. Absence of a
 
 Slice resources in fragments having a mini-block for each macro-block (the ones in the same position). Absence of a fragment prevents reconstruction of the resource.
 
-slide 109/268
+![[Slicing.png]]
 
 ----------------------------------------------------------------
 
@@ -2853,7 +2856,7 @@ To revoke user $u$ access to a resource $r$:
 4) re-encrypt $F_i$ with the new key $k_l$;
 5) upload the encrypted fragment.
 
-slide 110/268
+![[Revoke.png]]
 
 ----------------------------------------------------------------
 
@@ -2892,7 +2895,8 @@ Key derivation graph extended with the storage server $S$. The key derivation gr
 
 An example of a key derivation graph.
 
-slide 115/268
+![[KeyDerivationGraphExample1.png]]
+![[KeyDerivationGraphExample2.png]]
 
 ----------------------------------------------------------------
 
@@ -2914,7 +2918,7 @@ Write accesses:
 
 ### Structure of outsourced resources
 
-slide 117/268
+![[StructureOfOutsourcedResources.png]]
 
 An example of an authorization enforcement.
 
@@ -3055,7 +3059,7 @@ Too expensive! $\to$ Exploit afﬁnity matrix
 
 Adapted afﬁnity matrix $M$:
 - $M_{i,j}$: ‘cost’ of placing cleartext attributes $i$ and $j$ in different fragments;
-- $M_{i,i}: ‘cost’ of placing encrypted attribute $i$ (across both fragments).
+- $M_{i,i}$: ‘cost’ of placing encrypted attribute $i$ (across both fragments).
 
 Goal: Minimize
 
