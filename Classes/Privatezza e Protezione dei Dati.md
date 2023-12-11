@@ -2978,11 +2978,11 @@ Write integrity controlled by any reader. Support for write privileges for data 
 
 ## Fragmentation and Encryption
 
-Encryption makes query evaluation and application execution more expensive or not always possible. Often what is sensitive is the association between values of different attributes, rather than the values themselves, e.g., association between employee’s names and salaries $\to$protect associations by breaking them, rather than encrypting.
+Encryption makes query evaluation and application execution more expensive or not always possible. Often what is sensitive is the association between values of different attributes, rather than the values themselves, e.g., association between employee’s names and salaries $\to$ protect associations by breaking them, rather than encrypting.
 
 Recent solutions for enforcing privacy requirements couple:
-- encryption;
-- data fragmentation.
+- **encryption**;
+- **data fragmentation**.
 
 ### Conﬁdentiality constraints
 Sets of attributes such that the (joint) visibility of values of the attributes in the sets should be protected.
@@ -3025,18 +3025,18 @@ Conﬁdentiality constraints $\mathcal{C}$ deﬁned over a relation $R$ are enfo
 - $R_1$ and $R_2$ include a unique tuple $ID$ needed to ensure lossless decomposition;
 - $R_1 \cup R_2 = R$;
 - $E$ is the set of encrypted attributes and $E \subseteq R_1, E \subseteq R_2$;
-- for each $c \in \mathcal{C}, c \nsubseteq (R_1 − E)$ and $c \nsubseteq (R_2 − E)$.
+- for each confidentiality constraint $c \in \mathcal{C}, c \nsubseteq (R_1 − E)$ and $c \nsubseteq (R_2 − E)$.
 
 An example of non-communicating pair of servers.
 
 ![[NonCommunicatingPairOfServersExample.png]]
 
+When deciding in which server to store an attribute, it is important to consider which queries will be asked more frequently.
+
 ----------------------------------------------------------------
 
 #### Query execution
-At the logical level: replace $R$ with $R_1 \bowtie R_2$.
-
-Query plans:
+At the logical level: replace $R$ with $R_1 \bowtie R_2$. Query plans:
 - fetch $R_1$ and $R_2$ from the servers and execute the query locally but it is extremely expensive;
 - involve servers $S_1$ and $S_2$ in the query evaluation can do the usual optimizations, e.g. push down selections and projections.
 - Selections cannot be pushed down on encrypted attributes different options for executing queries:
