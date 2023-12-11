@@ -2922,7 +2922,7 @@ Write accesses:
 
 An example of an authorization enforcement.
 
-slide 118/268
+![[AuthorizationEnforcementExample.png]]
 
 ----------------------------------------------------------------
 
@@ -2964,7 +2964,7 @@ Permit to detect:
 
 ### Structure of outsourced resources
 
-slide 122/268
+![[StructureOfOutsourcedResources1.png]]
 
 
 ----------------------------------------------------------------
@@ -3016,7 +3016,7 @@ Conﬁdentiality constraints are enforced by splitting information over two inde
 - sensitive associations are protected by distributing the attributes among the two servers;
 - encryption is applied only when explicitly demanded by the conﬁdentiality constraints or when storing an attribute in any of the two servers would expose at least a sensitive association.
 
-slide 129/268
+![[NonCommunicatingPairOfServers.png]]
 
 ----------------------------------------------------------------
 
@@ -3029,7 +3029,7 @@ Conﬁdentiality constraints $\mathcal{C}$ deﬁned over a relation $R$ are enfo
 
 An example of non-communicating pair of servers.
 
-slide 131/268
+![[NonCommunicatingPairOfServersExample.png]]
 
 ----------------------------------------------------------------
 
@@ -3045,14 +3045,14 @@ Query plans:
 
 An example of a query execution.
 
-slide 133/268
+![[QueryExecutionExample 1.png]]
 
 ##### Identifying the optimal decomposition
 Brute force approach for optimizing with regard to workload $W$:
-- For each possible safe decomposition of $R$:
+- for each possible safe decomposition of $R$:
 	- optimize each query in $W$ for the decomposition;
 	- estimate the total cost for executing the queries in $W$ using the optimized query plans.
-- Select the decomposition that has the lowest overall query cost
+- select the decomposition that has the lowest overall query cost.
 
 Too expensive! $\to$ Exploit afﬁnity matrix
 
@@ -3087,7 +3087,7 @@ Coupling fragmentation and encryption is interesting and provides advantages, bu
 - too strong and difﬁcult to enforce in real environments;
 - limits the number of associations that can be solved by fragmenting data, often forcing the use of encryption $\to$ allow for more than two non-linkable fragments.
 
-slide 138/268
+![[MultipleNonLinkableFragments.png]]
 
 
 A fragmentation of $R$ is a set of fragments $\mathcal{F} = \{F_1, ..., F_m\}$, where $F_i \subseteq R$, for $i = 1, ..., m$.
@@ -3107,13 +3107,13 @@ Fragment $F_i = \{A_{i_1}, ..., A_{i_n}\}$ of $R$ mapped to physical fragment $F
 
 An example of multiple non-linkable fragments.
 
-slide 141/268
+![[MultipleNonLinkableFragmentsExample.png]]
 
 ##### Executing queries on fragments
 Every physical fragment of $R$ contains all the attributes of $R \to$ no more than one fragment needs to be accessed to respond to a query.<br />
 If the query involves an encrypted attribute, an additional query may need to be executed by the client.
 
-slide 142/268
+![[ExecutingQueriesOnFragments.png]]
 
 ----------------------------------------------------------------
 
@@ -3141,7 +3141,7 @@ Basic idea of the heuristic:
 
 An example of minimal number of fragments.
 
-slide 145/268
+![[MinimalNumberOfFragmentsExample.png]]
 
 Minimal fragmentation $\mathcal{F}$;
 - $F_1 = \{Name\}$;
@@ -3165,7 +3165,7 @@ Basic idea of the heuristic:
 
 An example of maximum afﬁnity.
 
-slide 147/268
+slide 147/268 più di una
 
 Maximum afﬁnity fragmentation F (fragmentation afﬁnity = $65$). Merging any two fragments would violate at least a constraint.
 
@@ -3194,7 +3194,7 @@ Basic idea (hybrid scenarios):
 
 $\to$ Depart from encryption by involving the owner as a trusted party to maintain a limited amount of data.
 
-slide 150/268
+![[KeepAFew.png]]
 
 Given:
 - $R(A_1, ..., A_n)$: relation schema;
@@ -3209,7 +3209,7 @@ At the physical level $F_o$ and $F_s$ have a common attribute (additional _tid_ 
 
 An example of keep a few.
 
-slide 152/268
+![[KeepAFewExample.png]]
 
 ----------------------------------------------------------------
 
@@ -3227,7 +3227,7 @@ where $C$ is a conjunction of basic conditions:
 
 An example of query evaluation.
 
-slide 154/268
+![[QueryEvaluationExample.png]]
 
 #### Query evaluation strategies
 Server-Client strategy:
@@ -3242,11 +3242,11 @@ Client-Server strategy:
 
 An example of a server-client strategy.
 
-156/268
+![[ServerClientStrategyExample.png]]
 
 An example of the client-server strategy.
 
-slide 157/268
+![[ClientServerStrategyExample.png]]
 
 #### Server-client vs client-server strategies
 If the storage server knows or can infer the query, Client-Server leaks information: the server infers that some tuples are associated with values that satisfy $C_o$.
@@ -3273,7 +3273,7 @@ The metrics to be applied may depend on the information available.
 
 An example of data and workload information.
 
-slide 161/268
+![[DataAndWorkloadInformationExample.png]]
 
 ----------------------------------------------------------------
 
@@ -3311,1534 +3311,105 @@ Different metrics correspond to different criteria according to which the hittin
 
 $\to$ compute the hitting set of attributes with minimum weight.
 
-slide 166/268
+![[ModelingOfTheMinimizationProblems.png]]
 
 **Weighted Minimum Target Hitting Set Problem** (**WMTHSP**). Given a ﬁnite set $A$, a set $C$ of subsets of $A$, a set $\mathcal{T}$ (target) of subsets of $A$, and a weight function $w: T \to \mathbb{R}^+$, determine a subset $S$ of $A$ such that:
 1) $S$ is a hitting set of $A$;
 2) $\nexists S'$ such that $S'$ is a hitting set of $A$ and $\sum_{t \in \mathcal{T}, t \cap S' \neq \emptyset} w(t) < \sum_{t \in \mathcal{T}, t\cap S \neq \emptyset} w(t)$.
 
-• The Minimum Hitting Set Problem can be reduced to the
-WMTHSP
-◦ T = {A1 , . . . , An }; w({Ai }) = 1, i = 1, . . . , n
-◦ minimizing ∑t∈T ,t∩S6=0/ w(t) is equivalent to minimizing the cardinality
-of the hitting set S
+The Minimum Hitting Set Problem can be reduced to the WMTHSP:
+- $\mathcal{T} = \{A_1, ..., A_n\}$; $w(\{A_i\}) = 1, i = 1, ..., n$;
+- minimizing $\sum_{t \in T, t \cap S \neq \emptyset} w(t)$ is equivalent to minimizing the cardinality of the hitting set $S$.
 
-=⇒ WMTHSP is NP-hard
-• We propose a heuristic algorithm for solving the WMTHSP that:
-◦ ensures minimality, that is, moving any attribute from F o to F s
-violates at least a constraint
-◦ has polynomial time complexity in the number of attributes (efﬁcient
-execution time)
-◦ provides solutions close to the optimum (from experiments run:
-optimum was returned in many cases, 14% maximum error
-observed)
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+$\to$ WMTHSP is NP-hard.
+We propose a heuristic algorithm for solving the WMTHSP that:
+- ensures minimality, that is, moving any attribute from $F_o$ to $F_s$ violates at least a constraint;
+- has polynomial time complexity in the number of attributes (efﬁcient execution time);
+- provides solutions close to the optimum (from experiments run: optimum was returned in many cases, $14\%$ maximum error observed).
 
-167/268
+Input and output of the heuristic algorithm.
+Input:
+- $\mathcal{A}$: set of attributes not appearing in singleton constraints;
+- $\mathcal{C}$: set of well deﬁned constraints;
+- $\mathcal{T}$: set of targets;
+- $w$: weight function deﬁned on $\mathcal{T}$.
 
-Heuristic algorithm – Input and output
-• Input
-◦ A : set of attributes not appearing in singleton constraints
-◦ C : set of well deﬁned constraints
-◦ T : set of targets
-◦ w: weight function deﬁned on T
+Output:
+- $\mathcal{H}$: set of attributes composing, together with those appearing in singleton constraints, $F_o$;
+- $F_s$ is computed as $R \setminus F_o$, obtaining a correct fragmentation.
 
-• Output
-◦ H : set of attributes composing, together with those appearing in
-singleton constraints, F o
-◦ F s is computed as R \ F o, obtaining a correct fragmentation
+The data structure on which the heuristic algorithm  is based is a priority-queue $PQ$ with an element $E$ for each attribute:
+- $E.A$: attribute;
+- $E.C$: pointers to non-satisﬁed constraints that contain $E.A$;
+- $E.T$: pointers to the targets non intersecting $H$ that contain $E.A$;
+- $E.nc$: number of constraints pointed by $E .C$;
+- $E.w$: total weight of targets pointed by $E.T$.
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+The priority is dictated by $E.w$/$E.nc$: elements with lower ratio have higher priority.
 
-168/268
+An example of inizialization of the heuristic algorithm.
 
-Heuristic algorithm – Data structure
-• Priority-queue PQ with an element E for each attribute:
-◦ E.A: attribute
-◦ E.C: pointers to non-satisﬁed constraints that contain E.A
-◦ E.T : pointers to the targets non intersecting H that contain E.A
-◦ E.nc : number of constraints pointed by E .C
-◦ E.w: total weight of targets pointed by E.T
+slide 170/268
 
-Priority dictated by E.w/E.nc : elements with lower ratio have
-higher priority
+
+slide 171/268
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+The following is the working process of the heuristic algorithm:
+- While $PQ \neq \emptyset$ and $\exists E \in PQ4, $E.n_c \neq 0$:
+	- extract the element $E$ with lowest $E.w$/$E.n_c$ from $PQ$;
+	- insert $E.A$ into $\mathcal{H}$;
+	- $\forall c$ pointed by $E.C$, remove the pointers to $c$ from any element $E'$ in $PQ$ and update $E'.n_c$;
+	- $\forall t$ pointed by $E.T$, remove the pointers to $t$ from any element $E'$ in $PQ$ and update $E'.w$;
+	- readjust $PQ$ based on the new values for $E.w$/$E.n_c$ (to_be_updated).
+- for each $A \in \mathcal{H}$:
+	- if $\mathcal{H} \setminus \{A\}$ is a hitting set for $\mathcal{C}$, remove $A$ from $\mathcal{H}$.
 
-169/268
+An example of Min-Query by the heuristic algorithm.
 
-Heuristic algorithm – Example of initialization (1)
-PATIENT(SSN,Name,DoB,Race,Job,Illness,Treatment,HDate)
-Conﬁdentiality constraints
-c 0 ={SSN}
-c 1 ={Name,Illness}
-c 2 ={Name,Treatment}
-c 3 ={DoB,Race,Illness}
-c 4 ={DoB,Race,Treatment}
-c 5 ={Job,Illness}
+slide 173/268
 
-q
+An example of solutions computed by the heuristic algorithm.
 
-freq(q )
+slide 174/268
 
-q1
-q2
-q3
-q4
-q5
-q6
-q7
+----------------------------------------------------------------
 
-5
-4
-10
-1
-7
-7
-1
+### Fragmentation and inference
+Fragmentation assumes attributes to be independent. In presence of data dependencies:
+- sensitive attributes/associations may be indirectly exposed;
+- fragments may be indirectly linkable.
 
-A
+An example of fragmentation and inference.
 
-size(A)
+slide 176/268
 
-SSN
-Name
-DoB
-Race
-Job
-Illness
-Treatment
-HDate
+----------------------------------------------------------------
 
-9
-20
-8
-5
-18
-15
-40
-8
+#### Fragmenting with data dependencies
+Take into account data dependencies in fragmentation. Fragments should not contain sensitive attributes/associations neither directly nor indirectly.
 
-Attr (q )
+slide 177/268
 
-Cond(q )
+----------------------------------------------------------------
 
-DoB, Illness
-Race, Illness
-Job, Illness
-Illness, Treatment
-Illness
-DoB, HDate, Treatment
-SSN, Name
+## Publishing Obfuscated Associations
+### Motivation
+Sensitive associations among data may need to be protected, while allowing execution of certain queries, e.g., the set of products available in a pharmacy and the set of customers may be of public knowledge; allow retrieving the average number of products purchased by customers while protecting the
+association between a particular customer and a particular product.
 
-hDobi, hIllnessi
-hRacei, hIllnessi
-hJobi, hIllnessi
-hIllnessi, hTreatmenti
-hIllnessi
-hDoB,HDatei, hTreatmenti
-hSSNi, hNamei
+Possible solutions:
+- exploits a graphical representation of sensitive associations and masks the mapping from entities to nodes of the graph while preserving the graph structure;
+- exploits fragmentation for enforcing conﬁdentiality constraints and visibility requirements and publishes a sanitized form of associations.
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+----------------------------------------------------------------
 
-170/268
+### Anonymizing Bipartite Graph
+An example of private associations.
 
-Heuristic algorithm – Example of initialization (2)
-NI
+slide 181/268
 
-C
-
-I
-
-PQ
-
-T
-
-NT
-
-3
-1
-
-D
-
-2
-
-DRI
-
-N
-
-1
-
-2
-1
-
-R
-
-2
-1
-
-DRT
-
-T
-
-2
-1
-
-1
-
-J
-
-C
-
-JI
-
-H
-
-1
-
-NI
-
-0
-
-R
-
-PQ
-1
-
-1
-
-1
-
-1
-
-1
-
-1
-
-1
-
-1
-
-N
-
-D
-
-R
-
-J
-
-I
-
-T
-
-H
-
-NT
-
-20
-
-5
-
-D
-
-2
-
-NI
-
-N
-
-PQ
-
-T
-
-NT
-
-2
-0
-
-5
-
-4
-
-DI
-
-RI
-
-R
-
-2
-4
-
-2
-8
-
-10
-
-JI
-
-D
-
-2
-
-12
-
-N
-
-DRT
-
-2
-
-1
-
-J
-
-18
-
-R
-
-T
-
-18
-
-20
-
-JI
-
-2
-
-15
-
-J
-
-0
-
-H
-
-40
-
-8
-
-40
-
-I
-
-T
-
-8
-
-H
-
-Min-Size
-
-DRI
-
-T
-
-3
-
-15
-
-5
-
-D
-
-Min-Attr
-C
-
-I
-
-8
-
-8
-
-N
-
-T
-
-2
-
-DRI
-
-DRT
-
-I
-
-3
-
-27
-
-1
-
-IT
-
-J
-
-JI
-
-1
-
-H
-
-10
-
-7
-
-I
-
-C
-
-NI
-
-0
-
-N
-
-PQ
-7
-
-7
-
-DHT
-
-Min-Query
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-T
-
-NT
-
-2
-1
-
-1
-
-5
-
-N
-
-D
-
-R
-
-DRI
-
-2
-
-T
-
-4
-
-4
-
-R
-
-2
-8
-
-D
-
-2
-
-12
-
-10
-
-J
-
-DRT
-
-I
-
-3
-
-J
-
-JI
-
-1
-
-10
-
-27
-
-27
-
-I
-
-H
-
-0
-7
-
-8
-
-7
-
-T
-
-DH
-
-Min-Cond
-171/268
-
-Heuristic algorithm – Working process
-• while PQ6=0/ and ∃E∈PQ, E.nc 6=0
-◦ extract the element E with lowest E.w/E.nc from PQ
-◦ insert E.A into H
-◦ ∀c pointed by E.C, remove the pointers to c from any element E ′ in
-PQ and update E ′ .nc
-◦ ∀t pointed by E.T , remove the pointers to t from any element E ′ in
-PQ and update E ′ .w
-◦ readjust PQ based on the new values for E.w/E.nc (to_be_updated)
-
-• for each A∈H
-◦ if H \{A} is a hitting set for C , remove A from H
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-172/268
-
-Heuristic algorithm – Example of Min-Query
-
-C
-
-H = {}
-E.A = N
-E.C = {NI, NT}
-E.T = {}
-to_be_updated = {I,T}
-
-NI
-
-N
-
-PQ
-
-T
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-NT
-
-2
-0
-
-5
-
-4
-
-DI
-
-RI
-
-R
-
-2
-4
-
-DRI
-
-T
-
-2
-8
-
-10
-
-JI
-
-D
-
-2
-
-12
-
-DRT
-
-I
-
-3
-
-27
-
-1
-
-IT
-
-J
-
-JI
-
-1
-
-H
-
-10
-
-7
-
-I
-
-0
-7
-
-7
-
-DHT
-
-173/268
-
-Heuristic algorithm – Example of Min-Query
-
-C
-
-H = {N}
-E.A = R
-E.C = {DRI, DRT}
-E.T = {RI}
-to_be_updated = {D,I,T}
-
-DRI
-
-R
-
-PQ
-
-T
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-2
-4
-
-5
-
-4
-
-DI
-
-RI
-
-DRT
-
-D
-
-2
-
-T
-
-12
-
-10
-
-JI
-
-1
-8
-
-JI
-
-J
-
-1
-
-10
-
-1
-
-IT
-
-I
-
-2
-27
-
-H
-
-7
-
-I
-
-0
-7
-
-7
-
-DHT
-
-173/268
-
-Heuristic algorithm – Example of Min-Query
-
-C
-
-H = {N,R}
-E.A = J
-E.C = {JI}
-E.T = {JI}
-to_be_updated = {I}
-
-JI
-
-J
-
-PQ
-
-1
-
-I
-
-10
-
-5
-
-T
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-DI
-
-1
-23
-
-D
-
-10
-
-JI
-
-0
-
-12
-
-1
-
-IT
-
-T
-
-0
-
-H
-
-8
-
-7
-
-I
-
-0
-7
-
-7
-
-DHT
-
-173/268
-
-Heuristic algorithm – Example of Min-Query
-
-C
-
-H = {N,R,J}
-
-I
-
-PQ
-
-T
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-0
-13
-
-D
-
-0
-
-12
-
-T
-
-0
-
-H
-
-8
-
-5
-
-1
-
-7
-
-DI
-
-IT
-
-I
-
-0
-7
-
-7
-
-DHT
-
-173/268
-
-Heuristic algorithm – Example of Min-Query
-
-C
-
-H = {N,R,J}
-
-T
-
-F o ={SSN,Name,Race,Job}
-
-I
-
-PQ
-
-0
-13
-
-D
-
-0
-
-12
-
-T
-
-0
-
-H
-
-8
-
-5
-
-1
-
-7
-
-DI
-
-IT
-
-I
-
-0
-7
-
-7
-
-DHT
-
-F s ={Illness,DoB,Treatment,HDate}
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-173/268
-
-Example of solutions computed by the heuristic algorithm
-C
-
-NI
-
-N
-
-PQ
-
-T
-
-NT
-
-0
-
-R
-
-1
-
-DRI
-
-0
-
-T
-
-1
-
-0
-0
-
-D
-
-DRT
-
-0
-1
-
-I
-
-0
-
-J
-
-0
-
-C
-
-JI
-
-0
-
-H
-
-1
-
-NI
-
-0
-
-N
-
-PQ
-1
-
-1
-
-1
-
-1
-
-1
-
-1
-
-1
-
-1
-
-N
-
-D
-
-R
-
-J
-
-I
-
-T
-
-H
-
-NT
-
-20
-
-NI
-
-PQ
-
-T
-
-NT
-
-N
-
-0
-0
-
-5
-
-4
-
-DI
-
-RI
-
-R
-
-0
-4
-
-DRI
-
-T
-
-0
-0
-
-10
-
-JI
-
-D
-
-0
-0
-
-0
-0
-
-T
-
-0
-
-D
-
-40
-
-5
-
-DRT
-
-0
-
-I
-
-8
-
-0
-
-J
-
-0
-
-18
-
-R
-
-JI
-
-0
-
-H
-
-18
-
-15
-
-J
-
-0
-8
-
-40
-
-I
-
-8
-
-T
-
-H
-
-Min-Size (40)
-
-DRT
-
-I
-
-0
-0
-
-D
-
-Min-Attr (2)
-C
-
-R
-
-0
-
-8
-
-N
-
-T
-
-0
-
-DRI
-
-J
-
-0
-
-H
-
-10
-
-1
-
-IT
-
-C
-
-JI
-
-7
-
-I
-
-NI
-
-0
-
-N
-
-PQ
-0
-
-7
-
-DHT
-
-Min-Query (14)
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-T
-
-NT
-
-1
-
-5
-
-N
-
-D
-
-0
-0
-
-R
-
-0
-0
-
-4
-
-R
-
-DRI
-
-T
-
-0
-
-D
-
-8
-
-10
-
-J
-
-DRT
-
-0
-
-I
-
-12
-
-1
-27
-
-27
-
-I
-
-J
-
-JI
-
-0
-
-H
-
-0
-
-0
-7
-
-8
-
-7
-
-T
-
-DH
-
-Min-Cond (15)
-174/268
-
-Fragmentation and inference
-• Fragmentation assumes attributes to be independent
-• In presence of data dependencies:
-◦ sensitive attributes/associations may be indirectly exposed
-◦ fragments may be indirectly linkable
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-175/268
-
-Fragmentation and inference – Example
-R(SSN, Birth, ZIP, Name, Treatment, Disease, Job, Premium, Insurance)
-
-Constraints
-
-c 1 = {SSN}
-c 2 = {Name, Disease}
-c 3 = {ZIP, Premium}
-
-Dependencies
-
-d1
-d2
-d3
-d4
-
-= {Birth, ZIP} Name
-= {Treatment} Disease
-= {Disease} Job
-= {Insurance, Premium} Job
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-176/268
-
-Fragmentation and inference – Example
-R(SSN, Birth, ZIP, Name, Treatment, Disease, Job, Premium, Insurance)
-
-Constraints
-
-c 1 = {SSN}
-c 2 = {Name, Disease}
-c 3 = {ZIP, Premium}
-
-Dependencies
-
-d1
-d2
-d3
-d4
-
-= {Birth, ZIP} Name
-= {Treatment} Disease
-= {Disease} Job
-= {Insurance, Premium} Job
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-176/268
-
-Fragmentation and inference – Example
-R(SSN, Birth, ZIP, Name, Treatment, Disease, Job, Premium, Insurance)
-
-Constraints
-
-c 1 = {SSN}
-c 2 = {Name, Disease}
-c 3 = {ZIP, Premium}
-
-Dependencies
-
-d1
-d2
-d3
-d4
-
-= {Birth, ZIP} Name
-= {Treatment} Disease
-= {Disease} Job
-= {Insurance, Premium} Job
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-176/268
-
-Fragmentation and inference – Example
-R(SSN, Birth, ZIP, Name, Treatment, Disease, Job, Premium, Insurance)
-
-Constraints
-
-c 1 = {SSN}
-c 2 = {Name, Disease}
-c 3 = {ZIP, Premium}
-
-Dependencies
-
-d1
-d2
-d3
-d4
-
-= {Birth, ZIP} Name
-= {Treatment} Disease
-= {Disease} Job
-= {Insurance, Premium} Job
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-176/268
-
-Fragmentation and inference – Example
-R(SSN, Birth, ZIP, Name, Treatment, Disease, Job, Premium, Insurance)
-
-Constraints
-
-c 1 = {SSN}
-c 2 = {Name, Disease}
-c 3 = {ZIP, Premium}
-
-Dependencies
-
-d1
-d2
-d3
-d4
-
-= {Birth, ZIP} Name
-= {Treatment} Disease
-= {Disease} Job
-= {Insurance, Premium} Job
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-176/268
-
-Fragmentation and inference – Example
-R(SSN, Birth, ZIP, Name, Treatment, Disease, Job, Premium, Insurance)
-
-Constraints
-
-c 1 = {SSN}
-c 2 = {Name, Disease}
-c 3 = {ZIP, Premium}
-
-Dependencies
-
-d1
-d2
-d3
-d4
-
-= {Birth, ZIP} Name
-= {Treatment} Disease
-= {Disease} Job
-= {Insurance, Premium} Job
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-176/268
-
-Fragmentation and inference – Example
-R(SSN, Birth, ZIP, Name, Treatment, Disease, Job, Premium, Insurance)
-
-Constraints
-
-c 1 = {SSN}
-c 2 = {Name, Disease}
-c 3 = {ZIP, Premium}
-
-Dependencies
-
-d1
-d2
-d3
-d4
-
-= {Birth, ZIP} Name
-= {Treatment} Disease
-= {Disease} Job
-= {Insurance, Premium} Job
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-176/268
-
-Fragmentation and inference – Example
-R(SSN, Birth, ZIP, Name, Treatment, Disease, Job, Premium, Insurance)
-
-Constraints
-
-c 1 = {SSN}
-c 2 = {Name, Disease}
-c 3 = {ZIP, Premium}
-
-Dependencies
-
-d1
-d2
-d3
-d4
-
-= {Birth, ZIP} Name
-= {Treatment} Disease
-= {Disease} Job
-= {Insurance, Premium} Job
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-176/268
-
-Fragmenting with data dependencies
-Take into account data dependencies in fragmentation
-• Fragments should not contain sensitive attributes/associations
-neither directly nor indirectly
-
-Constraints
-
-c 1 = {SSN}
-c 2 = {Name, Disease}
-c 3 = {ZIP, Premium}
-
-Dependencies
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-d1
-d2
-d3
-d4
-
-= {Birth, ZIP} Name
-= {Treatment} Disease
-= {Disease} Job
-= {Insurance, Premium} Job
-
-177/268
-
-Fragmenting with data dependencies
-Take into account data dependencies in fragmentation
-• Fragments should not contain sensitive attributes/associations
-neither directly nor indirectly
-
-Constraints
-
-c 1 = {SSN}
-c 2 = {Name, Disease}
-c 3 = {ZIP, Premium}
-
-Dependencies
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-d1
-d2
-d3
-d4
-
-= {Birth, ZIP} Name
-= {Treatment} Disease
-= {Disease} Job
-= {Insurance, Premium} Job
-
-177/268
-
-Publishing Obfuscated Associations
-
-Motivation
-• Sensitive associations among data may need to be protected,
-while allowing execution of certain queries
-◦ e.g., the set of products available in a pharmacy and the set of
-customers may be of public knowledge; allow retrieving the average
-number of products purchased by customers while protecting the
-association between a particular customer and a particular product
-
-• Possible solutions:
-◦ [CSYZ-08] exploits a graphical representation of sensitive
-associations and masks the mapping from entities to nodes of the
-graph while preserving the graph structure
-◦ [DFJPS-10a] exploits fragmentation for enforcing conﬁdentiality
-constraints and visibility requirements and publishes a sanitized
-form of associations
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-179/268
-
-Anonymizing Bipartite Graph
-
-G. Cormode, D. Srivastava, T. YU, Q. Zhang, “Anonymizing Bipartite Graph Data Using Safe Groupings,” in Proc. of VLDB, Auckland,
-New Zealand, August 2008.
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-180/268
-
-Private associations – Example [CSYZ-08]
-Customer
-c1
-c2
-c3
-c4
-c5
-c6
-
-State
-NJ
-NC
-CA
-NJ
-NC
-CA
-
-Product
-p1
-p2
-p3
-p4
-p5
-p6
-
-Avail
-Rx
-OTC
-OTC
-OTC
-Rx
-OTC
-
-Customer
-c1
-c1
-c2
-c2
-c3
-c3
-c4
-c5
-c5
-c6
-c6
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Product
-p2
-p6
-p3
-p4
-p2
-p4
-p5
-p1
-p5
-p3
-p6
-
-181/268
-
-Problem statement
-Publish anonymized and useful version of bipartite graph in such a way
-that:
+#### Problem statement
+Publish anonymized and useful version of bipartite graph in such a way that:
 • a broad class of queries can be answered accurately
 ◦ Type 0 - Graph structure only. E.g., what is the average number of
 products purchased by customers?
