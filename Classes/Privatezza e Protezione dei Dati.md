@@ -3098,12 +3098,12 @@ A fragmentation $\mathcal{F}$ of $R$ correctly enforces a set $\mathcal{C}$ of c
 
 Each fragment $F$ is mapped into a physical fragment containing:
 - all the attributes in $F$ in the clear;
-- all the other attributes of $R$ encrypted (a **salt** is applied on each encryption).
+- all the other attributes of $R$ encrypted (a **salt** (something random) is applied on each encryption).
 
 Fragment $F_i = \{A_{i_1}, ..., A_{i_n}\}$ of $R$ mapped to physical fragment $F_i^e (salt, enc, A_{i_1}, ..., A_{i_n})$:
 - each $t \in r$ over $R$ is mapped into a tuple $t^e \in f_i^e$ where $f_i^e$ is a relation over $F_i^e$ and:
-- $t^e[enc] = E_k (t[R − F_i] \otimes t^e[salt])$;
-- $t^e[A_{i_j}] = t[A_{i_j}]$, for $j = 1, ..., n$.
+	- $t^e[enc] = E_k (t[R − F_i] \otimes t^e[salt])$;
+	- $t^e[A_{i_j}] = t[A_{i_j}]$, for $j = 1, ..., n$.
 
 An example of multiple non-linkable fragments.
 
@@ -3123,7 +3123,7 @@ Goal: ﬁnd a fragmentation that makes query execution efﬁcient. The fragmenta
 - afﬁnity among attributes;
 - query workload.
 
-All criteria obey maximal visibility:
+All criteria obey **maximal visibility**:
 - only attributes that appear in singleton constraints (sensitive attributes) are encrypted;
 - all attributes that are not sensitive appear in the clear in one fragment.
 
@@ -3135,7 +3135,7 @@ Basic principles:
 Goal:
 - determine a correct fragmentation with the minimal number of fragments $\to$ NP-hard problem (minimum hyper-graph coloring problem).
 Basic idea of the heuristic:
-- deﬁne a notion of minimality that can be used for efﬁciently computing a fragmentation;
+- deﬁne a notion of **minimality** that can be used for efﬁciently computing a fragmentation;
 	- $\mathcal{F}$ is minimal if all the fragmentations that can be obtained from $\mathcal{F}$ by merging any two fragments in $\mathcal{F}$ violate at least one constraint.
 - iteratively select an attribute with the highest number of non-solved constraints and insert it in an existing fragment if no constraint is violated; create a new fragment otherwise.
 
@@ -3154,7 +3154,7 @@ Merging any two fragments would violate at least a constraint.
 
 #### Maximum afﬁnity
 Basic principles:
-- preserve the associations among some attributes, e.g., association (_Illness_, _DoB_) should be preserved to explore the link between a speciﬁc illness and the age of patients.
+- preserve the associations among some attributes, e.g., association (_Illness_, _DoB_) should be preserved to explore the link between a speciﬁc illness and the age of patients;
 - **afﬁnity matrix** for representing the advantage of having pairs of attributes in the same fragment.
 
 Goal:
@@ -3441,402 +3441,57 @@ The authors propose a greedy algorithm that iteratively adds a node to a group w
 ## Fragments and Loose Associations
 ### Data publication
 Fragmentation can also be used to protect sensitive associations in data publishing $\to$ publish/release to external parties only views (fragments) that
-do not expose sensitive associations.
-• To increase utility of published information fragments could be
-coupled with some associations in sanitized form
-=⇒ loose associations: associations among groups of values
-(in contrast to speciﬁc values)
+do not expose sensitive associations. To increase utility of published information fragments could be coupled with some associations in sanitized form $\to$ loose associations: associations among groups of values (in contrast to speciﬁc values).
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+#### Conﬁdentiality constraints
+As already discussed, are a sets of attributes such that the (joint) visibility of values of the attributes in the sets should be protected. They permit to express different requirements:
+- **sensitive attributes**: the values of some attributes are considered sensitive and should not be visible;
+- sensitive associations: the associations among values of given attributes are sensitive and should not be visible.
 
-188/268
+An example of conﬁdentiality constraints.
 
-Conﬁdentiality constraints
-As already discussed....
-• Sets of attributes such that the (joint) visibility of values of the
-attributes in the sets should be protected
-• They permit to express different requirements
-◦ sensitive attributes: the values of some attributes are considered
-sensitive and should not be visible
-◦ sensitive associations: the associations among values of given
-attributes are sensitive and should not be visible
+slide 190/268
 
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+- SSN is sensitive: $\{SSN\}$;
+- Illness and Doctor are private of an individual and cannot be stored in association with the name of the patient: $\{Patient, Illness\}$, $\{Patient, Doctor\}$;
+- $\{Birth, City\}$ can work as quasi-identiﬁer: $\{Birth, City, Illness\}$, $\{Birth, City, Doctor\}$.
 
-189/268
+#### Visibility requirements
+Monotonic Boolean formulas over attributes, representing views over data (negations are captured by conﬁdentiality constraints). They permit to express different requirements:
+- **visible attributes**: some attributes should be visible;
+- **visible associations**: the association among values of given attributes should be visible;
+- **alternative views**: at least one of the speciﬁed views should be visible.
 
-Conﬁdentiality constraints – Example
-SSN
-123-45-6789
-987-65-4321
-963-85-2741
-147-85-2369
-782-90-5280
-816-52-7272
-872-62-5178
-712-81-7618
+An example of visibility requirements.
 
-Patient
-Page
-Patrick
-Patty
-Paul
-Pearl
-Philip
-Phoebe
-Piers
+slide 192/268
 
-Birth
-56/12/9
-53/3/19
-58/5/18
-53/12/9
-56/12/9
-57/6/25
-53/12/1
-60/7/25
+- Either names of Patients or their Cities should be released: $Patient \vee City$;
+- either Birth dates and Cities of patients in association should be released or the SSN of patients should be released: $(Birth \wedge City) \vee SSN$;
+- Illnesses and Doctors, as well as their association, should be released: $Illness \wedge Doctor$.
 
-City
-Rome
-Paris
-Oslo
-Oslo
-Rome
-Paris
-NY
-Rome
+----------------------------------------------------------------
 
-Illness
-diabetes
-gastritis
-ﬂu
-asthma
-gastritis
-obesity
-measles
-diabetes
+### Fragmentation
+**Fragmentation** can be applied to satisfy both conﬁdentiality constraints and visibility requirements. Publish/release to external parties only fragments that:
+- do not include sensitive attributes and sensitive associations;
+- include the requested attributes and/or associations (all the requirements should be satisﬁed, not necessarily by a single fragment).
 
-Doctor
-David
-Daisy
-Damian
-Daniel
-Dorothy
-Drew
-Dennis
-Daisy
+An example of fragmentation.
 
-c 0 ={SSN}
-c 1 ={Patient,Illness}
-c 2 ={Patient,Doctor}
-c 3 ={Birth,City,Illness}
-c 4 ={Birth,City,Doctor}
+slide 194/268
 
-• SSN is sensitive
-◦ {SSN}
+#### Correct and minimal fragmentation
+A fragmentation is correct if:
+- each conﬁdentiality constraint is satisﬁed by all fragments;
+- each visibility requirement is satisﬁed by at least a fragment;
+- fragments do not have attributes in common (to prevent joins on fragments to retrieve associations).
 
-• Illness and Doctor are private of an individual and cannot be
-stored in association with the name of the patient
-◦ {Patient, Illness}, {Patient, Doctor}
+A correct fragmentation is minimal if the number of fragments is minimum (i.e., any other correct fragmentation has an equal or greater number of fragments).
 
-• {Birth,City} can work as quasi-identiﬁer
-◦ {Birth, City, Illness}, {Birth, City, Doctor}
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
+The Min-CF problem of computing a correct and minimal fragmentation is NP-hard.
 
-190/268
-
-Visibility requirements
-• Monotonic Boolean formulas over attributes, representing views
-over data (negations are captured by conﬁdentiality constraints)
-• They permit to express different requirements
-◦ visible attributes: some attributes should be visible
-◦ visible associations: the association among values of given
-attributes should be visible
-◦ alternative views: at least one of the speciﬁed views should be
-visible
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-191/268
-
-Visibility requirements – Example
-SSN
-123-45-6789
-987-65-4321
-963-85-2741
-147-85-2369
-782-90-5280
-816-52-7272
-872-62-5178
-712-81-7618
-
-Patient
-Page
-Patrick
-Patty
-Paul
-Pearl
-Philip
-Phoebe
-Piers
-
-Birth
-56/12/9
-53/3/19
-58/5/18
-53/12/9
-56/12/9
-57/6/25
-53/12/1
-60/7/25
-
-City
-Rome
-Paris
-Oslo
-Oslo
-Rome
-Paris
-NY
-Rome
-
-Illness
-diabetes
-gastritis
-ﬂu
-asthma
-gastritis
-obesity
-measles
-diabetes
-
-Doctor
-David
-Daisy
-Damian
-Daniel
-Dorothy
-Drew
-Dennis
-Daisy
-
-• Either names of Patients or their Cities should be released
-◦ Patient ∨ City
-
-• Either Birth dates and Cities of patients in association should be
-released or the SSN of patients should be released
-◦ (Birth ∧ City)∨ SSN
-
-• Illnesses and Doctors, as well as their association, should be
-released
-◦ Illness ∧ Doctor
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-192/268
-
-Fragmentation
-Fragmentation can be applied to satisfy both conﬁdentiality constraints
-and visibility requirements
-• Publish/release to external parties only fragments that
-◦ do not include sensitive attributes and sensitive associations
-◦ include the requested attributes and/or associations (all the
-requirements should be satisﬁed, not necessarily by a single
-fragment)
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-193/268
-
-Fragmentation – Example
-SSN
-123-45-6789
-987-65-4321
-963-85-2741
-147-85-2369
-782-90-5280
-816-52-7272
-872-62-5178
-712-81-7618
-
-Patient
-Page
-Patrick
-Patty
-Paul
-Pearl
-Philip
-Phoebe
-Piers
-
-Birth
-56/12/9
-53/3/19
-58/5/18
-53/12/9
-56/12/9
-57/6/25
-53/12/1
-60/7/25
-
-City
-Rome
-Paris
-Oslo
-Oslo
-Rome
-Paris
-NY
-Rome
-
-Illness
-diabetes
-gastritis
-ﬂu
-asthma
-gastritis
-obesity
-measles
-diabetes
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Doctor
-David
-Daisy
-Damian
-Daniel
-Dorothy
-Drew
-Dennis
-Daisy
-
-c 0 ={SSN}
-c 1 ={Patient,Illness}
-c 2 ={Patient,Doctor}
-c 3 ={Birth,City,Illness}
-c 4 ={Birth,City,Doctor}
-v 1 =Patient ∨ City
-v 2 =(Birth ∧ City)∨ SSN
-v 3 =Illness ∧ Doctor
-
-194/268
-
-Fragmentation – Example
-SSN
-123-45-6789
-987-65-4321
-963-85-2741
-147-85-2369
-782-90-5280
-816-52-7272
-872-62-5178
-712-81-7618
-
-Patient
-Page
-Patrick
-Patty
-Paul
-Pearl
-Philip
-Phoebe
-Piers
-
-Birth
-56/12/9
-53/3/19
-58/5/18
-53/12/9
-56/12/9
-57/6/25
-53/12/1
-60/7/25
-
-City
-Rome
-Paris
-Oslo
-Oslo
-Rome
-Paris
-NY
-Rome
-
-Illness
-diabetes
-gastritis
-ﬂu
-asthma
-gastritis
-obesity
-measles
-diabetes
-
-Fl
-Birth City
-56/12/9 Rome
-53/3/19 Paris
-58/5/18 Oslo
-53/12/9 Oslo
-56/12/9 Rome
-57/6/25 Paris
-53/12/1 NY
-60/7/25 Rome
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-Doctor
-David
-Daisy
-Damian
-Daniel
-Dorothy
-Drew
-Dennis
-Daisy
-
-c 0 ={SSN}
-c 1 ={Patient,Illness}
-c 2 ={Patient,Doctor}
-c 3 ={Birth,City,Illness}
-c 4 ={Birth,City,Doctor}
-v 1 =Patient ∨ City
-v 2 =(Birth ∧ City)∨ SSN
-v 3 =Illness ∧ Doctor
-
-Fr
-Illness Doctor
-diabetes David
-gastritis Daisy
-ﬂu
-Damian
-asthma Daniel
-gastritis Dorothy
-obesity Drew
-measles Dennis
-diabetes Daisy
-
-194/268
-
-Correct and minimal fragmentation
-• A fragmentation is correct if
-◦ each conﬁdentiality constraint is satisﬁed by all fragments
-◦ each visibility requirement is satisﬁed by at least a fragment
-◦ fragments do not have attributes in common (to prevent joins on
-fragments to retrieve associations)
-
-• A correct fragmentation is minimal if
-◦ the number of fragments is minimum (i.e., any other correct
-fragmentation has an equal or greater number of fragments)
-
-• The Min-CF problem of computing a correct and minimal
-fragmentation is NP-hard
-
-©Security, Privacy, and Data Protection Laboratory (SPDP Lab)
-
-195/268
-
-Computing a correct and minimal fragmentation
+##### Computing a correct and minimal fragmentation
 A SAT solver can efﬁciently solve the Min-CF problem
 • An instance of the Min-CF problem is translated into an instance
 of the SAT problem
