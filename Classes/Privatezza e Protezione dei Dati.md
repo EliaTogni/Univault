@@ -3158,16 +3158,28 @@ Basic principles:
 - **afﬁnity matrix** for representing the advantage of having pairs of attributes in the same fragment.
 
 Goal:
-- determine a correct fragmentation with maximum afﬁnity (sum of fragments afﬁnity computed as the sum of the afﬁnity of the different pairs of attributes in the fragment) $\to$ NP-hard problem (minimum hitting set problem).
+- determine a correct fragmentation with maximum afﬁnity (sum of fragments afﬁnity computed as the sum of the afﬁnity of the different pairs of attributes in the fragment) $\to$ NP-hard problem (**minimum hitting set problem**).
 
 Basic idea of the heuristic:
 - iteratively combine fragments that have the highest afﬁnity and do not violate any conﬁdentiality constraint.
 
 An example of maximum afﬁnity.
 
-slide 147/268 più di una
+![[MaximumAffinityExample1.png]]
 
-Maximum afﬁnity fragmentation F (fragmentation afﬁnity = $65$). Merging any two fragments would violate at least a constraint.
+The matrix on the left is the affinity matrix while the matrix on the right is the one representing the constraints.
+
+![[MaximumAffinityExample2.png]]
+
+In this step, we notice that $\{Name\}$ can't be paired with the other attributes, therefore we substitute his value with $-1$, meaning that this value will not be taken while optimizing. In this way, the constraints involving $\{Name\}$ are resolved.
+
+![[MaximumAffinityExample3.png]]
+
+![[MaximumAffinityExample4.png]]
+
+![[MaximumAffinityExample5.png]]
+
+Maximum afﬁnity fragmentation $F$ (fragmentation afﬁnity = $65$). Merging any two fragments would violate at least a constraint.
 
 ----------------------------------------------------------------
 
@@ -3203,7 +3215,7 @@ Given:
 Determine a fragmentation $\mathcal{F} = \langle F_o, F_s \rangle$ for $R$, where $F_o$ is stored at the owner and $F_s$ is stored at a storage server, and:
 - $F_o \cup F_s = R$ (**completeness**);
 - $\forall c \in \mathcal{C}, c \nsubseteq F_s$ (**conﬁdentiality**);
-- $F_o \cap F_s = \emptyset$ (**non-redundancy**).
+- $F_o \cap F_s = \emptyset$ (**non-redundancy**). This property can be relaxed.
 
 At the physical level $F_o$ and $F_s$ have a common attribute (additional _tid_ or non-sensitive key attribute) to guarantee lossless join.
 
@@ -3235,14 +3247,14 @@ Server-Client strategy:
 - client: receive result from server and join it with $F_o$;
 - client: evaluate $C_o$ and $C_{so}$ on the joined relation.
 
+An example of a Server-Client strategy.
+
+![[ServerClientStrategyExample.png]]
+
 Client-Server strategy:
 - client: evaluate $C_o$ and send _tid_ of tuples in result to server;
 - server: join input with $F_s$, evaluate $C_s$, and return result to client;
 - client: join result from server with $F_o$ and evaluate $C_{so}$.
-
-An example of a server-client strategy.
-
-![[ServerClientStrategyExample.png]]
 
 An example of the client-server strategy.
 
@@ -3256,7 +3268,7 @@ If the storage server does not know and cannot infer the query, Server-Client an
 ----------------------------------------------------------------
 
 ### Minimal fragmentation
-The goal is to minimize the owner’s workload due to the management of $F_o$. Weight function $w$ takes a pair $\langle F_o, F_s \rangle$ as input and returns the owner’s workload (i.e., storage and/or computational load). A fragmentation $\mathcal{F} = \langle F_o, F_s \rangle$ is minimal iff:
+The goal is to minimize the **owner’s workload** due to the management of $F_o$. Weight function $w$ takes a pair $\langle F_o, F_s \rangle$ as input and returns the owner’s workload (i.e., storage and/or computational load). A fragmentation $\mathcal{F} = \langle F_o, F_s \rangle$ is minimal iff:
 1) $\mathcal{F}$ is correct (i.e., it satisﬁes the completeness, conﬁdentiality, and non-redundancy properties);
 2) $\nexists \mathcal{F}'$ such that $w(\mathcal{F}') < w(\mathcal{F})$ and $\mathcal{F}'$ is correct.
 
@@ -3287,7 +3299,6 @@ An example of data and workload information.
 	- $q_1, ..., q_l$ queries to be executed;
 	- $freq(q_i)$ expected execution frequency of $q_i$;
 	- $Attr(q_i)$ attributes appearing in the $WHERE$ clause of $q_i$
-	
 	$\to$ minimize the number of query executions that require processing at the owner:
 	- $w_q(F) = \sum_{q \in \mathcal{Q}} freq(q)$ such that $Attr(q) \cap F_o \neq \emptyset$.
 - **Min-Cond**: the relation schema (set of attributes), the conﬁdentiality constraints, and a complete proﬁle (conditions in each query of the form $a_i$ op $v$ or $a_i$ op $a_j$) of the expected query workload are known.
@@ -3320,11 +3331,11 @@ $\to$ compute the hitting set of attributes with minimum weight.
 The Minimum Hitting Set Problem can be reduced to the WMTHSP:
 - $\mathcal{T} = \{A_1, ..., A_n\}$; $w(\{A_i\}) = 1, i = 1, ..., n$;
 - minimizing $\sum_{t \in T, t \cap S \neq \emptyset} w(t)$ is equivalent to minimizing the cardinality of the hitting set $S$.
-
 $\to$ WMTHSP is NP-hard.
+
 We propose a heuristic algorithm for solving the WMTHSP that:
-- ensures minimality, that is, moving any attribute from $F_o$ to $F_s$ violates at least a constraint;
-- has polynomial time complexity in the number of attributes (efﬁcient execution time);
+- ensures **minimality**, that is, moving any attribute from $F_o$ to $F_s$ violates at least a constraint;
+- has **polynomial time complexity** in the number of attributes (efﬁcient execution time);
 - provides solutions close to the optimum (from experiments run: optimum was returned in many cases, $14\%$ maximum error observed).
 
 Input and output of the heuristic algorithm.
@@ -3338,11 +3349,11 @@ Output:
 - $\mathcal{H}$: set of attributes composing, together with those appearing in singleton constraints, $F_o$;
 - $F_s$ is computed as $R \setminus F_o$, obtaining a correct fragmentation.
 
-The data structure on which the heuristic algorithm  is based is a priority-queue $PQ$ with an element $E$ for each attribute:
+The data structure on which the heuristic algorithm is based is a priority-queue $PQ$ with an element $E$ for each attribute:
 - $E.A$: attribute;
 - $E.C$: pointers to non-satisﬁed constraints that contain $E.A$;
-- $E.T$: pointers to the targets non intersecting $H$ that contain $E.A$;
-- $E.nc$: number of constraints pointed by $E .C$;
+- $E.T$: pointers to the targets non intersecting $\mathcal{H}$ that contain $E.A$;
+- $E.n_c$: number of constraints pointed by $E .C$;
 - $E.w$: total weight of targets pointed by $E.T$.
 
 The priority is dictated by $E.w$/$E.nc$: elements with lower ratio have higher priority.
@@ -3355,7 +3366,7 @@ An example of inizialization of the heuristic algorithm.
 ![[ExampleOfInitializationHeuristicAlgorithm1.png]]
 
 The following is the working process of the heuristic algorithm:
-- While $PQ \neq \emptyset$ and $\exists E \in PQ4, $E.n_c \neq 0$:
+- While $PQ \neq \emptyset$ and $\exists E \in PQ$, $E.n_c \neq 0$:
 	- extract the element $E$ with lowest $E.w$/$E.n_c$ from $PQ$;
 	- insert $E.A$ into $\mathcal{H}$;
 	- $\forall c$ pointed by $E.C$, remove the pointers to $c$ from any element $E'$ in $PQ$ and update $E'.n_c$;
