@@ -2938,9 +2938,9 @@ Straightforward solution: signature-based approach:
 
 #### HMAC-based approach
 Each resource $o$ has:
-- a timestamp, encw_ts, of the last write operation;
-- a user_tag computed as the HMAC, with the key ku of the writer, over o, the old value of the user_tag, and the timestamp of the write operation;
-- a group_tag computed as the HMAC, with key kw[o] , over o and the timestamp of the write operation.
+- a timestamp, _encw_ts_, of the last write operation;
+- a _user_tag_ computed as the HMAC, with the key $k_u$ of the writer, over $o$, the old value of the user_tag, and the timestamp of the write operation;
+- a _group_tag_ computed as the HMAC, with key $kw[o]$, over $o$ and the timestamp of the write operation.
 
 At each write operation, the writer updates the _user_tag_ and _group_tag_.
 
@@ -3377,7 +3377,13 @@ The following is the working process of the heuristic algorithm:
 
 An example of Min-Query by the heuristic algorithm.
 
-slide 173/268
+![[MinQueryExample1.png]]
+
+![[MinQueryExample2.png]]
+
+![[MinQueryExample3.png]]
+
+![[MinQueryExample4.png]]
 
 An example of solutions computed by the heuristic algorithm.
 
@@ -3417,7 +3423,7 @@ Possible solutions:
 ### Anonymizing Bipartite Graph
 An example of private associations.
 
-slide 181/268
+![[PrivateAssociationsExample.png]]
 
 #### Problem statement
 Publish anonymized and useful version of bipartite graph in such a way that:
@@ -3436,11 +3442,11 @@ Basic idea: preserve the graph structure but permute mapping from entities to no
 
 An example of $(3,3)$ grouping.
 
-slide 184/268
+![[(3,3)GroupingExample1.png]]
 
 Another example of $(3,3)$ grouping.
 
-slide 185/268
+![[(3,3)GroupingExample2.png]]
 
 #### Safe groupings
 There are different ways for creating a $(k, l)$ grouping but not all the resulting groupings offer the same level of privacy (e.g., local clique) $\to$ safe $(k,l)$ groupings: nodes in the same group of $V$ are not connected to a same node in $W$. The computation of a safe grouping can be hard even for small values of $k$ and $l$. In fact, the computation of a safe, strict $(3,3)$-grouping is NP-hard (reduction from partitioning a graph into triangles).
@@ -3461,7 +3467,7 @@ As already discussed, are a sets of attributes such that the (joint) visibility 
 
 An example of conﬁdentiality constraints.
 
-slide 190/268
+![[ConfidentialityCostraintsExample.png]]
 
 - SSN is sensitive: $\{SSN\}$;
 - Illness and Doctor are private of an individual and cannot be stored in association with the name of the patient: $\{Patient, Illness\}$, $\{Patient, Doctor\}$;
@@ -3475,7 +3481,7 @@ Monotonic Boolean formulas over attributes, representing views over data (negati
 
 An example of visibility requirements.
 
-slide 192/268
+![[ConfidentialityCostraintsExample.png]]
 
 - Either names of Patients or their Cities should be released: $Patient \vee City$;
 - either Birth dates and Cities of patients in association should be released or the SSN of patients should be released: $(Birth \wedge City) \vee SSN$;
@@ -3490,7 +3496,7 @@ slide 192/268
 
 An example of fragmentation.
 
-slide 194/268
+![[FragmentationExample.png]]
 
 #### Correct and minimal fragmentation
 A fragmentation is correct if:
