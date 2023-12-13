@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Classes/Privatezza e Protezione dei Dati.md",
+                "file": "Articles/Image Classification with Classic and Deep Learning Techniques.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Privatezza e Protezione dei Dati.md",
+                "file": "Articles/Image Classification with Classic and Deep Learning Techniques.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,10 +117,12 @@
   },
   "active": "0da0ed1548d6151e",
   "lastOpenFiles": [
+    "Templates/Article Template.md",
+    "Articles/Image Classification with Classic and Deep Learning Techniques.md",
+    "Classes/Privatezza e Protezione dei Dati.md",
     "Lexicon/Maggiociondolo.md",
     "Lexicon/Nappina.md",
     "Lexicon/Nappina1.md",
-    "Classes/Privatezza e Protezione dei Dati.md",
     "Images/FragmentationExample.png",
     "Images/ConfidentialityCostraintsExample.png",
     "Images/(3,3)GroupingExample2.png",
@@ -145,8 +148,6 @@
     "Templates/Lexicon Template.md",
     "Templates/Book Template.md",
     "Templates/Blog Template.md",
-    "Templates/Article Template.md",
-    "Articles/Image Classification with Classic and Deep Learning Techniques.md",
     "Books/Leggere, scrivere, argomentare.md",
     "Videos/The Unfair Advantage Of The 60 Second Procrastination Rule.md",
     "Videos/Set SIX Alarms. It'll Change Your Life..md",
