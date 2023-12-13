@@ -3290,26 +3290,20 @@ An example of data and workload information.
 ----------------------------------------------------------------
 
 ### Weight metrics and minimization problems
-- **Min-Attr**: only the relation schema (set of attributes) and the conﬁdentiality constraints are known $\to$ minimize the number of the attributes in $F_o$:
-	- $w_a(\mathcal{F})=card(F_o)$.
-- **Min-Size**: the relation schema (set of attributes), the conﬁdentiality constraints, and the size of each attribute are known $\to$ minimize the physical size of $F_o$:
-	- $w_s(\mathcal{F})=\sum_{A \in F_o} size(A)$.
+- **Min-Attr**: only the relation schema (set of attributes) and the conﬁdentiality constraints are known $\to$ minimize the number of the attributes in $F_o$: $w_a(\mathcal{F})=card(F_o)$;
+- **Min-Size**: the relation schema (set of attributes), the conﬁdentiality constraints, and the size of each attribute are known $\to$ minimize the physical size of $F_o$: $w_s(\mathcal{F})=\sum_{A \in F_o} size(A)$;
 - **Min-Query**: the relation schema (set of attributes), the conﬁdentiality constraints, and a representative proﬁle of the expected query workload are known. Query workload proﬁle:
-	$Q=\{(q_1, freq(q_1), Attr(q_1)), ..., (q_l, freq(q_l)Attr(q_l))\}$
+	$Q=\{(q_1, freq(q_1), Attr(q_1)), ..., (q_l, freq(q_l)Attr(q_l))\}$:
 	- $q_1, ..., q_l$ queries to be executed;
 	- $freq(q_i)$ expected execution frequency of $q_i$;
-	- $Attr(q_i)$ attributes appearing in the $WHERE$ clause of $q_i$
-	$\to$ minimize the number of query executions that require processing at the owner:
-	- $w_q(F) = \sum_{q \in \mathcal{Q}} freq(q)$ such that $Attr(q) \cap F_o \neq \emptyset$.
-- **Min-Cond**: the relation schema (set of attributes), the conﬁdentiality constraints, and a complete proﬁle (conditions in each query of the form $a_i$ op $v$ or $a_i$ op $a_j$) of the expected query workload are known.
-	Query workload proﬁle:
-	$\mathcal{Q}=\{(q_1, freq(q_1), Cond(q_1)), ..., (q_l, freq(q_l)Cond(q_l))\}$
+	- $Attr(q_i)$ attributes appearing in the $WHERE$ clause of $q_i$.
+	$\to$ minimize the number of query executions that require processing at the owner: $w_q(F) = \sum_{q \in \mathcal{Q}} freq(q)$ such that $Attr(q) \cap F_o \neq \emptyset$;
+- **Min-Cond**: the relation schema (set of attributes), the conﬁdentiality constraints, and a complete proﬁle (conditions in each query of the form $a_i$ op $v$ or $a_i$ op $a_j$) of the expected query workload are known. Query workload proﬁle:
+	$\mathcal{Q}=\{(q_1, freq(q_1), Cond(q_1)), ..., (q_l, freq(q_l)Cond(q_l))\}$:
 	- $q_1, ..., q_l$ queries to be executed;
 	- $freq(q_i)$ expected execution frequency of $q_i$;
 	- $Cond(q_i)$ set of conditions in the $WHERE$ clause of query $q_i$; each condition is represented as a single attribute or a pair of attributes.
-
-$\to$ minimize the number of conditions that require processing at the owner:
-- $w_c(F)= \sum_{cnd \in Cond(\mathcal{Q})} freq(cnd)$ such that $cnd \cap F_o \neq \emptyset$, where $Cond(\mathcal{Q})$ denotes the set of all conditions of queries in $Q$, and $freq(cnd)$ is the overall frequency of $cnd$.
+ $\to$ minimize the number of conditions that require processing at the owner: $w_c(F)= \sum_{cnd \in Cond(\mathcal{Q})} freq(cnd)$ such that $cnd \cap F_o \neq \emptyset$, where $Cond(\mathcal{Q})$ denotes the set of all conditions of queries in $Q$, and $freq(cnd)$ is the overall frequency of $cnd$.
 
 ----------------------------------------------------------------
 
