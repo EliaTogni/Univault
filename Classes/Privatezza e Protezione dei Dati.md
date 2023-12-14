@@ -3674,18 +3674,14 @@ slide 223/268
 
 ###### Experimental evaluation
 Considered Census data (IPUMS-USA, http://www.ipums.org). Evaluated queries of the form:
-
-```MySQL
-SELECT FROM WHERE
-```
-
-returning a  COUNT aggregation function. WHERE condition $x$.
+- SELECT FROM WHERE returning a COUNT aggregation function;
+- WHERE condition $\bigwedge_{i = 1}^{n} (\bigvee_{j = 1}^{m} a_i = v_{i_j})$.
 
 Evaluated precision of queries. Evaluated impact of $k$, $k_l$, and $k_r$ on query precision.
 
 The results of experimental evaluation.
 
-slide 225/268
+![[ExperimentalEvaluationResults.png]]
 
 Precision in query evaluation progressively decreases as $k$ increases. The critical parameter in the conﬁguration is the overall privacy degree $k$, rather than individual values of $k_l$ and $k_r$.
 
