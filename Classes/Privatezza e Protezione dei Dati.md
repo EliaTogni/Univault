@@ -3415,7 +3415,7 @@ Possible solutions:
 ----------------------------------------------------------------
 
 ### Anonymizing Bipartite Graph
-An example of private associations. The table _Customer_-_Product_ contains sensible informations.
+An example of private associations. The table $n:n$ _Customer_-_Product_ contains sensible informations and it can also be represented as a bipartite graph.
 
 ![[PrivateAssociationsExample.png]]
 
@@ -3431,7 +3431,7 @@ Publish anonymized and useful version of bipartite graph in such a way that:
 
 ### $(k, l)$ grouping
 Basic idea: preserve the graph structure but permute mapping from entities to nodes. **$(k, l)$ grouping** of bipartite graph $G = (V, W, E)$:
-- partition $V (W, resp.)$ into non-intersecting subsets of size $\geq k (l, resp.)$;
+- partition $V$ (or $W$, respectively) into non-intersecting subsets of size $\geq k$ (or $l$, respectively);
 - publish edges $E'$ that are isomorphic to $E$, where mapping from $E$ to $E'$ is anonymized based on partitions of $V$ and $W$.
 
 An example of $(3,3)$ grouping.
@@ -3443,7 +3443,9 @@ Another example of $(3,3)$ grouping.
 ![[(3,3)GroupingExample2.png]]
 
 #### Safe groupings
-There are different ways for creating a $(k, l)$ grouping but not all the resulting groupings offer the same level of privacy (e.g., local clique) $\to$ safe $(k,l)$ groupings: nodes in the same group of $V$ are not connected to a same node in $W$. The computation of a safe grouping can be hard even for small values of $k$ and $l$. In fact, the computation of a safe, strict $(3,3)$-grouping is NP-hard (reduction from partitioning a graph into triangles).
+There are different ways for creating a $(k, l)$ grouping but not all the resulting groupings offer the same level of privacy (e.g., local clique) $\to$ safe $(k,l)$ groupings; this means that nodes in the same group of $V$ are not connected to a same node in $W$.
+
+The computation of a safe grouping can be hard even for small values of $k$ and $l$. In fact, the computation of a safe, strict $(3,3)$-grouping is NP-hard (reduction from partitioning a graph into triangles).
 
 The authors propose a greedy algorithm that iteratively adds a node to a group with fewer than $k$ nodes, if it is safe (it creates a new group if such insertion is not possible). The algorithm works when bipartite graph is sparse enough.
 
@@ -3451,13 +3453,12 @@ The authors propose a greedy algorithm that iteratively adds a node to a group w
 
 ## Fragments and Loose Associations
 ### Data publication
-Fragmentation can also be used to protect sensitive associations in data publishing $\to$ publish/release to external parties only views (fragments) that
-do not expose sensitive associations. To increase utility of published information fragments could be coupled with some associations in sanitized form $\to$ loose associations: associations among groups of values (in contrast to speciﬁc values).
+Fragmentation can also be used to protect sensitive associations in data publishing $\to$ publish/release to external parties only views (**fragments**) that do not expose sensitive associations. To increase utility of published information fragments could be coupled with some associations in sanitized form $\to$ loose associations: associations among groups of values (in contrast to speciﬁc values).
 
 #### Conﬁdentiality constraints
 As already discussed, are a sets of attributes such that the (joint) visibility of values of the attributes in the sets should be protected. They permit to express different requirements:
 - **sensitive attributes**: the values of some attributes are considered sensitive and should not be visible;
-- sensitive associations: the associations among values of given attributes are sensitive and should not be visible.
+- **sensitive associations**: the associations among values of given attributes are sensitive and should not be visible.
 
 An example of conﬁdentiality constraints.
 
@@ -3477,9 +3478,9 @@ An example of visibility requirements.
 
 ![[ConfidentialityCostraintsExample.png]]
 
-- Either names of Patients or their Cities should be released: $Patient \vee City$;
-- either Birth dates and Cities of patients in association should be released or the SSN of patients should be released: $(Birth \wedge City) \vee SSN$;
-- Illnesses and Doctors, as well as their association, should be released: $Illness \wedge Doctor$.
+- Either names of Patients or their Cities should be released: $Patient \vee City$ (alternative views);
+- either Birth dates and Cities of patients in association should be released or the SSN of patients should be released: $(Birth \wedge City) \vee SSN$ (visible associations and alternative views);
+- Illnesses and Doctors, as well as their association, should be released: $Illness \wedge Doctor$ (visible attributes).
 
 ----------------------------------------------------------------
 
