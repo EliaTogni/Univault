@@ -3415,7 +3415,7 @@ Possible solutions:
 ----------------------------------------------------------------
 
 ### Anonymizing Bipartite Graph
-An example of private associations.
+An example of private associations. The table _Customer_-_Product_ contains sensible informations.
 
 ![[PrivateAssociationsExample.png]]
 
