@@ -3494,12 +3494,12 @@ An example of fragmentation.
 ![[FragmentationExample.png]]
 
 #### Correct and minimal fragmentation
-A fragmentation is correct if:
+A fragmentation is **correct** if:
 - each conﬁdentiality constraint is satisﬁed by all fragments;
 - each visibility requirement is satisﬁed by at least a fragment;
 - fragments do not have attributes in common (to prevent joins on fragments to retrieve associations).
 
-A correct fragmentation is minimal if the number of fragments is minimum (i.e., any other correct fragmentation has an equal or greater number of fragments).
+A correct fragmentation is **minimal** if the number of fragments is minimum (i.e., any other correct fragmentation has an equal or greater number of fragments).
 
 The Min-CF problem of computing a correct and minimal fragmentation is NP-hard.
 
@@ -3511,7 +3511,7 @@ A SAT solver can efﬁciently solve the Min-CF problem. An instance of the Min-C
 Iterate the evaluation of a SAT solver, starting with one fragment and increasing fragments by one at each iteration, until a solution is found (solution is guaranteed to be minimal).
 
 ##### Publishing loose associations
-Fragmentation breaks associations among attributes. To increase utility of published information, fragments can be coupled with some associations in sanitized form. A given privacy degree of the association must be guaranteed $\to$ loose associations: associations among groups of values (in contrast to speciﬁc values).
+Fragmentation breaks associations among attributes. To increase utility of published information, fragments can be coupled with some associations in sanitized form. A given privacy degree of the association must be guaranteed $\to$ **loose associations**, that is, associations among groups of values (in contrast to speciﬁc values).
 
 Given two fragments $F_l$ and $F_r$, a loose association between $F_l$ and $F_r$:
 - partitions tuples in the fragments in groups;
@@ -3705,7 +3705,7 @@ Novel approach to the problem of protecting privacy when publishing data. Generi
 
 # Privacy and integrity of queries and computations
 
-slide 2/76
+![[PrivacyAndIntegrityOfQueriesAndComputations.png]]
 
 ## Access and pattern confidentiality
 Guaranteeing privacy of outsourced data entails protecting the confidentiality of the data (content confidentiality) as well as of the accesses to them:
@@ -3742,7 +3742,7 @@ The path ORAM reads and writes are managed in the following way:
 
 An example of Path ORAM.
 
-slide 8/76
+![[PathORAMExample.png]]
 
 ----------------------------------------------------------------
 
@@ -3782,7 +3782,7 @@ Node structure:
 
 An example of the abstract representation of shuffle index.
 
-slide 13/76
+![[AbstractRepresentationOfShuffleIndexExample.png]]
 
 ----------------------------------------------------------------
 
@@ -3791,7 +3791,7 @@ Pointers between nodes of the abstract data structure correspond, at logical lev
 
 An example of the abstract and logical shuffle index.
 
-slide 15/76
+![[AbstractAndLogicalShuffleIndexExample.png]]
 
 ----------------------------------------------------------------
 
@@ -3800,7 +3800,7 @@ Each node $\langle id, n \rangle$ of the logical shuffle index is stored on the 
 
 An example of the logical and physical shuffle index.
 
-slide 17/76
+![[LogicalAndPhysicalShuffleIndexExample.png]]
 
 ----------------------------------------------------------------
 ### Data accesses
@@ -3858,9 +3858,9 @@ Cover searches must:
 
 An example of cover searches.
 
-slide 25/76
+![[CoverSearchesExample.png]]
 
-Protection offered by cover searches:
+Protection offered by cover searches:
 - leaf blocks have the same probability of containing the actual target, e.g., blocks $201$ and $207$ can be both the target block;
 - the parent-child relationship between accessed blocks is confused, e.g., block $201$ could be child of either $101$ or $103$;
 
@@ -3870,7 +3870,7 @@ However, parent-child relationship can be disclosed by intersection attacks.
 
 Another example of cover searches.
 
-slide 27/76
+![[CoverSearchesExample2.png]]
 
 An example of an intersection attack on cover searches.
 
@@ -3898,12 +3898,12 @@ slide 31/76
 
 No intersection attack on cached searches.
 
-slide 32/76
+![[CachedSearchesNoIntersectionAttack.png]]
 
 Protection offered by cached searches:
 - caching helps in counteracting short term intersection attacks, e.g., the observations of the server on the two previous requests would be $\{(001); (101,103); (201,207)\}$ and $\{(001); (102,104); (208,211)\} \to$ the server would not be able to determine whether the two requests aim at the same target;
-- Caching does not prevent intersection attacks on observations that go beyond the size of the cache;
-- A long history of observations will allow the server to reconstruct the topology (parent-child relationship) of the shuffle index.
+- acching does not prevent intersection attacks on observations that go beyond the size of the cache;
+- a long history of observations will allow the server to reconstruct the topology (parent-child relationship) of the shuffle index.
 
 ----------------------------------------------------------------
 
@@ -3914,10 +3914,11 @@ The contents of all blocks read in the execution of an access and the nodes in c
 
 The shuffled blocks are rewritten back on the server $\to$ node shuffling at a given level requires to update the parents of the nodes.
 
-
 An example of shuffling.
 
-slide 35/76
+![[ShufflingExample1.png]]
+
+![[ShufflingExample2.png]]
 
 ##### Access execution and shuffle index management
 Let $v$ be the target value. Determine _num_cover_$+1$ cover values and for each level $l$ of the shuffle index:
@@ -3930,11 +3931,12 @@ Let $v$ be the target value. Determine _num_cover_$+1$ cover values and for each
 
 An example of access execution.
 
-slide 37/76
+slides ...
+![[AccessExecutionExample.png]]
 
 Impact on the logical index of access execution. 
 
-38/76
+![[AccessExecutionImpactOnTheLogicalIndex.png]]
 
 ----------------------------------------------------------------
 
