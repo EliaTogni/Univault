@@ -3511,7 +3511,7 @@ A SAT solver can efﬁciently solve the Min-CF problem. An instance of the Min-C
 Iterate the evaluation of a SAT solver, starting with one fragment and increasing fragments by one at each iteration, until a solution is found (solution is guaranteed to be minimal).
 
 ##### Publishing loose associations
-Fragmentation breaks associations among attributes. To increase utility of published information, fragments can be coupled with some associations in sanitized form. A given privacy degree of the association must be guaranteed $\to$ **loose associations**, that is, associations among groups of values (in contrast to speciﬁc values).
+Fragmentation breaks associations among attributes. To increase utility of published information, fragments can be coupled with some associations in sanitized form. A given **privacy degree** of the association must be guaranteed $\to$ **loose associations**, that is, associations among groups of values (in contrast to speciﬁc values).
 
 Given two fragments $F_l$ and $F_r$, a loose association between $F_l$ and $F_r$:
 - partitions tuples in the fragments in groups;
@@ -3531,7 +3531,7 @@ slide 200/268
 ----------------------------------------------------------------
 
 ###### Group association
-A $(k_l, k_r)$-grouping induces a group association $A$ among the groups in $f_l$ and $f_r$. A group association $A$ over $f_l$ and $f_r$ is a set of pairs of group identiﬁers such that:
+A $(k_l, k_r)$-grouping induces a **group association** $A$ among the groups in $f_l$ and $f_r$. A group association $A$ over $f_l$ and $f_r$ is a set of pairs of group identiﬁers such that:
 - $A$ has the same cardinality as the original relation;
 - there is a bijective mapping between the original relation and $A$ that associates each tuple in the original relation with a pair $(G_l(l), G_r(r))$ in $A$, with $l \in f_l$ and $r \in f_r$.
 
@@ -3542,7 +3542,7 @@ slide 202/268
 ----------------------------------------------------------------
 
 ###### Group association protection
-Duplicates in fragments are maintained (all fragments have the same cardinality as the original relation). Fragments may contain tuples that are equal
+Duplicates in fragments are maintained (all fragments have the same cardinality as the original relation). Fragments may contain tuples that are equal.
 
 Even tuples that are different may have the same values for attributes involved in a conﬁdentiality constraint. The looseness protection offered by grouping can be compromised $\to$ need to control occurrences of the same values.
 
@@ -3553,7 +3553,7 @@ Two tuples $l_i$, $l_j$ in $f_l(r_i, r_j$ in $fr)$ are alike w.r.t. a constraint
 - $c \subseteq (F_l \cup F_r)$ ($c$ is covered by $F_l$ and $F_r$);
 - $l_i [c \cap F_l] = l_j [c \cap F_l] (r_i [c \cap F_r] = r_j [c \cap F_r])$.
 
-Two tuples $l_i$, $l_j$ in $f_l (r_i, r_j$ in $f_r)$ are alike $l_i \simeq l_j (r_i \simeq r_j)$ if they are alike w.r.t. at least a constraint $c \subseteq (F_l \cup F_r)$. $\simeq$ is transitive for any constraint $c$. $\simeq$ is not transitive if there are at least two constraints covered by $F_l$ and $F_r$.
+Two tuples $l_i$, $l_j$ in $f_l (r_i, r_j$ in $f_r)$ are alike $l_i \simeq l_j (r_i \simeq r_j)$ if they are alike with regard to at least a constraint $c \subseteq (F_l \cup F_r)$. $\simeq$ is transitive for any constraint $c$. $\simeq$ is not transitive if there are at least two constraints covered by $F_l$ and $F_r$.
 
 An example of alikeness.
 
@@ -3564,7 +3564,7 @@ slide 205/268
 ###### k-loose association
 A group association is **$k$-loose** if every tuple in the group association $A$ indistinguishably corresponds to at least $k$ distinct associations among tuples in the fragments. A $k$-loose association is also $k'$ -loose for any $k' \leq k$. A $(k_l, k_r)$-grouping induces a minimal group association $A$ if:
 - $A$ is $k$-loose;
-- $\nexists$ a $(k_l', k_r')$-grouping inducing a $k$-loose association s.t. $k_l' \cdot k_r' < k_l \cdot k_r$.
+- $\nexists$ a $(k_l', k_r')$-grouping inducing a $k$-loose association such that $k_l' \cdot k_r' < k_l \cdot k_r$.
 
 An example of a $4$-loose association.
 
@@ -3757,7 +3757,7 @@ Protocol:
 ----------------------------------------------------------------
 
 #### Path ORAM and Ring ORAM: Pros and cons
-Path ORAM and Ring ORAM provide access and pattern confidentialitysame protection guarantees as ORAM (no inferences):
+Path ORAM and Ring ORAM provide access and pattern confidentiality same protection guarantees as ORAM (no inferences):
 - much more efficient than ORAM $\to$ more applicable in practice;
 - limited access time;
 - range queries are not supported;
@@ -3770,7 +3770,7 @@ Path ORAM and Ring ORAM provide access and pattern confidentialitysame protectio
 ## Shuffle Index
 ### Shuffle index data structure
 Data are indexed over a candidate key $K$ and organized as an unchained $B+$-tree with fan out $F$.<br />
-Data are stored in the leaves in association with their index values. Accesses to the data (searches) are based on the value of the index
+Data are stored in the leaves in association with their index values. Accesses to the data (searches) are based on the value of the index.
 
 Node structure:
 - $q \geq \lceil F/2 \rceil$ children with $q − 1$ values $v_1 \leq ... \leq v_{q−1}$;
@@ -3803,6 +3803,7 @@ An example of the logical and physical shuffle index.
 Access to the data requires an iterative process between the client and the server. The client performs an iteration for each level of the shuffle index starting from the root. At each iteration, the client:
 - decrypts the retrieved block;
 - determines the block to be retrieved from the server at the next level.
+
 The process ends when a leaf block is retrieved.
 
 An example of data accesses.
@@ -3813,7 +3814,7 @@ slide 19/76
 ----------------------------------------------------------------
 
 ### Knowledge of the observer (server)
-The server receives a set of blocks to store. The server receives requests to access the blocks that translate into observations, where an observation $o_i$ corresponds to a sequence of blocks $\{b_{i1}, ..., b_{ih}\}.
+The server receives a set of blocks to store. The server receives requests to access the blocks that translate into observations, where an observation $o_i$ corresponds to a sequence of blocks $\{b_{i1}, ..., b_{ih}\}$.
 
 The server knows or can easily infer:
 - the number m of blocks and their identifiers;
@@ -3831,7 +3832,7 @@ Given a sequence of observations $\{o_1, ..., o_z\}$,the server should not be ab
 ### Is encryption enough?
 It protects:
 - content confidentiality of data at rest;
-- access confidentiality of individual requests
+- access confidentiality of individual requests.
 
 Access and pattern confidentiality is not provided. Accesses to the same blocks imply accesses to the same data $\to$ requency-based attacks allow the server to reconstruct the correspondence between plaintext values and blocks.
 
@@ -3858,8 +3859,7 @@ An example of cover searches.
 
 Protection offered by cover searches:
 - leaf blocks have the same probability of containing the actual target, e.g., blocks $201$ and $207$ can be both the target block;
-- the parent-child relationship between accessed blocks is confused, e.g., block $201$ could be child of either $101$ or $103$;
-
+- the parent-child relationship between accessed blocks is confused, e.g., block $201$ could be child of either $101$ or $103$.
 
 
 However, parent-child relationship can be disclosed by intersection attacks.
@@ -3938,7 +3938,7 @@ Impact on the logical index of access execution.
 
 ### Protection analysis
 - **Degradation due to shuffling**: shuffling degrades any information the server may possess on the correspondence between nodes and blocks.
-- **access confidentiality**: every time an access is performed any information on the specific access has to be divided among _num_cover_$+1$ nodes and shuffling destroys the correspondence nodes-blocks
+- **access confidentiality**: every time an access is performed any information on the specific access has to be divided among _num_cover_$+1$ nodes and shuffling destroys the correspondence nodes-blocks;
 - **pattern confidentiality**: accesses separated by a significant number of steps cannot be recognized (shuffling):
 	- protection by covers and cache (short term);
 	- protection by covers and shuffling (long term).
