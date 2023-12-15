@@ -3549,9 +3549,9 @@ Even tuples that are different may have the same values for attributes involved 
 ----------------------------------------------------------------
 
 ###### Alikeness
-Two tuples $l_i$, $l_j$ in $f_l(r_i, r_j$ in $fr)$ are alike w.r.t. a constraint $c$, denoted $l_i \simeq_c l_j (r_i \simeq_c r_j)$, if:
+Two tuples $l_i$, $l_j$ in $f_l(r_i, r_j$ in $fr)$ are **alike** with regard to a constraint $c$, denoted $l_i \simeq_c l_j (r_i \simeq_c r_j)$, if:
 - $c \subseteq (F_l \cup F_r)$ ($c$ is covered by $F_l$ and $F_r$);
-- $l_i [c \cap F_l] = l_j [c \cap F_l] (r_i [c \cap F_r] = r_j [c \cap F_r])$.
+- $l_i [c \cap F_l] = l_j [c \cap F_l]$ (and, similarly, $r_i [c \cap F_r] = r_j [c \cap F_r])$.
 
 Two tuples $l_i$, $l_j$ in $f_l (r_i, r_j$ in $f_r)$ are alike $l_i \simeq l_j (r_i \simeq r_j)$ if they are alike with regard to at least a constraint $c \subseteq (F_l \cup F_r)$. $\simeq$ is transitive for any constraint $c$. $\simeq$ is not transitive if there are at least two constraints covered by $F_l$ and $F_r$.
 
@@ -3562,7 +3562,7 @@ slide 205/268
 ----------------------------------------------------------------
 
 ###### k-loose association
-A group association is **$k$-loose** if every tuple in the group association $A$ indistinguishably corresponds to at least $k$ distinct associations among tuples in the fragments. A $k$-loose association is also $k'$ -loose for any $k' \leq k$. A $(k_l, k_r)$-grouping induces a minimal group association $A$ if:
+A group association is **$k$-loose** if every tuple in the group association $A$ indistinguishably corresponds to at least $k$ distinct associations among tuples in the fragments. A $k$-loose association is also $k'$-loose for any $k' \leq k$. A $(k_l, k_r)$-grouping induces a minimal group association $A$ if:
 - $A$ is $k$-loose;
 - $\nexists$ a $(k_l', k_r')$-grouping inducing a $k$-loose association such that $k_l' \cdot k_r' < k_l \cdot k_r$.
 
@@ -3605,10 +3605,10 @@ slide 211/268
 
 ###### Flat grouping vs sparse grouping
 A $(k_l, k_r)$-grouping is:
-- ﬂat if either $k_l$ or $k_r$ is equal to $1$;
-- sparse if both $k_l$ and $k_r$ are different from $1$.
+- **ﬂat** if either $k_l$ or $k_r$ is equal to $1$;
+- **sparse** if both $k_l$ and $k_r$ are different from $1$.
 
-Flat grouping resembles k-anonymity and captures at the same time the $\ell$-diversity property, but it works on associations and attributes’ values are not generalized. Sparse grouping guarantees larger applicability than ﬂat grouping,
+Flat grouping resembles $k$-anonymity and captures at the same time the $\ell$-diversity property, but it works on associations and attributes’ values are not generalized. Sparse grouping guarantees larger applicability than ﬂat grouping,
 with the same level of protection (there may exist a sparse grouping providing $k$-looseness but not a ﬂat grouping).
 
 An example of flat grouping.
