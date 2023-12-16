@@ -3526,7 +3526,9 @@ A $k$-grouping is **minimal** if it maximizes the number of groups (intuitively,
 
 An example of minimal $(2, 2)$-grouping.
 
-slide 200/268
+![[Minimal(2,2)-GroupingExample1.png]]8
+
+![[Minimal(2,2)-GroupingExample2.png]]
 
 ----------------------------------------------------------------
 
@@ -3537,7 +3539,11 @@ A $(k_l, k_r)$-grouping induces a **group association** $A$ among the groups in 
 
 An example of group association.
 
-slide 202/268
+![[GroupAssociationExample1.png]]
+
+![[GroupAssociationExample2.png]]
+
+![[GroupAssociationExample3.png]]
 
 ----------------------------------------------------------------
 
@@ -3557,7 +3563,9 @@ Two tuples $l_i$, $l_j$ in $f_l (r_i, r_j$ in $f_r)$ are alike $l_i \simeq l_j (
 
 An example of alikeness.
 
-slide 205/268
+![[AlikenessExample1.png]]
+
+![[AlikenessExample2.png]]
 
 ----------------------------------------------------------------
 
@@ -3568,7 +3576,9 @@ A group association is **$k$-loose** if every tuple in the group association $A$
 
 An example of a $4$-loose association.
 
-slide 207/268
+![[4-LooseAssociationExample1.png]]
+
+![[4-LooseAssociationExample2.png]]
 
 ----------------------------------------------------------------
 
@@ -3585,21 +3595,27 @@ If a $(k_l, k_r)$-grouping satisﬁes given heterogeneity properties, the induce
 ###### Group heterogeneity
 No group can contain tuples that are alike with respect to the constraints covered by $F_l$ and $F_r$. It ensures diversity of tuples within groups.
 
-slide 209/268
+![[GroupHeterogeneity1.png]]
+
+![[GroupHeterogeneity2.png]]
 
 ----------------------------------------------------------------
 
 ###### Association heterogeneity
 No group can be associated twice with another group (the group association cannot contain any duplicate). it ensures that for each real tuple in the original relation there are at least $k_l \cdot k_r$ pairs in the group association that may correspond to it.
 
-slide 210/268
+![[AssociationHeterogeneity1.png]]
+
+![[AssociationHeterogeneity2.png]]
 
 ----------------------------------------------------------------
 
 ###### Deep heterogeneity
 No group can be associated with two groups that contain alike tuplet. It ensures that all $k_l \cdot k_r$ pairs in the group association to which each tuple could correspond to contain diverse values for attributes involved in constraints.
 
-slide 211/268
+![[DeepHeterogeneity1.png]]
+
+![[DeepHeterogeneity2.png]]
 
 ----------------------------------------------------------------
 
@@ -3613,11 +3629,11 @@ with the same level of protection (there may exist a sparse grouping providing $
 
 An example of flat grouping.
 
-slide 213/268
+![[FlatGroupingExample.png]]
 
 An example of sparse grouping.
 
-slide 214/268
+![[SparseGroupingExample.png]]
 
 ----------------------------------------------------------------
 
@@ -3638,7 +3654,7 @@ The exposure of a sensitive association $\langle l[c\ cap F_l]$, $r[c \cap F_r] 
 ###### Exposure without loose association
 Given $l \in f_l$ and $r \in f_r$ the probability $P(l, r)$ that tuple $\langle l,r \rangle$ belongs to the original relation is $1/ \vert f_l \vert = 1/ \vert f_r \vert$.
 
-slide 217/268
+![[ExposureWithoutLooseAssociation.png]]
 
 Exposure $(P(l[c \cap F_l]$, $r[c \cap F_r]))$ depends on the presence of alike tuples. Let $l_i$ , $l_j$ be two tuples in $f_l$ s.t. $l_i \simeq_c l_j$, $P(l_i [c \cap F_l]$, $r[c \cap F_r])$ is the composition of the probability that:
 - $l_i$ is associated with $r$;
@@ -3648,7 +3664,7 @@ $$P(l_i, r) + P(l_j, r) − (P(l_i, r) \cdot P(l_j, r))$$
 
 An example of exposure without loose association.
 
-slide 219/268
+![[ExposureWithoutLooseAssociationExample.png]]
 
 Given $l \in f_l$ and $r \in f_r$ the probability $P^A(l, r)$ that tuple $\langle l,r \rangle$ belongs to the original relation is at most $1/k$. $P^A(l[c \cap F_l]$, $r[c \cap F_r])$ is evaluated considering the alike $\simeq_c$ relationship. Let $l_i$, $l_j$ in $f_l$ s.t. $l_i \simeq_c l_j$, $P^A(l_i [c \cap F_l]$, $r[c \cap F_r])$ is the composition of the probability that:
 - $l_i$ is associated with $r$;
@@ -3664,11 +3680,11 @@ slide 221/268
 
 ###### Measuring privacy and utility
 - **Utility**: average over the variation of probability $\vert P^A (l[c \cap F_l],$ $r[c \cap F_r]) − P(l[c \cap F-l ]$, $r[c \cap F_r]) \vert$ for each sensitive association $\langle l[c \cap F_l]$, $r[c \cap F_r] \rangle$. It is measured also in terms of the precision in responding to queries;
-- **privacy**: in addition to the $k$-loose degree, an exposure threshold $\delta_{max}$ could be speciﬁed. Given a threshold $\delta_{max}$, $A$ can be published if $\delta_{max} \geq (P^A (l[c \cap F_l]$, $r[c \cap F_r]) − P(l[c \cap F_l]$, $r[c \cap F_r]))$ for all sensitive associations $ \langle l[c \cap F_l]$, $r[c \cap F_r] \rangle$.
+- **privacy**: in addition to the $k$-loose degree, an exposure threshold $\delta_{max}$ could be speciﬁed. Given a threshold $\delta_{max}$, $A$ can be published if $\delta_{max} \geq (P^A (l[c \cap F_l]$, $r[c \cap F_r]) − P(l[c \cap F_l]$, $r[c \cap F_r]))$ for all sensitive associations $\langle l[c \cap F_l]$, $r[c \cap F_r] \rangle$.
 
 An example of measuring utility.
 
-slide 223/268
+![[MeasuringUtilityExample.png]]
 
 ----------------------------------------------------------------
 

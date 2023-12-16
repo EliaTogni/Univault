@@ -18,18 +18,6 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "1d6565be79c3a01e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Videos/Defining Regular Expressions (RegEx) - Computerphile.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
         ]
       }
@@ -129,18 +117,19 @@
   },
   "active": "0da0ed1548d6151e",
   "lastOpenFiles": [
+    "Images/MeasuringUtilityExample.png",
+    "Images/ExposureWithoutLooseAssociationExample.png",
+    "Images/ExposureWithoutLooseAssociation.png",
+    "Images/SparseGroupingExample.png",
+    "Images/FlatGroupingExample.png",
+    "Images/DeepHeterogeneity2.png",
+    "Images/DeepHeterogeneity1.png",
+    "Images/AssociationHeterogeneity2.png",
+    "Images/AssociationHeterogeneity1.png",
+    "Images/GroupHeterogeneity2.png",
+    "Images/GroupHeterogeneity1.png",
     "Videos/Defining Regular Expressions (RegEx) - Computerphile.md",
     "Classes/Privatezza e Protezione dei Dati.md",
-    "Images/ExperimentalEvaluationResults.png",
-    "Images/CachedSearchesNoIntersectionAttack.png",
-    "Images/ShufflingExample2.png",
-    "Images/ShufflingExample1.png",
-    "Images/AccessExecutionExample.png",
-    "Images/AccessExecutionImpactOnTheLogicalIndex.png",
-    "Images/CoverSearchesExample2.png",
-    "Images/CoverSearchesExample.png",
-    "Images/LogicalAndPhysicalShuffleIndexExample.png",
-    "Images/AbstractRepresentationOfShuffleIndexExample.png",
     "Articles/Image Classification with Classic and Deep Learning Techniques.md",
     "Templates/Article Template.md",
     "Lexicon/Maggiociondolo.md",
@@ -165,7 +154,6 @@
     "Videos/The Unfair Advantage Of The 60 Second Procrastination Rule.md",
     "Videos/Set SIX Alarms. It'll Change Your Life..md",
     "Videos/Mastering the Art of Continuous Learning.md",
-    "Videos/L'informatica è donna!.md",
     "Blogs",
     "Atoms",
     "Lexicon",
