@@ -3812,7 +3812,7 @@ An example of the abstract and logical shuffle index.
 ----------------------------------------------------------------
 
 ### Physical representation of shuffle index
-Each node $\langle id, n \rangle$ of the logical shuffle index is stored on the server in encrypted form (content confidentiality). A node $\langle id, n \rangle$ corresponds to a block $\langle id, b \rangle$, with $b= \mathcal{C} \Vert \mathcal{T}$, $\mathcal{C} =E_k (s \Vert n)$, $T=MAC_{k'} (id \Vert \mathcal{C})$, $s$ a value chosen at random during each encryption.
+Each node $\langle id, n \rangle$ of the logical shuffle index is stored on the server in encrypted form (**content confidentiality**). A node $\langle id, n \rangle$ corresponds to a block $\langle id, b \rangle$, with $b= \mathcal{C} \Vert \mathcal{T}$ (the concatenation of a encrypted block and a sign), $\mathcal{C} =E_k (s \Vert n)$ (encrypted with a random salt), $T=MAC_{k'} (id \Vert \mathcal{C})$ (a hash with a key), $s$ a value chosen at random during each encryption (salt).
 
 An example of the logical and physical shuffle index.
 
@@ -3828,21 +3828,20 @@ The process ends when a leaf block is retrieved.
 
 An example of data accesses.
 
-slide 19/76
+slide 19/76 tutte
 
 
 ----------------------------------------------------------------
 
 ### Knowledge of the observer (server)
-The server receives a set of blocks to store. The server receives requests to access the blocks that translate into observations, where an observation $o_i$ corresponds to a sequence of blocks $\{b_{i1}, ..., b_{ih}\}$.
+The server receives a set of blocks to store. The server receives requests to access the blocks that translate into **observations**, where an observation $o_i$ corresponds to a sequence of blocks $\{b_{i1}, ..., b_{ih}\}$.
 
 The server knows or can easily infer:
-- the number m of blocks and their identifiers;
-- the height h of the shuffle index;
+- the number $m$ of blocks and their identifiers;
+- the height $h$ of the shuffle index (when the user stops after $n$ readings, the server is able to infer that $n$ is the height of the tree);
 - the level associated with each block (after the observation of a long history of accesses).
 
-Problem statement:<br />
-Given a sequence of observations $\{o_1, ..., o_z\}$,the server should not be able to infer:
+Problem statement: given a sequence of observations $\{o_1, ..., o_z\}$, the server should not be able to infer:
 - the data stored in the shuffle index (**content confidentiality**);
 - the data to which access requests are aimed, that is, $\forall i = 1, ..., z$. the server should not infer that $o_i$ aims at a specific node (**access confidentiality**);
 - $o_i$ aims at accessing the same node as $o_j$, $\forall i, j = 1, ..., z, i \neq j$ (**pattern confidentiality**).
@@ -3854,7 +3853,7 @@ It protects:
 - content confidentiality of data at rest;
 - access confidentiality of individual requests.
 
-Access and pattern confidentiality is not provided. Accesses to the same blocks imply accesses to the same data $\to$ requency-based attacks allow the server to reconstruct the correspondence between plaintext values and blocks.
+Access and pattern confidentiality is not provided. Accesses to the same blocks imply accesses to the same data $\to$ frequency-based attacks allow the server to reconstruct the correspondence between plaintext values and blocks.
 
 ----------------------------------------------------------------
 
