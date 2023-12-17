@@ -3754,6 +3754,8 @@ The path ORAM reads and writes are managed in the following way:
 
 An example of Path ORAM.
 
+esempio path oram 1
+
 ![[PathORAMExample.png]]
 
 ----------------------------------------------------------------
@@ -3762,7 +3764,7 @@ An example of Path ORAM.
 Variation of Path ORAM that reduces the online access bandwidth to $\mathcal{O}(1)$ and the overall bandwidth to $\sim 2 − 2.5\log{(N)}$.<br />
 Same server-side structure as Path ORAM but each node has:
 - $S$ additional dummy blocks;
-- a small map of the offsets of its blocks;
+- a small **map** of the offsets of its blocks;
 - a counter of accesses.
 
 Protocol:
@@ -3773,9 +3775,11 @@ Protocol:
 ----------------------------------------------------------------
 
 #### Path ORAM and Ring ORAM: Pros and cons
-Path ORAM and Ring ORAM provide access and pattern confidentiality same protection guarantees as ORAM (no inferences):
+Path ORAM and Ring ORAM provide access and pattern confidentiality same protection guarantees as ORAM (no inferences). The advantages are:
 - much more efficient than ORAM $\to$ more applicable in practice;
-- limited access time;
+- limited access time.
+
+However:
 - range queries are not supported;
 - accesses by multiple clients are not supported;
 - vulnerable to failures of the client;
@@ -3785,7 +3789,7 @@ Path ORAM and Ring ORAM provide access and pattern confidentiality same protecti
 
 ## Shuffle Index
 ### Shuffle index data structure
-Data are indexed over a candidate key $K$ and organized as an unchained $B+$-tree with fan out $F$.<br />
+Data are indexed over a candidate key $K$ and organized as an **unchained** $B+$-tree with fan out $F$ (the max capacity of a node). Unchained means that there are no links between leafs and, in this case, having chained leafs would leak information regarding the order of the data.<br />
 Data are stored in the leaves in association with their index values. Accesses to the data (searches) are based on the value of the index.
 
 Node structure:
