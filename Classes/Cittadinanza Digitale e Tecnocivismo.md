@@ -1,4 +1,24 @@
 # Domande
+
+## Introduzione V1
+1. cosa si intende con "cittadinanza digitale" in generale? e nel contesto del libro? (arcobaleno)
+2. cosa si intende con "tecnocivismo"? (arcobaleno)
+3. cos'è l'arcobaleno della CDT? com'è strutturato? cosa descrivono i vari livelli/bande?
+4. cosa indica il termine ICT?
+5. a cosa è ispirato l'arcobaleno della CDT?
+6. cosa si intende con "spettrografia/spettroscopia" in CDT?
+7. cos'è "Creative Commons"? (hai altri esempi simili?)
+8. cos'è "Wikimedia"? (hai altri esempi simili?)
+9. cosìè il "Progetto Gutenberg"? (hai altri esempi simili?)
+10. cos'è "Openstreetmap"? (hai altri esempi simili?)
+11. cos'è la "Free Software Foundation"? (hai altri esempi simili?)
+12. cos'è un "Cahier de doléances"?
+13. chi era Aaron Swartz?
+14. cos'è il "(neo)luddismo"?
+15. come funziona Wikipedia?
+
+----------------------------------------------------------------
+
 ## L0
 1) **Quali sono i temi salienti del livello "network" dell'arcobaleno?**
 	i
