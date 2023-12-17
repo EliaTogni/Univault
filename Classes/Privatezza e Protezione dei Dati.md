@@ -3638,14 +3638,14 @@ An example of sparse grouping.
 ----------------------------------------------------------------
 
 ###### Privacy vs utility
-The publication of loose associations increases data utility. it makes it possible to evaluate queries more precisely than if only the fragments were published:
+The publication of loose associations increases **data utility**. It makes it possible to evaluate queries more precisely than if only the fragments were published.
 
-Increased utility corresponds to a greater exposure of information (lower privacy degree).
+Increased utility corresponds to a greater exposure of information (**lower privacy degree**).
 
 ----------------------------------------------------------------
 
 ###### Association exposure
-The exposure of a sensitive association $\langle l[c\ cap F_l]$, $r[c \cap F_r] \rangle$, with $c$ a constraint covered by $F_l$, $F_r$, can be expressed as the probability of the association to hold in the original relation (given the published information). The increased exposure due to the publication of loose associations can be measured as the difference between:
+The exposure of a sensitive association $\langle l[c \cap F_l]$, $r[c \cap F_r] \rangle$, with $c$ a constraint covered by $F_l$, $F_r$, can be expressed as the probability of the association to hold in the original relation (given the published information). The increased exposure due to the publication of loose associations can be measured as the difference between:
 - the probability $P^A( l[c \cap F_l]$, $r[c \cap F_r])$ that the sensitive association $\langle l[c \cap F_l]$, $r[c \cap F_r] \rangle$ appears in the original relation, given $f_l$, $f_r$, and $A$;
 - the probability $P(l[c \cap F_l]$, $r[c \cap F_r])$ that the sensitive association $\langle l[c \cap F_l]$, $r[c \cap F_r] \rangle$ appears in the original relation, given $f_l$ and $f_r$.
 
@@ -3656,7 +3656,7 @@ Given $l \in f_l$ and $r \in f_r$ the probability $P(l, r)$ that tuple $\langle 
 
 ![[ExposureWithoutLooseAssociation.png]]
 
-Exposure $(P(l[c \cap F_l]$, $r[c \cap F_r]))$ depends on the presence of alike tuples. Let $l_i$ , $l_j$ be two tuples in $f_l$ s.t. $l_i \simeq_c l_j$, $P(l_i [c \cap F_l]$, $r[c \cap F_r])$ is the composition of the probability that:
+Exposure $(P(l[c \cap F_l]$, $r[c \cap F_r]))$ depends on the presence of alike tuples. Let $l_i$, $l_j$ be two tuples in $f_l$ such that $l_i \simeq_c l_j$, $P(l_i [c \cap F_l]$, $r[c \cap F_r])$ is the composition of the probability that:
 - $l_i$ is associated with $r$;
 - $l_j$ is associated with $r$.
 
@@ -3730,25 +3730,25 @@ Guaranteeing privacy of outsourced data entails protecting the confidentiality o
 - **pyramid-shaped database layout of Oblivious RAM**;
 - **path ORAM protocol**, working on a tree structure;
 - **ring ORAM,** variation of Path ORAM with better performance and same protection guarantees;
-- **shuffle index** based on the definition of a B+-tree structure with dynamic allocation of data.
+- **shuffle index** based on the definition of a $B+$-tree structure with dynamic allocation of data.
 
 #### Path ORAM
 Server side:
 - binary tree structure with $L$ levels ($L = \lceil \log_2{(N)} − 1\rceil$, with $N$ the number of blocks);
-- each node in the tree is a bucket that contains up to $Z$ real blocks (padded with dummy blocks);
+- each node in the tree is a **bucket** that contains up to $Z$ real blocks (padded with **dummy blocks**);
 - each leaf node $x$ defines a unique path $P(x)$ from $x$ to the root.
 
 Client side:
-- the client locally stores a small number of blocks in a stash;
+- the client locally stores a small number of blocks in a **stash** (kinda like a local cache);
 - the client stores a position map: $x = position[a]$ means that a block identified by a is currently mapped to the $x$-th leaf node $\to$ block $a$ (if it exists) resides in some bucket in path $P(x)$ or in the stash;
 - The position map changes every time blocks are accessed and remapped.
 
 The main invariant are that at any time:
 - each block is mapped to a uniformly random leaf bucket in the tree;
-- unstashed blocks are always placed in some bucket along the path to the mapped leaf.
+- unstashed blocks (the ones that are not stored locally) are always placed in some bucket along the path to the mapped leaf.
 
 The path ORAM reads and writes are managed in the following way:
-1) **remap block**: Let $x$ be the old position of $a$. Randomly remap the position of $a$ to a new random position (a new leaf node);
+1) **remap block**: let $x$ be the old position of $a$. Randomly remap the position of $a$ to a new random position (a new leaf node);
 2) **read path**: read nodes in $P(x)$ containing $a$. If the access is a write, update the data stored for block $a$;
 3) **write path**: write the nodes in $P(x)$ back possibly including some additional blocks from the stash if they can be placed into the path (i.e., the main invariant is satisfied).
 
