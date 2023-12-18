@@ -3,30 +3,32 @@
 ## Introduzione V1
 1) **Cosa si intende con "cittadinanza digitale" in generale? E nel contesto del libro?** (arcobaleno)
 	Il termine cittadinanza, in generale, indica il rapporto tra un individuo e lo Stato, ed è in particolare uno status, denominato civitatis, al quale l’ordina- mento giuridico ricollega la pienezza dei diritti civili e politici.<br />
-	Nel contesto del libro si intende, invece, la declinazione digitale dell'essere Cittadini di un mondo sempre più digitalizzato, informatizzato e computerizzato dove i rapporti tra cittadino e stato cambiano per causa o merito della tecnologia. In termini di arcobaleno, fa riferimento agli utimi $4$ livelli (dal livello $4$ al livello $7$).
+	Nel contesto del libro si intende, invece, la declinazione digitale dell'essere Cittadini di un mondo sempre più digitalizzato, informatizzato e computerizzato dove i rapporti tra cittadino e stato cambiano per causa o merito della tecnologia. In termini di arcobaleno, fa riferimento agli utimi $4$ livelli (dal livello $4$ al livello $7$), anche detti livelli sociali-partecipativi.
 2) **Cosa si intende con "tecnocivismo"? (arcobaleno)**
-	Il tecnocivismo serve come fondamento per la vera e propria cittadinanza digitale. In termini di arcobaleno, fa riferimento ai primi $4$ livelli (dal livello $0$ al livello $3$).
+	Il tecnocivismo serve come fondamento per la vera e propria cittadinanza digitale. In termini di arcobaleno, fa riferimento ai primi $4$ livelli (dal livello $0$ al livello $3$), anche detti livelli tecnico-infrastrutturali.
 1. **Cos'è l'arcobaleno della CDT? Com'è strutturato? Cosa descrivono i vari livelli/bande?**
-	E' un framework, un modello omnicomprensivo per inquadrare l'ambito CDT, costituito da otto strati.
+	E' un framework, un modello omnicomprensivo per inquadrare l'ambito CDT, costituito da otto strati. Il livello $0$ (The Net) descrive l'infrastruttura della rete. Il livello $1$ (services) descrive i servizi online, pubblici e privati. Il livello $2$ (access) descrive l'accesso ai servizi di cittadinanza. Il livello $3$ (education) parla di istruzione e consapevolezza. Il livello $4$ (transparency) descrive la trasparenza. Il livello $5$ (participation) parla dell'informarsi reciprocamente e collaborativamente. Il livello $6$ (consultation) parla dell'essere ascoltati e consultati. Il livello $7$ (democracy) parla del coinvolgimento attivo nelle scelte pubbliche e nell'elaborazione delle politiche.
 1. **Cosa indica il termine ICT?**
-	Information and Communication Technologies
+	Information and Communication Technologies.
 1. **A cosa è ispirato l'arcobaleno della CDT?**
-	Questo framework si discosta dalla metafora della scala di Arnstein, la quale evoca un percorso in salita che implica un impegno progressivo da parte di coloro che lo intraprendono, per adottare e adattare il modello ad arcobaleno proposto in "The access rainbow"
+	Questo framework si discosta dalla metafora della scala di Arnstein, la quale evoca un percorso in salita che implica un impegno progressivo da parte di coloro che lo intraprendono, per adottare e adattare il modello ad arcobaleno proposto in "The access rainbow", perfezionandone i livelli. Questa struttura a livelli ricorda il modello OSI perchè se uno qualunque dei livelli è carente, le conseguenze negative si ripercuotono su tutti i livelli sovrastanti.
 1. **Cosa si intende con "spettrografia/spettroscopia" in CDT?**
-	L’ispirazione proviene dalla spettroscopia fisica, una tecnica per analizzare la composizione di un oggetto esaminandone la luce emessa. Attraverso la nostra spettroscopia Cittadinanza Digitale e Tecnocivismo il contesto o la situazione oggetto dell’a nalisi vengono valutati in base alla luminosità15 attribuita ad ogni livello in quel particolare contesto, e lo spettro che ne risulta ci fornisce a colpo d’occhio una panoramica dell’oggetto valutato.
+	L’ispirazione proviene dalla spettroscopia fisica, una tecnica per analizzare la composizione di un oggetto esaminandone la luce emessa. Attraverso la nostra spettroscopia Cittadinanza Digitale e Tecnocivismo il contesto o la situazione oggetto dell’a nalisi vengono valutati in base alla luminosità attribuita ad ogni livello in quel particolare contesto, e lo spettro che ne risulta ci fornisce a colpo d’occhio una panoramica dell’oggetto valutato.
 1. **Cos'è "Creative Commons"? Hai altri esempi simili?**
-2. **Cos'è "Wikimedia"? Hai altri esempi simili?**
-3. **Cos'è il "Progetto Gutenberg"? Hai altri esempi simili?**
+	Organizzazione senza fini di lucro dedicata ad ampliare la gamma di opere dell'ingegno disponibili alla condivisione e all'utilizzo pubblico in maniera legale. Le licenze CC forniscono un modo semplice e standardizzato per comunicare quali diritti d'autore dell'opera si riserva e a quali altri rinuncia, a beneficio degli utilizzatori.
+1. **Cos'è "Wikimedia"? Hai altri esempi simili?**
+2. **Cos'è il "Progetto Gutenberg"? Hai altri esempi simili?**
 	LibraryGenesis
 1. **Cos'è "Openstreetmap"? Hai altri esempi simili?**
 2. **Cos'è la "Free Software Foundation"? Hai altri esempi simili?**
 3. **Cos'è un "Cahier de doléances"?**
-	Un quaderno delle doglianze, 
+	I quaderni di doglianza o delle lamentele erano registri nei quali le assemblee incaricate di eleggere i deputati agli Stati generali, convocati da Luigi XVI nel $1789$, annotavano critiche e lamentele della popolazione. 
 1. **Chi era Aaron Swartz?**
+	E' stato un programmatore, scrittore ed attivista statunitense, coautore delle licenze Creative Commonse e cofondatore di Reddit. Fu arrestato per aver scaricato $5$ milioni di articoli da un database accademico. 
 2. **Cos'è il "(neo)luddismo"?**
 	Rivisitazione dell’antico luddismo (movimento anti-tecnologico dei primi del $1800$, contrario alle macchine che “rubavano il lavoro” come i telai). I neo-luddisti applicano il filosoficamente fallace “principio di precauzione” a qualunque nuova tecnologia (es. del $2020$: il $5G$) chiedendone la non adozione o l’abbandono. Sono spesso associati a ideologie anti- globalizzazione, anti-scientifiche ed eco-estremiste.
 1. **Come funziona Wikipedia?**
-	Wikipedia è una enciclopedia online gratuita che chiunque può editare.
+	Wikipedia è una enciclopedia online gratuita che chiunque può editare. Consiste di contenuto editabile liberamente, i cui articoli contengono numerosi link. Questi contenuti vengono creati e modificati continuamente.
 
 ----------------------------------------------------------------
 
