@@ -607,6 +607,7 @@
 48. cosa sono le "fake news"?
 49. cos'è una "fondazione di partecipazione"?
 50. perché è importante la "governance" in una iniziativa di _sharing_?
+51. abbiamo visto tre iniziative di segnalazione di problemi stradali (fixmystreets, sicurezzastradale, venezia), quali differenze nella gestione della possibilità di commentare le segnalazioni? quali conseguenze nella scelta tecnica fatta?
 
 -----------------------------------------------------------------
 
@@ -662,6 +663,56 @@
 
 ## L7
 1) Quali sono i temi salienti del livello "democracy" dell'arcobaleno?
+2) definisci il termine "voto/votante/elettore"
+2. definisci il termine "funzione di scelta sociale"
+3. definisci il termine "suffragio universale"
+4. definisci il termine "suffragio diretto/indiretto"
+5. definisci il termine "vincolo di mandato"
+6. definisci il termine "appoggio/supporto (endorsement) / manifestazione di approvazione o dis-approvazione / valutazione (rating)"
+7. quali sono le regole da stabilire per una "votazione"?
+8. quali sono le proprietà tipiche richieste ad un "sistema di voto"?
+9. cosa si intende con "segretezza/libertà/ammissibilità/unicità/immodificabilità/completezza/lealtà/fiducia/verificabilità" in un "sistema di voto"?
+10. in che senso gli scrutini avvengono alla "luce del sole"?
+11. quali sono i problemi riscontrabili nei sistemi di voto tradizionali?
+12. quali potrebbero essere i vantaggi dei sistemi di voto digitali?
+13. cosa si intende con "voto elettronico"? e con "voto online"?
+14. di quali criticità soffre il "voto online"?
+15. analizza le esperienze di voto digitale di Germania, Estonia e Svizzera
+16. descrivi la situazione "voto digitale" in Italia
+17. quali altri contesti di voto in cui la versione digitale potrebbe essere proficuamente applicata abbiamo analizzato?
+18. cosa si intende con "stakeholder"?
+19. quali problemi vedi nall'utilizzo del sistema UniVote?
+20. quali problemi vedi nall'utilizzo del sistema di voto dei "5 stelle"?
+21. perché in alcuni sistemi di voto digitale deve passare un certo tempo dall'iscrizione per ottenere il diritto di voto?
+22. cosa è la "teoria della scelta sociale"?
+23. che vantaggi ha l'uso di elaborazione elettronica in un sistema di voto?
+24. cos'è un "metodo di voto"?
+25. cosa si intende con "minimizzazione della scontentezza"?
+26. cosa si intende con metodo di voto a "scelta singola"?
+27. cosa si intende con metodo di voto a "scelta multipla"?
+28. cosa si intende con metodo di voto "cumulativo"?
+29. cosa si intende con metodo di voto "a ordinamento"?
+30. cosa si intende con "preferenza collettiva"?
+31. cos'è il "principio di Condorcet"?
+32. cos'è il "paradosso di Condorcet" (loop)?
+33. cosa sono le "preferenze indirette"?
+34. cos'è l'elettorato "attivo/passivo"?
+35. cos'è il "criterio di indipendenza delle alternative irrilevanti"?
+36. quali sono i "citeri di fairness" del voto?
+37. cosa dice il "Teorema di Arrow"?
+38. riassumi le esperienze di movimenti e partiti nell'era digitale
+39. cos'è LiquidFeedback e che particoalrità ha?
+40. cosa si intende con "idea gathering"?
+41. cosa si intende con "online deliberation"?
+42. cosa si intende con "collaborative writing" in L7?
+43. cita qualche metodo di voto e descrivilo
+44. cosa si intende con "delega"? e con "delega liquida"?
+45. che parallelo puoi tracciare tra LQFB e Google Votes?
+46. qual è la "golden rule of liquid democracy"? ha senso?
+47. cosa si intende con "decision-making"?
+48. cita e descrivi qualche software di online deliberation di seconda generazione
+49. cosa sono i "bilanci partecipativi"?
+50. quali fasi compongono un "bilancio partecipativo" in generale?
 
 ----------------------------------------------------------------
 
