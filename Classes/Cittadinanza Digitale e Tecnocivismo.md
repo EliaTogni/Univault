@@ -1,21 +1,32 @@
 # Domande
 
 ## Introduzione V1
-1. cosa si intende con "cittadinanza digitale" in generale? e nel contesto del libro? (arcobaleno)
-2. cosa si intende con "tecnocivismo"? (arcobaleno)
-3. cos'è l'arcobaleno della CDT? com'è strutturato? cosa descrivono i vari livelli/bande?
-4. cosa indica il termine ICT?
-5. a cosa è ispirato l'arcobaleno della CDT?
-6. cosa si intende con "spettrografia/spettroscopia" in CDT?
-7. cos'è "Creative Commons"? (hai altri esempi simili?)
-8. cos'è "Wikimedia"? (hai altri esempi simili?)
-9. cosìè il "Progetto Gutenberg"? (hai altri esempi simili?)
-10. cos'è "Openstreetmap"? (hai altri esempi simili?)
-11. cos'è la "Free Software Foundation"? (hai altri esempi simili?)
-12. cos'è un "Cahier de doléances"?
-13. chi era Aaron Swartz?
-14. cos'è il "(neo)luddismo"?
-15. come funziona Wikipedia?
+1) **Cosa si intende con "cittadinanza digitale" in generale? E nel contesto del libro?** (arcobaleno)
+	Il termine cittadinanza, in generale, indica il rapporto tra un individuo e lo Stato, ed è in particolare uno status, denominato civitatis, al quale l’ordina- mento giuridico ricollega la pienezza dei diritti civili e politici.<br />
+	Nel contesto del libro si intende, invece, la declinazione digitale dell'essere Cittadini di un mondo sempre più digitalizzato, informatizzato e computerizzato dove i rapporti tra cittadino e stato cambiano per causa o merito della tecnologia. In termini di arcobaleno, fa riferimento agli utimi $4$ livelli (dal livello $4$ al livello $7$).
+2) **Cosa si intende con "tecnocivismo"? (arcobaleno)**
+	Il tecnocivismo serve come fondamento per la vera e propria cittadinanza digitale. In termini di arcobaleno, fa riferimento ai primi $4$ livelli (dal livello $0$ al livello $3$).
+1. **Cos'è l'arcobaleno della CDT? Com'è strutturato? Cosa descrivono i vari livelli/bande?**
+	E' un framework, un modello omnicomprensivo per inquadrare l'ambito CDT, costituito da otto strati.
+1. **Cosa indica il termine ICT?**
+	Information and Communication Technologies
+1. **A cosa è ispirato l'arcobaleno della CDT?**
+	Questo framework si discosta dalla metafora della scala di Arnstein, la quale evoca un percorso in salita che implica un impegno progressivo da parte di coloro che lo intraprendono, per adottare e adattare il modello ad arcobaleno proposto in "The access rainbow"
+1. **Cosa si intende con "spettrografia/spettroscopia" in CDT?**
+	L’ispirazione proviene dalla spettroscopia fisica, una tecnica per analizzare la composizione di un oggetto esaminandone la luce emessa. Attraverso la nostra spettroscopia Cittadinanza Digitale e Tecnocivismo il contesto o la situazione oggetto dell’a nalisi vengono valutati in base alla luminosità15 attribuita ad ogni livello in quel particolare contesto, e lo spettro che ne risulta ci fornisce a colpo d’occhio una panoramica dell’oggetto valutato.
+1. **Cos'è "Creative Commons"? Hai altri esempi simili?**
+2. **Cos'è "Wikimedia"? Hai altri esempi simili?**
+3. **Cos'è il "Progetto Gutenberg"? Hai altri esempi simili?**
+	LibraryGenesis
+1. **Cos'è "Openstreetmap"? Hai altri esempi simili?**
+2. **Cos'è la "Free Software Foundation"? Hai altri esempi simili?**
+3. **Cos'è un "Cahier de doléances"?**
+	Un quaderno delle doglianze, 
+1. **Chi era Aaron Swartz?**
+2. **Cos'è il "(neo)luddismo"?**
+	Rivisitazione dell’antico luddismo (movimento anti-tecnologico dei primi del $1800$, contrario alle macchine che “rubavano il lavoro” come i telai). I neo-luddisti applicano il filosoficamente fallace “principio di precauzione” a qualunque nuova tecnologia (es. del $2020$: il $5G$) chiedendone la non adozione o l’abbandono. Sono spesso associati a ideologie anti- globalizzazione, anti-scientifiche ed eco-estremiste.
+1. **Come funziona Wikipedia?**
+	Wikipedia è una enciclopedia online gratuita che chiunque può editare.
 
 ----------------------------------------------------------------
 
