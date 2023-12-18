@@ -3674,7 +3674,23 @@ $$P^A(l_i, r) + P^A(l_j, r) − (P^A(l_i, r) \cdot P^A(l_j, r))$$
 
 Another example of exposure with loose association.
 
-slide 221/268
+![[ExposureWithLooseAssociation1Example1.png]]
+
+![[ExposureWithLooseAssociation1Example2.png]]
+
+![[ExposureWithLooseAssociation1Example3.png]]
+
+![[ExposureWithLooseAssociation1Example4.png]]
+
+![[ExposureWithLooseAssociation1Example5.png]]
+
+![[ExposureWithLooseAssociation1Example6.png]]
+
+![[ExposureWithLooseAssociation1Example7.png]]
+
+![[ExposureWithLooseAssociation1Example8.png]]
+
+![[ExposureWithLooseAssociation1Example9.png]]
 
 ----------------------------------------------------------------
 
@@ -3684,7 +3700,11 @@ slide 221/268
 
 An example of measuring utility.
 
-![[MeasuringUtilityExample.png]]
+![[MeasuringUtilityExample1.png]]
+
+![[MeasuringUtilityExample2.png]]
+
+![[MeasuringUtilityExample3.png]]
 
 ----------------------------------------------------------------
 
@@ -3754,9 +3774,11 @@ The path ORAM reads and writes are managed in the following way:
 
 An example of Path ORAM.
 
-esempio path oram 1
+![[PathORAMExample1.png]]
 
-![[PathORAMExample.png]]
+![[PathORAMExample2.png]]
+
+![[PathORAMExample3.png]]
 
 ----------------------------------------------------------------
 
@@ -3828,8 +3850,24 @@ The process ends when a leaf block is retrieved.
 
 An example of data accesses.
 
-slide 19/76 tutte
+![[DataAccessesExample1.png]]
+
+![[DataAccessesExample2.png]]
 
+
+![[DataAccessesExample3.png]]
+
+![[DataAccessesExample4.png]]
+
+![[DataAccessesExample5.png]]
+
+![[DataAccessesExample6.png]]
+
+![[DataAccessesExample7.png]]
+
+![[DataAccessesExample8.png]]
+
+![[DataAccessesExample9.png]]
 
 ----------------------------------------------------------------
 
@@ -3889,7 +3927,11 @@ Another example of cover searches.
 
 An example of an intersection attack on cover searches.
 
-slide 28/76
+![[CoverSearchesIntersectionAttack1.png]]
+
+![[CoverSearchesIntersectionAttack2.png]]
+
+![[CoverSearchesIntersectionAttack3.png]]
 
 ----------------------------------------------------------------
 

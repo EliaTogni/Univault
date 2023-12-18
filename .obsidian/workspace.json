@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Classes/Cittadinanza Digitale e Tecnocivismo.md",
+                "file": "Classes/Privatezza e Protezione dei Dati.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Cittadinanza Digitale e Tecnocivismo.md",
+                "file": "Classes/Privatezza e Protezione dei Dati.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,19 +117,20 @@
   },
   "active": "0da0ed1548d6151e",
   "lastOpenFiles": [
+    "Images/CoverSearchesIntersectionAttack3.png",
+    "Images/CoverSearchesIntersectionAttack2.png",
+    "Images/CoverSearchesIntersectionAttack1.png",
+    "Images/DataAccessesExample9.png",
+    "Images/DataAccessesExample8.png",
+    "Images/DataAccessesExample7.png",
+    "Images/DataAccessesExample6.png",
+    "Images/DataAccessesExample5.png",
+    "Images/DataAccessesExample4.png",
+    "Images/DataAccessesExample3.png",
+    "Images/DataAccessesExample2.png",
     "Classes/Privatezza e Protezione dei Dati.md",
-    "Classes/Bioinformatica.md",
     "Classes/Cittadinanza Digitale e Tecnocivismo.md",
-    "Images/MeasuringUtilityExample.png",
-    "Images/ExposureWithoutLooseAssociationExample.png",
-    "Images/ExposureWithoutLooseAssociation.png",
-    "Images/SparseGroupingExample.png",
-    "Images/FlatGroupingExample.png",
-    "Images/DeepHeterogeneity2.png",
-    "Images/DeepHeterogeneity1.png",
-    "Images/AssociationHeterogeneity2.png",
-    "Images/AssociationHeterogeneity1.png",
-    "Images/GroupHeterogeneity2.png",
+    "Classes/Bioinformatica.md",
     "Videos/Defining Regular Expressions (RegEx) - Computerphile.md",
     "Articles/Image Classification with Classic and Deep Learning Techniques.md",
     "Templates/Article Template.md",
@@ -152,7 +154,6 @@
     "Books/Leggere, scrivere, argomentare.md",
     "Videos/The Unfair Advantage Of The 60 Second Procrastination Rule.md",
     "Videos/Set SIX Alarms. It'll Change Your Life..md",
-    "Videos/Mastering the Art of Continuous Learning.md",
     "Blogs",
     "Atoms",
     "Lexicon",
