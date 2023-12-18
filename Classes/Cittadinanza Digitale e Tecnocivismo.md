@@ -23,8 +23,8 @@
 	In Italia, un'iniziativa simile è portata avanti dall'associazione Liber Liber con il progetto Manuzio. Un'altra iniziativa simile è Open Library, progetto online creato da Aaron Swartz con l'intento di creare una pagina web per ogni libro pubblicato. Questo progetto fornisce copie digitali online  create da immagini di libri di pubblico dominio.
 10) **Cos'è "OpenStreetMap"? Hai altri esempi simili?**
 	OpenStreetMap è un progetto collaborativo finalizzato a creare mappe del mondo a contenuto libero.
-1) **Cos'è la "Free Software Foundation"? Hai altri esempi simili?**
-	iii
+11) **Cos'è la "Free Software Foundation"? Hai altri esempi simili?**
+	Si tratta di un'oranizzazione non a scopo di lucro che si occupa di eliminare le restrizioni sulla copia, redistribuzione, comprensione e modifica dei software. 
 12) **Cos'è un "Cahier de doléances"?**
 	I quaderni di doglianza o delle lamentele erano registri nei quali le assemblee incaricate di eleggere i deputati agli Stati generali, convocati da Luigi XVI nel $1789$, annotavano critiche e lamentele della popolazione. 
 13) **Chi era Aaron Swartz?**

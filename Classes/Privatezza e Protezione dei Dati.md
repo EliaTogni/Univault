@@ -53,15 +53,15 @@ Macrodata tables can be classified into the following two groups (types of table
 
 An example of a count table is a two-dimensional table showing the number of employees by department and annual income (in $K$ Euro).
 
-![[CountTable.png]]
+![[CountTable.png|600]]
 
 An example of a magnitude table is the average number of days spent in the hospital by respondents with a given disease.
 
-![[MagnitudeTable.png]]
+![[MagnitudeTable.png|600]]
 
 An example of a microdata table is the records about delinquent children in county Alfa.
 
-![[MicrodataTable.png]]
+![[MicrodataTable.png|600]]
 
 ----------------------------------------------------------------
 
@@ -128,7 +128,7 @@ De-identification is not sufficient. In fact, most municipalities sell populatio
 
 An example of the anonymity problem.
 
-![[AnonymityProblem.png]]
+![[AnonymityProblem.png|600]]
 
 ----------------------------------------------------------------
 
@@ -197,7 +197,7 @@ Given a domain tuple $D_T = \langle D_1, . . . , D_n \rangle$ such that $D_i \in
 
 An example of a domain generalization hierarchy.
 
-![[DomainGeneralizationHierarchy.png]]
+![[DomainGeneralizationHierarchy.png|600]]
 
 ----------------------------------------------------------------
 
@@ -208,7 +208,7 @@ $VGH_D$ is a [[Albero|tree]] where the leaves are the values in $D$ and the root
 An example of value generalization hierarchy.
 
 
-![[ValueGeneralizationHierarchy.png]]
+![[ValueGeneralizationHierarchy.png|600]]
 
 ----------------------------------------------------------------
 
@@ -220,14 +220,14 @@ Let $T_i$ and $T_j$ be two tables defined on the same set of attributes. Table $
 
 An example of a generalized table with suppression.
 
-![[GeneralizedTableSuppression.png]]
+![[GeneralizedTableSuppression.png|600]]
 
 ----------------------------------------------------------------
 
 ## $k$-minimal generalization with suppression
 Now, it will be provided the definition of **Distance Vector**. Let $T_i (A_1 , . . . , A_n)$ and $T_j (A_1 , . . . , A_n)$ be two tables such that $T_i \preceq T_j$. The distance vector of $T_j$ from $T_i$ is the vector $DV_{i,j} = [d_1 , . . . , d_n]$, where each $d_z, z = 1, . . . , n$, is the length of the unique path between $dom(A_z , T_i)$ and $dom(A_z, T_j)$ in the domain generalization hierarchy $DGH_{D_z}$.
 
-![[DistanceVector.png]]
+![[DistanceVector.png|600]]
 
 Let $T_i$ and $T_j$ be two tables such that $T_i \preceq T_j$, and let $MaxSup$ be the specified **threshold of acceptable suppression**. $T_j$ is said to be a **$k$-minimal generalization** of table $T_i$ iff:
 1) $T_j$ satisfies $k$-anonymity enforcing minimal required suppression, that is, $T_j$ satisfies $k$-anonymity and $\forall T_z : T_i \preceq T_z, DV_{i,z} = DV_{i,j}$, $T_z$ satisfies $k$-anonymity $\to \vert T_j \vert \geq \vert T_z \vert$. This means that for each table $T_z$, which is a generalization of $T_i$, and with the same $DV$, $T_j$ has a number of tuples greater or equal than $T_i$ so it does perform less suppression; 
@@ -236,7 +236,7 @@ Let $T_i$ and $T_j$ be two tables such that $T_i \preceq T_j$, and let $MaxSup$ 
 
 An example of $2$-minimal generalizations with $MaxSup = 2$.
 
-![[Example2MinimalGeneralizations.png]]
+![[Example2MinimalGeneralizations.png|600]]
 
 ----------------------------------------------------------------
 
@@ -253,7 +253,7 @@ Different preference criteria can be applied in choosing a preferred minimal gen
 Generalization and suppression can be applied at different levels of granularity. Generalization can be applied at the level of **single column** (i.e., a generalization step generalizes all the values in the column) or single cell (i.e., for a specific column, the table may contain values at different generalization levels).<br />
 Suppression can be applied at the level of row (i.e., a suppression operation removes a whole tuple), column (i.e., a suppression operation obscures all the values of a column), or single cells (i.e., a $k$-anonymized table may wipe out only certain cells of a given tuple/attribute).
 
-![[ClassificationKAnonymity.png]]
+![[ClassificationKAnonymity.png|600]]
 
 The notation _not applicable_ refers to the fact that we are able to generalize to a finer level than the level at which we are able to suppress.
 
@@ -261,13 +261,13 @@ The notation $\equiv$ referst to the fact that the ability to generalize and sup
 
 An example of $2$-anonymized tables with regard to different models.
 
-![[2Anonymized1.png]]
-![[2Anonymized2.png]]
-![[2Anonymized3.png]]
+![[2Anonymized1.png|600]]
+![[2Anonymized2.png|600]]
+![[2Anonymized3.png|600]]
 
 In the last example (_CG\_CS_), each tuple has a different $DV$ because the tuple domain is heterogeneous. This type of dataset is better in terms of utility but it worsen the performance.
 
-![[2Anonymized4.png]]
+![[2Anonymized4.png|600]]
 
 ----------------------------------------------------------------
 
@@ -296,17 +296,17 @@ To reduce the computational cost, it adopts a distance vector matrix that avoids
 An example for computing a $k$-minimal solution.<br />
 In the table on the right, every cell $c_{ij}$ measures how much the tuple $t_i$ is distant from the tuple $t_j$, that is, how many generalization steps are necessary until the tuples become the same.
 
-![[kMinimalSolution1.png]]
+![[kMinimalSolution1.png|600]]
 
 Suppose $k = 2$ and $MaxSup = 2$.<br />
 Compute first solutions at height $1$ : $GT_{[1,0]}$ and $GT_{[0,1]}$. In the image below, all the cells with $DV <= [1, 0]$ are generalized to the same value.
 
-![[kMinimalSolution2.png]]
+![[kMinimalSolution2.png|600]]
 
 Satisfies $2$-anonymity (suppressing $t_1$ and $t_6$).<br />
 In the image below, all the cells with $DV <= [0, 1]$ are generalized to the same value.
 
-![[kMinimalSolution3.png]]
+![[kMinimalSolution3.png|600]]
 
 Satisfies $2$-anonymity (suppressing $t_8$ and $t_9$).
 
@@ -345,7 +345,7 @@ Incognito adopts a **[[Programmazione Dinamica|bottom-up]]** approach for the vi
 
 An example of the Incognito algorithm.
 
-![[IncognitoExample1.png]]
+![[IncognitoExample1.png|600]]
 ![[IncognitoExample2.png]]
 
 After the construction of the lattice by the Incognito algorithm, it is still necessary to search the solutions in the hierarchy. This algorithm searches by cutting the space of the solutions.
@@ -383,8 +383,8 @@ Mondrian algorithm is flexible and can operate:
 An example of the Mondrian multidimensional algorithm.<br />
 We wished $k=3$.
 
-![[MondrianMultidimensionalExample1.png]]
-![[MondrianMultidimensionalExample2.png]]
+![[MondrianMultidimensionalExample1.png|600]]
+![[MondrianMultidimensionalExample2.png|600]]
 
 ----------------------------------------------------------------
 
@@ -408,7 +408,7 @@ When generalization is performed at cell level (_CG_) the existence of at least 
 
 An example of $k$-anonymity revisited.
 
-![[kAnonimityRevised.png]]
+![[kAnonimityRevised.png|600]]
 
 The issue of this algorithm is that to be sure to have reached $k$-anonymity, we have to check not only the sanitized table but also the primary one.
 
@@ -1092,7 +1092,7 @@ For small blocks, the sampling fraction is increased to provide additional prote
 An example of confidentiality edit.<br />
 Records for the $20$ employees of company Alfa.
 
-![[ConfidentialityEditExample.png]]
+![[ConfidentialityEditExample.png|600]]
 
 1) take a sample of records from the microdata file (say a $10\%$ sample, $2$ tuples for company Alfa). Assume that records number $4$ and $17$ were selected as part of our $10\%$ sample;
 2) since we need tables by _Company_ and _Education_ level, we find a match in some other company on the other variables (_Race_ and _Salary_, company totals for these variables remain unchanged):
@@ -1107,14 +1107,14 @@ Records for the $20$ employees of company Alfa.
 
 Take a sample of records from the microdata file (say a $10\%$ sample). Since we need tables by company and education level, we find a match in some other company on the other variables.
 
-![[ConfidentialityEditExample1.png]]
-![[ConfidentialityEditExample2.png]]
+![[ConfidentialityEditExample1.png|600]]
+![[ConfidentialityEditExample2.png|600]]
 
 
 Part of the randomly selected $10\%$ sample from other companies match records in company Alfa.
 
-![[ConfidentialityEditExample3.png]]
-![[ConfidentialityEditExample4.png]]
+![[ConfidentialityEditExample3.png|600]]
+![[ConfidentialityEditExample4.png|600]]
 
 ----------------------------------------------------------------
 
@@ -1504,7 +1504,7 @@ The advantages of smart services and security are:
 - business continuity and disaster recovery;
 - prevention and response.
 
-![[SmartSociety.png]]
+![[SmartSociety.png|500]]
 
 While the disadvantages are:
 - more complexity, that is, the weakest link becomes a point of attack:
@@ -1518,7 +1518,7 @@ While the disadvantages are:
 
 ## The role of data in a smart environment
 
-![[RoleOfDataSmartEnvironment.png]]
+![[RoleOfDataSmartEnvironment.png|500]]
 
 This implies better governance and intelligent systems.
 
@@ -1555,13 +1555,13 @@ Client-side trust boundary: only the behavior of the client should be considered
 
 ## Data protection – Base level
 
-![[DPBaseLevel.png]]
+![[DPBaseLevel.png|500]]
 
 ----------------------------------------------------------------
 
 ## Data protection – Regulation
 
-![[DPRegulation.png]]
+![[DPRegulation.png|500]]
 
 ----------------------------------------------------------------
 
@@ -1645,16 +1645,16 @@ Issues to be addressed:
 
 ### Security and privacy problems
 
-![[PrivacyOfUsers.png]]
-![[PrivacyOfStorage.png]]![[PrivacyOfQueries.png]]
-![[SecureConnections.png]]
+![[PrivacyOfUsers.png|500]]
+![[PrivacyOfStorage.png|500]]![[PrivacyOfQueries.png|500]]
+![[SecureConnections.png|500]]
 
 ----------------------------------------------------------------
 
 # Privacy of users
 ## Privacy of users’ identities
 
-![[PrivacyOfUsers.png]]
+![[PrivacyOfUsers.png|500]]
 
 Users may wish to remain **anonymous** or to not disclose much information about themselves when operating in the cloud:
 - anonymous communication techniques (e.g., Mix networks, onion routing, Tor, Crowds);
@@ -1748,13 +1748,12 @@ These preferences are hard to express with classical access control mechanisms.
 - **privacy preferences in credential-based interactions**.
 
 #### Cost-Sensitive Trust Negotiation
-
 Two parties (client and server) interact with each other to establish mutual trust by the exchange of credentials $\to$ **trust negotiation protocol**.<br />
 The disclosure of a credential is regulated by a policy that speciﬁes the prerequisite conditions that must be satisﬁed to disclose the credential.<br />
 Credentials and policies are associated with a cost $\to$ more sensitive credentials/policies have higher cost.<br />
 The goal is to minimize the total sensitivity cost of credentials and policies disclosed during a trust negotiation.
 
-![[CostSensitiveTrustNegotiation.png]]
+![[CostSensitiveTrustNegotiation.png|600]]
 
 In this example, the client has $4$ credentials, $c_1$, $c_2$, $c_3$ and $c_4$. The server has $3$ credentials, $s_1$, $s_2$ and $s_3$, and the service he provides, $s$.<br />
 The policies release the service only the conditions are satisfied. Therefore, in this example, $s_2$ and $s_3$ are released to everyone (because the condition is always true).<br />
@@ -1809,11 +1808,11 @@ Again, this approach put the focus on the negotiation rather than on the client 
 #### Logic-based Minimal Credential Disclosure
 Parties are involved in a trust negotiation where the release of credentials is regulated by given policies. Each credential contains a single attribute. By matching the policies of the involved parties, several negotiation paths (i.e., credential disclosure sets) will make the negotiation succeed. Logic-based approach for users to specify privacy preferences exploited for selecting a negotiation path.
 
-![[LogicBasedMinimalCredentialDisclosure1.png]]
+![[LogicBasedMinimalCredentialDisclosure1.png|600]]
 
 Disclosure sets are represented as binary vectors $\to$ $0$ means do not disclose; $1$ means disclose.
 
-![[LogicBasedMinimalCredentialDisclosure2.png]]
+![[LogicBasedMinimalCredentialDisclosure2.png|600]]
 
 Default preference: not disclosing a credential is preferred to disclosing it $\to$ $0 \succ_i 1$, with $i$ the $i$-th credential.
 Disclosure sets are compared according to the **Pareto composition** ($\succ_P$):
@@ -2054,7 +2053,7 @@ On the server-side there is still work to do to increase expressiveness. Today X
 
 # Privacy and integrity of data storage
 
-![[PrivacyAndIntegrityOfDataStorage.png]]
+![[PrivacyAndIntegrityOfDataStorage.png|500]]
 
 ## Contributions and advancements
 The research community has been very active and produced several contributions and advancements. E.g.,:
@@ -2251,7 +2250,7 @@ Query translation works like in the partition-based method.
 #### Interval-based queries
 - **Order-preserving indexing techniques**: support interval-based queries but expose to inference. Comparing the ordered sequences of plaintext and indexes would lead to reconstruct the correspondence;
 - **Non order-preserving techniques**: data are not exposed to inference but interval-based queries are not supported;
-- **DBMSs support interval-based queries using [[B-Albero |B+-trees]]** (for each node $n$, the values in the left subtree are smaller than the value in $n$ and the values in the right subtree are bigger than the value in $n$.), but the $B+$-tree deﬁned by the server on indexes is of no use. Possible solution:
+- **DBMSs support interval-based queries using [[B-Albero|B+-trees]]** (for each node $n$, the values in the left subtree are smaller than the value in $n$ and the values in the right subtree are bigger than the value in $n$.), but the $B+$-tree deﬁned by the server on indexes is of no use. Possible solution:
 	- calculate the nodes in the $B+$-tree at the client and encrypt each node as a whole at the server;
 	- $B+$-tree traversal must be performed at the trusted front-end.
 
@@ -2655,15 +2654,15 @@ The SEL level is characterized by an encryption policy deﬁned as previously il
 
 A running example for over-encryption with 5 different acls ($r_1 = r_2$, $r_3 = r_4 = r_5$, $r_6 = r_7$, $r_8$ and $r_9$).
 
-![[RunningExampleForOverEncryption.png]]
+![[RunningExampleForOverEncryption.png|600]]
 
 An example of an initial conﬁguration for Full_SEL.
 
-![[InitialConfigurationFullSELExample.png]]
+![[InitialConfigurationFullSELExample.png|600]]
 
 An example of an initial conﬁguration for Delta_SEL.
 
-![[InitialConfigurationDeltaSELExample.png]]
+![[InitialConfigurationDeltaSELExample.png|600]]
 
 ----------------------------------------------------------------
 
@@ -2705,19 +2704,19 @@ Receive a request to revoke from user $u$ access to resource $r$:
 
 An example of grant operation – Full_SEL. In this case, we want to grant $D$ access to $r_3$ but we can't just add a token from $b_4$ to $b_7$ because it will expose $r_4$ and $r_5$. Therefore, the server must perform an over-encrypt on $r_4$ and $r_5$.
 
-![[GrantFullSEL.png]]
+![[GrantFullSEL.png|650]]
 
 An example of grant operation – Delta_SEL. The server necrypts only to cover data from unauthoryzed users. In this case, the server encrypts $r_4$ and $r_5$.
 
-![[GrantDeltaSEL.png]]
+![[GrantDeltaSEL.png|650]]
 
 An example of revoke operation – Full_SEL. We want to revoke the access to $r_8$ from $F$. At the start, $B$, $D$, $E$ and $F$ have access to it. The graph changes because the hub $b_{11}$ isn't needed anymore.
 
-![[RevokeFullSEL.png]]
+![[RevokeFullSEL.png|650]]
 
 An example of revoke operation – Delta_SEL
 
-![[RevokeDeltaSEL.png]]
+![[RevokeDeltaSEL.png|650]]
 
 ----------------------------------------------------------------
 
@@ -2895,8 +2894,8 @@ Key derivation graph extended with the storage server $S$. The key derivation gr
 
 An example of a key derivation graph.
 
-![[KeyDerivationGraphExample1.png]]
-![[KeyDerivationGraphExample2.png]]
+![[KeyDerivationGraphExample1.png|600]]
+![[KeyDerivationGraphExample2.png|600]]
 
 ----------------------------------------------------------------
 
@@ -2964,7 +2963,7 @@ Permit to detect:
 
 ### Structure of outsourced resources
 
-![[StructureOfOutsourcedResources1.png]]
+![[StructureOfOutsourcedResources1.png|600]]
 
 
 ----------------------------------------------------------------
@@ -3061,7 +3060,7 @@ Adapted afﬁnity matrix $M$:
 - $M_{i,j}$: ‘cost’ of placing cleartext attributes $i$ and $j$ in different fragments;
 - $M_{i,i}$: ‘cost’ of placing encrypted attribute $i$ (across both fragments).
 
-Goal: Minimize
+The goal is to minimize
 
 $$\sum_{i,j: i\in (R_1 - E), j \in (R_2 - E)} M_{i, j} + \sum_{i \in E} M_{i, i}$$
 
@@ -3157,11 +3156,9 @@ Basic principles:
 - preserve the associations among some attributes, e.g., association (_Illness_, _DoB_) should be preserved to explore the link between a speciﬁc illness and the age of patients;
 - **afﬁnity matrix** for representing the advantage of having pairs of attributes in the same fragment.
 
-Goal:
-- determine a correct fragmentation with maximum afﬁnity (sum of fragments afﬁnity computed as the sum of the afﬁnity of the different pairs of attributes in the fragment) $\to$ NP-hard problem (**minimum hitting set problem**).
+The goal is todetermine a correct fragmentation with maximum afﬁnity (sum of fragments afﬁnity computed as the sum of the afﬁnity of the different pairs of attributes in the fragment) $\to$ NP-hard problem (**minimum hitting set problem**).
 
-Basic idea of the heuristic:
-- iteratively combine fragments that have the highest afﬁnity and do not violate any conﬁdentiality constraint.
+The basic idea of the heuristic is to iteratively combine fragments that have the highest afﬁnity and do not violate any conﬁdentiality constraint.
 
 An example of maximum afﬁnity.
 
@@ -3219,7 +3216,7 @@ Determine a fragmentation $\mathcal{F} = \langle F_o, F_s \rangle$ for $R$, wher
 
 At the physical level $F_o$ and $F_s$ have a common attribute (additional _tid_ or non-sensitive key attribute) to guarantee lossless join.
 
-An example of keep a few.
+An example of Keep a few.
 
 ![[KeepAFewExample.png]]
 
@@ -3239,7 +3236,7 @@ where $C$ is a conjunction of basic conditions:
 
 An example of query evaluation.
 
-![[QueryEvaluationExample.png]]
+![[QueryEvaluationExample.png|600]]
 
 #### Query evaluation strategies
 Server-Client strategy:
@@ -3249,7 +3246,7 @@ Server-Client strategy:
 
 An example of a Server-Client strategy.
 
-![[ServerClientStrategyExample.png]]
+![[ServerClientStrategyExample.png|600]]
 
 Client-Server strategy:
 - client: evaluate $C_o$ and send _tid_ of tuples in result to server;
@@ -3258,7 +3255,7 @@ Client-Server strategy:
 
 An example of the client-server strategy.
 
-![[ClientServerStrategyExample.png]]
+![[ClientServerStrategyExample.png|600]]
 
 #### Server-client vs client-server strategies
 If the storage server knows or can infer the query, Client-Server leaks information: the server infers that some tuples are associated with values that satisfy $C_o$.
@@ -3285,7 +3282,7 @@ The metrics to be applied may depend on the information available.
 
 An example of data and workload information.
 
-![[DataAndWorkloadInformationExample.png]]
+![[DataAndWorkloadInformationExample.png|600]]
 
 ----------------------------------------------------------------
 
@@ -3417,7 +3414,7 @@ Possible solutions:
 ### Anonymizing Bipartite Graph
 An example of private associations. The table $n:n$ _Customer_-_Product_ contains sensible informations and it can also be represented as a bipartite graph.
 
-![[PrivateAssociationsExample.png]]
+![[PrivateAssociationsExample.png|600]]
 
 #### Problem statement
 Publish anonymized and useful version of bipartite graph in such a way that:
@@ -3436,11 +3433,11 @@ Basic idea: preserve the graph structure but permute mapping from entities to no
 
 An example of $(3,3)$ grouping.
 
-![[(3,3)GroupingExample1.png]]
+![[(3,3)GroupingExample1.png|600]]
 
 Another example of $(3,3)$ grouping.
 
-![[(3,3)GroupingExample2.png]]
+![[(3,3)GroupingExample2.png|600]]
 
 #### Safe groupings
 There are different ways for creating a $(k, l)$ grouping but not all the resulting groupings offer the same level of privacy (e.g., local clique) $\to$ safe $(k,l)$ groupings; this means that nodes in the same group of $V$ are not connected to a same node in $W$.
@@ -3491,7 +3488,7 @@ An example of visibility requirements.
 
 An example of fragmentation.
 
-![[FragmentationExample.png]]
+![[FragmentationExample.png|600]]
 
 #### Correct and minimal fragmentation
 A fragmentation is **correct** if:
@@ -3526,9 +3523,9 @@ A $k$-grouping is **minimal** if it maximizes the number of groups (intuitively,
 
 An example of minimal $(2, 2)$-grouping.
 
-![[Minimal(2,2)-GroupingExample1.png]]8
+![[Minimal(2,2)-GroupingExample1.png|600]]8
 
-![[Minimal(2,2)-GroupingExample2.png]]
+![[Minimal(2,2)-GroupingExample2.png|600]]
 
 ----------------------------------------------------------------
 
@@ -3539,11 +3536,11 @@ A $(k_l, k_r)$-grouping induces a **group association** $A$ among the groups in 
 
 An example of group association.
 
-![[GroupAssociationExample1.png]]
+![[GroupAssociationExample1.png|600]]
 
-![[GroupAssociationExample2.png]]
+![[GroupAssociationExample2.png|600]]
 
-![[GroupAssociationExample3.png]]
+![[GroupAssociationExample3.png|600]]
 
 ----------------------------------------------------------------
 
@@ -3563,9 +3560,9 @@ Two tuples $l_i$, $l_j$ in $f_l (r_i, r_j$ in $f_r)$ are alike $l_i \simeq l_j (
 
 An example of alikeness.
 
-![[AlikenessExample1.png]]
+![[AlikenessExample1.png|600]]
 
-![[AlikenessExample2.png]]
+![[AlikenessExample2.png|600]]
 
 ----------------------------------------------------------------
 
@@ -3576,9 +3573,9 @@ A group association is **$k$-loose** if every tuple in the group association $A$
 
 An example of a $4$-loose association.
 
-![[4-LooseAssociationExample1.png]]
+![[4-LooseAssociationExample1.png|600]]
 
-![[4-LooseAssociationExample2.png]]
+![[4-LooseAssociationExample2.png|600]]
 
 ----------------------------------------------------------------
 
@@ -3595,27 +3592,27 @@ If a $(k_l, k_r)$-grouping satisﬁes given heterogeneity properties, the induce
 ###### Group heterogeneity
 No group can contain tuples that are alike with respect to the constraints covered by $F_l$ and $F_r$. It ensures diversity of tuples within groups.
 
-![[GroupHeterogeneity1.png]]
+![[GroupHeterogeneity1.png|600]]
 
-![[GroupHeterogeneity2.png]]
+![[GroupHeterogeneity2.png|600]]
 
 ----------------------------------------------------------------
 
 ###### Association heterogeneity
 No group can be associated twice with another group (the group association cannot contain any duplicate). it ensures that for each real tuple in the original relation there are at least $k_l \cdot k_r$ pairs in the group association that may correspond to it.
 
-![[AssociationHeterogeneity1.png]]
+![[AssociationHeterogeneity1.png|600]]
 
-![[AssociationHeterogeneity2.png]]
+![[AssociationHeterogeneity2.png|600]]
 
 ----------------------------------------------------------------
 
 ###### Deep heterogeneity
 No group can be associated with two groups that contain alike tuplet. It ensures that all $k_l \cdot k_r$ pairs in the group association to which each tuple could correspond to contain diverse values for attributes involved in constraints.
 
-![[DeepHeterogeneity1.png]]
+![[DeepHeterogeneity1.png|600]]
 
-![[DeepHeterogeneity2.png]]
+![[DeepHeterogeneity2.png|600]]
 
 ----------------------------------------------------------------
 
@@ -3629,11 +3626,11 @@ with the same level of protection (there may exist a sparse grouping providing $
 
 An example of flat grouping.
 
-![[FlatGroupingExample.png]]
+![[FlatGroupingExample.png|600]]
 
 An example of sparse grouping.
 
-![[SparseGroupingExample.png]]
+![[SparseGroupingExample.png|600]]
 
 ----------------------------------------------------------------
 
@@ -3654,7 +3651,7 @@ The exposure of a sensitive association $\langle l[c \cap F_l]$, $r[c \cap F_r] 
 ###### Exposure without loose association
 Given $l \in f_l$ and $r \in f_r$ the probability $P(l, r)$ that tuple $\langle l,r \rangle$ belongs to the original relation is $1/ \vert f_l \vert = 1/ \vert f_r \vert$.
 
-![[ExposureWithoutLooseAssociation.png]]
+![[ExposureWithoutLooseAssociation.png|600]]
 
 Exposure $(P(l[c \cap F_l]$, $r[c \cap F_r]))$ depends on the presence of alike tuples. Let $l_i$, $l_j$ be two tuples in $f_l$ such that $l_i \simeq_c l_j$, $P(l_i [c \cap F_l]$, $r[c \cap F_r])$ is the composition of the probability that:
 - $l_i$ is associated with $r$;
@@ -3664,7 +3661,7 @@ $$P(l_i, r) + P(l_j, r) − (P(l_i, r) \cdot P(l_j, r))$$
 
 An example of exposure without loose association.
 
-![[ExposureWithoutLooseAssociationExample.png]]
+![[ExposureWithoutLooseAssociationExample.png|600]]
 
 Given $l \in f_l$ and $r \in f_r$ the probability $P^A(l, r)$ that tuple $\langle l,r \rangle$ belongs to the original relation is at most $1/k$. $P^A(l[c \cap F_l]$, $r[c \cap F_r])$ is evaluated considering the alike $\simeq_c$ relationship. Let $l_i$, $l_j$ in $f_l$ s.t. $l_i \simeq_c l_j$, $P^A(l_i [c \cap F_l]$, $r[c \cap F_r])$ is the composition of the probability that:
 - $l_i$ is associated with $r$;
@@ -3674,23 +3671,23 @@ $$P^A(l_i, r) + P^A(l_j, r) − (P^A(l_i, r) \cdot P^A(l_j, r))$$
 
 Another example of exposure with loose association.
 
-![[ExposureWithLooseAssociation1Example1.png]]
+![[ExposureWithLooseAssociation1Example1.png|600]]
 
-![[ExposureWithLooseAssociation1Example2.png]]
+![[ExposureWithLooseAssociation1Example2.png|600]]
 
-![[ExposureWithLooseAssociation1Example3.png]]
+![[ExposureWithLooseAssociation1Example3.png|600]]
 
-![[ExposureWithLooseAssociation1Example4.png]]
+![[ExposureWithLooseAssociation1Example4.png|600]]
 
-![[ExposureWithLooseAssociation1Example5.png]]
+![[ExposureWithLooseAssociation1Example5.png|600]]
 
-![[ExposureWithLooseAssociation1Example6.png]]
+![[ExposureWithLooseAssociation1Example6.png|600]]
 
-![[ExposureWithLooseAssociation1Example7.png]]
+![[ExposureWithLooseAssociation1Example7.png|600]]
 
-![[ExposureWithLooseAssociation1Example8.png]]
+![[ExposureWithLooseAssociation1Example8.png|600]]
 
-![[ExposureWithLooseAssociation1Example9.png]]
+![[ExposureWithLooseAssociation1Example9.png|600]]
 
 ----------------------------------------------------------------
 
@@ -3700,11 +3697,11 @@ Another example of exposure with loose association.
 
 An example of measuring utility.
 
-![[MeasuringUtilityExample1.png]]
+![[MeasuringUtilityExample1.png|600]]
 
-![[MeasuringUtilityExample2.png]]
+![[MeasuringUtilityExample2.png|600]]
 
-![[MeasuringUtilityExample3.png]]
+![[MeasuringUtilityExample3.png|600]]
 
 ----------------------------------------------------------------
 
@@ -3737,7 +3734,7 @@ Novel approach to the problem of protecting privacy when publishing data. Generi
 
 # Privacy and integrity of queries and computations
 
-![[PrivacyAndIntegrityOfQueriesAndComputations.png]]
+![[PrivacyAndIntegrityOfQueriesAndComputations.png|500]]
 
 ## Access and pattern confidentiality
 Guaranteeing privacy of outsourced data entails protecting the confidentiality of the data (content confidentiality) as well as of the accesses to them:
@@ -3774,11 +3771,11 @@ The path ORAM reads and writes are managed in the following way:
 
 An example of Path ORAM.
 
-![[PathORAMExample1.png]]
+![[PathORAMExample1.png|600]]
 
-![[PathORAMExample2.png]]
+![[PathORAMExample2.png|600]]
 
-![[PathORAMExample3.png]]
+![[PathORAMExample3.png|600]]
 
 ----------------------------------------------------------------
 
@@ -3820,7 +3817,7 @@ Node structure:
 
 An example of the abstract representation of shuffle index.
 
-![[AbstractRepresentationOfShuffleIndexExample.png]]
+![[AbstractRepresentationOfShuffleIndexExample.png|600]]
 
 ----------------------------------------------------------------
 
@@ -3829,7 +3826,7 @@ Pointers between nodes of the abstract data structure correspond, at logical lev
 
 An example of the abstract and logical shuffle index.
 
-![[AbstractAndLogicalShuffleIndexExample.png]]
+![[AbstractAndLogicalShuffleIndexExample.png|600]]
 
 ----------------------------------------------------------------
 
@@ -3838,7 +3835,7 @@ Each node $\langle id, n \rangle$ of the logical shuffle index is stored on the 
 
 An example of the logical and physical shuffle index.
 
-![[LogicalAndPhysicalShuffleIndexExample.png]]
+![[LogicalAndPhysicalShuffleIndexExample.png|600]]
 
 ----------------------------------------------------------------
 ### Data accesses
@@ -3850,24 +3847,24 @@ The process ends when a leaf block is retrieved.
 
 An example of data accesses.
 
-![[DataAccessesExample1.png]]
+![[DataAccessesExample1.png|600]]
 
-![[DataAccessesExample2.png]]
+![[DataAccessesExample2.png|600]]
 
 
-![[DataAccessesExample3.png]]
+![[DataAccessesExample3.png|600]]
 
-![[DataAccessesExample4.png]]
+![[DataAccessesExample4.png|600]]
 
-![[DataAccessesExample5.png]]
+![[DataAccessesExample5.png|600]]
 
-![[DataAccessesExample6.png]]
+![[DataAccessesExample6.png|600]]
 
-![[DataAccessesExample7.png]]
+![[DataAccessesExample7.png|600]]
 
-![[DataAccessesExample8.png]]
+![[DataAccessesExample8.png|600]]
 
-![[DataAccessesExample9.png]]
+![[DataAccessesExample9.png|600]]
 
 ----------------------------------------------------------------
 
@@ -3912,7 +3909,7 @@ Cover searches must:
 
 An example of cover searches.
 
-![[CoverSearchesExample.png]]
+![[CoverSearchesExample.png|600]]
 
 Protection offered by cover searches:
 - leaf blocks have the same probability of containing the actual target, e.g., blocks $201$ and $207$ can be both the target block;
@@ -3923,15 +3920,15 @@ However, parent-child relationship can be disclosed by intersection attacks.
 
 Another example of cover searches.
 
-![[CoverSearchesExample2.png]]
+![[CoverSearchesExample2.png|600]]
 
 An example of an intersection attack on cover searches.
 
-![[CoverSearchesIntersectionAttack1.png]]
+![[CoverSearchesIntersectionAttack1.png|600]]
 
-![[CoverSearchesIntersectionAttack2.png]]
+![[CoverSearchesIntersectionAttack2.png|600]]
 
-![[CoverSearchesIntersectionAttack3.png]]
+![[CoverSearchesIntersectionAttack3.png|600]]
 
 ----------------------------------------------------------------
 
@@ -3947,15 +3944,15 @@ The client maintains a local cache of nodes in the path to the target for counte
 
 An example of cached searches.
 
-slide 30/76
+slide 30/76 6 slides
 
 Another example of cached searches.
 
-slide 31/76
+slide 31/76 4 slides
 
 No intersection attack on cached searches.
 
-![[CachedSearchesNoIntersectionAttack.png]]
+![[CachedSearchesNoIntersectionAttack.png|600]]
 
 Protection offered by cached searches:
 - caching helps in counteracting short term intersection attacks, e.g., the observations of the server on the two previous requests would be $\{(001); (101,103); (201,207)\}$ and $\{(001); (102,104); (208,211)\} \to$ the server would not be able to determine whether the two requests aim at the same target;
@@ -3973,9 +3970,9 @@ The shuffled blocks are rewritten back on the server $\to$ node shuffling at a g
 
 An example of shuffling.
 
-![[ShufflingExample1.png]]
+![[ShufflingExample1.png|600]]
 
-![[ShufflingExample2.png]]
+![[ShufflingExample2.png|600]]
 
 ##### Access execution and shuffle index management
 Let $v$ be the target value. Determine _num_cover_$+1$ cover values and for each level $l$ of the shuffle index:
@@ -3988,12 +3985,12 @@ Let $v$ be the target value. Determine _num_cover_$+1$ cover values and for each
 
 An example of access execution.
 
-slides ...
-![[AccessExecutionExample.png]]
+slides 37/76
+![[AccessExecutionExample.png|600]]
 
 Impact on the logical index of access execution. 
 
-![[AccessExecutionImpactOnTheLogicalIndex.png]]
+![[AccessExecutionImpactOnTheLogicalIndex.png|600]]
 
 ----------------------------------------------------------------
 
