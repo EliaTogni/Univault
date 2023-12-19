@@ -3831,7 +3831,7 @@ An example of the abstract and logical shuffle index.
 ----------------------------------------------------------------
 
 ### Physical representation of shuffle index
-Each node $\langle id, n \rangle$ of the logical shuffle index is stored on the server in encrypted form (**content confidentiality**). A node $\langle id, n \rangle$ corresponds to a block $\langle id, b \rangle$, with $b= \mathcal{C} \Vert \mathcal{T}$ (the concatenation of a encrypted block and a sign), $\mathcal{C} =E_k (s \Vert n)$ (encrypted with a random salt), $T=MAC_{k'} (id \Vert \mathcal{C})$ (a hash with a key), $s$ a value chosen at random during each encryption (salt).
+Each node $\langle id, n \rangle$ of the logical shuffle index is stored on the server in encrypted form (**content confidentiality**). A node $\langle id, n \rangle$ corresponds to a block $\langle id, b \rangle$, with $b= \mathcal{C} \Vert \mathcal{T}$ (the concatenation of a encrypted block and a sign), $\mathcal{C} =E_k (s \Vert n)$ (encrypted with a random salt), $T=MAC_{k'} (id \Vert \mathcal{C})$ (signing the enrypted content with the identifier), $s$ a value chosen at random during each encryption (salt).
 
 An example of the logical and physical shuffle index.
 
@@ -3888,7 +3888,7 @@ It protects:
 - content confidentiality of data at rest;
 - access confidentiality of individual requests.
 
-Access and pattern confidentiality is not provided. Accesses to the same blocks imply accesses to the same data $\to$ frequency-based attacks allow the server to reconstruct the correspondence between plaintext values and blocks.
+However, access and pattern confidentiality are not provided. Accesses to the same blocks imply accesses to the same data $\to$ frequency-based attacks allow the server to reconstruct the correspondence between plaintext values and blocks.
 
 ----------------------------------------------------------------
 
@@ -3896,15 +3896,15 @@ Access and pattern confidentiality is not provided. Accesses to the same blocks 
 Destroy the correspondence between the frequencies with which blocks are accessed and the frequencies of accesses to different values.
 
 Combine three strategies:
-- cover searches, which provide confusion in individual accesses;
-- cached searches, which allow protection of accesses to the same values;
-- shuffling, which dynamically changes node allocation to blocks at every access, so destroying the fixed node-block correspondence.
+- **cover searches**, which provide confusion in individual accesses;
+- **cached searches**, which allow protection of accesses to the same values;
+- **shuffling**, which dynamically changes node allocation to blocks at every access, so destroying the fixed node-block correspondence.
 
 #### Cover searches
 Introduce confusion on the target of an access by hiding it within a group of other requests that act as covers. The number of covers (_num_cover_) is a protection parameter.
 
 Cover searches must:
-- provide block diversity (i.e., on a path disjoint from the target searched, apart from the root);
+- provide **block diversity** (i.e., on a path disjoint from the target searched, apart from the root);
 - be indistinguishable from actual searches (i.e., enjoy a believable frequency of access).
 
 An example of cover searches.
@@ -3922,7 +3922,7 @@ Another example of cover searches.
 
 ![[CoverSearchesExample2.png|600]]
 
-An example of an intersection attack on cover searches.
+An example of an intersection attack on cover searches. The observer can intersect the two observations and notice that block $207$ is accessed both times.
 
 ![[CoverSearchesIntersectionAttack1.png|600]]
 
@@ -3933,9 +3933,9 @@ Another example of cover searches.
 ----------------------------------------------------------------
 
 #### Cached searches
-The client maintains a local cache of nodes in the path to the target for counteracting intersection attack:
-- initialized with _num_cache_ disjoint paths and is managed according to the LRU policy;
-- if a node is in cache, its parent also is (**path continuity property**);
+The client maintains a local **cache** of nodes in the path to the target for counteracting intersection attack:
+- initialized with _num_cache_ disjoint paths and is managed according to the Least Recently Used policy;
+- if a node is in cache, its parent also is (**path continuity property**). The opposite is not possible (if a parent is in cache, the sons also are) because the root is always in cache and, therefore, all the tree would be;
 - refreshed at every access;
 - recently searched nodes will be found in the cache;
 - if a target node is in cache, only cover searches will be performed:
@@ -3956,7 +3956,7 @@ No intersection attack on cached searches.
 
 Protection offered by cached searches:
 - caching helps in counteracting short term intersection attacks, e.g., the observations of the server on the two previous requests would be $\{(001); (101,103); (201,207)\}$ and $\{(001); (102,104); (208,211)\} \to$ the server would not be able to determine whether the two requests aim at the same target;
-- acching does not prevent intersection attacks on observations that go beyond the size of the cache;
+- caching does not prevent intersection attacks on observations that go beyond the size of the cache;
 - a long history of observations will allow the server to reconstruct the topology (parent-child relationship) of the shuffle index.
 
 ----------------------------------------------------------------
