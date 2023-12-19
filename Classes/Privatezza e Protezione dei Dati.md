@@ -3881,19 +3881,13 @@ Problem statement: given a sequence of observations $\{o_1, ..., o_z\}$, the ser
 - the data to which access requests are aimed, that is, $\forall i = 1, ..., z$. the server should not infer that $o_i$ aims at a specific node (**access confidentiality**);
 - $o_i$ aims at accessing the same node as $o_j$, $\forall i, j = 1, ..., z, i \neq j$ (**pattern confidentiality**).
 
-----------------------------------------------------------------
-
-### Is encryption enough?
-It protects:
+Is encryption enough? It protects:
 - content confidentiality of data at rest;
 - access confidentiality of individual requests.
 
 However, access and pattern confidentiality are not provided. Accesses to the same blocks imply accesses to the same data $\to$ frequency-based attacks allow the server to reconstruct the correspondence between plaintext values and blocks.
 
-----------------------------------------------------------------
-
-### Rationale of the approach
-Destroy the correspondence between the frequencies with which blocks are accessed and the frequencies of accesses to different values.
+The rationale of the approach is to destroy the correspondence between the frequencies with which blocks are accessed and the frequencies of accesses to different values.
 
 Combine three strategies:
 - **cover searches**, which provide confusion in individual accesses;
