@@ -37,14 +37,16 @@
 
 ## L0
 1) **Quali sono i temi salienti del livello "network" dell'arcobaleno?**
-	i
+	I temi salienti del livello network sono il comportamento della Rete,come essa può essere piegata ad utilizzi non previsti e come tentare di rilevare eventuali distorsioni, per poi attuare diversi tipi di difese.
 2) **Cos'è un "pacchetto"? Com'è strutturato?**
 	Un pacchetto di rete non è altro che una sequenza di bit di lunghezza finita che viene trasmessa sotto forma di segnale elettrico (rame) o luminoso (fibra ottica) da un nodo all’altro di una rete. E' strutturato in segmenti, detti campi, ed ogni campo della sequenza ha una ben precisa semantica dipendente dal tipo di protocollo di rete utilizzato. I pacchetti vengono ordinati in sequenze che costruiscono dei flussi di dati che poi l’utente fruisce.
 3) **Quali sono i concetti fondamentali (ai fini della CDT) dell'architettura di Internet?**
 	i
 4) **Chi è un "provider"? Che tipi di provider esistono?**
-	 I provider di connettività forniscono il servizio ultimo miglio. Si definisce ultimo miglio quel tratto della rete che va dalla casa/uﬀicio dell’utente finale fino al primo concentratore
-5) **Perché è importante (nel contesto della CDT) analizzare il (mal)funzionamento della rete?**
+	 Un provider è un fornitore di un servizio. Ne esistono di diversi tipi:
+	- provider di connettività, i quali forniscono il servizio ultimo miglio, cioè quel tratto della rete che va dalla casa/uﬀicio dell’utente finale fino al primo concentratore;
+	- ISP (Internet Service Provider), azienda che fornisce connettività agli utenti sia via cavo che wireless.
+1) **Perché è importante (nel contesto della CDT) analizzare il (mal)funzionamento della rete?**
 	che
 6) **Cos'è il "routing" e perché ci interessa in CDT? (sia dal punto di vista storico che attuale)**
 	i
@@ -53,9 +55,9 @@
 8) **Cos'è il multiplexing?**
 	E' una tecnica utilizzata per permettere la gestione contemporanea di più comunicazioni sullo stesso canale. Ogni canale di trasmissione ha una sua capacità trasmissiva superiormente limitata, se ogni singola trasmissione impegnasse stabilmente un canale si rischierebbe di non poter servire altre richieste per tempo molto lungo. Spezzando la singola trasmissione si realizza il cosiddetto multiplexing del canale: viene inviato un pacchetto relativo ad una trasmissione, poi un pacchetto relativo ad un’altra, poi uno di un’altra ancora e così via. In questo modo ogni richiesta di trasmissione vedrà un avanzamento lavori progressivo, senza lunghe interruzioni.
 9) **Cosa si intende con "percorso migliore"? Quali sono gli aspetti tecnici di una trasmissione in rete?**
-	i
+	Il concetto di percorso migliore (e peggiore) è molto aleatorio.
 10) **Come si potrebbero definire dei concetti di "distanza" in rete?**
-	Il concetto di distanza tra due nodi della rete. I retisti definiscono generalmente la distanza, declinata in termini spaziali e temporali, tra due nodi di una rete come:
+	I retisti definiscono generalmente la distanza, declinata in termini spaziali e temporali, tra due nodi di una rete come:
 	• numero di salti/hop tra i due nodi;
 	• tempo di percorrenza di pacchetti speciali (ICMP - Internet Control Message Protocol - echo request) che vengono inviati e di cui si misura il tempo di ritorno, il cosiddetto ping time.
 11) **Cos'è un "ping"? (e "ping time", con che ordini di grandezza?)**
@@ -100,11 +102,11 @@
 27) **Cos'è un indirizzo IP? Che tipi esistono?**
 	i
 28) **Cosa si intende con "la rete è relativistica"?**
-	i
+	Si è attribuito alla Rete caratteristiche relativistiche, usando come metafora la relatività einsteniana: ogni utente Internet è un osservatore immerso in un universo in evoluzione, ma lo stato generale di questo universo non è identicamente conoscibile da tutti gli osservatori poichè la propagazione delle informazioni è ben lungi dall'essere istantanea ed integrale.
 29) **In che senso la rete "non è un universo euclideo"?**
 	i
 1) **Cos'è un URL? In cosa differisce da un indirizzo IP?**
-	i
+	Un URL (Uniform Resource Locator) è un meccanismo standardizzato per identificare una risorsa (un documento, una foto, un video) in rete specificando dove si trova (sito, nodo della rete).
 1) **Cosa fa un motore di ricerca?**
 	i
 1) **Un URL viene "risolto" sempre allo stesso modo da qualunque DNS?**
@@ -118,11 +120,11 @@
 1) **Cos'è Tor? Come funziona? Cosa c'entrano le cipolle?**
 	i
 1) **Cos'è un "proxy"?**
-	i
+	Un proxy è un servizio/device che accetta connessioni per conto di terzi: esso si trova in un qualche punto della rete ed attende richieste (ad esempio l'apertura di un URL http) da parte di altri device. Quando il proxy ne riceve una, la effettua restituendo il contenuto ottenuto al richiedente originale. L'effetto pratico è che la connessione effettiva avviene dal luogo dove si trova il proxy e non da quello del richiedente originale.
 1) **Cos'è "whois"?**
 	i
 1) **Cosa fa un "firewall"?**
-	i
+	Un firewall è un apparato di rete analogo ad un router ma specializzato nel filtraggio sull'instradamento dei pacchetti. Il firewall decide infatti se instradare o meno un flusso/pacchetto in funzione di varie policy.
 1) **Fai qualche esempio notevole di sottoreti quasi certamente "molto relativistiche" (in cui ci sono molte "ombre/buchi/ecc").**
 	i
 1) **Differenze fra "whitelist" e "blacklist"?**
@@ -130,17 +132,17 @@
 1) **Cosa si intende con "velocità di trasmissione" in Internet? Da cosa è influenzata?**
 	i
 1) **Differenze fra ADSL, VDSL, FIBRA, ecc.**
-	ADSL sta per Asymmetrical Digital Subscriber Line 
+	ADSL significa Asymmetrical Digital Subscriber Line, VDSL signfica Very-high-bit-rate Digital Subscriber Line.
 1) **Cosa si intende con "sito" e con "nodo della rete"?**
 	i
 1) **Cosa si intende con "ultimo miglio"?**
+	Si definisce ultimo miglio quel tratto della rete che va dalla casa/ufficio dell'utente finale fino al primo concentratore. L'ultimo miglio è il tratto più problematico perchè è difficilmente aggiornabile; tipicamente è il doppino in rame della rete telefonica che viene utilizzato per veicolare i dati. Il rame è un buon conduttore di elettricità, ma quando si tratta di inviare dati (segnali ad alta frequenza) invece di voce (segnali a bassa frequenza), il doppino diventa una pessima soluzione per le lunghe distanze (centinaia di metri). 
+1) **Cosa si intende con "offerta flat" nel campo della telefonia cellulare? Perché ci interessa? Quali effetti relativistici si possono incontrare?**
 	i
-1) Cosa si intende con "offerta flat" nel campo della telefonia cellulare? Perché ci interessa? Quali effetti relativistici si possono incontrare?
-	i
-1) Chi è FCC?
-	i
-1) Cos'è VOIP?
-	i
+1) **Chi è FCC?**
+	Federal Communication Commission.
+1) **Cos'è VoIP?**
+	Voice over Internet Protocol.
 1) Cosa si intende con QoS? Esistono usi "positivi" e "negativi" della QoS?
 	i
 1) Cosa fa il Great Firewall of China?
@@ -151,14 +153,14 @@
 	i
 1) Cosa si intende con "vita di un bit"?
 	i
-1) Cos'è il MTBF?
-	i
+1) **Cos'è il MTBF?**
+	Mean Time Between Failures.
 1) Cosa rende un dato "immortale"?
 	i
 1) Cosa si intende con "ridondanza"?
 	i
-1) Cos'è il RAID?
-	i
+1) **Cos'è il RAID?**
+	Reduntant Array of Inexpensive Disks
 1) Chi era Edmond Locard? Cosa ha enunciato?
 	i
 1) Cos'è il "Principio di Scambio"?
@@ -167,8 +169,8 @@
 	i
 1) Come è applicato Locard a livello rete?
 	i
-1) Cos'è un "log"?
-	i
+1) **Cos'è un "log"?**
+	Nome generico per un diario di bordo digitale, tipicamente sotto forma di un insieme di log file (dati che un sistema genera durante il suo funzionamento per registrare lo stato di salute del sistema stesso, gli eventi significativi e quanto altro possa essere utile a capire se un sistema fa quello per cui è stato installato). Serve a tenere uno storico del funzionamento di un computer, ad esempio per risalire alle cause di eventuali errori e malfunzionamenti, ma anche per sapere chi ha fatto cosa in caso di necessità di attribuzione di responsabilità delle azioni
 1) Cosa registra un "log" di un router?
 	i
 1) Locard digitale è più efficace che nel mondo analogico? Se sì perché?
@@ -207,18 +209,18 @@
 	i
 1) A ccosa si riferisce il termine "DataGate"?
 	i
-1) Chi è NSA?
-	i
-1) Chi sono i Five Eyes?
-	i
+1) **Chi è NSA?**
+	National Security Agency.
+1) **Chi sono i Five Eyes?**
+	Sono le aziende di intelligence di Australia, Canada, Nuova Zelanda, UK e USA.
 1) Che tipi di dati ha raccolto (e raccoglie tuttora) la NSA?
 	i
-1) Chi è Edward Snowden?
-	i
-1) Chi è Glenn Greenwald?
-	i
-1) Chi è Laura Poitras?
-	i
+1) **Chi è Edward Snowden?**
+	Esperto informatico che nel $2006$ iniziò a collaborare con l CIA e considerato il maggior esperto di cyber-sicurezza locale nel $2007$. Dal $2008$ cominciò a comprendere che 
+1) **Chi è Glenn Greenwald?**
+	Inizialmente avvocato per casi di diritti civili, diede vita nel $2005$ al proprio blog dedicato ad articoli di giornalismo investigativo. Editorista per The Guardian con il quale Edward Snowden prese contatto nel $2013$ per rivelare ciò che sapeva. Si era distinto per il proprio lavoro in merito ad alcune inchieste su programmi di sorveglianza globale. Pubblicò nel primo articolo sul DataGate alcuni documenti trafugati da Snowden riguardo a come la NSA stesse raccogliendo i tabulati telefonici di milioni di clienti Verizon.
+1) **Chi è Laura Poitras?**
+	Documentarista statunitense che ha intermediato tra Glenn Greenwald ed Edward Snowden. Si era distinta per il proprio lavoro in merito ad alcune inchieste su programmi di sorveglianza globale.
 1) Come funzionano gli accordi fra le agenzie dei Five Eyes? A cosa servono?
 	i
 1) Quante persone (ordine di grandezza) vengono "osservate" dai Five Eyes?
@@ -259,8 +261,8 @@
 	i
 1) Cos'è una "rete overlay"?
 	i
-1) Cos'è una VPN e cosa serve?
-	i
+1) **Cos'è una VPN e cosa serve?**
+	Una VPN (Virtual Private Network) è un meccanismo software che permette di creare un tunnel di rete tra il luogo in cui ci si trova ed una propria rete conosciuta. Una volta instaurato il tunnel, il computer connesso tramite VPN appare in rete come se fosse connesso alla propria rete e non a quella temporanea che fa solo da trasporto.
 1) Cos'è un "exit node" (Tor)?
 	i
 1) Cos'è I2P (garlic router)?
