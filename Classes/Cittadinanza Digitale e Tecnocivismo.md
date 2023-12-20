@@ -41,9 +41,9 @@
 2) **Cos'è un "pacchetto"? Com'è strutturato?**
 	Un pacchetto di rete non è altro che una sequenza di bit di lunghezza finita che viene trasmessa sotto forma di segnale elettrico (rame) o luminoso (fibra ottica) da un nodo all’altro di una rete. E' strutturato in segmenti, detti campi, ed ogni campo della sequenza ha una ben precisa semantica dipendente dal tipo di protocollo di rete utilizzato. I pacchetti vengono ordinati in sequenze che costruiscono dei flussi di dati che poi l’utente fruisce.
 3) **Quali sono i concetti fondamentali (ai fini della CDT) dell'architettura di Internet?**
-	i
+	
 4) **Chi è un "provider"? Che tipi di provider esistono?**
-	 Un provider è un fornitore di un servizio. Ne esistono di diversi tipi:
+	 Con il termine provider si identifica un'azienda o una qualsiasi entità che eroga un servizio. Ne esistono di diversi tipi:
 	- provider di connettività, i quali forniscono il servizio ultimo miglio, cioè quel tratto della rete che va dalla casa/uﬀicio dell’utente finale fino al primo concentratore;
 	- ISP (Internet Service Provider), azienda che fornisce connettività agli utenti sia via cavo che wireless.
 1) **Perché è importante (nel contesto della CDT) analizzare il (mal)funzionamento della rete?**
@@ -207,18 +207,18 @@
 	i
 1) Cosa si intende con "pre-crime"?
 	i
-1) A ccosa si riferisce il termine "DataGate"?
-	i
+1) **A cosa si riferisce il termine "DataGate"?**
+	DataGate è il nome con il quale alcune testate giornalistiche definiscono la serie di notizie che rivelano i dettagli relativi ad alcune operazioni di sorveglianza di massa messe in atto dalla NSA con la collaborazione attiva di agenzie di intelligence che fanno parte della rete Five Eyes.
 1) **Chi è NSA?**
-	National Security Agency.
+	La NSA (National Security Agency) è una agenzia di intelligence del Dipartimento della Difesa USA ed è responsabile del monitoraggio, raccolta ed elaborazioen di dati ed informazioni. Ad essa è anche affidata la protezione delle reti informatiche e di comunicazione degli USA.
 1) **Chi sono i Five Eyes?**
-	Sono le aziende di intelligence di Australia, Canada, Nuova Zelanda, UK e USA.
-1) Che tipi di dati ha raccolto (e raccoglie tuttora) la NSA?
-	i
+	Alleanza di agenzie di spionaggio anglofone che comprende le aziende di intelligence di Australia, Canada, Nuova Zelanda, UK e USA, stati i quali aderiscono al trattato UKUSA.
+1) **Che tipi di dati ha raccolto (e raccoglie tuttora) la NSA?**
+	Lo scopo principale della raccolta massiva di dati è quello di immagazzinare tutte le registrazioni telefoniche (e le comunicazioni in Internet) in un posto che ne consenta la ricerca e l'analisi in ogni momento.
 1) **Chi è Edward Snowden?**
 	Esperto informatico che nel $2006$ iniziò a collaborare con l CIA e considerato il maggior esperto di cyber-sicurezza locale nel $2007$. Dal $2008$ cominciò a comprendere che 
 1) **Chi è Glenn Greenwald?**
-	Inizialmente avvocato per casi di diritti civili, diede vita nel $2005$ al proprio blog dedicato ad articoli di giornalismo investigativo. Editorista per The Guardian con il quale Edward Snowden prese contatto nel $2013$ per rivelare ciò che sapeva. Si era distinto per il proprio lavoro in merito ad alcune inchieste su programmi di sorveglianza globale. Pubblicò nel primo articolo sul DataGate alcuni documenti trafugati da Snowden riguardo a come la NSA stesse raccogliendo i tabulati telefonici di milioni di clienti Verizon.
+	Inizialmente avvocato per casi di diritti civili, diede vita nel $2005$ al proprio blog dedicato ad articoli di giornalismo investigativo. Editorista per The Guardian con il quale Edward Snowden prese contatto nel $2013$ per rivelare ciò che sapeva. Si era distinto per il proprio lavoro in merito ad alcune inchieste su programmi di sorveglianza globale. Pubblicò nel primo articolo sul DataGate alcuni documenti trafugati da Snowden riguardo a come la NSA stesse raccogliendo i tabulati telefonici di milioni di clienti Verizon. Queste rivelazioni continuarono per tutto il $2013$ e valsero a The Guardian e a The Washington Post il premio Pulitzer per il servizio pubblico nel $2014$.
 1) **Chi è Laura Poitras?**
 	Documentarista statunitense che ha intermediato tra Glenn Greenwald ed Edward Snowden. Si era distinta per il proprio lavoro in merito ad alcune inchieste su programmi di sorveglianza globale.
 1) Come funzionano gli accordi fra le agenzie dei Five Eyes? A cosa servono?
