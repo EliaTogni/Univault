@@ -43,15 +43,13 @@
 3) **Quali sono i concetti fondamentali (ai fini della CDT) dell'architettura di Internet?**
 	
 4) **Chi è un "provider"? Che tipi di provider esistono?**
-	 Con il termine provider si identifica un'azienda o una qualsiasi entità che eroga un servizio. Ne esistono di diversi tipi:
-	- provider di connettività, i quali forniscono il servizio ultimo miglio, cioè quel tratto della rete che va dalla casa/uﬀicio dell’utente finale fino al primo concentratore;
-	- ISP (Internet Service Provider), azienda che fornisce connettività agli utenti sia via cavo che wireless.
-1) **Perché è importante (nel contesto della CDT) analizzare il (mal)funzionamento della rete?**
+	 Con il termine provider si identifica un'azienda o una qualsiasi entità che eroga un servizio. Se questo servizio è la rete Internet, allora parliamo di ISP (Internet Service Provider), azienda che fornisce connettività agli utenti sia via cavo che wireless. Non tutti i provider sono uguali però: l'ente che permette la connessione del nostro dispositivo è detto provider di connettività, i quali forniscono il servizio ultimo miglio, cioè quel tratto della rete che va dalla casa/uﬀicio dell’utente finale fino al primo concentratore. Questo provider dell'ultimo miglio, a sua volta, farà riferimento ad un provider di livello più alto per quanto concerne l'accesso che fornisce.
+5) **Perché è importante (nel contesto della CDT) analizzare il (mal)funzionamento della rete?**
 	che
 6) **Cos'è il "routing" e perché ci interessa in CDT? (sia dal punto di vista storico che attuale)**
-	i
+	Con il termine routing si fa riferimento all'instradamento tra due host in comunicazione tra loro, ovvero al processo di selezione del percorso in una qualsiasi rete che i pacchetti devono percorrere da una sorgente ad una destinazione.
 7) **Cos'è il DNS e perché ci interessa in CDT? Esistono meccanismi simili (per funzioni) ma più semplici?**
-	i
+	In Internet i nodi vengono identificati tramite indirizzi IP numerici. Ad ognuno di questi indirizzi numerici è associato un nome simbolico. Il sistema di gestione dei nomi simbolici è chiamato DNS (Domain Name System)  e consta di un registro di nomi sparso su molti server (a loro volta nodi della Rete) che vengono interrogati ricorsivamente. La Rete viene suddivisa in zone/domini e all'interno di ognuno di essi esiste un DNS server che gestisce l'informazione sui nomi simbolici di zona. Queste zone sono organizzate in forma gerarchica ed il nome completo di un nodo rispecchia la sua collocazione logica. La risoluzione di un nome logico in indirizzo numerico è un processo iterativo: il PC contatta il DNS server di zona che a sua volta contatta i DNS server di zone superiori, fino ad arrivare a quelli del TLD (Top Level Domain). Quest'ultimo conosce i DNS server delle zone sottostanti e quindi la ricerca può scendere fino al DNS server della zona finale.
 8) **Cos'è il multiplexing?**
 	E' una tecnica utilizzata per permettere la gestione contemporanea di più comunicazioni sullo stesso canale. Ogni canale di trasmissione ha una sua capacità trasmissiva superiormente limitata, se ogni singola trasmissione impegnasse stabilmente un canale si rischierebbe di non poter servire altre richieste per tempo molto lungo. Spezzando la singola trasmissione si realizza il cosiddetto multiplexing del canale: viene inviato un pacchetto relativo ad una trasmissione, poi un pacchetto relativo ad un’altra, poi uno di un’altra ancora e così via. In questo modo ogni richiesta di trasmissione vedrà un avanzamento lavori progressivo, senza lunghe interruzioni.
 9) **Cosa si intende con "percorso migliore"? Quali sono gli aspetti tecnici di una trasmissione in rete?**
@@ -67,9 +65,9 @@
 13) **Cos'è il "traceroute"?**
 	E' uno strumento che combina la funzionalità del 'ping' con la possibilità di tenere traccia della rotta seguita dal flusso di pacchetti al fine di tracciare una rotta tra due nodi della rete e di misurarne il tempo.
 14) **Come viene declinata in rete la frase di Orwell "Tutti gli animali sono uguali, ma alcuni sono più uguali degli altri"?**
-	i
+	
 15) **Da cosa dipende la "funzione di routing"?**
-	i
+	La funzione di routing è una funzone che permette di capire quali sono i fattori che entrano in gioco nella decisione sulla strada che deve percorrere un pacchetto. La strada (intesa appunto come sequenza di nodi da attraversare) prevista per un pacchetto $p$ all'istante $t$ è una funzione $strada(t, p, contorno)$. La decisione avviene quindi in base al quando, al cosa ed a qualche fattore esterno che si vuole utilizzare per decidere. Il quando può far riferimento al giorno della settimana o all'orario attuale. Il cosa si riferisce ad informazioni contenute nel pacchetto $p$ stesso (i dati ed i metadati). Il contorno può essere la situazione di congestione di traffico sui nodi della rete adiacenti.
 16) **Un pacchetto in rete ha un "autore"? Se sì, in che senso?**
 	
 17) **E' possibile decidere il routing di una sequenza di pacchetti in base alle convinzioni politiche del soggetto che genera il traffico? (argomentare)**
@@ -100,112 +98,112 @@
 26) **Cosa si intende con "crittografia"? Sai citare qualche tipo di crittografia nota?**
 	i
 27) **Cos'è un indirizzo IP? Che tipi esistono?**
-	i
+	L'indirizzo IP è un identificativo univoco di un nodo, un computer. La sua forma (in IPv$4$) è una sequenza di $4$ numeri, ognuno tra $0$ e $255$, separata dal carattere `.` (e.g., $192.168.39.12$ identifica il nodo $12$ della sottorete $39$ dellta sottorete $168$ della sottorete $192$ della rete complessiva). Alcuni indirizzi IP hanno significati speciali come $127.0.0.1$, il quale indentifica sempre il nodo su cui ci si trova, oppure il numero $255$ (broadcast), che identifica tutti i nodi di una sottorete (e.g., $192.168.1.255$). Ogni nodo di una rete può, in teoria, autoassegnarsi un indirizzo ma, dato che l'univocità è una caratteristica fondamentale per non avere conflitti, solitamente gli indirizzi vengono assegnati da un'autorità centrale (relativamente ad una sottorete), la quale tiene traccia degli assegnamenti per non creare duplicati. Un altro tipo di indirizzo IP è IPv$6$.
 28) **Cosa si intende con "la rete è relativistica"?**
 	Si è attribuito alla Rete caratteristiche relativistiche, usando come metafora la relatività einsteniana: ogni utente Internet è un osservatore immerso in un universo in evoluzione, ma lo stato generale di questo universo non è identicamente conoscibile da tutti gli osservatori poichè la propagazione delle informazioni è ben lungi dall'essere istantanea ed integrale.
 29) **In che senso la rete "non è un universo euclideo"?**
 	i
-1) **Cos'è un URL? In cosa differisce da un indirizzo IP?**
+30) **Cos'è un URL? In cosa differisce da un indirizzo IP?**
 	Un URL (Uniform Resource Locator) è un meccanismo standardizzato per identificare una risorsa (un documento, una foto, un video) in rete specificando dove si trova (sito, nodo della rete).
-1) **Cosa fa un motore di ricerca?**
+31) **Cosa fa un motore di ricerca?**
 	i
-1) **Un URL viene "risolto" sempre allo stesso modo da qualunque DNS?**
+32) **Un URL viene "risolto" sempre allo stesso modo da qualunque DNS?**
 	i
-1) **Una volta che ottengo l'IP di un indirizzo simbolico, riesco sempre a raggiungere il nodo? Sempre lo stesso univocamente?**
+33) **Una volta che ottengo l'IP di un indirizzo simbolico, riesco sempre a raggiungere il nodo? Sempre lo stesso univocamente?**
 	i
-1) **Cos'è `dig`? (o nslookup, ecc)**
+34) **Cos'è `dig`? (o nslookup, ecc)**
 	i
-1) **Cosa si intende con "sito oscurato" (mediante decisione legale)? (filtro DNS)**
+35) **Cosa si intende con "sito oscurato" (mediante decisione legale)? (filtro DNS)**
 	i
-1) **Cos'è Tor? Come funziona? Cosa c'entrano le cipolle?**
+36) **Cos'è Tor? Come funziona? Cosa c'entrano le cipolle?**
 	i
-1) **Cos'è un "proxy"?**
+37) **Cos'è un "proxy"?**
 	Un proxy è un servizio/device che accetta connessioni per conto di terzi: esso si trova in un qualche punto della rete ed attende richieste (ad esempio l'apertura di un URL http) da parte di altri device. Quando il proxy ne riceve una, la effettua restituendo il contenuto ottenuto al richiedente originale. L'effetto pratico è che la connessione effettiva avviene dal luogo dove si trova il proxy e non da quello del richiedente originale.
-1) **Cos'è "whois"?**
+38) **Cos'è "whois"?**
 	i
-1) **Cosa fa un "firewall"?**
+39) **Cosa fa un "firewall"?**
 	Un firewall è un apparato di rete analogo ad un router ma specializzato nel filtraggio sull'instradamento dei pacchetti. Il firewall decide infatti se instradare o meno un flusso/pacchetto in funzione di varie policy.
-1) **Fai qualche esempio notevole di sottoreti quasi certamente "molto relativistiche" (in cui ci sono molte "ombre/buchi/ecc").**
+40) **Fai qualche esempio notevole di sottoreti quasi certamente "molto relativistiche" (in cui ci sono molte "ombre/buchi/ecc").**
 	i
-1) **Differenze fra "whitelist" e "blacklist"?**
+41) **Differenze fra "whitelist" e "blacklist"?**
 	i
-1) **Cosa si intende con "velocità di trasmissione" in Internet? Da cosa è influenzata?**
+42) **Cosa si intende con "velocità di trasmissione" in Internet? Da cosa è influenzata?**
 	i
-1) **Differenze fra ADSL, VDSL, FIBRA, ecc.**
+43) **Differenze fra ADSL, VDSL, FIBRA, ecc.**
 	ADSL significa Asymmetrical Digital Subscriber Line, VDSL signfica Very-high-bit-rate Digital Subscriber Line.
-1) **Cosa si intende con "sito" e con "nodo della rete"?**
+44) **Cosa si intende con "sito" e con "nodo della rete"?**
 	i
-1) **Cosa si intende con "ultimo miglio"?**
+45) **Cosa si intende con "ultimo miglio"?**
 	Si definisce ultimo miglio quel tratto della rete che va dalla casa/ufficio dell'utente finale fino al primo concentratore. L'ultimo miglio è il tratto più problematico perchè è difficilmente aggiornabile; tipicamente è il doppino in rame della rete telefonica che viene utilizzato per veicolare i dati. Il rame è un buon conduttore di elettricità, ma quando si tratta di inviare dati (segnali ad alta frequenza) invece di voce (segnali a bassa frequenza), il doppino diventa una pessima soluzione per le lunghe distanze (centinaia di metri). 
-1) **Cosa si intende con "offerta flat" nel campo della telefonia cellulare? Perché ci interessa? Quali effetti relativistici si possono incontrare?**
+46) **Cosa si intende con "offerta flat" nel campo della telefonia cellulare? Perché ci interessa? Quali effetti relativistici si possono incontrare?**
 	i
-1) **Chi è FCC?**
-	Federal Communication Commission.
-1) **Cos'è VoIP?**
+47) **Chi è FCC?**
+	La Federal Communication Commission. Aveva scoperto che Comcast impediva l'utilizzo di Skype ai suoi utenti Ha indagato nuovamente la Comcast per sospetti di rallentamento artificioso nei confronti di Netflix.
+48) **Cos'è VoIP?**
 	Voice over Internet Protocol.
-1) Cosa si intende con QoS? Esistono usi "positivi" e "negativi" della QoS?
+49) Cosa si intende con QoS? Esistono usi "positivi" e "negativi" della QoS?
 	i
-1) Cosa fa il Great Firewall of China?
+50) **Cosa fa il Great Firewall of China?**
+	Filtra tutto ciò che entra ed esce dallo stato e controlla ogni bit che viene scambiato all'interno del paese. Ai primordi, il Great Firewall of China si limitava a bloccare il traffico ritenuto pericoloso per il regime, mentre oggi è molto più subdolo: ogni fonte di (contro)informazione come blog indipendenti, siti esteri non graditi ed ogni tipo di contenuto che potrebbe svegliare coscienze viene semplicemente allontanato (nel senso relativistico del termine), rendendone l'accesso estremamente lento.
+51) **Cosa fanno in generale i vari firewall "nazionali" e perché?**
 	i
-1) Cosa fanno in generale i vari firewall "nazionali" e perché?
+52) **Cosa si intende con "supporto di memorizzazione"? Che tipi di supporto sono stati citati? Quali caratteristiche hanno?**
 	i
-1) Cosa si intende con "supporto di memorizzazione"? Che tipi di supporto sono stati citati? Quali caratteristiche hanno?
+53) **Cosa si intende con "vita di un bit"?**
+	
+54) **Cos'è il MTBF?**
+	L'MTBF (Mean Time Between Failures) è una misura indiretta (probabilistica) della durata dell'informazione contenuta all'interno di un supporto di memoria. Questo parametro viene misurato e dichiarato dai costruttori dei supporti.
+55) **Cosa rende un dato "immortale"?**
+	La tecnologia RAID (Redundant Array of Inexpensive Disks), se viene gestita correttamente, cioè cambiando i dischi proattivamente, permette alle informazioni in essa contenute di essere disponibili indefinitamente.
+56) **Cosa si intende con "ridondanza"?**
 	i
-1) Cosa si intende con "vita di un bit"?
-	i
-1) **Cos'è il MTBF?**
-	Mean Time Between Failures.
-1) Cosa rende un dato "immortale"?
-	i
-1) Cosa si intende con "ridondanza"?
-	i
-1) **Cos'è il RAID?**
+57) **Cos'è il RAID?**
 	Reduntant Array of Inexpensive Disks
-1) Chi era Edmond Locard? Cosa ha enunciato?
+58) **Chi era Edmond Locard? Cosa ha enunciato?**
 	i
-1) Cos'è il "Principio di Scambio"?
+59) **Cos'è il "Principio di Scambio"?**
 	i
-1) Come è enunciato il "Principio di Locard digitale"?
+60) **Come è enunciato il "Principio di Locard digitale"?**
 	i
-1) Come è applicato Locard a livello rete?
+61) **Come è applicato Locard a livello rete?**
 	i
-1) **Cos'è un "log"?**
+62) **Cos'è un "log"?**
 	Nome generico per un diario di bordo digitale, tipicamente sotto forma di un insieme di log file (dati che un sistema genera durante il suo funzionamento per registrare lo stato di salute del sistema stesso, gli eventi significativi e quanto altro possa essere utile a capire se un sistema fa quello per cui è stato installato). Serve a tenere uno storico del funzionamento di un computer, ad esempio per risalire alle cause di eventuali errori e malfunzionamenti, ma anche per sapere chi ha fatto cosa in caso di necessità di attribuzione di responsabilità delle azioni
-1) Cosa registra un "log" di un router?
+63) **Cosa registra un "log" di un router?**
 	i
-1) Locard digitale è più efficace che nel mondo analogico? Se sì perché?
+64) **Locard digitale è più efficace che nel mondo analogico? Se sì perché?**
 	i
-1) Cos'è un "dato"?
+65) **Cos'è un "dato"?**
 	i
-1) Cos'è una "informazione"?
+1) **Cos'è una "informazione"?**
 	i
-1) Cosa si intende con "semantica"? (qual è la semantica di "semantica"?)
+1) **Cosa si intende con "semantica"? (qual è la semantica di "semantica"?)**
 	i
-1) Cos'è una Macchina di Turing? Qual è il suo scopo/funzione?
+1) **Cos'è una Macchina di Turing? Qual è il suo scopo/funzione?**
 	i
-1) La semantica di un dato è inequivocabile?
+1) **La semantica di un dato è inequivocabile?**
 	i
-1) Cosa si intende con "traccia digitale"? (non in senso audio ovviamente)
+1) **Cosa si intende con "traccia digitale"?**
 	i
-1) Come posso capire chi ha "scritto" un bit/byte/stream?
+1) **Come posso capire chi ha "scritto" un bit/byte/stream?**
 	i
-1) Cosa si intende con metadati?
+1) **Cosa si intende con metadati?**
 	i
-1) Cos'è il "forging"?
+1) **Cos'è il "forging"?**
 	i
-1) Un dato digitale è forgiabile?
+1) **Un dato digitale è forgiabile?**
 	i
-1) Che "trust" posso dare ad un log raccolto come prova giudiziale? Come posso aumentare il "trust"?
+1) **Che "trust" posso dare ad un log raccolto come prova giudiziale? Come posso aumentare il "trust"?**
 	i
-1) Cos'è un "log certificato"?
+1) **Cos'è un "log certificato"?**
 	i
-1) Cosa si intende con "data retention"? Come si articola nei vari paesi?
+1) **Cosa si intende con "data retention"? Come si articola nei vari paesi?**
 	i
-1) Cosa si intende con "profilazione" (a livello di rete)?
+1) **Cosa si intende con "profilazione" (a livello di rete)?**
 	i
-1) Cosa si intende con "sorveglianza anticrimine" (a livello di rete)?
+1) **Cosa si intende con "sorveglianza anticrimine" (a livello di rete)?**
 	i
-1) Cosa si intende con "pre-crime"?
+1) **Cosa si intende con "pre-crime"?**
 	i
 1) **A cosa si riferisce il termine "DataGate"?**
 	DataGate è il nome con il quale alcune testate giornalistiche definiscono la serie di notizie che rivelano i dettagli relativi ad alcune operazioni di sorveglianza di massa messe in atto dalla NSA con la collaborazione attiva di agenzie di intelligence che fanno parte della rete Five Eyes.
