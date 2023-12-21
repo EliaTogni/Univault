@@ -126,7 +126,7 @@
 40) **Fai qualche esempio notevole di sottoreti quasi certamente "molto relativistiche" (in cui ci sono molte "ombre/buchi/ecc").**
 	i
 41) **Differenze fra "whitelist" e "blacklist"?**
-	i
+	Con whitelist si fa riferimento al meccanismo che impedisce l'accesso a tutto tranne ciò che è presente in questa lista. Il meccanismo simmetrico, la blacklist, permette l'accesso a tutto tranne a ciò che è presente in lista.
 42) **Cosa si intende con "velocità di trasmissione" in Internet? Da cosa è influenzata?**
 	i
 43) **Differenze fra ADSL, VDSL, FIBRA, ecc.**
@@ -140,9 +140,9 @@
 47) **Chi è FCC?**
 	La Federal Communication Commission. Aveva scoperto che Comcast impediva l'utilizzo di Skype ai suoi utenti Ha indagato nuovamente la Comcast per sospetti di rallentamento artificioso nei confronti di Netflix.
 48) **Cos'è VoIP?**
-	Voice over Internet Protocol.
-49) Cosa si intende con QoS? Esistono usi "positivi" e "negativi" della QoS?
-	i
+	VoIP (Voice over Internet Protocol) è il servizio di telefonia via rete. Lo standard internazionale più diffuso è libero e si chiama SIP (Session Initiation Protocol).
+49) **Cosa si intende con QoS? Esistono usi "positivi" e "negativi" della QoS?**
+	
 50) **Cosa fa il Great Firewall of China?**
 	Filtra tutto ciò che entra ed esce dallo stato e controlla ogni bit che viene scambiato all'interno del paese. Ai primordi, il Great Firewall of China si limitava a bloccare il traffico ritenuto pericoloso per il regime, mentre oggi è molto più subdolo: ogni fonte di (contro)informazione come blog indipendenti, siti esteri non graditi ed ogni tipo di contenuto che potrebbe svegliare coscienze viene semplicemente allontanato (nel senso relativistico del termine), rendendone l'accesso estremamente lento.
 51) **Cosa fanno in generale i vari firewall "nazionali" e perché?**
@@ -152,19 +152,22 @@
 53) **Cosa si intende con "vita di un bit"?**
 	
 54) **Cos'è il MTBF?**
-	L'MTBF (Mean Time Between Failures) è una misura indiretta (probabilistica) della durata dell'informazione contenuta all'interno di un supporto di memoria. Questo parametro viene misurato e dichiarato dai costruttori dei supporti.
+	L'MTBF (Mean Time Between Failures) è una misura indiretta (probabilistica) della durata dell'informazione contenuta all'interno di un supporto di memoria. Questo parametro viene misurato e dichiarato dai costruttori degli storage device.
 55) **Cosa rende un dato "immortale"?**
 	La tecnologia RAID (Redundant Array of Inexpensive Disks), se viene gestita correttamente, cioè cambiando i dischi proattivamente, permette alle informazioni in essa contenute di essere disponibili indefinitamente.
 56) **Cosa si intende con "ridondanza"?**
-	i
+	Ogni storage device prima o poi smette di funzionare ma è possibile prevedere la decadenza di tali dispositivi e difendersi con la ridondanza. Si tratta di tecniche di mirroring, cioè di copia di dati in tempo reale, che proteggono dal fallimento di una periferica. Una tecnica è il RAID. Esistono analoghe tecniche che però si applicano a gruppi di computer in rete (veloce) tra di loro.
 57) **Cos'è il RAID?**
-	Reduntant Array of Inexpensive Disks
+	Le tecnologie di oggi permettono l'immagazzinamento di grandi quantità di dati per tempi virtualmente infiniti. Ogni storage device prima o poi smette di funzionare ma è possibile prevedere la decadenza di tali dispositivi e difendersi con la ridondanza. Si tratta di tecniche di mirroring, cioè di copia di dati in tempo reale, che proteggono dal fallimento di una periferica. La tecnica più nota è il cosiddetto RAID (Reduntant Array of Inexpensive Disks): vengono raggruppati più dischi ed il software di gestione li tratta come un disco unico, scrivendo gli stessi dati su più dischi contemporaneamente. In caso di rottura di un disco, il sistema continua a funzionare normalmente (perchè i dati sono presenti su più dischi funzionanti) segnalando che un disco è danneggiato. L'operatore può, a questo punto, cambiare il disco ed il sistema di gestione del RAID aggiornerò il nuovo disco con i dati del vecchio. In questo modo, cambiando prontamente i dischi che si rompono, l'unico modo di perdere un file è cancellandolo esplicitamente.
 58) **Chi era Edmond Locard? Cosa ha enunciato?**
-	i
+	Edmond Locard è stato un criminologo francese pioniere della scienza forense alla base delle indagini della Polizia Scientifica. Ha formulato il Principio di Scambio (o Principio di Locard), relativo al trasferimento di tracce tra (s)oggetti, il quale afferma che ogni contatto lascia una traccia. Quando due (s)oggetti entrano in contatto l'uno con l'altro, ognuno prenderà qualcosa dall'altro (s)oggetto o vi lascerà qualcosa.
 59) **Cos'è il "Principio di Scambio"?**
-	i
+	Principio enunciato da Edmond Locard in About Forensics, relativo al trasferimento di tracce tra (s)oggetti, il quale afferma che ogni contatto lascia una traccia. Quando due (s)oggetti entrano in contatto l'uno con l'altro, ognuno prenderà qualcosa dall'altro (s)oggetto o vi lascerà qualcosa.
 60) **Come è enunciato il "Principio di Locard digitale"?**
-	i
+	Un'informazione immessa nella Rete:
+	- lascia sempre tracce;
+	- tutt'altro che esigue;
+	- indistruttibili.
 61) **Come è applicato Locard a livello rete?**
 	i
 62) **Cos'è un "log"?**
@@ -175,117 +178,123 @@
 	i
 65) **Cos'è un "dato"?**
 	i
-1) **Cos'è una "informazione"?**
+66) **Cos'è una "informazione"?**
 	i
-1) **Cosa si intende con "semantica"? (qual è la semantica di "semantica"?)**
+67) **Cosa si intende con "semantica"? (qual è la semantica di "semantica"?)**
 	i
-1) **Cos'è una Macchina di Turing? Qual è il suo scopo/funzione?**
+68) **Cos'è una Macchina di Turing? Qual è il suo scopo/funzione?**
 	i
-1) **La semantica di un dato è inequivocabile?**
+69) **La semantirelativo al trasferimento di tracce tra (s)oggetti, il quale afferma che ogni contatto lascia una traccia. Quando due (s)oggetti entrano in contatto l'uno con l'altro, ognuno prenderà qualcosa dall'altro (s)oggetto o vi lascerà qualcosa.ca di un dato è inequivocabile?**
 	i
-1) **Cosa si intende con "traccia digitale"?**
+70) **Cosa si intende con "traccia digitale"?**
 	i
-1) **Come posso capire chi ha "scritto" un bit/byte/stream?**
+71) **Come posso capire chi ha "scritto" un bit/byte/stream?**
 	i
-1) **Cosa si intende con metadati?**
+72) **Cosa si intende con metadati?**
 	i
-1) **Cos'è il "forging"?**
+73) **Cos'è il "forging"?**
 	i
-1) **Un dato digitale è forgiabile?**
+74) **Un dato digitale è forgiabile?**
 	i
-1) **Che "trust" posso dare ad un log raccolto come prova giudiziale? Come posso aumentare il "trust"?**
+75) **Che "trust" posso dare ad un log raccolto come prova giudiziale? Come posso aumentare il "trust"?**
 	i
-1) **Cos'è un "log certificato"?**
+76) **Cos'è un "log certificato"?**
 	i
-1) **Cosa si intende con "data retention"? Come si articola nei vari paesi?**
+77) **Cosa si intende con "data retention"? Come si articola nei vari paesi?**
 	i
-1) **Cosa si intende con "profilazione" (a livello di rete)?**
+78) **Cosa si intende con "profilazione" (a livello di rete)?**
 	i
-1) **Cosa si intende con "sorveglianza anticrimine" (a livello di rete)?**
+79) **Cosa si intende con "sorveglianza anticrimine" (a livello di rete)?**
 	i
-1) **Cosa si intende con "pre-crime"?**
+80) **Cosa si intende con "pre-crime"?**
 	i
-1) **A cosa si riferisce il termine "DataGate"?**
+81) **A cosa si riferisce il termine "DataGate"?**
 	DataGate è il nome con il quale alcune testate giornalistiche definiscono la serie di notizie che rivelano i dettagli relativi ad alcune operazioni di sorveglianza di massa messe in atto dalla NSA con la collaborazione attiva di agenzie di intelligence che fanno parte della rete Five Eyes.
-1) **Chi è NSA?**
+82) **Chi è NSA?**
 	La NSA (National Security Agency) è una agenzia di intelligence del Dipartimento della Difesa USA ed è responsabile del monitoraggio, raccolta ed elaborazioen di dati ed informazioni. Ad essa è anche affidata la protezione delle reti informatiche e di comunicazione degli USA.
-1) **Chi sono i Five Eyes?**
+83) **Chi sono i Five Eyes?**
 	Alleanza di agenzie di spionaggio anglofone che comprende le aziende di intelligence di Australia, Canada, Nuova Zelanda, UK e USA, stati i quali aderiscono al trattato UKUSA.
-1) **Che tipi di dati ha raccolto (e raccoglie tuttora) la NSA?**
+84) **Che tipi di dati ha raccolto (e raccoglie tuttora) la NSA?**
 	Lo scopo principale della raccolta massiva di dati è quello di immagazzinare tutte le registrazioni telefoniche (e le comunicazioni in Internet) in un posto che ne consenta la ricerca e l'analisi in ogni momento.
-1) **Chi è Edward Snowden?**
+85) **Chi è Edward Snowden?**
 	Esperto informatico che nel $2006$ iniziò a collaborare con l CIA e considerato il maggior esperto di cyber-sicurezza locale nel $2007$. Dal $2008$ cominciò a comprendere che 
-1) **Chi è Glenn Greenwald?**
+86) **Chi è Glenn Greenwald?**
 	Inizialmente avvocato per casi di diritti civili, diede vita nel $2005$ al proprio blog dedicato ad articoli di giornalismo investigativo. Editorista per The Guardian con il quale Edward Snowden prese contatto nel $2013$ per rivelare ciò che sapeva. Si era distinto per il proprio lavoro in merito ad alcune inchieste su programmi di sorveglianza globale. Pubblicò nel primo articolo sul DataGate alcuni documenti trafugati da Snowden riguardo a come la NSA stesse raccogliendo i tabulati telefonici di milioni di clienti Verizon. Queste rivelazioni continuarono per tutto il $2013$ e valsero a The Guardian e a The Washington Post il premio Pulitzer per il servizio pubblico nel $2014$.
-1) **Chi è Laura Poitras?**
+87) **Chi è Laura Poitras?**
 	Documentarista statunitense che ha intermediato tra Glenn Greenwald ed Edward Snowden. Si era distinta per il proprio lavoro in merito ad alcune inchieste su programmi di sorveglianza globale.
-1) Come funzionano gli accordi fra le agenzie dei Five Eyes? A cosa servono?
+88) **Come funzionano gli accordi fra le agenzie dei Five Eyes? A cosa servono?**
 	i
-1) Quante persone (ordine di grandezza) vengono "osservate" dai Five Eyes?
+89) **Quante persone (ordine di grandezza) vengono "osservate" dai Five Eyes?**
 	i
-1) Quali aziende sono state coinvolte in PRISM?
+90) **Quali aziende sono state coinvolte in PRISM?**
 	i
-1) Parla di qualche programma di spionaggio svelato dal DataGate.
+91) **Parla di qualche programma di spionaggio svelato dal DataGate.**
 	i
-1) Cos'è il "boomerang routing"? Perché viene applicato?
+92) **Cos'è il "boomerang routing"? Perché viene applicato?**
 	i
-1) Cita e descrivi qualche programma di spionaggio/indicizzazione messo in atto da FiveEyes.
+93) **Cita e descrivi qualche programma di spionaggio/indicizzazione messo in atto da FiveEyes.**
 	i
-1) Quali attacchi (legal-politici, tecnici) alla crittografia sono stati portati nel corso degli anni?
+94) **Quali attacchi (legal-politici, tecnici) alla crittografia sono stati portati nel corso degli anni?**
 	i
-1) Cos'è ECHELON?
+95) **Cos'è ECHELON?**
+	ECHELON è il capostipite dei sistemi di sorveglianza globale. Venne rivelato per la prima volta nel $1971$ da un analista dell'NSA. Il programma venne creato alla fine degli anni $60$ per monitorare le comunicazioni militari e diplomatiche dell'Unione Sovietica ed i suoi alleati del blocco di Varsavia durante la guerra fredda.
+96) **A quali vantaggi puntano i programmi di spionaggio dei FiveEyes (e USA in particolare)?**
 	i
-1) A quali vantaggi puntano i programmi di spionaggio dei FiveEyes (e USA in particolare)?
+97) **In che senso Internet è "guasta"?**
 	i
-1) In che senso Internet è "guasta"?
+98) **Cita qualche protocollo di rete crittografato e qualcuno in chiaro.**
 	i
-1) Cita qualche protocollo di rete crittografato e qualcuno in chiaro.
+99) **Nei protocolli di rete crittografati, in genere, rimane comunque una parte in chiaro? Discuti.**
 	i
-1) Nei protocolli di rete crittografati, in genere, rimane comunque una parte in chiaro? Discuti.
+100) **Qual è il "peccato originale" (autenticità) di Internet? Discuti.**
 	i
-1) Qual è il "peccato originale" (autenticità) di Internet? Discuti.
+101) **Cos'è BGP?**
+	BGP (Border Gateway Protocol)
+102) **Perché la crittografia non è stata introdotta fin dall'inizio nei protocolli di "base" di Internet?**
 	i
-1) Cos'è BGP?
+103) **Cosa si intende con "anonimato"? E' attualmente possibile in Internet?**
 	i
-1) Perché la crittografia non è stata introdotta fin dall'inizio nei protocolli di "base" di Internet?
+104) **Cos'è OONI Probe?**
+	OONI Probe è un software che permette di misurare diversi indicatori in merito allo stato della propria connessione, quali:
+	- blocco di siti web;
+	- blocco di applicazioni di instant messaging;
+	- blocco di strumenti di aggiramento della censura;
+	- presenza di sistemi nella propria rete che potrebbero essere responsabili di censura;
+	- velocità e performance della propria rete.
+	Consente anche di condividere su base volontaria i dati raccolti al fine di misurare il livello globale di censura.
+105) **Cos'è Wehe?**
+	Wehe è uno strumento di misura della relatività della Rete. Permette di verificare se il proprio ISP applichi limitazioni alla banda di specifiche applicazioni per favorirne altre, violando quindi il principio della net neutrality.
+106) Cos'è la "crittografia a chiave pubblica"? Discuti.
 	i
-1) Cosa si intende con "anonimato"? E' attualmente possibile in Internet?
+107) Cos'è una "rete overlay"?
 	i
-1) Cos'è OONI Probe?
-	i
-1) Cos'è Wehe?
-	i
-1) Cos'è la "crittografia a chiave pubblica"? Discuti.
-	i
-1) Cos'è una "rete overlay"?
-	i
-1) **Cos'è una VPN e cosa serve?**
+108) **Cos'è una VPN e cosa serve?**
 	Una VPN (Virtual Private Network) è un meccanismo software che permette di creare un tunnel di rete tra il luogo in cui ci si trova ed una propria rete conosciuta. Una volta instaurato il tunnel, il computer connesso tramite VPN appare in rete come se fosse connesso alla propria rete e non a quella temporanea che fa solo da trasporto.
-1) Cos'è un "exit node" (Tor)?
+109) **Cos'è un "exit node" (Tor)?**
 	i
-1) Cos'è I2P (garlic router)?
+110) **Cos'è I2P (garlic router)?**
 	i
-1) Cos'è Free-net?
+111) **Cos'è Free-net?**
 	i
-1) Cosa si intende con "peer-to-peer" in generale?
+112) **Cosa si intende con "peer-to-peer" in generale?**
 	i
-1) Cosa indica il termine "mesh network"?
+113) **Cosa indica il termine "mesh network"?**
 	i
-1) Cos'è GNUnet?
+114) **Cos'è GNUnet?**
 	i
-1) Cosa si intende con "perfect forward secrecy"?
+115) **Cosa si intende con "perfect forward secrecy"?**
 	i
-1) Come viene identificato un nodo in GNUnet?
+116) **Come viene identificato un nodo in GNUnet?**
 	i
-1) Cosa si intende con "confidenzialità" in GNUnet?
+117) **Cosa si intende con "confidenzialità" in GNUnet?**
 	i
-1) Come si tenta di proteggere l'anonimato in GNUnet?
+118) **Come si tenta di proteggere l'anonimato in GNUnet?**
 	i
-1) Cos'è GNS (GNU Naming System) e in cosa differisce da DNS?
+119) **Cos'è GNS (GNU Naming System) e in cosa differisce da DNS?**
 	i
-1) Cos'è Secushare?
+120) **Cos'è Secushare?**
 	i
-1) Cos'è Next Generation Internet?
+121) **Cos'è Next Generation Internet?**
 	i
 
 ----------------------------------------------------------------
