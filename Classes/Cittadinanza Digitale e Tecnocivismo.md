@@ -112,7 +112,7 @@
 33) **Una volta che ottengo l'IP di un indirizzo simbolico, riesco sempre a raggiungere il nodo? Sempre lo stesso univocamente?**
 	i
 34) **Cos'è `dig`? (o nslookup, ecc)**
-	i
+	Dig è uno strumento per interrogare il sistema DNS. Usandolo, è possibile effettuare delle richieste al NDS per sapere l'indirizzo IP di un nodo della Rete, conoscendo il suo nome simbolico.
 35) **Cosa si intende con "sito oscurato" (mediante decisione legale)? (filtro DNS)**
 	i
 36) **Cos'è Tor? Come funziona? Cosa c'entrano le cipolle?**
