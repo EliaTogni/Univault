@@ -183,17 +183,17 @@ The basic idea is to translate the $k$-anonymity requirement on the released dat
 In the released table, the respondents must be indistinguishable (within a given set) with respect to a set of attributes. $k$-anonymity requires that each quasi-identifier value appearing in the released table must have at least $k$ occurrences. This is a sufficient condition for the satisfaction of $k$-anonymity requirement.
 
 ## Generalization and suppression
-with **generalization**, the values of a given attribute are substituted by using more general values. Based on the definition of a generalization hierarchy, for example, consider the attribute ZIP code and suppose that a step in the corresponding generalization hierarchy consists in suppressing the least significant digit in the ZIP code. With one generalization step, $20222$ and $20223$ become $2022*$ and $20238$ and $20239$ become $2023*$. We are not perturbating the data, we are only removing details.<br />
+With **generalization**, the values of a given attribute are substituted by using more general values. Based on the definition of a generalization hierarchy, for example, consider the attribute ZIP code and suppose that a step in the corresponding generalization hierarchy consists in suppressing the least significant digit in the ZIP code. With one generalization step, $20222$ and $20223$ become $2022*$ and $20238$ and $20239$ become $2023*$. We are not perturbating the data, we are only removing details.<br />
 With **suppression**, it is possible to protect sensitive information by removing it. The introduction of suppression can reduce the amount of generalization necessary to satisfy the $k$-anonymity constraint.
 
 ----------------------------------------------------------------
 
 ## Domain generalization hierarchy
 A **generalization relationship** $\leq_{D}$ defines a mapping between domain $D$ and its generalizations. Given two domains $D_i, D_j \in Dom$, $D_i \leq_{D} D_j$ ($D_i$ is dominated by $D_j$) states that the values in domain $D_j$ are generalizations of values in $D_i$. $\leq_{D}$ implies the existence, for each domain $D$, of a **domain generalization hierarchy** $DGH_D = (Dom, \leq_D )$:
-- $\forall D_i, D_j, D_z \in Dom: D_i \leq_D D_j, D_i \leq_D D_z \to D_j \leq_D D_z \vee D_z \leq_D D_j$. This property shows that the generalization hiearchy is a chain, that is, there is a **total order** between the elements of the hierarchy;
+- $\forall D_i, D_j, D_z \in Dom: D_i \leq_D D_j, D_i \leq_D D_z \to D_j \leq_D D_z \vee D_z \leq_D D_j$. This property shows that the generalization hierarchy is a [[Grafo#Catena|chain]], that is, there is a **total order** between the elements of the hierarchy;
 - all maximal elements (the **radices**) of $Dom$ are singleton. As an example, observe the $DGH_{Z_0}$ in the image below.
 
-Given a domain tuple $D_T = \langle D_1, . . . , D_n \rangle$ such that $D_i \in Dom, i = 1, . . . , n$, the domain generalization hierarchy of $D_T$ is $DGH_{DT} = DGH_{D1} \times . . . \times DGH_{Dn}$. While the domain generalization of a single domain defines a chain, the domain generalization hierarchy of a tuple of domains $D_T$ defines a [[Reticolo|lattice]].
+Given a domain tuple $D_T = \langle D_1, . . . , D_n \rangle$ such that $D_i \in Dom, i = 1, . . . , n$, the domain generalization hierarchy of $D_T$ is $DGH_{DT} = DGH_{D1} \times . . . \times DGH_{Dn}$. While the domain generalization hierarchy of a single domain defines a chain, the domain generalization hierarchy of a tuple of domains $D_T$ defines a [[Reticolo|lattice]].
 
 An example of a domain generalization hierarchy.
 
