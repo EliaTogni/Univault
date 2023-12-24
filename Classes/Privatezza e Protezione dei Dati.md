@@ -225,7 +225,7 @@ An example of a generalized table with suppression.
 ----------------------------------------------------------------
 
 ## $k$-minimal generalization with suppression
-Now, it will be provided the definition of **Distance Vector**. Let $T_i (A_1 , . . . , A_n)$ and $T_j (A_1 , . . . , A_n)$ be two tables such that $T_i \preceq T_j$. The distance vector of $T_j$ from $T_i$ is the vector $DV_{i,j} = [d_1 , . . . , d_n]$, where each $d_z, z = 1, . . . , n$, is the length of the unique path between $dom(A_z , T_i)$ and $dom(A_z, T_j)$ in the domain generalization hierarchy $DGH_{D_z}$.
+Now, it will be provided the definition of **distance vector**. Let $T_i (A_1 , . . . , A_n)$ and $T_j (A_1 , . . . , A_n)$ be two tables such that $T_i \preceq T_j$. The distance vector of $T_j$ from $T_i$ is the vector $DV_{i,j} = [d_1 , . . . , d_n]$, where each $d_z, z = 1, . . . , n$, is the length of the unique path between $dom(A_z , T_i)$ and $dom(A_z, T_j)$ in the domain generalization hierarchy $DGH_{D_z}$.
 
 ![[DistanceVector.png|600]]
 
@@ -243,7 +243,7 @@ An example of $2$-minimal generalizations with $MaxSup = 2$.
 ## Computing a preferred generalization
 Different preference criteria can be applied in choosing a preferred minimal generalization, among which:
 - **minimum absolute distance** prefers the generalization(s) with the smallest absolute distance, that is, with the smallest total number of generalization steps (regardless of the hierarchies on which they have been taken). It is computed as $\sum_{i = 1}^{N}d_i$;
-- **minimum relative distance** prefers the generalization(s) with the smallest relative distance, that is, that minimizes the total number of relative steps (a step is made relative by dividing it over the height of the domain hierarchy to which it refers). It is computed as $\sum_{i = 1}^{N} \frac{d_i}{n_i}$;
+- **minimum relative distance** prefers the generalization(s) with the smallest relative distance, that is, that minimizes the total number of relative steps (a step is made relative by dividing it over the height of the domain hierarchy to which it refers). It is computed as $\sum_{i = 1}^{N} \frac{d_i}{n_i}$, where $n_i$ is the height of the $i$-th domain hierarchy;
 - **maximum distribution** prefers the generalization(s) with the greatest number of distinct tuples;
 - **minimum suppression** prefers the generalization(s) that suppresses less tuples, that is, the one with the greatest cardinality.
 
@@ -286,7 +286,7 @@ Each path in $DGH_{DT}$ represents a generalization strategy for $PT$. We call *
 If there is no solution that guarantees $k$-anonymity suppressing less than $MaxSup$ tuples at height $h$, there cannot exist a solution, with height lower than $h$ that guarantees it. The current height $h$ depends on the $DV$ (e.g., $DV = [1, 1]$ implies that $h = 1 + 1 = 2$).<br />
 The algorithm adopts a binary search on the lattice of distance vectors:
 1) evaluate solutions at height $\lfloor h/2\rfloor$;
-2) if there exists at least a solution satisfying $k$-anonymity
+2) if there exists at least a solution satisfying $k$-anonymity:
 	1) then evaluates solutions at height $\lfloor h/4 \rfloor$;
 	2) otherwise evaluates solutions at height $\lfloor 3h/4 \rfloor$.
 3) until the algorithm reaches the lowest height for which there is a distance vector that satisfies $k$-anonymity.
@@ -528,7 +528,7 @@ The **$m$-invariance** addresses the problem of longitudinal release. A sequence
 - each equivalence class includes at least $m$ tuples;
 - no sensitive value appears more than once in each equivalence class;
 - for each tuple $t$, the equivalence classes to which t belongs in the sequence are characterized by the same set of sensitive values.
-Therefore, the correlation of the tuples in $T_1, . . . , T_n$ does not permit a malicious recipient to associate less than m different sensitive values with each respondent.
+Therefore, the correlation of the tuples in $T_1, . . . , T_n$ does not permit a malicious recipient to associate less than $m$ different sensitive values with each respondent.
 
 ----------------------------------------------------------------
 
