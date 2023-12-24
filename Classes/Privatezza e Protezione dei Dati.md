@@ -527,7 +527,7 @@ Multiple (e.g., **longitudinal**) releases cannot be independent. This implies t
 The **$m$-invariance** addresses the problem of longitudinal release. A sequence $T_1 , . . . , T_n$ of released microdata tables satisfies $m$-invariance iff:
 - each equivalence class includes at least $m$ tuples;
 - no sensitive value appears more than once in each equivalence class;
-- for each tuple $t$, the equivalence classes to which t belongs in the sequence are characterized by the same set of sensitive values.
+- for each tuple $t$, the equivalence classes to which $t$ belongs in the sequence are characterized by the same set of sensitive values.
 Therefore, the correlation of the tuples in $T_1, . . . , T_n$ does not permit a malicious recipient to associate less than $m$ different sensitive values with each respondent.
 
 ----------------------------------------------------------------
@@ -656,32 +656,30 @@ All of these informations led to Thelma Arnold, a $62$-year-old widow who lives 
 
 ![[AOL3.png]]
 
-
 What about user $17556639$?
-• how to kill your wife;
-• steak and cheese;
-• how to kill your wife;
-• photo of death;
-• wife killer;
-• photo of death;
-• how to kill a wife;
-• death;
-• poop;
-• dead people photos;
-• dead people;
-• photo of dead people;
-• pictures of dead people;
-• www.murderdpeople.com;
-• killed people;
-• decapatated photos;
-• dead pictures;
-• decapatated photos;
-• dead pictures;
-• car crashes3;
-• dead pictures;
-• car crashes3;
-• murder photo;
-• car crash photo.
+- how to kill your wife;
+- steak and cheese;
+- how to kill your wife;
+- photo of death;
+- wife killer;
+- photo of death;
+- how to kill a wife;
+- death;
+- poop;
+- dead people photos;
+- dead people;
+- photo of dead people;
+- pictures of dead people;
+- www.murderdpeople.com;
+- killed people;decapatated photos;
+- dead pictures;
+- decapatated photos;
+- dead pictures;
+- car crashes3;
+- dead pictures;
+- car crashes3;
+- murder photo;
+- car crash photo.
 
 ![[AOL5.png]]
 
