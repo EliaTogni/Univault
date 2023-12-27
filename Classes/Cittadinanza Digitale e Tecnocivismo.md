@@ -108,23 +108,23 @@
 30) **Cos'è un URL? In cosa differisce da un indirizzo IP?**
 	Un URL (Uniform Resource Locator) è un meccanismo standardizzato per identificare una risorsa (un documento, una foto, un video) in rete specificando dove si trova (sito, nodo della rete).
 31) **Cosa fa un motore di ricerca?**
-	i
+	Si tratta di un servizio che conosce buona parte dei contenuti di rete e che quindi sa dire dove si trova un particolare contenuto. Un motore di ricerca sfrutta un enorme database contenente le informazioni in rete come mappa $contenuto \to URL$.
 32) **Un URL viene "risolto" sempre allo stesso modo da qualunque DNS?**
-	i
+	No, poichè alcuni siti sono banditi su alcuni territori (ad esempio il server di scambio peer-to-peer btmon.com in Italia). Di conseguenza, ogni singolo provider sul territorio è costretto a fornire un indirizzo sbagliato di proposito a fronte di una richiesta DNS.
 33) **Una volta che ottengo l'IP di un indirizzo simbolico, riesco sempre a raggiungere il nodo? Sempre lo stesso univocamente?**
-	i
+	No. Lo strumento firewall permette la risoluzione di un URL illecito che poi però non viene raggiunto.
 34) **Cos'è `dig`? (o nslookup, ecc)**
 	Dig è uno strumento per interrogare il sistema DNS. Usandolo, è possibile effettuare delle richieste al NDS per sapere l'indirizzo IP di un nodo della Rete, conoscendo il suo nome simbolico.
 35) **Cosa si intende con "sito oscurato" (mediante decisione legale)? (filtro DNS)**
-	i
+	Si intende un sito per il quale ogni singolo provider del territorio in cui quel sito è stato dichiarato illegale fornisce un indirizzo sbagliato di proposito a fronte di una richiesta DNS. Un esempio è il server di scambi peer-to-peer btmon.com in Italia.
 36) **Cos'è Tor? Come funziona? Cosa c'entrano le cipolle?**
 	i
 37) **Cos'è un "proxy"?**
 	Un proxy è un servizio/device che accetta connessioni per conto di terzi: esso si trova in un qualche punto della rete ed attende richieste (ad esempio l'apertura di un URL http) da parte di altri device. Quando il proxy ne riceve una, la effettua restituendo il contenuto ottenuto al richiedente originale. L'effetto pratico è che la connessione effettiva avviene dal luogo dove si trova il proxy e non da quello del richiedente originale.
 38) **Cos'è "whois"?**
-	i
+	Whois è uno strumento di ricerca che fornisce informazioni dettagliate su un determinato dominio Internet o un indirizzo IP. L'obiettivo principale di Whois è consentire agli utenti di identificare e ottenere informazioni su chi possiede un nome di dominio o un indirizzo IP, nonché informazioni di contatto associate.
 39) **Cosa fa un "firewall"?**
-	Un firewall è un apparato di rete analogo ad un router ma specializzato nel filtraggio sull'instradamento dei pacchetti. Il firewall decide infatti se instradare o meno un flusso/pacchetto in funzione di varie policy.
+	Un firewall è un apparato di rete analogo ad un router ma specializzato nel filtraggio sull'instradamento dei pacchetti. Il firewall decide infatti se instradare o meno un flusso/pacchetto in funzione di varie policy. A differenza di un filtro DNS, un firewall permette la risoluzione di un URL illecito che poi però non viene raggiunto.
 40) **Fai qualche esempio notevole di sottoreti quasi certamente "molto relativistiche" (in cui ci sono molte "ombre/buchi/ecc").**
 	i
 41) **Differenze fra "whitelist" e "blacklist"?**
@@ -132,15 +132,27 @@
 42) **Cosa si intende con "velocità di trasmissione" in Internet? Da cosa è influenzata?**
 	i
 43) **Differenze fra ADSL, VDSL, FIBRA, ecc.**
-	ADSL significa Asymmetrical Digital Subscriber Line, VDSL signfica Very-high-bit-rate Digital Subscriber Line.
+	Le differenze principali tra ADSL (Asymmetric Digital Subscriber Line), VDSL (Very High Bitrate Digital Subscriber Line) e la connessione in fibra ottica riguardano la tecnologia di trasmissione, la velocità di connessione e la portata effettiva del servizio:
+	1) **ADSL (Asymmetric Digital Subscriber Line):**
+	    - **Tecnologia:** utilizza la rete telefonica in rame esistente per trasmettere dati digitali.
+	    - **Velocità:** le velocità di download e upload non sono simmetriche, con velocità di download generalmente più elevate rispetto a quelle di upload.
+	    - **Portata:** la velocità diminuisce con la distanza dalla centrale telefonica.
+	2) **VDSL (Very High Bitrate Digital Subscriber Line):**
+	    - **Tecnologia:** utilizza la rete telefonica in rame, ma è ottimizzato per velocità più elevate rispetto all'ADSL.
+	    - **Velocità:** offre velocità più elevate sia in download che in upload rispetto all'ADSL.
+	    - **Portata:** la portata è generalmente più breve rispetto all'ADSL, e la velocità diminuisce con la distanza dalla centrale.
+	3) **Fibra Ottica:**
+	    - **Tecnologia:** utilizza cavi in fibra ottica per trasmettere dati sotto forma di segnali luminosi.
+	    - **Velocità:** offre velocità molto elevate, sia in download che in upload, e la velocità è generalmente simmetrica.
+	    - **Portata:** la fibra ottica ha una maggiore larghezza di banda e può mantenere velocità costanti su distanze più lunghe rispetto alle tecnologie basate su rame.
 44) **Cosa si intende con "sito" e con "nodo della rete"?**
-	i
+	Un sito web è un insieme di pagine web collegate tra loro e accessibili tramite un indirizzo Internet (URL). Ad esempio, "www.example.com" è un sito web. Un nodo della rete è un punto di connessione in una rete di computer o in una rete di telecomunicazioni. Può essere un dispositivo, come un computer, un router, uno switch o qualsiasi altro dispositivo di rete, che è in grado di inviare, ricevere o instradare i dati attraverso la rete. I nodi della rete sono collegati tra loro per consentire la comunicazione e la trasmissione dei dati da un punto all'altro.
 45) **Cosa si intende con "ultimo miglio"?**
 	Si definisce ultimo miglio quel tratto della rete che va dalla casa/ufficio dell'utente finale fino al primo concentratore. L'ultimo miglio è il tratto più problematico perchè è difficilmente aggiornabile; tipicamente è il doppino in rame della rete telefonica che viene utilizzato per veicolare i dati. Il rame è un buon conduttore di elettricità, ma quando si tratta di inviare dati (segnali ad alta frequenza) invece di voce (segnali a bassa frequenza), il doppino diventa una pessima soluzione per le lunghe distanze (centinaia di metri). 
 46) **Cosa si intende con "offerta flat" nel campo della telefonia cellulare? Perché ci interessa? Quali effetti relativistici si possono incontrare?**
-	i
+	Un'offerta flat significa un'offerta con trffico dati incluso nell'abbonamento, fino ad una soglia mensile, oltre la quale si comincia a pagare al MB o la velocità della connessione scende automaticamente ad un livello estremamente basso. Ci interessa perchè alcune offerte prevedono che parte del traffico effettuato non venga conteggiato nel cap mensile, così l'utente del contratto sarà invogliato ad utilizzare maggiormente i siti cap esenti.
 47) **Chi è FCC?**
-	La Federal Communication Commission. Aveva scoperto che Comcast impediva l'utilizzo di Skype ai suoi utenti Ha indagato nuovamente la Comcast per sospetti di rallentamento artificioso nei confronti di Netflix.
+	La Federal Communication Commission. Aveva scoperto che Comcast impediva l'utilizzo di Skype ai suoi utenti. Ha indagato nuovamente la Comcast per sospetti di rallentamento artificioso nei confronti di Netflix.
 48) **Cos'è VoIP?**
 	VoIP (Voice over Internet Protocol) è il servizio di telefonia via rete. Lo standard internazionale più diffuso è libero e si chiama SIP (Session Initiation Protocol).
 49) **Cosa si intende con QoS? Esistono usi "positivi" e "negativi" della QoS?**
