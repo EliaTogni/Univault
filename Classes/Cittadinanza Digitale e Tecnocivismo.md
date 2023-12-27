@@ -39,13 +39,13 @@
 1) **Quali sono i temi salienti del livello "network" dell'arcobaleno?**
 	I temi salienti del livello network sono il comportamento della Rete,come essa può essere piegata ad utilizzi non previsti e come tentare di rilevare eventuali distorsioni, per poi attuare diversi tipi di difese.
 2) **Cos'è un "pacchetto"? Com'è strutturato?**
-	Un pacchetto di rete non è altro che una sequenza di bit di lunghezza finita che viene trasmessa sotto forma di segnale elettrico (rame) o luminoso (fibra ottica) da un nodo all’altro di una rete. E' strutturato in segmenti, detti campi, ed ogni campo della sequenza ha una ben precisa semantica dipendente dal tipo di protocollo di rete utilizzato. I pacchetti vengono ordinati in sequenze che costruiscono dei flussi di dati che poi l’utente fruisce.
+	Un pacchetto di rete non è altro che una sequenza di bit di lunghezza finita che viene trasmessa sotto forma di segnale elettrico (rame) o luminoso (fibra ottica) da un nodo all’altro di una rete. E' strutturato in segmenti, detti campi, ed ogni campo della sequenza ha una ben precisa semantica dipendente dal tipo di protocollo di rete utilizzato. I pacchetti vengono ordinati in sequenze che costruiscono dei flussi di dati di cui poi l’utente fruisce. Alcuni di questi campi sono il TTL, il Protocol, il Checksum, Il Source IP Address ed il Destination IP Address, la Length ed il Sequence Number.
 3) **Quali sono i concetti fondamentali (ai fini della CDT) dell'architettura di Internet?**
 	
 4) **Chi è un "provider"? Che tipi di provider esistono?**
 	 Con il termine provider si identifica un'azienda o una qualsiasi entità che eroga un servizio. Se questo servizio è la rete Internet, allora parliamo di ISP (Internet Service Provider), azienda che fornisce connettività agli utenti sia via cavo che wireless. Non tutti i provider sono uguali però: l'ente che permette la connessione del nostro dispositivo è detto provider di connettività, i quali forniscono il servizio ultimo miglio, cioè quel tratto della rete che va dalla casa/uﬀicio dell’utente finale fino al primo concentratore. Questo provider dell'ultimo miglio, a sua volta, farà riferimento ad un provider di livello più alto per quanto concerne l'accesso che fornisce.
 5) **Perché è importante (nel contesto della CDT) analizzare il (mal)funzionamento della rete?**
-	che
+	iiii
 6) **Cos'è il "routing" e perché ci interessa in CDT? (sia dal punto di vista storico che attuale)**
 	Con il termine routing si fa riferimento all'instradamento tra due host in comunicazione tra loro, ovvero al processo di selezione del percorso in una qualsiasi rete che i pacchetti devono percorrere da una sorgente ad una destinazione.
 7) **Cos'è il DNS e perché ci interessa in CDT? Esistono meccanismi simili (per funzioni) ma più semplici?**
@@ -53,7 +53,7 @@
 8) **Cos'è il multiplexing?**
 	E' una tecnica utilizzata per permettere la gestione contemporanea di più comunicazioni sullo stesso canale. Ogni canale di trasmissione ha una sua capacità trasmissiva superiormente limitata, se ogni singola trasmissione impegnasse stabilmente un canale si rischierebbe di non poter servire altre richieste per tempo molto lungo. Spezzando la singola trasmissione si realizza il cosiddetto multiplexing del canale: viene inviato un pacchetto relativo ad una trasmissione, poi un pacchetto relativo ad un’altra, poi uno di un’altra ancora e così via. In questo modo ogni richiesta di trasmissione vedrà un avanzamento lavori progressivo, senza lunghe interruzioni.
 9) **Cosa si intende con "percorso migliore"? Quali sono gli aspetti tecnici di una trasmissione in rete?**
-	Il concetto di percorso migliore (e peggiore) è molto aleatorio.
+	Il concetto di percorso migliore (e peggiore) è molto aleatorio. Ogni nodo della rete ha una conoscenza parziale delle caratteristiche trasmissive e di utilizzo dei vari canali che lo collegano ad altri nodi, per cui può decidere dove inviare i vari flussi secondo criteri di velocità, efficienza, opportunità, disponibilità, costo, ecc. Il criterio di scelta potrebbe essere differente tra nodo e nodo, anche nel caso di utilizzo della stessa policy.
 10) **Come si potrebbero definire dei concetti di "distanza" in rete?**
 	I retisti definiscono generalmente la distanza, declinata in termini spaziali e temporali, tra due nodi di una rete come:
 	• numero di salti/hop tra i due nodi;
@@ -69,9 +69,9 @@
 15) **Da cosa dipende la "funzione di routing"?**
 	La funzione di routing è una funzone che permette di capire quali sono i fattori che entrano in gioco nella decisione sulla strada che deve percorrere un pacchetto. La strada (intesa appunto come sequenza di nodi da attraversare) prevista per un pacchetto $p$ all'istante $t$ è una funzione $strada(t, p, contorno)$. La decisione avviene quindi in base al quando, al cosa ed a qualche fattore esterno che si vuole utilizzare per decidere. Il quando può far riferimento al giorno della settimana o all'orario attuale. Il cosa si riferisce ad informazioni contenute nel pacchetto $p$ stesso (i dati ed i metadati). Il contorno può essere la situazione di congestione di traffico sui nodi della rete adiacenti.
 16) **Un pacchetto in rete ha un "autore"? Se sì, in che senso?**
-	
+	Un pacchetto in rete ha un "autore", inteso come l'indirizzo sorgente (o mittente), cioè l'indirizzo che descrive da dove arriva (o da dove dichiara di arrivare) l'informazione.
 17) **E' possibile decidere il routing di una sequenza di pacchetti in base alle convinzioni politiche del soggetto che genera il traffico? (argomentare)**
-	i
+	
 18) **Quali metadati contiene un pacchetto IP?**
 	- TTL (Time To Live): un contatore che viene decrementato ogni volta che il pacchetto passa da un router, quando il contatore va a 0 il pacchetto viene scartato e muore;
 	- Protocol: tipo di protocollo, informazione che aiuta chi riceve il flusso di dati a capirne la semantica;
@@ -84,25 +84,27 @@
 19) **Cos'è il Time To Live? Perché ci può interessare in CDT?**
 	TTL (Time To Live): un contatore che viene decrementato ogni volta che il pacchetto passa da un router, quando il contatore va a 0 il pacchetto viene scartato e muore. Ci può interessare perchè modificando un TTL rendendolo elevato fa sì che il pacchetto possa andare lontano, cioè raggiungere destinazioni a molti hop di distanza. Se, invece, si modifica (tipicamente abbassandolo) il TTL si rende un pacchetto meno longevo e lo si confina ad un raggio d’azione limitato superiormente.
 20) **Cosa si intende con "mittente" o "destinatario" di un flusso di pacchetti?**
-	i
+	Il mittente è l'indirizzo sorgente del pacchetto o del flusso di pacchetti, cioè l'indirizzo IP da cui il flusso arriva (o dichiara di arrivare). Allo stesso modo, il destinatario è l'indirizzo di destinazione del pacchetto o del flusso di pacchetti.
 21) **Cos'è una "porta"?**
-	il concetto di porta serve a differenziare un flusso dati tra due nodi in modo da simulare più sotto-flussi, i.e., i pacchetti che vanno da A a B vengono smistati su code diverse in funzione delle porte dichiarate nei pacchetti stessi;
+	il concetto di porta serve a differenziare un flusso dati tra due nodi in modo da simulare più sotto-flussi, i.e., i pacchetti che vanno da $A$ a $B$ vengono smistati su code diverse in funzione delle porte dichiarate nei pacchetti stessi;
 22) **Cos'è un "protocollo"?**
-	I protocolli di rete servono a codificare opportunamente (cioè al meglio per la particolare esigenza di scambio dati) i contenuti e le sequenze di dati in modo da ottenere la funzione richiesta.
+	Un protocollo è un algoritmo distribuito. I protocolli di rete sono serie di standard che regolano la successione e lo scambio di informazioni fra due dispositivi. Servono a codificare opportunamente (cioè al meglio per la particolare esigenza di scambio dati) i contenuti e le sequenze di dati in modo da ottenere la funzione richiesta.
 23) **Che differenza c'è tra metadati e contenuto di un pacchetto?**
-	i
+	I metadati forniscono informazioni sull'origine, la struttura e altre caratteristiche dei dati, mentre il contenuto è ciò che i dati effettivamente contengono. Ad esempio, in un file musicale, i metadati potrebbero includere il titolo della canzone, l'artista e l'anno di pubblicazione, mentre il contenuto sarebbe la musica effettiva.
 24) **Cos'è un "Man-In-The-Middle attack"?**
-	un router potrebbe tranquillamente modificare un pacchetto prima di ruotarlo, operando quello che viene chiamato Man-In-The-Middle attack.
+	Il Man-In-The-Middle attack è una tecnica di hacking in cui un attaccante si colloca tra due parti che stanno comunicando, intercettando o addirittura manipolando la comunicazione tra di esse senza che né la parte mittente né la parte ricevente ne siano consapevoli. Un router potrebbe tranquillamente modificare un pacchetto prima di ruotarlo.
 25) **Cos'è la "Deep Packet Inspection"? E' sempre possibile/facile?**
 	La deep packet inspection (DPI, ispezione profonda dei pacchetti), che prevede l’analisi non solo dei metadati ma anche del contenuto (tenendo perfino una traccia storica) dei pacchetti che vengono instradati. Con la DPI è possibile controllare ogni aspetto di tutta l’informazione veicolata su Internet, consentendo quindi - tipicamente ai governi e alle aziende che gestiscono la Rete - di esercitare il controllo sistematico del contenuto delle comunicazioni su intere zone di Internet e di conseguenza decidere cosa può essere comunicato, chi può comunicare e chi può ricevere la comunicazione.
 26) **Cosa si intende con "crittografia"? Sai citare qualche tipo di crittografia nota?**
-	i
+	La crittografia è la pratica e lo studio delle tecniche utilizzate per rendere sicure le comunicazioni e proteggere l'accesso non autorizzato alle informazioni. Coinvolge la trasformazione dei dati in modo che possano essere compresi solo da coloro che sono autorizzati a farlo. Ci sono diversi tipi di crittografia, ma è possibile dividerli principalmente in due categorie, simmetrica e asimmetrica:
+	1) **crittografia simmetrica:** utilizza una chiave segreta condivisa tra mittente e destinatario per cifrare e decifrare i dati. Un esempio noto di algoritmo di crittografia simmetrica è l'AES (Advanced Encryption Standard).
+	2) **crittografia asimmetrica:** coinvolge una coppia di chiavi, una pubblica e una privata. La chiave pubblica è utilizzata per cifrare i dati, mentre la chiave privata è utilizzata per decifrarli. Un esempio comune di crittografia asimmetrica è l'algoritmo RSA.
 27) **Cos'è un indirizzo IP? Che tipi esistono?**
 	L'indirizzo IP è un identificativo univoco di un nodo, un computer. La sua forma (in IPv$4$) è una sequenza di $4$ numeri, ognuno tra $0$ e $255$, separata dal carattere `.` (e.g., $192.168.39.12$ identifica il nodo $12$ della sottorete $39$ dellta sottorete $168$ della sottorete $192$ della rete complessiva). Alcuni indirizzi IP hanno significati speciali come $127.0.0.1$, il quale indentifica sempre il nodo su cui ci si trova, oppure il numero $255$ (broadcast), che identifica tutti i nodi di una sottorete (e.g., $192.168.1.255$). Ogni nodo di una rete può, in teoria, autoassegnarsi un indirizzo ma, dato che l'univocità è una caratteristica fondamentale per non avere conflitti, solitamente gli indirizzi vengono assegnati da un'autorità centrale (relativamente ad una sottorete), la quale tiene traccia degli assegnamenti per non creare duplicati. Un altro tipo di indirizzo IP è IPv$6$.
 28) **Cosa si intende con "la rete è relativistica"?**
 	Si è attribuito alla Rete caratteristiche relativistiche, usando come metafora la relatività einsteniana: ogni utente Internet è un osservatore immerso in un universo in evoluzione, ma lo stato generale di questo universo non è identicamente conoscibile da tutti gli osservatori poichè la propagazione delle informazioni è ben lungi dall'essere istantanea ed integrale.
 29) **In che senso la rete "non è un universo euclideo"?**
-	i
+	Nel senso che le regole geometriche non sono completamente note, variano nel tempo e sono sotto il controllo di poche entità: i gestori delle reti. Ad esempio, i concetti di distanza non rispettano i principi euclidei. Ad esempio, la distanza fra i punti $A$ e $B$ è diversa dalla distanza fra $B$ e $A$.
 30) **Cos'è un URL? In cosa differisce da un indirizzo IP?**
 	Un URL (Uniform Resource Locator) è un meccanismo standardizzato per identificare una risorsa (un documento, una foto, un video) in rete specificando dove si trova (sito, nodo della rete).
 31) **Cosa fa un motore di ricerca?**
