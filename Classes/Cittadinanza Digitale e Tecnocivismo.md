@@ -170,7 +170,7 @@
 	 - carta comune: support della durata di qualche secolo. il più antico scritto su carta noto oggi ha circa mille anni, ma come supporto è molto fragile sia agli elementi (è igroscopica e prende fuoco facilmente) sia nei confronti degli animali (insetti, ratti) che la utilizzano come cibo o riparo (tritandola e facendo nidi);
 	 - anelli di ferrite: supporto composto da materiale ferroso magnetizzabile. Ogni bit era memorizzato su un piccolo anello di ferrite in cui passavano dei cavi (per la magnetizzazione e per la lettura della stessa), facendo passare corrente nei fili si poteva magnetizzare l’anello e il senso della magnetizzazione dipendeva dalla polarità della corrente con cui si effettuava la scrittura. Un bit memorizzato su un anello di ferrite risulta leggibile se la magnetizzazione è suﬀicientemente forte da influenzare una corrente che passa in un filo infilato nell’anello stesso: la cosiddetta operazione di lettura. Attenzione che la corrente di lettura distrugge il bit leggendolo.
 53) **Cosa si intende con "vita di un bit"?**
-	 Si intende la potenziale durata della vita di un bit, dove con durata si intende 
+	 L'informazione su un supporto vive fino a quando vive il supporto che la ospita. Per vita di un bit si intende la potenziale durata della vita del supporto che lo ospita. La vita di un bit è potenzialmente infinita grazie al concetto di ridondanza.
 54) **Cos'è il MTBF?**
 	L'MTBF (Mean Time Between Failures) è una misura indiretta (probabilistica) della durata dell'informazione contenuta all'interno di un supporto di memoria. Questo parametro viene misurato e dichiarato dai costruttori degli storage device.
 55) **Cosa rende un dato "immortale"?**
@@ -189,23 +189,33 @@
 	- tutt'altro che esigue;
 	- indistruttibili.
 61) **Come è applicato Locard a livello rete?**
-	i
+	 Ogni singolo router di rete tiene traccia del traffico che instrada sotto forma di log. Questi log possono essere molto dettagliati e normalmente indicano sorgente, destinatiario, orario e altre informazioni di contorno. Spazio di archiviazione permettendo, si può registrare persino il contenuto di ogni pacchetto transitato e non solo i metadati. Ogni pacchetto che un utente immette sulla Rete lascia queste tracce, quindi ogni volta che chiunque naviga in rete, anche solo consultando siti web, sta lasciando una traccia, ben chiara e indelebile.
 62) **Cos'è un "log"?**
 	Nome generico per un diario di bordo digitale, tipicamente sotto forma di un insieme di log file (dati che un sistema genera durante il suo funzionamento per registrare lo stato di salute del sistema stesso, gli eventi significativi e quanto altro possa essere utile a capire se un sistema fa quello per cui è stato installato). Serve a tenere uno storico del funzionamento di un computer, ad esempio per risalire alle cause di eventuali errori e malfunzionamenti, ma anche per sapere chi ha fatto cosa in caso di necessità di attribuzione di responsabilità delle azioni
 63) **Cosa registra un "log" di un router?**
-	i
+	Normalmente un log di un router registra orario (al millisecondo), indirizzo IP del mittente e del destinatario e altre informazioni di contorno. Se il router ha a disposizione lo spazio di archiviazione necessario, può anche essere in grado di registrare il contenuto di ogni pacchetto e non solo i metadati.
 64) **Locard digitale è più efficace che nel mondo analogico? Se sì perché?**
-	i
+	 Ogni pacchetto che un utente immette sulla Rete lascia queste tracce, quindi ogni volta che chiunque naviga in rete, anche solo consultando siti web, sta lasciando una traccia, ben chiara e indelebile. Ed ecco che il principio di scambio di Locard diventa un meccanismo più aﬀidabile nel contesto digitale che in quello fisico.
 65) **Cos'è un "dato"?**
-	i
+	 Un dato è poco più di una sequenza di simboli cui è attribuibile un significato, se ne viene specificato anche il formato. Una sequenza di simboli non porterà informazione fino a che non le verrà associato un formato e un interprete.
 66) **Cos'è una "informazione"?**
-	i
+	 Un'informazione è un dato a cui è stato associato un formato ed un interprete.
 67) **Cosa si intende con "semantica"? (qual è la semantica di "semantica"?)**
-	i
+	Si intende il significato.
 68) **Cos'è una Macchina di Turing? Qual è il suo scopo/funzione?**
-	i
-69) **La semantirelativo al trasferimento di tracce tra (s)oggetti, il quale afferma che ogni contatto lascia una traccia. Quando due (s)oggetti entrano in contatto l'uno con l'altro, ognuno prenderà qualcosa dall'altro (s)oggetto o vi lascerà qualcosa.ca di un dato è inequivocabile?**
-	i
+	La Macchina di Turing è un artificio matematico creato da Alan Turing negli anni $'30$ del Novecento. Serve a ragionare formalmente sui linguaggi e sugli interpreti, potendo stabilire regole di composizione, teoremi di equivalenza e altre proprietà. Si tratta di una macchina ideale, composta da:
+	- uno o più nastri di lavoro su cui possono essere scritti simboli da un alfabeto arbitrario;
+	- (per ogni nastro) una testina di lettura/scrittura dei simboli;
+	- una macchina a stati che reagisce ai simboli che le vengono presentati.
+	 In tale configurazione, una MdT esegue in continuazione il seguente loop:
+	 - legge il simblo sotto al cursore (fetch);
+	 - interpreta il simbolo secondo la macchina a stati caricata (execute). L'interpretazione del simbolo può comportare:
+		 - un cambio di stato interno;
+		 - una scrittura sul nastro;
+		 - uno spostamento del cursore (aggiornamento program counter).
+	 I simboli presenti sul nastro determinano il comportamento della MdT. Inoltre, la stessa sequenza di simboli scatena comportamenti diversi se letta da MdT diverse. 
+1) **La semantica di un dato è inequivocabile?**
+	 Decisamente no. Ad esempio, per i log esistono formati standard e ormai assodati, ma nessuno obbliga ad aderirvi. Per altri tipi di dato la situazione potrebbe essere anche peggio, potremmo avere sottomano dati parziali o che non seguono alcun formato noto. Infatti, trovare una traccia digitale non implica poterle attribuire un significato univoco.
 70) **Cosa si intende con "traccia digitale"?**
 	i
 71) **Come posso capire chi ha "scritto" un bit/byte/stream?**
