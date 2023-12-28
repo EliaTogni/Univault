@@ -133,25 +133,25 @@
 	i
 43) **Differenze fra ADSL, VDSL, FIBRA, ecc.**
 	Le differenze principali tra ADSL (Asymmetric Digital Subscriber Line), VDSL (Very High Bitrate Digital Subscriber Line) e la connessione in fibra ottica riguardano la tecnologia di trasmissione, la velocità di connessione e la portata effettiva del servizio:
-	1) **ADSL (Asymmetric Digital Subscriber Line):**
-	    - **Tecnologia:** utilizza la rete telefonica in rame esistente per trasmettere dati digitali.
-	    - **Velocità:** le velocità di download e upload non sono simmetriche, con velocità di download generalmente più elevate rispetto a quelle di upload.
-	    - **Portata:** la velocità diminuisce con la distanza dalla centrale telefonica.
-	2) **VDSL (Very High Bitrate Digital Subscriber Line):**
-	    - **Tecnologia:** utilizza la rete telefonica in rame, ma è ottimizzato per velocità più elevate rispetto all'ADSL.
-	    - **Velocità:** offre velocità più elevate sia in download che in upload rispetto all'ADSL.
-	    - **Portata:** la portata è generalmente più breve rispetto all'ADSL, e la velocità diminuisce con la distanza dalla centrale.
+	1) ADSL (Asymmetric Digital Subscriber Line):
+	    - tecnologia: utilizza la rete telefonica in rame esistente per trasmettere dati digitali;
+	    - velocità: le velocità di download e upload non sono simmetriche, con velocità di download generalmente più elevate rispetto a quelle di upload;
+	    - portata: la velocità diminuisce con la distanza dalla centrale telefonica.
+	2) VDSL (Very High Bitrate Digital Subscriber Line):
+	    - tecnologia: utilizza la rete telefonica in rame, ma è ottimizzato per velocità più elevate rispetto all'ADSL;
+	    - velocità: offre velocità più elevate sia in download che in upload rispetto all'ADSL;
+	    - portata: la portata è generalmente più breve rispetto all'ADSL, e la velocità diminuisce con la distanza dalla centrale.
 	3) **Fibra Ottica:**
-	    - **Tecnologia:** utilizza cavi in fibra ottica per trasmettere dati sotto forma di segnali luminosi.
-	    - **Velocità:** offre velocità molto elevate, sia in download che in upload, e la velocità è generalmente simmetrica.
-	    - **Portata:** la fibra ottica ha una maggiore larghezza di banda e può mantenere velocità costanti su distanze più lunghe rispetto alle tecnologie basate su rame.
+	    - tecnologia: utilizza cavi in fibra ottica per trasmettere dati sotto forma di segnali luminosi;
+	    - velocità: offre velocità molto elevate, sia in download che in upload, e la velocità è generalmente simmetrica;
+	    - portata: la fibra ottica ha una maggiore larghezza di banda e può mantenere velocità costanti su distanze più lunghe rispetto alle tecnologie basate su rame.
 44) **Cosa si intende con "sito" e con "nodo della rete"?**
 	Un sito web è un insieme di pagine web collegate tra loro e accessibili tramite un indirizzo Internet (URL). Ad esempio, "www.example.com" è un sito web. Un nodo della rete è un punto di connessione in una rete di computer o in una rete di telecomunicazioni. Può essere un dispositivo, come un computer, un router, uno switch o qualsiasi altro dispositivo di rete, che è in grado di inviare, ricevere o instradare i dati attraverso la rete. I nodi della rete sono collegati tra loro per consentire la comunicazione e la trasmissione dei dati da un punto all'altro.
 45) **Cosa si intende con "ultimo miglio"?**
 	Si definisce ultimo miglio quel tratto della rete che va dalla casa/ufficio dell'utente finale fino al primo concentratore. L'ultimo miglio è il tratto più problematico perchè è difficilmente aggiornabile; tipicamente è il doppino in rame della rete telefonica che viene utilizzato per veicolare i dati. Il rame è un buon conduttore di elettricità, ma quando si tratta di inviare dati (segnali ad alta frequenza) invece di voce (segnali a bassa frequenza), il doppino diventa una pessima soluzione per le lunghe distanze (centinaia di metri). 
 46) **Cosa si intende con "offerta flat" nel campo della telefonia cellulare? Perché ci interessa? Quali effetti relativistici si possono incontrare?**
 	Un'offerta flat significa un'offerta con trffico dati incluso nell'abbonamento, fino ad una soglia mensile, oltre la quale si comincia a pagare al MB o la velocità della connessione scende automaticamente ad un livello estremamente basso. Ci interessa perchè alcune offerte prevedono che parte del traffico effettuato non venga conteggiato nel cap mensile, così l'utente del contratto sarà invogliato ad utilizzare maggiormente i siti cap esenti.
-47) **Chi è FCC?**
+47) **Chi è FCC?durata**
 	La Federal Communication Commission. Aveva scoperto che Comcast impediva l'utilizzo di Skype ai suoi utenti. Ha indagato nuovamente la Comcast per sospetti di rallentamento artificioso nei confronti di Netflix.
 48) **Cos'è VoIP?**
 	VoIP (Voice over Internet Protocol) è il servizio di telefonia via rete. Lo standard internazionale più diffuso è libero e si chiama SIP (Session Initiation Protocol).
@@ -162,9 +162,15 @@
 51) **Cosa fanno in generale i vari firewall "nazionali" e perché?**
 	i
 52) **Cosa si intende con "supporto di memorizzazione"? Che tipi di supporto sono stati citati? Quali caratteristiche hanno?**
-	i
+	 Un supporto di memorizzazione è un supporto sul quale è stato scritto un dato. I supporti citati sono:
+	 - pietra: supporto della durata di parecchi secoli (e.g., Stele di Rosetta);
+	 - pelli/cartapecora: supporto della durata di alcuni secoli (e.g., pergamena di Ein Gedi) ma estremamente fragile;
+	 - cera: supporto della durata di qualche giorno. Infatti, le tavolette di cera venivano usate per appunti temporanei poichè era facile (scaldandole) lisciarle, cancellando ciò che si era scritto;
+	 - metallo: supporto della durata di secoli. in funzione del metallo è possibile ottenere supporti molto duraturi, l’esempio che ci viene alla mente sono le targhe messaggio aﬀisse sulle sonde Pioneer (alluminio dorato) e i dischi incisi inseriti nelle Voyager (rame dorato), supporti previsti per resistere alle sollecitazioni di viagginello spazio anche di migliaia di anni;
+	 - carta comune: support della durata di qualche secolo. il più antico scritto su carta noto oggi ha circa mille anni, ma come supporto è molto fragile sia agli elementi (è igroscopica e prende fuoco facilmente) sia nei confronti degli animali (insetti, ratti) che la utilizzano come cibo o riparo (tritandola e facendo nidi);
+	 - anelli di ferrite: supporto composto da materiale ferroso magnetizzabile. Ogni bit era memorizzato su un piccolo anello di ferrite in cui passavano dei cavi (per la magnetizzazione e per la lettura della stessa), facendo passare corrente nei fili si poteva magnetizzare l’anello e il senso della magnetizzazione dipendeva dalla polarità della corrente con cui si effettuava la scrittura. Un bit memorizzato su un anello di ferrite risulta leggibile se la magnetizzazione è suﬀicientemente forte da influenzare una corrente che passa in un filo infilato nell’anello stesso: la cosiddetta operazione di lettura. Attenzione che la corrente di lettura distrugge il bit leggendolo.
 53) **Cosa si intende con "vita di un bit"?**
-	
+	 Si intende la potenziale durata della vita di un bit, dove con durata si intende 
 54) **Cos'è il MTBF?**
 	L'MTBF (Mean Time Between Failures) è una misura indiretta (probabilistica) della durata dell'informazione contenuta all'interno di un supporto di memoria. Questo parametro viene misurato e dichiarato dai costruttori degli storage device.
 55) **Cosa rende un dato "immortale"?**
