@@ -281,7 +281,7 @@
 98) **Cita qualche protocollo di rete crittografato e qualcuno in chiaro.**
 	 HTTP (HyperText Transfer Protocol) e la sua controparte crittografata (HyperText Transfer Protocol over Secure Socker Layer), ovvero lo stesso protocollo con l'aggiunta della crittografia a chiave asimmetrica dovuta prima a SSL e poi a TLS. Altri esempi sono SMTP e SMTPS oppure IMAP e IMAPS.
 99) **Nei protocolli di rete crittografati, in genere, rimane comunque una parte in chiaro? Discuti.**
-	 Su Internet l’anonimato è sostanzialmente impossibile poiché DNS, SMTP, XMPP e la stragrande maggioranza dei protocolli usati su Internet trasmettono i metadati in chiaro anche se il contenuto della comunicazione è crittografato: chi è in grado di controllare il traﬀico su Internet è in grado di conoscere in ogni istante chi sta parlando con chi.
+	 Su Internet l’anonimato è sostanzialmente impossibile poiché DNS, SMTP, XMPP e la stragrande maggioranza dei protocolli usati su Internet trasmettono i metadati in chiaro anche se il contenuto della comunicazione è crittografato: chi è in grado di controllare il traﬀico su Internet è in grado di conoscere in ogni istante chi sta parlando con chi. Mentre, a prima vista, la mancanza di riservatezza dei metadati relativi alle comunicazioni potrebbe non sembrare un problema, in realtà rivela un'incredibile quantità di informazioni quali i nostri studi, il nostro impiego e le ricerche di lavoro, il nome dei nostri cari, i video che guardiamo sul web, cosa ci piace fare nel nostro tempo libero, le organizzazioni delle quali facciamo parte, comprese le attività politiche.
 100) **Qual è il "peccato originale" (autenticità) di Internet? Discuti.**
 	 Internet si fonda sull'assunzione di reciproca fiducia. Quando Internet venne concepita, non era solo in chiaro di default ma anche insicura poichè è possibile modificare la provenienza o il contenuto di qualsiasi pacchetto IP. Questa è la causa fondamentale per la quale è stato necessario tentare di aggiustare i protocolli utilizzati su Internet, introducendone di nuovi per garantire l'autenticità delle trasmissioni e la riservatezza attraverso la crittografia.
 101) **Cos'è BGP?**
@@ -301,25 +301,26 @@
 105) **Cos'è Wehe?**
 	Wehe è uno strumento di misura della relatività della Rete. Permette di verificare se il proprio ISP applichi limitazioni alla banda di specifiche applicazioni per favorirne altre, violando quindi il principio della net neutrality.
 106) **Cos'è la "crittografia a chiave pubblica"? Discuti.**
-	i
+	 La crittografia è la pratica e lo studio delle tecniche utilizzate per rendere sicure le comunicazioni e proteggere l'accesso non autorizzato alle informazioni. Coinvolge la trasformazione dei dati in modo che possano essere compresi solo da coloro che sono autorizzati a farlo. Ci sono diversi tipi di crittografia, ma è possibile dividerli principalmente in due categorie, simmetrica e asimmetrica. In particolare, la crittografia asimmetrica coinvolge una coppia di chiavi, una pubblica e una privata. La chiave pubblica è utilizzata per cifrare i dati, mentre la chiave privata è utilizzata per decifrarli. Un esempio comune di crittografia asimmetrica è l'algoritmo RSA. Per esempio, un ipotetico soggetto “Mario” genera una coppia (matematicamente relazionata) di chiavi, la parte pubblica può essere divulgata al mondo mentre quella privata va custodita gelosamente. Un altro ipotetico soggetto “Laura” che voglia inviare dei dati privati a Mario li dovrà codificare usando la chiave pubblica di Mario. A questo punto solo Mario sarà in grado di decifrare quei dati perché è la chiave privata che può decodificare i dati crittografati con la chiave pubblica, cioè la chiave pubblica si usa per codificare mentre quella privata per decodificare.
 107) **Cos'è una "rete overlay"?**
-	i
+	 Si tratta di meccanismi per costruire una rete sopra un'altra rete: il traffico dati importante viene incapsulato (codificato, spesso anche crittografato) dentro ad un traffico dati di trasporto per essere portato a destinazione. Le implementazioni digitali più note sono le cosiddette VPN. Dopodiché,  esistono particolari reti overlay specificamente progettate per fornire anche protezione dall’identificazione di mittenti e destinatari da parte di terzi, le cosiddette reti anonimizzanti, la cui più famosa è Tor.
 108) **Cos'è una VPN e cosa serve?**
 	Una VPN (Virtual Private Network) è un meccanismo software che permette di creare un tunnel di rete tra il luogo in cui ci si trova ed una propria rete conosciuta. Una volta instaurato il tunnel, il computer connesso tramite VPN appare in rete come se fosse connesso alla propria rete e non a quella temporanea che fa solo da trasporto.
 109) **Cos'è un "exit node" (Tor)?**
-	i
+	 Tor è la più famosa rete anonimizzante. Il nome è l'acronimo di The Onion Router, il quale evidenzia la sua principale caratteristica di rete a cipolla. Ha lo scopo di proteggere la riservatezza e la libertà degli utenti, consentendo loro di navigare sul web sfruttando una rete di copertura composta da migliaia di nodi di instradamento: ad ogni passaggio, i pacchetti vengono incapsulati in modo tale da nascondere, crittografandoli, i dati sensibili della comunicazione e garantendo che, una volta raggiunta Internet, non sia possibile rilevare la reale ubicazione dell'utente o effettuare l'analisi del traffico. La consegna finale dei pacchetti al nodo di destinazione su Internet è effettuata da speciali nodi Tor chiamati exit node.
 110) **Cos'è I2P (garlic router)?**
-	i
+	 I2P è uno strumento pensato per proteggere l'anonimato in rete simile a Tor ma che usa una variante degli algoritmi di instradamento chiamata Garlic Routing. I2P è ancora beta software tuttavia può essere utilizzato come server proxy locale da qualsiasi browser. In questa modalità, gli utenti possono navigare in modo analogo a quanto permette di fare Tor con in aggiunta delle applicazioni dedicate che funzionano solo comunicando all'interno della rete I2P (un sistema di chat, diverse applicazioni di file sharing, email, instant messaging e pubblicazione di contenuti). Gli utenti possono proteggere meglio la propria privacy in quanto nella rete I2P, nè il mittente nè il destinatario hanno bisogno di rivelare il proprio indirizzo IP, nemmeno ad eventuali osservatori lungo la catena di instradamento ma comunicano utilizzando identità crittografiche.
 111) **Cos'è Free-net?**
-	i
+	 Si tratta di una piattaforma peer-to-peer per la comunicazione, la quale utilizza un database distribuito e decentralizzato per immagazzinare e consegnare le informazioni. Ogni nodo che partecipa alla rete Freenet contribuisce con spazio disco per il database distribuito e fornendo funzioni di instradamento per gli altri partecipanti. La piattaforma Freenet, quindi, fornisce l’infrastruttura peer-to-peer attraverso la quale le applicazioni specificamente sviluppare possono immagazzinare e trasmettere le informazioni. É importante sottolineare che Freenet non funziona da proxy per il World Wide Web ma può essere utilizzato solo per accedere al contenuto che è stato pubblicato nel database decentralizzato attraverso le proprie applicazioni dedicate.
 112) **Cosa si intende con "peer-to-peer" in generale?**
-	i
+	 Tecnica di scambio file per cui ogni nodo della rete che partecipa alla condivisione dei file funge sia da fruitore che da fornitore. I programmi di scambio P2P (abbreviazione) scaricano i file e contemporaneamente li condividono verso altri utenti in modo da distribuire il traﬀico di rete su tutti i partecipanti e non aggravare un singolo server di carichi troppo elevati. Inoltre questa distribuzione dell’informazione rende molto più robusta l’architettura perché anche se qualche nodo cade (viene spento o va offline) gli altri continuano a condividere avendo ognuno copie dei contenuti. Questa tecnica viene spesso criminalizzata dato che è uno dei principali modi per scambiare illegalmente contenuti sotto copyright.
 113) **Cosa indica il termine "mesh network"?**
-	i
+	 Indica una rete nella quale ogni nodo si connette direttamente con il maggior numero di altri nodi e collabora per instradare efficientemente i pacchetti, senza che sia necessario conoscere la destinazione finale o il contenuto dei pacchetti stessi e quindi nemmeno i metadati. 
 114) **Cos'è GNUnet?**
-	i
-115) **Cosa si intende con "perfect forward secrecy"?**
-	i
+	 Il progetto GNUnet sta sviluppando un insieme completo di nuovi protocolli con lo scopo di costruire applicazioni sicure, distribuite e rispettose della riservatezza e dell'anonimato di chi comunica attraverso la rete. GNUnet è una rete di tipo mesh. I concetti di base della nuova architettura sono:
+	- 
+1) **Cosa si intende con "perfect forward secrecy"?**
+	 Si intende criteri crittografici che garantiscono che le precedenti comunicazioni non siano compromesse nel caso di una compromissione di una chiave privata.
 116) **Come viene identificato un nodo in GNUnet?**
 	i
 117) **Cosa si intende con "confidenzialità" in GNUnet?**
@@ -329,7 +330,7 @@
 119) **Cos'è GNS (GNU Naming System) e in cosa differisce da DNS?**
 	i
 120) **Cos'è Secushare?**
-	i
+	 Secushare è un progetto che, utilizzando GNUnet per la crittografia end-to-end e l'instradamento anonimo delle comunicazioni, aggiunge un nuovo protocollo di trasmissione dei dati al fine di creare un grafo sociale distribuito, senza cioè necessità di server centralizzati per l'immagazzinamento e lo smistamento delle informazioni. Assieme, queste tecnologie consentono applicazioni distribuite e sicure per email, chat, scambio di contenuti e documenti web e potrebbe essere utilizzata anche come mezzo di comunicazione sicuro per l'Internet of Things. Secushare è ancora in fase di sviluppo e non è ancora disponibile un prototipo.
 121) **Cos'è Next Generation Internet?**
 	i
 
