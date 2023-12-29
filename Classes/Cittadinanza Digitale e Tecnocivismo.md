@@ -131,7 +131,7 @@
 41) **Differenze fra "whitelist" e "blacklist"?**
 	Le liste "whitelist" e "blacklist" sono concetti utilizzati per controllare l'accesso o l'ammissione a determinati elementi o servizi. Con whitelist si fa riferimento al meccanismo che impedisce l'accesso a tutto tranne ciò che è presente in questa lista. Il meccanismo simmetrico, la blacklist, permette l'accesso a tutto tranne a ciò che è presente in lista.
 42) **Cosa si intende con "velocità di trasmissione" in Internet? Da cosa è influenzata?**
-	i
+	 Con velocità di trasmissione si intende la quantità di dati espressa in bit o byte (e multipli) inviati al secondo. Essa può essere influenzata dai vari nodi intermedi che compongono il percorso dell'informazione oppure dalla tecnologia utilizzata per trasmettere l’informazione stessa e quindi la componente fisica del cavo di trasmissione.
 43) **Differenze fra ADSL, VDSL, FIBRA, ecc.**
 	Le differenze principali tra ADSL (Asymmetric Digital Subscriber Line), VDSL (Very High Bitrate Digital Subscriber Line) e la connessione in fibra ottica riguardano la tecnologia di trasmissione, la velocità di connessione e la portata effettiva del servizio:
 	1) ADSL (Asymmetric Digital Subscriber Line):
@@ -153,15 +153,15 @@
 46) **Cosa si intende con "offerta flat" nel campo della telefonia cellulare? Perché ci interessa? Quali effetti relativistici si possono incontrare?**
 	Un'offerta flat significa un'offerta con trffico dati incluso nell'abbonamento, fino ad una soglia mensile, oltre la quale si comincia a pagare al MB o la velocità della connessione scende automaticamente ad un livello estremamente basso. Ci interessa perchè alcune offerte prevedono che parte del traffico effettuato non venga conteggiato nel cap mensile, così l'utente del contratto sarà invogliato ad utilizzare maggiormente i siti cap esenti.
 47) **Chi è FCC?durata**
-	La Federal Communication Commission. Aveva scoperto che Comcast impediva l'utilizzo di Skype ai suoi utenti. Ha indagato nuovamente la Comcast per sospetti di rallentamento artificioso nei confronti di Netflix.
+	La Federal Communication Commission è un'agenzia federale che regola le comunicazioni interstatali e internazionali attraverso varie forme di trasmissione. Aveva scoperto che Comcast impediva l'utilizzo di Skype ai suoi utenti. Ha indagato nuovamente la Comcast per sospetti di rallentamento artificioso nei confronti di Netflix.
 48) **Cos'è VoIP?**
 	VoIP (Voice over Internet Protocol) è il servizio di telefonia via rete. Lo standard internazionale più diffuso è libero e si chiama SIP (Session Initiation Protocol).
 49) **Cosa si intende con QoS? Esistono usi "positivi" e "negativi" della QoS?**
-	
+	 Con Quality of Service si intende la possibiltà di chi gestisce il router di fornire un servizio in linea con le aspettative di chi usufruisce di tale servizio, decidendo, quindi, di privilegiare il traffico per servizi in streaming, velocizzandoli rispetto magari ai protocolli destinati allo scambio di email. I provider sono quindi in grado di parametrizzare diversamente i vari tipi di traffico in funzione di considerazioni di ottimizzazione, politiche o economiche. Tuttavia, vi sono alcuni casi negativi come la parametrizzazione con tempistiche infinite di traffici in ingresso e in uscita da siti che si vuole svantaggiare (ad esempio siti ostili per il governo).
 50) **Cosa fa il Great Firewall of China?**
 	Filtra tutto ciò che entra ed esce dallo stato e controlla ogni bit che viene scambiato all'interno del paese. Ai primordi, il Great Firewall of China si limitava a bloccare il traffico ritenuto pericoloso per il regime, mentre oggi è molto più subdolo: ogni fonte di (contro)informazione come blog indipendenti, siti esteri non graditi ed ogni tipo di contenuto che potrebbe svegliare coscienze viene semplicemente allontanato (nel senso relativistico del termine), rendendone l'accesso estremamente lento.
 51) **Cosa fanno in generale i vari firewall "nazionali" e perché?**
-	i
+	 Si occupano di controllare e filtrare il traffico internet proveniente dal proprio territorio nazionale al fine controllare il flusso dell'informazione.
 52) **Cosa si intende con "supporto di memorizzazione"? Che tipi di supporto sono stati citati? Quali caratteristiche hanno?**
 	 Un supporto di memorizzazione è un supporto sul quale è stato scritto un dato. I supporti citati sono:
 	 - pietra: supporto della durata di parecchi secoli (e.g., Stele di Rosetta);
@@ -175,7 +175,7 @@
 54) **Cos'è il MTBF?**
 	L'MTBF (Mean Time Between Failures) è una misura indiretta (probabilistica) della durata dell'informazione contenuta all'interno di un supporto di memoria. Questo parametro viene misurato e dichiarato dai costruttori degli storage device.
 55) **Cosa rende un dato "immortale"?**
-	La tecnologia RAID (Redundant Array of Inexpensive Disks), se viene gestita correttamente, cioè cambiando i dischi proattivamente, permette alle informazioni in essa contenute di essere disponibili indefinitamente.
+	Un dato rimane vivo fin quando è possibile leggerlo. In caso di dati digitali, l'immortalità è ottenuta sfruttando il concetto di ridondanza. La tecnologia RAID (Redundant Array of Inexpensive Disks), se viene gestita correttamente, cioè cambiando i dischi proattivamente, permette alle informazioni in essa contenute di essere disponibili indefinitamente.
 56) **Cosa si intende con "ridondanza"?**
 	Ogni storage device prima o poi smette di funzionare ma è possibile prevedere la decadenza di tali dispositivi e difendersi con la ridondanza. Si tratta di tecniche di mirroring, cioè di copia di dati in tempo reale, che proteggono dal fallimento di una periferica. Una tecnica è il RAID. Esistono analoghe tecniche che però si applicano a gruppi di computer in rete (veloce) tra di loro.
 57) **Cos'è il RAID?**
@@ -196,13 +196,13 @@
 63) **Cosa registra un "log" di un router?**
 	Normalmente un log di un router registra orario (al millisecondo), indirizzo IP del mittente e del destinatario e altre informazioni di contorno. Se il router ha a disposizione lo spazio di archiviazione necessario, può anche essere in grado di registrare il contenuto di ogni pacchetto e non solo i metadati.
 64) **Locard digitale è più efficace che nel mondo analogico? Se sì perché?**
-	 Ogni pacchetto che un utente immette sulla Rete lascia queste tracce, quindi ogni volta che chiunque naviga in rete, anche solo consultando siti web, sta lasciando una traccia, ben chiara e indelebile. Ed ecco che il principio di scambio di Locard diventa un meccanismo più aﬀidabile nel contesto digitale che in quello fisico.
+	 Ogni pacchetto che un utente immette sulla Rete lascia tracce (tramite metadati o dati trasmessi in chiaro), quindi ogni volta che chiunque naviga in rete, anche solo consultando siti web, sta lasciando una traccia, ben chiara e indelebile. Ed ecco che il principio di scambio di Locard diventa un meccanismo più aﬀidabile nel contesto digitale che in quello fisico.
 65) **Cos'è un "dato"?**
-	 Un dato è poco più di una sequenza di simboli cui è attribuibile un significato, se ne viene specificato anche il formato. Una sequenza di simboli non porterà informazione fino a che non le verrà associato un formato e un interprete.
+	 Un dato è poco più di una sequenza di simboli cui è attribuibile un significato, se ne viene specificato anche il formato ed un interprete.
 66) **Cos'è una "informazione"?**
 	 Un'informazione è un dato a cui è stato associato un formato ed un interprete.
 67) **Cosa si intende con "semantica"? (qual è la semantica di "semantica"?)**
-	Si intende il significato.
+	Si intende il significato attribuito ad un determinato termine o immagine.
 68) **Cos'è una Macchina di Turing? Qual è il suo scopo/funzione?**
 	La Macchina di Turing è un artificio matematico creato da Alan Turing negli anni $'30$ del Novecento. Serve a ragionare formalmente sui linguaggi e sugli interpreti, potendo stabilire regole di composizione, teoremi di equivalenza e altre proprietà. Si tratta di una macchina ideale, composta da:
 	- uno o più nastri di lavoro su cui possono essere scritti simboli da un alfabeto arbitrario;
@@ -215,59 +215,64 @@
 		 - una scrittura sul nastro;
 		 - uno spostamento del cursore (aggiornamento program counter).
 	 I simboli presenti sul nastro determinano il comportamento della MdT. Inoltre, la stessa sequenza di simboli scatena comportamenti diversi se letta da MdT diverse. 
-1) **La semantica di un dato è inequivocabile?**
+69) **La semantica di un dato è inequivocabile?**
 	 Decisamente no. Ad esempio, per i log esistono formati standard e ormai assodati, ma nessuno obbliga ad aderirvi. Per altri tipi di dato la situazione potrebbe essere anche peggio, potremmo avere sottomano dati parziali o che non seguono alcun formato noto. Infatti, trovare una traccia digitale non implica poterle attribuire un significato univoco.
 70) **Cosa si intende con "traccia digitale"?**
-	i
+	 La traccia digitale è l’equivalente della prova nel mondo digitale ed infatti sono tali in sede investigativa e processuale. Il problema però è l’estrema forgiabilità del dato che compone la traccia digitale
 71) **Come posso capire chi ha "scritto" un bit/byte/stream?**
 	 Non posso, un bit è il simbolo più piccolo immaginabile e non può portare alcuna informazione ulteriore rispetto al suo stato: $1$ o $0$. Benchè informazioni come l'autore di un file, data di creazione, ecc. sono contenute nel file stesso, sono a loro volta sequenze di bit di cui non possiamo sapere a loro volta autore, data di creazione, ecc.
 72) **Cosa si intende con metadati?**
-	 I metadati forniscono informazioni sull'origine, la struttura e altre caratteristiche dei dati.
+	 I metadati sono dati che forniscono informazioni su altri dati. In altre parole, sono descrizioni o informazioni aggiuntive che spiegano, interpretano o forniscono contesto ai dati principali. I metadati possono includere varie informazioni, come la data di creazione di un file, l'autore, la dimensione del file, il formato di file e altre informazioni rilevanti.
 73) **Cos'è il "forging"?**
 	 Termine tecnico informatico che usa la metafora della forgia metallurgica per indicare un dato creabile alla bisogna e secondo la forma desiderata.
 74) **Un dato digitale è forgiabile?**
 	 È veramente banale creare una traccia digitale che rappresenti un log valido indistinguibile da uno effettivamente generato da un comportamento in rete di una persona.
 75) **Che "trust" posso dare ad un log raccolto come prova giudiziale? Come posso aumentare il "trust"?**
-	i
+	 Quasi nessuno vista l’alta forgiabilità di un dato e l’estrema difficoltà nel provarne l’originalità o meno. Per aumentare il trust è necessario fare affidamento a tecniche di pubblicazione di log che prevedono la certificazione da parte di terze parti fidate.
 76) **Cos'è un "log certificato"?**
 	 Un log certificato è un log datato e depositato presso terzi fidati o distribuiti con tecniche simil-blockchain. Nel caso delle blockchain, ci si affida al consenso di un gran numero di terzi che devono colludere per forgiare un dato.
 77) **Cosa si intende con "data retention"? Come si articola nei vari paesi?**
-	 
+	 Si tratta del processo attraverso il quale molti governi, nel desiderio di controllare i propri cittadini e con la scusa della lotta al terrorismo, col passare degli anni hanno cercato, spesso riuscendoci, di allungare a dismisura i tempi di conservazione dei dati di raccolti in massa. La direttiva Europea del $2006$ fissa la conservazione da minimo sei mesi fino ad un massimo di $24$ (derogabile dagli stati membri). In Italia, nel $2017$ l'obbligo venne prolungato fino a settantadue mesi.
 78) **Cosa si intende con "profilazione" (a livello di rete)?**
-	i
-79) **Cosa si intende con "sorveglianza anticrimine" (a livello di rete)?**
-	i
+	 La profilazione a livello di rete si riferisce al processo di analisi e identificazione dei modelli di traffico e comportamenti degli utenti all'interno di una rete. Questo coinvolge la raccolta e l'analisi di dati relativi al traffico di rete, al fine di classificare e comprendere le attività degli utenti, le applicazioni utilizzate e altri aspetti rilevanti.
+1) **Cosa si intende con "sorveglianza anticrimine" (a livello di rete)?**
+	 Con sorveglianza anticrimine si intende il monitoraggio delle azioni in Rete di gruppi circoscritti di persone attenzionate dalle forze dell'ordine. Questi soggetti potrebbero non aver ancora commesso reati, ma sono stati associati ad azioni criminali e vengono sorvegliati per conoscere con anticipo eventuali mosse a danno della società.
 80) **Cosa si intende con "pre-crime"?**
-	i
+	 Si intende la pretesa di prevedere le intenzioni ed i comportamenti delle persone sulla base di alcune loro azioni, pensieri espressi sui social, movimenti sul territorio e così via.
 81) **A cosa si riferisce il termine "DataGate"?**
 	DataGate è il nome con il quale alcune testate giornalistiche definiscono la serie di notizie che rivelano i dettagli relativi ad alcune operazioni di sorveglianza di massa messe in atto dalla NSA con la collaborazione attiva di agenzie di intelligence che fanno parte della rete Five Eyes.
 82) **Chi è NSA?**
-	La NSA (National Security Agency) è una agenzia di intelligence del Dipartimento della Difesa USA ed è responsabile del monitoraggio, raccolta ed elaborazioen di dati ed informazioni. Ad essa è anche affidata la protezione delle reti informatiche e di comunicazione degli USA.
+	La NSA (National Security Agency) è una agenzia di intelligence del Dipartimento della Difesa USA ed è responsabile del monitoraggio, raccolta ed elaborazione di dati ed informazioni. Ad essa è anche affidata la protezione delle reti informatiche e di comunicazione degli USA.
 83) **Chi sono i Five Eyes?**
-	Alleanza di agenzie di spionaggio anglofone che comprende le aziende di intelligence di Australia, Canada, Nuova Zelanda, UK e USA, stati i quali aderiscono al trattato UKUSA.
+	Alleanza di agenzie di spionaggio anglofone che comprende le aziende di intelligence di Australia, Canada, Nuova Zelanda, UK e USA, stati i quali aderiscono al trattato UKUSA. Secondo quanto rivelato a seguito del DataGate, i Five Eyes spiano cittadini di altri paese e condividono tra loro le informazioni raccolte al fine di eludere le normative nazionali in merito alla sorveglianza dei propri cittadini.
 84) **Che tipi di dati ha raccolto (e raccoglie tuttora) la NSA?**
-	Lo scopo principale della raccolta massiva di dati è quello di immagazzinare tutte le registrazioni telefoniche (e le comunicazioni in Internet) in un posto che ne consenta la ricerca e l'analisi in ogni momento.
+	Lo scopo principale della raccolta massiva di dati è quello di immagazzinare tutte le registrazioni telefoniche (e le comunicazioni in Internet) di oltre un miliardo di persone in tutto il mondo in un posto che ne consenta la ricerca e l'analisi in ogni momento, al fine di fornire al governo statunitense vantaggi strategici, militari, economici e politici.
 85) **Chi è Edward Snowden?**
-	Esperto informatico che nel $2006$ iniziò a collaborare con l CIA e considerato il maggior esperto di cyber-sicurezza locale nel $2007$. Dal $2008$ cominciò a comprendere che 
+	Esperto informatico che nel $2006$ iniziò a collaborare con la CIA e considerato il maggior esperto di cyber-sicurezza locale nel $2007$. Dal $2008$ cominciò a comprendere che che il ruolo del governo USA nel mondo non era quello nel quale gli avevano insegnato a credere. Nel $2009$ Snowden iniziò una nuova collaborazione con la NSA alle dipendenze di Dell Corporation che gestiva i sistemi informatici di diverse agenzie governative: in questo nuovo ruolo riuscì ad ottenere credenziali avanzate che gli consentirono di accedere ad informazioni con un livello di segretezza ancora maggiore. Fu negli uﬀici CIA del Maryland che Snowden verificò direttamente quanto fosse esteso e profondo il programma di sorveglianza globale messo in atto da NSA, mediante un accumulo tale di dati da determinare l’eliminazione di qualsiasi forma di riservatezza a livello mondiale. Quando nel $2012$ Snowden venne assegnato all’uﬀicio Dell nelle Hawaii come responsabile tecnologico della NSA riuscì ad ottenere le credenziali per accedere agli ultimi documenti prima di rendere pubblica a tutto il mondo l’intera vicenda. Nel Gennaio del $2013$ Snowden riuscì a mettersi in contatto con Glenn Greenwald per rivelare ciò che sapeva, supportato dai molti documenti che egli aveva nel frattempo trafugato. Nel Maggio $2013$ Snowden prese alcuni giorni di ferie raccontando ai suoi supervisori che stava tornando in continente per un trattamento dell’epilessia, ma lasciò le Hawaii per Hong Kong. Nel $2013$, i giudici federali degli Stati Uniti accusarono Snowden di furto di proprietà governative e due violazioni del “Espionage Act”.
 86) **Chi è Glenn Greenwald?**
 	Inizialmente avvocato per casi di diritti civili, diede vita nel $2005$ al proprio blog dedicato ad articoli di giornalismo investigativo. Editorista per The Guardian con il quale Edward Snowden prese contatto nel $2013$ per rivelare ciò che sapeva. Si era distinto per il proprio lavoro in merito ad alcune inchieste su programmi di sorveglianza globale. Pubblicò nel primo articolo sul DataGate alcuni documenti trafugati da Snowden riguardo a come la NSA stesse raccogliendo i tabulati telefonici di milioni di clienti Verizon. Queste rivelazioni continuarono per tutto il $2013$ e valsero a The Guardian e a The Washington Post il premio Pulitzer per il servizio pubblico nel $2014$.
 87) **Chi è Laura Poitras?**
 	Documentarista statunitense che ha intermediato tra Glenn Greenwald ed Edward Snowden. Si era distinta per il proprio lavoro in merito ad alcune inchieste su programmi di sorveglianza globale.
 88) **Come funzionano gli accordi fra le agenzie dei Five Eyes? A cosa servono?**
-	i
+	 Le agenzie dei Five Eyes aderiscono al trattato UKUSA per la cooperazione in operazioni di SIGINT (SIGnal INTelligence, attività di raccolta di informazioni mediante l'intercettazione e analisi di segnali, sia emessi tra persone sia tra macchine). Queste agenzie hanno condiviso tra loro le informazioni raccolte al fine di eludere le normative nazionali in merito alla sorveglianza dei propri cittadini.
 89) **Quante persone (ordine di grandezza) vengono "osservate" dai Five Eyes?**
-	i
+	 Nell'ordine dei miliardi.
 90) **Quali aziende sono state coinvolte in PRISM?**
-	i
+	 Microsoft, Yahoo, Google, Facebook, AOL, Skype, Youtube e Apple.
 91) **Parla di qualche programma di spionaggio svelato dal DataGate.**
-	i
-92) **Cos'è il "boomerang routing"? Perché viene applicato?**
-	i
+	- PRISM: raccolta del contenuto delle comunicazioni e dei documenti direttamente dai server dei maggiori fornitori di servizi statunitensi;
+	- MUSCULAR: analogo a PRISM, raccolta dei dati intercettando i dati non crittografati in transito tra i data center distribuiti di Yahoo e di Google;
+	- TEMPORA: intercettazione e raccolta in territorio britannico e in oceano dei cavi in fibra ottica, per ottenere accesso massivo e indiscriminato ad un enorme quantità di dati personali.
+1) **Cos'è il "boomerang routing"? Perché viene applicato?**
+	 Il boomerang routing è la capacità di far transitare il traffico internet su nodi sorvegliati, manipolando le rotte di comunicazione. Viene applicato così che le agenzie di spionaggio siano in grado di far transitare i dati negli USA anche se origine e destinazione delle trasmissione sono in paesi esteri: in questo modo l'intercettazione è soggetta alle leggi statunitensi.
 93) **Cita e descrivi qualche programma di spionaggio/indicizzazione messo in atto da FiveEyes.**
-	i
+	- Xkeyscore, sistema di ricerca e recupero dati composto da una serie di interfacce utente per interrogare tutti i dati raccolti attraverso gli altri programmi di sorveglianza.
 94) **Quali attacchi (legal-politici, tecnici) alla crittografia sono stati portati nel corso degli anni?**
-	i
-95) **Cos'è ECHELON?**
+	 La crittografia è da sempre considerata come un ostacolo alla capacità di raccogliere e analizzare ciò che viene trasmesso su Internet. Già dalla sua prima versione, il protocollo IP avrebbe potuto contenere una crittografia end to end ma ciò fu impedito per il semplice fatto che fino al ‘96 l’utilizzo di crittografia e la crittografia stessa erano considerati strumento militare.
+	 Al giorno d’oggi invece si cerca di porre limiti all’utilizzo della crittografia "addossando la colpa” di traffico illegale e portando quindi l'opinione pubblica a pensare che in qualche modo, se la crittografia non esistesse, tale materiale non verrebbe diffuso piuttosto che invece operare direttamente sui reati alla base della generazione del suddetto materiale. Gli attacchi tecnici sono:
+	 - TURMOIL: azioni sotto copertura per controllare gli standard crittografici da parte degli organi preposti, compromissione delle chiavi attraverso attacchi brute force nei confronti di software che usano algoritmi appositamente indeboliti, inserimento di [[Sicurezza dei Sistemi e delle Reti |backdoors]] nel software crittografico;
+	- BULLRUN: serie di misure per ottenere la compromissione della crittografia, incluso l'utilizzo di intrusione remota delle reti per ottenere chiavi crittografiche, indebolimento degli standard di crittografia e inserimento di backdoor negli stessi.
+96) **Cos'è ECHELON?**
 	ECHELON è il capostipite dei sistemi di sorveglianza globale. Venne rivelato per la prima volta nel $1971$ da un analista dell'NSA. Il programma venne creato alla fine degli anni $60$ per monitorare le comunicazioni militari e diplomatiche dell'Unione Sovietica ed i suoi alleati del blocco di Varsavia durante la guerra fredda.
 96) **A quali vantaggi puntano i programmi di spionaggio dei FiveEyes (e USA in particolare)?**
 	i
