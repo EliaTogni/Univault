@@ -328,11 +328,11 @@
 118) **Come si tenta di proteggere l'anonimato in GNUnet?**
 	i
 119) **Cos'è GNS (GNU Naming System) e in cosa differisce da DNS?**
-	i
+	 GNS è il corrispettivo della GNUnet di DNS il quale non si basa su una gerarchia centralizzata ma su una architettura decentralizzata, in cui la validità dei nomi è garantita dalla firma crittografica di chi gestisce quello spazio di nomi (una zona).
 120) **Cos'è Secushare?**
 	 Secushare è un progetto che, utilizzando GNUnet per la crittografia end-to-end e l'instradamento anonimo delle comunicazioni, aggiunge un nuovo protocollo di trasmissione dei dati al fine di creare un grafo sociale distribuito, senza cioè necessità di server centralizzati per l'immagazzinamento e lo smistamento delle informazioni. Assieme, queste tecnologie consentono applicazioni distribuite e sicure per email, chat, scambio di contenuti e documenti web e potrebbe essere utilizzata anche come mezzo di comunicazione sicuro per l'Internet of Things. Secushare è ancora in fase di sviluppo e non è ancora disponibile un prototipo.
 121) **Cos'è Next Generation Internet?**
-	i
+	 NGI è un’iniziativa della Commissione europea avviata nel $2018$ che ha l’obiettivo di rimodellare internet in modo tale che soddisfi le esigenze delle persone di cui è al servizio. In quanto iniziativa al servizio delle persone, mira alla realizzazione di tecnologie che rispondono ai bisogni delle persone in termini di privacy, fiducia, trasparenza, sicurezza e inclusività.
 
 ----------------------------------------------------------------
 
