@@ -58,6 +58,7 @@
 	I retisti definiscono generalmente la distanza, declinata in termini spaziali e temporali, tra due nodi di una rete come:
 	• numero di salti/hop tra i due nodi;
 	• tempo di percorrenza di pacchetti speciali (ICMP - Internet Control Message Protocol - echo request) che vengono inviati e di cui si misura il tempo di ritorno, il cosiddetto ping time.
+	Tuttavia occorre considerare anche diverse distorsioni come il cambiamento istantaneo di alcune rotte o il tempo di attesa all’interno delle code dei router intermedi rendendo quindi il concetto di distanza qualcosa di impossibile da misurare stabilmente.
 11) **Cos'è un "ping"? (e "ping time", con che ordini di grandezza?)**
 	Pacchetti speciali (ICMP - Internet Control Message Protocol - echo request) che vengono inviati e di cui si misura il tempo di ritorno, il cosiddetto ping time, per valutare la distanza tra due nodi nella rete.
 12) **Cos'è un "hop"?**
@@ -65,15 +66,15 @@
 13) **Cos'è il "traceroute"?**
 	E' uno strumento che combina la funzionalità del 'ping' con la possibilità di tenere traccia della rotta seguita dal flusso di pacchetti al fine di tracciare una rotta tra due nodi della rete e di misurarne il tempo.
 14) **Come viene declinata in rete la frase di Orwell "Tutti gli animali sono uguali, ma alcuni sono più uguali degli altri"?**
-	
+	 “Tutti i pacchetti sono uguale, ma alcuni sono più uguali degli altri”, nel senso che i pacchetti non vengono trattati tutti allo stesso modo ma è possibile applicare rotte diverse a flussi diversi basandosi sulla funzione di routing applicata.
 15) **Da cosa dipende la "funzione di routing"?**
-	La funzione di routing è una funzone che permette di capire quali sono i fattori che entrano in gioco nella decisione sulla strada che deve percorrere un pacchetto. La strada (intesa appunto come sequenza di nodi da attraversare) prevista per un pacchetto $p$ all'istante $t$ è una funzione $strada(t, p, contorno)$. La decisione avviene quindi in base al quando, al cosa ed a qualche fattore esterno che si vuole utilizzare per decidere. Il quando può far riferimento al giorno della settimana o all'orario attuale. Il cosa si riferisce ad informazioni contenute nel pacchetto $p$ stesso (i dati ed i metadati). Il contorno può essere la situazione di congestione di traffico sui nodi della rete adiacenti.
+	La funzione di routing è una funzone che permette di capire quali sono i fattori che entrano in gioco nella decisione sulla strada che deve percorrere un pacchetto. La strada (intesa appunto come sequenza di nodi da attraversare) prevista per un pacchetto $p$ all'istante $t$ è una funzione $strada(t, p, contorno)$. La decisione avviene quindi in base al quando, al cosa ed a qualche fattore esterno che si vuole utilizzare per decidere. Il quando può far riferimento al giorno della settimana o all'orario attuale. Il cosa si riferisce ad informazioni contenute nel pacchetto $p$ stesso (i dati ed i metadati). Il contorno è l'insieme di informazioni non direttamente legate a ciò che viene trasmesso. Può comprendere ad esempio la situazione di congestione di traffico sui nodi della rete adiacenti.
 16) **Un pacchetto in rete ha un "autore"? Se sì, in che senso?**
 	Un pacchetto in rete ha un "autore", inteso come l'indirizzo sorgente (o mittente), cioè l'indirizzo che descrive da dove arriva (o da dove dichiara di arrivare) l'informazione.
 17) **E' possibile decidere il routing di una sequenza di pacchetti in base alle convinzioni politiche del soggetto che genera il traffico? (argomentare)**
-	
+	 Sì, qualsiasi informazione contenuta in una tabella di routing può essere oggetto della definizione di una determinata policy, potendo, ad esempio, decidere di privilegiare determinati servizi oppure, noto l’indirizzo di destinazione, parametrizzare con tempistiche infinite le trasmissioni verso siti (ad esempio siti “ostili” a un determinato governo, come avviene in Cina).
 18) **Quali metadati contiene un pacchetto IP?**
-	- TTL (Time To Live): un contatore che viene decrementato ogni volta che il pacchetto passa da un router, quando il contatore va a 0 il pacchetto viene scartato e muore;
+	- TTL (Time To Live): un contatore che viene decrementato ogni volta che il pacchetto passa da un router, quando il contatore va a $0$ il pacchetto viene scartato e muore;
 	- Protocol: tipo di protocollo, informazione che aiuta chi riceve il flusso di dati a capirne la semantica;
 	- Checksum: valore di controllo per capire se il pacchetto è integro;
 	- Source IP Address: indirizzo sorgente (mittente), il ricevente di un flusso dati sa da dove arriva (o dichiara di arrivare) l’informazione;
@@ -82,7 +83,7 @@
 	- Length: lunghezza, altro dato di controllo;
 	- Sequence number: numero di sequenza, quando un flusso dati generico deve essere ordinato (ad esempio i frame di un video che non devono essere visualizzati in ordine sbagliato) il numero di sequenza permette la flessibilità di inviare pacchetti senza preoccuparsi troppo della strada che faranno perché lato ricezione sarà suﬀiciente memorizzarli temporaneamente per poterli riordinare prima di presentarli all’utente.
 19) **Cos'è il Time To Live? Perché ci può interessare in CDT?**
-	TTL (Time To Live): un contatore che viene decrementato ogni volta che il pacchetto passa da un router, quando il contatore va a 0 il pacchetto viene scartato e muore. Ci può interessare perchè modificando un TTL rendendolo elevato fa sì che il pacchetto possa andare lontano, cioè raggiungere destinazioni a molti hop di distanza. Se, invece, si modifica (tipicamente abbassandolo) il TTL si rende un pacchetto meno longevo e lo si confina ad un raggio d’azione limitato superiormente.
+	TTL (Time To Live): un contatore che viene decrementato ogni volta che il pacchetto passa da un router, quando il contatore va a 0 il pacchetto viene scartato e muore. Ci può interessare perchè la modifica di un TTL rendendolo elevato fa sì che il pacchetto possa andare lontano, cioè raggiungere destinazioni a molti hop di distanza. Se, invece, si modifica (tipicamente abbassandolo) il TTL si rende un pacchetto meno longevo e lo si confina ad un raggio d’azione limitato superiormente, impendendo anche che il pacchetto stesso possa raggiungere la destinazione prefissata.
 20) **Cosa si intende con "mittente" o "destinatario" di un flusso di pacchetti?**
 	Il mittente è l'indirizzo sorgente del pacchetto o del flusso di pacchetti, cioè l'indirizzo IP da cui il flusso arriva (o dichiara di arrivare). Allo stesso modo, il destinatario è l'indirizzo di destinazione del pacchetto o del flusso di pacchetti.
 21) **Cos'è una "porta"?**
@@ -94,7 +95,7 @@
 24) **Cos'è un "Man-In-The-Middle attack"?**
 	Il Man-In-The-Middle attack è una tecnica di hacking in cui un attaccante si colloca tra due parti che stanno comunicando, intercettando o addirittura manipolando la comunicazione tra di esse senza che né la parte mittente né la parte ricevente ne siano consapevoli. Un router potrebbe tranquillamente modificare un pacchetto prima di ruotarlo.
 25) **Cos'è la "Deep Packet Inspection"? E' sempre possibile/facile?**
-	La deep packet inspection (DPI, ispezione profonda dei pacchetti), che prevede l’analisi non solo dei metadati ma anche del contenuto (tenendo perfino una traccia storica) dei pacchetti che vengono instradati. Con la DPI è possibile controllare ogni aspetto di tutta l’informazione veicolata su Internet, consentendo quindi - tipicamente ai governi e alle aziende che gestiscono la Rete - di esercitare il controllo sistematico del contenuto delle comunicazioni su intere zone di Internet e di conseguenza decidere cosa può essere comunicato, chi può comunicare e chi può ricevere la comunicazione.
+	La Deep Packet Inspection (DPI, ispezione profonda dei pacchetti), che prevede l’analisi non solo dei metadati ma anche del contenuto (tenendo perfino una traccia storica) dei pacchetti che vengono instradati. Con la DPI è possibile controllare ogni aspetto di tutta l’informazione veicolata su Internet, consentendo quindi - tipicamente ai governi e alle aziende che gestiscono la Rete - di esercitare il controllo sistematico del contenuto delle comunicazioni su intere zone di Internet e di conseguenza decidere cosa può essere comunicato, chi può comunicare e chi può ricevere la comunicazione. Si tratta, tuttavia, di un'operazione non sempre possibile se la crittografia dei pacchetti risulta robusta, ma facile in casi in cui di reti in cui il traffico crittografato è bandito.
 26) **Cosa si intende con "crittografia"? Sai citare qualche tipo di crittografia nota?**
 	La crittografia è la pratica e lo studio delle tecniche utilizzate per rendere sicure le comunicazioni e proteggere l'accesso non autorizzato alle informazioni. Coinvolge la trasformazione dei dati in modo che possano essere compresi solo da coloro che sono autorizzati a farlo. Ci sono diversi tipi di crittografia, ma è possibile dividerli principalmente in due categorie, simmetrica e asimmetrica:
 	1) **crittografia simmetrica:** utilizza una chiave segreta condivisa tra mittente e destinatario per cifrare e decifrare i dati. Un esempio noto di algoritmo di crittografia simmetrica è l'AES (Advanced Encryption Standard).
@@ -102,23 +103,23 @@
 27) **Cos'è un indirizzo IP? Che tipi esistono?**
 	L'indirizzo IP è un identificativo univoco di un nodo, un computer. La sua forma (in IPv$4$) è una sequenza di $4$ numeri, ognuno tra $0$ e $255$, separata dal carattere `.` (e.g., $192.168.39.12$ identifica il nodo $12$ della sottorete $39$ dellta sottorete $168$ della sottorete $192$ della rete complessiva). Alcuni indirizzi IP hanno significati speciali come $127.0.0.1$, il quale indentifica sempre il nodo su cui ci si trova, oppure il numero $255$ (broadcast), che identifica tutti i nodi di una sottorete (e.g., $192.168.1.255$). Ogni nodo di una rete può, in teoria, autoassegnarsi un indirizzo ma, dato che l'univocità è una caratteristica fondamentale per non avere conflitti, solitamente gli indirizzi vengono assegnati da un'autorità centrale (relativamente ad una sottorete), la quale tiene traccia degli assegnamenti per non creare duplicati. Un altro tipo di indirizzo IP è IPv$6$.
 28) **Cosa si intende con "la rete è relativistica"?**
-	Si è attribuito alla Rete caratteristiche relativistiche, usando come metafora la relatività einsteniana: ogni utente Internet è un osservatore immerso in un universo in evoluzione, ma lo stato generale di questo universo non è identicamente conoscibile da tutti gli osservatori poichè la propagazione delle informazioni è ben lungi dall'essere istantanea ed integrale.
+	Si è attribuito alla Rete caratteristiche relativistiche, usando come metafora la relatività einsteniana: ogni utente Internet è un osservatore immerso in un universo in evoluzione, ma lo stato generale di questo universo non è identicamente conoscibile da tutti gli osservatori poichè la propagazione delle informazioni è ben lungi dall'essere istantanea ed integrale, ad esempio a causa di filtri DNS o firewall.
 29) **In che senso la rete "non è un universo euclideo"?**
 	Nel senso che le regole geometriche non sono completamente note, variano nel tempo e sono sotto il controllo di poche entità: i gestori delle reti. Ad esempio, i concetti di distanza non rispettano i principi euclidei. Ad esempio, la distanza fra i punti $A$ e $B$ è diversa dalla distanza fra $B$ e $A$.
 30) **Cos'è un URL? In cosa differisce da un indirizzo IP?**
-	Un URL (Uniform Resource Locator) è un meccanismo standardizzato per identificare una risorsa (un documento, una foto, un video) in rete specificando dove si trova (sito, nodo della rete).
+	Un URL (Uniform Resource Locator) è un meccanismo standardizzato per identificare una risorsa (un documento, una foto, un video) in rete specificando dove si trova (sito, nodo della rete). Un URL è composto da, protocollo utilizzato, sito da contattare, directory che contiene il documento e documento stesso.
 31) **Cosa fa un motore di ricerca?**
-	Si tratta di un servizio che conosce buona parte dei contenuti di rete e che quindi sa dire dove si trova un particolare contenuto. Un motore di ricerca sfrutta un enorme database contenente le informazioni in rete come mappa $contenuto \to URL$.
+	Si tratta di un servizio che conosce buona parte dei contenuti di rete e che quindi sa dire dove si trova un particolare contenuto. Un motore di ricerca sfrutta un enorme database contenente le informazioni in rete come mappa $contenuto \to URL$. Ricevendo in ingresso una query contenente dei termini della ricerca, il MdR restituisce l'elenco delle pagine (URL) che contengono quei documenti.
 32) **Un URL viene "risolto" sempre allo stesso modo da qualunque DNS?**
-	No, poichè alcuni siti sono banditi su alcuni territori (ad esempio il server di scambio peer-to-peer btmon.com in Italia). Di conseguenza, ogni singolo provider sul territorio è costretto a fornire un indirizzo sbagliato di proposito a fronte di una richiesta DNS.
+	No, poichè alcuni siti sono banditi su alcuni territori (ad esempio il server di scambio peer-to-peer btmon.com in Italia). Di conseguenza, ogni singolo provider sul territorio è costretto a fornire un indirizzo sbagliato di proposito a fronte di una richiesta DNS. Inoltre, ad un URL possono essere associati diversi indirizzi IP.
 33) **Una volta che ottengo l'IP di un indirizzo simbolico, riesco sempre a raggiungere il nodo? Sempre lo stesso univocamente?**
-	No. Lo strumento firewall permette la risoluzione di un URL illecito che poi però non viene raggiunto.
+	No. Il nodo finale potrebbe essere offline oppure la richiesta potrebbe impiegare troppo tempo e risultare in un errore di timeout. Un'altra casistica comprende l'utilizzo delòo strumento firewall, il quale permette la risoluzione di un URL illecito che poi però non viene raggiunto.
 34) **Cos'è `dig`? (o nslookup, ecc)**
-	Dig è uno strumento per interrogare il sistema DNS. Usandolo, è possibile effettuare delle richieste al NDS per sapere l'indirizzo IP di un nodo della Rete, conoscendo il suo nome simbolico.
+	Dig è uno strumento per interrogare il sistema DNS. Usandolo, è possibile effettuare delle richieste al DNS per sapere l'indirizzo IP di un nodo della Rete, conoscendo il suo nome simbolico.
 35) **Cosa si intende con "sito oscurato" (mediante decisione legale)? (filtro DNS)**
-	Si intende un sito per il quale ogni singolo provider del territorio in cui quel sito è stato dichiarato illegale fornisce un indirizzo sbagliato di proposito a fronte di una richiesta DNS. Un esempio è il server di scambi peer-to-peer btmon.com in Italia.
+	Si intende un sito per il quale ogni singolo provider del territorio in cui quel sito è stato dichiarato illegale fornisce un indirizzo sbagliato di proposito (o reindirizzamento ad una pagina statica) a fronte di una richiesta DNS. Un esempio è il server di scambi peer-to-peer btmon.com in Italia.
 36) **Cos'è Tor? Come funziona? Cosa c'entrano le cipolle?**
-	i
+	 Si tratta della più famosa rete anonimizzante. Il nome è l'acronimo di The Onion Router, il quale evidenzia la sua principale caratteristica di rete a cipolla. Ha lo scopo di proteggere la riservatezza e la libertà degli utenti, consentendo loro di navigare sul web sfruttando una rete di copertura composta da migliaia di nodi di instradamento: ad ogni passaggio, i pacchetti vengono incapsulati in modo tale da nascondere, crittografandoli, i dati sensibili della comunicazione e garantendo che, una volta raggiunta Internet, non sia possibile rilevare la reale ubicazione dell'utente o effettuare l'analisi del traffico. La consegna finale dei pacchetti al nodo di destinazione su Internet è effettuata da speciali nodi Tor chiamati exit node.
 37) **Cos'è un "proxy"?**
 	Un proxy è un servizio/device che accetta connessioni per conto di terzi: esso si trova in un qualche punto della rete ed attende richieste (ad esempio l'apertura di un URL http) da parte di altri device. Quando il proxy ne riceve una, la effettua restituendo il contenuto ottenuto al richiedente originale. L'effetto pratico è che la connessione effettiva avviene dal luogo dove si trova il proxy e non da quello del richiedente originale.
 38) **Cos'è "whois"?**
@@ -128,7 +129,7 @@
 40) **Fai qualche esempio notevole di sottoreti quasi certamente "molto relativistiche" (in cui ci sono molte "ombre/buchi/ecc").**
 	i
 41) **Differenze fra "whitelist" e "blacklist"?**
-	Con whitelist si fa riferimento al meccanismo che impedisce l'accesso a tutto tranne ciò che è presente in questa lista. Il meccanismo simmetrico, la blacklist, permette l'accesso a tutto tranne a ciò che è presente in lista.
+	Le liste "whitelist" e "blacklist" sono concetti utilizzati per controllare l'accesso o l'ammissione a determinati elementi o servizi. Con whitelist si fa riferimento al meccanismo che impedisce l'accesso a tutto tranne ciò che è presente in questa lista. Il meccanismo simmetrico, la blacklist, permette l'accesso a tutto tranne a ciò che è presente in lista.
 42) **Cosa si intende con "velocità di trasmissione" in Internet? Da cosa è influenzata?**
 	i
 43) **Differenze fra ADSL, VDSL, FIBRA, ecc.**
@@ -219,19 +220,19 @@
 70) **Cosa si intende con "traccia digitale"?**
 	i
 71) **Come posso capire chi ha "scritto" un bit/byte/stream?**
-	i
+	 Non posso, un bit è il simbolo più piccolo immaginabile e non può portare alcuna informazione ulteriore rispetto al suo stato: $1$ o $0$. Benchè informazioni come l'autore di un file, data di creazione, ecc. sono contenute nel file stesso, sono a loro volta sequenze di bit di cui non possiamo sapere a loro volta autore, data di creazione, ecc.
 72) **Cosa si intende con metadati?**
-	i
+	 I metadati forniscono informazioni sull'origine, la struttura e altre caratteristiche dei dati.
 73) **Cos'è il "forging"?**
-	i
+	 Termine tecnico informatico che usa la metafora della forgia metallurgica per indicare un dato creabile alla bisogna e secondo la forma desiderata.
 74) **Un dato digitale è forgiabile?**
-	i
+	 È veramente banale creare una traccia digitale che rappresenti un log valido indistinguibile da uno effettivamente generato da un comportamento in rete di una persona.
 75) **Che "trust" posso dare ad un log raccolto come prova giudiziale? Come posso aumentare il "trust"?**
 	i
 76) **Cos'è un "log certificato"?**
-	i
+	 Un log certificato è un log datato e depositato presso terzi fidati o distribuiti con tecniche simil-blockchain. Nel caso delle blockchain, ci si affida al consenso di un gran numero di terzi che devono colludere per forgiare un dato.
 77) **Cosa si intende con "data retention"? Come si articola nei vari paesi?**
-	i
+	 
 78) **Cosa si intende con "profilazione" (a livello di rete)?**
 	i
 79) **Cosa si intende con "sorveglianza anticrimine" (a livello di rete)?**
