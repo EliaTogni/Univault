@@ -273,23 +273,23 @@
 	 - TURMOIL: azioni sotto copertura per controllare gli standard crittografici da parte degli organi preposti, compromissione delle chiavi attraverso attacchi brute force nei confronti di software che usano algoritmi appositamente indeboliti, inserimento di [[Sicurezza dei Sistemi e delle Reti |backdoors]] nel software crittografico;
 	- BULLRUN: serie di misure per ottenere la compromissione della crittografia, incluso l'utilizzo di intrusione remota delle reti per ottenere chiavi crittografiche, indebolimento degli standard di crittografia e inserimento di backdoor negli stessi.
 96) **Cos'è ECHELON?**
-	ECHELON è il capostipite dei sistemi di sorveglianza globale. Venne rivelato per la prima volta nel $1971$ da un analista dell'NSA. Il programma venne creato alla fine degli anni $60$ per monitorare le comunicazioni militari e diplomatiche dell'Unione Sovietica ed i suoi alleati del blocco di Varsavia durante la guerra fredda.
+	ECHELON è il capostipite dei sistemi di sorveglianza globale. Venne rivelato per la prima volta nel $1971$ da un analista dell'NSA. Il programma venne creato alla fine degli anni $60$ per monitorare le comunicazioni militari e diplomatiche dell'Unione Sovietica ed i suoi alleati del blocco di Varsavia durante la guerra fredda.  ECHELON era parte di un programma più ampio, Frosting, il quale aveva lo scopo di raccogliere e analizzare dati delle comunicazioni satellitari.
 96) **A quali vantaggi puntano i programmi di spionaggio dei FiveEyes (e USA in particolare)?**
-	i
+	 Puntano ad utilizzare i dati raccolti per fornire al governo USA vantaggi strategici, militari, economici e politici. La NSA scrive chiaramente che intende usare le proprie risorse “in order to gain a decision advantage for the Nation and our allies under all circumstances” (al fine di ottenere un vantaggio decisionale per la nazione e i suoi alleati in ogni circostanza). E' stato confermato da Snowden che i Five Eyes sono direttamente coinvolti in attività di spionaggio industriale per ottenere vantaggi economici.
 97) **In che senso Internet è "guasta"?**
-	i
+	 Internet è guasta perché non garantisce l’autenticità delle trasmissioni tra due nodi: infatti, una o più entità terze con sufficiente potere di controllo su alcuni nodi importanti dell arete sono in grado di intercettare, manipolare e ritrasmettere i pacchetti che transitano su Internet, in alcuni casi aggirando anche i protocolli di crittografia.
 98) **Cita qualche protocollo di rete crittografato e qualcuno in chiaro.**
-	i
+	 HTTP (HyperText Transfer Protocol) e la sua controparte crittografata (HyperText Transfer Protocol over Secure Socker Layer), ovvero lo stesso protocollo con l'aggiunta della crittografia a chiave asimmetrica dovuta prima a SSL e poi a TLS. Altri esempi sono SMTP e SMTPS oppure IMAP e IMAPS.
 99) **Nei protocolli di rete crittografati, in genere, rimane comunque una parte in chiaro? Discuti.**
-	i
+	 Su Internet l’anonimato è sostanzialmente impossibile poiché DNS, SMTP, XMPP e la stragrande maggioranza dei protocolli usati su Internet trasmettono i metadati in chiaro anche se il contenuto della comunicazione è crittografato: chi è in grado di controllare il traﬀico su Internet è in grado di conoscere in ogni istante chi sta parlando con chi.
 100) **Qual è il "peccato originale" (autenticità) di Internet? Discuti.**
-	i
+	 Internet si fonda sull'assunzione di reciproca fiducia. Quando Internet venne concepita, non era solo in chiaro di default ma anche insicura poichè è possibile modificare la provenienza o il contenuto di qualsiasi pacchetto IP. Questa è la causa fondamentale per la quale è stato necessario tentare di aggiustare i protocolli utilizzati su Internet, introducendone di nuovi per garantire l'autenticità delle trasmissioni e la riservatezza attraverso la crittografia.
 101) **Cos'è BGP?**
-	BGP (Border Gateway Protocol)
+	[[Sicurezza dei Sistemi e delle Reti |BGP]] (Border Gateway Protocol) è un protocollo di instradamento utilizzato per scambiare informazioni di instradamento tra diversi sistemi autonomi (AS) all'interno di Internet, dove gli AS sono blocchi di reti gestiti da un'unica organizzazione o fornitore di servizi Internet. BGP è un protocollo di instradamento di tipo "path vector". I router BGP scambiano informazioni di instradamento, chiamate "annunci", indicando quali reti sono raggiungibili attraverso di essi e specificando il percorso per raggiungere tali reti. Oltre a soffrire di alcuni problemi tecnici di stabilità e scalabilità, BGP consente a qualsiasi Internet Service Provider o altro ente con suﬀiciente potere di dirottare interi intervalli di indirizzi IP, consentendo l’intercettazione e la manipolazione del traﬀico prima che questo sia consegnato all’indirizzo di destinazione.
 102) **Perché la crittografia non è stata introdotta fin dall'inizio nei protocolli di "base" di Internet?**
-	i
+	 Lo studio della storia relativa alle prime fasi di sviluppo di quella che successivamente divenne Internet lascia trasparire che con tutta probabilità il protocollo IP avrebbe potuto includere la crittografia end-to-end, ma ciò fu impedito per una serie di ragioni storiche. gli inventori avrebbero proposto di introdurre una forma di crittografia end-to-end direttamente nel protocollo, garantendo almeno l’autenticità della trasmissione, se non del contenuto; Ma l’uso della crittografia fu impedito perché all’epoca questa era considerata uno strumento militare dal governo USA.
 103) **Cosa si intende con "anonimato"? E' attualmente possibile in Internet?**
-	i
+	 Con anonimato, la protezione delle informazioni in merito a chi sta comunicando con chi, per difendere il principio costituzionale di libertà di associazione in un mondo sempre più oggetto di sorveglianza globale. Su Internet l’anonimato è sostanzialmente impossibile poiché la stragrande maggioranza dei protocolli usati su Internet trasmettono i metadati in chiaro anche se il contenuto della comunicazione è crittografato.
 104) **Cos'è OONI Probe?**
 	OONI Probe è un software che permette di misurare diversi indicatori in merito allo stato della propria connessione, quali:
 	- blocco di siti web;
@@ -300,9 +300,9 @@
 	Consente anche di condividere su base volontaria i dati raccolti al fine di misurare il livello globale di censura.
 105) **Cos'è Wehe?**
 	Wehe è uno strumento di misura della relatività della Rete. Permette di verificare se il proprio ISP applichi limitazioni alla banda di specifiche applicazioni per favorirne altre, violando quindi il principio della net neutrality.
-106) Cos'è la "crittografia a chiave pubblica"? Discuti.
+106) **Cos'è la "crittografia a chiave pubblica"? Discuti.**
 	i
-107) Cos'è una "rete overlay"?
+107) **Cos'è una "rete overlay"?**
 	i
 108) **Cos'è una VPN e cosa serve?**
 	Una VPN (Virtual Private Network) è un meccanismo software che permette di creare un tunnel di rete tra il luogo in cui ci si trova ed una propria rete conosciuta. Una volta instaurato il tunnel, il computer connesso tramite VPN appare in rete come se fosse connesso alla propria rete e non a quella temporanea che fa solo da trasporto.
