@@ -325,7 +325,7 @@
 	- l'anonimato delle comunicazioni è reso possibile dal fatto che le comunicazioni tra due nodi sono nascoste nel flusso tra gli utenti, rendedo cioè indistinguibile il traffico generato da quello inoltrato per conto di altri nodi. In questo modo, nemmeno attaccanti in grado di controllare un discreto numero di nodi sarebbero in grado di ricavare la vera provenienza dei pacchetti, anche utilizzando tecniche di analisi del traffico;
 	- GNS è il corrispettivo della GNUnet di DNS il quale non si basa su una gerarchia centralizzata ma su una architettura decentralizzata, in cui la validità dei nomi è garantita dalla firma crittografica di chi gestisce quello spazio di nomi (una zona);
 	Attraverso l'applicazione di questi principi, basati su una ricerca accademica pluriennale, gli sviluppatori GNUnet sperano di poter costruire solide fondamenta per quella che sarà la Rete del futuro.
-1) **Cosa si intende con "perfect forward secrecy"?**
+115) **Cosa si intende con "perfect forward secrecy"?**
 	Si intende criteri crittografici che garantiscono che le precedenti comunicazioni non siano compromesse nel caso di una compromissione di una chiave privata.
 116) **Come viene identificato un nodo in GNUnet?**
 	L'identità di un nodo corrisponde alla propria chiave pubblica, non al proprio indirizzo IP: essere in grado di falsificare un indirizzo IP è sostanzialmente irrilevante in GNUnet.
@@ -343,49 +343,95 @@
 ----------------------------------------------------------------
 
 ## L1
-1) Quali sono i temi salienti del livello "services" dell'arcobaleno?
-1) Differenza fra servizi "analogici" e "digitali".
-2) In che senso può essere difficile l'accesso ad un servizio digitale? (quali restrizioni)
-3) Cosa deve garantire un servizio digitale ai cittadini?
-4) Cosa si intende con "digitalizzazione dei servizi"? (fare esempi di servizi "analogici" e "digitali")
-5) Cosa sono "frontend" e "backend" di un servizio?
-6) Cosa si intende con "appificazione"?
-7) Quali sono gli aspetti importanti da considerare nella digitalizzazione di un servizio?
-8) Quali vantaggi e svantaggi di un servizio digitale?
-9) Cosa si intende con "fallback" in un servizio digitale?
-10) Perché sono importanti i protocolli standard nei servizi digitali?
-11) Perché vengono usati protocolli "segreti" (non documentati) in molti ambiti dei servizi digitali?
-12) Cosa si intende con "formato" nell'ambito dei servizi digitali?
-13) Vantaggi e svantaggi dei formati standard nei servizi digitali
-14) Cosa si intende con formati standard "de iure" e "de facto"?
-15) Cos'è il "reverse engineering" e perché potrebbe essere utile nel contesto dei servizi digitali?
-16) Cos'è uno "standard 'aperto'"?
-17) Cosa si intende con "interoperabilità"?
-18) Cos'è un "broker" nel contesto dei servizi?
-19) Cos'è lo standard REST(ful)?
-20) Cosa si intende con API? perché sono utili nel contesto dei servizi digitali?
-21) Cosa si intende con "lock-in"?
-22) Fai degli esempi di "lock-in".
-23) Cosa si intende con "esportazione dei dati"? Perché è utile?
-24) Cosa si intende con "scalabilità" nei servizi digitali?
-25) Cos'è l'effetto "slashdot"?
-26) Cosa si intende con "sicurezza" nei servizi digitali?
-27) Cos'è il GDPR?
-28) Cos'è la 2FA? come viene realizzata di solito?
-29) Cosa si intende con "accessibilità" nei servizi digitali?
-30) Cos'è la "relatività" nei servizi digitali? In cosa si vede di solito?
-31) Cosa si intende con "price discrimination"?
-32) In cosa si nota la "relatività" nei servizi di streaming?
-33) In cosa si nota la "relatività" nei social network?
-34) Cos'è una "filter bubble"? A quale scopo viene applicata?
-35) Cos'è Internet Archive? Perché può essere utile in questo contesto "relativistico"?
-36) Cos'è il Principio di Locard applicato ai servizi digitali?
-37) Cos'è un "log" e perché ci interessa in CDT?
-38) Cos'è la "data retention"?
-39) Fai qualche esempio da "Weapons of math destruction".
-40) Cos'è la "digital footprint"?
-41) Cos'è l'"orizzonte degli eventi" digitale? Da cosa è influenzato?
-42) Cita qualche tecnologia che potrebbe comprimere l'"orizzonte degli eventi" digitale.
+1) **Quali sono i temi salienti del livello "services" dell'arcobaleno?**
+	i
+1) **Differenza fra servizi "analogici" e "digitali".**
+	i
+1) **In che senso può essere difficile l'accesso ad un servizio digitale? (quali restrizioni)**
+	i
+1) **Cosa deve garantire un servizio digitale ai cittadini?**
+	i
+1) **Cosa si intende con "digitalizzazione dei servizi"? (fare esempi di servizi "analogici" e "digitali")**
+	Il termine digitalizzazione dei servizi indica il processo per cui un servizio tradizionalmente espletato o fornito in forma analogica viene implementato attraverso tecnologie digitali. Alcuni esempi sono:
+	- un bonifico effettuato presso lo sportello di una banca o via web/app;
+	- l'iscrizione all'università presso la segreteria o via web/app;
+	- entrare in una pizzeria d’asporto e ordinare tre pizze da portar via o ordinarle via web/app.
+1) **Cosa sono "frontend" e "backend" di un servizio?**
+	Sia per quanto riguarda servizi analogici sia digitali, il frontend è l'interfaccia verso gli utenti mentre il backend è la parte del sistema che svolge effettivamente la funzione.
+1) **Cosa si intende con "appificazione"?**
+	 Si intende l'attuale processo di digitalizzazione di servizi quasi esclusivamente tramite app e non tramite l'implementazione di un sito web. CIò è dovuto principalmente al tentativo di inseguire le abitudini di acquisto dei clienti, i quali preferiscono usare il cellulare rispetto ad un pc fisso o portatile. Questo approccio, se estremizzato, porta de facto all'obbligo di possesso di uno smartphone, tagliando fuori fette di popolazione dalla possibilità di accesso al servizio.
+1) **Quali sono gli aspetti importanti da considerare nella digitalizzazione di un servizio?**
+	i
+1) **Quali sono i vantaggi e svantaggi di un servizio digitale?**
+	i
+1) **Cosa si intende con "fallback" in un servizio digitale?**
+	Con fallback (ripiego, riserva, alternativa) si intende la possibilità di ripiegare su un canale alternativo nel caso il canale prescelto non dovesse essere disponibile per qualsivoglia motivo.
+1) **Perché sono importanti i protocolli standard nei servizi digitali?**
+	i
+1) **Perché vengono usati protocolli "segreti" (non documentati) in molti ambiti dei servizi digitali?**
+	i 
+1) **Cosa si intende con "formato" nell'ambito dei servizi digitali?**
+	i
+1) **Vantaggi e svantaggi dei formati standard nei servizi digitali.**
+	i
+1) **Cosa si intende con formati standard "de iure" e "de facto"?**
+	i
+1) **Cos'è il "reverse engineering" e perché potrebbe essere utile nel contesto dei servizi digitali?**
+	i
+1) **Cos'è uno "standard 'aperto'"?**
+	i
+1) **Cosa si intende con "interoperabilità"?**
+	i
+1) **Cos'è un "broker" nel contesto dei servizi?**
+	i
+1) **Cos'è lo standard REST(ful)?**
+	i
+1) **Cosa si intende con API? Perché sono utili nel contesto dei servizi digitali?**
+	i
+1) **Cosa si intende con "lock-in"?**
+	i
+1) **Fai degli esempi di "lock-in".**
+	i
+1) **Cosa si intende con "esportazione dei dati"? Perché è utile?**
+	i
+1) **Cosa si intende con "scalabilità" nei servizi digitali?**
+	i
+1) **Cos'è l'effetto "slashdot"?**
+	i
+1) **Cosa si intende con "sicurezza" nei servizi digitali?**
+	i
+1) **Cos'è il GDPR?**
+	i
+1) **Cos'è la 2FA? Come viene realizzata di solito?**
+	i
+1) **Cosa si intende con "accessibilità" nei servizi digitali?**
+	i
+1) **Cos'è la "relatività" nei servizi digitali? In cosa si vede di solito?**
+	i
+1) **Cosa si intende con "price discrimination"?**
+	i
+1) **In cosa si nota la "relatività" nei servizi di streaming?**
+	i
+1) **In cosa si nota la "relatività" nei social network?**
+	i
+1) **Cos'è una "filter bubble"? A quale scopo viene applicata?**
+	i
+1) **Cos'è Internet Archive? Perché può essere utile in questo contesto "relativistico"?**
+	i
+1) ** Cos'è il Principio di Locard applicato ai servizi digitali?**
+	i 
+1) **Cos'è un "log" e perché ci interessa in CDT?**
+	i
+1) **Cos'è la "data retention"?**
+	i
+1) **Fai qualche esempio da "Weapons of math destruction".**
+	i
+1) **Cos'è la "digital footprint"?**
+	i
+1) **Cos'è l'"orizzonte degli eventi" digitale? Da cosa è influenzato?**
+	i
+1) **Cita qualche tecnologia che potrebbe comprimere l'"orizzonte degli eventi" digitale.**
+	i
 
 ----------------------------------------------------------------
 
