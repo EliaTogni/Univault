@@ -362,21 +362,21 @@
 6) **Cosa sono "frontend" e "backend" di un servizio?**
 	Sia per quanto riguarda servizi analogici sia digitali, il frontend è l'interfaccia verso gli utenti mentre il backend è la parte del sistema che svolge effettivamente la funzione.
 7) **Cosa si intende con "appificazione"?**
-	 Si intende l'attuale processo di digitalizzazione di servizi quasi esclusivamente tramite app e non tramite l'implementazione di un sito web. CIò è dovuto principalmente al tentativo di inseguire le abitudini di acquisto dei clienti, i quali preferiscono usare il cellulare rispetto ad un pc fisso o portatile. Questo approccio, se estremizzato, porta de facto all'obbligo di possesso di uno smartphone, tagliando fuori fette di popolazione dalla possibilità di accesso al servizio.
+	Si intende l'attuale processo di digitalizzazione di servizi quasi esclusivamente tramite app e non tramite l'implementazione di un sito web. CIò è dovuto principalmente al tentativo di inseguire le abitudini di acquisto dei clienti, i quali preferiscono usare il cellulare rispetto ad un pc fisso o portatile. Questo approccio, se estremizzato, porta de facto all'obbligo di possesso di uno smartphone, tagliando fuori fette di popolazione dalla possibilità di accesso al servizio.
 8) **Quali sono gli aspetti importanti da considerare nella digitalizzazione di un servizio?**
-	 Ci si ispira alle domande fondamentali del giornalismo e ci si chiede:
-	 - chi: chi può richiedere il servizio, chi è il fornitore o l'intermediario;
-	 - cosa: qual è la natura della funzione fornita;
-	 - quando: quali sono le tempistiche di accesso e fornitura;
-	 - dove: luogo di erogazione, non necessariamente un luogo fisico;
-	 - quanto: prezzi e costi;
-	 - come: formati e canali di comunicazione, device da usare, informazioni di processo.
+	Ci si ispira alle domande fondamentali del giornalismo e ci si chiede:
+	- chi: chi può richiedere il servizio, chi è il fornitore o l'intermediario;
+	- cosa: qual è la natura della funzione fornita;
+	- quando: quali sono le tempistiche di accesso e fornitura;
+	- dove: luogo di erogazione, non necessariamente un luogo fisico;
+	- quanto: prezzi e costi;
+	- come: formati e canali di comunicazione, device da usare, informazioni di processo.
 9) **Quali sono i vantaggi e svantaggi di un servizio digitale?**
 	i
 10) **Cosa si intende con "fallback" in un servizio digitale?**
 	Con fallback (ripiego, riserva, alternativa) si intende la possibilità di ripiegare su un canale alternativo nel caso il canale prescelto non dovesse essere disponibile per qualsivoglia motivo. E' possibile definirlo come il diritto di scegliere come usufruire di un servizio. Chiaramente, non è necessario prevedere tutti i canali possibili ed immaginabili, ma offrire un ventaglio di opportunità aumenta la fruibilità del servizio stesso. Nulla osta il fatto che le varie possibilità siano offerte a prezzi differenti ma sempre nei limiti della piena accessibilità per tutte le categorie di censo, specie se si tratta di servizi di cittadinanza.
 11) **Perché sono importanti i protocolli standard nei servizi digitali?**
-	
+	i
 12) **Perché vengono usati protocolli "segreti" (non documentati) in molti ambiti dei servizi digitali?**
 	i 
 13) **Cosa si intende con "formato" nell'ambito dei servizi digitali?**
@@ -384,37 +384,44 @@
 14) **Vantaggi e svantaggi dei formati standard nei servizi digitali.**
 	i
 15) **Cosa si intende con formati standard "de iure" e "de facto"?**
-	 De iure e de facto definiscono due modi per ottenere la concordanza su uno stesso formato da parte di differenti programmi. De iure indica la concordanza ottenuta tramite accordi espliciti e formali tra produttori che si organizzano in enti di standardizzazione: attraverso processi di proposta e revisione, i vari standard vengono approvati e pubblicati. Al contrario, de facto indica un formato molto utilizzato ma mai passato attraverso un'approvazione formale ed ufficiale da parte di qualche ente standardizzatore.
+	De iure e de facto definiscono due modi per ottenere la concordanza su uno stesso formato da parte di differenti programmi. De iure indica la concordanza ottenuta tramite accordi espliciti e formali tra produttori che si organizzano in enti di standardizzazione: attraverso processi di proposta e revisione, i vari standard vengono approvati e pubblicati. Al contrario, de facto indica un formato molto utilizzato ma mai passato attraverso un'approvazione formale ed ufficiale da parte di qualche ente standardizzatore.
 16) **Cos'è il "reverse engineering" e perché potrebbe essere utile nel contesto dei servizi digitali?**
-	 In informatica, il reverse engineering è il processo di analisi di un sistema software esistente, eseguito al fine di comprendere il funzionamento per essere in grado di crearne una rappresentazione ad alto livello di astrazione. In genere, le pratiche di reverse engineering vengono utilizzate quando un produttore software mantiene segreto il codice sorgente e non documenta protocolli e formati utilizzati, in questo caso si deve ricorrere al reverse engineering per essere in grado di progettare e realizzare sistemi interoperabili.
+	In informatica, il reverse engineering è il processo di analisi di un sistema software esistente, eseguito al fine di comprendere il funzionamento per essere in grado di crearne una rappresentazione ad alto livello di astrazione. In genere, le pratiche di reverse engineering vengono utilizzate quando un produttore software mantiene segreto il codice sorgente e non documenta protocolli e formati utilizzati, in questo caso si deve ricorrere al reverse engineering per essere in grado di progettare e realizzare sistemi interoperabili.
 17) **Cos'è uno "standard 'aperto'"?**
-	i
+	Se il formato dei dati di un programma leader di mercato nel suo campo non è segreto ed è liberamente implementabile, è possibile che altri produttori creino programmi alternativi che supportano lo stesso formato dei dati, cosicchè gli utenti possano scegliere liberamente programmi diversi in funzione delle prestazioni senza timore di dover rifare tutto il lavoro.
 18) **Cosa si intende con "interoperabilità"?**
-	 Il concetto di interoperabilità è il contrario di lock-in ed è una generalizzazione. Un sistema è interoperabile se permette un'interazione non solo da parte di una persona ma anche digitale, machine to machine o business to business.
+	Il concetto di interoperabilità è il contrario di lock-in ed è si riferisce alla capacità di interagire e operare in modo efficace con altri sistemi, anche se sono sviluppati da fornitori diversi o utilizzano tecnologie diverse. Un sistema è interoperabile se permette un'interazione non solo da parte di una persona ma anche digitale, machine to machine o business to business. Il livello di interoperabilità di un sistema è alto quando soddisfa tutti questi requisiti:
+	- utilizza formati standard e liberi, quindi i dati generati possono essere esportati senza troppi problemi verso altri sistemi;
+	- supporta protocolli standard e liberi, quindi è accessibile usando software sviluppati da terzi;
+	- impone poche limitazioni di accesso:
+		- economiche;
+		- temporali;
+		- di provenienza;
+		- di licenza d'uso.
 19) **Cos'è un "broker" nel contesto dei servizi?**
-	 Un broker è un intermediario che facilita la transazione tra due parti. In generale, un broker svolge un ruolo chiave nel semplificare e agevolare le transazioni tra diverse parti, garantendo che il processo avvenga in modo efficiente e conforme alle regole e normative vigenti.
+	Un broker è un intermediario che facilita la transazione tra due parti. In generale, un broker svolge un ruolo chiave nel semplificare e agevolare le transazioni tra diverse parti, garantendo che il processo avvenga in modo efficiente e conforme alle regole e normative vigenti.
 20) **Cos'è lo standard REST(ful)?**
-	 REST (REpresentational State Transfer) è il più noto dei protocolli di comunicazione ad hoc usati per l'interazione tra i broker ed i servizi dei sub-fornitori.
+	REST (REpresentational State Transfer) è il più noto dei protocolli di comunicazione ad hoc usati per l'interazione tra i broker ed i servizi dei sub-fornitori. Un servizio RESTful è un servizio web che aderisce ai principi di REST.
 21) **Cosa si intende con API? Perché sono utili nel contesto dei servizi digitali?**
-	 Le API (Application Programming Interface) sono un insieme di regole e definizioni che consente a software differenti di comunicare tra loro. Le API definiscono i metodi e i formati dei dati che i programmi possono utilizzare per richiedere e scambiare informazioni. In sostanza, fungono da ponte tra diverse applicazioni, consentendo loro di interagire e condividere dati in modo organizzato e standardizzato.
+	Le API (Application Programming Interface) sono un insieme di regole e definizioni che consente a software differenti di comunicare tra loro. Le API definiscono i metodi e i formati dei dati che i programmi possono utilizzare per richiedere e scambiare informazioni. In sostanza, fungono da ponte tra diverse applicazioni, consentendo loro di interagire e condividere dati in modo organizzato e standardizzato.
 22) **Cosa si intende con "lock-in"?**
-	 Il concetto di lock-in è il contrario dell'interoperabilità: un sistema è affetto da lock-in quando è poco o per nulla interoperabile ed è chiuso in sè stesso. Nonostante sia una caratteristica negativa per l'utente, viene introdotta nei sistemi informatici perchè non lo è necessariamente per chi produce e distribuisce il software. Al contrario, tendenzialmente i produttori di software proprietario tendono ad alzare quanto più possibile il livello di lock-in, in modo da rendere difficile agli utenti il migrare ad altri software.
+	Il concetto di lock-in è il contrario dell'interoperabilità: un sistema è affetto da lock-in quando è poco o per nulla interoperabile ed è chiuso in sè stesso. Nonostante sia una caratteristica negativa per l'utente, viene introdotta nei sistemi informatici perchè non lo è necessariamente per chi produce e distribuisce il software. Al contrario, tendenzialmente i produttori di software proprietario tendono ad alzare quanto più possibile il livello di lock-in, in modo da rendere difficile agli utenti il migrare ad altri software.
 23) **Fai degli esempi di "lock-in".**
-	 Alcuni esempi di lock-in dal punto di vista hardware sono i toner e le cartucce di inchiostro venduti a prezzi artificiosament elevati. I produttori delle stampanti hanno inserito all'interno di quest'ultime dei meccanismi di autenticazione che impediscono il funzionamento delle stampanti con inchiostri non certificati dal produttore. Ovviamente questi meccanismi non sono documentati per cui un eventuale concorrente ha molta diﬀicoltà a produrre toner e cartucce compatibili. Un'altro esempio, sempre dal punto di vista hardware, riguarda il mondo di cavi e alimentatori. Con l'avvento dei semiconduttori nei dispositivi di uso comune, l'industria ha dovuto fornire alimentazioni a basse tensioni per i vari prodotti. Dato che i trasformatori erano pesanti e gli apparati erano sempre più piccoli e leggeri, ad un certo punto si pensò di scindere le due funzioni: apparecchio ed alimentatore. Per non perdere ricavi, era necessario impedire ai clienti di utilizzare alimentatori universali magari venduti dalla concorrenza. Per cui cominciò la produzione di aliemntatori dedicati ad ogni singolo apparato, variando di poco la tensione richiesta per rendere univoco l'accoppiamento tra apparato ed alimentatore.
+	Alcuni esempi di lock-in dal punto di vista hardware sono i toner e le cartucce di inchiostro venduti a prezzi artificiosament elevati. I produttori delle stampanti hanno inserito all'interno di quest'ultime dei meccanismi di autenticazione che impediscono il funzionamento delle stampanti con inchiostri non certificati dal produttore. Ovviamente questi meccanismi non sono documentati per cui un eventuale concorrente ha molta diﬀicoltà a produrre toner e cartucce compatibili. Un'altro esempio, sempre dal punto di vista hardware, riguarda il mondo di cavi e alimentatori. Con l'avvento dei semiconduttori nei dispositivi di uso comune, l'industria ha dovuto fornire alimentazioni a basse tensioni per i vari prodotti. Dato che i trasformatori erano pesanti e gli apparati erano sempre più piccoli e leggeri, ad un certo punto si pensò di scindere le due funzioni: apparecchio ed alimentatore. Per non perdere ricavi, era necessario impedire ai clienti di utilizzare alimentatori universali magari venduti dalla concorrenza. Per cui cominciò la produzione di aliemntatori dedicati ad ogni singolo apparato, variando di poco la tensione richiesta per rendere univoco l'accoppiamento tra apparato ed alimentatore.
 24) **Cosa si intende con "esportazione dei dati"? Perché è utile?**
-	i
+	Durante l'esportazione dei dati, le informazioni vengono estratte dal database o dal sistema di origine e convertite in un formato appropriato per essere importate nell'applicazione di destinazione. Questo processo può coinvolgere la conversione dei formati dei file, l'adeguamento delle strutture dati e la gestione delle differenze tra i sistemi. Questo può avvenire per diversi motivi, tra cui la migrazione tra piattaforme, l'integrazione di sistemi o il backup delle informazioni. E' utile per favorire il passaggio da un sistema ad un altro, assicurando una transizione più agevole e consentendo di mantenere i dati importanti anche quando si cambia strumento o applicazione.
 25) **Cosa si intende con "scalabilità" nei servizi digitali?**
-	 Si intende quanto è robusto un sistema nell'espletamento delle sue funzioni all'aumentare degli utenti e se il sistema, al diminuire degli utenti, riesce a ridurre le sue richieste di risorse in modo che il suo costo di esercizio si riduca.
+	Si intende quanto è robusto un sistema nell'espletamento delle sue funzioni all'aumentare degli utenti e se il sistema, al diminuire degli utenti, riesce a ridurre le sue richieste di risorse in modo che il suo costo di esercizio si riduca.
 26) **Cos'è l'effetto "slashdot"?**
 	L'effetto slashdot si ha quando un sito web molto popolare aggiunge alle proprie pagine diversi collegamenti ipertestuali ad un piccolo sito, causando un incremento massiccio del traffico web verso quest'ultimo. Questa situazione può sovraccaricare il sito più piccolo, causandone rallenamenti o, a volte, chiusure temporanee.
 27) **Cosa si intende con "sicurezza" nei servizi digitali?**
-	 Si intende la protezione dalle azioni di terzi malintenzionti (per quanto riguarda il livello Services). Nella progettazione di un servizio digitale bisogna preoccuparsi di gestire eventuali tentativi di accesso indesiderato al servizio stesso o ai dati che tratta.
+	Si intende la protezione dalle azioni di terzi malintenzionti (per quanto riguarda il livello Services). Nella progettazione di un servizio digitale bisogna preoccuparsi di gestire eventuali tentativi di accesso indesiderato al servizio stesso o ai dati che tratta.
 28) **Cos'è il GDPR?**
-	 Il GDPR (General Data Protection Regulation) è un regolamento dell'Unione Europea in materia di trattamento dei dati personali e di privacy, con il quale la Commissione Europea si propone come obiettivo quello di rafforzare la protezione dei dati personali dei cittadini dell'UE e dei residenti nell'UE, sia all'interno dei confini dell'UE che all'esterno di essi, restituendo ai cittadini il controllo dei propi dati personali.
+	Il GDPR (General Data Protection Regulation) è un regolamento dell'Unione Europea in materia di trattamento dei dati personali e di privacy, con il quale la Commissione Europea si propone come obiettivo quello di rafforzare la protezione dei dati personali dei cittadini dell'UE e dei residenti nell'UE, sia all'interno dei confini dell'UE che all'esterno di essi, restituendo ai cittadini il controllo dei propi dati personali.
 29) **Cos'è la 2FA? Come viene realizzata di solito?**
 	La 2FA (Two Factor Authentication) è una tecnica di autenticazione elettronica in cui ad un utente è garantito l'accesso ad un sito web o applicazione solo dopo aver presentato con successo due o più fattori di autenticazione (e.g., una password, dati biometrici, One Time Password, ...) ad un meccanismo di autenticazione.
 30) **Cosa si intende con "accessibilità" nei servizi digitali?**
-	i
+	Si parla di accessibilità quando ci si preoccupa di non escludere utenti con attività fisiche limitate, quali, ad esempio, i non udenti, ipovedenti o non vedenti.
 31) **Cos'è la "relatività" nei servizi digitali? In cosa si vede di solito?**
 	i
 32) **Cosa si intende con "price discrimination"?**
