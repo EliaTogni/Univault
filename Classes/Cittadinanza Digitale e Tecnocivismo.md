@@ -384,19 +384,19 @@
 14) **Vantaggi e svantaggi dei formati standard nei servizi digitali.**
 	i
 15) **Cosa si intende con formati standard "de iure" e "de facto"?**
-	 De iure e de facto definiscono due modi per ottenere la concordanza su uno stesso formato da parte di differenti programmi. De iure indica la concordanza ottenuta tramite accordi espliciti e formali tra produttori che si organizzano in enti di standardizzazione. Al contrario, de facto indica la concordanza ottenuta
+	 De iure e de facto definiscono due modi per ottenere la concordanza su uno stesso formato da parte di differenti programmi. De iure indica la concordanza ottenuta tramite accordi espliciti e formali tra produttori che si organizzano in enti di standardizzazione: attraverso processi di proposta e revisione, i vari standard vengono approvati e pubblicati. Al contrario, de facto indica un formato molto utilizzato ma mai passato attraverso un'approvazione formale ed ufficiale da parte di qualche ente standardizzatore.
 16) **Cos'è il "reverse engineering" e perché potrebbe essere utile nel contesto dei servizi digitali?**
-	i
+	 In informatica, il reverse engineering è il processo di analisi di un sistema software esistente, eseguito al fine di comprendere il funzionamento per essere in grado di crearne una rappresentazione ad alto livello di astrazione. In genere, le pratiche di reverse engineering vengono utilizzate quando un produttore software mantiene segreto il codice sorgente e non documenta protocolli e formati utilizzati, in questo caso si deve ricorrere al reverse engineering per essere in grado di progettare e realizzare sistemi interoperabili.
 17) **Cos'è uno "standard 'aperto'"?**
 	i
 18) **Cosa si intende con "interoperabilità"?**
 	 Il concetto di interoperabilità è il contrario di lock-in ed è una generalizzazione. Un sistema è interoperabile se permette un'interazione non solo da parte di una persona ma anche digitale, machine to machine o business to business.
 19) **Cos'è un "broker" nel contesto dei servizi?**
-	i
+	 Un broker è un intermediario che facilita la transazione tra due parti. In generale, un broker svolge un ruolo chiave nel semplificare e agevolare le transazioni tra diverse parti, garantendo che il processo avvenga in modo efficiente e conforme alle regole e normative vigenti.
 20) **Cos'è lo standard REST(ful)?**
 	 REST (REpresentational State Transfer) è il più noto dei protocolli di comunicazione ad hoc usati per l'interazione tra i broker ed i servizi dei sub-fornitori.
 21) **Cosa si intende con API? Perché sono utili nel contesto dei servizi digitali?**
-	 Le API (Application Programming Interface) 
+	 Le API (Application Programming Interface) sono un insieme di regole e definizioni che consente a software differenti di comunicare tra loro. Le API definiscono i metodi e i formati dei dati che i programmi possono utilizzare per richiedere e scambiare informazioni. In sostanza, fungono da ponte tra diverse applicazioni, consentendo loro di interagire e condividere dati in modo organizzato e standardizzato.
 22) **Cosa si intende con "lock-in"?**
 	 Il concetto di lock-in è il contrario dell'interoperabilità: un sistema è affetto da lock-in quando è poco o per nulla interoperabile ed è chiuso in sè stesso. Nonostante sia una caratteristica negativa per l'utente, viene introdotta nei sistemi informatici perchè non lo è necessariamente per chi produce e distribuisce il software. Al contrario, tendenzialmente i produttori di software proprietario tendono ad alzare quanto più possibile il livello di lock-in, in modo da rendere difficile agli utenti il migrare ad altri software.
 23) **Fai degli esempi di "lock-in".**
