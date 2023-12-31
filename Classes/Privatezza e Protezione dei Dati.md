@@ -953,6 +953,7 @@ An example of special rules.<br />
 - an individual’s age within a five-year interval;
 - earnings within a $ $1,000$ interval;
 - benefits within a $ $50$ interval.
+
 to satisfy special rules such as **table restructuring** or **category combination**.
 
 Another example of special rules.<br />
@@ -967,8 +968,8 @@ Cells that cannot be released:
 	- between $23K$ and $25K$ for _Dept$4$_;
 	- between $23K$ and $27K$ for _Dept$2$_.
 
-Another example of Special rules (U.S. HIPAA).<br />
-Health Insurance Portability and Accountability Act “Safe Harbor” rules, include:
+Another example of Special rules.<br />
+Health Insurance Portability and Accountability (U.S. HIPAA) Act “Safe Harbor” rules, include:
 - identifying information must be removed;
 - locations have to be generalized to units that contain at least $20,000$ residents;
 - dates of birth must be rounded up to the year of birth only (or to larger value if the person is older than $90$).
@@ -995,7 +996,7 @@ A cell with fewer than $5$ respondents is defined as sensitive. Suppress one add
 ## Table restructuring
 An example of table restructuring.<br />
 Number of employees by department and annual income (in $K$ Euro).<br />
-Special rule: Income within a $5K$ Euro interval.<br />
+Special rule: _Income_ within a $5K$ Euro interval.<br />
 To protect confidentiality, the table can be restructured and rows or columns combined (**rolling-up** categories).
 
 ![[TableRestructuringExample1.png]]
@@ -1102,13 +1103,11 @@ Records for the $20$ employees of company Alfa.
 4) after all matches are made, swap attributes on matched records;
 5) use the swapped data file directly to produce tables.
 
-
 Take a sample of records from the microdata file (say a $10\%$ sample). Since we need tables by company and education level, we find a match in some other company on the other variables.
 
 ![[ConfidentialityEditExample1.png|600]]
 ![[ConfidentialityEditExample2.png|600]]
 
-
 Part of the randomly selected $10\%$ sample from other companies match records in company Alfa.
 
 ![[ConfidentialityEditExample3.png|600]]
