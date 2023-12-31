@@ -384,31 +384,31 @@
 14) **Vantaggi e svantaggi dei formati standard nei servizi digitali.**
 	i
 15) **Cosa si intende con formati standard "de iure" e "de facto"?**
-	i
+	 De iure e de facto definiscono due modi per ottenere la concordanza su uno stesso formato da parte di differenti programmi. De iure indica la concordanza ottenuta tramite accordi espliciti e formali tra produttori che si organizzano in enti di standardizzazione. Al contrario, de facto indica la concordanza ottenuta
 16) **Cos'è il "reverse engineering" e perché potrebbe essere utile nel contesto dei servizi digitali?**
 	i
 17) **Cos'è uno "standard 'aperto'"?**
 	i
 18) **Cosa si intende con "interoperabilità"?**
-	i
+	 Il concetto di interoperabilità è il contrario di lock-in ed è una generalizzazione. Un sistema è interoperabile se permette un'interazione non solo da parte di una persona ma anche digitale, machine to machine o business to business.
 19) **Cos'è un "broker" nel contesto dei servizi?**
 	i
 20) **Cos'è lo standard REST(ful)?**
-	i
+	 REST (REpresentational State Transfer) è il più noto dei protocolli di comunicazione ad hoc usati per l'interazione tra i broker ed i servizi dei sub-fornitori.
 21) **Cosa si intende con API? Perché sono utili nel contesto dei servizi digitali?**
-	i
+	 Le API (Application Programming Interface) 
 22) **Cosa si intende con "lock-in"?**
-	i
+	 Il concetto di lock-in è il contrario dell'interoperabilità: un sistema è affetto da lock-in quando è poco o per nulla interoperabile ed è chiuso in sè stesso. Nonostante sia una caratteristica negativa per l'utente, viene introdotta nei sistemi informatici perchè non lo è necessariamente per chi produce e distribuisce il software. Al contrario, tendenzialmente i produttori di software proprietario tendono ad alzare quanto più possibile il livello di lock-in, in modo da rendere difficile agli utenti il migrare ad altri software.
 23) **Fai degli esempi di "lock-in".**
-	i
+	 Alcuni esempi di lock-in dal punto di vista hardware sono i toner e le cartucce di inchiostro venduti a prezzi artificiosament elevati. I produttori delle stampanti hanno inserito all'interno di quest'ultime dei meccanismi di autenticazione che impediscono il funzionamento delle stampanti con inchiostri non certificati dal produttore. Ovviamente questi meccanismi non sono documentati per cui un eventuale concorrente ha molta diﬀicoltà a produrre toner e cartucce compatibili. Un'altro esempio, sempre dal punto di vista hardware, riguarda il mondo di cavi e alimentatori. Con l'avvento dei semiconduttori nei dispositivi di uso comune, l'industria ha dovuto fornire alimentazioni a basse tensioni per i vari prodotti. Dato che i trasformatori erano pesanti e gli apparati erano sempre più piccoli e leggeri, ad un certo punto si pensò di scindere le due funzioni: apparecchio ed alimentatore. Per non perdere ricavi, era necessario impedire ai clienti di utilizzare alimentatori universali magari venduti dalla concorrenza. Per cui cominciò la produzione di aliemntatori dedicati ad ogni singolo apparato, variando di poco la tensione richiesta per rendere univoco l'accoppiamento tra apparato ed alimentatore.
 24) **Cosa si intende con "esportazione dei dati"? Perché è utile?**
 	i
 25) **Cosa si intende con "scalabilità" nei servizi digitali?**
-	i
+	 Si intende quanto è robusto un sistema nell'espletamento delle sue funzioni all'aumentare degli utenti e se il sistema, al diminuire degli utenti, riesce a ridurre le sue richieste di risorse in modo che il suo costo di esercizio si riduca.
 26) **Cos'è l'effetto "slashdot"?**
-	i
+	L'effetto slashdot si ha quando un sito web molto popolare aggiunge alle proprie pagine diversi collegamenti ipertestuali ad un piccolo sito, causando un incremento massiccio del traffico web verso quest'ultimo. Questa situazione può sovraccaricare il sito più piccolo, causandone rallenamenti o, a volte, chiusure temporanee.
 27) **Cosa si intende con "sicurezza" nei servizi digitali?**
-	i
+	 Si intende la protezione dalle azioni di terzi malintenzionti (per quanto riguarda il livello Services). Nella progettazione di un servizio digitale bisogna preoccuparsi di gestire eventuali tentativi di accesso indesiderato al servizio stesso o ai dati che tratta.
 28) **Cos'è il GDPR?**
 	 Il GDPR (General Data Protection Regulation) è un regolamento dell'Unione Europea in materia di trattamento dei dati personali e di privacy, con il quale la Commissione Europea si propone come obiettivo quello di rafforzare la protezione dei dati personali dei cittadini dell'UE e dei residenti nell'UE, sia all'interno dei confini dell'UE che all'esterno di essi, restituendo ai cittadini il controllo dei propi dati personali.
 29) **Cos'è la 2FA? Come viene realizzata di solito?**
@@ -437,7 +437,7 @@
 	i
 41) **Cos'è la "digital footprint"?**
 	i
-42) **Cos'è l'"orizzonte degli eventi" digitale? Da cosa è influenzato?**
+42) **Cos'è l' "orizzonte degli eventi" digitale? Da cosa è influenzato?**
 	i
 43) **Cita qualche tecnologia che potrebbe comprimere l'"orizzonte degli eventi" digitale.**
 	i
