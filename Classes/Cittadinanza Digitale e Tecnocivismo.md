@@ -345,92 +345,101 @@
 ## L1
 1) **Quali sono i temi salienti del livello "services" dell'arcobaleno?**
 	i
-1) **Differenza fra servizi "analogici" e "digitali".**
+2) **Differenza fra servizi "analogici" e "digitali".**
 	i
-1) **In che senso può essere difficile l'accesso ad un servizio digitale? (quali restrizioni)**
+3) **In che senso può essere difficile l'accesso ad un servizio digitale? (quali restrizioni)**
+	- L'accesso ad un conto corrente può essere vincolato ai possesso di uno smartphone;
+	- prevedere la compilazione di moduli di richiesta e, più in generale, accettare solo documenti prodotti tramite software proprietari;
+	- pubblicare le informazioni sulla propria attività utilizzando esclusivamente una piattaforma social.
+	Il modo in cui vengono forniti i servizi online deve soddisfare gli standard di usabilità e non richiedere competenze o conoscenze speciali
+4) **Cosa deve garantire un servizio digitale ai cittadini?**
 	i
-1) **Cosa deve garantire un servizio digitale ai cittadini?**
-	i
-1) **Cosa si intende con "digitalizzazione dei servizi"? (fare esempi di servizi "analogici" e "digitali")**
+5) **Cosa si intende con "digitalizzazione dei servizi"? (fare esempi di servizi "analogici" e "digitali")**
 	Il termine digitalizzazione dei servizi indica il processo per cui un servizio tradizionalmente espletato o fornito in forma analogica viene implementato attraverso tecnologie digitali. Alcuni esempi sono:
 	- un bonifico effettuato presso lo sportello di una banca o via web/app;
 	- l'iscrizione all'università presso la segreteria o via web/app;
 	- entrare in una pizzeria d’asporto e ordinare tre pizze da portar via o ordinarle via web/app.
-1) **Cosa sono "frontend" e "backend" di un servizio?**
+6) **Cosa sono "frontend" e "backend" di un servizio?**
 	Sia per quanto riguarda servizi analogici sia digitali, il frontend è l'interfaccia verso gli utenti mentre il backend è la parte del sistema che svolge effettivamente la funzione.
-1) **Cosa si intende con "appificazione"?**
+7) **Cosa si intende con "appificazione"?**
 	 Si intende l'attuale processo di digitalizzazione di servizi quasi esclusivamente tramite app e non tramite l'implementazione di un sito web. CIò è dovuto principalmente al tentativo di inseguire le abitudini di acquisto dei clienti, i quali preferiscono usare il cellulare rispetto ad un pc fisso o portatile. Questo approccio, se estremizzato, porta de facto all'obbligo di possesso di uno smartphone, tagliando fuori fette di popolazione dalla possibilità di accesso al servizio.
-1) **Quali sono gli aspetti importanti da considerare nella digitalizzazione di un servizio?**
+8) **Quali sono gli aspetti importanti da considerare nella digitalizzazione di un servizio?**
+	 Ci si ispira alle domande fondamentali del giornalismo e ci si chiede:
+	 - chi: chi può richiedere il servizio, chi è il fornitore o l'intermediario;
+	 - cosa: qual è la natura della funzione fornita;
+	 - quando: quali sono le tempistiche di accesso e fornitura;
+	 - dove: luogo di erogazione, non necessariamente un luogo fisico;
+	 - quanto: prezzi e costi;
+	 - come: formati e canali di comunicazione, device da usare, informazioni di processo.
+9) **Quali sono i vantaggi e svantaggi di un servizio digitale?**
 	i
-1) **Quali sono i vantaggi e svantaggi di un servizio digitale?**
-	i
-1) **Cosa si intende con "fallback" in un servizio digitale?**
-	Con fallback (ripiego, riserva, alternativa) si intende la possibilità di ripiegare su un canale alternativo nel caso il canale prescelto non dovesse essere disponibile per qualsivoglia motivo.
-1) **Perché sono importanti i protocolli standard nei servizi digitali?**
-	i
-1) **Perché vengono usati protocolli "segreti" (non documentati) in molti ambiti dei servizi digitali?**
+10) **Cosa si intende con "fallback" in un servizio digitale?**
+	Con fallback (ripiego, riserva, alternativa) si intende la possibilità di ripiegare su un canale alternativo nel caso il canale prescelto non dovesse essere disponibile per qualsivoglia motivo. E' possibile definirlo come il diritto di scegliere come usufruire di un servizio. Chiaramente, non è necessario prevedere tutti i canali possibili ed immaginabili, ma offrire un ventaglio di opportunità aumenta la fruibilità del servizio stesso. Nulla osta il fatto che le varie possibilità siano offerte a prezzi differenti ma sempre nei limiti della piena accessibilità per tutte le categorie di censo, specie se si tratta di servizi di cittadinanza.
+11) **Perché sono importanti i protocolli standard nei servizi digitali?**
+	
+12) **Perché vengono usati protocolli "segreti" (non documentati) in molti ambiti dei servizi digitali?**
 	i 
-1) **Cosa si intende con "formato" nell'ambito dei servizi digitali?**
+13) **Cosa si intende con "formato" nell'ambito dei servizi digitali?**
+	Un formato dati è concettualmente simile ad un protocollo, ma si riferisce alla memorizzazione dei dati in un file. Invece che specificare un linguaggio di interscambio fra programmi, specifica l’organizzazione dei dati su un supporto di immagazzinamento.
+14) **Vantaggi e svantaggi dei formati standard nei servizi digitali.**
 	i
-1) **Vantaggi e svantaggi dei formati standard nei servizi digitali.**
+15) **Cosa si intende con formati standard "de iure" e "de facto"?**
 	i
-1) **Cosa si intende con formati standard "de iure" e "de facto"?**
+16) **Cos'è il "reverse engineering" e perché potrebbe essere utile nel contesto dei servizi digitali?**
 	i
-1) **Cos'è il "reverse engineering" e perché potrebbe essere utile nel contesto dei servizi digitali?**
+17) **Cos'è uno "standard 'aperto'"?**
 	i
-1) **Cos'è uno "standard 'aperto'"?**
+18) **Cosa si intende con "interoperabilità"?**
 	i
-1) **Cosa si intende con "interoperabilità"?**
+19) **Cos'è un "broker" nel contesto dei servizi?**
 	i
-1) **Cos'è un "broker" nel contesto dei servizi?**
+20) **Cos'è lo standard REST(ful)?**
 	i
-1) **Cos'è lo standard REST(ful)?**
+21) **Cosa si intende con API? Perché sono utili nel contesto dei servizi digitali?**
 	i
-1) **Cosa si intende con API? Perché sono utili nel contesto dei servizi digitali?**
+22) **Cosa si intende con "lock-in"?**
 	i
-1) **Cosa si intende con "lock-in"?**
+23) **Fai degli esempi di "lock-in".**
 	i
-1) **Fai degli esempi di "lock-in".**
+24) **Cosa si intende con "esportazione dei dati"? Perché è utile?**
 	i
-1) **Cosa si intende con "esportazione dei dati"? Perché è utile?**
+25) **Cosa si intende con "scalabilità" nei servizi digitali?**
 	i
-1) **Cosa si intende con "scalabilità" nei servizi digitali?**
+26) **Cos'è l'effetto "slashdot"?**
 	i
-1) **Cos'è l'effetto "slashdot"?**
+27) **Cosa si intende con "sicurezza" nei servizi digitali?**
 	i
-1) **Cosa si intende con "sicurezza" nei servizi digitali?**
+28) **Cos'è il GDPR?**
+	 Il GDPR (General Data Protection Regulation) è un regolamento dell'Unione Europea in materia di trattamento dei dati personali e di privacy, con il quale la Commissione Europea si propone come obiettivo quello di rafforzare la protezione dei dati personali dei cittadini dell'UE e dei residenti nell'UE, sia all'interno dei confini dell'UE che all'esterno di essi, restituendo ai cittadini il controllo dei propi dati personali.
+29) **Cos'è la 2FA? Come viene realizzata di solito?**
+	La 2FA (Two Factor Authentication) è una tecnica di autenticazione elettronica in cui ad un utente è garantito l'accesso ad un sito web o applicazione solo dopo aver presentato con successo due o più fattori di autenticazione (e.g., una password, dati biometrici, One Time Password, ...) ad un meccanismo di autenticazione.
+30) **Cosa si intende con "accessibilità" nei servizi digitali?**
 	i
-1) **Cos'è il GDPR?**
+31) **Cos'è la "relatività" nei servizi digitali? In cosa si vede di solito?**
 	i
-1) **Cos'è la 2FA? Come viene realizzata di solito?**
+32) **Cosa si intende con "price discrimination"?**
 	i
-1) **Cosa si intende con "accessibilità" nei servizi digitali?**
+33) **In cosa si nota la "relatività" nei servizi di streaming?**
 	i
-1) **Cos'è la "relatività" nei servizi digitali? In cosa si vede di solito?**
+34) **In cosa si nota la "relatività" nei social network?**
 	i
-1) **Cosa si intende con "price discrimination"?**
+35) **Cos'è una "filter bubble"? A quale scopo viene applicata?**
 	i
-1) **In cosa si nota la "relatività" nei servizi di streaming?**
+36) **Cos'è Internet Archive? Perché può essere utile in questo contesto "relativistico"?**
 	i
-1) **In cosa si nota la "relatività" nei social network?**
-	i
-1) **Cos'è una "filter bubble"? A quale scopo viene applicata?**
-	i
-1) **Cos'è Internet Archive? Perché può essere utile in questo contesto "relativistico"?**
-	i
-1) ** Cos'è il Principio di Locard applicato ai servizi digitali?**
+37) **Cos'è il Principio di Locard applicato ai servizi digitali?**
 	i 
-1) **Cos'è un "log" e perché ci interessa in CDT?**
+38) **Cos'è un "log" e perché ci interessa in CDT?**
 	i
-1) **Cos'è la "data retention"?**
+39) **Cos'è la "data retention"?**
 	i
-1) **Fai qualche esempio da "Weapons of math destruction".**
+40) **Fai qualche esempio da "Weapons of math destruction".**
 	i
-1) **Cos'è la "digital footprint"?**
+41) **Cos'è la "digital footprint"?**
 	i
-1) **Cos'è l'"orizzonte degli eventi" digitale? Da cosa è influenzato?**
+42) **Cos'è l'"orizzonte degli eventi" digitale? Da cosa è influenzato?**
 	i
-1) **Cita qualche tecnologia che potrebbe comprimere l'"orizzonte degli eventi" digitale.**
+43) **Cita qualche tecnologia che potrebbe comprimere l'"orizzonte degli eventi" digitale.**
 	i
 
 ----------------------------------------------------------------
