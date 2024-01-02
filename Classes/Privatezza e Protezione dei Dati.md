@@ -1281,7 +1281,7 @@ The selection of the complementary cells should result in minimum **information 
 While the suppression rules can be published, parameter values should be kept confidential.
 
 For example, assume that:
-- $p$-percent rule is used with $p=20\%$ and the same value is used for complementary suppression;
+- $p$-percent rule is used with $p=20$ and the same value is used for complementary suppression;
 - a cell $x$ with value $100$ has been suppressed along with other suitable complementary cells;
 - by solving a system of linear equations, the upper bound is $120$ and the lower bound is $80$: $80 \leq x  \leq 120 \to x =100$.
 
@@ -1465,7 +1465,7 @@ There are different variations of micro-aggregation:
 - different attributes can be protected through micro-aggregation using the same or different grouping;
 - ...
 
-An example of micro-aggregation (blurring).
+An example of micro-aggregation (blurring).
 
 ![[MicroAggregationBlurringExample1.png]]
 
@@ -1497,7 +1497,7 @@ Advancements in the **Information and Communication Technology** (**ICT**) and n
 
 ## Smart society
 The advantages of smart services and security are:
-- better protection mechanisms;
+- better protection mechanisms;
 - business continuity and disaster recovery;
 - prevention and response.
 
@@ -1571,7 +1571,7 @@ Minimize release/exposition:
 
 ----------------------------------------------------------------
 
-# Char# Privacy and Data Protection in Emerging Scenariosacterization of Data Protection: Challenges in Cloud Scenarios
+## Characterization of Data Protection: Challenges in Cloud Scenarios
 ## Scientific and technical challenges
 Three dimensions characterize the problems and challenges:
 
