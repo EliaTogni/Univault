@@ -1589,7 +1589,7 @@ Checking the integrity of the data on the computation and query results is compl
 
 What the user wants to do with the data is what defines how to manage them. If the user only wants to archive them, the cloud provider has to grant him the ability to pull or push the data and the protection of the data in storage.<br />
 If the user also wants to retrieve the data through queries, the cloud provider has to grant support for fine-grained data retrieval and queries and also protection of computaton and queries results.<br />
-if the datas are dynamic, the cloud provider must provide support for access retrieval and enfocement of updates.
+if the data are dynamic, the cloud provider must provide support for access retrieval and enfocement of updates.
 
 ![[AccessRequirements.png]]
 
@@ -1659,7 +1659,7 @@ Users may wish to remain **anonymous** or to not disclose much information about
 - **attribute-based** (or **credential-based** or **certificated-based**) access control;
 	- instead of declaring their identities, users prove they satisfy properties needed for the access (with a certificate);
 	- changes the way access control process works.
-- Support for user-privacy preferences in information disclosure.
+- support for user-privacy preferences in information disclosure.
 
 ## User empowerment
 Users may want to specify policies regulating information disclosed:
@@ -1673,7 +1673,7 @@ Two aspects of protection:
 ----------------------------------------------------------------
 
 ## Direct release – Several contributions
-The research community has been very active and produced several approaches for regulating interactions among unknown parties through the deﬁnition of attribute-based access control mechanisms (instead of identity-baed access control mechanism).<br />
+The research community has been very active and produced several approaches for regulating interactions among unknown parties through the deﬁnition of attribute-based access control mechanisms (instead of identity-based access control mechanism).<br />
 What users can do depend on assertions (**attributes**) they can prove presenting certiﬁcates. Access control does not return yes/no anymore, but responds with requirements that the requestor must satisfy to get access. Not only the server needs to be protected but the clients want guarantees too (e.g., privacy) $\to$ some form of negotiation may be introduced.
 
 Large body of proposals addressing:
@@ -1693,7 +1693,7 @@ $\to$ typically using logic-based languages.
 
 ![[InteractiveAccessControl1.png]]
 
-- **multi-step negotiation**: n the case depicted by the image below, the client too requires certificates from the server. There is a problematic situation in the case of a failing transaction: the server acquires informations step by step but, in the case of termination of the interaction before the server has granted the service, this one has now access to the previous data (leakage). E.g., the server asks the age of the user but doesn't explicitly say what age is necessary to access to the server;
+- **multi-step negotiation**: in the case depicted by the image below, the client too requires certificates from the server. There is a problematic situation in the case of a failing transaction: the server acquires informations step by step but, in the case of termination of the interaction before the server has granted the service, this one has now access to the previous data (leakage). E.g., the server asks the age of the user but doesn't explicitly say what age is necessary to access to the server;
 
 ![[InteractiveAccessControl2.png]]
 
