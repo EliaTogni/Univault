@@ -1205,13 +1205,13 @@ Consider the respondents that contribute to the total income in a city, which is
 - Frank: $3K$;
 - ...
 
-Assume $q=80\%$ to represent how accurately respondents can estimate another respondent’s value before any data publishing. For Alice’s income this implies range $[20,180]$.<br />
+Assume $q=80$ to represent how accurately respondents can estimate another respondent’s value before any data publishing. For Alice’s income this implies range $[20,180]$.<br />
 Again, the coalition of $c = 3$ respondents that can better estimate Alice’s income is Bob, Carol, David.<br />
 The coalition can reduce uncertainty about Alice’s income from $[20K-180K]$ to $[80K-120K]$:
 - $\geq 80K$ since it is higher than Bob’s;
 - $\leq 120K (=250K−130K)$.
 
-Assuming $q = 80\%$ and $c = 3$, formally, the cell is protected for any $p$ such that:
+Assuming $q = 80$ and $c = 3$, formally, the cell is protected for any $p$ such that:
 
 $$\frac{q}{100} \sum_{i = c+2}^{N} x_i \geq \frac{p}{100}x_1$$
 $$\frac{80}{100} \sum_{i = 3+2}^{N} x_i \geq \frac{p}{100}\text{Alice}$$
@@ -1229,7 +1229,7 @@ $$p \leq 16$$
 ### Primary suppression rule: $(n,k)$
 Regardless of the number of respondents in a cell, if a small number ($n$ or fewer) of these respondents contribute a large percentage ($k\%$ or more) of the total cell value, the cell is considered sensitive.
 
-Intuitive rule: if a cell is dominated by one respondent, the published total is an upper estimate for her value. $n$ selected to be larger than the number of any suspected coalitions. Many agencies use an $(n,k)$ rule with $n = 1$ or $n = 2$
+Intuitive rule: if a cell is dominated by one respondent, the published total is an upper estimate for her value. $n$ must be selected to be larger than the number of any suspected coalitions. Many agencies use an $(n,k)$ rule with $n = 1$ or $n = 2$
 
 An example of the primary suppression rule: $(n,k)$.<br />
 Consider the respondents that contribute to the total income in a city, which is equal to $250K$, to be (in decreasing order):
@@ -1852,7 +1852,6 @@ $S_5$ dominates $S_6$ for the same reason.
 
 $\to$ user has to choose between $S_1$, $S_5$.
 
-
 Users are still involved in choosing the disclosure set.<br />
 Assume only attributes (does not reason about credentials).<br />
 The speciﬁcation of preferences among groups of attributes is not always easy. Possession-sensitive credentials are not considered. Forbidden releases (e.g., the release of name, bdate, and pcode is forbidden) are not supported.
