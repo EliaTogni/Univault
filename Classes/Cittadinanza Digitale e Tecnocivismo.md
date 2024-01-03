@@ -507,202 +507,229 @@
 	i
 25) **Chi coniò il termine "net neutrality"?**
 	i
-1. **Cita qualche personaggio/ente "famoso" che supporta la net neutrality.**
-2. **Cita soggetti che vorrebbero aumentare la relatività in rete.**
-3. **Quali sono gli aspetti importanti formali (regole) nella gestione della net neutrality?**
-4. **Cos'è un "data cap" e perché può essere veicolo "subdolo" di aumento della relatività? (peggioramento della net neutrality)**
-5. **Spiega il termine ADSL, soprattutto in ottica net neutrality.**
-6. **Discuti la proposta del wifi come servizio pubblico.**
-7. **Cos'è WiFi4EU?**
-8. **Cos'era il "decreto Pisanu"?**
-9. **Cosa si intende con "flat rate"? Perché ci interessa in CDT?**
-10. **Cos'è il "roaming europeo"?**
-11. **Presenta le varie possibilità di connessione alla rete (dal rame, alla fibra, al 3/4/5G) in termini di "digital divide".**
-12. **Perché proponiamo come "servizio di base/universale/pubblico" l'abbassamento del limite di "digital divide"? Cosa comporterebbe in termini di CDT?**
-13. **Cosa si intende con "computing device" inteso come servizio di base/pubblico? Discuti una sua eventuale promozione formale a servizio pubblico.**
-14. **Cosa si intende con "domicilio digitale"? Articola promozione a servizio pubblico.**
-15. **Quali "caveat" abbiamo delineato per i servizi attuali di "domicilio digitale"?**
-16. **Cos'è il GDPR? come mai influenza il tema dei servizi di base/pubblici?**
-17. **Discuti il tema "posta elettronica/PEC" come servizio di base/pubblico.**
-18. **Che difetti ha (aveva) la PEC?**
-19. **Quali problemi abbiamo citato in tema PA e posta elettronica?**
-20. **Cosa si intende con "identità digitale"? Perché è utile?**
-21. **Cos'è un "password manager" e perché potrebbe essere molto utile ad un cittadino?**
-22. **Cos'è la "firma digitale"?**
-23. **Cos'è una "marca temporale"?**
-24. **Cos'è una "conservatoria digitale"?**
-25. **Cos'è la "fatturazione elettronica"?**
-26. **Perché le cabine telefoniche erano importanti? Pensi sia stato giusto eliminarle?**
+26) **Cita qualche personaggio/ente "famoso" che supporta la net neutrality.**
+	i
+27) **Cita soggetti che vorrebbero aumentare la relatività in rete.**
+	i
+28) **Quali sono gli aspetti importanti formali (regole) nella gestione della net neutrality?**
+	i
+29) **Cos'è un "data cap" e perché può essere veicolo "subdolo" di aumento della relatività? (peggioramento della net neutrality)**
+	i
+30) **Spiega il termine ADSL, soprattutto in ottica net neutrality.**
+	i
+31) **Discuti la proposta del wifi come servizio pubblico.**
+	i
+32) **Cos'è WiFi4EU?**
+	i
+33) **Cos'era il "decreto Pisanu"?**
+	i
+34) **Cosa si intende con "flat rate"? Perché ci interessa in CDT?**
+	i
+35) **Cos'è il "roaming europeo"?**
+	i
+36) **Presenta le varie possibilità di connessione alla rete (dal rame, alla fibra, al 3/4/5G) in termini di "digital divide".**
+	i
+37) **Perché proponiamo come "servizio di base/universale/pubblico" l'abbassamento del limite di "digital divide"? Cosa comporterebbe in termini di CDT?**
+	i
+38) **Cosa si intende con "computing device" inteso come servizio di base/pubblico? Discuti una sua eventuale promozione formale a servizio pubblico.**
+	i
+39) **Cosa si intende con "domicilio digitale"? Articola promozione a servizio pubblico.**
+	i
+40) **Quali "caveat" abbiamo delineato per i servizi attuali di "domicilio digitale"?**
+	i
+41) **Cos'è il GDPR? come mai influenza il tema dei servizi di base/pubblici?**
+	i
+42) **Discuti il tema "posta elettronica/PEC" come servizio di base/pubblico.**
+	i
+43) **Che difetti ha (aveva) la PEC?**
+	i
+44) **Quali problemi abbiamo citato in tema PA e posta elettronica?**
+	i
+45) **Cosa si intende con "identità digitale"? Perché è utile?**
+	i
+46) **Cos'è un "password manager" e perché potrebbe essere molto utile ad un cittadino?**
+	i
+47) **Cos'è la "firma digitale"?**
+	i
+48) **Cos'è una "marca temporale"?**
+	i
+49) **Cos'è una "conservatoria digitale"?**
+	i
+50) **Cos'è la "fatturazione elettronica"?**
+	i
+51) **Perché le cabine telefoniche erano importanti? Pensi sia stato giusto eliminarle?**
+	i
 
 ----------------------------------------------------------------
 
 ## L3
-1. quali sono i temi salienti del livello "edu" dell'arcobaleno?
-2. cosa si intende con conoscenza "whitebox"?
-3. cosa si intende con conoscenza "blackbox"?
-4. cosa afferma Rushkoff in tema di complessità dei sistemi?
-5. perché citiamo "Internet of Things" in L-edu?
-6. perché citiamo l'usabilità e le interfacce uomo-macchina in L-edu?
-7. cosa sono ACTA, PIPA, SOPA, HADOPI e perché le citiami in L-edu?
-8. cosa sono DRM (perché viene espanso con due acronimi diversi?) e UEFI e perché ci interessano in L-edu?
-9. cosa si intende con "azzoppare la crittografia"?
-10. perché riteniamo il mondo tecnologico "minaccioso"?
-11. che differenze ci sono tra un normale interruttore e uno IoT? e perché ci interessa nel contesto CDT?
-12. perché abbiamo citato il termostato Nest?
-13. che tipi di "relazione" con i device abbiamo discusso? con quanti device ci "relazioniamo" in media? (ordine di grandezza)
-14. cosa intendiamo con "complessità" dei device?
-15. cosa intendiamo con "tecnologia mascherante"?
-16. cosa intendeva Arthur Clarke con la sua frase sulla magia?
-17. perché una tecnologia mascherante potrebbe influire sui nostri diritti di cittadinanza?
-18. cosa si intende con WYSIWYG? perché ci interessa nel contesto della CDT?
-19. perché l'esempio dei permessi di Android per le app è significativo? (o non lo è secondo te)
-20. cos'è il "rooting/jailbreaking" di un apparecchio digitale? perché è importante in CDT e perché i produttori lo scoraggiano?
-21. cos'è il "luddismo"? e il "neo-luddismo"?
-22. esiste un "luddismo positivo"? cosa proponiamo come "luddismo positivo" in CDT?
-23. cosa si intende con "iper-normazione"? e per "comprensibilità dei testi di legge"?
-24. cosa intendiamo con "minacce legislative" al mondo digitale?
-25. cos'è un brevetto? perché lo citiamo in senso negativo?
-26. cos'è il copyright? perché lo citiamo in senso negativo? (specie sul tema delle durate)
-27. perché i "filtri di protezione per i contenuti illegali" hanno poco senso?
-28. discuti il tema dell'anonimato in rete in termini di possibilità tecniche, vantaggi e svantaggi
-29. perché le proposte di legge sull'indebolimento della crittografia sono pericolose? (o non lo sono secondo te)
-30. cos'è l'"equo compenso" e perché lo citiamo negativamente?
-31. a quale Costituzione si riferisce Lessig? perché dice "I nostri fondatori temevano un governo troppo potente e la nostra Costituzione è scritta in modo da impedirlo"? noi in Italia abbiamo una protezione analoga?
-32. a cosa si riferisce Lessig quando parla di "regulator"? cosa intende con "information is zoned"?
-33. cosa intende Lessig con "il software regola il mondo intero"?
-34. fai qualche esempio di "sistema software" che decide sulla vita dei cittadini
-35. perché è importante "comprendere" l'architettura della rete e del software per potersi dire cittadini digitali?
-36. cosa si intende con "computing agency"?
-37. fai qualche esempio storico di device che ha deciso per proprio conto di effettuare operazioni non desiderabili
-38. perché diciamo che oggigiorno non possediamo più molti oggetti digitali?
-39. cos'è il "software proprietario" e perché lo riteniamo deleterio?
-40. cosa ha fatto John Deere sui propri veicoli e perché lo citiamo in senso negativo?
-41. cosa sono i "diritti di root" in relazione ai device digitali?
-42. perché alcuni vendor vogliono impedire il "rooting" dei device? cita qualche esempio
-43. cosa ha implementato BMW per i proprio sedili? perché lo riteniamo negativo?
-44. cosa intendiamo con "furto della computing agency"?
-45. cos'è il "digital divide non tecnologico"?
-46. cosa dice il DESI in merito al "digital divide non tecnologico"?
-47. Cosa ci ha "insegnato" la pandemia in termini di "digital divide" (sia tecnologico che non tecnologico - sul libro non c'è)?
-48. a cosa ci riferiamo col termine "deficit di conoscenza" (digitale)?
-49. cosa intendiamo con "analfabetismo operativo e meta-operativo"?
-50. sei d'accordo sul fatto che i "nativi digitali" siano molto più alfabetizzati in senso meta-operativo rispetto ad altre categorie di popolazione?
-51. cosa si intende con "superare l'addestramento" (Fuggetta)?
-52. è vera la frase "Non credete a tutto ciò che leggete su Internet" di A. Lincoln? perché? c'è qualcosa che non quadra?
-53. cosa dice la "legge di Sturgeon"? perché è abbastanza ragionevole attribuirla ai contenuti su Internet?
-54. a cosa si riferisce il "caso" Cambridge Analytica? cosa c'entra con la Relatività della rete?
-55. cos'è l'effetto Dunning-Kruger?
-56. cosa si intende con "pensiero critico"?
-57. cos'è la "lettura superficiale" (skimming)?
-58. cosa si intende con "capacità di comprendere un testo"? (definizione minimale)
-59. qual è l'aspetto negativo degli ipertesti?
-60. cosa sono le "interruption technologies"?
-61. cosa si intende con "esternalizzazione della conoscenza"?
-62. cosa sono le "difese istituzionali" nel contesto L-edu?
-63. riassumi i punti chiave della "Raccomandazione del Consiglio relativa alle competenze chiave per l’apprendimento permanente"
-64. elenca alcune "competenze chiave" della "Raccomandazione..."
-65. riassumi la situazione del "digital divide cognitivo" in relazione agli studi PISA-OCSE
-66. cosa si intende con "capacità di imparare a imparare"?
-67. cosa si intende con "under the hood"?
-68. spiega lo spettrogramma relativo alla "Educazione alla cittadinanza digitale" del provvedimento sulla "Introduzione dell’insegnamento scolastico dell’educazione civica"
-69. perchè i "livelli alti dell'arcobaleno fanno paura"?
-70. cosa si intende con "hands on" e perché è importante in ambito CDT? in che contesto è stato nominato?
-71. che parere dai all'iniziativa ECDL? (articolare)
-72. cos'è il PNSD? com'è articolato?
-73. cosa si intende con "lifelong learning"?
-74. discuti lo spettrogramma del PNSD
-75. cosa si intende con KPI? perché sono importanti? come sono stati applicati al PNSD?
-76. cosa sono le "difese grassroots" nel contesto L-edu?
-77. perché citiamo la "cultura hacker"?
-78. cita qualche punto dell'"etica hacker"
-79. cosa intendiamo con "hacker"?
-80. cosa si intende con "flusso di conoscenza top-down/bottom-up"?
-81. cos'è una EULA?
-82. cos'è il Software Libero?
-83. quali sono le libertà del Software Libero?
-84. cos'è una licenza software?
-85. cos'è una licenza virale?
-86. cos'è il "copyleft"? come lo traduci in italiano?
-87. cos'è la "scarsità artificiale"?
-88. cos'è la "obsolescenza programmata"?
-89. perché le licenze libere sono vantaggiose per L-edu?
-90. cos'è il FUD? chi lo promuove?
-91. discuti l'attuale situazione di penetrazione del Software Libero nel mondo
-92. cos'è il CAD?
-93. riassumi l'iniziativa "right to repair"
-94. cosa si intende con "... as a service"?
-95. quale pratica deleteria mettono in atto molti produttori di componentistica elettronica per impedire all'utente di riparare/migliorare i device "acquistati"?
-96. perché critichiamo il termine "possesso" quando applicato a device moderni?
-97. riassumi il tema del "learn to code"
-98. cos'è il "computational thinking"?
+1. **Quali sono i temi salienti del livello "edu" dell'arcobaleno?**
+2. **Cosa si intende con conoscenza "whitebox"?**
+3. **Cosa si intende con conoscenza "blackbox"?**
+4. **Cosa afferma Rushkoff in tema di complessità dei sistemi?**
+5. **Perché citiamo "Internet of Things" in L-edu?**
+6. **Perché citiamo l'usabilità e le interfacce uomo-macchina in L-edu?**
+7. **Cosa sono ACTA, PIPA, SOPA, HADOPI e perché le citiami in L-edu?**
+8. **Cosa sono DRM (perché viene espanso con due acronimi diversi?) e UEFI e perché ci interessano in L-edu?**
+9. **Cosa si intende con "azzoppare la crittografia"?**
+10. **Perché riteniamo il mondo tecnologico "minaccioso"?**
+11. **Che differenze ci sono tra un normale interruttore e uno IoT? Perché ci interessa nel contesto CDT?**
+12. **Perché abbiamo citato il termostato Nest?**
+13. **Che tipi di "relazione" con i device abbiamo discusso? Con quanti device ci "relazioniamo" in media? (ordine di grandezza)**
+14. **Cosa intendiamo con "complessità" dei device?**
+15. **Cosa intendiamo con "tecnologia mascherante"?**
+16. **Cosa intendeva Arthur Clarke con la sua frase sulla magia?**
+17. **Perché una tecnologia mascherante potrebbe influire sui nostri diritti di cittadinanza?**
+18. **Cosa si intende con WYSIWYG? Perché ci interessa nel contesto della CDT?**
+19. **Perché l'esempio dei permessi di Android per le app è significativo? (o non lo è secondo te)**
+20. **Cos'è il "rooting/jailbreaking" di un apparecchio digitale? Perché è importante in CDT e perché i produttori lo scoraggiano?**
+21. **Cos'è il "luddismo"? E il "neo-luddismo"?**
+22. **Esiste un "luddismo positivo"? Cosa proponiamo come "luddismo positivo" in CDT?**
+23. **Cosa si intende con "iper-normazione"? E per "comprensibilità dei testi di legge"?**
+24. **Cosa intendiamo con "minacce legislative" al mondo digitale?**
+25. **Cos'è un brevetto? Perché lo citiamo in senso negativo?**
+26. **Cos'è il copyright? Perché lo citiamo in senso negativo? (specie sul tema delle durate)**
+27. **Perché i "filtri di protezione per i contenuti illegali" hanno poco senso?**
+28. **Discuti il tema dell'anonimato in rete in termini di possibilità tecniche, vantaggi e svantaggi.**
+29. **Perché le proposte di legge sull'indebolimento della crittografia sono pericolose? (o non lo sono secondo te)**
+30. **Cos'è l'"equo compenso" e perché lo citiamo negativamente?**
+31. **A quale Costituzione si riferisce Lessig? Perché dice "I nostri fondatori temevano un governo troppo potente e la nostra Costituzione è scritta in modo da impedirlo"? Noi in Italia abbiamo una protezione analoga?**
+32. **A cosa si riferisce Lessig quando parla di "regulator"? Cosa intende con "information is zoned"?**
+33. **Cosa intende Lessig con "il software regola il mondo intero"?**
+34. **Fai qualche esempio di "sistema software" che decide sulla vita dei cittadini.**
+35. **Perché è importante "comprendere" l'architettura della rete e del software per potersi dire cittadini digitali?**
+36. **Cosa si intende con "computing agency"?**
+37. **Fai qualche esempio storico di device che ha deciso per proprio conto di effettuare operazioni non desiderabili.**
+38. **Perché diciamo che oggigiorno non possediamo più molti oggetti digitali?**
+39. **Cos'è il "software proprietario" e perché lo riteniamo deleterio?**
+40. **Cosa ha fatto John Deere sui propri veicoli e perché lo citiamo in senso negativo?**
+41. **Cosa sono i "diritti di root" in relazione ai device digitali?**
+42. **Perché alcuni vendor vogliono impedire il "rooting" dei device? Cita qualche esempio.**
+43. **Cosa ha implementato BMW per i proprio sedili? Perché lo riteniamo negativo?**
+44. **Cosa intendiamo con "furto della computing agency"?**
+45. **Cos'è il "digital divide non tecnologico"?**
+46. **Cosa dice il DESI in merito al "digital divide non tecnologico"?**
+47. **Cosa ci ha "insegnato" la pandemia in termini di "digital divide" (sia tecnologico che non tecnologico - sul libro non c'è)?**
+48. **A cosa ci riferiamo col termine "deficit di conoscenza" (digitale)?**
+49. **Cosa intendiamo con "analfabetismo operativo e meta-operativo"?**
+50. **Sei d'accordo sul fatto che i "nativi digitali" siano molto più alfabetizzati in senso meta-operativo rispetto ad altre categorie di popolazione?**
+51. **Cosa si intende con "superare l'addestramento" (Fuggetta)?**
+52. **E' vera la frase "Non credete a tutto ciò che leggete su Internet" di A. Lincoln? Perché? C'è qualcosa che non quadra?**
+53. **Cosa dice la "legge di Sturgeon"? Perché è abbastanza ragionevole attribuirla ai contenuti su Internet?**
+54. **A cosa si riferisce il "caso" Cambridge Analytica? Cosa c'entra con la Relatività della rete?**
+55. **Cos'è l'effetto Dunning-Kruger?**
+56. **Cosa si intende con "pensiero critico"?**
+57. **Cos'è la "lettura superficiale" (skimming)?**
+58. **Cosa si intende con "capacità di comprendere un testo"? (definizione minimale)**
+59. **Qual è l'aspetto negativo degli ipertesti?**
+60. **Cosa sono le "interruption technologies"?**
+61. **Cosa si intende con "esternalizzazione della conoscenza"?**
+62. **Cosa sono le "difese istituzionali" nel contesto L-edu?**
+63. **Riassumi i punti chiave della "Raccomandazione del Consiglio relativa alle competenze chiave per l’apprendimento permanente".**
+64. **Elenca alcune "competenze chiave" della "Raccomandazione...".**
+65. **Riassumi la situazione del "digital divide cognitivo" in relazione agli studi PISA-OCSE.**
+66. **Cosa si intende con "capacità di imparare a imparare"?**
+67. **Cosa si intende con "under the hood"?**
+68. **Spiega lo spettrogramma relativo alla "Educazione alla cittadinanza digitale" del provvedimento sulla "Introduzione dell’insegnamento scolastico dell’educazione civica".**
+69. **Perchè i "livelli alti dell'arcobaleno fanno paura"?**
+70. **Cosa si intende con "hands on" e perché è importante in ambito CDT? In che contesto è stato nominato?**
+71. **Che parere dai all'iniziativa ECDL? (articolare)**
+72. **Cos'è il PNSD? Com'è articolato?**
+73. **Cosa si intende con "lifelong learning"?**
+74. **Discuti lo spettrogramma del PNSD.**
+75. **Cosa si intende con KPI? Perché sono importanti? Come sono stati applicati al PNSD?**
+76. **Cosa sono le "difese grassroots" nel contesto L-edu?**
+77. **Perché citiamo la "cultura hacker"?**
+78. **Cita qualche punto dell'"etica hacker".**
+79. **Cosa intendiamo con "hacker"?**
+80. **Cosa si intende con "flusso di conoscenza top-down/bottom-up"?**
+81. **Cos'è una EULA?**
+82. **Cos'è il Software Libero?**
+83. **Quali sono le libertà del Software Libero?**
+84. **Cos'è una licenza software?**
+85. **Cos'è una licenza virale?**
+86. **Cos'è il "copyleft"? Come lo traduci in italiano?**
+87. **Cos'è la "scarsità artificiale"?**
+88. **Cos'è la "obsolescenza programmata"?**
+89. **Perché le licenze libere sono vantaggiose per L-edu?**
+90. **Cos'è il FUD? Chi lo promuove?**
+91. **Discuti l'attuale situazione di penetrazione del Software Libero nel mondo.**
+92. **Cos'è il CAD?**
+93. **Riassumi l'iniziativa "right to repair".**
+94. **Cosa si intende con "... as a service"?**
+95. **Quale pratica deleteria mettono in atto molti produttori di componentistica elettronica per impedire all'utente di riparare/migliorare i device "acquistati"?**
+96. **Perché critichiamo il termine "possesso" quando applicato a device moderni?**
+97. **Riassumi il tema del "learn to code".**
+98. **Cos'è il "computational thinking"?**
 
 ----------------------------------------------------------------
 
 ## L4
-1. quali sono i temi salienti del livello "transparency" dell'arcobaleno?
-2. cosa si intende con "casa di vetro"?
-3. che differenza vedi tra "conoscibile" e "controllabile"?
-4. spiega i termini "whitebox" e "blackbox" nel contesto L-transparency
-5. cosa si intende con "stato interno" di un ente?
-6. cosa si intende con "civic accountability"?
-7. perché abbiamo citato la metafora dell'orologio in L-transparency?
-8. perché abbiamo parlato di "circolo vizioso" e di "circolo virtuoso" in relazione alla trasparenza?
-9. cosa intendiamo con "conoscere per deliberare"?
-10. a cosa ci riferiamo con "ex-ante" e "ex-post" in relazione alla trasparenza?
-11. in quali ambiti la trasparenza viene limitata per legge?
-12. cosa intendiamo con "ribaltamento dell'approccio invasivo dello stato"?
-13. spiega la frase di Brandeis sulla "luce del sole"
-14. perché la frase "se non ho nulla da nascondere..." è profondamente sbagliata?
-15. spiega il termine "opendata"
-16. descrivi la scala di Tim Berners-Lee
-17. cosa si intende con "machine readable"?
-18. cos'è RDF?
-19. descrivi la scala di Tim Davies
-20. in che senso le due scale opendata sono "trasversali/ortogonali"?
-21. cosa intendiamo con "prosumer"?
-22. cosa intendiamo con "easily guessable sitenames" (nomi siti facilmente indovinabili)? perché sono utili?
-23. quali metodi di misura effettiva della qualità degli opendata conosci?
-24. quali difetti abbiamo citato nei meccanismi di valutazione effettiva degli opendata?
-25. cos'è il "crawling"? perché è utile?
-26. cita qualche tema descritto dall'"Open data maturity study"
-27. discuti il meccanismo di valutazione degli opendata basato sul numero di dataset
-28. cosa si intende con "tecnica di pletorizzazione"? è una tecnica che consiglieresti ad un ente pubblico?
-29. in che senso gli opendata potrebbero essere "fuori portata dei cittadini"?
-30. cita qualche mediatore opendata
-31. cosa fa openpolis?
-32. cos'è un "civic hacker"?
-33. articola il tema "dati in locale vs. online"
-34. cita qualche piattaforma di gestione dati online
-35. cos'è un formato di file? (nel contesto opendata)
-36. cita e descrivi qualche formato di file nel contesto opendata
-37. quali sono i problemi legati ai documenti scansionati?
-38. perché le API sono importanti in ambito opendata?
-39. cos'è REST?
-40. quali sono i pro e i contro dell'accesso via API ai dataset?
-41. cosa si intende con "webstacle"? fai degli esempi
-42. descrivi il caso ARPA per i "webstacle"
-43. come si può combattere contro i "webstacle"?
-44. cos'è lo "scraping"?
-45. cosa offrono i venditori di servizi di APIficazione?
-46. cos'è il "whistleblowing"?
-47. come si declinano le licenze libere nel contesto opendata?
-48. descrivi alcuni problemi legati alla "data science"
-49. cosa si intende con "replicabilità"?
-50. cos'è il "ritiro di un articolo"?
-51. cos'è il F.A.I.R.? a cosa dovrebbe servire?
-52. cos'è il NUSAP? a quale problema vorrebbe dare risposta?
-53. cos'è un "disciplinare di raccolta dati"? perché è fondamentale?
-54. discuti il tema "strumenti software" nel contesto opendata
-55. cosa si intende con "storytelling"?
-56. cosa si intende con "policy-based evidence"?
-57. quali tecniche di "dataviz" possono essere usate per fare "storytelling" o in generale per confondere l'uditorio? #1. cosa si intende con "responsabilità civica"?
-58. cos'è il "principio di pubblicità" e perché è rilevante?
-59. cos'è il "principio di trasparenza" e perché è rilevante?
-60. cos'è un URP?
-61. cos'è il FOIA (italiano)? cosa prevede? che risultati ha dato (openpolis)?
-62. cos'è il CAD? perché lo riproponiamo in L4?
-63. cos'è la "Carta della cittadinanza digitale" (nel CAD)? quali spunti interessanti (legati all'arcobaleno della CDT) possiamo trovarvi?
-64. cos'è l'OGP (Open Government Partnership)? [respo civica in file separato]
+1. Quali sono i temi salienti del livello "transparency" dell'arcobaleno?
+2. Cosa si intende con "casa di vetro"?
+3. Che differenza vedi tra "conoscibile" e "controllabile"?
+4. Spiega i termini "whitebox" e "blackbox" nel contesto L-transparency
+5. Cosa si intende con "stato interno" di un ente?
+6. Cosa si intende con "civic accountability"?
+7. Perché abbiamo citato la metafora dell'orologio in L-transparency?
+8. Perché abbiamo parlato di "circolo vizioso" e di "circolo virtuoso" in relazione alla trasparenza?
+9. Cosa intendiamo con "conoscere per deliberare"?
+10. A cosa ci riferiamo con "ex-ante" e "ex-post" in relazione alla trasparenza?
+11. In quali ambiti la trasparenza viene limitata per legge?
+12. Cosa intendiamo con "ribaltamento dell'approccio invasivo dello stato"?
+13. Spiega la frase di Brandeis sulla "luce del sole".
+14. Perché la frase "se non ho nulla da nascondere..." è profondamente sbagliata?
+15. Spiega il termine "opendata"
+16. Descrivi la scala di Tim Berners-Lee.
+17. Cosa si intende con "machine readable"?
+18. Cos'è RDF?
+19. Descrivi la scala di Tim Davies.
+20. In che senso le due scale opendata sono "trasversali/ortogonali"?
+21. Cosa intendiamo con "prosumer"?
+22. Cosa intendiamo con "easily guessable sitenames" (nomi siti facilmente indovinabili)? Perché sono utili?
+23. Quali metodi di misura effettiva della qualità degli opendata conosci?
+24. Quali difetti abbiamo citato nei meccanismi di valutazione effettiva degli opendata?
+25. Cos'è il "crawling"? Perché è utile?
+26. Cita qualche tema descritto dall'"Open data maturity study".
+27. Discuti il meccanismo di valutazione degli opendata basato sul numero di dataset.
+28. Cosa si intende con "tecnica di pletorizzazione"? E' una tecnica che consiglieresti ad un ente pubblico?
+29. In che senso gli opendata potrebbero essere "fuori portata dei cittadini"?
+30. Cita qualche mediatore opendata.
+31. Cosa fa openpolis?
+32. Cos'è un "civic hacker"?
+33. Articola il tema "dati in locale vs. online".
+34. Cita qualche piattaforma di gestione dati online.
+35. Cos'è un formato di file? (nel contesto opendata).
+36. Cita e descrivi qualche formato di file nel contesto opendata.
+37. Quali sono i problemi legati ai documenti scansionati?
+38. Perché le API sono importanti in ambito opendata?
+39. Cos'è REST?
+40. Quali sono i pro e i contro dell'accesso via API ai dataset?
+41. Cosa si intende con "webstacle"? Fai degli esempi.
+42. Descrivi il caso ARPA per i "webstacle".
+43. Come si può combattere contro i "webstacle"?
+44. Cos'è lo "scraping"?
+45. Cosa offrono i venditori di servizi di APIficazione?
+46. Cos'è il "whistleblowing"?
+47. Come si declinano le licenze libere nel contesto opendata?
+48. Descrivi alcuni problemi legati alla "data science".
+49. Cosa si intende con "replicabilità"?
+50. Cos'è il "ritiro di un articolo"?
+51. Cos'è il F.A.I.R.? A cosa dovrebbe servire?
+52. Cos'è il NUSAP? A quale problema vorrebbe dare risposta?
+53. Cos'è un "disciplinare di raccolta dati"? Perché è fondamentale?
+54. Discuti il tema "strumenti software" nel contesto opendata.
+55. Cosa si intende con "storytelling"?
+56. Cosa si intende con "policy-based evidence"?
+57. Quali tecniche di "dataviz" possono essere usate per fare "storytelling" o in generale per confondere l'uditorio?
+58. Cosa si intende con "responsabilità civica"?
+59. Cos'è il "principio di pubblicità" e perché è rilevante?
+60. Cos'è il "principio di trasparenza" e perché è rilevante?
+61. Cos'è un URP?
+62. Cos'è il FOIA (italiano)? Cosa prevede? Che risultati ha dato (openpolis)?
+63. Cos'è il CAD? Perché lo riproponiamo in L4?
+64. Cos'è la "Carta della cittadinanza digitale" (nel CAD)? Quali spunti interessanti (legati all'arcobaleno della CDT) possiamo trovarvi?
+65. Cos'è l'OGP (Open Government Partnership)? [respo civica in file separato]
 
 ----------------------------------------------------------------
 
