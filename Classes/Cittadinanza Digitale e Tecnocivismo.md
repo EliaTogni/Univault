@@ -423,17 +423,17 @@
 30) **Cosa si intende con "accessibilità" nei servizi digitali?**
 	Si parla di accessibilità quando ci si preoccupa di non escludere utenti con attività fisiche limitate, quali, ad esempio, i non udenti, ipovedenti o non vedenti.
 31) **Cos'è la "relatività" nei servizi digitali? In cosa si vede di solito?**
-	i
+	 I servizi sono relativistici, nel senso che non possono esistere due osservatori che vedono un servizio allo stesso modo. Esiste una quantità fisiologica di relatività che è necessaria e voluta (e.g., richiesta anagrafica da due soggetti differenti). 
 32) **Cosa si intende con "price discrimination"?**
-	i
+	 La price discrimination è la strategia commerciale di imporre a consumatori diversi prezzi diversi per l'acquisto dello stesso bene offerto, a seconda delle caratteristiche conosciute o presunte della domanda. Questa tecnica facilita l'introduzione arbitraria di relatività, permettendo ai venditori di massimizzare il profitto lasciando poche difese agli acquirenti.
 33) **In cosa si nota la "relatività" nei servizi di streaming?**
-	i
+	 Lo si nota nell'elenco dei media disponibili ai clienti: ogni nazione vede una lista locale, cioè adattata al paese da cui proviene la richiesta, al punto che si trovano in rete le spiegazioni sull'uso di strumenti come le VPN per abbassare l'elevato tasso di relatività ed accedere quindi a liste diverse, più complete.
 34) **In cosa si nota la "relatività" nei social network?**
-	i
+	 Un social network possiede una vaga approssimazione del nostro profilo psicologico personale, ottenuto tramite le informazioni trasmesse da noi tramite like, condivisioni ecc. L'algoritmo, poi, usa tecniche elaborate per profilarci sulla base di quelle informazioni parziali. Lo scopo di un social network è quello di tenerci il più possibile connessi, in modo da farci consumare più pubblicità. Di conseguenza, è importante che mostri solo informazioni che ci invoglino allo scroll down compulsivo. A ciascun utente venfono proposti contenuti ritenuti vicini ai propri interessi.
 35) **Cos'è una "filter bubble"? A quale scopo viene applicata?**
-	i
+	 La "filter bubble" è un concetto che si riferisce all'idea che le persone possano finire per essere esposte a informazioni ristrette e conformi alle proprie convinzioni o interessi, a causa degli algoritmi di filtraggio utilizzati dai motori di ricerca e dalle piattaforme di social media. In pratica, quando usi internet, i motori di ricerca e le piattaforme di social media tendono a presentarti contenuti che sono in linea con le tue precedenti interazioni online e le tue preferenze dichiarate. Questo può creare una sorta di bolla intorno all'utente, dove le vedute dell'utente vengono costantemente rafforzate senza essere sfidate da opinioni diverse. Viene applicata nei casi di pilotaggio politico: alcune organizzazioni hanno comprato dalle varie piattaforme social la possibilità di mostrare contenuti targhettizzati verso gli elettori, per orientare le opinioni politiche e le successive elezioni.
 36) **Cos'è Internet Archive? Perché può essere utile in questo contesto "relativistico"?**
-	i
+	 The Internet Archive è un ente non governativo il cui scopo è preservare informazioni che altrimenti andrebbero perse se cancellate dal sito originale. Dato un URL è possibile navigare indietro nel tempo andando a consultarne il contenuto ad una data specifica, se presente in archivio.
 37) **Cos'è il Principio di Locard applicato ai servizi digitali?**
 	i 
 38) **Cos'è un "log" e perché ci interessa in CDT?**
