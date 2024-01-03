@@ -457,67 +457,82 @@
 ----------------------------------------------------------------
 
 ## L2
-1) Quali sono i temi salienti del livello "access" dell'arcobaleno?
+1) **Quali sono i temi salienti del livello "access" dell'arcobaleno?**
 	i
-2) Cosa si intende con "servizio di base"?
+2) **Cosa si intende con "servizio di base"?**
 	i
-3) Cos'è una "zona a fallimento di mercato"?
+3) **Cos'è una "zona a fallimento di mercato"?**
 	i
-4) Un "servizio di base" deve essere fornito dallo Stato?
+4) **Un "servizio di base" deve essere fornito dallo Stato?**
 	i
-5) Cita qualche "servizio di base" (anche se non formalmente/legalmente definito tale) tradizionale a cui si pensa affrontando il tema.
+5) **Cita qualche "servizio di base" (anche se non formalmente/legalmente definito tale) tradizionale a cui si pensa affrontando il tema.**
 	i
-6) Perché non basta una "qualsiasi connessione a Internet" come servizio di base?
+6) **Perché non basta una "qualsiasi connessione a Internet" come servizio di base?**
 	i
-7) Ha senso parlare di "diritto all'hardware"?
+7) **Ha senso parlare di "diritto all'hardware"?**
 	i
-8) Cos'è la "piramide di Maslow"? (cita qualche bisogno in particolare)
+8) **Cos'è la "piramide di Maslow"? (cita qualche bisogno in particolare)**
 	i
-9) Perché non è perfettamente applicabile la gerarchia dei bisogni?
+9) **Perché non è perfettamente applicabile la gerarchia dei bisogni?**
 	i
-10) Quale parallelo puoi tracciare tra Maslow e l'Arcobaleno della CDT?
+10) **Quale parallelo puoi tracciare tra Maslow e l'Arcobaleno della CDT?**
 	i
-11) Perché il meme in cui la rete è sotto al livello fisiologico fa sorridere?
-2. quale critica venne fatta alla piramide di Maslow?
-3. cosa si intende con "servizio pubblico"? (in contrapposizione a "servizio di base")
-4. qual è il senso/utilità di portare a "servizio pubblico" un servizio di base?
-5. quali sono i principi di erogazione di un servizio pubblico? e perché sono importanti?
-6. cita qualche meta-diritto legato ai servizi
-7. cos'è uno SLA? cosa serve per poterlo verificare contrattualmente?
-8. cita qualche servizio tradizionale di base e/o pubblico e articolane le caratteristiche di "qualità"
-9. esistono influenze fra servizi analogici tradizionali e servizi digitali? fai qualche esempio
-10. cos'è il "digital divide"?
-11. cos'è la "net neutrality"?
-12. cos'è il DESI?
-13. qual è la "stranezza" italiana in termini di accesso alla rete e cellulari?
-14. cos'è il "digital divide cognitivo/culturale"?
-15. chi coniò il termine "net neutrality"?
-16. cita qualche personaggio/ente "famoso" che supporta la net neutrality
-17. cita soggetti che vorrebbero aumentare la relatività in rete
-18. quali sono gli aspetti importanti formali (regole) nella gestione della net neutrality?
-19. cos'è un "data cap" e perché può essere veicolo "subdolo" di aumento della relatività? (peggioramento della net neutrality)
-20. spiega il termine ADSL, soprattutto in ottica net neutrality
-21. discuti la proposta del wifi come servizio pubblico
-22. cos'è WiFi4EU?
-23. cos'era il "decreto Pisanu"?
-24. cosa si intende con "flat rate"? e perché ci interessa in CDT?
-25. cos'è il "roaming europeo"?
-26. presenta le varie possibilità di connessione alla rete (dal rame, alla fibra, al 3/4/5G) in termini di "digital divide"
-27. perché proponiamo come "servizio di base/universale/pubblico" l'abbassamento del limite di "digital divide"? cosa comporterebbe in termini di CDT?
-28. cosa si intende con "computing device" inteso come servizio di base/pubblico? discuti una sua eventuale promozione formale a servizio pubblico
-29. cosa si intende con "domicilio digitale"? articola promozione a servizio pubblico
-30. quali "caveat" abbiamo delineato per i servizi attuali di "domicilio digitale"?
-31. cos'è il GDPR? come mai influenza il tema dei servizi di base/pubblici?
-32. discuti il tema "posta elettronica/PEC" come servizio di base/pubblico
-33. che difetti ha (aveva) la PEC?
-34. quali problemi abbiamo citato in tema PA e posta elettronica?
-35. cosa si intende con "identità digitale"? perché è utile?
-36. cos'è un "password manager" e perché potrebbe essere molto utile ad un cittadino?
-37. cos'è la "firma digitale"?
-38. cos'è una "marca temporale"?
-39. cos'è una "conservatoria digitale"?
-40. cos'è la "fatturazione elettronica"?
-41. perché le cabine telefoniche erano importanti? pensi sia stato giusto eliminarle?
+11) **Perché il meme in cui la rete è sotto al livello fisiologico fa sorridere?**
+	i
+12) **Quale critica venne fatta alla piramide di Maslow?**
+	i
+13) **Cosa si intende con "servizio pubblico"? (in contrapposizione a "servizio di base")**
+	i
+14) **Qual è il senso/utilità di portare a "servizio pubblico" un servizio di base?**
+	i
+15) **Quali sono i principi di erogazione di un servizio pubblico? Perché sono importanti?**
+	i
+16) **Cita qualche meta-diritto legato ai servizi.**
+	i
+17) **Cos'è uno SLA? Cosa serve per poterlo verificare contrattualmente**?
+	i
+18) **Cita qualche servizio tradizionale di base e/o pubblico e articolane le caratteristiche di "qualità".**
+	i
+19) **Esistono influenze fra servizi analogici tradizionali e servizi digitali? Fai qualche esempio.**
+	i
+20) **Cos'è il "digital divide"?**
+	i
+21) **Cos'è la "net neutrality"?**
+	i
+22) **Cos'è il DESI?**
+	i
+23) **Qual è la "stranezza" italiana in termini di accesso alla rete e cellulari?**
+	i
+24) **Cos'è il "digital divide cognitivo/culturale"?**
+	i
+25) **Chi coniò il termine "net neutrality"?**
+	i
+1. **Cita qualche personaggio/ente "famoso" che supporta la net neutrality.**
+2. **Cita soggetti che vorrebbero aumentare la relatività in rete.**
+3. **Quali sono gli aspetti importanti formali (regole) nella gestione della net neutrality?**
+4. **Cos'è un "data cap" e perché può essere veicolo "subdolo" di aumento della relatività? (peggioramento della net neutrality)**
+5. **Spiega il termine ADSL, soprattutto in ottica net neutrality.**
+6. **Discuti la proposta del wifi come servizio pubblico.**
+7. **Cos'è WiFi4EU?**
+8. **Cos'era il "decreto Pisanu"?**
+9. **Cosa si intende con "flat rate"? Perché ci interessa in CDT?**
+10. **Cos'è il "roaming europeo"?**
+11. **Presenta le varie possibilità di connessione alla rete (dal rame, alla fibra, al 3/4/5G) in termini di "digital divide".**
+12. **Perché proponiamo come "servizio di base/universale/pubblico" l'abbassamento del limite di "digital divide"? Cosa comporterebbe in termini di CDT?**
+13. **Cosa si intende con "computing device" inteso come servizio di base/pubblico? Discuti una sua eventuale promozione formale a servizio pubblico.**
+14. **Cosa si intende con "domicilio digitale"? Articola promozione a servizio pubblico.**
+15. **Quali "caveat" abbiamo delineato per i servizi attuali di "domicilio digitale"?**
+16. **Cos'è il GDPR? come mai influenza il tema dei servizi di base/pubblici?**
+17. **Discuti il tema "posta elettronica/PEC" come servizio di base/pubblico.**
+18. **Che difetti ha (aveva) la PEC?**
+19. **Quali problemi abbiamo citato in tema PA e posta elettronica?**
+20. **Cosa si intende con "identità digitale"? Perché è utile?**
+21. **Cos'è un "password manager" e perché potrebbe essere molto utile ad un cittadino?**
+22. **Cos'è la "firma digitale"?**
+23. **Cos'è una "marca temporale"?**
+24. **Cos'è una "conservatoria digitale"?**
+25. **Cos'è la "fatturazione elettronica"?**
+26. **Perché le cabine telefoniche erano importanti? Pensi sia stato giusto eliminarle?**
 
 ----------------------------------------------------------------
 
