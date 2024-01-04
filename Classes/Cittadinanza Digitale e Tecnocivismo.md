@@ -235,7 +235,7 @@
 	Si tratta del processo attraverso il quale molti governi, nel desiderio di controllare i propri cittadini e con la scusa della lotta al terrorismo, col passare degli anni hanno cercato, spesso riuscendoci, di allungare a dismisura i tempi di conservazione dei dati di raccolti in massa. La direttiva Europea del $2006$ fissa la conservazione da minimo sei mesi fino ad un massimo di $24$ (derogabile dagli stati membri). In Italia, nel $2017$ l'obbligo venne prolungato fino a settantadue mesi.
 78) **Cosa si intende con "profilazione" (a livello di rete)?**
 	La profilazione a livello di rete si riferisce al processo di analisi e identificazione dei modelli di traffico e comportamenti degli utenti all'interno di una rete. Questo coinvolge la raccolta e l'analisi di dati relativi al traffico di rete, al fine di classificare e comprendere le attività degli utenti, le applicazioni utilizzate e altri aspetti rilevanti.
-1) **Cosa si intende con "sorveglianza anticrimine" (a livello di rete)?**
+79) **Cosa si intende con "sorveglianza anticrimine" (a livello di rete)?**
 	Con sorveglianza anticrimine si intende il monitoraggio delle azioni in Rete di gruppi circoscritti di persone attenzionate dalle forze dell'ordine. Questi soggetti potrebbero non aver ancora commesso reati, ma sono stati associati ad azioni criminali e vengono sorvegliati per conoscere con anticipo eventuali mosse a danno della società.
 80) **Cosa si intende con "pre-crime"?**
 	Si intende la pretesa di prevedere le intenzioni ed i comportamenti delle persone sulla base di alcune loro azioni, pensieri espressi sui social, movimenti sul territorio e così via.
@@ -263,7 +263,7 @@
 	- PRISM: raccolta del contenuto delle comunicazioni e dei documenti direttamente dai server dei maggiori fornitori di servizi statunitensi;
 	- MUSCULAR: analogo a PRISM, raccolta dei dati intercettando i dati non crittografati in transito tra i data center distribuiti di Yahoo e di Google;
 	- TEMPORA: intercettazione e raccolta in territorio britannico e in oceano dei cavi in fibra ottica, per ottenere accesso massivo e indiscriminato ad un enorme quantità di dati personali.
-1) **Cos'è il "boomerang routing"? Perché viene applicato?**
+92) **Cos'è il "boomerang routing"? Perché viene applicato?**
 	Il boomerang routing è la capacità di far transitare il traffico internet su nodi sorvegliati, manipolando le rotte di comunicazione. Viene applicato così che le agenzie di spionaggio siano in grado di far transitare i dati negli USA anche se origine e destinazione delle trasmissione sono in paesi esteri: in questo modo l'intercettazione è soggetta alle leggi statunitensi.
 93) **Cita e descrivi qualche programma di spionaggio/indicizzazione messo in atto da FiveEyes.**
 	- Xkeyscore, sistema di ricerca e recupero dati composto da una serie di interfacce utente per interrogare tutti i dati raccolti attraverso gli altri programmi di sorveglianza.
@@ -563,35 +563,35 @@
 ----------------------------------------------------------------
 
 ## L3
-1. **Quali sono i temi salienti del livello "edu" dell'arcobaleno?**
+1) **Quali sono i temi salienti del livello "edu" dell'arcobaleno?**
 	i
-1. **Cosa si intende con conoscenza "whitebox"?**
+2) **Cosa si intende con conoscenza "whitebox"?**
 	i
-1. **Cosa si intende con conoscenza "blackbox"?**
+3) **Cosa si intende con conoscenza "blackbox"?**
 	i
-1. **Cosa afferma Rushkoff in tema di complessità dei sistemi?**
+4) **Cosa afferma Rushkoff in tema di complessità dei sistemi?**
 	i
-1. **Perché citiamo "Internet of Things" in L-edu?**
+5) **Perché citiamo "Internet of Things" in L-edu?**
 	i
-1. **Perché citiamo l'usabilità e le interfacce uomo-macchina in L-edu?**
+6) **Perché citiamo l'usabilità e le interfacce uomo-macchina in L-edu?**
 	i
-1. **Cosa sono ACTA, PIPA, SOPA, HADOPI e perché le citiami in L-edu?**
+7) **Cosa sono ACTA, PIPA, SOPA, HADOPI e perché le citiami in L-edu?**
 	i
-1. **Cosa sono DRM (perché viene espanso con due acronimi diversi?) e UEFI e perché ci interessano in L-edu?**
+8) **Cosa sono DRM (perché viene espanso con due acronimi diversi?) e UEFI e perché ci interessano in L-edu?**
 	i
-1. **Cosa si intende con "azzoppare la crittografia"?**
+9) **Cosa si intende con "azzoppare la crittografia"?**
 	i
-1. **Perché riteniamo il mondo tecnologico "minaccioso"?**
+10) **Perché riteniamo il mondo tecnologico "minaccioso"?**
 	i
-1. **Che differenze ci sono tra un normale interruttore e uno IoT? Perché ci interessa nel contesto CDT?**
+11) **Che differenze ci sono tra un normale interruttore e uno IoT? Perché ci interessa nel contesto CDT?**
 	i
-1. **Perché abbiamo citato il termostato Nest?**
+12) **Perché abbiamo citato il termostato Nest?**
 	i
-1. **Che tipi di "relazione" con i device abbiamo discusso? Con quanti device ci "relazioniamo" in media? (ordine di grandezza)**
+13) **Che tipi di "relazione" con i device abbiamo discusso? Con quanti device ci "relazioniamo" in media? (ordine di grandezza)**
 	i
-1. **Cosa intendiamo con "complessità" dei device?**
+14) **Cosa intendiamo con "complessità" dei device?**
 	i
-1. **Cosa intendiamo con "tecnologia mascherante"?**
+15) **Cosa intendiamo con "tecnologia mascherante"?**
 	i
 1. **Cosa intendeva Arthur Clarke con la sua frase sulla magia?**
 	i

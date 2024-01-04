@@ -1872,7 +1872,7 @@ The information of the client forms a **client portfolio**.<br />
 
 **Declaration**: property stored as a self-signed credential.
 
-Credentials have a type, therefore it is possible to define a hierarchy of abstractions of credential types $\mathcal{H}$ ($\mathcal{T}$, $\preceq_{isa}$) (e.g., _id_card_ $\preceq_{isa}$ _id_, _id_ $\succ_{isa}$ _credential_).
+Credentials have a type, therefore it is possible to define a hierarchy of abstractions of credential types $\mathcal{H}$ ($\mathcal{T}$, $\preceq_{isa}$) (e.g., _id_card_ $\preceq_{isa}$ _id_, _id_ $\preceq_{isa}$ _credential_).
 
 An example of hierarchy of credential types.
 
@@ -1974,7 +1974,7 @@ $$\lambda(\mathcal{D}) = 1+5+5+10+1+3+5 = 30$$
 
 ##### Server request
 Request $\mathcal{R}$: disjunction of **simple requests**, where a simple request $R$ is a conjunction of **terms**:
-- term $r =type.\{A_1, ..., A_m\}$: disclosure of $\{A_1, ..., A_m\}$ from $c$ such that $type(c) \succeq_{isa} type \to type$ is an abstraction of credential type $type(c)$ in $\mathcal{H}$. The server can't talk in terms of instances.
+- term $r =type.\{A_1, ..., A_m\}$: disclosure of $\{A_1, ..., A_m\}$ from $c$ such that $type(c) \preceq_{isa} type$. This implies that $type$ is an abstraction of credential type $type(c)$ in $\mathcal{H}$. The server can't talk in terms of instances.
 
 Example:
 $$\mathcal{R} = r_1 \wedge r_2$$
@@ -2017,11 +2017,11 @@ The problem of computing a disclosure that minimizes release of information is $
 It is desirable to:
 - enable **derivation of sensitivity levels** of properties (e.g., based on identity exposure);
 - support speciﬁcations in terms of **preferences** (e.g., my id_card is less sensitive than my passport);
-- have sensitivity labels assigned to **proofs** (e.g., a proof that the user is of ageprovided by non-atomic credentials);
+- have sensitivity labels assigned to **proofs** (e.g., a proof that the user is of age provided by non-atomic credentials);
 - have support referring to **existence of a credential** (without releasing it);
 - allow **recipient/context-based sensitivity speciﬁcations** (e.g., dialysis certiﬁcates is less sensitive if released to a doctor than to a generic server);
 - have user-intuitive approaches for expressing preferences (and possibly translate them to sensitivity labels);
-- have a consideration of previous disclosures.
+- have a consideration of previous disclosures;
 - have type vs instance mismatch (server talks about classes, users refer to instances);
 - have the integration with server-side solutions and more expressive server requests.
 
@@ -2032,7 +2032,7 @@ On the server-side there is still work to do to increase expressiveness. Today X
 - does not provide a support for expressing and reasoning about digital certiﬁcates in the speciﬁcation of the authorization policies:
 	- e.g., “attribute nationality should be certiﬁed by a passport”.
 - does not have support for abstractions:
-	-  e.g., “id_document is an abstraction including credentials $\{identity\_card, driver\_license, passport\}$”
+	-  e.g., “_id_document_ is an abstraction including credentials $\{identity\_card, driver\_license, passport\}$”
 - does not have support for policy dialog (to communicate policies to users):
 	- condition (e.g., "_identity_card.age_ $> 18$”);
 	- predicate (e.g., “_identity_card.age_ $>$”);
