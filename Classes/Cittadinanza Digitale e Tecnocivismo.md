@@ -564,103 +564,130 @@
 
 ## L3
 1. **Quali sono i temi salienti del livello "edu" dell'arcobaleno?**
-2. **Cosa si intende con conoscenza "whitebox"?**
-3. **Cosa si intende con conoscenza "blackbox"?**
-4. **Cosa afferma Rushkoff in tema di complessità dei sistemi?**
-5. **Perché citiamo "Internet of Things" in L-edu?**
-6. **Perché citiamo l'usabilità e le interfacce uomo-macchina in L-edu?**
-7. **Cosa sono ACTA, PIPA, SOPA, HADOPI e perché le citiami in L-edu?**
-8. **Cosa sono DRM (perché viene espanso con due acronimi diversi?) e UEFI e perché ci interessano in L-edu?**
-9. **Cosa si intende con "azzoppare la crittografia"?**
-10. **Perché riteniamo il mondo tecnologico "minaccioso"?**
-11. **Che differenze ci sono tra un normale interruttore e uno IoT? Perché ci interessa nel contesto CDT?**
-12. **Perché abbiamo citato il termostato Nest?**
-13. **Che tipi di "relazione" con i device abbiamo discusso? Con quanti device ci "relazioniamo" in media? (ordine di grandezza)**
-14. **Cosa intendiamo con "complessità" dei device?**
-15. **Cosa intendiamo con "tecnologia mascherante"?**
-16. **Cosa intendeva Arthur Clarke con la sua frase sulla magia?**
-17. **Perché una tecnologia mascherante potrebbe influire sui nostri diritti di cittadinanza?**
-18. **Cosa si intende con WYSIWYG? Perché ci interessa nel contesto della CDT?**
-19. **Perché l'esempio dei permessi di Android per le app è significativo? (o non lo è secondo te)**
-20. **Cos'è il "rooting/jailbreaking" di un apparecchio digitale? Perché è importante in CDT e perché i produttori lo scoraggiano?**
-21. **Cos'è il "luddismo"? E il "neo-luddismo"?**
-22. **Esiste un "luddismo positivo"? Cosa proponiamo come "luddismo positivo" in CDT?**
-23. **Cosa si intende con "iper-normazione"? E per "comprensibilità dei testi di legge"?**
-24. **Cosa intendiamo con "minacce legislative" al mondo digitale?**
-25. **Cos'è un brevetto? Perché lo citiamo in senso negativo?**
-26. **Cos'è il copyright? Perché lo citiamo in senso negativo? (specie sul tema delle durate)**
-27. **Perché i "filtri di protezione per i contenuti illegali" hanno poco senso?**
-28. **Discuti il tema dell'anonimato in rete in termini di possibilità tecniche, vantaggi e svantaggi.**
-29. **Perché le proposte di legge sull'indebolimento della crittografia sono pericolose? (o non lo sono secondo te)**
-30. **Cos'è l'"equo compenso" e perché lo citiamo negativamente?**
-31. **A quale Costituzione si riferisce Lessig? Perché dice "I nostri fondatori temevano un governo troppo potente e la nostra Costituzione è scritta in modo da impedirlo"? Noi in Italia abbiamo una protezione analoga?**
-32. **A cosa si riferisce Lessig quando parla di "regulator"? Cosa intende con "information is zoned"?**
-33. **Cosa intende Lessig con "il software regola il mondo intero"?**
-34. **Fai qualche esempio di "sistema software" che decide sulla vita dei cittadini.**
-35. **Perché è importante "comprendere" l'architettura della rete e del software per potersi dire cittadini digitali?**
-36. **Cosa si intende con "computing agency"?**
-37. **Fai qualche esempio storico di device che ha deciso per proprio conto di effettuare operazioni non desiderabili.**
-38. **Perché diciamo che oggigiorno non possediamo più molti oggetti digitali?**
-39. **Cos'è il "software proprietario" e perché lo riteniamo deleterio?**
-40. **Cosa ha fatto John Deere sui propri veicoli e perché lo citiamo in senso negativo?**
-41. **Cosa sono i "diritti di root" in relazione ai device digitali?**
-42. **Perché alcuni vendor vogliono impedire il "rooting" dei device? Cita qualche esempio.**
-43. **Cosa ha implementato BMW per i proprio sedili? Perché lo riteniamo negativo?**
-44. **Cosa intendiamo con "furto della computing agency"?**
-45. **Cos'è il "digital divide non tecnologico"?**
-46. **Cosa dice il DESI in merito al "digital divide non tecnologico"?**
-47. **Cosa ci ha "insegnato" la pandemia in termini di "digital divide" (sia tecnologico che non tecnologico - sul libro non c'è)?**
-48. **A cosa ci riferiamo col termine "deficit di conoscenza" (digitale)?**
-49. **Cosa intendiamo con "analfabetismo operativo e meta-operativo"?**
-50. **Sei d'accordo sul fatto che i "nativi digitali" siano molto più alfabetizzati in senso meta-operativo rispetto ad altre categorie di popolazione?**
-51. **Cosa si intende con "superare l'addestramento" (Fuggetta)?**
-52. **E' vera la frase "Non credete a tutto ciò che leggete su Internet" di A. Lincoln? Perché? C'è qualcosa che non quadra?**
-53. **Cosa dice la "legge di Sturgeon"? Perché è abbastanza ragionevole attribuirla ai contenuti su Internet?**
-54. **A cosa si riferisce il "caso" Cambridge Analytica? Cosa c'entra con la Relatività della rete?**
-55. **Cos'è l'effetto Dunning-Kruger?**
-56. **Cosa si intende con "pensiero critico"?**
-57. **Cos'è la "lettura superficiale" (skimming)?**
-58. **Cosa si intende con "capacità di comprendere un testo"? (definizione minimale)**
-59. **Qual è l'aspetto negativo degli ipertesti?**
-60. **Cosa sono le "interruption technologies"?**
-61. **Cosa si intende con "esternalizzazione della conoscenza"?**
-62. **Cosa sono le "difese istituzionali" nel contesto L-edu?**
-63. **Riassumi i punti chiave della "Raccomandazione del Consiglio relativa alle competenze chiave per l’apprendimento permanente".**
-64. **Elenca alcune "competenze chiave" della "Raccomandazione...".**
-65. **Riassumi la situazione del "digital divide cognitivo" in relazione agli studi PISA-OCSE.**
-66. **Cosa si intende con "capacità di imparare a imparare"?**
-67. **Cosa si intende con "under the hood"?**
-68. **Spiega lo spettrogramma relativo alla "Educazione alla cittadinanza digitale" del provvedimento sulla "Introduzione dell’insegnamento scolastico dell’educazione civica".**
-69. **Perchè i "livelli alti dell'arcobaleno fanno paura"?**
-70. **Cosa si intende con "hands on" e perché è importante in ambito CDT? In che contesto è stato nominato?**
-71. **Che parere dai all'iniziativa ECDL? (articolare)**
-72. **Cos'è il PNSD? Com'è articolato?**
-73. **Cosa si intende con "lifelong learning"?**
-74. **Discuti lo spettrogramma del PNSD.**
-75. **Cosa si intende con KPI? Perché sono importanti? Come sono stati applicati al PNSD?**
-76. **Cosa sono le "difese grassroots" nel contesto L-edu?**
-77. **Perché citiamo la "cultura hacker"?**
-78. **Cita qualche punto dell'"etica hacker".**
-79. **Cosa intendiamo con "hacker"?**
-80. **Cosa si intende con "flusso di conoscenza top-down/bottom-up"?**
-81. **Cos'è una EULA?**
-82. **Cos'è il Software Libero?**
-83. **Quali sono le libertà del Software Libero?**
-84. **Cos'è una licenza software?**
-85. **Cos'è una licenza virale?**
-86. **Cos'è il "copyleft"? Come lo traduci in italiano?**
-87. **Cos'è la "scarsità artificiale"?**
-88. **Cos'è la "obsolescenza programmata"?**
-89. **Perché le licenze libere sono vantaggiose per L-edu?**
-90. **Cos'è il FUD? Chi lo promuove?**
-91. **Discuti l'attuale situazione di penetrazione del Software Libero nel mondo.**
-92. **Cos'è il CAD?**
-93. **Riassumi l'iniziativa "right to repair".**
-94. **Cosa si intende con "... as a service"?**
-95. **Quale pratica deleteria mettono in atto molti produttori di componentistica elettronica per impedire all'utente di riparare/migliorare i device "acquistati"?**
-96. **Perché critichiamo il termine "possesso" quando applicato a device moderni?**
-97. **Riassumi il tema del "learn to code".**
-98. **Cos'è il "computational thinking"?**
+	i
+1. **Cosa si intende con conoscenza "whitebox"?**
+	i
+1. **Cosa si intende con conoscenza "blackbox"?**
+	i
+1. **Cosa afferma Rushkoff in tema di complessità dei sistemi?**
+	i
+1. **Perché citiamo "Internet of Things" in L-edu?**
+	i
+1. **Perché citiamo l'usabilità e le interfacce uomo-macchina in L-edu?**
+	i
+1. **Cosa sono ACTA, PIPA, SOPA, HADOPI e perché le citiami in L-edu?**
+	i
+1. **Cosa sono DRM (perché viene espanso con due acronimi diversi?) e UEFI e perché ci interessano in L-edu?**
+	i
+1. **Cosa si intende con "azzoppare la crittografia"?**
+	i
+1. **Perché riteniamo il mondo tecnologico "minaccioso"?**
+	i
+1. **Che differenze ci sono tra un normale interruttore e uno IoT? Perché ci interessa nel contesto CDT?**
+	i
+1. **Perché abbiamo citato il termostato Nest?**
+	i
+1. **Che tipi di "relazione" con i device abbiamo discusso? Con quanti device ci "relazioniamo" in media? (ordine di grandezza)**
+	i
+1. **Cosa intendiamo con "complessità" dei device?**
+	i
+1. **Cosa intendiamo con "tecnologia mascherante"?**
+	i
+1. **Cosa intendeva Arthur Clarke con la sua frase sulla magia?**
+	i
+1. **Perché una tecnologia mascherante potrebbe influire sui nostri diritti di cittadinanza?**
+	i
+1. **Cosa si intende con WYSIWYG? Perché ci interessa nel contesto della CDT?**
+	i
+1. **Perché l'esempio dei permessi di Android per le app è significativo? (o non lo è secondo te)**
+	i
+1. **Cos'è il "rooting/jailbreaking" di un apparecchio digitale? Perché è importante in CDT e perché i produttori lo scoraggiano?**
+	i
+1. **Cos'è il "luddismo"? E il "neo-luddismo"?**
+	i
+1. **Esiste un "luddismo positivo"? Cosa proponiamo come "luddismo positivo" in CDT?**
+	i
+1. **Cosa si intende con "iper-normazione"? E per "comprensibilità dei testi di legge"?**
+	i
+1. **Cosa intendiamo con "minacce legislative" al mondo digitale?**
+	i
+1. **Cos'è un brevetto? Perché lo citiamo in senso negativo?**
+	i
+1. **Cos'è il copyright? Perché lo citiamo in senso negativo? (specie sul tema delle durate)**
+	i
+1. **Perché i "filtri di protezione per i contenuti illegali" hanno poco senso?**
+	i
+1. **Discuti il tema dell'anonimato in rete in termini di possibilità tecniche, vantaggi e svantaggi.**
+2. **Perché le proposte di legge sull'indebolimento della crittografia sono pericolose? (o non lo sono secondo te)**
+3. **Cos'è l'"equo compenso" e perché lo citiamo negativamente?**
+4. **A quale Costituzione si riferisce Lessig? Perché dice "I nostri fondatori temevano un governo troppo potente e la nostra Costituzione è scritta in modo da impedirlo"? Noi in Italia abbiamo una protezione analoga?**
+5. **A cosa si riferisce Lessig quando parla di "regulator"? Cosa intende con "information is zoned"?**
+6. **Cosa intende Lessig con "il software regola il mondo intero"?**
+7. **Fai qualche esempio di "sistema software" che decide sulla vita dei cittadini.**
+8. **Perché è importante "comprendere" l'architettura della rete e del software per potersi dire cittadini digitali?**
+9. **Cosa si intende con "computing agency"?**
+10. **Fai qualche esempio storico di device che ha deciso per proprio conto di effettuare operazioni non desiderabili.**
+11. **Perché diciamo che oggigiorno non possediamo più molti oggetti digitali?**
+12. **Cos'è il "software proprietario" e perché lo riteniamo deleterio?**
+13. **Cosa ha fatto John Deere sui propri veicoli e perché lo citiamo in senso negativo?**
+14. **Cosa sono i "diritti di root" in relazione ai device digitali?**
+15. **Perché alcuni vendor vogliono impedire il "rooting" dei device? Cita qualche esempio.**
+16. **Cosa ha implementato BMW per i proprio sedili? Perché lo riteniamo negativo?**
+17. **Cosa intendiamo con "furto della computing agency"?**
+18. **Cos'è il "digital divide non tecnologico"?**
+19. **Cosa dice il DESI in merito al "digital divide non tecnologico"?**
+20. **Cosa ci ha "insegnato" la pandemia in termini di "digital divide" (sia tecnologico che non tecnologico - sul libro non c'è)?**
+21. **A cosa ci riferiamo col termine "deficit di conoscenza" (digitale)?**
+22. **Cosa intendiamo con "analfabetismo operativo e meta-operativo"?**
+23. **Sei d'accordo sul fatto che i "nativi digitali" siano molto più alfabetizzati in senso meta-operativo rispetto ad altre categorie di popolazione?**
+24. **Cosa si intende con "superare l'addestramento" (Fuggetta)?**
+25. **E' vera la frase "Non credete a tutto ciò che leggete su Internet" di A. Lincoln? Perché? C'è qualcosa che non quadra?**
+26. **Cosa dice la "legge di Sturgeon"? Perché è abbastanza ragionevole attribuirla ai contenuti su Internet?**
+27. **A cosa si riferisce il "caso" Cambridge Analytica? Cosa c'entra con la Relatività della rete?**
+28. **Cos'è l'effetto Dunning-Kruger?**
+29. **Cosa si intende con "pensiero critico"?**
+30. **Cos'è la "lettura superficiale" (skimming)?**
+31. **Cosa si intende con "capacità di comprendere un testo"? (definizione minimale)**
+32. **Qual è l'aspetto negativo degli ipertesti?**
+33. **Cosa sono le "interruption technologies"?**
+34. **Cosa si intende con "esternalizzazione della conoscenza"?**
+35. **Cosa sono le "difese istituzionali" nel contesto L-edu?**
+36. **Riassumi i punti chiave della "Raccomandazione del Consiglio relativa alle competenze chiave per l’apprendimento permanente".**
+37. **Elenca alcune "competenze chiave" della "Raccomandazione...".**
+38. **Riassumi la situazione del "digital divide cognitivo" in relazione agli studi PISA-OCSE.**
+39. **Cosa si intende con "capacità di imparare a imparare"?**
+40. **Cosa si intende con "under the hood"?**
+41. **Spiega lo spettrogramma relativo alla "Educazione alla cittadinanza digitale" del provvedimento sulla "Introduzione dell’insegnamento scolastico dell’educazione civica".**
+42. **Perchè i "livelli alti dell'arcobaleno fanno paura"?**
+43. **Cosa si intende con "hands on" e perché è importante in ambito CDT? In che contesto è stato nominato?**
+44. **Che parere dai all'iniziativa ECDL? (articolare)**
+45. **Cos'è il PNSD? Com'è articolato?**
+46. **Cosa si intende con "lifelong learning"?**
+47. **Discuti lo spettrogramma del PNSD.**
+48. **Cosa si intende con KPI? Perché sono importanti? Come sono stati applicati al PNSD?**
+49. **Cosa sono le "difese grassroots" nel contesto L-edu?**
+50. **Perché citiamo la "cultura hacker"?**
+51. **Cita qualche punto dell'"etica hacker".**
+52. **Cosa intendiamo con "hacker"?**
+53. **Cosa si intende con "flusso di conoscenza top-down/bottom-up"?**
+54. **Cos'è una EULA?**
+55. **Cos'è il Software Libero?**
+56. **Quali sono le libertà del Software Libero?**
+57. **Cos'è una licenza software?**
+58. **Cos'è una licenza virale?**
+59. **Cos'è il "copyleft"? Come lo traduci in italiano?**
+60. **Cos'è la "scarsità artificiale"?**
+61. **Cos'è la "obsolescenza programmata"?**
+62. **Perché le licenze libere sono vantaggiose per L-edu?**
+63. **Cos'è il FUD? Chi lo promuove?**
+64. **Discuti l'attuale situazione di penetrazione del Software Libero nel mondo.**
+65. **Cos'è il CAD?**
+66. **Riassumi l'iniziativa "right to repair".**
+67. **Cosa si intende con "... as a service"?**
+68. **Quale pratica deleteria mettono in atto molti produttori di componentistica elettronica per impedire all'utente di riparare/migliorare i device "acquistati"?**
+69. **Perché critichiamo il termine "possesso" quando applicato a device moderni?**
+70. **Riassumi il tema del "learn to code".**
+71. **Cos'è il "computational thinking"?**
 
 ----------------------------------------------------------------
 
@@ -734,162 +761,162 @@
 ----------------------------------------------------------------
 
 ## L5
-1. quali sono i temi salienti del livello "sharing" dell'arcobaleno?
-2. quali sono le "fasi" dell'evoluzione di Internet descritte in L5 e perché ci servono?
-3. cosa si intende con "media broadcasting"? a cosa lo contrapponiamo in Internet?
-4. cos'è la "netiquette"? cosa protegge e da cosa ci protegge?
-5. cosa sono le "civic nets"?
-6. che contesto viene descritto nella 1a fase di Internet in L5?
-7. che contesto viene descritto nella 2a fase di Internet in L5?
-8. che contesto viene descritto nella 3a fase di Internet in L5?
-9. che contesto viene descritto nella 4a fase di Internet in L5?
-10. chi è Tim Berners-Lee?
-11. cosa si intende con "bidirezionalità" in L5?
-12. cosa si intende con "molti a molti" in L5?
-13. cosa si intende con "web 2.0"?
-14. cos'è lo "user generated content"?
-15. cos'è un "permalink"?
-16. cos'è un "blog"?
-17. cos'è un URL?
-18. cosa caratterizza Wikipedia?
-19. cosa si intende con "social web"?
-20. cosa si intende con "relazioni simmetriche/asimmetriche" nel social web?
-21. quali "pratiche di condivisione" abbiamo citato in L5?
-22. cos'è l'"information gathering" e come si realizza in genere?
-23. cos'è il "crowdsourcing"?
-24. cosa fa openstreetmaps? a cosa lo associamo?
-25. cosa fa Waze?
-26. cosa si intende con "social action"?
-27. cosa si intende con "civic engagement"?
-28. cosa si intende con "NIMBY"? e con "PIMBY"?
-29. cosa sono i movimenti "NO-qualcosa"?
-30. cosa si intende con "citizen reporting"? fai esempi
-31. perché e in che senso (con esempi) "piccole feature" di un sistema di segnalazione possono (s)favorire la partecipazione?
-32. cosa si intende con "civic accountability"?
-33. perché FixMyStreet può essere considerata una azione di "civic accountability"?
-34. cosa intendiamo con "conversazione" a proposito delle segnalazioni?
-35. cosa si intende con "atteggiamento di delega"?
-36. quali problemi si incontrano nel fare "citizen reporting" su una piattaforma social come Facebook?
-37. cos'è Ushahidi? per cosa è nato?
-38. perché associamo il "whistleblowing" al "citizen reporting"?
-39. cos'è Wikileaks?
-40. chi è Julian Assange?
-41. cos'è ExpoLeaks?
-42. perché in L5 abbiamo citato i siti di recensione/raccomandazione?
-43. cosa sono i "reputation systems"? perché li citiamo in L5?
-44. perché abbiamo citato lo SPID nel contesto delle petizioni?
-45. descrivi l'operato di "change.org"
-46. quali sono le "feature" importanti per un sito di _petitioning_? (articolare)
-47. cosa si intende con "intelligenza civica"?
-48. cosa sono le "fake news"?
-49. cos'è una "fondazione di partecipazione"?
-50. perché è importante la "governance" in una iniziativa di _sharing_?
-51. abbiamo visto tre iniziative di segnalazione di problemi stradali (fixmystreets, sicurezzastradale, venezia), quali differenze nella gestione della possibilità di commentare le segnalazioni? quali conseguenze nella scelta tecnica fatta?
+1. Quali sono i temi salienti del livello "sharing" dell'arcobaleno?
+2. Quali sono le "fasi" dell'evoluzione di Internet descritte in L5 e perché ci servono?
+3. Cosa si intende con "media broadcasting"? A cosa lo contrapponiamo in Internet?
+4. Cos'è la "netiquette"? Cosa protegge e da cosa ci protegge?
+5. Cosa sono le "civic nets"?
+6. Che contesto viene descritto nella 1a fase di Internet in L5?
+7. Che contesto viene descritto nella 2a fase di Internet in L5?
+8. Che contesto viene descritto nella 3a fase di Internet in L5?
+9. Che contesto viene descritto nella 4a fase di Internet in L5?
+10. Chi è Tim Berners-Lee?
+11. Cosa si intende con "bidirezionalità" in L5?
+12. Cosa si intende con "molti a molti" in L5?
+13. Cosa si intende con "web 2.0"?
+14. Cos'è lo "user generated content"?
+15. Cos'è un "permalink"?
+16. Cos'è un "blog"?
+17. Cos'è un URL?
+18. Cosa caratterizza Wikipedia?
+19. Cosa si intende con "social web"?
+20. Cosa si intende con "relazioni simmetriche/asimmetriche" nel social web?
+21. Quali "pratiche di condivisione" abbiamo citato in L5?
+22. Cos'è l'"information gathering" e come si realizza in genere?
+23. Cos'è il "crowdsourcing"?
+24. Cosa fa openstreetmaps? a cosa lo associamo?
+25. Cosa fa Waze?
+26. Cosa si intende con "social action"?
+27. Cosa si intende con "civic engagement"?
+28. Cosa si intende con "NIMBY"? E con "PIMBY"?
+29. Cosa sono i movimenti "NO-qualcosa"?
+30. Cosa si intende con "citizen reporting"? fai degli esempi.
+31. Perché e in che senso (con esempi) "piccole feature" di un sistema di segnalazione possono (s)favorire la partecipazione?
+32. Cosa si intende con "civic accountability"?
+33. Perché FixMyStreet può essere considerata una azione di "civic accountability"?
+34. Cosa intendiamo con "conversazione" a proposito delle segnalazioni?
+35. Cosa si intende con "atteggiamento di delega"?
+36. Quali problemi si incontrano nel fare "citizen reporting" su una piattaforma social come Facebook?
+37. Cos'è Ushahidi? Per cosa è nato?
+38. Perché associamo il "whistleblowing" al "citizen reporting"?
+39. Cos'è Wikileaks?
+40. Chi è Julian Assange?
+41. Cos'è ExpoLeaks?
+42. Perché in L5 abbiamo citato i siti di recensione/raccomandazione?
+43. Cosa sono i "reputation systems"? Perché li citiamo in L5?
+44. Perché abbiamo citato lo SPID nel contesto delle petizioni?
+45. Descrivi l'operato di "change.org".
+46. Quali sono le "feature" importanti per un sito di _petitioning_? (articolare)
+47. Cosa si intende con "intelligenza civica"?
+48. Cosa sono le "fake news"?
+49. Cos'è una "fondazione di partecipazione"?
+50. Perché è importante la "governance" in una iniziativa di _sharing_?
+51. Abbiamo visto tre iniziative di segnalazione di problemi stradali (fixmystreets, sicurezzastradale, venezia), quali differenze nella gestione della possibilità di commentare le segnalazioni? Quali conseguenze nella scelta tecnica fatta?
 
 -----------------------------------------------------------------
 
 ## L6
-1. quali sono i temi salienti del livello "consultation" dell'arcobaleno?
-2. cosa intendiamo con "crisi della democrazia rappresentativa"?
-3. in cosa si manifesta la "crisi della democrazia rappresentativa"?
-4. cosa suggerisce "Raccomandazione 19" emanata nel 2001 dal Comitato dei Ministri del Consiglio d'Europa e rivolta agli Stati membri sulla "Partecipazione dei cittadini alla vita pubblica a livello locale"?
-5. cita qualche "forma di partecipazione diretta al processo decisionale" (sia essa tradizionale che digitale)
-6. cosa si intende con "feedback" dei cittadini?
-7. qual è il problema dell'"intervallo temporale fra le tornate elettorali"?
-8. cos'è il "vincolo di mandato"?
-9. cosa si intende con "democrazia continua"?
-10. cosa si intende con "democrazia diretta"?
-11. cosa si intende con "carattere consultivo" di un processo partecipativo?
-12. cosa si intende con "ascolto"? e con "consultazione"?
-13. cos'è un URP?
-14. perché ci interessano poco i "sondaggi di opinione"?
-15. cosa sono i "feedback (privati) non sollecitati"?
-16. cosa sono i "feedback (pubblici) sollecitati"?
-17. cos'è il "citizen reporting istituzionalizzato"?
-18. quali sono le forme istituzionali di ascolto?
-19. cosa intendiamo con "consultazioni"?
-20. qual è la "questione cruciale" (la risposta) nel contesto del feedback non sollecitato? articolare
-21. cosa sono le FAQ nel contesto di L6?
-22. quali problemi vedi nell'uso di una "pagina social" da parte di una PA?
-23. cosa si intende con "sentiment/sentimento"? è una forma di consultazione? a cosa la paragoneresti?
-24. quali esperienze di "feedback (pubblico) sollecitato" potresti citare? che riscontro/effetto hanno avuto?
-25. perché il "citizen reporting istituzionalizzato" è un processo top-down?
-26. il "citizen reporting istituzionalizzato" ha vantaggi rispetto ai processi citati in L5?
-27. quali esperienze di "citizen reporting istituzionalizzato" potresti citare? che riscontro/effetto hanno avuto?
-28. puoi citare/descrivere qualche iniziativa di social reporting lanciata da soggetti privati?
-29. cosa si intende con "cittadinanza attiva"?
-30. cita qualche vincolo per la validità di una richiesta popolare in generale
-31. cos'è il "contratto sociale"? (vale in molti livelli)
-32. cos'è il "patto partecipativo"? (vale in molti livelli)
-33. quali sono le fasi di una iniziativa di partecipazione popolare? (presentazione, raccolta firme, campaign, voto)
-34. cita e discuti alcuni istituti di partecipazione a livello europeo
-35. cita e discuti alcuni istituti di partecipazione a livello nazionale (Costituzione)
-36. cita e discuti alcuni istituti di partecipazione a livello Comune di Milano
-37. cosa si intende con "consultazione informata"?
-38. quali sono le principali caratteristiche di una consultazione? (doc disponibili, partecipante informato, impegno a dare feedback)
-39. cita e discuti alcuni istituti di consultazione a livello europeo
-40. cita e discuti alcuni istituti di consultazione a livello nazionale
-41. perché abbiamo citato la necessità di "linee guida" per le consultazioni?
-42. quali sono i difetti di una "consultazione" o di un "ascolto" via mail?
-43. quali sono i difetti di una "consultazione" o di un "ascolto" via social?
-44. cita e discuti alcuni istituti di consultazione a livello Comune di Milano
-45. cita pregi e difetti delle iniziative di ascolto e/o consultazione che abbiamo analizzato (a tua scelta)
-46. riassumi gli approfondimenti su Decidim trattati in L6
+1. Quali sono i temi salienti del livello "consultation" dell'arcobaleno?
+2. Cosa intendiamo con "crisi della democrazia rappresentativa"?
+3. In cosa si manifesta la "crisi della democrazia rappresentativa"?
+4. Cosa suggerisce "Raccomandazione 19" emanata nel 2001 dal Comitato dei Ministri del Consiglio d'Europa e rivolta agli Stati membri sulla "Partecipazione dei cittadini alla vita pubblica a livello locale"?
+5. Cita qualche "forma di partecipazione diretta al processo decisionale" (sia essa tradizionale che digitale).
+6. Cosa si intende con "feedback" dei cittadini?
+7. Qual è il problema dell'"intervallo temporale fra le tornate elettorali"?
+8. Cos'è il "vincolo di mandato"?
+9. Cosa si intende con "democrazia continua"?
+10. Cosa si intende con "democrazia diretta"?
+11. Cosa si intende con "carattere consultivo" di un processo partecipativo?
+12. Cosa si intende con "ascolto"? E con "consultazione"?
+13. Cos'è un URP?
+14. Cerché ci interessano poco i "sondaggi di opinione"?
+15. Cosa sono i "feedback (privati) non sollecitati"?
+16. Cosa sono i "feedback (pubblici) sollecitati"?
+17. Cos'è il "citizen reporting istituzionalizzato"?
+18. Quali sono le forme istituzionali di ascolto?
+19. Cosa intendiamo con "consultazioni"?
+20. Qual è la "questione cruciale" (la risposta) nel contesto del feedback non sollecitato? Articolare.
+21. Cosa sono le FAQ nel contesto di L6?
+22. Quali problemi vedi nell'uso di una "pagina social" da parte di una PA?
+23. Cosa si intende con "sentiment/sentimento"? E' una forma di consultazione? A cosa la paragoneresti?
+24. Quali esperienze di "feedback (pubblico) sollecitato" potresti citare? Che riscontro/effetto hanno avuto?
+25. Perché il "citizen reporting istituzionalizzato" è un processo top-down?
+26. Il "citizen reporting istituzionalizzato" ha vantaggi rispetto ai processi citati in L5?
+27. Quali esperienze di "citizen reporting istituzionalizzato" potresti citare? Che riscontro/effetto hanno avuto?
+28. Puoi citare/descrivere qualche iniziativa di social reporting lanciata da soggetti privati?
+29. Cosa si intende con "cittadinanza attiva"?
+30. Cita qualche vincolo per la validità di una richiesta popolare in generale.
+31. Cos'è il "contratto sociale"? (vale in molti livelli)
+32. Cos'è il "patto partecipativo"? (vale in molti livelli)
+33. Quali sono le fasi di una iniziativa di partecipazione popolare? (presentazione, raccolta firme, campaign, voto)
+34. Cita e discuti alcuni istituti di partecipazione a livello europeo.
+35. Cita e discuti alcuni istituti di partecipazione a livello nazionale (Costituzione).
+36. Cita e discuti alcuni istituti di partecipazione a livello Comune di Milano.
+37. Cosa si intende con "consultazione informata"?
+38. Quali sono le principali caratteristiche di una consultazione? (doc disponibili, partecipante informato, impegno a dare feedback)
+39. Cita e discuti alcuni istituti di consultazione a livello europeo.
+40. Cita e discuti alcuni istituti di consultazione a livello nazionale.
+41. Perché abbiamo citato la necessità di "linee guida" per le consultazioni?
+42. Quali sono i difetti di una "consultazione" o di un "ascolto" via mail?
+43. Quali sono i difetti di una "consultazione" o di un "ascolto" via social?
+44. Cita e discuti alcuni istituti di consultazione a livello Comune di Milano.
+45. Cita pregi e difetti delle iniziative di ascolto e/o consultazione che abbiamo analizzato (a tua scelta).
+46. Riassumi gli approfondimenti su Decidim trattati in L6.
 
 ----------------------------------------------------------------
 
 ## L7
 1) Quali sono i temi salienti del livello "democracy" dell'arcobaleno?
-2) definisci il termine "voto/votante/elettore"
-2. definisci il termine "funzione di scelta sociale"
-3. definisci il termine "suffragio universale"
-4. definisci il termine "suffragio diretto/indiretto"
-5. definisci il termine "vincolo di mandato"
-6. definisci il termine "appoggio/supporto (endorsement) / manifestazione di approvazione o dis-approvazione / valutazione (rating)"
-7. quali sono le regole da stabilire per una "votazione"?
-8. quali sono le proprietà tipiche richieste ad un "sistema di voto"?
-9. cosa si intende con "segretezza/libertà/ammissibilità/unicità/immodificabilità/completezza/lealtà/fiducia/verificabilità" in un "sistema di voto"?
-10. in che senso gli scrutini avvengono alla "luce del sole"?
-11. quali sono i problemi riscontrabili nei sistemi di voto tradizionali?
-12. quali potrebbero essere i vantaggi dei sistemi di voto digitali?
-13. cosa si intende con "voto elettronico"? e con "voto online"?
-14. di quali criticità soffre il "voto online"?
-15. analizza le esperienze di voto digitale di Germania, Estonia e Svizzera
-16. descrivi la situazione "voto digitale" in Italia
-17. quali altri contesti di voto in cui la versione digitale potrebbe essere proficuamente applicata abbiamo analizzato?
-18. cosa si intende con "stakeholder"?
-19. quali problemi vedi nall'utilizzo del sistema UniVote?
-20. quali problemi vedi nall'utilizzo del sistema di voto dei "5 stelle"?
-21. perché in alcuni sistemi di voto digitale deve passare un certo tempo dall'iscrizione per ottenere il diritto di voto?
-22. cosa è la "teoria della scelta sociale"?
-23. che vantaggi ha l'uso di elaborazione elettronica in un sistema di voto?
-24. cos'è un "metodo di voto"?
-25. cosa si intende con "minimizzazione della scontentezza"?
-26. cosa si intende con metodo di voto a "scelta singola"?
-27. cosa si intende con metodo di voto a "scelta multipla"?
-28. cosa si intende con metodo di voto "cumulativo"?
-29. cosa si intende con metodo di voto "a ordinamento"?
-30. cosa si intende con "preferenza collettiva"?
-31. cos'è il "principio di Condorcet"?
-32. cos'è il "paradosso di Condorcet" (loop)?
-33. cosa sono le "preferenze indirette"?
-34. cos'è l'elettorato "attivo/passivo"?
-35. cos'è il "criterio di indipendenza delle alternative irrilevanti"?
-36. quali sono i "citeri di fairness" del voto?
-37. cosa dice il "Teorema di Arrow"?
-38. riassumi le esperienze di movimenti e partiti nell'era digitale
-39. cos'è LiquidFeedback e che particoalrità ha?
-40. cosa si intende con "idea gathering"?
-41. cosa si intende con "online deliberation"?
-42. cosa si intende con "collaborative writing" in L7?
-43. cita qualche metodo di voto e descrivilo
-44. cosa si intende con "delega"? e con "delega liquida"?
-45. che parallelo puoi tracciare tra LQFB e Google Votes?
-46. qual è la "golden rule of liquid democracy"? ha senso?
-47. cosa si intende con "decision-making"?
-48. cita e descrivi qualche software di online deliberation di seconda generazione
-49. cosa sono i "bilanci partecipativi"?
-50. quali fasi compongono un "bilancio partecipativo" in generale?
+2) Definisci il termine "voto/votante/elettore".
+2. Definisci il termine "funzione di scelta sociale".
+3. Definisci il termine "suffragio universale".
+4. Definisci il termine "suffragio diretto/indiretto".
+5. Definisci il termine "vincolo di mandato".
+6. Definisci il termine "appoggio/supporto (endorsement) / manifestazione di approvazione o dis-approvazione / valutazione (rating)".
+7. Quali sono le regole da stabilire per una "votazione"?
+8. Quali sono le proprietà tipiche richieste ad un "sistema di voto"?
+9. Cosa si intende con "segretezza/libertà/ammissibilità/unicità/immodificabilità/completezza/lealtà/fiducia/verificabilità" in un "sistema di voto"?
+10. In che senso gli scrutini avvengono alla "luce del sole"?
+11. Quali sono i problemi riscontrabili nei sistemi di voto tradizionali?
+12. Quali potrebbero essere i vantaggi dei sistemi di voto digitali?
+13. Cosa si intende con "voto elettronico"? e con "voto online"?
+14. Di quali criticità soffre il "voto online"?
+15. Analizza le esperienze di voto digitale di Germania, Estonia e Svizzera.
+16. Descrivi la situazione "voto digitale" in Italia.
+17. Quali altri contesti di voto in cui la versione digitale potrebbe essere proficuamente applicata abbiamo analizzato?
+18. Cosa si intende con "stakeholder"?
+19. Quali problemi vedi nall'utilizzo del sistema UniVote?
+20. Quali problemi vedi nall'utilizzo del sistema di voto dei "5 stelle"?
+21. Perché in alcuni sistemi di voto digitale deve passare un certo tempo dall'iscrizione per ottenere il diritto di voto?
+22. Cosa è la "teoria della scelta sociale"?
+23. Che vantaggi ha l'uso di elaborazione elettronica in un sistema di voto?
+24. Cos'è un "metodo di voto"?
+25. Cosa si intende con "minimizzazione della scontentezza"?
+26. Cosa si intende con metodo di voto a "scelta singola"?
+27. Cosa si intende con metodo di voto a "scelta multipla"?
+28. Cosa si intende con metodo di voto "cumulativo"?
+29. Cosa si intende con metodo di voto "a ordinamento"?
+30. Cosa si intende con "preferenza collettiva"?
+31. Cos'è il "principio di Condorcet"?
+32. Cos'è il "paradosso di Condorcet" (loop)?
+33. Cosa sono le "preferenze indirette"?
+34. Cos'è l'elettorato "attivo/passivo"?
+35. Cos'è il "criterio di indipendenza delle alternative irrilevanti"?
+36. Quali sono i "citeri di fairness" del voto?
+37. Cosa dice il "Teorema di Arrow"?
+38. Riassumi le esperienze di movimenti e partiti nell'era digitale.
+39. Cos'è LiquidFeedback e che particolarità ha?
+40. Cosa si intende con "idea gathering"?
+41. Cosa si intende con "online deliberation"?
+42. Cosa si intende con "collaborative writing" in L7?
+43. Cita qualche metodo di voto e descrivilo.
+44. Cosa si intende con "delega"? E con "delega liquida"?
+45. Che parallelo puoi tracciare tra LQFB e Google Votes?
+46. Qual è la "golden rule of liquid democracy"? Ha senso?
+47. Cosa si intende con "decision-making"?
+48. Cita e descrivi qualche software di online deliberation di seconda generazione.
+49. Cosa sono i "bilanci partecipativi"?
+50. Quali fasi compongono un "bilancio partecipativo" in generale?
 
 ----------------------------------------------------------------
 
