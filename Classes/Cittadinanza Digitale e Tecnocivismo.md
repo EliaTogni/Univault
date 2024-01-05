@@ -692,71 +692,71 @@
 ----------------------------------------------------------------
 
 ## L4
-1. Quali sono i temi salienti del livello "transparency" dell'arcobaleno?
-2. Cosa si intende con "casa di vetro"?
-3. Che differenza vedi tra "conoscibile" e "controllabile"?
-4. Spiega i termini "whitebox" e "blackbox" nel contesto L-transparency
-5. Cosa si intende con "stato interno" di un ente?
-6. Cosa si intende con "civic accountability"?
-7. Perché abbiamo citato la metafora dell'orologio in L-transparency?
-8. Perché abbiamo parlato di "circolo vizioso" e di "circolo virtuoso" in relazione alla trasparenza?
-9. Cosa intendiamo con "conoscere per deliberare"?
-10. A cosa ci riferiamo con "ex-ante" e "ex-post" in relazione alla trasparenza?
-11. In quali ambiti la trasparenza viene limitata per legge?
-12. Cosa intendiamo con "ribaltamento dell'approccio invasivo dello stato"?
-13. Spiega la frase di Brandeis sulla "luce del sole".
-14. Perché la frase "se non ho nulla da nascondere..." è profondamente sbagliata?
-15. Spiega il termine "opendata"
-16. Descrivi la scala di Tim Berners-Lee.
-17. Cosa si intende con "machine readable"?
-18. Cos'è RDF?
-19. Descrivi la scala di Tim Davies.
-20. In che senso le due scale opendata sono "trasversali/ortogonali"?
-21. Cosa intendiamo con "prosumer"?
-22. Cosa intendiamo con "easily guessable sitenames" (nomi siti facilmente indovinabili)? Perché sono utili?
-23. Quali metodi di misura effettiva della qualità degli opendata conosci?
-24. Quali difetti abbiamo citato nei meccanismi di valutazione effettiva degli opendata?
-25. Cos'è il "crawling"? Perché è utile?
-26. Cita qualche tema descritto dall'"Open data maturity study".
-27. Discuti il meccanismo di valutazione degli opendata basato sul numero di dataset.
-28. Cosa si intende con "tecnica di pletorizzazione"? E' una tecnica che consiglieresti ad un ente pubblico?
-29. In che senso gli opendata potrebbero essere "fuori portata dei cittadini"?
-30. Cita qualche mediatore opendata.
-31. Cosa fa openpolis?
-32. Cos'è un "civic hacker"?
-33. Articola il tema "dati in locale vs. online".
-34. Cita qualche piattaforma di gestione dati online.
-35. Cos'è un formato di file? (nel contesto opendata).
-36. Cita e descrivi qualche formato di file nel contesto opendata.
-37. Quali sono i problemi legati ai documenti scansionati?
-38. Perché le API sono importanti in ambito opendata?
-39. Cos'è REST?
-40. Quali sono i pro e i contro dell'accesso via API ai dataset?
-41. Cosa si intende con "webstacle"? Fai degli esempi.
-42. Descrivi il caso ARPA per i "webstacle".
-43. Come si può combattere contro i "webstacle"?
-44. Cos'è lo "scraping"?
-45. Cosa offrono i venditori di servizi di APIficazione?
-46. Cos'è il "whistleblowing"?
-47. Come si declinano le licenze libere nel contesto opendata?
-48. Descrivi alcuni problemi legati alla "data science".
-49. Cosa si intende con "replicabilità"?
-50. Cos'è il "ritiro di un articolo"?
-51. Cos'è il F.A.I.R.? A cosa dovrebbe servire?
-52. Cos'è il NUSAP? A quale problema vorrebbe dare risposta?
-53. Cos'è un "disciplinare di raccolta dati"? Perché è fondamentale?
-54. Discuti il tema "strumenti software" nel contesto opendata.
-55. Cosa si intende con "storytelling"?
-56. Cosa si intende con "policy-based evidence"?
-57. Quali tecniche di "dataviz" possono essere usate per fare "storytelling" o in generale per confondere l'uditorio?
-58. Cosa si intende con "responsabilità civica"?
-59. Cos'è il "principio di pubblicità" e perché è rilevante?
-60. Cos'è il "principio di trasparenza" e perché è rilevante?
-61. Cos'è un URP?
-62. Cos'è il FOIA (italiano)? Cosa prevede? Che risultati ha dato (openpolis)?
-63. Cos'è il CAD? Perché lo riproponiamo in L4?
-64. Cos'è la "Carta della cittadinanza digitale" (nel CAD)? Quali spunti interessanti (legati all'arcobaleno della CDT) possiamo trovarvi?
-65. Cos'è l'OGP (Open Government Partnership)? [respo civica in file separato]
+1. **Quali sono i temi salienti del livello "transparency" dell'arcobaleno?**
+2. **Cosa si intende con "casa di vetro"?**
+3. **Che differenza vedi tra "conoscibile" e "controllabile"?**
+4. **Spiega i termini "whitebox" e "blackbox" nel contesto L-transparency.**
+5. **Cosa si intende con "stato interno" di un ente?**
+6. **Cosa si intende con "civic accountability"?**
+7. **Perché abbiamo citato la metafora dell'orologio in L-transparency?**
+8. **Perché abbiamo parlato di "circolo vizioso" e di "circolo virtuoso" in relazione alla trasparenza?**
+9. **Cosa intendiamo con "conoscere per deliberare"?**
+10. **A cosa ci riferiamo con "ex-ante" e "ex-post" in relazione alla trasparenza?**
+11. **In quali ambiti la trasparenza viene limitata per legge?**
+12. **Cosa intendiamo con "ribaltamento dell'approccio invasivo dello stato"?**
+13. **Spiega la frase di Brandeis sulla "luce del sole".**
+14. **Perché la frase "se non ho nulla da nascondere..." è profondamente sbagliata?**
+15. **Spiega il termine "opendata".**
+16. **Descrivi la scala di Tim Berners-Lee.**
+17. **Cosa si intende con "machine readable"?**
+18. **Cos'è RDF?**
+19. **Descrivi la scala di Tim Davies.**
+20. **In che senso le due scale opendata sono "trasversali/ortogonali"?**
+21. **Cosa intendiamo con "prosumer"?**
+22. **Cosa intendiamo con "easily guessable sitenames" (nomi siti facilmente indovinabili)? Perché sono utili?**
+23. **Quali metodi di misura effettiva della qualità degli opendata conosci?**
+24. **Quali difetti abbiamo citato nei meccanismi di valutazione effettiva degli opendata?**
+25. **Cos'è il "crawling"? Perché è utile?**
+26. **Cita qualche tema descritto dall'"Open data maturity study".**
+27. **Discuti il meccanismo di valutazione degli opendata basato sul numero di dataset.**
+28. **Cosa si intende con "tecnica di pletorizzazione"? E' una tecnica che consiglieresti ad un ente pubblico?**
+29. **In che senso gli opendata potrebbero essere "fuori portata dei cittadini"?**
+30. **Cita qualche mediatore opendata.**
+31. **Cosa fa openpolis?**
+32. **Cos'è un "civic hacker"?**
+33. **Articola il tema "dati in locale vs. online".**
+34. **Cita qualche piattaforma di gestione dati online.**
+35. **Cos'è un formato di file? (nel contesto opendata).**
+36. **Cita e descrivi qualche formato di file nel contesto opendata.**
+37. **Quali sono i problemi legati ai documenti scansionati?**
+38. **Perché le API sono importanti in ambito opendata?**
+39. **Cos'è REST?**
+40. **Quali sono i pro e i contro dell'accesso via API ai dataset?**
+41. **Cosa si intende con "webstacle"? Fai degli esempi.**
+42. **Descrivi il caso ARPA per i "webstacle".**
+43. **Come si può combattere contro i "webstacle"?**
+44. **Cos'è lo "scraping"?**
+45. **Cosa offrono i venditori di servizi di APIficazione?**
+46. **Cos'è il "whistleblowing"?**
+47. **Come si declinano le licenze libere nel contesto opendata?**
+48. **Descrivi alcuni problemi legati alla "data science".**
+49. **Cosa si intende con "replicabilità"?**
+50. **Cos'è il "ritiro di un articolo"?**
+51. **Cos'è il F.A.I.R.? A cosa dovrebbe servire?**
+52. **Cos'è il NUSAP? A quale problema vorrebbe dare risposta?**
+53. **Cos'è un "disciplinare di raccolta dati"? Perché è fondamentale?**
+54. **Discuti il tema "strumenti software" nel contesto opendata.**
+55. **Cosa si intende con "storytelling"?**
+56. **Cosa si intende con "policy-based evidence"?**
+57. **Quali tecniche di "dataviz" possono essere usate per fare "storytelling" o in generale per confondere l'uditorio?**
+58. **Cosa si intende con "responsabilità civica"?**
+59. **Cos'è il "principio di pubblicità" e perché è rilevante?**
+60. **Cos'è il "principio di trasparenza" e perché è rilevante?**
+61. **Cos'è un URP?**
+62. **Cos'è il FOIA (italiano)? Cosa prevede? Che risultati ha dato (openpolis)?**
+63. **Cos'è il CAD? Perché lo riproponiamo in L4?**
+64. **Cos'è la "Carta della cittadinanza digitale" (nel CAD)? Quali spunti interessanti (legati all'arcobaleno della CDT) possiamo trovarvi?**
+65. **Cos'è l'OGP (Open Government Partnership)?** [respo civica in file separato]
 
 ----------------------------------------------------------------
 
