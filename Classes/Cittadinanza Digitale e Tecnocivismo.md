@@ -754,48 +754,48 @@
 60. **Cos'è il "principio di trasparenza" e perché è rilevante?**
 61. **Cos'è un URP?**
 62. **Cos'è il FOIA (italiano)? Cosa prevede? Che risultati ha dato (openpolis)?**
-63. **Cos'è il CAD? Perché lo riproponiamo in L4?**
+63. **Cos'è il CAD? Perché lo riproponiamo in L$4$?**
 64. **Cos'è la "Carta della cittadinanza digitale" (nel CAD)? Quali spunti interessanti (legati all'arcobaleno della CDT) possiamo trovarvi?**
 65. **Cos'è l'OGP (Open Government Partnership)?** [respo civica in file separato]
 
 ----------------------------------------------------------------
 
 ## L5
-1. Quali sono i temi salienti del livello "sharing" dell'arcobaleno?
-2. Quali sono le "fasi" dell'evoluzione di Internet descritte in L5 e perché ci servono?
-3. Cosa si intende con "media broadcasting"? A cosa lo contrapponiamo in Internet?
-4. Cos'è la "netiquette"? Cosa protegge e da cosa ci protegge?
-5. Cosa sono le "civic nets"?
-6. Che contesto viene descritto nella 1a fase di Internet in L5?
-7. Che contesto viene descritto nella 2a fase di Internet in L5?
-8. Che contesto viene descritto nella 3a fase di Internet in L5?
-9. Che contesto viene descritto nella 4a fase di Internet in L5?
-10. Chi è Tim Berners-Lee?
-11. Cosa si intende con "bidirezionalità" in L5?
-12. Cosa si intende con "molti a molti" in L5?
-13. Cosa si intende con "web 2.0"?
-14. Cos'è lo "user generated content"?
-15. Cos'è un "permalink"?
-16. Cos'è un "blog"?
-17. Cos'è un URL?
-18. Cosa caratterizza Wikipedia?
-19. Cosa si intende con "social web"?
-20. Cosa si intende con "relazioni simmetriche/asimmetriche" nel social web?
-21. Quali "pratiche di condivisione" abbiamo citato in L5?
-22. Cos'è l'"information gathering" e come si realizza in genere?
-23. Cos'è il "crowdsourcing"?
-24. Cosa fa openstreetmaps? a cosa lo associamo?
-25. Cosa fa Waze?
-26. Cosa si intende con "social action"?
-27. Cosa si intende con "civic engagement"?
-28. Cosa si intende con "NIMBY"? E con "PIMBY"?
-29. Cosa sono i movimenti "NO-qualcosa"?
-30. Cosa si intende con "citizen reporting"? fai degli esempi.
-31. Perché e in che senso (con esempi) "piccole feature" di un sistema di segnalazione possono (s)favorire la partecipazione?
-32. Cosa si intende con "civic accountability"?
-33. Perché FixMyStreet può essere considerata una azione di "civic accountability"?
-34. Cosa intendiamo con "conversazione" a proposito delle segnalazioni?
-35. Cosa si intende con "atteggiamento di delega"?
+1. **Quali sono i temi salienti del livello "sharing" dell'arcobaleno?**
+2. **Quali sono le "fasi" dell'evoluzione di Internet descritte in L5 e perché ci servono?**
+3. **Cosa si intende con "media broadcasting"? A cosa lo contrapponiamo in Internet?**
+4. **Cos'è la "netiquette"? Cosa protegge e da cosa ci protegge?**
+5. **Cosa sono le "civic nets"?**
+6. **Che contesto viene descritto nella $1$a fase di Internet in L$5$?**
+7. **Che contesto viene descritto nella $2$a fase di Internet in L$5$?**
+8. **Che contesto viene descritto nella $3$a fase di Internet in L$5$?**
+9. **Che contesto viene descritto nella $4$a fase di Internet in L$5$?**
+10. **Chi è Tim Berners-Lee?**
+11. **Cosa si intende con "bidirezionalità" in L$5$?**
+12. **Cosa si intende con "molti a molti" in L$5$?**
+13. **Cosa si intende con "web $2.0$"?**
+14. **Cos'è lo "user generated content"?**
+15. **Cos'è un "permalink"?**
+16. **Cos'è un "blog"?**
+17. **Cos'è un URL?**
+18. **Cosa caratterizza Wikipedia?**
+19. **Cosa si intende con "social web"?**
+20. **Cosa si intende con "relazioni simmetriche/asimmetriche" nel social web?**
+21. **Quali "pratiche di condivisione" abbiamo citato in L$5$?**
+22. **Cos'è l'"information gathering" e come si realizza in genere?**
+23. **Cos'è il "crowdsourcing"?**
+24. **Cosa fa openstreetmaps? A cosa lo associamo?**
+25. **Cosa fa Waze?**
+26. **Cosa si intende con "social action"?**
+27. **Cosa si intende con "civic engagement"?**
+28. **Cosa si intende con "NIMBY"? E con "PIMBY"?**
+29. **Cosa sono i movimenti "NO-qualcosa"?**
+30. **Cosa si intende con "citizen reporting"? Fai degli esempi.**
+31. **Perché e in che senso (con esempi) "piccole feature" di un sistema di segnalazione possono (s)favorire la partecipazione?**
+32. **Cosa si intende con "civic accountability"?**
+33. **Perché FixMyStreet può essere considerata una azione di "civic accountability"?**
+34. **Cosa intendiamo con "conversazione" a proposito delle segnalazioni?**
+35. **Cosa si intende con "atteggiamento di delega"?**
 36. Quali problemi si incontrano nel fare "citizen reporting" su una piattaforma social come Facebook?
 37. Cos'è Ushahidi? Per cosa è nato?
 38. Perché associamo il "whistleblowing" al "citizen reporting"?
