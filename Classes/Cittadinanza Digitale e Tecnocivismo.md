@@ -896,27 +896,27 @@
 27. **Cosa si intende con metodo di voto a "scelta multipla"?**
 28. **Cosa si intende con metodo di voto "cumulativo"?**
 29. **Cosa si intende con metodo di voto "a ordinamento"?**
-30. Cosa si intende con "preferenza collettiva"?
-31. Cos'è il "principio di Condorcet"?
-32. Cos'è il "paradosso di Condorcet" (loop)?
-33. Cosa sono le "preferenze indirette"?
-34. Cos'è l'elettorato "attivo/passivo"?
-35. Cos'è il "criterio di indipendenza delle alternative irrilevanti"?
-36. Quali sono i "citeri di fairness" del voto?
-37. Cosa dice il "Teorema di Arrow"?
-38. Riassumi le esperienze di movimenti e partiti nell'era digitale.
-39. Cos'è LiquidFeedback e che particolarità ha?
-40. Cosa si intende con "idea gathering"?
-41. Cosa si intende con "online deliberation"?
-42. Cosa si intende con "collaborative writing" in L7?
-43. Cita qualche metodo di voto e descrivilo.
-44. Cosa si intende con "delega"? E con "delega liquida"?
-45. Che parallelo puoi tracciare tra LQFB e Google Votes?
-46. Qual è la "golden rule of liquid democracy"? Ha senso?
-47. Cosa si intende con "decision-making"?
-48. Cita e descrivi qualche software di online deliberation di seconda generazione.
-49. Cosa sono i "bilanci partecipativi"?
-50. Quali fasi compongono un "bilancio partecipativo" in generale?
+30. **Cosa si intende con "preferenza collettiva"?**
+31. **Cos'è il "principio di Condorcet"?**
+32. **Cos'è il "paradosso di Condorcet" (loop)?**
+33. **Cosa sono le "preferenze indirette"?**
+34. **Cos'è l'elettorato "attivo/passivo"?**
+35. **Cos'è il "criterio di indipendenza delle alternative irrilevanti"?**
+36. **Quali sono i "citeri di fairness" del voto?**
+37. **Cosa dice il "Teorema di Arrow"?**
+38. **Riassumi le esperienze di movimenti e partiti nell'era digitale.**
+39. **Cos'è LiquidFeedback e che particolarità ha?**
+40. **Cosa si intende con "idea gathering"?**
+41. **Cosa si intende con "online deliberation"?**
+42. **Cosa si intende con "collaborative writing" in L$7$?**
+43. **Cita qualche metodo di voto e descrivilo.**
+44. **Cosa si intende con "delega"? E con "delega liquida"?**
+45. **Che parallelo puoi tracciare tra LQFB e Google Votes?**
+46. **Qual è la "golden rule of liquid democracy"? Ha senso?**
+47. **Cosa si intende con "decision-making"?**
+48. **Cita e descrivi qualche software di online deliberation di seconda generazione.**
+49. **Cosa sono i "bilanci partecipativi"?**
+50. **Quali fasi compongono un "bilancio partecipativo" in generale?**
 
 ----------------------------------------------------------------
 
