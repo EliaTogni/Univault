@@ -796,106 +796,106 @@
 33. **Perché FixMyStreet può essere considerata una azione di "civic accountability"?**
 34. **Cosa intendiamo con "conversazione" a proposito delle segnalazioni?**
 35. **Cosa si intende con "atteggiamento di delega"?**
-36. Quali problemi si incontrano nel fare "citizen reporting" su una piattaforma social come Facebook?
-37. Cos'è Ushahidi? Per cosa è nato?
-38. Perché associamo il "whistleblowing" al "citizen reporting"?
-39. Cos'è Wikileaks?
-40. Chi è Julian Assange?
-41. Cos'è ExpoLeaks?
-42. Perché in L5 abbiamo citato i siti di recensione/raccomandazione?
-43. Cosa sono i "reputation systems"? Perché li citiamo in L5?
-44. Perché abbiamo citato lo SPID nel contesto delle petizioni?
-45. Descrivi l'operato di "change.org".
-46. Quali sono le "feature" importanti per un sito di _petitioning_? (articolare)
-47. Cosa si intende con "intelligenza civica"?
-48. Cosa sono le "fake news"?
-49. Cos'è una "fondazione di partecipazione"?
-50. Perché è importante la "governance" in una iniziativa di _sharing_?
-51. Abbiamo visto tre iniziative di segnalazione di problemi stradali (fixmystreets, sicurezzastradale, venezia), quali differenze nella gestione della possibilità di commentare le segnalazioni? Quali conseguenze nella scelta tecnica fatta?
+36. **Quali problemi si incontrano nel fare "citizen reporting" su una piattaforma social come Facebook?**
+37. **Cos'è Ushahidi? Per cosa è nato?**
+38. **Perché associamo il "whistleblowing" al "citizen reporting"?**
+39. **Cos'è Wikileaks?**
+40. **Chi è Julian Assange?**
+41. **Cos'è ExpoLeaks?**
+42. **Perché in L$5$ abbiamo citato i siti di recensione/raccomandazione?**
+43. **Cosa sono i "reputation systems"? Perché li citiamo in L$5$?**
+44. **Perché abbiamo citato lo SPID nel contesto delle petizioni?**
+45. **Descrivi l'operato di "change.org".**
+46. **Quali sono le "feature" importanti per un sito di _petitioning_? (articolare)**
+47. **Cosa si intende con "intelligenza civica"?**
+48. **Cosa sono le "fake news"?**
+49. **Cos'è una "fondazione di partecipazione"?**
+50. **Perché è importante la "governance" in una iniziativa di _sharing_?**
+51. **Abbiamo visto tre iniziative di segnalazione di problemi stradali (fixmystreets, sicurezzastradale, venezia), quali differenze nella gestione della possibilità di commentare le segnalazioni? Quali conseguenze nella scelta tecnica fatta?**
 
 -----------------------------------------------------------------
 
 ## L6
-1. Quali sono i temi salienti del livello "consultation" dell'arcobaleno?
-2. Cosa intendiamo con "crisi della democrazia rappresentativa"?
-3. In cosa si manifesta la "crisi della democrazia rappresentativa"?
-4. Cosa suggerisce "Raccomandazione 19" emanata nel 2001 dal Comitato dei Ministri del Consiglio d'Europa e rivolta agli Stati membri sulla "Partecipazione dei cittadini alla vita pubblica a livello locale"?
-5. Cita qualche "forma di partecipazione diretta al processo decisionale" (sia essa tradizionale che digitale).
-6. Cosa si intende con "feedback" dei cittadini?
-7. Qual è il problema dell'"intervallo temporale fra le tornate elettorali"?
-8. Cos'è il "vincolo di mandato"?
-9. Cosa si intende con "democrazia continua"?
-10. Cosa si intende con "democrazia diretta"?
-11. Cosa si intende con "carattere consultivo" di un processo partecipativo?
-12. Cosa si intende con "ascolto"? E con "consultazione"?
-13. Cos'è un URP?
-14. Cerché ci interessano poco i "sondaggi di opinione"?
-15. Cosa sono i "feedback (privati) non sollecitati"?
-16. Cosa sono i "feedback (pubblici) sollecitati"?
-17. Cos'è il "citizen reporting istituzionalizzato"?
-18. Quali sono le forme istituzionali di ascolto?
-19. Cosa intendiamo con "consultazioni"?
-20. Qual è la "questione cruciale" (la risposta) nel contesto del feedback non sollecitato? Articolare.
-21. Cosa sono le FAQ nel contesto di L6?
-22. Quali problemi vedi nell'uso di una "pagina social" da parte di una PA?
-23. Cosa si intende con "sentiment/sentimento"? E' una forma di consultazione? A cosa la paragoneresti?
-24. Quali esperienze di "feedback (pubblico) sollecitato" potresti citare? Che riscontro/effetto hanno avuto?
-25. Perché il "citizen reporting istituzionalizzato" è un processo top-down?
-26. Il "citizen reporting istituzionalizzato" ha vantaggi rispetto ai processi citati in L5?
-27. Quali esperienze di "citizen reporting istituzionalizzato" potresti citare? Che riscontro/effetto hanno avuto?
-28. Puoi citare/descrivere qualche iniziativa di social reporting lanciata da soggetti privati?
-29. Cosa si intende con "cittadinanza attiva"?
-30. Cita qualche vincolo per la validità di una richiesta popolare in generale.
-31. Cos'è il "contratto sociale"? (vale in molti livelli)
-32. Cos'è il "patto partecipativo"? (vale in molti livelli)
-33. Quali sono le fasi di una iniziativa di partecipazione popolare? (presentazione, raccolta firme, campaign, voto)
-34. Cita e discuti alcuni istituti di partecipazione a livello europeo.
-35. Cita e discuti alcuni istituti di partecipazione a livello nazionale (Costituzione).
-36. Cita e discuti alcuni istituti di partecipazione a livello Comune di Milano.
-37. Cosa si intende con "consultazione informata"?
-38. Quali sono le principali caratteristiche di una consultazione? (doc disponibili, partecipante informato, impegno a dare feedback)
-39. Cita e discuti alcuni istituti di consultazione a livello europeo.
-40. Cita e discuti alcuni istituti di consultazione a livello nazionale.
-41. Perché abbiamo citato la necessità di "linee guida" per le consultazioni?
-42. Quali sono i difetti di una "consultazione" o di un "ascolto" via mail?
-43. Quali sono i difetti di una "consultazione" o di un "ascolto" via social?
-44. Cita e discuti alcuni istituti di consultazione a livello Comune di Milano.
-45. Cita pregi e difetti delle iniziative di ascolto e/o consultazione che abbiamo analizzato (a tua scelta).
-46. Riassumi gli approfondimenti su Decidim trattati in L6.
+1. **Quali sono i temi salienti del livello "consultation" dell'arcobaleno?**
+2. **Cosa intendiamo con "crisi della democrazia rappresentativa"?**
+3. **In cosa si manifesta la "crisi della democrazia rappresentativa"?**
+4. **Cosa suggerisce "Raccomandazione $19$" emanata nel $2001$ dal Comitato dei Ministri del Consiglio d'Europa e rivolta agli Stati membri sulla "Partecipazione dei cittadini alla vita pubblica a livello locale"?**
+5. **Cita qualche "forma di partecipazione diretta al processo decisionale" (sia essa tradizionale che digitale).**
+6. **Cosa si intende con "feedback" dei cittadini?**
+7. **Qual è il problema dell'"intervallo temporale fra le tornate elettorali"?**
+8. **Cos'è il "vincolo di mandato"?**
+9. **Cosa si intende con "democrazia continua"?**
+10. **Cosa si intende con "democrazia diretta"?**
+11. **Cosa si intende con "carattere consultivo" di un processo partecipativo?**
+12. **Cosa si intende con "ascolto"? E con "consultazione"?**
+13. **Cos'è un URP?**
+14. **Cerché ci interessano poco i "sondaggi di opinione"?**
+15. **Cosa sono i "feedback (privati) non sollecitati"?**
+16. **Cosa sono i "feedback (pubblici) sollecitati"?**
+17. **Cos'è il "citizen reporting istituzionalizzato"?**
+18. **Quali sono le forme istituzionali di ascolto?**
+19. **Cosa intendiamo con "consultazioni"?**
+20. **Qual è la "questione cruciale" (la risposta) nel contesto del feedback non sollecitato? Articolare.**
+21. **Cosa sono le FAQ nel contesto di L6?**
+22. **Quali problemi vedi nell'uso di una "pagina social" da parte di una PA?**
+23. **Cosa si intende con "sentiment/sentimento"? E' una forma di consultazione? A cosa la paragoneresti?**
+24. **Quali esperienze di "feedback (pubblico) sollecitato" potresti citare? Che riscontro/effetto hanno avuto?**
+25. **Perché il "citizen reporting istituzionalizzato" è un processo top-down?**
+26. **Il "citizen reporting istituzionalizzato" ha vantaggi rispetto ai processi citati in L$5$?**
+27. **Quali esperienze di "citizen reporting istituzionalizzato" potresti citare? Che riscontro/effetto hanno avuto?**
+28. **Puoi citare/descrivere qualche iniziativa di social reporting lanciata da soggetti privati?**
+29. **Cosa si intende con "cittadinanza attiva"?**
+30. **Cita qualche vincolo per la validità di una richiesta popolare in generale.**
+31. **Cos'è il "contratto sociale"? (vale in molti livelli)**
+32. **Cos'è il "patto partecipativo"? (vale in molti livelli)**
+33. **Quali sono le fasi di una iniziativa di partecipazione popolare? (presentazione, raccolta firme, campaign, voto)**
+34. **Cita e discuti alcuni istituti di partecipazione a livello europeo.**
+35. **Cita e discuti alcuni istituti di partecipazione a livello nazionale (Costituzione).**
+36. **Cita e discuti alcuni istituti di partecipazione a livello Comune di Milano.**
+37. **Cosa si intende con "consultazione informata"?**
+38. **Quali sono le principali caratteristiche di una consultazione? (doc disponibili, partecipante informato, impegno a dare feedback)**
+39. **Cita e discuti alcuni istituti di consultazione a livello europeo.**
+40. **Cita e discuti alcuni istituti di consultazione a livello nazionale.**
+41. **Perché abbiamo citato la necessità di "linee guida" per le consultazioni?**
+42. **Quali sono i difetti di una "consultazione" o di un "ascolto" via mail?**
+43. **Quali sono i difetti di una "consultazione" o di un "ascolto" via social?**
+44. **Cita e discuti alcuni istituti di consultazione a livello Comune di Milano.**
+45. **Cita pregi e difetti delle iniziative di ascolto e/o consultazione che abbiamo analizzato (a tua scelta).**
+46. **Riassumi gli approfondimenti su Decidim trattati in L$6$.**
 
 ----------------------------------------------------------------
 
 ## L7
-1) Quali sono i temi salienti del livello "democracy" dell'arcobaleno?
-2) Definisci il termine "voto/votante/elettore".
-2. Definisci il termine "funzione di scelta sociale".
-3. Definisci il termine "suffragio universale".
-4. Definisci il termine "suffragio diretto/indiretto".
-5. Definisci il termine "vincolo di mandato".
-6. Definisci il termine "appoggio/supporto (endorsement) / manifestazione di approvazione o dis-approvazione / valutazione (rating)".
-7. Quali sono le regole da stabilire per una "votazione"?
-8. Quali sono le proprietà tipiche richieste ad un "sistema di voto"?
-9. Cosa si intende con "segretezza/libertà/ammissibilità/unicità/immodificabilità/completezza/lealtà/fiducia/verificabilità" in un "sistema di voto"?
-10. In che senso gli scrutini avvengono alla "luce del sole"?
-11. Quali sono i problemi riscontrabili nei sistemi di voto tradizionali?
-12. Quali potrebbero essere i vantaggi dei sistemi di voto digitali?
-13. Cosa si intende con "voto elettronico"? e con "voto online"?
-14. Di quali criticità soffre il "voto online"?
-15. Analizza le esperienze di voto digitale di Germania, Estonia e Svizzera.
-16. Descrivi la situazione "voto digitale" in Italia.
-17. Quali altri contesti di voto in cui la versione digitale potrebbe essere proficuamente applicata abbiamo analizzato?
-18. Cosa si intende con "stakeholder"?
-19. Quali problemi vedi nall'utilizzo del sistema UniVote?
-20. Quali problemi vedi nall'utilizzo del sistema di voto dei "5 stelle"?
-21. Perché in alcuni sistemi di voto digitale deve passare un certo tempo dall'iscrizione per ottenere il diritto di voto?
-22. Cosa è la "teoria della scelta sociale"?
-23. Che vantaggi ha l'uso di elaborazione elettronica in un sistema di voto?
-24. Cos'è un "metodo di voto"?
-25. Cosa si intende con "minimizzazione della scontentezza"?
-26. Cosa si intende con metodo di voto a "scelta singola"?
-27. Cosa si intende con metodo di voto a "scelta multipla"?
-28. Cosa si intende con metodo di voto "cumulativo"?
-29. Cosa si intende con metodo di voto "a ordinamento"?
+1) **Quali sono i temi salienti del livello "democracy" dell'arcobaleno?**
+2) **Definisci il termine "voto/votante/elettore".**
+2. **Definisci il termine "funzione di scelta sociale".**
+3. **Definisci il termine "suffragio universale".**
+4. **Definisci il termine "suffragio diretto/indiretto".**
+5. **Definisci il termine "vincolo di mandato".**
+6. **Definisci il termine "appoggio/supporto (endorsement) / manifestazione di approvazione o dis-approvazione / valutazione (rating)".**
+7. **Quali sono le regole da stabilire per una "votazione"?**
+8. **Quali sono le proprietà tipiche richieste ad un "sistema di voto"?**
+9. **Cosa si intende con "segretezza/libertà/ammissibilità/unicità/immodificabilità/completezza/lealtà/fiducia/verificabilità" in un "sistema di voto"?**
+10. **In che senso gli scrutini avvengono alla "luce del sole"?**
+11. **Quali sono i problemi riscontrabili nei sistemi di voto tradizionali?**
+12. **Quali potrebbero essere i vantaggi dei sistemi di voto digitali?**
+13. **Cosa si intende con "voto elettronico"? e con "voto online"?**
+14. **Di quali criticità soffre il "voto online"?**
+15. **Analizza le esperienze di voto digitale di Germania, Estonia e Svizzera.**
+16. **Descrivi la situazione "voto digitale" in Italia.**
+17. **Quali altri contesti di voto in cui la versione digitale potrebbe essere proficuamente applicata abbiamo analizzato?**
+18. **Cosa si intende con "stakeholder"?**
+19. **Quali problemi vedi nall'utilizzo del sistema UniVote?**
+20. **Quali problemi vedi nall'utilizzo del sistema di voto dei "$5$ stelle"?**
+21. **Perché in alcuni sistemi di voto digitale deve passare un certo tempo dall'iscrizione per ottenere il diritto di voto?**
+22. **Cosa è la "teoria della scelta sociale"?**
+23. **Che vantaggi ha l'uso di elaborazione elettronica in un sistema di voto?**
+24. **Cos'è un "metodo di voto"?**
+25. **Cosa si intende con "minimizzazione della scontentezza"?**
+26. **Cosa si intende con metodo di voto a "scelta singola"?**
+27. **Cosa si intende con metodo di voto a "scelta multipla"?**
+28. **Cosa si intende con metodo di voto "cumulativo"?**
+29. **Cosa si intende con metodo di voto "a ordinamento"?**
 30. Cosa si intende con "preferenza collettiva"?
 31. Cos'è il "principio di Condorcet"?
 32. Cos'è il "paradosso di Condorcet" (loop)?
