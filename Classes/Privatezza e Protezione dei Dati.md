@@ -193,7 +193,7 @@ A **generalization relationship** $\leq_{D}$ defines a mapping between domain $D
 - $\forall D_i, D_j, D_z \in Dom: D_i \leq_D D_j, D_i \leq_D D_z \to D_j \leq_D D_z \vee D_z \leq_D D_j$. This property shows that the generalization hierarchy is a [[Grafo#Catena|chain]], that is, there is a **total order** between the elements of the hierarchy;
 - all maximal elements (the **radices**) of $Dom$ are singleton. As an example, observe the $DGH_{Z_0}$ in the image below.
 
-Given a domain tuple $D_T = \langle D_1, . . . , D_n \rangle$ such that $D_i \in Dom, i = 1, . . . , n$, the domain generalization hierarchy of $D_T$ is $DGH_{DT} = DGH_{D1} \times . . . \times DGH_{Dn}$. While the domain generalization hierarchy of a single domain defines a chain, the domain generalization hierarchy of a tuple of domains $D_T$ defines a [[Reticolo|lattice]].
+Given a domain tuple $D_T = \langle D_1, . . . , D_n \rangle$ such that $D_i \in Dom, i = 1, . . . , n$, the domain generalization hierarchy of $D_T$ is $DGH_{D_T} = DGH_{D_1} \times . . . \times DGH_{D_n}$. While the domain generalization hierarchy of a single domain defines a chain, the domain generalization hierarchy of a tuple of domains $D_T$ defines a [[Reticolo|lattice]].
 
 An example of a domain generalization hierarchy.
 
@@ -299,12 +299,12 @@ In the table on the right, every cell $c_{ij}$ measures how much the tuple $t_i$
 ![[kMinimalSolution1.png|600]]
 
 Suppose $k = 2$ and $MaxSup = 2$.<br />
-Compute first solutions at height $1$ : $GT_{[1,0]}$ and $GT_{[0,1]}$. In the image below, all the cells with $DV <= [1, 0]$ are generalized to the same value.
+Compute first solutions at height $1$ : $GT_{[1,0]}$ and $GT_{[0,1]}$. In the image below, all the cells with $DV \leq [1, 0]$ are generalized to the same value.
 
 ![[kMinimalSolution2.png|600]]
 
 Satisfies $2$-anonymity (suppressing $t_1$ and $t_6$).<br />
-In the image below, all the cells with $DV <= [0, 1]$ are generalized to the same value.
+In the image below, all the cells with $DV \leq [0, 1]$ are generalized to the same value.
 
 ![[kMinimalSolution3.png|600]]
 
