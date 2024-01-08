@@ -954,7 +954,7 @@ An example of special rules.<br />
 - earnings within a $ $1,000$ interval;
 - benefits within a $ $50$ interval.
 
-to satisfy special rules such as **table restructuring** or **category combination**.
+to satisfy special rules are applied techniques such as **table restructuring** or **category combination**.
 
 Another example of special rules.<br />
 Number of employees by department and annual income (in $K$ Euro).<br />
