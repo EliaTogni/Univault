@@ -1248,7 +1248,7 @@ Assuming $n=2$ and $k=70$, the cell is considered sensitive. The income of Alice
 ### Secondary suppression
 Once sensitive cells have been identified, there are two options:
 - restructure the table and collapse cells until no sensitive cells remain;
-- cell suppression: do not publish sensitive cells (**primary suppressions**) and remove other cells (**complementary suppressions**).
+- cell suppression: do not publish sensitive cells (**primary suppressions**) and remove other cells (**complementary suppressions**) to close the inference channels that could expose the respondents.
 
 An administrative way to avoid cell suppression consists in obtaining written permission from respondents.<br />
 Other non-sensitive cells must be selected for suppression to ensure that the respondent level data in sensitive cells cannot be estimated too accurately. A respondent’s data cannot be estimated too closely.
@@ -1602,7 +1602,7 @@ Every combination of the different instances of the dimensions identifies new pr
 
 Providers can be:
 - curious (honest-but-curious or trustworthy-but-not-trusted with respect to the data confidentiality);
-- lazy (not trusted with respect to the integrity in addition to confidentiality);
+- lazy (not trusted with respect to the integrity in addition to confidentiality, e.g., a low-cost server that could try to save some money interrupting a query before its end);
 - malicious (not trusted with respect to the integrity in addition to confidentiality).
 
 ----------------------------------------------------------------
@@ -1693,11 +1693,11 @@ $\to$ typically using logic-based languages.
 
 ![[InteractiveAccessControl1.png]]
 
-- **multi-step negotiation**: in the case depicted by the image below, the client too requires certificates from the server. There is a problematic situation in the case of a failing transaction: the server acquires informations step by step but, in the case of termination of the interaction before the server has granted the service, this one has now access to the previous data (leakage). E.g., the server asks the age of the user but doesn't explicitly say what age is necessary to access to the server;
+- **multi-step negotiation**: in the case depicted by the image below, the client too requires certificates from the server, multiple times. There is a problematic situation in the case of a failing transaction: the server acquires informations step by step but, in the case of termination of the transaction before the server has granted the service, this one has now access to the previous data (leakage). E.g., the server asks the age of the user but doesn't explicitly say what age is necessary to access to the server. Furthermore, not providing a credential is also leaking the information that the user does not posses that credential. This approach is too complex for practical applications.;
 
 ![[InteractiveAccessControl2.png]]
 
-- **two-step interaction**: to avoid the leakage discussed before, this technique consists in the server asking the client some requirements (necessary conditions) before granting access. E.g., the server asks the age of the user and also says that if his age is $\leq 18$, the access will not be granted to him.
+- **two-step interaction**: this technique is a trade-off between the two previous approaches and it consists in the server asking the client a prerequisite necessary to discover what the requisite is. If the client provides it, the server now asks for the second and final requirement before granting access.
 
 ![[InteractiveAccessControl3.png]]
 
@@ -1796,7 +1796,7 @@ To solve it, the problem is converted into a knapsack problem and solved with a 
 The solution can model only the additive characteristic of privacy.<br/>
 The client and server must agree on the universe of possible credential types (it may compromise the conﬁdentiality of the server policy).<br />
 Support only **coarse-grain** (credential) **speciﬁcation**; sensitive associations as well as forbidden releases cannot be expressed.<br />
-Again, this approach put the focus on the negotiation rather than on the client control.
+Again, this approach puts the focus on the negotiation rather than on the client control.
 
 ----------------------------------------------------------------
 
@@ -2079,7 +2079,7 @@ For conﬁdentiality reasons, **Cloud Service Providers** storing data cannot de
 - effective and efﬁcient, that is, does not require to import the whole data every time;
 - should not open the door to inferences.
 
-The most used approaches for granting gine-grained access are:
+The most used approaches for granting fine-grained access are:
 - **Keyword-based searches directly on the encrypted data**: supported by speciﬁc cryptographic techniques;
 
 ![[FineGrainedAccessApproach1.png]]
@@ -2121,7 +2121,7 @@ Technically, it is not advisable to use the actual value as index but, in case t
 ----------------------------------------------------------------
 
 #### Indexes for queries: Bucket (n:1)
-The term **bucket** let suppose that there will be **collisions**. We want to have different values mapped on the same encryption. This tecnhique could be **partition-based** or **hash-based** and it stills supports for equality queries while collisions remove plaintext distinguishability. Nevertheless, result may contain spurious tuples (**postprocessing query**, e.g., we wanna return all the tuples about doctor Angel but he is mapped on the same values of doctor Bell. Therefore, we return all the tuple with this value and then we do a postprocessing step, removing the tuples we don't need) and this approach is still vulnerable to inference attacks (based on frequence of the tuples).
+The term **bucket** let suppose that there will be **collisions**. We want to have different values mapped on the same encryption. This tecnhique could be **partition-based** or **hash-based** and it still supports for equality queries while collisions remove plaintext distinguishability. Nevertheless, result may contain spurious tuples (**postprocessing query**, e.g., we wanna return all the tuples about doctor Angel but he is mapped on the same values of doctor Bell. Therefore, we return all the tuple with this value and then we do a postprocessing step, removing the tuples we don't need) and this approach is still vulnerable to inference attacks (based on frequence of the tuples).
 
 ![[IndexesForQueriesBucket.png]]
 
