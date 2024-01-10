@@ -2467,7 +2467,7 @@ An example of an authorization policy and its representations.
 ![[AuthorizationPolicy.png]]
 
 ##### Encryption policy
-The authorization policy deﬁned by the data owner is translated into an equivalent encryption policy. Possible solutions could be to encrypt each resource with a different key and give users the keys for the resources they can access. Howevere, this approach requires each user to manage as many keys as the number of resources she is authorized to access.<br />
+The authorization policy deﬁned by the data owner is translated into an equivalent encryption policy. Possible solutions could be to encrypt each resource with a different key and give users the keys for the resources they can access. However, this approach requires each user to manage as many keys as the number of resources she is authorized to access.<br />
 Alternatively, it is possible to use a **key derivation method** for allowing users to derive from their user keys all the keys that they are entitled to access, which allows limiting to one the key to be released to each user.
 
 ###### Key derivation methods
@@ -2530,7 +2530,7 @@ The encryption policy can be represented via a graph by extending the key and to
 - an edge from each user vertex $u$ to the vertex $\langle k, l \rangle$ such that $\phi (u)=l$;
 - an edge from each vertex $\langle k, l \rangle$ to each resource vertex $r$ such that $\phi (r) = l$.
 
-An example of an encryption policy graph.
+An example of an encryption policy graph.
 
 ![[EncryptionPolicyGraph1.png]]
 ![[EncryptionPolicyGraph2.png]]
@@ -2551,10 +2551,7 @@ $\mathcal{A}$ and $\mathcal{E}$ are equivalent if they allow exactly the same ac
 - $\forall u \in \mathcal{U}, r \in \mathcal{R} : u \rightarrow^{\mathcal{E}} r \Rightarrow u \to^{\mathcal{A}} r$;
 - $\forall u \in \mathcal{U}, r \in \mathcal{R} : u \rightarrow^{\mathcal{A}} r \Rightarrow u \to^{\mathcal{E}} r$.
 
-----------------------------------------------------------------
-
-###### Translating A into E
-Naive solution:
+The naive solution is structured in the following way:
 - each user is associated with a different key;
 - each resource is encrypted with a different key;
 - a token $t_{u,r}$ is generated and published for each permission $\langle u, r \rangle$ (it practically means to use the bipartite graph previously seen as a key and token graph) $\to$ producing and managing a token for each single permission can be unfeasible in practice.
@@ -2700,7 +2697,7 @@ An example of grant operation – Full_SEL. In this case, we want to grant $D$ a
 
 ![[GrantFullSEL.png|650]]
 
-An example of grant operation – Delta_SEL. The server necrypts only to cover data from unauthoryzed users. In this case, the server encrypts $r_4$ and $r_5$.
+An example of grant operation – Delta_SEL. The server encrypts only to cover data from unauthoryzed users. In this case, the server encrypts $r_4$ and $r_5$.
 
 ![[GrantDeltaSEL.png|650]]
 
@@ -2779,7 +2776,7 @@ The view of a user $u'$ on $r$ can evolve from bel_locked to locked due to the *
 Collusion among users is not a problem. In fact, users never gain in the exchange.
 
 About collusion with the server:
-- users in Bel_accessible who have a _sel_locked_ view and who never had the authorization to access the resource;
+- users in Bel_accessible who have a sel_locked view and who never had the authorization to access the resource;
 - exposure is limited to resources involved in a policy split to make other resources, encrypted with the same BEL key, available to the user $\to$ easily identiﬁable; can be avoided by re-encrypting.
 
 ----------------------------------------------------------------
