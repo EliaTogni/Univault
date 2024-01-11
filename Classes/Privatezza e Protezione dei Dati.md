@@ -2630,7 +2630,7 @@ To access a resource a user must know both the corresponding BEL and SEL keys. G
 
 ###### BEL and SEL structures
 At the BEL level we distinguish two kinds of keys, **access** ($k_a$) and **derivation** ($k$) keys:
-- each node in the BEL is associated with a pair of keys $(k, k_a)$, where $k_a = h(k)$, with $h$ a one-way hash function, and a pair of labels $(l, l_a)$;
+- each node in the BEL is associated with a pair of keys $(k, k_a)$, where $k_a = h(k)$, with $h$ a one-way hash function, and a pair of labels $(l, l_a)$. To the users that needs to access further resources is given $k$, so they can hash it and obtain $k_a$. To the others is given directly $k_a$;
 - key $k$ (with label $l$) is used for derivation purpose;
 - key $k_a$ (with label $l_a$) is used to encrypt the resources associated with the node;
 - this distinction separates the two roles associated with keys: enabling key derivation and enabling resource access.
@@ -2897,10 +2897,10 @@ The data owner deﬁnes the key derivation graph and:
 - encrypts each resource $o$ with key $k_{r[o]}$;
 - encrypts the write tag $tag[o]$ of each resource $o$ with key $k_{w[o] \cup \{S\}}$.
 
-Read accesses: u can read $o$ iff she can decrypt its content (i.e., if $u \in r[o]$).
+Read accesses: $u$ can read $o$ iff she can decrypt its content (i.e., if $u \in r[o]$).
 
 Write accesses:
-- u sends a request to write $o$ to the storage server;
+- $u$ sends a request to write $o$ to the storage server;
 - the server accepts the request only if $u$ provides (plaintext) $tag[o]$;
 - $u$ can provide $tag[o]$ only if $u$ can decrypt it (i.e., if $u \in w[o]$).
 
@@ -2967,7 +2967,6 @@ Write integrity controlled by any reader. Support for write privileges for data 
 ----------------------------------------------------------------
 
 ## Fragmentation and Encryption
-
 Encryption makes query evaluation and application execution more expensive or not always possible. Often what is sensitive is the association between values of different attributes, rather than the values themselves, e.g., association between employee’s names and salaries $\to$ protect associations by breaking them, rather than encrypting.
 
 Recent solutions for enforcing privacy requirements couple:
@@ -3122,8 +3121,10 @@ All criteria obey **maximal visibility**:
 ##### Minimal number of fragments
 Basic principles:
 - avoid excessive fragmentation $\to$ minimal number of fragments.
+
 Goal:
 - determine a correct fragmentation with the minimal number of fragments $\to$ NP-hard problem (minimum hyper-graph coloring problem).
+
 Basic idea of the heuristic:
 - deﬁne a notion of **minimality** that can be used for efﬁciently computing a fragmentation;
 	- $\mathcal{F}$ is minimal if all the fragmentations that can be obtained from $\mathcal{F}$ by merging any two fragments in $\mathcal{F}$ violate at least one constraint.
