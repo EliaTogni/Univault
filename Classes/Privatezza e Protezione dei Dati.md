@@ -3054,7 +3054,7 @@ The goal is to minimize
 
 $$\sum_{i,j: i\in (R_1 - E), j \in (R_2 - E)} M_{i, j} + \sum_{i \in E} M_{i, i}$$
 
-Optimization problem equivalent to **hypergraph coloring problem**. Given relation $R$, deﬁne graph $G(R)$:
+Optimization problem equivalent to **hypergraph coloring problem**, where an hypergraph is a graph in which an edge can be linked to any number of vertices. Given relation $R$, deﬁne graph $G(R)$:
 - attributes are vertexes;
 - afﬁnity value $M_{i,j} \to$ weight of arc $(i, j)$;
 - afﬁnity value $M_{i,i} \to$ weight of vertex $i$;
@@ -3139,7 +3139,7 @@ Minimal fragmentation $\mathcal{F}$;
 - $F_2 = \{DoB, Zip\}$;
 - $F_3 = \{Illness, Physician\}$.
 
-Merging any two fragments would violate at least a constraint.
+Merging any two fragments would violate at least a constraint. The minimal fragmentation $\mathcal{F}$ does not necessary correspond to the minimum fragmentation.
 
 ----------------------------------------------------------------
 
@@ -3164,11 +3164,15 @@ In this step, we notice that $\{Name\}$ can't be paired with the other attribute
 
 ![[MaximumAffinityExample3.png]]
 
+In this step, it is possible to notice that the fragmentation composed by the union of $F_2$ and $F_5$ has maximum affinity. Therefore, these two fragmentatin are merged togheter.
+
 ![[MaximumAffinityExample4.png]]
+
+Therefore, the column representing the attribute _Physician_ is removed. His valued are added to the other cells, e.g. $F_2, F_4$ went from $20$ to $35$ (because, in the previous step, $F_2, F_4 = 20$ and $F_4, F_5 = 10$). $F_2, F_3$ is setted to $-1$ because merging these fragmentations would violate $c_6$.
 
 ![[MaximumAffinityExample5.png]]
 
-Maximum afﬁnity fragmentation $F$ (fragmentation afﬁnity = $65$). Merging any two fragments would violate at least a constraint.
+Maximum afﬁnity fragmentation $F$ (fragmentation afﬁnity $= 30 + 35 = 65$). Merging any two fragments would violate at least a constraint.
 
 ----------------------------------------------------------------
 
