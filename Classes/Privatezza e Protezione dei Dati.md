@@ -750,7 +750,7 @@ Differential privacy composes well with itself (the composition/observation of d
 ----------------------------------------------------------------
 
 ### k-anonymity vs differential privacy
-Each has its strengths and weaknesses, e.g., $k$-anonymity provides a nice capturing of real-world requirement but not complete protection. Differential privacy, on the other hand, has better protection guarantees but it is not easy to understand/enforce, not guaranteeing complete protection either.<br /> Therefore, there is still work to be done on both fronts
+Each has its strengths and weaknesses, e.g., $k$-anonymity provides a nice capturing of real-world requirement but not complete protection. Differential privacy, on the other hand, has better protection guarantees but it is not easy to understand/enforce, not guaranteeing complete protection either.<br /> Therefore, there is still work to be done on both fronts.
 
 ----------------------------------------------------------------
 
@@ -3946,7 +3946,7 @@ An example of cached searches.
 
 ![[CachedSearches1Example6.png|600]]
 
-Another example of cached searches.
+Another example of cached searches.
 
 ![[CachedSearches2Example1.png|600]]
 
