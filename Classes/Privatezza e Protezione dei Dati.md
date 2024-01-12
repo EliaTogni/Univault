@@ -599,6 +599,12 @@ If $QI$ includes _Marital_status_ and _Sex_, then $\{$divorced$\} \to \{$M$\}$:
 - violates $k$-anonymity for any $k > 19$;
 - violates also $k$-anonymity for any $k > 2$ since it reflects the existence of $2$ divorced and female respondents.
 
+----------------------------------------------------------------
+
+#### Classification mining - Decision trees
+
+![[AssociationRuleMining.png]]
+
 ![[ClassificationMiningDecisionTree.png]]
 
 Path $\langle F,35 \rangle$ implies the existence of $2$ females working $35$ hours.<br />
