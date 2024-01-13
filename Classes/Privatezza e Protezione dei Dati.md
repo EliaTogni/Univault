@@ -528,6 +528,7 @@ The **$m$-invariance** addresses the problem of longitudinal release. A sequence
 - each equivalence class includes at least $m$ tuples;
 - no sensitive value appears more than once in each equivalence class;
 - for each tuple $t$, the equivalence classes to which $t$ belongs in the sequence are characterized by the same set of sensitive values.
+
 Therefore, the correlation of the tuples in $T_1, . . . , T_n$ does not permit a malicious recipient to associate less than $m$ different sensitive values with each respondent.
 
 ----------------------------------------------------------------
@@ -1134,7 +1135,6 @@ Magnitude data are generally nonnegative quantities reported in surveys or censu
 3) verify result:
 	- **audit**;
 	- **information loss**;
-	- (parameters are not disclosed).
 
 ----------------------------------------------------------------
 
@@ -2800,7 +2800,7 @@ Again, exposure is limited to resources involved in a policy split $\to$ easily 
 ## Mix&Slice
 Over-encryption requires support by the server (i.e., the server implements more than simple get/put methods). Alternative solution to enforce revoke operations: **Mix&Slice**.
 
-Mix&Slice uses different rounds of encryption to provide complete mixing of the resource $\to$ unavailability of a small portion of the encrypted resource prevents its (even partial) reconstruction.
+Mix&Slice uses different rounds of encryption to provide complete mixing of the resource $\to$ unavailability of a small portion of the encrypted resource prevents its (even partial) reconstruction $\to$ **All Or Nothing Trasformation** (**AONT**).
 
 Slice the resource into fragments and, every time a user is revoked access to the resource, re-encrypt a randomly chosen fragment $\to$ lack of a fragment prevents resource decryption.
 
@@ -2825,16 +2825,16 @@ When encryption is applied to a block, all the mini-blocks are mixed. The absenc
 Extend mixing to a macro-block:
 - iteratively apply block encryption;
 - at iteration $i$, each block has a mini-block for each encrypted block obtained at iteration $i − 1$ (at distance $4^{i−1}$);
-- x rounds mix $4^x$ mini-blocks.
+- $x$ rounds mix $4^x$ mini-blocks.
 
 ![[Mixing2.png]]
 
 ----------------------------------------------------------------
 
 ### Slicing
-• To be mixed, large resources require large macro-blocks:
+To be mixed, large resources require large macro-blocks:
 - many rounds of encryption;
-- considerable computation and data transfer overhead;
+- considerable computation and data transfer overhead.
 
 Large resources are split in different macro-blocks for encryption. Absence of a mini-block for each macro-block prevents the (even partial) reconstruction of the resource.
 
