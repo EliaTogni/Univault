@@ -473,20 +473,21 @@
 	i
 8) **Cos'è la "piramide di Maslow"? (cita qualche bisogno in particolare)**
 	Rappresentazione gerarchica dei bisogni primari dell'uomo in cui ogni livello si appoggia di fatto sul sottostante. I livelli sono:
-	1) fisiologico;
-	2) sicurezza;
-	3) amore e senso di appartenenza;
-	4) stima;
+	1) fisiologico: il bisogno di aria, acqua, cibo, sonno. Non soddisfare uno di questi bisogni porta alla morte del corpo fisico;
+	2) sicurezza: potersi curare, avere un reddito dignitoso, avere dei beni personali ed un riparo dalle intemperie;
+	3) amore e senso di appartenenza: amare ed essere amati, sentire il calore umano di chi ci circonda, sentirsi voluti, desiderati;
+	4) stima: aver stima di sè, aver sicurezza in sè, essere rispettati e rispettare gli altri;
+	5) realizzazione: poter esprimere la propria creatività e spontaneità, formarsi un'etica, essere liberi da pregiudizi, poter contribuire alla comunità.
 1) **Perché non è perfettamente applicabile la gerarchia dei bisogni?**
-	i
+	Perchè esistono casi in cui l'ordine non viene rispettato fedelmente. Si pensi a molti film e libri d’ambientazione in campi di prigionia, in cui l’amore e l’amicizia si compiono anche in contesti di grave privazione fisiologica e di sicurezza.
 10) **Quale parallelo puoi tracciare tra Maslow e l'Arcobaleno della CDT?**
-	i
+	Si può notare un parallelo sia nella struttura gerarchica in cui ogni livello si appoggia sul sottostante sia sui livelli alti: Maslow cita l'essere ascoltati (L$6$ - consultation e L$7$ - democracy) ed il poter contribuire all'insieme, alla comunità (L$5$ - participation).
 11) **Perché il meme in cui la rete è sotto al livello fisiologico fa sorridere?**
 	i
 12) **Quale critica venne fatta alla piramide di Maslow?**
-	i
+	 Viene criticata sostenendo che i bisogni non siano gerarchici e che la vita sia più confusa rispetto a questa struttura. I bisogni sono un sistema interattivo, dinamico, ma è strettamente connesso all'abilità di costruire connessioni sociali.
 13) **Cosa si intende con "servizio pubblico"? (in contrapposizione a "servizio di base")**
-	i
+	 Un servizio pubblico è un tipo di servizio reso alla collettività, oggettivamente non economico, ma suscettibile di essere organizzato in forma
 14) **Qual è il senso/utilità di portare a "servizio pubblico" un servizio di base?**
 	i
 15) **Quali sono i principi di erogazione di un servizio pubblico? Perché sono importanti?**
