@@ -460,11 +460,11 @@
 1) **Quali sono i temi salienti del livello "access" dell'arcobaleno?**
 	i
 2) **Cosa si intende con "servizio di base"?**
-	i
+	Dal punto analogico si intende servizi infrastrutturali che permettano ai cittadini di vivere, muoversi, istruirse, lavorare, socializzare, realizzarsi. Sono servizi non necessariamente forniti dallo Stato ma è sufficiente che il diritto all'accesso sia garantito per tutti i cittadini, con pari dignità. Dal punto di vista digitale, si intende l'accesso alla rete veloce, in fibra ottica, ben distribuita e conveniente per tutti i segmenti della popolazione. Ogni cittadino digitale dovrebbe essere raggiungibile ad un indirizzo di rete e, ancora meglio, dovrebbe ricevere l'assegnazione di uno spazio cloud ufficiale.
 3) **Cos'è una "zona a fallimento di mercato"?**
 	i
 4) **Un "servizio di base" deve essere fornito dallo Stato?**
-	i
+	 Non necessariamente, è sufficiente che il diritto all'accesso sia garantito per tutti i cittadini, con pari dignità, cioè senza discriminazioni per censo, luogo di residenza, razza, sesso o religione.
 5) **Cita qualche "servizio di base" (anche se non formalmente/legalmente definito tale) tradizionale a cui si pensa affrontando il tema.**
 	i
 6) **Perché non basta una "qualsiasi connessione a Internet" come servizio di base?**
@@ -472,8 +472,12 @@
 7) **Ha senso parlare di "diritto all'hardware"?**
 	i
 8) **Cos'è la "piramide di Maslow"? (cita qualche bisogno in particolare)**
-	i
-9) **Perché non è perfettamente applicabile la gerarchia dei bisogni?**
+	Rappresentazione gerarchica dei bisogni primari dell'uomo in cui ogni livello si appoggia di fatto sul sottostante. I livelli sono:
+	1) fisiologico;
+	2) sicurezza;
+	3) amore e senso di appartenenza;
+	4) stima;
+1) **Perché non è perfettamente applicabile la gerarchia dei bisogni?**
 	i
 10) **Quale parallelo puoi tracciare tra Maslow e l'Arcobaleno della CDT?**
 	i
