@@ -462,7 +462,7 @@
 2) **Cosa si intende con "servizio di base"?**
 	Dal punto analogico si intende servizi infrastrutturali che permettano ai cittadini di vivere, muoversi, istruirse, lavorare, socializzare, realizzarsi. Sono servizi non necessariamente forniti dallo Stato ma è sufficiente che il diritto all'accesso sia garantito per tutti i cittadini, con pari dignità. Dal punto di vista digitale, si intende l'accesso alla rete veloce, in fibra ottica, ben distribuita e conveniente per tutti i segmenti della popolazione. Ogni cittadino digitale dovrebbe essere raggiungibile ad un indirizzo di rete e, ancora meglio, dovrebbe ricevere l'assegnazione di uno spazio cloud ufficiale.
 3) **Cos'è una "zona a fallimento di mercato"?**
-	i
+	 Sono zone di mercato dove gli operatori commerciali non avrebbero guadagno e quindi rinunciano ad investire.
 4) **Un "servizio di base" deve essere fornito dallo Stato?**
 	 Non necessariamente, è sufficiente che il diritto all'accesso sia garantito per tutti i cittadini, con pari dignità, cioè senza discriminazioni per censo, luogo di residenza, razza, sesso o religione.
 5) **Cita qualche "servizio di base" (anche se non formalmente/legalmente definito tale) tradizionale a cui si pensa affrontando il tema.**
@@ -478,7 +478,7 @@
 	3) amore e senso di appartenenza: amare ed essere amati, sentire il calore umano di chi ci circonda, sentirsi voluti, desiderati;
 	4) stima: aver stima di sè, aver sicurezza in sè, essere rispettati e rispettare gli altri;
 	5) realizzazione: poter esprimere la propria creatività e spontaneità, formarsi un'etica, essere liberi da pregiudizi, poter contribuire alla comunità.
-1) **Perché non è perfettamente applicabile la gerarchia dei bisogni?**
+9) **Perché non è perfettamente applicabile la gerarchia dei bisogni?**
 	Perchè esistono casi in cui l'ordine non viene rispettato fedelmente. Si pensi a molti film e libri d’ambientazione in campi di prigionia, in cui l’amore e l’amicizia si compiono anche in contesti di grave privazione fisiologica e di sicurezza.
 10) **Quale parallelo puoi tracciare tra Maslow e l'Arcobaleno della CDT?**
 	Si può notare un parallelo sia nella struttura gerarchica in cui ogni livello si appoggia sul sottostante sia sui livelli alti: Maslow cita l'essere ascoltati (L$6$ - consultation e L$7$ - democracy) ed il poter contribuire all'insieme, alla comunità (L$5$ - participation).
