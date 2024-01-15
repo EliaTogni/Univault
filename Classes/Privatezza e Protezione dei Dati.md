@@ -22,6 +22,8 @@ Need to ensure **data privacy** and **integrity** are properly protected.
 ----------------------------------------------------------------
 
 # Privacy in Data Publication
+
+![[Privacy in data publication.png]]
 
 ## Statistical DBMS vs statistical data
 Release of data to the public for statistical purpose:
@@ -892,6 +894,8 @@ Data from $87$ million Facebook users retrieved by the app:
 	- synthetic techniques.
 
 ![[Outline.png]]
+
+![[Macrodata Disclosure Protection Techniques.png]]
 
 ## Statistical data dissemination
 Often statistical data (or data for statistical purpose) are released. Such released data can be used to infer information that was not intended for disclosure.<br />
