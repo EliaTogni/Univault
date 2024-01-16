@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Classes/Privatezza e Protezione dei Dati.md",
+                "file": "Classes/Cittadinanza Digitale e Tecnocivismo.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Privatezza e Protezione dei Dati.md",
+                "file": "Classes/Cittadinanza Digitale e Tecnocivismo.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,10 +117,10 @@
   },
   "active": "0da0ed1548d6151e",
   "lastOpenFiles": [
+    "Classes/Privatezza e Protezione dei Dati.md",
     "Images/Macrodata Disclosure Protection Techniques.png",
     "Images/Privacy in data publication.png",
     "Classes/Cittadinanza Digitale e Tecnocivismo.md",
-    "Classes/Privatezza e Protezione dei Dati.md",
     "Atoms/Albero di Copertura.md",
     "Atoms/Grafo.md",
     "Lexicon/Edificante.md",
@@ -143,7 +143,6 @@
     "Images/CachedSearches1Example1.png",
     "Images/CachedSearches2Example4.png",
     "Images/CachedSearches2Example3.png",
-    "Images/CachedSearches2Example2.png",
     "Atoms/B-Albero.md",
     "Classes/Bioinformatica.md",
     "Videos/Defining Regular Expressions (RegEx) - Computerphile.md",

@@ -487,15 +487,22 @@
 12) **Quale critica venne fatta alla piramide di Maslow?**
 	 Viene criticata sostenendo che i bisogni non siano gerarchici e che la vita sia più confusa rispetto a questa struttura. I bisogni sono un sistema interattivo, dinamico, ma è strettamente connesso all'abilità di costruire connessioni sociali.
 13) **Cosa si intende con "servizio pubblico"? (in contrapposizione a "servizio di base")**
-	 Un servizio pubblico è un tipo di servizio reso alla collettività, oggettivamente non economico, ma suscettibile di essere organizzato in forma
+	 Un servizio pubblico è un tipo di servizio reso alla collettività, oggettivamente non economico, ma suscettibile di essere organizzato in forma d'impresa. Il concetto di servizio pubblico è necessariamente connesso ad un riconoscimento giuridico dello stesso: va perciò inteso come servizio tutelabile dall'ordinamento non solo come semplice aspirazione della collettività, ma come bisogno primario da dover necessariamente soddisfare tramite azione legislativa. Questa definizione cita sia il bisogno primario che il lato economico. Riferirsi ai bisogni primari ricollega alla piramide dei bisogni di Maslow mentre trattare l'aspetto economico collega alla nozione che alcuni tipi di servizi siano così onerosi che il loro costo va distribuito sull'intera collettività e non sul singolo, il quale non deve essere lasciato solo.
 14) **Qual è il senso/utilità di portare a "servizio pubblico" un servizio di base?**
-	i
+	
 15) **Quali sono i principi di erogazione di un servizio pubblico? Perché sono importanti?**
-	i
+	Ogni servizio pubblico deve essere erogato secodo questi principi:
+	- doverosità: i pubblici poteri si fanno carico del compito di garantire l'erogazione del il servizio;
+	- continuità: l'erogazione del servizio non può essere arbitrariamente interrotta;
+	- parità di trattamento: gli utenti hanno tutti pari diritto ad accedere al servizio ed ottenere prestazioni di uguale qualità;
+	- universalità: il servizio va garantito a prescindere dal reddito, dalla localizzazione e dalla fascia sociale (non discriminazione);
+	- economicità: il gestore del servizio deve essere posto in condizione di esercitare l'attività in modo imprenditoriale e conseguire un margine ragionevole di utile;
+	- possibilità di concessione: è prevista la possibuilità di affidare direttamente o indirettamente ad un privato il soddisfacimento del bisogno riconosciuto dall'ente.
 16) **Cita qualche meta-diritto legato ai servizi.**
-	i
+	- Il diritto di misurazione del livello di servizio;
+	- il diritto di contestazione.
 17) **Cos'è uno SLA? Cosa serve per poterlo verificare contrattualmente**?
-	i
+	Service Level Agreement,
 18) **Cita qualche servizio tradizionale di base e/o pubblico e articolane le caratteristiche di "qualità".**
 	i
 19) **Esistono influenze fra servizi analogici tradizionali e servizi digitali? Fai qualche esempio.**
