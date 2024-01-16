@@ -547,11 +547,12 @@
 	- Ajit Pai, ex consigliere generale di Verizon e Presidente del Consiglio di Amministrazione di FCC.
 28) **Quali sono gli aspetti importanti formali (regole) nella gestione della net neutrality?**
 	- Trasparenza: gli ISP devono pubblicare le loro policy di gestione della rete, le caratteristiche prestazionali e i termini e condizioni di accesso ai loro servizi;
-	- 
-1) **Cos'è un "data cap" e perché può essere veicolo "subdolo" di aumento della relatività? (peggioramento della net neutrality)**
-	i
+	- non blocco: gli ISP non devono bloccare alcun contenuto legale, applicazioni, servizi e device non pericolosi e nemmeno applicazioni ed altri servizi in competizione con i propri;
+	- non discriminazione: prescrizione di una generica non discriminazione del traffico.
+29) **Cos'è un "data cap" e perché può essere veicolo "subdolo" di aumento della relatività? (peggioramento della net neutrality)**
+	 Il termine data cap genericamente indica un tappo per i dati, un meccanismo secondo cui una connessione che normalmente fornisce una certa prestazione (velocità, costo, ecc.), al raggiungimento di una certa condizione, tipicamente quando si supera una certa quantità di dati trasmessi in un periodo di tempo, cambia regime prestazionale.
 30) **Spiega il termine ADSL, soprattutto in ottica net neutrality.**
-	i
+	 Nel termine ADSL (Asymmetrical Digital Subscriber Line), il quale identifica una tecnologia di connession alla Rete, la parola asymmetrical descrive la caratteristica tipica di questa tecnologia nel fornire velocità di trasmissione diverse a seconda della direzione del flusso dei dati: il flusso entrante (download) è, in genere, $5$ o $10$ volte più veloce del flusso uscente (upload). Il motivo di questa asimmetria è storico: la capacità totale del canale era limitata superiormente e quindi si decise di dimensionare in questa maniera i due flussi. Questa scelta genera, ovviamente, un'enorme sacca di relatività. L'uso della Rete è cambiato: infatti, oggi è frequente condividere tanta informazione quanta se ne fruisce, per cui sarebbe più sensato muoversi verso una allocazione più simmetrica dei flussi. 
 31) **Discuti la proposta del wifi come servizio pubblico.**
 	i
 32) **Cos'è WiFi4EU?**
