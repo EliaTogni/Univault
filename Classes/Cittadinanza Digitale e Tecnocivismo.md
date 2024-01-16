@@ -504,28 +504,51 @@
 17) **Cos'è uno SLA? Cosa serve per poterlo verificare contrattualmente**?
 	Un Service Level Agreement, cioè un contratto di servizio ce ogni utente firma, a volte implicitamente o distrattamente, in cui vengono specificati i livelli di servizio, regolamentate le procedure (tempi e modi) per segnalare difformità e le penali per le mancanze.
 18) **Cita qualche servizio tradizionale di base e/o pubblico e articolane le caratteristiche di "qualità".**
-	i
+	- Rete elettrica ...;
+	- rete gas ...;
 19) **Esistono influenze fra servizi analogici tradizionali e servizi digitali? Fai qualche esempio.**
-	i
+	 
 20) **Cos'è il "digital divide"?**
-	i
-21) **Cos'è la "net neutrality"?**
-	i
+	Il digital divide, che in italiano diventa divario digitale, misura le disuguaglianze nella disponibilità di accesso alle tecnologie digitali da parte della popolazione. Il fattore tecnico che viene solitamente misurato è quello del livello di connettività infrastrutturale su base territoriale o demografica. Normalmente vengono definite due fasce di digital divide:
+	- di primo livello = indisponibilità della banda oltre $2$ Mbps;
+	- di secondo livello = indisponibilità della banda oltre $30$ Mbps.
+	Esistono inoltre due fasce ulteriori: sopra il secondo livello si parla di banda ultra-larga NGA (Next Generation Access) e quando si arriva a velocità molto superiori ai $100$ Mbps si parla invece di NGA-VHCN (Next Generation Access - Very High Capacity Networks).
+21) **Cos'è la "Net Neutrality"?**
+	 Il termine Net Neutrality afferma che qualunque traffico di rete dobrenne essere trattato in maniera equa. Attorno a questo concetto si è catalizzato un movimento politico che chiede a gran voce la promulgazione di normative che impongano agli ISP il rispetto di questi principi.
 22) **Cos'è il DESI?**
-	i
+	 Il DESI è un rapporto, prodotto ogni anno dalla Comunità Europea, il quale forografa lo stato della penetrazione di Internet in Europa, sia dal punto di vista tecnico-infrastrutturale che sociale, misurando alcuni indicatori:
+	 - connettività;
+	 - capitale umano e abilità digitali;
+	 - uso dei servizi Internet da parte dei cittadini;
+	 - integrazione di tecnologie digitali nelle aziende;
+	 - servizi pubblici digitali;
+	 - ricerca e sviluppo in ICT.
 23) **Qual è la "stranezza" italiana in termini di accesso alla rete e cellulari?**
-	i
+	Nel rapporto sulla connettività del $2019$, l'Italia si posiziona a $2/3$ della classifica europea, salvata solo dalla telefonia mobile per penetrazione di mercato e bassi costi per gli utenti. Infatti l'Italia è lo stato europeo con i data plan per cellulari meno costosi ed il terzo per numero di cellulari per abitante.
 24) **Cos'è il "digital divide cognitivo/culturale"?**
-	i
+	Il digital divide cognitivo culturale è il divario digitale di chi, per scelta (non spesso ragionata o conscia ma spesso per semplice mancanza di conoscenza), non si avvale di connettività e di servizi digitali.
 25) **Chi coniò il termine "net neutrality"?**
-	i
+	 Tim Wu, nel $2003$.
 26) **Cita qualche personaggio/ente "famoso" che supporta la net neutrality.**
-	i
+	- Vinton Cerf, co-inventore del TCP/IP;
+	- Tim Berners-Lee, creatore del World Wide Web;
+	- John Oliver;
+	- la American Civil Liberties Union;
+	- la Electronic Frontier Foundation;
+	- Greenpeace;
+	- Kickstarter;
+	- Vimeo;
+	- la Mozilla Foundation;
+	- Bernie Sanders;
+	- la Internet Association.
 27) **Cita soggetti che vorrebbero aumentare la relatività in rete.**
-	i
+	- Verizon;
+	- Donald Trump;
+	- Ajit Pai, ex consigliere generale di Verizon e Presidente del Consiglio di Amministrazione di FCC.
 28) **Quali sono gli aspetti importanti formali (regole) nella gestione della net neutrality?**
-	i
-29) **Cos'è un "data cap" e perché può essere veicolo "subdolo" di aumento della relatività? (peggioramento della net neutrality)**
+	- Trasparenza: gli ISP devono pubblicare le loro policy di gestione della rete, le caratteristiche prestazionali e i termini e condizioni di accesso ai loro servizi;
+	- 
+1) **Cos'è un "data cap" e perché può essere veicolo "subdolo" di aumento della relatività? (peggioramento della net neutrality)**
 	i
 30) **Spiega il termine ADSL, soprattutto in ottica net neutrality.**
 	i

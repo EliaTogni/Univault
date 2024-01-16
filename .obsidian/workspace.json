@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -117,10 +116,11 @@
   },
   "active": "0da0ed1548d6151e",
   "lastOpenFiles": [
+    "Articles/Image Classification with Classic and Deep Learning Techniques.md",
+    "Classes/Cittadinanza Digitale e Tecnocivismo.md",
     "Classes/Privatezza e Protezione dei Dati.md",
     "Images/Macrodata Disclosure Protection Techniques.png",
     "Images/Privacy in data publication.png",
-    "Classes/Cittadinanza Digitale e Tecnocivismo.md",
     "Atoms/Albero di Copertura.md",
     "Atoms/Grafo.md",
     "Lexicon/Edificante.md",
@@ -146,7 +146,6 @@
     "Atoms/B-Albero.md",
     "Classes/Bioinformatica.md",
     "Videos/Defining Regular Expressions (RegEx) - Computerphile.md",
-    "Articles/Image Classification with Classic and Deep Learning Techniques.md",
     "Templates/Article Template.md",
     "Lexicon/Nappina1.md",
     "Untitled.canvas",
