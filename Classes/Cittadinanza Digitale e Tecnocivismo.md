@@ -489,7 +489,7 @@
 13) **Cosa si intende con "servizio pubblico"? (in contrapposizione a "servizio di base")**
 	 Un servizio pubblico è un tipo di servizio reso alla collettività, oggettivamente non economico, ma suscettibile di essere organizzato in forma d'impresa. Il concetto di servizio pubblico è necessariamente connesso ad un riconoscimento giuridico dello stesso: va perciò inteso come servizio tutelabile dall'ordinamento non solo come semplice aspirazione della collettività, ma come bisogno primario da dover necessariamente soddisfare tramite azione legislativa. Questa definizione cita sia il bisogno primario che il lato economico. Riferirsi ai bisogni primari ricollega alla piramide dei bisogni di Maslow mentre trattare l'aspetto economico collega alla nozione che alcuni tipi di servizi siano così onerosi che il loro costo va distribuito sull'intera collettività e non sul singolo, il quale non deve essere lasciato solo.
 14) **Qual è il senso/utilità di portare a "servizio pubblico" un servizio di base?**
-	
+	La definizione di servizio pubblico considera non solo il lato di soddisfacimento dei bisogni primari ma anche l'aspetto economico: alcuni tipi di servizi siano così onerosi che il loro costo va distribuito sull'intera collettività e non sul singolo, il quale non deve essere lasciato solo. Ciò ne favorisce l'accessibilità.
 15) **Quali sono i principi di erogazione di un servizio pubblico? Perché sono importanti?**
 	Ogni servizio pubblico deve essere erogato secodo questi principi:
 	- doverosità: i pubblici poteri si fanno carico del compito di garantire l'erogazione del il servizio;
@@ -502,7 +502,7 @@
 	- Il diritto di misurazione del livello di servizio;
 	- il diritto di contestazione.
 17) **Cos'è uno SLA? Cosa serve per poterlo verificare contrattualmente**?
-	Service Level Agreement,
+	Un Service Level Agreement, cioè un contratto di servizio ce ogni utente firma, a volte implicitamente o distrattamente, in cui vengono specificati i livelli di servizio, regolamentate le procedure (tempi e modi) per segnalare difformità e le penali per le mancanze.
 18) **Cita qualche servizio tradizionale di base e/o pubblico e articolane le caratteristiche di "qualità".**
 	i
 19) **Esistono influenze fra servizi analogici tradizionali e servizi digitali? Fai qualche esempio.**
