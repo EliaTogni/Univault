@@ -504,9 +504,10 @@
 17) **Cos'è uno SLA? Cosa serve per poterlo verificare contrattualmente**?
 	Un Service Level Agreement, cioè un contratto di servizio ce ogni utente firma, a volte implicitamente o distrattamente, in cui vengono specificati i livelli di servizio, regolamentate le procedure (tempi e modi) per segnalare difformità e le penali per le mancanze.
 18) **Cita qualche servizio tradizionale di base e/o pubblico e articolane le caratteristiche di "qualità".**
-	- Rete elettrica ...;
-	- rete gas ...;
-19) **Esistono influenze fra servizi analogici tradizionali e servizi digitali? Fai qualche esempio.**
+	- La rete elettrica veicola corrente elettrica che permette l'effettuazione di lavoro, in senso fisico. I fornitori di corrente si appoggiano ad una rete fisica la quale, attraverso una serie di trasformazioni da alta a bassa tensione, porta al contatore di case e aziende una certa potenza che può essere utilizzata tramite dispositivi che trasformano tale potenza in lavoro. SLA: frequenza dell'onda di $50$Hz $\pm 10\%$, tensione di $200$V $\pm 10\%$, potenza istantanea espressa in kW erogata in funzione del contratto sottoscritto;
+	- la rete gas veicola gas combustibili di vario genere i quali vengono usati per cucinare, scaldare acqua sanitaria o per riscaldamento. SLA: pressione minima $\approx 20$ mbar, composizione del gas;
+	- la rete idrica veicola acqua, la quale viene usata sia per scopi domestici che industriali o agricoli. SLA: flusso minimo, purezza.
+1) **Esistono influenze fra servizi analogici tradizionali e servizi digitali? Fai qualche esempio.**
 	 
 20) **Cos'è il "digital divide"?**
 	Il digital divide, che in italiano diventa divario digitale, misura le disuguaglianze nella disponibilità di accesso alle tecnologie digitali da parte della popolazione. Il fattore tecnico che viene solitamente misurato è quello del livello di connettività infrastrutturale su base territoriale o demografica. Normalmente vengono definite due fasce di digital divide:
@@ -554,14 +555,14 @@
 30) **Spiega il termine ADSL, soprattutto in ottica net neutrality.**
 	 Nel termine ADSL (Asymmetrical Digital Subscriber Line), il quale identifica una tecnologia di connession alla Rete, la parola asymmetrical descrive la caratteristica tipica di questa tecnologia nel fornire velocità di trasmissione diverse a seconda della direzione del flusso dei dati: il flusso entrante (download) è, in genere, $5$ o $10$ volte più veloce del flusso uscente (upload). Il motivo di questa asimmetria è storico: la capacità totale del canale era limitata superiormente e quindi si decise di dimensionare in questa maniera i due flussi. Questa scelta genera, ovviamente, un'enorme sacca di relatività. L'uso della Rete è cambiato: infatti, oggi è frequente condividere tanta informazione quanta se ne fruisce, per cui sarebbe più sensato muoversi verso una allocazione più simmetrica dei flussi. 
 31) **Discuti la proposta del wifi come servizio pubblico.**
-	i
+	
 32) **Cos'è WiFi4EU?**
-	i
+	 Iniziativa europea che promuove il libero accesso alla connettività Wi-Fi per i cittadini negli spazi pubblici, compresi parchi, piazze, edifici pubblici, biblioteche, centri sanitari e musei nei comuni di tutta Europa. Questa iniziativa garantisce dei fondi europei ai comuni per installare apparecchiature Wi-Fi in spazi pubblici che non sono già dotati di hotspot Wi-Fi gratuito.
 33) **Cos'era il "decreto Pisanu"?**
-	i
+	Decreto in vigore dal $2005$ al $2011$ il quale conteneva norme connesse all'utilizzo di Internet, vietando le connessioni anonime a Internet e imponendo a tutti gli ISP di conservare un log in cui viene riportato indirizzo IP e numero di telefono che identifica l'utente connesso. In base al decreto Pisanu, per aprire un internet point in Italia bisognava richiedere la licenza al questore.
 34) **Cosa si intende con "flat rate"? Perché ci interessa in CDT?**
-	i
-35) **Cos'è il "roaming europeo"?**
+	Si intende un piano tariffario con tariffa fissa 
+1) **Cos'è il "roaming europeo"?**
 	i
 36) **Presenta le varie possibilità di connessione alla rete (dal rame, alla fibra, al 3/4/5G) in termini di "digital divide".**
 	i
