@@ -591,9 +591,9 @@
 48) **Cos'è una "marca temporale"?**
 	i
 49) **Cos'è una "conservatoria digitale"?**
-	i
+	La conservatoria digitale è un meccanismo di archiviazione sicura e garantita
 50) **Cos'è la "fatturazione elettronica"?**
-	i
+	La fatturazione elettronica è la versione digitale della fattura tradizionale, basata sull'interscambio (attraverso server governativo) di file in formato XML (eXtensible Markup Language) di facile compilazione.
 51) **Perché le cabine telefoniche erano importanti? Pensi sia stato giusto eliminarle?**
 	i
 
