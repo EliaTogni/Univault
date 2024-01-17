@@ -585,7 +585,7 @@
 45) **Cosa si intende con "identità digitale"? Perché è utile?**
 	i
 46) **Cos'è un "password manager" e perché potrebbe essere molto utile ad un cittadino?**
-	I password manager sono programmi che salvano i dati su file in formato standard criptato. L'unica password da ricordare sarà quella di decrittazione del file stesso.
+	I password manager sono programmi che salvano i dati su file in formato standard criptato. L'unica password da ricordare sarà quella di decrittazione del file stesso. Permettono la gestione delle password per categorie, generano password random seguendo un template configurabile.
 47) **Cos'è la "firma digitale"?**
 	La firma digitale è un meccanismo di firma crittografica dei documenti: attualmente esistono standard internazionali e locali: un documento firmato digitalmente è di provenienza certa (autenticità), non ripudiabile e integro. La verifica di queste proprietà è molto più facile rispetto alla controparte cartacea. Infatti è sufficiente un software per computer, tablet o cellulare. A seconda del fornitore, prevede l'uso di chiavette hardware, i cosiddetti token OTP, o di carte elettroniche digitali con l'utilizzo di un lettore appostivo. Costa qualche decina di euro l'anno.
 48) **Cos'è una "marca temporale"?**
