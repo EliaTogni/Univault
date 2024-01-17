@@ -507,7 +507,7 @@
 	- La rete elettrica veicola corrente elettrica che permette l'effettuazione di lavoro, in senso fisico. I fornitori di corrente si appoggiano ad una rete fisica la quale, attraverso una serie di trasformazioni da alta a bassa tensione, porta al contatore di case e aziende una certa potenza che può essere utilizzata tramite dispositivi che trasformano tale potenza in lavoro. SLA: frequenza dell'onda di $50$Hz $\pm 10\%$, tensione di $200$V $\pm 10\%$, potenza istantanea espressa in kW erogata in funzione del contratto sottoscritto;
 	- la rete gas veicola gas combustibili di vario genere i quali vengono usati per cucinare, scaldare acqua sanitaria o per riscaldamento. SLA: pressione minima $\approx 20$ mbar, composizione del gas;
 	- la rete idrica veicola acqua, la quale viene usata sia per scopi domestici che industriali o agricoli. SLA: flusso minimo, purezza.
-1) **Esistono influenze fra servizi analogici tradizionali e servizi digitali? Fai qualche esempio.**
+19) **Esistono influenze fra servizi analogici tradizionali e servizi digitali? Fai qualche esempio.**
 	 
 20) **Cos'è il "digital divide"?**
 	Il digital divide, che in italiano diventa divario digitale, misura le disuguaglianze nella disponibilità di accesso alle tecnologie digitali da parte della popolazione. Il fattore tecnico che viene solitamente misurato è quello del livello di connettività infrastrutturale su base territoriale o demografica. Normalmente vengono definite due fasce di digital divide:
@@ -561,23 +561,23 @@
 33) **Cos'era il "decreto Pisanu"?**
 	Decreto in vigore dal $2005$ al $2011$ il quale conteneva norme connesse all'utilizzo di Internet, vietando le connessioni anonime a Internet e imponendo a tutti gli ISP di conservare un log in cui viene riportato indirizzo IP e numero di telefono che identifica l'utente connesso. In base al decreto Pisanu, per aprire un internet point in Italia bisognava richiedere la licenza al questore.
 34) **Cosa si intende con "flat rate"? Perché ci interessa in CDT?**
-	Si intende un piano tariffario con tariffa fissa 
-1) **Cos'è il "roaming europeo"?**
-	i
+	Si intende un piano tariffario con tariffa fissa ma connessione illimitata
+35) **Cos'è il "roaming europeo"?**
+	Innanzitutto, il roaming è un accordo che stipulano due o più gestori telefonici, nel campo delle telecomunicazioni mobili, per far sì che i clienti di operatori terzi possano utilizzare le infrastrutture telefoniche (antenne e ponti radio) per chiamare, navigare o messaggiare in un Paese dove non vi è copertura dell'operatore del cliente. Con roaming europeo si indica la possibilità di usufruire del servizio di roaming senza costi aggiuntivi nei paesi dell'Unione Europea.
 36) **Presenta le varie possibilità di connessione alla rete (dal rame, alla fibra, al 3/4/5G) in termini di "digital divide".**
-	i
+	Un adeguato grado di connettività ridurrebbe il digital divide e avrebbe effetti positivi soprattutto sull'economia e sulla produttività.
 37) **Perché proponiamo come "servizio di base/universale/pubblico" l'abbassamento del limite di "digital divide"? Cosa comporterebbe in termini di CDT?**
-	i
+	Un adeguato grado di connettività ridurrebbe il digital divide e avrebbe effetti positivi soprattutto sull'economia e sulla produttività (in termini di smart working, formazione a distanza). La banda larga porta conoscenza e svago.
 38) **Cosa si intende con "computing device" inteso come servizio di base/pubblico? Discuti una sua eventuale promozione formale a servizio pubblico.**
-	i
+	Per accedere ad un servizio digitale, tipicamente via Internet, serve una connessione ragionevole per quel servizio, ma serve anche un computer adeguato, sempre in funzione del servizio. Diﬀicile definire in anticipo le caratteristiche precise di un ipotetico device universale, in quanto dipendenti dalle funzioni per le quali debba essere utilizzato. Usi e necessità diverse implicano veicoli diversi. Pensare di fornire ai singoli cittadini un proprio veicolo non funziona, né in termini pragmatici, perché ogni soggetto ha esigenze e capacità diverse, né in termini economici per impegno finanziario che ne deriverebbe. Sarebbe meglio fornire una buona rete di mezzi pubblici digitali per i cittadini digitali che non possono permettersi un computing device proprio. Alcuni esempi possono essere postazioni connesse ad Internet messe a disposizione in molti luoghi pubblici come scuole o biblioteche.
 39) **Cosa si intende con "domicilio digitale"? Articola promozione a servizio pubblico.**
-	i
+	Si intende un personal computer remoto e virtuale dotato di un disco (storage) adatto a immagazzinare i nostri dati e documenti, con installati i programmi di uso comune in modo da non aver neppure bisogno di computer fisico, ma di potervi accedere semplicemente da un web browser da qualunque postazione pubblica o privata. Soluzioni come quella appena descritta sono già esistenti ma fornite da aziende extraeuropee e, quindi, non sottostanti a normative come il GDPR.
 40) **Quali "caveat" abbiamo delineato per i servizi attuali di "domicilio digitale"?**
-	i
-41) **Cos'è il GDPR? come mai influenza il tema dei servizi di base/pubblici?**
-	i
+	L’unico [[Caveat |caveat]] è che i servizi attualmente disponibili sono forniti da aziende extraeuropee che quindi sottostanno a normative molto distanti dalle nostre, si pensi ad esempio al GDPR (General Data Protection Regulation) che è normativa europea, ma che in USA non viene applicata.
+41) **Cos'è il GDPR? Come mai influenza il tema dei servizi di base/pubblici?**
+	Il GDPR (General Data Protection Regulation) è un regolamento dell'Unione Europea in materia di trattamento dei dati personali e di privacy, con il quale la Commissione Europea si propone come obiettivo quello di rafforzare la protezione dei dati personali dei cittadini dell'UE e dei residenti nell'UE, sia all'interno dei confini dell'UE che all'esterno di essi, restituendo ai cittadini il controllo dei propi dati personali.
 42) **Discuti il tema "posta elettronica/PEC" come servizio di base/pubblico.**
-	i
+	Se come società ci vogliamo muovere verso una sempre maggiore dematerializzazione del paese dobbiamo spingere verso una cultura in cui l’indirizzo elettronico diventa persino più importante di quello fisico, almeno ai fini della burocrazia e della gestione delle comunicazioni formali.
 43) **Che difetti ha (aveva) la PEC?**
 	i
 44) **Quali problemi abbiamo citato in tema PA e posta elettronica?**
