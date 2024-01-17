@@ -585,11 +585,11 @@
 45) **Cosa si intende con "identità digitale"? Perché è utile?**
 	i
 46) **Cos'è un "password manager" e perché potrebbe essere molto utile ad un cittadino?**
-	i
+	I password manager sono programmi che salvano i dati su file in formato standard criptato. L'unica password da ricordare sarà quella di decrittazione del file stesso.
 47) **Cos'è la "firma digitale"?**
-	i
+	La firma digitale è un meccanismo di firma crittografica dei documenti: attualmente esistono standard internazionali e locali: un documento firmato digitalmente è di provenienza certa (autenticità), non ripudiabile e integro. La verifica di queste proprietà è molto più facile rispetto alla controparte cartacea. Infatti è sufficiente un software per computer, tablet o cellulare. A seconda del fornitore, prevede l'uso di chiavette hardware, i cosiddetti token OTP, o di carte elettroniche digitali con l'utilizzo di un lettore appostivo. Costa qualche decina di euro l'anno.
 48) **Cos'è una "marca temporale"?**
-	i
+	La marca temporale è un meccanismo di timestamping, ovvero timbratura con data e ora: permette di garantire data ed ora di un certo evento (tipicamente l'emissione di un documento, un file). Può essere combinata con la firma digitale. Viene tariffata a timestamp generato, qualche centesimo l'uno.
 49) **Cos'è una "conservatoria digitale"?**
 	La conservatoria digitale è un meccanismo di archiviazione sicura e garantita per documenti digitali: molti procedimenti burocratici prescrivono la conservazione dei documenti anche per molti anni: in versione cartacea esistono strutture fisiche preposte e (lascamente) certificate; in versione digitale, attualmente, esistono parecchi fornitori.
  50) **Cos'è la "fatturazione elettronica"?**
