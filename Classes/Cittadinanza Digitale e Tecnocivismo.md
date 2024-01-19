@@ -577,13 +577,13 @@
 41) **Cos'è il GDPR? Come mai influenza il tema dei servizi di base/pubblici?**
 	Il GDPR (General Data Protection Regulation) è un regolamento dell'Unione Europea in materia di trattamento dei dati personali e di privacy, con il quale la Commissione Europea si propone come obiettivo quello di rafforzare la protezione dei dati personali dei cittadini dell'UE e dei residenti nell'UE, sia all'interno dei confini dell'UE che all'esterno di essi, restituendo ai cittadini il controllo dei propi dati personali.
 42) **Discuti il tema "posta elettronica/PEC" come servizio di base/pubblico.**
-	Se come società ci vogliamo muovere verso una sempre maggiore dematerializzazione del paese dobbiamo spingere verso una cultura in cui l’indirizzo elettronico diventa persino più importante di quello fisico, almeno ai fini della burocrazia e della gestione delle comunicazioni formali.
+	Se come società ci vogliamo muovere verso una sempre maggiore dematerializzazione del paese dobbiamo spingere verso una cultura in cui l’indirizzo elettronico diventa persino più importante di quello fisico, almeno ai fini della burocrazia e della gestione delle comunicazioni formali. Qualunque servizio digitale richiede la fornitura di un qualche tipo di indirizzo per poter contattare (ma anche riconoscere) l’utente durante l’espletamento e l’informazione che viene richiesta più di frequente è proprio la email. Viene proposto come servizio di base nell’ottica di evitare, formalizzandone una garanzia normativa, la “mercificazione” delle informazioni personali che molti provider operano nell’offrire gratuitamente tale servizio.
 43) **Che difetti ha (aveva) la PEC?**
-	i
+	Molti enti della Pubblica Amministrazione non avevano attivato l'indirizzo PEC oppure lo avevano attivato ma non consultavano mai la casella oppure chiedevano di inviare email agli indirizzi normali e non certificati. Inoltre, quando si provò a fornire ad ogni cittadino un indirizzo PEC (CEC-PAC), lo standard scelto impediva la comunicazione tra cittadini, limitandole solo alle comunicazioni tra cittadino e Pubblica Amministrazione.
 44) **Quali problemi abbiamo citato in tema PA e posta elettronica?**
-	i
+	Molti enti della Pubblica Amministrazione non avevano attivato l'indirizzo PEC oppure lo avevano attivato ma non consultavano mai la casella oppure chiedevano di inviare email agli indirizzi normali e non certificati o, ancora peggio, chiedevano l'invio di fax o posta cartacea.
 45) **Cosa si intende con "identità digitale"? Perché è utile?**
-	i
+	L'identità digitale si riferisce alla rappresentazione online o digitale dell'identità di un individuo, un'organizzazione o un dispositivo. Essa comprende le informazioni personali e gli attributi associati a una persona o a un ente, che vengono utilizzati per identificarli e autenticarli in ambienti digitali. Le identità digitali sono spesso utilizzate per accedere a servizi online, come account email, social media, servizi bancari online e molte altre piattaforme digitali. Queste identità possono includere informazioni come nome, indirizzo, data di nascita, codici di accesso o altre credenziali, a seconda del contesto e delle esigenze dell'applicazione.
 46) **Cos'è un "password manager" e perché potrebbe essere molto utile ad un cittadino?**
 	I password manager sono programmi che salvano i dati su file in formato standard criptato. L'unica password da ricordare sarà quella di decrittazione del file stesso. Permettono la gestione delle password per categorie, generano password random seguendo un template configurabile.
 47) **Cos'è la "firma digitale"?**
@@ -595,7 +595,7 @@
  50) **Cos'è la "fatturazione elettronica"?**
 	La fatturazione elettronica è la versione digitale della fattura tradizionale, basata sull'interscambio (attraverso server governativo) di file in formato XML (eXtensible Markup Language) di facile compilazione.
 51) **Perché le cabine telefoniche erano importanti? Pensi sia stato giusto eliminarle?**
-	i
+	Perchè erano un servizio universale, sottoposto a rigidi vincoli di presenza su territorio e, quindi, fornivano un servizio utile a chiunque fosse sprovvisto di telefono fisso o mobile.
 
 ----------------------------------------------------------------
 

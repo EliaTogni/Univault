@@ -3300,18 +3300,20 @@ An example of data and workload information.
 	- $q_1, ..., q_l$ queries to be executed;
 	- $freq(q_i)$ expected execution frequency of $q_i$;
 	- $Attr(q_i)$ attributes appearing in the $WHERE$ clause of $q_i$.
+
 	$\to$ minimize the number of query executions that require processing at the owner: $w_q(F) = \sum_{q \in \mathcal{Q}} freq(q)$ such that $Attr(q) \cap F_o \neq \emptyset$;
 - **Min-Cond**: the relation schema (set of attributes), the conﬁdentiality constraints, and a complete proﬁle (conditions in each query of the form $a_i$ op $v$ or $a_i$ op $a_j$) of the expected query workload are known. Query workload proﬁle:
 	$\mathcal{Q}=\{(q_1, freq(q_1), Cond(q_1)), ..., (q_l, freq(q_l)Cond(q_l))\}$:
 	- $q_1, ..., q_l$ queries to be executed;
 	- $freq(q_i)$ expected execution frequency of $q_i$;
 	- $Cond(q_i)$ set of conditions in the $WHERE$ clause of query $q_i$; each condition is represented as a single attribute or a pair of attributes.
- $\to$ minimize the number of conditions that require processing at the owner: $w_c(F)= \sum_{cnd \in Cond(\mathcal{Q})} freq(cnd)$ such that $cnd \cap F_o \neq \emptyset$, where $Cond(\mathcal{Q})$ denotes the set of all conditions of queries in $Q$, and $freq(cnd)$ is the overall frequency of $cnd$.
+
+	 $\to$ minimize the number of conditions that require processing at the owner: $w_c(F)= \sum_{cnd \in Cond(\mathcal{Q})} freq(cnd)$ such that $cnd \cap F_o \neq \emptyset$, where $Cond(\mathcal{Q})$ denotes the set of all conditions of queries in $Q$, and $freq(cnd)$ is the overall frequency of $cnd$.
 
 ----------------------------------------------------------------
 
 ### Modeling of the minimization problems
-All the problems of minimizing storage or computation/trafﬁc aim at identifying a **hitting set**. $F_o$ must contain at least an attribute for each constraint.<br />
+All the problems of minimizing storage or computation/trafﬁc aim at identifying a **hitting set**, that is, $F_o$ must contain at least an attribute for each constraint.<br />
 Different metrics correspond to different criteria according to which the hitting set should be minimized. We represent all criteria with a uniform model based on:
 - **target set**: elements (i.e., attributes, queries, or conditions) with respect to which the minimization problem is deﬁned;
 - **weight function**: function that associates a weight with each target element;
