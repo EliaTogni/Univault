@@ -3308,7 +3308,7 @@ An example of data and workload information.
 	- $freq(q_i)$ expected execution frequency of $q_i$;
 	- $Cond(q_i)$ set of conditions in the $WHERE$ clause of query $q_i$; each condition is represented as a single attribute or a pair of attributes.
 
-	 $\to$ minimize the number of conditions that require processing at the owner: $w_c(F)= \sum_{cnd \in Cond(\mathcal{Q})} freq(cnd)$ such that $cnd \cap F_o \neq \emptyset$, where $Cond(\mathcal{Q})$ denotes the set of all conditions of queries in $Q$, and $freq(cnd)$ is the overall frequency of $cnd$.
+	 $\to$ minimize the number of conditions that require processing at the owner: $w_c(F)= \sum_{cnd \in Cond(\mathcal{Q})} freq(cnd)$ such that $cnd \cap F_o \neq \emptyset$, where $Cond(\mathcal{Q})$ denotes the set of all conditions of queries in $Q$, and $freq(cnd)$ is the overall frequency of $cnd$ ()in the example above, the difference between Min-Query and Min-Cond is observable in the query $q6$.
 
 ----------------------------------------------------------------
 
