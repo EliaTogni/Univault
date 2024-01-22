@@ -2328,7 +2328,7 @@ The possible inferences, having DB+DB$^k$, are:
 
 ![[ExposureCoefficientComputation.png]]
 
-##### Direct encryption – Freq+DBk
+##### Direct encryption – Freq+DB$^k$
 Correspondence between an index and a plaintext value can be determined based on the number of occurrences of the index/value:
 - basic protection: values with the same number of occurrences are indistinguishable to the attacker.
 
@@ -3323,13 +3323,14 @@ $\to$ compute the hitting set of attributes with minimum weight.
 
 ![[ModelingOfTheMinimizationProblems.png]]
 
-**Weighted Minimum Target Hitting Set Problem** (**WMTHSP**). Given a ﬁnite set $A$, a set $C$ of subsets of $A$, a set $\mathcal{T}$ (target) of subsets of $A$, and a weight function $w: T \to \mathbb{R}^+$, determine a subset $S$ of $A$ such that:
+**Weighted Minimum Target Hitting Set Problem** (**WMTHSP**). Given a ﬁnite set $A$, a set $C$ of subsets of $A$, a set $\mathcal{T}$ (target) of subsets of $A$, and a weight function $w: \mathcal{T} \to \mathbb{R}^+$, determine a subset $S$ of $A$ such that:
 1) $S$ is a hitting set of $A$;
-2) $\nexists S'$ such that $S'$ is a hitting set of $A$ and $\sum_{t \in \mathcal{T}, t \cap S' \neq \emptyset} w(t) < \sum_{t \in \mathcal{T}, t\cap S \neq \emptyset} w(t)$.
+2) $\nexists S'$ such that $S'$ is a hitting set of $A$ and $\sum_{t \in \mathcal{T}, t \cap S' \neq \emptyset} w(t) < \sum_{t \in \mathcal{T}, t\cap S \neq \emptyset} w(t)$ (the weight is minimum).
 
 The Minimum Hitting Set Problem can be reduced to the WMTHSP:
 - $\mathcal{T} = \{A_1, ..., A_n\}$; $w(\{A_i\}) = 1, i = 1, ..., n$;
 - minimizing $\sum_{t \in T, t \cap S \neq \emptyset} w(t)$ is equivalent to minimizing the cardinality of the hitting set $S$.
+
 $\to$ WMTHSP is NP-hard.
 
 We propose a heuristic algorithm for solving the WMTHSP that:
@@ -3337,10 +3338,10 @@ We propose a heuristic algorithm for solving the WMTHSP that:
 - has **polynomial time complexity** in the number of attributes (efﬁcient execution time);
 - provides solutions close to the optimum (from experiments run: optimum was returned in many cases, $14\%$ maximum error observed).
 
-Input and output of the heuristic algorithm.
+Input and output of the heuristic algorithm.<br />
 Input:
-- $\mathcal{A}$: set of attributes not appearing in singleton constraints;
-- $\mathcal{C}$: set of well deﬁned constraints;
+- $\mathcal{A}$: set of attributes not appearing in singleton constraints (the attributes in the singleton constraints are keeped at the owner);
+- $\mathcal{C}$: set of well deﬁned constraints, that is, $\forall c_1, c_2 \in \mathcal{C}: c_1 \neq c_2$;
 - $\mathcal{T}$: set of targets;
 - $w$: weight function deﬁned on $\mathcal{T}$.
 
@@ -3458,10 +3459,10 @@ The authors propose a greedy algorithm that iteratively adds a node to a group w
 
 ## Fragments and Loose Associations
 ### Data publication
-Fragmentation can also be used to protect sensitive associations in data publishing $\to$ publish/release to external parties only views (**fragments**) that do not expose sensitive associations. To increase utility of published information fragments could be coupled with some associations in sanitized form $\to$ loose associations: associations among groups of values (in contrast to speciﬁc values).
+Fragmentation can also be used to protect sensitive associations in data publishing $\to$ publish/release to external parties only views (**fragments**) that do not expose sensitive associations. To increase utility of published information fragments could be coupled with some associations in sanitized form $\to$ **loose associations**: associations among groups of values (in contrast to speciﬁc values).
 
 #### Conﬁdentiality constraints
-As already discussed, are a sets of attributes such that the (joint) visibility of values of the attributes in the sets should be protected. They permit to express different requirements:
+As already discussed, confidentiality constraints are a sets of attributes such that the (joint) visibility of values of the attributes in the sets should be protected. They permit to express different requirements:
 - **sensitive attributes**: the values of some attributes are considered sensitive and should not be visible;
 - **sensitive associations**: the associations among values of given attributes are sensitive and should not be visible.
 
@@ -3474,7 +3475,7 @@ An example of conﬁdentiality constraints.
 - $\{Birth, City\}$ can work as quasi-identiﬁer: $\{Birth, City, Illness\}$, $\{Birth, City, Doctor\}$.
 
 #### Visibility requirements
-Monotonic Boolean formulas over attributes, representing views over data (negations are captured by conﬁdentiality constraints). They permit to express different requirements:
+**Visibility requirements** are monotonic Boolean formulas over attributes, representing views over data (negations are captured by conﬁdentiality constraints). They permit to express different requirements:
 - **visible attributes**: some attributes should be visible;
 - **visible associations**: the association among values of given attributes should be visible;
 - **alternative views**: at least one of the speciﬁed views should be visible.
@@ -3485,7 +3486,7 @@ An example of visibility requirements.
 
 - Either names of Patients or their Cities should be released: $Patient \vee City$ (alternative views);
 - either Birth dates and Cities of patients in association should be released or the SSN of patients should be released: $(Birth \wedge City) \vee SSN$ (visible associations and alternative views);
-- Illnesses and Doctors, as well as their association, should be released: $Illness \wedge Doctor$ (visible attributes).
+- Illnesses and Doctors, as well as their association, should be released: $Illness \wedge Doctor$ (visible attributes and visible associations).
 
 ----------------------------------------------------------------
 
