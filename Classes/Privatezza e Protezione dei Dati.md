@@ -3399,6 +3399,8 @@ Fragmentation assumes attributes to be independent. In presence of data dependen
 
 An example of fragmentation and inference.
 
+![[FragmentationAndInferenceExample1.png]]
+
 ![[FragmentationAndInferenceExample.png]]
 
 ----------------------------------------------------------------
