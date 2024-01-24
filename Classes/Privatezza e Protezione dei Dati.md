@@ -170,6 +170,7 @@ Measuring the disclosure risk requires considering:
 - the probability that the respondent for whom an intruder is looking for is represented on both the microdata and some external file;
 - the probability that the matching variables are recorded in a linkable way on the microdata and on the external file;
 - the probability that the respondent for whom the intruder is looking for is unique (or peculiar) in the population of the external file.
+
 The percentage of records representing respondents who are unique in the population (**population unique**) plays a major role in the disclosure risk of microdata (with respect to the specific respondent). Note that each population unique is a sample unique; the vice-versa is not true.
 
 ----------------------------------------------------------------
