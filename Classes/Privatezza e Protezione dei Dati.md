@@ -3430,7 +3430,7 @@ An example of private associations. The table $n:n$ _Customer_-_Product_ contain
 
 #### Problem statement
 Publish anonymized and useful version of bipartite graph in such a way that:
-- a broad class of queries can be answered accurately:
+- a broad class of queries (aggregated) can be answered accurately:
 	- type $0$ - Graph structure only, e.g., what is the average number of products purchased by customers?
 	- type $1$ - Attribute predicate on one side only, e.g., what is the average number of products purchased by $NJ$ customers?
 	- type $2$ - Attribute predicate on both side, e.g., what is the average number of OTC products purchased by $NJ$ customers?
@@ -3447,12 +3447,13 @@ An example of $(3,3)$ grouping.
 
 ![[(3,3)GroupingExample1.png|600]]
 
-Another example of $(3,3)$ grouping.
+$c_1$, $c_2$ and $c_4$ are associated to the customer group $CG1$. In the released structure, however, they are substituted by $x_1$, $x_2$ and $x_3$ in no particular order ($c_1$ may or may not correspond to $x_1$ and so on) (aliasing).
 
 ![[(3,3)GroupingExample2.png|600]]
 
+All these tables are published.
 #### Safe groupings
-There are different ways for creating a $(k, l)$ grouping but not all the resulting groupings offer the same level of privacy (e.g., local clique) $\to$ safe $(k,l)$ groupings; this means that nodes in the same group of $V$ are not connected to a same node in $W$.
+There are different ways for creating a $(k, l)$ grouping but not all the resulting groupings offer the same level of privacy (e.g., local clique) $\to$ safe $(k,l)$ groupings; this means that nodes in the same group of $V$ are not connected to a same node in $W$ otherwise the nodes could be exposed.
 
 The computation of a safe grouping can be hard even for small values of $k$ and $l$. In fact, the computation of a safe, strict $(3,3)$-grouping is NP-hard (reduction from partitioning a graph into triangles).
 
@@ -3475,7 +3476,7 @@ An example of conﬁdentiality constraints.
 
 - SSN is sensitive: $\{SSN\}$;
 - Illness and Doctor are private of an individual and cannot be stored in association with the name of the patient: $\{Patient, Illness\}$, $\{Patient, Doctor\}$;
-- $\{Birth, City\}$ can work as quasi-identiﬁer: $\{Birth, City, Illness\}$, $\{Birth, City, Doctor\}$.
+- $\{Birth, City\}$ can work as quasi-identiﬁer, therefore they can be used to identify a patient: $\{Birth, City, Illness\}$, $\{Birth, City, Doctor\}$.
 
 #### Visibility requirements
 **Visibility requirements** are monotonic Boolean formulas over attributes, representing views over data (negations are captured by conﬁdentiality constraints). They permit to express different requirements:
