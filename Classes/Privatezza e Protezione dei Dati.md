@@ -3507,7 +3507,7 @@ An example of fragmentation.
 A fragmentation is **correct** if:
 - each conﬁdentiality constraint is satisﬁed by all fragments;
 - each visibility requirement is satisﬁed by at least a fragment;
-- fragments do not have attributes in common (to prevent joins on fragments to retrieve associations).
+- fragments do not have attributes in common to prevent joins on fragments to retrieve associations (**non-linkability**).
 
 A correct fragmentation is **minimal** if the number of fragments is minimum (i.e., any other correct fragmentation has an equal or greater number of fragments).
 
@@ -3555,12 +3555,12 @@ An example of group association.
 
 ![[GroupAssociationExample3.png|600]]
 
+E.g, somebody in group _bc1_ is associated to somebody in group _id1_ and somebody else in group _bc1_ is associated to somebody in group _id2_. The uncertainty of the correct association has value $4$ in this example (obtained doing $k_r \cdot k_l$).
+
 ----------------------------------------------------------------
 
 ###### Group association protection
-Duplicates in fragments are maintained (all fragments have the same cardinality as the original relation). Fragments may contain tuples that are equal.
-
-Even tuples that are different may have the same values for attributes involved in a conﬁdentiality constraint. The looseness protection offered by grouping can be compromised $\to$ need to control occurrences of the same values.
+Duplicates in fragments are maintained (all fragments have the same cardinality as the original relation). Fragments may contain tuples that are equal. Furthermore, even tuples that are different may have the same values for attributes involved in a conﬁdentiality constraint. The looseness protection offered by grouping can be compromised. Therefore, there is the need to control occurrences of the same values.
 
 ----------------------------------------------------------------
 
@@ -3569,7 +3569,7 @@ Two tuples $l_i$, $l_j$ in $f_l(r_i, r_j$ in $fr)$ are **alike** with regard to 
 - $c \subseteq (F_l \cup F_r)$ ($c$ is covered by $F_l$ and $F_r$);
 - $l_i [c \cap F_l] = l_j [c \cap F_l]$ (and, similarly, $r_i [c \cap F_r] = r_j [c \cap F_r])$.
 
-Two tuples $l_i$, $l_j$ in $f_l (r_i, r_j$ in $f_r)$ are alike $l_i \simeq l_j (r_i \simeq r_j)$ if they are alike with regard to at least a constraint $c \subseteq (F_l \cup F_r)$. $\simeq$ is transitive for any constraint $c$. $\simeq$ is not transitive if there are at least two constraints covered by $F_l$ and $F_r$.
+Two tuples $l_i$, $l_j$ in $f_l (r_i, r_j$ in $f_r)$ are alike $l_i \simeq l_j (r_i \simeq r_j)$ if they are alike with regard to at least a constraint $c \subseteq (F_l \cup F_r)$. $\simeq$ is transitive for any constraint $c$. $\simeq$ is not transitive if there are at least two constraints covered by $F_l$ and $F_r$ ($r_1 \simeq_{c_3} r_8$, $r_2 \simeq_{c_4} r_8$ but $r_1 \nsim r_2$).
 
 An example of alikeness.
 
@@ -3580,7 +3580,9 @@ An example of alikeness.
 ----------------------------------------------------------------
 
 ###### k-loose association
-A group association is **$k$-loose** if every tuple in the group association $A$ indistinguishably corresponds to at least $k$ distinct associations among tuples in the fragments. A $k$-loose association is also $k'$-loose for any $k' \leq k$. A $(k_l, k_r)$-grouping induces a minimal group association $A$ if:
+A group association is **$k$-loose** if every tuple in the group association $A$ indistinguishably corresponds to at least $k$ distinct associations among tuples in each fragment. A $k$-loose association is also $k'$-loose for any $k' \leq k$.
+
+A $(k_l, k_r)$-grouping induces a minimal group association $A$ if:
 - $A$ is $k$-loose;
 - $\nexists$ a $(k_l', k_r')$-grouping inducing a $k$-loose association such that $k_l' \cdot k_r' < k_l \cdot k_r$.
 
