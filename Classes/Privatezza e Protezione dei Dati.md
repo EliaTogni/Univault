@@ -3555,7 +3555,7 @@ An example of group association.
 
 ![[GroupAssociationExample3.png|600]]
 
-E.g, somebody in group _bc1_ is associated to somebody in group _id1_ and somebody else in group _bc1_ is associated to somebody in group _id2_. The uncertainty of the correct association has value $4$ in this example (obtained doing $k_r \cdot k_l$).
+E.g, somebody in group _bc1_ is associated to somebody in group _id1_ and somebody else in group _bc1_ is associated to somebody in group _id2_. The uncertainty of the correct association has value $4$ in this example ($\leq k_r \cdot k_l$, as it will be shown in the paragraph [[Privatezza e Protezione dei Dati#Heterogeneity properties |Heterogeneity properties]]).
 
 ----------------------------------------------------------------
 
