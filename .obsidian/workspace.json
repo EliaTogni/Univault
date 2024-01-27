@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "e5a1c3570093b303",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Videos/TCGplayer Edge - Season 2, Episode 1 - How to Use This Course.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -86,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Privatezza e Protezione dei Dati.md",
+                "file": "Videos/TCGplayer Edge - Season 2, Episode 1 - How to Use This Course.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,10 +128,11 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "0da0ed1548d6151e",
+  "active": "e5a1c3570093b303",
   "lastOpenFiles": [
-    "Images/FragmentationAndInferenceExample1.png",
     "Classes/Privatezza e Protezione dei Dati.md",
+    "Videos/TCGplayer Edge - Season 2, Episode 1 - How to Use This Course.md",
+    "Images/FragmentationAndInferenceExample1.png",
     "Images/Pasted image 20240123113347.png",
     "Classes/Cittadinanza Digitale e Tecnocivismo.md",
     "Classes/Informatica Teorica.md",
@@ -147,7 +161,6 @@
     "Images/CachedSearches1Example3.png",
     "Images/CachedSearches1Example2.png",
     "Images/CachedSearches1Example1.png",
-    "Images/CachedSearches2Example4.png",
     "Atoms/B-Albero.md",
     "Classes/Bioinformatica.md",
     "Videos/Defining Regular Expressions (RegEx) - Computerphile.md",
