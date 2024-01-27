@@ -3674,17 +3674,19 @@ Exposure $(P(l[c \cap F_l]$, $r[c \cap F_r]))$ depends on the presence of alike 
 
 $$P(l_i, r) + P(l_j, r) − (P(l_i, r) \cdot P(l_j, r))$$
 
-An example of exposure without loose association.
+An example of exposure without loose association (the released tables are disjointed). The two tuples _56/12/9 - Rome_ collapse into one and also the tuples _diabetes_ and _gastritis_. The attribute _doctor_ isn't accounted because the constraint $c_3$ doesn't contan it. 
 
 ![[ExposureWithoutLooseAssociationExample.png|600]]
 
-Given $l \in f_l$ and $r \in f_r$ the probability $P^A(l, r)$ that tuple $\langle l,r \rangle$ belongs to the original relation is at most $1/k$. $P^A(l[c \cap F_l]$, $r[c \cap F_r])$ is evaluated considering the alike $\simeq_c$ relationship. Let $l_i$, $l_j$ in $f_l$ s.t. $l_i \simeq_c l_j$, $P^A(l_i [c \cap F_l]$, $r[c \cap F_r])$ is the composition of the probability that:
+Given $l \in f_l$ and $r \in f_r$ the probability $P^A(l, r)$ that tuple $\langle l,r \rangle$ belongs to the original relation is at most $1/k$.
+
+$P^A(l[c \cap F_l]$, $r[c \cap F_r])$ is evaluated considering the alike $\simeq_c$ relationship. Let $l_i$, $l_j$ in $f_l$ s.t. $l_i \simeq_c l_j$, $P^A(l_i [c \cap F_l]$, $r[c \cap F_r])$ is the composition of the probability that:
 - $l_i$ is associated with $r$;
 - $l_j$ is associated with $r$.
 
 $$P^A(l_i, r) + P^A(l_j, r) − (P^A(l_i, r) \cdot P^A(l_j, r))$$
 
-Another example of exposure with loose association.
+Another example of exposure with loose association. The first table shown is the one referring to the case without loose association while the second one is the starting table referring to the exposure with loose association. Starting one because we still have to evaluate the exposure of the tuples with more than one occurrence.
 
 ![[ExposureWithLooseAssociation1Example1.png|600]]
 
