@@ -3774,7 +3774,7 @@ Server side:
 
 Client side:
 - the client locally stores a small number of blocks in a **stash** (kinda like a local cache);
-- the client stores a position map: $x = position[a]$ means that a block identified by a is currently mapped to the $x$-th leaf node $\to$ block $a$ (if it exists) resides in some bucket in path $P(x)$ or in the stash;
+- the client stores a position map: $x = position[a]$ means that a block identified by $a$ is currently mapped to the $x$-th leaf node $\to$ block $a$ (if it exists) resides in some bucket in path $P(x)$ or in the stash;
 - The position map changes every time blocks are accessed and remapped.
 
 The main invariant are that at any time:
@@ -3825,12 +3825,12 @@ However:
 
 ## Shuffle Index
 ### Shuffle index data structure
-Data are indexed over a candidate key $K$ and organized as an **unchained** $B+$-tree with fan out $F$ (the max capacity of a node). Unchained means that there are no links between leafs and, in this case, having chained leafs would leak information regarding the order of the data.<br />
+Data are indexed over a candidate key $K$ and organized client-side as an **unchained** $B+$-tree with fan out $F$ (the max capacity of a node). Unchained means that there are no links between leafs and, in this case, having chained leafs would leak information regarding the order of the data.<br />
 Data are stored in the leaves in association with their index values. Accesses to the data (searches) are based on the value of the index.
 
 Node structure:
-- $q \geq \lceil F/2 \rceil$ children with $q − 1$ values $v_1 \leq ... \leq v_{q−1}$;
-- $i$-th child is the root of a subtree containing the values $v$ with: $v < v_1$; $v_{i−1} \leq v < v_i, i = 2, ..., q − 2$; $v \geq v_{q−1}$.
+- $q \geq \lceil F/2 \rceil$ children with $q − 1$ values $v_1 \leq ... \leq v_{q−1}$ (every node must be filled at least halfway);
+- $i$-th child is the root of a subtree containing the values $v$ with: $v < v_1$ (for the children of the first ); $v_{i−1} \leq v < v_i, i = 2, ..., q − 2$; $v \geq v_{q−1}$.
 
 An example of the abstract representation of shuffle index.
 
@@ -4003,11 +4003,11 @@ An example of shuffling.
 ##### Access execution and shuffle index management
 Let $v$ be the target value. Determine _num_cover_$+1$ cover values and for each level $l$ of the shuffle index:
 - determine the identifiers (_ToRead_ids_) of the blocks in the path to $v$ and cover values;
-- if the node in the path to $v$ does not belong to Cachel (cache miss), only _num_cover_ cover searches are performed;
+- if the node in the path to $v$ does not belong to $Cache_l$ (cache miss), only _num_cover_ cover searches are performed;
 - send to the server a request for the blocks with identifier in _ToRead_ids_ and decrypt their content (set Read of nodes);
-- shuffle nodes in Read and in Cachel according to a permutation $\pi$;
+- shuffle nodes in Read and in $Cache_l$ according to a permutation $\pi$;
 - update the pointers of the parents of the shuffled nodes;
-- update Cachel by inserting the most recently accessed node in the path to $v$ (only if a cache miss occurred).
+- update $Cache_l$ by inserting the most recently accessed node in the path to $v$ (only if a cache miss occurred).
 
 An example of access execution.
 
