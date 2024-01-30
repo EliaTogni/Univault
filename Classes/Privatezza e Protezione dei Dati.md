@@ -3923,7 +3923,7 @@ An example of cover searches.
 ![[CoverSearchesExample.png|600]]
 
 Protection offered by cover searches:
-- leaf blocks have the same probability of containing the actual target, e.g., blocks $201$ and $207$ can be both the target block;
+- leaf blocks have the same probability of containing the actual target, e.g., blocks $201$ and $207$ can be both the target block;
 - the parent-child relationship between accessed blocks is confused, e.g., block $201$ could be child of either $101$ or $103$.
 
 
