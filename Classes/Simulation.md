@@ -378,3 +378,5 @@ Main techniques for generating R.V.:
 - acceptance-rejection
 - composition
 - (alias)
+
+----------------------------------------------------------------
