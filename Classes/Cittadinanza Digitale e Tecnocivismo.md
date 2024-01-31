@@ -958,11 +958,12 @@
 ----------------------------------------------------------------
 
 ## Appendice V1
-
+- Che dati sono stati raccolti dal router wifi dell'appartamento?
+- Cosa raccontano i dati di connessione al router wifi dell'appartamento?
 
 ----------------------------------------------------------------
 
 ## Appendice V2
-
+- Qual è la morale della storia "Altri giorni, altri occhi"?
 
 ----------------------------------------------------------------

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Classes/Simulation.md",
+                "file": "Classes/Cittadinanza Digitale e Tecnocivismo.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Simulation.md",
+                "file": "Classes/Cittadinanza Digitale e Tecnocivismo.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,8 +116,8 @@
   },
   "active": "0da0ed1548d6151e",
   "lastOpenFiles": [
-    "Classes/Intelligenza Artificiale.md",
     "Classes/Simulation.md",
+    "Classes/Intelligenza Artificiale.md",
     "Classes/Privatezza e Protezione dei Dati.md",
     "Videos/TCGplayer Edge - Season 2, Episode 1 - How to Use This Course.md",
     "Classes/Sicurezza dei Sistemi e delle Reti.md",
