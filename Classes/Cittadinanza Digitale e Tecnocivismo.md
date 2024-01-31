@@ -666,71 +666,86 @@
 	Si riferisce al codice, il software e l’hardware che rendono il cyberspazio così com’è. Questo codice, o architettura, stabilisce i termini in cui si vive la vita nel cyberspazio, determina quanto sia fattibile proteggere la privacy o quanto sia fattibile censurare il diritto di espressione del pensiero, determina se l’accesso alle informazioni è generale o se le informazioni sono suddivise in zone (relatività della rete)
 33) **Cosa intende Lessig con "il software regola il mondo intero"?**
 	Si riferisce al codice, il software e l’hardware che rendono il cyberspazio così com’è. Questo codice, o architettura, stabilisce i termini in cui si vive la vita nel cyberspazio, determina quanto sia fattibile proteggere la privacy o quanto sia fattibile censurare il diritto di espressione del pensiero, determina se l’accesso alle informazioni è generale o se le informazioni sono suddivise in zone.
-1. **Fai qualche esempio di "sistema software" che decide sulla vita dei cittadini.**
-2. **Perché è importante "comprendere" l'architettura della rete e del software per potersi dire cittadini digitali?**
-3. **Cosa si intende con "computing agency"?**
-4. **Fai qualche esempio storico di device che ha deciso per proprio conto di effettuare operazioni non desiderabili.**
-5. **Perché diciamo che oggigiorno non possediamo più molti oggetti digitali?**
-6. **Cos'è il "software proprietario" e perché lo riteniamo deleterio?**
-7. **Cosa ha fatto John Deere sui propri veicoli e perché lo citiamo in senso negativo?**
-8. **Cosa sono i "diritti di root" in relazione ai device digitali?**
-9. **Perché alcuni vendor vogliono impedire il "rooting" dei device? Cita qualche esempio.**
-10. **Cosa ha implementato BMW per i proprio sedili? Perché lo riteniamo negativo?**
-11. **Cosa intendiamo con "furto della computing agency"?**
-12. **Cos'è il "digital divide non tecnologico"?**
-13. **Cosa dice il DESI in merito al "digital divide non tecnologico"?**
-14. **Cosa ci ha "insegnato" la pandemia in termini di "digital divide" (sia tecnologico che non tecnologico - sul libro non c'è)?**
-15. **A cosa ci riferiamo col termine "deficit di conoscenza" (digitale)?**
-16. **Cosa intendiamo con "analfabetismo operativo e meta-operativo"?**
-17. **Sei d'accordo sul fatto che i "nativi digitali" siano molto più alfabetizzati in senso meta-operativo rispetto ad altre categorie di popolazione?**
-18. **Cosa si intende con "superare l'addestramento" (Fuggetta)?**
-19. **E' vera la frase "Non credete a tutto ciò che leggete su Internet" di A. Lincoln? Perché? C'è qualcosa che non quadra?**
-20. **Cosa dice la "legge di Sturgeon"? Perché è abbastanza ragionevole attribuirla ai contenuti su Internet?**
-21. **A cosa si riferisce il "caso" Cambridge Analytica? Cosa c'entra con la Relatività della rete?**
-22. **Cos'è l'effetto Dunning-Kruger?**
-23. **Cosa si intende con "pensiero critico"?**
-24. **Cos'è la "lettura superficiale" (skimming)?**
-25. **Cosa si intende con "capacità di comprendere un testo"? (definizione minimale)**
-26. **Qual è l'aspetto negativo degli ipertesti?**
-27. **Cosa sono le "interruption technologies"?**
-28. **Cosa si intende con "esternalizzazione della conoscenza"?**
-29. **Cosa sono le "difese istituzionali" nel contesto L-edu?**
-30. **Riassumi i punti chiave della "Raccomandazione del Consiglio relativa alle competenze chiave per l’apprendimento permanente".**
-31. **Elenca alcune "competenze chiave" della "Raccomandazione...".**
-32. **Riassumi la situazione del "digital divide cognitivo" in relazione agli studi PISA-OCSE.**
-33. **Cosa si intende con "capacità di imparare a imparare"?**
-34. **Cosa si intende con "under the hood"?**
-35. **Spiega lo spettrogramma relativo alla "Educazione alla cittadinanza digitale" del provvedimento sulla "Introduzione dell’insegnamento scolastico dell’educazione civica".**
-36. **Perchè i "livelli alti dell'arcobaleno fanno paura"?**
-37. **Cosa si intende con "hands on" e perché è importante in ambito CDT? In che contesto è stato nominato?**
-38. **Che parere dai all'iniziativa ECDL? (articolare)**
-39. **Cos'è il PNSD? Com'è articolato?**
-40. **Cosa si intende con "lifelong learning"?**
-41. **Discuti lo spettrogramma del PNSD.**
-42. **Cosa si intende con KPI? Perché sono importanti? Come sono stati applicati al PNSD?**
-43. **Cosa sono le "difese grassroots" nel contesto L-edu?**
-44. **Perché citiamo la "cultura hacker"?**
-45. **Cita qualche punto dell'"etica hacker".**
-46. **Cosa intendiamo con "hacker"?**
-47. **Cosa si intende con "flusso di conoscenza top-down/bottom-up"?**
-48. **Cos'è una EULA?**
-49. **Cos'è il Software Libero?**
-50. **Quali sono le libertà del Software Libero?**
-51. **Cos'è una licenza software?**
-52. **Cos'è una licenza virale?**
-53. **Cos'è il "copyleft"? Come lo traduci in italiano?**
-54. **Cos'è la "scarsità artificiale"?**
-55. **Cos'è la "obsolescenza programmata"?**
-56. **Perché le licenze libere sono vantaggiose per L-edu?**
-57. **Cos'è il FUD? Chi lo promuove?**
-58. **Discuti l'attuale situazione di penetrazione del Software Libero nel mondo.**
-59. **Cos'è il CAD?**
-60. **Riassumi l'iniziativa "right to repair".**
-61. **Cosa si intende con "... as a service"?**
-62. **Quale pratica deleteria mettono in atto molti produttori di componentistica elettronica per impedire all'utente di riparare/migliorare i device "acquistati"?**
-63. **Perché critichiamo il termine "possesso" quando applicato a device moderni?**
-64. **Riassumi il tema del "learn to code".**
-65. **Cos'è il "computational thinking"?**
+34) **Fai qualche esempio di "sistema software" che decide sulla vita dei cittadini.**
+	Dai sistemi per le decisioni sulle concessioni di mutui ai programmi che valutano la probabilità di recidiva per i criminali o “prevedono” i crimini fino ad arrivare ai meccanismi di reputation cinesi che attribuiscono punteggi di cittadinanza attraverso cui guadagnare o perdere diritti.
+35) **Perché è importante "comprendere" l'architettura della rete e del software per potersi dire cittadini digitali?**
+	Perchè l’architettura digitale ingloba norme che ne determinano il funzionamento, attraverso il codice. Il software, il codice, non decide da solo come gestire l’informazione, sono le persone, in particolare gli sviluppatori, a deciderlo. Chi scrive il codice decide l’architettura.
+36) **Cosa si intende con "computing agency"?**
+	La Computing Agency è l’insieme dei device che esegue computazioni e azioni in nostra vece e su nostra richiesta (a volte implicita, ma comunque sotto la nostra responsabilità) o su richiesta di altri ma con impatti su di noi.
+37) **Fai qualche esempio storico di device che ha deciso per proprio conto di effettuare operazioni non desiderabili.**
+	Auto a guida autonoma frena da sola improvvisamente entrando in una rotonda se rileva un altro veicolo che “taglia la strada” (in realtà è lontano e non si avrebbe collisione o, peggio, è semplicemente di fianco - ad es. un motorino - ma viene rilevato dai sensori come “davanti”), in più di un’occasione è stato sfiorato l’incidente.
+38) **Perché diciamo che oggigiorno non possediamo più molti oggetti digitali?**
+	Perchè non sono più sotto il nostro controllo, non siamo in grado di conoscerlo, configurarlo e controllarlo completamente.
+39) **Cos'è il "software proprietario" e perché lo riteniamo deleterio?**
+	Software che implementa la cosiddetta “filiera del DRM (Digital Rights Management)”: un insieme di meccanismi tecnologici che impediscono ad un computer di far funzionare software o hardware (con a bordo meccanismi software) che non sia stato approvato dal produttore o di utilizzare i propri contenuti multimediali in modi differenti rispetto a quanto approvato dal produttore, ad esempio impedendo la stampa di un testo o porzioni di esso. Il DRM impedisce al “possessore” di sostituire il software di un device con un altro di suo gradimento o di usufruire pienamente dei contenuti legalmente acquistati: l’oggetto diventa una scatola chiusa, le cui chiavi sono in mano al produttore e non all’acquirente.
+40) **Cosa ha fatto John Deere sui propri veicoli e perché lo citiamo in senso negativo?**
+	John Deere è stata una delle prime case produttrici a sfruttare a fondo il Digital Restriction Management rendendo impossibile il servicing (manutenzione, riparazione) in proprio dei suoi prodotti. Gli agricoltori infatti, e con sgomento, si sono man mano accorti dell’impossibilità di effettuare le riparazioni sul campo perché i “loro” veicoli, pesantemente controllati da centraline completamente opache, vere e proprie black box, impediscono ogni tipo di misurazione e configurazione a “estranei”, ovvero a chi non possiede i certificati crittografici per accedere a quei device.
+41) **Cosa sono i "diritti di root" in relazione ai device digitali?**
+	I diritti di root sono il potere di amministrare il device ed è una facoltà che è negata salvo arzigogoli tecnici non alla portata di tutti i “proprietari” e che nella maggior parte dei casi fa decadere la garanzia sull’apparecchio.
+42) **Perché alcuni vendor vogliono impedire il "rooting" dei device? Cita qualche esempio.**
+	L’impedimento viene venduto formalmente nell’interesse dell’utilizzatore, ma in realtà ha il malcelato scopo di impedire che il telefono venga effettivamente controllato appieno da chi ha comprato l’oggetto e lo vorrebbe gestire a suo piacimento. Molti produttori di telefoni e di app arrivano all’assurda demonizzazione della procedura di rooting tanto da avvisare l’utente quando rilevano che una simile operazione è stata effettuata.
+43) **Cosa ha implementato BMW per i proprio sedili? Perché lo riteniamo negativo?**
+	Una “tecnologia” BMW per attivare o disattivare (a pagamento, ovviamente) vari servizi sulla propria autovettura: i sedili si riscalderanno solo se avrete pagato l’abbonamento al servizio, il sistema di guida avanzato idem. Una nuova definizione di proprietà. E' negativo perchè stiamo assistendo ad un progressivo shift dell’agency dal possessore del device verso altri, determinando in questo modo un limitato permesso d’uso, dove non è nemmeno sempre chiaro il “chi usa chi”: si passa da to own agency (poter agire) a to be owned by agency (essere soggetti a agire altrui).
+1. **Cosa intendiamo con "furto della computing agency"?**
+	La Computing Agency è l’insieme dei device che esegue computazioni e azioni in nostra vece e su nostra richiesta (a volte implicita, ma comunque sotto la nostra responsabilità) o su richiesta di altri ma con impatti su di noi. Con furto della computing agency intendiamo lo shifting dell'agency dal possessore del device verso terzi, determinando in questo modo un limitato permesso d'uso.
+1. **Cos'è il "digital divide non tecnologico"?**
+	Il fatto che una gran parte della popolazione italiana, si parla di milioni di famiglie, pur raggiunta dalla banda larga, si accontenta di velocità minori di $10$ Mbps o addirittura decide di non abbonarsi proprio ad un servizio di connettività landline, indipendentemente dalla velocità disponibile, adducendo mancanza di utilità o dichiarando più che suﬀiciente la connettività a disposizione attraverso la rete dati $3$G o $4$G. Una sorta di rinuncia digitale. Anche in tema di differenze di genere ITU ha riscontrato a livello mondiale una distanza importante tra uomini e donne nell’accesso alla connettività e nella scelta di materie tecnologico-informatiche.
+1. **Cosa dice il DESI in merito al "digital divide non tecnologico"?**
+	Sostiene che una gran parte della popolazione italiana, si parla di milioni di famiglie, pur raggiunta dalla banda larga, si accontenta di velocità minori di $10$ Mbps o addirittura decide di non abbonarsi proprio ad un servizio di connettività landline, indipendentemente dalla velocità disponibile, adducendo mancanza di utilità o dichiarando più che suﬀiciente la connettività a disposizione attraverso la rete dati $3$G o $4$G.
+1. **Cosa ci ha "insegnato" la pandemia in termini di "digital divide" (sia tecnologico che non tecnologico - sul libro non c'è)?**
+2. **A cosa ci riferiamo col termine "deficit di conoscenza" (digitale)?**
+3. **Cosa intendiamo con "analfabetismo operativo e meta-operativo"?**
+	L'analfabetismo operativo significa il “saper usare”, il “saper cliccare sulle icone” (senza capire cosa c’è sotto); quello meta-operativo significa conoscere e capire cosa c’è "hunder the hood". Esso stimola a comprendere i processi, anche i nostri stessi processi di apprendimento.
+1. **Sei d'accordo sul fatto che i "nativi digitali" siano molto più alfabetizzati in senso meta-operativo rispetto ad altre categorie di popolazione?**
+	No, anzi. Ritengo siano vagamente più alfabetizzati nel senso operativo rispetto a fasce d'età più adulte ma trovo che l'alfabetizzazione in senso meta-operativo sia estremamente di nicchia.
+1. **Cosa si intende con "superare l'addestramento" (Fuggetta)?**
+2. **E' vera la frase "Non credete a tutto ciò che leggete su Internet" di A. Lincoln? Perché? C'è qualcosa che non quadra?**
+3. **Cosa dice la "legge di Sturgeon"? Perché è abbastanza ragionevole attribuirla ai contenuti su Internet?**
+4. **A cosa si riferisce il "caso" Cambridge Analytica? Cosa c'entra con la Relatività della rete?**
+5. **Cos'è l'effetto Dunning-Kruger?**
+6. **Cosa si intende con "pensiero critico"?**
+7. **Cos'è la "lettura superficiale" (skimming)?**
+8. **Cosa si intende con "capacità di comprendere un testo"? (definizione minimale)**
+9. **Qual è l'aspetto negativo degli ipertesti?**
+10. **Cosa sono le "interruption technologies"?**
+11. **Cosa si intende con "esternalizzazione della conoscenza"?**
+12. **Cosa sono le "difese istituzionali" nel contesto L-edu?**
+13. **Riassumi i punti chiave della "Raccomandazione del Consiglio relativa alle competenze chiave per l’apprendimento permanente".**
+14. **Elenca alcune "competenze chiave" della "Raccomandazione...".**
+15. **Riassumi la situazione del "digital divide cognitivo" in relazione agli studi PISA-OCSE.**
+16. **Cosa si intende con "capacità di imparare a imparare"?**
+17. **Cosa si intende con "under the hood"?**
+18. **Spiega lo spettrogramma relativo alla "Educazione alla cittadinanza digitale" del provvedimento sulla "Introduzione dell’insegnamento scolastico dell’educazione civica".**
+19. **Perchè i "livelli alti dell'arcobaleno fanno paura"?**
+20. **Cosa si intende con "hands on" e perché è importante in ambito CDT? In che contesto è stato nominato?**
+21. **Che parere dai all'iniziativa ECDL? (articolare)**
+22. **Cos'è il PNSD? Com'è articolato?**
+23. **Cosa si intende con "lifelong learning"?**
+24. **Discuti lo spettrogramma del PNSD.**
+25. **Cosa si intende con KPI? Perché sono importanti? Come sono stati applicati al PNSD?**
+26. **Cosa sono le "difese grassroots" nel contesto L-edu?**
+27. **Perché citiamo la "cultura hacker"?**
+28. **Cita qualche punto dell'"etica hacker".**
+29. **Cosa intendiamo con "hacker"?**
+30. **Cosa si intende con "flusso di conoscenza top-down/bottom-up"?**
+31. **Cos'è una EULA?**
+32. **Cos'è il Software Libero?**
+33. **Quali sono le libertà del Software Libero?**
+34. **Cos'è una licenza software?**
+35. **Cos'è una licenza virale?**
+36. **Cos'è il "copyleft"? Come lo traduci in italiano?**
+37. **Cos'è la "scarsità artificiale"?**
+38. **Cos'è la "obsolescenza programmata"?**
+39. **Perché le licenze libere sono vantaggiose per L-edu?**
+40. **Cos'è il FUD? Chi lo promuove?**
+41. **Discuti l'attuale situazione di penetrazione del Software Libero nel mondo.**
+42. **Cos'è il CAD?**
+43. **Riassumi l'iniziativa "right to repair".**
+44. **Cosa si intende con "... as a service"?**
+45. **Quale pratica deleteria mettono in atto molti produttori di componentistica elettronica per impedire all'utente di riparare/migliorare i device "acquistati"?**
+46. **Perché critichiamo il termine "possesso" quando applicato a device moderni?**
+47. **Riassumi il tema del "learn to code".**
+48. **Cos'è il "computational thinking"?**
 
 ----------------------------------------------------------------
 
