@@ -30,7 +30,7 @@ Release of data to the public for statistical purpose:
 - **statistical DBMS**:
 	- the DBMS responds only to **statistical queries** (the aggregate ones);
 	- consider a dataset composed by $1000$ respondents, $999$ males and $1$ female, as an example. A query returning only the female respondent would be blocked by the DBMS. If the user would make a query which would return a value aggregated from all the **respondents** (the people replying with answers to a survey, the ones the data refers to) and, then, a query which would return a value aggregated from all the males, the DBMS will block the second query because it would expose the female respondent. Therefore, it is necessary to keep the **windows history** in check.<br />
-	  Consider the same dataset and two different and colluded users as an example. The first one is able to make the first query and the second one is able to make the second one. Therefore, together they are able to expose the female respondent (**collusion**). therefore, the statistical DBMS need **run time checking** to control information (directly and indirectly) released (**dinamic**).
+	  Consider the same dataset and two different and colluded users as an example. The first one is able to make the first query and the second one is able to make the second one. Together they are able to expose the female respondent (**collusion**). Therefore, the statistical DBMS need **run time checking** to control information (directly and indirectly) released (**dinamic**).
 - **statistical data**:
 	- publish statistics generated a priori and the user can only access these statistics;
 	- the control on the indirect release is performed before publication (**static**).
