@@ -686,66 +686,84 @@
 	L’impedimento viene venduto formalmente nell’interesse dell’utilizzatore, ma in realtà ha il malcelato scopo di impedire che il telefono venga effettivamente controllato appieno da chi ha comprato l’oggetto e lo vorrebbe gestire a suo piacimento. Molti produttori di telefoni e di app arrivano all’assurda demonizzazione della procedura di rooting tanto da avvisare l’utente quando rilevano che una simile operazione è stata effettuata.
 43) **Cosa ha implementato BMW per i proprio sedili? Perché lo riteniamo negativo?**
 	Una “tecnologia” BMW per attivare o disattivare (a pagamento, ovviamente) vari servizi sulla propria autovettura: i sedili si riscalderanno solo se avrete pagato l’abbonamento al servizio, il sistema di guida avanzato idem. Una nuova definizione di proprietà. E' negativo perchè stiamo assistendo ad un progressivo shift dell’agency dal possessore del device verso altri, determinando in questo modo un limitato permesso d’uso, dove non è nemmeno sempre chiaro il “chi usa chi”: si passa da to own agency (poter agire) a to be owned by agency (essere soggetti a agire altrui).
-1. **Cosa intendiamo con "furto della computing agency"?**
+44) **Cosa intendiamo con "furto della computing agency"?**
 	La Computing Agency è l’insieme dei device che esegue computazioni e azioni in nostra vece e su nostra richiesta (a volte implicita, ma comunque sotto la nostra responsabilità) o su richiesta di altri ma con impatti su di noi. Con furto della computing agency intendiamo lo shifting dell'agency dal possessore del device verso terzi, determinando in questo modo un limitato permesso d'uso.
-1. **Cos'è il "digital divide non tecnologico"?**
+45) **Cos'è il "digital divide non tecnologico"?**
 	Il fatto che una gran parte della popolazione italiana, si parla di milioni di famiglie, pur raggiunta dalla banda larga, si accontenta di velocità minori di $10$ Mbps o addirittura decide di non abbonarsi proprio ad un servizio di connettività landline, indipendentemente dalla velocità disponibile, adducendo mancanza di utilità o dichiarando più che suﬀiciente la connettività a disposizione attraverso la rete dati $3$G o $4$G. Una sorta di rinuncia digitale. Anche in tema di differenze di genere ITU ha riscontrato a livello mondiale una distanza importante tra uomini e donne nell’accesso alla connettività e nella scelta di materie tecnologico-informatiche.
-1. **Cosa dice il DESI in merito al "digital divide non tecnologico"?**
+46) **Cosa dice il DESI in merito al "digital divide non tecnologico"?**
 	Sostiene che una gran parte della popolazione italiana, si parla di milioni di famiglie, pur raggiunta dalla banda larga, si accontenta di velocità minori di $10$ Mbps o addirittura decide di non abbonarsi proprio ad un servizio di connettività landline, indipendentemente dalla velocità disponibile, adducendo mancanza di utilità o dichiarando più che suﬀiciente la connettività a disposizione attraverso la rete dati $3$G o $4$G.
-1. **Cosa ci ha "insegnato" la pandemia in termini di "digital divide" (sia tecnologico che non tecnologico - sul libro non c'è)?**
-2. **A cosa ci riferiamo col termine "deficit di conoscenza" (digitale)?**
-3. **Cosa intendiamo con "analfabetismo operativo e meta-operativo"?**
+47) **Cosa ci ha "insegnato" la pandemia in termini di "digital divide" (sia tecnologico che non tecnologico - sul libro non c'è)?**
+48) **A cosa ci riferiamo col termine "deficit di conoscenza" (digitale)?**
+49) **Cosa intendiamo con "analfabetismo operativo e meta-operativo"?**
 	L'analfabetismo operativo significa il “saper usare”, il “saper cliccare sulle icone” (senza capire cosa c’è sotto); quello meta-operativo significa conoscere e capire cosa c’è "hunder the hood". Esso stimola a comprendere i processi, anche i nostri stessi processi di apprendimento.
-1. **Sei d'accordo sul fatto che i "nativi digitali" siano molto più alfabetizzati in senso meta-operativo rispetto ad altre categorie di popolazione?**
+50) **Sei d'accordo sul fatto che i "nativi digitali" siano molto più alfabetizzati in senso meta-operativo rispetto ad altre categorie di popolazione?**
 	No, anzi. Ritengo siano vagamente più alfabetizzati nel senso operativo rispetto a fasce d'età più adulte ma trovo che l'alfabetizzazione in senso meta-operativo sia estremamente di nicchia.
-1. **Cosa si intende con "superare l'addestramento" (Fuggetta)?**
-2. **E' vera la frase "Non credete a tutto ciò che leggete su Internet" di A. Lincoln? Perché? C'è qualcosa che non quadra?**
-3. **Cosa dice la "legge di Sturgeon"? Perché è abbastanza ragionevole attribuirla ai contenuti su Internet?**
-4. **A cosa si riferisce il "caso" Cambridge Analytica? Cosa c'entra con la Relatività della rete?**
-5. **Cos'è l'effetto Dunning-Kruger?**
-6. **Cosa si intende con "pensiero critico"?**
-7. **Cos'è la "lettura superficiale" (skimming)?**
-8. **Cosa si intende con "capacità di comprendere un testo"? (definizione minimale)**
-9. **Qual è l'aspetto negativo degli ipertesti?**
-10. **Cosa sono le "interruption technologies"?**
-11. **Cosa si intende con "esternalizzazione della conoscenza"?**
-12. **Cosa sono le "difese istituzionali" nel contesto L-edu?**
-13. **Riassumi i punti chiave della "Raccomandazione del Consiglio relativa alle competenze chiave per l’apprendimento permanente".**
-14. **Elenca alcune "competenze chiave" della "Raccomandazione...".**
-15. **Riassumi la situazione del "digital divide cognitivo" in relazione agli studi PISA-OCSE.**
-16. **Cosa si intende con "capacità di imparare a imparare"?**
-17. **Cosa si intende con "under the hood"?**
-18. **Spiega lo spettrogramma relativo alla "Educazione alla cittadinanza digitale" del provvedimento sulla "Introduzione dell’insegnamento scolastico dell’educazione civica".**
-19. **Perchè i "livelli alti dell'arcobaleno fanno paura"?**
-20. **Cosa si intende con "hands on" e perché è importante in ambito CDT? In che contesto è stato nominato?**
-21. **Che parere dai all'iniziativa ECDL? (articolare)**
-22. **Cos'è il PNSD? Com'è articolato?**
-23. **Cosa si intende con "lifelong learning"?**
-24. **Discuti lo spettrogramma del PNSD.**
-25. **Cosa si intende con KPI? Perché sono importanti? Come sono stati applicati al PNSD?**
-26. **Cosa sono le "difese grassroots" nel contesto L-edu?**
-27. **Perché citiamo la "cultura hacker"?**
-28. **Cita qualche punto dell'"etica hacker".**
-29. **Cosa intendiamo con "hacker"?**
-30. **Cosa si intende con "flusso di conoscenza top-down/bottom-up"?**
-31. **Cos'è una EULA?**
-32. **Cos'è il Software Libero?**
-33. **Quali sono le libertà del Software Libero?**
-34. **Cos'è una licenza software?**
-35. **Cos'è una licenza virale?**
-36. **Cos'è il "copyleft"? Come lo traduci in italiano?**
-37. **Cos'è la "scarsità artificiale"?**
-38. **Cos'è la "obsolescenza programmata"?**
-39. **Perché le licenze libere sono vantaggiose per L-edu?**
-40. **Cos'è il FUD? Chi lo promuove?**
-41. **Discuti l'attuale situazione di penetrazione del Software Libero nel mondo.**
-42. **Cos'è il CAD?**
-43. **Riassumi l'iniziativa "right to repair".**
-44. **Cosa si intende con "... as a service"?**
-45. **Quale pratica deleteria mettono in atto molti produttori di componentistica elettronica per impedire all'utente di riparare/migliorare i device "acquistati"?**
-46. **Perché critichiamo il termine "possesso" quando applicato a device moderni?**
-47. **Riassumi il tema del "learn to code".**
-48. **Cos'è il "computational thinking"?**
+51) **Cosa si intende con "superare l'addestramento" (Fuggetta)?**
+	nativi digitali sono in realtà molto meno ‘maturi digitali’ di quanto immaginiamo”,  serve un salto di qualità nei modelli cognitivi e comportamentali.
+52) **E' vera la frase "Non credete a tutto ciò che leggete su Internet" di A. Lincoln? Perché? C'è qualcosa che non quadra?**
+53) **Cosa dice la "legge di Sturgeon"? Perché è abbastanza ragionevole attribuirla ai contenuti su Internet?**
+	La legge di Sturgeon sostiene che il $90\%$ di ogni cosa sia spazzatura. Sturgeon la coniò negli anni cinquanta per giudicare la produzione letteraria cartacea, ma secondo Nichols quando questa legge viene applicata al materiale disponibile in Internet quel $90\%$ è addirittura molto ottimistico. Questo perché è molto facile per chiunque “buttar fuori qualcosa in Internet”: pubblicare un sito web è un’operazione semplice ed economica ergo ad oggi si incontrano miliardi di siti dei quali solo alcuni milioni contengono effettivamente informazioni sensate e veritiere, il resto è fake o semplicemente opinione da bar.
+54) **A cosa si riferisce il "caso" Cambridge Analytica? Cosa c'entra con la Relatività della rete?**
+	Si riferisce a dati personali di milioni di utenti Facebook rivenduti e utilizzati per fare micro-targeting politico, cioè informazione costruita su misura per piccoli gruppi ben identificati di potenziali elettori.
+55) **Cos'è l'effetto Dunning-Kruger?**
+	L'effetto Dunning-Kruger è una distorsione cognitiva nella quale individui poco esperti e poco competenti in un campo tendono a sovrastimare la propria preparazione giudicandola, a torto, superiore alla media.
+56) **Cosa si intende con "pensiero critico"?**
+	lS intende l'abilità di affrontare le affermazioni sia analizzandole per come sono formulate sia confrontandole con proprie conoscenze (che ci devono essere) per valutarne la veridicità senza prendere tutto ciò che si legge per oro colato.
+57) **Cos'è la "lettura superficiale" (skimming)?**
+	Quella pratica per cui si legge solo qualche parola ogni tanto credendo di poter carpire comunque il significato del testo.
+1. **Cosa si intende con "capacità di comprendere un testo"? (definizione minimale)**
+	Comprendere un testo significa essere in grado di interpretare e capire il significato del testo letto. Questo coinvolge diverse abilità cognitive, tra cui la decodifica delle parole, la comprensione del significato delle frasi e la capacità di collegare concetti per formare un quadro coerente.
+1. **Qual è l'aspetto negativo degli ipertesti?**
+	Il contenuto frammentato che non aiuta a concentrarsi;
+1. **Cosa sono le "interruption technologies"?**
+	Fare più attività (come gestire più chat contemporaneamente mentre si legge un testo o si segue una lezione) in parallelo credendo di riuscire a seguirle tutte.
+1. **Cosa si intende con "esternalizzazione della conoscenza"?**
+	Si intende l'esternalizzazione della conoscenza verso il cloud: “perché devo ricordarmelo se posso cercarlo in rete?”.
+1. **Cosa sono le "difese istituzionali" nel contesto L-edu?**
+	
+1. **Riassumi i punti chiave della "Raccomandazione del Consiglio relativa alle competenze chiave per l’apprendimento permanente".**
+2. **Elenca alcune "competenze chiave" della "Raccomandazione...".**
+	- Competenza alfabetica funzionale;
+	- competenza multi-linguistica;
+	- competenza matematica e competenza in scienze, tecnologie ed ingegneria;
+	- competenza digitale;
+	- competenza in materia di cittadinanza;
+	- competenza imprenditoriale;
+	- competenza personale, sociale e capacità di imparare ad imparare.
+1. **Riassumi la situazione del "digital divide cognitivo" in relazione agli studi PISA-OCSE.**
+2. **Cosa si intende con "capacità di imparare a imparare"?**
+3. **Cosa si intende con "under the hood"?**
+4. **Spiega lo spettrogramma relativo alla "Educazione alla cittadinanza digitale" del provvedimento sulla "Introduzione dell’insegnamento scolastico dell’educazione civica".**
+5. **Perchè i "livelli alti dell'arcobaleno fanno paura"?**
+6. **Cosa si intende con "hands on" e perché è importante in ambito CDT? In che contesto è stato nominato?**
+7. **Che parere dai all'iniziativa ECDL? (articolare)**
+8. **Cos'è il PNSD? Com'è articolato?**
+9. **Cosa si intende con "lifelong learning"?**
+10. **Discuti lo spettrogramma del PNSD.**
+11. **Cosa si intende con KPI? Perché sono importanti? Come sono stati applicati al PNSD?**
+12. **Cosa sono le "difese grassroots" nel contesto L-edu?**
+13. **Perché citiamo la "cultura hacker"?**
+14. **Cita qualche punto dell'"etica hacker".**
+15. **Cosa intendiamo con "hacker"?**
+16. **Cosa si intende con "flusso di conoscenza top-down/bottom-up"?**
+17. **Cos'è una EULA?**
+18. **Cos'è il Software Libero?**
+19. **Quali sono le libertà del Software Libero?**
+20. **Cos'è una licenza software?**
+21. **Cos'è una licenza virale?**
+22. **Cos'è il "copyleft"? Come lo traduci in italiano?**
+23. **Cos'è la "scarsità artificiale"?**
+24. **Cos'è la "obsolescenza programmata"?**
+25. **Perché le licenze libere sono vantaggiose per L-edu?**
+26. **Cos'è il FUD? Chi lo promuove?**
+27. **Discuti l'attuale situazione di penetrazione del Software Libero nel mondo.**
+28. **Cos'è il CAD?**
+29. **Riassumi l'iniziativa "right to repair".**
+30. **Cosa si intende con "... as a service"?**
+31. **Quale pratica deleteria mettono in atto molti produttori di componentistica elettronica per impedire all'utente di riparare/migliorare i device "acquistati"?**
+32. **Perché critichiamo il termine "possesso" quando applicato a device moderni?**
+33. **Riassumi il tema del "learn to code".**
+34. **Cos'è il "computational thinking"?**
 
 ----------------------------------------------------------------
 
@@ -980,7 +998,13 @@
 
 ## Appendice V1
 - Che dati sono stati raccolti dal router wifi dell'appartamento?
+	Si sono ottenuti dei record contenenti:
+	- hostname degli utenti;
+	- MAC address;
+	- IP;
+	- data.
 - Cosa raccontano i dati di connessione al router wifi dell'appartamento?
+	Il dataset copre attualmente un periodo di circa tre anni. I dati raccontano innanzitutto il numero di device collegati per data, permettendo di verificare l'utilizzo dell'appartamento (turistico o affitto). Si possono inoltre identificare perfettamente i device dei gestori dell’appartamento (agenzia e personale di pulizia, marcati dall’ovale rosso fine), presenti saltuariamente (a consegna/restituzione appartamento da parte dei turisti) e i turisti, che a parte le date a loro assegnate non si ripetono mai.
 
 ----------------------------------------------------------------
 
