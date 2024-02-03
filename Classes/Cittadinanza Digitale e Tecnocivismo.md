@@ -997,18 +997,18 @@
 ----------------------------------------------------------------
 
 ## Appendice V1
-- Che dati sono stati raccolti dal router wifi dell'appartamento?
+1) **Che dati sono stati raccolti dal router wifi dell'appartamento?**
 	Si sono ottenuti dei record contenenti:
 	- hostname degli utenti;
 	- MAC address;
 	- IP;
 	- data.
-- Cosa raccontano i dati di connessione al router wifi dell'appartamento?
-	Il dataset copre attualmente un periodo di circa tre anni. I dati raccontano innanzitutto il numero di device collegati per data, permettendo di verificare l'utilizzo dell'appartamento (turistico o affitto). Si possono inoltre identificare perfettamente i device dei gestori dell’appartamento (agenzia e personale di pulizia, marcati dall’ovale rosso fine), presenti saltuariamente (a consegna/restituzione appartamento da parte dei turisti) e i turisti, che a parte le date a loro assegnate non si ripetono mai.
+2) **Cosa raccontano i dati di connessione al router wifi dell'appartamento?**
+	Il dataset copre attualmente un periodo di circa tre anni. I primi due grafici mostrano i plot del numero di device collegati per data, permettendo di verificare l'utilizzo dell'appartamento (turistico o affitto). Gli ultimi due grafici rappresentano invece dei grafi di associazione fra date e device, cioè dicono quale device era presente nell'appartamento in un certo giorno. Si possono inoltre identificare perfettamente i device dei gestori dell’appartamento (agenzia e personale di pulizia, marcati dall’ovale rosso fine), presenti saltuariamente (a consegna/restituzione appartamento da parte dei turisti) e i turisti, che a parte le date a loro assegnate non si ripetono mai.
 
 ----------------------------------------------------------------
 
 ## Appendice V2
-- Qual è la morale della storia "Altri giorni, altri occhi"?
+1) **Qual è la morale della storia "Altri giorni, altri occhi"?**
 
 ----------------------------------------------------------------
