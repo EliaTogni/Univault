@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "95274a6c80a2dd83",
+        "id": "4c74bb99c5e29027",
         "type": "tabs",
         "children": [
           {
-            "id": "0da0ed1548d6151e",
+            "id": "38d32b5d088c45c4",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Classes/Privatezza e Protezione dei Dati.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -69,7 +65,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -85,7 +82,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Privatezza e Protezione dei Dati.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,12 +110,13 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "0da0ed1548d6151e",
+  "active": "38d32b5d088c45c4",
   "lastOpenFiles": [
+    "Classes/Privatezza e Protezione dei Dati.md",
+    "Blogs/Who's The Beatdown?.md",
+    "Classes/Simulation.md",
     "Classes/Cittadinanza Digitale e Tecnocivismo.md",
     "Lexicon/Erratico.md",
-    "Classes/Privatezza e Protezione dei Dati.md",
-    "Classes/Simulation.md",
     "Classes/Intelligenza Artificiale.md",
     "Videos/TCGplayer Edge - Season 2, Episode 1 - How to Use This Course.md",
     "Classes/Sicurezza dei Sistemi e delle Reti.md",
@@ -151,7 +148,6 @@
     "Images/CachedSearches1Example3.png",
     "Images/CachedSearches1Example2.png",
     "Images/CachedSearches1Example1.png",
-    "Atoms/B-Albero.md",
     "Untitled.canvas",
     "Blogs",
     "Atoms",
