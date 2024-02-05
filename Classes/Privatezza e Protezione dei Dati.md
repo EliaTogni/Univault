@@ -598,7 +598,7 @@ The association rules check on the correlations between datas.
 
 ![[AssociationRuleMining.png]]
 
-$\{$divorced$\} \to \{$M$\}$ with **support** $\frac{19}{66}$ (where support is defined as $\frac{\#(x \wedge y)}{\#tuple}$) and confidence $\frac{19}{21}$ (where confidence is defined as $\frac{\#(x \wedge y)}{\#x}$).<br />
+$\{$divorced$\} \to \{$M$\}$ with **support** $\frac{19}{66}$ (where support is defined as $\frac{\#(x \wedge y)}{\#tuple}$) and **confidence** $\frac{19}{21}$ (where confidence is defined as $\frac{\#(x \wedge y)}{\#x}$).<br />
 If $QI$ includes _Marital_status_ and _Sex_, then $\{$divorced$\} \to \{$M$\}$:
 - violates $k$-anonymity for any $k > 19$;
 - violates also $k$-anonymity for any $k > 2$ since it reflects the existence of $2$ divorced and female respondents.

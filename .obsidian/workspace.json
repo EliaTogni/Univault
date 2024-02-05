@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Classes/Cittadinanza Digitale e Tecnocivismo.md",
+                "file": "Classes/Privatezza e Protezione dei Dati.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Cittadinanza Digitale e Tecnocivismo.md",
+                "file": "Classes/Privatezza e Protezione dei Dati.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,8 +116,8 @@
   },
   "active": "0da0ed1548d6151e",
   "lastOpenFiles": [
-    "Lexicon/Erratico.md",
     "Classes/Cittadinanza Digitale e Tecnocivismo.md",
+    "Lexicon/Erratico.md",
     "Classes/Privatezza e Protezione dei Dati.md",
     "Classes/Simulation.md",
     "Classes/Intelligenza Artificiale.md",
