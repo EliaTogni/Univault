@@ -11,8 +11,12 @@
             "id": "38d32b5d088c45c4",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Blogs/Tempo.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -82,6 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Blogs/Tempo.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -112,6 +117,8 @@
   },
   "active": "38d32b5d088c45c4",
   "lastOpenFiles": [
+    "Blogs/Tempo.md",
+    "Articles/Tempo.md",
     "Classes/Privatezza e Protezione dei Dati.md",
     "Blogs/Who's The Beatdown?.md",
     "Classes/Simulation.md",
@@ -140,8 +147,6 @@
     "Lexicon/Perigliare.md",
     "Lexicon/Refolo.md",
     "Lexicon/Sedicente.md",
-    "Lexicon/Sicofante.md",
-    "Lexicon/Acronimo.md",
     "Images/CachedSearches1Example6.png",
     "Images/CachedSearches1Example5.png",
     "Images/CachedSearches1Example4.png",
