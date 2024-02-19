@@ -164,6 +164,10 @@ La curva ROC e la matrice di confusione nella figura sottostante indicano che il
 -----------------------------------------------------------------
 
 ## Designing out own CNN
+Per fittare meglio il modello al problema, si produce il design di una CNN da zero. Il punto di partenza di questa rete è formato da due blocchi di un layer convoluzionale $2D$ e un max pooling $2D$, seguito da un layer dense output con una funzione di attivazione softmax. E' possibile osservare il modello nell'immagine sottostante, insieme alle performance di questa baseline in termini di accuracy e loss.
+
+immagine
+
 
 ### Kernel Size
 
