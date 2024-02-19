@@ -94,23 +94,49 @@ Un altro approccio cinsiste nel dividere ogni immagine in frammenti e estrarre D
 
 -----------------------------------------------------------------
 
-## InceptionV3
+## InceptionV$3$
 Dall'esplosione dell CNN nel $2012$ con AlexNet, molteplici architetture sono state presentate per affrontare il problema di classificazione, ottenendo risultati sempre migliori in termini di minimizzare l'errore di misclassificazione.
-In questo paper, si prova a fare fine-tuning di InceptionV3 per adattarlo al dataset in questione. Questa NN, creata da Google, è basata sull'idea di utilizzare moduli Inception per usare differenti size di canali in parallelo.
+In questo paper, si prova a fare fine-tuning di InceptionV$3$ per adattarlo al dataset in questione. Questa NN, creata da Google, è basata sull'idea di utilizzare moduli Inception per usare differenti size di canali in parallelo, poichè ci sono quattro canali paralleli in ogni modoli, i quali sono concatenati ulteriormente alla fine. Nel dettaglio, ogni modulo include il fattorizzare convoluzioni con filter size larga in un filtro più piccolo, il fattorizzare in convoluzioni asimmetriche e classificatori ausiliari introdotti per correggere il problema del vanishing gradient. 
+
+Questo modello è stato allenato e testato con il dataset ImageNet, il quale contiene circa $1$M di immagini divise in $1000$ classi. Perciò, non ha alcun collegamento con il dataset utilizzato in questo studio. E' quindi necessario adattarlo al problema in questione.
 
 ### Changing the network architecture
+Il primo approccio consiste nell'usare l'architettura ed i pesi esistenti per modificare solamente l'ultimo layer, il layer softmax. Questo è uno step necessario per adattare l'output al numero di classi nel dataset da analizzare.
+Per prima cosa, si freezano tutti i layer tranne l'ultimo, per far sì che lo stage di training non abbia effetto sui pesi preallenati del modello.<br />
+Come è possibile osservare nell'immagine sottostante, i risultati migliorano singificativamente usando InceptionV$3$ rispetto a quelli ottenuti con il MLP semplice. In particolare, la differenza tra la training loss e la validation loss è molto più bassa, suggerendo così l'assenza di overfitting. Inoltre, entrambe le loss sono minimizzate correttamente. 
+
+immagine
+
+Nella matrice di confusione illustrata sotto, si nota come InceptionV$3$ performi davvero bene nella maggior parte dei casi ma misclassifichi numerosi sample di montagne e foreste come campagna. Questo è osservabile anche nella curva ROC, poichè l'AUC (Area Under the Curve) è minore. 
+
+immagine
 
 -----------------------------------------------------------------
 
 ### Unfreezing some layers
+Lo step successivo consiste nell'unfreezare e riallenare alcuni layer di InceptionV$3$ per vedere se i pesi appresi migliorino i risultati. InceptionV$3$ è diviso in $11$ blocchi di Inception e da un totale di $311$ layer, rendendo non intuitivo il selezionare quale layer sbloccare. Per questo motivo, si sbloccheranno i layer per blocchi (partendo sempre dall'inizio).
 
+Nei risultati presentati nella tabella sottostante, come atteso, l'accuratezza del test aumenta per ogni blocco del modello sblocato e riallenato. Tuttavia, il numero di parametri allenabili aumenta anch'esso e, di conseguenza, il costo computazionale è molto più alto.
+
+immagine
+ 
 -----------------------------------------------------------------
 
-### Removing blocks of layers from InceptionV3
+### Removing blocks of layers from InceptionV$3$
+Al fine di ridurre il numero di parametri, si è deciso di rimuovere alcuni blocchi Inception e studiare le performance del nuovo modello sul dataset in analisi. Per far ciò, si prende l'output di un blocco specifico (e.g., il blocco #$3$, cioè si rimuovono gli $8$ blocchi successivi), si aggiunge un layer di global average pooling $2$d e un layer softmax finale. In ogni caso, il modello completo viene riallenato e necessità di un numero differente di epoche per convergere.
+
+Come si può osservare nella tabella sottostante, rimuovendo $5$ blocchi si ottiene comunque una accuratezza elevata nonostante il numero di parametri sia stato ridotto da $21$M a $5$M. Questo è possibile perchè il dataset in analisi è molto più semplice di ImageNet, in quanto provvisto di solo $8$ classi differenti.
+
+immagine
 
 -----------------------------------------------------------------
 
 ### Tiny dataset
+Una volta che l'architettura del modello è stata alleggerita, è possibile allenarla con un dataset più piccolo ($50$ sample per classe, per un totale di $400$ sample) per studiarne la performance. I risultati sono presentati nell'immagine sottostante. Come previsto, il modello non impara abbastanza bene nè abbastanza in fretta usando il tiny dataset, poichè necessita di più sample per impostare correttamente i pesi di ogni layer. L'accuratezza risultante è anch'essa più bassa.
+
+immagine
+
+Per migliorare l'apprendimento del nuovo modello con il tiny dataset, si introduce e si valuta l'utilizzo di data augmentation. Per fare ciò, si utilizzano differenti augmentations individualmente e combinate poi, per analizzare se l'aggiunta di ulteriore variabilità ai training fata migliora la performance del nuovo modello.
 
 -----------------------------------------------------------------
 
