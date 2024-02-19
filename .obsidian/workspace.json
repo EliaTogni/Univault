@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Lexicon/Allampanato.md",
+                "file": "Articles/Image Classification with Classic and Deep Learning Techniques.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Lexicon/Allampanato.md",
+                "file": "Articles/Image Classification with Classic and Deep Learning Techniques.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,6 +117,7 @@
   },
   "active": "38d32b5d088c45c4",
   "lastOpenFiles": [
+    "Lexicon/Allampanato.md",
     "Lexicon/Bovindo.md",
     "Lexicon/Caveat.md",
     "Lexicon/Contenzioso.md",
@@ -133,7 +135,6 @@
     "Lexicon/Sicumera.md",
     "Lexicon/Sedicente.md",
     "Lexicon/Sicofante.md",
-    "Lexicon/Allampanato.md",
     "Images/(3,3)GroupingExample1.png",
     "Blogs/Evolving Game of Life.md",
     "Blogs/The incredibly challenging task of sorting colours.md",

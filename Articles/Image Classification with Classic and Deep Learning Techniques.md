@@ -32,7 +32,7 @@ E' importante osservare che se il numero di sample in ogni classe è distribuito
 -----------------------------------------------------------------
 
 ## Bag of Visual Words
-L'approccio Bag of Visual Words consiste nel estrarre dei [[Local Descriptor |local descriptors]] a partire dai training data, clusterarli nello spazio delle feature multidimensionale al fine di creare visual words e contare il numero di words in ogni immagine.
+L'approccio Bag of Visual Words consiste nel estrarre dei [[Local Descriptor |local descriptors]] a partire dai training data, clusterarli nello spazio delle feature multidimensionale al fine di creare **visual words** e contare il numero di words in ogni immagine. Questo processo è simile a come le parole vengono estratte da un testo per costruire un vocabolario.
 
 Viene generato un istogramma per ogni label e usato per allenare un classificatore come [[Statistical Methods for Machine Learning#Support Vector Machines |Support Vector Machine]] (SVM). 
 
@@ -40,6 +40,9 @@ immagine
 
 In questa sessione, i metodi usati per implementare il sistema BoVW sono spiegati in dettaglio e i risultati ottenuti con ogni configurazione sono presentati ed analizzati. Per questo motivo, l'accuratezza viene calcolata con $8$(stratified) fold cross-validation in ogni caso.
 ### Keypoints and descriptors
+Nell'approccio BoVW, viene utilizzato un algoritmo di feature detection al fine di individuare dei **keypoint** ed estrarre i local descriptors da ogni immagine. Per questo motivo, il primo step riguarda il trovare quale algoritmo funziona meglio nel caso di studio utilizzando un classificatore [[Statistical Methods for Machine Learning#The Nearest Neighbour algorithm |k-Nearest Neighboors]]. I descriptors testati sono SIFT, SURF e DAISY:
+1) **vanilla descriptors**: in questo scenario, i keypoint sono estratti usando
+2) **dense descriptors**: 
 
 -----------------------------------------------------------------
 
@@ -67,12 +70,33 @@ In questa sessione, i metodi usati per implementare il sistema BoVW sono spiegat
 -----------------------------------------------------------------
 
 ## MLP
+I risultati ottenuti con un approccio classico come il Bag Of Visual Words sono accettabili ma non abbastanza soddisfacenti da considerare il classificatore di immagini implementato come robusto o affidabile. Per questo motivo, è necessario utilizzare tecniche avanzate per migliorare le performance e ottenere i risultati desiderati: il **[[Intelligenza Artificiale#Deep Learning|Deep Learning]]** (DL). Come primo step, si esplorerà l'architettura più semplice, il [[Intelligenza Artificiale#Multi-layer perceptron |multi-layer perceptron]] (MLP).
+
+Sono stati usati un semplice MLP e un layer **softmax**, un tipo specifico di layer di attivazione che viene spesso utilizzato nell'ultimo strato della rete neurale, soprattutto quando il problema è una classificazione multiclasse al fine di  convertire l'output della rete in una distribuzione di probabilità su più classi. La funzione softmax è utilizzata per convertire gli elementi del vettore di input in valori compresi tra $0$ e $1$, e la somma di tutti gli elementi nella sua uscita è sempre $1$. Questo risultato è interpretato come una distribuzione di probabilità sulla quale si basa la decisione di classe.
+
+I risultati in termini di accuracy e loss non sono stati soddisfacenti, come mostrato nella figura sottostante.
+
+immagine
+
+La differenza tra le curve di accuratezza nel training e nella validazione è un indicatore che il modello sta overfittando sui dati di training e, perciò, non è in grado di generalizzare sufficientemente nel caso di sample mai visti. Inoltre, la curva loss di validazione è instabile e non propriamente minimizzata.
+
+Per provare ad ottenere risultati miglior, si è provato a fare fine-tuning di diversi parametri: il learning rate, la size delle immagini, il numero di layer (la profondità della rete), la taglia dei layers, aggiungere normalizzazione o regolarizzazione, e così via. Anche se le performance migliorano marginalmente in alcuni casi, il potenziale del sistema è limitato da fatto che si sta utilizzando un semplice MLP per una task di classificazione di immagini complessa.
 
 ### Deep Features, SVM and BoVW
+Prima di passare alle CNN, si esplorano ora differenti varianti del MLP al fine di migliorarne i risultati:
+1) **Deep Features (DF) + SVM**: si estraggono le DF dall'hidden layer più profondo (quello che precede il layer softmax, dove le feature sono più astratte/generiche) e si usano per allenare un classificatore SVM;
+2) **aggregare le predizioni**: si divide l'immagine in input in frammenti, si estrae la predizione per ogni frammento e si aggrega la predizione finale;
+   3) **DF come un descriptor denso + BoVW**: si divide l'immagine in input in frammenti, si estraggono le DF dall'ultimo hidden layer per ogni frammetno e si concatenano al fine di creare un feature vector per ogni immagine.  Successivamente, si usa k-means per creare un codebook e allenare un classificatore SVM con l'istogramma di visual words.
+
+I risultati ottenuti sono mostrati nella tabella sottostante. Come osservato, estrarre le DF e usarle per allenare un classificatore SVM non è una valida alternativa. 
+
+Un altro approccio cinsiste nel dividere ogni immagine in frammenti e estrarre DF da ognuno di essi. In questi due altri casi, anche se i risultati sono migliorati leggermente, non solo non sono accettabili ma sono indubbiamente peggiore di uelli ottenuti con l'approccio BoVW classico. Per questo motivo, si conclude che MLP è troppo semplice epr questo problema di classificazione di immagini. 
 
 -----------------------------------------------------------------
 
 ## InceptionV3
+Dall'esplosione dell CNN nel $2012$ con AlexNet, molteplici architetture sono state presentate per affrontare il problema di classificazione, ottenendo risultati sempre migliori in termini di minimizzare l'errore di misclassificazione.
+In questo paper, si prova a fare fine-tuning di InceptionV3 per adattarlo al dataset in questione. Questa NN, creata da Google, è basata sull'idea di utilizzare moduli Inception per usare differenti size di canali in parallelo.
 
 ### Changing the network architecture
 
