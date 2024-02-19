@@ -25,12 +25,20 @@ Dato un dataset suddiviso in $8$ classi differenti, l'obiettivo è, per ciascuna
 -----------------------------------------------------------------
 
 ## Data
+Il dataset contiene $2688$ immagini da $8$ classi differenti: costa, foresta, autostrada, città, montagna, campagna, strada e palazzo. Nella figura sottostante è possibile osservare un sample di ogni classe. Per allenare e valutare adeguatamente i sistemi implementati, il dataset è stato diviso in un training set di $1881$ immagini ($70\%$) ed in un test set di $807$ immagini ($30\%$).
 
+E' importante osservare che se il numero di sample in ogni classe è distribuito in maniera non equa, l'accuratezza come metrica di valutazione non è una buona scelta.
 
 -----------------------------------------------------------------
 
 ## Bag of Visual Words
+L'approccio Bag of Visual Words consiste nel estrarre dei [[Local Descriptor |local descriptors]] a partire dai training data, clusterarli nello spazio delle feature multidimensionale al fine di creare visual words e contare il numero di words in ogni immagine.
 
+Viene generato un istogramma per ogni label e usato per allenare un classificatore come [[Statistical Methods for Machine Learning#Support Vector Machines |Support Vector Machine]] (SVM). 
+
+immagine
+
+In questa sessione, i metodi usati per implementare il sistema BoVW sono spiegati in dettaglio e i risultati ottenuti con ogni configurazione sono presentati ed analizzati. Per questo motivo, l'accuratezza viene calcolata con $8$(stratified) fold cross-validation in ogni caso.
 ### Keypoints and descriptors
 
 -----------------------------------------------------------------

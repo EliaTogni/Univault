@@ -3,7 +3,7 @@ Complesso di organi e procedimenti relativi a un tipo di controversie tra il cit
 ----------------------------------------------------------------
 
 # Esempi
-_Un eventuale **contenzioso** potrebbe far leva anche sull'oscurità e sull'imprecisione del dettato._
+_- Un eventuale **contenzioso** potrebbe far leva anche sull'oscurità e sull'imprecisione del dettato. -_
 
 ----------------------------------------------------------------
 

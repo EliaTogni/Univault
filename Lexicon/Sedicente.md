@@ -3,7 +3,7 @@ Chi si attribuisce arbitrariamente un nome, una qualifica o una qualità.
 ----------------------------------------------------------------
 
 # Esempi
-_poi studiò attentamente il volto del sedicente mago, come nel palazzo di Charn si era soffermata sulla faccia di Digory._
+_- Poi studiò attentamente il volto del sedicente mago, come nel palazzo di Charn si era soffermata sulla faccia di Digory. -_
 
 ----------------------------------------------------------------
 
