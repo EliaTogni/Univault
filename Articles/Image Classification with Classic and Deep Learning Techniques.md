@@ -138,9 +138,28 @@ immagine
 
 Per migliorare l'apprendimento del nuovo modello con il tiny dataset, si introduce e si valuta l'utilizzo di data augmentation. Per fare ciò, si utilizzano differenti augmentations individualmente e combinate poi, per analizzare se l'aggiunta di ulteriore variabilità ai training fata migliora la performance del nuovo modello.
 
+I risultati, visibili nella tabella sottostante, mostrano che ciascuno dei metodi di aumentazione sta aiutando il modello, perciò la data augmentation contribuisce positivamente alla variabilità dei training data e, di conseguenza, al learning.
+Tuttavia, combinando le augmentations i risultati non migliorano ulteriormentein quanto potrebbero distorcere troppo le immagini. Perciò, il flip orizzontale è sufficiente per questo problema.
+
+immagine
+
 -----------------------------------------------------------------
 
 ### Random search to tune the hyperparameters
+L'ultimo step consiste nel rifinire gli iperparametri del modello necessari ad ottimizzare i risultati di accuratezza della validazione usando le seguenti opzioni:
+- **optimizer**: SGD, RMSprop, Adam, Adadelta, Adagrad;
+- **learning rate**: $0.001$, $0.01$, $0.1$, $0.2$;
+- **momentum**: $0.6$, $0.8$, $0.9$;
+- **funzione di attivazione**: elu, relu, tanh;
+
+Considerata la taglia della NN, non è possibile effettuare una gridsearch esaustiva, in quanto non fattibile in termini di tempo di computazione. Perciò, verrà utilizzata l'implementazione della random search da keras tuner.
+
+I risultati migliori sono ottenuti con l'ottimizzatore SGD, learning rate $0.001$, momentum $0.9$ e funzione di attivazione relu. Le curve di accuratezza e loss sono rappresentate nell'immagine sottostante.
+
+immagine
+
+Come era prevedibile, il modello necessita di più epoche per raggiungerere la convergenza rispetto all'originale InceptionV$3$, in quanto si sta utilizzando un dataset di dimensioni notevolmente inferiori. Tuttavia, l'accuratezza risultante è più alta e la loss è minimizzata correttamente: ciò prova che la rete è stata correttamente affinata per il caso in analisi.<br />
+La curva ROC e la matrice di confusione nella figura sottostante indicano che il nuovo modello è migliorato in termini di performance nelle classi ritenute più complesse da classificare nell'originale CNN. Tuttavia, il recupero (recall) della classe opencountry è diminuito, perciò questo modello potrebbe essere migliorato ulteriormente.
 
 -----------------------------------------------------------------
 
