@@ -18,13 +18,14 @@ Ciascun caso è stato valutato in termini di accuracy e loss e sono stati ottenu
 -----------------------------------------------------------------
 
 ## Problem definition
-Given a dataset divided into $8$ different classes, for each image in the dataset, the goal is to predict the class it belongs to. To do so, we implement and evaluate four different systems: BoVW approach, MLP based, and CNNs archtectures: fine-tuning an existing one and designing one from scratch. In each case, the model is trained with a subset of images, and tested with unseen images to validate the performance by means of the accuracy and loss. In the figure below, we can see a simplified scheme of the system.
+Dato un dataset suddiviso in $8$ classi differenti, l'obiettivo è, per ciascuna immagine nel dataset, predire a quale classe essa appartiene. Per fare ciò, vengono implementati e valutati quattro sistemi differenti: l'approccio BoVW, MLP based e architetture CNN: fine-tuning di una architettura esistente e il design di una da zero. In entrambi i casi, il modello è allenato con un sottoinsieme di immagini e testato con immagini mai viste prima al fine di validarne la performance in termini di accuracy and loss. Nella figura sottostante è possibile osservare uno schema semplificato del sistema.
 
-
+![[SimplifiedImageClassificationSystem.png]]
 
 -----------------------------------------------------------------
 
 ## Data
+
 
 -----------------------------------------------------------------
 
