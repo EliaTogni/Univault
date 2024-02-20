@@ -204,27 +204,58 @@ immagine
 -----------------------------------------------------------------
 
 ### Weight initialization
+Come fase finale, ci si occupa del tuning dell'inizializzazione dei pesi. Nella tabella sottostante vengono comparate le inizializzazioni di Glorot, He e Random. Si aggiunge inoltre, l'inizializzazione a zero di tutti i pesi. E' possibile validare empiricamente che non è l'inizializzazione migliore in quanto l'accuratezza droppa significativamente. Il motivo per cui accade ciò è dovuto al fatto che ogni neurone nella rete calcola lo stesso output, gli stessi gradienti durante la backpropagation e sottostà agli stessi update dei parametri. In altre parole, non c'è fonte di asimmetria tra i neuroni se l'inizializzazione è la stessa.
 
+Comparando le altre inizializzazioni, si nota che la normale e l'uniforme di Glorot performano alla stessa maniera. Per visualizzare più chiaramente le migliorie nellaa performance, si deve osservare l'accuracy e le curve di loss. Con l'inizializzazione normale di Glorot, la curva di loss converge in una maniera più stabile e più smooth. Per questo motivo, verrà utilizzata questa inizializzazione.
 
 -----------------------------------------------------------------
 
 ### Adding depth
+Un'altra opzione consiste nell'incrementare la profondità dell'architettura. Il primo approccio consiste nell'aggiungere in maniera incrementale blocchi di layer $2$D convoluzionali $+ 2$D max pooling all'architettura. Sono stati utilizzati gli iperparametri ottenuti nel tuning baseline, fatta eccezione per il numero di filtri: $32$ per ciascun layer. Nella tabella sottostante si può osservare come l'aggiunta incrementale di layer aumenti l'accuracy fino al quarto layer. Il quindi layer, tuttavia, causa un leggero decremento di performance.
+
+immagine
+
+Aggiungere profondità in maniera casuale funziona solo fino ad un certo punto, Inoltre, in questo caso ogni layer aggiunto era sempre della stessa tipologia, mentre si può sperimentare con differenti tipi. Usando un architettura a quattro layer, è stato aggiunto un layer dropout e batch-norm, nonostante sia opinione comune non usarli insieme. L'architettura finale è rappresentata nella figura sottostante.
+
+immagine
 
 -----------------------------------------------------------------
 
 ### Optimizer and Learning rate
+Fino ad ora sono stati ignorati tutti gli iperparametri relativi agli ottimizzatori. Nell'immagine sottostaante è possibile notare come Adam fornisca i risultati migliori. 
+
+immagine
+
+Fortemente correlato all'ottimizzatore scelto è il learning rate e, solitamente, risulta difficile stabilire il valore migliore. Numericamente, si può osservare nell'immagine sottostante come learning rate minori conducano a risultati migliori.
+
+immagine
+
+Tuttavia, è graficamente che diventa possibile estrarre più informazioni sul comportamento del sistema. Nell'immagine sottostante, i valori di loss diventano progressivamente più piccoli al decrementare del learning rate. 
+
+immagine
 
 -----------------------------------------------------------------
 
 ### Input size
+Non è solamente l'architettura ad influenzare le performance ma anche la fase di preprocessing dei dati in input. In questo caso, si prova a modificare la taglia delle immagini in input. Le performance cambiano significativamente al variare di taglia e con un input size di $64 \times 64$ che si ottiene l'accuratezza migliore.
 
 -----------------------------------------------------------------
 
 ### Grad-CAM
+Può apparire che più ci si addentra in profondità nel tuning della rete e più il sistema diventa una scatola nera di difficile comprensione ed intelligibilità. La tecnica Grad-CAM aiuta a visualizzare le regioni dei dati in input che sono più rilevanti per predire una determinata label. Nell'immagine sottostante l'attivazione per la classe foresta evidenzia gli alberi nell'immagine e per gli edifici evidenzia i grattacieli. Al contrario, nella classe montagna viene evidenziata la silhouette della cima, la quale permette al sistema di classificare le immagini correttamente. Infine, nella classe catalogata come campagna, la più difficile da classificare, non è presente nessuna attivazione significativa.
 
 -----------------------------------------------------------------
 
 ## Revisiting weight initialization
+Si vuole rispondere alla domanda sul perchè una buona inizializzazione sia fondamentale nelle reti neurali. Poichè una NN comporta numerose moltiplicazioni matriciali, la media e la varianza delle attivazioni può velocemente raggiungere valori elevati o droppare a zero, come visibile nell'immagine sottostante. 
+
+immagine
+
+Questo causerebbe al gradiente locale dei layer di diventare NaN o zero e, quindi, preverebbe alla rete di imparare alcunchè in quanto il valore dei gradienti dipende dalle attivazioni, come visibile nell'immagine sottostante.
+
+immagine
+
+Una strategia comune per evitare ciò consiste nell'inizializzare i pesi della rete usando  
 
 -----------------------------------------------------------------
 
