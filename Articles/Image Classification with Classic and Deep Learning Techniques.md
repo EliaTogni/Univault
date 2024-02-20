@@ -168,20 +168,43 @@ Per fittare meglio il modello al problema, si produce il design di una CNN da ze
 
 immagine
 
+Si ottiene una accuratezza di $0.78$, già migliore di quella ottenuta con il MLP. Tuttavia, la curva di accuratezza mostra overfitting mentre la curva di loss è instabile ed inizia a divergere dal validation set.
+
+I parametri utilizzati dai layer di convoluzione sono quelli di default degli esempi di Keras: Kernel size $5 \times 5$, $32$ filtri, funzione di attivazione Relu e inizializzazione Normale Gorot dei pesi.
 
 ### Kernel Size
+Al fine di migliorare il sistema, si affinano i differenti parametri dei layer convoluzionali per scoprire i limiti di questa baseline. ll primo parametro da tunare è la kernel size, portando così ai risultati della tabella sottostante.
+
+immagine
+
+La migliore accuratezza è ottenuta con le size di $5 \times 5$ e $7 \times 7$. Tuttavia, per questa CNN si introduce un'ulteriore metrica da prendere in considerazione: il rapporto **accuracy-parameter**, che può essere calcolato come:
+
+$$ratio = \frac{accuracy*10^5}{number \space of \space parameters}$$
+
+Tenendo in considerazione questo rapporto, il miglior compromesso tra accuratezza, loss e rapporto è ottenuto con un kernel $3 \times 3$ e perciò si userà nei test seguenti. Questa taglia di kernel è stata introdotta da VGG ed è diventata uno standard. Per esempio, due layer di un kernel $3 \times 3$ producono un risultato migliore di un layer con kernel size $5 \times 5$.
 
 -----------------------------------------------------------------
 
 ### Number of filters
+Cambiando la kernel size si è ottenuto un miglioramento nel ratio in cambio di un peggioramento dell'accuracy. Di conseguenza, sono necessari ulteriori accorgimenti. Si modifica quindi il numero dei filtri usati in entrambi i layer convoluzionali, ottenendo i risultati mostrati nella tabella sottostante.
+
+immagine
+
+Di nuovo, il parametro che restituisce un'accuracy miglore, $64$ filtri, riduce considerabilmente la ratio. 
+
+Invce di usare lo stesso numero di filtri per entrambi i layer, è possibile testare con due differenti numeri di filtri. La migliore combinazione trovata è data dall'utilizzare $64$ filtri per il primo layer e $32$ per il secondo. Questo risultato migliora la ratio dalla baseline mantenendo l'accuratezza, perciò si manterrà questa configurazione da qui in avanti.
 
 -----------------------------------------------------------------
 
 ### Activation functions
+Il prossimo parametro da affinare è la funzione di attivazione.è In questo caso è possibile osservare nella tabella sottostante come la funzione di attivazione di default, la ReLU, permette di ottenere i risultati migliori.
+
+immagine
 
 -----------------------------------------------------------------
 
 ### Weight initialization
+
 
 -----------------------------------------------------------------
 
