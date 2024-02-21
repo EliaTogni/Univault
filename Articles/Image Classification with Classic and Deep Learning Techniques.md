@@ -360,11 +360,33 @@ Sono stati usati alcuni trick state of the art per trovare automaticametne il mi
 	
 	Tuttavia, è importante notare che ci sono casi in cui alcuni ricercatori e praticanti hanno segnalato benefici nell'utilizzo congiunto di Dropout e Batch Normalization in determinati contesti o architetture specifiche. La scelta di utilizzare o meno entrambi dipende anche dall'esperienza empirica e dalla sperimentazione sul dataset e sull'architettura specifici.
 10) **Perchè se il dataset è unbalanced, l'accuracy come metrica non è valida?**
-2) **Cosa significa che la curva di loss non è propriamente minimizzata?**
-3) **Come sono fatti i moduli Inception di InceptionV$3$?**
-4) **Per quale motivo vengono freezati tutti i layer tranne il layer softmax?**
-5) **Perchè si usa un tiny dataset?**
-6) **Perchè alla fine si decide di usare differenti taglie per ciascun layer?**
+	L'accuracy, che rappresenta la percentuale di predizioni corrette rispetto al totale delle predizioni, potrebbe non essere una metrica affidabile quando si affrontano dataset sbilanciati. Questo perché in un dataset sbilanciato, ci sono molte più istanze di una classe rispetto alle altre. Vediamo perché l'accuracy potrebbe non essere una buona scelta in queste situazioni:
+	1) **sensibilità alla Classe Maggiore**: in un dataset sbilanciato, se una classe è dominante in termini di numero di esempi, un modello può ottenere un'accuracy elevata semplicemente predicono sempre la classe dominante, ignorando completamente le classi minoritarie. Questo può portare a un'accuratezza ingannevole, poiché il modello potrebbe non essere in grado di generalizzare bene per le classi meno rappresentate;
+	2) **mancanza di Sensibilità alle Classi Minoritarie**: l'accuracy non tiene conto delle proporzioni tra le classi e non penalizza in modo specifico gli errori nelle classi minoritarie. Un modello potrebbe avere un'accuracy elevata anche se non riesce a classificare correttamente gli esempi delle classi minoritarie, che potrebbero essere di particolare interesse in alcune applicazioni;
+	3) **metriche più Informative**: in presenza di classi sbilanciate, è spesso preferibile utilizzare metriche più informative come la precisione, la recall, l'F$1$-score o l'area sotto la curva ROC (AUC-ROC). Queste metriche tengono conto della distribuzione delle classi e forniscono informazioni più dettagliate sulle performance del modello, specialmente per le classi minoritarie;
+	
+	Ad esempio, la precisione misura la percentuale di predizioni positive effettivamente corrette, la recall misura la percentuale di istanze positive effettivamente identificate, e l'F$1$-score è una media armonica tra precisione e recall.
+11) **Cosa significa che la curva di loss non è propriamente minimizzata?**
+12) **Come sono fatti i moduli Inception di InceptionV$3$?**
+	I moduli Inception, introdotti in InceptionV$1$ e ulteriormente sviluppati in InceptionV$2$ e InceptionV$3$, sono una componente chiave dell'architettura delle reti neurali Inception. Questi moduli sono progettati per catturare features a diverse scale spaziali utilizzando filtri di diverse dimensioni e sono noti anche come "blocchi Inception". InceptionV$3$, sviluppato da Google, è uno dei modelli più avanzati della famiglia Inception. Ecco una descrizione di come sono strutturati i moduli Inception in InceptionV$3$:
+	1) **Inception Module Base**:
+		- l'Inception Module base è composto da un insieme di filtri convoluzionali di diverse dimensioni, cioè filtri $1 \times 1$, $3 \times 3$, e $5 \times 5$;
+		- oltre a questi, include anche un modulo di pooling (solitamente di tipo max pooling) con una dimensione di kernel specifica;
+		- tutte le uscite dai diversi rami sono concatenate lungo l'asse delle profondità.
+	2) **factorization into Parallel Paths**:
+		- per ridurre il numero di parametri, anziché applicare filtri $3 \times 3$ e $5 \times 5$ direttamente, viene spesso utilizzata una tecnica di "factorization" che consiste nell'applicare filtri $1 \times 3$ seguiti da filtri $3 \times 1$ per ottenere l'effetto di un filtro $3 \times 3$, e filtri $1 \times 5$ seguiti da filtri $5 \times 1$ per ottenere l'effetto di un filtro $5 \times 5$;
+		- questa strategia di "factorization" riduce il numero complessivo di parametri senza sacrificare significativamente la capacità di catturare features a diverse scale.
+	3) **Bottleneck Layer**:
+		- per ridurre ulteriormente il numero di parametri, si utilizza spesso uno strato di "bottleneck" prima dei filtri $3 \times 3$ e $5 \times 5$. Questo consiste in uno strato di convoluzione $1 \times 1$ con un numero ridotto di canali (profondità), seguito dai filtri $3 \times 3$ o $5 \times 5$.
+	4) **Parallel Paths**:
+		- i diversi rami, o percorsi, all'interno dell'Inception Module operano in parallelo, consentendo alla rete di catturare features a diverse scale spaziali simultaneamente.
+	5) **Output Concatenation**:
+	- le uscite dai diversi rami sono concatenate lungo l'asse delle profondità (canali) per ottenere l'output finale dell'Inception Module.
+	
+	Questi moduli Inception vengono poi impilati insieme per creare l'intera architettura di InceptionV$3$. L'obiettivo è catturare informazioni a diverse scale e permettere alla rete di apprendere automaticamente quali caratteristiche sono più importanti per una data attività di classificazione. La complessità e la profondità di queste reti consentono loro di ottenere prestazioni molto buone su vari compiti di visione artificiale.
+13) **Per quale motivo vengono freezati tutti i layer tranne il layer softmax?**
+14) **Perchè si usa un tiny dataset nell'allenamento di una CNN?**
+15) **Perchè alla fine si decide di usare differenti taglie per ciascun layer?**
 
 ----------------------------------------------------------------
 
