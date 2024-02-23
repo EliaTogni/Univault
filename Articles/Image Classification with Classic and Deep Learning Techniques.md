@@ -106,11 +106,11 @@ Il primo approccio consiste nell'usare l'architettura ed i pesi esistenti per mo
 Per prima cosa, ==si freezano tutti i layer tranne l'ultimo, per far sì che lo stage di training non abbia effetto sui pesi preallenati del modello==.<br />
 Come è possibile osservare nell'immagine sottostante, i risultati migliorano singificativamente usando InceptionV$3$ rispetto a quelli ottenuti con il MLP semplice. In particolare, la differenza tra la training loss e la validation loss è molto più bassa, suggerendo così l'assenza di overfitting. Inoltre, entrambe le loss sono minimizzate correttamente. 
 
-immagine
+![[InceptionV3AccuracyLossGraphs.png]]
 
 Nella matrice di confusione illustrata sotto, si nota come InceptionV$3$ performi davvero bene nella maggior parte dei casi ma misclassifichi numerosi sample di montagne e foreste come campagna. Questo è osservabile anche nella curva ROC, poichè l'AUC (Area Under the Curve) è minore. 
 
-immagine
+![[InceptionV3ConfusionMatrix.png]]
 
 ----------------------------------------------------------------
 
@@ -119,7 +119,7 @@ Lo step successivo consiste nell'unfreezare e riallenare alcuni layer di Incepti
 
 Nei risultati presentati nella tabella sottostante, come atteso, l'accuratezza del test aumenta per ogni blocco del modello sblocato e riallenato. Tuttavia, il numero di parametri allenabili aumenta anch'esso e, di conseguenza, il costo computazionale è molto più alto.
 
-immagine
+![[InceptionV3AccuracyUnfreeze.png]]
  
 ----------------------------------------------------------------
 
@@ -128,21 +128,21 @@ Al fine di ridurre il numero di parametri, si è deciso di rimuovere alcuni bloc
 
 Come si può osservare nella tabella sottostante, rimuovendo $5$ blocchi si ottiene comunque una accuratezza elevata nonostante il numero di parametri sia stato ridotto da $21$M a $5$M. Questo è possibile perchè il dataset in analisi è molto più semplice di ImageNet, in quanto provvisto di solo $8$ classi differenti.
 
-immagine
+![[InceptionV3AccuracyRemove.png]]
 
 ----------------------------------------------------------------
 
 ### Tiny dataset
 Una volta che l'architettura del modello è stata alleggerita, è possibile allenarla con un dataset più piccolo ($50$ sample per classe, per un totale di $400$ sample) per studiarne la performance. I risultati sono presentati nell'immagine sottostante. Come previsto, il modello non impara abbastanza bene nè abbastanza in fretta usando il tiny dataset, poichè necessita di più sample per impostare correttamente i pesi di ogni layer. L'accuratezza risultante è anch'essa più bassa.
 
-immagine
+![[TinyDatasetAccuracy.png]]
 
 Per migliorare l'apprendimento del nuovo modello con il tiny dataset, si introduce e si valuta l'utilizzo di ==data augmentation==. Per fare ciò, si utilizzano differenti augmentations individualmente e combinate poi, per analizzare se l'aggiunta di ulteriore variabilità ai training fata migliora la performance del nuovo modello.
 
 I risultati, visibili nella tabella sottostante, mostrano che ciascuno dei metodi di aumentazione sta aiutando il modello, perciò la data augmentation contribuisce positivamente alla variabilità dei training data e, di conseguenza, al learning.
 Tuttavia, ==combinando le augmentations i risultati non migliorano ulteriormente in quanto potrebbero distorcere troppo le immagini==. Perciò, il flip orizzontale è sufficiente per questo problema.
 
-immagine
+![[TinyDatasetAccuracyTable.png]]
 
 ----------------------------------------------------------------
 
