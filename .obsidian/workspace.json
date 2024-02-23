@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "38d32b5d088c45c4",
+            "id": "ab2916858481fd15",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -115,10 +115,15 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "38d32b5d088c45c4",
+  "active": "ab2916858481fd15",
   "lastOpenFiles": [
-    "Templates/Article Template.md",
+    "Images/AccuracyLossGraphsMLP.png",
+    "Images/AccuracyMLP.png",
+    "Images/IstogrammaLabel.png",
+    "Articles/An Introduction to Convolutional Neural Networks.md",
     "Articles/Image Classification with Classic and Deep Learning Techniques.md",
+    "Videos/How to Write a Paper in a Weekend (By Prof. Pete Carr.md",
+    "Templates/Article Template.md",
     "Lexicon/Allampanato.md",
     "Lexicon/Bovindo.md",
     "Lexicon/Caveat.md",
@@ -141,18 +146,13 @@
     "Blogs/Evolving Game of Life.md",
     "Blogs/The incredibly challenging task of sorting colours.md",
     "Blogs/Who's The Beatdown?.md",
-    "Blogs/Tempo.md",
-    "Atoms/Local Descriptor.md",
     "Images/SimplifiedImageClassificationSystem.png",
-    "Articles/Tempo.md",
     "Images/FragmentationAndInferenceExample1.png",
     "Images/Pasted image 20240123113347.png",
     "Images/Macrodata Disclosure Protection Techniques.png",
     "Images/Privacy in data publication.png",
     "Images/CachedSearches1Example6.png",
     "Images/CachedSearches1Example5.png",
-    "Images/CachedSearches1Example4.png",
-    "Images/CachedSearches1Example3.png",
     "Untitled.canvas",
     "Blogs",
     "Atoms",

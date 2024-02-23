@@ -36,7 +36,7 @@ L'approccio Bag of Visual Words consiste nel estrarre dei [[Local Descriptor |lo
 
 Viene generato un istogramma per ogni label e usato per allenare un classificatore come [[Statistical Methods for Machine Learning#Support Vector Machines |Support Vector Machine]] (SVM). 
 
-immagine
+![[IstogrammaLabel.png]]
 
 In questa sessione, i metodi usati per implementare il sistema BoVW sono spiegati in dettaglio e i risultati ottenuti con ogni configurazione sono presentati ed analizzati. Per questo motivo, l'accuratezza viene calcolata con $8$(stratified) fold cross-validation in ogni caso.
 ### Keypoints and descriptors
@@ -76,7 +76,7 @@ Sono stati usati un semplice MLP e un ==layer **softmax**, un tipo specifico di 
 
 I risultati in termini di accuracy e loss non sono stati soddisfacenti, come mostrato nella figura sottostante.
 
-immagine
+![[AccuracyLossGraphsMLP.png]]
 
 ==La differenza tra le curve di accuratezza nel training e nella validazione è un indicatore che il modello sta overfittando sui dati di training== e, perciò, non è in grado di generalizzare sufficientemente nel caso di sample mai visti. Inoltre, la curva loss di validazione è instabile e non propriamente minimizzata.
 
@@ -90,7 +90,7 @@ Prima di passare alle CNN, si esplorano ora differenti varianti del MLP al fine 
 
 I risultati ottenuti sono mostrati nella tabella sottostante. Come osservato, estrarre le DF e usarle per allenare un classificatore SVM non è una valida alternativa. 
 
-immagine
+![[AccuracyMLP.png]]
 
 Un altro approccio consiste nel dividere ogni immagine in frammenti e estrarre DF da ognuno di essi. In questi due altri casi, anche se i risultati sono migliorati leggermente, non solo non sono accettabili ma sono indubbiamente peggiori di quelli ottenuti con l'approccio BoVW classico. Per questo motivo, si è tratta la conclusione che MLP è troppo semplice per questo problema di classificazione di immagini. 
 
