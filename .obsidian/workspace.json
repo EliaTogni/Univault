@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Articles/Image Classification with Classic and Deep Learning Techniques.md",
+                "file": "Articles/An Introduction to Convolutional Neural Networks.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Articles/Image Classification with Classic and Deep Learning Techniques.md",
+                "file": "Articles/An Introduction to Convolutional Neural Networks.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,13 +117,13 @@
   },
   "active": "ab2916858481fd15",
   "lastOpenFiles": [
+    "Articles/Image Classification with Classic and Deep Learning Techniques.md",
     "Images/TinyDatasetAccuracyTable.png",
     "Images/TinyDatasetAccuracy.png",
     "Images/InceptionV3AccuracyRemove.png",
     "Images/InceptionV3AccuracyUnfreeze.png",
     "Images/InceptionV3ConfusionMatrix.png",
     "Images/InceptionV3AccuracyParameters.png",
-    "Articles/Image Classification with Classic and Deep Learning Techniques.md",
     "Images/InceptionV3AccuracyLossGraphs.png",
     "Images/AccuracyLossGraphsMLP.png",
     "Images/AccuracyMLP.png",
@@ -149,7 +149,6 @@
     "Lexicon/Sicumera.md",
     "Lexicon/Sedicente.md",
     "Lexicon/Sicofante.md",
-    "Images/(3,3)GroupingExample1.png",
     "Blogs/Evolving Game of Life.md",
     "Blogs/The incredibly challenging task of sorting colours.md",
     "Blogs/Who's The Beatdown?.md",

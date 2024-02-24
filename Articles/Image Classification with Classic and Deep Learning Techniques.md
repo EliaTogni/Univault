@@ -151,7 +151,7 @@ L'ultimo step consiste nel rifinire gli iperparametri del modello necessari ad o
 - **optimizer**: SGD, RMSprop, Adam, Adadelta, Adagrad;
 - **learning rate**: $0.001$, $0.01$, $0.1$, $0.2$;
 - **momentum**: $0.6$, $0.8$, $0.9$;
-- **funzione di attivazione**: elu, relu, tanh;
+- **funzione di attivazione**: ELU, ReLU, Tanh;
 
 Considerata la taglia della NN, non è possibile effettuare una ==gridsearch== esaustiva, in quanto non fattibile in termini di tempo di computazione. Perciò, verrà utilizzata l'implementazione della random search da keras tuner.
 
