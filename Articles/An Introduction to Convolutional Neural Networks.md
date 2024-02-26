@@ -39,13 +39,30 @@ Se si considera un input di immagine a colori più sostanziale di dimensioni $64
 
 ### Overfitting
 Perchè questo è importante? Certamente si potrebbe aumentare il numero di hidden layer nella rete e, anche, incrementare il numero di neuroni in ciascuno dei layer. Questo però non viene fatto principalmente per due motivi.<br />
-Il primo motivo è il non avere illimitata potenza computazionale e tempo per allenare queste enormi ANN mentre il secondo è il voler annullare o ridurre gli effetti dell'overfitting.
-
+Il primo motivo è il non avere illimitata potenza computazionale e tempo per allenare queste enormi ANN mentre il secondo è il voler annullare o ridurre gli effetti dell'overfitting. La principale ragione dietro al voler ridurre la complessità delle ANN è proprio questa: minore il numero di parametri richiesti per l'allenamento, minore la probabilità che la rete faccia overfitting.
 
 ----------------------------------------------------------------
 
 ## CNN architecture
+Come osservato precedentemente, le CNN si concentrano principalmente sul fatto che l'input sarà composto da immagini. Questo permette di organizzare l'architettura in modo tale da far sì che possa gestire in maniera ottimale questo tipo specifico di dati. 
+
+Una delle differenze chiave è che i neuroni che compongono gli strati all'interno della CNN sono costituiti da neuroni organizzati in tre dimensioni, la dimensionalità spaziale dell'input (altezza e larghezza) e la profondità. la profondità non si riferisce al numero totale di layer nella ANN ma alla terza dimensione del volume di attivazione. A differenza delle ANN standard, i neuroni all'interno di uno specifico strato si connetteranno solo a una piccola regione dello strato precedente.
+
+Nella pratica, ciò significherebbe che per l'esempio fornito in precedenza, l'input 'volume' avrà una dimensionalità di $64 \times 64 \times 3$ (altezza, larghezza e profondità), portando ad uno strato di output finale composto da una dimensionalità di $1 \times 1 \times n$ (dove n rappresenta il possibile numero di classi), poiché avremmo condensato l'intera dimensionalità dell'input in un volume più piccolo di punteggi di classe distribuiti lungo la dimensione della profondità.
 ### Overall architecture
+Le CNN sono composte da tre tipi di layer: i layer convoluzionali, i layer di pooling e i layer fully-connected. Quando questi layer sono impilati, si va a formare una architettura CNN, visibile nell'immagine sottostante in una sua variante semplificata.
+
+immagine
+
+La funzionalità base della CNN nell'esempio soprastante può esere suddivisa in quattro aree chiave:
+1) come nelle altre forme di ANN, l'input layer conterrà i valori dei pixel dell'immagine;
+2) il layer convoluzionale determinerà l'output dei neuroni i quali sono connessi a regioni locali dell'input attraverso il calcolo del prodotto scalare tra i loro pesi e la regione connessa al volume di input. L'unità lineare rettificata (comunemente abbreviata come ReLu) mira ad applicare una funzione di attivazione 'elementwise' come la sigmoide all'output dell'attivazione prodotta dal layer precedente;
+3) il pooling layer farà semplicemente downsampling lungo la dimensionalità spaziale dell'input dato, riducendo ulteriormente il numero di parametri all'interno di quella attivazione;
+4) i layer fully-connected compieranno le stesse azioni delle ANN standard e tenteranno di produrre score di classe dalle attivazioni, per utlizzarli per la classificazione.
+
+Attraverso questo semplice metodo di trasformazione, le CNN sono in grado di trasformare l'input originale layer by layer utilizzando tecniche convoluzionali e downsampling al fine di produrre score di classe per classificazione e regressione.
+
+
 
 ----------------------------------------------------------------
 
@@ -75,6 +92,60 @@ Il primo motivo è il non avere illimitata potenza computazionale e tempo per al
 ----------------------------------------------------------------
 
 # Domande
+1) **Cosa si intende con (terza) dimensione di un volume di attivazione?**
+	La terza dimensione di un volume di attivazione in una rete neurale si riferisce alla profondità del volume. Per capire meglio questo concetto, possiamo considerare un'immagine tridimensionale.
+	
+	Nella rappresentazione tridimensionale di un'immagine, si hanno due dimensioni spaziali: larghezza e altezza (spesso indicate come $x$ e $y$). La terza dimensione, la profondità (spesso indicata come $z$), rappresenta la gamma di valori associati a ciascun punto nella griglia $x-y$. Questa profondità può rappresentare diversi attributi o caratteristiche associati a ciascun punto dell'immagine.
+	
+	Nel contesto di una rete neurale, un volume di attivazione è un termine usato per descrivere l'output di uno strato della rete. Questo volume può essere immaginato come uno spazio tridimensionale in cui ogni punto corrisponde a un'unità neurale e la profondità rappresenta l'attivazione di quella unità.
+	
+	In molte reti neurali convoluzionali (CNN), ad esempio, il volume di attivazione ha tre dimensioni: altezza, larghezza e profondità. Questa profondità può riflettere diverse caratteristiche estratte dalle immagini attraverso l'apprendimento dei pesi dei filtri convoluzionali.
+	
+	In breve, la terza dimensione di un volume di attivazione rappresenta il numero di caratteristiche o attributi associati a ciascun punto nello spazio dell'output della rete neurale.
+2) **Cosa è il downsampling in ambito CNN?**
+	Il downsampling in ambito di reti neurali convoluzionali (CNN) è una tecnica utilizzata per ridurre la dimensionalità degli strati, specialmente lungo le dimensioni spaziali (altezza e larghezza) delle feature map. Questa riduzione della dimensionalità comporta una diminuzione del numero di parametri e del carico computazionale, contribuendo all'efficienza computazionale del modello.
+	
+	Il layer di pooling è comunemente utilizzato per eseguire il downsampling. Esistono due tipi principali di operazioni di pooling: il max pooling e il average pooling. Entrambe le tecniche coinvolgono la suddivisione della feature map in regioni (spesso chiamate "pool" o "kernel") e l'applicazione di un'operazione (prendere il massimo o la media) su ciascuna regione. Il risultato è una feature map ridotta in dimensioni rispetto all'input originale.
+	
+	Il downsampling aiuta a ottenere alcuni vantaggi:
+	1) **riduzione della dimensionalità**: riducendo la dimensione delle feature map, si riducono anche il numero di parametri da addestrare e il carico computazionale;
+	2) **estrazione delle caratteristiche dominanti**: mantenendo le caratteristiche più importanti, il modello può essere più robusto e meno sensibile a variazioni minime nei dati di input;
+	3) **invarianza spaziale**: la rete diventa più invariante rispetto alle traslazioni locali nell'input, aiutando a catturare pattern invarianti nella rappresentazione.
+	
+	In sintesi, il downsampling attraverso il pooling è una strategia chiave per semplificare la rappresentazione spaziale nelle CNN, migliorando l'efficienza computazionale senza perdere informazioni cruciali.
+	
+	Ecco un esempio semplificato di downsampling attraverso il max pooling: si supponga di avere una feature map di input $4 \times 4$:
+
+```
+[[1, 2, 3, 4],
+ [5, 6, 7, 8],
+ [9, 10, 11, 12],
+ [13, 14, 15, 16]]
+```
+
+Ora, si applichi un'operazione di max pooling con una finestra (pool) $2 \times 2$ e uno stride (passo) di $2$. La finestra di pooling si muoverà lungo la feature map con un passo di $2$ sia lungo la dimensione delle righe sia lungo la dimensione delle colonne.
+
+1) Prima regione di pooling ($1$° passo):
+```
+[[1, 2],
+ [5, 6]]
+```
+Massimo: $6$
+
+2) Seconda regione di pooling (2° passo):
+```
+[[3, 4],
+ [7, 8]]
+```
+Massimo: $8$
+
+Il risultato finale della feature map dopo il max pooling sarà:
+```
+[[6, 8]]
+```
+
+Questo esempio rappresenta un modo di eseguire il downsampling riducendo la dimensionalità dell'input originale. Il valore massimo in ciascuna regione di pooling viene mantenuto, e questo processo si ripete lungo la feature map per ottenere la versione downsampldata.
+3) 
 
 ----------------------------------------------------------------
 

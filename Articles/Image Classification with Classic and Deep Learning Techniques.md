@@ -217,6 +217,8 @@ Come fase finale, ci si occupa del tuning dell'inizializzazione dei pesi. Nella 
 
 Comparando le altre inizializzazioni, si nota che la normale e l'uniforme di Glorot performano alla stessa maniera. Per visualizzare più chiaramente le migliorie nella performance, si deve osservare l'accuracy e le curve di loss. Con l'inizializzazione normale di Glorot, la curva di loss converge in una maniera più stabile e più smooth. Per questo motivo, verrà utilizzata questa inizializzazione.
 
+
+
 ----------------------------------------------------------------
 
 ### Adding depth
@@ -247,6 +249,8 @@ immagine
 
 ### Input size
 Non è solamente l'architettura ad influenzare le performance ma anche la fase di preprocessing dei dati in input. In questo caso, si prova a modificare la taglia delle immagini date in pasto alla rete. Le performance cambiano significativamente al variare di taglia e con un input size di $64 \times 64$ che si ottiene l'accuratezza migliore.
+
+imm
 
 ----------------------------------------------------------------
 
