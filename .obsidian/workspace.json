@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Articles/An Introduction to Convolutional Neural Networks.md",
+                "file": "Articles/Image Classification with Classic and Deep Learning Techniques.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Articles/An Introduction to Convolutional Neural Networks.md",
+                "file": "Articles/Image Classification with Classic and Deep Learning Techniques.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,18 +117,19 @@
   },
   "active": "ab2916858481fd15",
   "lastOpenFiles": [
+    "Images/WeightInitializationTable.png",
+    "Images/ActivationFunctionsTable.png",
+    "Images/NumberFiltersTable.png",
+    "Images/KernelSizeTable.png",
+    "Images/BaselineAccuracyLoss.png",
+    "Images/BaselineArchitecture.png",
+    "Images/TinyDatasetFinalModelGraphs.png",
+    "Images/TinyDatasetFinalModel.png",
+    "Articles/An Introduction to Convolutional Neural Networks.md",
     "Articles/Image Classification with Classic and Deep Learning Techniques.md",
     "Images/TinyDatasetAccuracyTable.png",
     "Images/TinyDatasetAccuracy.png",
     "Images/InceptionV3AccuracyRemove.png",
-    "Images/InceptionV3AccuracyUnfreeze.png",
-    "Images/InceptionV3ConfusionMatrix.png",
-    "Images/InceptionV3AccuracyParameters.png",
-    "Images/InceptionV3AccuracyLossGraphs.png",
-    "Images/AccuracyLossGraphsMLP.png",
-    "Images/AccuracyMLP.png",
-    "Images/IstogrammaLabel.png",
-    "Articles/An Introduction to Convolutional Neural Networks.md",
     "Videos/How to Write a Paper in a Weekend (By Prof. Pete Carr.md",
     "Templates/Article Template.md",
     "Lexicon/Allampanato.md",

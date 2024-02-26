@@ -157,17 +157,23 @@ Considerata la taglia della NN, non è possibile effettuare una ==gridsearch== e
 
 I risultati migliori sono ottenuti con l'ottimizzatore SGD, learning rate $0.001$, momentum $0.9$ e funzione di attivazione ReLU. Le curve di accuratezza e loss sono rappresentate nell'immagine sottostante.
 
-immagine
+![[TinyDatasetFinalModel.png]]
 
 Come era prevedibile, il modello necessita di più epoche per raggiungerere la convergenza rispetto all'originale InceptionV$3$, in quanto si sta utilizzando un dataset di dimensioni notevolmente inferiori. Tuttavia, l'accuratezza risultante è più alta e la loss è minimizzata correttamente: ciò prova che la rete è stata correttamente affinata per il caso in analisi.<br />
 La curva ROC e la matrice di confusione nella figura sottostante indicano che il nuovo modello è migliorato in termini di performance nelle classi ritenute più complesse da classificare nell'originale CNN. Tuttavia, il recupero (recall) della classe opencountry è diminuito, perciò questo modello potrebbe essere migliorato ulteriormente.
 
+![[TinyDatasetFinalModelGraphs.png]]
+
 ----------------------------------------------------------------
 
 ## Designing our own CNN
-Per fittare meglio il modello al problema, si progetta il design di una CNN da zero. Il punto di partenza di questa rete è formato da due blocchi di un layer convoluzionale $2D$ e un max pooling $2D$, seguito da un layer ==dense output== con una funzione di attivazione softmax. E' possibile osservare il modello nell'immagine sottostante, insieme alle performance di questa baseline in termini di accuracy e loss.
+Per fittare meglio il modello al problema, si progetta il design di una CNN da zero. Il punto di partenza di questa rete è formato da due blocchi di un layer convoluzionale $2D$ e un max pooling $2D$, seguito da un layer ==dense output== con una funzione di attivazione softmax.
 
-immagine
+![[BaselineArchitecture.png]]
+
+E' possibile osservare il modello nell'immagine sottostante, insieme alle performance di questa baseline in termini di accuracy e loss.
+
+![[BaselineAccuracyLoss.png]]
 
 Si ottiene una accuratezza di $0.78$, già migliore di quella ottenuta con il MLP. Tuttavia, la curva di accuratezza mostra overfitting mentre la curva di loss è instabile ed inizia a divergere dal validation set.
 
@@ -176,7 +182,7 @@ I parametri utilizzati dai layer di convoluzione sono quelli di default degli es
 ### Kernel Size
 Al fine di migliorare il sistema, si affinano i differenti parametri dei layer convoluzionali per scoprire i limiti di questa baseline. ll primo parametro da tunare è la kernel size, portando così ai risultati della tabella sottostante.
 
-immagine
+![[KernelSizeTable.png]]
 
 La migliore accuratezza è ottenuta con le size di $5 \times 5$ e $7 \times 7$. Tuttavia, per questa CNN si introduce un'ulteriore metrica da prendere in considerazione: il rapporto **accuracy-parameter**, che può essere calcolato come:
 
@@ -189,7 +195,7 @@ Tenendo in considerazione questo rapporto, il miglior compromesso tra accuratezz
 ### Number of filters
 Cambiando la kernel size si è ottenuto un miglioramento nel ratio in cambio di un peggioramento dell'accuracy. Di conseguenza, sono necessari ulteriori accorgimenti. Si modifica quindi il numero dei filtri usati in entrambi i layer convoluzionali, ottenendo i risultati mostrati nella tabella sottostante.
 
-immagine
+![[NumberFiltersTable.png]]
 
 Di nuovo, il parametro che restituisce un'accuracy migliore, $64$ filtri, riduce considerabilmente la ratio. 
 
@@ -200,12 +206,14 @@ Invece di usare lo stesso numero di filtri per entrambi i layer, è possibile te
 ### Activation functions
 Il prossimo parametro da affinare è la funzione di attivazione.è In questo caso è possibile osservare nella tabella sottostante come la funzione di attivazione di default, la ReLU, permette di ottenere i risultati migliori.
 
-immagine
+![[ActivationFunctionsTable.png]]
 
 ----------------------------------------------------------------
 
 ### Weight initialization
 Come fase finale, ci si occupa del tuning dell'inizializzazione dei pesi. Nella tabella sottostante vengono comparate le inizializzazioni di Glorot, He e Random. Si aggiunge inoltre, l'inizializzazione a zero di tutti i pesi. E' possibile validare empiricamente che non è l'inizializzazione migliore in quanto l'accuratezza droppa significativamente. ==Il motivo per cui accade ciò è dovuto al fatto che ogni neurone nella rete calcola lo stesso output, gli stessi gradienti durante la backpropagation e sottostà agli stessi update dei parametri. In altre parole, non c'è fonte di asimmetria tra i neuroni se l'inizializzazione è la stessa==.
+
+![[WeightInitializationTable.png]]
 
 Comparando le altre inizializzazioni, si nota che la normale e l'uniforme di Glorot performano alla stessa maniera. Per visualizzare più chiaramente le migliorie nella performance, si deve osservare l'accuracy e le curve di loss. Con l'inizializzazione normale di Glorot, la curva di loss converge in una maniera più stabile e più smooth. Per questo motivo, verrà utilizzata questa inizializzazione.
 
