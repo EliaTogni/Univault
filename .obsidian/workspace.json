@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "9d6dab7f39b33ece",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Articles/Preprocessing for Image Classification by Convolutional Neural Networks.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -86,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Articles/An Introduction to Convolutional Neural Networks.md",
+                "file": "Articles/Preprocessing for Image Classification by Convolutional Neural Networks.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,12 +128,14 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "4b1e678030e10465",
+  "active": "9d6dab7f39b33ece",
   "lastOpenFiles": [
-    "Images/Pasted image 20240227103509.png",
-    "Images/Pasted image 20240123113347.png",
+    "Templates/Article Template.md",
+    "Articles/Preprocessing for Image Classification by Convolutional Neural Networks.md",
     "Articles/An Introduction to Convolutional Neural Networks.md",
     "Articles/Image Classification with Classic and Deep Learning Techniques.md",
+    "Images/Pasted image 20240227103509.png",
+    "Images/Pasted image 20240123113347.png",
     "Images/HistogramActivations.png",
     "Images/ActivationsMeanSDTraining.png",
     "Images/UpstreamGradient.png",
@@ -129,10 +144,8 @@
     "Images/AccuracyLossForLearningRates.png",
     "Images/TuningInputSizeTable.png",
     "Images/AddingDepthTable.png",
-    "Images/TuningLearningRateTable.png",
     "Classes/3D Videogames.md",
     "Videos/How to Write a Paper in a Weekend (By Prof. Pete Carr.md",
-    "Templates/Article Template.md",
     "Lexicon/Allampanato.md",
     "Lexicon/Bovindo.md",
     "Lexicon/Caveat.md",
