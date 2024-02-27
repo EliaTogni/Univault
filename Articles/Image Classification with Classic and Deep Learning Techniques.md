@@ -217,40 +217,40 @@ Come fase finale, ci si occupa del tuning dell'inizializzazione dei pesi. Nella 
 
 Comparando le altre inizializzazioni, si nota che la normale e l'uniforme di Glorot performano alla stessa maniera. Per visualizzare più chiaramente le migliorie nella performance, si deve osservare l'accuracy e le curve di loss. Con l'inizializzazione normale di Glorot, la curva di loss converge in una maniera più stabile e più smooth. Per questo motivo, verrà utilizzata questa inizializzazione.
 
-
+![[GlorotNormalUniformAccuracyLoss.png]]
 
 ----------------------------------------------------------------
 
 ### Adding depth
 Un'altra opzione consiste nell'incrementare la profondità dell'architettura. Il primo approccio consiste nell'aggiungere in maniera incrementale blocchi di layer $2$D convoluzionali $+ 2$D max pooling all'architettura. Sono stati utilizzati gli iperparametri ottenuti nel tuning baseline, ==fatta eccezione per il numero di filtri: $32$ per ciascun layer==. Nella tabella sottostante si può osservare come l'aggiunta incrementale di layer aumenti l'accuracy fino al quarto layer. Il quindi layer, tuttavia, causa un leggero decremento di performance.
 
-immagine
+![[AddingDepthTable.png]]
 
 Aggiungere profondità in maniera casuale funziona solo fino ad un certo punto, Inoltre, in questo caso ogni layer aggiunto era sempre della stessa tipologia, mentre si può sperimentare con differenti tipi. Usando un architettura a quattro layer, è stato aggiunto un ==layer dropout e batch-norm, nonostante sia opinione comune non usarli insieme==. L'architettura finale è rappresentata nella figura sottostante.
 
-immagine
+![[DeepArchitecturePipeline.png]]
 
 ----------------------------------------------------------------
 
 ### Optimizer and Learning rate
 Fino ad ora sono stati ignorati tutti gli iperparametri relativi agli ottimizzatori. Nell'immagine sottostante è possibile notare come Adam fornisca i risultati migliori. 
 
-immagine
+![[TuningOptimizersTable.png]]
 
 Fortemente correlato all'ottimizzatore scelto è il learning rate e, solitamente, risulta difficile stabilirne il valore migliore. Numericamente, si può osservare nell'immagine sottostante come learning rate minori conducano a risultati migliori.
 
-immagine
+![[TuningLearningRateTable.png]]
 
 Tuttavia, è osservando i plot che diventa possibile estrarre più informazioni sul comportamento del sistema. Nell'immagine sottostante, i valori di loss diventano progressivamente più piccoli al decrementare del learning rate. 
 
-immagine
+![[AccuracyLossForLearningRates.png]]
 
 ----------------------------------------------------------------
 
 ### Input size
 Non è solamente l'architettura ad influenzare le performance ma anche la fase di preprocessing dei dati in input. In questo caso, si prova a modificare la taglia delle immagini date in pasto alla rete. Le performance cambiano significativamente al variare di taglia e con un input size di $64 \times 64$ che si ottiene l'accuratezza migliore.
 
-imm
+![[TuningInputSizeTable.png]]
 
 ----------------------------------------------------------------
 

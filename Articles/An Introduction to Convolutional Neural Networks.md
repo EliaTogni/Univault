@@ -62,11 +62,24 @@ La funzionalità base della CNN nell'esempio soprastante può esere suddivisa in
 
 Attraverso questo semplice metodo di trasformazione, le CNN sono in grado di trasformare l'input originale layer by layer utilizzando tecniche convoluzionali e downsampling al fine di produrre score di classe per classificazione e regressione.
 
-
+Tuttavia, è importante segnalare che il comprendere complessivamente l'architettura non è sufficiente. La creazione e ottimizzazione di questi modelli necessita di tempo e può essere disorientante.
 
 ----------------------------------------------------------------
 
 ### Convolutional layer
+Come il nome suggerisce, il layer convoluzionale svolge un ruolo fondamentale in come operano le CNN. I parametri dei layer si concentrano sull'utilizzo di kernel apprendibili. Questi kernerl sono tipicamente piccoli in termini di dimensionalità spaziale ma si diffondono lungo la totalità della profondità dell'input. Quando i dati raggiungono un convolutional layer, il layer convolve ogni filtro lungo la dimensionalità spaziale dell'input per produrre una mappa di attivazione $2D$.
+
+Nell'immagine sottostante, è possibile osservare le attivazioni prese dal primo strato convoluzionale di una rete neurale convoluzionale profonda e semplificata, dopo l'addestramento sul database MNIST di cifre scritte a mano. Se si guarda attentamente, è possibile notare che la rete ha efficacemente identificato caratteristiche uniche associate a specifici numeri.
+
+immagine
+
+Mentre si scorre attraverso l'input, viene calcolato il prodotto scalare per ogni valore in quel kernel. Nella figura sottostante, la rete apprende i kernel che si attivano quando vedono una feature specifica in una data posizione spaziale nell'input. Queste sono comunemente conosciute come attivazioni.
+
+immagine
+
+Questa è una rappresentazione visiva di un convolutional layer. L'elemento centrale del kernel è posizionato sopra il vettore di input, il quale viene poi calcolato e rimpiazzato con una somma pesata di sè stesso e dei pixel adiacenti.
+
+
 
 ----------------------------------------------------------------
 

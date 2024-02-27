@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Articles/An Introduction to Convolutional Neural Networks.md",
+                "file": "Articles/Image Classification with Classic and Deep Learning Techniques.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Articles/An Introduction to Convolutional Neural Networks.md",
+                "file": "Articles/Image Classification with Classic and Deep Learning Techniques.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,19 +117,20 @@
   },
   "active": "ab2916858481fd15",
   "lastOpenFiles": [
-    "Classes/3D Videogames.md",
+    "Images/AccuracyLossForLearningRates.png",
+    "Images/TuningInputSizeTable.png",
+    "Images/AddingDepthTable.png",
+    "Images/TuningLearningRateTable.png",
+    "Images/DeepArchitecturePipeline.png",
+    "Images/TuningOptimizersTable.png",
+    "Images/GlorotNormalUniformAccuracyLoss.png",
     "Articles/An Introduction to Convolutional Neural Networks.md",
+    "Classes/3D Videogames.md",
     "Articles/Image Classification with Classic and Deep Learning Techniques.md",
     "Images/WeightInitializationTable.png",
     "Images/ActivationFunctionsTable.png",
     "Images/NumberFiltersTable.png",
     "Images/KernelSizeTable.png",
-    "Images/BaselineAccuracyLoss.png",
-    "Images/BaselineArchitecture.png",
-    "Images/TinyDatasetFinalModelGraphs.png",
-    "Images/TinyDatasetFinalModel.png",
-    "Images/TinyDatasetAccuracyTable.png",
-    "Images/TinyDatasetAccuracy.png",
     "Videos/How to Write a Paper in a Weekend (By Prof. Pete Carr.md",
     "Templates/Article Template.md",
     "Lexicon/Allampanato.md",
@@ -152,7 +153,6 @@
     "Lexicon/Sicofante.md",
     "Blogs/Evolving Game of Life.md",
     "Blogs/The incredibly challenging task of sorting colours.md",
-    "Blogs/Who's The Beatdown?.md",
     "Untitled.canvas",
     "Blogs",
     "Atoms",
