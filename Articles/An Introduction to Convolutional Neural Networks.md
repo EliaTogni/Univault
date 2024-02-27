@@ -79,7 +79,15 @@ immagine
 
 Questa è una rappresentazione visiva di un convolutional layer. L'elemento centrale del kernel è posizionato sopra il vettore di input, il quale viene poi calcolato e rimpiazzato con una somma pesata di sè stesso e dei pixel adiacenti.
 
+Ogni kernel avrà una corrispondente activation map, la quale verrà impilata lungo la dimensione di profondità per formare il volume di output completo dello strato convoluzionale.
 
+Come è stato anticipato in precedenza, l'allenamento delle ANN su input quali le immagini risulta in modelli che sono troppo grandi per essere allenati in maniera efficace. Questo deriva dal modo in cui i neuroni standard delle reti neurali artificiali (ANN) sono fully-connected, quindi per mitigare questo aspetto, ogni neurone in uno strato convoluzionale è connesso solo a una piccola regione del volume di input. La dimensionalità di questa regione è comunemente chiamata receptive field size del neurone. La magnitudine della connettività attraverso la profondità è quasi sempre uguale alla profondità dell'input. 
+
+Per esempio, se l'input della rete è un'immagine di taglia $64 \times 64 \times 3$ (un'immagine RGB di dimensione $64 \times 64$) e si imposta la field size a $6 \times 6$, si avrà un totale di $108$ pesi per ogni neurone nel layer convoluzionale ($6 \times 6 \times 3$, dove $3$ è la magnitudine della connettività attraverso la profondità del volume).
+
+I layer convoluzionali sono anche in grado di ridurre in maniera significativa la complessità del modello attraverso l'ottimizzazione degli output. Questi sono ottimizzati attraverso tre iperparametri: la profondità, lo stride e il setting zero-padding.
+
+La profondità del volume di output prodotto dai layer convoluzionali può essere settata manualmente attraverso il numero di neuroni nel layer
 
 ----------------------------------------------------------------
 

@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "c7cf118160bfe33a",
+        "id": "0ffd344b06f918a9",
         "type": "tabs",
         "children": [
           {
-            "id": "b4b6cacc415433e2",
+            "id": "4b1e678030e10465",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Articles/An Introduction to Convolutional Neural Networks.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -65,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -81,6 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Articles/An Introduction to Convolutional Neural Networks.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,7 +115,7 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "b4b6cacc415433e2",
+  "active": "4b1e678030e10465",
   "lastOpenFiles": [
     "Images/Pasted image 20240227103509.png",
     "Images/Pasted image 20240123113347.png",
