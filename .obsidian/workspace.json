@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "4c74bb99c5e29027",
+        "id": "c7cf118160bfe33a",
         "type": "tabs",
         "children": [
           {
-            "id": "ab2916858481fd15",
+            "id": "b4b6cacc415433e2",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Articles/Image Classification with Classic and Deep Learning Techniques.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -69,8 +65,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -86,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Articles/Image Classification with Classic and Deep Learning Techniques.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,22 +109,22 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "ab2916858481fd15",
+  "active": "b4b6cacc415433e2",
   "lastOpenFiles": [
+    "Images/Pasted image 20240227103509.png",
+    "Images/Pasted image 20240123113347.png",
+    "Articles/An Introduction to Convolutional Neural Networks.md",
+    "Articles/Image Classification with Classic and Deep Learning Techniques.md",
+    "Images/HistogramActivations.png",
+    "Images/ActivationsMeanSDTraining.png",
+    "Images/UpstreamGradient.png",
+    "Images/PoorInitializationProblems.png",
+    "Images/ActivationMapsExamples.png",
     "Images/AccuracyLossForLearningRates.png",
     "Images/TuningInputSizeTable.png",
     "Images/AddingDepthTable.png",
     "Images/TuningLearningRateTable.png",
-    "Images/DeepArchitecturePipeline.png",
-    "Images/TuningOptimizersTable.png",
-    "Images/GlorotNormalUniformAccuracyLoss.png",
-    "Articles/An Introduction to Convolutional Neural Networks.md",
     "Classes/3D Videogames.md",
-    "Articles/Image Classification with Classic and Deep Learning Techniques.md",
-    "Images/WeightInitializationTable.png",
-    "Images/ActivationFunctionsTable.png",
-    "Images/NumberFiltersTable.png",
-    "Images/KernelSizeTable.png",
     "Videos/How to Write a Paper in a Weekend (By Prof. Pete Carr.md",
     "Templates/Article Template.md",
     "Lexicon/Allampanato.md",

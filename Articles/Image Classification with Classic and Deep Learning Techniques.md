@@ -257,33 +257,36 @@ Non è solamente l'architettura ad influenzare le performance ma anche la fase d
 ### Grad-CAM
 Può apparire che più ci si addentra in profondità nel tuning della rete e più il sistema diventa una scatola nera di difficile comprensione ed intelligibilità. La tecnica Grad-CAM aiuta a visualizzare le regioni dei dati in input che sono più rilevanti per predire una determinata label. Nell'immagine sottostante l'attivazione per la classe foresta evidenzia gli alberi nell'immagine e per gli edifici evidenzia i grattacieli. Al contrario, nella classe montagna viene evidenziata la silhouette della cima, la quale permette al sistema di classificare le immagini correttamente. Infine, nella classe catalogata come campagna, la più difficile da classificare, non è presente nessuna attivazione significativa.
 
+![[ActivationMapsExamples.png]]
+
 ----------------------------------------------------------------
 
 ## Revisiting weight initialization
 Si vuole rispondere alla domanda sul perchè una buona inizializzazione sia fondamentale nelle reti neurali. ==Poichè una NN comporta numerose moltiplicazioni matriciali, la media e la varianza delle attivazioni può velocemente raggiungere valori elevati o droppare a zero, come visibile nell'immagine sottostante==. 
 
-immagine
+![[PoorInitializationProblems.png]]
 
 Questo causerebbe al gradiente locale dei layer di diventare NaN o zero e, quindi, preverebbe alla rete di imparare alcunchè in quanto il valore dei gradienti dipende dalle attivazioni, come visibile nell'immagine sottostante.
 
-immagine
+![[UpstreamGradient.png]]
 
 Una strategia comune per evitare ciò consiste nell'inizializzare i pesi della rete usando le tecniche all'avanguardia presentate di seguito. Per esempio, ===se si sta usando l'attivazione ReLU dopo un layer, è fondamentale iniziaire i pesi con l'inizializzazione Kaiming He e impostare i bias a zero. Questo assicura alla media ed alla deviazione standard di tutti i layer di rimanere vicina a $0$ ed a $1$ rispettivamente==.
 
 ----------------------------------------------------------------
 
 ## Bringing everything togheter: TinyNet
-
 ### Main Architecture
 Si userà tutta la conoscenza ottenuta da i precedenti esperimenti nel training di una CNN di $4$ blocchi, dove ogni blocco può essere composto da convoluzioni, attivazioni, batchnorm e ==connessioni residue==. Verranno usate, inoltre, image size di $64 \times 64$, $3 \times 3$ kernel per ogni layer, ==stride $2$ con padding $1$ per fare downsampling==. Le taglie dei layer utilizzati sono $[32, 64, 128, 256]$.
 
-Le performance della rete verranno tracciate considerando la medie e le varianze delle attivazioni durante il training del network, come è possibile osservare nell'immagine sottostante. Tuttavia, questi valori sono solo aggregazioni dei parametri del layer, perciò non forniscono una rappresentazione complessiva di come il totale dei parametri si sta comportando. Piuttosto che osservare un singolo valore, è sicuramente più utile osservarne la distribuzione. Per fare ciò, è possibile osservare l'istogramma dei cambiamenti nei parametri nel tempo, rappresentato nell'immagine sottostante.
+Le performance della rete verranno tracciate considerando la medie e le varianze delle attivazioni durante il training del network, come è possibile osservare nell'immagine sottostante.
 
-immagine
+![[ActivationsMeanSDTraining.png]]
 
-La più grande preoccupazione è il quantitativo di massa alla base dell'istogramma (a $0$) nel network originale. Nell'ultimo layer, il $90\%$ di attivazioni hanno valore $0$. Questo può essere fixato tramite inizializzazione e tecniche di training corrette. Nell'immagine sottostante, l'istogramma delle attivazioni per ogni layer con inizializzazione Kaiming He, si vede come la rete utilizzi il proprio potenziale al massimo.
+Tuttavia, questi valori sono solo aggregazioni dei parametri del layer, perciò non forniscono una rappresentazione complessiva di come il totale dei parametri si sta comportando. Piuttosto che osservare un singolo valore, è sicuramente più utile osservarne la distribuzione. Per fare ciò, è possibile osservare l'istogramma dei cambiamenti nei parametri nel tempo, rappresentato nell'immagine sottostante.
 
-immagine
+![[HistogramActivations.png]]
+La più grande preoccupazione è il quantitativo di massa alla base dell'istogramma (a $0$) nel network originale. Nell'ultimo layer, il $90\%$ di attivazioni hanno valore $0$. Questo può essere fixato tramite inizializzazione e tecniche di training corrette. Nell'immagine soprastante
+stante, l'istogramma delle attivazioni per ogni layer con inizializzazione Kaiming He, si vede come la rete utilizzi il proprio potenziale al massimo.
 
 ----------------------------------------------------------------
 
