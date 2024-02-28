@@ -14,6 +14,9 @@ Negli ultimi tempo, le CNN sono diventate il metodo più potente per classificar
 
 # Articolo
 ## Introduction
+La Convolutional Neural Network è stata introdotta per la prima volta da Yann LeCun et al. Da allora è stata applicata in numerose aree di ricerca come la classificazione di documenti, la speech recognition, facial recognition, recognition of traffic signs e cifre scritte a mano. Tuttavia, è nel $2012$ che si è stati in grado di ottenere migliorie significative nella classificazione di oggetti. Da allora, l'utilizzo di CNN in questo ambito ha guadagnato popolarità e sono stati proposti innumerevoli modelli.
+
+Così come la CNN è stata introdotta, c'era la necessità di un dataset etichettato che potesse essere utilizzato come standard per la classificazione delle immagini. Krizhevsky e Hinton hanno introdotto nel $2009$ il dataset CIFAR$10$, che ha sfidato innumerevoli ricercatori da allora. 
 
 ----------------------------------------------------------------
 
