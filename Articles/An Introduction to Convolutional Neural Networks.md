@@ -171,6 +171,7 @@ Questo esempio rappresenta un modo di eseguire il downsampling riducendo la dime
 ----------------------------------------------------------------
 
 # Related to
-
+- [[Intelligenza Artificiale]]
+- [[Statistical Methods for Machine Learning]]
 
 ----------------------------------------------------------------

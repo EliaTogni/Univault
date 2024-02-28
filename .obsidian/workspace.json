@@ -82,8 +82,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -130,10 +129,11 @@
   },
   "active": "9d6dab7f39b33ece",
   "lastOpenFiles": [
-    "Templates/Article Template.md",
-    "Articles/Preprocessing for Image Classification by Convolutional Neural Networks.md",
     "Articles/An Introduction to Convolutional Neural Networks.md",
+    "Articles/Preprocessing for Image Classification by Convolutional Neural Networks.md",
     "Articles/Image Classification with Classic and Deep Learning Techniques.md",
+    "Classes/Intelligenza Artificiale.md",
+    "Templates/Article Template.md",
     "Images/Pasted image 20240227103509.png",
     "Images/Pasted image 20240123113347.png",
     "Images/HistogramActivations.png",
@@ -165,7 +165,6 @@
     "Lexicon/Sedicente.md",
     "Lexicon/Sicofante.md",
     "Blogs/Evolving Game of Life.md",
-    "Blogs/The incredibly challenging task of sorting colours.md",
     "Untitled.canvas",
     "Blogs",
     "Atoms",
