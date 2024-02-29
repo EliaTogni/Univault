@@ -6,13 +6,15 @@ L'**informatica teorica** si sovrappone all'**informatica applicata**:
 - ...
 
 In tutte queste discipline di informatica applicata, l'informazione è lo **strumento** per gestire l'oggetto della disciplina (la comunicazione, i sistemi di calcolo, le immagini, ...).<br />
-Nell'informatica teorica, l'informatica diventa l'oggetto della disciplina e si studiano i fondamenti di essa, cercando di rispondere a delle questioni fondamentali, il cosa ed il come dell'informatica.<br />
-L' **informatica** è lo studio dell'informazione e della sua elaborazione per via **automatica**, cioè mediante dei sistemi di calcolo.<br />
+Nell'informatica teorica, l'informatica diventa l'oggetto della disciplina e si studiano i fondamenti di essa, cercando di rispondere a delle questioni fondamentali, il cosa ed il come dell'informatica.
+
+L' **informatica** è lo studio dell'informazione e della sua elaborazione per via **automatica**, cioè mediante dei sistemi di calcolo (definizione data dall'**Association for Computing Machinery** o ACM).
+
 Si cerca di risolvere un problema automaticamente, scrivendo un programma. Ma è possibile scrivere un programma di soluzione per tutti i problemi? Questa è la domanda fondamentale alla base dell'informatica, cosa è in grado di fare l'informatica e qual è il range di applicazione di essa.<br />
 La branca dell'informatica che cerca di rispondere in modo rigoroso a questa domanda prende il nome di **Teoria della Calcolabilità** (o **Teoria della Ricorsività**). Essa studia cosa è calcolabile per via automatica. 
 - esistono problemi non calcolabili?
 - è possibile caratterizzare in modo rigoroso ciò che è calcolabile, tramite uno studio qualitativo dei problemi?
-- è possibile dare una definizione generale della risolubilità dei problemi la uqale non dipenda dalla tecnologia o dal periodo storico?
+- è possibile dare una definizione generale della risolubilità dei problemi la quale non dipenda dalla tecnologia o dal periodo storico?
 
 Il concetto di calcolabilità è intrinseco ai problemi e può essere catturato matematicamente.<br />
 Una volta stabilito il limite di ciò che è calcolabile, la domanda successiva che sorge spontanea riguarda il costo richiesto da una computazione, cioè quali **risorse computazionali** sono necessarie (elettricità, numero di processori, tempo, spazio di memoria). Lo studio di ciò prende il nome di **Teoria della Complessità**. Ai fini di ciò, sono necessarie delle definizioni rigorose di tempo e spazio di calcolo. A questo punto è possibile definire rigorosamente quando un problema sia **efficientemente calcolabile**, in termini di queste risorse. Questo è uno studio quantitativo dei problemi.

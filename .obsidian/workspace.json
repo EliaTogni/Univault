@@ -8,18 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "4b1e678030e10465",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Articles/An Introduction to Convolutional Neural Networks.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "9d6dab7f39b33ece",
             "type": "leaf",
             "state": {
@@ -31,8 +19,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -82,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -129,6 +117,7 @@
   },
   "active": "9d6dab7f39b33ece",
   "lastOpenFiles": [
+    "Classes/Informatica Teorica.md",
     "Articles/An Introduction to Convolutional Neural Networks.md",
     "Articles/Preprocessing for Image Classification by Convolutional Neural Networks.md",
     "Articles/Image Classification with Classic and Deep Learning Techniques.md",
@@ -164,7 +153,6 @@
     "Lexicon/Sicumera.md",
     "Lexicon/Sedicente.md",
     "Lexicon/Sicofante.md",
-    "Blogs/Evolving Game of Life.md",
     "Untitled.canvas",
     "Blogs",
     "Atoms",

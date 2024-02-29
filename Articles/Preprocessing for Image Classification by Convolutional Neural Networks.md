@@ -56,22 +56,46 @@ immagine
 Se ai dati grezzi viene applicato un qualsiasi metodo di classificazione, essi non producono una buona accuratezza, come può essere verificato dai risultati ottenuti. L'obiettivo di questo paper è mostrare quanto può variare l'accuracy con l'applicazione di alcune tecniche di preprocessing well-known su alcune semplici CNN. Alcune delle tecniche di preprocessing sono menzionate nei paragrafi seguenti.
 
 ### Mean Normalization
+La media lungo ciascuna delle feature (dimensioni delle immagini) dei training sample è calcolata e sottratta da ciascuna delle immagini. In questo modo, l'intero training set è trasformato in dati organizzati. Perciò, la luminosità dell'intero training set è normalizzata rispetto ad ogni dimensione. Questo si ottiene tramite la formula:
 
+$$X' = X -\mu$$
+
+dove $X'$ è il dato normalizzato, $X$ è il dato originale e $\mu$ è il vettore medio lungo tutte le feature di $X$.
 
 ----------------------------------------------------------------
 
 ### Standardization
+I dati vengono prima normalizzati rispetto alla media e successivamente viene calcolata e divisa la deviazione standard lungo ciascuna delle caratteristiche dei campioni di addestramento. Ciò rende i dati finali normalizzati rispetto alla media e alla varianza. Quindi i dati grezzi sono organizzati rispetto sia alla media che alla varianza di ciascuna dimensione dell'insieme di addestramento. Questa è la standardizzazione dei dati di input $X$ eseguita tramite la formula:
 
+$$X' = (X - \mu) / \Sigma $$
+
+dove $X'$ è il dato normalizzato, $\mu$ è il vettore medio lungo tutte le feature e $\Sigma$ è il vettore della deviazione standard lungo tutte le feature.
 
 ----------------------------------------------------------------
 
 ### Zero Component Analysis
+Zero Component Analysis (ZCA) fu applicato per la prima volta sui training data da Krizhevsky. La trasformazione ZCA rende gli edge degli oggetti più prominenti, come può essere osservato nell'immagine sottostante
 
+immagine
+
+IL layer convoluzionale individua varie feature attraverso le feature map basandosi su questi edge.
+
+Il metodo di esecuzione di ZCA è descritto in dettaglio. Inizialmente, i dati ($X$) vengono normalizzati in base alle dimensioni mediante il ridimensionamento delle caratteristiche con la seguente formula:
+
+$$X' = X/ 255$$
+
+Successivamente, vengono normalizzati rispetto alla media come visto in precedenza e, successivamente, viene calcolata la decomposizione in valori singolari della matrice di covarianza dei dati normalizzati rispetto alla media. Infine, viene eseguita la sbiancatura con la seguente formula:
+
+$$X_{ZCA} = U.diag(1/ \sqrt{diag(S) + \varepsilon}).U^{\top}.X'.$$
+
+dove $diag(a)$ rappresenta la matrice diagonale della matrice data $a$, $U$ è la matrice degli autovettori e $S$ è la matrice degli autovalori della decomposizione ai valori singolari della matrice di covarianza, $U^{\top}$ è la trasposta della matrice degli autovettori $U$, $\varepsilon$ è il coefficiente di sbiancamento. Questo metodo di preelaborazione introduce un altro iperparametro, il coefficiente di sbiancamento $\varepsilon$.
 
 ----------------------------------------------------------------
 
 ## Training and Testing
+Il metodo di addestramento e test su CNN-$3$ con preelaborazione ZCA è stato dimostrato dal diagramma a blocchi nella figura sottostante. Qui è stata mostrata la struttura di output dei dati sotto ogni blocco. Durante l'addestramento, la rete apprende i parametri sconosciuti e, durante il test, predice la classe di output.
 
+immagine
 
 ----------------------------------------------------------------
 
