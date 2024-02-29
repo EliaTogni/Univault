@@ -97,6 +97,8 @@ Il metodo di addestramento e test su CNN-$3$ con preelaborazione ZCA è stato di
 
 immagine
 
+Il training avviene utilizzando un insieme casuale dei $40000$ dati per generalizzare il processo. Tutti i dati sono segregati in dimensioni $3 \times 32 \times 32$ poiché sono immagini a colori (R, G, B) di dimensioni $32 \times 32$. E' stato utilizzato un minibatch di dimensione $50$ per lo stochastic gradient descend minibatch. A causa di questa randomizzazione e dei valori iniziali casuali selezionati per ciascuno degli strati (valori per pesi e bias), l'accuratezza dell'output varierà ad ogni esecuzione. Pertanto, sono state prese le accuratezze medie di tre esecuzioni riuscite per la generalizzazione, mantenendo costanti i valori degli iperparametri (tasso di apprendimento, costo di regolarizzazione, dimensione del minibatch). Il tasso di apprendimento è stato utilizzato con un fattore di decadimento dello $0.1$ dopo $10$ incrementi non riusciti delle accuratezze di convalida, per ottimizzare l'accuratezza del test.
+
 ----------------------------------------------------------------
 
 ## Results
