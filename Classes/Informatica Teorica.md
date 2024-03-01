@@ -55,7 +55,7 @@ Attenzione!
 
 $$f: A \to B \text{ iniettiva} \iff \forall a_1, a_2 \in A, a_1 \neq a_2 \implies f(a_1) \neq f(a_2)$$
 
-cioè non sono possibili confluenze.
+cioè non sono possibili confluenze.<br />
 Alcuni esempi:
 - $f(n) = \lfloor \sqrt(n) \rfloor$ è iniettiva?
 	No: $f(5) = 2 = f(4)$;
@@ -63,6 +63,9 @@ Alcuni esempi:
 	No: $f(2k) = 0$ e $f(2k + 1) = 1$;
 - $f(n) = n^2$ è iniettiva?
 	Sì.
+
+----------------------------------------------------------------
+
 ### Suriettiva
 
 $$f: A \to B \text{ suriettiva} \iff \forall b \in B, \exists a \in A: f(a) = b$$
@@ -83,18 +86,32 @@ Alcuni esempi:
 - $Im_{\lfloor \sqrt(n) \rfloor} = \mathbb{N} \implies f(n) = \lfloor \sqrt(n) \rfloor$ suriettiva;
 - $Im_{\langle n \rangle_2} = \{0, 1\} \nsubseteq \mathbb{N} \implies f(n) 0 \langle n \rangle_2$ non suriettiva.
 
+----------------------------------------------------------------
+
 ### Biiettiva o Biunivoca
 
 $$f: A \to B \text{ biiettiva} \iff f \text{ iniettiva} \wedge f \text{ suriettiva} \implies$$
 $$\forall b \in B, \exists! a \in A: f(a) = b$$
 
-dove $\exists !$ significa esiste un unico elemento.
+dove $\exists !$ significa esiste un unico elemento.<br />
+Alcuni esempi:
+- $f(n) = n, f(x) = x^2$ sui reali, ...
+
+Per le funzioni biettive esiste il concetto di inversa.
+
+----------------------------------------------------------------
 
 ## Composizione di funzioni
 Date $f: A \to B$ e $g: B \to C$, $f$ **composto** $g$ è la funzione $g \circ f: A \to C$ definita come $g\circ f (a) = g(f(a))$. <br />
+
+Alcuni esempi:
+- $f(n) = n+1$ e $g(n) = n^2$:
+	- $f$ composto $g$: $g \circ f(n) = (n+1)^2 = n^2 + 2n + 1$;
+	- $g$ composto $f$: $f \circ g(n) = n^2 + 1$.
+
 La composizione non è un operatore commutativo ma, quando domini e codomini lo permettono, è **associativo**. 
 
--------------------------------------------------------------
+----------------------------------------------------------------
 
 ## Funzione inversa
 Data $f: A \to B$ biiettiva, la sua **inversa** è l'unica funzione $f^{-1}: B \to A$ che soddisfa
@@ -102,12 +119,19 @@ $$f^{-1}(b) = a \iff f(a) = b$$
 $$\text{oppure}$$
 $$f^{-1}\circ f = i_A \quad \wedge \quad f\circ f^{-1} = i_A$$
 
--------------------------------------------------------------
+Alcuni esempi:
+- inversa di $f(n) = n$;
+- l'inversa di $f(x) = x^2$ è $f^{-1}(x) = \sqrt{x}$. Infatti $f^{-1} \circ f(x) = \sqrt{x^2} = x = i_{\mathbb{R}}(x)$ e $f \circ f^{-1}(x) = (\sqrt(x))^2 = x = i_{\mathbb{R}}(x)$.
+
+----------------------------------------------------------------
 
 ## Funzione identità
 Dato l'insieme $A$, la funzione **identità** su $A$ è la funzione $i_{A}: A \to A$ tale che $i_{A}(a) = a \quad \forall a \in A$.
 
--------------------------------------------------------------
+Alcuni esempi:
+- identità su $\mathbb{N}$: $i_{\mathbb{N}}(n) = n$. 
+
+----------------------------------------------------------------
 
 ## Funzioni parziali e totali
 $f: A \to B$ è una legge la quale associa ad ogni elemento di $A$ un elemento di $B$. $f(a) \downarrow$ indica che la funzione è **definita** sull'elemento $a$, ovvero che la sua applicazione porta ad un valore definito del codominio.  
@@ -121,7 +145,7 @@ $Dom_f = \{a \in A: f(a) \downarrow\} \subseteq A$. Quindi:
 
 Il **campo di esistenza** è, quindi, l'insieme dei punti su cui è definita una funzione.<br />Ad esempio, la funzione $f: \mathbb{N} \to \mathbb{N}$ tale che $f{n} = \lfloor\frac{1}{n} \rfloor$ non è definita in $n = 0 \implies f(0) \uparrow$. Quindi, $\forall n \in \mathbb{N} \setminus \{0\}, f(n) \downarrow$.
 
--------------------------------------------------------------
+----------------------------------------------------------------
 
 ### Totalizzazione di una funzione parziale
 $f: A \to B \text{ parziale} \implies f: A \to B \cup \{\bot\} \text{ totale}$, dove $\bot$ è il simbolo di **indefinito**.
@@ -133,7 +157,7 @@ Per abbreviare, si scrive $B \cup \{\bot\} \to B_{\bot}$. Seguendo l'esempio pre
 
 $$f(n) = \lfloor \frac{1}{n} \rfloor = \cases{\lfloor \frac{1}{n} \rfloor \quad \text{se } n \neq 0 \cr \cr \bot \quad \text{se } n = 0 \implies f(0) = \bot}$$
 
--------------------------------------------------------------
+----------------------------------------------------------------
 
 ## Prodotto Cartesiano
 Si definisce **prodotto cartesiano** l'operazione $A \times B = \{(a,b) : a \in A \wedge b \in B\}$, ovvero l'insieme delle coppie in cui la prima componente appartiene all'insieme $A$ mentre la seconda componente appartiene all'insieme $B$. Si tratta di un'operazione non commutativa, se non ne caso in cui $A = B$.
@@ -166,7 +190,7 @@ $$w(f, a) = f(a)$$
 
 # Teoria della calcolabilità
 ## Sistema di calcolo
-Un **sistema di calcolo** $\mathbb{C}$ è un oggetto il quale, presi in ingresso un programma $P$ e dei dati $x$, produce in uscita l'output $y$ o $\bot$, ottenuto dall'esecuzione di $P$ su $x$.<br />
+Un **sistema di calcolo** $\mathbb{C}$ è un oggetto il quale, presi in ingresso un programma $P$ e dei dati $x$, produce in uscita l'output $y$ o $\bot$, ottenuto dall'esecuzione di $P$ su $x$.
 
 immagine sistema di calcolo
 
