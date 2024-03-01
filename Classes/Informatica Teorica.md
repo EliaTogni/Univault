@@ -16,8 +16,11 @@ La branca dell'informatica che cerca di rispondere in modo rigoroso a questa dom
 - è possibile caratterizzare in modo rigoroso ciò che è calcolabile, tramite uno studio qualitativo dei problemi?
 - è possibile dare una definizione generale della risolubilità dei problemi la quale non dipenda dalla tecnologia o dal periodo storico?
 
-Il concetto di calcolabilità è intrinseco ai problemi e può essere catturato matematicamente.<br />
+Il concetto di calcolabilità è intrinseco ai problemi, indipendente dall'architettura in uso, e può quindi essere caratterizzato matematicamente.
+
 Una volta stabilito il limite di ciò che è calcolabile, la domanda successiva che sorge spontanea riguarda il costo richiesto da una computazione, cioè quali **risorse computazionali** sono necessarie (elettricità, numero di processori, tempo, spazio di memoria). Lo studio di ciò prende il nome di **Teoria della Complessità**. Ai fini di ciò, sono necessarie delle definizioni rigorose di tempo e spazio di calcolo. A questo punto è possibile definire rigorosamente quando un problema sia **efficientemente calcolabile**, in termini di queste risorse. Questo è uno studio quantitativo dei problemi.
+
+Esistono, inoltre, alcuni problemi per cui ancora non è nota una soluzione efficiente in termini di tempo. 
 
 ----------------------------------------------------------------
 
@@ -26,22 +29,59 @@ Una funzione dall'insieme $A$ all'insieme $B$ è una **legge** $f$ che spiega co
 
 $$f: A \to B$$
 $$f(a) = b$$
+$$a \mapsto^{f} b $$
 
-Una funzione opera da un insieme dominio ad un insieme codominio. Il sottoinsieme del codominio degli oggetti in relazione con almeno un elemento del dominio secondo la funzione è detto **immagine** della funzione, dove $b$ è detta **immagine** di $a$ secondo $f$ ed $a$ è detta **controimmagine** di $b$ secondo $f$: 
+
+Una funzione opera da un insieme dominio ad un insieme codominio. Il sottoinsieme del codominio degli oggetti in relazione con almeno un elemento del dominio secondo la funzione è detto **immagine** della funzione, dove $b$ è detta **immagine** di $a$ secondo $f$ ed $a$ è detta **controimmagine** di $b$ rispetto ad $f$: 
 
 $$Im_f = \{b \in B: \exists a, f(a) = b\} = \{f(a): a \in A\}$$
 
 Solitamente vale $Im_f \subseteq B$.
+
+Seguono ora alcuni semplici esempi.
+
+$$f: \mathbb{N} \to \mathbb{N} \space \text{ con } \mathbb{N} = \{0, 1, 2, ...\}; \space \mathbb{N}^+ = \mathbb{N} \setminus \{0\}$$
+$$f(n) = \lfloor\sqrt{n} \rfloor \space \text{ con } \lfloor x \rfloor = \max \{z \in \mathbb{N}: z \leq x\} $$
+$$\lceil x \rceil = \min \{z \in \mathbb{N} : z \geq x\}$$
+
+Qual è l'immagine di $5$ secondo $f$? $f(5) = \lfloor \sqrt{5} \rfloor = 2$;
+
+Attenzione!
+
+![[DefinizioneFunzione.png]]
 
 ## Classi di funzioni
 ### Iniettiva
 
 $$f: A \to B \text{ iniettiva} \iff \forall a_1, a_2 \in A, a_1 \neq a_2 \implies f(a_1) \neq f(a_2)$$
 
+cioè non sono possibili confluenze.
+Alcuni esempi:
+- $f(n) = \lfloor \sqrt(n) \rfloor$ è iniettiva?
+	No: $f(5) = 2 = f(4)$;
+- $f(n) = \langle n \rangle_2 = n \mod 2$ è iniettiva?
+	No: $f(2k) = 0$ e $f(2k + 1) = 1$;
+- $f(n) = n^2$ è iniettiva?
+	Sì.
 ### Suriettiva
 
 $$f: A \to B \text{ suriettiva} \iff \forall b \in B, \exists a \in A: f(a) = b$$
+
+Alcuni esempi:
+- $f(n) = \lfloor \sqrt(n) \rfloor$ è suriettiva?
+	Sì: $\forall m \in \mathbb{N}, m = \lfloor \sqrt{m^2} \rfloor = f(m^2)$;
+- $f(n) = \langle n \rangle_2 = n \mod 2$ è suriettiva?
+	No: $3$ non può essere immagine di $f$.
+
+$$Im_f = \{b \in B: \exists a, f(a) = b\} = \{f(a) : a \in A\}$$
+
+Solitamente vale che $Im_f \subseteq B$.
+
 $$f: A \to B \text{ suriettiva} \iff Im_f = B$$
+
+Alcuni esempi:
+- $Im_{\lfloor \sqrt(n) \rfloor} = \mathbb{N} \implies f(n) = \lfloor \sqrt(n) \rfloor$ suriettiva;
+- $Im_{\langle n \rangle_2} = \{0, 1\} \nsubseteq \mathbb{N} \implies f(n) 0 \langle n \rangle_2$ non suriettiva.
 
 ### Biiettiva o Biunivoca
 
