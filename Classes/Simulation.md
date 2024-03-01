@@ -1,39 +1,39 @@
 # Simulation
-Una **simulation** (**simulazione**), secondo l'Oxford Dictionary, è il prodotto della modellazione a computer, della rappresentazione formale di un evento, un processo o sistema complesso nel mondo reale, soprattutto al fine di studio.<br />
+A **simulation** is, according to the Oxford Dictionary, the product of computer modeling, the formal representation of an event, a process, or a complex system in the real world, especially for study purposes.<br />
 
-Una simulazione è una rappresentazione digitale di un sistema, uno strumento economico per approssimare comportamenti della vita reale all'interno di un calcolatore, tramite l'implementazione di un [[Modello#Modello descrittivo |modello di analisi descrittiva]], il quale può essere usato per testare una selezione di scenari.<br />
-Sistemi complessi differenti richiedono capacità di modellazione differenti.<br />
-L'arte della costruzione del modello stesso può portare al modellatore un superiore livello di comprensione del sistema reale.<br />
+A simulation is a digital representation of a system, an economic tool for approximating real-life behaviors within a computer, through the implementation of a [[Modello#Modello descrittivo|descriptive analysis model]], which can be used to test a selection of scenarios.<br />
+Different complex systems require different modeling capabilities.<br />
+The art of constructing the model itself can lead the modeler to a higher level of understanding of the real system.<br />
 
-Spesso la modellazione di un evento, nonostante le numerose semplificazioni e restrizioni poste sul problema da modellare, può risultare estremamente complessa ed impossibile da modellare nel minimo dettaglio. In questo caso, si converge l'attenzione esclusivamente sugli elementi che si desidera studiare e si approssimano due porzioni del sistema:
-- i **connettori** con il mondo esterno, che fungono da legante tra la porzione di realtà che è il caso di studio, ed il mondo esterno;
-- alcuni dettagli interni, approssimati tramite componenti stocastiche.
+Often, modeling an event, despite the numerous simplifications and restrictions imposed on the problem to be modeled, can be extremely complex and impossible to model in minute detail. In this case, attention is focused exclusively on the elements that one wishes to study, and two portions of the system are approximated:
+- **connectors** to the external world, which act as a link between the portion of reality being studied and the external world;
+- some internal details, approximated through stochastic components.
 
-I motivi dell'utilizzo di simulazioni sono molteplici:
-- si tratta di un valido strumento (e, spesso, molto economico) per approssimare un evento reale;
-- permette di testare scenari;
-- la costruzione del modello stesso può giovare al modellatore in termini di maggior comprensione del sistema che si sta modellando;
-- la possibilità di eseguire analisi _what-if_ su circuito (i.e. _cosa succederebbe se questo parametro variasse da questo valore a quest'altro?_);
-- la possibilità di visualizzare i risultati di metodi complessi.
+The reasons for using simulations are manifold:
+- tt is a valid (and often cost-effective) tool for approximating a real event;
+- it allows testing of scenarios;
+- the construction of the model itself can benefit the modeler in terms of a greater understanding of the system being modeled;
+- the ability to perform _what-if_ analyses on a system (i.e., _what would happen if this parameter varied from this value to that value?_);
+- the ability to visualize the results of complex methods.
 
-Al contrario, l'utilizzo di simulazioni non è la migliore opzione quando i problemi analitici hanno soluzioni in forme chiuse oppure le analisi _what-if_ hanno troppi parametri (meglio utilizzare un [[Modello#Modello prescrittivo |modello di analisi prescrittiva]]).<br />
+On the contrary, the use of simulations is not the best option when analytical problems have closed-form solutions or when _what-if_ analyses involve too many parameters (it is better to use a [[Modello#Modello prescrittivo|prescriptive analysis model]]).
 
-Ovviamente, l'ottenimento di una soluzione ottima per la simulazione non implica l'aver trovato una soluzione ottima in real-world.<br />
-Queste simulazioni rappresentano solo una porzione del mondo reale. In ogni sistema complesso esistono delle connessioni tra modello e realtà, le quali dovranno essere approssimate con un grado di precisione direttamente proporzionale alla rilevanza della connessione stessa.<br />
+Obviously, obtaining an optimal solution in simulation does not imply finding an optimal solution in the real world.<br />
+These simulations represent only a portion of the real world. In every complex system, there are connections between the model and reality, which must be approximated with a degree of precision directly proportional to the relevance of the connection itself.
 
--------------------------------------------------------------
+----------------------------------------------------------------
 
-Una semplice simulazione è [[The Game of Life]].<br /> 
+An example of a simple simulation is [[The Game of Life]]. 
  
--------------------------------------------------------------
+----------------------------------------------------------------
 
-Esistono tre macro paradigmi per la costruzione ed implementazione di modelli descrittivi:
+There are three macro paradigms for the construction and implementation of descriptive models:
 - **discrete events simulation**;
 - **[[Agent-Based Simulation |agent-based simulation]]**;
 - **[[System Dynamics Simulation |system dynamics simulation]]**.
 
-Questi tre paradigmi fanno affidamento su modelli che comprendono componenti stocastiche al fine di approssimare connessioni al mondo esterno e parti del sistema interno che sono al centro del focus dell'analisi.<br />
-E' possibile effettuare una comparazione tra questi paradigmi in termini di diverse feature:
+These three paradigms rely on models that include stochastic components to approximate connections to the external world and parts of the internal system that are at the center of the analysis focus.<br />
+It is possible to make a comparison between these paradigms in terms of different features:
 
 ![[Images/ComparisonSimulation.png]]
 
