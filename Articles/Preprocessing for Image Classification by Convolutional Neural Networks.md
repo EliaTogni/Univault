@@ -104,12 +104,18 @@ Si è testato il set di dati su tre reti con un insieme di sei diverse mappe di 
 ----------------------------------------------------------------
 
 ## Results
+I risultati ottenuti dai modelli convoluzionali con le tre differenti tecniche di preprocessing sono mostrati nella tabella sottostante.
 
+immagine
+
+Questa mostra i cambiamenti nelle accuracy dei test all'incremento delle feature maps del layer convoluzionale con tre tecniche di preprocessing su CNN_$1$, CNN_$2$ e CNN_$3$.
 
 ----------------------------------------------------------------
 
 ## Conclusion
+Dai risultati che abbiamo ottenuto, si conclude che il preprocessing dei dati grezzi con ZCA raggiunge le prestazioni migliori per le reti neurali convoluzionali e che le prestazioni aumentano ulteriormente con l'aumento dei layer convoluzionali nell'architettura. Si è anche notato che, con l'aumento di un ulteriore strato convoluzionale, da CNN-$2$ a CNN-$3$, le prestazioni aumentano per ciascuna tecnica di preprocessing, come si può vedere dai risultati nella tabella sottostante.
 
+immagine
 
 ----------------------------------------------------------------
 

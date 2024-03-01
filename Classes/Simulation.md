@@ -123,6 +123,7 @@ def pharmacy(daily_working_time, exp_prescriptions_day, exp_prescr_time, stdev_p
     
     events.append(e)
     
+	# each event will produce the next events
     while len(events) > 0:
         
         # pick next event (one of minimum time in events):
