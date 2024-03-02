@@ -40,31 +40,32 @@ It is possible to make a comparison between these paradigms in terms of differen
 --------------------------------------------------------------
 
 ## Discrete Event Simulation
-Nelle simulazioni di tipo **discrete events**, il sistema procede per step durante il tempo di esecuzione e gli eventi accadono solamente durante questi precisi momenti.<br />
+In **discrete events simulations**, the system proceeds in steps during the runtime, and events only occur at these specific moments.
 
+Let's consider the following function:
 
-Si consideri la seguente funzione:
 $$y = f(x)$$
-Dal punto di vista del modellatore, $x$ rappresenta i dati in input mentre $y$ è un'astrazione del processo modellato da $f()$.<br />
-Se $f()$ è solamente un'approssimazione del sistema reale, quando si applicherà $f()$ al parametro $x$, si otterrà una determinata osservazione, un determinato valore. Riapplicando la funzione, è plausibile ottenere un risultato differente. Per questo motivo, in un mondo deterministico, si definirebbero $x$ **variabile indipendente** e $y$ **variabile dipendente** mentre il risultato che si ottiene in $y$ è stocastico, quindi $y$ è una **variabile aleatoria**.
-Il risultato complessivo della modellazione descrittiva di un sistema è una variabile aleatoria più complessa.<br />
 
+From the modeler's perspective, $x$ represents input data, while $y$ is an abstraction of the process modeled by $f()$.<br />
+If $f()$ is only an approximation of the real system, applying $f()$ to the parameter $x$ will yield a specific observation, a specific value. Reapplying the function may result in a different outcome. For this reason, in a deterministic world, $x$ would be defined as the **independent variable** and $y$ as the **dependent variable**, while the result obtained in $y$ is stochastic, making $y$ a **random variable**.
+The overall result of the descriptive modeling of a system is a more complex random variable.
 
 ### Pharmacist (Ex. from Sheldon M. Ross "Simulation")
 ![[Images/PharmacistSimulation.png]]
 
-Il modello descrittivo che andrà costruito renderà più chiara la distribuzione della variabile aleatoria. 
-E' possibile costruire un modello deterministico di questo sistema? La risposta è sì, anche se il considerare ogni singola variabile (ogni individuo esistente, la condizione di salute di ogni individuo, ...) è di gran lunga più complesso di quanto sia possibile fare. Per questo motivo, si approssimano delle componenti del sistema.<br />
-Ci sono due punti cardine i quali verranno approssimati:
-- i **connettori**, cioè i collegamenti tra il sistema ed il mondo esterno;
-- i **dettagli** del sistema stesso, i quali non sono cruciali per lo studio.
+The descriptive model that will be constructed will make the distribution of the random variable clearer. Is it possible to build a deterministic model of this system? The answer is yes, even though considering each individual variable (every existing individual, the health condition of each individual, ...) is much more complex than it is possible to do. For this reason, components of the system will be approximated.
 
-Come si approssimano questi due punti? Con l'utilizzo di ulteriori, sebbene più semplici, variabili aleatorie.<br />
+There are two key points that will be approximated:
+- the **connectors**, that is, the links between the system and the external world;
+- the **details** of the system itself, which are not crucial for the study.
+
+Both of these points are approximated through the use of additional, albeit simpler, random variables.
 
 ![[Images/Pharmacy Scheme.png]]
 
-Un'assunzione comune è che gli individui del mondo esterno agiscano in maniera indipendente e, perciò, osservare che ad un determinato tempo $t$ è arrivata una prescrizione non fornisce nessuna informazione sull'arrivo della prossima prescrizione. Questa assunzione è sufficiente per modellare il processo dell'arrivo delle prescrizioni tramite una **variabile aleatoria esponenziale**.<br />
-Per quanto riguarda il processo di preparazione delle medicine, il problema fornisce una media ed una deviazione standard senza fornire la forma della distribuzione. Le informazioni riguardanti il processo sono minime e la forma della perturbazione non ha una particolare struttura, quindi è possibile utilizzare una **variabile aleatoria normale**.<br />
+A common assumption is that individuals in the external world act independently, and therefore, observing that a prescription has arrived at a certain time $t$ provides no information about the arrival of the next prescription. This assumption is sufficient to model the prescription arrival process through an **exponential random variable**.
+
+As for the medicine preparation process, the problem provides a mean and a standard deviation without specifying the distribution shape. The information about the process is minimal, and the perturbation's form lacks a specific structure, so it is possible to use a **normal random variable**.
 
 ```python
 import random
