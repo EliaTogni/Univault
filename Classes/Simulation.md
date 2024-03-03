@@ -21,10 +21,86 @@ On the contrary, the use of simulations is not the best option when analytical p
 Obviously, obtaining an optimal solution in simulation does not imply finding an optimal solution in the real world.<br />
 These simulations represent only a portion of the real world. In every complex system, there are connections between the model and reality, which must be approximated with a degree of precision directly proportional to the relevance of the connection itself.
 
-----------------------------------------------------------------
+## The Game of Life
+An example of a simple simulation is [[The Game of Life]], a pseudo-agent simulation created by Conway in 1970. The initial scenario consists of an inhabited region where inhabitants follow these rules:
+- every living individual with fewer than two living neighbors dies (underpopulation);
+- every living individual with more than three living neighbors dies (overpopulation);
+- any living individual with two or three living neighbors survives;
+- when exactly three individuals share an adjacent empty space, a new individual is born in that space.
 
-An example of a simple simulation is [[The Game of Life]]. 
- 
+This is a qualitative description of the situation. To model it, it is necessary to formally define agents and constraints.<br />
+The simulation is based on having an agent for each individual in a two-dimensional discrete grid. Also, each cell in this grid can contain at most one individual.<br />
+It is necessary to define the logic that models the behavior of the agents. The state of each agent is easily definable by a binary variable, where the value $1$ indicates that a living inhabitant is present in the cell, while $0$ indicates the opposite.<br />
+Furthermore, it is necessary to define the meaning of adjacent space: vertical and horizontal cells connected to the current cell can be considered adjacent, or the same cells and diagonal cells can be considered adjacent.<br />
+Modeling time in this simulation is crucial to understand the order in which cell contents are updated at each step. One can choose either sequential or parallel updating, e.g., updating a cell based on the contents of adjacent cells at the previous step (and ignoring their current content).<br />
+This choice implies the use of discrete time evaluation. Individuals will update at _day 0_, at _day 1_ (observing neighbors at _day 0_), and so on.
+
+The next step is to import the model onto the computer and extract some statistics:
+
+```python
+import numpy as np
+import plotly.express as px
+import matplotlib.pyplot as plt
+import random
+
+def print_map(I,J, M):
+    
+    plt.imshow(M, cmap='hot', interpolation='nearest')
+    plt.show()
+    #fig = px.density_heatmap(m)
+    #fig.show()
+
+    #for i in range(I):
+    #    for j in range(J): print(M[i][j], end='')
+    #    print("")
+        
+        
+def init_map(I,J,p):
+
+    m = [[int(random.random() <= p) for j in range(J)] for i in range(I)]
+    
+    return m
+
+def update_map(I, J, m):
+
+    for i in range(I):
+        for j in range(J):
+            u = (i-1) % I
+            d = (i+1) % I
+            l = (j-1) % J
+            r = (j+1) % J
+            neighbors = m[u][l] + m[u][j] + m[u][r] + m[d][l] + m[d][j] + m[d][r] + m[i][l] + m[i][r]
+            if neighbors == 3:
+                m[i][j] = 1
+            elif neighbors > 3 or neighbors < 2:
+                m[i][j] = 0
+    
+    return m
+    
+def simulate(I, J, T, r, p):
+
+    #np.random.seed(r)
+    random.seed(r)
+    m = init_map(I,J,p)
+
+    v = []
+    s = 0
+    for i in range(I): s = s + sum(m[i])
+    v.append(s)
+    
+    for t in range(T):
+        m = update_map(I, J, m)
+        print_map(I, J, m)
+        s = 0
+        for i in range(I): s = s + sum(m[i])
+        v.append(s)
+        
+    return v
+
+#plt.plot(simulate(50, 50, 50, 1))
+#plt.plot(simulate(50, 50, 50, 2))
+```
+
 ----------------------------------------------------------------
 
 There are three macro paradigms for the construction and implementation of descriptive models:
@@ -193,11 +269,11 @@ def pharmacy(daily_working_time, exp_prescriptions_day, exp_prescr_time, stdev_p
 pharmacy(480, 32, 10, 4)
 ```
 
--------------------------------------------------------------
+----------------------------------------------------------------
 
 ## Ripasso di [[Statistica e Probabilità |statistica e probabilità]]
 
--------------------------------------------------------------
+----------------------------------------------------------------
 
 ## Generazione di numeri randomici ##
 La definizione di **random** descrive l'avvenimento di un evento dovuto al caso piuttosto che ad una causa deterministica.<br />
@@ -302,6 +378,7 @@ Si osservino i numeri all'interno di una sequenza generata da un algoritmo ma si
 Di conseguenza, questa variabile possiederà una funzione di massa di probabilità ed una funzione di densità di probabilità associata.
 Si costruisca, quindi, la funzione che assomigli questa funzione di ripartizione cumulativa senza conoscere $X$ ma avendo soltanto alcuni valori della sequenza, ovvero la funzione di ripartizione empirica.<br />
 La funzione, banalmente, conta quanti valori della sequenza $v$ sono minori o uguali di $x$.
+
 ```python
 def empirical_cdf(v, x):
 	count = 0
@@ -311,7 +388,7 @@ def empirical_cdf(v, x):
 	return (count / len(v))
 ```
 
--------------------------------------------------------------
+----------------------------------------------------------------
 
 #### Shift Register Generator ####
 Un'alternativa per la generazione di numeri randomici è lo **Shift Register Generator**.<br />
@@ -321,7 +398,7 @@ Le proprietà attese di un generatore random sono:
 - il periodo del generatore deve essere più ampio possibile;
 - l'implementazione del generatore deve essere efficiente (ad esempio, la scelta di $m = 2^{31} -1$ permette di codificarlo su $32$ bit).
 
--------------------------------------------------------------
+----------------------------------------------------------------
 
 ## Metodo Monte Carlo ##
 Si vuole computare (numericamente) il valore di $\pi$.<br />
@@ -369,16 +446,5 @@ Alcuni parametri che è utile stabilire sono:
 Il trovarsi all'interno di un cerchio può essere modellato con una variabile aleatoria Bernoulliana:$$X = \cases{1 \qquad p \cr \cr 0 \qquad (1-p) }$$
 Il valore atteso di questa variabile aleatoria sarà $E[X] = 1 \cdot p + 0 \cdot (1-p) = p$, mentre la sua varianza sarà $V[X] = E[X^{2}] - E[X]^{2}$ = .
 
--------------------------------------------------------------
-
-Main families of R.V.:
-- Discrete Random Variables
-- Continuous Random Variables
-
-Main techniques for generating R.V.:
-- inverse transform
-- acceptance-rejection
-- composition
-- (alias)
-
 ----------------------------------------------------------------
+

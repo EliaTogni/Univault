@@ -4,9 +4,7 @@ La situazione iniziale consiste in una regione abitata nella quale gli abitanti 
 - ogni individuo vivo con meno di due vicini vivi muore (_underpopulation_);
 - ogni individuo vivo con più di tre vicini vivi muore (_overpopulation_);
 - qualsiasi individuo vivo con due o tre vicini vivi resta in vita;
-- quando esattamente tre individui condividono uno spazio vuoto adiacente, un nuovo individuo nasce in quello spazio.<br />
-
----------------------------------------------------------------
+- quando esattamente tre individui condividono uno spazio vuoto adiacente, un nuovo individuo nasce in quello spazio.
 
 Questa è una descrizione qualitativa della situazione. Per poterla modellare, è necessario definire in maniera più formale agenti e vincoli.<br />
 La simulazione si basa sull'avere un agente per ogni individuo in una griglia discreta bidimensionale.<br />
@@ -14,9 +12,9 @@ Ogni cella di questa griglia può contenere al più un individuo.<br />
 E' necessario definire la logica che modelli il comportamento degli agenti. Lo stato di ogni agente è facilmente definibile da una variabile binaria, in cui il valore $1$ indica che nella cella è presente un abitante vivo mentre $0$ indica il viceversa.<br />
 Inoltre, è necessario definire il significato di spazio adiacente: possono essere adiacenti le celle verticali ed orizzontali connesse alla cella in questione, oppure possono essere adiacenti le stesse celle e le celle diagonali.<br />
 La modellazione del tempo in questa simulazione è fondamentale per capire in quale ordine si aggiornano i contenuti delle celle ad ogni passo. Si può scegliere un aggiornamento sequenziale oppure parallelo, cioè aggiornare una cella basandosi sul contenuto delle celle adiacenti al passo precedente (ed ignorando il loro contenuto attuale).<br />
-Questa scelta implica l'utilizzo di una valutazione discreta nel tempo. Gli individui si aggiorneranno al _day 0_, al _day 1_ (osservando i vicini al _day 0_) e così via.<br />
+Questa scelta implica l'utilizzo di una valutazione discreta nel tempo. Gli individui si aggiorneranno al _day 0_, al _day 1_ (osservando i vicini al _day 0_) e così via.
 
----------------------------------------------------------------
+----------------------------------------------------------------
 
 Lo step successivo è importare il modello su computer ed estrarre delle statistiche:
 
@@ -92,3 +90,5 @@ Il sistema contiene quindi degli elementi stocastici. Elementi che tendono ad es
 ![[Images/GameOfLifePlot.png]]
 
 Le visualizzazioni stimolano ipotesi e congetture ma si tratta di osservazioni puramente qualitative, mentre l'obiettivo primario è il fare osservazioni quantitative.
+
+----------------------------------------------------------------

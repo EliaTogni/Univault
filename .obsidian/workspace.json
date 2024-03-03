@@ -18,6 +18,18 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "9405f02e7620b801",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Atoms/The Game of Life.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ]
       }
@@ -117,6 +129,7 @@
   },
   "active": "9d6dab7f39b33ece",
   "lastOpenFiles": [
+    "Atoms/The Game of Life.md",
     "Classes/Simulation.md",
     "Classes/Informatica Teorica.md",
     "Articles/Preprocessing for Image Classification by Convolutional Neural Networks.md",
@@ -124,7 +137,6 @@
     "Articles/Image Classification with Classic and Deep Learning Techniques.md",
     "Atoms/System Dynamics Simulation.md",
     "Atoms/Agent-Based Simulation.md",
-    "Atoms/The Game of Life.md",
     "Images/DefinizioneFunzione.png",
     "Classes/Intelligenza Artificiale.md",
     "Templates/Article Template.md",
