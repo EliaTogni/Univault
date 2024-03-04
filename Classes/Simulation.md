@@ -269,9 +269,13 @@ def pharmacy(daily_working_time, exp_prescriptions_day, exp_prescr_time, stdev_p
 pharmacy(480, 32, 10, 4)
 ```
 
+Is this simulation reaching a stable state or is still changing? The answer to this question depends on how much the simulation lasts. It is not excluded that a simulation may not terminate, but it is possible that the simulation ends in a number of steps greater than those observed.
+
+Since the initial configuration is not provided, an attempt is made to construct it by approximation, based on the probability of having an individual in a cell. The system, therefore, contains stochastic elements, elements that tend to be representative only when observed multiple times. How can we ensure that these repeated observations of stochastic elements make sense as a whole?
+
 ----------------------------------------------------------------
 
-## Ripasso di [[Statistica e Probabilità |statistica e probabilità]]
+## Statistics and probability
 
 ----------------------------------------------------------------
 

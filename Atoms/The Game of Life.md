@@ -82,10 +82,10 @@ def simulate(I, J, T, r, p):
 #plt.plot(simulate(50, 50, 50, 2))
 ```
 
-Questa simulazione sta raggiungendo uno stato stabile oppure continua a modificarsi? La risposta a questa domanda può dipendere dalla durata della simulazione. Non è escluso che una simulazione possa non terminare, ma è possibile che la simulazione termini in un numero di passi maggiore di quelli osservati. <br />
+Questa simulazione sta raggiungendo uno stato stabile oppure continua a modificarsi? La risposta a questa domanda può dipendere dalla durata della simulazione. Non è escluso che una simulazione possa non terminare, ma è possibile che la simulazione termini in un numero di passi maggiore di quelli osservati. 
 
 Poichè la configurazione iniziale non viene fornita, si cerca di costruirla approssimandola, cioè basandosi sulla probabilità di avere un individuo in una cella.<br />
-Il sistema contiene quindi degli elementi stocastici. Elementi che tendono ad essere rappresentativi solo se osservati multiple volte. Come essere sicuri che queste osservazioni ripetute di elementi stocastici siano sensate nell'insieme?<br />
+Il sistema contiene quindi degli elementi stocastici, elementi che tendono ad essere rappresentativi solo se osservati multiple volte. Come si può essere sicuri che queste osservazioni ripetute di elementi stocastici siano sensate nell'insieme?
 
 ![[Images/GameOfLifePlot.png]]
 
