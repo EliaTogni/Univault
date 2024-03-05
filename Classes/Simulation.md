@@ -316,9 +316,44 @@ $$S = \{(H, H), (H, T), (T, H), (T, T)\}$$
 
 where $(H, T)$ means, for example, that the first flip lands heads and the second tails. Suppose now that each of the four possible outcomes is equally likely to occur and thus has probability $\frac{1}{4}$. Suppose further that we observe that the first flip lands on heads. Then, given this information, what is the probability that both flips land on heads? To calculate this probability it is possible to reason as follows: given that the initial flip lands heads, there can be at most two possible outcomes of the experiment, namely, $(H, H)$ or $(H, T)$. In addition, as each of these outcomes originally had the same probability of occurring, they should still have equal probabilities. That is, given that the first flip lands heads, the (conditional) probability of each of the outcomes $(H, H)$ and $(H, T)$ s $\frac{1}{2}$, whereas the (conditional) probability of the other two outcomes is $0$. Hence the desired probability is $\frac{1}{2}$.If we let $A$ and $B$ denote, respectively, the event that both flips land on heads and the event that the first flip lands on heads, then the probability obtained above is called the conditional probability of $A$ given that $B$ has occurred and is denoted by $P(A \vert B)$.
 
-A general formula for $P(A \vert B)$ that is valid for all experiments and events $A$ and $B$ can be obtained in the same manner as given previously. Namely, if the event $B$ occurs, then in order for $A$ to occur it is necessary that the actual occurrence be a point in both $A$ and $B$; that is, it must be in $A \cap B$. Now since we know that $B$ has occurred, it follows that $B$ becomes our new sample space and hence the probability that the event $AB$ occurs will equal the probability of $A \cap B$ relative to the probability of $B$:
+A general formula for $P(A \vert B)$ that is valid for all experiments and events $A$ and $B$ can be obtained in the same manner as given previously. Namely, if the event $B$ occurs, then in order for $A$ to occur it is necessary that the actual occurrence be a point in both $A$ and $B$; that is, it must be in $A \cap B$. Now since we know that $B$ has occurred, it follows that $B$ becomes our new sample space and hence the probability that the event $A \cap B$ occurs will equal the probability of $A \cap B$ relative to the probability of $B$:
 
 $$P(A \vert B) = \frac{P(A \cap B)}{P(B)}$$
+
+The determination of the probability that some event $A$ occurs is often simplified by considering a second event $B$ and then determining both the conditional probability of $A$ given that $B$ occurs and the conditional probability of $A$ given that $B$ does not occur. To do this, note first that
+
+$$A = (A \cap B) \cup (A \cap B^c) $$
+
+Because $A \cap B$ and $A \cap B^c$ are mutually exclusive, the preceding yields
+
+$$P(A) = P(A \cap B) + P(A \cap B^c) = P(A \vert B) P(B) + P(A \vert B^c)P(B^c)$$
+
+When we utilize the preceding formula, we say that we are computing $P(A)$ by conditioning on whether or not $B$ occurs.
+
+Some examples follow below.
+
+#### Insurance company
+An insurance company classifies its policy holders as being either accident prone or not. Their data indicate that an accident prone person will file a claim
+within a one-year period with probability $.25$, with this probability falling to $.10$ for a non accident prone person. If a new policy holder is accident prone with probability $.4$, what is the probability he or she will file a claim within a year?
+
+Let $C$ be the event that a claim will be filed, and let $B$ be the event that the
+policy holder is accident prone. Then
+
+$$P(C) = P(C \vert B)P(B) + P(C \vert B^c)P(B^c) = (.25)(.4) + (.10)(.6) = .16$$
+
+Suppose that exactly one of the events $B_i, i = 1, ..., n$ must occur. That is, suppose that $B_1, B_2, ..., B_n$ are mutually exclusive events whose union is the sample space $S$. Then we can also compute the probability of an event $A$ by conditioning on which of the $B_i$ occur. The formula for this is obtained by using that
+
+$$A = A \cap S = A \bigcup^n_{i=1} B_i = \bigcup^n_{i=1} A \cap B_i$$
+
+which implies that
+
+$$P(A) = \sum_{i = 1}^n P(A \cap B_i) = \sum_{i = 1}^n P(A \vert B_i) P(B_i)$$
+
+----------------------------------------------------------------
+
+#### Coupons
+Suppose there are $k$ types of coupons, and that each new one collected
+is, independent of previous ones, a type $j$ coupon with probability $p_j$, $\sum^k_{j =1} p_j = 1$. Find the probability that the $n^{th}$ coupon collected is a different type than any of the preceding $n − 1$.
 
 ----------------------------------------------------------------
 
