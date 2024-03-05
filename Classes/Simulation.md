@@ -273,6 +273,10 @@ Is this simulation reaching a stable state or is still changing? The answer to t
 
 Since the initial configuration is not provided, an attempt is made to construct it by approximation, based on the probability of having an individual in a cell. The system, therefore, contains stochastic elements, elements that tend to be representative only when observed multiple times. How can we ensure that these repeated observations of stochastic elements make sense as a whole?
 
+![[Images/GameOfLifePlot.png]]
+
+Visualizations stimulate hypotheses and conjectures, but these are purely qualitative observations. The primary objective is to make quantitative observations.
+
 ----------------------------------------------------------------
 
 ## Statistics and probability
