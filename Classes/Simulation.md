@@ -291,8 +291,23 @@ Similarly, we define the event $AB$, called the intersection of A and B, to cons
 ----------------------------------------------------------------
 
 ### Axioms of probability
+Suppose that for each event $A$ of an experiment having sample space $S$ there is a number, denoted by $P(A)$ and called the probability of the event $A$, which is in accord with the following three axiom:
+- $0 \leq P(A) \leq 1$;
+- $P(S) = 1$;
+- for any sequence of mutually exclusive events $A_1, A_2, ...$ it holds that $P\Big(\bigcup_{i = 1}^n A_i\Big) = \sum_{i = 1}^n P(A_i), \space n = 1, 2, ..., \infty$. 
 
+Axiom $1$ states that the probability that the outcome of the experiment lies
+within $A$ is some number between $0$ and $1$; Axiom $2$ states that with probability $1$ this outcome is a member of the sample space; finally, Axiom $3$ states that for any set of mutually exclusive events, the probability that at least one of these events occurs is equal to the sum of their respective probabilities.
 
+These three axioms can be used to prove a variety of results about probabilities. For instance, since $A$ and $A^c$ are always mutually exclusive, and since $A \cup A^c = S$, we have from Axioms $2$ and $3$ that
+
+$$1 = P(S) = P(A \cup A^c) = P(A) + P(A^c)$$
+
+or, equivalently:
+
+$$P(A^c) = 1 - P(A)$$
+
+In words, the probability that an event does not occur is $1$ minus the probability that it does.
 
 ----------------------------------------------------------------
 
