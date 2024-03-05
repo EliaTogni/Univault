@@ -101,6 +101,14 @@ def simulate(I, J, T, r, p):
 #plt.plot(simulate(50, 50, 50, 2))
 ```
 
+Is this simulation reaching a stable state or is still changing? The answer to this question depends on how much the simulation lasts. It is not excluded that a simulation may not terminate, but it is possible that the simulation ends in a number of steps greater than those observed.
+
+Since the initial configuration is not provided, an attempt is made to construct it by approximation, based on the probability of having an individual in a cell. The system, therefore, contains stochastic elements, elements that tend to be representative only when observed multiple times. How can we ensure that these repeated observations of stochastic elements make sense as a whole?
+
+![[Images/GameOfLifePlot.png]]
+
+Visualizations stimulate hypotheses and conjectures, but these are purely qualitative observations. The primary objective is to make quantitative observations.
+
 ----------------------------------------------------------------
 
 There are three macro paradigms for the construction and implementation of descriptive models:
@@ -269,17 +277,28 @@ def pharmacy(daily_working_time, exp_prescriptions_day, exp_prescr_time, stdev_p
 pharmacy(480, 32, 10, 4)
 ```
 
-Is this simulation reaching a stable state or is still changing? The answer to this question depends on how much the simulation lasts. It is not excluded that a simulation may not terminate, but it is possible that the simulation ends in a number of steps greater than those observed.
+----------------------------------------------------------------
 
-Since the initial configuration is not provided, an attempt is made to construct it by approximation, based on the probability of having an individual in a cell. The system, therefore, contains stochastic elements, elements that tend to be representative only when observed multiple times. How can we ensure that these repeated observations of stochastic elements make sense as a whole?
+## Elements of probability
+### Sample space and events
+Consider an experiment whose outcome is not known in advance. Let $S$, called the **sample space** of the experiment, denote the set of all possible outcomes.<br />
+Any subset $A$ of the sample space is known as an **event**. That is, an event is a set consisting of possible outcomes of the experiment. If the outcome of the experiment is contained in $A$, we say that $A$ has occurred.
 
-![[Images/GameOfLifePlot.png]]
-
-Visualizations stimulate hypotheses and conjectures, but these are purely qualitative observations. The primary objective is to make quantitative observations.
+For any two events $A$ and $B$ we define the new event $A \cup B$, called the union of
+$A$ and $B$, to consist of all outcomes that are either in $A$ or $B$ or in both $A$ and $B$.
+Similarly, we define the event $AB$, called the intersection of A and B, to consist of all outcomes that are in both $A$ and $B$. That is, the event $A \cup B$ occurs if either $A$ or $B$ occurs, whereas the event $AB$ occurs if both $A$ and $B$ occur. We can also define unions and intersections of more than two events. In particular, the union of the events $A_1, ..., A_n$, designated by $\bigcup^n_{i=1} A_i$, is defined to consist of all outcomes that are in any of the $A_i$. Similarly, the intersection of the events $A_1, ..., A_n$, designated by $A_1 A_2 \cdot \cdot \cdot A_n$, is defined to consist of all outcomes that are in all of the $A_i$. For any event $A$ we define the event $A^c$, referred to as the complement of $A$, to consist of all outcomes in the sample space $S$ that are not in $A$. That is, $A^c$ occurs if and only if $A$ does not. Since the outcome of the experiment must lie in the sample space $S$, it follows that $S^c$ does not contain any outcomes and thus cannot occur. We call $S^c$ the null set and designate it by $\emptyset$. If $AB = \emptyset$ so that $A$ and $B$ cannot both occur (since there are no outcomes that are in both $A$ and $B$), we say that $A$ and $B$ are mutually exclusive.
 
 ----------------------------------------------------------------
 
-## Statistics and probability
+### Axioms of probability
+
+
+
+----------------------------------------------------------------
+
+### Conditional probability and independence
+
+
 
 ----------------------------------------------------------------
 
