@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Classes/Informatica Teorica.md",
+                "file": "Classes/3D Videogames.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Informatica Teorica.md",
+                "file": "Classes/3D Videogames.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,6 +117,8 @@
   },
   "active": "9d6dab7f39b33ece",
   "lastOpenFiles": [
+    "Classes/Algoritmi Paralleli e Distribuiti.md",
+    "Classes/Informatica Teorica.md",
     "Images/SistemaDiCalcolo.png",
     "Images/InsiemiProdottoI.png",
     "Images/InsiemiProdottoE.png",
@@ -127,13 +129,11 @@
     "Articles/An Introduction to Convolutional Neural Networks.md",
     "Atoms/The Game of Life.md",
     "Classes/Cittadinanza Digitale e Tecnocivismo.md",
-    "Classes/Algoritmi Paralleli e Distribuiti.md",
     "Classes/Bioinformatica.md",
     "Classes/Logica Matematica.md",
     "Classes/Sicurezza dei Sistemi e delle Reti.md",
     "Classes/Privatezza e Protezione dei Dati.md",
     "Classes/Statistica e Probabilità.md",
-    "Classes/Informatica Teorica.md",
     "Atoms/System Dynamics Simulation.md",
     "Atoms/Agent-Based Simulation.md",
     "Images/DefinizioneFunzione.png",
@@ -144,7 +144,6 @@
     "Images/HistogramActivations.png",
     "Images/ActivationsMeanSDTraining.png",
     "Images/UpstreamGradient.png",
-    "Images/PoorInitializationProblems.png",
     "Classes/3D Videogames.md",
     "Videos/How to Write a Paper in a Weekend (By Prof. Pete Carr.md",
     "Lexicon/Allampanato.md",
