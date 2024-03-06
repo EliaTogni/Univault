@@ -138,9 +138,10 @@ Alcuni esempi:
 $f: A \to B$ è una legge la quale associa ad ogni elemento $a \in A$ un elemento di $B$. $f(a) \downarrow$ indica che la funzione è **definita** sull'elemento $a$, ovvero che la sua applicazione porta ad un valore definito del codominio e, quindi, per ogni $a \in A$ esiste $b \in B$ tale che $f(a) = b$.
 
 Per contro $f(a) \uparrow$ indica che la funzione non è definita sull'elemento $a$.
-Una funzione definita su tutto $A$ è detta **totale**: $f \text{ totale} \iff \forall a \in A, f(a) \downarrow$. È invece detta **parziale** se per qualche elemento di $A$ non esiste immagine in $B$.  
+Una funzione definita su tutto $A$ è detta **totale**: $f \text{ totale} \iff \forall a \in A, f(a) \downarrow$. È invece detta **parziale** se a qualche elemento di $A$ è possibile associare un elemento in $B$.  
 
-Ad esempio, la funzione $f: \mathbb{N} \to \mathbb{N}$ tale che $f(n) = \lfloor\frac{1}{n} \rfloor$ non è definita in $n = 0 \implies f(0) \uparrow$. Quindi, $\forall n \in \mathbb{N} \setminus \{0\}, f(n) \downarrow$.
+Alcuni esempi:
+- la funzione $f: \mathbb{N} \to \mathbb{N}$ tale che $f(n) = \lfloor\frac{1}{n} \rfloor$ non è definita in $n = 0 \implies f(0) \uparrow$. Quindi, $\forall n \in \mathbb{N} \setminus \{0\}, f(n) \downarrow$.
 
 ### Dominio di esistenza/campo di esistenza
 $Dom_f = \{a \in A: f(a) \downarrow\} \subseteq A$. Quindi:
@@ -150,14 +151,14 @@ $Dom_f = \{a \in A: f(a) \downarrow\} \subseteq A$. Quindi:
 Il **campo di esistenza** è, quindi, l'insieme dei punti su cui è definita una funzione.
 
 Alcuni esempi:
-$f(n) = \lfloor \frac{1}{n} + \frac{1}{(n - 1)(n -2)} \rfloor \implies Dom_f = \mathbb{N} \setminus \{0, 1, 2\}$
-$f(n) = \lfloor \log{n} \rfloor \implies Dom_f = \mathbb{N} \setminus \{0\}$
-$f(n) = \lfloor \sqrt{-n} \rfloor \implies Dom_f = \{0\}$
+- $f(n) = \lfloor \frac{1}{n} + \frac{1}{(n - 1)(n -2)} \rfloor \implies Dom_f = \mathbb{N} \setminus \{0, 1, 2\}$;
+- $f(n) = \lfloor \log{n} \rfloor \implies Dom_f = \mathbb{N} \setminus \{0\}$;
+- $f(n) = \lfloor \sqrt{-n} \rfloor \implies Dom_f = \{0\}$.
 
 ----------------------------------------------------------------
 
 ### Totalizzazione di una funzione parziale
-$f: A \to B \text{ parziale} \implies f: A \to B \cup \{\bot\} \text{ totale}$, dove $\bot$ è il simbolo di **indefinito**.
+$f: A \to B \text{ parziale} \implies f: A \to B \cup \{\bot\}$ **totale**, dove $\bot$ è il simbolo di **indefinito**.
 $$f(a) = \begin{cases}
 f(a) & a \in Dom_f \cr \cr
 \bot & \text{altrimenti} \\
@@ -175,8 +176,7 @@ $$A_1 \times A_2 \times ... \times A_n = \{(a_1, a_2, ..., a_n): a_i \in A_i\}$$
 
 Per abbreviare, si scrive $A \times A \times A \times ... \times A = A^n$.
 
-Il **Proiettore i-esimo**, invece, è una funzione $\Pi_i : A_1 \times A_2 \times ... \times A_n \to A_i$. Nel caso specifico di una tupla $(a_1, a_2, ..., a_n)$, $\Pi_i(a_1, a_2, ..., a_n) = a_i$.<br />
-Mentre un prodotto cartesiano crea struttura, il proiettore destruttura un elemento strutturato.
+Il **Proiettore $i$-esimo**, invece, è una funzione $\Pi_i : A_1 \times A_2 \times ... \times A_n \to A_i$, cioè, dà in output l'$i$-esimo componente della tupla in input. Nel caso specifico di una tupla $(a_1, a_2, ..., a_n)$, $\Pi_i(a_1, a_2, ..., a_n) = a_i$. Mentre un prodotto cartesiano crea struttura, il proiettore, quindi, destruttura un elemento strutturato.
 
 Alcuni esempi di insiemi prodotto:
 - $C = \{(x, y) \in \mathbb{R}^2: x^2 + y^2 = 1\}$;
@@ -193,11 +193,13 @@ Alcuni esempi di insiemi prodotto:
 
 $C \cup I \cup E = \mathbb{R}^2$
 
+Questi sottoinsiemi sono un esempio di **partizione**, cioè una famiglia di sottoinsiemi di una funzione che, uniti, coprono tutto l'insieme. Inoltre, nessuno di questi sottoinsiemi è nullo e sono mutualmente disgiunti.
+
 ----------------------------------------------------------------
 
 ## Insiemi di funzioni
-$B^A = \{f:A \to B\} =$ l'insieme di tutte le funzioni (sia totali che parziali) da $A$ a $B$.
-$B^A_{\bot} = \{f:A \to B\} =$ l'insieme delle funzioni parziali (totalizzate) da $A$ a $B$.
+$B^A = \{f:A \to B\} =$ l'insieme delle funzioni da $A$ a $B$.
+$B^A_{\bot} = \{f:A \to B_{\bot}\} =$ l'insieme delle funzioni totali e parziali da $A$ a $B$.
 
 La notazione $B^A$ viene utilizzata in quanto il numero di elementi dell'insieme è pari alla cardinalità di $B$ elevata alla cardinalità di $A$ (nel caso di insiemi con cardinalità finita).
 
@@ -214,15 +216,15 @@ $$w(f, a) = f(a)$$
 
 # Teoria della calcolabilità
 ## Sistema di calcolo
-Un **sistema di calcolo** $\mathbb{C}$ è un oggetto il quale, presi in ingresso un programma $P$ e dei dati $x$, produce in uscita l'output $y$ o $\bot$ (nel caso il sistema di calcolo vada in loop), ottenuto dall'esecuzione di $P$ su $x$.
+Un **sistema di calcolo** $\mathbb{C}$ è un oggetto il quale, presi in ingresso un programma $P$ e dei dati $x$, produce in uscita l'output $y$ o $\bot$ (indefinito, nel caso il sistema di calcolo vada in loop infinito), ottenuto dall'esecuzione di $P$ su $x$.
 
 ![[SistemaDiCalcolo.png]]
 
-Un programma $P \in \text{ PROG}$ è una sequenza di regole che trasforma un dato di input in un dato di output (o in un loop) esattamente come una funzione $\implies P \in \text{ DATI}_{\bot}^{\text{DATI}}$ è una funzione (in un linguaggio).
+Da un punto di vista matematico, un sistema di calcolo può essere descritto come una funzione di valutazione. Infatti, un programma $P \in \text{ PROG}$ è una stringa corretta che rappresenta la sequenza di regole che trasforma un dato di input in un dato di output (o in un loop), esattamente come una funzione $\implies P \in \text{ DATI}_{\bot}^{\text{DATI}}$ è una funzione (in un linguaggio).
 
-$\mathbb{C}: \text{ DATI}_{\bot}^{\text{DATI}} \times \text{ DATI} \to \text{ DATI}_{\bot}$ è, quindi, una funzione di valutazione e $\mathbb{C}(P, x)$, con $P$ fisso e $x$ variabile,è la funzione calcolata da $P$, ovvero la **semantica** di $P$. 
+$\mathbb{C}: \text{ DATI}_{\bot}^{\text{DATI}} \times \text{ DATI} \to \text{ DATI}_{\bot}$ è, quindi, una funzione di valutazione e $\mathbb{C}(P, x)$, con $P$ fisso e $x$ che varia su tutti i possibili input, è la **funzione calcolata da $P$**, ovvero la **semantica** di $P$, cioè il significato del programma.
 
-Un esempio di calcolo della Semantica di un programma.
+Un esempio di calcolo della semantica di un programma.
 
 ```pseudo
 	\begin{algorithm}
@@ -241,25 +243,52 @@ Un esempio di calcolo della Semantica di un programma.
 ```
 
 Semantica (significato) di $P$:
-$\mathbb{C}(P, \_): \mathbb{N} \to \mathbb{N}_{\bot}$
-$\mathbb{C}(P, n) = \cases{ n \space \text{ se } n \text{ è pari} \cr \cr \bot \space \text{ altrimenti}}$
+$$\mathbb{C}(P, \_): \mathbb{N} \to \mathbb{N}_{\bot}$$
+$$\mathbb{C}(P, n) = \cases{ n \space \text{ se } n \text{ è pari} \cr \cr \bot \space \text{ altrimenti}}$$
 
 ----------------------------------------------------------------
 
 ### Potenza computazionale di un sistema di calcolo
-La **potenza computazionale** di un sistema di calcolo indica cosa il sistema di calcolo è in grado di calcolare: ci si domanda se la semantica del programma $P$ sia un sottoinsieme proprio o improprio delle funzioni che dai dati vanno nei dati.  
-$$F(\mathbb{C}) = \{\mathbb{C}(P, \_): P \in \text{ PROG}\} \subseteq \text{ DATI}_{\bot}^{\text{DATI}}$$
-Stabilire cosa può fare l'informatica significa studiare il carattere dell'inclusione: se è impropria, ovvero se la semantica coincide con l'insieme delle funzioni da $\text{DATI}$ a $\text{DATI}$, allora l'informatica può tutto, altrimenti se è propria alcuni problemi non sono automatizzabili.  
+La **potenza computazionale** di un sistema di calcolo $\mathbb{C}$ indica cosa il sistema di calcolo è in grado di calcolare: ci si domanda se la semantica del programma $P$ sia un sottoinsieme proprio o improprio delle funzioni che dai dati vanno nei dati.
 
-Calcolare funzioni significa risolvere problemi in generale. Ad ogni problema è possibile associare una funzione soluzione programmando  ... (?) si risolve automaticamente in problema.
+$$F(\mathbb{C}) = \{\mathbb{C}(P, \_): P \in \text{ PROG}\} \subseteq \text{ DATI}_{\bot}^{\text{DATI}}$$
+
+Stabilire cosa può fare l'informatica significa studiare il carattere dell'inclusione: se è $F(\mathbb{C})$ è incluso impropriamente in $\text{DATI}_{\bot}^{\text{DATI}}$, ovvero se la semantica coincide con l'insieme delle funzioni da $\text{DATI}$ a $\text{DATI}$, allora l'informatica può tutto, altrimenti, se $F(\mathbb{C})$ è incluso propriamente, alcuni problemi **non sono automatizzabili**.
+
+Calcolare funzioni significa risolvere problemi in generale. Ad ogni problema è possibile associare una funzione soluzione programmando la quale si risolve automaticamente il problema.
 
 Alcuni esempi:
 
-programma slide 10 
+```pseudo
+	\begin{algorithm}
+	\caption{DET}
+	\begin{algorithmic}
+		\Input matrice $M$ $n \times n$ di naturali
+		\Output Determinante di $M$
+	\end{algorithmic}
+	\end{algorithm}
+```
+
+Funzione soluzione:
+
+$$f_{DET}: \mathbb{N}^{n \times n} \to \mathbb{Z}$$
+$$f_{DET}(M) = Det(M)$$
 
 Un programma di calcolo $f_{DET}$ chiaramente risolve automaticamente $DET$. Viceversa, risolvere automaticamente $DET$ vuol dire avere un programma di calcolo $f_{DET}$.
 
-programma slide 11
+```pseudo
+	\begin{algorithm}
+	\caption{FIND-REPLACE}
+	\begin{algorithmic}
+	\Input{Testo, parola da cercare, parola da rimpiazzare}
+	\Output Testo in cui ogni occorrenza della parola da cercare è sostituita dall'altra parola
+	\end{algorithmic}
+	\end{algorithm}
+```
+
+Funzione soluzione $f: TESTI \times PAROLE \times PAROLE \to TESTI$
+
+$$f_{FIND-REPLACE} \Bigg(\text{Nel mezzo del cammino di nostra vita, nostra, vostra}\Bigg) = \text{ Nel mezzo del cammin di vostra vita}$$
 
 Praticamente, tutti gli editori risolvono il problema $FIND-REPLACE$, cioè, calcolano la funzione $f_{FIND-REPLACE}: TESTI \times PAROLE^2 \to TESTI$.
 
@@ -267,7 +296,9 @@ Praticamente, tutti gli editori risolvono il problema $FIND-REPLACE$, cioè, cal
 
 ## Cardinalità di insiemi infiniti
 Dato un insieme $A$, si definisce **cardinalità** di $A$ (o $|A|$), intuitivamente, il numero di elementi appartenenti ad $A$.<br />
-Mentre, per quanto riguarda insiemi finiti, questa nozione sia adeguata, non è adatta per gli insiemi cardinalmente infiniti.<br />Il concetto di cardinalità di insiemi deve essere precisato e, in particolare, per poter parlare appropriatamente di insiemi conteneti un numero infinito di elementi.
+Mentre sia adeguata per quanto riguarda insiemi finiti, questa nozione non è adatta per gli insiemi cardinalmente infiniti. Il concetto di cardinalità di insiemi deve essere precisato per poter parlare appropriatamente di insiemi contenenti un numero infinito di elementi.
+
+Questa nozione intuitiva di cardinalità porterebbe a dire che $\mathbb{N}$ e $\mathbb{R}$ siano equinumerosi, dato che $\vert \mathbb{N} \vert = \infty = \vert \mathbb{R} \vert$. Chiaramente, questa conclusione è errata visto che l'infinito di $\mathbb{R}$ è diverso da quello di $\mathbb{N}$. 
 
 ### Relazione
 Relazione binaria su $A$: $R \subseteq A \times A$. Gli elementi $a, b \in A$ stanno in relazione $R$ se e solo se  $(a, b) \in R$. La notazione è $aRb$ oppure $a \cancel{R} b$. 
