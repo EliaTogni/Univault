@@ -62,7 +62,7 @@ Alcuni esempi:
 - $f(n) = \langle n \rangle_2 = n \mod 2$ è iniettiva?
 	No: $f(2k) = 0$ e $f(2k + 1) = 1$;
 - $f(n) = n^2$ è iniettiva?
-	Sì.
+	Sì, su $\mathbb{N}$. Su $\mathbb{R}$ non lo è, perchè $f(2) = f(-3)$.
 
 ----------------------------------------------------------------
 
@@ -84,7 +84,7 @@ $$f: A \to B \text{ suriettiva} \iff Im_f = B$$
 
 Alcuni esempi:
 - $Im_{\lfloor \sqrt(n) \rfloor} = \mathbb{N} \implies f(n) = \lfloor \sqrt(n) \rfloor$ suriettiva;
-- $Im_{\langle n \rangle_2} = \{0, 1\} \nsubseteq \mathbb{N} \implies f(n) 0 \langle n \rangle_2$ non suriettiva.
+- $Im_{\langle n \rangle_2} = \{0, 1\} \nsubseteq \mathbb{N} \implies f(n) = \langle n \rangle_2$ non suriettiva.
 
 ----------------------------------------------------------------
 
@@ -95,9 +95,9 @@ $$\forall b \in B, \exists! a \in A: f(a) = b$$
 
 dove $\exists !$ significa esiste un unico elemento.<br />
 Alcuni esempi:
-- $f(n) = n, f(x) = x^2$ sui reali, ...
+- $f(n) = n, f(x) = x^2$ sui reali, $f(x) = x^3$ sui reali, ...
 
-Per le funzioni biettive esiste il concetto di inversa.
+Per le funzioni biettive esiste il concetto di **inversa**.
 
 ----------------------------------------------------------------
 
@@ -122,6 +122,7 @@ $$f^{-1}\circ f = i_A \quad \wedge \quad f\circ f^{-1} = i_A$$
 Alcuni esempi:
 - inversa di $f(n) = n$;
 - l'inversa di $f(x) = x^2$ è $f^{-1}(x) = \sqrt{x}$. Infatti $f^{-1} \circ f(x) = \sqrt{x^2} = x = i_{\mathbb{R}}(x)$ e $f \circ f^{-1}(x) = (\sqrt(x))^2 = x = i_{\mathbb{R}}(x)$.
+- l'inversa di $f(x) = x^3$ è $f^{-1}(x) = \sqrt[3]{x}$ .
 
 ----------------------------------------------------------------
 
@@ -134,23 +135,31 @@ Alcuni esempi:
 ----------------------------------------------------------------
 
 ## Funzioni parziali e totali
-$f: A \to B$ è una legge la quale associa ad ogni elemento di $A$ un elemento di $B$. $f(a) \downarrow$ indica che la funzione è **definita** sull'elemento $a$, ovvero che la sua applicazione porta ad un valore definito del codominio.  
-Per contro $f(a) \uparrow$ indica che la funzione non è definita sull'elemento $a$. <br />
+$f: A \to B$ è una legge la quale associa ad ogni elemento $a \in A$ un elemento di $B$. $f(a) \downarrow$ indica che la funzione è **definita** sull'elemento $a$, ovvero che la sua applicazione porta ad un valore definito del codominio e, quindi, per ogni $a \in A$ esiste $b \in B$ tale che $f(a) = b$.
+
+Per contro $f(a) \uparrow$ indica che la funzione non è definita sull'elemento $a$.
 Una funzione definita su tutto $A$ è detta **totale**: $f \text{ totale} \iff \forall a \in A, f(a) \downarrow$. È invece detta **parziale** se per qualche elemento di $A$ non esiste immagine in $B$.  
+
+Ad esempio, la funzione $f: \mathbb{N} \to \mathbb{N}$ tale che $f(n) = \lfloor\frac{1}{n} \rfloor$ non è definita in $n = 0 \implies f(0) \uparrow$. Quindi, $\forall n \in \mathbb{N} \setminus \{0\}, f(n) \downarrow$.
 
 ### Dominio di esistenza/campo di esistenza
 $Dom_f = \{a \in A: f(a) \downarrow\} \subseteq A$. Quindi:
-- $Dom_f \subset A \implies f \text{ parziale}$;
+- $Dom_f \not \subseteq A \implies f \text{ parziale}$;
 - $Dom_f = A \implies f \text{ totale}$.
 
-Il **campo di esistenza** è, quindi, l'insieme dei punti su cui è definita una funzione.<br />Ad esempio, la funzione $f: \mathbb{N} \to \mathbb{N}$ tale che $f{n} = \lfloor\frac{1}{n} \rfloor$ non è definita in $n = 0 \implies f(0) \uparrow$. Quindi, $\forall n \in \mathbb{N} \setminus \{0\}, f(n) \downarrow$.
+Il **campo di esistenza** è, quindi, l'insieme dei punti su cui è definita una funzione.
+
+Alcuni esempi:
+$f(n) = \lfloor \frac{1}{n} + \frac{1}{(n - 1)(n -2)} \rfloor \implies Dom_f = \mathbb{N} \setminus \{0, 1, 2\}$
+$f(n) = \lfloor \log{n} \rfloor \implies Dom_f = \mathbb{N} \setminus \{0\}$
+$f(n) = \lfloor \sqrt{-n} \rfloor \implies Dom_f = \{0\}$
 
 ----------------------------------------------------------------
 
 ### Totalizzazione di una funzione parziale
 $f: A \to B \text{ parziale} \implies f: A \to B \cup \{\bot\} \text{ totale}$, dove $\bot$ è il simbolo di **indefinito**.
 $$f(a) = \begin{cases}
-f(a) & a \in Dom_f \\
+f(a) & a \in Dom_f \cr \cr
 \bot & \text{altrimenti} \\
 \end{cases}$$
 Per abbreviare, si scrive $B \cup \{\bot\} \to B_{\bot}$. Seguendo l'esempio precedente
@@ -166,14 +175,29 @@ $$A_1 \times A_2 \times ... \times A_n = \{(a_1, a_2, ..., a_n): a_i \in A_i\}$$
 
 Per abbreviare, si scrive $A \times A \times A \times ... \times A = A^n$.
 
-Il **Proiettore i-esimo**, invece, è una funzione $\Pi_i : A_1, A_2, ..., A_n \to A_i$. Nel caso specifico di una tupla $(a_1, a_2, ..., a_n)$, $\Pi_i(a_1, a_2, ..., a_n) = a_i$.<br />
-Mentre un prodotto cartesiano crea struttura, il proiettore, quindi, destruttura un elemento strutturato.
+Il **Proiettore i-esimo**, invece, è una funzione $\Pi_i : A_1 \times A_2 \times ... \times A_n \to A_i$. Nel caso specifico di una tupla $(a_1, a_2, ..., a_n)$, $\Pi_i(a_1, a_2, ..., a_n) = a_i$.<br />
+Mentre un prodotto cartesiano crea struttura, il proiettore destruttura un elemento strutturato.
+
+Alcuni esempi di insiemi prodotto:
+- $C = \{(x, y) \in \mathbb{R}^2: x^2 + y^2 = 1\}$;
+
+![[InsiemiProdottoC.png]]
+
+- $I = \{(x, y) \in \mathbb{R}^2: x^2 + y^2 < 1\}$;
+
+![[InsiemiProdottoI.png]]
+
+- $E = \{(x, y) \in \mathbb{R}^2: x^2 + y^2 > 1\}$
+
+![[InsiemiProdottoE.png]]
+
+$C \cup I \cup E = \mathbb{R}^2$
 
 ----------------------------------------------------------------
 
 ## Insiemi di funzioni
-$B^A = \{f:A \to B\} =$ l'insieme di tutte le funzioni da $A$ a $B$.
-$B^A_{\bot} = \{f:A \to B\} =$ l'insieme delle funzioni parziali da $A$ a $B$.
+$B^A = \{f:A \to B\} =$ l'insieme di tutte le funzioni (sia totali che parziali) da $A$ a $B$.
+$B^A_{\bot} = \{f:A \to B\} =$ l'insieme delle funzioni parziali (totalizzate) da $A$ a $B$.
 
 La notazione $B^A$ viene utilizzata in quanto il numero di elementi dell'insieme è pari alla cardinalità di $B$ elevata alla cardinalità di $A$ (nel caso di insiemi con cardinalità finita).
 
@@ -181,7 +205,7 @@ La notazione $B^A$ viene utilizzata in quanto il numero di elementi dell'insieme
 
 ## Funzione di valutazione
 Dati $A$, $B$ e $B_{\bot}^A$, si definisce la seguente **funzione di valutazione**:
-$$w: B_{\bot}^A \times A \to B$$
+$$w: B_{\bot}^A \times A \to B \space \text{ con }$$
 $$w(f, a) = f(a)$$
 - fissando $a$, si provano tutte le funzioni su $a$;
 - fissando $f$, si ottiene il grafico di $f$.
@@ -190,12 +214,35 @@ $$w(f, a) = f(a)$$
 
 # Teoria della calcolabilità
 ## Sistema di calcolo
-Un **sistema di calcolo** $\mathbb{C}$ è un oggetto il quale, presi in ingresso un programma $P$ e dei dati $x$, produce in uscita l'output $y$ o $\bot$, ottenuto dall'esecuzione di $P$ su $x$.
+Un **sistema di calcolo** $\mathbb{C}$ è un oggetto il quale, presi in ingresso un programma $P$ e dei dati $x$, produce in uscita l'output $y$ o $\bot$ (nel caso il sistema di calcolo vada in loop), ottenuto dall'esecuzione di $P$ su $x$.
 
-immagine sistema di calcolo
+![[SistemaDiCalcolo.png]]
 
-Un programma $P \in \text{ DATI}_{\bot}^{\text{DATI}}$ è una sequenza di regole che trasformano un dato di input in un dato di output (o in un loop) esattamente come una funzione $\implies P \in \text{ DATI}_{\bot}^{\text{DATI}}$ è una funzione (in un linguaggio).<br />
-$\mathbb{C}: \text{ DATI}_{\bot}^{\text{DATI}} \times \text{ DATI} \to \text{ DATI}_{\bot}$ è, quindi, una funzione di valutazione e $\mathbb{C}(P, x)$, con $P$ fisso e $x$ variabile, si ottiene  è la funzione calcolata da $P$, ovvero è la **semantica** di $P$. 
+Un programma $P \in \text{ PROG}$ è una sequenza di regole che trasforma un dato di input in un dato di output (o in un loop) esattamente come una funzione $\implies P \in \text{ DATI}_{\bot}^{\text{DATI}}$ è una funzione (in un linguaggio).
+
+$\mathbb{C}: \text{ DATI}_{\bot}^{\text{DATI}} \times \text{ DATI} \to \text{ DATI}_{\bot}$ è, quindi, una funzione di valutazione e $\mathbb{C}(P, x)$, con $P$ fisso e $x$ variabile,è la funzione calcolata da $P$, ovvero la **semantica** di $P$. 
+
+Un esempio di calcolo della Semantica di un programma.
+
+```pseudo
+	\begin{algorithm}
+	\caption{P}
+	\begin{algorithmic}
+	\State $P \equiv$ input$(x)$
+		\If{$\langle x \rangle_2 == 0$}
+			\State return(x)
+		\Else
+			\While{$(1 < 2)$}
+				\State return $1$
+            \EndWhile
+        \EndIf
+	\end{algorithmic}
+	\end{algorithm}
+```
+
+Semantica (significato) di $P$:
+$\mathbb{C}(P, \_): \mathbb{N} \to \mathbb{N}_{\bot}$
+$\mathbb{C}(P, n) = \cases{ n \space \text{ se } n \text{ è pari} \cr \cr \bot \space \text{ altrimenti}}$
 
 ----------------------------------------------------------------
 
@@ -204,13 +251,23 @@ La **potenza computazionale** di un sistema di calcolo indica cosa il sistema di
 $$F(\mathbb{C}) = \{\mathbb{C}(P, \_): P \in \text{ PROG}\} \subseteq \text{ DATI}_{\bot}^{\text{DATI}}$$
 Stabilire cosa può fare l'informatica significa studiare il carattere dell'inclusione: se è impropria, ovvero se la semantica coincide con l'insieme delle funzioni da $\text{DATI}$ a $\text{DATI}$, allora l'informatica può tutto, altrimenti se è propria alcuni problemi non sono automatizzabili.  
 
-Calcolare funzioni significa risolvere problemi in generale. Ad ogni problema è possibile associare una funzione soluzione programmando si risolve automaticamente in problema.
+Calcolare funzioni significa risolvere problemi in generale. Ad ogni problema è possibile associare una funzione soluzione programmando  ... (?) si risolve automaticamente in problema.
+
+Alcuni esempi:
+
+programma slide 10 
+
+Un programma di calcolo $f_{DET}$ chiaramente risolve automaticamente $DET$. Viceversa, risolvere automaticamente $DET$ vuol dire avere un programma di calcolo $f_{DET}$.
+
+programma slide 11
+
+Praticamente, tutti gli editori risolvono il problema $FIND-REPLACE$, cioè, calcolano la funzione $f_{FIND-REPLACE}: TESTI \times PAROLE^2 \to TESTI$.
 
 ----------------------------------------------------------------
 
 ## Cardinalità di insiemi infiniti
-Dato un insieme $A$, si definisce **cardinalità** di $A$ (o $|A|$), intuiitivamente, il numero di elementi appartenenti ad $A$.<br />
-Mentre per quanto riguarda insiemi finiti, questa nozione sia adeguata, non è adatta per gli insiemi cardinalmente infiniti.<br />Il concetto di cardinalità di insiemi deve essere precisato e, in particolare, per poter parlare appropriatamente di insiemi conteneti un numero infinito di elementi.
+Dato un insieme $A$, si definisce **cardinalità** di $A$ (o $|A|$), intuitivamente, il numero di elementi appartenenti ad $A$.<br />
+Mentre, per quanto riguarda insiemi finiti, questa nozione sia adeguata, non è adatta per gli insiemi cardinalmente infiniti.<br />Il concetto di cardinalità di insiemi deve essere precisato e, in particolare, per poter parlare appropriatamente di insiemi conteneti un numero infinito di elementi.
 
 ### Relazione
 Relazione binaria su $A$: $R \subseteq A \times A$. Gli elementi $a, b \in A$ stanno in relazione $R$ se e solo se  $(a, b) \in R$. La notazione è $aRb$ oppure $a \cancel{R} b$. 

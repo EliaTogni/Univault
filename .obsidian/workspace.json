@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Classes/Simulation.md",
+                "file": "Classes/Informatica Teorica.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Simulation.md",
+                "file": "Classes/Informatica Teorica.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,10 +117,14 @@
   },
   "active": "9d6dab7f39b33ece",
   "lastOpenFiles": [
+    "Images/SistemaDiCalcolo.png",
+    "Images/InsiemiProdottoI.png",
+    "Images/InsiemiProdottoE.png",
+    "Images/InsiemiProdottoC.png",
+    "Classes/Simulation.md",
     "Articles/Image Classification with Classic and Deep Learning Techniques.md",
     "Articles/Preprocessing for Image Classification by Convolutional Neural Networks.md",
     "Articles/An Introduction to Convolutional Neural Networks.md",
-    "Classes/Simulation.md",
     "Atoms/The Game of Life.md",
     "Classes/Cittadinanza Digitale e Tecnocivismo.md",
     "Classes/Algoritmi Paralleli e Distribuiti.md",
@@ -141,9 +145,6 @@
     "Images/ActivationsMeanSDTraining.png",
     "Images/UpstreamGradient.png",
     "Images/PoorInitializationProblems.png",
-    "Images/ActivationMapsExamples.png",
-    "Images/AccuracyLossForLearningRates.png",
-    "Images/TuningInputSizeTable.png",
     "Classes/3D Videogames.md",
     "Videos/How to Write a Paper in a Weekend (By Prof. Pete Carr.md",
     "Lexicon/Allampanato.md",
@@ -152,7 +153,6 @@
     "Lexicon/Contenzioso.md",
     "Lexicon/Corrivo.md",
     "Lexicon/Edificante.md",
-    "Lexicon/Endemico.md",
     "Untitled.canvas",
     "Blogs",
     "Atoms",
