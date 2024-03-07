@@ -353,7 +353,7 @@ Il primo punto si dimostra graficamente: una semicirconferenza rappresenta l'ins
 Il raggio viene poi prolungato come una retta fino ad intersecare la retta dei reali, parallela al diametro.  
 Dato che quindi ad ogni punto di $(0, 1)$ posso associare un punto di $\mathbb{R}$ (iniezione) e viceversa posso risalire ad ogni punto del segmento partendo dalla retta dei reali (suriezione), la funzione è biiettiva e quindi un isomorfismo.  
 
-Per il secondo punto ipotiziamo per assurdo di poter elencare esaustivamente i numeri tra 0 e 1, e li scriviamo nella seguente forma:  
+Per il secondo punto ipotiziamo per assurdo di poter elencare esaustivamente i numeri tra $0$ e $1$, e li scriviamo nella seguente forma:  
 $$\begin{matrix}
 0. & a_{00} & a_{01} & a_{02} & \dots \\
 0. & a_{10} & a_{11} & a_{12} & \dots \\
@@ -428,7 +428,7 @@ Cerchiamo analiticamente la forma inversa. Il primo passo è definire il valore 
 $$\gamma =\left\lfloor \frac{-1 + \sqrt{8n-7}}{2} \right\rfloor$$  
 quindi so che $y = n - <\gamma, 0>$ e $x = \gamma - y$.  
 
-Per ora ho dimostrato solo che $\mathbb{N} \times \mathbb{N}$ è isomorfo a $\mathbb{N}^+$, ma per dimostrare che è isomorfo anche al semplice $\mathbb{N}$ basta definire la funzione $[x,y] = <x, y> - 1$ che in pratica è una coppia di Cantor in cui si inizia a contare da 0. Questo mostra sia che $\mathbb{N} \times \mathbb{N} \sim \mathbb{N}$ sia che, dato che i razionali non sono altro che coppie di naturali, $\mathbb{Q} \sim \mathbb{N}$.  
+Per ora ho dimostrato solo che $\mathbb{N} \times \mathbb{N}$ è isomorfo a $\mathbb{N}^+$, ma per dimostrare che è isomorfo anche al semplice $\mathbb{N}$ basta definire la funzione $[x,y] = <x, y> - 1$ che in pratica è una coppia di Cantor in cui si inizia a contare da $0$. Questo mostra sia che $\mathbb{N} \times \mathbb{N} \sim \mathbb{N}$ sia che, dato che i razionali non sono altro che coppie di naturali, $\mathbb{Q} \sim \mathbb{N}$.  
 ### Codifica di dati in numeri
 Ogni tipo di dato può essere rappresentato, in particolar modo grazie alla funzione coppia di Cantor, come un intero naturale, ad esempio codificando una lista di numeri con una applicazione ripetuta della funzione, un suono con una lista di campionature, un grafo con la matrice di adiacenza che è una lista di liste, e così via.  
 Possiamo quindi lavorare su numeri invece che su dati, e trasporre le nostre funzioni $f: \text{DATI} \to \text{DATI}_{\bot}$ in funzioni $f: \mathbb{N} \to \mathbb{N}_{\bot}$.  

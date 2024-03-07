@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Classes/3D Videogames.md",
+                "file": "Classes/Informatica Teorica.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/3D Videogames.md",
+                "file": "Classes/Informatica Teorica.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,6 +116,7 @@
   },
   "active": "9d6dab7f39b33ece",
   "lastOpenFiles": [
+    "Classes/3D Videogames.md",
     "Classes/Algoritmi Paralleli e Distribuiti.md",
     "Classes/Informatica Teorica.md",
     "Images/SistemaDiCalcolo.png",
@@ -144,7 +144,6 @@
     "Images/HistogramActivations.png",
     "Images/ActivationsMeanSDTraining.png",
     "Images/UpstreamGradient.png",
-    "Classes/3D Videogames.md",
     "Videos/How to Write a Paper in a Weekend (By Prof. Pete Carr.md",
     "Lexicon/Allampanato.md",
     "Lexicon/Bovindo.md",
