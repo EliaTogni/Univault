@@ -301,15 +301,21 @@ Mentre sia adeguata per quanto riguarda insiemi finiti, questa nozione non è ad
 Questa nozione intuitiva di cardinalità porterebbe a dire che $\mathbb{N}$ e $\mathbb{R}$ siano equinumerosi, dato che $\vert \mathbb{N} \vert = \infty = \vert \mathbb{R} \vert$. Chiaramente, questa conclusione è errata visto che l'infinito di $\mathbb{R}$ è diverso da quello di $\mathbb{N}$. 
 
 ### Relazione
-Relazione binaria su $A$: $R \subseteq A \times A$. Gli elementi $a, b \in A$ stanno in relazione $R$ se e solo se  $(a, b) \in R$. La notazione è $aRb$ oppure $a \cancel{R} b$. 
+Una relazione binaria su $A$ è definita come: $R \subseteq A \times A$. Gli elementi $a, b \in A$ stanno in relazione $R$ se e solo se  $(a, b) \in R$. La notazione è $aRb$ oppure $a \cancel{R} b$. 
+
+Alcuni esempi:<br />
+$R \equiv \text{ "divide" }: 3 \space R \space 6$, $5 \space R \space 45$, ..., $3 \cancel{R} 10$.<br />
+$R = \{(a, b) \in \mathbb{N}^2: \langle b \rangle_a = 0\}$.<br />
+
+$\equiv_k$ indica l'**equivalenza modulo $k$**: $a \equiv_k b$ se e solo se $\langle a \rangle_k = \langle b \rangle_k$, e.g., $5 \equiv_2 7$, $4 \equiv_4 16$, ...
 
 ----------------------------------------------------------------
 
 ### Relazione di equivalenza
 $R \subseteq A^2$ è una relazione di **equivalenza** se e solo se è:  
-1) **riflessiva**: $\forall a, aRa$;  
-2) **simmetrica**: $\forall a, b, aRb \iff bRa$;  
-3) **transitiva**: $\forall a, b, c, aRb \wedge bRc \implies aRc$.  
+1) **riflessiva**: $\forall a,\quad aRa$;  
+2) **simmetrica**: $\forall a, b, \quad aRb \iff bRa$;  
+3) **transitiva**: $\forall a, b, c, \quad aRb \wedge bRc \implies aRc$.  
 
 Dato $a \in A$, si definisce **classe di equivalenza** $[a]_R$ per una relazione d'equivalenza $R$, l'insieme degli elementi che sono in relazione con $a$: $$[a]_R = \{b \in A: aRb\}$$ 
 Ogni classe di equivalenza induce una **partizione** sull'insieme dominio, ovvero individua $A_1, \dots, A_n \subseteq A$ tali che:  
@@ -317,12 +323,23 @@ Ogni classe di equivalenza induce una **partizione** sull'insieme dominio, ovver
 2) $i \neq j \implies A_i \cap A_j = 0$;
 3) $\bigcup_{i \ge 1} A_i = A$.  
 
+immagine slide 3
+
 Si dimostra facilmente che:  
-1) Non esistono classi di equivalenza vuote;
-2) Dati $a, b \in A$, vale $[a]_R \cap [b]_R = \emptyset$ oppure $[a]_R = [b]_R$;
+1) non esistono classi di equivalenza vuote (per la proprietà riflessiva);
+2) dati $a, b \in A$, vale $[a]_R \cap [b]_R = \emptyset$ oppure $[a]_R = [b]_R$;
 3) $\bigcup_{a \in A} [a]_R = A$.  
 
+Dunque, l'insieme delle classi di equivalenza di $R$ è la partizione indotta da $R$ su $A$.
 L'insieme $A$ partizionato in tal modo è detto **insieme quoziente** di $A$ rispetto ad $R$ ed è denotato da $A / R$.  
+
+Alcuni esempi: <br />
+Si ha $\equiv_4 \subseteq \mathbb{N}^2$. Quali sono le sue classi di equivalenza?<br />
+$[0]_4, = \{4k\}; [1]_4 = \{4k+1\}; [2]_4 = \{4k + 2\}; [3]_4 = \{4k + 3\}$.<br />
+Ne esistono altre? No, infatti $\langle n \rangle_4 \in \{0, 1, 2, 3\}$:
+- nessuna classe è vuota;
+- sono (?) disgiunte ($\{[i]_4: 0 \leq i \leq 3\}$ è una partizione per $\mathbb{N}$ quella indotta da $\equiv_4$.)
+- $\bigcup_{i = 0}^{3}[i]_4 = \mathbb{N}$
 
 ----------------------------------------------------------------
 
