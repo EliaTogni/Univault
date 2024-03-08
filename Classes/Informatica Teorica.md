@@ -346,40 +346,74 @@ Dunque, l'insieme delle classi di equivalenza di $R$ è la partizione indotta da
 
 Alcuni esempi: <br />
 Si ha $\equiv_4 \subseteq \mathbb{N}^2$. Quali sono le sue classi di equivalenza?<br />
-$[0]_4, = \{4k\}; [1]_4 = \{4k+1\}; [2]_4 = \{4k + 2\}; [3]_4 = \{4k + 3\}$.<br />
+E' possibile quozientare $\mathbb{N}$: $[0]_4, = \{4k\}; [1]_4 = \{4k+1\}; [2]_4 = \{4k + 2\}; [3]_4 = \{4k + 3\}$.<br />
 Ne esistono altre? No, infatti $\langle n \rangle_4 \in \{0, 1, 2, 3\}$:
 - nessuna classe è vuota;
-- sono (?) disgiunte ($\{[i]_4: 0 \leq i \leq 3\}$ è una partizione per $\mathbb{N}$ quella indotta da $\equiv_4$.)
-- $\bigcup_{i = 0}^{3}[i]_4 = \mathbb{N}$
+- sono mutualmente disgiunte ($\{[i]_4: 0 \leq i \leq 3\}$ è una partizione per $\mathbb{N}$, la partizione indotta da $\equiv_4$. $\mathbb{N} / \equiv_4 = \{[i]_4 : o \leq i \leq 3\}$, l'insieme quoziente di $\mathbb{N}$ secondo $\equiv_4$ viene solitamente indicato con $\mathbb{Z}_4$);
+- $\bigcup_{i = 0}^{3}[i]_4 = \mathbb{N}$.
 
 ----------------------------------------------------------------
 
-### Isomorfismo
-Due insiemi sono **isomorfi** (o **equinumerosi**) se esiste una biiezione tra essi.<br />Formalmente si scrive $A \sim B$. L'isomorfismo non è altro che una relazione d'equivalenza nella classe di tutti gli insiemi.  
+## Isomorfismo
+Due insiemi sono **isomorfi** (o **equinumerosi**) se esiste una biiezione tra essi. Formalmente si scrive $A \sim B$. Si consideri ora la biiezione come una relazione tra i due insiemi. Detta $\mathbb{U}$ la classe di tutti gli insiemi, l'isomorfismo non è altro che una relazione d'equivalenza nella classe di tutti gli insiemi $\sim \subseteq \mathbb{U}^2$. Infatti l'isomorfismo:
+- è riflessivo. Infatti, per ogni insieme $A$, $A \sim A$;
+- è simmetrico. Infatti, per ogni coppia di insiemi $A$ e $B$, se $A \sim B$, esiste una funzione iniettiva e suriettiva (e quindi biiettiva) tra $A$ e $B$. Ma una funzione biiettiva è invertibile e $f^{-1}$ è ancora una biiezione, ma da $B$ ad $A$;
+- è transitivo. Infatti, la composizione di biiezioni è una biiezione a sua volta.
 
-Dato $n \in \mathbb{N}$ definiamo la famiglia di insiemi $J_n$:  
+Diventa possibile, quindi, quozientare l'insieme $\mathbb{U}$ rispetto alla relazione di isomorfismo.
+
+immagine slide 5
+
+Questo quoziente rappresenta il concetto di **cardinalità** e permette di parlare di tale concetto in maniera precisa, sia nel caso di cardinalità finita, sia nel caso di cardinalità infinita. Insiemi tra loro isomorfi (o equinumerosi), hanno la stessa cardinalità.
+
+-------------------------------------------------------------
+
+## Tipi di cardinalità
+Dato $n \in \mathbb{N}$ definiamo la famiglia di insiemi $J_n$:
+
 $$J_n = \begin{cases}
-\emptyset & n = 0 \\
+\emptyset & n = 0 \cr \cr
 \{1, \dots, n\} & n \gt 0 \\
 \end{cases}$$
-Un insieme $A$ ha cardinalità _finita_ se e solo se $J_n \sim A$ per qualche $n \in N$.  
-Un insieme che non ha cardinalità finita ha cardinalità _infinita_.  
+
+Un insieme $A$ ha cardinalità **finita** se e solo se $J_n \sim A$ per qualche $n \in N$. In tal caso, si scrive $\vert A \vert = n$.
+
+immagine slide 6
+
+$[J_n]_{\sim}$ riunisce tutti gli insiemi contenenti $n$ elementi.
+
+Un insieme che non ha cardinalità finita ha cardinalità **infinita**. Di conseguenza, l'approccio introdotto alla cardinalità di insiemi permette di parlare di insiemi **infiniti** in modo più appropriato.
 
 ----------------------------------------------------------------
 
-## Insiemi numerabili e non numerabili
-Un insieme $A$ è detto numerabile se e solo se $\mathbb{N} \sim A$ (ovvero $A \in [\mathbb{N}]_{\sim}$).  
-Per gli insiemi numerabili esiste quindi una biiezione $f$ che consente di elencare l'insieme $A$ senza perdere alcun elemento: $A = \{f(0), \dots, f(n), \dots\}$.  
-Se un insieme non è listabile su $\mathbb{N}$ non è numerabile, perché è "più fitto" e perderemmo qualche elemento nell'elenco.  
-### $\mathbb{R}$ non è numerabile
-La dimostrazione segue 3 passi:  
-1. dimostrazione che $\mathbb{R} \sim (0, 1)$ (intervallo aperto);
-2. dimostrazione che $\mathbb{N} \nsim (0, 1)$;
-3. $\mathbb{N} \nsim (0, 1) \sim \mathbb{R} \implies \mathbb{N} \nsim \mathbb{R}$.  
+## Insiemi numerabili
+Un insieme $A$ è detto numerabile se e solo se $\mathbb{N} \sim A$ (ovvero $A \in [\mathbb{N}]_{\sim}$). Per gli insiemi numerabili esiste quindi una biiezione $f$ che consente di elencare l'insieme $A$ senza perdere alcun elemento: $A = \{f(0), \dots, f(n), \dots\}$. In altri termini, gli insiemi numerabili sono gli insiemi **listabili**.
 
-Il primo punto si dimostra graficamente: una semicirconferenza rappresenta l'insieme $(0, 1)$ in modo che la proiezione dell'intersezione del raggio con la circonferenza sul diametro identifichi l'elemento dell'insieme.  
-Il raggio viene poi prolungato come una retta fino ad intersecare la retta dei reali, parallela al diametro.  
-Dato che quindi ad ogni punto di $(0, 1)$ posso associare un punto di $\mathbb{R}$ (iniezione) e viceversa posso risalire ad ogni punto del segmento partendo dalla retta dei reali (suriezione), la funzione è biiettiva e quindi un isomorfismo.  
+immagine slide 7
+
+Alcuni esempi:<br />
+- l'insieme dei numeri pari: esiste la biiezione $f(n) = 2n$, in quanto i pari sono tanti quanti i naturali;
+- l'insieme dei numeri dispari: esiste la biiezione $f(n) = 2n +1$;
+- l'insieme $\mathbb{Z}$: si mappano i numeri pari (dispari) nei positivi (negativi);
+- l'insieme $\mathbb{Q}$;
+- l'insieme delle stringhe binarie che iniziano con il numero $1$ unito all'insieme $\{0\}$ ($\{0\} \cup 1\{0, 1\}^*$): esiste la biiezione $f(n) = bin(n)$.
+
+
+Gli insiemi a cardinalità infinita hanno la proprietà di poter essere messi in relazione $1:1$ con i sottoinsiemi.
+
+-------------------------------------------------------------
+
+## Insiemi non numerabili
+Se un insieme è a cardinalità infinita ma non è listabile su $\mathbb{N}$ non è numerabile, perché è più fitto e si perderebbero alcuni elementi nell'elenco.  
+### $\mathbb{R}$ non è numerabile
+La dimostrazione segue $3$ passi:
+1) dimostrare che $\mathbb{R} \sim (0, 1)$ (intervallo aperto). Questo vuol dire che nell'intervallo aperto $(0, 1)$ ci sono tanti elementi quanti in $\mathbb{R}$;
+2) dimostrare che $\mathbb{N} \nsim (0, 1)$;
+3) $\mathbb{N} \nsim (0, 1) \sim \mathbb{R} \implies \mathbb{N} \nsim \mathbb{R}$ (non transitività di $\sim$).
+
+Per dimostrare che $\mathbb{R} \sim (0, 1)$, si rappresenta una biiezione graficamente: una semicirconferenza rappresenta l'insieme $(0, 1)$ in modo che la proiezione dell'intersezione del raggio con la circonferenza sul diametro identifichi l'elemento dell'insieme. Il raggio viene poi prolungato come una retta fino ad intersecare la retta dei reali, parallela al diametro. Dato che, quindi, ad ogni punto di $(0, 1)$ è possibile associare un punto di $\mathbb{R}$ (iniezione) e viceversa è possibile risalire ad ogni punto del segmento partendo dalla retta dei reali (suriezione), la funzione è biiettiva e quindi è un isomorfismo. $\mathbb{R}$ è quindi numeroso quanto un suo qualsiasi segmento.
+
+La stessa biiezione sull'intervallo chiuso $[0, 1]$ mostra che la **compattificazione** di $\mathbb{R}$, ovvero $\mathbb{R}$ unito a tutti i suoi punti di accumulazione: $\dot{\mathbb{R}} \cup \{\pm \infty\} \sim [0, 1]$ ($0 \mapsto -\infty$, $1 \mapsto +\infty$).
 
 Per il secondo punto ipotiziamo per assurdo di poter elencare esaustivamente i numeri tra $0$ e $1$, e li scriviamo nella seguente forma:  
 $$\begin{matrix}
@@ -400,6 +434,8 @@ Siamo quindi arrivati ad un assurdo per cui la lista esaustiva non elenca ogni n
 
 Per il terzo punto ci basta considerare la transitività dell'isomorfismo per concludere che $\mathbb{R}$ non è isomorfo a $\mathbb{N}$ e quindi l'insieme dei numeri reali non è numerabile.  
 
+-------------------------------------------------------------
+
 ### Insiemi continui
 Insiemi che hanno la stessa cardinalità dei numeri reali sono detti _continui_.  
 Ad esempio, l'insieme delle parti di $\mathbb{N}$ non è numerabile e lo si dimostra con un simile procedimento diagonale: per assurdo si ipotizza di poter elencare tutti gli insiemi della partizione per mezzo del loro vettore caratteristico (per ogni $n \in N$ la $n$-esima cifra del vettore caratteristico di $A$ è 0 se $n$ non è in $A$, 1 viceversa) e si costruisce un nuovo vettore caratteristico negando gli elementi della diagonale. Si è quindi ottenuto un nuovo vettore che non era stato prima elencato, arrivando ancora una volta ad un assurdo.  
@@ -415,6 +451,8 @@ f_2 & f_2(0) & f_2(1) & f_2(2) & \dots \\
 \end{matrix}$$
 A questo punto si costruisce la funzione $\varphi: \mathbb{N} \to \mathbb{N}$ in modo che $\varphi(n) = f_n(n) + 1$.  
 Questa funzione è ben definita ma non compare nell'enumerazione precedente, quindi ecco ancora l'assurdo che porta a dire che $\mathbb{N}^{\mathbb{N}} \nsim \mathbb{N}$.  
+
+-------------------------------------------------------------
 
 # Potenza computazionale, ancora
 Due considerazioni sono da fare:  

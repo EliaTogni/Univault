@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Classes/Informatica Teorica.md",
+                "file": "Classes/Simulation.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Informatica Teorica.md",
+                "file": "Classes/Simulation.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,11 +114,13 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "9d6dab7f39b33ece",
+  "active": "841d767269e7d257",
   "lastOpenFiles": [
+    "Classes/Informatica Teorica.md",
+    "Atoms/Grafo.md",
+    "Lexicon/Efebico.md",
     "Classes/3D Videogames.md",
     "Classes/Algoritmi Paralleli e Distribuiti.md",
-    "Classes/Informatica Teorica.md",
     "Images/SistemaDiCalcolo.png",
     "Images/InsiemiProdottoI.png",
     "Images/InsiemiProdottoE.png",
@@ -151,7 +152,6 @@
     "Lexicon/Caveat.md",
     "Lexicon/Contenzioso.md",
     "Lexicon/Corrivo.md",
-    "Lexicon/Edificante.md",
     "Untitled.canvas",
     "Blogs",
     "Atoms",

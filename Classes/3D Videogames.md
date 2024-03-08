@@ -45,7 +45,7 @@ The product of a vector and a scalar $\vec{v_1} * n$ gives as result a vector $\
 
 immagine slide 8
 
-Combining the two preceding properties, it is easy to understand how the interpolation between two vectors $\vec{v_1}, \vec{v_2}$ with a scalar $n$ gives as result a vector: $mix(\vec{v_1}, \vec{v_2}, n) = (1 - n)\vec{v_1} + n\vec{v_2}$ .
+Combining the two preceding properties, it is easy to understand how the interpolation between two vectors $\vec{v_1}, \vec{v_2}$ with a scalar $n$ gives as result a vector: $mix(\vec{v_1}, \vec{v_2}, n) = (1 - n)\vec{v_1} + n\vec{v_2}$.
 
 
 ### Exercises
