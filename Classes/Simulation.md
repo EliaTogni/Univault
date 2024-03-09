@@ -373,19 +373,67 @@ formule
 -------------------------------------------------------------
 
 ### Random Variables
-How many variables can be identified?
+How many variables can be identified in the example below?
 
 $$y = f(x)$$
 
-For a modeler, $x$ is input data, while $y$ is an abstraction of the process modeled by $f()$.
+For a modeler, $x$ is input data, while $y$ is an abstraction of the process modeled by $f()$. When an experiment is performed, the concern is sometimes on the value of some numerical quantity determined by the result. These quantities of interest that are determined by the results of the experiment are known as **random variables**.
+
+The **cumulative distribution** function, or, more simply, the distribution function, $F$ of the random variable $X$ is defined for any real number $x$ by
+
+$$F(x) = P[X \leq x]$$
+
+grafico
+
+A random variable that can take either a finite or at most a countable number of possible values is said to be **discrete**. For a discrete random variable $X$, its **probability mass function** $p(x)$ is defined as
+
+$$p(x) = P[X = x]$$
+
+If $X$ is a discrete random variable that takes on one of the possible values $x_1, x_2,  \dots$, then, since $X$ must take on one of these values, it holds that
+
+$$\sum_{i = 1}^{\infty}p(x_i) = 1$$
+
+A graphical example of a probability mass function.
+
+grafico
+
+esempio numerico
+
+Whereas a discrete random variable assumes at most a countable set of possible values, it is common to have to consider random variables whose set of possible values is an interval. It is sad that the random variable $X$ is a **continuous random variable** if there is a nonnegative function $f(x)$ defined for all real numbers $x$ and having the property that for any set $C$ of real numbers
+
+$$P[X \in X] = \int_{C} f(x) dx$$
+
+The function $f$ is called the **probability density function** of the random variable $X$.
+
+The relationship between the cumulative distribution $F(\cdot)$ and the probability density $f( \cdot)$ is expressed by
+
+$$F(a) = P[X \in (-\infty, a)] = \int_{-\infty}^{a} f(x) dx$$
+
+A graphical example of a probability density function.
+
+grafico
+
+In many experiments we are interested not only in probability distribution functions of individual random variables, but also in the relationships between two or more of them. In order to specify the relationship between two random variables, we define the joint cumulative probability distribution function of $X$ and $Y$ by
+
+$$F(x, y) = P[X \leq x, Y \leq y]$$
+
+Thus, $F(x, y)$ specifies the probability that $X$ is less than or equal to $x$ and simultaneously $Y$ is less than or equal to $y$.
+
+The random variables $X$ and $Y$ are said to be **independent** if, for any two sets of real numbers $C$ and $D$, it holds that
+
+$$P[X \in C, Y \in D] = P[X \in C \space \wedge \space Y \in D] = P[X \in C] \cdot P[Y \in D]$$
+
+That is, $X$ and $Y$ are independent if, for all sets $C$ and $D$, the events $A = \{X \in C\}$ and $B = \{Y \in D\}$ are independent. Loosely speaking, $X$ and $Y$ are independent if knowing the value of one of them does not affect the probability distribution of the other. Random variables that are not independent are said to be **dependent**.
 
 
-- cdf + grafico
-- discrete -> probability mass function + formula + grafico
-- continuous -> probability density function + formula + grafico
-- joint probabilities
-- independet random variables
-- 
+- expectation as linear operator + properties
+- expectation for a pair of random variable
+- variance and covariance
+- correlation
+
+- Markov's Inequality
+- Chebishev's inequality
+- Weak and strong law of large numbers
 
 ----------------------------------------------------------------
 
