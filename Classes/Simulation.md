@@ -365,6 +365,28 @@ $$= \sum_{j = 1}^{k} (1 - p_j)^{n-1}p_j$$
 
 where $P(N \vert T_j)$ was computed by noting that the conditional probability that coupon $n$ is a new type given that it is a type $j$ coupon is equal to the conditional probability that each of the first $n − 1$ coupons is not a type $j$ coupon, which by independence is equal to $(1 − p_j)^{n−1}$.
 
+As indicated by the coin flip example, $P(A \vert B)$ (the conditional probability of
+$A$, given that $B$ occurred) is not generally equal to $P(A)$ (the unconditional probability of $A$). In other words, knowing that $B$ has occurred generally changes the probability that $A$ occurs. But what if they were mutually exclusive? In the special case where $P(A \vert B)$ is equal to $P(A)$, we say that $A$ and $B$ are independent. Since $P(A \vert B)= P(A \cap B)/P(B)$, we see that $A$ is independent of $B$ if $P(A \cap B) = P(A)P(B)$. Since this relation is symmetric in $A$ and $B$, it follows that whenever $A$ is independent of $B$, $B$ is independent of $A$.
+
+formule
+
+-------------------------------------------------------------
+
+### Random Variables
+How many variables can be identified?
+
+$$y = f(x)$$
+
+For a modeler, $x$ is input data, while $y$ is an abstraction of the process modeled by $f()$.
+
+
+- cdf + grafico
+- discrete -> probability mass function + formula + grafico
+- continuous -> probability density function + formula + grafico
+- joint probabilities
+- independet random variables
+- 
+
 ----------------------------------------------------------------
 
 ## Generazione di numeri randomici ##
