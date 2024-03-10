@@ -379,12 +379,16 @@ $$y = f(x)$$
 
 For a modeler, $x$ is input data, while $y$ is an abstraction of the process modeled by $f()$. When an experiment is performed, the concern is sometimes on the value of some numerical quantity determined by the result. These quantities of interest that are determined by the results of the experiment are known as **random variables**.
 
-The **cumulative distribution** function, or, more simply, the distribution function, $F$ of the random variable $X$ is defined for any real number $x$ by
+#### Cumulative distribution function
+The **cumulative distribution function**, or, more simply, the distribution function, $F$ of the random variable $X$ is defined for any real number $x$ by
 
 $$F(x) = P[X \leq x]$$
 
 grafico
 
+-------------------------------------------------------------
+
+#### Probability mass function
 A random variable that can take either a finite or at most a countable number of possible values is said to be **discrete**. For a discrete random variable $X$, its **probability mass function** $p(x)$ is defined as
 
 $$p(x) = P[X = x]$$
@@ -399,6 +403,9 @@ grafico
 
 esempio numerico
 
+-------------------------------------------------------------
+
+#### Probability density function
 Whereas a discrete random variable assumes at most a countable set of possible values, it is common to have to consider random variables whose set of possible values is an interval. It is sad that the random variable $X$ is a **continuous random variable** if there is a nonnegative function $f(x)$ defined for all real numbers $x$ and having the property that for any set $C$ of real numbers
 
 $$P[X \in X] = \int_{C} f(x) dx$$
@@ -413,25 +420,124 @@ A graphical example of a probability density function.
 
 grafico
 
-In many experiments we are interested not only in probability distribution functions of individual random variables, but also in the relationships between two or more of them. In order to specify the relationship between two random variables, we define the joint cumulative probability distribution function of $X$ and $Y$ by
+-------------------------------------------------------------
+
+#### Joint cumulative probability distribution function
+In many experiments we are interested not only in probability distribution functions of individual random variables, but also in the relationships between two or more of them. In order to specify the relationship between two random variables, we define the **joint cumulative probability distribution function** of $X$ and $Y$ by
 
 $$F(x, y) = P[X \leq x, Y \leq y]$$
 
 Thus, $F(x, y)$ specifies the probability that $X$ is less than or equal to $x$ and simultaneously $Y$ is less than or equal to $y$.
 
+-------------------------------------------------------------
+
+#### Dependent and independent random variables
 The random variables $X$ and $Y$ are said to be **independent** if, for any two sets of real numbers $C$ and $D$, it holds that
 
 $$P[X \in C, Y \in D] = P[X \in C \space \wedge \space Y \in D] = P[X \in C] \cdot P[Y \in D]$$
 
 That is, $X$ and $Y$ are independent if, for all sets $C$ and $D$, the events $A = \{X \in C\}$ and $B = \{Y \in D\}$ are independent. Loosely speaking, $X$ and $Y$ are independent if knowing the value of one of them does not affect the probability distribution of the other. Random variables that are not independent are said to be **dependent**.
 
+-------------------------------------------------------------
 
-- expectation as linear operator + properties
-- expectation for a pair of random variable
-- variance and covariance
-- correlation
+#### Expectation
+One of the most useful concepts in probability is that of the **expectation** of a random variable. If $X$ is a discrete random variable that takes on one of the possible values $x_1, x_2, \dots$, then the expectation or **expected value** of $X$, also called the mean of $X$ and denoted by $\mathbb{E}[X]$, is defined by
 
-- Markov's Inequality
+$$\mathbb{E}[X] = \sum_{i} x_i P[X = x_i]$$
+In words, the expected value of $X$ is a weighted average of the possible values that $X$ can take on, each value being weighted by the probability that $X$ assumes it.
+
+Suppose now that that it is desired to determine the expected value not of the random variable $X$ but of the random variable $g(X)$, where $g$ is some given function. Since $g(X)$ takes on the value $g(x)$ when $X$ takes on the value $x$, it seems intuitive that $\mathbb{E}[g(X)]$ should be a weighted average of the possible values $g(x)$ with, for a given $x$, the weight given to $g(x)$ being equal to the probability (or probability density in the continuous case) that $X$ will equal $x$. If $X$ is a discrete random variable having probability mass function
+$p(x)$, then
+
+$$\mathbb{E}[g(X)] = \sum_xg(x)p(x)$$
+
+whereas if $X$ is continuous with probability density function $f(x)$, then
+
+$$\mathbb{E}[g(X)] = \int_{-\infty}^{\infty} g(x)f(x)dx$$
+
+A consequence of the above proposition is the fact that, if $a$ and $b$ are constants, then
+
+$$\mathbb{E}[aX + b] = a\mathbb{E}[X] + b$$
+
+It can also be shown that expectation is a linear operation in the sense that for any two random variables $X_1$ and $X_2$
+
+$$\mathbb{E}[X_1 + X_2] = \mathbb{E}[X_1] + \mathbb{E}[X_2]$$
+
+which easily generalizes to give
+
+$$\mathbb{E}\Big[\sum_{i = 1}^{n} x_i\Big] = \sum_{i = 1}^{n}\mathbb{E}[X_i]$$
+
+-------------------------------------------------------------
+
+#### Variance
+Whereas $\mathbb{E}[X]$, the expected value of the random variable $X$, is a weighted average of the possible values of $X$, it yields no information about the variation of these values.<br />
+One way of measuring this variation is to consider the average value of the square of the difference between $X$ and $\mathbb{E}[X]$. If $X$ is a random variable with mean $\mu$, then the **variance** of $X$, denoted by $Var(X)$, is defined by
+
+$$Var(X) = \mathbb{E}[(X - \mu)^2]$$
+
+An alternative formula for $Var(X)$ is derived as follows:
+
+$$Var(X) = \mathbb{E}[(X - \mu)^2]$$
+$$\space = \mathbb{E}[X^2 - 2\mu X + \mu^2]$$
+$$ = \mathbb{E}[X^2] - \mathbb{E}[2\mu X] + \mathbb{E}[\mu^2]$$
+$$= \mathbb{E}[X^2] - 2\mu\mathbb{E}[X] + \mu^2$$
+$$= \mathbb{E}[X^2] - \mu^2$$
+
+That is,
+
+$$Var(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2$$
+
+Whereas the expected value of a sum of random variables is equal to the sum of the expectations, the corresponding result is not, in general, true for variances. It is, however, true in the important special case where the random variables are independent. Before proving this, lets define the concept of the **covariance** between two random variables. The covariance of two random variables $X$ and $Y$, denoted $Cov(X, Y)$, is defined by
+
+$$Cov(X, Y) = \mathbb{E}[(X - \mu_x)(Y -\mu_y)]$$
+
+where $\mu_x = \mathbb{E}[X]$ and $\mu_y = \mathbb{E}[Y]$.
+
+A useful expression for $Cov(X, Y)$ is obtained by expanding the right side of the above equation and then making use of the linearity of expectation. This yields
+
+$$Cov(X, Y) = \mathbb{E}[XY - \mu_xY - X\mu_y + \mu_x\mu_y]$$
+$$= \mathbb{E}[XY] - \mu_x \mathbb{E}[Y] - \mathbb{E}[X]\mu_y + \mu_x \mu_y$$
+$$= \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]$$
+
+It is now possible to an expression for $Var(X + Y)$ in terms of their individual variances and the covariance between them. Since
+
+$$\mathbb{E}[X + Y] = \mathbb{E}[X] + \mathbb{E}[Y] = \mu_x + \mu_y$$
+
+it is possible to notice that
+
+$$Var(X + Y) = \mathbb{E}[(X + Y - \mu_x - \mu_y)^2]$$
+$$= \mathbb{E}[(X - \mu_x)^2 + (Y -\mu_y)^2 + 2(X - \mu_x)(Y - \mu_y)]$$
+$$= \mathbb{E}[(X -\mu_x)^2] + \mathbb{E}[(Y -\mu_y)] + 2\mathbb{E}[(X - \mu_x)(Y -\mu_y)]$$
+$$Var(X) + Var(Y) + 2Cov(X, Y)$$
+
+This section is ended by showing that the variance of the sum of independent random variables is equal to the sum of their variances. If $X$ and $Y$ are independent random variables, then
+
+$$Cov(X, Y) = 0$$
+
+and so
+
+$$Var(X + Y) = Var(X) + Var(Y)$$
+
+-------------------------------------------------------------
+
+#### Correlation
+The **correlation** between two random variables $X$ and $Y$, denoted as $Corr(X, Y)$, is defined by
+
+$$Corr(X, Y) = \frac{Cov(X, Y)}{\sqrt{Var(X) Var(Y)}}$$
+
+-------------------------------------------------------------
+
+#### Markov's Inequality
+
+
+-------------------------------------------------------------
+
+#### Chebishev's Inequality
+
+
+
+-------------------------------------------------------------
+
 - Chebishev's inequality
 - Weak and strong law of large numbers
 
