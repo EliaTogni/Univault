@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "29e4440303e3c6f6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Lexicon/Zshrc.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -86,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Simulation.md",
+                "file": "Lexicon/Zshrc.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,9 +128,10 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "9d6dab7f39b33ece",
+  "active": "29e4440303e3c6f6",
   "lastOpenFiles": [
     "Classes/Simulation.md",
+    "Lexicon/Zshrc.md",
     "Classes/3D Videogames.md",
     "Classes/Informatica Teorica.md",
     "Atoms/Grafo.md",
@@ -152,7 +166,6 @@
     "Lexicon/Bovindo.md",
     "Lexicon/Caveat.md",
     "Lexicon/Contenzioso.md",
-    "Lexicon/Corrivo.md",
     "Untitled.canvas",
     "Blogs",
     "Atoms",
