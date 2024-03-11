@@ -530,7 +530,25 @@ $$Corr(X, Y) = \frac{Cov(X, Y)}{\sqrt{Var(X) Var(Y)}}$$
 -------------------------------------------------------------
 
 #### Markov's Inequality
+If $X$ takes on only nonnegative values, then for any value $a > 0$
 
+$$P[X \geq a] \leq \frac{\mathbb{E}[X]}{a}$$
+
+This inequality is proved in the following way.<br />
+Define the random variable $Y$ by
+
+$$Y = \cases{a, \space \text{ if } X \geq a \cr \cr
+0, \space \text{ if } X < a}$$
+
+Because $X \geq 0$, it easily follows that
+
+$$X \geq Y$$
+
+Taking expectations of the preceding inequality yields
+
+$$\mathbb{E}[X] \geq \mathbb{E}[Y] = aP[X \geq a]]$$
+
+and the result is proved.
 
 -------------------------------------------------------------
 
@@ -540,7 +558,6 @@ $$Corr(X, Y) = \frac{Cov(X, Y)}{\sqrt{Var(X) Var(Y)}}$$
 
 -------------------------------------------------------------
 
-- Chebishev's inequality
 - Weak and strong law of large numbers
 
 ----------------------------------------------------------------
