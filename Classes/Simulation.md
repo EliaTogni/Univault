@@ -382,7 +382,7 @@ $$y = f(x)$$
 For a modeler, $x$ is input data, while $y$ is an abstraction of the process modeled by $f()$. When an experiment is performed, the concern is sometimes on the value of some numerical quantity determined by the result. These quantities of interest that are determined by the results of the experiment are known as **random variables**.
 
 #### Cumulative distribution function
-The **cumulative distribution function**, or, more simply, the distribution function, $F$ of the random variable $X$ is defined for any real number $x$ by
+The **cumulative distribution function**, or, more simply, the distribution function $F$ of the random variable $X$ is defined for any real number $x$ by
 
 $$F(x) = P[X \leq x]$$
 
@@ -410,7 +410,7 @@ esempio numerico
 #### Probability density function
 Whereas a discrete random variable assumes at most a countable set of possible values, it is common to have to consider random variables whose set of possible values is an interval. It is sad that the random variable $X$ is a **continuous random variable** if there is a nonnegative function $f(x)$ defined for all real numbers $x$ and having the property that for any set $C$ of real numbers
 
-$$P[X \in X] = \int_{C} f(x) dx$$
+$$P[X \in C] = \int_{C} f(x) dx$$
 
 The function $f$ is called the **probability density function** of the random variable $X$.
 
