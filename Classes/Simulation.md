@@ -475,11 +475,15 @@ $$\mathbb{E}\Big[\sum_{i = 1}^{n} x_i\Big] = \sum_{i = 1}^{n}\mathbb{E}[X_i]$$
 Whereas $\mathbb{E}[X]$, the expected value of the random variable $X$, is a weighted average of the possible values of $X$, it yields no information about the variation of these values.<br />
 One way of measuring this variation is to consider the average value of the square of the difference between $X$ and $\mathbb{E}[X]$. If $X$ is a random variable with mean $\mu$, then the **variance** of $X$, denoted by $Var(X)$, is defined by
 
-$$Var(X) = \mathbb{E}[(X - \mu)^2]$$
+$$Var[X] = \mathbb{E}[(X - \mu)^2]$$
 
-An alternative formula for $Var(X)$ is derived as follows:
+The variance is not a linear operator. In fact
 
-$$Var(X) = \mathbb{E}[(X - \mu)^2]$$
+$$Var[aX + b] = a^2Var[X]$$
+
+An alternative formula for $Var[X]$ is derived as follows:
+
+$$Var[X] = \mathbb{E}[(X - \mu)^2]$$
 $$\space = \mathbb{E}[X^2 - 2\mu X + \mu^2]$$
 $$ = \mathbb{E}[X^2] - \mathbb{E}[2\mu X] + \mathbb{E}[\mu^2]$$
 $$= \mathbb{E}[X^2] - 2\mu\mathbb{E}[X] + \mu^2$$
@@ -487,38 +491,38 @@ $$= \mathbb{E}[X^2] - \mu^2$$
 
 That is,
 
-$$Var(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2$$
+$$Var[X] = \mathbb{E}[X^2] - (\mathbb{E}[X])^2$$
 
 Whereas the expected value of a sum of random variables is equal to the sum of the expectations, the corresponding result is not, in general, true for variances. It is, however, true in the important special case where the random variables are independent. Before proving this, lets define the concept of the **covariance** between two random variables. The covariance of two random variables $X$ and $Y$, denoted $Cov(X, Y)$, is defined by
 
-$$Cov(X, Y) = \mathbb{E}[(X - \mu_x)(Y -\mu_y)]$$
+$$Cov[X, Y] = \mathbb{E}[(X - \mu_x)(Y -\mu_y)]$$
 
 where $\mu_x = \mathbb{E}[X]$ and $\mu_y = \mathbb{E}[Y]$.
 
-A useful expression for $Cov(X, Y)$ is obtained by expanding the right side of the above equation and then making use of the linearity of expectation. This yields
+A useful expression for $Cov[X, Y]$ is obtained by expanding the right side of the above equation and then making use of the linearity of expectation. This yields
 
-$$Cov(X, Y) = \mathbb{E}[XY - \mu_xY - X\mu_y + \mu_x\mu_y]$$
+$$Cov[X, Y] = \mathbb{E}[XY - \mu_xY - X\mu_y + \mu_x\mu_y]$$
 $$= \mathbb{E}[XY] - \mu_x \mathbb{E}[Y] - \mathbb{E}[X]\mu_y + \mu_x \mu_y$$
 $$= \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]$$
 
-It is now possible to derive an expression for $Var(X + Y)$ in terms of their individual variances and the covariance between them. Since
+It is now possible to derive an expression for $Var[X + Y]$ in terms of their individual variances and the covariance between them. Since
 
 $$\mathbb{E}[X + Y] = \mathbb{E}[X] + \mathbb{E}[Y] = \mu_x + \mu_y$$
 
 it is possible to notice that
 
-$$Var(X + Y) = \mathbb{E}[(X + Y - \mu_x - \mu_y)^2]$$
+$$Var[X + Y] = \mathbb{E}[(X + Y - \mu_x - \mu_y)^2]$$
 $$= \mathbb{E}[(X - \mu_x)^2 + (Y -\mu_y)^2 + 2(X - \mu_x)(Y - \mu_y)]$$
 $$= \mathbb{E}[(X -\mu_x)^2] + \mathbb{E}[(Y -\mu_y)] + 2\mathbb{E}[(X - \mu_x)(Y -\mu_y)]$$
-$$Var(X) + Var(Y) + 2Cov(X, Y)$$
+$$Var[X] + Var[Y] + 2Cov[X, Y]$$
 
 This section is ended by showing that the variance of the sum of independent random variables is equal to the sum of their variances. If $X$ and $Y$ are independent random variables, then
 
-$$Cov(X, Y) = 0$$
+$$Cov[X, Y] = 0$$
 
 and so
 
-$$Var(X + Y) = Var(X) + Var(Y)$$
+$$Var[X + Y] = Var[X] + Var[Y]$$
 
 -------------------------------------------------------------
 
@@ -553,16 +557,35 @@ and the result is proved.
 -------------------------------------------------------------
 
 #### Chebishev's Inequality
+**Chebyshev’s inequality** states that the probability that a random variable differs from its mean by more than $k$ of its standard deviations is bounded by $\frac{1}{k^2}$, where the standard deviation of a random variable is defined to be the square root of its variance. If $X$ is a random variable having mean $\mu$ and
+variance $\sigma^2$, then for any value $k > 0$
 
-proposition + demonstration
+$$P[\vert X - \mu \vert \geq k \sigma] \leq \frac{1}{k^2}$$
+
+Since it is possible to define $Y = \frac{(X − \mu)^2}{\sigma^2}$ as a nonnegative random variable whose mean is
+
+$$\mathbb{E}[Y] = \mathbb{E}\Big[\frac{(X - \mu)^2}{\sigma^2}\Big] = \frac{\mathbb{E}[(X - \mu)^2]}{\sigma^2} = \frac{\sigma^2}{\sigma^2} =1$$
+
+it is possible to use Markov's inequality to derive that
+
+$$P \Big[\frac{(X - \mu)^2}{\sigma^2} \geq k^2\Big] \leq \frac{1}{k^2}$$
+
+The result now follows since the inequality $\frac{(X − \mu)^2}{\sigma^2} \geq k^2$ is equivalent to the inequality $\vert X − \mu \vert \geq k \sigma$.
 
 -------------------------------------------------------------
 
 #### Weak law of large numbers
+using Chebyshev’s inequality it is possible to prove the **weak law of large numbers**, which states that the probability that the average of the first $n$ terms of a sequence of independent and identically distributed random variables differs from its mean by more than $\varepsilon$ goes to $0$ as $n$ goes to infinity.
 
-proposition + demonstration
+Let $X_1, X_2, \dots$ be a sequence of independent and identically distributed random variables having mean $\mu$. Then, for any $\varepsilon > 0$
 
-Appunto nella formula pdf
+$$P\Bigg[ \bigg \vert \frac{X_1 + \cdots + X_n}{n} - \mu \bigg\vert \geq \varepsilon \Bigg] \leq \frac{\sigma^2}{n \varepsilon^2}$$
+
+which establishes the result.
+
+The last passage of the demonstration also permits to have an upper bound on the probability of making an error greater than $\varepsilon$ if it is decided to use the mean of some random variables instead of the random variables themselves.
+
+is it also possible to choose some accuracy target in order to evaluate the simulation. To do so, it is necessary to be in possess of the variance, which is tipically a bold assumption. However, it is possible to estimate it.
 
 -------------------------------------------------------------
 
