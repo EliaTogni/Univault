@@ -501,7 +501,7 @@ $$Cov(X, Y) = \mathbb{E}[XY - \mu_xY - X\mu_y + \mu_x\mu_y]$$
 $$= \mathbb{E}[XY] - \mu_x \mathbb{E}[Y] - \mathbb{E}[X]\mu_y + \mu_x \mu_y$$
 $$= \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]$$
 
-It is now possible to an expression for $Var(X + Y)$ in terms of their individual variances and the covariance between them. Since
+It is now possible to derive an expression for $Var(X + Y)$ in terms of their individual variances and the covariance between them. Since
 
 $$\mathbb{E}[X + Y] = \mathbb{E}[X] + \mathbb{E}[Y] = \mu_x + \mu_y$$
 
@@ -555,14 +555,24 @@ and the result is proved.
 #### Chebishev's Inequality
 
 
+-------------------------------------------------------------
+
+#### Weak law of large numbers
+
 
 -------------------------------------------------------------
 
-- Weak and strong law of large numbers
+#### Strong law of large numbers
 
-----------------------------------------------------------------
 
-## Generazione di numeri randomici ##
+-------------------------------------------------------------
+
+#### Some discrete random variables
+
+
+-------------------------------------------------------------
+
+## Random numbers
 La definizione di **random** descrive l'avvenimento di un evento dovuto al caso piuttosto che ad una causa deterministica.<br />
 E' noto che i calcolatori sono puramente deterministici. Infatti, secondo Von Neumann, è impossibile produrre una cifra casuale usando metodi aritmetici.<br />
 Infatti, la produzione di numeri attraverso calcolatore appare randomica ma, in realtà, non lo è. Il calcolatore agisce in maniera puramente deterministica, nonostante l'apparenza mascheri questo modo di agire, facendo pensare ad un comportamente casuale della macchina.<br />
