@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "8dcafe3f87171085",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Atoms/Deviazione standard.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -86,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Simulation.md",
+                "file": "Atoms/Deviazione standard.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,13 +128,14 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "9d6dab7f39b33ece",
+  "active": "8dcafe3f87171085",
   "lastOpenFiles": [
+    "Atoms/Deviazione standard.md",
+    "Classes/Simulation.md",
     "Classes/Informatica Teorica.md",
     "Articles/Probability Analysis in Pauper Manabases.md",
     "Blogs/Tempo.md",
     "Classes/Cittadinanza Digitale e Tecnocivismo.md",
-    "Classes/Simulation.md",
     "Classes/3D Videogames.md",
     "Lexicon/Zshrc.md",
     "Atoms/Grafo.md",
@@ -152,7 +166,6 @@
     "Images/UpstreamGradient.png",
     "Videos/How to Write a Paper in a Weekend (By Prof. Pete Carr.md",
     "Lexicon/Allampanato.md",
-    "Lexicon/Bovindo.md",
     "Untitled.canvas",
     "Blogs",
     "Atoms",

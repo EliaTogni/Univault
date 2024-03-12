@@ -554,16 +554,20 @@ and the result is proved.
 
 #### Chebishev's Inequality
 
+proposition + demonstration
 
 -------------------------------------------------------------
 
 #### Weak law of large numbers
 
+proposition + demonstration
+
+Appunto nella formula pdf
 
 -------------------------------------------------------------
 
 #### Strong law of large numbers
-
+While the weak law says the proposition in a probabilistic way, the strong law says it in a deterministic way (with probability $1$).
 
 -------------------------------------------------------------
 
@@ -573,10 +577,15 @@ and the result is proved.
 -------------------------------------------------------------
 
 ## Random numbers
+
+page 52/338 + libro malchiodi
+
 La definizione di **random** descrive l'avvenimento di un evento dovuto al caso piuttosto che ad una causa deterministica.<br />
-E' noto che i calcolatori sono puramente deterministici. Infatti, secondo Von Neumann, è impossibile produrre una cifra casuale usando metodi aritmetici.<br />
+E' noto che i calcolatori sono puramente deterministici. Infatti, secondo Von Neumann, è impossibile produrre una cifra casuale usando metodi aritmetici.
+
 Infatti, la produzione di numeri attraverso calcolatore appare randomica ma, in realtà, non lo è. Il calcolatore agisce in maniera puramente deterministica, nonostante l'apparenza mascheri questo modo di agire, facendo pensare ad un comportamente casuale della macchina.<br />
 
+### Pseudorandom number generation
 Si distingue, quindi, in due categorie:
 - **randomicità genuina**, cioè quella che è possibile osservare nel mondo;
 - **randomicità artificiale**, o **pseudorandomicità**, cioè quella che è possibile simulare tramite computer.
@@ -602,7 +611,6 @@ def middle_square_generator(seed = 1461, n = 1):
 		curr_val = int(((curr_val ** 2) % (10 **6) ))/100
 
 	return(v)
-
 ```
 
 Questo algoritmo ha una debolezza (oltre al fatto che la scelta del seed è deterministica ed il comportamento del calcolatore è il risultato dell'esecuzione di un programma e, a maggior ragione, è deterministico): se viene scelto il numero $0$ come seed, anche tutti i seed successivi generati a partire da quello scelto saranno $0$.<br />
@@ -626,10 +634,10 @@ def congruential_generator(seed = 1, a= 7 ** 5, c=0, m=(2 ** 31 - 1), n=1):
     curr_val = (a * curr_val + c) % m
     
   return(v)
-
 ```
 
-Anche questo algoritmo ha una debolezza. Infatti, la sequenza prodotta tende a diventare ciclica dopo un numero fissato di iterazioni (oppure con una pessima scelta di parametri come, ad esempio, $a = 1$, $c = 0$ e $m$ libero.<br />
+Anche questo algoritmo ha una debolezza. Infatti, la sequenza prodotta tende a diventare ciclica dopo un numero fissato di iterazioni (oppure con una pessima scelta di parametri come, ad esempio, $a = 1$, $c = 0$ e $m$ libero.
+
 E' possibile, però, fissare dei parametri in modo tale da avere un **periodo completo**, dove con completo si intende l'avere il massimo numero di step possibili nella sequenza prima che la sequenza inizi a ripetersi.<br />
 Il periodo del generatore è il parametro chiave, $m$.<br />
 Sono stati formulati diversi criteri per la scelta di questi parametri:
@@ -648,6 +656,7 @@ Avere un periodo ampio non è abbastanza per ottenere un generatore pseudo rando
 La **predicibilità** è, quindi, un ulteriore fattore che determina la bontà del generatore. Meno un generatore è predicibile da parte dell'utente, meglio è.<br />
 E' possibile progettare un test che permetta di valutare la predicibilità di un generatore? 
 - **Ripley test**: questo test considera il vettore di valori generati $v$ e il vettore $w$, ottenuto shiftando il precedente di una posizione. Per valutare la bontà, si può considerare la correlazione tra gli elementi dei due vettori nella stessa posizione ma questa analisi non è in grado di cogliere eventuali legami tra i due vettori. Per poter prevedere dei valori della sequenza, è necessario osservarne altri interni alla sequenza ma non esclusivamente considerando i due punti su cui si vuole effettuare un analisi di correlazione. Si può quindi procedere a verificare la correlazione tra il vettore iniziale con tutti i possibili vettori ottenuti dagli shift del vettore iniziale.
+- **autocorrelation analysis**: correlation between a value in the sequence and a 
 - **funzione di distribuzione cumulativa empirica** (su sample $r$):<br />$ECDF(x) =$ numero di elementi di $r$ aventi valore $\leq x$. Il **teorema di Glivenko-Cantelli** sostiene che se $\hat{F}$ è stata calcolata usando un sample di dimensione $n$ estratto da una distribuzione la cui funzione di ripartizione è $F$, $\hat{F}$ converge in probabilità a $F$ con l'aumentare di $n$.
 
 ```python
@@ -656,6 +665,8 @@ def ripley_test(v):
 	w.append(v[0])
 	plt.scatter(v, w)	
 ```
+
+immagini ripley test
 
 -------------------------------------------------------------
 
