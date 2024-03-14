@@ -450,10 +450,21 @@ $\mathbb{R}$ è un insieme **continuo** e tutti gli insiemi che hanno la stessa 
 
 $$P(\mathbb{N}) = 2^\mathbb{N} = \text{ sottoinsiemi di } \mathbb{N} \not \sim \mathbb{N}$$
 
-Per assurdo, si ipotizza di poter elencare tutti gli insiemi della partizione per mezzo del loro vettore caratteristico (per ogni $n \in N$ la $n$-esima cifra del vettore caratteristico di $A$ è $0$ se $n$ non è in $A$, $1$ altrimenti) e si costruisce un nuovo vettore caratteristico negando gli elementi della diagonale. Si è quindi ottenuto un nuovo vettore che non era stato prima elencato, arrivando ancora una volta ad un assurdo.  
+Innanzitutto, qualsiasi sottoinsieme $A \subseteq \mathbb{N}$ può essere rappresentato dal suo vettore caratteristico (per ogni $n \in N$ la $n$-esima cifra del vettore caratteristico di $A$ è $0$ se $n$ non è in $A$, $1$ altrimenti). 
 
-Un importante insieme non numerabile è $\mathbb{N}^{\mathbb{N}}$, ovvero l'insieme delle funzioni dai naturali ai naturali.  
-Ancora una volta si dimostra questa proprietà per assurdo e per diagonalizzazione: si costruisce una matrice in cui ogni riga è l'applicazione di una funzione su ogni elemento di $\mathbb{N}$:  
+$$\begin{matrix}
+\mathbb{N}: & 0 & 1 & 2 & 3 & 4 & 5 & \dots \\
+A. & 0 & 1 & 1 & 0 & 1 & 1 &  \dots\\
+\end{matrix}$$
+
+Per assurdo, si ipotizzi di poter elencare tutti gli insiemi della partizione per mezzo del loro vettore caratteristico, disponendoli uno sotto l'altro. Si costruisce, quindi, un nuovo vettore caratteristico negando gli elementi della diagonale, ottenendo così un nuovo vettore che non era stato prima elencato, arrivando ancora una volta ad un assurdo. Quindi, $P(\mathbb{N}) \not \sim \mathbb{N}$, ed è possibile dimostrare come $P(\mathbb{N}) \sim [0, 1] \sim \dot{\mathbb{R}}$.
+
+Un importante insieme non numerabile è $\mathbb{N}^{\mathbb{N}}$, ovvero l'insieme delle funzioni dai naturali ai naturali::
+
+$$\mathbb{N}^{\mathbb{N}} = \{f: \mathbb{N} \to \mathbb{N}\}$$
+
+Ancora una volta si dimostra questa proprietà per assurdo e per diagonalizzazione: si costruisce una matrice in cui ogni riga è l'applicazione di una funzione su ogni elemento di $\mathbb{N}$:
+
 $$\begin{matrix}
  & 0 & 1 & 2 & \dots \\
 f_0 & f_0(0) & f_0(1) & f_0(2) & \dots \\
@@ -461,31 +472,41 @@ f_1 & f_1(0) & f_1(1) & f_1(2) & \dots \\
 f_2 & f_2(0) & f_2(1) & f_2(2) & \dots \\
 \vdots
 \end{matrix}$$
-A questo punto si costruisce la funzione $\varphi: \mathbb{N} \to \mathbb{N}$ in modo che $\varphi(n) = f_n(n) + 1$.  
-Questa funzione è ben definita ma non compare nell'enumerazione precedente, quindi ecco ancora l'assurdo che porta a dire che $\mathbb{N}^{\mathbb{N}} \nsim \mathbb{N}$.  
+
+A questo punto si costruisce la funzione $\varphi: \mathbb{N} \to \mathbb{N}$ in modo che $\varphi(n) = f_n(n) + 1$. Questa funzione è ben definita ma non compare nell'enumerazione precedente:
+
+$$\forall k: \rho_k \neq f:k \text{ in quanto } \rho_k = f_k(k) + 1 \neq f_k(k)$$
+
+Si valutano ora $f_k$ e $\rho$ nel punto $k \in \mathbb{N}$:
+
+$$\rho(k) = \cases{1 \neq f_k(k) \space \text{ se } f_k(k) = \bot \cr \cr f_k(k) + 1 \neq f_k(k) \space \text{ se } f_k(k) \downarrow}$$
+
+quindi ecco ancora l'assurdo che porta a dire che $\mathbb{N}^{\mathbb{N}} \nsim \mathbb{N}$ ed è possibile dimostrare che $\mathbb{N}^{\mathbb{N}} \sim \mathbb{R}$.
 
 -------------------------------------------------------------
 
 # Potenza computazionale, ancora
-Due considerazioni sono da fare:  
-- $\text{PROG} \sim \mathbb{N}$
-- $\text{DATI} \sim \mathbb{N}$
+Due considerazioni sono da fare:
+- $\text{PROG} \sim \mathbb{N}$ (si consideri la digitalizzazione di un programma come un numero espresso in codice binario);
+- $\text{DATI} \sim \mathbb{N}$ (si consideri la digitalizzazione di un dato come un numero espresso in codice binario).
 
-Detto ciò possiamo dire che $F(\mathbb{C}) \sim \text{PROG} \sim \mathbb{N}$, ovvero la potenza computazionale, che è il numero di funzioni che possiamo calcolare, è isomorfo ai naturali e quindi numerabile.  
+Detto ciò è possibile dire che l'insieme delle funzioni calcolate dai programmi $F(\mathbb{C}) \sim \text{PROG} \sim \mathbb{N}$, ovvero la **potenza computazionale**, che è il numero di funzioni che è possibile calcolare, è isomorfa ai naturali e, quindi, numerabile.<br />
 Siccome i dati sono anch'essi numeri, l'insieme delle funzioni che vanno dai dati ai dati ha una cardinalità pari a, ed è quindi isomorfo a, $\mathbb{N}^{\mathbb{N}}_{\bot}$.  
-Tutto questo significa che ci sono pochi programmi ($\mathbb{N}$) e troppe funzioni ($\mathbb{N}^{\mathbb{N}}_{\bot}$), ovvero esistono funzioni non calcolabili:  
+Tutto questo significa che ci sono pochi programmi ($\mathbb{N}$) e troppe funzioni o problemi ($\mathbb{N}^{\mathbb{N}}_{\bot}$), ovvero esistono funzioni non calcolabili:
+
 $$F(\mathbb{C}) \sim \text{PROG} \sim \mathbb{N} \nsim \mathbb{N}^{\mathbb{N}}_{\bot} \sim \text{ DATI}_{\bot}^{\text{DATI}}$$
+
 Tale risultato non dipende dalla tecnologia, e rimane quindi vero a prescindere dal modello di calcolo considerato.  
 
-Dimostriamo rigorosamente l'isomorfismo di programmi e dati ai naturali.  
-
+Si dimostra ora rigorosamente l'isomorfismo di programmi e dati ai naturali.  
 ## $\text{DATI} \sim \mathbb{N}$
-Cerchiamo una legge che:  
+Si cerca una legge che:  
 - associ biunivocamente dati e numeri;
 - consenta di operare direttamente sui numeri per operare sui corrispondenti dati;
 - consenta di dire, senza perdita di generalità, che i nostri programmi lavorano su numeri.  
 
 Useremo questa catena di isomorfismi: $\mathbb{N} \times \mathbb{N} \sim \mathbb{N}^+ \to \mathbb{N} \times \mathbb{N} \sim \mathbb{N}$.  
+
 ### Coppia di Cantor
 Funzione coppia di Cantor: $< , >: \mathbb{N} \times \mathbb{N} \to \mathbb{N}^+, <x, y> = n$. Costruiamo questa funzione che sia suriettiva e iniettiva ed in modo che esistano due funzioni per risalire ad $x$ e $y$: $sin: \mathbb{N}^+ \to \mathbb{N}, sin(n) = x$ e $des: \mathbb{N}^+ \to \mathbb{N}, des(n) = y$.  
 Graficamente:  
@@ -506,16 +527,23 @@ Cerchiamo analiticamente la forma inversa. Il primo passo è definire il valore 
 $$\gamma =\left\lfloor \frac{-1 + \sqrt{8n-7}}{2} \right\rfloor$$  
 quindi so che $y = n - <\gamma, 0>$ e $x = \gamma - y$.  
 
-Per ora ho dimostrato solo che $\mathbb{N} \times \mathbb{N}$ è isomorfo a $\mathbb{N}^+$, ma per dimostrare che è isomorfo anche al semplice $\mathbb{N}$ basta definire la funzione $[x,y] = <x, y> - 1$ che in pratica è una coppia di Cantor in cui si inizia a contare da $0$. Questo mostra sia che $\mathbb{N} \times \mathbb{N} \sim \mathbb{N}$ sia che, dato che i razionali non sono altro che coppie di naturali, $\mathbb{Q} \sim \mathbb{N}$.  
+Per ora ho dimostrato solo che $\mathbb{N} \times \mathbb{N}$ è isomorfo a $\mathbb{N}^+$, ma per dimostrare che è isomorfo anche al semplice $\mathbb{N}$ basta definire la funzione $[x,y] = <x, y> - 1$ che in pratica è una coppia di Cantor in cui si inizia a contare da $0$. Questo mostra sia che $\mathbb{N} \times \mathbb{N} \sim \mathbb{N}$ sia che, dato che i razionali non sono altro che coppie di naturali, $\mathbb{Q} \sim \mathbb{N}$.
+
+-------------------------------------------------------------
+
 ### Codifica di dati in numeri
 Ogni tipo di dato può essere rappresentato, in particolar modo grazie alla funzione coppia di Cantor, come un intero naturale, ad esempio codificando una lista di numeri con una applicazione ripetuta della funzione, un suono con una lista di campionature, un grafo con la matrice di adiacenza che è una lista di liste, e così via.  
 Possiamo quindi lavorare su numeri invece che su dati, e trasporre le nostre funzioni $f: \text{DATI} \to \text{DATI}_{\bot}$ in funzioni $f: \mathbb{N} \to \mathbb{N}_{\bot}$.  
 L'universo dei problemi per i quali cerchiamo una soluzione automatica è rappresentato dall'insieme $\mathbb{N}_{\bot}^{\mathbb{N}}$.  
 
+-------------------------------------------------------------
+
 ## $\text{PROG} \sim \mathbb{N}$
 Per mostrare anche questo isomorfismo useremo due sistemi di calcolo: il sistema di calcolo RAM e il sistema di calcolo WHILE.  
 Il sistema di calcolo RAM è sostanzialmente un assembly molto semplificato che permette di definire in maniera rigorosa l'isomorfismo $\text{PROG} \sim \mathbb{N}$, la semantica dei programmi e una prima proposta di potenza computazionale di questo sistema.  
 Per evitare di valutare un solo sistema di calcolo che potrebbe essere troppo semplicistico, lo confronteremo con il sistema di calcolo più sofisticato WHILE. Dal loro confronto potremo renderci conto se la potenza dipende dallo strumento o, se hanno le stesse capacità, non dipenda dalla piattaforma ma sia una caratteristica teorica, intrinseca nei problemi.  
+
+-------------------------------------------------------------
 
 # Macchina RAM
 La macchina RAM altro non è che un processore che esegue sequenzialmente una serie di istruzioni agendo su una memoria che è una lista infinita di registri $R$: in particolare il registro $R_0$ conterrà l'output del programma, e il registro $R_1$ conterrà all'avvio l'input del programma; oltre a ciò esiste $L$, ovvero il _Program Counter_ che tiene traccia dell'istruzione da eseguire.  
@@ -529,7 +557,8 @@ L'inizializzazione consiste nell'impostare $L$ a 1, tutti i registri a 0, e il r
 
 ## Definizione formale
 Il programma induce una sequenza possibilmente infinita di stati partendo dallo stato iniziale. Ogni stato riporta il contenuto del contatore e di ogni registro della macchina RAM, ed ogni istruzione del programma fa passare da uno stato al successivo.  
-Semantica di $P$:  
+Semantica di $P$:
+
 $$\varphi_P: \mathbb{N} \to \mathbb{N}_{\bot} \implies \varphi_P(x) = \begin{cases}
 y \\
 \bot
@@ -543,19 +572,30 @@ Stati $= \mathbb{N}^{\{L, R_i\}} = \{\text{possibili stati della macchina}\}$.
 Lo stato finale è qualunque stato per cui valga $S(L) = 0$, cioè in HALT.  
 L'inizializzazione $in(n): \text{DATI} \to \text{STATI}$ è una semplice funzione dai dati agli stati che sostanzialmente genera lo stato iniziale in cui tutti i registri sono 0 tranne il registro di input e il contatore.  
 
+-------------------------------------------------------------
+
 ### Funzione stato prossimo
 L'esecuzione di un programma è la dinamica del programma, definita da una funzione detta _funzione stato prossimo_:  
 $$\delta: \text{STATI} \times \text{PROG} \to \text{STATI}_{\bot}$$
 $$\delta(S, P) = S'$$
 Questa funzione restituisce lo stato successivo $S'$ prendendo in input lo stato attuale $S$ e il programma $P$.  
-Se il contatore è 0, lo stato successivo non è definito; se invece il contatore è maggiore di $Istr_{|P|}$ lo stato successivo ha tutti i registri uguali e il contatore posto a 0; nel caso in cui il contatore fosse un valore valido, lo stato successivo ad una operazione di incremento/decremento lascia tutti i valori dei registri inalterati tranne quello toccato dall'operazione e il contatore che avanza di 1, mentre lo stato successivo ad un salto condizionale lascia tutti i valori inalterati tranne il contatore che o avanza di uno o viene impostato al valore richiesto dal salto.  
+Se il contatore è 0, lo stato successivo non è definito; se invece il contatore è maggiore di $Istr_{|P|}$ lo stato successivo ha tutti i registri uguali e il contatore posto a 0; nel caso in cui il contatore fosse un valore valido, lo stato successivo ad una operazione di incremento/decremento lascia tutti i valori dei registri inalterati tranne quello toccato dall'operazione e il contatore che avanza di 1, mentre lo stato successivo ad un salto condizionale lascia tutti i valori inalterati tranne il contatore che o avanza di uno o viene impostato al valore richiesto dal salto.
+
+-------------------------------------------------------------
+
 ### Esecuzione
-L'esecuzione è una sequenza eventualmente infinita di stati $S_0, \dots, S_i, S_{i+1}, \dots$ partendo da $S_0 = in(n)$ in cui da ogni stato si passa al successivo secondo la legge $\delta(S_i, P) = S_{i+1}$.  
-La terminazione avviene se si raggiunge uno stato $S_m$ tale che $S_m(L) = 0$ (ovvero tale che $\delta$ non è definita) ed in quel caso l'output $y$ è il contenuto del registro $R_0$, altrimenti l'output è indefinito ($\bot$).  
+L'esecuzione è una sequenza eventualmente infinita di stati $S_0, \dots, S_i, S_{i+1}, \dots$ partendo da $S_0 = in(n)$ in cui da ogni stato si passa al successivo secondo la legge $\delta(S_i, P) = S_{i+1}$.
+La terminazione avviene se si raggiunge uno stato $S_m$ tale che $S_m(L) = 0$ (ovvero tale che $\delta$ non è definita) ed in quel caso l'output $y$ è il contenuto del registro $R_0$, altrimenti l'output è indefinito ($\bot$).
+
+-------------------------------------------------------------
 
 ## Potenza computazionale
+
 $$F(RAM) = \{f \in \mathbb{N}_{\bot}^{\mathbb{N}}: \exists P \in \text{PROG}, \varphi_P = f\}= \{\varphi_P: P \in \text{PROG}\} \subset \mathbb{N}_{\bot}^{\mathbb{N}}$$
+
 Questo è l'insieme delle funzioni calcolabili da una macchina RAM.  
+
+-------------------------------------------------------------
 
 ## $\text{PROG} \sim \mathbb{N}$
 ### Goedelizzazione
