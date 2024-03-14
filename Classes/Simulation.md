@@ -609,24 +609,21 @@ The Cambridge dictionary defines «random» as: "happening, done, or chosen by c
 
 Things are different if you consider a sequence of such events and try to formulate statements about some form of average result: you can, for instance, be more or less confident about the fact that almost a given fraction of one hundred tosses of a given coin give head.
 
-On the other hand, an electronic computer is probably the tool which is more distant from the notion of randomness: when it is given a task, say computing the sum of numbers in a spreadsheet, it is expected to solve the task without any error, thus it is also expected (and typically obtain) that repeated executions ot a same task give always the same result. Besides, it is told that an electronic computer is nothing more than a mechanism, for sure a complex one, yet a mechanism only able to do what it is encoded in its circuits.<br />
-Any one who considers arithmetical methods of producing random digits is, of course, in a state of sin said J. Von Neumann.
+On the other hand, an electronic computer is probably the tool which is more distant from the notion of randomness: when it is given a task, say computing the sum of numbers in a spreadsheet, it is expected to solve the task without any error, thus it is also expected (and typically obtain) that repeated executions ot a same task give always the same result. Besides, it is told that an electronic computer is nothing more than a mechanism, for sure a complex one, yet a mechanism only able to do what it is encoded in its circuits.
 
-The beahviour of a computer is always the result of a program execution and thus it is purely deterministic; in spite of this, computers can be deterministically be programmed in such a way that they exhibit random behaviours.
+Quoting John Von Neumann, any one who considers arithmetical methods of producing random digits is, of course, in a state of sin.
 
-In all cases where it will be necessary to mark a clear distinction between **genuine** randomness that is possible to naturally observe in the world (say for instance that of a phisical die) from the **artificial** one that is possible to simulate through computers, called **pseudorandomness**.
+The behaviour of a computer is, in fact, always the result of a program execution and thus it is purely deterministic; in spite of this, computers can be deterministically be programmed in such a way that they exhibit random behaviours.
 
 ### Pseudorandom number generation
-Si distingue, quindi, in due categorie:
-- **randomicità genuina**, cioè quella che è possibile osservare nel mondo;
-- **randomicità artificiale**, o **pseudorandomicità**, cioè quella che è possibile simulare tramite computer.
+In all cases where it will be necessary to mark a clear distinction between **genuine** randomness that is possible to naturally observe in the world (say for instance that of a phisical die) from the **artificial** one that is possible to simulate through computers, called **pseudorandomness**.
 
-La prima idea di algoritmi generatori di numeri pseudorandomici è il **Von Neumann's Middle Square Generator**.<br />
-L'algoritmo suggerisce di:
-- selezionare un numero (**seed**);
-- calcolarne il quadrato;
-- memorizzare le cifre centrali come numero randomico;
-- usare questo numero randomico come seed per le iterazioni seguenti.
+The first attempts to describe procedures able to automatically generate pseudorandom numbers dates back to the first half of $1900$. A pionieer in this fields was Maurice G. Kendall, who contributed to build a machine producing tables of random digits. Before that time, randomization procedures such as sampling were performed via consultation of manually produced tables, such as for instance the one published in $1927$ by Leonard H. C. Tippett and relying to census reports.
+
+#### Middle-square generator
+As electronic computers became available, more concrete approaches started to be considered. In particular, John Von Neumann began his work on pseudorandomness generation while he was involved in the research activities of the Los Alamos National laboratories within the Manhattan project. One of the first algorithms he studied led around in $1946$ to the so-called **middle-square generator**, outputting a sequence of numbers in which every element is obtained squaring its predecessor and dropping from the result the leading and trailing two digits. Such a sequence is univoquely defined when its first element (the **seed**) has been fixed, typically choosing a four-digits value.
+
+For instance, let $1461$ be this initial value: the successor in the sequence would be equal to $1461$ raised to the second power, that is $2134521$, without its leading a trailing couple of digits, resulting in $1345$. Analogously, the following value would be equal to $8090$ and so on, as computable in the following panel, which also allows the use of a different initial value.
 
 ``` python
 def middle_square_generator(seed = 1461, n = 1):
@@ -644,14 +641,34 @@ def middle_square_generator(seed = 1461, n = 1):
 	return(v)
 ```
 
-Questo algoritmo ha una debolezza (oltre al fatto che la scelta del seed è deterministica ed il comportamento del calcolatore è il risultato dell'esecuzione di un programma e, a maggior ragione, è deterministico): se viene scelto il numero $0$ come seed, anche tutti i seed successivi generati a partire da quello scelto saranno $0$.<br />
+The simplicity of this method results in a poor quality of its outputs. Indeed, finding an initial value giving rise to a clearly non random sequence is fairly easy: for instance, whenever the sequence starts with a number having both central digits equal to zero (such as $1001$, $4005$ and so on), all the remaining elements nullify. An analogous behaviour occurs once one of the generated values has this property.
 
-Inoltre, può accadere che i numeri generati dall'algoritmo inizino a ripetersi ciclicamente.<br />
+There are other particular cases when the middle-square generator fails to output an acceptable sequence, for instance it can get stuck in limit cycles, that is eventually repeating the same values in a cycle of a limited number of elements.
 
-La seconda idea di algoritmi generatori è il **congruential generator**.<br />
-L'algoritmo suggerisce di:
-- scegliere tre parametri, $a$, $c$ e $m$, e un seed $s$;<br />
-- calcolare $x_{0} = s; \qquad x_{i+1} = (a \cdot x_{i} + c) \text{ mod } m$.
+The flaws in the middle-square generator suggest a set of desirable properties for pseudorandom generators. However, it is worth to note that the requirements to be used in order to assess the quality of a pseudorandom generator are obviously linked to the context in which the generator itself is applied: nobody would probably bother that much if, for instance, a solitaire game installed in a smartphone would use a relatively poor pseudorandom generator to set the color of its bricks. Things would be different in case such a generator be used for shuffling a virtual deck of cards in an online gambling site, where bets are placed using real money.
+
+Despite its harmless simplicity and its poor performance, the middle-square generator introduced before computes his output precisely in the same way of modern and more reliable generators: each element in the sequence is obtained applying a fixed function to its predecessor, and the first element, referred to as the **seed**, must be fixed beforehand. Thus, denoting by the pseudorandom sequence and by the seed, choosing a generator corresponds to selecting a function such that
+
+```pseudo
+	\begin{algorithm}
+	\caption{Pseudorandom generator}
+	\begin{algorithmic}
+		\State $x_{0} = s$
+		\State $x_{i + 1} = f(x_i) \textnormal{ for } i > 0$
+	\end{algorithmic}
+	\end{algorithm}
+```
+
+Such equation is referred to as the generator's **recurrency relation**.
+
+-------------------------------------------------------------
+
+#### Congruential generators
+Several of the first broadly used pseudorandom generators belonged to the family of **congruential generators**, whose recurrency relation is defined by
+
+$$x_{i + 1} = (ax_i + c) \mod m$$
+
+where $x_i$ represents the $i$-th element in the sequence, $a$, $c$ and $m$ denotes the **modulus operator**, that is $\alpha \mod \beta$ is the reminder of the integer division between $\alpha$ and $\beta$. More precisely, the latter formula gives rise to a so-called **mixed congruential generator** because of the additive term. The term **congruential generator**, indeed, usually refers to the case of pseudorandom numbers simulated using a simpler recurrence relation of the form $x_{i + 1} = (ax_i) \mod m$.
 
 ```python
 def congruential_generator(seed = 1, a= 7 ** 5, c=0, m=(2 ** 31 - 1), n=1):
@@ -667,27 +684,20 @@ def congruential_generator(seed = 1, a= 7 ** 5, c=0, m=(2 ** 31 - 1), n=1):
   return(v)
 ```
 
-Anche questo algoritmo ha una debolezza. Infatti, la sequenza prodotta tende a diventare ciclica dopo un numero fissato di iterazioni (oppure con una pessima scelta di parametri come, ad esempio, $a = 1$, $c = 0$ e $m$ libero.
+Which is the quality of pseudorandom numbers generating using this technique? First of all, note that once the seed has been fixed the recurrence relation is completely deterministic, and this means that after at most elements the sequence will generate already produced elements, thus repeating itself. In general, however, the sequence will start repeating after a number of iterations, which it will be designate as the **period** of the generator.
 
-E' possibile, però, fissare dei parametri in modo tale da avere un **periodo completo**, dove con completo si intende l'avere il massimo numero di step possibili nella sequenza prima che la sequenza inizi a ripetersi.<br />
-Il periodo del generatore è il parametro chiave, $m$.<br />
-Sono stati formulati diversi criteri per la scelta di questi parametri:
-- **Knuth, 1981**: un generatore congruente misto ha periodo completo per tutti i valori scelti come seed se e solo se:
-	- $m$ e $c$ sono primi tra di loro;
-	- $a-1$ è divisibile per tutti i fattori primi di $m$;
-	- $a-1$ è divisibile per $4$ se $m$ è divisibile per $4$.
-- **Ripley, 1987**: un generatore congruente ha periodo $m-1$
-	- solo se $m$ è primo;
-	- quando $m-1$ è primo, il periodo è un divisore di $m-1$ ed è precisamente $m-1$ quando $a$ è una radice primitiva di $m$ ($a \neq 0$ e $a^{(m-1)p}$ non congruente ad $1$ modulo $m$ per ogni fattore primo $p$ di $m-1$ ) .
-- **Park and Miller, 1988**: quando $m$ è il **numero primo di Mersenne**, $2^{31}-1$, uno delle sue radici primitive è $a = 7^{5}$, perciò la relazione ricorrente $x_{i+1} = 7^{5}x_{i} \text{ mod } 2^{31}-1$ avrà periodo completo.
+In general, there are three main distinctive properties that drive the choice of the parameters of a congruential generator:
+1) the set of generated pseudorandom values should be undistinguishable from an analogous sample drawn from a discrete uniform distribution over $\{0 , \dots, m-1\}$;
+- its period should be as higher as possible;
+- its computer implementation should be efficient.
 
-L'obiettivo successivo è produrre numeri randomici composti sempre dallo stesso numero di bit. Si può utilizzare il criterio di Park and Miller per ottenere il risultato desiderato.
+Note that a high period per se does not tell anything about the quality of its generator: consider for instance the trivial generator obtained by setting $x_{i + 1} = x_i + 1$ which has maximum period $m -1$ for any value of $m$. Such a generator would be useless because of the **predictability** of the unseen part of a pseudorandom sequence: each item is the successor of previous element modulo $m$ . This is why a good generator should guarantee the first two above mentioned requirements: the first one requires the generator to output a sequence of values difficult to predict, and the second one requires that this sequence be as long as possible. Finally, the third requirement deals with parameters allowing an efficient implementation of the corresponding generators in a computer: for instance, the previous choice of $m = 2^{31} -1$ allows to store each of the produced values in a $32$-bit CPU register.
 
-Avere un periodo ampio non è abbastanza per ottenere un generatore pseudo randomico. Infatti, se, ad esempio, il generatore ha un periodo completo ma aumenta il valore di un'unità ad ogni iterazione, sarà tutt'altro che randomico.<br />
-La **predicibilità** è, quindi, un ulteriore fattore che determina la bontà del generatore. Meno un generatore è predicibile da parte dell'utente, meglio è.<br />
-E' possibile progettare un test che permetta di valutare la predicibilità di un generatore? 
-- **Ripley test**: questo test considera il vettore di valori generati $v$ e il vettore $w$, ottenuto shiftando il precedente di una posizione. Per valutare la bontà, si può considerare la correlazione tra gli elementi dei due vettori nella stessa posizione ma questa analisi non è in grado di cogliere eventuali legami tra i due vettori. Per poter prevedere dei valori della sequenza, è necessario osservarne altri interni alla sequenza ma non esclusivamente considerando i due punti su cui si vuole effettuare un analisi di correlazione. Si può quindi procedere a verificare la correlazione tra il vettore iniziale con tutti i possibili vettori ottenuti dagli shift del vettore iniziale.
-- **autocorrelation analysis**: correlation between a value in the sequence and a 
+How is it possible to check the first requirement of unpredictability of the generated pseudorandom sequence? A procedure called **Ripley test**consists in verifying that there is a small dependency between successive elements in the sequence, for instance plotting in a bidimensional plane a set of points whose $X$ coordinates have been obtained by the pseudorandom generator, and the $Y$ coordinates are simply the $X$ ones rotated by one item, say on the left.
+
+immagini ripley test
+
+
 - **funzione di distribuzione cumulativa empirica** (su sample $r$):<br />$ECDF(x) =$ numero di elementi di $r$ aventi valore $\leq x$. Il **teorema di Glivenko-Cantelli** sostiene che se $\hat{F}$ è stata calcolata usando un sample di dimensione $n$ estratto da una distribuzione la cui funzione di ripartizione è $F$, $\hat{F}$ converge in probabilità a $F$ con l'aumentare di $n$.
 
 ```python
@@ -697,7 +707,7 @@ def ripley_test(v):
 	plt.scatter(v, w)	
 ```
 
-immagini ripley test
+
 
 -------------------------------------------------------------
 
