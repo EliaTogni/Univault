@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Classes/Informatica Teorica.md",
+                "file": "Classes/Simulation.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Informatica Teorica.md",
+                "file": "Classes/Simulation.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,14 +115,14 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "841d767269e7d257",
+  "active": "9d6dab7f39b33ece",
   "lastOpenFiles": [
+    "Classes/Informatica Teorica.md",
     "Articles/Probability Analysis in Pauper Manabases.md",
     "Lexicon/Sovente.md",
     "Classes/Simulation.md",
     "Articles/An Introduction to Convolutional Neural Networks.md",
     "Atoms/Deviazione standard.md",
-    "Classes/Informatica Teorica.md",
     "Blogs/Tempo.md",
     "Classes/Cittadinanza Digitale e Tecnocivismo.md",
     "Classes/3D Videogames.md",
