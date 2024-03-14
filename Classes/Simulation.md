@@ -590,7 +590,12 @@ is it also possible to choose some accuracy target in order to evaluate the simu
 -------------------------------------------------------------
 
 #### Strong law of large numbers
-While the weak law says the proposition in a probabilistic way, the strong law says it in a deterministic way (with probability $1$).
+A generalization of the weak law is the strong law of large numbers, which states that, with probability $1$
+
+$$\lim_{N \to\infty} \frac{X_1 + \cdots + X_n}{n} = \mu$$
+
+That is, with certainty, the long-run average of a sequence of independent and identically distributed random variables will converge to its mean.
+While the weak law defines this property in a probabilistic way, the strong law defines it in a deterministic way (with probability $1$).
 
 -------------------------------------------------------------
 

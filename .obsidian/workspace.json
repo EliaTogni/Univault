@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Classes/Simulation.md",
+                "file": "Classes/Informatica Teorica.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Simulation.md",
+                "file": "Classes/Informatica Teorica.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,12 +115,14 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "9d6dab7f39b33ece",
+  "active": "841d767269e7d257",
   "lastOpenFiles": [
-    "Atoms/Deviazione standard.md",
-    "Classes/Simulation.md",
-    "Classes/Informatica Teorica.md",
     "Articles/Probability Analysis in Pauper Manabases.md",
+    "Lexicon/Sovente.md",
+    "Classes/Simulation.md",
+    "Articles/An Introduction to Convolutional Neural Networks.md",
+    "Atoms/Deviazione standard.md",
+    "Classes/Informatica Teorica.md",
     "Blogs/Tempo.md",
     "Classes/Cittadinanza Digitale e Tecnocivismo.md",
     "Classes/3D Videogames.md",
@@ -134,7 +136,6 @@
     "Images/InsiemiProdottoC.png",
     "Articles/Image Classification with Classic and Deep Learning Techniques.md",
     "Articles/Preprocessing for Image Classification by Convolutional Neural Networks.md",
-    "Articles/An Introduction to Convolutional Neural Networks.md",
     "Atoms/The Game of Life.md",
     "Classes/Bioinformatica.md",
     "Classes/Logica Matematica.md",
@@ -152,7 +153,6 @@
     "Images/ActivationsMeanSDTraining.png",
     "Images/UpstreamGradient.png",
     "Videos/How to Write a Paper in a Weekend (By Prof. Pete Carr.md",
-    "Lexicon/Allampanato.md",
     "Untitled.canvas",
     "Blogs",
     "Atoms",

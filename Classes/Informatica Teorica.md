@@ -413,9 +413,12 @@ La dimostrazione segue $3$ passi:
 
 Per dimostrare che $\mathbb{R} \sim (0, 1)$, si rappresenta una biiezione graficamente: una semicirconferenza rappresenta l'insieme $(0, 1)$ in modo che la proiezione dell'intersezione del raggio con la circonferenza sul diametro identifichi l'elemento dell'insieme. Il raggio viene poi prolungato come una retta fino ad intersecare la retta dei reali, parallela al diametro. Dato che, quindi, ad ogni punto di $(0, 1)$ è possibile associare un punto di $\mathbb{R}$ (iniezione) e viceversa è possibile risalire ad ogni punto del segmento partendo dalla retta dei reali (suriezione), la funzione è biiettiva e quindi è un isomorfismo. $\mathbb{R}$ è quindi numeroso quanto un suo qualsiasi segmento.
 
+immagine
+
 La stessa biiezione sull'intervallo chiuso $[0, 1]$ mostra che la **compattificazione** di $\mathbb{R}$, ovvero $\mathbb{R}$ unito a tutti i suoi punti di accumulazione: $\dot{\mathbb{R}} \cup \{\pm \infty\} \sim [0, 1]$ ($0 \mapsto -\infty$, $1 \mapsto +\infty$).
 
-Per il secondo punto ipotiziamo per assurdo di poter elencare esaustivamente i numeri tra $0$ e $1$, e li scriviamo nella seguente forma:  
+Per il secondo punto, $\mathbb{N} \not \sim (0, 1)$, si ipotizzi per assurdo di poter elencare esaustivamente i numeri tra $0$ e $1$, e si scrivano nella seguente forma: $0.$ seguito da una sequenza di cifre, finita o infinita, periodica o non periodica, razionale o irrazionale.
+
 $$\begin{matrix}
 0. & a_{00} & a_{01} & a_{02} & \dots \\
 0. & a_{10} & a_{11} & a_{12} & \dots \\
@@ -424,21 +427,30 @@ $$\begin{matrix}
 \vdots
 \end{matrix}$$
 
-Costruisco il numero $c$ scegliendo gli elementi della diagonale, in modo che la $i$-esima cifra di $c$ sia costruita così:  
+Si costruisce il numero $c = 0.c_0 c_1 c_2 c_3 \dots$ scegliendo gli elementi della diagonale, in modo che la $i$-esima cifra di $c$ sia costruita così:
+
 $$c_i = \begin{cases}
 a_{ii} + 1 & a_{ii} \lt 9 \\
-0 & a_{ii} = 9
+a_{ii} -1 & a_{ii} = 9
 \end{cases}$$
-Questo numero differisce da ogni numero della lista nella cifra diagonale.  
-Siamo quindi arrivati ad un assurdo per cui la lista esaustiva non elenca ogni numero possibile, segue che $\mathbb{N} \nsim (0, 1)$.  
 
-Per il terzo punto ci basta considerare la transitività dell'isomorfismo per concludere che $\mathbb{R}$ non è isomorfo a $\mathbb{N}$ e quindi l'insieme dei numeri reali non è numerabile.  
+Questo numero differisce da ogni numero della lista nella cifra diagonale. Perchè non può essere lo $0$-esimo numero? Perchè differisce di una cifra, $c_0 \neq a_{00}$. Perchè non può essere il primo? Perchè differisce sicuramente per la seconda cifra, $c_1 \neq a_{11}$. Differisce, infatti, da qualunque numero nella lista per quanto riguarda la cifra diagonale.<br />
+Siamo quindi arrivati ad un assurdo per cui la lista esaustiva non elenca ogni numero possibile, segue che $\mathbb{N} \not \sim (0, 1)$ tramite **dimostrazione per diagonalizzazione**.
+
+Per il terzo punto ci basta considerare la transitività dell'isomorfismo per concludere che $\mathbb{R}$ non è isomorfo a $\mathbb{N}$ e quindi l'insieme dei numeri reali non è numerabile.
+
+$$\mathbb{R} \sim (0,1) \not \sim \mathbb{N} \implies \mathbb{R} \not \sim \mathbb{N}$$
+
+$\mathbb{N} \subseteq \mathbb{R}$ e $\mathbb{R}$ è più fitto di $\mathbb{N}$. Infatti, qualsiasi tentativo di listare anche solo un segmento di $\mathbb{R}$ non sarebbe .
 
 -------------------------------------------------------------
 
 ### Insiemi continui
-Insiemi che hanno la stessa cardinalità dei numeri reali sono detti _continui_.  
-Ad esempio, l'insieme delle parti di $\mathbb{N}$ non è numerabile e lo si dimostra con un simile procedimento diagonale: per assurdo si ipotizza di poter elencare tutti gli insiemi della partizione per mezzo del loro vettore caratteristico (per ogni $n \in N$ la $n$-esima cifra del vettore caratteristico di $A$ è 0 se $n$ non è in $A$, 1 viceversa) e si costruisce un nuovo vettore caratteristico negando gli elementi della diagonale. Si è quindi ottenuto un nuovo vettore che non era stato prima elencato, arrivando ancora una volta ad un assurdo.  
+$\mathbb{R}$ è un insieme **continuo** e tutti gli insiemi che hanno la stessa cardinalità dei numeri reali, cioè sono isomorfi ad $\mathbb{R}$ sono detti continui. Ad esempio, l'insieme delle parti di $\mathbb{N}$ non è numerabile e lo si dimostra con un simile procedimento diagonale:
+
+$$P(\mathbb{N}) = 2^\mathbb{N} = \text{ sottoinsiemi di } \mathbb{N} \not \sim \mathbb{N}$$
+
+Per assurdo, si ipotizza di poter elencare tutti gli insiemi della partizione per mezzo del loro vettore caratteristico (per ogni $n \in N$ la $n$-esima cifra del vettore caratteristico di $A$ è $0$ se $n$ non è in $A$, $1$ altrimenti) e si costruisce un nuovo vettore caratteristico negando gli elementi della diagonale. Si è quindi ottenuto un nuovo vettore che non era stato prima elencato, arrivando ancora una volta ad un assurdo.  
 
 Un importante insieme non numerabile è $\mathbb{N}^{\mathbb{N}}$, ovvero l'insieme delle funzioni dai naturali ai naturali.  
 Ancora una volta si dimostra questa proprietà per assurdo e per diagonalizzazione: si costruisce una matrice in cui ogni riga è l'applicazione di una funzione su ogni elemento di $\mathbb{N}$:  

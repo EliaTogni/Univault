@@ -14,7 +14,7 @@ Sottotitolo:
 
 # Articolo
 ## Who are you?
-
+The author is Apa, a [[Magic The Gathering]] player which regularly uploads Pauper videos on Youtube in Spanish on his channel. He considers hos strength to lie in deckbuilding more than playing, and this reflects on his content, which is more focused on new deck creations or metagame changes on decks (sideboards, card elections, etc), than meta deck playing. He’s also a huge nerd and really enjoys the theoretical parts of MTG deckbuilding, and probability analysis on gameplay decisions and deckbuilding. Therefore, he tried to provide some knowledge on how to analyze mana bases and other deckbuilding decisions.
 
 -----------------------------------------------------------
 
@@ -70,16 +70,89 @@ The author calculated these numbers by using a [Hypergeometric Calculator](https
 Here are some examples:<br />
 Probability of seeing an opening hand of two lands in Mono Red Kuldotha with $17$ or $18$ lands:
 
+image
+
+This would inform that $65\%$ of hands with $17$ lands see $2$ lands, whereas it's $69\%$ for $18$ lands. Additionally, we can calculate the chance with mulligans. For example, for $17$ lands the probability of not seeing a hand with $2$ lands after one mulligan is given by the probability of mulliganing once times the probability of not hitting $2$ lands. That is, $0.35 \times 0.35 = 0.1225 = 12\%$ chances of not seeing $2$ lands after two hands. For $18$ lands on the other hand, it would be $0.315 \times 0.315 = 0.1 = 10\%$. This gives the information that if we are willing to mulligan to a hand with $2$ lands on it, it would be needed to mulligan to $5$ about $12\%$ of the time. Note that this doesn’t take into account mana flood. Assuming that $4$ lands is always too many, what would the probability of seeing at least $4$ lands in the opening hand with this setup be?
+
+immagine
+
+That means, for $17$ lands there’s a $9\%$ of flood in any given hand, and for $18$ lands an $11\%$. We can calculate the chances of seeing only $2$ or $3$ lands in your opening hand by calculating the inverse first. What is the chance that we see $1$ or fewer lands or see $4$ or more lands? That’s $0.35 + 0.09 = 0.44$ for $17$ lands and $0.31 + 0.11 = 0.42$ for $18$ lands. That means, with this simple heuristic we can see we would mulligan less with $18$ lands. For fun, with $19$ lands it would be $28\%$ to see one or less lands and $13.5\%$ to see $4$ or more, adding up to a probability of $0.415$. I would argue that the best build right now for this deck to lower the amount of mulligans is to play $18$ lands, since $19$ doesn’t improve all that much (half a percent) and could flood more in the late game.
+
+As it can be seen, this can inform us the probability of mulliganing with a certain heuristic. This is specially useful for decks that have a very simple heuristic. For Mono Red, I generally decide to never keep a hand with less than $2$$ lands on $7$ or $6$, so I can see the amount of mulligans expected with this setup. If I find this too much, I can up the land count by one to mulligan less often, and even see the improvement in numbers! This is the power of knowing how to calculate probabilities, you can make informed decisions without having to experiment a lot to see what works and what doesn’t.
+
+For Dimir Faeries, on the other hand, we have a total of $22$ lands if we count Lórien Revealed as a full land (which I will). This deck is a good example for this article because it plays cantrips like Preordain and “turn $2$ lands” like Lórien Revealed and Dimir Aqueduct. Let’s start by seeing how turn 2 lands work. You can’t keep a hand with only Lórien Revealed and Dimir Aqueduct because they need another land in play to be useful. This means that if we want to calculate the probability of having a certain amount of lands in our opening hand, we will need to calculate the probability of t$2$ land + t$1$ land or two t$1$ lands by themselves. For the sake of the argument, let’s assume that the heuristic to keep a hand with this deck is to always look for at least two lands in our opening hand, and if we have less we just mulligan. The probability of this event to happen is a bit more complicated than with Mono Red Kuldotha, since we have t$2$ lands to take into account now. 
+
+We can separate this event into two different ones:
+- (a) $1$ “t$1$ land” and $1$ “t$2$ land”. $P(a) = 0.90 * 0.47 = 0.42\%$
+
+immagine
+
+- (b) $2$ “t$1$ lands”. $P(b) = 61\%$:
+
+immagine
+
+The probability of mulliganing is the inverse of both, that is, that both don’t happen at the same time. This is $P(mull) = (1 - P(a)) \times (1 - P(b)) =  0.58 * 0.39 = 0.23 = 23\%$.
+
+That means, the probability of seeing a hand with $2$ lands that works is $77\%$. 
+
+What happens if we also add the requirement of having access to both colors of mana in our opening hand?
+
+This deck has $12$ sources of black if we take into account Lórien as a full black source (it’s not uncommon to cycle Lórien for a dual in this deck, and the tempo loss is not as backbreaking thanks to Snuff Out in particular). Then, this deck also has $20$ sources of blue. If we take for granted that we have enough land to play, the probability of seeing both colors is $80\%$ for black and $95\%$ for blue:
+
+immagine
+
+So, the probability of seeing both colors of mana is $0.8 \times 0.95 = 0.76\%$.
+
+Note that since both probabilities (having $2$ lands and having both colors of mana) aren’t independent, we can’t just multiply the numbers together to get the probability of keeping with our heuristic.
+
 -----------------------------------------------------------
 
 ## Cantrips
+Disclaimer: this is not mathematically sound, we are starting to enter the realm of “close enough” mathematics. Sorry! Feel free to send me a comment with fixes and better models if you have any.
 
+In Dimir Faeries we have cantrips. These are cards that replace themselves and in this case provide card selection. In this deck we have Preordain and Brainstorm as cantrips. After playing a ton of this deck, I know I’m not using Brainstorm to find my second land unless I don’t have any other choice, so I’ll not take it into account for this section. Preordain, on the other hand, can help us find our land drops early in the game, since it looks at 3 cards and we can keep any lands we see there. This is very useful for the deck! Can we calculate the probability of seeing at least one land in the top $3$ cards of our deck? Well, we can mathematically calculate specific scenarios, but we can’t do a “general case” for our cantrip because of a lot of different specifics. For example, how many cards are there in the deck, how many lands are left, any previous scries, etc. Let’s do a specific scenario: I kept a $7$ card hand with one island and one Preordain. What is the chance I see my second land with Preordain?
+
+immagine
+
+Note that for this case we have a smaller population size, this is because we are considering what’s left in our library. The probability is $79\%$, which is a lot! In fact, in Frank Karsten’s articles, he considers Preordain and other cantrips as $50\%$ of a land, which as we can see, it’s not quite that in this deck in this specific scenario.
+
+I don’t remember exactly where (if anyone recalls, reach out to me to credit them please), but I saw a calculation for how to get the percentage of a land a cantrip is by doing the following calculation: we take the cantrip out of the deck and see what is the chance to find a land with those parameters:
+
+immagine
+
+In this case, Preordain would be considered as $76\%$ of a land. Even though this is not a realistic scenario by any means, it serves as a general case percentage because we expect to see lands and spells with this ratio during a game; and also we are probably not splashing for Preordain in our deck, so we can expect to have enough mana to cast it practically always.
+
+Here’s a table showing different cantrips (the number in parentheses is the number of cards a cantrip sees) and different percentages for different number of lands in the deck:
+
+immagine
+
+Reach Through Mists is a stand-in for any other cantrips that don’t have selection (Experimental Synthesizer, cycling a Suffocating Fumes, Ancestral Anger). A card like Night’s Whisper sees two cards, so it would be the same probability of Consider. Ponder was calculated like Preordain $+ 1$ card at random after shuffling: $P(\text{Ponder}) = 1 - (1 - P(1)) \times (1 - P(3))$.
+
+Note that these numbers are not taking into account the lines of multiple cantrips on the same turn, for example, casting Consider and seeing a Preordain on top means you are going to keep it if you can cast it to try and find the next land drop. There are other lines with cantrips I’m not taking into account, but I think this serves as a broad idea of how much a certain cantrip helps with your land drops.
+
+These numbers are useful to calculate some fast heuristics and mulligan probabilities. For example, we could just add the three Preordain that are in the Dimir Faeries deck to its lands as $3 \times 0.76 = 2.28$ lands, rounding down to $2$ extra lands. With this new knowledge, we could consider the $3$ Preordain as $2$ “turn $2$ lands” for our purposes. Remember that we consider the events as follows:
+1) $1$ “t$1$ land” and $1$ “t$2$ land”;
+2) 2 “t$1$ lands”.
+
+And that $2$) doesn’t change, since Preordain just adds to the “t$2$ lands” count. So $P(a) = 0.90 \times 0.60 = 0.54$:
+
+immagine
+
+And that $P(mull) =  (1 - P(a)) \times (1 - P(b)) = 0.46 \times 0.39 = 0.23 = 17.9\%$.
+
+So, the probability of keeping would be $82.1\%$ after considering Preordain as a land, with the heuristic of only keeping $2$ or more land hands.
 
 -----------------------------------------------------------
 
 ## Some Takeaway Heuristics
-
-
+1) In the build of Dimir Faeries that we’ve seen, a hand with $1$ Island and $1$ Preordain will find the second land about $87.7\%$ of the time, so I would consider keeping that hand if the rest of the hand is good;
+2) i would recommend playing $18$ lands in Mono Red Kuldotha, since it has a lower amount of mulligans (a bit more than $2\%$ less mulligans) and a higher chance of hitting its third land drop (about $5\%$ increase);
+3) in $17$ land Mono Red Kuldotha, the chance of keeping a one lander and finding a land in the first draw is $30\%$. If you are on the draw, the chances go up to $51.7\%$ that you’ll find your second land for your second turn;
+4) cantrips are a great way of improving your consistency if you are on blue. But even if you are on other colors, playing card draw even without selection can help find your land drops on time;
+5) Golgari Gardens can play a control deck that tries to leverage high mana count in the late game but plays a low land count. Troll of Khazad-dûm, Lembas, Golgari Rot Farm, Ichor Wellspring and Deadly Dispute variants help a lot in this gameplan;
+6) Each Deadly Dispute variant (without taking the Treasure into account), counts for $58.9\%$ of a land, since the deck plays $9$ copies of this effect, these count as an extra $5$ lands for the deck, effectively running $26$ lands instead of $21$;
+7) in Boros Synthesizer the chances of finding an Experimental Synthesizer by turn $2$ is $44.4\%$. The chances of finding a useful artifact to play on turn two (counting Lembas, Synth, Ichor Wellspring and Barbed Batterfist) is $82.4\%$;
+8) in Jeskai Ephemerate the chances of having an indestructible land by turn $3$ for Cleansing Wildfire is $75.1\%$. Playing one extra indestructible land improves this number to $79.4\%$. (These numbers don’t take into account cantrips).
 
 ----------------------------------------------------------------
 
