@@ -500,32 +500,52 @@ Tale risultato non dipende dalla tecnologia, e rimane quindi vero a prescindere 
 
 Si dimostra ora rigorosamente l'isomorfismo di programmi e dati ai naturali.  
 ## $\text{DATI} \sim \mathbb{N}$
-Si cerca una legge che:  
-- associ biunivocamente dati e numeri;
-- consenta di operare direttamente sui numeri per operare sui corrispondenti dati;
-- consenta di dire, senza perdita di generalità, che i nostri programmi lavorano su numeri.  
+Si vuole mostrare esplicitamente questa relazione. Si cerca, quindi, una legge che:
+- associ biunivocamente dati ai numeri e viceversa;
+- consenta di operare direttamente sui numeri per operare sui dati corrispondenti;
+- consenta di dire, senza perdita di generalità, che i programmi in questione lavorano su numeri.  
 
-Useremo questa catena di isomorfismi: $\mathbb{N} \times \mathbb{N} \sim \mathbb{N}^+ \to \mathbb{N} \times \mathbb{N} \sim \mathbb{N}$.  
+Per far ciò, si passa attraverso un risultato matematico sulla cardinalità di insiemi, la seguente catena di isomorfismi: $\mathbb{N} \times \mathbb{N} \sim \mathbb{N}^+ \to \mathbb{N} \times \mathbb{N} \sim \mathbb{N}$ (da cui si può facilmente ottenere che $\mathbb{Q} \sim \mathbb{N}$).
 
 ### Coppia di Cantor
-Funzione coppia di Cantor: $< , >: \mathbb{N} \times \mathbb{N} \to \mathbb{N}^+, <x, y> = n$. Si costruisce una funzione che sia suriettiva e iniettiva ed in modo che esistano due funzioni per risalire ad $x$ e $y$: $sin: \mathbb{N}^+ \to \mathbb{N}, sin(n) = x$ e $des: \mathbb{N}^+ \to \mathbb{N}, des(n) = y$.  
-Graficamente:  
+**Funzione coppia di Cantor**: 
+
+$$< , >: \mathbb{N} \times \mathbb{N} \to \mathbb{N}^+, <x, y> = n$$
+
+Si costruisce una funzione che sia suriettiva e iniettiva, in modo che esistano due funzioni per risalire ad $x$ e $y$:
+
+$$sin: \mathbb{N}^+ \to \mathbb{N}, \quad sin(n) = x$$ $$des: \mathbb{N}^+ \to \mathbb{N}, \quad des(n) = y$$
+
+Graficamente:
+
+immagine coppia di cantor
+
 $$\begin{matrix}
-  &  0 &  1 &  2 &  3 &  4 & 5 & \cdots \\
-0 &  1 &  3 &  6 & 10 & 15 & \cdots \\
-1 &  2 &  5 &  9 & 14 & \cdots \\
-2 &  4 &  8 & 13 & \cdots \\
-3 &  7 & 12 & \cdots \\
-4 & 11 & \cdots \\
+& y  & 0 &  1 &  2 &  3 &  4 & 5 & \cdots \\ x & \\
+0 && 1 &  3 &  6 & 10 & 15 & \cdots \\
+1 && 2 &  5 &  9 & 14 & \cdots \\
+2 && 4 &  8 & 13 & \cdots \\
+3 && 7 & 12 & \cdots \\
+4 && 11 & \cdots \\
 5 & \cdots \\
 \vdots
-\end{matrix}$$  
-Si vede chiaramente che, contando sulle diagonali, la funzione permette di "contare" $\mathbb{N} \times \mathbb{N}$ e che è sia iniettiva che suriettiva.  
-Proviamo a determinare la forma analitica: notiamo innanzitutto che il valore di $<x, y>$ si trova sulla diagonale $x+y$, quindi $<x, y> = <x+y, 0> + y$; la $0$-esima colonna è data dalla somma degli indici incrementata di uno, ovvero $<z, 0> = \sum_{i=0}^z i = 1+z(z+1)/2$; unendo i due risultati abbiamo:  
+\end{matrix}$$
+
+dove $\langle x, y \rangle$ indica il valore nella tabella all'incrocio tra la $x$-esima riga e la $y$-esima colonna. Si vede chiaramente che, contando sulle diagonali, la funzione permette di contare $\mathbb{N} \times \mathbb{N}$ e che è sia iniettiva che suriettiva. Operativamente, per calcolare $\langle, \rangle$ $sin$ e $des$, si costruisce la tabella dall'inizio: $\langle 0, 0 \rangle$,$\langle 1, 0 \rangle$, $\dots$
+
+Si provi a determinare la forma analitica: è possibile notare innanzitutto che il valore di $<x, y>$ si trova sulla diagonale $x+y$, quindi $\langle x, y \rangle = \langle x+y, 0 \rangle + y$.
+
+immagine slide 3
+
+La $0$-esima colonna è data dalla somma degli indici incrementata di uno, ovvero $<z, 0> = \sum_{i=0}^z i = 1+z(z+1)/2$; unendo i due risultati abbiamo:
+
 $$<x, y> = <x+y, 0> + y = \frac{(x+y)(x+y+1)}{2}+y+1$$
-Cerchiamo analiticamente la forma inversa. Il primo passo è definire il valore intermedio $\gamma$ tale che il numero cercato giaccia sulla diagonale $<\gamma, 0>$:  
-$$\gamma =\left\lfloor \frac{-1 + \sqrt{8n-7}}{2} \right\rfloor$$  
-quindi so che $y = n - <\gamma, 0>$ e $x = \gamma - y$.  
+
+Cerchiamo analiticamente la forma inversa. Il primo passo è definire il valore intermedio $\gamma$ tale che il numero cercato giaccia sulla diagonale $<\gamma, 0>$:
+
+$$\gamma =\left\lfloor \frac{-1 + \sqrt{8n-7}}{2} \right\rfloor$$
+
+quindi so che $y = n - <\gamma, 0>$ e $x = \gamma - y$.
 
 Per ora ho dimostrato solo che $\mathbb{N} \times \mathbb{N}$ è isomorfo a $\mathbb{N}^+$, ma per dimostrare che è isomorfo anche al semplice $\mathbb{N}$ basta definire la funzione $[x,y] = <x, y> - 1$ che in pratica è una coppia di Cantor in cui si inizia a contare da $0$. Questo mostra sia che $\mathbb{N} \times \mathbb{N} \sim \mathbb{N}$ sia che, dato che i razionali non sono altro che coppie di naturali, $\mathbb{Q} \sim \mathbb{N}$.
 

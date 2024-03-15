@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Classes/Simulation.md",
+                "file": "Classes/Informatica Teorica.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Simulation.md",
+                "file": "Classes/Informatica Teorica.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,10 +117,10 @@
   },
   "active": "9d6dab7f39b33ece",
   "lastOpenFiles": [
+    "Classes/Simulation.md",
+    "Classes/Informatica Teorica.md",
     "Classes/Privatezza e Protezione dei Dati.md",
     "Classes/Sicurezza dei Sistemi e delle Reti.md",
-    "Classes/Informatica Teorica.md",
-    "Classes/Simulation.md",
     "Articles/Probability Analysis in Pauper Manabases.md",
     "Lexicon/Sovente.md",
     "Articles/An Introduction to Convolutional Neural Networks.md",

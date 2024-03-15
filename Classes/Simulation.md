@@ -695,10 +695,6 @@ Note that a high period per se does not tell anything about the quality of its g
 
 How is it possible to check the first requirement of unpredictability of the generated pseudorandom sequence? A procedure called **Ripley test**consists in verifying that there is a small dependency between successive elements in the sequence, for instance plotting in a bidimensional plane a set of points whose $X$ coordinates have been obtained by the pseudorandom generator, and the $Y$ coordinates are simply the $X$ ones rotated by one item, say on the left.
 
-immagini ripley test
-
-- **funzione di distribuzione cumulativa empirica** (su sample $r$):<br />$ECDF(x) =$ numero di elementi di $r$ aventi valore $\leq x$. Il **teorema di Glivenko-Cantelli** sostiene che se $\hat{F}$ è stata calcolata usando un sample di dimensione $n$ estratto da una distribuzione la cui funzione di ripartizione è $F$, $\hat{F}$ converge in probabilità a $F$ con l'aumentare di $n$.
-
 ```python
 def ripley_test(v):
 	w = v[1:len(v)]
@@ -706,61 +702,83 @@ def ripley_test(v):
 	plt.scatter(v, w)	
 ```
 
+immagini ripley test
+
+autocorrelation analysis libro malchiodi + codice
+
 -------------------------------------------------------------
 
-Si osservi ora la forma di una funzione di densità di probabilità e di una funzione di ripartizione (o di distribuzione cumulativa) per una variabile aleatoria uniformemente distribuita.
+#### Empirical Cumulative Distribution Function
+It is desired for the random values to be extracted from a uniform distribution
 
-immagine 1h26'32''
+Uniform distribution
 
-Dai valori ottenuti, si vuole fare reverse engineering e costruire la funzione di ripartizione associata alla variabile aleatoria. Questa viene definita **Funzione di Ripartizione Empirica**.
+uniform discrete rv 
+
+$$X = \cases{1 \text{ with } p = 1/n \cr \cr
+2 \text{ with } p = 1/n \cr \cr
+\vdots \cr \cr
+n \text{ with } p = 1/n }$$
+
+Like the throwing of a dice.
+
+grafico probability mass function and cumulative distribution function of  uniform probability distribution.
+
+To evaluate this, it is possible to use the **Empirical Cumulative Distribution function**, another mathematical tool which can be used in order to assess the goodness of a congruential generator. It which associates a sample with an approximation of the c.d.f of the distribution from which the sample has been drawn. Formally, given a sample $S$ drawn from a distribution whose c.d.f. is , the empirical c.d.f. is defined as
+
+$$\widehat{F}(x) = \frac{1}{m} \sum_{i = 1}^{m} \mathbb{I}_{(-\infty, x]}(x_i)$$
+
+that is, the number of elements of $S$ having value $\leq x$.
+
+grafici e spiegazione
+
+It is easy to see that an empirical c.d.f. is a step function and each step starts precisely at one observation, raising the graph of a quantity equal to the number of times that observation occur in the sample, divided by the total number of observations.
+
+##### Glivenko-Cantelli theorem
+To formalize the validity of the previous assumptions, a theoretical result known as the **Glivenko-Cantelli theorem**, has been proposed:<br />
+If $\widehat{F}$ has been computed using a sample of size $n$ drawn from a distribution whose c.d.f. is $F$, $\widehat{F}$ converges in probability to $F$ as $n$ increases.
+
+Below, some code examples of what discussed above.
 
 ```python
 def build_ecdf(v):
 	return lambda x: sum( map( lambda el_v: el_v <= x, v)) / len(v)
 ```
 
-Il **Test della Funzione di Ripartizione Empirica** è un ulteriore test, oltre al Ripley Test, per la valutazione della randomicità.<br />
-Si osservino i numeri all'interno di una sequenza generata da un algoritmo ma si pretenda che essi provengano dall'osservazione di una variabile aleatoria la quale segue una distribuzione di probabilità discreta.<br />
-Di conseguenza, questa variabile possiederà una funzione di massa di probabilità ed una funzione di densità di probabilità associata.
-Si costruisca, quindi, la funzione che assomigli questa funzione di ripartizione cumulativa senza conoscere $X$ ma avendo soltanto alcuni valori della sequenza, ovvero la funzione di ripartizione empirica.<br />
-La funzione, banalmente, conta quanti valori della sequenza $v$ sono minori o uguali di $x$.
-
 ```python
-def empirical_cdf(v, x):
+def empirical_cdf(S, x):
 	count = 0
-	for i in range(len(v)):
-		if v[i] <= x:
+	for i in S:
+		if vi <= x:
 			count = count + 1
-	return (count / len(v))
+	return count / len(S)
 ```
 
 ----------------------------------------------------------------
 
-#### Shift Register Generator ####
-Un'alternativa per la generazione di numeri randomici è lo **Shift Register Generator**.<br />
-
-Le proprietà attese di un generatore random sono:
-- l'insieme dei valori pseudorandomici generati non può essere distinto da un semple analogo estratto da una distribuzione uniforme discreta nell'intervallo $\{0, ..., m-1\}$;
-- il periodo del generatore deve essere più ampio possibile;
-- l'implementazione del generatore deve essere efficiente (ad esempio, la scelta di $m = 2^{31} -1$ permette di codificarlo su $32$ bit).
+#### Shift Register Generator
 
 ----------------------------------------------------------------
 
-## Metodo Monte Carlo ##
-Si vuole computare (numericamente) il valore di $\pi$.<br />
-Si consideri un cerchio. La sua area è definita dalla formula $A = \pi \cdot r^{2}$. Quindi, è possibile calcolare $\pi = \frac{A}{r^{2}}$.<br />
-L'area del più piccolo quadrato $S$ contenente tale cerchio è $(2 \cdot r)^2$.
-Si applica ora il **Metodo Montecarlo**. L'idea è di procedere numericamente ma con un approccio geometrico.
+## Monte Carlo methods
+The term Monte Carlo refers to a wide family of **estimation methods** based on the use of pseudorandom numbers. The basic idea beneath this kind of methods is well described by the anndedoct describing its discovery on part of Stan Ulam, an ungarian mathematician who, playing a card solitaire while recovering from an encephalitis, wondered about the probability of dealing a specific, nontrivial hand from a shuffled deck. As he couldn't get the result through combinatorics, Ulam noticed that an approximation of the probability value could be easily found: it was sufficient to repeatedly shuffle the deck and compute the frequency of time that the desired card configuration appeared.
 
-immagine cerchio 1.27.30
+Although on that time this idea did not result in any application, when some years later Ulam was involved in the design of nuclear weapons at the Los Alamos National laboratories, the studies he was conducting with John Von Neumann and Nicholas Metropolis required to estimate the distribution of distances traveled by neutrons during a fission experiment. His early intuition could now be applied to a real-world problem: it just sufficed a bunch of random values. Those values could have been found in tables commonly used at that time, byt the availability the ENIAC computer suggested John Von Neumann to simulate the extraction of such numbers through the middle-square method introduced at the beginning of this lecture, which he designed specifically with this purpose.
 
-Si fissi il raggio del cerchio $r = 1$. Ora è solo necessario stimare l'area del quarto di cerchio per poter calcolare $\pi$.<br />
-L'approccio Montecarlo consiste nel riempire il quadrato di punti. Alcuni di essi cadranno all'interno dell'area del cerchio, altri al di fuori (ma sempre all'interno dell'area del quadrato).<br />
-Si chiami l'area del quarto di cerchio $B$. E' possibile stimare $B$ dal numero di punti caduti all'interno di $B$ diviso il numero di punti totali generati:
+The secrecy policies of the Manhattan project required each methodelogy invented in the Los Alamos laboratories to have a code name, so Metropolis suggested **Monte Carlo**, referring to the casino in Monaco frequented by Ulam's uncle.
 
-$$B = \frac{\text{numero di punti interni a } B}{\text{numero di punti totali}}$$
-Il codice si basa sul generare coppie di valori, ciascuno dei quali estratto da una distribuzione uniforme.<br />
-Per scoprire se i punti così ottenuti ricadono all'interno dell'area del quarto di cerchio, basta porre la distanza euclidea del punto dall'origine del quadrante minore di $1$.
+### Estimating $\pi$
+One of the most famous involving the simulation of pseudorandom values is that leading to an estimate of $\pi$. It requires to simulate the uniform distribution in a given square in order to draw points at random and then chek whether or not they fall inside the circle inscribed in the square. For instance, it is possible to consider the square and denote by the circle inscribed in (that is, the circle centered in the origin and having unit radius).
+
+immagine cerchio
+
+Given a circle $C$ of radius $r$, its area is $\pi \cdot r^2$, while the area of the smallest square $S$ containing such a circle is $(2 \cdot r)^2$. The use of a uniform distribution insures that the probability of drawing a point $x$ falling inside $C$ equals the ratio between the areas of $C$ and $S$, that is
+
+$$P[X \in C \vert x \in S] = \frac{P[x \in C \cap S]}{P[x \in S]} = \frac{P[x \in C]}{P[x \in S]} = \frac{\pi \cdot r^2}{(2 \cdot r)^2} = \frac{\pi}{4}$$
+
+Therefore
+
+$$\pi = 4 \cdot P[x \in C \vert x \in S]$$
 
 ```python
 def montecarlo_pi(iteration_number):
@@ -781,16 +799,6 @@ def montecarlo_pi(iteration_number):
 
 	return (4 * count / iteration_number)
 ```
-
-E' possibile stimare $\pi$ attraverso il calcolo $$\pi = 4 \cdot P[C \vert S]$$
-Dove $C$ è l'evento corrispondente alla caduta di un punto all'interno del cerchio e $S$ è l' evento corrispondente alla caduta di un punto all'interno del quadrato.<br />
-Alcuni parametri che è utile stabilire sono:
-- l'accuratezza, intesa come numero $d$ di cifre da stimare;
-- il grado di fiducia $\delta$, inteso come la probabilità di raggiungere l'accuratezza.
-- il numero di punti $n$.
-
-Il trovarsi all'interno di un cerchio può essere modellato con una variabile aleatoria Bernoulliana:$$X = \cases{1 \qquad p \cr \cr 0 \qquad (1-p) }$$
-Il valore atteso di questa variabile aleatoria sarà $E[X] = 1 \cdot p + 0 \cdot (1-p) = p$, mentre la sua varianza sarà $V[X] = E[X^{2}] - E[X]^{2}$ = .
 
 ----------------------------------------------------------------
 
