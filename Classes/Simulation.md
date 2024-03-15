@@ -697,7 +697,6 @@ How is it possible to check the first requirement of unpredictability of the gen
 
 immagini ripley test
 
-
 - **funzione di distribuzione cumulativa empirica** (su sample $r$):<br />$ECDF(x) =$ numero di elementi di $r$ aventi valore $\leq x$. Il **teorema di Glivenko-Cantelli** sostiene che se $\hat{F}$ è stata calcolata usando un sample di dimensione $n$ estratto da una distribuzione la cui funzione di ripartizione è $F$, $\hat{F}$ converge in probabilità a $F$ con l'aumentare di $n$.
 
 ```python
@@ -706,8 +705,6 @@ def ripley_test(v):
 	w.append(v[0])
 	plt.scatter(v, w)	
 ```
-
-
 
 -------------------------------------------------------------
 

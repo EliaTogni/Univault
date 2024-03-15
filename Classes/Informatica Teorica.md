@@ -508,7 +508,7 @@ Si cerca una legge che:
 Useremo questa catena di isomorfismi: $\mathbb{N} \times \mathbb{N} \sim \mathbb{N}^+ \to \mathbb{N} \times \mathbb{N} \sim \mathbb{N}$.  
 
 ### Coppia di Cantor
-Funzione coppia di Cantor: $< , >: \mathbb{N} \times \mathbb{N} \to \mathbb{N}^+, <x, y> = n$. Costruiamo questa funzione che sia suriettiva e iniettiva ed in modo che esistano due funzioni per risalire ad $x$ e $y$: $sin: \mathbb{N}^+ \to \mathbb{N}, sin(n) = x$ e $des: \mathbb{N}^+ \to \mathbb{N}, des(n) = y$.  
+Funzione coppia di Cantor: $< , >: \mathbb{N} \times \mathbb{N} \to \mathbb{N}^+, <x, y> = n$. Si costruisce una funzione che sia suriettiva e iniettiva ed in modo che esistano due funzioni per risalire ad $x$ e $y$: $sin: \mathbb{N}^+ \to \mathbb{N}, sin(n) = x$ e $des: \mathbb{N}^+ \to \mathbb{N}, des(n) = y$.  
 Graficamente:  
 $$\begin{matrix}
   &  0 &  1 &  2 &  3 &  4 & 5 & \cdots \\
