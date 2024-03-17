@@ -547,13 +547,33 @@ Unendo i due risultati, si ha che:
 
 $$<x, y> = <x + y, 0> + y = \frac{(x + y)(x + y + 1)}{2} + 1 + y$$
 
-Si cerchi ora analiticamente la forma inversa. Il primo passo è definire il valore intermedio $\gamma$ tale che il numero cercato giaccia sulla diagonale $<\gamma, 0>$:
+Si cerchi ora analiticamente la forma inversa, cioè come trovare le funzioni $sin$ e $des$.
 
-$$\gamma =\left\lfloor \frac{-1 + \sqrt{8n-7}}{2} \right\rfloor$$
+immagine slide coppia di cantor 13 evidenziato
 
-quindi $y = n - <\gamma, 0>$ e $x = \gamma - y$.
+Il primo passo è definire il valore intermedio $\gamma$ tale che il numero cercato giaccia sulla diagonale $<\gamma, 0>$. Innanzitutto, vale che $y = n - <\gamma, 0>$ perchè per ottenere il risultato $n$ della funzionecoppia di Cantor per la coppia $\langle x, y \rangle$, bisogna sommare $y$ a $\langle x + y, 0 \rangle$ (e quindi fare $\langle \gamma, 0 \rangle + y = n$, con $\gamma = x + y$).<br />
+$\gamma$, invece, è il più grande valore in $\langle z, 0 \rangle$ minore di $n$:
 
-Per ora si è dimostrato solo che $\mathbb{N} \times \mathbb{N}$ è isomorfo a $\mathbb{N}^+$, ma per dimostrare che è isomorfo anche al semplice $\mathbb{N}$ basta definire la funzione $[x,y] = <x, y> - 1$ che, in pratica, è una coppia di Cantor in cui si inizia a contare da $0$. Questo mostra sia che $\mathbb{N} \times \mathbb{N} \sim \mathbb{N}$ sia che, dato che i razionali non sono altro che coppie di naturali, $\mathbb{Q} \sim \mathbb{N}$.
+$$\gamma = \max\Big\{ z \in \mathbb{N} : \langle z, 0 \rangle \leq n \Big\}$$
+
+Si risolverà quindi la disuguaglianza e si prenderà il più alto valore che la risolve:
+
+$$\langle z, 0 \rangle \leq q = \frac{z(z+1)}{2} + 1 \leq n = z^2 + z + 2 - 2n \leq 0 = z_{1, 2} = \frac{-1 \pm \sqrt{8n - 7}}{2} =$$
+$$\frac{-1 - \sqrt{8n - 7}}{2} \leq z \leq \frac{-1 + \sqrt{8n - 7}}{2} = $$
+
+$$ = \gamma =\left\lfloor \frac{-1 + \sqrt{8n-7}}{2} \right\rfloor$$
+
+quindi $y = n - <\gamma, 0>$ e $x = \gamma - y$ (poichè $\langle x + y, 0 \rangle = \langle \gamma, 0 \rangle$).
+
+Un esempio di funzione coppia di Cantor e della sua inversa.<br />
+$\mathbb{N}^2 \to \mathbb{N}^+$:<br />
+$\langle 10, 20 \rangle = \frac{30 \cdot 31}{2} + 1 + 20 = 486$;<br />
+$\mathbb{N}^+ \to \mathbb{N^2}$:<br />
+$\gamma = \left\lfloor \frac{-1 + \sqrt{8n-7}}{2} \right\rfloor = \left\lfloor \frac{-1 + \sqrt{8 \cdot 486 -7}}{2} \right\rfloor = \left\lfloor \frac{-1 + \sqrt{3881}}{2} \right\rfloor = \left\lfloor \frac{-1 + 62, 2976 \dots}{2} \right\rfloor = \left\lfloor 30, 6447 \right\rfloor = 30$.<br />
+$y = 486 - \langle 30, 0 \rangle = 486 - \Big(\frac{30 \cdot 31}{2} + 1\Big) = 486 - 466 = 20 = des(486)$.<br />
+$x = 30 - 20 = 10 = sin(486)$.<br />
+
+Per ora si è dimostrato solo che $\mathbb{N} \times \mathbb{N}$ è isomorfo a $\mathbb{N}^+$, ma per dimostrare che è isomorfo anche al semplice $\mathbb{N}$ basta definire la funzione $[x,y] = <x, y> - 1$ che, in pratica, è una coppia di Cantor in cui si inizia a contare da $0$. Questo mostra sia che $\mathbb{N} \times \mathbb{N} \sim \mathbb{N}$ sia che, dato che i razionali non sono altro che coppie di interi $(num, den)$, $\mathbb{Q} \sim \mathbb{N}$.
 
 -------------------------------------------------------------
 
