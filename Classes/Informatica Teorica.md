@@ -505,14 +505,14 @@ Si vuole mostrare esplicitamente questa relazione. Si cerca, quindi, una legge c
 - consenta di operare direttamente sui numeri per operare sui dati corrispondenti;
 - consenta di dire, senza perdita di generalità, che i programmi in questione lavorano su numeri.  
 
-Per far ciò, si passa attraverso un risultato matematico sulla cardinalità di insiemi, la seguente catena di isomorfismi: $\mathbb{N} \times \mathbb{N} \sim \mathbb{N}^+ \to \mathbb{N} \times \mathbb{N} \sim \mathbb{N}$ (da cui si può facilmente ottenere che $\mathbb{Q} \sim \mathbb{N}$).
+Per far ciò, si passa attraverso un risultato matematico sulla cardinalità di insiemi, la seguente catena di isomorfismi: $\mathbb{N} \times \mathbb{N} \simeq \mathbb{N}^+ \to \mathbb{N} \times \mathbb{N} \sim \mathbb{N}$ (da cui si può facilmente ottenere che $\mathbb{Q} \sim \mathbb{N}$).
 
 ### Coppia di Cantor
 **Funzione coppia di Cantor**: 
 
 $$< , >: \mathbb{N} \times \mathbb{N} \to \mathbb{N}^+, <x, y> = n$$
 
-Si costruisce una funzione che sia suriettiva e iniettiva, in modo che esistano due funzioni per risalire ad $x$ e $y$:
+Si costruisce una funzione che sia iniettiva (cioè date due coppie diverse di numeri, esse restituiranno un numero differente come risultato della coppia di Cantor) e suriettiva (Dato un numero, è possibile riscompattarlo nella coppia di numeri che l'hanno generato tramite coppia di Cantor), in modo che esistano due funzioni per risalire ad $x$ e $y$:
 
 $$sin: \mathbb{N}^+ \to \mathbb{N}, \quad sin(n) = x$$ $$des: \mathbb{N}^+ \to \mathbb{N}, \quad des(n) = y$$
 
@@ -531,37 +531,45 @@ $$\begin{matrix}
 \vdots
 \end{matrix}$$
 
-dove $\langle x, y \rangle$ indica il valore nella tabella all'incrocio tra la $x$-esima riga e la $y$-esima colonna. Si vede chiaramente che, contando sulle diagonali, la funzione permette di contare $\mathbb{N} \times \mathbb{N}$ e che è sia iniettiva che suriettiva. Operativamente, per calcolare $\langle, \rangle$ $sin$ e $des$, si costruisce la tabella dall'inizio: $\langle 0, 0 \rangle$,$\langle 1, 0 \rangle$, $\dots$
+dove $\langle x, y \rangle$ indica il valore nella tabella all'incrocio tra la $x$-esima riga e la $y$-esima colonna. Si vede chiaramente che, contando sulle diagonali, la funzione permette di contare $\mathbb{N} \times \mathbb{N}$ e che la funzione è sia iniettiva che suriettiva. Operativamente, per calcolare $\langle, \rangle$ $sin$ e $des$, si costruisce la tabella dall'inizio: $\langle 0, 0 \rangle$,$\langle 1, 0 \rangle$, $\dots$
 
-Si provi a determinare la forma analitica: è possibile notare innanzitutto che il valore di $<x, y>$ si trova sulla diagonale $x+y$, quindi $\langle x, y \rangle = \langle x+y, 0 \rangle + y$.
+Perchè è vero che coppie diverse sono sempre mappate in numeri diversi? Coppie diverse sono coordinate diverse di punti nella tabella e coordinate di punti diverse individuano celle diverse, contenenti per costruzione valori diversi.
 
-immagine slide 3
+Si provi a determinare la **forma analitica**, cioè se esiste una funzione in funzione delle coordinate di $x$ e $y$ che restituisca $n$: è possibile notare innanzitutto che il valore di $<x, y>$ si trova sulla diagonale $x+y$, quindi $\langle x, y \rangle = \langle x+y, 0 \rangle + y$.
 
-La $0$-esima colonna è data dalla somma degli indici incrementata di uno, ovvero $<z, 0> = \sum_{i=0}^z i = 1+z(z+1)/2$; unendo i due risultati abbiamo:
+immagine slide 3 coppia di cantor + y saltelli in diagonale
 
-$$<x, y> = <x+y, 0> + y = \frac{(x+y)(x+y+1)}{2}+y+1$$
+La $0$-esima colonna è data dalla somma degli indici incrementata di uno, ovvero
 
-Cerchiamo analiticamente la forma inversa. Il primo passo è definire il valore intermedio $\gamma$ tale che il numero cercato giaccia sulla diagonale $<\gamma, 0>$:
+$$<z, 0> = \Big (\sum_{i=1}^z i \Big) + 1 =\Big ( z(z+1)/2 \Big) +1$$
+
+Unendo i due risultati, si ha che:
+
+$$<x, y> = <x + y, 0> + y = \frac{(x + y)(x + y + 1)}{2} + 1 + y$$
+
+Si cerchi ora analiticamente la forma inversa. Il primo passo è definire il valore intermedio $\gamma$ tale che il numero cercato giaccia sulla diagonale $<\gamma, 0>$:
 
 $$\gamma =\left\lfloor \frac{-1 + \sqrt{8n-7}}{2} \right\rfloor$$
 
-quindi so che $y = n - <\gamma, 0>$ e $x = \gamma - y$.
+quindi $y = n - <\gamma, 0>$ e $x = \gamma - y$.
 
-Per ora ho dimostrato solo che $\mathbb{N} \times \mathbb{N}$ è isomorfo a $\mathbb{N}^+$, ma per dimostrare che è isomorfo anche al semplice $\mathbb{N}$ basta definire la funzione $[x,y] = <x, y> - 1$ che in pratica è una coppia di Cantor in cui si inizia a contare da $0$. Questo mostra sia che $\mathbb{N} \times \mathbb{N} \sim \mathbb{N}$ sia che, dato che i razionali non sono altro che coppie di naturali, $\mathbb{Q} \sim \mathbb{N}$.
+Per ora si è dimostrato solo che $\mathbb{N} \times \mathbb{N}$ è isomorfo a $\mathbb{N}^+$, ma per dimostrare che è isomorfo anche al semplice $\mathbb{N}$ basta definire la funzione $[x,y] = <x, y> - 1$ che, in pratica, è una coppia di Cantor in cui si inizia a contare da $0$. Questo mostra sia che $\mathbb{N} \times \mathbb{N} \sim \mathbb{N}$ sia che, dato che i razionali non sono altro che coppie di naturali, $\mathbb{Q} \sim \mathbb{N}$.
 
 -------------------------------------------------------------
 
 ### Codifica di dati in numeri
-Ogni tipo di dato può essere rappresentato, in particolar modo grazie alla funzione coppia di Cantor, come un intero naturale, ad esempio codificando una lista di numeri con una applicazione ripetuta della funzione, un suono con una lista di campionature, un grafo con la matrice di adiacenza che è una lista di liste, e così via.  
-Possiamo quindi lavorare su numeri invece che su dati, e trasporre le nostre funzioni $f: \text{DATI} \to \text{DATI}_{\bot}$ in funzioni $f: \mathbb{N} \to \mathbb{N}_{\bot}$.  
-L'universo dei problemi per i quali cerchiamo una soluzione automatica è rappresentato dall'insieme $\mathbb{N}_{\bot}^{\mathbb{N}}$.  
+Ogni tipo di dato può essere rappresentato, in particolar modo grazie alla funzione coppia di Cantor, come un intero naturale, ad esempio codificando una lista di numeri con una applicazione ripetuta della funzione, un suono con una lista di campionature, un grafo con la matrice di adiacenza che è una lista di liste, e così via.
+
+E' possibile quindi lavorare su numeri invece che su dati, e trasporre le funzioni $f: \text{DATI} \to \text{DATI}_{\bot}$ in funzioni $f: \mathbb{N} \to \mathbb{N}_{\bot}$. L'universo dei problemi per i quali si cerca una soluzione automatica è rappresentato dall'insieme $\mathbb{N}_{\bot}^{\mathbb{N}}$.  
 
 -------------------------------------------------------------
 
 ## $\text{PROG} \sim \mathbb{N}$
-Per mostrare anche questo isomorfismo useremo due sistemi di calcolo: il sistema di calcolo RAM e il sistema di calcolo WHILE.  
-Il sistema di calcolo RAM è sostanzialmente un assembly molto semplificato che permette di definire in maniera rigorosa l'isomorfismo $\text{PROG} \sim \mathbb{N}$, la semantica dei programmi e una prima proposta di potenza computazionale di questo sistema.  
-Per evitare di valutare un solo sistema di calcolo che potrebbe essere troppo semplicistico, lo confronteremo con il sistema di calcolo più sofisticato WHILE. Dal loro confronto potremo renderci conto se la potenza dipende dallo strumento o, se hanno le stesse capacità, non dipenda dalla piattaforma ma sia una caratteristica teorica, intrinseca nei problemi.  
+Per mostrare anche questo isomorfismo si useranno due sistemi di calcolo: il sistema di calcolo RAM e il sistema di calcolo WHILE.
+
+Il sistema di calcolo RAM è sostanzialmente un assembly molto semplificato il quale permette di definire in maniera rigorosa l'isomorfismo $\text{PROG} \sim \mathbb{N}$, la semantica dei programmi e una prima proposta di potenza computazionale di questo sistema.<br />
+Per evitare di valutare un solo sistema di calcolo che potrebbe essere troppo semplicistico, lo si confronterà con il sistema di calcolo più sofisticato WHILE.
+Dal loro confronto ci si potrà rendere conto se la potenza dipende dallo strumento o, se hanno le stesse capacità, non dipenda dalla piattaforma ma sia una caratteristica teorica, intrinseca nei problemi.  
 
 -------------------------------------------------------------
 
@@ -595,10 +603,12 @@ L'inizializzazione $in(n): \text{DATI} \to \text{STATI}$ è una semplice funzion
 -------------------------------------------------------------
 
 ### Funzione stato prossimo
-L'esecuzione di un programma è la dinamica del programma, definita da una funzione detta _funzione stato prossimo_:  
+L'esecuzione di un programma è la dinamica del programma, definita da una funzione detta _funzione stato prossimo_:
+
 $$\delta: \text{STATI} \times \text{PROG} \to \text{STATI}_{\bot}$$
 $$\delta(S, P) = S'$$
-Questa funzione restituisce lo stato successivo $S'$ prendendo in input lo stato attuale $S$ e il programma $P$.  
+
+Questa funzione restituisce lo stato successivo $S'$ prendendo in input lo stato attuale $S$ e il programma $P$.
 Se il contatore è 0, lo stato successivo non è definito; se invece il contatore è maggiore di $Istr_{|P|}$ lo stato successivo ha tutti i registri uguali e il contatore posto a 0; nel caso in cui il contatore fosse un valore valido, lo stato successivo ad una operazione di incremento/decremento lascia tutti i valori dei registri inalterati tranne quello toccato dall'operazione e il contatore che avanza di 1, mentre lo stato successivo ad un salto condizionale lascia tutti i valori inalterati tranne il contatore che o avanza di uno o viene impostato al valore richiesto dal salto.
 
 -------------------------------------------------------------
@@ -619,21 +629,24 @@ Questo è l'insieme delle funzioni calcolabili da una macchina RAM.
 
 ## $\text{PROG} \sim \mathbb{N}$
 ### Goedelizzazione
-Aritmetizzare o goedelizzare una struttura significa associarle in modo biunivoco un numero naturale. Se riuscissimo a definire una relazione $Ar$ di aritmetizzaione che permettesse di aritmetizzare ogni istruzione, otterremmo una lista di numeri (le istruzioni del programma) che saremmo poi tranquillamente in grado di tradurre in un unico numero naturale grazie ai metodi visti, utilizzando ad esempio la funzione coppia di Cantor.  
-Vogliamo quindi trovare $Ar: Istr \to \mathbb{N}$ e $Ar^{-1}: \mathbb{N} \to Istr$ tali che $Ar(Istr) = n \iff Ar^{-1}(n) = Istr$.  
+Aritmetizzare o goedelizzare una struttura significa associarle in modo biunivoco un numero naturale. Se riuscissimo a definire una relazione $Ar$ di aritmetizzaione che permettesse di aritmetizzare ogni istruzione, otterremmo una lista di numeri (le istruzioni del programma) che saremmo poi tranquillamente in grado di tradurre in un unico numero naturale grazie ai metodi visti, utilizzando ad esempio la funzione coppia di Cantor.
+Vogliamo quindi trovare $Ar: Istr \to \mathbb{N}$ e $Ar^{-1}: \mathbb{N} \to Istr$ tali che $Ar(Istr) = n \iff Ar^{-1}(n) = Istr$.
 Per costruirla definiamo così 3 casi:
 1. $Ar(R_k \leftarrow R_k + 1)= 3k$;
 2. $Ar(R_k \leftarrow R_k \dot- 1) = 3k+1$;
 3. $Ar(\text{IF } R_k = 0 \text{ THEN GOTO } m) = 3<k, m> - 1$.
 
 Per l'inverso, basta vedere se $mod\ 3$ il resto è 0, 1 o 2 per sapere quale delle 3 istruzioni è stata codificata, e dividere per 3 per avere l'indice del registro codificato; nel terzo caso è necessario un passaggio in più, ovvero applicare $sin$ e $des$ per estrarre rispettivamente registro e istruzione per il salto.  
-Codificare un intero programma significa semplicemente applicare la funzione coppia di Cantor ad una lista di istruzioni codificate in questo modo, mentre decodificarlo significa applicare la funzione $sin$ per ottenere l'istruzione di testa, $des$ per avere il resto della lista.  
+Codificare un intero programma significa semplicemente applicare la funzione coppia di Cantor ad una lista di istruzioni codificate in questo modo, mentre decodificarlo significa applicare la funzione $sin$ per ottenere l'istruzione di testa, $des$ per avere il resto della lista.
 
-Osserviamo quindi che $n \leftrightarrow P$, ovvero i numeri sono programmi: $F(RAM) = \{\varphi_P: P \in \text{PROG}\} = \{\varphi_i\}_{i \in \mathbb{N}}$.  
-Da questo si ha rigorosamente che $F(RAM) \sim \mathbb{N} \nsim \mathbb{N}^{\mathbb{N}}$, quindi alcuni problemi non sono risolvibili da una macchina RAM.  
+Osserviamo quindi che $n \leftrightarrow P$, ovvero i numeri sono programmi: $F(RAM) = \{\varphi_P: P \in \text{PROG}\} = \{\varphi_i\}_{i \in \mathbb{N}}$.
+Da questo si ha rigorosamente che $F(RAM) \sim \mathbb{N} \nsim \mathbb{N}^{\mathbb{N}}$, quindi alcuni problemi non sono risolvibili da una macchina RAM.
+
+-------------------------------------------------------------
 
 # Macchine WHILE
-Il sistema di calcolo while è un linguaggio strutturato, quindi le istruzioni vengono eseguite una dopo l'altra senza bisogno di un contatore. Possiede 21 registri, il primo usato come registro di output e il secondo come registro di input. La sua sintassi è definita induttivamente, ovvero partendo da istruzioni semplici si compongono comandi più complessi.  
+Il sistema di calcolo while è un linguaggio strutturato, quindi le istruzioni vengono eseguite una dopo l'altra senza bisogno di un contatore. Possiede 21 registri, il primo usato come registro di output e il secondo come registro di input. La sua sintassi è definita induttivamente, ovvero partendo da istruzioni semplici si compongono comandi più complessi.
+
 ## Comandi
 Assegnamento (comandi base):  
 1. $x_k := 0$;
@@ -642,13 +655,15 @@ Assegnamento (comandi base):
 
 Istruzione while (comando complesso):  
 $\text{WHILE}\ x_k \neq 0\ \text{DO}: \mathbb{C}$  
-Nel corpo dell'istruzione while può comparire uno qualunque tra i comandi base, complessi o composti.  
+Nel corpo dell'istruzione while può comparire uno qualunque tra i comandi base, complessi o composti.
 
-Comando composto:  
+Comando composto:
 $begin\ C_1; \dots, C_m\ end$  
-È un comando che racchiude una serie di comandi di qualsiasi tipo tra un _begin_ e un _end_.  
+È un comando che racchiude una serie di comandi di qualsiasi tipo tra un _begin_ e un _end_.
 
-Indichiamo con $\text{W-PROG}$ l'insieme dei programmi while.  
+Indichiamo con $\text{W-PROG}$ l'insieme dei programmi while.
+
+-------------------------------------------------------------
 
 ## Semantica
 $\Psi_w(n) = cont(x_0) / \bot$  
@@ -657,24 +672,28 @@ La semantica di un programma while su dato $n$ è l'output contenuto nel registr
 A differenza della RAM, che aveva infiniti stati, non abbiamo bisogno di definire una funzione di stato: qui basta una lista di 21 elementi contenente il valore dei registri. Lo spazio degli stati è quindi $\mathbb{N}^{21}$, e uno stato $\underline{x}$ è $\underline{x} \in \mathbb{N}^{21}$ e l'inizializzazione semplicemente imposta a 0 tutti i registri tranne $x_1$ di input.  
 
 ### Funzione stato prossimo
+
 $$[\ ](\ ): \text{W-COM} \times \text{W-STATI} \to \text{W-STATI}_{\bot}$$
-È una funzione che, da un comando, preso in ingresso uno stato, resituisce lo stato prossimo: $[\mathbb{C}](\underline{x}) = \underline{x}'$. Questa funzione può essere definita induttivamente su tutte le strutture induttive del comando $\mathbb{C}$.  
+
+È una funzione che, da un comando, preso in ingresso uno stato, resituisce lo stato prossimo: $[\mathbb{C}](\underline{x}) = \underline{x}'$. Questa funzione può essere definita induttivamente su tutte le strutture induttive del comando $\mathbb{C}$.
 
 Nei casi base è semplice definire la funzione stato prossimo: semplicemente restituisce i 21 valori invariati tranne quello indicato nell'assegnamento, che sarà incrementato/decrementato o posto a 0.  
 In un passo composto conosciamo per induzione il comportamento della funzione stato prossimo: non ci resta che applicare iterativamente la funzione stato prossimo ad ogni comando, prendendo come stato iniziale lo stato prossimo del comando precedente.  
 Anche per il comando while conosciamo la funzione stato prossimo per ipotesi induttiva, e ci basta applicare la funzione stato prossimo il minor numero di volte necesario a mandare a 0 il registro di controllo. Lo stato prossimo di un comando while è quindi il risultato dopo queste applicazioni o indefinito se non si può mandare a 0 il registro di controllo.  
-Semantica di $\text{W-PROG}$: $\Psi_w(x) = Pro_0^{21}([w](w-in(x)))$.  
+Semantica di $\text{W-PROG}$: $\Psi_w(x) = Pro_0^{21}([w](w-in(x)))$.
 
 # Confronto tra sistemi di calcolo
 Vogliamo ora confrontare i due sistemi RAM e WHILE per vedere se possiamo trarre conclusioni interessanti sulla calcolabilità in due sistemi diversi.  
-In generale poniamo di avere due sistemi di calcolo $\mathbb{C}_1$ e $\mathbb{C}_2$ e definiamo i rispettivi poteri computazionali:  
+In generale poniamo di avere due sistemi di calcolo $\mathbb{C}_1$ e $\mathbb{C}_2$ e definiamo i rispettivi poteri computazionali:
 $$F(\mathbb{C}_1) = \{f \in \mathbb{N}_{\bot}^{\mathbb{N}}: \exists P_1 \in \text{$\mathbb{C}_1$-PROG}| f = \Psi_{P_1}\} = \{\Psi_{P_1}: P_1 \in \text{$\mathbb{C}_1$-PROG}\}$$
 $$F(\mathbb{C}_2) = \{f \in \mathbb{N}_{\bot}^{\mathbb{N}}: \exists P_2 \in \text{$\mathbb{C}_2$-PROG}| f = \varphi_{P_2}\} = \{\varphi_{P_2}: P_2 \in \text{$\mathbb{C}_2$-PROG}\}$$
 
 Il fine sarebbe dimostrare $F(\mathbb{C}_1) \subseteq F(\mathbb{C}_2)$, ovvero
+
 $$\forall f \in F(\mathbb{C}_1) \implies f \in F(\mathbb{C}_2)$$
 $$\exists P_1 \in \text{$\mathbb{C}_1$-PROG}:f = \Psi_{P_1} \implies \exists P_2 \in \text{$\mathbb{C}_2$-PROG}:f = \varphi_{P_2}$$
-In altre parole, per ogni programma del primo sistema ne esiste uno equivalente nel secondo (se esiste un programma che esprime una funzione $f$ nel primo sistema, esiste un altro programma nel secondo sistema che esprime la stessa funzione $f$).  
+
+In altre parole, per ogni programma del primo sistema ne esiste uno equivalente nel secondo (se esiste un programma che esprime una funzione $f$ nel primo sistema, esiste un altro programma nel secondo sistema che esprime la stessa funzione $f$).
 Tutto questo si può provare trovando un _compilatore_ tra il primo e il secondo linguaggio.  
 
 ## Compilatore

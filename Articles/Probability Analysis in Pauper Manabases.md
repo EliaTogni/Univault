@@ -59,7 +59,18 @@ In these calculations, the author will normally shave one or two sources from Fr
 
 Below it is possible to observe the author heuristics for colored sources required for specific costs of mana. The fourth column shows the percentage chance of a certain hand to have the required mana sources to play the spell on curve on the play, adding an extra draw for each turn, without taking into account mulligans:
 
-table
+| Mana Cost | Example Spell                        | Minimum colored sources | % to find (no mulls) |
+| --------- | ------------------------------------ | ----------------------- | -------------------- |
+| C         | Goblin Tomb Raider                   | 13                      | 84%                  |
+| CC        | Counterspell                         | 19                      | 80%                  |
+| CCC       | Kuldotha Rebirth + Goblin Bushwacker | 22                      | 72%                  |
+| 1C        | Kor Skyfisher                        | 11                      | 82%                  |
+| 2C        | Sea Gate Oracle                      | 10                      | 83%                  |
+| 3C        | Thorn of the Black Rose              | 9                       | 83%                  |
+| 4C        | Goliath Paladin                      | 8                       | 82%                  |
+| 1CC       | Dust to Dust                         | 17                      | 80%                  |
+| 2CC       | Battle Screech                       | 15                      | 78%                  |
+| 3CC       | Vampire Sovereign                    | 14                      | 79%                  |
 
 As it is possible to observe, some numbers don’t align with what we see in some decks. For example, no mono red deck that plays Kuldotha Rebirth and Goblin Bushwhacker plays $22$ sources of mana. This is because in Pauper deck skews towards playing less lands to avoid flood, in exchange for not being able to play on curve consistently. That means, the probability of a Mono Red deck to be able to play Kuldotha + Bushwhacker on turn $3$ is about $50\%$, which is not consistent to be considered part of the deck’s plan. The deck is not built to play this combination on curve, but rather to avoid flood in the late game, and have consistent access to two mana on turn $2$ ($73\%$) or $3$ ($79\%$).
 
@@ -70,7 +81,7 @@ The author calculated these numbers by using a [Hypergeometric Calculator](https
 Here are some examples:<br />
 Probability of seeing an opening hand of two lands in Mono Red Kuldotha with $17$ or $18$ lands:
 
-image
+immagine
 
 This would inform that $65\%$ of hands with $17$ lands see $2$ lands, whereas it's $69\%$ for $18$ lands. Additionally, we can calculate the chance with mulligans. For example, for $17$ lands the probability of not seeing a hand with $2$ lands after one mulligan is given by the probability of mulliganing once times the probability of not hitting $2$ lands. That is, $0.35 \times 0.35 = 0.1225 = 12\%$ chances of not seeing $2$ lands after two hands. For $18$ lands on the other hand, it would be $0.315 \times 0.315 = 0.1 = 10\%$. This gives the information that if we are willing to mulligan to a hand with $2$ lands on it, it would be needed to mulligan to $5$ about $12\%$ of the time. Note that this doesn’t take into account mana flood. Assuming that $4$ lands is always too many, what would the probability of seeing at least $4$ lands in the opening hand with this setup be?
 
@@ -124,7 +135,18 @@ In this case, Preordain would be considered as $76\%$ of a land. Even though thi
 
 Here’s a table showing different cantrips (the number in parentheses is the number of cards a cantrip sees) and different percentages for different number of lands in the deck:
 
-immagine
+| Number of lands | Reach Through Mists (1) | Consider (2) | Preordain | Ponder (3 + 1) |
+| --------------- | ----------------------- | ------------ | --------- | -------------- |
+| 16              | 27.1%                   | 47.2%        | 62%       | 72.2%          |
+| 17              | 28.8%                   | 49.7%        | 64.7%     | 74.9%          |
+| 18              | 30.5%                   | 52.1%        | 67.2%     | 77.2%          |
+| 19              | 32.2%                   | 54.4%        | 69.6%     | 79.4%          |
+| 20              | 33.9%                   | 56.7%        | 71.9%     | 81.4%          |
+| 21              | 35.6%                   | 58.9%        | 74.1%     | 83.3%          |
+| 22              | 37.3%                   | 61.1%        | 76.1%     | 85%            |
+| 23              | 39%                     | 63.2%        | 78%       | 86.6%          |
+| 24              | 40.7%                   | 65.2%        | 79.9%     | 88.1%          |
+| 25              | 42.3%                   | 67.2%        | 81.6%     | 89.4%          |
 
 Reach Through Mists is a stand-in for any other cantrips that don’t have selection (Experimental Synthesizer, cycling a Suffocating Fumes, Ancestral Anger). A card like Night’s Whisper sees two cards, so it would be the same probability of Consider. Ponder was calculated like Preordain $+ 1$ card at random after shuffling: $P(\text{Ponder}) = 1 - (1 - P(1)) \times (1 - P(3))$.
 
