@@ -578,9 +578,151 @@ Per ora si è dimostrato solo che $\mathbb{N} \times \mathbb{N}$ è isomorfo a $
 -------------------------------------------------------------
 
 ### Codifica di dati in numeri
-Ogni tipo di dato può essere rappresentato, in particolar modo grazie alla funzione coppia di Cantor, come un intero naturale, ad esempio codificando una lista di numeri con una applicazione ripetuta della funzione, un suono con una lista di campionature, un grafo con la matrice di adiacenza che è una lista di liste, e così via.
+Ogni tipo di dato può essere rappresentato, in particolar modo grazie alla funzione coppia di Cantor, come un intero naturale.
 
-E' possibile quindi lavorare su numeri invece che su dati, e trasporre le funzioni $f: \text{DATI} \to \text{DATI}_{\bot}$ in funzioni $f: \mathbb{N} \to \mathbb{N}_{\bot}$. L'universo dei problemi per i quali si cerca una soluzione automatica è rappresentato dall'insieme $\mathbb{N}_{\bot}^{\mathbb{N}}$.  
+#### Lista di numeri interi
+Per codificare una lista di numeri interi di lunghezza non nota $x_1, x_2, \dots, x_n \to \langle x_1, x_2, \dots, x_n \rangle$, si applica in maniera ripetuta la funzione. Si è in grado, tramite la funzione coppia di Cantor, di condensare una coppia di numeri in un solo numero. Si applica quindi la funzione coppia in maniera iterativa: si codificano due elementi della lista, il cui risultato verrà codificato con il terzo elemento e così via. Per fare ciò si aggiunge un simbolo per indicare la fine della lista, in questo caso il numero $0$: quando, scompattando, si otterrà il numero 0, si saprà che la lista è finita.
+
+Un esempio.<br />
+Codifica di $1, 2, 5 \to \langle 1, 2, 5 \rangle = \langle 1, \langle 2, \langle 5, 0 \rangle \rangle \rangle = \langle 1, \langle 2, 16 \rangle \rangle = \langle 1, 188 \rangle = 18144$.<br />
+Decodifica di $18144$ (o $M$ in generale:
+
+immagine
+
+Si noti che lo $0$ che compare come risultato di $des$ è solo il valore di fine lista.
+
+##### Implementazione di Codifica e Decodifica di Liste
+Si assuma che $0$ codifichi la lista nulla (cioè di $0$ elementi). Si assuma anche di avere routine per $\langle , \rangle$, $sin$ e $des$.
+
+```pseudo
+	\begin{algorithm}
+	\caption{Codifica}
+	\begin{algorithmic}
+	\Function{encode}{$x_1, \dots, x_n$}
+		\State int $k = 0$
+		\For{(int $i = n; i \geq 1; i--)$}
+			\State $k = \langle x_i, k \rangle$
+        \EndFor
+    \State return $x$
+    \EndFunction
+	\end{algorithmic}
+	\end{algorithm}
+```
+
+E' facile ottenere anche in versione ricorsiva.
+
+```pseudo
+	\begin{algorithm}
+	\caption{Decodifica}
+	\begin{algorithmic}
+	\Function{Decode}{int $n$}
+	\If{$n \neq 0$}
+		\State print \call{sin}{n}
+		\State DECODE \call{des}{n}
+    \EndIf
+    \EndFunction
+	\end{algorithmic}
+	\end{algorithm}
+```
+
+E' facile ottenere anche in versione iterativa.
+
+-------------------------------------------------------------
+
+##### Altre funzioni utili
+
+```pseudo
+	\begin{algorithm}
+	\caption{Lunghezza}
+	\begin{algorithmic}
+	\Function{length}{int $n$}
+	\State return $n == 0? 0 : 1 +$ \call{Length}{\call{des}{n}}	
+    \EndFunction
+	\end{algorithmic}
+	\end{algorithm}
+```
+
+```pseudo
+	\begin{algorithm}
+	\caption{Proiezione}
+	\begin{algorithmic}
+	\Function{proj}{$t, n$}
+	\State return = $\begin{cases}-1 \text{ se } t > \text{ LENGTH}(n) \text{ o } t == 0 \\ x_t \text{ se } t > \text{ LENGTH}(n) \text{ e } n = \langle x_1, \dots x_t \dots x_n \rangle \\\end{cases}$
+    \EndFunction
+	\end{algorithmic}
+	\end{algorithm}
+```
+
+Oppure
+
+```pseudo
+	\begin{algorithm}
+	\caption{Proiezione}
+	\begin{algorithmic}
+	\Function{proj}{int $t$, int $n$}
+	\If{$t == 0 \Vert t >$ \call{Length}{n}}
+		\State return $-1$
+	\Else \If{$t == 1$}
+		\State return \call{sin}{n}
+		\Else \State return \call{proj}{$t-1$, \call{des}{n}}
+    \EndIf
+	\EndIf
+    \EndFunction
+
+	\end{algorithmic}
+	\end{algorithm}
+```
+
+Di seguito, un esercizio.
+
+-------------------------------------------------------------
+
+#### Testo
+Si codifica il testo in ascii, ad esempio "ciao" $\to$ c i a o $\to 99$ $105$ $97$ $111$ $\to \langle \dots \rangle \to n$.<br />
+Ma perchè questo non è un buon compressore? Perchè la crescita del numero è esponenziale sulla lunghezza del testo.<br />
+Allo stesso modo, non è nemmeno un buon sistema crittografico perchè il risultato ha lunghezza estremamente significativa e si può scompattare in maniera efficiente sapendo che si tratta della coppia di Cantor.
+
+-------------------------------------------------------------
+
+#### Suono
+E' possibile codificare un suono in una lista di campionature.
+
+immagine
+
+-------------------------------------------------------------
+
+#### Immagine
+E' possibile codificare un immagine tramite la tecnica Bitmap: ogni pixel conterrà la codifica numerica di un colore. Un immagine, quindi, non sarà altro che una sequenza di codici di colori.
+
+-------------------------------------------------------------
+
+#### Array
+E' possibile codificare un array (di lunghezza nota) esattamente come nel caso delle liste ma senza necessitare quindi di un carattere di fine sequenza.
+
+$$x_1, x_2, \dots, x_n \to [x_1, \dots, x_n]$$
+$$[x_1, \dots, x_n] = [x_1, \dots[x_{n-1}, x_n]\dots]$$
+
+-------------------------------------------------------------
+
+#### Matrice
+
+$$\Bigg(\matrix{x_{11} & x_{12} \\ x_{21} & x_{22}}\Bigg) \to \Bigg[ \matrix{x_{11} & x_{12} \\ x_{21} & x_{22}} \Bigg] \to \Big[[x_{11}, x_{12}], [x_{21}, x_{22}]\Big]$$
+
+Sia per la codifica di array che per quella di matrici, sono facilmente implementabili delle primitive numeriche quali, ad esempio, $elem(i, j, n)$ che restituisce l'elemento $(i,j)$-esimo di una matrice codificata dal numero $n$.
+
+-------------------------------------------------------------
+
+#### Grafo
+
+immagine
+
+E' possibile codificare un [[Grafo |grafo]] tramite le diverse rappresentazioni utilizzate come strutture dati:
+1) liste di adiacenza:
+2) matrice di adiacenza:
+
+Anche per i grafi sono, quindi, facilmente implementabili tutte le primitive che operano direttamente sulle loro rappresentazioni numeriche.
+
+E' possibile quindi lavorare su numeri invece che su dati, e trasporre le funzioni $f: \text{DATI} \to \text{DATI}_{\bot}$ in funzioni $f: \mathbb{N} \to \mathbb{N}_{\bot}$. L'universo dei problemi per i quali si cerca una soluzione automatica è rappresentato dall'insieme $\mathbb{N}_{\bot}^{\mathbb{N}}$.
 
 -------------------------------------------------------------
 
