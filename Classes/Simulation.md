@@ -802,3 +802,100 @@ def montecarlo_pi(iteration_number):
 
 ----------------------------------------------------------------
 
+trovare titolo 
+Approssimare area sottesa da una funzione -> chiuderla in un rettangolo e applicare montecarlo. i punti sotto la curva sono i successi.
+
+How to get precision up to $k$-th digit?
+
+immagine model trial \#i
+
+We want to have a random variable $X_i$ describing the experiment
+
+Expected value and variance (check formula varianza)
+
+-> setting della law of large numbers.
+
+Calcolo $\mu$ e $\sigma^2$ per l'esperimento del pigreco e poi applico la legge dei grandi numeri. Seleziono $\varepsilon$ in modo tale da avere precisione alla $k$-esima cifra. $\varepsilon = \gamma \frac{\pi}{4}$.
+
+Target accuracy and target confidence \#number of runs
+
+accuracy is in terms of number of digits, so something in the form of $10^{-k}$.
+
+-------------------------------------------------------------
+
+## Generating Random Variables
+
+...
+
+### Main families of Random Variables
+#### DIscrete Random Variables
+
+immagine slide
+
+##### Bernoulli Random Variable
+
+
+-------------------------------------------------------------
+
+##### Binomial Random Variable
+
+
+-------------------------------------------------------------
+
+##### Poisson Random Variable
+
+
+-------------------------------------------------------------
+
+##### Geometric Random Variable
+
+
+-------------------------------------------------------------
+
+##### Negative Binomial Random Variable
+
+
+-------------------------------------------------------------
+
+##### Hypergeometric Random Variable
+
+
+
+-------------------------------------------------------------
+
+#### Continuous Random Variables
+
+
+-------------------------------------------------------------
+
+### Generating discrete Random Variables
+
+#### The Inverse Transform method
+Suppose we want to generate the value of a custom discrete random variable $X$ having probability mass function
+
+$$P[X = x_j] = $$
+
+To accomplish this, we generate a random number $U$, that is, $U$ is uniformly distributed over $(0, 1)$, and set
+
+
+esempio 1-6
+
+grafico cdf con inverse transformation
+
+```pseudo
+	\begin{algorithm}
+	\caption{Native algorithm for custom discrete Random Variable}
+	\begin{algorithmic}
+	\State $p =$ get\_random$() \space$ //output of a good (pseudo) random generator
+	\State $r = 0.0$
+	\State $i = 0$
+	\While{$r \leq p$}
+		\State $i = i + 1$
+		\State $r = r + p_i$
+    \EndWhile
+    \State return $i$
+	\end{algorithmic}
+	\end{algorithm}
+```
+
+-------------------------------------------------------------
