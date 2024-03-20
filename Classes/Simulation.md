@@ -802,7 +802,13 @@ def montecarlo_pi(iteration_number):
 
 ----------------------------------------------------------------
 
-trovare titolo 
+### Uses of random numbers
+One of the earliest applications of random numbers was in the computation of integrals. Let $g(x)$ be a function and suppose we wanted to compute $\theta$ where 
+
+$$\theta = \int_{0}^{1} g(x)dx$$
+
+immagine curva
+
 Approssimare area sottesa da una funzione -> chiuderla in un rettangolo e applicare montecarlo. i punti sotto la curva sono i successi.
 
 How to get precision up to $k$-th digit?
@@ -873,14 +879,15 @@ immagine slide
 #### The Inverse Transform method
 Suppose we want to generate the value of a custom discrete random variable $X$ having probability mass function
 
-$$P[X = x_j] = $$
+$$P[X = x_j] = p_j, \quad j = 0, 1, \dots, \quad \sum_{j}p_j = 1$$
 
-To accomplish this, we generate a random number $U$, that is, $U$ is uniformly distributed over $(0, 1)$, and set
+To accomplish this, a random number $U$ is generated, that is, $U$ is uniformly distributed over $(0, 1)$, and set
 
-
-esempio 1-6
+$$X = \cases{1 \space \text{ con } p = \frac{1}{2} \cr \cr 2 \space \text{ con } p = \frac{1}{10} \cr \cr 3 \space \text{ con } p = \frac{1}{10} \cr \cr 4 \space \text{ con } p = \frac{1}{10} \cr \cr 5 \space \text{ con } p = \frac{1}{10} \cr \cr 6 \space \text{ con } p = \frac{1}{10}}$$
 
 grafico cdf con inverse transformation
+
+The preceding can be written algorithmically as
 
 ```pseudo
 	\begin{algorithm}

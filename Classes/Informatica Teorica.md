@@ -518,26 +518,20 @@ $$sin: \mathbb{N}^+ \to \mathbb{N}, \quad sin(n) = x$$ $$des: \mathbb{N}^+ \to \
 
 Graficamente:
 
-immagine coppia di cantor
-
-$$\begin{matrix}
-& y  & 0 &  1 &  2 &  3 &  4 & 5 & \cdots \\ x & \\
-0 && 1 &  3 &  6 & 10 & 15 & \cdots \\
-1 && 2 &  5 &  9 & 14 & \cdots \\
-2 && 4 &  8 & 13 & \cdots \\
-3 && 7 & 12 & \cdots \\
-4 && 11 & \cdots \\
-5 & \cdots \\
-\vdots
-\end{matrix}$$
+| $x$ \ $y$ | $0$  | $1$  | $2$     | $3$     | $4$     | $5$     |
+| --------- | ---- | ---- | ------- | ------- | ------- | ------- |
+| $0$       | $1$  | $3$  | $6$     | $10$    | $15$    | $21$    |
+| $1$       | $2$  | $5$  | $9$     | $14$    | $20$    | $27$    |
+| $2$       | $4$  | $8$  | $13$    | $19$    | $26$    | $\dots$ |
+| $3$       | $7$  | $12$ | $18$    | $25$    | $\dots$ | $\dots$ |
+| $4$       | $11$ | $17$ | $24$    | $\dots$ | $\dots$ | $\dots$ |
+| $5$       | $16$ | $23$ | $\dots$ | $\dots$ | $\dots$ | $\dots$ |
 
 dove $\langle x, y \rangle$ indica il valore nella tabella all'incrocio tra la $x$-esima riga e la $y$-esima colonna. Si vede chiaramente che, contando sulle diagonali, la funzione permette di contare $\mathbb{N} \times \mathbb{N}$ e che la funzione è sia iniettiva che suriettiva. Operativamente, per calcolare $\langle, \rangle$ $sin$ e $des$, si costruisce la tabella dall'inizio: $\langle 0, 0 \rangle$,$\langle 1, 0 \rangle$, $\dots$
 
 Perchè è vero che coppie diverse sono sempre mappate in numeri diversi? Coppie diverse sono coordinate diverse di punti nella tabella e coordinate di punti diverse individuano celle diverse, contenenti per costruzione valori diversi.
 
 Si provi a determinare la **forma analitica**, cioè se esiste una funzione in funzione delle coordinate di $x$ e $y$ che restituisca $n$: è possibile notare innanzitutto che il valore di $<x, y>$ si trova sulla diagonale $x+y$, quindi $\langle x, y \rangle = \langle x+y, 0 \rangle + y$.
-
-immagine slide 3 coppia di cantor + y saltelli in diagonale
 
 La $0$-esima colonna è data dalla somma degli indici incrementata di uno, ovvero
 
@@ -549,7 +543,14 @@ $$<x, y> = <x + y, 0> + y = \frac{(x + y)(x + y + 1)}{2} + 1 + y$$
 
 Si cerchi ora analiticamente la forma inversa, cioè come trovare le funzioni $sin$ e $des$.
 
-immagine slide coppia di cantor 13 evidenziato
+| $x$ \ $y$ | $0$  | $1$  | $2$     | $3$     | $4$     | $5$     |
+| --------- | ---- | ---- | ------- | ------- | ------- | ------- |
+| $0$       | $1$  | $3$  | $6$     | $10$    | $15$    | $21$    |
+| $1$       | $2$  | $5$  | $9$     | $14$    | $20$    | $27$    |
+| $2$       | $4$  | $8$  | **13**  | $19$    | $26$    | $\dots$ |
+| $3$       | $7$  | $12$ | $18$    | $25$    | $\dots$ | $\dots$ |
+| $4$       | $11$ | $17$ | $24$    | $\dots$ | $\dots$ | $\dots$ |
+| $5$       | $16$ | $23$ | $\dots$ | $\dots$ | $\dots$ | $\dots$ |
 
 Il primo passo è definire il valore intermedio $\gamma$ tale che il numero cercato giaccia sulla diagonale $<\gamma, 0>$. Innanzitutto, vale che $y = n - <\gamma, 0>$ perchè per ottenere il risultato $n$ della funzionecoppia di Cantor per la coppia $\langle x, y \rangle$, bisogna sommare $y$ a $\langle x + y, 0 \rangle$ (e quindi fare $\langle \gamma, 0 \rangle + y = n$, con $\gamma = x + y$).<br />
 $\gamma$, invece, è il più grande valore in $\langle z, 0 \rangle$ minore di $n$:
@@ -585,7 +586,7 @@ Per codificare una lista di numeri interi di lunghezza non nota $x_1, x_2, \dots
 
 Un esempio.<br />
 Codifica di $1, 2, 5 \to \langle 1, 2, 5 \rangle = \langle 1, \langle 2, \langle 5, 0 \rangle \rangle \rangle = \langle 1, \langle 2, 16 \rangle \rangle = \langle 1, 188 \rangle = 18144$.<br />
-Decodifica di $18144$ (o $M$ in generale:
+Decodifica di $18144$ (o $M$ in generale):
 
 immagine
 
@@ -642,25 +643,16 @@ E' facile ottenere anche in versione iterativa.
 	\end{algorithm}
 ```
 
-```pseudo
-	\begin{algorithm}
-	\caption{Proiezione}
-	\begin{algorithmic}
-	\Function{proj}{$t, n$}
-	\State return = $\begin{cases}-1 \text{ se } t > \text{ LENGTH}(n) \text{ o } t == 0 \\ x_t \text{ se } t > \text{ LENGTH}(n) \text{ e } n = \langle x_1, \dots x_t \dots x_n \rangle \\\end{cases}$
-    \EndFunction
-	\end{algorithmic}
-	\end{algorithm}
-```
-
 Oppure
+
+$$x = \cases{-1 \quad \text{ se } t > LENGTH(n) \text{ o } t == 0 \cr \cr x_t \quad \text{ se } t > LENGTH(n) \text{ e } n = \langle x_1, \dots, x_t, \dots, x_n \rangle }$$
 
 ```pseudo
 	\begin{algorithm}
 	\caption{Proiezione}
 	\begin{algorithmic}
 	\Function{proj}{int $t$, int $n$}
-	\If{$t == 0 \Vert t >$ \call{Length}{n}}
+	\If{$t == 0$ $\Vert$ $t >$ \call{Length}{n}}
 		\State return $-1$
 	\Else \If{$t == 1$}
 		\State return \call{sin}{n}
@@ -673,7 +665,12 @@ Oppure
 	\end{algorithm}
 ```
 
-Di seguito, un esercizio.
+Di seguito, un esercizio.<br />
+Implementare le seguente funzioni:
+
+$$incr(t, n) = \cases{-1 \quad \text{ se } t > length(n) \text{ o } t == 0 \cr \cr \cr \langle x_1, \dots, x_{t} + 1, \dots, x_n \rangle \quad \text{ se } 1 \leq t \leq legnth(n) \text{ e } n = \langle x_1, \dots, x_t, \dots, x_n \rangle}$$
+
+$$decr(t, n) = \cases{-1 \quad \text{ se } t > length(n) \text{ o } t == 0 \cr \cr \cr \langle x_1, \dots, x_{t} - 1, \dots, x_n \rangle \quad \text{ se } 1 \leq t \leq legnth(n) \text{ e } n = \langle x_1, \dots, x_t, \dots, x_n \rangle}$$
 
 -------------------------------------------------------------
 
@@ -706,7 +703,7 @@ $$[x_1, \dots, x_n] = [x_1, \dots[x_{n-1}, x_n]\dots]$$
 
 #### Matrice
 
-$$\Bigg(\matrix{x_{11} & x_{12} \\ x_{21} & x_{22}}\Bigg) \to \Bigg[ \matrix{x_{11} & x_{12} \\ x_{21} & x_{22}} \Bigg] \to \Big[[x_{11}, x_{12}], [x_{21}, x_{22}]\Big]$$
+$$\begin{pmatrix}x_{11} & x_{12} \\ x_{21} & x_{22}\end{pmatrix} \to \begin{bmatrix}x_{11} & x_{12} \\ x_{21} & x_{22}\end{bmatrix} \to \Big[[x_{11}, x_{12}], [x_{21}, x_{22}]\Big]$$
 
 Sia per la codifica di array che per quella di matrici, sono facilmente implementabili delle primitive numeriche quali, ad esempio, $elem(i, j, n)$ che restituisce l'elemento $(i,j)$-esimo di una matrice codificata dal numero $n$.
 
@@ -714,11 +711,17 @@ Sia per la codifica di array che per quella di matrici, sono facilmente implemen
 
 #### Grafo
 
-immagine
+![[GraphExample.png]]
 
 E' possibile codificare un [[Grafo |grafo]] tramite le diverse rappresentazioni utilizzate come strutture dati:
-1) liste di adiacenza:
+1) liste di adiacenza: 
+$$\langle 2, 3, 4 \rangle \leftarrow \text{ lista di adiacenza del nodo } 1$$
+$$\langle 1, 3 \rangle \leftarrow \text{ lista di adiacenza del nodo } 2$$
+$$\vdots$$
+
 2) matrice di adiacenza:
+
+$$\begin{bmatrix} 0 & 1 & 1 & 1 \\ 1 & 0 & 1 & 0 \\ 1 & 1 & 0 & 1 \\ 1 & 0 & 1 & 0 \end{bmatrix}$$
 
 Anche per i grafi sono, quindi, facilmente implementabili tutte le primitive che operano direttamente sulle loro rappresentazioni numeriche.
 
