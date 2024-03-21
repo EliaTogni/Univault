@@ -739,7 +739,7 @@ Dal loro confronto ci si potrà rendere conto se la potenza dipende dallo strume
 -------------------------------------------------------------
 
 # Macchina RAM
-La macchina RAM altro non è che un processore che esegue sequenzialmente una serie di istruzioni agendo su una memoria che è una lista infinita di registri $R$: in particolare il registro $R_0$ conterrà l'output del programma, e il registro $R_1$ conterrà all'avvio l'input del programma; oltre a ciò esiste $L$, ovvero il _Program Counter_ che tiene traccia dell'istruzione da eseguire.  
+La macchina RAM altro non è che un processore che esegue sequenzialmente una serie di istruzioni agendo su una memoria che è una lista infinita di registri $R$: in particolare il registro $R_0$ conterrà l'output del programma, e il registro $R_1$ conterrà all'avvio l'input del programma; oltre a ciò esiste $L$, ovvero il _Program Counter_ che tiene traccia dell'istruzione da eseguire.
 $Istr_{x}$ indica l'istruzione $x$-esima del programma $P$.  
 Le istruzioni disponibili sono di 3 tipi:  
 1. $R_k \leftarrow R_k + 1$: incremento del valore contenuto in $R_k$;
@@ -831,10 +831,10 @@ Indichiamo con $\text{W-PROG}$ l'insieme dei programmi while.
 -------------------------------------------------------------
 
 ## Semantica
-$\Psi_w(n) = cont(x_0) / \bot$  
-La semantica di un programma while su dato $n$ è l'output contenuto nel registro $x_0$ in caso di terminazione oppure è indefinito.  
+$\Psi_w(n) = cont(x_0) / \bot$
+La semantica di un programma while su dato $n$ è l'output contenuto nel registro $x_0$ in caso di terminazione oppure è indefinito.
 
-A differenza della RAM, che aveva infiniti stati, non abbiamo bisogno di definire una funzione di stato: qui basta una lista di 21 elementi contenente il valore dei registri. Lo spazio degli stati è quindi $\mathbb{N}^{21}$, e uno stato $\underline{x}$ è $\underline{x} \in \mathbb{N}^{21}$ e l'inizializzazione semplicemente imposta a 0 tutti i registri tranne $x_1$ di input.  
+A differenza della RAM, che aveva infiniti stati, non abbiamo bisogno di definire una funzione di stato: qui basta una lista di 21 elementi contenente il valore dei registri. Lo spazio degli stati è quindi $\mathbb{N}^{21}$, e uno stato $\underline{x}$ è $\underline{x} \in \mathbb{N}^{21}$ e l'inizializzazione semplicemente imposta a 0 tutti i registri tranne $x_1$ di input.
 
 ### Funzione stato prossimo
 
@@ -843,13 +843,14 @@ $$[\ ](\ ): \text{W-COM} \times \text{W-STATI} \to \text{W-STATI}_{\bot}$$
 È una funzione che, da un comando, preso in ingresso uno stato, resituisce lo stato prossimo: $[\mathbb{C}](\underline{x}) = \underline{x}'$. Questa funzione può essere definita induttivamente su tutte le strutture induttive del comando $\mathbb{C}$.
 
 Nei casi base è semplice definire la funzione stato prossimo: semplicemente restituisce i 21 valori invariati tranne quello indicato nell'assegnamento, che sarà incrementato/decrementato o posto a 0.  
-In un passo composto conosciamo per induzione il comportamento della funzione stato prossimo: non ci resta che applicare iterativamente la funzione stato prossimo ad ogni comando, prendendo come stato iniziale lo stato prossimo del comando precedente.  
+In un passo composto conosciamo per induzione il comportamento della funzione stato prossimo: non ci resta che applicare iterativamente la funzione stato prossimo ad ogni comando, prendendo come stato iniziale lo stato prossimo del comando precedente.
 Anche per il comando while conosciamo la funzione stato prossimo per ipotesi induttiva, e ci basta applicare la funzione stato prossimo il minor numero di volte necesario a mandare a 0 il registro di controllo. Lo stato prossimo di un comando while è quindi il risultato dopo queste applicazioni o indefinito se non si può mandare a 0 il registro di controllo.  
 Semantica di $\text{W-PROG}$: $\Psi_w(x) = Pro_0^{21}([w](w-in(x)))$.
 
 # Confronto tra sistemi di calcolo
-Vogliamo ora confrontare i due sistemi RAM e WHILE per vedere se possiamo trarre conclusioni interessanti sulla calcolabilità in due sistemi diversi.  
+Vogliamo ora confrontare i due sistemi RAM e WHILE per vedere se possiamo trarre conclusioni interessanti sulla calcolabilità in due sistemi diversi.
 In generale poniamo di avere due sistemi di calcolo $\mathbb{C}_1$ e $\mathbb{C}_2$ e definiamo i rispettivi poteri computazionali:
+
 $$F(\mathbb{C}_1) = \{f \in \mathbb{N}_{\bot}^{\mathbb{N}}: \exists P_1 \in \text{$\mathbb{C}_1$-PROG}| f = \Psi_{P_1}\} = \{\Psi_{P_1}: P_1 \in \text{$\mathbb{C}_1$-PROG}\}$$
 $$F(\mathbb{C}_2) = \{f \in \mathbb{N}_{\bot}^{\mathbb{N}}: \exists P_2 \in \text{$\mathbb{C}_2$-PROG}| f = \varphi_{P_2}\} = \{\varphi_{P_2}: P_2 \in \text{$\mathbb{C}_2$-PROG}\}$$
 
@@ -859,16 +860,17 @@ $$\forall f \in F(\mathbb{C}_1) \implies f \in F(\mathbb{C}_2)$$
 $$\exists P_1 \in \text{$\mathbb{C}_1$-PROG}:f = \Psi_{P_1} \implies \exists P_2 \in \text{$\mathbb{C}_2$-PROG}:f = \varphi_{P_2}$$
 
 In altre parole, per ogni programma del primo sistema ne esiste uno equivalente nel secondo (se esiste un programma che esprime una funzione $f$ nel primo sistema, esiste un altro programma nel secondo sistema che esprime la stessa funzione $f$).
-Tutto questo si può provare trovando un _compilatore_ tra il primo e il secondo linguaggio.  
+Tutto questo si può provare trovando un _compilatore_ tra il primo e il secondo linguaggio.
 
 ## Compilatore
-In matematica la compilazione si chiama "traduzione".  
-Dati i sistemi $\mathbb{C}_1$ e $\mathbb{C}_2$, una traduzione tra i due è una funzione 
+In matematica la compilazione si chiama "traduzione". Dati i sistemi $\mathbb{C}_1$ e $\mathbb{C}_2$, una traduzione tra i due è una funzione
+
 $$T: \text{$\mathbb{C}_1$-PROG} \to \text{$\mathbb{C}_2$-PROG}$$
+
 tale che:
-1. sia programmabile effettivamente;
-2. sia completa;
-3. mantenga la semantica;
+1) sia programmabile effettivamente;
+2) sia completa;
+3) mantenga la semantica.
 
 $\forall P \in \mathbb{C}_1\text{-PROG}: \varphi_{T(P)} = \Psi_P$  
 Teorema:  

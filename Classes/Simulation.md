@@ -709,30 +709,38 @@ autocorrelation analysis libro malchiodi + codice
 -------------------------------------------------------------
 
 #### Empirical Cumulative Distribution Function
-It is desired for the random values to be extracted from a uniform distribution
+Let's consider the following random sequence: $1$, $3$, $2$, $9$, $8$, $7$, $4$, $5$, $6$, $10$. Is it a random sequence between $1$ and $10$? The response is no, because it is desired for the random values to be extracted from a **uniform distribution**.
 
-Uniform distribution
-
-uniform discrete rv 
+A uniform discrete Random Variable is defined as  
 
 $$X = \cases{1 \text{ with } p = 1/n \cr \cr
 2 \text{ with } p = 1/n \cr \cr
 \vdots \cr \cr
 n \text{ with } p = 1/n }$$
 
-Like the throwing of a dice.
+ e.g., the throwing of a dice.
 
-grafico probability mass function and cumulative distribution function of  uniform probability distribution.
+In the image below, the probability mass function of an uniform discrete Random Variable.
 
-To evaluate this, it is possible to use the **Empirical Cumulative Distribution function**, another mathematical tool which can be used in order to assess the goodness of a congruential generator. It which associates a sample with an approximation of the c.d.f of the distribution from which the sample has been drawn. Formally, given a sample $S$ drawn from a distribution whose c.d.f. is , the empirical c.d.f. is defined as
+![[UniformProbabilityMassFunction.png]]
+
+In the image below, the cumulative distribution function of a uniform discrete Random Variable.
+
+![[DiscreteUniformCumulativeDistributionFunction.png]]
+
+With the increasing of the number of steps, the discrete uniform cumulative distribution function will approximate the continuous uniform cumulative distribution function (in the image below).
+
+![[ContinuousUniformCumulativeDistributionFunction.png]]
+
+To evaluate if a function is approximating this behaviour, it is possible to use the **Empirical Cumulative Distribution function** $\widehat{F}$, another mathematical tool which can be used in order to assess the goodness of a congruential generator. It which associates a sample with an approximation of the cumulative distribution function of the distribution from which the sample has been drawn. Formally, given a sample $S = \{x_1, \dots, x_m\}$ drawn from a distribution whose cumulative distribution function is $F$, the empirical cumulative distribution function is defined as
 
 $$\widehat{F}(x) = \frac{1}{m} \sum_{i = 1}^{m} \mathbb{I}_{(-\infty, x]}(x_i)$$
 
-that is, the number of elements of $S$ having value $\leq x$.
+that is, the number of elements of $S$ having value $\leq x$ over $m$.
 
-grafici e spiegazione
+![[EmpiricalCumulativeDistributionFunction.png]]
 
-It is easy to see that an empirical c.d.f. is a step function and each step starts precisely at one observation, raising the graph of a quantity equal to the number of times that observation occur in the sample, divided by the total number of observations.
+It is easy to see that an empirical cumulative distribution function is a step function and each step starts precisely at one observation, raising the graph of a quantity equal to the number of times that observation occur in the sample, divided by the total number of observations.
 
 ##### Glivenko-Cantelli theorem
 To formalize the validity of the previous assumptions, a theoretical result known as the **Glivenko-Cantelli theorem**, has been proposed:<br />
@@ -758,6 +766,7 @@ def empirical_cdf(S, x):
 
 #### Shift Register Generator
 
+
 ----------------------------------------------------------------
 
 ## Monte Carlo methods
@@ -770,7 +779,7 @@ The secrecy policies of the Manhattan project required each methodelogy invented
 ### Estimating $\pi$
 One of the most famous involving the simulation of pseudorandom values is that leading to an estimate of $\pi$. It requires to simulate the uniform distribution in a given square in order to draw points at random and then chek whether or not they fall inside the circle inscribed in the square. For instance, it is possible to consider the square and denote by the circle inscribed in (that is, the circle centered in the origin and having unit radius).
 
-immagine cerchio
+![[MonteCarloCircle.png]]
 
 Given a circle $C$ of radius $r$, its area is $\pi \cdot r^2$, while the area of the smallest square $S$ containing such a circle is $(2 \cdot r)^2$. The use of a uniform distribution insures that the probability of drawing a point $x$ falling inside $C$ equals the ratio between the areas of $C$ and $S$, that is
 
@@ -809,15 +818,21 @@ $$\theta = \int_{0}^{1} g(x)dx$$
 
 immagine curva
 
-Approssimare area sottesa da una funzione -> chiuderla in un rettangolo e applicare montecarlo. i punti sotto la curva sono i successi.
+To approximate the area under the curve using a Monte Carlo method simply means to throw points into the rectangle contanining the function and calculate the ratio of successes over total throws. Each point is described by a couple of coordinates $(x, y)$ and to understand if it's below or above the curve, the value $\widehat{y} = f(x)$ will be compute and then $\widehat{y}$ will be compared with $y$.
+If $y \leq \widehat{y}$, a counter will be increased by $1$ and by $0$ otherwise. 
 
 How to get precision up to $k$-th digit?
 
-immagine model trial \#i
+![[MonteCarloPiExample.png]]
 
-We want to have a random variable $X_i$ describing the experiment
+Let's try to model the $i$-th throw of a dart. The first thing is to build a random variable $X_i$ describing the experiment.
 
-Expected value and variance (check formula varianza)
+$$X_i = \cases{1 \quad \text{ if point \#} i \text{ is inside the circle, with } p = \frac{\pi}{4} \cr \cr 0 \quad \text{ otherwise, with } p = 1 - \frac{\pi}{4}}$$
+
+Knowing that, it is possible to derive that $\mathbb{E}[X_i] = 1 \cdot \frac{\pi}{4} + 0 \cdot (1 - \frac{\pi}{4}) = \frac{\pi}{4}$.<br />
+It is also possible to measure the variance $Var[X_i] = (1 - \frac{\pi}{4})^2 \cdot \frac{\pi}{4} + (0 - \frac{\pi}{4})^2 \cdot (1 - \frac{\pi}{4})$. Defining $\frac{\pi}{4} = q$, it is that $Var[X_i] = (1 - q)^2 \cdot q + (0 - q)^2 \cdot (1 - q) = (1 - q)\big[(1 - q)\cdot q + q^2\big] = (1 - q) \cdot q = (1 - \frac{\pi}{4})\cdot \frac{\pi}{4}$.
+
+
 
 -> setting della law of large numbers.
 
@@ -864,7 +879,6 @@ immagine slide
 -------------------------------------------------------------
 
 ##### Hypergeometric Random Variable
-
 
 
 -------------------------------------------------------------
