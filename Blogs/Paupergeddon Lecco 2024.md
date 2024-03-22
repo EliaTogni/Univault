@@ -7,7 +7,31 @@ Sottotitolo:
 ---
 # Sommario
 ## Lista
+**MAINBOARD**
+4 Chain Lightning
+2 Demand Answers
+4 Experimental Synthesizer
+1 Fireblast
+4 Goblin Blast-Runner
+3 Goblin Bushwhacker
+4 Goblin Tomb Raider
+4 Implement of Combustion
+4 Kuldotha Rebirth
+4 Lightning Bolt
+4 Seal of Fire
+4 Voldaren Epicure
+14 Mountain
+4 Great Furnace
 
+
+**SIDEBOARD**
+2 Cast into the Fire
+1 Flaring Pain
+1 Gorilla Shaman
+3 Pyroblast
+2 Relic of Progenitus
+3 Smash to Smithereens
+3 Tectonic Hazard
 
 ## Matchups
 ### Azorius Glitters
@@ -167,11 +191,11 @@ Side Out:
 2 Makeshift Munitions
 3 Relic of Progenitus
 4 Rustvale Bridge
-2 Ancient Den
-3 Wind-Scarred Crag
-2 Boros Garrison
 4 Mountain
 3 Plains
+3 Wind-Scarred Crag
+2 Ancient Den
+2 Boros Garrison
 2 Great Furnace
 
 **SIDEBOARD**
@@ -184,15 +208,15 @@ Side Out:
 1 Relic of Progenitus
 3 Revoke Existence
 
-Lista inusuale ma Heisen ha fatto top 2 ad una challenge quindi qualcuno la porterá sicuro. L'alternativa gioca 8 Thraben invece dei Krark-Clan Shaman di main. Anche Foundry Helix non viene giocata spesso. Relic of Progenitus é una tech mainboard di Mengucci contro Terror che a quanto pare é un matchup parecchio brutto per il mazzo ma che offre a me la possibilitá di guadagnare dalla sua eventuale pescata morta.
+Lista inusuale ma Heisen ha fatto top 2 ad una challenge quindi qualcuno la porterá sicuro. L'alternativa gioca 8 Thraben invece dei Krark-Clan Shaman di main. Anche Foundry Helix non viene giocata spesso. Relic of Progenitus é una tech mainboard di Mengucci contro Terror che a quanto pare é un matchup parecchio brutto per il mazzo ma che offre a me la possibilitá di guadagnare dalla sua eventuale pescata morta, soprattutto considerando che vinco il matchup solo se vado a cannone. Post side l'oppo entra con gli Arashin Cleric (inusuali ma devastanti), altre copie di Krark-Clan Shaman e boardwipe tipo End the Festivities, uscendo con le Relic. Noi puntiamo a rimuovere i pezzi fastidiosi tipo i Lembas e i Synth che permettono all'oppo di fare troppa value.
 
 #### On the play
-Side In:
+Side In: 2x Gorilla Shaman, 3x Smash to Smithereens.
 
 Side Out:
 
 #### On the draw
-Side In:
+Side In: 2x Gorilla Shaman, 2x Cast into the Fire, 3x Smash to Smithereens
 
 Side Out:
 
@@ -331,6 +355,8 @@ Side Out:
 2 Nature's Chant
 2 Remove Soul
 
+Matchup brutto in culo (cit.). Se lo gioca Moretti ho perso, se lo gioca Brogna ho vinto (lol). Gotta go fast per vincere e sperare che lui bricki.
+
 #### On the play
 Side In: 3x Pyroblast, 2x Relic of Progenitus
 
@@ -374,14 +400,13 @@ Side Out:
 Lista stock di MTGO. Il matchup si basa sul capire chi è il beatdown. Non mi aspetto che in cartaceo si giochino i 2 End the Festivities di Main ma qualcuno che netdecka come un maiale ci sará e, puntualmente, non ci giocheró attorno come un coglione. In questo caso, la lista gioca 2 impulse e il beatdown paradossalmente siamo noi in quanto lui gioca più risposte. Le liste piú quadrate, tipo quella di selkcahs, giocano 4x di ogni creatura, 17 lande, 4 Chain Lightning, alcune copie di Seal of Fire e nessun Impulse di main. 
 
 #### On the play
+Contro il mirror voglio sempre essere on the draw (cit. selkcahs).
+
+#### On the draw
 Side In: 3x Tectonic Hazard, 2x Cast into the Fire.
 
 Side Out: 1x Bushwacker, 4x Chain Lightning.
 
-#### On the draw
-Side In:
-
-Side Out:
 
 -------------------------------------------------------------
 
@@ -414,15 +439,15 @@ Side Out:
 3 Smash to Smithereens
 
 La lista può giocare eventualmente dei Gurmag Angler di main.
-Per quanto riguarda G1, se andiamo wide di creature dovremmo stare sempre sopra. G2 lui entra con End the Festivities ed Electrickery ma non so cosa possa togliere
+Per quanto riguarda G1, se andiamo wide di creature dovremmo stare sempre sopra. G2 lui entra con End the Festivities ed Electrickery ma non so cosa possa togliere, forse gli Scrapwork Mutt.
 
 #### On the play
-Side In: 1x Gorilla Shaman, 2x Cast into the Fire.
+Side In: 2x Gorilla Shaman, 2x Smash to Smithereens.
 
 Side Out: 
 
 #### On the draw
-Side In:
+Side In: 2
 
 Side Out:
 
@@ -463,7 +488,7 @@ G1 se vede Gnaw to the Bone vince quasi certamente. G2 lui entra con Ancient Gru
 #### On the play
 Side In: 2x Relic of Progenitus
 
-Side Out: 1x Pyrite Spellbomb
+Side Out: 
 
 #### On the draw
 Side In:
@@ -545,13 +570,15 @@ Side Out:
 2 Rotten Reunion
 2 Shrivel
 
+Se vede Unexpected Fangs siamo messi male male e dobbiamo fare 2/3 x 1 per togliergli pezzo. G2 lui entra con altre fangs (se ne gioca) e 4 Hydro/BEB, togliendo gli Snuff Out.
+
 #### On the play
-Side In:
+Side In: 2x Relic of Progenitus, 3x Red Elemental Blast
 
 Side Out:
 
 #### On the draw
-Side In:
+Side In: 2x Relic of Progenitus, 3x Red Elemental Blast
 
 Side Out:
 
@@ -591,7 +618,7 @@ Side Out:
 3 Standard Bearer
 
 #### On the play
-Side In:
+Side In: 
 
 Side Out:
 

@@ -18,21 +18,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "814eaebcf554bcc9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Blogs/Paupergeddon Lecco 2024.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -99,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Blogs/Paupergeddon Lecco 2024.md",
+                "file": "Classes/Informatica Teorica.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,10 +115,10 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "814eaebcf554bcc9",
+  "active": "9d6dab7f39b33ece",
   "lastOpenFiles": [
-    "Classes/Informatica Teorica.md",
     "Blogs/Paupergeddon Lecco 2024.md",
+    "Classes/Informatica Teorica.md",
     "Classes/Algoritmi Paralleli e Distribuiti.md",
     "Atoms/Teorema di Wyllie.md",
     "Classes/Simulation.md",

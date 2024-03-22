@@ -753,24 +753,32 @@ Le istruzioni disponibili sono di $3$ tipi:
 
 L'**inizializzazione** consiste nell'impostare $L$ a $1$, tutti i registri a $0$, e il registro $R_1$ all'input $n$. Per convenzione $L = 0 \implies \text{ HALT}$, perciò un programma termina quanto il contatore è $0$ e potrebbe non terminare mai nel caso di loop. Il contenuto di $R_0$ al termine (senza loop) è l'output dell'esecuzione. La semantica del programma $P$ è quindi $\varphi_P: \mathbb{N} \to \mathbb{N}_{\bot}$.  
 
-## Definizione formale
+## Definizione formale di Semantica di un programma _RAM_
 La **Semantica Operazionale** consiste nello specificare il significato di ogni istruzione, e quindi dei programmi, specificando l'effetto che quella istruzione ha sui registri della macchina.
 
 Come descrivere l'effetto di un'istruzione?
 
+immagine prima -> istruzione -> dopo
 
-
-Il programma induce una sequenza possibilmente infinita di stati partendo dallo stato iniziale. Ogni stato riporta il contenuto del contatore e di ogni registro della macchina RAM, ed ogni istruzione del programma fa passare da uno stato al successivo.
+----- tagliare
+Il programma induce una sequenza possibilmente infinita di stati partendo dallo stato iniziale. Ogni stato riporta il contenuto del contatore e di ogni registro della macchina _RAM_, ed ogni istruzione del programma fa passare da uno stato al successivo.<br />
 Semantica di $P$:
 
 $$\varphi_P: \mathbb{N} \to \mathbb{N}_{\bot} \implies \varphi_P(x) = \begin{cases}
 y \\
 \bot
-\end{cases}$$  
+\end{cases}$$
+
+---- tagliare
 
 ### Definizione formale di stato
-Stato: foto di tutte le componenti della macchina.  
-$S: \{L, R_i\} \to \mathbb{N}$
+Stato: foto di tutte le componenti della macchina.
+
+immagine stato -> istr -> stato
+
+La coppia $(STATO, STATO)$ è la semantica operazionale di Istruzione
+
+$$S: \{L, R_i\} \to \mathbb{N}$$
 
 $S(R_j)$ restituisce il contenuto del registro $R_j$ ponendo la macchina nello stato $S$.
 
