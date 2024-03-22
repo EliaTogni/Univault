@@ -830,17 +830,32 @@ Let's try to model the $i$-th throw of a dart. The first thing is to build a ran
 $$X_i = \cases{1 \quad \text{ if point \#} i \text{ is inside the circle, with } p = \frac{\pi}{4} \cr \cr 0 \quad \text{ otherwise, with } p = 1 - \frac{\pi}{4}}$$
 
 Knowing that, it is possible to derive that $\mathbb{E}[X_i] = 1 \cdot \frac{\pi}{4} + 0 \cdot (1 - \frac{\pi}{4}) = \frac{\pi}{4}$.<br />
-It is also possible to measure the variance $Var[X_i] = (1 - \frac{\pi}{4})^2 \cdot \frac{\pi}{4} + (0 - \frac{\pi}{4})^2 \cdot (1 - \frac{\pi}{4})$. Defining $\frac{\pi}{4} = q$, it is that $Var[X_i] = (1 - q)^2 \cdot q + (0 - q)^2 \cdot (1 - q) = (1 - q)\big[(1 - q)\cdot q + q^2\big] = (1 - q) \cdot q = (1 - \frac{\pi}{4})\cdot \frac{\pi}{4}$.
+It is also possible to measure the variance $Var[X_i] = (1 - \frac{\pi}{4})^2 \cdot \frac{\pi}{4} + (0 - \frac{\pi}{4})^2 \cdot (1 - \frac{\pi}{4})$. Defining $\frac{\pi}{4} = q$, it is that $Var[X_i] = (1 - q)^2 \cdot q + (0 - q)^2 \cdot (1 - q) = (1 - q)\big[(1 - q)\cdot q + q^2\big] = (1 - q) \cdot q = (1 - \frac{\pi}{4})\cdot \frac{\pi}{4}$. Whenever the experiment is succesfull, the counter is incremented by $1$, $0$ otherwise. The overall counting is $\sum_{i=1}^{n}X_i$ and the probability is $\frac{\sum_{i=1}^{n}X_i}{n}$. This formula reminds of the setting of the law of large numbers (a set of i.i.d. random variables for which the average is computed). Let's compute
 
+$$P\Bigg[\Big\vert \frac{\sum_{i=1}^{n}X_i}{n} - \frac{\pi}{4} \Big\vert > \varepsilon \Bigg] < \frac{\sigma^2}{n \varepsilon^2}$$
 
+Let's define $\mu = \frac{\pi}{4}$ and $\sigma^2 = (1 - \frac{\pi}{4}) \cdot \frac{\pi}{4}$. The aim is to set $\varepsilon$ in a way that would help to have precision up to the $k$-th digit.<br />
+Choosing $\varepsilon = \gamma \frac{\pi}{4}$, 
 
--> setting della law of large numbers.
+$$P\Bigg[\Big\vert \frac{\sum_{i=1}^{n}X_i}{n} - \frac{\pi}{4} \Big\vert > \gamma \frac{\pi}{4} \Bigg] \leq \frac{(1 - \frac{\pi}{4}) \cdot \frac{\pi}{4}}{n (\gamma \frac{\pi}{4})^2}$$
 
-Calcolo $\mu$ e $\sigma^2$ per l'esperimento del pigreco e poi applico la legge dei grandi numeri. Seleziono $\varepsilon$ in modo tale da avere precisione alla $k$-esima cifra. $\varepsilon = \gamma \frac{\pi}{4}$.
+$$P\Bigg[\frac{\Big\vert \frac{\sum_{i=1}^{n}X_i}{n} - \frac{\pi}{4} \Big\vert}{\frac{\pi}{4}} > \frac{\gamma \frac{\pi}{4}}{\frac{\pi}{4}} \Bigg] \leq \frac{(1 - \frac{\pi}{4}) \cdot \frac{\pi}{4}}{n (\gamma \frac{\pi}{4})^2}$$
 
-Target accuracy and target confidence \#number of runs
+Now
 
-accuracy is in terms of number of digits, so something in the form of $10^{-k}$.
+$$\frac{\Big\vert \frac{\sum_{i=1}^{n}X_i}{n} - \frac{\pi}{4} \Big\vert}{\frac{\pi}{4}}$$
+
+is a measurement of the **relative error**, the difference between the value obtained ($\frac{\sum_{i=1}^{n}X_i}{n}$) and the expected value ($\frac{\pi}{4}$) in terms of percentage with respect to the expected value. That is, an absolute percentage error.
+
+$$P\Big[ \text{ relative error } > \gamma \Big] \leq \frac{(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi}}{n \gamma^2}$$
+$$P\Big[ \text{ relative error } \leq \gamma \Big] > 1- \frac{(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi}}{n \gamma^2}$$
+
+Now, $\gamma$ is the **target accuracy** while $n$ identifies the number of runs of the experiment. Furthermore, the right-hand side of the disequation ($1- \frac{(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi}}{n \gamma^2}$) is what is called the **confidence** of getting that target accuracy, that is, an upper bound on the probability of making an error greater than the accuracy of interest.<br />
+Defining $1- \frac{(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi}}{n \gamma^2} = \delta$, $\delta =$ **target confidence**. It is therefore possible to fix two values chosen from accuracy, confidence and number of experiments and determine the third value such that it will respect this inequality.
+
+Accuracy will always be in terms of number of digits, so it will be in the form of $\gamma = 10^{-k}$, where $k$ is the position of the last digit of interest.
+
+parte finale lezione 7
 
 -------------------------------------------------------------
 
