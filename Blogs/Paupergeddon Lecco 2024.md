@@ -109,11 +109,11 @@ Side Out: 3x Seal of Fire
 1 Nihil Spellbomb
 4 Thoughtcast
 1 Galvanic Blast
+4 Mistvault Bridge
+4 Seat of the Synod
+4 Silverbluff Bridge
 4 Vault of Whispers
 2 Drossforge Bridge
-4 Silverbluff Bridge
-4 Seat of the Synod
-4 Mistvault Bridge
 2 Great Furnace
 
 **SIDEBOARD**
@@ -125,7 +125,7 @@ Side Out: 3x Seal of Fire
 1 Rotten Reunion
 2 Essence Scater
 
-Alcune liste piú aggressive possono giocare i Somber Overguard invece dei Gearseeker Serpent, insieme alle Frogmite. Anche in questo caso, le varianti sono innumerevoli. Molte liste giocano uno split di Rebuke e Counterspell. Sicuramente esce con Nihil Spellbomb e penso con i Counterspell e un Kenku per entrare con 3 Beb e 2 Breath Weapon.
+Alcune liste piú aggressive possono giocare i Somber Overguard invece dei Gearseeker Serpent, insieme alle Frogmite. Anche in questo caso, le varianti sono innumerevoli. Molte liste giocano uno split di 2 Rebuke e 2 Counterspell. Sicuramente  l'oppo esce con 1 Nihil Spellbomb e penso sia con i Counterspell  e un Kenku per entrare con 3 BEB e 2 Breath Weapon.
 
 Side In: 2x Cast into the Fire, 3x Smash to Smithereens, 3x Red Elemental Blast, 1x Gorilla Shaman se non vedo terre base
 
@@ -177,7 +177,6 @@ Side Out:
 ### Azorius Caw-Gates
 **MAINBOARD**
 4 Brainstorm
-4 Citadel Gate
 4 Counterspell
 2 Dawnbringer Cleric
 1 Dispel
@@ -189,11 +188,12 @@ Side Out:
 4 Sacred Cat
 4 Squadron Hawk
 4 The Modern Age
-3 Azorius Guildgate
 4 Basilisk Gate
+4 Citadel Gate
 4 Sea Gate
-1 Heap Gate
+3 Azorius Guildgate
 3 Island
+1 Heap Gate
 1 Plains
 1 Glacial Floodplain
 
@@ -206,9 +206,9 @@ Side Out:
 1 Red Elemental Blast
 2 Relic of Progenitus
 
-Lista stock, al massimo puó giocare una copia di Lorien in meno per un Journey in piú ma raramente. Post side, entra con 4/5 BEB/Hydro (o uno split di 3 BEB e 2 Negate, che ritengo plausibile in vista del meta) e 2 copie di Breath Weapon. 
+Lista stock, al massimo puó giocare una copia di Lorien in meno per un Journey in piú ma è piuttosto raro. Post side, l'oppo entra con 4/5 BEB/Hydro (o uno split di 3 BEB e 2 Negate, che ritengo plausibile in vista del meta) e 2 copie di Breath Weapon. 
 
-Side In: 3x Relic of Progenitus, 3x Red Elemental Blast, 3x Tectonic Hazard
+Side In: 3x Relic of Progenitus, 3x Red Elemental Blast, 3x Tectonic Hazard, 1x Flaring Pain
 
 Side Out:
 
@@ -232,12 +232,12 @@ Side Out:
 4 Snuff Out
 4 Spellstutter Sprite
 2 Thorn of the Black Rose
-1 Swamp
-2 Obscura Storefront
 8 Island
-1 Dimir Aqueduct
 4 Contaminated Aquifer
 2 Bojuka Bog
+2 Obscura Storefront
+1 Dimir Aqueduct
+1 Swamp
 
 **SIDEBOARD**
 1 Agony Warp
@@ -279,11 +279,11 @@ Side Out:
 4 Sea Gate Oracle
 4 Snap
 4 Sunscape Familiar
-3 Ash Barrens
-1 Mortuary Mire
-1 Idyllic Beachfront
 8 Island
 4 Azorius Chancery
+3 Ash Barrens
+1 Idyllic Beachfront
+1 Mortuary Mire
 
 **SIDEBOARD**
 3 Blue Elemental Blast
@@ -311,14 +311,14 @@ Side Out: 2 Seal of Fire, 1x Implement of Combustion
 2 Goblin Blast-Runner
 4 Goblin Bushwhacker
 4 Goblin Tomb Raider
-4 Great Furnace
 4 Implement of Combustion
 4 Kuldotha Rebirth
 4 Lightning Bolt
-14 Mountain
 1 Reckless Impulse
 4 Voldaren Epicure
 1 Wrenn's Resolve
+14 Mountain
+4 Great Furnace
 
 **SIDEBOARD**
 2 Electrickery
@@ -329,13 +329,11 @@ Side Out: 2 Seal of Fire, 1x Implement of Combustion
 2 Relic of Progenitus
 4 Smash to Smithereens
 
-
-Lista stock di MTGO, non mi aspetto che in cartaceo si giochino i 2 End the Festivities di Main ma qualcuno che netdecka come un maiale ci sará e non ci giocheró attorno come un coglione. Le liste piú quadrate, tipo quella di selkcahs, giocano 4x di ogni creatura, 17 lande, 4 Chain Lightning, alcune copie di Seal of Fire e nessun Impulse di main.
+Lista stock di MTGO. Il matchup si basa sul capire chi è il beatdown. Non mi aspetto che in cartaceo si giochino i 2 End the Festivities di Main ma qualcuno che netdecka come un maiale ci sará e, puntualmente, non ci giocheró attorno come un coglione. In questo caso, la lista gioca 2 impulse e il beatdown paradossalmente siamo noi in quanto lui gioca più risposte. Le liste piú quadrate, tipo quella di selkcahs, giocano 4x di ogni creatura, 17 lande, 4 Chain Lightning, alcune copie di Seal of Fire e nessun Impulse di main. 
 
 Side In: 3x Tectonic Hazard, 2x Cast into the Fire.
 
 Side Out: 1x Bushwacker, 4x Chain Lightning.
-
 
 -------------------------------------------------------------
 
@@ -352,12 +350,12 @@ Side Out: 1x Bushwacker, 4x Chain Lightning.
 4 Vampire's Kiss
 4 Alms of the Vein
 4 Faithless Looting
-1 Swamp
-4 Vault of Whispers
-4 Drossforge Bridge
-2 Rakdos Carnarium
-4 Great Furnace
 5 Mountain
+4 Drossforge Bridge
+4 Great Furnace
+4 Vault of Whispers
+2 Rakdos Carnarium
+1 Swamp
 
 **SIDEBOARD**
 3 Red Elemental Blast
@@ -406,12 +404,11 @@ Side Out:
 2 Drown in Sorrow
 1 Crypt Rats
 
-
-G1 se vede Gnaw to the Bone vince quasi certamente. G2 lui entra con Ancient Grudge contro Relic of Progenitus, togliendo Acorn Harvest ed eventualmente dei mass removal, anche se non sono scontati. L'idea è andare wide e sperare che lui si incagli.
+G1 se vede Gnaw to the Bone vince quasi certamente. G2 lui entra con Ancient Grudge contro Relic of Progenitus, togliendo Acorn Harvest, ed eventualmente dei mass removal, anche se non sono scontati. L'idea è andare wide e sperare che lui si incagli. Relic MVP.
 
 Side In: 2x Relic of Progenitus
 
-Side Out: 
+Side Out: 1x Pyrite Spellbomb
 
 -------------------------------------------------------------
 
@@ -433,10 +430,10 @@ Side Out:
 4 Lórien Revealed
 4 Ponder
 1 Deep Analysis
-2 Ash Barrens
 9 Snow-Covered Island
-2 Snow-Covered Mountain
 4 Volatile Fjord
+2 Ash Barrens
+2 Snow-Covered Mountain
 
 **SIDEBOARD**
 4 Pyroblast
@@ -459,20 +456,20 @@ Side Out:
 **MAINBOARD**
 4 Brainstorm
 2 Cast Down
-4 Contaminated Aquifer
 4 Counterspell
 3 Deep Analysis
 2 Fallaji Archaeologist
 4 Gurmag Angler
-1 Ice Tunnel
 4 Lorien Revealed
 4 Mental Note
-11 Snow-Covered Island
 4 Snuff Out
 2 Spell Pierce
 4 Thought Scour
 4 Tolarian Terror
 3 Unexpected Fangs
+11 Snow-Covered Island
+4 Contaminated Aquifer
+1 Ice Tunnel
 
 **SIDEBOARD**
 3 Annul
@@ -495,23 +492,24 @@ Side Out:
 
 ### Boros Bully
 **MAINBOARD**
-4 Basilisk Gate
 2 Battle Screech
-1 Boros Garrison
-4 Boros Guildgate
-4 Citadel Gate
-4 Cliffgate
 2 Dawnbringer Cleric
 4 Guardian of the Guildpact
 4 Journey to Nowhere
 4 Lightning Bolt
 3 Militia Bugler
-4 Plains
 4 Prismatic Strands
 4 Raffine's Informant
 4 Sacred Cat
 4 Squadron Hawk
 4 Thraben Inspector
+4 Basilisk Gate
+4 Boros Guildgate
+4 Citadel Gate
+4 Cliffgate
+4 Plains
+1 Boros Garrison
+
 
 **SIDEBOARD**
 2 Arms of Hadar
@@ -565,27 +563,27 @@ Side Out:
 
 ### Rakdos Moggarts
 **MAINBOARD**
-1 Bojuka Bog
 3 Chromatic Star
 1 Dark-Dweller Oracle
 4 Deadly Dispute
-4 Drossforge Bridge
 1 Duress
 1 Faithless Looting
 3 Fanatical Offering
 4 First Day of Class
 4 Goblin Matron
-3 Great Furnace
 4 Ichor Wellspring
 1 Makeshift Munitions
 3 Mesmeric Fiend
-3 Mountain
 4 Putrid Goblin
-2 Rakdos Carnarium
 4 Skirk Prospector
-3 Swamp
 4 Unearth
+4 Drossforge Bridge
+3 Great Furnace
+3 Mountain
+3 Swamp
 3 Vault of Whispers
+2 Rakdos Carnarium
+1 Bojuka Bog
 
 **SIDEBOARD**
 4 Abrade
@@ -613,7 +611,6 @@ Side Out:
 1 Destroy Evil
 1 Echoing Truth
 2 Ephemerate
-1 Glacial Floodplain
 2 Kenku Artificer
 1 Late to Dinner
 4 Lorien Revealed
@@ -621,11 +618,12 @@ Side Out:
 4 Mulldrifter
 1 Murmuring Mystic
 2 Preordain
-4 Rustvale Bridge
-4 Silverbluff Bridge
 4 Skred
 6 Snow-Covered Island
+4 Rustvale Bridge
+4 Silverbluff Bridge
 2 Snow-Covered Mountain
+1 Glacial Floodplain
 1 Snow-Covered Plains
 1 Volatile Fjord
 
@@ -649,23 +647,23 @@ Side Out:
 ### Jeskai Glitters
 **MAINBOARD**
 4 All That Glitters
-4 Ancient Den
 4 Experimental Synthesizer
 4 Frogmite
 4 Galvanic Blast
 4 Gingerbrute
 4 Glint Hawk
-4 Great Furnace
 1 Kor Skyfisher
 4 Myr Enforcer
 4 Ornithopter
-2 Razortide Bridge
-4 Rustvale Bridge
-1 Seat of the Synod
-1 Silverbluff Bridge
 4 Springleaf Drum
 4 Thoughtcast
 3 Thraben Inspector
+4 Ancient Den
+4 Great Furnace
+4 Rustvale Bridge
+2 Razortide Bridge
+1 Seat of the Synod
+1 Silverbluff Bridge
 
 **SIDEBOARD**
 4 Blacksmith's Skill
@@ -720,8 +718,6 @@ Side Out:
 
 ### Flicker Tron
 **MAINBOARD**
-1 Bojuka Bog
-4 Cave of Temptation
 1 Compulsive Research
 1 Condescend
 2 Dinrova Horror
@@ -732,7 +728,6 @@ Side Out:
 1 Forbidden Alchemy
 2 Ghostly Flicker
 1 Impulse
-1 Island
 3 Mnemonic Wall
 3 Moment's Peace
 4 Mulldrifter
@@ -740,13 +735,17 @@ Side Out:
 1 Prohibit
 4 Prophetic Prism
 1 Pulse of Murasa
-1 Remote Isle
 3 Stonehorn Dignitary
-3 Tranquil Cove
+1 Weather the Storm
 4 Urza's Mine
 4 Urza's Power Plant
 4 Urza's Tower
-1 Weather the Storm
+4 Cave of Temptation (mana colorless + filter a 1 mana + "4, tap, Sacrifice Cave of Temptation: Put two +1/+1 counters on target creature. Activate only as a sorcery")
+3 Tranquil Cove
+1 Bojuka Bog
+1 Island
+1 Remote Isle
+
 
 **SIDEBOARD**
 1 Circle of Protection: Blue
@@ -763,7 +762,6 @@ Side Out:
 
 ### Orzhov Blade
 **MAINBOARD**
-1 Bojuka Bog
 4 Cast Down
 1 Dawnbringer Cleric
 1 Ephemerate
@@ -774,16 +772,17 @@ Side Out:
 4 Lembas
 1 Okiba-Gang Shinobi
 2 Omen of the Dead
-4 Orzhov Basilica
-7 Plains
-4 Scoured Barrens
-1 Silverquill Campus
 3 Spare Supplies
 1 Suffocating Fumes
-4 Swamp
 1 Thorn of the Black Rose
 4 Thraben Inspector
 4 Tithing Blade
+7 Plains
+4 Orzhov Basilica
+4 Scoured Barrens
+4 Swamp
+1 Bojuka Bog
+1 Silverquill Campus
 
 **SIDEBOARD**
 3 Arashin Cleric
