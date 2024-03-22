@@ -43,9 +43,15 @@ Alcune varianti giocano 4 Rebuke, togliendo il Phyrexian Walker. Altre versioni 
 G2 l'oppo penso tolga i Gingerbrute in quanto possono essere bloccati dai Goblin Tomb Raider.
 Post side, le carte attorno alle quali bisogna giocare sono 4/5 copie di Hydro/BEB, 2/3 copie di Turn Aside, 2 copie di Standard Bearer (1W, 1/1, "While an opponent is choosing targets as part of casting a spell they control or activating an ability they control, that player must choose at least one Flagbearer on the battlefield if able.") e raramente 1 copia di Crimson Acolyte (1W, 1/1 Protection from red + activated ability). Anche Blacksmith's Skill puó essere giocata, di main o di side. Non so se vale la pena giocarci attorno in quanto non é diffusissima. 
 
+#### On the play
 Side In: 1x Gorilla Shaman, 3x Smash to Smithereens, 2x Red Elemental Blast (mettere il terzo se si vede Turn Aside G2).
 
 Side Out: 3x Chain Lightning, 2x Experimental Synthesizer, ...
+
+#### On the draw
+Side In:
+
+Side Out:
 
 -------------------------------------------------------------
 
@@ -86,9 +92,15 @@ Side Out: 3x Chain Lightning, 2x Experimental Synthesizer, ...
 
 Lista relativamente stock, spesso si giocano 2 Spinning Darkness invece di un Fungal Infection. Allo stesso modo, le liste giocano un numero variabile di Lembas. Meno sono, meglio é. Normalmente l'oppo toglie le 2 copie di Snuff Out e la maggior parte di creature che fanno Monarca o Iniziativa per entrare con Duress, Wheather the Storm e Drown in Sorrow. Alcune liste giocano i Campfire di side per il mirror oppure Moment's Peace.
 
+#### On the play
 Side In: 3x Smash to Smithereens
 
 Side Out: 3x Seal of Fire
+
+#### On the draw
+Side In:
+
+Side Out:
 
 -------------------------------------------------------------
 
@@ -127,9 +139,15 @@ Side Out: 3x Seal of Fire
 
 Alcune liste piú aggressive possono giocare i Somber Overguard invece dei Gearseeker Serpent, insieme alle Frogmite. Anche in questo caso, le varianti sono innumerevoli. Molte liste giocano uno split di 2 Rebuke e 2 Counterspell. Sicuramente  l'oppo esce con 1 Nihil Spellbomb e penso sia con i Counterspell  e un Kenku per entrare con 3 BEB e 2 Breath Weapon.
 
+#### On the play
 Side In: 2x Cast into the Fire, 3x Smash to Smithereens, 3x Red Elemental Blast, 1x Gorilla Shaman se non vedo terre base
 
 Side Out: 1x Chain Lightning, 4x Experimental Synthesizer, 2x Bushwacker, 2x Kuldotha
+
+#### On the draw
+Side In:
+
+Side Out:
 
 -------------------------------------------------------------
 
@@ -168,6 +186,12 @@ Side Out: 1x Chain Lightning, 4x Experimental Synthesizer, 2x Bushwacker, 2x Kul
 
 Lista inusuale ma Heisen ha fatto top 2 ad una challenge quindi qualcuno la porterá sicuro. L'alternativa gioca 8 Thraben invece dei Krark-Clan Shaman di main. Anche Foundry Helix non viene giocata spesso. Relic of Progenitus é una tech mainboard di Mengucci contro Terror che a quanto pare é un matchup parecchio brutto per il mazzo ma che offre a me la possibilitá di guadagnare dalla sua eventuale pescata morta.
 
+#### On the play
+Side In:
+
+Side Out:
+
+#### On the draw
 Side In:
 
 Side Out:
@@ -208,7 +232,13 @@ Side Out:
 
 Lista stock, al massimo puó giocare una copia di Lorien in meno per un Journey in piú ma è piuttosto raro. Post side, l'oppo entra con 4/5 BEB/Hydro (o uno split di 3 BEB e 2 Negate, che ritengo plausibile in vista del meta) e 2 copie di Breath Weapon. 
 
+#### On the play
 Side In: 3x Relic of Progenitus, 3x Red Elemental Blast, 3x Tectonic Hazard, 1x Flaring Pain
+
+Side Out:
+
+#### On the draw
+Side In:
 
 Side Out:
 
@@ -253,6 +283,12 @@ Side Out:
 
 Pensavo che la lista fosse piú quadrata ma gioca numerose carte in copie singole. Di conseguenza le varianti sono numerosissime e non ha senso elencarle tutte. Post side l'oppo dovrebbe uscire con 4 Snuff Out, 2 Thorn e (penso) 1 Murmuring Mystic e portare in 2 copie di Arms of Hadar, 4 Hydro e 1 Fumes.
 
+#### On the play
+Side In:
+
+Side Out:
+
+#### On the draw
 Side In:
 
 Side Out:
@@ -295,9 +331,15 @@ Side Out:
 2 Nature's Chant
 2 Remove Soul
 
+#### On the play
 Side In: 3x Pyroblast, 2x Relic of Progenitus
 
 Side Out: 2 Seal of Fire, 1x Implement of Combustion
+
+#### On the draw
+Side In:
+
+Side Out:
 
 -------------------------------------------------------------
 
@@ -331,9 +373,15 @@ Side Out: 2 Seal of Fire, 1x Implement of Combustion
 
 Lista stock di MTGO. Il matchup si basa sul capire chi è il beatdown. Non mi aspetto che in cartaceo si giochino i 2 End the Festivities di Main ma qualcuno che netdecka come un maiale ci sará e, puntualmente, non ci giocheró attorno come un coglione. In questo caso, la lista gioca 2 impulse e il beatdown paradossalmente siamo noi in quanto lui gioca più risposte. Le liste piú quadrate, tipo quella di selkcahs, giocano 4x di ogni creatura, 17 lande, 4 Chain Lightning, alcune copie di Seal of Fire e nessun Impulse di main. 
 
+#### On the play
 Side In: 3x Tectonic Hazard, 2x Cast into the Fire.
 
 Side Out: 1x Bushwacker, 4x Chain Lightning.
+
+#### On the draw
+Side In:
+
+Side Out:
 
 -------------------------------------------------------------
 
@@ -368,9 +416,15 @@ Side Out: 1x Bushwacker, 4x Chain Lightning.
 La lista può giocare eventualmente dei Gurmag Angler di main.
 Per quanto riguarda G1, se andiamo wide di creature dovremmo stare sempre sopra. G2 lui entra con End the Festivities ed Electrickery ma non so cosa possa togliere
 
+#### On the play
 Side In: 1x Gorilla Shaman, 2x Cast into the Fire.
 
 Side Out: 
+
+#### On the draw
+Side In:
+
+Side Out:
 
 -------------------------------------------------------------
 
@@ -406,9 +460,15 @@ Side Out:
 
 G1 se vede Gnaw to the Bone vince quasi certamente. G2 lui entra con Ancient Grudge contro Relic of Progenitus, togliendo Acorn Harvest, ed eventualmente dei mass removal, anche se non sono scontati. L'idea è andare wide e sperare che lui si incagli. Relic MVP.
 
+#### On the play
 Side In: 2x Relic of Progenitus
 
 Side Out: 1x Pyrite Spellbomb
+
+#### On the draw
+Side In:
+
+Side Out:
 
 -------------------------------------------------------------
 
@@ -445,7 +505,12 @@ Side Out: 1x Pyrite Spellbomb
 1 Breath Weapon
 1 Echoing Truth
 
+#### On the play
+Side In:
 
+Side Out:
+
+#### On the draw
 Side In:
 
 Side Out:
@@ -480,6 +545,12 @@ Side Out:
 2 Rotten Reunion
 2 Shrivel
 
+#### On the play
+Side In:
+
+Side Out:
+
+#### On the draw
 Side In:
 
 Side Out:
@@ -519,6 +590,12 @@ Side Out:
 4 Red Elemental Blast
 3 Standard Bearer
 
+#### On the play
+Side In:
+
+Side Out:
+
+#### On the draw
 Side In:
 
 Side Out:
@@ -555,6 +632,12 @@ Side Out:
 1 Stream of Thought
 2 Wilt
 
+#### On the play
+Side In:
+
+Side Out:
+
+#### On the draw
 Side In:
 
 Side Out:
@@ -594,6 +677,12 @@ Side Out:
 2 Pyroblast
 2 Red Elemental Blast
 
+#### On the play
+Side In:
+
+Side Out:
+
+#### On the draw
 Side In:
 
 Side Out:
@@ -638,6 +727,12 @@ Side Out:
 3 Pyroblast
 1 Red Elemental Blast
 
+#### On the play
+Side In:
+
+Side Out:
+
+#### On the draw
 Side In:
 
 Side Out:
@@ -672,6 +767,12 @@ Side Out:
 4 Standard Bearer
 1 Turn Aside
 
+#### On the play
+Side In:
+
+Side Out:
+
+#### On the draw
 Side In:
 
 Side Out:
@@ -710,6 +811,12 @@ Side Out:
 3 Scattershot (2R, instant: 1 damage to target creature; storm)
 2 Weather the Storm
 
+#### On the play
+Side In:
+
+Side Out:
+
+#### On the draw
 Side In:
 
 Side Out:
@@ -758,6 +865,16 @@ Side Out:
 1 Stonehorn Dignitary
 2 Ulamog's Crusher
 
+#### On the play
+Side In:
+
+Side Out:
+
+#### On the draw
+Side In:
+
+Side Out:
+
 -------------------------------------------------------------
 
 ### Orzhov Blade
@@ -782,7 +899,7 @@ Side Out:
 4 Scoured Barrens
 4 Swamp
 1 Bojuka Bog
-1 Silverquill Campus
+1 Silverquill Campu
 
 **SIDEBOARD**
 3 Arashin Cleric
@@ -793,6 +910,12 @@ Side Out:
 3 Dust to Dust
 2 Relic of Progenitus
 
+#### On the play
+Side In:
+
+Side Out:
+
+#### On the draw
 Side In:
 
 Side Out:
