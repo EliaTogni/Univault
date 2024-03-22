@@ -855,7 +855,7 @@ Defining $1- \frac{(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi}}{n \gamma^2} = \delta
 
 Accuracy will always be in terms of number of digits, so it will be in the form of $\gamma = 10^{-k}$, where $k$ is the position of the last digit of interest.
 
-parte finale lezione 7
+parte finale lezione 7 (40 $\to$ 50 min)
 
 -------------------------------------------------------------
 
@@ -864,9 +864,9 @@ parte finale lezione 7
 ...
 
 ### Main families of Random Variables
-#### DIscrete Random Variables
+#### Discrete Random Variables
 
-immagine slide
+![[DiscreteRandomVariables.png]]
 
 ##### Bernoulli Random Variable
 

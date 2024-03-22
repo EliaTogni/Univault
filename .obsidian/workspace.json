@@ -13,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Classes/Simulation.md",
+                "file": "Classes/Informatica Teorica.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "814eaebcf554bcc9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Blogs/Paupergeddon Lecco 2024.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -86,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Simulation.md",
+                "file": "Blogs/Paupergeddon Lecco 2024.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,10 +128,15 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "9d6dab7f39b33ece",
+  "active": "814eaebcf554bcc9",
   "lastOpenFiles": [
-    "Classes/Statistica e Probabilità.md",
+    "Classes/Informatica Teorica.md",
+    "Blogs/Paupergeddon Lecco 2024.md",
+    "Classes/Algoritmi Paralleli e Distribuiti.md",
+    "Atoms/Teorema di Wyllie.md",
     "Classes/Simulation.md",
+    "Images/DiscreteRandomVariables.png",
+    "Classes/Statistica e Probabilità.md",
     "Images/MonteCarloPiExample.png",
     "Images/MonteCarloCircle.png",
     "Images/EmpiricalCumulativeDistributionFunction.png",
@@ -126,7 +144,6 @@
     "Images/DiscreteUniformCumulativeDistributionFunction.png",
     "Images/ContinuousUniformCumulativeDistributionFunction.png",
     "Images/UniformProbabilityMassFunction.png",
-    "Classes/Informatica Teorica.md",
     "Images/GraphExample.png",
     "Articles/Probability Analysis in Pauper Manabases.md",
     "Classes/Privatezza e Protezione dei Dati.md",
@@ -140,9 +157,7 @@
     "Lexicon/Zshrc.md",
     "Atoms/Grafo.md",
     "Lexicon/Efebico.md",
-    "Classes/Algoritmi Paralleli e Distribuiti.md",
     "Images/SistemaDiCalcolo.png",
-    "Images/InsiemiProdottoI.png",
     "Articles/Image Classification with Classic and Deep Learning Techniques.md",
     "Articles/Preprocessing for Image Classification by Convolutional Neural Networks.md",
     "Atoms/The Game of Life.md",
@@ -151,7 +166,6 @@
     "Atoms/System Dynamics Simulation.md",
     "Atoms/Agent-Based Simulation.md",
     "Classes/Intelligenza Artificiale.md",
-    "Templates/Article Template.md",
     "Untitled.canvas",
     "Blogs",
     "Atoms",

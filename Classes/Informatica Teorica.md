@@ -730,26 +730,37 @@ E' possibile quindi lavorare su numeri invece che su dati, e trasporre le funzio
 -------------------------------------------------------------
 
 ## $\text{PROG} \sim \mathbb{N}$
-Per mostrare anche questo isomorfismo si useranno due sistemi di calcolo: il sistema di calcolo RAM e il sistema di calcolo WHILE.
+Per mostrare anche questo isomorfismo si useranno due sistemi di calcolo: il sistema di calcolo _RAM_ e il sistema di calcolo _WHILE_.
 
-Il sistema di calcolo RAM è sostanzialmente un assembly molto semplificato il quale permette di definire in maniera rigorosa l'isomorfismo $\text{PROG} \sim \mathbb{N}$, la semantica dei programmi e una prima proposta di potenza computazionale di questo sistema.<br />
-Per evitare di valutare un solo sistema di calcolo che potrebbe essere troppo semplicistico, lo si confronterà con il sistema di calcolo più sofisticato WHILE.
-Dal loro confronto ci si potrà rendere conto se la potenza dipende dallo strumento o, se hanno le stesse capacità, non dipenda dalla piattaforma ma sia una caratteristica teorica, intrinseca nei problemi.  
+Il sistema di calcolo _RAM_, composto dalla macchina _RAM_ e dal linguaggio _RAM_ è sostanzialmente un assembly molto semplificato il quale permette di definire in maniera rigorosa l'isomorfismo $\text{PROG} \sim \mathbb{N}$, la semantica dei programmi $C(P, \_) \to RAM(P, \_)$ e una prima proposta di potenza computazionale $F(RAM)$ di questo sistema.<br />
+Per evitare di valutare un solo sistema di calcolo che potrebbe essere troppo semplicistico, lo si confronterà con il sistema di calcolo più sofisticato _WHILE_ (_JVM_).
+
+Dal loro confronto ci si potrà rendere conto se la potenza dipende dallo strumento o, se hanno le stesse capacità, non dipenda dalla piattaforma ma sia una caratteristica teorica, intrinseca nei problemi (**Tesi di Church**).
 
 -------------------------------------------------------------
 
-# Macchina RAM
-La macchina RAM altro non è che un processore che esegue sequenzialmente una serie di istruzioni agendo su una memoria che è una lista infinita di registri $R$: in particolare il registro $R_0$ conterrà l'output del programma, e il registro $R_1$ conterrà all'avvio l'input del programma; oltre a ciò esiste $L$, ovvero il _Program Counter_ che tiene traccia dell'istruzione da eseguire.
-$Istr_{x}$ indica l'istruzione $x$-esima del programma $P$.  
-Le istruzioni disponibili sono di 3 tipi:  
-1. $R_k \leftarrow R_k + 1$: incremento del valore contenuto in $R_k$;
-2. $R_k \leftarrow R_k \dot- 1$: decremento del valore contenuto in $R_k$ in maniera sicura, ovvero senza mai scendere sotto 0;
-3. $\text{IF } R_k = 0 \text{ THEN GOTO } m$: salto condizionato all'istruzione $m$ se il registro $R_k$ contiene il valore 0.  
+# Macchina _RAM_
+La macchina _RAM_ altro non è che un processore che esegue sequenzialmente una serie di istruzioni agendo su una memoria che è una lista infinita di registri $R$, ciascuno dei quali può contenere un numero naturale (arbitrario): in particolare il registro $R_0$ conterrà l'output del programma, e il registro $R_1$ conterrà all'avvio l'input del programma; oltre a ciò esiste $L$, ovvero il **Program Counter** che tiene traccia dell'istruzione da eseguire.
 
-L'inizializzazione consiste nell'impostare $L$ a 1, tutti i registri a 0, e il registro $R_1$ all'input $n$. Per convenzione $L = 0 \implies \text{ HALT}$, perciò un programma termina quanto il contatore è 0 e potrebbe non terminare mai nel caso di loop. Il contenuto di $R_0$ al termine (senza loop) è l'output dell'esecuzione. La semantica del programma $P$ è quindi $\varphi_P: \mathbb{N} \to \mathbb{N}_{\bot}$.  
+immagine macchina RAM
+
+$Istr_{x}$ indica l'istruzione $x$-esima del programma $P$.
+
+Le istruzioni disponibili sono di $3$ tipi:  
+1) $R_k \leftarrow R_k + 1$: incremento del valore contenuto in $R_k$;
+2) $R_k \leftarrow R_k \dot- 1$: decremento del valore contenuto in $R_k$ in maniera sicura, ovvero senza mai scendere sotto $0$;
+3) $\text{IF } R_k = 0 \text{ THEN GOTO } m$: salto condizionato all'istruzione $m$ se il registro $R_k$ contiene il valore $0$.
+
+L'**inizializzazione** consiste nell'impostare $L$ a $1$, tutti i registri a $0$, e il registro $R_1$ all'input $n$. Per convenzione $L = 0 \implies \text{ HALT}$, perciò un programma termina quanto il contatore è $0$ e potrebbe non terminare mai nel caso di loop. Il contenuto di $R_0$ al termine (senza loop) è l'output dell'esecuzione. La semantica del programma $P$ è quindi $\varphi_P: \mathbb{N} \to \mathbb{N}_{\bot}$.  
 
 ## Definizione formale
-Il programma induce una sequenza possibilmente infinita di stati partendo dallo stato iniziale. Ogni stato riporta il contenuto del contatore e di ogni registro della macchina RAM, ed ogni istruzione del programma fa passare da uno stato al successivo.  
+La **Semantica Operazionale** consiste nello specificare il significato di ogni istruzione, e quindi dei programmi, specificando l'effetto che quella istruzione ha sui registri della macchina.
+
+Come descrivere l'effetto di un'istruzione?
+
+
+
+Il programma induce una sequenza possibilmente infinita di stati partendo dallo stato iniziale. Ogni stato riporta il contenuto del contatore e di ogni registro della macchina RAM, ed ogni istruzione del programma fa passare da uno stato al successivo.
 Semantica di $P$:
 
 $$\varphi_P: \mathbb{N} \to \mathbb{N}_{\bot} \implies \varphi_P(x) = \begin{cases}
@@ -759,9 +770,12 @@ y \\
 
 ### Definizione formale di stato
 Stato: foto di tutte le componenti della macchina.  
-$S: \{L, R_i\} \to \mathbb{N}$  
-$S(R_j)$ restituisce il contenuto del registro $R_j$ ponendo la macchina nello stato $S$.  
-Stati $= \mathbb{N}^{\{L, R_i\}} = \{\text{possibili stati della macchina}\}$.  
+$S: \{L, R_i\} \to \mathbb{N}$
+
+$S(R_j)$ restituisce il contenuto del registro $R_j$ ponendo la macchina nello stato $S$.
+
+Stati $= \mathbb{N}^{\{L, R_i\}} = \{\text{possibili stati della macchina}\}$.
+
 Lo stato finale è qualunque stato per cui valga $S(L) = 0$, cioè in HALT.  
 L'inizializzazione $in(n): \text{DATI} \to \text{STATI}$ è una semplice funzione dai dati agli stati che sostanzialmente genera lo stato iniziale in cui tutti i registri sono 0 tranne il registro di input e il contatore.  
 
@@ -794,7 +808,7 @@ Questo è l'insieme delle funzioni calcolabili da una macchina RAM.
 
 ## $\text{PROG} \sim \mathbb{N}$
 ### Goedelizzazione
-Aritmetizzare o goedelizzare una struttura significa associarle in modo biunivoco un numero naturale. Se riuscissimo a definire una relazione $Ar$ di aritmetizzaione che permettesse di aritmetizzare ogni istruzione, otterremmo una lista di numeri (le istruzioni del programma) che saremmo poi tranquillamente in grado di tradurre in un unico numero naturale grazie ai metodi visti, utilizzando ad esempio la funzione coppia di Cantor.
+**Aritmetizzare** o **Goedelizzare** una struttura significa associarle in modo biunivoco un numero naturale. Se riuscissimo a definire una relazione $Ar$ di aritmetizzaione che permettesse di aritmetizzare ogni istruzione, otterremmo una lista di numeri (le istruzioni del programma) che saremmo poi tranquillamente in grado di tradurre in un unico numero naturale grazie ai metodi visti, utilizzando ad esempio la funzione coppia di Cantor.
 Vogliamo quindi trovare $Ar: Istr \to \mathbb{N}$ e $Ar^{-1}: \mathbb{N} \to Istr$ tali che $Ar(Istr) = n \iff Ar^{-1}(n) = Istr$.
 Per costruirla definiamo così 3 casi:
 1. $Ar(R_k \leftarrow R_k + 1)= 3k$;
