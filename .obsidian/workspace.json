@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Classes/Informatica Teorica.md",
+                "file": "Blogs/Paupergeddon Lecco 2024.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Informatica Teorica.md",
+                "file": "Blogs/Paupergeddon Lecco 2024.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,8 +117,8 @@
   },
   "active": "9d6dab7f39b33ece",
   "lastOpenFiles": [
-    "Blogs/Paupergeddon Lecco 2024.md",
     "Classes/Informatica Teorica.md",
+    "Blogs/Paupergeddon Lecco 2024.md",
     "Classes/Algoritmi Paralleli e Distribuiti.md",
     "Atoms/Teorema di Wyllie.md",
     "Classes/Simulation.md",
