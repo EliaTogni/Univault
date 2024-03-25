@@ -851,11 +851,17 @@ $$P\Big[ \text{ relative error } > \gamma \Big] \leq \frac{(1 - \frac{\pi}{4}) \
 $$P\Big[ \text{ relative error } \leq \gamma \Big] > 1- \frac{(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi}}{n \gamma^2}$$
 
 Now, $\gamma$ is the **target accuracy** while $n$ identifies the number of runs of the experiment. Furthermore, the right-hand side of the disequation ($1- \frac{(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi}}{n \gamma^2}$) is what is called the **confidence** of getting that target accuracy, that is, an upper bound on the probability of making an error greater than the accuracy of interest.<br />
-Defining $1- \frac{(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi}}{n \gamma^2} = \delta$, $\delta =$ **target confidence**. It is therefore possible to fix two values chosen from accuracy, confidence and number of experiments and determine the third value such that it will respect this inequality.
+Let's define $\frac{(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi}}{n \gamma^2} = \delta$, where $\delta$ is the **target confidence**. It is therefore possible to fix two values chosen from accuracy, confidence and number of experiments and determine the third value such that it will respect this inequality.
 
-Accuracy will always be in terms of number of digits, so it will be in the form of $\gamma = 10^{-k}$, where $k$ is the position of the last digit of interest.
+Accuracy will always be in terms of number of digits, so it will be in the form of $\gamma = 10^{-k}$, where $k$ is the position of the last digit of interest.<br />
+Calling $(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi} = \eta$, which it is a constant number, it is possible to observe that 
 
-parte finale lezione 7 (40 $\to$ 50 min)
+$$1 - \frac{(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi}}{n \gamma^2} = 1 - \frac{\eta}{n \gamma^2} \geq \delta$$
+$$- \frac{\eta}{n (10^{-k})^2} \geq \delta - 1$$
+$$\frac{\eta}{n (10^{-k})^2} \leq 1 - \delta$$
+$$n \geq \Bigg \lceil \frac{\eta}{(1 - \delta)10^{-2k}} \Bigg \rceil$$
+
+While this theoretical result seems extremely useful, it assumes to have at disposal $\eta$ which in our case is a constant but only because it derives from an analytical step and holds only for a very specifical random variable known from the beginning. Therefore, it is tipically necessary to estimate $\eta$ through experiments to utilize this property.
 
 -------------------------------------------------------------
 
