@@ -12,7 +12,7 @@ L'ambito del machine learning ha preso una piega drammatica negli ultimi tempi, 
 quella delle Convolutional Neural Network (CNN). Le CNN sono usate per risolvere complesse task di pattern recognition basate su immagini e, con la loro architettura precisa nonostante la sua semplicità, offrono un metodo semplificato per approcciarsi alle ANN.<br />
 Questo documento fornisce una breve introduzione alle CNN, discutendo articoli pubblicati di recente e tecniche di recente sviluppo.
 
-----------------------------------------------------------------
+-------------------------------------------------------------
 
 # Articolo
 ## Introduction

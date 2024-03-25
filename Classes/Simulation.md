@@ -867,9 +867,10 @@ While this theoretical result seems extremely useful, it assumes to have at disp
 
 ## Generating Random Variables
 
-...
+
 
 ### Main families of Random Variables
+There are certain types of random variables that frequently appear in applications. In this section we survey some of the discrete ones.
 #### Discrete Random Variables
 
 ![[DiscreteRandomVariables.png]]
@@ -912,17 +913,23 @@ While this theoretical result seems extremely useful, it assumes to have at disp
 ### Generating discrete Random Variables
 
 #### The Inverse Transform method
-Suppose we want to generate the value of a custom discrete random variable $X$ having probability mass function
+Suppose we want to generate the value of a custom (single value) discrete random variable $X$ having probability mass function
 
-$$P[X = x_j] = p_j, \quad j = 0, 1, \dots, \quad \sum_{j}p_j = 1$$
+$$P[X = x_j] = p_j, \quad j = 0, \dots, 6 \quad \sum_{j = 1}^6 p_j = 1$$
 
 To accomplish this, a random number $U$ is generated, that is, $U$ is uniformly distributed over $(0, 1)$, and set
 
 $$X = \cases{1 \space \text{ con } p = \frac{1}{2} \cr \cr 2 \space \text{ con } p = \frac{1}{10} \cr \cr 3 \space \text{ con } p = \frac{1}{10} \cr \cr 4 \space \text{ con } p = \frac{1}{10} \cr \cr 5 \space \text{ con } p = \frac{1}{10} \cr \cr 6 \space \text{ con } p = \frac{1}{10}}$$
 
+How is possible to simulate the readings of such custom discrete random variable? A technique is called the **inverse transform** method (for discrete Random Variables).
+
+ First of all, the cumulative distribution function is built out of the Random Variable.
+
 grafico cdf con inverse transformation
 
-The preceding can be written algorithmically as
+The inverse transformation method suggests to use this cumulative distribution function in reverse, that is, picking a probability value and reading the corresponding value of the Random Variable generating this probability. 
+
+The preceding idea can be written algorithmically as
 
 ```pseudo
 	\begin{algorithm}

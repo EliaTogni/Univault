@@ -5,8 +5,7 @@ Sottotitolo:
 "Anno:": "2024"
 "Link:":
 ---
-# Sommario
-## Lista
+# Lista
 **MAINBOARD**
 4 Chain Lightning
 2 Demand Answers
@@ -33,7 +32,9 @@ Sottotitolo:
 3 Smash to Smithereens
 3 Tectonic Hazard
 
-## Matchups
+-------------------------------------------------------------
+
+# Matchups
 ### Azorius Glitters
 **MAINBOARD**
 4 Thraben Inspector
@@ -949,74 +950,74 @@ Side Out:
 
 -------------------------------------------------------------
 
-## Pairings
-### Turno 1 - Orzhov Blade (Gianluca Costantino)
+# Pairings
+## Turno 1 - Orzhov Blade (Gianluca Costantino)
 **Risultato**: $2$ - $1$
 
 -------------------------------------------------------------
 
-### Turno 2 - Mono Red Kuldotha (Stefano Giordano)
+## Turno 2 - Mono Red Kuldotha (Stefano Giordano)
 **Risultato**: $2$ - $0$
 
 -------------------------------------------------------------
 
-### Turno 3 - Boros Kuldotha (Clemens Muller)
+## Turno 3 - Boros Kuldotha (Clemens Muller)
 **Risultato**: $2$ - $0$
 
 -------------------------------------------------------------
 
-### Turno 4 - Walls Combo (Andrea Migliavacca)
+## Turno 4 - Walls Combo (Andrea Migliavacca)
 **Risultato**: $2$ - $0$
 
 -------------------------------------------------------------
 
-### Turno 5 - Azorius Glitters (Nicolò Fiore)
+## Turno 5 - Azorius Glitters (Nicolò Fiore)
 **Risultato**: $1$ - $2$
 
 -------------------------------------------------------------
 
-### Turno 6 - Azorius Familiars (Nicolò Gavino)
+## Turno 6 - Azorius Familiars (Nicolò Gavino)
 **Risultato**: $0$ - $2$
 
 
 -------------------------------------------------------------
 
-### Turno 7 - White Weenie (Luca Ravera)
+## Turno 7 - White Weenie (Luca Ravera)
 **Risultato**: $2$ - $1$
 
 -------------------------------------------------------------
 
-### Turno 8 - Azorius Glitters (Stefano Cucciniello)
+## Turno 8 - Azorius Glitters (Stefano Cucciniello)
 **Risultato**: $0$ - $2$
 
 -------------------------------------------------------------
 
-### Turno 9 - Boros Glitters (Michele Alloni)
+## Turno 9 - Boros Glitters (Michele Alloni)
 **Risultato**: $2$ - $0$
 
 -------------------------------------------------------------
 
-### Turno 10 - Caw-Gates (Edoardo Mazzucco)
+## Turno 10 - Caw-Gates (Edoardo Mazzucco)
 **Risultato**: $0$ - $2$
 
 -------------------------------------------------------------
 
-### Turno 11 - Azorius Glitters (Simone Monaldi)
+## Turno 11 - Azorius Glitters (Simone Monaldi)
 **Risultato**: $2$ - $1$
 
 -------------------------------------------------------------
 
-### Turno 12 - Azorius Familiars (Ivan Buriek)
+## Turno 12 - Azorius Familiars (Ivan Buriek)
 **Risultato**: $0$ - $2$
 
-----------------------------------------------------------------
+-------------------------------------------------------------
 
 # Lessico
 
 
-----------------------------------------------------------------
+-------------------------------------------------------------
 
 # Related to
 [[Magic The Gathering]]
 
-----------------------------------------------------------------
+-------------------------------------------------------------

@@ -117,11 +117,14 @@
   },
   "active": "9d6dab7f39b33ece",
   "lastOpenFiles": [
-    "Blogs/Paupergeddon Lecco 2024.md",
+    "Articles/An Introduction to Convolutional Neural Networks.md",
+    "Mtg/Reports/Report Paupergeddon Lecco 2024.md",
+    "Mtg/Reports",
+    "Classes/Simulation.md",
+    "Mtg",
     "Classes/Informatica Teorica.md",
     "Classes/Algoritmi Paralleli e Distribuiti.md",
     "Atoms/Teorema di Wyllie.md",
-    "Classes/Simulation.md",
     "Images/DiscreteRandomVariables.png",
     "Classes/Statistica e Probabilità.md",
     "Images/MonteCarloPiExample.png",
@@ -136,7 +139,6 @@
     "Classes/Privatezza e Protezione dei Dati.md",
     "Classes/Sicurezza dei Sistemi e delle Reti.md",
     "Lexicon/Sovente.md",
-    "Articles/An Introduction to Convolutional Neural Networks.md",
     "Atoms/Deviazione standard.md",
     "Blogs/Tempo.md",
     "Classes/Cittadinanza Digitale e Tecnocivismo.md",
@@ -152,7 +154,6 @@
     "Classes/Logica Matematica.md",
     "Atoms/System Dynamics Simulation.md",
     "Atoms/Agent-Based Simulation.md",
-    "Classes/Intelligenza Artificiale.md",
     "Untitled.canvas",
     "Blogs",
     "Atoms",
@@ -161,8 +162,6 @@
     "Classes",
     "Books",
     "Articles",
-    "Imaes",
-    "art_4.pdf",
-    "Images/find largest r - Cerca con Google_files/app.html"
+    "Imaes"
   ]
 }
