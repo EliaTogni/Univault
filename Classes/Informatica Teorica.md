@@ -732,15 +732,16 @@ E' possibile quindi lavorare su numeri invece che su dati, e trasporre le funzio
 ## $\text{PROG} \sim \mathbb{N}$
 Per mostrare anche questo isomorfismo si useranno due sistemi di calcolo: il sistema di calcolo _RAM_ e il sistema di calcolo _WHILE_.
 
-Il sistema di calcolo _RAM_, composto dalla macchina _RAM_ e dal linguaggio _RAM_ è sostanzialmente un assembly molto semplificato il quale permette di definire in maniera rigorosa l'isomorfismo $\text{PROG} \sim \mathbb{N}$, la semantica dei programmi $C(P, \_) \to RAM(P, \_)$ e una prima proposta di potenza computazionale $F(RAM)$ di questo sistema.<br />
+Il sistema di calcolo _RAM_, composto dalla macchina _RAM_ e dal linguaggio _RAM_ utilizzato per comandare questa macchina (sostanzialmente un assembly molto semplificato il quale permette di definire in maniera rigorosa l'isomorfismo $\text{PROG} \sim \mathbb{N}$), la semantica dei programmi $C(P, \_) \to RAM(P, \_)$ e una prima proposta di potenza computazionale $F(RAM)$ di questo sistema.
+
 Per evitare di valutare un solo sistema di calcolo che potrebbe essere troppo semplicistico, lo si confronterà con il sistema di calcolo più sofisticato _WHILE_ (_JVM_).
 
-Dal loro confronto ci si potrà rendere conto se la potenza dipende dallo strumento o, se hanno le stesse capacità, non dipenda dalla piattaforma ma sia una caratteristica teorica, intrinseca nei problemi (**Tesi di Church**).
+Dal confronto tra $F(RAM)$ e $F(WHILE)$ ci si potrà rendere conto se la potenza dipende dallo strumento o, se hanno le stesse capacità, non dipenda dalla piattaforma ma sia una caratteristica teorica, intrinseca nei problemi (**Tesi di Church**).
 
 -------------------------------------------------------------
 
 # Macchina _RAM_
-La macchina _RAM_ altro non è che un processore che esegue sequenzialmente una serie di istruzioni agendo su una memoria che è una lista infinita di registri $R$, ciascuno dei quali può contenere un numero naturale (arbitrario): in particolare il registro $R_0$ conterrà l'output del programma, e il registro $R_1$ conterrà all'avvio l'input del programma; oltre a ciò esiste $L$, ovvero il **Program Counter** che tiene traccia dell'istruzione da eseguire.
+La macchina _RAM_ altro non è che un processore che esegue sequenzialmente una serie di istruzioni agendo su una memoria che è una lista infinita di registri $R$, ciascuno dei quali può contenere un numero naturale arbitrario (in quanto i numeri naturali sono dati senza perdita di generalità): in particolare il registro $R_0$ conterrà l'output del programma, e il registro $R_1$ conterrà all'avvio l'input del programma; oltre a ciò esiste $L$, ovvero il **Program Counter** che tiene traccia dell'istruzione da eseguire.
 
 immagine macchina RAM
 
@@ -748,10 +749,16 @@ $Istr_{x}$ indica l'istruzione $x$-esima del programma $P$.
 
 Le istruzioni disponibili sono di $3$ tipi:  
 1) $R_k \leftarrow R_k + 1$: incremento del valore contenuto in $R_k$;
-2) $R_k \leftarrow R_k \dot- 1$: decremento del valore contenuto in $R_k$ in maniera sicura, ovvero senza mai scendere sotto $0$;
+2) $R_k \leftarrow R_k \dot- 1$: decremento del valore contenuto in $R_k$ in maniera sicura, ovvero senza mai scendere sotto $0$. Infatti vale che
+
+$$x \dot- y = \cases{x - y \quad \text{ se } x \geq y \cr \cr 0 \quad \text{ altrimenti}}$$
+
 3) $\text{IF } R_k = 0 \text{ THEN GOTO } m$: salto condizionato all'istruzione $m$ se il registro $R_k$ contiene il valore $0$.
 
-L'**inizializzazione** consiste nell'impostare $L$ a $1$, tutti i registri a $0$, e il registro $R_1$ all'input $n$. Per convenzione $L = 0 \implies \text{ HALT}$, perciò un programma termina quanto il contatore è $0$ e potrebbe non terminare mai nel caso di loop. Il contenuto di $R_0$ al termine (senza loop) è l'output dell'esecuzione. La semantica del programma $P$ è quindi $\varphi_P: \mathbb{N} \to \mathbb{N}_{\bot}$.  
+## Inizializzazione
+L'**inizializzazione** consiste nell'impostare $L$ a $1$, tutti i registri a $0$, e il registro $R_1$ all'input $n$. Se il programma viene indicato con $P$, si indicherà con $\vert P \vert$ il numero di istruzioni del programma. Si eseguono le istruzioni in successione ($L = L + 1$) a meno di istruzioni di tipo jump. Per convenzione $L = 0 \implies \text{ HALT}$, perciò un programma termina quanto il contatore è $0$ e potrebbe non terminare mai nel caso di loop. Il contenuto di $R_0$ al termine (senza loop) è l'output dell'esecuzione. La semantica (output) del programma $P$ è quindi $\varphi_P: \mathbb{N} \to \mathbb{N}_{\bot}$.  
+
+-------------------------------------------------------------
 
 ## Definizione formale di Semantica di un programma _RAM_
 La **Semantica Operazionale** consiste nello specificare il significato di ogni istruzione, e quindi dei programmi, specificando l'effetto che quella istruzione ha sui registri della macchina.
@@ -760,23 +767,23 @@ Come descrivere l'effetto di un'istruzione?
 
 immagine prima -> istruzione -> dopo
 
------ tagliare
-Il programma induce una sequenza possibilmente infinita di stati partendo dallo stato iniziale. Ogni stato riporta il contenuto del contatore e di ogni registro della macchina _RAM_, ed ogni istruzione del programma fa passare da uno stato al successivo.<br />
-Semantica di $P$:
+Il programma è una sequenza di istruzioni e, quindi, induce una sequenza possibilmente infinita di stati partendo dallo stato iniziale. Ogni stato riporta il contenuto del contatore e di ogni registro della macchina _RAM_, ed ogni istruzione del programma fa passare da uno stato al successivo.
+
+immagine slide esecuzione di un programma p
+
+Di conseguenza, la semantica di $P$ è
 
 $$\varphi_P: \mathbb{N} \to \mathbb{N}_{\bot} \implies \varphi_P(x) = \begin{cases}
 y \\
 \bot
 \end{cases}$$
 
----- tagliare
-
 ### Definizione formale di stato
-Stato: foto di tutte le componenti della macchina.
+Uno **stato** è la foto di tutte le componenti della macchina.
 
 immagine stato -> istr -> stato
 
-La coppia $(STATO, STATO)$ è la semantica operazionale di Istruzione
+Di conseguenza, la coppia $(STATO, STATO)$ è la semantica operazionale di Istruzione. Uno stato non è nient'altro che una funzione che va dall'insieme dei registri a $\mathbb{N}$.
 
 $$S: \{L, R_i\} \to \mathbb{N}$$
 
@@ -784,33 +791,58 @@ $S(R_j)$ restituisce il contenuto del registro $R_j$ ponendo la macchina nello s
 
 Stati $= \mathbb{N}^{\{L, R_i\}} = \{\text{possibili stati della macchina}\}$.
 
-Lo stato finale è qualunque stato per cui valga $S(L) = 0$, cioè in HALT.  
-L'inizializzazione $in(n): \text{DATI} \to \text{STATI}$ è una semplice funzione dai dati agli stati che sostanzialmente genera lo stato iniziale in cui tutti i registri sono 0 tranne il registro di input e il contatore.  
+Lo **stato finale** è qualunque stato per cui valga $S(L) = 0$, cioè in HALT.  
+L'inizializzazione $in(n): \text{DATI} \to \text{STATI}$ è una semplice funzione dai dati agli stati che sostanzialmente genera lo stato iniziale in cui tutti i registri sono $0$ tranne il registro di input e il contatore.
+
+$$in(n) = S_{init}$$
+$$S_{init}(L) = 1$$
+$$S_{init}(R_i) = \cases{n \quad \text{ se } i = 1 \cr \cr 0 \quad \text{ se } i \neq 1}$$
 
 -------------------------------------------------------------
 
 ### Funzione stato prossimo
-L'esecuzione di un programma è la dinamica del programma, definita da una funzione detta _funzione stato prossimo_:
+L'insieme dei programmi è definito come $PROG = \{\text{programmi RAM}\}$; $P \in PROG: \vert P \vert = \#\text{istruzioni }P$. L'esecuzione di un programma è la **dinamica** del programma, definita da una funzione detta **funzione stato prossimo**:
 
 $$\delta: \text{STATI} \times \text{PROG} \to \text{STATI}_{\bot}$$
 $$\delta(S, P) = S'$$
 
-Questa funzione restituisce lo stato successivo $S'$ prendendo in input lo stato attuale $S$ e il programma $P$.
-Se il contatore è 0, lo stato successivo non è definito; se invece il contatore è maggiore di $Istr_{|P|}$ lo stato successivo ha tutti i registri uguali e il contatore posto a 0; nel caso in cui il contatore fosse un valore valido, lo stato successivo ad una operazione di incremento/decremento lascia tutti i valori dei registri inalterati tranne quello toccato dall'operazione e il contatore che avanza di 1, mentre lo stato successivo ad un salto condizionale lascia tutti i valori inalterati tranne il contatore che o avanza di uno o viene impostato al valore richiesto dal salto.
+Questa funzione restituisce lo stato successivo $S'$ prendendo in input lo stato attuale $S$ e il programma $P$. Se il contatore è $0$, lo stato successivo non è definito:
+
+$$\text{Se } S(L) = 0 \text{ } (HALT), \text{ allora } S' = \bot$$
+
+Se, invece, il contatore è maggiore di $\vert P \vert$, lo stato successivo ha tutti i registri uguali e il contatore posto a $0$:
+
+$$\text{Se } S(L) > \vert P \vert, \text{ allora } S'(L) = 0 \text{ } (HALT) \text{ e } \forall i: S'(R_i) = S(R_i)$$
+
+Nel caso in cui il contatore fosse un valore valido, lo stato successivo ad una operazione di incremento/decremento lascia tutti i valori dei registri inalterati tranne quello toccato dall'operazione e il contatore che avanza di $1$, mentre lo stato successivo ad un salto condizionale lascia tutti i valori inalterati tranne il contatore che o avanza di uno o viene impostato al valore richiesto dal salto.
 
 -------------------------------------------------------------
 
-### Esecuzione
-L'esecuzione è una sequenza eventualmente infinita di stati $S_0, \dots, S_i, S_{i+1}, \dots$ partendo da $S_0 = in(n)$ in cui da ogni stato si passa al successivo secondo la legge $\delta(S_i, P) = S_{i+1}$.
+### Esecuzione del Programma $P \in PROG$
+L'esecuzione è una sequenza eventualmente infinita di computazione di $P$ su input $n \in \mathbb{N}$, e quindi di stati $S_0, \dots, S_i, S_{i+1}, \dots$ partendo da $S_0 = in(n)$ in cui da ogni stato si passa al successivo secondo la legge $\delta(S_i, P) = S_{i+1}$.
 La terminazione avviene se si raggiunge uno stato $S_m$ tale che $S_m(L) = 0$ (ovvero tale che $\delta$ non è definita) ed in quel caso l'output $y$ è il contenuto del registro $R_0$, altrimenti l'output è indefinito ($\bot$).
+
+Semantica di $P$: $\varphi: \mathbb{N} \to \mathbb{N}_{\bot}$
+
+$$\varphi_{P}(n) = \cases{y \quad \text{ se la computazione di }P \text{ termina in }S_m (S_m(L)= 0) \text{ e } S_m(R_0) = y \cr \cr \bot \quad \text{ se la computazione di }P \text{ su } n \text{ va in loop}}$$
 
 -------------------------------------------------------------
 
 ## Potenza computazionale
 
-$$F(RAM) = \{f \in \mathbb{N}_{\bot}^{\mathbb{N}}: \exists P \in \text{PROG}, \varphi_P = f\}= \{\varphi_P: P \in \text{PROG}\} \subset \mathbb{N}_{\bot}^{\mathbb{N}}$$
+$$F(RAM) = \{f \in \mathbb{N}_{\bot}^{\mathbb{N}}: \exists P \in \text{PROG}, \varphi_P = f\}= \{\varphi_P: P \in \text{PROG}\} \nsubseteq \mathbb{N}_{\bot}^{\mathbb{N}}$$
 
 Questo è l'insieme delle funzioni calcolabili da una macchina RAM.  
+
+Alcuni esempi.
+
+
+-------------------------------------------------------------
+
+## Alcune considerazioni
+1) $F(RAM)$ conterrà anche funzioni più complesse?
+2) $F(RAM)$ è un primo tentativo di definire concretamente la potenza di calcolo dei sistemi. Data l'estrema semplicità della macchina $RAM$, potrebbe essere che $F(RAM)$ sia estremamente inadeguato per rappresentare ciò che è calcolabile?
+3) Indubbiamente, $RAM$ si presta ad una descrizione formale molto precisa e ad una manipolazione rigorosa molto agevole, ad esempio nell'ottica della dimostrazione che $PROG \sim \mathbb{N}$.
 
 -------------------------------------------------------------
 

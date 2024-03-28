@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Classes/Simulation.md",
+                "file": "Classes/Informatica Teorica.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Simulation.md",
+                "file": "Classes/Informatica Teorica.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,8 +119,8 @@
   "lastOpenFiles": [
     "Articles/An Introduction to Convolutional Neural Networks.md",
     "Mtg/Reports/Report Paupergeddon Lecco 2024.md",
-    "Mtg/Reports",
     "Classes/Simulation.md",
+    "Mtg/Reports",
     "Mtg",
     "Classes/Informatica Teorica.md",
     "Classes/Algoritmi Paralleli e Distribuiti.md",

@@ -1,36 +1,33 @@
 ---
-"Titolo:": 
-Sottotitolo: 
+"Titolo:": Report Paupergeddon Lecco 2024
 "Autore:": Elia Togni
 "Anno:": "2024"
 "Link:":
 ---
 # Lista
 **MAINBOARD**
-4 Chain Lightning
-2 Demand Answers
-4 Experimental Synthesizer
-1 Fireblast
 4 Goblin Blast-Runner
-3 Goblin Bushwhacker
 4 Goblin Tomb Raider
-4 Implement of Combustion
+4 Voldaren Epicure
+3 Goblin Bushwhacker
+4 Chain Lightning
 4 Kuldotha Rebirth
 4 Lightning Bolt
+2 Demand Answers
+1 Fireblast
 4 Seal of Fire
-4 Voldaren Epicure
+4 Experimental Synthesizer
+4 Implement of Combustion
 14 Mountain
 4 Great Furnace
 
-
 **SIDEBOARD**
-2 Cast into the Fire
-1 Flaring Pain
-1 Gorilla Shaman
-3 Pyroblast
-2 Relic of Progenitus
-3 Smash to Smithereens
+2 Gorilla Shaman
 3 Tectonic Hazard
+3 Pyroblast
+3 Smash to Smithereens
+2 Cast into the Fire
+2 Relic of Progenitus
 
 -------------------------------------------------------------
 
@@ -1009,11 +1006,6 @@ Side Out:
 
 ## Turno 12 - Azorius Familiars (Ivan Buriek)
 **Risultato**: $0$ - $2$
-
--------------------------------------------------------------
-
-# Lessico
-
 
 -------------------------------------------------------------
 
