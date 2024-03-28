@@ -791,8 +791,10 @@ $S(R_j)$ restituisce il contenuto del registro $R_j$ ponendo la macchina nello s
 
 Stati $= \mathbb{N}^{\{L, R_i\}} = \{\text{possibili stati della macchina}\}$.
 
-Lo **stato finale** è qualunque stato per cui valga $S(L) = 0$, cioè in HALT.  
-L'inizializzazione $in(n): \text{DATI} \to \text{STATI}$ è una semplice funzione dai dati agli stati che sostanzialmente genera lo stato iniziale in cui tutti i registri sono $0$ tranne il registro di input e il contatore.
+Lo **stato finale** è qualunque stato per cui valga $S(L) = 0$, cioè in $HALT$.  
+L'inizializzazione $in(n): \text{DATI} \to \text{STATI}$ è una semplice funzione dai dati ($DATI \sim N$) agli stati che sostanzialmente genera lo stato iniziale in cui tutti i registri sono $0$ tranne il registro di input e il contatore.
+
+Infine, l'inizializzazione, dato il dato $n$, prepara la macchina nello stato iniziale con input $n$. $in: DATI \to STATI$ tale che: 
 
 $$in(n) = S_{init}$$
 $$S_{init}(L) = 1$$
@@ -801,7 +803,7 @@ $$S_{init}(R_i) = \cases{n \quad \text{ se } i = 1 \cr \cr 0 \quad \text{ se } i
 -------------------------------------------------------------
 
 ### Funzione stato prossimo
-L'insieme dei programmi è definito come $PROG = \{\text{programmi RAM}\}$; $P \in PROG: \vert P \vert = \#\text{istruzioni }P$. L'esecuzione di un programma è la **dinamica** del programma, definita da una funzione detta **funzione stato prossimo**:
+L'insieme dei programmi $RAM$ è definito come $PROG = \{\text{programmi RAM}\}$ e, dato $P \in PROG: \vert P \vert = \#\text{istruzioni }P$. L'esecuzione di un programma è la **dinamica** del programma, la quale viene definita da una funzione detta **funzione stato prossimo**:
 
 $$\delta: \text{STATI} \times \text{PROG} \to \text{STATI}_{\bot}$$
 $$\delta(S, P) = S'$$
@@ -816,15 +818,17 @@ $$\text{Se } S(L) > \vert P \vert, \text{ allora } S'(L) = 0 \text{ } (HALT) \te
 
 Nel caso in cui il contatore fosse un valore valido, lo stato successivo ad una operazione di incremento/decremento lascia tutti i valori dei registri inalterati tranne quello toccato dall'operazione e il contatore che avanza di $1$, mentre lo stato successivo ad un salto condizionale lascia tutti i valori inalterati tranne il contatore che o avanza di uno o viene impostato al valore richiesto dal salto.
 
+aggiungere dinamica di istruzioni standard
+
 -------------------------------------------------------------
 
 ### Esecuzione del Programma $P \in PROG$
-L'esecuzione è una sequenza eventualmente infinita di computazione di $P$ su input $n \in \mathbb{N}$, e quindi di stati $S_0, \dots, S_i, S_{i+1}, \dots$ partendo da $S_0 = in(n)$ in cui da ogni stato si passa al successivo secondo la legge $\delta(S_i, P) = S_{i+1}$.
+L'esecuzione è una sequenza eventualmente infinita (loop) di computazione di $P$ su input $n \in \mathbb{N}$, e quindi di stati $S_0, \dots, S_i, S_{i+1}, \dots$ partendo da $S_0 = in(n)$ in cui da ogni stato si passa al successivo secondo la legge $\delta(S_i, P) = S_{i+1}$.
 La terminazione avviene se si raggiunge uno stato $S_m$ tale che $S_m(L) = 0$ (ovvero tale che $\delta$ non è definita) ed in quel caso l'output $y$ è il contenuto del registro $R_0$, altrimenti l'output è indefinito ($\bot$).
 
 Semantica di $P$: $\varphi: \mathbb{N} \to \mathbb{N}_{\bot}$
 
-$$\varphi_{P}(n) = \cases{y \quad \text{ se la computazione di }P \text{ termina in }S_m (S_m(L)= 0) \text{ e } S_m(R_0) = y \cr \cr \bot \quad \text{ se la computazione di }P \text{ su } n \text{ va in loop}}$$
+$$\varphi_{P}(n) = \cases{y \quad \text{ se la computazione di }P \text{ termina in }S_m \text{ } (S_m(L)= 0) \text{ e } S_m(R_0) = y \cr \cr \bot \quad \text{ se la computazione di }P \text{ su } n \text{ va in loop.}}$$
 
 -------------------------------------------------------------
 
@@ -835,6 +839,32 @@ $$F(RAM) = \{f \in \mathbb{N}_{\bot}^{\mathbb{N}}: \exists P \in \text{PROG}, \v
 Questo è l'insieme delle funzioni calcolabili da una macchina RAM.  
 
 Alcuni esempi.
+
+```pseudo
+	\begin{algorithm}
+	\caption{Programma RAM 1}
+	\begin{algorithmic}
+
+	\end{algorithmic}
+	\end{algorithm}
+```
+
+La semantica di questo programma è $\varphi_P(n) = 2n$. L'utilità dell'ultima istruzione è solamente il fornire un punto dove saltare perchè, effettivamente, l'istruzione non modifica il contenuto di $R_1$. Inoltre $R_2$ è sicuramente $0$, di conseguenza l'istruzione $5$ è un salto incondizionato.
+
+Si hanno quindi tutti gli strumenti necessari per definire formalmente la semantica. Per definire la sequenza di computazione del programma $P$ su input $n$ è sufficiente definire la sequenza di stati generati.
+
+immagine in(n) penultima ultima slide
+
+```pseudo
+	\begin{algorithm}
+	\caption{Programma RAM 2}
+	\begin{algorithmic}
+
+	\end{algorithmic}
+	\end{algorithm}
+```
+
+La semantica di questo programma è $\varphi_P(n) = \cases{\bot \quad \text{ se } n \leq 3 \cr \cr n - 2 \quad \text{ se } n > 3}$.
 
 
 -------------------------------------------------------------
