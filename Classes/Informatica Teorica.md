@@ -818,7 +818,31 @@ $$\text{Se } S(L) > \vert P \vert, \text{ allora } S'(L) = 0 \text{ } (HALT) \te
 
 Nel caso in cui il contatore fosse un valore valido, lo stato successivo ad una operazione di incremento/decremento lascia tutti i valori dei registri inalterati tranne quello toccato dall'operazione e il contatore che avanza di $1$, mentre lo stato successivo ad un salto condizionale lascia tutti i valori inalterati tranne il contatore che o avanza di uno o viene impostato al valore richiesto dal salto.
 
-aggiungere dinamica di istruzioni standard
+$$\text{Se } 1 \leq S(L) \leq \vert P \vert, \text{ allora si consideri l'istruzione } S(L) \text{-esima:}$$
+```pseudo
+	\begin{algorithm}
+	\begin{algorithmic}
+	\State $R_k \leftarrow R_k + / \dot{-}1$:
+	\end{algorithmic}
+	\end{algorithm}
+```
+$$S'(R_k) = S(R_k) + / \dot{-} 1$$
+$$S'(L) = S(L) + 1$$
+$$S'(R_i) = S(R_i) \quad \text{ con } i \neq k$$
+
+```pseudo
+	\begin{algorithm}
+	\begin{algorithmic}
+	\If{$R_k == 0$}
+		\State GO TO $m$
+    \EndIf
+	\end{algorithmic}
+	\end{algorithm}
+```
+
+$$S'(R_i) = S(R_i)$$
+$$\text{if } S(R_k) == 0 \text{ then } S'(L) = m$$
+$$\text{else } S'(L) = S(L) + 1$$
 
 -------------------------------------------------------------
 
@@ -844,7 +868,16 @@ Alcuni esempi.
 	\begin{algorithm}
 	\caption{Programma RAM 1}
 	\begin{algorithmic}
-
+		\If{$R_1 == 0$}
+			\State GO TO $6$
+		\EndIf
+		\State $R_0 \leftarrow R_{0} + 1$
+		\State $R_0 \leftarrow R_{0} + 1$
+		\State $R_0 \leftarrow R_{0} + 1$
+		\If{$R_2 == 0$}
+			\State GO TO $1$
+        \EndIf
+        \State $R_1 \leftarrow R_{0} \dot{-} 1$
 	\end{algorithmic}
 	\end{algorithm}
 ```
@@ -853,13 +886,27 @@ La semantica di questo programma è $\varphi_P(n) = 2n$. L'utilità dell'ultima 
 
 Si hanno quindi tutti gli strumenti necessari per definire formalmente la semantica. Per definire la sequenza di computazione del programma $P$ su input $n$ è sufficiente definire la sequenza di stati generati.
 
-immagine in(n) penultima ultima slide
+![[SequenzaStati.png]]
 
 ```pseudo
 	\begin{algorithm}
 	\caption{Programma RAM 2}
 	\begin{algorithmic}
-
+	\State $R_1 \leftarrow R_1 \dot{-} 1$
+	\State $R_1 \leftarrow R_1 \dot{-} 1$
+	\State $R_1 \leftarrow R_1 \dot{-} 1$
+	\If{$R_1 == 0$}
+		\State GO TO  $1$
+    \EndIf
+    \If{$R_1 == 0$}
+	    \State GO TO $9$
+    \EndIf
+    \State $R_0 \leftarrow R_0 + 1$
+	\State $R_1 \leftarrow R_1 \dot{-} 1$
+	\If{$R_2 == 0$}
+		\State GO TO $5$
+    \EndIf
+    \State $R_0 \leftarrow R_0 + 1$
 	\end{algorithmic}
 	\end{algorithm}
 ```
@@ -870,7 +917,7 @@ La semantica di questo programma è $\varphi_P(n) = \cases{\bot \quad \text{ se 
 -------------------------------------------------------------
 
 ## Alcune considerazioni
-1) $F(RAM)$ conterrà anche funzioni più complesse?
+1) $F(RAM)$ conterrà anche funzioni più complesse? (Sì)
 2) $F(RAM)$ è un primo tentativo di definire concretamente la potenza di calcolo dei sistemi. Data l'estrema semplicità della macchina $RAM$, potrebbe essere che $F(RAM)$ sia estremamente inadeguato per rappresentare ciò che è calcolabile?
 3) Indubbiamente, $RAM$ si presta ad una descrizione formale molto precisa e ad una manipolazione rigorosa molto agevole, ad esempio nell'ottica della dimostrazione che $PROG \sim \mathbb{N}$.
 
