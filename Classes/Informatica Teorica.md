@@ -925,18 +925,24 @@ La semantica di questo programma è $\varphi_P(n) = \cases{\bot \quad \text{ se 
 
 ## $\text{PROG} \sim \mathbb{N}$
 ### Goedelizzazione
-**Aritmetizzare** o **Goedelizzare** una struttura significa associarle in modo biunivoco un numero naturale. Se riuscissimo a definire una relazione $Ar$ di aritmetizzaione che permettesse di aritmetizzare ogni istruzione, otterremmo una lista di numeri (le istruzioni del programma) che saremmo poi tranquillamente in grado di tradurre in un unico numero naturale grazie ai metodi visti, utilizzando ad esempio la funzione coppia di Cantor.
-Vogliamo quindi trovare $Ar: Istr \to \mathbb{N}$ e $Ar^{-1}: \mathbb{N} \to Istr$ tali che $Ar(Istr) = n \iff Ar^{-1}(n) = Istr$.
+Come codificare programmi in numeri e numeri in programmi biunivocamente? Si consideri il programma $P$, tale che
+
+$$P \equiv Istr_1, Istr_2, \dots, Istr_m$$
+
+E' possibile associare ad ogni istruzione $Istr_k$, con $k = 1, \dots, m$, un numero e poi sintetizzare questa sequenza di numeri, che sono codifiche di istruzioni, in un numero, e ottenere così la codifica di un programma in un numero.
+
+immagine 10.50
+
+**Aritmetizzare** o **Goedelizzare** una struttura significa associarle in modo biunivoco un numero naturale. Se si riuscisse a definire una relazione $Ar$ di aritmetizzazione che permettesse di aritmetizzare ogni istruzione, Si otterrebbe una lista di numeri (le istruzioni del programma) che si sarebbe poi tranquillamente in grado di tradurre in un unico numero naturale grazie ai metodi visti, utilizzando ad esempio la funzione coppia di Cantor.
+Si vuole quindi trovare $Ar: Istr \to \mathbb{N}$ e $Ar^{-1}: \mathbb{N} \to Istr$ tali che $Ar(Istr) = n \iff Ar^{-1}(n) = Istr$.
 Per costruirla definiamo così 3 casi:
-1. $Ar(R_k \leftarrow R_k + 1)= 3k$;
-2. $Ar(R_k \leftarrow R_k \dot- 1) = 3k+1$;
-3. $Ar(\text{IF } R_k = 0 \text{ THEN GOTO } m) = 3<k, m> - 1$.
+1) $Ar(R_k \leftarrow R_k + 1)= 3k$;
+2) $Ar(R_k \leftarrow R_k \dot- 1) = 3k+1$;
+3) $Ar(\text{IF } R_k = 0 \text{ THEN GOTO } m) = 3<k, m> - 1$.
 
-Per l'inverso, basta vedere se $mod\ 3$ il resto è 0, 1 o 2 per sapere quale delle 3 istruzioni è stata codificata, e dividere per 3 per avere l'indice del registro codificato; nel terzo caso è necessario un passaggio in più, ovvero applicare $sin$ e $des$ per estrarre rispettivamente registro e istruzione per il salto.  
-Codificare un intero programma significa semplicemente applicare la funzione coppia di Cantor ad una lista di istruzioni codificate in questo modo, mentre decodificarlo significa applicare la funzione $sin$ per ottenere l'istruzione di testa, $des$ per avere il resto della lista.
+Per l'inverso, basta vedere se $mod\ 3$ il resto è $0$, $1$ o $2$ per sapere quale delle $3$ istruzioni è stata codificata, e dividere per $3$ per avere l'indice del registro codificato; nel terzo caso è necessario un passaggio in più, ovvero applicare $sin$ e $des$ per estrarre rispettivamente registro e istruzione per il salto. Codificare un intero programma significa semplicemente applicare la funzione coppia di Cantor ad una lista di istruzioni codificate in questo modo, mentre decodificarlo significa applicare la funzione $sin$ per ottenere l'istruzione di testa, $des$ per avere il resto della lista.
 
-Osserviamo quindi che $n \leftrightarrow P$, ovvero i numeri sono programmi: $F(RAM) = \{\varphi_P: P \in \text{PROG}\} = \{\varphi_i\}_{i \in \mathbb{N}}$.
-Da questo si ha rigorosamente che $F(RAM) \sim \mathbb{N} \nsim \mathbb{N}^{\mathbb{N}}$, quindi alcuni problemi non sono risolvibili da una macchina RAM.
+Osserviamo quindi che $n \leftrightarrow P$, ovvero i numeri sono programmi: $F(RAM) = \{\varphi_P: P \in \text{PROG}\} = \{\varphi_i\}_{i \in \mathbb{N}}$. Da questo si ha rigorosamente che $F(RAM) \sim \mathbb{N} \nsim \mathbb{N}^{\mathbb{N}}$, quindi alcuni problemi non sono risolvibili da una macchina RAM.
 
 -------------------------------------------------------------
 

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Classes/Informatica Teorica.md",
+                "file": "Mtg/Reports/Report Paupergeddon Lecco 2024.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Informatica Teorica.md",
+                "file": "Mtg/Reports/Report Paupergeddon Lecco 2024.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,13 +117,13 @@
   },
   "active": "9d6dab7f39b33ece",
   "lastOpenFiles": [
+    "Classes/Informatica Teorica.md",
     "Images/SequenzaStati.png",
     "Articles/An Introduction to Convolutional Neural Networks.md",
     "Mtg/Reports/Report Paupergeddon Lecco 2024.md",
     "Classes/Simulation.md",
     "Mtg/Reports",
     "Mtg",
-    "Classes/Informatica Teorica.md",
     "Classes/Algoritmi Paralleli e Distribuiti.md",
     "Atoms/Teorema di Wyllie.md",
     "Images/DiscreteRandomVariables.png",
@@ -147,7 +147,6 @@
     "Lexicon/Zshrc.md",
     "Atoms/Grafo.md",
     "Lexicon/Efebico.md",
-    "Images/SistemaDiCalcolo.png",
     "Articles/Image Classification with Classic and Deep Learning Techniques.md",
     "Articles/Preprocessing for Image Classification by Convolutional Neural Networks.md",
     "Atoms/The Game of Life.md",
