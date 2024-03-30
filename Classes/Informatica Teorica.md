@@ -931,7 +931,7 @@ $$P \equiv Istr_1, Istr_2, \dots, Istr_m$$
 
 E' possibile associare ad ogni istruzione $Istr_k$, con $k = 1, \dots, m$, un numero e poi sintetizzare questa sequenza di numeri, che sono codifiche di istruzioni, in un numero, e ottenere così la codifica di un programma in un numero.
 
-immagine 10.50
+![[Goedelizzazione.png]]
 
 **Aritmetizzare** o **Goedelizzare** una struttura significa associarle in modo biunivoco un numero naturale. Se si riuscisse a definire una relazione $Ar$ di aritmetizzazione che permettesse di aritmetizzare ogni istruzione, si otterrebbe una lista di numeri (le istruzioni del programma) che si sarebbe poi tranquillamente in grado di tradurre in un unico numero naturale grazie ai metodi visti, utilizzando ad esempio la funzione coppia di Cantor.
 Si vuole quindi trovare $Ar: Istr \to \mathbb{N}$ e $Ar^{-1}: \mathbb{N} \to Istr$ tali che $Ar(Istr) = n \iff Ar^{-1}(n) = Istr$.
@@ -944,21 +944,19 @@ Questo è un buon modo per codificare le istruzioni $RAM$ perchè è un modo uni
 
 Per calcolare l'inverso, basta osservare se $mod\ 3$ il resto è $0$, $1$ o $2$ per sapere quale delle $3$ istruzioni è stata codificata, e dividere per $3$ per avere l'indice del registro codificato; nel terzo caso, è necessario un passaggio in più, ovvero applicare $sin$ e $des$ per estrarre rispettivamente registro e istruzione per il salto.
 
-immagine decodifica
+![[InversoGoedelizzazione.png]]
 
 Ricapitolando, per passare da programmi a numeri
 
-$$cod(P)$$
+$$cod(P) = \langle Ar(Istr_1), \dots, Ar(Istr_m) \rangle$$
 
 mentre per passare da numeri a programmi
 
-immagine numeri programmi
+![[InversoGoedelizzazioneGrafico.png]]
 
 Codificare un intero programma significa quindi applicare semplicemente la funzione coppia di Cantor ad una lista di istruzioni codificate in questo modo, mentre decodificarlo significa applicare la funzione $sin$ per ottenere l'istruzione di testa e $des$ per avere il resto della lista.
 
 Per sapere, ad esempio, quante istruzioni compongono un programma, si può usare la primitiva $\vert P \vert = length(cod(P))$ ed il risultato sarà il numero di istruzioni.
-
-Si osservi quindi che $n \leftrightarrow P$, ovvero che i numeri sono programmi: $F(RAM) = \{\varphi_P: P \in \text{PROG}\} = \{\varphi_i\}_{i \in \mathbb{N}}$. Da questo si ha rigorosamente che $F(RAM) \sim \mathbb{N} \nsim \mathbb{N}^{\mathbb{N}}$, quindi alcuni problemi non sono risolvibili da una macchina RAM.
 
 Alcuni esempi.
 
@@ -979,6 +977,25 @@ Alcuni esempi.
 ```
 
 $$\varphi_P(n) = 0$$
+$$Ar(\text{IF } R_0 == 0 \text{ THEN GO TO }4) = 3 \times \langle 0, 4 \rangle - 1= 44 $$
+$$Ar( R_0 \leftarrow R_0 \dot{-} 1)  = 3 \times 0 + 1 = 1 $$
+$$Ar(\text{IF } R_1 == 0 \text{ THEN GO TO }1) = 3 \times \langle 1, 1 \rangle - 1= 14 $$
+$$Ar( R_0 \leftarrow R_0 \dot{-} 1)  = 3 \times 0 + 1 = 1 $$
+$$cod(P) = \langle 44, \langle 1, \langle 14, \langle 1, 0 \rangle \rangle \rangle \rangle = 50556496$$
+
+E' quindi possibile anche scrivere $\varphi_{50556496}(n) = 0$
+
+Per decodificare, invece, si prosegue nel seguente modo:
+
+![[DecodificaNumeroProgramma.png]]
+
+$$\varphi_P(n) = \varphi_{311}(n) = \cases{\bot \quad \text{ se } n = 0 \cr \cr 3 \quad \text{ se } n > 0}$$
+
+Si osservi quindi che $n \leftrightarrow P$, ovvero che ad ogni numero corrisponde un programma e viceversa. Diventa quindi possibile scrivere  $F(RAM) = \{\varphi_P: P \in \text{PROG}\}$ come $\{\varphi_i\}_{i \in \mathbb{N}}$. Da questo si ha rigorosamente che, per il sistema $RAM$, $F(RAM) \sim \mathbb{N} \nsim \mathbb{N}^{\mathbb{N}}$, quindi alcuni problemi non sono risolvibili da una macchina $RAM$.
+
+Forse, considerando un sistema di calcolo $\mathbb{C}$ più sofisticato, ancorchè trattabile rigorosamente come $RAM$, si potrebbe dare un'idea formale di ciò che è calcolabile automaticamente come $F(\mathbb{C})$ che sia più ampia di $F(RAM)$ (senza che sia comunque omnicomprensiva).
+
+Ma se si dimostra che $F(\mathbb{C}) = F(RAM)$, allora cambiare tecnologia non cambierà ciò che è calcolabile e, quindi, la calcolabilità è intrinseca ai problemi. Diventa quindi possibile catturarla matematicamente.
 
 -------------------------------------------------------------
 
