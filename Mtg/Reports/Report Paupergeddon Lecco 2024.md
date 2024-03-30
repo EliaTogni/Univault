@@ -6,27 +6,27 @@
 ---
 # Lista
 **MAINBOARD**
-$4$ Goblin Blast-Runner
-$4$ Goblin Tomb Raider
-$4$ Voldaren Epicure
-$3$ Goblin Bushwhacker
-$4$ Chain Lightning
-$4$ Kuldotha Rebirth
-$4$ Lightning Bolt
-$2$ Demand Answers
-$1$ Fireblast
-$4$ Seal of Fire
-$4$ Experimental Synthesizer
-$4$ Implement of Combustion
-$14$ Mountain
-$4$ Great Furnace
+$4$ Goblin Blast-Runner<br />
+$4$ Goblin Tomb Raider<br />
+$4$ Voldaren Epicure<br />
+$3$ Goblin Bushwhacker<br />
+$4$ Chain Lightning<br />
+$4$ Kuldotha Rebirth<br />
+$4$ Lightning Bolt<br />
+$2$ Demand Answers<br />
+$1$ Fireblast<br />
+$4$ Seal of Fire<br />
+$4$ Experimental Synthesizer<br />
+$4$ Implement of Combustion<br />
+$14$ Mountain<br />
+$4$ Great Furnace<br />
 
 **SIDEBOARD**
-$2$ Gorilla Shaman
-$3$ Tectonic Hazard
-$3$ Red Elemental Blast
-$3$ Smash to Smithereens
-$2$ Cast into the Fire
+$2$ Gorilla Shaman<br />
+$3$ Tectonic Hazard<br />
+$3$ Red Elemental Blast<br />
+$3$ Smash to Smithereens<br />
+$2$ Cast into the Fire<br />
 $2$ Relic of Progenitus
 
 -------------------------------------------------------------

@@ -869,7 +869,7 @@ Alcuni esempi.
 	\caption{Programma RAM 1}
 	\begin{algorithmic}
 		\If{$R_1 == 0$}
-			\State GO TO $6$
+			\State GO TO $10$
 		\EndIf
 		\State $R_0 \leftarrow R_{0} + 1$
 		\State $R_0 \leftarrow R_{0} + 1$
@@ -899,12 +899,12 @@ Si hanno quindi tutti gli strumenti necessari per definire formalmente la semant
 		\State GO TO  $1$
     \EndIf
     \If{$R_1 == 0$}
-	    \State GO TO $9$
+	    \State GO TO $15$
     \EndIf
     \State $R_0 \leftarrow R_0 + 1$
 	\State $R_1 \leftarrow R_1 \dot{-} 1$
 	\If{$R_2 == 0$}
-		\State GO TO $5$
+		\State GO TO $7$
     \EndIf
     \State $R_0 \leftarrow R_0 + 1$
 	\end{algorithmic}
@@ -933,34 +933,70 @@ E' possibile associare ad ogni istruzione $Istr_k$, con $k = 1, \dots, m$, un nu
 
 immagine 10.50
 
-**Aritmetizzare** o **Goedelizzare** una struttura significa associarle in modo biunivoco un numero naturale. Se si riuscisse a definire una relazione $Ar$ di aritmetizzazione che permettesse di aritmetizzare ogni istruzione, Si otterrebbe una lista di numeri (le istruzioni del programma) che si sarebbe poi tranquillamente in grado di tradurre in un unico numero naturale grazie ai metodi visti, utilizzando ad esempio la funzione coppia di Cantor.
+**Aritmetizzare** o **Goedelizzare** una struttura significa associarle in modo biunivoco un numero naturale. Se si riuscisse a definire una relazione $Ar$ di aritmetizzazione che permettesse di aritmetizzare ogni istruzione, si otterrebbe una lista di numeri (le istruzioni del programma) che si sarebbe poi tranquillamente in grado di tradurre in un unico numero naturale grazie ai metodi visti, utilizzando ad esempio la funzione coppia di Cantor.
 Si vuole quindi trovare $Ar: Istr \to \mathbb{N}$ e $Ar^{-1}: \mathbb{N} \to Istr$ tali che $Ar(Istr) = n \iff Ar^{-1}(n) = Istr$.
-Per costruirla definiamo così 3 casi:
-1) $Ar(R_k \leftarrow R_k + 1)= 3k$;
+Per costruirla, si definiscono così $3$ casi:
+1) $Ar(R_k \leftarrow R_k + 1)= 3k$ (nella codifica, è fondamentale memorizzare il registro che è stato incrementato. Per fare ciò, si mette nella codifica $k$);
 2) $Ar(R_k \leftarrow R_k \dot- 1) = 3k+1$;
 3) $Ar(\text{IF } R_k = 0 \text{ THEN GOTO } m) = 3<k, m> - 1$.
 
-Per l'inverso, basta vedere se $mod\ 3$ il resto è $0$, $1$ o $2$ per sapere quale delle $3$ istruzioni è stata codificata, e dividere per $3$ per avere l'indice del registro codificato; nel terzo caso è necessario un passaggio in più, ovvero applicare $sin$ e $des$ per estrarre rispettivamente registro e istruzione per il salto. Codificare un intero programma significa semplicemente applicare la funzione coppia di Cantor ad una lista di istruzioni codificate in questo modo, mentre decodificarlo significa applicare la funzione $sin$ per ottenere l'istruzione di testa, $des$ per avere il resto della lista.
+Questo è un buon modo per codificare le istruzioni $RAM$ perchè è un modo univoco, invertibile.
 
-Osserviamo quindi che $n \leftrightarrow P$, ovvero i numeri sono programmi: $F(RAM) = \{\varphi_P: P \in \text{PROG}\} = \{\varphi_i\}_{i \in \mathbb{N}}$. Da questo si ha rigorosamente che $F(RAM) \sim \mathbb{N} \nsim \mathbb{N}^{\mathbb{N}}$, quindi alcuni problemi non sono risolvibili da una macchina RAM.
+Per calcolare l'inverso, basta osservare se $mod\ 3$ il resto è $0$, $1$ o $2$ per sapere quale delle $3$ istruzioni è stata codificata, e dividere per $3$ per avere l'indice del registro codificato; nel terzo caso, è necessario un passaggio in più, ovvero applicare $sin$ e $des$ per estrarre rispettivamente registro e istruzione per il salto.
+
+immagine decodifica
+
+Ricapitolando, per passare da programmi a numeri
+
+$$cod(P)$$
+
+mentre per passare da numeri a programmi
+
+immagine numeri programmi
+
+Codificare un intero programma significa quindi applicare semplicemente la funzione coppia di Cantor ad una lista di istruzioni codificate in questo modo, mentre decodificarlo significa applicare la funzione $sin$ per ottenere l'istruzione di testa e $des$ per avere il resto della lista.
+
+Per sapere, ad esempio, quante istruzioni compongono un programma, si può usare la primitiva $\vert P \vert = length(cod(P))$ ed il risultato sarà il numero di istruzioni.
+
+Si osservi quindi che $n \leftrightarrow P$, ovvero che i numeri sono programmi: $F(RAM) = \{\varphi_P: P \in \text{PROG}\} = \{\varphi_i\}_{i \in \mathbb{N}}$. Da questo si ha rigorosamente che $F(RAM) \sim \mathbb{N} \nsim \mathbb{N}^{\mathbb{N}}$, quindi alcuni problemi non sono risolvibili da una macchina RAM.
+
+Alcuni esempi.
+
+```pseudo
+	\begin{algorithm}
+	\caption{Esempio Programma RAM}
+	\begin{algorithmic}
+	\If{$R_0 == 0$}
+		\State GO TO $8$
+    \EndIf
+    \State $R_0 \leftarrow R_0 \dot{-} 1$
+    \If{$R_1 == 0$}
+	    \State GO TO $1$
+    \EndIf
+	\State $R_0 \leftarrow R_0 \dot{-} 1$
+	\end{algorithmic}
+	\end{algorithm}
+```
+
+$$\varphi_P(n) = 0$$
 
 -------------------------------------------------------------
 
 # Macchine WHILE
-Il sistema di calcolo while è un linguaggio strutturato, quindi le istruzioni vengono eseguite una dopo l'altra senza bisogno di un contatore. Possiede 21 registri, il primo usato come registro di output e il secondo come registro di input. La sua sintassi è definita induttivamente, ovvero partendo da istruzioni semplici si compongono comandi più complessi.
+Il sistema di calcolo $WHILE$ è un linguaggio strutturato, quindi le istruzioni vengono eseguite una dopo l'altra senza bisogno di un contatore. Possiede $21$ registri, dei quali il primo viene usato come registro di output e il secondo come registro di input. La sua sintassi è definita induttivamente, ovvero partendo da istruzioni semplici si compongono comandi più complessi.
 
 ## Comandi
-Assegnamento (comandi base):  
-1. $x_k := 0$;
-2. $x_k := x_j + 1$;
-3. $x_k := x_j \dot- 1$;
+Assegnamento (comandi base):
+1) $x_k := 0$;
+2) $x_k := x_j + 1$;
+3) $x_k := x_j \dot- 1$;
 
-Istruzione while (comando complesso):  
-$\text{WHILE}\ x_k \neq 0\ \text{DO}: \mathbb{C}$  
+Istruzione while (comando complesso):
+$\text{WHILE}\ x_k \neq 0\ \text{DO}: \mathbb{C}$
 Nel corpo dell'istruzione while può comparire uno qualunque tra i comandi base, complessi o composti.
 
 Comando composto:
-$begin\ C_1; \dots, C_m\ end$  
+$begin\ C_1; \dots, C_m\ end$
 È un comando che racchiude una serie di comandi di qualsiasi tipo tra un _begin_ e un _end_.
 
 Indichiamo con $\text{W-PROG}$ l'insieme dei programmi while.
@@ -979,7 +1015,7 @@ $$[\ ](\ ): \text{W-COM} \times \text{W-STATI} \to \text{W-STATI}_{\bot}$$
 
 È una funzione che, da un comando, preso in ingresso uno stato, resituisce lo stato prossimo: $[\mathbb{C}](\underline{x}) = \underline{x}'$. Questa funzione può essere definita induttivamente su tutte le strutture induttive del comando $\mathbb{C}$.
 
-Nei casi base è semplice definire la funzione stato prossimo: semplicemente restituisce i 21 valori invariati tranne quello indicato nell'assegnamento, che sarà incrementato/decrementato o posto a 0.  
+Nei casi base è semplice definire la funzione stato prossimo: semplicemente restituisce i 21 valori invariati tranne quello indicato nell'assegnamento, che sarà incrementato/decrementato o posto a 0.
 In un passo composto conosciamo per induzione il comportamento della funzione stato prossimo: non ci resta che applicare iterativamente la funzione stato prossimo ad ogni comando, prendendo come stato iniziale lo stato prossimo del comando precedente.
 Anche per il comando while conosciamo la funzione stato prossimo per ipotesi induttiva, e ci basta applicare la funzione stato prossimo il minor numero di volte necesario a mandare a 0 il registro di controllo. Lo stato prossimo di un comando while è quindi il risultato dopo queste applicazioni o indefinito se non si può mandare a 0 il registro di controllo.  
 Semantica di $\text{W-PROG}$: $\Psi_w(x) = Pro_0^{21}([w](w-in(x)))$.
