@@ -1000,23 +1000,23 @@ Ma se si dimostra che $F(\mathbb{C}) = F(RAM)$, allora cambiare tecnologia non c
 -------------------------------------------------------------
 
 # Macchine WHILE
-Il sistema di calcolo $WHILE$ è un linguaggio strutturato, quindi le istruzioni vengono eseguite una dopo l'altra senza bisogno di un contatore. Possiede $21$ registri, dei quali il primo viene usato come registro di output e il secondo come registro di input. La sua sintassi è definita induttivamente, ovvero partendo da istruzioni semplici si compongono comandi più complessi.
+Il sistema di calcolo $WHILE$ è un linguaggio **strutturato** (un linguaggio è strutturato quando ha sequenza, selezione e iterazione), quindi le istruzioni vengono eseguite una dopo l'altra senza bisogno di un program counter. Possiede $21$ registri ($x_0, \dots, x_{20}$), detti **variabili**, dei quali il primo ($x_0$) viene usato come registro di output e il secondo ($x_1$) come registro di input. La sua sintassi è **induttiva**, ovvero partendo da istruzioni semplici si compongono comandi più complessi.
 
-## Comandi
-Assegnamento (comandi base):
-1) $x_k := 0$;
-2) $x_k := x_j + 1$;
-3) $x_k := x_j \dot- 1$;
+I comandi sono:
+- **assegnamento** (comando base):
+	1) $x_k := 0$;
+	2) $x_k := x_j + 1$;
+	3) $x_k := x_j \dot- 1$.
+- comando **while** (comando complesso):
+	$WHILE \ x_k \neq 0\ \text{DO}: \mathbb{C}$ <br />
+	Nel corpo $\mathbb{C}$ dell'istruzione while può comparire uno qualunque tra i comandi base (come l'assegnamento), complessi (come il comando while) o composti.
+- comando **composto**:
+	$begin\ C_1; \dots, C_m\ end$ <br />
+	È un comando che racchiude una serie di comandi di qualsiasi tipo (base, complesso o composto) tra un $begin$ e un $end$.
 
-Istruzione while (comando complesso):
-$\text{WHILE}\ x_k \neq 0\ \text{DO}: \mathbb{C}$
-Nel corpo dell'istruzione while può comparire uno qualunque tra i comandi base, complessi o composti.
+Di conseguenza, un programma while appare come un comando composto.
 
-Comando composto:
-$begin\ C_1; \dots, C_m\ end$
-È un comando che racchiude una serie di comandi di qualsiasi tipo tra un _begin_ e un _end_.
-
-Indichiamo con $\text{W-PROG}$ l'insieme dei programmi while.
+Indichiamo con $\text{W-PROG}$ l'insieme dei programmi while, costruito induttivamente.
 
 -------------------------------------------------------------
 

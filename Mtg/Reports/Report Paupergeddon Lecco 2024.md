@@ -5,7 +5,7 @@
 "Link:":
 ---
 # Lista
-**MAINBOARD**
+**MAINBOARD**<br />
 $4$ Goblin Blast-Runner<br />
 $4$ Goblin Tomb Raider<br />
 $4$ Voldaren Epicure<br />
@@ -21,7 +21,7 @@ $4$ Implement of Combustion<br />
 $14$ Mountain<br />
 $4$ Great Furnace<br />
 
-**SIDEBOARD**
+**SIDEBOARD**<br />
 $2$ Gorilla Shaman<br />
 $3$ Tectonic Hazard<br />
 $3$ Red Elemental Blast<br />
@@ -46,7 +46,9 @@ G$3$ scorre molto più liscio, nonostante una partenza relativamente lenta con B
 ## Turno 2 - Mono Red Kuldotha (Stefano Giordano)
 **Risultato**: $2$ - $0$
 
-Già a turno $2$ sto ai tavoli alti: di fianco a me gioca Heisen e così ho modo di sbirciare cosa gioca (BG Gardens). Arriva l'oppo che scopro essere nientedimeno che ZippoMTG. Perdo il dado e l'oppo parte di Montagna into Voldaren Epicure. O mirror o Rakdos Madness quindi. Nel secondo caso, sviluppare la board è la chiave per portare a casa la partita. Nel primo caso invece, partire on the draw mi dà un edge in quanto vedo una carta in più e il mirror si gioca in maniera molto controllosa. All'Epicure di Stefano rispondo con la medesima giocata e la partita prosegue in maniera molto calma, in quanto entrambi ci boltiamo a vicenda i Tomb Raider, fino a quando non vedo Kuldotha per primo e cerco di portarmi in vantaggio di board nella speranza che lui non giochi End the Festivities di main. Alla mia Kuldotha lui risponde nel medesimo modo ma il topdeck di Bushwacker mi permette di giocare più aggressivo e costringerlo a traddare i suoi tre goblin con i miei, lasciando sulla board solamente un Bushwacker e un Blast Runner. A questo punto pesco meglio e riesco a chiudere con un mix di piegate e di botti in faccia.
+Già a turno $2$ sto ai tavoli alti: di fianco a me gioca Heisen e così ho modo di sbirciare cosa gioca (BG Gardens). Arriva l'oppo che scopro essere nientedimeno che ZippoMTG. Perdo il dado e l'oppo parte di Montagna into Voldaren Epicure. O mirror o Rakdos Madness, quindi. Nel secondo caso, sviluppare la board è la chiave per portare a casa la partita. Nel primo caso invece, partire on the draw mi dà un edge in quanto vedo una carta in più e il mirror si gioca in maniera molto controllosa. All'Epicure di Stefano rispondo con la medesima giocata e la partita prosegue in maniera molto calma, in quanto entrambi ci boltiamo a vicenda i Tomb Raider, fino a quando non vedo Kuldotha per primo e cerco di portarmi in vantaggio di board nella speranza che lui non giochi End the Festivities di main. Alla mia Kuldotha lui risponde nel medesimo modo ma il topdeck di Bushwacker mi permette di giocare più aggressivo e costringerlo a traddare i suoi tre goblin con i miei, lasciando sulla board solamente un Bushwacker e un Blast Runner. A questo punto pesco meglio e riesco a chiudere con un mix di piegate e di botti in faccia.
+
+meme voldaren epicure che si indicano
 
 Side In: $3$x Tectonic Hazard, $2$x Cast into the Fire.
 
@@ -59,7 +61,7 @@ Mentre sidiamo, io e Stefano chiaccheriamo un po' e mi lascio sfuggire di come n
 ## Turno 3 - Boros Kuldotha (Clemens Muller)
 **Risultato**: $2$ - $0$
 
-Non appena leggo il nome dell'oppo su _whatsmytable_, so già chi è e che lista porta, in quanto Clemens ha battuto un mio fratm di lega turno $1$ con una versione bizzarra di Boros Kuldotha. Anche lui sa chi sono e cosa gioco, perchè eravamo letteramente di fianco anche al turno precedente. Si preannuncia un matchup ostico perchè so per certo grazie ad una soffiata del buon Giovanni Facchini che Clemens gioca 8 Inspector. Clemens inizia forte con Fornace e Tomb Raider mentre io parto in maniera più pacata on the draw appoggiando un Blast Runner t$1$. Un secondo barilotto + Seal of Fire mi permetteranno sia di rimuovere il Tomb Raider sia portare l'oppo a $11$ vite in pochi turni, sfruttando menace per impedire alle varie copie di Inspector di bloccare. A questo punto lui appoggia altri bloccanti per cercare una soluzione ma un'altra copia di Seal of Fire e un paio di botti faccia mi consentono di portare a casa G$1$ senza troppi pensieri.
+Non appena leggo il nome dell'oppo su _whatsmytable_, so già chi è e che lista porta, in quanto Clemens ha battuto un mio fratm di lega turno $1$ con una versione bizzarra di Boros Kuldotha. Anche lui sa chi sono e cosa gioco, perchè eravamo letteramente di fianco anche al turno precedente. Si preannuncia un matchup ostico perchè so per certo grazie ad una soffiata del buon Giovanni Facchini che Clemens gioca 8 Inspector. Clemens inizia forte con Fornace e Tomb Raider mentre io parto in maniera più pacata on the draw, appoggiando un Blast Runner t$1$. Un secondo barilotto + Seal of Fire mi permetteranno sia di rimuovere il Tomb Raider sia portare l'oppo a $11$ vite in pochi turni, sfruttando menace per impedire alle varie copie di Inspector di bloccare. A questo punto lui appoggia altri bloccanti per cercare una soluzione ma un'altra copia di Seal of Fire e un paio di botti faccia mi consentono di portare a casa G$1$ senza troppi pensieri.
 
 Side In: $2$x Gorilla Shaman, $2$x Cast into the Fire, $3$x Smash to Smithereens
 
@@ -72,7 +74,7 @@ G$2$ mulligo a $6$ e tengo una mano con un Blast Runner, un Implement e uno Smas
 ## Turno 4 - Walls Combo (Andrea Migliavacca)
 **Risultato**: $2$ - $0$
 
-Mentre facciamo conoscenza, Andrea mi rivela di aver perso la Win&In al Pauperfest contro il buon Roberto Brognoli, mio compare di lega. Per non deludere Brogna, decido di vincere pure io. Vinco il dado e già sono contento ma forse in questo matchup avrei vinto in qualsiasi caso. L'oppo parte di Foresta into Orochi Leafcaller, facendomi presupporre di trovarmi contro Muri Combo. Dico facendomi presupporre perchè, giocando pauper da poco, non ho mai avuto modo di giocare contro il mazzo in questione. So, però, che dovrei stare sopra in maniera non indifferente. Per non saper nè leggere nè scrivere, gli bolto due pezzi e picchio di Kuldotha into Bushwacker, mettendo in saccoccia G$1$.
+Mentre facciamo conoscenza, Andrea mi rivela di aver perso la Win&In al Pauperfest contro il buon Roberto Brognoli, mio compare di lega. Per non deludere Brogna, decido di vincere pure io. Vinco il dado e già sono contento ma forse in questo matchup avrei vinto in qualsiasi caso. L'oppo parte di Foresta into Orochi Leafcaller, facendomi presupporre di trovarmi contro Muri Combo. Dico facendomi presupporre perchè, giocando pauper da poco, non ho mai avuto modo di giocare contro il mazzo in questione. So, però, che dovrei stare sopra in maniera non indifferente. Per non saper nè leggere nè scrivere, gli bolto due pezzi e picchio di Kuldotha into Bushwacker, mettendo in saccoccia G$1$ senza che lui abbia modo di sviluppare alcun gameplay.
 
 Non avendo nulla da sidare, applico il famoso inganno della cadrega e fingo di mettere dentro nel mazzo $8$ carte dalla side, andando poi ovviamente a toglierle. G$2$ si ripete esattamente come G$1$ e mi trovo a vincere in soli $20$ minuti. Colmerò quindi questa attesa con una pizzetta del baretto del Palataurus.
 
@@ -96,14 +98,19 @@ G$3$ sono on the draw ma tengo a $7$ una mano con un Goblin Blast Runner, un Imp
 ## Turno 6 - Azorius Familiars (Nicolò Gavino)
 **Risultato**: $0$ - $2$
 
-L'entusiasmo dovuto alla win streak è calato drasticamente e la mezz'ora di attesa prima dell'inizio del turno non aiuta affatto. Quando finalmente escono i pairings, un ragazzo che stava rientrando nei palazzetti mi sente nominare il mio prossimo avversario e decide di palesarsi come mio prossimo oppo. Non so se oltre a questo abbia carpito anche informazioni su cosa giocassi, fatto stà che G$1$ io tengo una mano non troppo esplosiva mentre lui decide di mulligare a $5$ e partire di Pianura into God Pharaon's Faithful. I miei sogni di gloria si incrinano ulteriormente e, mentre cerco di portarmi a casa il game rimuovendogli la maledetta $0/4$, lui appoggia una Mortuary Mire e raddoppiando il numero di fedeli in campo. Da $4$ punti vita l'oppo torna a $16$ in un turno e capisco che questo game è già finito.
+L'entusiasmo dovuto alla win streak è calato drasticamente e la mezz'ora di attesa prima dell'inizio del turno non ha aiutato affatto. Quando finalmente escono i pairings, un ragazzo che stava rientrando nel palazzetto mi sente nominare il mio prossimo avversario e decide di palesarsi come tale. Non so se oltre a questo abbia carpito anche informazioni su cosa giocassi, fatto stà che G$1$ io tengo una mano non troppo esplosiva mentre lui decide di mulligare a $5$ e partire di Pianura into God Pharaon's Faithful. I miei sogni di gloria si incrinano ulteriormente e, mentre cerco di portarmi a casa il game rimuovendogli la maledetta $0/4$, lui appoggia una Mortuary Mire e raddoppia il numero di fedeli in campo. Da $8$ punti vita l'oppo torna a $16$ in un turno e capisco che questo game è già finito.
 
-G$2$ mulligo ma per paura di scendere a $5$ e non vedere lande, tengo una mano tutt'altro che ottimale: monolanda Fornace, Tomb Raider, Kuldotha, Bushwacker e due Chain Lightning. Con una landa in più sarebbe una mano fortissima ma Nicolò vede altre $3$ Faithful al che gli stringo la mano, lo ringrazio e vado a farmi un bagno col tostapane.
+G$2$ mulligo ma per paura di scendere a $5$ e non vedere lande, keepo una mano vagamente passabile: monolanda Fornace, Tomb Raider, Kuldotha, Bushwacker e due Chain Lightning. Con una landa in più sarebbe una mano fortissima ma Nicolò decide che vuole andare a Day $2$ con un turno d'anticipo e vede altre $3$ Faithful. Allora gli stringo la mano, lo ringrazio e 
+comincio a riempire di acqua la vasca per farmi un bel bagno col tostapane.
+
+Unico vantaggio di questo turno misero è l'aver avuto al tavolo accanto Diego Barbagelata, che con un paio di suoi recenti risultati mi ha convinto a giocare Demand Answers invece dei più classici Impulse. 
 
 -------------------------------------------------------------
 
 ## Turno 7 - White Weenie (Luca Ravera)
 **Risultato**: $2$ - $1$
+
+E' ormai notte fonda in quel di Lecco e innumerevoli disperati stanno cercando in tutti i modi di accaparrarsi gli ultimi posti per il giorno successivo. Alle mie orecchie sopraggiungono vani tentativi di corruzione per mezzo del vil denaro, favori sessuali e figurine sbrilluccicanti. Mi siedo al tavolo e la prima cosa che Luca mi chiede è se sono sicuro di voler giocare, nella speranza che io conceda prematuramente. 
 
 
 
