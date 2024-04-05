@@ -1014,9 +1014,35 @@ I comandi sono:
 	$begin\ C_1; \dots, C_m\ end$ <br />
 	È un comando che racchiude una serie di comandi di qualsiasi tipo (base, complesso o composto) tra un $begin$ e un $end$.
 
-Di conseguenza, un programma while appare come un comando composto.
+Di conseguenza, un programma $WHILE$ appare come un comando composto.
 
-Indichiamo con $\text{W-PROG}$ l'insieme dei programmi while, costruito induttivamente.
+Indichiamo con $\text{W-PROG}$ l'insieme dei programmi $WHILE$, costruito induttivamente.
+
+Un esempio di programma $WHILE$.
+
+```pseudo
+	\begin{algorithm}
+	\caption{Esempio di programma WHILE}
+	\begin{algorithmic}
+	\State \textbf{begin}
+		\State $x_2 := x_1 + 1$
+		\State $x2 : = x2 \dot{-} 1$
+		\While{$x_1 \neq 0$}
+			\State \textbf{begin}
+				\State $x_0 := x_0 + 1$
+		        \State $x_1 := x_1 \dot{-} 1$
+	        \State \textbf{end}
+        \EndWhile
+        \While{$x_2 \neq 0$}
+	        \State \textbf{begin}
+		        \State $x_0 := x_0 + 1$
+		        \State $x_2 := x_2 \dot{-} 1$
+	        \State \textbf{end}
+        \EndWhile
+    \State \textbf{end}
+	\end{algorithmic}
+	\end{algorithm}
+```
 
 -------------------------------------------------------------
 

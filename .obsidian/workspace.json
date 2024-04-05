@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Classes/Informatica Teorica.md",
+                "file": "Articles/Image Classification with Classic and Deep Learning Techniques.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Informatica Teorica.md",
+                "file": "Articles/Image Classification with Classic and Deep Learning Techniques.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,9 +116,10 @@
   },
   "active": "9d6dab7f39b33ece",
   "lastOpenFiles": [
-    "Mtg/Reports/Report Paupergeddon Lecco 2024.md",
+    "Lexicon/Ammezzato.md",
     "Articles/Image Classification with Classic and Deep Learning Techniques.md",
     "Classes/Informatica Teorica.md",
+    "Mtg/Reports/Report Paupergeddon Lecco 2024.md",
     "Images/DecodificaNumeroProgramma.png",
     "Images/InversoGoedelizzazioneGrafico.png",
     "Images/InversoGoedelizzazione.png",
