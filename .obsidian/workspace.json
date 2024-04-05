@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Articles/Image Classification with Classic and Deep Learning Techniques.md",
+                "file": "Classes/Simulation.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Articles/Image Classification with Classic and Deep Learning Techniques.md",
+                "file": "Classes/Simulation.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,8 +117,17 @@
   },
   "active": "9d6dab7f39b33ece",
   "lastOpenFiles": [
-    "Lexicon/Ammezzato.md",
+    "Lexicon/Allampanato.md",
+    "Lexicon/Sicumera.md",
+    "Lexicon/Sovente.md",
+    "Lexicon/Zshrc.md",
+    "Lexicon/Refolo.md",
+    "Lexicon/Perigliare.md",
+    "Lexicon/Pamphlet.md",
+    "Lexicon/Nappina.md",
+    "Lexicon/Maggiociondolo.md",
     "Articles/Image Classification with Classic and Deep Learning Techniques.md",
+    "Lexicon/Ammezzato.md",
     "Classes/Informatica Teorica.md",
     "Mtg/Reports/Report Paupergeddon Lecco 2024.md",
     "Images/DecodificaNumeroProgramma.png",
@@ -140,20 +150,11 @@
     "Images/(3,3)GroupingExample1.png",
     "Articles/Probability Analysis in Pauper Manabases.md",
     "Classes/Privatezza e Protezione dei Dati.md",
-    "Lexicon/Sovente.md",
     "Atoms/Deviazione standard.md",
     "Blogs/Tempo.md",
     "Classes/Cittadinanza Digitale e Tecnocivismo.md",
     "Classes/3D Videogames.md",
-    "Lexicon/Zshrc.md",
     "Atoms/Grafo.md",
-    "Lexicon/Efebico.md",
-    "Articles/Preprocessing for Image Classification by Convolutional Neural Networks.md",
-    "Atoms/The Game of Life.md",
-    "Classes/Bioinformatica.md",
-    "Classes/Logica Matematica.md",
-    "Atoms/System Dynamics Simulation.md",
-    "Atoms/Agent-Based Simulation.md",
     "Untitled.canvas",
     "Blogs",
     "Atoms",

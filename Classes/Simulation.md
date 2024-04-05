@@ -876,12 +876,28 @@ There are certain types of random variables that frequently appear in applicatio
 ![[DiscreteRandomVariables.png]]
 
 ##### Bernoulli Random Variable
+Single trial that can be succesful or not and the probability of success is known.
 
+Expected value and Variance of the Bernoulli Random Variable
+
+Expected Value $\mathbb{E}[X] = 1 \times p + 0 \times (1 - p) = p$
+Variance $Var[X] = \mathbb{E} = (1 - p)^2 p + (0 - p)^2 (1 - p) = p(1 - p) (1 - p + p) = p ( 1 - p )$
 
 -------------------------------------------------------------
 
 ##### Binomial Random Variable
+$n$ trials and each trial is a Bernoulli Random Variable. We wish to count the number of successful trials.
 
+How to generate a valid value for a Binomial Random Variable?<br />
+One way is by simulation, that is, simulating $n$ Bernoullli Random Variables. Another option considers the use of the  native algorithm for the invers transform.
+
+Computing this probability incrementally.
+
+$$P[X = i] = \binom{n}{k} p^i (1 - p)^{n - i} = \frac{n!}{i! (n - i)!} p^i(1 - p)^{n - i}$$
+$$P[X = i + 1] = \frac{n!}{(i + 1)!(n  - i - 1)!} p^{i + 1}(1 - p)^{n - i - 1}$$
+
+Expected Value $\mathbb{E}[X] = np$
+Variance $Var[X]$
 
 -------------------------------------------------------------
 
@@ -945,6 +961,84 @@ The preceding idea can be written algorithmically as
     \State return $i$
 	\end{algorithmic}
 	\end{algorithm}
+```
+
+Let's consider two different cases:
+
+uniform discrete random v
+
+seconda rv
+
+In the first case, it is possible to 
+
+```python
+def UniformDRV1(n):
+	r = random.random()
+	for i in range(1, n + 1, 1):
+		if r <= i/n:
+			return i
+```
+
+Another approach is based on the following equivalence:
+
+equivalenza min 25 lecture
+
+```python
+def UniformDRV2(n):
+	r = random.random()
+	return math.ceil(n * r)
+```
+
+In the second case, 
+
+```python
+def binaryDRV(p)
+	r = random.random()
+	if r <= p:
+		return 0
+	else:
+		return 1
+```
+
+-------------------------------------------------------------
+
+Pagina 49 simulation
+
+```python
+def randomPerm(v)
+	
+```
+
+but this approach has a problem, that is, it is not possible to be sure that each permutation is equiprobable.<br />
+A variant of this code based on recursion that overcomes this problem is the following
+
+```python
+robeh
+```
+
+Let's evaluate if the probability of each permutation to appear is the same.
+
+$$P[\text{ Each permutation }] = \bar{p}$$
+
+that is
+
+$$P[\text{ The element } i \text{ in position } n] = \bar{q} = \frac{1}{n}$$
+
+If I choose the element to swap as the reading of a Uniform Discrete Random Variable
+
+$$P[ i \text{ in position } n] = \frac{1}{n} \quad \forall i = 1, \dots, n$$
+passaggi successivi
+
+Now, the implementation
+
+```python
+def RandomPerm(v):
+	for i in range(len(v)):
+		# position to fix: v[n - i - 1]
+		# position to swap: chosen randomly
+		s = random.randint(0, len(v) - i - 1)
+		v[len(v) - i - 1], v[s] = v[s], v[len(v) - i - 1]
+	return v
 ```
 
 -------------------------------------------------------------
