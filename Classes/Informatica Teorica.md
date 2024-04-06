@@ -1060,7 +1060,7 @@ $W-PROG$ è definito induttivamente. Per dimostrare ua proprietà $P$ su $W-PROG
 
 Da questo si deriva che $P$ vale su ogni programma $WHILE$.
 
-...
+... frase domanda prof Mereghetti
 
 Un esempio di dimostrazione di una proprietà su un insieme induttivo.
 
@@ -1068,7 +1068,7 @@ immagine alberi binari
 
 Si prova ora a riconoscerne la struttura induttiva.<br />
 L'insieme $\mathcal{T}$ degli [[Albero Binario |alberi binari]] può essere definito induttivamente come:
-1) $\cdot$ è un albero binario (**base**);
+1) il singolo nodo $\cdot$ è un albero binario (**base**);
 2) Se $T_1$ e $T_2$ sono alberi binari, allora anche l'albero sottostante è un albero binario;
 
 immagine
@@ -1077,6 +1077,27 @@ immagine
 
 Per quanto riguarda $\mathcal{T}$, si vuole mostrare la seguente proprietà: 
 $P \equiv$ "su ogni albero binario, il numero di nodi interni è minore di uno rispetto a quello delle foglie".
+
+Per induzione:
+- **base**: in $\cdot$, foglie $= 1$ mentre nodi interni $= 0$;
+- **passo**: si suppone vera $P$ su $T_1, T_2$. $T_1$: foglie $f_1$, nodi interni $f_1 -1$. $T_2$: foglie $f_2$, nodi interni $f_2 - 1$. Chiaramente, per $T$ si ha che foglie $= f_1 + f_2$ e nodi interni $f_1 -1 + f_2 - 1 + 1 = f_1 + f_2 -1$.
+
+immagine mini albero binario che spiega il +1
+
+Quindi $P$ vale su tutto l'insieme $\mathcal{T}$ degli alberi binari.
+
+Un esempio di definizione di funzoni su insiemi induttivi.<br />
+Si vuole definire su $\mathcal{T}$ la funzione $depth: \mathcal{T} \to \mathbb{N}$ che resitutisce la **profondità** di ogni albero binario, cioè la lunghezza del cammino più lungo dalla radice ad una foglia dell'albero.
+
+immagine depth
+
+Segue ora la definizione induttiva di $depth$:
+- **base**: $depth(\cdot) = 0$;
+- **passo**: $depth(T_3) = 1 + \max{depth(T_1), depth(T_2)}$, dove $T_3$ è definito come
+
+immagine T_3
+
+
 
 A differenza della RAM, che aveva infiniti stati, non abbiamo bisogno di definire una funzione di stato: qui basta una lista di $21$ elementi contenente il valore dei registri. Lo spazio degli stati è quindi $\mathbb{N}^{21}$, e uno stato $\underline{x}$ è $\underline{x} \in \mathbb{N}^{21}$ e l'inizializzazione semplicemente imposta a $0$ tutti i registri tranne $x_1$ di input.
 
