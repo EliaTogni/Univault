@@ -1012,12 +1012,15 @@ I comandi sono:
 	Nel corpo $\mathbb{C}$ dell'istruzione while può comparire uno qualunque tra i comandi base (come l'assegnamento), complessi (come il comando while) o composti.
 - comando **composto**:
 	$begin\ C_1; \dots, C_m\ end$ <br />
-	È un comando che racchiude una serie di comandi di qualsiasi tipo (base, complesso o composto) tra un $begin$ e un $end$.
+	È un comando che racchiude una sequenza di comandi di qualsiasi tipo (base, complesso o composto) tra un $begin$ e un $end$.
 
 Di conseguenza, un programma $WHILE$ appare come un comando composto.
 
 Indichiamo con $\text{W-PROG}$ l'insieme dei programmi $WHILE$, costruito induttivamente.
 
+-------------------------------------------------------------
+
+## Semantica
 Un esempio di programma $WHILE$.
 
 ```pseudo
@@ -1026,7 +1029,7 @@ Un esempio di programma $WHILE$.
 	\begin{algorithmic}
 	\State \textbf{begin}
 		\State $x_2 := x_1 + 1$
-		\State $x2 : = x2 \dot{-} 1$
+		\State $x_2 : = x_2 \dot{-} 1$
 		\While{$x_1 \neq 0$}
 			\State \textbf{begin}
 				\State $x_0 := x_0 + 1$
@@ -1044,13 +1047,38 @@ Un esempio di programma $WHILE$.
 	\end{algorithm}
 ```
 
--------------------------------------------------------------
+Qual è la semantica di questo programma? Innanzitutto, la semantica di un programma $WHILE$  su dato $n$ si indica con $\Psi$ ed è l'output contenuto nel registro $x_0$ in caso di terminazione oppure è indefinito.
 
-## Semantica
-$\Psi_w(n) = cont(x_0) / \bot$
-La semantica di un programma while su dato $n$ è l'output contenuto nel registro $x_0$ in caso di terminazione oppure è indefinito.
+$$\Psi_w(n) = cont(x_0) / \bot$$
 
-A differenza della RAM, che aveva infiniti stati, non abbiamo bisogno di definire una funzione di stato: qui basta una lista di 21 elementi contenente il valore dei registri. Lo spazio degli stati è quindi $\mathbb{N}^{21}$, e uno stato $\underline{x}$ è $\underline{x} \in \mathbb{N}^{21}$ e l'inizializzazione semplicemente imposta a 0 tutti i registri tranne $x_1$ di input.
+Nell'esempio sopra, $\Psi_w: \mathbb{N} \to \mathbb{N}_\bot$ e $\Psi_w(n) = 2n$. Il parsing del programma ne rivela la struttura induttiva, cioè definita a partire da degli oggetti base per poi dare dei passi induttivi che permettono di costruire oggetti più complessi.
+
+$W-PROG$ è definito induttivamente. Per dimostrare ua proprietà $P$ su $W-PROG$:
+1) si dimostra $P$ sugli assegnamenti base;
+2) si suppone vera $P$ su $C$ e la si dimostra su **while** $x_k \neq 0$ **do** $C$;
+3) si suppone vera $P$ su $C_1, \dots, C_m$ e la si dimostra su **begin** $C_1, \dots, C_m$ **end**.
+
+Da questo si deriva che $P$ vale su ogni programma $WHILE$.
+
+...
+
+Un esempio di dimostrazione di una proprietà su un insieme induttivo.
+
+immagine alberi binari
+
+Si prova ora a riconoscerne la struttura induttiva.<br />
+L'insieme $\mathcal{T}$ degli [[Albero Binario |alberi binari]] può essere definito induttivamente come:
+1) $\cdot$ è un albero binario (**base**);
+2) Se $T_1$ e $T_2$ sono alberi binari, allora anche l'albero sottostante è un albero binario;
+
+immagine
+
+3) nient'altro è un albero binario.
+
+Per quanto riguarda $\mathcal{T}$, si vuole mostrare la seguente proprietà: 
+$P \equiv$ "su ogni albero binario, il numero di nodi interni è minore di uno rispetto a quello delle foglie".
+
+A differenza della RAM, che aveva infiniti stati, non abbiamo bisogno di definire una funzione di stato: qui basta una lista di $21$ elementi contenente il valore dei registri. Lo spazio degli stati è quindi $\mathbb{N}^{21}$, e uno stato $\underline{x}$ è $\underline{x} \in \mathbb{N}^{21}$ e l'inizializzazione semplicemente imposta a $0$ tutti i registri tranne $x_1$ di input.
 
 ### Funzione stato prossimo
 
