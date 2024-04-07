@@ -331,7 +331,7 @@ Ogni relazione di equivalenza $R \subseteq A^2$ induce una **partizione** sull'i
 2) $i \neq j \implies A_i \cap A_j = \emptyset$;
 3) $\bigcup_{i \ge 1} A_i = A$.  
 
-immagine slide 3
+![[Partizioni.png]]
 
 Dato $a \in A$, si definisce **classe di equivalenza** $[a]_R$ per una relazione d'equivalenza $R$, l'insieme degli elementi che sono in relazione con $a$:
 
@@ -362,7 +362,7 @@ Due insiemi sono **isomorfi** (o **equinumerosi**) se esiste una biiezione tra e
 
 Diventa possibile, quindi, quozientare l'insieme $\mathbb{U}$ rispetto alla relazione di isomorfismo.
 
-immagine slide 5
+![[Isomorfismo.png]]
 
 Questo quoziente rappresenta il concetto di **cardinalità** e permette di parlare di tale concetto in maniera precisa, sia nel caso di cardinalità finita, sia nel caso di cardinalità infinita. Insiemi tra loro isomorfi (o equinumerosi), hanno la stessa cardinalità.
 
@@ -378,7 +378,7 @@ $$J_n = \begin{cases}
 
 Un insieme $A$ ha cardinalità **finita** se e solo se $J_n \sim A$ per qualche $n \in N$. In tal caso, si scrive $\vert A \vert = n$.
 
-immagine slide 6
+![[TipiCardinalità.png]]
 
 $[J_n]_{\sim}$ riunisce tutti gli insiemi contenenti $n$ elementi.
 
@@ -389,7 +389,7 @@ Un insieme che non ha cardinalità finita ha cardinalità **infinita**. Di conse
 ## Insiemi numerabili
 Un insieme $A$ è detto numerabile se e solo se $\mathbb{N} \sim A$ (ovvero $A \in [\mathbb{N}]_{\sim}$). Per gli insiemi numerabili esiste quindi una biiezione $f$ che consente di elencare l'insieme $A$ senza perdere alcun elemento: $A = \{f(0), \dots, f(n), \dots\}$. In altri termini, gli insiemi numerabili sono gli insiemi **listabili**.
 
-immagine slide 7
+![[InsiemiNumerabili.png]]
 
 Alcuni esempi:<br />
 - l'insieme dei numeri pari: esiste la biiezione $f(n) = 2n$, in quanto i pari sono tanti quanti i naturali;
@@ -413,7 +413,7 @@ La dimostrazione segue $3$ passi:
 
 Per dimostrare che $\mathbb{R} \sim (0, 1)$, si rappresenta una biiezione graficamente: una semicirconferenza rappresenta l'insieme $(0, 1)$ in modo che la proiezione dell'intersezione del raggio con la circonferenza sul diametro identifichi l'elemento dell'insieme. Il raggio viene poi prolungato come una retta fino ad intersecare la retta dei reali, parallela al diametro. Dato che, quindi, ad ogni punto di $(0, 1)$ è possibile associare un punto di $\mathbb{R}$ (iniezione) e viceversa è possibile risalire ad ogni punto del segmento partendo dalla retta dei reali (suriezione), la funzione è biiettiva e quindi è un isomorfismo. $\mathbb{R}$ è quindi numeroso quanto un suo qualsiasi segmento.
 
-immagine
+![[SemicirconferenzaRNonNumerabile.png]]
 
 La stessa biiezione sull'intervallo chiuso $[0, 1]$ mostra che la **compattificazione** di $\mathbb{R}$, ovvero $\mathbb{R}$ unito a tutti i suoi punti di accumulazione: $\dot{\mathbb{R}} \cup \{\pm \infty\} \sim [0, 1]$ ($0 \mapsto -\infty$, $1 \mapsto +\infty$).
 
@@ -684,7 +684,7 @@ Allo stesso modo, non è nemmeno un buon sistema crittografico perchè il risult
 #### Suono
 E' possibile codificare un suono in una lista di campionature.
 
-immagine
+![[CodificaSuonoCampionatura.png]]
 
 -------------------------------------------------------------
 
@@ -743,7 +743,7 @@ Dal confronto tra $F(RAM)$ e $F(WHILE)$ ci si potrà rendere conto se la potenza
 # Macchina _RAM_
 La macchina _RAM_ altro non è che un processore che esegue sequenzialmente una serie di istruzioni agendo su una memoria che è una lista infinita di registri $R$, ciascuno dei quali può contenere un numero naturale arbitrario (in quanto i numeri naturali sono dati senza perdita di generalità): in particolare il registro $R_0$ conterrà l'output del programma, e il registro $R_1$ conterrà all'avvio l'input del programma; oltre a ciò esiste $L$, ovvero il **Program Counter** che tiene traccia dell'istruzione da eseguire.
 
-immagine macchina RAM
+![[MacchinaRAM.png]]
 
 $Istr_{x}$ indica l'istruzione $x$-esima del programma $P$.
 
@@ -765,11 +765,11 @@ La **Semantica Operazionale** consiste nello specificare il significato di ogni 
 
 Come descrivere l'effetto di un'istruzione?
 
-immagine prima -> istruzione -> dopo
+![[EffettoIstruzione.png]]
 
 Il programma è una sequenza di istruzioni e, quindi, induce una sequenza possibilmente infinita di stati partendo dallo stato iniziale. Ogni stato riporta il contenuto del contatore e di ogni registro della macchina _RAM_, ed ogni istruzione del programma fa passare da uno stato al successivo.
 
-immagine slide esecuzione di un programma p
+![[EsecuzioneProgrammaP.png]]
 
 Di conseguenza, la semantica di $P$ è
 
@@ -781,7 +781,7 @@ y \\
 ### Definizione formale di stato
 Uno **stato** è la foto di tutte le componenti della macchina.
 
-immagine stato -> istr -> stato
+![[Stato.png]]
 
 Di conseguenza, la coppia $(STATO, STATO)$ è la semantica operazionale di Istruzione. Uno stato non è nient'altro che una funzione che va dall'insieme dei registri a $\mathbb{N}$.
 
@@ -1064,14 +1064,14 @@ Da questo si deriva che $P$ vale su ogni programma $WHILE$.
 
 Un esempio di dimostrazione di una proprietà su un insieme induttivo.
 
-immagine alberi binari
+![[AlberiBinari.png]]
 
 Si prova ora a riconoscerne la struttura induttiva.<br />
 L'insieme $\mathcal{T}$ degli [[Albero Binario |alberi binari]] può essere definito induttivamente come:
 1) il singolo nodo $\cdot$ è un albero binario (**base**);
 2) Se $T_1$ e $T_2$ sono alberi binari, allora anche l'albero sottostante è un albero binario;
 
-immagine
+![[AlberoBinarioDefinizioneRicorsiva.png]]
 
 3) nient'altro è un albero binario.
 
@@ -1080,37 +1080,40 @@ $P \equiv$ "su ogni albero binario, il numero di nodi interni è minore di uno r
 
 Per induzione:
 - **base**: in $\cdot$, foglie $= 1$ mentre nodi interni $= 0$;
-- **passo**: si suppone vera $P$ su $T_1, T_2$. $T_1$: foglie $f_1$, nodi interni $f_1 -1$. $T_2$: foglie $f_2$, nodi interni $f_2 - 1$. Chiaramente, per $T$ si ha che foglie $= f_1 + f_2$ e nodi interni $f_1 -1 + f_2 - 1 + 1 = f_1 + f_2 -1$.
-
-immagine mini albero binario che spiega il +1
+- **passo**: si suppone vera $P$ su $T_1, T_2$. $T_1$: foglie $f_1$, nodi interni $f_1 -1$. $T_2$: foglie $f_2$, nodi interni $f_2 - 1$. Chiaramente, per $T$ si ha che foglie $= f_1 + f_2$ e nodi interni $f_1 -1 + f_2 - 1 + 1 = f_1 + f_2 -1$ (il $+1$ è dato dalla radice dell'albero binario considerato).
 
 Quindi $P$ vale su tutto l'insieme $\mathcal{T}$ degli alberi binari.
 
 Un esempio di definizione di funzoni su insiemi induttivi.<br />
 Si vuole definire su $\mathcal{T}$ la funzione $depth: \mathcal{T} \to \mathbb{N}$ che resitutisce la **profondità** di ogni albero binario, cioè la lunghezza del cammino più lungo dalla radice ad una foglia dell'albero.
 
-immagine depth
+![[EsempioProfonditàAlbero.png]]
 
 Segue ora la definizione induttiva di $depth$:
 - **base**: $depth(\cdot) = 0$;
 - **passo**: $depth(T_3) = 1 + \max{depth(T_1), depth(T_2)}$, dove $T_3$ è definito come
 
-immagine T_3
+![[AlberoBinarioDefinizioneRicorsiva.png]]
 
-
-
-A differenza della RAM, che aveva infiniti stati, non abbiamo bisogno di definire una funzione di stato: qui basta una lista di $21$ elementi contenente il valore dei registri. Lo spazio degli stati è quindi $\mathbb{N}^{21}$, e uno stato $\underline{x}$ è $\underline{x} \in \mathbb{N}^{21}$ e l'inizializzazione semplicemente imposta a $0$ tutti i registri tranne $x_1$ di input.
+Un esempio di esecuzione su una macchina $WHILE$.<br />
+A differenza della $RAM$, che aveva infiniti stati, non si ha bisogno di definire una funzione di stato: è sufficiente una lista di $21$ elementi contenente il valore dei registri. Lo spazio degli stati è quindi $\mathbb{N}^{21}$, di cui uno stato $\underline{x} \in \mathbb{N}^{21}$, e l'inizializzazione semplicemente imposta a $0$ tutti i registri tranne $x_1$ di input.<br />
+Durante l'esecuzione, si eseguono una dopo l'altra le istruzioni che, essendo $w$ un linguaggio con strutture di controllo, non necessita di program counter.<br />
+Il programma di $w$ può arrestarsi se si è giunti al termine delle istruzioni, oppure può andare in loop.<br />
+L'output sarà quindi il contenuto di $x_0$ oppure $HALT$.
 
 ### Funzione stato prossimo
 
 $$[\ ](\ ): \text{W-COM} \times \text{W-STATI} \to \text{W-STATI}_{\bot}$$
 
-È una funzione che, da un comando, preso in ingresso uno stato, resituisce lo stato prossimo: $[\mathbb{C}](\underline{x}) = \underline{x}'$. Questa funzione può essere definita induttivamente su tutte le strutture induttive del comando $\mathbb{C}$.
+La funzione **stato prossimo** è una funzione che, da un comando, preso in ingresso uno stato, resituisce lo stato prossimo: $[\mathbb{C}](\underline{x}) = \underline{x}'$. Questa funzione può essere definita induttivamente su tutte le strutture induttive del comando $\mathbb{C}$.
 
-Nei casi base è semplice definire la funzione stato prossimo: semplicemente restituisce i 21 valori invariati tranne quello indicato nell'assegnamento, che sarà incrementato/decrementato o posto a 0.
-In un passo composto conosciamo per induzione il comportamento della funzione stato prossimo: non ci resta che applicare iterativamente la funzione stato prossimo ad ogni comando, prendendo come stato iniziale lo stato prossimo del comando precedente.
-Anche per il comando while conosciamo la funzione stato prossimo per ipotesi induttiva, e ci basta applicare la funzione stato prossimo il minor numero di volte necesario a mandare a 0 il registro di controllo. Lo stato prossimo di un comando while è quindi il risultato dopo queste applicazioni o indefinito se non si può mandare a 0 il registro di controllo.  
-Semantica di $\text{W-PROG}$: $\Psi_w(x) = Pro_0^{21}([w](w-in(x)))$.
+Nei casi base è semplice definire la funzione stato prossimo: semplicemente restituisce i $21$ valori invariati tranne quello indicato nell'assegnamento, che sarà incrementato/decrementato o posto a $0$.
+In un passo composto, si conosce per induzione il comportamento della funzione stato prossimo: non resta che applicare iterativamente la funzione stato prossimo ad ogni comando, prendendo come stato iniziale lo stato prossimo del comando precedente.
+Anche per il comando $while$ si conosce la funzione stato prossimo per ipotesi induttiva, e basta applicare la funzione stato prossimo il minor numero di volte necesario a mandare a $0$ il registro di controllo. Lo stato prossimo di un comando $while$ è, quindi, il risultato ottenuto dopo queste applicazioni oppure indefinito, se non si può mandare a $0$ il registro di controllo.
+
+La semantica di $W-PROG$:
+
+$$\Psi_w(x) = Pro_0^{21}([w](w-in(x)))$$
 
 # Confronto tra sistemi di calcolo
 Vogliamo ora confrontare i due sistemi RAM e WHILE per vedere se possiamo trarre conclusioni interessanti sulla calcolabilità in due sistemi diversi.
