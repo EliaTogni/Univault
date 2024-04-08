@@ -1096,20 +1096,34 @@ Segue ora la definizione induttiva di $depth$:
 ![[AlberoBinarioDefinizioneRicorsiva.png]]
 
 Un esempio di esecuzione su una macchina $WHILE$.<br />
-A differenza della $RAM$, che aveva infiniti stati, non si ha bisogno di definire una funzione di stato: è sufficiente una lista di $21$ elementi contenente il valore dei registri. Lo spazio degli stati è quindi $\mathbb{N}^{21}$, di cui uno stato $\underline{x} \in \mathbb{N}^{21}$, e l'inizializzazione semplicemente imposta a $0$ tutti i registri tranne $x_1$ di input.<br />
+Innanzittuto, risulta necessario inizializzare la macchina ad uno stato iniziale.<br />
 Durante l'esecuzione, si eseguono una dopo l'altra le istruzioni che, essendo $w$ un linguaggio con strutture di controllo, non necessita di program counter.<br />
 Il programma di $w$ può arrestarsi se si è giunti al termine delle istruzioni, oppure può andare in loop.<br />
 L'output sarà quindi il contenuto di $x_0$ oppure $HALT$.
+
+### Stato di una macchina $WHILE$
+A differenza della $RAM$, che aveva infiniti stati, non si ha bisogno di definire una funzione di stato: è sufficiente una lista di $21$ elementi ($c_0, \dots, c_{20}$, ovvero il contenuto di $x_0, \dots, x_{20}$) contenente il valore dei registri. Lo spazio degli stati ha quindi dimensione $\mathbb{N}^{21}$, di cui uno stato $\underline{x} \in \mathbb{N}^{21}$, e l'inizializzazione $w-in(n)$ semplicemente imposta a $0$ tutti i registri tranne $x_1$ di input, il quale viene impostato ad $n$.
+
+-------------------------------------------------------------
 
 ### Funzione stato prossimo
 
 $$[\ ](\ ): \text{W-COM} \times \text{W-STATI} \to \text{W-STATI}_{\bot}$$
 
-La funzione **stato prossimo** è una funzione che, da un comando, preso in ingresso uno stato, resituisce lo stato prossimo: $[\mathbb{C}](\underline{x}) = \underline{x}'$. Questa funzione può essere definita induttivamente su tutte le strutture induttive del comando $\mathbb{C}$.
+La funzione **stato prossimo** è una funzione che, da un comando, preso in ingresso uno stato, resituisce lo stato prossimo: $[\mathbb{C}](\underline{x}) = \underline{x}'$.<br />
+Questa funzione può essere definita induttivamente su tutte le strutture induttive del comando $\mathbb{C}$.<br />
+Nei casi base è semplice definire la funzione stato prossimo: essa restituisce i $21$ valori invariati tranne quello indicato nell'assegnamento, il quale sarà incrementato/decrementato o posto a $0$.
 
-Nei casi base è semplice definire la funzione stato prossimo: semplicemente restituisce i $21$ valori invariati tranne quello indicato nell'assegnamento, che sarà incrementato/decrementato o posto a $0$.
+$$[x_k:= 0](\underline{x}) = \underline{y} \space \text{ con }y_i = \cases{x_i \quad \text{ se }i \neq k \cr \cr 0 \quad \text{ se } i= k}$$
+$$[x_k := x_j + 1 / \dot{-}1](\underline{x}) = \underline{y} \space \text{ con } y_i = \cases{x_i \quad \text{ se } i \neq k \cr \cr x_j +/\dot{-}1 \quad \text{ se }i = k}$$
+
 In un passo composto, si conosce per induzione il comportamento della funzione stato prossimo: non resta che applicare iterativamente la funzione stato prossimo ad ogni comando, prendendo come stato iniziale lo stato prossimo del comando precedente.
+
+$$[\textbf{begin } c_1, \dots c_m \textbf{ end}](\underline{x}) = [c_m](\dots([c_2]([c_1](\underline{x})))\dots) = \underline{y} = [c_1] \circ \dots \circ [c_m](\underline{x})$$
+
 Anche per il comando $while$ si conosce la funzione stato prossimo per ipotesi induttiva, e basta applicare la funzione stato prossimo il minor numero di volte necesario a mandare a $0$ il registro di controllo. Lo stato prossimo di un comando $while$ è, quindi, il risultato ottenuto dopo queste applicazioni oppure indefinito, se non si può mandare a $0$ il registro di controllo.
+
+$$[\textbf{while }x_n \neq 0 \textbf{ do } C](\underline{x}) = $$
 
 La semantica di $W-PROG$:
 
