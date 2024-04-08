@@ -1163,7 +1163,7 @@ $$F(WHILE) = \{f \in \mathbb{N}_{\bot}^{\mathbb{N}}: \exists W \in W-PROG, f = \
 -------------------------------------------------------------
 
 # Confronto tra sistemi di calcolo
-Si vuole ora confrontare i due sistemi $RAM$ e $WHILE$ per vedere se è possibile trarre conclusioni interessanti sulla calcolabilità in due sistemi diversi. Che relazione esiste tra $F(WHILE)$ e $F(RAM) = \{\phi: P \in PROG\}$?
+Si vuole ora confrontare i due sistemi $RAM$ e $WHILE$ per vedere se è possibile trarre conclusioni interessanti sulla calcolabilità in due sistemi diversi. Che relazione esiste tra $F(WHILE)$ e $F(RAM) = \{\varphi: P \in PROG\}$?
 1) una situazione del tipo $F(RAM) \subsetneq F(WHILE)$ sarebbe anche comprensibile vista l'estrema semplicita di $RAM$;
 2) situazioni del tipo $1$ e $2$ (osservabili nelle immagini sottostanti) sarebbero preoccupanti perchè il concetto di **calcolabile** dipenderebbe dalla macchina;
 
@@ -1174,34 +1174,33 @@ immagini 1 e 2
 
 In generale, si definiscono due sistemi di calcolo $\mathbb{C}_1$ e $\mathbb{C}_2$ e si definiscono le rispettive potenze computazionali:
 
-$$F(\mathbb{C}_1) = \{f \in \mathbb{N}_{\bot}^{\mathbb{N}}: \exists P_1 \in \text{$\mathbb{C}_1$-PROG}| f = \Psi_{P_1}\} = \{\Psi_{P_1}: P_1 \in \text{$\mathbb{C}_1$-PROG}\}$$
-$$F(\mathbb{C}_2) = \{f \in \mathbb{N}_{\bot}^{\mathbb{N}}: \exists P_2 \in \text{$\mathbb{C}_2$-PROG}| f = \varphi_{P_2}\} = \{\varphi_{P_2}: P_2 \in \text{$\mathbb{C}_2$-PROG}\}$$
+$$F(\mathbb{C}_1) = \{f \in \mathbb{N}_{\bot}^{\mathbb{N}}: \exists P_1 \in \text{$\mathbb{C}_1$-PROG} \vert f = \Psi_{P_1}\} = \{\Psi_{P_1}: P_1 \in \text{$\mathbb{C}_1$-PROG}\}$$
+$$F(\mathbb{C}_2) = \{f \in \mathbb{N}_{\bot}^{\mathbb{N}}: \exists P_2 \in \text{$\mathbb{C}_2$-PROG} \vert f = \varphi_{P_2}\} = \{\varphi_{P_2}: P_2 \in \text{$\mathbb{C}_2$-PROG}\}$$
 
 Il fine sarebbe dimostrare $F(\mathbb{C}_1) \subseteq F(\mathbb{C}_2)$, ovvero
 
 $$\forall f \in F(\mathbb{C}_1) \implies f \in F(\mathbb{C}_2)$$
 $$\exists P_1 \in \text{$\mathbb{C}_1$-PROG}:f = \Psi_{P_1} \implies \exists P_2 \in \text{$\mathbb{C}_2$-PROG}:f = \varphi_{P_2}$$
 
-In altre parole, per ogni programma del primo sistema ne esiste uno equivalente nel secondo (se esiste un programma che esprime una funzione $f$ nel primo sistema, esiste un altro programma nel secondo sistema che esprime la stessa funzione $f$). Tutto questo si può provare trovando un **compilatore** tra il primo e il secondo linguaggio.
+In altre parole, per ogni programma del primo sistema ne esiste uno equivalente nel secondo (se esiste un programma che esprime una funzione $f$ nel primo sistema, esiste un altro programma nel secondo sistema che esprime la stessa funzione $f$). Ancora, questo significa che il primo sistema non è più potente del secondo. Tutto questo si può provare trovando un **compilatore** tra il primo e il secondo linguaggio.
 
 ## Compilatore
-In matematica la compilazione si chiama "traduzione". Dati i sistemi $\mathbb{C}_1$ e $\mathbb{C}_2$, una traduzione tra i due è una funzione
+In matematica la **compilazione** si chiama **traduzione**. Dati i sistemi $\mathbb{C}_1$ e $\mathbb{C}_2$, una traduzione tra i due è una funzione
 
 $$T: \text{$\mathbb{C}_1$-PROG} \to \text{$\mathbb{C}_2$-PROG}$$
 
 tale che:
-1) sia programmabile effettivamente;
-2) sia completa;
-3) mantenga la semantica.
+1) sia **programmabile effettivamente**;
+2) sia **completa**, cioè traduca ogni $\mathbb{C}_1$ programma in un $\mathbb{C}_2$ programma;
+3) sia **corretta**, cioè mantenga la **semantica**.
 
-$\forall P \in \mathbb{C}_1\text{-PROG}: \varphi_{T(P)} = \Psi_P$  
-Teorema:  
-Se esiste $T: \mathbb{C}_1\text{-PROG} \to \mathbb{C}_2\text{-PROG}$ allora $F(\mathbb{C}_1) \subseteq F(\mathbb{C}_2)$  
-Dimostrazione:  
-$f \in F(\mathbb{C}_1) \implies \exists P \in \mathbb{C}_1\text{-PROG}: f = \Psi_P$. Applicando $T$ ottengo $T(P) \in \mathbb{C}_2\text{-PROG}$ con $\varphi_{T(P)} = \Psi_P = f$.  
-Esiste quindi un programma in $\mathbb{C}_2\text{-PROG}$ per $f$ per cui $f \in F(\mathbb{C}_2)$.  
+$$\forall P \in \mathbb{C}_1\text{-PROG}: \varphi_{T(P)} = \Psi_P$$ 
+Teorema: se esiste $T: \mathbb{C}_1\text{-PROG} \to \mathbb{C}_2\text{-PROG}$, allora $F(\mathbb{C}_1) \subseteq F(\mathbb{C}_2)$.<br />
+Il precedente teorema si dimostra nel seguente modo: $f \in F(\mathbb{C}_1) \implies \exists P \in \mathbb{C}_1\text{-PROG}: f = \Psi_P$. Applicando $T$ ottengo $T(P) \in \mathbb{C}_2\text{-PROG}$ (completezza) con $\varphi_{T(P)} = \Psi_P = f$ (correttezza).
 
-In un compilatore da WHILE a RAM possiamo tranquillamente spostare le 21 variabili nei primi 21 registri della macchina RAM senza problemi e usarli nello stesso modo.  
+Esiste, quindi, un programma in $\mathbb{C}_2\text{-PROG}$ per $f$ per cui $f \in F(\mathbb{C}_2)$.  
+
+In un compilatore da $WHILE$ a $RAM$ è possibile tranquillamente spostare le $21$ variabili nei primi $21$ registri della macchina RAM senza problemi e usarli nello stesso modo.  
 ### Comandi base
 Per l'azzeramento di una variabile:  
 $$\begin{aligned}
