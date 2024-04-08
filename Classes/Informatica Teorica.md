@@ -1121,17 +1121,58 @@ In un passo composto, si conosce per induzione il comportamento della funzione s
 
 $$[\textbf{begin } c_1, \dots c_m \textbf{ end}](\underline{x}) = [c_m](\dots([c_2]([c_1](\underline{x})))\dots) = \underline{y} = [c_1] \circ \dots \circ [c_m](\underline{x})$$
 
-Anche per il comando $while$ si conosce la funzione stato prossimo per ipotesi induttiva, e basta applicare la funzione stato prossimo il minor numero di volte necesario a mandare a $0$ il registro di controllo. Lo stato prossimo di un comando $while$ è, quindi, il risultato ottenuto dopo queste applicazioni oppure indefinito, se non si può mandare a $0$ il registro di controllo.
+Anche per il comando $while$ si conosce la funzione stato prossimo per ipotesi induttiva, e basta applicare la funzione stato prossimo il minor numero di iterazioni necessario ad azzerare la $k$-esima componente dello stato risultante durante l'iterazione del comando $C$. Lo stato prossimo di un comando $while$ è, quindi, il risultato ottenuto dopo queste applicazioni oppure indefinito, se non si può mandare a $0$ il registro di controllo.
 
-$$[\textbf{while }x_n \neq 0 \textbf{ do } C](\underline{x}) = $$
+$$\Big[\textbf{while }x_n \neq 0 \textbf{ do } C \Big ](\underline{x}) = [C](\dots([C]([C](\underline{x})))\dots) = \underline{y} = \cases{[C]^{e}(\underline{x}) \quad \text{ con } e = \mu t (k-\text{esima componente di} [C]^{(t)}(\underline{x})= 0) \cr \cr \bot \quad \text{ altrimenti}}$$
 
-La semantica di $W-PROG$:
+dove $\mu t(\dots)$ indica il più piccolo valore di $t$ per cui valga la condizione tra parentesi. Quindi $e$ deve essere uguale al più piccolo valore di $t$ per cui la $k$-esima componente di $[C]^{(t)}(\underline{x})$ sia uguale a $0$. Ovviamente, questo minimo numero di volte potrebbe non esistere e, in questo caso, si entra in un loop. 
 
-$$\Psi_w(x) = Pro_0^{21}([w](w-in(x)))$$
+E' possibile quindi definire la semantica di $W-PROG$ come:
+
+$$\Psi_w(x) = Pro(0,[w](w-in(x)))$$
+
+dove $Pro$ indica la proiezione $0$-esima, ovvero il contenuto dello stato $0$.
+
+Un esempio di programma $WHILE$.
+
+```pseudo
+	\begin{algorithm}
+	\caption{P}
+	\begin{algorithmic}
+	\State \textbf{begin}
+	\While{$x_1 \neq 0$}
+		\State \textbf{begin}
+		\State $x_0 := x_0 + 1$
+		\State $x_0 := x_0 + 1$
+		\State $x_1 := x_1 \dot{-} 1$
+		\State \textbf{end}
+    \EndWhile
+    \State \textbf{end}
+	\end{algorithmic}
+	\end{algorithm}
+```
+
+immagine esecuzione comando while
+
+-------------------------------------------------------------
+
+### Potenza computazionale del sistema $WHILE$
+
+$$F(WHILE) = \{f \in \mathbb{N}_{\bot}^{\mathbb{N}}: \exists W \in W-PROG, f = \Psi_W\} = \{\Psi_W : W \in W-PROG\}$$
+
+-------------------------------------------------------------
 
 # Confronto tra sistemi di calcolo
-Vogliamo ora confrontare i due sistemi RAM e WHILE per vedere se possiamo trarre conclusioni interessanti sulla calcolabilità in due sistemi diversi.
-In generale poniamo di avere due sistemi di calcolo $\mathbb{C}_1$ e $\mathbb{C}_2$ e definiamo i rispettivi poteri computazionali:
+Si vuole ora confrontare i due sistemi $RAM$ e $WHILE$ per vedere se è possibile trarre conclusioni interessanti sulla calcolabilità in due sistemi diversi. Che relazione esiste tra $F(WHILE)$ e $F(RAM) = \{\phi: P \in PROG\}$?
+1) una situazione del tipo $F(RAM) \subsetneq F(WHILE)$ sarebbe anche comprensibile vista l'estrema semplicita di $RAM$;
+2) situazioni del tipo $1$ e $2$ (osservabili nelle immagini sottostanti) sarebbero preoccupanti perchè il concetto di **calcolabile** dipenderebbe dalla macchina;
+
+immagini 1 e 2
+
+3) una situazione del tipo $F(WHILE) \nsubseteq F(RAM)$ sarebbe sorprendente poichè $WHILE$ sembrerebbe più sofisticato di $RAM$;
+4) $F(WHILE) = F(RAM)$ implicherebbe che la calcolabilità non dipenda dalla tecnologia. Le due macchine sono totalmente diverse e, quindi, la calcolabilità dipenderebbe dal problema.
+
+In generale, si definiscono due sistemi di calcolo $\mathbb{C}_1$ e $\mathbb{C}_2$ e si definiscono le rispettive potenze computazionali:
 
 $$F(\mathbb{C}_1) = \{f \in \mathbb{N}_{\bot}^{\mathbb{N}}: \exists P_1 \in \text{$\mathbb{C}_1$-PROG}| f = \Psi_{P_1}\} = \{\Psi_{P_1}: P_1 \in \text{$\mathbb{C}_1$-PROG}\}$$
 $$F(\mathbb{C}_2) = \{f \in \mathbb{N}_{\bot}^{\mathbb{N}}: \exists P_2 \in \text{$\mathbb{C}_2$-PROG}| f = \varphi_{P_2}\} = \{\varphi_{P_2}: P_2 \in \text{$\mathbb{C}_2$-PROG}\}$$
@@ -1141,8 +1182,7 @@ Il fine sarebbe dimostrare $F(\mathbb{C}_1) \subseteq F(\mathbb{C}_2)$, ovvero
 $$\forall f \in F(\mathbb{C}_1) \implies f \in F(\mathbb{C}_2)$$
 $$\exists P_1 \in \text{$\mathbb{C}_1$-PROG}:f = \Psi_{P_1} \implies \exists P_2 \in \text{$\mathbb{C}_2$-PROG}:f = \varphi_{P_2}$$
 
-In altre parole, per ogni programma del primo sistema ne esiste uno equivalente nel secondo (se esiste un programma che esprime una funzione $f$ nel primo sistema, esiste un altro programma nel secondo sistema che esprime la stessa funzione $f$).
-Tutto questo si può provare trovando un _compilatore_ tra il primo e il secondo linguaggio.
+In altre parole, per ogni programma del primo sistema ne esiste uno equivalente nel secondo (se esiste un programma che esprime una funzione $f$ nel primo sistema, esiste un altro programma nel secondo sistema che esprime la stessa funzione $f$). Tutto questo si può provare trovando un **compilatore** tra il primo e il secondo linguaggio.
 
 ## Compilatore
 In matematica la compilazione si chiama "traduzione". Dati i sistemi $\mathbb{C}_1$ e $\mathbb{C}_2$, una traduzione tra i due è una funzione
