@@ -819,7 +819,7 @@ $$\theta = \int_{0}^{1} g(x)dx$$
 immagine curva
 
 To approximate the area under the curve using a Monte Carlo method simply means to throw points into the rectangle contanining the function and calculate the ratio of successes over total throws. Each point is described by a couple of coordinates $(x, y)$ and to understand if it's below or above the curve, the value $\widehat{y} = f(x)$ will be compute and then $\widehat{y}$ will be compared with $y$.
-If $y \leq \widehat{y}$, a counter will be increased by $1$ and by $0$ otherwise. 
+If $y \leq \widehat{y}$, a counter will be increased by $1$ and by $0$ otherwise.
 
 How to get precision up to $k$-th digit?
 
@@ -866,9 +866,6 @@ While this theoretical result seems extremely useful, it assumes to have at disp
 -------------------------------------------------------------
 
 ## Generating Random Variables
-
-
-
 ### Main families of Random Variables
 There are certain types of random variables that frequently appear in applications. In this section we survey some of the discrete ones.
 #### Discrete Random Variables
@@ -896,12 +893,38 @@ Computing this probability incrementally.
 $$P[X = i] = \binom{n}{k} p^i (1 - p)^{n - i} = \frac{n!}{i! (n - i)!} p^i(1 - p)^{n - i}$$
 $$P[X = i + 1] = \frac{n!}{(i + 1)!(n  - i - 1)!} p^{i + 1}(1 - p)^{n - i - 1}$$
 
-Expected Value $\mathbb{E}[X] = np$
-Variance $Var[X]$
+Expected Value $\mathbb{E}[X] = np$.<br />
+Variance $Var[X] = np (1 - p)$
 
 -------------------------------------------------------------
 
 ##### Poisson Random Variable
+
+Relation between Poisson Random Variables and Binomial Random Variables. The difference is that in the Binomial ones, $n$ is a reasonable number while in the Poisson one, $n$ is a huge number.
+
+$\lambda = n \cdot p$ is called **rate** 
+
+Expected Value $\mathbb{E}[X] = np = \lambda$. <br />
+Variance $Var[X] = np(1 - p) = n(p - p^2)$. But if $p$ is a small value, $p^2$ tends to $0$ and, therefore, it can be dropped. The remaining product is $np$ which is again $\lambda$.
+
+$$P[X = i] = \binom{n}{i}p^i(1-p)^{n-i} = \frac{n!}{(n - i)!n!}p^i (1-p)^{n-i}$$
+
+Knowing that $\lambda = np$ and, therefore, $p = \frac{\lambda}{n}$
+
+$$\frac{n!}{(n - i)!n!}\frac{\lambda^i}{n^i} (1-\frac{\lambda}{n})^{n-i}$$
+
+fine manipolazione
+
+Another interesting result about Poisson Random Variables is that they are **invariant** to aggregation, that is, 
+
+proof:
+$$P[X_A = n, X_B = m] =$$
+$$= P[X_A = n, X_B = m \vert X = n + m] \cdot P[X = n + m] + P[X_A = n, X_B = m \vert X \neq n + m] \cdot P[X \neq n + m] = $$
+$$= P[X_A = n, X_B = m \vert X = n + m] \cdot P[X = n + m] + 0 =$$
+
+$\vdots$
+
+Random generation algorithm for a Poisson Random Variable.
 
 
 -------------------------------------------------------------

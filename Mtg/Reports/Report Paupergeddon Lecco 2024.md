@@ -69,6 +69,8 @@ Side Out: $2$x Kuldotha Rebirth, $2$x Goblin Bushwacker, $3$x Chain Lightning
 
 G$2$ mulligo a $6$ e tengo una mano con un Blast Runner, un Implement e uno Smash to Smithereens, sperando che l'oppo non parta a cannone. Per sua sfortuna, vedo un Cast into the Fire e un altro Smash to Smithereens, togliendogli tutte le lande e frantumandogli il sogno del $3-0$. Al quarto turno senza lande in gioco, Clemens concede con un velo di rassegnazione nello sguardo.
 
+fotina lega pauper brescia
+
 -------------------------------------------------------------
 
 ## Turno 4 - Walls Combo (Andrea Migliavacca)
@@ -77,6 +79,8 @@ G$2$ mulligo a $6$ e tengo una mano con un Blast Runner, un Implement e uno Smas
 Mentre facciamo conoscenza, Andrea mi rivela di aver perso la Win&In al Pauperfest contro il buon Roberto Brognoli, mio compare di lega. Per non deludere Brogna, decido di vincere pure io. Vinco il dado e già sono contento ma forse in questo matchup avrei vinto in qualsiasi caso. L'oppo parte di Foresta into Orochi Leafcaller, facendomi presupporre di trovarmi contro Muri Combo. Dico facendomi presupporre perchè, giocando pauper da poco, non ho mai avuto modo di giocare contro il mazzo in questione. So, però, che dovrei stare sopra in maniera non indifferente. Per non saper nè leggere nè scrivere, gli bolto due pezzi e picchio di Kuldotha into Bushwacker, mettendo in saccoccia G$1$ senza che lui abbia modo di sviluppare alcun gameplay.
 
 Non avendo nulla da sidare, applico il famoso inganno della cadrega e fingo di mettere dentro nel mazzo $8$ carte dalla side, andando poi ovviamente a toglierle. G$2$ si ripete esattamente come G$1$ e mi trovo a vincere in soli $20$ minuti. Colmerò quindi questa attesa con una pizzetta del baretto del Palataurus.
+
+
 
 -------------------------------------------------------------
 
@@ -91,7 +95,7 @@ Side Out: $3$x Chain Lightning, $2$x Experimental Synthesizer, $2$ Bushwacker, $
 
 G$2$ parto mulligando e tengo a $6$ una mano con Gorilla Shaman, un Seal of Fire e la partenza canonica di Fornace into Lara Croft. Aspetto di calare lo Shaman fino a turno $3$, con l'oppo tapped out. In questo modo riesco a togliergli l'unica landa non indistruttibile e un Clue token, rallentandolo notevolmente. Il turno successivo Nicolò si trova costretto a giocare un'altra landa artefatto per poter sviluppare il suo gameplan ma, slandato e senza board, viene travolto dai miei token Goblin gialli e incazzati.
 
-G$3$ sono on the draw ma tengo a $7$ una mano con un Goblin Blast Runner, un Implement, due lande, una Kuldotha, un Seal of Fire e un Demand Answers. Purtroppo la varianza decide di colpire in questo fatidico momento e pesco letteralmente $8$ lande di fila. Cerco di mantenere la mia migliore faccia da poker anche quando, scartando landa per castare Demand Answers, pesco altre due Montagne ma dentro di me la speranza del $5-0$ vacilla. Continuo comunque a giocare, nella speranza che l'oppo si faccia intimorire dall'innumerevole quantità di carte nella mia mano. Finalmente, Nicolò appoggia con timidezza un Glitters su Thraben e lì concedo, privo di risposte. Alla mia concessione, mi rivela la mano con $3$ Hydroblast ed un altro Glitters. Io gli rivelo $4$ Montagne e ci stringiamo la mano mentre i miei fratm che hanno droppato e assistito al match cercano di consolarmi per la sfiga avuta.
+G$3$ sono on the draw ma tengo a $7$ una mano con un Goblin Blast Runner, un Implement, due lande, una Kuldotha, un Seal of Fire e un Demand Answers. Purtroppo la varianza decide di colpire in questo fatidico momento e pesco letteralmente $8$ lande di fila. Cerco di mantenere la mia migliore faccia da poker anche quando, scartando landa per castare Demand Answers, pesco altre due Montagne ma dentro di me la speranza del $5-0$ vacilla. Continuo comunque a giocare, nella speranza che l'oppo si faccia intimorire dall'innumerevole quantità di carte nella mia mano. Finalmente, Nicolò appoggia con timidezza un Glitters su Thraben e lì devo sfoderare la mia mossa migliore, aka quella del granchio. Alla mia concessione, Nicolò mi rivela la mano con $3$ Hydroblast ed un altro Glitters. Io gli rivelo $4$ Montagne e ci stringiamo la mano mentre i miei fratm che hanno droppato e assistito al match cercano di consolarmi per la sfiga avuta.
 
 -------------------------------------------------------------
 
@@ -112,17 +116,39 @@ Unico vantaggio di questo turno misero è l'aver avuto al tavolo accanto Diego B
 
 E' ormai notte fonda in quel di Lecco e innumerevoli disperati stanno cercando in tutti i modi di accaparrarsi gli ultimi posti per il giorno successivo. Alle mie orecchie sopraggiungono vani tentativi di corruzione per mezzo del vil denaro, favori sessuali e figurine sbrilluccicanti. Mi siedo al tavolo e la prima cosa che Luca mi chiede è se sono sicuro di voler giocare, nella speranza che io conceda prematuramente. 
 
+G$1$ parto on the play con un barilotto che il turno successivo riesce a strappare $3$ danni grazie ad un seal of fire su Thraben. Quando l'oppo inizia ad appoggiare uno dopo l'altro i suoi Lunarch Inspector mi rendo conto che dovrò chiuderla in fretta ma la sua board troppo sviluppata me lo impedisce. Riesco a portarlo a $4$ quando risolve altri pezzi in board che gli permettono di avere lethal.
 
+Ammetto di non ricordarmi assolutamente G$2$ ma dal foglietto segnapunti posso solo leggere $\cancel{20}$, $\cancel{19}$, $\cancel{15}$, $\cancel{10}$, $\cancel{3}$. Penso il game sia durato circa $10$ minuti, sono andato troppo veloce e Luca non ha avuto modo di rispondere.
+
+G$3$ parto on the draw con Fornace into doppio Tomb Raider. Luca cerca di mettere una pezza con dei bloccanti ma un Tectonic Hazard pulisce il suo lato di board e lo convince a concedere prima del tempo.
+
+Contro ogni aspettativa, mi qualifico per Day$2$ nonostante il mio essere scarso come l'acqua in Africa.
 
 -------------------------------------------------------------
 
 ## Turno 8 - Azorius Glitters (Stefano Cucciniello)
 **Risultato**: $0$ - $2$
 
+Relativamente fresco, mi concedo un caffettino e una brioche con il mio brother in Christ Davide Barnabò, anche lui qualificato a Day$2$ all'ultimo turno, e con il mio fratm Paolo Bacchetti, che ha missato la qualificazione per un solo punto chiudendo a $14$ il giorno precedente. Rifocillati, ci reimbarchiamo alla volta del Palataurus per ricongiungerci con Enrico Colzi, altro compagno di Lega anche lui $5-2$. Scherzando, pronostico un fratricidio in giornata e così sarà: turno $9$ Davide e Enry si sfideranno, vedendo Davide vincitore.
+
+G$1$ mi siedo al tavolo contro Stefano, che mi rivelerà più tardi di non essere un pauperista ed aver scelto di giocare Glitters per non avere lui il peso di dover rispondere alle minacce dell'oppo. Perdo il dado tenendo una mano a $6$ relativamente accettabile, di cui ricordo due lande, un Seal of Fire, un Voldaren Epicure e un Blast Runner. Stefano parte di Ancient Den, Tottero e Thraben: partiamo male. Il potersi sviluppare in larghezza con facilità di Glitters mi mette seriamente in difficoltà. In poco tempo, l'oppo riesce a fare vantaggio carte con le sue copie di Of One Mind e portarmi a $0$ picchiandomi di Enforcer e Inspector.
+
+G$2$ tengo a $7$ con un Gorilla Shaman e uno Smash to Smithereens ma, per mia sfortuna, Stefano vede solo le lande indistruttibili fino a quando il piano di slandare l'oppo non ha più grande utilità. In early mi appoggia due Gingerbrute che si rubano svariati punti vita. Io nel frattempo risolvo due Kuldotha per cercare di portarmi a casa il game ma un Glitters su Novice mi costringe a tenermi sempre dei paranti. Riesco a portare l'oppo a $8$ punti vita avendo ancora in mano un Bolt e una Fireblast ma non pescherò mai il necessario fargli l'ultimo punto di danno.
+
+Sconsolato vado a cercare Davide, sperando che con il suo fidato Familiars abbia fatto di meglio, per poi scoprire che aveva brutalmente perso da uno degli unici due Ponza a Day$2$. Scoraggiati, ci rassegnamo a non poter più fare perfect.
+
 -------------------------------------------------------------
 
 ## Turno 9 - Boros Glitters (Michele Alloni)
 **Risultato**: $2$ - $0$
+
+Mentre temevo di essere pairato contro Davide o Enrico, in quanti tutti e $3$ avevamo bellamente perso il primo game, leggo il nome dell'oppo e mi rendo conto di conoscerlo in quanto esponente della Martesana nonchè giocatore di un negozio che frequentavo tempo addietro.
+
+I miei ricordi dei game da questo punto si fanno sempre più nebbiosi, mischiandosi gli uni con gli altri, quindi chiedo scusa per eventuali omissioni o errori.
+
+Perdo il dado e Michele parte di terra tappata Boros. Io rispondo con l'ormai consolidata coppia Fornace into Tomb Raider per portarlo subito a $18$ e già da qui il game non prende una bella piega per l'oppo. Michele prova a boltarmi dei pezzi per evitare di finire troppo low ma continuo a piegare fino a quando non riesco a chiudere di botti.
+
+G$2$ il game prosegue alla stessa maniera. A $9$ punti vita, l'oppo cala un Krark-Clan Shaman e ci attacca Glitters, svuotandosi la mano e rendendolo un $4/4$. Io, con in board un Epicure e un Blast Runner, non esito a saccare due delle mie 5 montagne nel suo turno per poter togliere la minaccia e potenzialmente attaccare con il Bushwacker che ho in mano. Michele decide di lasciar morire il suo goblin senza sacrificare alcun artefatto (cioè le sue lande) e da lì non riesce a pescare alcuna soluzione.
 
 -------------------------------------------------------------
 
