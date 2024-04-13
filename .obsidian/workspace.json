@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Mtg/Reports/Report Paupergeddon Lecco 2024.md",
+                "file": "Classes/Informatica Teorica.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Mtg/Reports/Report Paupergeddon Lecco 2024.md",
+                "file": "Classes/Informatica Teorica.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,6 +117,8 @@
   },
   "active": "de76fb91e8f8a526",
   "lastOpenFiles": [
+    "Classes/Simulation.md",
+    "Mtg/Reports/Report Paupergeddon Lecco 2024.md",
     "Images/FlettoIMuscoli.jpg",
     "Images/spider-man-pointing-meme.jpeg",
     "Images/ttsr-8-goblin.png",
@@ -135,13 +137,11 @@
     "Classes/Algoritmi Paralleli e Distribuiti.md",
     "Classes/3D Videogames.md",
     "Classes/Informatica Teorica.md",
-    "Classes/Simulation.md",
     "Images/EsempioProfonditàAlbero.png",
     "Images/AlberoBinarioDefinizioneRicorsiva.png",
     "Images/AlberiBinari.png",
     "Images/EsecuzioneProgrammaP.png",
     "Images/Stato.png",
-    "Images/EffettoIstruzione.png",
     "Lexicon/Allampanato.md",
     "Lexicon/Sicumera.md",
     "Lexicon/Sovente.md",
@@ -153,7 +153,6 @@
     "Lexicon/Maggiociondolo.md",
     "Articles/Image Classification with Classic and Deep Learning Techniques.md",
     "Lexicon/Ammezzato.md",
-    "Mtg/Reports/Report Paupergeddon Lecco 2024.md",
     "Mtg/Reports",
     "Mtg",
     "Untitled.canvas",
