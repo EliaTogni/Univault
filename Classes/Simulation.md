@@ -1065,3 +1065,10 @@ def RandomPerm(v):
 ```
 
 -------------------------------------------------------------
+
+
+
+simulation: rate -> interarrival (intertrigger) time are distributed with an exponential random variable.
+The expected time between a trigger and another will be $1/rate$.
+
+10 per days e.g.

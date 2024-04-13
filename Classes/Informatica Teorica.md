@@ -1200,9 +1200,23 @@ Il precedente teorema si dimostra nel seguente modo: $f \in F(\mathbb{C}_1) \imp
 
 Esiste, quindi, un programma in $\mathbb{C}_2\text{-PROG}$ per $f$ per cui $f \in F(\mathbb{C}_2)$.  
 
-In un compilatore da $WHILE$ a $RAM$ è possibile tranquillamente spostare le $21$ variabili nei primi $21$ registri della macchina RAM senza problemi e usarli nello stesso modo.  
-### Comandi base
-Per l'azzeramento di una variabile:  
+In un compilatore da $WHILE$ a $RAM$ è possibile tranquillamente spostare le $21$ variabili nei primi $21$ registri della macchina RAM senza problemi e usarli nello stesso modo.
+
+Si mostrerà quindi una traduzione $Comp: W-PROG \to PROG$. Per comodità, verrà utilizzato il linguaggio $RAM$ etichettato:
+
+immagine slide 1 lezione 9
+
+Ovviamente, il $RAM$ etichettato non è più potente del $RAM$ puro. E' solo una questione di comodità e qualunque $RAM$ etichettato può essere banalmente tradotto in $RAM$ puro.
+
+### Forma del Compilatore $Comp: W-PROG \to PROG$
+$W-PROG$ è un insieme costruito induttivamente, quindi $Comp$ può essere definito anch'esso induttivamente:
+1) mostrando come compilare gli assegnamenti (**base**);
+2) assumendo data per ipotesi induttiva $Comp(C_1), \dots, Comp(C_m)$ e mostrando come compilare il compilare il comando composto **begin** $C_1; \dots; C_m$ **end**;
+3) assumendo data per ipotesi induttiva $Comp(C)$ e mostrando come compilare il comando **while**: **while** $X_n \neq 0$ **do** $C$.
+
+#### Comandi base
+Per l'azzeramento di una variabile:
+
 $$\begin{aligned}
 Comp(x_k := 0) =\ & LP: \text{IF } R_k = 0 \text{ THEN GOTO EX} \\
 &\quad \quad R_k \leftarrow R_k \dot-1 \\
@@ -1210,7 +1224,28 @@ Comp(x_k := 0) =\ & LP: \text{IF } R_k = 0 \text{ THEN GOTO EX} \\
 &EX: R_k \leftarrow R_k \dot- 1 \\
 \end{aligned}$$
 
-Nel caso di incremento/decremento, se $k = j$ abbiamo una istruzione apposita, quindi consideriamo solo il caso $k \neq j$:  
+```pseudo
+	\begin{algorithm}
+	\caption{Comp $x_k := 0$}
+	\begin{algorithmic}
+		\State \textbf{loop}
+		\If{$R_k = 0$}
+			\State GO TO \textbf{exit}	
+        \EndIf
+        \State $R_{21} \leftarrow \dot{-} 1$
+		\If{$R_{21} == 0$}
+			\State GO TO \textbf{loop}
+        \EndIf
+        \State \textbf{exit}
+        \State $R_k \leftarrow R_k \dot{-} 1$
+	\end{algorithmic}
+	\end{algorithm}
+```
+
+Si noti che $R_{21}$ non verrrà mai utilizzato per tradurre variabili che al massimo sono $X_{20}$. Lo si può assumere come sempre azzerato per salti incondizionati.
+
+Nel caso di incremento/decremento, se $k = j$ si ha un'istruzione apposita, quindi si considera solo il caso $k \neq j$:
+
 $$\begin{aligned}
 Comp(x_k := x_j +/\dot- 1) =\ & LP: \text{IF } R_j = 0 \text{ THEN GOTO EX1} \\
 &\quad \quad R_j \leftarrow R_j \dot- 1 \\
@@ -1230,16 +1265,22 @@ Comp(x_k := x_j +/\dot- 1) =\ & LP: \text{IF } R_j = 0 \text{ THEN GOTO EX1} \\
 & EX3: R_k \leftarrow R_k +/\dot- 1 \\
 \end{aligned}$$
 
-### Comando composto
-Per ipotesi induttiva, conosco le compilazioni dei casi base che compongono un comando composto:  
+-------------------------------------------------------------
+
+#### Comando composto
+Per ipotesi induttiva, conosco le compilazioni dei casi base che compongono un comando composto:
+
 $$\begin{aligned}
 Comp(begin\ C_1; \dots, C_m\ end) =\ & Comp(C_1); \\
 & \vdots \\
 & Comp(C_m); \\
 \end{aligned}$$
 
-### Comando while
-Per ipotesi induttiva, assumo nota la compilazione di un comando composto
+-------------------------------------------------------------
+
+#### Comando while
+Per ipotesi induttiva, assumo nota la compilazione di un comando composto:
+
 $$\begin{aligned}
 Comp(\text{WHILE}\ x_k := 0) =\ & LP: \text{IF } R_k = 0 \text{ THEN GOTO EX} \\
 &\quad \quad Comp(C) \\
@@ -1247,14 +1288,18 @@ Comp(\text{WHILE}\ x_k := 0) =\ & LP: \text{IF } R_k = 0 \text{ THEN GOTO EX} \\
 &EX: R_k \leftarrow R_k \dot- 1 \\
 \end{aligned}$$
 
+-------------------------------------------------------------
+
 ## Conclusione
-Questa traduzione è programmabile, completa e corretta: ciò significa che è effettivamente un compilatore tra i due linguaggi.  
-Questo inoltre dimostra che la potenza computazionale di WHILE è inclusa in quella di RAM.  
+Questa traduzione è programmabile, completa e corretta: ciò significa che è effettivamente un compilatore tra i due linguaggi. Questo, inoltre, dimostra che la potenza computazionale di $WHILE$ è inclusa in quella di $RAM$.  
+
+-------------------------------------------------------------
 
 # Interprete
-Per dimostrare l'altro verso dell'inclusione, e quindi controllare se WHILE è incluso propriamente in RAM o se sono equipotenti, impiegheremo un _interprete_. Un interprete $I$ differisce da un compilatore in quanto è un programma scritto nel linguaggio di destinazione che permette di eseguire una istruzione alla volta del linguaggio di partenza.  
+Per dimostrare l'altro verso dell'inclusione, e quindi controllare se $WHILE$ è incluso propriamente in $RAM$ o se sono equipotenti, impiegheremo un **interprete**. Un interprete $I$ differisce da un compilatore in quanto è un programma scritto nel linguaggio di destinazione che permette di eseguire una istruzione alla volta del linguaggio di partenza.
+
 ## Macro-while
-Per comodità useremo una versione del WHILE con alcune macro per semplificare la scrittura del codice:  
+Per comodità useremo una versione del WHILE con alcune macro per semplificare la scrittura del codice:
 - $x_k := x_j + x_i$;
 - $x_k := <x_j, x_i>$;
 - $x_k := <a_1, \dots, a_n>$;
