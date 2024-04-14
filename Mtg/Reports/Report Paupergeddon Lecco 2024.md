@@ -4,6 +4,8 @@
 "Anno:": "2024"
 "Link:":
 ---
+
+Ciao a tutti! Mi chiamo Elia Togni, in arte bonsoir_elio_t, e ho scritto questo report perchè ci tenevo particolamente a condividere la mia prima esperienza competitiva di questa portata.
 # Lista
 **MAINBOARD**<br />
 $4$ Goblin Blast-Runner<br />
@@ -29,6 +31,10 @@ $3$ Smash to Smithereens<br />
 $2$ Cast into the Fire<br />
 $2$ Relic of Progenitus
 
+Senza dilungarmi troppo, la scelta di giocare le due copie di Demand Answers è motivata dal fatto che mi ci sono trovato bene nella fase di playtesting. Non gioco le galvaniche in quanto tendono troppo frequentemente a fare $2$ danni invece che $4$ e spesso mi portano a fare giocate subottimali o a sequenziare in maniera non efficiente il cast delle spell per poter ottenere metalcraft. Ho ritenuto non fosse un vantaggio sufficiente e mi ha permesso di giocare quindi Demand Answers in serenità e di avere spazio per più copie di Seal of Fire, che trovo migliori molto il matchup contro Glitters. Le $18$ lande invece delle $17$ tipiche della lista di Selkcahs sono dovute al fatto che con una landa in più riduco del $5\%$ la probabilità di vedere mani monolanda e io tendo a tenere monolanda troppo spesso quindi era per impedirmi il più possibile di fare scelte rischiose.
+
+Per quanto riguarda la side, le $2$ copie di Cast into the Fire sono a posteriori state un errore ma, in sincerità, mi aspettavo di vedere molti più Grixis Affinity. Il resto della side è relativamente stock, con i Gorilla Shaman per Glitters e Grixis.
+
 -------------------------------------------------------------
 
 # Pairings
@@ -52,7 +58,7 @@ Già a turno $2$ sto ai tavoli alti: di fianco a me gioca Heisen e così ho modo
 
 Side In: $3$x Tectonic Hazard, $2$x Cast into the Fire.
 
-Side Out: $1$x Bushwhacker, $4$x Chain Lightning.
+Side Out: $1$x Goblin Bushwhacker, $4$x Chain Lightning.
 
 Mentre sidiamo, io e Stefano chiaccheriamo un po' e mi lascio sfuggire di come nel mirror fossi in vantaggio in quanto fossi partito on the draw, come insegna il buon Selkcahs. Stefano non se lo fa ripetere due volte e decide quindi di partire lui stesso on the draw. Scelta che si sarebbe rivelata saggia se non avesse tenuto monolanda artefatto, probabilmente ingolosito da Fornace into Tomb Raider. Riesco a risolvere il goblin pirata in fretta e, non appena mi rendo conto che turno $2$ Stefano ha missato il land drop, cerco di capitalizzare il mio vantaggio. Con due lande in board e una in mano, calo Synth che esilia Cast into the Fire. Gli esilio l'unica landa che ha e da qui il game procede facilmente. Noto inoltre che non ha tolto i Chain Lightning mentre io sì, quindi cerco sempre di passare il turno con due mana open, nell'eventualità di poterne approfittare e fare $0 \times 1$.
 
@@ -93,7 +99,7 @@ Tutto ringalluzzito dai risultati ottenuti, mi siedo al tavolo $9$ con l'aria di
 
 Side In: $2$x Gorilla Shaman, $3$x Smash to Smithereens, $2$x Red Elemental Blast (Avrei messo il terzo REB se avessi visto Turn Aside G$2$).
 
-Side Out: $3$x Chain Lightning, $2$x Experimental Synthesizer, $2$ Bushwacker, $1$x Kuldotha
+Side Out: $3$x Chain Lightning, $2$x Experimental Synthesizer, $2$ Goblin Bushwacker, $1$x Kuldotha Rebirth
 
 G$2$ parto mulligando e tengo a $6$ una mano con Gorilla Shaman, un Seal of Fire e la partenza canonica di Fornace into Lara Croft. Aspetto di calare lo Shaman fino a turno $3$, con l'oppo tapped out. In questo modo riesco a togliergli l'unica landa non indistruttibile e un Clue token, rallentandolo notevolmente. Il turno successivo Nicolò si trova costretto a giocare un'altra landa artefatto per poter sviluppare il suo gameplan ma, slandato e senza board, viene travolto dai miei token Goblin gialli e incazzati.
 
@@ -125,13 +131,13 @@ E' ormai notte fonda in quel di Lecco e innumerevoli disperati stanno cercando i
 
 G$1$ parto on the play con un barilotto che il turno successivo riesce a strappare $3$ danni grazie ad un seal of fire su Thraben. Quando l'oppo inizia ad appoggiare uno dopo l'altro i suoi Lunarch Inspector mi rendo conto che dovrò chiuderla in fretta ma la sua board troppo sviluppata me lo impedisce. Riesco a portarlo a $4$ quando risolve altri pezzi in board che gli permettono di avere lethal.
 
-Side In: $2$x Gorilla Shaman, $2$x Cast into the Fire, $3$x Smash to Smithereens
+Side In: $2$x Relic of Progenitus, $3$x Tectonic Hazard
 
-Side Out: $2$x Kuldotha Rebirth, $2$x Goblin Bushwacker, $3$x Chain Light
+Side Out: $2$x Implement of Combustion, $3$x Goblin Blast Runner
 
 Ammetto di non ricordarmi assolutamente G$2$ ma dal foglietto segnapunti posso solo leggere $\cancel{20}$, $\cancel{19}$, $\cancel{15}$, $\cancel{10}$, $\cancel{3}$. Penso il game sia durato circa $5$ minuti, sono andato troppo veloce e Luca non ha avuto modo di rispondere.
 
-G$3$ parto on the draw con Fornace into doppio Tomb Raider. Luca cerca di mettere una pezza con dei bloccanti ma un Tectonic Hazard pulisce il suo lato di board e lo convince a concedere prima del tempo.
+G$3$ parto on the draw con Fornace into doppio Tomb Raider. Luca cerca di mettere una pezza con dei bloccanti $1/1$ ma un Tectonic Hazard pulisce il suo lato di board e lo convince a concedere prima del tempo.
 
 Contro ogni aspettativa, mi qualifico per Day$2$ nonostante il mio essere scarso come l'acqua in Africa.
 
@@ -142,11 +148,11 @@ Contro ogni aspettativa, mi qualifico per Day$2$ nonostante il mio essere scarso
 
 Relativamente fresco, mi concedo un caffettino e una brioche con il mio brother in Christ Davide, anche lui qualificato a Day$2$ all'ultimo turno, e con il mio fratm Paolo, che ha missato la qualificazione per un solo punto chiudendo a $14$ il giorno precedente. Rifocillati, ci reimbarchiamo alla volta del Palataurus per ricongiungerci con Enrico Colzi, altro compagno di Lega anche lui $5-2$. Scherzando, pronostico un fratricidio in giornata e così sarà: turno $9$ Davide e Enry si sfideranno, vedendo Davide vincitore.
 
-G$1$ mi siedo al tavolo contro Stefano, che mi rivelerà più tardi di non essere un pauperista bensì un giocatore di Legacy ed aver scelto di giocare Glitters per non avere lui il peso di dover rispondere alle minacce dell'oppo. Perdo il dado tenendo una mano a $6$ relativamente accettabile, di cui ricordo due lande, un Seal of Fire, un Voldaren Epicure e un Blast Runner. Stefano parte di Ancient Den, Tottero e Thraben: partiamo male. Il potersi sviluppare in larghezza con facilità di Glitters mi mette seriamente in difficoltà. In poco tempo, l'oppo riesce a fare vantaggio carte con le sue copie di Of One Mind e portarmi a $0$ picchiandomi di Enforcer e Inspector.
+G$1$ mi siedo al tavolo contro Stefano, che mi rivelerà più tardi di non essere un pauperista bensì un giocatore di Legacy ed aver scelto di giocare Glitters per non avere lui il peso di dover rispondere alle minacce dell'oppo. "Come dargli torto?", penso tra me e me, mentre mi picchia con una Thraben glitterata. Perdo il dado tenendo una mano a $6$ relativamente accettabile, di cui ricordo due lande, un Seal of Fire, un Voldaren Epicure e un Blast Runner. Stefano parte di Ancient Den, Tottero e Thraben: partiamo male. Il potersi sviluppare in larghezza con facilità di Glitters mi mette seriamente in difficoltà. In poco tempo, l'oppo riesce a fare vantaggio carte con le sue copie di Of One Mind e portarmi a $0$ picchiandomi di Enforcer e Inspector.
 
 Side In: $2$x Gorilla Shaman, 2x Red Elemental Blast, $3$x Smash to Smithereens
 
-Side Out: $3$x Chain Lightning, $2$x Experimental Synthesizer, $2$ Bushwacker, $1$x Kuldotha
+Side Out: $3$x Chain Lightning, $2$x Experimental Synthesizer, $2$ Goblin Bushwacker, $1$x Kuldotha Rebirth
 
 G$2$ tengo a $7$ con un Gorilla Shaman e uno Smash to Smithereens ma, per mia sfortuna, Stefano vede solo le lande indistruttibili fino a quando il piano di slandare l'oppo non ha più grande utilità. In early mi appoggia due Gingerbrute che si rubano svariati punti vita. Io nel frattempo risolvo due Kuldotha per cercare di portarmi a casa il game ma un Glitters su Novice mi costringe a tenermi sempre dei paranti. Riesco a portare l'oppo a $8$ punti vita avendo ancora in mano un Bolt e una Fireblast ma non pescherò mai il necessario fargli l'ultimo punto di danno.
 
@@ -195,7 +201,7 @@ Parte Simone con la classica Thraben, alla quale rispondo con un Blast Runner. F
 
 Side In: $2$x Gorilla Shaman, $3$x Smash to Smithereens, $3$x Red Elemental Blast.
 
-Side Out: $3$x Chain Lightning, $2$x Experimental Synthesizer, $2$ Bushwacker, $1$x Kuldotha
+Side Out: $3$x Chain Lightning, $2$x Experimental Synthesizer, $2$ Goblin Bushwacker, $1$x Kuldotha Rebirth
 
 Entro direttamente con $3$ REB invece di $2$ perchè le serpi mi fanno una paura boia. Purtroppo sono costretto a mulligare una mano senza lande e Simone ne approfitta, picchiandomi di $7$ in $7$.
 
@@ -214,13 +220,17 @@ Sono finalmente sicuro che sia arrivato il mio turno di vincere il dado: $3$. Mi
 
 ![[FlettoIMuscoli.jpg]]
 
-Bestemmio tra me e me ma, come insegna il maestro, cadere e rialzarsi. Puntiamo su una parternza forte allora: $0$ lande. Bene. Come diceva Confucio: "Zio pera". Ivan keepa mentre io mulligo, tenendo una mano con Kuldotha, Bushwhacker ed Epicure. Se l'oppo fa la partenza di Ash Barrens into Bounceland sto nel burro. Il game inizia: Pianura into Faithful. Pesco un Blast Runner, lo appoggio e passo. Isola into Faithful. Un tuffo al cuore come dopo che il secondo aereo ha colpito le Twin Towers. Game irrecuperabile in alcun modo.
+Bestemmio tra me e me ma, come insegna il maestro, cadere e rialzarsi. Puntiamo su una partenza forte allora: $0$ lande. Bene. Come diceva Confucio: "Zio pera". Ivan keepa mentre io mulligo, tenendo una mano con Kuldotha, Bushwhacker ed Epicure. Se l'oppo fa la partenza di Ash Barrens into Bounceland sto nel burro. Il game inizia: Pianura into Faithful. Pesco un Blast Runner, lo appoggio e passo. Isola into Faithful. Un tuffo al cuore come dopo che il secondo aereo ha colpito le Twin Towers. Game irrecuperabile in alcun modo.
 
 Side In: $3$ Red Elemental Blast
 
 Side Out: $3$ Seal of Fire
 
-Affranto, mi illudo che non statistcamente non possa più partire così. Sbagliando, ovviamente. Il buon Ivan vede $3$ Faithful in $6$ turni e mi chiede anche scusa, consapevole di aver appena infranto ogni mia speranza sculando parecchio. Mi rivela di aver tenuto una mano con una Faitfhul e di aver visto le altre due i turni $2$ e $3$. Uomini forti, destini forti. Faccio la mossa del granchio e gli stringo la mano, congratulandomi con lui per la vittoria meritata.
+Affranto, mi illudo che Ivan non possa più partire così forte. Sbagliando, ovviamente. Il buon Ivan vede $3$ Faithful in $6$ turni e mi chiede anche scusa, consapevole di aver appena infranto ogni mia speranza sculando parecchio. Lo guardo con sdegno, mentre penso a quanto mi manca la Monastery.
+
+meme monaca
+
+Ivan mi rivela di aver tenuto una mano con una Faitfhul e di aver visto le altre due i turni $2$ e $3$. Uomini forti, destini forti. Faccio la mossa del granchio e gli stringo la mano, congratulandomi con lui per la vittoria meritata.
 
 # Conclusioni
 Concludo il mio primo Paupergeddon e anche il mio primo torneo serio posizionandomi $97$esimo su $688$. Tutto sommato non male, considerando le premesse e l'inesperienza in molti matchup. Parlando dell'esperienza in sè, non mi aspettavo di esserne così entusiasta, neanche lontanamente e, dopo avervi partecipato, non stento a credere che ogni geddon sia sempre più affollato.

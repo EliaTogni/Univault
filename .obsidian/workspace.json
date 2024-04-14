@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Classes/Informatica Teorica.md",
+                "file": "Mtg/Reports/Report Paupergeddon Lecco 2024.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Informatica Teorica.md",
+                "file": "Mtg/Reports/Report Paupergeddon Lecco 2024.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,8 +116,10 @@
   },
   "active": "de76fb91e8f8a526",
   "lastOpenFiles": [
-    "Classes/Simulation.md",
+    "Articles/Probability Analysis in Pauper Manabases.md",
     "Mtg/Reports/Report Paupergeddon Lecco 2024.md",
+    "Classes/Informatica Teorica.md",
+    "Classes/Simulation.md",
     "Images/FlettoIMuscoli.jpg",
     "Images/spider-man-pointing-meme.jpeg",
     "Images/ttsr-8-goblin.png",
@@ -136,7 +137,6 @@
     "Classes/Bioinformatica.md",
     "Classes/Algoritmi Paralleli e Distribuiti.md",
     "Classes/3D Videogames.md",
-    "Classes/Informatica Teorica.md",
     "Images/EsempioProfonditàAlbero.png",
     "Images/AlberoBinarioDefinizioneRicorsiva.png",
     "Images/AlberiBinari.png",

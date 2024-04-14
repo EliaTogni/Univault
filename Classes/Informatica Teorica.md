@@ -1202,7 +1202,7 @@ Esiste, quindi, un programma in $\mathbb{C}_2\text{-PROG}$ per $f$ per cui $f \i
 
 In un compilatore da $WHILE$ a $RAM$ è possibile tranquillamente spostare le $21$ variabili nei primi $21$ registri della macchina RAM senza problemi e usarli nello stesso modo.
 
-Si mostrerà quindi una traduzione $Comp: W-PROG \to PROG$. Per comodità, verrà utilizzato il linguaggio $RAM$ etichettato:
+Si vuole mostrare che $F(WHILE) \subseteq F(RAM)$. Si mostrerà quindi una traduzione $Comp: W-PROG \to PROG$. Per comodità, verrà utilizzato il linguaggio $RAM$ etichettato:
 
 immagine slide 1 lezione 9
 
@@ -1215,7 +1215,7 @@ $W-PROG$ è un insieme costruito induttivamente, quindi $Comp$ può essere defin
 3) assumendo data per ipotesi induttiva $Comp(C)$ e mostrando come compilare il comando **while**: **while** $X_n \neq 0$ **do** $C$.
 
 #### Comandi base
-Per l'azzeramento di una variabile:
+Di nuovo, in un compilatore da $WHILE$ a $RAM$ è possibile tranquillamente spostare le $21$ variabili nei primi $21$ registri della macchina $RAM$ senza problemi e usarli nello stesso modo in quanto la macchina $RAM$ dispone di un numero infinito di registri. Per l'azzeramento di una variabile si procederà quindi nel seguente modo:
 
 $$\begin{aligned}
 Comp(x_k := 0) =\ & LP: \text{IF } R_k = 0 \text{ THEN GOTO EX} \\
@@ -1232,7 +1232,7 @@ Comp(x_k := 0) =\ & LP: \text{IF } R_k = 0 \text{ THEN GOTO EX} \\
 		\If{$R_k = 0$}
 			\State GO TO \textbf{exit}	
         \EndIf
-        \State $R_{21} \leftarrow \dot{-} 1$
+        \State $R_{k} \leftarrow R_{k} \dot{-} 1$
 		\If{$R_{21} == 0$}
 			\State GO TO \textbf{loop}
         \EndIf
@@ -1242,9 +1242,9 @@ Comp(x_k := 0) =\ & LP: \text{IF } R_k = 0 \text{ THEN GOTO EX} \\
 	\end{algorithm}
 ```
 
-Si noti che $R_{21}$ non verrrà mai utilizzato per tradurre variabili che al massimo sono $X_{20}$. Lo si può assumere come sempre azzerato per salti incondizionati.
+Si noti che $R_{21}$ non verrrà mai utilizzato per tradurre variabili che al massimo sono $X_{20}$. Lo si può assumere, quindi, come sempre azzerato per salti incondizionati, così come tutti i registri successivi.
 
-Nel caso di incremento/decremento, se $k = j$ si ha un'istruzione apposita, quindi si considera solo il caso $k \neq j$:
+Nel caso di incremento/decremento $Comp(x_k := x_j +/\dot- 1)$, se $k = j$ si ha un'istruzione apposita $R_k \leftarrow R_k +/\dot{-}1$, quindi si considera solo il caso $k \neq j$:
 
 $$\begin{aligned}
 Comp(x_k := x_j +/\dot- 1) =\ & LP: \text{IF } R_j = 0 \text{ THEN GOTO EX1} \\
