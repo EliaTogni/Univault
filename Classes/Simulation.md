@@ -865,13 +865,57 @@ While this theoretical result seems extremely useful, it assumes to have at disp
 
 -------------------------------------------------------------
 
-## Generating Random Variables
-### Main families of Random Variables
+# Generating Random Variables
+Systems can e modeled, including non trivial components, in the form of Random Variables. Statistics allow to reliably run experiments and obtain results by observations on these models. At the base of this process, there is the ability to generate pseudo random numbers alforithmically.
+
+The next step is to learn when and how to use noticeable Random Variables from the literature and also to generate observations of Random Variables algorithmically.
+## Main families of Random Variables
 There are certain types of random variables that frequently appear in applications. In this section we survey some of the discrete ones.
-#### Discrete Random Variables
+### Discrete Random Variables
 
 ![[DiscreteRandomVariables.png]]
 
+### Generating discrete Random Variables
+
+#### The Inverse Transform method
+Suppose we want to generate the value of a custom (single value) discrete random variable $X$ having probability mass function
+
+$$P[X = x_j] = p_j, \quad j = 0, \dots, 6 \quad \sum_{j = 1}^6 p_j = 1$$
+
+To accomplish this, a random number $U$ is generated, that is, $U$ is uniformly distributed over $(0, 1)$, and set
+
+$$X = \cases{1 \space \text{ con } p = \frac{1}{2} \cr \cr 2 \space \text{ con } p = \frac{1}{10} \cr \cr 3 \space \text{ con } p = \frac{1}{10} \cr \cr 4 \space \text{ con } p = \frac{1}{10} \cr \cr 5 \space \text{ con } p = \frac{1}{10} \cr \cr 6 \space \text{ con } p = \frac{1}{10}}$$
+
+How is possible to simulate the readings of such custom discrete random variable? A technique is called the **inverse transform** method (for discrete Random Variables).
+
+ First of all, the cumulative distribution function is built out of the Random Variable.
+
+grafico cdf con inverse transformation
+
+The inverse transformation method suggests to use this cumulative distribution function in reverse, that is, picking a probability value and reading the corresponding value of the Random Variable generating this probability. 
+
+The preceding idea can be written algorithmically as
+
+```pseudo
+	\begin{algorithm}
+	\caption{Native algorithm for custom discrete Random Variable}
+	\begin{algorithmic}
+	\State $p =$ get\_random$() \space$ //output of a good (pseudo) random generator
+	\State $r = 0.0$
+	\State $i = 0$
+	\While{$r \leq p$}
+		\State $i = i + 1$
+		\State $r = r + p_i$
+    \EndWhile
+    \State return $i$
+	\end{algorithmic}
+	\end{algorithm}
+```
+
+
+This type of Random Variable often models the act of counting something:
+- counting the number of successes;
+- counting the number of trials until a success.
 ##### Bernoulli Random Variable
 Single trial that can be succesful or not and the probability of success is known.
 
@@ -949,50 +993,24 @@ Random generation algorithm for a Poisson Random Variable.
 
 -------------------------------------------------------------
 
-### Generating discrete Random Variables
 
-#### The Inverse Transform method
-Suppose we want to generate the value of a custom (single value) discrete random variable $X$ having probability mass function
+Let's consider two different cases for a Discrete Random Variable.
 
 $$P[X = x_j] = p_j, \quad j = 0, \dots, 6 \quad \sum_{j = 1}^6 p_j = 1$$
+$$X = \cases{x_1 \space \text{ con } p = p_1 \cr \cr x_2 \space \text{ con } p = p_2 \cr \cr \vdots \cr \cr x_n \space \text{ con } p = p_n}$$
 
-To accomplish this, a random number $U$ is generated, that is, $U$ is uniformly distributed over $(0, 1)$, and set
+In the case that $n=2$, it would be a Random Variable defined as follows:
 
-$$X = \cases{1 \space \text{ con } p = \frac{1}{2} \cr \cr 2 \space \text{ con } p = \frac{1}{10} \cr \cr 3 \space \text{ con } p = \frac{1}{10} \cr \cr 4 \space \text{ con } p = \frac{1}{10} \cr \cr 5 \space \text{ con } p = \frac{1}{10} \cr \cr 6 \space \text{ con } p = \frac{1}{10}}$$
+$$X = \cases{x_1 \space \text{ con } p = p_1 \cr \cr x_2 \space \text{ con } p = p_2 = 1 - p_1}$$
 
-How is possible to simulate the readings of such custom discrete random variable? A technique is called the **inverse transform** method (for discrete Random Variables).
+In the case that $p_1 = p_2 = \dots = p_n$, it would be a Random Variable defined as follows:
 
- First of all, the cumulative distribution function is built out of the Random Variable.
+$$X = \cases{x_1 \space \text{ con } p = \frac{1}{n} \cr \cr x_2 \space \text{ con } p = \frac{1}{n} \cr \cr \vdots \cr \cr x_n \space \text{ con } p = \frac{1}{n}}$$
 
-grafico cdf con inverse transformation
+This is called a Uniform Discrete Random Variable.
+A general method for generating valid values for these customs discrete Random Variables was already explored in the previous chapter, the Inverse Transform method, which refers to the inverse of the Cumulative Distribution Function.
 
-The inverse transformation method suggests to use this cumulative distribution function in reverse, that is, picking a probability value and reading the corresponding value of the Random Variable generating this probability. 
-
-The preceding idea can be written algorithmically as
-
-```pseudo
-	\begin{algorithm}
-	\caption{Native algorithm for custom discrete Random Variable}
-	\begin{algorithmic}
-	\State $p =$ get\_random$() \space$ //output of a good (pseudo) random generator
-	\State $r = 0.0$
-	\State $i = 0$
-	\While{$r \leq p$}
-		\State $i = i + 1$
-		\State $r = r + p_i$
-    \EndWhile
-    \State return $i$
-	\end{algorithmic}
-	\end{algorithm}
-```
-
-Let's consider two different cases:
-
-uniform discrete random v
-
-seconda rv
-
-In the first case, it is possible to 
+A valid algorithm for producing values for a Uniform Discrete Random Variable is the following:
 
 ```python
 def UniformDRV1(n):
@@ -1002,9 +1020,11 @@ def UniformDRV1(n):
 			return i
 ```
 
-Another approach is based on the following equivalence:
+Another approach is based on the following sequence of inequalities:
 
-equivalenza min 25 lecture
+$$\text{if } u \leq i \cdot \frac{1}{n} \to u > (i - 1) \cdot \frac{1}{n}$$
+$$(i -1) \cdot \frac{1}{n} < u \leq i \cdot  \frac{1}{n} = $$
+$$(i - 1) < n \cdot u \leq i =$$
 
 ```python
 def UniformDRV2(n):
@@ -1025,7 +1045,7 @@ def binaryDRV(p)
 
 -------------------------------------------------------------
 
-Pagina 49 simulation
+Suppose we are interested in generating a permutation of the numbers $1, 2, \dots , n$ which is such that all $n!$ possible orderings are equally likely. The following algorithm will accomplish this by first choosing one of the numbers $1, \dots , n$ at random and then putting that number in position $n$; it then chooses at random one of the remaining $n − 1$ numbers and puts that number in position $n − 1$; it then chooses at random one of the remaining $n − 2$ numbers and puts it in position $n − 2$; and so on (where choosing a number at random means that each of the remaining numbers is equally likely to be chosen). Starting with any initial ordering $P_1, P_2 , \dots , P_n$, we pick one of the positions $1, \dots , n$ at random and then interchange the number in that position with the one in position n. Now we randomly choose one of the positions $1, \dots , n − 1$ and interchange the number in this position with the one in position $n − 1$, and so on.
 
 ```python
 def randomPerm(v)

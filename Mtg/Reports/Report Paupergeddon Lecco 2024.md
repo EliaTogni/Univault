@@ -88,7 +88,7 @@ Non avendo nulla da sidare, applico il famoso inganno della cadrega e fingo di m
 
 Nell'attesa del match scopro che Paolo, un fratm di lega è stato pairato contro un giocatore del trio di CardMarket. Dopo la sua schiacciante vittoria, facciamo come le adolescenti con i modelli di Abercrombie un decennio fa e ci facciamo una fotuzza insieme.
 
-![[IMG-20240323-WA0017.jpg |600]]
+![[CardMarket.jpg |600]]
 
 -------------------------------------------------------------
 
@@ -103,7 +103,7 @@ Side Out: $3$x Chain Lightning, $2$x Experimental Synthesizer, $2$ Goblin Bushwa
 
 G$2$ parto mulligando e tengo a $6$ una mano con Gorilla Shaman, un Seal of Fire e la partenza canonica di Fornace into Lara Croft. Aspetto di calare lo Shaman fino a turno $3$, con l'oppo tapped out. In questo modo riesco a togliergli l'unica landa non indistruttibile e un Clue token, rallentandolo notevolmente. Il turno successivo Nicolò si trova costretto a giocare un'altra landa artefatto per poter sviluppare il suo gameplan ma, slandato e senza board, viene travolto dai miei token Goblin gialli e incazzati.
 
-![[ttsr-8-goblin.png |400]]
+![[TokenGoblin.png |400]]
 
 G$3$ sono on the draw ma tengo a $7$ una mano con un Goblin Blast Runner, un Implement, due lande, una Kuldotha, un Seal of Fire e un Demand Answers. Purtroppo la varianza decide di colpire in questo fatidico momento e pesco letteralmente $8$ lande di fila. Cerco di mantenere la mia migliore faccia da poker anche quando, scartando landa per castare Demand Answers, pesco altre due Montagne ma dentro di me la speranza del $5-0$ vacilla. Continuo comunque a giocare, nella speranza che l'oppo si faccia intimorire dall'innumerevole quantità di carte nella mia mano. Finalmente, Nicolò appoggia con timidezza un Glitters su Thraben e lì devo sfoderare la mia mossa migliore, aka quella del granchio. Alla mia concessione, Nicolò mi rivela la mano con $3$ Hydroblast ed un altro Glitters. Io gli rivelo $4$ Montagne e ci stringiamo la mano mentre i miei fratm che hanno droppato e assistito al match cercano di consolarmi per la sfiga avuta.
 
@@ -228,7 +228,7 @@ Side Out: $3$ Seal of Fire
 
 Affranto, mi illudo che Ivan non possa più partire così forte. Sbagliando, ovviamente. Il buon Ivan vede $3$ Faithful in $6$ turni e mi chiede anche scusa, consapevole di aver appena infranto ogni mia speranza sculando parecchio. Lo guardo con sdegno, mentre penso a quanto mi manca la Monastery.
 
-meme monaca
+![[Monastery.png |600]]
 
 Ivan mi rivela di aver tenuto una mano con una Faitfhul e di aver visto le altre due i turni $2$ e $3$. Uomini forti, destini forti. Faccio la mossa del granchio e gli stringo la mano, congratulandomi con lui per la vittoria meritata.
 

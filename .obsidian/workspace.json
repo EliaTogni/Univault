@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Mtg/Reports/Report Paupergeddon Lecco 2024.md",
+                "file": "Classes/Simulation.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Mtg/Reports/Report Paupergeddon Lecco 2024.md",
+                "file": "Classes/Simulation.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,9 +117,13 @@
   },
   "active": "de76fb91e8f8a526",
   "lastOpenFiles": [
-    "Articles/Probability Analysis in Pauper Manabases.md",
-    "Mtg/Reports/Report Paupergeddon Lecco 2024.md",
     "Classes/Informatica Teorica.md",
+    "Mtg/Reports/Report Paupergeddon Lecco 2024.md",
+    "Images/TokenGoblin.png",
+    "Images/CardMarket.jpg",
+    "Mtg/Questions.md",
+    "Images/Monastery.png",
+    "Articles/Probability Analysis in Pauper Manabases.md",
     "Classes/Simulation.md",
     "Images/FlettoIMuscoli.jpg",
     "Images/spider-man-pointing-meme.jpeg",
@@ -139,9 +144,6 @@
     "Classes/3D Videogames.md",
     "Images/EsempioProfonditàAlbero.png",
     "Images/AlberoBinarioDefinizioneRicorsiva.png",
-    "Images/AlberiBinari.png",
-    "Images/EsecuzioneProgrammaP.png",
-    "Images/Stato.png",
     "Lexicon/Allampanato.md",
     "Lexicon/Sicumera.md",
     "Lexicon/Sovente.md",
@@ -151,8 +153,6 @@
     "Lexicon/Pamphlet.md",
     "Lexicon/Nappina.md",
     "Lexicon/Maggiociondolo.md",
-    "Articles/Image Classification with Classic and Deep Learning Techniques.md",
-    "Lexicon/Ammezzato.md",
     "Mtg/Reports",
     "Mtg",
     "Untitled.canvas",
