@@ -976,7 +976,6 @@ $\vdots$
 
 Random generation algorithm for a Poisson Random Variable.
 
-
 -------------------------------------------------------------
 
 ##### Geometric Random Variable
@@ -985,17 +984,36 @@ Random generation algorithm for a Poisson Random Variable.
 -------------------------------------------------------------
 
 ##### Negative Binomial Random Variable
+number of trials to r successes. Defining $X$ as a negative binomial of patameters $p, r$:<br />
+$P[X = i]$
 
+immagine
+
+The last iteration is the $r$-th success. On the previous iteration ($i-1$ iteration) we got $r-1$ successes. The probability of getting this configuration is defined by a binomial random variable:
+
+$$\binom{i - 1}{r -1} p^{r-1}(1-p)^{i-1 -(r-1)}$$
+
+
+Therefore, $P[X = i] = \binom{i - 1}{r -1} p^{r-1}(1-p)^{i-r} \cdot p = \binom{i - 1}{r -1} p^{r}(1-p)^{i-r}$
+
+To compute the expected value, we can consider this Random Variable as $r$ observation of a geometric Random Variable:
+
+$$X = \sum_{k = 1}^{r}X_k$$
+
+and, therefore, $\mathbb{E}[X] = \mathbb{E}[\sum_{k = 1}^{r}X_k] = \sum_{k = 1}^{r}\mathbb{E}[X_k] =  \sum_{k = 1}^{r} \frac{1}{p} = r \cdot \frac{1}{p}$.
+The same holds for its variance.
 
 -------------------------------------------------------------
 
 ##### Hypergeometric Random Variable
-
+$N$ blue balls $+ M$ not blue balls. What is the number of blue balls that i get by drawing $n$ of them from the urn?
 
 -------------------------------------------------------------
 
-#### Continuous Random Variables
+### Continuous Random Variables
+#### Uniformly Distribute Random Variable 
 
+slide 15/34 modeling ariel simulation
 
 -------------------------------------------------------------
 
@@ -1093,6 +1111,14 @@ def RandomPerm(v):
 -------------------------------------------------------------
 
 
+
+
+
+To summarize it
+
+![[CheatSheetRandomVariables.png]]
+
+-------------------------------------------------------------
 
 simulation: rate -> interarrival (intertrigger) time are distributed with an exponential random variable.
 The expected time between a trigger and another will be $1/rate$.
