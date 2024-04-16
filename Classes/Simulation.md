@@ -888,8 +888,8 @@ To accomplish this, a random number $U$ is generated, that is, $U$ is uniformly 
 
 $$X = \cases{1 \space \text{ con } p = \frac{1}{2} \cr \cr 2 \space \text{ con } p = \frac{1}{10} \cr \cr 3 \space \text{ con } p = \frac{1}{10} \cr \cr 4 \space \text{ con } p = \frac{1}{10} \cr \cr 5 \space \text{ con } p = \frac{1}{10} \cr \cr 6 \space \text{ con } p = \frac{1}{10}}$$
 
-Expected Value $\mathbb{E}[X] = 1 \cdot \frac{1}{2} + \dots + 6 \cdot \frac{1}{10} = \sum_{i = 1}^{6} v_i \times p_i = \mu$<br />
-Variance $VAR[X] = \sum_{i = 1}^{6}( v_i - \mu)^2 \cdot p_i$
+Expected value $\mathbb{E}[X] = 1 \cdot \frac{1}{2} + \dots + 6 \cdot \frac{1}{10} = \sum_{i = 1}^{6} v_i \times p_i = \mu$<br />
+Variance $Var[X] = \sum_{i = 1}^{6}( v_i - \mu)^2 \cdot p_i$
 
 How is possible to simulate the readings of such custom discrete random variable? A technique is called the **inverse transform** method (for discrete Random Variables).
 
@@ -949,17 +949,18 @@ def UniformDRV1(n):
 			return i
 ```
 
-Another approach is based on the following sequence of inequalities. We stop if this condition is met ($i$ is the output):
-$$\text{if } r \leq \frac{i}{n} \to r >\frac{(i-1)}{n}$$
-$$(i -1) \cdot \frac{1}{n} < u \leq i \cdot  \frac{1}{n} = $$
-$$(i - 1) < n \cdot u \leq i =$$
+Another approach is based on the following sequence of inequalities. We stop if the condition $r \leq \frac{i}{n}$ is met. This condition is equivalent to $r >\frac{(i-1)}{n}$ and this equivalence leads to the following sequence of disequations:
 
+$$(i -1) \cdot \frac{1}{n} < r \leq i \cdot  \frac{1}{n} = $$
+$$= (i - 1) < n \cdot r \leq i =$$
+
+Now, it is possible to round up and say that $i \geq \lceil n \cdot r \rceil$.
 
 
 ##### Bernoulli Random Variable
 Single trial that can be succesful or not and the probability of success is known.
 
-Expected value and Variance of the Bernoulli Random Variable
+Expected value and variance of the Bernoulli Random Variable
 
 Expected Value $\mathbb{E}[X] = 1 \times p + 0 \times (1 - p) = p$.<br />
 Variance $Var[X] = \mathbb{E} = (1 - p)^2 p + (0 - p)^2 (1 - p) = p(1 - p) (1 - p + p) = p ( 1 - p )$
@@ -977,7 +978,7 @@ Computing this probability incrementally.
 $$P[X = i] = \binom{n}{k} p^i (1 - p)^{n - i} = \frac{n!}{i! (n - i)!} p^i(1 - p)^{n - i}$$
 $$P[X = i + 1] = \frac{n!}{(i + 1)!(n  - i - 1)!} p^{i + 1}(1 - p)^{n - i - 1}$$
 
-Expected Value $\mathbb{E}[X] = np$.<br />
+Expected value $\mathbb{E}[X] = np$.<br />
 Variance $Var[X] = np (1 - p)$
 
 -------------------------------------------------------------
@@ -988,7 +989,7 @@ Relation between Poisson Random Variables and Binomial Random Variables. The dif
 
 $\lambda = n \cdot p$ is called **rate** 
 
-Expected Value $\mathbb{E}[X] = np = \lambda$. <br />
+Expected value $\mathbb{E}[X] = np = \lambda$. <br />
 Variance $Var[X] = np(1 - p) = n(p - p^2)$. But if $p$ is a small value, $p^2$ tends to $0$ and, therefore, it can be dropped. The remaining product is $np$ which is again $\lambda$.
 
 $$P[X = i] = \binom{n}{i}p^i(1-p)^{n-i} = \frac{n!}{(n - i)!n!}p^i (1-p)^{n-i}$$
