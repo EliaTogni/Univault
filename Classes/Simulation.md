@@ -866,11 +866,13 @@ While this theoretical result seems extremely useful, it assumes to have at disp
 -------------------------------------------------------------
 
 # Generating Random Variables
-Systems can e modeled, including non trivial components, in the form of Random Variables. Statistics allow to reliably run experiments and obtain results by observations on these models. At the base of this process, there is the ability to generate pseudo random numbers alforithmically.
+Systems can be modeled, including non trivial components, in the form of Random Variables. Statistics allow to reliably run experiments and obtain results by observations on these models. At the base of this process, there is the ability to generate pseudo random numbers alforithmically.
 
 The next step is to learn when and how to use noticeable Random Variables from the literature and also to generate observations of Random Variables algorithmically.
+
 ## Main families of Random Variables
 There are certain types of random variables that frequently appear in applications. In this section we survey some of the discrete ones.
+
 ### Discrete Random Variables
 
 ![[DiscreteRandomVariables.png]]
@@ -885,14 +887,18 @@ $$P[X = x_j] = p_j, \quad j = 0, \dots, 6 \quad \sum_{j = 1}^6 p_j = 1$$
 To accomplish this, a random number $U$ is generated, that is, $U$ is uniformly distributed over $(0, 1)$, and set
 
 $$X = \cases{1 \space \text{ con } p = \frac{1}{2} \cr \cr 2 \space \text{ con } p = \frac{1}{10} \cr \cr 3 \space \text{ con } p = \frac{1}{10} \cr \cr 4 \space \text{ con } p = \frac{1}{10} \cr \cr 5 \space \text{ con } p = \frac{1}{10} \cr \cr 6 \space \text{ con } p = \frac{1}{10}}$$
+$$\mathbb{E}[X] = \sum_{i = 1}^{6} v_i \cdot p_i = 1 \cdot \frac{1}{2} + \dots + 6 \cdot \frac{1}{10}$$
+$$VAR[X] = \sum_{i = 1}^{6}( v_i - \mu)^2 \cdot p_i$$
 
 How is possible to simulate the readings of such custom discrete random variable? A technique is called the **inverse transform** method (for discrete Random Variables).
 
  First of all, the cumulative distribution function is built out of the Random Variable.
 
-grafico cdf con inverse transformation
+grafico cdf con inverse transformation lezione 7 1h 18
 
 The inverse transformation method suggests to use this cumulative distribution function in reverse, that is, picking a probability value and reading the corresponding value of the Random Variable generating this probability. 
+
+At this point, we are able to generate valid values for probability and therefore we can get the corresponding value.
 
 The preceding idea can be written algorithmically as
 
