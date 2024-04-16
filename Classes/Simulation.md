@@ -887,8 +887,9 @@ $$P[X = x_j] = p_j, \quad j = 0, \dots, 6 \quad \sum_{j = 1}^6 p_j = 1$$
 To accomplish this, a random number $U$ is generated, that is, $U$ is uniformly distributed over $(0, 1)$, and set
 
 $$X = \cases{1 \space \text{ con } p = \frac{1}{2} \cr \cr 2 \space \text{ con } p = \frac{1}{10} \cr \cr 3 \space \text{ con } p = \frac{1}{10} \cr \cr 4 \space \text{ con } p = \frac{1}{10} \cr \cr 5 \space \text{ con } p = \frac{1}{10} \cr \cr 6 \space \text{ con } p = \frac{1}{10}}$$
-$$\mathbb{E}[X] = \sum_{i = 1}^{6} v_i \cdot p_i = 1 \cdot \frac{1}{2} + \dots + 6 \cdot \frac{1}{10}$$
-$$VAR[X] = \sum_{i = 1}^{6}( v_i - \mu)^2 \cdot p_i$$
+
+Expected Value $\mathbb{E}[X] = \sum_{i = 1}^{6} v_i \cdot p_i = 1 \cdot \frac{1}{2} + \dots + 6 \cdot \frac{1}{10}$<br />
+Variance $VAR[X] = \sum_{i = 1}^{6}( v_i - \mu)^2 \cdot p_i$
 
 How is possible to simulate the readings of such custom discrete random variable? A technique is called the **inverse transform** method (for discrete Random Variables).
 
@@ -898,17 +899,17 @@ grafico cdf con inverse transformation lezione 7 1h 18
 
 The inverse transformation method suggests to use this cumulative distribution function in reverse, that is, picking a probability value and reading the corresponding value of the Random Variable generating this probability. 
 
-At this point, we are able to generate valid values for probability and therefore we can get the corresponding value.
+At this point, we are able to generate valid values for probability and therefore we can get the corresponding value. the probability values must be numbers between $0$ and $1$, chosen from a uniform distribution and independent.
 
 The preceding idea can be written algorithmically as
 
 ```pseudo
 	\begin{algorithm}
-	\caption{Native algorithm for custom discrete Random Variable}
+	\caption{Native algorithm for Custom Discrete Random Variables}
 	\begin{algorithmic}
 	\State $p =$ get\_random$() \space$ //output of a good (pseudo) random generator
 	\State $r = 0.0$
-	\State $i = 0$
+	\State $i = 1$
 	\While{$r \leq p$}
 		\State $i = i + 1$
 		\State $r = r + p_i$
@@ -918,7 +919,6 @@ The preceding idea can be written algorithmically as
 	\end{algorithm}
 ```
 
-
 This type of Random Variable often models the act of counting something:
 - counting the number of successes;
 - counting the number of trials until a success.
@@ -927,7 +927,7 @@ Single trial that can be succesful or not and the probability of success is know
 
 Expected value and Variance of the Bernoulli Random Variable
 
-Expected Value $\mathbb{E}[X] = 1 \times p + 0 \times (1 - p) = p$
+Expected Value $\mathbb{E}[X] = 1 \times p + 0 \times (1 - p) = p$.<br />
 Variance $Var[X] = \mathbb{E} = (1 - p)^2 p + (0 - p)^2 (1 - p) = p(1 - p) (1 - p + p) = p ( 1 - p )$
 
 -------------------------------------------------------------
