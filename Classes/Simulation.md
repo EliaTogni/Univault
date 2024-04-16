@@ -830,7 +830,7 @@ Let's try to model the $i$-th throw of a dart. The first thing is to build a ran
 $$X_i = \cases{1 \quad \text{ if point \#} i \text{ is inside the circle, with } p = \frac{\pi}{4} \cr \cr 0 \quad \text{ otherwise, with } p = 1 - \frac{\pi}{4}}$$
 
 Knowing that, it is possible to derive that $\mathbb{E}[X_i] = 1 \cdot \frac{\pi}{4} + 0 \cdot (1 - \frac{\pi}{4}) = \frac{\pi}{4}$.<br />
-It is also possible to measure the variance $Var[X_i] = (1 - \frac{\pi}{4})^2 \cdot \frac{\pi}{4} + (0 - \frac{\pi}{4})^2 \cdot (1 - \frac{\pi}{4})$. Defining $\frac{\pi}{4} = q$, it is that $Var[X_i] = (1 - q)^2 \cdot q + (0 - q)^2 \cdot (1 - q) = (1 - q)\big[(1 - q)\cdot q + q^2\big] = (1 - q) \cdot q = (1 - \frac{\pi}{4})\cdot \frac{\pi}{4}$. Whenever the experiment is succesfull, the counter is incremented by $1$, $0$ otherwise. The overall counting is $\sum_{i=1}^{n}X_i$ and the probability is $\frac{\sum_{i=1}^{n}X_i}{n}$. This formula reminds of the setting of the law of large numbers (a set of i.i.d. random variables for which the average is computed). Let's compute
+It is also possible to measure the variance $Var[X_i] = (1 - \frac{\pi}{4})^2 \cdot \frac{\pi}{4} + (0 - \frac{\pi}{4})^2 \cdot (1 - \frac{\pi}{4})$. Defining $\frac{\pi}{4} = q$, it is that $Var[X_i] = (1 - q)^2 \cdot q + (0 - q)^2 \cdot (1 - q) = (1 - q)\big[(1 - q)\cdot q + q^2\big] = (1 - q) \cdot q = (1 - \frac{\pi}{4})\cdot \frac{\pi}{4}$. Whenever the experiment is succesfull, the counter is incremented by $1$ and by $0$ otherwise. The overall counting is $\sum_{i=1}^{n}X_i$ and the probability is $\frac{\sum_{i=1}^{n}X_i}{n}$. This formula reminds of the setting of the law of large numbers (a set of i.i.d. random variables for which the average is computed). Let's compute
 
 $$P\Bigg[\Big\vert \frac{\sum_{i=1}^{n}X_i}{n} - \frac{\pi}{4} \Big\vert > \varepsilon \Bigg] < \frac{\sigma^2}{n \varepsilon^2}$$
 
@@ -888,7 +888,7 @@ To accomplish this, a random number $U$ is generated, that is, $U$ is uniformly 
 
 $$X = \cases{1 \space \text{ con } p = \frac{1}{2} \cr \cr 2 \space \text{ con } p = \frac{1}{10} \cr \cr 3 \space \text{ con } p = \frac{1}{10} \cr \cr 4 \space \text{ con } p = \frac{1}{10} \cr \cr 5 \space \text{ con } p = \frac{1}{10} \cr \cr 6 \space \text{ con } p = \frac{1}{10}}$$
 
-Expected Value $\mathbb{E}[X] = \sum_{i = 1}^{6} v_i \cdot p_i = 1 \cdot \frac{1}{2} + \dots + 6 \cdot \frac{1}{10}$<br />
+Expected Value $\mathbb{E}[X] = 1 \cdot \frac{1}{2} + \dots + 6 \cdot \frac{1}{10} = \sum_{i = 1}^{6} v_i \times p_i = \mu$<br />
 Variance $VAR[X] = \sum_{i = 1}^{6}( v_i - \mu)^2 \cdot p_i$
 
 How is possible to simulate the readings of such custom discrete random variable? A technique is called the **inverse transform** method (for discrete Random Variables).
@@ -919,9 +919,43 @@ The preceding idea can be written algorithmically as
 	\end{algorithm}
 ```
 
-This type of Random Variable often models the act of counting something:
-- counting the number of successes;
-- counting the number of trials until a success.
+Take into account the case of a Random Variable $X$ such that:
+
+$$P[X = x_j] = p_j, \quad j = 0, \dots, 6 \quad \sum_{j = 1}^6 p_j = 1$$
+$$X = \cases{x_1 \space \text{ con } p = p_1 \cr \cr x_2 \space \text{ con } p = p_2 \cr \cr \vdots \cr \cr x_n \space \text{ con } p = p_n}$$
+
+Let's consider two specific cases for this discrete Random Variable:
+- $n = 2$;
+- $p_1 = p_2 = \dots = p_n$.
+
+In the case that $n=2$, it would be a Random Variable defined as follows:
+
+$$X = \cases{x_1 \space \text{ with } p = p_1 \cr \cr x_2 \space \text{ with } p = p_2 = 1 - p_1}$$
+
+In the case that $p_1 = p_2 = \dots = p_n$, it would be a Random Variable defined as follows:
+
+$$X = \cases{x_1 \space \text{ with } p = \frac{1}{n} \cr \cr x_2 \space \text{ with } p = \frac{1}{n} \cr \cr \vdots \cr \cr x_n \space \text{ with } p = \frac{1}{n}}$$
+
+This is called a Uniform Discrete Random Variable.
+A general method for generating valid values for these customs discrete Random Variables was already explored in the previous chapter, the Inverse Transform method, which refers to the inverse of the Cumulative Distribution Function. Basing on this technique, are we able to create an algorithm for producing a value for a uniform Random Variable?
+
+A valid algorithm for producing values for a Uniform Discrete Random Variable is the following:
+
+```python
+def UniformDRV1(n):
+	r = random.random()
+	for i in range(1, n + 1, 1):
+		if r <= i/n:
+			return i
+```
+
+Another approach is based on the following sequence of inequalities. We stop if this condition is met ($i$ is the output):
+$$\text{if } r \leq \frac{i}{n} \to r >\frac{(i-1)}{n}$$
+$$(i -1) \cdot \frac{1}{n} < u \leq i \cdot  \frac{1}{n} = $$
+$$(i - 1) < n \cdot u \leq i =$$
+
+
+
 ##### Bernoulli Random Variable
 Single trial that can be succesful or not and the probability of success is known.
 
@@ -1031,24 +1065,9 @@ In the case that $p_1 = p_2 = \dots = p_n$, it would be a Random Variable define
 
 $$X = \cases{x_1 \space \text{ con } p = \frac{1}{n} \cr \cr x_2 \space \text{ con } p = \frac{1}{n} \cr \cr \vdots \cr \cr x_n \space \text{ con } p = \frac{1}{n}}$$
 
-This is called a Uniform Discrete Random Variable.
-A general method for generating valid values for these customs discrete Random Variables was already explored in the previous chapter, the Inverse Transform method, which refers to the inverse of the Cumulative Distribution Function.
 
-A valid algorithm for producing values for a Uniform Discrete Random Variable is the following:
 
-```python
-def UniformDRV1(n):
-	r = random.random()
-	for i in range(1, n + 1, 1):
-		if r <= i/n:
-			return i
-```
 
-Another approach is based on the following sequence of inequalities:
-
-$$\text{if } u \leq i \cdot \frac{1}{n} \to u > (i - 1) \cdot \frac{1}{n}$$
-$$(i -1) \cdot \frac{1}{n} < u \leq i \cdot  \frac{1}{n} = $$
-$$(i - 1) < n \cdot u \leq i =$$
 
 ```python
 def UniformDRV2(n):
