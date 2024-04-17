@@ -909,7 +909,7 @@ The preceding idea can be written algorithmically as
 	\begin{algorithmic}
 	\State $p =$ get\_random$() \space$ //output of a good (pseudo) random generator
 	\State $r = 0.0$
-	\State $i = 1$
+	\State $i = 0$
 	\While{$r \leq p$}
 		\State $i = i + 1$
 		\State $r = r + p_i$
@@ -936,7 +936,7 @@ In the case that $p_1 = p_2 = \dots = p_n$, it would be a Random Variable define
 
 $$X = \cases{x_1 \space \text{ with } p = \frac{1}{n} \cr \cr x_2 \space \text{ with } p = \frac{1}{n} \cr \cr \vdots \cr \cr x_n \space \text{ with } p = \frac{1}{n}}$$
 
-This is called a Uniform Discrete Random Variable.
+This is called a Uniform Discrete Random Variable.<br />
 A general method for generating valid values for these customs discrete Random Variables was already explored in the previous chapter, the Inverse Transform method, which refers to the inverse of the Cumulative Distribution Function. Basing on this technique, are we able to create an algorithm for producing a value for a uniform Random Variable?
 
 A valid algorithm for producing values for a Uniform Discrete Random Variable is the following:
@@ -954,21 +954,74 @@ Another approach is based on the following sequence of inequalities. We stop if 
 $$(i -1) \cdot \frac{1}{n} < r \leq i \cdot  \frac{1}{n} = $$
 $$= (i - 1) < n \cdot r \leq i =$$
 
-Now, it is possible to round up and say that $i \geq \lceil n \cdot r \rceil$.
+Now, it is possible to round up and say that $i \geq \lceil n \cdot r \rceil$. The other side of the disequation says that $i < n \cdot r + 1$. It follows that the previous algorithm can be written as
 
+```python
+def UniformDRV2(n):
+	r = random.random()
+	return math.ceil(n * r)
+```
+
+Now considering the second specific case, that is,the case in which $n = 2$, it is possible to write an algorithm that generates observations for this Random Variable in the following way: 
+
+```python
+def binaryDRV(p)
+	r = random.random()
+	if r <= p:
+		return 0
+	else:
+		return 1
+```
+
+Now the goal is to apply these ideas to solve a small computing task, that is, generating a permutation of the numbers $1, 2, \dots , n$ which is such that all $n!$ possible orderings are equally likely.
+
+The first intuition is to apply swapping between couples elements of the array picked at random. The problem with this approach is that it makes hard to understand if each random permutation is equiprobable.
+
+The following small variant of the previous algorithm will accomplish this by first choosing one of the numbers $1, \dots , n$ at random and then putting that number in position $n$; it then chooses at random one of the remaining $n − 1$ numbers and puts that number in position $n − 1$; it then chooses at random one of the remaining $n − 2$ numbers and puts it in position $n − 2$; and so on (where choosing a number at random means that each of the remaining numbers is equally likely to be chosen). Starting with any initial ordering $P_1, P_2 , \dots , P_n$, one of the positions $1, \dots , n$ will be picked at random and then the number in that position will be interchanged with the one in position $n$. Now we randomly choose one of the positions $1, \dots , n − 1$ and interchange the number in this position with the one in position $n − 1$, and so on.
+
+```python
+def randomPerm(v)
+	
+```
+
+Let's evaluate if the probability of each permutation to appear is the same.
+
+$$P[\text{Each permutation to be the same}] = \bar{p}$$
+
+Let's observe it in a different way. Let's check for the last position what is the probability of containing each element. What the algorithm does is to choose at random one of the $n$ position and swap, therefore only one condition has to be satistisfied, that is, the choice must be made uniformly. In other words, the choice is read as the output of a uniform discrete Random Variable:
+
+$$P[\text{ The element } i \text{ in position } n] = \bar{q} = \frac{1}{n}$$
+$$P[ i \text{ in position } n] = \frac{1}{n} \quad \forall i = 1, \dots, n$$
+
+Now let's check it for the position $n-1$:
+
+$$P[ i \text{ in position } n -1] = \frac{n-1}{n} \cdot \frac{1}{n-1} \quad \forall i = 1, \dots, n$$
+that is, the probability of not being chosen in the first round times the probability of being chosen in the second one, and so on and so forth for each other round.
+
+Now, the implementation
+
+```python
+def RandomPerm(v):
+	for i in range(len(v)):
+		# position to fix: v[n - i - 1]
+		# position to swap: chosen randomly
+		s = random.randint(0, len(v) - i - 1)
+		v[len(v) - i - 1], v[s] = v[s], v[len(v) - i - 1]
+	return v
+```
+
+-------------------------------------------------------------
 
 ##### Bernoulli Random Variable
-Single trial that can be succesful or not and the probability of success is known.
+A **Bernoulli Random Variable** models a single trial that can be succesful or not. The probability of success of the trial is known.
 
-Expected value and variance of the Bernoulli Random Variable
-
-Expected Value $\mathbb{E}[X] = 1 \times p + 0 \times (1 - p) = p$.<br />
-Variance $Var[X] = \mathbb{E} = (1 - p)^2 p + (0 - p)^2 (1 - p) = p(1 - p) (1 - p + p) = p ( 1 - p )$
+Expected Value $\mathbb{E}[X] = 1 \cdot p + 0 \cdot (1 - p) = p$.<br />
+Variance $Var[X]= \mathbb{E} = (1 - p)^2 p + (0 - p)^2 (1 - p) = p(1 - p) (1 - p + p)$ $= p ( 1 - p )$.
 
 -------------------------------------------------------------
 
 ##### Binomial Random Variable
-$n$ trials and each trial is a Bernoulli Random Variable. We wish to count the number of successful trials.
+A **Binomial Random Variable** models $n$ trials in which each trial is described as a Bernoulli Random Variable. The goal is to count the number of successful trials.
 
 How to generate a valid value for a Binomial Random Variable?<br />
 One way is by simulation, that is, simulating $n$ Bernoullli Random Variables. Another option considers the use of the  native algorithm for the invers transform.
@@ -1053,80 +1106,15 @@ slide 15/34 modeling ariel simulation
 -------------------------------------------------------------
 
 
-Let's consider two different cases for a Discrete Random Variable.
 
-$$P[X = x_j] = p_j, \quad j = 0, \dots, 6 \quad \sum_{j = 1}^6 p_j = 1$$
-$$X = \cases{x_1 \space \text{ con } p = p_1 \cr \cr x_2 \space \text{ con } p = p_2 \cr \cr \vdots \cr \cr x_n \space \text{ con } p = p_n}$$
-
-In the case that $n=2$, it would be a Random Variable defined as follows:
-
-$$X = \cases{x_1 \space \text{ con } p = p_1 \cr \cr x_2 \space \text{ con } p = p_2 = 1 - p_1}$$
-
-In the case that $p_1 = p_2 = \dots = p_n$, it would be a Random Variable defined as follows:
-
-$$X = \cases{x_1 \space \text{ con } p = \frac{1}{n} \cr \cr x_2 \space \text{ con } p = \frac{1}{n} \cr \cr \vdots \cr \cr x_n \space \text{ con } p = \frac{1}{n}}$$
-
-
-
-
-
-```python
-def UniformDRV2(n):
-	r = random.random()
-	return math.ceil(n * r)
-```
-
-In the second case, 
-
-```python
-def binaryDRV(p)
-	r = random.random()
-	if r <= p:
-		return 0
-	else:
-		return 1
-```
 
 -------------------------------------------------------------
 
-Suppose we are interested in generating a permutation of the numbers $1, 2, \dots , n$ which is such that all $n!$ possible orderings are equally likely. The following algorithm will accomplish this by first choosing one of the numbers $1, \dots , n$ at random and then putting that number in position $n$; it then chooses at random one of the remaining $n − 1$ numbers and puts that number in position $n − 1$; it then chooses at random one of the remaining $n − 2$ numbers and puts it in position $n − 2$; and so on (where choosing a number at random means that each of the remaining numbers is equally likely to be chosen). Starting with any initial ordering $P_1, P_2 , \dots , P_n$, we pick one of the positions $1, \dots , n$ at random and then interchange the number in that position with the one in position n. Now we randomly choose one of the positions $1, \dots , n − 1$ and interchange the number in this position with the one in position $n − 1$, and so on.
 
-```python
-def randomPerm(v)
-	
-```
 
-but this approach has a problem, that is, it is not possible to be sure that each permutation is equiprobable.<br />
-A variant of this code based on recursion that overcomes this problem is the following
 
-```python
-robeh
-```
 
-Let's evaluate if the probability of each permutation to appear is the same.
 
-$$P[\text{ Each permutation }] = \bar{p}$$
-
-that is
-
-$$P[\text{ The element } i \text{ in position } n] = \bar{q} = \frac{1}{n}$$
-
-If I choose the element to swap as the reading of a Uniform Discrete Random Variable
-
-$$P[ i \text{ in position } n] = \frac{1}{n} \quad \forall i = 1, \dots, n$$
-passaggi successivi
-
-Now, the implementation
-
-```python
-def RandomPerm(v):
-	for i in range(len(v)):
-		# position to fix: v[n - i - 1]
-		# position to swap: chosen randomly
-		s = random.randint(0, len(v) - i - 1)
-		v[len(v) - i - 1], v[s] = v[s], v[len(v) - i - 1]
-	return v
-```
 
 -------------------------------------------------------------
 
