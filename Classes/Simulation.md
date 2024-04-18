@@ -1075,9 +1075,17 @@ it is intuitive, given the relationship between Binomial and Poisson Random Vari
 
 $$\mathbb{E}[X] = Var[X] = \lambda$$
 
-Another interesting result about Poisson Random Variables is that they are **invariant** to aggregation, that is, 
+Another interesting result about Poisson Random Variables is that they are **invariant** to aggregation. Let's consider a Poisson Random Variable $X$ of parameter $\lambda$ that is counting the number of successes over a large number of trials. Let's assume that the type of these successful event may not be unique. Is it correct to model the readings of this numbers as the reading of a Poisson Random Variable? Let's recall the example of the pharmacy and assume that is desired to measure the number of male and female customers. Knowing that the total number of customers entering in the pharmacy can be modelled as a Poisson Random Variable, it is possible to demonstrate that also the number of male customers and of female customers entering in the pharmacy can be modelles as Poisson Random Variables too:
 
-proof:
+$$X = X_A + X_B$$
+
+where
+
+$$X_A \text{ is a Poisson Random Variable of parameter } \lambda_A \space(\text{such that }\lambda_A =\lambda \cdot p_A)$$
+$$X_B \text{ is a Poisson Random Variable of parameter } \lambda_B \space(\text{such that }\lambda_B =\lambda \cdot p_B)$$
+
+It follows the proof of the previous theorem:
+
 $$P[X_A = n, X_B = m] =$$
 $$= P[X_A = n, X_B = m \vert X = n + m] \cdot P[X = n + m] + P[X_A = n, X_B = m \vert X \neq n + m] \cdot P[X \neq n + m] = $$
 $$= P[X_A = n, X_B = m \vert X = n + m] \cdot P[X = n + m] + 0 =$$
