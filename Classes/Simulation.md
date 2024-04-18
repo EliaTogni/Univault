@@ -979,11 +979,6 @@ The first intuition is to apply swapping between couples elements of the array p
 
 The following small variant of the previous algorithm will accomplish this by first choosing one of the numbers $1, \dots , n$ at random and then putting that number in position $n$; it then chooses at random one of the remaining $n − 1$ numbers and puts that number in position $n − 1$; it then chooses at random one of the remaining $n − 2$ numbers and puts it in position $n − 2$; and so on (where choosing a number at random means that each of the remaining numbers is equally likely to be chosen). Starting with any initial ordering $P_1, P_2 , \dots , P_n$, one of the positions $1, \dots , n$ will be picked at random and then the number in that position will be interchanged with the one in position $n$. Now we randomly choose one of the positions $1, \dots , n − 1$ and interchange the number in this position with the one in position $n − 1$, and so on.
 
-```python
-def randomPerm(v)
-	
-```
-
 Let's evaluate if the probability of each permutation to appear is the same.
 
 $$P[\text{Each permutation to be the same}] = \bar{p}$$
@@ -1024,21 +1019,35 @@ Variance $Var[X]= \mathbb{E} = (1 - p)^2 p + (0 - p)^2 (1 - p) = p(1 - p) (1 - p
 A **Binomial Random Variable** models $n$ trials in which each trial is described as a Bernoulli Random Variable. The goal is to count the number of successful trials.
 
 How to generate a valid value for a Binomial Random Variable?<br />
-One way is by simulation, that is, simulating $n$ Bernoullli Random Variables. Another option considers the use of the  native algorithm for the invers transform.
+One way is by simulation, that is, simulating $n$ Bernoullli Random Variables all with equal probability of success $p$ and independent one another. Another option considers the use of the native algorithm for the Inverse Transform method.
 
-Computing this probability incrementally.
+Consider the following example.<br />
+Alice and Bob play a dice game. It consists in rolling a single dice exactly $10$ times. Alice wins if she gets $5$ times the value $1$. What is her probability of winning? To compute the answer, the following formula will be used.
 
-$$P[X = i] = \binom{n}{k} p^i (1 - p)^{n - i} = \frac{n!}{i! (n - i)!} p^i(1 - p)^{n - i}$$
+$$P[X = i] = \binom{n}{i} p^i (1 - p)^{n - i} = \frac{n!}{i! (n - i)!} p^i(1 - p)^{n - i}$$
+
+However, the calculation of the probability for large values of $n$ and, in particular, of the binomial coefficient is computationally challenging. An idea is to compute this probability incrementally.
+
+$$P[X = i] = \binom{n}{i} p^i (1 - p)^{n - i} = \frac{n!}{i! (n - i)!} p^i(1 - p)^{n - i}$$
+
+Let's start looking at the probability of the Random Variable to assume value $i+1$ and writing it in a wat that resembles the previous equation:
+
 $$P[X = i + 1] = \frac{n!}{(i + 1)!(n  - i - 1)!} p^{i + 1}(1 - p)^{n - i - 1}$$
+$$P[X = i + 1] = \frac{n!\cdot (n-1)}{(i + 1)\cdot i!\cdot (n-1) \cdot (n  - i - 1)!}\cdot( p^{i}\cdot p) \frac{(1 - p)^{n - i}}{1-p}$$
 
-Expected value $\mathbb{E}[X] = np$.<br />
-Variance $Var[X] = np (1 - p)$
+After this rewriting, it is possible to notice that
+
+$$P[X = i + 1] = P[X = i] \cdot \frac{p}{1-p} \cdot \frac{n-i}{i +1}$$
+
+Noting that $\frac{p}{1-p}$ is a constand and, therefore, it is possible to refers to it as $c$, the only thing that must be computed each iteration is $\frac{n-i}{i + 1}$ and, obviously, the final product.
+
+Expected value $\mathbb{E}[X] = np$ ($n$ indipendent trials of a Bernoulli Random Variable).<br />
+Variance $Var[X] = np (1 - p)$.
 
 -------------------------------------------------------------
 
 ##### Poisson Random Variable
-
-Relation between Poisson Random Variables and Binomial Random Variables. The difference is that in the Binomial ones, $n$ is a reasonable number while in the Poisson one, $n$ is a huge number.
+There exists a significant similarity between **Poisson Random Variables** and Binomial Random Variables. The only difference is that in the Binomial ones, $n$ is a reasonable number while in the Poisson one, $n$ is a huge number.
 
 $\lambda = n \cdot p$ is called **rate** 
 
