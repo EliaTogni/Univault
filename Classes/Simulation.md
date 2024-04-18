@@ -473,7 +473,7 @@ $$\mathbb{E}\Big[\sum_{i = 1}^{n} x_i\Big] = \sum_{i = 1}^{n}\mathbb{E}[X_i]$$
 
 #### Variance
 Whereas $\mathbb{E}[X]$, the expected value of the random variable $X$, is a weighted average of the possible values of $X$, it yields no information about the variation of these values.<br />
-One way of measuring this variation is to consider the average value of the square of the difference between $X$ and $\mathbb{E}[X]$. If $X$ is a random variable with mean $\mu$, then the **variance** of $X$, denoted by $Var(X)$, is defined by
+One way of measuring this variation is to consider the average value of the square of the difference between $X$ and $\mathbb{E}[X]$. If $X$ is a random variable with mean $\mu$, then the **variance** of $X$, denoted by $Var[X]$, is defined by
 
 $$Var[X] = \mathbb{E}[(X - \mu)^2]$$
 
@@ -529,7 +529,7 @@ $$Var[X + Y] = Var[X] + Var[Y]$$
 #### Correlation
 The **correlation** between two random variables $X$ and $Y$, denoted as $Corr(X, Y)$, is defined by
 
-$$Corr(X, Y) = \frac{Cov(X, Y)}{\sqrt{Var(X) Var(Y)}}$$
+$$Corr(X, Y) = \frac{Cov(X, Y)}{\sqrt{Var[X] Var[Y]}}$$
 
 -------------------------------------------------------------
 
@@ -596,11 +596,6 @@ $$\lim_{N \to\infty} \frac{X_1 + \cdots + X_n}{n} = \mu$$
 
 That is, with certainty, the long-run average of a sequence of independent and identically distributed random variables will converge to its mean.
 While the weak law defines this property in a probabilistic way, the strong law defines it in a deterministic way (with probability $1$).
-
--------------------------------------------------------------
-
-#### Some discrete random variables
-
 
 -------------------------------------------------------------
 
@@ -1049,7 +1044,7 @@ Variance $Var[X] = np (1 - p)$.
 ##### Poisson Random Variable
 There exists a significant similarity between **Poisson Random Variables** and Binomial Random Variables. The only difference is that in the Binomial ones, $n$ is a reasonable number while in the Poisson one, $n$ is a huge number.
 
-$\lambda = n \cdot p$ is called **rate** 
+$\lambda = n \cdot p$ is called **rate**. The choice of utilizing only one parameter derived from the product of other two is due to the fact that $p$ tends to be a really small number while $n$ tends to be a really large one. Therefore, $\lambda$ tends to be a good compromise between the other two.
 
 Expected value $\mathbb{E}[X] = np = \lambda$. <br />
 Variance $Var[X] = np(1 - p) = n(p - p^2)$. But if $p$ is a small value, $p^2$ tends to $0$ and, therefore, it can be dropped. The remaining product is $np$ which is again $\lambda$.
@@ -1058,9 +1053,27 @@ $$P[X = i] = \binom{n}{i}p^i(1-p)^{n-i} = \frac{n!}{(n - i)!n!}p^i (1-p)^{n-i}$$
 
 Knowing that $\lambda = np$ and, therefore, $p = \frac{\lambda}{n}$
 
-$$\frac{n!}{(n - i)!n!}\frac{\lambda^i}{n^i} (1-\frac{\lambda}{n})^{n-i}$$
+$$\frac{n!}{(n - i)!n!}\Big(\frac{\lambda}{n}\Big)^i \Big(1-\frac{\lambda}{n}\Big)^{n-i} =$$
+$$\frac{n(n-1) \dots (n - i + 1)}{n^i} \cdot\frac{\lambda^i}{i!} \cdot \frac{\Big(1-\frac{\lambda}{n}\Big)^{n}}{\Big(1-\frac{\lambda}{n}\Big)^{i}} =$$
 
-fine manipolazione
+Now, for $n$ large and $p$ small it holds that
+
+$$\Big(1 - \frac{\lambda}{n}\Big)^n \approx e^{-\lambda}$$
+$$\frac{n(n-1) \dots (n - i + 1)}{n^i} \approx 1$$
+$${\Big(1-\frac{\lambda}{n}\Big)^{i}} \approx 1$$
+
+Hence, for $n$ large and $p$ small, it holds that
+
+$$P[X = i] \approx e^{-\lambda}\frac{\lambda^i}{i!}$$
+
+Since the mean and variance of a Binomial Random Variable $Y$ are given by
+
+$$\mathbb{E}[Y] = np$$
+$$Var[Y] = np(1 - p) \approx np \quad \text{ for small } p$$
+
+it is intuitive, given the relationship between Binomial and Poisson Random Variables, that for a Poisson Random Variable $X$ having parameter $\lambda$, it holds that
+
+$$\mathbb{E}[X] = Var[X] = \lambda$$
 
 Another interesting result about Poisson Random Variables is that they are **invariant** to aggregation, that is, 
 
