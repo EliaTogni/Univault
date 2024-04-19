@@ -1084,13 +1084,37 @@ where
 $$X_A \text{ is a Poisson Random Variable of parameter } \lambda_A \space(\text{such that }\lambda_A =\lambda \cdot p_A)$$
 $$X_B \text{ is a Poisson Random Variable of parameter } \lambda_B \space(\text{such that }\lambda_B =\lambda \cdot p_B)$$
 
+In fact, $\lambda = \lambda_A + \lambda_B = \lambda \cdot p_A + \lambda \cdot p_B = \lambda \cdot (p_A + p_B) = \lambda \cdot 1 = \lambda$.<br />
 It follows the proof of the previous theorem:
 
 $$P[X_A = n, X_B = m] =$$
-$$= P[X_A = n, X_B = m \vert X = n + m] \cdot P[X = n + m] + P[X_A = n, X_B = m \vert X \neq n + m] \cdot P[X \neq n + m] = $$
-$$= P[X_A = n, X_B = m \vert X = n + m] \cdot P[X = n + m] + 0 =$$
+$$= P[X_A = n, X_B = m \space \vert X = n + m] \cdot P[X = n + m] + P[X_A = n, X_B = m \vert X \neq n + m] \cdot P[X \neq n + m] = $$
 
-$\vdots$
+However, $X$ is defined as $X = X_A + X_B$ and, therefore, $P[X_A = n, X_B = m \vert X \neq n + m] = 0$.
+
+$$P[X_A = n, X_B = m \vert X = n + m] \cdot P[X = n + m] + 0$$
+
+This is the setting of a Binomial Random Variable and, therefore, its probability can be written as
+
+$$ P[X_A = n, X_B = m \vert X = n + m] = \binom{n + m}{n}p_A^{n}(1- p_A)^{n + m - n}$$
+$$P[X = n + m] = e^{-\lambda} \frac{\lambda^{n+ m}}{(n + m)!}$$
+$$\binom{n + m}{n}p_A^{n}(1- p_A)^{n + m - n} e^{-\lambda} \frac{\lambda^{n+ m}}{(n + m)!} = $$
+
+
+$$= \frac{(n + m)!}{n!m!}p_A^{n}(1- p_A)^{m} \space e^{-\lambda p_A} \space e^{- \lambda (1 - p_A)}\frac{\lambda^{n} \lambda^{m}}{(n + m)!} = $$
+$$= \frac{\cancel{(n + m)!}}{n!m!}p_A^{n}(1- p_A)^{m} \space e^{-\lambda p_A} \space e^{- \lambda (1 - p_A)}\frac{\lambda^{n} \lambda^{m}}{\cancel{(n + m)!}} =$$
+$$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!} e^{- \lambda (1 - p_A)}\frac{ (\lambda (1- p_A))^{m}}{m!} =$$
+$$= P[X_A = n, X_B = m]$$
+
+Therefore,
+
+$$P[X_A = n] = \sum_{m = 0}^{\infty} P[X_A = n, X_B = m] =$$
+$$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!} \sum_{m = 0}^{\infty} e^{-\tilde{\lambda}} \frac{(\tilde{\lambda})^m}{m!}$$
+
+And this is the expression of a general probability for a Poisson Random Variable of parameter $\tilde{\lambda}$.
+
+$$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!} \underbracket{\sum_{m = 0}^{\infty} e^{-\tilde{\lambda}} \frac{(\tilde{\lambda})^m}{m!}}_1 = $$
+$$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!}\quad \text{ with } \lambda_A = \lambda \cdot p_A$$
 
 Random generation algorithm for a Poisson Random Variable.
 
