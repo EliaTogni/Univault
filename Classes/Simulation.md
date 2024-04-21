@@ -1099,8 +1099,6 @@ This is the setting of a Binomial Random Variable and, therefore, its probabilit
 $$ P[X_A = n, X_B = m \vert X = n + m] = \binom{n + m}{n}p_A^{n}(1- p_A)^{n + m - n}$$
 $$P[X = n + m] = e^{-\lambda} \frac{\lambda^{n+ m}}{(n + m)!}$$
 $$\binom{n + m}{n}p_A^{n}(1- p_A)^{n + m - n} e^{-\lambda} \frac{\lambda^{n+ m}}{(n + m)!} = $$
-
-
 $$= \frac{(n + m)!}{n!m!}p_A^{n}(1- p_A)^{m} \space e^{-\lambda p_A} \space e^{- \lambda (1 - p_A)}\frac{\lambda^{n} \lambda^{m}}{(n + m)!} = $$
 $$= \frac{\cancel{(n + m)!}}{n!m!}p_A^{n}(1- p_A)^{m} \space e^{-\lambda p_A} \space e^{- \lambda (1 - p_A)}\frac{\lambda^{n} \lambda^{m}}{\cancel{(n + m)!}} =$$
 $$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!} e^{- \lambda (1 - p_A)}\frac{ (\lambda (1- p_A))^{m}}{m!} =$$
@@ -1116,7 +1114,26 @@ And this is the expression of a general probability for a Poisson Random Variabl
 $$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!} \underbracket{\sum_{m = 0}^{\infty} e^{-\tilde{\lambda}} \frac{(\tilde{\lambda})^m}{m!}}_1 = $$
 $$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!}\quad \text{ with } \lambda_A = \lambda \cdot p_A$$
 
-Random generation algorithm for a Poisson Random Variable.
+The following is a Random generation algorithm for a Poisson Random Variable.<br />
+
+```pseudo
+	\begin{algorithm}
+	\caption{Random Generation Algorithm for a Poisson Random Variable}
+	\begin{algorithmic}
+		\State $u$ = random() $\space$   //$[0, 1)$
+		 \State $p, i = 0$
+		 \While{$u \leq p + P[i]$}
+			 \State $p = p + P[i]$
+			 \State $i = i + 1$
+         \EndWhile
+	\end{algorithmic}
+	\end{algorithm}
+```
+
+The calculation of $P[X = i]$ is computationally complex and, therefore, there is the need for a simpler way to compute it. Let's start from
+
+$$\frac{P[X = i + 1]}{P[X = i]} = \frac{\cancel{e^{-\lambda}}\frac{\lambda^{(i + 1)}}{(i + 1)!}}{\cancel{e^{-\lambda}}\frac{\lambda^{(i)}}{(i)!}} = \frac{\lambda^{(i + 1)}}{\lambda^{i}}\cdot \frac{i!}{(i + 1)!} = \lambda \cdot \frac{1}{i + 1}$$
+In this way, the computation of $P[X = i]$ just needs the previous probability ($P[X = i - 1]$) and the coefficient just obtained.
 
 -------------------------------------------------------------
 
@@ -1126,7 +1143,7 @@ Random generation algorithm for a Poisson Random Variable.
 -------------------------------------------------------------
 
 ##### Negative Binomial Random Variable
-number of trials to r successes. Defining $X$ as a negative binomial of patameters $p, r$:<br />
+number of trials to $r$ successes. Defining $X$ as a negative binomial of parameters $p, r$:<br />
 $P[X = i]$
 
 immagine
@@ -1181,6 +1198,8 @@ To summarize it
 ![[CheatSheetRandomVariables.png]]
 
 -------------------------------------------------------------
+
+
 
 simulation: rate -> interarrival (intertrigger) time are distributed with an exponential random variable.
 The expected time between a trigger and another will be $1/rate$.
