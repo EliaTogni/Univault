@@ -1138,7 +1138,11 @@ In this way, the computation of $P[X = i]$ just needs the previous probability (
 -------------------------------------------------------------
 
 ##### Geometric Random Variable
+Consider independent trials, each of which is a success with probability $p$. If $X$ represents the number of the first trial that is a success, then
 
+$$P[X = i] = p(1 - p)^{i - 1}, \quad i \geq 1$$
+
+which is easily obtained by noting that in order for the first success to occur on the $i$-th trial, the first $i − 1$ must all be failures and the $i$-th a success. The previous equation now follows because the trials are independent.
 
 -------------------------------------------------------------
 
@@ -1169,6 +1173,13 @@ $N$ blue balls $+ M$ not blue balls. What is the number of blue balls that i get
 
 -------------------------------------------------------------
 
+#### Summary
+To summarize it
+
+![[CheatSheetRandomVariables.png]]
+
+-------------------------------------------------------------
+
 ### Continuous Random Variables
 #### Uniformly Distribute Random Variable 
 
@@ -1193,9 +1204,7 @@ slide 15/34 modeling ariel simulation
 
 
 
-To summarize it
 
-![[CheatSheetRandomVariables.png]]
 
 -------------------------------------------------------------
 
