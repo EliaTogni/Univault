@@ -1187,21 +1187,73 @@ slide 15/34 modeling ariel simulation
 
 -------------------------------------------------------------
 
+#### Exponential Random Variable
+
+slide 16/34
+
+Suppose to have as a Probability Density Function an exponential function. The Ex Random Variables have a single parameter, $\lambda$, which it is interpreted as a **rate**.
+
+Expected Value $\mathbb{E}[X] = \frac{1}{\lambda}$.<br />
+Variance $Var[X] = \frac{1}{\lambda^2}$
+
+low values with much higher probability than high values.
+
+This Random Variable is very useful to model the lifetime of an object or, in general, breakdowns of machines.
+
+**Memoryless property**, that is, the probability $P[X > s + t | X > s] = P[X > t]$, where $s + t$ are constants. This property is telling that the probability that a machine breaks down after, for example, $15$ minutes knowing that no breakdown occurred for the first $10$ minutes equals the probability that the machine will break down in $5$ minutes.
+
+disegno 25 minuti
+
+Proof:
+
+$$\text{Knowing that } P[A \vert B] = \frac{P[A \cap B]}{P[B]}\text{, is it possible to obtain }$$
+$$P[X > s + t \vert X > s] = \underbrace{\frac{P[X > s + t \wedge X > s]}{P[X > s]}}_{P[X > t]} = \frac{P[X > s + t]}{P[X > s]}$$
+$$\text{Therefore } \underbrace{P[X > s + t]}_{\text{Reshuffling of memoryless}} = P[X > t] \cdot P[X > s]$$
+$$\underbrace{1 - F_X(s + t)}_{1 - (1 - e^{-\lambda x})} = [1 - F(t)] [1 - F(s)] = $$
+$$e^{- \lambda (s + t)} = e^{-\lambda t} e ^{- \lambda s}$$
+
+The Exp Random Variable are the only ones having this memoryless property. Whenever we have this fenomenon like an independent arrival or anything else, then the lenght of this observation must be an Exponential Random Variable
+It is really useful to model independent Random Variables.
+
+**Claim**: let $X$ be am Exponential Random Variable of parameter $\lambda$, then $c \cdot X$ is an exponential Random Variable of parameter $\frac{\lambda}{c}$.
+
+Proof: $P[y \leq x] = P[c\cdot X \leq x]$
+
+Let $X_1, \dots, X_n$ be independent Exponential Random Variables of rate $\lambda_i$ for $i = 1, \dots, n$. Then, the minimum $\min\{X_1, \dots, X_n\}$ is, again, an Exponential Random Variable with rate $\sum_{i = 1}^{n} \lambda_i$, independently on which $X_i$ is the smallest.
+
+Proof: Let $M$ to be the minimum $\min\{X_1, \dots, X_n\}$. Let 
+
+$$Y_j = \cases{1 \quad \text{ if } X_j \text{ is minimum} \cr \cr 0 \quad \text{ otherwise}}$$
+
+Now consider $P[Y_j \vert M > t] = P[X_j - t = \min\{X_i - t\} \vert M > t]$. This is equal to $P[X_j - t = \min_i\{X_i - t \vert X_i > t \space \forall i \}]$. Knowing to have the Memoryless property, $X_i - t$ ... mi sono perso sto pezzo
+
+Therefore, $P[X_j = \min_i\{X_i - t\}] = P[Y_j]$.
+
+...
+
+Claim: The probability of $X_j$ being the smallest is $P[X_j = M] = \frac{\lambda_j}{\sum_i \lambda_i}$.
 
 
 
 -------------------------------------------------------------
 
+#### Normal Random Variable
+
+slide 20/34
+
+Parameters $\mu$ and $\sigma$.
 
 
+It is possible to express the CDF in terms of its $\Phi$ function. This function
 
 
+slide 21/34
 
 
 -------------------------------------------------------------
 
 
-
+The limit of the Inverse Tranform method is the need for an invertible Cumulative Distribution Function. While this condition was given in the context of Discrete Random Variables, it is not for the continuous ones.
 
 
 
