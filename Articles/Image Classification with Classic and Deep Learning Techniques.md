@@ -1,6 +1,6 @@
 ---
 "Titolo:": Image Classification with Classic and Deep Learning Techniques
-"Autore:": Òscar Lorente CorominasIan, Riera Smolinska, Aditya Sangram Singh Rana
+"Autore:": Òscar Lorente Corominas, Ian Riera Smolinska, Aditya Sangram Singh Rana
 "Casa Editrice:": Universitat Autònoma de Barcelona
 "Anno:": "2021"
 "DOI:": arXiv:2105.04895v1
@@ -403,11 +403,11 @@ Sono stati usati alcuni trick state of the art per trovare automaticametne il mi
 14) **Perchè si usa un tiny dataset nell'allenamento di una CNN?**
 15) **Perchè alla fine si decide di usare differenti taglie per ciascun layer?**
 
-----------------------------------------------------------------
+-------------------------------------------------------------
 
 # Related to
 - [[Intelligenza Artificiale]]
 - [[Statistical Methods for Machine Learning]]
 
-----------------------------------------------------------------
+-------------------------------------------------------------
 

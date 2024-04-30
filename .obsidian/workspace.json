@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "0ffd344b06f918a9",
+        "id": "0bf929990c6ea3e1",
         "type": "tabs",
         "children": [
           {
-            "id": "de76fb91e8f8a526",
+            "id": "7d822d7c317f1de1",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -115,8 +115,9 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "de76fb91e8f8a526",
+  "active": "7d822d7c317f1de1",
   "lastOpenFiles": [
+    "Articles/Image Classification with Classic and Deep Learning Techniques.md",
     "Classes/Simulation.md",
     "Images/CheatSheetRandomVariables.png",
     "Classes/Informatica Teorica.md",

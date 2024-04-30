@@ -1249,18 +1249,123 @@ It is possible to express the CDF in terms of its $\Phi$ function. This function
 
 slide 21/34
 
+teorema del limite centrale
+
 
 -------------------------------------------------------------
 
 
 The limit of the Inverse Tranform method is the need for an invertible Cumulative Distribution Function. While this condition was given in the context of Discrete Random Variables, it is not for the continuous ones.
 
+$\vdots$
+
+### Composition
+The Composition principe is intuitive. A random variable $X$ needs to be generated with cdf F(). F() can be decomposed by a set of F_i functions, that is, as a convex linear combination of F_i (the weights must sum up to 1).
+
+Esempio triangolo 
+
+This linear combinaton recall the concept of probability, in which the weights can be considered as probability values.
+Therefore, it is possible to define F() as
+
+$$F(X) = \cases{F_1(X) with prob p_1 \cr \cr F_2 with prob p_2 \cr \cr \vdots \cr \cr }$$
+
+In this case, to generate
+
+first generate a value $j$ for a rv whose probability distribution function is given by $\alpha_i$.
+
+The value obtained in this way is distributed according to $F()$.
+
+Proof.<br />
+Let's pick $F(X) = P[X \leq x] = \sum_{j = 1}^{n}P[X \leq x \vert J = j] \cdot P[J = j]$. But it is known that this is equal to $\sum_{j = 1}^{n} \alpha_j P[X \leq x \vert J = j] = \sum_{j = 1}^{n} \alpha_j F(X)$.
+
+
+An example of use of the Composition technique.
+Let's consider a triangular distribution.
+
+immagine triangular distribution
+
+How to generate valid values for a triangular random variable? It is possible to do it with the Composition approach
+
+imamgine triangular distribution 2
+
+$f(X)$, analytically speaking, can be defined by cases, that is
+
+$$f(X) = \cases{x + 1 \quad -1 \leq x \leq 0 \cr \cr  - x + 1 \quad 0 \leq x \leq 1 \cr \cr 0 \quad \text{elsewhere}}$$
+
+and its integral is
+
+$$F(X) = \cases{0 \quad x \leq 1 \cr \cr \frac{x^2}{2} + x + \frac{1}{2} \quad -1 \leq x \leq 0 \cr \cr -\frac{x^2}{2} + x + \frac{1}{2} \quad 0 \leq x \leq 1 \cr \cr 1 \quad x > 1}$$
+$$F(X) = \cases{F_1(X) = \frac{x^2}{2} + x + \frac{1}{2} \quad \alpha_1 = \frac{1}{2} \cr \cr F_2(X) = -\frac{x^2}{2} + x + \frac{1}{2} \quad \alpha_2 = \frac{1}{2}}$$
+
+Now it is possible to apply the inverse transform method.
+
+$$y = \frac{x^2}{2} + x + \frac{1}{2} \implies y = \frac{1}{2}\Big(x + 1\Big) \implies 2y = \Big(x + 1\Big)$$
+
+Both members are always positive, so
+
+$$\sqrt{2y} = x + 1 \implies x = \sqrt{2y} - 1$$
+$$F_{1}^{-1}(v) = \sqrt{2y} - 1$$
+
+Therefore, the algorithm will be
+
+generateTriang()
+	u = random()
+	j = discreteRV(1/2, 1/2)
+	if j = 1
+		return F_{1}^{-1}(u
+	else
+		return F_2^{-1}(u)
+
+-------------------------------------------------------------
+
+### Acceptance-Rejection
+How to generate a branch of a normal RV?
+Slide 22/34
+
+Theorem: 
+
+Proof:
+$P[Y = y \wedge \text{ is accepted}] = P[Y = y] \cdot P[\text{accepted } \vert Y = y] = g(y) \cdot \frac{f(y)}{c \cdot g(y)} = \frac{1}{c}f(y)$.
+
+Let's proof that the number of iteration needed to converge is a geometric RV with expected value $c$. To reach converge I mean $1$ value accepted.
+
+$$P[\text{ accepted }] = \sum_{y \in Y} \frac{1}{c} f(y)$$
+
+$y$ is, in general, a continuous RV so
+
+$$P[\text{ accepted }] = \int_{-\infty}^{+\infty} \frac{1}{c} f(y) dy =  \frac{1}{c} \int_{-\infty}^{+\infty} f(y) dy = \frac{1}{c}$$
+
+So the probability is constant with value $\frac{1}{c}$.
+
+immagine rettangolini 1/c
+
+Let's proof that the rv generated in this way has pdf $f(y)$. let's look at $P[X = x]$. In order to get $x$, we know that $P[X = x] = \sum_{i = 1}^{+ \infty} P[x \text{ accepted at iteration } i]$. 
+
+dimostrazione
 
 
 
 -------------------------------------------------------------
 
+Acceptance-rejection for normal random variables
 
+for generating a value for a normal rv with arbitrary expected value and variance, is enough to generate a valid value for a normal rv with expected value 0 and variance 1 and use the property that grant us to shift and rescale it.
+
+$\vdots$
+
+dimostrazione pt
+
+
+$$F_{NORMAL}(x) = \cases{F^{-}_{NORMAL}(x) \quad p_1 = \frac{1}{2} \cr \cr F^{+}_{NORMAL}(x) \quad p_2 = \frac{1}{2}}$$
+
+Algoritmo di generazione $F^{+}_{NORMAL}(x)$
+
+Algoritmo di generazione $F^{-}_{NORMAL}(x)$
+
+Algoritmo di generazione $F_{NORMAL}(x)$
+
+
+-------------------------------------------------------------
 
 simulation: rate -> interarrival (intertrigger) time are distributed with an exponential random variable.
 The expected time between a trigger and another will be $1/rate$.
