@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Classes/Simulation.md",
+                "file": "Classes/Cittadinanza Digitale e Tecnocivismo.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Simulation.md",
+                "file": "Classes/Cittadinanza Digitale e Tecnocivismo.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,10 +114,16 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "7d822d7c317f1de1",
+  "active": "841d767269e7d257",
   "lastOpenFiles": [
-    "Articles/Image Classification with Classic and Deep Learning Techniques.md",
+    "Classes/Privatezza e Protezione dei Dati.md",
+    "Classes/Cittadinanza Digitale e Tecnocivismo.md",
+    "Classes/Statistical Methods for Machine Learning.md",
+    "Classes/Statistica e Probabilità.md",
     "Classes/Simulation.md",
+    "Blogs/Who's The Beatdown?.md",
+    "Blogs/Tempo.md",
+    "Articles/Image Classification with Classic and Deep Learning Techniques.md",
     "Images/CheatSheetRandomVariables.png",
     "Classes/Informatica Teorica.md",
     "Mtg/Reports/Report Paupergeddon Lecco 2024.md",
@@ -133,14 +138,10 @@
     "Images/IMG-20240323-WA0017.jpg",
     "Images/PotaPauperBresciaPaupergeddonLecco.jpg",
     "Conferences/Recruitment Day 11 Aprile.md",
-    "Classes/Statistical Methods for Machine Learning.md",
     "Conferences",
-    "Classes/Privatezza e Protezione dei Dati.md",
-    "Classes/Statistica e Probabilità.md",
     "Classes/Sicurezza dei Sistemi e delle Reti.md",
     "Classes/Logica Matematica.md",
     "Classes/Intelligenza Artificiale.md",
-    "Classes/Cittadinanza Digitale e Tecnocivismo.md",
     "Classes/Bioinformatica.md",
     "Classes/Algoritmi Paralleli e Distribuiti.md",
     "Classes/3D Videogames.md",
@@ -152,8 +153,6 @@
     "Lexicon/Refolo.md",
     "Lexicon/Perigliare.md",
     "Lexicon/Pamphlet.md",
-    "Lexicon/Nappina.md",
-    "Lexicon/Maggiociondolo.md",
     "Mtg/Reports",
     "Mtg",
     "Untitled.canvas",

@@ -282,7 +282,7 @@ Many exact algorithms for producing $k$-anonymous tables through attribute gener
 
 # Algorithms for AG\_TS and AG\_
 ## Computing a $k$-minimal solution
-Each path in $DGH_{DT}$ represents a generalization strategy for $PT$. We call **locally minimal generalization** the lowest node of each path satisfying $k$-anonymity. The properties exploited by the algorithm are:
+Each path in $DGH_{D_T}$ represents a generalization strategy for $PT$. We call **locally minimal generalization** the lowest node of each path satisfying $k$-anonymity. The properties exploited by the algorithm are:
 1) each $k$-minimal generalization is **locally minimal** with respect to a path (but the converse is not true, that is, a locally minimal generalization with respect to a path is not granted to be the $k$-minimal one). This means that a global minimal is also a locally minimal with respect to a path;
 2) going up in the hierarchy the number of tuples that must be removed to guarantee $k$-anonymity decreases.
 
@@ -302,7 +302,11 @@ In the table on the right, every cell $c_{ij}$ measures how much the tuple $t_i$
 ![[kMinimalSolution1.png|600]]
 
 Suppose $k = 2$ and $MaxSup = 2$.<br />
-Compute first solutions at height $1$ : $GT_{[1,0]}$ and $GT_{[0,1]}$. In the image below, all the cells with $DV \leq [1, 0]$ are generalized to the same value.
+Compute first solutions at height $1$ : $GT_{[1,0]}$ and $GT_{[0,1]}$. 
+
+At the level $[1, 0]$, which tuple becomes equal? $t2$ and $t9$ become equals and $t3/t4/t5$ and $t7$ and $t8$.
+
+In the image below, all the cells with $DV \leq [1, 0]$ are generalized to the same value.
 
 ![[kMinimalSolution2.png|600]]
 
@@ -4057,6 +4061,12 @@ The shuffle index can be extended to efficiently:
 
 ----------------------------------------------------------------
 
+# Domande esame
+
+1) Introdurre access e pattern confidentiality e spiegare shuffle index con cover searches, cached searches e shuffling facendo disegni per spiegare.
+2) Encryption per proteggere la confidenzialità dei dati con enfasi su indicizzazione (e.g. diretta), vantaggi e svantaggi.
+3)  Data fragmentation: alcune tecniche (non communicating pair of servers, multiple non linkable fragments, keep a few) e come si frammentano. Parlare di visibility requirements.
+4) Frammentazione multiple non linkable fragments: con quasi identifiers, associazioni da spezzare e anche dipendenze.
 
 
 

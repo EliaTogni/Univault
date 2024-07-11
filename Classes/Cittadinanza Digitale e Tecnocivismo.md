@@ -2,7 +2,7 @@
 
 ## Introduzione V1
 1) **Cosa si intende con "cittadinanza digitale" in generale? E nel contesto del libro?**
-	In generale si intende la declinazione digitale dell'essere Cittadini di un mondo sempre più digitalizzato, informatizzato e computerizzato dove i rapporti tra cittadino e stato, tra datore di lavoro e lavoratore cambiano per causa o merito della tecnologia. Nel contesto del libro, si fa riferimento agli utimi $4$ livelli (dal livello $4$ al livello $7$), anche detti livelli social-partecipativi (trasparency, participation, consultation e democracy).
+	In generale si intende la declinazione digitale dell'essere Cittadini di un mondo sempre più digitalizzato, informatizzato e computerizzato dove i rapporti tra cittadino e stato, tra datore di lavoro e lavoratore cambiano per causa o merito della tecnologia. Basandoci sulla definizione di cittadinanza del Ministero dell'Interno, un cittadino deve godere pienamente di tali diritti per potersi definire tale. Nel contesto del libro, si fa riferimento agli utimi $4$ livelli (dal livello $4$ al livello $7$), anche detti livelli social-partecipativi (trasparency, participation, consultation e democracy).
 2) **Cosa si intende con "tecnocivismo"?**
 	Il tecnocivismo serve come fondamento per la vera e propria cittadinanza digitale. In termini di arcobaleno, fa riferimento ai primi $4$ livelli (dal livello $0$ al livello $3$), anche detti livelli tecnico-infrastrutturali (The Net, services, access e education).
 3) **Cos'è l'arcobaleno della CDT? Com'è strutturato? Cosa descrivono i vari livelli/bande?**
@@ -10,7 +10,7 @@
 4) **Cosa indica il termine ICT?**
 	Information and Communication Technologies.
 5) **A cosa è ispirato l'arcobaleno della CDT?**
-	Questo framework si discosta dalla metafora della ladder di Arnstein, la quale evoca un percorso in salita che implica un impegno progressivo da parte di coloro che lo intraprendono, per adottare e adattare il modello ad arcobaleno proposto in "The access rainbow", perfezionandone i livelli. Questa struttura a livelli ricorda inoltre il modello OSI, perchè se uno qualunque dei livelli è carente, le conseguenze negative si ripercuotono su tutti i livelli sovrastanti.
+	Questo framework si discosta dalla metafora della ladder di Arnstein, la quale evoca un percorso in salita che implica un impegno progressivo da parte di coloro che lo intraprendono, per adottare e adattare il modello ad arcobaleno proposto in "The access rainbow", perfezionandone i livelli. Questa struttura a livelli ricorda, inoltre, il modello OSI, perchè se uno qualunque dei livelli è carente, le conseguenze negative si ripercuotono su tutti i livelli sovrastanti.
 6) **Cosa si intende con "spettrografia/spettroscopia" in CDT?**
 	L’ispirazione proviene dalla spettroscopia fisica, una tecnica per analizzare la composizione di un oggetto esaminandone la luce emessa. Attraverso la spettroscopia Cittadinanza Digitale e Tecnocivismo, il contesto o la situazione oggetto dell’analisi vengono valutati in base alla luminosità attribuita ad ogni livello in quel particolare contesto e lo spettro che ne risulta fornisce a colpo d’occhio una panoramica dell’oggetto valutato.
 7) **Cos'è "Creative Commons"? Hai altri esempi simili?**
@@ -29,9 +29,9 @@
 13) **Chi era Aaron Swartz?**
 	E' stato un programmatore, scrittore ed attivista statunitense, coautore delle licenze Creative Commonse, della prima specifica dell'RSS e cofondatore di Reddit. Fu arrestato per aver scaricato $5$ milioni di articoli da un database accademico. 
 14) **Cos'è il "(neo)luddismo"?**
-	Rivisitazione dell’antico luddismo (movimento anti-tecnologico dei primi del $1800$, contrario alle macchine che “rubavano il lavoro” come i telai). I neo-luddisti applicano il filosoficamente fallace “principio di precauzione” a qualunque nuova tecnologia (es. del $2020$: il $5G$) chiedendone la non adozione o l’abbandono. Sono spesso associati a ideologie anti- globalizzazione, anti-scientifiche ed eco-estremiste.
+	Rivisitazione dell’antico luddismo (movimento anti-tecnologico dei primi del $1800$, contrario alle macchine che “rubavano il lavoro” come i telai). I neo-luddisti applicano il filosoficamente fallace “principio di precauzione” a qualunque nuova tecnologia (es. del $2020$: il $5G$) chiedendone la non adozione o l’abbandono. Sono spesso associati a ideologie anti-globalizzazione, anti-scientifiche ed eco-estremiste.
 15) **Come funziona Wikipedia?**
-	Wikipedia è una enciclopedia online gratuita che chiunque può editare. Consiste di contenuto editabile liberamente, i cui articoli contengono numerosi link. Questi contenuti vengono creati e modificati continuamente.
+	Wikipedia è una enciclopedia online che chiunque può editare. Consiste di contenuto editabile liberamente, i cui articoli contengono numerosi link. Questi contenuti vengono creati e modificati continuamente. L'accesso a Wikipedia è completamente gratuito e non richiede abbonamenti o pagamenti. È finanziata principalmente attraverso donazioni.
 
 ----------------------------------------------------------------
 
@@ -41,7 +41,7 @@
 2) **Cos'è un "pacchetto"? Com'è strutturato?**
 	Un pacchetto di rete non è altro che una sequenza di bit di lunghezza finita che viene trasmessa sotto forma di segnale elettrico (rame) o luminoso (fibra ottica) da un nodo all’altro di una rete. E' strutturato in segmenti, detti campi, ed ogni campo della sequenza ha una ben precisa semantica dipendente dal tipo di protocollo di rete utilizzato. I pacchetti vengono ordinati in sequenze che costruiscono dei flussi di dati di cui poi l’utente fruisce. Alcuni di questi campi sono il TTL, il Protocol, il Checksum, Il Source IP Address ed il Destination IP Address, la Length ed il Sequence Number.
 3) **Quali sono i concetti fondamentali (ai fini della CDT) dell'architettura di Internet?**
-	
+	Sicuramente la rete TCP/IP: conoscere questi protocolli aiuta i cittadini a comprendere come avvengono le comunicazioni online, a riconoscere l'importanza della sicurezza dei dati durante il trasferimento e a promuove la consapevolezza sulla neutralità della rete e sulla necessità di infrastrutture aperte e accessibili. Il DNS, in quanto un sistema DNS ben gestito è fondamentale per evitare la censura e garantire l'accesso libero alle informazioni. Promuovere politiche che garantiscano accesso equo a Internet è fondamentale per combattere il divario digitale. Inoltre, le reti P2P supportano la decentralizzazione, aumentando la robustezza e la resilienza della rete.
 4) **Chi è un "provider"? Che tipi di provider esistono?**
 	Con il termine provider si identifica un'azienda o una qualsiasi entità che eroga un servizio. Se questo servizio è la rete Internet, allora parliamo di ISP (Internet Service Provider), azienda che fornisce connettività agli utenti sia via cavo che wireless. Non tutti i provider sono uguali però: l'ente che permette la connessione del nostro dispositivo è detto provider di connettività, i quali forniscono il servizio ultimo miglio, cioè quel tratto della rete che va dalla casa/uﬀicio dell’utente finale fino al primo concentratore. Questo provider dell'ultimo miglio, a sua volta, farà riferimento ad un provider di livello più alto per quanto concerne l'accesso che fornisce.
 5) **Perché è importante (nel contesto della CDT) analizzare il (mal)funzionamento della rete?**

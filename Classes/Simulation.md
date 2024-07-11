@@ -1181,6 +1181,7 @@ To summarize it
 -------------------------------------------------------------
 
 ### Continuous Random Variables
+Continuous Random Variables have one big advantage over the discrete ones, which is their visual representation.
 #### Uniformly Distribute Random Variable 
 
 slide 15/34 modeling ariel simulation
@@ -1343,13 +1344,11 @@ Let's proof that the rv generated in this way has pdf $f(y)$. let's look at $P[X
 
 dimostrazione
 
-
-
 -------------------------------------------------------------
 
 Acceptance-rejection for normal random variables
 
-for generating a value for a normal rv with arbitrary expected value and variance, is enough to generate a valid value for a normal rv with expected value 0 and variance 1 and use the property that grant us to shift and rescale it.
+for generating a value for a normal rv with arbitrary expected value and variance, is enough to generate a valid value for a normal rv with expected value $0$ and variance $1$ and use the property that grant us to shift and rescale it.
 
 $\vdots$
 
@@ -1364,6 +1363,20 @@ Algoritmo di generazione $F^{-}_{NORMAL}(x)$
 
 Algoritmo di generazione $F_{NORMAL}(x)$
 
+-------------------------------------------------------------
+
+## Poisson processes
+A Poisson Process having rate $\lambda$ is defined by these conditions:
+- events are occurring at random time points;
+- $N(t)$ is the number of events in the interval $[0, t]$;
+- $N(0) = 0$ (process begins at time $0$);
+- the number of events in disjoint time intervals are independent (**independet increment assumption**);
+
+immagine lecture 20 min
+
+- the probability density function of the number of events in a given interval depend only on its length, not on its position (**stationary increment assumption**);
+- $\lim_{h \to 0} \frac{P[N(h) = 1]}{h} = \lambda$ (in small intervals, the probability of an event to occur is approximately $h\lambda$);
+- $\lim_{h \to 0} \frac{P[N(h) > 2]}{h} = 0$ (it is unlikely that wto or more events occur in small intervals).
 
 -------------------------------------------------------------
 
@@ -1371,3 +1384,84 @@ simulation: rate -> interarrival (intertrigger) time are distributed with an exp
 The expected time between a trigger and another will be $1/rate$.
 
 10 per days e.g.
+
+
+-----
+
+Lezione Martedì 28 maggio
+
+Interval estimates
+
+-----
+
+Lezione Martedì 4 Giugno
+
+# Bootstrapping
+The idea behind **Bootstrapping** is the following.
+Whatif the parameter to estimate is not the mean (median or variance or ...)?
+The estimator may not be the mean and the range may not be defined by the variance.
+
+We need to find a corresponding estimator. We want to rebuilt by means of simulation runs, the whole cdf.
+
+immagine
+
+We do it using the empirical cdf. We sort the N values and we place them in a histogram.
+
+immagine histo
+
+If I believe that F_e is a good approximation of F, I can basically do anything algorithmically speaking. We can compute parameters out of F_e.
+
+From F_e we draw N values at random. we compute $\overline{\theta}_1$, $\overline{\theta}_2$, and so on. We have a set of values which are computed by resampling from the ecdf. 
+
+If F_e was really matching F,...
+
+The average of the differences of the theta bar from the theta bar initial, is an approximation of the ... error. We compute the **mean squared error**.
+
+$$MSE = \sum_{i = 1}^{m}\frac{\Big( \bar{\theta_i} - \bar{\theta}\Big)^2}{m}$$
+
+
+we use $\bar{\theta}$ as if it was sample mean. We use MSE as if it was variance.
+
+This is supported by theory. By the Glivenko-Cantelli theorem that states that 
+
+$$\lim_{n \to + \infty}F_e(X) \rightarrow F(x)$$
+
+Since we are not doing an infinite number of steps, we need to compare samples of the same size.
+
+What about the interval estimates?
+
+...
+
+Pick the theta n values and build a distribution of $\bar{\theta}$.
+
+immagine gaussiana 95% 
+
+You cut it off the tails of the gaussian. It is also possible to do the other way round. 
+
+## Variance Reduction
+High variance means low confidence about the values produced.
+
+We also want to keep the randomness of the model. Can we do it?
+
+### Antithetic variables
+Say you have 2 IID random variables with expected value $\theta$. We repeat $N$ observation of $X_1$ ..
+
+
+What if they are not independet but are negatively correlated? We can measure the variance of the average of these two RV. slide 8/15 ultima parte.
+
+If X_1 and X_2 are negatively correlated, the variance would be smaller.
+
+Esempio bernoulli
+
+Esempio network robusta
+
+### Control Variates
+X s the random variable output of the simulation. theta is its expected value. We are able to get anpther value for the model, Y, an intermediate point in the simulation for which we already know the expected value. We use Z = X + c(y - mu) as the undbiased estimator of theta. for any constant c.+
+
+Furthermore, the variance of Z 
+
+.
+.
+.
+
+### Conditioning
