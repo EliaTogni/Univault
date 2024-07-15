@@ -2,7 +2,7 @@
 
 ## Introduzione V1
 1) **Cosa si intende con "cittadinanza digitale" in generale? E nel contesto del libro?**
-	In generale si intende la declinazione digitale dell'essere Cittadini di un mondo sempre più digitalizzato, informatizzato e computerizzato dove i rapporti tra cittadino e stato, tra datore di lavoro e lavoratore cambiano per causa o merito della tecnologia. Basandoci sulla definizione di cittadinanza del Ministero dell'Interno, un cittadino deve godere pienamente di tali diritti per potersi definire tale. Nel contesto del libro, si fa riferimento agli utimi $4$ livelli (dal livello $4$ al livello $7$), anche detti livelli social-partecipativi (trasparency, participation, consultation e democracy).
+	In generale si intende la declinazione digitale dell'essere Cittadini di un mondo sempre più digitalizzato, informatizzato e computerizzato dove i rapporti tra cittadino e stato, tra datore di lavoro e lavoratore cambiano per causa o merito della tecnologia. Basandoci sulla definizione di cittadinanza del Ministero dell'Interno, un cittadino deve godere pienamente di diritti civili e politici per potersi definire tale. Nel contesto del libro, si fa riferimento agli utimi $4$ livelli (dal livello $4$ al livello $7$), anche detti livelli social-partecipativi (trasparency, participation, consultation e democracy).
 2) **Cosa si intende con "tecnocivismo"?**
 	Il tecnocivismo serve come fondamento per la vera e propria cittadinanza digitale. In termini di arcobaleno, fa riferimento ai primi $4$ livelli (dal livello $0$ al livello $3$), anche detti livelli tecnico-infrastrutturali (The Net, services, access e education).
 3) **Cos'è l'arcobaleno della CDT? Com'è strutturato? Cosa descrivono i vari livelli/bande?**
@@ -451,19 +451,19 @@
 
 ## L2
 1) **Quali sono i temi salienti del livello "access" dell'arcobaleno?**
-	i
+	==boh==
 2) **Cosa si intende con "servizio di base"?**
-	Dal punto analogico si intende servizi infrastrutturali che permettano ai cittadini di vivere, muoversi, istruirse, lavorare, socializzare, realizzarsi. Sono servizi non necessariamente forniti dallo Stato ma è sufficiente che il diritto all'accesso sia garantito per tutti i cittadini, con pari dignità. Dal punto di vista digitale, si intende l'accesso alla rete veloce, in fibra ottica, ben distribuita e conveniente per tutti i segmenti della popolazione. Ogni cittadino digitale dovrebbe essere raggiungibile ad un indirizzo di rete e, ancora meglio, dovrebbe ricevere l'assegnazione di uno spazio cloud ufficiale.
+	Dal punto analogico si intende servizi infrastrutturali che permettano ai cittadini di vivere, muoversi, istruirse, lavorare, socializzare, realizzarsi. Sono servizi non necessariamente forniti dallo Stato ma è sufficiente che il diritto all'accesso sia garantito per tutti i cittadini, con pari dignità. Dal punto di vista digitale, si intende l'accesso alla rete veloce, in fibra ottica, ben distribuita e conveniente per tutti i segmenti della popolazione. Ogni cittadino digitale dovrebbe essere raggiungibile ad un indirizzo di rete e, ancora meglio, dovrebbe ricevere l'assegnazione di uno spazio cloud ufficiale. si può discutere anche di diritto all'hardware.
 3) **Cos'è una "zona a fallimento di mercato"?**
 	 Sono zone di mercato dove gli operatori commerciali non avrebbero guadagno e quindi rinunciano ad investire.
 4) **Un "servizio di base" deve essere fornito dallo Stato?**
 	 Non necessariamente, è sufficiente che il diritto all'accesso sia garantito per tutti i cittadini, con pari dignità, cioè senza discriminazioni per censo, luogo di residenza, razza, sesso o religione.
 5) **Cita qualche "servizio di base" (anche se non formalmente/legalmente definito tale) tradizionale a cui si pensa affrontando il tema.**
-	i
+	==boh==
 6) **Perché non basta una "qualsiasi connessione a Internet" come servizio di base?**
-	i
+	==boh==
 7) **Ha senso parlare di "diritto all'hardware"?**
-	i
+	Ha senso, dato che per accedere ad un servizio digitale serve un computing device adeguato. Diﬀicile però definire in anticipo le caratteristiche precise di un ipotetico device universale. Usi e necessità diverse implicano hardware diversi. Pensare di fornire ai singoli cittadini un proprio veicolo non funziona, né in termini pragmatici, perché ogni soggetto ha esigenze e capacità diverse, né in termini economici per impegno finanziario che ne deriverebbe. Meglio pensare a postazioni connesse a Internet messe a disposizione in molti luoghi pubblici.
 8) **Cos'è la "piramide di Maslow"? (cita qualche bisogno in particolare)**
 	Rappresentazione gerarchica dei bisogni primari dell'uomo in cui ogni livello si appoggia di fatto sul sottostante. I livelli sono:
 	1) fisiologico: il bisogno di aria, acqua, cibo, sonno. Non soddisfare uno di questi bisogni porta alla morte del corpo fisico;
@@ -472,11 +472,11 @@
 	4) stima: aver stima di sè, aver sicurezza in sè, essere rispettati e rispettare gli altri;
 	5) realizzazione: poter esprimere la propria creatività e spontaneità, formarsi un'etica, essere liberi da pregiudizi, poter contribuire alla comunità.
 9) **Perché non è perfettamente applicabile la gerarchia dei bisogni?**
-	Perchè esistono casi in cui l'ordine non viene rispettato fedelmente. Si pensi a molti film e libri d’ambientazione in campi di prigionia, in cui l’amore e l’amicizia si compiono anche in contesti di grave privazione fisiologica e di sicurezza.
+	Perchè esistono casi in cui l'ordine non viene rispettato fedelmente. Si pensi a molti film e libri d’ambientazione in campi di prigionia, in cui l’amore e l’amicizia si compiono anche in contesti di grave privazione fisiologica e di sicurezza. Inoltre, la stratificazione della gerarchia è stata criticata perchè si ritiene che i bisogni non siano gerarchici ma un sistema interattivo, dinamico.
 10) **Quale parallelo puoi tracciare tra Maslow e l'Arcobaleno della CDT?**
 	Si può notare un parallelo sia nella struttura gerarchica in cui ogni livello si appoggia sul sottostante sia sui livelli alti: Maslow cita l'essere ascoltati (L$6$ - consultation e L$7$ - democracy) ed il poter contribuire all'insieme, alla comunità (L$5$ - participation).
 11) **Perché il meme in cui la rete è sotto al livello fisiologico fa sorridere?**
-	i
+	Perchè mette il bisogno di connettività addirittura sotto i bisogni primari.
 12) **Quale critica venne fatta alla piramide di Maslow?**
 	 Viene criticata sostenendo che i bisogni non siano gerarchici e che la vita sia più confusa rispetto a questa struttura. I bisogni sono un sistema interattivo, dinamico, ma è strettamente connesso all'abilità di costruire connessioni sociali.
 13) **Cosa si intende con "servizio pubblico"? (in contrapposizione a "servizio di base")**
@@ -501,7 +501,7 @@
 	- la rete gas veicola gas combustibili di vario genere i quali vengono usati per cucinare, scaldare acqua sanitaria o per riscaldamento. SLA: pressione minima $\approx 20$ mbar, composizione del gas;
 	- la rete idrica veicola acqua, la quale viene usata sia per scopi domestici che industriali o agricoli. SLA: flusso minimo, purezza.
 19) **Esistono influenze fra servizi analogici tradizionali e servizi digitali? Fai qualche esempio.**
-	 
+	 ==boh==
 20) **Cos'è il "digital divide"?**
 	Il digital divide, che in italiano diventa divario digitale, misura le disuguaglianze nella disponibilità di accesso alle tecnologie digitali da parte della popolazione. Il fattore tecnico che viene solitamente misurato è quello del livello di connettività infrastrutturale su base territoriale o demografica. Normalmente vengono definite due fasce di digital divide:
 	- di primo livello = indisponibilità della banda oltre $2$ Mbps;
@@ -548,19 +548,19 @@
 30) **Spiega il termine ADSL, soprattutto in ottica net neutrality.**
 	 Nel termine ADSL (Asymmetrical Digital Subscriber Line), il quale identifica una tecnologia di connession alla Rete, la parola asymmetrical descrive la caratteristica tipica di questa tecnologia nel fornire velocità di trasmissione diverse a seconda della direzione del flusso dei dati: il flusso entrante (download) è, in genere, $5$ o $10$ volte più veloce del flusso uscente (upload). Il motivo di questa asimmetria è storico: la capacità totale del canale era limitata superiormente e quindi si decise di dimensionare in questa maniera i due flussi. Questa scelta genera, ovviamente, un'enorme sacca di relatività. L'uso della Rete è cambiato: infatti, oggi è frequente condividere tanta informazione quanta se ne fruisce, per cui sarebbe più sensato muoversi verso una allocazione più simmetrica dei flussi. 
 31) **Discuti la proposta del wifi come servizio pubblico.**
-	
+	Ritengo che, visto il basso piano tariffario flat rate in Italia, sia poco utile e altrettanto poco conventiente pensare di garantire copertura wifi a prestazioni simili. 
 32) **Cos'è WiFi4EU?**
 	 Iniziativa europea che promuove il libero accesso alla connettività Wi-Fi per i cittadini negli spazi pubblici, compresi parchi, piazze, edifici pubblici, biblioteche, centri sanitari e musei nei comuni di tutta Europa. Questa iniziativa garantisce dei fondi europei ai comuni per installare apparecchiature Wi-Fi in spazi pubblici che non sono già dotati di hotspot Wi-Fi gratuito.
 33) **Cos'era il "decreto Pisanu"?**
 	Decreto in vigore dal $2005$ al $2011$ il quale conteneva norme connesse all'utilizzo di Internet, vietando le connessioni anonime a Internet e imponendo a tutti gli ISP di conservare un log in cui viene riportato indirizzo IP e numero di telefono che identifica l'utente connesso. In base al decreto Pisanu, per aprire un internet point in Italia bisognava richiedere la licenza al questore.
 34) **Cosa si intende con "flat rate"? Perché ci interessa in CDT?**
-	Si intende un piano tariffario con tariffa fissa ma connessione illimitata
+	Si intende un piano tariffario con tariffa fissa ma connessione illimitata. Ci interessa in ambito access quando parliamo di telefonia mobile, garantendo la possibilità di connettersi ad un prezzo accessibile a tutti i possessori di uno smartphone.
 35) **Cos'è il "roaming europeo"?**
 	Innanzitutto, il roaming è un accordo che stipulano due o più gestori telefonici, nel campo delle telecomunicazioni mobili, per far sì che i clienti di operatori terzi possano utilizzare le infrastrutture telefoniche (antenne e ponti radio) per chiamare, navigare o messaggiare in un Paese dove non vi è copertura dell'operatore del cliente. Con roaming europeo si indica la possibilità di usufruire del servizio di roaming senza costi aggiuntivi nei paesi dell'Unione Europea.
 36) **Presenta le varie possibilità di connessione alla rete (dal rame, alla fibra, al 3/4/5G) in termini di "digital divide".**
 	Un adeguato grado di connettività ridurrebbe il digital divide e avrebbe effetti positivi soprattutto sull'economia e sulla produttività.
 37) **Perché proponiamo come "servizio di base/universale/pubblico" l'abbassamento del limite di "digital divide"? Cosa comporterebbe in termini di CDT?**
-	Un adeguato grado di connettività ridurrebbe il digital divide e avrebbe effetti positivi soprattutto sull'economia e sulla produttività (in termini di smart working, formazione a distanza). La banda larga porta conoscenza e svago.
+	Un adeguato grado di connettività ridurrebbe il digital divide e avrebbe effetti positivi soprattutto sull'economia e sulla produttività (in termini di smart working, formazione a distanza). La banda larga porta conoscenza e svago. Comporterebbe un aumento di luminosità del livello 2 in termini spettrografici.
 38) **Cosa si intende con "computing device" inteso come servizio di base/pubblico? Discuti una sua eventuale promozione formale a servizio pubblico.**
 	Per accedere ad un servizio digitale, tipicamente via Internet, serve una connessione ragionevole per quel servizio, ma serve anche un computer adeguato, sempre in funzione del servizio. Diﬀicile definire in anticipo le caratteristiche precise di un ipotetico device universale, in quanto dipendenti dalle funzioni per le quali debba essere utilizzato. Usi e necessità diverse implicano veicoli diversi. Pensare di fornire ai singoli cittadini un proprio veicolo non funziona, né in termini pragmatici, perché ogni soggetto ha esigenze e capacità diverse, né in termini economici per impegno finanziario che ne deriverebbe. Sarebbe meglio fornire una buona rete di mezzi pubblici digitali per i cittadini digitali che non possono permettersi un computing device proprio. Alcuni esempi possono essere postazioni connesse ad Internet messe a disposizione in molti luoghi pubblici come scuole o biblioteche.
 39) **Cosa si intende con "domicilio digitale"? Articola promozione a servizio pubblico.**
@@ -588,7 +588,7 @@
  50) **Cos'è la "fatturazione elettronica"?**
 	La fatturazione elettronica è la versione digitale della fattura tradizionale, basata sull'interscambio (attraverso server governativo) di file in formato XML (eXtensible Markup Language) di facile compilazione.
 51) **Perché le cabine telefoniche erano importanti? Pensi sia stato giusto eliminarle?**
-	Perchè erano un servizio universale, sottoposto a rigidi vincoli di presenza su territorio e, quindi, fornivano un servizio utile a chiunque fosse sprovvisto di telefono fisso o mobile.
+	Perchè erano un servizio universale, sottoposto a rigidi vincoli di presenza su territorio e, quindi, fornivano un servizio utile a chiunque fosse sprovvisto di telefono fisso o mobile. Ritengo sia comprensibile l'eliminazione in questo momento storico, dove anche un semplice telefono cellulare (non smartphone) è alla portata di tutti.
 
 -----
 
