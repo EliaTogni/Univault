@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -114,7 +115,7 @@
       "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "841d767269e7d257",
+  "active": "7d822d7c317f1de1",
   "lastOpenFiles": [
     "Classes/Privatezza e Protezione dei Dati.md",
     "Classes/Cittadinanza Digitale e Tecnocivismo.md",

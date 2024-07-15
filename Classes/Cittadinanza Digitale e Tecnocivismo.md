@@ -14,16 +14,15 @@
 6) **Cosa si intende con "spettrografia/spettroscopia" in CDT?**
 	L’ispirazione proviene dalla spettroscopia fisica, una tecnica per analizzare la composizione di un oggetto esaminandone la luce emessa. Attraverso la spettroscopia Cittadinanza Digitale e Tecnocivismo, il contesto o la situazione oggetto dell’analisi vengono valutati in base alla luminosità attribuita ad ogni livello in quel particolare contesto e lo spettro che ne risulta fornisce a colpo d’occhio una panoramica dell’oggetto valutato.
 7) **Cos'è "Creative Commons"? Hai altri esempi simili?**
-	Organizzazione senza fini di lucro dedicata ad ampliare la gamma di opere dell'ingegno disponibili alla condivisione e all'utilizzo pubblico in maniera legale. Le $6$ diverse licenze CC forniscono un modo semplice e standardizzato per comunicare quali diritti d'autore dell'opera si riserva e a quali altri rinuncia, a beneficio degli utilizzatori.
+	Organizzazione senza fini di lucro dedicata ad ampliare la gamma di opere dell'ingegno disponibili alla condivisione e all'utilizzo pubblico in maniera legale. Le $6$ diverse licenze CC forniscono un modo semplice e standardizzato per comunicare quali diritti d'autore dell'opera si riserva e a quali altri rinuncia, a beneficio degli utilizzatori. Altri esempi sono **GNU General Public License (GPL)**, una licenza libera per software che garantisce agli utenti la libertà di usare, studiare, modificare e condividere il software. Un altro esempio è la **MIT License**, una licenza permissiva per software che consente a chiunque di fare quasi tutto con un progetto, purché includa l'avviso di copyright e la licenza originale.
 8) **Cos'è "Wikimedia"? Hai altri esempi simili?**
-	Wikimedia è una fondazione che ha lo scopo di incoraggiare lo sviluppo e la diffusione di contenuti liberi in tutte le lingue e fornire gratuitamente al pubblico l'intero contenuto dei suoi progetti wiki, tra cui Wikipedia.
+	Wikimedia è una fondazione no-profit che ha lo scopo di incoraggiare lo sviluppo e la diffusione di contenuti liberi in tutte le lingue e fornire gratuitamente al pubblico l'intero contenuto dei suoi progetti wiki, tra cui Wikipedia. Un esempio simile è **Khan Academy**, una piattaforma educativa non-profit che offre lezioni gratuite sotto forma di video e altri materiali didattici in varie materie.
 9) **Cos'è il "Progetto Gutenberg"? Hai altri esempi simili?**
-	Si tratta di un progetto di costruzione di una biblioteca di eBooks liberamente riproducibili. Il progetto prende il nome da Johannes Gutenberg.
-	In Italia, un'iniziativa simile è portata avanti dall'associazione Liber Liber con il progetto Manuzio. Un'altra iniziativa simile è Open Library, progetto online creato da Aaron Swartz con l'intento di creare una pagina web per ogni libro pubblicato. Questo progetto fornisce copie digitali online  create da immagini di libri di pubblico dominio.
+	Si tratta di un progetto di costruzione di una biblioteca di eBooks liberamente riproducibili. Il progetto prende il nome da Johannes Gutenberg.	In Italia, un'iniziativa simile è portata avanti dall'associazione Liber Liber con il progetto Manuzio. Un'altra iniziativa simile è Open Library, progetto online creato da Aaron Swartz con l'intento di creare una pagina web per ogni libro pubblicato. Questo progetto fornisce copie digitali online  create da immagini di libri di pubblico dominio.
 10) **Cos'è "OpenStreetMap"? Hai altri esempi simili?**
-	OpenStreetMap è un progetto collaborativo finalizzato a creare mappe del mondo a contenuto libero.
+	OpenStreetMap è un progetto collaborativo finalizzato a creare mappe del mondo a contenuto libero. Un esempio simile è **Wikimapia**, un progetto che combina mappe satellitari con contributi degli utenti, permettendo a chiunque di aggiungere informazioni e commenti sui luoghi.
 11) **Cos'è la "Free Software Foundation"? Hai altri esempi simili?**
-	Si tratta di un'oranizzazione non a scopo di lucro che si occupa di eliminare le restrizioni sulla copia, redistribuzione, comprensione e modifica dei software. 
+	Si tratta di un'oranizzazione non a scopo di lucro che si occupa di promuovere il software libero, eliminare le restrizioni sulla copia, redistribuzione, comprensione e modifica dei software. Un esempio simile è la **Apache Software Foundation (ASF)**, un'organizzazione no-profit che supporta numerosi progetti di software libero, tra cui il noto server web Apache HTTP Server.
 12) **Cos'è un "Cahier de doléances"?**
 	I quaderni di doglianza o delle lamentele erano registri nei quali le assemblee incaricate di eleggere i deputati agli Stati generali, convocati da Luigi XVI nel $1789$, annotavano critiche e lamentele della popolazione. 
 13) **Chi era Aaron Swartz?**
@@ -33,15 +32,15 @@
 15) **Come funziona Wikipedia?**
 	Wikipedia è una enciclopedia online che chiunque può editare. Consiste di contenuto editabile liberamente, i cui articoli contengono numerosi link. Questi contenuti vengono creati e modificati continuamente. L'accesso a Wikipedia è completamente gratuito e non richiede abbonamenti o pagamenti. È finanziata principalmente attraverso donazioni.
 
-----------------------------------------------------------------
+-----
 
 ## L0
 1) **Quali sono i temi salienti del livello "network" dell'arcobaleno?**
-	I temi salienti del livello network sono il comportamento della Rete,come essa può essere piegata ad utilizzi non previsti e come tentare di rilevare eventuali distorsioni, per poi attuare diversi tipi di difese.
+	I temi salienti del livello network sono la struttura ed il comportamento della Rete, come essa può essere piegata ad utilizzi non previsti e come tentare di rilevare eventuali distorsioni, per poi attuare diversi tipi di difese.
 2) **Cos'è un "pacchetto"? Com'è strutturato?**
 	Un pacchetto di rete non è altro che una sequenza di bit di lunghezza finita che viene trasmessa sotto forma di segnale elettrico (rame) o luminoso (fibra ottica) da un nodo all’altro di una rete. E' strutturato in segmenti, detti campi, ed ogni campo della sequenza ha una ben precisa semantica dipendente dal tipo di protocollo di rete utilizzato. I pacchetti vengono ordinati in sequenze che costruiscono dei flussi di dati di cui poi l’utente fruisce. Alcuni di questi campi sono il TTL, il Protocol, il Checksum, Il Source IP Address ed il Destination IP Address, la Length ed il Sequence Number.
 3) **Quali sono i concetti fondamentali (ai fini della CDT) dell'architettura di Internet?**
-	Sicuramente la rete TCP/IP: conoscere questi protocolli aiuta i cittadini a comprendere come avvengono le comunicazioni online, a riconoscere l'importanza della sicurezza dei dati durante il trasferimento e a promuove la consapevolezza sulla neutralità della rete e sulla necessità di infrastrutture aperte e accessibili. Il DNS, in quanto un sistema DNS ben gestito è fondamentale per evitare la censura e garantire l'accesso libero alle informazioni. Promuovere politiche che garantiscano accesso equo a Internet è fondamentale per combattere il divario digitale. Inoltre, le reti P2P supportano la decentralizzazione, aumentando la robustezza e la resilienza della rete.
+	Sicuramente la rete TCP/IP: conoscere questi protocolli aiuta i cittadini a comprendere come avvengono le comunicazioni online, a riconoscere l'importanza della sicurezza dei dati durante il trasferimento e a promuove la consapevolezza sulla neutralità della rete e sulla necessità di infrastrutture aperte e accessibili. Il DNS, in quanto un sistema DNS ben gestito è fondamentale per evitare la censura e garantire l'accesso libero alle informazioni. Promuovere politiche che garantiscano accesso equo a Internet è fondamentale per combattere il divario digitale. Inoltre, le reti P2P supportano la decentralizzazione, aumentando la robustezza e la resilienza della rete. Solo potendo conoscere le tecnologie, come comunità intera, potremo governarle a nostro favore invece di farci governare da chi oggi le controlla.
 4) **Chi è un "provider"? Che tipi di provider esistono?**
 	Con il termine provider si identifica un'azienda o una qualsiasi entità che eroga un servizio. Se questo servizio è la rete Internet, allora parliamo di ISP (Internet Service Provider), azienda che fornisce connettività agli utenti sia via cavo che wireless. Non tutti i provider sono uguali però: l'ente che permette la connessione del nostro dispositivo è detto provider di connettività, i quali forniscono il servizio ultimo miglio, cioè quel tratto della rete che va dalla casa/uﬀicio dell’utente finale fino al primo concentratore. Questo provider dell'ultimo miglio, a sua volta, farà riferimento ad un provider di livello più alto per quanto concerne l'accesso che fornisce.
 5) **Perché è importante (nel contesto della CDT) analizzare il (mal)funzionamento della rete?**
@@ -87,8 +86,8 @@
 20) **Cosa si intende con "mittente" o "destinatario" di un flusso di pacchetti?**
 	Il mittente è l'indirizzo sorgente del pacchetto o del flusso di pacchetti, cioè l'indirizzo IP da cui il flusso arriva (o dichiara di arrivare). Allo stesso modo, il destinatario è l'indirizzo di destinazione del pacchetto o del flusso di pacchetti.
 21) **Cos'è una "porta"?**
-	Il concetto di porta serve a differenziare un flusso dati tra due nodi in modo da simulare più sotto-flussi, i.e., i pacchetti che vanno da $A$ a $B$ vengono smistati su code diverse in funzione delle porte dichiarate nei pacchetti stessi;
-22) **Cos'è un "protocollo"?**
+	Una porta in un computer è un'interfaccia che consente la comunicazione tra il computer e altri dispositivi o reti. Le porte virtuali sono numeri assegnati ai processi o applicazioni in esecuzione su un computer per gestire la comunicazione attraverso una rete. Il concetto di porta (virtuale) serve a differenziare un flusso dati tra due nodi in modo da simulare più sotto-flussi, i.e., i pacchetti che vanno da $A$ a $B$ vengono smistati su code diverse in funzione delle porte dichiarate nei pacchetti stessi.
+1) **Cos'è un "protocollo"?**
 	Un protocollo è un algoritmo distribuito. I protocolli di rete sono serie di standard che regolano la successione e lo scambio di informazioni fra due dispositivi. Servono a codificare opportunamente (cioè al meglio per la particolare esigenza di scambio dati) i contenuti e le sequenze di dati in modo da ottenere la funzione richiesta.
 23) **Che differenza c'è tra metadati e contenuto di un pacchetto?**
 	I metadati forniscono informazioni sull'origine, la struttura e altre caratteristiche dei dati, mentre il contenuto è ciò che i dati effettivamente contengono. Ad esempio, in un file musicale, i metadati potrebbero includere il titolo della canzone, l'artista e l'anno di pubblicazione, mentre il contenuto sarebbe la musica effettiva.
@@ -127,7 +126,7 @@
 39) **Cosa fa un "firewall"?**
 	Un firewall è un apparato di rete analogo ad un router ma specializzato nel filtraggio sull'instradamento dei pacchetti. Il firewall decide infatti se instradare o meno un flusso/pacchetto in funzione di varie policy. A differenza di un filtro DNS, un firewall permette la risoluzione di un URL illecito che poi però non viene raggiunto.
 40) **Fai qualche esempio notevole di sottoreti quasi certamente "molto relativistiche" (in cui ci sono molte "ombre/buchi/ecc").**
-	i
+	In Azerbaijan ogni comunicazione è sotto il controllo statale, vengono oscurati tutti i media esteri e disturbati (jammed) i satelliti. In Iran milioni di siti sono oscurati e in alcuni casi vengono creati (dal governo) dei finti siti (e motori di ricerca) sostitutivi. In Turchia la Rete è stata ripetutamente bloccata, uno dei più recenti eventi è l’oscuramento di Twitter.
 41) **Differenze fra "whitelist" e "blacklist"?**
 	Le liste "whitelist" e "blacklist" sono concetti utilizzati per controllare l'accesso o l'ammissione a determinati elementi o servizi. Con whitelist si fa riferimento al meccanismo che impedisce l'accesso a tutto tranne ciò che è presente in questa lista. Il meccanismo simmetrico, la blacklist, permette l'accesso a tutto tranne a ciò che è presente in lista.
 42) **Cosa si intende con "velocità di trasmissione" in Internet? Da cosa è influenzata?**
@@ -173,7 +172,7 @@
 53) **Cosa si intende con "vita di un bit"?**
 	L'informazione su un supporto vive fino a quando vive il supporto che la ospita. Per vita di un bit si intende la potenziale durata della vita del supporto che lo ospita. La vita di un bit è potenzialmente infinita grazie al concetto di ridondanza.
 54) **Cos'è il MTBF?**
-	L'MTBF (Mean Time Between Failures) è una misura indiretta (probabilistica) della durata dell'informazione contenuta all'interno di un supporto di memoria. Questo parametro viene misurato e dichiarato dai costruttori degli storage device.
+	L'MTBF (Mean Time Between Failures) è una misura indiretta (probabilistica) della durata dell'informazione contenuta all'interno di un supporto di memoria. Questo parametro misura la probabilità di fallimento del device nella sua interezza e viene misurato e dichiarato dai costruttori degli storage device.
 55) **Cosa rende un dato "immortale"?**
 	Un dato rimane vivo fin quando è possibile leggerlo. In caso di dati digitali, l'immortalità è ottenuta sfruttando il concetto di ridondanza. La tecnologia RAID (Redundant Array of Inexpensive Disks), se viene gestita correttamente, cioè cambiando i dischi proattivamente, permette alle informazioni in essa contenute di essere disponibili indefinitamente.
 56) **Cosa si intende con "ridondanza"?**
@@ -291,13 +290,7 @@
 103) **Cosa si intende con "anonimato"? E' attualmente possibile in Internet?**
 	Con anonimato, la protezione delle informazioni in merito a chi sta comunicando con chi, per difendere il principio costituzionale di libertà di associazione in un mondo sempre più oggetto di sorveglianza globale. Su Internet l’anonimato è sostanzialmente impossibile poiché la stragrande maggioranza dei protocolli usati su Internet trasmettono i metadati in chiaro anche se il contenuto della comunicazione è crittografato.
 104) **Cos'è OONI Probe?**
-	OONI Probe è un software che permette di misurare diversi indicatori in merito allo stato della propria connessione, quali:
-	- blocco di siti web;
-	- blocco di applicazioni di instant messaging;
-	- blocco di strumenti di aggiramento della censura;
-	- presenza di sistemi nella propria rete che potrebbero essere responsabili di censura;
-	- velocità e performance della propria rete.
-	Consente anche di condividere su base volontaria i dati raccolti al fine di misurare il livello globale di censura.
+	OONI Probe è un software che permette di misurare diversi indicatori in merito allo stato della propria connessione, quali blocco di siti web, blocco di applicazioni di instant messaging, blocco di strumenti di aggiramento della censura, presenza di sistemi nella propria rete che potrebbero essere responsabili di censura, velocità e performance della propria rete. Consente anche di condividere su base volontaria i dati raccolti al fine di misurare il livello globale di censura.
 105) **Cos'è Wehe?**
 	Wehe è uno strumento di misura della relatività della Rete. Permette di verificare se il proprio ISP applichi limitazioni alla banda di specifiche applicazioni per favorirne altre, violando quindi il principio della net neutrality.
 106) **Cos'è la "crittografia a chiave pubblica"? Discuti.**
@@ -318,12 +311,12 @@
 	Indica una rete nella quale ogni nodo si connette direttamente con il maggior numero di altri nodi e collabora per instradare efficientemente i pacchetti, senza che sia necessario conoscere la destinazione finale o il contenuto dei pacchetti stessi e quindi nemmeno i metadati. 
 114) **Cos'è GNUnet?**
 	Il progetto GNUnet sta sviluppando uno stack completo di nuovi protocolli di rete con lo scopo di costruire applicazioni sicure, distribuite e rispettose della riservatezza e dell'anonimato di chi comunica attraverso la rete. GNUnet è una rete di insieme tipo mesh. I concetti di base della nuova architettura sono:
-	- Internet ed i suoi protocolli vengono utilizzati come mezzo di trasporto per connettere un nodo a GNUnet, con l'aggiunta di un criterio per garantire che l'indirizzo IP di ciascun nodo non sia falsificato;
-	- tutte le comunicazioni avvengono attraverso nodi mutualmente autenticati con criteri crittografici di tipo perfect forward secrecy;
-	- l'identità di un nodo corrisponde alla propria chiave pubblica, non al proprio indirizzo IP: essere in grado di falsificare un indirizzo IP è sostanzialmente irrilevante in GNUnet;
-	- la confidenzialità delle comunicazioni è garantita dal fatto che i messaggi sono crittografati a livello di conessione. Questo garantisce che oslo mittente e destinatario siano in grao di conoscere il contenuto della trasmissione, poichè qualsiasi tecnica di analisi dei pacchetti è impraticabile;
-	- l'anonimato delle comunicazioni è reso possibile dal fatto che le comunicazioni tra due nodi sono nascoste nel flusso tra gli utenti, rendedo cioè indistinguibile il traffico generato da quello inoltrato per conto di altri nodi. In questo modo, nemmeno attaccanti in grado di controllare un discreto numero di nodi sarebbero in grado di ricavare la vera provenienza dei pacchetti, anche utilizzando tecniche di analisi del traffico;
-	- GNS è il corrispettivo della GNUnet di DNS il quale non si basa su una gerarchia centralizzata ma su una architettura decentralizzata, in cui la validità dei nomi è garantita dalla firma crittografica di chi gestisce quello spazio di nomi (una zona);
+	 - Internet ed i suoi protocolli vengono utilizzati come mezzo di trasporto per connettere un nodo a GNUnet, con l'aggiunta di un criterio per garantire che l'indirizzo IP di ciascun nodo non sia falsificato;
+	 - tutte le comunicazioni avvengono attraverso nodi mutualmente autenticati con criteri crittografici di tipo perfect forward secrecy;
+	 - l'identità di un nodo corrisponde alla propria chiave pubblica, non al proprio indirizzo IP: essere in grado di falsificare un indirizzo IP è sostanzialmente irrilevante in GNUnet;
+	 - la confidenzialità delle comunicazioni è garantita dal fatto che i messaggi sono crittografati a livello di conessione. Questo garantisce che oslo mittente e destinatario siano in grao di conoscere il contenuto della trasmissione, poichè qualsiasi tecnica di analisi dei pacchetti è impraticabile;
+	 - l'anonimato delle comunicazioni è reso possibile dal fatto che le comunicazioni tra due nodi sono nascoste nel flusso tra gli utenti, rendedo cioè indistinguibile il traffico generato da quello inoltrato per conto di altri nodi. In questo modo, nemmeno attaccanti in grado di controllare un discreto numero di nodi sarebbero in grado di ricavare la vera provenienza dei pacchetti, anche utilizzando tecniche di analisi del traffico;
+	 - GNS è il corrispettivo della GNUnet di DNS il quale non si basa su una gerarchia centralizzata ma su una architettura decentralizzata, in cui la validità dei nomi è garantita dalla firma crittografica di chi gestisce quello spazio di nomi (una zona);
 	Attraverso l'applicazione di questi principi, basati su una ricerca accademica pluriennale, gli sviluppatori GNUnet sperano di poter costruire solide fondamenta per quella che sarà la Rete del futuro.
 115) **Cosa si intende con "perfect forward secrecy"?**
 	Si intende criteri crittografici che garantiscono che le precedenti comunicazioni non siano compromesse nel caso di una compromissione di una chiave privata.
@@ -340,20 +333,20 @@
 121) **Cos'è Next Generation Internet?**
 	NGI è un’iniziativa della Commissione europea avviata nel $2018$ che ha l’obiettivo di rimodellare internet in modo tale che soddisfi le esigenze delle persone di cui è al servizio. In quanto iniziativa al servizio delle persone, mira alla realizzazione di tecnologie che rispondono ai bisogni delle persone in termini di privacy, fiducia, trasparenza, sicurezza e inclusività.
 
-----------------------------------------------------------------
+-----
 
 ## L1
 1) **Quali sono i temi salienti del livello "services" dell'arcobaleno?**
-	i
+	==da fare==
 2) **Differenza fra servizi "analogici" e "digitali".**
-	i
+	==I servizi analogici sono ... mentre quelli digitali sono online, in rete.==
 3) **In che senso può essere difficile l'accesso ad un servizio digitale? (quali restrizioni)**
 	- L'accesso ad un conto corrente può essere vincolato ai possesso di uno smartphone;
 	- prevedere la compilazione di moduli di richiesta e, più in generale, accettare solo documenti prodotti tramite software proprietari;
 	- pubblicare le informazioni sulla propria attività utilizzando esclusivamente una piattaforma social.
 	Il modo in cui vengono forniti i servizi online deve soddisfare gli standard di usabilità e non richiedere competenze o conoscenze speciali
 4) **Cosa deve garantire un servizio digitale ai cittadini?**
-	i
+	Un servizio digitale deve soddisfare gli standard di usabilità e non richiedere competenze o conoscenze speciali, deve garantire la privacy dei cittadini - per altro protetta da specifiche leggi in diverse legislazioni nazionali - e la trasparenza dell’amministrazione.
 5) **Cosa si intende con "digitalizzazione dei servizi"? (fare esempi di servizi "analogici" e "digitali")**
 	Il termine digitalizzazione dei servizi indica il processo per cui un servizio tradizionalmente espletato o fornito in forma analogica viene implementato attraverso tecnologie digitali. Alcuni esempi sono:
 	- un bonifico effettuato presso lo sportello di una banca o via web/app;
@@ -372,22 +365,22 @@
 	- quanto: prezzi e costi;
 	- come: formati e canali di comunicazione, device da usare, informazioni di processo.
 9) **Quali sono i vantaggi e svantaggi di un servizio digitale?**
-	i
+	La versione digitale del servizio ha il notevole vantaggio del risparmio di tempo. Inoltre non si è vincolati ad orari di sportello e l’oggetto ricevuto è già digitale e può quindi essere inviato via email o web senza bisogno di scansionarlo o peggio inviarlo via fax. Per usufruire del servizio digitale è necessario, tuttavia, dotarsi di un po’ di tecnologia (un computer o uno smartphone, una connessione internet, ...)
 10) **Cosa si intende con "fallback" in un servizio digitale?**
 	Con fallback (ripiego, riserva, alternativa) si intende la possibilità di ripiegare su un canale alternativo nel caso il canale prescelto non dovesse essere disponibile per qualsivoglia motivo. E' possibile definirlo come il diritto di scegliere come usufruire di un servizio. Chiaramente, non è necessario prevedere tutti i canali possibili ed immaginabili, ma offrire un ventaglio di opportunità aumenta la fruibilità del servizio stesso. Nulla osta il fatto che le varie possibilità siano offerte a prezzi differenti ma sempre nei limiti della piena accessibilità per tutte le categorie di censo, specie se si tratta di servizi di cittadinanza.
 11) **Perché sono importanti i protocolli standard nei servizi digitali?**
-	i
+	Se un protocollo è definito in un documento tecnico e se la sua implementazione non è vincolata da brevetti o normative ostative, chiunque ne abbia le competenze e le risorse può realizzare software che parla quel protocollo, potendo quindi interagire col servizio in oggetto.
 12) **Perché vengono usati protocolli "segreti" (non documentati) in molti ambiti dei servizi digitali?**
 	i 
 13) **Cosa si intende con "formato" nell'ambito dei servizi digitali?**
 	Un formato dati è concettualmente simile ad un protocollo, ma si riferisce alla memorizzazione dei dati in un file. Invece che specificare un linguaggio di interscambio fra programmi, specifica l’organizzazione dei dati su un supporto di immagazzinamento.
 14) **Vantaggi e svantaggi dei formati standard nei servizi digitali.**
-	i
+	==I dati generati da tali servizi possono essere esportati senza troppi problemi verso altri sistemi, riducendo il lock-in.
 15) **Cosa si intende con formati standard "de iure" e "de facto"?**
 	De iure e de facto definiscono due modi per ottenere la concordanza su uno stesso formato da parte di differenti programmi. De iure indica la concordanza ottenuta tramite accordi espliciti e formali tra produttori che si organizzano in enti di standardizzazione: attraverso processi di proposta e revisione, i vari standard vengono approvati e pubblicati. Al contrario, de facto indica un formato molto utilizzato ma mai passato attraverso un'approvazione formale ed ufficiale da parte di qualche ente standardizzatore.
 16) **Cos'è il "reverse engineering" e perché potrebbe essere utile nel contesto dei servizi digitali?**
 	In informatica, il reverse engineering è il processo di analisi di un sistema software esistente, eseguito al fine di comprendere il funzionamento per essere in grado di crearne una rappresentazione ad alto livello di astrazione. In genere, le pratiche di reverse engineering vengono utilizzate quando un produttore software mantiene segreto il codice sorgente e non documenta protocolli e formati utilizzati, in questo caso si deve ricorrere al reverse engineering per essere in grado di progettare e realizzare sistemi interoperabili.
-17) **Cos'è uno "standard 'aperto'"?**
+17) **Cos'è uno "standard aperto"?**
 	Se il formato dei dati di un programma leader di mercato nel suo campo non è segreto ed è liberamente implementabile, è possibile che altri produttori creino programmi alternativi che supportano lo stesso formato dei dati, cosicchè gli utenti possano scegliere liberamente programmi diversi in funzione delle prestazioni senza timore di dover rifare tutto il lavoro.
 18) **Cosa si intende con "interoperabilità"?**
 	Il concetto di interoperabilità è il contrario di lock-in ed è si riferisce alla capacità di interagire e operare in modo efficace con altri sistemi, anche se sono sviluppati da fornitori diversi o utilizzano tecnologie diverse. Un sistema è interoperabile se permette un'interazione non solo da parte di una persona ma anche digitale, machine to machine o business to business. Il livello di interoperabilità di un sistema è alto quando soddisfa tutti questi requisiti:
@@ -407,7 +400,7 @@
 22) **Cosa si intende con "lock-in"?**
 	Il concetto di lock-in è il contrario dell'interoperabilità: un sistema è affetto da lock-in quando è poco o per nulla interoperabile ed è chiuso in sè stesso. Nonostante sia una caratteristica negativa per l'utente, viene introdotta nei sistemi informatici perchè non lo è necessariamente per chi produce e distribuisce il software. Al contrario, tendenzialmente i produttori di software proprietario tendono ad alzare quanto più possibile il livello di lock-in, in modo da rendere difficile agli utenti il migrare ad altri software.
 23) **Fai degli esempi di "lock-in".**
-	Alcuni esempi di lock-in dal punto di vista hardware sono i toner e le cartucce di inchiostro venduti a prezzi artificiosament elevati. I produttori delle stampanti hanno inserito all'interno di quest'ultime dei meccanismi di autenticazione che impediscono il funzionamento delle stampanti con inchiostri non certificati dal produttore. Ovviamente questi meccanismi non sono documentati per cui un eventuale concorrente ha molta diﬀicoltà a produrre toner e cartucce compatibili. Un'altro esempio, sempre dal punto di vista hardware, riguarda il mondo di cavi e alimentatori. Con l'avvento dei semiconduttori nei dispositivi di uso comune, l'industria ha dovuto fornire alimentazioni a basse tensioni per i vari prodotti. Dato che i trasformatori erano pesanti e gli apparati erano sempre più piccoli e leggeri, ad un certo punto si pensò di scindere le due funzioni: apparecchio ed alimentatore. Per non perdere ricavi, era necessario impedire ai clienti di utilizzare alimentatori universali magari venduti dalla concorrenza. Per cui cominciò la produzione di aliemntatori dedicati ad ogni singolo apparato, variando di poco la tensione richiesta per rendere univoco l'accoppiamento tra apparato ed alimentatore.
+	Alcuni esempi di lock-in dal punto di vista hardware sono i toner e le cartucce di inchiostro venduti a prezzi artificiosamente elevati. I produttori delle stampanti hanno inserito all'interno di quest'ultime dei meccanismi di autenticazione che impediscono il funzionamento delle stampanti con inchiostri non certificati dal produttore. Ovviamente questi meccanismi non sono documentati per cui un eventuale concorrente ha molta diﬀicoltà a produrre toner e cartucce compatibili. Un'altro esempio, sempre dal punto di vista hardware, riguarda il mondo di cavi e alimentatori. Con l'avvento dei semiconduttori nei dispositivi di uso comune, l'industria ha dovuto fornire alimentazioni a basse tensioni per i vari prodotti. Dato che i trasformatori erano pesanti e gli apparati erano sempre più piccoli e leggeri, ad un certo punto si pensò di scindere le due funzioni: apparecchio ed alimentatore. Per non perdere ricavi, era necessario impedire ai clienti di utilizzare alimentatori universali magari venduti dalla concorrenza. Per cui cominciò la produzione di aliemntatori dedicati ad ogni singolo apparato, variando di poco la tensione richiesta per rendere univoco l'accoppiamento tra apparato ed alimentatore.
 24) **Cosa si intende con "esportazione dei dati"? Perché è utile?**
 	Durante l'esportazione dei dati, le informazioni vengono estratte dal database o dal sistema di origine e convertite in un formato appropriato per essere importate nell'applicazione di destinazione. Questo processo può coinvolgere la conversione dei formati dei file, l'adeguamento delle strutture dati e la gestione delle differenze tra i sistemi. Questo può avvenire per diversi motivi, tra cui la migrazione tra piattaforme, l'integrazione di sistemi o il backup delle informazioni. E' utile per favorire il passaggio da un sistema ad un altro, assicurando una transizione più agevole e consentendo di mantenere i dati importanti anche quando si cambia strumento o applicazione.
 25) **Cosa si intende con "scalabilità" nei servizi digitali?**
@@ -421,7 +414,7 @@
 29) **Cos'è la 2FA? Come viene realizzata di solito?**
 	La 2FA (Two Factor Authentication) è una tecnica di autenticazione elettronica in cui ad un utente è garantito l'accesso ad un sito web o applicazione solo dopo aver presentato con successo due o più fattori di autenticazione (e.g., una password, dati biometrici, One Time Password, ...) ad un meccanismo di autenticazione.
 30) **Cosa si intende con "accessibilità" nei servizi digitali?**
-	Si parla di accessibilità quando ci si preoccupa di non escludere utenti con attività fisiche limitate, quali, ad esempio, i non udenti, ipovedenti o non vedenti.
+	Ogni servizio digitale dovrebbe essere il più inclusivo possibile. Si parla di accessibilità quando ci si preoccupa di non escludere utenti con attività fisiche limitate, quali, ad esempio, i non udenti, ipovedenti o non vedenti.==
 31) **Cos'è la "relatività" nei servizi digitali? In cosa si vede di solito?**
 	I servizi sono relativistici, nel senso che non possono esistere due osservatori che vedono un servizio allo stesso modo. Esiste una quantità fisiologica di relatività che è necessaria e voluta (e.g., richiesta anagrafica da due soggetti differenti). 
 32) **Cosa si intende con "price discrimination"?**
@@ -431,17 +424,17 @@
 34) **In cosa si nota la "relatività" nei social network?**
 	Un social network possiede una vaga approssimazione del nostro profilo psicologico personale, ottenuto tramite le informazioni trasmesse da noi tramite like, condivisioni ecc. L'algoritmo, poi, usa tecniche elaborate per profilarci sulla base di quelle informazioni parziali. Lo scopo di un social network è quello di tenerci il più possibile connessi, in modo da farci consumare più pubblicità. Di conseguenza, è importante che mostri solo informazioni che ci invoglino allo scroll down compulsivo. A ciascun utente venfono proposti contenuti ritenuti vicini ai propri interessi.
 35) **Cos'è una "filter bubble"? A quale scopo viene applicata?**
-	La "filter bubble" è un concetto che si riferisce all'idea che le persone possano finire per essere esposte a informazioni ristrette e conformi alle proprie convinzioni o interessi, a causa degli algoritmi di filtraggio utilizzati dai motori di ricerca e dalle piattaforme di social media. In pratica, quando usi internet, i motori di ricerca e le piattaforme di social media tendono a presentarti contenuti che sono in linea con le tue precedenti interazioni online e le tue preferenze dichiarate. Questo può creare una sorta di bolla intorno all'utente, dove le vedute dell'utente vengono costantemente rafforzate senza essere sfidate da opinioni diverse. Viene applicata nei casi di pilotaggio politico: alcune organizzazioni hanno comprato dalle varie piattaforme social la possibilità di mostrare contenuti targhettizzati verso gli elettori, per orientare le opinioni politiche e le successive elezioni.
+	La "filter bubble" è un concetto che si riferisce all'idea che le persone possano finire per essere esposte a informazioni ristrette e conformi alle proprie convinzioni o interessi, a causa degli algoritmi di filtraggio utilizzati dai motori di ricerca e dalle piattaforme di social media. In pratica, quando si usa internet, i motori di ricerca e le piattaforme di social media tendono a presentare contenuti che sono in linea con le precedenti interazioni online e le preferenze dichiarate. Questo può creare una sorta di bolla intorno all'utente, dove le vedute dell'utente vengono costantemente rafforzate senza essere sfidate da opinioni diverse. Viene applicata, ad esempio, nei casi di pilotaggio politico: alcune organizzazioni hanno comprato dalle varie piattaforme social la possibilità di mostrare contenuti targhettizzati verso gli elettori, per orientare le opinioni politiche e le successive elezioni.
 36) **Cos'è Internet Archive? Perché può essere utile in questo contesto "relativistico"?**
 	The Internet Archive è un ente non governativo il cui scopo è preservare informazioni che altrimenti andrebbero perse se cancellate dal sito originale. Dato un URL è possibile navigare indietro nel tempo andando a consultarne il contenuto ad una data specifica, se presente in archivio. E' abbastanza frequente vedere sparire pagine dal web, a volte perché un sito viene dismesso o ristrutturato, a volte perché ritenute scomode, e questo ente cerca, compatibilmente con le risorse disponibili, di fare da testimone (viene a volte usato nei tribunali) dell’esistenza di informazioni pubblicate in Rete.
 37) **Cos'è il Principio di Locard applicato ai servizi digitali?**
 	L’interazione tra un soggetto e un servizio digitale lascia sempre tracce tutt’altro che esigue, indistruttibili espesso associabili direttamente ad una persona, invece che semplicemente ad un generico nodo della rete.
 38) **Cos'è un "log" e perché ci interessa in CDT?**
-	Un log è il Nome generico per un diario di bordo digitale, tipicamente sotto forna di un insieme di log file (dati che un sistema genera durante il suo funzionamento per registrare lo stato di salute del sistema stesso, gli eventi significativi e quanto altro possa essere utile a capire se un sistema fa quello per cui è stato installato). Serve a tenere uno storico del funzionamento di un computer, ad esempio per risalire alle cause di eventuali errori e malfunzionamenti, ma anche per sapere chi ha fatto cosa in caso di necessità di attribuzione di responsabilità delle azioni e ci interessa in CDT perchè ogni applicativo, sia esso lato server, che lato applicazione, è perfettamente in grado di registrare una traccia di ciò che fa e per chi. L’implementazione più comune del tener traccia vive appunto nel meccanismo dei log file con lo scopo principale di manutenzione ma, ovviamente, può essere usata anche per sapere cosa fa un particolare utente del servizio in ogni momento della sua interazione.
+	Un log è il nome generico per un diario di bordo digitale, tipicamente sotto forma di un insieme di log file (dati che un sistema genera durante il suo funzionamento per registrare lo stato di salute del sistema stesso, gli eventi significativi e quanto altro possa essere utile a capire se un sistema fa quello per cui è stato installato). Serve a tenere uno storico del funzionamento di un computer, ad esempio per risalire alle cause di eventuali errori e malfunzionamenti, ma anche per sapere chi ha fatto cosa in caso di necessità di attribuzione di responsabilità delle azioni e ci interessa in CDT perchè ogni applicativo, sia esso lato server, che lato applicazione, è perfettamente in grado di registrare una traccia di ciò che fa e per chi. L’implementazione più comune del tener traccia vive appunto nel meccanismo dei log file con lo scopo principale di manutenzione ma, ovviamente, può essere usata anche per sapere cosa fa un particolare utente del servizio in ogni momento della sua interazione.
 39) **Cos'è la "data retention"?**
 	Si tratta del processo attraverso il quale molti governi, nel desiderio di controllare i propri cittadini e con la scusa della lotta al terrorismo, col passare degli anni hanno cercato, spesso riuscendoci, di allungare a dismisura i tempi di conservazione dei dati di raccolti in massa. La direttiva Europea del $2006$ fissa la conservazione da minimo sei mesi fino ad un massimo di $24$ (derogabile dagli stati membri). In Italia, nel $2017$ l'obbligo venne prolungato fino a settantadue mesi.
 40) **Fai qualche esempio da "Weapons of math destruction".**
-	- Le assicurazioni possono calcolare il vero rischio di eventi negativi e attualizzare i premi verso l’alto, annullando il proprio rischio, facendolo quindi ricadere direttamente sull’assicurato, azzerando l’effetto mutua assistenza;
+	- ==Le assicurazioni possono calcolare il vero rischio di eventi negativi e attualizzare i premi verso l’alto, annullando il proprio rischio, facendolo quindi ricadere direttamente sull’assicurato, azzerando l’effetto mutua assistenza;==
 	- le aziende possono valutare i dipendenti o i candidati per un lavoro in base alla presenza sui social;
 	- gli istituti di credito possono decidere molto finemente se concedere e quanto far pagare un prestito, purtroppo con l’introduzione di disuguaglianze di genere, censo, razza ecc. poco misurabili se gli algoritmi e i dati di partenza non sono trasparenti;
 	- i tribunali possono decidere se concedere la libertà su cauzione in base alla probabilità di recidiva calcolata da algoritmi non trasparenti di crime prediction;
@@ -450,11 +443,11 @@
 41) **Cos'è la "digital footprint"?**
 	La digital footprint è l'impronta digitale che ognuno di noi lascia di sè in rete, l'insieme delle tracce digitali che possono essere raccolte ed esaminate per capire cosa abbiamo fatto. Queste tracce si trovano nei vari log dei servizi che usiamo. Come ordine di grandezza, si parla di diversi gigabyte al giorno.
 42) **Cos'è l'"orizzonte degli eventi" digitale? Da cosa è influenzato?**
-	L’orizzonte degli eventi digitale è un confine che si crea attorno alla quantità di privacy di un soggetto: tutto ciò che avviene all’interno di questo confine non è osservabile digitalmente (si dice anche: non ha eco digitale) all’esterno.
+	L’orizzonte degli eventi digitale è un confine che si crea attorno alla quantità di privacy di un soggetto: tutto ciò che avviene all’interno di questo confine non è osservabile digitalmente (si dice anche: non ha eco digitale) all’esterno. La quantità di privacy di un soggetto varia in funzione dell’ambiente in cui ci si trova, ed è misurabile solo indirettamente con la delineazione dell’orizzonte degli eventi digitale.
 43) **Cita qualche tecnologia che potrebbe comprimere l'"orizzonte degli eventi" digitale.**
 	Il segnale wifi, ad esempio, permette di rilevare la posizione delle persone all'interno di un'abitazione. Un altro esempio è dato dalle telecamere di sorveglianza domestica, i cui stream video passano per cloud esterni alla rete casalinga. Altri esempi sono dati da televisori, termostati, assistenti domotici e telefono, i quali sono dotati di microfono: la voce viene captata e, talvolta, registrata in cloud da questi device.
 
-----------------------------------------------------------------
+-----
 
 ## L2
 1) **Quali sono i temi salienti del livello "access" dell'arcobaleno?**
@@ -597,7 +590,7 @@
 51) **Perché le cabine telefoniche erano importanti? Pensi sia stato giusto eliminarle?**
 	Perchè erano un servizio universale, sottoposto a rigidi vincoli di presenza su territorio e, quindi, fornivano un servizio utile a chiunque fosse sprovvisto di telefono fisso o mobile.
 
-----------------------------------------------------------------
+-----
 
 ## L3
 1) **Quali sono i temi salienti del livello "edu" dell'arcobaleno?**
@@ -765,7 +758,7 @@
 33. **Riassumi il tema del "learn to code".**
 34. **Cos'è il "computational thinking"?**
 
-----------------------------------------------------------------
+-----
 
 ## L4
 1. **Quali sono i temi salienti del livello "transparency" dell'arcobaleno?**
@@ -834,7 +827,7 @@
 64. **Cos'è la "Carta della cittadinanza digitale" (nel CAD)? Quali spunti interessanti (legati all'arcobaleno della CDT) possiamo trovarvi?**
 65. **Cos'è l'OGP (Open Government Partnership)?** [respo civica in file separato]
 
-----------------------------------------------------------------
+-----
 
 ## L5
 1. **Quali sono i temi salienti del livello "sharing" dell'arcobaleno?**
@@ -889,7 +882,7 @@
 50. **Perché è importante la "governance" in una iniziativa di _sharing_?**
 51. **Abbiamo visto tre iniziative di segnalazione di problemi stradali (fixmystreets, sicurezzastradale, venezia), quali differenze nella gestione della possibilità di commentare le segnalazioni? Quali conseguenze nella scelta tecnica fatta?**
 
------------------------------------------------------------------
+-----
 
 ## L6
 1. **Quali sono i temi salienti del livello "consultation" dell'arcobaleno?**
@@ -939,7 +932,7 @@
 45. **Cita pregi e difetti delle iniziative di ascolto e/o consultazione che abbiamo analizzato (a tua scelta).**
 46. **Riassumi gli approfondimenti su Decidim trattati in L$6$.**
 
-----------------------------------------------------------------
+-----
 
 ## L7
 1) **Quali sono i temi salienti del livello "democracy" dell'arcobaleno?**
@@ -994,21 +987,21 @@
 49. **Cosa sono i "bilanci partecipativi"?**
 50. **Quali fasi compongono un "bilancio partecipativo" in generale?**
 
-----------------------------------------------------------------
+-----
 
 ## Appendice V1
 1) **Che dati sono stati raccolti dal router wifi dell'appartamento?**
 	Si sono ottenuti dei record contenenti:
 	- hostname degli utenti;
-	- MAC address;
+	- MAC addre\ss;
 	- IP;
 	- data.
 2) **Cosa raccontano i dati di connessione al router wifi dell'appartamento?**
 	Il dataset copre attualmente un periodo di circa tre anni. I primi due grafici mostrano i plot del numero di device collegati per data, permettendo di verificare l'utilizzo dell'appartamento (turistico o affitto). Gli ultimi due grafici rappresentano invece dei grafi di associazione fra date e device, cioè dicono quale device era presente nell'appartamento in un certo giorno. Si possono inoltre identificare perfettamente i device dei gestori dell’appartamento (agenzia e personale di pulizia, marcati dall’ovale rosso fine), presenti saltuariamente (a consegna/restituzione appartamento da parte dei turisti) e i turisti, che a parte le date a loro assegnate non si ripetono mai.
 
-----------------------------------------------------------------
+-----
 
 ## Appendice V2
 1) **Qual è la morale della storia "Altri giorni, altri occhi"?**
 
-----------------------------------------------------------------
+-----
