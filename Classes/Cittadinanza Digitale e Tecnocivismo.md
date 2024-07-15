@@ -371,11 +371,11 @@
 11) **Perché sono importanti i protocolli standard nei servizi digitali?**
 	Se un protocollo è definito in un documento tecnico e se la sua implementazione non è vincolata da brevetti o normative ostative, chiunque ne abbia le competenze e le risorse può realizzare software che parla quel protocollo, potendo quindi interagire col servizio in oggetto.
 12) **Perché vengono usati protocolli "segreti" (non documentati) in molti ambiti dei servizi digitali?**
-	i 
+	Perchè, innanzitutto, l'esistenza di protocolli liberi consente una situazione di naturale concorrenza fra diversi produttori di software che allarga il ventaglio delle opzioni e che abbassa i prezzi di accesso al servizio. Una caratteristica negativa per l’utente non necessariamente lo è per chi produce e distribuisce software, anzi il produttore di software proprietario tende ad alzare quanto più possibile il livello di lock-in in modo da rendere diﬀicile per gli utenti migrare ad altri software.
 13) **Cosa si intende con "formato" nell'ambito dei servizi digitali?**
 	Un formato dati è concettualmente simile ad un protocollo, ma si riferisce alla memorizzazione dei dati in un file. Invece che specificare un linguaggio di interscambio fra programmi, specifica l’organizzazione dei dati su un supporto di immagazzinamento.
 14) **Vantaggi e svantaggi dei formati standard nei servizi digitali.**
-	==I dati generati da tali servizi possono essere esportati senza troppi problemi verso altri sistemi, riducendo il lock-in.
+	==boh==
 15) **Cosa si intende con formati standard "de iure" e "de facto"?**
 	De iure e de facto definiscono due modi per ottenere la concordanza su uno stesso formato da parte di differenti programmi. De iure indica la concordanza ottenuta tramite accordi espliciti e formali tra produttori che si organizzano in enti di standardizzazione: attraverso processi di proposta e revisione, i vari standard vengono approvati e pubblicati. Al contrario, de facto indica un formato molto utilizzato ma mai passato attraverso un'approvazione formale ed ufficiale da parte di qualche ente standardizzatore.
 16) **Cos'è il "reverse engineering" e perché potrebbe essere utile nel contesto dei servizi digitali?**
@@ -434,7 +434,7 @@
 39) **Cos'è la "data retention"?**
 	Si tratta del processo attraverso il quale molti governi, nel desiderio di controllare i propri cittadini e con la scusa della lotta al terrorismo, col passare degli anni hanno cercato, spesso riuscendoci, di allungare a dismisura i tempi di conservazione dei dati di raccolti in massa. La direttiva Europea del $2006$ fissa la conservazione da minimo sei mesi fino ad un massimo di $24$ (derogabile dagli stati membri). In Italia, nel $2017$ l'obbligo venne prolungato fino a settantadue mesi.
 40) **Fai qualche esempio da "Weapons of math destruction".**
-	- ==Le assicurazioni possono calcolare il vero rischio di eventi negativi e attualizzare i premi verso l’alto, annullando il proprio rischio, facendolo quindi ricadere direttamente sull’assicurato, azzerando l’effetto mutua assistenza;==
+	- Le assicurazioni possono calcolare il vero rischio di eventi negativi e attualizzare i premi verso l’alto, annullando il proprio rischio, facendolo quindi ricadere direttamente sull’assicurato, azzerando l’effetto mutua assistenza Se le assicurazioni aumentano i premi per riflettere accuratamente i rischi individuali, si riduce l'elemento di condivisione del rischio;
 	- le aziende possono valutare i dipendenti o i candidati per un lavoro in base alla presenza sui social;
 	- gli istituti di credito possono decidere molto finemente se concedere e quanto far pagare un prestito, purtroppo con l’introduzione di disuguaglianze di genere, censo, razza ecc. poco misurabili se gli algoritmi e i dati di partenza non sono trasparenti;
 	- i tribunali possono decidere se concedere la libertà su cauzione in base alla probabilità di recidiva calcolata da algoritmi non trasparenti di crime prediction;
