@@ -339,7 +339,7 @@
 1) **Quali sono i temi salienti del livello "services" dell'arcobaleno?**
 	==da fare==
 2) **Differenza fra servizi "analogici" e "digitali".**
-	==I servizi analogici sono ... mentre quelli digitali sono online, in rete.==
+	Un servizio digitale è un meccanismo di fornitura che vincola un servizio, o almeno parte di esso, attraverso un canale digitale, rispetto a un servizio analogico dove è necessaria e presente su tutti i livelli la componente umana.
 3) **In che senso può essere difficile l'accesso ad un servizio digitale? (quali restrizioni)**
 	- L'accesso ad un conto corrente può essere vincolato ai possesso di uno smartphone;
 	- prevedere la compilazione di moduli di richiesta e, più in generale, accettare solo documenti prodotti tramite software proprietari;
@@ -459,9 +459,9 @@
 4) **Un "servizio di base" deve essere fornito dallo Stato?**
 	 Non necessariamente, è sufficiente che il diritto all'accesso sia garantito per tutti i cittadini, con pari dignità, cioè senza discriminazioni per censo, luogo di residenza, razza, sesso o religione.
 5) **Cita qualche "servizio di base" (anche se non formalmente/legalmente definito tale) tradizionale a cui si pensa affrontando il tema.**
-	==boh==
+	Il trasporto pubblico rappresenta un servizio di base in quanto garantisce la mobilità delle persone senza imporre discriminazioni di alcun genere ed è accessibile a tutti.
 6) **Perché non basta una "qualsiasi connessione a Internet" come servizio di base?**
-	==boh==
+	Perché anche fornendo una connessione internet a qualsiasi cittadino dovrei anche fornire un dispositivo con il quale accedervi se non anche un indirizzo di rete / indirizzo di posta elettronica al quale essere raggiungibile. Inoltre, una qualsiasi connessione ad Inernet non pone lower bounds sulla velocità di connessione, la quale potrebbe essere letteralmente inutilizzabile.
 7) **Ha senso parlare di "diritto all'hardware"?**
 	Ha senso, dato che per accedere ad un servizio digitale serve un computing device adeguato. Diﬀicile però definire in anticipo le caratteristiche precise di un ipotetico device universale. Usi e necessità diverse implicano hardware diversi. Pensare di fornire ai singoli cittadini un proprio veicolo non funziona, né in termini pragmatici, perché ogni soggetto ha esigenze e capacità diverse, né in termini economici per impegno finanziario che ne deriverebbe. Meglio pensare a postazioni connesse a Internet messe a disposizione in molti luoghi pubblici.
 8) **Cos'è la "piramide di Maslow"? (cita qualche bisogno in particolare)**
@@ -501,7 +501,7 @@
 	- la rete gas veicola gas combustibili di vario genere i quali vengono usati per cucinare, scaldare acqua sanitaria o per riscaldamento. SLA: pressione minima $\approx 20$ mbar, composizione del gas;
 	- la rete idrica veicola acqua, la quale viene usata sia per scopi domestici che industriali o agricoli. SLA: flusso minimo, purezza.
 19) **Esistono influenze fra servizi analogici tradizionali e servizi digitali? Fai qualche esempio.**
-	 ==boh==
+	 Chiaro esempio è quello del libro dove un venditore su ebay (servizio digitale) richiede per i buyer italiani un supplemento di 5 sterline per rendere affidabile la spedizione a causa di una mancata affidabilità del nostro servizio postale (servizio tradizionale).
 20) **Cos'è il "digital divide"?**
 	Il digital divide, che in italiano diventa divario digitale, misura le disuguaglianze nella disponibilità di accesso alle tecnologie digitali da parte della popolazione. Il fattore tecnico che viene solitamente misurato è quello del livello di connettività infrastrutturale su base territoriale o demografica. Normalmente vengono definite due fasce di digital divide:
 	- di primo livello = indisponibilità della banda oltre $2$ Mbps;
