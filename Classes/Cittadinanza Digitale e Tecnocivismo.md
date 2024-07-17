@@ -375,7 +375,7 @@
 13) **Cosa si intende con "formato" nell'ambito dei servizi digitali?**
 	Un formato dati è concettualmente simile ad un protocollo, ma si riferisce alla memorizzazione dei dati in un file. Invece che specificare un linguaggio di interscambio fra programmi, specifica l’organizzazione dei dati su un supporto di immagazzinamento.
 14) **Vantaggi e svantaggi dei formati standard nei servizi digitali.**
-	==boh==
+	Uno dei vantaggi dell’utilizzo di formati standard è sicuramente la possibilità tra i vari programmi di essere realizzati in modo che concordino su un unico formato per i dati che elaborano. ==svantaggi==
 15) **Cosa si intende con formati standard "de iure" e "de facto"?**
 	De iure e de facto definiscono due modi per ottenere la concordanza su uno stesso formato da parte di differenti programmi. De iure indica la concordanza ottenuta tramite accordi espliciti e formali tra produttori che si organizzano in enti di standardizzazione: attraverso processi di proposta e revisione, i vari standard vengono approvati e pubblicati. Al contrario, de facto indica un formato molto utilizzato ma mai passato attraverso un'approvazione formale ed ufficiale da parte di qualche ente standardizzatore.
 16) **Cos'è il "reverse engineering" e perché potrebbe essere utile nel contesto dei servizi digitali?**
@@ -414,7 +414,7 @@
 29) **Cos'è la 2FA? Come viene realizzata di solito?**
 	La 2FA (Two Factor Authentication) è una tecnica di autenticazione elettronica in cui ad un utente è garantito l'accesso ad un sito web o applicazione solo dopo aver presentato con successo due o più fattori di autenticazione (e.g., una password, dati biometrici, One Time Password, ...) ad un meccanismo di autenticazione.
 30) **Cosa si intende con "accessibilità" nei servizi digitali?**
-	Ogni servizio digitale dovrebbe essere il più inclusivo possibile. Si parla di accessibilità quando ci si preoccupa di non escludere utenti con attività fisiche limitate, quali, ad esempio, i non udenti, ipovedenti o non vedenti.==
+	Ogni servizio digitale dovrebbe essere il più inclusivo possibile. Si parla di accessibilità quando ci si preoccupa di non escludere utenti con attività fisiche limitate, quali, ad esempio, i non udenti, ipovedenti o non vedenti.
 31) **Cos'è la "relatività" nei servizi digitali? In cosa si vede di solito?**
 	I servizi sono relativistici, nel senso che non possono esistere due osservatori che vedono un servizio allo stesso modo. Esiste una quantità fisiologica di relatività che è necessaria e voluta (e.g., richiesta anagrafica da due soggetti differenti). 
 32) **Cosa si intende con "price discrimination"?**
@@ -594,7 +594,7 @@
 
 ## L3
 1) **Quali sono i temi salienti del livello "edu" dell'arcobaleno?**
-	i
+	Il livello tre analizza il problema del non avere il possesso della propria computing agency, partendo dai problemi (minacce tecnologiche, digital divide cognitivo, legislazione), esaminando le risposte istituzionali (dall' alto) a questi problemi, illustrando le risposte dei gruppi di interesse (dal basso) e aggiungendo nuove proposte ad integrare quelle esistenti.
 2) **Cosa si intende con conoscenza "whitebox"?**
 	Alla lettera: scatola bianca, trasparente. Descrive un oggetto, un apparecchio, un sistema di cui si può conoscere il funzionamento interno in ogni sua parte. E' il contrario di blackbox.
 3) **Cosa si intende con conoscenza "blackbox"?**
@@ -606,11 +606,11 @@
 6) **Perché citiamo l'usabilità e le interfacce uomo-macchina in L-edu?**
 	Perchè nonostante gli sforzi fatti dalla scienza dalla scienza dell'informatica, essi sono stati insuﬀicienti per diffondere la consapevolezza di massa sui cosiddetti internals: i meccanismi di funzionamento, le architetture, il trattamento dei dati e altri dettagli che restano appannaggio di pochi addetti ai lavori.
 7) **Cosa sono ACTA, PIPA, SOPA, HADOPI e perché le citiami in L-edu?**
-	Sono atti, concordati e proposte di legge che impattano negativamente sulla vita del cittadino digitale.
+	Sono atti, concordati e proposte di legge che impattano negativamente sulla vita del cittadino digitale. Norme spesso internazionali o a volte applicabili solo in legislazioni estere influenzano, purtroppo in senso negativo, anche il nostro universo digitale perché molti servizi su cui ci appoggiamo sono erogati da aziende straniere che applicano le leggi del proprio stato.
 8) **Cosa sono DRM (perché viene espanso con due acronimi diversi?) e UEFI e perché ci interessano in L-edu?**
-	Digital Rights Management/Digital Restriction Management e Unified Extensible Firmware Interface
+	La Digital Rights Management/Digital Restriction Management è un insieme di meccanismi tecnologici che impe discono ad un computer di far funzionare software o hardware (con a bordo meccanismi software) che non sia stato approvato dal produttore o di utilizzare i propri contenuti multimediali in modi differenti rispetto a quanto approvato dal produttore. L'oggetto diventa una scatola chiusa, le cui chiavi sono in mano al produttore e non all’acquirente, per questo motivo Restriction. La Unified Extensible Firmware Interface, invece, è un interfaccia tra firmware e sistema operativo nata per sostituire il BIOS.
 9) **Cosa si intende con "azzoppare la crittografia"?**
-	i
+	Promulgare leggi anti-crittografia, al fine di rendere trasparenti tutte le comunicazioni in rete, allo scopo (dichiarato) di prevenzione del crimine.
 10) **Perché riteniamo il mondo tecnologico "minaccioso"?**
 	Perchè man mano che la tecnologia avanza, ogni strumento tende ad essere sostituito da alternative con capacità decisionali proprie e con complessità sempre maggiore (sia nel senso di maggiori funzionalità che di difficile comprensione). E' proprio questo aumento di complessità che rende sempre più difficile il relazionarci ad essi, cioè conoscerli, configurarli, manutenerli e controllarli.
 11) **Che differenze ci sono tra un normale interruttore e uno IoT? Perché ci interessa nel contesto CDT?**
@@ -618,7 +618,7 @@
 12) **Perché abbiamo citato il termostato Nest?**
 	Si tratta di un termostato intelligente che impara dalle nostre abitudini: quando giorno per giorno impostiamo la ghiera per comunicare i nostri desiderata sulla temperatura ambientale lui aggiunge informazione ad un modello che si costruisce internamente ed è sulla base di quel modello che decide come e quando attivare la caldaia di casa.
 13) **Che tipi di "relazione" con i device abbiamo discusso? Con quanti device ci "relazioniamo" in media? (ordine di grandezza)**
-	Per noi “relazionarci” vuol dire conoscere, configurare, manutenere, controllare, non lasciare che sia il contrario. Ci relazioniamo in media con un numero di device nell'ordine delle unità ma le previsioni suggeriscono un continuo aumento nei prossimi anni.
+	Per noi “relazionarci” vuol dire conoscere, configurare, manutenere, controllare, non lasciare che sia il contrario. Ci relazioniamo in media con un numero di device nell'ordine delle unità (9) ma le previsioni suggeriscono un continuo aumento nei prossimi anni.
 14) **Cosa intendiamo con "complessità" dei device?**
 	Intendiamo sia nel senso di denso di funzionalità che di diﬀicile comprensione.
 15) **Cosa intendiamo con "tecnologia mascherante"?**
@@ -632,41 +632,41 @@
 19) **Perché l'esempio dei permessi di Android per le app è significativo? (o non lo è secondo te)**
 	Perchè, nonostante più che di mascheramento si potrebbe parlare eufemisticamente di disincentivo, mediante complicazione introdotta arbitrariamente si nega all'utente la fruizione di funzioni (in questo caso la gestione sensata dei permessi).
 20) **Cos'è il "rooting/jailbreaking" di un apparecchio digitale? Perché è importante in CDT e perché i produttori lo scoraggiano?**
-	Alla lettera: diventare amministratore / uscire di prigione. Nel contesto degli smartphone il termine si riferisce alla pratica (tecnica e non burocratica) di ottenere i diritti di amministrazione (il pieno possesso e controllo) dei device acquistati. Un telefono Android o (peggio) Apple appena comprato relega l’acquirente a mero utilizzatore con pochissime possibilità di reale controllo dell’apparato, mediante il rooting (operazione a volte complessa e spesso contrattualmente “scoraggiata” dai produtto- ri che cercano di non riconoscere la garanzia di un telefono così modificato) si riesce a diventare i reali possessori dell’oggetto.
+	Alla lettera: diventare amministratore / uscire di prigione. Nel contesto degli smartphone il termine si riferisce alla pratica (tecnica e non burocratica) di ottenere i diritti di amministrazione (il pieno possesso e controllo) dei device acquistati. Un telefono Android o (peggio) Apple appena comprato relega l’acquirente a mero utilizzatore con pochissime possibilità di reale controllo dell’apparato, mediante il rooting (operazione a volte complessa e spesso contrattualmente “scoraggiata” dai produttori che cercano di non riconoscere la garanzia di un telefono così modificato) si riesce a diventare i reali possessori dell’oggetto.
 21) **Cos'è il "luddismo"? E il "neo-luddismo"?**
 	Rivisitazione dell’antico luddismo (movimento anti-tecnologico dei primi del $1800$, contrario alle macchine che “rubavano il lavoro” come i telai). I neo-luddisti applicano il filosoficamente fallace “principio di precauzione” a qualunque nuova tecnologia (es. del $2020$: il $5G$) chiedendone la non adozione o l’abbandono. Sono spesso associati a ideologie anti- globalizzazione, anti-scientifiche ed eco-estremiste.
 22) **Esiste un "luddismo positivo"? Cosa proponiamo come "luddismo positivo" in CDT?**
-	i
+	Una lotta, per lo più politica e culturale, per rendere trasparente, perfettamente conoscibile e gestibile ogni tecnologia, un approccio in stile Software Libero applicato ad ogni aspetto della vita quotidiana.
 23) **Cosa si intende con "iper-normazione"? E per "comprensibilità dei testi di legge"?**
 	Si intende l'eccesso di legiferazione per disciplinare in modo minuto ogni aspetto della società. Per quanto riguarda la comprensibilità dei testi di legge, si tratta della chiarezza e dell'accessibilità del linguaggio utilizzato nei documenti legislativi. I testi di legge sono spesso noti per l'uso di un linguaggio tecnico e complesso, che può rendere difficile la comprensione da parte del pubblico generale.
 24) **Cosa intendiamo con "minacce legislative" al mondo digitale?**
 	Intendiamo una serie di normative, in vigore o proposte, che riguardano la sfera digitale, spesso internazionali o a volte applicabili solo in legislazioni estere ma che influenzano, purtroppo in senso negativo, anche il nostro universo digitale perché molti servizi su cui ci appoggiamo sono erogati da aziende straniere che applicano le leggi del proprio stato.
 25) **Cos'è un brevetto? Perché lo citiamo in senso negativo?**
-	iUn brevetto è un diritto esclusivo concesso dal governo a un inventore per un periodo di tempo limitato, di solito 20 anni dalla data di deposito, per la creazione di un'invenzione o di un processo innovativo. Questo diritto esclusivo implica che nessun'altra persona o azienda può utilizzare, fabbricare, vendere o distribuire l'invenzione senza il consenso del titolare del brevetto. La loro eﬀicacia sul progresso della scienza è molto discussa e discutibile, attualmente i brevetti in generale sono diventati semplicemente delle armi per togliere dal mercato la (nuova) concorrenza e per consolidare posizioni semi-monopolistiche a scapito del cliente; in campo software non sono riconosciuti dappertutto e in ogni caso limitatamente a determinati contesti ma c’è molto lobbying per estenderne l’applicazione.
+	Un brevetto è un diritto esclusivo concesso dal governo a un inventore per un periodo di tempo limitato, di solito 20 anni dalla data di deposito, per la creazione di un'invenzione o di un processo innovativo. Questo diritto esclusivo implica che nessun'altra persona o azienda può utilizzare, fabbricare, vendere o distribuire l'invenzione senza il consenso del titolare del brevetto. La loro eﬀicacia sul progresso della scienza è molto discussa e discutibile, attualmente i brevetti in generale sono diventati semplicemente delle armi per togliere dal mercato la (nuova) concorrenza e per consolidare posizioni semi-monopolistiche a scapito del cliente; in campo software non sono riconosciuti dappertutto e in ogni caso limitatamente a determinati contesti ma c’è molto lobbying per estenderne l’applicazione.
 26) **Cos'è il copyright? Perché lo citiamo in senso negativo? (specie sul tema delle durate)**
 	Il copyright è un tipo di protezione legale concessa automaticamente a opere creative originali una volta che vengono esposte in una forma tangibile. Esso nasce con intento positivo e degenera nel corso della storia diventando per lo più un ostacolo all’accesso alla conoscenza e alla ricerca, in particolar modo quando viene esteso ed utilizzato massivamente per paywall, DRM, proposte di estensione temporale esagerate o tecnicamente assurde.
 27) **Perché i "filtri di protezione per i contenuti illegali" hanno poco senso?**
 	Perchè chi decide quali sono i contenuti non appropriati? Come viene implementata tecnicamente? Il blocco è per sito (filtro DNS aggirabile?) o per singolo media? Se viene filtrato il contenuto si degenera in censura. Con la crittografia come si relaziona? Quasi certamente inoltre viola le normative europee sulla Net Neutrality.
 28) **Discuti il tema dell'anonimato in rete in termini di possibilità tecniche, vantaggi e svantaggi.**
-	i
+	E’ pressoché impossibile eliminare l'anonimato in rete perché è impossibile sviluppare una tecnologia in grado di identificare l’autore di ogni singolo bit in transito. I vantaggi sarebbero dati da una maggiore privacy e impossibilità di tracciare le informazioni personali da terze parti, come aziende e governi, la libertà di espressione, una maggiore sicurezza, una riduzione della relatività della rete. Come svantaggi, l'anonimato può tuttavia rendere più facili alcune attività criminali e la diffusione di fake news senza temere conseguenze.  
 29) **Perché le proposte di legge sull'indebolimento della crittografia sono pericolose? (o non lo sono secondo te)**
 	Al di là del tipo di tecnologia alla quale ci si rivolgel’idea stessa di indebolire i meccanismi crittografici è sbagliata a vari livelli perché non impedisce ai veri criminali di usare tecnologie illegali (quindi ad alta protezione della segretezza) e contemporaneamente espone i law abiding citizens (cittadini rispettosi della legge) ad eventuali abusi da parte di funzionari poco scrupolosi o di criminali che dovessero riuscire venire indebitamente in possesso di una eventuale super-chiave.
 30) **Cos'è l'"equo compenso" e perché lo citiamo negativamente?**
 	L'equo compenso fu ideato per compensare i titolari dei diritti di copyright che, secondo i proponenti della normativa, altrimenti non verrebbero retribuiti qualora tali supporti venissero usati per “copiare illecitamente materiale coperto da diritti d’autore”. Cioè si decide di punire a pioggia un po’ tutti gli utenti per eventuali illeciti commessi da una piccola percentuale degli utenti stessi, preventivamente.
 31) **A quale Costituzione si riferisce Lessig? Perché dice "I nostri fondatori temevano un governo troppo potente e la nostra Costituzione è scritta in modo da impedirlo"? Noi in Italia abbiamo una protezione analoga?**
-	Alla Costituzione statunitense.
+	Alla Costituzione statunitense, concepita dai padri fondatori con una forte enfasi sulla limitazione dei poteri del governo centrale. Anche la Costituzione italiana prevede la divisione dei poteri tra legislativo (Parlamento), esecutivo (Governo) e giudiziario (Magistratura).
 32) **A cosa si riferisce Lessig quando parla di "regulator"? Cosa intende con "information is zoned"?**
-	Si riferisce al codice, il software e l’hardware che rendono il cyberspazio così com’è. Questo codice, o architettura, stabilisce i termini in cui si vive la vita nel cyberspazio, determina quanto sia fattibile proteggere la privacy o quanto sia fattibile censurare il diritto di espressione del pensiero, determina se l’accesso alle informazioni è generale o se le informazioni sono suddivise in zone (relatività della rete)
+	Si riferisce, nella prima parte, ai poteri di uno stato di diritto: amministrativo, legislativo e giudiziario. Nella seconda parte, mentre parla dell'era del cyberspazio, il regolatore è il codice, il software e l’hardware che rendono il cyberspazio così com’è. Questo codice, o architettura, stabilisce i termini in cui si vive la vita nel cyberspazio, determina quanto sia fattibile proteggere la privacy o quanto sia fattibile censurare il diritto di espressione del pensiero, determina se l’accesso alle informazioni è generale o se le informazioni sono suddivise in zone (relatività della rete).
 33) **Cosa intende Lessig con "il software regola il mondo intero"?**
-	Si riferisce al codice, il software e l’hardware che rendono il cyberspazio così com’è. Questo codice, o architettura, stabilisce i termini in cui si vive la vita nel cyberspazio, determina quanto sia fattibile proteggere la privacy o quanto sia fattibile censurare il diritto di espressione del pensiero, determina se l’accesso alle informazioni è generale o se le informazioni sono suddivise in zone.
+	Intende che il cyberspazio non è più qualcosa di relegato alla Rete, molto distante e ininfluente sulla nostra vita di tutti i giorni. Cyberspazio e mondo reale sono ormai così strettamente interdipendenti che nessuno dei due può regolarsi come se l’altro non esistesse. Ormai ogni attività umana è supportata e spesso addirittura regolata da artefatti software. Al punto che la nostra stessa vita dipende da come viene scritto il software.
 34) **Fai qualche esempio di "sistema software" che decide sulla vita dei cittadini.**
 	Dai sistemi per le decisioni sulle concessioni di mutui ai programmi che valutano la probabilità di recidiva per i criminali o “prevedono” i crimini fino ad arrivare ai meccanismi di reputation cinesi che attribuiscono punteggi di cittadinanza attraverso cui guadagnare o perdere diritti.
 35) **Perché è importante "comprendere" l'architettura della rete e del software per potersi dire cittadini digitali?**
-	Perchè l’architettura digitale ingloba norme che ne determinano il funzionamento, attraverso il codice. Il software, il codice, non decide da solo come gestire l’informazione, sono le persone, in particolare gli sviluppatori, a deciderlo. Chi scrive il codice decide l’architettura.
+	Perchè l’architettura digitale ingloba norme che ne determinano il funzionamento, attraverso il codice. Il software, il codice, non decide da solo come gestire l’informazione, sono le persone, in particolare gli sviluppatori, a deciderlo. Chi scrive il codice decide l’architettura. E' fondamentare impedire che il divario tecnologico tagli fuori i cittadini dal controllo e dalle scelte.
 36) **Cosa si intende con "computing agency"?**
 	La Computing Agency è l’insieme dei device che esegue computazioni e azioni in nostra vece e su nostra richiesta (a volte implicita, ma comunque sotto la nostra responsabilità) o su richiesta di altri ma con impatti su di noi.
 37) **Fai qualche esempio storico di device che ha deciso per proprio conto di effettuare operazioni non desiderabili.**
-	Auto a guida autonoma frena da sola improvvisamente entrando in una rotonda se rileva un altro veicolo che “taglia la strada” (in realtà è lontano e non si avrebbe collisione o, peggio, è semplicemente di fianco - ad es. un motorino - ma viene rilevato dai sensori come “davanti”), in più di un’occasione è stato sfiorato l’incidente.
+	Auto a guida autonoma frena da sola improvvisamente entrando in una rotonda se rileva un altro veicolo che “taglia la strada” (in realtà è lontano e non si avrebbe collisione o, peggio, è semplicemente di fianco - ad es. un motorino - ma viene rilevato dai sensori come “davanti”), in più di un’occasione è stato sfiorato l’incidente. Un termostato intelligente che ascolta le conversazioni in appartamento e ne invia il contenuto al cloud del costruttore.
 38) **Perché diciamo che oggigiorno non possediamo più molti oggetti digitali?**
 	Perchè non sono più sotto il nostro controllo, non siamo in grado di conoscerlo, configurarlo e controllarlo completamente.
 39) **Cos'è il "software proprietario" e perché lo riteniamo deleterio?**
@@ -676,24 +676,28 @@
 41) **Cosa sono i "diritti di root" in relazione ai device digitali?**
 	I diritti di root sono il potere di amministrare il device ed è una facoltà che è negata salvo arzigogoli tecnici non alla portata di tutti i “proprietari” e che nella maggior parte dei casi fa decadere la garanzia sull’apparecchio.
 42) **Perché alcuni vendor vogliono impedire il "rooting" dei device? Cita qualche esempio.**
-	L’impedimento viene venduto formalmente nell’interesse dell’utilizzatore, ma in realtà ha il malcelato scopo di impedire che il telefono venga effettivamente controllato appieno da chi ha comprato l’oggetto e lo vorrebbe gestire a suo piacimento. Molti produttori di telefoni e di app arrivano all’assurda demonizzazione della procedura di rooting tanto da avvisare l’utente quando rilevano che una simile operazione è stata effettuata.
+	L’impedimento viene venduto formalmente nell’interesse dell’utilizzatore, ma in realtà ha il malcelato scopo di impedire che il telefono venga effettivamente controllato appieno da chi ha comprato l’oggetto e lo vorrebbe gestire a suo piacimento. Molti produttori di telefoni e di app arrivano all’assurda demonizzazione della procedura di rooting tanto da avvisare l’utente quando rilevano che una simile operazione è stata effettuata. Le app di moltissime banche rifiutano di funzionare su un telefono rooted.
 43) **Cosa ha implementato BMW per i proprio sedili? Perché lo riteniamo negativo?**
 	Una “tecnologia” BMW per attivare o disattivare (a pagamento, ovviamente) vari servizi sulla propria autovettura: i sedili si riscalderanno solo se avrete pagato l’abbonamento al servizio, il sistema di guida avanzato idem. Una nuova definizione di proprietà. E' negativo perchè stiamo assistendo ad un progressivo shift dell’agency dal possessore del device verso altri, determinando in questo modo un limitato permesso d’uso, dove non è nemmeno sempre chiaro il “chi usa chi”: si passa da to own agency (poter agire) a to be owned by agency (essere soggetti a agire altrui).
 44) **Cosa intendiamo con "furto della computing agency"?**
 	La Computing Agency è l’insieme dei device che esegue computazioni e azioni in nostra vece e su nostra richiesta (a volte implicita, ma comunque sotto la nostra responsabilità) o su richiesta di altri ma con impatti su di noi. Con furto della computing agency intendiamo lo shifting dell'agency dal possessore del device verso terzi, determinando in questo modo un limitato permesso d'uso.
 45) **Cos'è il "digital divide non tecnologico"?**
-	Il fatto che una gran parte della popolazione italiana, si parla di milioni di famiglie, pur raggiunta dalla banda larga, si accontenta di velocità minori di $10$ Mbps o addirittura decide di non abbonarsi proprio ad un servizio di connettività landline, indipendentemente dalla velocità disponibile, adducendo mancanza di utilità o dichiarando più che suﬀiciente la connettività a disposizione attraverso la rete dati $3$G o $4$G. Una sorta di rinuncia digitale. Anche in tema di differenze di genere ITU ha riscontrato a livello mondiale una distanza importante tra uomini e donne nell’accesso alla connettività e nella scelta di materie tecnologico-informatiche.
+	Il fatto che una gran parte della popolazione italiana, si parla di milioni di famiglie, pur raggiunta dalla banda larga, si accontenta di velocità minori di $10$ Mbps o addirittura decide di non abbonarsi proprio ad un servizio di connettività landline, indipendentemente dalla velocità disponibile, adducendo mancanza di utilità o dichiarando più che suﬀiciente la connettività a disposizione attraverso la rete dati $3$G o $4$G. Una sorta di rinuncia digitale. Anche in tema di differenze di genere ITU ha riscontrato a livello mondiale una distanza importante tra uomini e donne nell’accesso alla connettività e nella scelta di materie tecnologico-informatiche. Si tratta di una grave situazione di rinuncia digitale.
 46) **Cosa dice il DESI in merito al "digital divide non tecnologico"?**
-	Sostiene che una gran parte della popolazione italiana, si parla di milioni di famiglie, pur raggiunta dalla banda larga, si accontenta di velocità minori di $10$ Mbps o addirittura decide di non abbonarsi proprio ad un servizio di connettività landline, indipendentemente dalla velocità disponibile, adducendo mancanza di utilità o dichiarando più che suﬀiciente la connettività a disposizione attraverso la rete dati $3$G o $4$G.
+	Sostiene che una gran parte della popolazione italiana, si parla di milioni di famiglie, pur raggiunta dalla banda larga, si accontenti di velocità minori di $10$ Mbps o addirittura decida di non abbonarsi proprio ad un servizio di connettività landline, indipendentemente dalla velocità disponibile, adducendo mancanza di utilità o dichiarando più che suﬀiciente la connettività a disposizione attraverso la rete dati $3$G o $4$G.
 47) **Cosa ci ha "insegnato" la pandemia in termini di "digital divide" (sia tecnologico che non tecnologico - sul libro non c'è)?**
+	Se prima magari alcune persone non sentivano il bisogno di migliorare la propria condizione (in termini di abbonamento a rete fissa a una capacità maggiore) la pandemia ha reso quasi necessario questo upgrade a causa della necessità di migliori prestazioni per svolgere compiti che venivano in precedenza svolti in presenza (didattica a distanza o smart working). 
 48) **A cosa ci riferiamo col termine "deficit di conoscenza" (digitale)?**
+	L'Italia è all'ultimo posto in Europa sia per competenze digitali di base che avanzate. E', inoltre, terzultima per quanto riguarda i servizi digitali. L'italia soffre di una notevole arretratezza culturale storica che è necessario colmare, non solo nel contesto tecnologico.
 49) **Cosa intendiamo con "analfabetismo operativo e meta-operativo"?**
-	L'analfabetismo operativo significa il “saper usare”, il “saper cliccare sulle icone” (senza capire cosa c’è sotto); quello meta-operativo significa conoscere e capire cosa c’è "hunder the hood". Esso stimola a comprendere i processi, anche i nostri stessi processi di apprendimento.
+	L'alfabetismo operativo significa il “saper usare”, il “saper cliccare sulle icone” (senza capire cosa c’è sotto); quello meta-operativo significa conoscere e capire cosa c’è "hunder the hood". Esso stimola a comprendere i processi, anche i nostri stessi processi di apprendimento.
+	Con analfabetismo si intende il contrario di tutto ciò.
 50) **Sei d'accordo sul fatto che i "nativi digitali" siano molto più alfabetizzati in senso meta-operativo rispetto ad altre categorie di popolazione?**
 	No, anzi. Ritengo siano vagamente più alfabetizzati nel senso operativo rispetto a fasce d'età più adulte ma trovo che l'alfabetizzazione in senso meta-operativo sia estremamente di nicchia.
 51) **Cosa si intende con "superare l'addestramento" (Fuggetta)?**
-	nativi digitali sono in realtà molto meno ‘maturi digitali’ di quanto immaginiamo”,  serve un salto di qualità nei modelli cognitivi e comportamentali.
+	I nativi digitali sono in realtà molto meno ‘maturi digitali’ di quanto immaginiamo e, per alfabetizzarli in termini meta-operativi serve un salto di qualità nei modelli cognitivi e comportamentali.
 52) **E' vera la frase "Non credete a tutto ciò che leggete su Internet" di A. Lincoln? Perché? C'è qualcosa che non quadra?**
+	Perchè ovviamente non esisteva Internet ai tempi di Lincoln. 
 53) **Cosa dice la "legge di Sturgeon"? Perché è abbastanza ragionevole attribuirla ai contenuti su Internet?**
 	La legge di Sturgeon sostiene che il $90\%$ di ogni cosa sia spazzatura. Sturgeon la coniò negli anni cinquanta per giudicare la produzione letteraria cartacea, ma secondo Nichols quando questa legge viene applicata al materiale disponibile in Internet quel $90\%$ è addirittura molto ottimistico. Questo perché è molto facile per chiunque “buttar fuori qualcosa in Internet”: pubblicare un sito web è un’operazione semplice ed economica ergo ad oggi si incontrano miliardi di siti dei quali solo alcuni milioni contengono effettivamente informazioni sensate e veritiere, il resto è fake o semplicemente opinione da bar.
 54) **A cosa si riferisce il "caso" Cambridge Analytica? Cosa c'entra con la Relatività della rete?**
@@ -701,21 +705,22 @@
 55) **Cos'è l'effetto Dunning-Kruger?**
 	L'effetto Dunning-Kruger è una distorsione cognitiva nella quale individui poco esperti e poco competenti in un campo tendono a sovrastimare la propria preparazione giudicandola, a torto, superiore alla media.
 56) **Cosa si intende con "pensiero critico"?**
-	lS intende l'abilità di affrontare le affermazioni sia analizzandole per come sono formulate sia confrontandole con proprie conoscenze (che ci devono essere) per valutarne la veridicità senza prendere tutto ciò che si legge per oro colato.
+	Si intende l'abilità di affrontare le affermazioni sia analizzandole per come sono formulate sia confrontandole con proprie conoscenze (che ci devono essere) per valutarne la veridicità senza prendere tutto ciò che si legge per oro colato.
 57) **Cos'è la "lettura superficiale" (skimming)?**
 	Quella pratica per cui si legge solo qualche parola ogni tanto credendo di poter carpire comunque il significato del testo.
-1. **Cosa si intende con "capacità di comprendere un testo"? (definizione minimale)**
+58) **Cosa si intende con "capacità di comprendere un testo"? (definizione minimale)**
 	Comprendere un testo significa essere in grado di interpretare e capire il significato del testo letto. Questo coinvolge diverse abilità cognitive, tra cui la decodifica delle parole, la comprensione del significato delle frasi e la capacità di collegare concetti per formare un quadro coerente.
-1. **Qual è l'aspetto negativo degli ipertesti?**
-	Il contenuto frammentato che non aiuta a concentrarsi;
-1. **Cosa sono le "interruption technologies"?**
+59) **Qual è l'aspetto negativo degli ipertesti?**
+	Il contenuto frammentato che non aiuta a concentrarsi.
+60) **Cosa sono le "interruption technologies"?**
 	Fare più attività (come gestire più chat contemporaneamente mentre si legge un testo o si segue una lezione) in parallelo credendo di riuscire a seguirle tutte.
-1. **Cosa si intende con "esternalizzazione della conoscenza"?**
+61) **Cosa si intende con "esternalizzazione della conoscenza"?**
 	Si intende l'esternalizzazione della conoscenza verso il cloud: “perché devo ricordarmelo se posso cercarlo in rete?”.
-1. **Cosa sono le "difese istituzionali" nel contesto L-edu?**
-	
-1. **Riassumi i punti chiave della "Raccomandazione del Consiglio relativa alle competenze chiave per l’apprendimento permanente".**
-2. **Elenca alcune "competenze chiave" della "Raccomandazione...".**
+62) **Cosa sono le "difese istituzionali" nel contesto L-edu?**
+	Sono gli strumenti che le istituzioni ci offrono per affrontare un mondo digitale che può rappresentare una minaccia se non ben gestito.
+63) **Riassumi i punti chiave della "Raccomandazione del Consiglio relativa alle competenze chiave per l’apprendimento permanente".**
+	Ogni persona ha diritto ad un'istruzione e formazione che permetta di partecipare pienamente alla società. Le tecnologie svolgono un ruolo maggiore in tutti gli ambiti del lavoto e della vita quotidiana. Indagini internazionali indicano una quota elevata con competenze di base insufficienti. Abilità quali la capacità di risoluzione di problemi, il pensiero critico, la capacità di cooperare, la creatività, sono più importanti che mai nella società. Bisogna innalzare il livello di padronanza delle competenze di base, sostenere lo sviluppo della capacità di imparare ad imparare e promuovere l'acquisizione di competenze in scienza, tecnologia, ingegneria e matematica (STEM), soprattutto a ragazze e donne.
+64) **Elenca alcune "competenze chiave" della "Raccomandazione...".**
 	- Competenza alfabetica funzionale;
 	- competenza multi-linguistica;
 	- competenza matematica e competenza in scienze, tecnologie ed ingegneria;
@@ -723,40 +728,93 @@
 	- competenza in materia di cittadinanza;
 	- competenza imprenditoriale;
 	- competenza personale, sociale e capacità di imparare ad imparare.
-1. **Riassumi la situazione del "digital divide cognitivo" in relazione agli studi PISA-OCSE.**
-2. **Cosa si intende con "capacità di imparare a imparare"?**
-3. **Cosa si intende con "under the hood"?**
-4. **Spiega lo spettrogramma relativo alla "Educazione alla cittadinanza digitale" del provvedimento sulla "Introduzione dell’insegnamento scolastico dell’educazione civica".**
-5. **Perchè i "livelli alti dell'arcobaleno fanno paura"?**
-6. **Cosa si intende con "hands on" e perché è importante in ambito CDT? In che contesto è stato nominato?**
-7. **Che parere dai all'iniziativa ECDL? (articolare)**
-8. **Cos'è il PNSD? Com'è articolato?**
-9. **Cosa si intende con "lifelong learning"?**
-10. **Discuti lo spettrogramma del PNSD.**
-11. **Cosa si intende con KPI? Perché sono importanti? Come sono stati applicati al PNSD?**
-12. **Cosa sono le "difese grassroots" nel contesto L-edu?**
-13. **Perché citiamo la "cultura hacker"?**
-14. **Cita qualche punto dell'"etica hacker".**
-15. **Cosa intendiamo con "hacker"?**
-16. **Cosa si intende con "flusso di conoscenza top-down/bottom-up"?**
-17. **Cos'è una EULA?**
-18. **Cos'è il Software Libero?**
-19. **Quali sono le libertà del Software Libero?**
-20. **Cos'è una licenza software?**
-21. **Cos'è una licenza virale?**
-22. **Cos'è il "copyleft"? Come lo traduci in italiano?**
-23. **Cos'è la "scarsità artificiale"?**
-24. **Cos'è la "obsolescenza programmata"?**
-25. **Perché le licenze libere sono vantaggiose per L-edu?**
-26. **Cos'è il FUD? Chi lo promuove?**
-27. **Discuti l'attuale situazione di penetrazione del Software Libero nel mondo.**
-28. **Cos'è il CAD?**
-29. **Riassumi l'iniziativa "right to repair".**
-30. **Cosa si intende con "... as a service"?**
-31. **Quale pratica deleteria mettono in atto molti produttori di componentistica elettronica per impedire all'utente di riparare/migliorare i device "acquistati"?**
-32. **Perché critichiamo il termine "possesso" quando applicato a device moderni?**
-33. **Riassumi il tema del "learn to code".**
-34. **Cos'è il "computational thinking"?**
+65) **Riassumi la situazione del "digital divide cognitivo" in relazione agli studi PISA-OCSE.**
+	Una quota costantemente elevata di adolescenti e di adulti dispone di competenze di base insufficienti. Anni fa uno studente su 5 aveva difficoltà nello sviluppo di competenze sufficienti in lettura mentre in alcuni paesi un terzo degli adulti possiede competenze aritmetico matematiche solo ai livelli più bassi. 44% della popolazione europea possiede competenze digitali scarse mentre il 19% non le possiede proprio
+66) **Cosa si intende con "capacità di imparare a imparare"?**
+	Si riferisce alla competenza di acquisire, organizzare e utilizzare strategie efficaci per apprendere in modo autonomo e continuo nel corso della vita.
+67) **Cosa si intende con "under the hood"?**
+	L'espressione "under the hood" (letteralmente "sotto il cofano") è una metafora che viene utilizzata per riferirsi a ciò che si trova dietro le quinte o sotto la superficie di qualcosa, specialmente in contesti tecnologici.
+68) **Spiega lo spettrogramma relativo alla "Educazione alla cittadinanza digitale" del provvedimento sulla "Introduzione dell’insegnamento scolastico dell’educazione civica".**
+	Livello 0 (The Net): assente, non vengono trattate le distorsioni della Rete.
+	Livello 1 (services): molto trattato, i servizi digitali sono ritenuti importanti.
+	Livello 2 (access): appena sfiorato, non interessano digital divide, inclusività delle infrastrutture e più in generale i diritti di base della CDT.
+	Livello 3 (education): molto trattato, questo picco era atteso, essendo un piano dedicato alla formazione.
+	Livello 4 (transparency), Livello 5 (participation) e Livello 6 (consultation): qualche accenno, quindi si ritengono accettabili trasparenza e partecipazione, ma senza troppi obblighi.
+	Livello 7 (democracy): assente, non si discute del livello più alto della partecipazione civica.
+69) **Perchè i "livelli alti dell'arcobaleno fanno paura"?**
+	L’ascolto è pericoloso perché poi bisogna dare seguito alle richieste della cittadinanza.
+70) **Cosa si intende con "hands on" e perché è importante in ambito CDT? In che contesto è stato nominato?**
+	Letteralmente "mettici le mani sopra", fa riferimento all'insegnamento dell'informatica anche tramite laboratori, quindi non solo teoria. E' stato nominato parlando del piano di investimenti USA "Computer Science for All".
+71) **Che parere dai all'iniziativa ECDL? (articolare)**
+	Ritengo che sia puramente un modo di combattere l'analfabetismo operativo ma sia esttremamente insufficiente e non promuova affatto un minimo di pensiero critico e capacità di imparare ad imparare.
+72) **Cos'è il PNSD? Com'è articolato?**
+	Il Piano Nazionale Scuola Digitale è l'attuale risposta dall'alto per affrontare un mondo digitale che può rappresentare una minaccia se non ben gestito. E' strutturato in azioni volte a risolvere i problemi strutturali e culturali della scuola italiana. Queste azioni sono raggruppate nelle macroaree: strumenti (condizioni di accesso, qualità degli spazi e ambienti, identità e amministrazione digitale), competenze e contenuti (identificare nuove traiettorie, guardando alle richieste del presente e individuando quelle del futuro), formazione (del personale, orientata all'innovazione didattica), accompagnare nella sfida dell'innovazione (collegamento col territorio, monitoraggio del piano stesso, steering).
+73) **Cosa si intende con "lifelong learning"?**
+	Si intende una formazione continua, che dura tutta la vita. Si basa su tre pilastri: 
+	- nozioni di base e conoscenze;
+	- competenze, pensiero critico e problem solving;
+	- asptti personali e sociali, interazioni con altri e con situazioni fuori comfort zone.
+74) **Discuti lo spettrogramma del PNSD.**
+	Dallo spettrogramma possiamo subito notare che:
+	- Livello 0 (The Net): assente, non vengono prese in considerazione le distorsioni della Rete;
+	- Livello 1 (services): abbastanza trattato, i servizi digitali sono ritenuti importanti, giustamente;
+	- Livello 2 (access): molto trattato, finalmente si considerano molti servizi digitali come di base;
+	- Livello 3 (education): estremamente trattato, questo picco era atteso, essendo un piano dedicato alla formazione;
+	- Livello 4 (transparency): lievemente considerato, dichiarata l’esigenza di trasparenza, ma senza troppo impegno;
+	- Livello 5 (participation): lievemente considerato, non sono previste grandi attività sul tema;
+	- Livello 6 (consultation): abbastanza trattato, quindi si ritiene relativamente importante la partecipazione dal basso, l’ascolto;
+	- Livello 7 (democracy): praticamente assente, non si discute del livello più alto della partecipazione civica, cioè non sono stati previsti momenti formali di consultazione “impegnativa” (consulto sì, livello precedente, ma senza obbligo decisionale).
+75) **Cosa si intende con KPI? Perché sono importanti? Come sono stati applicati al PNSD?**
+	Key Performance Indicator, ovvero gli indicatori chiave, preferibilmente quantitativo-oggettivi, che permettono di calcolare una “percentuale di completamento”. Nel PNSD, ogni azione ha un campo “Obiettivi misurabili”, anche se per alcune azioni (8 su 35) risulta non esplicitato; La maggior parte di questi KPI sono non quantitativi o tautologici.
+76) **Cosa sono le "difese grassroots" nel contesto L-edu?**
+	Il termine anglosassone grassroots movements indica quei movimenti politici (anche in senso lato) che nascono “dal basso” per aggregazione più o meno spontanea di gruppi di cittadini, che si organizzano in comunità (community), liste civiche, comitati, associazioni. L’idea sottostante al desiderio di organizzarsi autono mamente è quella di ovviare alle mancanze, spesso grandi, delle istituzioni. Sono tutti quei movimenti dal basso che si battono per la libertà di accesso, diffusione e uso della conoscenza, spesso in contrapposizione con le lobby della “proprietà intellettuale”, che invece vorrebbero limitare l’accesso per monetizzare il più possibile.
+77) **Perché citiamo la "cultura hacker"?**
+	Perchè negli anni 60, in alcune università statunitensi, si osservò un certo grado di ribellione alla “cultura del camice bianco”: il camice bianco era indossato dagli operatori dei computer che facevano da tramite (da interfaccia) tra gli studenti e le risorse di calcolo che allora erano molto scarse e costose; tali operatori erano percepiti come ostacoli all’accesso alla conoscenza e quindi diventarono il simbolo del nemico da combattere.
+78) **Cita qualche punto dell'"etica hacker".**
+	informazione accessibile, approccio critico e decentralizzazione, merito puro e apprezzamento nei confronti della tecnologia informatica.
+79) **Cosa intendiamo con "hacker"?**
+	Nella sua accezione originale di “persona curiosa del mondo e della tecnologia (in primis informatica ma non solo), dedita allo studio, alla modifica, al perfezionamento degli oggetti e dei sistemi e fortemente coinvolta nella diffusione libera della conoscenza acquisita”. Rigettiamo invece l’accezione tutta giornalistica dell’hacker come “pirata informatico”.
+80) **Cosa si intende con "flusso di conoscenza top-down/bottom-up"?**
+	Informazione calata dall'alto, dalle istituzioni (top-down) che poi vengono comunicati e implementati dai livelli inferiori dell'organizzazione. Creata dal basso, dalle liste civiche o associazioni (bottom-up), valorizza il contributo dei cittadini/partecipanti di tutti i livelli e promuove un ambiente collaborativo.
+81) **Cos'è una EULA?**
+	End-User License Agreement è un contratto legale tra il fornitore di software e l'utente finale che utilizza il software. Questo accordo stabilisce i termini e le condizioni sotto cui l'utente può utilizzare il software.
+82) **Cos'è il Software Libero?**
+	Concetto che consiste nel concedere formalmente diritti all’utente del software invece di (cercare di) toglierglieli. Viene inventato da Richard Matthew Stallman.
+83) **Quali sono le libertà del Software Libero?**
+	- Uso per qualunque scopo;
+	- studio del funzionamento, anche attraverso il codice sorgente fornito sempre;
+	- redistribuzione as is a chiunque;
+	- redistribuzione dei lavori derivati usando la stessa licenza.
+84) **Cos'è una licenza software?**
+	E' un contratto legale che concede all'utente il diritto di utilizzare un software secondo specifici termini e condizioni stabiliti dal proprietario del software. Questo accordo definisce i diritti e le limitazioni dell'utente riguardo all'uso, alla distribuzione e alla modifica del software.
+85) **Cos'è una licenza virale?**
+	Sono licenze che richiedono che il codice sorgente del software derivato sia fornito con la stessa licenza del software originale: è un modo per incoraggiare la condivisione invece di ostacolarla.
+86) **Cos'è il "copyleft"? Come lo traduci in italiano?**
+	La classe di licenze che richiedono che il codice sorgente del software derivato sia fornito con la stessa licenza del software originale: è un modo per incoraggiare la condivisione invece di ostacolarla. "Tutti i diritti riversati".
+87) **Cos'è la "scarsità artificiale"?**
+	La scarsità artificiale è una strategia economica e di marketing in cui un produttore o fornitore crea un'apparente scarsità di un bene o servizio per aumentarne il valore percepito e la domanda.
+88) **Cos'è la "obsolescenza programmata"?**
+	L'obsolescenza programmata è una strategia di progettazione e produzione utilizzata da alcuni produttori per costruire prodotti con una durata di vita limitata, con l'intento di aumentare la frequenza con cui i consumatori devono sostituirli o ripararli.
+89) **Perché le licenze libere sono vantaggiose per L-edu?**
+	il Software Libero si lascia conoscere, ci permette di capire cosa fa e come lo fa fin nei minimi dettagli. Certo, occorre comprendere la programmazione, ma il diritto di sapere non viene negato. con il SL si può imparare il funzionamento interno, non solo l’operatività esteriore, di ciò che si usa. Si può quindi combattere eﬀicacemente l’analfabetismo meta-operativo.
+90) **Cos'è il FUD? Chi lo promuove?**
+	E' un acronimo che significa Fear, Uncertainty and Doubt e viene promoso dai grandi produttori di software che vivono di scarsità artificiale e obsolescenza programmata, impendendo ai loro clienti di passare ad alternative libere.
+91) **Discuti l'attuale situazione di penetrazione del Software Libero nel mondo.**
+	La propaganda negativa del FUD purtroppo funziona abbastanza bene: la penetrazione del SL è effettiva solo lato server, quindi web e storage, mentre desktop è ben poco effettiva. Invece, lato smartphone, la penetrazione è altissima ma non è frutto di una scelta consapevole.
+92) **Cos'è il CAD?**
+	Codice dell'Amministrazione Digitale, una noormativa per incrementare l'adozione del software libero in Italia, il cui articolo impone come scelta privilegiata l’uso e la produzione di soluzioni software libere.
+93) **Riassumi l'iniziativa "right to repair".**
+	Alla fine del secolo scorso, i produttori di veicoli cominciarono a inserire sottosistemi elettronici nei loro mezzi e, parallelamente, introdussero meccanismi vincolanti per l'accesso a tali apparati. Per poterli riparare o modifiicare divennero necessari hardware e software appositi sia credenziali di accesso. Con questi meccanismi in atto non bastano più le competenze, ci vuole ormai anche un’autorizzazione. Assistiamo alla commodification (mercificazione) della conoscenza. Per risolvere il problema, allo scopo di impedire questi “attacchi alla sovranità digitale del cittadino” sono nate un po’ in tutto il mondo iniziative per il “right to repair” che fanno pressione sui governi aﬀinché varino normative a favore del diritto di riparazione e modifica degli apparati.
+94) **Cosa si intende con "... as a service"?**
+	Si tratta di un modello di distribuzione che trasforma il prodotto in un servizio e quindi il prodotto non viene più venduto ma concesso in abbonamento.
+95) **Quale pratica deleteria mettono in atto molti produttori di componentistica elettronica per impedire all'utente di riparare/migliorare i device "acquistati"?**
+	La necessità di utilizzare hardware e software specialistici oltre che credenziali di accesso. Si aumenta il gap di ingresso per nuovi fornitori di servizi tramite informazioni embedded nei computer e proprietarie.
+96) **Perché critichiamo il termine "possesso" quando applicato a device moderni?**
+	Perchè non ne siamo realmente in possesso, non abbiamo il pieno controllo del device: l'accessibilità è limitata, non possiamo conoscerlo nè sfruttarlo al meglio.
+97) **Riassumi il tema del "learn to code".**
+	Alla lettera significa "impara a programmare". Non si vuole far sì che ogni persona debba imparare a programmare ma che impari a pensare come un programmatore, in quanto può essere utile in molti ambiti. Ci si riferisce al computational thinking.
+98) **Cos'è il "computational thinking"?**
+	Il computational thinking è il pensiero computazionale, algoritmico. Insegna a pensare in maniera astratta, a suddividere un problema in sotto-problemi e in sequenze di operazioni per raggiungere uno scopo, ragionando anche sulle ramificazioni fallimentari e sulle azioni correttive.
 
 -----
 
