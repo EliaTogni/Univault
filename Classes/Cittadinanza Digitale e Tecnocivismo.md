@@ -824,7 +824,7 @@
 2) **Cosa si intende con "casa di vetro"?**
 	E' un termine mutuato da Filippo Turati utilizzato per descrivere il progressivo aumento della trasparenza delle organizzazioni (soprattutto governative) che si appoggia naturalmente sul web per rendere pubblici i dati di ogni genre, fruibili digitalmente e disponibili a tutti i cittadini.
 3) **Che differenza vedi tra "conoscibile" e "controllabile"?**
-	Innanzitutto che conoscibile non implica controllabile.==finire==
+	Innanzitutto che conoscibile non implica controllabile. Conoscibile si riferisce alla capacità di comprendere, accedere e analizzare le informazioni riguardanti il funzionamento e gli effetti del software. Controllabile implica la capacità di influenzare, modificare e regolare il software e il suo impatto.
 4) **Spiega i termini "whitebox" e "blackbox" nel contesto L-transparency.**
 	Whitebox descrive un oggetto, un apparecchio, un sistema, di cui si può conoscere l’implementazione interna in ogni sua parte, contrario di blackbox, il quale descrive un oggetto, un apparecchio, un sistema, di cui non si può conoscere l’implementazione interna in nessuna sua parte. Nel contesto L-transparency si parla di trasparenza applicandola sia a sistemi digitali sia a sistemi organizzativi che se vogliono essere trasparenti devono rendere pubbliche informazioni sul proprio stato interno.
 5) **Cosa si intende con "stato interno" di un ente?**
@@ -840,7 +840,7 @@
 10) **A cosa ci riferiamo con "ex-ante" e "ex-post" in relazione alla trasparenza?**
 	Ci si riferisce a quando rendere trasparenti le informazioni a disposizione di un organo di governo per rendere partecipe la cittadinanza. Ex-ante significa rendere disponibili tutte le informazioni istruttorie, così da poter formare nel cittadino un'opinione in accordo con le azioni da intraprendere. Ex-post, invece, significa rendere disponibili i dati di misurazione degli effetti, in modo da poter permettere ai cittadini di verificare i risultati delle azioni compiute.
 11) **In quali ambiti la trasparenza viene limitata per legge?**
-	==dopo==
+	Esiste un insieme di informazioni che è meglio non rendere trasparenti: ad esempio i segreti di Stato su operazioni militari, i segreti di uﬀicio (procedimenti penali, ecc.), i dati personali, ecc.
 12) **Cosa intendiamo con "ribaltamento dell'approccio invasivo dello stato"?**
 	Ribaltare l'approccio di violazione della privacy di cittadino. Lo stato/la pubblica amministrazione deve essere pubblico/a mentre il privato cittadino deve rimanere privato, e non il viceversa.
 13) **Spiega la frase di Brandeis sulla "luce del sole".**
@@ -863,11 +863,10 @@
 19) **Descrivi la scala di Tim Davies.**
 	Anche detta scala di engagement, la quale valuta gli aspetti di coinvolgimento dei fruitori oltre che dei produttori di dati definendo una scala a stelle:
 	- 1 stella: “Be demand driven” - guidati dalla domanda e dall’utilità effettiva - i dati pubblicati (o da pubblicare) dovrebbero essere realmente utili al grande pubblico e per valutarne l’utilità bisognerebbe “ascoltare i pareri” dei fruitori (cittadini, community, aziende ecc.);
-	- 2 stelle: licenza libera, formato elaborabile;
-	- 3 stelle: licenza libera, formato elaborabile e non proprietario;
-	- 4 stelle: licenza libera, formato elaborabile, non proprietario e con l'aggiunta che i dati siano linkabili tramite URI;
-	- 5 stelle: licenza libera, formato elaborabile, non proprietario, con l'aggiunta che i dati siano linkabili tramite URI e con l'aggiunta di collegamenti verso siti web o altri dataset per una migliore comprensione.
-	- ==finire==
+	- 2 stelle: “Put data in context” - dati contestualizzati, semantici, con metadati anche sulla qualità dei dati stessi. Dovrebbero essere forniti la frequenza di aggiornamento, i formati, la risoluzione, l'origine, etc.;
+	- 3 stelle: "Supporto conversation around data” - dati commentabili - i fruitori dovrebbero poter commentare i dati stessi e poter collaborare nelle analisi, meglio se direttamente sulla piattaforma utilizzata per la divulgazione; deve essere facile contattare il proprietario dei ati per poter interagire ad esempio segnalando problemi e correzioni;
+	- 4 stelle: "Build capacity, skills and networks” - strumenti e documentazione - dovrebbero essere fornite (possibilmente in platform) informazioni e strumenti di elaborazione dei dati ed esempi di analisi; dovrebbero essere coinvolte le community specializzate33 per invogliare e facilitare l’uso e il riuso dei dati;"
+	- 5 stelle: “Collaborate on data as a common resource” - feedback effettivo - dovrebbero esistere canali di feedback e collaborazione attiva tra proprietari dei dati e fruitori (cittadini, community, aziende ecc.) così che anche questi ultimi possano “migliorare” i dati, non solo per segnalazioni di errori ma anche per creazione di dataset derivati e per creazione di strumenti di analisi (query, filtri, programmi veri e propri ecc.).
 20) **In che senso le due scale opendata sono "trasversali/ortogonali"?**
 	Perché valutano l'apertura dei dati pubblici da prospettive differenti e complementari. Sono trasversali perché un dataset può essere valutato simultaneamente secondo entrambe le scale.
 21) **Cosa intendiamo con "prosumer"?**
@@ -881,7 +880,7 @@
 25) **Cos'è il "crawling"? Perché è utile?**
 	Si riferisce al processo automatizzato di navigazione e raccolta di informazioni da siti web. Questo processo è eseguito da programmi specializzati chiamati "crawler" o "spider" che esplorano il web sistematicamente per raccogliere dati. In questo modo si può fare crawling periodico dei dati offerti dai vari fornitori di opendata e calcolarne la bontà oggettiva.
 26) **Cita qualche tema descritto dall'"Open data maturity study".**
-	==boh==
+	Ha descritto il nostro paese come un fast tracker (inseguitore veloce) nel campo degli opendata (benchè non sia realmente vero). Inoltre, sosotiene che in Italia manchi la consapevolezza da parte delle imprese, dei cittadini e altri portatori di interessi del potenziale che potrebbe derivare dal riutilizzo dei dati, in particolare per finalità commerciali.
 27) **Discuti il meccanismo di valutazione degli opendata basato sul numero di dataset.**
 	Ritengo sia un pessimo meccanismo di valutazione in quanto può facilmente essere falsato, come nel caso del sito opendata del Comune di Milano: si spezza ogni dataset grosso in tanti più piccoli, facendo delle estrazioni e andando quindi ad aumentare il numero di open dataset.
 28) **Cosa si intende con "tecnica di pletorizzazione"? E' una tecnica che consiglieresti ad un ente pubblico?**
@@ -906,7 +905,7 @@
 	- CSV: tipo di formato più diffuso perché molto semplice da trattare (sia in fase di creazione che di fruizione); si tratta tipicamente di dati espressi in ASCII composti da tante righe quanti sono i dati (record) da rappresentare. Ogni riga è composta da campi separati da un carattere speciale (il c.d. “separatore”, tipicamente la virgola) che non può appartenere ai dati espressi. In mancanza di documentazione ufficiale o di un intervento interpretativo esterno, il significato dei campi di un record non è immediatamente chiaro (esempio libro). Inoltre un CSV è poco robusto. Il caso classico è l’omissione di un campo o la presenza di righe con un numero di campi non omogeneo.
 	- fogli elettronici: file machine readable ma richiedono software specifico (spesso proprietario) per poter essere elaborati. Inoltre non risolvono minimamente il problema “semantico” già visto nei CSV;
 	- XML (eXtensible Markup Language): si tratta di un formato “testo”, rimane cioè leggibile da un essere umano perché composto da caratteri ASCII organizzato secondo schemi formali e descrivibili mediante altri file di specifica; inoltre i dati contenuti in un file XML non sono necessariamente solo tabellari ma possono rappresentare dati complessi, annidati, a grafo;
-	- JSON (JavaScript Object Notation): ==finire==
+	- JSON (JavaScript Object Notation): JSON è un formato “testo” come il precedente XML, ma è molto meno verboso e tutto sommato più leggibile, pur mantenendo la possibilità di nidificare i dati e conservando una notevole robustezza.
 36) **Quali sono i problemi legati ai documenti scansionati?**
 	Il file prodotto contiene pixel ma non è possibile estrarne eventuali parti testuali nè effettuare ricerche. A volte si tratta dell’unica possibilità di pubblicare informazione, se ad esempio si vogliono rendere disponibili online antichi archivi cartacei.
 37) **Perché le API sono importanti in ambito opendata?**
@@ -937,52 +936,77 @@
 	Si può combattere facendo scraping, cioè usando strumenti software che aiutano ad estrarre dati anche da blocchi di informazioni non strutturate. Nel pratico, basta preparare uno script che esegua per conto nostro l’apertura della pagina web, l’estrazione del dato che ci interessa e il salvataggio dello stesso in un formato utile.
 43) **Cos'è lo "scraping"?**
 	Tecnica che, tramite strumenti software, permette di estrarre dati anche da blocchi di informazioni non strutturate. Nel pratico, basta preparare uno script che esegua per conto nostro l’apertura della pagina web, l’estrazione del dato che ci interessa e il salvataggio dello stesso in un formato utile.
-1. **Cosa offrono i venditori di servizi di APIficazione?**
+44) **Cosa offrono i venditori di servizi di APIficazione?**
 	Esistono aziende che vendono il cosiddetto scraping as a service (scraping come servizio esterno), cioè alleviano l’utente dal lavoro di ragionamento e invenzione per l’estrazione/scrematura di un dato: basta fornire loro il sito bersaglio che ve lo rendono “consultabile programmativamente” attraverso delle API.
-1. **Cos'è il "whistleblowing"?**
+45) **Cos'è il "whistleblowing"?**
 	È l’atto di chi, lavorando all’interno di un entità e riscontrando comportamenti illeciti, porta fuori, rende pubbliche delle informazioni - spesso sotto forma di documenti e dati - per denunciare alle autorità le illegalità osservate. La annoveriamo tra le “tecniche di trasparenza” contro la volontà dell’ente proprietario del dato.
-1. **Come si declinano le licenze libere nel contesto opendata?**
+46) **Come si declinano le licenze libere nel contesto opendata?**
 	Nell’ambito dei dati, mancando il concetto di “eseguibilità”, le libertà del Software Libero vengono generalmente declinate in:
 	- uso per qualunque scopo;
 	- libera redistribuzione;
 	- libera distribuzione delle elaborazioni sui dati originali.
 	Quindi un dataset con licenza libera può essere (tautologicamente) liberamente utilizzato per qualunque elaborazione e i risultati sono liberamente pubblicabili (eventualmente con la stessa licenza).
-1. **Descrivi alcuni problemi legati alla "data science".**
-	==elaborare==
-1. **Cosa si intende con "replicabilità"?**
+47) **Descrivi alcuni problemi legati alla "data science".**
+	- I dati sono disponibili a tutti o solo all'ente decisore?
+	- Ci si può fidare dei dati a disposizione? Quale è l'origine di questi dati e la loro autorevolezza?
+	- Eventuali dataset diversi integrati nel modello sono compatibili fra loro? I dati sono legati alle stesse ontologie?
+	- Il metodo applicato per trarre le conclusioni presentate è accettabile? SI evidenzia un bias nell'analisi?
+	- Il modello usato è coeerente e applicabile?
+1) **Cosa si intende con "replicabilità"?**
 	Una pubblicazione, anche in questo caso per prassi, dovrebbe contenere tutte le informazioni e istruzioni perché altri studiosi (oltre ai reviewer originali) possano riprodurre lo studio per poterlo validare o contestare. La caratteristica di replicabilità di uno studio assume varie forme:
 	- replica diretta: si tenta di riprodurre fedelmente ciò che viene presentato nell’articolo;
 	- replica sistematica: un esperimento viene riprodotto più volte con piccole modifiche per testarne la robustezza;
 	- replica concettuale: si cerca di arrivare alla stessa conclusione dell’articolo seguendo procedimenti diversi.
-1. **Cos'è il "ritiro di un articolo"?**
+49) **Cos'è il "ritiro di un articolo"?**
 	le riviste scientifiche cui veniva segnalato un articolo palesemente non riproducibile dovevano ufficialmente pubblicare una comunicazione di “ritiro della pubblicazione” con cui annullavano l’effetto dell'imprimatur (anche sul punteggio accademico).
-1. **Cos'è il F.A.I.R.? A cosa dovrebbe servire?**
+50) **Cos'è il F.A.I.R.? A cosa dovrebbe servire?**
 	L'iniziativa FAIR (Findable Accessible Interoperable Reusable) è una risposta al problema dati ed algoritmi mancanti. Essa stila delle linee guida per rendere i dati:
 	- trovabili: ai dataset viene assegnato un DOI (Digital Object Identifier) univoco e non modificabile;
 	- accessibili: dati e metadati devono essere accessibili con protocolli standard e liberi;
 	- interoperabili: i dati devono riferirsi a ontologie standard;
 	- ri-usabili: devono sottostare a licenze d'uso chiare e possibilmente libere.
-1. **Cos'è il NUSAP? A quale problema vorrebbe dare risposta?**
+51) **Cos'è il NUSAP? A quale problema vorrebbe dare risposta?**
 	Il NUSAP (Numeral, Unit, Spread, Assessment and Pedigree) una proposta in tema bontà dei dati. Viene pensata come un sistema di notazione per la gestione e la comunicazione dell’incertezza nella scienza per la politica. Dovrebbe servire alla Scienza per comunicare meglio alla Politica le proprie conclusioni, è un modo per dare un peso qualitativo ai dati trasmessi.L’acronimo definisce quali dovrebbero essere le meta-informazioni complete di un dato da comunicare ai decisori:
-	- ==finire pag 79==
-1. **Cos'è un "disciplinare di raccolta dati"? Perché è fondamentale?**
+	- Numeral: il valore effettivo del dato;
+	- Unit: l'unità di misura;
+	- Spread: informazioni sulla variabilità;
+	- Assesment: informazioni qualitative (stima ottimistica o pessimistica);
+	- Pedigree: fornire informazioni sulla qualità del dato, espresse per mezzo di una matrice.
+1) **Cos'è un "disciplinare di raccolta dati"? Perché è fondamentale?**
 	Si tratta di ocumenti che specificano “per filo e per segno” come/dove/quando/ecc. installare un sensore in modo da poter raccogliere dati autoritativi. E' fornamentale per affrontare il problema dell'affidabilità e dell'omogeneità dei dati.
-1. **Discuti il tema "strumenti software" nel contesto opendata.**
-	==finire==
-1. **Cosa si intende con "storytelling"?**
+53) **Discuti il tema "strumenti software" nel contesto opendata.**
+	Per l’analisi di open data è possibile utilizzare diversi strumenti, tra i quali vi sono i fogli di calcolo. Essi non sono consigliati in quanto sono alla base di numerose storie di errori di analisi dei dati dovuti magari a distrazioni o utilizzi maldestri delle celle di tali file nell’applicazione di determinate formule. Altri strumenti invece sono gli ambienti software come python, R o tableu se non anche semplicemente l’utilizzo dei database.
+54) **Cosa si intende con "storytelling"?**
 	Storytelling (narrazione o meglio affabulazione) indica l’abilità di raccontare alla cittadinanza una versione semplificata della realtà atta a dimostrare l’appropriatezza di una scelta politica.
-1. **Cosa si intende con "policy-based evidence"?**
+55) **Cosa si intende con "policy-based evidence"?**
 	Si indica l'atto di scegliere o, addirittura, produrre dal nulla, inventare i dati che dimostrano la verità che si vuole dimostrare.
-1. **Quali tecniche di "dataviz" possono essere usate per fare "storytelling" o in generale per confondere l'uditorio?**
-	
-1. **Cosa si intende con "responsabilità civica"?**
-2. **Cos'è il "principio di pubblicità" e perché è rilevante?**
-3. **Cos'è il "principio di trasparenza" e perché è rilevante?**
-4. **Cos'è un URP?**
-5. **Cos'è il FOIA (italiano)? Cosa prevede? Che risultati ha dato (openpolis)?**
-6. **Cos'è il CAD? Perché lo riproponiamo in L$4$?**
-7. **Cos'è la "Carta della cittadinanza digitale" (nel CAD)? Quali spunti interessanti (legati all'arcobaleno della CDT) possiamo trovarvi?**
-8. **Cos'è l'OGP (Open Government Partnership)?** [respo civica in file separato]
+56) **Quali tecniche di "dataviz" possono essere usate per fare "storytelling" o in generale per confondere l'uditorio?**
+	- Usare scale non lineari194 , ad esempio logaritmiche (per comprimere valori distanti e vederli quindi simili) o esponenziali (vice versa); usare grafici che non partono da zero, di nuovo per esaltare visivamente le differenze;
+	- rappresentare i dati in modo cumulativo, in modo da far vedere un grafico sempre crescente;
+	- usare colori troppo o troppo poco contrastanti rispetto alle differenze nei valori porta ad errori di interpretazione. Inoltre, usare colori con associazioni discutibili o troppo vicini per testo e sfondo può nascondere delle informazioni;
+	- troppe informazioni contemporaneamente nascondono bene i dati;
+	- pochi dati o solo quelli giusti (cherry picking);
+	- inventare simboli o nuove forme di grafico.
+1) **Cosa si intende con "responsabilità civica"?**
+	 Il diritto e dovere di partecipazione, di ogni cittadino che voglia dirsi partecipe della res pubblica: conoscere i meccanismi di governo sia in termini di principio che di implementazione.
+58) **Cos'è il "principio di pubblicità" e perché è rilevante?**
+	Definisce il diritto di accesso (accesso civico documentale), stabilendo il dovere della “messa a disposizione” delle informazioni da parte dell’amministrazione ma solo in caso di un interesse qualificato da parte del richiedente e garantendo la privacy dei terzi.
+59) **Cos'è il "principio di trasparenza" e perché è rilevante?**
+	Rinnova il diritto d’accesso e pone il tema della trasparenza ad una conditio sine qua non per esercitare l'attività amministrativa. Introduce l'Ufficio per le relazioni con il pubblico (URP) in cui si garantisce l'esercizio dei diritti di informazione, accesso e partecipazione. Inoltre, modifica e integra il diritto d’accesso, in cui il principio di trasparenza viene elevato al pari dei principi di economicità, eﬀicacia e pubblicità nell’azione amministrativa.
+60) **Cos'è un URP?**
+	L'Ufficio per le relazioni con il pubblico (URP) in cui si garantisce l'esercizio dei diritti di informazione, accesso e partecipazione.
+61) **Cos'è il FOIA (italiano)? Cosa prevede? Che risultati ha dato (openpolis)?**
+	Freedom of Information Act, il quale introduce l’accesso civico generalizzato, un accesso alle informazioni prodotte (o detenute) dalle amministrazioni molto più ampio rispetto alle precedenti modalità, ma sempre nel rispetto dei limiti relativi alla tutela di interessi pubblici e privati e salvo i casi di segreto o di divieto di divulgazione previsti dall’ordinamento.
+62) **Cos'è il CAD? Perché lo riproponiamo in L$4$?**
+	Il Codice dell'Amministrazione Digitale racchiude nel suo documento le norme riguardanti l’informatizzazione della Pubblica Amministrazione nei rapporti con cittadini e imprese. Il CAD raccoglie non solo diritti e doveri che già contraddistinguono il rapporto tra cittadini, imprese e P.A., ma individua e getta le basi giuridiche per promuovere e rendere effettivi i diritti di cittadinanza digitale.
+63) **Cos'è la "Carta della cittadinanza digitale" (nel CAD)? Quali spunti interessanti (legati all'arcobaleno della CDT) possiamo trovarvi?**
+	==boh==
+64) **Cos'è l'OGP (Open Government Partnership)?**
+	L’Open Government Partnership (OGP) è un’iniziativa internazionale che mira a ottenere impegni concreti dai Governi sul fronte di:
+	- trasparenza;
+	- sostegno alla partecipazione civica;
+	- lotta alla corruzione;
+	- diffusione, dentro e fuori le Pubbliche Amministrazioni, di nuove tecnologie a sostegno dell’innovazione.
 
 -----
 
