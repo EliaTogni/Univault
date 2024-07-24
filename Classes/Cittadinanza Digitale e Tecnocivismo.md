@@ -1011,97 +1011,102 @@
 -----
 
 ## L5
-1. **Quali sono i temi salienti del livello "sharing" dell'arcobaleno?**
+1) **Quali sono i temi salienti del livello "sharing" dell'arcobaleno?**
 	==boh==
-1. **Quali sono le "fasi" dell'evoluzione di Internet descritte in L5 e perché ci servono?**
+2) **Quali sono le "fasi" dell'evoluzione di Internet descritte in L5 e perché ci servono?**
 	Sono:
 	- pre web;
 	- web 1.0;
 	- web 2.0;
 	- social web.
-	L'identificazione e caratterizzazione di queste fasi non ha alcuna ambizione di una esaustiva storia della rete, ma è orientata a fornire gli elementi indispensabili per meglio illustrare le iniziative di partecipazione civica dei livelli L-shar, L-consul e L-dem.
-1. **Cosa si intende con "media broadcasting"? A cosa lo contrapponiamo in Internet?**
+	L'identificazione e caratterizzazione di queste fasi non ha alcuna ambizione di una esaustiva storia della rete, ma è orientata a fornire gli elementi indispensabili per meglio illustrare le iniziative di partecipazione civica dei livelli L-shar, L-consul e L-dem. Il livello 5 (sharing) è strettamente legato all’era digitale e quindi per comprenderlo al meglio è necessario capire come internet si sia evoluto negli anni.
+3) **Cosa si intende con "media broadcasting"? A cosa lo contrapponiamo in Internet?**
 	Si intende una trasmissione da uno a molti. La prima Internet mette in contatto persone che possono conoscersi e riconoscersi anche quando il loro account non ne rivela l’identità (anche se la diffusione nel mondo della ricerca in realtà fa sì che di molti sia in effetti nota l’identità). È intrinsecamente bidirezionale, perché se leggo un messaggio posso rispondere a chi lo ha mandato, pubblicamente o privatamente.
-1. **Cos'è la "netiquette"? Cosa protegge e da cosa ci protegge?**
+4) **Cos'è la "netiquette"? Cosa protegge e da cosa ci protegge?**
 	E' un insieme di regole di ‘buon comportamento’ in rete e una struttura sociale di gestione di queste regole, per preservarne il valore: la condivisione di conoscenza.
-1. **Cosa sono le "civic nets"?**
+5) **Cosa sono le "civic nets"?**
 	Una delle prime iniziative focalizzate alla condivisione di informazioni, conoscenza e relazioni all’interno di una comunità locale. Si parla di civic nets quando lo scopo dell'iniziativa è principalmente migliorare la comunicazione tra cittadini e amministratori pubblici.
-1. **Che contesto viene descritto nella $1$a fase di Internet in L$5$?**
+6) **Che contesto viene descritto nella $1$a fase di Internet in L$5$?**
 	==Si intende il contesto in cui venivano scambiate mail e si faceva parte di mailing list o newsgroup. Nasce quindi un interattività bidirezionale in contrapposizione ai canali unidirezionali dei media tradizionali e si vede la creazione delle prime comunità virtuali.
-1. **Che contesto viene descritto nella $2$a fase di Internet in L$5$?**
+7) **Che contesto viene descritto nella $2$a fase di Internet in L$5$?**
 	==Il Web 1.0 nasce con la creazione del world wide web e il protocollo http che porta il web a diventare la piattaforma globale di condivisione di informazioni grazie anche alla nascita delle prime pagine web e quindi alla possibilità di pubblicare contenuti che prima venivano veicolati su supporti cartacei o digitali. Tuttavia si ritorna a una comunicazione prevalentemente broadcast (il sito pubblica, noi ascoltiamo).
-2. **Che contesto viene descritto nella $3$a fase di Internet in L$5$?**
+8) **Che contesto viene descritto nella $3$a fase di Internet in L$5$?**
 	==Web 2.0: evoluzione del web 1.0 basato su partecipazione piuttosto che publishing e vede la diffusione delle prime wiki basate su collaborazione tra utenti. Web diventa alla portata di tutti e la gente inizia a crearsi i propri blog per generare propri contenuti raccogliendo i commenti di chi legge. Tale evoluzione fà ritrovare la bidirezionalità e interattività dell’era pre web.
-1. **Che contesto viene descritto nella $4$a fase di Internet in L$5$?**
+9) **Che contesto viene descritto nella $4$a fase di Internet in L$5$?**
 	==social web: continuazione della blogosfera in cui la facilità di creazione e pubblicazione di contenuti aumenta esponenzialmente. Si diffonde massicciamente i social networks e si creano reti di relazioni simmetriche o asimmetriche In italia le amministrazioni utilizzano quindi i social come canale broadcast per le comunicazioni invece che stabilire un dialogo vero e proprio
-1. **Chi è Tim Berners-Lee?**
+10) **Chi è Tim Berners-Lee?**
 	Inventore del World Wide Web al Cern di Ginevra nell'ottobre del 1990.
-1. **Cosa si intende con "bidirezionalità" in L$5$?**
-	Se leggo un messaggio posso rispondere a chi lo ha mandato, pubblicamente o privatamente. Si contrappone alla trasmissione broadcast.
-1. **Cosa si intende con "molti a molti" in L$5$?**
-2. **Cosa si intende con "web $2.0$"?**
-3. **Cos'è lo "user generated content"?**
-4. **Cos'è un "permalink"?**
-	Crasi di permanent link, un link stabile ad un contenuto su web, congegnato in modo da rimanere valido nel tempo.
-1. **Cos'è un "blog"?**
-	Un blog è un sito in cui ciascun blogger pubblica, in una successione temporale di post, le proprie storie, le proprie riflessioni e opinioni siano essere personali, professionali o politiche - cioè propri contenuti (user generated content) - e raccoglie i commenti di chi legge
-1. **Cos'è un URL?**
-	(Uniform Resource Locator) - Meccanismo standardizzato per identifi- care una risorsa (ad es. un documento, una foto, un video ecc.) in rete specificando dove si trova (sito, nodo della rete).
-1. **Cosa caratterizza Wikipedia?**
-	Permette a ciascuno non solo di leggere i contenuti che pubblica, ma anche di ‘editarli’, cioè correggerli e integrarli se chi legge lo ritiene necessario per una migliore presentazione di una voce. L’enciclopedia diventa così un’opera collettiva che, anche grazie a delle regole sempre più stringenti di approvazione da parte dello staff di wikipedia delle modifiche proposte, raggiunge, su alcune voci, una qualità analoga, se non superiore, a quella di enciclopedie tradizionali.
-1. **Cosa si intende con "social web"?**
-	Il Social web può essere visto come la naturale continuaz ione del web 2.0, in particolare della blogosfera, in cui la possibilità e la facilità per ciascuno di inserire propri contenuti aumenta esponenzialmente. Ma a questo si aggiunge, grazie ai social network, la possibilità, per individui e organizzazioni, di creare e gestire la propria rete di relazioni sociali, e poi utilizzarle per promuovere i propri contenuti, siano essi di carattere personale o di business.
-1. **Cosa si intende con "relazioni simmetriche/asimmetriche" nel social web?**
-	Si intende che le relazioni possono essere simmetriche, come nel caso di una richiesta di amicizia di Facebook che deve essere accettata da chi la riceve, o asimmetriche, come in Twitter, dove la scelta di seguire qualcuno non richiede il suo consenso.
-1. **Quali "pratiche di condivisione" abbiamo citato in L$5$?**
-2. **Cos'è l'"information gathering" e come si realizza in genere?**
-	La condivisione di informazioni, tipicamente effettuata su siti privati o su canali social
-1. **Cos'è il "crowdsourcing"?**
-	Meccanismo di raccolta di informazioni basato sulla massa di persone (crowd)
-1. **Cosa fa openstreetmaps? A cosa lo associamo?**
-	Si tratta di un progetto collaborativo finalizzato a creare un archivio di informazioni geografiche caricate da singoli utenti sparsi per il mondo a contenuto libero.  Lo associamo al crowdsourcing, cioè al meccanismo di raccolta di informazioni basato sulla massa di persone (crowd).
-1. **Cosa fa Waze?**
-	Applicazione che raccoglie informazioni sul traffico dai guidatori stessi. E' un esempio di crowdsourcing.
-1. **Cosa si intende con "social action"?**
-	Il termine "social action" (azione/mobilitazione sociale) si riferisce a qualsiasi attività o intervento finalizzato a influenzare e migliorare le condizioni sociali, politiche ed economiche di una comunità o di una società.
-1. **Cosa si intende con "civic engagement"?**
-	L'attivismo civico è un tipo di impegno sociale che si concentra sull'azione diretta per migliorare e trasformare la comunità attraverso la partecipazione attiva e l'influenza sulle politiche pubbliche e le decisioni governative. Questo tipo di attivismo mira a promuovere il bene comune e a risolvere problemi sociali attraverso vari mezzi come la mobilitazione, la partecipazione politica ed il volontariato.
-1. **Cosa si intende con "NIMBY"? E con "PIMBY"?**
-	Not In My BackYard indica la protesta da parte di membri di una comunità locale contro la realizzazione di opere pubbliche con impatto rilevante (ad esempio grandi vie di comunicazione, cave, sviluppi insediativi o industriali, termovalorizzatori, discariche, depositi di sostanze pericolose, centrali elettriche e simili) in un territorio che viene da loro avvertito come vicino ai loro interessi quotidiani; mentre non si opporrebbero alla realizzazione di tali opere se in un altro luogo per loro meno importante. Esiste l'approccio simmetrico PIMBY (Please In My Back Yard), quando una comunità si mobilita per richiedere l’installazione sul suo territorio di opere di interesse pubblico.
-1. **Cosa sono i movimenti "NO-qualcosa"?**
-	Movimenti di protesta contro la realizzazione di diverse opere pubbliche, come i No-Tav, contro la realizzazione della linea ferroviaria veloce tra Torino e Lione.
-1. **Cosa si intende con "citizen reporting"? Fai degli esempi.**
-	Quelle iniziative in cui i cittadini raccolgono segnalazioni per informarsi reciprocamente e informare le istituzioni su situazioni critiche in diversi ambiti e servizi, ovviamente con l’implicito auspicio di risolverle. Un esempio è FixMyStreet, ==il cui scopo era permettere ai cittadini di un qualunque comune inglese di segnalare, illustrare con fotografie e discutere problemi riscontrati nel proprio territorio==
-1. **Perché e in che senso (con esempi) "piccole feature" di un sistema di segnalazione possono (s)favorire la partecipazione?**
-	==boh, pg 121==
-1. **Cosa si intende con "civic accountability"?**
-	Letteralmente il dover rendere conto del proprio operato civico delle istituzioni.
-1. **Perché FixMyStreet può essere considerata una azione di "civic accountability"?**
-	Perchè è un'iniziativa in cui i cittadini raccolgono segnalazioni per informarsi reciprocamente e informare le istituzioni su situazioni critiche in ambito stradale, ovviamente con l’implicito auspicio di risolverle. 
-1. **Cosa intendiamo con "conversazione" a proposito delle segnalazioni?**
-	Cioè un dialogo tra istituzioni e cittadini che miri a comprendere meglio il problema nelle sue diverse possibili sfaccettature e se possibile a delineare una soluzione.
-1. **Cosa si intende con "atteggiamento di delega"?**
+11) **Cosa si intende con "bidirezionalità" in L$5$?**
+	Siamo nel contesto della comunicazione quindi a fronte di un messaggio ricevuto la possibilità di scrivere una risposta. Se leggo un messaggio posso rispondere a chi lo ha mandato, pubblicamente o privatamente. Si contrappone alla trasmissione broadcast.
+12) **Cosa si intende con "molti a molti" in L$5$?**
+	Si intende Comunicazione dal basso tra cittadini o utenti che si scambiano informazioni. Si contrappone alla comunicazione broadcast, cioè uno a molti, dei media tradizionali
+13) **Cosa si intende con "web $2.0$"?**
 	==boh==
-1. **Quali problemi si incontrano nel fare "citizen reporting" su una piattaforma social come Facebook?**
+14) **Cos'è lo "user generated content"?**
+	Contenuti generati da un utente come ad esempio un post su un blog
+15) **Cos'è un "permalink"?**
+	Crasi di permanent link, un link stabile ad un contenuto su web, congegnato in modo da rimanere valido nel tempo.
+16) **Cos'è un "blog"?**
+	Un blog è un sito in cui ciascun blogger pubblica, in una successione temporale di post, le proprie storie, le proprie riflessioni e opinioni siano essere personali, professionali o politiche - cioè propri contenuti (user generated content) - e raccoglie i commenti di chi legge
+17) **Cos'è un URL?**
+	(Uniform Resource Locator) - Meccanismo standardizzato per identifi- care una risorsa (ad es. un documento, una foto, un video ecc.) in rete specificando dove si trova (sito, nodo della rete).
+18) **Cosa caratterizza Wikipedia?**
+	Permette a ciascuno non solo di leggere i contenuti che pubblica, ma anche di ‘editarli’, cioè correggerli e integrarli se chi legge lo ritiene necessario per una migliore presentazione di una voce. L’enciclopedia diventa così un’opera collettiva che, anche grazie a delle regole sempre più stringenti di approvazione da parte dello staff di wikipedia delle modifiche proposte, raggiunge, su alcune voci, una qualità analoga, se non superiore, a quella di enciclopedie tradizionali.
+19) **Cosa si intende con "social web"?**
+	Il Social web può essere visto come la naturale continuaz ione del web 2.0, in particolare della blogosfera, in cui la possibilità e la facilità per ciascuno di inserire propri contenuti aumenta esponenzialmente. Ma a questo si aggiunge, grazie ai social network, la possibilità, per individui e organizzazioni, di creare e gestire la propria rete di relazioni sociali, e poi utilizzarle per promuovere i propri contenuti, siano essi di carattere personale o di business.
+20) **Cosa si intende con "relazioni simmetriche/asimmetriche" nel social web?**
+	Si intende che le relazioni possono essere simmetriche, come nel caso di una richiesta di amicizia di Facebook che deve essere accettata da chi la riceve, o asimmetriche, come in Twitter, dove la scelta di seguire qualcuno non richiede il suo consenso.
+21) **Quali "pratiche di condivisione" abbiamo citato in L$5$?**
+	==boh==
+22) **Cos'è l'"information gathering" e come si realizza in genere?**
+	La condivisione di informazioni, tipicamente effettuata su siti privati o su canali social.
+23) **Cos'è il "crowdsourcing"?**
+	Meccanismo di raccolta di informazioni basato sulla massa di persone (crowd).
+24) **Cosa fa openstreetmaps? A cosa lo associamo?**
+	Si tratta di un progetto collaborativo finalizzato a creare un archivio di informazioni geografiche caricate da singoli utenti sparsi per il mondo a contenuto libero.  Lo associamo al crowdsourcing, cioè al meccanismo di raccolta di informazioni basato sulla massa di persone (crowd).
+25) **Cosa fa Waze?**
+	Applicazione che raccoglie informazioni sul traffico dai guidatori stessi. E' un esempio di crowdsourcing.
+26) **Cosa si intende con "social action"?**
+	Il termine "social action" (azione/mobilitazione sociale) si riferisce a qualsiasi attività o intervento finalizzato a influenzare e migliorare le condizioni sociali, politiche ed economiche di una comunità o di una società.
+27) **Cosa si intende con "civic engagement"?**
+	L'attivismo civico è un tipo di impegno sociale che si concentra sull'azione diretta per migliorare e trasformare la comunità attraverso la partecipazione attiva e l'influenza sulle politiche pubbliche e le decisioni governative. Questo tipo di attivismo mira a promuovere il bene comune e a risolvere problemi sociali attraverso vari mezzi come la mobilitazione, la partecipazione politica ed il volontariato.
+28) **Cosa si intende con "NIMBY"? E con "PIMBY"?**
+	Not In My BackYard indica la protesta da parte di membri di una comunità locale contro la realizzazione di opere pubbliche con impatto rilevante (ad esempio grandi vie di comunicazione, cave, sviluppi insediativi o industriali, termovalorizzatori, discariche, depositi di sostanze pericolose, centrali elettriche e simili) in un territorio che viene da loro avvertito come vicino ai loro interessi quotidiani; mentre non si opporrebbero alla realizzazione di tali opere se in un altro luogo per loro meno importante. Esiste l'approccio simmetrico PIMBY (Please In My Back Yard), quando una comunità si mobilita per richiedere l’installazione sul suo territorio di opere di interesse pubblico.
+29) **Cosa sono i movimenti "NO-qualcosa"?**
+	Movimenti di protesta contro la realizzazione di diverse opere pubbliche, come i No-Tav, contro la realizzazione della linea ferroviaria veloce tra Torino e Lione.
+30) **Cosa si intende con "citizen reporting"? Fai degli esempi.**
+	Quelle iniziative in cui i cittadini raccolgono segnalazioni per informarsi reciprocamente e informare le istituzioni su situazioni critiche in diversi ambiti e servizi, ovviamente con l’implicito auspicio di risolverle. Un esempio è FixMyStreet, il cui scopo era permettere ai cittadini di un qualunque comune inglese di segnalare, illustrare con fotografie e discutere problemi riscontrati nel proprio territorio.
+31) **Perché e in che senso (con esempi) "piccole feature" di un sistema di segnalazione possono (s)favorire la partecipazione?**
+	==boh, pg 121==. Nel caso di FixMyStreet gli update possono essere fatti solo da chi ha creato la segnalazione e non da altri utenti. In questo modo è possibile che possibili update utili non possano essere postati
+32) **Cosa si intende con "civic accountability"?**
+	Letteralmente il dover rendere conto del proprio operato civico delle istituzioni.
+33) **Perché FixMyStreet può essere considerata una azione di "civic accountability"?**
+	Perchè è un'iniziativa in cui i cittadini raccolgono segnalazioni per informarsi reciprocamente e informare le istituzioni su situazioni critiche in ambito stradale, ovviamente con l’implicito auspicio di risolverle. 
+34) **Cosa intendiamo con "conversazione" a proposito delle segnalazioni?**
+	Cioè un dialogo tra istituzioni e cittadini che miri a comprendere meglio il problema nelle sue diverse possibili sfaccettature e se possibile a delineare una soluzione.
+35) **Cosa si intende con "atteggiamento di delega"?**
+	Il non intervenire su una questione perchè tanto dovrebbe farlo qualcun altro.
+36) **Quali problemi si incontrano nel fare "citizen reporting" su una piattaforma social come Facebook?**
 	Innanzitutto non è possibile fare segnalazioni in maniera anonima. Inoltre, sui social è difficile se non impossibile fare retrieving di segnalazioni passate.
-1. **Cos'è Ushahidi? Per cosa è nato?**
+37) **Cos'è Ushahidi? Per cosa è nato?**
 	Significa “testimonianza” in Swahili ed è un sito che nasce come sito che dava la possibilità di segnalare problemi di interesse comune da parte di cittadini attivi fino ad evolversi a piattaforma di citizen reporting. Nasce nel 2008 da un gruppo di ‘citizen journalists’ kenioti in un momento di grave crisi del paese africano per mappare tanto episodi di violenza quanto la loro soluzione via web e con telefoni cellulari. Intorno a Ushahidi si consolida nel tempo un team di sviluppatori volontari, anzitutto in Africa, ma anche in Europa, Sud America e Stati Uniti. Diventa così una piattaforma multisite in cui chiunque può aprire una propria sezione per mappare ciò che ritiene rilevante tracciare.
-1. **Perché associamo il "whistleblowing" al "citizen reporting"?**
+38) **Perché associamo il "whistleblowing" al "citizen reporting"?**
 	Il whistleblowing mira ad aumentare la trasparenza delle organizzazioni pubbliche o private in situazioni in cui il suo opposto, la opacità, agevola comportamenti impropri. Possiamo considerare come un caso di citizen reporting quelle iniziative che mirano a contrastare fenomeni di corruzione e comportamenti illeciti, illegali o fraudolenti all’interno di organizzazioni pubbliche o private, attraverso le denunce di singoli cittadini, in genere impiegati all’interno delle stesse organizzazioni.
-1. **Cos'è Wikileaks?**
+39) **Cos'è Wikileaks?**
 	Iniziativa di whistleblowing più famosa a livello internazionale. Fondata da Julian Assange, l'obiettivo di Wikileaks è quello di raccogliere, pubblicare e diffondere documenti riservati e informazioni che riguardano la corruzione, le violazioni dei diritti umani e altre questioni di interesse pubblico. WikiLeaks si è fatta conoscere per la pubblicazione di documenti sensibili e segreti, come quelli relativi alle guerre in Iraq e Afghanistan, e le comunicazioni diplomatiche degli Stati Uniti.
-1. **Chi è Julian Assange?**
+40) **Chi è Julian Assange?**
 	Il fondatore di Wikileaks.
-1. **Cos'è ExpoLeaks?**
+41) **Cos'è ExpoLeaks?**
 	Iniziativa di whistleblowing concepita per dare uno spazio a tutti coloro coinvolti nella mostra universale, dai cittadini ai funzionari pubblici, dagli operai ai dirigenti, dai volontari agli imprenditori. Chiunque poteva condividere, in modo completamente anonimo e sicuro, informazioni e documenti relativi a possibili irregolarità e forme di illecito. Tutti i cittadini potevano così contribuire al corretto svolgimento dell’Esposizione Universale. L’iniziativa raccolse cinque segnalazioni e da una di queste scaturì una inchiesta giornalistica.
-1. **Perché in L$5$ abbiamo citato i siti di recensione/raccomandazione?**
-	Perchè sono iniziative nate nel web 2.0 che valutano spazi e servizi privati, ma a volte anche pubblici.
-1. **Cosa sono i "reputation systems"? Perché li citiamo in L$5$?**
-2. **Perché abbiamo citato lo SPID nel contesto delle petizioni?**
+42) **Perché in L$5$ abbiamo citato i siti di recensione/raccomandazione?**
+	Perchè sono iniziative nate nel web 2.0 che valutano spazi e servizi privati, ma a volte anche pubblici. Fanno quindi parte del meccanismo di information gathering.
+43) **Cosa sono i "reputation systems"? Perché li citiamo in L$5$?**
+	Sono sistemi per valutare l'affidabilità di un recensore in base all’attività pregressa utilizzati anche in software di partecipazione civica. Aumentano quindi l’affidabilità di ciò che viene detto in una determinata discussione rendendo più affidabile l’informazione. 
+44) **Perché abbiamo citato lo SPID nel contesto delle petizioni?**
 	Perchè tipicamente per firmare una petizione online si deve indicare un indirizzo di email e questo potrebbe rendere possibile per una persona firmare più volte. Si potrebbe ovviare con una autenticazione più stringente, ad esempio tramite SPID ma costituirebbe una barriera che potrebbe diminuire il numero di firme raccolte.
-1. **Descrivi l'operato di "change.org".**
+45) **Descrivi l'operato di "change.org".**
 	E' un'organizzazione di petitioning che permette a chiunque di lanciare una petizione e di firmare le petizioni già aperte e quelli sviluppati ad hoc per gestire una specifica raccolta di firme a sostegno di un determinato tema. A dispetto del dominio .org è una azienda, per la precisione una Public Benefit Corporation, cioè una azienda for-profit, che oltre al profitto persegue anche fini sociali. La natura business pone ovviamente problemi rispetto al ritorno economico dell’attività di petitioning, anche in relazione al trattamento dei dati personali .
-1. **Quali sono le "feature" importanti per un sito di _petitioning_? (articolare)**
+46) **Quali sono le "feature" importanti per un sito di _petitioning_? (articolare)**
 	- Chiarezza nella identificazione del promotore e di cosa si vuole ottenere: cosa qualifica il ‘successo’ nella raccolta e cosa accade in caso positivo e negativo;
 	- modalità di registrazione e identificazione dei sottoscrittori;
 	- esistenza di un numero minimo/massimo di firme da raccogliere (ed eventualmente modificarlo);
@@ -1109,15 +1114,16 @@
 	- possibilità di sapere chi ha già firmato, permettendo a chi firma di rendere pubblica/riconoscibile, almeno in parte, la propria identità e qualificarsi (con un titolo, professione, o altro);
 	- misure per la tutela della privacy dei firmatari a carico dei promotori e dei gestori della piattaforma di raccolta delle firme;
 	- statistiche (ad esempio, andamento nel tempo della raccolta di firme).
-1. **Cosa si intende con "intelligenza civica"?**
+47) **Cosa si intende con "intelligenza civica"?**
 	Si intende la "conoscenza orientata all’azione”: i cittadini non aspettano che le istituzioni risolvano i problemi della propria città, ma li fanno propri e cercano di porvi rimedio.
-1. **Cosa sono le "fake news"?**
+48) **Cosa sono le "fake news"?**
 	Il diffondersi di informazioni false o fuorvianti presentate come "notizie".
-1. **Cos'è una "fondazione di partecipazione"?**
+49) **Cos'è una "fondazione di partecipazione"?**
 	Un istituto a cavallo tra le fondazioni che amministrano dei patrimoni materiali o immateriali, e le associazioni di individui che condividono un fine sociale, che garantisce nell’organo di governo la presenza dei ‘soci fondatori’ e dei ‘soci partecipanti’, cioè privati cittadini che aderiscono in seguito. La loro presenza negli organi di governo (Cda e/o organi di garanzia) è importante perché possano aver voce su questioni quali la proprietà degli elenchi di chi si è registrato per partecipare e la titolarità dei contenuti raccolti.
-1. **Perché è importante la "governance" in una iniziativa di _sharing_?**
-	
-1. **Abbiamo visto tre iniziative di segnalazione di problemi stradali (fixmystreets, sicurezzastradale, venezia), quali differenze nella gestione della possibilità di commentare le segnalazioni? Quali conseguenze nella scelta tecnica fatta?**
+50) **Perché è importante la "governance" in una iniziativa di _sharing_?**
+	A riguardo di molte iniziative, il loro successo richiede che da un approccio basato sul volontariato di pochi si passi alla costituzione di un soggetto che garantisca l’operatività del sistema tecnologico. Qualunque fosse l’orientamento iniziale, a maggior ragione quando si tratta di un’iniziativa di successo che prosegue nel tempo, per garantirne la sostenibilità è necessario assicurare adeguate risorse hardware, software, e di personale, e quindi sostenere costi anche rilevanti, il che porta inevitabilmente alla necessità di dare forma giuridica al soggetto che si fa carico di garantire l’operatività del sistema. L’autonoma iniziativa dei cittadini dipende dunque dalle scelte che questo soggetto fa, dalla sua stessa natura (non profit, for profit, forme miste) e dalla governance che si dà.
+51) **Abbiamo visto tre iniziative di segnalazione di problemi stradali (fixmystreets, sicurezzastradale, venezia), quali differenze nella gestione della possibilità di commentare le segnalazioni? Quali conseguenze nella scelta tecnica fatta?**
+	==Boh==
 
 -----
 
