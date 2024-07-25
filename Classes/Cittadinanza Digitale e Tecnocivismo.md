@@ -1000,7 +1000,7 @@
 62) **Cos'è il CAD? Perché lo riproponiamo in L$4$?**
 	Il Codice dell'Amministrazione Digitale racchiude nel suo documento le norme riguardanti l’informatizzazione della Pubblica Amministrazione nei rapporti con cittadini e imprese. Il CAD raccoglie non solo diritti e doveri che già contraddistinguono il rapporto tra cittadini, imprese e P.A., ma individua e getta le basi giuridiche per promuovere e rendere effettivi i diritti di cittadinanza digitale.
 63) **Cos'è la "Carta della cittadinanza digitale" (nel CAD)? Quali spunti interessanti (legati all'arcobaleno della CDT) possiamo trovarvi?**
-	==boh==
+	E' una parte del Codice dell'Amministrazione Digitale, la quale consolida principalmente i diritti da parte di cittadini e imprese rivolti a servizi e trasparenza e, inoltre, introduce alcune connotazioni riguardo gli alti livelli della CDT. Questa carta suggerisce una partecipazione democratica elettronica (Livello 7) e consultazione e accesso: "la consultazione on-line degli elenchi è consentita a chiunque senza necessità di autenticazione. Gli elenchi sono realizzati in formato aperto." (Livello 6).
 64) **Cos'è l'OGP (Open Government Partnership)?**
 	L’Open Government Partnership (OGP) è un’iniziativa internazionale che mira a ottenere impegni concreti dai Governi sul fronte di:
 	- trasparenza;
@@ -1027,13 +1027,13 @@
 5) **Cosa sono le "civic nets"?**
 	Una delle prime iniziative focalizzate alla condivisione di informazioni, conoscenza e relazioni all’interno di una comunità locale. Si parla di civic nets quando lo scopo dell'iniziativa è principalmente migliorare la comunicazione tra cittadini e amministratori pubblici.
 6) **Che contesto viene descritto nella $1$a fase di Internet in L$5$?**
-	==Si intende il contesto in cui venivano scambiate mail e si faceva parte di mailing list o newsgroup. Nasce quindi un interattività bidirezionale in contrapposizione ai canali unidirezionali dei media tradizionali e si vede la creazione delle prime comunità virtuali.
+	Viene descritto il progressivo sviluppo di una rete di computer interconnessi tramite TCP/IP. In questo contesto enivano scambiate mail e si faceva parte di mailing list o newsgroup. Nasce quindi un interattività bidirezionale in contrapposizione ai canali unidirezionali dei media tradizionali e si vede la creazione delle prime comunità virtuali.
 7) **Che contesto viene descritto nella $2$a fase di Internet in L$5$?**
-	==Il Web 1.0 nasce con la creazione del world wide web e il protocollo http che porta il web a diventare la piattaforma globale di condivisione di informazioni grazie anche alla nascita delle prime pagine web e quindi alla possibilità di pubblicare contenuti che prima venivano veicolati su supporti cartacei o digitali. Tuttavia si ritorna a una comunicazione prevalentemente broadcast (il sito pubblica, noi ascoltiamo).
+	Il Web 1.0 nasce con la creazione del World Wide Web e del protocollo HTTP i quali portano il web a diventare la piattaforma globale di condivisione di informazioni, grazie anche alla nascita delle prime pagine web e, quindi, alla possibilità di pubblicare contenuti prima veicolati su supporti cartacei o digitali. Tuttavia si ritorna a una comunicazione prevalentemente broadcast (il sito pubblica, noi ascoltiamo).
 8) **Che contesto viene descritto nella $3$a fase di Internet in L$5$?**
-	==Web 2.0: evoluzione del web 1.0 basato su partecipazione piuttosto che publishing e vede la diffusione delle prime wiki basate su collaborazione tra utenti. Web diventa alla portata di tutti e la gente inizia a crearsi i propri blog per generare propri contenuti raccogliendo i commenti di chi legge. Tale evoluzione fà ritrovare la bidirezionalità e interattività dell’era pre web.
+	Viene descritto il Web 2.0, un'evoluzione del Web 1.0 basato sulla partecipazione piuttosto che sul publishing. Questo vede la diffusione delle prime wiki basate su collaborazione tra utenti. Il Web diventa alla portata di tutti e le persone iniziano a crearsi i propri blog per generare propri contenuti, raccogliendo i commenti di chi legge. Tale evoluzione fà ritrovare la bidirezionalità e interattività dell’era pre web.
 9) **Che contesto viene descritto nella $4$a fase di Internet in L$5$?**
-	==social web: continuazione della blogosfera in cui la facilità di creazione e pubblicazione di contenuti aumenta esponenzialmente. Si diffonde massicciamente i social networks e si creano reti di relazioni simmetriche o asimmetriche In italia le amministrazioni utilizzano quindi i social come canale broadcast per le comunicazioni invece che stabilire un dialogo vero e proprio
+	La quarta fase, o social web, può essere visto come la continuazione della blogosfera in cui la facilità di creazione e pubblicazione di contenuti aumenta esponenzialmente. Si diffondono in maniera massiccia i social networks e si creano reti di relazioni simmetriche (e.g. Facebook) e asimmetriche (e.g. Twitter). In italia le amministrazioni utilizzano quindi i social come canale broadcast per le comunicazioni invece che stabilire un dialogo vero e proprio. Analogamente, anche la politica scopre nel social web un terreno naturale per promuovere le proprie idee.
 10) **Chi è Tim Berners-Lee?**
 	Inventore del World Wide Web al Cern di Ginevra nell'ottobre del 1990.
 11) **Cosa si intende con "bidirezionalità" in L$5$?**
@@ -1041,7 +1041,7 @@
 12) **Cosa si intende con "molti a molti" in L$5$?**
 	Si intende Comunicazione dal basso tra cittadini o utenti che si scambiano informazioni. Si contrappone alla comunicazione broadcast, cioè uno a molti, dei media tradizionali
 13) **Cosa si intende con "web $2.0$"?**
-	==boh==
+	Un'evoluzione del Web 1.0 basato sulla partecipazione piuttosto che sul publishing. Questo vede la diffusione delle prime wiki basate su collaborazione tra utenti. Il Web diventa alla portata di tutti e le persone iniziano a crearsi i propri blog per generare propri contenuti, raccogliendo i commenti di chi legge. Tale evoluzione fà ritrovare la bidirezionalità e interattività dell’era pre web.
 14) **Cos'è lo "user generated content"?**
 	Contenuti generati da un utente come ad esempio un post su un blog
 15) **Cos'è un "permalink"?**
@@ -1057,8 +1057,13 @@
 20) **Cosa si intende con "relazioni simmetriche/asimmetriche" nel social web?**
 	Si intende che le relazioni possono essere simmetriche, come nel caso di una richiesta di amicizia di Facebook che deve essere accettata da chi la riceve, o asimmetriche, come in Twitter, dove la scelta di seguire qualcuno non richiede il suo consenso.
 21) **Quali "pratiche di condivisione" abbiamo citato in L$5$?**
-	==boh==
-22) **Cos'è l'"information gathering" e come si realizza in genere?**
+	Il web 2.0 apre ai cittadini la possibilità di lanciare autonomamente, dal basso, iniziative di condivisione di informazioni di valenza pubblica. Abbiamo citato:
+	- condivisione di informazioni;
+	- condivisione di informazioni a supporto di forme di mobilitazione sociale;
+	- segnalazione dei cittadini sullo stato degli spazi pubblici;
+	- altri casi di citizen reporting;
+	- petizioni.
+1) **Cos'è l'"information gathering" e come si realizza in genere?**
 	La condivisione di informazioni, tipicamente effettuata su siti privati o su canali social.
 23) **Cos'è il "crowdsourcing"?**
 	Meccanismo di raccolta di informazioni basato sulla massa di persone (crowd).
@@ -1077,8 +1082,9 @@
 30) **Cosa si intende con "citizen reporting"? Fai degli esempi.**
 	Quelle iniziative in cui i cittadini raccolgono segnalazioni per informarsi reciprocamente e informare le istituzioni su situazioni critiche in diversi ambiti e servizi, ovviamente con l’implicito auspicio di risolverle. Un esempio è FixMyStreet, il cui scopo era permettere ai cittadini di un qualunque comune inglese di segnalare, illustrare con fotografie e discutere problemi riscontrati nel proprio territorio.
 31) **Perché e in che senso (con esempi) "piccole feature" di un sistema di segnalazione possono (s)favorire la partecipazione?**
-	==boh, pg 121==. Nel caso di FixMyStreet gli update possono essere fatti solo da chi ha creato la segnalazione e non da altri utenti. In questo modo è possibile che possibili update utili non possano essere postati
-32) **Cosa si intende con "civic accountability"?**
+	 Small feature do matter, cioè piccole funzionalità del software possono influenzare e persino plasmare significativamente, in meglio ma a volte anche in peggio, la partecipazione democratica. Nel caso di FixMyStreet gli update possono essere fatti solo da chi ha creato la segnalazione e non da altri utenti. In questo modo è possibile che update utili non possano essere postati. Inoltre, si possono vedere le segnalazioni che hanno ricevuto più commenti il che può essere segnale di un maggior interesse e rilevanza della segnalazione.
+	  Invece, in SicurezzaStradale, i partecipanti hanno ampiamente utilizzato la possibilità di commentare le segnalazioni di altri, una feature che permette di rafforzare una segnalazione, a volte proporre e discutere possibili soluzioni al problema segnalato, potenzialmente anche di dissentire, proponendo una diversa visione delle cose. In mancanza di tale feature, chi non fosse d’accordo o volesse aggiungere qualche informazione utile, sarebbe costretto a inserire una nuova segnalazione sullo stesso punto della mappa, magari facendo riferimento alla precedente nel testo: in questo modo sarebbe molto più diﬀicile, di fatto impossibile, l'aprirsi di una conversazione.
+1) **Cosa si intende con "civic accountability"?**
 	Letteralmente il dover rendere conto del proprio operato civico delle istituzioni.
 33) **Perché FixMyStreet può essere considerata una azione di "civic accountability"?**
 	Perchè è un'iniziativa in cui i cittadini raccolgono segnalazioni per informarsi reciprocamente e informare le istituzioni su situazioni critiche in ambito stradale, ovviamente con l’implicito auspicio di risolverle. 
@@ -1123,7 +1129,8 @@
 50) **Perché è importante la "governance" in una iniziativa di _sharing_?**
 	A riguardo di molte iniziative, il loro successo richiede che da un approccio basato sul volontariato di pochi si passi alla costituzione di un soggetto che garantisca l’operatività del sistema tecnologico. Qualunque fosse l’orientamento iniziale, a maggior ragione quando si tratta di un’iniziativa di successo che prosegue nel tempo, per garantirne la sostenibilità è necessario assicurare adeguate risorse hardware, software, e di personale, e quindi sostenere costi anche rilevanti, il che porta inevitabilmente alla necessità di dare forma giuridica al soggetto che si fa carico di garantire l’operatività del sistema. L’autonoma iniziativa dei cittadini dipende dunque dalle scelte che questo soggetto fa, dalla sua stessa natura (non profit, for profit, forme miste) e dalla governance che si dà.
 51) **Abbiamo visto tre iniziative di segnalazione di problemi stradali (fixmystreets, sicurezzastradale, venezia), quali differenze nella gestione della possibilità di commentare le segnalazioni? Quali conseguenze nella scelta tecnica fatta?**
-	==Boh==
+	In SicurezzaStradale, il fatto che i partecipanti abbiano ampiamente utilizzato la possibilità di commentare le segnalazioni di altri, una feature che permette di rafforzare una segnalazione, a volte proporre e discutere possibili soluzioni al problema segnalato, potenzialmente anche di dissentire, proponendo una diversa visione delle cose. In mancanza di tale feature, chi non fosse d’accordo o volesse aggiungere qualche informazione utile, sarebbe costretto a inserire una nuova segnalazione sullo stesso punto della mappa, magari facendo riferimento alla precedente nel testo. Inoltre, molte di queste segnalazioni includono una proposta di soluzione, cosa totalmente assente in FixMyStreet.
+	
 
 -----
 
