@@ -1130,57 +1130,109 @@
 	A riguardo di molte iniziative, il loro successo richiede che da un approccio basato sul volontariato di pochi si passi alla costituzione di un soggetto che garantisca l’operatività del sistema tecnologico. Qualunque fosse l’orientamento iniziale, a maggior ragione quando si tratta di un’iniziativa di successo che prosegue nel tempo, per garantirne la sostenibilità è necessario assicurare adeguate risorse hardware, software, e di personale, e quindi sostenere costi anche rilevanti, il che porta inevitabilmente alla necessità di dare forma giuridica al soggetto che si fa carico di garantire l’operatività del sistema. L’autonoma iniziativa dei cittadini dipende dunque dalle scelte che questo soggetto fa, dalla sua stessa natura (non profit, for profit, forme miste) e dalla governance che si dà.
 51) **Abbiamo visto tre iniziative di segnalazione di problemi stradali (fixmystreets, sicurezzastradale, venezia), quali differenze nella gestione della possibilità di commentare le segnalazioni? Quali conseguenze nella scelta tecnica fatta?**
 	In SicurezzaStradale, il fatto che i partecipanti abbiano ampiamente utilizzato la possibilità di commentare le segnalazioni di altri, una feature che permette di rafforzare una segnalazione, a volte proporre e discutere possibili soluzioni al problema segnalato, potenzialmente anche di dissentire, proponendo una diversa visione delle cose. In mancanza di tale feature, chi non fosse d’accordo o volesse aggiungere qualche informazione utile, sarebbe costretto a inserire una nuova segnalazione sullo stesso punto della mappa, magari facendo riferimento alla precedente nel testo. Inoltre, molte di queste segnalazioni includono una proposta di soluzione, cosa totalmente assente in FixMyStreet.
-	
 
 -----
 
 ## L6
-1. **Quali sono i temi salienti del livello "consultation" dell'arcobaleno?**
-2. **Cosa intendiamo con "crisi della democrazia rappresentativa"?**
-3. **In cosa si manifesta la "crisi della democrazia rappresentativa"?**
-4. **Cosa suggerisce "Raccomandazione $19$" emanata nel $2001$ dal Comitato dei Ministri del Consiglio d'Europa e rivolta agli Stati membri sulla "Partecipazione dei cittadini alla vita pubblica a livello locale"?**
-5. **Cita qualche "forma di partecipazione diretta al processo decisionale" (sia essa tradizionale che digitale).**
-6. **Cosa si intende con "feedback" dei cittadini?**
-7. **Qual è il problema dell'"intervallo temporale fra le tornate elettorali"?**
-8. **Cos'è il "vincolo di mandato"?**
-9. **Cosa si intende con "democrazia continua"?**
-10. **Cosa si intende con "democrazia diretta"?**
-11. **Cosa si intende con "carattere consultivo" di un processo partecipativo?**
-12. **Cosa si intende con "ascolto"? E con "consultazione"?**
-13. **Cos'è un URP?**
-14. **Cerché ci interessano poco i "sondaggi di opinione"?**
-15. **Cosa sono i "feedback (privati) non sollecitati"?**
-16. **Cosa sono i "feedback (pubblici) sollecitati"?**
-17. **Cos'è il "citizen reporting istituzionalizzato"?**
-18. **Quali sono le forme istituzionali di ascolto?**
-19. **Cosa intendiamo con "consultazioni"?**
-20. **Qual è la "questione cruciale" (la risposta) nel contesto del feedback non sollecitato? Articolare.**
-21. **Cosa sono le FAQ nel contesto di L6?**
-22. **Quali problemi vedi nell'uso di una "pagina social" da parte di una PA?**
-23. **Cosa si intende con "sentiment/sentimento"? E' una forma di consultazione? A cosa la paragoneresti?**
-24. **Quali esperienze di "feedback (pubblico) sollecitato" potresti citare? Che riscontro/effetto hanno avuto?**
-25. **Perché il "citizen reporting istituzionalizzato" è un processo top-down?**
-26. **Il "citizen reporting istituzionalizzato" ha vantaggi rispetto ai processi citati in L$5$?**
-27. **Quali esperienze di "citizen reporting istituzionalizzato" potresti citare? Che riscontro/effetto hanno avuto?**
-28. **Puoi citare/descrivere qualche iniziativa di social reporting lanciata da soggetti privati?**
-29. **Cosa si intende con "cittadinanza attiva"?**
-30. **Cita qualche vincolo per la validità di una richiesta popolare in generale.**
-31. **Cos'è il "contratto sociale"? (vale in molti livelli)**
-32. **Cos'è il "patto partecipativo"? (vale in molti livelli)**
-33. **Quali sono le fasi di una iniziativa di partecipazione popolare? (presentazione, raccolta firme, campaign, voto)**
-34. **Cita e discuti alcuni istituti di partecipazione a livello europeo.**
-35. **Cita e discuti alcuni istituti di partecipazione a livello nazionale (Costituzione).**
-36. **Cita e discuti alcuni istituti di partecipazione a livello Comune di Milano.**
-37. **Cosa si intende con "consultazione informata"?**
-38. **Quali sono le principali caratteristiche di una consultazione? (doc disponibili, partecipante informato, impegno a dare feedback)**
-39. **Cita e discuti alcuni istituti di consultazione a livello europeo.**
-40. **Cita e discuti alcuni istituti di consultazione a livello nazionale.**
-41. **Perché abbiamo citato la necessità di "linee guida" per le consultazioni?**
-42. **Quali sono i difetti di una "consultazione" o di un "ascolto" via mail?**
-43. **Quali sono i difetti di una "consultazione" o di un "ascolto" via social?**
-44. **Cita e discuti alcuni istituti di consultazione a livello Comune di Milano.**
-45. **Cita pregi e difetti delle iniziative di ascolto e/o consultazione che abbiamo analizzato (a tua scelta).**
-46. **Riassumi gli approfondimenti su Decidim trattati in L$6$.**
+1) **Quali sono i temi salienti del livello "consultation" dell'arcobaleno?**
+	==boh==
+2) **Cosa intendiamo con "crisi della democrazia rappresentativa"?**
+	Intendiamo una crisi delle pratiche di partecipazione democratica. La "crisi della democrazia rappresentativa" si riferisce a una situazione in cui i cittadini perdono fiducia nei processi e nelle istituzioni democratiche tradizionali, come i parlamenti, i partiti politici, e le elezioni. 
+3) **In cosa si manifesta la "crisi della democrazia rappresentativa"?**
+	Cartina di tornasole di questa situazione di diﬀicoltà è il crollo di partecipazione al voto, momento in cui i cittadini esercitano la propria sovranità scegliendo chi li rappresenta nel governo della cosa pubblica ai vari livelli istituzionali.
+4) **Cosa suggerisce "Raccomandazione $19$" emanata nel $2001$ dal Comitato dei Ministri del Consiglio d'Europa e rivolta agli Stati membri sulla "Partecipazione dei cittadini alla vita pubblica a livello locale"?**
+	Oltre a invitare a “fare pieno uso delle nuove information and communication technologies”, evidenzia l’importanza, per le istituzioni, di ascoltare le domande, le attese e i bisogni che i cittadini manifestano per dare ad essi una risposta adeguata. Inoltre, suggerisce di introdurre nell’impianto della democrazia rappresentativa forme di partecipazione diretta al processo decisionale e alla gestione del governo locale, e non solo locale.
+5) **Cita qualche "forma di partecipazione diretta al processo decisionale" (sia essa tradizionale che digitale).**
+	==Parlando di feedback privati non sollecitati, alcune forme tradizionali sono lamentele rivolte agli Uffici di Relazioni con il Pubblico mentre alcune forme digitali sono mail a funzionari o rappresentanti eletti.
+6) **Cosa si intende con "feedback" dei cittadini?**
+	Le domande, le attese, i bisogni, l’opinione dei cittadini.
+7) **Qual è il problema dell'"intervallo temporale fra le tornate elettorali"?**
+	Questo intervallo di tempo, forse adeguato quando gli assetti istituzionali sono stati definiti più di settanta anni fa, con l’accelerazione della vita e dei cambiamenti che hanno caratterizzato gli ultimi decenni, appare spesso eccessivo: tra una elezione e la successiva lo scenario può cambiare radicalmente e nel dibattito pubblico si possono affacciare temi che prima non erano presenti o erano marginali, e che quindi non avevano contribuito ad orientare la scelta elettorale.
+8) **Cos'è il "vincolo di mandato"?**
+	Si tratta di un istituto giuridico collegato con la rappresentanza: in diritto civile, comporta l'obbligo del rappresentante di agire secondo le istruzioni ricevute dal mandante, in nome e per conto del quale opera;
+9) **Cosa si intende con "democrazia continua"?**
+	Si intende innervare l’impianto della democrazia rappresentativa con forme di democrazia diretta al fine di dar voce ai cittadini tra una elezione e l’altra.
+10) **Cosa si intende con "democrazia diretta"?**
+	Di forme di ascolto a carattere consultivo, nel senso che le istituzioni si riservano comunque se e come valorizzare le sollecitazioni e adottare le indicazioni raccolte dai cittadini.
+11) **Cosa si intende con "carattere consultivo" di un processo partecipativo?**
+	 Nel senso che le istituzioni si riservano comunque se e come valorizzare le sollecitazioni e adottare le indicazioni raccolte dai cittadini.
+12) **Cosa si intende con "ascolto"? E con "consultazione"?**
+	I concetti di "ascolto" e "consultazione" si riferiscono a pratiche specifiche di coinvolgimento dei cittadini nel processo decisionale e di governance. Ascolto si riferisce all'attività di raccolta di opinioni, feedback e suggerimenti da parte dei cittadini senza che questo implichi necessariamente un'interazione formale o strutturata. È un processo unidirezionale in cui le istituzioni cercano di comprendere le esigenze, le preoccupazioni e le idee della popolazione. Consultazione si riferisce a un processo più strutturato e formale di coinvolgimento dei cittadini nel processo decisionale. A differenza dell'ascolto, la consultazione è spesso bidirezionale e può avere un impatto diretto sulle decisioni finali.
+13) **Cos'è un URP?**
+	Ufficio per le Relazioni con il Pubblico, in cui si garantisce l'esercizio dei diritti di informazione, di accesso e partecipazione.
+14) **Perché ci interessano poco i "sondaggi di opinione"?**
+	Perchè assegnano ai cittadini un ruolo del tutto passivo di fonte di informazioni, e non sono quindi pertinenti alla nostra indagine che riguarda le varie forme di partecipazione.
+15) **Cosa sono i "feedback (privati) non sollecitati"?**
+	Sono richieste di informazioni, lamentele, proteste, suggerimenti i quali non vengono esplicitamente richiesti dalle istituizioni. Ha una natura strettamente individuale, tra un cittadino ed una amministrazone. Le istituzioni più accorte hanno imparato a trasformare le risposte individuali in Frequently Asked Questions pubbliche.
+16) **Cosa sono i "feedback (pubblici) sollecitati"?**
+	Alcune amministrazioni a cavallo degli anni Duemila, cioè prima dell’avvento dei canali social, raccoglievano e pubblicavano in uno spazio pubblico, in vari casi chiamato ‘Linea Diretta con…, le varie domande dei cittadini e le relative risposte. In tal modo il feedback dei cittadini era ‘sollecitato’ e soprattutto corredato dall’impegno a fornire risposte adeguate e quanto possibile tempestive. Questo stimolava funzionari e politici a dar conto delle proprie scelte, delle attività e dei comportamenti e permetteva ai cittadini di verificare i tempi di risposta, non necessariamente istantanei, ma neanche epocali, e anche di capire quali delle questioni poste restavano inevase. E la risposta data ad un singolo era utile a tutti.
+17) **Cos'è il "citizen reporting istituzionalizzato"?**
+	Sono iniziative più top-down che cercano una sorta di feedback sollecitato dall’istituzione che la promuove. Rispetto a quelle nate dal basso e portate avanti da soggetti della società civile, queste iniziative di citizen reporting istituzionalizzato hanno il vantaggio di potersi innestare nel flusso di lavoro dell'ente a cui sono riferite, spesso integrandosi con le segnalazioni che arrivano dall’interno. Questo le rende un servizio fornito dall’amministrazione in cui ogni segnalazione diventa una ‘pratica’ da evadere, il che ha progressivamente aumentato il numero di segnalazioni trattate e ridotto i tempi di risposta, anche se non sempre migliorato la qualità.
+18) **Quali sono le forme istituzionali di ascolto?**
+	Molte Costituzioni e regolamenti di vari livelli di governo prevedono modi per integrare la democrazia rappresentativa con diversi istituti pensati per permettere forme di iniziativa più “diretta” dei cittadini rispetto a quella che si realizza nel momento elettorale e consentire di sollecitare interventi dei rappresentanti eletti e dei governi su questioni che ritengono non adeguatamente trattate. Si tratta di forme di partecipazione popolare ma il fatto che lo spazio online sia predisposto da un’amministrazione pubblica dovrebbe garantire, più che nelle iniziative autonome ‘dal basso’ un feedback alle istanze dei cittadini.
+19) **Cosa intendiamo con "consultazioni"?**
+	Quando un'istituzione vuole conoscere l’opinione dei cittadini su una questione (una politica pubblica) complessa, avvia un processo articolato di consultazione dei cittadini che include anche, come sua parte qualificante, la possibilità per chi vuole esprimere il proprio parere, di informarsi e confrontare le diverse posizioni, spesso contrapposte, che in genere sono sul tappeto. 
+20) **Qual è la "questione cruciale" (la risposta) nel contesto del feedback non sollecitato? Articolare.**
+	Che questo feedback, anche nel caso in cui sia digitale, ha una natura strettamente individuale, e la questione cruciale è se viene garantita una risposta al quesito non formale. Spesso, infatti, al cittadino non arriva nessuna risposta6 oppure arriva un messaggio automatico che dice: “la ringraziamo della segnalazione di cui terremo conto”. Ciò determina una situazione di frustrazione che certo non migliora il rapporto tra cittadini e istituzioni.
+21) **Cosa sono le FAQ nel contesto di L6?**
+	Le Frequently Asked QUestions sono un modo delle istituzioni di trasformare risposte individuali a feedback privati non sollecitati in risposte pubbliche sul sito istituzionale. Questo ha lo scopo di aumentare la trasparenza sugli interventi anche se manca comunque la trasparenza sulla sollecitudine e precisione nel fornire una risposta adeguata e completa ai quesiti dei cittadini.
+22) **Quali problemi vedi nell'uso di una "pagina social" da parte di una PA?**
+	Che si rafforza la natura di canale informativo delle sue pagine istituzionali sui principali social network, mentre scompare la funzione di spazio di dialogo con i cittadini. A questi rimane comunque la possibilità di commentare le notizie e questa possibilità viene talvolta usata per segnalare problemi, chiedere di intervenire in situazioni di disagio, protestare in modo anche aspro. Ma senza speranza di risposta, solo protesta, che non di rado viene ritenuta impropria dagli amministratori della pagina, con conseguenti azioni censorie.
+23) **Cosa si intende con "sentiment/sentimento"? E' una forma di consultazione? A cosa la paragoneresti?**
+	Il termine "sentiment" o "sentimento" nel contesto della consultazione e si riferisce alla percezione e all'atteggiamento del pubblico o di un gruppo di persone riguardo a un argomento specifico. Questo concetto viene spesso utilizzato in vari campi, come il marketing, la politica, la gestione della reputazione, e l'analisi dei social media. ==Il sentiment analysis può essere paragonato a un sondaggio di opinione.==
+24) **Quali esperienze di "feedback (pubblico) sollecitato" potresti citare? Che riscontro/effetto hanno avuto?**
+	La Linea Diretta con il Vice Sindaco del Comune di Milano, fruibile da web, fece da ‘supplenza’ nei rapporti online tra cittadini e amministrazione in mancanza di in sito Internet del Comune. Nel 2000 le Linee Dirette vennero via via chiuse e aperti al loro posto degli spazi online puramente informativi. Le Linee Dirette con le Biblioteche e le Scuole Civiche rimasero attive, per volontà dei funzionari, ancora per parecchi anni.
+25) **Perché il "citizen reporting istituzionalizzato" è un processo top-down?**
+	Rispetto al citizen reporting nato dal basso e portato avanti da soggetti della società, queste iniziative di citizen reporting istituzionalizzato arrivano da enti statali e, di conseguenza, hanno il vantaggio di potersi innestare nel flusso di lavoro di tali enti, spesso integrandosi con le segnalazioni interne.
+26) **Il "citizen reporting istituzionalizzato" ha vantaggi rispetto ai processi citati in L$5$?**
+	==boh==
+27) **Quali esperienze di "citizen reporting istituzionalizzato" potresti citare? Che riscontro/effetto hanno avuto?**
+	Tra tutti, il sistema IRIS (Internet Reporting Information System) di segnalazioni del Comune di Venezia è stato avviato già nel 2008, è stato costantemente aggiornato con nuove feature del software ed è tuttora attivo. il sistema permette ai cittadini di seguire l’iter di ogni segnalazione all’interno dell’amministrazione, da quando è ricevuta (ma non ancora leggibile), poi presa in carico dall’uﬀicio competente e infine conclusa con una risposta da parte dell’amministrazione. Dalle statistiche, è possibile notare che il servizio raccoglie l’interesse costante dei cittadini.
+28) **Puoi citare/descrivere qualche iniziativa di social reporting lanciata da soggetti privati?**
+	EPart.it, il "social network dei cittadini che partecipano, il quale permette di segnalare diverse tipologie di problemi inerenti la manutenzione urbana, e DecoroUrbano.org, uno strumento partecipativo per la segnalazione del degrado.
+29) **Cosa si intende con "cittadinanza attiva"?**
+	Si intende la disponibilità da parte dei cittadini a discutere “in positivo”, a farsi in qualche modo carico del problema, sia proponendo possibili soluzioni che ragionando su possibili modi per interagire con l’amministrazione nel caso in cui questa latiti.
+30) **Cita qualche vincolo per la validità di una richiesta popolare in generale.**
+	Tipicamente il numero minimo (la soglia) di firme valide che devono essere richieste perchè la richiesta sia ammissibile. Inoltre, le firme raccolte devono essere autentiche e verificate da un'autorità competente per assicurarsi che provengano da cittadini idonei.
+31) **Cos'è il "contratto sociale"? (vale in molti livelli)**
+	Secondo Russeau, per vivere in una società organizzata, gli individui devono unirsi e formare un contratto sociale, un accordo collettivo in cui ciascuno rinuncia a una parte della propria libertà naturale per guadagnare la libertà civile e la protezione dello stato.
+32) **Cos'è il "patto partecipativo"? (vale in molti livelli)**
+	E' un “contratto” in cui vengono dettagliati gli impegni reciproci tra tutti gli attori sociali che intervengono in un processo di partecipazione, e il vantaggio che ciascuno ne trae.
+33) **Quali sono le fasi di una iniziativa di partecipazione popolare? (presentazione, raccolta firme, campaign, voto)**
+	- Presentazione di una iniziativa di partecipazione popolare: ormai a quasi tutti i livelli istituzionali può essere fatta online, secondo procedure più o meno ben documentate e automatizzate;
+	- Raccolta delle firme: la possibilità per i cittadini di firmare online con autenticazione certificata, evita agli organizzatori le costose e impegnative modalità di raccolta fisica delle firme, che prevedevano la presenza di un pubblico uﬀiciale (notaio o dipendente comunale per quelle raccolte nei Comuni) per l’autenticazione;
+	- campaigning: un elemento cruciale per una iniziativa di partecipazione popolare che richieda la raccolta di firme è l’attività di sensibilizzazione della popolazione al tema oggetto dell’iniziativa. Prima dell’avvento di internet, questa sensibilizzazione avveniva attraverso i “mass media” tradizionali: giornali, radio, televisioni, con l’evidente problema che se l’iniziativa proposta non trovava il favore dell’editore diﬀicilmente trovava risonanza e supporto. L’avvento di internet e dei social media permette di bypassare questo problema e attivare le reti sociali digitali delle organizzazioni promotrici e dei singoli attivisti per far crescere l’attenzione e convincere le persone a firmare la richiesta (di petizione, legge di iniziativa popolare, referendum, etc.);
+	- voto.
+34) **Cita e discuti alcuni istituti di partecipazione a livello europeo.**
+	I cittadini europei (individualmente o come gruppo) possono chiedere al Parlamento europeo di esaminare una questione di rilievo o presentare un reclamo rispetto all’applicazione di una legge dell’UE. La petizione deve riguardare uno dei settori d’intervento dell’UE. Non è necessario raccogliere un numero minimo di firme. Il Parlamento europeo esaminerà la questione e comunicherà per iscritto le conclusioni raggiunte. Il maggior rigore della registrazione richiesto per firmare sul portale di petitioning della UE, corrisponde ad un impegno decisamente maggiore da parte dei cittadini e potrebbe essere accettabile se corrispondesse al vantaggio che si ottiene. Ma non è così: la risposta è una comunicazione scritta nel linguaggio piuttosto ostico delle leggi, e senza alcune certezza sui tempi.  Le Iniziative, invece, permettono ai cittadini europei di chiedere alla Commissione europea di intraprendere nuovi atti legislativi. Gli organizzatori di una iniziativa hanno un anno di tempo per raccogliere almeno 1 milione di firme in almeno 7 paesi dell'UE con una soglia minima in ciascun paese proporzionale al numero di deputati al Parlamento Europeo in tale paese. Quando vengono raggiunte le soglie richieste (almeno un milione di firme in almeno 7 Paesi, ciascuno sopra la propria soglia), le firme devono essere validate e inviate alla Commissione che ha 6 mesi per rispondere con una comunicazione, pubblicata sul sito, in cui illustra “le eventuali misure che intende adottare, indicandone i motivi e definendo un calendario per la loro messa in atto”. La Commissione non è tenuta a proporre una legislazione, lo scopo dello strumento dell'iniziativa è consentire di lanciare un dibattito ed influire sul programma politico dell'UE.
+35) **Cita e discuti alcuni istituti di partecipazione a livello nazionale (Costituzione).**
+	La Costituzione Italiana, prevede tre istituti di partecipazione dei cittadini:
+	- tutti i cittadini possono rivolgere petizioni alle Camere per chiedere provvedimenti legislativi o esporre comuni necessità;
+	- l’iniziativa delle leggi appartiene al Governo, a ciascun membro delle Camere. Il popolo esercita l’iniziativa delle leggi, mediante la proposta, da parte di almeno cinquantamila elettori, di un progetto redatto in articoli;
+	- È indetto referendum popolare per deliberare l’abrogazione, totale o parziale, di una legge, quando lo richiedono cinquecentomila elettori o cinque Consigli regionali. Hanno diritto di partecipare al referendum tutti i cittadini chiamati ad eleggere la Camera.
+	Dall’esame del supporto online fornito ai cittadini per presentare petizioni e leggi di iniziativa popolare, e dal confronto con quanto disponibile a livello UE, ci pare di poter affermare che nel complesso queste pratiche di partecipazione popolare godono di scarsa considerazione da parte dei due rami del Parlamento che quindi non promuove l’uso delle tecnologie digitali per migliorarne l’esercizio. Diverso è il caso del referendum: il referendum, che nella Costituzione Italiana è unicamente abrogativo, se approvato, diventa immediatamente norma di legge: costituisce quindi una effettiva e immediata partecipazione dei cittadini alla formazione delle leggi. Inoltre, gli sforzi fatti da cittadini, gruppi di opinione e politici per rinvigorire la pratica referendaria grazie alle tecnologie digitali illustrano concretamente quanto sia vero quel che affermava Stefano Rodotà: “I diritti… ci parlano di un impegno. Chi li detiene, deve anche essere consapevole del dovere di farli rispettare.”
+36) **Cita e discuti alcuni istituti di partecipazione a livello Comune di Milano.**
+	Il Regolamento per la partecipazione popolare prevede per i cittadini la possibilità di presentare interrogazioni, istanze, petizioni, deliberazioni di iniziativa popolare e richieste di referendum (che possono essere abrogativi, consultivi o propositivi). Questa nuova versione prevede l’uso di strumenti digitali a supporto della partecipazione. E' l’unico caso in cui un regolamento, che fissa diritti e doveri tanto dei cittadini quanto delle istituzioni per permettere la partecipazione democratica e il coinvolgimento diretto della cittadinanza nel governo della città, viene concepito e messo a punto per costituire il fondamento di una piattaforma online di partecipazione. Milano Partecipa permette di ospitare raccolte di firme per petizioni dei cittadini, richieste di referendum da parte dei cittadini e consultazioni.
+37) **Cosa si intende con "consultazione informata"?**
+	Si intende una consultazione avviata sulla base di documentazione che, in modo esplicito, piano e trasparente, indichi i problemi, gli obiettivi e le alternative su cui si chiede di esprimere il parere. 
+38) **Quali sono le principali caratteristiche di una consultazione? (doc disponibili, partecipante informato, impegno a dare feedback)**
+	L'istituzione che promuove una consultazione deve avviarla sulla base di documentazione che, in modo esplicito, piano e trasparente, indichi i problemi, gli obiettivi e le alternative su cui si chiede di esprimere il parere; questo aﬀinché si abbia una consultazione informata, intrinsecamente diversa da un sondaggio di opinione. Inoltre, chi partecipa alla consultazione si impegna a “fare la fatica” necessaria ad esprimersi con cognizione di causa, esaminando la documentazione messa a disposizione. Infine, l’istituzione che la avvia non necessariamente adotta il risultato della consultazione, ma si impegna a fornire feedback chiaro ed esplicito su quanto emerso; questo aﬀinché il cittadino che si impegna a partecipare in modo consapevole sappia che il suo impegno sarà ripagato se non con l’adozione della sua posizione, almeno con la presa in considerazione della sua opinione che contribuirà a formulare l’esito della consultazione.
+39) **Cita e discuti alcuni istituti di consultazione a livello europeo.**
+	La pagina Partecipa del sito della Commissione Europea contiene un link allo spazio in cui i cittadini europei possono “Commentare le politiche e la legislazione dell’UE”.
+40) **Cita e discuti alcuni istituti di consultazione a livello nazionale.**
+	In Italia la pratica delle consultazioni è stata adottata da una decina d’anni, per la precisione dal governo Monti. Dalle parole di Monti emerge il ruolo meramente ‘consultivo’ (“poi il commissario, la commissione, il ministro, il governo nelle sue responsabilità, prendono la decisione”) che viene dato a queste iniziative. Merita però attenzione il fatto che viene subito identificata la rete come l’ambiente per mettere a disposizione i materiali e, implicitamente, per raccogliere i pareri.
+41) **Perché abbiamo citato la necessità di "linee guida" per le consultazioni?**
+	Perchè i primi esperimenti di consultazioni in Italia hanno fatto maturare la consapevolezza che servono delle linee guida e una piattaforma per la gestione delle consultazioni online (e.g., consultazione per la spending review).
+42) **Quali sono i difetti di una "consultazione" o di un "ascolto" via mail?**
+	Che gli input ricevuti non sono di tipo strutturato: nel caso della consultazione per la spending review, ad esempio, per gestire il grande numero di mail è stato assunto personale ad hoc e sono state sperimentate soluzioni di NLP.
+43) **Quali sono i difetti di una "consultazione" o di un "ascolto" via social?**
+	==boh==
+44) **Cita e discuti alcuni istituti di consultazione a livello Comune di Milano.**
+	La pratica delle consultazioni si è estesa, nell’ultimo decennio, anche alle amministrazioni locali. Alcune Amministrazioni, come Milano tramite Milano Partecipa, hanno realizzato autonomamente processi di consultazione e/o sviluppato un proprio spazio online per gestirli. Si tratta di uno spazio online per l’attuazione dei diritti di partecipazione popolare previsti dall’omonimo Regolamento.
+45) **Cita pregi e difetti delle iniziative di ascolto e/o consultazione che abbiamo analizzato (a tua scelta).**
+	==boh==
+46) **Riassumi gli approfondimenti su Decidim trattati in L$6$.**
+	==boh==
 
 -----
 
