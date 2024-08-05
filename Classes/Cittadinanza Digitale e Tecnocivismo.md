@@ -1149,7 +1149,7 @@
 7) **Qual è il problema dell'"intervallo temporale fra le tornate elettorali"?**
 	Questo intervallo di tempo, forse adeguato quando gli assetti istituzionali sono stati definiti più di settanta anni fa, con l’accelerazione della vita e dei cambiamenti che hanno caratterizzato gli ultimi decenni, appare spesso eccessivo: tra una elezione e la successiva lo scenario può cambiare radicalmente e nel dibattito pubblico si possono affacciare temi che prima non erano presenti o erano marginali, e che quindi non avevano contribuito ad orientare la scelta elettorale.
 8) **Cos'è il "vincolo di mandato"?**
-	Si tratta di un istituto giuridico collegato con la rappresentanza: in diritto civile, comporta l'obbligo del rappresentante di agire secondo le istruzioni ricevute dal mandante, in nome e per conto del quale opera;
+	Si tratta di un istituto giuridico collegato con la rappresentanza: in diritto civile, comporta l'obbligo del rappresentante di agire secondo le istruzioni ricevute dal mandante, in nome e per conto del quale opera.
 9) **Cosa si intende con "democrazia continua"?**
 	Si intende innervare l’impianto della democrazia rappresentativa con forme di democrazia diretta al fine di dar voce ai cittadini tra una elezione e l’altra.
 10) **Cosa si intende con "democrazia diretta"?**
@@ -1238,56 +1238,158 @@
 
 ## L7
 1) **Quali sono i temi salienti del livello "democracy" dell'arcobaleno?**
+	==boh==
 2) **Definisci il termine "voto/votante/elettore".**
-2. **Definisci il termine "funzione di scelta sociale".**
-3. **Definisci il termine "suffragio universale".**
-4. **Definisci il termine "suffragio diretto/indiretto".**
-5. **Definisci il termine "vincolo di mandato".**
-6. **Definisci il termine "appoggio/supporto (endorsement) / manifestazione di approvazione o dis-approvazione / valutazione (rating)".**
-7. **Quali sono le regole da stabilire per una "votazione"?**
-8. **Quali sono le proprietà tipiche richieste ad un "sistema di voto"?**
-9. **Cosa si intende con "segretezza/libertà/ammissibilità/unicità/immodificabilità/completezza/lealtà/fiducia/verificabilità" in un "sistema di voto"?**
-10. **In che senso gli scrutini avvengono alla "luce del sole"?**
-11. **Quali sono i problemi riscontrabili nei sistemi di voto tradizionali?**
-12. **Quali potrebbero essere i vantaggi dei sistemi di voto digitali?**
-13. **Cosa si intende con "voto elettronico"? e con "voto online"?**
-14. **Di quali criticità soffre il "voto online"?**
-15. **Analizza le esperienze di voto digitale di Germania, Estonia e Svizzera.**
-16. **Descrivi la situazione "voto digitale" in Italia.**
-17. **Quali altri contesti di voto in cui la versione digitale potrebbe essere proficuamente applicata abbiamo analizzato?**
-18. **Cosa si intende con "stakeholder"?**
-19. **Quali problemi vedi nall'utilizzo del sistema UniVote?**
-20. **Quali problemi vedi nall'utilizzo del sistema di voto dei "$5$ stelle"?**
-21. **Perché in alcuni sistemi di voto digitale deve passare un certo tempo dall'iscrizione per ottenere il diritto di voto?**
-22. **Cosa è la "teoria della scelta sociale"?**
-23. **Che vantaggi ha l'uso di elaborazione elettronica in un sistema di voto?**
-24. **Cos'è un "metodo di voto"?**
-25. **Cosa si intende con "minimizzazione della scontentezza"?**
-26. **Cosa si intende con metodo di voto a "scelta singola"?**
-27. **Cosa si intende con metodo di voto a "scelta multipla"?**
-28. **Cosa si intende con metodo di voto "cumulativo"?**
-29. **Cosa si intende con metodo di voto "a ordinamento"?**
-30. **Cosa si intende con "preferenza collettiva"?**
-31. **Cos'è il "principio di Condorcet"?**
-32. **Cos'è il "paradosso di Condorcet" (loop)?**
-33. **Cosa sono le "preferenze indirette"?**
-34. **Cos'è l'elettorato "attivo/passivo"?**
-35. **Cos'è il "criterio di indipendenza delle alternative irrilevanti"?**
-36. **Quali sono i "citeri di fairness" del voto?**
-37. **Cosa dice il "Teorema di Arrow"?**
-38. **Riassumi le esperienze di movimenti e partiti nell'era digitale.**
-39. **Cos'è LiquidFeedback e che particolarità ha?**
-40. **Cosa si intende con "idea gathering"?**
-41. **Cosa si intende con "online deliberation"?**
-42. **Cosa si intende con "collaborative writing" in L$7$?**
-43. **Cita qualche metodo di voto e descrivilo.**
-44. **Cosa si intende con "delega"? E con "delega liquida"?**
-45. **Che parallelo puoi tracciare tra LQFB e Google Votes?**
-46. **Qual è la "golden rule of liquid democracy"? Ha senso?**
-47. **Cosa si intende con "decision-making"?**
-48. **Cita e descrivi qualche software di online deliberation di seconda generazione.**
-49. **Cosa sono i "bilanci partecipativi"?**
-50. **Quali fasi compongono un "bilancio partecipativo" in generale?**
+	Il voto è il metodo attraverso cui una data popolazione di elettori (il corpo elettorale) esprime le proprie preferenze tra varie opzioni. I voti di coloro che hanno effettivamente espresso il voto (votanti) vengono poi trasformati, sulla base di regole prestabilite (dette anche funzioni di scelta sociale o di benessere sociale) in un esito della votazione, che rappresenta la scelta collettiva (o scelta sociale).
+3) **Definisci il termine "funzione di scelta sociale".**
+	Il voto è il metodo attraverso cui una data popolazione di elettori (il corpo elettorale) esprime le proprie preferenze tra varie opzioni. I voti di coloro che hanno effettivamente espresso il voto (votanti) vengono poi trasformati, sulla base di regole prestabilite (dette anche funzioni di scelta sociale o di benessere sociale) in un esito della votazione, che rappresenta la scelta collettiva (o scelta sociale).
+4) **Definisci il termine "suffragio universale".**
+	Il termine suffragio universale indica che votano tutti i cittadini fatto salvo un requisito di età (ed eventuali restrizioni ad personam per incapacità civile o specifiche sentenze) ed è contrapposto al suffragio ristretto, che può essere fondato sul censo, sul genere o sul grado di istruzione.
+5) **Definisci il termine "suffragio diretto/indiretto".**
+	Suffragio diretto significa che gli elettori votano direttamente il candidato prescelto, eventualmente sulla base di liste elettorali ed è contrapposto a indiretto come avviene ad esempio per l’elezione del Presidente degli Stati Uniti in cui i cittadini scelgono dei “grandi elettori” vincolandoli a votare un dato candidato Presidente.
+6) **Definisci il termine "vincolo di mandato".**
+	Si tratta di un istituto giuridico collegato con la rappresentanza: in diritto civile, comporta l'obbligo del rappresentante di agire secondo le istruzioni ricevute dal mandante, in nome e per conto del quale opera.
+7) **Definisci il termine "appoggio/supporto (endorsement) / manifestazione di approvazione o dis-approvazione / valutazione (rating)".**
+	==boh==
+8) **Quali sono le regole da stabilire per una "votazione"?**
+	il voto è regolato da precise regole: alcune riguardano ciò che precede il momento del voto, tra cui la presentazione di eventuali liste elettorali; altre riguardano il momento del voto e tipicamente stabiliscono:
+	- chi ha diritto di votare (elettorato attivo) e chi può essere votato (elettorato passivo); nel seguito usiamo elettorato per denotare l’insieme di coloro che hanno diritto di votare ad una data elezione, e ammissibilità (al voto) per dire che una persona ne fa parte; mentre useremo eleggibilità per dire che una persona può venire eletta;
+	- come vengono riconosciuti/identificati gli aventi diritti al voto;
+	- se il voto è segreto o palese;
+	- quanti voti può esprimere ogni votante, o, più in generale, come può esprimere le sue preferenze;
+	- come viene calcolato l’esito della votazione sulla base dei voti espressi e delle regole prestabilite (la ’legge elettorale’ che può prevedere la presenza di liste elettorali).
+9) **Quali sono le proprietà tipiche richieste ad un "sistema di voto"?**
+	- segretezza: nessuno deve poter risalire dal voto a chi lo ha espresso;
+	- libertà (incoercibilità): nessuno deve poter influenzare l’espressione del voto che qualificano il voto in un paese democratico;
+	- ammissibilità: possono votare solo gli aventi diritto che devono quindi essere identificati;
+	- unicità: ciascun votante può esprimere un solo voto, o meglio, può esprimere una sola volta i voti che competono a ciascun votante secondo il meccanismo elettorale previsto; ad esempio, l’attuale legge elettorale della Camera dei Deputati prevede ad ogni tornata elettorale che ogni votante esprima un voto per il collegio uninominale e uno per il collegio plurinominale, eventualmente accompagnato da due preferenze;
+	- immodificabilità: il voto espresso non deve poter essere modificato;
+	- completezza: tutti i voti validi sono conteggiati correttamente (cioè nessun voto espresso viene perso); i voti invalidi non sono conteggiati nello scrutinio;
+	- lealtà: nessuno conosce alcun risultato intermedio prima della fine delle votazioni.
+10) **Cosa si intende con "segretezza/libertà/ammissibilità/unicità/immodificabilità/completezza/lealtà/fiducia/verificabilità" in un "sistema di voto"?**
+	Sono le proprietà tipiche di un sistema di voto:
+	- segretezza: nessuno deve poter risalire dal voto a chi lo ha espresso;
+	- libertà (incoercibilità): nessuno deve poter influenzare l’espressione del voto che qualificano il voto in un paese democratico;
+	- ammissibilità: possono votare solo gli aventi diritto che devono quindi essere identificati;
+	- unicità: ciascun votante può esprimere un solo voto, o meglio, può esprimere una sola volta i voti che competono a ciascun votante secondo il meccanismo elettorale previsto; ad esempio, l’attuale legge elettorale della Camera dei Deputati prevede ad ogni tornata elettorale che ogni votante esprima un voto per il collegio uninominale e uno per il collegio plurinominale, eventualmente accompagnato da due preferenze;
+	- immodificabilità: il voto espresso non deve poter essere modificato;
+	- completezza: tutti i voti validi sono conteggiati correttamente (cioè nessun voto espresso viene perso); i voti invalidi non sono conteggiati nello scrutinio;
+	- lealtà: nessuno conosce alcun risultato intermedio prima della fine delle votazioni.
+11) **In che senso gli scrutini avvengono alla "luce del sole"?**
+	Nel senso che possono assistere allo scrutinio i rappresentanti di lista accreditati presso il seggio (e anche ogni cittadino lì iscritto alle liste elettorali) e lo stesso accade nei Tribunali e al Ministero dell’Interno.
+12) **Quali sono i problemi riscontrabili nei sistemi di voto tradizionali?**
+	- non si può escludere che l’elettore venga indotto o costretto a votare in un determinato modo. Tipicamente rientra in questo ambito il cosiddetto voto di scambio, che si riferisce all’azione di un candidato il quale prometta ad un elettore di ricambiare il voto suo ed eventualmente di altri da lui procurati con denaro o favori leciti o illeciti. Quando il voto di scambio avviene con modalità mafiose, cioè con l’intimidazione data dall’appartenenza a un gruppo criminale, costituisce un reato penale, punito dalla legge;
+	- lo ’scambio’ implica che esiste - per qualcuno e in qualche modo - la possibilità di verificare che i voti siano stati effettivamenti espressi come promesso, con ciò contravvenendo alla segretezza del voto. Con il voto cartaceo, tale controllo si realizza con forme di ’firma’ della scheda che non ne comportano l’annullamento10 (ad esempio con convenzioni concordate nella espressione delle preferenze rilevabili da rappresentanti di lista collusi), o, più recentemente con l’uso di telefoni cellulari per fotografare il voto espresso, o ancora introducendo nell’urna una scheda già votata che non era quella consegnata al seggio, ma una identica portata con sé di nascosto dall’elettore;
+	- non si può escludere che il voto venga alterato dopo che è stato espresso, ad esempio ’votando’ delle schede bianche in fase di conteggio, cioè dopo che sono state estratte dall’urna. Un’azione di questo tipo richiede tuttavia la complicità di tutti i membri di un seggio elettorale, eventuali rappresentanti di lista inclusi, o quanto meno la complicità di alcuni e la colpevole distrazione di altri, il che la rende di diﬀicile implementazione;
+	- la legge per il voto degli italiani all’estero (ma lo stesso vale per molti altri Paesi) stabilisce degli appositi collegi e prevede la possibilità di esercitare il voto per posta: l’elettore riceve le schede elettorali al suo domicilio estero, esprime il voto e le rispedisce (in genere al più vicino consolato o ambasciata). Questo significa che chi vota lo fa ’nella cucina di casa’, alla portata di parenti, amici o altri soggetti che possono condizionare il suo voto. Anche in questo caso le proprietà di segretezza e libertà del voto possono venire a cadere.
+13) **Quali potrebbero essere i vantaggi dei sistemi di voto digitali?**
+	- riduzione dei costi delle votazioni, che può facilitare un più frequente ricorso agli istituti di democrazia diretta quali i referendum;
+	- maggiore velocità nel computo dei risultati;
+	- maggiore inclusività, tipicamente per facilitare il voto di persone che - pur non rientrando tra coloro che possono usufruire della legge per il voto degli italiani all’estero - non possono recarsi al seggio elettorale in cui sono iscritte nella località di residenza, e che non sempre riescono ad avvalersi delle facilitazioni previste;
+	- contrasto della diminuzione dell’affluenza al voto.
+14) **Cosa si intende con "voto elettronico"? e con "voto online"?**
+	Il voto elettronico è il voto adempiuto attraverso apposite macchine di voto elettronico ai seggi; in generale il riconoscimento del votante avviene al seggio prima del voto, ma sono state proposte soluzioni che includono l’autenticazione del votante con smart card alla voting machine collocata nel seggio; il voto online, invecem avviene attraverso dispositivi digitali nella disponibilità dell’elettore, che si collega da remoto via internet al sistema di voto (è quindi sinonimo di voto via internet).
+15) **Di quali criticità soffre il "voto online"?**
+	Fornire contemporaneamente tutte le necessarie garanzie in un sistema di voto online è estremamente diﬀicile perché coinvolge applicazioni software che ’girano’ sul dispositivo del votante e su un insieme di server tra loro collegati per gestire le varie fasi del voto usando gli archivi sopra menzionati, ciascuno gestito da soggetti diversi (gli amministratori dei vari computer coinvolti) che necessariamente, per garantire il funzionamento del sistema, la sua manutenzione e la possibilità di intervento in caso di malfunzionamenti, devono poter accedere non solo al software di voto, ma anche al sistema operativo, ai software ad esso collegati e agli archivi di dati. La prima condizione perché il software di voto sia protetto da comportamenti fraudolenti di un qualche amministratore dei sistemi informatici è quindi che sia open-source in maniera tale che potenzialmente chiunque, volendo, può prendere visione del codice per accertarsi che non ci siano manipolazioni dei voti espressi (immodificabilità), vengano trasmessi e conteggiati correttamente (completezza). E dovrebbero essere open-source tutti i software dei computer coinvolti. Un software proprietario non può offrire queste garanzie. Inoltre, come si fa a essere completamente certi che non sia stato introdotto da qualche parte - non solo nel software di voto in senso stretto, ma anche nel software di trasmissione dei dati o nell’hardware, o con un virus nel software che gira sui device di voto - una sequenza di istruzioni che alterano il voto e quindi i risultati o che trasmettono altrove i voti quando le votazioni sono ancora aperte (lealtà)?
+	E cosa succede se, sempre a votazioni aperte, si verifica un attacco allasicurezza di uno qualunque dei computer che fanno parte del sistema di voto (inclusi i dispositivi personali che, gestiti da persone non esperte, in genere sono meno protetti dei server gestiti da professionisti)?
+	Un’altra criticità viene dalla proprietà di unicità del voto (nel senso sopra precisato): il sistema deve tenere traccia di chi ha già votato per bloccare chi provasse a votare più volte. Ma quando è che il sistema di voto registra che un elettore ha votato? Se lo registra sul (secondo) archivio che contiene l’elenco degli aventi diritto al voto quando gli consegna la scheda elettorale, prima di ’dimenticarne’ l’identità, nel caso poi si verificasse un malfunzionamento che impedisse di portare a termine l’espressione del voto e la sua memorizzazione, il sistema bloccherebbe un successivo accesso perché gli risulterebbe che quell’elettore ha già votato. Se, invece, lo registra dopo che ha effettivamente votato (“la signora Giovanna N. ha votato”, dice il Presidente di seggio quando le schede votate vengono infilate nell’urna), cioè dopo che le operazioni (digitali) di espressione del voto e la sua memorizzazione sono state ultimate con successo, deve necessariamente aver tenuto traccia dell’identità del votante e quindi il disaccoppiamento votante-voto viene concettualmente compromesso. Essite pure la questione della libertà (non coercibilità) dell’elettore.
+16) **Analizza le esperienze di voto digitale di Germania, Estonia e Svizzera.**
+	La sentenza della Corte Costituzionale tedesca ha sancito, in modo inappellabile, la non costituzionalità in Germania del voto elettronico (con ciò intendendo un qualunque ricorso a tecnologie elettroniche o digitali), sulla base di due considerazioni che costituiscono la Premessa della sentenza:
+	- “Il principio della natura pubblica delle elezioni che richiede che tutte le fasi essenziali delle elezioni siano soggette a pubblico esame a meno che altri interessi costituzionali giustifichino un’eccezione;
+	- Quando vengono utilizzate macchine per il voto elettronico, deve essere possibile per il cittadino comprendere e controllare i passaggi essenziali dell’atto elettorale e dell’accertamento dei risultati in modo aﬀidabile e senza particolari conoscenze specialistiche.”
+	L’ Estonia è il Paese che ha scelto di imboccare con convinzione la strada del voto online. Questi sono i tre significativi aspetti di come il voto online è stato implementato in Estonia:
+	- L’elettore che intende avvalersi del voto online (detto I-voting per Internet voting) deve avere una ID-card con il relativo PIN, e un card-reader con il relativo software installato sul computer che intende usare (non è possibile votare da dispositivi mobili) su cui deve anche essere installato il software per votare;
+	- I-voting inizia alle ore 9:00 del lunedì fino alle 20:00 del sabato della settimana elettorale. L’I-vote può essere modificato fino al sabato sera (il cosiddetto voto anticipato);
+	- Dal 2021, gli elettori possono votare anche con scheda cartacea in un seggio elettorale la domenica, giorno delle elezioni. In questo caso, l’i-vote non sarà preso in considerazione e sarà valido solo il voto espresso su scheda cartacea;
+	- Ciascun votante può verificare se il proprio voto ha raggiunto il server centrale delle elezioni e rispecchia correttamente la scelta dell’elettore, effettuando un controllo dopo l’i-voting che può essere ripetuto fino a tre volte in una mezz’ora con un dispositivo smart. Se un elettore desidera controllare il proprio voto, deve installare l’applicazione di verifica sul proprio dispositivo smart prima di iniziare a votare su un computer.
+	Per consentire ai votanti di modificare il voto espresso online e di sovrascriverlo con il voto cartaceo al seggio, il disaccoppiamento tra identità del votante e voto espresso avviene solo a urne chiuse, dopo che sono stati cancellati i ’doppioni’. Fino a quel momento, i voti sono registrati associati a un identificativo del votante.
+	Il caso della Confederazione Elvetica è rilevante perché, come l’Estonia, la sperimentazione si sviluppa da quasi due decenni, con prove, problemi, pause, miglioramenti sia sul piano tecnologico che giuridico e politico. Va inoltre ricordato che gli elettori svizzeri, oltre che in occasione delle elezioni per la nomina dei rappresentanti nei parlamenti cantonali e in quello federale, votano frequentemente in occasione dei referendum di iniziativa popolare che, per i fautori della democrazia diretta, fanno della Svizzera un caso da imitare. Negli ultimi anni i Cantoni avevano a disposizione due sistemi di voto elettronico: quello del Cantone di Ginevra e quello della Posta Svizzera:
+	- Nel novembre 2018 il Cantone di Ginevra “ha informato che non avrebbe continuato a sviluppare il suo sistema, ritenendo che non fosse compito di un Cantone sviluppare, gestire e finanziare da solo un sistema informatico di tale complessità e dimensioni”, ma ne ha pubblicato il codice sorgente;
+	- Nel luglio 2019, la Posta Svizzera, a seguito della scoperta di diverse lacune nel suo sistema finora in uso con verificabilità individuale, ha comunicato che lo non avrebbe più utilizzato e “che si sarebbe concentrata sull’ulteriore sviluppo del sistema con verificabilità completa”.
+17) **Descrivi la situazione "voto digitale" in Italia.**
+	In Italia, finora è mancato un piano ben definito per avviare la sperimentazione di soluzioni digitali nella gestione del processo di voto su cui far crescere consapevolezza e coinvolgimento da parte della popolazione. Vi sono state comunque iniziative che possiamo così raggruppare:
+	- sperimentazioni dello “scrutinio informatizzato” nella prima decade del 2000;
+	- sperimentazioni del voto elettronico in occasione del Referendum consultivo organizzato nel 2017 dalla Regione Lombardia (amministrazione Maroni) per sondare la volontà dei cittadini sull’avvio dell’iter legislativo per rafforzare l’autonomia delle Regioni;
+	- decreto per la sperimentazione del voto elettronico in Italia del luglio 2021 e relative linee guida, con la sperimentazione in occasione delle elezioni dei Comitati degli italiani all’estero.
+	Nel 2021 ha preso il via sul portale IOvoto63 la prima sperimentazione organizzata dal Ministero degli Affari Esteri nel contesto delle elezioni dei Comitati degli italiani all’estero. I votanti sono stati esigui. ==finire==
+1. **Quali altri contesti di voto in cui la versione digitale potrebbe essere proficuamente applicata abbiamo analizzato?**
+	Votazioni che hanno luogo all’interno di processi partecipativi/deliberativi o all’interno di organizzazioni che possono giocare un ruolo sulla scena pubblica: partiti, sindacati, ma anche associazioni no profit che spesso le istituzioni convocano in audizione o chiamano a sedere in ’tavoli’ consultivi al fine di raccogliere per loro tramite l’opinione dei portatori di interessi (stakeholder) in specifici ambiti oggetto di politiche pubbliche. Abbiamo analizzato le votazioni nelle Università italiane, le votazioni online del Movimento 5 Stelle e del PD, le votazioni di aziende per l'elezione dei propri organi di governo.
+18) **Cosa si intende con "stakeholder"?**
+	Uno stakeholder è una persona, un gruppo o un'organizzazione che ha un interesse, un'influenza o è influenzato da un progetto, un'iniziativa o un'azienda
+19) **Quali problemi vedi nell'utilizzo del sistema UniVote?**
+	==boh==
+20) **Quali problemi vedi nell'utilizzo del sistema di voto dei "$5$ stelle"?**
+	Le debolezze intrinseche delle soluzioni tecnologiche rilevate sia dal Garante della Privacy sia da un’inchiesta svolta da Wired che ha provato la possibilità per un medesimo individuo di votare due volte. Inoltre, la gestione delle votazioni era per intero aﬀidata alla Casaleggio Associati, azienda di proprietà di Gianroberto Casaleggio, uno dei fondatori del movimento (ereditata, alla scomparsa di questi, dal figlio Davide), cioè uno dei più influenti attori politici del M5S, e come tale non super-partes. Casaleggio ingaggiò un ’certificatore’ indipendente per garantire la correttezza del voto. Ma questa soluzione aveva due seri limiti: il certificatore era scelto (e presumibilmente retribuito) dal soggetto che doveva controllare; inoltre, come rilevato nel provvedimento del Garante, una certificazione al termine delle votazioni - per cosi dire: a cose fatte - può aggiungere ben poco “dal punto di vista della genuinità dei risultati, in un contesto in cui le caratteristiche dello strumento informatico utilizzato non consentono di svolgere alcuna significativa verifica su dati che sono, per loro natura e modalità di trattamento, tecnicamente alterabili in pressoché ogni fase del procedimento di votazione e scrutinio antecedente la certificazione.
+21) **Perché in alcuni sistemi di voto digitale deve passare un certo tempo dall'iscrizione per ottenere il diritto di voto?**
+	Al fine di scongiurare comportamenti opportunistici da parte di lobby interessante a influenzare in un dato modo l’esito della votazione. Può essere preso in considerazione se si vuole che partecipino alle votazioni solo coloro che hanno seguito le fasi precedenti alla votazione.
+22) **Cosa è la "teoria della scelta sociale"?**
+	E' una disciplina dell'economia e della scienza politica che studia i metodi per aggregare le preferenze individuali in una decisione collettiva. Si occupa di come trasformare le preferenze, i voti o i giudizi di una popolazione di individui in una scelta collettiva che rifletta, in qualche misura, le opinioni e i desideri di tutti i membri della società.
+23) **Che vantaggi ha l'uso di elaborazione elettronica in un sistema di voto?**
+	L’elaborazione elettronica (computer-based) rende più praticabili algoritmi di calcolo dei risultati di una votazione diﬀicilmente sostenibili (in termini di tempo ma anche di possibili errori) a mano; inoltre le moderne interfacce utente rendono più praticabili forme di espressione del voto più sofisticate dell’usuale barrare con una croce una delle opzioni proposte, ad esempio introducendo per il votante la possibilità di esprimere un ordinamento preferenziale tra di esse.
+24) **Cos'è un "metodo di voto"?**
+	Un metodo di voto è una procedura utilizzata per raccogliere e aggregare le preferenze dei votanti con lo scopo di arrivare a una decisione collettiva o eleggere un candidato.
+25) **Cosa si intende con "minimizzazione della scontentezza"?**
+	Il concetto di “minimizzazione della scontentezza” dell’elettorato è uno dei fattori che viene incorporato nella già citata teoria della scelta sociale. Esistono infatti metodi di voto che permettono l’integrazione delle preferenze positive (“voglio A”) con quelle negative (“non voglio B”) o anche delle preferenze relative (“preferisco C a B”).
+26) **Cosa si intende con metodo di voto a "scelta singola"?**
+	Scelta singola (plurality vote): i votanti possono scegliere una sola delle alternative proposte. Vince l’opzione che raggiunge la maggioranza (relativa) dei voti espressi. Se viene anche richiesto che il numero dei voti sia almeno pari alla metà+1 dei votanti, si parla di maggioranza assoluta; si parla di maggioranza qualificata se la proposta deve raccogliere un numero di voti superiore a una soglia (’quorum’) fissata statutariamente (ad es. 2/3, 3/4, 4/5 dei votanti o degli aventi diritto).
+27) **Cosa si intende con metodo di voto a "scelta multipla"?**
+	Scelta multipla (approval voting): i votanti possono scegliere le alternative che approvano (eventualmente con un minimo e un massimo). Più che a identificare un singolo vincitore, di solito questo metodo viene utilizzato per stilare un ordinamento delle opzioni sulla base dei voti complessivamente raccolti.
+28) **Cosa si intende con metodo di voto "cumulativo"?**
+	Cumulativo (cumulative voting, es. metodo Borda): ogni votante ha a disposizione un numero determinato di ”punti” che può distribuire a sua discrezione tra le alternative proposte. Anche in questo caso l’esito della votazione è un ordinamento delle opzioni sulla base dei ’punti’ complessivamente raccolti.
+29) **Cosa si intende con metodo di voto "a ordinamento"?**
+	Ordinamento (ranked voting methods, metodo Condorcet e sue varianti): il votante ordina le alternative secondo un proprio criterio di preferenza.
+30) **Cosa si intende con "preferenza collettiva"?**
+	Significa che la maggioranza preferisce un'opzione di scelta rispetto ad un'altra.
+31) **Cos'è il "principio di Condorcet"?**
+	Un sistema di voto che rispetta il Principio di Condorcet sceglie sempre (se esiste) l’alternativa che vince su ogni altra nel confronto a due.
+32) **Cos'è il "paradosso di Condorcet" (loop)?**
+	Quando nella matrice delle preferenze non c’è una riga con tutte le colonne vincenti, cioè non abbiamo un vincitore di Condorcet. Questa situazione viene chiamata ciclo (loop) o Paradosso di Condorcet perchè, appunto, le preferenze degli elettori creano un ciclo senza un chiaro vincitore.
+33) **Cosa sono le "preferenze indirette"?**
+	Le preferenze indirette secondo Schulze si riferiscono alla valutazione dei candidati non solo basata sui confronti diretti ma anche tenendo conto delle preferenze lungo i percorsi pesati tra i candidati. Questo approccio aiuta a risolvere situazioni in cui le preferenze degli elettori creano cicli, determinando comunque un chiaro vincitore secondo il principio di Condorcet.
+34) **Cos'è l'elettorato "attivo/passivo"?**
+	L'elettorato attivo si riferisce al diritto di votare. Comprende tutte le persone che hanno il diritto di esprimere il loro voto in un'elezione. L'elettorato passivo si riferisce al diritto di candidarsi e di essere eletti. Comprende tutte le persone che hanno il diritto di presentarsi come candidati in un'elezione.
+35) **Cos'è il "criterio di indipendenza delle alternative irrilevanti"?**
+	E' uno dei criteri di ’fairness’ (correttezza, imparzialità) di Arrow, il quale enuncia che le preferenze collettive tra due alternative $A$ e $B$ dipendono unicamente dalle preferenze individuali tra $A$ e $B$ e non sono influenzate dalle scelte che riguardano altre alternative.
+36) **Quali sono i "criteri di fairness" del voto?**
+	- Universalità del dominio (unrestricted domain): tutte le preferenze di tutti i votanti sono permesse;
+	- Unanimità: se per tutti gli individui $A > B$ allora nella scelta collettiva $A \gg B$;
+	- Indipendenza dalle alternative irrilevanti: le preferenze collettive tra due alternative $A$ e $B$ dipendono unicamente dalle preferenze individuali tra $A$ e $B$ e non sono influenzate dalle scelte che riguardano altre alternative;
+	- Non dittatorialità: non esiste nessun individuo la cui scelta $A > B$ (qualunque siano $A$e $B$) determina $A > B$ per ogni altro individuo.
+37) **Cosa dice il "Teorema di Arrow"?**
+	Il Teorema di Arrow afferma che non esiste nessuna funzione di scelta sociale che soddisfa i (quattro) criteri di universalità del dominio, unanimità, indipendenza dalle alternative irrilevanti e non dittatorialità.
+38) **Riassumi le esperienze di movimenti e partiti nell'era digitale.**
+	==boh==
+39) **Cos'è LiquidFeedback e che particolarità ha?**
+	Software open source concepito e progettato da attivisti del Partito Pirata tedesco per aiutare il processo decisionale
+	Due funzionalità qualificano LQFB:
+	- ingloba un processo deliberativo attraverso il quale le proposte avanzate dai partecipanti per affrontare un certo issue (questione o tema o problema) - organizzate in aree tematiche definite dai gestori della piattaforma - possono non soltanto essere discusse e appoggiate dagli altri partecipanti, ma anche elaborate in modo collaborativo (con una funzionalità di collaborative writing), e confrontate con delle contro-proposte sulla medesima questione. Alla fine del processo deliberativo, le proposte e le controproposte su una certa tematica che superano determinate soglie, vengono votate con il metodo Schulze: emerge non soltanto la proposta vincente (se c’è), ma anche una classifica di tutte le proposte votate;
+	- include la possibilità di transitive proxy voting: i partecipanti possono delegare (in modo revocabile) altri membri a fare proposte, partecipare al processo deliberativo e infine votare al loro posto in specifiche aree tematiche o su temi specifici. Posso ad esempio delegare la mia amica Maria ad agire al mio posto sui temi dell’ambiente perché la ritengo più competente di me; ma se mi accorgo che prende della posizioni che non rispecchiano quel che penso, in qualunque momento posso revocare la delega. Per poterlo consentire, LQFB adotta la completa trasparenza delle azioni online, incluso il voto che è sempre palese. Oppure, se so che per un certo periodo mi sarà impossibile partecipare attivamente, posso delegare Beppe ad operare per mio conto su qualunque tema, e revocare la delega quando posso tornare attiva. I delegati - che quindi agiscono non solo per se stessi, ma anche per conto di altri - possono a loro volta trasferire ad altri le loro deleghe. Si possono quindi creare dinamicamente dei leader ‘locali’ (su specifiche aree o temi), che sono però costantemente sotto il controllo dei deleganti. Il meccanismo della delega per categoria e revocabile permette un mix tra democrazia diretta (voto diretto su ogni tema/issue) e democrazia rappresentativa (delega del voto a un rappresentante): in altre parole, LQFB implementa un “dynamic scheme of representation”, una forma di democrazia liquida, da cui prende il nome.
+40) **Cosa si intende con "idea gathering"?**
+	L'idea gathering, o raccolta di idee, è il processo di raccogliere e aggregare idee, suggerimenti, opinioni o soluzioni da un gruppo di persone.
+41) **Cosa si intende con "online deliberation"?**
+	L'online deliberation, o deliberazione online, si riferisce al processo di discussione e decisione collettiva su piattaforme digitali.
+42) **Cosa si intende con "collaborative writing" in L$7$?**
+	Scrivere, elaborate in modo collaborativo utilizzando software di supporto al processo deliberativo.
+43) **Cita qualche metodo di voto e descrivilo.**
+	==boh==
+44) **Cosa si intende con "delega"? E con "delega liquida"?**
+	==boh==
+45) **Che parallelo puoi tracciare tra LQFB e Google Votes?**
+	==boh=?=
+46) **Qual è la "golden rule of liquid democracy"? Ha senso?**
+	==boh==
+47) **Cosa si intende con "decision-making"?**
+	Il "decision making", o processo decisionale, è il processo di identificare e scegliere alternative basate sui valori e le preferenze del decisore.
+48) **Cita e descrivi qualche software di online deliberation di seconda generazione.**
+	==boh==
+49) **Cosa sono i "bilanci partecipativi"?**
+	Con il Bilancio Partecipativo, i cittadini sono coinvolti, attraverso un percorso deliberativo più o meno strutturato che può prevedere momenti diversi di attivazione, co-ideazione, co-progettazione e voto, nella scelta di come destinare parte delle risorse che compongono il bilancio di un ente o di una organizzazione.
+50) **Quali fasi compongono un "bilancio partecipativo" in generale?**
+	Il processo è sostanzialmente costituito dalle seguenti quattro fasi:
+	- Raccolta e filtro delle proposte: i cittadini fanno proposte su come investire le risorse messe a disposizione dal Bilancio Partecipativo. In questa fase può essere attivato un “filtro” per permettere solo alle proposte che soddisfano determinate condizioni (in genere, le più popolari) di proseguire nel percorso;
+	- Valutazione di fattibilità e co-progettazione: le proposte (eventualmente solo quelle selezionate) vengono esaminate dal personale competente dell’amministrazione che promuove il processo, per valutare la fattibilità tecnica e i costi. Sulla base di questa valutazione e insieme ai proponenti, vengono definiti i progetti che saranno sottoposti al voto;
+	- Selezione dei progetti (voto): i progetti elaborati nella fase precedente vengono messi al voto al fine di selezionare quelli da realizzare con le risorse disponibili;
+	- Realizzazione dei progetti e monitoraggio: i progetti più votati vengono effettivamente realizzati. In questa fase è possibile attivare attività di monitoraggio, anche con il coinvolgimento dei cittadini, per seguire e verificare lo stato di implementazione degli interventi.
 
 -----
 

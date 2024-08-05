@@ -1182,9 +1182,15 @@ To summarize it
 
 ### Continuous Random Variables
 Continuous Random Variables have one big advantage over the discrete ones, which is their visual representation.
+
+The way to generate continuous Random Variables is the contiuous counterpart of the Inverse Transform Method.
 #### Uniformly Distribute Random Variable 
 
-slide 15/34 modeling ariel simulation
+![[UniformlyDistributedRandomVariable.png]]
+
+The area under the line in the first graph above must obviously be equal to $1$.
+
+
 
 -------------------------------------------------------------
 
