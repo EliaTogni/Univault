@@ -1371,17 +1371,20 @@
 42) **Cosa si intende con "collaborative writing" in L$7$?**
 	Scrivere, elaborate in modo collaborativo utilizzando software di supporto al processo deliberativo.
 43) **Cita qualche metodo di voto e descrivilo.**
-	==boh==
-44) **Cosa si intende con "delega"? E con "delega liquida"?**
-	==boh==
+	- Scelta singola (plurality vote): i votanti possono scegliere una sola delle alternative proposte. Vince l’opzione che raggiunge la maggioranza (relativa) dei voti espressi. Se viene anche richiesto che il numero dei voti sia almeno pari alla metà+1 dei votanti, si parla di maggioranza assoluta; si parla di maggioranza qualificata se la proposta deve raccogliere un numero di voti superiore a una soglia (’quorum’) fissata statutariamente (ad es. 2/3, 3/4, 4/5 dei votanti o degli aventi diritto);
+	- Scelta multipla (approval voting): i votanti possono scegliere le alternative che approvano (eventualmente con un minimo e un massimo). Più che a identificare un singolo vincitore, di solito questo metodo viene utilizzato per stilare un ordinamento delle opzioni sulla base dei voti complessivamente raccolti;
+	- Cumulativo (cumulative voting, es. metodo Borda): ogni votante ha a disposizione un numero determinato di ”punti” che può distribuire a sua discrezione tra le alternative proposte. Anche in questo caso l’esito della votazione è un ordinamento delle opzioni sulla base dei ’punti’ complessivamente raccolti;
+	- Ordinamento (ranked voting methods, metodo Condorcet e sue varianti): il votante ordina le alternative secondo un proprio criterio di preferenza.
+1) **Cosa si intende con "delega"? E con "delega liquida"?**
+	La "delega" si riferisce al trasferimento di autorità o responsabilità da una persona o ente a un altro. la delega liquida è flessibile e dinamica. Gli elettori possono modificare o revocare la delega in qualsiasi momento, mantenendo un controllo continuo sul loro potere di voto.
 45) **Che parallelo puoi tracciare tra LQFB e Google Votes?**
-	==boh=?=
-46) **Qual è la "golden rule of liquid democracy"? Ha senso?**
 	==boh==
+46) **Qual è la "golden rule of liquid democracy"? Ha senso?**
+	"If I give you my vote, I can see what you do with it". ==finire==
 47) **Cosa si intende con "decision-making"?**
 	Il "decision making", o processo decisionale, è il processo di identificare e scegliere alternative basate sui valori e le preferenze del decisore.
 48) **Cita e descrivi qualche software di online deliberation di seconda generazione.**
-	==boh==
+	Loomio e Pol.is sono stati sviluppati per iniziativa di attivisti del movimento Occupy, rispettivamente in Nuova Zelanda e a Seattle (US). Loomio è stato poi adottato da numerosi gruppi locali di Podemos in Spagna, mentre il caso d’uso più significato di Pol.is è stato a Taiwan. Per semplificare il processo deliberativo e non dividere l’attenzione dei partecipanti, entrambi permettono agli utenti di considerare solo una questione alla volta. Mirano entrambi a far convergere le opinioni verso un consenso, ma differiscono nel meccanismo con cui cercano di raggiungerlo. Loomio organizza la discussione in gruppi, di dimensioni relativamente ridotte. I membri del gruppo discutono sostanzialmente come in un forum, ma quando uno dei partecipanti ritiene che dalla discussione emerga una proposta e la formula esplicitamente, allora i membri del gruppo sono invitati ad esprimersi con accordo, disaccordo, astensione, o blocco. Pol.is fa aﬀidamento su amministratori/moderatori che formulano ‘opinion statement’ sulla questione in discussione e chiedono ai partecipanti di approvare, rigettare o ‘passare’ questi statement; un algoritmo raggruppa (“clusterizza”) gli statement per aﬀinità di opinione, il che permette agli amministratori di formulare nuovi statement che meglio riflettono l’opinione prevalente facilitando così la convergenza verso il consenso.
 49) **Cosa sono i "bilanci partecipativi"?**
 	Con il Bilancio Partecipativo, i cittadini sono coinvolti, attraverso un percorso deliberativo più o meno strutturato che può prevedere momenti diversi di attivazione, co-ideazione, co-progettazione e voto, nella scelta di come destinare parte delle risorse che compongono il bilancio di un ente o di una organizzazione.
 50) **Quali fasi compongono un "bilancio partecipativo" in generale?**
