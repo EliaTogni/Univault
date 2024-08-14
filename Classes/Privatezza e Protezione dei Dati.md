@@ -4065,7 +4065,7 @@ The shuffle index can be extended to efficiently:
 
 1) Introdurre access e pattern confidentiality e spiegare shuffle index con cover searches, cached searches e shuffling facendo disegni per spiegare.
 2) Encryption per proteggere la confidenzialità dei dati con enfasi su indicizzazione (e.g. diretta), vantaggi e svantaggi.
-3)  Data fragmentation: alcune tecniche (non communicating pair of servers, multiple non linkable fragments, keep a few) e come si frammentano. Parlare di visibility requirements.
+3) Data fragmentation: alcune tecniche (non communicating pair of servers, multiple non linkable fragments, keep a few) e come si frammentano. Parlare di visibility requirements.
 4) Frammentazione multiple non linkable fragments: con quasi identifiers, associazioni da spezzare e anche dipendenze.
 
 

@@ -10,7 +10,7 @@ Often, modeling an event, despite the numerous simplifications and restrictions 
 - some internal details, approximated through stochastic components.
 
 The reasons for using simulations are manifold:
-- tt is a valid (and often cost-effective) tool for approximating a real event;
+- it is a valid (and often cost-effective) tool for approximating a real event;
 - it allows testing of scenarios;
 - the construction of the model itself can benefit the modeler in terms of a greater understanding of the system being modeled;
 - the ability to perform _what-if_ analyses on a system (i.e., _what would happen if this parameter varied from this value to that value?_);
@@ -345,7 +345,7 @@ $$P(C) = P(C \vert B)P(B) + P(C \vert B^c)P(B^c) = (.25)(.4) + (.10)(.6) = .16$$
 
 Suppose that exactly one of the events $B_i, i = 1, ..., n$ must occur. That is, suppose that $B_1, B_2, ..., B_n$ are mutually exclusive events whose union is the sample space $S$. Then we can also compute the probability of an event $A$ by conditioning on which of the $B_i$ occur. The formula for this is obtained by using that
 
-$$A = A \cap S = A \bigcup^n_{i=1} B_i = \bigcup^n_{i=1} A \cap B_i$$
+$$A = A \cap S = A \cap \bigcup^n_{i=1} B_i = \bigcup^n_{i=1} A \cap B_i$$
 
 which implies that
 
@@ -408,7 +408,7 @@ esempio numerico
 -------------------------------------------------------------
 
 #### Probability density function
-Whereas a discrete random variable assumes at most a countable set of possible values, it is common to have to consider random variables whose set of possible values is an interval. It is sad that the random variable $X$ is a **continuous random variable** if there is a nonnegative function $f(x)$ defined for all real numbers $x$ and having the property that for any set $C$ of real numbers
+Whereas a discrete random variable assumes at most a countable set of possible values, it is common to have to consider random variables whose set of possible values is an interval. It is said that the random variable $X$ is a **continuous random variable** if there is a nonnegative function $f(x)$ defined for all real numbers $x$ and having the property that for any set $C$ of real numbers
 
 $$P[X \in C] = \int_{C} f(x) dx$$
 
@@ -467,7 +467,7 @@ $$\mathbb{E}[X_1 + X_2] = \mathbb{E}[X_1] + \mathbb{E}[X_2]$$
 
 which easily generalizes to give
 
-$$\mathbb{E}\Big[\sum_{i = 1}^{n} x_i\Big] = \sum_{i = 1}^{n}\mathbb{E}[X_i]$$
+$$\mathbb{E}\Big[\sum_{i = 1}^{n} X_i\Big] = \sum_{i = 1}^{n}\mathbb{E}[X_i]$$
 
 -------------------------------------------------------------
 
@@ -550,17 +550,16 @@ $$X \geq Y$$
 
 Taking expectations of the preceding inequality yields
 
-$$\mathbb{E}[X] \geq \mathbb{E}[Y] = aP[X \geq a]]$$
+$$\mathbb{E}[X] \geq \mathbb{E}[Y] = aP[X \geq a] + 0P[X < a] = aP[X \geq a]$$
 
 and the result is proved.
 
 -------------------------------------------------------------
 
 #### Chebishev's Inequality
-**Chebyshev’s inequality** states that the probability that a random variable differs from its mean by more than $k$ of its standard deviations is bounded by $\frac{1}{k^2}$, where the standard deviation of a random variable is defined to be the square root of its variance. If $X$ is a random variable having mean $\mu$ and
-variance $\sigma^2$, then for any value $k > 0$
+**Chebyshev’s inequality** states that the probability that a random variable differs from its mean by more than $k$ of its standard deviations is bounded by $\frac{1}{k^2}$, where the standard deviation of a random variable is defined to be the square root of its variance. If $X$ is a random variable having mean $\mu$ and variance $\sigma^2$, then for any value $k > 0$
 
-$$P[\vert X - \mu \vert \geq k \sigma] \leq \frac{1}{k^2}$$
+$$P\Big[\vert X - \mu \vert \geq k \sigma\Big] \leq \frac{1}{k^2}$$
 
 Since it is possible to define $Y = \frac{(X − \mu)^2}{\sigma^2}$ as a nonnegative random variable whose mean is
 
@@ -572,12 +571,43 @@ $$P \Big[\frac{(X - \mu)^2}{\sigma^2} \geq k^2\Big] \leq \frac{1}{k^2}$$
 
 The result now follows since the inequality $\frac{(X − \mu)^2}{\sigma^2} \geq k^2$ is equivalent to the inequality $\vert X − \mu \vert \geq k \sigma$.
 
+A more general form of the Chebishev's Inequality is the following. If $X$ is a random variable having mean $\mu$ and variance $\sigma^2$, then for any value $k > 0$
+
+$$P\Big[\vert X−E[X] \vert \geq k\Big] \leq \frac{\sigma^2}{k^2}$$
+
+If we define $k = \sigma \cdot k'$, where $k'$ is a positive number, the inequality becomes
+
+$$P\Big[\vert X - \mu \vert \geq k' \sigma\Big] \leq \frac{1}{k'^2}$$
+which is the initial one.
+
 -------------------------------------------------------------
 
 #### Weak law of large numbers
-using Chebyshev’s inequality it is possible to prove the **weak law of large numbers**, which states that the probability that the average of the first $n$ terms of a sequence of independent and identically distributed random variables differs from its mean by more than $\varepsilon$ goes to $0$ as $n$ goes to infinity.
+Using Chebyshev’s inequality it is possible to prove the **weak law of large numbers**, which states that the probability that the average of the first $n$ terms of a sequence of independent and identically distributed random variables differs from its mean by more than $\varepsilon$ goes to $0$ as $n$ goes to infinity.
 
 Let $X_1, X_2, \dots$ be a sequence of independent and identically distributed random variables having mean $\mu$. Then, for any $\varepsilon > 0$
+
+$$P\Bigg[ \bigg \vert \frac{X_1 + \cdots + X_n}{n} - \mu \bigg\vert \geq \varepsilon \Bigg] \to 0 \text{ as } n \to \infty$$
+
+Proof:<br />
+We give a proof under the additional assumption that the random variables $X_i$ have a finite variance $\sigma^2$. Now
+
+$$\mathbb{E}\Bigg[\frac{X_1 + \dots + X_n}{n}\Bigg] = \frac{1}{n} \Big(\mathbb{E}[X_1] + \dots + \mathbb{E}[X_n]\Big) = \frac{1}{n} \cdot n\mu = \mu$$
+
+and
+
+$$Var \Bigg[\frac{X_1 + \dots + X_n}{n}\Bigg] =  = \frac{1}{n^2} \Big[Var[X_1] + \dots + Var[X_n]\Big] = \frac{1}{n^2} \cdot n\sigma^2 = \frac{\sigma^2}{n}$$
+
+where the above equation makes use of the fact that the variance of the sum of independent random variables is equal to the sum of their variances. Hence, from Chebyshev’s inequality, which says that
+
+$$P\Bigg[\vert X−E[X] \vert \geq k\Bigg]≤\frac{Var[X]}{k^2}$$​
+
+it follows that for any positive $k$
+
+$$P\Bigg[ \bigg \vert \frac{X_1 + \cdots + X_n}{n} - \mu \bigg\vert \geq \frac{k\sigma}{\sqrt{n}} \Bigg] \leq \frac{1}{k^2}$$
+
+Hence, for any $\varepsilon > 0$, by letting $k$ be such that $\frac{k\sigma}{n} = \varepsilon$, that is, by letting $k^2 =
+\frac{n\varepsilon^2}{\sigma^2}, we see that
 
 $$P\Bigg[ \bigg \vert \frac{X_1 + \cdots + X_n}{n} - \mu \bigg\vert \geq \varepsilon \Bigg] \leq \frac{\sigma^2}{n \varepsilon^2}$$
 
@@ -679,16 +709,16 @@ def congruential_generator(seed = 1, a= 7 ** 5, c=0, m=(2 ** 31 - 1), n=1):
   return(v)
 ```
 
-Which is the quality of pseudorandom numbers generating using this technique? First of all, note that once the seed has been fixed the recurrence relation is completely deterministic, and this means that after at most elements the sequence will generate already produced elements, thus repeating itself. In general, however, the sequence will start repeating after a number of iterations, which it will be designate as the **period** of the generator.
+Which is the quality of pseudorandom numbers generating using this technique? First of all, note that once the seed has been fixed the recurrence relation is completely deterministic, and this means that after at most $m$  elements the sequence will generate already produced elements, thus repeating itself. In general, however, the sequence will start repeating after a number of iterations, which it will be designate as the **period** of the generator.
 
 In general, there are three main distinctive properties that drive the choice of the parameters of a congruential generator:
-1) the set of generated pseudorandom values should be undistinguishable from an analogous sample drawn from a discrete uniform distribution over $\{0 , \dots, m-1\}$;
+-  the set of generated pseudorandom values should be undistinguishable from an analogous sample drawn from a discrete uniform distribution over $\{0 , \dots, m-1\}$;
 - its period should be as higher as possible;
 - its computer implementation should be efficient.
 
 Note that a high period per se does not tell anything about the quality of its generator: consider for instance the trivial generator obtained by setting $x_{i + 1} = x_i + 1$ which has maximum period $m -1$ for any value of $m$. Such a generator would be useless because of the **predictability** of the unseen part of a pseudorandom sequence: each item is the successor of previous element modulo $m$ . This is why a good generator should guarantee the first two above mentioned requirements: the first one requires the generator to output a sequence of values difficult to predict, and the second one requires that this sequence be as long as possible. Finally, the third requirement deals with parameters allowing an efficient implementation of the corresponding generators in a computer: for instance, the previous choice of $m = 2^{31} -1$ allows to store each of the produced values in a $32$-bit CPU register.
 
-How is it possible to check the first requirement of unpredictability of the generated pseudorandom sequence? A procedure called **Ripley test**consists in verifying that there is a small dependency between successive elements in the sequence, for instance plotting in a bidimensional plane a set of points whose $X$ coordinates have been obtained by the pseudorandom generator, and the $Y$ coordinates are simply the $X$ ones rotated by one item, say on the left.
+How is it possible to check the first requirement of unpredictability of the generated pseudorandom sequence? A procedure called **Ripley test** consists in verifying that there is a small dependency between successive elements in the sequence, for instance plotting in a bidimensional plane a set of points whose $X$ coordinates have been obtained by the pseudorandom generator, and the $Y$ coordinates are simply the $X$ ones rotated by one item, say on the left.
 
 ```python
 def ripley_test(v):
@@ -772,7 +802,7 @@ Although on that time this idea did not result in any application, when some yea
 The secrecy policies of the Manhattan project required each methodelogy invented in the Los Alamos laboratories to have a code name, so Metropolis suggested **Monte Carlo**, referring to the casino in Monaco frequented by Ulam's uncle.
 
 ### Estimating $\pi$
-One of the most famous involving the simulation of pseudorandom values is that leading to an estimate of $\pi$. It requires to simulate the uniform distribution in a given square in order to draw points at random and then chek whether or not they fall inside the circle inscribed in the square. For instance, it is possible to consider the square and denote by the circle inscribed in (that is, the circle centered in the origin and having unit radius).
+One of the most famous experiment involving the simulation of pseudorandom values is that leading to an estimate of $\pi$. It requires to simulate the uniform distribution in a given square in order to draw points at random and then check whether or not they fall inside the circle inscribed in the square. For instance, it is possible to consider the square and denote by the circle inscribed in (that is, the circle centered in the origin and having unit radius).
 
 ![[MonteCarloCircle.png]]
 

@@ -1,0 +1,2 @@
+Con questo approccio tutta la computazione avviene lato server: il client si limita a gestire gli input e decomprimere lo stream video e audio ricevuto.
+A scapito di un maggior carico lato server (bisogna infatti tenere traccia dello stto del mondo 3D e per ogni giocatore eseguire render, sound render e compressione video ), una maggior latenza (stream video intorno a 80-120ms) e un maggiore uso della banda (fps e risoluzione sono molto costosi) abbiamo la possibilità di giocare con qualsiasi oggetto capace di decomprimere uno stream video.
