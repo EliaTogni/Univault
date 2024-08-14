@@ -289,25 +289,25 @@ For any two events $A$ and $B$ we define the new event $A \cup B$, called the **
 ----------------------------------------------------------------
 
 ### Axioms of probability
-Suppose that for each event $A$ of an experiment having sample space $S$ there is a number, denoted by $P(A)$ and called the probability of the event $A$, which is in accord with the following three axiom:
-- $0 \leq P(A) \leq 1$;
-- $P(S) = 1$;
-- for any sequence of mutually exclusive events $A_1, A_2, ...$ it holds that $P\Big(\bigcup_{i = 1}^n A_i\Big) = \sum_{i = 1}^n P(A_i), \space n = 1, 2, ..., \infty$. 
+Suppose that for each event $A$ of an experiment having sample space $S$ there is a number, denoted by $P[A]$ and called the probability of the event $A$, which is in accord with the following three axiom:
+- $0 \leq P[A] \leq 1$;
+- $P[S] = 1$;
+- for any sequence of mutually exclusive events $A_1, A_2, ...$ it holds that $P\Big[\bigcup_{i = 1}^n A_i\Big] = \sum_{i = 1}^n P[A_i], \space n = 1, 2, ..., \infty$. 
 
 Axiom $1$ states that the probability that the outcome of the experiment lies
 within $A$ is some number between $0$ and $1$; Axiom $2$ states that with probability $1$ this outcome is a member of the sample space; finally, Axiom $3$ states that for any set of mutually exclusive events, the probability that at least one of these events occurs is equal to the sum of their respective probabilities.
 
 These three axioms can be used to prove a variety of results about probabilities. For instance, since $A$ and $A^c$ are always mutually exclusive, and since $A \cup A^c = S$, we have from Axioms $2$ and $3$ that
 
-$$1 = P(S) = P(A \cup A^c) = P(A) + P(A^c)$$
+$$1 = P[S] = P[A \cup A^c] = P[A] + P[A^c]$$
 
 or, equivalently:
 
-$$P(A^c) = 1 - P(A)$$
+$$P[A^c] = 1 - P[A]$$
 
 In words, the probability that an event does not occur is $1$ minus the probability that it does.
 
-In classical probability, the probability for an event $A$ to occur is defined as $P(A) = \frac{\vert A \vert}{\vert S \vert}$.
+In classical probability, the probability for an event $A$ to occur is defined as $P[A] = \frac{\vert A \vert}{\vert S \vert}$.
 
 ----------------------------------------------------------------
 
@@ -316,11 +316,11 @@ Consider an experiment that consists of flipping a coin twice, noting each time 
 
 $$S = \{(H, H), (H, T), (T, H), (T, T)\}$$
 
-where $(H, T)$ means, for example, that the first flip lands heads and the second tails. Suppose now that each of the four possible outcomes is equally likely to occur and thus has probability $\frac{1}{4}$. Suppose further that we observe that the first flip lands on heads. Then, given this information, what is the probability that both flips land on heads? To calculate this probability it is possible to reason as follows: given that the initial flip lands heads, there can be at most two possible outcomes of the experiment, namely, $(H, H)$ or $(H, T)$. In addition, as each of these outcomes originally had the same probability of occurring, they should still have equal probabilities. That is, given that the first flip lands heads, the (conditional) probability of each of the outcomes $(H, H)$ and $(H, T)$ is $\frac{1}{2}$, whereas the (conditional) probability of the other two outcomes is $0$. Hence the desired probability is $\frac{1}{2}$. If we let $A$ and $B$ denote, respectively, the event that both flips land on heads and the event that the first flip lands on heads, then the probability obtained above is called the conditional probability of $A$ given that $B$ has occurred and is denoted by $P(A \vert B)$.
+where $(H, T)$ means, for example, that the first flip lands heads and the second tails. Suppose now that each of the four possible outcomes is equally likely to occur and thus has probability $\frac{1}{4}$. Suppose further that we observe that the first flip lands on heads. Then, given this information, what is the probability that both flips land on heads? To calculate this probability it is possible to reason as follows: given that the initial flip lands heads, there can be at most two possible outcomes of the experiment, namely, $(H, H)$ or $(H, T)$. In addition, as each of these outcomes originally had the same probability of occurring, they should still have equal probabilities. That is, given that the first flip lands heads, the (conditional) probability of each of the outcomes $(H, H)$ and $(H, T)$ is $\frac{1}{2}$, whereas the (conditional) probability of the other two outcomes is $0$. Hence the desired probability is $\frac{1}{2}$. If we let $A$ and $B$ denote, respectively, the event that both flips land on heads and the event that the first flip lands on heads, then the probability obtained above is called the conditional probability of $A$ given that $B$ has occurred and is denoted by $P[A \vert B]$.
 
-A general formula for $P(A \vert B)$ that is valid for all experiments and events $A$ and $B$ can be obtained in the same manner as given previously. Namely, if the event $B$ occurs, then in order for $A$ to occur it is necessary that the actual occurrence be a point in both $A$ and $B$; that is, it must be in $A \cap B$. Now since we know that $B$ has occurred, it follows that $B$ becomes our new sample space and hence the probability that the event $A \cap B$ occurs will equal the probability of $A \cap B$ relative to the probability of $B$:
+A general formula for $P[A] \vert B]$ that is valid for all experiments and events $A$ and $B$ can be obtained in the same manner as given previously. Namely, if the event $B$ occurs, then in order for $A$ to occur it is necessary that the actual occurrence be a point in both $A$ and $B$; that is, it must be in $A \cap B$. Now since we know that $B$ has occurred, it follows that $B$ becomes our new sample space and hence the probability that the event $A \cap B$ occurs will equal the probability of $A \cap B$ relative to the probability of $B$:
 
-$$P(A \vert B) = \frac{P(A \cap B)}{P(B)}$$
+$$P[A \vert B] = \frac{P[A \cap B]}{P[B]}$$
 
 The determination of the probability that some event $A$ occurs is often simplified by considering a second event $B$ and then determining both the conditional probability of $A$ given that $B$ occurs and the conditional probability of $A$ given that $B$ does not occur. To do this, note first that
 
@@ -328,9 +328,9 @@ $$A = (A \cap B) \cup (A \cap B^c) $$
 
 Because $A \cap B$ and $A \cap B^c$ are mutually exclusive, the preceding yields
 
-$$P(A) = P(A \cap B) + P(A \cap B^c) = P(A \vert B) P(B) + P(A \vert B^c)P(B^c)$$
+$$P[A] = P[A \cap B] + P[A \cap B^c] = P[A \vert B] P[B] + P[A \vert B^c]P[B^c]$$
 
-When we utilize the preceding formula, we say that we are computing $P(A)$ by conditioning on whether or not $B$ occurs.
+When we utilize the preceding formula, we say that we are computing $P[A]$ by conditioning on whether or not $B$ occurs.
 
 Some examples follow below.
 
@@ -341,15 +341,15 @@ within a one-year period with probability $.25$, with this probability falling t
 Let $C$ be the event that a claim will be filed, and let $B$ be the event that the
 policy holder is accident prone. Then
 
-$$P(C) = P(C \vert B)P(B) + P(C \vert B^c)P(B^c) = (.25)(.4) + (.10)(.6) = .16$$
+$$P[C] = P[C \vert B]P[B] + P[C \vert B^c]P[B^c] = .25)(.4) + (.10)(.6) = .16$$
 
-Suppose that exactly one of the events $B_i, i = 1, ..., n$ must occur. That is, suppose that $B_1, B_2, ..., B_n$ are mutually exclusive events whose union is the sample space $S$. Then we can also compute the probability of an event $A$ by conditioning on which of the $B_i$ occur. The formula for this is obtained by using that
+Suppose that exactly one of the events $B_i$, $i = 1, ..., n$ must occur. That is, suppose that $B_1, B_2, ..., B_n$ are mutually exclusive events whose union is the sample space $S$. Then we can also compute the probability of an event $A$ by conditioning on which of the $B_i$ occur. The formula for this is obtained by using that
 
 $$A = A \cap S = A \cap \bigcup^n_{i=1} B_i = \bigcup^n_{i=1} A \cap B_i$$
 
 which implies that
 
-$$P(A) = \sum_{i = 1}^n P(A \cap B_i) = \sum_{i = 1}^n P(A \vert B_i) P(B_i)$$
+$$P[A] = \sum_{i = 1}^n P[A \cap B_i] = \sum_{i = 1}^n P[A \vert B_i] P[B_i]$$
 
 ----------------------------------------------------------------
 
@@ -357,16 +357,17 @@ $$P(A) = \sum_{i = 1}^n P(A \cap B_i) = \sum_{i = 1}^n P(A \vert B_i) P(B_i)$$
 Suppose there are $k$ types of coupons, and that each new one collected
 is, independent of previous ones, a type $j$ coupon with probability $p_j$, $\sum^k_{j =1} p_j = 1$. Find the probability that the $n^{th}$ coupon collected is a different type than any of the preceding $n − 1$.
 
-Let $N$ be the event that coupon $n$ is a new type. To compute $P(N)$, condition
+Let $N$ be the event that coupon $n$ is a new type. To compute $P[N]$, condition
 on which type of coupon it is. That is, with $T_j$ being the event that coupon $n$ is a type $j$ coupon, we have
 
-$$P(N) = \sum_{j = 1}^{k} P(N \vert T_j) P(T_j)$$
+$$P[N] = \sum_{j = 1}^{k} P[N \vert T_j] P[T_j]$$
 $$= \sum_{j = 1}^{k} (1 - p_j)^{n-1}p_j$$
 
-where $P(N \vert T_j)$ was computed by noting that the conditional probability that coupon $n$ is a new type given that it is a type $j$ coupon is equal to the conditional probability that each of the first $n − 1$ coupons is not a type $j$ coupon, which by independence is equal to $(1 − p_j)^{n−1}$.
+where $P[N \vert T_j]$ was computed by noting that the conditional probability that coupon $n$ is a new type given that it is a type $j$ coupon is equal to the conditional probability that each of the first $n − 1$ coupons is not a type $j$ coupon, which by independence is equal to $(1 − p_j)^{n−1}$.
 
-As indicated by the coin flip example, $P(A \vert B)$ (the conditional probability of
-$A$, given that $B$ occurred) is not generally equal to $P(A)$ (the unconditional probability of $A$). In other words, knowing that $B$ has occurred generally changes the probability that $A$ occurs. But what if they were mutually exclusive? In the special case where $P(A \vert B)$ is equal to $P(A)$, we say that $A$ and $B$ are **independent**. Since $P(A \vert B)= P(A \cap B)/P(B)$, we see that $A$ is independent of $B$ if $P(A \cap B) = P(A)P(B)$. Since this relation is symmetric in $A$ and $B$, it follows that whenever $A$ is independent of $B$, $B$ is independent of $A$.
+As indicated by the coin flip example, $P[A \vert B]$ (the conditional probability of $A$, given that $B$ occurred) is not generally equal to $P[A]$ (the unconditional probability of $A$). In other words, knowing that $B$ has occurred generally changes the probability that $A$ occurs.
+
+In the special case where $P[A \vert B]$ is equal to $P[A]$, we say that $A$ and $B$ are **independent**. Since $P[A \vert B]= P[A \cap B]/P[B]$, we see that $A$ is independent of $B$ if $P[A \cap B] = P[A]P[B]$. Since this relation is symmetric in $A$ and $B$, it follows that whenever $A$ is independent of $B$, $B$ is independent of $A$.
 
 $$\frac{\vert A \vert}{\vert S \vert} = \frac{\vert A \cap B\vert}{\vert B \vert}$$
 $$P[A \cap B] = P[A] \cdot P[B]$$
@@ -630,7 +631,7 @@ While the weak law defines this property in a probabilistic way, the strong law 
 -------------------------------------------------------------
 
 ## Random numbers
-The Cambridge dictionary defines «random» as: "happening, done, or chosen by chance rather than according to a plan". Indeed, common sense reasoning suggests that it is possible to speak of randomness when a given experience can be repeated several times, always with exactly the same modalities, yet not always giving the same result. For instance, the result of a coin toss, or the closing value of a stock exchange, or even the actual occurrence of rainfalls during daytime when you see a grey sky during the morning. Note that this unpredictability only concerns a specific event, that is, it is not possible to have full confidence on any statement for the result of a single die toss, or for the closing value of a stock exchange and so on.
+The Cambridge dictionary defines **random** as: "happening, done, or chosen by chance rather than according to a plan". Indeed, common sense reasoning suggests that it is possible to speak of randomness when a given experience can be repeated several times, always with exactly the same modalities, yet not always giving the same result. For instance, the result of a coin toss, or the closing value of a stock exchange, or even the actual occurrence of rainfalls during daytime when you see a grey sky during the morning. Note that this unpredictability only concerns a specific event, that is, it is not possible to have full confidence on any statement for the result of a single die toss, or for the closing value of a stock exchange and so on.
 
 Things are different if you consider a sequence of such events and try to formulate statements about some form of average result: you can, for instance, be more or less confident about the fact that almost a given fraction of one hundred tosses of a given coin give head.
 
@@ -641,7 +642,7 @@ Quoting John Von Neumann, any one who considers arithmetical methods of producin
 The behaviour of a computer is, in fact, always the result of a program execution and thus it is purely deterministic; in spite of this, computers can be deterministically be programmed in such a way that they exhibit random behaviours.
 
 ### Pseudorandom number generation
-In all cases where it will be necessary to mark a clear distinction between **genuine** randomness that is possible to naturally observe in the world (say for instance that of a phisical die) from the **artificial** one that is possible to simulate through computers, called **pseudorandomness**.
+In all cases where it will be necessary to mark a clear distinction between **genuine** randomness, which is possible to naturally observe in the world (say for instance that of a phisical die) from the **artificial** one, which is possible to simulate through computers, we will speak in the latter case of **pseudorandomness**.
 
 The first attempts to describe procedures able to automatically generate pseudorandom numbers dates back to the first half of $1900$. A pionieer in this fields was Maurice G. Kendall, who contributed to build a machine producing tables of random digits. Before that time, randomization procedures such as sampling were performed via consultation of manually produced tables, such as for instance the one published in $1927$ by Leonard H. C. Tippett and relying to census reports.
 
@@ -757,7 +758,7 @@ With the increasing of the number of steps, the discrete uniform cumulative dist
 
 ![[ContinuousUniformCumulativeDistributionFunction.png]]
 
-To evaluate if a function is approximating this behaviour, it is possible to use the **Empirical Cumulative Distribution function** $\widehat{F}$, another mathematical tool which can be used in order to assess the goodness of a congruential generator. It which associates a sample with an approximation of the cumulative distribution function of the distribution from which the sample has been drawn. Formally, given a sample $S = \{x_1, \dots, x_m\}$ drawn from a distribution whose cumulative distribution function is $F$, the empirical cumulative distribution function is defined as
+To evaluate if a function is approximating this behaviour, it is possible to use the **Empirical Cumulative Distribution function** $\widehat{F}$, another mathematical tool which can be used in order to assess the goodness of a congruential generator. This function associates a sample with an approximation of the cumulative distribution function of the distribution from which the sample has been drawn. Formally, given a sample $S = \{x_1, \dots, x_m\}$ drawn from a distribution whose cumulative distribution function is $F$, the empirical cumulative distribution function is defined as
 
 $$\widehat{F}(x) = \frac{1}{m} \sum_{i = 1}^{m} \mathbb{I}_{(-\infty, x]}(x_i)$$
 
@@ -786,6 +787,8 @@ def empirical_cdf(S, x):
 			count = count + 1
 	return count / len(S)
 ```
+
+Below, some graphical example of $F$ and $\widehat{F}$.
 
 ----------------------------------------------------------------
 
@@ -846,7 +849,7 @@ immagine curva
 To approximate the area under the curve using a Monte Carlo method simply means to throw points into the rectangle contanining the function and calculate the ratio of successes over total throws. Each point is described by a couple of coordinates $(x, y)$ and to understand if it's below or above the curve, the value $\widehat{y} = f(x)$ will be compute and then $\widehat{y}$ will be compared with $y$.
 If $y \leq \widehat{y}$, a counter will be increased by $1$ and by $0$ otherwise.
 
-How to get precision up to $k$-th digit?
+==How to get precision up to $k$-th digit?==
 
 ![[MonteCarloPiExample.png]]
 
