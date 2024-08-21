@@ -1254,7 +1254,19 @@ For simulating a reading of a uniform continuous Random Variable it is enough to
 
 $$F^{-1}(u) =a + (b-a) \cdot u $$
 
+```pseudo
+	\begin{algorithm}
+	\caption{Native Algorithm}
+	\begin{algorithmic}
+		\State $a$, $b$ float
+		\State $u = random(0, 1)$
+		\State $x = F^{-1}(u)$ \#$x = a + (b-a) \cdot u$
+		\State return $x$
+	\end{algorithmic}
+	\end{algorithm}
+```
 
+We can prove the following strong result about this method: let $U$ be a uniform Random Variable in range $(0, 1)$. We can state that for any continuous cumulative distribution function $F$
 
 -------------------------------------------------------------
 
