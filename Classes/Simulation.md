@@ -1270,6 +1270,9 @@ We can prove the following strong result about this method: let $U$ be a uniform
 
 The second point of discussion that will open for other algorithmic techniques is asking ourselves if this algorithm is really always applicable. While in the discrete case, any cumulative distribution function is invertible, in the continuous it depends.
 
+Proof.
+Let $F_X$ the cumulative distribution function of $X = F^{-1}(U)$. It is possible to say that $F_X(x) = P[X \leq x] = P[F^{-1}(U) \leq x]$. Now, the probabili
+
 -------------------------------------------------------------
 
 #### Exponential Random Variable
