@@ -1271,7 +1271,17 @@ We can prove the following strong result about this method: let $U$ be a uniform
 The second point of discussion that will open for other algorithmic techniques is asking ourselves if this algorithm is really always applicable. While in the discrete case, any cumulative distribution function is invertible, in the continuous it depends.
 
 Proof.
-Let $F_X$ the cumulative distribution function of $X = F^{-1}(U)$. It is possible to say that $F_X(x) = P[X \leq x] = P[F^{-1}(U) \leq x]$. Now, the probabili
+Let $F_X$ the cumulative distribution function of $X = F^{-1}(U)$. It is possible to say that
+
+$$F_X(x) = P[X \leq x] = P[F^{-1}(U) \leq x]$$
+
+Now, $F$ is monotonically increasing since it sums up probabilities ($a \leq  b \to F(a) \leq F(b)$). Therefore
+
+$$P[F^{-1}(U) \leq x] = P\Bigg[F\Big(F^{-1}(U)\Big) \leq F(x)\Bigg] = P[U \leq F(x)]$$
+
+This is the probability that a uniform random number between $0$ and $1$ (so, a probability value) is less or equal to $F(x)$ and therefore
+
+$$P[U \leq F(x)] = F_X(x) = F(x)$$
 
 -------------------------------------------------------------
 
