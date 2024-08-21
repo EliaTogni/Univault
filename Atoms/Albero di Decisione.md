@@ -16,4 +16,4 @@ $$\log(n!) \geq \log \Bigg(\prod_{i = \frac{n}{2}+1}^{n} i \Bigg)\geq \log(\frac
 
 Di conseguenza si ha un lower bound dell'altezza dell'albero pari a $n\log(n)$. Ma, come già ribadito, l'altezza dell'albero trova una diretta corrispondenza nel tempo di esecuzione dell'algoritmo. Quindi, il tempo minimo di esecuzione di un algoritmo di ordinamento basato sui confronti su un input di dimensione $n$ è almeno di $n\log(n)$ unità di tempo.
 
-------------------------------------------------------------
+-----
