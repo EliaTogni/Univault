@@ -1266,9 +1266,9 @@ $$F^{-1}(u) =a + (b-a) \cdot u $$
 	\end{algorithm}
 ```
 
-We can prove the following strong result about this method: let $U$ be a uniform Random Variable in range $(0, 1)$. We can state that for any continuous cumulative distribution function $F()$ (and, therefore, for any Random Variable, because every one of them has a CDF), the Random Variable $X = F^{-1}(U)$ has distribution cumulative function $F()$.
+We can prove the following strong result about this method: let $U$ be a uniform Random Variable in range $(0, 1)$. We can state that for any continuous cumulative distribution function $F()$ (and, therefore, for any Random Variable, because every one of them has a CDF), the Random Variable $X = F^{-1}(U)$ has distribution cumulative function $F()$. That is, the native algorithm using the inverse transform concept is correct for each target Random Variable.
 
-
+The second point of discussion that will open for other algorithmic techniques is asking ourselves if this algorithm is really always applicable. While in the discrete case, any cumulative distribution function is invertible, in the continuous it depends.
 
 -------------------------------------------------------------
 
