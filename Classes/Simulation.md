@@ -1250,11 +1250,11 @@ We can exploit the idea of the Inverse Transform Method and apply it in a simila
 
 disegno inversa lezione 12 1h5m
 
-We pick a domain in the range from $0$ to $1$ (because we are chosing a probability) and we read the corresponding value on the $y$ axis.
+For simulating a reading of a uniform continuous Random Variable it is enough to apply this algorithm: we pick a domain in the range from $0$ to $1$ (because we are chosing a probability) and we read the corresponding value on the $y$ axis.
 
 $$F^{-1}(u) =a + (b-a) \cdot u $$
 
-For simulating a reading 
+
 
 -------------------------------------------------------------
 
