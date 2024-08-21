@@ -1246,7 +1246,15 @@ The point of modeling with continuous Random Variables is that the geometric rep
 
 Let's analyze the algorithmic part.
 
-We can exploit the idea of the Inverse Transform Method and apply it in a similar way to this context. We pick the cumulative distribution function, we compute its inverse
+We can exploit the idea of the Inverse Transform Method and apply it in a similar way to this context. We pick the cumulative distribution function and, firstly, we compute its inverse, $F^{-1}(u)$.
+
+disegno inversa lezione 12 1h5m
+
+We pick a domain in the range from $0$ to $1$ (because we are chosing a probability) and we read the corresponding value on the $y$ axis.
+
+$$F^{-1}(u) =a + (b-a) \cdot u $$
+
+For simulating a reading 
 
 -------------------------------------------------------------
 
