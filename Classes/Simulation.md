@@ -1266,7 +1266,9 @@ $$F^{-1}(u) =a + (b-a) \cdot u $$
 	\end{algorithm}
 ```
 
-We can prove the following strong result about this method: let $U$ be a uniform Random Variable in range $(0, 1)$. We can state that for any continuous cumulative distribution function $F$
+We can prove the following strong result about this method: let $U$ be a uniform Random Variable in range $(0, 1)$. We can state that for any continuous cumulative distribution function $F()$ (and, therefore, for any Random Variable, because every one of them has a CDF), the Random Variable $X = F^{-1}(U)$ has distribution cumulative function $F()$.
+
+
 
 -------------------------------------------------------------
 
@@ -1274,7 +1276,7 @@ We can prove the following strong result about this method: let $U$ be a uniform
 
 slide 16/34
 
-Suppose to have as a Probability Density Function an exponential function. The Ex Random Variables have a single parameter, $\lambda$, which it is interpreted as a **rate**.
+Suppose to have as a Probability Density Function an exponential function. The Exponential Random Variables have a single parameter, $\lambda$, which it is interpreted as a **rate**.
 
 Expected Value $\mathbb{E}[X] = \frac{1}{\lambda}$.<br />
 Variance $Var[X] = \frac{1}{\lambda^2}$
