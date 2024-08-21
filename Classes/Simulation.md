@@ -1246,6 +1246,8 @@ The point of modeling with continuous Random Variables is that the geometric rep
 
 Let's analyze the algorithmic part.
 
+We can exploit the idea of the Inverse Transform Method and apply it in a similar way to this context.
+
 -------------------------------------------------------------
 
 #### Exponential Random Variable
