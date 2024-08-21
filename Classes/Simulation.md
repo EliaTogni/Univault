@@ -1222,14 +1222,29 @@ To summarize it
 ### Continuous Random Variables
 Continuous Random Variables have one big advantage over the discrete ones, which is their visual representation.
 
-The way to generate continuous Random Variables is the contiuous counterpart of the Inverse Transform Method.
-#### Uniformly Distribute Random Variable 
+Differently from its discrete counterpart, it makes very little sense to ask what is the probability for a continuous Random Variable to take a specific value (because it is a single point in a continuous domain). It makes more sense to look at how these probabilities are distributed in certain ranges and to represent these distributions as functions.
+
+
+
+The way to generate continuous Random Variables is the continuous counterpart of the Inverse Transform Method.
+#### Uniformly Distribute Continuous Random Variable 
+The probability distribution describing the possible outcome is constant over a certain range. That is why it is called uniform.
+
+This range is defined by two parameters, $a$ and $b$, that is, the lowest and the highest possible value that the Random Variable can take. Therefore, the probability of getting a reading of the Random Variable lower than $a$ or greater than $b$ is $0$.
+
+$$f(x) = \cases{ \frac{1}{b-a} \text{ if } a \leq x \leq b \cr \cr 0 \text{ otherwise}}$$
+
+Equal probability means that if I sum up all these probability, I need to get $1$. But we need to use the counterpart of the sum, that is, the integral. The integral of this probability distribution is exactly the cumulative distribution function $F(x)$
+
+$$F(x) = \frac{x-a}{b-a}$$
 
 ![[UniformlyDistributedRandomVariable.png]]
 
 The area under the line in the first graph above must obviously be equal to $1$.
 
+The point of modeling with continuous Random Variables is that the geometric representation of these function ($f(x)$ and $F(x)$) help in modeling. Having in mind what these functions look like in terms of graph is really useful.
 
+Let's analyze the algorithmic part.
 
 -------------------------------------------------------------
 
