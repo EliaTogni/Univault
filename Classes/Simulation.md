@@ -402,9 +402,9 @@ $$\sum_{i = 1}^{\infty}p(x_i) = 1$$
 
 A graphical example of a probability mass function.
 
-grafico
+==grafico
 
-esempio numerico
+esempio numerico==
 
 -------------------------------------------------------------
 
@@ -419,9 +419,13 @@ The relationship between the cumulative distribution $F(\cdot)$ and the probabil
 
 $$F(a) = P[X \in (-\infty, a)] = \int_{-\infty}^{a} f(x) dx$$
 
+The total area under the curve of a probablity density function is always equal to $1$, which represents the total probability.
+
 A graphical example of a probability density function.
 
-grafico
+![[ProbabilityDensityFunction.png]]
+
+The curve represents the distribution of heights for adult males with a mean of $70$ inches and a standard deviation of $3$ inches. The area under the curve is $1$, indicating the total probability, and the curve shows that heights around the mean ($70$ inches) are the most likely, with probability density decreasing as you move further away from the mean.
 
 -------------------------------------------------------------
 
@@ -430,7 +434,8 @@ In many experiments we are interested not only in probability distribution funct
 
 $$F(x, y) = P[X \leq x, Y \leq y]$$
 
-Thus, $F(x, y)$ specifies the probability that $X$ is less than or equal to $x$ and simultaneously $Y$ is less than or equal to $y$.
+Thus, $F(x, y)$ specifies the probability that $X$ is less than or equal to $x$ and simultaneously $Y$ is less than or equal to $y$. The joint cumulative probability distribution function gives also
+the joint probability that two or more random variables simultaneously fall within certain specified intervals.
 
 -------------------------------------------------------------
 
@@ -494,11 +499,15 @@ That is,
 
 $$Var[X] = \mathbb{E}[X^2] - (\mathbb{E}[X])^2$$
 
-Whereas the expected value of a sum of random variables is equal to the sum of the expectations, the corresponding result is not, in general, true for variances. It is, however, true in the important special case where the random variables are independent. Before proving this, lets define the concept of the **covariance** between two random variables. The covariance of two random variables $X$ and $Y$, denoted $Cov(X, Y)$, is defined by
+Whereas the expected value of a sum of random variables is equal to the sum of the expectations, the corresponding result is not, in general, true for variances. It is, however, true in the important special case where the random variables are independent. Before proving this, let's define the concept of the **covariance** between two random variables. The covariance of two random variables $X$ and $Y$, denoted $Cov(X, Y)$, is defined by
 
 $$Cov[X, Y] = \mathbb{E}[(X - \mu_x)(Y -\mu_y)]$$
 
 where $\mu_x = \mathbb{E}[X]$ and $\mu_y = \mathbb{E}[Y]$.
+
+- **Positive Covariance** $(Cov(X,Y)>0)$: if the covariance is positive, it means that when one of the variables takes on values greater than its mean, the other variable tends to do the same. In other words, the two variables tend to move in the same direction. For example, if $X$ increases, $Y$ tends to increase as well;
+- **Negative Covariance** $(Cov(X,Y)<0)$: if the covariance is negative, it means that when one of the variables takes on values greater than its mean, the other variable tends to decrease. In other words, the two variables tend to move in opposite directions. For example, if $X$ increases, $Y$ tends to decrease;
+- **Zero Covariance** $(Cov(X,Y)=0)$: if the covariance is zero, it means that there is no linear relationship between the two variables. However, it's important to note that zero covariance does not necessarily imply that the variables are independent, but rather that there is no linear dependence between them. The variables could still be correlated in a non-linear way.
 
 A useful expression for $Cov[X, Y]$ is obtained by expanding the right side of the above equation and then making use of the linearity of expectation. This yields
 
@@ -717,9 +726,9 @@ In general, there are three main distinctive properties that drive the choice of
 - its period should be as higher as possible;
 - its computer implementation should be efficient.
 
-Note that a high period per se does not tell anything about the quality of its generator: consider for instance the trivial generator obtained by setting $x_{i + 1} = x_i + 1$ which has maximum period $m -1$ for any value of $m$. Such a generator would be useless because of the **predictability** of the unseen part of a pseudorandom sequence: each item is the successor of previous element modulo $m$ . This is why a good generator should guarantee the first two above mentioned requirements: the first one requires the generator to output a sequence of values difficult to predict, and the second one requires that this sequence be as long as possible. Finally, the third requirement deals with parameters allowing an efficient implementation of the corresponding generators in a computer: for instance, the previous choice of $m = 2^{31} -1$ allows to store each of the produced values in a $32$-bit CPU register.
+Note that a high period per se does not tell anything about the quality of its generator: consider for instance the trivial generator obtained by setting $x_{i + 1} = x_i + 1$ which has maximum period $m -1$ for any value of $m$. Such a generator would be useless because of the **predictability** of the unseen part of a pseudorandom sequence: each item is the successor of previous element modulo $m$. This is why a good generator should guarantee the first two above mentioned requirements: the first one requires the generator to output a sequence of values difficult to predict, and the second one requires that this sequence be as long as possible. Finally, the third requirement deals with parameters allowing an efficient implementation of the corresponding generators in a computer: for instance, the previous choice of $m = 2^{31} -1$ allows to store each of the produced values in a $32$-bit CPU register.
 
-How is it possible to check the first requirement of unpredictability of the generated pseudorandom sequence? A procedure called **Ripley test** consists in verifying that there is a small dependency between successive elements in the sequence, for instance plotting in a bidimensional plane a set of points whose $X$ coordinates have been obtained by the pseudorandom generator, and the $Y$ coordinates are simply the $X$ ones rotated by one item, say on the left.
+How is it possible to check the first requirement of unpredictability of the generated pseudorandom sequence? Through the **autocorrelation analysis**, a statistical tool used to measure the correlation between elements of a sequence and their lagged counterparts. Based on this tool, there exist a procedure, called **Ripley test**, which consists in verifying that there is a small dependency between successive elements in the sequence, for instance plotting in a bidimensional plane a set of points whose $X$ coordinates have been obtained by the pseudorandom generator, and the $Y$ coordinates are simply the $X$ ones rotated by one item, say on the left.
 
 ```python
 def ripley_test(v):
@@ -729,8 +738,6 @@ def ripley_test(v):
 ```
 
 immagini ripley test
-
-autocorrelation analysis libro malchiodi + codice
 
 -------------------------------------------------------------
 

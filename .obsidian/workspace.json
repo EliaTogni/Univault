@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Classes/Simulation.md",
+                "file": "Classes/Cittadinanza Digitale e Tecnocivismo.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "850e8d2fd5733041",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Classes/Simulation.md",
+                "file": "Classes/Cittadinanza Digitale e Tecnocivismo.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,6 +117,8 @@
   },
   "active": "7d822d7c317f1de1",
   "lastOpenFiles": [
+    "Classes/Simulation.md",
+    "Images/ProbabilityDensityFunction.png",
     "Classes/3D Videogames/Trasformazioni.md",
     "Classes/3D Videogames/Texture.md",
     "Classes/3D Videogames/skeletal animation.md",
@@ -139,9 +142,7 @@
     "Classes/3D Videogames/Client-side prediction.md",
     "Classes/3D Videogames/blend-shapes.md",
     "Classes/3D Videogames/3DVG.md",
-    "Classes/Simulation.md",
     "Atoms/Modello.md",
-    "Classes/Privatezza e Protezione dei Dati.md",
     "Images/UniformlyDistributedRandomVariable.png",
     "Images/CheatSheetRandomVariables.png",
     "Images/TokenGoblin.png",
@@ -151,7 +152,6 @@
     "Images/spider-man-pointing-meme.jpeg",
     "Images/ttsr-8-goblin.png",
     "Images/IMG-20240323-WA0017.jpg",
-    "Images/PotaPauperBresciaPaupergeddonLecco.jpg",
     "Conferences",
     "Mtg/Reports",
     "Mtg",
