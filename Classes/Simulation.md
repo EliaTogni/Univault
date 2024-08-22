@@ -937,17 +937,18 @@ The inverse transform method suggests to use this cumulative distribution functi
 At this point, we are able to generate valid values for probability and therefore we can get the corresponding value. The probability values must be numbers between $0$ and $1$, chosen from a uniform distribution and independent.
 
 The preceding idea can be written algorithmically as
+e is a constant but only because it derives from an analytical step and holds only for a very specifical Random Variable known from the beginning. Therefore, it is tipically necessary to estimate ￼ through experiments to utilize this property.
 
 ```pseudo
 	\begin{algorithm}
 	\caption{Native algorithm for Custom Discrete Random Variables}
 	\begin{algorithmic}
-	\State $p =$ get\_random$() \space$ //output of a good (pseudo) random generator
-	\State $r = 0.0$
+	\State $r =$ get\_random$() \space$ //output of a good (pseudo) random generator
+	\State $q = 0.0$
 	\State $i = 0$
-	\While{$r \leq p$}
+	\While{$q \leq r$}
 		\State $i = i + 1$
-		\State $r = r + p_i$
+		\State $ q=  q+ p_i$
     \EndWhile
     \State return $i$
 	\end{algorithmic}
@@ -984,7 +985,7 @@ def UniformDRV1(n):
 			return i
 ```
 
-Another approach is based on the following sequence of inequalities. We stop if the condition $r \leq \frac{i}{n}$ is met. This condition is equivalent to $r >\frac{(i-1)}{n}$ and this equivalence leads to the following sequence of disequations:
+Another approach is based on the following sequence of inequalities. We stop if the condition $r \leq \frac{i}{n}$ is met. This condition is equivalent to $r >\frac{(i-1)}{n}$ (that is, $r$ is greater than the preceding cumulate probability) and this equivalence leads to the following sequence of disequations:
 
 $$(i -1) \cdot \frac{1}{n} < r \leq i \cdot  \frac{1}{n} = $$
 $$= (i - 1) < n \cdot r \leq i =$$
