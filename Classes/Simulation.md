@@ -901,7 +901,7 @@ While this theoretical result seems extremely useful, it assumes to have at disp
 -------------------------------------------------------------
 
 # Generating Random Variables
-Systems can be modeled, including non trivial components, in the form of Random Variables. Statistics allow to reliably run experiments and obtain results by observations on these models. At the base of this process, there is the ability to generate pseudo random numbers alforithmically.
+Systems can be modeled, including non trivial components, in the form of Random Variables. Statistics allow to reliably run experiments and obtain results by observations on these models. At the base of this process, there is the ability to generate pseudorandom numbers algorithmically.
 
 The next step is to learn when and how to use noticeable Random Variables from the literature and also to generate observations of Random Variables algorithmically.
 
@@ -932,9 +932,9 @@ First of all, the cumulative distribution function is built out of the Random Va
 
 grafico cdf con inverse transformation lezione 7 1h 18
 
-The inverse transformation method suggests to use this cumulative distribution function in reverse, that is, picking a probability value and reading the corresponding value of the Random Variable generating this probability. 
+The inverse transform method suggests to use this cumulative distribution function in reverse, that is, picking a probability value and reading the corresponding value of the Random Variable generating this probability. 
 
-At this point, we are able to generate valid values for probability and therefore we can get the corresponding value. the probability values must be numbers between $0$ and $1$, chosen from a uniform distribution and independent.
+At this point, we are able to generate valid values for probability and therefore we can get the corresponding value. The probability values must be numbers between $0$ and $1$, chosen from a uniform distribution and independent.
 
 The preceding idea can be written algorithmically as
 
