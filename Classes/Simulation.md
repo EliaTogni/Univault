@@ -935,7 +935,6 @@ The inverse transform method suggests to use this cumulative distribution functi
 At this point, we are able to generate valid values for probability and therefore we can get the corresponding value. The probability values must be numbers between $0$ and $1$, chosen from a uniform distribution and independent.
 
 The preceding idea can be written algorithmically as
-e is a constant but only because it derives from an analytical step and holds only for a very specifical Random Variable known from the beginning. Therefore, it is tipically necessary to estimate ￼ through experiments to utilize this property.
 
 ```pseudo
 	\begin{algorithm}
