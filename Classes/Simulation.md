@@ -850,11 +850,9 @@ One of the earliest applications of random numbers was in the computation of int
 
 $$\theta = \int_{0}^{1} g(x)dx$$
 
-==immagine curva==
-
 To approximate the area under the curve using a Monte Carlo method simply means to throw points into the rectangle contanining the function and calculate the ratio of successes over total throws. Each point is described by a couple of coordinates $(x, y)$ and to understand if it's below or above the curve, the value $\widehat{y} = f(x)$ will be compute and then $\widehat{y}$ will be compared with $y$. If $y \leq \widehat{y}$, a counter will be increased by $1$ and by $0$ otherwise.
 
-==How to get precision up to $k$-th digit?==
+How to get precision up to $k$-th digit?
 
 ![[MonteCarloPiExample.png]]
 
