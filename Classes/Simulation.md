@@ -1224,9 +1224,8 @@ Continuous Random Variables have one big advantage over the discrete ones, which
 
 Differently from its discrete counterpart, it makes very little sense to ask what is the probability for a continuous Random Variable to take a specific value (because it is a single point in a continuous domain). It makes more sense to look at how these probabilities are distributed in certain ranges and to represent these distributions as functions.
 
-
-
-The way to generate continuous Random Variables is the continuous counterpart of the Inverse Transform Method.
+Each of the techniques for generating a discrete random variable has its analogue in the
+continuous case. The way to generate continuous Random Variables is the continuous counterpart of the Inverse Transform Method.
 #### Uniformly Distribute Continuous Random Variable 
 The probability distribution describing the possible outcome is constant over a certain range. That is why it is called uniform.
 
@@ -1246,7 +1245,7 @@ The point of modeling with continuous Random Variables is that the geometric rep
 
 Let's analyze the algorithmic part.
 
-We can exploit the idea of the Inverse Transform Method and apply it in a similar way to this context. We pick the cumulative distribution function and, firstly, we compute its inverse, $F^{-1}(u)$.
+We can exploit the idea of the Inverse Transform Method and apply it in a similar way to this context. We consider a continuous random variable having distribution function $F$ and, firstly, we compute its inverse, $F^{-1}(u)$.
 
 disegno inversa lezione 12 1h5m
 
@@ -1266,7 +1265,7 @@ $$F^{-1}(u) =a + (b-a) \cdot u $$
 	\end{algorithm}
 ```
 
-We can prove the following strong result about this method: let $U$ be a uniform Random Variable in range $(0, 1)$. We can state that for any continuous cumulative distribution function $F()$ (and, therefore, for any Random Variable, because every one of them has a CDF), the Random Variable $X = F^{-1}(U)$ has distribution cumulative function $F()$. That is, the native algorithm using the inverse transform concept is correct for each target Random Variable.
+We can prove the following strong result about this method: let $U$ be a uniform Random Variable in range $(0, 1)$. We can state that for any continuous cumulative distribution function $F()$ (and, therefore, for any Random Variable, because every one of them has a CDF), the Random Variable $X = F^{-1}(U)$ has distribution cumulative function $F()$. That is, the native algorithm using the Inverse Transform concept is correct for each target Random Variable.
 
 The second point of discussion that will open for other algorithmic techniques is asking ourselves if this algorithm is really always applicable. While in the discrete case, any cumulative distribution function is invertible, in the continuous it depends.
 
@@ -1275,7 +1274,7 @@ Let $F_X$ the cumulative distribution function of $X = F^{-1}(U)$. It is possibl
 
 $$F_X(x) = P[X \leq x] = P[F^{-1}(U) \leq x]$$
 
-Now, $F$ is monotonically increasing since it sums up probabilities ($a \leq  b \to F(a) \leq F(b)$). Therefore
+Now, $F$ is a monotone increasing function of $x$ since it sums up probabilities and so $a \leq  b \to F(a) \leq F(b)$. Therefore
 
 $$P[F^{-1}(U) \leq x] = P\Bigg[F\Big(F^{-1}(U)\Big) \leq F(x)\Bigg] = P[U \leq F(x)]$$
 
@@ -1286,15 +1285,24 @@ $$P[U \leq F(x)] = F_X(x) = F(x)$$
 -------------------------------------------------------------
 
 #### Exponential Random Variable
+Suppose to have a continuous Random Variable having probability density function
+
+$$f(x) = \lambda \cdot e^{-\lambda x}, \quad 0 < x < \infty$$
+
+for some $\lambda > 0$ is said to be an exponential random variable with parameter $\lambda$, which it is interpreted as a **rate**.
 
 slide 16/34
 
-Suppose to have as a Probability Density Function an exponential function. The Exponential Random Variables have a single parameter, $\lambda$, which it is interpreted as a **rate**.
+Is it easy to verify that the expected value and variance of such a random variable are as follows:
 
 Expected Value $\mathbb{E}[X] = \frac{1}{\lambda}$.<br />
 Variance $Var[X] = \frac{1}{\lambda^2}$
 
-low values with much higher probability than high values.
+$\lambda$ is the value expected from a phenomenon that assumes low values with much higher probability than high values. Hence, the probability of this phenomenon decreases exponentially
+
+The cumulative distribution function of an exponential Random Variable is given by
+
+$$f(x) = \int_{0}^{x}{\lambda e^{-\lambda x}dx} = 1 - e^{-\lambda x}, \quad 0 < x < \infty$$
 
 This Random Variable is very useful to model the lifetime of an object or, in general, breakdowns of machines.
 
@@ -1310,7 +1318,7 @@ $$\text{Therefore } \underbrace{P[X > s + t]}_{\text{Reshuffling of memoryless}}
 $$\underbrace{1 - F_X(s + t)}_{1 - (1 - e^{-\lambda x})} = [1 - F(t)] [1 - F(s)] = $$
 $$e^{- \lambda (s + t)} = e^{-\lambda t} e ^{- \lambda s}$$
 
-The Exp Random Variable are the only ones having this memoryless property. Whenever we have this fenomenon like an independent arrival or anything else, then the lenght of this observation must be an Exponential Random Variable
+The Exponential Random Variable are the only ones having this memoryless property. Whenever we have this fenomenon like an independent arrival or anything else, then the lenght of this observation must be an Exponential Random Variable
 It is really useful to model independent Random Variables.
 
 **Claim**: let $X$ be am Exponential Random Variable of parameter $\lambda$, then $c \cdot X$ is an exponential Random Variable of parameter $\frac{\lambda}{c}$.
@@ -1330,7 +1338,6 @@ Therefore, $P[X_j = \min_i\{X_i - t\}] = P[Y_j]$.
 ...
 
 Claim: The probability of $X_j$ being the smallest is $P[X_j = M] = \frac{\lambda_j}{\sum_i \lambda_i}$.
-
 
 
 -------------------------------------------------------------
