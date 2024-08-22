@@ -818,7 +818,7 @@ One of the most famous experiment involving the simulation of pseudorandom value
 
 Given a circle $C$ of radius $r$, its area is $\pi \cdot r^2$, while the area of the smallest square $S$ containing such a circle is $(2 \cdot r)^2$. The use of a uniform distribution insures that the probability of drawing a point $x$ falling inside $C$ equals the ratio between the areas of $C$ and $S$, that is
 
-$$P[X \in C \vert x \in S] = \frac{P[x \in C \cap S]}{P[x \in S]} = \frac{P[x \in C]}{P[x \in S]} = \frac{\pi \cdot r^2}{(2 \cdot r)^2} = \frac{\pi}{4}$$
+$$P[x \in C \vert x \in S] = \frac{P[x \in C \cap S]}{P[x \in S]} = \frac{P[x \in C]}{P[x \in S]} = \frac{\pi \cdot r^2}{(2 \cdot r)^2} = \frac{\pi}{4}$$
 
 Therefore
 
@@ -833,8 +833,7 @@ def montecarlo_pi(iteration_number):
 	t = congruential_generator(seed = 1432, iteration_number)
 	y = [t[i] / (2 ** 31 - 1) for i in range(iteration_number)]
 
-	#sqrt(x[i]^2 + y[i]^2) <= 1
-	#x[i]^2 + y[i]^2 <= 1
+	#sqrt(x[i]^2 + y[i]^2) <= 1 is equal to x[i]^2 + y[i]^2 <= 1
 
 	count = 0
 	for i in range(iteration_number)
@@ -851,7 +850,7 @@ One of the earliest applications of random numbers was in the computation of int
 
 $$\theta = \int_{0}^{1} g(x)dx$$
 
-immagine curva
+==immagine curva==
 
 To approximate the area under the curve using a Monte Carlo method simply means to throw points into the rectangle contanining the function and calculate the ratio of successes over total throws. Each point is described by a couple of coordinates $(x, y)$ and to understand if it's below or above the curve, the value $\widehat{y} = f(x)$ will be compute and then $\widehat{y}$ will be compared with $y$. If $y \leq \widehat{y}$, a counter will be increased by $1$ and by $0$ otherwise.
 
