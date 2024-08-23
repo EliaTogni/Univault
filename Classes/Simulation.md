@@ -1126,6 +1126,8 @@ Since the mean and variance of a Binomial Random Variable $Y$ are given by
 $$\mathbb{E}[Y] = np$$
 $$Var[Y] = np(1 - p) \approx np \quad \text{ for small } p$$
 
+==Esempio Charlie
+
 ==portare sopra== it is intuitive, given the relationship between Binomial and Poisson Random Variables, that for a Poisson Random Variable $X$ having parameter $\lambda$, it holds that
 
 $$\mathbb{E}[X] = Var[X] = \lambda$$
