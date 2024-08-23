@@ -1114,7 +1114,7 @@ Now, for $n$ large and $p$ small it holds that ==limite notevole, aggiungere==
 $$\Big(1 - \frac{\lambda}{n}\Big)^n \approx e^{-\lambda}$$
 $$\frac{n(n-1) \dots (n - i + 1)}{n^i} \approx 1$$
 
-==perché? perché lamdba/n = p ma p é piccolissimo e qu==
+==perché? perché lamdba/n = p ma p é piccolissimo e quindi é circa 1==
 $${\Big(1-\frac{\lambda}{n}\Big)^{i}} \approx 1$$
 
 Hence, for $n$ large and $p$ small, it holds that
@@ -1126,7 +1126,7 @@ Since the mean and variance of a Binomial Random Variable $Y$ are given by
 $$\mathbb{E}[Y] = np$$
 $$Var[Y] = np(1 - p) \approx np \quad \text{ for small } p$$
 
-it is intuitive, given the relationship between Binomial and Poisson Random Variables, that for a Poisson Random Variable $X$ having parameter $\lambda$, it holds that
+==portare sopra== it is intuitive, given the relationship between Binomial and Poisson Random Variables, that for a Poisson Random Variable $X$ having parameter $\lambda$, it holds that
 
 $$\mathbb{E}[X] = Var[X] = \lambda$$
 
@@ -1354,7 +1354,7 @@ Therefore, $P[X_j = \min_i\{X_i - t\}] = P[Y_j]$.
 Claim: The probability of $X_j$ being the smallest is $P[X_j = M] = \frac{\lambda_j}{\sum_i \lambda_i}$.
 
 
--------------------------------------------------------------
+-----
 
 #### Normal Random Variable
 **continuazione della lezione precedente**
