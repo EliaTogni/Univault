@@ -890,6 +890,9 @@ Accuracy will always be in terms of number of digits, so it will be in the form 
 Calling $(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi} = \eta$, which it is a constant number, it is possible to observe that 
 
 $$1 - \frac{(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi}}{n \gamma^2} = 1 - \frac{\eta}{n \gamma^2} \geq \delta$$
+
+that is, it is desirable for the obtained confidence ot be greater or equal than the target confidence. Henceforth
+
 $$- \frac{\eta}{n (10^{-k})^2} \geq \delta - 1$$
 $$\frac{\eta}{n (10^{-k})^2} \leq 1 - \delta$$
 $$n \geq \Bigg \lceil \frac{\eta}{(1 - \delta)10^{-2k}} \Bigg \rceil$$
