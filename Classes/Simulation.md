@@ -884,7 +884,7 @@ $$P\Big[ \text{ relative error } > \gamma \Big] \leq \frac{(1 - \frac{\pi}{4}) \
 $$P\Big[ \text{ relative error } \leq \gamma \Big] > 1- \frac{(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi}}{n \gamma^2}$$
 
 Now, $\gamma$ is the **target accuracy** while $n$ identifies the number of runs of the experiment. Furthermore, the right-hand side of the disequation ($1 - \frac{(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi}}{n \gamma^2}$) is what is called the **confidence** of getting that target accuracy, that is, an upper bound on the probability of making an error greater than the accuracy of interest.<br />
-Let's define $\frac{(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi}}{n \gamma^2} = \delta$, where $\delta$ is the ==**target confidence**==. It is therefore possible to fix two values chosen from accuracy, confidence and number of experiments and determine the third value such that it will respect this inequality.
+Let's define $\frac{(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi}}{n \gamma^2} = \delta$, where $\delta$ is the **target confidence**. It is therefore possible to fix two values chosen from accuracy, confidence and number of experiments and determine the third value such that it will respect this inequality.
 
 Accuracy will always be in terms of number of digits, so it will be in the form of $\gamma = 10^{-k}$, where $k$ is the position of the last digit of interest.<br />
 Calling $(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi} = \eta$, which it is a constant number, it is possible to observe that 
