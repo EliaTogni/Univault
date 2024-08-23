@@ -1069,38 +1069,52 @@ $$P[X = i] = \binom{n}{i} p^i (1 - p)^{n - i} = \frac{n!}{i! (n - i)!} p^i(1 - p
 Let's start looking at the probability of the Random Variable to assume value $i+1$ and writing it in a way that resembles the previous equation:
 
 $$P[X = i + 1] = \frac{n!}{(i + 1)!(n  - i - 1)!} p^{i + 1}(1 - p)^{n - i - 1}$$
-$$P[X = i + 1] = \frac{n!\cdot (n-1)}{(i + 1)\cdot i!\cdot (n-1) \cdot (n  - i - 1)!}\cdot( p^{i}\cdot p) \frac{(1 - p)^{n - i}}{1-p}$$
+
+Adding to both the numerator and the ==mario== the term $n - i$, it is possible to obtain
+
+$$P[X = i + 1] = \frac{n!\cdot (n-i)}{(i + 1)\cdot i!\cdot (n - i) \cdot (n  - i - 1)!}\cdot( p^{i}\cdot p) \frac{(1 - p)^{n - i}}{1-p}$$
+
+==Now, grouping some terms it is possible to obtain==
+
+$$P[X = i + 1] = \frac{n!\cdot (n-i)}{(i + 1)\cdot i!\cdot (n - i) \cdot (n  - i - 1)!}\cdot( p^{i}\cdot p) \frac{p}{1-p}$$
+
 
 After this rewriting, it is possible to notice that
 
 $$P[X = i + 1] = P[X = i] \cdot \frac{p}{1-p} \cdot \frac{n-i}{i +1}$$
 
-Noting that $\frac{p}{1-p}$ is a constand and, therefore, it is possible to refers to it as $c$, the only thing that must be computed each iteration is $\frac{n-i}{i + 1}$ and, obviously, the final product.
+Noting that $\frac{p}{1-p}$ is a constant and, therefore, it is possible to refers to it as $c$, the only thing that must be computed each iteration is $\frac{n-i}{i + 1}$ and, obviously, the final product.
 
-Expected value $\mathbb{E}[X] = np$ ($n$ indipendent trials of a Bernoulli Random Variable).<br />
-Variance $Var[X] = np (1 - p)$.
+==Expected value== $\mathbb{E}[X] = np$ ($n$ indipendent trials of a Bernoulli Random Variable).<br />
+==Variance== $Var[X] = np (1 - p)$.
 
--------------------------------------------------------------
-
+-----
 ##### Poisson Random Variable
 There exists a significant similarity between **Poisson Random Variables** and Binomial Random Variables. The only difference is that in the Binomial ones, $n$ is a reasonable number while in the Poisson one, $n$ is a huge number.
 
-$\lambda = n \cdot p$ is called **rate**. The choice of utilizing only one parameter derived from the product of other two is due to the fact that $p$ tends to be a really small number while $n$ tends to be a really large one. Therefore, $\lambda$ tends to be a good compromise between the other two.
+The term $\lambda = n \cdot p$ is called **rate**. The choice of utilizing only one parameter derived from the product of other two is due to the fact that $p$ tends to be a really small number while $n$ tends to be a really large one. Therefore, $\lambda$ tends to be a good compromise between the other two.
 
 Expected value $\mathbb{E}[X] = np = \lambda$. <br />
 Variance $Var[X] = np(1 - p) = n(p - p^2)$. But if $p$ is a small value, $p^2$ tends to $0$ and, therefore, it can be dropped. The remaining product is $np$ which is again $\lambda$.
 
-$$P[X = i] = \binom{n}{i}p^i(1-p)^{n-i} = \frac{n!}{(n - i)!n!}p^i (1-p)^{n-i}$$
+==piccola introduzione==
+
+$$P[X = i] = \binom{n}{i}p^i(1-p)^{n-i} = \frac{n!}{(n - i)!i!}p^i (1-p)^{n-i}$$
 
 Knowing that $\lambda = np$ and, therefore, $p = \frac{\lambda}{n}$
 
-$$\frac{n!}{(n - i)!n!}\Big(\frac{\lambda}{n}\Big)^i \Big(1-\frac{\lambda}{n}\Big)^{n-i} =$$
+$$\frac{n!}{(n - i)!i!}\Big(\frac{\lambda}{n}\Big)^i \Big(1-\frac{\lambda}{n}\Big)^{n-i} =$$
+
+==aggiungere un passaggio in mezzo
+
 $$\frac{n(n-1) \dots (n - i + 1)}{n^i} \cdot\frac{\lambda^i}{i!} \cdot \frac{\Big(1-\frac{\lambda}{n}\Big)^{n}}{\Big(1-\frac{\lambda}{n}\Big)^{i}} =$$
 
-Now, for $n$ large and $p$ small it holds that
+Now, for $n$ large and $p$ small it holds that ==limite notevole, aggiungere==
 
 $$\Big(1 - \frac{\lambda}{n}\Big)^n \approx e^{-\lambda}$$
 $$\frac{n(n-1) \dots (n - i + 1)}{n^i} \approx 1$$
+
+==perché? perché lamdba/n = p ma p é piccolissimo e qu==
 $${\Big(1-\frac{\lambda}{n}\Big)^{i}} \approx 1$$
 
 Hence, for $n$ large and $p$ small, it holds that
