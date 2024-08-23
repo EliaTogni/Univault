@@ -1290,8 +1290,6 @@ $$f(x) = \lambda \cdot e^{-\lambda x}, \quad 0 < x < \infty$$
 
 for some $\lambda > 0$ is said to be an exponential random variable with parameter $\lambda$, which it is interpreted as a **rate**.
 
-slide 16/34
-
 Is it easy to verify that the expected value and variance of such a random variable are as follows:
 
 Expected Value $\mathbb{E}[X] = \frac{1}{\lambda}$.<br />
@@ -1303,9 +1301,9 @@ The cumulative distribution function of an exponential Random Variable is given 
 
 $$f(x) = \int_{0}^{x}{\lambda e^{-\lambda x}dx} = 1 - e^{-\lambda x}, \quad 0 < x < \infty$$
 
-This Random Variable is very useful to model the lifetime of an object or, in general, breakdowns of machines.
+slide 16/34
 
-**Memoryless property**, that is, the probability $P[X > s + t | X > s] = P[X > t]$, where $s + t$ are constants. This property is telling that the probability that a machine breaks down after, for example, $15$ minutes knowing that no breakdown occurred for the first $10$ minutes equals the probability that the machine will break down in $5$ minutes.
+This Random Variable is very useful to model the lifetime of an object or, in general, breakdowns of machines. This is due to the **Memoryless property**, that is, the probability $P[X > s + t | X > s] = P[X > t]$, where $s + t$ are constants. This property is telling that the probability that a machine breaks down after, for example, $15$ minutes knowing that no breakdown occurred for the first $10$ minutes equals the probability that the machine will break down in $5$ minutes.
 
 disegno 25 minuti
 
