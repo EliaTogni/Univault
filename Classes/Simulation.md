@@ -1340,6 +1340,8 @@ Claim: The probability of $X_j$ being the smallest is $P[X_j = M] = \frac{\lambd
 -------------------------------------------------------------
 
 #### Normal Random Variable
+**continuazione della lezione precedente**
+(controllare che nella lezione precedente venga spiegato *TUTTO* il central limit theorem)
 
 slide 20/34
 
@@ -1353,6 +1355,136 @@ slide 21/34
 
 teorema del limite centrale
 
+A core function in the analysis of the normal random variable is the $\Phi$, however this function cannot be expressed using only additions, subtractions, multiplications and root extractions. Thus is necessary a numerical approximation.
+Also is not an invertible function therefore, in term of creating an algorithm for producing valid values for normal random variables, we cannot apply the inverse transform technique and we have to use other algorithm design techniques.
+
+## Composition method
+Can be applied if a random variable X needs to be generated with C.D.F. equal to $F()$ where $F()$ can be expressed as a case function such that: $F(x) = \sum_{i=1}^n \alpha_i \cdot F_i(x)$ with $\sum_{i=1}^n \alpha_i = 1$.
+In other words this means that $F$ can be decomposed as a linear combination of a set of $F_i$ functions.
+We can notice that the constraint that $\sum_{i=1}^n \alpha_i = 1$ is similar to the constraint of probabilities.
+So we can find F(x) as:
+$$F(x) = \begin{cases}
+F_1(x) \text{ with probability }\alpha_1\\
+F_2(x) \text{ with probability }\alpha_2\\
+...\\
+F_n(x) \text{ with probability }\alpha_n\\
+
+\end{cases}$$
+
+Given this hypothesis we can generate a random value in this distribution by: 
+- first generating a random value $j$  in the range from 1 to n with each value $i$ having the probability $\alpha_i$.
+- then we draw a random value from the selected function $F_j$
+The value we obtain this way follows the distribution $F$
+### Proof
+By following this process the resulting $F(x)$ is defined as:
+$F(x) = \sum_{j=1}^n P[X \leq x | J= j]\cdot P[J=j]$ 
+since j is extracted with probability defined by $\alpha$ this is equal to
+$\sum_{j=1}^n P[X \leq x | J= j]\cdot \alpha_j = \sum_j \alpha_j F_j(x)$
+$\square$
+### Example
+Consider the triangular distribution showed below. 
+![[triangular_distribution.png]]
+
+>[!Note]
+>This distribution does not have the nice properties of the normal, but what can make it an appealing choice is that we have full control of the range: in fact the probability of generating numbers greater than 1 or lower than -1 is 0, while the range of a normal is $\mathbb{R}$. Notice that an obvious solution would be truncating and re-scaling the normal, but that would also mean losing the nice properties of the normal.
+
+This distribution can be decomposed in cases:
+$$f(x) = \begin{cases}
+x+1 \space\space & -1\leq x < 0\\
+-x+1 \space\space &0\leq x \leq 1\\
+0 \space\space & elsewhere
+\end{cases}$$
+$$ F(x) = \begin{cases}
+0 & x <-1\\
+\frac{x^2}{2}+x+\frac{1}{2} & -1\leq x < 0\\
+\frac{-x^2}{2}+x+\frac{1}{2} & 0 \leq x \leq 1
+\end{cases}$$
+so the two cases for $F(x)$ are:
+$$ F(x) = \begin{cases}
+F_1(x)=\frac{x^2}{2}+x+\frac{1}{2} & \alpha_1=0.5\\
+F_2(x)=\frac{-x^2}{2}+x+\frac{1}{2} & \alpha_2=0.5\\
+\end{cases}$$
+the first step of the algorithm is trivial, let's imagine that $F_1$ is extracted. After we define the $F_i$ we need to calculate the inverse transform:
+$y =\frac{x^2}{2}+x+\frac{1}{2} \rightarrow y = \frac{(x+1)^2 }{2} \rightarrow 2y = (x+1)^2$
+$\rightarrow \sqrt{2y} = x + 1 \rightarrow x = \sqrt{2y}-1 = F_1^{-1}$ 
+so as usual we draw a uniform random value between 0 and one and use it as argument of the inverse function.
+
+using code:
+
+```python
+generateTriangle():
+	u = random()
+	j = discreteRV(0.5,0.5)
+	if j == 1:
+		return invF_1(u)
+	else:
+		return invF_2(u)
+```
+
+## Acceptance-rejection method
+Sadly seeing the normal random value as a composition of two distribution does not help since the two are still not invertible *(why?)*
+Say we have a random variable X that needs to be generated with p.d.f $f(x)$ that is not invertible.
+Suppose we also have another random variable Y with p.d.f $g(y)$ that is easy to generate and we know that $f(y)/g(y) \leq c \space\space \forall y$.
+
+the procedure is:
+- generate a value $y$ for Y (from g(y))
+- generate a value $u$ for a uniformily distributed R.V. U
+- if $u \leq \frac{f(y)}{c\cdot g(y)}$, then output $X = y$
+- otherwise iterate
+
+This not only generates a R.V. with p.d.f $f(x)$ $\fbox{a}$, but also does that in a number of iteration that follows a geometric R.V. with expected value $c$   $\fbox{b}$.
+
+if X follows a normal distribution, then a good distribution for Y is an exponential.
+
+### Proof $\fbox{b}$
+
+>[!Observation]
+>$P[Y=y \land \text{is accepted}] = P[Y=y]\cdot P[accepted|Y=y]$ Because the acceptance step depends on the value Y. Since $P[Y=y] = g(y)$ and $P[accepted | Y=y] = \frac{f(y)}{c \cdot g(y)}$ we can rewrite it as:
+>$g(y) \cdot \frac{f(y)}{c \cdot g(y)} = \frac{f(y)}{c}$
+>
+
+if Y was discrete we could write $P[accepted] = \sum_{y \in Y}  \frac{f(y)}{c}$ since $\frac{f(y)}{c}$ is the probability of a specific y being accepted, to have the probability of being accepted in general is the sum over every possible value of y.
+Since Y is continue:
+$$P[accepted] = \int_{-\infty}^{+\infty} \frac{f(y)}{c} dy = \frac{1}{c} \int_{-\infty}^{+\infty} f(y) dy = \frac{1}{c}$$
+$\square$
+### Proof $\fbox{a}$
+$P[X=x] = \sum_{i=1}^{+\infty} P[\text{x accepted at iteration i}]$
+but being accepted at iteration i means not being accepted in all iteration until i and then getting accepted at iteration i.
+$= \sum_{i=1}^\infty (1-\frac{1}{c})^{i-1} \frac{1}{c} f(x) = \frac{1}{c} f(x) \sum_{i=1}^\infty (1-\frac{1}{c})^{i-1}$
+remembering that $\sum_{i=0}^\infty q^n \rightarrow \frac{1}{1-q}$ we can apply to $\sum_{i=1} (1-\frac{1}{c})^{i-1}$ by substituting $j=i-1$ and $q= 1-\frac{1}{c}$ and obtain $\sum_{j=0}^\infty q^j \rightarrow \frac{1}{1-q} = \frac{1}{1-(1-1/c)} = c$ 
+So going back to the original equation:
+ $\frac{1}{c} f(x) \sum_{i=1}^\infty (1-\frac{1}{c})^{i-1} = \frac{1}{c} f(x) \cdot c = f(x) \space \square$
+
+## Generating a normal random variable
+Remember that to generate a valid value for every normal random variable is enough to generate a valid value for a normal random variable with $\mu = 0$ and $\sigma^2 = 1$ and simply shift and rescale.
+For half a normal random variable with $\mu = 0$ and $\sigma^2 = 1$ $f(x) = \frac{2}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}$. We then define $g(x)$ as an exponential RV of param $\lambda = 1$ $g(x) = e^{-x}$ and $h(x) = \frac{f(x)}{g(x)} = \frac{2}{\sqrt{2\pi}}e^{x-x^2/2}$ .
+To find the maximum of $h(x)$ we derive it and obtain $\frac{2}{\sqrt{2\pi}} e^{x-x^2/2} (1-x)$ that is = 0 in $x=1$ that is a maximum but we'll not prove it. We set  $c = h(1) = \frac{2}{\sqrt{2\pi}}e^{1/2}$ since that is the maximum distance between f and g.
+
+#TODO aggiungere grafico semi-normale e esponenziale
+
+To obtain a normal we first need to define
+
+#TODO aggiungere grafico con due semi-normali
+$$F_{normal}(x) = \frac{1}{2}F^+_{normal}(x)+\frac{1}{2}F^-_{normal}(x)$$
+$$F_{normal}(x) = \begin{cases}
+F^+_{normal}(x) & p^+ = 0.5\\
+F^-_{normal}(x) & p^- = 0.5
+\end{cases}$$
+The process of generating a normal is then defined as:
+```python
+def genNormal():
+	u = random()
+	if u <= 0.5:
+		return genHalfNormal()
+	else:
+		return -genHalfNormal()
+def genHalfNormal():
+	while True:
+		y = genExp()
+		u = random()
+		if u*c <= 2/sqrt(2*pi) * e**(y - y**2/2):
+			return c
+```
 
 -------------------------------------------------------------
 
