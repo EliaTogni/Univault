@@ -985,12 +985,12 @@ def UniformDRV1(n):
 			return i
 ```
 
-Another approach is based on the following sequence of inequalities. We stop if the condition $r \leq \frac{i}{n}$ is met. This condition is equivalent to $r >\frac{(i-1)}{n}$ (that is, $r$ is greater than the preceding cumulate probability) and this equivalence leads to the following sequence of disequations:
+Another approach is based on the following sequence of inequalities. We stop if the condition $r \leq \frac{i}{n}$ is met. This condition is ==equivalent== to $r >\frac{(i-1)}{n}$ (that is, $r$ is greater than the preceding cumulate probability) and this equivalence leads to the following sequence of disequations:
 
 $$(i -1) \cdot \frac{1}{n} < r \leq i \cdot  \frac{1}{n} = $$
 $$= (i - 1) < n \cdot r \leq i =$$
 
-Now, it is possible to round up and say that $i \geq \lceil n \cdot r \rceil$. The other side of the disequation says that $i < n \cdot r + 1$. It follows that the previous algorithm can be written as
+Now, it is possible to round up and say that $i \geq \lceil n \cdot r \rceil$. The other side of the disequation says that $i < n \cdot r + 1$. Remembering that $i$ is an integer value, it follows that the previous algorithm can be written as
 
 ```python
 def UniformDRV2(n):
@@ -998,7 +998,7 @@ def UniformDRV2(n):
 	return math.ceil(n * r)
 ```
 
-Now considering the second specific case, that is,the case in which $n = 2$, it is possible to write an algorithm that generates observations for this Random Variable in the following way: 
+Now considering the second specific case, that is, the case in which $n = 2$, it is possible to write an algorithm that generates observations for this Random Variable in the following way: 
 
 ```python
 def binaryDRV(p)
@@ -1011,9 +1011,9 @@ def binaryDRV(p)
 
 Now the goal is to apply these ideas to solve a small computing task, that is, generating a permutation of the numbers $1, 2, \dots , n$ which is such that all $n!$ possible orderings are equally likely.
 
-The first intuition is to apply swapping between couples elements of the array picked at random. The problem with this approach is that it makes hard to understand if each random permutation is equiprobable.
+The first intuition is to apply swapping between couples of elements of the array picked at random. The problem with this approach is that it makes hard to understand if each random permutation is equiprobable. (==probabilmente é possibile dimostrarlo ma é complicato==)
 
-The following small variant of the previous algorithm will accomplish this by first choosing one of the numbers $1, \dots , n$ at random and then putting that number in position $n$; it then chooses at random one of the remaining $n − 1$ numbers and puts that number in position $n − 1$; it then chooses at random one of the remaining $n − 2$ numbers and puts it in position $n − 2$; and so on (where choosing a number at random means that each of the remaining numbers is equally likely to be chosen). Starting with any initial ordering $P_1, P_2 , \dots , P_n$, one of the positions $1, \dots , n$ will be picked at random and then the number in that position will be interchanged with the one in position $n$. Now we randomly choose one of the positions $1, \dots , n − 1$ and interchange the number in this position with the one in position $n − 1$, and so on.
+The following small variant of the previous algorithm will accomplish this by first choosing one of the numbers $1, \dots , n$ at random and then putting that number in position $n$; it, then, chooses at random one of the remaining $n − 1$ numbers and puts that number in position $n − 1$; it then chooses at random one of the remaining $n − 2$ numbers and puts it in position $n − 2$; and so on (where choosing a number at random means that each of the remaining numbers is equally likely to be chosen). Starting with any initial ordering $P_1, P_2 , \dots , P_n$, one of the positions $1, \dots , n$ will be picked at random and then the number in that position will be interchanged with the one in position $n$. Now we randomly choose one of the positions $1, \dots , n − 1$ and interchange the number in this position with the one in position $n − 1$, and so on.
 
 Let's evaluate if the probability of each permutation to appear is the same.
 
