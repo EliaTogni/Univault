@@ -1032,7 +1032,7 @@ that is, the probability of not being chosen in the first round times the probab
 Now, the implementation
 
 ```python
-def RandomPerm(v):
+def RandomPerm(v : list):
 	for i in range(len(v)):
 		# position to fix: v[n - i - 1]
 		# position to swap: chosen randomly
@@ -1047,7 +1047,7 @@ def RandomPerm(v):
 A **Bernoulli Random Variable** models a single trial that can be succesful or not. The probability of success of the trial is known.
 
 Expected Value $\mathbb{E}[X] = 1 \cdot p + 0 \cdot (1 - p) = p$.<br />
-Variance $Var[X]= \mathbb{E} = (1 - p)^2 p + (0 - p)^2 (1 - p) = p(1 - p) (1 - p + p)$ $= p ( 1 - p )$.
+Variance $Var[X]= \mathbb{E}[(X - \mu)^2] = (1 - p)^2 p + (0 - p)^2 (1 - p) = p(1 - p) (1 - p + p)$ $= p ( 1 - p )$.
 
 -------------------------------------------------------------
 
@@ -1066,7 +1066,7 @@ However, the calculation of the probability for large values of $n$ and, in part
 
 $$P[X = i] = \binom{n}{i} p^i (1 - p)^{n - i} = \frac{n!}{i! (n - i)!} p^i(1 - p)^{n - i}$$
 
-Let's start looking at the probability of the Random Variable to assume value $i+1$ and writing it in a wat that resembles the previous equation:
+Let's start looking at the probability of the Random Variable to assume value $i+1$ and writing it in a way that resembles the previous equation:
 
 $$P[X = i + 1] = \frac{n!}{(i + 1)!(n  - i - 1)!} p^{i + 1}(1 - p)^{n - i - 1}$$
 $$P[X = i + 1] = \frac{n!\cdot (n-1)}{(i + 1)\cdot i!\cdot (n-1) \cdot (n  - i - 1)!}\cdot( p^{i}\cdot p) \frac{(1 - p)^{n - i}}{1-p}$$
