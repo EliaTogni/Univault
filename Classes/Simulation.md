@@ -1085,7 +1085,7 @@ $$P[X = i + 1] = P[X = i] \cdot \frac{p}{1-p} \cdot \frac{n-i}{i +1}$$
 
 Noting that $\frac{p}{1-p}$ is a constant and, therefore, it is possible to refers to it as $c$, the only thing that must be computed each iteration is $\frac{n-i}{i + 1}$ and, obviously, the final product.
 
-==Expected value== $\mathbb{E}[X] = np$ ($n$ indipendent trials of a Bernoulli Random Variable, that is, $n$ times the expected value of a Bernoulli Random Variable)
+Expected value $\mathbb{E}[X] = np$ ($n$ indipendent trials of a Bernoulli Random Variable, that is, $n$ times the expected value of a Bernoulli Random Variable)
 ==Variance== $Var[X] = np (1 - p)$.
 
 -----
@@ -1094,8 +1094,11 @@ There exists a significant similarity between **Poisson Random Variables** and B
 
 The term $\lambda = n \cdot p$ is called **rate**. The choice of utilizing only one parameter derived from the product of other two is due to the fact that $p$ tends to be a really small number while $n$ tends to be a really large one. Therefore, $\lambda$ tends to be a good compromise between the other two.
 
-Expected value $\mathbb{E}[X] = np = \lambda$. <br />
-Variance $Var[X] = np(1 - p) = n(p - p^2)$. But if $p$ is a small value, $p^2$ tends to $0$ and, therefore, it can be dropped. The remaining product is $np$ which is again $\lambda$.
+It is intuitive, given the relationship between Binomial and Poisson Random Variables, that for a Poisson Random Variable $X$ having parameter $\lambda$, it holds that
+
+$$\mathbb{E}[X] = Var[X] = \lambda$$
+
+In fact, the expected value $\mathbb{E}[X] = np = \lambda$ and the variance $Var[X] = np(1 - p) = n(p - p^2)$. But if $p$ is a small value, $p^2$ tends to $0$ and, therefore, it can be dropped. The remaining product is $np$ which is again $\lambda$.
 
 ==piccola introduzione==
 
@@ -1127,10 +1130,6 @@ $$\mathbb{E}[Y] = np$$
 $$Var[Y] = np(1 - p) \approx np \quad \text{ for small } p$$
 
 ==Esempio Charlie
-
-==portare sopra== it is intuitive, given the relationship between Binomial and Poisson Random Variables, that for a Poisson Random Variable $X$ having parameter $\lambda$, it holds that
-
-$$\mathbb{E}[X] = Var[X] = \lambda$$
 
 Another interesting result about Poisson Random Variables is that they are **invariant** to aggregation. Let's consider a Poisson Random Variable $X$ of parameter $\lambda$ that is counting the number of successes over a large number of trials. Let's assume that the type of these successful event may not be unique. Is it correct to model the readings of this numbers as the reading of a Poisson Random Variable? Let's recall the example of the pharmacy and assume that is desired to measure the number of male and female customers. Knowing that the total number of customers entering in the pharmacy can be modelled as a Poisson Random Variable, it is possible to demonstrate that also the number of male customers and of female customers entering in the pharmacy can be modelles as Poisson Random Variables too:
 
