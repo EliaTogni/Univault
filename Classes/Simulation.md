@@ -985,7 +985,7 @@ def UniformDRV1(n):
 			return i
 ```
 
-Another approach is based on the following sequence of inequalities. We stop if the condition $r \leq \frac{i}{n}$ is met. This condition is ==equivalent== to $r >\frac{(i-1)}{n}$ (that is, $r$ is greater than the preceding cumulate probability) and this equivalence leads to the following sequence of disequations:
+Another approach is based on the following sequence of inequalities. We stop if the condition $r \leq \frac{i}{n}$ is met. If this condition is met, it is also true that $r >\frac{(i-1)}{n}$ (that is, $r$ is greater than the preceding cumulate probability) and this equivalence leads to the following sequence of disequations:
 
 $$(i -1) \cdot \frac{1}{n} < r \leq i \cdot  \frac{1}{n} = $$
 $$= (i - 1) < n \cdot r \leq i =$$
