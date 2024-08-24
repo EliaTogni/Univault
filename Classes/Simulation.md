@@ -1211,8 +1211,8 @@ $$P[X = i] = p(1 - p)^{i - 1}, \quad i \geq 1$$
 
 which is easily obtained by noting that in order for the first success to occur on the $i$-th trial, the first $i − 1$ must all be failures and the $i$-th a success. The previous equation now follows because the trials are independent.
 
-==valore atteso==
-==varianza==
+==valore atteso==Expected value $\mathbb{E}[X]$
+==varianza==Variance $Var[X]$
 
 -------------------------------------------------------------
 
@@ -1367,7 +1367,6 @@ Therefore, $P[X_j = \min_i\{X_i - t\}] = P[Y_j]$.
 ...
 
 Claim: The probability of $X_j$ being the smallest is $P[X_j = M] = \frac{\lambda_j}{\sum_i \lambda_i}$.
-
 
 -----
 
