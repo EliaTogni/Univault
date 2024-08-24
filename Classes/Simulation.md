@@ -1153,16 +1153,26 @@ $$= P[X_A = n, X_B = m \space \vert X = n + m] \cdot P[X = n + m] + P[X_A = n, X
 
 However, $X$ is defined as $X = X_A + X_B$ and, therefore, $P[X_A = n, X_B = m \vert X \neq n + m] = 0$.
 
-$$P[X_A = n, X_B = m \vert X = n + m] \cdot P[X = n + m] + 0$$
+$$P[X_A = n, X_B = m] = P[X_A = n, X_B = m \vert X = n + m] \cdot P[X = n + m] + 0$$
+==ingrandire quadre==
 
 This is the setting of a Binomial Random Variable and, therefore, its probability can be written as
 
 $$ P[X_A = n, X_B = m \vert X = n + m] = \binom{n + m}{n}p_A^{n}(1- p_A)^{n + m - n}$$
 $$P[X = n + m] = e^{-\lambda} \frac{\lambda^{n+ m}}{(n + m)!}$$
-$$\binom{n + m}{n}p_A^{n}(1- p_A)^{n + m - n} e^{-\lambda} \frac{\lambda^{n+ m}}{(n + m)!} = $$
-$$= \frac{(n + m)!}{n!m!}p_A^{n}(1- p_A)^{m} \space e^{-\lambda p_A} \space e^{- \lambda (1 - p_A)}\frac{\lambda^{n} \lambda^{m}}{(n + m)!} = $$
-$$= \frac{\cancel{(n + m)!}}{n!m!}p_A^{n}(1- p_A)^{m} \space e^{-\lambda p_A} \space e^{- \lambda (1 - p_A)}\frac{\lambda^{n} \lambda^{m}}{\cancel{(n + m)!}} =$$
-$$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!} e^{- \lambda (1 - p_A)}\frac{ (\lambda (1- p_A))^{m}}{m!} =$$
+
+==per ipotesi?== $\uparrow$
+
+$$\binom{n + m}{n}p_A^{n}(1- p_A)^{n + m - n} \cdot e^{-\lambda} \frac{\lambda^{n+ m}}{(n + m)!} = $$
+
+Since $e^{-\lambda}$ ==...==
+
+$$= \frac{(n + m)!}{n!m!}p_A^{n}(1- p_A)^{m} \space \cdot e^{-\lambda p_A} \space e^{- \lambda (1 - p_A)}\frac{\lambda^{n} \lambda^{m}}{(n + m)!} = $$
+$$= \frac{\cancel{(n + m)!}}{n!m!}p_A^{n}(1- p_A)^{m} \space \cdot e^{-\lambda p_A} \space e^{- \lambda (1 - p_A)}\frac{\lambda^{n} \lambda^{m}}{\cancel{(n + m)!}} =$$
+$$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!} \cdot e^{- \lambda (1 - p_A)}\frac{ (\lambda (1- p_A))^{m}}{m!}$$
+
+==Since this is the product of two prob etc etc, due to the fact that are independet it holds that ==
+
 $$= P[X_A = n, X_B = m]$$
 
 Therefore,
