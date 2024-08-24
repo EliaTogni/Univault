@@ -1011,7 +1011,7 @@ def binaryDRV(p)
 
 Now the goal is to apply these ideas to solve a small computing task, that is, generating a permutation of the numbers $1, 2, \dots , n$ which is such that all $n!$ possible orderings are equally likely.
 
-The first intuition is to apply swapping between couples of elements of the array picked at random. The problem with this approach is that it makes hard to understand if each random permutation is equiprobable. (==probabilmente é possibile dimostrarlo ma é complicato==)
+The first intuition is to apply swapping between couples of elements of the array picked at random. ==The problem with this approach is that it makes hard to understand if each random permutation is equiprobable.==
 
 The following small variant of the previous algorithm will accomplish this by first choosing one of the numbers $1, \dots , n$ at random and then putting that number in position $n$; it, then, chooses at random one of the remaining $n − 1$ numbers and puts that number in position $n − 1$; it then chooses at random one of the remaining $n − 2$ numbers and puts it in position $n − 2$; and so on (where choosing a number at random means that each of the remaining numbers is equally likely to be chosen). Starting with any initial ordering $P_1, P_2 , \dots , P_n$, one of the positions $1, \dots , n$ will be picked at random and then the number in that position will be interchanged with the one in position $n$. Now we randomly choose one of the positions $1, \dots , n − 1$ and interchange the number in this position with the one in position $n − 1$, and so on.
 
@@ -1086,7 +1086,7 @@ $$P[X = i + 1] = P[X = i] \cdot \frac{p}{1-p} \cdot \frac{n-i}{i +1}$$
 Noting that $\frac{p}{1-p}$ is a constant and, therefore, it is possible to refers to it as $c$, the only thing that must be computed each iteration is $\frac{n-i}{i + 1}$ and, obviously, the final product.
 
 Expected value $\mathbb{E}[X] = np$ ($n$ indipendent trials of a Bernoulli Random Variable, that is, $n$ times the expected value of a Bernoulli Random Variable)
-==Variance== $Var[X] = np (1 - p)$.
+Variance $Var[X] = \sum_{i = 1}^{n}Var[X_i] = np (1 - p)$ (since each $X_i$ is independent).
 
 -----
 ##### Poisson Random Variable
@@ -1107,18 +1107,15 @@ $$P[X = i] = \binom{n}{i}p^i(1-p)^{n-i} = \frac{n!}{(n - i)!i!}p^i (1-p)^{n-i}$$
 Knowing that $\lambda = np$ and, therefore, $p = \frac{\lambda}{n}$
 
 $$\frac{n!}{(n - i)!i!}\Big(\frac{\lambda}{n}\Big)^i \Big(1-\frac{\lambda}{n}\Big)^{n-i} =$$
-
-==aggiungere un passaggio in mezzo
-
+$$\frac{n(n-1) \dots (n - i + 1)(n - i)!}{n^i(n - i)!} \cdot\frac{\lambda^i}{i!} \cdot \frac{\Big(1-\frac{\lambda}{n}\Big)^{n}}{\Big(1-\frac{\lambda}{n}\Big)^{i}}$$
 $$\frac{n(n-1) \dots (n - i + 1)}{n^i} \cdot\frac{\lambda^i}{i!} \cdot \frac{\Big(1-\frac{\lambda}{n}\Big)^{n}}{\Big(1-\frac{\lambda}{n}\Big)^{i}} =$$
 
 Now, for $n$ large and $p$ small it holds that ==limite notevole, aggiungere==
 
 $$\Big(1 - \frac{\lambda}{n}\Big)^n \approx e^{-\lambda}$$
 $$\frac{n(n-1) \dots (n - i + 1)}{n^i} \approx 1$$
-
-==perché? perché lamdba/n = p ma p é piccolissimo e quindi é circa 1==
 $${\Big(1-\frac{\lambda}{n}\Big)^{i}} \approx 1$$
+This last similarity is due to the fact that $\lambda / n = p$ but $p$ is small and therefore the result is close to $1$.
 
 Hence, for $n$ large and $p$ small, it holds that
 
@@ -1129,7 +1126,13 @@ Since the mean and variance of a Binomial Random Variable $Y$ are given by
 $$\mathbb{E}[Y] = np$$
 $$Var[Y] = np(1 - p) \approx np \quad \text{ for small } p$$
 
-==Esempio Charlie
+An example of the use of a Poisson Random Variable.
+
+Charlie is in charge offailure controlsin the companynetwork. While checking a particular device, he knows that on average $20$ packets are lost per day under normal working conditions. He decides to replace the device whenever $40$ or more packets are lost in one day: which is the probability of replacing the device while it is still working as normal? 
+This example comprehends:
+- Very large number of events;
+- They are independent one another;
+- The expected number of positive ones in known in advance ($\lambda$).
 
 Another interesting result about Poisson Random Variables is that they are **invariant** to aggregation. Let's consider a Poisson Random Variable $X$ of parameter $\lambda$ that is counting the number of successes over a large number of trials. Let's assume that the type of these successful event may not be unique. Is it correct to model the readings of this numbers as the reading of a Poisson Random Variable? Let's recall the example of the pharmacy and assume that is desired to measure the number of male and female customers. Knowing that the total number of customers entering in the pharmacy can be modelled as a Poisson Random Variable, it is possible to demonstrate that also the number of male customers and of female customers entering in the pharmacy can be modelles as Poisson Random Variables too:
 
