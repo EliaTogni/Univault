@@ -1217,7 +1217,8 @@ $Var[X] = \frac{1 - p}{p^2}$.
 -------------------------------------------------------------
 
 ##### Negative Binomial Random Variable
-number of trials to $r$ successes. Defining $X$ as a negative binomial of parameters $p, r$:<br />
+Let $X$ denote the number of trials needed to obtain $r$ successes when each trial is independently a success with probability $p$. Then, $X$ is defined as a negative binomial of parameters $p, r$:<br />
+
 $P[X = i]$
 
 ==immagine==
