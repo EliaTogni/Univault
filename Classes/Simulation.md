@@ -1011,7 +1011,7 @@ def binaryDRV(p)
 
 Now the goal is to apply these ideas to solve a small computing task, that is, generating a permutation of the numbers $1, 2, \dots , n$ which is such that all $n!$ possible orderings are equally likely.
 
-The first intuition is to apply swapping between couples of elements of the array picked at random. ==The problem with this approach is that it makes hard to understand if each random permutation is equiprobable.==
+The first intuition is to apply swapping between couples of elements of the array picked at random. The problem with this approach is that it makes hard to understand if each random permutation is equiprobable.
 
 The following small variant of the previous algorithm will accomplish this by first choosing one of the numbers $1, \dots , n$ at random and then putting that number in position $n$; it, then, chooses at random one of the remaining $n − 1$ numbers and puts that number in position $n − 1$; it then chooses at random one of the remaining $n − 2$ numbers and puts it in position $n − 2$; and so on (where choosing a number at random means that each of the remaining numbers is equally likely to be chosen). Starting with any initial ordering $P_1, P_2 , \dots , P_n$, one of the positions $1, \dots , n$ will be picked at random and then the number in that position will be interchanged with the one in position $n$. Now we randomly choose one of the positions $1, \dots , n − 1$ and interchange the number in this position with the one in position $n − 1$, and so on.
 
@@ -1078,7 +1078,6 @@ Now, by noticing that $(n - i) \cdot (n  - i - 1)! = (n - i)!$ and by grouping s
 
 $$P[X = i + 1] = \frac{n!}{i! (n - i)!} p^i(1 - p)^{n - i} \space \cdot \space  \frac{p}{1-p} \cdot \frac{n-i}{i +1}$$
 
-
 After this rewriting, it is possible to notice that
 
 $$P[X = i + 1] = P[X = i] \cdot \frac{p}{1-p} \cdot \frac{n-i}{i +1}$$
@@ -1128,13 +1127,14 @@ $$Var[Y] = np(1 - p) \approx np \quad \text{ for small } p$$
 
 An example of the use of a Poisson Random Variable.
 
-Charlie is in charge offailure controlsin the companynetwork. While checking a particular device, he knows that on average $20$ packets are lost per day under normal working conditions. He decides to replace the device whenever $40$ or more packets are lost in one day: which is the probability of replacing the device while it is still working as normal? 
+Charlie is in charge of failure controls in the company network. While checking a particular device, he knows that on average $20$ packets are lost per day under normal working conditions. He decides to replace the device whenever $40$ or more packets are lost in one day: which is the probability of replacing the device while it is still working as normal? 
 This example comprehends:
 - Very large number of events;
 - They are independent one another;
 - The expected number of positive ones in known in advance ($\lambda$).
+$\to$ Poisson Random Variable $X =$ number of successes.
 
-Another interesting result about Poisson Random Variables is that they are **invariant** to aggregation. Let's consider a Poisson Random Variable $X$ of parameter $\lambda$ that is counting the number of successes over a large number of trials. Let's assume that the type of these successful event may not be unique. Is it correct to model the readings of this numbers as the reading of a Poisson Random Variable? Let's recall the example of the pharmacy and assume that is desired to measure the number of male and female customers. Knowing that the total number of customers entering in the pharmacy can be modelled as a Poisson Random Variable, it is possible to demonstrate that also the number of male customers and of female customers entering in the pharmacy can be modelles as Poisson Random Variables too:
+Another interesting result about Poisson Random Variables is that they are **invariant** to aggregation. Let's consider a Poisson Random Variable $X$ of parameter $\lambda$ that is counting the number of successes over a large number of trials. Let's assume that the type of these successful events may not be unique. Is it correct to model the readings of this numbers as the reading of a Poisson Random Variable? Let's recall the example of the pharmacy and assume that is desired to measure the number of male and female customers. Knowing that the total number of customers entering in the pharmacy can be modelled as a Poisson Random Variable, it is possible to demonstrate that also the number of male customers and of female customers entering in the pharmacy can be modelled as Poisson Random Variables too:
 
 $$X = X_A + X_B$$
 
@@ -1147,6 +1147,8 @@ In fact, $\lambda = \lambda_A + \lambda_B = \lambda \cdot p_A + \lambda \cdot p_
 It follows the proof of the previous theorem:
 
 $$P[X_A = n, X_B = m] =$$
+==aggiungere due passaggi per rendere piú chiaro==
+
 $$= P[X_A = n, X_B = m \space \vert X = n + m] \cdot P[X = n + m] + P[X_A = n, X_B = m \vert X \neq n + m] \cdot P[X \neq n + m] = $$
 
 However, $X$ is defined as $X = X_A + X_B$ and, therefore, $P[X_A = n, X_B = m \vert X \neq n + m] = 0$.
