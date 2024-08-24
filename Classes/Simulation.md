@@ -1171,11 +1171,7 @@ $$= \frac{(n + m)!}{n!m!}p_A^{n}(1- p_A)^{m} \space \cdot e^{-\lambda p_A} \spac
 $$= \frac{\cancel{(n + m)!}}{n!m!}p_A^{n}(1- p_A)^{m} \space \cdot e^{-\lambda p_A} \space e^{- \lambda (1 - p_A)}\frac{\lambda^{n} \lambda^{m}}{\cancel{(n + m)!}} =$$
 $$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!} \cdot e^{- \lambda (1 - p_A)}\frac{ (\lambda (1- p_A))^{m}}{m!}$$
 
-==Since this is the product of two prob etc etc, due to the fact that are independet it holds that ==
-
-$$= P[X_A = n, X_B = m]$$
-
-Therefore
+Therefore, recalling that we started from $P[X_A = n, X_B = m]$,
 
 $$P[X_A = n] = \sum_{m = 0}^{\infty} P[X_A = n, X_B = m] =$$
 $$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!} \sum_{m = 0}^{\infty} e^{-\tilde{\lambda}} \frac{(\tilde{\lambda})^m}{m!}$$
@@ -1221,7 +1217,7 @@ which is easily obtained by noting that in order for the first success to occur 
 number of trials to $r$ successes. Defining $X$ as a negative binomial of parameters $p, r$:<br />
 $P[X = i]$
 
-immagine
+==immagine==
 
 The last iteration is the $r$-th success. On the previous iteration ($i-1$ iteration) we got $r-1$ successes. The probability of getting this configuration is defined by a binomial Random Variable:
 
