@@ -1211,6 +1211,9 @@ $$P[X = i] = p(1 - p)^{i - 1}, \quad i \geq 1$$
 
 which is easily obtained by noting that in order for the first success to occur on the $i$-th trial, the first $i − 1$ must all be failures and the $i$-th a success. The previous equation now follows because the trials are independent.
 
+==valore atteso==
+==varianza==
+
 -------------------------------------------------------------
 
 ##### Negative Binomial Random Variable
@@ -1231,7 +1234,7 @@ To compute the expected value, we can consider this Random Variable as $r$ obser
 $$X = \sum_{k = 1}^{r}X_k$$
 
 and, therefore, $\mathbb{E}[X] = \mathbb{E}[\sum_{k = 1}^{r}X_k] = \sum_{k = 1}^{r}\mathbb{E}[X_k] =  \sum_{k = 1}^{r} \frac{1}{p} = r \cdot \frac{1}{p}$.
-The same holds for its variance.
+==The same holds for its variance.==
 
 -------------------------------------------------------------
 
