@@ -1175,12 +1175,12 @@ $$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!} \cdot e^{- \lambda (1 - p_A)}\
 
 $$= P[X_A = n, X_B = m]$$
 
-Therefore,
+Therefore
 
 $$P[X_A = n] = \sum_{m = 0}^{\infty} P[X_A = n, X_B = m] =$$
 $$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!} \sum_{m = 0}^{\infty} e^{-\tilde{\lambda}} \frac{(\tilde{\lambda})^m}{m!}$$
 
-And this is the expression of a general probability for a Poisson Random Variable of parameter $\tilde{\lambda}$.
+And this is the expression of a general probability for a Poisson Random Variable of parameter $\tilde{\lambda}$. $\tilde{\lambda}$ ==é lambda x p_b? forse non serve saperlo perché tanto questo blocco si toglie al prossimo passaggio==
 
 $$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!} \underbracket{\sum_{m = 0}^{\infty} e^{-\tilde{\lambda}} \frac{(\tilde{\lambda})^m}{m!}}_1 = $$
 $$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!}\quad \text{ with } \lambda_A = \lambda \cdot p_A$$
