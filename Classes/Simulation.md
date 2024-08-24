@@ -1070,13 +1070,13 @@ Let's start looking at the probability of the Random Variable to assume value $i
 
 $$P[X = i + 1] = \frac{n!}{(i + 1)!(n  - i - 1)!} p^{i + 1}(1 - p)^{n - i - 1}$$
 
-Adding to both the numerator and the ==mario== the term $n - i$, it is possible to obtain
+Adding to both the numerator and the denominator the term $n - i$, it is possible to obtain
 
 $$P[X = i + 1] = \frac{n!\cdot (n-i)}{(i + 1)\cdot i!\cdot (n - i) \cdot (n  - i - 1)!}\cdot( p^{i}\cdot p) \frac{(1 - p)^{n - i}}{1-p}$$
 
-==Now, grouping some terms it is possible to obtain==
+Now, by noticing that $(n - i) \cdot (n  - i - 1)! = (n - i)!$ and by grouping some terms, it is possible to obtain
 
-$$P[X = i + 1] = \frac{n!\cdot (n-i)}{(i + 1)\cdot i!\cdot (n - i) \cdot (n  - i - 1)!}\cdot( p^{i}\cdot p) \frac{p}{1-p}$$
+$$P[X = i + 1] = \frac{n!}{i! (n - i)!} p^i(1 - p)^{n - i} \space \cdot \space  \frac{p}{1-p} \cdot \frac{n-i}{i +1}$$
 
 
 After this rewriting, it is possible to notice that
