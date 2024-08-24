@@ -1085,7 +1085,7 @@ $$P[X = i + 1] = P[X = i] \cdot \frac{p}{1-p} \cdot \frac{n-i}{i +1}$$
 
 Noting that $\frac{p}{1-p}$ is a constant and, therefore, it is possible to refers to it as $c$, the only thing that must be computed each iteration is $\frac{n-i}{i + 1}$ and, obviously, the final product.
 
-==Expected value== $\mathbb{E}[X] = np$ ($n$ indipendent trials of a Bernoulli Random Variable).<br />
+==Expected value== $\mathbb{E}[X] = np$ ($n$ indipendent trials of a Bernoulli Random Variable, that is, $n$ times the expected value of a Bernoulli Random Variable)
 ==Variance== $Var[X] = np (1 - p)$.
 
 -----
