@@ -1084,7 +1084,7 @@ $$P[X = i + 1] = P[X = i] \cdot \frac{p}{1-p} \cdot \frac{n-i}{i +1}$$
 
 Noting that $\frac{p}{1-p}$ is a constant and, therefore, it is possible to refers to it as $c$, the only thing that must be computed each iteration is $\frac{n-i}{i + 1}$ and, obviously, the final product.
 
-Expected value $\mathbb{E}[X] = np$ ($n$ indipendent trials of a Bernoulli Random Variable, that is, $n$ times the expected value of a Bernoulli Random Variable)
+Expected value $\mathbb{E}[X] = np$ ($n$ indipendent trials of a Bernoulli Random Variable, that is, $n$ times the expected value of a Bernoulli Random Variable).<br />
 Variance $Var[X] = \sum_{i = 1}^{n}Var[X_i] = np (1 - p)$ (since each $X_i$ is independent).
 
 -----
@@ -1211,8 +1211,8 @@ $$P[X = i] = p(1 - p)^{i - 1}, \quad i \geq 1$$
 
 which is easily obtained by noting that in order for the first success to occur on the $i$-th trial, the first $i − 1$ must all be failures and the $i$-th a success. The previous equation now follows because the trials are independent.
 
-==valore atteso==Expected value $\mathbb{E}[X]$
-==varianza==Variance $Var[X]$
+Expected value $\mathbb{E}[X] = \sum_{n = 1}^{\infty} np(1 - P)^{n-1} = \frac{1}{p}$.<br />
+$Var[X] = \frac{1 - p}{p^2}$.
 
 -------------------------------------------------------------
 
