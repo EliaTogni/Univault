@@ -1212,7 +1212,7 @@ Since $P[X = i] = (1 - p)^{i - 1} \cdot p$, we can pass $p$ instead of $X$ to th
 		\State $q = 0$ \#cumulative probability
 		\State $i = 0$ 
 		 \While{$r \leq q + (1 - p)^{i - 1} \cdot p$}
-			 \State $p = q + (1 - p)^{i - 1} \cdot p$
+			 \State $q = q + (1 - p)^{i - 1} \cdot p$
 			 \State $i = i + 1$
 		\EndWhile
 		\State Return $i$
