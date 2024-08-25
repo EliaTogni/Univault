@@ -1099,7 +1099,7 @@ $$\mathbb{E}[X] = Var[X] = \lambda$$
 
 In fact, the expected value $\mathbb{E}[X] = np = \lambda$ and the variance $Var[X] = np(1 - p) = n(p - p^2)$. But if $p$ is a small value, $p^2$ tends to $0$ and, therefore, it can be dropped. The remaining product is $np$ which is again $\lambda$.
 
-==piccola introduzione==
+ As for the Binomial, the calculation of the probability for large values of $n$ and, in particular, of the binomial coefficient is computationally challenging. An idea is to compute this probability incrementally.
 
 $$P[X = i] = \binom{n}{i}p^i(1-p)^{n-i} = \frac{n!}{(n - i)!i!}p^i (1-p)^{n-i}$$
 
@@ -1154,7 +1154,6 @@ $$= P[X_A = n, X_B = m \space \vert X = n + m] \cdot P[X = n + m] + P[X_A = n, X
 However, $X$ is defined as $X = X_A + X_B$ and, therefore, $P[X_A = n, X_B = m \vert X \neq n + m] = 0$.
 
 $$P\Big[X_A = n, X_B = m\Big] = P\Big[X_A = n, X_B = m \vert X = n + m\Big] \cdot P\Big[X = n + m\Big] + 0$$
-==ingrandire quadre==
 
 This is the setting of a Binomial Random Variable and, therefore, its probability can be written as
 
