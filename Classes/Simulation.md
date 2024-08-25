@@ -1099,16 +1099,6 @@ $$\mathbb{E}[X] = Var[X] = \lambda$$
 
 In fact, the expected value $\mathbb{E}[X] = np = \lambda$ and the variance $Var[X] = np(1 - p) = n(p - p^2)$. But if $p$ is a small value, $p^2$ tends to $0$ and, therefore, it can be dropped. The remaining product is $np$ which is again $\lambda$.
 
-An example of the use of a Poisson Random Variable.
-
-==Charlie is in charge of failure controls in the company network. While checking a particular device, he knows that on average $20$ packets are lost per day under normal working conditions. He decides to replace the device whenever $40$ or more packets are lost in one day: which is the probability of replacing the device while it is still working as normal?==
-This example comprehends:
-- Very large number of events;
-- They are independent one another;
-- The expected number of positive ones in known in advance ($\lambda$).
-$\to$ Poisson Random Variable $X =$ number of successes.
-
-
 As for the Binomial, the calculation of the probability for large values of $n$ and, in particular, of the binomial coefficient is computationally challenging. An idea is to compute this probability incrementally.
 
 $$P[X = i] = \binom{n}{i}p^i(1-p)^{n-i} = \frac{n!}{(n - i)!i!}p^i (1-p)^{n-i}$$
@@ -1180,12 +1170,15 @@ The following is a Random generation algorithm for a Poisson Random Variable.<br
 	\begin{algorithm}
 	\caption{Random Generation Algorithm for a Poisson Random Variable}
 	\begin{algorithmic}
+		\State Generate $X$
 		\State $u$ = random() $\space$   //$[0, 1)$
-		 \State $p, i = 0$
-		 \While{$u \leq p + P[i]$}
-			 \State $p = p + P[i]$
+		 \State $p = 0$ \#cumulative probability
+		 \State $i = 0$
+		 \While{$u \leq p + P[X = i]$}
+			 \State $p = p + P[X = i]$
 			 \State $i = i + 1$
          \EndWhile
+         \State return $i$
 	\end{algorithmic}
 	\end{algorithm}
 ```
