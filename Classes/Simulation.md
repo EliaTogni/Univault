@@ -1207,6 +1207,21 @@ which is easily obtained by noting that in order for the first success to occur 
 Expected value $\mathbb{E}[X] = \sum_{n = 1}^{\infty} np(1 - P)^{n-1} = \frac{1}{p}$.<br />
 $Var[X] = \frac{1 - p}{p^2}$.
 
+How to generate algorithmically geometric Random Variables? The first possible approach consists in simulating the repetition of a Bernoulli experiment. Another possible one is using, again, the Inverse Cumulative Distribution Function approach and the Native Algorithm, which helps avoiding explicitly generating event by event. It only asks to generate value by value.
+
+```pseudo
+	\begin{algorithm}
+	\caption{Native Algorithm for generating Geometric Random Variables}
+	\begin{algorithmic}
+		\State $u$ = random() $\space$   //$[0, 1)$
+		 \State $p, i = 0$
+		 \While{$u \leq p + P[i]$}
+			 \State $p = p + P[i]$
+			 \State $i = i + 1$
+	\end{algorithmic}
+	\end{algorithm}
+```
+
 -------------------------------------------------------------
 
 ##### Negative Binomial Random Variable
@@ -1227,8 +1242,8 @@ To compute the expected value, we can consider this Random Variable as $r$ obser
 
 $$X = \sum_{k = 1}^{r}X_k$$
 
-and, therefore, $\mathbb{E}[X] = \mathbb{E}[\sum_{k = 1}^{r}X_k] = \sum_{k = 1}^{r}\mathbb{E}[X_k] =  \sum_{k = 1}^{r} \frac{1}{p} = r \cdot \frac{1}{p}$.
-==The same holds for its variance.==
+and, therefore, $\mathbb{E}[X] = \mathbb{E}[\sum_{k = 1}^{r}X_k] = \sum_{k = 1}^{r}\mathbb{E}[X_k] =  \sum_{k = 1}^{r} \frac{1}{p} = r \cdot \frac{1}{p}$.<br />
+The same holds for its variance $Var[X] = r \cdot \frac{1 - p}{p^2}$.
 
 -------------------------------------------------------------
 
