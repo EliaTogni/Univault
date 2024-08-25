@@ -1228,13 +1228,13 @@ $$= - p^{j - 1} \leq u -1 \leq- p^j =$$
 $$= p^{j - 1} \leq 1 - u \leq p^j =$$
 $$\text{output } \widehat{\text{j}} = \min \Big\{j \space \vert \space p^j < 1 - u\Big\}$$
 
-How can we find this minimum without computing all these terms? Moving to the logarithm from both terms, we obtain
+How can we find this minimum without computing all these terms? Moving to the logarithm in both terms of the condition, we obtain
 
-$$\log(p^j) < \log(1 - u)$$
+$$\log(p^j) < \log(1 - u) =$$
 
-Since the logarithm is a monotonic function, ==cazzi==
+Since the logarithm is a monotone function, when $\log(p^j) < \log(1 - u)$, then $p^j < 1 - u$. Therefore, this is a valid modification.
 
-$$= j \log(p) < \log(1 - u) =$$
+$$j \log(p) < \log(1 - u) =$$
 $$= j  > \frac{\log(1 - u)}{\log(p)}$$
 
 At this point, we know that we can define this $j = \Bigg \lfloor \frac{\log(1 - u)}{\log(p)} \Bigg \rfloor + 1$. Also, if $u$ is a random number between $0$ and $1$, also $1 - u$ is a random number between $0$ and $1$. Therefore, we can say that $j = \Bigg \lfloor \frac{\log(u)}{\log(p)} \Bigg \rfloor + 1$.
