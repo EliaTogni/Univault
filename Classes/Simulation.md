@@ -1099,7 +1099,17 @@ $$\mathbb{E}[X] = Var[X] = \lambda$$
 
 In fact, the expected value $\mathbb{E}[X] = np = \lambda$ and the variance $Var[X] = np(1 - p) = n(p - p^2)$. But if $p$ is a small value, $p^2$ tends to $0$ and, therefore, it can be dropped. The remaining product is $np$ which is again $\lambda$.
 
- As for the Binomial, the calculation of the probability for large values of $n$ and, in particular, of the binomial coefficient is computationally challenging. An idea is to compute this probability incrementally.
+An example of the use of a Poisson Random Variable.
+
+==Charlie is in charge of failure controls in the company network. While checking a particular device, he knows that on average $20$ packets are lost per day under normal working conditions. He decides to replace the device whenever $40$ or more packets are lost in one day: which is the probability of replacing the device while it is still working as normal?==
+This example comprehends:
+- Very large number of events;
+- They are independent one another;
+- The expected number of positive ones in known in advance ($\lambda$).
+$\to$ Poisson Random Variable $X =$ number of successes.
+
+
+As for the Binomial, the calculation of the probability for large values of $n$ and, in particular, of the binomial coefficient is computationally challenging. An idea is to compute this probability incrementally.
 
 $$P[X = i] = \binom{n}{i}p^i(1-p)^{n-i} = \frac{n!}{(n - i)!i!}p^i (1-p)^{n-i}$$
 
@@ -1119,20 +1129,6 @@ This last similarity is due to the fact that $\lambda / n = p$ but $p$ is small 
 Hence, for $n$ large and $p$ small, it holds that
 
 $$P[X = i] \approx e^{-\lambda}\frac{\lambda^i}{i!}$$
-
-Since the mean and variance of a Binomial Random Variable $Y$ are given by
-
-$$\mathbb{E}[Y] = np$$
-$$Var[Y] = np(1 - p) \approx np \quad \text{ for small } p$$
-
-An example of the use of a Poisson Random Variable.
-
-==Charlie is in charge of failure controls in the company network. While checking a particular device, he knows that on average $20$ packets are lost per day under normal working conditions. He decides to replace the device whenever $40$ or more packets are lost in one day: which is the probability of replacing the device while it is still working as normal?==
-This example comprehends:
-- Very large number of events;
-- They are independent one another;
-- The expected number of positive ones in known in advance ($\lambda$).
-$\to$ Poisson Random Variable $X =$ number of successes.
 
 Another interesting result about Poisson Random Variables is that they are **invariant** to aggregation. Let's consider a Poisson Random Variable $X$ of parameter $\lambda$ that is counting the number of successes over a large number of trials. Let's assume that the type of these successful events may not be unique. Is it correct to model the readings of this numbers as the reading of a Poisson Random Variable? Let's recall the example of the pharmacy and assume that is desired to measure the number of male and female customers. Knowing that the total number of customers entering in the pharmacy can be modelled as a Poisson Random Variable, it is possible to demonstrate that also the number of male customers and of female customers entering in the pharmacy can be modelled as Poisson Random Variables too:
 
