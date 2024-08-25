@@ -1130,11 +1130,11 @@ Hence, for $n$ large and $p$ small, it holds that
 
 $$P[X = i] \approx e^{-\lambda}\frac{\lambda^i}{i!}$$
 
-Another interesting result about Poisson Random Variables is that they are **invariant** to aggregation. Let's consider a Poisson Random Variable $X$ of parameter $\lambda$ that is counting the number of successes over a large number of trials. Let's assume that the type of these successful events may not be unique. Is it correct to model the readings of this numbers as the reading of a Poisson Random Variable? Let's recall the example of the pharmacy and assume that is desired to measure the number of male and female customers. Knowing that the total number of customers entering in the pharmacy can be modelled as a Poisson Random Variable, it is possible to demonstrate that also the number of male customers and of female customers entering in the pharmacy can be modelled as Poisson Random Variables too:
+Another interesting result about Poisson Random Variables is that they are **invariant** to aggregation (and to disaggregation). Let's consider a Poisson Random Variable $X$ of parameter $\lambda$ that is counting the number of successes over a large number of trials. Let's assume that the type of these successful events may not be unique. Is it correct to model the readings of this numbers as the reading of a Poisson Random Variable? Let's recall the example of the pharmacy and assume that is desired to measure the number of male and female customers. Knowing that the total number of customers entering in the pharmacy can be modelled as a Poisson Random Variable, it is possible to demonstrate that also the number of male customers and of female customers entering in the pharmacy can be modelled as Poisson Random Variables too. Starting from
 
 $$X = X_A + X_B$$
 
-where
+we claim that $X_A$ (and $X_B$) are Poisson Random Variables, where
 
 $$X_A \text{ is a Poisson Random Variable of parameter } \lambda_A \space(\text{such that }\lambda_A =\lambda \cdot p_A)$$
 $$X_B \text{ is a Poisson Random Variable of parameter } \lambda_B \space(\text{such that }\lambda_B =\lambda \cdot p_B)$$
@@ -1143,8 +1143,6 @@ In fact, $\lambda = \lambda_A + \lambda_B = \lambda \cdot p_A + \lambda \cdot p_
 It follows the proof of the previous theorem:
 
 $$P[X_A = n, X_B = m] =$$
-==aggiungere due passaggi per rendere piú chiaro==
-
 $$= P[X_A = n, X_B = m \space \vert X = n + m] \cdot P[X = n + m] + P[X_A = n, X_B = m \vert X \neq n + m] \cdot P[X \neq n + m] = $$
 
 However, $X$ is defined as $X = X_A + X_B$ and, therefore, $P[X_A = n, X_B = m \vert X \neq n + m] = 0$.
