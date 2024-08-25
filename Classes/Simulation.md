@@ -1225,9 +1225,19 @@ Since $P[X = i] = (1 - p)^{i - 1} \cdot p$, we can pass $p$ instead of $X$ to th
 	\end{algorithm}
 ```
 
-Can we do it more efficiently? We can try to reduce the number of iterations since the formula has only exponentials and no factorials in it. Let's observe $P[X = 1] = 1 - P[X \neq 1] = 1 - (1 - p)$. Also, $P[X = 1 \lor 2] = 1 - P[X \neq 1 \wedge X \neq 2]$. At the $j$-th iteration, the algorithm stops if $u > (1 - p)^j$. This equality can be written as
+Can we do it more efficiently? We can try to reduce the number of iterations since the formula has only exponentials and no factorials in it. Let's observe $P[X = 1] = 1 - P[X \neq 1] = 1 - (1 - p)$. Also, $P[X = 1 \lor 2] = 1 - P[X \neq 1 \wedge X \neq 2]$. At the $j$-th iteration, if the algorithm doesn't stop, it means that $u \geq 1 - p^{j -1}$. On the other hand, if we stop it means that $u < 1 - p^j$. <br />
+If the final output of the algorithm is $j$, it holds that
 
-$$1 - u$$
+$$1 - p^{j - 1} \leq u \leq 1 - p^j =$$
+$$= - p^{j - 1} \leq u -1 \leq- p^j =$$
+$$= p^{j - 1} \leq 1 - u \leq p^j =$$
+$$\text{output } \widehat{\text{j}} = \min \Big\{j \space \vert \space p^j < 1 - u\Big\}$$
+
+How can we find this minimum without computing all these terms? Moving to the logarithm from both terms, we obtain
+
+$$\log(p^j) < \log(1 - u)$$
+
+Since the lo
 
 -------------------------------------------------------------
 
