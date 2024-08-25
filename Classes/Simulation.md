@@ -1109,7 +1109,7 @@ $$\frac{n!}{(n - i)!i!}\Big(\frac{\lambda}{n}\Big)^i \Big(1-\frac{\lambda}{n}\Bi
 $$\frac{n(n-1) \dots (n - i + 1)(n - i)!}{n^i(n - i)!} \cdot\frac{\lambda^i}{i!} \cdot \frac{\Big(1-\frac{\lambda}{n}\Big)^{n}}{\Big(1-\frac{\lambda}{n}\Big)^{i}}$$
 $$\frac{n(n-1) \dots (n - i + 1)}{n^i} \cdot\frac{\lambda^i}{i!} \cdot \frac{\Big(1-\frac{\lambda}{n}\Big)^{n}}{\Big(1-\frac{\lambda}{n}\Big)^{i}} =$$
 
-Now, for $n$ large and $p$ small it holds that ==limite notevole, aggiungere==
+Now, for $n$ large and $p$ small, it follows from a well-known limit that
 
 $$\Big(1 - \frac{\lambda}{n}\Big)^n \approx e^{-\lambda}$$
 $$\frac{n(n-1) \dots (n - i + 1)}{n^i} \approx 1$$
@@ -1127,7 +1127,7 @@ $$Var[Y] = np(1 - p) \approx np \quad \text{ for small } p$$
 
 An example of the use of a Poisson Random Variable.
 
-Charlie is in charge of failure controls in the company network. While checking a particular device, he knows that on average $20$ packets are lost per day under normal working conditions. He decides to replace the device whenever $40$ or more packets are lost in one day: which is the probability of replacing the device while it is still working as normal? 
+==Charlie is in charge of failure controls in the company network. While checking a particular device, he knows that on average $20$ packets are lost per day under normal working conditions. He decides to replace the device whenever $40$ or more packets are lost in one day: which is the probability of replacing the device while it is still working as normal?==
 This example comprehends:
 - Very large number of events;
 - They are independent one another;
@@ -1153,7 +1153,7 @@ $$= P[X_A = n, X_B = m \space \vert X = n + m] \cdot P[X = n + m] + P[X_A = n, X
 
 However, $X$ is defined as $X = X_A + X_B$ and, therefore, $P[X_A = n, X_B = m \vert X \neq n + m] = 0$.
 
-$$P[X_A = n, X_B = m] = P[X_A = n, X_B = m \vert X = n + m] \cdot P[X = n + m] + 0$$
+$$P\Big[X_A = n, X_B = m\Big] = P\Big[X_A = n, X_B = m \vert X = n + m\Big] \cdot P\Big[X = n + m\Big] + 0$$
 ==ingrandire quadre==
 
 This is the setting of a Binomial Random Variable and, therefore, its probability can be written as
