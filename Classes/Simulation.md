@@ -1208,19 +1208,26 @@ Expected value $\mathbb{E}[X] = \sum_{n = 1}^{\infty} np(1 - P)^{n-1} = \frac{1}
 $Var[X] = \frac{1 - p}{p^2}$.
 
 How to generate algorithmically geometric Random Variables? The first possible approach consists in simulating the repetition of a Bernoulli experiment. Another possible one is using, again, the Inverse Cumulative Distribution Function approach and the Native Algorithm, which helps avoiding explicitly generating event by event. It only asks to generate value by value.
+Since $P[X = i] = (1 - p)^{i - 1} \cdot p$, we can pass $p$ instead of $X$ to the algorithm
 
 ```pseudo
 	\begin{algorithm}
 	\caption{Native Algorithm for generating Geometric Random Variables}
 	\begin{algorithmic}
+		\State Generate $p$
 		\State $u$ = random() $\space$   //$[0, 1)$
 		 \State $p, i = 0$
-		 \While{$u \leq p + P[i]$}
-			 \State $p = p + P[i]$
+		 \While{$u \leq p + (1 - p)^{i - 1} \cdot p$}
+			 \State $p = p + (1 - p)^{i - 1} \cdot p$
 			 \State $i = i + 1$
+		\EndWhile
 	\end{algorithmic}
 	\end{algorithm}
 ```
+
+Can we do it more efficiently? We can try to reduce the number of iterations since the formula has only exponentials and no factorials in it. Let's observe $P[X = 1] = 1 - P[X \neq 1] = 1 - (1 - p)$. Also, $P[X = 1 \lor 2] = 1 - P[X \neq 1 \wedge X \neq 2]$. At the $j$-th iteration, the algorithm stops if $u > (1 - p)^j$. This equality can be written as
+
+$$1 - u$$
 
 -------------------------------------------------------------
 
