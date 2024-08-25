@@ -1154,7 +1154,7 @@ $$= \frac{(n + m)!}{n!m!}p_A^{n}(1- p_A)^{m} \space \cdot e^{-\lambda p_A} \spac
 $$= \frac{\cancel{(n + m)!}}{n!m!}p_A^{n}(1- p_A)^{m} \space \cdot e^{-\lambda p_A} \space e^{- \lambda (1 - p_A)}\frac{\lambda^{n} \lambda^{m}}{\cancel{(n + m)!}} =$$
 $$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!} \cdot e^{- \lambda (1 - p_A)}\frac{ (\lambda (1- p_A))^{m}}{m!}$$
 
-Therefore, recalling that we started from $P[X_A = n, X_B = m]$,
+Therefore, recalling that we started from $P[X_A = n, X_B = m]$, we are interested in $P[X_A = n]$
 
 $$P[X_A = n] = \sum_{m = 0}^{\infty} P[X_A = n, X_B = m] =$$
 $$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!} \sum_{m = 0}^{\infty} e^{-\tilde{\lambda}} \frac{(\tilde{\lambda})^m}{m!}$$
