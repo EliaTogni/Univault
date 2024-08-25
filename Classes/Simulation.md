@@ -937,7 +937,7 @@ The inverse transform method suggests to use this cumulative distribution functi
 
 At this point, we are able to generate valid values for probability and therefore we can get the corresponding value. The probability values must be numbers between $0$ and $1$, chosen from a uniform distribution and independent.
 
-The preceding idea can be written algorithmically as
+Defining $P[X = x_i] = p_i$, the preceding idea can be written algorithmically as
 
 ```pseudo
 	\begin{algorithm}
@@ -1170,12 +1170,12 @@ The following is a Random generation algorithm for a Poisson Random Variable.<br
 	\begin{algorithm}
 	\caption{Random Generation Algorithm for a Poisson Random Variable}
 	\begin{algorithmic}
-		\State Generate $X$
-		\State $u$ = random() $\space$   //$[0, 1)$
-		 \State $p = 0$ \#cumulative probability
+		\State Generate $X$ 
+		\State $r$ = random() $\space$   //$[0, 1)$
+		 \State $q = 0$ \#cumulative probability
 		 \State $i = 0$
-		 \While{$u \leq p + P[X = i]$}
-			 \State $p = p + P[X = i]$
+		 \While{$r \leq q + P[X = i]$}
+			 \State $q = q + P[X = i]$
 			 \State $i = i + 1$
          \EndWhile
          \State return $i$
@@ -1200,20 +1200,22 @@ which is easily obtained by noting that in order for the first success to occur 
 Expected value $\mathbb{E}[X] = \sum_{n = 1}^{\infty} np(1 - P)^{n-1} = \frac{1}{p}$.<br />
 Variance $Var[X] = \frac{1 - p}{p^2}$.
 
-How to generate algorithmically geometric Random Variables? The first possible approach consists in simulating the repetition of a Bernoulli experiment. Another possible one is using, again, the Inverse Cumulative Distribution Function approach and the Native Algorithm, which helps avoiding explicitly generating event by event. It only asks to generate value by value.<br />
+How to generate algorithmically geometric Random Variables? The first possible approach consists in simulating the repetition of a Bernoulli experiment. Another possible one is using, again, the Inverse Cumulative Distribution Function approach and the Native Algorithm, ==which helps avoiding explicitly generating event by event. It only asks to generate value by value.==<br />
 Since $P[X = i] = (1 - p)^{i - 1} \cdot p$, we can pass $p$ instead of $X$ to the algorithm
 
 ```pseudo
 	\begin{algorithm}
 	\caption{Native Algorithm for generating Geometric Random Variables}
 	\begin{algorithmic}
-		\State Generate $P$
-		\State $u$ = random() $\space$   //$[0, 1)$
-		 \State $p, i = 0$
-		 \While{$u \leq p + (1 - P)^{i - 1} \cdot P$}
-			 \State $p = p + (1 - P)^{i - 1} \cdot P$
+		\State Generate $p$
+		\State $r$ = random() $\space$   //$[0, 1)$
+		\State $q = 0$ \#cumulative probability
+		\State $i = 0$ 
+		 \While{$r \leq q + (1 - p)^{i - 1} \cdot p$}
+			 \State $p = q + (1 - p)^{i - 1} \cdot p$
 			 \State $i = i + 1$
 		\EndWhile
+		\State Return $i$
 	\end{algorithmic}
 	\end{algorithm}
 ```
