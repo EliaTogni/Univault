@@ -1159,7 +1159,7 @@ Therefore, recalling that we started from $P[X_A = n, X_B = m]$, we are interest
 $$P[X_A = n] = \sum_{m = 0}^{\infty} P[X_A = n, X_B = m] =$$
 $$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!} \sum_{m = 0}^{\infty} e^{-\tilde{\lambda}} \frac{(\tilde{\lambda})^m}{m!}$$
 
-And this is the expression of a general probability for a Poisson Random Variable of parameter $\tilde{\lambda}$. $\tilde{\lambda}$ ==é lambda x p_b? forse non serve saperlo perché tanto questo blocco si toglie al prossimo passaggio==
+And this is the expression of a general probability for a Poisson Random Variable of parameter $\tilde{\lambda} = \lambda (1 - p_A)$.
 
 $$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!} \underbracket{\sum_{m = 0}^{\infty} e^{-\tilde{\lambda}} \frac{(\tilde{\lambda})^m}{m!}}_1 = $$
 $$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!}\quad \text{ with } \lambda_A = \lambda \cdot p_A$$
