@@ -1205,20 +1205,20 @@ $$P[X = i] = p(1 - p)^{i - 1}, \quad i \geq 1$$
 which is easily obtained by noting that in order for the first success to occur on the $i$-th trial, the first $i − 1$ must all be failures and the $i$-th a success. The previous equation now follows because the trials are independent.
 
 Expected value $\mathbb{E}[X] = \sum_{n = 1}^{\infty} np(1 - P)^{n-1} = \frac{1}{p}$.<br />
-$Var[X] = \frac{1 - p}{p^2}$.
+Variance $Var[X] = \frac{1 - p}{p^2}$.
 
-How to generate algorithmically geometric Random Variables? The first possible approach consists in simulating the repetition of a Bernoulli experiment. Another possible one is using, again, the Inverse Cumulative Distribution Function approach and the Native Algorithm, which helps avoiding explicitly generating event by event. It only asks to generate value by value.
+How to generate algorithmically geometric Random Variables? The first possible approach consists in simulating the repetition of a Bernoulli experiment. Another possible one is using, again, the Inverse Cumulative Distribution Function approach and the Native Algorithm, which helps avoiding explicitly generating event by event. It only asks to generate value by value.<br />
 Since $P[X = i] = (1 - p)^{i - 1} \cdot p$, we can pass $p$ instead of $X$ to the algorithm
 
 ```pseudo
 	\begin{algorithm}
 	\caption{Native Algorithm for generating Geometric Random Variables}
 	\begin{algorithmic}
-		\State Generate $p$
+		\State Generate $P$
 		\State $u$ = random() $\space$   //$[0, 1)$
 		 \State $p, i = 0$
-		 \While{$u \leq p + (1 - p)^{i - 1} \cdot p$}
-			 \State $p = p + (1 - p)^{i - 1} \cdot p$
+		 \While{$u \leq p + (1 - P)^{i - 1} \cdot P$}
+			 \State $p = p + (1 - P)^{i - 1} \cdot P$
 			 \State $i = i + 1$
 		\EndWhile
 	\end{algorithmic}
@@ -1237,7 +1237,12 @@ How can we find this minimum without computing all these terms? Moving to the lo
 
 $$\log(p^j) < \log(1 - u)$$
 
-Since the lo
+Since the logarithm is a monotonic function, ==cazzi==
+
+$$= j \log(p) < \log(1 - u) =$$
+$$= j  > \frac{\log(1 - u)}{\log(p)}$$
+
+At this point, we know that we can define this $j = \Bigg \lfloor \frac{\log(1 - u)}{\log(p)} \Bigg \rfloor + 1$. Also, if $u$ is a random number between $0$ and $1$, also $1 - u$ is a random number between $0$ and $1$. Therefore, we can say that $j = \Bigg \lfloor \frac{\log(u)}{\log(p)} \Bigg \rfloor + 1$.
 
 -------------------------------------------------------------
 
