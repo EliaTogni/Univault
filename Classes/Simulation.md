@@ -1160,7 +1160,7 @@ $$P[X = n + m] = e^{-\lambda} \frac{\lambda^{n+ m}}{(n + m)!}$$
 
 $$\binom{n + m}{n}p_A^{n}(1- p_A)^{n + m - n} \cdot e^{-\lambda} \frac{\lambda^{n+ m}}{(n + m)!} = $$
 
-Since $e^{-\lambda}$ ==...==
+Since $e^{-\lambda}$ can be written as $e^{\lambda p_A} \cdot e^{\lambda(1 - p_A)}$
 
 $$= \frac{(n + m)!}{n!m!}p_A^{n}(1- p_A)^{m} \space \cdot e^{-\lambda p_A} \space e^{- \lambda (1 - p_A)}\frac{\lambda^{n} \lambda^{m}}{(n + m)!} = $$
 $$= \frac{\cancel{(n + m)!}}{n!m!}p_A^{n}(1- p_A)^{m} \space \cdot e^{-\lambda p_A} \space e^{- \lambda (1 - p_A)}\frac{\lambda^{n} \lambda^{m}}{\cancel{(n + m)!}} =$$
