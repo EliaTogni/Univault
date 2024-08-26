@@ -1304,7 +1304,7 @@ Let's analyze the algorithmic part.
 
 We can exploit the idea of the Inverse Transform Method and apply it in a similar way to this context. We consider a continuous random variable having distribution function $F$ and, firstly, we compute its inverse, $F^{-1}(u)$.
 
-disegno inversa lezione 12 1h5m
+==disegno inversa lezione 12 1h5m==
 
 For simulating a reading of a uniform continuous Random Variable it is enough to apply this algorithm: we pick a domain in the range from $0$ to $1$ (because we are chosing a probability) and we read the corresponding value on the $y$ axis.
 
@@ -1379,6 +1379,7 @@ Let's see if the Cumulative Distribution Function of the Exponential fits this c
 $$\underbrace{1 - F_X(s + t)}_{1 - (1 - e^{-\lambda x})} = [1 - F(t)] [1 - F(s)] = $$
 $$e^{- \lambda (s + t)} = e^{-\lambda t} e ^{- \lambda s}$$
 
+Now, let's look at it in reverse: which are the Cumulative Distribution Functions that, once plugged in in this definition, satisfy this equality? In other terms, which are the other Random Variables
 The Exponential Random Variable are the only ones having this memoryless property. Whenever we have this fenomenon like an independent arrival or anything else, then the lenght of this observation must be an Exponential Random Variable.
 
 Another useful property of exponential random variables is that they remain exponential
