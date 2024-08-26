@@ -1368,8 +1368,14 @@ disegno 25 minuti
 Proof:
 
 $$\text{Knowing that } P[A \vert B] = \frac{P[A \cap B]}{P[B]}\text{, is it possible to obtain }$$
-$$P[X > s + t \vert X > s] = \underbrace{\frac{P[X > s + t \wedge X > s]}{P[X > s]}}_{P[X > t]} = \frac{P[X > s + t]}{P[X > s]}$$
+$$P[X > s + t \vert X > s] = \underbrace{\frac{P[X > s + t \wedge X > s]}{P[X > s]}}_{P[X > t]} = \frac{P[X > s + t]}{P[X > s]} = P[X > t]$$
+
+==non ho capito l'ultimo step
+
 $$\text{Therefore } \underbrace{P[X > s + t]}_{\text{Reshuffling of memoryless}} = P[X > t] \cdot P[X > s]$$
+
+Let's see if the Cumulative Distribution Function of the Exponential fits this claim.
+
 $$\underbrace{1 - F_X(s + t)}_{1 - (1 - e^{-\lambda x})} = [1 - F(t)] [1 - F(s)] = $$
 $$e^{- \lambda (s + t)} = e^{-\lambda t} e ^{- \lambda s}$$
 
