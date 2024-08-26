@@ -1361,7 +1361,7 @@ $$f(x) = \int_{0}^{x}{\lambda e^{-\lambda x}dx} = 1 - e^{-\lambda x}, \quad 0 < 
 
 slide 16/34
 
-This Random Variable is very useful to model the lifetime of an object or, in general, breakdowns of machines. This is due to the **Memoryless property**, that is, the probability $P[X > s + t | X > s] = P[X > t]$, where $s + t$ are constants. This property is telling that the probability that a machine breaks down after, for example, $15$ minutes knowing that no breakdown occurred for the first $10$ minutes equals the probability that the machine will break down in $5$ minutes.
+This Random Variable is very useful to model the lifetime of an object or, in general, breakdowns of machines. This is due to the **Memoryless property**, that is, the probability $P[X > s + t | X > s] = P[X > t]$, where $s + t$ are constants. To understand why the above is called the memoryless property, imagine that X represents the lifetime of some unit, and consider the probability that a unit of age $s$ will survive an additional time $t$. This property is telling that the probability that a machine breaks down after, for example, $15$ minutes knowing that no breakdown occurred for the first $10$ minutes equals the probability that the machine will break down in $5$ minutes.
 
 disegno 25 minuti
 
@@ -1373,8 +1373,10 @@ $$\text{Therefore } \underbrace{P[X > s + t]}_{\text{Reshuffling of memoryless}}
 $$\underbrace{1 - F_X(s + t)}_{1 - (1 - e^{-\lambda x})} = [1 - F(t)] [1 - F(s)] = $$
 $$e^{- \lambda (s + t)} = e^{-\lambda t} e ^{- \lambda s}$$
 
-The Exponential Random Variable are the only ones having this memoryless property. Whenever we have this fenomenon like an independent arrival or anything else, then the lenght of this observation must be an Exponential Random Variable
-It is really useful to model independent Random Variables.
+The Exponential Random Variable are the only ones having this memoryless property. Whenever we have this fenomenon like an independent arrival or anything else, then the lenght of this observation must be an Exponential Random Variable.
+
+Another useful property of exponential random variables is that they remain exponential
+when multiplied by a positive constant.
 
 **Claim**: let $X$ be am Exponential Random Variable of parameter $\lambda$, then $c \cdot X$ is an exponential Random Variable of parameter $\frac{\lambda}{c}$.
 
@@ -1386,7 +1388,7 @@ Proof: Let $M$ to be the minimum $\min\{X_1, \dots, X_n\}$. Let
 
 $$Y_j = \cases{1 \quad \text{ if } X_j \text{ is minimum} \cr \cr 0 \quad \text{ otherwise}}$$
 
-Now consider $P[Y_j \vert M > t] = P[X_j - t = \min\{X_i - t\} \vert M > t]$. This is equal to $P[X_j - t = \min_i\{X_i - t \vert X_i > t \space \forall i \}]$. Knowing to have the Memoryless property, $X_i - t$ ... mi sono perso sto pezzo
+Now consider $P[Y_j \vert M > t] = P[X_j - t = \min\{X_i - t\} \vert M > t]$. This is equal to $P[X_j - t = \min_i\{X_i - t \vert X_i > t \space \forall i \}]$. Knowing to have the Memoryless property, $X_i - t$ ... ==mi sono perso sto pezzo==
 
 Therefore, $P[X_j = \min_i\{X_i - t\}] = P[Y_j]$.
 
@@ -1407,7 +1409,6 @@ Parameters $\mu$ and $\sigma$.
 
 It is possible to express the CDF in terms of its $\Phi$ function. This function
 
-
 slide 21/34
 
 teorema del limite centrale
@@ -1415,11 +1416,14 @@ teorema del limite centrale
 A core function in the analysis of the normal random variable is the $\Phi$, however this function cannot be expressed using only additions, subtractions, multiplications and root extractions. Thus is necessary a numerical approximation.
 Also is not an invertible function therefore, in term of creating an algorithm for producing valid values for normal random variables, we cannot apply the inverse transform technique and we have to use other algorithm design techniques.
 
-## Composition method
-Can be applied if a random variable X needs to be generated with C.D.F. equal to $F()$ where $F()$ can be expressed as a case function such that: $F(x) = \sum_{i=1}^n \alpha_i \cdot F_i(x)$ with $\sum_{i=1}^n \alpha_i = 1$.
-In other words this means that $F$ can be decomposed as a linear combination of a set of $F_i$ functions.
-We can notice that the constraint that $\sum_{i=1}^n \alpha_i = 1$ is similar to the constraint of probabilities.
-So we can find F(x) as:
+-----
+
+### Composition method
+Can be applied if a Random Variable $X$ needs to be generated with Cumulative Distribution Function equal to $F()$ where $F()$ can be expressed as a case function such that: 
+
+$$F(x) = \sum_{i=1}^n \alpha_i \cdot F_i(x)$ with $\sum_{i=1}^n \alpha_i = 1$$
+
+In other words this means that $F$ can be decomposed as a linear combination of a set of $F_i$ functions. We can notice that the constraint that $\sum_{i=1}^n \alpha_i = 1$ is similar to the constraint of probabilities. So we can find $F(x)$ as:
 $$F(x) = \begin{cases}
 F_1(x) \text{ with probability }\alpha_1\\
 F_2(x) \text{ with probability }\alpha_2\\
@@ -1429,17 +1433,23 @@ F_n(x) \text{ with probability }\alpha_n\\
 \end{cases}$$
 
 Given this hypothesis we can generate a random value in this distribution by: 
-- first generating a random value $j$  in the range from 1 to n with each value $i$ having the probability $\alpha_i$.
-- then we draw a random value from the selected function $F_j$
-The value we obtain this way follows the distribution $F$
-### Proof
+- first generating a random value $j$  in the range from $1$ to $n$ with each value $i$ having the probability $\alpha_i$;
+- then we draw a random value from the selected function $F_j$;
+
+The value we obtain this way follows the distribution $F$.
+
+Proof.<br />
 By following this process the resulting $F(x)$ is defined as:
-$F(x) = \sum_{j=1}^n P[X \leq x | J= j]\cdot P[J=j]$ 
-since j is extracted with probability defined by $\alpha$ this is equal to
-$\sum_{j=1}^n P[X \leq x | J= j]\cdot \alpha_j = \sum_j \alpha_j F_j(x)$
+
+$$F(x) = \sum_{j=1}^n P[X \leq x | J= j]\cdot P[J=j]$$
+
+since $j$ is extracted with probability defined by $\alpha$ this is equal to
+
+$$\sum_{j=1}^n P[X \leq x | J= j]\cdot \alpha_j = \sum_j \alpha_j F_j(x)$$
+
 $\square$
-### Example
-Consider the triangular distribution showed below. 
+
+Consider as an example the triangular distribution showed below. 
 ![[triangular_distribution.png]]
 
 >[!Note]
