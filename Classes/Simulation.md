@@ -1380,14 +1380,16 @@ $$\underbrace{1 - F_X(s + t)}_{1 - (1 - e^{-\lambda x})} = [1 - F(t)] [1 - F(s)]
 $$e^{- \lambda (s + t)} = e^{-\lambda t} e ^{- \lambda s}$$
 
 Now, let's look at it in reverse: which are the Cumulative Distribution Functions that, once plugged in in this definition, satisfy this equality? In other terms, which are the other Random Variables
-The Exponential Random Variable are the only ones having this memoryless property. Whenever we have this fenomenon like an independent arrival or anything else, then the lenght of this observation must be an Exponential Random Variable.
+The Exponential Random Variable are the only ones having this memoryless property since the product of two exponentials is the exponential of the sum. Whenever we have this fenomenon like an independent arrival or anything else, then the lenght of this observation must be an Exponential Random Variable.
 
 Another useful property of exponential random variables is that they remain exponential
 when multiplied by a positive constant.
 
 **Claim**: let $X$ be am Exponential Random Variable of parameter $\lambda$, then $c \cdot X$ is an exponential Random Variable of parameter $\frac{\lambda}{c}$.
 
-Proof: $P[y \leq x] = P[c\cdot X \leq x]$
+Proof:
+
+$P[y \leq x] = P[c\cdot X \leq x] = P[X \leq \frac{x}{c}] = 1 - e^{- \lambda \cdot \frac{x}{c}}$
 
 Let $X_1, \dots, X_n$ be independent Exponential Random Variables of rate $\lambda_i$ for $i = 1, \dots, n$. Then, the minimum $\min\{X_1, \dots, X_n\}$ is, again, an Exponential Random Variable with rate $\sum_{i = 1}^{n} \lambda_i$, independently on which $X_i$ is the smallest.
 
