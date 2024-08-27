@@ -1483,7 +1483,7 @@ Given this hypothesis it is possible to generate a random value in this distribu
 
 The value obtained in this way follows the distribution $F$.
 
-Proof.<br />
+Proof:<br />
 By following this process the resulting $F(x)$ is defined as:
 
 $$F(x) = \sum_{j=1}^n P[X \leq x | J= j]\cdot P[J=j]$$
@@ -1501,6 +1501,7 @@ Consider as an example the triangular distribution showed below.
 >This distribution does not have the nice properties of the normal, but what can make it an appealing choice is that we have full control of the range: in fact the probability of generating numbers greater than 1 or lower than -1 is 0, while the range of a normal is $\mathbb{R}$. Notice that an obvious solution would be truncating and re-scaling the normal, but that would also mean losing the nice properties of the normal.
 
 This distribution can be decomposed in cases:
+
 $$f(x) = \begin{cases}
 x+1 \space\space & -1\leq x < 0\\
 -x+1 \space\space &0\leq x \leq 1\\
@@ -1511,32 +1512,40 @@ $$ F(x) = \begin{cases}
 \frac{x^2}{2}+x+\frac{1}{2} & -1\leq x < 0\\
 \frac{-x^2}{2}+x+\frac{1}{2} & 0 \leq x \leq 1
 \end{cases}$$
+
 so the two cases for $F(x)$ are:
+
 $$ F(x) = \begin{cases}
 F_1(x)=\frac{x^2}{2}+x+\frac{1}{2} & \alpha_1=0.5\\
 F_2(x)=\frac{-x^2}{2}+x+\frac{1}{2} & \alpha_2=0.5\\
 \end{cases}$$
-the first step of the algorithm is trivial, let's imagine that $F_1$ is extracted. After we define the $F_i$ we need to calculate the inverse transform:
-$y =\frac{x^2}{2}+x+\frac{1}{2} \rightarrow y = \frac{(x+1)^2 }{2} \rightarrow 2y = (x+1)^2$
-$\rightarrow \sqrt{2y} = x + 1 \rightarrow x = \sqrt{2y}-1 = F_1^{-1}$ 
-so as usual we draw a uniform random value between 0 and one and use it as argument of the inverse function.
 
-using code:
+The first step of the algorithm is trivial. Let's imagine that $F_1$ is extracted: after we define the $F_i$, we need to calculate the Inverse Transform:
 
-```python
-generateTriangle():
-	u = random()
-	j = discreteRV(0.5,0.5)
-	if j == 1:
-		return invF_1(u)
-	else:
-		return invF_2(u)
+$$y =\frac{x^2}{2}+x+\frac{1}{2} \rightarrow y = \frac{(x+1)^2 }{2} \rightarrow 2y = (x+1)^2$$
+$$\rightarrow \sqrt{2y} = x + 1 \rightarrow x = \sqrt{2y}-1 = F_1^{-1}$$
+
+so, as usual, we draw a uniform random value between $0$ and one and use it as argument of the Inverse Function.
+
+```pseudo
+	\begin{algorithm}
+	\caption{Algo Caption}
+	\begin{algorithmic}
+		\State u = random()
+		\State j = discreteRV($0.5$,$0.5$)
+		\If{j == 1}
+			\State return inv$F_1(u)$
+		\Else
+		\State return $invF_2(u)$
+		\EndIf
+	\end{algorithmic}
+	\end{algorithm}
 ```
 
+-----
 ## Acceptance-rejection method
-Sadly seeing the normal random value as a composition of two distribution does not help since the two are still not invertible *(why?)*
-Say we have a random variable X that needs to be generated with p.d.f $f(x)$ that is not invertible.
-Suppose we also have another random variable Y with p.d.f $g(y)$ that is easy to generate and we know that $f(y)/g(y) \leq c \space\space \forall y$.
+Sadly, seeing the normal random value as a composition of two distribution does not help since the two are still not invertible. *(why?)*
+Say we have a random variable $X$ that needs to be generated with probability density function $f(x)$ that is not invertible. Suppose we also have another random variable $Y$ with probability density function $g(y)$ that is easy to generate and we know that $f(y)/g(y) \leq c \space\space \forall y$.
 
 the procedure is:
 - generate a value $y$ for Y (from g(y))
