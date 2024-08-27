@@ -1382,22 +1382,21 @@ $$e^{- \lambda (s + t)} = e^{-\lambda t} e ^{- \lambda s}$$
 Now, let's look at it in reverse: which are the Cumulative Distribution Functions that, once plugged in in this definition, satisfy this equality? In other terms, which are the other Random Variables
 The Exponential Random Variable are the only ones having this memoryless property since the product of two exponentials is the exponential of the sum. Whenever we have this fenomenon like an independent arrival or anything else, then the lenght of this observation must be an Exponential Random Variable.
 
-Another useful property of exponential random variables is that they remain exponential
+Another useful property of Exponential Random Variables is that they remain exponential
 when multiplied by a positive constant.
 
 **Claim**: let $X$ be am Exponential Random Variable of parameter $\lambda$, then $c \cdot X$ is an exponential Random Variable of parameter $\frac{\lambda}{c}$.
 
-Proof:
+Proof: $P[y \leq x] = P[c\cdot X \leq x] = P[X \leq \frac{x}{c}] = 1 - e^{- \lambda \cdot \frac{x}{c}} = 1 - e^{- \frac{\lambda}{c} \cdot x}$
 
-$P[y \leq x] = P[c\cdot X \leq x] = P[X \leq \frac{x}{c}] = 1 - e^{- \lambda \cdot \frac{x}{c}} = 1 - e^{- \frac{\lambda}{c} \cdot x}$
-
+Now, another useful property of Exponential Random Variables.<br />
 Let $X_1, \dots, X_n$ be a set of independent Exponential Random Variables of rate $\lambda_i$ for $i = 1, \dots, n$. Then, the minimum $\min\{X_1, \dots, X_n\}$ is, again, an Exponential Random Variable with rate $\sum_{i = 1}^{n} \lambda_i$, independently on which $X_i$ is the smallest.
 
 Proof: Let $M$ to be the minimum $\min\{X_1, \dots, X_n\}$. Let 
 
 $$Y_j = \cases{1 \quad \text{ if } X_j \text{ is minimum} \cr \cr 0 \quad \text{ otherwise}}$$
 
-Now consider $P[Y_j \vert M > t] = P[X_j - t = \min\{X_i - t\} \vert M > t]$. This is equal to $P[X_j - t = \min_i\{X_i - t \vert X_i > t \space \forall i \}]$. Knowing to have the Memoryless property, $X_i - t$ ... ==mi sono perso sto pezzo==
+Now consider $P[Y_j \vert M > t] = P[X_j - t = \min\{X_i - t\} \vert M > t]$. This is equal to $P[X_j - t = \min_i\{X_i - t \vert X_i > t \space \forall i \}]$. Knowing to have the memoryless property, $X_i - t$ ... ==mi sono perso sto pezzo==
 
 Therefore, $P[X_j = \min_i\{X_i - t\}] = P[Y_j]$.
 
