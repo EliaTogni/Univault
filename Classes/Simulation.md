@@ -1564,17 +1564,19 @@ If $X$ follows a normal distribution, then a good distribution for $Y$ is an exp
 >$g(y) \cdot \frac{f(y)}{c \cdot g(y)} = \frac{f(y)}{c}$
 >
 
-if Y was discrete we could write $P[accepted] = \sum_{y \in Y}  \frac{f(y)}{c}$ since $\frac{f(y)}{c}$ is the probability of a specific y being accepted, to have the probability of being accepted in general is the sum over every possible value of y.
-Since Y is continue:
+if $Y$ was discrete we could write $P[accepted] = \sum_{y \in Y}  \frac{f(y)}{c}$ since $\frac{f(y)}{c}$ is the probability of a specific $y$ being accepted, to have the probability of being accepted in general is the sum over every possible value of $y$.<br />
+Since $Y$ is continue:
 $$P[accepted] = \int_{-\infty}^{+\infty} \frac{f(y)}{c} dy = \frac{1}{c} \int_{-\infty}^{+\infty} f(y) dy = \frac{1}{c}$$
 $\square$
 ### Proof $\fbox{a}$
-$P[X=x] = \sum_{i=1}^{+\infty} P[\text{x accepted at iteration i}]$
-but being accepted at iteration i means not being accepted in all iteration until i and then getting accepted at iteration i.
-$= \sum_{i=1}^\infty (1-\frac{1}{c})^{i-1} \frac{1}{c} f(x) = \frac{1}{c} f(x) \sum_{i=1}^\infty (1-\frac{1}{c})^{i-1}$
-remembering that $\sum_{i=0}^\infty q^n \rightarrow \frac{1}{1-q}$ we can apply to $\sum_{i=1} (1-\frac{1}{c})^{i-1}$ by substituting $j=i-1$ and $q= 1-\frac{1}{c}$ and obtain $\sum_{j=0}^\infty q^j \rightarrow \frac{1}{1-q} = \frac{1}{1-(1-1/c)} = c$ 
-So going back to the original equation:
- $\frac{1}{c} f(x) \sum_{i=1}^\infty (1-\frac{1}{c})^{i-1} = \frac{1}{c} f(x) \cdot c = f(x) \space \square$
+$P[X=x] = \sum_{i=1}^{+\infty} P[\text{x accepted at iteration i}]$ but being accepted at iteration $i$ means not being accepted in all iteration until $i$ and then getting accepted at iteration $i$.
+
+$$= \sum_{i=1}^\infty (1-\frac{1}{c})^{i-1} \frac{1}{c} f(x) = \frac{1}{c} f(x) \sum_{i=1}^\infty (1-\frac{1}{c})^{i-1}$$
+
+Remembering that $\sum_{i=0}^\infty q^n \rightarrow \frac{1}{1-q}$, we can apply to $\sum_{i=1} (1-\frac{1}{c})^{i-1}$ by substituting $j=i-1$ and $q= 1-\frac{1}{c}$ and obtain $\sum_{j=0}^\infty q^j \rightarrow \frac{1}{1-q} = \frac{1}{1-(1-1/c)} = c$. So going back to the original  equation:
+
+$$\frac{1}{c} f(x) \sum_{i=1}^\infty (1-\frac{1}{c})^{i-1} = \frac{1}{c} f(x) \cdot c = f(x) \space \square$$
+
 
 ## Generating a normal random variable
 Remember that to generate a valid value for every normal random variable is enough to generate a valid value for a normal random variable with $\mu = 0$ and $\sigma^2 = 1$ and simply shift and rescale.
@@ -1583,15 +1585,18 @@ To find the maximum of $h(x)$ we derive it and obtain $\frac{2}{\sqrt{2\pi}} e^{
 
 #TODO aggiungere grafico semi-normale e esponenziale
 
-To obtain a normal we first need to define
+To obtain a normal, we first need to define
 
 #TODO aggiungere grafico con due semi-normali
+
 $$F_{normal}(x) = \frac{1}{2}F^+_{normal}(x)+\frac{1}{2}F^-_{normal}(x)$$
 $$F_{normal}(x) = \begin{cases}
-F^+_{normal}(x) & p^+ = 0.5\\
+F^+_{normal}(x) & p^+ = 0.5\cr \cr
 F^-_{normal}(x) & p^- = 0.5
 \end{cases}$$
+
 The process of generating a normal is then defined as:
+
 ```python
 def genNormal():
 	u = random()
@@ -1615,33 +1620,32 @@ The limit of the Inverse Tranform method is the need for an invertible Cumulativ
 $\vdots$
 
 ### Composition
-The Composition principe is intuitive. A random variable $X$ needs to be generated with cdf F(). F() can be decomposed by a set of F_i functions, that is, as a convex linear combination of F_i (the weights must sum up to 1).
+The Composition principe is intuitive. A random variable $X$ needs to be generated with Cumulative Distribution Function $F()$. $F()$ can be decomposed by a set of $F_i$ functions, that is, as a convex linear combination of $F_i$ (the weights must sum up to $1$).
 
 Esempio triangolo 
 
-This linear combinaton recall the concept of probability, in which the weights can be considered as probability values.
-Therefore, it is possible to define F() as
+This linear combinaton recall the concept of probability, in which the weights can be considered as probability values. Therefore, it is possible to define $F()$ as
 
-$$F(X) = \cases{F_1(X) with prob p_1 \cr \cr F_2 with prob p_2 \cr \cr \vdots \cr \cr }$$
+$$F(X) = \cases{F_1(X) \text{ with prob } p_1 \cr \cr F_2 \text{ with prob } p_2 \cr \cr \vdots \cr \cr }$$
 
-In this case, to generate
+In this case, to generate ...
 
-first generate a value $j$ for a rv whose probability distribution function is given by $\alpha_i$.
+First generate a value $j$ for a rv whose probability distribution function is given by $\alpha_i$.
 
 The value obtained in this way is distributed according to $F()$.
 
-Proof.<br />
+Proof:<br />
 Let's pick $F(X) = P[X \leq x] = \sum_{j = 1}^{n}P[X \leq x \vert J = j] \cdot P[J = j]$. But it is known that this is equal to $\sum_{j = 1}^{n} \alpha_j P[X \leq x \vert J = j] = \sum_{j = 1}^{n} \alpha_j F(X)$.
 
 
 An example of use of the Composition technique.
 Let's consider a triangular distribution.
 
-immagine triangular distribution
+==immagine triangular distribution
 
-How to generate valid values for a triangular random variable? It is possible to do it with the Composition approach
+How to generate valid values for a triangular random variable? It is possible to do it with the Composition approach.
 
-imamgine triangular distribution 2
+==immagine triangular distribution 2
 
 $f(X)$, analytically speaking, can be defined by cases, that is
 
