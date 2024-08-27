@@ -1453,17 +1453,19 @@ If $X$ is normally distributed with parameters $\mu$ and $\sigma^2$, $Z = aX + b
 
 Also, $\Phi$ is not an invertible function: therefore, in term of creating an algorithm for producing valid values for normal random variables, it is not possible to apply the Inverse Transform technique and it is necessary to use other algorithm design techniques.
 
-teorema del limite centrale
+##### Central Limit Theorem
 Let $X_1, \dots, X_n$ be a sequence of $n$ i.i.d Random Variables having finite expected value $\mu$ and variance $\sigma^2$.
 
-(controllare che nella lezione precedente venga spiegato *TUTTO* il central limit theorem)
+$$\lim_{n \to \infty} P\Bigg[\frac{\sum_{i = 1}^{n}X_i - n \cdot \mu}{\sqrt{n \sigma^2}} < x\Bigg] = \Phi(x)$$
+
+that is, the sum of a large number of independent Random Variables is a normally distributed Random Variable (indipendently on the distribution of the starting ones). In other terms, the probability of finding this sum to be different from $n$ times the expected value is not only decreasing (as in the law of large numbers) but the error we get has a particular distribution: it is always distributed as a normal Random Variable.
 
 -----
 
 ### Composition method
-Can be applied if a Random Variable $X$ needs to be generated with Cumulative Distribution Function equal to $F()$ where $F()$ can be expressed as a case function such that: 
+This methodan be applied if a Random Variable $X$ needs to be generated with Cumulative Distribution Function equal to $F()$ where $F()$ can be expressed as a case function such that: 
 
-$$F(x) = \sum_{i=1}^n \alpha_i \cdot F_i(x)$ with $\sum_{i=1}^n \alpha_i = 1$$
+$$F(x) = \sum_{i=1}^n \alpha_i \cdot F_i(x) \space \text{ with } \space \sum_{i=1}^n \alpha_i = 1$$
 
 In other words this means that $F$ can be decomposed as a linear combination of a set of $F_i$ functions. We can notice that the constraint that $\sum_{i=1}^n \alpha_i = 1$ is similar to the constraint of probabilities. So we can find $F(x)$ as:
 $$F(x) = \begin{cases}
