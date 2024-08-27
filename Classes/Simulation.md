@@ -1405,25 +1405,49 @@ Claim: The probability of $X_j$ being the smallest is $P[X_j = M] = \frac{\lambd
 How to generate an Exponential Random Variable of parameter $\lambda$? A first approach is again the Inverse Transform method. it is known that $F(x) = 1 - e^{-\lambda x}$, so the inverse of this function must be computed:
 
 $$u = 1 - e^{-\lambda x} =$$
-$$$
+$$= 1 - u = e^{-\lambda x} =$$
+$$= \log(1 - u) = -\lambda x =$$
+$$= x = - \frac{\log(1 - u)}{\lambda}$$
+
+```pseudo
+	\begin{algorithm}
+	\caption{Generating an Exponential Random Variable}
+	\begin{algorithmic}
+		\State Generate Exponential($\lambda$)
+		\State u = random($0$, $1$)
+		\State $x = - \frac{\log(1 - u)}{\lambda}$
+		\State return x
+	\end{algorithmic}
+	\end{algorithm}
+```
 
 -----
 
 #### Normal Random Variable
-**continuazione della lezione precedente**
-(controllare che nella lezione precedente venga spiegato *TUTTO* il central limit theorem)
+This Random Variable is famous for the shape of its probability density function. In fact, its distribution resembles a bell. The normal Random Variables are parameterized by two parameters, $\mu$ and $\sigma$. $\mu$ is giving the center of the bell and $\sigma$ is giving the width of the bell. 
 
-slide 20/34
+==slide 20/34==
 
-Parameters $\mu$ and $\sigma$.
+Its probability density function is
 
+$$f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} \cdot e^{-\frac{(x - \mu)^2}{2 \sigma^2}}$$
 
-It is possible to express the CDF in terms of its $\Phi$ function. This function
+The expected value of this Random Variable $\mathbb{E}[X] = \mu$ while its variance $Var[X] = \sigma^2$.
+
+It is possible to express the Cumulative Distribution Function of this Random Variable in terms of its $\Phi$ function:
+
+$$F(x) = \Phi \Big( \frac{x - \mu}{\sigma^2} \Big)$$
+
+where 
+
+$$\Phi(x) = \frac{1}{\sqrt{2 \pi}} \int_0^x e^{-z^2 / 2} dz$$
 
 slide 21/34
 
 teorema del limite centrale
 
+
+(controllare che nella lezione precedente venga spiegato *TUTTO* il central limit theorem)
 A core function in the analysis of the normal random variable is the $\Phi$, however this function cannot be expressed using only additions, subtractions, multiplications and root extractions. Thus is necessary a numerical approximation.
 Also is not an invertible function therefore, in term of creating an algorithm for producing valid values for normal random variables, we cannot apply the inverse transform technique and we have to use other algorithm design techniques.
 
