@@ -1389,9 +1389,9 @@ when multiplied by a positive constant.
 
 Proof:
 
-$P[y \leq x] = P[c\cdot X \leq x] = P[X \leq \frac{x}{c}] = 1 - e^{- \lambda \cdot \frac{x}{c}}$
+$P[y \leq x] = P[c\cdot X \leq x] = P[X \leq \frac{x}{c}] = 1 - e^{- \lambda \cdot \frac{x}{c}} = 1 - e^{- \frac{\lambda}{c} \cdot x}$
 
-Let $X_1, \dots, X_n$ be independent Exponential Random Variables of rate $\lambda_i$ for $i = 1, \dots, n$. Then, the minimum $\min\{X_1, \dots, X_n\}$ is, again, an Exponential Random Variable with rate $\sum_{i = 1}^{n} \lambda_i$, independently on which $X_i$ is the smallest.
+Let $X_1, \dots, X_n$ be a set of independent Exponential Random Variables of rate $\lambda_i$ for $i = 1, \dots, n$. Then, the minimum $\min\{X_1, \dots, X_n\}$ is, again, an Exponential Random Variable with rate $\sum_{i = 1}^{n} \lambda_i$, independently on which $X_i$ is the smallest.
 
 Proof: Let $M$ to be the minimum $\min\{X_1, \dots, X_n\}$. Let 
 
