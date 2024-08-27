@@ -1442,15 +1442,21 @@ where
 
 $$\Phi(x) = \frac{1}{\sqrt{2 \pi}} \int_0^x e^{-z^2 / 2} dz$$
 
+A kind of normalization is done In $\Phi$. In other terms, $\Phi(x)$ could be seen as the Cumulative Distribution Function of a normal Random Variable having expected value $0$ and variance $1$.
 
+==slide 21/34==
 
-slide 21/34
+As for the Exponential, we have properties guiding our modeling.<br />
+First of all, the function $\Phi$ cannot be expressed using only additions, subtractions, multiplications and root extractions. Thus is necessary a numerical approximation. 
+
+If $X$ is normally distributed with parameters $\mu$ and $\sigma^2$, $Z = aX + b$ is normally distributed with parameters $a\mu + b$ and $a^2 \sigma^2$.
+
+Also, $\Phi$ is not an invertible function: therefore, in term of creating an algorithm for producing valid values for normal random variables, it is not possible to apply the Inverse Transform technique and it is necessary to use other algorithm design techniques.
 
 teorema del limite centrale
-
+Let $X_1, \dots, X_n$ be a sequence of $n$ i.i.d Random Variables having finite expected value $\mu$ and variance $\sigma^2$.
 
 (controllare che nella lezione precedente venga spiegato *TUTTO* il central limit theorem)
-A core function in the analysis of the normal random variable is the function $\Phi$. However it cannot be expressed using only additions, subtractions, multiplications and root extractions. Thus is necessary a numerical approximation. Also, $\Phi$ is not an invertible function: therefore, in term of creating an algorithm for producing valid values for normal random variables, it is not possible to apply the Inverse Transform technique and it is necessary to use other algorithm design techniques.
 
 -----
 
