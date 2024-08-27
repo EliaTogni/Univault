@@ -1698,7 +1698,7 @@ dimostrazione
 
 Acceptance-rejection for normal random variables
 
-for generating a value for a normal rv with arbitrary expected value and variance, is enough to generate a valid value for a normal rv with expected value $0$ and variance $1$ and use the property that grant us to shift and rescale it.
+For generating a value for a normal rv with arbitrary expected value and variance, is enough to generate a valid value for a normal rv with expected value $0$ and variance $1$ and use the property that grant us to shift and rescale it.
 
 $\vdots$
 
