@@ -1402,6 +1402,11 @@ As second step, let's look at $P[M > t] = P[X_i > t \space \forall i] = \prod_i[
 
 Claim: The probability of $X_j$ being the smallest is $P[X_j = M] = \frac{\lambda_j}{\sum_i \lambda_i}$. Taking as an example the pharmacy exercise, the probability of the next customer to wear a red hat is the ratio between the rate of red hats and the sum of the rates of all the hats. Therefore, the probability of the next event of being of a particular type is proportional to the rate of that particular type.
 
+How to generate an Exponential Random Variable of parameter $\lambda$? A first approach is again the Inverse Transform method. it is known that $F(x) = 1 - e^{-\lambda x}$, so the inverse of this function must be computed:
+
+$$u = 1 - e^{-\lambda x} =$$
+$$$
+
 -----
 
 #### Normal Random Variable
