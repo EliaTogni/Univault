@@ -1667,14 +1667,6 @@ $$F_{1}^{-1}(v) = \sqrt{2y} - 1$$
 
 Therefore, the algorithm will be
 
-generateTriang()
-	u = random()
-	j = discreteRV(1/2, 1/2)
-	if j = 1
-		return F_{1}^{-1}(u
-	else
-		return F_2^{-1}(u)
-
 -------------------------------------------------------------
 
 ### Acceptance-Rejection
