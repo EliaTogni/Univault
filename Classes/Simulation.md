@@ -1396,7 +1396,7 @@ Proof: Let $M$ to be the minimum $\min\{X_1, \dots, X_n\}$. Let
 
 $$Y_j = \cases{1 \quad \text{ if } X_j \text{ is minimum} \cr \cr 0 \quad \text{ otherwise}}$$
 
-Now consider $P[Y_j \vert M > t] = P[X_j - t = \min\{X_i - t\} \vert M > t]$. This is equal to $P[X_j - t = \min_i\{X_i - t \vert X_i > t \space \forall i \}]$. Knowing to have the memoryless property, $X_i - t$  ==mi sono perso sto pezzo==
+Now consider $P[Y_j \vert M > t] = P[X_j - t = \min\{X_i - t\} \vert M > t]$. This is equal to $P[X_j - t = \min_i\{X_i - t \vert X_i > t \space \forall i \}]$. Now, $X_j$ is an Exponential Random Variable so we know it to have the memoryless property. $X_i - t$  does not depend 
 
 Therefore, $P[X_j = \min_i\{X_i - t\}] = P[Y_j]$.
 
