@@ -1448,8 +1448,7 @@ teorema del limite centrale
 
 
 (controllare che nella lezione precedente venga spiegato *TUTTO* il central limit theorem)
-A core function in the analysis of the normal random variable is the $\Phi$, however this function cannot be expressed using only additions, subtractions, multiplications and root extractions. Thus is necessary a numerical approximation.
-Also is not an invertible function therefore, in term of creating an algorithm for producing valid values for normal random variables, we cannot apply the inverse transform technique and we have to use other algorithm design techniques.
+A core function in the analysis of the normal random variable is the function $\Phi$. However it cannot be expressed using only additions, subtractions, multiplications and root extractions. Thus is necessary a numerical approximation. Also, $\Phi$ is not an invertible function: therefore, in term of creating an algorithm for producing valid values for normal random variables, it is not possible to apply the Inverse Transform technique and it is necessary to use other algorithm design techniques.
 
 -----
 
