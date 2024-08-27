@@ -1396,13 +1396,11 @@ Proof: Let $M$ to be the minimum $\min\{X_1, \dots, X_n\}$. Let
 
 $$Y_j = \cases{1 \quad \text{ if } X_j \text{ is minimum} \cr \cr 0 \quad \text{ otherwise}}$$
 
-Now consider $P[Y_j \vert M > t] = P[X_j - t = \min\{X_i - t\} \vert M > t]$. This is equal to $P[X_j - t = \min_i\{X_i - t \vert X_i > t \space \forall i \}]$. Now, $X_j$ is an Exponential Random Variable so we know it to have the memoryless property. $X_i - t$  does not depend 
+Firstly, consider $P[Y_j \vert M > t] = P[X_j - t = \min\{X_i - t\} \vert M > t]$. This is equal to $P[X_j - t = \min_i\{X_i - t \vert X_i > t \space \forall i \}]$. Now, $X_j$ is an Exponential Random Variable so we know it to have the memoryless property. Hence, $X_i - t$  does not depend on $t$. In other terms, the distribution of $X_j - t$ is again an Exponential one, with rate $\lambda_j$. We can remove $t$ from the equality: $P[X_j = \min_i\{X_i - t\}] = P[Y_j]$.
 
-Therefore, $P[X_j = \min_i\{X_i - t\}] = P[Y_j]$.
+As second step, let's look at $P[M > t] = P[X_i > t \space \forall i] = \prod_i[X_i > t] = \prod_i (1 - F(t))$. This is equal to $\prod_i e^{-\lambda_i t} = e^{-(\sum_i \lambda_i) t}$. 
 
-...
-
-Claim: The probability of $X_j$ being the smallest is $P[X_j = M] = \frac{\lambda_j}{\sum_i \lambda_i}$.
+Claim: The probability of $X_j$ being the smallest is $P[X_j = M] = \frac{\lambda_j}{\sum_i \lambda_i}$. Taking as an example the pharmacy exercise, the probability of the next customer to wear a red hat is the ratio between the rate of red hats and the sum of the rates of all the hats. Therefore, the probability of the next event of being of a particular type is proportional to the rate of that particular type.
 
 -----
 
