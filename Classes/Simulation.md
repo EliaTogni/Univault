@@ -1545,17 +1545,17 @@ so, as usual, we draw a uniform random value between $0$ and one and use it as a
 -----
 ## Acceptance-rejection method
 Sadly, seeing the normal random value as a composition of two distribution does not help since the two are still not invertible. *(why?)*
-Say we have a random variable $X$ that needs to be generated with probability density function $f(x)$ that is not invertible. Suppose we also have another random variable $Y$ with probability density function $g(y)$ that is easy to generate and we know that $f(y)/g(y) \leq c \space\space \forall y$.
+Say we have a random variable $X$ that needs to be generated with probability density function $f(x)$ that is not invertible. Suppose we also have another random variable $Y$ with probability density function $g(y)$ that is easy to generate and it is know that $f(y)/g(y) \leq c \space\space \forall y$.
 
-the procedure is:
-- generate a value $y$ for Y (from g(y))
-- generate a value $u$ for a uniformily distributed R.V. U
-- if $u \leq \frac{f(y)}{c\cdot g(y)}$, then output $X = y$
-- otherwise iterate
+The procedure is:
+- generate a value $y$ for $Y$ (from $g(y)$);
+- generate a value $u$ for a uniformily distributed Random Variable $U$;
+- if $u \leq \frac{f(y)}{c\cdot g(y)}$, then output $X = y$;
+- otherwise iterate.
 
-This not only generates a R.V. with p.d.f $f(x)$ $\fbox{a}$, but also does that in a number of iteration that follows a geometric R.V. with expected value $c$   $\fbox{b}$.
+This not only generates a Random Variable with probability density function $f(x)$ $\fbox{a}$, but also does that in a number of iteration that follows a geometric Ramdom Variable with expected value $c$   $\fbox{b}$.
 
-if X follows a normal distribution, then a good distribution for Y is an exponential.
+If $X$ follows a normal distribution, then a good distribution for $Y$ is an exponential.
 
 ### Proof $\fbox{b}$
 
