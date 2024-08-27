@@ -1442,6 +1442,8 @@ where
 
 $$\Phi(x) = \frac{1}{\sqrt{2 \pi}} \int_0^x e^{-z^2 / 2} dz$$
 
+
+
 slide 21/34
 
 teorema del limite centrale
