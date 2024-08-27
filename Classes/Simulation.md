@@ -1463,11 +1463,12 @@ that is, the sum of a large number of independent Random Variables is a normally
 -----
 
 ### Composition method
-This methodan be applied if a Random Variable $X$ needs to be generated with Cumulative Distribution Function equal to $F()$ where $F()$ can be expressed as a case function such that: 
+The **Composition method** an be applied if a Random Variable $X$ needs to be generated with Cumulative Distribution Function equal to $F()$, where $F()$ can be expressed as a case function such that: 
 
 $$F(x) = \sum_{i=1}^n \alpha_i \cdot F_i(x) \space \text{ with } \space \sum_{i=1}^n \alpha_i = 1$$
 
-In other words this means that $F$ can be decomposed as a linear combination of a set of $F_i$ functions. We can notice that the constraint that $\sum_{i=1}^n \alpha_i = 1$ is similar to the constraint of probabilities. So we can find $F(x)$ as:
+In other words, this means that $F$ can be decomposed as a linear combination of a set of $F_i$ functions. It is possible to notice that the constraint that $\sum_{i=1}^n \alpha_i = 1$ is similar to the constraint of probabilities. So we can find $F(x)$ as:
+
 $$F(x) = \begin{cases}
 F_1(x) \text{ with probability }\alpha_1\\
 F_2(x) \text{ with probability }\alpha_2\\
@@ -1476,11 +1477,11 @@ F_n(x) \text{ with probability }\alpha_n\\
 
 \end{cases}$$
 
-Given this hypothesis we can generate a random value in this distribution by: 
+Given this hypothesis it is possible to generate a random value in this distribution by: 
 - first generating a random value $j$  in the range from $1$ to $n$ with each value $i$ having the probability $\alpha_i$;
-- then we draw a random value from the selected function $F_j$;
+- then we draw a random value from the selected function $F_j$.
 
-The value we obtain this way follows the distribution $F$.
+The value obtained in this way follows the distribution $F$.
 
 Proof.<br />
 By following this process the resulting $F(x)$ is defined as:
