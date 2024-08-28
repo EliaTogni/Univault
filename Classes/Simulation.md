@@ -1460,20 +1460,20 @@ $$\lim_{n \to \infty} P\Bigg[\frac{\sum_{i = 1}^{n}X_i - n \cdot \mu}{\sqrt{n \s
 
 that is, the sum of a large number of independent Random Variables is a normally distributed Random Variable (indipendently on the distribution of the starting ones). In other terms, the probability of finding this sum to be different from $n$ times the expected value is not only decreasing (as in the law of large numbers) but the error we get has a particular distribution: it is always distributed as a normal Random Variable.
 
------
+The limit of the Inverse Tranform method is the need for an invertible Cumulative Distribution Function. While this condition was given in the context of Discrete Random Variables, it is not for the continuous ones.
 
-### Composition method
+##### Composition method
 The **Composition method** an be applied if a Random Variable $X$ needs to be generated with Cumulative Distribution Function equal to $F()$, where $F()$ can be expressed as a case function such that: 
 
 $$F(x) = \sum_{i=1}^n \alpha_i \cdot F_i(x) \space \text{ with } \space \sum_{i=1}^n \alpha_i = 1$$
 
-In other words, this means that $F$ can be decomposed as a linear combination of a set of $F_i$ functions. It is possible to notice that the constraint that $\sum_{i=1}^n \alpha_i = 1$ is similar to the constraint of probabilities. So we can find $F(x)$ as:
+In other words, this means that $F$ can be decomposed as a linear combination of a set of $F_i$ functions (the weights must sum up to $1$).. It is possible to notice that the constraint that $\sum_{i=1}^n \alpha_i = 1$ is similar to the constraint of probabilities. So we can find $F(x)$ as:
 
-$$F(x) = \begin{cases}
-F_1(x) \text{ with probability }\alpha_1\\
-F_2(x) \text{ with probability }\alpha_2\\
-...\\
-F_n(x) \text{ with probability }\alpha_n\\
+$$F(x) = \begin{cases} 
+F_1(x) \text{ with probability }\alpha_1 \cr \cr
+F_2(x) \text{ with probability }\alpha_2\cr \cr
+...\cr \cr
+F_n(x) \text{ with probability }\alpha_n\cr
 
 \end{cases}$$
 
@@ -1481,7 +1481,7 @@ Given this hypothesis it is possible to generate a random value in this distribu
 - first generating a random value $j$  in the range from $1$ to $n$ with each value $i$ having the probability $\alpha_i$;
 - then we draw a random value from the selected function $F_j$.
 
-The value obtained in this way follows the distribution $F$.
+The value obtained in this way is distributed according to $F()$.
 
 Proof:<br />
 By following this process the resulting $F(x)$ is defined as:
@@ -1494,7 +1494,10 @@ $$\sum_{j=1}^n P[X \leq x | J= j]\cdot \alpha_j = \sum_j \alpha_j F_j(x)$$
 
 $\square$
 
-Consider as an example the triangular distribution showed below. 
+An example of use of the Composition technique.
+Let's consider a triangular distribution.
+
+==immagine triangular distribution
 ![[triangular_distribution.png]]
 
 >[!Note]
@@ -1615,33 +1618,14 @@ def genHalfNormal():
 -------------------------------------------------------------
 
 
-The limit of the Inverse Tranform method is the need for an invertible Cumulative Distribution Function. While this condition was given in the context of Discrete Random Variables, it is not for the continuous ones.
-
-$\vdots$
-
-### Composition
-The Composition principe is intuitive. A random variable $X$ needs to be generated with Cumulative Distribution Function $F()$. $F()$ can be decomposed by a set of $F_i$ functions, that is, as a convex linear combination of $F_i$ (the weights must sum up to $1$).
-
-Esempio triangolo 
-
-This linear combinaton recall the concept of probability, in which the weights can be considered as probability values. Therefore, it is possible to define $F()$ as
-
-$$F(X) = \cases{F_1(X) \text{ with prob } p_1 \cr \cr F_2 \text{ with prob } p_2 \cr \cr \vdots \cr \cr }$$
-
-In this case, to generate ...
-
-First generate a value $j$ for a rv whose probability distribution function is given by $\alpha_i$.
-
-The value obtained in this way is distributed according to $F()$.
 
 Proof:<br />
 Let's pick $F(X) = P[X \leq x] = \sum_{j = 1}^{n}P[X \leq x \vert J = j] \cdot P[J = j]$. But it is known that this is equal to $\sum_{j = 1}^{n} \alpha_j P[X \leq x \vert J = j] = \sum_{j = 1}^{n} \alpha_j F(X)$.
 
 
-An example of use of the Composition technique.
-Let's consider a triangular distribution.
 
-==immagine triangular distribution
+
+
 
 How to generate valid values for a triangular random variable? It is possible to do it with the Composition approach.
 
