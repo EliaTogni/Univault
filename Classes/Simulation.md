@@ -1486,9 +1486,9 @@ The value obtained in this way is distributed according to $F()$.
 Proof:<br />
 By following this process the resulting $F(x)$ is defined as:
 
-$$F(x) = \sum_{j=1}^n P[X \leq x | J= j]\cdot P[J=j]$$
+$$F(x) = P[X \leq x] = \sum_{j=1}^n P[X \leq x | J= j]\cdot P[J=j]$$
 
-since $j$ is extracted with probability defined by $\alpha$ this is equal to
+since $j$ is extracted with probability defined by $\alpha$,  it is known that this is equal to
 
 $$\sum_{j=1}^n P[X \leq x | J= j]\cdot \alpha_j = \sum_j \alpha_j F_j(x)$$
 
@@ -1503,20 +1503,21 @@ Let's consider a triangular distribution.
 >[!Note]
 >This distribution does not have the nice properties of the normal, but what can make it an appealing choice is that we have full control of the range: in fact the probability of generating numbers greater than 1 or lower than -1 is 0, while the range of a normal is $\mathbb{R}$. Notice that an obvious solution would be truncating and re-scaling the normal, but that would also mean losing the nice properties of the normal.
 
-This distribution can be decomposed in cases:
+$f(x)$, analytically speaking, can be defined by cases, that is
 
 $$f(x) = \begin{cases}
 x+1 \space\space & -1\leq x < 0\\
 -x+1 \space\space &0\leq x \leq 1\\
-0 \space\space & elsewhere
+0 \space\space & \text{elsewhere}
 \end{cases}$$
+
+so the two cases for $F(x)$ are:
+
 $$ F(x) = \begin{cases}
 0 & x <-1\\
 \frac{x^2}{2}+x+\frac{1}{2} & -1\leq x < 0\\
 \frac{-x^2}{2}+x+\frac{1}{2} & 0 \leq x \leq 1
 \end{cases}$$
-
-so the two cases for $F(x)$ are:
 
 $$ F(x) = \begin{cases}
 F_1(x)=\frac{x^2}{2}+x+\frac{1}{2} & \alpha_1=0.5\\
@@ -1526,6 +1527,9 @@ F_2(x)=\frac{-x^2}{2}+x+\frac{1}{2} & \alpha_2=0.5\\
 The first step of the algorithm is trivial. Let's imagine that $F_1$ is extracted: after we define the $F_i$, we need to calculate the Inverse Transform:
 
 $$y =\frac{x^2}{2}+x+\frac{1}{2} \rightarrow y = \frac{(x+1)^2 }{2} \rightarrow 2y = (x+1)^2$$
+
+Both members are always positive, so
+
 $$\rightarrow \sqrt{2y} = x + 1 \rightarrow x = \sqrt{2y}-1 = F_1^{-1}$$
 
 so, as usual, we draw a uniform random value between $0$ and one and use it as argument of the Inverse Function.
@@ -1617,41 +1621,6 @@ def genHalfNormal():
 
 -------------------------------------------------------------
 
-
-
-Proof:<br />
-Let's pick $F(X) = P[X \leq x] = \sum_{j = 1}^{n}P[X \leq x \vert J = j] \cdot P[J = j]$. But it is known that this is equal to $\sum_{j = 1}^{n} \alpha_j P[X \leq x \vert J = j] = \sum_{j = 1}^{n} \alpha_j F(X)$.
-
-
-
-
-
-
-How to generate valid values for a triangular random variable? It is possible to do it with the Composition approach.
-
-==immagine triangular distribution 2
-
-$f(X)$, analytically speaking, can be defined by cases, that is
-
-$$f(X) = \cases{x + 1 \quad -1 \leq x \leq 0 \cr \cr  - x + 1 \quad 0 \leq x \leq 1 \cr \cr 0 \quad \text{elsewhere}}$$
-
-and its integral is
-
-$$F(X) = \cases{0 \quad x \leq 1 \cr \cr \frac{x^2}{2} + x + \frac{1}{2} \quad -1 \leq x \leq 0 \cr \cr -\frac{x^2}{2} + x + \frac{1}{2} \quad 0 \leq x \leq 1 \cr \cr 1 \quad x > 1}$$
-$$F(X) = \cases{F_1(X) = \frac{x^2}{2} + x + \frac{1}{2} \quad \alpha_1 = \frac{1}{2} \cr \cr F_2(X) = -\frac{x^2}{2} + x + \frac{1}{2} \quad \alpha_2 = \frac{1}{2}}$$
-
-Now it is possible to apply the inverse transform method.
-
-$$y = \frac{x^2}{2} + x + \frac{1}{2} \implies y = \frac{1}{2}\Big(x + 1\Big) \implies 2y = \Big(x + 1\Big)$$
-
-Both members are always positive, so
-
-$$\sqrt{2y} = x + 1 \implies x = \sqrt{2y} - 1$$
-$$F_{1}^{-1}(v) = \sqrt{2y} - 1$$
-
-Therefore, the algorithm will be
-
--------------------------------------------------------------
 
 ### Acceptance-Rejection
 How to generate a branch of a normal RV?
