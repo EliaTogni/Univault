@@ -1554,6 +1554,8 @@ so, as usual, we draw a uniform random value between $0$ and one and use it as a
 Sadly, seeing the normal random value as a composition of two distribution does not help since the two are still not invertible. *(why?)*
 Say we have a random variable $X$ that needs to be generated with probability density function $f(x)$ that is not invertible. Suppose we also have another random variable $Y$ with probability density function $g(y)$ that is easy to generate and it is know that $f(y)/g(y) \leq c \space\space \forall y$.
 
+slide 22/34
+
 The procedure is:
 - generate a value $y$ for $Y$ (from $g(y)$);
 - generate a value $u$ for a uniformily distributed Random Variable $U$;
@@ -1567,7 +1569,7 @@ If $X$ follows a normal distribution, then a good distribution for $Y$ is an exp
 ### Proof $\fbox{b}$
 
 >[!Observation]
->$P[Y=y \land \text{is accepted}] = P[Y=y]\cdot P[accepted|Y=y]$ Because the acceptance step depends on the value Y. Since $P[Y=y] = g(y)$ and $P[accepted | Y=y] = \frac{f(y)}{c \cdot g(y)}$ we can rewrite it as:
+>$P[Y=y \land \text{is accepted}] = P[Y=y]\cdot P[\text{accepted }|Y=y]$ Because the acceptance step depends on the value Y. Since $P[Y=y] = g(y)$ and $P[\text{accepted }| Y=y] = \frac{f(y)}{c \cdot g(y)}$ we can rewrite it as:
 >$g(y) \cdot \frac{f(y)}{c \cdot g(y)} = \frac{f(y)}{c}$
 >
 
@@ -1621,33 +1623,6 @@ def genHalfNormal():
 
 -------------------------------------------------------------
 
-
-### Acceptance-Rejection
-How to generate a branch of a normal RV?
-Slide 22/34
-
-Theorem: 
-
-Proof:
-$P[Y = y \wedge \text{ is accepted}] = P[Y = y] \cdot P[\text{accepted } \vert Y = y] = g(y) \cdot \frac{f(y)}{c \cdot g(y)} = \frac{1}{c}f(y)$.
-
-Let's proof that the number of iteration needed to converge is a geometric RV with expected value $c$. To reach converge I mean $1$ value accepted.
-
-$$P[\text{ accepted }] = \sum_{y \in Y} \frac{1}{c} f(y)$$
-
-$y$ is, in general, a continuous RV so
-
-$$P[\text{ accepted }] = \int_{-\infty}^{+\infty} \frac{1}{c} f(y) dy =  \frac{1}{c} \int_{-\infty}^{+\infty} f(y) dy = \frac{1}{c}$$
-
-So the probability is constant with value $\frac{1}{c}$.
-
-immagine rettangolini 1/c
-
-Let's proof that the rv generated in this way has pdf $f(y)$. let's look at $P[X = x]$. In order to get $x$, we know that $P[X = x] = \sum_{i = 1}^{+ \infty} P[x \text{ accepted at iteration } i]$. 
-
-dimostrazione
-
--------------------------------------------------------------
 
 Acceptance-rejection for normal random variables
 
