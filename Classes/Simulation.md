@@ -387,7 +387,7 @@ The **cumulative distribution function**, or, more simply, the distribution func
 
 $$F(x) = P[X \leq x]$$
 
-grafico
+==grafico==
 
 -------------------------------------------------------------
 
@@ -404,7 +404,7 @@ A graphical example of a probability mass function.
 
 ==grafico
 
-esempio numerico==
+==esempio numerico==
 
 -------------------------------------------------------------
 
@@ -931,7 +931,7 @@ How is possible to simulate the readings of such custom discrete Random Variable
 
 First of all, the cumulative distribution function is built out of the Random Variable.
 
-grafico cdf con inverse transformation lezione 7 1h 18
+==grafico cdf con inverse transformation lezione 7 1h 18==
 
 The inverse transform method suggests to use this cumulative distribution function in reverse, that is, picking a probability value and reading the corresponding value of the Random Variable generating this probability. 
 
@@ -1326,7 +1326,7 @@ We can prove the following strong result about this method: let $U$ be a uniform
 
 The second point of discussion that will open for other algorithmic techniques is asking ourselves if this algorithm is really always applicable. While in the discrete case, any cumulative distribution function is invertible, in the continuous it depends.
 
-Proof.
+Proof:<br />
 Let $F_X$ the cumulative distribution function of $X = F^{-1}(U)$. It is possible to say that
 
 $$F_X(x) = P[X \leq x] = P[F^{-1}(U) \leq x]$$
@@ -1359,11 +1359,11 @@ The cumulative distribution function of an exponential Random Variable is given 
 
 $$f(x) = \int_{0}^{x}{\lambda e^{-\lambda x}dx} = 1 - e^{-\lambda x}, \quad 0 < x < \infty$$
 
-slide 16/34
+==slide 16/34
 
 This Random Variable is very useful to model the lifetime of an object or, in general, breakdowns of machines. This is due to the **Memoryless property**, that is, the probability $P[X > s + t | X > s] = P[X > t]$, where $s + t$ are constants. To understand why the above is called the memoryless property, imagine that X represents the lifetime of some unit, and consider the probability that a unit of age $s$ will survive an additional time $t$. This property is telling that the probability that a machine breaks down after, for example, $15$ minutes knowing that no breakdown occurred for the first $10$ minutes equals the probability that the machine will break down in $5$ minutes.
 
-disegno 25 minuti
+==disegno 25 minuti
 
 Proof:
 
@@ -1387,12 +1387,15 @@ when multiplied by a positive constant.
 
 **Claim**: let $X$ be am Exponential Random Variable of parameter $\lambda$, then $c \cdot X$ is an exponential Random Variable of parameter $\frac{\lambda}{c}$.
 
-Proof: $P[y \leq x] = P[c\cdot X \leq x] = P[X \leq \frac{x}{c}] = 1 - e^{- \lambda \cdot \frac{x}{c}} = 1 - e^{- \frac{\lambda}{c} \cdot x}$
+Proof: 
+
+$$P[y \leq x] = P[c\cdot X \leq x] = P[X \leq \frac{x}{c}] = 1 - e^{- \lambda \cdot \frac{x}{c}} = 1 - e^{- \frac{\lambda}{c} \cdot x}$$
 
 Now, another useful property of Exponential Random Variables.<br />
 Let $X_1, \dots, X_n$ be a set of independent Exponential Random Variables of rate $\lambda_i$ for $i = 1, \dots, n$. Then, the minimum $\min\{X_1, \dots, X_n\}$ is, again, an Exponential Random Variable with rate $\sum_{i = 1}^{n} \lambda_i$, independently on which $X_i$ is the smallest.
 
-Proof: Let $M$ to be the minimum $\min\{X_1, \dots, X_n\}$. Let 
+Proof:<br />
+Let $M$ to be the minimum $\min\{X_1, \dots, X_n\}$. Let 
 
 $$Y_j = \cases{1 \quad \text{ if } X_j \text{ is minimum} \cr \cr 0 \quad \text{ otherwise}}$$
 
@@ -1554,7 +1557,7 @@ so, as usual, we draw a uniform random value between $0$ and one and use it as a
 Sadly, seeing the normal random value as a composition of two distribution does not help since the two are still not invertible. *(why?)*
 Say we have a random variable $X$ that needs to be generated with probability density function $f(x)$ that is not invertible. Suppose we also have another random variable $Y$ with probability density function $g(y)$ that is easy to generate and it is know that $f(y)/g(y) \leq c \space\space \forall y$.
 
-slide 22/34
+==slide 22/34
 
 The procedure is:
 - generate a value $y$ for $Y$ (from $g(y)$);
