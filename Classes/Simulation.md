@@ -1620,26 +1620,6 @@ def genHalfNormal():
 ```
 
 -------------------------------------------------------------
-
-
-#### Acceptance-rejection for normal random variables
-For generating a value for a normal rv with arbitrary expected value and variance, is enough to generate a valid value for a normal rv with expected value $0$ and variance $1$ and use the property that grant us to shift and rescale it.
-
-$\vdots$
-
-dimostrazione pt
-
-
-$$F_{NORMAL}(x) = \cases{F^{-}_{NORMAL}(x) \quad p_1 = \frac{1}{2} \cr \cr F^{+}_{NORMAL}(x) \quad p_2 = \frac{1}{2}}$$
-
-Algoritmo di generazione $F^{+}_{NORMAL}(x)$
-
-Algoritmo di generazione $F^{-}_{NORMAL}(x)$
-
-Algoritmo di generazione $F_{NORMAL}(x)$
-
--------------------------------------------------------------
-
 ## Poisson processes
 A Poisson Process having rate $\lambda$ is defined by these conditions:
 - events are occurring at random time points;
