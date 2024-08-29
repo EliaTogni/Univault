@@ -933,7 +933,7 @@ How is possible to simulate the readings of such custom discrete Random Variable
 
 First of all, the cumulative distribution function is built out of the Random Variable.
 
-==grafico cdf con inverse transformation lezione 7 1h 18==
+![[InverseCDF.png]]
 
 The inverse transform method suggests to use this cumulative distribution function in reverse, that is, picking a probability value and reading the corresponding value of the Random Variable generating this probability. 
 
@@ -1248,8 +1248,6 @@ Let $X$ denote the number of trials needed to obtain $r$ successes when each tri
 
 $P[X = i]$
 
-==immagine==
-
 The last iteration is the $r$-th success. On the previous iteration ($i-1$ iteration) we got $r-1$ successes. The probability of getting this configuration is defined by a binomial Random Variable:
 
 $$\binom{i - 1}{r -1} p^{r-1}(1-p)^{i-1 -(r-1)}$$
@@ -1306,7 +1304,7 @@ Let's analyze the algorithmic part.
 
 We can exploit the idea of the Inverse Transform Method and apply it in a similar way to this context. We consider a continuous random variable having distribution function $F$ and, firstly, we compute its inverse, $F^{-1}(u)$.
 
-==disegno inversa lezione 12 1h5m==
+![[InverseCDFUniformlyDistributeContinuousRV.png]]
 
 For simulating a reading of a uniform continuous Random Variable it is enough to apply this algorithm: we pick a domain in the range from $0$ to $1$ (because we are chosing a probability) and we read the corresponding value on the $y$ axis.
 
@@ -1361,11 +1359,9 @@ The cumulative distribution function of an exponential Random Variable is given 
 
 $$f(x) = \int_{0}^{x}{\lambda e^{-\lambda x}dx} = 1 - e^{-\lambda x}, \quad 0 < x < \infty$$
 
-==slide 16/34
+![[ExponentialRandomVariable.png]]
 
 This Random Variable is very useful to model the lifetime of an object or, in general, breakdowns of machines. This is due to the **Memoryless property**, that is, the probability $P[X > s + t | X > s] = P[X > t]$, where $s + t$ are constants. To understand why the above is called the memoryless property, imagine that X represents the lifetime of some unit, and consider the probability that a unit of age $s$ will survive an additional time $t$. This property is telling that the probability that a machine breaks down after, for example, $15$ minutes knowing that no breakdown occurred for the first $10$ minutes equals the probability that the machine will break down in $5$ minutes.
-
-==disegno 25 minuti
 
 Proof:
 
@@ -1431,7 +1427,7 @@ $$= x = - \frac{\log(1 - u)}{\lambda}$$
 #### Normal Random Variable
 This Random Variable is famous for the shape of its probability density function. In fact, its distribution resembles a bell. The normal Random Variables are parameterized by two parameters, $\mu$ and $\sigma$. $\mu$ is giving the center of the bell and $\sigma$ is giving the width of the bell. 
 
-==slide 20/34==
+![[NormalRandomVariable.png]]
 
 Its probability density function is
 
@@ -1448,8 +1444,6 @@ where
 $$\Phi(x) = \frac{1}{\sqrt{2 \pi}} \int_0^x e^{-z^2 / 2} dz$$
 
 A kind of normalization is done In $\Phi$. In other terms, $\Phi(x)$ could be seen as the cumulative distribution function of a normal Random Variable having expected value $0$ and variance $1$.
-
-==slide 21/34==
 
 As for the Exponential, we have properties guiding our modeling.<br />
 First of all, the function $\Phi$ cannot be expressed using only additions, subtractions, multiplications and root extractions. Thus is necessary a numerical approximation. 
@@ -1558,8 +1552,6 @@ so, as usual, we draw a uniform random value between $0$ and one and use it as a
 ## Acceptance-rejection method
 Sadly, seeing the normal random value as a composition of two distribution does not help since the two are still not invertible. *(why?)*
 Say we have a random variable $X$ that needs to be generated with probability density function $f(x)$ that is not invertible. Suppose we also have another random variable $Y$ with probability density function $g(y)$ that is easy to generate and it is know that $f(y)/g(y) \leq c \space\space \forall y$.
-
-==slide 22/34
 
 The procedure is:
 - generate a value $y$ for $Y$ (from $g(y)$);
