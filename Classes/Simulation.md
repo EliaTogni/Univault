@@ -737,7 +737,7 @@ def ripley_test(v):
 	plt.scatter(v, w)	
 ```
 
-==immagini ripley test
+![[RipleyTest.png]]
 
 -------------------------------------------------------------
 
@@ -795,7 +795,9 @@ def empirical_cdf(S, x):
 	return count / len(S)
 ```
 
-==Below, some graphical example of $F$ and $\widehat{F}$.
+Below, some graphical example of $F$ and $\widehat{F}$.
+
+![[GlivenkoCantelli.png]]
 
 ----------------------------------------------------------------
 
