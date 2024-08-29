@@ -387,7 +387,9 @@ The **cumulative distribution function**, or, more simply, the distribution func
 
 $$F(x) = P[X \leq x]$$
 
-==grafico==
+An example of a cumulative distribution function.
+
+![[CumulativeDistributionFunction.png]]
 
 -------------------------------------------------------------
 
@@ -741,7 +743,7 @@ def ripley_test(v):
 
 -------------------------------------------------------------
 
-#### Empirical Cumulative Distribution Function
+#### Empirical cumulative distribution function
 Let's consider the following random sequence: $1$, $3$, $2$, $9$, $8$, $7$, $4$, $5$, $6$, $10$. Is it a random sequence between $1$ and $10$? The response is no, because it is desired for the random values to be extracted from a **uniform distribution**.
 
 A uniform discrete Random Variable is defined as  
@@ -765,7 +767,7 @@ With the increasing of the number of steps, the discrete uniform cumulative dist
 
 ![[ContinuousUniformCumulativeDistributionFunction.png]]
 
-To evaluate if a function is approximating this behaviour, it is possible to use the **Empirical Cumulative Distribution function** $\widehat{F}$, another mathematical tool which can be used in order to assess the goodness of a congruential generator. This function associates a sample with an approximation of the cumulative distribution function of the distribution from which the sample has been drawn. Formally, given a sample $S = \{x_1, \dots, x_m\}$ drawn from a distribution whose cumulative distribution function is $F$, the empirical cumulative distribution function is defined as
+To evaluate if a function is approximating this behaviour, it is possible to use the **empirical cumulative distribution function** $\widehat{F}$, another mathematical tool which can be used in order to assess the goodness of a congruential generator. This function associates a sample with an approximation of the cumulative distribution function of the distribution from which the sample has been drawn. Formally, given a sample $S = \{x_1, \dots, x_m\}$ drawn from a distribution whose cumulative distribution function is $F$, the empirical cumulative distribution function is defined as
 
 $$\widehat{F}(x) = \frac{1}{m} \sum_{i = 1}^{m} \mathbb{I}_{(-\infty, x]}(x_i)$$
 
@@ -973,7 +975,7 @@ In the case that $p_1 = p_2 = \dots = p_n$, it would be a Random Variable define
 $$X = \cases{x_1 \space \text{ with } p = \frac{1}{n} \cr \cr x_2 \space \text{ with } p = \frac{1}{n} \cr \cr \vdots \cr \cr x_n \space \text{ with } p = \frac{1}{n}}$$
 
 This is called a Uniform Discrete Random Variable.<br />
-A general method for generating valid values for these customs discrete Random Variables was already explored in the previous chapter, the Inverse Transform method, which refers to the inverse of the Cumulative Distribution Function. Basing on this technique, are we able to create an algorithm for producing a value for a uniform Random Variable?
+A general method for generating valid values for these customs discrete Random Variables was already explored in the previous chapter, the Inverse Transform method, which refers to the inverse of the cumulative distribution function. Basing on this technique, are we able to create an algorithm for producing a value for a uniform Random Variable?
 
 A valid algorithm for producing values for a Uniform Discrete Random Variable is the following:
 
@@ -1200,7 +1202,7 @@ which is easily obtained by noting that in order for the first success to occur 
 Expected value $\mathbb{E}[X] = \sum_{n = 1}^{\infty} np(1 - P)^{n-1} = \frac{1}{p}$.<br />
 Variance $Var[X] = \frac{1 - p}{p^2}$.
 
-How to generate algorithmically geometric Random Variables? The first possible approach consists in simulating the repetition of a Bernoulli experiment. Another possible one is using, again, the Inverse Cumulative Distribution Function approach and the Native Algorithm, ==which helps avoiding explicitly generating event by event. It only asks to generate value by value.==<br />
+How to generate algorithmically geometric Random Variables? The first possible approach consists in simulating the repetition of a Bernoulli experiment. Another possible one is using, again, the inverse cumulative distribution function approach and the Native Algorithm, ==which helps avoiding explicitly generating event by event. It only asks to generate value by value.==<br />
 Since $P[X = i] = (1 - p)^{i - 1} \cdot p$, we can pass $p$ instead of $X$ to the algorithm
 
 ```pseudo
@@ -1322,7 +1324,7 @@ $$F^{-1}(u) =a + (b-a) \cdot u $$
 	\end{algorithm}
 ```
 
-We can prove the following strong result about this method: let $U$ be a uniform Random Variable in range $(0, 1)$. We can state that for any continuous cumulative distribution function $F()$ (and, therefore, for any Random Variable, because every one of them has a CDF), the Random Variable $X = F^{-1}(U)$ has distribution cumulative function $F()$. That is, the native algorithm using the Inverse Transform concept is correct for each target Random Variable.
+We can prove the following strong result about this method: let $U$ be a uniform Random Variable in range $(0, 1)$. We can state that for any continuous cumulative distribution function $F()$ (and, therefore, for any Random Variable, because every one of them has a cumulative distribution function), the Random Variable $X = F^{-1}(U)$ has distribution cumulative function $F()$. That is, the native algorithm using the Inverse Transform concept is correct for each target Random Variable.
 
 The second point of discussion that will open for other algorithmic techniques is asking ourselves if this algorithm is really always applicable. While in the discrete case, any cumulative distribution function is invertible, in the continuous it depends.
 
@@ -1374,12 +1376,12 @@ $$P[X > s + t \vert X > s] = \underbrace{\frac{P[X > s + t \wedge X > s]}{P[X > 
 
 $$\text{Therefore } \underbrace{P[X > s + t]}_{\text{Reshuffling of memoryless}} = P[X > t] \cdot P[X > s]$$
 
-Let's see if the Cumulative Distribution Function of the Exponential fits this claim.
+Let's see if the cumulative distribution function of the Exponential fits this claim.
 
 $$\underbrace{1 - F_X(s + t)}_{1 - (1 - e^{-\lambda x})} = [1 - F(t)] [1 - F(s)] = $$
 $$e^{- \lambda (s + t)} = e^{-\lambda t} e ^{- \lambda s}$$
 
-Now, let's look at it in reverse: which are the Cumulative Distribution Functions that, once plugged in in this definition, satisfy this equality? In other terms, which are the other Random Variables
+Now, let's look at it in reverse: which are the cumulative distribution functions that, once plugged in in this definition, satisfy this equality? In other terms, which are the other Random Variables
 The Exponential Random Variable are the only ones having this memoryless property since the product of two exponentials is the exponential of the sum. Whenever we have this fenomenon like an independent arrival or anything else, then the lenght of this observation must be an Exponential Random Variable.
 
 Another useful property of Exponential Random Variables is that they remain exponential
@@ -1437,7 +1439,7 @@ $$f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} \cdot e^{-\frac{(x - \mu)^2}{2 \sigma^2
 
 The expected value of this Random Variable $\mathbb{E}[X] = \mu$ while its variance $Var[X] = \sigma^2$.
 
-It is possible to express the Cumulative Distribution Function of this Random Variable in terms of its $\Phi$ function:
+It is possible to express the cumulative distribution function of this Random Variable in terms of its $\Phi$ function:
 
 $$F(x) = \Phi \Big( \frac{x - \mu}{\sigma^2} \Big)$$
 
@@ -1445,7 +1447,7 @@ where
 
 $$\Phi(x) = \frac{1}{\sqrt{2 \pi}} \int_0^x e^{-z^2 / 2} dz$$
 
-A kind of normalization is done In $\Phi$. In other terms, $\Phi(x)$ could be seen as the Cumulative Distribution Function of a normal Random Variable having expected value $0$ and variance $1$.
+A kind of normalization is done In $\Phi$. In other terms, $\Phi(x)$ could be seen as the cumulative distribution function of a normal Random Variable having expected value $0$ and variance $1$.
 
 ==slide 21/34==
 
@@ -1463,10 +1465,10 @@ $$\lim_{n \to \infty} P\Bigg[\frac{\sum_{i = 1}^{n}X_i - n \cdot \mu}{\sqrt{n \s
 
 that is, the sum of a large number of independent Random Variables is a normally distributed Random Variable (indipendently on the distribution of the starting ones). In other terms, the probability of finding this sum to be different from $n$ times the expected value is not only decreasing (as in the law of large numbers) but the error we get has a particular distribution: it is always distributed as a normal Random Variable.
 
-The limit of the Inverse Tranform method is the need for an invertible Cumulative Distribution Function. While this condition was given in the context of Discrete Random Variables, it is not for the continuous ones.
+The limit of the Inverse Tranform method is the need for an invertible cumulative distribution function. While this condition was given in the context of Discrete Random Variables, it is not for the continuous ones.
 
 ##### Composition method
-The **Composition method** an be applied if a Random Variable $X$ needs to be generated with Cumulative Distribution Function equal to $F()$, where $F()$ can be expressed as a case function such that: 
+The **Composition method** an be applied if a Random Variable $X$ needs to be generated with cumulative distribution function equal to $F()$, where $F()$ can be expressed as a case function such that: 
 
 $$F(x) = \sum_{i=1}^n \alpha_i \cdot F_i(x) \space \text{ with } \space \sum_{i=1}^n \alpha_i = 1$$
 
