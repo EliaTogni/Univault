@@ -404,9 +404,7 @@ $$\sum_{i = 1}^{\infty}p(x_i) = 1$$
 
 A graphical example of a probability mass function.
 
-==grafico
-
-==esempio numerico==
+![[ProbabilityMassFunction.png]]
 
 -------------------------------------------------------------
 
