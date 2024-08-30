@@ -1645,9 +1645,112 @@ The expected time between a trigger and another will be $1/rate$.
 
 -----
 
-Lezione Martedì 28 maggio
 
-Interval estimates
+Two of the most important properties of Poisson Process are:
+- $N(t)$ is a poisson random variable with expected value $t\lambda$;
+- the interarrival times are i.i.d. exponential random variables with parameter $\lambda$.
+
+
+There are two possible ways to simulate a Poisson Process:
+- simulate a Poisson RV to generate number of events over time t (let's say it's $k$), then draw $k$ values from a uniform distribution in $[0,1]$ and rescale them by $t$;
+- simulate interarrival times with exponential RV.
+
+
+## Nonhomogeneous Poisson Processes
+The stationary increment assumption is the strictest of this assumptions. We can relax this assumption with **Nonhomogeneous Poisson Processes**. In this kind of process, instead of using $\lambda$ as a fixed intensity, we have $\lambda(t)$ that is the intensity at time $t$.
+
+As a result where we would use $\lambda$ we instead use $\lambda(t)$:
+
+$$\lim_{h\to 0} \frac{P[N(h)=1]}{h} = \lambda(t)$$
+
+This means that in small intervals the probability of an event to occur is approximately $h\lambda(t)$.
+
+This is a common behavior in mobile networks, where the arrival of packets during the day is not constant but instead is very high during certain hours and low during the night.
+
+The definition of $\lambda(t)$ is up to the modeler. One possible interpretation is:
+if $\bar{p}(t)$ is the probability that an event occurring at time $t$ in a Poisson process with parameter $\lambda$ is discarded and $p(t)=1-\bar p(t)$, then the process involving the non discarded events is a non-homogeneous Poisson Process with intensity $\lambda(t) = \lambda \cdot p(t)$.
+
+![[Diagram.svg]]
+
+Obviously this kind of model are harder to model since it's necessary to have an estimate of $\lambda(t)$, to do so a solution is discretize the behavior observed in real world
+
+#TODO aggiungere immagine minuto 52:51
+
+Proof:<br />
+If we have an homogeneous Poisson Process of intensity $\lambda$ and accept an event with probability $p(t)$, we obtain a non homogeneous Poisson Process of parameter $\lambda(t) = \lambda \cdot p(t)$:
+
+- Events are occurring at random time points -> True, because the selection is also a random process
+- $N(t)$ is the number of events in the interval $[0,t]$ -> This is only a definition
+- $N(0) = 0$ (process begins at time 0) -> True, because HPP can't have more events than PP
+- The number of events in disjoint time intervals are independent (*independent increment assumption*) -> True, because the events in PP are independent and the dropping is performed randomly
+- $\lambda(t)$ is the intensity at time t 
+- $\lim_{h\to 0} \frac{P[N(h)=1]}{h} = \lambda(t)$ -> $\fbox{*}$
+- $\lim_{h\to 0} \frac{P[N(h)\geq 2]}{h} = 0$ -> True, because was true before and we are not adding new events so the probability cannot increase
+
+Since we know that the probability of finding more than $1$ event in a small interval is $0$ this is equal to the probability of $1$ or more:
+
+$$\begin{align}
+&P[\text{finding an event in }[t,t+h]&\land \space &\text{ not discarding it}] = \\
+=\space & P[\text{find one event in }[t,t+h]]&\cdot \space & P[\text{not discarding}] =\\
+= \space& \lambda \cdot h & \cdot \space &p(t)
+\end{align}$$
+
+and therefore:
+
+$$
+\begin{align}
+&\lim_{h\to 0} \frac{P[\text{finding an event in } [t,t+h] \text{ and not discarding it}]}{h}=\\
+=&\lim_{h\to 0} \frac{h\cdot \lambda}{h} p(t) = \lambda p(t) = \lambda(t) \\ &&\square
+\end{align}$$
+
+# Copulas
+So far we have always discussed the generation of a single or multiple observation but always from a single random value. What if we want to observe multiple random variable at once and those random variable are not independent?
+
+An easy way is to know the joint distribution function for common set of variables. Often this is not easy to implement because we don't know this distribution or it's not easy to extract from it.
+That's where copulas become the best alternative.
+
+A copula is a joint probability distribution $C(x,y)$ with both marginal distributions being uniformly distributed in $(0,1)$:
+$$\begin{align}
+C(0,0)= 0\\
+C(x,1) = x\\
+C(1,y) = y\\
+\end{align}$$
+for example to use this copula to represent another distribution H(x,y) for the random variables X and Y with respectively CDF F(x) and G(y):
+$$H(x,y) = P[X\leq x, Y \leq y] = P[F(X)\leq F(x), G(Y) \leq G(y)] = C(F(x),G(y))$$
+#TODO questo da rivedere
+
+In other words: we know both $F(X)$ and $G(Y)$ but not their joint CDF $H(X,Y)$, only that they are not independent.
+To generate pairs of meaningful values we first generate values for the copula, then apply the inverse transform method to get values of the original distributions.
+
+Different type of copula models different type of dependencies between variables, for example:
+- Gaussian copula -> good to model variables with a known correlation between them
+- Marshall-Olkin copula -> good to model chain relation
+
+## Gaussian copula
+The two random variables X and Y that have known correlation $\rho$. 
+We generate a pair of values $Z = (z_1, z_2)$ from a bivariate Normal with the same correlation $\rho$.
+Then we obtain pairs of random uniform values correlated among them by computing $U= (u_1,u_2) = (\Phi(z_1,z_2))$ this two uniform random variable are still correlated and are then used to obtain a random couple of observation of the original random variables using the inverse of their CDF: $R=(F^{-1}(u_1), G^{-1}(u_2))$ 
+The couple generated has the same correlation value of the variables X and Y.
+
+## Important property of copulas
+Say $C_{X,Y} (x,y)$ to be the copula generated by $X,Y$ and s(x),t(y) to be an arbitrary increasing function of x and y. Then $C_{s(X),t(Y)}(x,y) = C_{X,Y}(x,y)$.
+
+To prove this:
+$$\begin{align}
+&X \rightarrow \text{cdf} \space F\\
+&Y \rightarrow \text{cdf} \space G\\
+&s(X) \rightarrow \text{cdf} \space F_s\\
+&s(Y) \rightarrow \text{cdf} \space G_t\\
+\\
+&F_s(x) = P[s(X) \leq x] =  && \text{ since s is increasing}\\
+&= P[X \leq s^{-1}(x)] = F(s^{-1}(x))
+\end{align}$$
+for the same reasoning $G_t(Y) = G(t^{-1}(y))$
+however $F_s(s(x)) = F(s^{-1}(s(x))) = F(x)$ and $G_t(t(x)) = G(t^{-1}(t(y))) = G(y)$
+so:
+$$C_{s(X),t(Y)} = P[F_s(s(x)) \leq x, G_t(t(y)) \leq y] = P[F(x)\leq x, G(y) \leq y] = C_{x,y}(x,y)$$
+$\square$
+
 
 -----
 
