@@ -1634,7 +1634,6 @@ a **Poisson Process** having rate $\lambda$ if:
 - $\lim_{h \to 0} \frac{P[N(h) = 1]}{h} = \lambda$ (in small intervals, the probability of an event to occur is approximately $h\lambda$);
 - $\lim_{h \to 0} \frac{P[N(h) \geq 2]}{h} = 0$ (it is unlikely that two or more events occur in small intervals).
 
-
 Poisson processes have many nice properties.<br />
 If a process satisfies the previous conditions, then $N(t)$ is a Poisson Random Variable with expected value $t\lambda$.
 
