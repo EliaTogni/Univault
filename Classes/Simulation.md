@@ -1634,9 +1634,19 @@ a **Poisson Process** having rate $\lambda$ if:
 - $\lim_{h \to 0} \frac{P[N(h) = 1]}{h} = \lambda$ (in small intervals, the probability of an event to occur is approximately $h\lambda$);
 - $\lim_{h \to 0} \frac{P[N(h) \geq 2]}{h} = 0$ (it is unlikely that two or more events occur in small intervals).
 
+
+Poisson processes have many nice properties.<br />
+If a process satisfies the previous conditions, then $N(t)$ is a Poisson Random Variable with expected value $t\lambda$.
+
+Proof:<br />
+Recalling that $N(t)$ is the number of eventt
+
+
+Furthermore, the interarrival times (the times in between one event and the next one) are i.i.d. exponential Random Variables with parameter $\lambda$. 
+
 -------------------------------------------------------------
 
-independent increment assumtpion
+
 
 simulation: rate -> interarrival (intertrigger) time are distributed with an exponential random variable.
 The expected time between a trigger and another will be $1/rate$.
