@@ -1621,15 +1621,14 @@ def genHalfNormal():
 
 -------------------------------------------------------------
 ## Poisson processes
-==Cercare definizione processi sheldon ross
-
-A **Poisson Process** having rate $\lambda$ is defined by these conditions:
+Suppose that events are occurring at random time points. These events are said to constitute
+a **Poisson Process** having rate $\lambda$ if:
 - events are occurring at random time points;
 - $N(t)$ is the number of events in the interval $[0, t]$;
 - $N(0) = 0$ (process begins at time $0$);
 - the number of events in disjoint time intervals are independent (**independet increment assumption**);
 
-==immagine lecture 17 20 min
+![[IndependentIncrementAssumtpion.png]]
 
 - the probability density function of the number of events in a given interval depend only on its length, not on its position (**stationary increment assumption**);
 - $\lim_{h \to 0} \frac{P[N(h) = 1]}{h} = \lambda$ (in small intervals, the probability of an event to occur is approximately $h\lambda$);
