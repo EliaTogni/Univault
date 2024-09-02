@@ -1629,13 +1629,15 @@ A **Poisson Process** having rate $\lambda$ is defined by these conditions:
 - $N(0) = 0$ (process begins at time $0$);
 - the number of events in disjoint time intervals are independent (**independet increment assumption**);
 
-immagine lecture 20 min
+==immagine lecture 17 20 min
 
 - the probability density function of the number of events in a given interval depend only on its length, not on its position (**stationary increment assumption**);
 - $\lim_{h \to 0} \frac{P[N(h) = 1]}{h} = \lambda$ (in small intervals, the probability of an event to occur is approximately $h\lambda$);
 - $\lim_{h \to 0} \frac{P[N(h) \geq 2]}{h} = 0$ (it is unlikely that two or more events occur in small intervals).
 
 -------------------------------------------------------------
+
+independent increment assumtpion
 
 simulation: rate -> interarrival (intertrigger) time are distributed with an exponential random variable.
 The expected time between a trigger and another will be $1/rate$.
