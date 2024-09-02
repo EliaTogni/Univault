@@ -1648,6 +1648,9 @@ Furthermore, the interarrival times (the times in between one event and the next
 
 Proof:<br />
 Let's call $X_i$ to be the time between event #$i -1$ and event #$i$. This random quantity is the interarrival time. Indeed, the $X_i$ Random Variable, that is, the time in between two events defines time slots, which are disjoint. Since disjoint time intervals are independent, these variables also are.
+We also know that the number of events depends only on the length, so these Random Variables are independent and also identically distributed: in fact if we take intervals of the same length, we have the same probability of finding events in them. Therefore, their probability density function is the same. Now we make an assumption: $X_i$ is an exponential Random Variable.
+
+Let's be more formal. Consider $P[X_1 > t]$, that is, the probability of the arrival time of the first event to be greater than $t$. This is equal to not finding events up to $t$.
 
 -------------------------------------------------------------
 
