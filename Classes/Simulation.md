@@ -1648,7 +1648,7 @@ We want to count the number of slots containing an event. This is a Binomial Ran
 Furthermore, the interarrival times (the times in between one event and the next one) are i.i.d. exponential Random Variables with parameter $\lambda$.
 
 Proof:<br />
-Let's call $X_i$ to be the time between event #$i -1$ and event #$i$.
+Let's call $X_i$ to be the time between event #$i -1$ and event #$i$. This random quantity is the interarrival time. Indeed, the $X_i$ Random Variable, for the structure of the process, 
 
 -------------------------------------------------------------
 
