@@ -1639,10 +1639,16 @@ Poisson processes have many nice properties.<br />
 If a process satisfies the previous conditions, then $N(t)$ is a Poisson Random Variable with expected value $t\lambda$.
 
 Proof:<br />
-Recalling that $N(t)$ is the number of eventt
+Recall that $N(t)$ is the number of events in $[0, t]$. Let's take the slot between $0$ and $t$ and split it into $n$ slots of equal length $t/n$. Now, let's consider one of them and assume $n$ to be large enough: then we are in the case of a small interval. Therefore, $P[N(t/n) \geq 2] \to 0$ and $P[N(t/n) = 1]  \to \frac{t}{n} \cdot \lambda = p$ ==check la formula==. We made this reasoning for only one of these slots but if we look at the nuymber of events in this joint time interval, we can do the analysis independently, due to the independent increment assumption. Even more, for the stationary increment assumption, we know that the result of the analysis on each slot will be the same. Therefore, we will have $n$ copies of the first analysis.
 
+==immagine lez 17 38 min
 
-Furthermore, the interarrival times (the times in between one event and the next one) are i.i.d. exponential Random Variables with parameter $\lambda$. 
+We want to count the number of slots containing an event. This is a Binomial Random Variable of parameter $p$. What happens to a Binomial Random Variable when $n$ is very large and $p = \frac{t}{n} \lambda$ is very small? This Random Variable becomes a Poisson one of parameter $n \cdot p = t \cdot \lambda$.
+
+Furthermore, the interarrival times (the times in between one event and the next one) are i.i.d. exponential Random Variables with parameter $\lambda$.
+
+Proof:<br />
+Let's call $X_i$ to be the time between event #$i -1$ and event #$i$.
 
 -------------------------------------------------------------
 
