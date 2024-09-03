@@ -1650,19 +1650,16 @@ Proof:<br />
 Let's call $X_i$ to be the time between event #$i -1$ and event #$i$. This random quantity is the interarrival time. Indeed, the $X_i$ Random Variable, that is, the time in between two events defines time slots, which are disjoint. Since disjoint time intervals are independent, these variables also are.
 We also know that the number of events depends only on the length, so these Random Variables are independent and also identically distributed: in fact if we take intervals of the same length, we have the same probability of finding events in them. Therefore, their probability density function is the same. Now we make an assumption: $X_i$ is an exponential Random Variable.
 
-Let's be more formal. Consider $P[X_1 > t]$, that is, the probability of the arrival time of the first event to be greater than $t$. This is equal to not finding events up to $t$: $P[N(t) = 0]$. Since $N(t)$ is a Poisson Random Variable, we know that $P[X = 0] = e^{- \lambda t} \frac{(\lambda t)^0}{0!} =e^{- \lambda t}$. This is indeed exponential. Therefore, $P[X_1 \leq t] = 1 - e^{- \lambda t}$, which is a cumulative distribution function of an exponential. Hence, the arrival time of the first event is an exponential Random Variable. Now, let's take $P[X_i > t \vert X_{i - 1} = s] = P\Big[\emptyset \text{ events in } [s, s + t] \vert X_{i - 1} = s\Big]$. Again we are in the setting of counting the number of events in a certain slot but the number of events in this slot is independent on what happened before. Hence, this is equal to $P\Big[\emptyset \text{ events in } [s, s + t]\Big] = P\Big[\emptyset \text{ events in } [0,t]\Big] = e^{- \lambda t}$.
+Let's be more formal. Consider $P[X_1 > t]$, that is, the probability of the arrival time of the first event to be greater than $t$. This is equal to not finding events up to $t$: $P[N(t) = 0]$. Since $N(t)$ is a Poisson Random Variable, we know that $P[X = 0] = e^{- \lambda t} \frac{(\lambda t)^0}{0!} =e^{- \lambda t}$. This is indeed exponential. Therefore, $P[X_1 \leq t] = 1 - e^{- \lambda t}$, which is a cumulative distribution function of an exponential. Hence, the arrival time of the first event is an exponential Random Variable. Now, let's take $P[X_i > t \vert X_{i - 1} = s] = P\Big[\emptyset \text{ events in } [s, s + t] \vert X_{i - 1} = s\Big]$. Again we are in the setting of counting the number of events in a certain slot but the number of events in this slot is independent on what happened before. Hence, this is equal to $P\Big[\emptyset \text{ events in } [s, s + t]\Big] = P\Big[\emptyset \text{ events in } [0,t]\Big] = e^{- \lambda t}$, which is again exponential.
 
-When it is the case of claiming that a certain process can be modelled as a Poisson one?
+Let's define a Gamma Random Variable of parameter $n$, $\lambda$ to be a continuous Random Variable having the following probability distribution function:
 
--------------------------------------------------------------
+$$f(t) = \lambda e^{- \lambda t} \frac{(\lambda t)^{n -1}}{(n - 1)!}$$
 
 
+These Gamma Random Variables are the continuous counterparts of a specific type of discrete Random Variables:
 
-simulation: rate -> interarrival (intertrigger) time are distributed with an exponential random variable.
-The expected time between a trigger and another will be $1/rate$.
-
-10 per days e.g.
-
+The sum of $n$ independent exponential Random Variables, each having parameter $\lambda$, is a gamma Random Variable with parameters $n$, $\lambda$.
 
 -----
 
