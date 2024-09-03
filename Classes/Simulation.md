@@ -1176,7 +1176,7 @@ The following is a Random generation algorithm for a Poisson Random Variable.<br
 		\State $r$ = random() $\space$   //$[0, 1)$
 		 \State $q = 0$ \#cumulative probability
 		 \State $i = 0$
-		 \While{$r \leq q + P[X = i]$}
+		 \While{$r \geq q + P[X = i]$}
 			 \State $q = q + P[X = i]$
 			 \State $i = i + 1$
          \EndWhile
@@ -1202,7 +1202,7 @@ which is easily obtained by noting that in order for the first success to occur 
 Expected value $\mathbb{E}[X] = \sum_{n = 1}^{\infty} np(1 - P)^{n-1} = \frac{1}{p}$.<br />
 Variance $Var[X] = \frac{1 - p}{p^2}$.
 
-How to generate algorithmically geometric Random Variables? The first possible approach consists in simulating the repetition of a Bernoulli experiment. Another possible one is using, again, the inverse cumulative distribution function approach and the Native Algorithm, ==which helps avoiding explicitly generating event by event. It only asks to generate value by value.==<br />
+How to generate algorithmically geometric Random Variables? The first possible approach consists in simulating the repetition of a Bernoulli experiment. Another possible one is using, again, the inverse cumulative distribution function approach and the Native Algorithm..<br />
 Since $P[X = i] = (1 - p)^{i - 1} \cdot p$, we can pass $p$ instead of $X$ to the algorithm
 
 ```pseudo
@@ -1213,7 +1213,7 @@ Since $P[X = i] = (1 - p)^{i - 1} \cdot p$, we can pass $p$ instead of $X$ to th
 		\State $r$ = random() $\space$   //$[0, 1)$
 		\State $q = 0$ \#cumulative probability
 		\State $i = 0$ 
-		 \While{$r \leq q + (1 - p)^{i - 1} \cdot p$}
+		 \While{$r \geq q + (1 - p)^{i - 1} \cdot p$}
 			 \State $q = q + (1 - p)^{i - 1} \cdot p$
 			 \State $i = i + 1$
 		\EndWhile
@@ -1550,7 +1550,7 @@ so, as usual, we draw a uniform random value between $0$ and one and use it as a
 
 -----
 ## Acceptance-rejection method
-Sadly, seeing the normal random value as a composition of two distribution does not help since the two are still not invertible. ==perché?==
+Sadly, seeing the normal random value as a composition of two distribution does not help since the two are still not invertible.
 
 Say we have a random variable $X$ that needs to be generated with probability density function $f(x)$ that is not invertible. Suppose we also have another random variable $Y$ with probability density function $g(y)$ that is easy to generate and it is know that $f(y)/g(y) \leq c \space\space \forall y$.
 
