@@ -1668,11 +1668,16 @@ There are two possible ways to simulate a Poisson Process of parameter $\lambda$
 Is it true that this algorithm is producing a valid Random Variable? What is giving the structure is only the generation of $n$.
 
 Proof:<br />
-Let's define $N(t)$ to be the number of values of $\{u_1 T, u_2 T, \dots u_n T\}$, which are $\leq t$. We will pretend this $N(t)$ to be a Random Variable of unknown structure and we want to prove that $N(t)$ is actually defining a Poisson process. We define $I_1, \dots I_r$, which are $r$ disjoint intervals in the range $[0, t]$. An event is of type $k$ if $u_k T$ falls inside $I_k$ and an event is of type $r + 1$ if it falls outside of any $I_k$. Now, let $p_1, \dots, p_{r +1}$ be the probabilities of being in $I_1, \dots, I_r$ or of type $r + 1$.
+Let's define $N(t)$ to be the number of values of $\{u_1 T, u_2 T, \dots u_n T\}$, which are $\leq t$. We will pretend this $N(t)$ to be a Random Variable of unknown structure and we want to prove that $N(t)$ is actually defining a Poisson process. We define $I_1, \dots I_r$, which are $r$ disjoint intervals in the range $[0, t]$. An event is of type $k$ if $u_k T$ falls inside $I_k$ and an event is of type $r + 1$ if it falls outside of any $I_k$. Now, let $p_1, \dots, p_{r +1}$ be the probabilities of being in $I_1, \dots, I_r$ or of type $r + 1$. These probabilities, however, since we have drawn $n$ points uniformly at random, depends on the length of this $I$ and not on its position. So $p_i = \frac{\vert I_i \vert}{T}$, that is the length of the interval divided by $T$. Hence, $p_{r + 1} = 1 - \sum_{k=1}^{r}p_k$.
 
-
-- simulate a Poisson Random Variable to generate number of events over time $t$ (let's say it's $k$), then draw $k$ values from a uniform distribution in $[0,1]$ and rescale them by $t$;
-- simulate interarrival times with exponential RV.
+Recalling that $I_1, \dots I_r$ are disjoint and that the events are independently classified, we now can check the conditions of a Poisson process:
+- events are occuring at random time points since they are chosen uniformly at random; 
+- $N(t)$ is the number of events in the interval $[0, t]$ for definition;
+- $N(0) = 0$ (process begins at time $0$);
+- the number of events in disjoint time intervals are independent (**independet increment assumption**);
+- the probability density function of the number of events in a given interval depend only on its length, not on its position (**stationary increment assumption**) $\to p_i = \frac{\vert I_i \vert}{T}$;
+- $\lim_{h \to 0} \frac{P[N(h) = 1]}{h} = \lambda$ (in small intervals, the probability of an event to occur is approximately $h\lambda$);
+- $\lim_{h \to 0} \frac{P[N(h) \geq 2]}{h} = 0$ (it is unlikely that two or more events occur in small intervals).
 
 ### Nonhomogeneous Poisson Processes
 The stationary increment assumption is the strictest of this assumptions. We can relax this assumption with **Nonhomogeneous Poisson Processes**. In this kind of process, instead of using $\lambda$ as a fixed intensity, we have $\lambda(t)$ that is the intensity at time $t$.
@@ -1685,8 +1690,7 @@ This means that in small intervals the probability of an event to occur is appro
 
 This is a common behavior in mobile networks, where the arrival of packets during the day is not constant but instead is very high during certain hours and low during the night.
 
-The definition of $\lambda(t)$ is up to the modeler. One possible interpretation is:
-if $\bar{p}(t)$ is the probability that an event occurring at time $t$ in a Poisson process with parameter $\lambda$ is discarded and $p(t)=1-\bar p(t)$, then the process involving the non discarded events is a non-homogeneous Poisson Process with intensity $\lambda(t) = \lambda \cdot p(t)$.
+The definition of $\lambda(t)$ is up to the modeler. One possible interpretation is that if $\bar{p}(t)$ is the probability that an event occurring at time $t$ in a Poisson process with parameter $\lambda$ is discarded and $p(t)=1-\bar p(t)$, then the process involving the non discarded events is a non-homogeneous Poisson Process with intensity $\lambda(t) = \lambda \cdot p(t)$.
 
 ![[Diagram.svg]]
 
@@ -1696,14 +1700,13 @@ Obviously this kind of model are harder to model since it's necessary to have an
 
 Proof:<br />
 If we have an homogeneous Poisson Process of intensity $\lambda$ and accept an event with probability $p(t)$, we obtain a non homogeneous Poisson Process of parameter $\lambda(t) = \lambda \cdot p(t)$:
-
-- Events are occurring at random time points -> True, because the selection is also a random process
-- $N(t)$ is the number of events in the interval $[0,t]$ -> This is only a definition
-- $N(0) = 0$ (process begins at time 0) -> True, because HPP can't have more events than PP
-- The number of events in disjoint time intervals are independent (*independent increment assumption*) -> True, because the events in PP are independent and the dropping is performed randomly
-- $\lambda(t)$ is the intensity at time t 
-- $\lim_{h\to 0} \frac{P[N(h)=1]}{h} = \lambda(t)$ -> $\fbox{*}$
-- $\lim_{h\to 0} \frac{P[N(h)\geq 2]}{h} = 0$ -> True, because was true before and we are not adding new events so the probability cannot increase
+- Events are occurring at random time points $\to$ True, because the selection is also a random process;
+- $N(t)$ is the number of events in the interval $[0,t]$ $\to$ This is only a definition;
+- $N(0) = 0$ (process begins at time 0) $\to$ True, because HPP can't have more events than PP;
+- The number of events in disjoint time intervals are independent (**independent increment assumption**) $\to$ True, because the events in Poisson processes are independent and the dropping is performed randomly;
+- $\lambda(t)$ is the intensity at time $t$;
+- $\lim_{h\to 0} \frac{P[N(h)=1]}{h} = \lambda(t)$ $\to$ $\fbox{*}$;
+- $\lim_{h\to 0} \frac{P[N(h)\geq 2]}{h} = 0$ $\to$ True, because was true before and we are not adding new events so the probability cannot increase.
 
 Since we know that the probability of finding more than $1$ event in a small interval is $0$ this is equal to the probability of $1$ or more:
 
@@ -1721,23 +1724,29 @@ $$
 =&\lim_{h\to 0} \frac{h\cdot \lambda}{h} p(t) = \lambda p(t) = \lambda(t) \\ &&\square
 \end{align}$$
 
-# Copulas
+-----
+## Copulas
 So far we have always discussed the generation of a single or multiple observation but always from a single random value. What if we want to observe multiple random variable at once and those random variable are not independent?
 
 An easy way is to know the joint distribution function for common set of variables. Often this is not easy to implement because we don't know this distribution or it's not easy to extract from it.
 That's where copulas become the best alternative.
 
 A copula is a joint probability distribution $C(x,y)$ with both marginal distributions being uniformly distributed in $(0,1)$:
+
 $$\begin{align}
 C(0,0)= 0\\
 C(x,1) = x\\
 C(1,y) = y\\
 \end{align}$$
+
 for example to use this copula to represent another distribution H(x,y) for the random variables X and Y with respectively CDF F(x) and G(y):
+
 $$H(x,y) = P[X\leq x, Y \leq y] = P[F(X)\leq F(x), G(Y) \leq G(y)] = C(F(x),G(y))$$
+
 #TODO questo da rivedere
 
-In other words: we know both $F(X)$ and $G(Y)$ but not their joint CDF $H(X,Y)$, only that they are not independent.
+In other words: we know both $F(X)$ and $G(Y)$ but not their joint CDF $H(X,Y)$, only that they are not independent. 
+
 To generate pairs of meaningful values we first generate values for the copula, then apply the inverse transform method to get values of the original distributions.
 
 Different type of copula models different type of dependencies between variables, for example:
