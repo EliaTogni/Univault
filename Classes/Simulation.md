@@ -1668,7 +1668,8 @@ There are two possible ways to simulate a Poisson Process of parameter $\lambda$
 Is it true that this algorithm is producing a valid Random Variable? What is giving the structure is only the generation of $n$.
 
 Proof:<br />
-Let's define $N(t)$ to be the number of values of $\{u_1 T, u_2 T, \dots u_n T\}$, which are $\leq t$. We will pretend this $N(t)$ to be a Random Variable of unknown structure and 
+Let's define $N(t)$ to be the number of values of $\{u_1 T, u_2 T, \dots u_n T\}$, which are $\leq t$. We will pretend this $N(t)$ to be a Random Variable of unknown structure and we want to prove that $N(t)$ is actually defining a Poisson process. We define $I_1, \dots I_r$, which are $r$ disjoint intervals in the range $[0, t]$. An event is of type $k$ if $u_k T$ falls inside $I_k$ and an event is of type $r + 1$ if it falls outside of any $I_k$. Now, let $p_1, \dots, p_{r +1}$ be the probabilities of being in $I_1, \dots, I_r$ or of type $r + 1$.
+
 
 - simulate a Poisson Random Variable to generate number of events over time $t$ (let's say it's $k$), then draw $k$ values from a uniform distribution in $[0,1]$ and rescale them by $t$;
 - simulate interarrival times with exponential RV.
