@@ -1366,9 +1366,18 @@ This Random Variable is very useful to model the lifetime of an object or, in ge
 Proof:
 
 $$\text{Knowing that } P[A \vert B] = \frac{P[A \cap B]}{P[B]}\text{, is it possible to obtain }$$
-$$P[X > s + t \vert X > s] = \underbrace{\frac{P[X > s + t \wedge X > s]}{P[X > s]}}_{P[X > t]} = \frac{P[X > s + t]}{P[X > s]} = P[X > t]$$
+$$P[X > s + t \vert X > s] = \underbrace{\frac{P[X > s + t \wedge X > s]}{P[X > s]}}_{P[X > t]} = \frac{P[X > s + t]}{P[X > s]}$$
 
-==non ho capito l'ultimo step
+Knowing that
+
+$$P[X>s+t] = e^{-\lambda(s+t)}$$
+and
+
+$$P[X>s] = e^{-\lambda(s)}$$
+
+we can derive that
+
+$$\frac{P[X>s+t]}{P[X>s]} = \frac{e^{-\lambda(s+t)}}{ e^{-\lambda(s)}} = e^{-\lambda(t)}= P[X>t]$$
 
 $$\text{Therefore } \underbrace{P[X > s + t]}_{\text{Reshuffling of memoryless}} = P[X > t] \cdot P[X > s]$$
 
