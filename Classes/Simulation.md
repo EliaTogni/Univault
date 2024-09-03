@@ -1656,25 +1656,20 @@ Let's define a Gamma Random Variable of parameter $n$, $\lambda$ to be a continu
 
 $$f(t) = \lambda e^{- \lambda t} \frac{(\lambda t)^{n -1}}{(n - 1)!}$$
 
+These Gamma Random Variables are the continuous counterparts of a specific type of discrete Random Variables: the sum of $n$ independent exponential Random Variables, each having parameter $\lambda$, is a gamma Random Variable with parameters $n$, $\lambda$. Furthermore, the time of the $n$-th event of a Poisson process having rate $\lambda$ is a gamma Random Variable with parameters $n$, $\lambda$.
 
-These Gamma Random Variables are the continuous counterparts of a specific type of discrete Random Variables:
+How can we simulate a Poisson Process? A Discrete event approach is generate the first interesting event, which is the first event in the process, and to generate this event we draw a value from an exponential Random Variable.
 
-The sum of $n$ independent exponential Random Variables, each having parameter $\lambda$, is a gamma Random Variable with parameters $n$, $\lambda$.
-
------
-
-
-Two of the most important properties of Poisson Process are:
-- $N(t)$ is a poisson random variable with expected value $t\lambda$;
-- the interarrival times are i.i.d. exponential random variables with parameter $\lambda$.
+There are two possible ways to simulate a Poisson Process of parameter $\lambda$ for a time horizon $T$ (==in the continuous?==):
+- we generate a value $n$ drawing it from a Poisson Random Variable of parameter $t \lambda$. That is, we draw the number of events we will see in the process up to time $T$.
+- them, we draw $n$ random numbers $u_1, \dots, u_n$ from a uniform distribution in [0, 1];
+- we set the arrival times as $u_1 T, u_2 T, \dots u_n T$.
 
 
-There are two possible ways to simulate a Poisson Process:
-- simulate a Poisson RV to generate number of events over time t (let's say it's $k$), then draw $k$ values from a uniform distribution in $[0,1]$ and rescale them by $t$;
+- simulate a Poisson Random Variable to generate number of events over time $t$ (let's say it's $k$), then draw $k$ values from a uniform distribution in $[0,1]$ and rescale them by $t$;
 - simulate interarrival times with exponential RV.
 
-
-## Nonhomogeneous Poisson Processes
+### Nonhomogeneous Poisson Processes
 The stationary increment assumption is the strictest of this assumptions. We can relax this assumption with **Nonhomogeneous Poisson Processes**. In this kind of process, instead of using $\lambda$ as a fixed intensity, we have $\lambda(t)$ that is the intensity at time $t$.
 
 As a result where we would use $\lambda$ we instead use $\lambda(t)$:
