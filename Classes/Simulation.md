@@ -1740,7 +1740,7 @@ So far we have always discussed the generation of a single or multiple observati
 An easy way is to know the joint distribution function for common set of variables. Often this is not easy to implement because we don't know this distribution or it's not easy to extract from it.
 That's where copulas become the best alternative.
 
-A copula is a joint probability distribution $C(x,y)$ with both marginal distributions being uniformly distributed in $(0,1)$:
+A **copula** is a joint probability distribution $C(x,y)$ with both marginal distributions being uniformly distributed in $(0,1)$:
 
 $$\begin{align}
 C(0,0)= 0\\
@@ -1748,13 +1748,13 @@ C(x,1) = x\\
 C(1,y) = y\\
 \end{align}$$
 
-for example to use this copula to represent another distribution H(x,y) for the random variables X and Y with respectively CDF F(x) and G(y):
+for example to use this copula to represent another distribution $H(x,y)$ for the random variables $X$ and $Y$ with respectively Cumulative Distribution Function $F(x)$ and $G(y)$:
 
 $$H(x,y) = P[X\leq x, Y \leq y] = P[F(X)\leq F(x), G(Y) \leq G(y)] = C(F(x),G(y))$$
 
 #TODO questo da rivedere
 
-In other words: we know both $F(X)$ and $G(Y)$ but not their joint CDF $H(X,Y)$, only that they are not independent. 
+In other words: we know both $F(X)$ and $G(Y)$ but not their joint Cumulative Distribution Function $H(X,Y)$, only that they are not independent. 
 
 To generate pairs of meaningful values we first generate values for the copula, then apply the inverse transform method to get values of the original distributions.
 
