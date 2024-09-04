@@ -1787,6 +1787,7 @@ $\square$
 -----
 
 
+
 # Bootstrapping
 The idea behind **Bootstrapping** is the following.
 Whatif the parameter to estimate is not the mean (median or variance or ...)?
