@@ -1479,6 +1479,8 @@ $$F(x) = \sum_{i=1}^n \alpha_i \cdot F_i(x) \space \text{ with } \space \sum_{i=
 
 In other words, this means that $F$ can be decomposed as a convex linear combination of a set of $F_i$ functions (the weights must sum up to $1$). It is possible to notice that the constraint that $\sum_{i=1}^n \alpha_i = 1$ is similar to the constraint of probabilities. So we can find $F(x)$ as:
 
+==p invece di alpha
+
 $$F(x) = \begin{cases} 
 F_1(x) \text{ with probability }\alpha_1 \cr \cr
 F_2(x) \text{ with probability }\alpha_2\cr \cr
@@ -1494,11 +1496,11 @@ Given this hypothesis it is possible to generate a random value in this distribu
 The value obtained in this way is distributed according to $F()$.
 
 Proof:<br />
-By following this process the resulting $F(x)$ is defined as:
+By following this process, the resulting $F(x)$ is defined as:
 
 $$F(x) = P[X \leq x] = \sum_{j=1}^n P[X \leq x | J= j]\cdot P[J=j]$$
 
-since $j$ is extracted with probability defined by $\alpha$,  it is known that this is equal to
+Since $j$ is extracted with probability defined by $\alpha$, it is easy to notice that this is equal to
 
 $$\sum_{j=1}^n P[X \leq x | J= j]\cdot \alpha_j = \sum_j \alpha_j F_j(x)$$
 
@@ -1507,7 +1509,7 @@ $\square$
 An example of use of the Composition technique.
 Let's consider a triangular distribution.
 
-==immagine triangular distribution
+==immagine triangular distribution minuto 10 lez 16
 ![[triangular_distribution.png]]
 
 >[!Note]
