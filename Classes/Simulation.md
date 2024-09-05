@@ -801,11 +801,6 @@ Below, some graphical example of $F$ and $\widehat{F}$.
 
 ----------------------------------------------------------------
 
-#### Shift Register Generator
-
-
-----------------------------------------------------------------
-
 ## Monte Carlo methods
 The term Monte Carlo refers to a wide family of **estimation methods** based on the use of pseudorandom numbers. The basic idea beneath this kind of methods is well described by the anndedoct describing its discovery on part of Stan Ulam, an ungarian mathematician who, playing a card solitaire while recovering from an encephalitis, wondered about the probability of dealing a specific, nontrivial hand from a shuffled deck. As he couldn't get the result through combinatorics, Ulam noticed that an approximation of the probability value could be easily found: it was sufficient to repeatedly shuffle the deck and compute the frequency of time that the desired card configuration appeared.
 
@@ -886,7 +881,7 @@ $$P\Big[ \text{ relative error } > \gamma \Big] \leq \frac{(1 - \frac{\pi}{4}) \
 $$P\Big[ \text{ relative error } \leq \gamma \Big] > 1- \frac{(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi}}{n \gamma^2}$$
 
 Now, $\gamma$ is the **target accuracy** while $n$ identifies the number of runs of the experiment. Furthermore, the right-hand side of the disequation ($1 - \frac{(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi}}{n \gamma^2}$) is what is called the **confidence** of getting that target accuracy, that is, an upper bound on the probability of making an error greater than the accuracy of interest.<br />
-Let's define $\frac{(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi}}{n \gamma^2} = \delta$, where $\delta$ is the **target confidence**. It is therefore possible to fix two values chosen from accuracy, confidence and number of experiments and determine the third value such that it will respect this inequality.
+Let's define $\frac{(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi}}{n \gamma^2} = \delta$, where $\delta$ is the **target confidence** we want to obtain. It is therefore possible to fix two values chosen from accuracy, confidence and number of experiments and determine the third value such that it will respect this inequality.
 
 Accuracy will always be in terms of number of digits, so it will be in the form of $\gamma = 10^{-k}$, where $k$ is the position of the last digit of interest.<br />
 Calling $(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi} = \eta$, which it is a constant number, it is possible to observe that 
@@ -960,7 +955,7 @@ Defining $P[X = x_i] = p_i$, the preceding idea can be written algorithmically a
 Take into account the case of a Random Variable $X$ such that:
 
 $$P[X = x_j] = p_j, \quad j = 0, \dots, 6 \quad \sum_{j = 1}^6 p_j = 1$$
-$$X = \cases{x_1 \space \text{ con } p = p_1 \cr \cr x_2 \space \text{ con } p = p_2 \cr \cr \vdots \cr \cr x_n \space \text{ con } p = p_n}$$
+$$X = \cases{x_1 \space \text{ with } p = p_1 \cr \cr x_2 \space \text{ with } p = p_2 \cr \cr \vdots \cr \cr x_n \space \text{ with } p = p_n}$$
 
 Let's consider two specific cases for this discrete Random Variable:
 - $n = 2$;
@@ -1414,10 +1409,10 @@ Claim: The probability of $X_j$ being the smallest is $P[X_j = M] = \frac{\lambd
 
 How to generate an Exponential Random Variable of parameter $\lambda$? A first approach is again the Inverse Transform method. it is known that $F(x) = 1 - e^{-\lambda x}$, so the inverse of this function must be computed:
 
-$$u = 1 - e^{-\lambda x} =$$
-$$= 1 - u = e^{-\lambda x} =$$
-$$= \log(1 - u) = -\lambda x =$$
-$$= x = - \frac{\log(1 - u)}{\lambda}$$
+$$u = 1 - e^{-\lambda x}$$
+$$1 - u = e^{-\lambda x}$$
+$$\log(1 - u) = -\lambda x$$
+$$x = - \frac{\log(1 - u)}{\lambda}$$
 
 ```pseudo
 	\begin{algorithm}
@@ -1478,8 +1473,6 @@ The **Composition method** can be applied if a Random Variable $X$ needs to be g
 $$F(x) = \sum_{i=1}^n \alpha_i \cdot F_i(x) \space \text{ with } \space \sum_{i=1}^n \alpha_i = 1$$
 
 In other words, this means that $F$ can be decomposed as a convex linear combination of a set of $F_i$ functions (the weights must sum up to $1$). It is possible to notice that the constraint that $\sum_{i=1}^n \alpha_i = 1$ is similar to the constraint of probabilities. So we can find $F(x)$ as:
-
-==p invece di alpha
 
 $$F(x) = \begin{cases} 
 F_1(x) \text{ with probability }\alpha_1 \cr \cr
