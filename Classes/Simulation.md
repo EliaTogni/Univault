@@ -1698,7 +1698,7 @@ The definition of $\lambda(t)$ is up to the modeler. One possible interpretation
 
 Obviously this kind of model are harder to model since it's necessary to have an estimate of $\lambda(t)$, to do so a solution is discretize the behavior observed in real world
 
-==aggiungere immagine minuto 52:51
+![[NonHomogeneousPoissonProcess.png]]
 
 Proof:<br />
 If we have an homogeneous Poisson Process of intensity $\lambda$ and accept an event with probability $p(t)$, we obtain a non homogeneous Poisson Process of parameter $\lambda(t) = \lambda \cdot p(t)$:
