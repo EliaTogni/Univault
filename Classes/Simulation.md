@@ -606,7 +606,7 @@ $$\mathbb{E}\Bigg[\frac{X_1 + \dots + X_n}{n}\Bigg] = \frac{1}{n} \Big(\mathbb{E
 
 and
 
-$$Var \Bigg[\frac{X_1 + \dots + X_n}{n}\Bigg] =  = \frac{1}{n^2} \Big[Var[X_1] + \dots + Var[X_n]\Big] = \frac{1}{n^2} \cdot n\sigma^2 = \frac{\sigma^2}{n}$$
+$$Var \Bigg[\frac{X_1 + \dots + X_n}{n}\Bigg] = \frac{1}{n^2} \Big[Var[X_1] + \dots + Var[X_n]\Big] = \frac{1}{n^2} \cdot n\sigma^2 = \frac{\sigma^2}{n}$$
 
 where the above equation makes use of the fact that the variance of the sum of independent Random Variables is equal to the sum of their variances. Hence, from Chebyshev’s inequality, which says that
 
@@ -1596,17 +1596,14 @@ Remembering that $\sum_{i=0}^\infty q^n \rightarrow \frac{1}{1-q}$, we can apply
 
 $$\frac{1}{c} f(x) \sum_{i=1}^\infty (1-\frac{1}{c})^{i-1} = \frac{1}{c} f(x) \cdot c = f(x) \space \square$$
 
+### Acceptance-rejection for a normal Random Variable
+Remember that to generate a valid value for every normal random variable is enough to generate a valid value for a normal random variable with $\mu = 0$ and $\sigma^2 = 1$ and then simply shift and rescale.
+For half a normal random variable with $\mu = 0$ and $\sigma^2 = 1$, $f(x) = \frac{2}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}$. We then define $g(x)$ as an exponential Random Variable of parameter $\lambda = 1$, with $g(x) = e^{-x}$ and $h(x) = \frac{f(x)}{g(x)} = \frac{2}{\sqrt{2\pi}}e^{x-x^2/2}$ .
+To find the maximum of $h(x)$, we derive it and obtain $\frac{2}{\sqrt{2\pi}} e^{x-x^2/2} (1-x)$ that is equal to $0$ in $x=1$, that is a maximum but we'll not prove it. We set $c = h(1) = \frac{2}{\sqrt{2\pi}}e^{1/2}$ since that is the maximum distance between $f$ and $g$.
 
-## Generating a normal random variable
-Remember that to generate a valid value for every normal random variable is enough to generate a valid value for a normal random variable with $\mu = 0$ and $\sigma^2 = 1$ and simply shift and rescale.
-For half a normal random variable with $\mu = 0$ and $\sigma^2 = 1$ $f(x) = \frac{2}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}$. We then define $g(x)$ as an exponential RV of param $\lambda = 1$ $g(x) = e^{-x}$ and $h(x) = \frac{f(x)}{g(x)} = \frac{2}{\sqrt{2\pi}}e^{x-x^2/2}$ .
-To find the maximum of $h(x)$ we derive it and obtain $\frac{2}{\sqrt{2\pi}} e^{x-x^2/2} (1-x)$ that is = 0 in $x=1$ that is a maximum but we'll not prove it. We set  $c = h(1) = \frac{2}{\sqrt{2\pi}}e^{1/2}$ since that is the maximum distance between f and g.
-
-#TODO aggiungere grafico semi-normale e esponenziale
+![[HalfNormalAndExponential.png]]
 
 To obtain a normal, we first need to define
-
-#TODO aggiungere grafico con due semi-normali
 
 $$F_{normal}(x) = \frac{1}{2}F^+_{normal}(x)+\frac{1}{2}F^-_{normal}(x)$$
 $$F_{normal}(x) = \begin{cases}
