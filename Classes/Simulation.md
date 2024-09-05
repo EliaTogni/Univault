@@ -1470,12 +1470,14 @@ that is, the sum of a large number of independent Random Variables is a normally
 
 The limit of the Inverse Tranform method is the need for an invertible cumulative distribution function. While this condition was given in the context of Discrete Random Variables, it is not for the continuous ones.
 
-##### Composition method
-The **Composition method** an be applied if a Random Variable $X$ needs to be generated with cumulative distribution function equal to $F()$, where $F()$ can be expressed as a case function such that: 
+-----
+
+## Composition method
+The **Composition method** can be applied if a Random Variable $X$ needs to be generated with cumulative distribution function equal to $F()$, where $F()$ can be expressed as a case function such that: 
 
 $$F(x) = \sum_{i=1}^n \alpha_i \cdot F_i(x) \space \text{ with } \space \sum_{i=1}^n \alpha_i = 1$$
 
-In other words, this means that $F$ can be decomposed as a linear combination of a set of $F_i$ functions (the weights must sum up to $1$).. It is possible to notice that the constraint that $\sum_{i=1}^n \alpha_i = 1$ is similar to the constraint of probabilities. So we can find $F(x)$ as:
+In other words, this means that $F$ can be decomposed as a convex linear combination of a set of $F_i$ functions (the weights must sum up to $1$). It is possible to notice that the constraint that $\sum_{i=1}^n \alpha_i = 1$ is similar to the constraint of probabilities. So we can find $F(x)$ as:
 
 $$F(x) = \begin{cases} 
 F_1(x) \text{ with probability }\alpha_1 \cr \cr
