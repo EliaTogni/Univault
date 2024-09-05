@@ -1509,11 +1509,10 @@ $\square$
 An example of use of the Composition technique.
 Let's consider a triangular distribution.
 
-==immagine triangular distribution minuto 10 lez 16
-![[triangular_distribution.png]]
+![[TriangularDistribution.jpg]]
 
 >[!Note]
->This distribution does not have the nice properties of the normal, but what can make it an appealing choice is that we have full control of the range: in fact the probability of generating numbers greater than 1 or lower than -1 is 0, while the range of a normal is $\mathbb{R}$. Notice that an obvious solution would be truncating and re-scaling the normal, but that would also mean losing the nice properties of the normal.
+>From a modelling point of view, the triangular distribution does not have the nice properties of the normal, but what can make it an appealing choice is that we have full control of the range: in fact the probability of generating numbers greater than $1$ or lower than $-1$ is $0$, while the range of a normal is $\mathbb{R}$. Notice that an obvious solution would be truncating and re-scaling the normal, but that would also mean losing the nice properties of the normal.
 
 $f(x)$, analytically speaking, can be defined by cases, that is
 
