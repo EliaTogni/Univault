@@ -294,8 +294,7 @@ Suppose that for each event $A$ of an experiment having sample space $S$ there i
 - $P[S] = 1$;
 - for any sequence of mutually exclusive events $A_1, A_2, ...$ it holds that $P\Big[\bigcup_{i = 1}^n A_i\Big] = \sum_{i = 1}^n P[A_i], \space n = 1, 2, ..., \infty$. 
 
-Axiom $1$ states that the probability that the outcome of the experiment lies
-within $A$ is some number between $0$ and $1$; Axiom $2$ states that with probability $1$ this outcome is a member of the sample space; finally, Axiom $3$ states that for any set of mutually exclusive events, the probability that at least one of these events occurs is equal to the sum of their respective probabilities.
+Axiom $1$ states that the probability that the outcome of the experiment lies within $A$ is some number between $0$ and $1$; Axiom $2$ states that with probability $1$ this outcome is a member of the sample space; finally, Axiom $3$ states that for any set of mutually exclusive events, the probability that at least one of these events occurs is equal to the sum of their respective probabilities.
 
 These three axioms can be used to prove a variety of results about probabilities. For instance, since $A$ and $A^c$ are always mutually exclusive, and since $A \cup A^c = S$, we have from Axioms $2$ and $3$ that
 
@@ -334,12 +333,10 @@ When we utilize the preceding formula, we say that we are computing $P[A]$ by co
 
 Some examples follow below.
 
-#### Insurance company
-An insurance company classifies its policy holders as being either accident prone or not. Their data indicate that an accident prone person will file a claim
-within a one-year period with probability $.25$, with this probability falling to $.10$ for a non accident prone person. If a new policy holder is accident prone with probability $.4$, what is the probability he or she will file a claim within a year?
+Let's consider an example.<br />
+An insurance company classifies its policy holders as being either accident prone or not. Their data indicate that an accident prone person will file a claim within a one-year period with probability $.25$, with this probability falling to $.10$ for a non accident prone person. If a new policy holder is accident prone with probability $.4$, what is the probability he or she will file a claim within a year?
 
-Let $C$ be the event that a claim will be filed, and let $B$ be the event that the
-policy holder is accident prone. Then
+Let $C$ be the event that a claim will be filed, and let $B$ be the event that the policy holder is accident prone. Then
 
 $$P[C] = P[C \vert B]P[B] + P[C \vert B^c]P[B^c] = .25)(.4) + (.10)(.6) = .16$$
 
@@ -351,14 +348,10 @@ which implies that
 
 $$P[A] = \sum_{i = 1}^n P[A \cap B_i] = \sum_{i = 1}^n P[A \vert B_i] P[B_i]$$
 
-----------------------------------------------------------------
+Let's consider anpther example.<br />
+Suppose there are $k$ types of coupons, and that each new one collected is, independent of previous ones, a type $j$ coupon with probability $p_j$, $\sum^k_{j =1} p_j = 1$. Find the probability that the $n^{th}$ coupon collected is a different type than any of the preceding $n − 1$.
 
-#### Coupons
-Suppose there are $k$ types of coupons, and that each new one collected
-is, independent of previous ones, a type $j$ coupon with probability $p_j$, $\sum^k_{j =1} p_j = 1$. Find the probability that the $n^{th}$ coupon collected is a different type than any of the preceding $n − 1$.
-
-Let $N$ be the event that coupon $n$ is a new type. To compute $P[N]$, condition
-on which type of coupon it is. That is, with $T_j$ being the event that coupon $n$ is a type $j$ coupon, we have
+Let $N$ be the event that coupon $n$ is a new type. To compute $P[N]$, condition on which type of coupon it is. That is, with $T_j$ being the event that coupon $n$ is a type $j$ coupon, we have
 
 $$P[N] = \sum_{j = 1}^{k} P[N \vert T_j] P[T_j]$$
 $$= \sum_{j = 1}^{k} (1 - p_j)^{n-1}p_j$$
@@ -380,10 +373,10 @@ How many variables can be identified in the example below?
 
 $$y = f(x)$$
 
-For a modeler, $x$ is input data, while $y$ is an abstraction of the process modeled by $f()$. When an experiment is performed, the concern is sometimes on the value of some numerical quantity determined by the result. These quantities of interest that are determined by the results of the experiment are known as **Random Variables**.
+For a modeler, $x$ is input data, while $y$ is an abstraction of the process modeled by $f()$. When an experiment is performed, the concern is sometimes on the value of some numerical quantity determined by the result. These quantities of interest that are determined by the results of the experiment are known as **random variables**.
 
 #### Cumulative distribution function
-The **cumulative distribution function**, or, more simply, the distribution function $F$ of the Random Variable $X$ is defined for any real number $x$ by
+The **cumulative distribution function**, or, more simply, the distribution function $F$ of the random variable $X$ is defined for any real number $x$ by
 
 $$F(x) = P[X \leq x]$$
 
@@ -434,8 +427,7 @@ In many experiments we are interested not only in probability distribution funct
 
 $$F(x, y) = P[X \leq x, Y \leq y]$$
 
-Thus, $F(x, y)$ specifies the probability that $X$ is less than or equal to $x$ and simultaneously $Y$ is less than or equal to $y$. The joint cumulative probability distribution function gives also
-the joint probability that two or more Random Variables simultaneously fall within certain specified intervals.
+Thus, $F(x, y)$ specifies the probability that $X$ is less than or equal to $x$ and simultaneously $Y$ is less than or equal to $y$. The joint cumulative probability distribution function gives also the joint probability that two or more Random Variables simultaneously fall within certain specified intervals.
 
 -------------------------------------------------------------
 
@@ -562,6 +554,16 @@ Taking expectations of the preceding inequality yields
 
 $$\mathbb{E}[X] \geq \mathbb{E}[Y] = aP[X \geq a] + 0P[X < a] = aP[X \geq a]$$
 
+and 
+
+$$\mathbb{E}[Y] = aP[X \geq a] + 0P[X < a] = aP[X \geq a]$$
+
+Therefore
+
+$$\mathbb{E}[Y] = aP[X \geq a]$$
+$$P[X \geq a] = \frac{\mathbb{E}[Y]}{a} \to P[X \geq a] \leq \frac{\mathbb{E}[X]}{a}$$
+
+
 and the result is proved.
 
 -------------------------------------------------------------
@@ -610,14 +612,13 @@ $$Var \Bigg[\frac{X_1 + \dots + X_n}{n}\Bigg] = \frac{1}{n^2} \Big[Var[X_1] + \d
 
 where the above equation makes use of the fact that the variance of the sum of independent Random Variables is equal to the sum of their variances. Hence, from Chebyshev’s inequality, which says that
 
-$$P\Bigg[\vert X−E[X] \vert \geq k\Bigg]≤\frac{Var[X]}{k^2}$$​
+$$P\Bigg[\vert X - \mu] \vert \geq k \sigma\Bigg]≤\frac{1}{k^2}$$​
 
 it follows that for any positive $k$
 
 $$P\Bigg[ \bigg \vert \frac{X_1 + \cdots + X_n}{n} - \mu \bigg\vert \geq \frac{k\sigma}{\sqrt{n}} \Bigg] \leq \frac{1}{k^2}$$
 
-Hence, for any $\varepsilon > 0$, by letting $k$ be such that $\frac{k\sigma}{n} = \varepsilon$, that is, by letting $k^2 =
-\frac{n\varepsilon^2}{\sigma^2}, we see that
+Hence, for any $\varepsilon > 0$, by letting $k$ be such that $\frac{k\sigma}{n} = \varepsilon$, that is, by letting $k^2 = \frac{n\varepsilon^2}{\sigma^2}$, we see that
 
 $$P\Bigg[ \bigg \vert \frac{X_1 + \cdots + X_n}{n} - \mu \bigg\vert \geq \varepsilon \Bigg] \leq \frac{\sigma^2}{n \varepsilon^2}$$
 
@@ -625,19 +626,20 @@ which establishes the result.
 
 The last passage of the demonstration also permits to have an upper bound on the probability of making an error greater than $\varepsilon$ if it is decided to use the mean of some Random Variables instead of the Random Variables themselves.
 
-is it also possible to choose some accuracy target in order to evaluate the simulation. To do so, it is necessary to be in possess of the variance, which is tipically a bold assumption. However, it is possible to estimate it.
+It is also possible to choose some accuracy target in order to evaluate the simulation. To do so, it is necessary to be in possess of the variance, which is tipically a bold assumption. However, it is possible to estimate it.
 
--------------------------------------------------------------
+-----
 
 #### Strong law of large numbers
 A generalization of the weak law is the strong law of large numbers, which states that, with probability $1$
 
-$$\lim_{N \to\infty} \frac{X_1 + \cdots + X_n}{n} = \mu$$
+$$\lim_{n \to\infty} \frac{X_1 + \cdots + X_n}{n} = \mu$$
 
 That is, with certainty, the long-run average of a sequence of independent and identically distributed Random Variables will converge to its mean.
+
 While the weak law defines this property in a probabilistic way, the strong law defines it in a deterministic way (with probability $1$).
 
--------------------------------------------------------------
+-----
 
 ## Random numbers
 The Cambridge dictionary defines **random** as: "happening, done, or chosen by chance rather than according to a plan". Indeed, common sense reasoning suggests that it is possible to speak of randomness when a given experience can be repeated several times, always with exactly the same modalities, yet not always giving the same result. For instance, the result of a coin toss, or the closing value of a stock exchange, or even the actual occurrence of rainfalls during daytime when you see a grey sky during the morning. Note that this unpredictability only concerns a specific event, that is, it is not possible to have full confidence on any statement for the result of a single die toss, or for the closing value of a stock exchange and so on.
@@ -646,14 +648,14 @@ Things are different if you consider a sequence of such events and try to formul
 
 On the other hand, an electronic computer is probably the tool which is more distant from the notion of randomness: when it is given a task, say computing the sum of numbers in a spreadsheet, it is expected to solve the task without any error, thus it is also expected (and typically obtain) that repeated executions ot a same task give always the same result. Besides, it is told that an electronic computer is nothing more than a mechanism, for sure a complex one, yet a mechanism only able to do what it is encoded in its circuits.
 
-Quoting John Von Neumann, any one who considers arithmetical methods of producing random digits is, of course, in a state of sin.
+Quoting John Von Neumann: "any one who considers arithmetical methods of producing random digits is, of course, in a state of sin".
 
 The behaviour of a computer is, in fact, always the result of a program execution and thus it is purely deterministic; in spite of this, computers can be deterministically be programmed in such a way that they exhibit random behaviours.
 
 ### Pseudorandom number generation
 In all cases where it will be necessary to mark a clear distinction between **genuine** randomness, which is possible to naturally observe in the world (say for instance that of a phisical die) from the **artificial** one, which is possible to simulate through computers, we will speak in the latter case of **pseudorandomness**.
 
-The first attempts to describe procedures able to automatically generate pseudorandom numbers dates back to the first half of $1900$. A pionieer in this fields was Maurice G. Kendall, who contributed to build a machine producing tables of random digits. Before that time, randomization procedures such as sampling were performed via consultation of manually produced tables, such as for instance the one published in $1927$ by Leonard H. C. Tippett and relying to census reports.
+The first attempts to describe procedures able to automatically generate pseudorandom numbers dates back to the first half of $1900$. A pioneer in this fields was Maurice G. Kendall, who contributed to build a machine producing tables of random digits. Before that time, randomization procedures such as sampling were performed via consultation of manually produced tables, such as for instance the one published in $1927$ by Leonard H. C. Tippett and relying to census reports.
 
 #### Middle-square generator
 As electronic computers became available, more concrete approaches started to be considered. In particular, John Von Neumann began his work on pseudorandomness generation while he was involved in the research activities of the Los Alamos National laboratories within the Manhattan project. One of the first algorithms he studied led around in $1946$ to the so-called **middle-square generator**, outputting a sequence of numbers in which every element is obtained squaring its predecessor and dropping from the result the leading and trailing two digits. Such a sequence is univoquely defined when its first element (the **seed**) has been fixed, typically choosing a four-digits value.
@@ -719,7 +721,7 @@ def congruential_generator(seed = 1, a= 7 ** 5, c=0, m=(2 ** 31 - 1), n=1):
   return(v)
 ```
 
-Which is the quality of pseudorandom numbers generating using this technique? First of all, note that once the seed has been fixed the recurrence relation is completely deterministic, and this means that after at most $m$  elements the sequence will generate already produced elements, thus repeating itself. In general, however, the sequence will start repeating after a number of iterations, which it will be designate as the **period** of the generator.
+Which is the quality of pseudorandom numbers generated using this technique? First of all, note that once the seed has been fixed the recurrence relation is completely deterministic, and this means that after at most $m$  elements the sequence will generate already produced elements, thus repeating itself. In general, the sequence will start repeating after a number of iterations, which will be designate as the **period** of the generator.
 
 In general, there are three main distinctive properties that drive the choice of the parameters of a congruential generator:
 -  the set of generated pseudorandom values should be undistinguishable from an analogous sample drawn from a discrete uniform distribution over $\{0 , \dots, m-1\}$;
@@ -728,7 +730,7 @@ In general, there are three main distinctive properties that drive the choice of
 
 Note that a high period per se does not tell anything about the quality of its generator: consider for instance the trivial generator obtained by setting $x_{i + 1} = x_i + 1$ which has maximum period $m -1$ for any value of $m$. Such a generator would be useless because of the **predictability** of the unseen part of a pseudorandom sequence: each item is the successor of previous element modulo $m$. This is why a good generator should guarantee the first two above mentioned requirements: the first one requires the generator to output a sequence of values difficult to predict, and the second one requires that this sequence be as long as possible. Finally, the third requirement deals with parameters allowing an efficient implementation of the corresponding generators in a computer: for instance, the previous choice of $m = 2^{31} -1$ allows to store each of the produced values in a $32$-bit CPU register.
 
-How is it possible to check the first requirement of unpredictability of the generated pseudorandom sequence? Through the **autocorrelation analysis**, a statistical tool used to measure the correlation between elements of a sequence and their lagged counterparts. Based on this tool, there exist a procedure, called **Ripley test**, which consists in verifying that there is a small dependency between successive elements in the sequence, for instance plotting in a bidimensional plane a set of points whose $X$ coordinates have been obtained by the pseudorandom generator, and the $Y$ coordinates are simply the $X$ ones rotated by one item, say on the left.
+How is it possible to check the first requirement of unpredictability of the generated pseudorandom sequence? Through the **autocorrelation analysis**, a statistical tool used to measure the correlation between elements of a sequence and their lagged counterparts. Based on this tool, there exist a procedure, called **Ripley test**, which consists in verifying if there is a small dependency between successive elements in the sequence, for instance plotting in a bidimensional plane a set of points whose $X$ coordinates have been obtained by the pseudorandom generator and whose $Y$ coordinates are simply the $X$ ones shifted by one item, say on the left.
 
 ```python
 def ripley_test(v):
