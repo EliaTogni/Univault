@@ -1684,17 +1684,18 @@ Recalling that $I_1, \dots I_r$ are disjoint and that the events are independent
 - $\lim_{h \to 0} \frac{P[N(h) \geq 2]}{h} = 0$ (it is unlikely that two or more events occur in small intervals).
 
 ### Nonhomogeneous Poisson Processes
-The stationary increment assumption is the strictest of this assumptions. We can relax this assumption with **Nonhomogeneous Poisson Processes**. In this kind of process, instead of using $\lambda$ as a fixed intensity, we have $\lambda(t)$ that is the intensity at time $t$.
+The stationary increment assumption is the strictest of this assumptions. We can relax this assumption with **Nonhomogeneous Poisson Processes**. In this kind of process, instead of using $\lambda$ as a fixed **intensity** over the time horizon, we have $\lambda(t)$ that is the intensity at time $t$. This is a function telling how likely an event will occurr around some time $t$.
 
 As a result where we would use $\lambda$ we instead use $\lambda(t)$:
 
 $$\lim_{h\to 0} \frac{P[N(h)=1]}{h} = \lambda(t)$$
 
-This means that in small intervals the probability of an event to occur is approximately $h\lambda(t)$.
+This means that, in small intervals, the probability of an event to occur is approximately $h\lambda(t)$.
+
 
 This is a common behavior in mobile networks, where the arrival of packets during the day is not constant but instead is very high during certain hours and low during the night.
 
-The definition of $\lambda(t)$ is up to the modeler. One possible interpretation is that if $\bar{p}(t)$ is the probability that an event occurring at time $t$ in a Poisson process with parameter $\lambda$ is discarded and $p(t)=1-\bar p(t)$, then the process involving the non discarded events is a non-homogeneous Poisson Process with intensity $\lambda(t) = \lambda \cdot p(t)$.
+How can we define this intensity when we model? The definition of $\lambda(t)$ is up to the modeler. One possible interpretation is that if $\bar{p}(t)$ is the probability that an event occurring at time $t$ in a Poisson process with parameter $\lambda$ is discarded and $p(t)=1-\bar p(t)$, then the process involving the non discarded events is a non-homogeneous Poisson Process with intensity $\lambda(t) = \lambda \cdot p(t)$.
 
 ![[Diagram.svg]]
 
