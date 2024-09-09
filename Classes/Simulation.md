@@ -1743,7 +1743,7 @@ C(x,1) = x\\
 C(1,y) = y\\
 \end{align}$$
 
-for example to use this copula to represent another distribution $H(x,y)$ for the random variables $X$ and $Y$ with respectively Cumulative Distribution Function $F(x)$ and $G(y)$:
+For example to use this copula to represent another distribution $H(x,y)$ for the random variables $X$ and $Y$ with respectively Cumulative Distribution Function $F(x)$ and $G(y)$:
 
 $$H(x,y) = P[X\leq x, Y \leq y] = P[F(X)\leq F(x), G(Y) \leq G(y)] = C(F(x),G(y))$$
 
