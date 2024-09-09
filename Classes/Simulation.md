@@ -1695,7 +1695,7 @@ This means that, in small intervals, the probability of an event to occur is app
 
 This is a common behavior in mobile networks, where the arrival of packets during the day is not constant but instead is very high during certain hours and low during the night.
 
-How can we define this intensity when we model? The definition of $\lambda(t)$ is up to the modeler. One possible interpretation is that if $\bar{p}(t)$ is the probability that an event occurring at time $t$ in a Poisson process with parameter $\lambda$ is discarded and $p(t)=1-\bar p(t)$, then the process involving the non discarded events is a non-homogeneous Poisson Process with intensity $\lambda(t) = \lambda \cdot p(t)$.
+How can we define this intensity when we model? The definition of $\lambda(t)$ is up to the modeler. One possible interpretation is that if $\bar{p}(t)$ is the probability that an event occurring at time $t$ in a Poisson process with parameter $\lambda$ is discarded (e.g., the customer of the pharmacy, at the point of coming in, decides to go away) and $p(t)=1-\bar p(t)$, then the process involving the non discarded events is a non-homogeneous Poisson Process with intensity $\lambda(t) = \lambda \cdot p(t)$.
 
 ![[Diagram.svg]]
 
