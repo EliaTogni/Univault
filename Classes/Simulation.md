@@ -1834,6 +1834,9 @@ $$x_2 = a_{21}z_1 + a_{22}z_2 + \dots + a_{2n}z_n + \mu_2$$
 $$\dots$$
 $$x_n = a_{n1}z_1 + a_{n2}z_2 + \dots + a_{nn}z_n + \mu_n$$
 
+Each single normal random variable $z_i$ of them can be generated and we have already seen how.
+
+
 
 -----
 
