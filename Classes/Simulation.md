@@ -1697,11 +1697,14 @@ This is a common behavior in mobile networks, where the arrival of packets durin
 
 How can we define this intensity when we model? The definition of $\lambda(t)$ is up to the modeler. One possible interpretation is that if $\bar{p}(t)$ is the probability that an event occurring at time $t$ in a Poisson process with parameter $\lambda$ is discarded (e.g., the customer of the pharmacy, at the point of coming in, decides to go away) and $p(t)=1-\bar p(t)$, then the process involving the non discarded events is a non-homogeneous Poisson Process with intensity $\lambda(t) = \lambda \cdot p(t)$.
 
+In the example below, some of the events are discarded.
+
 ![[Diagram.svg]]
 
-Obviously this kind of model are harder to model since it's necessary to have an estimate of $\lambda(t)$, to do so a solution is discretize the behavior observed in real world
+Obviously this kind of model are harder to model since it's necessary to have an estimate of $\lambda(t)$, to do so a solution is discretize the behavior observed in real world. I can use Poisson process to simulating and modeling these systems: it is enough to represent the intensity of my Poisson process by replicating this demand profile. In particular, we model it as if the intensity was always at the highest level but, sometimes, we drop some packets.
 
 ![[NonHomogeneousPoissonProcess.png]]
+
 
 Proof:<br />
 If we have an homogeneous Poisson Process of intensity $\lambda$ and accept an event with probability $p(t)$, we obtain a non homogeneous Poisson Process of parameter $\lambda(t) = \lambda \cdot p(t)$:
