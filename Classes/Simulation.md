@@ -1819,7 +1819,15 @@ def invExp(x)
 q1, q2 = generate_gaussian_copula(invExp, invUnif, 0.7)
 ```
 
-The _generate_gaussian_copula_ function firstly generate two values, $y1$ and $y2$, from a multivariate (technically a bivariate) normal distribution in which the two cordinates have correlation $\rho$.
+The _generate_gaussian_copula_ function firstly generate two values, $y1$ and $y2$, from a multivariate (technically a bivariate) normal distribution in which the two cordinates have correlation $\rho$. Then the algorithm moves from the values to the probabilities and uses these probabilities as they were the outputs of a random generator.
+
+Let's define the multivariate normal. If we look at $x_1$ and $x_2$ independently, they look like bell shaped distribution.
+
+==immagine lez 20 20 min
+
+When we look at both the distributions together, we see probability level curves. Each curve identifies the same probability value. They could also look like the second graph above. So, if we look at specific values for $x_1$, they indeed have the shape of a normal but it's not the same one. So the value of one is affected by the value of the other.
+
+
 
 -----
 
