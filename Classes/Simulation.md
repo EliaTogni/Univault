@@ -1871,7 +1871,27 @@ Suppose to have two electrical components and three possible shocks: shock $1$ a
 Now, we know that these $3$ shocks occur at different rates $\lambda_1$, $\lambda_2$ and $\lambda_3$. What we are interest in is the rate of failure of the components. The shocks are independent. The failures, however, are not.
 We wish to generate failures for these two times.
 
-In this type of situation, we normally don't know the joint distribution of $T1$ and $T2$ since it depends on the actual distribution of failure times (o types?). We are however able to approximate the joint distribution with the **Marshall-Olkin copula**, which is a copula defined i
+In this type of situation, we normally don't know the joint distribution of $T1$ and $T2$ since it depends on the actual distribution of failure times (==o types?==). We are however able to approximate the joint distribution with the **Marshall-Olkin copula**, which is a copula defined in this way
+
+$$C(x, y) = \min\{x^\alpha y, xy^\beta\} \text{, with } \alpha = \frac{\lambda_1}{\lambda_1 + \lambda_3} \text{ and } \frac{\lambda_2}{\lambda_2 + \lambda_3}$$
+
+for $\lambda_1$, $\lambda_2$ and $\lambda_3$ known through empirical observation. Algorithmically speaking, how do we use this copula?
+
+```python
+def generate_marshallolkin(invF, invF, lambda1, lambda2, lambda3):
+	
+	t1 = gen_exponential(lambda1)
+	t2 = gen_exponential(lambda2)
+	t3 = gen_exponential(lambda3)
+	
+	x1 = min(t1, t3)
+	x2 = min(t2, t3)
+	
+	y1 = exponential_pdf((lambda1 + lambda3) * x1)
+	y2 = exponential_pdf((lambda2 + lambda3) * x2)
+	
+	return invF(y1), invG(y2)
+```
 
 -----
 
