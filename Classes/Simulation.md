@@ -1708,14 +1708,15 @@ Obviously this kind of model are harder to model since it's necessary to have an
 
 Proof:<br />
 If we have an homogeneous Poisson Process of intensity $\lambda$ and accept an event with probability $p(t)$, we obtain a non homogeneous Poisson Process of parameter $\lambda(t) = \lambda \cdot p(t)$:
-- Events are occurring at random time points $\to$ True, because the selection is also a random process;
+- events are occurring at random time points $\to$ True, because the selection is also a random process;
 - $N(t)$ is the number of events in the interval $[0,t]$ $\to$ This is only a definition;
-- $N(0) = 0$ (process begins at time 0) $\to$ True, because HPP can't have more events than PP;
-- The number of events in disjoint time intervals are independent (**independent increment assumption**) $\to$ True, because the events in Poisson processes are independent and the dropping is performed randomly;
-- $\lambda(t)$ is the intensity at time $t$;
-- $\lim_{h\to 0} \frac{P[N(h)=1]}{h} = \lambda(t)$ $\to$ $\fbox{*}$;
-- $\lim_{h\to 0} \frac{P[N(h)\geq 2]}{h} = 0$ $\to$ True, because was true before and we are not adding new events so the probability cannot increase.
+- $N(0) = 0$ (process begins at time $0$) $\to$ True, ==because Homogeneous Poisson processes can't have more events than PP;
+- the number of events in disjoint time intervals are independent (**independent increment assumption**) $\to$ True, because the events in Poisson processes are independent and the dropping is performed randomly, one by one;
+- $\lambda(t)$ is the intensity at time $t$ (how likely an event will occurr at time $t$);
+- $\lim_{h\to 0} \frac{P[N(h)=1]}{h} = \lambda(t)$ $\to$ proved below;
+- $\lim_{h\to 0} \frac{P[N(h)\geq 2]}{h} = 0$ $\to$ True, because was true before and we are not adding new events (at most this is a Poisson process) so the probability cannot increase.
 
+Proof:<br />
 Since we know that the probability of finding more than $1$ event in a small interval is $0$ this is equal to the probability of $1$ or more:
 
 $$\begin{align}
@@ -1733,6 +1734,7 @@ $$
 \end{align}$$
 
 -----
+
 ## Copulas
 So far we have always discussed the generation of a single or multiple observation but always from a single random value. What if we want to observe multiple random variable at once and those random variable are not independent?
 
