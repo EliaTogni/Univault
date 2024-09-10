@@ -1843,6 +1843,11 @@ The point is in finding these $a_{ii}$ in order to obtain specific relations bet
 What about the covariance $Cov(X_i, X_j)$? This is defined as 
 
 $$Cov(X_i, X_j) = \sum_{k = 1}^{n} a_{ik}a_{jk}$$
+$$Var[X_i] = \sum_{k = 1}^{n} a_{ik}^2$$
+If we discover the values of $a_i$, we can find both the covariance and the variance. Let's exploit this idea backwards: if we are given a target covariance between $X_i$ and $X_j$ (which is like being given a target correlation) and a target variance for each of them, we are able to find the values of $a_i$ producing such covariance and variance.
+
+So, given a target covariance matrix $C$, we 
+
 
 
 -----
