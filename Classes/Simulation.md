@@ -1893,6 +1893,12 @@ def generate_marshallolkin(invF, invF, lambda1, lambda2, lambda3):
 	return invF(y1), invG(y2)
 ```
 
+
+-----
+
+
+
+
 -----
 
 # Bootstrapping
