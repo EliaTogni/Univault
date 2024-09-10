@@ -1896,6 +1896,14 @@ def generate_marshallolkin(invF, invF, lambda1, lambda2, lambda3):
 -----
 
 # Statistical Analysis of Simulated Data
+Either by generating or by building a simulation model, we are now able to produce valid outputs for random variables even with unknown structure.
+
+When we get the cumulative distribution function of a random variable, we basically have everything about it. So we will now focus on the measurement of some parameters of this distribution. We know that for undestanding a random variable, we need the distribution function but we can still be satisfied by some other parameters that may be enough for supporting our decisions.
+
+## Estimators and Interval Estimates
+One of the most important and basics estimators is the **sample mean**
+
+$$\widehat{X} = \sum_{i = 1}^{n} \frac{X_i}{n}$$
 
 
 -----
