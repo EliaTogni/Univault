@@ -1821,22 +1821,22 @@ q1, q2 = generate_gaussian_copula(invExp, invUnif, 0.7)
 
 The _generate_gaussian_copula_ function firstly generate two values, $y1$ and $y2$, from a multivariate (technically a bivariate) normal distribution in which the two cordinates have correlation $\rho$. Then the algorithm moves from the values to the probabilities and uses these probabilities as they were the outputs of a random generator.
 
-Let's define the multivariate normal. If we look at $x_1$ and $x_2$ independently, they look like bell shaped distribution.
+Let's define the multivariate normal. If we look at $X_1$ and $X_2$ independently, they look like bell shaped distribution.
 
 ==immagine lez 20 20 min
 
 When we look at both the distributions together, we see probability level curves. Each curve identifies the same probability value. They could also look like the second graph above. So, if we look at specific values for $x_1$, they indeed have the shape of a normal but it's not the same one. So the value of one is affected by the value of the other.
 
-If we look at projections, single dimensions, etc., of these bivariate normals, they will still look normal. However, they will be shifted, scaled or combined depending one on the value of the other. In fact, we can define the coordinates in a normal as a combination of other indipendent and identically distributed normal random variables having mean $\mu =0$ and variance $\sigma^2 = 1$. That is, suppose to have $x_1$, $x_2$, $\dots$, $x_n$. 
+If we look at projections, single dimensions, etc., of these bivariate normals, they will still look normal. However, they will be shifted, scaled or combined depending one on the value of the other. In fact, we can define the coordinates in a normal as a combination of other indipendent and identically distributed normal random variables having mean $\mu =0$ and variance $\sigma^2 = 1$. That is, suppose to have $X_1$, $X_2$, $\dots$, $X_n$. 
 
-$$x_1 = a_{11}z_1 + a_{12}z_2 + \dots + a_{1n}z_n + \mu_1$$
-$$x_2 = a_{21}z_1 + a_{22}z_2 + \dots + a_{2n}z_n + \mu_2$$
+$$X_1 = a_{11}Z_1 + a_{12}Z_2 + \dots + a_{1n}Z_n + \mu_1$$
+$$X_2 = a_{21}Z_1 + a_{22}Z_2 + \dots + a_{2n}Z_n + \mu_2$$
 $$\dots$$
-$$x_n = a_{n1}z_1 + a_{n2}z_2 + \dots + a_{nn}z_n + \mu_n$$
+$$X_n = a_{n1}Z_1 + a_{n2}Z_2 + \dots + a_{nn}Z_n + \mu_n$$
 
 Each single normal random variable $z_i$ of them can be generated and we have already seen how.
 
-Now, we can generate a random vector of $n$ values from a multivariate normal distribution. It is enough to generate the $n$ values for the $z_i$ and then combining them accordingly to these coefficients. At this point, it is possible to return this vector in our copula for generating random vector not of all normal but from different marginal distributions.
+Now, we can generate a random vector of $n$ values from a multivariate normal distribution. It is enough to generate the $n$ values for the $Z_i$ and then combining them accordingly to these coefficients. At this point, it is possible to return this vector in our copula for generating random vector not of all normal but from different marginal distributions.
 
 The point is in finding these $a_{ii}$ in order to obtain specific relations between the components of this vector. For instance, we may wish to generate a vector in which the first two components have a correlation of $0.65$. In the computation in these $a$ values, we combine linearly independent random variables of expected value $\mu = 0$ and we get another random variable with expected value $\mu = 0$. We are also allowed to add some constants $\mu_i$ to each row and they become the expected value of $x_i$ (because we sum $n$ times $0$ and one time $\mu_i$). 
 
@@ -1849,8 +1849,17 @@ If we discover the values of $a_i$, we can find both the covariance and the vari
 So, given a target covariance matrix $C$ (composed by $c_{ij}$), we are able to produce another matrix $A$ having these properties. We just need to solve a system of equations. One method to do so is to use the Cholesky's decomposition, that is, to find $C$ as the product between the matrix $A$ and its transposed:
 
 $$C = A A^{\top}$$
+$$A = \begin{bmatrix} a_{11} & \emptyset \\ a_{21} & r_{22} \end{bmatrix}$$
 
+We need to solve basically 
 
+$$A \cdot A^{\top} = \begin{bmatrix} \sigma^2_1 & c \\ c & \sigma^2_2 \end{bmatrix}$$
+
+In the bivariate case, we can solve it analitically
+
+$$A = \begin{bmatrix} \sigma_1 & \emptyset \\ \rho\sigma_1  & \sigma_2\sqrt{1 - \rho^2} \end{bmatrix}$$
+
+As soon as we get this $A$, we'll have the coefficients to use in this algorithm and obtain $X
 
 -----
 
