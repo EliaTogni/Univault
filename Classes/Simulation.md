@@ -1795,6 +1795,32 @@ For the same reasoning, it holds that $G_t(Y) = G(t^{-1}(y))$. However, $F_s(s(x
 $$C_{s(X),t(Y)} = P[F_s(s(x)) \leq x, G_t(t(y)) \leq y] = P[F(x)\leq x, G(y) \leq y] = C_{x,y}(x,y)$$
 $\square$
 
+Let's observe some code for using this copulas. This algorithm is for generating pairs of values for random variables having cumulative distribution function $F$ and $G$ and some correlation among them of value $\rho$ using the idea of the Gaussian copula.
+
+```python
+def generate_gaussian_copula(invF, invG, rho):
+	
+	z1 = gen_normal()
+	z2 = gen_normal()
+	v1 = math.sqrt((1 + rho) / 2)
+	v2 = math.sqrt((1 - rho) / 2)
+	y1 = v1 * z1 + v2 * z2
+	y2 = v1 * z1 - v2 * z2
+	
+	x1 = invF(phi(y1))
+	x2 = invF(phi(y2))
+	
+	return x1, x2
+	
+
+def invExp(x)
+	return - math.log(x)
+
+q1, q2 = generate_gaussian_copula(invExp, invUnif, 0.7)
+```
+
+The _generate_gaussian_copula_ function firstly generate two values, $y1$ and $y2$, from a multivariate (technically a bivariate) normal distribution in which the two cordinates have correlation $\rho$.
+
 -----
 
 
