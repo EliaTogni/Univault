@@ -1736,12 +1736,11 @@ $$
 -----
 
 ## Copulas
-So far we have always discussed the generation of a single or multiple observation but always from a single random value. What if we want to observe multiple random variable at once and those random variable are not independent?
+So far we have always discussed the generation of a single or multiple observation but always from a single random value. What if we want to observe multiple random variables at once and those random variables are not independent?
 
-An easy way is to know the joint distribution function for common set of variables. Often this is not easy to implement because we don't know this distribution or it's not easy to extract from it.
-That's where copulas become the best alternative.
+An easy way to generating them is to know the joint distribution function for common set of variables. Often this is not easy to implement because we don't know this distribution or it's not easy to extract it from an algorithm midway. That's where copulas become the best alternative.
 
-A **copula** is a joint probability distribution $C(x,y)$ with both marginal distributions being uniformly distributed in $(0,1)$:
+A **copula** is a joint probability distribution $C(x,y)$ with both ==marginal distributions== being uniformly distributed in $(0,1)$:
 
 $$\begin{align}
 C(0,0)= 0\\
@@ -1749,7 +1748,7 @@ C(x,1) = x\\
 C(1,y) = y\\
 \end{align}$$
 
-For example to use this copula to represent another distribution $H(x,y)$ for the random variables $X$ and $Y$ with respectively Cumulative Distribution Function $F(x)$ and $G(y)$:
+For example, we want to use this copula to represent another distribution $H(x,y)$ for the random variables $X$ and $Y$ with respectively cumulative distribution function $F(x)$ and $G(y)$:
 
 $$H(x,y) = P[X\leq x, Y \leq y] = P[F(X)\leq F(x), G(Y) \leq G(y)] = C(F(x),G(y))$$
 
