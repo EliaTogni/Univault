@@ -1859,11 +1859,21 @@ In the bivariate case, we can solve it analitically
 
 $$A = \begin{bmatrix} \sigma_1 & \emptyset \\ \rho\sigma_1  & \sigma_2\sqrt{1 - \rho^2} \end{bmatrix}$$
 
-As soon as we get this $A$, we'll have the coefficients to use in this algorithm and obtain $X
+As soon as we get this $A$, we'll have the coefficients to use in this algorithm and obtain $X_i$.
 
 -----
 
+### Marshall-Olkin Copula
+Suppose to have two electrical components and three possible shocks: shock $1$ affects component $1$, shock $2$ affects component $2$ and shock $3$ affects both components. So, graphically speaking, we have
 
+==immagine 50 min==
+
+Now, we know that these $3$ shocks occur at different rates $\lambda_1$, $\lambda_2$ and $\lambda_3$. What we are interest in is the rate of failure of the components. The shocks are independent. The failures, however, are not.
+We wish to generate failures for these two times.
+
+In this type of situation, we normally don't know the joint distribution of $T1$ and $T2$ since it depends on the actual distribution of failure times (o types?). We are however able to approximate the joint distribution with the **Marshall-Olkin copula**, which is a copula defined i
+
+-----
 
 # Bootstrapping
 The idea behind **Bootstrapping** is the following.
