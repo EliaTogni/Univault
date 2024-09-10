@@ -1893,17 +1893,16 @@ def generate_marshallolkin(invF, invF, lambda1, lambda2, lambda3):
 	return invF(y1), invG(y2)
 ```
 
-
 -----
 
-
+# Statistical Analysis of Simulated Data
 
 
 -----
 
 # Bootstrapping
 The idea behind **Bootstrapping** is the following.
-Whatif the parameter to estimate is not the mean (median or variance or ...)?
+What if the parameter to estimate is not the mean (median or variance or ...)?
 The estimator may not be the mean and the range may not be defined by the variance.
 
 We need to find a corresponding estimator. We want to rebuilt by means of simulation runs, the whole cumulative distribution function.
