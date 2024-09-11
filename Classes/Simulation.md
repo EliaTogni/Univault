@@ -1932,7 +1932,18 @@ Having this error estimate is great theoretically, that is, it let us know if we
 
 The more precision we ask for, the more repetitions we need to do and, therefore, the higher the probability of actually reaching that precision. These quantities depends one another and we can fix two of them and find the third one that is helping us in matching the theoretical understanding that we have.
 
-Let's consider the pharmacy example and assume we want to understand the expected time that the prescription needs to be fill from the coming of the prescription in the shop. We already know the time the prescription needs when the pharmacist starts working on it but since there is the queueing system, the actual time from the arrival may be different. So, ti
+Let's consider the pharmacy example and assume we want to understand the expected time that the prescription needs to be fill from the coming of the prescription in the shop. We already know the time the prescription needs when the pharmacist starts working on it but since there is the queueing system, the actual time from the arrival may be different. So, this time is a random variable. We would be interested in having its distribution but it is not possible. Hence, we will try to measure the expected value computing the sample mean of the time that it takes to fill out a prescription. What would be the number of repetitions to obtain an error of one minute?
+
+Let's call $\Theta$ the expected time of filling a prescription. We model the system as a discrete events simulation, we run it $n$ times and apply the sample mean as the estimator. The error we get is, again, $\frac{\sigma}{\sqrt{n}}$. Therefore
+
+$$1m = \frac{\sigma}{\sqrt{n}}$$
+$$\sqrt{n} = \frac{\sigma}{1m}$$
+$$n = \frac{\sigma^2}{(1m)^2}$$
+
+So, we just need the variance. But this is also an unknow random variable. At this point, we can use an estimator for the variance too, the sample variance.
+
+
+
 
 -----
 
