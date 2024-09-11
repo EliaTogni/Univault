@@ -1956,7 +1956,12 @@ What would be the value of a normal random variable which gives a guarantee of b
 
 ==immagine lez 22 51 min
 
-Let's extend the previous reasoning. Indeed, we understood that returning a specific value is not so meaningful
+### Interval Estimates
+Let's extend the previous reasoning. Indeed, we understood that returning a specific value, a single real number is not so meaningful. That is why we are more likely to give **interval estimates**.
+
+immagine 1h13 lez 22
+
+
 
 
 -----
