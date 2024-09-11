@@ -1911,6 +1911,9 @@ One of the most important and basics estimators is the **sample mean**, the func
 
 $$\widehat{X} = \sum_{i = 1}^{n} \frac{X_i}{n}$$
 
+Sample variance
+
+$$S^2 = \frac{(\sum_{i = 1}^{n}X_i - \overline{X})^2}{n - 1}$$
 
 -----
 
