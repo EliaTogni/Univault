@@ -1919,8 +1919,12 @@ We claim that the sample variance is an unbiased estimator for the variance and 
 
 There is another property of estimators: not being unbiased is telling us that there is no convergence to the actual expected value, there is some error. So let's assume to take an estimator unbiased: we may be interested in the rate in which we approach the actual value. How fast are we converging? Is such rate is fast enough, we say that this estimator is reliable, that is, we don't need an infinite number of runs to get something valid.
 
-Let's take the sample mean and try to measure the error rate of the sample mean.
+Let's take the sample mean and try to measure the error rate of the sample mean.<br />
+The error $E$ that we get could be the squared difference between the real value of the expected value $\mu$ and our sample mean estimate $\overline{x}$: $E = (\mu - \overline{x})^2$. We also know that $\overline{x}$ will be the output of an algorithm so different runs of the algorithm would produce different values. This implies that this single evaluation is not really meaningfull, hence we will use the **mean squared error**
 
+$$MSE = \mathbb{E}[(\mu - \overline{x})^2]$$
+
+This type of reasoning can be done for any parameter. However, in the case of the sample mean, we have a further advantage in measuring the error in this way: this is actually the expression of the variance $Var[\overline{x}]$.
 
 -----
 
