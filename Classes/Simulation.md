@@ -1905,7 +1905,7 @@ The expected value $\Theta$ is one of the things we need the most but there is n
 
 ==estimand? non sento cosa dice a lezione
 
-We are interested in what we define as **unbiased and reliable estimators**. Unbiased means that if we draw $n$ random values from our random variable and compute a function of them, the result is still a random value.
+We are interested in what we define as **unbiased and reliable estimators**. Unbiased means that if we draw $n$ random values from our random variable and compute a function of them, the result is still a random value. If its expected value
 
 One of the most important and basics estimators is the **sample mean**, the function that we can apply to the data and estimate the expected value
 
@@ -1914,6 +1914,8 @@ $$\widehat{X} = \sum_{i = 1}^{n} \frac{X_i}{n}$$
 Sample variance
 
 $$S^2 = \frac{(\sum_{i = 1}^{n}X_i - \overline{X})^2}{n - 1}$$
+
+
 
 -----
 
