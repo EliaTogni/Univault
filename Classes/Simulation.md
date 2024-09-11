@@ -1905,16 +1905,21 @@ The expected value $\Theta$ is one of the things we need the most but there is n
 
 ==estimand? non sento cosa dice a lezione
 
-We are interested in what we define as **unbiased and reliable estimators**. Unbiased means that if we draw $n$ random values from our random variable and compute a function of them, the result is still a random value. If its expected value
+We are interested in what we define as **unbiased and reliable estimators**. Unbiased means that if we draw $n$ random values from our random variable and compute a function of them, the result is still a random value. If its expected value it is matching the theoretical value we are looking for, the estimator is unbiased.
 
-One of the most important and basics estimators is the **sample mean**, the function that we can apply to the data and estimate the expected value
+One of the most important and basics estimators is the **sample mean**, the function that we can apply to the data and estimate the expected value:
 
 $$\widehat{X} = \sum_{i = 1}^{n} \frac{X_i}{n}$$
 
-Sample variance
+This is the **sample variance**, an estimator for the variance:
 
 $$S^2 = \frac{(\sum_{i = 1}^{n}X_i - \overline{X})^2}{n - 1}$$
 
+We claim that the sample variance is an unbiased estimator for the variance and that the expected value that we get by writing this algorithm an infinite number of times is matching the variance of our random variable.
+
+There is another property of estimators: not being unbiased is telling us that there is no convergence to the actual expected value, there is some error. So let's assume to take an estimator unbiased: we may be interested in the rate in which we approach the actual value. How fast are we converging? Is such rate is fast enough, we say that this estimator is reliable, that is, we don't need an infinite number of runs to get something valid.
+
+Let's take the sample mean and try to measure the error rate of the sample mean.
 
 
 -----
