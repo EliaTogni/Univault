@@ -1961,7 +1961,7 @@ Let's extend the previous reasoning. Indeed, we understood that returning a spec
 
 immagine 1h13 lez 22
 
-Now, consider the case of the interval estimates of the expected value. Theoretically speaking, the simulation runs are observations of independent and identically distributedrandom variables with expected value $\mathbb{E}[X_i] = \Theta$ and variance $Var[X_i] = \sigma^2$.
+Now, consider the case of the interval estimates of the expected value. Theoretically speaking, the simulation runs are observations of independent and identically distributed random variables with expected value $\mathbb{E}[X_i] = \Theta$ and variance $Var[X_i] = \sigma^2$. Also, we know that $\overline{X}$ is an unbiased and reliable estimator of $\Theta$, that $\mathbb{E}[\overline{X}] = \Theta$ and that $Var[\overline{X}] = \frac{\sigma^2}{n}$. Then, by the central limit theorem, $\overline{X}$ is a normal random variable for large values of $n$. In other words, we know that $\sqrt{n} \frac{(\overline{X} - \Theta)}{\sigma} \simeq \mu(0, 1)$. What we want to estimate now is the left hand side of this approximation. This is also a random variable itself
 
 -----
 
