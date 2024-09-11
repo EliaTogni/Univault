@@ -1964,7 +1964,8 @@ immagine 1h13 lez 22
 Now, consider the case of the interval estimates of the expected value. Theoretically speaking, the simulation runs are observations of independent and identically distributed random variables with expected value $\mathbb{E}[X_i] = \Theta$ and variance $Var[X_i] = \sigma^2$. Also, we know that $\overline{X}$ is an unbiased and reliable estimator of $\Theta$, that $\mathbb{E}[\overline{X}] = \Theta$ and that $Var[\overline{X}] = \frac{\sigma^2}{n}$. Then, by the central limit theorem, $\overline{X}$ is a normal random variable for large values of $n$. In other words, we know that $\sqrt{n} \frac{(\overline{X} - \Theta)}{\sigma} \simeq \mu(0, 1)$. What we want to estimate now is the left hand side of this approximation. This is also a random variable itself, that is, a rescaling and shifting of the random variable $\overline{X}$.
 Our understanding of the normal is telling us, indeed, that if we take a normal random variable, we multiply it by a constant and add/subtract another constant, we still get a random variable.
 
-However, it is still tricky because we don't know $\sigma$: hence, we replace it with $s$, an estimate of it. What is telling us that we can do this replacement and still get the same result is the **Slutsky theorem** (we will not prove it).
+However, it is still tricky because we don't know $\sigma$: hence, we replace it with $s$, an estimate of it. What is telling us that we can do this replacement and still get the same result is the **Slutsky theorem** (we will not prove it). Now, the central limit theorem tells us that $\forall 0 < \alpha < 1$, let $z_\alpha$ such that $P[Z > z_\alpha] = \alpha$. E.g., if we fix $\alpha = 5\%$, we can find $z_\alpha = 1.96$ reading $0.025$ from the normal (because of the two tails). ==non ho capito ma é simile al discorso dell'immagine sopra==
+Now we can exploit symmetry and 
 
 -----
 
