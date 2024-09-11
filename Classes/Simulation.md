@@ -592,7 +592,7 @@ If we define $k = \sigma \cdot k'$, where $k'$ is a positive number, the inequal
 $$P\Big[\vert X - \mu \vert \geq k' \sigma\Big] \leq \frac{1}{k'^2}$$
 which is the initial one.
 
--------------------------------------------------------------
+-----
 
 #### Weak law of large numbers
 Using Chebyshev’s inequality it is possible to prove the **weak law of large numbers**, which states that the probability that the average of the first $n$ terms of a sequence of independent and identically distributed Random Variables differs from its mean by more than $\varepsilon$ goes to $0$ as $n$ goes to infinity.
@@ -698,7 +698,7 @@ Despite its harmless simplicity and its poor performance, the middle-square gene
 
 Such equation is referred to as the generator's **recurrency relation**.
 
--------------------------------------------------------------
+-----
 
 #### Congruential generators
 Several of the first broadly used pseudorandom generators belonged to the family of **congruential generators**, whose recurrency relation is defined by
@@ -741,7 +741,7 @@ def ripley_test(v):
 
 ![[RipleyTest.png]]
 
--------------------------------------------------------------
+-----
 
 #### Empirical cumulative distribution function
 Let's consider the following random sequence: $1$, $3$, $2$, $9$, $8$, $7$, $4$, $5$, $6$, $10$. Is it a random sequence between $1$ and $10$? The response is no, because it is desired for the random values to be extracted from a **uniform distribution**.
@@ -801,7 +801,7 @@ Below, some graphical example of $F$ and $\widehat{F}$.
 
 ![[GlivenkoCantelli.png]]
 
-----------------------------------------------------------------
+-----
 
 ## Monte Carlo methods
 The term Monte Carlo refers to a wide family of **estimation methods** based on the use of pseudorandom numbers. The basic idea beneath this kind of methods is well described by the anndedoct describing its discovery on part of Stan Ulam, an ungarian mathematician who, playing a card solitaire while recovering from an encephalitis, wondered about the probability of dealing a specific, nontrivial hand from a shuffled deck. As he couldn't get the result through combinatorics, Ulam noticed that an approximation of the probability value could be easily found: it was sufficient to repeatedly shuffle the deck and compute the frequency of time that the desired card configuration appeared.
@@ -842,7 +842,7 @@ def montecarlo_pi(iteration_number):
 	return (4 * count / iteration_number)
 ```
 
-----------------------------------------------------------------
+-----
 
 ### Uses of random numbers
 One of the earliest applications of random numbers was in the computation of integrals. Let $g(x)$ be a function and suppose we wanted to compute $\theta$ where 
@@ -898,7 +898,7 @@ $$n \geq \Bigg \lceil \frac{\eta}{(1 - \delta)10^{-2k}} \Bigg \rceil$$
 
 While this theoretical result seems extremely useful, it assumes to have at disposal $\eta$ which in our case is a constant but only because it derives from an analytical step and holds only for a very specifical Random Variable known from the beginning. Therefore, it is tipically necessary to estimate $\eta$ through experiments to utilize this property.
 
--------------------------------------------------------------
+-----
 
 # Generating Random Variables
 Systems can be modeled, including non trivial components, in the form of Random Variables. Statistics allow to reliably run experiments and obtain results by observations on these models. At the base of this process, there is the ability to generate pseudorandom numbers algorithmically.
@@ -1961,8 +1961,7 @@ Let's extend the previous reasoning. Indeed, we understood that returning a spec
 
 immagine 1h13 lez 22
 
-
-
+Now, consider the case of the interval estimates of the expected value. Theoretically speaking, the simulation runs are observations of independent and identically distributedrandom variables with expected value $\mathbb{E}[X_i] = \Theta$ and variance $Var[X_i] = \sigma^2$.
 
 -----
 
@@ -2035,3 +2034,6 @@ Furthermore, the variance of Z
 .
 
 ### Conditioning
+
+
+-----
