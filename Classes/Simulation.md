@@ -1974,6 +1974,10 @@ Now, $P[-\frac{z_\alpha}{2} < \sqrt{n} \frac{(\overline{X} - \Theta)}{s} < \frac
 
 $$P\Bigg[ \overline{X} -\frac{z_\alpha}{2}\frac{s}{\sqrt{n}} < \Theta < \overline{X} + \frac{z_\alpha}{2}\frac{s}{\sqrt{n}}\Bigg ] \simeq 1 - \alpha$$
 
+Look at how we define the range $[-\frac{z_\alpha}{2}\frac{s}{\sqrt{n}}, \frac{z_\alpha}{2}\frac{s}{\sqrt{n}}]$. $\Theta$ is our target expected value, $\overline{X}$ is our estimate. Therefore, this interval is centered in our estimate and have width given by the error we are assuming to be doing. We can state the parameter to actually fit into this range with certain probability. Overall, if (after $n$ simulation observations) $\overline{X}$ and $s$ are sample mean and standard deviation, we call the interval $\overline{X} \pm \frac{z_\alpha}{2}\frac{s}{\sqrt{n}}$ an interval estimate of $\Theta$ with $100(1 - \alpha)\%$ confidence.
+
+Again, we may fix $\alpha$ (the confidence) and $n$ (the number of the iterations) and then the width of the interval is given.
+
 -----
 
 # Bootstrapping
