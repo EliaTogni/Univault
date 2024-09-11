@@ -1924,7 +1924,7 @@ The error $E$ that we get could be the squared difference between the real value
 
 $$MSE = \mathbb{E}[(\mu - \overline{x})^2]$$
 
-This type of reasoning can be done for any parameter. However, in the case of the sample mean, we have a further advantage in measuring the error in this way: this is actually the expression of the variance $Var[\overline{x}]$.
+This type of reasoning can be done for any parameter. However, in the case of the sample mean, we have a further advantage in measuring the error in this way: this is actually the expression of the variance $Var[\overline{x}] = Var[\frac{1}{n} \sum_{i = 1}^{n} X_i]$. Since the $x_i$ are independent and identically distributed, we have $\frac{1}{n^2} \sum_{i = 1}^{n} Var[X_i] = \frac{1}{n^2} \sum_{i = 1}^{n} \sigma^2 = \frac{1}{n^2} n \sigma^2 = \frac{\sigma^2}{n}$. Therefore, the more experiment we do, the lower the error we get since we are dividing by $n$. Also, this error is decreasing fairly fast: since $\frac{\sigma^2}{n}$ is the squared error, the error is $\frac{\sigma}{\sqrt{n}}$. Is it fast enough?
 
 -----
 
