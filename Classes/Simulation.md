@@ -1945,9 +1945,15 @@ So, we just need the variance. But this is also an unknow random variable. At th
 Experimentally speaking, a good recipe to compute our estimates by simulation:
 1) suppose $\Theta = \mathbb{E}[X]$ (do it by sample mean $\overline{X}$);
 2) fix a confidence, that is, the target probability of actually getting the error with $n$ runs (e.g., $95\%$);
-3) fix a precision we pretend to get, that is, the amount of errors we tend to do ();
+3) fix a precision we pretend to get, that is, the amount of errors we tend to do ($p = 1.96d$);
 
-How can we fix the precision? One thing we can do about the sample mean is that we have one more theoretical result allowing us to understand something about this confidence: we know the central limit theorem. These average values, if we manage to repeat
+How can we fix the precision? One thing we can do about the sample mean is that we have one more theoretical result allowing us to understand something about this confidence: we know the central limit theorem. This theorem says that the readings of the sample mean (recall that the sample mean is also a random variable itself) is always a normal one, independently on what we are measuring.
+
+What would be the value of a normal random variable which gives a guarantee of being not further than that value from the expected value in the $95\%$ of the cases? We can look at our known normal distribution, remembering that it is symmetric, and we can exclude the tails of the distribution accounting for the last $5\%$.
+
+==immagine lez 22 51 min
+
+
 
 -----
 
