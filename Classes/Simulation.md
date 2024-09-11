@@ -1946,6 +1946,8 @@ Experimentally speaking, a good recipe to compute our estimates by simulation:
 1) suppose $\Theta = \mathbb{E}[X]$ (do it by sample mean $\overline{X}$);
 2) fix a confidence, that is, the target probability of actually getting the error with $n$ runs (e.g., $95\%$);
 3) fix a precision we pretend to get, that is, the amount of errors we tend to do ($p = 1.96d$);
+4) perform a certain number ($100$) of iterations a priori and compute the starting $s$ value ($s$ is the sample standard deviation)
+5) keep on running the simulation until the measured error $\frac{s}{\sqrt{n}}$ became less than $d$ ;
 
 How can we fix the precision? One thing we can do about the sample mean is that we have one more theoretical result allowing us to understand something about this confidence: we know the central limit theorem. This theorem says that the readings of the sample mean (recall that the sample mean is also a random variable itself) is always a normal one, independently on what we are measuring.
 
