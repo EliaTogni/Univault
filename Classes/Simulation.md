@@ -1920,11 +1920,11 @@ We claim that the sample variance is an unbiased estimator for the variance and 
 There is another property of estimators: not being unbiased is telling us that there is no convergence to the actual expected value, there is some error. So let's assume to take an estimator unbiased: we may be interested in the rate in which we approach the actual value. How fast are we converging? Is such rate is fast enough, we say that this estimator is reliable, that is, we don't need an infinite number of runs to get something valid.
 
 Let's take the sample mean and try to measure the error rate of the sample mean.<br />
-The error $E$ that we get could be the squared difference between the real value of the expected value $\mu$ and our sample mean estimate $\overline{x}$: $E = (\mu - \overline{x})^2$. We also know that $\overline{x}$ will be the output of an algorithm so different runs of the algorithm would produce different values. This implies that this single evaluation is not really meaningfull, hence we will use the **mean squared error**
+The error $E$ that we get could be the squared difference between the real value of the expected value $\mu$ and our sample mean estimate $\overline{x}$: $E = (\mu - \overline{X})^2$. We also know that $\overline{X}$ will be the output of an algorithm so different runs of the algorithm would produce different values. This implies that this single evaluation is not really meaningfull, hence we will use the **mean squared error**
 
-$$MSE = \mathbb{E}[(\mu - \overline{x})^2]$$
+$$MSE = \mathbb{E}[(\mu - \overline{X})^2]$$
 
-This type of reasoning can be done for any parameter. However, in the case of the sample mean, we have a further advantage in measuring the error in this way: this is actually the expression of the variance $Var[\overline{x}] = Var[\frac{1}{n} \sum_{i = 1}^{n} X_i]$. Since the $x_i$ are independent and identically distributed, we have $\frac{1}{n^2} \sum_{i = 1}^{n} Var[X_i] = \frac{1}{n^2} \sum_{i = 1}^{n} \sigma^2 = \frac{1}{n^2} n \sigma^2 = \frac{\sigma^2}{n}$. Therefore, the more experiment we do, the lower the error we get since we are dividing by $n$. Also, this error is decreasing fairly fast: since $\frac{\sigma^2}{n}$ is the squared error, the error is $\frac{\sigma}{\sqrt{n}}$. Is it fast enough?
+This type of reasoning can be done for any parameter. However, in the case of the sample mean, we have a further advantage in measuring the error in this way: this is actually the expression of the variance $Var[\overline{X}] = Var[\frac{1}{n} \sum_{i = 1}^{n} X_i]$. Since the $x_i$ are independent and identically distributed, we have $\frac{1}{n^2} \sum_{i = 1}^{n} Var[X_i] = \frac{1}{n^2} \sum_{i = 1}^{n} \sigma^2 = \frac{1}{n^2} n \sigma^2 = \frac{\sigma^2}{n}$. Therefore, the more experiment we do, the lower the error we get since we are dividing by $n$. Also, this error is decreasing fairly fast: since $\frac{\sigma^2}{n}$ is the squared error, the error is $\frac{\sigma}{\sqrt{n}}$. Is it fast enough?
 
 ==non viene dimostrata la sample variance unbiased
 
@@ -1940,10 +1940,14 @@ $$1m = \frac{\sigma}{\sqrt{n}}$$
 $$\sqrt{n} = \frac{\sigma}{1m}$$
 $$n = \frac{\sigma^2}{(1m)^2}$$
 
-So, we just need the variance. But this is also an unknow random variable. At this point, we can use an estimator for the variance too, the sample variance.
+So, we just need the variance. But this is also an unknow random variable. At this point, we can use an estimator for the variance too, the sample variance. Now, the problem keeps going. How many runs should we do to have a low error on the sample variance? 
 
+Experimentally speaking, a good recipe to compute our estimates by simulation:
+1) suppose $\Theta = \mathbb{E}[X]$ (do it by sample mean $\overline{X}$);
+2) fix a confidence, that is, the target probability of actually getting the error with $n$ runs (e.g., $95\%$);
+3) fix a precision we pretend to get, that is, the amount of errors we tend to do ();
 
-
+How can we fix the precision? One thing we can do about the sample mean is that we have one more theoretical result allowing us to understand something about this confidence: we know the central limit theorem. These average values, if we manage to repeat
 
 -----
 
