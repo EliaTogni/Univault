@@ -1926,6 +1926,10 @@ $$MSE = \mathbb{E}[(\mu - \overline{x})^2]$$
 
 This type of reasoning can be done for any parameter. However, in the case of the sample mean, we have a further advantage in measuring the error in this way: this is actually the expression of the variance $Var[\overline{x}] = Var[\frac{1}{n} \sum_{i = 1}^{n} X_i]$. Since the $x_i$ are independent and identically distributed, we have $\frac{1}{n^2} \sum_{i = 1}^{n} Var[X_i] = \frac{1}{n^2} \sum_{i = 1}^{n} \sigma^2 = \frac{1}{n^2} n \sigma^2 = \frac{\sigma^2}{n}$. Therefore, the more experiment we do, the lower the error we get since we are dividing by $n$. Also, this error is decreasing fairly fast: since $\frac{\sigma^2}{n}$ is the squared error, the error is $\frac{\sigma}{\sqrt{n}}$. Is it fast enough?
 
+==non viene dimostrata la sample variance unbiased
+
+ Having this error estimate is great theoretically, that is, it let us know if we are in a good track. Enventually, we also get to the parameter we are looking for and even more, by repeating the experiment over and over again. Let's suppose that for a specific system, $\sigma = 1.2$: what is the error you expect to get by $100$ repetitions? We compute and obtain $\frac{1.2}{\sqrt{100}} = \frac{1.2}{10} = 0.12$.
+ 
 -----
 
 # Bootstrapping
