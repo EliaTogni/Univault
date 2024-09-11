@@ -1930,7 +1930,9 @@ This type of reasoning can be done for any parameter. However, in the case of th
 
 Having this error estimate is great theoretically, that is, it let us know if we are in a good track. Enventually, we also get to the parameter we are looking for and even more, by repeating the experiment over and over again. Let's suppose that for a specific system, $\sigma = 1.2$: what is the error you expect to get by $100$ repetitions? We compute and obtain $\frac{1.2}{\sqrt{100}} = \frac{1.2}{10} = 0.12$. We have no guarantee that the error will be this value but the probability of it being greater will become lower and lower with the increasing of the measurements.
 
-The more precision we ask for, the more repetitions we need to do.
+The more precision we ask for, the more repetitions we need to do and, therefore, the higher the probability of actually reaching that precision. These quantities depends one another and we can fix two of them and find the third one that is helping us in matching the theoretical understanding that we have.
+
+Let's consider the pharmacy example and assume we want to understand the expected time that the prescription needs to be fill from the coming of the prescription in the shop. We already know the time the prescription needs when the pharmacist starts working on it but since there is the queueing system, the actual time from the arrival may be different. So, ti
 
 -----
 
