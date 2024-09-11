@@ -1928,8 +1928,10 @@ This type of reasoning can be done for any parameter. However, in the case of th
 
 ==non viene dimostrata la sample variance unbiased
 
- Having this error estimate is great theoretically, that is, it let us know if we are in a good track. Enventually, we also get to the parameter we are looking for and even more, by repeating the experiment over and over again. Let's suppose that for a specific system, $\sigma = 1.2$: what is the error you expect to get by $100$ repetitions? We compute and obtain $\frac{1.2}{\sqrt{100}} = \frac{1.2}{10} = 0.12$.
- 
+Having this error estimate is great theoretically, that is, it let us know if we are in a good track. Enventually, we also get to the parameter we are looking for and even more, by repeating the experiment over and over again. Let's suppose that for a specific system, $\sigma = 1.2$: what is the error you expect to get by $100$ repetitions? We compute and obtain $\frac{1.2}{\sqrt{100}} = \frac{1.2}{10} = 0.12$. We have no guarantee that the error will be this value but the probability of it being greater will become lower and lower with the increasing of the measurements.
+
+These 
+
 -----
 
 # Bootstrapping
