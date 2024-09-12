@@ -1980,14 +1980,13 @@ Again, we may fix $\alpha$ (the confidence) and $n$ (the number of the iteration
 -----
 
 # Bootstrapping
-What if the parameter to estimate is not the mean (like the median or the variance)? The estimator may not be the average of values and our way to measure the error may not be the variance. Can we have a similar framework to what we have seen for the mean and the variance? The idea is to rely on more ambitious but more general target, that is, to rebuild by means of our simulation runs, the whole cumulative distribution function.
+What if the parameter to estimate is not the mean (like the median or the variance)? The estimator may not be the average of values and our way to measure the error may not be the variance. Can we have a similar framework to what we have seen for the mean and the variance? The idea is to rely on more ambitious but more general target, that is, to rebuild, by means of our simulation runs, the whole cumulative distribution function describing our random variable. This is the idea behind **Bootstrapping**.
 
+immagine 10 min
 
-The idea behind **Bootstrapping** is the following.
+To answer at the question "what is the value of this parameter $\Theta$ of my random variable $X$?", we have always looked at the simulation model as a random variable and what we typically did was to run it $n$ times and to get $n$ values $x_1, \dots, x_n$. Then, these $n$ values were given to some estimators $g()$ which would produce $\overline{\Theta}$, our approximation.
 
-
-
-immagine
+What are we trying to do now is to use $n$ values
 
 We do it using the empirical cumulative distribution function. We sort the $N$ values and we place them in a histogram.
 
