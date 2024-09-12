@@ -1644,7 +1644,7 @@ If a process satisfies the previous conditions, then $N(t)$ is a Poisson Random 
 Proof:<br />
 Recall that $N(t)$ is the number of events in $[0, t]$. Let's take the slot between $0$ and $t$ and split it into $n$ slots of equal length $t/n$. Now, let's consider one of them and assume $n$ to be large enough: then we are in the case of a small interval. Therefore, $P[N(t/n) \geq 2] \to 0$ and $P[N(t/n) = 1]  \to \frac{t}{n} \cdot \lambda = p$ ==check la formula==. We made this reasoning for only one of these slots but if we look at the nuymber of events in this joint time interval, we can do the analysis independently, due to the independent increment assumption. Even more, for the stationary increment assumption, we know that the result of the analysis on each slot will be the same. Therefore, we will have $n$ copies of the first analysis.
 
-==immagine lez 17 38 min
+![[NSlotsPP.png]]
 
 We want to count the number of slots containing an event. This is a Binomial Random Variable of parameter $p$. What happens to a Binomial Random Variable when $n$ is very large and $p = \frac{t}{n} \lambda$ is very small? This Random Variable becomes a Poisson one of parameter $n \cdot p = t \cdot \lambda$.
 
@@ -1691,7 +1691,6 @@ As a result where we would use $\lambda$ we instead use $\lambda(t)$:
 $$\lim_{h\to 0} \frac{P[N(h)=1]}{h} = \lambda(t)$$
 
 This means that, in small intervals, the probability of an event to occur is approximately $h\lambda(t)$.
-
 
 This is a common behavior in mobile networks, where the arrival of packets during the day is not constant but instead is very high during certain hours and low during the night.
 
@@ -1823,7 +1822,7 @@ The _generate_gaussian_copula_ function firstly generate two values, $y1$ and $y
 
 Let's define the multivariate normal. If we look at $X_1$ and $X_2$ independently, they look like bell shaped distribution.
 
-==immagine lez 20 20 min
+![[MultivariateNormal.png]]
 
 When we look at both the distributions together, we see probability level curves. Each curve identifies the same probability value. They could also look like the second graph above. So, if we look at specific values for $x_1$, they indeed have the shape of a normal but it's not the same one. So the value of one is affected by the value of the other.
 
@@ -1866,7 +1865,7 @@ As soon as we get this $A$, we'll have the coefficients to use in this algorithm
 ### Marshall-Olkin Copula
 Suppose to have two electrical components and three possible shocks: shock $1$ affects component $1$, shock $2$ affects component $2$ and shock $3$ affects both components. So, graphically speaking, we have
 
-==immagine 50 min==
+![[ElectricCircuti.png]]
 
 Now, we know that these $3$ shocks occur at different rates $\lambda_1$, $\lambda_2$ and $\lambda_3$. What we are interest in is the rate of failure of the components. The shocks are independent. The failures, however, are not.
 We wish to generate failures for these two times.
@@ -1959,7 +1958,7 @@ What would be the value of a normal random variable which gives a guarantee of b
 ### Interval Estimates
 Let's extend the previous reasoning. Indeed, we understood that returning a specific value, a single real number is not so meaningful. That is why we are more likely to give **interval estimates**.
 
-immagine 1h13 lez 22
+==immagine 1h13 lez 22
 
 Now, consider the case of the interval estimates of the expected value. Theoretically speaking, the simulation runs are observations of independent and identically distributed random variables with expected value $\mathbb{E}[X_i] = \Theta$ and variance $Var[X_i] = \sigma^2$. Also, we know that $\overline{X}$ is an unbiased and reliable estimator of $\Theta$, that $\mathbb{E}[\overline{X}] = \Theta$ and that $Var[\overline{X}] = \frac{\sigma^2}{n}$. Then, by the central limit theorem, $\overline{X}$ is a normal random variable for large values of $n$. In other words, we know that $\sqrt{n} \frac{(\overline{X} - \Theta)}{\sigma} \simeq \mu(0, 1)$. What we want to estimate now is the left hand side of this approximation. This is also a random variable itself, that is, a rescaling and shifting of the random variable $\overline{X}$.
 Our understanding of the normal is telling us, indeed, that if we take a normal random variable, we multiply it by a constant and add/subtract another constant, we still get a random variable.
