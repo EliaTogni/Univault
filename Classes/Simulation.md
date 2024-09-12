@@ -1980,12 +1980,12 @@ Again, we may fix $\alpha$ (the confidence) and $n$ (the number of the iteration
 -----
 
 # Bootstrapping
-What if the parameter to estimate is not the mean (like the median or the variance)? The estimator may not be the average of values and our way to measure the error may not be the variance. Can we have a similar framework to what we have seen for the mean and the variance? The idea is to rely on more ambitious but more general target
+What if the parameter to estimate is not the mean (like the median or the variance)? The estimator may not be the average of values and our way to measure the error may not be the variance. Can we have a similar framework to what we have seen for the mean and the variance? The idea is to rely on more ambitious but more general target, that is, to rebuild by means of our simulation runs, the whole cumulative distribution function.
 
 
-  The idea behind **Bootstrapping** is the following.
+The idea behind **Bootstrapping** is the following.
 
-We need to find a corresponding estimator. We want to rebuilt by means of simulation runs, the whole cumulative distribution function.
+
 
 immagine
 
