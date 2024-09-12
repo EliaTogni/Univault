@@ -1992,11 +1992,11 @@ We rebuild the cumulative distribution function using the empirical cumulative d
 
 If we believe that $F_e$ is a good approximation of $F$, we can basically do anything algorithmically speaking, like computing parameters out of $F_e$ pretending to be approximations of parameters computed on the actual $F$.
 
-We can also do a **resampling** using $F_e$. From the empirical cumulative distribution function, we draw $n$ values at random. We compute $\overline{\theta}_1$, $\overline{\theta}_2$, and so on. We have a set of values which are computed by resampling from the ecdf. 
+We can also do a **resampling** using $F_e$. From the empirical cumulative distribution function, we draw $n$ values at random. We compute $\overline{\theta}_1$, $\overline{\theta}_2$, and so on. We have a set of values which are computed by resampling from $F_e$. 
 
-If $F_e$ was really matching $F$, ...
 
-The average of the differences of the theta bar from the theta bar initial, is an approximation of the ... error. We compute the **mean squared error**.
+
+The average of the differences of the $\overline{\Theta}$ from the theta bar initial, is an approximation of the ... error. We compute the **mean squared error**.
 
 $$MSE = \sum_{i = 1}^{m}\frac{\Big( \bar{\theta_i} - \bar{\theta}\Big)^2}{m}$$
 
