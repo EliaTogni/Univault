@@ -1986,9 +1986,7 @@ immagine 10 min
 
 To answer at the question "what is the value of this parameter $\Theta$ of my random variable $X$?", we have always looked at the simulation model as a random variable and what we typically did was to run it $n$ times and to get $n$ values $x_1, \dots, x_n$. Then, these $n$ values were given to some estimators $g()$ which would produce $\overline{\Theta}$, our approximation.
 
-What are we trying to do now is to use $n$ values
-
-We do it using the empirical cumulative distribution function. We sort the $N$ values and we place them in a histogram.
+We rebuild the cumulative distribution function using the empirical cumulative distribution function. We sort the $n$ values and we place them in a histogram.
 
 immagine histo
 
