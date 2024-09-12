@@ -1953,12 +1953,12 @@ How can we fix the precision? One thing we can do about the sample mean is that 
 
 What would be the value of a normal random variable which gives a guarantee of being not further than that value from the expected value in the $95\%$ of the cases? We can look at our known normal distribution, remembering that it is symmetric, and we can exclude the tails of the distribution accounting for the last $5\%$.
 
-==immagine lez 22 51 min
+![[GaussianWebsite.png]]
 
 ### Interval Estimates
 Let's extend the previous reasoning. Indeed, we understood that returning a specific value, a single real number is not so meaningful. That is why we are more likely to give **interval estimates**.
 
-==immagine 1h13 lez 22
+![[IntervalEstimatesExample.png]]
 
 Now, consider the case of the interval estimates of the expected value. Theoretically speaking, the simulation runs are observations of independent and identically distributed random variables with expected value $\mathbb{E}[X_i] = \Theta$ and variance $Var[X_i] = \sigma^2$. Also, we know that $\overline{X}$ is an unbiased and reliable estimator of $\Theta$, that $\mathbb{E}[\overline{X}] = \Theta$ and that $Var[\overline{X}] = \frac{\sigma^2}{n}$. Then, by the central limit theorem, $\overline{X}$ is a normal random variable for large values of $n$. In other words, we know that $\sqrt{n} \frac{(\overline{X} - \Theta)}{\sigma} \simeq \mu(0, 1)$. What we want to estimate now is the left hand side of this approximation. This is also a random variable itself, that is, a rescaling and shifting of the random variable $\overline{X}$.
 Our understanding of the normal is telling us, indeed, that if we take a normal random variable, we multiply it by a constant and add/subtract another constant, we still get a random variable.
