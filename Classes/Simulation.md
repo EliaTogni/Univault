@@ -1982,17 +1982,17 @@ Again, we may fix $\alpha$ (the confidence) and $n$ (the number of the iteration
 # Bootstrapping
 What if the parameter to estimate is not the mean (like the median or the variance)? The estimator may not be the average of values and our way to measure the error may not be the variance. Can we have a similar framework to what we have seen for the mean and the variance? The idea is to rely on more ambitious but more general target, that is, to rebuild, by means of our simulation runs, the whole cumulative distribution function describing our random variable. This is the idea behind **Bootstrapping**.
 
-immagine 10 min
+==immagine 10 min
 
 To answer at the question "what is the value of this parameter $\Theta$ of my random variable $X$?", we have always looked at the simulation model as a random variable and what we typically did was to run it $n$ times and to get $n$ values $x_1, \dots, x_n$. Then, these $n$ values were given to some estimators $g()$ which would produce $\overline{\Theta}$, our approximation.
 
 We rebuild the cumulative distribution function using the empirical cumulative distribution function. We sort the $n$ values and we place them in a histogram.
 
-immagine histo
+==immagine histo 13.30
 
-If I believe that $F_e$ is a good approximation of $F$, I can basically do anything algorithmically speaking. We can compute parameters out of $F_e$.
+If we believe that $F_e$ is a good approximation of $F$, we can basically do anything algorithmically speaking, like computing parameters out of $F_e$ pretending to be approximations of parameters computed on the actual $F$.
 
-From $F_e$ we draw $N$ values at random. we compute $\overline{\theta}_1$, $\overline{\theta}_2$, and so on. We have a set of values which are computed by resampling from the ecdf. 
+We can also do a **resampling** using $F_e$. From the empirical cumulative distribution function, we draw $n$ values at random. We compute $\overline{\theta}_1$, $\overline{\theta}_2$, and so on. We have a set of values which are computed by resampling from the ecdf. 
 
 If $F_e$ was really matching $F$, ...
 
