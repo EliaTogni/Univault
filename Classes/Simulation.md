@@ -1994,7 +1994,7 @@ If we believe that $F_e$ is a good approximation of $F$, we can basically do any
 
 We can also do a **resampling** using $F_e$. From the empirical cumulative distribution function, we draw $n$ values at random. We compute $\overline{\theta}_1$, $\overline{\theta}_2$, and so on, $m$ times, by giving these $n$ values in input to $g()$. In this way, we have $\overline{\Theta}$, computed on the original simulation, and a set of other $m$ values which are computed by resampling from $F_e$.
 
-If $F_e$ was really matching $F$, all the values should be the same. In an hypotetical word in which $n$ is an arbitrary large value, we will get all the possible values out of $X$, compute the estimate on all these values
+If $F_e$ was really matching $F$, all the values should be the same. In an hypotetical word in which $n$ is an arbitrary large value, we will get all the possible values out of $X$, compute the estimate on all these values and exactly rebuild $F$
 
 The average of the differences of the $\overline{\Theta}$ from the theta bar initial, is an approximation of the ... error. We compute the **mean squared error**.
 
