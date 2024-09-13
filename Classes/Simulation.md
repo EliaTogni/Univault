@@ -1979,7 +1979,7 @@ Again, we may fix $\alpha$ (the confidence) and $n$ (the number of the iteration
 
 -----
 
-# Bootstrapping
+## Bootstrapping
 What if the parameter to estimate is not the mean (like the median or the variance)? The estimator may not be the average of values and our way to measure the error may not be the variance. Can we have a similar framework to what we have seen for the mean and the variance? The idea is to rely on more ambitious but more general target, that is, to rebuild, by means of our simulation runs, the whole cumulative distribution function describing our random variable. This is the idea behind **Bootstrapping**.
 
 ==immagine 10 min
@@ -2016,24 +2016,17 @@ What about the interval estimates? We tried to figure out for a target confidenc
 
 In the image below, it is possible to observe an example of probability density function for this distribution.
 
-immagine 35 m
+==immagine 35 m
 
-We have no guarantee that this distribution is a normal one.
+We have no guarantee that this distribution is a normal one. Now, if we want to have an estimate with confidence, for example, $95\%$, which would be the region containing this percentage? We cut of the tails for $5\%$ and the two $\theta$ will be the limits of the range.
 
+==aggiungere sto pezzo dalle slide
 Instead of giving a single (mean) value as estimate, it is more useful to provide a range in which we are confident the parameter value to be.
+If the observer values of the sample mean and the sample standard deviation are $\overline{X} = x$ and $S = s$, call the interval $\overline{x} \pm z_\alpha / 2^s \sqrt{n}$ an (approximate) $100(1 - \alpha)$ percent **confidence interval estimate** of $\theta$. ==
 
-If the observer values of the sample mean and the sample standard deviation are $\overline{X} = x$ and $S = s$, call the interval $\overline{x} \pm z_\alpha / 2^s \sqrt{n}$ an (approximate) $100(1 - \alpha)$ percent **confidence interval estimate** of $\theta$. 
-
-
-
-
-Pick the $\overline{\theta}_n$ values and build a distribution of $\bar{\theta}$.
-
-immagine gaussiana 95% 
-
-You cut it off the tails of the gaussian. It is also possible to do the other way round. 
-
+-----
 ## Variance Reduction
+In order to have a low number of iterations, is it better to have an high variance or a low one? Obviously the low one. The lower the variance, the sooner we get to the stopping condition
 High variance means low confidence about the values produced.
 
 We also want to keep the randomness of the model. Can we do it?
