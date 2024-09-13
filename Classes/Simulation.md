@@ -2032,9 +2032,9 @@ What if they are not independet but, for example, negatively correlated? We can 
 
 $$Var\Bigg[\frac{X_1 + X_2}{2}\Bigg] = \frac{1}{4}\Big(Var[X_1] + Var[X_2] + 2Cov[X_1, X_2]\Big)$$
 
+With that result, if $X_1$ and $X_2$ are negatively correlated, the variance of this quantity is lower than the variance of the random variables singlely taken.
 
-
-If $X_1$ and $X_2$ are negatively correlated, the variance would be smaller.
+Now, how can two runs of the same simulation model be negatively correlated? The trick is the following: let differenciate between the odd runs and the even one in the model. The odd runs
 
 
 
