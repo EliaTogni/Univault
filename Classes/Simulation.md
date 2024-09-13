@@ -2044,7 +2044,11 @@ When $h$ is a monotone function of these random numbers, $X_1$ and $X_2$ are neg
 
 When the model satisfies this condition, we actually get a lower value for the variance.
 
-How realistic is to make this assumption? When $h()$ is a monotone function? This is qualitative, there is no strict rule. The important point here is 
+How realistic is to make this assumption? When $h()$ is a monotone function? This is qualitative, there is no strict rule. Let's assume we believe our model to be a monotone function but actually it's not. What we get is not a wrong estimate: we still get a valid estimate but we lose the guarantee of reducing the variance.
+
+At the same time, we can think about random generation algorithm of our knowledge, for instance, in the simplest case: Bernoulli.
+
+We can generate a Bernoulli random variable of parameter $p$.
 
 -----
 
