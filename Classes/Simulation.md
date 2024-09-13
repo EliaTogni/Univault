@@ -2050,6 +2050,23 @@ At the same time, we can think about random generation algorithm of our knowledg
 
 We can generate a Bernoulli random variable of parameter $p$.
 
+```pseudo
+	\begin{algorithm}
+	\caption{Algo Caption}
+	\begin{algorithmic}
+		\State $u = random()$
+		\If{$u \leq p$}
+			\State return $0$
+		\Else
+			\State return $1$
+        \EndIf
+		
+	\end{algorithmic}
+	\end{algorithm}
+```
+
+This is, obviously, a monotone function. The higher the value of $u$, the higher the value returned by the generator.
+
 -----
 
 ### Variance Reduction by Control Variates
