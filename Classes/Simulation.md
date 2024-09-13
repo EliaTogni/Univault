@@ -2024,13 +2024,11 @@ We have no guarantee that this distribution is a normal one. Now, if we want to 
 ## Variance Reduction
 In order to have a low number of iterations, is it better to have an high variance or a low one? Obviously the low one. The lower the variance, the sooner we get to the stopping condition, as it was in interval estimates. This also implies that high variance means low confidence about the values produced. We also want to keep the randomness of the model.
 
-The core idea is to reduce the variance without trouch
+The core idea is to reduce the variance without touching anything from theory, to keep the structure of the random variable as it is. We will mention three techniques.
+### Variance Reduction by Antithetic Variables
+Say you have $2$ identical and independent distributed random variables $X_1$ and $X_2$ with expected value $\theta$. What if we want to estimate this specific value? We can repeat $n$ observation of $X_1$ (or $X_2$), use the sample mean and that's it.
 
-### Antithetic variables
-Say you have 2 identical and independent distributed random variables with expected value $\theta$. We repeat $n$ observation of $X_1$ ..
-
-
-What if they are not independet but are negatively correlated? We can measure the variance of the average of these two random variables. slide 8/15 ultima parte.
+What if they are not independet but, for example, negatively correlated? We can measure the variance of the average of these two random variables. slide 8/15 ultima parte.
 
 If $X_1$ and $X_2$ are negatively correlated, the variance would be smaller.
 
@@ -2038,7 +2036,9 @@ Esempio bernoulli
 
 Esempio network robusta
 
-### Control Variates
+-----
+
+### Variance Reduction by Control Variates
 $x$ is the random variable output of the simulation. $\theta$ is its expected value. We are able to get another value for the model, $Y$, an intermediate point in the simulation for which we already know the expected value. We use $Z = X + c(y - \mu)$ as the undbiased estimator of $\theta$. For any constant c.+
 
 Furthermore, the variance of $Z$
@@ -2047,7 +2047,9 @@ Furthermore, the variance of $Z$
 .
 .
 
-### Conditioning
+-----
+
+### Variance Reduction by Conditioning
 
 
 -----
