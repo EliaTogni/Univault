@@ -1986,15 +1986,17 @@ What if the parameter to estimate is not the mean (like the median or the varian
 
 To answer at the question "what is the value of this parameter $\Theta$ of my random variable $X$?", we have always looked at the simulation model as a random variable and what we typically did was to run it $n$ times and to get $n$ values $x_1, \dots, x_n$. Then, these $n$ values were given to some estimators $g()$ which would produce $\overline{\Theta}$, our approximation.
 
-We rebuild the cumulative distribution function using the empirical cumulative distribution function. We sort the $n$ values and we place them in a histogram.
+We want to rebuild the cumulative distribution function using the empirical cumulative distribution function. We just need to sort the $n$ values and place them in a histogram.
 
 ==immagine histo 13.30
 
 If we believe that $F_e$ is a good approximation of $F$, we can basically do anything algorithmically speaking, like computing parameters out of $F_e$ pretending to be approximations of parameters computed on the actual $F$.
 
-We can also do a **resampling** using $F_e$. From the empirical cumulative distribution function, we draw $n$ values at random. We compute $\overline{\theta}_1$, $\overline{\theta}_2$, and so on, $m$ times, by giving these $n$ values in input to $g()$. In this way, we have $\overline{\Theta}$, computed on the original simulation, and a set of other $m$ values which are computed by resampling from $F_e$.
+We can also do a **resampling** using $F_e$. From the empirical cumulative distribution function, we draw other $n$ values at random. We compute $\overline{\theta}_1$, $\overline{\theta}_2$, and so on, $m$ times, by giving these $n$ values in input to $g()$. In this way, we have $\overline{\theta}$, computed on the original simulation, and a set of $m$ other $\overline{\theta}$ values which are computed by resampling from $F_e$.
 
-If $F_e$ was really matching $F$, all the values should be the same. In an hypotetical word in which $n$ is an arbitrary large value, we will get all the possible values out of $X$, compute the estimate on all these values and exactly rebuild $F$
+If $F_e$ was really matching $F$, all the values should be the same. In an hypotetical word in which $n$ is an arbitrary large value, we will get all the possible values out of $X$, compute the estimate on all these values and exactly rebuild $F$ using 
+
+
 
 The average of the differences of the $\overline{\Theta}$ from the theta bar initial, is an approximation of the ... error. We compute the **mean squared error**.
 
