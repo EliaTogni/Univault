@@ -2076,22 +2076,24 @@ This is a network of links which are subject to failure and we ask ourselves som
 For instance, we may wish to measure the number of paths from some point $a$ to some point $b$. This is a discrete random variable. What is the shape of this random variable? It has no particular shape so how can we simulate it?
 
 ```python
-def simulate_net(p1, p2, p3, p4, p5, p6, p7)
-	s1 = bernoulli(p1)
+def simulate_net(p1, p2, p3, p4, p5)
+	s1 = bernoulli(p1) #observation of Bernoulli random variables
 	s2 = bernoulli(p2)
 	s3 = bernoulli(p3)
 	s4 = bernoulli(p4)
 	s5 = bernoulli(p5)
-	s6 = bernoulli(p6)
-	s7 = bernoulli(p7)
 	
 	if s1*s2*s4*s5 == 1:
-		return 2 + s6*s7, s6*s7
+		return 2
 	elif max(s1*s4, s2*s5, s1*s3*s5, s2*s3*s4) == 1:
-		return 1 + s6*s7, s6*s7
+		return 1
 	else:
-		return 0 + + s6*s7, s6*s7
+		return 0
 ```
+
+Is it true that this simulation function is monotone in the random values that we draw? It is not so trivial but we can check: the Bernoulli random variables are monotone. Therefore, the higher their value, the higher $s_1*s_2*s_4*s_5$ and, consequently, the higher the output. Hence, it is monotone.
+
+What is the limit of this approach? Was it really for free? (in the sense that if the function isn't monotone, we have literally no drawbacks)
 
 -----
 
