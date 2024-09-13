@@ -2028,9 +2028,16 @@ The core idea is to reduce the variance without touching anything from theory, t
 ### Variance Reduction by Antithetic Variables
 Say you have $2$ identical and independent distributed random variables $X_1$ and $X_2$ with expected value $\theta$. What if we want to estimate this specific value? We can repeat $n$ observation of $X_1$ (or $X_2$), use the sample mean and that's it.
 
-What if they are not independet but, for example, negatively correlated? We can measure the variance of the average of these two random variables. slide 8/15 ultima parte.
+What if they are not independet but, for example, negatively correlated? We can measure the variance of the average of these two random variables. 
+
+$$Var\Bigg[\frac{X_1 + X_2}{2}\Bigg] = \frac{1}{4}\Big(Var[X_1] + Var[X_2] + 2Cov[X_1, X_2]\Big)$$
+
+slide 8/15 ultima parte.
 
 If $X_1$ and $X_2$ are negatively correlated, the variance would be smaller.
+
+
+
 
 Esempio bernoulli
 
