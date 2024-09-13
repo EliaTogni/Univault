@@ -2034,8 +2034,11 @@ $$Var\Bigg[\frac{X_1 + X_2}{2}\Bigg] = \frac{1}{4}\Big(Var[X_1] + Var[X_2] + 2Co
 
 With that result, if $X_1$ and $X_2$ are negatively correlated, the variance of this quantity is lower than the variance of the random variables singlely taken.
 
-Now, how can two runs of the same simulation model be negatively correlated? The trick is the following: let differenciate between the odd runs and the even one in the model. The odd runs
+Now, how can two runs of the same simulation model be negatively correlated? The trick is the following: let differenciate between the odd runs and the even ones in the model. Let see the value of the odd runs as a function $h()$ of the set $U_1, \dots, U_m$ of random numbers used in the simulation, that is, the output of the random generator in the simulation.
 
+Indeed, in our simulation models if we give the same sequence of random number, we get the same output. For this reason the simulation model can be seen as a function of a set of random numbers.
+
+Instead of simulate the even runs, we take our random numbers and compute their complements. 
 
 
 
