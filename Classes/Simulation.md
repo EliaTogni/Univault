@@ -2032,7 +2032,7 @@ What if they are not independet but, for example, negatively correlated? We can 
 
 $$Var\Bigg[\frac{X_1 + X_2}{2}\Bigg] = \frac{1}{4}\Big(Var[X_1] + Var[X_2] + 2Cov[X_1, X_2]\Big)$$
 
-slide 8/15 ultima parte.
+
 
 If $X_1$ and $X_2$ are negatively correlated, the variance would be smaller.
 
