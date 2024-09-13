@@ -2065,7 +2065,33 @@ We can generate a Bernoulli random variable of parameter $p$.
 	\end{algorithm}
 ```
 
-This is, obviously, a monotone function. The higher the value of $u$, the higher the value returned by the generator.
+This is, obviously, a monotone function. The higher the value of $u$, the higher the value returned by the Bernoulli random variable.
+
+Let's observe an example. Imagine to want to simulate the network in the image below.
+
+==immagine 1h
+
+This is a network of links which are subject to failure and we ask ourselves some questions about the robustness of this network. For instance, we send one packet into the network and we ask ourselves: "will we get it on the other side or not?" So, the failures will be associated to each links and each link will be associated to a probability.
+
+For instance, we may wish to measure the number of paths from some point $a$ to some point $b$. This is a discrete random variable. What is the shape of this random variable? It has no particular shape so how can we simulate it?
+
+```python
+def simulate_net(p1, p2, p3, p4, p5, p6, p7)
+	s1 = bernoulli(p1)
+	s2 = bernoulli(p2)
+	s3 = bernoulli(p3)
+	s4 = bernoulli(p4)
+	s5 = bernoulli(p5)
+	s6 = bernoulli(p6)
+	s7 = bernoulli(p7)
+	
+	if s1*s2*s4*s5 == 1:
+		return 2 + s6*s7, s6*s7
+	elif max(s1*s4, s2*s5, s1*s3*s5, s2*s3*s4) == 1:
+		return 1 + s6*s7, s6*s7
+	else:
+		return 0 + + s6*s7, s6*s7
+```
 
 -----
 
