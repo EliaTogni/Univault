@@ -2020,16 +2020,11 @@ In the image below, it is possible to observe an example of probability density 
 
 We have no guarantee that this distribution is a normal one. Now, if we want to have an estimate with confidence, for example, $95\%$, which would be the region containing this percentage? We cut of the tails for $5\%$ and the two $\theta$ will be the limits of the range.
 
-==aggiungere sto pezzo dalle slide
-Instead of giving a single (mean) value as estimate, it is more useful to provide a range in which we are confident the parameter value to be.
-If the observer values of the sample mean and the sample standard deviation are $\overline{X} = x$ and $S = s$, call the interval $\overline{x} \pm z_\alpha / 2^s \sqrt{n}$ an (approximate) $100(1 - \alpha)$ percent **confidence interval estimate** of $\theta$. ==
-
 -----
 ## Variance Reduction
-In order to have a low number of iterations, is it better to have an high variance or a low one? Obviously the low one. The lower the variance, the sooner we get to the stopping condition
-High variance means low confidence about the values produced.
+In order to have a low number of iterations, is it better to have an high variance or a low one? Obviously the low one. The lower the variance, the sooner we get to the stopping condition, as it was in interval estimates. This also implies that high variance means low confidence about the values produced. We also want to keep the randomness of the model.
 
-We also want to keep the randomness of the model. Can we do it?
+The core idea is to reduce the variance without trouch
 
 ### Antithetic variables
 Say you have 2 identical and independent distributed random variables with expected value $\theta$. We repeat $n$ observation of $X_1$ ..
