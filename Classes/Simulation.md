@@ -2004,17 +2004,19 @@ $$MSE = \sum_{i = 1}^{m}\frac{\Big( \bar{\theta_i} - \bar{\theta}\Big)^2}{m}$$
 
 Now, from an algorithmic point of view, we are able to use $\bar{\theta}$ as if it was the sample mean and, then, we use MSE as if it was the variance. The algorithm remains the same.
 
-This is supported by theory. By the Glivenko-Cantelli theorem that states that 
+All of this process is supported by theory. By the Glivenko-Cantelli theorem that states that 
 
-$$\lim_{n \to + \infty}F_e(X) \rightarrow F(x)$$
+$$\lim_{n \to + \infty}F_e(x) \rightarrow F(x) \space \text{ uniformly in } x$$
 
-Since we are not doing an infinite number of steps, we need to compare samples of the same size.
+Since we are not doing an infinite number of steps, we need to compare samples of the same size. Because in computing estimates, we need to compute an initial estimate (the first result of $g()$) and other reference estimates (the other results of $g()$) out of sample of the same size to have a comparable precision.
+
+So, if we revise the data generation stopping criterion, that is, we want to estimate a parameter $\theta$ up to an acceptable value $d$ of precision with certain confidence, we do the same steps: we replace the estimate ==not as the sample mean== but with our estimator and replace our sample variance with mean square error computation obtained by means of bootstrapping.
 
 What about the interval estimates?
+We try to figure out for a target confidence which was the range of values having the probability of containing
 
-...
 
-Pick the theta n values and build a distribution of $\bar{\theta}$.
+Pick the $\overline{\theta}_n$ values and build a distribution of $\bar{\theta}$.
 
 immagine gaussiana 95% 
 
