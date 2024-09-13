@@ -2038,13 +2038,13 @@ Now, how can two runs of the same simulation model be negatively correlated? The
 
 Indeed, in our simulation models if we give the same sequence of random number, we get the same output. For this reason the simulation model can be seen as a function of a set of random numbers.
 
-Instead of simulate the even runs, we take our random numbers and compute their complements. 
+Instead of simulate the even runs, we take our random numbers and compute their complements (e.g., $1 - U_1, \dots 1- U_m$).
 
+When $h$ is a monotone function of these random numbers, $X_1$ and $X_2$ are negatively correlated. Monotone means that the higher the random numbers, the higher the value of $X_1$ for instance.
 
+When the model satisfies this condition, we actually get a lower value for the variance.
 
-Esempio bernoulli
-
-Esempio network robusta
+How realistic is to make this assumption? When $h()$ is a monotone function? This is qualitative, there is no strict rule. The important point here is 
 
 -----
 
