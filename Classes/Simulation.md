@@ -2013,7 +2013,8 @@ Since we are not doing an infinite number of steps, we need to compare samples o
 So, if we revise the data generation stopping criterion, that is, we want to estimate a parameter $\theta$ up to an acceptable value $d$ of precision with certain confidence, we do the same steps: we replace the estimate ==not as the sample mean== but with our estimator and replace our sample variance with mean square error computation obtained by means of bootstrapping.
 
 What about the interval estimates?
-We try to figure out for a target confidence which was the range of values having the probability of containing
+We try to figure out for a target confidence which was the range of values having the probability of containing the real value of our parameter. Since we know we are measuring the expected value
+... sample variance, we have this result. Since we are doing a different estimate, this result does not hold anymore.
 
 
 Pick the $\overline{\theta}_n$ values and build a distribution of $\bar{\theta}$.
