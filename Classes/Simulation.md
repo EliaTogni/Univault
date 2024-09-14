@@ -1125,7 +1125,7 @@ $$X = X_A + X_B$$
 
 we claim that $X_A$ (and $X_B$) are Poisson random variables, where
 
-$$X_A \text{ is a Poisson Random Variable of parameter } \lambda_A \space(\text{such that }\lambda_A =\lambda \cdot p_A)$$
+$$X_A \text{ is a Poisson random variable of parameter } \lambda_A \space(\text{such that }\lambda_A =\lambda \cdot p_A)$$
 $$X_B \text{ is a Poisson Random Variable of parameter } \lambda_B \space(\text{such that }\lambda_B =\lambda \cdot p_B)$$
 
 In fact, $\lambda = \lambda_A + \lambda_B = \lambda \cdot p_A + \lambda \cdot p_B = \lambda \cdot (p_A + p_B) = \lambda \cdot 1 = \lambda$.<br />
