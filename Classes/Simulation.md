@@ -971,10 +971,10 @@ In the case that $p_1 = p_2 = \dots = p_n$, it would be a random variable define
 
 $$X = \cases{x_1 \space \text{ with } p = \frac{1}{n} \cr \cr x_2 \space \text{ with } p = \frac{1}{n} \cr \cr \vdots \cr \cr x_n \space \text{ with } p = \frac{1}{n}}$$
 
-This is called a Uniform Discrete random variable.<br />
-A general method for generating valid values for these customs discrete Random Variables was already explored in the previous chapter, the Inverse Transform method, which refers to the inverse of the cumulative distribution function. Basing on this technique, are we able to create an algorithm for producing a value for a uniform Random Variable?
+This is called a **uniform discrete random variable**.<br />
+A general method for generating valid values for these customs discrete random variables was already explored in the previous chapter, the Inverse Transform method, which refers to the inverse of the cumulative distribution function. Basing on this technique, are we able to create an algorithm for producing a value for a uniform random variable?
 
-A valid algorithm for producing values for a Uniform Discrete Random Variable is the following:
+A valid algorithm for producing values for a uniform discrete random variable is the following:
 
 ```python
 def UniformDRV1(n):
