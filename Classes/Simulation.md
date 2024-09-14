@@ -2126,8 +2126,13 @@ $$\mathbb{E}[X \vert Y] = \sum_{i = 1}^{m} \mathbb{E}[X \vert Y_i] \cdot p_i$$
 
 Algorithmically speaking, we can run the simulation model, measure both $X$ and $Y$ and have one pair for each run.
 
-immgine 1h27
+==immagine 1h27
 
-Then, we cluster on the $Y$ and compute each expected value. In this instance, we will compute the expected value of $x$ in which $y$ took value $1$, the expected value of $x$ in which $y$ took value $2$
+Then, we cluster on the $Y$ and compute each expected value. In this instance, we will compute the expected value of $x$ in which $y$ took value $1$, the expected value of $x$ in which $y$ took value $2$ and so on. We estimate the probabilities basing on their frequencies and then we compute.
+$\mathbb{E}[X \vert Y_i]$ are the clusters average values and $p_i$ are the estimates.
+
+Theory is telling us that the conditional expected value is also an unbiased estimator of $\theta$ and what we get is the variance which will not be greater than that of $X$.
+
+If we already know the probability of $Y$ to take specific values, this approach gives us an advantage
 
 -----
