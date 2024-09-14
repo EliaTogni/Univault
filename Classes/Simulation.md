@@ -2093,7 +2093,12 @@ def simulate_net(p1, p2, p3, p4, p5)
 
 Is it true that this simulation function is monotone in the random values that we draw? It is not so trivial but we can check: the Bernoulli random variables are monotone. Therefore, the higher their value, the higher $s_1*s_2*s_4*s_5$ and, consequently, the higher the output. Hence, it is monotone.
 
-What is the limit of this approach? Was it really for free? (in the sense that if the function isn't monotone, we have literally no drawbacks)
+What is the limit of this approach? Was it really for free (in the sense that if the function isn't monotone, we have literally no drawbacks)? 
+
+Firstly, how can we split between the one random variable and its antithetic?<br />
+Secondly, if we have a large number of random numbers in our run, if one random number is higher and one is lower, we cannot observe this behavior.
+
+
 
 -----
 
