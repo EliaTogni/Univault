@@ -2122,4 +2122,12 @@ How can we implement this method? The only thing that we need is to be able to r
 ### Variance Reduction by Conditioning
 The idea is similar to the reduction by control variate. We still take two outputs: $X$, the actual output of the simulation model, and $Y$, which is another random variable we can read from the model. Instead of computing $\mathbb{E}[X]$, we move to the conditional expectation of $X$ with respect to $Y$, $\mathbb{E}[X \vert Y]$.
 
+$$\mathbb{E}[X \vert Y] = \sum_{i = 1}^{m} \mathbb{E}[X \vert Y_i] \cdot p_i$$
+
+Algorithmically speaking, we can run the simulation model, measure both $X$ and $Y$ and have one pair for each run.
+
+immgine 1h27
+
+Then, we cluster on the $Y$ and compute each expected value. In this instance, we will compute the expected value of $x$ in which $y$ took value $1$, the expected value of $x$ in which $y$ took value $2$
+
 -----
