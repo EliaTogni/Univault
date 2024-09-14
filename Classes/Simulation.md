@@ -2109,7 +2109,10 @@ Let's look at the expected value of $Z$: is the expected value of all the right 
 
 Furthermore, we can also prove that the variance of $Z$ is not greater than that of $X$ (and possibly it is lower) depending on the choice of $c$.
 
-$$Var[Z] = Var$$
+$$Var[Z] = Var[X + c \cdot (Y - \mu)]$$
+$$Var[X + cY]$$
+$$Var[X] + c62Var[Y] + 2cCov[X, Y]$$
+$$$$
 
 -----
 
