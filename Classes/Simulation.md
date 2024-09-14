@@ -997,7 +997,7 @@ def UniformDRV2(n):
 	return math.ceil(n * r)
 ```
 
-Now considering the second specific case, that is, the case in which $n = 2$, it is possible to write an algorithm that generates observations for this Random Variable in the following way: 
+Now considering the second specific case, that is, the case in which $n = 2$, it is possible to write an algorithm that generates observations for this random variable in the following way: 
 
 ```python
 def binaryDRV(p)
@@ -1018,7 +1018,7 @@ Let's evaluate if the probability of each permutation to appear is the same.
 
 $$P[\text{Each permutation to be the same}] = \bar{p}$$
 
-Let's observe it in a different way. Let's check for the last position what is the probability of containing each element. What the algorithm does is to choose at random one of the $n$ position and swap, therefore only one condition has to be satistisfied, that is, the choice must be made uniformly. In other words, the choice is read as the output of a uniform discrete Random Variable:
+Let's observe it in a different way. Let's check for the last position what is the probability of containing each element. What the algorithm does is to choose at random one of the $n$ position and swap, therefore only one condition has to be satistisfied, that is, the choice must be made uniformly. In other words, the choice is read as the output of a uniform discrete random variable:
 
 $$P[\text{ The element } i \text{ in position } n] = \bar{q} = \frac{1}{n}$$
 $$P[ i \text{ in position } n] = \frac{1}{n} \quad \forall i = 1, \dots, n$$
@@ -1043,7 +1043,7 @@ def RandomPerm(v : list):
 -------------------------------------------------------------
 
 ##### Bernoulli Random Variable
-A **Bernoulli Random Variable** models a single trial that can be succesful or not. The probability of success of the trial is known.
+A **Bernoulli random variable** models a single trial that can be succesful or not. The probability of success of the trial is known.
 
 Expected Value $\mathbb{E}[X] = 1 \cdot p + 0 \cdot (1 - p) = p$.<br />
 Variance $Var[X]= \mathbb{E}[(X - \mu)^2] = (1 - p)^2 p + (0 - p)^2 (1 - p) = p(1 - p) (1 - p + p)$ $= p ( 1 - p )$.
@@ -1051,10 +1051,10 @@ Variance $Var[X]= \mathbb{E}[(X - \mu)^2] = (1 - p)^2 p + (0 - p)^2 (1 - p) = p(
 -------------------------------------------------------------
 
 ##### Binomial Random Variable
-A **Binomial Random Variable** models $n$ trials in which each trial is described as a Bernoulli Random Variable. The goal is to count the number of successful trials.
+A **Binomial random variable** models $n$ trials in which each trial is described as a Bernoulli random variable. The goal is to count the number of successful trials.
 
-How to generate a valid value for a Binomial Random Variable?<br />
-One way is by simulation, that is, simulating $n$ Bernoullli Random Variables all with equal probability of success $p$ and independent one another. Another option considers the use of the native algorithm for the Inverse Transform method.
+How to generate a valid value for a Binomial random variable?<br />
+One way is by simulation, that is, simulating $n$ Bernoullli random variables all with equal probability of success $p$ and independent one another. Another option considers the use of the native algorithm for the Inverse Transform method.
 
 Consider the following example.<br />
 Alice and Bob play a dice game. It consists in rolling a single dice exactly $10$ times. Alice wins if she gets $5$ times the value $1$. What is her probability of winning? To compute the answer, the following formula will be used.
@@ -1065,7 +1065,7 @@ However, the calculation of the probability for large values of $n$ and, in part
 
 $$P[X = i] = \binom{n}{i} p^i (1 - p)^{n - i} = \frac{n!}{i! (n - i)!} p^i(1 - p)^{n - i}$$
 
-Let's start looking at the probability of the Random Variable to assume value $i+1$ and writing it in a way that resembles the previous equation:
+Let's start looking at the probability of the random variable to assume value $i+1$ and writing it in a way that resembles the previous equation:
 
 $$P[X = i + 1] = \frac{n!}{(i + 1)!(n  - i - 1)!} p^{i + 1}(1 - p)^{n - i - 1}$$
 
@@ -1083,16 +1083,16 @@ $$P[X = i + 1] = P[X = i] \cdot \frac{p}{1-p} \cdot \frac{n-i}{i +1}$$
 
 Noting that $\frac{p}{1-p}$ is a constant and, therefore, it is possible to refers to it as $c$, the only thing that must be computed each iteration is $\frac{n-i}{i + 1}$ and, obviously, the final product.
 
-Expected value $\mathbb{E}[X] = np$ ($n$ indipendent trials of a Bernoulli Random Variable, that is, $n$ times the expected value of a Bernoulli Random Variable).<br />
+Expected value $\mathbb{E}[X] = np$ ($n$ indipendent trials of a Bernoulli random variable, that is, $n$ times the expected value of a Bernoulli random variable).<br />
 Variance $Var[X] = \sum_{i = 1}^{n}Var[X_i] = np (1 - p)$ (since each $X_i$ is independent).
 
 -----
 ##### Poisson Random Variable
-There exists a significant similarity between **Poisson Random Variables** and Binomial Random Variables. The only difference is that in the Binomial ones, $n$ is a reasonable number while in the Poisson one, $n$ is a huge number.
+There exists a significant similarity between **Poisson random variables** and Binomial random variables. The only difference is that in the Binomial ones, $n$ is a reasonable number while in the Poisson one, $n$ is a huge number.
 
 The term $\lambda = n \cdot p$ is called **rate**. The choice of utilizing only one parameter derived from the product of other two is due to the fact that $p$ tends to be a really small number while $n$ tends to be a really large one. Therefore, $\lambda$ tends to be a good compromise between the other two.
 
-It is intuitive, given the relationship between Binomial and Poisson Random Variables, that for a Poisson Random Variable $X$ having parameter $\lambda$, it holds that
+It is intuitive, given the relationship between Binomial and Poisson random variables, that for a Poisson random variable $X$ having parameter $\lambda$, it holds that
 
 $$\mathbb{E}[X] = Var[X] = \lambda$$
 
@@ -1119,11 +1119,11 @@ Hence, for $n$ large and $p$ small, it holds that
 
 $$P[X = i] \approx e^{-\lambda}\frac{\lambda^i}{i!}$$
 
-Another interesting result about Poisson Random Variables is that they are **invariant** to aggregation (and to disaggregation). Let's consider a Poisson Random Variable $X$ of parameter $\lambda$ that is counting the number of successes over a large number of trials. Let's assume that the type of these successful events may not be unique. Is it correct to model the readings of this numbers as the reading of a Poisson Random Variable? Let's recall the example of the pharmacy and assume that is desired to measure the number of male and female customers. Knowing that the total number of customers entering in the pharmacy can be modelled as a Poisson Random Variable, it is possible to demonstrate that also the number of male customers and of female customers entering in the pharmacy can be modelled as Poisson Random Variables too. Starting from
+Another interesting result about Poisson random variables is that they are **invariant** to aggregation (and to disaggregation). Let's consider a Poisson random variable $X$ of parameter $\lambda$ that is counting the number of successes over a large number of trials. Let's assume that the type of these successful events may not be unique. Is it correct to model the readings of this numbers as the reading of a Poisson random variable? Let's recall the example of the pharmacy and assume that is desired to measure the number of male and female customers. Knowing that the total number of customers entering in the pharmacy can be modelled as a Poisson random variable, it is possible to demonstrate that also the number of male customers and of female customers entering in the pharmacy can be modelled as Poisson random variables too. Starting from
 
 $$X = X_A + X_B$$
 
-we claim that $X_A$ (and $X_B$) are Poisson Random Variables, where
+we claim that $X_A$ (and $X_B$) are Poisson random variables, where
 
 $$X_A \text{ is a Poisson Random Variable of parameter } \lambda_A \space(\text{such that }\lambda_A =\lambda \cdot p_A)$$
 $$X_B \text{ is a Poisson Random Variable of parameter } \lambda_B \space(\text{such that }\lambda_B =\lambda \cdot p_B)$$
