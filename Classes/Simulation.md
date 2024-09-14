@@ -1126,7 +1126,7 @@ $$X = X_A + X_B$$
 we claim that $X_A$ (and $X_B$) are Poisson random variables, where
 
 $$X_A \text{ is a Poisson random variable of parameter } \lambda_A \space(\text{such that }\lambda_A =\lambda \cdot p_A)$$
-$$X_B \text{ is a Poisson Random Variable of parameter } \lambda_B \space(\text{such that }\lambda_B =\lambda \cdot p_B)$$
+$$X_B \text{ is a Poisson random variable of parameter } \lambda_B \space(\text{such that }\lambda_B =\lambda \cdot p_B)$$
 
 In fact, $\lambda = \lambda_A + \lambda_B = \lambda \cdot p_A + \lambda \cdot p_B = \lambda \cdot (p_A + p_B) = \lambda \cdot 1 = \lambda$.<br />
 It follows the proof of the previous theorem:
@@ -1138,7 +1138,7 @@ However, $X$ is defined as $X = X_A + X_B$ and, therefore, $P[X_A = n, X_B = m \
 
 $$P\Big[X_A = n, X_B = m\Big] = P\Big[X_A = n, X_B = m \vert X = n + m\Big] \cdot P\Big[X = n + m\Big] + 0$$
 
-This is the setting of a Binomial Random Variable and, therefore, its probability can be written as
+This is the setting of a Binomial random variable and, therefore, its probability can be written as
 
 $$ P[X_A = n, X_B = m \vert X = n + m] = \binom{n + m}{n}p_A^{n}(1- p_A)^{n + m - n}$$
 $$P[X = n + m] = e^{-\lambda} \frac{\lambda^{n+ m}}{(n + m)!}$$
@@ -1158,16 +1158,16 @@ Therefore, recalling that we started from $P[X_A = n, X_B = m]$, we are interest
 $$P[X_A = n] = \sum_{m = 0}^{\infty} P[X_A = n, X_B = m] =$$
 $$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!} \sum_{m = 0}^{\infty} e^{-\tilde{\lambda}} \frac{(\tilde{\lambda})^m}{m!}$$
 
-And this is the expression of a general probability for a Poisson Random Variable of parameter $\tilde{\lambda} = \lambda (1 - p_A)$.
+And this is the expression of a general probability for a Poisson random variable of parameter $\tilde{\lambda} = \lambda (1 - p_A)$.
 
 $$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!} \underbracket{\sum_{m = 0}^{\infty} e^{-\tilde{\lambda}} \frac{(\tilde{\lambda})^m}{m!}}_1 = $$
 $$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!}\quad \text{ with } \lambda_A = \lambda \cdot p_A$$
 
-The following is a Random generation algorithm for a Poisson Random Variable.<br />
+The following is a Random generation algorithm for a Poisson random variable.<br />
 
 ```pseudo
 	\begin{algorithm}
-	\caption{Random Generation Algorithm for a Poisson Random Variable}
+	\caption{Random Generation Algorithm for a Poisson random variable}
 	\begin{algorithmic}
 		\State Generate $X$ 
 		\State $r$ = random() $\space$   //$[0, 1)$
@@ -1199,7 +1199,7 @@ which is easily obtained by noting that in order for the first success to occur 
 Expected value $\mathbb{E}[X] = \sum_{n = 1}^{\infty} np(1 - P)^{n-1} = \frac{1}{p}$.<br />
 Variance $Var[X] = \frac{1 - p}{p^2}$.
 
-How to generate algorithmically geometric Random Variables? The first possible approach consists in simulating the repetition of a Bernoulli experiment. Another possible one is using, again, the inverse cumulative distribution function approach and the Native Algorithm..<br />
+How to generate algorithmically geometric random variables? The first possible approach consists in simulating the repetition of a Bernoulli experiment. Another possible one is using, again, the inverse cumulative distribution function approach and the Native Algorithm..<br />
 Since $P[X = i] = (1 - p)^{i - 1} \cdot p$, we can pass $p$ instead of $X$ to the algorithm
 
 ```pseudo
@@ -1245,14 +1245,14 @@ Let $X$ denote the number of trials needed to obtain $r$ successes when each tri
 
 $P[X = i]$
 
-The last iteration is the $r$-th success. On the previous iteration ($i-1$ iteration) we got $r-1$ successes. The probability of getting this configuration is defined by a binomial Random Variable:
+The last iteration is the $r$-th success. On the previous iteration ($i-1$ iteration) we got $r-1$ successes. The probability of getting this configuration is defined by a binomial random variable:
 
 $$\binom{i - 1}{r -1} p^{r-1}(1-p)^{i-1 -(r-1)}$$
 
 
 Therefore, $P[X = i] = \binom{i - 1}{r -1} p^{r-1}(1-p)^{i-r} \cdot p = \binom{i - 1}{r -1} p^{r}(1-p)^{i-r}$
 
-To compute the expected value, we can consider this Random Variable as $r$ observation of a geometric Random Variable:
+To compute the expected value, we can consider this random variable as $r$ observation of a geometric random variable:
 
 $$X = \sum_{k = 1}^{r}X_k$$
 
@@ -1274,16 +1274,16 @@ To summarize it
 -------------------------------------------------------------
 
 ### Continuous Random Variables
-Continuous Random Variables have one big advantage over the discrete ones, which is their visual representation.
+Continuous random variables have one big advantage over the discrete ones, which is their visual representation.
 
-Differently from its discrete counterpart, it makes very little sense to ask what is the probability for a continuous Random Variable to take a specific value (because it is a single point in a continuous domain). It makes more sense to look at how these probabilities are distributed in certain ranges and to represent these distributions as functions.
+Differently from its discrete counterpart, it makes very little sense to ask what is the probability for a continuous random variable to take a specific value (because it is a single point in a continuous domain). It makes more sense to look at how these probabilities are distributed in certain ranges and to represent these distributions as functions.
 
 Each of the techniques for generating a discrete random variable has its analogue in the
-continuous case. The way to generate continuous Random Variables is the continuous counterpart of the Inverse Transform Method.
+continuous case. The way to generate continuous random variables is the continuous counterpart of the Inverse Transform Method.
 #### Uniformly Distribute Continuous Random Variable 
 The probability distribution describing the possible outcome is constant over a certain range. That is why it is called uniform.
 
-This range is defined by two parameters, $a$ and $b$, that is, the lowest and the highest possible value that the Random Variable can take. Therefore, the probability of getting a reading of the Random Variable lower than $a$ or greater than $b$ is $0$.
+This range is defined by two parameters, $a$ and $b$, that is, the lowest and the highest possible value that the random variable can take. Therefore, the probability of getting a reading of the random variable lower than $a$ or greater than $b$ is $0$.
 
 $$f(x) = \cases{ \frac{1}{b-a} \text{ if } a \leq x \leq b \cr \cr 0 \text{ otherwise}}$$
 
@@ -1295,7 +1295,7 @@ $$F(x) = \frac{x-a}{b-a}$$
 
 The area under the line in the first graph above must obviously be equal to $1$.
 
-The point of modeling with continuous Random Variables is that the geometric representation of these function ($f(x)$ and $F(x)$) help in modeling. Having in mind what these functions look like in terms of graph is really useful.
+The point of modeling with continuous random variables is that the geometric representation of these function ($f(x)$ and $F(x)$) help in modeling. Having in mind what these functions look like in terms of graph is really useful.
 
 Let's analyze the algorithmic part.
 
@@ -1303,7 +1303,7 @@ We can exploit the idea of the Inverse Transform Method and apply it in a simila
 
 ![[InverseCDFUniformlyDistributeContinuousRV.png]]
 
-For simulating a reading of a uniform continuous Random Variable it is enough to apply this algorithm: we pick a domain in the range from $0$ to $1$ (because we are chosing a probability) and we read the corresponding value on the $y$ axis.
+For simulating a reading of a uniform continuous random variable it is enough to apply this algorithm: we pick a domain in the range from $0$ to $1$ (because we are chosing a probability) and we read the corresponding value on the $y$ axis.
 
 $$F^{-1}(u) =a + (b-a) \cdot u $$
 
@@ -1319,7 +1319,7 @@ $$F^{-1}(u) =a + (b-a) \cdot u $$
 	\end{algorithm}
 ```
 
-We can prove the following strong result about this method: let $U$ be a uniform Random Variable in range $(0, 1)$. We can state that for any continuous cumulative distribution function $F()$ (and, therefore, for any Random Variable, because every one of them has a cumulative distribution function), the Random Variable $X = F^{-1}(U)$ has distribution cumulative function $F()$. That is, the native algorithm using the Inverse Transform concept is correct for each target Random Variable.
+We can prove the following strong result about this method: let $U$ be a uniform random variable in range $(0, 1)$. We can state that for any continuous cumulative distribution function $F()$ (and, therefore, for any random variable, because every one of them has a cumulative distribution function), the random variable $X = F^{-1}(U)$ has distribution cumulative function $F()$. That is, the native algorithm using the Inverse Transform concept is correct for each target random variable.
 
 The second point of discussion that will open for other algorithmic techniques is asking ourselves if this algorithm is really always applicable. While in the discrete case, any cumulative distribution function is invertible, in the continuous it depends.
 
@@ -1339,7 +1339,7 @@ $$P[U \leq F(x)] = F_X(x) = F(x)$$
 -------------------------------------------------------------
 
 #### Exponential Random Variable
-Suppose to have a continuous Random Variable having probability density function
+Suppose to have a continuous random variable having probability density function
 
 $$f(x) = \lambda \cdot e^{-\lambda x}, \quad 0 < x < \infty$$
 
@@ -1352,13 +1352,13 @@ Variance $Var[X] = \frac{1}{\lambda^2}$
 
 $\lambda$ is the value expected from a phenomenon that assumes low values with much higher probability than high values. Hence, the probability of this phenomenon decreases exponentially
 
-The cumulative distribution function of an exponential Random Variable is given by
+The cumulative distribution function of an exponential random variable is given by
 
 $$f(x) = \int_{0}^{x}{\lambda e^{-\lambda x}dx} = 1 - e^{-\lambda x}, \quad 0 < x < \infty$$
 
 ![[ExponentialRandomVariable.png]]
 
-This Random Variable is very useful to model the lifetime of an object or, in general, breakdowns of machines. This is due to the **Memoryless property**, that is, the probability $P[X > s + t | X > s] = P[X > t]$, where $s + t$ are constants. To understand why the above is called the memoryless property, imagine that X represents the lifetime of some unit, and consider the probability that a unit of age $s$ will survive an additional time $t$. This property is telling that the probability that a machine breaks down after, for example, $15$ minutes knowing that no breakdown occurred for the first $10$ minutes equals the probability that the machine will break down in $5$ minutes.
+This random variable is very useful to model the lifetime of an object or, in general, breakdowns of machines. This is due to the **Memoryless property**, that is, the probability $P[X > s + t | X > s] = P[X > t]$, where $s + t$ are constants. To understand why the above is called the memoryless property, imagine that X represents the lifetime of some unit, and consider the probability that a unit of age $s$ will survive an additional time $t$. This property is telling that the probability that a machine breaks down after, for example, $15$ minutes knowing that no breakdown occurred for the first $10$ minutes equals the probability that the machine will break down in $5$ minutes.
 
 Proof:
 
@@ -1383,33 +1383,33 @@ Let's see if the cumulative distribution function of the Exponential fits this c
 $$\underbrace{1 - F_X(s + t)}_{1 - (1 - e^{-\lambda x})} = [1 - F(t)] [1 - F(s)] = $$
 $$e^{- \lambda (s + t)} = e^{-\lambda t} e ^{- \lambda s}$$
 
-Now, let's look at it in reverse: which are the cumulative distribution functions that, once plugged in in this definition, satisfy this equality? In other terms, which are the other Random Variables
-The Exponential Random Variable are the only ones having this memoryless property since the product of two exponentials is the exponential of the sum. Whenever we have this fenomenon like an independent arrival or anything else, then the lenght of this observation must be an Exponential Random Variable.
+Now, let's look at it in reverse: which are the cumulative distribution functions that, once plugged in in this definition, satisfy this equality? In other terms, which are the other random variables
+The exponential random variable are the only ones having this memoryless property since the product of two exponentials is the exponential of the sum. Whenever we have this fenomenon like an independent arrival or anything else, then the lenght of this observation must be an exponential random variable.
 
-Another useful property of Exponential Random Variables is that they remain exponential
+Another useful property of exponential random variables is that they remain exponential
 when multiplied by a positive constant.
 
-**Claim**: let $X$ be am Exponential Random Variable of parameter $\lambda$, then $c \cdot X$ is an exponential Random Variable of parameter $\frac{\lambda}{c}$.
+**Claim**: let $X$ be am exponential random variable of parameter $\lambda$, then $c \cdot X$ is an exponential random variable of parameter $\frac{\lambda}{c}$.
 
 Proof: 
 
 $$P[y \leq x] = P[c\cdot X \leq x] = P[X \leq \frac{x}{c}] = 1 - e^{- \lambda \cdot \frac{x}{c}} = 1 - e^{- \frac{\lambda}{c} \cdot x}$$
 
-Now, another useful property of Exponential Random Variables.<br />
-Let $X_1, \dots, X_n$ be a set of independent Exponential Random Variables of rate $\lambda_i$ for $i = 1, \dots, n$. Then, the minimum $\min\{X_1, \dots, X_n\}$ is, again, an Exponential Random Variable with rate $\sum_{i = 1}^{n} \lambda_i$, independently on which $X_i$ is the smallest.
+Now, another useful property of exponential random variables.<br />
+Let $X_1, \dots, X_n$ be a set of independent exponential random variables of rate $\lambda_i$ for $i = 1, \dots, n$. Then, the minimum $\min\{X_1, \dots, X_n\}$ is, again, an exponential random variable with rate $\sum_{i = 1}^{n} \lambda_i$, independently on which $X_i$ is the smallest.
 
 Proof:<br />
 Let $M$ to be the minimum $\min\{X_1, \dots, X_n\}$. Let 
 
 $$Y_j = \cases{1 \quad \text{ if } X_j \text{ is minimum} \cr \cr 0 \quad \text{ otherwise}}$$
 
-Firstly, consider $P[Y_j \vert M > t] = P[X_j - t = \min\{X_i - t\} \vert M > t]$. This is equal to $P[X_j - t = \min_i\{X_i - t \vert X_i > t \space \forall i \}]$. Now, $X_j$ is an Exponential Random Variable so we know it to have the memoryless property. Hence, $X_i - t$  does not depend on $t$. In other terms, the distribution of $X_j - t$ is again an Exponential one, with rate $\lambda_j$. We can remove $t$ from the equality: $P[X_j = \min_i\{X_i - t\}] = P[Y_j]$.
+Firstly, consider $P[Y_j \vert M > t] = P[X_j - t = \min\{X_i - t\} \vert M > t]$. This is equal to $P[X_j - t = \min_i\{X_i - t \vert X_i > t \space \forall i \}]$. Now, $X_j$ is an exponential random variable so we know it to have the memoryless property. Hence, $X_i - t$  does not depend on $t$. In other terms, the distribution of $X_j - t$ is again an exponential one, with rate $\lambda_j$. We can remove $t$ from the equality: $P[X_j = \min_i\{X_i - t\}] = P[Y_j]$.
 
 As second step, let's look at $P[M > t] = P[X_i > t \space \forall i] = \prod_i[X_i > t] = \prod_i (1 - F(t))$. This is equal to $\prod_i e^{-\lambda_i t} = e^{-(\sum_i \lambda_i) t}$. 
 
 Claim: The probability of $X_j$ being the smallest is $P[X_j = M] = \frac{\lambda_j}{\sum_i \lambda_i}$. Taking as an example the pharmacy exercise, the probability of the next customer to wear a red hat is the ratio between the rate of red hats and the sum of the rates of all the hats. Therefore, the probability of the next event of being of a particular type is proportional to the rate of that particular type.
 
-How to generate an Exponential Random Variable of parameter $\lambda$? A first approach is again the Inverse Transform method. it is known that $F(x) = 1 - e^{-\lambda x}$, so the inverse of this function must be computed:
+How to generate an exponential random variable of parameter $\lambda$? A first approach is again the Inverse Transform method. it is known that $F(x) = 1 - e^{-\lambda x}$, so the inverse of this function must be computed:
 
 $$u = 1 - e^{-\lambda x}$$
 $$1 - u = e^{-\lambda x}$$
@@ -1431,7 +1431,7 @@ $$x = - \frac{\log(1 - u)}{\lambda}$$
 -----
 
 #### Normal Random Variable
-This Random Variable is famous for the shape of its probability density function. In fact, its distribution resembles a bell. The normal Random Variables are parameterized by two parameters, $\mu$ and $\sigma$. $\mu$ is giving the center of the bell and $\sigma$ is giving the width of the bell. 
+This random variable is famous for the shape of its probability density function. In fact, its distribution resembles a bell. The normal random variables are parameterized by two parameters, $\mu$ and $\sigma$. $\mu$ is giving the center of the bell and $\sigma$ is giving the width of the bell. 
 
 ![[NormalRandomVariable.png]]
 
@@ -1439,9 +1439,9 @@ Its probability density function is
 
 $$f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} \cdot e^{-\frac{(x - \mu)^2}{2 \sigma^2}}$$
 
-The expected value of this Random Variable $\mathbb{E}[X] = \mu$ while its variance $Var[X] = \sigma^2$.
+The expected value of this random variable $\mathbb{E}[X] = \mu$ while its variance $Var[X] = \sigma^2$.
 
-It is possible to express the cumulative distribution function of this Random Variable in terms of its $\Phi$ function:
+It is possible to express the cumulative distribution function of this random variable in terms of its $\Phi$ function:
 
 $$F(x) = \Phi \Big( \frac{x - \mu}{\sigma^2} \Big)$$
 
@@ -1449,7 +1449,7 @@ where
 
 $$\Phi(x) = \frac{1}{\sqrt{2 \pi}} \int_0^x e^{-z^2 / 2} dz$$
 
-A kind of normalization is done In $\Phi$. In other terms, $\Phi(x)$ could be seen as the cumulative distribution function of a normal Random Variable having expected value $0$ and variance $1$.
+A kind of normalization is done In $\Phi$. In other terms, $\Phi(x)$ could be seen as the cumulative distribution function of a normal random variable having expected value $0$ and variance $1$.
 
 As for the Exponential, we have properties guiding our modeling.<br />
 First of all, the function $\Phi$ cannot be expressed using only additions, subtractions, multiplications and root extractions. Thus is necessary a numerical approximation. 
@@ -1459,18 +1459,18 @@ If $X$ is normally distributed with parameters $\mu$ and $\sigma^2$, $Z = aX + b
 Also, $\Phi$ is not an invertible function: therefore, in term of creating an algorithm for producing valid values for normal random variables, it is not possible to apply the Inverse Transform technique and it is necessary to use other algorithm design techniques.
 
 ##### Central Limit Theorem
-Let $X_1, \dots, X_n$ be a sequence of $n$ i.i.d Random Variables having finite expected value $\mu$ and variance $\sigma^2$.
+Let $X_1, \dots, X_n$ be a sequence of $n$ i.i.d random variables having finite expected value $\mu$ and variance $\sigma^2$.
 
 $$\lim_{n \to \infty} P\Bigg[\frac{\sum_{i = 1}^{n}X_i - n \cdot \mu}{\sqrt{n \sigma^2}} < x\Bigg] = \Phi(x)$$
 
-that is, the sum of a large number of independent Random Variables is a normally distributed Random Variable (indipendently on the distribution of the starting ones). In other terms, the probability of finding this sum to be different from $n$ times the expected value is not only decreasing (as in the law of large numbers) but the error we get has a particular distribution: it is always distributed as a normal Random Variable.
+that is, the sum of a large number of independent random variables is a normally distributed random variable (indipendently on the distribution of the starting ones). In other terms, the probability of finding this sum to be different from $n$ times the expected value is not only decreasing (as in the law of large numbers) but the error we get has a particular distribution: it is always distributed as a normal random variable.
 
-The limit of the Inverse Tranform method is the need for an invertible cumulative distribution function. While this condition was given in the context of Discrete Random Variables, it is not for the continuous ones.
+The limit of the Inverse Tranform method is the need for an invertible cumulative distribution function. While this condition was given in the context of discrete random variables, it is not for the continuous ones.
 
 -----
 
 ## Composition method
-The **Composition method** can be applied if a Random Variable $X$ needs to be generated with cumulative distribution function equal to $F()$, where $F()$ can be expressed as a case function such that: 
+The **Composition method** can be applied if a random variable $X$ needs to be generated with cumulative distribution function equal to $F()$, where $F()$ can be expressed as a case function such that: 
 
 $$F(x) = \sum_{i=1}^n \alpha_i \cdot F_i(x) \space \text{ with } \space \sum_{i=1}^n \alpha_i = 1$$
 
@@ -1563,11 +1563,11 @@ Say we have a random variable $X$ that needs to be generated with probability de
 
 The procedure is:
 - generate a value $y$ for $Y$ (from $g(y)$);
-- generate a value $u$ for a uniformily distributed Random Variable $U$;
+- generate a value $u$ for a uniformily distributed random variable $U$;
 - if $u \leq \frac{f(y)}{c\cdot g(y)}$, then output $X = y$;
 - otherwise iterate.
 
-This not only generates a Random Variable with probability density function $f(x)$ $\fbox{a}$, but also does that in a number of iteration that follows a geometric Ramdom Variable with expected value $c$   $\fbox{b}$.
+This not only generates a random variable with probability density function $f(x)$ $\fbox{a}$, but also does that in a number of iteration that follows a geometric Ramdom Variable with expected value $c$   $\fbox{b}$.
 
 If $X$ follows a normal distribution, then a good distribution for $Y$ is an exponential.
 
@@ -1591,9 +1591,9 @@ Remembering that $\sum_{i=0}^\infty q^n \rightarrow \frac{1}{1-q}$, we can apply
 
 $$\frac{1}{c} f(x) \sum_{i=1}^\infty (1-\frac{1}{c})^{i-1} = \frac{1}{c} f(x) \cdot c = f(x) \space \square$$
 
-### Acceptance-rejection for a normal Random Variable
+### Acceptance-rejection for a Normal Random Variable
 Remember that to generate a valid value for every normal random variable is enough to generate a valid value for a normal random variable with $\mu = 0$ and $\sigma^2 = 1$ and then simply shift and rescale.
-For half a normal random variable with $\mu = 0$ and $\sigma^2 = 1$, $f(x) = \frac{2}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}$. We then define $g(x)$ as an exponential Random Variable of parameter $\lambda = 1$, with $g(x) = e^{-x}$ and $h(x) = \frac{f(x)}{g(x)} = \frac{2}{\sqrt{2\pi}}e^{x-x^2/2}$ .
+For half a normal random variable with $\mu = 0$ and $\sigma^2 = 1$, $f(x) = \frac{2}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}$. We then define $g(x)$ as an exponential random variable of parameter $\lambda = 1$, with $g(x) = e^{-x}$ and $h(x) = \frac{f(x)}{g(x)} = \frac{2}{\sqrt{2\pi}}e^{x-x^2/2}$ .
 To find the maximum of $h(x)$, we derive it and obtain $\frac{2}{\sqrt{2\pi}} e^{x-x^2/2} (1-x)$ that is equal to $0$ in $x=1$, that is a maximum but we'll not prove it. We set $c = h(1) = \frac{2}{\sqrt{2\pi}}e^{1/2}$ since that is the maximum distance between $f$ and $g$.
 
 ![[HalfNormalAndExponential.png]]
@@ -1639,40 +1639,40 @@ a **Poisson Process** having rate $\lambda$ if:
 - $\lim_{h \to 0} \frac{P[N(h) \geq 2]}{h} = 0$ (it is unlikely that two or more events occur in small intervals).
 
 Poisson processes have many nice properties.<br />
-If a process satisfies the previous conditions, then $N(t)$ is a Poisson Random Variable with expected value $t\lambda$.
+If a process satisfies the previous conditions, then $N(t)$ is a Poisson random variable with expected value $t\lambda$.
 
 Proof:<br />
 Recall that $N(t)$ is the number of events in $[0, t]$. Let's take the slot between $0$ and $t$ and split it into $n$ slots of equal length $t/n$. Now, let's consider one of them and assume $n$ to be large enough: then we are in the case of a small interval. Therefore, $P[N(t/n) \geq 2] \to 0$ and $P[N(t/n) = 1]  \to \frac{t}{n} \cdot \lambda = p$ ==check la formula==. We made this reasoning for only one of these slots but if we look at the nuymber of events in this joint time interval, we can do the analysis independently, due to the independent increment assumption. Even more, for the stationary increment assumption, we know that the result of the analysis on each slot will be the same. Therefore, we will have $n$ copies of the first analysis.
 
 ![[NSlotsPP.png]]
 
-We want to count the number of slots containing an event. This is a Binomial Random Variable of parameter $p$. What happens to a Binomial Random Variable when $n$ is very large and $p = \frac{t}{n} \lambda$ is very small? This Random Variable becomes a Poisson one of parameter $n \cdot p = t \cdot \lambda$.
+We want to count the number of slots containing an event. This is a binomial random variable of parameter $p$. What happens to a binomial random variable when $n$ is very large and $p = \frac{t}{n} \lambda$ is very small? This random variable becomes a Poisson one of parameter $n \cdot p = t \cdot \lambda$.
 
-Furthermore, the interarrival times (the times in between one event and the next one) are i.i.d. exponential Random Variables with parameter $\lambda$.
+Furthermore, the interarrival times (the times in between one event and the next one) are i.i.d. exponential random variables with parameter $\lambda$.
 
 Proof:<br />
-Let's call $X_i$ to be the time between event #$i -1$ and event #$i$. This random quantity is the interarrival time. Indeed, the $X_i$ Random Variable, that is, the time in between two events defines time slots, which are disjoint. Since disjoint time intervals are independent, these variables also are.
-We also know that the number of events depends only on the length, so these Random Variables are independent and also identically distributed: in fact if we take intervals of the same length, we have the same probability of finding events in them. Therefore, their probability density function is the same. Now we make an assumption: $X_i$ is an exponential Random Variable.
+Let's call $X_i$ to be the time between event #$i -1$ and event #$i$. This random quantity is the interarrival time. Indeed, the $X_i$ random variable, that is, the time in between two events defines time slots, which are disjoint. Since disjoint time intervals are independent, these variables also are.
+We also know that the number of events depends only on the length, so these random variables are independent and also identically distributed: in fact if we take intervals of the same length, we have the same probability of finding events in them. Therefore, their probability density function is the same. Now we make an assumption: $X_i$ is an exponential random variable.
 
-Let's be more formal. Consider $P[X_1 > t]$, that is, the probability of the arrival time of the first event to be greater than $t$. This is equal to not finding events up to $t$: $P[N(t) = 0]$. Since $N(t)$ is a Poisson Random Variable, we know that $P[X = 0] = e^{- \lambda t} \frac{(\lambda t)^0}{0!} =e^{- \lambda t}$. This is indeed exponential. Therefore, $P[X_1 \leq t] = 1 - e^{- \lambda t}$, which is a cumulative distribution function of an exponential. Hence, the arrival time of the first event is an exponential Random Variable. Now, let's take $P[X_i > t \vert X_{i - 1} = s] = P\Big[\emptyset \text{ events in } [s, s + t] \vert X_{i - 1} = s\Big]$. Again we are in the setting of counting the number of events in a certain slot but the number of events in this slot is independent on what happened before. Hence, this is equal to $P\Big[\emptyset \text{ events in } [s, s + t]\Big] = P\Big[\emptyset \text{ events in } [0,t]\Big] = e^{- \lambda t}$, which is again exponential.
+Let's be more formal. Consider $P[X_1 > t]$, that is, the probability of the arrival time of the first event to be greater than $t$. This is equal to not finding events up to $t$: $P[N(t) = 0]$. Since $N(t)$ is a Poisson random variable, we know that $P[X = 0] = e^{- \lambda t} \frac{(\lambda t)^0}{0!} =e^{- \lambda t}$. This is indeed exponential. Therefore, $P[X_1 \leq t] = 1 - e^{- \lambda t}$, which is a cumulative distribution function of an exponential. Hence, the arrival time of the first event is an exponential random variable. Now, let's take $P[X_i > t \vert X_{i - 1} = s] = P\Big[\emptyset \text{ events in } [s, s + t] \vert X_{i - 1} = s\Big]$. Again we are in the setting of counting the number of events in a certain slot but the number of events in this slot is independent on what happened before. Hence, this is equal to $P\Big[\emptyset \text{ events in } [s, s + t]\Big] = P\Big[\emptyset \text{ events in } [0,t]\Big] = e^{- \lambda t}$, which is again exponential.
 
-Let's define a Gamma Random Variable of parameter $n$, $\lambda$ to be a continuous Random Variable having the following probability distribution function:
+Let's define a gamma random variable of parameter $n$, $\lambda$ to be a continuous random variable having the following probability distribution function:
 
 $$f(t) = \lambda e^{- \lambda t} \frac{(\lambda t)^{n -1}}{(n - 1)!}$$
 
-These Gamma Random Variables are the continuous counterparts of a specific type of discrete Random Variables: the sum of $n$ independent exponential Random Variables, each having parameter $\lambda$, is a gamma Random Variable with parameters $n$, $\lambda$. Furthermore, the time of the $n$-th event of a Poisson process having rate $\lambda$ is a gamma Random Variable with parameters $n$, $\lambda$.
+These gamma random variables are the continuous counterparts of a specific type of discrete random variables: the sum of $n$ independent exponential random variables, each having parameter $\lambda$, is a gamma random variable with parameters $n$, $\lambda$. Furthermore, the time of the $n$-th event of a Poisson process having rate $\lambda$ is a gamma random variable with parameters $n$, $\lambda$.
 
-How can we simulate a Poisson Process? A discrete event approach is generate the first interesting event, which is the first event in the process, and to generate this event we draw a value from an exponential Random Variable, which is the interarrival time.
+How can we simulate a Poisson Process? A discrete event approach is generate the first interesting event, which is the first event in the process, and to generate this event we draw a value from an exponential random variable, which is the interarrival time.
 
 There are two possible ways to simulate a Poisson Process of parameter $\lambda$ for a time horizon $T$ (==in the continuous?==):
-- we generate a value $n$ drawing it from a Poisson Random Variable of parameter $t \lambda$. That is, we draw the number of events we will see in the process up to time $T$.
+- we generate a value $n$ drawing it from a Poisson random variable of parameter $t \lambda$. That is, we draw the number of events we will see in the process up to time $T$.
 - them, we draw $n$ random numbers $u_1, \dots, u_n$ from a uniform distribution in $[0, 1]$. Since they are random, they are not properly sorted: therefore, it is necessary to sort them to have consequential arrival times;
 - we set the arrival times as $u_1 T, u_2 T, \dots u_n T$.
 
-Is it true that this algorithm is producing a valid Random Variable? What is giving the structure is only the generation of $n$.
+Is it true that this algorithm is producing a valid random variable? What is giving the structure is only the generation of $n$.
 
 Proof:<br />
-Let's define $N(t)$ to be the number of values of $\{u_1 T, u_2 T, \dots u_n T\}$, which are $\leq t$. We will pretend this $N(t)$ to be a Random Variable of unknown structure and we want to prove that $N(t)$ is actually defining a Poisson process. We define $I_1, \dots I_r$, which are $r$ disjoint intervals in the range $[0, t]$. An event is of type $k$ if $u_k T$ falls inside $I_k$ and an event is of type $r + 1$ if it falls outside of any $I_k$. Now, let $p_1, \dots, p_{r +1}$ be the probabilities of being in $I_1, \dots, I_r$ or of type $r + 1$. These probabilities, however, since we have drawn $n$ points uniformly at random, depends on the length of this $I$ and not on its position. So $p_i = \frac{\vert I_i \vert}{T}$, that is the length of the interval divided by $T$. Hence, $p_{r + 1} = 1 - \sum_{k=1}^{r}p_k$.
+Let's define $N(t)$ to be the number of values of $\{u_1 T, u_2 T, \dots u_n T\}$, which are $\leq t$. We will pretend this $N(t)$ to be a random variable of unknown structure and we want to prove that $N(t)$ is actually defining a Poisson process. We define $I_1, \dots I_r$, which are $r$ disjoint intervals in the range $[0, t]$. An event is of type $k$ if $u_k T$ falls inside $I_k$ and an event is of type $r + 1$ if it falls outside of any $I_k$. Now, let $p_1, \dots, p_{r +1}$ be the probabilities of being in $I_1, \dots, I_r$ or of type $r + 1$. These probabilities, however, since we have drawn $n$ points uniformly at random, depends on the length of this $I$ and not on its position. So $p_i = \frac{\vert I_i \vert}{T}$, that is the length of the interval divided by $T$. Hence, $p_{r + 1} = 1 - \sum_{k=1}^{r}p_k$.
 
 Recalling that $I_1, \dots I_r$ are disjoint and that the events are independently classified, we now can check the conditions of a Poisson process:
 - events are occuring at random time points since they are chosen uniformly at random; 
@@ -1768,7 +1768,7 @@ Different type of copula models different type of dependencies between variables
 - **Gaussian copula** $\to$ good to model variables with a known correlation between them;
 - **Marshall-Olkin copula** $\to$ good to model chain dependencies.
 
-### Gaussian copula
+### Gaussian Copula
 Let's consider two random variables $X$ and $Y$ that have known correlation $\rho$.  We generate a pair of values $Z = (z_1, z_2)$ from a bivariate Normal with the same correlation $\rho$. Then we obtain pairs of random uniform values correlated among them by computing $U= (u_1,u_2) = (\Phi(z_1), \Phi(z_2))$. This two uniform random variable are still correlated and are then used to obtain a random couple of observation for the original random variables using the inverse of their Cumulative Distribution Function:
 
 $$R=(F^{-1}(u_1), G^{-1}(u_2))$$
