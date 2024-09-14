@@ -2109,14 +2109,17 @@ Let's look at the expected value of $Z$: is the expected value of all the right 
 
 Furthermore, we can also prove that the variance of $Z$ is not greater than that of $X$ (and possibly it is lower) depending on the choice of $c$.
 
-$$Var[Z] = Var[X + c \cdot (Y - \mu)]$$
-$$Var[X + cY]$$
-$$Var[X] + c62Var[Y] + 2cCov[X, Y]$$
-$$$$
+$$Var[Z] = Var[X + c \cdot (Y - \mu)] =$$
+$$= Var[X + cY] =$$
+$$= Var[X] + c^2Var[Y] + 2cCov[X, Y] =$$
+$$= Var[X] - \frac{Cov[X, Y]^2}{Var[Y]}$$
+$$\frac{Var[Z]}{Var[X]} = 1 - Corr^2[X, Y]$$
+
+How can we implement this method? The only thing that we need is to be able to read values of another random variable during the simulation run. It can even be the output of a single random variable from our model. Of course, the more we are able to find control variate which are strongly correlated to our output, the more variance reduction we get.
 
 -----
 
 ### Variance Reduction by Conditioning
-
+The idea is similar to the reduction by control variate. We still take two outputs: $X$, the actual output of the simulation model, and $Y$, which is another random variable we can read from the model. Instead of computing $\mathbb{E}[X]$, we move to the conditional expectation of $X$ with respect to $Y$, $\mathbb{E}[X \vert Y]$.
 
 -----
