@@ -2105,13 +2105,11 @@ $X$ is the random variable output of the simulation, that is the value we are lo
 
 The technique of control variate is based on the use in our estimator the following expression $Z = X + c \cdot (Y - \mu)$ as the undbiased estimator of $\theta$ instead of $X$, for any constant $c$.
 
-Let's look at the expected value of $Z$: is the expected value of all the right hand side of the expression and, by linearity, is equal to $\mathbb{E}[Z] = \mathbb{E}[X] + $
+Let's look at the expected value of $Z$: is the expected value of all the right hand side of the expression and, by linearity, is equal to $\mathbb{E}[Z] = \mathbb{E}[X] + c \cdot \mathbb{E}[Y] - \mu =  \mathbb{E}[X] + c \cdot \mu - \mu =  \mathbb{E}[X]$.
 
-Furthermore, the variance of $Z$ is not greater than that of $X$.
+Furthermore, we can also prove that the variance of $Z$ is not greater than that of $X$ (and possibly it is lower) depending on the choice of $c$.
 
-.
-.
-.
+$$Var[Z] = Var$$
 
 -----
 
