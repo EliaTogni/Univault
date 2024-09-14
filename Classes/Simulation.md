@@ -131,25 +131,25 @@ Let's consider the following function:
 $$y = f(x)$$
 
 From the modeler's perspective, $x$ represents input data, while $y$ is an abstraction of the process modeled by $f()$.<br />
-If $f()$ is only an approximation of the real system, applying $f()$ to the parameter $x$ will yield a specific observation, a specific value. Reapplying the function may result in a different outcome. For this reason, in a deterministic world, $x$ would be defined as the **independent variable** and $y$ as the **dependent variable**, while the result obtained in $y$ is stochastic, making $y$ a **Random Variable**.
+If $f()$ is only an approximation of the real system, applying $f()$ to the parameter $x$ will yield a specific observation, a specific value. Reapplying the function may result in a different outcome. For this reason, in a deterministic world, $x$ would be defined as the **independent variable** and $y$ as the **dependent variable**, while the result obtained in $y$ is stochastic, making $y$ a **random variable**.
 The overall result of the descriptive modeling of a system is a more complex random variable.
 
 ### Pharmacist (Ex. from Sheldon M. Ross "Simulation")
 ![[Images/PharmacistSimulation.png]]
 
-The descriptive model that will be constructed will make the distribution of the Random Variable clearer. Is it possible to build a deterministic model of this system? The answer is yes, even though considering each individual variable (every existing individual, the health condition of each individual, ...) is much more complex than it is possible to do. For this reason, components of the system will be approximated.
+The descriptive model that will be constructed will make the distribution of the random variable clearer. Is it possible to build a deterministic model of this system? The answer is yes, even though considering each individual variable (every existing individual, the health condition of each individual, ...) is much more complex than it is possible to do. For this reason, components of the system will be approximated.
 
 There are two key points that will be approximated:
 - the **connectors**, that is, the links between the system and the external world;
 - the **details** of the system itself, which are not crucial for the study.
 
-Both of these points are approximated through the use of additional, albeit simpler, Random Variables.
+Both of these points are approximated through the use of additional, albeit simpler, random variables.
 
 ![[Images/Pharmacy Scheme.png]]
 
-A common assumption is that individuals in the external world act independently, and therefore, observing that a prescription has arrived at a certain time $t$ provides no information about the arrival of the next prescription. This assumption is sufficient to model the prescription arrival process through an **exponential Random Variable**.
+A common assumption is that individuals in the external world act independently, and therefore, observing that a prescription has arrived at a certain time $t$ provides no information about the arrival of the next prescription. This assumption is sufficient to model the prescription arrival process through an **exponential random variable**.
 
-As for the medicine preparation process, the problem provides a mean and a standard deviation without specifying the distribution shape. The information about the process is minimal, and the perturbation's form lacks a specific structure, so it is possible to use a **normal Random Variable**.
+As for the medicine preparation process, the problem provides a mean and a standard deviation without specifying the distribution shape. The information about the process is minimal, and the perturbation's form lacks a specific structure, so it is possible to use a **normal random variable**.
 
 ```python
 import random
@@ -387,11 +387,11 @@ An example of a cumulative distribution function.
 -------------------------------------------------------------
 
 #### Probability mass function
-A Random Variable that can take either a finite or at most a countable number of possible values is said to be **discrete**. For a discrete Random Variable $X$, its **probability mass function** $p(x)$ is defined as
+A random variable that can take either a finite or at most a countable number of possible values is said to be **discrete**. For a discrete random variable $X$, its **probability mass function** $p(x)$ is defined as
 
 $$p(x) = P[X = x]$$
 
-If $X$ is a discrete Random Variable that takes on one of the possible values $x_1, x_2,  \dots$, then, since $X$ must take on one of these values, it holds that
+If $X$ is a discrete random variable that takes on one of the possible values $x_1, x_2,  \dots$, then, since $X$ must take on one of these values, it holds that
 
 $$\sum_{i = 1}^{\infty}p(x_i) = 1$$
 
@@ -402,11 +402,11 @@ A graphical example of a probability mass function.
 -------------------------------------------------------------
 
 #### Probability density function
-Whereas a discrete Random Variable assumes at most a countable set of possible values, it is common to have to consider Random Variables whose set of possible values is an interval. It is said that the random variable $X$ is a **continuous Random Variable** if there is a nonnegative function $f(x)$ defined for all real numbers $x$ and having the property that for any set $C$ of real numbers
+Whereas a discrete random variable assumes at most a countable set of possible values, it is common to have to consider random variables whose set of possible values is an interval. It is said that the random variable $X$ is a **continuous random variable** if there is a nonnegative function $f(x)$ defined for all real numbers $x$ and having the property that for any set $C$ of real numbers
 
 $$P[X \in C] = \int_{C} f(x) dx$$
 
-The function $f$ is called the **probability density function** of the Random Variable $X$.
+The function $f$ is called the **probability density function** of the random variable $X$.
 
 The relationship between the cumulative distribution $F(\cdot)$ and the probability density $f( \cdot)$ is expressed by
 
@@ -423,30 +423,30 @@ The curve represents the distribution of heights for adult males with a mean of 
 -------------------------------------------------------------
 
 #### Joint cumulative probability distribution function
-In many experiments we are interested not only in probability distribution functions of individual Random Variables, but also in the relationships between two or more of them. In order to specify the relationship between two Random Variables, we define the **joint cumulative probability distribution function** of $X$ and $Y$ by
+In many experiments we are interested not only in probability distribution functions of individual random variables, but also in the relationships between two or more of them. In order to specify the relationship between two random variables, we define the **joint cumulative probability distribution function** of $X$ and $Y$ by
 
 $$F(x, y) = P[X \leq x, Y \leq y]$$
 
-Thus, $F(x, y)$ specifies the probability that $X$ is less than or equal to $x$ and simultaneously $Y$ is less than or equal to $y$. The joint cumulative probability distribution function gives also the joint probability that two or more Random Variables simultaneously fall within certain specified intervals.
+Thus, $F(x, y)$ specifies the probability that $X$ is less than or equal to $x$ and simultaneously $Y$ is less than or equal to $y$. The joint cumulative probability distribution function gives also the joint probability that two or more random variables simultaneously fall within certain specified intervals.
 
 -------------------------------------------------------------
 
-#### Dependent and independent Random Variables
-The Random Variables $X$ and $Y$ are said to be **independent** if, for any two sets of real numbers $C$ and $D$, it holds that
+#### Dependent and Independent Random Variables
+The random variables $X$ and $Y$ are said to be **independent** if, for any two sets of real numbers $C$ and $D$, it holds that
 
 $$P[X \in C, Y \in D] = P[X \in C \space \wedge \space Y \in D] = P[X \in C] \cdot P[Y \in D]$$
 
-That is, $X$ and $Y$ are independent if, for all sets $C$ and $D$, the events $A = \{X \in C\}$ and $B = \{Y \in D\}$ are independent. Loosely speaking, $X$ and $Y$ are independent if knowing the value of one of them does not affect the probability distribution of the other. Random Variables that are not independent are said to be **dependent**.
+That is, $X$ and $Y$ are independent if, for all sets $C$ and $D$, the events $A = \{X \in C\}$ and $B = \{Y \in D\}$ are independent. Loosely speaking, $X$ and $Y$ are independent if knowing the value of one of them does not affect the probability distribution of the other. Random variables that are not independent are said to be **dependent**.
 
 -------------------------------------------------------------
 
 #### Expectation
-One of the most useful concepts in probability is that of the **expectation** of a Random Variable. If $X$ is a discrete Random Variable that takes on one of the possible values $x_1, x_2, \dots$, then the expectation or **expected value** of $X$, also called the mean of $X$ and denoted by $\mathbb{E}[X]$, is defined by
+One of the most useful concepts in probability is that of the **expectation** of a random variable. If $X$ is a discrete random variable that takes on one of the possible values $x_1, x_2, \dots$, then the expectation or **expected value** of $X$, also called the mean of $X$ and denoted by $\mathbb{E}[X]$, is defined by
 
 $$\mathbb{E}[X] = \sum_{i} x_i P[X = x_i]$$
 In words, the expected value of $X$ is a weighted average of the possible values that $X$ can take on, each value being weighted by the probability that $X$ assumes it.
 
-Suppose now that that it is desired to determine the expected value not of the Random Variable $X$ but of the Random Variable $g(X)$, where $g$ is some given function. Since $g(X)$ takes on the value $g(x)$ when $X$ takes on the value $x$, it seems intuitive that $\mathbb{E}[g(X)]$ should be a weighted average of the possible values $g(x)$ with, for a given $x$, the weight given to $g(x)$ being equal to the probability (or probability density in the continuous case) that $X$ will equal $x$. If $X$ is a discrete Random Variable having probability mass function
+Suppose now that that it is desired to determine the expected value not of the random variable $X$ but of the random variable $g(X)$, where $g$ is some given function. Since $g(X)$ takes on the value $g(x)$ when $X$ takes on the value $x$, it seems intuitive that $\mathbb{E}[g(X)]$ should be a weighted average of the possible values $g(x)$ with, for a given $x$, the weight given to $g(x)$ being equal to the probability (or probability density in the continuous case) that $X$ will equal $x$. If $X$ is a discrete random variable having probability mass function
 $p(x)$, then
 
 $$\mathbb{E}[g(X)] = \sum_xg(x)p(x)$$
@@ -459,7 +459,7 @@ A consequence of the above proposition is the fact that, if $a$ and $b$ are cons
 
 $$\mathbb{E}[aX + b] = a\mathbb{E}[X] + b$$
 
-It can also be shown that expectation is a linear operation in the sense that for any two Random Variables $X_1$ and $X_2$
+It can also be shown that expectation is a linear operation in the sense that for any two random variables $X_1$ and $X_2$
 
 $$\mathbb{E}[X_1 + X_2] = \mathbb{E}[X_1] + \mathbb{E}[X_2]$$
 
@@ -470,8 +470,8 @@ $$\mathbb{E}\Big[\sum_{i = 1}^{n} X_i\Big] = \sum_{i = 1}^{n}\mathbb{E}[X_i]$$
 -------------------------------------------------------------
 
 #### Variance
-Whereas $\mathbb{E}[X]$, the expected value of the Random Variable $X$, is a weighted average of the possible values of $X$, it yields no information about the variation of these values.<br />
-One way of measuring this variation is to consider the average value of the square of the difference between $X$ and $\mathbb{E}[X]$. If $X$ is a Random Variable with mean $\mu$, then the **variance** of $X$, denoted by $Var[X]$, is defined by
+Whereas $\mathbb{E}[X]$, the expected value of the random variable $X$, is a weighted average of the possible values of $X$, it yields no information about the variation of these values.<br />
+One way of measuring this variation is to consider the average value of the square of the difference between $X$ and $\mathbb{E}[X]$. If $X$ is a random variable with mean $\mu$, then the **variance** of $X$, denoted by $Var[X]$, is defined by
 
 $$Var[X] = \mathbb{E}[(X - \mu)^2]$$
 
@@ -491,7 +491,7 @@ That is,
 
 $$Var[X] = \mathbb{E}[X^2] - (\mathbb{E}[X])^2$$
 
-Whereas the expected value of a sum of Random Variables is equal to the sum of the expectations, the corresponding result is not, in general, true for variances. It is, however, true in the important special case where the Random Variables are independent. Before proving this, let's define the concept of the **covariance** between two Random Variables. The covariance of two Random Variables $X$ and $Y$, denoted $Cov(X, Y)$, is defined by
+Whereas the expected value of a sum of random variables is equal to the sum of the expectations, the corresponding result is not, in general, true for variances. It is, however, true in the important special case where the random variables are independent. Before proving this, let's define the concept of the **covariance** between two random variables. The covariance of two random variables $X$ and $Y$, denoted $Cov(X, Y)$, is defined by
 
 $$Cov[X, Y] = \mathbb{E}[(X - \mu_x)(Y -\mu_y)]$$
 
@@ -518,7 +518,7 @@ $$= \mathbb{E}[(X - \mu_x)^2 + (Y -\mu_y)^2 + 2(X - \mu_x)(Y - \mu_y)]$$
 $$= \mathbb{E}[(X -\mu_x)^2] + \mathbb{E}[(Y -\mu_y)] + 2\mathbb{E}[(X - \mu_x)(Y -\mu_y)]$$
 $$Var[X] + Var[Y] + 2Cov[X, Y]$$
 
-This section is ended by showing that the variance of the sum of independent Random Variables is equal to the sum of their variances. If $X$ and $Y$ are independent Random Variables, then
+This section is ended by showing that the variance of the sum of independent random variables is equal to the sum of their variances. If $X$ and $Y$ are independent random variables, then
 
 $$Cov[X, Y] = 0$$
 
@@ -529,7 +529,7 @@ $$Var[X + Y] = Var[X] + Var[Y]$$
 -------------------------------------------------------------
 
 #### Correlation
-The **correlation** between two Random Variables $X$ and $Y$, denoted as $Corr(X, Y)$, is defined by
+The **correlation** between two random variables $X$ and $Y$, denoted as $Corr(X, Y)$, is defined by
 
 $$Corr(X, Y) = \frac{Cov(X, Y)}{\sqrt{Var[X] Var[Y]}}$$
 
@@ -541,7 +541,7 @@ If $X$ takes on only nonnegative values, then for any value $a > 0$
 $$P[X \geq a] \leq \frac{\mathbb{E}[X]}{a}$$
 
 This inequality is proved in the following way.<br />
-Define the Random Variable $Y$ by
+Define the random variable $Y$ by
 
 $$Y = \cases{a, \space \text{ if } X \geq a \cr \cr
 0, \space \text{ if } X < a}$$
@@ -569,11 +569,11 @@ and the result is proved.
 -------------------------------------------------------------
 
 #### Chebishev's Inequality
-**Chebyshev’s inequality** states that the probability that a Random Variable differs from its mean by more than $k$ of its standard deviations is bounded by $\frac{1}{k^2}$, where the standard deviation of a Random Variable is defined to be the square root of its variance. If $X$ is a Random Variable having mean $\mu$ and variance $\sigma^2$, then for any value $k > 0$
+**Chebyshev’s inequality** states that the probability that a random variable differs from its mean by more than $k$ of its standard deviations is bounded by $\frac{1}{k^2}$, where the standard deviation of a random variable is defined to be the square root of its variance. If $X$ is a random variable having mean $\mu$ and variance $\sigma^2$, then for any value $k > 0$
 
 $$P\Big[\vert X - \mu \vert \geq k \sigma\Big] \leq \frac{1}{k^2}$$
 
-Since it is possible to define $Y = \frac{(X − \mu)^2}{\sigma^2}$ as a nonnegative Random Variable whose mean is
+Since it is possible to define $Y = \frac{(X − \mu)^2}{\sigma^2}$ as a nonnegative random variable whose mean is
 
 $$\mathbb{E}[Y] = \mathbb{E}\Big[\frac{(X - \mu)^2}{\sigma^2}\Big] = \frac{\mathbb{E}[(X - \mu)^2]}{\sigma^2} = \frac{\sigma^2}{\sigma^2} =1$$
 
@@ -583,7 +583,7 @@ $$P \Big[\frac{(X - \mu)^2}{\sigma^2} \geq k^2\Big] \leq \frac{1}{k^2}$$
 
 The result now follows since the inequality $\frac{(X − \mu)^2}{\sigma^2} \geq k^2$ is equivalent to the inequality $\vert X − \mu \vert \geq k \sigma$.
 
-A more general form of the Chebishev's Inequality is the following. If $X$ is a Random Variable having mean $\mu$ and variance $\sigma^2$, then for any value $k > 0$
+A more general form of the Chebishev's Inequality is the following. If $X$ is a random variable having mean $\mu$ and variance $\sigma^2$, then for any value $k > 0$
 
 $$P\Big[\vert X−E[X] \vert \geq k\Big] \leq \frac{\sigma^2}{k^2}$$
 
@@ -595,14 +595,14 @@ which is the initial one.
 -----
 
 #### Weak law of large numbers
-Using Chebyshev’s inequality it is possible to prove the **weak law of large numbers**, which states that the probability that the average of the first $n$ terms of a sequence of independent and identically distributed Random Variables differs from its mean by more than $\varepsilon$ goes to $0$ as $n$ goes to infinity.
+Using Chebyshev’s inequality it is possible to prove the **weak law of large numbers**, which states that the probability that the average of the first $n$ terms of a sequence of independent and identically distributed random variables differs from its mean by more than $\varepsilon$ goes to $0$ as $n$ goes to infinity.
 
-Let $X_1, X_2, \dots$ be a sequence of independent and identically distributed Random Variables having mean $\mu$. Then, for any $\varepsilon > 0$
+Let $X_1, X_2, \dots$ be a sequence of independent and identically distributed random variables having mean $\mu$. Then, for any $\varepsilon > 0$
 
 $$P\Bigg[ \bigg \vert \frac{X_1 + \cdots + X_n}{n} - \mu \bigg\vert \geq \varepsilon \Bigg] \to 0 \text{ as } n \to \infty$$
 
 Proof:<br />
-We give a proof under the additional assumption that the Random Variables $X_i$ have a finite variance $\sigma^2$. Now
+We give a proof under the additional assumption that the random variables $X_i$ have a finite variance $\sigma^2$. Now
 
 $$\mathbb{E}\Bigg[\frac{X_1 + \dots + X_n}{n}\Bigg] = \frac{1}{n} \Big(\mathbb{E}[X_1] + \dots + \mathbb{E}[X_n]\Big) = \frac{1}{n} \cdot n\mu = \mu$$
 
@@ -610,7 +610,7 @@ and
 
 $$Var \Bigg[\frac{X_1 + \dots + X_n}{n}\Bigg] = \frac{1}{n^2} \Big[Var[X_1] + \dots + Var[X_n]\Big] = \frac{1}{n^2} \cdot n\sigma^2 = \frac{\sigma^2}{n}$$
 
-where the above equation makes use of the fact that the variance of the sum of independent Random Variables is equal to the sum of their variances. Hence, from Chebyshev’s inequality, which says that
+where the above equation makes use of the fact that the variance of the sum of independent random variables is equal to the sum of their variances. Hence, from Chebyshev’s inequality, which says that
 
 $$P\Bigg[\vert X - \mu] \vert \geq k \sigma\Bigg]≤\frac{1}{k^2}$$​
 
@@ -624,7 +624,7 @@ $$P\Bigg[ \bigg \vert \frac{X_1 + \cdots + X_n}{n} - \mu \bigg\vert \geq \vareps
 
 which establishes the result.
 
-The last passage of the demonstration also permits to have an upper bound on the probability of making an error greater than $\varepsilon$ if it is decided to use the mean of some Random Variables instead of the Random Variables themselves.
+The last passage of the demonstration also permits to have an upper bound on the probability of making an error greater than $\varepsilon$ if it is decided to use the mean of some random variables instead of the random variables themselves.
 
 It is also possible to choose some accuracy target in order to evaluate the simulation. To do so, it is necessary to be in possess of the variance, which is tipically a bold assumption. However, it is possible to estimate it.
 
@@ -635,7 +635,7 @@ A generalization of the weak law is the strong law of large numbers, which state
 
 $$\lim_{n \to\infty} \frac{X_1 + \cdots + X_n}{n} = \mu$$
 
-That is, with certainty, the long-run average of a sequence of independent and identically distributed Random Variables will converge to its mean.
+That is, with certainty, the long-run average of a sequence of independent and identically distributed random variables will converge to its mean.
 
 While the weak law defines this property in a probabilistic way, the strong law defines it in a deterministic way (with probability $1$).
 
@@ -746,7 +746,7 @@ def ripley_test(v):
 #### Empirical cumulative distribution function
 Let's consider the following random sequence: $1$, $3$, $2$, $9$, $8$, $7$, $4$, $5$, $6$, $10$. Is it a random sequence between $1$ and $10$? The response is no, because it is desired for the random values to be extracted from a **uniform distribution**.
 
-A uniform discrete Random Variable is defined as  
+A uniform discrete random variable is defined as  
 
 $$X = \cases{1 \text{ with } p = 1/n \cr \cr
 2 \text{ with } p = 1/n \cr \cr
@@ -755,11 +755,11 @@ n \text{ with } p = 1/n }$$
 
  e.g., the throwing of a dice.
 
-In the image below, the probability mass function of an uniform discrete Random Variable.
+In the image below, the probability mass function of an uniform discrete random variable.
 
 ![[UniformProbabilityMassFunction.png]]
 
-In the image below, the cumulative distribution function of a uniform discrete Random Variable.
+In the image below, the cumulative distribution function of a uniform discrete random variable.
 
 ![[DiscreteUniformCumulativeDistributionFunction.png]]
 
@@ -855,14 +855,14 @@ How to get precision up to $k$-th digit?
 
 ![[MonteCarloPiExample.png]]
 
-Let's try to model the $i$-th throw of a dart. The first thing is to build a Random Variable $X_i$ describing the experiment.
+Let's try to model the $i$-th throw of a dart. The first thing is to build a random variable $X_i$ describing the experiment.
 
 $$X_i = \cases{1 \quad \text{ if point \#} i \text{ is inside the circle, with } p = \frac{\pi}{4} \cr \cr 0 \quad \text{ otherwise, with } p = 1 - \frac{\pi}{4}}$$
 
 Knowing that, it is possible to derive that $\mathbb{E}[X_i] = 1 \cdot \frac{\pi}{4} + 0 \cdot (1 - \frac{\pi}{4}) = \frac{\pi}{4}$.<br />
-It is also possible to measure the variance $Var[X_i] = (1 - \frac{\pi}{4})^2 \cdot \frac{\pi}{4} + (0 - \frac{\pi}{4})^2 \cdot (1 - \frac{\pi}{4})$. This formulation of the variance is based on the definition, that is, $\mathbb{E}[(X - \mu)^2]$. Since in this case, the Random Variable can only take two value, it is possible to rewrite the formula using the actual values of X: $(1 - \mu)^2 \cdot P[1] + (0 - \mu)^2 \cdot P[0]$.
+It is also possible to measure the variance $Var[X_i] = (1 - \frac{\pi}{4})^2 \cdot \frac{\pi}{4} + (0 - \frac{\pi}{4})^2 \cdot (1 - \frac{\pi}{4})$. This formulation of the variance is based on the definition, that is, $\mathbb{E}[(X - \mu)^2]$. Since in this case, the random variable can only take two value, it is possible to rewrite the formula using the actual values of X: $(1 - \mu)^2 \cdot P[1] + (0 - \mu)^2 \cdot P[0]$.
 
-Defining $\frac{\pi}{4} = q$, it is that $Var[X_i] = (1 - q)^2 \cdot q + (0 - q)^2 \cdot (1 - q) = (1 - q)\big[(1 - q)\cdot q + q^2\big] = (1 - q) \cdot q = (1 - \frac{\pi}{4})\cdot \frac{\pi}{4}$. Whenever the experiment is succesfull, the counter is incremented by $1$ and by $0$ otherwise. The overall counting is $\sum_{i=1}^{n}X_i$ and the probability is $\frac{\sum_{i=1}^{n}X_i}{n}$. This formula reminds of the setting of the law of large numbers (a set of i.i.d. Random Variables for which the average is computed). Let's compute
+Defining $\frac{\pi}{4} = q$, it is that $Var[X_i] = (1 - q)^2 \cdot q + (0 - q)^2 \cdot (1 - q) = (1 - q)\big[(1 - q)\cdot q + q^2\big] = (1 - q) \cdot q = (1 - \frac{\pi}{4})\cdot \frac{\pi}{4}$. Whenever the experiment is succesfull, the counter is incremented by $1$ and by $0$ otherwise. The overall counting is $\sum_{i=1}^{n}X_i$ and the probability is $\frac{\sum_{i=1}^{n}X_i}{n}$. This formula reminds of the setting of the law of large numbers (a set of i.i.d. random variables for which the average is computed). Let's compute
 
 $$P\Bigg[\Big\vert \frac{\sum_{i=1}^{n}X_i}{n} - \frac{\pi}{4} \Big\vert > \varepsilon \Bigg] < \frac{\sigma^2}{n \varepsilon^2}$$
 
@@ -896,26 +896,26 @@ $$- \frac{\eta}{n (10^{-k})^2} \geq \delta - 1$$
 $$\frac{\eta}{n (10^{-k})^2} \leq 1 - \delta$$
 $$n \geq \Bigg \lceil \frac{\eta}{(1 - \delta)10^{-2k}} \Bigg \rceil$$
 
-While this theoretical result seems extremely useful, it assumes to have at disposal $\eta$ which in our case is a constant but only because it derives from an analytical step and holds only for a very specifical Random Variable known from the beginning. Therefore, it is tipically necessary to estimate $\eta$ through experiments to utilize this property.
+While this theoretical result seems extremely useful, it assumes to have at disposal $\eta$ which in our case is a constant but only because it derives from an analytical step and holds only for a very specifical random variable known from the beginning. Therefore, it is tipically necessary to estimate $\eta$ through experiments to utilize this property.
 
 -----
 
 # Generating Random Variables
-Systems can be modeled, including non trivial components, in the form of Random Variables. Statistics allow to reliably run experiments and obtain results by observations on these models. At the base of this process, there is the ability to generate pseudorandom numbers algorithmically.
+Systems can be modeled, including non trivial components, in the form of random variables. Statistics allow to reliably run experiments and obtain results by observations on these models. At the base of this process, there is the ability to generate pseudorandom numbers algorithmically.
 
-The next step is to learn when and how to use noticeable Random Variables from the literature and also to generate observations of Random Variables algorithmically.
+The next step is to learn when and how to use noticeable random variables from the literature and also to generate observations of random variables algorithmically.
 
-## Main families of Random Variables
-There are certain types of Random Variables that frequently appear in applications. In this section we survey some of the discrete ones.
+## Main Families of Random Variables
+There are certain types of random variables that frequently appear in applications. In this section we survey some of the discrete ones.
 
 ### Discrete Random Variables
 
 ![[DiscreteRandomVariables.png]]
 
-### Generating discrete Random Variables
+### Generating Discrete Random Variables
 
-#### The Inverse Transform method
-Suppose we want to generate the value of a custom (single value) discrete Random Variable $X$ having probability mass function
+#### The Inverse Transform Method
+Suppose we want to generate the value of a custom (single value) discrete random variable $X$ having probability mass function
 
 $$P[X = x_j] = p_j, \quad j = 0, \dots, 6 \quad \sum_{j = 1}^6 p_j = 1$$
 
@@ -926,13 +926,13 @@ $$X = \cases{1 \space \text{ con } p = \frac{1}{2} \cr \cr 2 \space \text{ con }
 Expected value $\mathbb{E}[X] = 1 \cdot \frac{1}{2} + \dots + 6 \cdot \frac{1}{10} = \sum_{i = 1}^{6} v_i \times p_i = \mu$<br />
 Variance $Var[X] = \sum_{i = 1}^{6}( v_i - \mu)^2 \cdot p_i$
 
-How is possible to simulate the readings of such custom discrete Random Variable? A technique is called the **inverse transform** method (for discrete Random Variables).
+How is possible to simulate the readings of such custom discrete random variable? A technique is called the **inverse transform** method (for discrete random variables).
 
-First of all, the cumulative distribution function is built out of the Random Variable.
+First of all, the cumulative distribution function is built out of the random variable.
 
 ![[InverseCDF.png]]
 
-The inverse transform method suggests to use this cumulative distribution function in reverse, that is, picking a probability value and reading the corresponding value of the Random Variable generating this probability. 
+The inverse transform method suggests to use this cumulative distribution function in reverse, that is, picking a probability value and reading the corresponding value of the random variable generating this probability. 
 
 At this point, we are able to generate valid values for probability and therefore we can get the corresponding value. The probability values must be numbers between $0$ and $1$, chosen from a uniform distribution and independent.
 
@@ -954,24 +954,24 @@ Defining $P[X = x_i] = p_i$, the preceding idea can be written algorithmically a
 	\end{algorithm}
 ```
 
-Take into account the case of a Random Variable $X$ such that:
+Take into account the case of a random variable $X$ such that:
 
 $$P[X = x_j] = p_j, \quad j = 0, \dots, 6 \quad \sum_{j = 1}^6 p_j = 1$$
 $$X = \cases{x_1 \space \text{ with } p = p_1 \cr \cr x_2 \space \text{ with } p = p_2 \cr \cr \vdots \cr \cr x_n \space \text{ with } p = p_n}$$
 
-Let's consider two specific cases for this discrete Random Variable:
+Let's consider two specific cases for this discrete random variable:
 - $n = 2$;
 - $p_1 = p_2 = \dots = p_n$.
 
-In the case that $n=2$, it would be a Random Variable defined as follows:
+In the case that $n=2$, it would be a random variable defined as follows:
 
 $$X = \cases{x_1 \space \text{ with } p = p_1 \cr \cr x_2 \space \text{ with } p = p_2 = 1 - p_1}$$
 
-In the case that $p_1 = p_2 = \dots = p_n$, it would be a Random Variable defined as follows:
+In the case that $p_1 = p_2 = \dots = p_n$, it would be a random variable defined as follows:
 
 $$X = \cases{x_1 \space \text{ with } p = \frac{1}{n} \cr \cr x_2 \space \text{ with } p = \frac{1}{n} \cr \cr \vdots \cr \cr x_n \space \text{ with } p = \frac{1}{n}}$$
 
-This is called a Uniform Discrete Random Variable.<br />
+This is called a Uniform Discrete random variable.<br />
 A general method for generating valid values for these customs discrete Random Variables was already explored in the previous chapter, the Inverse Transform method, which refers to the inverse of the cumulative distribution function. Basing on this technique, are we able to create an algorithm for producing a value for a uniform Random Variable?
 
 A valid algorithm for producing values for a Uniform Discrete Random Variable is the following:
