@@ -2096,8 +2096,7 @@ Is it true that this simulation function is monotone in the random values that w
 What is the limit of this approach? Was it really for free (in the sense that if the function isn't monotone, we have literally no drawbacks)? 
 
 Firstly, how can we split between the one random variable and its antithetic?<br />
-Secondly, if we have a large number of random numbers in our run, if one random number is higher and one is lower, we cannot observe this behavior.
-
+Secondly, if we have a large number of random numbers in our run, if one random number is higher and one is lower, we cannot observe this behavior. The theorem seen above becomes effective only when we are able to trick the random numbers. If we wait bu chance to have two subsequent runs in which the random numbers all increase or all decrease, we will never get it.
 
 
 -----
