@@ -2098,13 +2098,16 @@ What is the limit of this approach? Was it really for free (in the sense that if
 Firstly, how can we split between the one random variable and its antithetic?<br />
 Secondly, if we have a large number of random numbers in our run, if one random number is higher and one is lower, we cannot observe this behavior. The theorem seen above becomes effective only when we are able to trick the random numbers. If we wait bu chance to have two subsequent runs in which the random numbers all increase or all decrease, we will never get it.
 
-
 -----
 
 ### Variance Reduction by Control Variates
-$x$ is the random variable output of the simulation. $\theta$ is its expected value. We are able to get another value for the model, $Y$, an intermediate point in the simulation for which we already know the expected value. We use $Z = X + c(y - \mu)$ as the undbiased estimator of $\theta$. For any constant c.+
+$X$ is the random variable output of the simulation, that is the value we are looking for. $\theta$ is its expected value. We are able to get another output random variable for the model, $Y$, an intermediate point in the simulation for which we already know the expected value. The random variable $Y$ is a **control variate** for the simulation estimator $X$. 
 
-Furthermore, the variance of $Z$
+The technique of control variate is based on the use in our estimator the following expression $Z = X + c \cdot (Y - \mu)$ as the undbiased estimator of $\theta$ instead of $X$, for any constant $c$.
+
+Let's look at the expected value of $Z$: is the expected value of all the right hand side of the expression and, by linearity, is equal to $\mathbb{E}[Z] = \mathbb{E}[X] + $
+
+Furthermore, the variance of $Z$ is not greater than that of $X$.
 
 .
 .
