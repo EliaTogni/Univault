@@ -1982,13 +1982,11 @@ Again, we may fix $\alpha$ (the confidence) and $n$ (the number of the iteration
 ## Bootstrapping
 What if the parameter to estimate is not the mean (like the median or the variance)? The estimator may not be the average of values and our way to measure the error may not be the variance. Can we have a similar framework to what we have seen for the mean and the variance? The idea is to rely on more ambitious but more general target, that is, to rebuild, by means of our simulation runs, the whole cumulative distribution function describing our random variable. This is the idea behind **Bootstrapping**.
 
-==immagine 10 min
+![[Bootstrapping.png]]
 
 To answer at the question "what is the value of this parameter $\Theta$ of my random variable $X$?", we have always looked at the simulation model as a random variable and what we typically did was to run it $n$ times and to get $n$ values $x_1, \dots, x_n$. Then, these $n$ values were given to some estimators $g()$ which would produce $\overline{\Theta}$, our approximation.
 
 We want to rebuild the cumulative distribution function using the empirical cumulative distribution function. We just need to sort the $n$ values and place them in a histogram.
-
-==immagine histo 13.30
 
 If we believe that $F_e$ is a good approximation of $F$, we can basically do anything algorithmically speaking, like computing parameters out of $F_e$ pretending to be approximations of parameters computed on the actual $F$.
 
@@ -2016,7 +2014,7 @@ What about the interval estimates? We tried to figure out for a target confidenc
 
 In the image below, it is possible to observe an example of probability density function for this distribution.
 
-==immagine 35 m
+![[DistributionBuilding.png]]
 
 We have no guarantee that this distribution is a normal one. Now, if we want to have an estimate with confidence, for example, $95\%$, which would be the region containing this percentage? We cut of the tails for $5\%$ and the two $\theta$ will be the limits of the range.
 
@@ -2069,7 +2067,7 @@ This is, obviously, a monotone function. The higher the value of $u$, the higher
 
 Let's observe an example. Imagine to want to simulate the network in the image below.
 
-==immagine 1h
+![[CircuitExample.png]]
 
 This is a network of links which are subject to failure and we ask ourselves some questions about the robustness of this network. For instance, we send one packet into the network and we ask ourselves: "will we get it on the other side or not?" So, the failures will be associated to each links and each link will be associated to a probability.
 
@@ -2126,7 +2124,7 @@ $$\mathbb{E}[X \vert Y] = \sum_{i = 1}^{m} \mathbb{E}[X \vert Y_i] \cdot p_i$$
 
 Algorithmically speaking, we can run the simulation model, measure both $X$ and $Y$ and have one pair for each run.
 
-==immagine 1h27
+![[VarianceReductionByConditioning.png]]
 
 Then, we cluster on the $Y$ and compute each expected value. In this instance, we will compute the expected value of $x$ in which $y$ took value $1$, the expected value of $x$ in which $y$ took value $2$ and so on. We estimate the probabilities basing on their frequencies and then we compute.
 $\mathbb{E}[X \vert Y_i]$ are the clusters average values and $p_i$ are the estimates.
