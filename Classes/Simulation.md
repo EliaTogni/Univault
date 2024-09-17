@@ -1374,7 +1374,8 @@ $$P[X>s] = e^{-\lambda(s)}$$
 
 we can derive that
 
-$$\frac{P[X>s+t]}{P[X>s]} = \frac{e^{-\lambda(s+t)}}{ e^{-\lambda(s)}} = e^{-\lambda(t)}= P[X>t]$$
+$$\frac{P[X>s+t]}{P[X>s]} = \frac{e^{-\lambda(s+t)}}{e^{-\lambda(s)}} =$$
+$$= e^{-\lambda(t)}= P[X>t]$$
 
 $$\text{Therefore } \underbrace{P[X > s + t]}_{\text{Reshuffling of memoryless}} = P[X > t] \cdot P[X > s]$$
 
