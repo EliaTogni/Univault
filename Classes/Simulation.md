@@ -864,7 +864,7 @@ It is also possible to measure the variance $Var[X_i] = (1 - \frac{\pi}{4})^2 \c
 
 Defining $\frac{\pi}{4} = q$, it is that $Var[X_i] = (1 - q)^2 \cdot q + (0 - q)^2 \cdot (1 - q) = (1 - q)\big[(1 - q)\cdot q + q^2\big] = (1 - q) \cdot q = (1 - \frac{\pi}{4})\cdot \frac{\pi}{4}$. Whenever the experiment is succesfull, the counter is incremented by $1$ and by $0$ otherwise. The overall counting is $\sum_{i=1}^{n}X_i$ and the probability is $\frac{\sum_{i=1}^{n}X_i}{n}$. This formula reminds of the setting of the law of large numbers (a set of independent and identically distributed random variables for which the average is computed). Let's compute
 
-$$P\Bigg[\Big\vert \frac{\sum_{i=1}^{n}X_i}{n} - \frac{\pi}{4} \Big\vert > \varepsilon \Bigg] < \frac{\sigma^2}{n \varepsilon^2}$$
+$$P\Bigg[\Big\vert \frac{\sum_{i=1}^{n}X_i}{n} - \mu \Big\vert > \varepsilon \Bigg] < \frac{\sigma^2}{n \varepsilon^2}$$
 
 Let's define $\mu = \frac{\pi}{4}$ and $\sigma^2 = (1 - \frac{\pi}{4}) \cdot \frac{\pi}{4}$. The aim is to set $\varepsilon$ in a way that would help to have precision up to the $k$-th digit.<br />
 Choosing $\varepsilon = \gamma \frac{\pi}{4}$, 
