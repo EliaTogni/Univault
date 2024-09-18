@@ -1378,6 +1378,7 @@ From this point, it is possible to derive that
 
 $$\frac{P[X>s+t]}{P[X>s]} = \frac{e^{-\lambda(s+t)}}{e^{-\lambda(s)}} =$$
 $$= e^{-\lambda(t)}= P[X>t]$$
+
 Therefore
 
 $$\underbrace{P[X > s + t] = P[X > t] \cdot P[X > s]}_{\text{Rearrangement of the memoryless property}}$$
@@ -1387,7 +1388,7 @@ Let's see if the cumulative distribution function of the exponential fits this c
 $$\underbrace{1 - F_X(s + t)}_{1 - (1 - e^{-\lambda x})} = [1 - F(t)] [1 - F(s)] = $$
 $$e^{- \lambda (s + t)} = e^{-\lambda t} e ^{- \lambda s}$$
 
-Now, let's look at it in reverse: which are the cumulative distribution functions that, once plugged in in this definition, satisfy this equality? In other terms, which are the other random variables?
+Now, let's look at it in reverse: which are the cumulative distribution functions that, once plugged in in this definition, satisfy this equality? In other terms, ==which are the other random variables?
 
 The exponential random variable are the only ones having this memoryless property since the product of two exponentials is the exponential of the sum. Whenever we have this fenomenon like an independent arrival or anything else, then the lenght of this observation must be an exponential random variable.
 
