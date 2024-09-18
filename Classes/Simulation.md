@@ -1359,7 +1359,7 @@ $$f(x) = \int_{0}^{x}{\lambda e^{-\lambda x}dx} = 1 - e^{-\lambda x}, \quad 0 < 
 
 ![[ExponentialRandomVariable.png]]
 
-This random variable is very useful to model the lifetime of an object or, in general, breakdowns of machines. This is due to the **memoryless property**, that is, the probability $P[X > s + t | X > s] = P[X > t]$, where $s + t$ are constants. To understand why the above is called the memoryless property, imagine that X represents the lifetime of some unit, and consider the probability that a unit of age $s$ will survive an additional time $t$. This property is telling that the probability that a machine breaks down after, for example, $15$ minutes knowing that no breakdown occurred for the first $10$ minutes equals the probability that the machine will break down in $5$ minutes.
+This random variable is very useful to model the lifetime of an object or, in general, breakdowns of machines. This is due to the **memoryless property**, that is, the probability $P[X > s + t | X > s] = P[X > t]$, where $s + t$ are constants. To understand why the above is called the memoryless property, imagine that $X$ represents the lifetime of some unit, and consider the probability that a unit of age $s$ will survive an additional time $t$. This property is telling that the probability that a machine breaks down after, for example, $15$ minutes knowing that no breakdown occurred for the first $10$ minutes equals the probability that the machine will break down in $5$ minutes.
 
 Proof:
 
@@ -1388,9 +1388,9 @@ Let's see if the cumulative distribution function of the exponential fits this c
 $$\underbrace{1 - F_X(s + t)}_{1 - (1 - e^{-\lambda x})} = [1 - F(t)] [1 - F(s)] = $$
 $$e^{- \lambda (s + t)} = e^{-\lambda t} e ^{- \lambda s}$$
 
-Now, let's look at it in reverse: which are the cumulative distribution functions that, once plugged in in this definition, satisfy this equality? In other terms, ==which are the other random variables?
+Now, let's look at it in reverse: which are the cumulative distribution functions that, once plugged in in this definition, satisfy this equality? In other terms, which are the other random variables which satisfy the definition of being memoryless?
 
-The exponential random variable are the only ones having this memoryless property since the product of two exponentials is the exponential of the sum. Whenever we have this fenomenon like an independent arrival or anything else, then the lenght of this observation must be an exponential random variable.
+The exponential random variable are the only ones having this memoryless property since the product of two exponentials is the exponential of the sum. Whenever we have this phenomenon, like an independent arrival or anything else, then the length of this observation must be an exponential random variable.
 
 Another useful property of exponential random variables is that they remain exponential
 when multiplied by a positive constant.
