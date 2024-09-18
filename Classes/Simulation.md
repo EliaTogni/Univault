@@ -1351,7 +1351,7 @@ Is it easy to verify that the expected value and variance of such a random varia
 Expected Value $\mathbb{E}[X] = \frac{1}{\lambda}$.<br />
 Variance $Var[X] = \frac{1}{\lambda^2}$
 
-$\lambda$ is the value expected from a phenomenon that assumes low values with much higher probability than high values. Hence, the probability of this phenomenon decreases exponentially
+$\lambda$ is the expected value from a phenomenon that assumes low values with much higher probability than high values. Hence, the probability of this phenomenon decreases exponentially.
 
 The cumulative distribution function of an exponential random variable is given by
 
@@ -1359,28 +1359,29 @@ $$f(x) = \int_{0}^{x}{\lambda e^{-\lambda x}dx} = 1 - e^{-\lambda x}, \quad 0 < 
 
 ![[ExponentialRandomVariable.png]]
 
-This random variable is very useful to model the lifetime of an object or, in general, breakdowns of machines. This is due to the **Memoryless property**, that is, the probability $P[X > s + t | X > s] = P[X > t]$, where $s + t$ are constants. To understand why the above is called the memoryless property, imagine that X represents the lifetime of some unit, and consider the probability that a unit of age $s$ will survive an additional time $t$. This property is telling that the probability that a machine breaks down after, for example, $15$ minutes knowing that no breakdown occurred for the first $10$ minutes equals the probability that the machine will break down in $5$ minutes.
+This random variable is very useful to model the lifetime of an object or, in general, breakdowns of machines. This is due to the **memoryless property**, that is, the probability $P[X > s + t | X > s] = P[X > t]$, where $s + t$ are constants. To understand why the above is called the memoryless property, imagine that X represents the lifetime of some unit, and consider the probability that a unit of age $s$ will survive an additional time $t$. This property is telling that the probability that a machine breaks down after, for example, $15$ minutes knowing that no breakdown occurred for the first $10$ minutes equals the probability that the machine will break down in $5$ minutes.
 
 Proof:
 
 $$\text{Knowing that } P[A \vert B] = \frac{P[A \cap B]}{P[B]}\text{, is it possible to obtain }$$
 $$P[X > s + t \vert X > s] = \underbrace{\frac{P[X > s + t \wedge X > s]}{P[X > s]}}_{P[X > t]} = \frac{P[X > s + t]}{P[X > s]}$$
 
-Knowing that
+It is known that
 
 $$P[X>s+t] = e^{-\lambda(s+t)}$$
-and
+
+since $P[X < s + t] = 1 - e^{-\lambda(s+t)}$ and, therefore, $P[X>s+t] = 1 - (1 - e^{-\lambda(s+t)})$. Furthermore
 
 $$P[X>s] = e^{-\lambda(s)}$$
 
-we can derive that
+From this point, it is possible to derive that
 
 $$\frac{P[X>s+t]}{P[X>s]} = \frac{e^{-\lambda(s+t)}}{e^{-\lambda(s)}} =$$
 $$= e^{-\lambda(t)}= P[X>t]$$
 
 $$\text{Therefore } \underbrace{P[X > s + t]}_{\text{Reshuffling of memoryless}} = P[X > t] \cdot P[X > s]$$
 
-Let's see if the cumulative distribution function of the Exponential fits this claim.
+Let's see if the cumulative distribution function of the exponential fits this claim.
 
 $$\underbrace{1 - F_X(s + t)}_{1 - (1 - e^{-\lambda x})} = [1 - F(t)] [1 - F(s)] = $$
 $$e^{- \lambda (s + t)} = e^{-\lambda t} e ^{- \lambda s}$$
