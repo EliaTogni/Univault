@@ -1249,7 +1249,6 @@ The last iteration is the $r$-th success. On the previous iteration ($i-1$ itera
 
 $$\binom{i - 1}{r -1} p^{r-1}(1-p)^{i-1 -(r-1)}$$
 
-
 Therefore, $P[X = i] = \binom{i - 1}{r -1} p^{r-1}(1-p)^{i-r} \cdot p = \binom{i - 1}{r -1} p^{r}(1-p)^{i-r}$
 
 To compute the expected value, we can consider this random variable as $r$ observation of a geometric random variable:
