@@ -1316,16 +1316,16 @@ For simulating a reading of a uniform continuous random variable it is enough to
 	\end{algorithm}
 ```
 
-We can prove the following strong result about this method: let $U$ be a uniform random variable in range $(0, 1)$. We claim that for any continuous cumulative distribution function $F()$ (and, therefore, for any random variable because every one of them has a cumulative distribution function), the random variable $X = F^{-1}(U)$ has cumulative distribution function $F()$ and, therefore, it is the random variable we wish to simulate. That is, this claim suggests that the native algorithm using the Inverse Transform concept is correct for each target random variable.
+We can prove the following strong result about this method: let $U$ be a uniform random variable in range $(0, 1)$. We claim that for any continuous cumulative distribution function $F()$ (and, therefore, for any random variable because every one of them has a cumulative distribution function), the random variable $X = F^{-1}(U)$ has cumulative distribution function $F()$ and, therefore, it is the random variable we wish to simulate. 
 
-The second point of discussion that will open for other algorithmic techniques is asking ourselves if this algorithm is really always applicable. While in the discrete case, any cumulative distribution function is invertible, in the continuous it depends.
+This claim firstly suggests that the native algorithm using the Inverse Transform concept is correct for each target random variable. The second point of discussion that will open for other algorithmic techniques is asking ourselves if this algorithm is really always applicable. While in the discrete case, any cumulative distribution function is invertible, in the continuous it depends.
 
 Proof:<br />
 Let $F_X$ the cumulative distribution function of $X = F^{-1}(U)$. We don't actually know the shape of this random variable. It is possible to say that
 
 $$F_X(x) = P[X \leq x] = P[F^{-1}(U) \leq x]$$
 
-Now, $F$ is a monotone increasing function of $x$ since it sums up probabilities and so $a \leq  b \to F(a) \leq F(b)$. Therefore
+Now, $F$ is monotone increasing function of $x$ since it is a cumulative distribution function that sums up probabilities. Hence, $a \leq  b \to F(a) \leq F(b)$. Therefore
 
 $$P[F^{-1}(U) \leq x] = P\Bigg[F\Big(F^{-1}(U)\Big) \leq F(x)\Bigg] = P[U \leq F(x)]$$
 
