@@ -1302,7 +1302,7 @@ We can exploit the idea of the Inverse Transform Method and apply it in a simila
 
 ![[InverseCDFUniformlyDistributeContinuousRV.png]]
 
-For simulating a reading of a uniform continuous random variable it is enough to apply this algorithm: we pick a domain in the range from $0$ to $1$ (because we are chosing a probability) and we read the corresponding value on the $y$ axis.
+For simulating a reading of a uniform continuous random variable it is enough to apply this algorithm: ==we pick a domain in the range== from $0$ to $1$ (because we are chosing a probability) and we read the corresponding value on the $y$ axis.
 
 $$F^{-1}(u) =a + (b-a) \cdot u $$
 
@@ -1318,7 +1318,7 @@ $$F^{-1}(u) =a + (b-a) \cdot u $$
 	\end{algorithm}
 ```
 
-We can prove the following strong result about this method: let $U$ be a uniform random variable in range $(0, 1)$. We can state that for any continuous cumulative distribution function $F()$ (and, therefore, for any random variable, because every one of them has a cumulative distribution function), the random variable $X = F^{-1}(U)$ has distribution cumulative function $F()$. That is, the native algorithm using the Inverse Transform concept is correct for each target random variable.
+We can prove the following strong result about this method: let $U$ be a uniform random variable in range $(0, 1)$. We can state that for any continuous cumulative distribution function $F()$ (and, therefore, for any random variable, because every one of them has a cumulative distribution function), the random variable $X = F^{-1}(U)$ has ==cumulative distribution function== $F()$. That is, the native algorithm using the Inverse Transform concept is correct for each target random variable.
 
 The second point of discussion that will open for other algorithmic techniques is asking ourselves if this algorithm is really always applicable. While in the discrete case, any cumulative distribution function is invertible, in the continuous it depends.
 
@@ -1334,6 +1334,8 @@ $$P[F^{-1}(U) \leq x] = P\Bigg[F\Big(F^{-1}(U)\Big) \leq F(x)\Bigg] = P[U \leq F
 This is the probability that a uniform random number between $0$ and $1$ (so, a probability value) is less or equal to $F(x)$ and therefore
 
 $$P[U \leq F(x)] = F_X(x) = F(x)$$
+
+==non capisco==
 
 -------------------------------------------------------------
 
