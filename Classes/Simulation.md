@@ -1279,7 +1279,7 @@ Differently from its discrete counterpart, it makes very little sense to ask wha
 
 Each of the techniques for generating a discrete random variable has its analogue in the
 continuous case. The way to generate continuous random variables is the continuous counterpart of the Inverse Transform Method.
-#### Uniformly Distribute Continuous Random Variable 
+#### Uniformly Distributed Continuous Random Variable 
 The probability distribution describing the possible outcome is constant over a certain range. That is why it is called uniform.
 
 This range is defined by two parameters, $a$ and $b$, that is, the lowest and the highest possible value that the random variable can take. Therefore, the probability of getting a reading of the random variable lower than $a$ or greater than $b$ is $0$.
