@@ -1329,11 +1329,13 @@ Now, $F$ is monotone increasing function of $x$ since it is a cumulative distrib
 
 $$P[F^{-1}(U) \leq x] = P\Bigg[F\Big(F^{-1}(U)\Big) \leq F(x)\Bigg] = P[U \leq F(x)]$$
 
-This is the probability that a uniform random number between $0$ and $1$ (so, a probability value) is less or equal to $F(x)$ and therefore
+This is the probability that a uniform random number between $0$ and $1$ (so, a probability value) is less or equal to $F(x)$ and, since $F(x)$ is a cumulative distribution function of a uniformly distributed random variable, we have that
 
-$$P[U \leq F(x)] = F_X(x) = F(x)$$
+$$P[U \leq F(x)] = F(x)$$
 
-==non capisco==
+Concluding,
+
+$$F_X(x) = F(x)$$
 
 -------------------------------------------------------------
 
@@ -1342,14 +1344,14 @@ Suppose to have a continuous random variable having probability density function
 
 $$f(x) = \lambda \cdot e^{-\lambda x}, \quad 0 < x < \infty$$
 
-for some $\lambda > 0$ is said to be an exponential random variable with parameter $\lambda$, which it is interpreted as a **rate**.
+for some $\lambda > 0$ is said to be an **exponential random variable** with parameter $\lambda$, which it is interpreted as a **rate**.
 
 Is it easy to verify that the expected value and variance of such a random variable are as follows:
 
 Expected Value $\mathbb{E}[X] = \frac{1}{\lambda}$.<br />
 Variance $Var[X] = \frac{1}{\lambda^2}$
 
-$\lambda$ is the expected value from a phenomenon that assumes low values with much higher probability than high values. Hence, the probability of this phenomenon decreases exponentially.
+$\lambda$ is the value that we expect from a phenomenon that assumes low values with much higher probability than high values. Hence, the probability of this phenomenon decreases exponentially.
 
 The cumulative distribution function of an exponential random variable is given by
 
