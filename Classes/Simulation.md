@@ -1241,7 +1241,7 @@ At this point, we know that we can define this $j = \Bigg \lfloor \frac{\log(1 -
 -------------------------------------------------------------
 
 ##### Negative Binomial Random Variable
-Let $X$ denote the number of trials needed to obtain $r$ successes when each trial is independently a success with probability $p$. Then, $X$ is defined as a negative binomial of parameters $p, r$:<br />
+Let $X$ denote the number of trials needed to obtain $r$ successes when each trial is independently a success with probability $p$. Then, $X$ is defined as a **negative binomial random variable** of parameters $p, r$ and it models the number of failures in a sequence of independent and identically distributed Bernoulli trials before a specified (non-random) number of successes (denoted $r$) occurs.<br />
 
 $P[X = i]$
 
