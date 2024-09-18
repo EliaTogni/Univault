@@ -1298,13 +1298,11 @@ The point of modeling with continuous random variables is that the geometric rep
 
 Let's analyze the algorithmic part.
 
-We can exploit the idea of the Inverse Transform Method and apply it in a similar way to this context. We consider a continuous random variable having distribution function $F$ and, firstly, we compute its inverse, $F^{-1}(u)$.
+We can exploit the idea of the Inverse Transform Method and apply it in a similar way to this context. We consider a continuous random variable having distribution function $F$ and, firstly, we compute its inverse, $F^{-1}(u) =a + (b-a) \cdot u$.
 
 ![[InverseCDFUniformlyDistributeContinuousRV.png]]
 
-For simulating a reading of a uniform continuous random variable it is enough to apply this algorithm: ==we pick a domain in the range== from $0$ to $1$ (because we are chosing a probability) and we read the corresponding value on the $y$ axis.
-
-$$F^{-1}(u) =a + (b-a) \cdot u $$
+For simulating a reading of a uniform continuous random variable it is enough to apply the following algorithm.
 
 ```pseudo
 	\begin{algorithm}
