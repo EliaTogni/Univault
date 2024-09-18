@@ -1383,7 +1383,7 @@ Therefore
 
 $$\underbrace{P[X > s + t] = P[X > t] \cdot P[X > s]}_{\text{Rearrangement of the memoryless property}}$$
 
-Let's see if the cumulative distribution function of the exponential fits this claim.
+Let's see if the cumulative distribution function of the exponential fits this claim. We can write $P[X > s + t]$ as $1 - F_X(s + t)$:
 
 $$\underbrace{1 - F_X(s + t)}_{1 - (1 - e^{-\lambda x})} = [1 - F(t)] [1 - F(s)] = $$
 $$e^{- \lambda (s + t)} = e^{-\lambda t} e ^{- \lambda s}$$
