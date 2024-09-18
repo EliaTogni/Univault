@@ -597,11 +597,12 @@ which is the initial one.
 #### Weak law of large numbers
 Using Chebyshev’s inequality it is possible to prove the **weak law of large numbers**, which states that the probability that the average of the first $n$ terms of a sequence of independent and identically distributed random variables differs from its mean by more than $\varepsilon$ goes to $0$ as $n$ goes to infinity.
 
+**Claim**:<br />
 Let $X_1, X_2, \dots$ be a sequence of independent and identically distributed random variables having mean $\mu$. Then, for any $\varepsilon > 0$
 
 $$P\Bigg[ \bigg \vert \frac{X_1 + \cdots + X_n}{n} - \mu \bigg\vert \geq \varepsilon \Bigg] \to 0 \text{ as } n \to \infty$$
 
-Proof:<br />
+**Proof**:<br />
 We give a proof under the additional assumption that the random variables $X_i$ have a finite variance $\sigma^2$. Now
 
 $$\mathbb{E}\Bigg[\frac{X_1 + \dots + X_n}{n}\Bigg] = \frac{1}{n} \Big(\mathbb{E}[X_1] + \dots + \mathbb{E}[X_n]\Big) = \frac{1}{n} \cdot n\mu = \mu$$
@@ -1119,7 +1120,10 @@ Hence, for $n$ large and $p$ small, it holds that
 
 $$P[X = i] \approx e^{-\lambda}\frac{\lambda^i}{i!}$$
 
-Another interesting result about Poisson random variables is that they are **invariant** to aggregation (and to disaggregation). Let's consider a Poisson random variable $X$ of parameter $\lambda$ that is counting the number of successes over a large number of trials. Let's assume that the type of these successful events may not be unique. Is it correct to model the readings of this numbers as the reading of a Poisson random variable? Let's recall the example of the pharmacy and assume that is desired to measure the number of male and female customers. Knowing that the total number of customers entering in the pharmacy can be modelled as a Poisson random variable, it is possible to demonstrate that also the number of male customers and of female customers entering in the pharmacy can be modelled as Poisson random variables too. Starting from
+Another interesting result about Poisson random variables is that they are **invariant** to aggregation (and to disaggregation). Let's consider a Poisson random variable $X$ of parameter $\lambda$ that is counting the number of successes over a large number of trials. Let's assume that the type of these successful events may not be unique. Is it correct to model the readings of this numbers as the reading of a Poisson random variable? Let's recall the example of the pharmacy and assume that is desired to measure the number of male and female customers. Knowing that the total number of customers entering in the pharmacy can be modelled as a Poisson random variable, it is possible to demonstrate that also the number of male customers and of female customers entering in the pharmacy can be modelled as Poisson random variables too. 
+
+**Claim**:<br />
+Starting from
 
 $$X = X_A + X_B$$
 
@@ -1129,7 +1133,8 @@ $$X_A \text{ is a Poisson random variable of parameter } \lambda_A \space(\text{
 $$X_B \text{ is a Poisson random variable of parameter } \lambda_B \space(\text{such that }\lambda_B =\lambda \cdot p_B)$$
 
 In fact, $\lambda = \lambda_A + \lambda_B = \lambda \cdot p_A + \lambda \cdot p_B = \lambda \cdot (p_A + p_B) = \lambda \cdot 1 = \lambda$.<br />
-It follows the proof of the previous theorem:
+
+**Proof**:<br />
 
 $$P[X_A = n, X_B = m] =$$
 $$= P[X_A = n, X_B = m \space \vert X = n + m] \cdot P[X = n + m] + P[X_A = n, X_B = m \vert X \neq n + m] \cdot P[X \neq n + m] = $$
@@ -1316,11 +1321,12 @@ For simulating a reading of a uniform continuous random variable it is enough to
 	\end{algorithm}
 ```
 
-We can prove the following strong result about this method: let $U$ be a uniform random variable in range $(0, 1)$. We claim that for any continuous cumulative distribution function $F()$ (and, therefore, for any random variable because every one of them has a cumulative distribution function), the random variable $X = F^{-1}(U)$ has cumulative distribution function $F()$ and, therefore, it is the random variable we wish to simulate. 
+**Claim**:<br />
+Let $U$ be a uniform random variable in range $(0, 1)$. We claim that for any continuous cumulative distribution function $F()$ (and, therefore, for any random variable because every one of them has a cumulative distribution function), the random variable $X = F^{-1}(U)$ has cumulative distribution function $F()$ and, therefore, it is the random variable we wish to simulate. 
 
 This claim firstly suggests that the native algorithm using the Inverse Transform concept is correct for each target random variable. The second point of discussion that will open for other algorithmic techniques is asking ourselves if this algorithm is really always applicable. While in the discrete case, any cumulative distribution function is invertible, in the continuous it depends.
 
-Proof:<br />
+**Proof**:<br />
 Let $F_X$ the cumulative distribution function of $X = F^{-1}(U)$. We don't actually know the shape of this random variable. It is possible to say that
 
 $$F_X(x) = P[X \leq x] = P[F^{-1}(U) \leq x]$$
@@ -1359,9 +1365,10 @@ $$f(x) = \int_{0}^{x}{\lambda e^{-\lambda x}dx} = 1 - e^{-\lambda x}, \quad 0 < 
 
 ![[ExponentialRandomVariable.png]]
 
-This random variable is very useful to model the lifetime of an object or, in general, breakdowns of machines. This is due to the **memoryless property**, that is, the probability $P[X > s + t | X > s] = P[X > t]$, where $s + t$ are constants. To understand why the above is called the memoryless property, imagine that $X$ represents the lifetime of some unit, and consider the probability that a unit of age $s$ will survive an additional time $t$. This property is telling that the probability that a machine breaks down after, for example, $15$ minutes knowing that no breakdown occurred for the first $10$ minutes equals the probability that the machine will break down in $5$ minutes.
+**Claim**:<br />
+This random variable is very useful to model the lifetime of an object or, in general, breakdowns of machines due to the **memoryless property**, that is, the probability $P[X > s + t | X > s] = P[X > t]$, where $s + t$ are constants. To understand why the above is called the memoryless property, imagine that $X$ represents the lifetime of some unit, and consider the probability that a unit of age $s$ will survive an additional time $t$. This property is telling that the probability that a machine breaks down after, for example, $15$ minutes knowing that no breakdown occurred for the first $10$ minutes equals the probability that the machine will break down in $5$ minutes.
 
-Proof:
+**Proof**:
 
 $$\text{Knowing that } P[A \vert B] = \frac{P[A \cap B]}{P[B]}\text{, is it possible to obtain }$$
 $$P[X > s + t \vert X > s] = \underbrace{\frac{P[X > s + t \wedge X > s]}{P[X > s]}}_{P[X > t]} = \frac{P[X > s + t]}{P[X > s]}$$
@@ -1397,14 +1404,14 @@ when multiplied by a positive constant.
 
 **Claim**: let $X$ be am exponential random variable of parameter $\lambda$, then $c \cdot X$ is an exponential random variable of parameter $\frac{\lambda}{c}$.
 
-Proof: 
+**Proof**: 
 
 $$P[y \leq x] = P[c\cdot X \leq x] = P[X \leq \frac{x}{c}] = 1 - e^{- \lambda \cdot \frac{x}{c}} = 1 - e^{- \frac{\lambda}{c} \cdot x}$$
 
-Now, another useful property of exponential random variables.<br />
+**Claim**:<br />
 Let $X_1, \dots, X_n$ be a set of independent exponential random variables of rate $\lambda_i$ for $i = 1, \dots, n$. Then, the minimum $\min\{X_1, \dots, X_n\}$ is, again, an exponential random variable with rate $\sum_{i = 1}^{n} \lambda_i$, independently on which $X_i$ is the smallest.
 
-Proof:<br />
+**Proof**:<br />
 Let $M$ to be the minimum $\min\{X_1, \dots, X_n\}$. Let 
 
 $$Y_j = \cases{1 \quad \text{ if } X_j \text{ is minimum} \cr \cr 0 \quad \text{ otherwise}}$$
@@ -1496,7 +1503,7 @@ Given this hypothesis it is possible to generate a random value in this distribu
 
 The value obtained in this way is distributed according to $F()$.
 
-Proof:<br />
+**Proof**:<br />
 By following this process, the resulting $F(x)$ is defined as:
 
 $$F(x) = P[X \leq x] = \sum_{j=1}^n P[X \leq x | J= j]\cdot P[J=j]$$
@@ -1644,10 +1651,10 @@ a **Poisson Process** having rate $\lambda$ if:
 - $\lim_{h \to 0} \frac{P[N(h) = 1]}{h} = \lambda$ (in small intervals, the probability of an event to occur is approximately $h\lambda$);
 - $\lim_{h \to 0} \frac{P[N(h) \geq 2]}{h} = 0$ (it is unlikely that two or more events occur in small intervals).
 
-Poisson processes have many nice properties.<br />
+**Claim**:<br />
 If a process satisfies the previous conditions, then $N(t)$ is a Poisson random variable with expected value $t\lambda$.
 
-Proof:<br />
+**Proof**:<br />
 Recall that $N(t)$ is the number of events in $[0, t]$. Let's take the slot between $0$ and $t$ and split it into $n$ slots of equal length $t/n$. Now, let's consider one of them and assume $n$ to be large enough: then we are in the case of a small interval. Therefore, $P[N(t/n) \geq 2] \to 0$ and $P[N(t/n) = 1]  \to \frac{t}{n} \cdot \lambda = p$ ==check la formula==. We made this reasoning for only one of these slots but if we look at the nuymber of events in this joint time interval, we can do the analysis independently, due to the independent increment assumption. Even more, for the stationary increment assumption, we know that the result of the analysis on each slot will be the same. Therefore, we will have $n$ copies of the first analysis.
 
 ![[NSlotsPP.png]]
@@ -1656,7 +1663,7 @@ We want to count the number of slots containing an event. This is a binomial ran
 
 Furthermore, the interarrival times (the times in between one event and the next one) are i.i.d. exponential random variables with parameter $\lambda$.
 
-Proof:<br />
+**Proof**:<br />
 Let's call $X_i$ to be the time between event #$i -1$ and event #$i$. This random quantity is the interarrival time. Indeed, the $X_i$ random variable, that is, the time in between two events defines time slots, which are disjoint. Since disjoint time intervals are independent, these variables also are.
 We also know that the number of events depends only on the length, so these random variables are independent and also identically distributed: in fact if we take intervals of the same length, we have the same probability of finding events in them. Therefore, their probability density function is the same. Now we make an assumption: $X_i$ is an exponential random variable.
 
@@ -1677,7 +1684,7 @@ There are two possible ways to simulate a Poisson Process of parameter $\lambda$
 
 Is it true that this algorithm is producing a valid random variable? What is giving the structure is only the generation of $n$.
 
-Proof:<br />
+**Proof**:<br />
 Let's define $N(t)$ to be the number of values of $\{u_1 T, u_2 T, \dots u_n T\}$, which are $\leq t$. We will pretend this $N(t)$ to be a random variable of unknown structure and we want to prove that $N(t)$ is actually defining a Poisson process. We define $I_1, \dots I_r$, which are $r$ disjoint intervals in the range $[0, t]$. An event is of type $k$ if $u_k T$ falls inside $I_k$ and an event is of type $r + 1$ if it falls outside of any $I_k$. Now, let $p_1, \dots, p_{r +1}$ be the probabilities of being in $I_1, \dots, I_r$ or of type $r + 1$. These probabilities, however, since we have drawn $n$ points uniformly at random, depends on the length of this $I$ and not on its position. So $p_i = \frac{\vert I_i \vert}{T}$, that is the length of the interval divided by $T$. Hence, $p_{r + 1} = 1 - \sum_{k=1}^{r}p_k$.
 
 Recalling that $I_1, \dots I_r$ are disjoint and that the events are independently classified, we now can check the conditions of a Poisson process:
@@ -1711,7 +1718,7 @@ Obviously this kind of model are harder to model since it's necessary to have an
 ![[NonHomogeneousPoissonProcess.png]]
 
 
-Proof:<br />
+**Proof**:<br />
 If we have an homogeneous Poisson Process of intensity $\lambda$ and accept an event with probability $p(t)$, we obtain a non homogeneous Poisson Process of parameter $\lambda(t) = \lambda \cdot p(t)$:
 - events are occurring at random time points $\to$ True, because the selection is also a random process;
 - $N(t)$ is the number of events in the interval $[0,t]$ $\to$ This is only a definition;
@@ -1721,7 +1728,7 @@ If we have an homogeneous Poisson Process of intensity $\lambda$ and accept an e
 - $\lim_{h\to 0} \frac{P[N(h)=1]}{h} = \lambda(t)$ $\to$ proved below;
 - $\lim_{h\to 0} \frac{P[N(h)\geq 2]}{h} = 0$ $\to$ True, because was true before and we are not adding new events (at most this is a Poisson process) so the probability cannot increase.
 
-Proof:<br />
+**Proof**:<br />
 Since we know that the probability of finding more than $1$ event in a small interval is $0$ this is equal to the probability of $1$ or more:
 
 $$\begin{align}
@@ -1781,9 +1788,10 @@ $$R=(F^{-1}(u_1), G^{-1}(u_2))$$
 
 The couple generated has the same correlation value of the variables $X$ and $Y$.
 
+**Claim**:<br />
 Say $C_{X,Y} (x,y)$ to be the copula generated by $X,Y$ and $s(x),t(y)$ to be an arbitrary increasing function of $x$ and $y$. Then $C_{s(X),t(Y)}(x,y) = C_{X,Y}(x,y)$.
 
-Proof:<br />
+**Proof**:<br />
 
 $$\begin{align}
 &X \rightarrow \text{cumulative distribution function} \space F\\
