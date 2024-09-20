@@ -1656,7 +1656,7 @@ Suppose that events are occurring at random time points. These events are said t
 If a process satisfies the previous conditions, then $N(t)$ is a Poisson random variable with expected value $t\lambda$.
 
 **Proof**:<br />
-Recall that $N(t)$ is the number of events in $[0, t]$. Let's take the slot between $0$ and $t$ and split it into $n$ slots of equal length $t/n$. Now, let's consider one of them and assume $n$ to be large enough: then we are in the case of a small interval. Therefore, $P[N(t/n) \geq 2] \to 0$ and $P[N(t/n) = 1]  \to \frac{t}{n} \cdot \lambda = p$ ==check la formula==. We made this reasoning for only one of these slots but if we look at the nuymber of events in this joint time interval, we can do the analysis independently, due to the independent increment assumption. Even more, for the stationary increment assumption, we know that the result of the analysis on each slot will be the same. Therefore, we will have $n$ copies of the first analysis.
+Recall that $N(t)$ is the number of events in $[0, t]$. Let's take the slot between $0$ and $t$ and split it into $n$ slots of equal length $t/n$. Now, let's consider one of them and assume $n$ to be large enough: then we are in the case of a small interval. Therefore, $P[N(t/n) \geq 2] \to 0$ and $P[N(t/n) = 1]  \to \frac{t}{n} \cdot \lambda = p$. We made this reasoning for only one of these slots but if we look at the nuymber of events in this joint time interval, we can do the analysis independently, due to the independent increment assumption. Even more, for the stationary increment assumption, we know that the result of the analysis on each slot will be the same. Therefore, we will have $n$ copies of the first analysis.
 
 ![[NSlotsPP.png]]
 
