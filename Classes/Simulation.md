@@ -1462,9 +1462,9 @@ where
 
 $$\Phi(x) = \frac{1}{\sqrt{2 \pi}} \int_0^x e^{-z^2 / 2} dz$$
 
-A kind of normalization is done In $\Phi$. In other terms, $\Phi(x)$ could be seen as the cumulative distribution function of a normal random variable having expected value $0$ and variance $1$.
+A kind of normalization is done in $\Phi$. In other terms, $\Phi(x)$ could be seen as the cumulative distribution function of a normal random variable having expected value $0$ and variance $1$.
 
-As for the Exponential, we have properties guiding our modeling.<br />
+As for the exponential, we have properties guiding our modeling.<br />
 First of all, the function $\Phi$ cannot be expressed using only additions, subtractions, multiplications and root extractions. Thus is necessary a numerical approximation. 
 
 If $X$ is normally distributed with parameters $\mu$ and $\sigma^2$, $Z = aX + b$ is normally distributed with parameters $a\mu + b$ and $a^2 \sigma^2$.
@@ -1472,7 +1472,7 @@ If $X$ is normally distributed with parameters $\mu$ and $\sigma^2$, $Z = aX + b
 Also, $\Phi$ is not an invertible function: therefore, in term of creating an algorithm for producing valid values for normal random variables, it is not possible to apply the Inverse Transform technique and it is necessary to use other algorithm design techniques.
 
 ##### Central Limit Theorem
-Let $X_1, \dots, X_n$ be a sequence of $n$ i.i.d random variables having finite expected value $\mu$ and variance $\sigma^2$.
+Let $X_1, \dots, X_n$ be a sequence of $n$ indipendent and identically distributed random variables having finite expected value $\mu$ and variance $\sigma^2$.
 
 $$\lim_{n \to \infty} P\Bigg[\frac{\sum_{i = 1}^{n}X_i - n \cdot \mu}{\sqrt{n \sigma^2}} < x\Bigg] = \Phi(x)$$
 
@@ -1570,28 +1570,28 @@ so, as usual, we draw a uniform random value between $0$ and one and use it as a
 
 -----
 ## Acceptance-rejection method
-Sadly, seeing the normal random value as a composition of two distribution does not help since the two are still not invertible.
+Sadly, seeing the normal random variable as a composition of two distribution does not help since the two are still not invertible.
 
 Say we have a random variable $X$ that needs to be generated with probability density function $f(x)$ that is not invertible. Suppose we also have another random variable $Y$ with probability density function $g(y)$ that is easy to generate and it is know that $f(y)/g(y) \leq c \space\space \forall y$.
 
 The procedure is:
 - generate a value $y$ for $Y$ (from $g(y)$);
-- generate a value $u$ for a uniformily distributed random variable $U$;
+- generate a value $u$ for a uniformly distributed random variable $U$;
 - if $u \leq \frac{f(y)}{c\cdot g(y)}$, then output $X = y$;
 - otherwise iterate.
 
-This not only generates a random variable with probability density function $f(x)$ $\fbox{a}$, but also does that in a number of iteration that follows a geometric Ramdom Variable with expected value $c$   $\fbox{b}$.
+This not only generates a random variable with probability density function $f(x)$ $\fbox{a}$, but also does that in a number of iteration that follows a geometric random variable with expected value $c$  $\fbox{b}$.
 
 If $X$ follows a normal distribution, then a good distribution for $Y$ is an exponential.
 
 ### Proof $\fbox{b}$
 
 >[!Observation]
->$P[Y=y \land \text{is accepted}] = P[Y=y]\cdot P[\text{accepted }|Y=y]$ Because the acceptance step depends on the value Y. Since $P[Y=y] = g(y)$ and $P[\text{accepted }| Y=y] = \frac{f(y)}{c \cdot g(y)}$ we can rewrite it as:
+>$P[Y=y \land \text{is accepted}] = P[Y=y]\cdot P[\text{accepted }|Y=y]$ because the acceptance step depends on the value $Y$. Since $P[Y=y] = g(y)$ and $P[\text{accepted }| Y=y] = \frac{f(y)}{c \cdot g(y)}$ we can rewrite it as:
 >$g(y) \cdot \frac{f(y)}{c \cdot g(y)} = \frac{f(y)}{c}$
 >
 
-if $Y$ was discrete we could write $P[accepted] = \sum_{y \in Y}  \frac{f(y)}{c}$ since $\frac{f(y)}{c}$ is the probability of a specific $y$ being accepted, to have the probability of being accepted in general is the sum over every possible value of $y$.<br />
+If $Y$ was discrete we could write $P[accepted] = \sum_{y \in Y}  \frac{f(y)}{c}$ since $\frac{f(y)}{c}$ is the probability of a specific $y$ being accepted, to have the probability of being accepted in general is the sum over every possible value of $y$.<br />
 Since $Y$ is continuous:
 $$P[accepted] = \int_{-\infty}^{+\infty} \frac{f(y)}{c} dy = \frac{1}{c} \int_{-\infty}^{+\infty} f(y) dy = \frac{1}{c}$$
 $\square$
@@ -1603,6 +1603,8 @@ $$= \sum_{i=1}^\infty (1-\frac{1}{c})^{i-1} \frac{1}{c} f(x) = \frac{1}{c} f(x) 
 Remembering that $\sum_{i=0}^\infty q^n \rightarrow \frac{1}{1-q}$, we can apply to $\sum_{i=1} (1-\frac{1}{c})^{i-1}$ by substituting $j=i-1$ and $q= 1-\frac{1}{c}$ and obtain $\sum_{j=0}^\infty q^j \rightarrow \frac{1}{1-q} = \frac{1}{1-(1-1/c)} = c$. So going back to the original  equation:
 
 $$\frac{1}{c} f(x) \sum_{i=1}^\infty (1-\frac{1}{c})^{i-1} = \frac{1}{c} f(x) \cdot c = f(x) \space \square$$
+
+-----
 
 ### Acceptance-rejection for a Normal Random Variable
 Remember that to generate a valid value for every normal random variable is enough to generate a valid value for a normal random variable with $\mu = 0$ and $\sigma^2 = 1$ and then simply shift and rescale.
