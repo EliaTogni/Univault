@@ -1592,7 +1592,7 @@ If $X$ follows a normal distribution, then a good distribution for $Y$ is an exp
 >
 
 if $Y$ was discrete we could write $P[accepted] = \sum_{y \in Y}  \frac{f(y)}{c}$ since $\frac{f(y)}{c}$ is the probability of a specific $y$ being accepted, to have the probability of being accepted in general is the sum over every possible value of $y$.<br />
-Since $Y$ is continue:
+Since $Y$ is continuous:
 $$P[accepted] = \int_{-\infty}^{+\infty} \frac{f(y)}{c} dy = \frac{1}{c} \int_{-\infty}^{+\infty} f(y) dy = \frac{1}{c}$$
 $\square$
 ### Proof $\fbox{a}$
@@ -1638,8 +1638,7 @@ def genHalfNormal():
 
 -------------------------------------------------------------
 ## Poisson processes
-Suppose that events are occurring at random time points. These events are said to constitute
-a **Poisson Process** having rate $\lambda$ if:
+Suppose that events are occurring at random time points. These events are said to constitute a **Poisson Process** having rate $\lambda$ if:
 - events are occurring at random time points;
 - $N(t)$ is the number of events in the interval $[0, t]$;
 - $N(0) = 0$ (process begins at time $0$);
@@ -1661,11 +1660,11 @@ Recall that $N(t)$ is the number of events in $[0, t]$. Let's take the slot betw
 
 We want to count the number of slots containing an event. This is a binomial random variable of parameter $p$. What happens to a binomial random variable when $n$ is very large and $p = \frac{t}{n} \lambda$ is very small? This random variable becomes a Poisson one of parameter $n \cdot p = t \cdot \lambda$.
 
-Furthermore, the interarrival times (the times in between one event and the next one) are i.i.d. exponential random variables with parameter $\lambda$.
+Furthermore, the interarrival times (the times in between one event and the next one) are independent and identically distributed exponential random variables with parameter $\lambda$.
 
 **Proof**:<br />
 Let's call $X_i$ to be the time between event #$i -1$ and event #$i$. This random quantity is the interarrival time. Indeed, the $X_i$ random variable, that is, the time in between two events defines time slots, which are disjoint. Since disjoint time intervals are independent, these variables also are.
-We also know that the number of events depends only on the length, so these random variables are independent and also identically distributed: in fact if we take intervals of the same length, we have the same probability of finding events in them. Therefore, their probability density function is the same. Now we make an assumption: $X_i$ is an exponential random variable.
+We also know that the number of events depends only on the length of the interval, so these random variables are independent and also identically distributed: in fact if we take intervals of the same length, we have the same probability of finding events in them. Therefore, their probability density function is the same. Now we make an assumption: $X_i$ is an exponential random variable.
 
 Let's be more formal. Consider $P[X_1 > t]$, that is, the probability of the arrival time of the first event to be greater than $t$. This is equal to not finding events up to $t$: $P[N(t) = 0]$. Since $N(t)$ is a Poisson random variable, we know that $P[X = 0] = e^{- \lambda t} \frac{(\lambda t)^0}{0!} =e^{- \lambda t}$. This is indeed exponential. Therefore, $P[X_1 \leq t] = 1 - e^{- \lambda t}$, which is a cumulative distribution function of an exponential. Hence, the arrival time of the first event is an exponential random variable. Now, let's take $P[X_i > t \vert X_{i - 1} = s] = P\Big[\emptyset \text{ events in } [s, s + t] \vert X_{i - 1} = s\Big]$. Again we are in the setting of counting the number of events in a certain slot but the number of events in this slot is independent on what happened before. Hence, this is equal to $P\Big[\emptyset \text{ events in } [s, s + t]\Big] = P\Big[\emptyset \text{ events in } [0,t]\Big] = e^{- \lambda t}$, which is again exponential.
 
