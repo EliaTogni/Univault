@@ -1424,7 +1424,7 @@ $$P[X_j = \min_i\{X_i - t\}] = P[X_j = \min_i\{X_i\}] = P[Y_j]$$
 
 The final equalities follow because, by the memoryless property of exponential random variables, given that $X_i$ exceeds $t$, the amount by which it exceeds it is exponential with rate $\lambda_i$. Consequently, the conditional distribution of $X_1−t, \dots, X_n−t$ given that all the $X_i$ exceed $t$ is the same as the unconditional distribution of $X_1, \dots, X_n$. The probability that one of them is the minimum is determined solely by their respective rates $\lambda_i$​. Therefore, even conditioned on $M>t$, the probability that $X_j$​ is the minimum remains the same as in the absence of the condition $M>t$. Thus, $M$ is independent of which of the $X_i$ is the smallest.
 
-As second step, let's look at $P[M > t]$ This is equal to $P[X_i > t \space \forall i] = \prod_i[X_i > t]$ since these random variables are independent. Hence, this is equal to $\prod_i (1 - F(t))$ and to $\prod_i e^{-\lambda_i t} = e^{-(\sum_i \lambda_i) t}$.  Therefore, the distribution of $M$ is exponential with rate $\sum_i \lambda_i$
+As second step, let's look at $P[M > t]$. This is equal to $P[X_i > t \space \forall i] = \prod_i P[X_i > t]$ since these random variables are independent. Hence, this is equal to $\prod_i (1 - F(t))$ and to $\prod_i e^{-\lambda_i t} = e^{-(\sum_i \lambda_i) t}$.  Therefore, the distribution of $M$ is exponential with rate $\sum_i \lambda_i$.
 
 **Claim**:<br />
 The probability of $X_j$ being the smallest is $P[X_j = M] = \frac{\lambda_j}{\sum_i \lambda_i}$. Taking as an example the pharmacy exercise, the probability of the next customer to wear a red hat is the ratio between the rate of red hats and the sum of the rates of all the hats. Therefore, the probability of the next event of being of a particular type is proportional to the rate of that particular type.
@@ -1521,8 +1521,7 @@ $$\sum_{j=1}^n P[X \leq x | J= j]\cdot \alpha_j = \sum_j \alpha_j F_j(x)$$
 
 $\square$
 
-An example of use of the Composition technique.
-Let's consider a triangular distribution.
+An example of use of the Composition technique. Let's consider a triangular distribution.
 
 ![[TriangularDistribution.jpg]]
 
