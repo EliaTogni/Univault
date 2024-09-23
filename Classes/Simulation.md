@@ -1580,9 +1580,9 @@ Sadly, seeing the normal random variable as a composition of two distribution do
 
 Say we have a random variable $X$ that needs to be generated with probability density function $f(x)$ that is not invertible. Suppose we also have another random variable $Y$ that is easy to generate (for instance, its cumulative distribution function is invertible) and with probability density function $g(y)$. It is also known that $f(y)/g(y) \leq c \space\space \forall y$.
 
-The procedure is:
+In order to generate valid values for $X$, we can follow this procedure:
 - generate a value $y$ for $Y$ (having probability density function $g(y)$);
-- generate a value $u$ for a uniformly distributed random variable $U$;
+- generate a value $u$ for a uniformly distributed random variable $U$ in the range $[0, 1]$;
 - if $u \leq \frac{f(y)}{c\cdot g(y)}$, then output $X = y$;
 - otherwise iterate.
 
