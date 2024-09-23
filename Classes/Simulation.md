@@ -1413,7 +1413,7 @@ Let $X_1, \dots, X_n$ be a set of independent exponential random variables of ra
 This is kinda the counterpart of the property of Poisson random variables of being invariant to aggregation and disaggregation.
 
 **Proof**:<br />
-Let $M$ to be the minimum $\min\{X_1, \dots, X_n\}$. Let 
+Let $M$ to be the minimum $\min\{X_1, \dots, X_n\}$. Knowing which of these random variables is the smallest does not give us further structure on the understad. Let 
 
 $$Y_j = \cases{1 \quad \text{ if } X_j \text{ is minimum} \cr \cr 0 \quad \text{ otherwise}}$$
 
