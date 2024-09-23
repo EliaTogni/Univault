@@ -1595,7 +1595,7 @@ If $X$ follows a normal distribution, then a good distribution for $Y$ is an exp
 ### Proof $\fbox{b}$
 
 >[!Observation]
->$P[Y=y \land \text{is accepted}] = P[Y=y]\cdot P[\text{accepted }|Y=y]$ because the acceptance step depends on the value $Y$. Since $P[Y=y] = g(y)$ and $P[\text{accepted }| Y=y] = \frac{f(y)}{c \cdot g(y)}$ we can rewrite it as:
+>$P[Y=y \land \text{is accepted}] = P[Y=y]\cdot P[\text{accepted }|Y=y]$ because the acceptance step depends on the value $Y$. Since $P[Y=y] = g(y)$ and $P[\text{accepted }| Y=y] = \frac{f(y)}{c \cdot g(y)}$ (since we draw a random number between $0$ and $1$ and the probability of being accepted is the probability of it being less or equal that this ratio) we can rewrite it as:
 >$g(y) \cdot \frac{f(y)}{c \cdot g(y)} = \frac{f(y)}{c}$
 >
 
