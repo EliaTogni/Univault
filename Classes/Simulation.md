@@ -1417,9 +1417,13 @@ Let the random variable $M$ be the minimum $\min\{X_1, \dots, X_n\}$. Knowing wh
 
 $$Y_j = \cases{1 \quad \text{ if } X_j \text{ is minimum} \cr \cr 0 \quad \text{ otherwise}}$$
 
-Now we will prove them to be independent. Firstly, consider $P[Y_j \vert M > t] = P[X_j - t = \min_{i}\{X_i - t\} \vert M > t]$. We are subtracting a constat to each term of the definition. This is equal to $P[X_j - t = \min_i\{X_i - t \vert X_i > t \space \forall i \}]$. Here we just switched from $M$ to the definition of minimum. Now, $X_j$ is an exponential random variable so we know it to have the memoryless property. Hence, $X_j - t$  does not depend on $t$. In other terms, the distribution of $X_j - t$ is again an exponential one, with rate $\lambda_j$. We can remove $t$ from the equality: $P[X_j = \min_i\{X_i - t\}] = P[Y_j]$.
+Now we will prove them to be independent. Firstly, consider $P[Y_j \vert M > t] = P[X_j - t = \min_{i}\{X_i - t\} \vert M > t]$. We are subtracting a constat to each term of the definition. This is equal to $P[X_j - t = \min_i\{X_i - t \vert X_i > t \space \forall i \}]$. Here we just switched from $M$ to the definition of minimum. Now, $X_j$ is an exponential random variable so we know it to have the memoryless property. Hence, $P[X_j]$ to assume a certain value does not depend on $t$. In other terms, the distribution of $X_j - t$ is again an exponential one, with rate $\lambda_j$. Therefore, we can now remove $t$ from the equality: 
 
-As second step, let's look at $P[M > t] = P[X_i > t \space \forall i] = \prod_i[X_i > t] = \prod_i (1 - F(t))$. This is equal to $\prod_i e^{-\lambda_i t} = e^{-(\sum_i \lambda_i) t}$. 
+$$P[X_j = \min_i\{X_i - t\}] = P[Y_j]$$
+
+
+
+As second step, let's look at $P[M > t]$ This is equal to $P[X_i > t \space \forall i] = \prod_i[X_i > t]$ since these random variables are independent. Hence, this is equal to $\prod_i (1 - F(t))$ and to $\prod_i e^{-\lambda_i t} = e^{-(\sum_i \lambda_i) t}$. 
 
 **Claim**:<br />
 The probability of $X_j$ being the smallest is $P[X_j = M] = \frac{\lambda_j}{\sum_i \lambda_i}$. Taking as an example the pharmacy exercise, the probability of the next customer to wear a red hat is the ratio between the rate of red hats and the sum of the rates of all the hats. Therefore, the probability of the next event of being of a particular type is proportional to the rate of that particular type.
