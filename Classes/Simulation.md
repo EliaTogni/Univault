@@ -1399,8 +1399,7 @@ Now, let's look at it in reverse: which are the cumulative distribution function
 
 The exponential random variable are the only ones having this memoryless property since the product of two exponentials is the exponential of the sum. Whenever we have this phenomenon, like an independent arrival or anything else, then the length of this observation must be an exponential random variable.
 
-Another useful property of exponential random variables is that they remain exponential
-when multiplied by a positive constant.
+Another useful property of exponential random variables is that they remain exponential when multiplied by a positive constant.
 
 **Claim**: let $X$ be am exponential random variable of parameter $\lambda$, then $c \cdot X$ is an exponential random variable of parameter $\frac{\lambda}{c}$.
 
@@ -1410,6 +1409,8 @@ $$P[y \leq x] = P[c\cdot X \leq x] = P[X \leq \frac{x}{c}] = 1 - e^{- \lambda \c
 
 **Claim**:<br />
 Let $X_1, \dots, X_n$ be a set of independent exponential random variables of rate $\lambda_i$ for $i = 1, \dots, n$. Then, the minimum $\min\{X_1, \dots, X_n\}$ is, again, an exponential random variable with rate $\sum_{i = 1}^{n} \lambda_i$, independently on which $X_i$ is the smallest.
+
+This is kinda the counterpart of the property of Poisson random variables of being invariant to aggregation and disaggregation.
 
 **Proof**:<br />
 Let $M$ to be the minimum $\min\{X_1, \dots, X_n\}$. Let 
