@@ -1361,7 +1361,7 @@ $\lambda$ is the value that we expect from a phenomenon that assumes low values 
 
 The cumulative distribution function of an exponential random variable is given by
 
-$$f(x) = \int_{0}^{x}{\lambda e^{-\lambda x}dx} = 1 - e^{-\lambda x}, \quad 0 < x < \infty$$
+$$F(x) = \int_{0}^{x}{\lambda e^{-\lambda x}dx} = 1 - e^{-\lambda x}, \quad 0 < x < \infty$$
 
 ![[ExponentialRandomVariable.png]]
 
@@ -1401,11 +1401,12 @@ The exponential random variable are the only ones having this memoryless propert
 
 Another useful property of exponential random variables is that they remain exponential when multiplied by a positive constant.
 
-**Claim**: let $X$ be am exponential random variable of parameter $\lambda$, then $c \cdot X$ is an exponential random variable of parameter $\frac{\lambda}{c}$.
+**Claim**:<br />
+Let $X$ be am exponential random variable of parameter $\lambda$, then $c \cdot X$ is an exponential random variable of parameter $\frac{\lambda}{c}$.
 
 **Proof**: 
 
-$$P[y \leq x] = P[c\cdot X \leq x] = P[X \leq \frac{x}{c}] = 1 - e^{- \lambda \cdot \frac{x}{c}} = 1 - e^{- \frac{\lambda}{c} \cdot x}$$
+$$P[Y \leq x] = P[c\cdot X \leq x] = P[X \leq \frac{x}{c}] = 1 - e^{- \lambda \cdot \frac{x}{c}} = 1 - e^{- \frac{\lambda}{c} \cdot x}$$
 
 **Claim**:<br />
 Let $X_1, \dots, X_n$ be a set of independent exponential random variables of rate $\lambda_i$ for $i = 1, \dots, n$. Then, the minimum $\min\{X_1, \dots, X_n\}$ is, again, an exponential random variable with rate $\sum_{i = 1}^{n} \lambda_i$, independently on which $X_i$ is the smallest.
@@ -1417,7 +1418,7 @@ Let the random variable $M$ be the minimum $\min\{X_1, \dots, X_n\}$. Knowing wh
 
 $$Y_j = \cases{1 \quad \text{ if } X_j \text{ is minimum} \cr \cr 0 \quad \text{ otherwise}}$$
 
-Now we will prove them to be independent. Firstly, suppose that each random variable exceeds a constant value $t$ and consider $P[Y_j \vert M > t]$. This is equal to $P[X_j - t = \min_{i}\{X_i - t\} \vert M > t]$. We are subtracting a constat to each term of the definition. This is equal to $P[X_j - t = \min_i\{X_i - t \}\vert X_i > t \space \forall i]$. Here we just switched from $M$ to the definition of minimum. We can now remove $t$ from the equality: 
+Now we will prove them to be independent. Firstly, suppose that each random variable exceeds a constant value $t$ and consider $P[Y_j \vert M > t]$. This is equal to $P[X_j - t = \min_{i}\{X_i - t\} \vert M > t]$. We are subtracting a constat to each term of the definition. This is equal to $P[X_j - t = \min_i\{X_i - t \}\vert X_i > t \space \forall i]$. Here we just switched from $M$ to the definition of minimum. We can now remove $t$ from the equality:
 
 $$P[X_j = \min_i\{X_i - t\}] = P[X_j = \min_i\{X_i\} = P[Y_j]$$
 
