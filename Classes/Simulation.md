@@ -1581,12 +1581,14 @@ Sadly, seeing the normal random variable as a composition of two distribution do
 Say we have a random variable $X$ that needs to be generated with probability density function $f(x)$ that is not invertible. Suppose we also have another random variable $Y$ with probability density function $g(y)$ that is easy to generate and it is know that $f(y)/g(y) \leq c \space\space \forall y$.
 
 The procedure is:
-- generate a value $y$ for $Y$ (from $g(y)$);
+- generate a value $y$ for $Y$ (having probability density function $g(y)$);
 - generate a value $u$ for a uniformly distributed random variable $U$;
 - if $u \leq \frac{f(y)}{c\cdot g(y)}$, then output $X = y$;
 - otherwise iterate.
 
-This not only generates a random variable with probability density function $f(x)$ $\fbox{a}$, but also does that in a number of iteration that follows a geometric random variable with expected value $c$  $\fbox{b}$.
+![[AcceptanceRejection.png]]
+
+This not only generates a random variable with probability density function $f(x)$ $\fbox{a}$, but also does that in a number of iteration that follows a geometric random variable with expected value $c$ $\fbox{b}$.
 
 If $X$ follows a normal distribution, then a good distribution for $Y$ is an exponential.
 
