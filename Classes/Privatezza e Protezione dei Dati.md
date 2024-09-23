@@ -2885,6 +2885,7 @@ Keys regulating read accesses cannot regulate write accesses $\to$ the set $w[o]
 Solution: associate a write tag $tag[o]$ with each resource $o$ encrypted with a key:
 - known to the users in $w[o]$ (derivable from the key of $w[o]$ via secure hashing);
 - known to the storage server (derivable from its key via tokens);
+
 $\to$ write authorized iff $u$ proves knowledge of $tag[o]$ to the server.
 
 ## Key derivation graph
@@ -2977,7 +2978,7 @@ Permit to detect:
 ### Other issues
 Write integrity controlled by any reader. Support for write privileges for data collections with multiple owners. Selective encryption for supporting subscription-based authorization policies:
 - users are authorized to access all and only the resources published during their subscribed periods;
-- user authorizations remain valid also after the expiration of their subscriptions $\to$ need to take into account both the subscriptions of the users and the time when resources have been published
+- user authorizations remain valid also after the expiration of their subscriptions $\to$ need to take into account both the subscriptions of the users and the time when resources have been published.
 
 ----------------------------------------------------------------
 
