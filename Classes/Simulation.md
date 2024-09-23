@@ -1421,7 +1421,7 @@ Now we will prove them to be independent. Firstly, suppose that each random vari
 
 $$P[X_j = \min_i\{X_i - t\}] = P[X_j = \min_i\{X_i\} = P[Y_j]$$
 
-The final equalities follow because, by the memoryless property of exponential random variables, given that $X_i$ exceeds $t$, the amount by which it exceeds it is exponential with rate $\lambda_i$ . Consequently, the conditional distribution of $X_1−t, \dots, X_n−t$ given that all the $X_i$ exceed $t$ is the same as the unconditional distribution of $X_1, \dots, X_n$. Thus, $M$ is independent of which of the $X_i$ is the smallest.
+The final equalities follow because, by the memoryless property of exponential random variables, given that $X_i$ exceeds $t$, the amount by which it exceeds it is exponential with rate $\lambda_i$ . Consequently, the conditional distribution of $X_1−t, \dots, X_n−t$ given that all the $X_i$ exceed $t$ is the same as the unconditional distribution of $X_1, \dots, X_n$. The probability that one of them is the minimum is determined solely by their respective rates $\lambda_i$​. Therefore, even conditioned on $M>t$, the probability that $X_j$​ is the minimum remains the same as in the absence of the condition $M>t$. Thus, $M$ is independent of which of the $X_i$ is the smallest.
 
 As second step, let's look at $P[M > t]$ This is equal to $P[X_i > t \space \forall i] = \prod_i[X_i > t]$ since these random variables are independent. Hence, this is equal to $\prod_i (1 - F(t))$ and to $\prod_i e^{-\lambda_i t} = e^{-(\sum_i \lambda_i) t}$.  Therefore, the distribution of $M$ is exponential with rate $\sum_i \lambda_i$
 
