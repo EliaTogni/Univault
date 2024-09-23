@@ -1578,7 +1578,7 @@ so, as usual, we draw a uniform random value between $0$ and one and use it as a
 ## Acceptance-rejection method
 Sadly, seeing the normal random variable as a composition of two distribution does not help since the two are still not invertible.
 
-Say we have a random variable $X$ that needs to be generated with probability density function $f(x)$ that is not invertible. Suppose we also have another random variable $Y$ with probability density function $g(y)$ that is easy to generate and it is know that $f(y)/g(y) \leq c \space\space \forall y$.
+Say we have a random variable $X$ that needs to be generated with probability density function $f(x)$ that is not invertible. Suppose we also have another random variable $Y$ that is easy to generate (for instance, its cumulative distribution function is invertible) and with probability density function $g(y)$. It is also known that $f(y)/g(y) \leq c \space\space \forall y$.
 
 The procedure is:
 - generate a value $y$ for $Y$ (having probability density function $g(y)$);
