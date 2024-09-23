@@ -1504,7 +1504,7 @@ F_n(x) \text{ with probability }\alpha_n\cr
 
 \end{cases}$$
 
-Given this hypothesis it is possible to generate a random value in this distribution by: 
+Given this hypothesis, it is possible to generate a random value in this distribution by: 
 - first generating a random value $j$  in the range from $1$ to $n$ with each value $i$ having the probability $\alpha_i$;
 - then we draw a random value from the selected function $F_j$.
 
