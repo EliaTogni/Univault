@@ -943,10 +943,10 @@ Defining $P[X = x_i] = p_i$, the preceding idea can be written algorithmically a
 	\begin{algorithm}
 	\caption{Native algorithm for Custom Discrete Random Variables}
 	\begin{algorithmic}
-	\State $r =$ get\_random$() \space$ //output of a good (pseudo) random generator
+	\State $u =$ get\_random$() \space$ //output of a good (pseudo) random generator
 	\State $q = 0.0$
 	\State $i = 0$
-	\While{$q \leq r$}
+	\While{$q \leq u$}
 		\State $i = i + 1$
 		\State $ q=  q+ p_i$
     \EndWhile
@@ -1175,10 +1175,10 @@ The following is a Random generation algorithm for a Poisson random variable.<br
 	\caption{Random Generation Algorithm for a Poisson random variable}
 	\begin{algorithmic}
 		\State Generate $X$ 
-		\State $r$ = random() $\space$   //$[0, 1)$
+		\State $u$ = random() $\space$   //$[0, 1)$
 		 \State $q = 0$ \#cumulative probability
 		 \State $i = 0$
-		 \While{$r \geq q + P[X = i]$}
+		 \While{$u \geq q + P[X = i]$}
 			 \State $q = q + P[X = i]$
 			 \State $i = i + 1$
          \EndWhile
@@ -1212,14 +1212,14 @@ Since $P[X = i] = (1 - p)^{i - 1} \cdot p$, we can pass $p$ instead of $X$ to th
 	\caption{Native Algorithm for generating Geometric Random Variables}
 	\begin{algorithmic}
 		\State Generate $p$
-		\State $r$ = random() $\space$   //$[0, 1)$
+		\State $u$ = random() $\space$   //$[0, 1)$
 		\State $q = 0.0$ \#cumulative probability
 		\State $i = 0$ 
-		 \While{$r \geq q + (1 - p)^{i - 1} \cdot p$}
+		 \While{$u \geq q + (1 - p)^{i - 1} \cdot p$}
 			 \State $q = q + (1 - p)^{i - 1} \cdot p$
 			 \State $i = i + 1$
 		\EndWhile
-		\State Return $i$
+		\State return $i$
 	\end{algorithmic}
 	\end{algorithm}
 ```
