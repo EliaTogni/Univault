@@ -1690,12 +1690,12 @@ These gamma random variables are the continuous counterparts of a specific type 
 
 How can we simulate a Poisson Process? A discrete event approach is generate the first interesting event, which is the first event in the process, and to generate this event we draw a value from an exponential random variable, which is the interarrival time.
 
-There are two possible ways to simulate a Poisson Process of parameter $\lambda$ for a time horizon $T$ (==in the continuous?==):
-- we generate a value $n$ drawing it from a Poisson random variable of parameter $t \lambda$. That is, we draw the number of events we will see in the process up to time $T$.
+Another possible ways to simulate a Poisson Process of parameter $\lambda$ for a time horizon $T$ consists in the following steps:
+- we generate a value $n$ drawing it from a Poisson random variable of parameter $T \lambda$. That is, we draw the number of events we will see in the process up to time $T$.
 - them, we draw $n$ random numbers $u_1, \dots, u_n$ from a uniform distribution in $[0, 1]$. Since they are random, they are not properly sorted: therefore, it is necessary to sort them to have consequential arrival times;
-- we set the arrival times as $u_1 T, u_2 T, \dots u_n T$.
+- we set the arrival times as $u_1 T, u_2 T, \dots u_n T$. This is equivalent to drawing interarrival times through exponential random variables.
 
-Is it true that this algorithm is producing a valid random variable? What is giving the structure is only the generation of $n$.
+Is it true that this algorithm is producing a valid Poisson process? What is giving the structure is only the generation of $n$.
 
 **Proof**:<br />
 Let's define $N(t)$ to be the number of values of $\{u_1 T, u_2 T, \dots u_n T\}$, which are $\leq t$. We will pretend this $N(t)$ to be a random variable of unknown structure and we want to prove that $N(t)$ is actually defining a Poisson process. We define $I_1, \dots I_r$, which are $r$ disjoint intervals in the range $[0, t]$. An event is of type $k$ if $u_k T$ falls inside $I_k$ and an event is of type $r + 1$ if it falls outside of any $I_k$. Now, let $p_1, \dots, p_{r +1}$ be the probabilities of being in $I_1, \dots, I_r$ or of type $r + 1$. These probabilities, however, since we have drawn $n$ points uniformly at random, depends on the length of this $I$ and not on its position. So $p_i = \frac{\vert I_i \vert}{T}$, that is the length of the interval divided by $T$. Hence, $p_{r + 1} = 1 - \sum_{k=1}^{r}p_k$.
