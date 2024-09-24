@@ -1268,6 +1268,10 @@ The same holds for its variance $Var[X] = r \cdot \frac{1 - p}{p^2}$.
 ##### Hypergeometric Random Variable
 $N$ blue balls $+ M$ not blue balls. What is the number of blue balls that i get by drawing $n$ of them from the urn? This experiment cannot be seen as a Bernoulli experiment due to the fact that trials are not identical anymore.
 
+A population is given, where $N$ individuals hold a feature and $M$ do not. Knowing that $n$ is the size of the sample, an hypergeometric random variable X takes on the number of individuals in the sample holding the feature.
+
+$$P[X = i] = \frac{\binom{N}{i} \cdot \binom{M}{n - i}}{\binom{N + M}{n}}$$
+
 -------------------------------------------------------------
 
 #### Summary of the Random Variables
@@ -1493,7 +1497,7 @@ The **Composition method** can be applied if a random variable $X$ needs to be g
 
 $$F(x) = \sum_{i=1}^n \alpha_i \cdot F_i(x) \space \text{ with } \space \sum_{i=1}^n \alpha_i = 1$$
 
-In other words, this means that $F$ can be decomposed as a convex linear combination of a set of $F_i$ functions (the weights must sum up to $1$). It is possible to notice that the constraint that $\sum_{i=1}^n \alpha_i = 1$ is similar to the constraint of probabilities. So we can find $F(x)$ as:
+In other words, this means that $F()$ can be decomposed as a convex linear combination of a set of $F_i$ functions (the weights must sum up to $1$). It is possible to notice that the constraint that $\sum_{i=1}^n \alpha_i = 1$ is similar to the constraint of probabilities. So we can find $F(x)$ as:
 
 $$F(x) = \begin{cases} 
 F_1(x) \text{ with probability }\alpha_1 \cr \cr
@@ -1603,7 +1607,9 @@ Since $Y$ is continuous:
 
 $$P[accepted] = \int_{-\infty}^{+\infty} \frac{f(y)}{c} dy = \frac{1}{c} \int_{-\infty}^{+\infty} f(y) dy = \frac{1}{c}$$
 
-The probability of being accepted at each iteration is, therefore, a constant. In the image below, it is possible to observe the structure of the algorithm and notice that this structure follows exactly the geometric random variable's behaviour.
+The probability of being accepted at each iteration is, therefore, a constant. Since the expected value of a geometric random variable of parameter $p$ is $\mathbb{E}[X] = 1/p$ and in this case $p = 1/c$, it is obvious that the expected value of the number of iterations is $\frac{1}{1/c}$ and, therefore, $c$.
+
+In the image below, it is possible to observe the structure of the algorithm and notice that this structure follows exactly the geometric random variable's behaviour.
 
 ![[Acceptance-RejectionGeometricRandomVariable.png]]
 
@@ -1688,7 +1694,7 @@ $$f(t) = \lambda e^{- \lambda t} \frac{(\lambda t)^{n -1}}{(n - 1)!}$$
 
 These gamma random variables are the continuous counterparts of a specific type of discrete random variables: the sum of $n$ independent exponential random variables, each having parameter $\lambda$, is a gamma random variable with parameters $n$, $\lambda$. Furthermore, the time of the $n$-th event of a Poisson process having rate $\lambda$ is a gamma random variable with parameters $n$, $\lambda$.
 
-How can we simulate a Poisson Process? A discrete event approach is generate the first interesting event, which is the first event in the process, and to generate this event we draw a value from an exponential random variable, which is the interarrival time.
+How can we simulate a Poisson Process? A discrete event approach is to generate the first interesting event, which is the first event in the process, and to generate this event we draw a value from an exponential random variable, which is the interarrival time.
 
 Another possible ways to simulate a Poisson Process of parameter $\lambda$ for a time horizon $T$ consists in the following steps:
 - we generate a value $n$ drawing it from a Poisson random variable of parameter $T \lambda$. That is, we draw the number of events we will see in the process up to time $T$.
@@ -1698,7 +1704,7 @@ Another possible ways to simulate a Poisson Process of parameter $\lambda$ for a
 Is it true that this algorithm is producing a valid Poisson process? What is giving the structure is only the generation of $n$.
 
 **Proof**:<br />
-Let's define $N(t)$ to be the number of values of $\{u_1 T, u_2 T, \dots u_n T\}$, which are $\leq t$. We will pretend this $N(t)$ to be a random variable of unknown structure and we want to prove that $N(t)$ is actually defining a Poisson process. We define $I_1, \dots I_r$, which are $r$ disjoint intervals in the range $[0, t]$. An event is of type $k$ if $u_k T$ falls inside $I_k$ and an event is of type $r + 1$ if it falls outside of any $I_k$. Now, let $p_1, \dots, p_{r +1}$ be the probabilities of being in $I_1, \dots, I_r$ or of type $r + 1$. These probabilities, however, since we have drawn $n$ points uniformly at random, depends on the length of this $I$ and not on its position. So $p_i = \frac{\vert I_i \vert}{T}$, that is the length of the interval divided by $T$. Hence, $p_{r + 1} = 1 - \sum_{k=1}^{r}p_k$.
+Let's define $N(t)$ to be the number of values of $\{u_1 T, u_2 T, \dots u_n T\}$, which are $\leq t$. We will pretend this $N(t)$ to be a random variable of unknown structure and we want to prove that $N(t)$ is actually defining a Poisson process. We define $I_1, \dots I_r$, which are $r$ disjoint intervals in the range $[0, t]$. An event is of type $k$ if $u_k T$ falls inside $I_k$ and an event is of type $r + 1$ if it falls outside of any $I_k$. Now, let $p_1, \dots, p_{r +1}$ be the probabilities of being in $I_1, \dots, I_r$ or of type $r + 1$. These probabilities, however, since we have drawn $n$ points uniformly at random, depends on the length of this interval and not on its position. So $p_i = \frac{\vert I_i \vert}{T}$, that is the length of the interval divided by $T$. Hence, $p_{r + 1} = 1 - \sum_{k=1}^{r}p_k$.
 
 Recalling that $I_1, \dots I_r$ are disjoint and that the events are independently classified, we now can check the conditions of a Poisson process:
 - events are occuring at random time points since they are chosen uniformly at random; 
@@ -1710,7 +1716,7 @@ Recalling that $I_1, \dots I_r$ are disjoint and that the events are independent
 - $\lim_{h \to 0} \frac{P[N(h) \geq 2]}{h} = 0$ (it is unlikely that two or more events occur in small intervals).
 
 ### Nonhomogeneous Poisson Processes
-The stationary increment assumption is the strictest of this assumptions. We can relax this assumption with **Nonhomogeneous Poisson Processes**. In this kind of process, instead of using $\lambda$ as a fixed **intensity** over the time horizon, we have $\lambda(t)$ that is the intensity at time $t$. This is a function telling how likely an event will occurr around some time $t$.
+The stationary increment assumption is the strictest of these assumptions. We can relax this one with **Nonhomogeneous Poisson Processes**. In this kind of process, instead of using $\lambda$ as a fixed **intensity** over the time horizon, we have $\lambda(t)$ that is the intensity at time $t$. This is a function telling how likely an event will occurr around some time $t$.
 
 As a result where we would use $\lambda$ we instead use $\lambda(t)$:
 
@@ -1718,7 +1724,7 @@ $$\lim_{h\to 0} \frac{P[N(h)=1]}{h} = \lambda(t)$$
 
 This means that, in small intervals, the probability of an event to occur is approximately $h\lambda(t)$.
 
-This is a common behavior in mobile networks, where the arrival of packets during the day is not constant but instead is very high during certain hours and low during the night.
+This is a common behavior, e.g., in mobile networks, where the arrival of packets during the day is not constant but instead is very high during certain hours and low during the night.
 
 How can we define this intensity when we model? The definition of $\lambda(t)$ is up to the modeler. One possible interpretation is that if $\bar{p}(t)$ is the probability that an event occurring at time $t$ in a Poisson process with parameter $\lambda$ is discarded (e.g., the customer of the pharmacy, at the point of coming in, decides to go away) and $p(t)=1-\bar p(t)$, then the process involving the non discarded events is a non-homogeneous Poisson Process with intensity $\lambda(t) = \lambda \cdot p(t)$.
 
@@ -1726,7 +1732,7 @@ In the example below, some of the events are discarded.
 
 ![[Diagram.svg]]
 
-Obviously this kind of model are harder to model since it's necessary to have an estimate of $\lambda(t)$, to do so a solution is discretize the behavior observed in real world. I can use Poisson process to simulating and modeling these systems: it is enough to represent the intensity of my Poisson process by replicating this demand profile. In particular, we model it as if the intensity was always at the highest level but, sometimes, we drop some packets.
+Obviously this kind of model are harder to model since it's necessary to have an estimate of $\lambda(t)$, to do so a solution is discretize the behavior observed in real world. I can use Poisson process to simulating and modeling these systems: it is enough to represent the intensity of the Poisson process by replicating this demand profile. In particular, we model it as if the intensity is always at the highest level but, sometimes, we drop some packets.
 
 ![[NonHomogeneousPoissonProcess.png]]
 
