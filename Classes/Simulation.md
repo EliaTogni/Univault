@@ -1598,11 +1598,14 @@ If $X$ follows a normal distribution, then a good distribution for $Y$ is an exp
 >$g(y) \cdot \frac{f(y)}{c \cdot g(y)} = \frac{f(y)}{c}$
 >
 
-If $Y$ was discrete we could write $P[accepted] = \sum_{y \in Y}  \frac{f(y)}{c}$ since $\frac{f(y)}{c}$ is the probability of a specific $y$ being accepted and the probability of being accepted in general is the sum over every possible value of $y$.<br />
+If $Y$ was discrete we could write $P[accepted] = \sum_{y \in Y}  \frac{f(y)}{c}$, since $\frac{f(y)}{c}$ is the probability of a specific $y$ being accepted and the probability of being accepted in general is the sum over every possible value of $y$.<br />
 Since $Y$ is continuous:
 
 $$P[accepted] = \int_{-\infty}^{+\infty} \frac{f(y)}{c} dy = \frac{1}{c} \int_{-\infty}^{+\infty} f(y) dy = \frac{1}{c}$$
-$\square$
+
+The probability of being accepted at each iteration is, therefore, a constant. In the image below, it is possible to observe the structure of the algorithm and notice that this structure follows exactly the geometric random variable's behaviour.
+
+![[Acceptance-RejectionGeometricRandomVariable.png]]
 
 ### Proof $\fbox{a}$
 $P[X=x] = \sum_{i=1}^{+\infty} P[\text{x accepted at iteration i}]$ but being accepted at iteration $i$ means not being accepted in all iteration until $i$ and then getting accepted at iteration $i$.
@@ -1669,7 +1672,7 @@ Recall that $N(t)$ is the number of events in $[0, t]$. Let's take the slot betw
 
 ![[NSlotsPP.png]]
 
-We want to count the number of slots containing an event. This is a binomial random variable of parameter $p$. What happens to a binomial random variable when $n$ is very large and $p = \frac{t}{n} \lambda$ is very small? This random variable becomes a Poisson one of parameter $n \cdot p = t \cdot \lambda$.
+We want to count the number of slots containing an event. This is a binomial random variable of parameter $p$. What happens to a binomial random variable when $n$ is very large and $p = \frac{t}{n} \lambda$ is very small? This random variable becomes a Poisson one of parameter $n \cdot p = n \cdot \frac{t}{\del{n}} \cdot \lambda = t \cdot \lambda$.
 
 Furthermore, the interarrival times (the times in between one event and the next one) are independent and identically distributed exponential random variables with parameter $\lambda$.
 
