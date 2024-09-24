@@ -1440,7 +1440,6 @@ $$x = - \frac{\log(1 - u)}{\lambda}$$
 	\begin{algorithm}
 	\caption{Generating an Exponential Random Variable}
 	\begin{algorithmic}
-		\State Generate Exponential($\lambda$)
 		\State u = random($0$, $1$)
 		\State $x = - \frac{\log(1 - u)}{\lambda}$
 		\State return x
