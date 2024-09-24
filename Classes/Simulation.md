@@ -1598,10 +1598,12 @@ If $X$ follows a normal distribution, then a good distribution for $Y$ is an exp
 >$g(y) \cdot \frac{f(y)}{c \cdot g(y)} = \frac{f(y)}{c}$
 >
 
-If $Y$ was discrete we could write $P[accepted] = \sum_{y \in Y}  \frac{f(y)}{c}$ since $\frac{f(y)}{c}$ is the probability of a specific $y$ being accepted, to have the probability of being accepted in general is the sum over every possible value of $y$.<br />
+If $Y$ was discrete we could write $P[accepted] = \sum_{y \in Y}  \frac{f(y)}{c}$ since $\frac{f(y)}{c}$ is the probability of a specific $y$ being accepted and the probability of being accepted in general is the sum over every possible value of $y$.<br />
 Since $Y$ is continuous:
+
 $$P[accepted] = \int_{-\infty}^{+\infty} \frac{f(y)}{c} dy = \frac{1}{c} \int_{-\infty}^{+\infty} f(y) dy = \frac{1}{c}$$
 $\square$
+
 ### Proof $\fbox{a}$
 $P[X=x] = \sum_{i=1}^{+\infty} P[\text{x accepted at iteration i}]$ but being accepted at iteration $i$ means not being accepted in all iteration until $i$ and then getting accepted at iteration $i$.
 
