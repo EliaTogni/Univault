@@ -1704,13 +1704,13 @@ Another possible ways to simulate a Poisson Process of parameter $\lambda$ for a
 Is it true that this algorithm is producing a valid Poisson process? What is giving the structure is only the generation of $n$.
 
 **Proof**:<br />
-Let's define $N(t)$ to be the number of values of $\{u_1 T, u_2 T, \dots u_n T\}$, which are $\leq t$. We will pretend this $N(t)$ to be a random variable of unknown structure and we want to prove that $N(t)$ is actually defining a Poisson process. We define $I_1, \dots I_r$, which are $r$ disjoint intervals in the range $[0, t]$. An event is of type $k$ if it falls inside $I_k$ and an event is of type $r + 1$ if it falls outside of any $I_k$. Now, let $p_1, \dots, p_{r +1}$ be the probabilities of being in $I_1, \dots, I_r$ or of type $r + 1$. These probabilities, however, since we have drawn $n$ points uniformly at random, depends on the length of this interval and not on its position. So $p_i = \frac{\vert I_i \vert}{T}$, that is the length of the interval divided by $T$. Hence, $p_{r + 1} = 1 - \sum_{k=1}^{r}p_k$.
+Let's define $N(t)$ to be the number of values of $\{u_1 T, u_2 T, \dots u_n T\}$, which are $\leq t$. We will pretend this $N(t)$ to be a random variable of unknown structure and we want to prove that $N(t)$ is actually defining a Poisson process. We define $I_1, \dots I_r$, which are $r$ disjoint intervals in the range $[0, t]$. An event is of type $k$ if it falls inside $I_k$ and an event is of type $r + 1$ if it falls outside of any $I_k$. Now, let $p_1, \dots, p_{r +1}$ be the probabilities of being in $I_1, \dots, I_r$ or of type $r + 1$. These probabilities, however, since we have drawn the $n$ points uniformly at random, depend on the length of this interval and not on its position. So $p_i = \frac{\vert I_i \vert}{T}$, that is the length of the interval divided by $T$. Hence, $p_{r + 1} = 1 - \sum_{k=1}^{r}p_k$.
 
-Recalling that $I_1, \dots I_r$ are disjoint and that the events are independently classified, we now can check the conditions of a Poisson process:
+Recalling that $I_1, \dots I_r$ are disjoint and that, therefore, the events are independently classified, we now can check the conditions of a Poisson process:
 - events are occuring at random time points since they are chosen uniformly at random; 
 - $N(t)$ is the number of events in the interval $[0, t]$ for definition;
 - $N(0) = 0$ (process begins at time $0$);
-- the number of events in disjoint time intervals are independent (**independet increment assumption**);
+- the number of events in disjoint time intervals are independent (**independent increment assumption**);
 - the probability density function of the number of events in a given interval depend only on its length, not on its position (**stationary increment assumption**) $\to p_i = \frac{\vert I_i \vert}{T}$;
 - $\lim_{h \to 0} \frac{P[N(h) = 1]}{h} = \lambda$ (in small intervals, the probability of an event to occur is approximately $h\lambda$);
 - $\lim_{h \to 0} \frac{P[N(h) \geq 2]}{h} = 0$ (it is unlikely that two or more events occur in small intervals).
