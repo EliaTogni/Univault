@@ -1740,16 +1740,16 @@ Obviously this kind of model are harder to model since it's necessary to have an
 If we have an homogeneous Poisson Process of intensity $\lambda$ and accept an event with probability $p(t)$, we obtain a non homogeneous Poisson Process of parameter $\lambda(t) = \lambda \cdot p(t)$.
 
 **Proof**:<br />
-- events are occurring at random time points $\to$ True, because the selection is also a random process;
-- $N(t)$ is the number of events in the interval $[0,t]$ $\to$ This is only a definition;
-- $N(0) = 0$ (process begins at time $0$) $\to$ True, because nonomogeneous Poisson processes can't have more events than homogeneous ones. So, if holds that $N(0)$ in an homogeneous Poisson process, it also holds for a nonhomogeneous one;
-- the number of events in disjoint time intervals are independent (**independent increment assumption**) $\to$ True, because the events in Poisson processes are independent and the dropping is performed randomly, one by one;
+- events are occurring at random time points $\to$ true, because the selection is also a random process;
+- $N(t)$ is the number of events in the interval $[0,t]$ $\to$ this is only a definition;
+- $N(0) = 0$ (process begins at time $0$) $\to$ true, because nonomogeneous Poisson processes can't have more events than homogeneous ones. So, if holds that $N(0)$ in an homogeneous Poisson process, it also holds for a nonhomogeneous one;
+- the number of events in disjoint time intervals are independent (**independent increment assumption**) $\to$ true, because the events in Poisson processes are independent and the dropping is performed randomly, one by one;
 - $\lambda(t)$ is the intensity at time $t$ (how likely an event will occurr at time $t$);
 - $\lim_{h\to 0} \frac{P[N(h)=1]}{h} = \lambda(t)$ $\to$ proved below;
-- $\lim_{h\to 0} \frac{P[N(h)\geq 2]}{h} = 0$ $\to$ True, because was true before and we are not adding new events (at most this is a Poisson process) so the probability cannot increase.
+- $\lim_{h\to 0} \frac{P[N(h)\geq 2]}{h} = 0$ $\to$ true, because was true before and we are not adding new events (at most this is a Poisson process) so the probability cannot increase.
 
 **Proof**:<br />
-Since we know that the probability of finding more than $1$ event in a small interval is $0$ this is equal to the probability of $1$ or more:
+Since we know that the probability of finding more than $1$ event in a small interval is $0$, this is equal to the probability of $1$ or more:
 
 $$\begin{align}
 &P[\text{finding an event in }[t,t+h]&\land \space &\text{ not discarding it}] = \\
