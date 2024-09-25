@@ -1781,11 +1781,11 @@ C(x,1) = x\\
 C(1,y) = y\\
 \end{align}$$
 
-For example, we want to use this copula to represent another joint probability distribution function $H(x,y)$ for the random variables $X$ and $Y$ with respectively cumulative distribution function $F(x)$ and $G(y)$:
+For example, we want to use this copula to represent another joint probability distribution function $H(x,y)$ for the random variables $X$ and $Y$ whose marginal distributions are known to be respectively the continuous cumulative distribution functions $F()$ and $G()$:
 
-$$H(x,y) = P[X\leq x, Y \leq y] =$$
+$$H(x,y) = P[X\leq x, Y \leq y]$$
 
-Since the cumulative distribution function is a monotone function, we can apply it at both sides of the inequalities. What we get is a probability of finding some cumulative distribution function less or equal to certain value for both arguments.
+Because $X$ has distribution $F()$ and $Y$ has distribution $G()$, it follows that $F(X)$ and $G(Y)$ are both uniform on $(0, 1)$, since cumulative distribution functions map random variables to uniform distribution. Since the cumulative distribution function is a monotone function, we can apply it at both sides of the inequalities. What we get is a probability of finding some cumulative distribution function less or equal to certain value for both arguments.
 
 $$P[F(X)\leq F(x), G(Y) \leq G(y)] = C(F(x),G(y))$$
 
