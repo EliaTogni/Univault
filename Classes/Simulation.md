@@ -1560,7 +1560,7 @@ Both members are always positive, so
 
 $$\rightarrow \sqrt{2y} = x + 1 \rightarrow x = \sqrt{2y}-1 = F_1^{-1}$$
 
-so, as usual, we draw a uniform random value between $0$ and one and use it as argument of the Inverse Function.
+so, as usual, we draw a uniform random value between $0$ and $1$ and use it as argument of the Inverse Function.
 
 ```pseudo
 	\begin{algorithm}
