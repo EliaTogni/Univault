@@ -1785,7 +1785,7 @@ For example, we want to use this copula to represent another joint probability d
 
 $$H(x,y) = P[X\leq x, Y \leq y]$$
 
-Because $X$ has distribution $F()$ and $Y$ has distribution $G()$, it follows that $F(X)$ and $G(Y)$ are both uniform on $(0, 1)$, since cumulative distribution functions map random variables to uniform distribution. Since the cumulative distribution function is a monotone function, we can apply it at both sides of the inequalities. What we get is a probability of finding some cumulative distribution function less or equal to certain value for both arguments.
+Because $X$ has distribution $F()$ and $Y$ has distribution $G()$, it follows that $F(X)$ and $G(Y)$ are both uniform on $(0, 1)$, since cumulative distribution functions map random variables to uniform distribution. Consequently, the joint distribution function of $F(X)$, $G(Y)$ is a copula. Since the cumulative distribution function is a monotone function, we can apply it at both sides of the inequalities. What we get is a probability of finding some cumulative distribution function less or equal to certain value for both arguments.
 
 $$P[F(X)\leq F(x), G(Y) \leq G(y)] = C(F(x),G(y))$$
 
