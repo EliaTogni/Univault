@@ -1736,12 +1736,13 @@ Obviously this kind of model are harder to model since it's necessary to have an
 
 ![[NonHomogeneousPoissonProcess.png]]
 
+**Claim**:<br />
+If we have an homogeneous Poisson Process of intensity $\lambda$ and accept an event with probability $p(t)$, we obtain a non homogeneous Poisson Process of parameter $\lambda(t) = \lambda \cdot p(t)$.
 
 **Proof**:<br />
-If we have an homogeneous Poisson Process of intensity $\lambda$ and accept an event with probability $p(t)$, we obtain a non homogeneous Poisson Process of parameter $\lambda(t) = \lambda \cdot p(t)$:
 - events are occurring at random time points $\to$ True, because the selection is also a random process;
 - $N(t)$ is the number of events in the interval $[0,t]$ $\to$ This is only a definition;
-- $N(0) = 0$ (process begins at time $0$) $\to$ True, ==because Homogeneous Poisson processes can't have more events than PP;
+- $N(0) = 0$ (process begins at time $0$) $\to$ True, because nonomogeneous Poisson processes can't have more events than homogeneous ones. So, if holds that $N(0)$ in an homogeneous Poisson process, it also holds for a nonhomogeneous one;
 - the number of events in disjoint time intervals are independent (**independent increment assumption**) $\to$ True, because the events in Poisson processes are independent and the dropping is performed randomly, one by one;
 - $\lambda(t)$ is the intensity at time $t$ (how likely an event will occurr at time $t$);
 - $\lim_{h\to 0} \frac{P[N(h)=1]}{h} = \lambda(t)$ $\to$ proved below;
