@@ -1791,7 +1791,6 @@ $$P[F(X)\leq F(x), G(Y) \leq G(y)] = C(F(x),G(y))$$
 
 So, this copula is the joint probability on the distribution of these values: not $X$ and $Y$ but $F(X)$ and $G(Y)$.
 
-
 In other words: we know both $F(X)$ and $G(Y)$ but not their joint Cumulative Distribution Function $H(X,Y)$, only that they are not independent. 
 
 The advantages of copulas are that we can define some specific types of copulas that can afterwards be apply not to a specific cumulative distribution function but to any cumulative distribution function and are able to produce pairs of values that maybe are not exactly as pairs of values thrown from a joint cumulative distribution of the two random variables but preserve some properties.
