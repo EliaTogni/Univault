@@ -1830,7 +1830,7 @@ For the same reasoning, it holds that $G_t(Y) = G(t^{-1}(y))$. However, $F_s(s(x
 $$C_{s(X),t(Y)}(x, y) = P[F_s(s(x)) \leq x, G_t(t(y)) \leq y] = P[F(x)\leq x, G(y) \leq y] = C_{x,y}(x,y)$$
 $\square$
 
-Let's observe some code for using this copulas. This algorithm is for generating pairs of values for random variables having cumulative distribution function $F$ and $G$ and some correlation among them of value $\rho$ using the idea of the Gaussian copula.
+Let's observe some code for using these copulas. This algorithm is for generating pairs of values for random variables having cumulative distribution function $F$ and $G$ and some correlation among them of value $\rho$ using the idea of the Gaussian copula.
 
 ```python
 def generate_gaussian_copula(invF, invG, rho):
@@ -1854,9 +1854,9 @@ def invExp(x)
 q1, q2 = generate_gaussian_copula(invExp, invUnif, 0.7)
 ```
 
-The _generate_gaussian_copula_ function firstly generate two values, $y1$ and $y2$, from a multivariate (technically a bivariate) normal distribution in which the two cordinates have correlation $\rho$. Then the algorithm moves from the values to the probabilities and uses these probabilities as they were the outputs of a random generator.
+The first block of code of the _generate_gaussian_copula_ function generates two values, $y1$ and $y2$, from a multivariate (technically a bivariate) normal distribution in which the two cordinates have correlation $\rho$. Then the algorithm moves from the values to the probabilities mapping the values to a uniform distribution and uses these probabilities as they were the outputs of a random generator.
 
-Let's define the multivariate normal. If we look at $X_1$ and $X_2$ independently, they look like bell shaped distribution.
+Let's define the multivariate normal. If we look at $X_1$ and $X_2$ independently, they will look like bell shaped distribution.
 
 ![[MultivariateNormal.png]]
 
