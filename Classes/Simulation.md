@@ -1827,7 +1827,7 @@ $$\begin{align}
 
 For the same reasoning, it holds that $G_t(Y) = G(t^{-1}(y))$. However, $F_s(s(x)) = F(s^{-1}(s(x))) = F(x)$ and $G_t(t(y)) = G(t^{-1}(t(y))) = G(y)$, so:
 
-$$C_{s(X),t(Y)} = P[F_s(s(x)) \leq x, G_t(t(y)) \leq y] = P[F(x)\leq x, G(y) \leq y] = C_{x,y}(x,y)$$
+$$C_{s(X),t(Y)}(x, y) = P[F_s(s(x)) \leq x, G_t(t(y)) \leq y] = P[F(x)\leq x, G(y) \leq y] = C_{x,y}(x,y)$$
 $\square$
 
 Let's observe some code for using this copulas. This algorithm is for generating pairs of values for random variables having cumulative distribution function $F$ and $G$ and some correlation among them of value $\rho$ using the idea of the Gaussian copula.
