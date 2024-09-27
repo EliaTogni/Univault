@@ -1211,7 +1211,6 @@ Since $P[X = i] = (1 - p)^{i - 1} \cdot p$, we can pass $p$ instead of $X$ to th
 	\begin{algorithm}
 	\caption{Native Algorithm for generating Geometric Random Variables}
 	\begin{algorithmic}
-		\State Generate $p$
 		\State $u$ = random() $\space$   //$[0, 1)$
 		\State $q = 0.0$ \#cumulative probability
 		\State $i = 0$ 
