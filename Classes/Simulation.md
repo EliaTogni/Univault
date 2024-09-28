@@ -1861,7 +1861,7 @@ Let's define the multivariate normal. If we look at $X_1$ and $X_2$ independentl
 
 When we look at both the distributions together, we see probability level curves. Each curve identifies the same probability value. They could also look like the second graph above. So, if we look at specific values for $x_1$, they indeed have the shape of a normal but it's not the same one. So the value of one is affected by the value of the other.
 
-If we look at projections, single dimensions, etc., of these bivariate normals, they will still look normal. However, they will be shifted, scaled or combined depending one on the value of the other. In fact, we can define the coordinates in a normal as a combination of other indipendent and identically distributed normal random variables having mean $\mu =0$ and variance $\sigma^2 = 1$. That is, suppose to have $X_1$, $X_2$, $\dots$, $X_n$. 
+If we look at projections, single dimensions, etc., of these bivariate normals, they will still look normal. However, they will be shifted, scaled or combined depending one on the value of the other. In fact, we can define the coordinates in a normal as a combination of other indipendent and identically distributed normal random variables having mean $\mu =0$ and variance $\sigma^2 = 1$. That is, suppose to have $X_1$, $X_2$, $\dots$, $X_n$:
 
 $$X_1 = a_{11}Z_1 + a_{12}Z_2 + \dots + a_{1n}Z_n + \mu_1$$
 $$X_2 = a_{21}Z_1 + a_{22}Z_2 + \dots + a_{2n}Z_n + \mu_2$$
