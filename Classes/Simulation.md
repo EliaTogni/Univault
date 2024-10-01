@@ -1932,8 +1932,6 @@ When we get the cumulative distribution function of a random variable, we basica
 ## Estimators and Interval Estimates
 The expected value $\Theta$ is one of the things we need the most but there is no way to compute it from a simulated variable: we can only compute it from the random variables that we know theoretically. We can, however, compute an approximation $\tilde{\Theta}$ of it, that we try to understand from the data. That is what we call an **estimate**. And how can we move from a set of  measurement to an estimate? We obviously apply a function, called an **estimator**.
 
-==estimand? non sento cosa dice a lezione
-
 We are interested in what we define as **unbiased and reliable estimators**. Unbiased means that if we draw $n$ random values from our random variable and compute a function of them, the result is still a random value. If its expected value it is matching the theoretical value we are looking for, the estimator is unbiased.
 
 One of the most important and basics estimators is the **sample mean**, a function that we can apply to the data and estimate the expected value:
