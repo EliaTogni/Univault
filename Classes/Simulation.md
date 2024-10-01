@@ -1147,9 +1147,6 @@ This is the setting of a Binomial random variable and, therefore, its probabilit
 
 $$ P[X_A = n, X_B = m \vert X = n + m] = \binom{n + m}{n}p_A^{n}(1- p_A)^{n + m - n}$$
 $$P[X = n + m] = e^{-\lambda} \frac{\lambda^{n+ m}}{(n + m)!}$$
-
-==per ipotesi?== $\uparrow$
-
 $$\binom{n + m}{n}p_A^{n}(1- p_A)^{n + m - n} \cdot e^{-\lambda} \frac{\lambda^{n+ m}}{(n + m)!} = $$
 
 Since $e^{-\lambda}$ can be written as $e^{\lambda p_A} \cdot e^{\lambda(1 - p_A)}$
@@ -1168,13 +1165,12 @@ And this is the expression of a general probability for a Poisson random variabl
 $$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!} \underbracket{\sum_{m = 0}^{\infty} e^{-\tilde{\lambda}} \frac{(\tilde{\lambda})^m}{m!}}_1 = $$
 $$= e^{-\lambda p_A} \frac{(\lambda P_A)^{n}}{n!}\quad \text{ with } \lambda_A = \lambda \cdot p_A$$
 
-The following is a Random generation algorithm for a Poisson random variable.<br />
+The following is a Random generation algorithm for a Poisson random variable.
 
 ```pseudo
 	\begin{algorithm}
 	\caption{Random Generation Algorithm for a Poisson random variable}
 	\begin{algorithmic}
-		\State Generate $X$ 
 		\State $u$ = random() $\space$   //$[0, 1)$
 		 \State $q = 0$ \#cumulative probability
 		 \State $i = 0$
@@ -1245,9 +1241,7 @@ At this point, we know that we can define this $j = \Bigg \lfloor \frac{\log(1 -
 -------------------------------------------------------------
 
 ##### Negative Binomial Random Variable
-Let $X$ denote the number of trials needed to obtain $r$ successes when each trial is independently a success with probability $p$. Then, $X$ is defined as a **negative binomial random variable** of parameters $p, r$ and it models the number of failures in a sequence of independent and identically distributed Bernoulli trials before a specified (non-random) number of successes (denoted $r$) occurs.<br />
-
-$P[X = i]$
+Let $X$ denote the number of trials needed to obtain $r$ successes when each trial is independently a success with probability $p$. Then, $X$ is defined as a **negative binomial random variable** of parameters $p, r$ and it models the number of failures in a sequence of independent and identically distributed Bernoulli trials before a specified (non-random) number of successes (denoted $r$) occurs.
 
 The last iteration is the $r$-th success. On the previous iteration ($i-1$ iteration) we got $r-1$ successes. The probability of getting this configuration is defined by a binomial random variable:
 
