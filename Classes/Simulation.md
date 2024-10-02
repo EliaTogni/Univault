@@ -1481,8 +1481,6 @@ $$\lim_{n \to \infty} P\Bigg[\frac{\sum_{i = 1}^{n}X_i - n \cdot \mu}{\sqrt{n \s
 
 that is, the sum of a large number of independent random variables is a normally distributed random variable (indipendently on the distribution of the starting ones). In other terms, the probability of finding this sum to be different from $n$ times the expected value is not only decreasing (as in the law of large numbers) but the error we get has a particular distribution: it is always distributed as a normal random variable.
 
-The limit of the Inverse Tranform method is the need for an invertible cumulative distribution function. While this condition was given in the context of discrete random variables, it is not for the continuous ones.
-
 -----
 
 ## Composition method
