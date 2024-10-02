@@ -1607,13 +1607,13 @@ In the image below, it is possible to observe the structure of the algorithm and
 ![[Acceptance-RejectionGeometricRandomVariable.png]]
 
 ### Proof $\fbox{a}$
-$P[X=x] = \sum_{i=1}^{+\infty} P[\text{x accepted at iteration i}]$ but being accepted at iteration $i$ means not being accepted in all iteration until $i$ and then getting accepted at iteration $i$.
+We now want to demonstrate that we obtain a random variable with probability density function $f(x)$. $P[X=x] = \sum_{i=1}^{+\infty} P[\text{x accepted at iteration i}]$ but being accepted at iteration $i$ means not being accepted in all iteration until $i$ and then getting accepted at iteration $i$.
 
 $$= \sum_{i=1}^\infty (1-\frac{1}{c})^{i-1} \frac{1}{c} f(x) = \frac{1}{c} f(x) \sum_{i=1}^\infty (1-\frac{1}{c})^{i-1}$$
 
 Remembering that $\sum_{i=0}^\infty q^n \rightarrow \frac{1}{1-q}$, we can apply to $\sum_{i=1} (1-\frac{1}{c})^{i-1}$ by substituting $j=i-1$ and $q= 1-\frac{1}{c}$ and obtain $\sum_{j=0}^\infty q^j \rightarrow \frac{1}{1-q} = \frac{1}{1-(1-1/c)} = c$. So going back to the original  equation:
 
-$$\frac{1}{c} f(x) \sum_{i=1}^\infty (1-\frac{1}{c})^{i-1} = \frac{1}{c} f(x) \cdot c = f(x) \space \square$$
+$$\frac{1}{c} f(x) \sum_{i=1}^\infty (1-\frac{1}{c})^{i-1} = \frac{1}{c} f(x) \cdot c = f(x)$$
 
 -----
 
