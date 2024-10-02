@@ -1741,7 +1741,7 @@ If we have an homogeneous Poisson Process of intensity $\lambda$ and accept an e
 - $\lim_{h\to 0} \frac{P[N(h)=1]}{h} = \lambda(t)$ (in small intervals, the probability of an event to occur is approximately $h\lambda(t)$) $\to$ proved below;
 - $\lim_{h\to 0} \frac{P[N(h)\geq 2]}{h} = 0$ $\to$ true, because was true before and we are not adding new events (at most this is a Poisson process) so the probability cannot increase.
 
-**Proof**:<br />
+**Proof**:
 
 $$\begin{align}
 &P[\text{finding an event in }[t,t+h]&\land \space &\text{ not discarding it}] = \\
@@ -1784,7 +1784,7 @@ $$P[F(X)\leq F(x), G(Y) \leq G(y)] = C(F(x),G(y))$$
 
 So, this copula is the joint probability on the distribution of these values: not $X$ and $Y$ but $F(X)$ and $G(Y)$.
 
-In other words: we know both $F(X)$ and $G(Y)$ but not their joint Cumulative Distribution Function $H(X,Y)$, only that they are not independent. 
+In other words: we know both $F(X)$ and $G(Y)$ but not their joint cumulative distribution function $H(X,Y)$, only that they are not independent. 
 
 The advantages of copulas are that we can define some specific types of copulas that can afterwards be applied not to a specific cumulative distribution function but to any cumulative distribution function and are able to produce pairs of values that maybe are not exactly as pairs of values thrown from a joint cumulative distribution of the two random variables but preserve some properties.
 
