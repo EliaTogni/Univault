@@ -722,7 +722,7 @@ def congruential_generator(seed = 1, a= 7 ** 5, c=0, m=(2 ** 31 - 1), n=1):
   return(v)
 ```
 
-Which is the quality of pseudorandom numbers generated using this technique? First of all, note that once the seed has been fixed the recurrence relation is completely deterministic, and this means that after at most $m$  elements the sequence will generate already produced elements, thus repeating itself. In general, the sequence will start repeating after a number of iterations, which will be designate as the **period** of the generator.
+Which are the qualities of pseudorandom numbers generated using this technique? First of all, note that once the seed has been fixed the recurrence relation is completely deterministic, and this means that after at most $m$  elements the sequence will generate already produced elements, thus repeating itself. In general, the sequence will start repeating after a number of iterations, which will be designate as the **period** of the generator.
 
 In general, there are three main distinctive properties that drive the choice of the parameters of a congruential generator:
 -  the set of generated pseudorandom values should be undistinguishable from an analogous sample drawn from a discrete uniform distribution over $\{0 , \dots, m-1\}$;
@@ -994,16 +994,16 @@ Now, it is possible to round up and say that $i \geq \lceil n \cdot r \rceil$. T
 
 ```python
 def UniformDRV2(n):
-	r = random.random()
-	return math.ceil(n * r)
+	u = random.random()
+	return math.ceil(n * u)
 ```
 
 Now considering the second specific case, that is, the case in which $n = 2$, it is possible to write an algorithm that generates observations for this random variable in the following way: 
 
 ```python
 def binaryDRV(p)
-	r = random.random()
-	if r <= p:
+	u = random.random()
+	if u <= p:
 		return 0
 	else:
 		return 1
