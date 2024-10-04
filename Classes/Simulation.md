@@ -979,18 +979,18 @@ A valid algorithm for producing values for a uniform discrete random variable is
 
 ```python
 def UniformDRV1(n):
-	r = random.random()
+	u = random.random()
 	for i in range(1, n + 1, 1):
-		if r <= i/n:
+		if u <= i/n:
 			return i
 ```
 
-Another approach is based on the following sequence of inequalities. We stop if the condition $r \leq \frac{i}{n}$ is met. If this condition is met, it is also true that $r >\frac{(i-1)}{n}$ (that is, $r$ is greater than the preceding cumulate probability) and this equivalence leads to the following sequence of disequations:
+Another approach is based on the following sequence of inequalities. We stop if the condition $u \leq \frac{i}{n}$ is met. If this condition is met, it is also true that $u >\frac{(i-1)}{n}$ (that is, $u$ is greater than the preceding cumulate probability) and this equivalence leads to the following sequence of disequations:
 
-$$(i -1) \cdot \frac{1}{n} < r \leq i \cdot  \frac{1}{n} = $$
-$$= (i - 1) < n \cdot r \leq i =$$
+$$(i -1) \cdot \frac{1}{n} < u \leq i \cdot  \frac{1}{n} = $$
+$$= (i - 1) < n \cdot u \leq i =$$
 
-Now, it is possible to round up and say that $i \geq \lceil n \cdot r \rceil$. The other side of the disequation says that $i < n \cdot r + 1$. Remembering that $i$ is an integer value, it follows that the previous algorithm can be written as
+Now, it is possible to round up and say that $i \geq \lceil n \cdot u \rceil$. The other side of the disequation says that $i < n \cdot u + 1$. Remembering that $i$ is an integer value, it follows that the previous algorithm can be written as
 
 ```python
 def UniformDRV2(n):
