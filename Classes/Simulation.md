@@ -1201,7 +1201,7 @@ Expected value $\mathbb{E}[X] = \sum_{n = 1}^{\infty} np(1 - P)^{n-1} = \frac{1}
 Variance $Var[X] = \frac{1 - p}{p^2}$.
 
 How to generate algorithmically geometric random variables? The first possible approach consists in simulating the repetition of a Bernoulli experiment. Another possible one is using, again, the inverse cumulative distribution function approach and the Native Algorithm..<br />
-Since $P[X = i] = (1 - p)^{i - 1} \cdot p$, we can pass $p$ instead of $X$ to the algorithm
+Since $P[X = i] = (1 - p)^{i - 1} \cdot p$, we can pass $p$ instead of $X$ to the algorithm.
 
 ```pseudo
 	\begin{algorithm}
