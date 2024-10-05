@@ -1249,7 +1249,7 @@ $$\binom{i - 1}{r -1} p^{r-1}(1-p)^{i-1 -(r-1)}$$
 
 Therefore, $P[X = i] = \binom{i - 1}{r -1} p^{r-1}(1-p)^{i-r} \cdot p = \binom{i - 1}{r -1} p^{r}(1-p)^{i-r}$
 
-To compute the expected value, we can consider this random variable as $r$ observation of a geometric random variable:
+To compute the expected value, we can consider this random variable as $r$ observation of a geometric random variable, that is, $r$ observation of the first success:
 
 $$X = \sum_{k = 1}^{r}X_k$$
 
