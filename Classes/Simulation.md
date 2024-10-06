@@ -1653,7 +1653,7 @@ Suppose that events are occurring at random time points. These events are said t
 - events are occurring at random time points;
 - $N(t)$ is the number of events in the interval $[0, t]$;
 - $N(0) = 0$ (process begins at time $0$);
-- the number of events in disjoint time intervals are independent (**independet increment assumption**);
+- the number of events in disjoint time intervals are independent (**independent increment assumption**);
 
 ![[IndependentIncrementAssumtpion.png]]
 
