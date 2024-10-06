@@ -1358,7 +1358,7 @@ $\lambda$ is the value that we expect from a phenomenon that assumes low values 
 
 The cumulative distribution function of an exponential random variable is given by
 
-$$F(x) = \int_{0}^{x}{\lambda e^{-\lambda x}dx} = 1 - e^{-\lambda x}, \quad 0 < x < \infty$$
+$$F(x) = \int_{0}^{x}{\lambda e^{-\lambda z}dz} = 1 - e^{-\lambda x}, \quad 0 < x < \infty$$
 
 ![[ExponentialRandomVariable.png]]
 
