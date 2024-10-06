@@ -1463,7 +1463,7 @@ $$F(x) = \Phi \Big( \frac{x - \mu}{\sigma^2} \Big)$$
 
 where 
 
-$$\Phi(x) = \frac{1}{\sqrt{2 \pi}} \int_0^x e^{-z^2 / 2} dz$$
+$$\Phi(x) = \frac{1}{\sqrt{2 \pi}} \int_{- \infty}^x e^{-z^2 / 2} dz$$
 
 A kind of normalization is done in $\Phi$. In other terms, $\Phi(x)$ could be seen as the cumulative distribution function of a normal random variable having expected value $0$ and variance $1$.
 
