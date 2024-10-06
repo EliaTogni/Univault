@@ -1261,7 +1261,7 @@ The same holds for its variance $Var[X] = r \cdot \frac{1 - p}{p^2}$.
 ##### Hypergeometric Random Variable
 $N$ blue balls $+ M$ not blue balls. What is the number of blue balls that i get by drawing $n$ of them from the urn? This experiment cannot be seen as a Bernoulli experiment due to the fact that trials are not identical anymore.
 
-A population is given, where $N$ individuals hold a feature and $M$ do not. Knowing that $n$ is the size of the sample, an hypergeometric random variable X takes on the number of individuals in the sample holding the feature.
+A population of size $N + M$ is given, where $N$ individuals hold a feature and $M$ do not. Knowing that $n$ is the size of the sample, an hypergeometric random variable $X$ takes on the number of individuals in the sample holding the feature.
 
 $$P[X = i] = \frac{\binom{N}{i} \cdot \binom{M}{n - i}}{\binom{N + M}{n}}$$
 
