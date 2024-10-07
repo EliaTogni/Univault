@@ -1477,7 +1477,7 @@ Also, $\Phi$ is not an invertible function: therefore, in term of creating an al
 ##### Central Limit Theorem
 Let $X_1, \dots, X_n$ be a sequence of $n$ indipendent and identically distributed random variables having finite expected value $\mu$ and variance $\sigma^2$.
 
-$$\lim_{n \to \infty} P\Bigg[\frac{\sum_{i = 1}^{n}X_i - n \cdot \mu}{\sqrt{n \sigma^2}} < x\Bigg] = \Phi(x)$$
+$$\lim_{n \to \infty} P\Bigg[\frac{\sum_{i = 1}^{n}X_i - n \cdot \mu}{\sigma \sqrt{n}} < x\Bigg] = \Phi(x)$$
 
 that is, the sum of a large number of independent random variables is a normally distributed random variable (indipendently on the distribution of the starting ones). In other terms, the probability of finding this sum to be different from $n$ times the expected value is not only decreasing (as in the law of large numbers) but the error we get has a particular distribution: it is always distributed as a normal random variable.
 
