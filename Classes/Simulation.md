@@ -1598,7 +1598,7 @@ Since $Y$ is continuous:
 
 $$P[accepted] = \int_{-\infty}^{+\infty} \frac{f(y)}{c} dy = \frac{1}{c} \int_{-\infty}^{+\infty} f(y) dy = \frac{1}{c}$$
 
-The probability of being accepted at each iteration is, therefore, a constant. Since the expected value of a geometric random variable of parameter $p$ is $\mathbb{E}[X] = 1/p$ and in this case $p = 1/c$, it is obvious that the expected value of the number of iterations is $\frac{1}{1/c}$ and, therefore, $c$.
+The probability of being accepted at each iteration is, therefore, a constant. Since we are interested in the first success, that is, in the first value of $y$ that has been accepted, we are in the setting of the geometric random variable. The expected value of a geometric random variable of parameter $p$ is $\mathbb{E}[X] = 1/p$ and in this case $p = 1/c$: hence, it is obvious that the expected value of the number of iterations is $\frac{1}{1/c}$ and, therefore, $c$.
 
 In the image below, it is possible to observe the structure of the algorithm and notice that this structure follows exactly the geometric random variable's behaviour.
 
