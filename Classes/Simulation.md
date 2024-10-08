@@ -1644,7 +1644,7 @@ def genHalfNormal():
 		y = genExp()
 		u = random()
 		if u*c <= 2/sqrt(2*pi) * e**(y - y**2/2):
-			return c
+			return y
 ```
 
 -------------------------------------------------------------
