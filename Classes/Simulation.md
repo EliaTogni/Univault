@@ -1639,6 +1639,10 @@ def genNormal():
 		return genHalfNormal()
 	else:
 		return -genHalfNormal()
+```
+
+
+```python
 def genHalfNormal():
 	while True:
 		y = genExp()
