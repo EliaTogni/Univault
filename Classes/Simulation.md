@@ -1770,9 +1770,9 @@ First of all, if we have a joint distribution of two variables $X$ and $Y$, the 
 A **copula** is a joint probability distribution $C(x,y)$ with both marginal distributions being uniformly distributed in $(0,1)$:
 
 $$\begin{align}
-C(0,0)= 0\\
-C(x,1) = x\\
-C(1,y) = y\\
+&C(0,0)= 0\\
+&C(x,1) = x &\to \space P[F(X) \leq x, Y \leq 1]\\
+&C(1,y) = y\\
 \end{align}$$
 
 For example, we want to use this copula to represent another joint probability distribution function $H(x,y)$ for the random variables $X$ and $Y$ whose marginal distributions are known to be respectively the continuous cumulative distribution functions $F()$ and $G()$:
@@ -1907,7 +1907,7 @@ $$C(x, y) = \min\{x^\alpha y, xy^\beta\} \text{, with } \alpha = \frac{\lambda_1
 for $\lambda_1$, $\lambda_2$ and $\lambda_3$ known through empirical observation. Algorithmically speaking, how do we use this copula?
 
 ```python
-def generate_marshallolkin(invF, invF, lambda1, lambda2, lambda3):
+def generate_marshallolkin(invF, invG, lambda1, lambda2, lambda3):
 	
 	t1 = gen_exponential(lambda1)
 	t2 = gen_exponential(lambda2)
