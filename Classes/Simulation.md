@@ -1822,7 +1822,7 @@ $$\begin{align}
 
 For the same reasoning, it holds that $G_t(Y) = G(t^{-1}(y))$. However, $F_s(s(x)) = F(s^{-1}(s(x))) = F(x)$ and $G_t(t(y)) = G(t^{-1}(t(y))) = G(y)$, so:
 
-$$C_{s(X),t(Y)}(x, y) = P[F_s(s(x)) \leq x, G_t(t(y)) \leq y] = P[F(x)\leq x, G(y) \leq y] = C_{x,y}(x,y)$$
+$$C_{s(X),t(Y)}(x, y) = P[F_s(s(X)) \leq x, G_t(t(Y)) \leq y] = P[F(X)\leq x, G(Y) \leq y] = C_{x,y}(x,y)$$
 $\square$
 
 Let's observe some code for using these copulas. This algorithm is for generating pairs of values for random variables having cumulative distribution function $F$ and $G$ and some correlation among them of value $\rho$ using the idea of the Gaussian copula.
@@ -1899,8 +1899,7 @@ Suppose to have two electrical components and three possible shocks: shock $1$ a
 
 ![[ElectricCircuti.png]]
 
-Now, we know that these $3$ shocks occur at different rates $\lambda_1$, $\lambda_2$ and $\lambda_3$. What we are interest in is the rate of failure of the components. The shocks are independent. The failures, however, are not.
-We wish to generate failures for these two times.
+Now, we know that these $3$ shocks occur at different rates $\lambda_1$, $\lambda_2$ and $\lambda_3$. What we are interest in is the rate of failure of the components. The shocks are independent. The failures, however, are not. We wish to generate failures for these two times.
 
 In this type of situation, we normally don't know the joint distribution of $T1$ and $T2$ since it depends on the actual distribution of failure times. We are however able to approximate the joint distribution with the **Marshall-Olkin copula**, which is a copula defined in this way
 
