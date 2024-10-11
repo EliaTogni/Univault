@@ -585,7 +585,7 @@ The result now follows since the inequality $\frac{(X − \mu)^2}{\sigma^2} \geq
 
 A more general form of the Chebishev's Inequality is the following. If $X$ is a random variable having mean $\mu$ and variance $\sigma^2$, then for any value $k > 0$
 
-$$P\Big[\vert X−E[X] \vert \geq k\Big] \leq \frac{\sigma^2}{k^2}$$
+$$P\Big[\vert X− \mu \vert \geq k\Big] \leq \frac{\sigma^2}{k^2}$$
 
 If we define $k = \sigma \cdot k'$, where $k'$ is a positive number, the inequality becomes
 
@@ -614,7 +614,6 @@ $$Var \Bigg[\frac{X_1 + \dots + X_n}{n}\Bigg] = \frac{1}{n^2} \Big[Var[X_1] + \d
 where the above equation makes use of the fact that the variance of the sum of independent random variables is equal to the sum of their variances. Hence, from Chebyshev’s inequality, which says that
 
 $$P\Bigg[\vert X - \mu] \vert \geq k \sigma\Bigg]≤\frac{1}{k^2}$$​
-
 it follows that for any positive $k$
 
 $$P\Bigg[ \bigg \vert \frac{X_1 + \cdots + X_n}{n} - \mu \bigg\vert \geq \frac{k\sigma}{\sqrt{n}} \Bigg] \leq \frac{1}{k^2}$$
@@ -807,7 +806,7 @@ Below, some graphical example of $F$ and $\widehat{F}$.
 ## Monte Carlo methods
 The term Monte Carlo refers to a wide family of **estimation methods** based on the use of pseudorandom numbers. The basic idea beneath this kind of methods is well described by the anndedoct describing its discovery on part of Stan Ulam, an ungarian mathematician who, playing a card solitaire while recovering from an encephalitis, wondered about the probability of dealing a specific, nontrivial hand from a shuffled deck. As he couldn't get the result through combinatorics, Ulam noticed that an approximation of the probability value could be easily found: it was sufficient to repeatedly shuffle the deck and compute the frequency of time that the desired card configuration appeared.
 
-Although on that time this idea did not result in any application, when some years later Ulam was involved in the design of nuclear weapons at the Los Alamos National laboratories, the studies he was conducting with John Von Neumann and Nicholas Metropolis required to estimate the distribution of distances traveled by neutrons during a fission experiment. His early intuition could now be applied to a real-world problem: it just sufficed a bunch of random values. Those values could have been found in tables commonly used at that time, byt the availability the ENIAC computer suggested John Von Neumann to simulate the extraction of such numbers through the middle-square method introduced at the beginning of this lecture, which he designed specifically with this purpose.
+Although on that time this idea did not result in any application, when some years later Ulam was involved in the design of nuclear weapons at the Los Alamos National laboratories, the studies he was conducting with John Von Neumann and Nicholas Metropolis required to estimate the distribution of distances traveled by neutrons during a fission experiment. His early intuition could now be applied to a real-world problem: it just sufficed a bunch of random values. Those values could have been found in tables commonly used at that time, but the availability the ENIAC computer suggested John Von Neumann to simulate the extraction of such numbers through the middle-square method introduced at the beginning of this lecture, which he designed specifically with this purpose.
 
 The secrecy policies of the Manhattan project required each methodelogy invented in the Los Alamos laboratories to have a code name, so Metropolis suggested **Monte Carlo**, referring to the casino in Monaco frequented by Ulam's uncle.
 
@@ -891,7 +890,7 @@ Calling $(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi} = \eta$, which it is a constant
 
 $$1 - \frac{(1 - \frac{\pi}{4}) \cdot \frac{4}{\pi}}{n \gamma^2} = 1 - \frac{\eta}{n \gamma^2} \geq \delta$$
 
-that is, it is desirable for the obtained confidence ot be greater or equal than the target confidence. Henceforth
+that is, it is desirable for the obtained confidence to be greater or equal than the target confidence. Henceforth
 
 $$- \frac{\eta}{n (10^{-k})^2} \geq \delta - 1$$
 $$\frac{\eta}{n (10^{-k})^2} \leq 1 - \delta$$
@@ -922,7 +921,7 @@ $$P[X = x_j] = p_j, \quad j = 0, \dots, 6 \quad \sum_{j = 1}^6 p_j = 1$$
 
 To accomplish this, a random number $U$ is generated, that is, $U$ is uniformly distributed over $(0, 1)$, and set
 
-$$X = \cases{1 \space \text{ con } p = \frac{1}{2} \cr \cr 2 \space \text{ con } p = \frac{1}{10} \cr \cr 3 \space \text{ con } p = \frac{1}{10} \cr \cr 4 \space \text{ con } p = \frac{1}{10} \cr \cr 5 \space \text{ con } p = \frac{1}{10} \cr \cr 6 \space \text{ con } p = \frac{1}{10}}$$
+$$X = \cases{1 \space \text{ with } p = \frac{1}{2} \cr \cr 2 \space \text{ with } p = \frac{1}{10} \cr \cr 3 \space \text{ with } p = \frac{1}{10} \cr \cr 4 \space \text{ with } p = \frac{1}{10} \cr \cr 5 \space \text{ with } p = \frac{1}{10} \cr \cr 6 \space \text{ with } p = \frac{1}{10}}$$
 
 Expected value $\mathbb{E}[X] = 1 \cdot \frac{1}{2} + \dots + 6 \cdot \frac{1}{10} = \sum_{i = 1}^{6} v_i \times p_i = \mu$<br />
 Variance $Var[X] = \sum_{i = 1}^{6}( v_i - \mu)^2 \cdot p_i$
@@ -1855,7 +1854,7 @@ Let's define the multivariate normal. If we look at $X_1$ and $X_2$ independentl
 
 ![[MultivariateNormal.png]]
 
-When we look at both the distributions together, we see probability level curves. Each curve identifies the same probability value. They could also look like the second graph above. So, if we look at specific values for $x_1$, they indeed have the shape of a normal but it's not the same one. So the value of one is affected by the value of the other.
+When we look at both the distributions together, we see probability level curves. Each curve identifies the same probability value. They could also look like the second graph above. So, if we look at specific values for $X_1$, they indeed have the shape of a normal but it's not the same one. So the value of one is affected by the value of the other.
 
 If we look at projections, single dimensions, etc., of these bivariate normals, they will still look normal. However, they will be shifted, scaled or combined depending one on the value of the other. In fact, we can define the coordinates in a normal as a combination of other indipendent and identically distributed normal random variables having mean $\mu =0$ and variance $\sigma^2 = 1$. That is, suppose to have $X_1$, $X_2$, $\dots$, $X_n$:
 
