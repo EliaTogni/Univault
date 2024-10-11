@@ -1838,7 +1838,7 @@ def generate_gaussian_copula(invF, invG, rho):
 	y2 = v1 * z1 - v2 * z2
 	
 	x1 = invF(phi(y1))
-	x2 = invF(phi(y2))
+	x2 = invG(phi(y2))
 	
 	return x1, x2
 	
