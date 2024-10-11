@@ -986,8 +986,8 @@ def UniformDRV1(n):
 
 Another approach is based on the following sequence of inequalities. We stop if the condition $u \leq \frac{i}{n}$ is met. If this condition is met, it is also true that $u >\frac{(i-1)}{n}$ (that is, $u$ is greater than the preceding cumulate probability) and this equivalence leads to the following sequence of disequations:
 
-$$(i -1) \cdot \frac{1}{n} < u \leq i \cdot  \frac{1}{n} = $$
-$$= (i - 1) < n \cdot u \leq i =$$
+$$(i -1) \cdot \frac{1}{n} < u \leq i \cdot  \frac{1}{n}$$
+$$(i - 1) < n \cdot u \leq i$$
 
 Now, it is possible to round up and say that $i \geq \lceil n \cdot u \rceil$. The other side of the disequation says that $i < n \cdot u + 1$. Remembering that $i$ is an integer value, it follows that the previous algorithm can be written as
 
@@ -1016,7 +1016,7 @@ The following small variant of the previous algorithm will accomplish this by fi
 
 Let's evaluate if the probability of each permutation to appear is the same.
 
-$$P[\text{Each permutation to be the same}] = \bar{p}$$
+$$P[\text{Each permutation}] = \bar{p}$$
 
 Let's observe it in a different way. Let's check for the last position what is the probability of containing each element. What the algorithm does is to choose at random one of the $n$ position and swap, therefore only one condition has to be satistisfied, that is, the choice must be made uniformly. In other words, the choice is read as the output of a uniform discrete random variable:
 
@@ -1096,7 +1096,7 @@ It is intuitive, given the relationship between Binomial and Poisson random vari
 
 $$\mathbb{E}[X] = Var[X] = \lambda$$
 
-In fact, the expected value $\mathbb{E}[X] = np = \lambda$ and the variance $Var[X] = np(1 - p) = n(p - p^2)$. But if $p$ is a small value, $p^2$ tends to $0$ and, therefore, it can be dropped. The remaining product is $np$ which is again $\lambda$.
+In fact, the expected value $\mathbb{E}[X] = np = \lambda$ and the variance $Var[X] = np(1 - p) = n(p - p^2)$. But if $p$ is a small value, $p^2$ tends to $0$ and, therefore, it can be dropped. The remaining product is $np$, which is again $\lambda$.
 
 As for the Binomial, the calculation of the probability for large values of $n$ and, in particular, of the binomial coefficient is computationally challenging. An idea is to compute this probability incrementally.
 
@@ -1196,10 +1196,10 @@ $$P[X = i] = p(1 - p)^{i - 1}, \quad i \geq 1$$
 
 which is easily obtained by noting that in order for the first success to occur on the $i$-th trial, the first $i − 1$ must all be failures and the $i$-th a success. The previous equation now follows because the trials are independent.
 
-Expected value $\mathbb{E}[X] = \sum_{n = 1}^{\infty} np(1 - P)^{n-1} = \frac{1}{p}$.<br />
+Expected value $\mathbb{E}[X] = \sum_{n = 1}^{\infty} np(1 - p)^{n-1} = \frac{1}{p}$.<br />
 Variance $Var[X] = \frac{1 - p}{p^2}$.
 
-How to generate algorithmically geometric random variables? The first possible approach consists in simulating the repetition of a Bernoulli experiment. Another possible one is using, again, the inverse cumulative distribution function approach and the Native Algorithm..<br />
+How to generate algorithmically geometric random variables? The first possible approach consists in simulating the repetition of a Bernoulli experiment. Another possible one is using, again, the inverse cumulative distribution function approach and the Native Algorithm.<br />
 Since $P[X = i] = (1 - p)^{i - 1} \cdot p$, we can pass $p$ instead of $X$ to the algorithm.
 
 ```pseudo
@@ -1221,9 +1221,9 @@ Since $P[X = i] = (1 - p)^{i - 1} \cdot p$, we can pass $p$ instead of $X$ to th
 Can we do it more efficiently? We can try to reduce the number of iterations since the formula has only exponentials and no factorials in it. Let's observe $P[X = 1] = 1 - P[X \neq 1] = 1 - (1 - p)$. Also, $P[X = 1 \lor 2] = 1 - P[X \neq 1 \wedge X \neq 2]$. At the $j$-th iteration, if the algorithm doesn't stop, it means that $u \geq 1 - (1 -p)^{j -1}$. On the other hand, if we stop it means that $u < 1 - (1 -p)^j$. <br />
 If the final output of the algorithm is $j$ and we call $(1 - p) = q$, it holds that
 
-$$1 - q^{j - 1} \leq u < 1 - q^j =$$
-$$= - q^{j - 1} \leq u -1 < - q^j =$$
-$$= q^{j} < 1 - u \leq q^{j-1} =$$
+$$1 - q^{j - 1} \leq u < 1 - q^j$$
+$$- q^{j - 1} \leq u -1 < - q^j$$
+$$q^{j} < 1 - u \leq q^{j-1}$$
 $$\text{output } \widehat{\text{j}} = \min \Big\{j \space \vert \space q^j < 1 - u\Big\}$$
 
 How can we find this minimum without computing all these terms? Moving to the logarithm in both terms of the condition, we obtain
@@ -1232,8 +1232,8 @@ $$\log(q^j) < \log(1 - u)$$
 
 Since the logarithm is a monotone function, when $\log(q^j) < \log(1 - u)$, then $qj < 1 - u$. Therefore, this is a valid modification.
 
-$$j \log(q) < \log(1 - u) =$$
-$$= j  > \frac{\log(1 - u)}{\log(q)}$$
+$$j \log(q) < \log(1 - u)$$
+$$j  > \frac{\log(1 - u)}{\log(q)}$$
 
 At this point, we know that we can define this $j = \Bigg \lfloor \frac{\log(1 - u)}{\log(q)} \Bigg \rfloor + 1$. Also, if $u$ is a random number between $0$ and $1$, also $1 - u$ is a random number between $0$ and $1$. Therefore, we can say that $j = \Bigg \lfloor \frac{\log(u)}{\log(q)} \Bigg \rfloor + 1$.
 
@@ -1295,7 +1295,7 @@ $$F(x) = \frac{x-a}{b-a}$$
 
 The area under the line in the first graph above must obviously be equal to $1$.
 
-The point of modeling with continuous random variables is that the geometric representation of these function ($f(x)$ and $F(x)$) help in modeling. Having in mind what these functions look like in terms of graph is really useful.
+The point of modeling with continuous random variables is that the geometric representation of these functions ($f(x)$ and $F(x)$) helps in modeling. Having in mind what these functions look like in terms of graph is really useful.
 
 Let's analyze the algorithmic part.
 
