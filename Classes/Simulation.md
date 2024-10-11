@@ -1864,7 +1864,7 @@ $$X_2 = a_{21}Z_1 + a_{22}Z_2 + \dots + a_{2n}Z_n + \mu_2$$
 $$\dots$$
 $$X_n = a_{n1}Z_1 + a_{n2}Z_2 + \dots + a_{nn}Z_n + \mu_n$$
 
-Each single normal random variable $z_i$ of them can be generated and we have already seen how.
+Each single normal random variable $_i$ of them can be generated and we have already seen how.
 
 Now, we can generate a random vector of $n$ values from a multivariate normal distribution. It is enough to generate the $n$ values for the $Z_i$ and then combining them accordingly to these coefficients. At this point, it is possible to return this vector in our copula for generating random vector not of all normal but from different marginal distributions.
 
@@ -1902,7 +1902,7 @@ Suppose to have two electrical components and three possible shocks: shock $1$ a
 Now, we know that these $3$ shocks occur at different rates $\lambda_1$, $\lambda_2$ and $\lambda_3$. What we are interest in is the rate of failure of the components. The shocks are independent. The failures, however, are not.
 We wish to generate failures for these two times.
 
-In this type of situation, we normally don't know the joint distribution of $T1$ and $T2$ since it depends on the actual distribution of failure times (==o types?==). We are however able to approximate the joint distribution with the **Marshall-Olkin copula**, which is a copula defined in this way
+In this type of situation, we normally don't know the joint distribution of $T1$ and $T2$ since it depends on the actual distribution of failure times. We are however able to approximate the joint distribution with the **Marshall-Olkin copula**, which is a copula defined in this way
 
 $$C(x, y) = \min\{x^\alpha y, xy^\beta\} \text{, with } \alpha = \frac{\lambda_1}{\lambda_1 + \lambda_3} \text{ and } \frac{\lambda_2}{\lambda_2 + \lambda_3}$$
 
@@ -1929,12 +1929,12 @@ def generate_marshallolkin(invF, invF, lambda1, lambda2, lambda3):
 # Statistical Analysis of Simulated Data
 Either by generating or by building a simulation model, we are now able to produce valid outputs for random variables even with unknown structure.
 
-When we get the cumulative distribution function of a random variable, we basically have everything about it. So we will now focus on the measurement of some parameters of this distribution. We know that for undestanding a random variable, we need the distribution function but we can still be satisfied by some other parameters that may be enough for supporting our decisions.
+When we get the cumulative distribution function of a random variable, we basically have everything about it. So we will now focus on the measurement of some parameters of this distribution. We know that to undestand a random variable we need the distribution function but we can still be satisfied by some other parameters that may be enough to support our decisions.
 
 ## Estimators and Interval Estimates
 The expected value $\Theta$ is one of the things we need the most but there is no way to compute it from a simulated variable: we can only compute it from the random variables that we know theoretically. We can, however, compute an approximation $\tilde{\Theta}$ of it, that we try to understand from the data. That is what we call an **estimate**. And how can we move from a set of  measurement to an estimate? We obviously apply a function, called an **estimator**.
 
-We are interested in what we define as **unbiased and reliable estimators**. Unbiased means that if we draw $n$ random values from our random variable and compute a function of them, the result is still a random value. If its expected value it is matching the theoretical value we are looking for, the estimator is unbiased.
+We are interested in what we define as **unbiased and reliable estimators**. If we draw $n$ random values from our random variable and compute a function of them, the result is still a random value. If the expected value of this random variable is matching the theoretical value we are looking for, then the estimator is unbiased.
 
 One of the most important and basics estimators is the **sample mean**, a function that we can apply to the data and estimate the expected value:
 
@@ -1942,14 +1942,14 @@ $$\widehat{X} = \sum_{i = 1}^{n} \frac{X_i}{n}$$
 
 This is the **sample variance**, an estimator for the variance:
 
-$$S^2 = \frac{(\sum_{i = 1}^{n}X_i - \overline{X})^2}{n - 1}$$
+$$S^2 = \frac{\sum_{i = 1}^{n}(X_i - \overline{X})^2}{n - 1}$$
 
 We claim that the sample variance is an unbiased estimator for the variance and that the expected value that we get by writing this algorithm an infinite number of times is matching the variance of our random variable.
 
 There is another property of estimators: not being unbiased is telling us that there is no convergence to the actual expected value, there is some error. So let's assume to take an estimator unbiased: we may be interested in the rate in which we approach the actual value. How fast are we converging? Is such rate is fast enough, we say that this estimator is reliable, that is, we don't need an infinite number of runs to get something valid.
 
 Let's take the sample mean and try to measure the error rate of the sample mean.<br />
-The error $E$ that we get could be the squared difference between the real value of the expected value $\mu$ and our sample mean estimate $\overline{x}$: $E = (\mu - \overline{X})^2$. We also know that $\overline{X}$ will be the output of an algorithm so different runs of the algorithm would produce different values. This implies that this single evaluation is not really meaningfull, hence we will use the **mean squared error**
+The error $E$ that we get could be the squared difference between the real value of the expected value $\mu$ and our sample mean estimate $\overline{X}$: $E = (\mu - \overline{X})^2$. We also know that $\overline{X}$ will be the output of an algorithm so different runs of the algorithm would produce different values. This implies that this single evaluation is not really meaningfull, hence we will use the **mean squared error**
 
 $$MSE = \mathbb{E}[(\mu - \overline{X})^2]$$
 
@@ -1961,7 +1961,7 @@ Having this error estimate is great theoretically, that is, it let us know if we
 
 The more precision we ask for, the more repetitions we need to do and, therefore, the higher the probability of actually reaching that precision. These quantities depends one another and we can fix two of them and find the third one that is helping us in matching the theoretical understanding that we have.
 
-Let's consider the pharmacy example and assume we want to understand the expected time that the prescription needs to be fill from the coming of the prescription in the shop. We already know the time the prescription needs when the pharmacist starts working on it but since there is the queueing system, the actual time from the arrival may be different. So, this time is a random variable. We would be interested in having its distribution but it is not possible. Hence, we will try to measure the expected value computing the sample mean of the time that it takes to fill out a prescription. What would be the number of repetitions to obtain an error of one minute?
+Let's consider the pharmacy example and assume we want to understand the expected time that the prescription needs to be filled from its arrival in the shop. We already know the time the prescription needs when the pharmacist starts working on it but since there is the queueing system, the actual time from the arrival may be different. So, this time is a random variable. We would be interested in having its distribution but it is not possible. Hence, we will try to measure the expected value computing the sample mean of the time that it takes to fill out a prescription. What would be the number of repetitions to obtain an error of one minute?
 
 Let's call $\Theta$ the expected time of filling a prescription. We model the system as a discrete events simulation, we run it $n$ times and apply the sample mean as the estimator. The error we get is, again, $\frac{\sigma}{\sqrt{n}}$. Therefore
 
