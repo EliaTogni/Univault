@@ -1898,9 +1898,9 @@ Suppose to have two electrical components and three possible shocks: shock $1$ a
 
 ![[ElectricCircuti.png]]
 
-Now, we know that these $3$ shocks occur at different rates $\lambda_1$, $\lambda_2$ and $\lambda_3$. What we are interest in is the rate of failure of the components. The shocks are independent. The failures, however, are not. We wish to generate failures for these two times.
+Now, we know that these $3$ shocks occur at different rates $\lambda_1$, $\lambda_2$ and $\lambda_3$. What we are interest in is the rate of failure of the components. The shocks are independent. The failures, however, are not (e.g., the probability of the failure of $T_2$ changes if we know that $T_1$ failed). We wish to generate times for these two failures.
 
-In this type of situation, we normally don't know the joint distribution of $T1$ and $T2$ since it depends on the actual distribution of failure times. We are however able to approximate the joint distribution with the **Marshall-Olkin copula**, which is a copula defined in this way
+In this type of situation, we normally don't know the joint distribution of $T_1$ and $T_2$ since it depends on the actual distribution of failure times. We are however able to approximate the joint distribution with the **Marshall-Olkin copula**, which is a copula defined in this way
 
 $$C(x, y) = \min\{x^\alpha y, xy^\beta\} \text{, with } \alpha = \frac{\lambda_1}{\lambda_1 + \lambda_3} \text{ and } \frac{\lambda_2}{\lambda_2 + \lambda_3}$$
 
