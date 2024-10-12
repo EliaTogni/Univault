@@ -1771,7 +1771,7 @@ A **copula** is a joint probability distribution $C(x,y)$ with both marginal dis
 
 $$\begin{align}
 &C(0,0)= 0\\
-&C(x,1) = x &\to \space P[F(X) \leq x, Y \leq 1]\\
+&C(x,1) = x &\to \space P[F(X) \leq x, G(Y) \leq 1]\\
 &C(1,y) = y\\
 \end{align}$$
 
