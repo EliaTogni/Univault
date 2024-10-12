@@ -1916,8 +1916,8 @@ def generate_marshallolkin(invF, invG, lambda1, lambda2, lambda3):
 	x1 = min(t1, t3)
 	x2 = min(t2, t3)
 	
-	y1 = exponential_pdf((lambda1 + lambda3) * x1)
-	y2 = exponential_pdf((lambda2 + lambda3) * x2)
+	y1 = exponential_pdf(-(lambda1 + lambda3) * x1)
+	y2 = exponential_pdf(-(lambda2 + lambda3) * x2)
 	
 	return invF(y1), invG(y2)
 ```
