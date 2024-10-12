@@ -1819,7 +1819,7 @@ $$\begin{align}
 &= P[X \leq s^{-1}(x)] = F(s^{-1}(x))
 \end{align}$$
 
-For the same reasoning, it holds that $G_t(Y) = G(t^{-1}(y))$. However, $F_s(s(x)) = F(s^{-1}(s(x))) = F(x)$ and $G_t(t(y)) = G(t^{-1}(t(y))) = G(y)$, so:
+For the same reasoning, it holds that $G_t(y) = G(t^{-1}(y))$. However, $F_s(s(x)) = F(s^{-1}(s(x))) = F(x)$ and $G_t(t(y)) = G(t^{-1}(t(y))) = G(y)$, so:
 
 $$C_{s(X),t(Y)}(x, y) = P[F_s(s(X)) \leq x, G_t(t(Y)) \leq y] = P[F(X)\leq x, G(Y) \leq y] = C_{x,y}(x,y)$$
 $\square$
