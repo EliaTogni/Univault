@@ -1969,7 +1969,7 @@ $$n = \frac{\sigma^2}{(1m)^2}$$
 
 So, we just need the variance. But this is also an unknow random variable. At this point, we can use an estimator for the variance too, the sample variance. Now, the problem keeps going. How many runs should we do to have a low error on the sample variance? 
 
-First of all, recall that the central limit theorem tells us that the reading of the sample mean is a normal random variable. In a normal, not being
+First of all, recall that the central limit theorem tells us that the reading of the sample mean is a normal random variable.
 
 Experimentally speaking, a good recipe to compute our estimates by simulation:
 1) suppose $\Theta = \mathbb{E}[X]$ (do it by sample mean $\overline{X}$);
