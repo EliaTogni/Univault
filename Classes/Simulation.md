@@ -1974,7 +1974,7 @@ First of all, recall that the central limit theorem tells us that the reading of
 Experimentally speaking, a good recipe to compute our estimates by simulation:
 1) suppose $\Theta = \mathbb{E}[X]$ (do it by sample mean $\overline{X}$);
 2) fix a confidence, that is, the target probability of actually getting the error with $n$ runs (e.g., $95\%$);
-3) fix a precision we pretend to get, that is, the amount of errors we tend to do ($p = 1.96d$);
+3) fix a precision we pretend to get, that is, the amount of errors we tend to do (precision $p = 1.96d$, where $d$ is the standard deviation of our estimate );
 4) perform a certain number ($100$) of iterations a priori and compute an initialization value for $s$ ($s$ is the sample standard deviation);
 5) keep on running the simulation until the measured error $\frac{s}{\sqrt{n}}$ became less than $d$;
 6) return $\overline{X} = \sum_{i = 1}^{n} \frac{X_i}{n}$.
