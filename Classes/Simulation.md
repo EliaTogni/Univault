@@ -1940,22 +1940,22 @@ $$\widehat{X} = \sum_{i = 1}^{n} \frac{X_i}{n}$$
 
 This is the **sample variance**, an estimator for the variance:
 
-$$S^2 = \frac{\sum_{i = 1}^{n}(X_i - \overline{X})^2}{n - 1}$$
+$$S^2 = \frac{\sum_{i = 1}^{n}(X_i - \widehat{X})^2}{n - 1}$$
 
 We claim that the sample variance is an unbiased estimator for the variance and that the expected value that we get by writing this algorithm an infinite number of times is matching the variance of our random variable.
 
-There is another property of estimators: not being unbiased is telling us that there is no convergence to the actual expected value, there is some error. So let's assume to take an estimator unbiased: we may be interested in the rate in which we approach the actual value. How fast are we converging? Is such rate is fast enough, we say that this estimator is reliable, that is, we don't need an infinite number of runs to get something valid.
+There is another property of estimators: not being unbiased is telling us that there is no convergence to the actual expected value, there is some error. So let's assume to take an estimator unbiased: we may be interested in the rate in which we approach the actual value. How fast are we converging? If such rate is fast enough, we say that this estimator is reliable, that is, we don't need an infinite number of runs to get something valid.
 
 Let's take the sample mean and try to measure the error rate of the sample mean.<br />
-The error $E$ that we get could be the squared difference between the real value of the expected value $\mu$ and our sample mean estimate $\overline{X}$: $E = (\mu - \overline{X})^2$. We also know that $\overline{X}$ will be the output of an algorithm so different runs of the algorithm would produce different values. This implies that this single evaluation is not really meaningfull, hence we will use the **mean squared error**
+The error $E$ that we get could be the squared difference between the real value of the expected value $\mu$ and our sample mean estimate $\overline{X}$: $E = (\mu - \widehat{X})^2$. We also know that $\widehat{X}$ will be the output of an algorithm so different runs of the algorithm would produce different values. This implies that this single evaluation is not really meaningful, hence we will use the **mean squared error**
 
 $$MSE = \mathbb{E}[(\mu - \overline{X})^2]$$
 
-This type of reasoning can be done for any parameter. However, in the case of the sample mean, we have a further advantage in measuring the error in this way: this is actually the expression of the variance $Var[\overline{X}] = Var[\frac{1}{n} \sum_{i = 1}^{n} X_i]$. Since the $x_i$ are independent and identically distributed, we have $\frac{1}{n^2} \sum_{i = 1}^{n} Var[X_i] = \frac{1}{n^2} \sum_{i = 1}^{n} \sigma^2 = \frac{1}{n^2} n \sigma^2 = \frac{\sigma^2}{n}$. Therefore, the more experiment we do, the lower the error we get since we are dividing by $n$. Also, this error is decreasing fairly fast: since $\frac{\sigma^2}{n}$ is the squared error, the error is $\frac{\sigma}{\sqrt{n}}$. Is it fast enough?
+This type of reasoning can be done for any parameter. However, in the case of the sample mean, we have a further advantage in measuring the error in this way: this is actually the expression of the variance $Var[\overline{X}] = Var[\frac{1}{n} \sum_{i = 1}^{n} X_i]$. Since the $X_i$ are independent and identically distributed, we have $\frac{1}{n^2} \sum_{i = 1}^{n} Var[X_i] = \frac{1}{n^2} \sum_{i = 1}^{n} \sigma^2 = \frac{1}{n^2} n \sigma^2 = \frac{\sigma^2}{n}$. Therefore, the more experiment we do, the lower the error we get since we are dividing by $n$. Also, this error is decreasing fairly fast: since $\frac{\sigma^2}{n}$ is the squared error, the error is $\frac{\sigma}{\sqrt{n}}$. Is it fast enough?
 
 ==non viene dimostrata la sample variance unbiased
 
-Having this error estimate is great theoretically, that is, it let us know if we are in a good track. Enventually, we also get to the parameter we are looking for and even more, by repeating the experiment over and over again. Let's suppose that for a specific system, $\sigma = 1.2$: what is the error you expect to get by $100$ repetitions? We compute and obtain $\frac{1.2}{\sqrt{100}} = \frac{1.2}{10} = 0.12$. We have no guarantee that the error will be this value but the probability of it being greater will become lower and lower with the increasing of the measurements.
+Having this error estimate is great theoretically, that is, it let us know if we are in a good track. Eventually, we also get to the parameter we are looking for by repeating the experiment over and over again. Let's suppose that for a specific system, $\sigma = 1.2$: what is the error you expect to get by $100$ repetitions? We compute and obtain $\frac{1.2}{\sqrt{100}} = \frac{1.2}{10} = 0.12$. We have no guarantee that the error will be this value but the probability of it being greater will become lower and lower with the increasing of the measurements.
 
 The more precision we ask for, the more repetitions we need to do and, therefore, the higher the probability of actually reaching that precision. These quantities depends one another and we can fix two of them and find the third one that is helping us in matching the theoretical understanding that we have.
 
