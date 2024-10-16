@@ -2030,7 +2030,7 @@ We claim that the average of the differences that we can measure from $\overline
 
 $$MSE = \sum_{i = 1}^{m}\frac{\Big( \bar{\theta_i} - \bar{\theta}\Big)^2}{m}$$
 
-Now, from an algorithmic point of view, we are able to use $\bar{\theta}$ as if it was the sample mean and, then, we use MSE as if it was the variance. The algorithm remains the same.
+Now, from an algorithmic point of view, we are able to use $\bar{\theta}$ as if it was the sample mean and, then, we use $MSE$ as if it was the variance. The algorithm remains the same.
 
 All of this process is supported by theory. By the Glivenko-Cantelli theorem that states that 
 
