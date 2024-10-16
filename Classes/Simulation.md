@@ -1936,18 +1936,18 @@ We are interested in what we define as **unbiased and reliable estimators**. If 
 
 One of the most important and basics estimators is the **sample mean**, a function that we can apply to the data and estimate the expected value:
 
-$$\widehat{X} = \sum_{i = 1}^{n} \frac{X_i}{n}$$
+$$\overline{X} = \sum_{i = 1}^{n} \frac{X_i}{n}$$
 
 This is the **sample variance**, an estimator for the variance:
 
-$$S^2 = \frac{\sum_{i = 1}^{n}(X_i - \widehat{X})^2}{n - 1}$$
+$$S^2 = \frac{\sum_{i = 1}^{n}(X_i - \overline{X})^2}{n - 1}$$
 
 We claim that the sample variance is an unbiased estimator for the variance and that the expected value that we get by writing this algorithm an infinite number of times is matching the variance of our random variable.
 
 There is another property of estimators: not being unbiased is telling us that there is no convergence to the actual expected value, there is some error. So let's assume to take an estimator unbiased: we may be interested in the rate in which we approach the actual value. How fast are we converging? If such rate is fast enough, we say that this estimator is reliable, that is, we don't need an infinite number of runs to get something valid.
 
 Let's take the sample mean and try to measure the error rate of the sample mean.<br />
-The error $E$ that we get could be the squared difference between the real value of the expected value $\mu$ and our sample mean estimate $\overline{X}$: $E = (\mu - \widehat{X})^2$. We also know that $\widehat{X}$ will be the output of an algorithm so different runs of the algorithm would produce different values. This implies that this single evaluation is not really meaningful, hence we will use the **mean squared error**
+The error $E$ that we get could be the squared difference between the real value of the expected value $\mu$ and our sample mean estimate $\overline{X}$: $E = (\mu - \overline{X})^2$. We also know that $\overline{X}$ will be the output of an algorithm so different runs of the algorithm would produce different values. This implies that this single evaluation is not really meaningful, hence we will use the **mean squared error**
 
 $$MSE = \mathbb{E}[(\mu - \overline{X})^2]$$
 
