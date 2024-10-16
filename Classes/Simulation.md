@@ -2014,15 +2014,15 @@ What if the parameter to estimate is not the mean (like the median or the varian
 
 ![[Bootstrapping.png]]
 
-To answer at the question "what is the value of this parameter $\Theta$ of my random variable $X$?", we have always looked at the simulation model as a random variable and what we typically did was to run it $n$ times and to get $n$ values $x_1, \dots, x_n$. Then, these $n$ values were given to some estimators $g()$ which would produce $\overline{\Theta}$, our approximation.
+To answer the question "what is the value of this parameter $\theta$ of my random variable $X$?", we have always looked at the simulation model as a random variable and what we typically did was to run it $n$ times and to get $n$ values $x_1, \dots, x_n$. Then, these $n$ values were given to some estimators $g()$ which would produce $\overline{\theta}$, our approximation.
 
 We want to rebuild the cumulative distribution function using the empirical cumulative distribution function. We just need to sort the $n$ values and place them in a histogram.
 
 If we believe that $F_e$ is a good approximation of $F$, we can basically do anything algorithmically speaking, like computing parameters out of $F_e$ pretending to be approximations of parameters computed on the actual $F$.
 
-We can also do a **resampling** using $F_e$. From the empirical cumulative distribution function, we draw other $n$ values at random. We compute $\overline{\theta}_1$, $\overline{\theta}_2$, and so on, $m$ times, by giving these $n$ values in input to $g()$. In this way, we have $\overline{\theta}$, computed on the original simulation, and a set of $m$ other $\overline{\theta}$ values which are computed by resampling from $F_e$.
+We can also do a **resampling** using $F_e$. From the empirical cumulative distribution function, we draw other $n$ values at random. We compute $\overline{\theta}_1$, $\overline{\theta}_2$, and so on, $m$ times, by giving these $n$ values in input to $g()$. In this way, we have $\overline{\theta}$, computed on the original simulation, and a set of $m$ other $\overline{\theta_i}$ values which are computed by resampling from $F_e$.
 
-If $F_e$ was really matching $F$, all the values should be the same. In an hypotetical word in which $n$ is an arbitrary large value, we will get all the possible values out of $X$, compute the estimate on all these values and, if the estimator is unbiased, we would get the actual value of the parameter. Then, we exactly rebuild $F$, so $F_e$ is exactly $F$, and by redoing the same operation we get again $\overline{\theta_1}, \overline{\theta_2}, \dots$, that is, the actual values of our parameter.
+If $F_e$ was really matching $F$, all the values should be the same. In an hypotetical world in which $n$ is an arbitrary large value, we will get all the possible values out of $X$, compute the estimate on all these values and, if the estimator is unbiased, we would get the actual value of the parameter. Then, we exactly rebuild $F$, so $F_e$ is exactly $F$, and by redoing the same operation we get again $\overline{\theta_1}, \overline{\theta_2}, \dots$, that is, the actual values of our parameter.
 
 If we try to measure in an hypotetical limit condition the difference between $\overline{\theta_1}, \overline{\theta_2}, \dots$ and $\overline{\theta}$, we would get $0$. Since we are not in this hypotetical limit condition but in an actual working condition in which $n$ is a limited number, we will get different values.
 
@@ -2036,7 +2036,7 @@ All of this process is supported by theory. By the Glivenko-Cantelli theorem tha
 
 $$\lim_{n \to + \infty}F_e(x) \rightarrow F(x) \space \text{ uniformly in } x$$
 
-Since we are not doing an infinite number of steps, we need to compare samples of the same size. Because in computing estimates, we need to compute an initial estimate (the first result of $g()$) and other reference estimates (the other results of $g()$) out of sample of the same size to have a comparable precision.
+Since we are not doing an infinite number of steps, we need to compare samples of the same size. In computing estimates, we need to compute an initial estimate (the first result of $g()$) and other reference estimates (the other results of $g()$) out of sample of the same size to have a comparable precision.
 
 So, if we revise the data generation stopping criterion, that is, we want to estimate a parameter $\theta$ up to an acceptable value $d$ of precision with certain confidence, we do the same steps: we replace the estimate ==not as the sample mean== but with our estimator and replace our sample variance with mean square error computation obtained by means of bootstrapping.
 
