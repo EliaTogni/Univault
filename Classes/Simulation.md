@@ -1930,13 +1930,15 @@ Either by generating or by building a simulation model, we are now able to produ
 When we get the cumulative distribution function of a random variable, we basically have everything about it. So we will now focus on the measurement of some parameters of this distribution. We know that to understand a random variable we need the distribution function but we can still be satisfied by some other parameters that may be enough to support our decisions.
 
 ## Estimators and Interval Estimates
-The expected value $\Theta$ is one of the things we need the most but there is no way to compute it from a simulated variable: we can only compute it from the random variables that we know theoretically. We can, however, compute an approximation $\tilde{\Theta}$ of it, that we try to understand from the data. That is what we call an **estimate**. And how can we move from a set of measurement to an estimate? We obviously apply a function, called an **estimator**.
+The expected value $\theta$ is one of the things we need the most but there is no way to compute it from a simulated variable: we can only compute it from the random variables that we know theoretically. We can, however, compute an approximation $\tilde{\theta}$ of it, that we try to understand from the data. That is what we call an **estimate**. And how can we move from a set of measurement to an estimate? We obviously apply a function, called an **estimator**.
 
 We are interested in what we define as **unbiased and reliable estimators**. If we draw $n$ random values from our random variable and compute a function of them, the result is still a random value. If the expected value of this random variable is matching the theoretical value we are looking for, then the estimator is unbiased.
 
 One of the most important and basics estimators is the **sample mean**, a function that we can apply to the data and estimate the expected value:
 
 $$\overline{X} = \sum_{i = 1}^{n} \frac{X_i}{n}$$
+
+This is the arithmetic average of the $n$ data values. When the population mean $\theta$ is unknown, the sample mean is often used to estimate it.
 
 This is the **sample variance**, an estimator for the variance:
 
@@ -1947,13 +1949,12 @@ We claim that the sample variance is an unbiased estimator for the variance and 
 There is another property of estimators: not being unbiased is telling us that there is no convergence to the actual expected value, there is some error. So let's assume to take an estimator unbiased: we may be interested in the rate in which we approach the actual value. How fast are we converging? If such rate is fast enough, we say that this estimator is reliable, that is, we don't need an infinite number of runs to get something valid.
 
 Let's take the sample mean and try to measure the error rate of the sample mean.<br />
-The error $E$ that we get could be the squared difference between the real value of the expected value $\mu$ and our sample mean estimate $\overline{X}$: $E = (\mu - \overline{X})^2$. We also know that $\overline{X}$ will be the output of an algorithm so different runs of the algorithm would produce different values. This implies that this single evaluation is not really meaningful, hence we will use the **mean squared error**
+The error $E$ that we get could be the squared difference between the real value of the expected value $\mu$ and our sample mean estimate $\overline{X}$: $E = (\overline{X} - \theta)^2$. We also know that $\overline{X}$ will be the output of an algorithm so different runs of the algorithm would produce different values. This implies that this single evaluation is not really meaningful, hence we will use the **mean squared error**
 
-$$MSE = \mathbb{E}[(\mu - \overline{X})^2]$$
+$$MSE = \mathbb{E}[(\overline{X} - \theta)^2]$$
 
-This type of reasoning can be done for any parameter. However, in the case of the sample mean, we have a further advantage in measuring the error in this way: this is actually the expression of the variance $Var[\overline{X}] = Var[\frac{1}{n} \sum_{i = 1}^{n} X_i]$. Since the $X_i$ are independent and identically distributed, we have $\frac{1}{n^2} \sum_{i = 1}^{n} Var[X_i] = \frac{1}{n^2} \sum_{i = 1}^{n} \sigma^2 = \frac{1}{n^2} n \sigma^2 = \frac{\sigma^2}{n}$. Therefore, the more experiment we do, the lower the error we get since we are dividing by $n$. Also, this error is decreasing fairly fast: since $\frac{\sigma^2}{n}$ is the squared error, the error is $\frac{\sigma}{\sqrt{n}}$. Is it fast enough?
-
-==non viene dimostrata la sample variance unbiased
+This type of reasoning can be done for any parameter. However, in the case of the sample mean, we have a further advantage in measuring the error in this way: this is actually the expression of the variance $Var[\overline{X}] = Var[\frac{1}{n} \sum_{i = 1}^{n} X_i]$. Since the $X_i$ are independent and identically distributed, we have $\frac{1}{n^2} \sum_{i = 1}^{n} Var[X_i] = \frac{1}{n^2} \sum_{i = 1}^{n} \sigma^2 = \frac{1}{n^2} n \sigma^2 = \frac{\sigma^2}{n}$. 
+Thus, $X$, the sample mean of the $n$ data values $X_1, \dots , X_n$, is a random variable with mean $\theta$ and variance $\sigma^2/n$. Furthermore, the more experiment we do, the lower the error we get since we are dividing by $n$ and this error is decreasing fairly fast: since $\frac{\sigma^2}{n}$ is the squared error, the error is $\frac{\sigma}{\sqrt{n}}$. Is it fast enough?
 
 Having this error estimate is great theoretically, that is, it let us know if we are in a good track. Eventually, we also get to the parameter we are looking for by repeating the experiment over and over again. Let's suppose that for a specific system, $\sigma = 1.2$: what is the error you expect to get by $100$ repetitions? We compute and obtain $\frac{1.2}{\sqrt{100}} = \frac{1.2}{10} = 0.12$. We have no guarantee that the error will be this value but the probability of it being greater will become lower and lower with the increasing of the measurements.
 
@@ -1961,7 +1962,7 @@ The more precision we ask for, the more repetitions we need to do and, therefore
 
 Let's consider the pharmacy example and assume we want to understand the expected time that the prescription needs to be filled from its arrival in the shop. We already know the time the prescription needs when the pharmacist starts working on it but since there is the queueing system, the actual time from the arrival may be different. So, this time is a random variable. We would be interested in having its distribution but it is not possible. Hence, we will try to measure the expected value computing the sample mean of the time that it takes to fill out a prescription. What would be the number of repetitions to obtain an error of one minute?
 
-Let's call $\Theta$ the expected time of filling a prescription. We model the system as a discrete events simulation, we run it $n$ times and apply the sample mean as the estimator. The error we get is, again, $\frac{\sigma}{\sqrt{n}}$. Therefore
+Let's call $\theta$ the expected time of filling a prescription. We model the system as a discrete events simulation, we run it $n$ times and apply the sample mean as the estimator. The error we get is, again, $\frac{\sigma}{\sqrt{n}}$. Therefore
 
 $$1m = \frac{\sigma}{\sqrt{n}}$$
 $$\sqrt{n} = \frac{\sigma}{1m}$$
@@ -1972,7 +1973,7 @@ So, we just need the variance. But this is also an unknow random variable. At th
 First of all, recall that the central limit theorem tells us that the reading of the sample mean is a normal random variable.
 
 Experimentally speaking, a good recipe to compute our estimates by simulation:
-1) suppose $\Theta = \mathbb{E}[X]$ (do it by sample mean $\overline{X}$);
+1) suppose $\theta = \mathbb{E}[X]$ (do it by sample mean $\overline{X}$);
 2) fix a confidence, that is, the target probability of actually getting the error with $n$ runs (e.g., $95\%$);
 3) fix a precision we pretend to get, that is, the amount of errors we tend to do (precision $p = 1.96d$, where $d$ is the standard deviation of our estimate $\mathbb{E}[X]$);
 4) perform a certain number ($100$) of iterations a priori and compute an initialization value for $s$ ($s$ is the sample standard deviation);
