@@ -1940,12 +1940,6 @@ $$\overline{X} = \sum_{i = 1}^{n} \frac{X_i}{n}$$
 
 This is the arithmetic average of the $n$ data values. When the population mean $\theta$ is unknown, the sample mean is often used to estimate it.
 
-This is the **sample variance**, an estimator for the variance:
-
-$$S^2 = \frac{\sum_{i = 1}^{n}(X_i - \overline{X})^2}{n - 1}$$
-
-We claim that the sample variance is an unbiased estimator for the variance and that the expected value that we get by writing this algorithm an infinite number of times is matching the variance of our random variable.
-
 There is another property of estimators: not being unbiased is telling us that there is no convergence to the actual expected value, there is some error. So let's assume to take an estimator unbiased: we may be interested in the rate in which we approach the actual value. How fast are we converging? If such rate is fast enough, we say that this estimator is reliable, that is, we don't need an infinite number of runs to get something valid.
 
 Let's take the sample mean and try to measure the error rate of the sample mean.<br />
@@ -1960,6 +1954,12 @@ Having this error estimate is great theoretically, that is, it let us know if we
 
 The more precision we ask for, the more repetitions we need to do and, therefore, the higher the probability of actually reaching that precision. These quantities depends one another and we can fix two of them and find the third one that is helping us in matching the theoretical understanding that we have.
 
+This is the **sample variance**, an estimator for the variance:
+
+$$S^2 = \frac{\sum_{i = 1}^{n}(X_i - \overline{X})^2}{n - 1}$$
+
+We claim that the sample variance is an unbiased estimator for the variance and that the expected value that we get by writing this algorithm an infinite number of times is matching the variance of our random variable. We use the sample variance $S^2$ as our estimator of the population variance $\sigma^2$, and we use $S =\sqrt{S^2}$, the so-called sample standard deviation, as our estimator of $\sigma$.
+
 Let's consider the pharmacy example and assume we want to understand the expected time that the prescription needs to be filled from its arrival in the shop. We already know the time the prescription needs when the pharmacist starts working on it but since there is the queueing system, the actual time from the arrival may be different. So, this time is a random variable. We would be interested in having its distribution but it is not possible. Hence, we will try to measure the expected value computing the sample mean of the time that it takes to fill out a prescription. What would be the number of repetitions to obtain an error of one minute?
 
 Let's call $\theta$ the expected time of filling a prescription. We model the system as a discrete events simulation, we run it $n$ times and apply the sample mean as the estimator. The error we get is, again, $\frac{\sigma}{\sqrt{n}}$. Therefore
@@ -1970,12 +1970,12 @@ $$n = \frac{\sigma^2}{(1m)^2}$$
 
 So, we just need the variance. But this is also an unknow random variable. At this point, we can use an estimator for the variance too, the sample variance. Now, the problem keeps going. How many runs should we do to have a low error on the sample variance? 
 
-First of all, recall that the central limit theorem tells us that the reading of the sample mean is a normal random variable.
+The answer to this question is that we should first choose an acceptable value $d$ for the standard deviation of our estimator. We also need to recall that the central limit theorem tells us that the reading of the sample mean is a normal random variable. 
 
-Experimentally speaking, a good recipe to compute our estimates by simulation:
+Since the sample standard deviation $S$ may not be a particularly good estimate of $\sigma$ (nor may the normal approximation be valid) when the sample size is small, we thus recommend the following procedure to determine when to stop generating new data values:
 1) suppose $\theta = \mathbb{E}[X]$ (do it by sample mean $\overline{X}$);
 2) fix a confidence, that is, the target probability of actually getting the error with $n$ runs (e.g., $95\%$);
-3) fix a precision we pretend to get, that is, the amount of errors we tend to do (precision $p = 1.96d$, where $d$ is the standard deviation of our estimate $\mathbb{E}[X]$);
+3) fix a precision we pretend to get, that is, the amount of errors we tend to do (precision $p = 1.96d$, where $d$ is the standard deviation of our estimate $\mathbb{E}[X]$). The number $1.96$ comes from the normal distribution: $95\%$ of the values in a standard normal distribution fall within $1.96$ standard deviations from the mean;
 4) perform a certain number ($100$) of iterations a priori and compute an initialization value for $s$ ($s$ is the sample standard deviation);
 5) keep on running the simulation until the measured error $\frac{s}{\sqrt{n}}$ became less than $d$;
 6) return $\overline{X} = \sum_{i = 1}^{n} \frac{X_i}{n}$.
