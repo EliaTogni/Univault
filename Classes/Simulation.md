@@ -1977,8 +1977,10 @@ Since the sample standard deviation $S$ may not be a particularly good estimate 
 2) fix a confidence, that is, the target probability of actually getting the error with $n$ runs (e.g., $95\%$);
 3) fix a precision we pretend to get, that is, the amount of errors we tend to do (precision $p = 1.96d$, where $d$ is the standard deviation of our estimate $\mathbb{E}[X]$). The number $1.96$ comes from the normal distribution: $95\%$ of the values in a standard normal distribution fall within $1.96$ standard deviations from the mean;
 4) perform a certain number ($100$) of iterations a priori and compute an initialization value for $s$ ($s$ is the sample standard deviation);
-5) keep on running the simulation until the measured error $\frac{s}{\sqrt{n}}$ became less than $d$;
+5) keep on running the simulation until the measured error $\frac{S}{\sqrt{n}}$ (that is, the standard deviation of the estimator) became less than $d$;
 6) return $\overline{X} = \sum_{i = 1}^{n} \frac{X_i}{n}$.
+
+In other words, the more data is generated, the more precise the estimate of $\theta$ becomes, because the uncertainty (measured by the standard deviation) decreases.
 
 How can we fix the precision? One thing we can do about the sample mean is that we have one more theoretical result allowing us to understand something about this confidence: we know the central limit theorem. This theorem says that the readings of the sample mean (recall that the sample mean is also a random variable itself) is always a normal one, independently on what we are measuring.
 
