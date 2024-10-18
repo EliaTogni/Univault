@@ -1511,7 +1511,6 @@ $$F(x) = P[X \leq x] = \sum_{j=1}^n P[X \leq x | J= j]\cdot P[J=j]$$
 Since $j$ is extracted with probability defined by $\alpha$, it is easy to notice that this is equal to
 
 $$\sum_{j=1}^n P[X \leq x | J= j]\cdot \alpha_j = \sum_j \alpha_j F_j(x)$$
-
 $\square$
 
 An example of use of the Composition technique. Let's consider a triangular distribution.
