@@ -1795,7 +1795,7 @@ Different types of copulas model different types of dependencies between variabl
 - **Marshall-Olkin copula** $\to$ good to model chain dependencies.
 
 ### Gaussian Copula
-Let's consider two random variables $X$ and $Y$ that have known linear correlation $\rho$ and known cumulative distribution functions. We also know that these distribution functions are invertible. We generate a pair of values $Z = (z_1, z_2)$ from a **bivariate norma**l (a probability distribution used to model two random variables that may be correlated with each other) with the same correlation $\rho$. Then we obtain pairs of random uniform values correlated among them by computing $U= (u_1,u_2) = (\Phi(z_1), \Phi(z_2))$. These two uniform random variables are still correlated and are then used to obtain a random couple of observations for the original random variables apply independently the inverse of their cumulative distribution function:
+Let's consider two random variables $X$ and $Y$ that have known linear correlation $\rho$ and known cumulative distribution functions. We also know that these distribution functions are invertible. We generate a pair of values $Z = (z_1, z_2)$ from a **bivariate norma**l (a probability distribution used to model two random variables that may be correlated with each other) with the same correlation $\rho$. Then we obtain pairs of random uniform values correlated among them by computing $U= (u_1,u_2) = (\Phi(z_1), \Phi(z_2))$. These two uniform random variables are still correlated and then are used to obtain a random couple of observations for the original random variables apply independently the inverse of their cumulative distribution function:
 
 $$R=(F^{-1}(u_1), G^{-1}(u_2))$$
 
