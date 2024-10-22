@@ -1910,8 +1910,6 @@ exponential random variables is also exponential, with a rate equal to the sum o
 rates, that $X$ is exponential with rate $\lambda_1 + \lambda_3$. Similarly, $Y$ is exponential with rate
 $\lambda_2 + \lambda_3$.
 
-
-
 Algorithmically speaking, how do we use this copula?
 
 ```python
