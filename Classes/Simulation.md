@@ -1999,21 +1999,19 @@ Let's extend the previous reasoning. Indeed, we understood that returning a spec
 
 ![[IntervalEstimatesExample.png]]
 
-Now, consider the case of the interval estimates of the expected value. Theoretically speaking, the simulation runs are observations of independent and identically distributed random variables with expected value $\mathbb{E}[X_i] = \theta$ and variance $Var[X_i] = \sigma^2$. Also, we know that $\overline{X}$ is an unbiased and reliable estimator of $\theta$, that $\mathbb{E}[\overline{X}] = \theta$ and that $Var[\overline{X}] = \frac{\sigma^2}{n}$. Then, by the central limit theorem, $\overline{X}$ is a normal random variable for large values of $n$. In other words, we know that $\sqrt{n} \frac{(\overline{X} - \theta)}{\sigma} \simeq \mu(0, 1)$. What we want to estimate now is the left hand side of this approximation. This is also a random variable itself, that is, a rescaling and shifting of the random variable $\overline{X}$.
-Our understanding of the normal is telling us, indeed, that if we take a normal random variable, we multiply it by a constant and add/subtract another constant, we still get a random variable.
+Now, consider the case of the interval estimates of the expected value. Theoretically speaking, the simulation runs are observations of independent and identically distributed random variables with expected value $\mathbb{E}[X_i] = \theta$ and variance $Var[X_i] = \sigma^2$. Also, we know that $\overline{X}$ is an unbiased and reliable estimator of $\theta$, that $\mathbb{E}[\overline{X}] = \theta$ and that $Var[\overline{X}] = \frac{\sigma^2}{n}$. Then, by the central limit theorem, $\overline{X}$ is a normal random variable for large values of $n$. In other words, we know that $\sqrt{n} \frac{(\overline{X} - \theta)}{\sigma} \simeq \mu(0, 1)$, where $\simeq \mu(0,1)$ means "is approximately distributed as a standard normal". What we want to estimate now is the left hand side of this approximation. This is also a random variable itself, that is, a rescaling and shifting of the random variable $\overline{X}$.
+Our understanding of the normal is telling us, indeed, that if we take a normal random variable, we multiply it by a constant and add/subtract another constant, we still get a random variable. However, this is still tricky because we don't know $\sigma$: hence, we replace it with $S$, an estimate of it.
 
-However, it is still tricky because we don't know $\sigma$: hence, we replace it with $s$, an estimate of it.
+$$\sqrt{n} \frac{(\overline{X} - \Theta)}{S}$$
 
-$$\sqrt{n} \frac{(\overline{X} - \Theta)}{s}$$
-
-What is telling us that we can do this replacement and still get the same result is the **Slutsky theorem** (we will not prove it). Now, the central limit theorem tells us that $\forall 0 < \alpha < 1$, let $z_\alpha$ such that $P[Z > z_\alpha] = \alpha$. E.g., if we fix $\alpha = 5\%$, we can find $z_\alpha = 1.96$ reading $0.025$ from the normal (because of the two tails).
+What is telling us that we can do this replacement and still get the same result is the **Slutsky's theorem** (we will not prove it). Now, the central limit theorem tells us that $\forall \alpha, 0 < \alpha < 1$, let $z_\alpha$ such that $P[Z > z_\alpha] = \alpha$. E.g., if we fix $\alpha = 5\%$, we can find $z_\alpha = 1.96$ reading $0.025$ from the normal (because of the two tails).
 
 Now we can exploit symmetry and, knowing that $z_{1 - \alpha} = - z_{\alpha}$, $P[-\frac{z_\alpha}{2} < z < \frac{z_\alpha}{2}] = 1 - \alpha$.
-Now, $P[-\frac{z_\alpha}{2} < \sqrt{n} \frac{(\overline{X} - \Theta)}{s} < \frac{z_\alpha}{2}] \simeq 1 - \alpha$. Our target is $\Theta$ so we reshuffle the terms in the inequality and get 
+Now, $P[-\frac{z_\alpha}{2} < \sqrt{n} \frac{(\overline{X} - \theta)}{s} < \frac{z_\alpha}{2}] \simeq 1 - \alpha$. Our target is $\theta$ so we reshuffle the terms in the inequality and get 
 
-$$P\Bigg[ \overline{X} -\frac{z_\alpha}{2}\frac{s}{\sqrt{n}} < \Theta < \overline{X} + \frac{z_\alpha}{2}\frac{s}{\sqrt{n}}\Bigg ] \simeq 1 - \alpha$$
+$$P\Bigg[ \overline{X} -\frac{z_\alpha}{2}\frac{s}{\sqrt{n}} < \theta < \overline{X} + \frac{z_\alpha}{2}\frac{s}{\sqrt{n}}\Bigg ] \simeq 1 - \alpha$$
 
-Look at how we define the range $[-\frac{z_\alpha}{2}\frac{s}{\sqrt{n}}, \frac{z_\alpha}{2}\frac{s}{\sqrt{n}}]$. $\Theta$ is our target expected value, $\overline{X}$ is our estimate. Therefore, this interval is centered in our estimate and have width given by the error we are assuming to be doing. We can state the parameter to actually fit into this range with certain probability. Overall, if (after $n$ simulation observations) $\overline{X}$ and $s$ are sample mean and standard deviation, we call the interval $\overline{X} \pm \frac{z_\alpha}{2}\frac{s}{\sqrt{n}}$ an interval estimate of $\Theta$ with $100(1 - \alpha)\%$ confidence.
+Look at how we define the range $[-\frac{z_\alpha}{2}\frac{s}{\sqrt{n}}, \frac{z_\alpha}{2}\frac{s}{\sqrt{n}}]$. $\theta$ is our target expected value, $\overline{X}$ is our estimate. Therefore, this interval is centered in our estimate and have width given by the error we are assuming to be doing. We can state the parameter to actually fit into this range with certain probability. Overall, if (after $n$ simulation observations) $\overline{X}$ and $s$ are sample mean and standard deviation, we call the interval $\overline{X} \pm \frac{z_\alpha}{2}\frac{s}{\sqrt{n}}$ an interval estimate of $\theta$ with $100(1 - \alpha)\%$ confidence.
 
 Again, we may fix $\alpha$ (the confidence) and $n$ (the number of the iterations) and then the width of the interval is given.
 
