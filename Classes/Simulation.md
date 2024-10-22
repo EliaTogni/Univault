@@ -1981,9 +1981,9 @@ The answer to this question is that we should first choose an acceptable value $
 Since the sample standard deviation $S$ may not be a particularly good estimate of $\sigma$ (nor may the normal approximation be valid) when the sample size is small, we thus recommend the following procedure to determine when to stop generating new data values:
 1) suppose $\theta = \mathbb{E}[X]$ (do it by sample mean $\overline{X}$);
 2) fix a confidence, that is, the target probability of actually getting the error with $n$ runs (e.g., $95\%$);
-3) fix a precision we pretend to get, that is, the amount of errors we tend to do (precision $p = 1.96d$, where $d$ is the standard deviation of our estimate $\mathbb{E}[X]$). The number $1.96$ comes from the normal distribution: $95\%$ of the values in a standard normal distribution fall within $1.96$ standard deviations from the mean;
-4) perform a certain number ($100$) of iterations a priori and compute an initialization value for $s$ ($s$ is the sample standard deviation);
-5) keep on running the simulation until the measured error $\frac{S}{\sqrt{n}}$ (that is, the standard deviation of the estimator) became less than $d$;
+3) fix the precision we pretend to get, that is, the amount of errors we tend to do (precision $p = 1.96d$, where $d$ is the standard deviation of our estimate $\mathbb{E}[X]$). The number $1.96$ comes from the normal distribution: $95\%$ of the values in a standard normal distribution fall within $1.96$ standard deviations from the mean;
+4) perform a certain number ($100$) of iterations a priori and compute an initialization value for $S$ ($S$ is the sample standard deviation);
+5) keep on running the simulation until the measured error $\frac{S}{\sqrt{n}}$ (that is, the standard deviation of the estimator) became less than the desired standard deviation $d$;
 6) return $\overline{X} = \sum_{i = 1}^{n} \frac{X_i}{n}$.
 
 In other words, the more data is generated, the more precise the estimate of $\theta$ becomes, because the uncertainty (measured by the standard deviation) decreases.
