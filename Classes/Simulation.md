@@ -1944,7 +1944,7 @@ One of the most important and basics estimators is the **sample mean**, a functi
 
 $$\overline{X} = \sum_{i = 1}^{n} \frac{X_i}{n}$$
 
-This is the arithmetic average of the $n$ data values. When the population mean $\theta$ is unknown, the sample mean is often used to estimate it.
+This is the arithmetic average of the $n$ data values. When the population mean $\theta$ is unknown, the sample mean is often used to estimate it. This is a unbiased estimator of the expected value: in fact, $\mathbb{E}[\overline{X}] = \theta$.
 
 There is another property of estimators: not being unbiased is telling us that there is no convergence to the actual expected value, there is some error. So let's assume to take an estimator unbiased: we may be interested in the rate in which we approach the actual value. How fast are we converging? If such rate is fast enough, we say that this estimator is reliable, that is, we don't need an infinite number of runs to get something valid.
 
