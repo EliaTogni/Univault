@@ -2006,7 +2006,8 @@ However, it is still tricky because we don't know $\sigma$: hence, we replace it
 
 $$\sqrt{n} \frac{(\overline{X} - \Theta)}{s}$$
 
-What is telling us that we can do this replacement and still get the same result is the **Slutsky theorem** (we will not prove it). Now, the central limit theorem tells us that $\forall 0 < \alpha < 1$, let $z_\alpha$ such that $P[Z > z_\alpha] = \alpha$. E.g., if we fix $\alpha = 5\%$, we can find $z_\alpha = 1.96$ reading $0.025$ from the normal (because of the two tails). ==non ho capito ma é simile al discorso dell'immagine sopra==
+What is telling us that we can do this replacement and still get the same result is the **Slutsky theorem** (we will not prove it). Now, the central limit theorem tells us that $\forall 0 < \alpha < 1$, let $z_\alpha$ such that $P[Z > z_\alpha] = \alpha$. E.g., if we fix $\alpha = 5\%$, we can find $z_\alpha = 1.96$ reading $0.025$ from the normal (because of the two tails).
+
 Now we can exploit symmetry and, knowing that $z_{1 - \alpha} = - z_{\alpha}$, $P[-\frac{z_\alpha}{2} < z < \frac{z_\alpha}{2}] = 1 - \alpha$.
 Now, $P[-\frac{z_\alpha}{2} < \sqrt{n} \frac{(\overline{X} - \Theta)}{s} < \frac{z_\alpha}{2}] \simeq 1 - \alpha$. Our target is $\Theta$ so we reshuffle the terms in the inequality and get 
 
