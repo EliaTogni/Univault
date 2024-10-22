@@ -1762,7 +1762,7 @@ $$
 ## Copulas
 So far we have always discussed the generation of a single or multiple observation but always from a single random value. What if we want to observe multiple random variables at once and those random variables are not independent one another?
 
-An easy way to generating them is to know the probability distribution and also the joint probability cumulative distribution function for common set of variables. Often this is not easy to implement because we don't know this distribution or it's not easy to extract it from an algorithm midway. That's where copulas become the best alternative.
+An easy way to generate them is to know the probability distribution and also the joint probability cumulative distribution function for common set of variables. Often this is not easy to implement because we don't know this distribution or it's not easy to extract it from an algorithm midway. That's where copulas become the best alternative.
 
 First of all, if we have a joint distribution of two variables $X$ and $Y$, the **marginal distribution** of $X$ is obtained by integrating out $Y$ (if it's continuous) or summing over $Y$ (if it's discrete).
 
@@ -1770,7 +1770,7 @@ A **copula** is a joint probability distribution $C(x,y)$ with both marginal dis
 
 $$\begin{align}
 &C(0,0)= 0\\
-&C(x,1) = x &\to \space P[F(X) \leq x, G(Y) \leq 1]\\
+&C(x,1) = x\\
 &C(1,y) = y\\
 \end{align}$$
 
