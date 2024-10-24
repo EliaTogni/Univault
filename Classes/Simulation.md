@@ -493,9 +493,9 @@ $$Var[X] = \mathbb{E}[X^2] - (\mathbb{E}[X])^2$$
 
 Whereas the expected value of a sum of random variables is equal to the sum of the expectations, the corresponding result is not, in general, true for variances. It is, however, true in the important special case where the random variables are independent. Before proving this, let's define the concept of the **covariance** between two random variables. The covariance of two random variables $X$ and $Y$, denoted $Cov(X, Y)$, is defined by
 
-$$Cov[X, Y] = \mathbb{E}[(X - \mu_x)(Y -\mu_y)]$$
+$$Cov[X, Y] = \mathbb{E}[(X - \mu_X)(Y -\mu_Y)]$$
 
-where $\mu_x = \mathbb{E}[X]$ and $\mu_y = \mathbb{E}[Y]$.
+where $\mu_X = \mathbb{E}[X]$ and $\mu_Y = \mathbb{E}[Y]$.
 
 - **Positive Covariance** $(Cov(X,Y)>0)$: if the covariance is positive, it means that when one of the variables takes on values greater than its mean, the other variable tends to do the same. In other words, the two variables tend to move in the same direction. For example, if $X$ increases, $Y$ tends to increase as well;
 - **Negative Covariance** $(Cov(X,Y)<0)$: if the covariance is negative, it means that when one of the variables takes on values greater than its mean, the other variable tends to decrease. In other words, the two variables tend to move in opposite directions. For example, if $X$ increases, $Y$ tends to decrease;
