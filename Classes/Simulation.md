@@ -1936,7 +1936,7 @@ Either by generating or by building a simulation model, we are now able to produ
 When we get the cumulative distribution function of a random variable, we basically have everything about it. So we will now focus on the measurement of some parameters of this distribution. We know that to understand a random variable we need the distribution function but we can still be satisfied by some other parameters that may be enough to support our decisions.
 
 ## Estimators and Interval Estimates
-The expected value $\theta$ is one of the things we need the most but there is no way to compute it from a simulated variable: we can only compute it from the random variables that we know theoretically. We can, however, compute an approximation $\tilde{\theta}$ of it, that we try to understand from the data. That is what we call an **estimate**. And how can we move from a set of measurement to an estimate? We obviously apply a function, called an **estimator**.
+The expected value $\theta$ is one of the things we need the most but there is no way to compute it from a simulated variable: we can only compute it from the random variables that we know theoretically. We can, however, compute an approximation $\tilde{\theta}$ of it, that we try to understand from the data. That is what we call an **estimate**. And how can we move from a set of measurements to an estimate? We obviously apply a function, called an **estimator**.
 
 We are interested in what we define as **unbiased and reliable estimators**. If we draw $n$ random values from our random variable and compute a function of them, the result is still a random value. If the expected value of this random variable is matching the theoretical value we are looking for, then the estimator is unbiased.
 
