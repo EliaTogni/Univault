@@ -2005,12 +2005,12 @@ $$\sqrt{n} \frac{(\overline{X} - \theta)}{S}$$
 
 What is telling us that we can do this replacement and still get the same result is the **Slutsky's theorem** (we will not prove it). Now, the central limit theorem tells us that $\forall \alpha, 0 < \alpha < 1$, $\exists z_\alpha$ such that $P[Z > z_\alpha] = \alpha$. ==E.g., if we fix $\alpha = 5\%$, we can find $z_\alpha = 1.96$ reading $0.025$ from the normal (because of the two tails).
 
-Now we can exploit symmetry and, knowing that $z_{1 - \alpha} = - z_{\alpha}$, $P[-z_{\frac{\alpha}{2}} < Z < z_{\frac{\alpha}{2}}] =$ $P[Z < z_{\frac{\alpha}{1}}] 1 - \alpha$.
-Now, $P[-\frac{z_\alpha}{2} < \sqrt{n} \frac{(\overline{X} - \theta)}{s} < \frac{z_\alpha}{2}] \simeq 1 - \alpha$. Our target is $\theta$ so we reshuffle the terms in the inequality and get 
+Now we can exploit symmetry and, knowing that $z_{1 - \alpha} = - z_{\alpha}$, $P[-z_{\frac{\alpha}{2}} < Z < z_{\frac{\alpha}{2}}] =$ $P[Z < z_{\frac{\alpha}{2}}] - P[Z < - z_{\frac{\alpha}{2}}]$. Since $P[Z < z_{\frac{\alpha}{2}}] = \frac{\alpha}{2}$ and $P[Z < - z_{\frac{\alpha}{1}}] =  1 -\frac{\alpha}{2}$, we have that $P[-z_{\frac{\alpha}{2}} < Z < z_{\frac{\alpha}{2}}] = (1 - \frac{\alpha}{2}) - \frac{\alpha}{2} = 1 - \alpha$.
+Now, $P[-\frac{z_\alpha}{2} < \sqrt{n} \frac{(\overline{X} - \theta)}{S} < \frac{z_\alpha}{2}] \simeq 1 - \alpha$. Our target is $\theta$ so we reshuffle the terms in the inequality and get 
 
-$$P\Bigg[ \overline{X} -\frac{z_\alpha}{2}\frac{s}{\sqrt{n}} < \theta < \overline{X} + \frac{z_\alpha}{2}\frac{s}{\sqrt{n}}\Bigg ] \simeq 1 - \alpha$$
+$$P\Bigg[ \overline{X} -\frac{z_\alpha}{2}\frac{S}{\sqrt{n}} < \theta < \overline{X} + \frac{z_\alpha}{2}\frac{S}{\sqrt{n}}\Bigg ] \simeq 1 - \alpha$$
 
-Look at how we define the range $[-\frac{z_\alpha}{2}\frac{s}{\sqrt{n}}, \frac{z_\alpha}{2}\frac{s}{\sqrt{n}}]$. $\theta$ is our target expected value, $\overline{X}$ is our estimate. Therefore, this interval is centered in our estimate and have width given by the error we are assuming to be doing. We can state the parameter to actually fit into this range with certain probability. Overall, if (after $n$ simulation observations) $\overline{X}$ and $s$ are sample mean and standard deviation, we call the interval $\overline{X} \pm \frac{z_\alpha}{2}\frac{s}{\sqrt{n}}$ an interval estimate of $\theta$ with $100(1 - \alpha)\%$ confidence.
+Look at how we define the range $[-\frac{z_\alpha}{2}\frac{S}{\sqrt{n}}, \frac{z_\alpha}{2}\frac{S}{\sqrt{n}}]$. $\theta$ is our target expected value, $\overline{X}$ is our estimate. Therefore, this interval is centered in our estimate and have width given by the error we are assuming to be doing. We can state the parameter to actually fit into this range with certain probability. Overall, if (after $n$ simulation observations) $\overline{X}$ and $S$ are sample mean and standard deviation, we call the interval $\overline{X} \pm \frac{z_\alpha}{2}\frac{S}{\sqrt{n}}$ an interval estimate of $\theta$ with $100(1 - \alpha)\%$ confidence.
 
 Again, we may fix $\alpha$ (the confidence) and $n$ (the number of the iterations) and then the width of the interval is given.
 
