@@ -2005,7 +2005,7 @@ $$\sqrt{n} \frac{(\overline{X} - \theta)}{S}$$
 
 What is telling us that we can do this replacement and still get the same result is the **Slutsky's theorem** (we will not prove it). Now, the central limit theorem tells us that $\forall \alpha, 0 < \alpha < 1$, $\exists z_\alpha$ such that $P[Z > z_\alpha] = \alpha$. ==E.g., if we fix $\alpha = 5\%$, we can find $z_\alpha = 1.96$ reading $0.025$ from the normal (because of the two tails).
 
-Now we can exploit symmetry and, knowing that $z_{1 - \alpha} = - z_{\alpha}$, $P[-z_{\frac{\alpha}{2}} < Z < z_{\frac{\alpha}{2}}] = 1 - \alpha$.
+Now we can exploit symmetry and, knowing that $z_{1 - \alpha} = - z_{\alpha}$, $P[-z_{\frac{\alpha}{2}} < Z < z_{\frac{\alpha}{2}}] =$ $P[Z < z_{\frac{\alpha}{1}}] 1 - \alpha$.
 Now, $P[-\frac{z_\alpha}{2} < \sqrt{n} \frac{(\overline{X} - \theta)}{s} < \frac{z_\alpha}{2}] \simeq 1 - \alpha$. Our target is $\theta$ so we reshuffle the terms in the inequality and get 
 
 $$P\Bigg[ \overline{X} -\frac{z_\alpha}{2}\frac{s}{\sqrt{n}} < \theta < \overline{X} + \frac{z_\alpha}{2}\frac{s}{\sqrt{n}}\Bigg ] \simeq 1 - \alpha$$
