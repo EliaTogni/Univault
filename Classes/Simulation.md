@@ -2027,19 +2027,19 @@ We want to rebuild the cumulative distribution function using the empirical cumu
 
 If we believe that $F_e$ is a good approximation of $F$, we can basically do anything algorithmically speaking, like computing parameters out of $F_e$ pretending to be approximations of parameters computed on the actual $F$.
 
-We can also do a **resampling** using $F_e$. From the empirical cumulative distribution function, we draw other $n$ values at random. We compute $\overline{\theta}_1$, $\overline{\theta}_2$, and so on, $m$ times, by giving these $n$ values in input to $g()$. In this way, we have $\overline{\theta}$, computed on the original simulation, and a set of $m$ other $\overline{\theta_i}$ values which are computed by resampling from $F_e$.
+We can also do a **resampling** using $F_e$. From the empirical cumulative distribution function, we draw other $n$ values at random. We compute $\overline{\theta}_1$, $\overline{\theta}_2$, and so on, $m$ times, by giving these $n$ values in input to $g()$. In this way, we have $\overline{\theta}$, computed on the original simulation, and a set of $m$ other $\overline{\theta_i}$values which are computed by resampling from $F_e$.
 
 If $F_e$ was really matching $F$, all the values should be the same. In an hypotetical world in which $n$ is an arbitrary large value, we will get all the possible values out of $X$, compute the estimate on all these values and, if the estimator is unbiased, we would get the actual value of the parameter. Then, we exactly rebuild $F$, so $F_e$ is exactly $F$, and by redoing the same operation we get again $\overline{\theta_1}, \overline{\theta_2}, \dots$, that is, the actual values of our parameter.
 
-If we try to measure in an hypotetical limit condition the difference between $\overline{\theta_1}, \overline{\theta_2}, \dots$ and $\overline{\theta}$, we would get $0$. Since we are not in this hypotetical limit condition but in an actual working condition in which $n$ is a limited number, we will get different values.
+If we try to measure the difference between $\overline{\theta_1}, \overline{\theta_2}, \dots$ and $\overline{\theta}$  in an hypotetical limit condition, we would get $0$. Since we are not in this hypotetical limit condition but in an actual working condition in which $n$ is a limited number, we will get different values.
 
-We claim that the average of the differences that we can measure from $\overline{\theta_i}$ from the $\overline{\theta}$ initial, is a measure of the approximation error we are doing. The larger these differences, the less confident we are that our $n$ is sufficiently large to approach this limit condition. We compute the **mean squared error**.
+We claim that the average of the differences that we can measure from $\overline{\theta_i}$ from the initial $\overline{\theta}$, is a measure of the approximation error we are doing. The larger these differences, the less confident we are that our $n$ is sufficiently large to approach this limit condition. We compute the **mean squared error**.
 
 $$MSE = \sum_{i = 1}^{m}\frac{\Big( \bar{\theta_i} - \bar{\theta}\Big)^2}{m}$$
 
 Now, from an algorithmic point of view, we are able to use $\bar{\theta}$ as if it was the sample mean and, then, we use $MSE$ as if it was the variance. The algorithm remains the same.
 
-All of this process is supported by theory. By the Glivenko-Cantelli theorem that states that 
+All of this process is supported by the Glivenko-Cantelli theorem, which states that 
 
 $$\lim_{n \to + \infty}F_e(x) \rightarrow F(x) \space \text{ uniformly in } x$$
 
