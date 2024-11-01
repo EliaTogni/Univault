@@ -1940,11 +1940,11 @@ The expected value $\theta$ is one of the things we need the most but there is n
 
 We are interested in what we define as **unbiased and reliable estimators**. If we draw $n$ random values from our random variable and compute a function of them, the result is still a random value. If the expected value of this random variable is matching the theoretical value we are looking for, then the estimator is unbiased.
 
-One of the most important and basics estimators is the **sample mean**, a function that we can apply to the data and estimate the expected value:
+One of the most important and basics estimators is the **sample mean**, a function that we can apply to the data and estimate the expected value. Suppose that $X_1, \dots, X_n$ are independent random variables having the same distribution function. Let $\theta$ and $\sigma^2$ denote, respectively, their mean and variance. The quantity
 
 $$\overline{X} = \sum_{i = 1}^{n} \frac{X_i}{n}$$
 
-This is the arithmetic average of the $n$ data values. When the population mean $\theta$ is unknown, the sample mean is often used to estimate it. This is a unbiased estimator of the expected value: in fact, $\mathbb{E}[\overline{X}] = \theta$.
+is the arithmetic average of the $n$ data values. When the population mean $\theta$ is unknown, the sample mean is often used to estimate it. This is a unbiased estimator of the expected value: in fact, $\mathbb{E}[\overline{X}] = \theta$.
 
 There is another property of estimators: not being unbiased is telling us that there is no convergence to the actual expected value, there is some error. So let's assume to take an estimator unbiased: we may be interested in the rate in which we approach the actual value. How fast are we converging? If such rate is fast enough, we say that this estimator is reliable, that is, we don't need an infinite number of runs to get something valid.
 
@@ -1995,7 +1995,7 @@ What would be the value of a normal random variable which gives a guarantee of b
 ![[GaussianWebsite.png]]
 
 ### Interval Estimates
-Let's extend the previous reasoning. Indeed, we understood that returning a specific value, a single real number is not so meaningful. That is why we are more likely to give **interval estimates**.
+Let's extend the previous reasoning. Indeed, we understood that returning a specific value, a single real number is not so meaningful. Although the sample mean $\overline{X}$ is an effective estimator of $\theta$, we do not really expect that $\overline{X}$ will be equal to $\theta$ but rather that it will be close. That is why we are more likely to give **interval estimates**, intervals for which we have a certain degree of confidence that $\theta$ lies within.
 
 ![[IntervalEstimatesExample.png]]
 
@@ -2003,7 +2003,7 @@ Now, consider the case of the interval estimates of the expected value. Theoreti
 
 $$\sqrt{n} \frac{(\overline{X} - \theta)}{S}$$
 
-What is telling us that we can do this replacement and still get the same result is the **Slutsky's theorem** (we will not prove it). Now, the central limit theorem tells us that $\forall \alpha, 0 < \alpha < 1$, $\exists z_\alpha$ such that $P[Z > z_\alpha] = \alpha$. ==E.g., if we fix $\alpha = 5\%$, we can find $z_\alpha = 1.96$ reading $0.025$ from the normal (because of the two tails).
+What is telling us that we can do this replacement and still get the same result is the **Slutsky's theorem** (we will not prove it). Now, the central limit theorem tells us that $\forall \alpha, 0 < \alpha < 1$, $\exists z_\alpha$ such that $P[Z > z_\alpha] = \alpha$. E.g., if we fix $\alpha = 2.5\%$, we can find $z_\alpha = 1.96$ reading $0.025$ from the normal (because of the two tails).
 
 Now we can exploit symmetry and, knowing that $z_{1 - \alpha} = - z_{\alpha}$, $P[-z_{\frac{\alpha}{2}} < Z < z_{\frac{\alpha}{2}}] =$ $P[Z < z_{\frac{\alpha}{2}}] - P[Z < - z_{\frac{\alpha}{2}}]$. Since $P[Z < z_{\frac{\alpha}{2}}] = \frac{\alpha}{2}$ and $P[Z < - z_{\frac{\alpha}{1}}] =  1 -\frac{\alpha}{2}$, we have that $P[-z_{\frac{\alpha}{2}} < Z < z_{\frac{\alpha}{2}}] = (1 - \frac{\alpha}{2}) - \frac{\alpha}{2} = 1 - \alpha$.
 Now, $P[-\frac{z_\alpha}{2} < \sqrt{n} \frac{(\overline{X} - \theta)}{S} < \frac{z_\alpha}{2}] \simeq 1 - \alpha$. Our target is $\theta$ so we reshuffle the terms in the inequality and get 
