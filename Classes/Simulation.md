@@ -1905,10 +1905,7 @@ In this type of situation, we normally don't know the joint distribution of $T_1
 
 $$C(x, y) = \min\{x^\alpha y, xy^\beta\} \text{, with } \alpha = \frac{\lambda_1}{\lambda_1 + \lambda_3} \text{ and } \frac{\lambda_2}{\lambda_2 + \lambda_3}$$
 
-for $\lambda_1$, $\lambda_2$ and $\lambda_3$ known through empirical observation. Because item $1$ will fail either when a type $1$ or a type $3$ shock occurs, it follows from the fact that the minimum of independent
-exponential random variables is also exponential, with a rate equal to the sum of the
-rates, that $X$ is exponential with rate $\lambda_1 + \lambda_3$. Similarly, $Y$ is exponential with rate
-$\lambda_2 + \lambda_3$.
+for $\lambda_1$, $\lambda_2$ and $\lambda_3$ known through empirical observation. Because item $1$ will fail either when a type $1$ or a type $3$ shock occurs, it follows from the fact that the minimum of independent exponential random variables is also exponential, with a rate equal to the sum of the rates, that $X$, the failure rate of $T_1$, is exponential with rate $\lambda_1 + \lambda_3$. Similarly, $Y$ is exponential with rate $\lambda_2 + \lambda_3$.
 
 Algorithmically speaking, how do we use this copula?
 
