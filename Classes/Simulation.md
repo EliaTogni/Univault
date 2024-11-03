@@ -1868,9 +1868,9 @@ Each single normal random variable $Z_i$ of them can be generated and we have al
 
 Now, we can generate a random vector of $n$ values from a multivariate normal distribution. It is enough to generate the $n$ values for the $Z_i$ and then combining them accordingly to these coefficients. At this point, it is possible to return this vector in our copula for generating random vector not of all normal but from different marginal distributions.
 
-The point is in finding these $a_{ii}$ in order to obtain specific relations between the components of this vector. For instance, we may wish to generate a vector in which the first two components have a correlation of $0.65$. In the computation in these $a$ values, we combine linearly independent random variables of expected value $\mu = 0$ and we get another random variable with expected value $\mu = 0$. We are also allowed to add some constants $\mu_i$ to each row to change the expected value of the random variable $X_i$ (because we sum $n$ times $0$ and one time $\mu_i$). 
+The point is in finding these $a_{ii}$ in order to obtain specific relations between the components of this vector. For instance, we may wish to generate a vector in which the first two components have a correlation of $0.65$. In the computation in these $a$ values, we combine linearly independent random variables of expected value $\mu = 0$ and we get another random variable with expected value $\mu = 0$. We are also allowed to add some constants $\mu_i$ to each row to change the expected value of the random variable $X_i$ (because we sum $n$ times $0$ and one time $\mu_i$).
 
-What about the covariance $Cov(X_i, X_j)$? This is defined as 
+What about the covariance $Cov(X_i, X_j)$? This is defined as
 
 $$Cov(X_i, X_j) = \sum_{k = 1}^{n} a_{ik}a_{jk} = c_{ij}$$
 $$Var[X_i] = \sum_{k = 1}^{n} a_{ik}^2$$
