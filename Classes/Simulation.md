@@ -2056,9 +2056,9 @@ We have no guarantee that this distribution is a normal one. Now, if we want to 
 ## Variance Reduction
 In order to have a low number of iterations, is it better to have an high variance or a low one? Obviously the low one. The lower the variance, the sooner we get to the stopping condition, as it was in interval estimates. This also implies that high variance means low confidence about the values produced. We also want to keep the randomness of the model.
 
-The core idea is to reduce the variance without touching anything from theory, to keep the structure of the random variable as it is. We will mention three techniques.
+The core idea behing **variance reduction** is to reduce the variance without touching anything from theory, to keep the structure of the random variable as it is. We will mention three techniques.
 ### Variance Reduction by Antithetic Variables
-Say you have $2$ identical and independent distributed random variables $X_1$ and $X_2$ with expected value $\theta$. What if we want to estimate this specific value? We can repeat $n$ observation of $X_1$ (or $X_2$), use the sample mean and that's it.
+Say you have $2$ independent and identically distributed random variables $X_1$ and $X_2$ with expected value $\theta$. What if we want to estimate this specific value? We can repeat $n$ observation of $X_1$ (or $X_2$), use the sample mean and that's it.
 
 What if they are not independet but, for example, negatively correlated? We can measure the variance of the average of these two random variables. 
 
@@ -2066,9 +2066,9 @@ $$Var\Bigg[\frac{X_1 + X_2}{2}\Bigg] = \frac{1}{4}\Big(Var[X_1] + Var[X_2] + 2Co
 
 With that result, if $X_1$ and $X_2$ are negatively correlated, the variance of this quantity is lower than the variance of the random variables singlely taken.
 
-Now, how can two runs of the same simulation model be negatively correlated? The trick is the following: let differenciate between the odd runs and the even ones in the model. Let see the value of the odd runs as a function $h()$ of the set $U_1, \dots, U_m$ of random numbers used in the simulation, that is, the output of the random generator in the simulation.
+Now, how can two runs of the same simulation model be negatively correlated? The trick is the following: let's differenciate between the odd runs and the even ones in the model. Let see the value of the odd runs as a function $h()$ of the set $U_1, \dots, U_m$ of random numbers used in the simulation, that is, the output of the random generator in the simulation.
 
-Indeed, in our simulation models if we give the same sequence of random number, we get the same output. For this reason the simulation model can be seen as a function of a set of random numbers.
+Indeed, in our simulation models if we give the same sequence of random number, we get the same output. For this reason, the simulation model can be seen as a function of a set of random numbers.
 
 Instead of simulate the even runs, we take our random numbers and compute their complements (e.g., $1 - U_1, \dots 1- U_m$).
 
