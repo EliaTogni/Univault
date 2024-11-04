@@ -2171,8 +2171,6 @@ Then, we cluster on the $Y$ and compute each expected value. In this instance, w
 
 Theory is telling us that the conditional expected value is also an unbiased estimator of $\theta$ and what we get is the variance which will not be greater than that of $X$.
 
-If we already know the probability of $Y$ to take specific values, this approach gives us an advantage.
-
-Algorithmically speaking, there is a variant of this methos called **reduction by stratified sampling**. This is a variant in the sense that the principle is the same: we assume to have $X$ and $Y$ and to be willing to compute our estimates in terms of conditional expectation but instead of running the simulation model, observing $Y$ and clustering, we fix $Y$ in advance and run our simulation with $Y$ not being a random variable anymore.
+If we already know the probability of $Y$ to take specific values, this approach gives us an advantage. Algorithmically speaking, there is a variant of this method called **reduction by stratified sampling**, which takes advantage of the proposition above. This is a variant in the sense that the principle is the same: we assume to have $X$ and $Y$ and to be willing to compute our estimates in terms of conditional expectation but instead of running the simulation model, observing $Y$ and clustering, we fix $Y$ in advance and run our simulation with $Y$ not being a random variable anymore.
 
 -----
