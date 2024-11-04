@@ -2128,14 +2128,14 @@ Is it true that this simulation function is monotone in the random values that w
 What is the limit of this approach? Was it really for free (in the sense that if the function isn't monotone, we have literally no drawbacks)? 
 
 Firstly, how can we split between the one random variable and its antithetic?<br />
-Secondly, if we have a large number of random numbers in our run, if one random number is higher and one is lower, we cannot observe this behavior. The theorem seen above becomes effective only when we are able to trick the random numbers. If we wait bu chance to have two subsequent runs in which the random numbers all increase or all decrease, we will never get it.
+Secondly, if we have a large number of random numbers in our run, if one random number is higher and one is lower, we cannot observe this behavior. The theorem seen above becomes effective only when we are able to trick the random numbers. If we wait by chance to have two subsequent runs in which the random numbers all increase or all decrease, we will never get it.
 
 -----
 
 ### Variance Reduction by Control Variates
 $X$ is the random variable output of the simulation, that is the value we are looking for. $\theta$ is its expected value. We are able to get another output random variable for the model, $Y$, an intermediate point in the simulation for which we already know the expected value. The random variable $Y$ is a **control variate** for the simulation estimator $X$. 
 
-The technique of control variate is based on the use in our estimator the following expression $Z = X + c \cdot (Y - \mu)$ as the undbiased estimator of $\theta$ instead of $X$, for any constant $c$.
+The technique of control variate is based on the use in our estimator of the following expression $Z = X + c \cdot (Y - \mu)$ as the unbiased estimator of $\theta$ instead of $X$, for any constant $c$.
 
 Let's look at the expected value of $Z$: is the expected value of all the right hand side of the expression and, by linearity, is equal to $\mathbb{E}[Z] = \mathbb{E}[X] + c \cdot \mathbb{E}[Y] - \mu =  \mathbb{E}[X] + c \cdot \mu - \mu =  \mathbb{E}[X]$.
 
