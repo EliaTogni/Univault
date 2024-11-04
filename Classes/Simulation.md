@@ -2133,9 +2133,9 @@ Secondly, if we have a large number of random numbers in our run, if one random 
 -----
 
 ### Variance Reduction by Control Variates
-$X$ is the random variable output of the simulation, that is the value we are looking for. $\theta$ is its expected value. We are able to get another output random variable for the model, $Y$, an intermediate point in the simulation for which we already know the expected value. The random variable $Y$ is a **control variate** for the simulation estimator $X$. 
+$X$ is the random variable output of the simulation, that is the value we are looking for. $\theta$ is its expected value. We are able to get another output random variable for the model, $Y$, an intermediate point in the simulation for which we already know the expected value $\mu_y$. The random variable $Y$ is a **control variate** for the simulation estimator $X$. 
 
-The technique of control variate is based on the use in our estimator of the following expression $Z = X + c \cdot (Y - \mu)$ as the unbiased estimator of $\theta$ instead of $X$, for any constant $c$.
+The technique of control variate is based on the use in our estimator of the following expression $Z = X + c \cdot (Y - \mu_y)$ as the unbiased estimator of $\theta$ for any constant $c$.
 
 Let's look at the expected value of $Z$: is the expected value of all the right hand side of the expression and, by linearity, is equal to $\mathbb{E}[Z] = \mathbb{E}[X] + c \cdot \mathbb{E}[Y] - \mu =  \mathbb{E}[X] + c \cdot \mu - \mu =  \mathbb{E}[X]$.
 
@@ -2144,10 +2144,17 @@ Furthermore, we can also prove that the variance of $Z$ is not greater than that
 $$Var[Z] = Var[X + c \cdot (Y - \mu)] =$$
 $$= Var[X + cY] =$$
 $$= Var[X] + c^2Var[Y] + 2cCov[X, Y] =$$
-$$= Var[X] - \frac{Cov[X, Y]^2}{Var[Y]}$$
+
+Simple calculus now shows that the above is minimized when $c = c^∗$, where
+
+$$c^* = -\frac{Cov(X, Y)}{Var(Y)}$$
+
+and for this value, the variance of the estimator is
+
+$$Var[Z] = Var[X] - \frac{Cov[X, Y]^2}{Var[Y]}$$
 $$\frac{Var[Z]}{Var[X]} = 1 - Corr^2[X, Y]$$
 
-How can we implement this method? The only thing that we need is to be able to read values of another random variable during the simulation run. It can even be the output of a single random variable from our model. Of course, the more we are able to find control variate which are strongly correlated to our output, the more variance reduction we get.
+How can we implement this method? The only thing that we need is to be able to read values of another random variable during the simulation run. It can even be the output of a single random variable from our model. Of course, the more control variates strongly correlated to our output we are able to find, the more variance reduction we get.
 
 -----
 
@@ -2160,8 +2167,7 @@ Algorithmically speaking, we can run the simulation model, measure both $X$ and 
 
 ![[VarianceReductionByConditioning.png]]
 
-Then, we cluster on the $Y$ and compute each expected value. In this instance, we will compute the expected value of $x$ in which $y$ took value $1$, the expected value of $x$ in which $y$ took value $2$ and so on. We estimate the probabilities basing on their frequencies and then we compute.
-$\mathbb{E}[X \vert Y_i]$ are the clusters average values and $p_i$ are the estimates.
+Then, we cluster on the $Y$ and compute each expected value. In this instance, we will compute the expected value of $X$ in which $Y$ took value $1$, the expected value of $X$ in which $Y$ took value $2$ and so on. We estimate the probabilities basing on their frequencies and then we compute. $\mathbb{E}[X \vert Y_i]$ are the clusters average values and $p_i$ are the estimates.
 
 Theory is telling us that the conditional expected value is also an unbiased estimator of $\theta$ and what we get is the variance which will not be greater than that of $X$.
 
