@@ -2084,7 +2084,7 @@ We can generate a Bernoulli random variable of parameter $p$.
 
 ```pseudo
 	\begin{algorithm}
-	\caption{Algo Caption}
+	\caption{Generation of a Bernoulli random variable}
 	\begin{algorithmic}
 		\State $u = random()$
 		\If{$u \leq p$}
