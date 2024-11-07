@@ -87,7 +87,7 @@
 	Il mittente è l'indirizzo sorgente del pacchetto o del flusso di pacchetti, cioè l'indirizzo IP da cui il flusso arriva (o dichiara di arrivare). Allo stesso modo, il destinatario è l'indirizzo di destinazione del pacchetto o del flusso di pacchetti.
 21) **Cos'è una "porta"?**
 	Una porta in un computer è un'interfaccia che consente la comunicazione tra il computer e altri dispositivi o reti. Le porte virtuali sono numeri assegnati ai processi o applicazioni in esecuzione su un computer per gestire la comunicazione attraverso una rete. Il concetto di porta (virtuale) serve a differenziare un flusso dati tra due nodi in modo da simulare più sotto-flussi, i.e., i pacchetti che vanno da $A$ a $B$ vengono smistati su code diverse in funzione delle porte dichiarate nei pacchetti stessi.
-1) **Cos'è un "protocollo"?**
+22) **Cos'è un "protocollo"?**
 	Un protocollo è un algoritmo distribuito. I protocolli di rete sono serie di standard che regolano la successione e lo scambio di informazioni fra due dispositivi. Servono a codificare opportunamente (cioè al meglio per la particolare esigenza di scambio dati) i contenuti e le sequenze di dati in modo da ottenere la funzione richiesta.
 23) **Che differenza c'è tra metadati e contenuto di un pacchetto?**
 	I metadati forniscono informazioni sull'origine, la struttura e altre caratteristiche dei dati, mentre il contenuto è ciò che i dati effettivamente contengono. Ad esempio, in un file musicale, i metadati potrebbero includere il titolo della canzone, l'artista e l'anno di pubblicazione, mentre il contenuto sarebbe la musica effettiva.
@@ -151,7 +151,7 @@
 	Si definisce ultimo miglio quel tratto della rete che va dalla casa/ufficio dell'utente finale fino al primo concentratore. L'ultimo miglio è il tratto più problematico perchè è difficilmente aggiornabile; tipicamente è il doppino in rame della rete telefonica che viene utilizzato per veicolare i dati. Il rame è un buon conduttore di elettricità, ma quando si tratta di inviare dati (segnali ad alta frequenza) invece di voce (segnali a bassa frequenza), il doppino diventa una pessima soluzione per le lunghe distanze (centinaia di metri). 
 46) **Cosa si intende con "offerta flat" nel campo della telefonia cellulare? Perché ci interessa? Quali effetti relativistici si possono incontrare?**
 	Un'offerta flat significa un'offerta con trffico dati incluso nell'abbonamento, fino ad una soglia mensile, oltre la quale si comincia a pagare al MB o la velocità della connessione scende automaticamente ad un livello estremamente basso. Ci interessa perchè alcune offerte prevedono che parte del traffico effettuato non venga conteggiato nel cap mensile, così l'utente del contratto sarà invogliato ad utilizzare maggiormente i siti cap esenti.
-47) **Chi è FCC?durata**
+47) **Chi è FCC?**
 	La Federal Communication Commission è un'agenzia federale che regola le comunicazioni interstatali e internazionali attraverso varie forme di trasmissione. Aveva scoperto che Comcast impediva l'utilizzo di Skype ai suoi utenti. Ha indagato nuovamente la Comcast per sospetti di rallentamento artificioso nei confronti di Netflix.
 48) **Cos'è VoIP?**
 	VoIP (Voice over Internet Protocol) è il servizio di telefonia via rete. Lo standard internazionale più diffuso è libero e si chiama SIP (Session Initiation Protocol).
