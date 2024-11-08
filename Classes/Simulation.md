@@ -804,9 +804,7 @@ Below, some graphical example of $F$ and $\widehat{F}$.
 -----
 
 ## Monte Carlo methods
-The term Monte Carlo refers to a wide family of **estimation methods** based on the use of pseudorandom numbers.
-
-This approach relies on repeated random sampling to obtain numerical results.  Monte Carlo methods vary, but tend to follow a particular pattern:
+The term Monte Carlo refers to a wide family of **estimation methods** based on the use of pseudorandom numbers. This approach relies on repeated random sampling to obtain numerical results. Monte Carlo methods vary, but tend to follow a particular pattern:
 - defition of a domain of possible inputs;
 - generation of inputs randomly from a probability distribution over the domain;
 - deterministic computation of the outputs;
