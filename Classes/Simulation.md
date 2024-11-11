@@ -1464,7 +1464,7 @@ The expected value of this random variable $\mathbb{E}[X] = \mu$ while its varia
 
 It is possible to express the cumulative distribution function of this random variable in terms of its $\Phi$ function:
 
-$$F(x) = \Phi \Big( \frac{x - \mu}{\sigma^2} \Big)$$
+$$F(x) = \Phi \Big( \frac{x - \mu}{\sigma} \Big)$$
 
 where 
 
