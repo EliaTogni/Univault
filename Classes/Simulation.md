@@ -1691,7 +1691,7 @@ Let's define a gamma random variable of parameter $n$, $\lambda$ to be a continu
 
 $$f(t) = \lambda e^{- \lambda t} \frac{(\lambda t)^{n -1}}{(n - 1)!}$$
 
-These gamma random variables are the continuous counterparts of a specific type of discrete random variables: the sum of $n$ independent exponential random variables, each having parameter $\lambda$, is a gamma random variable with parameters $n$, $\lambda$. Furthermore, the time of the $n$-th event of a Poisson process having rate $\lambda$ is a gamma random variable with parameters $n$, $\lambda$.
+The sum of $n$ independent exponential random variables, each having parameter $\lambda$, is a gamma random variable with parameters $n$, $\lambda$. Furthermore, the time of the $n$-th event of a Poisson process having rate $\lambda$ is a gamma random variable with parameters $n$, $\lambda$.
 
 How can we simulate a Poisson Process? A discrete event approach is to generate the first interesting event, which is the first event in the process, and to generate this event we draw a value from an exponential random variable, which is the interarrival time.
 
