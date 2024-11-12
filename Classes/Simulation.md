@@ -2109,7 +2109,7 @@ Let's observe an example. Imagine to want to simulate the network in the image b
 
 ![[CircuitExample.png]]
 
-This is a network of links which are subject to failure and we ask ourselves some questions about the robustness of this network. For instance, we send one packet into the network and we ask ourselves: "will we get it on the other side or not?" So, the failures will be associated to each links and each link will be associated to a probability.
+This is a network of links which are subject to failure and we ask ourselves some questions about the robustness  of this network. For instance, we send one packet into the network and we ask ourselves: "will we get it on the other side or not?" So, the failures will be associated to each links and each link will be associated to a probability.
 
 For instance, we may wish to measure the number of paths from some point $a$ to some point $b$. This is a discrete random variable. What is the shape of this random variable? It has no particular shape so how can we simulate it?
 
