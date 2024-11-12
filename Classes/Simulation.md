@@ -2011,7 +2011,7 @@ What is telling us that we can do this replacement and still get the same result
 Now we can exploit symmetry and, knowing that $z_{1 - \alpha} = - z_{\alpha}$, $P[-z_{\frac{\alpha}{2}} < Z < z_{\frac{\alpha}{2}}] =$ $P[Z < z_{\frac{\alpha}{2}}] - P[Z < - z_{\frac{\alpha}{2}}]$. Since $P[Z < z_{\frac{\alpha}{2}}] = \frac{\alpha}{2}$ and $P[Z < - z_{\frac{\alpha}{2}}] =  1 -\frac{\alpha}{2}$, we have that $P[-z_{\frac{\alpha}{2}} < Z < z_{\frac{\alpha}{2}}] = (1 - \frac{\alpha}{2}) - \frac{\alpha}{2} = 1 - \alpha$.
 Now, $P[-\frac{z_\alpha}{2} < \sqrt{n} \frac{(\overline{X} - \theta)}{S} < \frac{z_\alpha}{2}] \simeq 1 - \alpha$. Our target is $\theta$ so we reshuffle the terms in the inequality and get 
 
-$$P\Bigg[ \overline{X} -\frac{z_\alpha}{2}\frac{S}{\sqrt{n}} < \theta < \overline{X} + \frac{z_\alpha}{2}\frac{S}{\sqrt{n}}\Bigg ] \simeq 1 - \alpha$$
+$$P\Bigg[ \overline{X} -z_\frac{\alpha}{2}\frac{S}{\sqrt{n}} < \theta < \overline{X} + z_\frac{\alpha}{2}\frac{S}{\sqrt{n}}\Bigg ] \simeq 1 - \alpha$$
 
 Look at how we define the range $[-\frac{z_\alpha}{2}\frac{S}{\sqrt{n}}, \frac{z_\alpha}{2}\frac{S}{\sqrt{n}}]$. $\theta$ is our target expected value, $\overline{X}$ is our estimate. Therefore, this interval is centered in our estimate and have width given by the error we are assuming to be doing. We can state the parameter to actually fit into this range with certain probability. Overall (after $n$ simulation observations), if $\overline{X}$ and $S$ are sample mean and standard deviation, we call the interval $\overline{X} \pm \frac{z_\alpha}{2}\frac{S}{\sqrt{n}}$ an interval estimate of $\theta$ with $100(1 - \alpha)\%$ confidence.
 
