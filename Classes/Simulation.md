@@ -2063,6 +2063,7 @@ We have no guarantee that this distribution is a normal one. Now, if we want to 
 In order to have a low number of iterations, is it better to have an high variance or a low one? Obviously the low one. The lower the variance, the sooner we get to the stopping condition, as it was in interval estimates. This also implies that high variance means low confidence about the values produced. We also want to keep the randomness of the model.
 
 The core idea behing **variance reduction** is to reduce the variance without touching anything from theory, to keep the structure of the random variable as it is. We will mention three techniques.
+
 ### Variance Reduction by Antithetic Variables
 Say you have $2$ independent and identically distributed random variables $X_1$ and $X_2$ with expected value $\theta$. What if we want to estimate this specific value? We can repeat $n$ observation of $X_1$ (or $X_2$), use the sample mean and that's it.
 
