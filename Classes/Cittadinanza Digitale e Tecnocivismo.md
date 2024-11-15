@@ -1312,82 +1312,82 @@
 	- sperimentazioni del voto elettronico in occasione del Referendum consultivo organizzato nel 2017 dalla Regione Lombardia (amministrazione Maroni) per sondare la volontà dei cittadini sull’avvio dell’iter legislativo per rafforzare l’autonomia delle Regioni;
 	- decreto per la sperimentazione del voto elettronico in Italia del luglio 2021 e relative linee guida, con la sperimentazione in occasione delle elezioni dei Comitati degli italiani all’estero.
 	Nel 2021 ha preso il via sul portale IOvoto63 la prima sperimentazione organizzata dal Ministero degli Affari Esteri nel contesto delle elezioni dei Comitati degli italiani all’estero. I votanti sono stati esigui. ==finire==
-1. **Quali altri contesti di voto in cui la versione digitale potrebbe essere proficuamente applicata abbiamo analizzato?**
+18) **Quali altri contesti di voto in cui la versione digitale potrebbe essere proficuamente applicata abbiamo analizzato?**
 	Votazioni che hanno luogo all’interno di processi partecipativi/deliberativi o all’interno di organizzazioni che possono giocare un ruolo sulla scena pubblica: partiti, sindacati, ma anche associazioni no profit che spesso le istituzioni convocano in audizione o chiamano a sedere in ’tavoli’ consultivi al fine di raccogliere per loro tramite l’opinione dei portatori di interessi (stakeholder) in specifici ambiti oggetto di politiche pubbliche. Abbiamo analizzato le votazioni nelle Università italiane, le votazioni online del Movimento 5 Stelle e del PD, le votazioni di aziende per l'elezione dei propri organi di governo.
-18) **Cosa si intende con "stakeholder"?**
-	Uno stakeholder è una persona, un gruppo o un'organizzazione che ha un interesse, un'influenza o è influenzato da un progetto, un'iniziativa o un'azienda
-19) **Quali problemi vedi nell'utilizzo del sistema UniVote?**
+19) **Cosa si intende con "stakeholder"?**
+	Uno stakeholder è una persona, un gruppo o un'organizzazione che ha un interesse, un'influenza o è influenzato da un progetto, un'iniziativa o un'azienda.
+20) **Quali problemi vedi nell'utilizzo del sistema UniVote?**
 	==boh==
-20) **Quali problemi vedi nell'utilizzo del sistema di voto dei "$5$ stelle"?**
+21) **Quali problemi vedi nell'utilizzo del sistema di voto dei "$5$ stelle"?**
 	Le debolezze intrinseche delle soluzioni tecnologiche rilevate sia dal Garante della Privacy sia da un’inchiesta svolta da Wired che ha provato la possibilità per un medesimo individuo di votare due volte. Inoltre, la gestione delle votazioni era per intero aﬀidata alla Casaleggio Associati, azienda di proprietà di Gianroberto Casaleggio, uno dei fondatori del movimento (ereditata, alla scomparsa di questi, dal figlio Davide), cioè uno dei più influenti attori politici del M5S, e come tale non super-partes. Casaleggio ingaggiò un ’certificatore’ indipendente per garantire la correttezza del voto. Ma questa soluzione aveva due seri limiti: il certificatore era scelto (e presumibilmente retribuito) dal soggetto che doveva controllare; inoltre, come rilevato nel provvedimento del Garante, una certificazione al termine delle votazioni - per cosi dire: a cose fatte - può aggiungere ben poco “dal punto di vista della genuinità dei risultati, in un contesto in cui le caratteristiche dello strumento informatico utilizzato non consentono di svolgere alcuna significativa verifica su dati che sono, per loro natura e modalità di trattamento, tecnicamente alterabili in pressoché ogni fase del procedimento di votazione e scrutinio antecedente la certificazione.
-21) **Perché in alcuni sistemi di voto digitale deve passare un certo tempo dall'iscrizione per ottenere il diritto di voto?**
+22) **Perché in alcuni sistemi di voto digitale deve passare un certo tempo dall'iscrizione per ottenere il diritto di voto?**
 	Al fine di scongiurare comportamenti opportunistici da parte di lobby interessante a influenzare in un dato modo l’esito della votazione. Può essere preso in considerazione se si vuole che partecipino alle votazioni solo coloro che hanno seguito le fasi precedenti alla votazione.
-22) **Cosa è la "teoria della scelta sociale"?**
+23) **Cosa è la "teoria della scelta sociale"?**
 	E' una disciplina dell'economia e della scienza politica che studia i metodi per aggregare le preferenze individuali in una decisione collettiva. Si occupa di come trasformare le preferenze, i voti o i giudizi di una popolazione di individui in una scelta collettiva che rifletta, in qualche misura, le opinioni e i desideri di tutti i membri della società.
-23) **Che vantaggi ha l'uso di elaborazione elettronica in un sistema di voto?**
+24) **Che vantaggi ha l'uso di elaborazione elettronica in un sistema di voto?**
 	L’elaborazione elettronica (computer-based) rende più praticabili algoritmi di calcolo dei risultati di una votazione diﬀicilmente sostenibili (in termini di tempo ma anche di possibili errori) a mano; inoltre le moderne interfacce utente rendono più praticabili forme di espressione del voto più sofisticate dell’usuale barrare con una croce una delle opzioni proposte, ad esempio introducendo per il votante la possibilità di esprimere un ordinamento preferenziale tra di esse.
-24) **Cos'è un "metodo di voto"?**
+25) **Cos'è un "metodo di voto"?**
 	Un metodo di voto è una procedura utilizzata per raccogliere e aggregare le preferenze dei votanti con lo scopo di arrivare a una decisione collettiva o eleggere un candidato.
-25) **Cosa si intende con "minimizzazione della scontentezza"?**
+26) **Cosa si intende con "minimizzazione della scontentezza"?**
 	Il concetto di “minimizzazione della scontentezza” dell’elettorato è uno dei fattori che viene incorporato nella già citata teoria della scelta sociale. Esistono infatti metodi di voto che permettono l’integrazione delle preferenze positive (“voglio A”) con quelle negative (“non voglio B”) o anche delle preferenze relative (“preferisco C a B”).
-26) **Cosa si intende con metodo di voto a "scelta singola"?**
+27) **Cosa si intende con metodo di voto a "scelta singola"?**
 	Scelta singola (plurality vote): i votanti possono scegliere una sola delle alternative proposte. Vince l’opzione che raggiunge la maggioranza (relativa) dei voti espressi. Se viene anche richiesto che il numero dei voti sia almeno pari alla metà+1 dei votanti, si parla di maggioranza assoluta; si parla di maggioranza qualificata se la proposta deve raccogliere un numero di voti superiore a una soglia (’quorum’) fissata statutariamente (ad es. 2/3, 3/4, 4/5 dei votanti o degli aventi diritto).
-27) **Cosa si intende con metodo di voto a "scelta multipla"?**
+28) **Cosa si intende con metodo di voto a "scelta multipla"?**
 	Scelta multipla (approval voting): i votanti possono scegliere le alternative che approvano (eventualmente con un minimo e un massimo). Più che a identificare un singolo vincitore, di solito questo metodo viene utilizzato per stilare un ordinamento delle opzioni sulla base dei voti complessivamente raccolti.
-28) **Cosa si intende con metodo di voto "cumulativo"?**
+29) **Cosa si intende con metodo di voto "cumulativo"?**
 	Cumulativo (cumulative voting, es. metodo Borda): ogni votante ha a disposizione un numero determinato di ”punti” che può distribuire a sua discrezione tra le alternative proposte. Anche in questo caso l’esito della votazione è un ordinamento delle opzioni sulla base dei ’punti’ complessivamente raccolti.
-29) **Cosa si intende con metodo di voto "a ordinamento"?**
+30) **Cosa si intende con metodo di voto "a ordinamento"?**
 	Ordinamento (ranked voting methods, metodo Condorcet e sue varianti): il votante ordina le alternative secondo un proprio criterio di preferenza.
-30) **Cosa si intende con "preferenza collettiva"?**
+31) **Cosa si intende con "preferenza collettiva"?**
 	Significa che la maggioranza preferisce un'opzione di scelta rispetto ad un'altra.
-31) **Cos'è il "principio di Condorcet"?**
+32) **Cos'è il "principio di Condorcet"?**
 	Un sistema di voto che rispetta il Principio di Condorcet sceglie sempre (se esiste) l’alternativa che vince su ogni altra nel confronto a due.
-32) **Cos'è il "paradosso di Condorcet" (loop)?**
+33) **Cos'è il "paradosso di Condorcet" (loop)?**
 	Quando nella matrice delle preferenze non c’è una riga con tutte le colonne vincenti, cioè non abbiamo un vincitore di Condorcet. Questa situazione viene chiamata ciclo (loop) o Paradosso di Condorcet perchè, appunto, le preferenze degli elettori creano un ciclo senza un chiaro vincitore.
-33) **Cosa sono le "preferenze indirette"?**
+34) **Cosa sono le "preferenze indirette"?**
 	Le preferenze indirette secondo Schulze si riferiscono alla valutazione dei candidati non solo basata sui confronti diretti ma anche tenendo conto delle preferenze lungo i percorsi pesati tra i candidati. Questo approccio aiuta a risolvere situazioni in cui le preferenze degli elettori creano cicli, determinando comunque un chiaro vincitore secondo il principio di Condorcet.
-34) **Cos'è l'elettorato "attivo/passivo"?**
+35) **Cos'è l'elettorato "attivo/passivo"?**
 	L'elettorato attivo si riferisce al diritto di votare. Comprende tutte le persone che hanno il diritto di esprimere il loro voto in un'elezione. L'elettorato passivo si riferisce al diritto di candidarsi e di essere eletti. Comprende tutte le persone che hanno il diritto di presentarsi come candidati in un'elezione.
-35) **Cos'è il "criterio di indipendenza delle alternative irrilevanti"?**
+36) **Cos'è il "criterio di indipendenza delle alternative irrilevanti"?**
 	E' uno dei criteri di ’fairness’ (correttezza, imparzialità) di Arrow, il quale enuncia che le preferenze collettive tra due alternative $A$ e $B$ dipendono unicamente dalle preferenze individuali tra $A$ e $B$ e non sono influenzate dalle scelte che riguardano altre alternative.
-36) **Quali sono i "criteri di fairness" del voto?**
+37) **Quali sono i "criteri di fairness" del voto?**
 	- Universalità del dominio (unrestricted domain): tutte le preferenze di tutti i votanti sono permesse;
 	- Unanimità: se per tutti gli individui $A > B$ allora nella scelta collettiva $A \gg B$;
 	- Indipendenza dalle alternative irrilevanti: le preferenze collettive tra due alternative $A$ e $B$ dipendono unicamente dalle preferenze individuali tra $A$ e $B$ e non sono influenzate dalle scelte che riguardano altre alternative;
 	- Non dittatorialità: non esiste nessun individuo la cui scelta $A > B$ (qualunque siano $A$e $B$) determina $A > B$ per ogni altro individuo.
-37) **Cosa dice il "Teorema di Arrow"?**
+38) **Cosa dice il "Teorema di Arrow"?**
 	Il Teorema di Arrow afferma che non esiste nessuna funzione di scelta sociale che soddisfa i (quattro) criteri di universalità del dominio, unanimità, indipendenza dalle alternative irrilevanti e non dittatorialità.
-38) **Riassumi le esperienze di movimenti e partiti nell'era digitale.**
+39) **Riassumi le esperienze di movimenti e partiti nell'era digitale.**
 	==boh==
-39) **Cos'è LiquidFeedback e che particolarità ha?**
+40) **Cos'è LiquidFeedback e che particolarità ha?**
 	Software open source concepito e progettato da attivisti del Partito Pirata tedesco per aiutare il processo decisionale
 	Due funzionalità qualificano LQFB:
 	- ingloba un processo deliberativo attraverso il quale le proposte avanzate dai partecipanti per affrontare un certo issue (questione o tema o problema) - organizzate in aree tematiche definite dai gestori della piattaforma - possono non soltanto essere discusse e appoggiate dagli altri partecipanti, ma anche elaborate in modo collaborativo (con una funzionalità di collaborative writing), e confrontate con delle contro-proposte sulla medesima questione. Alla fine del processo deliberativo, le proposte e le controproposte su una certa tematica che superano determinate soglie, vengono votate con il metodo Schulze: emerge non soltanto la proposta vincente (se c’è), ma anche una classifica di tutte le proposte votate;
 	- include la possibilità di transitive proxy voting: i partecipanti possono delegare (in modo revocabile) altri membri a fare proposte, partecipare al processo deliberativo e infine votare al loro posto in specifiche aree tematiche o su temi specifici. Posso ad esempio delegare la mia amica Maria ad agire al mio posto sui temi dell’ambiente perché la ritengo più competente di me; ma se mi accorgo che prende della posizioni che non rispecchiano quel che penso, in qualunque momento posso revocare la delega. Per poterlo consentire, LQFB adotta la completa trasparenza delle azioni online, incluso il voto che è sempre palese. Oppure, se so che per un certo periodo mi sarà impossibile partecipare attivamente, posso delegare Beppe ad operare per mio conto su qualunque tema, e revocare la delega quando posso tornare attiva. I delegati - che quindi agiscono non solo per se stessi, ma anche per conto di altri - possono a loro volta trasferire ad altri le loro deleghe. Si possono quindi creare dinamicamente dei leader ‘locali’ (su specifiche aree o temi), che sono però costantemente sotto il controllo dei deleganti. Il meccanismo della delega per categoria e revocabile permette un mix tra democrazia diretta (voto diretto su ogni tema/issue) e democrazia rappresentativa (delega del voto a un rappresentante): in altre parole, LQFB implementa un “dynamic scheme of representation”, una forma di democrazia liquida, da cui prende il nome.
-40) **Cosa si intende con "idea gathering"?**
+41) **Cosa si intende con "idea gathering"?**
 	L'idea gathering, o raccolta di idee, è il processo di raccogliere e aggregare idee, suggerimenti, opinioni o soluzioni da un gruppo di persone.
-41) **Cosa si intende con "online deliberation"?**
+42) **Cosa si intende con "online deliberation"?**
 	L'online deliberation, o deliberazione online, si riferisce al processo di discussione e decisione collettiva su piattaforme digitali.
-42) **Cosa si intende con "collaborative writing" in L$7$?**
+43) **Cosa si intende con "collaborative writing" in L$7$?**
 	Scrivere, elaborate in modo collaborativo utilizzando software di supporto al processo deliberativo.
-43) **Cita qualche metodo di voto e descrivilo.**
+44) **Cita qualche metodo di voto e descrivilo.**
 	- Scelta singola (plurality vote): i votanti possono scegliere una sola delle alternative proposte. Vince l’opzione che raggiunge la maggioranza (relativa) dei voti espressi. Se viene anche richiesto che il numero dei voti sia almeno pari alla metà+1 dei votanti, si parla di maggioranza assoluta; si parla di maggioranza qualificata se la proposta deve raccogliere un numero di voti superiore a una soglia (’quorum’) fissata statutariamente (ad es. 2/3, 3/4, 4/5 dei votanti o degli aventi diritto);
 	- Scelta multipla (approval voting): i votanti possono scegliere le alternative che approvano (eventualmente con un minimo e un massimo). Più che a identificare un singolo vincitore, di solito questo metodo viene utilizzato per stilare un ordinamento delle opzioni sulla base dei voti complessivamente raccolti;
 	- Cumulativo (cumulative voting, es. metodo Borda): ogni votante ha a disposizione un numero determinato di ”punti” che può distribuire a sua discrezione tra le alternative proposte. Anche in questo caso l’esito della votazione è un ordinamento delle opzioni sulla base dei ’punti’ complessivamente raccolti;
 	- Ordinamento (ranked voting methods, metodo Condorcet e sue varianti): il votante ordina le alternative secondo un proprio criterio di preferenza.
-1) **Cosa si intende con "delega"? E con "delega liquida"?**
+45) **Cosa si intende con "delega"? E con "delega liquida"?**
 	La "delega" si riferisce al trasferimento di autorità o responsabilità da una persona o ente a un altro. la delega liquida è flessibile e dinamica. Gli elettori possono modificare o revocare la delega in qualsiasi momento, mantenendo un controllo continuo sul loro potere di voto.
-45) **Che parallelo puoi tracciare tra LQFB e Google Votes?**
+46) **Che parallelo puoi tracciare tra LQFB e Google Votes?**
 	==boh==
-46) **Qual è la "golden rule of liquid democracy"? Ha senso?**
+47) **Qual è la "golden rule of liquid democracy"? Ha senso?**
 	"If I give you my vote, I can see what you do with it". ==finire==
-47) **Cosa si intende con "decision-making"?**
+48) **Cosa si intende con "decision-making"?**
 	Il "decision making", o processo decisionale, è il processo di identificare e scegliere alternative basate sui valori e le preferenze del decisore.
-48) **Cita e descrivi qualche software di online deliberation di seconda generazione.**
+49) **Cita e descrivi qualche software di online deliberation di seconda generazione.**
 	Loomio e Pol.is sono stati sviluppati per iniziativa di attivisti del movimento Occupy, rispettivamente in Nuova Zelanda e a Seattle (US). Loomio è stato poi adottato da numerosi gruppi locali di Podemos in Spagna, mentre il caso d’uso più significato di Pol.is è stato a Taiwan. Per semplificare il processo deliberativo e non dividere l’attenzione dei partecipanti, entrambi permettono agli utenti di considerare solo una questione alla volta. Mirano entrambi a far convergere le opinioni verso un consenso, ma differiscono nel meccanismo con cui cercano di raggiungerlo. Loomio organizza la discussione in gruppi, di dimensioni relativamente ridotte. I membri del gruppo discutono sostanzialmente come in un forum, ma quando uno dei partecipanti ritiene che dalla discussione emerga una proposta e la formula esplicitamente, allora i membri del gruppo sono invitati ad esprimersi con accordo, disaccordo, astensione, o blocco. Pol.is fa aﬀidamento su amministratori/moderatori che formulano ‘opinion statement’ sulla questione in discussione e chiedono ai partecipanti di approvare, rigettare o ‘passare’ questi statement; un algoritmo raggruppa (“clusterizza”) gli statement per aﬀinità di opinione, il che permette agli amministratori di formulare nuovi statement che meglio riflettono l’opinione prevalente facilitando così la convergenza verso il consenso.
-49) **Cosa sono i "bilanci partecipativi"?**
+50) **Cosa sono i "bilanci partecipativi"?**
 	Con il Bilancio Partecipativo, i cittadini sono coinvolti, attraverso un percorso deliberativo più o meno strutturato che può prevedere momenti diversi di attivazione, co-ideazione, co-progettazione e voto, nella scelta di come destinare parte delle risorse che compongono il bilancio di un ente o di una organizzazione.
-50) **Quali fasi compongono un "bilancio partecipativo" in generale?**
+51) **Quali fasi compongono un "bilancio partecipativo" in generale?**
 	Il processo è sostanzialmente costituito dalle seguenti quattro fasi:
 	- Raccolta e filtro delle proposte: i cittadini fanno proposte su come investire le risorse messe a disposizione dal Bilancio Partecipativo. In questa fase può essere attivato un “filtro” per permettere solo alle proposte che soddisfano determinate condizioni (in genere, le più popolari) di proseguire nel percorso;
 	- Valutazione di fattibilità e co-progettazione: le proposte (eventualmente solo quelle selezionate) vengono esaminate dal personale competente dell’amministrazione che promuove il processo, per valutare la fattibilità tecnica e i costi. Sulla base di questa valutazione e insieme ai proponenti, vengono definiti i progetti che saranno sottoposti al voto;
