@@ -339,12 +339,12 @@
 1) **Quali sono i temi salienti del livello "services" dell'arcobaleno?**
 	==da fare==
 2) **Differenza fra servizi "analogici" e "digitali".**
-	Un servizio digitale è un meccanismo di fornitura che vincola un servizio, o almeno parte di esso, attraverso un canale digitale, rispetto a un servizio analogico dove è necessaria e presente su tutti i livelli la componente umana.
+	Un servizio digitale è un meccanismo di fornitura che vincola un servizio, o almeno parte di esso, attraverso un canale digitale, rispetto ad un servizio analogico dove è necessaria e presente su tutti i livelli la componente umana.
 3) **In che senso può essere difficile l'accesso ad un servizio digitale? (quali restrizioni)**
-	- L'accesso ad un conto corrente può essere vincolato ai possesso di uno smartphone;
+	- L'accesso ad un conto corrente può essere vincolato al possesso di uno smartphone;
 	- prevedere la compilazione di moduli di richiesta e, più in generale, accettare solo documenti prodotti tramite software proprietari;
 	- pubblicare le informazioni sulla propria attività utilizzando esclusivamente una piattaforma social.
-	Il modo in cui vengono forniti i servizi online deve soddisfare gli standard di usabilità e non richiedere competenze o conoscenze speciali
+	Il modo in cui vengono forniti i servizi online deve soddisfare gli standard di usabilità e non richiedere competenze o conoscenze speciali.
 4) **Cosa deve garantire un servizio digitale ai cittadini?**
 	Un servizio digitale deve soddisfare gli standard di usabilità e non richiedere competenze o conoscenze speciali, deve garantire la privacy dei cittadini - per altro protetta da specifiche leggi in diverse legislazioni nazionali - e la trasparenza dell’amministrazione.
 5) **Cosa si intende con "digitalizzazione dei servizi"? (fare esempi di servizi "analogici" e "digitali")**
@@ -355,7 +355,7 @@
 6) **Cosa sono "frontend" e "backend" di un servizio?**
 	Sia per quanto riguarda servizi analogici sia digitali, il frontend è l'interfaccia verso gli utenti mentre il backend è la parte del sistema che svolge effettivamente la funzione.
 7) **Cosa si intende con "appificazione"?**
-	Si intende l'attuale processo di digitalizzazione di servizi quasi esclusivamente tramite app e non tramite l'implementazione di un sito web. CIò è dovuto principalmente al tentativo di inseguire le abitudini di acquisto dei clienti, i quali preferiscono usare il cellulare rispetto ad un pc fisso o portatile. Questo approccio, se estremizzato, porta de facto all'obbligo di possesso di uno smartphone, tagliando fuori fette di popolazione dalla possibilità di accesso al servizio.
+	Si intende l'attuale processo di digitalizzazione di servizi quasi esclusivamente tramite app e non tramite l'implementazione di un sito web. Ciò è dovuto principalmente al tentativo di inseguire le abitudini di acquisto dei clienti, i quali preferiscono usare il cellulare rispetto ad un pc fisso o portatile. Questo approccio, se estremizzato, porta de facto all'obbligo di possesso di uno smartphone, tagliando fuori fette di popolazione dalla possibilità di accesso al servizio.
 8) **Quali sono gli aspetti importanti da considerare nella digitalizzazione di un servizio?**
 	Ci si ispira alle domande fondamentali del giornalismo e ci si chiede:
 	- chi: chi può richiedere il servizio, chi è il fornitore o l'intermediario;
